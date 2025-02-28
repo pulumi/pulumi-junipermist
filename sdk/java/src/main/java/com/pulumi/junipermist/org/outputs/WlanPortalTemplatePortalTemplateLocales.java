@@ -12,68 +12,68 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanPortalTemplatePortalTemplateLocales {
     /**
-     * @return label for Amazon auth button
+     * @return Label for Amazon auth button
      * 
      */
     private @Nullable String authButtonAmazon;
     /**
-     * @return label for Azure auth button
+     * @return Label for Azure auth button
      * 
      */
     private @Nullable String authButtonAzure;
     /**
-     * @return label for Email auth button
+     * @return Label for Email auth button
      * 
      */
     private @Nullable String authButtonEmail;
     /**
-     * @return label for Facebook auth button
+     * @return Label for Facebook auth button
      * 
      */
     private @Nullable String authButtonFacebook;
     /**
-     * @return label for Google auth button
+     * @return Label for Google auth button
      * 
      */
     private @Nullable String authButtonGoogle;
     /**
-     * @return label for Microsoft auth button
+     * @return Label for Microsoft auth button
      * 
      */
     private @Nullable String authButtonMicrosoft;
     /**
-     * @return label for passphrase auth button
+     * @return Label for passphrase auth button
      * 
      */
     private @Nullable String authButtonPassphrase;
     /**
-     * @return label for SMS auth button
+     * @return Label for SMS auth button
      * 
      */
     private @Nullable String authButtonSms;
     /**
-     * @return label for Sponsor auth button
+     * @return Label for Sponsor auth button
      * 
      */
     private @Nullable String authButtonSponsor;
     private @Nullable String authLabel;
     /**
-     * @return label of the link to go back to /logon
+     * @return Label of the link to go back to /logon
      * 
      */
     private @Nullable String backLink;
     /**
-     * @return error message when company not provided
+     * @return Error message when company not provided
      * 
      */
     private @Nullable String companyError;
     /**
-     * @return label of company field
+     * @return Label of company field
      * 
      */
     private @Nullable String companyLabel;
     /**
-     * @return error message when a user has valid social login but doesn&#39;t match specified email domains.
+     * @return Error message when a user has valid social login but doesn&#39;t match specified email domains.
      * 
      */
     private @Nullable String emailAccessDomainError;
@@ -89,13 +89,13 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     private @Nullable String emailCodeSubmit;
     private @Nullable String emailCodeTitle;
     /**
-     * @return error message when email not provided
+     * @return Error message when email not provided
      * 
      */
     private @Nullable String emailError;
     private @Nullable String emailFieldLabel;
     /**
-     * @return label of email field
+     * @return Label of email field
      * 
      */
     private @Nullable String emailLabel;
@@ -111,58 +111,58 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      */
     private @Nullable String emailTitle;
     /**
-     * @return error message when field1 not provided
+     * @return Error message when field1 not provided
      * 
      */
     private @Nullable String field1error;
     /**
-     * @return label of field1
+     * @return Label of field1
      * 
      */
     private @Nullable String field1label;
     /**
-     * @return error message when field2 not provided
+     * @return Error message when field2 not provided
      * 
      */
     private @Nullable String field2error;
     /**
-     * @return label of field2
+     * @return Label of field2
      * 
      */
     private @Nullable String field2label;
     /**
-     * @return error message when field3 not provided
+     * @return Error message when field3 not provided
      * 
      */
     private @Nullable String field3error;
     /**
-     * @return label of field3
+     * @return Label of field3
      * 
      */
     private @Nullable String field3label;
     /**
-     * @return error message when field4 not provided
+     * @return Error message when field4 not provided
      * 
      */
     private @Nullable String field4error;
     /**
-     * @return label of field4
+     * @return Label of field4
      * 
      */
     private @Nullable String field4label;
     private @Nullable String message;
     /**
-     * @return error message when name not provided
+     * @return Error message when name not provided
      * 
      */
     private @Nullable String nameError;
     /**
-     * @return label of name field
+     * @return Label of name field
      * 
      */
     private @Nullable String nameLabel;
     /**
-     * @return label for Do Not Store My Personal Information
+     * @return Label for Do Not Store My Personal Information
      * 
      */
     private @Nullable String optoutLabel;
@@ -173,7 +173,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      */
     private @Nullable String passphraseCancel;
     /**
-     * @return error message when invalid passphrase is provided
+     * @return Error message when invalid passphrase is provided
      * 
      */
     private @Nullable String passphraseError;
@@ -194,39 +194,39 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      */
     private @Nullable String passphraseTitle;
     /**
-     * @return prefix of the label of the link to go to Privacy Policy
+     * @return Prefix of the label of the link to go to Privacy Policy
      * 
      */
     private @Nullable String privacyPolicyAcceptLabel;
     /**
-     * @return error message when Privacy Policy not accepted
+     * @return Error message when Privacy Policy not accepted
      * 
      */
     private @Nullable String privacyPolicyError;
     /**
-     * @return label of the link to go to Privacy Policy
+     * @return Label of the link to go to Privacy Policy
      * 
      */
     private @Nullable String privacyPolicyLink;
     /**
-     * @return text of the Privacy Policy
+     * @return Text of the Privacy Policy
      * 
      */
     private @Nullable String privacyPolicyText;
     /**
-     * @return label to denote required field
+     * @return Label to denote required field
      * 
      */
     private @Nullable String requiredFieldLabel;
     /**
-     * @return label of the button to /signin
+     * @return Label of the button to /signin
      * 
      */
     private @Nullable String signInLabel;
     private @Nullable String smsCarrierDefault;
     private @Nullable String smsCarrierError;
     /**
-     * @return label for mobile carrier drop-down list
+     * @return Label for mobile carrier drop-down list
      * 
      */
     private @Nullable String smsCarrierFieldLabel;
@@ -236,7 +236,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      */
     private @Nullable String smsCodeCancel;
     /**
-     * @return error message when confirmation code is invalid
+     * @return Error message when confirmation code is invalid
      * 
      */
     private @Nullable String smsCodeError;
@@ -256,25 +256,25 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      */
     private @Nullable String smsHaveAccessCode;
     /**
-     * @return format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+     * @return Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
      * 
      */
     private @Nullable String smsMessageFormat;
     /**
-     * @return label for canceling mobile details for SMS auth
+     * @return Label for canceling mobile details for SMS auth
      * 
      */
     private @Nullable String smsNumberCancel;
     private @Nullable String smsNumberError;
     /**
-     * @return label for field to provide mobile number
+     * @return Label for field to provide mobile number
      * 
      */
     private @Nullable String smsNumberFieldLabel;
     private @Nullable String smsNumberFormat;
     private @Nullable String smsNumberMessage;
     /**
-     * @return label for submit button for code generation
+     * @return Label for submit button for code generation
      * 
      */
     private @Nullable String smsNumberSubmit;
@@ -287,7 +287,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     private @Nullable String sponsorBackLink;
     private @Nullable String sponsorCancel;
     /**
-     * @return label for Sponsor Email
+     * @return Label for Sponsor Email
      * 
      */
     private @Nullable String sponsorEmail;
@@ -296,119 +296,119 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     private @Nullable String sponsorInfoDenied;
     private @Nullable String sponsorInfoPending;
     /**
-     * @return label for Sponsor Name
+     * @return Label for Sponsor Name
      * 
      */
     private @Nullable String sponsorName;
     private @Nullable String sponsorNameError;
     private @Nullable String sponsorNotePending;
     /**
-     * @return submit button label request Wifi Access and notify sponsor about guest request
+     * @return Submit button label request Wifi Access and notify sponsor about guest request
      * 
      */
     private @Nullable String sponsorRequestAccess;
     /**
-     * @return text to display if sponsor approves request
+     * @return Text to display if sponsor approves request
      * 
      */
     private @Nullable String sponsorStatusApproved;
     /**
-     * @return text to display when sponsor denies request
+     * @return Text to display when sponsor denies request
      * 
      */
     private @Nullable String sponsorStatusDenied;
     /**
-     * @return text to display if request is still pending
+     * @return Text to display if request is still pending
      * 
      */
     private @Nullable String sponsorStatusPending;
     /**
-     * @return submit button label to notify sponsor about guest request
+     * @return Submit button label to notify sponsor about guest request
      * 
      */
     private @Nullable String sponsorSubmit;
     private @Nullable String sponsorsError;
     private @Nullable String sponsorsFieldLabel;
     /**
-     * @return prefix of the label of the link to go to tos
+     * @return Prefix of the label of the link to go to tos
      * 
      */
     private @Nullable String tosAcceptLabel;
     /**
-     * @return error message when tos not accepted
+     * @return Error message when tos not accepted
      * 
      */
     private @Nullable String tosError;
     /**
-     * @return label of the link to go to tos
+     * @return Label of the link to go to tos
      * 
      */
     private @Nullable String tosLink;
     /**
-     * @return text of the Terms of Service
+     * @return Text of the Terms of Service
      * 
      */
     private @Nullable String tosText;
 
     private WlanPortalTemplatePortalTemplateLocales() {}
     /**
-     * @return label for Amazon auth button
+     * @return Label for Amazon auth button
      * 
      */
     public Optional<String> authButtonAmazon() {
         return Optional.ofNullable(this.authButtonAmazon);
     }
     /**
-     * @return label for Azure auth button
+     * @return Label for Azure auth button
      * 
      */
     public Optional<String> authButtonAzure() {
         return Optional.ofNullable(this.authButtonAzure);
     }
     /**
-     * @return label for Email auth button
+     * @return Label for Email auth button
      * 
      */
     public Optional<String> authButtonEmail() {
         return Optional.ofNullable(this.authButtonEmail);
     }
     /**
-     * @return label for Facebook auth button
+     * @return Label for Facebook auth button
      * 
      */
     public Optional<String> authButtonFacebook() {
         return Optional.ofNullable(this.authButtonFacebook);
     }
     /**
-     * @return label for Google auth button
+     * @return Label for Google auth button
      * 
      */
     public Optional<String> authButtonGoogle() {
         return Optional.ofNullable(this.authButtonGoogle);
     }
     /**
-     * @return label for Microsoft auth button
+     * @return Label for Microsoft auth button
      * 
      */
     public Optional<String> authButtonMicrosoft() {
         return Optional.ofNullable(this.authButtonMicrosoft);
     }
     /**
-     * @return label for passphrase auth button
+     * @return Label for passphrase auth button
      * 
      */
     public Optional<String> authButtonPassphrase() {
         return Optional.ofNullable(this.authButtonPassphrase);
     }
     /**
-     * @return label for SMS auth button
+     * @return Label for SMS auth button
      * 
      */
     public Optional<String> authButtonSms() {
         return Optional.ofNullable(this.authButtonSms);
     }
     /**
-     * @return label for Sponsor auth button
+     * @return Label for Sponsor auth button
      * 
      */
     public Optional<String> authButtonSponsor() {
@@ -418,28 +418,28 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.authLabel);
     }
     /**
-     * @return label of the link to go back to /logon
+     * @return Label of the link to go back to /logon
      * 
      */
     public Optional<String> backLink() {
         return Optional.ofNullable(this.backLink);
     }
     /**
-     * @return error message when company not provided
+     * @return Error message when company not provided
      * 
      */
     public Optional<String> companyError() {
         return Optional.ofNullable(this.companyError);
     }
     /**
-     * @return label of company field
+     * @return Label of company field
      * 
      */
     public Optional<String> companyLabel() {
         return Optional.ofNullable(this.companyLabel);
     }
     /**
-     * @return error message when a user has valid social login but doesn&#39;t match specified email domains.
+     * @return Error message when a user has valid social login but doesn&#39;t match specified email domains.
      * 
      */
     public Optional<String> emailAccessDomainError() {
@@ -471,7 +471,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.emailCodeTitle);
     }
     /**
-     * @return error message when email not provided
+     * @return Error message when email not provided
      * 
      */
     public Optional<String> emailError() {
@@ -481,7 +481,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.emailFieldLabel);
     }
     /**
-     * @return label of email field
+     * @return Label of email field
      * 
      */
     public Optional<String> emailLabel() {
@@ -505,56 +505,56 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.emailTitle);
     }
     /**
-     * @return error message when field1 not provided
+     * @return Error message when field1 not provided
      * 
      */
     public Optional<String> field1error() {
         return Optional.ofNullable(this.field1error);
     }
     /**
-     * @return label of field1
+     * @return Label of field1
      * 
      */
     public Optional<String> field1label() {
         return Optional.ofNullable(this.field1label);
     }
     /**
-     * @return error message when field2 not provided
+     * @return Error message when field2 not provided
      * 
      */
     public Optional<String> field2error() {
         return Optional.ofNullable(this.field2error);
     }
     /**
-     * @return label of field2
+     * @return Label of field2
      * 
      */
     public Optional<String> field2label() {
         return Optional.ofNullable(this.field2label);
     }
     /**
-     * @return error message when field3 not provided
+     * @return Error message when field3 not provided
      * 
      */
     public Optional<String> field3error() {
         return Optional.ofNullable(this.field3error);
     }
     /**
-     * @return label of field3
+     * @return Label of field3
      * 
      */
     public Optional<String> field3label() {
         return Optional.ofNullable(this.field3label);
     }
     /**
-     * @return error message when field4 not provided
+     * @return Error message when field4 not provided
      * 
      */
     public Optional<String> field4error() {
         return Optional.ofNullable(this.field4error);
     }
     /**
-     * @return label of field4
+     * @return Label of field4
      * 
      */
     public Optional<String> field4label() {
@@ -564,21 +564,21 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.message);
     }
     /**
-     * @return error message when name not provided
+     * @return Error message when name not provided
      * 
      */
     public Optional<String> nameError() {
         return Optional.ofNullable(this.nameError);
     }
     /**
-     * @return label of name field
+     * @return Label of name field
      * 
      */
     public Optional<String> nameLabel() {
         return Optional.ofNullable(this.nameLabel);
     }
     /**
-     * @return label for Do Not Store My Personal Information
+     * @return Label for Do Not Store My Personal Information
      * 
      */
     public Optional<String> optoutLabel() {
@@ -595,7 +595,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.passphraseCancel);
     }
     /**
-     * @return error message when invalid passphrase is provided
+     * @return Error message when invalid passphrase is provided
      * 
      */
     public Optional<String> passphraseError() {
@@ -626,42 +626,42 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.passphraseTitle);
     }
     /**
-     * @return prefix of the label of the link to go to Privacy Policy
+     * @return Prefix of the label of the link to go to Privacy Policy
      * 
      */
     public Optional<String> privacyPolicyAcceptLabel() {
         return Optional.ofNullable(this.privacyPolicyAcceptLabel);
     }
     /**
-     * @return error message when Privacy Policy not accepted
+     * @return Error message when Privacy Policy not accepted
      * 
      */
     public Optional<String> privacyPolicyError() {
         return Optional.ofNullable(this.privacyPolicyError);
     }
     /**
-     * @return label of the link to go to Privacy Policy
+     * @return Label of the link to go to Privacy Policy
      * 
      */
     public Optional<String> privacyPolicyLink() {
         return Optional.ofNullable(this.privacyPolicyLink);
     }
     /**
-     * @return text of the Privacy Policy
+     * @return Text of the Privacy Policy
      * 
      */
     public Optional<String> privacyPolicyText() {
         return Optional.ofNullable(this.privacyPolicyText);
     }
     /**
-     * @return label to denote required field
+     * @return Label to denote required field
      * 
      */
     public Optional<String> requiredFieldLabel() {
         return Optional.ofNullable(this.requiredFieldLabel);
     }
     /**
-     * @return label of the button to /signin
+     * @return Label of the button to /signin
      * 
      */
     public Optional<String> signInLabel() {
@@ -674,7 +674,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.smsCarrierError);
     }
     /**
-     * @return label for mobile carrier drop-down list
+     * @return Label for mobile carrier drop-down list
      * 
      */
     public Optional<String> smsCarrierFieldLabel() {
@@ -688,7 +688,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.smsCodeCancel);
     }
     /**
-     * @return error message when confirmation code is invalid
+     * @return Error message when confirmation code is invalid
      * 
      */
     public Optional<String> smsCodeError() {
@@ -724,14 +724,14 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.smsHaveAccessCode);
     }
     /**
-     * @return format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+     * @return Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
      * 
      */
     public Optional<String> smsMessageFormat() {
         return Optional.ofNullable(this.smsMessageFormat);
     }
     /**
-     * @return label for canceling mobile details for SMS auth
+     * @return Label for canceling mobile details for SMS auth
      * 
      */
     public Optional<String> smsNumberCancel() {
@@ -741,7 +741,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.smsNumberError);
     }
     /**
-     * @return label for field to provide mobile number
+     * @return Label for field to provide mobile number
      * 
      */
     public Optional<String> smsNumberFieldLabel() {
@@ -754,7 +754,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.smsNumberMessage);
     }
     /**
-     * @return label for submit button for code generation
+     * @return Label for submit button for code generation
      * 
      */
     public Optional<String> smsNumberSubmit() {
@@ -777,7 +777,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.sponsorCancel);
     }
     /**
-     * @return label for Sponsor Email
+     * @return Label for Sponsor Email
      * 
      */
     public Optional<String> sponsorEmail() {
@@ -796,7 +796,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.sponsorInfoPending);
     }
     /**
-     * @return label for Sponsor Name
+     * @return Label for Sponsor Name
      * 
      */
     public Optional<String> sponsorName() {
@@ -809,35 +809,35 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.sponsorNotePending);
     }
     /**
-     * @return submit button label request Wifi Access and notify sponsor about guest request
+     * @return Submit button label request Wifi Access and notify sponsor about guest request
      * 
      */
     public Optional<String> sponsorRequestAccess() {
         return Optional.ofNullable(this.sponsorRequestAccess);
     }
     /**
-     * @return text to display if sponsor approves request
+     * @return Text to display if sponsor approves request
      * 
      */
     public Optional<String> sponsorStatusApproved() {
         return Optional.ofNullable(this.sponsorStatusApproved);
     }
     /**
-     * @return text to display when sponsor denies request
+     * @return Text to display when sponsor denies request
      * 
      */
     public Optional<String> sponsorStatusDenied() {
         return Optional.ofNullable(this.sponsorStatusDenied);
     }
     /**
-     * @return text to display if request is still pending
+     * @return Text to display if request is still pending
      * 
      */
     public Optional<String> sponsorStatusPending() {
         return Optional.ofNullable(this.sponsorStatusPending);
     }
     /**
-     * @return submit button label to notify sponsor about guest request
+     * @return Submit button label to notify sponsor about guest request
      * 
      */
     public Optional<String> sponsorSubmit() {
@@ -850,28 +850,28 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.sponsorsFieldLabel);
     }
     /**
-     * @return prefix of the label of the link to go to tos
+     * @return Prefix of the label of the link to go to tos
      * 
      */
     public Optional<String> tosAcceptLabel() {
         return Optional.ofNullable(this.tosAcceptLabel);
     }
     /**
-     * @return error message when tos not accepted
+     * @return Error message when tos not accepted
      * 
      */
     public Optional<String> tosError() {
         return Optional.ofNullable(this.tosError);
     }
     /**
-     * @return label of the link to go to tos
+     * @return Label of the link to go to tos
      * 
      */
     public Optional<String> tosLink() {
         return Optional.ofNullable(this.tosLink);
     }
     /**
-     * @return text of the Terms of Service
+     * @return Text of the Terms of Service
      * 
      */
     public Optional<String> tosText() {

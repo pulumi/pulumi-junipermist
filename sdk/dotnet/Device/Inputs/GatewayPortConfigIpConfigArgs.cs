@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _dns;
 
         /// <summary>
-        /// except for out-of_band interface (vme/em0/fxp0)
+        /// Except for out-of_band interface (vme/em0/fxp0)
         /// </summary>
         public InputList<string> Dns
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// except for out-of_band interface (vme/em0/fxp0)
+        /// Except for out-of_band interface (vme/em0/fxp0)
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -37,7 +37,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
+        /// Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
@@ -49,13 +49,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
+        /// Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
         /// <summary>
-        /// optional, the network to be used for mgmt
+        /// Optional, the network to be used for mgmt
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private Input<string>? _poserPassword;
 
         /// <summary>
-        /// if `type`==`pppoe`
+        /// If `type`==`pppoe`
         /// </summary>
         public Input<string>? PoserPassword
         {
@@ -83,7 +83,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? PppoeAuth { get; set; }
 
         /// <summary>
-        /// if `type`==`pppoe`
+        /// If `type`==`pppoe`
         /// </summary>
         [Input("pppoeUsername")]
         public Input<string>? PppoeUsername { get; set; }

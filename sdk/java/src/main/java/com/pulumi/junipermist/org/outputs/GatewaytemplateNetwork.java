@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplateNetwork {
     /**
-     * @return whether to disallow Mist Devices in the network
+     * @return Whether to disallow Mist Devices in the network
      * 
      */
     private @Nullable Boolean disallowMistServices;
@@ -29,23 +29,23 @@ public final class GatewaytemplateNetwork {
     private @Nullable String gateway6;
     private @Nullable GatewaytemplateNetworkInternalAccess internalAccess;
     /**
-     * @return whether this network has direct internet access
+     * @return Whether this network has direct internet access
      * 
      */
     private @Nullable GatewaytemplateNetworkInternetAccess internetAccess;
     /**
-     * @return whether to allow clients in the network to talk to each other
+     * @return Whether to allow clients in the network to talk to each other
      * 
      */
     private @Nullable Boolean isolation;
     /**
-     * @return whether to enable multicast support (only PIM-sparse mode is supported)
+     * @return Whether to enable multicast support (only PIM-sparse mode is supported)
      * 
      */
     private @Nullable GatewaytemplateNetworkMulticast multicast;
     private String name;
     /**
-     * @return for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * @return For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
      * 
      */
     private @Nullable List<String> routedForNetworks;
@@ -65,7 +65,7 @@ public final class GatewaytemplateNetwork {
 
     private GatewaytemplateNetwork() {}
     /**
-     * @return whether to disallow Mist Devices in the network
+     * @return Whether to disallow Mist Devices in the network
      * 
      */
     public Optional<Boolean> disallowMistServices() {
@@ -81,21 +81,21 @@ public final class GatewaytemplateNetwork {
         return Optional.ofNullable(this.internalAccess);
     }
     /**
-     * @return whether this network has direct internet access
+     * @return Whether this network has direct internet access
      * 
      */
     public Optional<GatewaytemplateNetworkInternetAccess> internetAccess() {
         return Optional.ofNullable(this.internetAccess);
     }
     /**
-     * @return whether to allow clients in the network to talk to each other
+     * @return Whether to allow clients in the network to talk to each other
      * 
      */
     public Optional<Boolean> isolation() {
         return Optional.ofNullable(this.isolation);
     }
     /**
-     * @return whether to enable multicast support (only PIM-sparse mode is supported)
+     * @return Whether to enable multicast support (only PIM-sparse mode is supported)
      * 
      */
     public Optional<GatewaytemplateNetworkMulticast> multicast() {
@@ -105,7 +105,7 @@ public final class GatewaytemplateNetwork {
         return this.name;
     }
     /**
-     * @return for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * @return For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
      * 
      */
     public List<String> routedForNetworks() {

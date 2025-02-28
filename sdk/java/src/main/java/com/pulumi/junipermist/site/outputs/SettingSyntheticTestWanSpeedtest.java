@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class SettingSyntheticTestWanSpeedtest {
     private @Nullable Boolean enabled;
     /**
-     * @return any / HH:MM (24-hour format)
+     * @return `any` / HH:MM (24-hour format)
      * 
      */
     private @Nullable String timeOfDay;
@@ -24,7 +24,7 @@ public final class SettingSyntheticTestWanSpeedtest {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return any / HH:MM (24-hour format)
+     * @return `any` / HH:MM (24-hour format)
      * 
      */
     public Optional<String> timeOfDay() {

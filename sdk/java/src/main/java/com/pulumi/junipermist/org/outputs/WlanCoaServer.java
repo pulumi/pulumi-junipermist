@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanCoaServer {
     /**
-     * @return whether to disable Event-Timestamp Check
+     * @return Whether to disable Event-Timestamp Check
      * 
      */
     private @Nullable Boolean disableEventTimestampCheck;
@@ -26,7 +26,7 @@ public final class WlanCoaServer {
 
     private WlanCoaServer() {}
     /**
-     * @return whether to disable Event-Timestamp Check
+     * @return Whether to disable Event-Timestamp Check
      * 
      */
     public Optional<Boolean> disableEventTimestampCheck() {

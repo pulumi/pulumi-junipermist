@@ -65,13 +65,13 @@ namespace Pulumi.JuniperMist.Org
     public partial class Wlan : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// enable coa-immediate-update and address-change-immediate-update on the access profile.
+        /// Enable coa-immediate-update and address-change-immediate-update on the access profile.
         /// </summary>
         [Output("acctImmediateUpdate")]
         public Output<bool> AcctImmediateUpdate { get; private set; } = null!;
 
         /// <summary>
-        /// how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
+        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
         /// from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended
         /// when enabled
         /// </summary>
@@ -79,49 +79,49 @@ namespace Pulumi.JuniperMist.Org
         public Output<int> AcctInterimInterval { get; private set; } = null!;
 
         /// <summary>
-        /// list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+        /// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
         /// </summary>
         [Output("acctServers")]
         public Output<ImmutableArray<Outputs.WlanAcctServer>> AcctServers { get; private set; } = null!;
 
         /// <summary>
-        /// airwatch wlan settings
+        /// Airwatch wlan settings
         /// </summary>
         [Output("airwatch")]
         public Output<Outputs.WlanAirwatch> Airwatch { get; private set; } = null!;
 
         /// <summary>
-        /// only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        /// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
         /// </summary>
         [Output("allowIpv6Ndp")]
         public Output<bool> AllowIpv6Ndp { get; private set; } = null!;
 
         /// <summary>
-        /// only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        /// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
         /// </summary>
         [Output("allowMdns")]
         public Output<bool> AllowMdns { get; private set; } = null!;
 
         /// <summary>
-        /// only applicable when `limit_bcast`==`true`, which allows SSDP
+        /// Only applicable when `limit_bcast`==`true`, which allows SSDP
         /// </summary>
         [Output("allowSsdp")]
         public Output<bool> AllowSsdp { get; private set; } = null!;
 
         /// <summary>
-        /// list of device ids
+        /// List of device ids
         /// </summary>
         [Output("apIds")]
         public Output<ImmutableArray<string>> ApIds { get; private set; } = null!;
 
         /// <summary>
-        /// bandwidth limiting for apps (applies to up/down)
+        /// Bandwidth limiting for apps (applies to up/down)
         /// </summary>
         [Output("appLimit")]
         public Output<Outputs.WlanAppLimit> AppLimit { get; private set; } = null!;
 
         /// <summary>
-        /// app qos wlan settings
+        /// APp qos wlan settings
         /// </summary>
         [Output("appQos")]
         public Output<Outputs.WlanAppQos> AppQos { get; private set; } = null!;
@@ -133,13 +133,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> ApplyTo { get; private set; } = null!;
 
         /// <summary>
-        /// whether to enable smart arp filter
+        /// Whether to enable smart arp filter
         /// </summary>
         [Output("arpFilter")]
         public Output<bool> ArpFilter { get; private set; } = null!;
 
         /// <summary>
-        /// authentication wlan settings
+        /// Authentication wlan settings
         /// </summary>
         [Output("auth")]
         public Output<Outputs.WlanAuth?> Auth { get; private set; } = null!;
@@ -151,48 +151,48 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> AuthServerSelection { get; private set; } = null!;
 
         /// <summary>
-        /// list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
+        /// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
         /// is treated as primary
         /// </summary>
         [Output("authServers")]
         public Output<ImmutableArray<Outputs.WlanAuthServer>> AuthServers { get; private set; } = null!;
 
         /// <summary>
-        /// optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+        /// Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
         /// </summary>
         [Output("authServersNasId")]
         public Output<string> AuthServersNasId { get; private set; } = null!;
 
         /// <summary>
-        /// optional, NAS-IP-ADDRESS to use
+        /// Optional, NAS-IP-ADDRESS to use
         /// </summary>
         [Output("authServersNasIp")]
         public Output<string> AuthServersNasIp { get; private set; } = null!;
 
         /// <summary>
-        /// radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’ are
-        /// set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to
-        /// default value to 3.
+        /// Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set
+        /// to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default
+        /// value to 3.
         /// </summary>
         [Output("authServersRetries")]
         public Output<int> AuthServersRetries { get; private set; } = null!;
 
         /// <summary>
-        /// radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled.
-        /// ‘quite-period’ and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’
-        /// is also set when setting auth_servers_timeout and is set to default value of 10.
+        /// Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’
+        /// and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
+        /// setting auth_servers_timeout and is set to default value of 10.
         /// </summary>
         [Output("authServersTimeout")]
         public Output<int> AuthServersTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// whether to enable band_steering, this works only when band==both
+        /// Whether to enable band_steering, this works only when band==both
         /// </summary>
         [Output("bandSteer")]
         public Output<bool> BandSteer { get; private set; } = null!;
 
         /// <summary>
-        /// force dual_band capable client to connect to 5G
+        /// Force dual_band capable client to connect to 5G
         /// </summary>
         [Output("bandSteerForceBand5")]
         public Output<bool> BandSteerForceBand5 { get; private set; } = null!;
@@ -204,13 +204,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableArray<string>> Bands { get; private set; } = null!;
 
         /// <summary>
-        /// whether to block the clients in the blacklist (up to first 256 macs)
+        /// Whether to block the clients in the blacklist (up to first 256 macs)
         /// </summary>
         [Output("blockBlacklistClients")]
         public Output<bool> BlockBlacklistClients { get; private set; } = null!;
 
         /// <summary>
-        /// bonjour gateway wlan settings
+        /// Bonjour gateway wlan settings
         /// </summary>
         [Output("bonjour")]
         public Output<Outputs.WlanBonjour> Bonjour { get; private set; } = null!;
@@ -223,67 +223,67 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.WlanCiscoCwa> CiscoCwa { get; private set; } = null!;
 
         /// <summary>
-        /// kbps
+        /// In kbps
         /// </summary>
         [Output("clientLimitDown")]
         public Output<int> ClientLimitDown { get; private set; } = null!;
 
         /// <summary>
-        /// if downlink limiting per-client is enabled
+        /// If downlink limiting per-client is enabled
         /// </summary>
         [Output("clientLimitDownEnabled")]
         public Output<bool> ClientLimitDownEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// kbps
+        /// In kbps
         /// </summary>
         [Output("clientLimitUp")]
         public Output<int> ClientLimitUp { get; private set; } = null!;
 
         /// <summary>
-        /// if uplink limiting per-client is enabled
+        /// If uplink limiting per-client is enabled
         /// </summary>
         [Output("clientLimitUpEnabled")]
         public Output<bool> ClientLimitUpEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// list of COA (change of authorization) servers, optional
+        /// List of COA (change of authorization) servers, optional
         /// </summary>
         [Output("coaServers")]
         public Output<ImmutableArray<Outputs.WlanCoaServer>> CoaServers { get; private set; } = null!;
 
         /// <summary>
-        /// some old WLAN drivers may not be compatible
+        /// Some old WLAN drivers may not be compatible
         /// </summary>
         [Output("disable11ax")]
         public Output<bool> Disable11ax { get; private set; } = null!;
 
         /// <summary>
-        /// to disable ht or vht rates
+        /// To disable ht or vht rates
         /// </summary>
         [Output("disableHtVhtRates")]
         public Output<bool> DisableHtVhtRates { get; private set; } = null!;
 
         /// <summary>
-        /// whether to disable U-APSD
+        /// Whether to disable U-APSD
         /// </summary>
         [Output("disableUapsd")]
         public Output<bool> DisableUapsd { get; private set; } = null!;
 
         /// <summary>
-        /// disable sending v2 roam notification messages
+        /// Disable sending v2 roam notification messages
         /// </summary>
         [Output("disableV1RoamNotify")]
         public Output<bool> DisableV1RoamNotify { get; private set; } = null!;
 
         /// <summary>
-        /// disable sending v2 roam notification messages
+        /// Disable sending v2 roam notification messages
         /// </summary>
         [Output("disableV2RoamNotify")]
         public Output<bool> DisableV2RoamNotify { get; private set; } = null!;
 
         /// <summary>
-        /// when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+        /// When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
         /// reach default gateway
         /// </summary>
         [Output("disableWhenGatewayUnreachable")]
@@ -293,13 +293,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> DisableWhenMxtunnelDown { get; private set; } = null!;
 
         /// <summary>
-        /// whether to disable WMM
+        /// Whether to disable WMM
         /// </summary>
         [Output("disableWmm")]
         public Output<bool> DisableWmm { get; private set; } = null!;
 
         /// <summary>
-        /// for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+        /// For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
         /// </summary>
         [Output("dnsServerRewrite")]
         public Output<Outputs.WlanDnsServerRewrite> DnsServerRewrite { get; private set; } = null!;
@@ -308,9 +308,9 @@ namespace Pulumi.JuniperMist.Org
         public Output<int> Dtim { get; private set; } = null!;
 
         /// <summary>
-        /// for dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
+        /// For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
         /// context (wlan/site/user/...) thus following configurations are assumed (currently) * PSK will come from RADIUS server *
-        /// AP sends client MAC as username ans password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
+        /// AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
         /// Caller-Station-ID * `auth_servers` is required * PSK will come from cloud WLC if source is cloud_psks * default_psk will
         /// be used if cloud WLC is not available * `multi_psk_only` and `psk` is ignored * `pairwise` can only be wpa2-ccmp (for
         /// now, wpa3 support on the roadmap)
@@ -319,58 +319,58 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.WlanDynamicPsk?> DynamicPsk { get; private set; } = null!;
 
         /// <summary>
-        /// for 802.1x
+        /// For 802.1x
         /// </summary>
         [Output("dynamicVlan")]
         public Output<Outputs.WlanDynamicVlan?> DynamicVlan { get; private set; } = null!;
 
         /// <summary>
-        /// enable AP-AP keycaching via multicast
+        /// Enable AP-AP keycaching via multicast
         /// </summary>
         [Output("enableLocalKeycaching")]
         public Output<bool> EnableLocalKeycaching { get; private set; } = null!;
 
         /// <summary>
-        /// by default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
+        /// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
         /// client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
         /// </summary>
         [Output("enableWirelessBridging")]
         public Output<bool> EnableWirelessBridging { get; private set; } = null!;
 
         /// <summary>
-        /// if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
+        /// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
         /// packets to be forwarded to wireless
         /// </summary>
         [Output("enableWirelessBridgingDhcpTracking")]
         public Output<bool> EnableWirelessBridgingDhcpTracking { get; private set; } = null!;
 
         /// <summary>
-        /// if this wlan is enabled
+        /// If this wlan is enabled
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
+        /// If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
         /// ‘auth_server_retries’ .
         /// </summary>
         [Output("fastDot1xTimers")]
         public Output<bool> FastDot1xTimers { get; private set; } = null!;
 
         /// <summary>
-        /// whether to hide SSID in beacon
+        /// Whether to hide SSID in beacon
         /// </summary>
         [Output("hideSsid")]
         public Output<bool> HideSsid { get; private set; } = null!;
 
         /// <summary>
-        /// include hostname inside IE in AP beacons / probe responses
+        /// Include hostname inside IE in AP beacons / probe responses
         /// </summary>
         [Output("hostnameIe")]
         public Output<bool> HostnameIe { get; private set; } = null!;
 
         /// <summary>
-        /// hostspot 2.0 wlan settings
+        /// Hostspot 2.0 wlan settings
         /// </summary>
         [Output("hotspot20")]
         public Output<Outputs.WlanHotspot20> Hotspot20 { get; private set; } = null!;
@@ -385,44 +385,44 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> Interface { get; private set; } = null!;
 
         /// <summary>
-        /// whether to stop clients to talk to each other
+        /// Whether to stop clients to talk to each other
         /// </summary>
         [Output("isolation")]
         public Output<bool> Isolation { get; private set; } = null!;
 
         /// <summary>
-        /// if isolation is enabled, whether to deny clients to talk to L2 on the LAN
+        /// If isolation is enabled, whether to deny clients to talk to L2 on the LAN
         /// </summary>
         [Output("l2Isolation")]
         public Output<bool> L2Isolation { get; private set; } = null!;
 
         /// <summary>
-        /// legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
+        /// Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
         /// Enabling this will cause problem for iOS devices.
         /// </summary>
         [Output("legacyOverds")]
         public Output<bool> LegacyOverds { get; private set; } = null!;
 
         /// <summary>
-        /// whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+        /// Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
         /// </summary>
         [Output("limitBcast")]
         public Output<bool> LimitBcast { get; private set; } = null!;
 
         /// <summary>
-        /// limit probe response base on some heuristic rules
+        /// Limit probe response base on some heuristic rules
         /// </summary>
         [Output("limitProbeResponse")]
         public Output<bool> LimitProbeResponse { get; private set; } = null!;
 
         /// <summary>
-        /// max idle time in seconds
+        /// Max idle time in seconds
         /// </summary>
         [Output("maxIdletime")]
         public Output<int> MaxIdletime { get; private set; } = null!;
 
         /// <summary>
-        /// maximum number of client connected to the SSID. `0` means unlimited
+        /// Maximum number of client connected to the SSID. `0` means unlimited
         /// </summary>
         [Output("maxNumClients")]
         public Output<int> MaxNumClients { get; private set; } = null!;
@@ -434,25 +434,25 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> MspId { get; private set; } = null!;
 
         /// <summary>
-        /// when `interface`=`mxtunnel`, id of the Mist Tunnel
+        /// When `interface`=`mxtunnel`, id of the Mist Tunnel
         /// </summary>
         [Output("mxtunnelIds")]
         public Output<ImmutableArray<string>> MxtunnelIds { get; private set; } = null!;
 
         /// <summary>
-        /// when `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        /// When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
         /// </summary>
         [Output("mxtunnelNames")]
         public Output<ImmutableArray<string>> MxtunnelNames { get; private set; } = null!;
 
         /// <summary>
-        /// whether to only allow client to use DNS that we’ve learned from DHCP response
+        /// Whether to only allow client to use DNS that we’ve learned from DHCP response
         /// </summary>
         [Output("noStaticDns")]
         public Output<bool> NoStaticDns { get; private set; } = null!;
 
         /// <summary>
-        /// whether to only allow client that we’ve learned from DHCP exchange to talk
+        /// Whether to only allow client that we’ve learned from DHCP exchange to talk
         /// </summary>
         [Output("noStaticIp")]
         public Output<bool> NoStaticIp { get; private set; } = null!;
@@ -461,31 +461,31 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// portal wlan settings
+        /// Portal wlan settings
         /// </summary>
         [Output("portal")]
         public Output<Outputs.WlanPortal> Portal { get; private set; } = null!;
 
         /// <summary>
-        /// list of hostnames without http(s):// (matched by substring)
+        /// List of hostnames without http(s):// (matched by substring)
         /// </summary>
         [Output("portalAllowedHostnames")]
         public Output<ImmutableArray<string>> PortalAllowedHostnames { get; private set; } = null!;
 
         /// <summary>
-        /// list of CIDRs
+        /// List of CIDRs
         /// </summary>
         [Output("portalAllowedSubnets")]
         public Output<ImmutableArray<string>> PortalAllowedSubnets { get; private set; } = null!;
 
         /// <summary>
-        /// api secret (auto-generated) that can be used to sign guest authorization requests
+        /// APi secret (auto-generated) that can be used to sign guest authorization requests
         /// </summary>
         [Output("portalApiSecret")]
         public Output<string> PortalApiSecret { get; private set; } = null!;
 
         /// <summary>
-        /// list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+        /// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
         /// </summary>
         [Output("portalDeniedHostnames")]
         public Output<ImmutableArray<string>> PortalDeniedHostnames { get; private set; } = null!;
@@ -503,7 +503,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.WlanQos> Qos { get; private set; } = null!;
 
         /// <summary>
-        /// Radsec settings
+        /// RadSec settings
         /// </summary>
         [Output("radsec")]
         public Output<Outputs.WlanRadsec> Radsec { get; private set; } = null!;
@@ -515,7 +515,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableDictionary<string, Outputs.WlanRateset>> Rateset { get; private set; } = null!;
 
         /// <summary>
-        /// when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+        /// When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
         /// </summary>
         [Output("reconnectClientsWhenRoamingMxcluster")]
         public Output<bool?> ReconnectClientsWhenRoamingMxcluster { get; private set; } = null!;
@@ -533,13 +533,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.WlanSchedule> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// whether to exclude this WLAN from SLE metrics
+        /// Whether to exclude this WLAN from SLE metrics
         /// </summary>
         [Output("sleExcluded")]
         public Output<bool> SleExcluded { get; private set; } = null!;
 
         /// <summary>
-        /// the name of the SSID
+        /// Name of the SSID
         /// </summary>
         [Output("ssid")]
         public Output<string> Ssid { get; private set; } = null!;
@@ -548,13 +548,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> TemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
+        /// If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
         /// </summary>
         [Output("useEapolV1")]
         public Output<bool> UseEapolV1 { get; private set; } = null!;
 
         /// <summary>
-        /// if vlan tagging is enabled
+        /// If vlan tagging is enabled
         /// </summary>
         [Output("vlanEnabled")]
         public Output<bool> VlanEnabled { get; private set; } = null!;
@@ -576,43 +576,43 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool> VlanPooling { get; private set; } = null!;
 
         /// <summary>
-        /// kbps
+        /// In kbps
         /// </summary>
         [Output("wlanLimitDown")]
         public Output<int> WlanLimitDown { get; private set; } = null!;
 
         /// <summary>
-        /// if downlink limiting for whole wlan is enabled
+        /// If downlink limiting for whole wlan is enabled
         /// </summary>
         [Output("wlanLimitDownEnabled")]
         public Output<bool> WlanLimitDownEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// kbps
+        /// In kbps
         /// </summary>
         [Output("wlanLimitUp")]
         public Output<int> WlanLimitUp { get; private set; } = null!;
 
         /// <summary>
-        /// if uplink limiting for whole wlan is enabled
+        /// If uplink limiting for whole wlan is enabled
         /// </summary>
         [Output("wlanLimitUpEnabled")]
         public Output<bool> WlanLimitUpEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// list of wxtag_ids
+        /// List of wxtag_ids
         /// </summary>
         [Output("wxtagIds")]
         public Output<ImmutableArray<string>> WxtagIds { get; private set; } = null!;
 
         /// <summary>
-        /// when `interface`=`wxtunnel`, id of the WXLAN Tunnel
+        /// When `interface`=`wxtunnel`, id of the WXLAN Tunnel
         /// </summary>
         [Output("wxtunnelId")]
         public Output<string> WxtunnelId { get; private set; } = null!;
 
         /// <summary>
-        /// when `interface`=`wxtunnel`, remote tunnel identifier
+        /// When `interface`=`wxtunnel`, remote tunnel identifier
         /// </summary>
         [Output("wxtunnelRemoteId")]
         public Output<string> WxtunnelRemoteId { get; private set; } = null!;
@@ -665,13 +665,13 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WlanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enable coa-immediate-update and address-change-immediate-update on the access profile.
+        /// Enable coa-immediate-update and address-change-immediate-update on the access profile.
         /// </summary>
         [Input("acctImmediateUpdate")]
         public Input<bool>? AcctImmediateUpdate { get; set; }
 
         /// <summary>
-        /// how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
+        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
         /// from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended
         /// when enabled
         /// </summary>
@@ -682,7 +682,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.WlanAcctServerArgs>? _acctServers;
 
         /// <summary>
-        /// list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+        /// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
         /// </summary>
         public InputList<Inputs.WlanAcctServerArgs> AcctServers
         {
@@ -691,25 +691,25 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// airwatch wlan settings
+        /// Airwatch wlan settings
         /// </summary>
         [Input("airwatch")]
         public Input<Inputs.WlanAirwatchArgs>? Airwatch { get; set; }
 
         /// <summary>
-        /// only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        /// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
         /// </summary>
         [Input("allowIpv6Ndp")]
         public Input<bool>? AllowIpv6Ndp { get; set; }
 
         /// <summary>
-        /// only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        /// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
         /// </summary>
         [Input("allowMdns")]
         public Input<bool>? AllowMdns { get; set; }
 
         /// <summary>
-        /// only applicable when `limit_bcast`==`true`, which allows SSDP
+        /// Only applicable when `limit_bcast`==`true`, which allows SSDP
         /// </summary>
         [Input("allowSsdp")]
         public Input<bool>? AllowSsdp { get; set; }
@@ -718,7 +718,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _apIds;
 
         /// <summary>
-        /// list of device ids
+        /// List of device ids
         /// </summary>
         public InputList<string> ApIds
         {
@@ -727,13 +727,13 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// bandwidth limiting for apps (applies to up/down)
+        /// Bandwidth limiting for apps (applies to up/down)
         /// </summary>
         [Input("appLimit")]
         public Input<Inputs.WlanAppLimitArgs>? AppLimit { get; set; }
 
         /// <summary>
-        /// app qos wlan settings
+        /// APp qos wlan settings
         /// </summary>
         [Input("appQos")]
         public Input<Inputs.WlanAppQosArgs>? AppQos { get; set; }
@@ -745,13 +745,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? ApplyTo { get; set; }
 
         /// <summary>
-        /// whether to enable smart arp filter
+        /// Whether to enable smart arp filter
         /// </summary>
         [Input("arpFilter")]
         public Input<bool>? ArpFilter { get; set; }
 
         /// <summary>
-        /// authentication wlan settings
+        /// Authentication wlan settings
         /// </summary>
         [Input("auth")]
         public Input<Inputs.WlanAuthArgs>? Auth { get; set; }
@@ -766,7 +766,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.WlanAuthServerArgs>? _authServers;
 
         /// <summary>
-        /// list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
+        /// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
         /// is treated as primary
         /// </summary>
         public InputList<Inputs.WlanAuthServerArgs> AuthServers
@@ -776,41 +776,41 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+        /// Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
         /// </summary>
         [Input("authServersNasId")]
         public Input<string>? AuthServersNasId { get; set; }
 
         /// <summary>
-        /// optional, NAS-IP-ADDRESS to use
+        /// Optional, NAS-IP-ADDRESS to use
         /// </summary>
         [Input("authServersNasIp")]
         public Input<string>? AuthServersNasIp { get; set; }
 
         /// <summary>
-        /// radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’ are
-        /// set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to
-        /// default value to 3.
+        /// Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set
+        /// to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default
+        /// value to 3.
         /// </summary>
         [Input("authServersRetries")]
         public Input<int>? AuthServersRetries { get; set; }
 
         /// <summary>
-        /// radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled.
-        /// ‘quite-period’ and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’
-        /// is also set when setting auth_servers_timeout and is set to default value of 10.
+        /// Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’
+        /// and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
+        /// setting auth_servers_timeout and is set to default value of 10.
         /// </summary>
         [Input("authServersTimeout")]
         public Input<int>? AuthServersTimeout { get; set; }
 
         /// <summary>
-        /// whether to enable band_steering, this works only when band==both
+        /// Whether to enable band_steering, this works only when band==both
         /// </summary>
         [Input("bandSteer")]
         public Input<bool>? BandSteer { get; set; }
 
         /// <summary>
-        /// force dual_band capable client to connect to 5G
+        /// Force dual_band capable client to connect to 5G
         /// </summary>
         [Input("bandSteerForceBand5")]
         public Input<bool>? BandSteerForceBand5 { get; set; }
@@ -828,13 +828,13 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// whether to block the clients in the blacklist (up to first 256 macs)
+        /// Whether to block the clients in the blacklist (up to first 256 macs)
         /// </summary>
         [Input("blockBlacklistClients")]
         public Input<bool>? BlockBlacklistClients { get; set; }
 
         /// <summary>
-        /// bonjour gateway wlan settings
+        /// Bonjour gateway wlan settings
         /// </summary>
         [Input("bonjour")]
         public Input<Inputs.WlanBonjourArgs>? Bonjour { get; set; }
@@ -847,25 +847,25 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.WlanCiscoCwaArgs>? CiscoCwa { get; set; }
 
         /// <summary>
-        /// kbps
+        /// In kbps
         /// </summary>
         [Input("clientLimitDown")]
         public Input<int>? ClientLimitDown { get; set; }
 
         /// <summary>
-        /// if downlink limiting per-client is enabled
+        /// If downlink limiting per-client is enabled
         /// </summary>
         [Input("clientLimitDownEnabled")]
         public Input<bool>? ClientLimitDownEnabled { get; set; }
 
         /// <summary>
-        /// kbps
+        /// In kbps
         /// </summary>
         [Input("clientLimitUp")]
         public Input<int>? ClientLimitUp { get; set; }
 
         /// <summary>
-        /// if uplink limiting per-client is enabled
+        /// If uplink limiting per-client is enabled
         /// </summary>
         [Input("clientLimitUpEnabled")]
         public Input<bool>? ClientLimitUpEnabled { get; set; }
@@ -874,7 +874,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.WlanCoaServerArgs>? _coaServers;
 
         /// <summary>
-        /// list of COA (change of authorization) servers, optional
+        /// List of COA (change of authorization) servers, optional
         /// </summary>
         public InputList<Inputs.WlanCoaServerArgs> CoaServers
         {
@@ -883,37 +883,37 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// some old WLAN drivers may not be compatible
+        /// Some old WLAN drivers may not be compatible
         /// </summary>
         [Input("disable11ax")]
         public Input<bool>? Disable11ax { get; set; }
 
         /// <summary>
-        /// to disable ht or vht rates
+        /// To disable ht or vht rates
         /// </summary>
         [Input("disableHtVhtRates")]
         public Input<bool>? DisableHtVhtRates { get; set; }
 
         /// <summary>
-        /// whether to disable U-APSD
+        /// Whether to disable U-APSD
         /// </summary>
         [Input("disableUapsd")]
         public Input<bool>? DisableUapsd { get; set; }
 
         /// <summary>
-        /// disable sending v2 roam notification messages
+        /// Disable sending v2 roam notification messages
         /// </summary>
         [Input("disableV1RoamNotify")]
         public Input<bool>? DisableV1RoamNotify { get; set; }
 
         /// <summary>
-        /// disable sending v2 roam notification messages
+        /// Disable sending v2 roam notification messages
         /// </summary>
         [Input("disableV2RoamNotify")]
         public Input<bool>? DisableV2RoamNotify { get; set; }
 
         /// <summary>
-        /// when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+        /// When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
         /// reach default gateway
         /// </summary>
         [Input("disableWhenGatewayUnreachable")]
@@ -923,13 +923,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? DisableWhenMxtunnelDown { get; set; }
 
         /// <summary>
-        /// whether to disable WMM
+        /// Whether to disable WMM
         /// </summary>
         [Input("disableWmm")]
         public Input<bool>? DisableWmm { get; set; }
 
         /// <summary>
-        /// for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+        /// For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
         /// </summary>
         [Input("dnsServerRewrite")]
         public Input<Inputs.WlanDnsServerRewriteArgs>? DnsServerRewrite { get; set; }
@@ -938,9 +938,9 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? Dtim { get; set; }
 
         /// <summary>
-        /// for dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
+        /// For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
         /// context (wlan/site/user/...) thus following configurations are assumed (currently) * PSK will come from RADIUS server *
-        /// AP sends client MAC as username ans password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
+        /// AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
         /// Caller-Station-ID * `auth_servers` is required * PSK will come from cloud WLC if source is cloud_psks * default_psk will
         /// be used if cloud WLC is not available * `multi_psk_only` and `psk` is ignored * `pairwise` can only be wpa2-ccmp (for
         /// now, wpa3 support on the roadmap)
@@ -949,58 +949,58 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.WlanDynamicPskArgs>? DynamicPsk { get; set; }
 
         /// <summary>
-        /// for 802.1x
+        /// For 802.1x
         /// </summary>
         [Input("dynamicVlan")]
         public Input<Inputs.WlanDynamicVlanArgs>? DynamicVlan { get; set; }
 
         /// <summary>
-        /// enable AP-AP keycaching via multicast
+        /// Enable AP-AP keycaching via multicast
         /// </summary>
         [Input("enableLocalKeycaching")]
         public Input<bool>? EnableLocalKeycaching { get; set; }
 
         /// <summary>
-        /// by default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
+        /// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
         /// client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
         /// </summary>
         [Input("enableWirelessBridging")]
         public Input<bool>? EnableWirelessBridging { get; set; }
 
         /// <summary>
-        /// if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
+        /// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
         /// packets to be forwarded to wireless
         /// </summary>
         [Input("enableWirelessBridgingDhcpTracking")]
         public Input<bool>? EnableWirelessBridgingDhcpTracking { get; set; }
 
         /// <summary>
-        /// if this wlan is enabled
+        /// If this wlan is enabled
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
+        /// If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
         /// ‘auth_server_retries’ .
         /// </summary>
         [Input("fastDot1xTimers")]
         public Input<bool>? FastDot1xTimers { get; set; }
 
         /// <summary>
-        /// whether to hide SSID in beacon
+        /// Whether to hide SSID in beacon
         /// </summary>
         [Input("hideSsid")]
         public Input<bool>? HideSsid { get; set; }
 
         /// <summary>
-        /// include hostname inside IE in AP beacons / probe responses
+        /// Include hostname inside IE in AP beacons / probe responses
         /// </summary>
         [Input("hostnameIe")]
         public Input<bool>? HostnameIe { get; set; }
 
         /// <summary>
-        /// hostspot 2.0 wlan settings
+        /// Hostspot 2.0 wlan settings
         /// </summary>
         [Input("hotspot20")]
         public Input<Inputs.WlanHotspot20Args>? Hotspot20 { get; set; }
@@ -1015,44 +1015,44 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Interface { get; set; }
 
         /// <summary>
-        /// whether to stop clients to talk to each other
+        /// Whether to stop clients to talk to each other
         /// </summary>
         [Input("isolation")]
         public Input<bool>? Isolation { get; set; }
 
         /// <summary>
-        /// if isolation is enabled, whether to deny clients to talk to L2 on the LAN
+        /// If isolation is enabled, whether to deny clients to talk to L2 on the LAN
         /// </summary>
         [Input("l2Isolation")]
         public Input<bool>? L2Isolation { get; set; }
 
         /// <summary>
-        /// legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
+        /// Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
         /// Enabling this will cause problem for iOS devices.
         /// </summary>
         [Input("legacyOverds")]
         public Input<bool>? LegacyOverds { get; set; }
 
         /// <summary>
-        /// whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+        /// Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
         /// </summary>
         [Input("limitBcast")]
         public Input<bool>? LimitBcast { get; set; }
 
         /// <summary>
-        /// limit probe response base on some heuristic rules
+        /// Limit probe response base on some heuristic rules
         /// </summary>
         [Input("limitProbeResponse")]
         public Input<bool>? LimitProbeResponse { get; set; }
 
         /// <summary>
-        /// max idle time in seconds
+        /// Max idle time in seconds
         /// </summary>
         [Input("maxIdletime")]
         public Input<int>? MaxIdletime { get; set; }
 
         /// <summary>
-        /// maximum number of client connected to the SSID. `0` means unlimited
+        /// Maximum number of client connected to the SSID. `0` means unlimited
         /// </summary>
         [Input("maxNumClients")]
         public Input<int>? MaxNumClients { get; set; }
@@ -1064,7 +1064,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _mxtunnelIds;
 
         /// <summary>
-        /// when `interface`=`mxtunnel`, id of the Mist Tunnel
+        /// When `interface`=`mxtunnel`, id of the Mist Tunnel
         /// </summary>
         public InputList<string> MxtunnelIds
         {
@@ -1076,7 +1076,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _mxtunnelNames;
 
         /// <summary>
-        /// when `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        /// When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
         /// </summary>
         public InputList<string> MxtunnelNames
         {
@@ -1085,13 +1085,13 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// whether to only allow client to use DNS that we’ve learned from DHCP response
+        /// Whether to only allow client to use DNS that we’ve learned from DHCP response
         /// </summary>
         [Input("noStaticDns")]
         public Input<bool>? NoStaticDns { get; set; }
 
         /// <summary>
-        /// whether to only allow client that we’ve learned from DHCP exchange to talk
+        /// Whether to only allow client that we’ve learned from DHCP exchange to talk
         /// </summary>
         [Input("noStaticIp")]
         public Input<bool>? NoStaticIp { get; set; }
@@ -1100,7 +1100,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// portal wlan settings
+        /// Portal wlan settings
         /// </summary>
         [Input("portal")]
         public Input<Inputs.WlanPortalArgs>? Portal { get; set; }
@@ -1109,7 +1109,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _portalAllowedHostnames;
 
         /// <summary>
-        /// list of hostnames without http(s):// (matched by substring)
+        /// List of hostnames without http(s):// (matched by substring)
         /// </summary>
         public InputList<string> PortalAllowedHostnames
         {
@@ -1121,7 +1121,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _portalAllowedSubnets;
 
         /// <summary>
-        /// list of CIDRs
+        /// List of CIDRs
         /// </summary>
         public InputList<string> PortalAllowedSubnets
         {
@@ -1133,7 +1133,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _portalDeniedHostnames;
 
         /// <summary>
-        /// list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+        /// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
         /// </summary>
         public InputList<string> PortalDeniedHostnames
         {
@@ -1145,7 +1145,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.WlanQosArgs>? Qos { get; set; }
 
         /// <summary>
-        /// Radsec settings
+        /// RadSec settings
         /// </summary>
         [Input("radsec")]
         public Input<Inputs.WlanRadsecArgs>? Radsec { get; set; }
@@ -1163,7 +1163,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+        /// When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
         /// </summary>
         [Input("reconnectClientsWhenRoamingMxcluster")]
         public Input<bool>? ReconnectClientsWhenRoamingMxcluster { get; set; }
@@ -1181,13 +1181,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.WlanScheduleArgs>? Schedule { get; set; }
 
         /// <summary>
-        /// whether to exclude this WLAN from SLE metrics
+        /// Whether to exclude this WLAN from SLE metrics
         /// </summary>
         [Input("sleExcluded")]
         public Input<bool>? SleExcluded { get; set; }
 
         /// <summary>
-        /// the name of the SSID
+        /// Name of the SSID
         /// </summary>
         [Input("ssid", required: true)]
         public Input<string> Ssid { get; set; } = null!;
@@ -1196,13 +1196,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> TemplateId { get; set; } = null!;
 
         /// <summary>
-        /// if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
+        /// If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
         /// </summary>
         [Input("useEapolV1")]
         public Input<bool>? UseEapolV1 { get; set; }
 
         /// <summary>
-        /// if vlan tagging is enabled
+        /// If vlan tagging is enabled
         /// </summary>
         [Input("vlanEnabled")]
         public Input<bool>? VlanEnabled { get; set; }
@@ -1230,25 +1230,25 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? VlanPooling { get; set; }
 
         /// <summary>
-        /// kbps
+        /// In kbps
         /// </summary>
         [Input("wlanLimitDown")]
         public Input<int>? WlanLimitDown { get; set; }
 
         /// <summary>
-        /// if downlink limiting for whole wlan is enabled
+        /// If downlink limiting for whole wlan is enabled
         /// </summary>
         [Input("wlanLimitDownEnabled")]
         public Input<bool>? WlanLimitDownEnabled { get; set; }
 
         /// <summary>
-        /// kbps
+        /// In kbps
         /// </summary>
         [Input("wlanLimitUp")]
         public Input<int>? WlanLimitUp { get; set; }
 
         /// <summary>
-        /// if uplink limiting for whole wlan is enabled
+        /// If uplink limiting for whole wlan is enabled
         /// </summary>
         [Input("wlanLimitUpEnabled")]
         public Input<bool>? WlanLimitUpEnabled { get; set; }
@@ -1257,7 +1257,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _wxtagIds;
 
         /// <summary>
-        /// list of wxtag_ids
+        /// List of wxtag_ids
         /// </summary>
         public InputList<string> WxtagIds
         {
@@ -1266,13 +1266,13 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// when `interface`=`wxtunnel`, id of the WXLAN Tunnel
+        /// When `interface`=`wxtunnel`, id of the WXLAN Tunnel
         /// </summary>
         [Input("wxtunnelId")]
         public Input<string>? WxtunnelId { get; set; }
 
         /// <summary>
-        /// when `interface`=`wxtunnel`, remote tunnel identifier
+        /// When `interface`=`wxtunnel`, remote tunnel identifier
         /// </summary>
         [Input("wxtunnelRemoteId")]
         public Input<string>? WxtunnelRemoteId { get; set; }
@@ -1286,13 +1286,13 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WlanState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enable coa-immediate-update and address-change-immediate-update on the access profile.
+        /// Enable coa-immediate-update and address-change-immediate-update on the access profile.
         /// </summary>
         [Input("acctImmediateUpdate")]
         public Input<bool>? AcctImmediateUpdate { get; set; }
 
         /// <summary>
-        /// how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
+        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
         /// from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended
         /// when enabled
         /// </summary>
@@ -1303,7 +1303,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.WlanAcctServerGetArgs>? _acctServers;
 
         /// <summary>
-        /// list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+        /// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
         /// </summary>
         public InputList<Inputs.WlanAcctServerGetArgs> AcctServers
         {
@@ -1312,25 +1312,25 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// airwatch wlan settings
+        /// Airwatch wlan settings
         /// </summary>
         [Input("airwatch")]
         public Input<Inputs.WlanAirwatchGetArgs>? Airwatch { get; set; }
 
         /// <summary>
-        /// only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        /// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
         /// </summary>
         [Input("allowIpv6Ndp")]
         public Input<bool>? AllowIpv6Ndp { get; set; }
 
         /// <summary>
-        /// only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        /// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
         /// </summary>
         [Input("allowMdns")]
         public Input<bool>? AllowMdns { get; set; }
 
         /// <summary>
-        /// only applicable when `limit_bcast`==`true`, which allows SSDP
+        /// Only applicable when `limit_bcast`==`true`, which allows SSDP
         /// </summary>
         [Input("allowSsdp")]
         public Input<bool>? AllowSsdp { get; set; }
@@ -1339,7 +1339,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _apIds;
 
         /// <summary>
-        /// list of device ids
+        /// List of device ids
         /// </summary>
         public InputList<string> ApIds
         {
@@ -1348,13 +1348,13 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// bandwidth limiting for apps (applies to up/down)
+        /// Bandwidth limiting for apps (applies to up/down)
         /// </summary>
         [Input("appLimit")]
         public Input<Inputs.WlanAppLimitGetArgs>? AppLimit { get; set; }
 
         /// <summary>
-        /// app qos wlan settings
+        /// APp qos wlan settings
         /// </summary>
         [Input("appQos")]
         public Input<Inputs.WlanAppQosGetArgs>? AppQos { get; set; }
@@ -1366,13 +1366,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? ApplyTo { get; set; }
 
         /// <summary>
-        /// whether to enable smart arp filter
+        /// Whether to enable smart arp filter
         /// </summary>
         [Input("arpFilter")]
         public Input<bool>? ArpFilter { get; set; }
 
         /// <summary>
-        /// authentication wlan settings
+        /// Authentication wlan settings
         /// </summary>
         [Input("auth")]
         public Input<Inputs.WlanAuthGetArgs>? Auth { get; set; }
@@ -1387,7 +1387,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.WlanAuthServerGetArgs>? _authServers;
 
         /// <summary>
-        /// list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
+        /// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
         /// is treated as primary
         /// </summary>
         public InputList<Inputs.WlanAuthServerGetArgs> AuthServers
@@ -1397,41 +1397,41 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+        /// Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
         /// </summary>
         [Input("authServersNasId")]
         public Input<string>? AuthServersNasId { get; set; }
 
         /// <summary>
-        /// optional, NAS-IP-ADDRESS to use
+        /// Optional, NAS-IP-ADDRESS to use
         /// </summary>
         [Input("authServersNasIp")]
         public Input<string>? AuthServersNasIp { get; set; }
 
         /// <summary>
-        /// radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’ are
-        /// set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to
-        /// default value to 3.
+        /// Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set
+        /// to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default
+        /// value to 3.
         /// </summary>
         [Input("authServersRetries")]
         public Input<int>? AuthServersRetries { get; set; }
 
         /// <summary>
-        /// radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled.
-        /// ‘quite-period’ and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’
-        /// is also set when setting auth_servers_timeout and is set to default value of 10.
+        /// Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’
+        /// and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
+        /// setting auth_servers_timeout and is set to default value of 10.
         /// </summary>
         [Input("authServersTimeout")]
         public Input<int>? AuthServersTimeout { get; set; }
 
         /// <summary>
-        /// whether to enable band_steering, this works only when band==both
+        /// Whether to enable band_steering, this works only when band==both
         /// </summary>
         [Input("bandSteer")]
         public Input<bool>? BandSteer { get; set; }
 
         /// <summary>
-        /// force dual_band capable client to connect to 5G
+        /// Force dual_band capable client to connect to 5G
         /// </summary>
         [Input("bandSteerForceBand5")]
         public Input<bool>? BandSteerForceBand5 { get; set; }
@@ -1449,13 +1449,13 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// whether to block the clients in the blacklist (up to first 256 macs)
+        /// Whether to block the clients in the blacklist (up to first 256 macs)
         /// </summary>
         [Input("blockBlacklistClients")]
         public Input<bool>? BlockBlacklistClients { get; set; }
 
         /// <summary>
-        /// bonjour gateway wlan settings
+        /// Bonjour gateway wlan settings
         /// </summary>
         [Input("bonjour")]
         public Input<Inputs.WlanBonjourGetArgs>? Bonjour { get; set; }
@@ -1468,25 +1468,25 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.WlanCiscoCwaGetArgs>? CiscoCwa { get; set; }
 
         /// <summary>
-        /// kbps
+        /// In kbps
         /// </summary>
         [Input("clientLimitDown")]
         public Input<int>? ClientLimitDown { get; set; }
 
         /// <summary>
-        /// if downlink limiting per-client is enabled
+        /// If downlink limiting per-client is enabled
         /// </summary>
         [Input("clientLimitDownEnabled")]
         public Input<bool>? ClientLimitDownEnabled { get; set; }
 
         /// <summary>
-        /// kbps
+        /// In kbps
         /// </summary>
         [Input("clientLimitUp")]
         public Input<int>? ClientLimitUp { get; set; }
 
         /// <summary>
-        /// if uplink limiting per-client is enabled
+        /// If uplink limiting per-client is enabled
         /// </summary>
         [Input("clientLimitUpEnabled")]
         public Input<bool>? ClientLimitUpEnabled { get; set; }
@@ -1495,7 +1495,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.WlanCoaServerGetArgs>? _coaServers;
 
         /// <summary>
-        /// list of COA (change of authorization) servers, optional
+        /// List of COA (change of authorization) servers, optional
         /// </summary>
         public InputList<Inputs.WlanCoaServerGetArgs> CoaServers
         {
@@ -1504,37 +1504,37 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// some old WLAN drivers may not be compatible
+        /// Some old WLAN drivers may not be compatible
         /// </summary>
         [Input("disable11ax")]
         public Input<bool>? Disable11ax { get; set; }
 
         /// <summary>
-        /// to disable ht or vht rates
+        /// To disable ht or vht rates
         /// </summary>
         [Input("disableHtVhtRates")]
         public Input<bool>? DisableHtVhtRates { get; set; }
 
         /// <summary>
-        /// whether to disable U-APSD
+        /// Whether to disable U-APSD
         /// </summary>
         [Input("disableUapsd")]
         public Input<bool>? DisableUapsd { get; set; }
 
         /// <summary>
-        /// disable sending v2 roam notification messages
+        /// Disable sending v2 roam notification messages
         /// </summary>
         [Input("disableV1RoamNotify")]
         public Input<bool>? DisableV1RoamNotify { get; set; }
 
         /// <summary>
-        /// disable sending v2 roam notification messages
+        /// Disable sending v2 roam notification messages
         /// </summary>
         [Input("disableV2RoamNotify")]
         public Input<bool>? DisableV2RoamNotify { get; set; }
 
         /// <summary>
-        /// when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+        /// When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
         /// reach default gateway
         /// </summary>
         [Input("disableWhenGatewayUnreachable")]
@@ -1544,13 +1544,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? DisableWhenMxtunnelDown { get; set; }
 
         /// <summary>
-        /// whether to disable WMM
+        /// Whether to disable WMM
         /// </summary>
         [Input("disableWmm")]
         public Input<bool>? DisableWmm { get; set; }
 
         /// <summary>
-        /// for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+        /// For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
         /// </summary>
         [Input("dnsServerRewrite")]
         public Input<Inputs.WlanDnsServerRewriteGetArgs>? DnsServerRewrite { get; set; }
@@ -1559,9 +1559,9 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? Dtim { get; set; }
 
         /// <summary>
-        /// for dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
+        /// For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
         /// context (wlan/site/user/...) thus following configurations are assumed (currently) * PSK will come from RADIUS server *
-        /// AP sends client MAC as username ans password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
+        /// AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
         /// Caller-Station-ID * `auth_servers` is required * PSK will come from cloud WLC if source is cloud_psks * default_psk will
         /// be used if cloud WLC is not available * `multi_psk_only` and `psk` is ignored * `pairwise` can only be wpa2-ccmp (for
         /// now, wpa3 support on the roadmap)
@@ -1570,58 +1570,58 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.WlanDynamicPskGetArgs>? DynamicPsk { get; set; }
 
         /// <summary>
-        /// for 802.1x
+        /// For 802.1x
         /// </summary>
         [Input("dynamicVlan")]
         public Input<Inputs.WlanDynamicVlanGetArgs>? DynamicVlan { get; set; }
 
         /// <summary>
-        /// enable AP-AP keycaching via multicast
+        /// Enable AP-AP keycaching via multicast
         /// </summary>
         [Input("enableLocalKeycaching")]
         public Input<bool>? EnableLocalKeycaching { get; set; }
 
         /// <summary>
-        /// by default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
+        /// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
         /// client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
         /// </summary>
         [Input("enableWirelessBridging")]
         public Input<bool>? EnableWirelessBridging { get; set; }
 
         /// <summary>
-        /// if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
+        /// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
         /// packets to be forwarded to wireless
         /// </summary>
         [Input("enableWirelessBridgingDhcpTracking")]
         public Input<bool>? EnableWirelessBridgingDhcpTracking { get; set; }
 
         /// <summary>
-        /// if this wlan is enabled
+        /// If this wlan is enabled
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
+        /// If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
         /// ‘auth_server_retries’ .
         /// </summary>
         [Input("fastDot1xTimers")]
         public Input<bool>? FastDot1xTimers { get; set; }
 
         /// <summary>
-        /// whether to hide SSID in beacon
+        /// Whether to hide SSID in beacon
         /// </summary>
         [Input("hideSsid")]
         public Input<bool>? HideSsid { get; set; }
 
         /// <summary>
-        /// include hostname inside IE in AP beacons / probe responses
+        /// Include hostname inside IE in AP beacons / probe responses
         /// </summary>
         [Input("hostnameIe")]
         public Input<bool>? HostnameIe { get; set; }
 
         /// <summary>
-        /// hostspot 2.0 wlan settings
+        /// Hostspot 2.0 wlan settings
         /// </summary>
         [Input("hotspot20")]
         public Input<Inputs.WlanHotspot20GetArgs>? Hotspot20 { get; set; }
@@ -1636,44 +1636,44 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Interface { get; set; }
 
         /// <summary>
-        /// whether to stop clients to talk to each other
+        /// Whether to stop clients to talk to each other
         /// </summary>
         [Input("isolation")]
         public Input<bool>? Isolation { get; set; }
 
         /// <summary>
-        /// if isolation is enabled, whether to deny clients to talk to L2 on the LAN
+        /// If isolation is enabled, whether to deny clients to talk to L2 on the LAN
         /// </summary>
         [Input("l2Isolation")]
         public Input<bool>? L2Isolation { get; set; }
 
         /// <summary>
-        /// legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
+        /// Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
         /// Enabling this will cause problem for iOS devices.
         /// </summary>
         [Input("legacyOverds")]
         public Input<bool>? LegacyOverds { get; set; }
 
         /// <summary>
-        /// whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+        /// Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
         /// </summary>
         [Input("limitBcast")]
         public Input<bool>? LimitBcast { get; set; }
 
         /// <summary>
-        /// limit probe response base on some heuristic rules
+        /// Limit probe response base on some heuristic rules
         /// </summary>
         [Input("limitProbeResponse")]
         public Input<bool>? LimitProbeResponse { get; set; }
 
         /// <summary>
-        /// max idle time in seconds
+        /// Max idle time in seconds
         /// </summary>
         [Input("maxIdletime")]
         public Input<int>? MaxIdletime { get; set; }
 
         /// <summary>
-        /// maximum number of client connected to the SSID. `0` means unlimited
+        /// Maximum number of client connected to the SSID. `0` means unlimited
         /// </summary>
         [Input("maxNumClients")]
         public Input<int>? MaxNumClients { get; set; }
@@ -1688,7 +1688,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _mxtunnelIds;
 
         /// <summary>
-        /// when `interface`=`mxtunnel`, id of the Mist Tunnel
+        /// When `interface`=`mxtunnel`, id of the Mist Tunnel
         /// </summary>
         public InputList<string> MxtunnelIds
         {
@@ -1700,7 +1700,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _mxtunnelNames;
 
         /// <summary>
-        /// when `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        /// When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
         /// </summary>
         public InputList<string> MxtunnelNames
         {
@@ -1709,13 +1709,13 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// whether to only allow client to use DNS that we’ve learned from DHCP response
+        /// Whether to only allow client to use DNS that we’ve learned from DHCP response
         /// </summary>
         [Input("noStaticDns")]
         public Input<bool>? NoStaticDns { get; set; }
 
         /// <summary>
-        /// whether to only allow client that we’ve learned from DHCP exchange to talk
+        /// Whether to only allow client that we’ve learned from DHCP exchange to talk
         /// </summary>
         [Input("noStaticIp")]
         public Input<bool>? NoStaticIp { get; set; }
@@ -1724,7 +1724,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// portal wlan settings
+        /// Portal wlan settings
         /// </summary>
         [Input("portal")]
         public Input<Inputs.WlanPortalGetArgs>? Portal { get; set; }
@@ -1733,7 +1733,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _portalAllowedHostnames;
 
         /// <summary>
-        /// list of hostnames without http(s):// (matched by substring)
+        /// List of hostnames without http(s):// (matched by substring)
         /// </summary>
         public InputList<string> PortalAllowedHostnames
         {
@@ -1745,7 +1745,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _portalAllowedSubnets;
 
         /// <summary>
-        /// list of CIDRs
+        /// List of CIDRs
         /// </summary>
         public InputList<string> PortalAllowedSubnets
         {
@@ -1754,7 +1754,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// api secret (auto-generated) that can be used to sign guest authorization requests
+        /// APi secret (auto-generated) that can be used to sign guest authorization requests
         /// </summary>
         [Input("portalApiSecret")]
         public Input<string>? PortalApiSecret { get; set; }
@@ -1763,7 +1763,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _portalDeniedHostnames;
 
         /// <summary>
-        /// list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+        /// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
         /// </summary>
         public InputList<string> PortalDeniedHostnames
         {
@@ -1784,7 +1784,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.WlanQosGetArgs>? Qos { get; set; }
 
         /// <summary>
-        /// Radsec settings
+        /// RadSec settings
         /// </summary>
         [Input("radsec")]
         public Input<Inputs.WlanRadsecGetArgs>? Radsec { get; set; }
@@ -1802,7 +1802,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+        /// When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
         /// </summary>
         [Input("reconnectClientsWhenRoamingMxcluster")]
         public Input<bool>? ReconnectClientsWhenRoamingMxcluster { get; set; }
@@ -1820,13 +1820,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.WlanScheduleGetArgs>? Schedule { get; set; }
 
         /// <summary>
-        /// whether to exclude this WLAN from SLE metrics
+        /// Whether to exclude this WLAN from SLE metrics
         /// </summary>
         [Input("sleExcluded")]
         public Input<bool>? SleExcluded { get; set; }
 
         /// <summary>
-        /// the name of the SSID
+        /// Name of the SSID
         /// </summary>
         [Input("ssid")]
         public Input<string>? Ssid { get; set; }
@@ -1835,13 +1835,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? TemplateId { get; set; }
 
         /// <summary>
-        /// if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
+        /// If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
         /// </summary>
         [Input("useEapolV1")]
         public Input<bool>? UseEapolV1 { get; set; }
 
         /// <summary>
-        /// if vlan tagging is enabled
+        /// If vlan tagging is enabled
         /// </summary>
         [Input("vlanEnabled")]
         public Input<bool>? VlanEnabled { get; set; }
@@ -1869,25 +1869,25 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? VlanPooling { get; set; }
 
         /// <summary>
-        /// kbps
+        /// In kbps
         /// </summary>
         [Input("wlanLimitDown")]
         public Input<int>? WlanLimitDown { get; set; }
 
         /// <summary>
-        /// if downlink limiting for whole wlan is enabled
+        /// If downlink limiting for whole wlan is enabled
         /// </summary>
         [Input("wlanLimitDownEnabled")]
         public Input<bool>? WlanLimitDownEnabled { get; set; }
 
         /// <summary>
-        /// kbps
+        /// In kbps
         /// </summary>
         [Input("wlanLimitUp")]
         public Input<int>? WlanLimitUp { get; set; }
 
         /// <summary>
-        /// if uplink limiting for whole wlan is enabled
+        /// If uplink limiting for whole wlan is enabled
         /// </summary>
         [Input("wlanLimitUpEnabled")]
         public Input<bool>? WlanLimitUpEnabled { get; set; }
@@ -1896,7 +1896,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _wxtagIds;
 
         /// <summary>
-        /// list of wxtag_ids
+        /// List of wxtag_ids
         /// </summary>
         public InputList<string> WxtagIds
         {
@@ -1905,13 +1905,13 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// when `interface`=`wxtunnel`, id of the WXLAN Tunnel
+        /// When `interface`=`wxtunnel`, id of the WXLAN Tunnel
         /// </summary>
         [Input("wxtunnelId")]
         public Input<string>? WxtunnelId { get; set; }
 
         /// <summary>
-        /// when `interface`=`wxtunnel`, remote tunnel identifier
+        /// When `interface`=`wxtunnel`, remote tunnel identifier
         /// </summary>
         [Input("wxtunnelRemoteId")]
         public Input<string>? WxtunnelRemoteId { get; set; }

@@ -16,13 +16,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<int>? Dscp { get; set; }
 
         /// <summary>
-        /// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+        /// Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
         /// </summary>
         [Input("dstSubnet")]
         public Input<string>? DstSubnet { get; set; }
 
         /// <summary>
-        /// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+        /// Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
         /// </summary>
         [Input("srcSubnet")]
         public Input<string>? SrcSubnet { get; set; }

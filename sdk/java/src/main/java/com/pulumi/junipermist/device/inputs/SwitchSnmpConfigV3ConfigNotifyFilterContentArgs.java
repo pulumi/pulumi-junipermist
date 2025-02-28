@@ -5,6 +5,7 @@ package com.pulumi.junipermist.device.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -23,11 +24,11 @@ public final class SwitchSnmpConfigV3ConfigNotifyFilterContentArgs extends com.p
         return Optional.ofNullable(this.include);
     }
 
-    @Import(name="oid")
-    private @Nullable Output<String> oid;
+    @Import(name="oid", required=true)
+    private Output<String> oid;
 
-    public Optional<Output<String>> oid() {
-        return Optional.ofNullable(this.oid);
+    public Output<String> oid() {
+        return this.oid;
     }
 
     private SwitchSnmpConfigV3ConfigNotifyFilterContentArgs() {}
@@ -64,7 +65,7 @@ public final class SwitchSnmpConfigV3ConfigNotifyFilterContentArgs extends com.p
             return include(Output.of(include));
         }
 
-        public Builder oid(@Nullable Output<String> oid) {
+        public Builder oid(Output<String> oid) {
             $.oid = oid;
             return this;
         }
@@ -74,6 +75,9 @@ public final class SwitchSnmpConfigV3ConfigNotifyFilterContentArgs extends com.p
         }
 
         public SwitchSnmpConfigV3ConfigNotifyFilterContentArgs build() {
+            if ($.oid == null) {
+                throw new MissingRequiredPropertyException("SwitchSnmpConfigV3ConfigNotifyFilterContentArgs", "oid");
+            }
             return $;
         }
     }

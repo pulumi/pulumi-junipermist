@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingAutoUpgrade {
     /**
-     * @return custom versions for different models. Property key is the model name (e.g. &#34;AP41&#34;)
+     * @return Custom versions for different models. Property key is the model name (e.g. &#34;AP41&#34;)
      * 
      */
     private @Nullable Map<String,String> customVersions;
@@ -24,12 +24,12 @@ public final class SettingAutoUpgrade {
      */
     private @Nullable String dayOfWeek;
     /**
-     * @return whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+     * @return Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return any / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+     * @return `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
      * 
      */
     private @Nullable String timeOfDay;
@@ -41,7 +41,7 @@ public final class SettingAutoUpgrade {
 
     private SettingAutoUpgrade() {}
     /**
-     * @return custom versions for different models. Property key is the model name (e.g. &#34;AP41&#34;)
+     * @return Custom versions for different models. Property key is the model name (e.g. &#34;AP41&#34;)
      * 
      */
     public Map<String,String> customVersions() {
@@ -55,14 +55,14 @@ public final class SettingAutoUpgrade {
         return Optional.ofNullable(this.dayOfWeek);
     }
     /**
-     * @return whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+     * @return Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return any / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+     * @return `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
      * 
      */
     public Optional<String> timeOfDay() {

@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class GatewaytemplateNetworkMulticastGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+        /// If the network will only be the soruce of the multicast traffic, IGMP can be disabled
         /// </summary>
         [Input("disableIgmp")]
         public Input<bool>? DisableIgmp { get; set; }

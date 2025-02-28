@@ -15,12 +15,12 @@ public final class SwitchOobIpConfig {
     private @Nullable String gateway;
     private @Nullable String ip;
     /**
-     * @return used only if `subnet` is not specified in `networks`
+     * @return Used only if `subnet` is not specified in `networks`
      * 
      */
     private @Nullable String netmask;
     /**
-     * @return optional, the network to be used for mgmt
+     * @return Optional, the network to be used for mgmt
      * 
      */
     private @Nullable String network;
@@ -30,12 +30,12 @@ public final class SwitchOobIpConfig {
      */
     private @Nullable String type;
     /**
-     * @return if supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * @return If supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     private @Nullable Boolean useMgmtVrf;
     /**
-     * @return for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+     * @return For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     private @Nullable Boolean useMgmtVrfForHostOut;
@@ -48,14 +48,14 @@ public final class SwitchOobIpConfig {
         return Optional.ofNullable(this.ip);
     }
     /**
-     * @return used only if `subnet` is not specified in `networks`
+     * @return Used only if `subnet` is not specified in `networks`
      * 
      */
     public Optional<String> netmask() {
         return Optional.ofNullable(this.netmask);
     }
     /**
-     * @return optional, the network to be used for mgmt
+     * @return Optional, the network to be used for mgmt
      * 
      */
     public Optional<String> network() {
@@ -69,14 +69,14 @@ public final class SwitchOobIpConfig {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return if supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * @return If supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     public Optional<Boolean> useMgmtVrf() {
         return Optional.ofNullable(this.useMgmtVrf);
     }
     /**
-     * @return for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+     * @return For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     public Optional<Boolean> useMgmtVrfForHostOut() {

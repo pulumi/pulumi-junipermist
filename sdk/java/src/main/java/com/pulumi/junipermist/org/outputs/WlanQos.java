@@ -18,7 +18,7 @@ public final class WlanQos {
      */
     private @Nullable String class_;
     /**
-     * @return whether to overwrite QoS
+     * @return Whether to overwrite QoS
      * 
      */
     private @Nullable Boolean overwrite;
@@ -32,7 +32,7 @@ public final class WlanQos {
         return Optional.ofNullable(this.class_);
     }
     /**
-     * @return whether to overwrite QoS
+     * @return Whether to overwrite QoS
      * 
      */
     public Optional<Boolean> overwrite() {

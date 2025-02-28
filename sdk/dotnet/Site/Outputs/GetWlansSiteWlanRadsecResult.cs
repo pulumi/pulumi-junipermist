@@ -21,19 +21,19 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly ImmutableArray<string> MxclusterIds;
         /// <summary>
-        /// default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
+        /// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
         /// </summary>
         public readonly ImmutableArray<string> ProxyHosts;
         /// <summary>
-        /// name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+        /// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
         /// </summary>
         public readonly string ServerName;
         /// <summary>
-        /// List of Radsec Servers. Only if not Mist Edge.
+        /// List of RadSec Servers. Only if not Mist Edge.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWlansSiteWlanRadsecServerResult> Servers;
         /// <summary>
-        /// use mxedge(s) as radsecproxy
+        /// use mxedge(s) as RadSec Proxy
         /// </summary>
         public readonly bool UseMxedge;
         /// <summary>

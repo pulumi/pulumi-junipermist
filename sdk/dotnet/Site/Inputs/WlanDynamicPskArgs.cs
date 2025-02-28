@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private Input<string>? _defaultPsk;
 
         /// <summary>
-        /// default PSK to use if cloud WLC is not available, 8-63 characters
+        /// Default PSK to use if cloud WLC is not available, 8-63 characters
         /// </summary>
         public Input<string>? DefaultPsk
         {
@@ -35,7 +35,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+        /// When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
         /// </summary>
         [Input("forceLookup")]
         public Input<bool>? ForceLookup { get; set; }

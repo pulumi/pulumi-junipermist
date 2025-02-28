@@ -21,7 +21,7 @@ public final class NetworktemplateSnmpConfigV3Config {
     private @Nullable List<NetworktemplateSnmpConfigV3ConfigNotifyFilter> notifyFilters;
     private @Nullable List<NetworktemplateSnmpConfigV3ConfigTargetAddress> targetAddresses;
     private @Nullable List<NetworktemplateSnmpConfigV3ConfigTargetParameter> targetParameters;
-    private @Nullable NetworktemplateSnmpConfigV3ConfigUsm usm;
+    private @Nullable List<NetworktemplateSnmpConfigV3ConfigUsm> usms;
     private @Nullable NetworktemplateSnmpConfigV3ConfigVacm vacm;
 
     private NetworktemplateSnmpConfigV3Config() {}
@@ -37,8 +37,8 @@ public final class NetworktemplateSnmpConfigV3Config {
     public List<NetworktemplateSnmpConfigV3ConfigTargetParameter> targetParameters() {
         return this.targetParameters == null ? List.of() : this.targetParameters;
     }
-    public Optional<NetworktemplateSnmpConfigV3ConfigUsm> usm() {
-        return Optional.ofNullable(this.usm);
+    public List<NetworktemplateSnmpConfigV3ConfigUsm> usms() {
+        return this.usms == null ? List.of() : this.usms;
     }
     public Optional<NetworktemplateSnmpConfigV3ConfigVacm> vacm() {
         return Optional.ofNullable(this.vacm);
@@ -57,7 +57,7 @@ public final class NetworktemplateSnmpConfigV3Config {
         private @Nullable List<NetworktemplateSnmpConfigV3ConfigNotifyFilter> notifyFilters;
         private @Nullable List<NetworktemplateSnmpConfigV3ConfigTargetAddress> targetAddresses;
         private @Nullable List<NetworktemplateSnmpConfigV3ConfigTargetParameter> targetParameters;
-        private @Nullable NetworktemplateSnmpConfigV3ConfigUsm usm;
+        private @Nullable List<NetworktemplateSnmpConfigV3ConfigUsm> usms;
         private @Nullable NetworktemplateSnmpConfigV3ConfigVacm vacm;
         public Builder() {}
         public Builder(NetworktemplateSnmpConfigV3Config defaults) {
@@ -66,7 +66,7 @@ public final class NetworktemplateSnmpConfigV3Config {
     	      this.notifyFilters = defaults.notifyFilters;
     	      this.targetAddresses = defaults.targetAddresses;
     	      this.targetParameters = defaults.targetParameters;
-    	      this.usm = defaults.usm;
+    	      this.usms = defaults.usms;
     	      this.vacm = defaults.vacm;
         }
 
@@ -107,10 +107,13 @@ public final class NetworktemplateSnmpConfigV3Config {
             return targetParameters(List.of(targetParameters));
         }
         @CustomType.Setter
-        public Builder usm(@Nullable NetworktemplateSnmpConfigV3ConfigUsm usm) {
+        public Builder usms(@Nullable List<NetworktemplateSnmpConfigV3ConfigUsm> usms) {
 
-            this.usm = usm;
+            this.usms = usms;
             return this;
+        }
+        public Builder usms(NetworktemplateSnmpConfigV3ConfigUsm... usms) {
+            return usms(List.of(usms));
         }
         @CustomType.Setter
         public Builder vacm(@Nullable NetworktemplateSnmpConfigV3ConfigVacm vacm) {
@@ -124,7 +127,7 @@ public final class NetworktemplateSnmpConfigV3Config {
             _resultValue.notifyFilters = notifyFilters;
             _resultValue.targetAddresses = targetAddresses;
             _resultValue.targetParameters = targetParameters;
-            _resultValue.usm = usm;
+            _resultValue.usms = usms;
             _resultValue.vacm = vacm;
             return _resultValue;
         }

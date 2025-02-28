@@ -13,31 +13,31 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class SettingOccupancyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// indicate whether named BLE assets should be included in the zone occupancy calculation
+        /// Indicate whether named BLE assets should be included in the zone occupancy calculation
         /// </summary>
         [Input("assetsEnabled")]
         public Input<bool>? AssetsEnabled { get; set; }
 
         /// <summary>
-        /// indicate whether connected WiFi clients should be included in the zone occupancy calculation
+        /// Indicate whether connected Wi-Fi clients should be included in the zone occupancy calculation
         /// </summary>
         [Input("clientsEnabled")]
         public Input<bool>? ClientsEnabled { get; set; }
 
         /// <summary>
-        /// minimum duration
+        /// Minimum duration
         /// </summary>
         [Input("minDuration")]
         public Input<int>? MinDuration { get; set; }
 
         /// <summary>
-        /// indicate whether SDK clients should be included in the zone occupancy calculation
+        /// Indicate whether SDK clients should be included in the zone occupancy calculation
         /// </summary>
         [Input("sdkclientsEnabled")]
         public Input<bool>? SdkclientsEnabled { get; set; }
 
         /// <summary>
-        /// indicate whether unconnected WiFi clients should be included in the zone occupancy calculation
+        /// Indicate whether unconnected Wi-Fi clients should be included in the zone occupancy calculation
         /// </summary>
         [Input("unconnectedClientsEnabled")]
         public Input<bool>? UnconnectedClientsEnabled { get; set; }

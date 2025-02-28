@@ -28,7 +28,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * when bfd_multiplier is configured alone. Default:
+     * When bfd_multiplier is configured alone. Default:
      *   * 1000 if `type`==`external`
      *   * 350 `type`==`internal`
      * 
@@ -37,7 +37,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     private @Nullable Output<Integer> bfdMinimumInterval;
 
     /**
-     * @return when bfd_multiplier is configured alone. Default:
+     * @return When bfd_multiplier is configured alone. Default:
      *   * 1000 if `type`==`external`
      *   * 350 `type`==`internal`
      * 
@@ -47,14 +47,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * when bfd_minimum_interval_is_configured alone
+     * When bfd_minimum_interval_is_configured alone
      * 
      */
     @Import(name="bfdMultiplier")
     private @Nullable Output<Integer> bfdMultiplier;
 
     /**
-     * @return when bfd_minimum_interval_is_configured alone
+     * @return When bfd_minimum_interval_is_configured alone
      * 
      */
     public Optional<Output<Integer>> bfdMultiplier() {
@@ -84,14 +84,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * default export policies if no per-neighbor policies defined
+     * Default export policies if no per-neighbor policies defined
      * 
      */
     @Import(name="exportPolicy")
     private @Nullable Output<String> exportPolicy;
 
     /**
-     * @return default export policies if no per-neighbor policies defined
+     * @return Default export policies if no per-neighbor policies defined
      * 
      */
     public Optional<Output<String>> exportPolicy() {
@@ -99,14 +99,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+     * By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
      * 
      */
     @Import(name="extendedV4Nexthop")
     private @Nullable Output<Boolean> extendedV4Nexthop;
 
     /**
-     * @return by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+     * @return By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
      * 
      */
     public Optional<Output<Boolean>> extendedV4Nexthop() {
@@ -143,14 +143,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * default import policies if no per-neighbor policies defined
+     * Default import policies if no per-neighbor policies defined
      * 
      */
     @Import(name="importPolicy")
     private @Nullable Output<String> importPolicy;
 
     /**
-     * @return default import policies if no per-neighbor policies defined
+     * @return Default import policies if no per-neighbor policies defined
      * 
      */
     public Optional<Output<String>> importPolicy() {
@@ -172,14 +172,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * if per-neighbor as is desired. Property key is the neighbor address
+     * If per-neighbor as is desired. Property key is the neighbor address
      * 
      */
     @Import(name="neighbors")
     private @Nullable Output<Map<String,DeviceprofileGatewayBgpConfigNeighborsArgs>> neighbors;
 
     /**
-     * @return if per-neighbor as is desired. Property key is the neighbor address
+     * @return If per-neighbor as is desired. Property key is the neighbor address
      * 
      */
     public Optional<Output<Map<String,DeviceprofileGatewayBgpConfigNeighborsArgs>>> neighbors() {
@@ -187,14 +187,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * if `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+     * If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
     /**
-     * @return if `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+     * @return If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
      * 
      */
     public Optional<Output<List<String>>> networks() {
@@ -202,14 +202,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * by default, we&#39;ll re-advertise all learned BGP routers toward overlay
+     * By default, we&#39;ll re-advertise all learned BGP routers toward overlay
      * 
      */
     @Import(name="noReadvertiseToOverlay")
     private @Nullable Output<Boolean> noReadvertiseToOverlay;
 
     /**
-     * @return by default, we&#39;ll re-advertise all learned BGP routers toward overlay
+     * @return By default, we&#39;ll re-advertise all learned BGP routers toward overlay
      * 
      */
     public Optional<Output<Boolean>> noReadvertiseToOverlay() {
@@ -217,14 +217,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * if `type`==`tunnel`
+     * If `type`==`tunnel`
      * 
      */
     @Import(name="tunnelName")
     private @Nullable Output<String> tunnelName;
 
     /**
-     * @return if `type`==`tunnel`
+     * @return If `type`==`tunnel`
      * 
      */
     public Optional<Output<String>> tunnelName() {
@@ -269,14 +269,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * if `via`==`wan`
+     * If `via`==`wan`
      * 
      */
     @Import(name="wanName")
     private @Nullable Output<String> wanName;
 
     /**
-     * @return if `via`==`wan`
+     * @return If `via`==`wan`
      * 
      */
     public Optional<Output<String>> wanName() {
@@ -337,7 +337,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param bfdMinimumInterval when bfd_multiplier is configured alone. Default:
+         * @param bfdMinimumInterval When bfd_multiplier is configured alone. Default:
          *   * 1000 if `type`==`external`
          *   * 350 `type`==`internal`
          * 
@@ -350,7 +350,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param bfdMinimumInterval when bfd_multiplier is configured alone. Default:
+         * @param bfdMinimumInterval When bfd_multiplier is configured alone. Default:
          *   * 1000 if `type`==`external`
          *   * 350 `type`==`internal`
          * 
@@ -362,7 +362,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param bfdMultiplier when bfd_minimum_interval_is_configured alone
+         * @param bfdMultiplier When bfd_minimum_interval_is_configured alone
          * 
          * @return builder
          * 
@@ -373,7 +373,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param bfdMultiplier when bfd_minimum_interval_is_configured alone
+         * @param bfdMultiplier When bfd_minimum_interval_is_configured alone
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param exportPolicy default export policies if no per-neighbor policies defined
+         * @param exportPolicy Default export policies if no per-neighbor policies defined
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param exportPolicy default export policies if no per-neighbor policies defined
+         * @param exportPolicy Default export policies if no per-neighbor policies defined
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param extendedV4Nexthop by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+         * @param extendedV4Nexthop By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param extendedV4Nexthop by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+         * @param extendedV4Nexthop By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
          * 
          * @return builder
          * 
@@ -494,7 +494,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param importPolicy default import policies if no per-neighbor policies defined
+         * @param importPolicy Default import policies if no per-neighbor policies defined
          * 
          * @return builder
          * 
@@ -505,7 +505,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param importPolicy default import policies if no per-neighbor policies defined
+         * @param importPolicy Default import policies if no per-neighbor policies defined
          * 
          * @return builder
          * 
@@ -533,7 +533,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param neighbors if per-neighbor as is desired. Property key is the neighbor address
+         * @param neighbors If per-neighbor as is desired. Property key is the neighbor address
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param neighbors if per-neighbor as is desired. Property key is the neighbor address
+         * @param neighbors If per-neighbor as is desired. Property key is the neighbor address
          * 
          * @return builder
          * 
@@ -554,7 +554,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param networks if `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+         * @param networks If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
          * 
          * @return builder
          * 
@@ -565,7 +565,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param networks if `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+         * @param networks If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
          * 
          * @return builder
          * 
@@ -575,7 +575,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param networks if `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+         * @param networks If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
          * 
          * @return builder
          * 
@@ -585,7 +585,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param noReadvertiseToOverlay by default, we&#39;ll re-advertise all learned BGP routers toward overlay
+         * @param noReadvertiseToOverlay By default, we&#39;ll re-advertise all learned BGP routers toward overlay
          * 
          * @return builder
          * 
@@ -596,7 +596,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param noReadvertiseToOverlay by default, we&#39;ll re-advertise all learned BGP routers toward overlay
+         * @param noReadvertiseToOverlay By default, we&#39;ll re-advertise all learned BGP routers toward overlay
          * 
          * @return builder
          * 
@@ -606,7 +606,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param tunnelName if `type`==`tunnel`
+         * @param tunnelName If `type`==`tunnel`
          * 
          * @return builder
          * 
@@ -617,7 +617,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param tunnelName if `type`==`tunnel`
+         * @param tunnelName If `type`==`tunnel`
          * 
          * @return builder
          * 
@@ -678,7 +678,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param wanName if `via`==`wan`
+         * @param wanName If `via`==`wan`
          * 
          * @return builder
          * 
@@ -689,7 +689,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param wanName if `via`==`wan`
+         * @param wanName If `via`==`wan`
          * 
          * @return builder
          * 

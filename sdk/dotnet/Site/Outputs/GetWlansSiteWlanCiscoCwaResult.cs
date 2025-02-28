@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class GetWlansSiteWlanCiscoCwaResult
     {
         /// <summary>
-        /// list of hostnames without http(s):// (matched by substring)
+        /// List of hostnames without http(s):// (matched by substring)
         /// </summary>
         public readonly ImmutableArray<string> AllowedHostnames;
         /// <summary>
-        /// list of CIDRs
+        /// List of CIDRs
         /// </summary>
         public readonly ImmutableArray<string> AllowedSubnets;
         /// <summary>
-        /// list of blocked CIDRs
+        /// List of blocked CIDRs
         /// </summary>
         public readonly ImmutableArray<string> BlockedSubnets;
         public readonly bool Enabled;

@@ -18,8 +18,20 @@ public final class GetIdpprofilesOrgIdpprofile {
      * 
      */
     private String baseProfile;
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
     private Double createdTime;
+    /**
+     * @return Unique ID of the object instance in the Mist Organnization
+     * 
+     */
     private String id;
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
     private Double modifiedTime;
     private String name;
     private String orgId;
@@ -33,12 +45,24 @@ public final class GetIdpprofilesOrgIdpprofile {
     public String baseProfile() {
         return this.baseProfile;
     }
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
     public Double createdTime() {
         return this.createdTime;
     }
+    /**
+     * @return Unique ID of the object instance in the Mist Organnization
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
     public Double modifiedTime() {
         return this.modifiedTime;
     }

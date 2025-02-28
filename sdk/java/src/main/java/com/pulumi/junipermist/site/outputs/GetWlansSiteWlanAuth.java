@@ -19,27 +19,27 @@ public final class GetWlansSiteWlanAuth {
      */
     private Integer anticlogThreshold;
     /**
-     * @return whether to trigger EAP reauth when the session ends
+     * @return Whether to trigger EAP reauth when the session ends
      * 
      */
     private Boolean eapReauth;
     /**
-     * @return whether to enable MAC Auth, uses the same auth_servers
+     * @return Whether to enable MAC Auth, uses the same auth_servers
      * 
      */
     private Boolean enableMacAuth;
     /**
-     * @return when `type`==`wep`
+     * @return When `type`==`wep`
      * 
      */
     private Integer keyIdx;
     /**
-     * @return when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+     * @return When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
      * 
      */
     private List<String> keys;
     /**
-     * @return when `type`==`psk`, whether to only use multi_psk
+     * @return When `type`==`psk`, whether to only use multi_psk
      * 
      */
     private Boolean multiPskOnly;
@@ -49,17 +49,17 @@ public final class GetWlansSiteWlanAuth {
      */
     private String owe;
     /**
-     * @return when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+     * @return When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
      * 
      */
     private List<String> pairwises;
     /**
-     * @return when `multi_psk_only`==`true`, whether private wlan is enabled
+     * @return When `multi_psk_only`==`true`, whether private wlan is enabled
      * 
      */
     private Boolean privateWlan;
     /**
-     * @return when `type`==`psk`, 8-64 characters, or 64 hex characters
+     * @return When `type`==`psk`, 8-64 characters, or 64 hex characters
      * 
      */
     private String psk;
@@ -69,7 +69,7 @@ public final class GetWlansSiteWlanAuth {
      */
     private String type;
     /**
-     * @return enable WEP as secondary auth
+     * @return Enable WEP as secondary auth
      * 
      */
     private Boolean wepAsSecondaryAuth;
@@ -83,35 +83,35 @@ public final class GetWlansSiteWlanAuth {
         return this.anticlogThreshold;
     }
     /**
-     * @return whether to trigger EAP reauth when the session ends
+     * @return Whether to trigger EAP reauth when the session ends
      * 
      */
     public Boolean eapReauth() {
         return this.eapReauth;
     }
     /**
-     * @return whether to enable MAC Auth, uses the same auth_servers
+     * @return Whether to enable MAC Auth, uses the same auth_servers
      * 
      */
     public Boolean enableMacAuth() {
         return this.enableMacAuth;
     }
     /**
-     * @return when `type`==`wep`
+     * @return When `type`==`wep`
      * 
      */
     public Integer keyIdx() {
         return this.keyIdx;
     }
     /**
-     * @return when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+     * @return When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
      * 
      */
     public List<String> keys() {
         return this.keys;
     }
     /**
-     * @return when `type`==`psk`, whether to only use multi_psk
+     * @return When `type`==`psk`, whether to only use multi_psk
      * 
      */
     public Boolean multiPskOnly() {
@@ -125,21 +125,21 @@ public final class GetWlansSiteWlanAuth {
         return this.owe;
     }
     /**
-     * @return when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+     * @return When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
      * 
      */
     public List<String> pairwises() {
         return this.pairwises;
     }
     /**
-     * @return when `multi_psk_only`==`true`, whether private wlan is enabled
+     * @return When `multi_psk_only`==`true`, whether private wlan is enabled
      * 
      */
     public Boolean privateWlan() {
         return this.privateWlan;
     }
     /**
-     * @return when `type`==`psk`, 8-64 characters, or 64 hex characters
+     * @return When `type`==`psk`, 8-64 characters, or 64 hex characters
      * 
      */
     public String psk() {
@@ -153,7 +153,7 @@ public final class GetWlansSiteWlanAuth {
         return this.type;
     }
     /**
-     * @return enable WEP as secondary auth
+     * @return Enable WEP as secondary auth
      * 
      */
     public Boolean wepAsSecondaryAuth() {

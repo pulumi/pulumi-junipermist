@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList
     {
         /// <summary>
-        /// only required if `type`==`context_prefix`
+        /// Only required if `type`==`context_prefix`
         /// </summary>
         public readonly string? ContextPrefix;
         /// <summary>
-        /// refer to view name
+        /// Refer to view name
         /// </summary>
         public readonly string? NotifyView;
         /// <summary>
-        /// refer to view name
+        /// Refer to view name
         /// </summary>
         public readonly string? ReadView;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// refer to view name
+        /// Refer to view name
         /// </summary>
         public readonly string? WriteView;
 

@@ -11,6 +11,8 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.org.inputs.GetAlarmtemplatesArgs;
 import com.pulumi.junipermist.org.inputs.GetAlarmtemplatesPlainArgs;
+import com.pulumi.junipermist.org.inputs.GetAvprofilesArgs;
+import com.pulumi.junipermist.org.inputs.GetAvprofilesPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetDeviceprofilesApArgs;
 import com.pulumi.junipermist.org.inputs.GetDeviceprofilesApPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetDeviceprofilesGatewayArgs;
@@ -60,6 +62,7 @@ import com.pulumi.junipermist.org.inputs.GetWlantemplatesPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetWxtagsArgs;
 import com.pulumi.junipermist.org.inputs.GetWxtagsPlainArgs;
 import com.pulumi.junipermist.org.outputs.GetAlarmtemplatesResult;
+import com.pulumi.junipermist.org.outputs.GetAvprofilesResult;
 import com.pulumi.junipermist.org.outputs.GetDeviceprofilesApResult;
 import com.pulumi.junipermist.org.outputs.GetDeviceprofilesGatewayResult;
 import com.pulumi.junipermist.org.outputs.GetEvpnTopologiesResult;
@@ -306,6 +309,256 @@ public final class OrgFunctions {
      */
     public static CompletableFuture<GetAlarmtemplatesResult> getAlarmtemplatesPlain(GetAlarmtemplatesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:org/getAlarmtemplates:getAlarmtemplates", TypeShape.of(GetAlarmtemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of WAN Assurance Antivirus Profiles.
+     * 
+     * An Antivirus Profile is used to configure the Antivirus feature on SRX devices. It specifies which content the Antivirus should analyse and which content should be ignored.
+     * 
+     * The Antivirus profiles can be used within the following resources:
+     *  * `mist_org_servicepolicy.antivirus`
+     *  * `mist_org_gatewaytemplate.service_policies.antivirus`
+     *  * `mist_org_deviceprofile_gateway.service_policies.antivirus`
+     *  * `mist_device_gateway.service_policies.antivirus`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetAvprofilesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var avprofiles = OrgFunctions.getAvprofiles(GetAvprofilesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAvprofilesResult> getAvprofiles(GetAvprofilesArgs args) {
+        return getAvprofiles(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of WAN Assurance Antivirus Profiles.
+     * 
+     * An Antivirus Profile is used to configure the Antivirus feature on SRX devices. It specifies which content the Antivirus should analyse and which content should be ignored.
+     * 
+     * The Antivirus profiles can be used within the following resources:
+     *  * `mist_org_servicepolicy.antivirus`
+     *  * `mist_org_gatewaytemplate.service_policies.antivirus`
+     *  * `mist_org_deviceprofile_gateway.service_policies.antivirus`
+     *  * `mist_device_gateway.service_policies.antivirus`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetAvprofilesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var avprofiles = OrgFunctions.getAvprofiles(GetAvprofilesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAvprofilesResult> getAvprofilesPlain(GetAvprofilesPlainArgs args) {
+        return getAvprofilesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of WAN Assurance Antivirus Profiles.
+     * 
+     * An Antivirus Profile is used to configure the Antivirus feature on SRX devices. It specifies which content the Antivirus should analyse and which content should be ignored.
+     * 
+     * The Antivirus profiles can be used within the following resources:
+     *  * `mist_org_servicepolicy.antivirus`
+     *  * `mist_org_gatewaytemplate.service_policies.antivirus`
+     *  * `mist_org_deviceprofile_gateway.service_policies.antivirus`
+     *  * `mist_device_gateway.service_policies.antivirus`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetAvprofilesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var avprofiles = OrgFunctions.getAvprofiles(GetAvprofilesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAvprofilesResult> getAvprofiles(GetAvprofilesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getAvprofiles:getAvprofiles", TypeShape.of(GetAvprofilesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of WAN Assurance Antivirus Profiles.
+     * 
+     * An Antivirus Profile is used to configure the Antivirus feature on SRX devices. It specifies which content the Antivirus should analyse and which content should be ignored.
+     * 
+     * The Antivirus profiles can be used within the following resources:
+     *  * `mist_org_servicepolicy.antivirus`
+     *  * `mist_org_gatewaytemplate.service_policies.antivirus`
+     *  * `mist_org_deviceprofile_gateway.service_policies.antivirus`
+     *  * `mist_device_gateway.service_policies.antivirus`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetAvprofilesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var avprofiles = OrgFunctions.getAvprofiles(GetAvprofilesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAvprofilesResult> getAvprofiles(GetAvprofilesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getAvprofiles:getAvprofiles", TypeShape.of(GetAvprofilesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of WAN Assurance Antivirus Profiles.
+     * 
+     * An Antivirus Profile is used to configure the Antivirus feature on SRX devices. It specifies which content the Antivirus should analyse and which content should be ignored.
+     * 
+     * The Antivirus profiles can be used within the following resources:
+     *  * `mist_org_servicepolicy.antivirus`
+     *  * `mist_org_gatewaytemplate.service_policies.antivirus`
+     *  * `mist_org_deviceprofile_gateway.service_policies.antivirus`
+     *  * `mist_device_gateway.service_policies.antivirus`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetAvprofilesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var avprofiles = OrgFunctions.getAvprofiles(GetAvprofilesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAvprofilesResult> getAvprofilesPlain(GetAvprofilesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("junipermist:org/getAvprofiles:getAvprofiles", TypeShape.of(GetAvprofilesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the list of AP Device Profiles.
@@ -4427,7 +4680,7 @@ public final class OrgFunctions {
      * 
      * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
      * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
-     * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects..
+     * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects.
      * 
      * ## Example Usage
      * 
@@ -4473,7 +4726,7 @@ public final class OrgFunctions {
      * 
      * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
      * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
-     * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects..
+     * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects.
      * 
      * ## Example Usage
      * 
@@ -4519,7 +4772,7 @@ public final class OrgFunctions {
      * 
      * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
      * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
-     * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects..
+     * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects.
      * 
      * ## Example Usage
      * 
@@ -4565,7 +4818,7 @@ public final class OrgFunctions {
      * 
      * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
      * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
-     * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects..
+     * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects.
      * 
      * ## Example Usage
      * 
@@ -4611,7 +4864,7 @@ public final class OrgFunctions {
      * 
      * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
      * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
-     * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects..
+     * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects.
      * 
      * ## Example Usage
      * 

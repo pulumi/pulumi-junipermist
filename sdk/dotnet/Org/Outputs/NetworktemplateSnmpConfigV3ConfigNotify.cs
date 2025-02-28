@@ -13,20 +13,20 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class NetworktemplateSnmpConfigV3ConfigNotify
     {
-        public readonly string? Name;
-        public readonly string? Tag;
+        public readonly string Name;
+        public readonly string Tag;
         /// <summary>
         /// enum: `inform`, `trap`
         /// </summary>
-        public readonly string? Type;
+        public readonly string Type;
 
         [OutputConstructor]
         private NetworktemplateSnmpConfigV3ConfigNotify(
-            string? name,
+            string name,
 
-            string? tag,
+            string tag,
 
-            string? type)
+            string type)
         {
             Name = name;
             Tag = tag;

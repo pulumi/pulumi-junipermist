@@ -76,7 +76,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? UnclaimWhenDestroyed { get; set; }
 
         /// <summary>
-        /// if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+        /// if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
         /// </summary>
         [Input("vcMac")]
         public Input<string>? VcMac { get; set; }

@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchExtraRoutes6 {
     /**
-     * @return this takes precedence
+     * @return This takes precedence
      * 
      */
     private @Nullable Boolean discard;
@@ -26,14 +26,14 @@ public final class SwitchExtraRoutes6 {
     private @Nullable Boolean noResolve;
     private @Nullable Integer preference;
     /**
-     * @return next-hop IP Address
+     * @return Next-hop IP Address
      * 
      */
     private String via;
 
     private SwitchExtraRoutes6() {}
     /**
-     * @return this takes precedence
+     * @return This takes precedence
      * 
      */
     public Optional<Boolean> discard() {
@@ -52,7 +52,7 @@ public final class SwitchExtraRoutes6 {
         return Optional.ofNullable(this.preference);
     }
     /**
-     * @return next-hop IP Address
+     * @return Next-hop IP Address
      * 
      */
     public String via() {

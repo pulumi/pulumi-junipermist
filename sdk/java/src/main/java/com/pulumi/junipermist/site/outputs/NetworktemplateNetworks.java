@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateNetworks {
     /**
-     * @return only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+     * @return Only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
      * 
      */
     private @Nullable String gateway;
     /**
-     * @return only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+     * @return Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
      * 
      */
     private @Nullable String gateway6;
@@ -30,12 +30,12 @@ public final class NetworktemplateNetworks {
     private @Nullable Boolean isolation;
     private @Nullable String isolationVlanId;
     /**
-     * @return optional for pure switching, required when L3 / routing features are used
+     * @return Optional for pure switching, required when L3 / routing features are used
      * 
      */
     private @Nullable String subnet;
     /**
-     * @return optional for pure switching, required when L3 / routing features are used
+     * @return Optional for pure switching, required when L3 / routing features are used
      * 
      */
     private @Nullable String subnet6;
@@ -43,14 +43,14 @@ public final class NetworktemplateNetworks {
 
     private NetworktemplateNetworks() {}
     /**
-     * @return only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+     * @return Only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
      * 
      */
     public Optional<String> gateway() {
         return Optional.ofNullable(this.gateway);
     }
     /**
-     * @return only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+     * @return Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
      * 
      */
     public Optional<String> gateway6() {
@@ -67,14 +67,14 @@ public final class NetworktemplateNetworks {
         return Optional.ofNullable(this.isolationVlanId);
     }
     /**
-     * @return optional for pure switching, required when L3 / routing features are used
+     * @return Optional for pure switching, required when L3 / routing features are used
      * 
      */
     public Optional<String> subnet() {
         return Optional.ofNullable(this.subnet);
     }
     /**
-     * @return optional for pure switching, required when L3 / routing features are used
+     * @return Optional for pure switching, required when L3 / routing features are used
      * 
      */
     public Optional<String> subnet6() {

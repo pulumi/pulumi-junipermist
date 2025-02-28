@@ -49,14 +49,14 @@ public final class DeviceprofileGatewayNetworkInternetAccessArgs extends com.pul
     }
 
     /**
-     * by default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+     * By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
      * 
      */
     @Import(name="restricted")
     private @Nullable Output<Boolean> restricted;
 
     /**
-     * @return by default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+     * @return By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
      * 
      */
     public Optional<Output<Boolean>> restricted() {
@@ -146,7 +146,7 @@ public final class DeviceprofileGatewayNetworkInternetAccessArgs extends com.pul
         }
 
         /**
-         * @param restricted by default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+         * @param restricted By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class DeviceprofileGatewayNetworkInternetAccessArgs extends com.pul
         }
 
         /**
-         * @param restricted by default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+         * @param restricted By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
          * 
          * @return builder
          * 

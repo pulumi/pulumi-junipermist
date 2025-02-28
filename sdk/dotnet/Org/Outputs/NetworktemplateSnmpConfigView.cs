@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NetworktemplateSnmpConfigView
     {
         /// <summary>
-        /// if the root oid configured is included
+        /// If the root oid configured is included
         /// </summary>
         public readonly bool? Include;
         public readonly string? Oid;

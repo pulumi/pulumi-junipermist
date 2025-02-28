@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetWlansOrgWlanAcctServer {
     /**
-     * @return ip / hostname of RADIUS server
+     * @return IP/ hostname of RADIUS server
      * 
      */
     private String host;
@@ -31,14 +31,14 @@ public final class GetWlansOrgWlanAcctServer {
      */
     private Integer port;
     /**
-     * @return secret of RADIUS server
+     * @return Secretof RADIUS server
      * 
      */
     private String secret;
 
     private GetWlansOrgWlanAcctServer() {}
     /**
-     * @return ip / hostname of RADIUS server
+     * @return IP/ hostname of RADIUS server
      * 
      */
     public String host() {
@@ -68,7 +68,7 @@ public final class GetWlansOrgWlanAcctServer {
         return this.port;
     }
     /**
-     * @return secret of RADIUS server
+     * @return Secretof RADIUS server
      * 
      */
     public String secret() {

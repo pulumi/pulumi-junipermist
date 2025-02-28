@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayRoutingPoliciesTerm {
     /**
-     * @return when used as import policy
+     * @return When used as import policy
      * 
      */
     private @Nullable GatewayRoutingPoliciesTermAction action;
@@ -25,7 +25,7 @@ public final class GatewayRoutingPoliciesTerm {
 
     private GatewayRoutingPoliciesTerm() {}
     /**
-     * @return when used as import policy
+     * @return When used as import policy
      * 
      */
     public Optional<GatewayRoutingPoliciesTermAction> action() {

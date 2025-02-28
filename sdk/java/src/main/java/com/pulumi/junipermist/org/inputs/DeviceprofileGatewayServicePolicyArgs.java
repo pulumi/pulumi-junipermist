@@ -5,9 +5,11 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayServicePolicyAntivirusArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayServicePolicyAppqoeArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayServicePolicyEwfArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayServicePolicyIdpArgs;
+import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayServicePolicySslProxyArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -33,6 +35,21 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
      */
     public Optional<Output<String>> action() {
         return Optional.ofNullable(this.action);
+    }
+
+    /**
+     * For SRX-only
+     * 
+     */
+    @Import(name="antivirus")
+    private @Nullable Output<DeviceprofileGatewayServicePolicyAntivirusArgs> antivirus;
+
+    /**
+     * @return For SRX-only
+     * 
+     */
+    public Optional<Output<DeviceprofileGatewayServicePolicyAntivirusArgs>> antivirus() {
+        return Optional.ofNullable(this.antivirus);
     }
 
     /**
@@ -95,14 +112,14 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
     }
 
     /**
-     * by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+     * By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
      * 
      */
     @Import(name="pathPreference")
     private @Nullable Output<String> pathPreference;
 
     /**
-     * @return by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+     * @return By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
      * 
      */
     public Optional<Output<String>> pathPreference() {
@@ -110,14 +127,14 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
     }
 
     /**
-     * used to link servicepolicy defined at org level and overwrite some attributes
+     * Used to link servicepolicy defined at org level and overwrite some attributes
      * 
      */
     @Import(name="servicepolicyId")
     private @Nullable Output<String> servicepolicyId;
 
     /**
-     * @return used to link servicepolicy defined at org level and overwrite some attributes
+     * @return Used to link servicepolicy defined at org level and overwrite some attributes
      * 
      */
     public Optional<Output<String>> servicepolicyId() {
@@ -140,6 +157,21 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
     }
 
     /**
+     * For SRX-only
+     * 
+     */
+    @Import(name="sslProxy")
+    private @Nullable Output<DeviceprofileGatewayServicePolicySslProxyArgs> sslProxy;
+
+    /**
+     * @return For SRX-only
+     * 
+     */
+    public Optional<Output<DeviceprofileGatewayServicePolicySslProxyArgs>> sslProxy() {
+        return Optional.ofNullable(this.sslProxy);
+    }
+
+    /**
      * Required when `servicepolicy_id` is not defined. List of Networks / Users
      * 
      */
@@ -158,6 +190,7 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
 
     private DeviceprofileGatewayServicePolicyArgs(DeviceprofileGatewayServicePolicyArgs $) {
         this.action = $.action;
+        this.antivirus = $.antivirus;
         this.appqoe = $.appqoe;
         this.ewfs = $.ewfs;
         this.idp = $.idp;
@@ -166,6 +199,7 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
         this.pathPreference = $.pathPreference;
         this.servicepolicyId = $.servicepolicyId;
         this.services = $.services;
+        this.sslProxy = $.sslProxy;
         this.tenants = $.tenants;
     }
 
@@ -206,6 +240,27 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
          */
         public Builder action(String action) {
             return action(Output.of(action));
+        }
+
+        /**
+         * @param antivirus For SRX-only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder antivirus(@Nullable Output<DeviceprofileGatewayServicePolicyAntivirusArgs> antivirus) {
+            $.antivirus = antivirus;
+            return this;
+        }
+
+        /**
+         * @param antivirus For SRX-only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder antivirus(DeviceprofileGatewayServicePolicyAntivirusArgs antivirus) {
+            return antivirus(Output.of(antivirus));
         }
 
         /**
@@ -294,7 +349,7 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param pathPreference by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+         * @param pathPreference By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
          * 
          * @return builder
          * 
@@ -305,7 +360,7 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param pathPreference by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+         * @param pathPreference By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
          * 
          * @return builder
          * 
@@ -315,7 +370,7 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param servicepolicyId used to link servicepolicy defined at org level and overwrite some attributes
+         * @param servicepolicyId Used to link servicepolicy defined at org level and overwrite some attributes
          * 
          * @return builder
          * 
@@ -326,7 +381,7 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param servicepolicyId used to link servicepolicy defined at org level and overwrite some attributes
+         * @param servicepolicyId Used to link servicepolicy defined at org level and overwrite some attributes
          * 
          * @return builder
          * 
@@ -364,6 +419,27 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
          */
         public Builder services(String... services) {
             return services(List.of(services));
+        }
+
+        /**
+         * @param sslProxy For SRX-only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslProxy(@Nullable Output<DeviceprofileGatewayServicePolicySslProxyArgs> sslProxy) {
+            $.sslProxy = sslProxy;
+            return this;
+        }
+
+        /**
+         * @param sslProxy For SRX-only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslProxy(DeviceprofileGatewayServicePolicySslProxyArgs sslProxy) {
+            return sslProxy(Output.of(sslProxy));
         }
 
         /**

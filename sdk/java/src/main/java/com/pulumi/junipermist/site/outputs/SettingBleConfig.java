@@ -15,12 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingBleConfig {
     /**
-     * @return whether Mist beacons is enabled
+     * @return Whether Mist beacons is enabled
      * 
      */
     private @Nullable Boolean beaconEnabled;
     /**
-     * @return required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
+     * @return Required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
      * 
      */
     private @Nullable Integer beaconRate;
@@ -30,12 +30,12 @@ public final class SettingBleConfig {
      */
     private @Nullable String beaconRateMode;
     /**
-     * @return list of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+     * @return List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
      * 
      */
     private @Nullable List<Integer> beamDisableds;
     /**
-     * @return can be enabled if `beacon_enabled`==`true`, whether to send custom packet
+     * @return Can be enabled if `beacon_enabled`==`true`, whether to send custom packet
      * 
      */
     private @Nullable Boolean customBlePacketEnabled;
@@ -50,13 +50,13 @@ public final class SettingBleConfig {
      */
     private @Nullable Integer customBlePacketFreqMsec;
     /**
-     * @return advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+     * @return Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
      * 
      */
     private @Nullable Integer eddystoneUidAdvPower;
     private @Nullable String eddystoneUidBeams;
     /**
-     * @return only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
+     * @return Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
      * 
      */
     private @Nullable Boolean eddystoneUidEnabled;
@@ -76,13 +76,13 @@ public final class SettingBleConfig {
      */
     private @Nullable String eddystoneUidNamespace;
     /**
-     * @return advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+     * @return Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
      * 
      */
     private @Nullable Integer eddystoneUrlAdvPower;
     private @Nullable String eddystoneUrlBeams;
     /**
-     * @return only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
+     * @return Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
      * 
      */
     private @Nullable Boolean eddystoneUrlEnabled;
@@ -97,13 +97,13 @@ public final class SettingBleConfig {
      */
     private @Nullable String eddystoneUrlUrl;
     /**
-     * @return advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+     * @return Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
      * 
      */
     private @Nullable Integer ibeaconAdvPower;
     private @Nullable String ibeaconBeams;
     /**
-     * @return can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
+     * @return Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
      * 
      */
     private @Nullable Boolean ibeaconEnabled;
@@ -123,12 +123,12 @@ public final class SettingBleConfig {
      */
     private @Nullable Integer ibeaconMinor;
     /**
-     * @return optional, if not specified, the same UUID as the beacon will be used
+     * @return Optional, if not specified, the same UUID as the beacon will be used
      * 
      */
     private @Nullable String ibeaconUuid;
     /**
-     * @return required if `power_mode`==`custom`; else use `power_mode` as default
+     * @return Required if `power_mode`==`custom`; else use `power_mode` as default
      * 
      */
     private @Nullable Integer power;
@@ -140,14 +140,14 @@ public final class SettingBleConfig {
 
     private SettingBleConfig() {}
     /**
-     * @return whether Mist beacons is enabled
+     * @return Whether Mist beacons is enabled
      * 
      */
     public Optional<Boolean> beaconEnabled() {
         return Optional.ofNullable(this.beaconEnabled);
     }
     /**
-     * @return required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
+     * @return Required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
      * 
      */
     public Optional<Integer> beaconRate() {
@@ -161,14 +161,14 @@ public final class SettingBleConfig {
         return Optional.ofNullable(this.beaconRateMode);
     }
     /**
-     * @return list of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+     * @return List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
      * 
      */
     public List<Integer> beamDisableds() {
         return this.beamDisableds == null ? List.of() : this.beamDisableds;
     }
     /**
-     * @return can be enabled if `beacon_enabled`==`true`, whether to send custom packet
+     * @return Can be enabled if `beacon_enabled`==`true`, whether to send custom packet
      * 
      */
     public Optional<Boolean> customBlePacketEnabled() {
@@ -189,7 +189,7 @@ public final class SettingBleConfig {
         return Optional.ofNullable(this.customBlePacketFreqMsec);
     }
     /**
-     * @return advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+     * @return Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
      * 
      */
     public Optional<Integer> eddystoneUidAdvPower() {
@@ -199,7 +199,7 @@ public final class SettingBleConfig {
         return Optional.ofNullable(this.eddystoneUidBeams);
     }
     /**
-     * @return only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
+     * @return Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
      * 
      */
     public Optional<Boolean> eddystoneUidEnabled() {
@@ -227,7 +227,7 @@ public final class SettingBleConfig {
         return Optional.ofNullable(this.eddystoneUidNamespace);
     }
     /**
-     * @return advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+     * @return Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
      * 
      */
     public Optional<Integer> eddystoneUrlAdvPower() {
@@ -237,7 +237,7 @@ public final class SettingBleConfig {
         return Optional.ofNullable(this.eddystoneUrlBeams);
     }
     /**
-     * @return only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
+     * @return Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
      * 
      */
     public Optional<Boolean> eddystoneUrlEnabled() {
@@ -258,7 +258,7 @@ public final class SettingBleConfig {
         return Optional.ofNullable(this.eddystoneUrlUrl);
     }
     /**
-     * @return advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+     * @return Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
      * 
      */
     public Optional<Integer> ibeaconAdvPower() {
@@ -268,7 +268,7 @@ public final class SettingBleConfig {
         return Optional.ofNullable(this.ibeaconBeams);
     }
     /**
-     * @return can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
+     * @return Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
      * 
      */
     public Optional<Boolean> ibeaconEnabled() {
@@ -296,14 +296,14 @@ public final class SettingBleConfig {
         return Optional.ofNullable(this.ibeaconMinor);
     }
     /**
-     * @return optional, if not specified, the same UUID as the beacon will be used
+     * @return Optional, if not specified, the same UUID as the beacon will be used
      * 
      */
     public Optional<String> ibeaconUuid() {
         return Optional.ofNullable(this.ibeaconUuid);
     }
     /**
-     * @return required if `power_mode`==`custom`; else use `power_mode` as default
+     * @return Required if `power_mode`==`custom`; else use `power_mode` as default
      * 
      */
     public Optional<Integer> power() {

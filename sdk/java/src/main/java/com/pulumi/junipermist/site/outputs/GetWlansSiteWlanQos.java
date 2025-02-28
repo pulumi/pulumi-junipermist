@@ -17,7 +17,7 @@ public final class GetWlansSiteWlanQos {
      */
     private String class_;
     /**
-     * @return whether to overwrite QoS
+     * @return Whether to overwrite QoS
      * 
      */
     private Boolean overwrite;
@@ -31,7 +31,7 @@ public final class GetWlansSiteWlanQos {
         return this.class_;
     }
     /**
-     * @return whether to overwrite QoS
+     * @return Whether to overwrite QoS
      * 
      */
     public Boolean overwrite() {

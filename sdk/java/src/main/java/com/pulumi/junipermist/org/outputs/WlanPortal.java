@@ -36,7 +36,7 @@ public final class WlanPortal {
      */
     private @Nullable List<String> amazonEmailDomains;
     /**
-     * @return whether amazon is enabled as a login method
+     * @return Whether amazon is enabled as a login method
      * 
      */
     private @Nullable Boolean amazonEnabled;
@@ -61,12 +61,12 @@ public final class WlanPortal {
      */
     private @Nullable String azureClientSecret;
     /**
-     * @return whether Azure Active Directory is enabled as a login method
+     * @return Whether Azure Active Directory is enabled as a login method
      * 
      */
     private @Nullable Boolean azureEnabled;
     /**
-     * @return interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+     * @return Interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
      * 
      */
     private @Nullable Integer azureExpire;
@@ -91,7 +91,7 @@ public final class WlanPortal {
      */
     private @Nullable String broadnetUserId;
     /**
-     * @return whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+     * @return Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
      * 
      */
     private @Nullable Boolean bypassWhenCloudDown;
@@ -101,22 +101,22 @@ public final class WlanPortal {
      */
     private @Nullable String clickatellApiKey;
     /**
-     * @return whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
+     * @return Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
      * 
      */
     private @Nullable Boolean crossSite;
     /**
-     * @return whether email (access code verification) is enabled as a login method
+     * @return Whether email (access code verification) is enabled as a login method
      * 
      */
     private @Nullable Boolean emailEnabled;
     /**
-     * @return whether guest portal is enabled
+     * @return Whether guest portal is enabled
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return how long to remain authorized, in minutes
+     * @return How long to remain authorized, in minutes
      * 
      */
     private @Nullable Integer expire;
@@ -141,7 +141,7 @@ public final class WlanPortal {
      */
     private @Nullable List<String> facebookEmailDomains;
     /**
-     * @return whether facebook is enabled as a login method
+     * @return Whether facebook is enabled as a login method
      * 
      */
     private @Nullable Boolean facebookEnabled;
@@ -151,12 +151,12 @@ public final class WlanPortal {
      */
     private @Nullable Integer facebookExpire;
     /**
-     * @return whether to forward the user to another URL after authorized
+     * @return Whether to forward the user to another URL after authorized
      * 
      */
     private @Nullable Boolean forward;
     /**
-     * @return the URL to forward the user to
+     * @return URL to forward the user to
      * 
      */
     private @Nullable String forwardUrl;
@@ -176,12 +176,12 @@ public final class WlanPortal {
      */
     private @Nullable List<String> googleEmailDomains;
     /**
-     * @return whether google is enabled as login method
+     * @return Whether Google is enabled as login method
      * 
      */
     private @Nullable Boolean googleEnabled;
     /**
-     * @return Optional if `google_enabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+     * @return Optional if `google_enabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
      * 
      */
     private @Nullable Integer googleExpire;
@@ -211,7 +211,7 @@ public final class WlanPortal {
      */
     private @Nullable List<String> microsoftEmailDomains;
     /**
-     * @return whether microsoft 365 is enabled as a login method
+     * @return Whether microsoft 365 is enabled as a login method
      * 
      */
     private @Nullable Boolean microsoftEnabled;
@@ -236,12 +236,12 @@ public final class WlanPortal {
      */
     private @Nullable String password;
     /**
-     * @return whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
      * 
      */
     private @Nullable Boolean predefinedSponsorsEnabled;
     /**
-     * @return whether to hide sponsor’s email from list of sponsors
+     * @return Whether to hide sponsor’s email from list of sponsors
      * 
      */
     private @Nullable Boolean predefinedSponsorsHideEmail;
@@ -262,7 +262,7 @@ public final class WlanPortal {
      */
     private @Nullable String puzzelUsername;
     /**
-     * @return whether sms is enabled as a login method
+     * @return Whether sms is enabled as a login method
      * 
      */
     private @Nullable Boolean smsEnabled;
@@ -287,12 +287,12 @@ public final class WlanPortal {
      */
     private @Nullable Boolean sponsorAutoApprove;
     /**
-     * @return list of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+     * @return List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
      * 
      */
     private @Nullable List<String> sponsorEmailDomains;
     /**
-     * @return whether sponsor is enabled
+     * @return Whether sponsor is enabled
      * 
      */
     private @Nullable Boolean sponsorEnabled;
@@ -415,7 +415,7 @@ public final class WlanPortal {
         return this.amazonEmailDomains == null ? List.of() : this.amazonEmailDomains;
     }
     /**
-     * @return whether amazon is enabled as a login method
+     * @return Whether amazon is enabled as a login method
      * 
      */
     public Optional<Boolean> amazonEnabled() {
@@ -450,14 +450,14 @@ public final class WlanPortal {
         return Optional.ofNullable(this.azureClientSecret);
     }
     /**
-     * @return whether Azure Active Directory is enabled as a login method
+     * @return Whether Azure Active Directory is enabled as a login method
      * 
      */
     public Optional<Boolean> azureEnabled() {
         return Optional.ofNullable(this.azureEnabled);
     }
     /**
-     * @return interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+     * @return Interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
      * 
      */
     public Optional<Integer> azureExpire() {
@@ -492,7 +492,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.broadnetUserId);
     }
     /**
-     * @return whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+     * @return Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
      * 
      */
     public Optional<Boolean> bypassWhenCloudDown() {
@@ -506,28 +506,28 @@ public final class WlanPortal {
         return Optional.ofNullable(this.clickatellApiKey);
     }
     /**
-     * @return whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
+     * @return Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
      * 
      */
     public Optional<Boolean> crossSite() {
         return Optional.ofNullable(this.crossSite);
     }
     /**
-     * @return whether email (access code verification) is enabled as a login method
+     * @return Whether email (access code verification) is enabled as a login method
      * 
      */
     public Optional<Boolean> emailEnabled() {
         return Optional.ofNullable(this.emailEnabled);
     }
     /**
-     * @return whether guest portal is enabled
+     * @return Whether guest portal is enabled
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return how long to remain authorized, in minutes
+     * @return How long to remain authorized, in minutes
      * 
      */
     public Optional<Integer> expire() {
@@ -562,7 +562,7 @@ public final class WlanPortal {
         return this.facebookEmailDomains == null ? List.of() : this.facebookEmailDomains;
     }
     /**
-     * @return whether facebook is enabled as a login method
+     * @return Whether facebook is enabled as a login method
      * 
      */
     public Optional<Boolean> facebookEnabled() {
@@ -576,14 +576,14 @@ public final class WlanPortal {
         return Optional.ofNullable(this.facebookExpire);
     }
     /**
-     * @return whether to forward the user to another URL after authorized
+     * @return Whether to forward the user to another URL after authorized
      * 
      */
     public Optional<Boolean> forward() {
         return Optional.ofNullable(this.forward);
     }
     /**
-     * @return the URL to forward the user to
+     * @return URL to forward the user to
      * 
      */
     public Optional<String> forwardUrl() {
@@ -611,14 +611,14 @@ public final class WlanPortal {
         return this.googleEmailDomains == null ? List.of() : this.googleEmailDomains;
     }
     /**
-     * @return whether google is enabled as login method
+     * @return Whether Google is enabled as login method
      * 
      */
     public Optional<Boolean> googleEnabled() {
         return Optional.ofNullable(this.googleEnabled);
     }
     /**
-     * @return Optional if `google_enabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+     * @return Optional if `google_enabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
      * 
      */
     public Optional<Integer> googleExpire() {
@@ -660,7 +660,7 @@ public final class WlanPortal {
         return this.microsoftEmailDomains == null ? List.of() : this.microsoftEmailDomains;
     }
     /**
-     * @return whether microsoft 365 is enabled as a login method
+     * @return Whether microsoft 365 is enabled as a login method
      * 
      */
     public Optional<Boolean> microsoftEnabled() {
@@ -695,14 +695,14 @@ public final class WlanPortal {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
      * 
      */
     public Optional<Boolean> predefinedSponsorsEnabled() {
         return Optional.ofNullable(this.predefinedSponsorsEnabled);
     }
     /**
-     * @return whether to hide sponsor’s email from list of sponsors
+     * @return Whether to hide sponsor’s email from list of sponsors
      * 
      */
     public Optional<Boolean> predefinedSponsorsHideEmail() {
@@ -733,7 +733,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.puzzelUsername);
     }
     /**
-     * @return whether sms is enabled as a login method
+     * @return Whether sms is enabled as a login method
      * 
      */
     public Optional<Boolean> smsEnabled() {
@@ -768,14 +768,14 @@ public final class WlanPortal {
         return Optional.ofNullable(this.sponsorAutoApprove);
     }
     /**
-     * @return list of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+     * @return List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
      * 
      */
     public List<String> sponsorEmailDomains() {
         return this.sponsorEmailDomains == null ? List.of() : this.sponsorEmailDomains;
     }
     /**
-     * @return whether sponsor is enabled
+     * @return Whether sponsor is enabled
      * 
      */
     public Optional<Boolean> sponsorEnabled() {

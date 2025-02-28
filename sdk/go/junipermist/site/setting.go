@@ -14,7 +14,7 @@ import (
 
 // This resource manages the Site Settings.
 //
-// The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
+// The Site Settings can be used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
 //
 // > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `site.Networktemplate` resource
 //
@@ -33,7 +33,7 @@ type Setting struct {
 	pulumi.CustomResourceState
 
 	Analytic SettingAnalyticPtrOutput `pulumi:"analytic"`
-	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntOutput `pulumi:"apUpdownThreshold"`
 	// Auto Upgrade Settings
@@ -41,21 +41,21 @@ type Setting struct {
 	BlacklistUrl pulumi.StringOutput         `pulumi:"blacklistUrl"`
 	// BLE AP settings
 	BleConfig SettingBleConfigPtrOutput `pulumi:"bleConfig"`
-	// whether to enable ap auto config revert
+	// Whether to enable ap auto config revert
 	ConfigAutoRevert pulumi.BoolOutput `pulumi:"configAutoRevert"`
-	// mist also uses some heuristic rules to prevent destructive configs from being pushed
+	// Mist also uses some heuristic rules to prevent destructive configs from being pushed
 	ConfigPushPolicy SettingConfigPushPolicyPtrOutput `pulumi:"configPushPolicy"`
-	// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
+	// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
 	CriticalUrlMonitoring SettingCriticalUrlMonitoringPtrOutput `pulumi:"criticalUrlMonitoring"`
-	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+	// By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
 	// is desired, use the following
 	DeviceUpdownThreshold pulumi.IntOutput `pulumi:"deviceUpdownThreshold"`
-	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
 	// ranges for the same day
 	Engagement SettingEngagementPtrOutput `pulumi:"engagement"`
 	// Gateway Site settings
 	GatewayMgmt SettingGatewayMgmtPtrOutput `pulumi:"gatewayMgmt"`
-	// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 	// `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold pulumi.IntOutput           `pulumi:"gatewayUpdownThreshold"`
 	JuniperSrx             SettingJuniperSrxPtrOutput `pulumi:"juniperSrx"`
@@ -63,18 +63,18 @@ type Setting struct {
 	Led SettingLedPtrOutput `pulumi:"led"`
 	// Occupancy Analytics settings
 	Occupancy SettingOccupancyPtrOutput `pulumi:"occupancy"`
-	// whether to store the config on AP
+	// Whether to store the config on AP
 	PersistConfigOnDevice pulumi.BoolOutput `pulumi:"persistConfigOnDevice"`
 	// Proxy Configuration to talk to Mist
 	Proxy SettingProxyPtrOutput `pulumi:"proxy"`
-	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs pulumi.BoolOutput `pulumi:"removeExistingConfigs"`
-	// whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
+	// Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
 	// serial number, battery %, temperature, humidity)
 	ReportGatt pulumi.BoolOutput `pulumi:"reportGatt"`
 	// Rogue site settings
 	Rogue SettingRoguePtrOutput `pulumi:"rogue"`
-	// managed mobility
+	// Managed mobility
 	Rtsa SettingRtsaPtrOutput `pulumi:"rtsa"`
 	// Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
 	// window, there are more than Y distinct client encountring over X failures
@@ -82,22 +82,22 @@ type Setting struct {
 	SiteId      pulumi.StringOutput         `pulumi:"siteId"`
 	Skyatp      SettingSkyatpPtrOutput      `pulumi:"skyatp"`
 	SrxApp      SettingSrxAppPtrOutput      `pulumi:"srxApp"`
-	// when limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
+	// When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
 	// Org:Setting)
 	SshKeys pulumi.StringArrayOutput `pulumi:"sshKeys"`
 	Ssr     SettingSsrPtrOutput      `pulumi:"ssr"`
-	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold pulumi.IntOutput              `pulumi:"switchUpdownThreshold"`
 	SyntheticTest         SettingSyntheticTestPtrOutput `pulumi:"syntheticTest"`
-	// whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+	// Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
 	TrackAnonymousDevices pulumi.BoolOutput `pulumi:"trackAnonymousDevices"`
 	// AP Uplink port configuration
 	UplinkPortConfig SettingUplinkPortConfigPtrOutput `pulumi:"uplinkPortConfig"`
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapOutput `pulumi:"vars"`
 	Vna  SettingVnaPtrOutput    `pulumi:"vna"`
-	// optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+	// Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
 	VsInstance        SettingVsInstanceMapOutput `pulumi:"vsInstance"`
 	WanVna            SettingWanVnaPtrOutput     `pulumi:"wanVna"`
 	WatchedStationUrl pulumi.StringOutput        `pulumi:"watchedStationUrl"`
@@ -145,7 +145,7 @@ func GetSetting(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Setting resources.
 type settingState struct {
 	Analytic *SettingAnalytic `pulumi:"analytic"`
-	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold *int `pulumi:"apUpdownThreshold"`
 	// Auto Upgrade Settings
@@ -153,21 +153,21 @@ type settingState struct {
 	BlacklistUrl *string             `pulumi:"blacklistUrl"`
 	// BLE AP settings
 	BleConfig *SettingBleConfig `pulumi:"bleConfig"`
-	// whether to enable ap auto config revert
+	// Whether to enable ap auto config revert
 	ConfigAutoRevert *bool `pulumi:"configAutoRevert"`
-	// mist also uses some heuristic rules to prevent destructive configs from being pushed
+	// Mist also uses some heuristic rules to prevent destructive configs from being pushed
 	ConfigPushPolicy *SettingConfigPushPolicy `pulumi:"configPushPolicy"`
-	// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
+	// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
 	CriticalUrlMonitoring *SettingCriticalUrlMonitoring `pulumi:"criticalUrlMonitoring"`
-	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+	// By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
 	// is desired, use the following
 	DeviceUpdownThreshold *int `pulumi:"deviceUpdownThreshold"`
-	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
 	// ranges for the same day
 	Engagement *SettingEngagement `pulumi:"engagement"`
 	// Gateway Site settings
 	GatewayMgmt *SettingGatewayMgmt `pulumi:"gatewayMgmt"`
-	// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 	// `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold *int               `pulumi:"gatewayUpdownThreshold"`
 	JuniperSrx             *SettingJuniperSrx `pulumi:"juniperSrx"`
@@ -175,18 +175,18 @@ type settingState struct {
 	Led *SettingLed `pulumi:"led"`
 	// Occupancy Analytics settings
 	Occupancy *SettingOccupancy `pulumi:"occupancy"`
-	// whether to store the config on AP
+	// Whether to store the config on AP
 	PersistConfigOnDevice *bool `pulumi:"persistConfigOnDevice"`
 	// Proxy Configuration to talk to Mist
 	Proxy *SettingProxy `pulumi:"proxy"`
-	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs *bool `pulumi:"removeExistingConfigs"`
-	// whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
+	// Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
 	// serial number, battery %, temperature, humidity)
 	ReportGatt *bool `pulumi:"reportGatt"`
 	// Rogue site settings
 	Rogue *SettingRogue `pulumi:"rogue"`
-	// managed mobility
+	// Managed mobility
 	Rtsa *SettingRtsa `pulumi:"rtsa"`
 	// Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
 	// window, there are more than Y distinct client encountring over X failures
@@ -194,22 +194,22 @@ type settingState struct {
 	SiteId      *string             `pulumi:"siteId"`
 	Skyatp      *SettingSkyatp      `pulumi:"skyatp"`
 	SrxApp      *SettingSrxApp      `pulumi:"srxApp"`
-	// when limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
+	// When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
 	// Org:Setting)
 	SshKeys []string    `pulumi:"sshKeys"`
 	Ssr     *SettingSsr `pulumi:"ssr"`
-	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold *int                  `pulumi:"switchUpdownThreshold"`
 	SyntheticTest         *SettingSyntheticTest `pulumi:"syntheticTest"`
-	// whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+	// Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
 	TrackAnonymousDevices *bool `pulumi:"trackAnonymousDevices"`
 	// AP Uplink port configuration
 	UplinkPortConfig *SettingUplinkPortConfig `pulumi:"uplinkPortConfig"`
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
 	Vna  *SettingVna       `pulumi:"vna"`
-	// optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+	// Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
 	VsInstance        map[string]SettingVsInstance `pulumi:"vsInstance"`
 	WanVna            *SettingWanVna               `pulumi:"wanVna"`
 	WatchedStationUrl *string                      `pulumi:"watchedStationUrl"`
@@ -225,7 +225,7 @@ type settingState struct {
 
 type SettingState struct {
 	Analytic SettingAnalyticPtrInput
-	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrInput
 	// Auto Upgrade Settings
@@ -233,21 +233,21 @@ type SettingState struct {
 	BlacklistUrl pulumi.StringPtrInput
 	// BLE AP settings
 	BleConfig SettingBleConfigPtrInput
-	// whether to enable ap auto config revert
+	// Whether to enable ap auto config revert
 	ConfigAutoRevert pulumi.BoolPtrInput
-	// mist also uses some heuristic rules to prevent destructive configs from being pushed
+	// Mist also uses some heuristic rules to prevent destructive configs from being pushed
 	ConfigPushPolicy SettingConfigPushPolicyPtrInput
-	// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
+	// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
 	CriticalUrlMonitoring SettingCriticalUrlMonitoringPtrInput
-	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+	// By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
 	// is desired, use the following
 	DeviceUpdownThreshold pulumi.IntPtrInput
-	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
 	// ranges for the same day
 	Engagement SettingEngagementPtrInput
 	// Gateway Site settings
 	GatewayMgmt SettingGatewayMgmtPtrInput
-	// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 	// `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold pulumi.IntPtrInput
 	JuniperSrx             SettingJuniperSrxPtrInput
@@ -255,18 +255,18 @@ type SettingState struct {
 	Led SettingLedPtrInput
 	// Occupancy Analytics settings
 	Occupancy SettingOccupancyPtrInput
-	// whether to store the config on AP
+	// Whether to store the config on AP
 	PersistConfigOnDevice pulumi.BoolPtrInput
 	// Proxy Configuration to talk to Mist
 	Proxy SettingProxyPtrInput
-	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs pulumi.BoolPtrInput
-	// whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
+	// Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
 	// serial number, battery %, temperature, humidity)
 	ReportGatt pulumi.BoolPtrInput
 	// Rogue site settings
 	Rogue SettingRoguePtrInput
-	// managed mobility
+	// Managed mobility
 	Rtsa SettingRtsaPtrInput
 	// Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
 	// window, there are more than Y distinct client encountring over X failures
@@ -274,22 +274,22 @@ type SettingState struct {
 	SiteId      pulumi.StringPtrInput
 	Skyatp      SettingSkyatpPtrInput
 	SrxApp      SettingSrxAppPtrInput
-	// when limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
+	// When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
 	// Org:Setting)
 	SshKeys pulumi.StringArrayInput
 	Ssr     SettingSsrPtrInput
-	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold pulumi.IntPtrInput
 	SyntheticTest         SettingSyntheticTestPtrInput
-	// whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+	// Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
 	TrackAnonymousDevices pulumi.BoolPtrInput
 	// AP Uplink port configuration
 	UplinkPortConfig SettingUplinkPortConfigPtrInput
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
 	Vna  SettingVnaPtrInput
-	// optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+	// Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
 	VsInstance        SettingVsInstanceMapInput
 	WanVna            SettingWanVnaPtrInput
 	WatchedStationUrl pulumi.StringPtrInput
@@ -309,28 +309,28 @@ func (SettingState) ElementType() reflect.Type {
 
 type settingArgs struct {
 	Analytic *SettingAnalytic `pulumi:"analytic"`
-	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold *int `pulumi:"apUpdownThreshold"`
 	// Auto Upgrade Settings
 	AutoUpgrade *SettingAutoUpgrade `pulumi:"autoUpgrade"`
 	// BLE AP settings
 	BleConfig *SettingBleConfig `pulumi:"bleConfig"`
-	// whether to enable ap auto config revert
+	// Whether to enable ap auto config revert
 	ConfigAutoRevert *bool `pulumi:"configAutoRevert"`
-	// mist also uses some heuristic rules to prevent destructive configs from being pushed
+	// Mist also uses some heuristic rules to prevent destructive configs from being pushed
 	ConfigPushPolicy *SettingConfigPushPolicy `pulumi:"configPushPolicy"`
-	// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
+	// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
 	CriticalUrlMonitoring *SettingCriticalUrlMonitoring `pulumi:"criticalUrlMonitoring"`
-	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+	// By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
 	// is desired, use the following
 	DeviceUpdownThreshold *int `pulumi:"deviceUpdownThreshold"`
-	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
 	// ranges for the same day
 	Engagement *SettingEngagement `pulumi:"engagement"`
 	// Gateway Site settings
 	GatewayMgmt *SettingGatewayMgmt `pulumi:"gatewayMgmt"`
-	// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 	// `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold *int               `pulumi:"gatewayUpdownThreshold"`
 	JuniperSrx             *SettingJuniperSrx `pulumi:"juniperSrx"`
@@ -338,18 +338,18 @@ type settingArgs struct {
 	Led *SettingLed `pulumi:"led"`
 	// Occupancy Analytics settings
 	Occupancy *SettingOccupancy `pulumi:"occupancy"`
-	// whether to store the config on AP
+	// Whether to store the config on AP
 	PersistConfigOnDevice *bool `pulumi:"persistConfigOnDevice"`
 	// Proxy Configuration to talk to Mist
 	Proxy *SettingProxy `pulumi:"proxy"`
-	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs *bool `pulumi:"removeExistingConfigs"`
-	// whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
+	// Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
 	// serial number, battery %, temperature, humidity)
 	ReportGatt *bool `pulumi:"reportGatt"`
 	// Rogue site settings
 	Rogue *SettingRogue `pulumi:"rogue"`
-	// managed mobility
+	// Managed mobility
 	Rtsa *SettingRtsa `pulumi:"rtsa"`
 	// Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
 	// window, there are more than Y distinct client encountring over X failures
@@ -357,22 +357,22 @@ type settingArgs struct {
 	SiteId      string              `pulumi:"siteId"`
 	Skyatp      *SettingSkyatp      `pulumi:"skyatp"`
 	SrxApp      *SettingSrxApp      `pulumi:"srxApp"`
-	// when limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
+	// When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
 	// Org:Setting)
 	SshKeys []string    `pulumi:"sshKeys"`
 	Ssr     *SettingSsr `pulumi:"ssr"`
-	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold *int                  `pulumi:"switchUpdownThreshold"`
 	SyntheticTest         *SettingSyntheticTest `pulumi:"syntheticTest"`
-	// whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+	// Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
 	TrackAnonymousDevices *bool `pulumi:"trackAnonymousDevices"`
 	// AP Uplink port configuration
 	UplinkPortConfig *SettingUplinkPortConfig `pulumi:"uplinkPortConfig"`
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
 	Vna  *SettingVna       `pulumi:"vna"`
-	// optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+	// Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
 	VsInstance map[string]SettingVsInstance `pulumi:"vsInstance"`
 	WanVna     *SettingWanVna               `pulumi:"wanVna"`
 	// WIDS site settings
@@ -387,28 +387,28 @@ type settingArgs struct {
 // The set of arguments for constructing a Setting resource.
 type SettingArgs struct {
 	Analytic SettingAnalyticPtrInput
-	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrInput
 	// Auto Upgrade Settings
 	AutoUpgrade SettingAutoUpgradePtrInput
 	// BLE AP settings
 	BleConfig SettingBleConfigPtrInput
-	// whether to enable ap auto config revert
+	// Whether to enable ap auto config revert
 	ConfigAutoRevert pulumi.BoolPtrInput
-	// mist also uses some heuristic rules to prevent destructive configs from being pushed
+	// Mist also uses some heuristic rules to prevent destructive configs from being pushed
 	ConfigPushPolicy SettingConfigPushPolicyPtrInput
-	// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
+	// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
 	CriticalUrlMonitoring SettingCriticalUrlMonitoringPtrInput
-	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+	// By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
 	// is desired, use the following
 	DeviceUpdownThreshold pulumi.IntPtrInput
-	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
 	// ranges for the same day
 	Engagement SettingEngagementPtrInput
 	// Gateway Site settings
 	GatewayMgmt SettingGatewayMgmtPtrInput
-	// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 	// `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold pulumi.IntPtrInput
 	JuniperSrx             SettingJuniperSrxPtrInput
@@ -416,18 +416,18 @@ type SettingArgs struct {
 	Led SettingLedPtrInput
 	// Occupancy Analytics settings
 	Occupancy SettingOccupancyPtrInput
-	// whether to store the config on AP
+	// Whether to store the config on AP
 	PersistConfigOnDevice pulumi.BoolPtrInput
 	// Proxy Configuration to talk to Mist
 	Proxy SettingProxyPtrInput
-	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs pulumi.BoolPtrInput
-	// whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
+	// Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
 	// serial number, battery %, temperature, humidity)
 	ReportGatt pulumi.BoolPtrInput
 	// Rogue site settings
 	Rogue SettingRoguePtrInput
-	// managed mobility
+	// Managed mobility
 	Rtsa SettingRtsaPtrInput
 	// Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
 	// window, there are more than Y distinct client encountring over X failures
@@ -435,22 +435,22 @@ type SettingArgs struct {
 	SiteId      pulumi.StringInput
 	Skyatp      SettingSkyatpPtrInput
 	SrxApp      SettingSrxAppPtrInput
-	// when limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
+	// When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
 	// Org:Setting)
 	SshKeys pulumi.StringArrayInput
 	Ssr     SettingSsrPtrInput
-	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold pulumi.IntPtrInput
 	SyntheticTest         SettingSyntheticTestPtrInput
-	// whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+	// Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
 	TrackAnonymousDevices pulumi.BoolPtrInput
 	// AP Uplink port configuration
 	UplinkPortConfig SettingUplinkPortConfigPtrInput
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
 	Vna  SettingVnaPtrInput
-	// optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+	// Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
 	VsInstance SettingVsInstanceMapInput
 	WanVna     SettingWanVnaPtrInput
 	// WIDS site settings
@@ -553,7 +553,7 @@ func (o SettingOutput) Analytic() SettingAnalyticPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingAnalyticPtrOutput { return v.Analytic }).(SettingAnalyticPtrOutput)
 }
 
-// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
 // `deviceUpdownThreshold` is ignored.
 func (o SettingOutput) ApUpdownThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.ApUpdownThreshold }).(pulumi.IntOutput)
@@ -573,28 +573,28 @@ func (o SettingOutput) BleConfig() SettingBleConfigPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingBleConfigPtrOutput { return v.BleConfig }).(SettingBleConfigPtrOutput)
 }
 
-// whether to enable ap auto config revert
+// Whether to enable ap auto config revert
 func (o SettingOutput) ConfigAutoRevert() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.ConfigAutoRevert }).(pulumi.BoolOutput)
 }
 
-// mist also uses some heuristic rules to prevent destructive configs from being pushed
+// Mist also uses some heuristic rules to prevent destructive configs from being pushed
 func (o SettingOutput) ConfigPushPolicy() SettingConfigPushPolicyPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingConfigPushPolicyPtrOutput { return v.ConfigPushPolicy }).(SettingConfigPushPolicyPtrOutput)
 }
 
-// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
+// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
 func (o SettingOutput) CriticalUrlMonitoring() SettingCriticalUrlMonitoringPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingCriticalUrlMonitoringPtrOutput { return v.CriticalUrlMonitoring }).(SettingCriticalUrlMonitoringPtrOutput)
 }
 
-// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+// By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
 // is desired, use the following
 func (o SettingOutput) DeviceUpdownThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.DeviceUpdownThreshold }).(pulumi.IntOutput)
 }
 
-// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
 // ranges for the same day
 func (o SettingOutput) Engagement() SettingEngagementPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingEngagementPtrOutput { return v.Engagement }).(SettingEngagementPtrOutput)
@@ -605,7 +605,7 @@ func (o SettingOutput) GatewayMgmt() SettingGatewayMgmtPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingGatewayMgmtPtrOutput { return v.GatewayMgmt }).(SettingGatewayMgmtPtrOutput)
 }
 
-// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 // `deviceUpdownThreshold` is ignored.
 func (o SettingOutput) GatewayUpdownThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.GatewayUpdownThreshold }).(pulumi.IntOutput)
@@ -625,7 +625,7 @@ func (o SettingOutput) Occupancy() SettingOccupancyPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingOccupancyPtrOutput { return v.Occupancy }).(SettingOccupancyPtrOutput)
 }
 
-// whether to store the config on AP
+// Whether to store the config on AP
 func (o SettingOutput) PersistConfigOnDevice() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.PersistConfigOnDevice }).(pulumi.BoolOutput)
 }
@@ -635,12 +635,12 @@ func (o SettingOutput) Proxy() SettingProxyPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingProxyPtrOutput { return v.Proxy }).(SettingProxyPtrOutput)
 }
 
-// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 func (o SettingOutput) RemoveExistingConfigs() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.RemoveExistingConfigs }).(pulumi.BoolOutput)
 }
 
-// whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
+// Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
 // serial number, battery %, temperature, humidity)
 func (o SettingOutput) ReportGatt() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.ReportGatt }).(pulumi.BoolOutput)
@@ -651,7 +651,7 @@ func (o SettingOutput) Rogue() SettingRoguePtrOutput {
 	return o.ApplyT(func(v *Setting) SettingRoguePtrOutput { return v.Rogue }).(SettingRoguePtrOutput)
 }
 
-// managed mobility
+// Managed mobility
 func (o SettingOutput) Rtsa() SettingRtsaPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingRtsaPtrOutput { return v.Rtsa }).(SettingRtsaPtrOutput)
 }
@@ -674,7 +674,7 @@ func (o SettingOutput) SrxApp() SettingSrxAppPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingSrxAppPtrOutput { return v.SrxApp }).(SettingSrxAppPtrOutput)
 }
 
-// when limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
+// When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
 // Org:Setting)
 func (o SettingOutput) SshKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Setting) pulumi.StringArrayOutput { return v.SshKeys }).(pulumi.StringArrayOutput)
@@ -684,7 +684,7 @@ func (o SettingOutput) Ssr() SettingSsrPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingSsrPtrOutput { return v.Ssr }).(SettingSsrPtrOutput)
 }
 
-// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 // `deviceUpdownThreshold` is ignored.
 func (o SettingOutput) SwitchUpdownThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.SwitchUpdownThreshold }).(pulumi.IntOutput)
@@ -694,7 +694,7 @@ func (o SettingOutput) SyntheticTest() SettingSyntheticTestPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingSyntheticTestPtrOutput { return v.SyntheticTest }).(SettingSyntheticTestPtrOutput)
 }
 
-// whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+// Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
 func (o SettingOutput) TrackAnonymousDevices() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.TrackAnonymousDevices }).(pulumi.BoolOutput)
 }
@@ -704,7 +704,7 @@ func (o SettingOutput) UplinkPortConfig() SettingUplinkPortConfigPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingUplinkPortConfigPtrOutput { return v.UplinkPortConfig }).(SettingUplinkPortConfigPtrOutput)
 }
 
-// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 func (o SettingOutput) Vars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Setting) pulumi.StringMapOutput { return v.Vars }).(pulumi.StringMapOutput)
 }
@@ -713,7 +713,7 @@ func (o SettingOutput) Vna() SettingVnaPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingVnaPtrOutput { return v.Vna }).(SettingVnaPtrOutput)
 }
 
-// optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+// Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
 func (o SettingOutput) VsInstance() SettingVsInstanceMapOutput {
 	return o.ApplyT(func(v *Setting) SettingVsInstanceMapOutput { return v.VsInstance }).(SettingVsInstanceMapOutput)
 }

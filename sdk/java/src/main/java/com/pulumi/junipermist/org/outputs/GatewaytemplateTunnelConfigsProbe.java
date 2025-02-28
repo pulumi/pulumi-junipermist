@@ -13,17 +13,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplateTunnelConfigsProbe {
     /**
-     * @return how often to trigger the probe
+     * @return How often to trigger the probe
      * 
      */
     private @Nullable Integer interval;
     /**
-     * @return number of consecutive misses before declaring the tunnel down
+     * @return Number of consecutive misses before declaring the tunnel down
      * 
      */
     private @Nullable Integer threshold;
     /**
-     * @return time within which to complete the connectivity check
+     * @return Time within which to complete the connectivity check
      * 
      */
     private @Nullable Integer timeout;
@@ -35,21 +35,21 @@ public final class GatewaytemplateTunnelConfigsProbe {
 
     private GatewaytemplateTunnelConfigsProbe() {}
     /**
-     * @return how often to trigger the probe
+     * @return How often to trigger the probe
      * 
      */
     public Optional<Integer> interval() {
         return Optional.ofNullable(this.interval);
     }
     /**
-     * @return number of consecutive misses before declaring the tunnel down
+     * @return Number of consecutive misses before declaring the tunnel down
      * 
      */
     public Optional<Integer> threshold() {
         return Optional.ofNullable(this.threshold);
     }
     /**
-     * @return time within which to complete the connectivity check
+     * @return Time within which to complete the connectivity check
      * 
      */
     public Optional<Integer> timeout() {

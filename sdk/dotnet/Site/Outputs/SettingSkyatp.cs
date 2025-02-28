@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     {
         public readonly bool? Enabled;
         /// <summary>
-        /// whether to send IP-MAC mapping to SkyATP
+        /// Whether to send IP-MAC mapping to SkyATP
         /// </summary>
         public readonly bool? SendIpMacMapping;
 

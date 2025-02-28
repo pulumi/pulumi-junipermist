@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? CiscoEnabled { get; set; }
 
         /// <summary>
-        /// whether to disable 11k
+        /// Whether to disable 11k
         /// </summary>
         [Input("disable11k")]
         public Input<bool>? Disable11k { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? DisableRadiosWhenPowerConstrained { get; set; }
 
         /// <summary>
-        /// when proxy_arp is enabled, check for arp spoofing.
+        /// When proxy_arp is enabled, check for arp spoofing.
         /// </summary>
         [Input("enableArpSpoofCheck")]
         public Input<bool>? EnableArpSpoofCheck { get; set; }
@@ -34,37 +34,37 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? EnableSharedRadioScanning { get; set; }
 
         /// <summary>
-        /// enable WIFI feature (using SUB-MAN license)
+        /// Enable Wi-Fi feature (using SUB-MAN license)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// whether to locate connected clients
+        /// Whether to locate connected clients
         /// </summary>
         [Input("locateConnected")]
         public Input<bool>? LocateConnected { get; set; }
 
         /// <summary>
-        /// whether to locate unconnected clients
+        /// Whether to locate unconnected clients
         /// </summary>
         [Input("locateUnconnected")]
         public Input<bool>? LocateUnconnected { get; set; }
 
         /// <summary>
-        /// whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+        /// Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
         /// </summary>
         [Input("meshAllowDfs")]
         public Input<bool>? MeshAllowDfs { get; set; }
 
         /// <summary>
-        /// used to enable/disable CRM
+        /// Used to enable/disable CRM
         /// </summary>
         [Input("meshEnableCrm")]
         public Input<bool>? MeshEnableCrm { get; set; }
 
         /// <summary>
-        /// whether to enable Mesh feature for the site
+        /// Whether to enable Mesh feature for the site
         /// </summary>
         [Input("meshEnabled")]
         public Input<bool>? MeshEnabled { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private Input<string>? _meshPsk;
 
         /// <summary>
-        /// optional passphrase of mesh networking, default is generated randomly
+        /// Optional passphrase of mesh networking, default is generated randomly
         /// </summary>
         public Input<string>? MeshPsk
         {
@@ -86,7 +86,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// optional ssid of mesh networking, default is based on site_id
+        /// Optional ssid of mesh networking, default is based on site_id
         /// </summary>
         [Input("meshSsid")]
         public Input<string>? MeshSsid { get; set; }

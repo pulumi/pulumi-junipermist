@@ -19,14 +19,14 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
     public static final SettingRogueArgs Empty = new SettingRogueArgs();
 
     /**
-     * whether or not rogue detection is enabled
+     * Whether rogue detection is enabled
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return whether or not rogue detection is enabled
+     * @return Whether rogue detection is enabled
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -34,14 +34,14 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether or not honeypot detection is enabled
+     * Whether honeypot detection is enabled
      * 
      */
     @Import(name="honeypotEnabled")
     private @Nullable Output<Boolean> honeypotEnabled;
 
     /**
-     * @return whether or not honeypot detection is enabled
+     * @return Whether honeypot detection is enabled
      * 
      */
     public Optional<Output<Boolean>> honeypotEnabled() {
@@ -49,14 +49,14 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * minimum duration for a bssid to be considered rogue
+     * Minimum duration for a bssid to be considered rogue
      * 
      */
     @Import(name="minDuration")
     private @Nullable Output<Integer> minDuration;
 
     /**
-     * @return minimum duration for a bssid to be considered rogue
+     * @return Minimum duration for a bssid to be considered rogue
      * 
      */
     public Optional<Output<Integer>> minDuration() {
@@ -64,14 +64,14 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+     * Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
      * 
      */
     @Import(name="minRssi")
     private @Nullable Output<Integer> minRssi;
 
     /**
-     * @return minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+     * @return Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
      * 
      */
     public Optional<Output<Integer>> minRssi() {
@@ -94,14 +94,14 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * list of SSIDs to whitelist
+     * List of SSIDs to whitelist
      * 
      */
     @Import(name="whitelistedSsids")
     private @Nullable Output<List<String>> whitelistedSsids;
 
     /**
-     * @return list of SSIDs to whitelist
+     * @return List of SSIDs to whitelist
      * 
      */
     public Optional<Output<List<String>>> whitelistedSsids() {
@@ -138,7 +138,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled whether or not rogue detection is enabled
+         * @param enabled Whether rogue detection is enabled
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled whether or not rogue detection is enabled
+         * @param enabled Whether rogue detection is enabled
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param honeypotEnabled whether or not honeypot detection is enabled
+         * @param honeypotEnabled Whether honeypot detection is enabled
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param honeypotEnabled whether or not honeypot detection is enabled
+         * @param honeypotEnabled Whether honeypot detection is enabled
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minDuration minimum duration for a bssid to be considered rogue
+         * @param minDuration Minimum duration for a bssid to be considered rogue
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minDuration minimum duration for a bssid to be considered rogue
+         * @param minDuration Minimum duration for a bssid to be considered rogue
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minRssi minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+         * @param minRssi Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minRssi minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+         * @param minRssi Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param whitelistedSsids list of SSIDs to whitelist
+         * @param whitelistedSsids List of SSIDs to whitelist
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param whitelistedSsids list of SSIDs to whitelist
+         * @param whitelistedSsids List of SSIDs to whitelist
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param whitelistedSsids list of SSIDs to whitelist
+         * @param whitelistedSsids List of SSIDs to whitelist
          * 
          * @return builder
          * 

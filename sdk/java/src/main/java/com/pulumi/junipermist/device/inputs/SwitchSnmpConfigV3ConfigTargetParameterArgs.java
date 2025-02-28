@@ -5,6 +5,7 @@ package com.pulumi.junipermist.device.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,33 +20,33 @@ public final class SwitchSnmpConfigV3ConfigTargetParameterArgs extends com.pulum
      * enum: `v1`, `v2c`, `v3`
      * 
      */
-    @Import(name="messageProcessingModel")
-    private @Nullable Output<String> messageProcessingModel;
+    @Import(name="messageProcessingModel", required=true)
+    private Output<String> messageProcessingModel;
 
     /**
      * @return enum: `v1`, `v2c`, `v3`
      * 
      */
-    public Optional<Output<String>> messageProcessingModel() {
-        return Optional.ofNullable(this.messageProcessingModel);
+    public Output<String> messageProcessingModel() {
+        return this.messageProcessingModel;
     }
 
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
-     * refer to profile-name in notify_filter
+     * Refer to profile-name in notify_filter
      * 
      */
     @Import(name="notifyFilter")
     private @Nullable Output<String> notifyFilter;
 
     /**
-     * @return refer to profile-name in notify_filter
+     * @return Refer to profile-name in notify_filter
      * 
      */
     public Optional<Output<String>> notifyFilter() {
@@ -83,14 +84,14 @@ public final class SwitchSnmpConfigV3ConfigTargetParameterArgs extends com.pulum
     }
 
     /**
-     * refer to security_name in usm
+     * Refer to security_name in usm
      * 
      */
     @Import(name="securityName")
     private @Nullable Output<String> securityName;
 
     /**
-     * @return refer to security_name in usm
+     * @return Refer to security_name in usm
      * 
      */
     public Optional<Output<String>> securityName() {
@@ -132,7 +133,7 @@ public final class SwitchSnmpConfigV3ConfigTargetParameterArgs extends com.pulum
          * @return builder
          * 
          */
-        public Builder messageProcessingModel(@Nullable Output<String> messageProcessingModel) {
+        public Builder messageProcessingModel(Output<String> messageProcessingModel) {
             $.messageProcessingModel = messageProcessingModel;
             return this;
         }
@@ -147,7 +148,7 @@ public final class SwitchSnmpConfigV3ConfigTargetParameterArgs extends com.pulum
             return messageProcessingModel(Output.of(messageProcessingModel));
         }
 
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -157,7 +158,7 @@ public final class SwitchSnmpConfigV3ConfigTargetParameterArgs extends com.pulum
         }
 
         /**
-         * @param notifyFilter refer to profile-name in notify_filter
+         * @param notifyFilter Refer to profile-name in notify_filter
          * 
          * @return builder
          * 
@@ -168,7 +169,7 @@ public final class SwitchSnmpConfigV3ConfigTargetParameterArgs extends com.pulum
         }
 
         /**
-         * @param notifyFilter refer to profile-name in notify_filter
+         * @param notifyFilter Refer to profile-name in notify_filter
          * 
          * @return builder
          * 
@@ -220,7 +221,7 @@ public final class SwitchSnmpConfigV3ConfigTargetParameterArgs extends com.pulum
         }
 
         /**
-         * @param securityName refer to security_name in usm
+         * @param securityName Refer to security_name in usm
          * 
          * @return builder
          * 
@@ -231,7 +232,7 @@ public final class SwitchSnmpConfigV3ConfigTargetParameterArgs extends com.pulum
         }
 
         /**
-         * @param securityName refer to security_name in usm
+         * @param securityName Refer to security_name in usm
          * 
          * @return builder
          * 
@@ -241,6 +242,12 @@ public final class SwitchSnmpConfigV3ConfigTargetParameterArgs extends com.pulum
         }
 
         public SwitchSnmpConfigV3ConfigTargetParameterArgs build() {
+            if ($.messageProcessingModel == null) {
+                throw new MissingRequiredPropertyException("SwitchSnmpConfigV3ConfigTargetParameterArgs", "messageProcessingModel");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("SwitchSnmpConfigV3ConfigTargetParameterArgs", "name");
+            }
             return $;
         }
     }

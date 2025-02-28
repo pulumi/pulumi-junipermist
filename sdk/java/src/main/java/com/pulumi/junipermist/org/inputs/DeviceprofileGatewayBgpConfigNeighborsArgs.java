@@ -54,14 +54,14 @@ public final class DeviceprofileGatewayBgpConfigNeighborsArgs extends com.pulumi
     }
 
     /**
-     * assuming BGP neighbor is directly connected
+     * Assuming BGP neighbor is directly connected
      * 
      */
     @Import(name="multihopTtl")
     private @Nullable Output<Integer> multihopTtl;
 
     /**
-     * @return assuming BGP neighbor is directly connected
+     * @return Assuming BGP neighbor is directly connected
      * 
      */
     public Optional<Output<Integer>> multihopTtl() {
@@ -153,7 +153,7 @@ public final class DeviceprofileGatewayBgpConfigNeighborsArgs extends com.pulumi
         }
 
         /**
-         * @param multihopTtl assuming BGP neighbor is directly connected
+         * @param multihopTtl Assuming BGP neighbor is directly connected
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class DeviceprofileGatewayBgpConfigNeighborsArgs extends com.pulumi
         }
 
         /**
-         * @param multihopTtl assuming BGP neighbor is directly connected
+         * @param multihopTtl Assuming BGP neighbor is directly connected
          * 
          * @return builder
          * 

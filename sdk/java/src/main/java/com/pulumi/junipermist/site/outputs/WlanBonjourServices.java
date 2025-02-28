@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanBonjourServices {
     /**
-     * @return whether to prevent wireless clients to discover bonjour devices on the same WLAN
+     * @return Whether to prevent wireless clients to discover bonjour devices on the same WLAN
      * 
      */
     private @Nullable Boolean disableLocal;
     /**
-     * @return optional, if the service is further restricted for certain RADIUS groups
+     * @return Optional, if the service is further restricted for certain RADIUS groups
      * 
      */
     private @Nullable List<String> radiusGroups;
@@ -31,14 +31,14 @@ public final class WlanBonjourServices {
 
     private WlanBonjourServices() {}
     /**
-     * @return whether to prevent wireless clients to discover bonjour devices on the same WLAN
+     * @return Whether to prevent wireless clients to discover bonjour devices on the same WLAN
      * 
      */
     public Optional<Boolean> disableLocal() {
         return Optional.ofNullable(this.disableLocal);
     }
     /**
-     * @return optional, if the service is further restricted for certain RADIUS groups
+     * @return Optional, if the service is further restricted for certain RADIUS groups
      * 
      */
     public List<String> radiusGroups() {

@@ -22,12 +22,12 @@ public final class WlanBonjour {
      */
     private List<String> additionalVlanIds;
     /**
-     * @return whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+     * @return Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return what services are allowed.
+     * @return What services are allowed.
      * Property key is the service name
      * 
      */
@@ -42,14 +42,14 @@ public final class WlanBonjour {
         return this.additionalVlanIds;
     }
     /**
-     * @return whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+     * @return Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return what services are allowed.
+     * @return What services are allowed.
      * Property key is the service name
      * 
      */

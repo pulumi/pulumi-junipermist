@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
  * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
- * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects..
+ * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects.
  *
  * ## Example Usage
  *
@@ -54,7 +54,7 @@ export interface GetSsoRolesResult {
  *
  * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
  * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
- * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects..
+ * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects.
  *
  * ## Example Usage
  *

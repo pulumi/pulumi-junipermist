@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileGatewayPortConfigWanSourceNat
     {
         /// <summary>
-        /// or to disable the source-nat
+        /// Or to disable the source-nat
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// if alternative nat_pool is desired
+        /// If alternative nat_pool is desired
         /// </summary>
         public readonly string? NatPool;
 

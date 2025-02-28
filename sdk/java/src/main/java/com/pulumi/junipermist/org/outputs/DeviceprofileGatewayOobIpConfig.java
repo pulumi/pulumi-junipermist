@@ -14,22 +14,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileGatewayOobIpConfig {
     /**
-     * @return if `type`==`static`
+     * @return If `type`==`static`
      * 
      */
     private @Nullable String gateway;
     /**
-     * @return if `type`==`static`
+     * @return If `type`==`static`
      * 
      */
     private @Nullable String ip;
     /**
-     * @return if `type`==`static`
+     * @return If `type`==`static`
      * 
      */
     private @Nullable String netmask;
     /**
-     * @return for HA Cluster, node1 can have different IP Config
+     * @return For HA Cluster, node1 can have different IP Config
      * 
      */
     private @Nullable DeviceprofileGatewayOobIpConfigNode1 node1;
@@ -39,12 +39,12 @@ public final class DeviceprofileGatewayOobIpConfig {
      */
     private @Nullable String type;
     /**
-     * @return if supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * @return If supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     private @Nullable Boolean useMgmtVrf;
     /**
-     * @return for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+     * @return For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     private @Nullable Boolean useMgmtVrfForHostOut;
@@ -52,28 +52,28 @@ public final class DeviceprofileGatewayOobIpConfig {
 
     private DeviceprofileGatewayOobIpConfig() {}
     /**
-     * @return if `type`==`static`
+     * @return If `type`==`static`
      * 
      */
     public Optional<String> gateway() {
         return Optional.ofNullable(this.gateway);
     }
     /**
-     * @return if `type`==`static`
+     * @return If `type`==`static`
      * 
      */
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
     /**
-     * @return if `type`==`static`
+     * @return If `type`==`static`
      * 
      */
     public Optional<String> netmask() {
         return Optional.ofNullable(this.netmask);
     }
     /**
-     * @return for HA Cluster, node1 can have different IP Config
+     * @return For HA Cluster, node1 can have different IP Config
      * 
      */
     public Optional<DeviceprofileGatewayOobIpConfigNode1> node1() {
@@ -87,14 +87,14 @@ public final class DeviceprofileGatewayOobIpConfig {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return if supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * @return If supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     public Optional<Boolean> useMgmtVrf() {
         return Optional.ofNullable(this.useMgmtVrf);
     }
     /**
-     * @return for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+     * @return For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     public Optional<Boolean> useMgmtVrfForHostOut() {

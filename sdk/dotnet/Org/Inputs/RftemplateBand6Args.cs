@@ -43,25 +43,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// whether to disable the radio
+        /// Whether to disable the radio
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        /// Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
         /// </summary>
         [Input("power")]
         public Input<int>? Power { get; set; }
 
         /// <summary>
-        /// when power=0, max tx power to use, HW-specific values will be used if not set
+        /// When power=0, max tx power to use, HW-specific values will be used if not set
         /// </summary>
         [Input("powerMax")]
         public Input<int>? PowerMax { get; set; }
 
         /// <summary>
-        /// when power=0, min tx power to use, HW-specific values will be used if not set
+        /// When power=0, min tx power to use, HW-specific values will be used if not set
         /// </summary>
         [Input("powerMin")]
         public Input<int>? PowerMin { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Preamble { get; set; }
 
         /// <summary>
-        /// for 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed and we'll fallback to Low Power Indoor if AFC failed
+        /// For 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed, and we'll fall back to Low Power Indoor if AFC failed
         /// </summary>
         [Input("standardPower")]
         public Input<bool>? StandardPower { get; set; }

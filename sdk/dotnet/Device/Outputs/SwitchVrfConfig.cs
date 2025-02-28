@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchVrfConfig
     {
         /// <summary>
-        /// whether to enable VRF (when supported on the device)
+        /// Whether to enable VRF (when supported on the device)
         /// </summary>
         public readonly bool? Enabled;
 

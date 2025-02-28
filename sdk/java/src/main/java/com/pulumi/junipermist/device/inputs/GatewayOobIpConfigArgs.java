@@ -18,14 +18,14 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
     public static final GatewayOobIpConfigArgs Empty = new GatewayOobIpConfigArgs();
 
     /**
-     * if `type`==`static`
+     * If `type`==`static`
      * 
      */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
     /**
-     * @return if `type`==`static`
+     * @return If `type`==`static`
      * 
      */
     public Optional<Output<String>> gateway() {
@@ -33,14 +33,14 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * if `type`==`static`
+     * If `type`==`static`
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return if `type`==`static`
+     * @return If `type`==`static`
      * 
      */
     public Optional<Output<String>> ip() {
@@ -48,14 +48,14 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * if `type`==`static`
+     * If `type`==`static`
      * 
      */
     @Import(name="netmask")
     private @Nullable Output<String> netmask;
 
     /**
-     * @return if `type`==`static`
+     * @return If `type`==`static`
      * 
      */
     public Optional<Output<String>> netmask() {
@@ -63,14 +63,14 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * for HA Cluster, node1 can have different IP Config
+     * For HA Cluster, node1 can have different IP Config
      * 
      */
     @Import(name="node1")
     private @Nullable Output<GatewayOobIpConfigNode1Args> node1;
 
     /**
-     * @return for HA Cluster, node1 can have different IP Config
+     * @return For HA Cluster, node1 can have different IP Config
      * 
      */
     public Optional<Output<GatewayOobIpConfigNode1Args>> node1() {
@@ -93,14 +93,14 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * if supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * If supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     @Import(name="useMgmtVrf")
     private @Nullable Output<Boolean> useMgmtVrf;
 
     /**
-     * @return if supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * @return If supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     public Optional<Output<Boolean>> useMgmtVrf() {
@@ -108,14 +108,14 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+     * For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     @Import(name="useMgmtVrfForHostOut")
     private @Nullable Output<Boolean> useMgmtVrfForHostOut;
 
     /**
-     * @return for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+     * @return For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     public Optional<Output<Boolean>> useMgmtVrfForHostOut() {
@@ -161,7 +161,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param gateway if `type`==`static`
+         * @param gateway If `type`==`static`
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param gateway if `type`==`static`
+         * @param gateway If `type`==`static`
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ip if `type`==`static`
+         * @param ip If `type`==`static`
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ip if `type`==`static`
+         * @param ip If `type`==`static`
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param netmask if `type`==`static`
+         * @param netmask If `type`==`static`
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param netmask if `type`==`static`
+         * @param netmask If `type`==`static`
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param node1 for HA Cluster, node1 can have different IP Config
+         * @param node1 For HA Cluster, node1 can have different IP Config
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param node1 for HA Cluster, node1 can have different IP Config
+         * @param node1 For HA Cluster, node1 can have different IP Config
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param useMgmtVrf if supported on the platform. If enabled, DNS will be using this routing-instance, too
+         * @param useMgmtVrf If supported on the platform. If enabled, DNS will be using this routing-instance, too
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param useMgmtVrf if supported on the platform. If enabled, DNS will be using this routing-instance, too
+         * @param useMgmtVrf If supported on the platform. If enabled, DNS will be using this routing-instance, too
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param useMgmtVrfForHostOut for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+         * @param useMgmtVrfForHostOut For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param useMgmtVrfForHostOut for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+         * @param useMgmtVrfForHostOut For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          * 
          * @return builder
          * 

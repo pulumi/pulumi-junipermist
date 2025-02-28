@@ -24,7 +24,7 @@ public final class GetWlansSiteWlanDynamicVlan {
      */
     private Boolean enabled;
     /**
-     * @return vlan_ids to be locally bridged
+     * @return VLAN_ids to be locally bridged
      * 
      */
     private List<String> localVlanIds;
@@ -34,7 +34,7 @@ public final class GetWlansSiteWlanDynamicVlan {
      */
     private String type;
     /**
-     * @return map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
+     * @return Map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
      *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
      *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
      * 
@@ -57,7 +57,7 @@ public final class GetWlansSiteWlanDynamicVlan {
         return this.enabled;
     }
     /**
-     * @return vlan_ids to be locally bridged
+     * @return VLAN_ids to be locally bridged
      * 
      */
     public List<String> localVlanIds() {
@@ -71,7 +71,7 @@ public final class GetWlansSiteWlanDynamicVlan {
         return this.type;
     }
     /**
-     * @return map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
+     * @return Map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
      *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
      *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
      * 

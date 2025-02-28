@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<Inputs.GatewaytemplateTunnelConfigsIkeProposalGetArgs>? _ikeProposals;
 
         /// <summary>
-        /// if `provider`==`custom-ipsec`
+        /// If `provider`==`custom-ipsec`
         /// </summary>
         public InputList<Inputs.GatewaytemplateTunnelConfigsIkeProposalGetArgs> IkeProposals
         {
@@ -73,7 +73,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _networks;
 
         /// <summary>
-        /// if `provider`==`custom-ipsec`, networks reachable via this tunnel
+        /// If `provider`==`custom-ipsec`, networks reachable via this tunnel
         /// </summary>
         public InputList<string> Networks
         {

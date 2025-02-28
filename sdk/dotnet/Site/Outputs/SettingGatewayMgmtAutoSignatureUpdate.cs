@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly string? DayOfWeek;
         public readonly bool? Enable;
         /// <summary>
-        /// optional, Mist will decide the timing
+        /// Optional, Mist will decide the timing
         /// </summary>
         public readonly string? TimeOfDay;
 

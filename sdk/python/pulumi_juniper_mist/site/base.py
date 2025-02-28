@@ -510,7 +510,7 @@ class Base(pulumi.CustomResource):
                  timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resources manages the Site basic information.
+        This resource manages the Site basic information.
 
         This resource can be used to assign templates to a site, or to change basic information (e.g. Site Address)
 
@@ -573,7 +573,7 @@ class Base(pulumi.CustomResource):
                  args: BaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resources manages the Site basic information.
+        This resource manages the Site basic information.
 
         This resource can be used to assign templates to a site, or to change basic information (e.g. Site Address)
 

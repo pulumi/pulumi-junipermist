@@ -23,7 +23,7 @@ public final class SwitchSwitchMgmtTacacs {
     private @Nullable String defaultRole;
     private @Nullable Boolean enabled;
     /**
-     * @return which network the TACACS server resides
+     * @return Which network the TACACS server resides
      * 
      */
     private @Nullable String network;
@@ -44,7 +44,7 @@ public final class SwitchSwitchMgmtTacacs {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return which network the TACACS server resides
+     * @return Which network the TACACS server resides
      * 
      */
     public Optional<String> network() {

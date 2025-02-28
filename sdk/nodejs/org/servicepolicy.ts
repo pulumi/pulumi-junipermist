@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * * the Gateway configuration (`mist_device_gateway.service_policies`)
  * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
  * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
- *   They can be used to manage common policies betweeen multiples configurations
+ *   They can be used to manage common policies between multiples configurations
  *
  * ## Import
  *
@@ -58,6 +58,10 @@ export class Servicepolicy extends pulumi.CustomResource {
      */
     public readonly action!: pulumi.Output<string>;
     /**
+     * For SRX-only
+     */
+    public readonly antivirus!: pulumi.Output<outputs.org.ServicepolicyAntivirus | undefined>;
+    /**
      * For SRX Only
      */
     public readonly appqoe!: pulumi.Output<outputs.org.ServicepolicyAppqoe | undefined>;
@@ -66,15 +70,18 @@ export class Servicepolicy extends pulumi.CustomResource {
     /**
      * access within the same VRF
      */
-    public readonly localRouting!: pulumi.Output<boolean>;
+    public readonly localRouting!: pulumi.Output<boolean | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * by default, we derive all paths available and use them
-     * optionally, you can customize by using `pathPreference`
+     * By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
      */
     public readonly pathPreference!: pulumi.Output<string | undefined>;
     public readonly services!: pulumi.Output<string[] | undefined>;
+    /**
+     * For SRX-only
+     */
+    public readonly sslProxy!: pulumi.Output<outputs.org.ServicepolicySslProxy | undefined>;
     public readonly tenants!: pulumi.Output<string[] | undefined>;
 
     /**
@@ -91,6 +98,7 @@ export class Servicepolicy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ServicepolicyState | undefined;
             resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["antivirus"] = state ? state.antivirus : undefined;
             resourceInputs["appqoe"] = state ? state.appqoe : undefined;
             resourceInputs["ewfs"] = state ? state.ewfs : undefined;
             resourceInputs["idp"] = state ? state.idp : undefined;
@@ -99,6 +107,7 @@ export class Servicepolicy extends pulumi.CustomResource {
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["pathPreference"] = state ? state.pathPreference : undefined;
             resourceInputs["services"] = state ? state.services : undefined;
+            resourceInputs["sslProxy"] = state ? state.sslProxy : undefined;
             resourceInputs["tenants"] = state ? state.tenants : undefined;
         } else {
             const args = argsOrState as ServicepolicyArgs | undefined;
@@ -106,6 +115,7 @@ export class Servicepolicy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'orgId'");
             }
             resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["antivirus"] = args ? args.antivirus : undefined;
             resourceInputs["appqoe"] = args ? args.appqoe : undefined;
             resourceInputs["ewfs"] = args ? args.ewfs : undefined;
             resourceInputs["idp"] = args ? args.idp : undefined;
@@ -114,6 +124,7 @@ export class Servicepolicy extends pulumi.CustomResource {
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["pathPreference"] = args ? args.pathPreference : undefined;
             resourceInputs["services"] = args ? args.services : undefined;
+            resourceInputs["sslProxy"] = args ? args.sslProxy : undefined;
             resourceInputs["tenants"] = args ? args.tenants : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -130,6 +141,10 @@ export interface ServicepolicyState {
      */
     action?: pulumi.Input<string>;
     /**
+     * For SRX-only
+     */
+    antivirus?: pulumi.Input<inputs.org.ServicepolicyAntivirus>;
+    /**
      * For SRX Only
      */
     appqoe?: pulumi.Input<inputs.org.ServicepolicyAppqoe>;
@@ -142,11 +157,14 @@ export interface ServicepolicyState {
     name?: pulumi.Input<string>;
     orgId?: pulumi.Input<string>;
     /**
-     * by default, we derive all paths available and use them
-     * optionally, you can customize by using `pathPreference`
+     * By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
      */
     pathPreference?: pulumi.Input<string>;
     services?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * For SRX-only
+     */
+    sslProxy?: pulumi.Input<inputs.org.ServicepolicySslProxy>;
     tenants?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -158,6 +176,10 @@ export interface ServicepolicyArgs {
      * enum: `allow`, `deny`
      */
     action?: pulumi.Input<string>;
+    /**
+     * For SRX-only
+     */
+    antivirus?: pulumi.Input<inputs.org.ServicepolicyAntivirus>;
     /**
      * For SRX Only
      */
@@ -171,10 +193,13 @@ export interface ServicepolicyArgs {
     name?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
     /**
-     * by default, we derive all paths available and use them
-     * optionally, you can customize by using `pathPreference`
+     * By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
      */
     pathPreference?: pulumi.Input<string>;
     services?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * For SRX-only
+     */
+    sslProxy?: pulumi.Input<inputs.org.ServicepolicySslProxy>;
     tenants?: pulumi.Input<pulumi.Input<string>[]>;
 }

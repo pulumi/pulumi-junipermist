@@ -13,13 +13,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class NetworktemplateNetworksGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+        /// Only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
 
         /// <summary>
-        /// only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+        /// Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
         /// </summary>
         [Input("gateway6")]
         public Input<string>? Gateway6 { get; set; }
@@ -34,13 +34,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? IsolationVlanId { get; set; }
 
         /// <summary>
-        /// optional for pure switching, required when L3 / routing features are used
+        /// Optional for pure switching, required when L3 / routing features are used
         /// </summary>
         [Input("subnet")]
         public Input<string>? Subnet { get; set; }
 
         /// <summary>
-        /// optional for pure switching, required when L3 / routing features are used
+        /// Optional for pure switching, required when L3 / routing features are used
         /// </summary>
         [Input("subnet6")]
         public Input<string>? Subnet6 { get; set; }

@@ -54,7 +54,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Severity { get; set; }
 
         /// <summary>
-        /// if source_address is configured, will use the vlan firstly otherwise use source_ip
+        /// If source_address is configured, will use the vlan firstly otherwise use source_ip
         /// </summary>
         [Input("sourceAddress")]
         public Input<string>? SourceAddress { get; set; }

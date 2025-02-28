@@ -26,7 +26,7 @@ public final class SwitchDhcpSnooping {
     private @Nullable Boolean enableIpSourceGuard;
     private @Nullable Boolean enabled;
     /**
-     * @return if `all_networks`==`false`, list of network with DHCP snooping enabled
+     * @return If `all_networks`==`false`, list of network with DHCP snooping enabled
      * 
      */
     private @Nullable List<String> networks;
@@ -53,7 +53,7 @@ public final class SwitchDhcpSnooping {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return if `all_networks`==`false`, list of network with DHCP snooping enabled
+     * @return If `all_networks`==`false`, list of network with DHCP snooping enabled
      * 
      */
     public List<String> networks() {

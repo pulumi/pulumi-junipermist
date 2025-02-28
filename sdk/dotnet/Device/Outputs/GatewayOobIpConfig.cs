@@ -14,19 +14,19 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayOobIpConfig
     {
         /// <summary>
-        /// if `type`==`static`
+        /// If `type`==`static`
         /// </summary>
         public readonly string? Gateway;
         /// <summary>
-        /// if `type`==`static`
+        /// If `type`==`static`
         /// </summary>
         public readonly string? Ip;
         /// <summary>
-        /// if `type`==`static`
+        /// If `type`==`static`
         /// </summary>
         public readonly string? Netmask;
         /// <summary>
-        /// for HA Cluster, node1 can have different IP Config
+        /// For HA Cluster, node1 can have different IP Config
         /// </summary>
         public readonly Outputs.GatewayOobIpConfigNode1? Node1;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// if supported on the platform. If enabled, DNS will be using this routing-instance, too
+        /// If supported on the platform. If enabled, DNS will be using this routing-instance, too
         /// </summary>
         public readonly bool? UseMgmtVrf;
         /// <summary>
-        /// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        /// For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         /// </summary>
         public readonly bool? UseMgmtVrfForHostOut;
         public readonly string? VlanId;

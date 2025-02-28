@@ -14,9 +14,7 @@ import javax.annotation.Nullable;
 public final class WlanSchedule {
     private @Nullable Boolean enabled;
     /**
-     * @return hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-     * 
-     * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+     * @return Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
      * 
      */
     private @Nullable WlanScheduleHours hours;
@@ -26,9 +24,7 @@ public final class WlanSchedule {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-     * 
-     * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+     * @return Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
      * 
      */
     public Optional<WlanScheduleHours> hours() {

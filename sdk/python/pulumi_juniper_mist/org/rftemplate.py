@@ -41,10 +41,10 @@ class RftemplateArgs:
         :param pulumi.Input['RftemplateBand5Args'] band5: Radio Band AP settings
         :param pulumi.Input['RftemplateBand5On24RadioArgs'] band5_on24_radio: Radio Band AP settings
         :param pulumi.Input['RftemplateBand6Args'] band6: Radio Band AP settings
-        :param pulumi.Input[str] country_code: optional, country code to use. If specified, this gets applied to all sites using the RF Template
+        :param pulumi.Input[str] country_code: Optional, country code to use. If specified, this gets applied to all sites using the RF Template
         :param pulumi.Input[Mapping[str, pulumi.Input['RftemplateModelSpecificArgs']]] model_specific: overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
         :param pulumi.Input[str] name: The name of the RF template
-        :param pulumi.Input[bool] scanning_enabled: whether scanning radio is enabled
+        :param pulumi.Input[bool] scanning_enabled: Whether scanning radio is enabled
         """
         pulumi.set(__self__, "org_id", org_id)
         if ant_gain24 is not None:
@@ -172,7 +172,7 @@ class RftemplateArgs:
     @pulumi.getter(name="countryCode")
     def country_code(self) -> Optional[pulumi.Input[str]]:
         """
-        optional, country code to use. If specified, this gets applied to all sites using the RF Template
+        Optional, country code to use. If specified, this gets applied to all sites using the RF Template
         """
         return pulumi.get(self, "country_code")
 
@@ -208,7 +208,7 @@ class RftemplateArgs:
     @pulumi.getter(name="scanningEnabled")
     def scanning_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether scanning radio is enabled
+        Whether scanning radio is enabled
         """
         return pulumi.get(self, "scanning_enabled")
 
@@ -240,10 +240,10 @@ class _RftemplateState:
         :param pulumi.Input['RftemplateBand5Args'] band5: Radio Band AP settings
         :param pulumi.Input['RftemplateBand5On24RadioArgs'] band5_on24_radio: Radio Band AP settings
         :param pulumi.Input['RftemplateBand6Args'] band6: Radio Band AP settings
-        :param pulumi.Input[str] country_code: optional, country code to use. If specified, this gets applied to all sites using the RF Template
+        :param pulumi.Input[str] country_code: Optional, country code to use. If specified, this gets applied to all sites using the RF Template
         :param pulumi.Input[Mapping[str, pulumi.Input['RftemplateModelSpecificArgs']]] model_specific: overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
         :param pulumi.Input[str] name: The name of the RF template
-        :param pulumi.Input[bool] scanning_enabled: whether scanning radio is enabled
+        :param pulumi.Input[bool] scanning_enabled: Whether scanning radio is enabled
         """
         if ant_gain24 is not None:
             pulumi.set(__self__, "ant_gain24", ant_gain24)
@@ -363,7 +363,7 @@ class _RftemplateState:
     @pulumi.getter(name="countryCode")
     def country_code(self) -> Optional[pulumi.Input[str]]:
         """
-        optional, country code to use. If specified, this gets applied to all sites using the RF Template
+        Optional, country code to use. If specified, this gets applied to all sites using the RF Template
         """
         return pulumi.get(self, "country_code")
 
@@ -408,7 +408,7 @@ class _RftemplateState:
     @pulumi.getter(name="scanningEnabled")
     def scanning_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether scanning radio is enabled
+        Whether scanning radio is enabled
         """
         return pulumi.get(self, "scanning_enabled")
 
@@ -458,10 +458,10 @@ class Rftemplate(pulumi.CustomResource):
         :param pulumi.Input[Union['RftemplateBand5Args', 'RftemplateBand5ArgsDict']] band5: Radio Band AP settings
         :param pulumi.Input[Union['RftemplateBand5On24RadioArgs', 'RftemplateBand5On24RadioArgsDict']] band5_on24_radio: Radio Band AP settings
         :param pulumi.Input[Union['RftemplateBand6Args', 'RftemplateBand6ArgsDict']] band6: Radio Band AP settings
-        :param pulumi.Input[str] country_code: optional, country code to use. If specified, this gets applied to all sites using the RF Template
+        :param pulumi.Input[str] country_code: Optional, country code to use. If specified, this gets applied to all sites using the RF Template
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['RftemplateModelSpecificArgs', 'RftemplateModelSpecificArgsDict']]]] model_specific: overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
         :param pulumi.Input[str] name: The name of the RF template
-        :param pulumi.Input[bool] scanning_enabled: whether scanning radio is enabled
+        :param pulumi.Input[bool] scanning_enabled: Whether scanning radio is enabled
         """
         ...
     @overload
@@ -571,10 +571,10 @@ class Rftemplate(pulumi.CustomResource):
         :param pulumi.Input[Union['RftemplateBand5Args', 'RftemplateBand5ArgsDict']] band5: Radio Band AP settings
         :param pulumi.Input[Union['RftemplateBand5On24RadioArgs', 'RftemplateBand5On24RadioArgsDict']] band5_on24_radio: Radio Band AP settings
         :param pulumi.Input[Union['RftemplateBand6Args', 'RftemplateBand6ArgsDict']] band6: Radio Band AP settings
-        :param pulumi.Input[str] country_code: optional, country code to use. If specified, this gets applied to all sites using the RF Template
+        :param pulumi.Input[str] country_code: Optional, country code to use. If specified, this gets applied to all sites using the RF Template
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['RftemplateModelSpecificArgs', 'RftemplateModelSpecificArgsDict']]]] model_specific: overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
         :param pulumi.Input[str] name: The name of the RF template
-        :param pulumi.Input[bool] scanning_enabled: whether scanning radio is enabled
+        :param pulumi.Input[bool] scanning_enabled: Whether scanning radio is enabled
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -654,7 +654,7 @@ class Rftemplate(pulumi.CustomResource):
     @pulumi.getter(name="countryCode")
     def country_code(self) -> pulumi.Output[Optional[str]]:
         """
-        optional, country code to use. If specified, this gets applied to all sites using the RF Template
+        Optional, country code to use. If specified, this gets applied to all sites using the RF Template
         """
         return pulumi.get(self, "country_code")
 
@@ -683,7 +683,7 @@ class Rftemplate(pulumi.CustomResource):
     @pulumi.getter(name="scanningEnabled")
     def scanning_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        whether scanning radio is enabled
+        Whether scanning radio is enabled
         """
         return pulumi.get(self, "scanning_enabled")
 

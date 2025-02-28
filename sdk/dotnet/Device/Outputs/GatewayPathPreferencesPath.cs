@@ -19,25 +19,25 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// only if `type`==`local`, if a different gateway is desired
+        /// Only if `type`==`local`, if a different gateway is desired
         /// </summary>
         public readonly string? GatewayIp;
         /// <summary>
-        /// only if `type`==`vpn`, if this vpn path can be used for internet
+        /// Only if `type`==`vpn`, if this vpn path can be used for internet
         /// </summary>
         public readonly bool? InternetAccess;
         /// <summary>
-        /// required when 
+        /// Required when 
         ///   * `type`==`vpn`: the name of the VPN Path to use 
-        ///   * `type`==`wan`: the name of the WAN interface to use'
+        ///   * `type`==`wan`: the name of the WAN interface to use
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// required when `type`==`local`
+        /// Required when `type`==`local`
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
-        /// if `type`==`local`, if destination IP is to be replaced
+        /// If `type`==`local`, if destination IP is to be replaced
         /// </summary>
         public readonly ImmutableArray<string> TargetIps;
         /// <summary>
@@ -45,7 +45,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// optional if `type`==`vpn`
+        /// Optional if `type`==`vpn`
         /// </summary>
         public readonly string? WanName;
 

@@ -17,14 +17,14 @@ public final class DeviceprofileGatewayRoutingPoliciesTermArgs extends com.pulum
     public static final DeviceprofileGatewayRoutingPoliciesTermArgs Empty = new DeviceprofileGatewayRoutingPoliciesTermArgs();
 
     /**
-     * when used as import policy
+     * When used as import policy
      * 
      */
     @Import(name="action")
     private @Nullable Output<DeviceprofileGatewayRoutingPoliciesTermActionArgs> action;
 
     /**
-     * @return when used as import policy
+     * @return When used as import policy
      * 
      */
     public Optional<Output<DeviceprofileGatewayRoutingPoliciesTermActionArgs>> action() {
@@ -72,7 +72,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermArgs extends com.pulum
         }
 
         /**
-         * @param action when used as import policy
+         * @param action When used as import policy
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermArgs extends com.pulum
         }
 
         /**
-         * @param action when used as import policy
+         * @param action When used as import policy
          * 
          * @return builder
          * 

@@ -15,8 +15,8 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("include")]
         public Input<bool>? Include { get; set; }
 
-        [Input("oid")]
-        public Input<string>? Oid { get; set; }
+        [Input("oid", required: true)]
+        public Input<string> Oid { get; set; } = null!;
 
         public SwitchSnmpConfigV3ConfigNotifyFilterContentArgs()
         {

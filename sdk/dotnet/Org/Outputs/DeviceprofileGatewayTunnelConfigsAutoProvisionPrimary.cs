@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     {
         public readonly ImmutableArray<string> ProbeIps;
         /// <summary>
-        /// optional, only needed if `vars_only`==`false`
+        /// Optional, only needed if `vars_only`==`false`
         /// </summary>
         public readonly ImmutableArray<string> WanNames;
 

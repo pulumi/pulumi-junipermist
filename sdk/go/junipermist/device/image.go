@@ -16,7 +16,7 @@ import (
 //
 // This resource can be used to add a picture to a Wireless Access point, a Switch or a Gateway. A Maximum of 3 pictures can be uploaded.
 //
-// !> There is no validation on the Image currently uploaded to the Mist Cloud. Defining the same image twice (e.g. `image = 1`) for the same device will override the first image image any warning or error.
+// !> There is no validation on the Image currently uploaded to the Mist Cloud. Defining the same image twice (e.g. `image = 1`) for the same device will override the first image any warning or error.
 type Image struct {
 	pulumi.CustomResourceState
 

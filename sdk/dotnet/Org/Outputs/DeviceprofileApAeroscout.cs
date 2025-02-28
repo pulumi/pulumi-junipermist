@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileApAeroscout
     {
         /// <summary>
-        /// whether to enable aeroscout config
+        /// Whether to enable aeroscout config
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// required if enabled, aeroscout server host
+        /// Required if enabled, aeroscout server host
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
+        /// Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
         /// </summary>
         public readonly bool? LocateConnected;
 

@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     {
         public readonly string? Bucket;
         /// <summary>
-        /// max_len of non-management packets to capture
+        /// Max_len of non-management packets to capture
         /// </summary>
         public readonly int? MaxPktLen;
 

@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class GatewaytemplateNetworkGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// whether to disallow Mist Devices in the network
+        /// Whether to disallow Mist Devices in the network
         /// </summary>
         [Input("disallowMistServices")]
         public Input<bool>? DisallowMistServices { get; set; }
@@ -28,19 +28,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<Inputs.GatewaytemplateNetworkInternalAccessGetArgs>? InternalAccess { get; set; }
 
         /// <summary>
-        /// whether this network has direct internet access
+        /// Whether this network has direct internet access
         /// </summary>
         [Input("internetAccess")]
         public Input<Inputs.GatewaytemplateNetworkInternetAccessGetArgs>? InternetAccess { get; set; }
 
         /// <summary>
-        /// whether to allow clients in the network to talk to each other
+        /// Whether to allow clients in the network to talk to each other
         /// </summary>
         [Input("isolation")]
         public Input<bool>? Isolation { get; set; }
 
         /// <summary>
-        /// whether to enable multicast support (only PIM-sparse mode is supported)
+        /// Whether to enable multicast support (only PIM-sparse mode is supported)
         /// </summary>
         [Input("multicast")]
         public Input<Inputs.GatewaytemplateNetworkMulticastGetArgs>? Multicast { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _routedForNetworks;
 
         /// <summary>
-        /// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        /// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         /// </summary>
         public InputList<string> RoutedForNetworks
         {

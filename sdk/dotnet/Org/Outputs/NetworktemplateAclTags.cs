@@ -14,40 +14,40 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NetworktemplateAclTags
     {
         /// <summary>
-        /// required if
+        /// Required if
         ///   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
         ///   - `type`==`gbp_resource`
         ///   - `type`==`static_gbp` (applying gbp tag against matching conditions)
         /// </summary>
         public readonly int? GbpTag;
         /// <summary>
-        /// required if 
+        /// Required if 
         /// - `type`==`mac`
         /// - `type`==`static_gbp` if from matching mac
         /// </summary>
         public readonly ImmutableArray<string> Macs;
         /// <summary>
-        /// if:
+        /// If:
         ///   * `type`==`mac` (optional. default is `any`)
         ///   * `type`==`subnet` (optional. default is `any`)
         ///   * `type`==`network`
         ///   * `type`==`resource` (optional. default is `any`)
-        ///   * `type`==`static_gbp` if from matching network (vlan)'
+        ///   * `type`==`static_gbp` if from matching network (vlan)
         /// </summary>
         public readonly string? Network;
         /// <summary>
-        /// required if:
+        /// Required if:
         ///   * `type`==`radius_group`
         ///   * `type`==`static_gbp`
         /// if from matching radius_group
         /// </summary>
         public readonly string? RadiusGroup;
         /// <summary>
-        /// if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+        /// If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateAclTagsSpec> Specs;
         /// <summary>
-        /// if 
+        /// If 
         /// - `type`==`subnet` 
         /// - `type`==`resource` (optional. default is `any`)
         /// - `type`==`static_gbp` if from matching subnet

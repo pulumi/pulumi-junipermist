@@ -71,7 +71,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string Secret;
         /// <summary>
-        /// Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+        /// Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         /// </summary>
         public readonly string SplunkToken;
         /// <summary>

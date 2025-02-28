@@ -39,14 +39,14 @@ public final class SettingGatewayMgmtAutoSignatureUpdateArgs extends com.pulumi.
     }
 
     /**
-     * optional, Mist will decide the timing
+     * Optional, Mist will decide the timing
      * 
      */
     @Import(name="timeOfDay")
     private @Nullable Output<String> timeOfDay;
 
     /**
-     * @return optional, Mist will decide the timing
+     * @return Optional, Mist will decide the timing
      * 
      */
     public Optional<Output<String>> timeOfDay() {
@@ -110,7 +110,7 @@ public final class SettingGatewayMgmtAutoSignatureUpdateArgs extends com.pulumi.
         }
 
         /**
-         * @param timeOfDay optional, Mist will decide the timing
+         * @param timeOfDay Optional, Mist will decide the timing
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class SettingGatewayMgmtAutoSignatureUpdateArgs extends com.pulumi.
         }
 
         /**
-         * @param timeOfDay optional, Mist will decide the timing
+         * @param timeOfDay Optional, Mist will decide the timing
          * 
          * @return builder
          * 

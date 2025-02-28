@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingOpticPortConfig
     {
         /// <summary>
-        /// enable channelization
+        /// Enable channelization
         /// </summary>
         public readonly bool? Channelized;
         /// <summary>
-        /// interface speed (e.g. `25g`, `50g`), use the chassis speed by default
+        /// Interface speed (e.g. `25g`, `50g`), use the chassis speed by default
         /// </summary>
         public readonly string? Speed;
 

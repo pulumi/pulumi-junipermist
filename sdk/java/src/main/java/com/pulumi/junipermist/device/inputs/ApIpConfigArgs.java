@@ -18,14 +18,14 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
     public static final ApIpConfigArgs Empty = new ApIpConfigArgs();
 
     /**
-     * if `type`==`static`
+     * If `type`==`static`
      * 
      */
     @Import(name="dns")
     private @Nullable Output<List<String>> dns;
 
     /**
-     * @return if `type`==`static`
+     * @return If `type`==`static`
      * 
      */
     public Optional<Output<List<String>>> dns() {
@@ -33,14 +33,14 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * required if `type`==`static`
+     * Required if `type`==`static`
      * 
      */
     @Import(name="dnsSuffixes")
     private @Nullable Output<List<String>> dnsSuffixes;
 
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     public Optional<Output<List<String>>> dnsSuffixes() {
@@ -48,14 +48,14 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * required if `type`==`static`
+     * Required if `type`==`static`
      * 
      */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     public Optional<Output<String>> gateway() {
@@ -70,14 +70,14 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * required if `type`==`static`
+     * Required if `type`==`static`
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     public Optional<Output<String>> ip() {
@@ -99,14 +99,14 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * required if `type`==`static`
+     * Required if `type`==`static`
      * 
      */
     @Import(name="netmask")
     private @Nullable Output<String> netmask;
 
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     public Optional<Output<String>> netmask() {
@@ -151,14 +151,14 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * management vlan id, default is 1 (untagged)
+     * Management VLAN id, default is 1 (untagged)
      * 
      */
     @Import(name="vlanId")
     private @Nullable Output<Integer> vlanId;
 
     /**
-     * @return management vlan id, default is 1 (untagged)
+     * @return Management VLAN id, default is 1 (untagged)
      * 
      */
     public Optional<Output<Integer>> vlanId() {
@@ -201,7 +201,7 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dns if `type`==`static`
+         * @param dns If `type`==`static`
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dns if `type`==`static`
+         * @param dns If `type`==`static`
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dns if `type`==`static`
+         * @param dns If `type`==`static`
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsSuffixes required if `type`==`static`
+         * @param dnsSuffixes Required if `type`==`static`
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsSuffixes required if `type`==`static`
+         * @param dnsSuffixes Required if `type`==`static`
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsSuffixes required if `type`==`static`
+         * @param dnsSuffixes Required if `type`==`static`
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gateway required if `type`==`static`
+         * @param gateway Required if `type`==`static`
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gateway required if `type`==`static`
+         * @param gateway Required if `type`==`static`
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ip required if `type`==`static`
+         * @param ip Required if `type`==`static`
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ip required if `type`==`static`
+         * @param ip Required if `type`==`static`
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param netmask required if `type`==`static`
+         * @param netmask Required if `type`==`static`
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param netmask required if `type`==`static`
+         * @param netmask Required if `type`==`static`
          * 
          * @return builder
          * 
@@ -404,7 +404,7 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanId management vlan id, default is 1 (untagged)
+         * @param vlanId Management VLAN id, default is 1 (untagged)
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class ApIpConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanId management vlan id, default is 1 (untagged)
+         * @param vlanId Management VLAN id, default is 1 (untagged)
          * 
          * @return builder
          * 

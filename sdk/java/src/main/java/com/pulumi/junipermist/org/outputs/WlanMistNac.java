@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanMistNac {
     /**
-     * @return when enabled:
+     * @return When enabled:
      *   * `auth_servers` is ignored
      *   * `acct_servers` is ignored
      *   * `auth_servers_*` are ignored
      *   * `coa_servers` is ignored
      *   * `radsec` is ignored
-     *   * `coa_enabled` is assumed&#39;
+     *   * `coa_enabled` is assumed
      * 
      */
     private @Nullable Boolean enabled;
 
     private WlanMistNac() {}
     /**
-     * @return when enabled:
+     * @return When enabled:
      *   * `auth_servers` is ignored
      *   * `acct_servers` is ignored
      *   * `auth_servers_*` are ignored
      *   * `coa_servers` is ignored
      *   * `radsec` is ignored
-     *   * `coa_enabled` is assumed&#39;
+     *   * `coa_enabled` is assumed
      * 
      */
     public Optional<Boolean> enabled() {

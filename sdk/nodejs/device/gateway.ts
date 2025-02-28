@@ -111,16 +111,16 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly ipConfigs!: pulumi.Output<{[key: string]: outputs.device.GatewayIpConfigs} | undefined>;
     /**
-     * device MAC address
+     * Device MAC address
      */
     public /*out*/ readonly mac!: pulumi.Output<string>;
     public readonly managed!: pulumi.Output<boolean | undefined>;
     /**
-     * map where the device belongs to
+     * Map where the device belongs to
      */
     public readonly mapId!: pulumi.Output<string | undefined>;
     /**
-     * device Model
+     * Device Model
      */
     public /*out*/ readonly model!: pulumi.Output<string>;
     public readonly mspId!: pulumi.Output<string | undefined>;
@@ -129,7 +129,7 @@ export class Gateway extends pulumi.CustomResource {
     public readonly notes!: pulumi.Output<string | undefined>;
     public readonly ntpServers!: pulumi.Output<string[] | undefined>;
     /**
-     * out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band (vme/em0/fxp0) IP config
      */
     public readonly oobIpConfig!: pulumi.Output<outputs.device.GatewayOobIpConfig>;
     public /*out*/ readonly orgId!: pulumi.Output<string>;
@@ -143,7 +143,7 @@ export class Gateway extends pulumi.CustomResource {
     public readonly portConfig!: pulumi.Output<{[key: string]: outputs.device.GatewayPortConfig} | undefined>;
     public readonly portMirroring!: pulumi.Output<outputs.device.GatewayPortMirroring | undefined>;
     /**
-     * auto assigned if not set
+     * Auto assigned if not set
      */
     public readonly routerId!: pulumi.Output<string | undefined>;
     /**
@@ -151,7 +151,7 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly routingPolicies!: pulumi.Output<{[key: string]: outputs.device.GatewayRoutingPolicies} | undefined>;
     /**
-     * device Serial
+     * Device Serial
      */
     public /*out*/ readonly serial!: pulumi.Output<string>;
     public readonly servicePolicies!: pulumi.Output<outputs.device.GatewayServicePolicy[] | undefined>;
@@ -166,7 +166,7 @@ export class Gateway extends pulumi.CustomResource {
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     public readonly vars!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly vrfConfig!: pulumi.Output<outputs.device.GatewayVrfConfig | undefined>;
@@ -175,11 +175,11 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly vrfInstances!: pulumi.Output<{[key: string]: outputs.device.GatewayVrfInstances} | undefined>;
     /**
-     * x in pixel
+     * X in pixel
      */
     public readonly x!: pulumi.Output<number | undefined>;
     /**
-     * y in pixel
+     * Y in pixel
      */
     public readonly y!: pulumi.Output<number | undefined>;
 
@@ -329,16 +329,16 @@ export interface GatewayState {
      */
     ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayIpConfigs>}>;
     /**
-     * device MAC address
+     * Device MAC address
      */
     mac?: pulumi.Input<string>;
     managed?: pulumi.Input<boolean>;
     /**
-     * map where the device belongs to
+     * Map where the device belongs to
      */
     mapId?: pulumi.Input<string>;
     /**
-     * device Model
+     * Device Model
      */
     model?: pulumi.Input<string>;
     mspId?: pulumi.Input<string>;
@@ -347,7 +347,7 @@ export interface GatewayState {
     notes?: pulumi.Input<string>;
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band (vme/em0/fxp0) IP config
      */
     oobIpConfig?: pulumi.Input<inputs.device.GatewayOobIpConfig>;
     orgId?: pulumi.Input<string>;
@@ -361,7 +361,7 @@ export interface GatewayState {
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPortConfig>}>;
     portMirroring?: pulumi.Input<inputs.device.GatewayPortMirroring>;
     /**
-     * auto assigned if not set
+     * Auto assigned if not set
      */
     routerId?: pulumi.Input<string>;
     /**
@@ -369,7 +369,7 @@ export interface GatewayState {
      */
     routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayRoutingPolicies>}>;
     /**
-     * device Serial
+     * Device Serial
      */
     serial?: pulumi.Input<string>;
     servicePolicies?: pulumi.Input<pulumi.Input<inputs.device.GatewayServicePolicy>[]>;
@@ -384,7 +384,7 @@ export interface GatewayState {
      */
     type?: pulumi.Input<string>;
     /**
-     * a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     vrfConfig?: pulumi.Input<inputs.device.GatewayVrfConfig>;
@@ -393,11 +393,11 @@ export interface GatewayState {
      */
     vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayVrfInstances>}>;
     /**
-     * x in pixel
+     * X in pixel
      */
     x?: pulumi.Input<number>;
     /**
-     * y in pixel
+     * Y in pixel
      */
     y?: pulumi.Input<number>;
 }
@@ -439,7 +439,7 @@ export interface GatewayArgs {
     ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayIpConfigs>}>;
     managed?: pulumi.Input<boolean>;
     /**
-     * map where the device belongs to
+     * Map where the device belongs to
      */
     mapId?: pulumi.Input<string>;
     mspId?: pulumi.Input<string>;
@@ -448,7 +448,7 @@ export interface GatewayArgs {
     notes?: pulumi.Input<string>;
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band (vme/em0/fxp0) IP config
      */
     oobIpConfig?: pulumi.Input<inputs.device.GatewayOobIpConfig>;
     /**
@@ -461,7 +461,7 @@ export interface GatewayArgs {
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPortConfig>}>;
     portMirroring?: pulumi.Input<inputs.device.GatewayPortMirroring>;
     /**
-     * auto assigned if not set
+     * Auto assigned if not set
      */
     routerId?: pulumi.Input<string>;
     /**
@@ -476,7 +476,7 @@ export interface GatewayArgs {
     tunnelConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayTunnelConfigs>}>;
     tunnelProviderOptions?: pulumi.Input<inputs.device.GatewayTunnelProviderOptions>;
     /**
-     * a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     vrfConfig?: pulumi.Input<inputs.device.GatewayVrfConfig>;
@@ -485,11 +485,11 @@ export interface GatewayArgs {
      */
     vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayVrfInstances>}>;
     /**
-     * x in pixel
+     * X in pixel
      */
     x?: pulumi.Input<number>;
     /**
-     * y in pixel
+     * Y in pixel
      */
     y?: pulumi.Input<number>;
 }

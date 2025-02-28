@@ -17,14 +17,14 @@ public final class DeviceprofileApPwrConfigArgs extends com.pulumi.resources.Res
     public static final DeviceprofileApPwrConfigArgs Empty = new DeviceprofileApPwrConfigArgs();
 
     /**
-     * additional power to request during negotiating with PSE over PoE, in mW
+     * Additional power to request during negotiating with PSE over PoE, in mW
      * 
      */
     @Import(name="base")
     private @Nullable Output<Integer> base;
 
     /**
-     * @return additional power to request during negotiating with PSE over PoE, in mW
+     * @return Additional power to request during negotiating with PSE over PoE, in mW
      * 
      */
     public Optional<Output<Integer>> base() {
@@ -32,14 +32,14 @@ public final class DeviceprofileApPwrConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * whether to enable power out to peripheral, meanwhile will reduce power to wifi (only for AP45 at power mode)
+     * Whether to enable power out to peripheral, meanwhile will reduce power to Wi-Fi (only for AP45 at power mode)
      * 
      */
     @Import(name="preferUsbOverWifi")
     private @Nullable Output<Boolean> preferUsbOverWifi;
 
     /**
-     * @return whether to enable power out to peripheral, meanwhile will reduce power to wifi (only for AP45 at power mode)
+     * @return Whether to enable power out to peripheral, meanwhile will reduce power to Wi-Fi (only for AP45 at power mode)
      * 
      */
     public Optional<Output<Boolean>> preferUsbOverWifi() {
@@ -72,7 +72,7 @@ public final class DeviceprofileApPwrConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param base additional power to request during negotiating with PSE over PoE, in mW
+         * @param base Additional power to request during negotiating with PSE over PoE, in mW
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class DeviceprofileApPwrConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param base additional power to request during negotiating with PSE over PoE, in mW
+         * @param base Additional power to request during negotiating with PSE over PoE, in mW
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class DeviceprofileApPwrConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param preferUsbOverWifi whether to enable power out to peripheral, meanwhile will reduce power to wifi (only for AP45 at power mode)
+         * @param preferUsbOverWifi Whether to enable power out to peripheral, meanwhile will reduce power to Wi-Fi (only for AP45 at power mode)
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class DeviceprofileApPwrConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param preferUsbOverWifi whether to enable power out to peripheral, meanwhile will reduce power to wifi (only for AP45 at power mode)
+         * @param preferUsbOverWifi Whether to enable power out to peripheral, meanwhile will reduce power to Wi-Fi (only for AP45 at power mode)
          * 
          * @return builder
          * 

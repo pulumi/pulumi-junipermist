@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? Channel;
         /// <summary>
-        /// usb*config is ignored if esl*config enabled
+        /// usb_config is ignored if esl_config enabled
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// note: ble*config will be ingored if esl*config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+        /// note: ble_config will be ingored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
         /// </summary>
         public readonly string? Type;
         /// <summary>

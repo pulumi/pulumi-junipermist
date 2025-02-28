@@ -14,19 +14,19 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingRogue
     {
         /// <summary>
-        /// whether or not rogue detection is enabled
+        /// Whether rogue detection is enabled
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// whether or not honeypot detection is enabled
+        /// Whether honeypot detection is enabled
         /// </summary>
         public readonly bool? HoneypotEnabled;
         /// <summary>
-        /// minimum duration for a bssid to be considered rogue
+        /// Minimum duration for a bssid to be considered rogue
         /// </summary>
         public readonly int? MinDuration;
         /// <summary>
-        /// minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+        /// Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
         /// </summary>
         public readonly int? MinRssi;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly ImmutableArray<string> WhitelistedBssids;
         /// <summary>
-        /// list of SSIDs to whitelist
+        /// List of SSIDs to whitelist
         /// </summary>
         public readonly ImmutableArray<string> WhitelistedSsids;
 

@@ -13,12 +13,12 @@ import java.util.Objects;
 public final class GetWlansSiteWlanAppQosApps {
     private Integer dscp;
     /**
-     * @return subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+     * @return Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
      * 
      */
     private String dstSubnet;
     /**
-     * @return subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+     * @return Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
      * 
      */
     private String srcSubnet;
@@ -28,14 +28,14 @@ public final class GetWlansSiteWlanAppQosApps {
         return this.dscp;
     }
     /**
-     * @return subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+     * @return Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
      * 
      */
     public String dstSubnet() {
         return this.dstSubnet;
     }
     /**
-     * @return subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+     * @return Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
      * 
      */
     public String srcSubnet() {

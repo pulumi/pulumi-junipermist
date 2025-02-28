@@ -13,13 +13,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class SettingConfigPushPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// stop any new config from being pushed to the device
+        /// Stop any new config from being pushed to the device
         /// </summary>
         [Input("noPush")]
         public Input<bool>? NoPush { get; set; }
 
         /// <summary>
-        /// if enabled, new config will only be pushed to device within the specified time window
+        /// If enabled, new config will only be pushed to device within the specified time window
         /// </summary>
         [Input("pushWindow")]
         public Input<Inputs.SettingConfigPushPolicyPushWindowGetArgs>? PushWindow { get; set; }

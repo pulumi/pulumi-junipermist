@@ -14,25 +14,25 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NetworktemplateRadiusConfig
     {
         /// <summary>
-        /// how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
         /// </summary>
         public readonly int? AcctInterimInterval;
         public readonly ImmutableArray<Outputs.NetworktemplateRadiusConfigAcctServer> AcctServers;
         public readonly ImmutableArray<Outputs.NetworktemplateRadiusConfigAuthServer> AuthServers;
         /// <summary>
-        /// radius auth session retries
+        /// Radius auth session retries
         /// </summary>
         public readonly int? AuthServersRetries;
         /// <summary>
-        /// radius auth session timeout
+        /// Radius auth session timeout
         /// </summary>
         public readonly int? AuthServersTimeout;
         /// <summary>
-        /// use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        /// Use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
         /// </summary>
         public readonly string? Network;
         /// <summary>
-        /// use `network`or `source_ip`
+        /// Use `network`or `source_ip`
         /// </summary>
         public readonly string? SourceIp;
 

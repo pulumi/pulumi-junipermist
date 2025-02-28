@@ -22,55 +22,55 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Alignment { get; set; }
 
         /// <summary>
-        /// label for Amazon auth button
+        /// Label for Amazon auth button
         /// </summary>
         [Input("authButtonAmazon")]
         public Input<string>? AuthButtonAmazon { get; set; }
 
         /// <summary>
-        /// label for Azure auth button
+        /// Label for Azure auth button
         /// </summary>
         [Input("authButtonAzure")]
         public Input<string>? AuthButtonAzure { get; set; }
 
         /// <summary>
-        /// label for Email auth button
+        /// Label for Email auth button
         /// </summary>
         [Input("authButtonEmail")]
         public Input<string>? AuthButtonEmail { get; set; }
 
         /// <summary>
-        /// label for Facebook auth button
+        /// Label for Facebook auth button
         /// </summary>
         [Input("authButtonFacebook")]
         public Input<string>? AuthButtonFacebook { get; set; }
 
         /// <summary>
-        /// label for Google auth button
+        /// Label for Google auth button
         /// </summary>
         [Input("authButtonGoogle")]
         public Input<string>? AuthButtonGoogle { get; set; }
 
         /// <summary>
-        /// label for Microsoft auth button
+        /// Label for Microsoft auth button
         /// </summary>
         [Input("authButtonMicrosoft")]
         public Input<string>? AuthButtonMicrosoft { get; set; }
 
         /// <summary>
-        /// label for passphrase auth button
+        /// Label for passphrase auth button
         /// </summary>
         [Input("authButtonPassphrase")]
         public Input<string>? AuthButtonPassphrase { get; set; }
 
         /// <summary>
-        /// label for SMS auth button
+        /// Label for SMS auth button
         /// </summary>
         [Input("authButtonSms")]
         public Input<string>? AuthButtonSms { get; set; }
 
         /// <summary>
-        /// label for Sponsor auth button
+        /// Label for Sponsor auth button
         /// </summary>
         [Input("authButtonSponsor")]
         public Input<string>? AuthButtonSponsor { get; set; }
@@ -79,7 +79,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? AuthLabel { get; set; }
 
         /// <summary>
-        /// label of the link to go back to /logon
+        /// Label of the link to go back to /logon
         /// </summary>
         [Input("backLink")]
         public Input<string>? BackLink { get; set; }
@@ -97,31 +97,31 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? ColorLight { get; set; }
 
         /// <summary>
-        /// whether company field is required
+        /// Whether company field is required
         /// </summary>
         [Input("company")]
         public Input<bool>? Company { get; set; }
 
         /// <summary>
-        /// error message when company not provided
+        /// Error message when company not provided
         /// </summary>
         [Input("companyError")]
         public Input<string>? CompanyError { get; set; }
 
         /// <summary>
-        /// label of company field
+        /// Label of company field
         /// </summary>
         [Input("companyLabel")]
         public Input<string>? CompanyLabel { get; set; }
 
         /// <summary>
-        /// whether email field is required
+        /// Whether email field is required
         /// </summary>
         [Input("email")]
         public Input<bool>? Email { get; set; }
 
         /// <summary>
-        /// error message when a user has valid social login but doesn't match specified email domains.
+        /// Error message when a user has valid social login but doesn't match specified email domains.
         /// </summary>
         [Input("emailAccessDomainError")]
         public Input<string>? EmailAccessDomainError { get; set; }
@@ -151,7 +151,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? EmailCodeTitle { get; set; }
 
         /// <summary>
-        /// error message when email not provided
+        /// Error message when email not provided
         /// </summary>
         [Input("emailError")]
         public Input<string>? EmailError { get; set; }
@@ -160,7 +160,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? EmailFieldLabel { get; set; }
 
         /// <summary>
-        /// label of email field
+        /// Label of email field
         /// </summary>
         [Input("emailLabel")]
         public Input<string>? EmailLabel { get; set; }
@@ -181,97 +181,97 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? EmailTitle { get; set; }
 
         /// <summary>
-        /// whether to ask field1
+        /// Whether to ask field1
         /// </summary>
         [Input("field1")]
         public Input<bool>? Field1 { get; set; }
 
         /// <summary>
-        /// error message when field1 not provided
+        /// Error message when field1 not provided
         /// </summary>
         [Input("field1error")]
         public Input<string>? Field1error { get; set; }
 
         /// <summary>
-        /// label of field1
+        /// Label of field1
         /// </summary>
         [Input("field1label")]
         public Input<string>? Field1label { get; set; }
 
         /// <summary>
-        /// whether field1 is required field
+        /// Whether field1 is required field
         /// </summary>
         [Input("field1required")]
         public Input<bool>? Field1required { get; set; }
 
         /// <summary>
-        /// whether to ask field2
+        /// Whether to ask field2
         /// </summary>
         [Input("field2")]
         public Input<bool>? Field2 { get; set; }
 
         /// <summary>
-        /// error message when field2 not provided
+        /// Error message when field2 not provided
         /// </summary>
         [Input("field2error")]
         public Input<string>? Field2error { get; set; }
 
         /// <summary>
-        /// label of field2
+        /// Label of field2
         /// </summary>
         [Input("field2label")]
         public Input<string>? Field2label { get; set; }
 
         /// <summary>
-        /// whether field2 is required field
+        /// Whether field2 is required field
         /// </summary>
         [Input("field2required")]
         public Input<bool>? Field2required { get; set; }
 
         /// <summary>
-        /// whether to ask field3
+        /// Whether to ask field3
         /// </summary>
         [Input("field3")]
         public Input<bool>? Field3 { get; set; }
 
         /// <summary>
-        /// error message when field3 not provided
+        /// Error message when field3 not provided
         /// </summary>
         [Input("field3error")]
         public Input<string>? Field3error { get; set; }
 
         /// <summary>
-        /// label of field3
+        /// Label of field3
         /// </summary>
         [Input("field3label")]
         public Input<string>? Field3label { get; set; }
 
         /// <summary>
-        /// whether field3 is required field
+        /// Whether field3 is required field
         /// </summary>
         [Input("field3required")]
         public Input<bool>? Field3required { get; set; }
 
         /// <summary>
-        /// whether to ask field4
+        /// Whether to ask field4
         /// </summary>
         [Input("field4")]
         public Input<bool>? Field4 { get; set; }
 
         /// <summary>
-        /// error message when field4 not provided
+        /// Error message when field4 not provided
         /// </summary>
         [Input("field4error")]
         public Input<string>? Field4error { get; set; }
 
         /// <summary>
-        /// label of field4
+        /// Label of field4
         /// </summary>
         [Input("field4label")]
         public Input<string>? Field4label { get; set; }
 
         /// <summary>
-        /// whether field4 is required field
+        /// Whether field4 is required field
         /// </summary>
         [Input("field4required")]
         public Input<bool>? Field4required { get; set; }
@@ -305,19 +305,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? MultiAuth { get; set; }
 
         /// <summary>
-        /// whether name field is required
+        /// Whether name field is required
         /// </summary>
         [Input("name")]
         public Input<bool>? Name { get; set; }
 
         /// <summary>
-        /// error message when name not provided
+        /// Error message when name not provided
         /// </summary>
         [Input("nameError")]
         public Input<string>? NameError { get; set; }
 
         /// <summary>
-        /// label of name field
+        /// Label of name field
         /// </summary>
         [Input("nameLabel")]
         public Input<string>? NameLabel { get; set; }
@@ -329,13 +329,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? OptOutDefault { get; set; }
 
         /// <summary>
-        /// whether to display Do Not Store My Personal Information
+        /// Whether to display Do Not Store My Personal Information
         /// </summary>
         [Input("optout")]
         public Input<bool>? Optout { get; set; }
 
         /// <summary>
-        /// label for Do Not Store My Personal Information
+        /// Label for Do Not Store My Personal Information
         /// </summary>
         [Input("optoutLabel")]
         public Input<string>? OptoutLabel { get; set; }
@@ -350,7 +350,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? PassphraseCancel { get; set; }
 
         /// <summary>
-        /// error message when invalid passphrase is provided
+        /// Error message when invalid passphrase is provided
         /// </summary>
         [Input("passphraseError")]
         public Input<string>? PassphraseError { get; set; }
@@ -377,43 +377,43 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? PassphraseTitle { get; set; }
 
         /// <summary>
-        /// whether to show \"Powered by Mist\"
+        /// Whether to show \"Powered by Mist\"
         /// </summary>
         [Input("poweredBy")]
         public Input<bool>? PoweredBy { get; set; }
 
         /// <summary>
-        /// wheter to require the Privacy Term acceptance
+        /// Whether to require the Privacy Term acceptance
         /// </summary>
         [Input("privacy")]
         public Input<bool>? Privacy { get; set; }
 
         /// <summary>
-        /// prefix of the label of the link to go to Privacy Policy
+        /// Prefix of the label of the link to go to Privacy Policy
         /// </summary>
         [Input("privacyPolicyAcceptLabel")]
         public Input<string>? PrivacyPolicyAcceptLabel { get; set; }
 
         /// <summary>
-        /// error message when Privacy Policy not accepted
+        /// Error message when Privacy Policy not accepted
         /// </summary>
         [Input("privacyPolicyError")]
         public Input<string>? PrivacyPolicyError { get; set; }
 
         /// <summary>
-        /// label of the link to go to Privacy Policy
+        /// Label of the link to go to Privacy Policy
         /// </summary>
         [Input("privacyPolicyLink")]
         public Input<string>? PrivacyPolicyLink { get; set; }
 
         /// <summary>
-        /// text of the Privacy Policy
+        /// Text of the Privacy Policy
         /// </summary>
         [Input("privacyPolicyText")]
         public Input<string>? PrivacyPolicyText { get; set; }
 
         /// <summary>
-        /// label to denote required field
+        /// Label to denote required field
         /// </summary>
         [Input("requiredFieldLabel")]
         public Input<string>? RequiredFieldLabel { get; set; }
@@ -422,7 +422,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? ResponsiveLayout { get; set; }
 
         /// <summary>
-        /// label of the button to /signin
+        /// Label of the button to /signin
         /// </summary>
         [Input("signInLabel")]
         public Input<string>? SignInLabel { get; set; }
@@ -434,7 +434,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? SmsCarrierError { get; set; }
 
         /// <summary>
-        /// label for mobile carrier drop-down list
+        /// Label for mobile carrier drop-down list
         /// </summary>
         [Input("smsCarrierFieldLabel")]
         public Input<string>? SmsCarrierFieldLabel { get; set; }
@@ -446,7 +446,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? SmsCodeCancel { get; set; }
 
         /// <summary>
-        /// error message when confirmation code is invalid
+        /// Error message when confirmation code is invalid
         /// </summary>
         [Input("smsCodeError")]
         public Input<string>? SmsCodeError { get; set; }
@@ -482,13 +482,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? SmsIsTwilio { get; set; }
 
         /// <summary>
-        /// format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+        /// Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
         /// </summary>
         [Input("smsMessageFormat")]
         public Input<string>? SmsMessageFormat { get; set; }
 
         /// <summary>
-        /// label for canceling mobile details for SMS auth
+        /// Label for canceling mobile details for SMS auth
         /// </summary>
         [Input("smsNumberCancel")]
         public Input<string>? SmsNumberCancel { get; set; }
@@ -497,7 +497,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? SmsNumberError { get; set; }
 
         /// <summary>
-        /// label for field to provide mobile number
+        /// Label for field to provide mobile number
         /// </summary>
         [Input("smsNumberFieldLabel")]
         public Input<string>? SmsNumberFieldLabel { get; set; }
@@ -509,7 +509,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? SmsNumberMessage { get; set; }
 
         /// <summary>
-        /// label for submit button for code generation
+        /// Label for submit button for code generation
         /// </summary>
         [Input("smsNumberSubmit")]
         public Input<string>? SmsNumberSubmit { get; set; }
@@ -524,7 +524,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? SmsUsernameFormat { get; set; }
 
         /// <summary>
-        /// how long confirmation code should be considered valid (in minutes)
+        /// How long confirmation code should be considered valid (in minutes)
         /// </summary>
         [Input("smsValidityDuration")]
         public Input<int>? SmsValidityDuration { get; set; }
@@ -536,7 +536,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? SponsorCancel { get; set; }
 
         /// <summary>
-        /// label for Sponsor Email
+        /// Label for Sponsor Email
         /// </summary>
         [Input("sponsorEmail")]
         public Input<string>? SponsorEmail { get; set; }
@@ -545,7 +545,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? SponsorEmailError { get; set; }
 
         /// <summary>
-        /// html template to replace/override default sponsor email template 
+        /// HTML template to replace/override default sponsor email template 
         /// Sponsor Email Template supports following template variables:
         ///   * `approve_url`: Renders URL to approve the request; optionally &amp;minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
         ///   * `deny_url`: Renders URL to reject the request
@@ -569,7 +569,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? SponsorInfoPending { get; set; }
 
         /// <summary>
-        /// label for Sponsor Name
+        /// Label for Sponsor Name
         /// </summary>
         [Input("sponsorName")]
         public Input<string>? SponsorName { get; set; }
@@ -581,31 +581,31 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? SponsorNotePending { get; set; }
 
         /// <summary>
-        /// submit button label request Wifi Access and notify sponsor about guest request
+        /// Submit button label request Wifi Access and notify sponsor about guest request
         /// </summary>
         [Input("sponsorRequestAccess")]
         public Input<string>? SponsorRequestAccess { get; set; }
 
         /// <summary>
-        /// text to display if sponsor approves request
+        /// Text to display if sponsor approves request
         /// </summary>
         [Input("sponsorStatusApproved")]
         public Input<string>? SponsorStatusApproved { get; set; }
 
         /// <summary>
-        /// text to display when sponsor denies request
+        /// Text to display when sponsor denies request
         /// </summary>
         [Input("sponsorStatusDenied")]
         public Input<string>? SponsorStatusDenied { get; set; }
 
         /// <summary>
-        /// text to display if request is still pending
+        /// Text to display if request is still pending
         /// </summary>
         [Input("sponsorStatusPending")]
         public Input<string>? SponsorStatusPending { get; set; }
 
         /// <summary>
-        /// submit button label to notify sponsor about guest request
+        /// Submit button label to notify sponsor about guest request
         /// </summary>
         [Input("sponsorSubmit")]
         public Input<string>? SponsorSubmit { get; set; }
@@ -620,25 +620,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Tos { get; set; }
 
         /// <summary>
-        /// prefix of the label of the link to go to tos
+        /// Prefix of the label of the link to go to tos
         /// </summary>
         [Input("tosAcceptLabel")]
         public Input<string>? TosAcceptLabel { get; set; }
 
         /// <summary>
-        /// error message when tos not accepted
+        /// Error message when tos not accepted
         /// </summary>
         [Input("tosError")]
         public Input<string>? TosError { get; set; }
 
         /// <summary>
-        /// label of the link to go to tos
+        /// Label of the link to go to tos
         /// </summary>
         [Input("tosLink")]
         public Input<string>? TosLink { get; set; }
 
         /// <summary>
-        /// text of the Terms of Service
+        /// Text of the Terms of Service
         /// </summary>
         [Input("tosText")]
         public Input<string>? TosText { get; set; }

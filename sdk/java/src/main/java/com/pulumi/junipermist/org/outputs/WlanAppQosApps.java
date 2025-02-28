@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 public final class WlanAppQosApps {
     private @Nullable Integer dscp;
     /**
-     * @return subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+     * @return Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
      * 
      */
     private @Nullable String dstSubnet;
     /**
-     * @return subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+     * @return Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
      * 
      */
     private @Nullable String srcSubnet;
@@ -29,14 +29,14 @@ public final class WlanAppQosApps {
         return Optional.ofNullable(this.dscp);
     }
     /**
-     * @return subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+     * @return Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
      * 
      */
     public Optional<String> dstSubnet() {
         return Optional.ofNullable(this.dstSubnet);
     }
     /**
-     * @return subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+     * @return Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
      * 
      */
     public Optional<String> srcSubnet() {

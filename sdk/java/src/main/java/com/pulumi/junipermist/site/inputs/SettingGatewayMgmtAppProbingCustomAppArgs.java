@@ -73,14 +73,14 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
     }
 
     /**
-     * if `protocol`==`icmp`
+     * If `protocol`==`icmp`
      * 
      */
     @Import(name="packetSize")
     private @Nullable Output<Integer> packetSize;
 
     /**
-     * @return if `protocol`==`icmp`
+     * @return If `protocol`==`icmp`
      * 
      */
     public Optional<Output<Integer>> packetSize() {
@@ -232,7 +232,7 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         /**
-         * @param packetSize if `protocol`==`icmp`
+         * @param packetSize If `protocol`==`icmp`
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         /**
-         * @param packetSize if `protocol`==`icmp`
+         * @param packetSize If `protocol`==`icmp`
          * 
          * @return builder
          * 

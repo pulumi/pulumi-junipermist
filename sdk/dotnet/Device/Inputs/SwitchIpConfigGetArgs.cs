@@ -39,13 +39,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// used only if `subnet` is not specified in `networks`
+        /// Used only if `subnet` is not specified in `networks`
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
         /// <summary>
-        /// the network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
+        /// Network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

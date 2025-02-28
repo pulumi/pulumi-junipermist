@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateExtraRoutes
     {
         /// <summary>
-        /// this takes precedence
+        /// This takes precedence
         /// </summary>
         public readonly bool? Discard;
         public readonly int? Metric;
@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly bool? NoResolve;
         public readonly int? Preference;
         /// <summary>
-        /// next-hop IP Address
+        /// Next-hop IP Address
         /// </summary>
         public readonly string Via;
 

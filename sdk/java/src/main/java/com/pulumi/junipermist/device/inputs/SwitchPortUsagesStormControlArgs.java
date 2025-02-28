@@ -17,14 +17,14 @@ public final class SwitchPortUsagesStormControlArgs extends com.pulumi.resources
     public static final SwitchPortUsagesStormControlArgs Empty = new SwitchPortUsagesStormControlArgs();
 
     /**
-     * whether to disable storm control on broadcast traffic
+     * Whether to disable storm control on broadcast traffic
      * 
      */
     @Import(name="noBroadcast")
     private @Nullable Output<Boolean> noBroadcast;
 
     /**
-     * @return whether to disable storm control on broadcast traffic
+     * @return Whether to disable storm control on broadcast traffic
      * 
      */
     public Optional<Output<Boolean>> noBroadcast() {
@@ -32,14 +32,14 @@ public final class SwitchPortUsagesStormControlArgs extends com.pulumi.resources
     }
 
     /**
-     * whether to disable storm control on multicast traffic
+     * Whether to disable storm control on multicast traffic
      * 
      */
     @Import(name="noMulticast")
     private @Nullable Output<Boolean> noMulticast;
 
     /**
-     * @return whether to disable storm control on multicast traffic
+     * @return Whether to disable storm control on multicast traffic
      * 
      */
     public Optional<Output<Boolean>> noMulticast() {
@@ -47,14 +47,14 @@ public final class SwitchPortUsagesStormControlArgs extends com.pulumi.resources
     }
 
     /**
-     * whether to disable storm control on registered multicast traffic
+     * Whether to disable storm control on registered multicast traffic
      * 
      */
     @Import(name="noRegisteredMulticast")
     private @Nullable Output<Boolean> noRegisteredMulticast;
 
     /**
-     * @return whether to disable storm control on registered multicast traffic
+     * @return Whether to disable storm control on registered multicast traffic
      * 
      */
     public Optional<Output<Boolean>> noRegisteredMulticast() {
@@ -62,14 +62,14 @@ public final class SwitchPortUsagesStormControlArgs extends com.pulumi.resources
     }
 
     /**
-     * whether to disable storm control on unknown unicast traffic
+     * Whether to disable storm control on unknown unicast traffic
      * 
      */
     @Import(name="noUnknownUnicast")
     private @Nullable Output<Boolean> noUnknownUnicast;
 
     /**
-     * @return whether to disable storm control on unknown unicast traffic
+     * @return Whether to disable storm control on unknown unicast traffic
      * 
      */
     public Optional<Output<Boolean>> noUnknownUnicast() {
@@ -77,14 +77,14 @@ public final class SwitchPortUsagesStormControlArgs extends com.pulumi.resources
     }
 
     /**
-     * bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+     * Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
      * 
      */
     @Import(name="percentage")
     private @Nullable Output<Integer> percentage;
 
     /**
-     * @return bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+     * @return Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
      * 
      */
     public Optional<Output<Integer>> percentage() {
@@ -120,7 +120,7 @@ public final class SwitchPortUsagesStormControlArgs extends com.pulumi.resources
         }
 
         /**
-         * @param noBroadcast whether to disable storm control on broadcast traffic
+         * @param noBroadcast Whether to disable storm control on broadcast traffic
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class SwitchPortUsagesStormControlArgs extends com.pulumi.resources
         }
 
         /**
-         * @param noBroadcast whether to disable storm control on broadcast traffic
+         * @param noBroadcast Whether to disable storm control on broadcast traffic
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class SwitchPortUsagesStormControlArgs extends com.pulumi.resources
         }
 
         /**
-         * @param noMulticast whether to disable storm control on multicast traffic
+         * @param noMulticast Whether to disable storm control on multicast traffic
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class SwitchPortUsagesStormControlArgs extends com.pulumi.resources
         }
 
         /**
-         * @param noMulticast whether to disable storm control on multicast traffic
+         * @param noMulticast Whether to disable storm control on multicast traffic
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class SwitchPortUsagesStormControlArgs extends com.pulumi.resources
         }
 
         /**
-         * @param noRegisteredMulticast whether to disable storm control on registered multicast traffic
+         * @param noRegisteredMulticast Whether to disable storm control on registered multicast traffic
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class SwitchPortUsagesStormControlArgs extends com.pulumi.resources
         }
 
         /**
-         * @param noRegisteredMulticast whether to disable storm control on registered multicast traffic
+         * @param noRegisteredMulticast Whether to disable storm control on registered multicast traffic
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class SwitchPortUsagesStormControlArgs extends com.pulumi.resources
         }
 
         /**
-         * @param noUnknownUnicast whether to disable storm control on unknown unicast traffic
+         * @param noUnknownUnicast Whether to disable storm control on unknown unicast traffic
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class SwitchPortUsagesStormControlArgs extends com.pulumi.resources
         }
 
         /**
-         * @param noUnknownUnicast whether to disable storm control on unknown unicast traffic
+         * @param noUnknownUnicast Whether to disable storm control on unknown unicast traffic
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class SwitchPortUsagesStormControlArgs extends com.pulumi.resources
         }
 
         /**
-         * @param percentage bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+         * @param percentage Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class SwitchPortUsagesStormControlArgs extends com.pulumi.resources
         }
 
         /**
-         * @param percentage bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+         * @param percentage Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
          * 
          * @return builder
          * 

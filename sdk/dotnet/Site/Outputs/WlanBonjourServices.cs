@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class WlanBonjourServices
     {
         /// <summary>
-        /// whether to prevent wireless clients to discover bonjour devices on the same WLAN
+        /// Whether to prevent wireless clients to discover bonjour devices on the same WLAN
         /// </summary>
         public readonly bool? DisableLocal;
         /// <summary>
-        /// optional, if the service is further restricted for certain RADIUS groups
+        /// Optional, if the service is further restricted for certain RADIUS groups
         /// </summary>
         public readonly ImmutableArray<string> RadiusGroups;
         /// <summary>

@@ -15,13 +15,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
     {
         public readonly string? AuthKey;
         /// <summary>
-        /// when bfd_multiplier is configured alone. Default:
+        /// When bfd_multiplier is configured alone. Default:
         ///   * 1000 if `type`==`external`
         ///   * 350 `type`==`internal`
         /// </summary>
         public readonly int? BfdMinimumInterval;
         /// <summary>
-        /// when bfd_minimum_interval_is_configured alone
+        /// When bfd_minimum_interval_is_configured alone
         /// </summary>
         public readonly int? BfdMultiplier;
         /// <summary>
@@ -30,11 +30,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly bool? DisableBfd;
         public readonly string? Export;
         /// <summary>
-        /// default export policies if no per-neighbor policies defined
+        /// Default export policies if no per-neighbor policies defined
         /// </summary>
         public readonly string? ExportPolicy;
         /// <summary>
-        /// by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        /// By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         /// </summary>
         public readonly bool? ExtendedV4Nexthop;
         /// <summary>
@@ -44,25 +44,25 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly int? HoldTime;
         public readonly string? Import;
         /// <summary>
-        /// default import policies if no per-neighbor policies defined
+        /// Default import policies if no per-neighbor policies defined
         /// </summary>
         public readonly string? ImportPolicy;
         public readonly int? LocalAs;
         public readonly int? NeighborAs;
         /// <summary>
-        /// if per-neighbor as is desired. Property key is the neighbor address
+        /// If per-neighbor as is desired. Property key is the neighbor address
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewayBgpConfigNeighbors>? Neighbors;
         /// <summary>
-        /// if `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+        /// If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
-        /// by default, we'll re-advertise all learned BGP routers toward overlay
+        /// By default, we'll re-advertise all learned BGP routers toward overlay
         /// </summary>
         public readonly bool? NoReadvertiseToOverlay;
         /// <summary>
-        /// if `type`==`tunnel`
+        /// If `type`==`tunnel`
         /// </summary>
         public readonly string? TunnelName;
         /// <summary>
@@ -75,7 +75,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string? Via;
         public readonly string? VpnName;
         /// <summary>
-        /// if `via`==`wan`
+        /// If `via`==`wan`
         /// </summary>
         public readonly string? WanName;
 

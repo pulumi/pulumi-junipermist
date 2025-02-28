@@ -16,20 +16,20 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// <summary>
         /// fpc0, same as the mac of device_id
         /// </summary>
-        public readonly string? Mac;
-        public readonly int? MemberId;
+        public readonly string Mac;
+        public readonly int MemberId;
         /// <summary>
         /// Both vc_role master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
         /// </summary>
-        public readonly string? VcRole;
+        public readonly string VcRole;
 
         [OutputConstructor]
         private SwitchVirtualChassisMember(
-            string? mac,
+            string mac,
 
-            int? memberId,
+            int memberId,
 
-            string? vcRole)
+            string vcRole)
         {
             Mac = mac;
             MemberId = memberId;

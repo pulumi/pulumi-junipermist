@@ -16,14 +16,14 @@ public final class SwitchVrfConfigArgs extends com.pulumi.resources.ResourceArgs
     public static final SwitchVrfConfigArgs Empty = new SwitchVrfConfigArgs();
 
     /**
-     * whether to enable VRF (when supported on the device)
+     * Whether to enable VRF (when supported on the device)
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return whether to enable VRF (when supported on the device)
+     * @return Whether to enable VRF (when supported on the device)
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -55,7 +55,7 @@ public final class SwitchVrfConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enabled whether to enable VRF (when supported on the device)
+         * @param enabled Whether to enable VRF (when supported on the device)
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class SwitchVrfConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enabled whether to enable VRF (when supported on the device)
+         * @param enabled Whether to enable VRF (when supported on the device)
          * 
          * @return builder
          * 

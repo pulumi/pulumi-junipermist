@@ -673,9 +673,12 @@
                                         "maxItemsOne": false
                                     },
                                     "usm": {
-                                        "fields": {
-                                            "users": {
-                                                "maxItemsOne": false
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "users": {
+                                                    "maxItemsOne": false
+                                                }
                                             }
                                         }
                                     },
@@ -799,6 +802,20 @@
                         "maxItemsOne": false
                     },
                     "src_ips": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "mist_org_avprofile": {
+                "current": "junipermist:org/avprofile:Avprofile",
+                "fields": {
+                    "mime_whitelist": {
+                        "maxItemsOne": false
+                    },
+                    "protocols": {
+                        "maxItemsOne": false
+                    },
+                    "url_whitelist": {
                         "maxItemsOne": false
                     }
                 }
@@ -1946,9 +1963,12 @@
                                         "maxItemsOne": false
                                     },
                                     "usm": {
-                                        "fields": {
-                                            "users": {
-                                                "maxItemsOne": false
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "users": {
+                                                    "maxItemsOne": false
+                                                }
                                             }
                                         }
                                     },
@@ -2732,9 +2752,12 @@
                                         "maxItemsOne": false
                                     },
                                     "usm": {
-                                        "fields": {
-                                            "users": {
-                                                "maxItemsOne": false
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "users": {
+                                                    "maxItemsOne": false
+                                                }
                                             }
                                         }
                                     },
@@ -3595,6 +3618,27 @@
                                             }
                                         }
                                     }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "mist_org_avprofiles": {
+                "current": "junipermist:org/getAvprofiles:getAvprofiles",
+                "fields": {
+                    "org_avprofiles": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "mime_whitelist": {
+                                    "maxItemsOne": false
+                                },
+                                "protocols": {
+                                    "maxItemsOne": false
+                                },
+                                "url_whitelist": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }

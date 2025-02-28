@@ -42,12 +42,12 @@ type Networktemplate struct {
 	ExtraRoutes NetworktemplateExtraRoutesMapOutput `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 NetworktemplateExtraRoutes6MapOutput `pulumi:"extraRoutes6"`
-	// enable mistNac to use radsec
+	// Enable mistNac to use RadSec
 	MistNac NetworktemplateMistNacPtrOutput `pulumi:"mistNac"`
 	Name    pulumi.StringOutput             `pulumi:"name"`
 	// Property key is network name
 	Networks NetworktemplateNetworksMapOutput `pulumi:"networks"`
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
 	OrgId      pulumi.StringOutput      `pulumi:"orgId"`
 	// Junos OSPF areas
@@ -61,10 +61,10 @@ type Networktemplate struct {
 	// Junos Radius config
 	RadiusConfig NetworktemplateRadiusConfigPtrOutput `pulumi:"radiusConfig"`
 	RemoteSyslog NetworktemplateRemoteSyslogPtrOutput `pulumi:"remoteSyslog"`
-	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs pulumi.BoolOutput                  `pulumi:"removeExistingConfigs"`
 	SnmpConfig            NetworktemplateSnmpConfigPtrOutput `pulumi:"snmpConfig"`
-	// defines custom switch configuration based on different criterias
+	// Defines custom switch configuration based on different criterias
 	SwitchMatching NetworktemplateSwitchMatchingPtrOutput `pulumi:"switchMatching"`
 	// Switch settings
 	SwitchMgmt NetworktemplateSwitchMgmtPtrOutput `pulumi:"switchMgmt"`
@@ -119,12 +119,12 @@ type networktemplateState struct {
 	ExtraRoutes map[string]NetworktemplateExtraRoutes `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 map[string]NetworktemplateExtraRoutes6 `pulumi:"extraRoutes6"`
-	// enable mistNac to use radsec
+	// Enable mistNac to use RadSec
 	MistNac *NetworktemplateMistNac `pulumi:"mistNac"`
 	Name    *string                 `pulumi:"name"`
 	// Property key is network name
 	Networks map[string]NetworktemplateNetworks `pulumi:"networks"`
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers []string `pulumi:"ntpServers"`
 	OrgId      *string  `pulumi:"orgId"`
 	// Junos OSPF areas
@@ -138,10 +138,10 @@ type networktemplateState struct {
 	// Junos Radius config
 	RadiusConfig *NetworktemplateRadiusConfig `pulumi:"radiusConfig"`
 	RemoteSyslog *NetworktemplateRemoteSyslog `pulumi:"remoteSyslog"`
-	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs *bool                      `pulumi:"removeExistingConfigs"`
 	SnmpConfig            *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
-	// defines custom switch configuration based on different criterias
+	// Defines custom switch configuration based on different criterias
 	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
 	// Switch settings
 	SwitchMgmt *NetworktemplateSwitchMgmt `pulumi:"switchMgmt"`
@@ -164,12 +164,12 @@ type NetworktemplateState struct {
 	ExtraRoutes NetworktemplateExtraRoutesMapInput
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 NetworktemplateExtraRoutes6MapInput
-	// enable mistNac to use radsec
+	// Enable mistNac to use RadSec
 	MistNac NetworktemplateMistNacPtrInput
 	Name    pulumi.StringPtrInput
 	// Property key is network name
 	Networks NetworktemplateNetworksMapInput
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayInput
 	OrgId      pulumi.StringPtrInput
 	// Junos OSPF areas
@@ -183,10 +183,10 @@ type NetworktemplateState struct {
 	// Junos Radius config
 	RadiusConfig NetworktemplateRadiusConfigPtrInput
 	RemoteSyslog NetworktemplateRemoteSyslogPtrInput
-	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs pulumi.BoolPtrInput
 	SnmpConfig            NetworktemplateSnmpConfigPtrInput
-	// defines custom switch configuration based on different criterias
+	// Defines custom switch configuration based on different criterias
 	SwitchMatching NetworktemplateSwitchMatchingPtrInput
 	// Switch settings
 	SwitchMgmt NetworktemplateSwitchMgmtPtrInput
@@ -213,12 +213,12 @@ type networktemplateArgs struct {
 	ExtraRoutes map[string]NetworktemplateExtraRoutes `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 map[string]NetworktemplateExtraRoutes6 `pulumi:"extraRoutes6"`
-	// enable mistNac to use radsec
+	// Enable mistNac to use RadSec
 	MistNac *NetworktemplateMistNac `pulumi:"mistNac"`
 	Name    *string                 `pulumi:"name"`
 	// Property key is network name
 	Networks map[string]NetworktemplateNetworks `pulumi:"networks"`
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers []string `pulumi:"ntpServers"`
 	OrgId      string   `pulumi:"orgId"`
 	// Junos OSPF areas
@@ -232,10 +232,10 @@ type networktemplateArgs struct {
 	// Junos Radius config
 	RadiusConfig *NetworktemplateRadiusConfig `pulumi:"radiusConfig"`
 	RemoteSyslog *NetworktemplateRemoteSyslog `pulumi:"remoteSyslog"`
-	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs *bool                      `pulumi:"removeExistingConfigs"`
 	SnmpConfig            *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
-	// defines custom switch configuration based on different criterias
+	// Defines custom switch configuration based on different criterias
 	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
 	// Switch settings
 	SwitchMgmt *NetworktemplateSwitchMgmt `pulumi:"switchMgmt"`
@@ -259,12 +259,12 @@ type NetworktemplateArgs struct {
 	ExtraRoutes NetworktemplateExtraRoutesMapInput
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 NetworktemplateExtraRoutes6MapInput
-	// enable mistNac to use radsec
+	// Enable mistNac to use RadSec
 	MistNac NetworktemplateMistNacPtrInput
 	Name    pulumi.StringPtrInput
 	// Property key is network name
 	Networks NetworktemplateNetworksMapInput
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayInput
 	OrgId      pulumi.StringInput
 	// Junos OSPF areas
@@ -278,10 +278,10 @@ type NetworktemplateArgs struct {
 	// Junos Radius config
 	RadiusConfig NetworktemplateRadiusConfigPtrInput
 	RemoteSyslog NetworktemplateRemoteSyslogPtrInput
-	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs pulumi.BoolPtrInput
 	SnmpConfig            NetworktemplateSnmpConfigPtrInput
-	// defines custom switch configuration based on different criterias
+	// Defines custom switch configuration based on different criterias
 	SwitchMatching NetworktemplateSwitchMatchingPtrInput
 	// Switch settings
 	SwitchMgmt NetworktemplateSwitchMgmtPtrInput
@@ -414,7 +414,7 @@ func (o NetworktemplateOutput) ExtraRoutes6() NetworktemplateExtraRoutes6MapOutp
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateExtraRoutes6MapOutput { return v.ExtraRoutes6 }).(NetworktemplateExtraRoutes6MapOutput)
 }
 
-// enable mistNac to use radsec
+// Enable mistNac to use RadSec
 func (o NetworktemplateOutput) MistNac() NetworktemplateMistNacPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateMistNacPtrOutput { return v.MistNac }).(NetworktemplateMistNacPtrOutput)
 }
@@ -428,7 +428,7 @@ func (o NetworktemplateOutput) Networks() NetworktemplateNetworksMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateNetworksMapOutput { return v.Networks }).(NetworktemplateNetworksMapOutput)
 }
 
-// list of NTP servers specific to this device. By default, those in Site Settings will be used
+// List of NTP servers specific to this device. By default, those in Site Settings will be used
 func (o NetworktemplateOutput) NtpServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.StringArrayOutput { return v.NtpServers }).(pulumi.StringArrayOutput)
 }
@@ -463,7 +463,7 @@ func (o NetworktemplateOutput) RemoteSyslog() NetworktemplateRemoteSyslogPtrOutp
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateRemoteSyslogPtrOutput { return v.RemoteSyslog }).(NetworktemplateRemoteSyslogPtrOutput)
 }
 
-// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 func (o NetworktemplateOutput) RemoveExistingConfigs() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.BoolOutput { return v.RemoveExistingConfigs }).(pulumi.BoolOutput)
 }
@@ -472,7 +472,7 @@ func (o NetworktemplateOutput) SnmpConfig() NetworktemplateSnmpConfigPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateSnmpConfigPtrOutput { return v.SnmpConfig }).(NetworktemplateSnmpConfigPtrOutput)
 }
 
-// defines custom switch configuration based on different criterias
+// Defines custom switch configuration based on different criterias
 func (o NetworktemplateOutput) SwitchMatching() NetworktemplateSwitchMatchingPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateSwitchMatchingPtrOutput { return v.SwitchMatching }).(NetworktemplateSwitchMatchingPtrOutput)
 }

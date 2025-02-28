@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputMap<string>? _customVersions;
 
         /// <summary>
-        /// custom versions for different models. Property key is the model name (e.g. "AP41")
+        /// Custom versions for different models. Property key is the model name (e.g. "AP41")
         /// </summary>
         public InputMap<string> CustomVersions
         {
@@ -31,13 +31,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? DayOfWeek { get; set; }
 
         /// <summary>
-        /// whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+        /// Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// any / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+        /// `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
         /// </summary>
         [Input("timeOfDay")]
         public Input<string>? TimeOfDay { get; set; }

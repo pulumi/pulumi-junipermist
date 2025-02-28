@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingSecurity
     {
         /// <summary>
-        /// whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
+        /// Whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
         /// </summary>
         public readonly bool? DisableLocalSsh;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? FipsZeroizePassword;
         /// <summary>
-        /// whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
+        /// Whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
         /// </summary>
         public readonly bool? LimitSshAccess;
 

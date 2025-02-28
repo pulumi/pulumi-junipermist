@@ -71,14 +71,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:site/wlanPortalTemplate:WlanPortalTemplate")
 public class WlanPortalTemplate extends com.pulumi.resources.CustomResource {
     /**
-     * portal template wlan settings
+     * Portal template wlan settings
      * 
      */
     @Export(name="portalTemplate", refs={WlanPortalTemplatePortalTemplate.class}, tree="[0]")
     private Output<WlanPortalTemplatePortalTemplate> portalTemplate;
 
     /**
-     * @return portal template wlan settings
+     * @return Portal template wlan settings
      * 
      */
     public Output<WlanPortalTemplatePortalTemplate> portalTemplate() {

@@ -13,13 +13,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class DeviceprofileApPwrConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// additional power to request during negotiating with PSE over PoE, in mW
+        /// Additional power to request during negotiating with PSE over PoE, in mW
         /// </summary>
         [Input("base")]
         public Input<int>? Base { get; set; }
 
         /// <summary>
-        /// whether to enable power out to peripheral, meanwhile will reduce power to wifi (only for AP45 at power mode)
+        /// Whether to enable power out to peripheral, meanwhile will reduce power to Wi-Fi (only for AP45 at power mode)
         /// </summary>
         [Input("preferUsbOverWifi")]
         public Input<bool>? PreferUsbOverWifi { get; set; }

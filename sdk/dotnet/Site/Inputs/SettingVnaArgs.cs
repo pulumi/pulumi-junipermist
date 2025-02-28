@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class SettingVnaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
+        /// Enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

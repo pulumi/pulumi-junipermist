@@ -29,14 +29,14 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * antenna gain for 2.4G - for models with external antenna only
+     * Antenna gain for 2.4G - for models with external antenna only
      * 
      */
     @Import(name="antGain24")
     private @Nullable Output<Integer> antGain24;
 
     /**
-     * @return antenna gain for 2.4G - for models with external antenna only
+     * @return Antenna gain for 2.4G - for models with external antenna only
      * 
      */
     public Optional<Output<Integer>> antGain24() {
@@ -44,14 +44,14 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * antenna gain for 5G - for models with external antenna only
+     * Antenna gain for 5G - for models with external antenna only
      * 
      */
     @Import(name="antGain5")
     private @Nullable Output<Integer> antGain5;
 
     /**
-     * @return antenna gain for 5G - for models with external antenna only
+     * @return Antenna gain for 5G - for models with external antenna only
      * 
      */
     public Optional<Output<Integer>> antGain5() {
@@ -59,14 +59,14 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * antenna gain for 6G - for models with external antenna only
+     * Antenna gain for 6G - for models with external antenna only
      * 
      */
     @Import(name="antGain6")
     private @Nullable Output<Integer> antGain6;
 
     /**
-     * @return antenna gain for 6G - for models with external antenna only
+     * @return Antenna gain for 6G - for models with external antenna only
      * 
      */
     public Optional<Output<Integer>> antGain6() {
@@ -164,16 +164,14 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * to make an outdoor operate indoor.
-     * for an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
+     * To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
      * 
      */
     @Import(name="indoorUse")
     private @Nullable Output<Boolean> indoorUse;
 
     /**
-     * @return to make an outdoor operate indoor.
-     * for an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
+     * @return To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
      * 
      */
     public Optional<Output<Boolean>> indoorUse() {
@@ -181,14 +179,14 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether scanning radio is enabled
+     * Whether scanning radio is enabled
      * 
      */
     @Import(name="scanningEnabled")
     private @Nullable Output<Boolean> scanningEnabled;
 
     /**
-     * @return whether scanning radio is enabled
+     * @return Whether scanning radio is enabled
      * 
      */
     public Optional<Output<Boolean>> scanningEnabled() {
@@ -240,7 +238,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param antGain24 antenna gain for 2.4G - for models with external antenna only
+         * @param antGain24 Antenna gain for 2.4G - for models with external antenna only
          * 
          * @return builder
          * 
@@ -251,7 +249,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param antGain24 antenna gain for 2.4G - for models with external antenna only
+         * @param antGain24 Antenna gain for 2.4G - for models with external antenna only
          * 
          * @return builder
          * 
@@ -261,7 +259,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param antGain5 antenna gain for 5G - for models with external antenna only
+         * @param antGain5 Antenna gain for 5G - for models with external antenna only
          * 
          * @return builder
          * 
@@ -272,7 +270,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param antGain5 antenna gain for 5G - for models with external antenna only
+         * @param antGain5 Antenna gain for 5G - for models with external antenna only
          * 
          * @return builder
          * 
@@ -282,7 +280,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param antGain6 antenna gain for 6G - for models with external antenna only
+         * @param antGain6 Antenna gain for 6G - for models with external antenna only
          * 
          * @return builder
          * 
@@ -293,7 +291,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param antGain6 antenna gain for 6G - for models with external antenna only
+         * @param antGain6 Antenna gain for 6G - for models with external antenna only
          * 
          * @return builder
          * 
@@ -429,8 +427,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param indoorUse to make an outdoor operate indoor.
-         * for an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
+         * @param indoorUse To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
          * 
          * @return builder
          * 
@@ -441,8 +438,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param indoorUse to make an outdoor operate indoor.
-         * for an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
+         * @param indoorUse To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
          * 
          * @return builder
          * 
@@ -452,7 +448,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scanningEnabled whether scanning radio is enabled
+         * @param scanningEnabled Whether scanning radio is enabled
          * 
          * @return builder
          * 
@@ -463,7 +459,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scanningEnabled whether scanning radio is enabled
+         * @param scanningEnabled Whether scanning radio is enabled
          * 
          * @return builder
          * 

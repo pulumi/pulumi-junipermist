@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string Ip;
         public readonly string Netmask;
         /// <summary>
-        /// optional list of secondary IPs in CIDR format
+        /// Optional list of secondary IPs in CIDR format
         /// </summary>
         public readonly ImmutableArray<string> SecondaryIps;
         /// <summary>

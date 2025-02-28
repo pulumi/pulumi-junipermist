@@ -59,14 +59,14 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * whether to disable eth1 port
+     * Whether to disable eth1 port
      * 
      */
     @Import(name="disableEth1")
     private @Nullable Output<Boolean> disableEth1;
 
     /**
-     * @return whether to disable eth1 port
+     * @return Whether to disable eth1 port
      * 
      */
     public Optional<Output<Boolean>> disableEth1() {
@@ -74,14 +74,14 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * whether to disable eth2 port
+     * Whether to disable eth2 port
      * 
      */
     @Import(name="disableEth2")
     private @Nullable Output<Boolean> disableEth2;
 
     /**
-     * @return whether to disable eth2 port
+     * @return Whether to disable eth2 port
      * 
      */
     public Optional<Output<Boolean>> disableEth2() {
@@ -89,14 +89,14 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * whether to disable eth3 port
+     * Whether to disable eth3 port
      * 
      */
     @Import(name="disableEth3")
     private @Nullable Output<Boolean> disableEth3;
 
     /**
-     * @return whether to disable eth3 port
+     * @return Whether to disable eth3 port
      * 
      */
     public Optional<Output<Boolean>> disableEth3() {
@@ -104,14 +104,14 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * whether to disable module port
+     * Whether to disable module port
      * 
      */
     @Import(name="disableModule")
     private @Nullable Output<Boolean> disableModule;
 
     /**
-     * @return whether to disable module port
+     * @return Whether to disable module port
      * 
      */
     public Optional<Output<Boolean>> disableModule() {
@@ -192,14 +192,14 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+     * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      * 
      */
     @Import(name="poePassthrough")
     private @Nullable Output<Boolean> poePassthrough;
 
     /**
-     * @return whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+     * @return Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      * 
      */
     public Optional<Output<Boolean>> poePassthrough() {
@@ -207,14 +207,14 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * power related configs
+     * Power related configs
      * 
      */
     @Import(name="pwrConfig")
     private @Nullable Output<DeviceprofileApPwrConfigArgs> pwrConfig;
 
     /**
-     * @return power related configs
+     * @return Power related configs
      * 
      */
     public Optional<Output<DeviceprofileApPwrConfigArgs>> pwrConfig() {
@@ -258,26 +258,32 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * AP Uplink port configuration
+     * 
+     */
     @Import(name="uplinkPortConfig")
     private @Nullable Output<DeviceprofileApUplinkPortConfigArgs> uplinkPortConfig;
 
+    /**
+     * @return AP Uplink port configuration
+     * 
+     */
     public Optional<Output<DeviceprofileApUplinkPortConfigArgs>> uplinkPortConfig() {
         return Optional.ofNullable(this.uplinkPortConfig);
     }
 
     /**
-     * USB AP settings
-     * Note: if native imagotag is enabled, BLE will be disabled automatically
-     * Note: legacy, new config moved to ESL Config.
+     * USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+     * moved to ESL Config.
      * 
      */
     @Import(name="usbConfig")
     private @Nullable Output<DeviceprofileApUsbConfigArgs> usbConfig;
 
     /**
-     * @return USB AP settings
-     * Note: if native imagotag is enabled, BLE will be disabled automatically
-     * Note: legacy, new config moved to ESL Config.
+     * @return USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+     * moved to ESL Config.
      * 
      */
     public Optional<Output<DeviceprofileApUsbConfigArgs>> usbConfig() {
@@ -285,14 +291,14 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
     @Import(name="vars")
     private @Nullable Output<Map<String,String>> vars;
 
     /**
-     * @return a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * @return Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
     public Optional<Output<Map<String,String>>> vars() {
@@ -386,7 +392,7 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param disableEth1 whether to disable eth1 port
+         * @param disableEth1 Whether to disable eth1 port
          * 
          * @return builder
          * 
@@ -397,7 +403,7 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param disableEth1 whether to disable eth1 port
+         * @param disableEth1 Whether to disable eth1 port
          * 
          * @return builder
          * 
@@ -407,7 +413,7 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param disableEth2 whether to disable eth2 port
+         * @param disableEth2 Whether to disable eth2 port
          * 
          * @return builder
          * 
@@ -418,7 +424,7 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param disableEth2 whether to disable eth2 port
+         * @param disableEth2 Whether to disable eth2 port
          * 
          * @return builder
          * 
@@ -428,7 +434,7 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param disableEth3 whether to disable eth3 port
+         * @param disableEth3 Whether to disable eth3 port
          * 
          * @return builder
          * 
@@ -439,7 +445,7 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param disableEth3 whether to disable eth3 port
+         * @param disableEth3 Whether to disable eth3 port
          * 
          * @return builder
          * 
@@ -449,7 +455,7 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param disableModule whether to disable module port
+         * @param disableModule Whether to disable module port
          * 
          * @return builder
          * 
@@ -460,7 +466,7 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param disableModule whether to disable module port
+         * @param disableModule Whether to disable module port
          * 
          * @return builder
          * 
@@ -573,7 +579,7 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param poePassthrough whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+         * @param poePassthrough Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
          * 
          * @return builder
          * 
@@ -584,7 +590,7 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param poePassthrough whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+         * @param poePassthrough Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
          * 
          * @return builder
          * 
@@ -594,7 +600,7 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pwrConfig power related configs
+         * @param pwrConfig Power related configs
          * 
          * @return builder
          * 
@@ -605,7 +611,7 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pwrConfig power related configs
+         * @param pwrConfig Power related configs
          * 
          * @return builder
          * 
@@ -665,19 +671,30 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
             return type(Output.of(type));
         }
 
+        /**
+         * @param uplinkPortConfig AP Uplink port configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder uplinkPortConfig(@Nullable Output<DeviceprofileApUplinkPortConfigArgs> uplinkPortConfig) {
             $.uplinkPortConfig = uplinkPortConfig;
             return this;
         }
 
+        /**
+         * @param uplinkPortConfig AP Uplink port configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder uplinkPortConfig(DeviceprofileApUplinkPortConfigArgs uplinkPortConfig) {
             return uplinkPortConfig(Output.of(uplinkPortConfig));
         }
 
         /**
-         * @param usbConfig USB AP settings
-         * Note: if native imagotag is enabled, BLE will be disabled automatically
-         * Note: legacy, new config moved to ESL Config.
+         * @param usbConfig USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+         * moved to ESL Config.
          * 
          * @return builder
          * 
@@ -688,9 +705,8 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param usbConfig USB AP settings
-         * Note: if native imagotag is enabled, BLE will be disabled automatically
-         * Note: legacy, new config moved to ESL Config.
+         * @param usbConfig USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+         * moved to ESL Config.
          * 
          * @return builder
          * 
@@ -700,7 +716,7 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vars a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+         * @param vars Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
          * 
          * @return builder
          * 
@@ -711,7 +727,7 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vars a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+         * @param vars Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
          * 
          * @return builder
          * 

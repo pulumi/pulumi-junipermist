@@ -193,14 +193,14 @@ public class Rftemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.band6);
     }
     /**
-     * optional, country code to use. If specified, this gets applied to all sites using the RF Template
+     * Optional, country code to use. If specified, this gets applied to all sites using the RF Template
      * 
      */
     @Export(name="countryCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> countryCode;
 
     /**
-     * @return optional, country code to use. If specified, this gets applied to all sites using the RF Template
+     * @return Optional, country code to use. If specified, this gets applied to all sites using the RF Template
      * 
      */
     public Output<Optional<String>> countryCode() {
@@ -241,14 +241,14 @@ public class Rftemplate extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * whether scanning radio is enabled
+     * Whether scanning radio is enabled
      * 
      */
     @Export(name="scanningEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> scanningEnabled;
 
     /**
-     * @return whether scanning radio is enabled
+     * @return Whether scanning radio is enabled
      * 
      */
     public Output<Optional<Boolean>> scanningEnabled() {

@@ -14,27 +14,27 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileGatewayNetwork
     {
         /// <summary>
-        /// whether to disallow Mist Devices in the network
+        /// Whether to disallow Mist Devices in the network
         /// </summary>
         public readonly bool? DisallowMistServices;
         public readonly string? Gateway;
         public readonly string? Gateway6;
         public readonly Outputs.DeviceprofileGatewayNetworkInternalAccess? InternalAccess;
         /// <summary>
-        /// whether this network has direct internet access
+        /// Whether this network has direct internet access
         /// </summary>
         public readonly Outputs.DeviceprofileGatewayNetworkInternetAccess? InternetAccess;
         /// <summary>
-        /// whether to allow clients in the network to talk to each other
+        /// Whether to allow clients in the network to talk to each other
         /// </summary>
         public readonly bool? Isolation;
         /// <summary>
-        /// whether to enable multicast support (only PIM-sparse mode is supported)
+        /// Whether to enable multicast support (only PIM-sparse mode is supported)
         /// </summary>
         public readonly Outputs.DeviceprofileGatewayNetworkMulticast? Multicast;
         public readonly string Name;
         /// <summary>
-        /// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        /// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         /// </summary>
         public readonly ImmutableArray<string> RoutedForNetworks;
         public readonly string Subnet;

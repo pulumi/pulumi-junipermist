@@ -18,23 +18,23 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? AnticlogThreshold;
         /// <summary>
-        /// whether to trigger EAP reauth when the session ends
+        /// Whether to trigger EAP reauth when the session ends
         /// </summary>
         public readonly bool? EapReauth;
         /// <summary>
-        /// whether to enable MAC Auth, uses the same auth_servers
+        /// Whether to enable MAC Auth, uses the same auth_servers
         /// </summary>
         public readonly bool? EnableMacAuth;
         /// <summary>
-        /// when `type`==`wep`
+        /// When `type`==`wep`
         /// </summary>
         public readonly int? KeyIdx;
         /// <summary>
-        /// when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+        /// When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
         /// </summary>
         public readonly ImmutableArray<string> Keys;
         /// <summary>
-        /// when `type`==`psk`, whether to only use multi_psk
+        /// When `type`==`psk`, whether to only use multi_psk
         /// </summary>
         public readonly bool? MultiPskOnly;
         /// <summary>
@@ -42,15 +42,15 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? Owe;
         /// <summary>
-        /// when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+        /// When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
         /// </summary>
         public readonly ImmutableArray<string> Pairwises;
         /// <summary>
-        /// when `multi_psk_only`==`true`, whether private wlan is enabled
+        /// When `multi_psk_only`==`true`, whether private wlan is enabled
         /// </summary>
         public readonly bool? PrivateWlan;
         /// <summary>
-        /// when `type`==`psk`, 8-64 characters, or 64 hex characters
+        /// When `type`==`psk`, 8-64 characters, or 64 hex characters
         /// </summary>
         public readonly string? Psk;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// enable WEP as secondary auth
+        /// Enable WEP as secondary auth
         /// </summary>
         public readonly bool? WepAsSecondaryAuth;
 

@@ -49,14 +49,14 @@ public final class NetworktemplateSwitchMgmtTacacsArgs extends com.pulumi.resour
     }
 
     /**
-     * which network the TACACS server resides
+     * Which network the TACACS server resides
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return which network the TACACS server resides
+     * @return Which network the TACACS server resides
      * 
      */
     public Optional<Output<String>> network() {
@@ -142,7 +142,7 @@ public final class NetworktemplateSwitchMgmtTacacsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param network which network the TACACS server resides
+         * @param network Which network the TACACS server resides
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class NetworktemplateSwitchMgmtTacacsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param network which network the TACACS server resides
+         * @param network Which network the TACACS server resides
          * 
          * @return builder
          * 

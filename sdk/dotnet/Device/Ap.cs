@@ -49,25 +49,25 @@ namespace Pulumi.JuniperMist.Device
         public Output<string> DeviceId { get; private set; } = null!;
 
         /// <summary>
-        /// whether to disable eth1 port
+        /// Whether to disable eth1 port
         /// </summary>
         [Output("disableEth1")]
         public Output<bool> DisableEth1 { get; private set; } = null!;
 
         /// <summary>
-        /// whether to disable eth2 port
+        /// Whether to disable eth2 port
         /// </summary>
         [Output("disableEth2")]
         public Output<bool> DisableEth2 { get; private set; } = null!;
 
         /// <summary>
-        /// whether to disable eth3 port
+        /// Whether to disable eth3 port
         /// </summary>
         [Output("disableEth3")]
         public Output<bool> DisableEth3 { get; private set; } = null!;
 
         /// <summary>
-        /// whether to disable module port
+        /// Whether to disable module port
         /// </summary>
         [Output("disableModule")]
         public Output<bool> DisableModule { get; private set; } = null!;
@@ -76,7 +76,13 @@ namespace Pulumi.JuniperMist.Device
         public Output<Outputs.ApEslConfig?> EslConfig { get; private set; } = null!;
 
         /// <summary>
-        /// height, in meters, optional
+        /// For some AP models, flow_control can be enabled to address some switch compatibility issue
+        /// </summary>
+        [Output("flowControl")]
+        public Output<bool> FlowControl { get; private set; } = null!;
+
+        /// <summary>
+        /// Height, in meters, optional
         /// </summary>
         [Output("height")]
         public Output<double?> Height { get; private set; } = null!;
@@ -103,19 +109,19 @@ namespace Pulumi.JuniperMist.Device
         public Output<Outputs.ApLed?> Led { get; private set; } = null!;
 
         /// <summary>
-        /// whether this map is considered locked down
+        /// Whether this map is considered locked down
         /// </summary>
         [Output("locked")]
         public Output<bool?> Locked { get; private set; } = null!;
 
         /// <summary>
-        /// device MAC address
+        /// Device MAC address
         /// </summary>
         [Output("mac")]
         public Output<string> Mac { get; private set; } = null!;
 
         /// <summary>
-        /// map where the device belongs to
+        /// Map where the device belongs to
         /// </summary>
         [Output("mapId")]
         public Output<string?> MapId { get; private set; } = null!;
@@ -127,7 +133,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<Outputs.ApMesh?> Mesh { get; private set; } = null!;
 
         /// <summary>
-        /// device Model
+        /// Device Model
         /// </summary>
         [Output("model")]
         public Output<string> Model { get; private set; } = null!;
@@ -136,7 +142,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// any notes about this AP
+        /// Any notes about this AP
         /// </summary>
         [Output("notes")]
         public Output<string?> Notes { get; private set; } = null!;
@@ -148,19 +154,19 @@ namespace Pulumi.JuniperMist.Device
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// orientation, 0-359, in degrees, up is 0, right is 90.
+        /// Orientation, 0-359, in degrees, up is 0, right is 90.
         /// </summary>
         [Output("orientation")]
         public Output<int?> Orientation { get; private set; } = null!;
 
         /// <summary>
-        /// whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        /// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
         /// </summary>
         [Output("poePassthrough")]
         public Output<bool> PoePassthrough { get; private set; } = null!;
 
         /// <summary>
-        /// power related configs
+        /// Power related configs
         /// </summary>
         [Output("pwrConfig")]
         public Output<Outputs.ApPwrConfig?> PwrConfig { get; private set; } = null!;
@@ -172,7 +178,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<Outputs.ApRadioConfig?> RadioConfig { get; private set; } = null!;
 
         /// <summary>
-        /// device Serial
+        /// Device Serial
         /// </summary>
         [Output("serial")]
         public Output<string> Serial { get; private set; } = null!;
@@ -186,30 +192,33 @@ namespace Pulumi.JuniperMist.Device
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
+        /// <summary>
+        /// AP Uplink port configuration
+        /// </summary>
         [Output("uplinkPortConfig")]
         public Output<Outputs.ApUplinkPortConfig?> UplinkPortConfig { get; private set; } = null!;
 
         /// <summary>
-        /// USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-        /// to ESL Config.
+        /// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+        /// moved to ESL Config.
         /// </summary>
         [Output("usbConfig")]
         public Output<Outputs.ApUsbConfig?> UsbConfig { get; private set; } = null!;
 
         /// <summary>
-        /// a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         /// </summary>
         [Output("vars")]
         public Output<ImmutableDictionary<string, string>?> Vars { get; private set; } = null!;
 
         /// <summary>
-        /// x in pixel
+        /// X in pixel
         /// </summary>
         [Output("x")]
         public Output<double?> X { get; private set; } = null!;
 
         /// <summary>
-        /// y in pixel
+        /// Y in pixel
         /// </summary>
         [Output("y")]
         public Output<double?> Y { get; private set; } = null!;
@@ -283,25 +292,25 @@ namespace Pulumi.JuniperMist.Device
         public Input<string> DeviceId { get; set; } = null!;
 
         /// <summary>
-        /// whether to disable eth1 port
+        /// Whether to disable eth1 port
         /// </summary>
         [Input("disableEth1")]
         public Input<bool>? DisableEth1 { get; set; }
 
         /// <summary>
-        /// whether to disable eth2 port
+        /// Whether to disable eth2 port
         /// </summary>
         [Input("disableEth2")]
         public Input<bool>? DisableEth2 { get; set; }
 
         /// <summary>
-        /// whether to disable eth3 port
+        /// Whether to disable eth3 port
         /// </summary>
         [Input("disableEth3")]
         public Input<bool>? DisableEth3 { get; set; }
 
         /// <summary>
-        /// whether to disable module port
+        /// Whether to disable module port
         /// </summary>
         [Input("disableModule")]
         public Input<bool>? DisableModule { get; set; }
@@ -310,7 +319,13 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.ApEslConfigArgs>? EslConfig { get; set; }
 
         /// <summary>
-        /// height, in meters, optional
+        /// For some AP models, flow_control can be enabled to address some switch compatibility issue
+        /// </summary>
+        [Input("flowControl")]
+        public Input<bool>? FlowControl { get; set; }
+
+        /// <summary>
+        /// Height, in meters, optional
         /// </summary>
         [Input("height")]
         public Input<double>? Height { get; set; }
@@ -328,13 +343,13 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.ApLedArgs>? Led { get; set; }
 
         /// <summary>
-        /// whether this map is considered locked down
+        /// Whether this map is considered locked down
         /// </summary>
         [Input("locked")]
         public Input<bool>? Locked { get; set; }
 
         /// <summary>
-        /// map where the device belongs to
+        /// Map where the device belongs to
         /// </summary>
         [Input("mapId")]
         public Input<string>? MapId { get; set; }
@@ -349,7 +364,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// any notes about this AP
+        /// Any notes about this AP
         /// </summary>
         [Input("notes")]
         public Input<string>? Notes { get; set; }
@@ -363,19 +378,19 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// orientation, 0-359, in degrees, up is 0, right is 90.
+        /// Orientation, 0-359, in degrees, up is 0, right is 90.
         /// </summary>
         [Input("orientation")]
         public Input<int>? Orientation { get; set; }
 
         /// <summary>
-        /// whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        /// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
         /// </summary>
         [Input("poePassthrough")]
         public Input<bool>? PoePassthrough { get; set; }
 
         /// <summary>
-        /// power related configs
+        /// Power related configs
         /// </summary>
         [Input("pwrConfig")]
         public Input<Inputs.ApPwrConfigArgs>? PwrConfig { get; set; }
@@ -389,12 +404,15 @@ namespace Pulumi.JuniperMist.Device
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
 
+        /// <summary>
+        /// AP Uplink port configuration
+        /// </summary>
         [Input("uplinkPortConfig")]
         public Input<Inputs.ApUplinkPortConfigArgs>? UplinkPortConfig { get; set; }
 
         /// <summary>
-        /// USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-        /// to ESL Config.
+        /// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+        /// moved to ESL Config.
         /// </summary>
         [Input("usbConfig")]
         public Input<Inputs.ApUsbConfigArgs>? UsbConfig { get; set; }
@@ -403,7 +421,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<string>? _vars;
 
         /// <summary>
-        /// a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         /// </summary>
         public InputMap<string> Vars
         {
@@ -412,13 +430,13 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// x in pixel
+        /// X in pixel
         /// </summary>
         [Input("x")]
         public Input<double>? X { get; set; }
 
         /// <summary>
-        /// y in pixel
+        /// Y in pixel
         /// </summary>
         [Input("y")]
         public Input<double>? Y { get; set; }
@@ -453,25 +471,25 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? DeviceId { get; set; }
 
         /// <summary>
-        /// whether to disable eth1 port
+        /// Whether to disable eth1 port
         /// </summary>
         [Input("disableEth1")]
         public Input<bool>? DisableEth1 { get; set; }
 
         /// <summary>
-        /// whether to disable eth2 port
+        /// Whether to disable eth2 port
         /// </summary>
         [Input("disableEth2")]
         public Input<bool>? DisableEth2 { get; set; }
 
         /// <summary>
-        /// whether to disable eth3 port
+        /// Whether to disable eth3 port
         /// </summary>
         [Input("disableEth3")]
         public Input<bool>? DisableEth3 { get; set; }
 
         /// <summary>
-        /// whether to disable module port
+        /// Whether to disable module port
         /// </summary>
         [Input("disableModule")]
         public Input<bool>? DisableModule { get; set; }
@@ -480,7 +498,13 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.ApEslConfigGetArgs>? EslConfig { get; set; }
 
         /// <summary>
-        /// height, in meters, optional
+        /// For some AP models, flow_control can be enabled to address some switch compatibility issue
+        /// </summary>
+        [Input("flowControl")]
+        public Input<bool>? FlowControl { get; set; }
+
+        /// <summary>
+        /// Height, in meters, optional
         /// </summary>
         [Input("height")]
         public Input<double>? Height { get; set; }
@@ -507,19 +531,19 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.ApLedGetArgs>? Led { get; set; }
 
         /// <summary>
-        /// whether this map is considered locked down
+        /// Whether this map is considered locked down
         /// </summary>
         [Input("locked")]
         public Input<bool>? Locked { get; set; }
 
         /// <summary>
-        /// device MAC address
+        /// Device MAC address
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// map where the device belongs to
+        /// Map where the device belongs to
         /// </summary>
         [Input("mapId")]
         public Input<string>? MapId { get; set; }
@@ -531,7 +555,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.ApMeshGetArgs>? Mesh { get; set; }
 
         /// <summary>
-        /// device Model
+        /// Device Model
         /// </summary>
         [Input("model")]
         public Input<string>? Model { get; set; }
@@ -540,7 +564,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// any notes about this AP
+        /// Any notes about this AP
         /// </summary>
         [Input("notes")]
         public Input<string>? Notes { get; set; }
@@ -557,19 +581,19 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// orientation, 0-359, in degrees, up is 0, right is 90.
+        /// Orientation, 0-359, in degrees, up is 0, right is 90.
         /// </summary>
         [Input("orientation")]
         public Input<int>? Orientation { get; set; }
 
         /// <summary>
-        /// whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        /// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
         /// </summary>
         [Input("poePassthrough")]
         public Input<bool>? PoePassthrough { get; set; }
 
         /// <summary>
-        /// power related configs
+        /// Power related configs
         /// </summary>
         [Input("pwrConfig")]
         public Input<Inputs.ApPwrConfigGetArgs>? PwrConfig { get; set; }
@@ -581,7 +605,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.ApRadioConfigGetArgs>? RadioConfig { get; set; }
 
         /// <summary>
-        /// device Serial
+        /// Device Serial
         /// </summary>
         [Input("serial")]
         public Input<string>? Serial { get; set; }
@@ -595,12 +619,15 @@ namespace Pulumi.JuniperMist.Device
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// AP Uplink port configuration
+        /// </summary>
         [Input("uplinkPortConfig")]
         public Input<Inputs.ApUplinkPortConfigGetArgs>? UplinkPortConfig { get; set; }
 
         /// <summary>
-        /// USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-        /// to ESL Config.
+        /// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+        /// moved to ESL Config.
         /// </summary>
         [Input("usbConfig")]
         public Input<Inputs.ApUsbConfigGetArgs>? UsbConfig { get; set; }
@@ -609,7 +636,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<string>? _vars;
 
         /// <summary>
-        /// a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         /// </summary>
         public InputMap<string> Vars
         {
@@ -618,13 +645,13 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// x in pixel
+        /// X in pixel
         /// </summary>
         [Input("x")]
         public Input<double>? X { get; set; }
 
         /// <summary>
-        /// y in pixel
+        /// Y in pixel
         /// </summary>
         [Input("y")]
         public Input<double>? Y { get; set; }

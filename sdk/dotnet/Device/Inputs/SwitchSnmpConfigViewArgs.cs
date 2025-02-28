@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchSnmpConfigViewArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// if the root oid configured is included
+        /// If the root oid configured is included
         /// </summary>
         [Input("include")]
         public Input<bool>? Include { get; set; }

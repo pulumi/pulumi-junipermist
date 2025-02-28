@@ -53,26 +53,27 @@ namespace Pulumi.JuniperMist.Org
     public partial class Nactag : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// can be set to true to allow the override by usermac result
+        /// Can be set to true to allow the override by usermac result
         /// </summary>
         [Output("allowUsermacOverride")]
         public Output<bool> AllowUsermacOverride { get; private set; } = null!;
 
         /// <summary>
-        /// if `type`==`egress_vlan_names`, list of egress vlans to return
+        /// If `type`==`egress_vlan_names`, list of egress vlans to return
         /// </summary>
         [Output("egressVlanNames")]
         public Output<ImmutableArray<string>> EgressVlanNames { get; private set; } = null!;
 
         /// <summary>
-        /// if `type`==`gbp_tag`
+        /// If `type`==`gbp_tag`
         /// </summary>
         [Output("gbpTag")]
         public Output<int?> GbpTag { get; private set; } = null!;
 
         /// <summary>
-        /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `client_mac`, `idp_role`,
-        /// `mdm_status`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+        /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
+        /// `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`,
+        /// `usermac_label`
         /// </summary>
         [Output("match")]
         public Output<string?> Match { get; private set; } = null!;
@@ -80,7 +81,7 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
         /// match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-        /// set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`'
+        /// set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
         /// </summary>
         [Output("matchAll")]
         public Output<bool> MatchAll { get; private set; } = null!;
@@ -92,7 +93,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// if `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
+        /// If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
         /// the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
         /// that it is allowed to have more than one radius_attrs in the result of a given rule.
         /// </summary>
@@ -100,13 +101,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableArray<string>> RadiusAttrs { get; private set; } = null!;
 
         /// <summary>
-        /// if `type`==`radius_group`
+        /// If `type`==`radius_group`
         /// </summary>
         [Output("radiusGroup")]
         public Output<string?> RadiusGroup { get; private set; } = null!;
 
         /// <summary>
-        /// if `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
+        /// If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
         /// "radius_vendor_attrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
         /// not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         /// </summary>
@@ -114,26 +115,32 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableArray<string>> RadiusVendorAttrs { get; private set; } = null!;
 
         /// <summary>
-        /// if `type`==`session_timeout, in seconds
+        /// If `type`==`session_timeout, in seconds
         /// </summary>
         [Output("sessionTimeout")]
         public Output<int?> SessionTimeout { get; private set; } = null!;
 
         /// <summary>
         /// enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-        /// `vlan`
+        /// `username_attr`, `vlan`
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// if `type`==`match`
+        /// enum: `automatic`, `cn`, `dns`, `email`, `upn`
+        /// </summary>
+        [Output("usernameAttr")]
+        public Output<string?> UsernameAttr { get; private set; } = null!;
+
+        /// <summary>
+        /// If `type`==`match`
         /// </summary>
         [Output("values")]
         public Output<ImmutableArray<string>> Values { get; private set; } = null!;
 
         /// <summary>
-        /// if `type`==`vlan`
+        /// If `type`==`vlan`
         /// </summary>
         [Output("vlan")]
         public Output<string?> Vlan { get; private set; } = null!;
@@ -186,7 +193,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NactagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// can be set to true to allow the override by usermac result
+        /// Can be set to true to allow the override by usermac result
         /// </summary>
         [Input("allowUsermacOverride")]
         public Input<bool>? AllowUsermacOverride { get; set; }
@@ -195,7 +202,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _egressVlanNames;
 
         /// <summary>
-        /// if `type`==`egress_vlan_names`, list of egress vlans to return
+        /// If `type`==`egress_vlan_names`, list of egress vlans to return
         /// </summary>
         public InputList<string> EgressVlanNames
         {
@@ -204,14 +211,15 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// if `type`==`gbp_tag`
+        /// If `type`==`gbp_tag`
         /// </summary>
         [Input("gbpTag")]
         public Input<int>? GbpTag { get; set; }
 
         /// <summary>
-        /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `client_mac`, `idp_role`,
-        /// `mdm_status`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+        /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
+        /// `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`,
+        /// `usermac_label`
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -219,7 +227,7 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
         /// match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-        /// set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`'
+        /// set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
         /// </summary>
         [Input("matchAll")]
         public Input<bool>? MatchAll { get; set; }
@@ -234,7 +242,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _radiusAttrs;
 
         /// <summary>
-        /// if `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
+        /// If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
         /// the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
         /// that it is allowed to have more than one radius_attrs in the result of a given rule.
         /// </summary>
@@ -245,7 +253,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// if `type`==`radius_group`
+        /// If `type`==`radius_group`
         /// </summary>
         [Input("radiusGroup")]
         public Input<string>? RadiusGroup { get; set; }
@@ -254,7 +262,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _radiusVendorAttrs;
 
         /// <summary>
-        /// if `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
+        /// If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
         /// "radius_vendor_attrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
         /// not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         /// </summary>
@@ -265,23 +273,29 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// if `type`==`session_timeout, in seconds
+        /// If `type`==`session_timeout, in seconds
         /// </summary>
         [Input("sessionTimeout")]
         public Input<int>? SessionTimeout { get; set; }
 
         /// <summary>
         /// enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-        /// `vlan`
+        /// `username_attr`, `vlan`
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
+
+        /// <summary>
+        /// enum: `automatic`, `cn`, `dns`, `email`, `upn`
+        /// </summary>
+        [Input("usernameAttr")]
+        public Input<string>? UsernameAttr { get; set; }
 
         [Input("values")]
         private InputList<string>? _values;
 
         /// <summary>
-        /// if `type`==`match`
+        /// If `type`==`match`
         /// </summary>
         public InputList<string> Values
         {
@@ -290,7 +304,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// if `type`==`vlan`
+        /// If `type`==`vlan`
         /// </summary>
         [Input("vlan")]
         public Input<string>? Vlan { get; set; }
@@ -304,7 +318,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NactagState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// can be set to true to allow the override by usermac result
+        /// Can be set to true to allow the override by usermac result
         /// </summary>
         [Input("allowUsermacOverride")]
         public Input<bool>? AllowUsermacOverride { get; set; }
@@ -313,7 +327,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _egressVlanNames;
 
         /// <summary>
-        /// if `type`==`egress_vlan_names`, list of egress vlans to return
+        /// If `type`==`egress_vlan_names`, list of egress vlans to return
         /// </summary>
         public InputList<string> EgressVlanNames
         {
@@ -322,14 +336,15 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// if `type`==`gbp_tag`
+        /// If `type`==`gbp_tag`
         /// </summary>
         [Input("gbpTag")]
         public Input<int>? GbpTag { get; set; }
 
         /// <summary>
-        /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `client_mac`, `idp_role`,
-        /// `mdm_status`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+        /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
+        /// `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`,
+        /// `usermac_label`
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -337,7 +352,7 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
         /// match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-        /// set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`'
+        /// set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
         /// </summary>
         [Input("matchAll")]
         public Input<bool>? MatchAll { get; set; }
@@ -352,7 +367,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _radiusAttrs;
 
         /// <summary>
-        /// if `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
+        /// If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
         /// the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
         /// that it is allowed to have more than one radius_attrs in the result of a given rule.
         /// </summary>
@@ -363,7 +378,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// if `type`==`radius_group`
+        /// If `type`==`radius_group`
         /// </summary>
         [Input("radiusGroup")]
         public Input<string>? RadiusGroup { get; set; }
@@ -372,7 +387,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _radiusVendorAttrs;
 
         /// <summary>
-        /// if `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
+        /// If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
         /// "radius_vendor_attrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
         /// not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         /// </summary>
@@ -383,23 +398,29 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// if `type`==`session_timeout, in seconds
+        /// If `type`==`session_timeout, in seconds
         /// </summary>
         [Input("sessionTimeout")]
         public Input<int>? SessionTimeout { get; set; }
 
         /// <summary>
         /// enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-        /// `vlan`
+        /// `username_attr`, `vlan`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// enum: `automatic`, `cn`, `dns`, `email`, `upn`
+        /// </summary>
+        [Input("usernameAttr")]
+        public Input<string>? UsernameAttr { get; set; }
 
         [Input("values")]
         private InputList<string>? _values;
 
         /// <summary>
-        /// if `type`==`match`
+        /// If `type`==`match`
         /// </summary>
         public InputList<string> Values
         {
@@ -408,7 +429,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// if `type`==`vlan`
+        /// If `type`==`vlan`
         /// </summary>
         [Input("vlan")]
         public Input<string>? Vlan { get; set; }

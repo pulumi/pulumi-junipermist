@@ -42,14 +42,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label for Amazon auth button
+     * Label for Amazon auth button
      * 
      */
     @Import(name="authButtonAmazon")
     private @Nullable Output<String> authButtonAmazon;
 
     /**
-     * @return label for Amazon auth button
+     * @return Label for Amazon auth button
      * 
      */
     public Optional<Output<String>> authButtonAmazon() {
@@ -57,14 +57,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label for Azure auth button
+     * Label for Azure auth button
      * 
      */
     @Import(name="authButtonAzure")
     private @Nullable Output<String> authButtonAzure;
 
     /**
-     * @return label for Azure auth button
+     * @return Label for Azure auth button
      * 
      */
     public Optional<Output<String>> authButtonAzure() {
@@ -72,14 +72,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label for Email auth button
+     * Label for Email auth button
      * 
      */
     @Import(name="authButtonEmail")
     private @Nullable Output<String> authButtonEmail;
 
     /**
-     * @return label for Email auth button
+     * @return Label for Email auth button
      * 
      */
     public Optional<Output<String>> authButtonEmail() {
@@ -87,14 +87,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label for Facebook auth button
+     * Label for Facebook auth button
      * 
      */
     @Import(name="authButtonFacebook")
     private @Nullable Output<String> authButtonFacebook;
 
     /**
-     * @return label for Facebook auth button
+     * @return Label for Facebook auth button
      * 
      */
     public Optional<Output<String>> authButtonFacebook() {
@@ -102,14 +102,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label for Google auth button
+     * Label for Google auth button
      * 
      */
     @Import(name="authButtonGoogle")
     private @Nullable Output<String> authButtonGoogle;
 
     /**
-     * @return label for Google auth button
+     * @return Label for Google auth button
      * 
      */
     public Optional<Output<String>> authButtonGoogle() {
@@ -117,14 +117,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label for Microsoft auth button
+     * Label for Microsoft auth button
      * 
      */
     @Import(name="authButtonMicrosoft")
     private @Nullable Output<String> authButtonMicrosoft;
 
     /**
-     * @return label for Microsoft auth button
+     * @return Label for Microsoft auth button
      * 
      */
     public Optional<Output<String>> authButtonMicrosoft() {
@@ -132,14 +132,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label for passphrase auth button
+     * Label for passphrase auth button
      * 
      */
     @Import(name="authButtonPassphrase")
     private @Nullable Output<String> authButtonPassphrase;
 
     /**
-     * @return label for passphrase auth button
+     * @return Label for passphrase auth button
      * 
      */
     public Optional<Output<String>> authButtonPassphrase() {
@@ -147,14 +147,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label for SMS auth button
+     * Label for SMS auth button
      * 
      */
     @Import(name="authButtonSms")
     private @Nullable Output<String> authButtonSms;
 
     /**
-     * @return label for SMS auth button
+     * @return Label for SMS auth button
      * 
      */
     public Optional<Output<String>> authButtonSms() {
@@ -162,14 +162,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label for Sponsor auth button
+     * Label for Sponsor auth button
      * 
      */
     @Import(name="authButtonSponsor")
     private @Nullable Output<String> authButtonSponsor;
 
     /**
-     * @return label for Sponsor auth button
+     * @return Label for Sponsor auth button
      * 
      */
     public Optional<Output<String>> authButtonSponsor() {
@@ -184,14 +184,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label of the link to go back to /logon
+     * Label of the link to go back to /logon
      * 
      */
     @Import(name="backLink")
     private @Nullable Output<String> backLink;
 
     /**
-     * @return label of the link to go back to /logon
+     * @return Label of the link to go back to /logon
      * 
      */
     public Optional<Output<String>> backLink() {
@@ -228,14 +228,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * whether company field is required
+     * Whether company field is required
      * 
      */
     @Import(name="company")
     private @Nullable Output<Boolean> company;
 
     /**
-     * @return whether company field is required
+     * @return Whether company field is required
      * 
      */
     public Optional<Output<Boolean>> company() {
@@ -243,14 +243,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * error message when company not provided
+     * Error message when company not provided
      * 
      */
     @Import(name="companyError")
     private @Nullable Output<String> companyError;
 
     /**
-     * @return error message when company not provided
+     * @return Error message when company not provided
      * 
      */
     public Optional<Output<String>> companyError() {
@@ -258,14 +258,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label of company field
+     * Label of company field
      * 
      */
     @Import(name="companyLabel")
     private @Nullable Output<String> companyLabel;
 
     /**
-     * @return label of company field
+     * @return Label of company field
      * 
      */
     public Optional<Output<String>> companyLabel() {
@@ -273,14 +273,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * whether email field is required
+     * Whether email field is required
      * 
      */
     @Import(name="email")
     private @Nullable Output<Boolean> email;
 
     /**
-     * @return whether email field is required
+     * @return Whether email field is required
      * 
      */
     public Optional<Output<Boolean>> email() {
@@ -288,14 +288,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * error message when a user has valid social login but doesn&#39;t match specified email domains.
+     * Error message when a user has valid social login but doesn&#39;t match specified email domains.
      * 
      */
     @Import(name="emailAccessDomainError")
     private @Nullable Output<String> emailAccessDomainError;
 
     /**
-     * @return error message when a user has valid social login but doesn&#39;t match specified email domains.
+     * @return Error message when a user has valid social login but doesn&#39;t match specified email domains.
      * 
      */
     public Optional<Output<String>> emailAccessDomainError() {
@@ -360,14 +360,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * error message when email not provided
+     * Error message when email not provided
      * 
      */
     @Import(name="emailError")
     private @Nullable Output<String> emailError;
 
     /**
-     * @return error message when email not provided
+     * @return Error message when email not provided
      * 
      */
     public Optional<Output<String>> emailError() {
@@ -382,14 +382,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label of email field
+     * Label of email field
      * 
      */
     @Import(name="emailLabel")
     private @Nullable Output<String> emailLabel;
 
     /**
-     * @return label of email field
+     * @return Label of email field
      * 
      */
     public Optional<Output<String>> emailLabel() {
@@ -434,14 +434,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * whether to ask field1
+     * Whether to ask field1
      * 
      */
     @Import(name="field1")
     private @Nullable Output<Boolean> field1;
 
     /**
-     * @return whether to ask field1
+     * @return Whether to ask field1
      * 
      */
     public Optional<Output<Boolean>> field1() {
@@ -449,14 +449,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * error message when field1 not provided
+     * Error message when field1 not provided
      * 
      */
     @Import(name="field1error")
     private @Nullable Output<String> field1error;
 
     /**
-     * @return error message when field1 not provided
+     * @return Error message when field1 not provided
      * 
      */
     public Optional<Output<String>> field1error() {
@@ -464,14 +464,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label of field1
+     * Label of field1
      * 
      */
     @Import(name="field1label")
     private @Nullable Output<String> field1label;
 
     /**
-     * @return label of field1
+     * @return Label of field1
      * 
      */
     public Optional<Output<String>> field1label() {
@@ -479,14 +479,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * whether field1 is required field
+     * Whether field1 is required field
      * 
      */
     @Import(name="field1required")
     private @Nullable Output<Boolean> field1required;
 
     /**
-     * @return whether field1 is required field
+     * @return Whether field1 is required field
      * 
      */
     public Optional<Output<Boolean>> field1required() {
@@ -494,14 +494,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * whether to ask field2
+     * Whether to ask field2
      * 
      */
     @Import(name="field2")
     private @Nullable Output<Boolean> field2;
 
     /**
-     * @return whether to ask field2
+     * @return Whether to ask field2
      * 
      */
     public Optional<Output<Boolean>> field2() {
@@ -509,14 +509,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * error message when field2 not provided
+     * Error message when field2 not provided
      * 
      */
     @Import(name="field2error")
     private @Nullable Output<String> field2error;
 
     /**
-     * @return error message when field2 not provided
+     * @return Error message when field2 not provided
      * 
      */
     public Optional<Output<String>> field2error() {
@@ -524,14 +524,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label of field2
+     * Label of field2
      * 
      */
     @Import(name="field2label")
     private @Nullable Output<String> field2label;
 
     /**
-     * @return label of field2
+     * @return Label of field2
      * 
      */
     public Optional<Output<String>> field2label() {
@@ -539,14 +539,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * whether field2 is required field
+     * Whether field2 is required field
      * 
      */
     @Import(name="field2required")
     private @Nullable Output<Boolean> field2required;
 
     /**
-     * @return whether field2 is required field
+     * @return Whether field2 is required field
      * 
      */
     public Optional<Output<Boolean>> field2required() {
@@ -554,14 +554,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * whether to ask field3
+     * Whether to ask field3
      * 
      */
     @Import(name="field3")
     private @Nullable Output<Boolean> field3;
 
     /**
-     * @return whether to ask field3
+     * @return Whether to ask field3
      * 
      */
     public Optional<Output<Boolean>> field3() {
@@ -569,14 +569,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * error message when field3 not provided
+     * Error message when field3 not provided
      * 
      */
     @Import(name="field3error")
     private @Nullable Output<String> field3error;
 
     /**
-     * @return error message when field3 not provided
+     * @return Error message when field3 not provided
      * 
      */
     public Optional<Output<String>> field3error() {
@@ -584,14 +584,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label of field3
+     * Label of field3
      * 
      */
     @Import(name="field3label")
     private @Nullable Output<String> field3label;
 
     /**
-     * @return label of field3
+     * @return Label of field3
      * 
      */
     public Optional<Output<String>> field3label() {
@@ -599,14 +599,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * whether field3 is required field
+     * Whether field3 is required field
      * 
      */
     @Import(name="field3required")
     private @Nullable Output<Boolean> field3required;
 
     /**
-     * @return whether field3 is required field
+     * @return Whether field3 is required field
      * 
      */
     public Optional<Output<Boolean>> field3required() {
@@ -614,14 +614,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * whether to ask field4
+     * Whether to ask field4
      * 
      */
     @Import(name="field4")
     private @Nullable Output<Boolean> field4;
 
     /**
-     * @return whether to ask field4
+     * @return Whether to ask field4
      * 
      */
     public Optional<Output<Boolean>> field4() {
@@ -629,14 +629,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * error message when field4 not provided
+     * Error message when field4 not provided
      * 
      */
     @Import(name="field4error")
     private @Nullable Output<String> field4error;
 
     /**
-     * @return error message when field4 not provided
+     * @return Error message when field4 not provided
      * 
      */
     public Optional<Output<String>> field4error() {
@@ -644,14 +644,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label of field4
+     * Label of field4
      * 
      */
     @Import(name="field4label")
     private @Nullable Output<String> field4label;
 
     /**
-     * @return label of field4
+     * @return Label of field4
      * 
      */
     public Optional<Output<String>> field4label() {
@@ -659,14 +659,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * whether field4 is required field
+     * Whether field4 is required field
      * 
      */
     @Import(name="field4required")
     private @Nullable Output<Boolean> field4required;
 
     /**
-     * @return whether field4 is required field
+     * @return Whether field4 is required field
      * 
      */
     public Optional<Output<Boolean>> field4required() {
@@ -726,14 +726,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * whether name field is required
+     * Whether name field is required
      * 
      */
     @Import(name="name")
     private @Nullable Output<Boolean> name;
 
     /**
-     * @return whether name field is required
+     * @return Whether name field is required
      * 
      */
     public Optional<Output<Boolean>> name() {
@@ -741,14 +741,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * error message when name not provided
+     * Error message when name not provided
      * 
      */
     @Import(name="nameError")
     private @Nullable Output<String> nameError;
 
     /**
-     * @return error message when name not provided
+     * @return Error message when name not provided
      * 
      */
     public Optional<Output<String>> nameError() {
@@ -756,14 +756,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label of name field
+     * Label of name field
      * 
      */
     @Import(name="nameLabel")
     private @Nullable Output<String> nameLabel;
 
     /**
-     * @return label of name field
+     * @return Label of name field
      * 
      */
     public Optional<Output<String>> nameLabel() {
@@ -786,14 +786,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * whether to display Do Not Store My Personal Information
+     * Whether to display Do Not Store My Personal Information
      * 
      */
     @Import(name="optout")
     private @Nullable Output<Boolean> optout;
 
     /**
-     * @return whether to display Do Not Store My Personal Information
+     * @return Whether to display Do Not Store My Personal Information
      * 
      */
     public Optional<Output<Boolean>> optout() {
@@ -801,14 +801,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label for Do Not Store My Personal Information
+     * Label for Do Not Store My Personal Information
      * 
      */
     @Import(name="optoutLabel")
     private @Nullable Output<String> optoutLabel;
 
     /**
-     * @return label for Do Not Store My Personal Information
+     * @return Label for Do Not Store My Personal Information
      * 
      */
     public Optional<Output<String>> optoutLabel() {
@@ -838,14 +838,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * error message when invalid passphrase is provided
+     * Error message when invalid passphrase is provided
      * 
      */
     @Import(name="passphraseError")
     private @Nullable Output<String> passphraseError;
 
     /**
-     * @return error message when invalid passphrase is provided
+     * @return Error message when invalid passphrase is provided
      * 
      */
     public Optional<Output<String>> passphraseError() {
@@ -905,14 +905,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * whether to show \&#34;Powered by Mist\&#34;
+     * Whether to show \&#34;Powered by Mist\&#34;
      * 
      */
     @Import(name="poweredBy")
     private @Nullable Output<Boolean> poweredBy;
 
     /**
-     * @return whether to show \&#34;Powered by Mist\&#34;
+     * @return Whether to show \&#34;Powered by Mist\&#34;
      * 
      */
     public Optional<Output<Boolean>> poweredBy() {
@@ -920,14 +920,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * wheter to require the Privacy Term acceptance
+     * Whether to require the Privacy Term acceptance
      * 
      */
     @Import(name="privacy")
     private @Nullable Output<Boolean> privacy;
 
     /**
-     * @return wheter to require the Privacy Term acceptance
+     * @return Whether to require the Privacy Term acceptance
      * 
      */
     public Optional<Output<Boolean>> privacy() {
@@ -935,14 +935,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * prefix of the label of the link to go to Privacy Policy
+     * Prefix of the label of the link to go to Privacy Policy
      * 
      */
     @Import(name="privacyPolicyAcceptLabel")
     private @Nullable Output<String> privacyPolicyAcceptLabel;
 
     /**
-     * @return prefix of the label of the link to go to Privacy Policy
+     * @return Prefix of the label of the link to go to Privacy Policy
      * 
      */
     public Optional<Output<String>> privacyPolicyAcceptLabel() {
@@ -950,14 +950,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * error message when Privacy Policy not accepted
+     * Error message when Privacy Policy not accepted
      * 
      */
     @Import(name="privacyPolicyError")
     private @Nullable Output<String> privacyPolicyError;
 
     /**
-     * @return error message when Privacy Policy not accepted
+     * @return Error message when Privacy Policy not accepted
      * 
      */
     public Optional<Output<String>> privacyPolicyError() {
@@ -965,14 +965,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label of the link to go to Privacy Policy
+     * Label of the link to go to Privacy Policy
      * 
      */
     @Import(name="privacyPolicyLink")
     private @Nullable Output<String> privacyPolicyLink;
 
     /**
-     * @return label of the link to go to Privacy Policy
+     * @return Label of the link to go to Privacy Policy
      * 
      */
     public Optional<Output<String>> privacyPolicyLink() {
@@ -980,14 +980,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * text of the Privacy Policy
+     * Text of the Privacy Policy
      * 
      */
     @Import(name="privacyPolicyText")
     private @Nullable Output<String> privacyPolicyText;
 
     /**
-     * @return text of the Privacy Policy
+     * @return Text of the Privacy Policy
      * 
      */
     public Optional<Output<String>> privacyPolicyText() {
@@ -995,14 +995,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label to denote required field
+     * Label to denote required field
      * 
      */
     @Import(name="requiredFieldLabel")
     private @Nullable Output<String> requiredFieldLabel;
 
     /**
-     * @return label to denote required field
+     * @return Label to denote required field
      * 
      */
     public Optional<Output<String>> requiredFieldLabel() {
@@ -1017,14 +1017,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label of the button to /signin
+     * Label of the button to /signin
      * 
      */
     @Import(name="signInLabel")
     private @Nullable Output<String> signInLabel;
 
     /**
-     * @return label of the button to /signin
+     * @return Label of the button to /signin
      * 
      */
     public Optional<Output<String>> signInLabel() {
@@ -1046,14 +1046,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label for mobile carrier drop-down list
+     * Label for mobile carrier drop-down list
      * 
      */
     @Import(name="smsCarrierFieldLabel")
     private @Nullable Output<String> smsCarrierFieldLabel;
 
     /**
-     * @return label for mobile carrier drop-down list
+     * @return Label for mobile carrier drop-down list
      * 
      */
     public Optional<Output<String>> smsCarrierFieldLabel() {
@@ -1076,14 +1076,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * error message when confirmation code is invalid
+     * Error message when confirmation code is invalid
      * 
      */
     @Import(name="smsCodeError")
     private @Nullable Output<String> smsCodeError;
 
     /**
-     * @return error message when confirmation code is invalid
+     * @return Error message when confirmation code is invalid
      * 
      */
     public Optional<Output<String>> smsCodeError() {
@@ -1163,14 +1163,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+     * Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
      * 
      */
     @Import(name="smsMessageFormat")
     private @Nullable Output<String> smsMessageFormat;
 
     /**
-     * @return format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+     * @return Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
      * 
      */
     public Optional<Output<String>> smsMessageFormat() {
@@ -1178,14 +1178,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label for canceling mobile details for SMS auth
+     * Label for canceling mobile details for SMS auth
      * 
      */
     @Import(name="smsNumberCancel")
     private @Nullable Output<String> smsNumberCancel;
 
     /**
-     * @return label for canceling mobile details for SMS auth
+     * @return Label for canceling mobile details for SMS auth
      * 
      */
     public Optional<Output<String>> smsNumberCancel() {
@@ -1200,14 +1200,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label for field to provide mobile number
+     * Label for field to provide mobile number
      * 
      */
     @Import(name="smsNumberFieldLabel")
     private @Nullable Output<String> smsNumberFieldLabel;
 
     /**
-     * @return label for field to provide mobile number
+     * @return Label for field to provide mobile number
      * 
      */
     public Optional<Output<String>> smsNumberFieldLabel() {
@@ -1229,14 +1229,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label for submit button for code generation
+     * Label for submit button for code generation
      * 
      */
     @Import(name="smsNumberSubmit")
     private @Nullable Output<String> smsNumberSubmit;
 
     /**
-     * @return label for submit button for code generation
+     * @return Label for submit button for code generation
      * 
      */
     public Optional<Output<String>> smsNumberSubmit() {
@@ -1266,14 +1266,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * how long confirmation code should be considered valid (in minutes)
+     * How long confirmation code should be considered valid (in minutes)
      * 
      */
     @Import(name="smsValidityDuration")
     private @Nullable Output<Integer> smsValidityDuration;
 
     /**
-     * @return how long confirmation code should be considered valid (in minutes)
+     * @return How long confirmation code should be considered valid (in minutes)
      * 
      */
     public Optional<Output<Integer>> smsValidityDuration() {
@@ -1295,14 +1295,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label for Sponsor Email
+     * Label for Sponsor Email
      * 
      */
     @Import(name="sponsorEmail")
     private @Nullable Output<String> sponsorEmail;
 
     /**
-     * @return label for Sponsor Email
+     * @return Label for Sponsor Email
      * 
      */
     public Optional<Output<String>> sponsorEmail() {
@@ -1317,7 +1317,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * html template to replace/override default sponsor email template
+     * HTML template to replace/override default sponsor email template
      * Sponsor Email Template supports following template variables:
      *   * `approve_url`: Renders URL to approve the request; optionally &amp;minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
      *   * `deny_url`: Renders URL to reject the request
@@ -1333,7 +1333,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     private @Nullable Output<String> sponsorEmailTemplate;
 
     /**
-     * @return html template to replace/override default sponsor email template
+     * @return HTML template to replace/override default sponsor email template
      * Sponsor Email Template supports following template variables:
      *   * `approve_url`: Renders URL to approve the request; optionally &amp;minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
      *   * `deny_url`: Renders URL to reject the request
@@ -1371,14 +1371,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label for Sponsor Name
+     * Label for Sponsor Name
      * 
      */
     @Import(name="sponsorName")
     private @Nullable Output<String> sponsorName;
 
     /**
-     * @return label for Sponsor Name
+     * @return Label for Sponsor Name
      * 
      */
     public Optional<Output<String>> sponsorName() {
@@ -1400,14 +1400,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * submit button label request Wifi Access and notify sponsor about guest request
+     * Submit button label request Wifi Access and notify sponsor about guest request
      * 
      */
     @Import(name="sponsorRequestAccess")
     private @Nullable Output<String> sponsorRequestAccess;
 
     /**
-     * @return submit button label request Wifi Access and notify sponsor about guest request
+     * @return Submit button label request Wifi Access and notify sponsor about guest request
      * 
      */
     public Optional<Output<String>> sponsorRequestAccess() {
@@ -1415,14 +1415,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * text to display if sponsor approves request
+     * Text to display if sponsor approves request
      * 
      */
     @Import(name="sponsorStatusApproved")
     private @Nullable Output<String> sponsorStatusApproved;
 
     /**
-     * @return text to display if sponsor approves request
+     * @return Text to display if sponsor approves request
      * 
      */
     public Optional<Output<String>> sponsorStatusApproved() {
@@ -1430,14 +1430,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * text to display when sponsor denies request
+     * Text to display when sponsor denies request
      * 
      */
     @Import(name="sponsorStatusDenied")
     private @Nullable Output<String> sponsorStatusDenied;
 
     /**
-     * @return text to display when sponsor denies request
+     * @return Text to display when sponsor denies request
      * 
      */
     public Optional<Output<String>> sponsorStatusDenied() {
@@ -1445,14 +1445,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * text to display if request is still pending
+     * Text to display if request is still pending
      * 
      */
     @Import(name="sponsorStatusPending")
     private @Nullable Output<String> sponsorStatusPending;
 
     /**
-     * @return text to display if request is still pending
+     * @return Text to display if request is still pending
      * 
      */
     public Optional<Output<String>> sponsorStatusPending() {
@@ -1460,14 +1460,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * submit button label to notify sponsor about guest request
+     * Submit button label to notify sponsor about guest request
      * 
      */
     @Import(name="sponsorSubmit")
     private @Nullable Output<String> sponsorSubmit;
 
     /**
-     * @return submit button label to notify sponsor about guest request
+     * @return Submit button label to notify sponsor about guest request
      * 
      */
     public Optional<Output<String>> sponsorSubmit() {
@@ -1496,14 +1496,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * prefix of the label of the link to go to tos
+     * Prefix of the label of the link to go to tos
      * 
      */
     @Import(name="tosAcceptLabel")
     private @Nullable Output<String> tosAcceptLabel;
 
     /**
-     * @return prefix of the label of the link to go to tos
+     * @return Prefix of the label of the link to go to tos
      * 
      */
     public Optional<Output<String>> tosAcceptLabel() {
@@ -1511,14 +1511,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * error message when tos not accepted
+     * Error message when tos not accepted
      * 
      */
     @Import(name="tosError")
     private @Nullable Output<String> tosError;
 
     /**
-     * @return error message when tos not accepted
+     * @return Error message when tos not accepted
      * 
      */
     public Optional<Output<String>> tosError() {
@@ -1526,14 +1526,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * label of the link to go to tos
+     * Label of the link to go to tos
      * 
      */
     @Import(name="tosLink")
     private @Nullable Output<String> tosLink;
 
     /**
-     * @return label of the link to go to tos
+     * @return Label of the link to go to tos
      * 
      */
     public Optional<Output<String>> tosLink() {
@@ -1541,14 +1541,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * text of the Terms of Service
+     * Text of the Terms of Service
      * 
      */
     @Import(name="tosText")
     private @Nullable Output<String> tosText;
 
     /**
-     * @return text of the Terms of Service
+     * @return Text of the Terms of Service
      * 
      */
     public Optional<Output<String>> tosText() {
@@ -1731,7 +1731,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authButtonAmazon label for Amazon auth button
+         * @param authButtonAmazon Label for Amazon auth button
          * 
          * @return builder
          * 
@@ -1742,7 +1742,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authButtonAmazon label for Amazon auth button
+         * @param authButtonAmazon Label for Amazon auth button
          * 
          * @return builder
          * 
@@ -1752,7 +1752,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authButtonAzure label for Azure auth button
+         * @param authButtonAzure Label for Azure auth button
          * 
          * @return builder
          * 
@@ -1763,7 +1763,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authButtonAzure label for Azure auth button
+         * @param authButtonAzure Label for Azure auth button
          * 
          * @return builder
          * 
@@ -1773,7 +1773,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authButtonEmail label for Email auth button
+         * @param authButtonEmail Label for Email auth button
          * 
          * @return builder
          * 
@@ -1784,7 +1784,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authButtonEmail label for Email auth button
+         * @param authButtonEmail Label for Email auth button
          * 
          * @return builder
          * 
@@ -1794,7 +1794,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authButtonFacebook label for Facebook auth button
+         * @param authButtonFacebook Label for Facebook auth button
          * 
          * @return builder
          * 
@@ -1805,7 +1805,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authButtonFacebook label for Facebook auth button
+         * @param authButtonFacebook Label for Facebook auth button
          * 
          * @return builder
          * 
@@ -1815,7 +1815,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authButtonGoogle label for Google auth button
+         * @param authButtonGoogle Label for Google auth button
          * 
          * @return builder
          * 
@@ -1826,7 +1826,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authButtonGoogle label for Google auth button
+         * @param authButtonGoogle Label for Google auth button
          * 
          * @return builder
          * 
@@ -1836,7 +1836,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authButtonMicrosoft label for Microsoft auth button
+         * @param authButtonMicrosoft Label for Microsoft auth button
          * 
          * @return builder
          * 
@@ -1847,7 +1847,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authButtonMicrosoft label for Microsoft auth button
+         * @param authButtonMicrosoft Label for Microsoft auth button
          * 
          * @return builder
          * 
@@ -1857,7 +1857,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authButtonPassphrase label for passphrase auth button
+         * @param authButtonPassphrase Label for passphrase auth button
          * 
          * @return builder
          * 
@@ -1868,7 +1868,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authButtonPassphrase label for passphrase auth button
+         * @param authButtonPassphrase Label for passphrase auth button
          * 
          * @return builder
          * 
@@ -1878,7 +1878,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authButtonSms label for SMS auth button
+         * @param authButtonSms Label for SMS auth button
          * 
          * @return builder
          * 
@@ -1889,7 +1889,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authButtonSms label for SMS auth button
+         * @param authButtonSms Label for SMS auth button
          * 
          * @return builder
          * 
@@ -1899,7 +1899,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authButtonSponsor label for Sponsor auth button
+         * @param authButtonSponsor Label for Sponsor auth button
          * 
          * @return builder
          * 
@@ -1910,7 +1910,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authButtonSponsor label for Sponsor auth button
+         * @param authButtonSponsor Label for Sponsor auth button
          * 
          * @return builder
          * 
@@ -1929,7 +1929,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param backLink label of the link to go back to /logon
+         * @param backLink Label of the link to go back to /logon
          * 
          * @return builder
          * 
@@ -1940,7 +1940,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param backLink label of the link to go back to /logon
+         * @param backLink Label of the link to go back to /logon
          * 
          * @return builder
          * 
@@ -1989,7 +1989,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param company whether company field is required
+         * @param company Whether company field is required
          * 
          * @return builder
          * 
@@ -2000,7 +2000,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param company whether company field is required
+         * @param company Whether company field is required
          * 
          * @return builder
          * 
@@ -2010,7 +2010,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param companyError error message when company not provided
+         * @param companyError Error message when company not provided
          * 
          * @return builder
          * 
@@ -2021,7 +2021,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param companyError error message when company not provided
+         * @param companyError Error message when company not provided
          * 
          * @return builder
          * 
@@ -2031,7 +2031,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param companyLabel label of company field
+         * @param companyLabel Label of company field
          * 
          * @return builder
          * 
@@ -2042,7 +2042,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param companyLabel label of company field
+         * @param companyLabel Label of company field
          * 
          * @return builder
          * 
@@ -2052,7 +2052,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param email whether email field is required
+         * @param email Whether email field is required
          * 
          * @return builder
          * 
@@ -2063,7 +2063,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param email whether email field is required
+         * @param email Whether email field is required
          * 
          * @return builder
          * 
@@ -2073,7 +2073,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param emailAccessDomainError error message when a user has valid social login but doesn&#39;t match specified email domains.
+         * @param emailAccessDomainError Error message when a user has valid social login but doesn&#39;t match specified email domains.
          * 
          * @return builder
          * 
@@ -2084,7 +2084,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param emailAccessDomainError error message when a user has valid social login but doesn&#39;t match specified email domains.
+         * @param emailAccessDomainError Error message when a user has valid social login but doesn&#39;t match specified email domains.
          * 
          * @return builder
          * 
@@ -2169,7 +2169,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param emailError error message when email not provided
+         * @param emailError Error message when email not provided
          * 
          * @return builder
          * 
@@ -2180,7 +2180,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param emailError error message when email not provided
+         * @param emailError Error message when email not provided
          * 
          * @return builder
          * 
@@ -2199,7 +2199,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param emailLabel label of email field
+         * @param emailLabel Label of email field
          * 
          * @return builder
          * 
@@ -2210,7 +2210,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param emailLabel label of email field
+         * @param emailLabel Label of email field
          * 
          * @return builder
          * 
@@ -2271,7 +2271,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field1 whether to ask field1
+         * @param field1 Whether to ask field1
          * 
          * @return builder
          * 
@@ -2282,7 +2282,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field1 whether to ask field1
+         * @param field1 Whether to ask field1
          * 
          * @return builder
          * 
@@ -2292,7 +2292,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field1error error message when field1 not provided
+         * @param field1error Error message when field1 not provided
          * 
          * @return builder
          * 
@@ -2303,7 +2303,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field1error error message when field1 not provided
+         * @param field1error Error message when field1 not provided
          * 
          * @return builder
          * 
@@ -2313,7 +2313,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field1label label of field1
+         * @param field1label Label of field1
          * 
          * @return builder
          * 
@@ -2324,7 +2324,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field1label label of field1
+         * @param field1label Label of field1
          * 
          * @return builder
          * 
@@ -2334,7 +2334,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field1required whether field1 is required field
+         * @param field1required Whether field1 is required field
          * 
          * @return builder
          * 
@@ -2345,7 +2345,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field1required whether field1 is required field
+         * @param field1required Whether field1 is required field
          * 
          * @return builder
          * 
@@ -2355,7 +2355,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field2 whether to ask field2
+         * @param field2 Whether to ask field2
          * 
          * @return builder
          * 
@@ -2366,7 +2366,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field2 whether to ask field2
+         * @param field2 Whether to ask field2
          * 
          * @return builder
          * 
@@ -2376,7 +2376,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field2error error message when field2 not provided
+         * @param field2error Error message when field2 not provided
          * 
          * @return builder
          * 
@@ -2387,7 +2387,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field2error error message when field2 not provided
+         * @param field2error Error message when field2 not provided
          * 
          * @return builder
          * 
@@ -2397,7 +2397,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field2label label of field2
+         * @param field2label Label of field2
          * 
          * @return builder
          * 
@@ -2408,7 +2408,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field2label label of field2
+         * @param field2label Label of field2
          * 
          * @return builder
          * 
@@ -2418,7 +2418,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field2required whether field2 is required field
+         * @param field2required Whether field2 is required field
          * 
          * @return builder
          * 
@@ -2429,7 +2429,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field2required whether field2 is required field
+         * @param field2required Whether field2 is required field
          * 
          * @return builder
          * 
@@ -2439,7 +2439,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field3 whether to ask field3
+         * @param field3 Whether to ask field3
          * 
          * @return builder
          * 
@@ -2450,7 +2450,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field3 whether to ask field3
+         * @param field3 Whether to ask field3
          * 
          * @return builder
          * 
@@ -2460,7 +2460,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field3error error message when field3 not provided
+         * @param field3error Error message when field3 not provided
          * 
          * @return builder
          * 
@@ -2471,7 +2471,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field3error error message when field3 not provided
+         * @param field3error Error message when field3 not provided
          * 
          * @return builder
          * 
@@ -2481,7 +2481,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field3label label of field3
+         * @param field3label Label of field3
          * 
          * @return builder
          * 
@@ -2492,7 +2492,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field3label label of field3
+         * @param field3label Label of field3
          * 
          * @return builder
          * 
@@ -2502,7 +2502,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field3required whether field3 is required field
+         * @param field3required Whether field3 is required field
          * 
          * @return builder
          * 
@@ -2513,7 +2513,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field3required whether field3 is required field
+         * @param field3required Whether field3 is required field
          * 
          * @return builder
          * 
@@ -2523,7 +2523,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field4 whether to ask field4
+         * @param field4 Whether to ask field4
          * 
          * @return builder
          * 
@@ -2534,7 +2534,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field4 whether to ask field4
+         * @param field4 Whether to ask field4
          * 
          * @return builder
          * 
@@ -2544,7 +2544,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field4error error message when field4 not provided
+         * @param field4error Error message when field4 not provided
          * 
          * @return builder
          * 
@@ -2555,7 +2555,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field4error error message when field4 not provided
+         * @param field4error Error message when field4 not provided
          * 
          * @return builder
          * 
@@ -2565,7 +2565,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field4label label of field4
+         * @param field4label Label of field4
          * 
          * @return builder
          * 
@@ -2576,7 +2576,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field4label label of field4
+         * @param field4label Label of field4
          * 
          * @return builder
          * 
@@ -2586,7 +2586,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field4required whether field4 is required field
+         * @param field4required Whether field4 is required field
          * 
          * @return builder
          * 
@@ -2597,7 +2597,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field4required whether field4 is required field
+         * @param field4required Whether field4 is required field
          * 
          * @return builder
          * 
@@ -2675,7 +2675,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param name whether name field is required
+         * @param name Whether name field is required
          * 
          * @return builder
          * 
@@ -2686,7 +2686,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param name whether name field is required
+         * @param name Whether name field is required
          * 
          * @return builder
          * 
@@ -2696,7 +2696,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nameError error message when name not provided
+         * @param nameError Error message when name not provided
          * 
          * @return builder
          * 
@@ -2707,7 +2707,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nameError error message when name not provided
+         * @param nameError Error message when name not provided
          * 
          * @return builder
          * 
@@ -2717,7 +2717,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nameLabel label of name field
+         * @param nameLabel Label of name field
          * 
          * @return builder
          * 
@@ -2728,7 +2728,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nameLabel label of name field
+         * @param nameLabel Label of name field
          * 
          * @return builder
          * 
@@ -2759,7 +2759,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param optout whether to display Do Not Store My Personal Information
+         * @param optout Whether to display Do Not Store My Personal Information
          * 
          * @return builder
          * 
@@ -2770,7 +2770,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param optout whether to display Do Not Store My Personal Information
+         * @param optout Whether to display Do Not Store My Personal Information
          * 
          * @return builder
          * 
@@ -2780,7 +2780,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param optoutLabel label for Do Not Store My Personal Information
+         * @param optoutLabel Label for Do Not Store My Personal Information
          * 
          * @return builder
          * 
@@ -2791,7 +2791,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param optoutLabel label for Do Not Store My Personal Information
+         * @param optoutLabel Label for Do Not Store My Personal Information
          * 
          * @return builder
          * 
@@ -2831,7 +2831,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param passphraseError error message when invalid passphrase is provided
+         * @param passphraseError Error message when invalid passphrase is provided
          * 
          * @return builder
          * 
@@ -2842,7 +2842,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param passphraseError error message when invalid passphrase is provided
+         * @param passphraseError Error message when invalid passphrase is provided
          * 
          * @return builder
          * 
@@ -2924,7 +2924,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param poweredBy whether to show \&#34;Powered by Mist\&#34;
+         * @param poweredBy Whether to show \&#34;Powered by Mist\&#34;
          * 
          * @return builder
          * 
@@ -2935,7 +2935,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param poweredBy whether to show \&#34;Powered by Mist\&#34;
+         * @param poweredBy Whether to show \&#34;Powered by Mist\&#34;
          * 
          * @return builder
          * 
@@ -2945,7 +2945,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param privacy wheter to require the Privacy Term acceptance
+         * @param privacy Whether to require the Privacy Term acceptance
          * 
          * @return builder
          * 
@@ -2956,7 +2956,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param privacy wheter to require the Privacy Term acceptance
+         * @param privacy Whether to require the Privacy Term acceptance
          * 
          * @return builder
          * 
@@ -2966,7 +2966,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param privacyPolicyAcceptLabel prefix of the label of the link to go to Privacy Policy
+         * @param privacyPolicyAcceptLabel Prefix of the label of the link to go to Privacy Policy
          * 
          * @return builder
          * 
@@ -2977,7 +2977,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param privacyPolicyAcceptLabel prefix of the label of the link to go to Privacy Policy
+         * @param privacyPolicyAcceptLabel Prefix of the label of the link to go to Privacy Policy
          * 
          * @return builder
          * 
@@ -2987,7 +2987,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param privacyPolicyError error message when Privacy Policy not accepted
+         * @param privacyPolicyError Error message when Privacy Policy not accepted
          * 
          * @return builder
          * 
@@ -2998,7 +2998,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param privacyPolicyError error message when Privacy Policy not accepted
+         * @param privacyPolicyError Error message when Privacy Policy not accepted
          * 
          * @return builder
          * 
@@ -3008,7 +3008,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param privacyPolicyLink label of the link to go to Privacy Policy
+         * @param privacyPolicyLink Label of the link to go to Privacy Policy
          * 
          * @return builder
          * 
@@ -3019,7 +3019,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param privacyPolicyLink label of the link to go to Privacy Policy
+         * @param privacyPolicyLink Label of the link to go to Privacy Policy
          * 
          * @return builder
          * 
@@ -3029,7 +3029,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param privacyPolicyText text of the Privacy Policy
+         * @param privacyPolicyText Text of the Privacy Policy
          * 
          * @return builder
          * 
@@ -3040,7 +3040,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param privacyPolicyText text of the Privacy Policy
+         * @param privacyPolicyText Text of the Privacy Policy
          * 
          * @return builder
          * 
@@ -3050,7 +3050,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param requiredFieldLabel label to denote required field
+         * @param requiredFieldLabel Label to denote required field
          * 
          * @return builder
          * 
@@ -3061,7 +3061,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param requiredFieldLabel label to denote required field
+         * @param requiredFieldLabel Label to denote required field
          * 
          * @return builder
          * 
@@ -3080,7 +3080,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param signInLabel label of the button to /signin
+         * @param signInLabel Label of the button to /signin
          * 
          * @return builder
          * 
@@ -3091,7 +3091,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param signInLabel label of the button to /signin
+         * @param signInLabel Label of the button to /signin
          * 
          * @return builder
          * 
@@ -3119,7 +3119,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param smsCarrierFieldLabel label for mobile carrier drop-down list
+         * @param smsCarrierFieldLabel Label for mobile carrier drop-down list
          * 
          * @return builder
          * 
@@ -3130,7 +3130,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param smsCarrierFieldLabel label for mobile carrier drop-down list
+         * @param smsCarrierFieldLabel Label for mobile carrier drop-down list
          * 
          * @return builder
          * 
@@ -3161,7 +3161,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param smsCodeError error message when confirmation code is invalid
+         * @param smsCodeError Error message when confirmation code is invalid
          * 
          * @return builder
          * 
@@ -3172,7 +3172,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param smsCodeError error message when confirmation code is invalid
+         * @param smsCodeError Error message when confirmation code is invalid
          * 
          * @return builder
          * 
@@ -3278,7 +3278,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param smsMessageFormat format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+         * @param smsMessageFormat Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
          * 
          * @return builder
          * 
@@ -3289,7 +3289,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param smsMessageFormat format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+         * @param smsMessageFormat Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
          * 
          * @return builder
          * 
@@ -3299,7 +3299,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param smsNumberCancel label for canceling mobile details for SMS auth
+         * @param smsNumberCancel Label for canceling mobile details for SMS auth
          * 
          * @return builder
          * 
@@ -3310,7 +3310,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param smsNumberCancel label for canceling mobile details for SMS auth
+         * @param smsNumberCancel Label for canceling mobile details for SMS auth
          * 
          * @return builder
          * 
@@ -3329,7 +3329,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param smsNumberFieldLabel label for field to provide mobile number
+         * @param smsNumberFieldLabel Label for field to provide mobile number
          * 
          * @return builder
          * 
@@ -3340,7 +3340,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param smsNumberFieldLabel label for field to provide mobile number
+         * @param smsNumberFieldLabel Label for field to provide mobile number
          * 
          * @return builder
          * 
@@ -3368,7 +3368,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param smsNumberSubmit label for submit button for code generation
+         * @param smsNumberSubmit Label for submit button for code generation
          * 
          * @return builder
          * 
@@ -3379,7 +3379,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param smsNumberSubmit label for submit button for code generation
+         * @param smsNumberSubmit Label for submit button for code generation
          * 
          * @return builder
          * 
@@ -3419,7 +3419,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param smsValidityDuration how long confirmation code should be considered valid (in minutes)
+         * @param smsValidityDuration How long confirmation code should be considered valid (in minutes)
          * 
          * @return builder
          * 
@@ -3430,7 +3430,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param smsValidityDuration how long confirmation code should be considered valid (in minutes)
+         * @param smsValidityDuration How long confirmation code should be considered valid (in minutes)
          * 
          * @return builder
          * 
@@ -3458,7 +3458,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sponsorEmail label for Sponsor Email
+         * @param sponsorEmail Label for Sponsor Email
          * 
          * @return builder
          * 
@@ -3469,7 +3469,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sponsorEmail label for Sponsor Email
+         * @param sponsorEmail Label for Sponsor Email
          * 
          * @return builder
          * 
@@ -3488,7 +3488,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sponsorEmailTemplate html template to replace/override default sponsor email template
+         * @param sponsorEmailTemplate HTML template to replace/override default sponsor email template
          * Sponsor Email Template supports following template variables:
          *   * `approve_url`: Renders URL to approve the request; optionally &amp;minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
          *   * `deny_url`: Renders URL to reject the request
@@ -3508,7 +3508,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sponsorEmailTemplate html template to replace/override default sponsor email template
+         * @param sponsorEmailTemplate HTML template to replace/override default sponsor email template
          * Sponsor Email Template supports following template variables:
          *   * `approve_url`: Renders URL to approve the request; optionally &amp;minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
          *   * `deny_url`: Renders URL to reject the request
@@ -3554,7 +3554,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sponsorName label for Sponsor Name
+         * @param sponsorName Label for Sponsor Name
          * 
          * @return builder
          * 
@@ -3565,7 +3565,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sponsorName label for Sponsor Name
+         * @param sponsorName Label for Sponsor Name
          * 
          * @return builder
          * 
@@ -3593,7 +3593,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sponsorRequestAccess submit button label request Wifi Access and notify sponsor about guest request
+         * @param sponsorRequestAccess Submit button label request Wifi Access and notify sponsor about guest request
          * 
          * @return builder
          * 
@@ -3604,7 +3604,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sponsorRequestAccess submit button label request Wifi Access and notify sponsor about guest request
+         * @param sponsorRequestAccess Submit button label request Wifi Access and notify sponsor about guest request
          * 
          * @return builder
          * 
@@ -3614,7 +3614,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sponsorStatusApproved text to display if sponsor approves request
+         * @param sponsorStatusApproved Text to display if sponsor approves request
          * 
          * @return builder
          * 
@@ -3625,7 +3625,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sponsorStatusApproved text to display if sponsor approves request
+         * @param sponsorStatusApproved Text to display if sponsor approves request
          * 
          * @return builder
          * 
@@ -3635,7 +3635,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sponsorStatusDenied text to display when sponsor denies request
+         * @param sponsorStatusDenied Text to display when sponsor denies request
          * 
          * @return builder
          * 
@@ -3646,7 +3646,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sponsorStatusDenied text to display when sponsor denies request
+         * @param sponsorStatusDenied Text to display when sponsor denies request
          * 
          * @return builder
          * 
@@ -3656,7 +3656,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sponsorStatusPending text to display if request is still pending
+         * @param sponsorStatusPending Text to display if request is still pending
          * 
          * @return builder
          * 
@@ -3667,7 +3667,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sponsorStatusPending text to display if request is still pending
+         * @param sponsorStatusPending Text to display if request is still pending
          * 
          * @return builder
          * 
@@ -3677,7 +3677,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sponsorSubmit submit button label to notify sponsor about guest request
+         * @param sponsorSubmit Submit button label to notify sponsor about guest request
          * 
          * @return builder
          * 
@@ -3688,7 +3688,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sponsorSubmit submit button label to notify sponsor about guest request
+         * @param sponsorSubmit Submit button label to notify sponsor about guest request
          * 
          * @return builder
          * 
@@ -3725,7 +3725,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tosAcceptLabel prefix of the label of the link to go to tos
+         * @param tosAcceptLabel Prefix of the label of the link to go to tos
          * 
          * @return builder
          * 
@@ -3736,7 +3736,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tosAcceptLabel prefix of the label of the link to go to tos
+         * @param tosAcceptLabel Prefix of the label of the link to go to tos
          * 
          * @return builder
          * 
@@ -3746,7 +3746,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tosError error message when tos not accepted
+         * @param tosError Error message when tos not accepted
          * 
          * @return builder
          * 
@@ -3757,7 +3757,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tosError error message when tos not accepted
+         * @param tosError Error message when tos not accepted
          * 
          * @return builder
          * 
@@ -3767,7 +3767,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tosLink label of the link to go to tos
+         * @param tosLink Label of the link to go to tos
          * 
          * @return builder
          * 
@@ -3778,7 +3778,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tosLink label of the link to go to tos
+         * @param tosLink Label of the link to go to tos
          * 
          * @return builder
          * 
@@ -3788,7 +3788,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tosText text of the Terms of Service
+         * @param tosText Text of the Terms of Service
          * 
          * @return builder
          * 
@@ -3799,7 +3799,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tosText text of the Terms of Service
+         * @param tosText Text of the Terms of Service
          * 
          * @return builder
          * 

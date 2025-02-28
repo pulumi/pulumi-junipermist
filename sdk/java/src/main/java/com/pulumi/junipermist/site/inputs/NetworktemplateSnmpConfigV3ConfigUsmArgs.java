@@ -5,6 +5,7 @@ package com.pulumi.junipermist.site.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.site.inputs.NetworktemplateSnmpConfigV3ConfigUsmUserArgs;
 import java.lang.String;
 import java.util.List;
@@ -21,30 +22,30 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmArgs extends com.pulumi.r
      * enum: `local_engine`, `remote_engine`
      * 
      */
-    @Import(name="engineType")
-    private @Nullable Output<String> engineType;
+    @Import(name="engineType", required=true)
+    private Output<String> engineType;
 
     /**
      * @return enum: `local_engine`, `remote_engine`
      * 
      */
-    public Optional<Output<String>> engineType() {
-        return Optional.ofNullable(this.engineType);
+    public Output<String> engineType() {
+        return this.engineType;
     }
 
     /**
-     * required only if `engine_type`==`remote_engine`
+     * Required only if `engine_type`==`remote_engine`
      * 
      */
-    @Import(name="engineid")
-    private @Nullable Output<String> engineid;
+    @Import(name="remoteEngineId")
+    private @Nullable Output<String> remoteEngineId;
 
     /**
-     * @return required only if `engine_type`==`remote_engine`
+     * @return Required only if `engine_type`==`remote_engine`
      * 
      */
-    public Optional<Output<String>> engineid() {
-        return Optional.ofNullable(this.engineid);
+    public Optional<Output<String>> remoteEngineId() {
+        return Optional.ofNullable(this.remoteEngineId);
     }
 
     @Import(name="users")
@@ -58,7 +59,7 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmArgs extends com.pulumi.r
 
     private NetworktemplateSnmpConfigV3ConfigUsmArgs(NetworktemplateSnmpConfigV3ConfigUsmArgs $) {
         this.engineType = $.engineType;
-        this.engineid = $.engineid;
+        this.remoteEngineId = $.remoteEngineId;
         this.users = $.users;
     }
 
@@ -86,7 +87,7 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder engineType(@Nullable Output<String> engineType) {
+        public Builder engineType(Output<String> engineType) {
             $.engineType = engineType;
             return this;
         }
@@ -102,24 +103,24 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmArgs extends com.pulumi.r
         }
 
         /**
-         * @param engineid required only if `engine_type`==`remote_engine`
+         * @param remoteEngineId Required only if `engine_type`==`remote_engine`
          * 
          * @return builder
          * 
          */
-        public Builder engineid(@Nullable Output<String> engineid) {
-            $.engineid = engineid;
+        public Builder remoteEngineId(@Nullable Output<String> remoteEngineId) {
+            $.remoteEngineId = remoteEngineId;
             return this;
         }
 
         /**
-         * @param engineid required only if `engine_type`==`remote_engine`
+         * @param remoteEngineId Required only if `engine_type`==`remote_engine`
          * 
          * @return builder
          * 
          */
-        public Builder engineid(String engineid) {
-            return engineid(Output.of(engineid));
+        public Builder remoteEngineId(String remoteEngineId) {
+            return remoteEngineId(Output.of(remoteEngineId));
         }
 
         public Builder users(@Nullable Output<List<NetworktemplateSnmpConfigV3ConfigUsmUserArgs>> users) {
@@ -136,6 +137,9 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmArgs extends com.pulumi.r
         }
 
         public NetworktemplateSnmpConfigV3ConfigUsmArgs build() {
+            if ($.engineType == null) {
+                throw new MissingRequiredPropertyException("NetworktemplateSnmpConfigV3ConfigUsmArgs", "engineType");
+            }
             return $;
         }
     }

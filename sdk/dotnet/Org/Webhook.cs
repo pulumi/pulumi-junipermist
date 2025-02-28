@@ -30,32 +30,31 @@ namespace Pulumi.JuniperMist.Org
     public partial class Webhook : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// whether webhook is enabled
+        /// Whether webhook is enabled
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// if `type`=`http-post`, additional custom HTTP headers to add
-        /// the headers name and value must be string, total bytes of headers name and value must be less than 1000
+        /// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         /// </summary>
         [Output("headers")]
         public Output<ImmutableDictionary<string, string>?> Headers { get; private set; } = null!;
 
         /// <summary>
-        /// name of the webhook
+        /// Name of the webhook
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// required when `oauth2_grant_type`==`client_credentials`
+        /// Required when `oauth2_grant_type`==`client_credentials`
         /// </summary>
         [Output("oauth2ClientId")]
         public Output<string?> Oauth2ClientId { get; private set; } = null!;
 
         /// <summary>
-        /// required when `oauth2_grant_type`==`client_credentials`
+        /// Required when `oauth2_grant_type`==`client_credentials`
         /// </summary>
         [Output("oauth2ClientSecret")]
         public Output<string?> Oauth2ClientSecret { get; private set; } = null!;
@@ -67,25 +66,25 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> Oauth2GrantType { get; private set; } = null!;
 
         /// <summary>
-        /// required when `oauth2_grant_type`==`password`
+        /// Required when `oauth2_grant_type`==`password`
         /// </summary>
         [Output("oauth2Password")]
         public Output<string?> Oauth2Password { get; private set; } = null!;
 
         /// <summary>
-        /// required when `type`==`oauth2`, if provided, will be used in the token request
+        /// Required when `type`==`oauth2`, if provided, will be used in the token request
         /// </summary>
         [Output("oauth2Scopes")]
         public Output<ImmutableArray<string>> Oauth2Scopes { get; private set; } = null!;
 
         /// <summary>
-        /// required when `type`==`oauth2`
+        /// Required when `type`==`oauth2`
         /// </summary>
         [Output("oauth2TokenUrl")]
         public Output<string?> Oauth2TokenUrl { get; private set; } = null!;
 
         /// <summary>
-        /// required when `oauth2_grant_type`==`password`
+        /// Required when `oauth2_grant_type`==`password`
         /// </summary>
         [Output("oauth2Username")]
         public Output<string?> Oauth2Username { get; private set; } = null!;
@@ -94,14 +93,14 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// only if `type`=`http-post`
+        /// Only if `type`=`http-post`
         /// </summary>
         [Output("secret")]
         public Output<string?> Secret { get; private set; } = null!;
 
         /// <summary>
-        /// required if `type`=`splunk` If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-        /// the webhook receiver is configured to accept it.'
+        /// Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
+        /// the webhook receiver is configured to accept it.
         /// </summary>
         [Output("splunkToken")]
         public Output<string?> SplunkToken { get; private set; } = null!;
@@ -122,7 +121,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> Url { get; private set; } = null!;
 
         /// <summary>
-        /// when url uses HTTPS, whether to verify the certificate
+        /// When url uses HTTPS, whether to verify the certificate
         /// </summary>
         [Output("verifyCert")]
         public Output<bool> VerifyCert { get; private set; } = null!;
@@ -182,7 +181,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WebhookArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// whether webhook is enabled
+        /// Whether webhook is enabled
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -191,8 +190,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<string>? _headers;
 
         /// <summary>
-        /// if `type`=`http-post`, additional custom HTTP headers to add
-        /// the headers name and value must be string, total bytes of headers name and value must be less than 1000
+        /// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         /// </summary>
         public InputMap<string> Headers
         {
@@ -201,13 +199,13 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// name of the webhook
+        /// Name of the webhook
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// required when `oauth2_grant_type`==`client_credentials`
+        /// Required when `oauth2_grant_type`==`client_credentials`
         /// </summary>
         [Input("oauth2ClientId")]
         public Input<string>? Oauth2ClientId { get; set; }
@@ -216,7 +214,7 @@ namespace Pulumi.JuniperMist.Org
         private Input<string>? _oauth2ClientSecret;
 
         /// <summary>
-        /// required when `oauth2_grant_type`==`client_credentials`
+        /// Required when `oauth2_grant_type`==`client_credentials`
         /// </summary>
         public Input<string>? Oauth2ClientSecret
         {
@@ -238,7 +236,7 @@ namespace Pulumi.JuniperMist.Org
         private Input<string>? _oauth2Password;
 
         /// <summary>
-        /// required when `oauth2_grant_type`==`password`
+        /// Required when `oauth2_grant_type`==`password`
         /// </summary>
         public Input<string>? Oauth2Password
         {
@@ -254,7 +252,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _oauth2Scopes;
 
         /// <summary>
-        /// required when `type`==`oauth2`, if provided, will be used in the token request
+        /// Required when `type`==`oauth2`, if provided, will be used in the token request
         /// </summary>
         public InputList<string> Oauth2Scopes
         {
@@ -263,13 +261,13 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// required when `type`==`oauth2`
+        /// Required when `type`==`oauth2`
         /// </summary>
         [Input("oauth2TokenUrl")]
         public Input<string>? Oauth2TokenUrl { get; set; }
 
         /// <summary>
-        /// required when `oauth2_grant_type`==`password`
+        /// Required when `oauth2_grant_type`==`password`
         /// </summary>
         [Input("oauth2Username")]
         public Input<string>? Oauth2Username { get; set; }
@@ -281,7 +279,7 @@ namespace Pulumi.JuniperMist.Org
         private Input<string>? _secret;
 
         /// <summary>
-        /// only if `type`=`http-post`
+        /// Only if `type`=`http-post`
         /// </summary>
         public Input<string>? Secret
         {
@@ -297,8 +295,8 @@ namespace Pulumi.JuniperMist.Org
         private Input<string>? _splunkToken;
 
         /// <summary>
-        /// required if `type`=`splunk` If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-        /// the webhook receiver is configured to accept it.'
+        /// Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
+        /// the webhook receiver is configured to accept it.
         /// </summary>
         public Input<string>? SplunkToken
         {
@@ -332,7 +330,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> Url { get; set; } = null!;
 
         /// <summary>
-        /// when url uses HTTPS, whether to verify the certificate
+        /// When url uses HTTPS, whether to verify the certificate
         /// </summary>
         [Input("verifyCert")]
         public Input<bool>? VerifyCert { get; set; }
@@ -346,7 +344,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WebhookState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// whether webhook is enabled
+        /// Whether webhook is enabled
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -355,8 +353,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<string>? _headers;
 
         /// <summary>
-        /// if `type`=`http-post`, additional custom HTTP headers to add
-        /// the headers name and value must be string, total bytes of headers name and value must be less than 1000
+        /// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         /// </summary>
         public InputMap<string> Headers
         {
@@ -365,13 +362,13 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// name of the webhook
+        /// Name of the webhook
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// required when `oauth2_grant_type`==`client_credentials`
+        /// Required when `oauth2_grant_type`==`client_credentials`
         /// </summary>
         [Input("oauth2ClientId")]
         public Input<string>? Oauth2ClientId { get; set; }
@@ -380,7 +377,7 @@ namespace Pulumi.JuniperMist.Org
         private Input<string>? _oauth2ClientSecret;
 
         /// <summary>
-        /// required when `oauth2_grant_type`==`client_credentials`
+        /// Required when `oauth2_grant_type`==`client_credentials`
         /// </summary>
         public Input<string>? Oauth2ClientSecret
         {
@@ -402,7 +399,7 @@ namespace Pulumi.JuniperMist.Org
         private Input<string>? _oauth2Password;
 
         /// <summary>
-        /// required when `oauth2_grant_type`==`password`
+        /// Required when `oauth2_grant_type`==`password`
         /// </summary>
         public Input<string>? Oauth2Password
         {
@@ -418,7 +415,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _oauth2Scopes;
 
         /// <summary>
-        /// required when `type`==`oauth2`, if provided, will be used in the token request
+        /// Required when `type`==`oauth2`, if provided, will be used in the token request
         /// </summary>
         public InputList<string> Oauth2Scopes
         {
@@ -427,13 +424,13 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// required when `type`==`oauth2`
+        /// Required when `type`==`oauth2`
         /// </summary>
         [Input("oauth2TokenUrl")]
         public Input<string>? Oauth2TokenUrl { get; set; }
 
         /// <summary>
-        /// required when `oauth2_grant_type`==`password`
+        /// Required when `oauth2_grant_type`==`password`
         /// </summary>
         [Input("oauth2Username")]
         public Input<string>? Oauth2Username { get; set; }
@@ -445,7 +442,7 @@ namespace Pulumi.JuniperMist.Org
         private Input<string>? _secret;
 
         /// <summary>
-        /// only if `type`=`http-post`
+        /// Only if `type`=`http-post`
         /// </summary>
         public Input<string>? Secret
         {
@@ -461,8 +458,8 @@ namespace Pulumi.JuniperMist.Org
         private Input<string>? _splunkToken;
 
         /// <summary>
-        /// required if `type`=`splunk` If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-        /// the webhook receiver is configured to accept it.'
+        /// Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
+        /// the webhook receiver is configured to accept it.
         /// </summary>
         public Input<string>? SplunkToken
         {
@@ -496,7 +493,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// when url uses HTTPS, whether to verify the certificate
+        /// When url uses HTTPS, whether to verify the certificate
         /// </summary>
         [Input("verifyCert")]
         public Input<bool>? VerifyCert { get; set; }

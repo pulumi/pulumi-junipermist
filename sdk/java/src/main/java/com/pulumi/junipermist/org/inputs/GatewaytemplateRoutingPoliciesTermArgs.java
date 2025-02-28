@@ -17,14 +17,14 @@ public final class GatewaytemplateRoutingPoliciesTermArgs extends com.pulumi.res
     public static final GatewaytemplateRoutingPoliciesTermArgs Empty = new GatewaytemplateRoutingPoliciesTermArgs();
 
     /**
-     * when used as import policy
+     * When used as import policy
      * 
      */
     @Import(name="action")
     private @Nullable Output<GatewaytemplateRoutingPoliciesTermActionArgs> action;
 
     /**
-     * @return when used as import policy
+     * @return When used as import policy
      * 
      */
     public Optional<Output<GatewaytemplateRoutingPoliciesTermActionArgs>> action() {
@@ -72,7 +72,7 @@ public final class GatewaytemplateRoutingPoliciesTermArgs extends com.pulumi.res
         }
 
         /**
-         * @param action when used as import policy
+         * @param action When used as import policy
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class GatewaytemplateRoutingPoliciesTermArgs extends com.pulumi.res
         }
 
         /**
-         * @param action when used as import policy
+         * @param action When used as import policy
          * 
          * @return builder
          * 

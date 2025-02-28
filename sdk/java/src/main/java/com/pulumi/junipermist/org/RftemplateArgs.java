@@ -121,14 +121,14 @@ public final class RftemplateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * optional, country code to use. If specified, this gets applied to all sites using the RF Template
+     * Optional, country code to use. If specified, this gets applied to all sites using the RF Template
      * 
      */
     @Import(name="countryCode")
     private @Nullable Output<String> countryCode;
 
     /**
-     * @return optional, country code to use. If specified, this gets applied to all sites using the RF Template
+     * @return Optional, country code to use. If specified, this gets applied to all sites using the RF Template
      * 
      */
     public Optional<Output<String>> countryCode() {
@@ -173,14 +173,14 @@ public final class RftemplateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether scanning radio is enabled
+     * Whether scanning radio is enabled
      * 
      */
     @Import(name="scanningEnabled")
     private @Nullable Output<Boolean> scanningEnabled;
 
     /**
-     * @return whether scanning radio is enabled
+     * @return Whether scanning radio is enabled
      * 
      */
     public Optional<Output<Boolean>> scanningEnabled() {
@@ -356,7 +356,7 @@ public final class RftemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param countryCode optional, country code to use. If specified, this gets applied to all sites using the RF Template
+         * @param countryCode Optional, country code to use. If specified, this gets applied to all sites using the RF Template
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class RftemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param countryCode optional, country code to use. If specified, this gets applied to all sites using the RF Template
+         * @param countryCode Optional, country code to use. If specified, this gets applied to all sites using the RF Template
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class RftemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scanningEnabled whether scanning radio is enabled
+         * @param scanningEnabled Whether scanning radio is enabled
          * 
          * @return builder
          * 
@@ -439,7 +439,7 @@ public final class RftemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scanningEnabled whether scanning radio is enabled
+         * @param scanningEnabled Whether scanning radio is enabled
          * 
          * @return builder
          * 

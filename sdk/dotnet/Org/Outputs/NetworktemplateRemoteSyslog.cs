@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly bool? Enabled;
         public readonly ImmutableArray<Outputs.NetworktemplateRemoteSyslogFile> Files;
         /// <summary>
-        /// if source_address is configured, will use the vlan firstly otherwise use source_ip
+        /// If source_address is configured, will use the vlan firstly otherwise use source_ip
         /// </summary>
         public readonly string? Network;
         public readonly bool? SendToAllServers;

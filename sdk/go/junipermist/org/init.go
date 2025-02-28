@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Alarmtemplate{}
 	case "junipermist:org/apitoken:Apitoken":
 		r = &Apitoken{}
+	case "junipermist:org/avprofile:Avprofile":
+		r = &Avprofile{}
 	case "junipermist:org/base:base":
 		r = &Base{}
 	case "junipermist:org/deviceprofileAp:DeviceprofileAp":
@@ -106,6 +108,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"junipermist",
 		"org/apitoken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"junipermist",
+		"org/avprofile",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

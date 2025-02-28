@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApMesh {
     /**
-     * @return whether mesh is enabled on this AP
+     * @return Whether mesh is enabled on this AP
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
+     * @return Mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
      * 
      */
     private @Nullable Integer group;
@@ -31,14 +31,14 @@ public final class ApMesh {
 
     private ApMesh() {}
     /**
-     * @return whether mesh is enabled on this AP
+     * @return Whether mesh is enabled on this AP
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
+     * @return Mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
      * 
      */
     public Optional<Integer> group() {

@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     {
         public readonly string? Equals;
         /// <summary>
-        /// use `equals_any` to match any item in a list
+        /// Use `equals_any` to match any item in a list
         /// </summary>
         public readonly ImmutableArray<string> EqualsAnies;
         /// <summary>

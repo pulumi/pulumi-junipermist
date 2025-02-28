@@ -117,56 +117,56 @@ public class DeviceprofileAp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bleConfig);
     }
     /**
-     * whether to disable eth1 port
+     * Whether to disable eth1 port
      * 
      */
     @Export(name="disableEth1", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableEth1;
 
     /**
-     * @return whether to disable eth1 port
+     * @return Whether to disable eth1 port
      * 
      */
     public Output<Boolean> disableEth1() {
         return this.disableEth1;
     }
     /**
-     * whether to disable eth2 port
+     * Whether to disable eth2 port
      * 
      */
     @Export(name="disableEth2", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableEth2;
 
     /**
-     * @return whether to disable eth2 port
+     * @return Whether to disable eth2 port
      * 
      */
     public Output<Boolean> disableEth2() {
         return this.disableEth2;
     }
     /**
-     * whether to disable eth3 port
+     * Whether to disable eth3 port
      * 
      */
     @Export(name="disableEth3", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableEth3;
 
     /**
-     * @return whether to disable eth3 port
+     * @return Whether to disable eth3 port
      * 
      */
     public Output<Boolean> disableEth3() {
         return this.disableEth3;
     }
     /**
-     * whether to disable module port
+     * Whether to disable module port
      * 
      */
     @Export(name="disableModule", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableModule;
 
     /**
-     * @return whether to disable module port
+     * @return Whether to disable module port
      * 
      */
     public Output<Boolean> disableModule() {
@@ -239,28 +239,28 @@ public class DeviceprofileAp extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+     * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      * 
      */
     @Export(name="poePassthrough", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> poePassthrough;
 
     /**
-     * @return whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+     * @return Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      * 
      */
     public Output<Boolean> poePassthrough() {
         return this.poePassthrough;
     }
     /**
-     * power related configs
+     * Power related configs
      * 
      */
     @Export(name="pwrConfig", refs={DeviceprofileApPwrConfig.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileApPwrConfig> pwrConfig;
 
     /**
-     * @return power related configs
+     * @return Power related configs
      * 
      */
     public Output<Optional<DeviceprofileApPwrConfig>> pwrConfig() {
@@ -300,39 +300,45 @@ public class DeviceprofileAp extends com.pulumi.resources.CustomResource {
     public Output<String> type() {
         return this.type;
     }
+    /**
+     * AP Uplink port configuration
+     * 
+     */
     @Export(name="uplinkPortConfig", refs={DeviceprofileApUplinkPortConfig.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileApUplinkPortConfig> uplinkPortConfig;
 
+    /**
+     * @return AP Uplink port configuration
+     * 
+     */
     public Output<Optional<DeviceprofileApUplinkPortConfig>> uplinkPortConfig() {
         return Codegen.optional(this.uplinkPortConfig);
     }
     /**
-     * USB AP settings
-     * Note: if native imagotag is enabled, BLE will be disabled automatically
-     * Note: legacy, new config moved to ESL Config.
+     * USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+     * moved to ESL Config.
      * 
      */
     @Export(name="usbConfig", refs={DeviceprofileApUsbConfig.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileApUsbConfig> usbConfig;
 
     /**
-     * @return USB AP settings
-     * Note: if native imagotag is enabled, BLE will be disabled automatically
-     * Note: legacy, new config moved to ESL Config.
+     * @return USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+     * moved to ESL Config.
      * 
      */
     public Output<Optional<DeviceprofileApUsbConfig>> usbConfig() {
         return Codegen.optional(this.usbConfig);
     }
     /**
-     * a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
     @Export(name="vars", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> vars;
 
     /**
-     * @return a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * @return Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
     public Output<Optional<Map<String,String>>> vars() {

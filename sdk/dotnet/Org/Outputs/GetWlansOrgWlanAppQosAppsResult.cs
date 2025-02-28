@@ -15,11 +15,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
     {
         public readonly int Dscp;
         /// <summary>
-        /// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+        /// Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
         /// </summary>
         public readonly string DstSubnet;
         /// <summary>
-        /// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+        /// Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
         /// </summary>
         public readonly string SrcSubnet;
 

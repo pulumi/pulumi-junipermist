@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AmazonEmailDomains;
         /// <summary>
-        /// whether amazon is enabled as a login method
+        /// Whether amazon is enabled as a login method
         /// </summary>
         public readonly bool AmazonEnabled;
         /// <summary>
@@ -50,11 +50,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string AzureClientSecret;
         /// <summary>
-        /// whether Azure Active Directory is enabled as a login method
+        /// Whether Azure Active Directory is enabled as a login method
         /// </summary>
         public readonly bool AzureEnabled;
         /// <summary>
-        /// interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+        /// Interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
         /// </summary>
         public readonly int AzureExpire;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string BroadnetUserId;
         /// <summary>
-        /// whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+        /// Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
         /// </summary>
         public readonly bool BypassWhenCloudDown;
         /// <summary>
@@ -82,19 +82,19 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string ClickatellApiKey;
         /// <summary>
-        /// whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
+        /// Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
         /// </summary>
         public readonly bool CrossSite;
         /// <summary>
-        /// whether email (access code verification) is enabled as a login method
+        /// Whether email (access code verification) is enabled as a login method
         /// </summary>
         public readonly bool EmailEnabled;
         /// <summary>
-        /// whether guest portal is enabled
+        /// Whether guest portal is enabled
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// how long to remain authorized, in minutes
+        /// How long to remain authorized, in minutes
         /// </summary>
         public readonly int Expire;
         /// <summary>
@@ -114,7 +114,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> FacebookEmailDomains;
         /// <summary>
-        /// whether facebook is enabled as a login method
+        /// Whether facebook is enabled as a login method
         /// </summary>
         public readonly bool FacebookEnabled;
         /// <summary>
@@ -122,11 +122,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int FacebookExpire;
         /// <summary>
-        /// whether to forward the user to another URL after authorized
+        /// Whether to forward the user to another URL after authorized
         /// </summary>
         public readonly bool Forward;
         /// <summary>
-        /// the URL to forward the user to
+        /// URL to forward the user to
         /// </summary>
         public readonly string ForwardUrl;
         /// <summary>
@@ -142,11 +142,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> GoogleEmailDomains;
         /// <summary>
-        /// whether google is enabled as login method
+        /// Whether Google is enabled as login method
         /// </summary>
         public readonly bool GoogleEnabled;
         /// <summary>
-        /// Optional if `google_enabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+        /// Optional if `google_enabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
         /// </summary>
         public readonly int GoogleExpire;
         /// <summary>
@@ -170,7 +170,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> MicrosoftEmailDomains;
         /// <summary>
-        /// whether microsoft 365 is enabled as a login method
+        /// Whether microsoft 365 is enabled as a login method
         /// </summary>
         public readonly bool MicrosoftEnabled;
         /// <summary>
@@ -190,11 +190,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+        /// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
         /// </summary>
         public readonly bool PredefinedSponsorsEnabled;
         /// <summary>
-        /// whether to hide sponsor’s email from list of sponsors
+        /// Whether to hide sponsor’s email from list of sponsors
         /// </summary>
         public readonly bool PredefinedSponsorsHideEmail;
         public readonly bool Privacy;
@@ -211,7 +211,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string PuzzelUsername;
         /// <summary>
-        /// whether sms is enabled as a login method
+        /// Whether sms is enabled as a login method
         /// </summary>
         public readonly bool SmsEnabled;
         /// <summary>
@@ -231,11 +231,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool SponsorAutoApprove;
         /// <summary>
-        /// list of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+        /// List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
         /// </summary>
         public readonly ImmutableArray<string> SponsorEmailDomains;
         /// <summary>
-        /// whether sponsor is enabled
+        /// Whether sponsor is enabled
         /// </summary>
         public readonly bool SponsorEnabled;
         /// <summary>

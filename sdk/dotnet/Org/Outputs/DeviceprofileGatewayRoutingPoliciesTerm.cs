@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileGatewayRoutingPoliciesTerm
     {
         /// <summary>
-        /// when used as import policy
+        /// When used as import policy
         /// </summary>
         public readonly Outputs.DeviceprofileGatewayRoutingPoliciesTermAction? Action;
         /// <summary>

@@ -55,11 +55,11 @@ class DeviceprofileGatewayArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayIdpProfilesArgs']]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayIpConfigsArgs']]] ip_configs: Property key is the network name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: list of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input['DeviceprofileGatewayOobIpConfigArgs'] oob_ip_config: out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
+        :param pulumi.Input['DeviceprofileGatewayOobIpConfigArgs'] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayPathPreferencesArgs']]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayPortConfigArgs']]] port_config: Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[str] router_id: auto assigned if not set
+        :param pulumi.Input[str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayVrfInstancesArgs']]] vrf_instances: Property key is the network name
@@ -265,7 +265,7 @@ class DeviceprofileGatewayArgs:
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of NTP servers specific to this device. By default, those in Site Settings will be used
+        List of NTP servers specific to this device. By default, those in Site Settings will be used
         """
         return pulumi.get(self, "ntp_servers")
 
@@ -277,7 +277,7 @@ class DeviceprofileGatewayArgs:
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> Optional[pulumi.Input['DeviceprofileGatewayOobIpConfigArgs']]:
         """
-        out-of-band (vme/em0/fxp0) IP config
+        Out-of-band (vme/em0/fxp0) IP config
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -313,7 +313,7 @@ class DeviceprofileGatewayArgs:
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[pulumi.Input[str]]:
         """
-        auto assigned if not set
+        Auto assigned if not set
         """
         return pulumi.get(self, "router_id")
 
@@ -423,11 +423,11 @@ class _DeviceprofileGatewayState:
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayIdpProfilesArgs']]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayIpConfigsArgs']]] ip_configs: Property key is the network name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: list of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input['DeviceprofileGatewayOobIpConfigArgs'] oob_ip_config: out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
+        :param pulumi.Input['DeviceprofileGatewayOobIpConfigArgs'] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayPathPreferencesArgs']]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayPortConfigArgs']]] port_config: Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[str] router_id: auto assigned if not set
+        :param pulumi.Input[str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[str] type: Device Type. enum: `gateway`
@@ -628,7 +628,7 @@ class _DeviceprofileGatewayState:
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of NTP servers specific to this device. By default, those in Site Settings will be used
+        List of NTP servers specific to this device. By default, those in Site Settings will be used
         """
         return pulumi.get(self, "ntp_servers")
 
@@ -640,7 +640,7 @@ class _DeviceprofileGatewayState:
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> Optional[pulumi.Input['DeviceprofileGatewayOobIpConfigArgs']]:
         """
-        out-of-band (vme/em0/fxp0) IP config
+        Out-of-band (vme/em0/fxp0) IP config
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -685,7 +685,7 @@ class _DeviceprofileGatewayState:
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[pulumi.Input[str]]:
         """
-        auto assigned if not set
+        Auto assigned if not set
         """
         return pulumi.get(self, "router_id")
 
@@ -826,11 +826,11 @@ class DeviceprofileGateway(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutes6Args', 'DeviceprofileGatewayExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIdpProfilesArgs', 'DeviceprofileGatewayIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIpConfigsArgs', 'DeviceprofileGatewayIpConfigsArgsDict']]]] ip_configs: Property key is the network name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: list of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[Union['DeviceprofileGatewayOobIpConfigArgs', 'DeviceprofileGatewayOobIpConfigArgsDict']] oob_ip_config: out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
+        :param pulumi.Input[Union['DeviceprofileGatewayOobIpConfigArgs', 'DeviceprofileGatewayOobIpConfigArgsDict']] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPathPreferencesArgs', 'DeviceprofileGatewayPathPreferencesArgsDict']]]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPortConfigArgs', 'DeviceprofileGatewayPortConfigArgsDict']]]] port_config: Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[str] router_id: auto assigned if not set
+        :param pulumi.Input[str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayRoutingPoliciesArgs', 'DeviceprofileGatewayRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayVrfInstancesArgs', 'DeviceprofileGatewayVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
@@ -985,11 +985,11 @@ class DeviceprofileGateway(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutes6Args', 'DeviceprofileGatewayExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIdpProfilesArgs', 'DeviceprofileGatewayIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIpConfigsArgs', 'DeviceprofileGatewayIpConfigsArgsDict']]]] ip_configs: Property key is the network name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: list of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[Union['DeviceprofileGatewayOobIpConfigArgs', 'DeviceprofileGatewayOobIpConfigArgsDict']] oob_ip_config: out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
+        :param pulumi.Input[Union['DeviceprofileGatewayOobIpConfigArgs', 'DeviceprofileGatewayOobIpConfigArgsDict']] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPathPreferencesArgs', 'DeviceprofileGatewayPathPreferencesArgsDict']]]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPortConfigArgs', 'DeviceprofileGatewayPortConfigArgsDict']]]] port_config: Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[str] router_id: auto assigned if not set
+        :param pulumi.Input[str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayRoutingPoliciesArgs', 'DeviceprofileGatewayRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[str] type: Device Type. enum: `gateway`
@@ -1117,7 +1117,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        list of NTP servers specific to this device. By default, those in Site Settings will be used
+        List of NTP servers specific to this device. By default, those in Site Settings will be used
         """
         return pulumi.get(self, "ntp_servers")
 
@@ -1125,7 +1125,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Output['outputs.DeviceprofileGatewayOobIpConfig']:
         """
-        out-of-band (vme/em0/fxp0) IP config
+        Out-of-band (vme/em0/fxp0) IP config
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -1154,7 +1154,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Output[Optional[str]]:
         """
-        auto assigned if not set
+        Auto assigned if not set
         """
         return pulumi.get(self, "router_id")
 

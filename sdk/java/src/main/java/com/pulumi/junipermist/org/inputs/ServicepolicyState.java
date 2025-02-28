@@ -5,9 +5,11 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.junipermist.org.inputs.ServicepolicyAntivirusArgs;
 import com.pulumi.junipermist.org.inputs.ServicepolicyAppqoeArgs;
 import com.pulumi.junipermist.org.inputs.ServicepolicyEwfArgs;
 import com.pulumi.junipermist.org.inputs.ServicepolicyIdpArgs;
+import com.pulumi.junipermist.org.inputs.ServicepolicySslProxyArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -33,6 +35,21 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> action() {
         return Optional.ofNullable(this.action);
+    }
+
+    /**
+     * For SRX-only
+     * 
+     */
+    @Import(name="antivirus")
+    private @Nullable Output<ServicepolicyAntivirusArgs> antivirus;
+
+    /**
+     * @return For SRX-only
+     * 
+     */
+    public Optional<Output<ServicepolicyAntivirusArgs>> antivirus() {
+        return Optional.ofNullable(this.antivirus);
     }
 
     /**
@@ -94,16 +111,14 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * by default, we derive all paths available and use them
-     * optionally, you can customize by using `path_preference`
+     * By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
      * 
      */
     @Import(name="pathPreference")
     private @Nullable Output<String> pathPreference;
 
     /**
-     * @return by default, we derive all paths available and use them
-     * optionally, you can customize by using `path_preference`
+     * @return By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
      * 
      */
     public Optional<Output<String>> pathPreference() {
@@ -117,6 +132,21 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.services);
     }
 
+    /**
+     * For SRX-only
+     * 
+     */
+    @Import(name="sslProxy")
+    private @Nullable Output<ServicepolicySslProxyArgs> sslProxy;
+
+    /**
+     * @return For SRX-only
+     * 
+     */
+    public Optional<Output<ServicepolicySslProxyArgs>> sslProxy() {
+        return Optional.ofNullable(this.sslProxy);
+    }
+
     @Import(name="tenants")
     private @Nullable Output<List<String>> tenants;
 
@@ -128,6 +158,7 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
 
     private ServicepolicyState(ServicepolicyState $) {
         this.action = $.action;
+        this.antivirus = $.antivirus;
         this.appqoe = $.appqoe;
         this.ewfs = $.ewfs;
         this.idp = $.idp;
@@ -136,6 +167,7 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
         this.orgId = $.orgId;
         this.pathPreference = $.pathPreference;
         this.services = $.services;
+        this.sslProxy = $.sslProxy;
         this.tenants = $.tenants;
     }
 
@@ -176,6 +208,27 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder action(String action) {
             return action(Output.of(action));
+        }
+
+        /**
+         * @param antivirus For SRX-only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder antivirus(@Nullable Output<ServicepolicyAntivirusArgs> antivirus) {
+            $.antivirus = antivirus;
+            return this;
+        }
+
+        /**
+         * @param antivirus For SRX-only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder antivirus(ServicepolicyAntivirusArgs antivirus) {
+            return antivirus(Output.of(antivirus));
         }
 
         /**
@@ -261,8 +314,7 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pathPreference by default, we derive all paths available and use them
-         * optionally, you can customize by using `path_preference`
+         * @param pathPreference By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
          * 
          * @return builder
          * 
@@ -273,8 +325,7 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pathPreference by default, we derive all paths available and use them
-         * optionally, you can customize by using `path_preference`
+         * @param pathPreference By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
          * 
          * @return builder
          * 
@@ -294,6 +345,27 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
 
         public Builder services(String... services) {
             return services(List.of(services));
+        }
+
+        /**
+         * @param sslProxy For SRX-only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslProxy(@Nullable Output<ServicepolicySslProxyArgs> sslProxy) {
+            $.sslProxy = sslProxy;
+            return this;
+        }
+
+        /**
+         * @param sslProxy For SRX-only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslProxy(ServicepolicySslProxyArgs sslProxy) {
+            return sslProxy(Output.of(sslProxy));
         }
 
         public Builder tenants(@Nullable Output<List<String>> tenants) {

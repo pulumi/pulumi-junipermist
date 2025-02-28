@@ -4,11 +4,10 @@
 package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchVirtualChassisMember {
@@ -16,31 +15,31 @@ public final class SwitchVirtualChassisMember {
      * @return fpc0, same as the mac of device_id
      * 
      */
-    private @Nullable String mac;
-    private @Nullable Integer memberId;
+    private String mac;
+    private Integer memberId;
     /**
      * @return Both vc_role master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
      * 
      */
-    private @Nullable String vcRole;
+    private String vcRole;
 
     private SwitchVirtualChassisMember() {}
     /**
      * @return fpc0, same as the mac of device_id
      * 
      */
-    public Optional<String> mac() {
-        return Optional.ofNullable(this.mac);
+    public String mac() {
+        return this.mac;
     }
-    public Optional<Integer> memberId() {
-        return Optional.ofNullable(this.memberId);
+    public Integer memberId() {
+        return this.memberId;
     }
     /**
      * @return Both vc_role master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
      * 
      */
-    public Optional<String> vcRole() {
-        return Optional.ofNullable(this.vcRole);
+    public String vcRole() {
+        return this.vcRole;
     }
 
     public static Builder builder() {
@@ -52,9 +51,9 @@ public final class SwitchVirtualChassisMember {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String mac;
-        private @Nullable Integer memberId;
-        private @Nullable String vcRole;
+        private String mac;
+        private Integer memberId;
+        private String vcRole;
         public Builder() {}
         public Builder(SwitchVirtualChassisMember defaults) {
     	      Objects.requireNonNull(defaults);
@@ -64,20 +63,26 @@ public final class SwitchVirtualChassisMember {
         }
 
         @CustomType.Setter
-        public Builder mac(@Nullable String mac) {
-
+        public Builder mac(String mac) {
+            if (mac == null) {
+              throw new MissingRequiredPropertyException("SwitchVirtualChassisMember", "mac");
+            }
             this.mac = mac;
             return this;
         }
         @CustomType.Setter
-        public Builder memberId(@Nullable Integer memberId) {
-
+        public Builder memberId(Integer memberId) {
+            if (memberId == null) {
+              throw new MissingRequiredPropertyException("SwitchVirtualChassisMember", "memberId");
+            }
             this.memberId = memberId;
             return this;
         }
         @CustomType.Setter
-        public Builder vcRole(@Nullable String vcRole) {
-
+        public Builder vcRole(String vcRole) {
+            if (vcRole == null) {
+              throw new MissingRequiredPropertyException("SwitchVirtualChassisMember", "vcRole");
+            }
             this.vcRole = vcRole;
             return this;
         }

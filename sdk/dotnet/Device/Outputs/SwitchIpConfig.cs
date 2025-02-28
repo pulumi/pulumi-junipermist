@@ -21,11 +21,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string? Gateway;
         public readonly string? Ip;
         /// <summary>
-        /// used only if `subnet` is not specified in `networks`
+        /// Used only if `subnet` is not specified in `networks`
         /// </summary>
         public readonly string? Netmask;
         /// <summary>
-        /// the network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
+        /// Network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
         /// </summary>
         public readonly string? Network;
         /// <summary>

@@ -27,7 +27,7 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
     private String name;
     private @Nullable String network;
     /**
-     * @return if `protocol`==`icmp`
+     * @return If `protocol`==`icmp`
      * 
      */
     private @Nullable Integer packetSize;
@@ -65,7 +65,7 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return if `protocol`==`icmp`
+     * @return If `protocol`==`icmp`
      * 
      */
     public Optional<Integer> packetSize() {

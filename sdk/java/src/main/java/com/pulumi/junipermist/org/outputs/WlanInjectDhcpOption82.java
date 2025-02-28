@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanInjectDhcpOption82 {
     /**
-     * @return information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+     * @return Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
      *   * {{AP_MAC}}
      *   * {{AP_MAC_DASHED}}
      *   * {{AP_MODEL}}
@@ -24,14 +24,14 @@ public final class WlanInjectDhcpOption82 {
      */
     private @Nullable String circuitId;
     /**
-     * @return whether to inject option 82 when forwarding DHCP packets
+     * @return Whether to inject option 82 when forwarding DHCP packets
      * 
      */
     private @Nullable Boolean enabled;
 
     private WlanInjectDhcpOption82() {}
     /**
-     * @return information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+     * @return Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
      *   * {{AP_MAC}}
      *   * {{AP_MAC_DASHED}}
      *   * {{AP_MODEL}}
@@ -44,7 +44,7 @@ public final class WlanInjectDhcpOption82 {
         return Optional.ofNullable(this.circuitId);
     }
     /**
-     * @return whether to inject option 82 when forwarding DHCP packets
+     * @return Whether to inject option 82 when forwarding DHCP packets
      * 
      */
     public Optional<Boolean> enabled() {

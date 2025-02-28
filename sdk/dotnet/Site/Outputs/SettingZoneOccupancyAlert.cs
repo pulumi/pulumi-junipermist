@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingZoneOccupancyAlert
     {
         /// <summary>
-        /// list of email addresses to send email notifications when the alert threshold is reached
+        /// List of email addresses to send email notifications when the alert threshold is reached
         /// </summary>
         public readonly ImmutableArray<string> EmailNotifiers;
         /// <summary>
-        /// indicate whether zone occupancy alert is enabled for the site
+        /// Indicate whether zone occupancy alert is enabled for the site
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy &gt; occupancy_limit) for a minimum duration specified in the threshold, in minutes
+        /// Sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy &gt; occupancy_limit) for a minimum duration specified in the threshold, in minutes
         /// </summary>
         public readonly int? Threshold;
 

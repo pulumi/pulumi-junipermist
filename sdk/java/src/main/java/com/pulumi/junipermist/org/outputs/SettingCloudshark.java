@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class SettingCloudshark {
     private String apitoken;
     /**
-     * @return if using CS Enteprise
+     * @return If using CS Enteprise
      * 
      */
     private @Nullable String url;
@@ -24,7 +24,7 @@ public final class SettingCloudshark {
         return this.apitoken;
     }
     /**
-     * @return if using CS Enteprise
+     * @return If using CS Enteprise
      * 
      */
     public Optional<String> url() {

@@ -21,7 +21,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly int? HoldTime;
         public readonly string? ImportPolicy;
         /// <summary>
-        /// assuming BGP neighbor is directly connected
+        /// Assuming BGP neighbor is directly connected
         /// </summary>
         public readonly int? MultihopTtl;
         public readonly int? NeighborAs;

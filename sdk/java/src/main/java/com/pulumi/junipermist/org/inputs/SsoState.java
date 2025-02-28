@@ -51,7 +51,7 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
+     * Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
      * `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
      * `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
      * 
@@ -60,7 +60,7 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> domain;
 
     /**
-     * @return random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
+     * @return Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
      * `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
      * `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
      * 
@@ -145,14 +145,14 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * name
+     * Name
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return name
+     * @return Name
      * 
      */
     public Optional<Output<String>> name() {
@@ -185,8 +185,8 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
      * custom role attribute parsing scheme. Supported Role Parsing Schemes
      * &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML
      * Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the
-     * entire entry will be ignored)&lt;/li&gt;&lt;li&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-     * “cn”&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+     * entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
+     * “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
      * 
      */
     @Import(name="roleAttrExtraction")
@@ -196,8 +196,8 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
      * @return custom role attribute parsing scheme. Supported Role Parsing Schemes
      * &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML
      * Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the
-     * entire entry will be ignored)&lt;/li&gt;&lt;li&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-     * “cn”&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+     * entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
+     * “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
      * 
      */
     public Optional<Output<String>> roleAttrExtraction() {
@@ -302,7 +302,7 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
+         * @param domain Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
          * `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
          * `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
          * 
@@ -315,7 +315,7 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
+         * @param domain Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
          * `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
          * `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
          * 
@@ -432,7 +432,7 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name name
+         * @param name Name
          * 
          * @return builder
          * 
@@ -443,7 +443,7 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name name
+         * @param name Name
          * 
          * @return builder
          * 
@@ -486,8 +486,8 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
          * @param roleAttrExtraction custom role attribute parsing scheme. Supported Role Parsing Schemes
          * &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML
          * Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the
-         * entire entry will be ignored)&lt;/li&gt;&lt;li&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-         * “cn”&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+         * entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
+         * “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
          * 
          * @return builder
          * 
@@ -501,8 +501,8 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
          * @param roleAttrExtraction custom role attribute parsing scheme. Supported Role Parsing Schemes
          * &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML
          * Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the
-         * entire entry will be ignored)&lt;/li&gt;&lt;li&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-         * “cn”&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+         * entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
+         * “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
          * 
          * @return builder
          * 

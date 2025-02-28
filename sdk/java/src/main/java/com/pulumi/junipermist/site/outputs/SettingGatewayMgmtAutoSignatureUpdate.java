@@ -19,7 +19,7 @@ public final class SettingGatewayMgmtAutoSignatureUpdate {
     private @Nullable String dayOfWeek;
     private @Nullable Boolean enable;
     /**
-     * @return optional, Mist will decide the timing
+     * @return Optional, Mist will decide the timing
      * 
      */
     private @Nullable String timeOfDay;
@@ -36,7 +36,7 @@ public final class SettingGatewayMgmtAutoSignatureUpdate {
         return Optional.ofNullable(this.enable);
     }
     /**
-     * @return optional, Mist will decide the timing
+     * @return Optional, Mist will decide the timing
      * 
      */
     public Optional<String> timeOfDay() {

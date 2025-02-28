@@ -13,13 +13,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class WlanMistNacGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// when enabled:
+        /// When enabled:
         ///   * `auth_servers` is ignored
         ///   * `acct_servers` is ignored
         ///   * `auth_servers_*` are ignored
         ///   * `coa_servers` is ignored
         ///   * `radsec` is ignored
-        ///   * `coa_enabled` is assumed'
+        ///   * `coa_enabled` is assumed
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

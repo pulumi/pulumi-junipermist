@@ -16,9 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
-        /// 
-        /// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+        /// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
         /// </summary>
         [Input("hours")]
         public Input<Inputs.WlanScheduleHoursGetArgs>? Hours { get; set; }

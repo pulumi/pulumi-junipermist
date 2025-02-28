@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingPasswordPolicy
     {
         /// <summary>
-        /// whether the policy is enabled
+        /// Whether the policy is enabled
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
@@ -22,15 +22,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? ExpiryInDays;
         /// <summary>
-        /// required password length
+        /// Required password length
         /// </summary>
         public readonly int? MinLength;
         /// <summary>
-        /// whether to require special character
+        /// Whether to require special character
         /// </summary>
         public readonly bool? RequiresSpecialChar;
         /// <summary>
-        /// whether to require two-factor auth
+        /// Whether to require two-factor auth
         /// </summary>
         public readonly bool? RequiresTwoFactorAuth;
 

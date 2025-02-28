@@ -14,13 +14,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GetWlansOrgWlanMistNacResult
     {
         /// <summary>
-        /// when enabled:
+        /// When enabled:
         ///   * `auth_servers` is ignored
         ///   * `acct_servers` is ignored
         ///   * `auth_servers_*` are ignored
         ///   * `coa_servers` is ignored
         ///   * `radsec` is ignored
-        ///   * `coa_enabled` is assumed'
+        ///   * `coa_enabled` is assumed
         /// </summary>
         public readonly bool Enabled;
 

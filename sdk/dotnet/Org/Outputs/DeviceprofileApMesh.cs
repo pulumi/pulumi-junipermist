@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileApMesh
     {
         /// <summary>
-        /// whether mesh is enabled on this AP
+        /// Whether mesh is enabled on this AP
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
+        /// Mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
         /// </summary>
         public readonly int? Group;
         /// <summary>

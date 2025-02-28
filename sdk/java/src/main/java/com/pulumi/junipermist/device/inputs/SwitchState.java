@@ -103,14 +103,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * for a claimed switch, we control the configs by default. This option (disables the behavior)
+     * For a claimed switch, we control the configs by default. This option (disables the behavior)
      * 
      */
     @Import(name="disableAutoConfig")
     private @Nullable Output<Boolean> disableAutoConfig;
 
     /**
-     * @return for a claimed switch, we control the configs by default. This option (disables the behavior)
+     * @return For a claimed switch, we control the configs by default. This option (disables the behavior)
      * 
      */
     public Optional<Output<Boolean>> disableAutoConfig() {
@@ -223,14 +223,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * device MAC address
+     * Device MAC address
      * 
      */
     @Import(name="mac")
     private @Nullable Output<String> mac;
 
     /**
-     * @return device MAC address
+     * @return Device MAC address
      * 
      */
     public Optional<Output<String>> mac() {
@@ -238,14 +238,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * for an adopted switch, we don’t overwrite their existing configs automatically
+     * For an adopted switch, we don’t overwrite their existing configs automatically
      * 
      */
     @Import(name="managed")
     private @Nullable Output<Boolean> managed;
 
     /**
-     * @return for an adopted switch, we don’t overwrite their existing configs automatically
+     * @return For an adopted switch, we don’t overwrite their existing configs automatically
      * 
      */
     public Optional<Output<Boolean>> managed() {
@@ -253,14 +253,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * map where the device belongs to
+     * Map where the device belongs to
      * 
      */
     @Import(name="mapId")
     private @Nullable Output<String> mapId;
 
     /**
-     * @return map where the device belongs to
+     * @return Map where the device belongs to
      * 
      */
     public Optional<Output<String>> mapId() {
@@ -268,14 +268,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enable mist_nac to use radsec
+     * Enable mist_nac to use RadSec
      * 
      */
     @Import(name="mistNac")
     private @Nullable Output<SwitchMistNacArgs> mistNac;
 
     /**
-     * @return enable mist_nac to use radsec
+     * @return Enable mist_nac to use RadSec
      * 
      */
     public Optional<Output<SwitchMistNacArgs>> mistNac() {
@@ -283,14 +283,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * device Model
+     * Device Model
      * 
      */
     @Import(name="model")
     private @Nullable Output<String> model;
 
     /**
-     * @return device Model
+     * @return Device Model
      * 
      */
     public Optional<Output<String>> model() {
@@ -327,14 +327,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * list of NTP servers specific to this device. By default, those in Site Settings will be used
+     * List of NTP servers specific to this device. By default, those in Site Settings will be used
      * 
      */
     @Import(name="ntpServers")
     private @Nullable Output<List<String>> ntpServers;
 
     /**
-     * @return list of NTP servers specific to this device. By default, those in Site Settings will be used
+     * @return List of NTP servers specific to this device. By default, those in Site Settings will be used
      * 
      */
     public Optional<Output<List<String>>> ntpServers() {
@@ -474,14 +474,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * used for OSPF / BGP / EVPN
+     * Used for OSPF / BGP / EVPN
      * 
      */
     @Import(name="routerId")
     private @Nullable Output<String> routerId;
 
     /**
-     * @return used for OSPF / BGP / EVPN
+     * @return Used for OSPF / BGP / EVPN
      * 
      */
     public Optional<Output<String>> routerId() {
@@ -489,14 +489,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * device Serial
+     * Device Serial
      * 
      */
     @Import(name="serial")
     private @Nullable Output<String> serial;
 
     /**
-     * @return device Serial
+     * @return Device Serial
      * 
      */
     public Optional<Output<String>> serial() {
@@ -555,14 +555,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to use it for snmp / syslog / tacplus / radius
+     * Whether to use it for snmp / syslog / tacplus / radius
      * 
      */
     @Import(name="useRouterIdAsSourceIp")
     private @Nullable Output<Boolean> useRouterIdAsSourceIp;
 
     /**
-     * @return whether to use it for snmp / syslog / tacplus / radius
+     * @return Whether to use it for snmp / syslog / tacplus / radius
      * 
      */
     public Optional<Output<Boolean>> useRouterIdAsSourceIp() {
@@ -570,14 +570,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
     @Import(name="vars")
     private @Nullable Output<Map<String,String>> vars;
 
     /**
-     * @return a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * @return Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
     public Optional<Output<Map<String,String>>> vars() {
@@ -585,14 +585,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * required for preprovisioned Virtual Chassis
+     * Required for preprovisioned Virtual Chassis
      * 
      */
     @Import(name="virtualChassis")
     private @Nullable Output<SwitchVirtualChassisArgs> virtualChassis;
 
     /**
-     * @return required for preprovisioned Virtual Chassis
+     * @return Required for preprovisioned Virtual Chassis
      * 
      */
     public Optional<Output<SwitchVirtualChassisArgs>> virtualChassis() {
@@ -637,14 +637,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * x in pixel
+     * X in pixel
      * 
      */
     @Import(name="x")
     private @Nullable Output<Double> x;
 
     /**
-     * @return x in pixel
+     * @return X in pixel
      * 
      */
     public Optional<Output<Double>> x() {
@@ -652,14 +652,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * y in pixel
+     * Y in pixel
      * 
      */
     @Import(name="y")
     private @Nullable Output<Double> y;
 
     /**
-     * @return y in pixel
+     * @return Y in pixel
      * 
      */
     public Optional<Output<Double>> y() {
@@ -832,7 +832,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableAutoConfig for a claimed switch, we control the configs by default. This option (disables the behavior)
+         * @param disableAutoConfig For a claimed switch, we control the configs by default. This option (disables the behavior)
          * 
          * @return builder
          * 
@@ -843,7 +843,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableAutoConfig for a claimed switch, we control the configs by default. This option (disables the behavior)
+         * @param disableAutoConfig For a claimed switch, we control the configs by default. This option (disables the behavior)
          * 
          * @return builder
          * 
@@ -1016,7 +1016,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac device MAC address
+         * @param mac Device MAC address
          * 
          * @return builder
          * 
@@ -1027,7 +1027,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac device MAC address
+         * @param mac Device MAC address
          * 
          * @return builder
          * 
@@ -1037,7 +1037,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managed for an adopted switch, we don’t overwrite their existing configs automatically
+         * @param managed For an adopted switch, we don’t overwrite their existing configs automatically
          * 
          * @return builder
          * 
@@ -1048,7 +1048,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managed for an adopted switch, we don’t overwrite their existing configs automatically
+         * @param managed For an adopted switch, we don’t overwrite their existing configs automatically
          * 
          * @return builder
          * 
@@ -1058,7 +1058,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mapId map where the device belongs to
+         * @param mapId Map where the device belongs to
          * 
          * @return builder
          * 
@@ -1069,7 +1069,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mapId map where the device belongs to
+         * @param mapId Map where the device belongs to
          * 
          * @return builder
          * 
@@ -1079,7 +1079,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mistNac enable mist_nac to use radsec
+         * @param mistNac Enable mist_nac to use RadSec
          * 
          * @return builder
          * 
@@ -1090,7 +1090,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mistNac enable mist_nac to use radsec
+         * @param mistNac Enable mist_nac to use RadSec
          * 
          * @return builder
          * 
@@ -1100,7 +1100,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param model device Model
+         * @param model Device Model
          * 
          * @return builder
          * 
@@ -1111,7 +1111,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param model device Model
+         * @param model Device Model
          * 
          * @return builder
          * 
@@ -1160,7 +1160,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ntpServers list of NTP servers specific to this device. By default, those in Site Settings will be used
+         * @param ntpServers List of NTP servers specific to this device. By default, those in Site Settings will be used
          * 
          * @return builder
          * 
@@ -1171,7 +1171,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ntpServers list of NTP servers specific to this device. By default, those in Site Settings will be used
+         * @param ntpServers List of NTP servers specific to this device. By default, those in Site Settings will be used
          * 
          * @return builder
          * 
@@ -1181,7 +1181,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ntpServers list of NTP servers specific to this device. By default, those in Site Settings will be used
+         * @param ntpServers List of NTP servers specific to this device. By default, those in Site Settings will be used
          * 
          * @return builder
          * 
@@ -1371,7 +1371,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routerId used for OSPF / BGP / EVPN
+         * @param routerId Used for OSPF / BGP / EVPN
          * 
          * @return builder
          * 
@@ -1382,7 +1382,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routerId used for OSPF / BGP / EVPN
+         * @param routerId Used for OSPF / BGP / EVPN
          * 
          * @return builder
          * 
@@ -1392,7 +1392,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serial device Serial
+         * @param serial Device Serial
          * 
          * @return builder
          * 
@@ -1403,7 +1403,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serial device Serial
+         * @param serial Device Serial
          * 
          * @return builder
          * 
@@ -1482,7 +1482,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param useRouterIdAsSourceIp whether to use it for snmp / syslog / tacplus / radius
+         * @param useRouterIdAsSourceIp Whether to use it for snmp / syslog / tacplus / radius
          * 
          * @return builder
          * 
@@ -1493,7 +1493,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param useRouterIdAsSourceIp whether to use it for snmp / syslog / tacplus / radius
+         * @param useRouterIdAsSourceIp Whether to use it for snmp / syslog / tacplus / radius
          * 
          * @return builder
          * 
@@ -1503,7 +1503,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vars a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+         * @param vars Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
          * 
          * @return builder
          * 
@@ -1514,7 +1514,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vars a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+         * @param vars Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
          * 
          * @return builder
          * 
@@ -1524,7 +1524,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param virtualChassis required for preprovisioned Virtual Chassis
+         * @param virtualChassis Required for preprovisioned Virtual Chassis
          * 
          * @return builder
          * 
@@ -1535,7 +1535,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param virtualChassis required for preprovisioned Virtual Chassis
+         * @param virtualChassis Required for preprovisioned Virtual Chassis
          * 
          * @return builder
          * 
@@ -1596,7 +1596,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param x x in pixel
+         * @param x X in pixel
          * 
          * @return builder
          * 
@@ -1607,7 +1607,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param x x in pixel
+         * @param x X in pixel
          * 
          * @return builder
          * 
@@ -1617,7 +1617,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param y y in pixel
+         * @param y Y in pixel
          * 
          * @return builder
          * 
@@ -1628,7 +1628,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param y y in pixel
+         * @param y Y in pixel
          * 
          * @return builder
          * 

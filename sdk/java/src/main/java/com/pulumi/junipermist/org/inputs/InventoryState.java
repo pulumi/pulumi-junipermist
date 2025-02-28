@@ -52,7 +52,7 @@ Please update your configurations to use the `inventory` attribute. */
 
     /**
      * Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
      * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
      * 
      */
@@ -61,7 +61,7 @@ Please update your configurations to use the `inventory` attribute. */
 
     /**
      * @return Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
      * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
      * 
      */
@@ -159,7 +159,7 @@ Please update your configurations to use the `inventory` attribute. */
 
         /**
          * @param inventory Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-         * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+         * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
          * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
          * 
          * @return builder
@@ -172,7 +172,7 @@ Please update your configurations to use the `inventory` attribute. */
 
         /**
          * @param inventory Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-         * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+         * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
          * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
          * 
          * @return builder

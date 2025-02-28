@@ -17,14 +17,14 @@ public final class DeviceprofileGatewayTunnelProviderOptionsArgs extends com.pul
     public static final DeviceprofileGatewayTunnelProviderOptionsArgs Empty = new DeviceprofileGatewayTunnelProviderOptionsArgs();
 
     /**
-     * for jse-ipsec, this allow provisioning of adequate resource on JSE. Make sure adequate licenses are added
+     * For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
      * 
      */
     @Import(name="jse")
     private @Nullable Output<DeviceprofileGatewayTunnelProviderOptionsJseArgs> jse;
 
     /**
-     * @return for jse-ipsec, this allow provisioning of adequate resource on JSE. Make sure adequate licenses are added
+     * @return For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
      * 
      */
     public Optional<Output<DeviceprofileGatewayTunnelProviderOptionsJseArgs>> jse() {
@@ -32,14 +32,14 @@ public final class DeviceprofileGatewayTunnelProviderOptionsArgs extends com.pul
     }
 
     /**
-     * for zscaler-ipsec and zscaler-gre
+     * For zscaler-ipsec and zscaler-gre
      * 
      */
     @Import(name="zscaler")
     private @Nullable Output<DeviceprofileGatewayTunnelProviderOptionsZscalerArgs> zscaler;
 
     /**
-     * @return for zscaler-ipsec and zscaler-gre
+     * @return For zscaler-ipsec and zscaler-gre
      * 
      */
     public Optional<Output<DeviceprofileGatewayTunnelProviderOptionsZscalerArgs>> zscaler() {
@@ -72,7 +72,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsArgs extends com.pul
         }
 
         /**
-         * @param jse for jse-ipsec, this allow provisioning of adequate resource on JSE. Make sure adequate licenses are added
+         * @param jse For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsArgs extends com.pul
         }
 
         /**
-         * @param jse for jse-ipsec, this allow provisioning of adequate resource on JSE. Make sure adequate licenses are added
+         * @param jse For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsArgs extends com.pul
         }
 
         /**
-         * @param zscaler for zscaler-ipsec and zscaler-gre
+         * @param zscaler For zscaler-ipsec and zscaler-gre
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsArgs extends com.pul
         }
 
         /**
-         * @param zscaler for zscaler-ipsec and zscaler-gre
+         * @param zscaler For zscaler-ipsec and zscaler-gre
          * 
          * @return builder
          * 

@@ -34,14 +34,14 @@ public final class GatewaytemplateDhcpdConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * if set to `false`, disable the DHCP server
+     * If set to `false`, disable the DHCP server
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return if set to `false`, disable the DHCP server
+     * @return If set to `false`, disable the DHCP server
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -95,7 +95,7 @@ public final class GatewaytemplateDhcpdConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled if set to `false`, disable the DHCP server
+         * @param enabled If set to `false`, disable the DHCP server
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class GatewaytemplateDhcpdConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled if set to `false`, disable the DHCP server
+         * @param enabled If set to `false`, disable the DHCP server
          * 
          * @return builder
          * 

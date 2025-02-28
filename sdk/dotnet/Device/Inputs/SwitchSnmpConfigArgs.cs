@@ -29,9 +29,6 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// enum: `engine-id-suffix`, `local`, `use-default-ip-address`, `use_mac-address`
-        /// </summary>
         [Input("engineId")]
         public Input<string>? EngineId { get; set; }
 

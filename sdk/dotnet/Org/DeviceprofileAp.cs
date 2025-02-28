@@ -66,25 +66,25 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.DeviceprofileApBleConfig?> BleConfig { get; private set; } = null!;
 
         /// <summary>
-        /// whether to disable eth1 port
+        /// Whether to disable eth1 port
         /// </summary>
         [Output("disableEth1")]
         public Output<bool> DisableEth1 { get; private set; } = null!;
 
         /// <summary>
-        /// whether to disable eth2 port
+        /// Whether to disable eth2 port
         /// </summary>
         [Output("disableEth2")]
         public Output<bool> DisableEth2 { get; private set; } = null!;
 
         /// <summary>
-        /// whether to disable eth3 port
+        /// Whether to disable eth3 port
         /// </summary>
         [Output("disableEth3")]
         public Output<bool> DisableEth3 { get; private set; } = null!;
 
         /// <summary>
-        /// whether to disable module port
+        /// Whether to disable module port
         /// </summary>
         [Output("disableModule")]
         public Output<bool> DisableModule { get; private set; } = null!;
@@ -120,13 +120,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        /// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
         /// </summary>
         [Output("poePassthrough")]
         public Output<bool> PoePassthrough { get; private set; } = null!;
 
         /// <summary>
-        /// power related configs
+        /// Power related configs
         /// </summary>
         [Output("pwrConfig")]
         public Output<Outputs.DeviceprofileApPwrConfig?> PwrConfig { get; private set; } = null!;
@@ -146,19 +146,21 @@ namespace Pulumi.JuniperMist.Org
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
+        /// <summary>
+        /// AP Uplink port configuration
+        /// </summary>
         [Output("uplinkPortConfig")]
         public Output<Outputs.DeviceprofileApUplinkPortConfig?> UplinkPortConfig { get; private set; } = null!;
 
         /// <summary>
-        /// USB AP settings
-        /// Note: if native imagotag is enabled, BLE will be disabled automatically
-        /// Note: legacy, new config moved to ESL Config.
+        /// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+        /// moved to ESL Config.
         /// </summary>
         [Output("usbConfig")]
         public Output<Outputs.DeviceprofileApUsbConfig?> UsbConfig { get; private set; } = null!;
 
         /// <summary>
-        /// a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         /// </summary>
         [Output("vars")]
         public Output<ImmutableDictionary<string, string>?> Vars { get; private set; } = null!;
@@ -223,25 +225,25 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.DeviceprofileApBleConfigArgs>? BleConfig { get; set; }
 
         /// <summary>
-        /// whether to disable eth1 port
+        /// Whether to disable eth1 port
         /// </summary>
         [Input("disableEth1")]
         public Input<bool>? DisableEth1 { get; set; }
 
         /// <summary>
-        /// whether to disable eth2 port
+        /// Whether to disable eth2 port
         /// </summary>
         [Input("disableEth2")]
         public Input<bool>? DisableEth2 { get; set; }
 
         /// <summary>
-        /// whether to disable eth3 port
+        /// Whether to disable eth3 port
         /// </summary>
         [Input("disableEth3")]
         public Input<bool>? DisableEth3 { get; set; }
 
         /// <summary>
-        /// whether to disable module port
+        /// Whether to disable module port
         /// </summary>
         [Input("disableModule")]
         public Input<bool>? DisableModule { get; set; }
@@ -282,13 +284,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        /// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
         /// </summary>
         [Input("poePassthrough")]
         public Input<bool>? PoePassthrough { get; set; }
 
         /// <summary>
-        /// power related configs
+        /// Power related configs
         /// </summary>
         [Input("pwrConfig")]
         public Input<Inputs.DeviceprofileApPwrConfigArgs>? PwrConfig { get; set; }
@@ -302,13 +304,15 @@ namespace Pulumi.JuniperMist.Org
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
+        /// <summary>
+        /// AP Uplink port configuration
+        /// </summary>
         [Input("uplinkPortConfig")]
         public Input<Inputs.DeviceprofileApUplinkPortConfigArgs>? UplinkPortConfig { get; set; }
 
         /// <summary>
-        /// USB AP settings
-        /// Note: if native imagotag is enabled, BLE will be disabled automatically
-        /// Note: legacy, new config moved to ESL Config.
+        /// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+        /// moved to ESL Config.
         /// </summary>
         [Input("usbConfig")]
         public Input<Inputs.DeviceprofileApUsbConfigArgs>? UsbConfig { get; set; }
@@ -317,7 +321,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<string>? _vars;
 
         /// <summary>
-        /// a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         /// </summary>
         public InputMap<string> Vars
         {
@@ -346,25 +350,25 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.DeviceprofileApBleConfigGetArgs>? BleConfig { get; set; }
 
         /// <summary>
-        /// whether to disable eth1 port
+        /// Whether to disable eth1 port
         /// </summary>
         [Input("disableEth1")]
         public Input<bool>? DisableEth1 { get; set; }
 
         /// <summary>
-        /// whether to disable eth2 port
+        /// Whether to disable eth2 port
         /// </summary>
         [Input("disableEth2")]
         public Input<bool>? DisableEth2 { get; set; }
 
         /// <summary>
-        /// whether to disable eth3 port
+        /// Whether to disable eth3 port
         /// </summary>
         [Input("disableEth3")]
         public Input<bool>? DisableEth3 { get; set; }
 
         /// <summary>
-        /// whether to disable module port
+        /// Whether to disable module port
         /// </summary>
         [Input("disableModule")]
         public Input<bool>? DisableModule { get; set; }
@@ -405,13 +409,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        /// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
         /// </summary>
         [Input("poePassthrough")]
         public Input<bool>? PoePassthrough { get; set; }
 
         /// <summary>
-        /// power related configs
+        /// Power related configs
         /// </summary>
         [Input("pwrConfig")]
         public Input<Inputs.DeviceprofileApPwrConfigGetArgs>? PwrConfig { get; set; }
@@ -431,13 +435,15 @@ namespace Pulumi.JuniperMist.Org
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// AP Uplink port configuration
+        /// </summary>
         [Input("uplinkPortConfig")]
         public Input<Inputs.DeviceprofileApUplinkPortConfigGetArgs>? UplinkPortConfig { get; set; }
 
         /// <summary>
-        /// USB AP settings
-        /// Note: if native imagotag is enabled, BLE will be disabled automatically
-        /// Note: legacy, new config moved to ESL Config.
+        /// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+        /// moved to ESL Config.
         /// </summary>
         [Input("usbConfig")]
         public Input<Inputs.DeviceprofileApUsbConfigGetArgs>? UsbConfig { get; set; }
@@ -446,7 +452,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<string>? _vars;
 
         /// <summary>
-        /// a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         /// </summary>
         public InputMap<string> Vars
         {

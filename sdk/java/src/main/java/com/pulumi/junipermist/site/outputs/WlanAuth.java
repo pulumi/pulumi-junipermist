@@ -20,27 +20,27 @@ public final class WlanAuth {
      */
     private @Nullable Integer anticlogThreshold;
     /**
-     * @return whether to trigger EAP reauth when the session ends
+     * @return Whether to trigger EAP reauth when the session ends
      * 
      */
     private @Nullable Boolean eapReauth;
     /**
-     * @return whether to enable MAC Auth, uses the same auth_servers
+     * @return Whether to enable MAC Auth, uses the same auth_servers
      * 
      */
     private @Nullable Boolean enableMacAuth;
     /**
-     * @return when `type`==`wep`
+     * @return When `type`==`wep`
      * 
      */
     private @Nullable Integer keyIdx;
     /**
-     * @return when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+     * @return When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
      * 
      */
     private @Nullable List<String> keys;
     /**
-     * @return when `type`==`psk`, whether to only use multi_psk
+     * @return When `type`==`psk`, whether to only use multi_psk
      * 
      */
     private @Nullable Boolean multiPskOnly;
@@ -50,17 +50,17 @@ public final class WlanAuth {
      */
     private @Nullable String owe;
     /**
-     * @return when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+     * @return When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
      * 
      */
     private @Nullable List<String> pairwises;
     /**
-     * @return when `multi_psk_only`==`true`, whether private wlan is enabled
+     * @return When `multi_psk_only`==`true`, whether private wlan is enabled
      * 
      */
     private @Nullable Boolean privateWlan;
     /**
-     * @return when `type`==`psk`, 8-64 characters, or 64 hex characters
+     * @return When `type`==`psk`, 8-64 characters, or 64 hex characters
      * 
      */
     private @Nullable String psk;
@@ -70,7 +70,7 @@ public final class WlanAuth {
      */
     private @Nullable String type;
     /**
-     * @return enable WEP as secondary auth
+     * @return Enable WEP as secondary auth
      * 
      */
     private @Nullable Boolean wepAsSecondaryAuth;
@@ -84,35 +84,35 @@ public final class WlanAuth {
         return Optional.ofNullable(this.anticlogThreshold);
     }
     /**
-     * @return whether to trigger EAP reauth when the session ends
+     * @return Whether to trigger EAP reauth when the session ends
      * 
      */
     public Optional<Boolean> eapReauth() {
         return Optional.ofNullable(this.eapReauth);
     }
     /**
-     * @return whether to enable MAC Auth, uses the same auth_servers
+     * @return Whether to enable MAC Auth, uses the same auth_servers
      * 
      */
     public Optional<Boolean> enableMacAuth() {
         return Optional.ofNullable(this.enableMacAuth);
     }
     /**
-     * @return when `type`==`wep`
+     * @return When `type`==`wep`
      * 
      */
     public Optional<Integer> keyIdx() {
         return Optional.ofNullable(this.keyIdx);
     }
     /**
-     * @return when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+     * @return When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
      * 
      */
     public List<String> keys() {
         return this.keys == null ? List.of() : this.keys;
     }
     /**
-     * @return when `type`==`psk`, whether to only use multi_psk
+     * @return When `type`==`psk`, whether to only use multi_psk
      * 
      */
     public Optional<Boolean> multiPskOnly() {
@@ -126,21 +126,21 @@ public final class WlanAuth {
         return Optional.ofNullable(this.owe);
     }
     /**
-     * @return when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+     * @return When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
      * 
      */
     public List<String> pairwises() {
         return this.pairwises == null ? List.of() : this.pairwises;
     }
     /**
-     * @return when `multi_psk_only`==`true`, whether private wlan is enabled
+     * @return When `multi_psk_only`==`true`, whether private wlan is enabled
      * 
      */
     public Optional<Boolean> privateWlan() {
         return Optional.ofNullable(this.privateWlan);
     }
     /**
-     * @return when `type`==`psk`, 8-64 characters, or 64 hex characters
+     * @return When `type`==`psk`, 8-64 characters, or 64 hex characters
      * 
      */
     public Optional<String> psk() {
@@ -154,7 +154,7 @@ public final class WlanAuth {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return enable WEP as secondary auth
+     * @return Enable WEP as secondary auth
      * 
      */
     public Optional<Boolean> wepAsSecondaryAuth() {

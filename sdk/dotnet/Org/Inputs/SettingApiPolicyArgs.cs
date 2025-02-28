@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class SettingApiPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// by default, API hides password/secrets when the user doesn't have write access
+        /// By default, API hides password/secrets when the user doesn't have write access
         ///   * `true`: API will hide passwords/secrets for all users
         ///   * `false`: API will hide passwords/secrets for read-only users
         /// </summary>

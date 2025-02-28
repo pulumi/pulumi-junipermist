@@ -17,14 +17,14 @@ public final class SwitchSnmpConfigViewArgs extends com.pulumi.resources.Resourc
     public static final SwitchSnmpConfigViewArgs Empty = new SwitchSnmpConfigViewArgs();
 
     /**
-     * if the root oid configured is included
+     * If the root oid configured is included
      * 
      */
     @Import(name="include")
     private @Nullable Output<Boolean> include;
 
     /**
-     * @return if the root oid configured is included
+     * @return If the root oid configured is included
      * 
      */
     public Optional<Output<Boolean>> include() {
@@ -72,7 +72,7 @@ public final class SwitchSnmpConfigViewArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param include if the root oid configured is included
+         * @param include If the root oid configured is included
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class SwitchSnmpConfigViewArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param include if the root oid configured is included
+         * @param include If the root oid configured is included
          * 
          * @return builder
          * 

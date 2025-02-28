@@ -16,14 +16,14 @@ public final class SettingWidsRepeatedAuthFailuresArgs extends com.pulumi.resour
     public static final SettingWidsRepeatedAuthFailuresArgs Empty = new SettingWidsRepeatedAuthFailuresArgs();
 
     /**
-     * window where a trigger will be detected and action to be taken (in seconds)
+     * Window where a trigger will be detected and action to be taken (in seconds)
      * 
      */
     @Import(name="duration")
     private @Nullable Output<Integer> duration;
 
     /**
-     * @return window where a trigger will be detected and action to be taken (in seconds)
+     * @return Window where a trigger will be detected and action to be taken (in seconds)
      * 
      */
     public Optional<Output<Integer>> duration() {
@@ -31,14 +31,14 @@ public final class SettingWidsRepeatedAuthFailuresArgs extends com.pulumi.resour
     }
 
     /**
-     * count of events to trigger
+     * Count of events to trigger
      * 
      */
     @Import(name="threshold")
     private @Nullable Output<Integer> threshold;
 
     /**
-     * @return count of events to trigger
+     * @return Count of events to trigger
      * 
      */
     public Optional<Output<Integer>> threshold() {
@@ -71,7 +71,7 @@ public final class SettingWidsRepeatedAuthFailuresArgs extends com.pulumi.resour
         }
 
         /**
-         * @param duration window where a trigger will be detected and action to be taken (in seconds)
+         * @param duration Window where a trigger will be detected and action to be taken (in seconds)
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class SettingWidsRepeatedAuthFailuresArgs extends com.pulumi.resour
         }
 
         /**
-         * @param duration window where a trigger will be detected and action to be taken (in seconds)
+         * @param duration Window where a trigger will be detected and action to be taken (in seconds)
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class SettingWidsRepeatedAuthFailuresArgs extends com.pulumi.resour
         }
 
         /**
-         * @param threshold count of events to trigger
+         * @param threshold Count of events to trigger
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class SettingWidsRepeatedAuthFailuresArgs extends com.pulumi.resour
         }
 
         /**
-         * @param threshold count of events to trigger
+         * @param threshold Count of events to trigger
          * 
          * @return builder
          * 

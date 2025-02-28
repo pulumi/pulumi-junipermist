@@ -18,14 +18,14 @@ public final class SwitchVirtualChassisArgs extends com.pulumi.resources.Resourc
     public static final SwitchVirtualChassisArgs Empty = new SwitchVirtualChassisArgs();
 
     /**
-     * list of Virtual Chassis members
+     * List of Virtual Chassis members
      * 
      */
     @Import(name="members")
     private @Nullable Output<List<SwitchVirtualChassisMemberArgs>> members;
 
     /**
-     * @return list of Virtual Chassis members
+     * @return List of Virtual Chassis members
      * 
      */
     public Optional<Output<List<SwitchVirtualChassisMemberArgs>>> members() {
@@ -33,14 +33,14 @@ public final class SwitchVirtualChassisArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * to configure whether the VC is preprovisioned or nonprovisioned
+     * To configure whether the VC is preprovisioned or nonprovisioned
      * 
      */
     @Import(name="preprovisioned")
     private @Nullable Output<Boolean> preprovisioned;
 
     /**
-     * @return to configure whether the VC is preprovisioned or nonprovisioned
+     * @return To configure whether the VC is preprovisioned or nonprovisioned
      * 
      */
     public Optional<Output<Boolean>> preprovisioned() {
@@ -73,7 +73,7 @@ public final class SwitchVirtualChassisArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param members list of Virtual Chassis members
+         * @param members List of Virtual Chassis members
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class SwitchVirtualChassisArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param members list of Virtual Chassis members
+         * @param members List of Virtual Chassis members
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class SwitchVirtualChassisArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param members list of Virtual Chassis members
+         * @param members List of Virtual Chassis members
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class SwitchVirtualChassisArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param preprovisioned to configure whether the VC is preprovisioned or nonprovisioned
+         * @param preprovisioned To configure whether the VC is preprovisioned or nonprovisioned
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class SwitchVirtualChassisArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param preprovisioned to configure whether the VC is preprovisioned or nonprovisioned
+         * @param preprovisioned To configure whether the VC is preprovisioned or nonprovisioned
          * 
          * @return builder
          * 

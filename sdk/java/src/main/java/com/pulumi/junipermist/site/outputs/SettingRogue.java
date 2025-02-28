@@ -15,22 +15,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingRogue {
     /**
-     * @return whether or not rogue detection is enabled
+     * @return Whether rogue detection is enabled
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return whether or not honeypot detection is enabled
+     * @return Whether honeypot detection is enabled
      * 
      */
     private @Nullable Boolean honeypotEnabled;
     /**
-     * @return minimum duration for a bssid to be considered rogue
+     * @return Minimum duration for a bssid to be considered rogue
      * 
      */
     private @Nullable Integer minDuration;
     /**
-     * @return minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+     * @return Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
      * 
      */
     private @Nullable Integer minRssi;
@@ -40,35 +40,35 @@ public final class SettingRogue {
      */
     private @Nullable List<String> whitelistedBssids;
     /**
-     * @return list of SSIDs to whitelist
+     * @return List of SSIDs to whitelist
      * 
      */
     private @Nullable List<String> whitelistedSsids;
 
     private SettingRogue() {}
     /**
-     * @return whether or not rogue detection is enabled
+     * @return Whether rogue detection is enabled
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return whether or not honeypot detection is enabled
+     * @return Whether honeypot detection is enabled
      * 
      */
     public Optional<Boolean> honeypotEnabled() {
         return Optional.ofNullable(this.honeypotEnabled);
     }
     /**
-     * @return minimum duration for a bssid to be considered rogue
+     * @return Minimum duration for a bssid to be considered rogue
      * 
      */
     public Optional<Integer> minDuration() {
         return Optional.ofNullable(this.minDuration);
     }
     /**
-     * @return minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+     * @return Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
      * 
      */
     public Optional<Integer> minRssi() {
@@ -82,7 +82,7 @@ public final class SettingRogue {
         return this.whitelistedBssids == null ? List.of() : this.whitelistedBssids;
     }
     /**
-     * @return list of SSIDs to whitelist
+     * @return List of SSIDs to whitelist
      * 
      */
     public List<String> whitelistedSsids() {

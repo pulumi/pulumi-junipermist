@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// any / HH:MM (24-hour format)
+        /// `any` / HH:MM (24-hour format)
         /// </summary>
         [Input("timeOfDay")]
         public Input<string>? TimeOfDay { get; set; }

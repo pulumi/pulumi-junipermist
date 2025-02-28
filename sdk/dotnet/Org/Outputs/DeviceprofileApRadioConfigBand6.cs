@@ -32,7 +32,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<int> Channels;
         /// <summary>
-        /// whether to disable the radio
+        /// Whether to disable the radio
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
@@ -40,11 +40,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? Power;
         /// <summary>
-        /// when power=0, max tx power to use, HW-specific values will be used if not set
+        /// When power=0, max tx power to use, HW-specific values will be used if not set
         /// </summary>
         public readonly int? PowerMax;
         /// <summary>
-        /// when power=0, min tx power to use, HW-specific values will be used if not set
+        /// When power=0, min tx power to use, HW-specific values will be used if not set
         /// </summary>
         public readonly int? PowerMin;
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Preamble;
         /// <summary>
-        /// for 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed and we'll fallback to Low Power Indoor if AFC failed
+        /// For 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed, and we'll fall back to Low Power Indoor if AFC failed
         /// </summary>
         public readonly bool? StandardPower;
 

@@ -113,107 +113,107 @@ class WlanArgs:
                  wxtunnel_remote_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Wlan resource.
-        :param pulumi.Input[str] ssid: the name of the SSID
-        :param pulumi.Input[bool] acct_immediate_update: enable coa-immediate-update and address-change-immediate-update on the access profile.
-        :param pulumi.Input[int] acct_interim_interval: how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
+        :param pulumi.Input[str] ssid: Name of the SSID
+        :param pulumi.Input[bool] acct_immediate_update: Enable coa-immediate-update and address-change-immediate-update on the access profile.
+        :param pulumi.Input[int] acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
                from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended
                when enabled
-        :param pulumi.Input[Sequence[pulumi.Input['WlanAcctServerArgs']]] acct_servers: list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
-        :param pulumi.Input['WlanAirwatchArgs'] airwatch: airwatch wlan settings
-        :param pulumi.Input[bool] allow_ipv6_ndp: only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
-        :param pulumi.Input[bool] allow_mdns: only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
-        :param pulumi.Input[bool] allow_ssdp: only applicable when `limit_bcast`==`true`, which allows SSDP
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ap_ids: list of device ids
-        :param pulumi.Input['WlanAppLimitArgs'] app_limit: bandwidth limiting for apps (applies to up/down)
-        :param pulumi.Input['WlanAppQosArgs'] app_qos: app qos wlan settings
+        :param pulumi.Input[Sequence[pulumi.Input['WlanAcctServerArgs']]] acct_servers: List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+        :param pulumi.Input['WlanAirwatchArgs'] airwatch: Airwatch wlan settings
+        :param pulumi.Input[bool] allow_ipv6_ndp: Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        :param pulumi.Input[bool] allow_mdns: Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        :param pulumi.Input[bool] allow_ssdp: Only applicable when `limit_bcast`==`true`, which allows SSDP
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ap_ids: List of device ids
+        :param pulumi.Input['WlanAppLimitArgs'] app_limit: Bandwidth limiting for apps (applies to up/down)
+        :param pulumi.Input['WlanAppQosArgs'] app_qos: APp qos wlan settings
         :param pulumi.Input[str] apply_to: enum: `aps`, `site`, `wxtags`
-        :param pulumi.Input[bool] arp_filter: whether to enable smart arp filter
-        :param pulumi.Input['WlanAuthArgs'] auth: authentication wlan settings
+        :param pulumi.Input[bool] arp_filter: Whether to enable smart arp filter
+        :param pulumi.Input['WlanAuthArgs'] auth: Authentication wlan settings
         :param pulumi.Input[str] auth_server_selection: When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
-        :param pulumi.Input[Sequence[pulumi.Input['WlanAuthServerArgs']]] auth_servers: list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
+        :param pulumi.Input[Sequence[pulumi.Input['WlanAuthServerArgs']]] auth_servers: List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
                is treated as primary
-        :param pulumi.Input[str] auth_servers_nas_id: optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
-        :param pulumi.Input[str] auth_servers_nas_ip: optional, NAS-IP-ADDRESS to use
-        :param pulumi.Input[int] auth_servers_retries: radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’ are
-               set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to
-               default value to 3.
-        :param pulumi.Input[int] auth_servers_timeout: radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled.
-               ‘quite-period’ and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’
-               is also set when setting auth_servers_timeout and is set to default value of 10.
-        :param pulumi.Input[bool] band_steer: whether to enable band_steering, this works only when band==both
-        :param pulumi.Input[bool] band_steer_force_band5: force dual_band capable client to connect to 5G
+        :param pulumi.Input[str] auth_servers_nas_id: Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+        :param pulumi.Input[str] auth_servers_nas_ip: Optional, NAS-IP-ADDRESS to use
+        :param pulumi.Input[int] auth_servers_retries: Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set
+               to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default
+               value to 3.
+        :param pulumi.Input[int] auth_servers_timeout: Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’
+               and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
+               setting auth_servers_timeout and is set to default value of 10.
+        :param pulumi.Input[bool] band_steer: Whether to enable band_steering, this works only when band==both
+        :param pulumi.Input[bool] band_steer_force_band5: Force dual_band capable client to connect to 5G
         :param pulumi.Input[Sequence[pulumi.Input[str]]] bands: list of radios that the wlan should apply to. enum: `24`, `5`, `6`
-        :param pulumi.Input[bool] block_blacklist_clients: whether to block the clients in the blacklist (up to first 256 macs)
-        :param pulumi.Input['WlanBonjourArgs'] bonjour: bonjour gateway wlan settings
+        :param pulumi.Input[bool] block_blacklist_clients: Whether to block the clients in the blacklist (up to first 256 macs)
+        :param pulumi.Input['WlanBonjourArgs'] bonjour: Bonjour gateway wlan settings
         :param pulumi.Input['WlanCiscoCwaArgs'] cisco_cwa: Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
                https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-        :param pulumi.Input[int] client_limit_down: kbps
-        :param pulumi.Input[bool] client_limit_down_enabled: if downlink limiting per-client is enabled
-        :param pulumi.Input[int] client_limit_up: kbps
-        :param pulumi.Input[bool] client_limit_up_enabled: if uplink limiting per-client is enabled
-        :param pulumi.Input[Sequence[pulumi.Input['WlanCoaServerArgs']]] coa_servers: list of COA (change of authorization) servers, optional
-        :param pulumi.Input[bool] disable11ax: some old WLAN drivers may not be compatible
-        :param pulumi.Input[bool] disable_ht_vht_rates: to disable ht or vht rates
-        :param pulumi.Input[bool] disable_uapsd: whether to disable U-APSD
-        :param pulumi.Input[bool] disable_v1_roam_notify: disable sending v2 roam notification messages
-        :param pulumi.Input[bool] disable_v2_roam_notify: disable sending v2 roam notification messages
-        :param pulumi.Input[bool] disable_when_gateway_unreachable: when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+        :param pulumi.Input[int] client_limit_down: In kbps
+        :param pulumi.Input[bool] client_limit_down_enabled: If downlink limiting per-client is enabled
+        :param pulumi.Input[int] client_limit_up: In kbps
+        :param pulumi.Input[bool] client_limit_up_enabled: If uplink limiting per-client is enabled
+        :param pulumi.Input[Sequence[pulumi.Input['WlanCoaServerArgs']]] coa_servers: List of COA (change of authorization) servers, optional
+        :param pulumi.Input[bool] disable11ax: Some old WLAN drivers may not be compatible
+        :param pulumi.Input[bool] disable_ht_vht_rates: To disable ht or vht rates
+        :param pulumi.Input[bool] disable_uapsd: Whether to disable U-APSD
+        :param pulumi.Input[bool] disable_v1_roam_notify: Disable sending v2 roam notification messages
+        :param pulumi.Input[bool] disable_v2_roam_notify: Disable sending v2 roam notification messages
+        :param pulumi.Input[bool] disable_when_gateway_unreachable: When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
                reach default gateway
-        :param pulumi.Input[bool] disable_wmm: whether to disable WMM
-        :param pulumi.Input['WlanDnsServerRewriteArgs'] dns_server_rewrite: for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
-        :param pulumi.Input['WlanDynamicPskArgs'] dynamic_psk: for dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
+        :param pulumi.Input[bool] disable_wmm: Whether to disable WMM
+        :param pulumi.Input['WlanDnsServerRewriteArgs'] dns_server_rewrite: For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+        :param pulumi.Input['WlanDynamicPskArgs'] dynamic_psk: For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
                context (wlan/site/user/...) thus following configurations are assumed (currently) * PSK will come from RADIUS server *
-               AP sends client MAC as username ans password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
+               AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
                Caller-Station-ID * `auth_servers` is required * PSK will come from cloud WLC if source is cloud_psks * default_psk will
                be used if cloud WLC is not available * `multi_psk_only` and `psk` is ignored * `pairwise` can only be wpa2-ccmp (for
                now, wpa3 support on the roadmap)
-        :param pulumi.Input['WlanDynamicVlanArgs'] dynamic_vlan: for 802.1x
-        :param pulumi.Input[bool] enable_local_keycaching: enable AP-AP keycaching via multicast
-        :param pulumi.Input[bool] enable_wireless_bridging: by default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
+        :param pulumi.Input['WlanDynamicVlanArgs'] dynamic_vlan: For 802.1x
+        :param pulumi.Input[bool] enable_local_keycaching: Enable AP-AP keycaching via multicast
+        :param pulumi.Input[bool] enable_wireless_bridging: By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
                client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
-        :param pulumi.Input[bool] enable_wireless_bridging_dhcp_tracking: if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
+        :param pulumi.Input[bool] enable_wireless_bridging_dhcp_tracking: If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
                packets to be forwarded to wireless
-        :param pulumi.Input[bool] enabled: if this wlan is enabled
-        :param pulumi.Input[bool] fast_dot1x_timers: if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
+        :param pulumi.Input[bool] enabled: If this wlan is enabled
+        :param pulumi.Input[bool] fast_dot1x_timers: If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
                ‘auth_server_retries’ .
-        :param pulumi.Input[bool] hide_ssid: whether to hide SSID in beacon
-        :param pulumi.Input[bool] hostname_ie: include hostname inside IE in AP beacons / probe responses
-        :param pulumi.Input['WlanHotspot20Args'] hotspot20: hostspot 2.0 wlan settings
+        :param pulumi.Input[bool] hide_ssid: Whether to hide SSID in beacon
+        :param pulumi.Input[bool] hostname_ie: Include hostname inside IE in AP beacons / probe responses
+        :param pulumi.Input['WlanHotspot20Args'] hotspot20: Hostspot 2.0 wlan settings
         :param pulumi.Input[str] interface: where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `site_mxedge`, `wxtunnel`
-        :param pulumi.Input[bool] isolation: whether to stop clients to talk to each other
-        :param pulumi.Input[bool] l2_isolation: if isolation is enabled, whether to deny clients to talk to L2 on the LAN
-        :param pulumi.Input[bool] legacy_overds: legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
+        :param pulumi.Input[bool] isolation: Whether to stop clients to talk to each other
+        :param pulumi.Input[bool] l2_isolation: If isolation is enabled, whether to deny clients to talk to L2 on the LAN
+        :param pulumi.Input[bool] legacy_overds: Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
                Enabling this will cause problem for iOS devices.
-        :param pulumi.Input[bool] limit_bcast: whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
-        :param pulumi.Input[bool] limit_probe_response: limit probe response base on some heuristic rules
-        :param pulumi.Input[int] max_idletime: max idle time in seconds
-        :param pulumi.Input[int] max_num_clients: maximum number of client connected to the SSID. `0` means unlimited
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_ids: when `interface`=`mxtunnel`, id of the Mist Tunnel
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_names: when `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
-        :param pulumi.Input[bool] no_static_dns: whether to only allow client to use DNS that we’ve learned from DHCP response
-        :param pulumi.Input[bool] no_static_ip: whether to only allow client that we’ve learned from DHCP exchange to talk
-        :param pulumi.Input['WlanPortalArgs'] portal: portal wlan settings
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_hostnames: list of hostnames without http(s):// (matched by substring)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_subnets: list of CIDRs
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_denied_hostnames: list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
-        :param pulumi.Input['WlanRadsecArgs'] radsec: Radsec settings
+        :param pulumi.Input[bool] limit_bcast: Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+        :param pulumi.Input[bool] limit_probe_response: Limit probe response base on some heuristic rules
+        :param pulumi.Input[int] max_idletime: Max idle time in seconds
+        :param pulumi.Input[int] max_num_clients: Maximum number of client connected to the SSID. `0` means unlimited
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_ids: When `interface`=`mxtunnel`, id of the Mist Tunnel
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_names: When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        :param pulumi.Input[bool] no_static_dns: Whether to only allow client to use DNS that we’ve learned from DHCP response
+        :param pulumi.Input[bool] no_static_ip: Whether to only allow client that we’ve learned from DHCP exchange to talk
+        :param pulumi.Input['WlanPortalArgs'] portal: Portal wlan settings
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_hostnames: List of hostnames without http(s):// (matched by substring)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_subnets: List of CIDRs
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_denied_hostnames: List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+        :param pulumi.Input['WlanRadsecArgs'] radsec: RadSec settings
         :param pulumi.Input[Mapping[str, pulumi.Input['WlanRatesetArgs']]] rateset: Property key is the RF band. enum: `24`, `5`, `6`
-        :param pulumi.Input[bool] reconnect_clients_when_roaming_mxcluster: when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+        :param pulumi.Input[bool] reconnect_clients_when_roaming_mxcluster: When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
         :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `NONE`
         :param pulumi.Input['WlanScheduleArgs'] schedule: WLAN operating schedule, default is disabled
-        :param pulumi.Input[bool] sle_excluded: whether to exclude this WLAN from SLE metrics
-        :param pulumi.Input[bool] use_eapol_v1: if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
-        :param pulumi.Input[bool] vlan_enabled: if vlan tagging is enabled
+        :param pulumi.Input[bool] sle_excluded: Whether to exclude this WLAN from SLE metrics
+        :param pulumi.Input[bool] use_eapol_v1: If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
+        :param pulumi.Input[bool] vlan_enabled: If vlan tagging is enabled
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
         :param pulumi.Input[bool] vlan_pooling: Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
                deterministic algorithm
-        :param pulumi.Input[int] wlan_limit_down: kbps
-        :param pulumi.Input[bool] wlan_limit_down_enabled: if downlink limiting for whole wlan is enabled
-        :param pulumi.Input[int] wlan_limit_up: kbps
-        :param pulumi.Input[bool] wlan_limit_up_enabled: if uplink limiting for whole wlan is enabled
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] wxtag_ids: list of wxtag_ids
-        :param pulumi.Input[str] wxtunnel_id: when `interface`=`wxtunnel`, id of the WXLAN Tunnel
-        :param pulumi.Input[str] wxtunnel_remote_id: when `interface`=`wxtunnel`, remote tunnel identifier
+        :param pulumi.Input[int] wlan_limit_down: In kbps
+        :param pulumi.Input[bool] wlan_limit_down_enabled: If downlink limiting for whole wlan is enabled
+        :param pulumi.Input[int] wlan_limit_up: In kbps
+        :param pulumi.Input[bool] wlan_limit_up_enabled: If uplink limiting for whole wlan is enabled
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] wxtag_ids: List of wxtag_ids
+        :param pulumi.Input[str] wxtunnel_id: When `interface`=`wxtunnel`, id of the WXLAN Tunnel
+        :param pulumi.Input[str] wxtunnel_remote_id: When `interface`=`wxtunnel`, remote tunnel identifier
         """
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "ssid", ssid)
@@ -406,7 +406,7 @@ class WlanArgs:
     @pulumi.getter
     def ssid(self) -> pulumi.Input[str]:
         """
-        the name of the SSID
+        Name of the SSID
         """
         return pulumi.get(self, "ssid")
 
@@ -427,7 +427,7 @@ class WlanArgs:
     @pulumi.getter(name="acctImmediateUpdate")
     def acct_immediate_update(self) -> Optional[pulumi.Input[bool]]:
         """
-        enable coa-immediate-update and address-change-immediate-update on the access profile.
+        Enable coa-immediate-update and address-change-immediate-update on the access profile.
         """
         return pulumi.get(self, "acct_immediate_update")
 
@@ -439,7 +439,7 @@ class WlanArgs:
     @pulumi.getter(name="acctInterimInterval")
     def acct_interim_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
+        How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
         from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended
         when enabled
         """
@@ -453,7 +453,7 @@ class WlanArgs:
     @pulumi.getter(name="acctServers")
     def acct_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WlanAcctServerArgs']]]]:
         """
-        list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+        List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
         """
         return pulumi.get(self, "acct_servers")
 
@@ -465,7 +465,7 @@ class WlanArgs:
     @pulumi.getter
     def airwatch(self) -> Optional[pulumi.Input['WlanAirwatchArgs']]:
         """
-        airwatch wlan settings
+        Airwatch wlan settings
         """
         return pulumi.get(self, "airwatch")
 
@@ -477,7 +477,7 @@ class WlanArgs:
     @pulumi.getter(name="allowIpv6Ndp")
     def allow_ipv6_ndp(self) -> Optional[pulumi.Input[bool]]:
         """
-        only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
         """
         return pulumi.get(self, "allow_ipv6_ndp")
 
@@ -489,7 +489,7 @@ class WlanArgs:
     @pulumi.getter(name="allowMdns")
     def allow_mdns(self) -> Optional[pulumi.Input[bool]]:
         """
-        only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
         """
         return pulumi.get(self, "allow_mdns")
 
@@ -501,7 +501,7 @@ class WlanArgs:
     @pulumi.getter(name="allowSsdp")
     def allow_ssdp(self) -> Optional[pulumi.Input[bool]]:
         """
-        only applicable when `limit_bcast`==`true`, which allows SSDP
+        Only applicable when `limit_bcast`==`true`, which allows SSDP
         """
         return pulumi.get(self, "allow_ssdp")
 
@@ -513,7 +513,7 @@ class WlanArgs:
     @pulumi.getter(name="apIds")
     def ap_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of device ids
+        List of device ids
         """
         return pulumi.get(self, "ap_ids")
 
@@ -525,7 +525,7 @@ class WlanArgs:
     @pulumi.getter(name="appLimit")
     def app_limit(self) -> Optional[pulumi.Input['WlanAppLimitArgs']]:
         """
-        bandwidth limiting for apps (applies to up/down)
+        Bandwidth limiting for apps (applies to up/down)
         """
         return pulumi.get(self, "app_limit")
 
@@ -537,7 +537,7 @@ class WlanArgs:
     @pulumi.getter(name="appQos")
     def app_qos(self) -> Optional[pulumi.Input['WlanAppQosArgs']]:
         """
-        app qos wlan settings
+        APp qos wlan settings
         """
         return pulumi.get(self, "app_qos")
 
@@ -561,7 +561,7 @@ class WlanArgs:
     @pulumi.getter(name="arpFilter")
     def arp_filter(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to enable smart arp filter
+        Whether to enable smart arp filter
         """
         return pulumi.get(self, "arp_filter")
 
@@ -573,7 +573,7 @@ class WlanArgs:
     @pulumi.getter
     def auth(self) -> Optional[pulumi.Input['WlanAuthArgs']]:
         """
-        authentication wlan settings
+        Authentication wlan settings
         """
         return pulumi.get(self, "auth")
 
@@ -597,7 +597,7 @@ class WlanArgs:
     @pulumi.getter(name="authServers")
     def auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WlanAuthServerArgs']]]]:
         """
-        list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
+        List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
         is treated as primary
         """
         return pulumi.get(self, "auth_servers")
@@ -610,7 +610,7 @@ class WlanArgs:
     @pulumi.getter(name="authServersNasId")
     def auth_servers_nas_id(self) -> Optional[pulumi.Input[str]]:
         """
-        optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+        Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
         """
         return pulumi.get(self, "auth_servers_nas_id")
 
@@ -622,7 +622,7 @@ class WlanArgs:
     @pulumi.getter(name="authServersNasIp")
     def auth_servers_nas_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        optional, NAS-IP-ADDRESS to use
+        Optional, NAS-IP-ADDRESS to use
         """
         return pulumi.get(self, "auth_servers_nas_ip")
 
@@ -634,9 +634,9 @@ class WlanArgs:
     @pulumi.getter(name="authServersRetries")
     def auth_servers_retries(self) -> Optional[pulumi.Input[int]]:
         """
-        radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’ are
-        set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to
-        default value to 3.
+        Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set
+        to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default
+        value to 3.
         """
         return pulumi.get(self, "auth_servers_retries")
 
@@ -648,9 +648,9 @@ class WlanArgs:
     @pulumi.getter(name="authServersTimeout")
     def auth_servers_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled.
-        ‘quite-period’ and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’
-        is also set when setting auth_servers_timeout and is set to default value of 10.
+        Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’
+        and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
+        setting auth_servers_timeout and is set to default value of 10.
         """
         return pulumi.get(self, "auth_servers_timeout")
 
@@ -662,7 +662,7 @@ class WlanArgs:
     @pulumi.getter(name="bandSteer")
     def band_steer(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to enable band_steering, this works only when band==both
+        Whether to enable band_steering, this works only when band==both
         """
         return pulumi.get(self, "band_steer")
 
@@ -674,7 +674,7 @@ class WlanArgs:
     @pulumi.getter(name="bandSteerForceBand5")
     def band_steer_force_band5(self) -> Optional[pulumi.Input[bool]]:
         """
-        force dual_band capable client to connect to 5G
+        Force dual_band capable client to connect to 5G
         """
         return pulumi.get(self, "band_steer_force_band5")
 
@@ -698,7 +698,7 @@ class WlanArgs:
     @pulumi.getter(name="blockBlacklistClients")
     def block_blacklist_clients(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to block the clients in the blacklist (up to first 256 macs)
+        Whether to block the clients in the blacklist (up to first 256 macs)
         """
         return pulumi.get(self, "block_blacklist_clients")
 
@@ -710,7 +710,7 @@ class WlanArgs:
     @pulumi.getter
     def bonjour(self) -> Optional[pulumi.Input['WlanBonjourArgs']]:
         """
-        bonjour gateway wlan settings
+        Bonjour gateway wlan settings
         """
         return pulumi.get(self, "bonjour")
 
@@ -735,7 +735,7 @@ class WlanArgs:
     @pulumi.getter(name="clientLimitDown")
     def client_limit_down(self) -> Optional[pulumi.Input[int]]:
         """
-        kbps
+        In kbps
         """
         return pulumi.get(self, "client_limit_down")
 
@@ -747,7 +747,7 @@ class WlanArgs:
     @pulumi.getter(name="clientLimitDownEnabled")
     def client_limit_down_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        if downlink limiting per-client is enabled
+        If downlink limiting per-client is enabled
         """
         return pulumi.get(self, "client_limit_down_enabled")
 
@@ -759,7 +759,7 @@ class WlanArgs:
     @pulumi.getter(name="clientLimitUp")
     def client_limit_up(self) -> Optional[pulumi.Input[int]]:
         """
-        kbps
+        In kbps
         """
         return pulumi.get(self, "client_limit_up")
 
@@ -771,7 +771,7 @@ class WlanArgs:
     @pulumi.getter(name="clientLimitUpEnabled")
     def client_limit_up_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        if uplink limiting per-client is enabled
+        If uplink limiting per-client is enabled
         """
         return pulumi.get(self, "client_limit_up_enabled")
 
@@ -783,7 +783,7 @@ class WlanArgs:
     @pulumi.getter(name="coaServers")
     def coa_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WlanCoaServerArgs']]]]:
         """
-        list of COA (change of authorization) servers, optional
+        List of COA (change of authorization) servers, optional
         """
         return pulumi.get(self, "coa_servers")
 
@@ -795,7 +795,7 @@ class WlanArgs:
     @pulumi.getter
     def disable11ax(self) -> Optional[pulumi.Input[bool]]:
         """
-        some old WLAN drivers may not be compatible
+        Some old WLAN drivers may not be compatible
         """
         return pulumi.get(self, "disable11ax")
 
@@ -807,7 +807,7 @@ class WlanArgs:
     @pulumi.getter(name="disableHtVhtRates")
     def disable_ht_vht_rates(self) -> Optional[pulumi.Input[bool]]:
         """
-        to disable ht or vht rates
+        To disable ht or vht rates
         """
         return pulumi.get(self, "disable_ht_vht_rates")
 
@@ -819,7 +819,7 @@ class WlanArgs:
     @pulumi.getter(name="disableUapsd")
     def disable_uapsd(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable U-APSD
+        Whether to disable U-APSD
         """
         return pulumi.get(self, "disable_uapsd")
 
@@ -831,7 +831,7 @@ class WlanArgs:
     @pulumi.getter(name="disableV1RoamNotify")
     def disable_v1_roam_notify(self) -> Optional[pulumi.Input[bool]]:
         """
-        disable sending v2 roam notification messages
+        Disable sending v2 roam notification messages
         """
         return pulumi.get(self, "disable_v1_roam_notify")
 
@@ -843,7 +843,7 @@ class WlanArgs:
     @pulumi.getter(name="disableV2RoamNotify")
     def disable_v2_roam_notify(self) -> Optional[pulumi.Input[bool]]:
         """
-        disable sending v2 roam notification messages
+        Disable sending v2 roam notification messages
         """
         return pulumi.get(self, "disable_v2_roam_notify")
 
@@ -855,7 +855,7 @@ class WlanArgs:
     @pulumi.getter(name="disableWhenGatewayUnreachable")
     def disable_when_gateway_unreachable(self) -> Optional[pulumi.Input[bool]]:
         """
-        when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+        When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
         reach default gateway
         """
         return pulumi.get(self, "disable_when_gateway_unreachable")
@@ -877,7 +877,7 @@ class WlanArgs:
     @pulumi.getter(name="disableWmm")
     def disable_wmm(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable WMM
+        Whether to disable WMM
         """
         return pulumi.get(self, "disable_wmm")
 
@@ -889,7 +889,7 @@ class WlanArgs:
     @pulumi.getter(name="dnsServerRewrite")
     def dns_server_rewrite(self) -> Optional[pulumi.Input['WlanDnsServerRewriteArgs']]:
         """
-        for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+        For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
         """
         return pulumi.get(self, "dns_server_rewrite")
 
@@ -910,9 +910,9 @@ class WlanArgs:
     @pulumi.getter(name="dynamicPsk")
     def dynamic_psk(self) -> Optional[pulumi.Input['WlanDynamicPskArgs']]:
         """
-        for dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
+        For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
         context (wlan/site/user/...) thus following configurations are assumed (currently) * PSK will come from RADIUS server *
-        AP sends client MAC as username ans password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
+        AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
         Caller-Station-ID * `auth_servers` is required * PSK will come from cloud WLC if source is cloud_psks * default_psk will
         be used if cloud WLC is not available * `multi_psk_only` and `psk` is ignored * `pairwise` can only be wpa2-ccmp (for
         now, wpa3 support on the roadmap)
@@ -927,7 +927,7 @@ class WlanArgs:
     @pulumi.getter(name="dynamicVlan")
     def dynamic_vlan(self) -> Optional[pulumi.Input['WlanDynamicVlanArgs']]:
         """
-        for 802.1x
+        For 802.1x
         """
         return pulumi.get(self, "dynamic_vlan")
 
@@ -939,7 +939,7 @@ class WlanArgs:
     @pulumi.getter(name="enableLocalKeycaching")
     def enable_local_keycaching(self) -> Optional[pulumi.Input[bool]]:
         """
-        enable AP-AP keycaching via multicast
+        Enable AP-AP keycaching via multicast
         """
         return pulumi.get(self, "enable_local_keycaching")
 
@@ -951,7 +951,7 @@ class WlanArgs:
     @pulumi.getter(name="enableWirelessBridging")
     def enable_wireless_bridging(self) -> Optional[pulumi.Input[bool]]:
         """
-        by default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
+        By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
         client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
         """
         return pulumi.get(self, "enable_wireless_bridging")
@@ -964,7 +964,7 @@ class WlanArgs:
     @pulumi.getter(name="enableWirelessBridgingDhcpTracking")
     def enable_wireless_bridging_dhcp_tracking(self) -> Optional[pulumi.Input[bool]]:
         """
-        if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
+        If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
         packets to be forwarded to wireless
         """
         return pulumi.get(self, "enable_wireless_bridging_dhcp_tracking")
@@ -977,7 +977,7 @@ class WlanArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        if this wlan is enabled
+        If this wlan is enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -989,7 +989,7 @@ class WlanArgs:
     @pulumi.getter(name="fastDot1xTimers")
     def fast_dot1x_timers(self) -> Optional[pulumi.Input[bool]]:
         """
-        if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
+        If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
         ‘auth_server_retries’ .
         """
         return pulumi.get(self, "fast_dot1x_timers")
@@ -1002,7 +1002,7 @@ class WlanArgs:
     @pulumi.getter(name="hideSsid")
     def hide_ssid(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to hide SSID in beacon
+        Whether to hide SSID in beacon
         """
         return pulumi.get(self, "hide_ssid")
 
@@ -1014,7 +1014,7 @@ class WlanArgs:
     @pulumi.getter(name="hostnameIe")
     def hostname_ie(self) -> Optional[pulumi.Input[bool]]:
         """
-        include hostname inside IE in AP beacons / probe responses
+        Include hostname inside IE in AP beacons / probe responses
         """
         return pulumi.get(self, "hostname_ie")
 
@@ -1026,7 +1026,7 @@ class WlanArgs:
     @pulumi.getter
     def hotspot20(self) -> Optional[pulumi.Input['WlanHotspot20Args']]:
         """
-        hostspot 2.0 wlan settings
+        Hostspot 2.0 wlan settings
         """
         return pulumi.get(self, "hotspot20")
 
@@ -1059,7 +1059,7 @@ class WlanArgs:
     @pulumi.getter
     def isolation(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to stop clients to talk to each other
+        Whether to stop clients to talk to each other
         """
         return pulumi.get(self, "isolation")
 
@@ -1071,7 +1071,7 @@ class WlanArgs:
     @pulumi.getter(name="l2Isolation")
     def l2_isolation(self) -> Optional[pulumi.Input[bool]]:
         """
-        if isolation is enabled, whether to deny clients to talk to L2 on the LAN
+        If isolation is enabled, whether to deny clients to talk to L2 on the LAN
         """
         return pulumi.get(self, "l2_isolation")
 
@@ -1083,7 +1083,7 @@ class WlanArgs:
     @pulumi.getter(name="legacyOverds")
     def legacy_overds(self) -> Optional[pulumi.Input[bool]]:
         """
-        legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
+        Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
         Enabling this will cause problem for iOS devices.
         """
         return pulumi.get(self, "legacy_overds")
@@ -1096,7 +1096,7 @@ class WlanArgs:
     @pulumi.getter(name="limitBcast")
     def limit_bcast(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+        Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
         """
         return pulumi.get(self, "limit_bcast")
 
@@ -1108,7 +1108,7 @@ class WlanArgs:
     @pulumi.getter(name="limitProbeResponse")
     def limit_probe_response(self) -> Optional[pulumi.Input[bool]]:
         """
-        limit probe response base on some heuristic rules
+        Limit probe response base on some heuristic rules
         """
         return pulumi.get(self, "limit_probe_response")
 
@@ -1120,7 +1120,7 @@ class WlanArgs:
     @pulumi.getter(name="maxIdletime")
     def max_idletime(self) -> Optional[pulumi.Input[int]]:
         """
-        max idle time in seconds
+        Max idle time in seconds
         """
         return pulumi.get(self, "max_idletime")
 
@@ -1132,7 +1132,7 @@ class WlanArgs:
     @pulumi.getter(name="maxNumClients")
     def max_num_clients(self) -> Optional[pulumi.Input[int]]:
         """
-        maximum number of client connected to the SSID. `0` means unlimited
+        Maximum number of client connected to the SSID. `0` means unlimited
         """
         return pulumi.get(self, "max_num_clients")
 
@@ -1153,7 +1153,7 @@ class WlanArgs:
     @pulumi.getter(name="mxtunnelIds")
     def mxtunnel_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        when `interface`=`mxtunnel`, id of the Mist Tunnel
+        When `interface`=`mxtunnel`, id of the Mist Tunnel
         """
         return pulumi.get(self, "mxtunnel_ids")
 
@@ -1165,7 +1165,7 @@ class WlanArgs:
     @pulumi.getter(name="mxtunnelNames")
     def mxtunnel_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        when `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
         """
         return pulumi.get(self, "mxtunnel_names")
 
@@ -1177,7 +1177,7 @@ class WlanArgs:
     @pulumi.getter(name="noStaticDns")
     def no_static_dns(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to only allow client to use DNS that we’ve learned from DHCP response
+        Whether to only allow client to use DNS that we’ve learned from DHCP response
         """
         return pulumi.get(self, "no_static_dns")
 
@@ -1189,7 +1189,7 @@ class WlanArgs:
     @pulumi.getter(name="noStaticIp")
     def no_static_ip(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to only allow client that we’ve learned from DHCP exchange to talk
+        Whether to only allow client that we’ve learned from DHCP exchange to talk
         """
         return pulumi.get(self, "no_static_ip")
 
@@ -1201,7 +1201,7 @@ class WlanArgs:
     @pulumi.getter
     def portal(self) -> Optional[pulumi.Input['WlanPortalArgs']]:
         """
-        portal wlan settings
+        Portal wlan settings
         """
         return pulumi.get(self, "portal")
 
@@ -1213,7 +1213,7 @@ class WlanArgs:
     @pulumi.getter(name="portalAllowedHostnames")
     def portal_allowed_hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of hostnames without http(s):// (matched by substring)
+        List of hostnames without http(s):// (matched by substring)
         """
         return pulumi.get(self, "portal_allowed_hostnames")
 
@@ -1225,7 +1225,7 @@ class WlanArgs:
     @pulumi.getter(name="portalAllowedSubnets")
     def portal_allowed_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of CIDRs
+        List of CIDRs
         """
         return pulumi.get(self, "portal_allowed_subnets")
 
@@ -1237,7 +1237,7 @@ class WlanArgs:
     @pulumi.getter(name="portalDeniedHostnames")
     def portal_denied_hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+        List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
         """
         return pulumi.get(self, "portal_denied_hostnames")
 
@@ -1258,7 +1258,7 @@ class WlanArgs:
     @pulumi.getter
     def radsec(self) -> Optional[pulumi.Input['WlanRadsecArgs']]:
         """
-        Radsec settings
+        RadSec settings
         """
         return pulumi.get(self, "radsec")
 
@@ -1282,7 +1282,7 @@ class WlanArgs:
     @pulumi.getter(name="reconnectClientsWhenRoamingMxcluster")
     def reconnect_clients_when_roaming_mxcluster(self) -> Optional[pulumi.Input[bool]]:
         """
-        when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+        When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
         """
         return pulumi.get(self, "reconnect_clients_when_roaming_mxcluster")
 
@@ -1318,7 +1318,7 @@ class WlanArgs:
     @pulumi.getter(name="sleExcluded")
     def sle_excluded(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to exclude this WLAN from SLE metrics
+        Whether to exclude this WLAN from SLE metrics
         """
         return pulumi.get(self, "sle_excluded")
 
@@ -1330,7 +1330,7 @@ class WlanArgs:
     @pulumi.getter(name="useEapolV1")
     def use_eapol_v1(self) -> Optional[pulumi.Input[bool]]:
         """
-        if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
+        If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
         """
         return pulumi.get(self, "use_eapol_v1")
 
@@ -1342,7 +1342,7 @@ class WlanArgs:
     @pulumi.getter(name="vlanEnabled")
     def vlan_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        if vlan tagging is enabled
+        If vlan tagging is enabled
         """
         return pulumi.get(self, "vlan_enabled")
 
@@ -1388,7 +1388,7 @@ class WlanArgs:
     @pulumi.getter(name="wlanLimitDown")
     def wlan_limit_down(self) -> Optional[pulumi.Input[int]]:
         """
-        kbps
+        In kbps
         """
         return pulumi.get(self, "wlan_limit_down")
 
@@ -1400,7 +1400,7 @@ class WlanArgs:
     @pulumi.getter(name="wlanLimitDownEnabled")
     def wlan_limit_down_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        if downlink limiting for whole wlan is enabled
+        If downlink limiting for whole wlan is enabled
         """
         return pulumi.get(self, "wlan_limit_down_enabled")
 
@@ -1412,7 +1412,7 @@ class WlanArgs:
     @pulumi.getter(name="wlanLimitUp")
     def wlan_limit_up(self) -> Optional[pulumi.Input[int]]:
         """
-        kbps
+        In kbps
         """
         return pulumi.get(self, "wlan_limit_up")
 
@@ -1424,7 +1424,7 @@ class WlanArgs:
     @pulumi.getter(name="wlanLimitUpEnabled")
     def wlan_limit_up_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        if uplink limiting for whole wlan is enabled
+        If uplink limiting for whole wlan is enabled
         """
         return pulumi.get(self, "wlan_limit_up_enabled")
 
@@ -1436,7 +1436,7 @@ class WlanArgs:
     @pulumi.getter(name="wxtagIds")
     def wxtag_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of wxtag_ids
+        List of wxtag_ids
         """
         return pulumi.get(self, "wxtag_ids")
 
@@ -1448,7 +1448,7 @@ class WlanArgs:
     @pulumi.getter(name="wxtunnelId")
     def wxtunnel_id(self) -> Optional[pulumi.Input[str]]:
         """
-        when `interface`=`wxtunnel`, id of the WXLAN Tunnel
+        When `interface`=`wxtunnel`, id of the WXLAN Tunnel
         """
         return pulumi.get(self, "wxtunnel_id")
 
@@ -1460,7 +1460,7 @@ class WlanArgs:
     @pulumi.getter(name="wxtunnelRemoteId")
     def wxtunnel_remote_id(self) -> Optional[pulumi.Input[str]]:
         """
-        when `interface`=`wxtunnel`, remote tunnel identifier
+        When `interface`=`wxtunnel`, remote tunnel identifier
         """
         return pulumi.get(self, "wxtunnel_remote_id")
 
@@ -1568,109 +1568,109 @@ class _WlanState:
                  wxtunnel_remote_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Wlan resources.
-        :param pulumi.Input[bool] acct_immediate_update: enable coa-immediate-update and address-change-immediate-update on the access profile.
-        :param pulumi.Input[int] acct_interim_interval: how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
+        :param pulumi.Input[bool] acct_immediate_update: Enable coa-immediate-update and address-change-immediate-update on the access profile.
+        :param pulumi.Input[int] acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
                from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended
                when enabled
-        :param pulumi.Input[Sequence[pulumi.Input['WlanAcctServerArgs']]] acct_servers: list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
-        :param pulumi.Input['WlanAirwatchArgs'] airwatch: airwatch wlan settings
-        :param pulumi.Input[bool] allow_ipv6_ndp: only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
-        :param pulumi.Input[bool] allow_mdns: only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
-        :param pulumi.Input[bool] allow_ssdp: only applicable when `limit_bcast`==`true`, which allows SSDP
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ap_ids: list of device ids
-        :param pulumi.Input['WlanAppLimitArgs'] app_limit: bandwidth limiting for apps (applies to up/down)
-        :param pulumi.Input['WlanAppQosArgs'] app_qos: app qos wlan settings
+        :param pulumi.Input[Sequence[pulumi.Input['WlanAcctServerArgs']]] acct_servers: List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+        :param pulumi.Input['WlanAirwatchArgs'] airwatch: Airwatch wlan settings
+        :param pulumi.Input[bool] allow_ipv6_ndp: Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        :param pulumi.Input[bool] allow_mdns: Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        :param pulumi.Input[bool] allow_ssdp: Only applicable when `limit_bcast`==`true`, which allows SSDP
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ap_ids: List of device ids
+        :param pulumi.Input['WlanAppLimitArgs'] app_limit: Bandwidth limiting for apps (applies to up/down)
+        :param pulumi.Input['WlanAppQosArgs'] app_qos: APp qos wlan settings
         :param pulumi.Input[str] apply_to: enum: `aps`, `site`, `wxtags`
-        :param pulumi.Input[bool] arp_filter: whether to enable smart arp filter
-        :param pulumi.Input['WlanAuthArgs'] auth: authentication wlan settings
+        :param pulumi.Input[bool] arp_filter: Whether to enable smart arp filter
+        :param pulumi.Input['WlanAuthArgs'] auth: Authentication wlan settings
         :param pulumi.Input[str] auth_server_selection: When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
-        :param pulumi.Input[Sequence[pulumi.Input['WlanAuthServerArgs']]] auth_servers: list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
+        :param pulumi.Input[Sequence[pulumi.Input['WlanAuthServerArgs']]] auth_servers: List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
                is treated as primary
-        :param pulumi.Input[str] auth_servers_nas_id: optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
-        :param pulumi.Input[str] auth_servers_nas_ip: optional, NAS-IP-ADDRESS to use
-        :param pulumi.Input[int] auth_servers_retries: radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’ are
-               set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to
-               default value to 3.
-        :param pulumi.Input[int] auth_servers_timeout: radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled.
-               ‘quite-period’ and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’
-               is also set when setting auth_servers_timeout and is set to default value of 10.
-        :param pulumi.Input[bool] band_steer: whether to enable band_steering, this works only when band==both
-        :param pulumi.Input[bool] band_steer_force_band5: force dual_band capable client to connect to 5G
+        :param pulumi.Input[str] auth_servers_nas_id: Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+        :param pulumi.Input[str] auth_servers_nas_ip: Optional, NAS-IP-ADDRESS to use
+        :param pulumi.Input[int] auth_servers_retries: Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set
+               to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default
+               value to 3.
+        :param pulumi.Input[int] auth_servers_timeout: Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’
+               and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
+               setting auth_servers_timeout and is set to default value of 10.
+        :param pulumi.Input[bool] band_steer: Whether to enable band_steering, this works only when band==both
+        :param pulumi.Input[bool] band_steer_force_band5: Force dual_band capable client to connect to 5G
         :param pulumi.Input[Sequence[pulumi.Input[str]]] bands: list of radios that the wlan should apply to. enum: `24`, `5`, `6`
-        :param pulumi.Input[bool] block_blacklist_clients: whether to block the clients in the blacklist (up to first 256 macs)
-        :param pulumi.Input['WlanBonjourArgs'] bonjour: bonjour gateway wlan settings
+        :param pulumi.Input[bool] block_blacklist_clients: Whether to block the clients in the blacklist (up to first 256 macs)
+        :param pulumi.Input['WlanBonjourArgs'] bonjour: Bonjour gateway wlan settings
         :param pulumi.Input['WlanCiscoCwaArgs'] cisco_cwa: Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
                https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-        :param pulumi.Input[int] client_limit_down: kbps
-        :param pulumi.Input[bool] client_limit_down_enabled: if downlink limiting per-client is enabled
-        :param pulumi.Input[int] client_limit_up: kbps
-        :param pulumi.Input[bool] client_limit_up_enabled: if uplink limiting per-client is enabled
-        :param pulumi.Input[Sequence[pulumi.Input['WlanCoaServerArgs']]] coa_servers: list of COA (change of authorization) servers, optional
-        :param pulumi.Input[bool] disable11ax: some old WLAN drivers may not be compatible
-        :param pulumi.Input[bool] disable_ht_vht_rates: to disable ht or vht rates
-        :param pulumi.Input[bool] disable_uapsd: whether to disable U-APSD
-        :param pulumi.Input[bool] disable_v1_roam_notify: disable sending v2 roam notification messages
-        :param pulumi.Input[bool] disable_v2_roam_notify: disable sending v2 roam notification messages
-        :param pulumi.Input[bool] disable_when_gateway_unreachable: when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+        :param pulumi.Input[int] client_limit_down: In kbps
+        :param pulumi.Input[bool] client_limit_down_enabled: If downlink limiting per-client is enabled
+        :param pulumi.Input[int] client_limit_up: In kbps
+        :param pulumi.Input[bool] client_limit_up_enabled: If uplink limiting per-client is enabled
+        :param pulumi.Input[Sequence[pulumi.Input['WlanCoaServerArgs']]] coa_servers: List of COA (change of authorization) servers, optional
+        :param pulumi.Input[bool] disable11ax: Some old WLAN drivers may not be compatible
+        :param pulumi.Input[bool] disable_ht_vht_rates: To disable ht or vht rates
+        :param pulumi.Input[bool] disable_uapsd: Whether to disable U-APSD
+        :param pulumi.Input[bool] disable_v1_roam_notify: Disable sending v2 roam notification messages
+        :param pulumi.Input[bool] disable_v2_roam_notify: Disable sending v2 roam notification messages
+        :param pulumi.Input[bool] disable_when_gateway_unreachable: When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
                reach default gateway
-        :param pulumi.Input[bool] disable_wmm: whether to disable WMM
-        :param pulumi.Input['WlanDnsServerRewriteArgs'] dns_server_rewrite: for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
-        :param pulumi.Input['WlanDynamicPskArgs'] dynamic_psk: for dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
+        :param pulumi.Input[bool] disable_wmm: Whether to disable WMM
+        :param pulumi.Input['WlanDnsServerRewriteArgs'] dns_server_rewrite: For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+        :param pulumi.Input['WlanDynamicPskArgs'] dynamic_psk: For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
                context (wlan/site/user/...) thus following configurations are assumed (currently) * PSK will come from RADIUS server *
-               AP sends client MAC as username ans password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
+               AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
                Caller-Station-ID * `auth_servers` is required * PSK will come from cloud WLC if source is cloud_psks * default_psk will
                be used if cloud WLC is not available * `multi_psk_only` and `psk` is ignored * `pairwise` can only be wpa2-ccmp (for
                now, wpa3 support on the roadmap)
-        :param pulumi.Input['WlanDynamicVlanArgs'] dynamic_vlan: for 802.1x
-        :param pulumi.Input[bool] enable_local_keycaching: enable AP-AP keycaching via multicast
-        :param pulumi.Input[bool] enable_wireless_bridging: by default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
+        :param pulumi.Input['WlanDynamicVlanArgs'] dynamic_vlan: For 802.1x
+        :param pulumi.Input[bool] enable_local_keycaching: Enable AP-AP keycaching via multicast
+        :param pulumi.Input[bool] enable_wireless_bridging: By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
                client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
-        :param pulumi.Input[bool] enable_wireless_bridging_dhcp_tracking: if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
+        :param pulumi.Input[bool] enable_wireless_bridging_dhcp_tracking: If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
                packets to be forwarded to wireless
-        :param pulumi.Input[bool] enabled: if this wlan is enabled
-        :param pulumi.Input[bool] fast_dot1x_timers: if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
+        :param pulumi.Input[bool] enabled: If this wlan is enabled
+        :param pulumi.Input[bool] fast_dot1x_timers: If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
                ‘auth_server_retries’ .
-        :param pulumi.Input[bool] hide_ssid: whether to hide SSID in beacon
-        :param pulumi.Input[bool] hostname_ie: include hostname inside IE in AP beacons / probe responses
-        :param pulumi.Input['WlanHotspot20Args'] hotspot20: hostspot 2.0 wlan settings
+        :param pulumi.Input[bool] hide_ssid: Whether to hide SSID in beacon
+        :param pulumi.Input[bool] hostname_ie: Include hostname inside IE in AP beacons / probe responses
+        :param pulumi.Input['WlanHotspot20Args'] hotspot20: Hostspot 2.0 wlan settings
         :param pulumi.Input[str] interface: where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `site_mxedge`, `wxtunnel`
-        :param pulumi.Input[bool] isolation: whether to stop clients to talk to each other
-        :param pulumi.Input[bool] l2_isolation: if isolation is enabled, whether to deny clients to talk to L2 on the LAN
-        :param pulumi.Input[bool] legacy_overds: legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
+        :param pulumi.Input[bool] isolation: Whether to stop clients to talk to each other
+        :param pulumi.Input[bool] l2_isolation: If isolation is enabled, whether to deny clients to talk to L2 on the LAN
+        :param pulumi.Input[bool] legacy_overds: Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
                Enabling this will cause problem for iOS devices.
-        :param pulumi.Input[bool] limit_bcast: whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
-        :param pulumi.Input[bool] limit_probe_response: limit probe response base on some heuristic rules
-        :param pulumi.Input[int] max_idletime: max idle time in seconds
-        :param pulumi.Input[int] max_num_clients: maximum number of client connected to the SSID. `0` means unlimited
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_ids: when `interface`=`mxtunnel`, id of the Mist Tunnel
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_names: when `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
-        :param pulumi.Input[bool] no_static_dns: whether to only allow client to use DNS that we’ve learned from DHCP response
-        :param pulumi.Input[bool] no_static_ip: whether to only allow client that we’ve learned from DHCP exchange to talk
-        :param pulumi.Input['WlanPortalArgs'] portal: portal wlan settings
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_hostnames: list of hostnames without http(s):// (matched by substring)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_subnets: list of CIDRs
-        :param pulumi.Input[str] portal_api_secret: api secret (auto-generated) that can be used to sign guest authorization requests
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_denied_hostnames: list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+        :param pulumi.Input[bool] limit_bcast: Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+        :param pulumi.Input[bool] limit_probe_response: Limit probe response base on some heuristic rules
+        :param pulumi.Input[int] max_idletime: Max idle time in seconds
+        :param pulumi.Input[int] max_num_clients: Maximum number of client connected to the SSID. `0` means unlimited
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_ids: When `interface`=`mxtunnel`, id of the Mist Tunnel
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_names: When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        :param pulumi.Input[bool] no_static_dns: Whether to only allow client to use DNS that we’ve learned from DHCP response
+        :param pulumi.Input[bool] no_static_ip: Whether to only allow client that we’ve learned from DHCP exchange to talk
+        :param pulumi.Input['WlanPortalArgs'] portal: Portal wlan settings
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_hostnames: List of hostnames without http(s):// (matched by substring)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_subnets: List of CIDRs
+        :param pulumi.Input[str] portal_api_secret: APi secret (auto-generated) that can be used to sign guest authorization requests
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_denied_hostnames: List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
         :param pulumi.Input[str] portal_image: Url of portal background image
-        :param pulumi.Input['WlanRadsecArgs'] radsec: Radsec settings
+        :param pulumi.Input['WlanRadsecArgs'] radsec: RadSec settings
         :param pulumi.Input[Mapping[str, pulumi.Input['WlanRatesetArgs']]] rateset: Property key is the RF band. enum: `24`, `5`, `6`
-        :param pulumi.Input[bool] reconnect_clients_when_roaming_mxcluster: when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+        :param pulumi.Input[bool] reconnect_clients_when_roaming_mxcluster: When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
         :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `NONE`
         :param pulumi.Input['WlanScheduleArgs'] schedule: WLAN operating schedule, default is disabled
-        :param pulumi.Input[bool] sle_excluded: whether to exclude this WLAN from SLE metrics
-        :param pulumi.Input[str] ssid: the name of the SSID
-        :param pulumi.Input[bool] use_eapol_v1: if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
-        :param pulumi.Input[bool] vlan_enabled: if vlan tagging is enabled
+        :param pulumi.Input[bool] sle_excluded: Whether to exclude this WLAN from SLE metrics
+        :param pulumi.Input[str] ssid: Name of the SSID
+        :param pulumi.Input[bool] use_eapol_v1: If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
+        :param pulumi.Input[bool] vlan_enabled: If vlan tagging is enabled
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
         :param pulumi.Input[bool] vlan_pooling: Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
                deterministic algorithm
-        :param pulumi.Input[int] wlan_limit_down: kbps
-        :param pulumi.Input[bool] wlan_limit_down_enabled: if downlink limiting for whole wlan is enabled
-        :param pulumi.Input[int] wlan_limit_up: kbps
-        :param pulumi.Input[bool] wlan_limit_up_enabled: if uplink limiting for whole wlan is enabled
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] wxtag_ids: list of wxtag_ids
-        :param pulumi.Input[str] wxtunnel_id: when `interface`=`wxtunnel`, id of the WXLAN Tunnel
-        :param pulumi.Input[str] wxtunnel_remote_id: when `interface`=`wxtunnel`, remote tunnel identifier
+        :param pulumi.Input[int] wlan_limit_down: In kbps
+        :param pulumi.Input[bool] wlan_limit_down_enabled: If downlink limiting for whole wlan is enabled
+        :param pulumi.Input[int] wlan_limit_up: In kbps
+        :param pulumi.Input[bool] wlan_limit_up_enabled: If uplink limiting for whole wlan is enabled
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] wxtag_ids: List of wxtag_ids
+        :param pulumi.Input[str] wxtunnel_id: When `interface`=`wxtunnel`, id of the WXLAN Tunnel
+        :param pulumi.Input[str] wxtunnel_remote_id: When `interface`=`wxtunnel`, remote tunnel identifier
         """
         if acct_immediate_update is not None:
             pulumi.set(__self__, "acct_immediate_update", acct_immediate_update)
@@ -1865,7 +1865,7 @@ class _WlanState:
     @pulumi.getter(name="acctImmediateUpdate")
     def acct_immediate_update(self) -> Optional[pulumi.Input[bool]]:
         """
-        enable coa-immediate-update and address-change-immediate-update on the access profile.
+        Enable coa-immediate-update and address-change-immediate-update on the access profile.
         """
         return pulumi.get(self, "acct_immediate_update")
 
@@ -1877,7 +1877,7 @@ class _WlanState:
     @pulumi.getter(name="acctInterimInterval")
     def acct_interim_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
+        How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
         from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended
         when enabled
         """
@@ -1891,7 +1891,7 @@ class _WlanState:
     @pulumi.getter(name="acctServers")
     def acct_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WlanAcctServerArgs']]]]:
         """
-        list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+        List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
         """
         return pulumi.get(self, "acct_servers")
 
@@ -1903,7 +1903,7 @@ class _WlanState:
     @pulumi.getter
     def airwatch(self) -> Optional[pulumi.Input['WlanAirwatchArgs']]:
         """
-        airwatch wlan settings
+        Airwatch wlan settings
         """
         return pulumi.get(self, "airwatch")
 
@@ -1915,7 +1915,7 @@ class _WlanState:
     @pulumi.getter(name="allowIpv6Ndp")
     def allow_ipv6_ndp(self) -> Optional[pulumi.Input[bool]]:
         """
-        only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
         """
         return pulumi.get(self, "allow_ipv6_ndp")
 
@@ -1927,7 +1927,7 @@ class _WlanState:
     @pulumi.getter(name="allowMdns")
     def allow_mdns(self) -> Optional[pulumi.Input[bool]]:
         """
-        only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
         """
         return pulumi.get(self, "allow_mdns")
 
@@ -1939,7 +1939,7 @@ class _WlanState:
     @pulumi.getter(name="allowSsdp")
     def allow_ssdp(self) -> Optional[pulumi.Input[bool]]:
         """
-        only applicable when `limit_bcast`==`true`, which allows SSDP
+        Only applicable when `limit_bcast`==`true`, which allows SSDP
         """
         return pulumi.get(self, "allow_ssdp")
 
@@ -1951,7 +1951,7 @@ class _WlanState:
     @pulumi.getter(name="apIds")
     def ap_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of device ids
+        List of device ids
         """
         return pulumi.get(self, "ap_ids")
 
@@ -1963,7 +1963,7 @@ class _WlanState:
     @pulumi.getter(name="appLimit")
     def app_limit(self) -> Optional[pulumi.Input['WlanAppLimitArgs']]:
         """
-        bandwidth limiting for apps (applies to up/down)
+        Bandwidth limiting for apps (applies to up/down)
         """
         return pulumi.get(self, "app_limit")
 
@@ -1975,7 +1975,7 @@ class _WlanState:
     @pulumi.getter(name="appQos")
     def app_qos(self) -> Optional[pulumi.Input['WlanAppQosArgs']]:
         """
-        app qos wlan settings
+        APp qos wlan settings
         """
         return pulumi.get(self, "app_qos")
 
@@ -1999,7 +1999,7 @@ class _WlanState:
     @pulumi.getter(name="arpFilter")
     def arp_filter(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to enable smart arp filter
+        Whether to enable smart arp filter
         """
         return pulumi.get(self, "arp_filter")
 
@@ -2011,7 +2011,7 @@ class _WlanState:
     @pulumi.getter
     def auth(self) -> Optional[pulumi.Input['WlanAuthArgs']]:
         """
-        authentication wlan settings
+        Authentication wlan settings
         """
         return pulumi.get(self, "auth")
 
@@ -2035,7 +2035,7 @@ class _WlanState:
     @pulumi.getter(name="authServers")
     def auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WlanAuthServerArgs']]]]:
         """
-        list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
+        List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
         is treated as primary
         """
         return pulumi.get(self, "auth_servers")
@@ -2048,7 +2048,7 @@ class _WlanState:
     @pulumi.getter(name="authServersNasId")
     def auth_servers_nas_id(self) -> Optional[pulumi.Input[str]]:
         """
-        optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+        Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
         """
         return pulumi.get(self, "auth_servers_nas_id")
 
@@ -2060,7 +2060,7 @@ class _WlanState:
     @pulumi.getter(name="authServersNasIp")
     def auth_servers_nas_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        optional, NAS-IP-ADDRESS to use
+        Optional, NAS-IP-ADDRESS to use
         """
         return pulumi.get(self, "auth_servers_nas_ip")
 
@@ -2072,9 +2072,9 @@ class _WlanState:
     @pulumi.getter(name="authServersRetries")
     def auth_servers_retries(self) -> Optional[pulumi.Input[int]]:
         """
-        radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’ are
-        set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to
-        default value to 3.
+        Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set
+        to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default
+        value to 3.
         """
         return pulumi.get(self, "auth_servers_retries")
 
@@ -2086,9 +2086,9 @@ class _WlanState:
     @pulumi.getter(name="authServersTimeout")
     def auth_servers_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled.
-        ‘quite-period’ and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’
-        is also set when setting auth_servers_timeout and is set to default value of 10.
+        Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’
+        and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
+        setting auth_servers_timeout and is set to default value of 10.
         """
         return pulumi.get(self, "auth_servers_timeout")
 
@@ -2100,7 +2100,7 @@ class _WlanState:
     @pulumi.getter(name="bandSteer")
     def band_steer(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to enable band_steering, this works only when band==both
+        Whether to enable band_steering, this works only when band==both
         """
         return pulumi.get(self, "band_steer")
 
@@ -2112,7 +2112,7 @@ class _WlanState:
     @pulumi.getter(name="bandSteerForceBand5")
     def band_steer_force_band5(self) -> Optional[pulumi.Input[bool]]:
         """
-        force dual_band capable client to connect to 5G
+        Force dual_band capable client to connect to 5G
         """
         return pulumi.get(self, "band_steer_force_band5")
 
@@ -2136,7 +2136,7 @@ class _WlanState:
     @pulumi.getter(name="blockBlacklistClients")
     def block_blacklist_clients(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to block the clients in the blacklist (up to first 256 macs)
+        Whether to block the clients in the blacklist (up to first 256 macs)
         """
         return pulumi.get(self, "block_blacklist_clients")
 
@@ -2148,7 +2148,7 @@ class _WlanState:
     @pulumi.getter
     def bonjour(self) -> Optional[pulumi.Input['WlanBonjourArgs']]:
         """
-        bonjour gateway wlan settings
+        Bonjour gateway wlan settings
         """
         return pulumi.get(self, "bonjour")
 
@@ -2173,7 +2173,7 @@ class _WlanState:
     @pulumi.getter(name="clientLimitDown")
     def client_limit_down(self) -> Optional[pulumi.Input[int]]:
         """
-        kbps
+        In kbps
         """
         return pulumi.get(self, "client_limit_down")
 
@@ -2185,7 +2185,7 @@ class _WlanState:
     @pulumi.getter(name="clientLimitDownEnabled")
     def client_limit_down_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        if downlink limiting per-client is enabled
+        If downlink limiting per-client is enabled
         """
         return pulumi.get(self, "client_limit_down_enabled")
 
@@ -2197,7 +2197,7 @@ class _WlanState:
     @pulumi.getter(name="clientLimitUp")
     def client_limit_up(self) -> Optional[pulumi.Input[int]]:
         """
-        kbps
+        In kbps
         """
         return pulumi.get(self, "client_limit_up")
 
@@ -2209,7 +2209,7 @@ class _WlanState:
     @pulumi.getter(name="clientLimitUpEnabled")
     def client_limit_up_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        if uplink limiting per-client is enabled
+        If uplink limiting per-client is enabled
         """
         return pulumi.get(self, "client_limit_up_enabled")
 
@@ -2221,7 +2221,7 @@ class _WlanState:
     @pulumi.getter(name="coaServers")
     def coa_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WlanCoaServerArgs']]]]:
         """
-        list of COA (change of authorization) servers, optional
+        List of COA (change of authorization) servers, optional
         """
         return pulumi.get(self, "coa_servers")
 
@@ -2233,7 +2233,7 @@ class _WlanState:
     @pulumi.getter
     def disable11ax(self) -> Optional[pulumi.Input[bool]]:
         """
-        some old WLAN drivers may not be compatible
+        Some old WLAN drivers may not be compatible
         """
         return pulumi.get(self, "disable11ax")
 
@@ -2245,7 +2245,7 @@ class _WlanState:
     @pulumi.getter(name="disableHtVhtRates")
     def disable_ht_vht_rates(self) -> Optional[pulumi.Input[bool]]:
         """
-        to disable ht or vht rates
+        To disable ht or vht rates
         """
         return pulumi.get(self, "disable_ht_vht_rates")
 
@@ -2257,7 +2257,7 @@ class _WlanState:
     @pulumi.getter(name="disableUapsd")
     def disable_uapsd(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable U-APSD
+        Whether to disable U-APSD
         """
         return pulumi.get(self, "disable_uapsd")
 
@@ -2269,7 +2269,7 @@ class _WlanState:
     @pulumi.getter(name="disableV1RoamNotify")
     def disable_v1_roam_notify(self) -> Optional[pulumi.Input[bool]]:
         """
-        disable sending v2 roam notification messages
+        Disable sending v2 roam notification messages
         """
         return pulumi.get(self, "disable_v1_roam_notify")
 
@@ -2281,7 +2281,7 @@ class _WlanState:
     @pulumi.getter(name="disableV2RoamNotify")
     def disable_v2_roam_notify(self) -> Optional[pulumi.Input[bool]]:
         """
-        disable sending v2 roam notification messages
+        Disable sending v2 roam notification messages
         """
         return pulumi.get(self, "disable_v2_roam_notify")
 
@@ -2293,7 +2293,7 @@ class _WlanState:
     @pulumi.getter(name="disableWhenGatewayUnreachable")
     def disable_when_gateway_unreachable(self) -> Optional[pulumi.Input[bool]]:
         """
-        when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+        When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
         reach default gateway
         """
         return pulumi.get(self, "disable_when_gateway_unreachable")
@@ -2315,7 +2315,7 @@ class _WlanState:
     @pulumi.getter(name="disableWmm")
     def disable_wmm(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable WMM
+        Whether to disable WMM
         """
         return pulumi.get(self, "disable_wmm")
 
@@ -2327,7 +2327,7 @@ class _WlanState:
     @pulumi.getter(name="dnsServerRewrite")
     def dns_server_rewrite(self) -> Optional[pulumi.Input['WlanDnsServerRewriteArgs']]:
         """
-        for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+        For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
         """
         return pulumi.get(self, "dns_server_rewrite")
 
@@ -2348,9 +2348,9 @@ class _WlanState:
     @pulumi.getter(name="dynamicPsk")
     def dynamic_psk(self) -> Optional[pulumi.Input['WlanDynamicPskArgs']]:
         """
-        for dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
+        For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
         context (wlan/site/user/...) thus following configurations are assumed (currently) * PSK will come from RADIUS server *
-        AP sends client MAC as username ans password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
+        AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
         Caller-Station-ID * `auth_servers` is required * PSK will come from cloud WLC if source is cloud_psks * default_psk will
         be used if cloud WLC is not available * `multi_psk_only` and `psk` is ignored * `pairwise` can only be wpa2-ccmp (for
         now, wpa3 support on the roadmap)
@@ -2365,7 +2365,7 @@ class _WlanState:
     @pulumi.getter(name="dynamicVlan")
     def dynamic_vlan(self) -> Optional[pulumi.Input['WlanDynamicVlanArgs']]:
         """
-        for 802.1x
+        For 802.1x
         """
         return pulumi.get(self, "dynamic_vlan")
 
@@ -2377,7 +2377,7 @@ class _WlanState:
     @pulumi.getter(name="enableLocalKeycaching")
     def enable_local_keycaching(self) -> Optional[pulumi.Input[bool]]:
         """
-        enable AP-AP keycaching via multicast
+        Enable AP-AP keycaching via multicast
         """
         return pulumi.get(self, "enable_local_keycaching")
 
@@ -2389,7 +2389,7 @@ class _WlanState:
     @pulumi.getter(name="enableWirelessBridging")
     def enable_wireless_bridging(self) -> Optional[pulumi.Input[bool]]:
         """
-        by default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
+        By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
         client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
         """
         return pulumi.get(self, "enable_wireless_bridging")
@@ -2402,7 +2402,7 @@ class _WlanState:
     @pulumi.getter(name="enableWirelessBridgingDhcpTracking")
     def enable_wireless_bridging_dhcp_tracking(self) -> Optional[pulumi.Input[bool]]:
         """
-        if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
+        If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
         packets to be forwarded to wireless
         """
         return pulumi.get(self, "enable_wireless_bridging_dhcp_tracking")
@@ -2415,7 +2415,7 @@ class _WlanState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        if this wlan is enabled
+        If this wlan is enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -2427,7 +2427,7 @@ class _WlanState:
     @pulumi.getter(name="fastDot1xTimers")
     def fast_dot1x_timers(self) -> Optional[pulumi.Input[bool]]:
         """
-        if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
+        If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
         ‘auth_server_retries’ .
         """
         return pulumi.get(self, "fast_dot1x_timers")
@@ -2440,7 +2440,7 @@ class _WlanState:
     @pulumi.getter(name="hideSsid")
     def hide_ssid(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to hide SSID in beacon
+        Whether to hide SSID in beacon
         """
         return pulumi.get(self, "hide_ssid")
 
@@ -2452,7 +2452,7 @@ class _WlanState:
     @pulumi.getter(name="hostnameIe")
     def hostname_ie(self) -> Optional[pulumi.Input[bool]]:
         """
-        include hostname inside IE in AP beacons / probe responses
+        Include hostname inside IE in AP beacons / probe responses
         """
         return pulumi.get(self, "hostname_ie")
 
@@ -2464,7 +2464,7 @@ class _WlanState:
     @pulumi.getter
     def hotspot20(self) -> Optional[pulumi.Input['WlanHotspot20Args']]:
         """
-        hostspot 2.0 wlan settings
+        Hostspot 2.0 wlan settings
         """
         return pulumi.get(self, "hotspot20")
 
@@ -2497,7 +2497,7 @@ class _WlanState:
     @pulumi.getter
     def isolation(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to stop clients to talk to each other
+        Whether to stop clients to talk to each other
         """
         return pulumi.get(self, "isolation")
 
@@ -2509,7 +2509,7 @@ class _WlanState:
     @pulumi.getter(name="l2Isolation")
     def l2_isolation(self) -> Optional[pulumi.Input[bool]]:
         """
-        if isolation is enabled, whether to deny clients to talk to L2 on the LAN
+        If isolation is enabled, whether to deny clients to talk to L2 on the LAN
         """
         return pulumi.get(self, "l2_isolation")
 
@@ -2521,7 +2521,7 @@ class _WlanState:
     @pulumi.getter(name="legacyOverds")
     def legacy_overds(self) -> Optional[pulumi.Input[bool]]:
         """
-        legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
+        Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
         Enabling this will cause problem for iOS devices.
         """
         return pulumi.get(self, "legacy_overds")
@@ -2534,7 +2534,7 @@ class _WlanState:
     @pulumi.getter(name="limitBcast")
     def limit_bcast(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+        Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
         """
         return pulumi.get(self, "limit_bcast")
 
@@ -2546,7 +2546,7 @@ class _WlanState:
     @pulumi.getter(name="limitProbeResponse")
     def limit_probe_response(self) -> Optional[pulumi.Input[bool]]:
         """
-        limit probe response base on some heuristic rules
+        Limit probe response base on some heuristic rules
         """
         return pulumi.get(self, "limit_probe_response")
 
@@ -2558,7 +2558,7 @@ class _WlanState:
     @pulumi.getter(name="maxIdletime")
     def max_idletime(self) -> Optional[pulumi.Input[int]]:
         """
-        max idle time in seconds
+        Max idle time in seconds
         """
         return pulumi.get(self, "max_idletime")
 
@@ -2570,7 +2570,7 @@ class _WlanState:
     @pulumi.getter(name="maxNumClients")
     def max_num_clients(self) -> Optional[pulumi.Input[int]]:
         """
-        maximum number of client connected to the SSID. `0` means unlimited
+        Maximum number of client connected to the SSID. `0` means unlimited
         """
         return pulumi.get(self, "max_num_clients")
 
@@ -2600,7 +2600,7 @@ class _WlanState:
     @pulumi.getter(name="mxtunnelIds")
     def mxtunnel_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        when `interface`=`mxtunnel`, id of the Mist Tunnel
+        When `interface`=`mxtunnel`, id of the Mist Tunnel
         """
         return pulumi.get(self, "mxtunnel_ids")
 
@@ -2612,7 +2612,7 @@ class _WlanState:
     @pulumi.getter(name="mxtunnelNames")
     def mxtunnel_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        when `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
         """
         return pulumi.get(self, "mxtunnel_names")
 
@@ -2624,7 +2624,7 @@ class _WlanState:
     @pulumi.getter(name="noStaticDns")
     def no_static_dns(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to only allow client to use DNS that we’ve learned from DHCP response
+        Whether to only allow client to use DNS that we’ve learned from DHCP response
         """
         return pulumi.get(self, "no_static_dns")
 
@@ -2636,7 +2636,7 @@ class _WlanState:
     @pulumi.getter(name="noStaticIp")
     def no_static_ip(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to only allow client that we’ve learned from DHCP exchange to talk
+        Whether to only allow client that we’ve learned from DHCP exchange to talk
         """
         return pulumi.get(self, "no_static_ip")
 
@@ -2657,7 +2657,7 @@ class _WlanState:
     @pulumi.getter
     def portal(self) -> Optional[pulumi.Input['WlanPortalArgs']]:
         """
-        portal wlan settings
+        Portal wlan settings
         """
         return pulumi.get(self, "portal")
 
@@ -2669,7 +2669,7 @@ class _WlanState:
     @pulumi.getter(name="portalAllowedHostnames")
     def portal_allowed_hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of hostnames without http(s):// (matched by substring)
+        List of hostnames without http(s):// (matched by substring)
         """
         return pulumi.get(self, "portal_allowed_hostnames")
 
@@ -2681,7 +2681,7 @@ class _WlanState:
     @pulumi.getter(name="portalAllowedSubnets")
     def portal_allowed_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of CIDRs
+        List of CIDRs
         """
         return pulumi.get(self, "portal_allowed_subnets")
 
@@ -2693,7 +2693,7 @@ class _WlanState:
     @pulumi.getter(name="portalApiSecret")
     def portal_api_secret(self) -> Optional[pulumi.Input[str]]:
         """
-        api secret (auto-generated) that can be used to sign guest authorization requests
+        APi secret (auto-generated) that can be used to sign guest authorization requests
         """
         return pulumi.get(self, "portal_api_secret")
 
@@ -2705,7 +2705,7 @@ class _WlanState:
     @pulumi.getter(name="portalDeniedHostnames")
     def portal_denied_hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+        List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
         """
         return pulumi.get(self, "portal_denied_hostnames")
 
@@ -2747,7 +2747,7 @@ class _WlanState:
     @pulumi.getter
     def radsec(self) -> Optional[pulumi.Input['WlanRadsecArgs']]:
         """
-        Radsec settings
+        RadSec settings
         """
         return pulumi.get(self, "radsec")
 
@@ -2771,7 +2771,7 @@ class _WlanState:
     @pulumi.getter(name="reconnectClientsWhenRoamingMxcluster")
     def reconnect_clients_when_roaming_mxcluster(self) -> Optional[pulumi.Input[bool]]:
         """
-        when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+        When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
         """
         return pulumi.get(self, "reconnect_clients_when_roaming_mxcluster")
 
@@ -2807,7 +2807,7 @@ class _WlanState:
     @pulumi.getter(name="sleExcluded")
     def sle_excluded(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to exclude this WLAN from SLE metrics
+        Whether to exclude this WLAN from SLE metrics
         """
         return pulumi.get(self, "sle_excluded")
 
@@ -2819,7 +2819,7 @@ class _WlanState:
     @pulumi.getter
     def ssid(self) -> Optional[pulumi.Input[str]]:
         """
-        the name of the SSID
+        Name of the SSID
         """
         return pulumi.get(self, "ssid")
 
@@ -2840,7 +2840,7 @@ class _WlanState:
     @pulumi.getter(name="useEapolV1")
     def use_eapol_v1(self) -> Optional[pulumi.Input[bool]]:
         """
-        if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
+        If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
         """
         return pulumi.get(self, "use_eapol_v1")
 
@@ -2852,7 +2852,7 @@ class _WlanState:
     @pulumi.getter(name="vlanEnabled")
     def vlan_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        if vlan tagging is enabled
+        If vlan tagging is enabled
         """
         return pulumi.get(self, "vlan_enabled")
 
@@ -2898,7 +2898,7 @@ class _WlanState:
     @pulumi.getter(name="wlanLimitDown")
     def wlan_limit_down(self) -> Optional[pulumi.Input[int]]:
         """
-        kbps
+        In kbps
         """
         return pulumi.get(self, "wlan_limit_down")
 
@@ -2910,7 +2910,7 @@ class _WlanState:
     @pulumi.getter(name="wlanLimitDownEnabled")
     def wlan_limit_down_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        if downlink limiting for whole wlan is enabled
+        If downlink limiting for whole wlan is enabled
         """
         return pulumi.get(self, "wlan_limit_down_enabled")
 
@@ -2922,7 +2922,7 @@ class _WlanState:
     @pulumi.getter(name="wlanLimitUp")
     def wlan_limit_up(self) -> Optional[pulumi.Input[int]]:
         """
-        kbps
+        In kbps
         """
         return pulumi.get(self, "wlan_limit_up")
 
@@ -2934,7 +2934,7 @@ class _WlanState:
     @pulumi.getter(name="wlanLimitUpEnabled")
     def wlan_limit_up_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        if uplink limiting for whole wlan is enabled
+        If uplink limiting for whole wlan is enabled
         """
         return pulumi.get(self, "wlan_limit_up_enabled")
 
@@ -2946,7 +2946,7 @@ class _WlanState:
     @pulumi.getter(name="wxtagIds")
     def wxtag_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of wxtag_ids
+        List of wxtag_ids
         """
         return pulumi.get(self, "wxtag_ids")
 
@@ -2958,7 +2958,7 @@ class _WlanState:
     @pulumi.getter(name="wxtunnelId")
     def wxtunnel_id(self) -> Optional[pulumi.Input[str]]:
         """
-        when `interface`=`wxtunnel`, id of the WXLAN Tunnel
+        When `interface`=`wxtunnel`, id of the WXLAN Tunnel
         """
         return pulumi.get(self, "wxtunnel_id")
 
@@ -2970,7 +2970,7 @@ class _WlanState:
     @pulumi.getter(name="wxtunnelRemoteId")
     def wxtunnel_remote_id(self) -> Optional[pulumi.Input[str]]:
         """
-        when `interface`=`wxtunnel`, remote tunnel identifier
+        When `interface`=`wxtunnel`, remote tunnel identifier
         """
         return pulumi.get(self, "wxtunnel_remote_id")
 
@@ -3119,107 +3119,107 @@ class Wlan(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] acct_immediate_update: enable coa-immediate-update and address-change-immediate-update on the access profile.
-        :param pulumi.Input[int] acct_interim_interval: how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
+        :param pulumi.Input[bool] acct_immediate_update: Enable coa-immediate-update and address-change-immediate-update on the access profile.
+        :param pulumi.Input[int] acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
                from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended
                when enabled
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAcctServerArgs', 'WlanAcctServerArgsDict']]]] acct_servers: list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
-        :param pulumi.Input[Union['WlanAirwatchArgs', 'WlanAirwatchArgsDict']] airwatch: airwatch wlan settings
-        :param pulumi.Input[bool] allow_ipv6_ndp: only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
-        :param pulumi.Input[bool] allow_mdns: only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
-        :param pulumi.Input[bool] allow_ssdp: only applicable when `limit_bcast`==`true`, which allows SSDP
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ap_ids: list of device ids
-        :param pulumi.Input[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict']] app_limit: bandwidth limiting for apps (applies to up/down)
-        :param pulumi.Input[Union['WlanAppQosArgs', 'WlanAppQosArgsDict']] app_qos: app qos wlan settings
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAcctServerArgs', 'WlanAcctServerArgsDict']]]] acct_servers: List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+        :param pulumi.Input[Union['WlanAirwatchArgs', 'WlanAirwatchArgsDict']] airwatch: Airwatch wlan settings
+        :param pulumi.Input[bool] allow_ipv6_ndp: Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        :param pulumi.Input[bool] allow_mdns: Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        :param pulumi.Input[bool] allow_ssdp: Only applicable when `limit_bcast`==`true`, which allows SSDP
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ap_ids: List of device ids
+        :param pulumi.Input[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict']] app_limit: Bandwidth limiting for apps (applies to up/down)
+        :param pulumi.Input[Union['WlanAppQosArgs', 'WlanAppQosArgsDict']] app_qos: APp qos wlan settings
         :param pulumi.Input[str] apply_to: enum: `aps`, `site`, `wxtags`
-        :param pulumi.Input[bool] arp_filter: whether to enable smart arp filter
-        :param pulumi.Input[Union['WlanAuthArgs', 'WlanAuthArgsDict']] auth: authentication wlan settings
+        :param pulumi.Input[bool] arp_filter: Whether to enable smart arp filter
+        :param pulumi.Input[Union['WlanAuthArgs', 'WlanAuthArgsDict']] auth: Authentication wlan settings
         :param pulumi.Input[str] auth_server_selection: When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAuthServerArgs', 'WlanAuthServerArgsDict']]]] auth_servers: list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAuthServerArgs', 'WlanAuthServerArgsDict']]]] auth_servers: List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
                is treated as primary
-        :param pulumi.Input[str] auth_servers_nas_id: optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
-        :param pulumi.Input[str] auth_servers_nas_ip: optional, NAS-IP-ADDRESS to use
-        :param pulumi.Input[int] auth_servers_retries: radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’ are
-               set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to
-               default value to 3.
-        :param pulumi.Input[int] auth_servers_timeout: radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled.
-               ‘quite-period’ and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’
-               is also set when setting auth_servers_timeout and is set to default value of 10.
-        :param pulumi.Input[bool] band_steer: whether to enable band_steering, this works only when band==both
-        :param pulumi.Input[bool] band_steer_force_band5: force dual_band capable client to connect to 5G
+        :param pulumi.Input[str] auth_servers_nas_id: Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+        :param pulumi.Input[str] auth_servers_nas_ip: Optional, NAS-IP-ADDRESS to use
+        :param pulumi.Input[int] auth_servers_retries: Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set
+               to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default
+               value to 3.
+        :param pulumi.Input[int] auth_servers_timeout: Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’
+               and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
+               setting auth_servers_timeout and is set to default value of 10.
+        :param pulumi.Input[bool] band_steer: Whether to enable band_steering, this works only when band==both
+        :param pulumi.Input[bool] band_steer_force_band5: Force dual_band capable client to connect to 5G
         :param pulumi.Input[Sequence[pulumi.Input[str]]] bands: list of radios that the wlan should apply to. enum: `24`, `5`, `6`
-        :param pulumi.Input[bool] block_blacklist_clients: whether to block the clients in the blacklist (up to first 256 macs)
-        :param pulumi.Input[Union['WlanBonjourArgs', 'WlanBonjourArgsDict']] bonjour: bonjour gateway wlan settings
+        :param pulumi.Input[bool] block_blacklist_clients: Whether to block the clients in the blacklist (up to first 256 macs)
+        :param pulumi.Input[Union['WlanBonjourArgs', 'WlanBonjourArgsDict']] bonjour: Bonjour gateway wlan settings
         :param pulumi.Input[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict']] cisco_cwa: Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
                https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-        :param pulumi.Input[int] client_limit_down: kbps
-        :param pulumi.Input[bool] client_limit_down_enabled: if downlink limiting per-client is enabled
-        :param pulumi.Input[int] client_limit_up: kbps
-        :param pulumi.Input[bool] client_limit_up_enabled: if uplink limiting per-client is enabled
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]] coa_servers: list of COA (change of authorization) servers, optional
-        :param pulumi.Input[bool] disable11ax: some old WLAN drivers may not be compatible
-        :param pulumi.Input[bool] disable_ht_vht_rates: to disable ht or vht rates
-        :param pulumi.Input[bool] disable_uapsd: whether to disable U-APSD
-        :param pulumi.Input[bool] disable_v1_roam_notify: disable sending v2 roam notification messages
-        :param pulumi.Input[bool] disable_v2_roam_notify: disable sending v2 roam notification messages
-        :param pulumi.Input[bool] disable_when_gateway_unreachable: when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+        :param pulumi.Input[int] client_limit_down: In kbps
+        :param pulumi.Input[bool] client_limit_down_enabled: If downlink limiting per-client is enabled
+        :param pulumi.Input[int] client_limit_up: In kbps
+        :param pulumi.Input[bool] client_limit_up_enabled: If uplink limiting per-client is enabled
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]] coa_servers: List of COA (change of authorization) servers, optional
+        :param pulumi.Input[bool] disable11ax: Some old WLAN drivers may not be compatible
+        :param pulumi.Input[bool] disable_ht_vht_rates: To disable ht or vht rates
+        :param pulumi.Input[bool] disable_uapsd: Whether to disable U-APSD
+        :param pulumi.Input[bool] disable_v1_roam_notify: Disable sending v2 roam notification messages
+        :param pulumi.Input[bool] disable_v2_roam_notify: Disable sending v2 roam notification messages
+        :param pulumi.Input[bool] disable_when_gateway_unreachable: When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
                reach default gateway
-        :param pulumi.Input[bool] disable_wmm: whether to disable WMM
-        :param pulumi.Input[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict']] dns_server_rewrite: for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
-        :param pulumi.Input[Union['WlanDynamicPskArgs', 'WlanDynamicPskArgsDict']] dynamic_psk: for dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
+        :param pulumi.Input[bool] disable_wmm: Whether to disable WMM
+        :param pulumi.Input[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict']] dns_server_rewrite: For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+        :param pulumi.Input[Union['WlanDynamicPskArgs', 'WlanDynamicPskArgsDict']] dynamic_psk: For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
                context (wlan/site/user/...) thus following configurations are assumed (currently) * PSK will come from RADIUS server *
-               AP sends client MAC as username ans password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
+               AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
                Caller-Station-ID * `auth_servers` is required * PSK will come from cloud WLC if source is cloud_psks * default_psk will
                be used if cloud WLC is not available * `multi_psk_only` and `psk` is ignored * `pairwise` can only be wpa2-ccmp (for
                now, wpa3 support on the roadmap)
-        :param pulumi.Input[Union['WlanDynamicVlanArgs', 'WlanDynamicVlanArgsDict']] dynamic_vlan: for 802.1x
-        :param pulumi.Input[bool] enable_local_keycaching: enable AP-AP keycaching via multicast
-        :param pulumi.Input[bool] enable_wireless_bridging: by default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
+        :param pulumi.Input[Union['WlanDynamicVlanArgs', 'WlanDynamicVlanArgsDict']] dynamic_vlan: For 802.1x
+        :param pulumi.Input[bool] enable_local_keycaching: Enable AP-AP keycaching via multicast
+        :param pulumi.Input[bool] enable_wireless_bridging: By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
                client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
-        :param pulumi.Input[bool] enable_wireless_bridging_dhcp_tracking: if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
+        :param pulumi.Input[bool] enable_wireless_bridging_dhcp_tracking: If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
                packets to be forwarded to wireless
-        :param pulumi.Input[bool] enabled: if this wlan is enabled
-        :param pulumi.Input[bool] fast_dot1x_timers: if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
+        :param pulumi.Input[bool] enabled: If this wlan is enabled
+        :param pulumi.Input[bool] fast_dot1x_timers: If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
                ‘auth_server_retries’ .
-        :param pulumi.Input[bool] hide_ssid: whether to hide SSID in beacon
-        :param pulumi.Input[bool] hostname_ie: include hostname inside IE in AP beacons / probe responses
-        :param pulumi.Input[Union['WlanHotspot20Args', 'WlanHotspot20ArgsDict']] hotspot20: hostspot 2.0 wlan settings
+        :param pulumi.Input[bool] hide_ssid: Whether to hide SSID in beacon
+        :param pulumi.Input[bool] hostname_ie: Include hostname inside IE in AP beacons / probe responses
+        :param pulumi.Input[Union['WlanHotspot20Args', 'WlanHotspot20ArgsDict']] hotspot20: Hostspot 2.0 wlan settings
         :param pulumi.Input[str] interface: where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `site_mxedge`, `wxtunnel`
-        :param pulumi.Input[bool] isolation: whether to stop clients to talk to each other
-        :param pulumi.Input[bool] l2_isolation: if isolation is enabled, whether to deny clients to talk to L2 on the LAN
-        :param pulumi.Input[bool] legacy_overds: legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
+        :param pulumi.Input[bool] isolation: Whether to stop clients to talk to each other
+        :param pulumi.Input[bool] l2_isolation: If isolation is enabled, whether to deny clients to talk to L2 on the LAN
+        :param pulumi.Input[bool] legacy_overds: Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
                Enabling this will cause problem for iOS devices.
-        :param pulumi.Input[bool] limit_bcast: whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
-        :param pulumi.Input[bool] limit_probe_response: limit probe response base on some heuristic rules
-        :param pulumi.Input[int] max_idletime: max idle time in seconds
-        :param pulumi.Input[int] max_num_clients: maximum number of client connected to the SSID. `0` means unlimited
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_ids: when `interface`=`mxtunnel`, id of the Mist Tunnel
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_names: when `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
-        :param pulumi.Input[bool] no_static_dns: whether to only allow client to use DNS that we’ve learned from DHCP response
-        :param pulumi.Input[bool] no_static_ip: whether to only allow client that we’ve learned from DHCP exchange to talk
-        :param pulumi.Input[Union['WlanPortalArgs', 'WlanPortalArgsDict']] portal: portal wlan settings
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_hostnames: list of hostnames without http(s):// (matched by substring)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_subnets: list of CIDRs
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_denied_hostnames: list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
-        :param pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']] radsec: Radsec settings
+        :param pulumi.Input[bool] limit_bcast: Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+        :param pulumi.Input[bool] limit_probe_response: Limit probe response base on some heuristic rules
+        :param pulumi.Input[int] max_idletime: Max idle time in seconds
+        :param pulumi.Input[int] max_num_clients: Maximum number of client connected to the SSID. `0` means unlimited
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_ids: When `interface`=`mxtunnel`, id of the Mist Tunnel
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_names: When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        :param pulumi.Input[bool] no_static_dns: Whether to only allow client to use DNS that we’ve learned from DHCP response
+        :param pulumi.Input[bool] no_static_ip: Whether to only allow client that we’ve learned from DHCP exchange to talk
+        :param pulumi.Input[Union['WlanPortalArgs', 'WlanPortalArgsDict']] portal: Portal wlan settings
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_hostnames: List of hostnames without http(s):// (matched by substring)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_subnets: List of CIDRs
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_denied_hostnames: List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+        :param pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']] radsec: RadSec settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]] rateset: Property key is the RF band. enum: `24`, `5`, `6`
-        :param pulumi.Input[bool] reconnect_clients_when_roaming_mxcluster: when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+        :param pulumi.Input[bool] reconnect_clients_when_roaming_mxcluster: When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
         :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `NONE`
         :param pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']] schedule: WLAN operating schedule, default is disabled
-        :param pulumi.Input[bool] sle_excluded: whether to exclude this WLAN from SLE metrics
-        :param pulumi.Input[str] ssid: the name of the SSID
-        :param pulumi.Input[bool] use_eapol_v1: if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
-        :param pulumi.Input[bool] vlan_enabled: if vlan tagging is enabled
+        :param pulumi.Input[bool] sle_excluded: Whether to exclude this WLAN from SLE metrics
+        :param pulumi.Input[str] ssid: Name of the SSID
+        :param pulumi.Input[bool] use_eapol_v1: If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
+        :param pulumi.Input[bool] vlan_enabled: If vlan tagging is enabled
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
         :param pulumi.Input[bool] vlan_pooling: Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
                deterministic algorithm
-        :param pulumi.Input[int] wlan_limit_down: kbps
-        :param pulumi.Input[bool] wlan_limit_down_enabled: if downlink limiting for whole wlan is enabled
-        :param pulumi.Input[int] wlan_limit_up: kbps
-        :param pulumi.Input[bool] wlan_limit_up_enabled: if uplink limiting for whole wlan is enabled
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] wxtag_ids: list of wxtag_ids
-        :param pulumi.Input[str] wxtunnel_id: when `interface`=`wxtunnel`, id of the WXLAN Tunnel
-        :param pulumi.Input[str] wxtunnel_remote_id: when `interface`=`wxtunnel`, remote tunnel identifier
+        :param pulumi.Input[int] wlan_limit_down: In kbps
+        :param pulumi.Input[bool] wlan_limit_down_enabled: If downlink limiting for whole wlan is enabled
+        :param pulumi.Input[int] wlan_limit_up: In kbps
+        :param pulumi.Input[bool] wlan_limit_up_enabled: If uplink limiting for whole wlan is enabled
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] wxtag_ids: List of wxtag_ids
+        :param pulumi.Input[str] wxtunnel_id: When `interface`=`wxtunnel`, id of the WXLAN Tunnel
+        :param pulumi.Input[str] wxtunnel_remote_id: When `interface`=`wxtunnel`, remote tunnel identifier
         """
         ...
     @overload
@@ -3594,109 +3594,109 @@ class Wlan(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] acct_immediate_update: enable coa-immediate-update and address-change-immediate-update on the access profile.
-        :param pulumi.Input[int] acct_interim_interval: how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
+        :param pulumi.Input[bool] acct_immediate_update: Enable coa-immediate-update and address-change-immediate-update on the access profile.
+        :param pulumi.Input[int] acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
                from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended
                when enabled
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAcctServerArgs', 'WlanAcctServerArgsDict']]]] acct_servers: list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
-        :param pulumi.Input[Union['WlanAirwatchArgs', 'WlanAirwatchArgsDict']] airwatch: airwatch wlan settings
-        :param pulumi.Input[bool] allow_ipv6_ndp: only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
-        :param pulumi.Input[bool] allow_mdns: only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
-        :param pulumi.Input[bool] allow_ssdp: only applicable when `limit_bcast`==`true`, which allows SSDP
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ap_ids: list of device ids
-        :param pulumi.Input[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict']] app_limit: bandwidth limiting for apps (applies to up/down)
-        :param pulumi.Input[Union['WlanAppQosArgs', 'WlanAppQosArgsDict']] app_qos: app qos wlan settings
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAcctServerArgs', 'WlanAcctServerArgsDict']]]] acct_servers: List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+        :param pulumi.Input[Union['WlanAirwatchArgs', 'WlanAirwatchArgsDict']] airwatch: Airwatch wlan settings
+        :param pulumi.Input[bool] allow_ipv6_ndp: Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        :param pulumi.Input[bool] allow_mdns: Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        :param pulumi.Input[bool] allow_ssdp: Only applicable when `limit_bcast`==`true`, which allows SSDP
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ap_ids: List of device ids
+        :param pulumi.Input[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict']] app_limit: Bandwidth limiting for apps (applies to up/down)
+        :param pulumi.Input[Union['WlanAppQosArgs', 'WlanAppQosArgsDict']] app_qos: APp qos wlan settings
         :param pulumi.Input[str] apply_to: enum: `aps`, `site`, `wxtags`
-        :param pulumi.Input[bool] arp_filter: whether to enable smart arp filter
-        :param pulumi.Input[Union['WlanAuthArgs', 'WlanAuthArgsDict']] auth: authentication wlan settings
+        :param pulumi.Input[bool] arp_filter: Whether to enable smart arp filter
+        :param pulumi.Input[Union['WlanAuthArgs', 'WlanAuthArgsDict']] auth: Authentication wlan settings
         :param pulumi.Input[str] auth_server_selection: When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAuthServerArgs', 'WlanAuthServerArgsDict']]]] auth_servers: list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAuthServerArgs', 'WlanAuthServerArgsDict']]]] auth_servers: List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
                is treated as primary
-        :param pulumi.Input[str] auth_servers_nas_id: optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
-        :param pulumi.Input[str] auth_servers_nas_ip: optional, NAS-IP-ADDRESS to use
-        :param pulumi.Input[int] auth_servers_retries: radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’ are
-               set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to
-               default value to 3.
-        :param pulumi.Input[int] auth_servers_timeout: radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled.
-               ‘quite-period’ and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’
-               is also set when setting auth_servers_timeout and is set to default value of 10.
-        :param pulumi.Input[bool] band_steer: whether to enable band_steering, this works only when band==both
-        :param pulumi.Input[bool] band_steer_force_band5: force dual_band capable client to connect to 5G
+        :param pulumi.Input[str] auth_servers_nas_id: Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+        :param pulumi.Input[str] auth_servers_nas_ip: Optional, NAS-IP-ADDRESS to use
+        :param pulumi.Input[int] auth_servers_retries: Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set
+               to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default
+               value to 3.
+        :param pulumi.Input[int] auth_servers_timeout: Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’
+               and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
+               setting auth_servers_timeout and is set to default value of 10.
+        :param pulumi.Input[bool] band_steer: Whether to enable band_steering, this works only when band==both
+        :param pulumi.Input[bool] band_steer_force_band5: Force dual_band capable client to connect to 5G
         :param pulumi.Input[Sequence[pulumi.Input[str]]] bands: list of radios that the wlan should apply to. enum: `24`, `5`, `6`
-        :param pulumi.Input[bool] block_blacklist_clients: whether to block the clients in the blacklist (up to first 256 macs)
-        :param pulumi.Input[Union['WlanBonjourArgs', 'WlanBonjourArgsDict']] bonjour: bonjour gateway wlan settings
+        :param pulumi.Input[bool] block_blacklist_clients: Whether to block the clients in the blacklist (up to first 256 macs)
+        :param pulumi.Input[Union['WlanBonjourArgs', 'WlanBonjourArgsDict']] bonjour: Bonjour gateway wlan settings
         :param pulumi.Input[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict']] cisco_cwa: Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
                https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-        :param pulumi.Input[int] client_limit_down: kbps
-        :param pulumi.Input[bool] client_limit_down_enabled: if downlink limiting per-client is enabled
-        :param pulumi.Input[int] client_limit_up: kbps
-        :param pulumi.Input[bool] client_limit_up_enabled: if uplink limiting per-client is enabled
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]] coa_servers: list of COA (change of authorization) servers, optional
-        :param pulumi.Input[bool] disable11ax: some old WLAN drivers may not be compatible
-        :param pulumi.Input[bool] disable_ht_vht_rates: to disable ht or vht rates
-        :param pulumi.Input[bool] disable_uapsd: whether to disable U-APSD
-        :param pulumi.Input[bool] disable_v1_roam_notify: disable sending v2 roam notification messages
-        :param pulumi.Input[bool] disable_v2_roam_notify: disable sending v2 roam notification messages
-        :param pulumi.Input[bool] disable_when_gateway_unreachable: when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+        :param pulumi.Input[int] client_limit_down: In kbps
+        :param pulumi.Input[bool] client_limit_down_enabled: If downlink limiting per-client is enabled
+        :param pulumi.Input[int] client_limit_up: In kbps
+        :param pulumi.Input[bool] client_limit_up_enabled: If uplink limiting per-client is enabled
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]] coa_servers: List of COA (change of authorization) servers, optional
+        :param pulumi.Input[bool] disable11ax: Some old WLAN drivers may not be compatible
+        :param pulumi.Input[bool] disable_ht_vht_rates: To disable ht or vht rates
+        :param pulumi.Input[bool] disable_uapsd: Whether to disable U-APSD
+        :param pulumi.Input[bool] disable_v1_roam_notify: Disable sending v2 roam notification messages
+        :param pulumi.Input[bool] disable_v2_roam_notify: Disable sending v2 roam notification messages
+        :param pulumi.Input[bool] disable_when_gateway_unreachable: When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
                reach default gateway
-        :param pulumi.Input[bool] disable_wmm: whether to disable WMM
-        :param pulumi.Input[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict']] dns_server_rewrite: for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
-        :param pulumi.Input[Union['WlanDynamicPskArgs', 'WlanDynamicPskArgsDict']] dynamic_psk: for dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
+        :param pulumi.Input[bool] disable_wmm: Whether to disable WMM
+        :param pulumi.Input[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict']] dns_server_rewrite: For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+        :param pulumi.Input[Union['WlanDynamicPskArgs', 'WlanDynamicPskArgsDict']] dynamic_psk: For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
                context (wlan/site/user/...) thus following configurations are assumed (currently) * PSK will come from RADIUS server *
-               AP sends client MAC as username ans password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
+               AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
                Caller-Station-ID * `auth_servers` is required * PSK will come from cloud WLC if source is cloud_psks * default_psk will
                be used if cloud WLC is not available * `multi_psk_only` and `psk` is ignored * `pairwise` can only be wpa2-ccmp (for
                now, wpa3 support on the roadmap)
-        :param pulumi.Input[Union['WlanDynamicVlanArgs', 'WlanDynamicVlanArgsDict']] dynamic_vlan: for 802.1x
-        :param pulumi.Input[bool] enable_local_keycaching: enable AP-AP keycaching via multicast
-        :param pulumi.Input[bool] enable_wireless_bridging: by default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
+        :param pulumi.Input[Union['WlanDynamicVlanArgs', 'WlanDynamicVlanArgsDict']] dynamic_vlan: For 802.1x
+        :param pulumi.Input[bool] enable_local_keycaching: Enable AP-AP keycaching via multicast
+        :param pulumi.Input[bool] enable_wireless_bridging: By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
                client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
-        :param pulumi.Input[bool] enable_wireless_bridging_dhcp_tracking: if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
+        :param pulumi.Input[bool] enable_wireless_bridging_dhcp_tracking: If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
                packets to be forwarded to wireless
-        :param pulumi.Input[bool] enabled: if this wlan is enabled
-        :param pulumi.Input[bool] fast_dot1x_timers: if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
+        :param pulumi.Input[bool] enabled: If this wlan is enabled
+        :param pulumi.Input[bool] fast_dot1x_timers: If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
                ‘auth_server_retries’ .
-        :param pulumi.Input[bool] hide_ssid: whether to hide SSID in beacon
-        :param pulumi.Input[bool] hostname_ie: include hostname inside IE in AP beacons / probe responses
-        :param pulumi.Input[Union['WlanHotspot20Args', 'WlanHotspot20ArgsDict']] hotspot20: hostspot 2.0 wlan settings
+        :param pulumi.Input[bool] hide_ssid: Whether to hide SSID in beacon
+        :param pulumi.Input[bool] hostname_ie: Include hostname inside IE in AP beacons / probe responses
+        :param pulumi.Input[Union['WlanHotspot20Args', 'WlanHotspot20ArgsDict']] hotspot20: Hostspot 2.0 wlan settings
         :param pulumi.Input[str] interface: where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `site_mxedge`, `wxtunnel`
-        :param pulumi.Input[bool] isolation: whether to stop clients to talk to each other
-        :param pulumi.Input[bool] l2_isolation: if isolation is enabled, whether to deny clients to talk to L2 on the LAN
-        :param pulumi.Input[bool] legacy_overds: legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
+        :param pulumi.Input[bool] isolation: Whether to stop clients to talk to each other
+        :param pulumi.Input[bool] l2_isolation: If isolation is enabled, whether to deny clients to talk to L2 on the LAN
+        :param pulumi.Input[bool] legacy_overds: Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
                Enabling this will cause problem for iOS devices.
-        :param pulumi.Input[bool] limit_bcast: whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
-        :param pulumi.Input[bool] limit_probe_response: limit probe response base on some heuristic rules
-        :param pulumi.Input[int] max_idletime: max idle time in seconds
-        :param pulumi.Input[int] max_num_clients: maximum number of client connected to the SSID. `0` means unlimited
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_ids: when `interface`=`mxtunnel`, id of the Mist Tunnel
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_names: when `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
-        :param pulumi.Input[bool] no_static_dns: whether to only allow client to use DNS that we’ve learned from DHCP response
-        :param pulumi.Input[bool] no_static_ip: whether to only allow client that we’ve learned from DHCP exchange to talk
-        :param pulumi.Input[Union['WlanPortalArgs', 'WlanPortalArgsDict']] portal: portal wlan settings
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_hostnames: list of hostnames without http(s):// (matched by substring)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_subnets: list of CIDRs
-        :param pulumi.Input[str] portal_api_secret: api secret (auto-generated) that can be used to sign guest authorization requests
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_denied_hostnames: list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+        :param pulumi.Input[bool] limit_bcast: Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+        :param pulumi.Input[bool] limit_probe_response: Limit probe response base on some heuristic rules
+        :param pulumi.Input[int] max_idletime: Max idle time in seconds
+        :param pulumi.Input[int] max_num_clients: Maximum number of client connected to the SSID. `0` means unlimited
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_ids: When `interface`=`mxtunnel`, id of the Mist Tunnel
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_names: When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        :param pulumi.Input[bool] no_static_dns: Whether to only allow client to use DNS that we’ve learned from DHCP response
+        :param pulumi.Input[bool] no_static_ip: Whether to only allow client that we’ve learned from DHCP exchange to talk
+        :param pulumi.Input[Union['WlanPortalArgs', 'WlanPortalArgsDict']] portal: Portal wlan settings
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_hostnames: List of hostnames without http(s):// (matched by substring)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_subnets: List of CIDRs
+        :param pulumi.Input[str] portal_api_secret: APi secret (auto-generated) that can be used to sign guest authorization requests
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_denied_hostnames: List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
         :param pulumi.Input[str] portal_image: Url of portal background image
-        :param pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']] radsec: Radsec settings
+        :param pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']] radsec: RadSec settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]] rateset: Property key is the RF band. enum: `24`, `5`, `6`
-        :param pulumi.Input[bool] reconnect_clients_when_roaming_mxcluster: when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+        :param pulumi.Input[bool] reconnect_clients_when_roaming_mxcluster: When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
         :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `NONE`
         :param pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']] schedule: WLAN operating schedule, default is disabled
-        :param pulumi.Input[bool] sle_excluded: whether to exclude this WLAN from SLE metrics
-        :param pulumi.Input[str] ssid: the name of the SSID
-        :param pulumi.Input[bool] use_eapol_v1: if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
-        :param pulumi.Input[bool] vlan_enabled: if vlan tagging is enabled
+        :param pulumi.Input[bool] sle_excluded: Whether to exclude this WLAN from SLE metrics
+        :param pulumi.Input[str] ssid: Name of the SSID
+        :param pulumi.Input[bool] use_eapol_v1: If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
+        :param pulumi.Input[bool] vlan_enabled: If vlan tagging is enabled
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
         :param pulumi.Input[bool] vlan_pooling: Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
                deterministic algorithm
-        :param pulumi.Input[int] wlan_limit_down: kbps
-        :param pulumi.Input[bool] wlan_limit_down_enabled: if downlink limiting for whole wlan is enabled
-        :param pulumi.Input[int] wlan_limit_up: kbps
-        :param pulumi.Input[bool] wlan_limit_up_enabled: if uplink limiting for whole wlan is enabled
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] wxtag_ids: list of wxtag_ids
-        :param pulumi.Input[str] wxtunnel_id: when `interface`=`wxtunnel`, id of the WXLAN Tunnel
-        :param pulumi.Input[str] wxtunnel_remote_id: when `interface`=`wxtunnel`, remote tunnel identifier
+        :param pulumi.Input[int] wlan_limit_down: In kbps
+        :param pulumi.Input[bool] wlan_limit_down_enabled: If downlink limiting for whole wlan is enabled
+        :param pulumi.Input[int] wlan_limit_up: In kbps
+        :param pulumi.Input[bool] wlan_limit_up_enabled: If uplink limiting for whole wlan is enabled
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] wxtag_ids: List of wxtag_ids
+        :param pulumi.Input[str] wxtunnel_id: When `interface`=`wxtunnel`, id of the WXLAN Tunnel
+        :param pulumi.Input[str] wxtunnel_remote_id: When `interface`=`wxtunnel`, remote tunnel identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -3802,7 +3802,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="acctImmediateUpdate")
     def acct_immediate_update(self) -> pulumi.Output[bool]:
         """
-        enable coa-immediate-update and address-change-immediate-update on the access profile.
+        Enable coa-immediate-update and address-change-immediate-update on the access profile.
         """
         return pulumi.get(self, "acct_immediate_update")
 
@@ -3810,7 +3810,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="acctInterimInterval")
     def acct_interim_interval(self) -> pulumi.Output[int]:
         """
-        how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
+        How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
         from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended
         when enabled
         """
@@ -3820,7 +3820,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="acctServers")
     def acct_servers(self) -> pulumi.Output[Sequence['outputs.WlanAcctServer']]:
         """
-        list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+        List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
         """
         return pulumi.get(self, "acct_servers")
 
@@ -3828,7 +3828,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter
     def airwatch(self) -> pulumi.Output['outputs.WlanAirwatch']:
         """
-        airwatch wlan settings
+        Airwatch wlan settings
         """
         return pulumi.get(self, "airwatch")
 
@@ -3836,7 +3836,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="allowIpv6Ndp")
     def allow_ipv6_ndp(self) -> pulumi.Output[bool]:
         """
-        only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
         """
         return pulumi.get(self, "allow_ipv6_ndp")
 
@@ -3844,7 +3844,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="allowMdns")
     def allow_mdns(self) -> pulumi.Output[bool]:
         """
-        only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
         """
         return pulumi.get(self, "allow_mdns")
 
@@ -3852,7 +3852,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="allowSsdp")
     def allow_ssdp(self) -> pulumi.Output[bool]:
         """
-        only applicable when `limit_bcast`==`true`, which allows SSDP
+        Only applicable when `limit_bcast`==`true`, which allows SSDP
         """
         return pulumi.get(self, "allow_ssdp")
 
@@ -3860,7 +3860,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="apIds")
     def ap_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        list of device ids
+        List of device ids
         """
         return pulumi.get(self, "ap_ids")
 
@@ -3868,7 +3868,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="appLimit")
     def app_limit(self) -> pulumi.Output['outputs.WlanAppLimit']:
         """
-        bandwidth limiting for apps (applies to up/down)
+        Bandwidth limiting for apps (applies to up/down)
         """
         return pulumi.get(self, "app_limit")
 
@@ -3876,7 +3876,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="appQos")
     def app_qos(self) -> pulumi.Output['outputs.WlanAppQos']:
         """
-        app qos wlan settings
+        APp qos wlan settings
         """
         return pulumi.get(self, "app_qos")
 
@@ -3892,7 +3892,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="arpFilter")
     def arp_filter(self) -> pulumi.Output[bool]:
         """
-        whether to enable smart arp filter
+        Whether to enable smart arp filter
         """
         return pulumi.get(self, "arp_filter")
 
@@ -3900,7 +3900,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter
     def auth(self) -> pulumi.Output[Optional['outputs.WlanAuth']]:
         """
-        authentication wlan settings
+        Authentication wlan settings
         """
         return pulumi.get(self, "auth")
 
@@ -3916,7 +3916,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="authServers")
     def auth_servers(self) -> pulumi.Output[Sequence['outputs.WlanAuthServer']]:
         """
-        list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
+        List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
         is treated as primary
         """
         return pulumi.get(self, "auth_servers")
@@ -3925,7 +3925,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="authServersNasId")
     def auth_servers_nas_id(self) -> pulumi.Output[str]:
         """
-        optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+        Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
         """
         return pulumi.get(self, "auth_servers_nas_id")
 
@@ -3933,7 +3933,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="authServersNasIp")
     def auth_servers_nas_ip(self) -> pulumi.Output[str]:
         """
-        optional, NAS-IP-ADDRESS to use
+        Optional, NAS-IP-ADDRESS to use
         """
         return pulumi.get(self, "auth_servers_nas_ip")
 
@@ -3941,9 +3941,9 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="authServersRetries")
     def auth_servers_retries(self) -> pulumi.Output[int]:
         """
-        radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’ are
-        set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to
-        default value to 3.
+        Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set
+        to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default
+        value to 3.
         """
         return pulumi.get(self, "auth_servers_retries")
 
@@ -3951,9 +3951,9 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="authServersTimeout")
     def auth_servers_timeout(self) -> pulumi.Output[int]:
         """
-        radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled.
-        ‘quite-period’ and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’
-        is also set when setting auth_servers_timeout and is set to default value of 10.
+        Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’
+        and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
+        setting auth_servers_timeout and is set to default value of 10.
         """
         return pulumi.get(self, "auth_servers_timeout")
 
@@ -3961,7 +3961,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="bandSteer")
     def band_steer(self) -> pulumi.Output[bool]:
         """
-        whether to enable band_steering, this works only when band==both
+        Whether to enable band_steering, this works only when band==both
         """
         return pulumi.get(self, "band_steer")
 
@@ -3969,7 +3969,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="bandSteerForceBand5")
     def band_steer_force_band5(self) -> pulumi.Output[bool]:
         """
-        force dual_band capable client to connect to 5G
+        Force dual_band capable client to connect to 5G
         """
         return pulumi.get(self, "band_steer_force_band5")
 
@@ -3985,7 +3985,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="blockBlacklistClients")
     def block_blacklist_clients(self) -> pulumi.Output[bool]:
         """
-        whether to block the clients in the blacklist (up to first 256 macs)
+        Whether to block the clients in the blacklist (up to first 256 macs)
         """
         return pulumi.get(self, "block_blacklist_clients")
 
@@ -3993,7 +3993,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter
     def bonjour(self) -> pulumi.Output['outputs.WlanBonjour']:
         """
-        bonjour gateway wlan settings
+        Bonjour gateway wlan settings
         """
         return pulumi.get(self, "bonjour")
 
@@ -4010,7 +4010,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="clientLimitDown")
     def client_limit_down(self) -> pulumi.Output[int]:
         """
-        kbps
+        In kbps
         """
         return pulumi.get(self, "client_limit_down")
 
@@ -4018,7 +4018,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="clientLimitDownEnabled")
     def client_limit_down_enabled(self) -> pulumi.Output[bool]:
         """
-        if downlink limiting per-client is enabled
+        If downlink limiting per-client is enabled
         """
         return pulumi.get(self, "client_limit_down_enabled")
 
@@ -4026,7 +4026,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="clientLimitUp")
     def client_limit_up(self) -> pulumi.Output[int]:
         """
-        kbps
+        In kbps
         """
         return pulumi.get(self, "client_limit_up")
 
@@ -4034,7 +4034,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="clientLimitUpEnabled")
     def client_limit_up_enabled(self) -> pulumi.Output[bool]:
         """
-        if uplink limiting per-client is enabled
+        If uplink limiting per-client is enabled
         """
         return pulumi.get(self, "client_limit_up_enabled")
 
@@ -4042,7 +4042,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="coaServers")
     def coa_servers(self) -> pulumi.Output[Sequence['outputs.WlanCoaServer']]:
         """
-        list of COA (change of authorization) servers, optional
+        List of COA (change of authorization) servers, optional
         """
         return pulumi.get(self, "coa_servers")
 
@@ -4050,7 +4050,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter
     def disable11ax(self) -> pulumi.Output[bool]:
         """
-        some old WLAN drivers may not be compatible
+        Some old WLAN drivers may not be compatible
         """
         return pulumi.get(self, "disable11ax")
 
@@ -4058,7 +4058,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="disableHtVhtRates")
     def disable_ht_vht_rates(self) -> pulumi.Output[bool]:
         """
-        to disable ht or vht rates
+        To disable ht or vht rates
         """
         return pulumi.get(self, "disable_ht_vht_rates")
 
@@ -4066,7 +4066,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="disableUapsd")
     def disable_uapsd(self) -> pulumi.Output[bool]:
         """
-        whether to disable U-APSD
+        Whether to disable U-APSD
         """
         return pulumi.get(self, "disable_uapsd")
 
@@ -4074,7 +4074,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="disableV1RoamNotify")
     def disable_v1_roam_notify(self) -> pulumi.Output[bool]:
         """
-        disable sending v2 roam notification messages
+        Disable sending v2 roam notification messages
         """
         return pulumi.get(self, "disable_v1_roam_notify")
 
@@ -4082,7 +4082,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="disableV2RoamNotify")
     def disable_v2_roam_notify(self) -> pulumi.Output[bool]:
         """
-        disable sending v2 roam notification messages
+        Disable sending v2 roam notification messages
         """
         return pulumi.get(self, "disable_v2_roam_notify")
 
@@ -4090,7 +4090,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="disableWhenGatewayUnreachable")
     def disable_when_gateway_unreachable(self) -> pulumi.Output[Optional[bool]]:
         """
-        when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+        When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
         reach default gateway
         """
         return pulumi.get(self, "disable_when_gateway_unreachable")
@@ -4104,7 +4104,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="disableWmm")
     def disable_wmm(self) -> pulumi.Output[bool]:
         """
-        whether to disable WMM
+        Whether to disable WMM
         """
         return pulumi.get(self, "disable_wmm")
 
@@ -4112,7 +4112,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="dnsServerRewrite")
     def dns_server_rewrite(self) -> pulumi.Output['outputs.WlanDnsServerRewrite']:
         """
-        for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+        For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
         """
         return pulumi.get(self, "dns_server_rewrite")
 
@@ -4125,9 +4125,9 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="dynamicPsk")
     def dynamic_psk(self) -> pulumi.Output[Optional['outputs.WlanDynamicPsk']]:
         """
-        for dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
+        For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
         context (wlan/site/user/...) thus following configurations are assumed (currently) * PSK will come from RADIUS server *
-        AP sends client MAC as username ans password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
+        AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
         Caller-Station-ID * `auth_servers` is required * PSK will come from cloud WLC if source is cloud_psks * default_psk will
         be used if cloud WLC is not available * `multi_psk_only` and `psk` is ignored * `pairwise` can only be wpa2-ccmp (for
         now, wpa3 support on the roadmap)
@@ -4138,7 +4138,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="dynamicVlan")
     def dynamic_vlan(self) -> pulumi.Output[Optional['outputs.WlanDynamicVlan']]:
         """
-        for 802.1x
+        For 802.1x
         """
         return pulumi.get(self, "dynamic_vlan")
 
@@ -4146,7 +4146,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="enableLocalKeycaching")
     def enable_local_keycaching(self) -> pulumi.Output[bool]:
         """
-        enable AP-AP keycaching via multicast
+        Enable AP-AP keycaching via multicast
         """
         return pulumi.get(self, "enable_local_keycaching")
 
@@ -4154,7 +4154,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="enableWirelessBridging")
     def enable_wireless_bridging(self) -> pulumi.Output[bool]:
         """
-        by default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
+        By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
         client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
         """
         return pulumi.get(self, "enable_wireless_bridging")
@@ -4163,7 +4163,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="enableWirelessBridgingDhcpTracking")
     def enable_wireless_bridging_dhcp_tracking(self) -> pulumi.Output[bool]:
         """
-        if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
+        If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
         packets to be forwarded to wireless
         """
         return pulumi.get(self, "enable_wireless_bridging_dhcp_tracking")
@@ -4172,7 +4172,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
         """
-        if this wlan is enabled
+        If this wlan is enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -4180,7 +4180,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="fastDot1xTimers")
     def fast_dot1x_timers(self) -> pulumi.Output[bool]:
         """
-        if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
+        If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
         ‘auth_server_retries’ .
         """
         return pulumi.get(self, "fast_dot1x_timers")
@@ -4189,7 +4189,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="hideSsid")
     def hide_ssid(self) -> pulumi.Output[bool]:
         """
-        whether to hide SSID in beacon
+        Whether to hide SSID in beacon
         """
         return pulumi.get(self, "hide_ssid")
 
@@ -4197,7 +4197,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="hostnameIe")
     def hostname_ie(self) -> pulumi.Output[bool]:
         """
-        include hostname inside IE in AP beacons / probe responses
+        Include hostname inside IE in AP beacons / probe responses
         """
         return pulumi.get(self, "hostname_ie")
 
@@ -4205,7 +4205,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter
     def hotspot20(self) -> pulumi.Output['outputs.WlanHotspot20']:
         """
-        hostspot 2.0 wlan settings
+        Hostspot 2.0 wlan settings
         """
         return pulumi.get(self, "hotspot20")
 
@@ -4226,7 +4226,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter
     def isolation(self) -> pulumi.Output[bool]:
         """
-        whether to stop clients to talk to each other
+        Whether to stop clients to talk to each other
         """
         return pulumi.get(self, "isolation")
 
@@ -4234,7 +4234,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="l2Isolation")
     def l2_isolation(self) -> pulumi.Output[bool]:
         """
-        if isolation is enabled, whether to deny clients to talk to L2 on the LAN
+        If isolation is enabled, whether to deny clients to talk to L2 on the LAN
         """
         return pulumi.get(self, "l2_isolation")
 
@@ -4242,7 +4242,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="legacyOverds")
     def legacy_overds(self) -> pulumi.Output[bool]:
         """
-        legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
+        Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
         Enabling this will cause problem for iOS devices.
         """
         return pulumi.get(self, "legacy_overds")
@@ -4251,7 +4251,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="limitBcast")
     def limit_bcast(self) -> pulumi.Output[bool]:
         """
-        whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+        Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
         """
         return pulumi.get(self, "limit_bcast")
 
@@ -4259,7 +4259,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="limitProbeResponse")
     def limit_probe_response(self) -> pulumi.Output[bool]:
         """
-        limit probe response base on some heuristic rules
+        Limit probe response base on some heuristic rules
         """
         return pulumi.get(self, "limit_probe_response")
 
@@ -4267,7 +4267,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="maxIdletime")
     def max_idletime(self) -> pulumi.Output[int]:
         """
-        max idle time in seconds
+        Max idle time in seconds
         """
         return pulumi.get(self, "max_idletime")
 
@@ -4275,7 +4275,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="maxNumClients")
     def max_num_clients(self) -> pulumi.Output[int]:
         """
-        maximum number of client connected to the SSID. `0` means unlimited
+        Maximum number of client connected to the SSID. `0` means unlimited
         """
         return pulumi.get(self, "max_num_clients")
 
@@ -4293,7 +4293,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="mxtunnelIds")
     def mxtunnel_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        when `interface`=`mxtunnel`, id of the Mist Tunnel
+        When `interface`=`mxtunnel`, id of the Mist Tunnel
         """
         return pulumi.get(self, "mxtunnel_ids")
 
@@ -4301,7 +4301,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="mxtunnelNames")
     def mxtunnel_names(self) -> pulumi.Output[Sequence[str]]:
         """
-        when `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
         """
         return pulumi.get(self, "mxtunnel_names")
 
@@ -4309,7 +4309,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="noStaticDns")
     def no_static_dns(self) -> pulumi.Output[bool]:
         """
-        whether to only allow client to use DNS that we’ve learned from DHCP response
+        Whether to only allow client to use DNS that we’ve learned from DHCP response
         """
         return pulumi.get(self, "no_static_dns")
 
@@ -4317,7 +4317,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="noStaticIp")
     def no_static_ip(self) -> pulumi.Output[bool]:
         """
-        whether to only allow client that we’ve learned from DHCP exchange to talk
+        Whether to only allow client that we’ve learned from DHCP exchange to talk
         """
         return pulumi.get(self, "no_static_ip")
 
@@ -4330,7 +4330,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter
     def portal(self) -> pulumi.Output['outputs.WlanPortal']:
         """
-        portal wlan settings
+        Portal wlan settings
         """
         return pulumi.get(self, "portal")
 
@@ -4338,7 +4338,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="portalAllowedHostnames")
     def portal_allowed_hostnames(self) -> pulumi.Output[Sequence[str]]:
         """
-        list of hostnames without http(s):// (matched by substring)
+        List of hostnames without http(s):// (matched by substring)
         """
         return pulumi.get(self, "portal_allowed_hostnames")
 
@@ -4346,7 +4346,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="portalAllowedSubnets")
     def portal_allowed_subnets(self) -> pulumi.Output[Sequence[str]]:
         """
-        list of CIDRs
+        List of CIDRs
         """
         return pulumi.get(self, "portal_allowed_subnets")
 
@@ -4354,7 +4354,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="portalApiSecret")
     def portal_api_secret(self) -> pulumi.Output[str]:
         """
-        api secret (auto-generated) that can be used to sign guest authorization requests
+        APi secret (auto-generated) that can be used to sign guest authorization requests
         """
         return pulumi.get(self, "portal_api_secret")
 
@@ -4362,7 +4362,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="portalDeniedHostnames")
     def portal_denied_hostnames(self) -> pulumi.Output[Sequence[str]]:
         """
-        list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+        List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
         """
         return pulumi.get(self, "portal_denied_hostnames")
 
@@ -4388,7 +4388,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter
     def radsec(self) -> pulumi.Output['outputs.WlanRadsec']:
         """
-        Radsec settings
+        RadSec settings
         """
         return pulumi.get(self, "radsec")
 
@@ -4404,7 +4404,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="reconnectClientsWhenRoamingMxcluster")
     def reconnect_clients_when_roaming_mxcluster(self) -> pulumi.Output[Optional[bool]]:
         """
-        when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+        When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
         """
         return pulumi.get(self, "reconnect_clients_when_roaming_mxcluster")
 
@@ -4428,7 +4428,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="sleExcluded")
     def sle_excluded(self) -> pulumi.Output[bool]:
         """
-        whether to exclude this WLAN from SLE metrics
+        Whether to exclude this WLAN from SLE metrics
         """
         return pulumi.get(self, "sle_excluded")
 
@@ -4436,7 +4436,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter
     def ssid(self) -> pulumi.Output[str]:
         """
-        the name of the SSID
+        Name of the SSID
         """
         return pulumi.get(self, "ssid")
 
@@ -4449,7 +4449,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="useEapolV1")
     def use_eapol_v1(self) -> pulumi.Output[bool]:
         """
-        if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
+        If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
         """
         return pulumi.get(self, "use_eapol_v1")
 
@@ -4457,7 +4457,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="vlanEnabled")
     def vlan_enabled(self) -> pulumi.Output[bool]:
         """
-        if vlan tagging is enabled
+        If vlan tagging is enabled
         """
         return pulumi.get(self, "vlan_enabled")
 
@@ -4487,7 +4487,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="wlanLimitDown")
     def wlan_limit_down(self) -> pulumi.Output[int]:
         """
-        kbps
+        In kbps
         """
         return pulumi.get(self, "wlan_limit_down")
 
@@ -4495,7 +4495,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="wlanLimitDownEnabled")
     def wlan_limit_down_enabled(self) -> pulumi.Output[bool]:
         """
-        if downlink limiting for whole wlan is enabled
+        If downlink limiting for whole wlan is enabled
         """
         return pulumi.get(self, "wlan_limit_down_enabled")
 
@@ -4503,7 +4503,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="wlanLimitUp")
     def wlan_limit_up(self) -> pulumi.Output[int]:
         """
-        kbps
+        In kbps
         """
         return pulumi.get(self, "wlan_limit_up")
 
@@ -4511,7 +4511,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="wlanLimitUpEnabled")
     def wlan_limit_up_enabled(self) -> pulumi.Output[bool]:
         """
-        if uplink limiting for whole wlan is enabled
+        If uplink limiting for whole wlan is enabled
         """
         return pulumi.get(self, "wlan_limit_up_enabled")
 
@@ -4519,7 +4519,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="wxtagIds")
     def wxtag_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        list of wxtag_ids
+        List of wxtag_ids
         """
         return pulumi.get(self, "wxtag_ids")
 
@@ -4527,7 +4527,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="wxtunnelId")
     def wxtunnel_id(self) -> pulumi.Output[str]:
         """
-        when `interface`=`wxtunnel`, id of the WXLAN Tunnel
+        When `interface`=`wxtunnel`, id of the WXLAN Tunnel
         """
         return pulumi.get(self, "wxtunnel_id")
 
@@ -4535,7 +4535,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="wxtunnelRemoteId")
     def wxtunnel_remote_id(self) -> pulumi.Output[str]:
         """
-        when `interface`=`wxtunnel`, remote tunnel identifier
+        When `interface`=`wxtunnel`, remote tunnel identifier
         """
         return pulumi.get(self, "wxtunnel_remote_id")
 

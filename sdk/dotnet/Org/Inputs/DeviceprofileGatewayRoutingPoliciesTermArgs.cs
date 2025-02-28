@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class DeviceprofileGatewayRoutingPoliciesTermArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// when used as import policy
+        /// When used as import policy
         /// </summary>
         [Input("action")]
         public Input<Inputs.DeviceprofileGatewayRoutingPoliciesTermActionArgs>? Action { get; set; }

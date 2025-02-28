@@ -18,12 +18,12 @@ public final class NetworktemplateSwitchMatchingRuleOobIpConfig {
      */
     private @Nullable String type;
     /**
-     * @return if supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * @return If supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     private @Nullable Boolean useMgmtVrf;
     /**
-     * @return for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+     * @return For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     private @Nullable Boolean useMgmtVrfForHostOut;
@@ -37,14 +37,14 @@ public final class NetworktemplateSwitchMatchingRuleOobIpConfig {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return if supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * @return If supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     public Optional<Boolean> useMgmtVrf() {
         return Optional.ofNullable(this.useMgmtVrf);
     }
     /**
-     * @return for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+     * @return For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     public Optional<Boolean> useMgmtVrfForHostOut() {

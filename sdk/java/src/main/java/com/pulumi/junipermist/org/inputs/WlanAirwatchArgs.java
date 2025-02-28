@@ -32,14 +32,14 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * console URL
+     * Console URL
      * 
      */
     @Import(name="consoleUrl")
     private @Nullable Output<String> consoleUrl;
 
     /**
-     * @return console URL
+     * @return Console URL
      * 
      */
     public Optional<Output<String>> consoleUrl() {
@@ -54,14 +54,14 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * password
+     * Password
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return password
+     * @return Password
      * 
      */
     public Optional<Output<String>> password() {
@@ -69,14 +69,14 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * username
+     * Username
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return username
+     * @return Username
      * 
      */
     public Optional<Output<String>> username() {
@@ -133,7 +133,7 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param consoleUrl console URL
+         * @param consoleUrl Console URL
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param consoleUrl console URL
+         * @param consoleUrl Console URL
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password password
+         * @param password Password
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password password
+         * @param password Password
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username username
+         * @param username Username
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username username
+         * @param username Username
          * 
          * @return builder
          * 

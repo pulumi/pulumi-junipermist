@@ -13,19 +13,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class DeviceprofileApAeroscoutArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// whether to enable aeroscout config
+        /// Whether to enable aeroscout config
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// required if enabled, aeroscout server host
+        /// Required if enabled, aeroscout server host
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
+        /// Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
         /// </summary>
         [Input("locateConnected")]
         public Input<bool>? LocateConnected { get; set; }

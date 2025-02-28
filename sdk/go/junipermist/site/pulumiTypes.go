@@ -1130,30 +1130,30 @@ func (o NetworktemplateAclPolicyActionArrayOutput) Index(i pulumi.IntInput) Netw
 }
 
 type NetworktemplateAclTags struct {
-	// required if
+	// Required if
 	//   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
 	//   - `type`==`gbpResource`
 	//   - `type`==`staticGbp` (applying gbp tag against matching conditions)
 	GbpTag *int `pulumi:"gbpTag"`
-	// required if
+	// Required if
 	// - `type`==`mac`
 	// - `type`==`staticGbp` if from matching mac
 	Macs []string `pulumi:"macs"`
-	// if:
+	// If:
 	//   * `type`==`mac` (optional. default is `any`)
 	//   * `type`==`subnet` (optional. default is `any`)
 	//   * `type`==`network`
 	//   * `type`==`resource` (optional. default is `any`)
-	//   * `type`==`staticGbp` if from matching network (vlan)'
+	//   * `type`==`staticGbp` if from matching network (vlan)
 	Network *string `pulumi:"network"`
-	// required if:
+	// Required if:
 	//   * `type`==`radiusGroup`
 	//   * `type`==`staticGbp`
 	//     if from matching radius_group
 	RadiusGroup *string `pulumi:"radiusGroup"`
-	// if `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+	// If `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
 	Specs []NetworktemplateAclTagsSpec `pulumi:"specs"`
-	// if
+	// If
 	// - `type`==`subnet`
 	// - `type`==`resource` (optional. default is `any`)
 	// - `type`==`staticGbp` if from matching subnet
@@ -1183,30 +1183,30 @@ type NetworktemplateAclTagsInput interface {
 }
 
 type NetworktemplateAclTagsArgs struct {
-	// required if
+	// Required if
 	//   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
 	//   - `type`==`gbpResource`
 	//   - `type`==`staticGbp` (applying gbp tag against matching conditions)
 	GbpTag pulumi.IntPtrInput `pulumi:"gbpTag"`
-	// required if
+	// Required if
 	// - `type`==`mac`
 	// - `type`==`staticGbp` if from matching mac
 	Macs pulumi.StringArrayInput `pulumi:"macs"`
-	// if:
+	// If:
 	//   * `type`==`mac` (optional. default is `any`)
 	//   * `type`==`subnet` (optional. default is `any`)
 	//   * `type`==`network`
 	//   * `type`==`resource` (optional. default is `any`)
-	//   * `type`==`staticGbp` if from matching network (vlan)'
+	//   * `type`==`staticGbp` if from matching network (vlan)
 	Network pulumi.StringPtrInput `pulumi:"network"`
-	// required if:
+	// Required if:
 	//   * `type`==`radiusGroup`
 	//   * `type`==`staticGbp`
 	//     if from matching radius_group
 	RadiusGroup pulumi.StringPtrInput `pulumi:"radiusGroup"`
-	// if `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+	// If `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
 	Specs NetworktemplateAclTagsSpecArrayInput `pulumi:"specs"`
-	// if
+	// If
 	// - `type`==`subnet`
 	// - `type`==`resource` (optional. default is `any`)
 	// - `type`==`staticGbp` if from matching subnet
@@ -1275,7 +1275,7 @@ func (o NetworktemplateAclTagsOutput) ToNetworktemplateAclTagsOutputWithContext(
 	return o
 }
 
-// required if
+// Required if
 //   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
 //   - `type`==`gbpResource`
 //   - `type`==`staticGbp` (applying gbp tag against matching conditions)
@@ -1283,24 +1283,24 @@ func (o NetworktemplateAclTagsOutput) GbpTag() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplateAclTags) *int { return v.GbpTag }).(pulumi.IntPtrOutput)
 }
 
-// required if
+// Required if
 // - `type`==`mac`
 // - `type`==`staticGbp` if from matching mac
 func (o NetworktemplateAclTagsOutput) Macs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworktemplateAclTags) []string { return v.Macs }).(pulumi.StringArrayOutput)
 }
 
-// if:
+// If:
 //   - `type`==`mac` (optional. default is `any`)
 //   - `type`==`subnet` (optional. default is `any`)
 //   - `type`==`network`
 //   - `type`==`resource` (optional. default is `any`)
-//   - `type`==`staticGbp` if from matching network (vlan)'
+//   - `type`==`staticGbp` if from matching network (vlan)
 func (o NetworktemplateAclTagsOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateAclTags) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// required if:
+// Required if:
 //   - `type`==`radiusGroup`
 //   - `type`==`staticGbp`
 //     if from matching radius_group
@@ -1308,12 +1308,12 @@ func (o NetworktemplateAclTagsOutput) RadiusGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateAclTags) *string { return v.RadiusGroup }).(pulumi.StringPtrOutput)
 }
 
-// if `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+// If `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
 func (o NetworktemplateAclTagsOutput) Specs() NetworktemplateAclTagsSpecArrayOutput {
 	return o.ApplyT(func(v NetworktemplateAclTags) []NetworktemplateAclTagsSpec { return v.Specs }).(NetworktemplateAclTagsSpecArrayOutput)
 }
 
-// if
+// If
 // - `type`==`subnet`
 // - `type`==`resource` (optional. default is `any`)
 // - `type`==`staticGbp` if from matching subnet
@@ -1356,7 +1356,7 @@ func (o NetworktemplateAclTagsMapOutput) MapIndex(k pulumi.StringInput) Networkt
 }
 
 type NetworktemplateAclTagsSpec struct {
-	// matched dst port, "0" means any
+	// Matched dst port, "0" means any
 	PortRange *string `pulumi:"portRange"`
 	// `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocolNumber` is between 1-254, default is `any` `protocolNumber` is between 1-254
 	Protocol *string `pulumi:"protocol"`
@@ -1374,7 +1374,7 @@ type NetworktemplateAclTagsSpecInput interface {
 }
 
 type NetworktemplateAclTagsSpecArgs struct {
-	// matched dst port, "0" means any
+	// Matched dst port, "0" means any
 	PortRange pulumi.StringPtrInput `pulumi:"portRange"`
 	// `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocolNumber` is between 1-254, default is `any` `protocolNumber` is between 1-254
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
@@ -1431,7 +1431,7 @@ func (o NetworktemplateAclTagsSpecOutput) ToNetworktemplateAclTagsSpecOutputWith
 	return o
 }
 
-// matched dst port, "0" means any
+// Matched dst port, "0" means any
 func (o NetworktemplateAclTagsSpecOutput) PortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateAclTagsSpec) *string { return v.PortRange }).(pulumi.StringPtrOutput)
 }
@@ -1468,7 +1468,7 @@ type NetworktemplateDhcpSnooping struct {
 	// Enable for check for forging source IP address
 	EnableIpSourceGuard *bool `pulumi:"enableIpSourceGuard"`
 	Enabled             *bool `pulumi:"enabled"`
-	// if `allNetworks`==`false`, list of network with DHCP snooping enabled
+	// If `allNetworks`==`false`, list of network with DHCP snooping enabled
 	Networks []string `pulumi:"networks"`
 }
 
@@ -1490,7 +1490,7 @@ type NetworktemplateDhcpSnoopingArgs struct {
 	// Enable for check for forging source IP address
 	EnableIpSourceGuard pulumi.BoolPtrInput `pulumi:"enableIpSourceGuard"`
 	Enabled             pulumi.BoolPtrInput `pulumi:"enabled"`
-	// if `allNetworks`==`false`, list of network with DHCP snooping enabled
+	// If `allNetworks`==`false`, list of network with DHCP snooping enabled
 	Networks pulumi.StringArrayInput `pulumi:"networks"`
 }
 
@@ -1589,7 +1589,7 @@ func (o NetworktemplateDhcpSnoopingOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateDhcpSnooping) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// if `allNetworks`==`false`, list of network with DHCP snooping enabled
+// If `allNetworks`==`false`, list of network with DHCP snooping enabled
 func (o NetworktemplateDhcpSnoopingOutput) Networks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworktemplateDhcpSnooping) []string { return v.Networks }).(pulumi.StringArrayOutput)
 }
@@ -1656,7 +1656,7 @@ func (o NetworktemplateDhcpSnoopingPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// if `allNetworks`==`false`, list of network with DHCP snooping enabled
+// If `allNetworks`==`false`, list of network with DHCP snooping enabled
 func (o NetworktemplateDhcpSnoopingPtrOutput) Networks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NetworktemplateDhcpSnooping) []string {
 		if v == nil {
@@ -1667,13 +1667,13 @@ func (o NetworktemplateDhcpSnoopingPtrOutput) Networks() pulumi.StringArrayOutpu
 }
 
 type NetworktemplateExtraRoutes6 struct {
-	// this takes precedence
+	// This takes precedence
 	Discard       *bool                                               `pulumi:"discard"`
 	Metric        *int                                                `pulumi:"metric"`
 	NextQualified map[string]NetworktemplateExtraRoutes6NextQualified `pulumi:"nextQualified"`
 	NoResolve     *bool                                               `pulumi:"noResolve"`
 	Preference    *int                                                `pulumi:"preference"`
-	// next-hop IP Address
+	// Next-hop IP Address
 	Via string `pulumi:"via"`
 }
 
@@ -1689,13 +1689,13 @@ type NetworktemplateExtraRoutes6Input interface {
 }
 
 type NetworktemplateExtraRoutes6Args struct {
-	// this takes precedence
+	// This takes precedence
 	Discard       pulumi.BoolPtrInput                              `pulumi:"discard"`
 	Metric        pulumi.IntPtrInput                               `pulumi:"metric"`
 	NextQualified NetworktemplateExtraRoutes6NextQualifiedMapInput `pulumi:"nextQualified"`
 	NoResolve     pulumi.BoolPtrInput                              `pulumi:"noResolve"`
 	Preference    pulumi.IntPtrInput                               `pulumi:"preference"`
-	// next-hop IP Address
+	// Next-hop IP Address
 	Via pulumi.StringInput `pulumi:"via"`
 }
 
@@ -1750,7 +1750,7 @@ func (o NetworktemplateExtraRoutes6Output) ToNetworktemplateExtraRoutes6OutputWi
 	return o
 }
 
-// this takes precedence
+// This takes precedence
 func (o NetworktemplateExtraRoutes6Output) Discard() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateExtraRoutes6) *bool { return v.Discard }).(pulumi.BoolPtrOutput)
 }
@@ -1773,7 +1773,7 @@ func (o NetworktemplateExtraRoutes6Output) Preference() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplateExtraRoutes6) *int { return v.Preference }).(pulumi.IntPtrOutput)
 }
 
-// next-hop IP Address
+// Next-hop IP Address
 func (o NetworktemplateExtraRoutes6Output) Via() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworktemplateExtraRoutes6) string { return v.Via }).(pulumi.StringOutput)
 }
@@ -1899,13 +1899,13 @@ func (o NetworktemplateExtraRoutes6NextQualifiedMapOutput) MapIndex(k pulumi.Str
 }
 
 type NetworktemplateExtraRoutes struct {
-	// this takes precedence
+	// This takes precedence
 	Discard       *bool                                              `pulumi:"discard"`
 	Metric        *int                                               `pulumi:"metric"`
 	NextQualified map[string]NetworktemplateExtraRoutesNextQualified `pulumi:"nextQualified"`
 	NoResolve     *bool                                              `pulumi:"noResolve"`
 	Preference    *int                                               `pulumi:"preference"`
-	// next-hop IP Address
+	// Next-hop IP Address
 	Via string `pulumi:"via"`
 }
 
@@ -1921,13 +1921,13 @@ type NetworktemplateExtraRoutesInput interface {
 }
 
 type NetworktemplateExtraRoutesArgs struct {
-	// this takes precedence
+	// This takes precedence
 	Discard       pulumi.BoolPtrInput                             `pulumi:"discard"`
 	Metric        pulumi.IntPtrInput                              `pulumi:"metric"`
 	NextQualified NetworktemplateExtraRoutesNextQualifiedMapInput `pulumi:"nextQualified"`
 	NoResolve     pulumi.BoolPtrInput                             `pulumi:"noResolve"`
 	Preference    pulumi.IntPtrInput                              `pulumi:"preference"`
-	// next-hop IP Address
+	// Next-hop IP Address
 	Via pulumi.StringInput `pulumi:"via"`
 }
 
@@ -1982,7 +1982,7 @@ func (o NetworktemplateExtraRoutesOutput) ToNetworktemplateExtraRoutesOutputWith
 	return o
 }
 
-// this takes precedence
+// This takes precedence
 func (o NetworktemplateExtraRoutesOutput) Discard() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateExtraRoutes) *bool { return v.Discard }).(pulumi.BoolPtrOutput)
 }
@@ -2005,7 +2005,7 @@ func (o NetworktemplateExtraRoutesOutput) Preference() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplateExtraRoutes) *int { return v.Preference }).(pulumi.IntPtrOutput)
 }
 
-// next-hop IP Address
+// Next-hop IP Address
 func (o NetworktemplateExtraRoutesOutput) Via() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworktemplateExtraRoutes) string { return v.Via }).(pulumi.StringOutput)
 }
@@ -2279,16 +2279,16 @@ func (o NetworktemplateMistNacPtrOutput) Network() pulumi.StringPtrOutput {
 }
 
 type NetworktemplateNetworks struct {
-	// only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+	// Only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
 	Gateway *string `pulumi:"gateway"`
-	// only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+	// Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
 	Gateway6 *string `pulumi:"gateway6"`
 	// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
 	Isolation       *bool   `pulumi:"isolation"`
 	IsolationVlanId *string `pulumi:"isolationVlanId"`
-	// optional for pure switching, required when L3 / routing features are used
+	// Optional for pure switching, required when L3 / routing features are used
 	Subnet *string `pulumi:"subnet"`
-	// optional for pure switching, required when L3 / routing features are used
+	// Optional for pure switching, required when L3 / routing features are used
 	Subnet6 *string `pulumi:"subnet6"`
 	VlanId  string  `pulumi:"vlanId"`
 }
@@ -2305,16 +2305,16 @@ type NetworktemplateNetworksInput interface {
 }
 
 type NetworktemplateNetworksArgs struct {
-	// only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+	// Only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
-	// only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+	// Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
 	Gateway6 pulumi.StringPtrInput `pulumi:"gateway6"`
 	// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
 	Isolation       pulumi.BoolPtrInput   `pulumi:"isolation"`
 	IsolationVlanId pulumi.StringPtrInput `pulumi:"isolationVlanId"`
-	// optional for pure switching, required when L3 / routing features are used
+	// Optional for pure switching, required when L3 / routing features are used
 	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
-	// optional for pure switching, required when L3 / routing features are used
+	// Optional for pure switching, required when L3 / routing features are used
 	Subnet6 pulumi.StringPtrInput `pulumi:"subnet6"`
 	VlanId  pulumi.StringInput    `pulumi:"vlanId"`
 }
@@ -2370,12 +2370,12 @@ func (o NetworktemplateNetworksOutput) ToNetworktemplateNetworksOutputWithContex
 	return o
 }
 
-// only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+// Only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
 func (o NetworktemplateNetworksOutput) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateNetworks) *string { return v.Gateway }).(pulumi.StringPtrOutput)
 }
 
-// only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+// Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
 func (o NetworktemplateNetworksOutput) Gateway6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateNetworks) *string { return v.Gateway6 }).(pulumi.StringPtrOutput)
 }
@@ -2389,12 +2389,12 @@ func (o NetworktemplateNetworksOutput) IsolationVlanId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v NetworktemplateNetworks) *string { return v.IsolationVlanId }).(pulumi.StringPtrOutput)
 }
 
-// optional for pure switching, required when L3 / routing features are used
+// Optional for pure switching, required when L3 / routing features are used
 func (o NetworktemplateNetworksOutput) Subnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateNetworks) *string { return v.Subnet }).(pulumi.StringPtrOutput)
 }
 
-// optional for pure switching, required when L3 / routing features are used
+// Optional for pure switching, required when L3 / routing features are used
 func (o NetworktemplateNetworksOutput) Subnet6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateNetworks) *string { return v.Subnet6 }).(pulumi.StringPtrOutput)
 }
@@ -2549,9 +2549,9 @@ type NetworktemplateOspfAreasOspfNetworks struct {
 	// interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
 	InterfaceType *string `pulumi:"interfaceType"`
 	Metric        *int    `pulumi:"metric"`
-	// by default, we'll re-advertise all learned OSPF routes toward overlay
+	// By default, we'll re-advertise all learned OSPF routes toward overlay
 	NoReadvertiseToOverlay *bool `pulumi:"noReadvertiseToOverlay"`
-	// whether to send OSPF-Hello
+	// Whether to send OSPF-Hello
 	Passive *bool `pulumi:"passive"`
 }
 
@@ -2581,9 +2581,9 @@ type NetworktemplateOspfAreasOspfNetworksArgs struct {
 	// interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
 	InterfaceType pulumi.StringPtrInput `pulumi:"interfaceType"`
 	Metric        pulumi.IntPtrInput    `pulumi:"metric"`
-	// by default, we'll re-advertise all learned OSPF routes toward overlay
+	// By default, we'll re-advertise all learned OSPF routes toward overlay
 	NoReadvertiseToOverlay pulumi.BoolPtrInput `pulumi:"noReadvertiseToOverlay"`
-	// whether to send OSPF-Hello
+	// Whether to send OSPF-Hello
 	Passive pulumi.BoolPtrInput `pulumi:"passive"`
 }
 
@@ -2682,12 +2682,12 @@ func (o NetworktemplateOspfAreasOspfNetworksOutput) Metric() pulumi.IntPtrOutput
 	return o.ApplyT(func(v NetworktemplateOspfAreasOspfNetworks) *int { return v.Metric }).(pulumi.IntPtrOutput)
 }
 
-// by default, we'll re-advertise all learned OSPF routes toward overlay
+// By default, we'll re-advertise all learned OSPF routes toward overlay
 func (o NetworktemplateOspfAreasOspfNetworksOutput) NoReadvertiseToOverlay() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateOspfAreasOspfNetworks) *bool { return v.NoReadvertiseToOverlay }).(pulumi.BoolPtrOutput)
 }
 
-// whether to send OSPF-Hello
+// Whether to send OSPF-Hello
 func (o NetworktemplateOspfAreasOspfNetworksOutput) Passive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateOspfAreasOspfNetworks) *bool { return v.Passive }).(pulumi.BoolPtrOutput)
 }
@@ -2713,15 +2713,15 @@ func (o NetworktemplateOspfAreasOspfNetworksMapOutput) MapIndex(k pulumi.StringI
 }
 
 type NetworktemplatePortMirroring struct {
-	// at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+	// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 	InputNetworksIngresses []string `pulumi:"inputNetworksIngresses"`
-	// at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+	// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 	InputPortIdsEgresses []string `pulumi:"inputPortIdsEgresses"`
-	// at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+	// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 	InputPortIdsIngresses []string `pulumi:"inputPortIdsIngresses"`
-	// exaclty one of the `outputPortId` or `outputNetwork` should be provided
+	// Exaclty one of the `outputPortId` or `outputNetwork` should be provided
 	OutputNetwork *string `pulumi:"outputNetwork"`
-	// exaclty one of the `outputPortId` or `outputNetwork` should be provided
+	// Exaclty one of the `outputPortId` or `outputNetwork` should be provided
 	OutputPortId *string `pulumi:"outputPortId"`
 }
 
@@ -2737,15 +2737,15 @@ type NetworktemplatePortMirroringInput interface {
 }
 
 type NetworktemplatePortMirroringArgs struct {
-	// at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+	// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 	InputNetworksIngresses pulumi.StringArrayInput `pulumi:"inputNetworksIngresses"`
-	// at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+	// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 	InputPortIdsEgresses pulumi.StringArrayInput `pulumi:"inputPortIdsEgresses"`
-	// at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+	// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 	InputPortIdsIngresses pulumi.StringArrayInput `pulumi:"inputPortIdsIngresses"`
-	// exaclty one of the `outputPortId` or `outputNetwork` should be provided
+	// Exaclty one of the `outputPortId` or `outputNetwork` should be provided
 	OutputNetwork pulumi.StringPtrInput `pulumi:"outputNetwork"`
-	// exaclty one of the `outputPortId` or `outputNetwork` should be provided
+	// Exaclty one of the `outputPortId` or `outputNetwork` should be provided
 	OutputPortId pulumi.StringPtrInput `pulumi:"outputPortId"`
 }
 
@@ -2800,27 +2800,27 @@ func (o NetworktemplatePortMirroringOutput) ToNetworktemplatePortMirroringOutput
 	return o
 }
 
-// at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 func (o NetworktemplatePortMirroringOutput) InputNetworksIngresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworktemplatePortMirroring) []string { return v.InputNetworksIngresses }).(pulumi.StringArrayOutput)
 }
 
-// at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 func (o NetworktemplatePortMirroringOutput) InputPortIdsEgresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworktemplatePortMirroring) []string { return v.InputPortIdsEgresses }).(pulumi.StringArrayOutput)
 }
 
-// at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 func (o NetworktemplatePortMirroringOutput) InputPortIdsIngresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworktemplatePortMirroring) []string { return v.InputPortIdsIngresses }).(pulumi.StringArrayOutput)
 }
 
-// exaclty one of the `outputPortId` or `outputNetwork` should be provided
+// Exaclty one of the `outputPortId` or `outputNetwork` should be provided
 func (o NetworktemplatePortMirroringOutput) OutputNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortMirroring) *string { return v.OutputNetwork }).(pulumi.StringPtrOutput)
 }
 
-// exaclty one of the `outputPortId` or `outputNetwork` should be provided
+// Exaclty one of the `outputPortId` or `outputNetwork` should be provided
 func (o NetworktemplatePortMirroringOutput) OutputPortId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortMirroring) *string { return v.OutputPortId }).(pulumi.StringPtrOutput)
 }
@@ -2848,14 +2848,14 @@ func (o NetworktemplatePortMirroringMapOutput) MapIndex(k pulumi.StringInput) Ne
 type NetworktemplatePortUsages struct {
 	// Only if `mode`==`trunk` whether to trunk all network/vlans
 	AllNetworks *bool `pulumi:"allNetworks"`
-	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
 	AllowDhcpd *bool `pulumi:"allowDhcpd"`
 	// Only if `mode`!=`dynamic`
 	AllowMultipleSupplicants *bool `pulumi:"allowMultipleSupplicants"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
 	BypassAuthWhenServerDown *bool `pulumi:"bypassAuthWhenServerDown"`
 	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
-	BypassAuthWhenServerDownForUnkonwnClient *bool `pulumi:"bypassAuthWhenServerDownForUnkonwnClient"`
+	BypassAuthWhenServerDownForUnkownClient *bool `pulumi:"bypassAuthWhenServerDownForUnkownClient"`
 	// Only if `mode`!=`dynamic`
 	Description *string `pulumi:"description"`
 	// Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
@@ -2914,9 +2914,9 @@ type NetworktemplatePortUsages struct {
 	StpEdge       *bool `pulumi:"stpEdge"`
 	StpNoRootPort *bool `pulumi:"stpNoRootPort"`
 	StpP2p        *bool `pulumi:"stpP2p"`
-	// optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+	// Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
 	UiEvpntopoId *string `pulumi:"uiEvpntopoId"`
-	// if this is connected to a vstp network
+	// If this is connected to a vstp network
 	UseVstp *bool `pulumi:"useVstp"`
 	// Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
 	VoipNetwork *string `pulumi:"voipNetwork"`
@@ -2936,14 +2936,14 @@ type NetworktemplatePortUsagesInput interface {
 type NetworktemplatePortUsagesArgs struct {
 	// Only if `mode`==`trunk` whether to trunk all network/vlans
 	AllNetworks pulumi.BoolPtrInput `pulumi:"allNetworks"`
-	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
 	AllowDhcpd pulumi.BoolPtrInput `pulumi:"allowDhcpd"`
 	// Only if `mode`!=`dynamic`
 	AllowMultipleSupplicants pulumi.BoolPtrInput `pulumi:"allowMultipleSupplicants"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
 	BypassAuthWhenServerDown pulumi.BoolPtrInput `pulumi:"bypassAuthWhenServerDown"`
 	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
-	BypassAuthWhenServerDownForUnkonwnClient pulumi.BoolPtrInput `pulumi:"bypassAuthWhenServerDownForUnkonwnClient"`
+	BypassAuthWhenServerDownForUnkownClient pulumi.BoolPtrInput `pulumi:"bypassAuthWhenServerDownForUnkownClient"`
 	// Only if `mode`!=`dynamic`
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
@@ -3002,9 +3002,9 @@ type NetworktemplatePortUsagesArgs struct {
 	StpEdge       pulumi.BoolPtrInput `pulumi:"stpEdge"`
 	StpNoRootPort pulumi.BoolPtrInput `pulumi:"stpNoRootPort"`
 	StpP2p        pulumi.BoolPtrInput `pulumi:"stpP2p"`
-	// optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+	// Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
 	UiEvpntopoId pulumi.StringPtrInput `pulumi:"uiEvpntopoId"`
-	// if this is connected to a vstp network
+	// If this is connected to a vstp network
 	UseVstp pulumi.BoolPtrInput `pulumi:"useVstp"`
 	// Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
 	VoipNetwork pulumi.StringPtrInput `pulumi:"voipNetwork"`
@@ -3066,7 +3066,7 @@ func (o NetworktemplatePortUsagesOutput) AllNetworks() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.AllNetworks }).(pulumi.BoolPtrOutput)
 }
 
-// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
 func (o NetworktemplatePortUsagesOutput) AllowDhcpd() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.AllowDhcpd }).(pulumi.BoolPtrOutput)
 }
@@ -3082,8 +3082,8 @@ func (o NetworktemplatePortUsagesOutput) BypassAuthWhenServerDown() pulumi.BoolP
 }
 
 // Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
-func (o NetworktemplatePortUsagesOutput) BypassAuthWhenServerDownForUnkonwnClient() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.BypassAuthWhenServerDownForUnkonwnClient }).(pulumi.BoolPtrOutput)
+func (o NetworktemplatePortUsagesOutput) BypassAuthWhenServerDownForUnkownClient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.BypassAuthWhenServerDownForUnkownClient }).(pulumi.BoolPtrOutput)
 }
 
 // Only if `mode`!=`dynamic`
@@ -3234,12 +3234,12 @@ func (o NetworktemplatePortUsagesOutput) StpP2p() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.StpP2p }).(pulumi.BoolPtrOutput)
 }
 
-// optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+// Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
 func (o NetworktemplatePortUsagesOutput) UiEvpntopoId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.UiEvpntopoId }).(pulumi.StringPtrOutput)
 }
 
-// if this is connected to a vstp network
+// If this is connected to a vstp network
 func (o NetworktemplatePortUsagesOutput) UseVstp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.UseVstp }).(pulumi.BoolPtrOutput)
 }
@@ -3271,7 +3271,7 @@ func (o NetworktemplatePortUsagesMapOutput) MapIndex(k pulumi.StringInput) Netwo
 
 type NetworktemplatePortUsagesRule struct {
 	Equals *string `pulumi:"equals"`
-	// use `equalsAny` to match any item in a list
+	// Use `equalsAny` to match any item in a list
 	EqualsAnies []string `pulumi:"equalsAnies"`
 	// "[0:3]":"abcdef" > "abc"
 	// "split(.)[1]": "a.b.c" > "b"
@@ -3296,7 +3296,7 @@ type NetworktemplatePortUsagesRuleInput interface {
 
 type NetworktemplatePortUsagesRuleArgs struct {
 	Equals pulumi.StringPtrInput `pulumi:"equals"`
-	// use `equalsAny` to match any item in a list
+	// Use `equalsAny` to match any item in a list
 	EqualsAnies pulumi.StringArrayInput `pulumi:"equalsAnies"`
 	// "[0:3]":"abcdef" > "abc"
 	// "split(.)[1]": "a.b.c" > "b"
@@ -3363,7 +3363,7 @@ func (o NetworktemplatePortUsagesRuleOutput) Equals() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsagesRule) *string { return v.Equals }).(pulumi.StringPtrOutput)
 }
 
-// use `equalsAny` to match any item in a list
+// Use `equalsAny` to match any item in a list
 func (o NetworktemplatePortUsagesRuleOutput) EqualsAnies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsagesRule) []string { return v.EqualsAnies }).(pulumi.StringArrayOutput)
 }
@@ -3406,15 +3406,15 @@ func (o NetworktemplatePortUsagesRuleArrayOutput) Index(i pulumi.IntInput) Netwo
 }
 
 type NetworktemplatePortUsagesStormControl struct {
-	// whether to disable storm control on broadcast traffic
+	// Whether to disable storm control on broadcast traffic
 	NoBroadcast *bool `pulumi:"noBroadcast"`
-	// whether to disable storm control on multicast traffic
+	// Whether to disable storm control on multicast traffic
 	NoMulticast *bool `pulumi:"noMulticast"`
-	// whether to disable storm control on registered multicast traffic
+	// Whether to disable storm control on registered multicast traffic
 	NoRegisteredMulticast *bool `pulumi:"noRegisteredMulticast"`
-	// whether to disable storm control on unknown unicast traffic
+	// Whether to disable storm control on unknown unicast traffic
 	NoUnknownUnicast *bool `pulumi:"noUnknownUnicast"`
-	// bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+	// Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
 	Percentage *int `pulumi:"percentage"`
 }
 
@@ -3430,15 +3430,15 @@ type NetworktemplatePortUsagesStormControlInput interface {
 }
 
 type NetworktemplatePortUsagesStormControlArgs struct {
-	// whether to disable storm control on broadcast traffic
+	// Whether to disable storm control on broadcast traffic
 	NoBroadcast pulumi.BoolPtrInput `pulumi:"noBroadcast"`
-	// whether to disable storm control on multicast traffic
+	// Whether to disable storm control on multicast traffic
 	NoMulticast pulumi.BoolPtrInput `pulumi:"noMulticast"`
-	// whether to disable storm control on registered multicast traffic
+	// Whether to disable storm control on registered multicast traffic
 	NoRegisteredMulticast pulumi.BoolPtrInput `pulumi:"noRegisteredMulticast"`
-	// whether to disable storm control on unknown unicast traffic
+	// Whether to disable storm control on unknown unicast traffic
 	NoUnknownUnicast pulumi.BoolPtrInput `pulumi:"noUnknownUnicast"`
-	// bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+	// Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
 	Percentage pulumi.IntPtrInput `pulumi:"percentage"`
 }
 
@@ -3519,27 +3519,27 @@ func (o NetworktemplatePortUsagesStormControlOutput) ToNetworktemplatePortUsages
 	}).(NetworktemplatePortUsagesStormControlPtrOutput)
 }
 
-// whether to disable storm control on broadcast traffic
+// Whether to disable storm control on broadcast traffic
 func (o NetworktemplatePortUsagesStormControlOutput) NoBroadcast() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsagesStormControl) *bool { return v.NoBroadcast }).(pulumi.BoolPtrOutput)
 }
 
-// whether to disable storm control on multicast traffic
+// Whether to disable storm control on multicast traffic
 func (o NetworktemplatePortUsagesStormControlOutput) NoMulticast() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsagesStormControl) *bool { return v.NoMulticast }).(pulumi.BoolPtrOutput)
 }
 
-// whether to disable storm control on registered multicast traffic
+// Whether to disable storm control on registered multicast traffic
 func (o NetworktemplatePortUsagesStormControlOutput) NoRegisteredMulticast() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsagesStormControl) *bool { return v.NoRegisteredMulticast }).(pulumi.BoolPtrOutput)
 }
 
-// whether to disable storm control on unknown unicast traffic
+// Whether to disable storm control on unknown unicast traffic
 func (o NetworktemplatePortUsagesStormControlOutput) NoUnknownUnicast() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsagesStormControl) *bool { return v.NoUnknownUnicast }).(pulumi.BoolPtrOutput)
 }
 
-// bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+// Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
 func (o NetworktemplatePortUsagesStormControlOutput) Percentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsagesStormControl) *int { return v.Percentage }).(pulumi.IntPtrOutput)
 }
@@ -3568,7 +3568,7 @@ func (o NetworktemplatePortUsagesStormControlPtrOutput) Elem() NetworktemplatePo
 	}).(NetworktemplatePortUsagesStormControlOutput)
 }
 
-// whether to disable storm control on broadcast traffic
+// Whether to disable storm control on broadcast traffic
 func (o NetworktemplatePortUsagesStormControlPtrOutput) NoBroadcast() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworktemplatePortUsagesStormControl) *bool {
 		if v == nil {
@@ -3578,7 +3578,7 @@ func (o NetworktemplatePortUsagesStormControlPtrOutput) NoBroadcast() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether to disable storm control on multicast traffic
+// Whether to disable storm control on multicast traffic
 func (o NetworktemplatePortUsagesStormControlPtrOutput) NoMulticast() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworktemplatePortUsagesStormControl) *bool {
 		if v == nil {
@@ -3588,7 +3588,7 @@ func (o NetworktemplatePortUsagesStormControlPtrOutput) NoMulticast() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether to disable storm control on registered multicast traffic
+// Whether to disable storm control on registered multicast traffic
 func (o NetworktemplatePortUsagesStormControlPtrOutput) NoRegisteredMulticast() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworktemplatePortUsagesStormControl) *bool {
 		if v == nil {
@@ -3598,7 +3598,7 @@ func (o NetworktemplatePortUsagesStormControlPtrOutput) NoRegisteredMulticast() 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether to disable storm control on unknown unicast traffic
+// Whether to disable storm control on unknown unicast traffic
 func (o NetworktemplatePortUsagesStormControlPtrOutput) NoUnknownUnicast() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworktemplatePortUsagesStormControl) *bool {
 		if v == nil {
@@ -3608,7 +3608,7 @@ func (o NetworktemplatePortUsagesStormControlPtrOutput) NoUnknownUnicast() pulum
 	}).(pulumi.BoolPtrOutput)
 }
 
-// bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+// Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
 func (o NetworktemplatePortUsagesStormControlPtrOutput) Percentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NetworktemplatePortUsagesStormControl) *int {
 		if v == nil {
@@ -3619,17 +3619,17 @@ func (o NetworktemplatePortUsagesStormControlPtrOutput) Percentage() pulumi.IntP
 }
 
 type NetworktemplateRadiusConfig struct {
-	// how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
 	AcctInterimInterval *int                                    `pulumi:"acctInterimInterval"`
 	AcctServers         []NetworktemplateRadiusConfigAcctServer `pulumi:"acctServers"`
 	AuthServers         []NetworktemplateRadiusConfigAuthServer `pulumi:"authServers"`
-	// radius auth session retries
+	// Radius auth session retries
 	AuthServersRetries *int `pulumi:"authServersRetries"`
-	// radius auth session timeout
+	// Radius auth session timeout
 	AuthServersTimeout *int `pulumi:"authServersTimeout"`
-	// use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+	// Use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 	Network *string `pulumi:"network"`
-	// use `network`or `sourceIp`
+	// Use `network`or `sourceIp`
 	SourceIp *string `pulumi:"sourceIp"`
 }
 
@@ -3645,17 +3645,17 @@ type NetworktemplateRadiusConfigInput interface {
 }
 
 type NetworktemplateRadiusConfigArgs struct {
-	// how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
 	AcctInterimInterval pulumi.IntPtrInput                              `pulumi:"acctInterimInterval"`
 	AcctServers         NetworktemplateRadiusConfigAcctServerArrayInput `pulumi:"acctServers"`
 	AuthServers         NetworktemplateRadiusConfigAuthServerArrayInput `pulumi:"authServers"`
-	// radius auth session retries
+	// Radius auth session retries
 	AuthServersRetries pulumi.IntPtrInput `pulumi:"authServersRetries"`
-	// radius auth session timeout
+	// Radius auth session timeout
 	AuthServersTimeout pulumi.IntPtrInput `pulumi:"authServersTimeout"`
-	// use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+	// Use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 	Network pulumi.StringPtrInput `pulumi:"network"`
-	// use `network`or `sourceIp`
+	// Use `network`or `sourceIp`
 	SourceIp pulumi.StringPtrInput `pulumi:"sourceIp"`
 }
 
@@ -3736,7 +3736,7 @@ func (o NetworktemplateRadiusConfigOutput) ToNetworktemplateRadiusConfigPtrOutpu
 	}).(NetworktemplateRadiusConfigPtrOutput)
 }
 
-// how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
 func (o NetworktemplateRadiusConfigOutput) AcctInterimInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplateRadiusConfig) *int { return v.AcctInterimInterval }).(pulumi.IntPtrOutput)
 }
@@ -3749,22 +3749,22 @@ func (o NetworktemplateRadiusConfigOutput) AuthServers() NetworktemplateRadiusCo
 	return o.ApplyT(func(v NetworktemplateRadiusConfig) []NetworktemplateRadiusConfigAuthServer { return v.AuthServers }).(NetworktemplateRadiusConfigAuthServerArrayOutput)
 }
 
-// radius auth session retries
+// Radius auth session retries
 func (o NetworktemplateRadiusConfigOutput) AuthServersRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplateRadiusConfig) *int { return v.AuthServersRetries }).(pulumi.IntPtrOutput)
 }
 
-// radius auth session timeout
+// Radius auth session timeout
 func (o NetworktemplateRadiusConfigOutput) AuthServersTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplateRadiusConfig) *int { return v.AuthServersTimeout }).(pulumi.IntPtrOutput)
 }
 
-// use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+// Use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 func (o NetworktemplateRadiusConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateRadiusConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// use `network`or `sourceIp`
+// Use `network`or `sourceIp`
 func (o NetworktemplateRadiusConfigOutput) SourceIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateRadiusConfig) *string { return v.SourceIp }).(pulumi.StringPtrOutput)
 }
@@ -3793,7 +3793,7 @@ func (o NetworktemplateRadiusConfigPtrOutput) Elem() NetworktemplateRadiusConfig
 	}).(NetworktemplateRadiusConfigOutput)
 }
 
-// how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
 func (o NetworktemplateRadiusConfigPtrOutput) AcctInterimInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NetworktemplateRadiusConfig) *int {
 		if v == nil {
@@ -3821,7 +3821,7 @@ func (o NetworktemplateRadiusConfigPtrOutput) AuthServers() NetworktemplateRadiu
 	}).(NetworktemplateRadiusConfigAuthServerArrayOutput)
 }
 
-// radius auth session retries
+// Radius auth session retries
 func (o NetworktemplateRadiusConfigPtrOutput) AuthServersRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NetworktemplateRadiusConfig) *int {
 		if v == nil {
@@ -3831,7 +3831,7 @@ func (o NetworktemplateRadiusConfigPtrOutput) AuthServersRetries() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// radius auth session timeout
+// Radius auth session timeout
 func (o NetworktemplateRadiusConfigPtrOutput) AuthServersTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NetworktemplateRadiusConfig) *int {
 		if v == nil {
@@ -3841,7 +3841,7 @@ func (o NetworktemplateRadiusConfigPtrOutput) AuthServersTimeout() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+// Use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 func (o NetworktemplateRadiusConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworktemplateRadiusConfig) *string {
 		if v == nil {
@@ -3851,7 +3851,7 @@ func (o NetworktemplateRadiusConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// use `network`or `sourceIp`
+// Use `network`or `sourceIp`
 func (o NetworktemplateRadiusConfigPtrOutput) SourceIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworktemplateRadiusConfig) *string {
 		if v == nil {
@@ -3862,7 +3862,7 @@ func (o NetworktemplateRadiusConfigPtrOutput) SourceIp() pulumi.StringPtrOutput 
 }
 
 type NetworktemplateRadiusConfigAcctServer struct {
-	// ip / hostname of RADIUS server
+	// IP/ hostname of RADIUS server
 	Host           string `pulumi:"host"`
 	KeywrapEnabled *bool  `pulumi:"keywrapEnabled"`
 	// enum: `ascii`, `hex`
@@ -3871,7 +3871,7 @@ type NetworktemplateRadiusConfigAcctServer struct {
 	KeywrapMack   *string `pulumi:"keywrapMack"`
 	// Acct port of RADIUS server
 	Port *int `pulumi:"port"`
-	// secret of RADIUS server
+	// Secretof RADIUS server
 	Secret string `pulumi:"secret"`
 }
 
@@ -3887,7 +3887,7 @@ type NetworktemplateRadiusConfigAcctServerInput interface {
 }
 
 type NetworktemplateRadiusConfigAcctServerArgs struct {
-	// ip / hostname of RADIUS server
+	// IP/ hostname of RADIUS server
 	Host           pulumi.StringInput  `pulumi:"host"`
 	KeywrapEnabled pulumi.BoolPtrInput `pulumi:"keywrapEnabled"`
 	// enum: `ascii`, `hex`
@@ -3896,7 +3896,7 @@ type NetworktemplateRadiusConfigAcctServerArgs struct {
 	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
 	// Acct port of RADIUS server
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// secret of RADIUS server
+	// Secretof RADIUS server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
 
@@ -3951,7 +3951,7 @@ func (o NetworktemplateRadiusConfigAcctServerOutput) ToNetworktemplateRadiusConf
 	return o
 }
 
-// ip / hostname of RADIUS server
+// IP/ hostname of RADIUS server
 func (o NetworktemplateRadiusConfigAcctServerOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworktemplateRadiusConfigAcctServer) string { return v.Host }).(pulumi.StringOutput)
 }
@@ -3978,7 +3978,7 @@ func (o NetworktemplateRadiusConfigAcctServerOutput) Port() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v NetworktemplateRadiusConfigAcctServer) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// secret of RADIUS server
+// Secretof RADIUS server
 func (o NetworktemplateRadiusConfigAcctServerOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworktemplateRadiusConfigAcctServer) string { return v.Secret }).(pulumi.StringOutput)
 }
@@ -4004,7 +4004,7 @@ func (o NetworktemplateRadiusConfigAcctServerArrayOutput) Index(i pulumi.IntInpu
 }
 
 type NetworktemplateRadiusConfigAuthServer struct {
-	// ip / hostname of RADIUS server
+	// IP/ hostname of RADIUS server
 	Host           string `pulumi:"host"`
 	KeywrapEnabled *bool  `pulumi:"keywrapEnabled"`
 	// enum: `ascii`, `hex`
@@ -4013,9 +4013,9 @@ type NetworktemplateRadiusConfigAuthServer struct {
 	KeywrapMack   *string `pulumi:"keywrapMack"`
 	// Auth port of RADIUS server
 	Port *int `pulumi:"port"`
-	// whether to require Message-Authenticator in requests
+	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator *bool `pulumi:"requireMessageAuthenticator"`
-	// secret of RADIUS server
+	// Secretof RADIUS server
 	Secret string `pulumi:"secret"`
 }
 
@@ -4031,7 +4031,7 @@ type NetworktemplateRadiusConfigAuthServerInput interface {
 }
 
 type NetworktemplateRadiusConfigAuthServerArgs struct {
-	// ip / hostname of RADIUS server
+	// IP/ hostname of RADIUS server
 	Host           pulumi.StringInput  `pulumi:"host"`
 	KeywrapEnabled pulumi.BoolPtrInput `pulumi:"keywrapEnabled"`
 	// enum: `ascii`, `hex`
@@ -4040,9 +4040,9 @@ type NetworktemplateRadiusConfigAuthServerArgs struct {
 	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
 	// Auth port of RADIUS server
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// whether to require Message-Authenticator in requests
+	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator pulumi.BoolPtrInput `pulumi:"requireMessageAuthenticator"`
-	// secret of RADIUS server
+	// Secretof RADIUS server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
 
@@ -4097,7 +4097,7 @@ func (o NetworktemplateRadiusConfigAuthServerOutput) ToNetworktemplateRadiusConf
 	return o
 }
 
-// ip / hostname of RADIUS server
+// IP/ hostname of RADIUS server
 func (o NetworktemplateRadiusConfigAuthServerOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworktemplateRadiusConfigAuthServer) string { return v.Host }).(pulumi.StringOutput)
 }
@@ -4124,12 +4124,12 @@ func (o NetworktemplateRadiusConfigAuthServerOutput) Port() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v NetworktemplateRadiusConfigAuthServer) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// whether to require Message-Authenticator in requests
+// Whether to require Message-Authenticator in requests
 func (o NetworktemplateRadiusConfigAuthServerOutput) RequireMessageAuthenticator() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateRadiusConfigAuthServer) *bool { return v.RequireMessageAuthenticator }).(pulumi.BoolPtrOutput)
 }
 
-// secret of RADIUS server
+// Secretof RADIUS server
 func (o NetworktemplateRadiusConfigAuthServerOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworktemplateRadiusConfigAuthServer) string { return v.Secret }).(pulumi.StringOutput)
 }
@@ -4159,7 +4159,7 @@ type NetworktemplateRemoteSyslog struct {
 	Console *NetworktemplateRemoteSyslogConsole `pulumi:"console"`
 	Enabled *bool                               `pulumi:"enabled"`
 	Files   []NetworktemplateRemoteSyslogFile   `pulumi:"files"`
-	// if sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+	// If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
 	Network          *string                             `pulumi:"network"`
 	SendToAllServers *bool                               `pulumi:"sendToAllServers"`
 	Servers          []NetworktemplateRemoteSyslogServer `pulumi:"servers"`
@@ -4184,7 +4184,7 @@ type NetworktemplateRemoteSyslogArgs struct {
 	Console NetworktemplateRemoteSyslogConsolePtrInput `pulumi:"console"`
 	Enabled pulumi.BoolPtrInput                        `pulumi:"enabled"`
 	Files   NetworktemplateRemoteSyslogFileArrayInput  `pulumi:"files"`
-	// if sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+	// If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
 	Network          pulumi.StringPtrInput                       `pulumi:"network"`
 	SendToAllServers pulumi.BoolPtrInput                         `pulumi:"sendToAllServers"`
 	Servers          NetworktemplateRemoteSyslogServerArrayInput `pulumi:"servers"`
@@ -4286,7 +4286,7 @@ func (o NetworktemplateRemoteSyslogOutput) Files() NetworktemplateRemoteSyslogFi
 	return o.ApplyT(func(v NetworktemplateRemoteSyslog) []NetworktemplateRemoteSyslogFile { return v.Files }).(NetworktemplateRemoteSyslogFileArrayOutput)
 }
 
-// if sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+// If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
 func (o NetworktemplateRemoteSyslogOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateRemoteSyslog) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -4368,7 +4368,7 @@ func (o NetworktemplateRemoteSyslogPtrOutput) Files() NetworktemplateRemoteSyslo
 	}).(NetworktemplateRemoteSyslogFileArrayOutput)
 }
 
-// if sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+// If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
 func (o NetworktemplateRemoteSyslogPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworktemplateRemoteSyslog) *string {
 		if v == nil {
@@ -5195,7 +5195,7 @@ type NetworktemplateRemoteSyslogServer struct {
 	RoutingInstance *string `pulumi:"routingInstance"`
 	// enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
 	Severity *string `pulumi:"severity"`
-	// if sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+	// If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
 	SourceAddress  *string `pulumi:"sourceAddress"`
 	StructuredData *bool   `pulumi:"structuredData"`
 	Tag            *string `pulumi:"tag"`
@@ -5225,7 +5225,7 @@ type NetworktemplateRemoteSyslogServerArgs struct {
 	RoutingInstance pulumi.StringPtrInput `pulumi:"routingInstance"`
 	// enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
 	Severity pulumi.StringPtrInput `pulumi:"severity"`
-	// if sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+	// If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
 	SourceAddress  pulumi.StringPtrInput `pulumi:"sourceAddress"`
 	StructuredData pulumi.BoolPtrInput   `pulumi:"structuredData"`
 	Tag            pulumi.StringPtrInput `pulumi:"tag"`
@@ -5323,7 +5323,7 @@ func (o NetworktemplateRemoteSyslogServerOutput) Severity() pulumi.StringPtrOutp
 	return o.ApplyT(func(v NetworktemplateRemoteSyslogServer) *string { return v.Severity }).(pulumi.StringPtrOutput)
 }
 
-// if sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+// If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
 func (o NetworktemplateRemoteSyslogServerOutput) SourceAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateRemoteSyslogServer) *string { return v.SourceAddress }).(pulumi.StringPtrOutput)
 }
@@ -5679,15 +5679,14 @@ type NetworktemplateSnmpConfig struct {
 	Contact     *string                               `pulumi:"contact"`
 	Description *string                               `pulumi:"description"`
 	Enabled     *bool                                 `pulumi:"enabled"`
-	// enum: `engine-id-suffix`, `local`, `use-default-ip-address`, `use_mac-address`
-	EngineId   *string                              `pulumi:"engineId"`
-	Location   *string                              `pulumi:"location"`
-	Name       *string                              `pulumi:"name"`
-	Network    *string                              `pulumi:"network"`
-	TrapGroups []NetworktemplateSnmpConfigTrapGroup `pulumi:"trapGroups"`
-	V2cConfigs []NetworktemplateSnmpConfigV2cConfig `pulumi:"v2cConfigs"`
-	V3Config   *NetworktemplateSnmpConfigV3Config   `pulumi:"v3Config"`
-	Views      []NetworktemplateSnmpConfigView      `pulumi:"views"`
+	EngineId    *string                               `pulumi:"engineId"`
+	Location    *string                               `pulumi:"location"`
+	Name        *string                               `pulumi:"name"`
+	Network     *string                               `pulumi:"network"`
+	TrapGroups  []NetworktemplateSnmpConfigTrapGroup  `pulumi:"trapGroups"`
+	V2cConfigs  []NetworktemplateSnmpConfigV2cConfig  `pulumi:"v2cConfigs"`
+	V3Config    *NetworktemplateSnmpConfigV3Config    `pulumi:"v3Config"`
+	Views       []NetworktemplateSnmpConfigView       `pulumi:"views"`
 }
 
 // NetworktemplateSnmpConfigInput is an input type that accepts NetworktemplateSnmpConfigArgs and NetworktemplateSnmpConfigOutput values.
@@ -5706,15 +5705,14 @@ type NetworktemplateSnmpConfigArgs struct {
 	Contact     pulumi.StringPtrInput                         `pulumi:"contact"`
 	Description pulumi.StringPtrInput                         `pulumi:"description"`
 	Enabled     pulumi.BoolPtrInput                           `pulumi:"enabled"`
-	// enum: `engine-id-suffix`, `local`, `use-default-ip-address`, `use_mac-address`
-	EngineId   pulumi.StringPtrInput                        `pulumi:"engineId"`
-	Location   pulumi.StringPtrInput                        `pulumi:"location"`
-	Name       pulumi.StringPtrInput                        `pulumi:"name"`
-	Network    pulumi.StringPtrInput                        `pulumi:"network"`
-	TrapGroups NetworktemplateSnmpConfigTrapGroupArrayInput `pulumi:"trapGroups"`
-	V2cConfigs NetworktemplateSnmpConfigV2cConfigArrayInput `pulumi:"v2cConfigs"`
-	V3Config   NetworktemplateSnmpConfigV3ConfigPtrInput    `pulumi:"v3Config"`
-	Views      NetworktemplateSnmpConfigViewArrayInput      `pulumi:"views"`
+	EngineId    pulumi.StringPtrInput                         `pulumi:"engineId"`
+	Location    pulumi.StringPtrInput                         `pulumi:"location"`
+	Name        pulumi.StringPtrInput                         `pulumi:"name"`
+	Network     pulumi.StringPtrInput                         `pulumi:"network"`
+	TrapGroups  NetworktemplateSnmpConfigTrapGroupArrayInput  `pulumi:"trapGroups"`
+	V2cConfigs  NetworktemplateSnmpConfigV2cConfigArrayInput  `pulumi:"v2cConfigs"`
+	V3Config    NetworktemplateSnmpConfigV3ConfigPtrInput     `pulumi:"v3Config"`
+	Views       NetworktemplateSnmpConfigViewArrayInput       `pulumi:"views"`
 }
 
 func (NetworktemplateSnmpConfigArgs) ElementType() reflect.Type {
@@ -5810,7 +5808,6 @@ func (o NetworktemplateSnmpConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSnmpConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// enum: `engine-id-suffix`, `local`, `use-default-ip-address`, `use_mac-address`
 func (o NetworktemplateSnmpConfigOutput) EngineId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSnmpConfig) *string { return v.EngineId }).(pulumi.StringPtrOutput)
 }
@@ -5903,7 +5900,6 @@ func (o NetworktemplateSnmpConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// enum: `engine-id-suffix`, `local`, `use-default-ip-address`, `use_mac-address`
 func (o NetworktemplateSnmpConfigPtrOutput) EngineId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworktemplateSnmpConfig) *string {
 		if v == nil {
@@ -6196,10 +6192,10 @@ func (o NetworktemplateSnmpConfigTrapGroupArrayOutput) Index(i pulumi.IntInput) 
 
 type NetworktemplateSnmpConfigV2cConfig struct {
 	Authorization *string `pulumi:"authorization"`
-	// client_list_name here should refer to clientList above
+	// Client_list_name here should refer to clientList above
 	ClientListName *string `pulumi:"clientListName"`
 	CommunityName  *string `pulumi:"communityName"`
-	// view name here should be defined in views above
+	// View name here should be defined in views above
 	View *string `pulumi:"view"`
 }
 
@@ -6216,10 +6212,10 @@ type NetworktemplateSnmpConfigV2cConfigInput interface {
 
 type NetworktemplateSnmpConfigV2cConfigArgs struct {
 	Authorization pulumi.StringPtrInput `pulumi:"authorization"`
-	// client_list_name here should refer to clientList above
+	// Client_list_name here should refer to clientList above
 	ClientListName pulumi.StringPtrInput `pulumi:"clientListName"`
 	CommunityName  pulumi.StringPtrInput `pulumi:"communityName"`
-	// view name here should be defined in views above
+	// View name here should be defined in views above
 	View pulumi.StringPtrInput `pulumi:"view"`
 }
 
@@ -6278,7 +6274,7 @@ func (o NetworktemplateSnmpConfigV2cConfigOutput) Authorization() pulumi.StringP
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV2cConfig) *string { return v.Authorization }).(pulumi.StringPtrOutput)
 }
 
-// client_list_name here should refer to clientList above
+// Client_list_name here should refer to clientList above
 func (o NetworktemplateSnmpConfigV2cConfigOutput) ClientListName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV2cConfig) *string { return v.ClientListName }).(pulumi.StringPtrOutput)
 }
@@ -6287,7 +6283,7 @@ func (o NetworktemplateSnmpConfigV2cConfigOutput) CommunityName() pulumi.StringP
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV2cConfig) *string { return v.CommunityName }).(pulumi.StringPtrOutput)
 }
 
-// view name here should be defined in views above
+// View name here should be defined in views above
 func (o NetworktemplateSnmpConfigV2cConfigOutput) View() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV2cConfig) *string { return v.View }).(pulumi.StringPtrOutput)
 }
@@ -6317,7 +6313,7 @@ type NetworktemplateSnmpConfigV3Config struct {
 	NotifyFilters    []NetworktemplateSnmpConfigV3ConfigNotifyFilter    `pulumi:"notifyFilters"`
 	TargetAddresses  []NetworktemplateSnmpConfigV3ConfigTargetAddress   `pulumi:"targetAddresses"`
 	TargetParameters []NetworktemplateSnmpConfigV3ConfigTargetParameter `pulumi:"targetParameters"`
-	Usm              *NetworktemplateSnmpConfigV3ConfigUsm              `pulumi:"usm"`
+	Usms             []NetworktemplateSnmpConfigV3ConfigUsm             `pulumi:"usms"`
 	Vacm             *NetworktemplateSnmpConfigV3ConfigVacm             `pulumi:"vacm"`
 }
 
@@ -6337,7 +6333,7 @@ type NetworktemplateSnmpConfigV3ConfigArgs struct {
 	NotifyFilters    NetworktemplateSnmpConfigV3ConfigNotifyFilterArrayInput    `pulumi:"notifyFilters"`
 	TargetAddresses  NetworktemplateSnmpConfigV3ConfigTargetAddressArrayInput   `pulumi:"targetAddresses"`
 	TargetParameters NetworktemplateSnmpConfigV3ConfigTargetParameterArrayInput `pulumi:"targetParameters"`
-	Usm              NetworktemplateSnmpConfigV3ConfigUsmPtrInput               `pulumi:"usm"`
+	Usms             NetworktemplateSnmpConfigV3ConfigUsmArrayInput             `pulumi:"usms"`
 	Vacm             NetworktemplateSnmpConfigV3ConfigVacmPtrInput              `pulumi:"vacm"`
 }
 
@@ -6440,8 +6436,8 @@ func (o NetworktemplateSnmpConfigV3ConfigOutput) TargetParameters() Networktempl
 	}).(NetworktemplateSnmpConfigV3ConfigTargetParameterArrayOutput)
 }
 
-func (o NetworktemplateSnmpConfigV3ConfigOutput) Usm() NetworktemplateSnmpConfigV3ConfigUsmPtrOutput {
-	return o.ApplyT(func(v NetworktemplateSnmpConfigV3Config) *NetworktemplateSnmpConfigV3ConfigUsm { return v.Usm }).(NetworktemplateSnmpConfigV3ConfigUsmPtrOutput)
+func (o NetworktemplateSnmpConfigV3ConfigOutput) Usms() NetworktemplateSnmpConfigV3ConfigUsmArrayOutput {
+	return o.ApplyT(func(v NetworktemplateSnmpConfigV3Config) []NetworktemplateSnmpConfigV3ConfigUsm { return v.Usms }).(NetworktemplateSnmpConfigV3ConfigUsmArrayOutput)
 }
 
 func (o NetworktemplateSnmpConfigV3ConfigOutput) Vacm() NetworktemplateSnmpConfigV3ConfigVacmPtrOutput {
@@ -6508,13 +6504,13 @@ func (o NetworktemplateSnmpConfigV3ConfigPtrOutput) TargetParameters() Networkte
 	}).(NetworktemplateSnmpConfigV3ConfigTargetParameterArrayOutput)
 }
 
-func (o NetworktemplateSnmpConfigV3ConfigPtrOutput) Usm() NetworktemplateSnmpConfigV3ConfigUsmPtrOutput {
-	return o.ApplyT(func(v *NetworktemplateSnmpConfigV3Config) *NetworktemplateSnmpConfigV3ConfigUsm {
+func (o NetworktemplateSnmpConfigV3ConfigPtrOutput) Usms() NetworktemplateSnmpConfigV3ConfigUsmArrayOutput {
+	return o.ApplyT(func(v *NetworktemplateSnmpConfigV3Config) []NetworktemplateSnmpConfigV3ConfigUsm {
 		if v == nil {
 			return nil
 		}
-		return v.Usm
-	}).(NetworktemplateSnmpConfigV3ConfigUsmPtrOutput)
+		return v.Usms
+	}).(NetworktemplateSnmpConfigV3ConfigUsmArrayOutput)
 }
 
 func (o NetworktemplateSnmpConfigV3ConfigPtrOutput) Vacm() NetworktemplateSnmpConfigV3ConfigVacmPtrOutput {
@@ -6527,10 +6523,10 @@ func (o NetworktemplateSnmpConfigV3ConfigPtrOutput) Vacm() NetworktemplateSnmpCo
 }
 
 type NetworktemplateSnmpConfigV3ConfigNotify struct {
-	Name *string `pulumi:"name"`
-	Tag  *string `pulumi:"tag"`
+	Name string `pulumi:"name"`
+	Tag  string `pulumi:"tag"`
 	// enum: `inform`, `trap`
-	Type *string `pulumi:"type"`
+	Type string `pulumi:"type"`
 }
 
 // NetworktemplateSnmpConfigV3ConfigNotifyInput is an input type that accepts NetworktemplateSnmpConfigV3ConfigNotifyArgs and NetworktemplateSnmpConfigV3ConfigNotifyOutput values.
@@ -6545,10 +6541,10 @@ type NetworktemplateSnmpConfigV3ConfigNotifyInput interface {
 }
 
 type NetworktemplateSnmpConfigV3ConfigNotifyArgs struct {
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	Tag  pulumi.StringPtrInput `pulumi:"tag"`
+	Name pulumi.StringInput `pulumi:"name"`
+	Tag  pulumi.StringInput `pulumi:"tag"`
 	// enum: `inform`, `trap`
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (NetworktemplateSnmpConfigV3ConfigNotifyArgs) ElementType() reflect.Type {
@@ -6602,17 +6598,17 @@ func (o NetworktemplateSnmpConfigV3ConfigNotifyOutput) ToNetworktemplateSnmpConf
 	return o
 }
 
-func (o NetworktemplateSnmpConfigV3ConfigNotifyOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigNotify) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o NetworktemplateSnmpConfigV3ConfigNotifyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigNotify) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o NetworktemplateSnmpConfigV3ConfigNotifyOutput) Tag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigNotify) *string { return v.Tag }).(pulumi.StringPtrOutput)
+func (o NetworktemplateSnmpConfigV3ConfigNotifyOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigNotify) string { return v.Tag }).(pulumi.StringOutput)
 }
 
 // enum: `inform`, `trap`
-func (o NetworktemplateSnmpConfigV3ConfigNotifyOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigNotify) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o NetworktemplateSnmpConfigV3ConfigNotifyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigNotify) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type NetworktemplateSnmpConfigV3ConfigNotifyArrayOutput struct{ *pulumi.OutputState }
@@ -6738,8 +6734,8 @@ func (o NetworktemplateSnmpConfigV3ConfigNotifyFilterArrayOutput) Index(i pulumi
 }
 
 type NetworktemplateSnmpConfigV3ConfigNotifyFilterContent struct {
-	Include *bool   `pulumi:"include"`
-	Oid     *string `pulumi:"oid"`
+	Include *bool  `pulumi:"include"`
+	Oid     string `pulumi:"oid"`
 }
 
 // NetworktemplateSnmpConfigV3ConfigNotifyFilterContentInput is an input type that accepts NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgs and NetworktemplateSnmpConfigV3ConfigNotifyFilterContentOutput values.
@@ -6754,8 +6750,8 @@ type NetworktemplateSnmpConfigV3ConfigNotifyFilterContentInput interface {
 }
 
 type NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgs struct {
-	Include pulumi.BoolPtrInput   `pulumi:"include"`
-	Oid     pulumi.StringPtrInput `pulumi:"oid"`
+	Include pulumi.BoolPtrInput `pulumi:"include"`
+	Oid     pulumi.StringInput  `pulumi:"oid"`
 }
 
 func (NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgs) ElementType() reflect.Type {
@@ -6813,8 +6809,8 @@ func (o NetworktemplateSnmpConfigV3ConfigNotifyFilterContentOutput) Include() pu
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigNotifyFilterContent) *bool { return v.Include }).(pulumi.BoolPtrOutput)
 }
 
-func (o NetworktemplateSnmpConfigV3ConfigNotifyFilterContentOutput) Oid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigNotifyFilterContent) *string { return v.Oid }).(pulumi.StringPtrOutput)
+func (o NetworktemplateSnmpConfigV3ConfigNotifyFilterContentOutput) Oid() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigNotifyFilterContent) string { return v.Oid }).(pulumi.StringOutput)
 }
 
 type NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArrayOutput struct{ *pulumi.OutputState }
@@ -6838,13 +6834,13 @@ func (o NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArrayOutput) Index(i
 }
 
 type NetworktemplateSnmpConfigV3ConfigTargetAddress struct {
-	Address     *string `pulumi:"address"`
-	AddressMask *string `pulumi:"addressMask"`
-	Port        *int    `pulumi:"port"`
-	// <refer to notify tag, can be multiple with blank
+	Address     string  `pulumi:"address"`
+	AddressMask string  `pulumi:"addressMask"`
+	Port        *string `pulumi:"port"`
+	// Refer to notify tag, can be multiple with blank
 	TagList           *string `pulumi:"tagList"`
-	TargetAddressName *string `pulumi:"targetAddressName"`
-	// refer to notify target parameters name
+	TargetAddressName string  `pulumi:"targetAddressName"`
+	// Refer to notify target parameters name
 	TargetParameters *string `pulumi:"targetParameters"`
 }
 
@@ -6860,13 +6856,13 @@ type NetworktemplateSnmpConfigV3ConfigTargetAddressInput interface {
 }
 
 type NetworktemplateSnmpConfigV3ConfigTargetAddressArgs struct {
-	Address     pulumi.StringPtrInput `pulumi:"address"`
-	AddressMask pulumi.StringPtrInput `pulumi:"addressMask"`
-	Port        pulumi.IntPtrInput    `pulumi:"port"`
-	// <refer to notify tag, can be multiple with blank
+	Address     pulumi.StringInput    `pulumi:"address"`
+	AddressMask pulumi.StringInput    `pulumi:"addressMask"`
+	Port        pulumi.StringPtrInput `pulumi:"port"`
+	// Refer to notify tag, can be multiple with blank
 	TagList           pulumi.StringPtrInput `pulumi:"tagList"`
-	TargetAddressName pulumi.StringPtrInput `pulumi:"targetAddressName"`
-	// refer to notify target parameters name
+	TargetAddressName pulumi.StringInput    `pulumi:"targetAddressName"`
+	// Refer to notify target parameters name
 	TargetParameters pulumi.StringPtrInput `pulumi:"targetParameters"`
 }
 
@@ -6921,28 +6917,28 @@ func (o NetworktemplateSnmpConfigV3ConfigTargetAddressOutput) ToNetworktemplateS
 	return o
 }
 
-func (o NetworktemplateSnmpConfigV3ConfigTargetAddressOutput) Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigTargetAddress) *string { return v.Address }).(pulumi.StringPtrOutput)
+func (o NetworktemplateSnmpConfigV3ConfigTargetAddressOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigTargetAddress) string { return v.Address }).(pulumi.StringOutput)
 }
 
-func (o NetworktemplateSnmpConfigV3ConfigTargetAddressOutput) AddressMask() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigTargetAddress) *string { return v.AddressMask }).(pulumi.StringPtrOutput)
+func (o NetworktemplateSnmpConfigV3ConfigTargetAddressOutput) AddressMask() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigTargetAddress) string { return v.AddressMask }).(pulumi.StringOutput)
 }
 
-func (o NetworktemplateSnmpConfigV3ConfigTargetAddressOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigTargetAddress) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o NetworktemplateSnmpConfigV3ConfigTargetAddressOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigTargetAddress) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// <refer to notify tag, can be multiple with blank
+// Refer to notify tag, can be multiple with blank
 func (o NetworktemplateSnmpConfigV3ConfigTargetAddressOutput) TagList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigTargetAddress) *string { return v.TagList }).(pulumi.StringPtrOutput)
 }
 
-func (o NetworktemplateSnmpConfigV3ConfigTargetAddressOutput) TargetAddressName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigTargetAddress) *string { return v.TargetAddressName }).(pulumi.StringPtrOutput)
+func (o NetworktemplateSnmpConfigV3ConfigTargetAddressOutput) TargetAddressName() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigTargetAddress) string { return v.TargetAddressName }).(pulumi.StringOutput)
 }
 
-// refer to notify target parameters name
+// Refer to notify target parameters name
 func (o NetworktemplateSnmpConfigV3ConfigTargetAddressOutput) TargetParameters() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigTargetAddress) *string { return v.TargetParameters }).(pulumi.StringPtrOutput)
 }
@@ -6969,15 +6965,15 @@ func (o NetworktemplateSnmpConfigV3ConfigTargetAddressArrayOutput) Index(i pulum
 
 type NetworktemplateSnmpConfigV3ConfigTargetParameter struct {
 	// enum: `v1`, `v2c`, `v3`
-	MessageProcessingModel *string `pulumi:"messageProcessingModel"`
-	Name                   *string `pulumi:"name"`
-	// refer to profile-name in notify_filter
+	MessageProcessingModel string `pulumi:"messageProcessingModel"`
+	Name                   string `pulumi:"name"`
+	// Refer to profile-name in notify_filter
 	NotifyFilter *string `pulumi:"notifyFilter"`
 	// enum: `authentication`, `none`, `privacy`
 	SecurityLevel *string `pulumi:"securityLevel"`
 	// enum: `usm`, `v1`, `v2c`
 	SecurityModel *string `pulumi:"securityModel"`
-	// refer to securityName in usm
+	// Refer to securityName in usm
 	SecurityName *string `pulumi:"securityName"`
 }
 
@@ -6994,15 +6990,15 @@ type NetworktemplateSnmpConfigV3ConfigTargetParameterInput interface {
 
 type NetworktemplateSnmpConfigV3ConfigTargetParameterArgs struct {
 	// enum: `v1`, `v2c`, `v3`
-	MessageProcessingModel pulumi.StringPtrInput `pulumi:"messageProcessingModel"`
-	Name                   pulumi.StringPtrInput `pulumi:"name"`
-	// refer to profile-name in notify_filter
+	MessageProcessingModel pulumi.StringInput `pulumi:"messageProcessingModel"`
+	Name                   pulumi.StringInput `pulumi:"name"`
+	// Refer to profile-name in notify_filter
 	NotifyFilter pulumi.StringPtrInput `pulumi:"notifyFilter"`
 	// enum: `authentication`, `none`, `privacy`
 	SecurityLevel pulumi.StringPtrInput `pulumi:"securityLevel"`
 	// enum: `usm`, `v1`, `v2c`
 	SecurityModel pulumi.StringPtrInput `pulumi:"securityModel"`
-	// refer to securityName in usm
+	// Refer to securityName in usm
 	SecurityName pulumi.StringPtrInput `pulumi:"securityName"`
 }
 
@@ -7058,15 +7054,15 @@ func (o NetworktemplateSnmpConfigV3ConfigTargetParameterOutput) ToNetworktemplat
 }
 
 // enum: `v1`, `v2c`, `v3`
-func (o NetworktemplateSnmpConfigV3ConfigTargetParameterOutput) MessageProcessingModel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigTargetParameter) *string { return v.MessageProcessingModel }).(pulumi.StringPtrOutput)
+func (o NetworktemplateSnmpConfigV3ConfigTargetParameterOutput) MessageProcessingModel() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigTargetParameter) string { return v.MessageProcessingModel }).(pulumi.StringOutput)
 }
 
-func (o NetworktemplateSnmpConfigV3ConfigTargetParameterOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigTargetParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o NetworktemplateSnmpConfigV3ConfigTargetParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigTargetParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// refer to profile-name in notify_filter
+// Refer to profile-name in notify_filter
 func (o NetworktemplateSnmpConfigV3ConfigTargetParameterOutput) NotifyFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigTargetParameter) *string { return v.NotifyFilter }).(pulumi.StringPtrOutput)
 }
@@ -7081,7 +7077,7 @@ func (o NetworktemplateSnmpConfigV3ConfigTargetParameterOutput) SecurityModel() 
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigTargetParameter) *string { return v.SecurityModel }).(pulumi.StringPtrOutput)
 }
 
-// refer to securityName in usm
+// Refer to securityName in usm
 func (o NetworktemplateSnmpConfigV3ConfigTargetParameterOutput) SecurityName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigTargetParameter) *string { return v.SecurityName }).(pulumi.StringPtrOutput)
 }
@@ -7108,10 +7104,10 @@ func (o NetworktemplateSnmpConfigV3ConfigTargetParameterArrayOutput) Index(i pul
 
 type NetworktemplateSnmpConfigV3ConfigUsm struct {
 	// enum: `localEngine`, `remoteEngine`
-	EngineType *string `pulumi:"engineType"`
-	// required only if `engineType`==`remoteEngine`
-	Engineid *string                                    `pulumi:"engineid"`
-	Users    []NetworktemplateSnmpConfigV3ConfigUsmUser `pulumi:"users"`
+	EngineType string `pulumi:"engineType"`
+	// Required only if `engineType`==`remoteEngine`
+	RemoteEngineId *string                                    `pulumi:"remoteEngineId"`
+	Users          []NetworktemplateSnmpConfigV3ConfigUsmUser `pulumi:"users"`
 }
 
 // NetworktemplateSnmpConfigV3ConfigUsmInput is an input type that accepts NetworktemplateSnmpConfigV3ConfigUsmArgs and NetworktemplateSnmpConfigV3ConfigUsmOutput values.
@@ -7127,10 +7123,10 @@ type NetworktemplateSnmpConfigV3ConfigUsmInput interface {
 
 type NetworktemplateSnmpConfigV3ConfigUsmArgs struct {
 	// enum: `localEngine`, `remoteEngine`
-	EngineType pulumi.StringPtrInput `pulumi:"engineType"`
-	// required only if `engineType`==`remoteEngine`
-	Engineid pulumi.StringPtrInput                              `pulumi:"engineid"`
-	Users    NetworktemplateSnmpConfigV3ConfigUsmUserArrayInput `pulumi:"users"`
+	EngineType pulumi.StringInput `pulumi:"engineType"`
+	// Required only if `engineType`==`remoteEngine`
+	RemoteEngineId pulumi.StringPtrInput                              `pulumi:"remoteEngineId"`
+	Users          NetworktemplateSnmpConfigV3ConfigUsmUserArrayInput `pulumi:"users"`
 }
 
 func (NetworktemplateSnmpConfigV3ConfigUsmArgs) ElementType() reflect.Type {
@@ -7145,45 +7141,29 @@ func (i NetworktemplateSnmpConfigV3ConfigUsmArgs) ToNetworktemplateSnmpConfigV3C
 	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateSnmpConfigV3ConfigUsmOutput)
 }
 
-func (i NetworktemplateSnmpConfigV3ConfigUsmArgs) ToNetworktemplateSnmpConfigV3ConfigUsmPtrOutput() NetworktemplateSnmpConfigV3ConfigUsmPtrOutput {
-	return i.ToNetworktemplateSnmpConfigV3ConfigUsmPtrOutputWithContext(context.Background())
-}
-
-func (i NetworktemplateSnmpConfigV3ConfigUsmArgs) ToNetworktemplateSnmpConfigV3ConfigUsmPtrOutputWithContext(ctx context.Context) NetworktemplateSnmpConfigV3ConfigUsmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateSnmpConfigV3ConfigUsmOutput).ToNetworktemplateSnmpConfigV3ConfigUsmPtrOutputWithContext(ctx)
-}
-
-// NetworktemplateSnmpConfigV3ConfigUsmPtrInput is an input type that accepts NetworktemplateSnmpConfigV3ConfigUsmArgs, NetworktemplateSnmpConfigV3ConfigUsmPtr and NetworktemplateSnmpConfigV3ConfigUsmPtrOutput values.
-// You can construct a concrete instance of `NetworktemplateSnmpConfigV3ConfigUsmPtrInput` via:
+// NetworktemplateSnmpConfigV3ConfigUsmArrayInput is an input type that accepts NetworktemplateSnmpConfigV3ConfigUsmArray and NetworktemplateSnmpConfigV3ConfigUsmArrayOutput values.
+// You can construct a concrete instance of `NetworktemplateSnmpConfigV3ConfigUsmArrayInput` via:
 //
-//	        NetworktemplateSnmpConfigV3ConfigUsmArgs{...}
-//
-//	or:
-//
-//	        nil
-type NetworktemplateSnmpConfigV3ConfigUsmPtrInput interface {
+//	NetworktemplateSnmpConfigV3ConfigUsmArray{ NetworktemplateSnmpConfigV3ConfigUsmArgs{...} }
+type NetworktemplateSnmpConfigV3ConfigUsmArrayInput interface {
 	pulumi.Input
 
-	ToNetworktemplateSnmpConfigV3ConfigUsmPtrOutput() NetworktemplateSnmpConfigV3ConfigUsmPtrOutput
-	ToNetworktemplateSnmpConfigV3ConfigUsmPtrOutputWithContext(context.Context) NetworktemplateSnmpConfigV3ConfigUsmPtrOutput
+	ToNetworktemplateSnmpConfigV3ConfigUsmArrayOutput() NetworktemplateSnmpConfigV3ConfigUsmArrayOutput
+	ToNetworktemplateSnmpConfigV3ConfigUsmArrayOutputWithContext(context.Context) NetworktemplateSnmpConfigV3ConfigUsmArrayOutput
 }
 
-type networktemplateSnmpConfigV3ConfigUsmPtrType NetworktemplateSnmpConfigV3ConfigUsmArgs
+type NetworktemplateSnmpConfigV3ConfigUsmArray []NetworktemplateSnmpConfigV3ConfigUsmInput
 
-func NetworktemplateSnmpConfigV3ConfigUsmPtr(v *NetworktemplateSnmpConfigV3ConfigUsmArgs) NetworktemplateSnmpConfigV3ConfigUsmPtrInput {
-	return (*networktemplateSnmpConfigV3ConfigUsmPtrType)(v)
+func (NetworktemplateSnmpConfigV3ConfigUsmArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworktemplateSnmpConfigV3ConfigUsm)(nil)).Elem()
 }
 
-func (*networktemplateSnmpConfigV3ConfigUsmPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworktemplateSnmpConfigV3ConfigUsm)(nil)).Elem()
+func (i NetworktemplateSnmpConfigV3ConfigUsmArray) ToNetworktemplateSnmpConfigV3ConfigUsmArrayOutput() NetworktemplateSnmpConfigV3ConfigUsmArrayOutput {
+	return i.ToNetworktemplateSnmpConfigV3ConfigUsmArrayOutputWithContext(context.Background())
 }
 
-func (i *networktemplateSnmpConfigV3ConfigUsmPtrType) ToNetworktemplateSnmpConfigV3ConfigUsmPtrOutput() NetworktemplateSnmpConfigV3ConfigUsmPtrOutput {
-	return i.ToNetworktemplateSnmpConfigV3ConfigUsmPtrOutputWithContext(context.Background())
-}
-
-func (i *networktemplateSnmpConfigV3ConfigUsmPtrType) ToNetworktemplateSnmpConfigV3ConfigUsmPtrOutputWithContext(ctx context.Context) NetworktemplateSnmpConfigV3ConfigUsmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateSnmpConfigV3ConfigUsmPtrOutput)
+func (i NetworktemplateSnmpConfigV3ConfigUsmArray) ToNetworktemplateSnmpConfigV3ConfigUsmArrayOutputWithContext(ctx context.Context) NetworktemplateSnmpConfigV3ConfigUsmArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateSnmpConfigV3ConfigUsmArrayOutput)
 }
 
 type NetworktemplateSnmpConfigV3ConfigUsmOutput struct{ *pulumi.OutputState }
@@ -7200,24 +7180,14 @@ func (o NetworktemplateSnmpConfigV3ConfigUsmOutput) ToNetworktemplateSnmpConfigV
 	return o
 }
 
-func (o NetworktemplateSnmpConfigV3ConfigUsmOutput) ToNetworktemplateSnmpConfigV3ConfigUsmPtrOutput() NetworktemplateSnmpConfigV3ConfigUsmPtrOutput {
-	return o.ToNetworktemplateSnmpConfigV3ConfigUsmPtrOutputWithContext(context.Background())
-}
-
-func (o NetworktemplateSnmpConfigV3ConfigUsmOutput) ToNetworktemplateSnmpConfigV3ConfigUsmPtrOutputWithContext(ctx context.Context) NetworktemplateSnmpConfigV3ConfigUsmPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworktemplateSnmpConfigV3ConfigUsm) *NetworktemplateSnmpConfigV3ConfigUsm {
-		return &v
-	}).(NetworktemplateSnmpConfigV3ConfigUsmPtrOutput)
-}
-
 // enum: `localEngine`, `remoteEngine`
-func (o NetworktemplateSnmpConfigV3ConfigUsmOutput) EngineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigUsm) *string { return v.EngineType }).(pulumi.StringPtrOutput)
+func (o NetworktemplateSnmpConfigV3ConfigUsmOutput) EngineType() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigUsm) string { return v.EngineType }).(pulumi.StringOutput)
 }
 
-// required only if `engineType`==`remoteEngine`
-func (o NetworktemplateSnmpConfigV3ConfigUsmOutput) Engineid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigUsm) *string { return v.Engineid }).(pulumi.StringPtrOutput)
+// Required only if `engineType`==`remoteEngine`
+func (o NetworktemplateSnmpConfigV3ConfigUsmOutput) RemoteEngineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigUsm) *string { return v.RemoteEngineId }).(pulumi.StringPtrOutput)
 }
 
 func (o NetworktemplateSnmpConfigV3ConfigUsmOutput) Users() NetworktemplateSnmpConfigV3ConfigUsmUserArrayOutput {
@@ -7226,63 +7196,30 @@ func (o NetworktemplateSnmpConfigV3ConfigUsmOutput) Users() NetworktemplateSnmpC
 	}).(NetworktemplateSnmpConfigV3ConfigUsmUserArrayOutput)
 }
 
-type NetworktemplateSnmpConfigV3ConfigUsmPtrOutput struct{ *pulumi.OutputState }
+type NetworktemplateSnmpConfigV3ConfigUsmArrayOutput struct{ *pulumi.OutputState }
 
-func (NetworktemplateSnmpConfigV3ConfigUsmPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworktemplateSnmpConfigV3ConfigUsm)(nil)).Elem()
+func (NetworktemplateSnmpConfigV3ConfigUsmArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworktemplateSnmpConfigV3ConfigUsm)(nil)).Elem()
 }
 
-func (o NetworktemplateSnmpConfigV3ConfigUsmPtrOutput) ToNetworktemplateSnmpConfigV3ConfigUsmPtrOutput() NetworktemplateSnmpConfigV3ConfigUsmPtrOutput {
+func (o NetworktemplateSnmpConfigV3ConfigUsmArrayOutput) ToNetworktemplateSnmpConfigV3ConfigUsmArrayOutput() NetworktemplateSnmpConfigV3ConfigUsmArrayOutput {
 	return o
 }
 
-func (o NetworktemplateSnmpConfigV3ConfigUsmPtrOutput) ToNetworktemplateSnmpConfigV3ConfigUsmPtrOutputWithContext(ctx context.Context) NetworktemplateSnmpConfigV3ConfigUsmPtrOutput {
+func (o NetworktemplateSnmpConfigV3ConfigUsmArrayOutput) ToNetworktemplateSnmpConfigV3ConfigUsmArrayOutputWithContext(ctx context.Context) NetworktemplateSnmpConfigV3ConfigUsmArrayOutput {
 	return o
 }
 
-func (o NetworktemplateSnmpConfigV3ConfigUsmPtrOutput) Elem() NetworktemplateSnmpConfigV3ConfigUsmOutput {
-	return o.ApplyT(func(v *NetworktemplateSnmpConfigV3ConfigUsm) NetworktemplateSnmpConfigV3ConfigUsm {
-		if v != nil {
-			return *v
-		}
-		var ret NetworktemplateSnmpConfigV3ConfigUsm
-		return ret
+func (o NetworktemplateSnmpConfigV3ConfigUsmArrayOutput) Index(i pulumi.IntInput) NetworktemplateSnmpConfigV3ConfigUsmOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworktemplateSnmpConfigV3ConfigUsm {
+		return vs[0].([]NetworktemplateSnmpConfigV3ConfigUsm)[vs[1].(int)]
 	}).(NetworktemplateSnmpConfigV3ConfigUsmOutput)
 }
 
-// enum: `localEngine`, `remoteEngine`
-func (o NetworktemplateSnmpConfigV3ConfigUsmPtrOutput) EngineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworktemplateSnmpConfigV3ConfigUsm) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EngineType
-	}).(pulumi.StringPtrOutput)
-}
-
-// required only if `engineType`==`remoteEngine`
-func (o NetworktemplateSnmpConfigV3ConfigUsmPtrOutput) Engineid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworktemplateSnmpConfigV3ConfigUsm) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Engineid
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o NetworktemplateSnmpConfigV3ConfigUsmPtrOutput) Users() NetworktemplateSnmpConfigV3ConfigUsmUserArrayOutput {
-	return o.ApplyT(func(v *NetworktemplateSnmpConfigV3ConfigUsm) []NetworktemplateSnmpConfigV3ConfigUsmUser {
-		if v == nil {
-			return nil
-		}
-		return v.Users
-	}).(NetworktemplateSnmpConfigV3ConfigUsmUserArrayOutput)
-}
-
 type NetworktemplateSnmpConfigV3ConfigUsmUser struct {
-	// Not required if `authenticationType`==`authenticationNone`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
+	// Not required if `authenticationType`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
 	AuthenticationPassword *string `pulumi:"authenticationPassword"`
-	// sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authenticationMd5`, `authenticationNone`, `authenticationSha`, `authenticationSha224`, `authenticationSha256`, `authenticationSha384`, `authenticationSha512`
+	// sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
 	AuthenticationType *string `pulumi:"authenticationType"`
 	// Not required if `encryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
 	EncryptionPassword *string `pulumi:"encryptionPassword"`
@@ -7303,9 +7240,9 @@ type NetworktemplateSnmpConfigV3ConfigUsmUserInput interface {
 }
 
 type NetworktemplateSnmpConfigV3ConfigUsmUserArgs struct {
-	// Not required if `authenticationType`==`authenticationNone`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
+	// Not required if `authenticationType`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
 	AuthenticationPassword pulumi.StringPtrInput `pulumi:"authenticationPassword"`
-	// sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authenticationMd5`, `authenticationNone`, `authenticationSha`, `authenticationSha224`, `authenticationSha256`, `authenticationSha384`, `authenticationSha512`
+	// sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
 	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
 	// Not required if `encryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
 	EncryptionPassword pulumi.StringPtrInput `pulumi:"encryptionPassword"`
@@ -7365,12 +7302,12 @@ func (o NetworktemplateSnmpConfigV3ConfigUsmUserOutput) ToNetworktemplateSnmpCon
 	return o
 }
 
-// Not required if `authenticationType`==`authenticationNone`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
+// Not required if `authenticationType`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
 func (o NetworktemplateSnmpConfigV3ConfigUsmUserOutput) AuthenticationPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigUsmUser) *string { return v.AuthenticationPassword }).(pulumi.StringPtrOutput)
 }
 
-// sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authenticationMd5`, `authenticationNone`, `authenticationSha`, `authenticationSha224`, `authenticationSha256`, `authenticationSha384`, `authenticationSha512`
+// sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
 func (o NetworktemplateSnmpConfigV3ConfigUsmUserOutput) AuthenticationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigUsmUser) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
 }
@@ -7664,11 +7601,11 @@ func (o NetworktemplateSnmpConfigV3ConfigVacmAccessArrayOutput) Index(i pulumi.I
 }
 
 type NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList struct {
-	// only required if `type`==`contextPrefix`
+	// Only required if `type`==`contextPrefix`
 	ContextPrefix *string `pulumi:"contextPrefix"`
-	// refer to view name
+	// Refer to view name
 	NotifyView *string `pulumi:"notifyView"`
-	// refer to view name
+	// Refer to view name
 	ReadView *string `pulumi:"readView"`
 	// enum: `authentication`, `none`, `privacy`
 	SecurityLevel *string `pulumi:"securityLevel"`
@@ -7676,7 +7613,7 @@ type NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList struct {
 	SecurityModel *string `pulumi:"securityModel"`
 	// enum: `contextPrefix`, `defaultContextPrefix`
 	Type *string `pulumi:"type"`
-	// refer to view name
+	// Refer to view name
 	WriteView *string `pulumi:"writeView"`
 }
 
@@ -7692,11 +7629,11 @@ type NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListInput interface {
 }
 
 type NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs struct {
-	// only required if `type`==`contextPrefix`
+	// Only required if `type`==`contextPrefix`
 	ContextPrefix pulumi.StringPtrInput `pulumi:"contextPrefix"`
-	// refer to view name
+	// Refer to view name
 	NotifyView pulumi.StringPtrInput `pulumi:"notifyView"`
-	// refer to view name
+	// Refer to view name
 	ReadView pulumi.StringPtrInput `pulumi:"readView"`
 	// enum: `authentication`, `none`, `privacy`
 	SecurityLevel pulumi.StringPtrInput `pulumi:"securityLevel"`
@@ -7704,7 +7641,7 @@ type NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs struct {
 	SecurityModel pulumi.StringPtrInput `pulumi:"securityModel"`
 	// enum: `contextPrefix`, `defaultContextPrefix`
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// refer to view name
+	// Refer to view name
 	WriteView pulumi.StringPtrInput `pulumi:"writeView"`
 }
 
@@ -7759,17 +7696,17 @@ func (o NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListOutput) ToNetworkte
 	return o
 }
 
-// only required if `type`==`contextPrefix`
+// Only required if `type`==`contextPrefix`
 func (o NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListOutput) ContextPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList) *string { return v.ContextPrefix }).(pulumi.StringPtrOutput)
 }
 
-// refer to view name
+// Refer to view name
 func (o NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListOutput) NotifyView() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList) *string { return v.NotifyView }).(pulumi.StringPtrOutput)
 }
 
-// refer to view name
+// Refer to view name
 func (o NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListOutput) ReadView() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList) *string { return v.ReadView }).(pulumi.StringPtrOutput)
 }
@@ -7789,7 +7726,7 @@ func (o NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListOutput) Type() pulu
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// refer to view name
+// Refer to view name
 func (o NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListOutput) WriteView() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList) *string { return v.WriteView }).(pulumi.StringPtrOutput)
 }
@@ -7969,7 +7906,7 @@ func (o NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupPtrOutput) SecurityM
 }
 
 type NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContent struct {
-	// refer to groupName under access
+	// Refer to groupName under access
 	Group        *string `pulumi:"group"`
 	SecurityName *string `pulumi:"securityName"`
 }
@@ -7986,7 +7923,7 @@ type NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentInput interface 
 }
 
 type NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentArgs struct {
-	// refer to groupName under access
+	// Refer to groupName under access
 	Group        pulumi.StringPtrInput `pulumi:"group"`
 	SecurityName pulumi.StringPtrInput `pulumi:"securityName"`
 }
@@ -8042,7 +7979,7 @@ func (o NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentOutput) ToNet
 	return o
 }
 
-// refer to groupName under access
+// Refer to groupName under access
 func (o NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContent) *string { return v.Group }).(pulumi.StringPtrOutput)
 }
@@ -8072,7 +8009,7 @@ func (o NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentArrayOutput) 
 }
 
 type NetworktemplateSnmpConfigView struct {
-	// if the root oid configured is included
+	// If the root oid configured is included
 	Include  *bool   `pulumi:"include"`
 	Oid      *string `pulumi:"oid"`
 	ViewName *string `pulumi:"viewName"`
@@ -8090,7 +8027,7 @@ type NetworktemplateSnmpConfigViewInput interface {
 }
 
 type NetworktemplateSnmpConfigViewArgs struct {
-	// if the root oid configured is included
+	// If the root oid configured is included
 	Include  pulumi.BoolPtrInput   `pulumi:"include"`
 	Oid      pulumi.StringPtrInput `pulumi:"oid"`
 	ViewName pulumi.StringPtrInput `pulumi:"viewName"`
@@ -8147,7 +8084,7 @@ func (o NetworktemplateSnmpConfigViewOutput) ToNetworktemplateSnmpConfigViewOutp
 	return o
 }
 
-// if the root oid configured is included
+// If the root oid configured is included
 func (o NetworktemplateSnmpConfigViewOutput) Include() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSnmpConfigView) *bool { return v.Include }).(pulumi.BoolPtrOutput)
 }
@@ -8345,7 +8282,7 @@ type NetworktemplateSwitchMatchingRule struct {
 	MatchNameOffset *int `pulumi:"matchNameOffset"`
 	// string the switch role must start with to use this rule. It is possible to combine with the `matchName` and `matchModel` attributes
 	MatchRole *string `pulumi:"matchRole"`
-	// 'property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
+	// property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
 	//
 	// Deprecated: The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attribuites and may be removed in future versions.
 	// Please update your configurations.
@@ -8386,7 +8323,7 @@ type NetworktemplateSwitchMatchingRuleArgs struct {
 	MatchNameOffset pulumi.IntPtrInput `pulumi:"matchNameOffset"`
 	// string the switch role must start with to use this rule. It is possible to combine with the `matchName` and `matchModel` attributes
 	MatchRole pulumi.StringPtrInput `pulumi:"matchRole"`
-	// 'property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
+	// property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
 	//
 	// Deprecated: The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attribuites and may be removed in future versions.
 	// Please update your configurations.
@@ -8486,7 +8423,7 @@ func (o NetworktemplateSwitchMatchingRuleOutput) MatchRole() pulumi.StringPtrOut
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRule) *string { return v.MatchRole }).(pulumi.StringPtrOutput)
 }
 
-// 'property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
+// property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
 //
 // Deprecated: The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attribuites and may be removed in future versions.
 // Please update your configurations.
@@ -8704,9 +8641,9 @@ func (o NetworktemplateSwitchMatchingRuleIpConfigPtrOutput) Type() pulumi.String
 type NetworktemplateSwitchMatchingRuleOobIpConfig struct {
 	// enum: `dhcp`, `static`
 	Type *string `pulumi:"type"`
-	// if supported on the platform. If enabled, DNS will be using this routing-instance, too
+	// If supported on the platform. If enabled, DNS will be using this routing-instance, too
 	UseMgmtVrf *bool `pulumi:"useMgmtVrf"`
-	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+	// For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 	UseMgmtVrfForHostOut *bool `pulumi:"useMgmtVrfForHostOut"`
 }
 
@@ -8724,9 +8661,9 @@ type NetworktemplateSwitchMatchingRuleOobIpConfigInput interface {
 type NetworktemplateSwitchMatchingRuleOobIpConfigArgs struct {
 	// enum: `dhcp`, `static`
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// if supported on the platform. If enabled, DNS will be using this routing-instance, too
+	// If supported on the platform. If enabled, DNS will be using this routing-instance, too
 	UseMgmtVrf pulumi.BoolPtrInput `pulumi:"useMgmtVrf"`
-	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+	// For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 	UseMgmtVrfForHostOut pulumi.BoolPtrInput `pulumi:"useMgmtVrfForHostOut"`
 }
 
@@ -8812,12 +8749,12 @@ func (o NetworktemplateSwitchMatchingRuleOobIpConfigOutput) Type() pulumi.String
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRuleOobIpConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// if supported on the platform. If enabled, DNS will be using this routing-instance, too
+// If supported on the platform. If enabled, DNS will be using this routing-instance, too
 func (o NetworktemplateSwitchMatchingRuleOobIpConfigOutput) UseMgmtVrf() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRuleOobIpConfig) *bool { return v.UseMgmtVrf }).(pulumi.BoolPtrOutput)
 }
 
-// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+// For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 func (o NetworktemplateSwitchMatchingRuleOobIpConfigOutput) UseMgmtVrfForHostOut() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRuleOobIpConfig) *bool { return v.UseMgmtVrfForHostOut }).(pulumi.BoolPtrOutput)
 }
@@ -8856,7 +8793,7 @@ func (o NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput) Type() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// if supported on the platform. If enabled, DNS will be using this routing-instance, too
+// If supported on the platform. If enabled, DNS will be using this routing-instance, too
 func (o NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput) UseMgmtVrf() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworktemplateSwitchMatchingRuleOobIpConfig) *bool {
 		if v == nil {
@@ -8866,7 +8803,7 @@ func (o NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput) UseMgmtVrf() pulu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+// For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 func (o NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput) UseMgmtVrfForHostOut() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworktemplateSwitchMatchingRuleOobIpConfig) *bool {
 		if v == nil {
@@ -8881,27 +8818,27 @@ type NetworktemplateSwitchMatchingRulePortConfig struct {
 	AeDisableLacp *bool `pulumi:"aeDisableLacp"`
 	// Users could force to use the designated AE name
 	AeIdx *int `pulumi:"aeIdx"`
-	// to use fast timeout
+	// To use fast timeout
 	AeLacpSlow *bool `pulumi:"aeLacpSlow"`
 	Aggregated *bool `pulumi:"aggregated"`
-	// if want to generate port up/down alarm
+	// To generate port up/down alarm
 	Critical    *bool   `pulumi:"critical"`
 	Description *string `pulumi:"description"`
-	// if `speed` and `duplex` are specified, whether to disable autonegotiation
+	// If `speed` and `duplex` are specified, whether to disable autonegotiation
 	DisableAutoneg *bool `pulumi:"disableAutoneg"`
 	// enum: `auto`, `full`, `half`
 	Duplex *string `pulumi:"duplex"`
 	// Enable dynamic usage for this port. Set to `dynamic` to enable.
 	DynamicUsage *string `pulumi:"dynamicUsage"`
 	Esilag       *bool   `pulumi:"esilag"`
-	// media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+	// Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
 	Mtu *int `pulumi:"mtu"`
-	// prevent helpdesk to override the port config
+	// Prevent helpdesk to override the port config
 	NoLocalOverwrite *bool `pulumi:"noLocalOverwrite"`
 	PoeDisabled      *bool `pulumi:"poeDisabled"`
 	// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 	Speed *string `pulumi:"speed"`
-	// port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
+	// Port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
 	Usage string `pulumi:"usage"`
 }
 
@@ -8921,27 +8858,27 @@ type NetworktemplateSwitchMatchingRulePortConfigArgs struct {
 	AeDisableLacp pulumi.BoolPtrInput `pulumi:"aeDisableLacp"`
 	// Users could force to use the designated AE name
 	AeIdx pulumi.IntPtrInput `pulumi:"aeIdx"`
-	// to use fast timeout
+	// To use fast timeout
 	AeLacpSlow pulumi.BoolPtrInput `pulumi:"aeLacpSlow"`
 	Aggregated pulumi.BoolPtrInput `pulumi:"aggregated"`
-	// if want to generate port up/down alarm
+	// To generate port up/down alarm
 	Critical    pulumi.BoolPtrInput   `pulumi:"critical"`
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// if `speed` and `duplex` are specified, whether to disable autonegotiation
+	// If `speed` and `duplex` are specified, whether to disable autonegotiation
 	DisableAutoneg pulumi.BoolPtrInput `pulumi:"disableAutoneg"`
 	// enum: `auto`, `full`, `half`
 	Duplex pulumi.StringPtrInput `pulumi:"duplex"`
 	// Enable dynamic usage for this port. Set to `dynamic` to enable.
 	DynamicUsage pulumi.StringPtrInput `pulumi:"dynamicUsage"`
 	Esilag       pulumi.BoolPtrInput   `pulumi:"esilag"`
-	// media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+	// Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
 	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
-	// prevent helpdesk to override the port config
+	// Prevent helpdesk to override the port config
 	NoLocalOverwrite pulumi.BoolPtrInput `pulumi:"noLocalOverwrite"`
 	PoeDisabled      pulumi.BoolPtrInput `pulumi:"poeDisabled"`
 	// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 	Speed pulumi.StringPtrInput `pulumi:"speed"`
-	// port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
+	// Port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
 	Usage pulumi.StringInput `pulumi:"usage"`
 }
 
@@ -9006,7 +8943,7 @@ func (o NetworktemplateSwitchMatchingRulePortConfigOutput) AeIdx() pulumi.IntPtr
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortConfig) *int { return v.AeIdx }).(pulumi.IntPtrOutput)
 }
 
-// to use fast timeout
+// To use fast timeout
 func (o NetworktemplateSwitchMatchingRulePortConfigOutput) AeLacpSlow() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortConfig) *bool { return v.AeLacpSlow }).(pulumi.BoolPtrOutput)
 }
@@ -9015,7 +8952,7 @@ func (o NetworktemplateSwitchMatchingRulePortConfigOutput) Aggregated() pulumi.B
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortConfig) *bool { return v.Aggregated }).(pulumi.BoolPtrOutput)
 }
 
-// if want to generate port up/down alarm
+// To generate port up/down alarm
 func (o NetworktemplateSwitchMatchingRulePortConfigOutput) Critical() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortConfig) *bool { return v.Critical }).(pulumi.BoolPtrOutput)
 }
@@ -9024,7 +8961,7 @@ func (o NetworktemplateSwitchMatchingRulePortConfigOutput) Description() pulumi.
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// if `speed` and `duplex` are specified, whether to disable autonegotiation
+// If `speed` and `duplex` are specified, whether to disable autonegotiation
 func (o NetworktemplateSwitchMatchingRulePortConfigOutput) DisableAutoneg() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortConfig) *bool { return v.DisableAutoneg }).(pulumi.BoolPtrOutput)
 }
@@ -9043,12 +8980,12 @@ func (o NetworktemplateSwitchMatchingRulePortConfigOutput) Esilag() pulumi.BoolP
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortConfig) *bool { return v.Esilag }).(pulumi.BoolPtrOutput)
 }
 
-// media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+// Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
 func (o NetworktemplateSwitchMatchingRulePortConfigOutput) Mtu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortConfig) *int { return v.Mtu }).(pulumi.IntPtrOutput)
 }
 
-// prevent helpdesk to override the port config
+// Prevent helpdesk to override the port config
 func (o NetworktemplateSwitchMatchingRulePortConfigOutput) NoLocalOverwrite() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortConfig) *bool { return v.NoLocalOverwrite }).(pulumi.BoolPtrOutput)
 }
@@ -9062,7 +8999,7 @@ func (o NetworktemplateSwitchMatchingRulePortConfigOutput) Speed() pulumi.String
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortConfig) *string { return v.Speed }).(pulumi.StringPtrOutput)
 }
 
-// port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
+// Port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
 func (o NetworktemplateSwitchMatchingRulePortConfigOutput) Usage() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortConfig) string { return v.Usage }).(pulumi.StringOutput)
 }
@@ -9088,15 +9025,15 @@ func (o NetworktemplateSwitchMatchingRulePortConfigMapOutput) MapIndex(k pulumi.
 }
 
 type NetworktemplateSwitchMatchingRulePortMirroring struct {
-	// at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+	// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 	InputNetworksIngresses []string `pulumi:"inputNetworksIngresses"`
-	// at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+	// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 	InputPortIdsEgresses []string `pulumi:"inputPortIdsEgresses"`
-	// at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+	// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 	InputPortIdsIngresses []string `pulumi:"inputPortIdsIngresses"`
-	// exaclty one of the `outputPortId` or `outputNetwork` should be provided
+	// Exaclty one of the `outputPortId` or `outputNetwork` should be provided
 	OutputNetwork *string `pulumi:"outputNetwork"`
-	// exaclty one of the `outputPortId` or `outputNetwork` should be provided
+	// Exaclty one of the `outputPortId` or `outputNetwork` should be provided
 	OutputPortId *string `pulumi:"outputPortId"`
 }
 
@@ -9112,15 +9049,15 @@ type NetworktemplateSwitchMatchingRulePortMirroringInput interface {
 }
 
 type NetworktemplateSwitchMatchingRulePortMirroringArgs struct {
-	// at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+	// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 	InputNetworksIngresses pulumi.StringArrayInput `pulumi:"inputNetworksIngresses"`
-	// at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+	// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 	InputPortIdsEgresses pulumi.StringArrayInput `pulumi:"inputPortIdsEgresses"`
-	// at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+	// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 	InputPortIdsIngresses pulumi.StringArrayInput `pulumi:"inputPortIdsIngresses"`
-	// exaclty one of the `outputPortId` or `outputNetwork` should be provided
+	// Exaclty one of the `outputPortId` or `outputNetwork` should be provided
 	OutputNetwork pulumi.StringPtrInput `pulumi:"outputNetwork"`
-	// exaclty one of the `outputPortId` or `outputNetwork` should be provided
+	// Exaclty one of the `outputPortId` or `outputNetwork` should be provided
 	OutputPortId pulumi.StringPtrInput `pulumi:"outputPortId"`
 }
 
@@ -9175,27 +9112,27 @@ func (o NetworktemplateSwitchMatchingRulePortMirroringOutput) ToNetworktemplateS
 	return o
 }
 
-// at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 func (o NetworktemplateSwitchMatchingRulePortMirroringOutput) InputNetworksIngresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortMirroring) []string { return v.InputNetworksIngresses }).(pulumi.StringArrayOutput)
 }
 
-// at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 func (o NetworktemplateSwitchMatchingRulePortMirroringOutput) InputPortIdsEgresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortMirroring) []string { return v.InputPortIdsEgresses }).(pulumi.StringArrayOutput)
 }
 
-// at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
+// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 func (o NetworktemplateSwitchMatchingRulePortMirroringOutput) InputPortIdsIngresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortMirroring) []string { return v.InputPortIdsIngresses }).(pulumi.StringArrayOutput)
 }
 
-// exaclty one of the `outputPortId` or `outputNetwork` should be provided
+// Exaclty one of the `outputPortId` or `outputNetwork` should be provided
 func (o NetworktemplateSwitchMatchingRulePortMirroringOutput) OutputNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortMirroring) *string { return v.OutputNetwork }).(pulumi.StringPtrOutput)
 }
 
-// exaclty one of the `outputPortId` or `outputNetwork` should be provided
+// Exaclty one of the `outputPortId` or `outputNetwork` should be provided
 func (o NetworktemplateSwitchMatchingRulePortMirroringOutput) OutputPortId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortMirroring) *string { return v.OutputPortId }).(pulumi.StringPtrOutput)
 }
@@ -9221,13 +9158,13 @@ func (o NetworktemplateSwitchMatchingRulePortMirroringMapOutput) MapIndex(k pulu
 }
 
 type NetworktemplateSwitchMgmt struct {
-	// ap_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+	// AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
 	ApAffinityThreshold *int `pulumi:"apAffinityThreshold"`
 	// Set Banners for switches. Allows markup formatting
 	CliBanner *string `pulumi:"cliBanner"`
 	// Sets timeout for switches
 	CliIdleTimeout *int `pulumi:"cliIdleTimeout"`
-	// the rollback timer for commit confirmed
+	// Rollback timer for commit confirmed
 	ConfigRevertTimer *int `pulumi:"configRevertTimer"`
 	// Enable to provide the FQDN with DHCP option 81
 	DhcpOptionFqdn      *bool `pulumi:"dhcpOptionFqdn"`
@@ -9236,13 +9173,13 @@ type NetworktemplateSwitchMgmt struct {
 	LocalAccounts   map[string]NetworktemplateSwitchMgmtLocalAccounts `pulumi:"localAccounts"`
 	MxedgeProxyHost *string                                           `pulumi:"mxedgeProxyHost"`
 	MxedgeProxyPort *int                                              `pulumi:"mxedgeProxyPort"`
-	// restrict inbound-traffic to host
+	// Restrict inbound-traffic to host
 	// when enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
 	ProtectRe    *NetworktemplateSwitchMgmtProtectRe `pulumi:"protectRe"`
 	RootPassword *string                             `pulumi:"rootPassword"`
 	Tacacs       *NetworktemplateSwitchMgmtTacacs    `pulumi:"tacacs"`
-	// to use mxedge as proxy
+	// To use mxedge as proxy
 	UseMxedgeProxy *bool `pulumi:"useMxedgeProxy"`
 }
 
@@ -9258,13 +9195,13 @@ type NetworktemplateSwitchMgmtInput interface {
 }
 
 type NetworktemplateSwitchMgmtArgs struct {
-	// ap_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+	// AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
 	ApAffinityThreshold pulumi.IntPtrInput `pulumi:"apAffinityThreshold"`
 	// Set Banners for switches. Allows markup formatting
 	CliBanner pulumi.StringPtrInput `pulumi:"cliBanner"`
 	// Sets timeout for switches
 	CliIdleTimeout pulumi.IntPtrInput `pulumi:"cliIdleTimeout"`
-	// the rollback timer for commit confirmed
+	// Rollback timer for commit confirmed
 	ConfigRevertTimer pulumi.IntPtrInput `pulumi:"configRevertTimer"`
 	// Enable to provide the FQDN with DHCP option 81
 	DhcpOptionFqdn      pulumi.BoolPtrInput `pulumi:"dhcpOptionFqdn"`
@@ -9273,13 +9210,13 @@ type NetworktemplateSwitchMgmtArgs struct {
 	LocalAccounts   NetworktemplateSwitchMgmtLocalAccountsMapInput `pulumi:"localAccounts"`
 	MxedgeProxyHost pulumi.StringPtrInput                          `pulumi:"mxedgeProxyHost"`
 	MxedgeProxyPort pulumi.IntPtrInput                             `pulumi:"mxedgeProxyPort"`
-	// restrict inbound-traffic to host
+	// Restrict inbound-traffic to host
 	// when enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
 	ProtectRe    NetworktemplateSwitchMgmtProtectRePtrInput `pulumi:"protectRe"`
 	RootPassword pulumi.StringPtrInput                      `pulumi:"rootPassword"`
 	Tacacs       NetworktemplateSwitchMgmtTacacsPtrInput    `pulumi:"tacacs"`
-	// to use mxedge as proxy
+	// To use mxedge as proxy
 	UseMxedgeProxy pulumi.BoolPtrInput `pulumi:"useMxedgeProxy"`
 }
 
@@ -9360,7 +9297,7 @@ func (o NetworktemplateSwitchMgmtOutput) ToNetworktemplateSwitchMgmtPtrOutputWit
 	}).(NetworktemplateSwitchMgmtPtrOutput)
 }
 
-// ap_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+// AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
 func (o NetworktemplateSwitchMgmtOutput) ApAffinityThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *int { return v.ApAffinityThreshold }).(pulumi.IntPtrOutput)
 }
@@ -9375,7 +9312,7 @@ func (o NetworktemplateSwitchMgmtOutput) CliIdleTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *int { return v.CliIdleTimeout }).(pulumi.IntPtrOutput)
 }
 
-// the rollback timer for commit confirmed
+// Rollback timer for commit confirmed
 func (o NetworktemplateSwitchMgmtOutput) ConfigRevertTimer() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *int { return v.ConfigRevertTimer }).(pulumi.IntPtrOutput)
 }
@@ -9404,7 +9341,7 @@ func (o NetworktemplateSwitchMgmtOutput) MxedgeProxyPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *int { return v.MxedgeProxyPort }).(pulumi.IntPtrOutput)
 }
 
-// restrict inbound-traffic to host
+// Restrict inbound-traffic to host
 // when enabled, all traffic that is not essential to our operation will be dropped
 // e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
 func (o NetworktemplateSwitchMgmtOutput) ProtectRe() NetworktemplateSwitchMgmtProtectRePtrOutput {
@@ -9419,7 +9356,7 @@ func (o NetworktemplateSwitchMgmtOutput) Tacacs() NetworktemplateSwitchMgmtTacac
 	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *NetworktemplateSwitchMgmtTacacs { return v.Tacacs }).(NetworktemplateSwitchMgmtTacacsPtrOutput)
 }
 
-// to use mxedge as proxy
+// To use mxedge as proxy
 func (o NetworktemplateSwitchMgmtOutput) UseMxedgeProxy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *bool { return v.UseMxedgeProxy }).(pulumi.BoolPtrOutput)
 }
@@ -9448,7 +9385,7 @@ func (o NetworktemplateSwitchMgmtPtrOutput) Elem() NetworktemplateSwitchMgmtOutp
 	}).(NetworktemplateSwitchMgmtOutput)
 }
 
-// ap_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+// AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
 func (o NetworktemplateSwitchMgmtPtrOutput) ApAffinityThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NetworktemplateSwitchMgmt) *int {
 		if v == nil {
@@ -9478,7 +9415,7 @@ func (o NetworktemplateSwitchMgmtPtrOutput) CliIdleTimeout() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// the rollback timer for commit confirmed
+// Rollback timer for commit confirmed
 func (o NetworktemplateSwitchMgmtPtrOutput) ConfigRevertTimer() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NetworktemplateSwitchMgmt) *int {
 		if v == nil {
@@ -9535,7 +9472,7 @@ func (o NetworktemplateSwitchMgmtPtrOutput) MxedgeProxyPort() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// restrict inbound-traffic to host
+// Restrict inbound-traffic to host
 // when enabled, all traffic that is not essential to our operation will be dropped
 // e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
 func (o NetworktemplateSwitchMgmtPtrOutput) ProtectRe() NetworktemplateSwitchMgmtProtectRePtrOutput {
@@ -9565,7 +9502,7 @@ func (o NetworktemplateSwitchMgmtPtrOutput) Tacacs() NetworktemplateSwitchMgmtTa
 	}).(NetworktemplateSwitchMgmtTacacsPtrOutput)
 }
 
-// to use mxedge as proxy
+// To use mxedge as proxy
 func (o NetworktemplateSwitchMgmtPtrOutput) UseMxedgeProxy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworktemplateSwitchMgmt) *bool {
 		if v == nil {
@@ -9682,7 +9619,7 @@ type NetworktemplateSwitchMgmtProtectRe struct {
 	// optionally, services we'll allow. enum: `icmp`, `ssh`
 	AllowedServices []string                                   `pulumi:"allowedServices"`
 	Customs         []NetworktemplateSwitchMgmtProtectReCustom `pulumi:"customs"`
-	// when enabled, all traffic that is not essential to our operation will be dropped
+	// When enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default
 	//      if dhcpd is enabled, we'll make sure it works
 	Enabled *bool `pulumi:"enabled"`
@@ -9705,7 +9642,7 @@ type NetworktemplateSwitchMgmtProtectReArgs struct {
 	// optionally, services we'll allow. enum: `icmp`, `ssh`
 	AllowedServices pulumi.StringArrayInput                            `pulumi:"allowedServices"`
 	Customs         NetworktemplateSwitchMgmtProtectReCustomArrayInput `pulumi:"customs"`
-	// when enabled, all traffic that is not essential to our operation will be dropped
+	// When enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default
 	//      if dhcpd is enabled, we'll make sure it works
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -9801,7 +9738,7 @@ func (o NetworktemplateSwitchMgmtProtectReOutput) Customs() NetworktemplateSwitc
 	}).(NetworktemplateSwitchMgmtProtectReCustomArrayOutput)
 }
 
-// when enabled, all traffic that is not essential to our operation will be dropped
+// When enabled, all traffic that is not essential to our operation will be dropped
 // e.g. ntp / dns / traffic to mist will be allowed by default
 //
 //	if dhcpd is enabled, we'll make sure it works
@@ -9857,7 +9794,7 @@ func (o NetworktemplateSwitchMgmtProtectRePtrOutput) Customs() NetworktemplateSw
 	}).(NetworktemplateSwitchMgmtProtectReCustomArrayOutput)
 }
 
-// when enabled, all traffic that is not essential to our operation will be dropped
+// When enabled, all traffic that is not essential to our operation will be dropped
 // e.g. ntp / dns / traffic to mist will be allowed by default
 //
 //	if dhcpd is enabled, we'll make sure it works
@@ -9997,7 +9934,7 @@ type NetworktemplateSwitchMgmtTacacs struct {
 	// enum: `admin`, `helpdesk`, `none`, `read`
 	DefaultRole *string `pulumi:"defaultRole"`
 	Enabled     *bool   `pulumi:"enabled"`
-	// which network the TACACS server resides
+	// Which network the TACACS server resides
 	Network        *string                                        `pulumi:"network"`
 	TacplusServers []NetworktemplateSwitchMgmtTacacsTacplusServer `pulumi:"tacplusServers"`
 }
@@ -10018,7 +9955,7 @@ type NetworktemplateSwitchMgmtTacacsArgs struct {
 	// enum: `admin`, `helpdesk`, `none`, `read`
 	DefaultRole pulumi.StringPtrInput `pulumi:"defaultRole"`
 	Enabled     pulumi.BoolPtrInput   `pulumi:"enabled"`
-	// which network the TACACS server resides
+	// Which network the TACACS server resides
 	Network        pulumi.StringPtrInput                                  `pulumi:"network"`
 	TacplusServers NetworktemplateSwitchMgmtTacacsTacplusServerArrayInput `pulumi:"tacplusServers"`
 }
@@ -10115,7 +10052,7 @@ func (o NetworktemplateSwitchMgmtTacacsOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMgmtTacacs) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// which network the TACACS server resides
+// Which network the TACACS server resides
 func (o NetworktemplateSwitchMgmtTacacsOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMgmtTacacs) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -10178,7 +10115,7 @@ func (o NetworktemplateSwitchMgmtTacacsPtrOutput) Enabled() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// which network the TACACS server resides
+// Which network the TACACS server resides
 func (o NetworktemplateSwitchMgmtTacacsPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworktemplateSwitchMgmtTacacs) *string {
 		if v == nil {
@@ -10422,7 +10359,7 @@ func (o NetworktemplateSwitchMgmtTacacsTacplusServerArrayOutput) Index(i pulumi.
 }
 
 type NetworktemplateVrfConfig struct {
-	// whether to enable VRF (when supported on the device)
+	// Whether to enable VRF (when supported on the device)
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -10438,7 +10375,7 @@ type NetworktemplateVrfConfigInput interface {
 }
 
 type NetworktemplateVrfConfigArgs struct {
-	// whether to enable VRF (when supported on the device)
+	// Whether to enable VRF (when supported on the device)
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -10519,7 +10456,7 @@ func (o NetworktemplateVrfConfigOutput) ToNetworktemplateVrfConfigPtrOutputWithC
 	}).(NetworktemplateVrfConfigPtrOutput)
 }
 
-// whether to enable VRF (when supported on the device)
+// Whether to enable VRF (when supported on the device)
 func (o NetworktemplateVrfConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateVrfConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -10548,7 +10485,7 @@ func (o NetworktemplateVrfConfigPtrOutput) Elem() NetworktemplateVrfConfigOutput
 	}).(NetworktemplateVrfConfigOutput)
 }
 
-// whether to enable VRF (when supported on the device)
+// Whether to enable VRF (when supported on the device)
 func (o NetworktemplateVrfConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworktemplateVrfConfig) *bool {
 		if v == nil {
@@ -10761,7 +10698,7 @@ func (o NetworktemplateVrfInstancesExtraRoutesMapOutput) MapIndex(k pulumi.Strin
 }
 
 type SettingAnalytic struct {
-	// enable Advanced Analytic feature (using SUB-ANA license)
+	// Enable Advanced Analytic feature (using SUB-ANA license)
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -10777,7 +10714,7 @@ type SettingAnalyticInput interface {
 }
 
 type SettingAnalyticArgs struct {
-	// enable Advanced Analytic feature (using SUB-ANA license)
+	// Enable Advanced Analytic feature (using SUB-ANA license)
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -10858,7 +10795,7 @@ func (o SettingAnalyticOutput) ToSettingAnalyticPtrOutputWithContext(ctx context
 	}).(SettingAnalyticPtrOutput)
 }
 
-// enable Advanced Analytic feature (using SUB-ANA license)
+// Enable Advanced Analytic feature (using SUB-ANA license)
 func (o SettingAnalyticOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingAnalytic) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -10887,7 +10824,7 @@ func (o SettingAnalyticPtrOutput) Elem() SettingAnalyticOutput {
 	}).(SettingAnalyticOutput)
 }
 
-// enable Advanced Analytic feature (using SUB-ANA license)
+// Enable Advanced Analytic feature (using SUB-ANA license)
 func (o SettingAnalyticPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingAnalytic) *bool {
 		if v == nil {
@@ -10898,13 +10835,13 @@ func (o SettingAnalyticPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type SettingAutoUpgrade struct {
-	// custom versions for different models. Property key is the model name (e.g. "AP41")
+	// Custom versions for different models. Property key is the model name (e.g. "AP41")
 	CustomVersions map[string]string `pulumi:"customVersions"`
 	// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
 	DayOfWeek *string `pulumi:"dayOfWeek"`
-	// whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+	// Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
 	Enabled *bool `pulumi:"enabled"`
-	// any / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+	// `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
 	TimeOfDay *string `pulumi:"timeOfDay"`
 	// desired version. enum: `beta`, `custom`, `stable`
 	Version *string `pulumi:"version"`
@@ -10922,13 +10859,13 @@ type SettingAutoUpgradeInput interface {
 }
 
 type SettingAutoUpgradeArgs struct {
-	// custom versions for different models. Property key is the model name (e.g. "AP41")
+	// Custom versions for different models. Property key is the model name (e.g. "AP41")
 	CustomVersions pulumi.StringMapInput `pulumi:"customVersions"`
 	// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
 	DayOfWeek pulumi.StringPtrInput `pulumi:"dayOfWeek"`
-	// whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+	// Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// any / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+	// `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
 	TimeOfDay pulumi.StringPtrInput `pulumi:"timeOfDay"`
 	// desired version. enum: `beta`, `custom`, `stable`
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -11011,7 +10948,7 @@ func (o SettingAutoUpgradeOutput) ToSettingAutoUpgradePtrOutputWithContext(ctx c
 	}).(SettingAutoUpgradePtrOutput)
 }
 
-// custom versions for different models. Property key is the model name (e.g. "AP41")
+// Custom versions for different models. Property key is the model name (e.g. "AP41")
 func (o SettingAutoUpgradeOutput) CustomVersions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SettingAutoUpgrade) map[string]string { return v.CustomVersions }).(pulumi.StringMapOutput)
 }
@@ -11021,12 +10958,12 @@ func (o SettingAutoUpgradeOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingAutoUpgrade) *string { return v.DayOfWeek }).(pulumi.StringPtrOutput)
 }
 
-// whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+// Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
 func (o SettingAutoUpgradeOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingAutoUpgrade) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// any / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+// `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
 func (o SettingAutoUpgradeOutput) TimeOfDay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingAutoUpgrade) *string { return v.TimeOfDay }).(pulumi.StringPtrOutput)
 }
@@ -11060,7 +10997,7 @@ func (o SettingAutoUpgradePtrOutput) Elem() SettingAutoUpgradeOutput {
 	}).(SettingAutoUpgradeOutput)
 }
 
-// custom versions for different models. Property key is the model name (e.g. "AP41")
+// Custom versions for different models. Property key is the model name (e.g. "AP41")
 func (o SettingAutoUpgradePtrOutput) CustomVersions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SettingAutoUpgrade) map[string]string {
 		if v == nil {
@@ -11080,7 +11017,7 @@ func (o SettingAutoUpgradePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+// Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
 func (o SettingAutoUpgradePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingAutoUpgrade) *bool {
 		if v == nil {
@@ -11090,7 +11027,7 @@ func (o SettingAutoUpgradePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// any / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+// `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
 func (o SettingAutoUpgradePtrOutput) TimeOfDay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingAutoUpgrade) *string {
 		if v == nil {
@@ -11111,24 +11048,24 @@ func (o SettingAutoUpgradePtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type SettingBleConfig struct {
-	// whether Mist beacons is enabled
+	// Whether Mist beacons is enabled
 	BeaconEnabled *bool `pulumi:"beaconEnabled"`
-	// required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
+	// Required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
 	BeaconRate *int `pulumi:"beaconRate"`
 	// enum: `custom`, `default`
 	BeaconRateMode *string `pulumi:"beaconRateMode"`
-	// list of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+	// List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
 	BeamDisableds []int `pulumi:"beamDisableds"`
-	// can be enabled if `beaconEnabled`==`true`, whether to send custom packet
+	// Can be enabled if `beaconEnabled`==`true`, whether to send custom packet
 	CustomBlePacketEnabled *bool `pulumi:"customBlePacketEnabled"`
 	// The custom frame to be sent out in this beacon. The frame must be a hexstring
 	CustomBlePacketFrame *string `pulumi:"customBlePacketFrame"`
 	// Frequency (msec) of data emitted by custom ble beacon
 	CustomBlePacketFreqMsec *int `pulumi:"customBlePacketFreqMsec"`
-	// advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+	// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
 	EddystoneUidAdvPower *int    `pulumi:"eddystoneUidAdvPower"`
 	EddystoneUidBeams    *string `pulumi:"eddystoneUidBeams"`
-	// only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
+	// Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
 	EddystoneUidEnabled *bool `pulumi:"eddystoneUidEnabled"`
 	// Frequency (msec) of data emmit by Eddystone-UID beacon
 	EddystoneUidFreqMsec *int `pulumi:"eddystoneUidFreqMsec"`
@@ -11136,19 +11073,19 @@ type SettingBleConfig struct {
 	EddystoneUidInstance *string `pulumi:"eddystoneUidInstance"`
 	// Eddystone-UID namespace
 	EddystoneUidNamespace *string `pulumi:"eddystoneUidNamespace"`
-	// advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+	// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
 	EddystoneUrlAdvPower *int    `pulumi:"eddystoneUrlAdvPower"`
 	EddystoneUrlBeams    *string `pulumi:"eddystoneUrlBeams"`
-	// only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
+	// Only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
 	EddystoneUrlEnabled *bool `pulumi:"eddystoneUrlEnabled"`
 	// Frequency (msec) of data emit by Eddystone-UID beacon
 	EddystoneUrlFreqMsec *int `pulumi:"eddystoneUrlFreqMsec"`
 	// URL pointed by Eddystone-URL beacon
 	EddystoneUrlUrl *string `pulumi:"eddystoneUrlUrl"`
-	// advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+	// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
 	IbeaconAdvPower *int    `pulumi:"ibeaconAdvPower"`
 	IbeaconBeams    *string `pulumi:"ibeaconBeams"`
-	// can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
+	// Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
 	IbeaconEnabled *bool `pulumi:"ibeaconEnabled"`
 	// Frequency (msec) of data emmit for iBeacon
 	IbeaconFreqMsec *int `pulumi:"ibeaconFreqMsec"`
@@ -11156,9 +11093,9 @@ type SettingBleConfig struct {
 	IbeaconMajor *int `pulumi:"ibeaconMajor"`
 	// Minor number for iBeacon
 	IbeaconMinor *int `pulumi:"ibeaconMinor"`
-	// optional, if not specified, the same UUID as the beacon will be used
+	// Optional, if not specified, the same UUID as the beacon will be used
 	IbeaconUuid *string `pulumi:"ibeaconUuid"`
-	// required if `powerMode`==`custom`; else use `powerMode` as default
+	// Required if `powerMode`==`custom`; else use `powerMode` as default
 	Power *int `pulumi:"power"`
 	// enum: `custom`, `default`
 	PowerMode *string `pulumi:"powerMode"`
@@ -11176,24 +11113,24 @@ type SettingBleConfigInput interface {
 }
 
 type SettingBleConfigArgs struct {
-	// whether Mist beacons is enabled
+	// Whether Mist beacons is enabled
 	BeaconEnabled pulumi.BoolPtrInput `pulumi:"beaconEnabled"`
-	// required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
+	// Required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
 	BeaconRate pulumi.IntPtrInput `pulumi:"beaconRate"`
 	// enum: `custom`, `default`
 	BeaconRateMode pulumi.StringPtrInput `pulumi:"beaconRateMode"`
-	// list of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+	// List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
 	BeamDisableds pulumi.IntArrayInput `pulumi:"beamDisableds"`
-	// can be enabled if `beaconEnabled`==`true`, whether to send custom packet
+	// Can be enabled if `beaconEnabled`==`true`, whether to send custom packet
 	CustomBlePacketEnabled pulumi.BoolPtrInput `pulumi:"customBlePacketEnabled"`
 	// The custom frame to be sent out in this beacon. The frame must be a hexstring
 	CustomBlePacketFrame pulumi.StringPtrInput `pulumi:"customBlePacketFrame"`
 	// Frequency (msec) of data emitted by custom ble beacon
 	CustomBlePacketFreqMsec pulumi.IntPtrInput `pulumi:"customBlePacketFreqMsec"`
-	// advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+	// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
 	EddystoneUidAdvPower pulumi.IntPtrInput    `pulumi:"eddystoneUidAdvPower"`
 	EddystoneUidBeams    pulumi.StringPtrInput `pulumi:"eddystoneUidBeams"`
-	// only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
+	// Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
 	EddystoneUidEnabled pulumi.BoolPtrInput `pulumi:"eddystoneUidEnabled"`
 	// Frequency (msec) of data emmit by Eddystone-UID beacon
 	EddystoneUidFreqMsec pulumi.IntPtrInput `pulumi:"eddystoneUidFreqMsec"`
@@ -11201,19 +11138,19 @@ type SettingBleConfigArgs struct {
 	EddystoneUidInstance pulumi.StringPtrInput `pulumi:"eddystoneUidInstance"`
 	// Eddystone-UID namespace
 	EddystoneUidNamespace pulumi.StringPtrInput `pulumi:"eddystoneUidNamespace"`
-	// advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+	// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
 	EddystoneUrlAdvPower pulumi.IntPtrInput    `pulumi:"eddystoneUrlAdvPower"`
 	EddystoneUrlBeams    pulumi.StringPtrInput `pulumi:"eddystoneUrlBeams"`
-	// only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
+	// Only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
 	EddystoneUrlEnabled pulumi.BoolPtrInput `pulumi:"eddystoneUrlEnabled"`
 	// Frequency (msec) of data emit by Eddystone-UID beacon
 	EddystoneUrlFreqMsec pulumi.IntPtrInput `pulumi:"eddystoneUrlFreqMsec"`
 	// URL pointed by Eddystone-URL beacon
 	EddystoneUrlUrl pulumi.StringPtrInput `pulumi:"eddystoneUrlUrl"`
-	// advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+	// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
 	IbeaconAdvPower pulumi.IntPtrInput    `pulumi:"ibeaconAdvPower"`
 	IbeaconBeams    pulumi.StringPtrInput `pulumi:"ibeaconBeams"`
-	// can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
+	// Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
 	IbeaconEnabled pulumi.BoolPtrInput `pulumi:"ibeaconEnabled"`
 	// Frequency (msec) of data emmit for iBeacon
 	IbeaconFreqMsec pulumi.IntPtrInput `pulumi:"ibeaconFreqMsec"`
@@ -11221,9 +11158,9 @@ type SettingBleConfigArgs struct {
 	IbeaconMajor pulumi.IntPtrInput `pulumi:"ibeaconMajor"`
 	// Minor number for iBeacon
 	IbeaconMinor pulumi.IntPtrInput `pulumi:"ibeaconMinor"`
-	// optional, if not specified, the same UUID as the beacon will be used
+	// Optional, if not specified, the same UUID as the beacon will be used
 	IbeaconUuid pulumi.StringPtrInput `pulumi:"ibeaconUuid"`
-	// required if `powerMode`==`custom`; else use `powerMode` as default
+	// Required if `powerMode`==`custom`; else use `powerMode` as default
 	Power pulumi.IntPtrInput `pulumi:"power"`
 	// enum: `custom`, `default`
 	PowerMode pulumi.StringPtrInput `pulumi:"powerMode"`
@@ -11306,12 +11243,12 @@ func (o SettingBleConfigOutput) ToSettingBleConfigPtrOutputWithContext(ctx conte
 	}).(SettingBleConfigPtrOutput)
 }
 
-// whether Mist beacons is enabled
+// Whether Mist beacons is enabled
 func (o SettingBleConfigOutput) BeaconEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *bool { return v.BeaconEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
+// Required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
 func (o SettingBleConfigOutput) BeaconRate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *int { return v.BeaconRate }).(pulumi.IntPtrOutput)
 }
@@ -11321,12 +11258,12 @@ func (o SettingBleConfigOutput) BeaconRateMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *string { return v.BeaconRateMode }).(pulumi.StringPtrOutput)
 }
 
-// list of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+// List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
 func (o SettingBleConfigOutput) BeamDisableds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v SettingBleConfig) []int { return v.BeamDisableds }).(pulumi.IntArrayOutput)
 }
 
-// can be enabled if `beaconEnabled`==`true`, whether to send custom packet
+// Can be enabled if `beaconEnabled`==`true`, whether to send custom packet
 func (o SettingBleConfigOutput) CustomBlePacketEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *bool { return v.CustomBlePacketEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -11341,7 +11278,7 @@ func (o SettingBleConfigOutput) CustomBlePacketFreqMsec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *int { return v.CustomBlePacketFreqMsec }).(pulumi.IntPtrOutput)
 }
 
-// advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
 func (o SettingBleConfigOutput) EddystoneUidAdvPower() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *int { return v.EddystoneUidAdvPower }).(pulumi.IntPtrOutput)
 }
@@ -11350,7 +11287,7 @@ func (o SettingBleConfigOutput) EddystoneUidBeams() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *string { return v.EddystoneUidBeams }).(pulumi.StringPtrOutput)
 }
 
-// only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
+// Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
 func (o SettingBleConfigOutput) EddystoneUidEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *bool { return v.EddystoneUidEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -11370,7 +11307,7 @@ func (o SettingBleConfigOutput) EddystoneUidNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *string { return v.EddystoneUidNamespace }).(pulumi.StringPtrOutput)
 }
 
-// advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
 func (o SettingBleConfigOutput) EddystoneUrlAdvPower() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *int { return v.EddystoneUrlAdvPower }).(pulumi.IntPtrOutput)
 }
@@ -11379,7 +11316,7 @@ func (o SettingBleConfigOutput) EddystoneUrlBeams() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *string { return v.EddystoneUrlBeams }).(pulumi.StringPtrOutput)
 }
 
-// only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
+// Only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
 func (o SettingBleConfigOutput) EddystoneUrlEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *bool { return v.EddystoneUrlEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -11394,7 +11331,7 @@ func (o SettingBleConfigOutput) EddystoneUrlUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *string { return v.EddystoneUrlUrl }).(pulumi.StringPtrOutput)
 }
 
-// advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
 func (o SettingBleConfigOutput) IbeaconAdvPower() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *int { return v.IbeaconAdvPower }).(pulumi.IntPtrOutput)
 }
@@ -11403,7 +11340,7 @@ func (o SettingBleConfigOutput) IbeaconBeams() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *string { return v.IbeaconBeams }).(pulumi.StringPtrOutput)
 }
 
-// can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
+// Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
 func (o SettingBleConfigOutput) IbeaconEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *bool { return v.IbeaconEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -11423,12 +11360,12 @@ func (o SettingBleConfigOutput) IbeaconMinor() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *int { return v.IbeaconMinor }).(pulumi.IntPtrOutput)
 }
 
-// optional, if not specified, the same UUID as the beacon will be used
+// Optional, if not specified, the same UUID as the beacon will be used
 func (o SettingBleConfigOutput) IbeaconUuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *string { return v.IbeaconUuid }).(pulumi.StringPtrOutput)
 }
 
-// required if `powerMode`==`custom`; else use `powerMode` as default
+// Required if `powerMode`==`custom`; else use `powerMode` as default
 func (o SettingBleConfigOutput) Power() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingBleConfig) *int { return v.Power }).(pulumi.IntPtrOutput)
 }
@@ -11462,7 +11399,7 @@ func (o SettingBleConfigPtrOutput) Elem() SettingBleConfigOutput {
 	}).(SettingBleConfigOutput)
 }
 
-// whether Mist beacons is enabled
+// Whether Mist beacons is enabled
 func (o SettingBleConfigPtrOutput) BeaconEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *bool {
 		if v == nil {
@@ -11472,7 +11409,7 @@ func (o SettingBleConfigPtrOutput) BeaconEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
+// Required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
 func (o SettingBleConfigPtrOutput) BeaconRate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *int {
 		if v == nil {
@@ -11492,7 +11429,7 @@ func (o SettingBleConfigPtrOutput) BeaconRateMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// list of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+// List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
 func (o SettingBleConfigPtrOutput) BeamDisableds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *SettingBleConfig) []int {
 		if v == nil {
@@ -11502,7 +11439,7 @@ func (o SettingBleConfigPtrOutput) BeamDisableds() pulumi.IntArrayOutput {
 	}).(pulumi.IntArrayOutput)
 }
 
-// can be enabled if `beaconEnabled`==`true`, whether to send custom packet
+// Can be enabled if `beaconEnabled`==`true`, whether to send custom packet
 func (o SettingBleConfigPtrOutput) CustomBlePacketEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *bool {
 		if v == nil {
@@ -11532,7 +11469,7 @@ func (o SettingBleConfigPtrOutput) CustomBlePacketFreqMsec() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
 func (o SettingBleConfigPtrOutput) EddystoneUidAdvPower() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *int {
 		if v == nil {
@@ -11551,7 +11488,7 @@ func (o SettingBleConfigPtrOutput) EddystoneUidBeams() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
+// Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
 func (o SettingBleConfigPtrOutput) EddystoneUidEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *bool {
 		if v == nil {
@@ -11591,7 +11528,7 @@ func (o SettingBleConfigPtrOutput) EddystoneUidNamespace() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
 func (o SettingBleConfigPtrOutput) EddystoneUrlAdvPower() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *int {
 		if v == nil {
@@ -11610,7 +11547,7 @@ func (o SettingBleConfigPtrOutput) EddystoneUrlBeams() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
+// Only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
 func (o SettingBleConfigPtrOutput) EddystoneUrlEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *bool {
 		if v == nil {
@@ -11640,7 +11577,7 @@ func (o SettingBleConfigPtrOutput) EddystoneUrlUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+// Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
 func (o SettingBleConfigPtrOutput) IbeaconAdvPower() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *int {
 		if v == nil {
@@ -11659,7 +11596,7 @@ func (o SettingBleConfigPtrOutput) IbeaconBeams() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
+// Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
 func (o SettingBleConfigPtrOutput) IbeaconEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *bool {
 		if v == nil {
@@ -11699,7 +11636,7 @@ func (o SettingBleConfigPtrOutput) IbeaconMinor() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// optional, if not specified, the same UUID as the beacon will be used
+// Optional, if not specified, the same UUID as the beacon will be used
 func (o SettingBleConfigPtrOutput) IbeaconUuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *string {
 		if v == nil {
@@ -11709,7 +11646,7 @@ func (o SettingBleConfigPtrOutput) IbeaconUuid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// required if `powerMode`==`custom`; else use `powerMode` as default
+// Required if `powerMode`==`custom`; else use `powerMode` as default
 func (o SettingBleConfigPtrOutput) Power() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingBleConfig) *int {
 		if v == nil {
@@ -11730,9 +11667,9 @@ func (o SettingBleConfigPtrOutput) PowerMode() pulumi.StringPtrOutput {
 }
 
 type SettingConfigPushPolicy struct {
-	// stop any new config from being pushed to the device
+	// Stop any new config from being pushed to the device
 	NoPush *bool `pulumi:"noPush"`
-	// if enabled, new config will only be pushed to device within the specified time window
+	// If enabled, new config will only be pushed to device within the specified time window
 	PushWindow *SettingConfigPushPolicyPushWindow `pulumi:"pushWindow"`
 }
 
@@ -11748,9 +11685,9 @@ type SettingConfigPushPolicyInput interface {
 }
 
 type SettingConfigPushPolicyArgs struct {
-	// stop any new config from being pushed to the device
+	// Stop any new config from being pushed to the device
 	NoPush pulumi.BoolPtrInput `pulumi:"noPush"`
-	// if enabled, new config will only be pushed to device within the specified time window
+	// If enabled, new config will only be pushed to device within the specified time window
 	PushWindow SettingConfigPushPolicyPushWindowPtrInput `pulumi:"pushWindow"`
 }
 
@@ -11831,12 +11768,12 @@ func (o SettingConfigPushPolicyOutput) ToSettingConfigPushPolicyPtrOutputWithCon
 	}).(SettingConfigPushPolicyPtrOutput)
 }
 
-// stop any new config from being pushed to the device
+// Stop any new config from being pushed to the device
 func (o SettingConfigPushPolicyOutput) NoPush() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicy) *bool { return v.NoPush }).(pulumi.BoolPtrOutput)
 }
 
-// if enabled, new config will only be pushed to device within the specified time window
+// If enabled, new config will only be pushed to device within the specified time window
 func (o SettingConfigPushPolicyOutput) PushWindow() SettingConfigPushPolicyPushWindowPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicy) *SettingConfigPushPolicyPushWindow { return v.PushWindow }).(SettingConfigPushPolicyPushWindowPtrOutput)
 }
@@ -11865,7 +11802,7 @@ func (o SettingConfigPushPolicyPtrOutput) Elem() SettingConfigPushPolicyOutput {
 	}).(SettingConfigPushPolicyOutput)
 }
 
-// stop any new config from being pushed to the device
+// Stop any new config from being pushed to the device
 func (o SettingConfigPushPolicyPtrOutput) NoPush() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicy) *bool {
 		if v == nil {
@@ -11875,7 +11812,7 @@ func (o SettingConfigPushPolicyPtrOutput) NoPush() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// if enabled, new config will only be pushed to device within the specified time window
+// If enabled, new config will only be pushed to device within the specified time window
 func (o SettingConfigPushPolicyPtrOutput) PushWindow() SettingConfigPushPolicyPushWindowPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicy) *SettingConfigPushPolicyPushWindow {
 		if v == nil {
@@ -12537,13 +12474,13 @@ func (o SettingCriticalUrlMonitoringMonitorArrayOutput) Index(i pulumi.IntInput)
 }
 
 type SettingEngagement struct {
-	// name associated to each tag
+	// Name associated to each tag
 	DwellTagNames *SettingEngagementDwellTagNames `pulumi:"dwellTagNames"`
 	// add tags to visits within the duration (in seconds)
 	DwellTags *SettingEngagementDwellTags `pulumi:"dwellTags"`
 	// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
 	Hours *SettingEngagementHours `pulumi:"hours"`
-	// max time, default is 43200(12h), max is 68400 (18h)
+	// Max time, default is 43200(12h), max is 68400 (18h)
 	MaxDwell *int `pulumi:"maxDwell"`
 	// min time
 	MinDwell *int `pulumi:"minDwell"`
@@ -12561,13 +12498,13 @@ type SettingEngagementInput interface {
 }
 
 type SettingEngagementArgs struct {
-	// name associated to each tag
+	// Name associated to each tag
 	DwellTagNames SettingEngagementDwellTagNamesPtrInput `pulumi:"dwellTagNames"`
 	// add tags to visits within the duration (in seconds)
 	DwellTags SettingEngagementDwellTagsPtrInput `pulumi:"dwellTags"`
 	// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
 	Hours SettingEngagementHoursPtrInput `pulumi:"hours"`
-	// max time, default is 43200(12h), max is 68400 (18h)
+	// Max time, default is 43200(12h), max is 68400 (18h)
 	MaxDwell pulumi.IntPtrInput `pulumi:"maxDwell"`
 	// min time
 	MinDwell pulumi.IntPtrInput `pulumi:"minDwell"`
@@ -12650,7 +12587,7 @@ func (o SettingEngagementOutput) ToSettingEngagementPtrOutputWithContext(ctx con
 	}).(SettingEngagementPtrOutput)
 }
 
-// name associated to each tag
+// Name associated to each tag
 func (o SettingEngagementOutput) DwellTagNames() SettingEngagementDwellTagNamesPtrOutput {
 	return o.ApplyT(func(v SettingEngagement) *SettingEngagementDwellTagNames { return v.DwellTagNames }).(SettingEngagementDwellTagNamesPtrOutput)
 }
@@ -12665,7 +12602,7 @@ func (o SettingEngagementOutput) Hours() SettingEngagementHoursPtrOutput {
 	return o.ApplyT(func(v SettingEngagement) *SettingEngagementHours { return v.Hours }).(SettingEngagementHoursPtrOutput)
 }
 
-// max time, default is 43200(12h), max is 68400 (18h)
+// Max time, default is 43200(12h), max is 68400 (18h)
 func (o SettingEngagementOutput) MaxDwell() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingEngagement) *int { return v.MaxDwell }).(pulumi.IntPtrOutput)
 }
@@ -12699,7 +12636,7 @@ func (o SettingEngagementPtrOutput) Elem() SettingEngagementOutput {
 	}).(SettingEngagementOutput)
 }
 
-// name associated to each tag
+// Name associated to each tag
 func (o SettingEngagementPtrOutput) DwellTagNames() SettingEngagementDwellTagNamesPtrOutput {
 	return o.ApplyT(func(v *SettingEngagement) *SettingEngagementDwellTagNames {
 		if v == nil {
@@ -12729,7 +12666,7 @@ func (o SettingEngagementPtrOutput) Hours() SettingEngagementHoursPtrOutput {
 	}).(SettingEngagementHoursPtrOutput)
 }
 
-// max time, default is 43200(12h), max is 68400 (18h)
+// Max time, default is 43200(12h), max is 68400 (18h)
 func (o SettingEngagementPtrOutput) MaxDwell() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingEngagement) *int {
 		if v == nil {
@@ -13389,24 +13326,24 @@ func (o SettingEngagementHoursPtrOutput) Wed() pulumi.StringPtrOutput {
 }
 
 type SettingGatewayMgmt struct {
-	// for SSR only, as direct root access is not allowed
+	// For SSR only, as direct root access is not allowed
 	AdminSshkeys []string                      `pulumi:"adminSshkeys"`
 	AppProbing   *SettingGatewayMgmtAppProbing `pulumi:"appProbing"`
-	// consumes uplink bandwidth, requires WA license
+	// Consumes uplink bandwidth, requires WA license
 	AppUsage            *bool                                  `pulumi:"appUsage"`
 	AutoSignatureUpdate *SettingGatewayMgmtAutoSignatureUpdate `pulumi:"autoSignatureUpdate"`
-	// he rollback timer for commit confirmed
+	// Rollback timer for commit confirmed
 	ConfigRevertTimer *int `pulumi:"configRevertTimer"`
-	// for both SSR and SRX disable console port
+	// For both SSR and SRX disable console port
 	DisableConsole *bool `pulumi:"disableConsole"`
-	// for both SSR and SRX disable management interface
+	// For both SSR and SRX disable management interface
 	DisableOob *bool    `pulumi:"disableOob"`
 	ProbeHosts []string `pulumi:"probeHosts"`
-	// restrict inbound-traffic to host
+	// Restrict inbound-traffic to host
 	// when enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
 	ProtectRe *SettingGatewayMgmtProtectRe `pulumi:"protectRe"`
-	// for SRX only
+	// For SRX only
 	RootPassword               *string `pulumi:"rootPassword"`
 	SecurityLogSourceAddress   *string `pulumi:"securityLogSourceAddress"`
 	SecurityLogSourceInterface *string `pulumi:"securityLogSourceInterface"`
@@ -13424,24 +13361,24 @@ type SettingGatewayMgmtInput interface {
 }
 
 type SettingGatewayMgmtArgs struct {
-	// for SSR only, as direct root access is not allowed
+	// For SSR only, as direct root access is not allowed
 	AdminSshkeys pulumi.StringArrayInput              `pulumi:"adminSshkeys"`
 	AppProbing   SettingGatewayMgmtAppProbingPtrInput `pulumi:"appProbing"`
-	// consumes uplink bandwidth, requires WA license
+	// Consumes uplink bandwidth, requires WA license
 	AppUsage            pulumi.BoolPtrInput                           `pulumi:"appUsage"`
 	AutoSignatureUpdate SettingGatewayMgmtAutoSignatureUpdatePtrInput `pulumi:"autoSignatureUpdate"`
-	// he rollback timer for commit confirmed
+	// Rollback timer for commit confirmed
 	ConfigRevertTimer pulumi.IntPtrInput `pulumi:"configRevertTimer"`
-	// for both SSR and SRX disable console port
+	// For both SSR and SRX disable console port
 	DisableConsole pulumi.BoolPtrInput `pulumi:"disableConsole"`
-	// for both SSR and SRX disable management interface
+	// For both SSR and SRX disable management interface
 	DisableOob pulumi.BoolPtrInput     `pulumi:"disableOob"`
 	ProbeHosts pulumi.StringArrayInput `pulumi:"probeHosts"`
-	// restrict inbound-traffic to host
+	// Restrict inbound-traffic to host
 	// when enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
 	ProtectRe SettingGatewayMgmtProtectRePtrInput `pulumi:"protectRe"`
-	// for SRX only
+	// For SRX only
 	RootPassword               pulumi.StringPtrInput `pulumi:"rootPassword"`
 	SecurityLogSourceAddress   pulumi.StringPtrInput `pulumi:"securityLogSourceAddress"`
 	SecurityLogSourceInterface pulumi.StringPtrInput `pulumi:"securityLogSourceInterface"`
@@ -13524,7 +13461,7 @@ func (o SettingGatewayMgmtOutput) ToSettingGatewayMgmtPtrOutputWithContext(ctx c
 	}).(SettingGatewayMgmtPtrOutput)
 }
 
-// for SSR only, as direct root access is not allowed
+// For SSR only, as direct root access is not allowed
 func (o SettingGatewayMgmtOutput) AdminSshkeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) []string { return v.AdminSshkeys }).(pulumi.StringArrayOutput)
 }
@@ -13533,7 +13470,7 @@ func (o SettingGatewayMgmtOutput) AppProbing() SettingGatewayMgmtAppProbingPtrOu
 	return o.ApplyT(func(v SettingGatewayMgmt) *SettingGatewayMgmtAppProbing { return v.AppProbing }).(SettingGatewayMgmtAppProbingPtrOutput)
 }
 
-// consumes uplink bandwidth, requires WA license
+// Consumes uplink bandwidth, requires WA license
 func (o SettingGatewayMgmtOutput) AppUsage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) *bool { return v.AppUsage }).(pulumi.BoolPtrOutput)
 }
@@ -13542,17 +13479,17 @@ func (o SettingGatewayMgmtOutput) AutoSignatureUpdate() SettingGatewayMgmtAutoSi
 	return o.ApplyT(func(v SettingGatewayMgmt) *SettingGatewayMgmtAutoSignatureUpdate { return v.AutoSignatureUpdate }).(SettingGatewayMgmtAutoSignatureUpdatePtrOutput)
 }
 
-// he rollback timer for commit confirmed
+// Rollback timer for commit confirmed
 func (o SettingGatewayMgmtOutput) ConfigRevertTimer() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) *int { return v.ConfigRevertTimer }).(pulumi.IntPtrOutput)
 }
 
-// for both SSR and SRX disable console port
+// For both SSR and SRX disable console port
 func (o SettingGatewayMgmtOutput) DisableConsole() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) *bool { return v.DisableConsole }).(pulumi.BoolPtrOutput)
 }
 
-// for both SSR and SRX disable management interface
+// For both SSR and SRX disable management interface
 func (o SettingGatewayMgmtOutput) DisableOob() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) *bool { return v.DisableOob }).(pulumi.BoolPtrOutput)
 }
@@ -13561,14 +13498,14 @@ func (o SettingGatewayMgmtOutput) ProbeHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) []string { return v.ProbeHosts }).(pulumi.StringArrayOutput)
 }
 
-// restrict inbound-traffic to host
+// Restrict inbound-traffic to host
 // when enabled, all traffic that is not essential to our operation will be dropped
 // e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
 func (o SettingGatewayMgmtOutput) ProtectRe() SettingGatewayMgmtProtectRePtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) *SettingGatewayMgmtProtectRe { return v.ProtectRe }).(SettingGatewayMgmtProtectRePtrOutput)
 }
 
-// for SRX only
+// For SRX only
 func (o SettingGatewayMgmtOutput) RootPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) *string { return v.RootPassword }).(pulumi.StringPtrOutput)
 }
@@ -13605,7 +13542,7 @@ func (o SettingGatewayMgmtPtrOutput) Elem() SettingGatewayMgmtOutput {
 	}).(SettingGatewayMgmtOutput)
 }
 
-// for SSR only, as direct root access is not allowed
+// For SSR only, as direct root access is not allowed
 func (o SettingGatewayMgmtPtrOutput) AdminSshkeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmt) []string {
 		if v == nil {
@@ -13624,7 +13561,7 @@ func (o SettingGatewayMgmtPtrOutput) AppProbing() SettingGatewayMgmtAppProbingPt
 	}).(SettingGatewayMgmtAppProbingPtrOutput)
 }
 
-// consumes uplink bandwidth, requires WA license
+// Consumes uplink bandwidth, requires WA license
 func (o SettingGatewayMgmtPtrOutput) AppUsage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmt) *bool {
 		if v == nil {
@@ -13643,7 +13580,7 @@ func (o SettingGatewayMgmtPtrOutput) AutoSignatureUpdate() SettingGatewayMgmtAut
 	}).(SettingGatewayMgmtAutoSignatureUpdatePtrOutput)
 }
 
-// he rollback timer for commit confirmed
+// Rollback timer for commit confirmed
 func (o SettingGatewayMgmtPtrOutput) ConfigRevertTimer() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmt) *int {
 		if v == nil {
@@ -13653,7 +13590,7 @@ func (o SettingGatewayMgmtPtrOutput) ConfigRevertTimer() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// for both SSR and SRX disable console port
+// For both SSR and SRX disable console port
 func (o SettingGatewayMgmtPtrOutput) DisableConsole() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmt) *bool {
 		if v == nil {
@@ -13663,7 +13600,7 @@ func (o SettingGatewayMgmtPtrOutput) DisableConsole() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// for both SSR and SRX disable management interface
+// For both SSR and SRX disable management interface
 func (o SettingGatewayMgmtPtrOutput) DisableOob() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmt) *bool {
 		if v == nil {
@@ -13682,7 +13619,7 @@ func (o SettingGatewayMgmtPtrOutput) ProbeHosts() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// restrict inbound-traffic to host
+// Restrict inbound-traffic to host
 // when enabled, all traffic that is not essential to our operation will be dropped
 // e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
 func (o SettingGatewayMgmtPtrOutput) ProtectRe() SettingGatewayMgmtProtectRePtrOutput {
@@ -13694,7 +13631,7 @@ func (o SettingGatewayMgmtPtrOutput) ProtectRe() SettingGatewayMgmtProtectRePtrO
 	}).(SettingGatewayMgmtProtectRePtrOutput)
 }
 
-// for SRX only
+// For SRX only
 func (o SettingGatewayMgmtPtrOutput) RootPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmt) *string {
 		if v == nil {
@@ -13723,7 +13660,7 @@ func (o SettingGatewayMgmtPtrOutput) SecurityLogSourceInterface() pulumi.StringP
 }
 
 type SettingGatewayMgmtAppProbing struct {
-	// app-keys from /api/v1/const/applications
+	// APp-keys from /api/v1/const/applications
 	Apps       []string                                `pulumi:"apps"`
 	CustomApps []SettingGatewayMgmtAppProbingCustomApp `pulumi:"customApps"`
 	Enabled    *bool                                   `pulumi:"enabled"`
@@ -13741,7 +13678,7 @@ type SettingGatewayMgmtAppProbingInput interface {
 }
 
 type SettingGatewayMgmtAppProbingArgs struct {
-	// app-keys from /api/v1/const/applications
+	// APp-keys from /api/v1/const/applications
 	Apps       pulumi.StringArrayInput                         `pulumi:"apps"`
 	CustomApps SettingGatewayMgmtAppProbingCustomAppArrayInput `pulumi:"customApps"`
 	Enabled    pulumi.BoolPtrInput                             `pulumi:"enabled"`
@@ -13824,7 +13761,7 @@ func (o SettingGatewayMgmtAppProbingOutput) ToSettingGatewayMgmtAppProbingPtrOut
 	}).(SettingGatewayMgmtAppProbingPtrOutput)
 }
 
-// app-keys from /api/v1/const/applications
+// APp-keys from /api/v1/const/applications
 func (o SettingGatewayMgmtAppProbingOutput) Apps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbing) []string { return v.Apps }).(pulumi.StringArrayOutput)
 }
@@ -13861,7 +13798,7 @@ func (o SettingGatewayMgmtAppProbingPtrOutput) Elem() SettingGatewayMgmtAppProbi
 	}).(SettingGatewayMgmtAppProbingOutput)
 }
 
-// app-keys from /api/v1/const/applications
+// APp-keys from /api/v1/const/applications
 func (o SettingGatewayMgmtAppProbingPtrOutput) Apps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmtAppProbing) []string {
 		if v == nil {
@@ -13899,7 +13836,7 @@ type SettingGatewayMgmtAppProbingCustomApp struct {
 	Key       *string  `pulumi:"key"`
 	Name      string   `pulumi:"name"`
 	Network   *string  `pulumi:"network"`
-	// if `protocol`==`icmp`
+	// If `protocol`==`icmp`
 	PacketSize *int `pulumi:"packetSize"`
 	// enum: `http`, `icmp`
 	Protocol string  `pulumi:"protocol"`
@@ -13928,7 +13865,7 @@ type SettingGatewayMgmtAppProbingCustomAppArgs struct {
 	Key       pulumi.StringPtrInput   `pulumi:"key"`
 	Name      pulumi.StringInput      `pulumi:"name"`
 	Network   pulumi.StringPtrInput   `pulumi:"network"`
-	// if `protocol`==`icmp`
+	// If `protocol`==`icmp`
 	PacketSize pulumi.IntPtrInput `pulumi:"packetSize"`
 	// enum: `http`, `icmp`
 	Protocol pulumi.StringInput    `pulumi:"protocol"`
@@ -14014,7 +13951,7 @@ func (o SettingGatewayMgmtAppProbingCustomAppOutput) Network() pulumi.StringPtrO
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// if `protocol`==`icmp`
+// If `protocol`==`icmp`
 func (o SettingGatewayMgmtAppProbingCustomAppOutput) PacketSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *int { return v.PacketSize }).(pulumi.IntPtrOutput)
 }
@@ -14056,7 +13993,7 @@ type SettingGatewayMgmtAutoSignatureUpdate struct {
 	// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
 	DayOfWeek *string `pulumi:"dayOfWeek"`
 	Enable    *bool   `pulumi:"enable"`
-	// optional, Mist will decide the timing
+	// Optional, Mist will decide the timing
 	TimeOfDay *string `pulumi:"timeOfDay"`
 }
 
@@ -14075,7 +14012,7 @@ type SettingGatewayMgmtAutoSignatureUpdateArgs struct {
 	// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
 	DayOfWeek pulumi.StringPtrInput `pulumi:"dayOfWeek"`
 	Enable    pulumi.BoolPtrInput   `pulumi:"enable"`
-	// optional, Mist will decide the timing
+	// Optional, Mist will decide the timing
 	TimeOfDay pulumi.StringPtrInput `pulumi:"timeOfDay"`
 }
 
@@ -14165,7 +14102,7 @@ func (o SettingGatewayMgmtAutoSignatureUpdateOutput) Enable() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v SettingGatewayMgmtAutoSignatureUpdate) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// optional, Mist will decide the timing
+// Optional, Mist will decide the timing
 func (o SettingGatewayMgmtAutoSignatureUpdateOutput) TimeOfDay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAutoSignatureUpdate) *string { return v.TimeOfDay }).(pulumi.StringPtrOutput)
 }
@@ -14213,7 +14150,7 @@ func (o SettingGatewayMgmtAutoSignatureUpdatePtrOutput) Enable() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// optional, Mist will decide the timing
+// Optional, Mist will decide the timing
 func (o SettingGatewayMgmtAutoSignatureUpdatePtrOutput) TimeOfDay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmtAutoSignatureUpdate) *string {
 		if v == nil {
@@ -14227,7 +14164,7 @@ type SettingGatewayMgmtProtectRe struct {
 	// optionally, services we'll allow. enum: `icmp`, `ssh`
 	AllowedServices []string                            `pulumi:"allowedServices"`
 	Customs         []SettingGatewayMgmtProtectReCustom `pulumi:"customs"`
-	// when enabled, all traffic that is not essential to our operation will be dropped
+	// When enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default
 	//      if dhcpd is enabled, we'll make sure it works
 	Enabled *bool `pulumi:"enabled"`
@@ -14250,7 +14187,7 @@ type SettingGatewayMgmtProtectReArgs struct {
 	// optionally, services we'll allow. enum: `icmp`, `ssh`
 	AllowedServices pulumi.StringArrayInput                     `pulumi:"allowedServices"`
 	Customs         SettingGatewayMgmtProtectReCustomArrayInput `pulumi:"customs"`
-	// when enabled, all traffic that is not essential to our operation will be dropped
+	// When enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default
 	//      if dhcpd is enabled, we'll make sure it works
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -14344,7 +14281,7 @@ func (o SettingGatewayMgmtProtectReOutput) Customs() SettingGatewayMgmtProtectRe
 	return o.ApplyT(func(v SettingGatewayMgmtProtectRe) []SettingGatewayMgmtProtectReCustom { return v.Customs }).(SettingGatewayMgmtProtectReCustomArrayOutput)
 }
 
-// when enabled, all traffic that is not essential to our operation will be dropped
+// When enabled, all traffic that is not essential to our operation will be dropped
 // e.g. ntp / dns / traffic to mist will be allowed by default
 //
 //	if dhcpd is enabled, we'll make sure it works
@@ -14400,7 +14337,7 @@ func (o SettingGatewayMgmtProtectRePtrOutput) Customs() SettingGatewayMgmtProtec
 	}).(SettingGatewayMgmtProtectReCustomArrayOutput)
 }
 
-// when enabled, all traffic that is not essential to our operation will be dropped
+// When enabled, all traffic that is not essential to our operation will be dropped
 // e.g. ntp / dns / traffic to mist will be allowed by default
 //
 //	if dhcpd is enabled, we'll make sure it works
@@ -14932,15 +14869,15 @@ func (o SettingLedPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type SettingOccupancy struct {
-	// indicate whether named BLE assets should be included in the zone occupancy calculation
+	// Indicate whether named BLE assets should be included in the zone occupancy calculation
 	AssetsEnabled *bool `pulumi:"assetsEnabled"`
-	// indicate whether connected WiFi clients should be included in the zone occupancy calculation
+	// Indicate whether connected Wi-Fi clients should be included in the zone occupancy calculation
 	ClientsEnabled *bool `pulumi:"clientsEnabled"`
-	// minimum duration
+	// Minimum duration
 	MinDuration *int `pulumi:"minDuration"`
-	// indicate whether SDK clients should be included in the zone occupancy calculation
+	// Indicate whether SDK clients should be included in the zone occupancy calculation
 	SdkclientsEnabled *bool `pulumi:"sdkclientsEnabled"`
-	// indicate whether unconnected WiFi clients should be included in the zone occupancy calculation
+	// Indicate whether unconnected Wi-Fi clients should be included in the zone occupancy calculation
 	UnconnectedClientsEnabled *bool `pulumi:"unconnectedClientsEnabled"`
 }
 
@@ -14956,15 +14893,15 @@ type SettingOccupancyInput interface {
 }
 
 type SettingOccupancyArgs struct {
-	// indicate whether named BLE assets should be included in the zone occupancy calculation
+	// Indicate whether named BLE assets should be included in the zone occupancy calculation
 	AssetsEnabled pulumi.BoolPtrInput `pulumi:"assetsEnabled"`
-	// indicate whether connected WiFi clients should be included in the zone occupancy calculation
+	// Indicate whether connected Wi-Fi clients should be included in the zone occupancy calculation
 	ClientsEnabled pulumi.BoolPtrInput `pulumi:"clientsEnabled"`
-	// minimum duration
+	// Minimum duration
 	MinDuration pulumi.IntPtrInput `pulumi:"minDuration"`
-	// indicate whether SDK clients should be included in the zone occupancy calculation
+	// Indicate whether SDK clients should be included in the zone occupancy calculation
 	SdkclientsEnabled pulumi.BoolPtrInput `pulumi:"sdkclientsEnabled"`
-	// indicate whether unconnected WiFi clients should be included in the zone occupancy calculation
+	// Indicate whether unconnected Wi-Fi clients should be included in the zone occupancy calculation
 	UnconnectedClientsEnabled pulumi.BoolPtrInput `pulumi:"unconnectedClientsEnabled"`
 }
 
@@ -15045,27 +14982,27 @@ func (o SettingOccupancyOutput) ToSettingOccupancyPtrOutputWithContext(ctx conte
 	}).(SettingOccupancyPtrOutput)
 }
 
-// indicate whether named BLE assets should be included in the zone occupancy calculation
+// Indicate whether named BLE assets should be included in the zone occupancy calculation
 func (o SettingOccupancyOutput) AssetsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingOccupancy) *bool { return v.AssetsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// indicate whether connected WiFi clients should be included in the zone occupancy calculation
+// Indicate whether connected Wi-Fi clients should be included in the zone occupancy calculation
 func (o SettingOccupancyOutput) ClientsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingOccupancy) *bool { return v.ClientsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// minimum duration
+// Minimum duration
 func (o SettingOccupancyOutput) MinDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingOccupancy) *int { return v.MinDuration }).(pulumi.IntPtrOutput)
 }
 
-// indicate whether SDK clients should be included in the zone occupancy calculation
+// Indicate whether SDK clients should be included in the zone occupancy calculation
 func (o SettingOccupancyOutput) SdkclientsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingOccupancy) *bool { return v.SdkclientsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// indicate whether unconnected WiFi clients should be included in the zone occupancy calculation
+// Indicate whether unconnected Wi-Fi clients should be included in the zone occupancy calculation
 func (o SettingOccupancyOutput) UnconnectedClientsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingOccupancy) *bool { return v.UnconnectedClientsEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -15094,7 +15031,7 @@ func (o SettingOccupancyPtrOutput) Elem() SettingOccupancyOutput {
 	}).(SettingOccupancyOutput)
 }
 
-// indicate whether named BLE assets should be included in the zone occupancy calculation
+// Indicate whether named BLE assets should be included in the zone occupancy calculation
 func (o SettingOccupancyPtrOutput) AssetsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingOccupancy) *bool {
 		if v == nil {
@@ -15104,7 +15041,7 @@ func (o SettingOccupancyPtrOutput) AssetsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// indicate whether connected WiFi clients should be included in the zone occupancy calculation
+// Indicate whether connected Wi-Fi clients should be included in the zone occupancy calculation
 func (o SettingOccupancyPtrOutput) ClientsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingOccupancy) *bool {
 		if v == nil {
@@ -15114,7 +15051,7 @@ func (o SettingOccupancyPtrOutput) ClientsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// minimum duration
+// Minimum duration
 func (o SettingOccupancyPtrOutput) MinDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingOccupancy) *int {
 		if v == nil {
@@ -15124,7 +15061,7 @@ func (o SettingOccupancyPtrOutput) MinDuration() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// indicate whether SDK clients should be included in the zone occupancy calculation
+// Indicate whether SDK clients should be included in the zone occupancy calculation
 func (o SettingOccupancyPtrOutput) SdkclientsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingOccupancy) *bool {
 		if v == nil {
@@ -15134,7 +15071,7 @@ func (o SettingOccupancyPtrOutput) SdkclientsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// indicate whether unconnected WiFi clients should be included in the zone occupancy calculation
+// Indicate whether unconnected Wi-Fi clients should be included in the zone occupancy calculation
 func (o SettingOccupancyPtrOutput) UnconnectedClientsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingOccupancy) *bool {
 		if v == nil {
@@ -15278,17 +15215,17 @@ func (o SettingProxyPtrOutput) Url() pulumi.StringPtrOutput {
 }
 
 type SettingRogue struct {
-	// whether or not rogue detection is enabled
+	// Whether rogue detection is enabled
 	Enabled *bool `pulumi:"enabled"`
-	// whether or not honeypot detection is enabled
+	// Whether honeypot detection is enabled
 	HoneypotEnabled *bool `pulumi:"honeypotEnabled"`
-	// minimum duration for a bssid to be considered rogue
+	// Minimum duration for a bssid to be considered rogue
 	MinDuration *int `pulumi:"minDuration"`
-	// minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+	// Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
 	MinRssi *int `pulumi:"minRssi"`
 	// list of BSSIDs to whitelist. Ex: "cc-:8e-:6f-:d4-:bf-:16", "cc-8e-6f-d4-bf-16", "cc-73-*", "cc:82:*"
 	WhitelistedBssids []string `pulumi:"whitelistedBssids"`
-	// list of SSIDs to whitelist
+	// List of SSIDs to whitelist
 	WhitelistedSsids []string `pulumi:"whitelistedSsids"`
 }
 
@@ -15304,17 +15241,17 @@ type SettingRogueInput interface {
 }
 
 type SettingRogueArgs struct {
-	// whether or not rogue detection is enabled
+	// Whether rogue detection is enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// whether or not honeypot detection is enabled
+	// Whether honeypot detection is enabled
 	HoneypotEnabled pulumi.BoolPtrInput `pulumi:"honeypotEnabled"`
-	// minimum duration for a bssid to be considered rogue
+	// Minimum duration for a bssid to be considered rogue
 	MinDuration pulumi.IntPtrInput `pulumi:"minDuration"`
-	// minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+	// Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
 	MinRssi pulumi.IntPtrInput `pulumi:"minRssi"`
 	// list of BSSIDs to whitelist. Ex: "cc-:8e-:6f-:d4-:bf-:16", "cc-8e-6f-d4-bf-16", "cc-73-*", "cc:82:*"
 	WhitelistedBssids pulumi.StringArrayInput `pulumi:"whitelistedBssids"`
-	// list of SSIDs to whitelist
+	// List of SSIDs to whitelist
 	WhitelistedSsids pulumi.StringArrayInput `pulumi:"whitelistedSsids"`
 }
 
@@ -15395,22 +15332,22 @@ func (o SettingRogueOutput) ToSettingRoguePtrOutputWithContext(ctx context.Conte
 	}).(SettingRoguePtrOutput)
 }
 
-// whether or not rogue detection is enabled
+// Whether rogue detection is enabled
 func (o SettingRogueOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingRogue) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// whether or not honeypot detection is enabled
+// Whether honeypot detection is enabled
 func (o SettingRogueOutput) HoneypotEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingRogue) *bool { return v.HoneypotEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// minimum duration for a bssid to be considered rogue
+// Minimum duration for a bssid to be considered rogue
 func (o SettingRogueOutput) MinDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingRogue) *int { return v.MinDuration }).(pulumi.IntPtrOutput)
 }
 
-// minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+// Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
 func (o SettingRogueOutput) MinRssi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingRogue) *int { return v.MinRssi }).(pulumi.IntPtrOutput)
 }
@@ -15420,7 +15357,7 @@ func (o SettingRogueOutput) WhitelistedBssids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingRogue) []string { return v.WhitelistedBssids }).(pulumi.StringArrayOutput)
 }
 
-// list of SSIDs to whitelist
+// List of SSIDs to whitelist
 func (o SettingRogueOutput) WhitelistedSsids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingRogue) []string { return v.WhitelistedSsids }).(pulumi.StringArrayOutput)
 }
@@ -15449,7 +15386,7 @@ func (o SettingRoguePtrOutput) Elem() SettingRogueOutput {
 	}).(SettingRogueOutput)
 }
 
-// whether or not rogue detection is enabled
+// Whether rogue detection is enabled
 func (o SettingRoguePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingRogue) *bool {
 		if v == nil {
@@ -15459,7 +15396,7 @@ func (o SettingRoguePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether or not honeypot detection is enabled
+// Whether honeypot detection is enabled
 func (o SettingRoguePtrOutput) HoneypotEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingRogue) *bool {
 		if v == nil {
@@ -15469,7 +15406,7 @@ func (o SettingRoguePtrOutput) HoneypotEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// minimum duration for a bssid to be considered rogue
+// Minimum duration for a bssid to be considered rogue
 func (o SettingRoguePtrOutput) MinDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingRogue) *int {
 		if v == nil {
@@ -15479,7 +15416,7 @@ func (o SettingRoguePtrOutput) MinDuration() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+// Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
 func (o SettingRoguePtrOutput) MinRssi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingRogue) *int {
 		if v == nil {
@@ -15499,7 +15436,7 @@ func (o SettingRoguePtrOutput) WhitelistedBssids() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// list of SSIDs to whitelist
+// List of SSIDs to whitelist
 func (o SettingRoguePtrOutput) WhitelistedSsids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SettingRogue) []string {
 		if v == nil {
@@ -15514,7 +15451,7 @@ type SettingRtsa struct {
 	DisableDeadReckoning  *bool `pulumi:"disableDeadReckoning"`
 	DisablePressureSensor *bool `pulumi:"disablePressureSensor"`
 	Enabled               *bool `pulumi:"enabled"`
-	// asset tracking related
+	// Asset tracking related
 	TrackAsset *bool `pulumi:"trackAsset"`
 }
 
@@ -15534,7 +15471,7 @@ type SettingRtsaArgs struct {
 	DisableDeadReckoning  pulumi.BoolPtrInput `pulumi:"disableDeadReckoning"`
 	DisablePressureSensor pulumi.BoolPtrInput `pulumi:"disablePressureSensor"`
 	Enabled               pulumi.BoolPtrInput `pulumi:"enabled"`
-	// asset tracking related
+	// Asset tracking related
 	TrackAsset pulumi.BoolPtrInput `pulumi:"trackAsset"`
 }
 
@@ -15631,7 +15568,7 @@ func (o SettingRtsaOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingRtsa) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// asset tracking related
+// Asset tracking related
 func (o SettingRtsaOutput) TrackAsset() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingRtsa) *bool { return v.TrackAsset }).(pulumi.BoolPtrOutput)
 }
@@ -15696,7 +15633,7 @@ func (o SettingRtsaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// asset tracking related
+// Asset tracking related
 func (o SettingRtsaPtrOutput) TrackAsset() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingRtsa) *bool {
 		if v == nil {
@@ -16372,7 +16309,7 @@ func (o SettingSimpleAlertDnsFailurePtrOutput) IncidentCount() pulumi.IntPtrOutp
 
 type SettingSkyatp struct {
 	Enabled *bool `pulumi:"enabled"`
-	// whether to send IP-MAC mapping to SkyATP
+	// Whether to send IP-MAC mapping to SkyATP
 	SendIpMacMapping *bool `pulumi:"sendIpMacMapping"`
 }
 
@@ -16389,7 +16326,7 @@ type SettingSkyatpInput interface {
 
 type SettingSkyatpArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// whether to send IP-MAC mapping to SkyATP
+	// Whether to send IP-MAC mapping to SkyATP
 	SendIpMacMapping pulumi.BoolPtrInput `pulumi:"sendIpMacMapping"`
 }
 
@@ -16474,7 +16411,7 @@ func (o SettingSkyatpOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingSkyatp) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// whether to send IP-MAC mapping to SkyATP
+// Whether to send IP-MAC mapping to SkyATP
 func (o SettingSkyatpOutput) SendIpMacMapping() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingSkyatp) *bool { return v.SendIpMacMapping }).(pulumi.BoolPtrOutput)
 }
@@ -16512,7 +16449,7 @@ func (o SettingSkyatpPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether to send IP-MAC mapping to SkyATP
+// Whether to send IP-MAC mapping to SkyATP
 func (o SettingSkyatpPtrOutput) SendIpMacMapping() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingSkyatp) *bool {
 		if v == nil {
@@ -16968,7 +16905,7 @@ func (o SettingSyntheticTestPtrOutput) WanSpeedtest() SettingSyntheticTestWanSpe
 
 type SettingSyntheticTestVlan struct {
 	CustomTestUrls []string `pulumi:"customTestUrls"`
-	// for some vlans where we don't want this to run
+	// For some vlans where we don't want this to run
 	Disabled *bool    `pulumi:"disabled"`
 	VlanIds  []string `pulumi:"vlanIds"`
 }
@@ -16986,7 +16923,7 @@ type SettingSyntheticTestVlanInput interface {
 
 type SettingSyntheticTestVlanArgs struct {
 	CustomTestUrls pulumi.StringArrayInput `pulumi:"customTestUrls"`
-	// for some vlans where we don't want this to run
+	// For some vlans where we don't want this to run
 	Disabled pulumi.BoolPtrInput     `pulumi:"disabled"`
 	VlanIds  pulumi.StringArrayInput `pulumi:"vlanIds"`
 }
@@ -17046,7 +16983,7 @@ func (o SettingSyntheticTestVlanOutput) CustomTestUrls() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v SettingSyntheticTestVlan) []string { return v.CustomTestUrls }).(pulumi.StringArrayOutput)
 }
 
-// for some vlans where we don't want this to run
+// For some vlans where we don't want this to run
 func (o SettingSyntheticTestVlanOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingSyntheticTestVlan) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
@@ -17077,7 +17014,7 @@ func (o SettingSyntheticTestVlanArrayOutput) Index(i pulumi.IntInput) SettingSyn
 
 type SettingSyntheticTestWanSpeedtest struct {
 	Enabled *bool `pulumi:"enabled"`
-	// any / HH:MM (24-hour format)
+	// `any` / HH:MM (24-hour format)
 	TimeOfDay *string `pulumi:"timeOfDay"`
 }
 
@@ -17094,7 +17031,7 @@ type SettingSyntheticTestWanSpeedtestInput interface {
 
 type SettingSyntheticTestWanSpeedtestArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// any / HH:MM (24-hour format)
+	// `any` / HH:MM (24-hour format)
 	TimeOfDay pulumi.StringPtrInput `pulumi:"timeOfDay"`
 }
 
@@ -17179,7 +17116,7 @@ func (o SettingSyntheticTestWanSpeedtestOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingSyntheticTestWanSpeedtest) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// any / HH:MM (24-hour format)
+// `any` / HH:MM (24-hour format)
 func (o SettingSyntheticTestWanSpeedtestOutput) TimeOfDay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingSyntheticTestWanSpeedtest) *string { return v.TimeOfDay }).(pulumi.StringPtrOutput)
 }
@@ -17217,7 +17154,7 @@ func (o SettingSyntheticTestWanSpeedtestPtrOutput) Enabled() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// any / HH:MM (24-hour format)
+// `any` / HH:MM (24-hour format)
 func (o SettingSyntheticTestWanSpeedtestPtrOutput) TimeOfDay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingSyntheticTestWanSpeedtest) *string {
 		if v == nil {
@@ -17230,7 +17167,7 @@ func (o SettingSyntheticTestWanSpeedtestPtrOutput) TimeOfDay() pulumi.StringPtrO
 type SettingUplinkPortConfig struct {
 	// Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
 	Dot1x *bool `pulumi:"dot1x"`
-	// by default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
+	// By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
 	KeepWlansUpIfDown *bool `pulumi:"keepWlansUpIfDown"`
 }
 
@@ -17248,7 +17185,7 @@ type SettingUplinkPortConfigInput interface {
 type SettingUplinkPortConfigArgs struct {
 	// Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
 	Dot1x pulumi.BoolPtrInput `pulumi:"dot1x"`
-	// by default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
+	// By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
 	KeepWlansUpIfDown pulumi.BoolPtrInput `pulumi:"keepWlansUpIfDown"`
 }
 
@@ -17334,7 +17271,7 @@ func (o SettingUplinkPortConfigOutput) Dot1x() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingUplinkPortConfig) *bool { return v.Dot1x }).(pulumi.BoolPtrOutput)
 }
 
-// by default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
+// By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
 func (o SettingUplinkPortConfigOutput) KeepWlansUpIfDown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingUplinkPortConfig) *bool { return v.KeepWlansUpIfDown }).(pulumi.BoolPtrOutput)
 }
@@ -17373,7 +17310,7 @@ func (o SettingUplinkPortConfigPtrOutput) Dot1x() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// by default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
+// By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
 func (o SettingUplinkPortConfigPtrOutput) KeepWlansUpIfDown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingUplinkPortConfig) *bool {
 		if v == nil {
@@ -17384,7 +17321,7 @@ func (o SettingUplinkPortConfigPtrOutput) KeepWlansUpIfDown() pulumi.BoolPtrOutp
 }
 
 type SettingVna struct {
-	// enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
+	// Enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -17400,7 +17337,7 @@ type SettingVnaInput interface {
 }
 
 type SettingVnaArgs struct {
-	// enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
+	// Enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -17481,7 +17418,7 @@ func (o SettingVnaOutput) ToSettingVnaPtrOutputWithContext(ctx context.Context) 
 	}).(SettingVnaPtrOutput)
 }
 
-// enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
+// Enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
 func (o SettingVnaOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingVna) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -17510,7 +17447,7 @@ func (o SettingVnaPtrOutput) Elem() SettingVnaOutput {
 	}).(SettingVnaOutput)
 }
 
-// enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
+// Enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
 func (o SettingVnaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingVna) *bool {
 		if v == nil {
@@ -17881,9 +17818,9 @@ func (o SettingWidsPtrOutput) RepeatedAuthFailures() SettingWidsRepeatedAuthFail
 }
 
 type SettingWidsRepeatedAuthFailures struct {
-	// window where a trigger will be detected and action to be taken (in seconds)
+	// Window where a trigger will be detected and action to be taken (in seconds)
 	Duration *int `pulumi:"duration"`
-	// count of events to trigger
+	// Count of events to trigger
 	Threshold *int `pulumi:"threshold"`
 }
 
@@ -17899,9 +17836,9 @@ type SettingWidsRepeatedAuthFailuresInput interface {
 }
 
 type SettingWidsRepeatedAuthFailuresArgs struct {
-	// window where a trigger will be detected and action to be taken (in seconds)
+	// Window where a trigger will be detected and action to be taken (in seconds)
 	Duration pulumi.IntPtrInput `pulumi:"duration"`
-	// count of events to trigger
+	// Count of events to trigger
 	Threshold pulumi.IntPtrInput `pulumi:"threshold"`
 }
 
@@ -17982,12 +17919,12 @@ func (o SettingWidsRepeatedAuthFailuresOutput) ToSettingWidsRepeatedAuthFailures
 	}).(SettingWidsRepeatedAuthFailuresPtrOutput)
 }
 
-// window where a trigger will be detected and action to be taken (in seconds)
+// Window where a trigger will be detected and action to be taken (in seconds)
 func (o SettingWidsRepeatedAuthFailuresOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingWidsRepeatedAuthFailures) *int { return v.Duration }).(pulumi.IntPtrOutput)
 }
 
-// count of events to trigger
+// Count of events to trigger
 func (o SettingWidsRepeatedAuthFailuresOutput) Threshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingWidsRepeatedAuthFailures) *int { return v.Threshold }).(pulumi.IntPtrOutput)
 }
@@ -18016,7 +17953,7 @@ func (o SettingWidsRepeatedAuthFailuresPtrOutput) Elem() SettingWidsRepeatedAuth
 	}).(SettingWidsRepeatedAuthFailuresOutput)
 }
 
-// window where a trigger will be detected and action to be taken (in seconds)
+// Window where a trigger will be detected and action to be taken (in seconds)
 func (o SettingWidsRepeatedAuthFailuresPtrOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingWidsRepeatedAuthFailures) *int {
 		if v == nil {
@@ -18026,7 +17963,7 @@ func (o SettingWidsRepeatedAuthFailuresPtrOutput) Duration() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// count of events to trigger
+// Count of events to trigger
 func (o SettingWidsRepeatedAuthFailuresPtrOutput) Threshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingWidsRepeatedAuthFailures) *int {
 		if v == nil {
@@ -18038,27 +17975,27 @@ func (o SettingWidsRepeatedAuthFailuresPtrOutput) Threshold() pulumi.IntPtrOutpu
 
 type SettingWifi struct {
 	CiscoEnabled *bool `pulumi:"ciscoEnabled"`
-	// whether to disable 11k
+	// Whether to disable 11k
 	Disable11k                        *bool `pulumi:"disable11k"`
 	DisableRadiosWhenPowerConstrained *bool `pulumi:"disableRadiosWhenPowerConstrained"`
-	// when proxyArp is enabled, check for arp spoofing.
+	// When proxyArp is enabled, check for arp spoofing.
 	EnableArpSpoofCheck       *bool `pulumi:"enableArpSpoofCheck"`
 	EnableSharedRadioScanning *bool `pulumi:"enableSharedRadioScanning"`
-	// enable WIFI feature (using SUB-MAN license)
+	// Enable Wi-Fi feature (using SUB-MAN license)
 	Enabled *bool `pulumi:"enabled"`
-	// whether to locate connected clients
+	// Whether to locate connected clients
 	LocateConnected *bool `pulumi:"locateConnected"`
-	// whether to locate unconnected clients
+	// Whether to locate unconnected clients
 	LocateUnconnected *bool `pulumi:"locateUnconnected"`
-	// whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+	// Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
 	MeshAllowDfs *bool `pulumi:"meshAllowDfs"`
-	// used to enable/disable CRM
+	// Used to enable/disable CRM
 	MeshEnableCrm *bool `pulumi:"meshEnableCrm"`
-	// whether to enable Mesh feature for the site
+	// Whether to enable Mesh feature for the site
 	MeshEnabled *bool `pulumi:"meshEnabled"`
-	// optional passphrase of mesh networking, default is generated randomly
+	// Optional passphrase of mesh networking, default is generated randomly
 	MeshPsk *string `pulumi:"meshPsk"`
-	// optional ssid of mesh networking, default is based on site_id
+	// Optional ssid of mesh networking, default is based on site_id
 	MeshSsid *string `pulumi:"meshSsid"`
 	// enum: `default`, `disabled`, `enabled`
 	ProxyArp *string `pulumi:"proxyArp"`
@@ -18077,27 +18014,27 @@ type SettingWifiInput interface {
 
 type SettingWifiArgs struct {
 	CiscoEnabled pulumi.BoolPtrInput `pulumi:"ciscoEnabled"`
-	// whether to disable 11k
+	// Whether to disable 11k
 	Disable11k                        pulumi.BoolPtrInput `pulumi:"disable11k"`
 	DisableRadiosWhenPowerConstrained pulumi.BoolPtrInput `pulumi:"disableRadiosWhenPowerConstrained"`
-	// when proxyArp is enabled, check for arp spoofing.
+	// When proxyArp is enabled, check for arp spoofing.
 	EnableArpSpoofCheck       pulumi.BoolPtrInput `pulumi:"enableArpSpoofCheck"`
 	EnableSharedRadioScanning pulumi.BoolPtrInput `pulumi:"enableSharedRadioScanning"`
-	// enable WIFI feature (using SUB-MAN license)
+	// Enable Wi-Fi feature (using SUB-MAN license)
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// whether to locate connected clients
+	// Whether to locate connected clients
 	LocateConnected pulumi.BoolPtrInput `pulumi:"locateConnected"`
-	// whether to locate unconnected clients
+	// Whether to locate unconnected clients
 	LocateUnconnected pulumi.BoolPtrInput `pulumi:"locateUnconnected"`
-	// whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+	// Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
 	MeshAllowDfs pulumi.BoolPtrInput `pulumi:"meshAllowDfs"`
-	// used to enable/disable CRM
+	// Used to enable/disable CRM
 	MeshEnableCrm pulumi.BoolPtrInput `pulumi:"meshEnableCrm"`
-	// whether to enable Mesh feature for the site
+	// Whether to enable Mesh feature for the site
 	MeshEnabled pulumi.BoolPtrInput `pulumi:"meshEnabled"`
-	// optional passphrase of mesh networking, default is generated randomly
+	// Optional passphrase of mesh networking, default is generated randomly
 	MeshPsk pulumi.StringPtrInput `pulumi:"meshPsk"`
-	// optional ssid of mesh networking, default is based on site_id
+	// Optional ssid of mesh networking, default is based on site_id
 	MeshSsid pulumi.StringPtrInput `pulumi:"meshSsid"`
 	// enum: `default`, `disabled`, `enabled`
 	ProxyArp pulumi.StringPtrInput `pulumi:"proxyArp"`
@@ -18184,7 +18121,7 @@ func (o SettingWifiOutput) CiscoEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *bool { return v.CiscoEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// whether to disable 11k
+// Whether to disable 11k
 func (o SettingWifiOutput) Disable11k() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *bool { return v.Disable11k }).(pulumi.BoolPtrOutput)
 }
@@ -18193,7 +18130,7 @@ func (o SettingWifiOutput) DisableRadiosWhenPowerConstrained() pulumi.BoolPtrOut
 	return o.ApplyT(func(v SettingWifi) *bool { return v.DisableRadiosWhenPowerConstrained }).(pulumi.BoolPtrOutput)
 }
 
-// when proxyArp is enabled, check for arp spoofing.
+// When proxyArp is enabled, check for arp spoofing.
 func (o SettingWifiOutput) EnableArpSpoofCheck() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *bool { return v.EnableArpSpoofCheck }).(pulumi.BoolPtrOutput)
 }
@@ -18202,42 +18139,42 @@ func (o SettingWifiOutput) EnableSharedRadioScanning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *bool { return v.EnableSharedRadioScanning }).(pulumi.BoolPtrOutput)
 }
 
-// enable WIFI feature (using SUB-MAN license)
+// Enable Wi-Fi feature (using SUB-MAN license)
 func (o SettingWifiOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// whether to locate connected clients
+// Whether to locate connected clients
 func (o SettingWifiOutput) LocateConnected() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *bool { return v.LocateConnected }).(pulumi.BoolPtrOutput)
 }
 
-// whether to locate unconnected clients
+// Whether to locate unconnected clients
 func (o SettingWifiOutput) LocateUnconnected() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *bool { return v.LocateUnconnected }).(pulumi.BoolPtrOutput)
 }
 
-// whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+// Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
 func (o SettingWifiOutput) MeshAllowDfs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *bool { return v.MeshAllowDfs }).(pulumi.BoolPtrOutput)
 }
 
-// used to enable/disable CRM
+// Used to enable/disable CRM
 func (o SettingWifiOutput) MeshEnableCrm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *bool { return v.MeshEnableCrm }).(pulumi.BoolPtrOutput)
 }
 
-// whether to enable Mesh feature for the site
+// Whether to enable Mesh feature for the site
 func (o SettingWifiOutput) MeshEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *bool { return v.MeshEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// optional passphrase of mesh networking, default is generated randomly
+// Optional passphrase of mesh networking, default is generated randomly
 func (o SettingWifiOutput) MeshPsk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *string { return v.MeshPsk }).(pulumi.StringPtrOutput)
 }
 
-// optional ssid of mesh networking, default is based on site_id
+// Optional ssid of mesh networking, default is based on site_id
 func (o SettingWifiOutput) MeshSsid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingWifi) *string { return v.MeshSsid }).(pulumi.StringPtrOutput)
 }
@@ -18280,7 +18217,7 @@ func (o SettingWifiPtrOutput) CiscoEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether to disable 11k
+// Whether to disable 11k
 func (o SettingWifiPtrOutput) Disable11k() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingWifi) *bool {
 		if v == nil {
@@ -18299,7 +18236,7 @@ func (o SettingWifiPtrOutput) DisableRadiosWhenPowerConstrained() pulumi.BoolPtr
 	}).(pulumi.BoolPtrOutput)
 }
 
-// when proxyArp is enabled, check for arp spoofing.
+// When proxyArp is enabled, check for arp spoofing.
 func (o SettingWifiPtrOutput) EnableArpSpoofCheck() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingWifi) *bool {
 		if v == nil {
@@ -18318,7 +18255,7 @@ func (o SettingWifiPtrOutput) EnableSharedRadioScanning() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// enable WIFI feature (using SUB-MAN license)
+// Enable Wi-Fi feature (using SUB-MAN license)
 func (o SettingWifiPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingWifi) *bool {
 		if v == nil {
@@ -18328,7 +18265,7 @@ func (o SettingWifiPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether to locate connected clients
+// Whether to locate connected clients
 func (o SettingWifiPtrOutput) LocateConnected() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingWifi) *bool {
 		if v == nil {
@@ -18338,7 +18275,7 @@ func (o SettingWifiPtrOutput) LocateConnected() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether to locate unconnected clients
+// Whether to locate unconnected clients
 func (o SettingWifiPtrOutput) LocateUnconnected() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingWifi) *bool {
 		if v == nil {
@@ -18348,7 +18285,7 @@ func (o SettingWifiPtrOutput) LocateUnconnected() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+// Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
 func (o SettingWifiPtrOutput) MeshAllowDfs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingWifi) *bool {
 		if v == nil {
@@ -18358,7 +18295,7 @@ func (o SettingWifiPtrOutput) MeshAllowDfs() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// used to enable/disable CRM
+// Used to enable/disable CRM
 func (o SettingWifiPtrOutput) MeshEnableCrm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingWifi) *bool {
 		if v == nil {
@@ -18368,7 +18305,7 @@ func (o SettingWifiPtrOutput) MeshEnableCrm() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether to enable Mesh feature for the site
+// Whether to enable Mesh feature for the site
 func (o SettingWifiPtrOutput) MeshEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingWifi) *bool {
 		if v == nil {
@@ -18378,7 +18315,7 @@ func (o SettingWifiPtrOutput) MeshEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// optional passphrase of mesh networking, default is generated randomly
+// Optional passphrase of mesh networking, default is generated randomly
 func (o SettingWifiPtrOutput) MeshPsk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingWifi) *string {
 		if v == nil {
@@ -18388,7 +18325,7 @@ func (o SettingWifiPtrOutput) MeshPsk() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// optional ssid of mesh networking, default is based on site_id
+// Optional ssid of mesh networking, default is based on site_id
 func (o SettingWifiPtrOutput) MeshSsid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingWifi) *string {
 		if v == nil {
@@ -18542,11 +18479,11 @@ func (o SettingWiredVnaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type SettingZoneOccupancyAlert struct {
-	// list of email addresses to send email notifications when the alert threshold is reached
+	// List of email addresses to send email notifications when the alert threshold is reached
 	EmailNotifiers []string `pulumi:"emailNotifiers"`
-	// indicate whether zone occupancy alert is enabled for the site
+	// Indicate whether zone occupancy alert is enabled for the site
 	Enabled *bool `pulumi:"enabled"`
-	// sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy > occupancy_limit) for a minimum duration specified in the threshold, in minutes
+	// Sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy > occupancy_limit) for a minimum duration specified in the threshold, in minutes
 	Threshold *int `pulumi:"threshold"`
 }
 
@@ -18562,11 +18499,11 @@ type SettingZoneOccupancyAlertInput interface {
 }
 
 type SettingZoneOccupancyAlertArgs struct {
-	// list of email addresses to send email notifications when the alert threshold is reached
+	// List of email addresses to send email notifications when the alert threshold is reached
 	EmailNotifiers pulumi.StringArrayInput `pulumi:"emailNotifiers"`
-	// indicate whether zone occupancy alert is enabled for the site
+	// Indicate whether zone occupancy alert is enabled for the site
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy > occupancy_limit) for a minimum duration specified in the threshold, in minutes
+	// Sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy > occupancy_limit) for a minimum duration specified in the threshold, in minutes
 	Threshold pulumi.IntPtrInput `pulumi:"threshold"`
 }
 
@@ -18647,17 +18584,17 @@ func (o SettingZoneOccupancyAlertOutput) ToSettingZoneOccupancyAlertPtrOutputWit
 	}).(SettingZoneOccupancyAlertPtrOutput)
 }
 
-// list of email addresses to send email notifications when the alert threshold is reached
+// List of email addresses to send email notifications when the alert threshold is reached
 func (o SettingZoneOccupancyAlertOutput) EmailNotifiers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingZoneOccupancyAlert) []string { return v.EmailNotifiers }).(pulumi.StringArrayOutput)
 }
 
-// indicate whether zone occupancy alert is enabled for the site
+// Indicate whether zone occupancy alert is enabled for the site
 func (o SettingZoneOccupancyAlertOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingZoneOccupancyAlert) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy > occupancy_limit) for a minimum duration specified in the threshold, in minutes
+// Sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy > occupancy_limit) for a minimum duration specified in the threshold, in minutes
 func (o SettingZoneOccupancyAlertOutput) Threshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingZoneOccupancyAlert) *int { return v.Threshold }).(pulumi.IntPtrOutput)
 }
@@ -18686,7 +18623,7 @@ func (o SettingZoneOccupancyAlertPtrOutput) Elem() SettingZoneOccupancyAlertOutp
 	}).(SettingZoneOccupancyAlertOutput)
 }
 
-// list of email addresses to send email notifications when the alert threshold is reached
+// List of email addresses to send email notifications when the alert threshold is reached
 func (o SettingZoneOccupancyAlertPtrOutput) EmailNotifiers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SettingZoneOccupancyAlert) []string {
 		if v == nil {
@@ -18696,7 +18633,7 @@ func (o SettingZoneOccupancyAlertPtrOutput) EmailNotifiers() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
-// indicate whether zone occupancy alert is enabled for the site
+// Indicate whether zone occupancy alert is enabled for the site
 func (o SettingZoneOccupancyAlertPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingZoneOccupancyAlert) *bool {
 		if v == nil {
@@ -18706,7 +18643,7 @@ func (o SettingZoneOccupancyAlertPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy > occupancy_limit) for a minimum duration specified in the threshold, in minutes
+// Sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy > occupancy_limit) for a minimum duration specified in the threshold, in minutes
 func (o SettingZoneOccupancyAlertPtrOutput) Threshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingZoneOccupancyAlert) *int {
 		if v == nil {
@@ -18717,7 +18654,7 @@ func (o SettingZoneOccupancyAlertPtrOutput) Threshold() pulumi.IntPtrOutput {
 }
 
 type WlanAcctServer struct {
-	// ip / hostname of RADIUS server
+	// IP/ hostname of RADIUS server
 	Host           string `pulumi:"host"`
 	KeywrapEnabled *bool  `pulumi:"keywrapEnabled"`
 	// enum: `ascii`, `hex`
@@ -18726,7 +18663,7 @@ type WlanAcctServer struct {
 	KeywrapMack   *string `pulumi:"keywrapMack"`
 	// Acct port of RADIUS server
 	Port *int `pulumi:"port"`
-	// secret of RADIUS server
+	// Secretof RADIUS server
 	Secret string `pulumi:"secret"`
 }
 
@@ -18742,7 +18679,7 @@ type WlanAcctServerInput interface {
 }
 
 type WlanAcctServerArgs struct {
-	// ip / hostname of RADIUS server
+	// IP/ hostname of RADIUS server
 	Host           pulumi.StringInput  `pulumi:"host"`
 	KeywrapEnabled pulumi.BoolPtrInput `pulumi:"keywrapEnabled"`
 	// enum: `ascii`, `hex`
@@ -18751,7 +18688,7 @@ type WlanAcctServerArgs struct {
 	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
 	// Acct port of RADIUS server
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// secret of RADIUS server
+	// Secretof RADIUS server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
 
@@ -18806,7 +18743,7 @@ func (o WlanAcctServerOutput) ToWlanAcctServerOutputWithContext(ctx context.Cont
 	return o
 }
 
-// ip / hostname of RADIUS server
+// IP/ hostname of RADIUS server
 func (o WlanAcctServerOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v WlanAcctServer) string { return v.Host }).(pulumi.StringOutput)
 }
@@ -18833,7 +18770,7 @@ func (o WlanAcctServerOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanAcctServer) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// secret of RADIUS server
+// Secretof RADIUS server
 func (o WlanAcctServerOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v WlanAcctServer) string { return v.Secret }).(pulumi.StringOutput)
 }
@@ -18861,12 +18798,12 @@ func (o WlanAcctServerArrayOutput) Index(i pulumi.IntInput) WlanAcctServerOutput
 type WlanAirwatch struct {
 	// API Key
 	ApiKey *string `pulumi:"apiKey"`
-	// console URL
+	// Console URL
 	ConsoleUrl *string `pulumi:"consoleUrl"`
 	Enabled    *bool   `pulumi:"enabled"`
-	// password
+	// Password
 	Password *string `pulumi:"password"`
-	// username
+	// Username
 	Username *string `pulumi:"username"`
 }
 
@@ -18884,12 +18821,12 @@ type WlanAirwatchInput interface {
 type WlanAirwatchArgs struct {
 	// API Key
 	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
-	// console URL
+	// Console URL
 	ConsoleUrl pulumi.StringPtrInput `pulumi:"consoleUrl"`
 	Enabled    pulumi.BoolPtrInput   `pulumi:"enabled"`
-	// password
+	// Password
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	// username
+	// Username
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -18975,7 +18912,7 @@ func (o WlanAirwatchOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAirwatch) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
-// console URL
+// Console URL
 func (o WlanAirwatchOutput) ConsoleUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAirwatch) *string { return v.ConsoleUrl }).(pulumi.StringPtrOutput)
 }
@@ -18984,12 +18921,12 @@ func (o WlanAirwatchOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanAirwatch) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// password
+// Password
 func (o WlanAirwatchOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAirwatch) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// username
+// Username
 func (o WlanAirwatchOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAirwatch) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -19028,7 +18965,7 @@ func (o WlanAirwatchPtrOutput) ApiKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// console URL
+// Console URL
 func (o WlanAirwatchPtrOutput) ConsoleUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanAirwatch) *string {
 		if v == nil {
@@ -19047,7 +18984,7 @@ func (o WlanAirwatchPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// password
+// Password
 func (o WlanAirwatchPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanAirwatch) *string {
 		if v == nil {
@@ -19057,7 +18994,7 @@ func (o WlanAirwatchPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// username
+// Username
 func (o WlanAirwatchPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanAirwatch) *string {
 		if v == nil {
@@ -19407,9 +19344,9 @@ func (o WlanAppQosPtrOutput) Others() WlanAppQosOtherArrayOutput {
 
 type WlanAppQosApps struct {
 	Dscp *int `pulumi:"dscp"`
-	// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+	// Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
 	DstSubnet *string `pulumi:"dstSubnet"`
-	// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+	// Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
 	SrcSubnet *string `pulumi:"srcSubnet"`
 }
 
@@ -19426,9 +19363,9 @@ type WlanAppQosAppsInput interface {
 
 type WlanAppQosAppsArgs struct {
 	Dscp pulumi.IntPtrInput `pulumi:"dscp"`
-	// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+	// Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
 	DstSubnet pulumi.StringPtrInput `pulumi:"dstSubnet"`
-	// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+	// Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
 	SrcSubnet pulumi.StringPtrInput `pulumi:"srcSubnet"`
 }
 
@@ -19487,12 +19424,12 @@ func (o WlanAppQosAppsOutput) Dscp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanAppQosApps) *int { return v.Dscp }).(pulumi.IntPtrOutput)
 }
 
-// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+// Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
 func (o WlanAppQosAppsOutput) DstSubnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAppQosApps) *string { return v.DstSubnet }).(pulumi.StringPtrOutput)
 }
 
-// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+// Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
 func (o WlanAppQosAppsOutput) SrcSubnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAppQosApps) *string { return v.SrcSubnet }).(pulumi.StringPtrOutput)
 }
@@ -19638,27 +19575,27 @@ func (o WlanAppQosOtherArrayOutput) Index(i pulumi.IntInput) WlanAppQosOtherOutp
 type WlanAuth struct {
 	// SAE anti-clogging token threshold
 	AnticlogThreshold *int `pulumi:"anticlogThreshold"`
-	// whether to trigger EAP reauth when the session ends
+	// Whether to trigger EAP reauth when the session ends
 	EapReauth *bool `pulumi:"eapReauth"`
-	// whether to enable MAC Auth, uses the same auth_servers
+	// Whether to enable MAC Auth, uses the same auth_servers
 	EnableMacAuth *bool `pulumi:"enableMacAuth"`
-	// when `type`==`wep`
+	// When `type`==`wep`
 	KeyIdx *int `pulumi:"keyIdx"`
-	// when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+	// When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
 	Keys []string `pulumi:"keys"`
-	// when `type`==`psk`, whether to only use multi_psk
+	// When `type`==`psk`, whether to only use multi_psk
 	MultiPskOnly *bool `pulumi:"multiPskOnly"`
 	// if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
 	Owe *string `pulumi:"owe"`
-	// when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+	// When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
 	Pairwises []string `pulumi:"pairwises"`
-	// when `multiPskOnly`==`true`, whether private wlan is enabled
+	// When `multiPskOnly`==`true`, whether private wlan is enabled
 	PrivateWlan *bool `pulumi:"privateWlan"`
-	// when `type`==`psk`, 8-64 characters, or 64 hex characters
+	// When `type`==`psk`, 8-64 characters, or 64 hex characters
 	Psk *string `pulumi:"psk"`
 	// enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
 	Type *string `pulumi:"type"`
-	// enable WEP as secondary auth
+	// Enable WEP as secondary auth
 	WepAsSecondaryAuth *bool `pulumi:"wepAsSecondaryAuth"`
 }
 
@@ -19676,27 +19613,27 @@ type WlanAuthInput interface {
 type WlanAuthArgs struct {
 	// SAE anti-clogging token threshold
 	AnticlogThreshold pulumi.IntPtrInput `pulumi:"anticlogThreshold"`
-	// whether to trigger EAP reauth when the session ends
+	// Whether to trigger EAP reauth when the session ends
 	EapReauth pulumi.BoolPtrInput `pulumi:"eapReauth"`
-	// whether to enable MAC Auth, uses the same auth_servers
+	// Whether to enable MAC Auth, uses the same auth_servers
 	EnableMacAuth pulumi.BoolPtrInput `pulumi:"enableMacAuth"`
-	// when `type`==`wep`
+	// When `type`==`wep`
 	KeyIdx pulumi.IntPtrInput `pulumi:"keyIdx"`
-	// when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+	// When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
 	Keys pulumi.StringArrayInput `pulumi:"keys"`
-	// when `type`==`psk`, whether to only use multi_psk
+	// When `type`==`psk`, whether to only use multi_psk
 	MultiPskOnly pulumi.BoolPtrInput `pulumi:"multiPskOnly"`
 	// if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
 	Owe pulumi.StringPtrInput `pulumi:"owe"`
-	// when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+	// When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
 	Pairwises pulumi.StringArrayInput `pulumi:"pairwises"`
-	// when `multiPskOnly`==`true`, whether private wlan is enabled
+	// When `multiPskOnly`==`true`, whether private wlan is enabled
 	PrivateWlan pulumi.BoolPtrInput `pulumi:"privateWlan"`
-	// when `type`==`psk`, 8-64 characters, or 64 hex characters
+	// When `type`==`psk`, 8-64 characters, or 64 hex characters
 	Psk pulumi.StringPtrInput `pulumi:"psk"`
 	// enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// enable WEP as secondary auth
+	// Enable WEP as secondary auth
 	WepAsSecondaryAuth pulumi.BoolPtrInput `pulumi:"wepAsSecondaryAuth"`
 }
 
@@ -19782,27 +19719,27 @@ func (o WlanAuthOutput) AnticlogThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanAuth) *int { return v.AnticlogThreshold }).(pulumi.IntPtrOutput)
 }
 
-// whether to trigger EAP reauth when the session ends
+// Whether to trigger EAP reauth when the session ends
 func (o WlanAuthOutput) EapReauth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanAuth) *bool { return v.EapReauth }).(pulumi.BoolPtrOutput)
 }
 
-// whether to enable MAC Auth, uses the same auth_servers
+// Whether to enable MAC Auth, uses the same auth_servers
 func (o WlanAuthOutput) EnableMacAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanAuth) *bool { return v.EnableMacAuth }).(pulumi.BoolPtrOutput)
 }
 
-// when `type`==`wep`
+// When `type`==`wep`
 func (o WlanAuthOutput) KeyIdx() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanAuth) *int { return v.KeyIdx }).(pulumi.IntPtrOutput)
 }
 
-// when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+// When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
 func (o WlanAuthOutput) Keys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanAuth) []string { return v.Keys }).(pulumi.StringArrayOutput)
 }
 
-// when `type`==`psk`, whether to only use multi_psk
+// When `type`==`psk`, whether to only use multi_psk
 func (o WlanAuthOutput) MultiPskOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanAuth) *bool { return v.MultiPskOnly }).(pulumi.BoolPtrOutput)
 }
@@ -19812,17 +19749,17 @@ func (o WlanAuthOutput) Owe() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAuth) *string { return v.Owe }).(pulumi.StringPtrOutput)
 }
 
-// when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+// When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
 func (o WlanAuthOutput) Pairwises() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanAuth) []string { return v.Pairwises }).(pulumi.StringArrayOutput)
 }
 
-// when `multiPskOnly`==`true`, whether private wlan is enabled
+// When `multiPskOnly`==`true`, whether private wlan is enabled
 func (o WlanAuthOutput) PrivateWlan() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanAuth) *bool { return v.PrivateWlan }).(pulumi.BoolPtrOutput)
 }
 
-// when `type`==`psk`, 8-64 characters, or 64 hex characters
+// When `type`==`psk`, 8-64 characters, or 64 hex characters
 func (o WlanAuthOutput) Psk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAuth) *string { return v.Psk }).(pulumi.StringPtrOutput)
 }
@@ -19832,7 +19769,7 @@ func (o WlanAuthOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAuth) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// enable WEP as secondary auth
+// Enable WEP as secondary auth
 func (o WlanAuthOutput) WepAsSecondaryAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanAuth) *bool { return v.WepAsSecondaryAuth }).(pulumi.BoolPtrOutput)
 }
@@ -19871,7 +19808,7 @@ func (o WlanAuthPtrOutput) AnticlogThreshold() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// whether to trigger EAP reauth when the session ends
+// Whether to trigger EAP reauth when the session ends
 func (o WlanAuthPtrOutput) EapReauth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanAuth) *bool {
 		if v == nil {
@@ -19881,7 +19818,7 @@ func (o WlanAuthPtrOutput) EapReauth() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether to enable MAC Auth, uses the same auth_servers
+// Whether to enable MAC Auth, uses the same auth_servers
 func (o WlanAuthPtrOutput) EnableMacAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanAuth) *bool {
 		if v == nil {
@@ -19891,7 +19828,7 @@ func (o WlanAuthPtrOutput) EnableMacAuth() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// when `type`==`wep`
+// When `type`==`wep`
 func (o WlanAuthPtrOutput) KeyIdx() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WlanAuth) *int {
 		if v == nil {
@@ -19901,7 +19838,7 @@ func (o WlanAuthPtrOutput) KeyIdx() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+// When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
 func (o WlanAuthPtrOutput) Keys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanAuth) []string {
 		if v == nil {
@@ -19911,7 +19848,7 @@ func (o WlanAuthPtrOutput) Keys() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// when `type`==`psk`, whether to only use multi_psk
+// When `type`==`psk`, whether to only use multi_psk
 func (o WlanAuthPtrOutput) MultiPskOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanAuth) *bool {
 		if v == nil {
@@ -19931,7 +19868,7 @@ func (o WlanAuthPtrOutput) Owe() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+// When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
 func (o WlanAuthPtrOutput) Pairwises() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanAuth) []string {
 		if v == nil {
@@ -19941,7 +19878,7 @@ func (o WlanAuthPtrOutput) Pairwises() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// when `multiPskOnly`==`true`, whether private wlan is enabled
+// When `multiPskOnly`==`true`, whether private wlan is enabled
 func (o WlanAuthPtrOutput) PrivateWlan() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanAuth) *bool {
 		if v == nil {
@@ -19951,7 +19888,7 @@ func (o WlanAuthPtrOutput) PrivateWlan() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// when `type`==`psk`, 8-64 characters, or 64 hex characters
+// When `type`==`psk`, 8-64 characters, or 64 hex characters
 func (o WlanAuthPtrOutput) Psk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanAuth) *string {
 		if v == nil {
@@ -19971,7 +19908,7 @@ func (o WlanAuthPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// enable WEP as secondary auth
+// Enable WEP as secondary auth
 func (o WlanAuthPtrOutput) WepAsSecondaryAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanAuth) *bool {
 		if v == nil {
@@ -19982,7 +19919,7 @@ func (o WlanAuthPtrOutput) WepAsSecondaryAuth() pulumi.BoolPtrOutput {
 }
 
 type WlanAuthServer struct {
-	// ip / hostname of RADIUS server
+	// IP/ hostname of RADIUS server
 	Host           string `pulumi:"host"`
 	KeywrapEnabled *bool  `pulumi:"keywrapEnabled"`
 	// enum: `ascii`, `hex`
@@ -19991,9 +19928,9 @@ type WlanAuthServer struct {
 	KeywrapMack   *string `pulumi:"keywrapMack"`
 	// Auth port of RADIUS server
 	Port *int `pulumi:"port"`
-	// whether to require Message-Authenticator in requests
+	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator *bool `pulumi:"requireMessageAuthenticator"`
-	// secret of RADIUS server
+	// Secretof RADIUS server
 	Secret string `pulumi:"secret"`
 }
 
@@ -20009,7 +19946,7 @@ type WlanAuthServerInput interface {
 }
 
 type WlanAuthServerArgs struct {
-	// ip / hostname of RADIUS server
+	// IP/ hostname of RADIUS server
 	Host           pulumi.StringInput  `pulumi:"host"`
 	KeywrapEnabled pulumi.BoolPtrInput `pulumi:"keywrapEnabled"`
 	// enum: `ascii`, `hex`
@@ -20018,9 +19955,9 @@ type WlanAuthServerArgs struct {
 	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
 	// Auth port of RADIUS server
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// whether to require Message-Authenticator in requests
+	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator pulumi.BoolPtrInput `pulumi:"requireMessageAuthenticator"`
-	// secret of RADIUS server
+	// Secretof RADIUS server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
 
@@ -20075,7 +20012,7 @@ func (o WlanAuthServerOutput) ToWlanAuthServerOutputWithContext(ctx context.Cont
 	return o
 }
 
-// ip / hostname of RADIUS server
+// IP/ hostname of RADIUS server
 func (o WlanAuthServerOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v WlanAuthServer) string { return v.Host }).(pulumi.StringOutput)
 }
@@ -20102,12 +20039,12 @@ func (o WlanAuthServerOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanAuthServer) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// whether to require Message-Authenticator in requests
+// Whether to require Message-Authenticator in requests
 func (o WlanAuthServerOutput) RequireMessageAuthenticator() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanAuthServer) *bool { return v.RequireMessageAuthenticator }).(pulumi.BoolPtrOutput)
 }
 
-// secret of RADIUS server
+// Secretof RADIUS server
 func (o WlanAuthServerOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v WlanAuthServer) string { return v.Secret }).(pulumi.StringOutput)
 }
@@ -20135,9 +20072,9 @@ func (o WlanAuthServerArrayOutput) Index(i pulumi.IntInput) WlanAuthServerOutput
 type WlanBonjour struct {
 	// additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
 	AdditionalVlanIds []string `pulumi:"additionalVlanIds"`
-	// whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
+	// Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
 	Enabled *bool `pulumi:"enabled"`
-	// what services are allowed.
+	// What services are allowed.
 	// Property key is the service name
 	Services map[string]WlanBonjourServices `pulumi:"services"`
 }
@@ -20156,9 +20093,9 @@ type WlanBonjourInput interface {
 type WlanBonjourArgs struct {
 	// additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
 	AdditionalVlanIds pulumi.StringArrayInput `pulumi:"additionalVlanIds"`
-	// whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
+	// Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// what services are allowed.
+	// What services are allowed.
 	// Property key is the service name
 	Services WlanBonjourServicesMapInput `pulumi:"services"`
 }
@@ -20245,12 +20182,12 @@ func (o WlanBonjourOutput) AdditionalVlanIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanBonjour) []string { return v.AdditionalVlanIds }).(pulumi.StringArrayOutput)
 }
 
-// whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
+// Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
 func (o WlanBonjourOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanBonjour) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// what services are allowed.
+// What services are allowed.
 // Property key is the service name
 func (o WlanBonjourOutput) Services() WlanBonjourServicesMapOutput {
 	return o.ApplyT(func(v WlanBonjour) map[string]WlanBonjourServices { return v.Services }).(WlanBonjourServicesMapOutput)
@@ -20290,7 +20227,7 @@ func (o WlanBonjourPtrOutput) AdditionalVlanIds() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
+// Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
 func (o WlanBonjourPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanBonjour) *bool {
 		if v == nil {
@@ -20300,7 +20237,7 @@ func (o WlanBonjourPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// what services are allowed.
+// What services are allowed.
 // Property key is the service name
 func (o WlanBonjourPtrOutput) Services() WlanBonjourServicesMapOutput {
 	return o.ApplyT(func(v *WlanBonjour) map[string]WlanBonjourServices {
@@ -20312,9 +20249,9 @@ func (o WlanBonjourPtrOutput) Services() WlanBonjourServicesMapOutput {
 }
 
 type WlanBonjourServices struct {
-	// whether to prevent wireless clients to discover bonjour devices on the same WLAN
+	// Whether to prevent wireless clients to discover bonjour devices on the same WLAN
 	DisableLocal *bool `pulumi:"disableLocal"`
-	// optional, if the service is further restricted for certain RADIUS groups
+	// Optional, if the service is further restricted for certain RADIUS groups
 	RadiusGroups []string `pulumi:"radiusGroups"`
 	// how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
 	Scope *string `pulumi:"scope"`
@@ -20332,9 +20269,9 @@ type WlanBonjourServicesInput interface {
 }
 
 type WlanBonjourServicesArgs struct {
-	// whether to prevent wireless clients to discover bonjour devices on the same WLAN
+	// Whether to prevent wireless clients to discover bonjour devices on the same WLAN
 	DisableLocal pulumi.BoolPtrInput `pulumi:"disableLocal"`
-	// optional, if the service is further restricted for certain RADIUS groups
+	// Optional, if the service is further restricted for certain RADIUS groups
 	RadiusGroups pulumi.StringArrayInput `pulumi:"radiusGroups"`
 	// how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
@@ -20391,12 +20328,12 @@ func (o WlanBonjourServicesOutput) ToWlanBonjourServicesOutputWithContext(ctx co
 	return o
 }
 
-// whether to prevent wireless clients to discover bonjour devices on the same WLAN
+// Whether to prevent wireless clients to discover bonjour devices on the same WLAN
 func (o WlanBonjourServicesOutput) DisableLocal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanBonjourServices) *bool { return v.DisableLocal }).(pulumi.BoolPtrOutput)
 }
 
-// optional, if the service is further restricted for certain RADIUS groups
+// Optional, if the service is further restricted for certain RADIUS groups
 func (o WlanBonjourServicesOutput) RadiusGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanBonjourServices) []string { return v.RadiusGroups }).(pulumi.StringArrayOutput)
 }
@@ -20427,11 +20364,11 @@ func (o WlanBonjourServicesMapOutput) MapIndex(k pulumi.StringInput) WlanBonjour
 }
 
 type WlanCiscoCwa struct {
-	// list of hostnames without http(s):// (matched by substring)
+	// List of hostnames without http(s):// (matched by substring)
 	AllowedHostnames []string `pulumi:"allowedHostnames"`
-	// list of CIDRs
+	// List of CIDRs
 	AllowedSubnets []string `pulumi:"allowedSubnets"`
-	// list of blocked CIDRs
+	// List of blocked CIDRs
 	BlockedSubnets []string `pulumi:"blockedSubnets"`
 	Enabled        *bool    `pulumi:"enabled"`
 }
@@ -20448,11 +20385,11 @@ type WlanCiscoCwaInput interface {
 }
 
 type WlanCiscoCwaArgs struct {
-	// list of hostnames without http(s):// (matched by substring)
+	// List of hostnames without http(s):// (matched by substring)
 	AllowedHostnames pulumi.StringArrayInput `pulumi:"allowedHostnames"`
-	// list of CIDRs
+	// List of CIDRs
 	AllowedSubnets pulumi.StringArrayInput `pulumi:"allowedSubnets"`
-	// list of blocked CIDRs
+	// List of blocked CIDRs
 	BlockedSubnets pulumi.StringArrayInput `pulumi:"blockedSubnets"`
 	Enabled        pulumi.BoolPtrInput     `pulumi:"enabled"`
 }
@@ -20534,17 +20471,17 @@ func (o WlanCiscoCwaOutput) ToWlanCiscoCwaPtrOutputWithContext(ctx context.Conte
 	}).(WlanCiscoCwaPtrOutput)
 }
 
-// list of hostnames without http(s):// (matched by substring)
+// List of hostnames without http(s):// (matched by substring)
 func (o WlanCiscoCwaOutput) AllowedHostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanCiscoCwa) []string { return v.AllowedHostnames }).(pulumi.StringArrayOutput)
 }
 
-// list of CIDRs
+// List of CIDRs
 func (o WlanCiscoCwaOutput) AllowedSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanCiscoCwa) []string { return v.AllowedSubnets }).(pulumi.StringArrayOutput)
 }
 
-// list of blocked CIDRs
+// List of blocked CIDRs
 func (o WlanCiscoCwaOutput) BlockedSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanCiscoCwa) []string { return v.BlockedSubnets }).(pulumi.StringArrayOutput)
 }
@@ -20577,7 +20514,7 @@ func (o WlanCiscoCwaPtrOutput) Elem() WlanCiscoCwaOutput {
 	}).(WlanCiscoCwaOutput)
 }
 
-// list of hostnames without http(s):// (matched by substring)
+// List of hostnames without http(s):// (matched by substring)
 func (o WlanCiscoCwaPtrOutput) AllowedHostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanCiscoCwa) []string {
 		if v == nil {
@@ -20587,7 +20524,7 @@ func (o WlanCiscoCwaPtrOutput) AllowedHostnames() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// list of CIDRs
+// List of CIDRs
 func (o WlanCiscoCwaPtrOutput) AllowedSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanCiscoCwa) []string {
 		if v == nil {
@@ -20597,7 +20534,7 @@ func (o WlanCiscoCwaPtrOutput) AllowedSubnets() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// list of blocked CIDRs
+// List of blocked CIDRs
 func (o WlanCiscoCwaPtrOutput) BlockedSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanCiscoCwa) []string {
 		if v == nil {
@@ -20617,7 +20554,7 @@ func (o WlanCiscoCwaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type WlanCoaServer struct {
-	// whether to disable Event-Timestamp Check
+	// Whether to disable Event-Timestamp Check
 	DisableEventTimestampCheck *bool  `pulumi:"disableEventTimestampCheck"`
 	Enabled                    *bool  `pulumi:"enabled"`
 	Ip                         string `pulumi:"ip"`
@@ -20637,7 +20574,7 @@ type WlanCoaServerInput interface {
 }
 
 type WlanCoaServerArgs struct {
-	// whether to disable Event-Timestamp Check
+	// Whether to disable Event-Timestamp Check
 	DisableEventTimestampCheck pulumi.BoolPtrInput `pulumi:"disableEventTimestampCheck"`
 	Enabled                    pulumi.BoolPtrInput `pulumi:"enabled"`
 	Ip                         pulumi.StringInput  `pulumi:"ip"`
@@ -20696,7 +20633,7 @@ func (o WlanCoaServerOutput) ToWlanCoaServerOutputWithContext(ctx context.Contex
 	return o
 }
 
-// whether to disable Event-Timestamp Check
+// Whether to disable Event-Timestamp Check
 func (o WlanCoaServerOutput) DisableEventTimestampCheck() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanCoaServer) *bool { return v.DisableEventTimestampCheck }).(pulumi.BoolPtrOutput)
 }
@@ -20739,7 +20676,7 @@ func (o WlanCoaServerArrayOutput) Index(i pulumi.IntInput) WlanCoaServerOutput {
 
 type WlanDnsServerRewrite struct {
 	Enabled *bool `pulumi:"enabled"`
-	// map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+	// Map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
 	RadiusGroups map[string]string `pulumi:"radiusGroups"`
 }
 
@@ -20756,7 +20693,7 @@ type WlanDnsServerRewriteInput interface {
 
 type WlanDnsServerRewriteArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+	// Map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
 	RadiusGroups pulumi.StringMapInput `pulumi:"radiusGroups"`
 }
 
@@ -20841,7 +20778,7 @@ func (o WlanDnsServerRewriteOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanDnsServerRewrite) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+// Map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
 func (o WlanDnsServerRewriteOutput) RadiusGroups() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WlanDnsServerRewrite) map[string]string { return v.RadiusGroups }).(pulumi.StringMapOutput)
 }
@@ -20879,7 +20816,7 @@ func (o WlanDnsServerRewritePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+// Map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
 func (o WlanDnsServerRewritePtrOutput) RadiusGroups() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WlanDnsServerRewrite) map[string]string {
 		if v == nil {
@@ -20890,11 +20827,11 @@ func (o WlanDnsServerRewritePtrOutput) RadiusGroups() pulumi.StringMapOutput {
 }
 
 type WlanDynamicPsk struct {
-	// default PSK to use if cloud WLC is not available, 8-63 characters
+	// Default PSK to use if cloud WLC is not available, 8-63 characters
 	DefaultPsk    *string `pulumi:"defaultPsk"`
 	DefaultVlanId *string `pulumi:"defaultVlanId"`
 	Enabled       *bool   `pulumi:"enabled"`
-	// when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+	// When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
 	ForceLookup *bool `pulumi:"forceLookup"`
 	// enum: `cloudPsks`, `radius`
 	Source *string `pulumi:"source"`
@@ -20912,11 +20849,11 @@ type WlanDynamicPskInput interface {
 }
 
 type WlanDynamicPskArgs struct {
-	// default PSK to use if cloud WLC is not available, 8-63 characters
+	// Default PSK to use if cloud WLC is not available, 8-63 characters
 	DefaultPsk    pulumi.StringPtrInput `pulumi:"defaultPsk"`
 	DefaultVlanId pulumi.StringPtrInput `pulumi:"defaultVlanId"`
 	Enabled       pulumi.BoolPtrInput   `pulumi:"enabled"`
-	// when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+	// When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
 	ForceLookup pulumi.BoolPtrInput `pulumi:"forceLookup"`
 	// enum: `cloudPsks`, `radius`
 	Source pulumi.StringPtrInput `pulumi:"source"`
@@ -20999,7 +20936,7 @@ func (o WlanDynamicPskOutput) ToWlanDynamicPskPtrOutputWithContext(ctx context.C
 	}).(WlanDynamicPskPtrOutput)
 }
 
-// default PSK to use if cloud WLC is not available, 8-63 characters
+// Default PSK to use if cloud WLC is not available, 8-63 characters
 func (o WlanDynamicPskOutput) DefaultPsk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanDynamicPsk) *string { return v.DefaultPsk }).(pulumi.StringPtrOutput)
 }
@@ -21012,7 +20949,7 @@ func (o WlanDynamicPskOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanDynamicPsk) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+// When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
 func (o WlanDynamicPskOutput) ForceLookup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanDynamicPsk) *bool { return v.ForceLookup }).(pulumi.BoolPtrOutput)
 }
@@ -21046,7 +20983,7 @@ func (o WlanDynamicPskPtrOutput) Elem() WlanDynamicPskOutput {
 	}).(WlanDynamicPskOutput)
 }
 
-// default PSK to use if cloud WLC is not available, 8-63 characters
+// Default PSK to use if cloud WLC is not available, 8-63 characters
 func (o WlanDynamicPskPtrOutput) DefaultPsk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanDynamicPsk) *string {
 		if v == nil {
@@ -21074,7 +21011,7 @@ func (o WlanDynamicPskPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+// When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
 func (o WlanDynamicPskPtrOutput) ForceLookup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanDynamicPsk) *bool {
 		if v == nil {
@@ -21099,11 +21036,11 @@ type WlanDynamicVlan struct {
 	DefaultVlanIds []string `pulumi:"defaultVlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
 	Enabled *bool `pulumi:"enabled"`
-	// vlan_ids to be locally bridged
+	// VLAN_ids to be locally bridged
 	LocalVlanIds []string `pulumi:"localVlanIds"`
 	// standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
 	Type *string `pulumi:"type"`
-	// map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
+	// Map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
 	//   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
 	//   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
 	Vlans map[string]string `pulumi:"vlans"`
@@ -21125,11 +21062,11 @@ type WlanDynamicVlanArgs struct {
 	DefaultVlanIds pulumi.StringArrayInput `pulumi:"defaultVlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// vlan_ids to be locally bridged
+	// VLAN_ids to be locally bridged
 	LocalVlanIds pulumi.StringArrayInput `pulumi:"localVlanIds"`
 	// standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
+	// Map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
 	//   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
 	//   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
 	Vlans pulumi.StringMapInput `pulumi:"vlans"`
@@ -21222,7 +21159,7 @@ func (o WlanDynamicVlanOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanDynamicVlan) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// vlan_ids to be locally bridged
+// VLAN_ids to be locally bridged
 func (o WlanDynamicVlanOutput) LocalVlanIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanDynamicVlan) []string { return v.LocalVlanIds }).(pulumi.StringArrayOutput)
 }
@@ -21232,7 +21169,7 @@ func (o WlanDynamicVlanOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanDynamicVlan) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
+// Map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
 //   - if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
 //   - if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
 func (o WlanDynamicVlanOutput) Vlans() pulumi.StringMapOutput {
@@ -21283,7 +21220,7 @@ func (o WlanDynamicVlanPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// vlan_ids to be locally bridged
+// VLAN_ids to be locally bridged
 func (o WlanDynamicVlanPtrOutput) LocalVlanIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanDynamicVlan) []string {
 		if v == nil {
@@ -21303,7 +21240,7 @@ func (o WlanDynamicVlanPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
+// Map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
 //   - if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
 //   - if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
 func (o WlanDynamicVlanPtrOutput) Vlans() pulumi.StringMapOutput {
@@ -21317,13 +21254,13 @@ func (o WlanDynamicVlanPtrOutput) Vlans() pulumi.StringMapOutput {
 
 type WlanHotspot20 struct {
 	DomainNames []string `pulumi:"domainNames"`
-	// whether to enable hotspot 2.0 config
+	// Whether to enable hotspot 2.0 config
 	Enabled   *bool    `pulumi:"enabled"`
 	NaiRealms []string `pulumi:"naiRealms"`
-	// list of operators to support
+	// List of operators to support
 	Operators []string `pulumi:"operators"`
 	Rcois     []string `pulumi:"rcois"`
-	// venue name, default is site name
+	// Venue name, default is site name
 	VenueName *string `pulumi:"venueName"`
 }
 
@@ -21340,13 +21277,13 @@ type WlanHotspot20Input interface {
 
 type WlanHotspot20Args struct {
 	DomainNames pulumi.StringArrayInput `pulumi:"domainNames"`
-	// whether to enable hotspot 2.0 config
+	// Whether to enable hotspot 2.0 config
 	Enabled   pulumi.BoolPtrInput     `pulumi:"enabled"`
 	NaiRealms pulumi.StringArrayInput `pulumi:"naiRealms"`
-	// list of operators to support
+	// List of operators to support
 	Operators pulumi.StringArrayInput `pulumi:"operators"`
 	Rcois     pulumi.StringArrayInput `pulumi:"rcois"`
-	// venue name, default is site name
+	// Venue name, default is site name
 	VenueName pulumi.StringPtrInput `pulumi:"venueName"`
 }
 
@@ -21431,7 +21368,7 @@ func (o WlanHotspot20Output) DomainNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanHotspot20) []string { return v.DomainNames }).(pulumi.StringArrayOutput)
 }
 
-// whether to enable hotspot 2.0 config
+// Whether to enable hotspot 2.0 config
 func (o WlanHotspot20Output) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanHotspot20) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -21440,7 +21377,7 @@ func (o WlanHotspot20Output) NaiRealms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanHotspot20) []string { return v.NaiRealms }).(pulumi.StringArrayOutput)
 }
 
-// list of operators to support
+// List of operators to support
 func (o WlanHotspot20Output) Operators() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanHotspot20) []string { return v.Operators }).(pulumi.StringArrayOutput)
 }
@@ -21449,7 +21386,7 @@ func (o WlanHotspot20Output) Rcois() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanHotspot20) []string { return v.Rcois }).(pulumi.StringArrayOutput)
 }
 
-// venue name, default is site name
+// Venue name, default is site name
 func (o WlanHotspot20Output) VenueName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanHotspot20) *string { return v.VenueName }).(pulumi.StringPtrOutput)
 }
@@ -21487,7 +21424,7 @@ func (o WlanHotspot20PtrOutput) DomainNames() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// whether to enable hotspot 2.0 config
+// Whether to enable hotspot 2.0 config
 func (o WlanHotspot20PtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanHotspot20) *bool {
 		if v == nil {
@@ -21506,7 +21443,7 @@ func (o WlanHotspot20PtrOutput) NaiRealms() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// list of operators to support
+// List of operators to support
 func (o WlanHotspot20PtrOutput) Operators() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanHotspot20) []string {
 		if v == nil {
@@ -21525,7 +21462,7 @@ func (o WlanHotspot20PtrOutput) Rcois() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// venue name, default is site name
+// Venue name, default is site name
 func (o WlanHotspot20PtrOutput) VenueName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanHotspot20) *string {
 		if v == nil {
@@ -21536,7 +21473,7 @@ func (o WlanHotspot20PtrOutput) VenueName() pulumi.StringPtrOutput {
 }
 
 type WlanInjectDhcpOption82 struct {
-	// information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+	// Information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
 	//   * {{AP_MAC}}
 	//   * {{AP_MAC_DASHED}}
 	//   * {{AP_MODEL}}
@@ -21544,7 +21481,7 @@ type WlanInjectDhcpOption82 struct {
 	//   * {{SITE_NAME}}
 	//   * {{SSID}}
 	CircuitId *string `pulumi:"circuitId"`
-	// whether to inject option 82 when forwarding DHCP packets
+	// Whether to inject option 82 when forwarding DHCP packets
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -21560,7 +21497,7 @@ type WlanInjectDhcpOption82Input interface {
 }
 
 type WlanInjectDhcpOption82Args struct {
-	// information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+	// Information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
 	//   * {{AP_MAC}}
 	//   * {{AP_MAC_DASHED}}
 	//   * {{AP_MODEL}}
@@ -21568,7 +21505,7 @@ type WlanInjectDhcpOption82Args struct {
 	//   * {{SITE_NAME}}
 	//   * {{SSID}}
 	CircuitId pulumi.StringPtrInput `pulumi:"circuitId"`
-	// whether to inject option 82 when forwarding DHCP packets
+	// Whether to inject option 82 when forwarding DHCP packets
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -21649,7 +21586,7 @@ func (o WlanInjectDhcpOption82Output) ToWlanInjectDhcpOption82PtrOutputWithConte
 	}).(WlanInjectDhcpOption82PtrOutput)
 }
 
-// information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+// Information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
 //   - {{AP_MAC}}
 //   - {{AP_MAC_DASHED}}
 //   - {{AP_MODEL}}
@@ -21660,7 +21597,7 @@ func (o WlanInjectDhcpOption82Output) CircuitId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanInjectDhcpOption82) *string { return v.CircuitId }).(pulumi.StringPtrOutput)
 }
 
-// whether to inject option 82 when forwarding DHCP packets
+// Whether to inject option 82 when forwarding DHCP packets
 func (o WlanInjectDhcpOption82Output) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanInjectDhcpOption82) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -21689,7 +21626,7 @@ func (o WlanInjectDhcpOption82PtrOutput) Elem() WlanInjectDhcpOption82Output {
 	}).(WlanInjectDhcpOption82Output)
 }
 
-// information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+// Information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
 //   - {{AP_MAC}}
 //   - {{AP_MAC_DASHED}}
 //   - {{AP_MODEL}}
@@ -21705,7 +21642,7 @@ func (o WlanInjectDhcpOption82PtrOutput) CircuitId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// whether to inject option 82 when forwarding DHCP packets
+// Whether to inject option 82 when forwarding DHCP packets
 func (o WlanInjectDhcpOption82PtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanInjectDhcpOption82) *bool {
 		if v == nil {
@@ -21716,13 +21653,13 @@ func (o WlanInjectDhcpOption82PtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type WlanMistNac struct {
-	// when enabled:
+	// When enabled:
 	//   * `authServers` is ignored
 	//   * `acctServers` is ignored
 	//   * `auth_servers_*` are ignored
 	//   * `coaServers` is ignored
 	//   * `radsec` is ignored
-	//   * `coaEnabled` is assumed'
+	//   * `coaEnabled` is assumed
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -21738,13 +21675,13 @@ type WlanMistNacInput interface {
 }
 
 type WlanMistNacArgs struct {
-	// when enabled:
+	// When enabled:
 	//   * `authServers` is ignored
 	//   * `acctServers` is ignored
 	//   * `auth_servers_*` are ignored
 	//   * `coaServers` is ignored
 	//   * `radsec` is ignored
-	//   * `coaEnabled` is assumed'
+	//   * `coaEnabled` is assumed
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -21825,13 +21762,13 @@ func (o WlanMistNacOutput) ToWlanMistNacPtrOutputWithContext(ctx context.Context
 	}).(WlanMistNacPtrOutput)
 }
 
-// when enabled:
+// When enabled:
 //   - `authServers` is ignored
 //   - `acctServers` is ignored
 //   - `auth_servers_*` are ignored
 //   - `coaServers` is ignored
 //   - `radsec` is ignored
-//   - `coaEnabled` is assumed'
+//   - `coaEnabled` is assumed
 func (o WlanMistNacOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanMistNac) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -21860,13 +21797,13 @@ func (o WlanMistNacPtrOutput) Elem() WlanMistNacOutput {
 	}).(WlanMistNacOutput)
 }
 
-// when enabled:
+// When enabled:
 //   - `authServers` is ignored
 //   - `acctServers` is ignored
 //   - `auth_servers_*` are ignored
 //   - `coaServers` is ignored
 //   - `radsec` is ignored
-//   - `coaEnabled` is assumed'
+//   - `coaEnabled` is assumed
 func (o WlanMistNacPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanMistNac) *bool {
 		if v == nil {
@@ -21885,7 +21822,7 @@ type WlanPortal struct {
 	AmazonClientSecret *string `pulumi:"amazonClientSecret"`
 	// Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	AmazonEmailDomains []string `pulumi:"amazonEmailDomains"`
-	// whether amazon is enabled as a login method
+	// Whether amazon is enabled as a login method
 	AmazonEnabled *bool `pulumi:"amazonEnabled"`
 	// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
 	AmazonExpire *int `pulumi:"amazonExpire"`
@@ -21895,9 +21832,9 @@ type WlanPortal struct {
 	AzureClientId *string `pulumi:"azureClientId"`
 	// Required if `azureEnabled`==`true`. Azure active directory app client secret
 	AzureClientSecret *string `pulumi:"azureClientSecret"`
-	// whether Azure Active Directory is enabled as a login method
+	// Whether Azure Active Directory is enabled as a login method
 	AzureEnabled *bool `pulumi:"azureEnabled"`
-	// interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+	// Interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
 	AzureExpire *int `pulumi:"azureExpire"`
 	// Required if `azureEnabled`==`true`. Azure active directory tenant id.
 	AzureTenantId *string `pulumi:"azureTenantId"`
@@ -21907,17 +21844,17 @@ type WlanPortal struct {
 	BroadnetSid *string `pulumi:"broadnetSid"`
 	// Required if `smsProvider`==`broadnet`
 	BroadnetUserId *string `pulumi:"broadnetUserId"`
-	// whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+	// Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
 	BypassWhenCloudDown *bool `pulumi:"bypassWhenCloudDown"`
 	// Required if `smsProvider`==`clickatell`
 	ClickatellApiKey *string `pulumi:"clickatellApiKey"`
-	// whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
+	// Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
 	CrossSite *bool `pulumi:"crossSite"`
-	// whether email (access code verification) is enabled as a login method
+	// Whether email (access code verification) is enabled as a login method
 	EmailEnabled *bool `pulumi:"emailEnabled"`
-	// whether guest portal is enabled
+	// Whether guest portal is enabled
 	Enabled *bool `pulumi:"enabled"`
-	// how long to remain authorized, in minutes
+	// How long to remain authorized, in minutes
 	Expire *int `pulumi:"expire"`
 	// Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
 	ExternalPortalUrl *string `pulumi:"externalPortalUrl"`
@@ -21927,13 +21864,13 @@ type WlanPortal struct {
 	FacebookClientSecret *string `pulumi:"facebookClientSecret"`
 	// Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	FacebookEmailDomains []string `pulumi:"facebookEmailDomains"`
-	// whether facebook is enabled as a login method
+	// Whether facebook is enabled as a login method
 	FacebookEnabled *bool `pulumi:"facebookEnabled"`
 	// Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
 	FacebookExpire *int `pulumi:"facebookExpire"`
-	// whether to forward the user to another URL after authorized
+	// Whether to forward the user to another URL after authorized
 	Forward *bool `pulumi:"forward"`
-	// the URL to forward the user to
+	// URL to forward the user to
 	ForwardUrl *string `pulumi:"forwardUrl"`
 	// Google OAuth2 app id. This is optional. If not provided, it will use a default one.
 	GoogleClientId *string `pulumi:"googleClientId"`
@@ -21941,9 +21878,9 @@ type WlanPortal struct {
 	GoogleClientSecret *string `pulumi:"googleClientSecret"`
 	// Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	GoogleEmailDomains []string `pulumi:"googleEmailDomains"`
-	// whether google is enabled as login method
+	// Whether Google is enabled as login method
 	GoogleEnabled *bool `pulumi:"googleEnabled"`
-	// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+	// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
 	GoogleExpire *int `pulumi:"googleExpire"`
 	// Required if `smsProvider`==`gupshup`
 	GupshupPassword *string `pulumi:"gupshupPassword"`
@@ -21955,7 +21892,7 @@ type WlanPortal struct {
 	MicrosoftClientSecret *string `pulumi:"microsoftClientSecret"`
 	// Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	MicrosoftEmailDomains []string `pulumi:"microsoftEmailDomains"`
-	// whether microsoft 365 is enabled as a login method
+	// Whether microsoft 365 is enabled as a login method
 	MicrosoftEnabled *bool `pulumi:"microsoftEnabled"`
 	// Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
 	MicrosoftExpire *int `pulumi:"microsoftExpire"`
@@ -21965,9 +21902,9 @@ type WlanPortal struct {
 	PassphraseExpire *int `pulumi:"passphraseExpire"`
 	// Required if `passphraseEnabled`==`true`.
 	Password *string `pulumi:"password"`
-	// whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+	// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
 	PredefinedSponsorsEnabled *bool `pulumi:"predefinedSponsorsEnabled"`
-	// whether to hide sponsor’s email from list of sponsors
+	// Whether to hide sponsor’s email from list of sponsors
 	PredefinedSponsorsHideEmail *bool `pulumi:"predefinedSponsorsHideEmail"`
 	Privacy                     *bool `pulumi:"privacy"`
 	// Required if `smsProvider`==`puzzel`
@@ -21976,7 +21913,7 @@ type WlanPortal struct {
 	PuzzelServiceId *string `pulumi:"puzzelServiceId"`
 	// Required if `smsProvider`==`puzzel`
 	PuzzelUsername *string `pulumi:"puzzelUsername"`
-	// whether sms is enabled as a login method
+	// Whether sms is enabled as a login method
 	SmsEnabled *bool `pulumi:"smsEnabled"`
 	// Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
 	SmsExpire *int `pulumi:"smsExpire"`
@@ -21986,9 +21923,9 @@ type WlanPortal struct {
 	SmsProvider *string `pulumi:"smsProvider"`
 	// Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
 	SponsorAutoApprove *bool `pulumi:"sponsorAutoApprove"`
-	// list of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
+	// List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
 	SponsorEmailDomains []string `pulumi:"sponsorEmailDomains"`
-	// whether sponsor is enabled
+	// Whether sponsor is enabled
 	SponsorEnabled *bool `pulumi:"sponsorEnabled"`
 	// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
 	SponsorExpire *int `pulumi:"sponsorExpire"`
@@ -22049,7 +21986,7 @@ type WlanPortalArgs struct {
 	AmazonClientSecret pulumi.StringPtrInput `pulumi:"amazonClientSecret"`
 	// Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	AmazonEmailDomains pulumi.StringArrayInput `pulumi:"amazonEmailDomains"`
-	// whether amazon is enabled as a login method
+	// Whether amazon is enabled as a login method
 	AmazonEnabled pulumi.BoolPtrInput `pulumi:"amazonEnabled"`
 	// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
 	AmazonExpire pulumi.IntPtrInput `pulumi:"amazonExpire"`
@@ -22059,9 +21996,9 @@ type WlanPortalArgs struct {
 	AzureClientId pulumi.StringPtrInput `pulumi:"azureClientId"`
 	// Required if `azureEnabled`==`true`. Azure active directory app client secret
 	AzureClientSecret pulumi.StringPtrInput `pulumi:"azureClientSecret"`
-	// whether Azure Active Directory is enabled as a login method
+	// Whether Azure Active Directory is enabled as a login method
 	AzureEnabled pulumi.BoolPtrInput `pulumi:"azureEnabled"`
-	// interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+	// Interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
 	AzureExpire pulumi.IntPtrInput `pulumi:"azureExpire"`
 	// Required if `azureEnabled`==`true`. Azure active directory tenant id.
 	AzureTenantId pulumi.StringPtrInput `pulumi:"azureTenantId"`
@@ -22071,17 +22008,17 @@ type WlanPortalArgs struct {
 	BroadnetSid pulumi.StringPtrInput `pulumi:"broadnetSid"`
 	// Required if `smsProvider`==`broadnet`
 	BroadnetUserId pulumi.StringPtrInput `pulumi:"broadnetUserId"`
-	// whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+	// Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
 	BypassWhenCloudDown pulumi.BoolPtrInput `pulumi:"bypassWhenCloudDown"`
 	// Required if `smsProvider`==`clickatell`
 	ClickatellApiKey pulumi.StringPtrInput `pulumi:"clickatellApiKey"`
-	// whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
+	// Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
 	CrossSite pulumi.BoolPtrInput `pulumi:"crossSite"`
-	// whether email (access code verification) is enabled as a login method
+	// Whether email (access code verification) is enabled as a login method
 	EmailEnabled pulumi.BoolPtrInput `pulumi:"emailEnabled"`
-	// whether guest portal is enabled
+	// Whether guest portal is enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// how long to remain authorized, in minutes
+	// How long to remain authorized, in minutes
 	Expire pulumi.IntPtrInput `pulumi:"expire"`
 	// Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
 	ExternalPortalUrl pulumi.StringPtrInput `pulumi:"externalPortalUrl"`
@@ -22091,13 +22028,13 @@ type WlanPortalArgs struct {
 	FacebookClientSecret pulumi.StringPtrInput `pulumi:"facebookClientSecret"`
 	// Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	FacebookEmailDomains pulumi.StringArrayInput `pulumi:"facebookEmailDomains"`
-	// whether facebook is enabled as a login method
+	// Whether facebook is enabled as a login method
 	FacebookEnabled pulumi.BoolPtrInput `pulumi:"facebookEnabled"`
 	// Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
 	FacebookExpire pulumi.IntPtrInput `pulumi:"facebookExpire"`
-	// whether to forward the user to another URL after authorized
+	// Whether to forward the user to another URL after authorized
 	Forward pulumi.BoolPtrInput `pulumi:"forward"`
-	// the URL to forward the user to
+	// URL to forward the user to
 	ForwardUrl pulumi.StringPtrInput `pulumi:"forwardUrl"`
 	// Google OAuth2 app id. This is optional. If not provided, it will use a default one.
 	GoogleClientId pulumi.StringPtrInput `pulumi:"googleClientId"`
@@ -22105,9 +22042,9 @@ type WlanPortalArgs struct {
 	GoogleClientSecret pulumi.StringPtrInput `pulumi:"googleClientSecret"`
 	// Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	GoogleEmailDomains pulumi.StringArrayInput `pulumi:"googleEmailDomains"`
-	// whether google is enabled as login method
+	// Whether Google is enabled as login method
 	GoogleEnabled pulumi.BoolPtrInput `pulumi:"googleEnabled"`
-	// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+	// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
 	GoogleExpire pulumi.IntPtrInput `pulumi:"googleExpire"`
 	// Required if `smsProvider`==`gupshup`
 	GupshupPassword pulumi.StringPtrInput `pulumi:"gupshupPassword"`
@@ -22119,7 +22056,7 @@ type WlanPortalArgs struct {
 	MicrosoftClientSecret pulumi.StringPtrInput `pulumi:"microsoftClientSecret"`
 	// Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	MicrosoftEmailDomains pulumi.StringArrayInput `pulumi:"microsoftEmailDomains"`
-	// whether microsoft 365 is enabled as a login method
+	// Whether microsoft 365 is enabled as a login method
 	MicrosoftEnabled pulumi.BoolPtrInput `pulumi:"microsoftEnabled"`
 	// Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
 	MicrosoftExpire pulumi.IntPtrInput `pulumi:"microsoftExpire"`
@@ -22129,9 +22066,9 @@ type WlanPortalArgs struct {
 	PassphraseExpire pulumi.IntPtrInput `pulumi:"passphraseExpire"`
 	// Required if `passphraseEnabled`==`true`.
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	// whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+	// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
 	PredefinedSponsorsEnabled pulumi.BoolPtrInput `pulumi:"predefinedSponsorsEnabled"`
-	// whether to hide sponsor’s email from list of sponsors
+	// Whether to hide sponsor’s email from list of sponsors
 	PredefinedSponsorsHideEmail pulumi.BoolPtrInput `pulumi:"predefinedSponsorsHideEmail"`
 	Privacy                     pulumi.BoolPtrInput `pulumi:"privacy"`
 	// Required if `smsProvider`==`puzzel`
@@ -22140,7 +22077,7 @@ type WlanPortalArgs struct {
 	PuzzelServiceId pulumi.StringPtrInput `pulumi:"puzzelServiceId"`
 	// Required if `smsProvider`==`puzzel`
 	PuzzelUsername pulumi.StringPtrInput `pulumi:"puzzelUsername"`
-	// whether sms is enabled as a login method
+	// Whether sms is enabled as a login method
 	SmsEnabled pulumi.BoolPtrInput `pulumi:"smsEnabled"`
 	// Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
 	SmsExpire pulumi.IntPtrInput `pulumi:"smsExpire"`
@@ -22150,9 +22087,9 @@ type WlanPortalArgs struct {
 	SmsProvider pulumi.StringPtrInput `pulumi:"smsProvider"`
 	// Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
 	SponsorAutoApprove pulumi.BoolPtrInput `pulumi:"sponsorAutoApprove"`
-	// list of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
+	// List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
 	SponsorEmailDomains pulumi.StringArrayInput `pulumi:"sponsorEmailDomains"`
-	// whether sponsor is enabled
+	// Whether sponsor is enabled
 	SponsorEnabled pulumi.BoolPtrInput `pulumi:"sponsorEnabled"`
 	// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
 	SponsorExpire pulumi.IntPtrInput `pulumi:"sponsorExpire"`
@@ -22290,7 +22227,7 @@ func (o WlanPortalOutput) AmazonEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanPortal) []string { return v.AmazonEmailDomains }).(pulumi.StringArrayOutput)
 }
 
-// whether amazon is enabled as a login method
+// Whether amazon is enabled as a login method
 func (o WlanPortalOutput) AmazonEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.AmazonEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -22315,12 +22252,12 @@ func (o WlanPortalOutput) AzureClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.AzureClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// whether Azure Active Directory is enabled as a login method
+// Whether Azure Active Directory is enabled as a login method
 func (o WlanPortalOutput) AzureEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.AzureEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+// Interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
 func (o WlanPortalOutput) AzureExpire() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *int { return v.AzureExpire }).(pulumi.IntPtrOutput)
 }
@@ -22345,7 +22282,7 @@ func (o WlanPortalOutput) BroadnetUserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.BroadnetUserId }).(pulumi.StringPtrOutput)
 }
 
-// whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+// Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
 func (o WlanPortalOutput) BypassWhenCloudDown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.BypassWhenCloudDown }).(pulumi.BoolPtrOutput)
 }
@@ -22355,22 +22292,22 @@ func (o WlanPortalOutput) ClickatellApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.ClickatellApiKey }).(pulumi.StringPtrOutput)
 }
 
-// whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
+// Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
 func (o WlanPortalOutput) CrossSite() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.CrossSite }).(pulumi.BoolPtrOutput)
 }
 
-// whether email (access code verification) is enabled as a login method
+// Whether email (access code verification) is enabled as a login method
 func (o WlanPortalOutput) EmailEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.EmailEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// whether guest portal is enabled
+// Whether guest portal is enabled
 func (o WlanPortalOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// how long to remain authorized, in minutes
+// How long to remain authorized, in minutes
 func (o WlanPortalOutput) Expire() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *int { return v.Expire }).(pulumi.IntPtrOutput)
 }
@@ -22395,7 +22332,7 @@ func (o WlanPortalOutput) FacebookEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanPortal) []string { return v.FacebookEmailDomains }).(pulumi.StringArrayOutput)
 }
 
-// whether facebook is enabled as a login method
+// Whether facebook is enabled as a login method
 func (o WlanPortalOutput) FacebookEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.FacebookEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -22405,12 +22342,12 @@ func (o WlanPortalOutput) FacebookExpire() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *int { return v.FacebookExpire }).(pulumi.IntPtrOutput)
 }
 
-// whether to forward the user to another URL after authorized
+// Whether to forward the user to another URL after authorized
 func (o WlanPortalOutput) Forward() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.Forward }).(pulumi.BoolPtrOutput)
 }
 
-// the URL to forward the user to
+// URL to forward the user to
 func (o WlanPortalOutput) ForwardUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.ForwardUrl }).(pulumi.StringPtrOutput)
 }
@@ -22430,12 +22367,12 @@ func (o WlanPortalOutput) GoogleEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanPortal) []string { return v.GoogleEmailDomains }).(pulumi.StringArrayOutput)
 }
 
-// whether google is enabled as login method
+// Whether Google is enabled as login method
 func (o WlanPortalOutput) GoogleEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.GoogleEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
 func (o WlanPortalOutput) GoogleExpire() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *int { return v.GoogleExpire }).(pulumi.IntPtrOutput)
 }
@@ -22465,7 +22402,7 @@ func (o WlanPortalOutput) MicrosoftEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanPortal) []string { return v.MicrosoftEmailDomains }).(pulumi.StringArrayOutput)
 }
 
-// whether microsoft 365 is enabled as a login method
+// Whether microsoft 365 is enabled as a login method
 func (o WlanPortalOutput) MicrosoftEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.MicrosoftEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -22490,12 +22427,12 @@ func (o WlanPortalOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
 func (o WlanPortalOutput) PredefinedSponsorsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.PredefinedSponsorsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// whether to hide sponsor’s email from list of sponsors
+// Whether to hide sponsor’s email from list of sponsors
 func (o WlanPortalOutput) PredefinedSponsorsHideEmail() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.PredefinedSponsorsHideEmail }).(pulumi.BoolPtrOutput)
 }
@@ -22519,7 +22456,7 @@ func (o WlanPortalOutput) PuzzelUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.PuzzelUsername }).(pulumi.StringPtrOutput)
 }
 
-// whether sms is enabled as a login method
+// Whether sms is enabled as a login method
 func (o WlanPortalOutput) SmsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.SmsEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -22544,12 +22481,12 @@ func (o WlanPortalOutput) SponsorAutoApprove() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.SponsorAutoApprove }).(pulumi.BoolPtrOutput)
 }
 
-// list of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
+// List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
 func (o WlanPortalOutput) SponsorEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanPortal) []string { return v.SponsorEmailDomains }).(pulumi.StringArrayOutput)
 }
 
-// whether sponsor is enabled
+// Whether sponsor is enabled
 func (o WlanPortalOutput) SponsorEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.SponsorEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -22707,7 +22644,7 @@ func (o WlanPortalPtrOutput) AmazonEmailDomains() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// whether amazon is enabled as a login method
+// Whether amazon is enabled as a login method
 func (o WlanPortalPtrOutput) AmazonEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -22757,7 +22694,7 @@ func (o WlanPortalPtrOutput) AzureClientSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// whether Azure Active Directory is enabled as a login method
+// Whether Azure Active Directory is enabled as a login method
 func (o WlanPortalPtrOutput) AzureEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -22767,7 +22704,7 @@ func (o WlanPortalPtrOutput) AzureEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+// Interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
 func (o WlanPortalPtrOutput) AzureExpire() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *int {
 		if v == nil {
@@ -22817,7 +22754,7 @@ func (o WlanPortalPtrOutput) BroadnetUserId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+// Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
 func (o WlanPortalPtrOutput) BypassWhenCloudDown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -22837,7 +22774,7 @@ func (o WlanPortalPtrOutput) ClickatellApiKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
+// Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
 func (o WlanPortalPtrOutput) CrossSite() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -22847,7 +22784,7 @@ func (o WlanPortalPtrOutput) CrossSite() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether email (access code verification) is enabled as a login method
+// Whether email (access code verification) is enabled as a login method
 func (o WlanPortalPtrOutput) EmailEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -22857,7 +22794,7 @@ func (o WlanPortalPtrOutput) EmailEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether guest portal is enabled
+// Whether guest portal is enabled
 func (o WlanPortalPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -22867,7 +22804,7 @@ func (o WlanPortalPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// how long to remain authorized, in minutes
+// How long to remain authorized, in minutes
 func (o WlanPortalPtrOutput) Expire() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *int {
 		if v == nil {
@@ -22917,7 +22854,7 @@ func (o WlanPortalPtrOutput) FacebookEmailDomains() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// whether facebook is enabled as a login method
+// Whether facebook is enabled as a login method
 func (o WlanPortalPtrOutput) FacebookEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -22937,7 +22874,7 @@ func (o WlanPortalPtrOutput) FacebookExpire() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// whether to forward the user to another URL after authorized
+// Whether to forward the user to another URL after authorized
 func (o WlanPortalPtrOutput) Forward() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -22947,7 +22884,7 @@ func (o WlanPortalPtrOutput) Forward() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// the URL to forward the user to
+// URL to forward the user to
 func (o WlanPortalPtrOutput) ForwardUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22987,7 +22924,7 @@ func (o WlanPortalPtrOutput) GoogleEmailDomains() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// whether google is enabled as login method
+// Whether Google is enabled as login method
 func (o WlanPortalPtrOutput) GoogleEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -22997,7 +22934,7 @@ func (o WlanPortalPtrOutput) GoogleEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
 func (o WlanPortalPtrOutput) GoogleExpire() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *int {
 		if v == nil {
@@ -23057,7 +22994,7 @@ func (o WlanPortalPtrOutput) MicrosoftEmailDomains() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// whether microsoft 365 is enabled as a login method
+// Whether microsoft 365 is enabled as a login method
 func (o WlanPortalPtrOutput) MicrosoftEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -23107,7 +23044,7 @@ func (o WlanPortalPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
 func (o WlanPortalPtrOutput) PredefinedSponsorsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -23117,7 +23054,7 @@ func (o WlanPortalPtrOutput) PredefinedSponsorsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether to hide sponsor’s email from list of sponsors
+// Whether to hide sponsor’s email from list of sponsors
 func (o WlanPortalPtrOutput) PredefinedSponsorsHideEmail() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -23166,7 +23103,7 @@ func (o WlanPortalPtrOutput) PuzzelUsername() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// whether sms is enabled as a login method
+// Whether sms is enabled as a login method
 func (o WlanPortalPtrOutput) SmsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -23216,7 +23153,7 @@ func (o WlanPortalPtrOutput) SponsorAutoApprove() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// list of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
+// List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
 func (o WlanPortalPtrOutput) SponsorEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanPortal) []string {
 		if v == nil {
@@ -23226,7 +23163,7 @@ func (o WlanPortalPtrOutput) SponsorEmailDomains() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// whether sponsor is enabled
+// Whether sponsor is enabled
 func (o WlanPortalPtrOutput) SponsorEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -23414,40 +23351,40 @@ type WlanPortalTemplatePortalTemplate struct {
 	AccessCodeAlternateEmail *string `pulumi:"accessCodeAlternateEmail"`
 	// defines alignment on portal. enum: `center`, `left`, `right`
 	Alignment *string `pulumi:"alignment"`
-	// label for Amazon auth button
+	// Label for Amazon auth button
 	AuthButtonAmazon *string `pulumi:"authButtonAmazon"`
-	// label for Azure auth button
+	// Label for Azure auth button
 	AuthButtonAzure *string `pulumi:"authButtonAzure"`
-	// label for Email auth button
+	// Label for Email auth button
 	AuthButtonEmail *string `pulumi:"authButtonEmail"`
-	// label for Facebook auth button
+	// Label for Facebook auth button
 	AuthButtonFacebook *string `pulumi:"authButtonFacebook"`
-	// label for Google auth button
+	// Label for Google auth button
 	AuthButtonGoogle *string `pulumi:"authButtonGoogle"`
-	// label for Microsoft auth button
+	// Label for Microsoft auth button
 	AuthButtonMicrosoft *string `pulumi:"authButtonMicrosoft"`
-	// label for passphrase auth button
+	// Label for passphrase auth button
 	AuthButtonPassphrase *string `pulumi:"authButtonPassphrase"`
-	// label for SMS auth button
+	// Label for SMS auth button
 	AuthButtonSms *string `pulumi:"authButtonSms"`
-	// label for Sponsor auth button
+	// Label for Sponsor auth button
 	AuthButtonSponsor *string `pulumi:"authButtonSponsor"`
 	AuthLabel         *string `pulumi:"authLabel"`
-	// label of the link to go back to /logon
+	// Label of the link to go back to /logon
 	BackLink *string `pulumi:"backLink"`
 	// Portal main color
 	Color      *string `pulumi:"color"`
 	ColorDark  *string `pulumi:"colorDark"`
 	ColorLight *string `pulumi:"colorLight"`
-	// whether company field is required
+	// Whether company field is required
 	Company *bool `pulumi:"company"`
-	// error message when company not provided
+	// Error message when company not provided
 	CompanyError *string `pulumi:"companyError"`
-	// label of company field
+	// Label of company field
 	CompanyLabel *string `pulumi:"companyLabel"`
-	// whether email field is required
+	// Whether email field is required
 	Email *bool `pulumi:"email"`
-	// error message when a user has valid social login but doesn't match specified email domains.
+	// Error message when a user has valid social login but doesn't match specified email domains.
 	EmailAccessDomainError *string `pulumi:"emailAccessDomainError"`
 	// Label for cancel confirmation code submission using email auth
 	EmailCancel         *string `pulumi:"emailCancel"`
@@ -23457,47 +23394,47 @@ type WlanPortalTemplatePortalTemplate struct {
 	EmailCodeMessage    *string `pulumi:"emailCodeMessage"`
 	EmailCodeSubmit     *string `pulumi:"emailCodeSubmit"`
 	EmailCodeTitle      *string `pulumi:"emailCodeTitle"`
-	// error message when email not provided
+	// Error message when email not provided
 	EmailError      *string `pulumi:"emailError"`
 	EmailFieldLabel *string `pulumi:"emailFieldLabel"`
-	// label of email field
+	// Label of email field
 	EmailLabel   *string `pulumi:"emailLabel"`
 	EmailMessage *string `pulumi:"emailMessage"`
 	// Label for confirmation code submit button using email auth
 	EmailSubmit *string `pulumi:"emailSubmit"`
 	// Title for the Email registration
 	EmailTitle *string `pulumi:"emailTitle"`
-	// whether to ask field1
+	// Whether to ask field1
 	Field1 *bool `pulumi:"field1"`
-	// error message when field1 not provided
+	// Error message when field1 not provided
 	Field1error *string `pulumi:"field1error"`
-	// label of field1
+	// Label of field1
 	Field1label *string `pulumi:"field1label"`
-	// whether field1 is required field
+	// Whether field1 is required field
 	Field1required *bool `pulumi:"field1required"`
-	// whether to ask field2
+	// Whether to ask field2
 	Field2 *bool `pulumi:"field2"`
-	// error message when field2 not provided
+	// Error message when field2 not provided
 	Field2error *string `pulumi:"field2error"`
-	// label of field2
+	// Label of field2
 	Field2label *string `pulumi:"field2label"`
-	// whether field2 is required field
+	// Whether field2 is required field
 	Field2required *bool `pulumi:"field2required"`
-	// whether to ask field3
+	// Whether to ask field3
 	Field3 *bool `pulumi:"field3"`
-	// error message when field3 not provided
+	// Error message when field3 not provided
 	Field3error *string `pulumi:"field3error"`
-	// label of field3
+	// Label of field3
 	Field3label *string `pulumi:"field3label"`
-	// whether field3 is required field
+	// Whether field3 is required field
 	Field3required *bool `pulumi:"field3required"`
-	// whether to ask field4
+	// Whether to ask field4
 	Field4 *bool `pulumi:"field4"`
-	// error message when field4 not provided
+	// Error message when field4 not provided
 	Field4error *string `pulumi:"field4error"`
-	// label of field4
+	// Label of field4
 	Field4label *string `pulumi:"field4label"`
-	// whether field4 is required field
+	// Whether field4 is required field
 	Field4required *bool `pulumi:"field4required"`
 	// Can be used to localize the portal based on the User Agent. Allowed property key values are:
 	//   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
@@ -23509,22 +23446,22 @@ type WlanPortalTemplatePortalTemplate struct {
 	Logo      *string `pulumi:"logo"`
 	Message   *string `pulumi:"message"`
 	MultiAuth *bool   `pulumi:"multiAuth"`
-	// whether name field is required
+	// Whether name field is required
 	Name *bool `pulumi:"name"`
-	// error message when name not provided
+	// Error message when name not provided
 	NameError *string `pulumi:"nameError"`
-	// label of name field
+	// Label of name field
 	NameLabel *string `pulumi:"nameLabel"`
 	// Default value for the `Do not store` checkbox
 	OptOutDefault *bool `pulumi:"optOutDefault"`
-	// whether to display Do Not Store My Personal Information
+	// Whether to display Do Not Store My Personal Information
 	Optout *bool `pulumi:"optout"`
-	// label for Do Not Store My Personal Information
+	// Label for Do Not Store My Personal Information
 	OptoutLabel *string `pulumi:"optoutLabel"`
 	PageTitle   *string `pulumi:"pageTitle"`
 	// Label for the Passphrase cancel button
 	PassphraseCancel *string `pulumi:"passphraseCancel"`
-	// error message when invalid passphrase is provided
+	// Error message when invalid passphrase is provided
 	PassphraseError *string `pulumi:"passphraseError"`
 	// Passphrase
 	PassphraseLabel   *string `pulumi:"passphraseLabel"`
@@ -23533,30 +23470,30 @@ type WlanPortalTemplatePortalTemplate struct {
 	PassphraseSubmit *string `pulumi:"passphraseSubmit"`
 	// Title for passphrase details page
 	PassphraseTitle *string `pulumi:"passphraseTitle"`
-	// whether to show \"Powered by Mist\"
+	// Whether to show \"Powered by Mist\"
 	PoweredBy *bool `pulumi:"poweredBy"`
-	// wheter to require the Privacy Term acceptance
+	// Whether to require the Privacy Term acceptance
 	Privacy *bool `pulumi:"privacy"`
-	// prefix of the label of the link to go to Privacy Policy
+	// Prefix of the label of the link to go to Privacy Policy
 	PrivacyPolicyAcceptLabel *string `pulumi:"privacyPolicyAcceptLabel"`
-	// error message when Privacy Policy not accepted
+	// Error message when Privacy Policy not accepted
 	PrivacyPolicyError *string `pulumi:"privacyPolicyError"`
-	// label of the link to go to Privacy Policy
+	// Label of the link to go to Privacy Policy
 	PrivacyPolicyLink *string `pulumi:"privacyPolicyLink"`
-	// text of the Privacy Policy
+	// Text of the Privacy Policy
 	PrivacyPolicyText *string `pulumi:"privacyPolicyText"`
-	// label to denote required field
+	// Label to denote required field
 	RequiredFieldLabel *string `pulumi:"requiredFieldLabel"`
 	ResponsiveLayout   *bool   `pulumi:"responsiveLayout"`
-	// label of the button to /signin
+	// Label of the button to /signin
 	SignInLabel       *string `pulumi:"signInLabel"`
 	SmsCarrierDefault *string `pulumi:"smsCarrierDefault"`
 	SmsCarrierError   *string `pulumi:"smsCarrierError"`
-	// label for mobile carrier drop-down list
+	// Label for mobile carrier drop-down list
 	SmsCarrierFieldLabel *string `pulumi:"smsCarrierFieldLabel"`
 	// Label for cancel confirmation code submission
 	SmsCodeCancel *string `pulumi:"smsCodeCancel"`
-	// error message when confirmation code is invalid
+	// Error message when confirmation code is invalid
 	SmsCodeError      *string `pulumi:"smsCodeError"`
 	SmsCodeFieldLabel *string `pulumi:"smsCodeFieldLabel"`
 	SmsCodeMessage    *string `pulumi:"smsCodeMessage"`
@@ -23568,28 +23505,28 @@ type WlanPortalTemplatePortalTemplate struct {
 	// Label for checkbox to specify that the user has access code
 	SmsHaveAccessCode *string `pulumi:"smsHaveAccessCode"`
 	SmsIsTwilio       *bool   `pulumi:"smsIsTwilio"`
-	// format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+	// Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
 	SmsMessageFormat *string `pulumi:"smsMessageFormat"`
-	// label for canceling mobile details for SMS auth
+	// Label for canceling mobile details for SMS auth
 	SmsNumberCancel *string `pulumi:"smsNumberCancel"`
 	SmsNumberError  *string `pulumi:"smsNumberError"`
-	// label for field to provide mobile number
+	// Label for field to provide mobile number
 	SmsNumberFieldLabel *string `pulumi:"smsNumberFieldLabel"`
 	SmsNumberFormat     *string `pulumi:"smsNumberFormat"`
 	SmsNumberMessage    *string `pulumi:"smsNumberMessage"`
-	// label for submit button for code generation
+	// Label for submit button for code generation
 	SmsNumberSubmit *string `pulumi:"smsNumberSubmit"`
 	// Title for phone number details
 	SmsNumberTitle    *string `pulumi:"smsNumberTitle"`
 	SmsUsernameFormat *string `pulumi:"smsUsernameFormat"`
-	// how long confirmation code should be considered valid (in minutes)
+	// How long confirmation code should be considered valid (in minutes)
 	SmsValidityDuration *int    `pulumi:"smsValidityDuration"`
 	SponsorBackLink     *string `pulumi:"sponsorBackLink"`
 	SponsorCancel       *string `pulumi:"sponsorCancel"`
-	// label for Sponsor Email
+	// Label for Sponsor Email
 	SponsorEmail      *string `pulumi:"sponsorEmail"`
 	SponsorEmailError *string `pulumi:"sponsorEmailError"`
-	// html template to replace/override default sponsor email template
+	// HTML template to replace/override default sponsor email template
 	// Sponsor Email Template supports following template variables:
 	//   * `approveUrl`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
 	//   * `denyUrl`: Renders URL to reject the request
@@ -23603,30 +23540,30 @@ type WlanPortalTemplatePortalTemplate struct {
 	SponsorInfoApproved  *string `pulumi:"sponsorInfoApproved"`
 	SponsorInfoDenied    *string `pulumi:"sponsorInfoDenied"`
 	SponsorInfoPending   *string `pulumi:"sponsorInfoPending"`
-	// label for Sponsor Name
+	// Label for Sponsor Name
 	SponsorName        *string `pulumi:"sponsorName"`
 	SponsorNameError   *string `pulumi:"sponsorNameError"`
 	SponsorNotePending *string `pulumi:"sponsorNotePending"`
-	// submit button label request Wifi Access and notify sponsor about guest request
+	// Submit button label request Wifi Access and notify sponsor about guest request
 	SponsorRequestAccess *string `pulumi:"sponsorRequestAccess"`
-	// text to display if sponsor approves request
+	// Text to display if sponsor approves request
 	SponsorStatusApproved *string `pulumi:"sponsorStatusApproved"`
-	// text to display when sponsor denies request
+	// Text to display when sponsor denies request
 	SponsorStatusDenied *string `pulumi:"sponsorStatusDenied"`
-	// text to display if request is still pending
+	// Text to display if request is still pending
 	SponsorStatusPending *string `pulumi:"sponsorStatusPending"`
-	// submit button label to notify sponsor about guest request
+	// Submit button label to notify sponsor about guest request
 	SponsorSubmit      *string `pulumi:"sponsorSubmit"`
 	SponsorsError      *string `pulumi:"sponsorsError"`
 	SponsorsFieldLabel *string `pulumi:"sponsorsFieldLabel"`
 	Tos                *bool   `pulumi:"tos"`
-	// prefix of the label of the link to go to tos
+	// Prefix of the label of the link to go to tos
 	TosAcceptLabel *string `pulumi:"tosAcceptLabel"`
-	// error message when tos not accepted
+	// Error message when tos not accepted
 	TosError *string `pulumi:"tosError"`
-	// label of the link to go to tos
+	// Label of the link to go to tos
 	TosLink *string `pulumi:"tosLink"`
-	// text of the Terms of Service
+	// Text of the Terms of Service
 	TosText *string `pulumi:"tosText"`
 }
 
@@ -23645,40 +23582,40 @@ type WlanPortalTemplatePortalTemplateArgs struct {
 	AccessCodeAlternateEmail pulumi.StringPtrInput `pulumi:"accessCodeAlternateEmail"`
 	// defines alignment on portal. enum: `center`, `left`, `right`
 	Alignment pulumi.StringPtrInput `pulumi:"alignment"`
-	// label for Amazon auth button
+	// Label for Amazon auth button
 	AuthButtonAmazon pulumi.StringPtrInput `pulumi:"authButtonAmazon"`
-	// label for Azure auth button
+	// Label for Azure auth button
 	AuthButtonAzure pulumi.StringPtrInput `pulumi:"authButtonAzure"`
-	// label for Email auth button
+	// Label for Email auth button
 	AuthButtonEmail pulumi.StringPtrInput `pulumi:"authButtonEmail"`
-	// label for Facebook auth button
+	// Label for Facebook auth button
 	AuthButtonFacebook pulumi.StringPtrInput `pulumi:"authButtonFacebook"`
-	// label for Google auth button
+	// Label for Google auth button
 	AuthButtonGoogle pulumi.StringPtrInput `pulumi:"authButtonGoogle"`
-	// label for Microsoft auth button
+	// Label for Microsoft auth button
 	AuthButtonMicrosoft pulumi.StringPtrInput `pulumi:"authButtonMicrosoft"`
-	// label for passphrase auth button
+	// Label for passphrase auth button
 	AuthButtonPassphrase pulumi.StringPtrInput `pulumi:"authButtonPassphrase"`
-	// label for SMS auth button
+	// Label for SMS auth button
 	AuthButtonSms pulumi.StringPtrInput `pulumi:"authButtonSms"`
-	// label for Sponsor auth button
+	// Label for Sponsor auth button
 	AuthButtonSponsor pulumi.StringPtrInput `pulumi:"authButtonSponsor"`
 	AuthLabel         pulumi.StringPtrInput `pulumi:"authLabel"`
-	// label of the link to go back to /logon
+	// Label of the link to go back to /logon
 	BackLink pulumi.StringPtrInput `pulumi:"backLink"`
 	// Portal main color
 	Color      pulumi.StringPtrInput `pulumi:"color"`
 	ColorDark  pulumi.StringPtrInput `pulumi:"colorDark"`
 	ColorLight pulumi.StringPtrInput `pulumi:"colorLight"`
-	// whether company field is required
+	// Whether company field is required
 	Company pulumi.BoolPtrInput `pulumi:"company"`
-	// error message when company not provided
+	// Error message when company not provided
 	CompanyError pulumi.StringPtrInput `pulumi:"companyError"`
-	// label of company field
+	// Label of company field
 	CompanyLabel pulumi.StringPtrInput `pulumi:"companyLabel"`
-	// whether email field is required
+	// Whether email field is required
 	Email pulumi.BoolPtrInput `pulumi:"email"`
-	// error message when a user has valid social login but doesn't match specified email domains.
+	// Error message when a user has valid social login but doesn't match specified email domains.
 	EmailAccessDomainError pulumi.StringPtrInput `pulumi:"emailAccessDomainError"`
 	// Label for cancel confirmation code submission using email auth
 	EmailCancel         pulumi.StringPtrInput `pulumi:"emailCancel"`
@@ -23688,47 +23625,47 @@ type WlanPortalTemplatePortalTemplateArgs struct {
 	EmailCodeMessage    pulumi.StringPtrInput `pulumi:"emailCodeMessage"`
 	EmailCodeSubmit     pulumi.StringPtrInput `pulumi:"emailCodeSubmit"`
 	EmailCodeTitle      pulumi.StringPtrInput `pulumi:"emailCodeTitle"`
-	// error message when email not provided
+	// Error message when email not provided
 	EmailError      pulumi.StringPtrInput `pulumi:"emailError"`
 	EmailFieldLabel pulumi.StringPtrInput `pulumi:"emailFieldLabel"`
-	// label of email field
+	// Label of email field
 	EmailLabel   pulumi.StringPtrInput `pulumi:"emailLabel"`
 	EmailMessage pulumi.StringPtrInput `pulumi:"emailMessage"`
 	// Label for confirmation code submit button using email auth
 	EmailSubmit pulumi.StringPtrInput `pulumi:"emailSubmit"`
 	// Title for the Email registration
 	EmailTitle pulumi.StringPtrInput `pulumi:"emailTitle"`
-	// whether to ask field1
+	// Whether to ask field1
 	Field1 pulumi.BoolPtrInput `pulumi:"field1"`
-	// error message when field1 not provided
+	// Error message when field1 not provided
 	Field1error pulumi.StringPtrInput `pulumi:"field1error"`
-	// label of field1
+	// Label of field1
 	Field1label pulumi.StringPtrInput `pulumi:"field1label"`
-	// whether field1 is required field
+	// Whether field1 is required field
 	Field1required pulumi.BoolPtrInput `pulumi:"field1required"`
-	// whether to ask field2
+	// Whether to ask field2
 	Field2 pulumi.BoolPtrInput `pulumi:"field2"`
-	// error message when field2 not provided
+	// Error message when field2 not provided
 	Field2error pulumi.StringPtrInput `pulumi:"field2error"`
-	// label of field2
+	// Label of field2
 	Field2label pulumi.StringPtrInput `pulumi:"field2label"`
-	// whether field2 is required field
+	// Whether field2 is required field
 	Field2required pulumi.BoolPtrInput `pulumi:"field2required"`
-	// whether to ask field3
+	// Whether to ask field3
 	Field3 pulumi.BoolPtrInput `pulumi:"field3"`
-	// error message when field3 not provided
+	// Error message when field3 not provided
 	Field3error pulumi.StringPtrInput `pulumi:"field3error"`
-	// label of field3
+	// Label of field3
 	Field3label pulumi.StringPtrInput `pulumi:"field3label"`
-	// whether field3 is required field
+	// Whether field3 is required field
 	Field3required pulumi.BoolPtrInput `pulumi:"field3required"`
-	// whether to ask field4
+	// Whether to ask field4
 	Field4 pulumi.BoolPtrInput `pulumi:"field4"`
-	// error message when field4 not provided
+	// Error message when field4 not provided
 	Field4error pulumi.StringPtrInput `pulumi:"field4error"`
-	// label of field4
+	// Label of field4
 	Field4label pulumi.StringPtrInput `pulumi:"field4label"`
-	// whether field4 is required field
+	// Whether field4 is required field
 	Field4required pulumi.BoolPtrInput `pulumi:"field4required"`
 	// Can be used to localize the portal based on the User Agent. Allowed property key values are:
 	//   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
@@ -23740,22 +23677,22 @@ type WlanPortalTemplatePortalTemplateArgs struct {
 	Logo      pulumi.StringPtrInput `pulumi:"logo"`
 	Message   pulumi.StringPtrInput `pulumi:"message"`
 	MultiAuth pulumi.BoolPtrInput   `pulumi:"multiAuth"`
-	// whether name field is required
+	// Whether name field is required
 	Name pulumi.BoolPtrInput `pulumi:"name"`
-	// error message when name not provided
+	// Error message when name not provided
 	NameError pulumi.StringPtrInput `pulumi:"nameError"`
-	// label of name field
+	// Label of name field
 	NameLabel pulumi.StringPtrInput `pulumi:"nameLabel"`
 	// Default value for the `Do not store` checkbox
 	OptOutDefault pulumi.BoolPtrInput `pulumi:"optOutDefault"`
-	// whether to display Do Not Store My Personal Information
+	// Whether to display Do Not Store My Personal Information
 	Optout pulumi.BoolPtrInput `pulumi:"optout"`
-	// label for Do Not Store My Personal Information
+	// Label for Do Not Store My Personal Information
 	OptoutLabel pulumi.StringPtrInput `pulumi:"optoutLabel"`
 	PageTitle   pulumi.StringPtrInput `pulumi:"pageTitle"`
 	// Label for the Passphrase cancel button
 	PassphraseCancel pulumi.StringPtrInput `pulumi:"passphraseCancel"`
-	// error message when invalid passphrase is provided
+	// Error message when invalid passphrase is provided
 	PassphraseError pulumi.StringPtrInput `pulumi:"passphraseError"`
 	// Passphrase
 	PassphraseLabel   pulumi.StringPtrInput `pulumi:"passphraseLabel"`
@@ -23764,30 +23701,30 @@ type WlanPortalTemplatePortalTemplateArgs struct {
 	PassphraseSubmit pulumi.StringPtrInput `pulumi:"passphraseSubmit"`
 	// Title for passphrase details page
 	PassphraseTitle pulumi.StringPtrInput `pulumi:"passphraseTitle"`
-	// whether to show \"Powered by Mist\"
+	// Whether to show \"Powered by Mist\"
 	PoweredBy pulumi.BoolPtrInput `pulumi:"poweredBy"`
-	// wheter to require the Privacy Term acceptance
+	// Whether to require the Privacy Term acceptance
 	Privacy pulumi.BoolPtrInput `pulumi:"privacy"`
-	// prefix of the label of the link to go to Privacy Policy
+	// Prefix of the label of the link to go to Privacy Policy
 	PrivacyPolicyAcceptLabel pulumi.StringPtrInput `pulumi:"privacyPolicyAcceptLabel"`
-	// error message when Privacy Policy not accepted
+	// Error message when Privacy Policy not accepted
 	PrivacyPolicyError pulumi.StringPtrInput `pulumi:"privacyPolicyError"`
-	// label of the link to go to Privacy Policy
+	// Label of the link to go to Privacy Policy
 	PrivacyPolicyLink pulumi.StringPtrInput `pulumi:"privacyPolicyLink"`
-	// text of the Privacy Policy
+	// Text of the Privacy Policy
 	PrivacyPolicyText pulumi.StringPtrInput `pulumi:"privacyPolicyText"`
-	// label to denote required field
+	// Label to denote required field
 	RequiredFieldLabel pulumi.StringPtrInput `pulumi:"requiredFieldLabel"`
 	ResponsiveLayout   pulumi.BoolPtrInput   `pulumi:"responsiveLayout"`
-	// label of the button to /signin
+	// Label of the button to /signin
 	SignInLabel       pulumi.StringPtrInput `pulumi:"signInLabel"`
 	SmsCarrierDefault pulumi.StringPtrInput `pulumi:"smsCarrierDefault"`
 	SmsCarrierError   pulumi.StringPtrInput `pulumi:"smsCarrierError"`
-	// label for mobile carrier drop-down list
+	// Label for mobile carrier drop-down list
 	SmsCarrierFieldLabel pulumi.StringPtrInput `pulumi:"smsCarrierFieldLabel"`
 	// Label for cancel confirmation code submission
 	SmsCodeCancel pulumi.StringPtrInput `pulumi:"smsCodeCancel"`
-	// error message when confirmation code is invalid
+	// Error message when confirmation code is invalid
 	SmsCodeError      pulumi.StringPtrInput `pulumi:"smsCodeError"`
 	SmsCodeFieldLabel pulumi.StringPtrInput `pulumi:"smsCodeFieldLabel"`
 	SmsCodeMessage    pulumi.StringPtrInput `pulumi:"smsCodeMessage"`
@@ -23799,28 +23736,28 @@ type WlanPortalTemplatePortalTemplateArgs struct {
 	// Label for checkbox to specify that the user has access code
 	SmsHaveAccessCode pulumi.StringPtrInput `pulumi:"smsHaveAccessCode"`
 	SmsIsTwilio       pulumi.BoolPtrInput   `pulumi:"smsIsTwilio"`
-	// format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+	// Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
 	SmsMessageFormat pulumi.StringPtrInput `pulumi:"smsMessageFormat"`
-	// label for canceling mobile details for SMS auth
+	// Label for canceling mobile details for SMS auth
 	SmsNumberCancel pulumi.StringPtrInput `pulumi:"smsNumberCancel"`
 	SmsNumberError  pulumi.StringPtrInput `pulumi:"smsNumberError"`
-	// label for field to provide mobile number
+	// Label for field to provide mobile number
 	SmsNumberFieldLabel pulumi.StringPtrInput `pulumi:"smsNumberFieldLabel"`
 	SmsNumberFormat     pulumi.StringPtrInput `pulumi:"smsNumberFormat"`
 	SmsNumberMessage    pulumi.StringPtrInput `pulumi:"smsNumberMessage"`
-	// label for submit button for code generation
+	// Label for submit button for code generation
 	SmsNumberSubmit pulumi.StringPtrInput `pulumi:"smsNumberSubmit"`
 	// Title for phone number details
 	SmsNumberTitle    pulumi.StringPtrInput `pulumi:"smsNumberTitle"`
 	SmsUsernameFormat pulumi.StringPtrInput `pulumi:"smsUsernameFormat"`
-	// how long confirmation code should be considered valid (in minutes)
+	// How long confirmation code should be considered valid (in minutes)
 	SmsValidityDuration pulumi.IntPtrInput    `pulumi:"smsValidityDuration"`
 	SponsorBackLink     pulumi.StringPtrInput `pulumi:"sponsorBackLink"`
 	SponsorCancel       pulumi.StringPtrInput `pulumi:"sponsorCancel"`
-	// label for Sponsor Email
+	// Label for Sponsor Email
 	SponsorEmail      pulumi.StringPtrInput `pulumi:"sponsorEmail"`
 	SponsorEmailError pulumi.StringPtrInput `pulumi:"sponsorEmailError"`
-	// html template to replace/override default sponsor email template
+	// HTML template to replace/override default sponsor email template
 	// Sponsor Email Template supports following template variables:
 	//   * `approveUrl`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
 	//   * `denyUrl`: Renders URL to reject the request
@@ -23834,30 +23771,30 @@ type WlanPortalTemplatePortalTemplateArgs struct {
 	SponsorInfoApproved  pulumi.StringPtrInput `pulumi:"sponsorInfoApproved"`
 	SponsorInfoDenied    pulumi.StringPtrInput `pulumi:"sponsorInfoDenied"`
 	SponsorInfoPending   pulumi.StringPtrInput `pulumi:"sponsorInfoPending"`
-	// label for Sponsor Name
+	// Label for Sponsor Name
 	SponsorName        pulumi.StringPtrInput `pulumi:"sponsorName"`
 	SponsorNameError   pulumi.StringPtrInput `pulumi:"sponsorNameError"`
 	SponsorNotePending pulumi.StringPtrInput `pulumi:"sponsorNotePending"`
-	// submit button label request Wifi Access and notify sponsor about guest request
+	// Submit button label request Wifi Access and notify sponsor about guest request
 	SponsorRequestAccess pulumi.StringPtrInput `pulumi:"sponsorRequestAccess"`
-	// text to display if sponsor approves request
+	// Text to display if sponsor approves request
 	SponsorStatusApproved pulumi.StringPtrInput `pulumi:"sponsorStatusApproved"`
-	// text to display when sponsor denies request
+	// Text to display when sponsor denies request
 	SponsorStatusDenied pulumi.StringPtrInput `pulumi:"sponsorStatusDenied"`
-	// text to display if request is still pending
+	// Text to display if request is still pending
 	SponsorStatusPending pulumi.StringPtrInput `pulumi:"sponsorStatusPending"`
-	// submit button label to notify sponsor about guest request
+	// Submit button label to notify sponsor about guest request
 	SponsorSubmit      pulumi.StringPtrInput `pulumi:"sponsorSubmit"`
 	SponsorsError      pulumi.StringPtrInput `pulumi:"sponsorsError"`
 	SponsorsFieldLabel pulumi.StringPtrInput `pulumi:"sponsorsFieldLabel"`
 	Tos                pulumi.BoolPtrInput   `pulumi:"tos"`
-	// prefix of the label of the link to go to tos
+	// Prefix of the label of the link to go to tos
 	TosAcceptLabel pulumi.StringPtrInput `pulumi:"tosAcceptLabel"`
-	// error message when tos not accepted
+	// Error message when tos not accepted
 	TosError pulumi.StringPtrInput `pulumi:"tosError"`
-	// label of the link to go to tos
+	// Label of the link to go to tos
 	TosLink pulumi.StringPtrInput `pulumi:"tosLink"`
-	// text of the Terms of Service
+	// Text of the Terms of Service
 	TosText pulumi.StringPtrInput `pulumi:"tosText"`
 }
 
@@ -23947,47 +23884,47 @@ func (o WlanPortalTemplatePortalTemplateOutput) Alignment() pulumi.StringPtrOutp
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Alignment }).(pulumi.StringPtrOutput)
 }
 
-// label for Amazon auth button
+// Label for Amazon auth button
 func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonAmazon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonAmazon }).(pulumi.StringPtrOutput)
 }
 
-// label for Azure auth button
+// Label for Azure auth button
 func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonAzure() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonAzure }).(pulumi.StringPtrOutput)
 }
 
-// label for Email auth button
+// Label for Email auth button
 func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonEmail }).(pulumi.StringPtrOutput)
 }
 
-// label for Facebook auth button
+// Label for Facebook auth button
 func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonFacebook() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonFacebook }).(pulumi.StringPtrOutput)
 }
 
-// label for Google auth button
+// Label for Google auth button
 func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonGoogle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonGoogle }).(pulumi.StringPtrOutput)
 }
 
-// label for Microsoft auth button
+// Label for Microsoft auth button
 func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonMicrosoft() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonMicrosoft }).(pulumi.StringPtrOutput)
 }
 
-// label for passphrase auth button
+// Label for passphrase auth button
 func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonPassphrase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonPassphrase }).(pulumi.StringPtrOutput)
 }
 
-// label for SMS auth button
+// Label for SMS auth button
 func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonSms() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonSms }).(pulumi.StringPtrOutput)
 }
 
-// label for Sponsor auth button
+// Label for Sponsor auth button
 func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonSponsor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonSponsor }).(pulumi.StringPtrOutput)
 }
@@ -23996,7 +23933,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) AuthLabel() pulumi.StringPtrOutp
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthLabel }).(pulumi.StringPtrOutput)
 }
 
-// label of the link to go back to /logon
+// Label of the link to go back to /logon
 func (o WlanPortalTemplatePortalTemplateOutput) BackLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.BackLink }).(pulumi.StringPtrOutput)
 }
@@ -24014,27 +23951,27 @@ func (o WlanPortalTemplatePortalTemplateOutput) ColorLight() pulumi.StringPtrOut
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.ColorLight }).(pulumi.StringPtrOutput)
 }
 
-// whether company field is required
+// Whether company field is required
 func (o WlanPortalTemplatePortalTemplateOutput) Company() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Company }).(pulumi.BoolPtrOutput)
 }
 
-// error message when company not provided
+// Error message when company not provided
 func (o WlanPortalTemplatePortalTemplateOutput) CompanyError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.CompanyError }).(pulumi.StringPtrOutput)
 }
 
-// label of company field
+// Label of company field
 func (o WlanPortalTemplatePortalTemplateOutput) CompanyLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.CompanyLabel }).(pulumi.StringPtrOutput)
 }
 
-// whether email field is required
+// Whether email field is required
 func (o WlanPortalTemplatePortalTemplateOutput) Email() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Email }).(pulumi.BoolPtrOutput)
 }
 
-// error message when a user has valid social login but doesn't match specified email domains.
+// Error message when a user has valid social login but doesn't match specified email domains.
 func (o WlanPortalTemplatePortalTemplateOutput) EmailAccessDomainError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailAccessDomainError }).(pulumi.StringPtrOutput)
 }
@@ -24068,7 +24005,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) EmailCodeTitle() pulumi.StringPt
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailCodeTitle }).(pulumi.StringPtrOutput)
 }
 
-// error message when email not provided
+// Error message when email not provided
 func (o WlanPortalTemplatePortalTemplateOutput) EmailError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailError }).(pulumi.StringPtrOutput)
 }
@@ -24077,7 +24014,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) EmailFieldLabel() pulumi.StringP
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailFieldLabel }).(pulumi.StringPtrOutput)
 }
 
-// label of email field
+// Label of email field
 func (o WlanPortalTemplatePortalTemplateOutput) EmailLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailLabel }).(pulumi.StringPtrOutput)
 }
@@ -24096,82 +24033,82 @@ func (o WlanPortalTemplatePortalTemplateOutput) EmailTitle() pulumi.StringPtrOut
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailTitle }).(pulumi.StringPtrOutput)
 }
 
-// whether to ask field1
+// Whether to ask field1
 func (o WlanPortalTemplatePortalTemplateOutput) Field1() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field1 }).(pulumi.BoolPtrOutput)
 }
 
-// error message when field1 not provided
+// Error message when field1 not provided
 func (o WlanPortalTemplatePortalTemplateOutput) Field1error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field1error }).(pulumi.StringPtrOutput)
 }
 
-// label of field1
+// Label of field1
 func (o WlanPortalTemplatePortalTemplateOutput) Field1label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field1label }).(pulumi.StringPtrOutput)
 }
 
-// whether field1 is required field
+// Whether field1 is required field
 func (o WlanPortalTemplatePortalTemplateOutput) Field1required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field1required }).(pulumi.BoolPtrOutput)
 }
 
-// whether to ask field2
+// Whether to ask field2
 func (o WlanPortalTemplatePortalTemplateOutput) Field2() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field2 }).(pulumi.BoolPtrOutput)
 }
 
-// error message when field2 not provided
+// Error message when field2 not provided
 func (o WlanPortalTemplatePortalTemplateOutput) Field2error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field2error }).(pulumi.StringPtrOutput)
 }
 
-// label of field2
+// Label of field2
 func (o WlanPortalTemplatePortalTemplateOutput) Field2label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field2label }).(pulumi.StringPtrOutput)
 }
 
-// whether field2 is required field
+// Whether field2 is required field
 func (o WlanPortalTemplatePortalTemplateOutput) Field2required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field2required }).(pulumi.BoolPtrOutput)
 }
 
-// whether to ask field3
+// Whether to ask field3
 func (o WlanPortalTemplatePortalTemplateOutput) Field3() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field3 }).(pulumi.BoolPtrOutput)
 }
 
-// error message when field3 not provided
+// Error message when field3 not provided
 func (o WlanPortalTemplatePortalTemplateOutput) Field3error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field3error }).(pulumi.StringPtrOutput)
 }
 
-// label of field3
+// Label of field3
 func (o WlanPortalTemplatePortalTemplateOutput) Field3label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field3label }).(pulumi.StringPtrOutput)
 }
 
-// whether field3 is required field
+// Whether field3 is required field
 func (o WlanPortalTemplatePortalTemplateOutput) Field3required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field3required }).(pulumi.BoolPtrOutput)
 }
 
-// whether to ask field4
+// Whether to ask field4
 func (o WlanPortalTemplatePortalTemplateOutput) Field4() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field4 }).(pulumi.BoolPtrOutput)
 }
 
-// error message when field4 not provided
+// Error message when field4 not provided
 func (o WlanPortalTemplatePortalTemplateOutput) Field4error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field4error }).(pulumi.StringPtrOutput)
 }
 
-// label of field4
+// Label of field4
 func (o WlanPortalTemplatePortalTemplateOutput) Field4label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field4label }).(pulumi.StringPtrOutput)
 }
 
-// whether field4 is required field
+// Whether field4 is required field
 func (o WlanPortalTemplatePortalTemplateOutput) Field4required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field4required }).(pulumi.BoolPtrOutput)
 }
@@ -24201,17 +24138,17 @@ func (o WlanPortalTemplatePortalTemplateOutput) MultiAuth() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.MultiAuth }).(pulumi.BoolPtrOutput)
 }
 
-// whether name field is required
+// Whether name field is required
 func (o WlanPortalTemplatePortalTemplateOutput) Name() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Name }).(pulumi.BoolPtrOutput)
 }
 
-// error message when name not provided
+// Error message when name not provided
 func (o WlanPortalTemplatePortalTemplateOutput) NameError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.NameError }).(pulumi.StringPtrOutput)
 }
 
-// label of name field
+// Label of name field
 func (o WlanPortalTemplatePortalTemplateOutput) NameLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.NameLabel }).(pulumi.StringPtrOutput)
 }
@@ -24221,12 +24158,12 @@ func (o WlanPortalTemplatePortalTemplateOutput) OptOutDefault() pulumi.BoolPtrOu
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.OptOutDefault }).(pulumi.BoolPtrOutput)
 }
 
-// whether to display Do Not Store My Personal Information
+// Whether to display Do Not Store My Personal Information
 func (o WlanPortalTemplatePortalTemplateOutput) Optout() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Optout }).(pulumi.BoolPtrOutput)
 }
 
-// label for Do Not Store My Personal Information
+// Label for Do Not Store My Personal Information
 func (o WlanPortalTemplatePortalTemplateOutput) OptoutLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.OptoutLabel }).(pulumi.StringPtrOutput)
 }
@@ -24240,7 +24177,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) PassphraseCancel() pulumi.String
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PassphraseCancel }).(pulumi.StringPtrOutput)
 }
 
-// error message when invalid passphrase is provided
+// Error message when invalid passphrase is provided
 func (o WlanPortalTemplatePortalTemplateOutput) PassphraseError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PassphraseError }).(pulumi.StringPtrOutput)
 }
@@ -24264,37 +24201,37 @@ func (o WlanPortalTemplatePortalTemplateOutput) PassphraseTitle() pulumi.StringP
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PassphraseTitle }).(pulumi.StringPtrOutput)
 }
 
-// whether to show \"Powered by Mist\"
+// Whether to show \"Powered by Mist\"
 func (o WlanPortalTemplatePortalTemplateOutput) PoweredBy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.PoweredBy }).(pulumi.BoolPtrOutput)
 }
 
-// wheter to require the Privacy Term acceptance
+// Whether to require the Privacy Term acceptance
 func (o WlanPortalTemplatePortalTemplateOutput) Privacy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Privacy }).(pulumi.BoolPtrOutput)
 }
 
-// prefix of the label of the link to go to Privacy Policy
+// Prefix of the label of the link to go to Privacy Policy
 func (o WlanPortalTemplatePortalTemplateOutput) PrivacyPolicyAcceptLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PrivacyPolicyAcceptLabel }).(pulumi.StringPtrOutput)
 }
 
-// error message when Privacy Policy not accepted
+// Error message when Privacy Policy not accepted
 func (o WlanPortalTemplatePortalTemplateOutput) PrivacyPolicyError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PrivacyPolicyError }).(pulumi.StringPtrOutput)
 }
 
-// label of the link to go to Privacy Policy
+// Label of the link to go to Privacy Policy
 func (o WlanPortalTemplatePortalTemplateOutput) PrivacyPolicyLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PrivacyPolicyLink }).(pulumi.StringPtrOutput)
 }
 
-// text of the Privacy Policy
+// Text of the Privacy Policy
 func (o WlanPortalTemplatePortalTemplateOutput) PrivacyPolicyText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PrivacyPolicyText }).(pulumi.StringPtrOutput)
 }
 
-// label to denote required field
+// Label to denote required field
 func (o WlanPortalTemplatePortalTemplateOutput) RequiredFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.RequiredFieldLabel }).(pulumi.StringPtrOutput)
 }
@@ -24303,7 +24240,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) ResponsiveLayout() pulumi.BoolPt
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.ResponsiveLayout }).(pulumi.BoolPtrOutput)
 }
 
-// label of the button to /signin
+// Label of the button to /signin
 func (o WlanPortalTemplatePortalTemplateOutput) SignInLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SignInLabel }).(pulumi.StringPtrOutput)
 }
@@ -24316,7 +24253,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) SmsCarrierError() pulumi.StringP
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCarrierError }).(pulumi.StringPtrOutput)
 }
 
-// label for mobile carrier drop-down list
+// Label for mobile carrier drop-down list
 func (o WlanPortalTemplatePortalTemplateOutput) SmsCarrierFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCarrierFieldLabel }).(pulumi.StringPtrOutput)
 }
@@ -24326,7 +24263,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) SmsCodeCancel() pulumi.StringPtr
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCodeCancel }).(pulumi.StringPtrOutput)
 }
 
-// error message when confirmation code is invalid
+// Error message when confirmation code is invalid
 func (o WlanPortalTemplatePortalTemplateOutput) SmsCodeError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCodeError }).(pulumi.StringPtrOutput)
 }
@@ -24365,12 +24302,12 @@ func (o WlanPortalTemplatePortalTemplateOutput) SmsIsTwilio() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.SmsIsTwilio }).(pulumi.BoolPtrOutput)
 }
 
-// format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+// Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
 func (o WlanPortalTemplatePortalTemplateOutput) SmsMessageFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsMessageFormat }).(pulumi.StringPtrOutput)
 }
 
-// label for canceling mobile details for SMS auth
+// Label for canceling mobile details for SMS auth
 func (o WlanPortalTemplatePortalTemplateOutput) SmsNumberCancel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsNumberCancel }).(pulumi.StringPtrOutput)
 }
@@ -24379,7 +24316,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) SmsNumberError() pulumi.StringPt
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsNumberError }).(pulumi.StringPtrOutput)
 }
 
-// label for field to provide mobile number
+// Label for field to provide mobile number
 func (o WlanPortalTemplatePortalTemplateOutput) SmsNumberFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsNumberFieldLabel }).(pulumi.StringPtrOutput)
 }
@@ -24392,7 +24329,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) SmsNumberMessage() pulumi.String
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsNumberMessage }).(pulumi.StringPtrOutput)
 }
 
-// label for submit button for code generation
+// Label for submit button for code generation
 func (o WlanPortalTemplatePortalTemplateOutput) SmsNumberSubmit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsNumberSubmit }).(pulumi.StringPtrOutput)
 }
@@ -24406,7 +24343,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) SmsUsernameFormat() pulumi.Strin
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsUsernameFormat }).(pulumi.StringPtrOutput)
 }
 
-// how long confirmation code should be considered valid (in minutes)
+// How long confirmation code should be considered valid (in minutes)
 func (o WlanPortalTemplatePortalTemplateOutput) SmsValidityDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *int { return v.SmsValidityDuration }).(pulumi.IntPtrOutput)
 }
@@ -24419,7 +24356,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) SponsorCancel() pulumi.StringPtr
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorCancel }).(pulumi.StringPtrOutput)
 }
 
-// label for Sponsor Email
+// Label for Sponsor Email
 func (o WlanPortalTemplatePortalTemplateOutput) SponsorEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorEmail }).(pulumi.StringPtrOutput)
 }
@@ -24428,7 +24365,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) SponsorEmailError() pulumi.Strin
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorEmailError }).(pulumi.StringPtrOutput)
 }
 
-// html template to replace/override default sponsor email template
+// HTML template to replace/override default sponsor email template
 // Sponsor Email Template supports following template variables:
 //   - `approveUrl`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
 //   - `denyUrl`: Renders URL to reject the request
@@ -24454,7 +24391,7 @@ func (o WlanPortalTemplatePortalTemplateOutput) SponsorInfoPending() pulumi.Stri
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorInfoPending }).(pulumi.StringPtrOutput)
 }
 
-// label for Sponsor Name
+// Label for Sponsor Name
 func (o WlanPortalTemplatePortalTemplateOutput) SponsorName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorName }).(pulumi.StringPtrOutput)
 }
@@ -24467,27 +24404,27 @@ func (o WlanPortalTemplatePortalTemplateOutput) SponsorNotePending() pulumi.Stri
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorNotePending }).(pulumi.StringPtrOutput)
 }
 
-// submit button label request Wifi Access and notify sponsor about guest request
+// Submit button label request Wifi Access and notify sponsor about guest request
 func (o WlanPortalTemplatePortalTemplateOutput) SponsorRequestAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorRequestAccess }).(pulumi.StringPtrOutput)
 }
 
-// text to display if sponsor approves request
+// Text to display if sponsor approves request
 func (o WlanPortalTemplatePortalTemplateOutput) SponsorStatusApproved() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorStatusApproved }).(pulumi.StringPtrOutput)
 }
 
-// text to display when sponsor denies request
+// Text to display when sponsor denies request
 func (o WlanPortalTemplatePortalTemplateOutput) SponsorStatusDenied() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorStatusDenied }).(pulumi.StringPtrOutput)
 }
 
-// text to display if request is still pending
+// Text to display if request is still pending
 func (o WlanPortalTemplatePortalTemplateOutput) SponsorStatusPending() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorStatusPending }).(pulumi.StringPtrOutput)
 }
 
-// submit button label to notify sponsor about guest request
+// Submit button label to notify sponsor about guest request
 func (o WlanPortalTemplatePortalTemplateOutput) SponsorSubmit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorSubmit }).(pulumi.StringPtrOutput)
 }
@@ -24504,22 +24441,22 @@ func (o WlanPortalTemplatePortalTemplateOutput) Tos() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Tos }).(pulumi.BoolPtrOutput)
 }
 
-// prefix of the label of the link to go to tos
+// Prefix of the label of the link to go to tos
 func (o WlanPortalTemplatePortalTemplateOutput) TosAcceptLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.TosAcceptLabel }).(pulumi.StringPtrOutput)
 }
 
-// error message when tos not accepted
+// Error message when tos not accepted
 func (o WlanPortalTemplatePortalTemplateOutput) TosError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.TosError }).(pulumi.StringPtrOutput)
 }
 
-// label of the link to go to tos
+// Label of the link to go to tos
 func (o WlanPortalTemplatePortalTemplateOutput) TosLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.TosLink }).(pulumi.StringPtrOutput)
 }
 
-// text of the Terms of Service
+// Text of the Terms of Service
 func (o WlanPortalTemplatePortalTemplateOutput) TosText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.TosText }).(pulumi.StringPtrOutput)
 }
@@ -24567,7 +24504,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Alignment() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// label for Amazon auth button
+// Label for Amazon auth button
 func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonAmazon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24577,7 +24514,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonAmazon() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// label for Azure auth button
+// Label for Azure auth button
 func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonAzure() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24587,7 +24524,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonAzure() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// label for Email auth button
+// Label for Email auth button
 func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24597,7 +24534,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonEmail() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// label for Facebook auth button
+// Label for Facebook auth button
 func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonFacebook() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24607,7 +24544,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonFacebook() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// label for Google auth button
+// Label for Google auth button
 func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonGoogle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24617,7 +24554,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonGoogle() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// label for Microsoft auth button
+// Label for Microsoft auth button
 func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonMicrosoft() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24627,7 +24564,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonMicrosoft() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// label for passphrase auth button
+// Label for passphrase auth button
 func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonPassphrase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24637,7 +24574,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonPassphrase() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// label for SMS auth button
+// Label for SMS auth button
 func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonSms() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24647,7 +24584,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonSms() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// label for Sponsor auth button
+// Label for Sponsor auth button
 func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonSponsor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24666,7 +24603,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthLabel() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// label of the link to go back to /logon
+// Label of the link to go back to /logon
 func (o WlanPortalTemplatePortalTemplatePtrOutput) BackLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24704,7 +24641,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) ColorLight() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// whether company field is required
+// Whether company field is required
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Company() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -24714,7 +24651,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Company() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// error message when company not provided
+// Error message when company not provided
 func (o WlanPortalTemplatePortalTemplatePtrOutput) CompanyError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24724,7 +24661,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) CompanyError() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// label of company field
+// Label of company field
 func (o WlanPortalTemplatePortalTemplatePtrOutput) CompanyLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24734,7 +24671,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) CompanyLabel() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// whether email field is required
+// Whether email field is required
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Email() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -24744,7 +24681,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Email() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// error message when a user has valid social login but doesn't match specified email domains.
+// Error message when a user has valid social login but doesn't match specified email domains.
 func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailAccessDomainError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24818,7 +24755,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCodeTitle() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// error message when email not provided
+// Error message when email not provided
 func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24837,7 +24774,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailFieldLabel() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// label of email field
+// Label of email field
 func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24876,7 +24813,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailTitle() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// whether to ask field1
+// Whether to ask field1
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field1() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -24886,7 +24823,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field1() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// error message when field1 not provided
+// Error message when field1 not provided
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field1error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24896,7 +24833,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field1error() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// label of field1
+// Label of field1
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field1label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24906,7 +24843,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field1label() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// whether field1 is required field
+// Whether field1 is required field
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field1required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -24916,7 +24853,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field1required() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether to ask field2
+// Whether to ask field2
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field2() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -24926,7 +24863,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field2() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// error message when field2 not provided
+// Error message when field2 not provided
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field2error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24936,7 +24873,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field2error() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// label of field2
+// Label of field2
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field2label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24946,7 +24883,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field2label() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// whether field2 is required field
+// Whether field2 is required field
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field2required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -24956,7 +24893,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field2required() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether to ask field3
+// Whether to ask field3
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field3() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -24966,7 +24903,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field3() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// error message when field3 not provided
+// Error message when field3 not provided
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field3error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24976,7 +24913,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field3error() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// label of field3
+// Label of field3
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field3label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -24986,7 +24923,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field3label() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// whether field3 is required field
+// Whether field3 is required field
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field3required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -24996,7 +24933,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field3required() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether to ask field4
+// Whether to ask field4
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field4() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -25006,7 +24943,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field4() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// error message when field4 not provided
+// Error message when field4 not provided
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field4error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25016,7 +24953,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field4error() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// label of field4
+// Label of field4
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field4label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25026,7 +24963,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Field4label() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// whether field4 is required field
+// Whether field4 is required field
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Field4required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -25079,7 +25016,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) MultiAuth() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether name field is required
+// Whether name field is required
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Name() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -25089,7 +25026,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Name() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// error message when name not provided
+// Error message when name not provided
 func (o WlanPortalTemplatePortalTemplatePtrOutput) NameError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25099,7 +25036,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) NameError() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// label of name field
+// Label of name field
 func (o WlanPortalTemplatePortalTemplatePtrOutput) NameLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25119,7 +25056,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) OptOutDefault() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
-// whether to display Do Not Store My Personal Information
+// Whether to display Do Not Store My Personal Information
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Optout() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -25129,7 +25066,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Optout() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// label for Do Not Store My Personal Information
+// Label for Do Not Store My Personal Information
 func (o WlanPortalTemplatePortalTemplatePtrOutput) OptoutLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25158,7 +25095,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) PassphraseCancel() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// error message when invalid passphrase is provided
+// Error message when invalid passphrase is provided
 func (o WlanPortalTemplatePortalTemplatePtrOutput) PassphraseError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25207,7 +25144,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) PassphraseTitle() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// whether to show \"Powered by Mist\"
+// Whether to show \"Powered by Mist\"
 func (o WlanPortalTemplatePortalTemplatePtrOutput) PoweredBy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -25217,7 +25154,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) PoweredBy() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// wheter to require the Privacy Term acceptance
+// Whether to require the Privacy Term acceptance
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Privacy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
 		if v == nil {
@@ -25227,7 +25164,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Privacy() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// prefix of the label of the link to go to Privacy Policy
+// Prefix of the label of the link to go to Privacy Policy
 func (o WlanPortalTemplatePortalTemplatePtrOutput) PrivacyPolicyAcceptLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25237,7 +25174,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) PrivacyPolicyAcceptLabel() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// error message when Privacy Policy not accepted
+// Error message when Privacy Policy not accepted
 func (o WlanPortalTemplatePortalTemplatePtrOutput) PrivacyPolicyError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25247,7 +25184,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) PrivacyPolicyError() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// label of the link to go to Privacy Policy
+// Label of the link to go to Privacy Policy
 func (o WlanPortalTemplatePortalTemplatePtrOutput) PrivacyPolicyLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25257,7 +25194,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) PrivacyPolicyLink() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// text of the Privacy Policy
+// Text of the Privacy Policy
 func (o WlanPortalTemplatePortalTemplatePtrOutput) PrivacyPolicyText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25267,7 +25204,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) PrivacyPolicyText() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// label to denote required field
+// Label to denote required field
 func (o WlanPortalTemplatePortalTemplatePtrOutput) RequiredFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25286,7 +25223,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) ResponsiveLayout() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// label of the button to /signin
+// Label of the button to /signin
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SignInLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25314,7 +25251,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCarrierError() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// label for mobile carrier drop-down list
+// Label for mobile carrier drop-down list
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCarrierFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25334,7 +25271,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCodeCancel() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// error message when confirmation code is invalid
+// Error message when confirmation code is invalid
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCodeError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25418,7 +25355,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsIsTwilio() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+// Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsMessageFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25428,7 +25365,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsMessageFormat() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// label for canceling mobile details for SMS auth
+// Label for canceling mobile details for SMS auth
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberCancel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25447,7 +25384,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberError() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// label for field to provide mobile number
+// Label for field to provide mobile number
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25475,7 +25412,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberMessage() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// label for submit button for code generation
+// Label for submit button for code generation
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberSubmit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25504,7 +25441,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsUsernameFormat() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// how long confirmation code should be considered valid (in minutes)
+// How long confirmation code should be considered valid (in minutes)
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsValidityDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *int {
 		if v == nil {
@@ -25532,7 +25469,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorCancel() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// label for Sponsor Email
+// Label for Sponsor Email
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25551,7 +25488,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorEmailError() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// html template to replace/override default sponsor email template
+// HTML template to replace/override default sponsor email template
 // Sponsor Email Template supports following template variables:
 //   - `approveUrl`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
 //   - `denyUrl`: Renders URL to reject the request
@@ -25597,7 +25534,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorInfoPending() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// label for Sponsor Name
+// Label for Sponsor Name
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25625,7 +25562,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorNotePending() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// submit button label request Wifi Access and notify sponsor about guest request
+// Submit button label request Wifi Access and notify sponsor about guest request
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorRequestAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25635,7 +25572,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorRequestAccess() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// text to display if sponsor approves request
+// Text to display if sponsor approves request
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorStatusApproved() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25645,7 +25582,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorStatusApproved() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// text to display when sponsor denies request
+// Text to display when sponsor denies request
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorStatusDenied() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25655,7 +25592,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorStatusDenied() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// text to display if request is still pending
+// Text to display if request is still pending
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorStatusPending() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25665,7 +25602,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorStatusPending() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// submit button label to notify sponsor about guest request
+// Submit button label to notify sponsor about guest request
 func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorSubmit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25702,7 +25639,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Tos() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// prefix of the label of the link to go to tos
+// Prefix of the label of the link to go to tos
 func (o WlanPortalTemplatePortalTemplatePtrOutput) TosAcceptLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25712,7 +25649,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) TosAcceptLabel() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// error message when tos not accepted
+// Error message when tos not accepted
 func (o WlanPortalTemplatePortalTemplatePtrOutput) TosError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25722,7 +25659,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) TosError() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// label of the link to go to tos
+// Label of the link to go to tos
 func (o WlanPortalTemplatePortalTemplatePtrOutput) TosLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25732,7 +25669,7 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) TosLink() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// text of the Terms of Service
+// Text of the Terms of Service
 func (o WlanPortalTemplatePortalTemplatePtrOutput) TosText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -25743,32 +25680,32 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) TosText() pulumi.StringPtrOut
 }
 
 type WlanPortalTemplatePortalTemplateLocales struct {
-	// label for Amazon auth button
+	// Label for Amazon auth button
 	AuthButtonAmazon *string `pulumi:"authButtonAmazon"`
-	// label for Azure auth button
+	// Label for Azure auth button
 	AuthButtonAzure *string `pulumi:"authButtonAzure"`
-	// label for Email auth button
+	// Label for Email auth button
 	AuthButtonEmail *string `pulumi:"authButtonEmail"`
-	// label for Facebook auth button
+	// Label for Facebook auth button
 	AuthButtonFacebook *string `pulumi:"authButtonFacebook"`
-	// label for Google auth button
+	// Label for Google auth button
 	AuthButtonGoogle *string `pulumi:"authButtonGoogle"`
-	// label for Microsoft auth button
+	// Label for Microsoft auth button
 	AuthButtonMicrosoft *string `pulumi:"authButtonMicrosoft"`
-	// label for passphrase auth button
+	// Label for passphrase auth button
 	AuthButtonPassphrase *string `pulumi:"authButtonPassphrase"`
-	// label for SMS auth button
+	// Label for SMS auth button
 	AuthButtonSms *string `pulumi:"authButtonSms"`
-	// label for Sponsor auth button
+	// Label for Sponsor auth button
 	AuthButtonSponsor *string `pulumi:"authButtonSponsor"`
 	AuthLabel         *string `pulumi:"authLabel"`
-	// label of the link to go back to /logon
+	// Label of the link to go back to /logon
 	BackLink *string `pulumi:"backLink"`
-	// error message when company not provided
+	// Error message when company not provided
 	CompanyError *string `pulumi:"companyError"`
-	// label of company field
+	// Label of company field
 	CompanyLabel *string `pulumi:"companyLabel"`
-	// error message when a user has valid social login but doesn't match specified email domains.
+	// Error message when a user has valid social login but doesn't match specified email domains.
 	EmailAccessDomainError *string `pulumi:"emailAccessDomainError"`
 	// Label for cancel confirmation code submission using email auth
 	EmailCancel         *string `pulumi:"emailCancel"`
@@ -25778,43 +25715,43 @@ type WlanPortalTemplatePortalTemplateLocales struct {
 	EmailCodeMessage    *string `pulumi:"emailCodeMessage"`
 	EmailCodeSubmit     *string `pulumi:"emailCodeSubmit"`
 	EmailCodeTitle      *string `pulumi:"emailCodeTitle"`
-	// error message when email not provided
+	// Error message when email not provided
 	EmailError      *string `pulumi:"emailError"`
 	EmailFieldLabel *string `pulumi:"emailFieldLabel"`
-	// label of email field
+	// Label of email field
 	EmailLabel   *string `pulumi:"emailLabel"`
 	EmailMessage *string `pulumi:"emailMessage"`
 	// Label for confirmation code submit button using email auth
 	EmailSubmit *string `pulumi:"emailSubmit"`
 	// Title for the Email registration
 	EmailTitle *string `pulumi:"emailTitle"`
-	// error message when field1 not provided
+	// Error message when field1 not provided
 	Field1error *string `pulumi:"field1error"`
-	// label of field1
+	// Label of field1
 	Field1label *string `pulumi:"field1label"`
-	// error message when field2 not provided
+	// Error message when field2 not provided
 	Field2error *string `pulumi:"field2error"`
-	// label of field2
+	// Label of field2
 	Field2label *string `pulumi:"field2label"`
-	// error message when field3 not provided
+	// Error message when field3 not provided
 	Field3error *string `pulumi:"field3error"`
-	// label of field3
+	// Label of field3
 	Field3label *string `pulumi:"field3label"`
-	// error message when field4 not provided
+	// Error message when field4 not provided
 	Field4error *string `pulumi:"field4error"`
-	// label of field4
+	// Label of field4
 	Field4label *string `pulumi:"field4label"`
 	Message     *string `pulumi:"message"`
-	// error message when name not provided
+	// Error message when name not provided
 	NameError *string `pulumi:"nameError"`
-	// label of name field
+	// Label of name field
 	NameLabel *string `pulumi:"nameLabel"`
-	// label for Do Not Store My Personal Information
+	// Label for Do Not Store My Personal Information
 	OptoutLabel *string `pulumi:"optoutLabel"`
 	PageTitle   *string `pulumi:"pageTitle"`
 	// Label for the Passphrase cancel button
 	PassphraseCancel *string `pulumi:"passphraseCancel"`
-	// error message when invalid passphrase is provided
+	// Error message when invalid passphrase is provided
 	PassphraseError *string `pulumi:"passphraseError"`
 	// Passphrase
 	PassphraseLabel   *string `pulumi:"passphraseLabel"`
@@ -25823,25 +25760,25 @@ type WlanPortalTemplatePortalTemplateLocales struct {
 	PassphraseSubmit *string `pulumi:"passphraseSubmit"`
 	// Title for passphrase details page
 	PassphraseTitle *string `pulumi:"passphraseTitle"`
-	// prefix of the label of the link to go to Privacy Policy
+	// Prefix of the label of the link to go to Privacy Policy
 	PrivacyPolicyAcceptLabel *string `pulumi:"privacyPolicyAcceptLabel"`
-	// error message when Privacy Policy not accepted
+	// Error message when Privacy Policy not accepted
 	PrivacyPolicyError *string `pulumi:"privacyPolicyError"`
-	// label of the link to go to Privacy Policy
+	// Label of the link to go to Privacy Policy
 	PrivacyPolicyLink *string `pulumi:"privacyPolicyLink"`
-	// text of the Privacy Policy
+	// Text of the Privacy Policy
 	PrivacyPolicyText *string `pulumi:"privacyPolicyText"`
-	// label to denote required field
+	// Label to denote required field
 	RequiredFieldLabel *string `pulumi:"requiredFieldLabel"`
-	// label of the button to /signin
+	// Label of the button to /signin
 	SignInLabel       *string `pulumi:"signInLabel"`
 	SmsCarrierDefault *string `pulumi:"smsCarrierDefault"`
 	SmsCarrierError   *string `pulumi:"smsCarrierError"`
-	// label for mobile carrier drop-down list
+	// Label for mobile carrier drop-down list
 	SmsCarrierFieldLabel *string `pulumi:"smsCarrierFieldLabel"`
 	// Label for cancel confirmation code submission
 	SmsCodeCancel *string `pulumi:"smsCodeCancel"`
-	// error message when confirmation code is invalid
+	// Error message when confirmation code is invalid
 	SmsCodeError      *string `pulumi:"smsCodeError"`
 	SmsCodeFieldLabel *string `pulumi:"smsCodeFieldLabel"`
 	SmsCodeMessage    *string `pulumi:"smsCodeMessage"`
@@ -25852,51 +25789,51 @@ type WlanPortalTemplatePortalTemplateLocales struct {
 	SmsCountryFormat     *string `pulumi:"smsCountryFormat"`
 	// Label for checkbox to specify that the user has access code
 	SmsHaveAccessCode *string `pulumi:"smsHaveAccessCode"`
-	// format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+	// Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
 	SmsMessageFormat *string `pulumi:"smsMessageFormat"`
-	// label for canceling mobile details for SMS auth
+	// Label for canceling mobile details for SMS auth
 	SmsNumberCancel *string `pulumi:"smsNumberCancel"`
 	SmsNumberError  *string `pulumi:"smsNumberError"`
-	// label for field to provide mobile number
+	// Label for field to provide mobile number
 	SmsNumberFieldLabel *string `pulumi:"smsNumberFieldLabel"`
 	SmsNumberFormat     *string `pulumi:"smsNumberFormat"`
 	SmsNumberMessage    *string `pulumi:"smsNumberMessage"`
-	// label for submit button for code generation
+	// Label for submit button for code generation
 	SmsNumberSubmit *string `pulumi:"smsNumberSubmit"`
 	// Title for phone number details
 	SmsNumberTitle    *string `pulumi:"smsNumberTitle"`
 	SmsUsernameFormat *string `pulumi:"smsUsernameFormat"`
 	SponsorBackLink   *string `pulumi:"sponsorBackLink"`
 	SponsorCancel     *string `pulumi:"sponsorCancel"`
-	// label for Sponsor Email
+	// Label for Sponsor Email
 	SponsorEmail        *string `pulumi:"sponsorEmail"`
 	SponsorEmailError   *string `pulumi:"sponsorEmailError"`
 	SponsorInfoApproved *string `pulumi:"sponsorInfoApproved"`
 	SponsorInfoDenied   *string `pulumi:"sponsorInfoDenied"`
 	SponsorInfoPending  *string `pulumi:"sponsorInfoPending"`
-	// label for Sponsor Name
+	// Label for Sponsor Name
 	SponsorName        *string `pulumi:"sponsorName"`
 	SponsorNameError   *string `pulumi:"sponsorNameError"`
 	SponsorNotePending *string `pulumi:"sponsorNotePending"`
-	// submit button label request Wifi Access and notify sponsor about guest request
+	// Submit button label request Wifi Access and notify sponsor about guest request
 	SponsorRequestAccess *string `pulumi:"sponsorRequestAccess"`
-	// text to display if sponsor approves request
+	// Text to display if sponsor approves request
 	SponsorStatusApproved *string `pulumi:"sponsorStatusApproved"`
-	// text to display when sponsor denies request
+	// Text to display when sponsor denies request
 	SponsorStatusDenied *string `pulumi:"sponsorStatusDenied"`
-	// text to display if request is still pending
+	// Text to display if request is still pending
 	SponsorStatusPending *string `pulumi:"sponsorStatusPending"`
-	// submit button label to notify sponsor about guest request
+	// Submit button label to notify sponsor about guest request
 	SponsorSubmit      *string `pulumi:"sponsorSubmit"`
 	SponsorsError      *string `pulumi:"sponsorsError"`
 	SponsorsFieldLabel *string `pulumi:"sponsorsFieldLabel"`
-	// prefix of the label of the link to go to tos
+	// Prefix of the label of the link to go to tos
 	TosAcceptLabel *string `pulumi:"tosAcceptLabel"`
-	// error message when tos not accepted
+	// Error message when tos not accepted
 	TosError *string `pulumi:"tosError"`
-	// label of the link to go to tos
+	// Label of the link to go to tos
 	TosLink *string `pulumi:"tosLink"`
-	// text of the Terms of Service
+	// Text of the Terms of Service
 	TosText *string `pulumi:"tosText"`
 }
 
@@ -25912,32 +25849,32 @@ type WlanPortalTemplatePortalTemplateLocalesInput interface {
 }
 
 type WlanPortalTemplatePortalTemplateLocalesArgs struct {
-	// label for Amazon auth button
+	// Label for Amazon auth button
 	AuthButtonAmazon pulumi.StringPtrInput `pulumi:"authButtonAmazon"`
-	// label for Azure auth button
+	// Label for Azure auth button
 	AuthButtonAzure pulumi.StringPtrInput `pulumi:"authButtonAzure"`
-	// label for Email auth button
+	// Label for Email auth button
 	AuthButtonEmail pulumi.StringPtrInput `pulumi:"authButtonEmail"`
-	// label for Facebook auth button
+	// Label for Facebook auth button
 	AuthButtonFacebook pulumi.StringPtrInput `pulumi:"authButtonFacebook"`
-	// label for Google auth button
+	// Label for Google auth button
 	AuthButtonGoogle pulumi.StringPtrInput `pulumi:"authButtonGoogle"`
-	// label for Microsoft auth button
+	// Label for Microsoft auth button
 	AuthButtonMicrosoft pulumi.StringPtrInput `pulumi:"authButtonMicrosoft"`
-	// label for passphrase auth button
+	// Label for passphrase auth button
 	AuthButtonPassphrase pulumi.StringPtrInput `pulumi:"authButtonPassphrase"`
-	// label for SMS auth button
+	// Label for SMS auth button
 	AuthButtonSms pulumi.StringPtrInput `pulumi:"authButtonSms"`
-	// label for Sponsor auth button
+	// Label for Sponsor auth button
 	AuthButtonSponsor pulumi.StringPtrInput `pulumi:"authButtonSponsor"`
 	AuthLabel         pulumi.StringPtrInput `pulumi:"authLabel"`
-	// label of the link to go back to /logon
+	// Label of the link to go back to /logon
 	BackLink pulumi.StringPtrInput `pulumi:"backLink"`
-	// error message when company not provided
+	// Error message when company not provided
 	CompanyError pulumi.StringPtrInput `pulumi:"companyError"`
-	// label of company field
+	// Label of company field
 	CompanyLabel pulumi.StringPtrInput `pulumi:"companyLabel"`
-	// error message when a user has valid social login but doesn't match specified email domains.
+	// Error message when a user has valid social login but doesn't match specified email domains.
 	EmailAccessDomainError pulumi.StringPtrInput `pulumi:"emailAccessDomainError"`
 	// Label for cancel confirmation code submission using email auth
 	EmailCancel         pulumi.StringPtrInput `pulumi:"emailCancel"`
@@ -25947,43 +25884,43 @@ type WlanPortalTemplatePortalTemplateLocalesArgs struct {
 	EmailCodeMessage    pulumi.StringPtrInput `pulumi:"emailCodeMessage"`
 	EmailCodeSubmit     pulumi.StringPtrInput `pulumi:"emailCodeSubmit"`
 	EmailCodeTitle      pulumi.StringPtrInput `pulumi:"emailCodeTitle"`
-	// error message when email not provided
+	// Error message when email not provided
 	EmailError      pulumi.StringPtrInput `pulumi:"emailError"`
 	EmailFieldLabel pulumi.StringPtrInput `pulumi:"emailFieldLabel"`
-	// label of email field
+	// Label of email field
 	EmailLabel   pulumi.StringPtrInput `pulumi:"emailLabel"`
 	EmailMessage pulumi.StringPtrInput `pulumi:"emailMessage"`
 	// Label for confirmation code submit button using email auth
 	EmailSubmit pulumi.StringPtrInput `pulumi:"emailSubmit"`
 	// Title for the Email registration
 	EmailTitle pulumi.StringPtrInput `pulumi:"emailTitle"`
-	// error message when field1 not provided
+	// Error message when field1 not provided
 	Field1error pulumi.StringPtrInput `pulumi:"field1error"`
-	// label of field1
+	// Label of field1
 	Field1label pulumi.StringPtrInput `pulumi:"field1label"`
-	// error message when field2 not provided
+	// Error message when field2 not provided
 	Field2error pulumi.StringPtrInput `pulumi:"field2error"`
-	// label of field2
+	// Label of field2
 	Field2label pulumi.StringPtrInput `pulumi:"field2label"`
-	// error message when field3 not provided
+	// Error message when field3 not provided
 	Field3error pulumi.StringPtrInput `pulumi:"field3error"`
-	// label of field3
+	// Label of field3
 	Field3label pulumi.StringPtrInput `pulumi:"field3label"`
-	// error message when field4 not provided
+	// Error message when field4 not provided
 	Field4error pulumi.StringPtrInput `pulumi:"field4error"`
-	// label of field4
+	// Label of field4
 	Field4label pulumi.StringPtrInput `pulumi:"field4label"`
 	Message     pulumi.StringPtrInput `pulumi:"message"`
-	// error message when name not provided
+	// Error message when name not provided
 	NameError pulumi.StringPtrInput `pulumi:"nameError"`
-	// label of name field
+	// Label of name field
 	NameLabel pulumi.StringPtrInput `pulumi:"nameLabel"`
-	// label for Do Not Store My Personal Information
+	// Label for Do Not Store My Personal Information
 	OptoutLabel pulumi.StringPtrInput `pulumi:"optoutLabel"`
 	PageTitle   pulumi.StringPtrInput `pulumi:"pageTitle"`
 	// Label for the Passphrase cancel button
 	PassphraseCancel pulumi.StringPtrInput `pulumi:"passphraseCancel"`
-	// error message when invalid passphrase is provided
+	// Error message when invalid passphrase is provided
 	PassphraseError pulumi.StringPtrInput `pulumi:"passphraseError"`
 	// Passphrase
 	PassphraseLabel   pulumi.StringPtrInput `pulumi:"passphraseLabel"`
@@ -25992,25 +25929,25 @@ type WlanPortalTemplatePortalTemplateLocalesArgs struct {
 	PassphraseSubmit pulumi.StringPtrInput `pulumi:"passphraseSubmit"`
 	// Title for passphrase details page
 	PassphraseTitle pulumi.StringPtrInput `pulumi:"passphraseTitle"`
-	// prefix of the label of the link to go to Privacy Policy
+	// Prefix of the label of the link to go to Privacy Policy
 	PrivacyPolicyAcceptLabel pulumi.StringPtrInput `pulumi:"privacyPolicyAcceptLabel"`
-	// error message when Privacy Policy not accepted
+	// Error message when Privacy Policy not accepted
 	PrivacyPolicyError pulumi.StringPtrInput `pulumi:"privacyPolicyError"`
-	// label of the link to go to Privacy Policy
+	// Label of the link to go to Privacy Policy
 	PrivacyPolicyLink pulumi.StringPtrInput `pulumi:"privacyPolicyLink"`
-	// text of the Privacy Policy
+	// Text of the Privacy Policy
 	PrivacyPolicyText pulumi.StringPtrInput `pulumi:"privacyPolicyText"`
-	// label to denote required field
+	// Label to denote required field
 	RequiredFieldLabel pulumi.StringPtrInput `pulumi:"requiredFieldLabel"`
-	// label of the button to /signin
+	// Label of the button to /signin
 	SignInLabel       pulumi.StringPtrInput `pulumi:"signInLabel"`
 	SmsCarrierDefault pulumi.StringPtrInput `pulumi:"smsCarrierDefault"`
 	SmsCarrierError   pulumi.StringPtrInput `pulumi:"smsCarrierError"`
-	// label for mobile carrier drop-down list
+	// Label for mobile carrier drop-down list
 	SmsCarrierFieldLabel pulumi.StringPtrInput `pulumi:"smsCarrierFieldLabel"`
 	// Label for cancel confirmation code submission
 	SmsCodeCancel pulumi.StringPtrInput `pulumi:"smsCodeCancel"`
-	// error message when confirmation code is invalid
+	// Error message when confirmation code is invalid
 	SmsCodeError      pulumi.StringPtrInput `pulumi:"smsCodeError"`
 	SmsCodeFieldLabel pulumi.StringPtrInput `pulumi:"smsCodeFieldLabel"`
 	SmsCodeMessage    pulumi.StringPtrInput `pulumi:"smsCodeMessage"`
@@ -26021,51 +25958,51 @@ type WlanPortalTemplatePortalTemplateLocalesArgs struct {
 	SmsCountryFormat     pulumi.StringPtrInput `pulumi:"smsCountryFormat"`
 	// Label for checkbox to specify that the user has access code
 	SmsHaveAccessCode pulumi.StringPtrInput `pulumi:"smsHaveAccessCode"`
-	// format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+	// Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
 	SmsMessageFormat pulumi.StringPtrInput `pulumi:"smsMessageFormat"`
-	// label for canceling mobile details for SMS auth
+	// Label for canceling mobile details for SMS auth
 	SmsNumberCancel pulumi.StringPtrInput `pulumi:"smsNumberCancel"`
 	SmsNumberError  pulumi.StringPtrInput `pulumi:"smsNumberError"`
-	// label for field to provide mobile number
+	// Label for field to provide mobile number
 	SmsNumberFieldLabel pulumi.StringPtrInput `pulumi:"smsNumberFieldLabel"`
 	SmsNumberFormat     pulumi.StringPtrInput `pulumi:"smsNumberFormat"`
 	SmsNumberMessage    pulumi.StringPtrInput `pulumi:"smsNumberMessage"`
-	// label for submit button for code generation
+	// Label for submit button for code generation
 	SmsNumberSubmit pulumi.StringPtrInput `pulumi:"smsNumberSubmit"`
 	// Title for phone number details
 	SmsNumberTitle    pulumi.StringPtrInput `pulumi:"smsNumberTitle"`
 	SmsUsernameFormat pulumi.StringPtrInput `pulumi:"smsUsernameFormat"`
 	SponsorBackLink   pulumi.StringPtrInput `pulumi:"sponsorBackLink"`
 	SponsorCancel     pulumi.StringPtrInput `pulumi:"sponsorCancel"`
-	// label for Sponsor Email
+	// Label for Sponsor Email
 	SponsorEmail        pulumi.StringPtrInput `pulumi:"sponsorEmail"`
 	SponsorEmailError   pulumi.StringPtrInput `pulumi:"sponsorEmailError"`
 	SponsorInfoApproved pulumi.StringPtrInput `pulumi:"sponsorInfoApproved"`
 	SponsorInfoDenied   pulumi.StringPtrInput `pulumi:"sponsorInfoDenied"`
 	SponsorInfoPending  pulumi.StringPtrInput `pulumi:"sponsorInfoPending"`
-	// label for Sponsor Name
+	// Label for Sponsor Name
 	SponsorName        pulumi.StringPtrInput `pulumi:"sponsorName"`
 	SponsorNameError   pulumi.StringPtrInput `pulumi:"sponsorNameError"`
 	SponsorNotePending pulumi.StringPtrInput `pulumi:"sponsorNotePending"`
-	// submit button label request Wifi Access and notify sponsor about guest request
+	// Submit button label request Wifi Access and notify sponsor about guest request
 	SponsorRequestAccess pulumi.StringPtrInput `pulumi:"sponsorRequestAccess"`
-	// text to display if sponsor approves request
+	// Text to display if sponsor approves request
 	SponsorStatusApproved pulumi.StringPtrInput `pulumi:"sponsorStatusApproved"`
-	// text to display when sponsor denies request
+	// Text to display when sponsor denies request
 	SponsorStatusDenied pulumi.StringPtrInput `pulumi:"sponsorStatusDenied"`
-	// text to display if request is still pending
+	// Text to display if request is still pending
 	SponsorStatusPending pulumi.StringPtrInput `pulumi:"sponsorStatusPending"`
-	// submit button label to notify sponsor about guest request
+	// Submit button label to notify sponsor about guest request
 	SponsorSubmit      pulumi.StringPtrInput `pulumi:"sponsorSubmit"`
 	SponsorsError      pulumi.StringPtrInput `pulumi:"sponsorsError"`
 	SponsorsFieldLabel pulumi.StringPtrInput `pulumi:"sponsorsFieldLabel"`
-	// prefix of the label of the link to go to tos
+	// Prefix of the label of the link to go to tos
 	TosAcceptLabel pulumi.StringPtrInput `pulumi:"tosAcceptLabel"`
-	// error message when tos not accepted
+	// Error message when tos not accepted
 	TosError pulumi.StringPtrInput `pulumi:"tosError"`
-	// label of the link to go to tos
+	// Label of the link to go to tos
 	TosLink pulumi.StringPtrInput `pulumi:"tosLink"`
-	// text of the Terms of Service
+	// Text of the Terms of Service
 	TosText pulumi.StringPtrInput `pulumi:"tosText"`
 }
 
@@ -26120,47 +26057,47 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) ToWlanPortalTemplatePorta
 	return o
 }
 
-// label for Amazon auth button
+// Label for Amazon auth button
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonAmazon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonAmazon }).(pulumi.StringPtrOutput)
 }
 
-// label for Azure auth button
+// Label for Azure auth button
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonAzure() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonAzure }).(pulumi.StringPtrOutput)
 }
 
-// label for Email auth button
+// Label for Email auth button
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonEmail }).(pulumi.StringPtrOutput)
 }
 
-// label for Facebook auth button
+// Label for Facebook auth button
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonFacebook() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonFacebook }).(pulumi.StringPtrOutput)
 }
 
-// label for Google auth button
+// Label for Google auth button
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonGoogle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonGoogle }).(pulumi.StringPtrOutput)
 }
 
-// label for Microsoft auth button
+// Label for Microsoft auth button
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonMicrosoft() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonMicrosoft }).(pulumi.StringPtrOutput)
 }
 
-// label for passphrase auth button
+// Label for passphrase auth button
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonPassphrase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonPassphrase }).(pulumi.StringPtrOutput)
 }
 
-// label for SMS auth button
+// Label for SMS auth button
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonSms() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonSms }).(pulumi.StringPtrOutput)
 }
 
-// label for Sponsor auth button
+// Label for Sponsor auth button
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonSponsor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonSponsor }).(pulumi.StringPtrOutput)
 }
@@ -26169,22 +26106,22 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthLabel() pulumi.String
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthLabel }).(pulumi.StringPtrOutput)
 }
 
-// label of the link to go back to /logon
+// Label of the link to go back to /logon
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) BackLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.BackLink }).(pulumi.StringPtrOutput)
 }
 
-// error message when company not provided
+// Error message when company not provided
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) CompanyError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.CompanyError }).(pulumi.StringPtrOutput)
 }
 
-// label of company field
+// Label of company field
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) CompanyLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.CompanyLabel }).(pulumi.StringPtrOutput)
 }
 
-// error message when a user has valid social login but doesn't match specified email domains.
+// Error message when a user has valid social login but doesn't match specified email domains.
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailAccessDomainError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailAccessDomainError }).(pulumi.StringPtrOutput)
 }
@@ -26218,7 +26155,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailCodeTitle() pulumi.S
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailCodeTitle }).(pulumi.StringPtrOutput)
 }
 
-// error message when email not provided
+// Error message when email not provided
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailError }).(pulumi.StringPtrOutput)
 }
@@ -26227,7 +26164,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailFieldLabel() pulumi.
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailFieldLabel }).(pulumi.StringPtrOutput)
 }
 
-// label of email field
+// Label of email field
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailLabel }).(pulumi.StringPtrOutput)
 }
@@ -26246,42 +26183,42 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailTitle() pulumi.Strin
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailTitle }).(pulumi.StringPtrOutput)
 }
 
-// error message when field1 not provided
+// Error message when field1 not provided
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field1error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field1error }).(pulumi.StringPtrOutput)
 }
 
-// label of field1
+// Label of field1
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field1label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field1label }).(pulumi.StringPtrOutput)
 }
 
-// error message when field2 not provided
+// Error message when field2 not provided
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field2error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field2error }).(pulumi.StringPtrOutput)
 }
 
-// label of field2
+// Label of field2
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field2label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field2label }).(pulumi.StringPtrOutput)
 }
 
-// error message when field3 not provided
+// Error message when field3 not provided
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field3error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field3error }).(pulumi.StringPtrOutput)
 }
 
-// label of field3
+// Label of field3
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field3label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field3label }).(pulumi.StringPtrOutput)
 }
 
-// error message when field4 not provided
+// Error message when field4 not provided
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field4error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field4error }).(pulumi.StringPtrOutput)
 }
 
-// label of field4
+// Label of field4
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field4label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field4label }).(pulumi.StringPtrOutput)
 }
@@ -26290,17 +26227,17 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) Message() pulumi.StringPt
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
-// error message when name not provided
+// Error message when name not provided
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) NameError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.NameError }).(pulumi.StringPtrOutput)
 }
 
-// label of name field
+// Label of name field
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) NameLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.NameLabel }).(pulumi.StringPtrOutput)
 }
 
-// label for Do Not Store My Personal Information
+// Label for Do Not Store My Personal Information
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) OptoutLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.OptoutLabel }).(pulumi.StringPtrOutput)
 }
@@ -26314,7 +26251,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) PassphraseCancel() pulumi
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PassphraseCancel }).(pulumi.StringPtrOutput)
 }
 
-// error message when invalid passphrase is provided
+// Error message when invalid passphrase is provided
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) PassphraseError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PassphraseError }).(pulumi.StringPtrOutput)
 }
@@ -26338,32 +26275,32 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) PassphraseTitle() pulumi.
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PassphraseTitle }).(pulumi.StringPtrOutput)
 }
 
-// prefix of the label of the link to go to Privacy Policy
+// Prefix of the label of the link to go to Privacy Policy
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) PrivacyPolicyAcceptLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PrivacyPolicyAcceptLabel }).(pulumi.StringPtrOutput)
 }
 
-// error message when Privacy Policy not accepted
+// Error message when Privacy Policy not accepted
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) PrivacyPolicyError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PrivacyPolicyError }).(pulumi.StringPtrOutput)
 }
 
-// label of the link to go to Privacy Policy
+// Label of the link to go to Privacy Policy
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) PrivacyPolicyLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PrivacyPolicyLink }).(pulumi.StringPtrOutput)
 }
 
-// text of the Privacy Policy
+// Text of the Privacy Policy
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) PrivacyPolicyText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PrivacyPolicyText }).(pulumi.StringPtrOutput)
 }
 
-// label to denote required field
+// Label to denote required field
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) RequiredFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.RequiredFieldLabel }).(pulumi.StringPtrOutput)
 }
 
-// label of the button to /signin
+// Label of the button to /signin
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SignInLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SignInLabel }).(pulumi.StringPtrOutput)
 }
@@ -26376,7 +26313,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCarrierError() pulumi.
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCarrierError }).(pulumi.StringPtrOutput)
 }
 
-// label for mobile carrier drop-down list
+// Label for mobile carrier drop-down list
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCarrierFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCarrierFieldLabel }).(pulumi.StringPtrOutput)
 }
@@ -26386,7 +26323,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCodeCancel() pulumi.St
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCodeCancel }).(pulumi.StringPtrOutput)
 }
 
-// error message when confirmation code is invalid
+// Error message when confirmation code is invalid
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCodeError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCodeError }).(pulumi.StringPtrOutput)
 }
@@ -26421,12 +26358,12 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsHaveAccessCode() pulum
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsHaveAccessCode }).(pulumi.StringPtrOutput)
 }
 
-// format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+// Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsMessageFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsMessageFormat }).(pulumi.StringPtrOutput)
 }
 
-// label for canceling mobile details for SMS auth
+// Label for canceling mobile details for SMS auth
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsNumberCancel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsNumberCancel }).(pulumi.StringPtrOutput)
 }
@@ -26435,7 +26372,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsNumberError() pulumi.S
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsNumberError }).(pulumi.StringPtrOutput)
 }
 
-// label for field to provide mobile number
+// Label for field to provide mobile number
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsNumberFieldLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsNumberFieldLabel }).(pulumi.StringPtrOutput)
 }
@@ -26448,7 +26385,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsNumberMessage() pulumi
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsNumberMessage }).(pulumi.StringPtrOutput)
 }
 
-// label for submit button for code generation
+// Label for submit button for code generation
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsNumberSubmit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsNumberSubmit }).(pulumi.StringPtrOutput)
 }
@@ -26470,7 +26407,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorCancel() pulumi.St
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorCancel }).(pulumi.StringPtrOutput)
 }
 
-// label for Sponsor Email
+// Label for Sponsor Email
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorEmail }).(pulumi.StringPtrOutput)
 }
@@ -26491,7 +26428,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorInfoPending() pulu
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorInfoPending }).(pulumi.StringPtrOutput)
 }
 
-// label for Sponsor Name
+// Label for Sponsor Name
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorName }).(pulumi.StringPtrOutput)
 }
@@ -26504,27 +26441,27 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorNotePending() pulu
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorNotePending }).(pulumi.StringPtrOutput)
 }
 
-// submit button label request Wifi Access and notify sponsor about guest request
+// Submit button label request Wifi Access and notify sponsor about guest request
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorRequestAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorRequestAccess }).(pulumi.StringPtrOutput)
 }
 
-// text to display if sponsor approves request
+// Text to display if sponsor approves request
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorStatusApproved() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorStatusApproved }).(pulumi.StringPtrOutput)
 }
 
-// text to display when sponsor denies request
+// Text to display when sponsor denies request
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorStatusDenied() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorStatusDenied }).(pulumi.StringPtrOutput)
 }
 
-// text to display if request is still pending
+// Text to display if request is still pending
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorStatusPending() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorStatusPending }).(pulumi.StringPtrOutput)
 }
 
-// submit button label to notify sponsor about guest request
+// Submit button label to notify sponsor about guest request
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorSubmit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorSubmit }).(pulumi.StringPtrOutput)
 }
@@ -26537,22 +26474,22 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorsFieldLabel() pulu
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorsFieldLabel }).(pulumi.StringPtrOutput)
 }
 
-// prefix of the label of the link to go to tos
+// Prefix of the label of the link to go to tos
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) TosAcceptLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.TosAcceptLabel }).(pulumi.StringPtrOutput)
 }
 
-// error message when tos not accepted
+// Error message when tos not accepted
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) TosError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.TosError }).(pulumi.StringPtrOutput)
 }
 
-// label of the link to go to tos
+// Label of the link to go to tos
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) TosLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.TosLink }).(pulumi.StringPtrOutput)
 }
 
-// text of the Terms of Service
+// Text of the Terms of Service
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) TosText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.TosText }).(pulumi.StringPtrOutput)
 }
@@ -26580,7 +26517,7 @@ func (o WlanPortalTemplatePortalTemplateLocalesMapOutput) MapIndex(k pulumi.Stri
 type WlanQos struct {
 	// enum: `background`, `bestEffort`, `video`, `voice`
 	Class *string `pulumi:"class"`
-	// whether to overwrite QoS
+	// Whether to overwrite QoS
 	Overwrite *bool `pulumi:"overwrite"`
 }
 
@@ -26598,7 +26535,7 @@ type WlanQosInput interface {
 type WlanQosArgs struct {
 	// enum: `background`, `bestEffort`, `video`, `voice`
 	Class pulumi.StringPtrInput `pulumi:"class"`
-	// whether to overwrite QoS
+	// Whether to overwrite QoS
 	Overwrite pulumi.BoolPtrInput `pulumi:"overwrite"`
 }
 
@@ -26684,7 +26621,7 @@ func (o WlanQosOutput) Class() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanQos) *string { return v.Class }).(pulumi.StringPtrOutput)
 }
 
-// whether to overwrite QoS
+// Whether to overwrite QoS
 func (o WlanQosOutput) Overwrite() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanQos) *bool { return v.Overwrite }).(pulumi.BoolPtrOutput)
 }
@@ -26723,7 +26660,7 @@ func (o WlanQosPtrOutput) Class() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// whether to overwrite QoS
+// Whether to overwrite QoS
 func (o WlanQosPtrOutput) Overwrite() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanQos) *bool {
 		if v == nil {
@@ -26739,13 +26676,13 @@ type WlanRadsec struct {
 	IdleTimeout *int  `pulumi:"idleTimeout"`
 	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
 	MxclusterIds []string `pulumi:"mxclusterIds"`
-	// default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+	// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
 	ProxyHosts []string `pulumi:"proxyHosts"`
-	// name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+	// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
 	ServerName *string `pulumi:"serverName"`
-	// List of Radsec Servers. Only if not Mist Edge.
+	// List of RadSec Servers. Only if not Mist Edge.
 	Servers []WlanRadsecServer `pulumi:"servers"`
-	// use mxedge(s) as radsecproxy
+	// use mxedge(s) as RadSec Proxy
 	UseMxedge *bool `pulumi:"useMxedge"`
 	// To use Site mxedges when this WLAN does not use mxtunnel
 	UseSiteMxedge *bool `pulumi:"useSiteMxedge"`
@@ -26768,13 +26705,13 @@ type WlanRadsecArgs struct {
 	IdleTimeout pulumi.IntPtrInput  `pulumi:"idleTimeout"`
 	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
 	MxclusterIds pulumi.StringArrayInput `pulumi:"mxclusterIds"`
-	// default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+	// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
 	ProxyHosts pulumi.StringArrayInput `pulumi:"proxyHosts"`
-	// name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+	// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
 	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
-	// List of Radsec Servers. Only if not Mist Edge.
+	// List of RadSec Servers. Only if not Mist Edge.
 	Servers WlanRadsecServerArrayInput `pulumi:"servers"`
-	// use mxedge(s) as radsecproxy
+	// use mxedge(s) as RadSec Proxy
 	UseMxedge pulumi.BoolPtrInput `pulumi:"useMxedge"`
 	// To use Site mxedges when this WLAN does not use mxtunnel
 	UseSiteMxedge pulumi.BoolPtrInput `pulumi:"useSiteMxedge"`
@@ -26874,22 +26811,22 @@ func (o WlanRadsecOutput) MxclusterIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanRadsec) []string { return v.MxclusterIds }).(pulumi.StringArrayOutput)
 }
 
-// default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
 func (o WlanRadsecOutput) ProxyHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanRadsec) []string { return v.ProxyHosts }).(pulumi.StringArrayOutput)
 }
 
-// name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
 func (o WlanRadsecOutput) ServerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanRadsec) *string { return v.ServerName }).(pulumi.StringPtrOutput)
 }
 
-// List of Radsec Servers. Only if not Mist Edge.
+// List of RadSec Servers. Only if not Mist Edge.
 func (o WlanRadsecOutput) Servers() WlanRadsecServerArrayOutput {
 	return o.ApplyT(func(v WlanRadsec) []WlanRadsecServer { return v.Servers }).(WlanRadsecServerArrayOutput)
 }
 
-// use mxedge(s) as radsecproxy
+// use mxedge(s) as RadSec Proxy
 func (o WlanRadsecOutput) UseMxedge() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanRadsec) *bool { return v.UseMxedge }).(pulumi.BoolPtrOutput)
 }
@@ -26960,7 +26897,7 @@ func (o WlanRadsecPtrOutput) MxclusterIds() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
 func (o WlanRadsecPtrOutput) ProxyHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanRadsec) []string {
 		if v == nil {
@@ -26970,7 +26907,7 @@ func (o WlanRadsecPtrOutput) ProxyHosts() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
 func (o WlanRadsecPtrOutput) ServerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanRadsec) *string {
 		if v == nil {
@@ -26980,7 +26917,7 @@ func (o WlanRadsecPtrOutput) ServerName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of Radsec Servers. Only if not Mist Edge.
+// List of RadSec Servers. Only if not Mist Edge.
 func (o WlanRadsecPtrOutput) Servers() WlanRadsecServerArrayOutput {
 	return o.ApplyT(func(v *WlanRadsec) []WlanRadsecServer {
 		if v == nil {
@@ -26990,7 +26927,7 @@ func (o WlanRadsecPtrOutput) Servers() WlanRadsecServerArrayOutput {
 	}).(WlanRadsecServerArrayOutput)
 }
 
-// use mxedge(s) as radsecproxy
+// use mxedge(s) as RadSec Proxy
 func (o WlanRadsecPtrOutput) UseMxedge() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanRadsec) *bool {
 		if v == nil {
@@ -27111,7 +27048,7 @@ func (o WlanRadsecServerArrayOutput) Index(i pulumi.IntInput) WlanRadsecServerOu
 }
 
 type WlanRateset struct {
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+	// If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
 	Ht *string `pulumi:"ht"`
 	// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
 	Legacies []string `pulumi:"legacies"`
@@ -27124,7 +27061,7 @@ type WlanRateset struct {
 	//   * `high-density`: no 11b, no low rates
 	//   * `custom`: user defined
 	Template *string `pulumi:"template"`
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+	// If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
 	Vht *string `pulumi:"vht"`
 }
 
@@ -27140,7 +27077,7 @@ type WlanRatesetInput interface {
 }
 
 type WlanRatesetArgs struct {
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+	// If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
 	Ht pulumi.StringPtrInput `pulumi:"ht"`
 	// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
 	Legacies pulumi.StringArrayInput `pulumi:"legacies"`
@@ -27153,7 +27090,7 @@ type WlanRatesetArgs struct {
 	//   * `high-density`: no 11b, no low rates
 	//   * `custom`: user defined
 	Template pulumi.StringPtrInput `pulumi:"template"`
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+	// If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
 	Vht pulumi.StringPtrInput `pulumi:"vht"`
 }
 
@@ -27208,7 +27145,7 @@ func (o WlanRatesetOutput) ToWlanRatesetOutputWithContext(ctx context.Context) W
 	return o
 }
 
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+// If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
 func (o WlanRatesetOutput) Ht() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanRateset) *string { return v.Ht }).(pulumi.StringPtrOutput)
 }
@@ -27233,7 +27170,7 @@ func (o WlanRatesetOutput) Template() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanRateset) *string { return v.Template }).(pulumi.StringPtrOutput)
 }
 
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+// If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
 func (o WlanRatesetOutput) Vht() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanRateset) *string { return v.Vht }).(pulumi.StringPtrOutput)
 }
@@ -27260,9 +27197,7 @@ func (o WlanRatesetMapOutput) MapIndex(k pulumi.StringInput) WlanRatesetOutput {
 
 type WlanSchedule struct {
 	Enabled *bool `pulumi:"enabled"`
-	// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-	//
-	// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+	// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
 	Hours *WlanScheduleHours `pulumi:"hours"`
 }
 
@@ -27279,9 +27214,7 @@ type WlanScheduleInput interface {
 
 type WlanScheduleArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-	//
-	// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+	// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
 	Hours WlanScheduleHoursPtrInput `pulumi:"hours"`
 }
 
@@ -27366,9 +27299,7 @@ func (o WlanScheduleOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanSchedule) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-//
-// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
 func (o WlanScheduleOutput) Hours() WlanScheduleHoursPtrOutput {
 	return o.ApplyT(func(v WlanSchedule) *WlanScheduleHours { return v.Hours }).(WlanScheduleHoursPtrOutput)
 }
@@ -27406,9 +27337,7 @@ func (o WlanSchedulePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-//
-// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
 func (o WlanSchedulePtrOutput) Hours() WlanScheduleHoursPtrOutput {
 	return o.ApplyT(func(v *WlanSchedule) *WlanScheduleHours {
 		if v == nil {
@@ -27419,12 +27348,19 @@ func (o WlanSchedulePtrOutput) Hours() WlanScheduleHoursPtrOutput {
 }
 
 type WlanScheduleHours struct {
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Fri *string `pulumi:"fri"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Mon *string `pulumi:"mon"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Sat *string `pulumi:"sat"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Sun *string `pulumi:"sun"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Thu *string `pulumi:"thu"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Tue *string `pulumi:"tue"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Wed *string `pulumi:"wed"`
 }
 
@@ -27440,12 +27376,19 @@ type WlanScheduleHoursInput interface {
 }
 
 type WlanScheduleHoursArgs struct {
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Fri pulumi.StringPtrInput `pulumi:"fri"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Mon pulumi.StringPtrInput `pulumi:"mon"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Sat pulumi.StringPtrInput `pulumi:"sat"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Sun pulumi.StringPtrInput `pulumi:"sun"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Thu pulumi.StringPtrInput `pulumi:"thu"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Tue pulumi.StringPtrInput `pulumi:"tue"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Wed pulumi.StringPtrInput `pulumi:"wed"`
 }
 
@@ -27526,30 +27469,37 @@ func (o WlanScheduleHoursOutput) ToWlanScheduleHoursPtrOutputWithContext(ctx con
 	}).(WlanScheduleHoursPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o WlanScheduleHoursOutput) Fri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Fri }).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o WlanScheduleHoursOutput) Mon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Mon }).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o WlanScheduleHoursOutput) Sat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Sat }).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o WlanScheduleHoursOutput) Sun() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Sun }).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o WlanScheduleHoursOutput) Thu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Thu }).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o WlanScheduleHoursOutput) Tue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Tue }).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o WlanScheduleHoursOutput) Wed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanScheduleHours) *string { return v.Wed }).(pulumi.StringPtrOutput)
 }
@@ -27578,6 +27528,7 @@ func (o WlanScheduleHoursPtrOutput) Elem() WlanScheduleHoursOutput {
 	}).(WlanScheduleHoursOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o WlanScheduleHoursPtrOutput) Fri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanScheduleHours) *string {
 		if v == nil {
@@ -27587,6 +27538,7 @@ func (o WlanScheduleHoursPtrOutput) Fri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o WlanScheduleHoursPtrOutput) Mon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanScheduleHours) *string {
 		if v == nil {
@@ -27596,6 +27548,7 @@ func (o WlanScheduleHoursPtrOutput) Mon() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o WlanScheduleHoursPtrOutput) Sat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanScheduleHours) *string {
 		if v == nil {
@@ -27605,6 +27558,7 @@ func (o WlanScheduleHoursPtrOutput) Sat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o WlanScheduleHoursPtrOutput) Sun() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanScheduleHours) *string {
 		if v == nil {
@@ -27614,6 +27568,7 @@ func (o WlanScheduleHoursPtrOutput) Sun() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o WlanScheduleHoursPtrOutput) Thu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanScheduleHours) *string {
 		if v == nil {
@@ -27623,6 +27578,7 @@ func (o WlanScheduleHoursPtrOutput) Thu() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o WlanScheduleHoursPtrOutput) Tue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanScheduleHours) *string {
 		if v == nil {
@@ -27632,6 +27588,7 @@ func (o WlanScheduleHoursPtrOutput) Tue() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o WlanScheduleHoursPtrOutput) Wed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanScheduleHours) *string {
 		if v == nil {
@@ -28185,7 +28142,7 @@ type GetWebhooksSiteWebhook struct {
 	// Only if `type`=`http-post`
 	Secret string `pulumi:"secret"`
 	SiteId string `pulumi:"siteId"`
-	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 	SplunkToken string `pulumi:"splunkToken"`
 	// List of supported webhook topics available with the API Call List Webhook Topics
 	Topics []string `pulumi:"topics"`
@@ -28238,7 +28195,7 @@ type GetWebhooksSiteWebhookArgs struct {
 	// Only if `type`=`http-post`
 	Secret pulumi.StringInput `pulumi:"secret"`
 	SiteId pulumi.StringInput `pulumi:"siteId"`
-	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 	SplunkToken pulumi.StringInput `pulumi:"splunkToken"`
 	// List of supported webhook topics available with the API Call List Webhook Topics
 	Topics pulumi.StringArrayInput `pulumi:"topics"`
@@ -28378,7 +28335,7 @@ func (o GetWebhooksSiteWebhookOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.SiteId }).(pulumi.StringOutput)
 }
 
-// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 func (o GetWebhooksSiteWebhookOutput) SplunkToken() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.SplunkToken }).(pulumi.StringOutput)
 }
@@ -28423,92 +28380,92 @@ func (o GetWebhooksSiteWebhookArrayOutput) Index(i pulumi.IntInput) GetWebhooksS
 }
 
 type GetWlansSiteWlan struct {
-	// enable coa-immediate-update and address-change-immediate-update on the access profile.
+	// Enable coa-immediate-update and address-change-immediate-update on the access profile.
 	AcctImmediateUpdate bool `pulumi:"acctImmediateUpdate"`
-	// how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
 	AcctInterimInterval int `pulumi:"acctInterimInterval"`
-	// list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+	// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
 	AcctServers []GetWlansSiteWlanAcctServer `pulumi:"acctServers"`
-	// airwatch wlan settings
+	// Airwatch wlan settings
 	Airwatch GetWlansSiteWlanAirwatch `pulumi:"airwatch"`
-	// only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+	// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
 	AllowIpv6Ndp bool `pulumi:"allowIpv6Ndp"`
-	// only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+	// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
 	AllowMdns bool `pulumi:"allowMdns"`
-	// only applicable when `limitBcast`==`true`, which allows SSDP
+	// Only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp bool `pulumi:"allowSsdp"`
-	// list of device ids
+	// List of device ids
 	ApIds []string `pulumi:"apIds"`
-	// bandwidth limiting for apps (applies to up/down)
+	// Bandwidth limiting for apps (applies to up/down)
 	AppLimit GetWlansSiteWlanAppLimit `pulumi:"appLimit"`
-	// app qos wlan settings
+	// APp qos wlan settings
 	AppQos GetWlansSiteWlanAppQos `pulumi:"appQos"`
 	// enum: `aps`, `site`, `wxtags`
 	ApplyTo string `pulumi:"applyTo"`
-	// whether to enable smart arp filter
+	// Whether to enable smart arp filter
 	ArpFilter bool `pulumi:"arpFilter"`
-	// authentication wlan settings
+	// Authentication wlan settings
 	Auth GetWlansSiteWlanAuth `pulumi:"auth"`
 	// When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
 	AuthServerSelection string `pulumi:"authServerSelection"`
-	// list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+	// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
 	AuthServers []GetWlansSiteWlanAuthServer `pulumi:"authServers"`
-	// optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+	// Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
 	AuthServersNasId string `pulumi:"authServersNasId"`
-	// optional, NAS-IP-ADDRESS to use
+	// Optional, NAS-IP-ADDRESS to use
 	AuthServersNasIp string `pulumi:"authServersNasIp"`
-	// radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+	// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
 	AuthServersRetries int `pulumi:"authServersRetries"`
-	// radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+	// Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
 	AuthServersTimeout int `pulumi:"authServersTimeout"`
-	// whether to enable band_steering, this works only when band==both
+	// Whether to enable band_steering, this works only when band==both
 	BandSteer bool `pulumi:"bandSteer"`
-	// force dualBand capable client to connect to 5G
+	// Force dualBand capable client to connect to 5G
 	BandSteerForceBand5 bool `pulumi:"bandSteerForceBand5"`
-	// list of radios that the wlan should apply to.
+	// List of radios that the wlan should apply to.
 	Bands []string `pulumi:"bands"`
-	// whether to block the clients in the blacklist (up to first 256 macs)
+	// Whether to block the clients in the blacklist (up to first 256 macs)
 	BlockBlacklistClients bool `pulumi:"blockBlacklistClients"`
-	// bonjour gateway wlan settings
+	// Bonjour gateway wlan settings
 	Bonjour GetWlansSiteWlanBonjour `pulumi:"bonjour"`
 	// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
 	CiscoCwa GetWlansSiteWlanCiscoCwa `pulumi:"ciscoCwa"`
-	// kbps
+	// In kbps
 	ClientLimitDown int `pulumi:"clientLimitDown"`
-	// if downlink limiting per-client is enabled
+	// If downlink limiting per-client is enabled
 	ClientLimitDownEnabled bool `pulumi:"clientLimitDownEnabled"`
-	// kbps
+	// In kbps
 	ClientLimitUp int `pulumi:"clientLimitUp"`
-	// if uplink limiting per-client is enabled
+	// If uplink limiting per-client is enabled
 	ClientLimitUpEnabled bool `pulumi:"clientLimitUpEnabled"`
-	// list of COA (change of authorization) servers, optional
+	// List of COA (change of authorization) servers, optional
 	CoaServers []GetWlansSiteWlanCoaServer `pulumi:"coaServers"`
-	// when the object has been created, in epoch
+	// When the object has been created, in epoch
 	CreatedTime float64 `pulumi:"createdTime"`
-	// some old WLAN drivers may not be compatible
+	// Some old WLAN drivers may not be compatible
 	Disable11ax bool `pulumi:"disable11ax"`
-	// to disable ht or vht rates
+	// To disable ht or vht rates
 	DisableHtVhtRates bool `pulumi:"disableHtVhtRates"`
-	// whether to disable U-APSD
+	// Whether to disable U-APSD
 	DisableUapsd bool `pulumi:"disableUapsd"`
-	// disable sending v2 roam notification messages
+	// Disable sending v2 roam notification messages
 	DisableV1RoamNotify bool `pulumi:"disableV1RoamNotify"`
-	// disable sending v2 roam notification messages
+	// Disable sending v2 roam notification messages
 	DisableV2RoamNotify bool `pulumi:"disableV2RoamNotify"`
-	// when any of the following is true, this WLAN will be disabled
+	// When any of the following is true, this WLAN will be disabled
 	//    * cannot get IP
 	//    * cannot obtain default gateway
 	//    * cannot reach default gateway
 	DisableWhenGatewayUnreachable bool `pulumi:"disableWhenGatewayUnreachable"`
 	DisableWhenMxtunnelDown       bool `pulumi:"disableWhenMxtunnelDown"`
-	// whether to disable WMM
+	// Whether to disable WMM
 	DisableWmm bool `pulumi:"disableWmm"`
-	// for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+	// For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
 	DnsServerRewrite GetWlansSiteWlanDnsServerRewrite `pulumi:"dnsServerRewrite"`
 	Dtim             int                              `pulumi:"dtim"`
-	// for dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+	// For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
 	//   * PSK will come from RADIUS server
-	//   * AP sends client MAC as username ans password (i.e. `enableMacAuth` is assumed)
+	//   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
 	//   * AP sends BSSID:SSID as Caller-Station-ID
 	//   * `authServers` is required
 	//   * PSK will come from cloud WLC if source is cloudPsks
@@ -28516,107 +28473,107 @@ type GetWlansSiteWlan struct {
 	//   * `multiPskOnly` and `psk` is ignored
 	//   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
 	DynamicPsk GetWlansSiteWlanDynamicPsk `pulumi:"dynamicPsk"`
-	// for 802.1x
+	// For 802.1x
 	DynamicVlan GetWlansSiteWlanDynamicVlan `pulumi:"dynamicVlan"`
-	// enable AP-AP keycaching via multicast
+	// Enable AP-AP keycaching via multicast
 	EnableLocalKeycaching bool `pulumi:"enableLocalKeycaching"`
-	// by default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+	// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
 	EnableWirelessBridging bool `pulumi:"enableWirelessBridging"`
-	// if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response packets to be forwarded to wireless
+	// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response packets to be forwarded to wireless
 	EnableWirelessBridgingDhcpTracking bool `pulumi:"enableWirelessBridgingDhcpTracking"`
-	// if this wlan is enabled
+	// If this wlan is enabled
 	Enabled bool `pulumi:"enabled"`
-	// if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
+	// If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
 	FastDot1xTimers bool `pulumi:"fastDot1xTimers"`
-	// whether to hide SSID in beacon
+	// Whether to hide SSID in beacon
 	HideSsid bool `pulumi:"hideSsid"`
-	// include hostname inside IE in AP beacons / probe responses
+	// Include hostname inside IE in AP beacons / probe responses
 	HostnameIe bool `pulumi:"hostnameIe"`
-	// hostspot 2.0 wlan settings
+	// Hostspot 2.0 wlan settings
 	Hotspot20 GetWlansSiteWlanHotspot20 `pulumi:"hotspot20"`
 	// Unique ID of the object instance in the Mist Organnization
 	Id                 string                             `pulumi:"id"`
 	InjectDhcpOption82 GetWlansSiteWlanInjectDhcpOption82 `pulumi:"injectDhcpOption82"`
 	// where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
 	Interface string `pulumi:"interface"`
-	// whether to stop clients to talk to each other
+	// Whether to stop clients to talk to each other
 	Isolation bool `pulumi:"isolation"`
-	// if isolation is enabled, whether to deny clients to talk to L2 on the LAN
+	// If isolation is enabled, whether to deny clients to talk to L2 on the LAN
 	L2Isolation bool `pulumi:"l2Isolation"`
-	// legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
+	// Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
 	LegacyOverds bool `pulumi:"legacyOverds"`
-	// whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+	// Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
 	LimitBcast bool `pulumi:"limitBcast"`
-	// limit probe response base on some heuristic rules
+	// Limit probe response base on some heuristic rules
 	LimitProbeResponse bool `pulumi:"limitProbeResponse"`
-	// max idle time in seconds
+	// Max idle time in seconds
 	MaxIdletime int `pulumi:"maxIdletime"`
-	// maximum number of client connected to the SSID. `0` means unlimited
+	// Maximum number of client connected to the SSID. `0` means unlimited
 	MaxNumClients int                     `pulumi:"maxNumClients"`
 	MistNac       GetWlansSiteWlanMistNac `pulumi:"mistNac"`
-	// when the object has been modified for the last time, in epoch
+	// When the object has been modified for the last time, in epoch
 	ModifiedTime float64 `pulumi:"modifiedTime"`
 	MspId        string  `pulumi:"mspId"`
-	// when `interface`=`mxtunnel`, id of the Mist Tunnel
+	// When `interface`=`mxtunnel`, id of the Mist Tunnel
 	MxtunnelIds []string `pulumi:"mxtunnelIds"`
-	// when `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+	// When `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
 	MxtunnelNames []string `pulumi:"mxtunnelNames"`
-	// whether to only allow client to use DNS that we’ve learned from DHCP response
+	// Whether to only allow client to use DNS that we’ve learned from DHCP response
 	NoStaticDns bool `pulumi:"noStaticDns"`
-	// whether to only allow client that we’ve learned from DHCP exchange to talk
+	// Whether to only allow client that we’ve learned from DHCP exchange to talk
 	NoStaticIp bool   `pulumi:"noStaticIp"`
 	OrgId      string `pulumi:"orgId"`
-	// portal wlan settings
+	// Portal wlan settings
 	Portal GetWlansSiteWlanPortal `pulumi:"portal"`
-	// list of hostnames without http(s):// (matched by substring)
+	// List of hostnames without http(s):// (matched by substring)
 	PortalAllowedHostnames []string `pulumi:"portalAllowedHostnames"`
-	// list of CIDRs
+	// List of CIDRs
 	PortalAllowedSubnets []string `pulumi:"portalAllowedSubnets"`
-	// api secret (auto-generated) that can be used to sign guest authorization requests
+	// APi secret (auto-generated) that can be used to sign guest authorization requests
 	PortalApiSecret string `pulumi:"portalApiSecret"`
-	// list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+	// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
 	PortalDeniedHostnames []string `pulumi:"portalDeniedHostnames"`
 	// Url of portal background image
 	PortalImage  string              `pulumi:"portalImage"`
 	PortalSsoUrl string              `pulumi:"portalSsoUrl"`
 	Qos          GetWlansSiteWlanQos `pulumi:"qos"`
-	// Radsec settings
+	// RadSec settings
 	Radsec GetWlansSiteWlanRadsec `pulumi:"radsec"`
 	// Property key is the RF band. enum: `24`, `5`, `6`
 	Rateset map[string]GetWlansSiteWlanRateset `pulumi:"rateset"`
-	// when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+	// When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
 	ReconnectClientsWhenRoamingMxcluster bool `pulumi:"reconnectClientsWhenRoamingMxcluster"`
 	// enum: `11r`, `OKC`, `NONE`
 	RoamMode string `pulumi:"roamMode"`
 	// WLAN operating schedule, default is disabled
 	Schedule GetWlansSiteWlanSchedule `pulumi:"schedule"`
 	SiteId   string                   `pulumi:"siteId"`
-	// whether to exclude this WLAN from SLE metrics
+	// Whether to exclude this WLAN from SLE metrics
 	SleExcluded bool `pulumi:"sleExcluded"`
-	// the name of the SSID
+	// Name of the SSID
 	Ssid string `pulumi:"ssid"`
-	// if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
+	// If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
 	UseEapolV1 bool `pulumi:"useEapolV1"`
-	// if vlan tagging is enabled
+	// If vlan tagging is enabled
 	VlanEnabled bool   `pulumi:"vlanEnabled"`
 	VlanId      string `pulumi:"vlanId"`
 	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
 	VlanIds []string `pulumi:"vlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
 	VlanPooling bool `pulumi:"vlanPooling"`
-	// kbps
+	// In kbps
 	WlanLimitDown int `pulumi:"wlanLimitDown"`
-	// if downlink limiting for whole wlan is enabled
+	// If downlink limiting for whole wlan is enabled
 	WlanLimitDownEnabled bool `pulumi:"wlanLimitDownEnabled"`
-	// kbps
+	// In kbps
 	WlanLimitUp int `pulumi:"wlanLimitUp"`
-	// if uplink limiting for whole wlan is enabled
+	// If uplink limiting for whole wlan is enabled
 	WlanLimitUpEnabled bool `pulumi:"wlanLimitUpEnabled"`
-	// list of wxtag_ids
+	// List of wxtag_ids
 	WxtagIds []string `pulumi:"wxtagIds"`
-	// when `interface`=`wxtunnel`, id of the WXLAN Tunnel
+	// When `interface`=`wxtunnel`, id of the WXLAN Tunnel
 	WxtunnelId string `pulumi:"wxtunnelId"`
-	// when `interface`=`wxtunnel`, remote tunnel identifier
+	// When `interface`=`wxtunnel`, remote tunnel identifier
 	WxtunnelRemoteId string `pulumi:"wxtunnelRemoteId"`
 }
 
@@ -28632,92 +28589,92 @@ type GetWlansSiteWlanInput interface {
 }
 
 type GetWlansSiteWlanArgs struct {
-	// enable coa-immediate-update and address-change-immediate-update on the access profile.
+	// Enable coa-immediate-update and address-change-immediate-update on the access profile.
 	AcctImmediateUpdate pulumi.BoolInput `pulumi:"acctImmediateUpdate"`
-	// how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
 	AcctInterimInterval pulumi.IntInput `pulumi:"acctInterimInterval"`
-	// list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+	// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
 	AcctServers GetWlansSiteWlanAcctServerArrayInput `pulumi:"acctServers"`
-	// airwatch wlan settings
+	// Airwatch wlan settings
 	Airwatch GetWlansSiteWlanAirwatchInput `pulumi:"airwatch"`
-	// only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+	// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
 	AllowIpv6Ndp pulumi.BoolInput `pulumi:"allowIpv6Ndp"`
-	// only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+	// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
 	AllowMdns pulumi.BoolInput `pulumi:"allowMdns"`
-	// only applicable when `limitBcast`==`true`, which allows SSDP
+	// Only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp pulumi.BoolInput `pulumi:"allowSsdp"`
-	// list of device ids
+	// List of device ids
 	ApIds pulumi.StringArrayInput `pulumi:"apIds"`
-	// bandwidth limiting for apps (applies to up/down)
+	// Bandwidth limiting for apps (applies to up/down)
 	AppLimit GetWlansSiteWlanAppLimitInput `pulumi:"appLimit"`
-	// app qos wlan settings
+	// APp qos wlan settings
 	AppQos GetWlansSiteWlanAppQosInput `pulumi:"appQos"`
 	// enum: `aps`, `site`, `wxtags`
 	ApplyTo pulumi.StringInput `pulumi:"applyTo"`
-	// whether to enable smart arp filter
+	// Whether to enable smart arp filter
 	ArpFilter pulumi.BoolInput `pulumi:"arpFilter"`
-	// authentication wlan settings
+	// Authentication wlan settings
 	Auth GetWlansSiteWlanAuthInput `pulumi:"auth"`
 	// When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
 	AuthServerSelection pulumi.StringInput `pulumi:"authServerSelection"`
-	// list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+	// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
 	AuthServers GetWlansSiteWlanAuthServerArrayInput `pulumi:"authServers"`
-	// optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+	// Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
 	AuthServersNasId pulumi.StringInput `pulumi:"authServersNasId"`
-	// optional, NAS-IP-ADDRESS to use
+	// Optional, NAS-IP-ADDRESS to use
 	AuthServersNasIp pulumi.StringInput `pulumi:"authServersNasIp"`
-	// radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+	// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
 	AuthServersRetries pulumi.IntInput `pulumi:"authServersRetries"`
-	// radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+	// Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
 	AuthServersTimeout pulumi.IntInput `pulumi:"authServersTimeout"`
-	// whether to enable band_steering, this works only when band==both
+	// Whether to enable band_steering, this works only when band==both
 	BandSteer pulumi.BoolInput `pulumi:"bandSteer"`
-	// force dualBand capable client to connect to 5G
+	// Force dualBand capable client to connect to 5G
 	BandSteerForceBand5 pulumi.BoolInput `pulumi:"bandSteerForceBand5"`
-	// list of radios that the wlan should apply to.
+	// List of radios that the wlan should apply to.
 	Bands pulumi.StringArrayInput `pulumi:"bands"`
-	// whether to block the clients in the blacklist (up to first 256 macs)
+	// Whether to block the clients in the blacklist (up to first 256 macs)
 	BlockBlacklistClients pulumi.BoolInput `pulumi:"blockBlacklistClients"`
-	// bonjour gateway wlan settings
+	// Bonjour gateway wlan settings
 	Bonjour GetWlansSiteWlanBonjourInput `pulumi:"bonjour"`
 	// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
 	CiscoCwa GetWlansSiteWlanCiscoCwaInput `pulumi:"ciscoCwa"`
-	// kbps
+	// In kbps
 	ClientLimitDown pulumi.IntInput `pulumi:"clientLimitDown"`
-	// if downlink limiting per-client is enabled
+	// If downlink limiting per-client is enabled
 	ClientLimitDownEnabled pulumi.BoolInput `pulumi:"clientLimitDownEnabled"`
-	// kbps
+	// In kbps
 	ClientLimitUp pulumi.IntInput `pulumi:"clientLimitUp"`
-	// if uplink limiting per-client is enabled
+	// If uplink limiting per-client is enabled
 	ClientLimitUpEnabled pulumi.BoolInput `pulumi:"clientLimitUpEnabled"`
-	// list of COA (change of authorization) servers, optional
+	// List of COA (change of authorization) servers, optional
 	CoaServers GetWlansSiteWlanCoaServerArrayInput `pulumi:"coaServers"`
-	// when the object has been created, in epoch
+	// When the object has been created, in epoch
 	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
-	// some old WLAN drivers may not be compatible
+	// Some old WLAN drivers may not be compatible
 	Disable11ax pulumi.BoolInput `pulumi:"disable11ax"`
-	// to disable ht or vht rates
+	// To disable ht or vht rates
 	DisableHtVhtRates pulumi.BoolInput `pulumi:"disableHtVhtRates"`
-	// whether to disable U-APSD
+	// Whether to disable U-APSD
 	DisableUapsd pulumi.BoolInput `pulumi:"disableUapsd"`
-	// disable sending v2 roam notification messages
+	// Disable sending v2 roam notification messages
 	DisableV1RoamNotify pulumi.BoolInput `pulumi:"disableV1RoamNotify"`
-	// disable sending v2 roam notification messages
+	// Disable sending v2 roam notification messages
 	DisableV2RoamNotify pulumi.BoolInput `pulumi:"disableV2RoamNotify"`
-	// when any of the following is true, this WLAN will be disabled
+	// When any of the following is true, this WLAN will be disabled
 	//    * cannot get IP
 	//    * cannot obtain default gateway
 	//    * cannot reach default gateway
 	DisableWhenGatewayUnreachable pulumi.BoolInput `pulumi:"disableWhenGatewayUnreachable"`
 	DisableWhenMxtunnelDown       pulumi.BoolInput `pulumi:"disableWhenMxtunnelDown"`
-	// whether to disable WMM
+	// Whether to disable WMM
 	DisableWmm pulumi.BoolInput `pulumi:"disableWmm"`
-	// for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+	// For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
 	DnsServerRewrite GetWlansSiteWlanDnsServerRewriteInput `pulumi:"dnsServerRewrite"`
 	Dtim             pulumi.IntInput                       `pulumi:"dtim"`
-	// for dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+	// For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
 	//   * PSK will come from RADIUS server
-	//   * AP sends client MAC as username ans password (i.e. `enableMacAuth` is assumed)
+	//   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
 	//   * AP sends BSSID:SSID as Caller-Station-ID
 	//   * `authServers` is required
 	//   * PSK will come from cloud WLC if source is cloudPsks
@@ -28725,107 +28682,107 @@ type GetWlansSiteWlanArgs struct {
 	//   * `multiPskOnly` and `psk` is ignored
 	//   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
 	DynamicPsk GetWlansSiteWlanDynamicPskInput `pulumi:"dynamicPsk"`
-	// for 802.1x
+	// For 802.1x
 	DynamicVlan GetWlansSiteWlanDynamicVlanInput `pulumi:"dynamicVlan"`
-	// enable AP-AP keycaching via multicast
+	// Enable AP-AP keycaching via multicast
 	EnableLocalKeycaching pulumi.BoolInput `pulumi:"enableLocalKeycaching"`
-	// by default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+	// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
 	EnableWirelessBridging pulumi.BoolInput `pulumi:"enableWirelessBridging"`
-	// if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response packets to be forwarded to wireless
+	// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response packets to be forwarded to wireless
 	EnableWirelessBridgingDhcpTracking pulumi.BoolInput `pulumi:"enableWirelessBridgingDhcpTracking"`
-	// if this wlan is enabled
+	// If this wlan is enabled
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
+	// If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
 	FastDot1xTimers pulumi.BoolInput `pulumi:"fastDot1xTimers"`
-	// whether to hide SSID in beacon
+	// Whether to hide SSID in beacon
 	HideSsid pulumi.BoolInput `pulumi:"hideSsid"`
-	// include hostname inside IE in AP beacons / probe responses
+	// Include hostname inside IE in AP beacons / probe responses
 	HostnameIe pulumi.BoolInput `pulumi:"hostnameIe"`
-	// hostspot 2.0 wlan settings
+	// Hostspot 2.0 wlan settings
 	Hotspot20 GetWlansSiteWlanHotspot20Input `pulumi:"hotspot20"`
 	// Unique ID of the object instance in the Mist Organnization
 	Id                 pulumi.StringInput                      `pulumi:"id"`
 	InjectDhcpOption82 GetWlansSiteWlanInjectDhcpOption82Input `pulumi:"injectDhcpOption82"`
 	// where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
 	Interface pulumi.StringInput `pulumi:"interface"`
-	// whether to stop clients to talk to each other
+	// Whether to stop clients to talk to each other
 	Isolation pulumi.BoolInput `pulumi:"isolation"`
-	// if isolation is enabled, whether to deny clients to talk to L2 on the LAN
+	// If isolation is enabled, whether to deny clients to talk to L2 on the LAN
 	L2Isolation pulumi.BoolInput `pulumi:"l2Isolation"`
-	// legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
+	// Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
 	LegacyOverds pulumi.BoolInput `pulumi:"legacyOverds"`
-	// whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+	// Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
 	LimitBcast pulumi.BoolInput `pulumi:"limitBcast"`
-	// limit probe response base on some heuristic rules
+	// Limit probe response base on some heuristic rules
 	LimitProbeResponse pulumi.BoolInput `pulumi:"limitProbeResponse"`
-	// max idle time in seconds
+	// Max idle time in seconds
 	MaxIdletime pulumi.IntInput `pulumi:"maxIdletime"`
-	// maximum number of client connected to the SSID. `0` means unlimited
+	// Maximum number of client connected to the SSID. `0` means unlimited
 	MaxNumClients pulumi.IntInput              `pulumi:"maxNumClients"`
 	MistNac       GetWlansSiteWlanMistNacInput `pulumi:"mistNac"`
-	// when the object has been modified for the last time, in epoch
+	// When the object has been modified for the last time, in epoch
 	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
 	MspId        pulumi.StringInput  `pulumi:"mspId"`
-	// when `interface`=`mxtunnel`, id of the Mist Tunnel
+	// When `interface`=`mxtunnel`, id of the Mist Tunnel
 	MxtunnelIds pulumi.StringArrayInput `pulumi:"mxtunnelIds"`
-	// when `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+	// When `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
 	MxtunnelNames pulumi.StringArrayInput `pulumi:"mxtunnelNames"`
-	// whether to only allow client to use DNS that we’ve learned from DHCP response
+	// Whether to only allow client to use DNS that we’ve learned from DHCP response
 	NoStaticDns pulumi.BoolInput `pulumi:"noStaticDns"`
-	// whether to only allow client that we’ve learned from DHCP exchange to talk
+	// Whether to only allow client that we’ve learned from DHCP exchange to talk
 	NoStaticIp pulumi.BoolInput   `pulumi:"noStaticIp"`
 	OrgId      pulumi.StringInput `pulumi:"orgId"`
-	// portal wlan settings
+	// Portal wlan settings
 	Portal GetWlansSiteWlanPortalInput `pulumi:"portal"`
-	// list of hostnames without http(s):// (matched by substring)
+	// List of hostnames without http(s):// (matched by substring)
 	PortalAllowedHostnames pulumi.StringArrayInput `pulumi:"portalAllowedHostnames"`
-	// list of CIDRs
+	// List of CIDRs
 	PortalAllowedSubnets pulumi.StringArrayInput `pulumi:"portalAllowedSubnets"`
-	// api secret (auto-generated) that can be used to sign guest authorization requests
+	// APi secret (auto-generated) that can be used to sign guest authorization requests
 	PortalApiSecret pulumi.StringInput `pulumi:"portalApiSecret"`
-	// list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+	// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
 	PortalDeniedHostnames pulumi.StringArrayInput `pulumi:"portalDeniedHostnames"`
 	// Url of portal background image
 	PortalImage  pulumi.StringInput       `pulumi:"portalImage"`
 	PortalSsoUrl pulumi.StringInput       `pulumi:"portalSsoUrl"`
 	Qos          GetWlansSiteWlanQosInput `pulumi:"qos"`
-	// Radsec settings
+	// RadSec settings
 	Radsec GetWlansSiteWlanRadsecInput `pulumi:"radsec"`
 	// Property key is the RF band. enum: `24`, `5`, `6`
 	Rateset GetWlansSiteWlanRatesetMapInput `pulumi:"rateset"`
-	// when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+	// When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
 	ReconnectClientsWhenRoamingMxcluster pulumi.BoolInput `pulumi:"reconnectClientsWhenRoamingMxcluster"`
 	// enum: `11r`, `OKC`, `NONE`
 	RoamMode pulumi.StringInput `pulumi:"roamMode"`
 	// WLAN operating schedule, default is disabled
 	Schedule GetWlansSiteWlanScheduleInput `pulumi:"schedule"`
 	SiteId   pulumi.StringInput            `pulumi:"siteId"`
-	// whether to exclude this WLAN from SLE metrics
+	// Whether to exclude this WLAN from SLE metrics
 	SleExcluded pulumi.BoolInput `pulumi:"sleExcluded"`
-	// the name of the SSID
+	// Name of the SSID
 	Ssid pulumi.StringInput `pulumi:"ssid"`
-	// if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
+	// If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
 	UseEapolV1 pulumi.BoolInput `pulumi:"useEapolV1"`
-	// if vlan tagging is enabled
+	// If vlan tagging is enabled
 	VlanEnabled pulumi.BoolInput   `pulumi:"vlanEnabled"`
 	VlanId      pulumi.StringInput `pulumi:"vlanId"`
 	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
 	VlanIds pulumi.StringArrayInput `pulumi:"vlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
 	VlanPooling pulumi.BoolInput `pulumi:"vlanPooling"`
-	// kbps
+	// In kbps
 	WlanLimitDown pulumi.IntInput `pulumi:"wlanLimitDown"`
-	// if downlink limiting for whole wlan is enabled
+	// If downlink limiting for whole wlan is enabled
 	WlanLimitDownEnabled pulumi.BoolInput `pulumi:"wlanLimitDownEnabled"`
-	// kbps
+	// In kbps
 	WlanLimitUp pulumi.IntInput `pulumi:"wlanLimitUp"`
-	// if uplink limiting for whole wlan is enabled
+	// If uplink limiting for whole wlan is enabled
 	WlanLimitUpEnabled pulumi.BoolInput `pulumi:"wlanLimitUpEnabled"`
-	// list of wxtag_ids
+	// List of wxtag_ids
 	WxtagIds pulumi.StringArrayInput `pulumi:"wxtagIds"`
-	// when `interface`=`wxtunnel`, id of the WXLAN Tunnel
+	// When `interface`=`wxtunnel`, id of the WXLAN Tunnel
 	WxtunnelId pulumi.StringInput `pulumi:"wxtunnelId"`
-	// when `interface`=`wxtunnel`, remote tunnel identifier
+	// When `interface`=`wxtunnel`, remote tunnel identifier
 	WxtunnelRemoteId pulumi.StringInput `pulumi:"wxtunnelRemoteId"`
 }
 
@@ -28880,52 +28837,52 @@ func (o GetWlansSiteWlanOutput) ToGetWlansSiteWlanOutputWithContext(ctx context.
 	return o
 }
 
-// enable coa-immediate-update and address-change-immediate-update on the access profile.
+// Enable coa-immediate-update and address-change-immediate-update on the access profile.
 func (o GetWlansSiteWlanOutput) AcctImmediateUpdate() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.AcctImmediateUpdate }).(pulumi.BoolOutput)
 }
 
-// how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
 func (o GetWlansSiteWlanOutput) AcctInterimInterval() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.AcctInterimInterval }).(pulumi.IntOutput)
 }
 
-// list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
 func (o GetWlansSiteWlanOutput) AcctServers() GetWlansSiteWlanAcctServerArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) []GetWlansSiteWlanAcctServer { return v.AcctServers }).(GetWlansSiteWlanAcctServerArrayOutput)
 }
 
-// airwatch wlan settings
+// Airwatch wlan settings
 func (o GetWlansSiteWlanOutput) Airwatch() GetWlansSiteWlanAirwatchOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanAirwatch { return v.Airwatch }).(GetWlansSiteWlanAirwatchOutput)
 }
 
-// only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
 func (o GetWlansSiteWlanOutput) AllowIpv6Ndp() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.AllowIpv6Ndp }).(pulumi.BoolOutput)
 }
 
-// only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
 func (o GetWlansSiteWlanOutput) AllowMdns() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.AllowMdns }).(pulumi.BoolOutput)
 }
 
-// only applicable when `limitBcast`==`true`, which allows SSDP
+// Only applicable when `limitBcast`==`true`, which allows SSDP
 func (o GetWlansSiteWlanOutput) AllowSsdp() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.AllowSsdp }).(pulumi.BoolOutput)
 }
 
-// list of device ids
+// List of device ids
 func (o GetWlansSiteWlanOutput) ApIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) []string { return v.ApIds }).(pulumi.StringArrayOutput)
 }
 
-// bandwidth limiting for apps (applies to up/down)
+// Bandwidth limiting for apps (applies to up/down)
 func (o GetWlansSiteWlanOutput) AppLimit() GetWlansSiteWlanAppLimitOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanAppLimit { return v.AppLimit }).(GetWlansSiteWlanAppLimitOutput)
 }
 
-// app qos wlan settings
+// APp qos wlan settings
 func (o GetWlansSiteWlanOutput) AppQos() GetWlansSiteWlanAppQosOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanAppQos { return v.AppQos }).(GetWlansSiteWlanAppQosOutput)
 }
@@ -28935,12 +28892,12 @@ func (o GetWlansSiteWlanOutput) ApplyTo() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.ApplyTo }).(pulumi.StringOutput)
 }
 
-// whether to enable smart arp filter
+// Whether to enable smart arp filter
 func (o GetWlansSiteWlanOutput) ArpFilter() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.ArpFilter }).(pulumi.BoolOutput)
 }
 
-// authentication wlan settings
+// Authentication wlan settings
 func (o GetWlansSiteWlanOutput) Auth() GetWlansSiteWlanAuthOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanAuth { return v.Auth }).(GetWlansSiteWlanAuthOutput)
 }
@@ -28950,52 +28907,52 @@ func (o GetWlansSiteWlanOutput) AuthServerSelection() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.AuthServerSelection }).(pulumi.StringOutput)
 }
 
-// list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
 func (o GetWlansSiteWlanOutput) AuthServers() GetWlansSiteWlanAuthServerArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) []GetWlansSiteWlanAuthServer { return v.AuthServers }).(GetWlansSiteWlanAuthServerArrayOutput)
 }
 
-// optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+// Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
 func (o GetWlansSiteWlanOutput) AuthServersNasId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.AuthServersNasId }).(pulumi.StringOutput)
 }
 
-// optional, NAS-IP-ADDRESS to use
+// Optional, NAS-IP-ADDRESS to use
 func (o GetWlansSiteWlanOutput) AuthServersNasIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.AuthServersNasIp }).(pulumi.StringOutput)
 }
 
-// radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
 func (o GetWlansSiteWlanOutput) AuthServersRetries() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.AuthServersRetries }).(pulumi.IntOutput)
 }
 
-// radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+// Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
 func (o GetWlansSiteWlanOutput) AuthServersTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.AuthServersTimeout }).(pulumi.IntOutput)
 }
 
-// whether to enable band_steering, this works only when band==both
+// Whether to enable band_steering, this works only when band==both
 func (o GetWlansSiteWlanOutput) BandSteer() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.BandSteer }).(pulumi.BoolOutput)
 }
 
-// force dualBand capable client to connect to 5G
+// Force dualBand capable client to connect to 5G
 func (o GetWlansSiteWlanOutput) BandSteerForceBand5() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.BandSteerForceBand5 }).(pulumi.BoolOutput)
 }
 
-// list of radios that the wlan should apply to.
+// List of radios that the wlan should apply to.
 func (o GetWlansSiteWlanOutput) Bands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) []string { return v.Bands }).(pulumi.StringArrayOutput)
 }
 
-// whether to block the clients in the blacklist (up to first 256 macs)
+// Whether to block the clients in the blacklist (up to first 256 macs)
 func (o GetWlansSiteWlanOutput) BlockBlacklistClients() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.BlockBlacklistClients }).(pulumi.BoolOutput)
 }
 
-// bonjour gateway wlan settings
+// Bonjour gateway wlan settings
 func (o GetWlansSiteWlanOutput) Bonjour() GetWlansSiteWlanBonjourOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanBonjour { return v.Bonjour }).(GetWlansSiteWlanBonjourOutput)
 }
@@ -29005,62 +28962,62 @@ func (o GetWlansSiteWlanOutput) CiscoCwa() GetWlansSiteWlanCiscoCwaOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanCiscoCwa { return v.CiscoCwa }).(GetWlansSiteWlanCiscoCwaOutput)
 }
 
-// kbps
+// In kbps
 func (o GetWlansSiteWlanOutput) ClientLimitDown() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.ClientLimitDown }).(pulumi.IntOutput)
 }
 
-// if downlink limiting per-client is enabled
+// If downlink limiting per-client is enabled
 func (o GetWlansSiteWlanOutput) ClientLimitDownEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.ClientLimitDownEnabled }).(pulumi.BoolOutput)
 }
 
-// kbps
+// In kbps
 func (o GetWlansSiteWlanOutput) ClientLimitUp() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.ClientLimitUp }).(pulumi.IntOutput)
 }
 
-// if uplink limiting per-client is enabled
+// If uplink limiting per-client is enabled
 func (o GetWlansSiteWlanOutput) ClientLimitUpEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.ClientLimitUpEnabled }).(pulumi.BoolOutput)
 }
 
-// list of COA (change of authorization) servers, optional
+// List of COA (change of authorization) servers, optional
 func (o GetWlansSiteWlanOutput) CoaServers() GetWlansSiteWlanCoaServerArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) []GetWlansSiteWlanCoaServer { return v.CoaServers }).(GetWlansSiteWlanCoaServerArrayOutput)
 }
 
-// when the object has been created, in epoch
+// When the object has been created, in epoch
 func (o GetWlansSiteWlanOutput) CreatedTime() pulumi.Float64Output {
 	return o.ApplyT(func(v GetWlansSiteWlan) float64 { return v.CreatedTime }).(pulumi.Float64Output)
 }
 
-// some old WLAN drivers may not be compatible
+// Some old WLAN drivers may not be compatible
 func (o GetWlansSiteWlanOutput) Disable11ax() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.Disable11ax }).(pulumi.BoolOutput)
 }
 
-// to disable ht or vht rates
+// To disable ht or vht rates
 func (o GetWlansSiteWlanOutput) DisableHtVhtRates() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.DisableHtVhtRates }).(pulumi.BoolOutput)
 }
 
-// whether to disable U-APSD
+// Whether to disable U-APSD
 func (o GetWlansSiteWlanOutput) DisableUapsd() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.DisableUapsd }).(pulumi.BoolOutput)
 }
 
-// disable sending v2 roam notification messages
+// Disable sending v2 roam notification messages
 func (o GetWlansSiteWlanOutput) DisableV1RoamNotify() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.DisableV1RoamNotify }).(pulumi.BoolOutput)
 }
 
-// disable sending v2 roam notification messages
+// Disable sending v2 roam notification messages
 func (o GetWlansSiteWlanOutput) DisableV2RoamNotify() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.DisableV2RoamNotify }).(pulumi.BoolOutput)
 }
 
-// when any of the following is true, this WLAN will be disabled
+// When any of the following is true, this WLAN will be disabled
 //   - cannot get IP
 //   - cannot obtain default gateway
 //   - cannot reach default gateway
@@ -29072,12 +29029,12 @@ func (o GetWlansSiteWlanOutput) DisableWhenMxtunnelDown() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.DisableWhenMxtunnelDown }).(pulumi.BoolOutput)
 }
 
-// whether to disable WMM
+// Whether to disable WMM
 func (o GetWlansSiteWlanOutput) DisableWmm() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.DisableWmm }).(pulumi.BoolOutput)
 }
 
-// for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+// For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
 func (o GetWlansSiteWlanOutput) DnsServerRewrite() GetWlansSiteWlanDnsServerRewriteOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanDnsServerRewrite { return v.DnsServerRewrite }).(GetWlansSiteWlanDnsServerRewriteOutput)
 }
@@ -29086,9 +29043,9 @@ func (o GetWlansSiteWlanOutput) Dtim() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.Dtim }).(pulumi.IntOutput)
 }
 
-// for dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+// For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
 //   - PSK will come from RADIUS server
-//   - AP sends client MAC as username ans password (i.e. `enableMacAuth` is assumed)
+//   - AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
 //   - AP sends BSSID:SSID as Caller-Station-ID
 //   - `authServers` is required
 //   - PSK will come from cloud WLC if source is cloudPsks
@@ -29099,47 +29056,47 @@ func (o GetWlansSiteWlanOutput) DynamicPsk() GetWlansSiteWlanDynamicPskOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanDynamicPsk { return v.DynamicPsk }).(GetWlansSiteWlanDynamicPskOutput)
 }
 
-// for 802.1x
+// For 802.1x
 func (o GetWlansSiteWlanOutput) DynamicVlan() GetWlansSiteWlanDynamicVlanOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanDynamicVlan { return v.DynamicVlan }).(GetWlansSiteWlanDynamicVlanOutput)
 }
 
-// enable AP-AP keycaching via multicast
+// Enable AP-AP keycaching via multicast
 func (o GetWlansSiteWlanOutput) EnableLocalKeycaching() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.EnableLocalKeycaching }).(pulumi.BoolOutput)
 }
 
-// by default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
 func (o GetWlansSiteWlanOutput) EnableWirelessBridging() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.EnableWirelessBridging }).(pulumi.BoolOutput)
 }
 
-// if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response packets to be forwarded to wireless
+// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response packets to be forwarded to wireless
 func (o GetWlansSiteWlanOutput) EnableWirelessBridgingDhcpTracking() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.EnableWirelessBridgingDhcpTracking }).(pulumi.BoolOutput)
 }
 
-// if this wlan is enabled
+// If this wlan is enabled
 func (o GetWlansSiteWlanOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
+// If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
 func (o GetWlansSiteWlanOutput) FastDot1xTimers() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.FastDot1xTimers }).(pulumi.BoolOutput)
 }
 
-// whether to hide SSID in beacon
+// Whether to hide SSID in beacon
 func (o GetWlansSiteWlanOutput) HideSsid() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.HideSsid }).(pulumi.BoolOutput)
 }
 
-// include hostname inside IE in AP beacons / probe responses
+// Include hostname inside IE in AP beacons / probe responses
 func (o GetWlansSiteWlanOutput) HostnameIe() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.HostnameIe }).(pulumi.BoolOutput)
 }
 
-// hostspot 2.0 wlan settings
+// Hostspot 2.0 wlan settings
 func (o GetWlansSiteWlanOutput) Hotspot20() GetWlansSiteWlanHotspot20Output {
 	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanHotspot20 { return v.Hotspot20 }).(GetWlansSiteWlanHotspot20Output)
 }
@@ -29158,37 +29115,37 @@ func (o GetWlansSiteWlanOutput) Interface() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.Interface }).(pulumi.StringOutput)
 }
 
-// whether to stop clients to talk to each other
+// Whether to stop clients to talk to each other
 func (o GetWlansSiteWlanOutput) Isolation() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.Isolation }).(pulumi.BoolOutput)
 }
 
-// if isolation is enabled, whether to deny clients to talk to L2 on the LAN
+// If isolation is enabled, whether to deny clients to talk to L2 on the LAN
 func (o GetWlansSiteWlanOutput) L2Isolation() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.L2Isolation }).(pulumi.BoolOutput)
 }
 
-// legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
+// Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
 func (o GetWlansSiteWlanOutput) LegacyOverds() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.LegacyOverds }).(pulumi.BoolOutput)
 }
 
-// whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+// Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
 func (o GetWlansSiteWlanOutput) LimitBcast() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.LimitBcast }).(pulumi.BoolOutput)
 }
 
-// limit probe response base on some heuristic rules
+// Limit probe response base on some heuristic rules
 func (o GetWlansSiteWlanOutput) LimitProbeResponse() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.LimitProbeResponse }).(pulumi.BoolOutput)
 }
 
-// max idle time in seconds
+// Max idle time in seconds
 func (o GetWlansSiteWlanOutput) MaxIdletime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.MaxIdletime }).(pulumi.IntOutput)
 }
 
-// maximum number of client connected to the SSID. `0` means unlimited
+// Maximum number of client connected to the SSID. `0` means unlimited
 func (o GetWlansSiteWlanOutput) MaxNumClients() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.MaxNumClients }).(pulumi.IntOutput)
 }
@@ -29197,7 +29154,7 @@ func (o GetWlansSiteWlanOutput) MistNac() GetWlansSiteWlanMistNacOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanMistNac { return v.MistNac }).(GetWlansSiteWlanMistNacOutput)
 }
 
-// when the object has been modified for the last time, in epoch
+// When the object has been modified for the last time, in epoch
 func (o GetWlansSiteWlanOutput) ModifiedTime() pulumi.Float64Output {
 	return o.ApplyT(func(v GetWlansSiteWlan) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
 }
@@ -29206,22 +29163,22 @@ func (o GetWlansSiteWlanOutput) MspId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.MspId }).(pulumi.StringOutput)
 }
 
-// when `interface`=`mxtunnel`, id of the Mist Tunnel
+// When `interface`=`mxtunnel`, id of the Mist Tunnel
 func (o GetWlansSiteWlanOutput) MxtunnelIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) []string { return v.MxtunnelIds }).(pulumi.StringArrayOutput)
 }
 
-// when `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+// When `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
 func (o GetWlansSiteWlanOutput) MxtunnelNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) []string { return v.MxtunnelNames }).(pulumi.StringArrayOutput)
 }
 
-// whether to only allow client to use DNS that we’ve learned from DHCP response
+// Whether to only allow client to use DNS that we’ve learned from DHCP response
 func (o GetWlansSiteWlanOutput) NoStaticDns() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.NoStaticDns }).(pulumi.BoolOutput)
 }
 
-// whether to only allow client that we’ve learned from DHCP exchange to talk
+// Whether to only allow client that we’ve learned from DHCP exchange to talk
 func (o GetWlansSiteWlanOutput) NoStaticIp() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.NoStaticIp }).(pulumi.BoolOutput)
 }
@@ -29230,27 +29187,27 @@ func (o GetWlansSiteWlanOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// portal wlan settings
+// Portal wlan settings
 func (o GetWlansSiteWlanOutput) Portal() GetWlansSiteWlanPortalOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanPortal { return v.Portal }).(GetWlansSiteWlanPortalOutput)
 }
 
-// list of hostnames without http(s):// (matched by substring)
+// List of hostnames without http(s):// (matched by substring)
 func (o GetWlansSiteWlanOutput) PortalAllowedHostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) []string { return v.PortalAllowedHostnames }).(pulumi.StringArrayOutput)
 }
 
-// list of CIDRs
+// List of CIDRs
 func (o GetWlansSiteWlanOutput) PortalAllowedSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) []string { return v.PortalAllowedSubnets }).(pulumi.StringArrayOutput)
 }
 
-// api secret (auto-generated) that can be used to sign guest authorization requests
+// APi secret (auto-generated) that can be used to sign guest authorization requests
 func (o GetWlansSiteWlanOutput) PortalApiSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.PortalApiSecret }).(pulumi.StringOutput)
 }
 
-// list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
 func (o GetWlansSiteWlanOutput) PortalDeniedHostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) []string { return v.PortalDeniedHostnames }).(pulumi.StringArrayOutput)
 }
@@ -29268,7 +29225,7 @@ func (o GetWlansSiteWlanOutput) Qos() GetWlansSiteWlanQosOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanQos { return v.Qos }).(GetWlansSiteWlanQosOutput)
 }
 
-// Radsec settings
+// RadSec settings
 func (o GetWlansSiteWlanOutput) Radsec() GetWlansSiteWlanRadsecOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanRadsec { return v.Radsec }).(GetWlansSiteWlanRadsecOutput)
 }
@@ -29278,7 +29235,7 @@ func (o GetWlansSiteWlanOutput) Rateset() GetWlansSiteWlanRatesetMapOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) map[string]GetWlansSiteWlanRateset { return v.Rateset }).(GetWlansSiteWlanRatesetMapOutput)
 }
 
-// when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+// When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
 func (o GetWlansSiteWlanOutput) ReconnectClientsWhenRoamingMxcluster() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.ReconnectClientsWhenRoamingMxcluster }).(pulumi.BoolOutput)
 }
@@ -29297,22 +29254,22 @@ func (o GetWlansSiteWlanOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.SiteId }).(pulumi.StringOutput)
 }
 
-// whether to exclude this WLAN from SLE metrics
+// Whether to exclude this WLAN from SLE metrics
 func (o GetWlansSiteWlanOutput) SleExcluded() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.SleExcluded }).(pulumi.BoolOutput)
 }
 
-// the name of the SSID
+// Name of the SSID
 func (o GetWlansSiteWlanOutput) Ssid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.Ssid }).(pulumi.StringOutput)
 }
 
-// if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
+// If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
 func (o GetWlansSiteWlanOutput) UseEapolV1() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.UseEapolV1 }).(pulumi.BoolOutput)
 }
 
-// if vlan tagging is enabled
+// If vlan tagging is enabled
 func (o GetWlansSiteWlanOutput) VlanEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.VlanEnabled }).(pulumi.BoolOutput)
 }
@@ -29331,37 +29288,37 @@ func (o GetWlansSiteWlanOutput) VlanPooling() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.VlanPooling }).(pulumi.BoolOutput)
 }
 
-// kbps
+// In kbps
 func (o GetWlansSiteWlanOutput) WlanLimitDown() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.WlanLimitDown }).(pulumi.IntOutput)
 }
 
-// if downlink limiting for whole wlan is enabled
+// If downlink limiting for whole wlan is enabled
 func (o GetWlansSiteWlanOutput) WlanLimitDownEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.WlanLimitDownEnabled }).(pulumi.BoolOutput)
 }
 
-// kbps
+// In kbps
 func (o GetWlansSiteWlanOutput) WlanLimitUp() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.WlanLimitUp }).(pulumi.IntOutput)
 }
 
-// if uplink limiting for whole wlan is enabled
+// If uplink limiting for whole wlan is enabled
 func (o GetWlansSiteWlanOutput) WlanLimitUpEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.WlanLimitUpEnabled }).(pulumi.BoolOutput)
 }
 
-// list of wxtag_ids
+// List of wxtag_ids
 func (o GetWlansSiteWlanOutput) WxtagIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) []string { return v.WxtagIds }).(pulumi.StringArrayOutput)
 }
 
-// when `interface`=`wxtunnel`, id of the WXLAN Tunnel
+// When `interface`=`wxtunnel`, id of the WXLAN Tunnel
 func (o GetWlansSiteWlanOutput) WxtunnelId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.WxtunnelId }).(pulumi.StringOutput)
 }
 
-// when `interface`=`wxtunnel`, remote tunnel identifier
+// When `interface`=`wxtunnel`, remote tunnel identifier
 func (o GetWlansSiteWlanOutput) WxtunnelRemoteId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.WxtunnelRemoteId }).(pulumi.StringOutput)
 }
@@ -29387,7 +29344,7 @@ func (o GetWlansSiteWlanArrayOutput) Index(i pulumi.IntInput) GetWlansSiteWlanOu
 }
 
 type GetWlansSiteWlanAcctServer struct {
-	// ip / hostname of RADIUS server
+	// IP/ hostname of RADIUS server
 	Host           string `pulumi:"host"`
 	KeywrapEnabled bool   `pulumi:"keywrapEnabled"`
 	// enum: `ascii`, `hex`
@@ -29396,7 +29353,7 @@ type GetWlansSiteWlanAcctServer struct {
 	KeywrapMack   string `pulumi:"keywrapMack"`
 	// Acct port of RADIUS server
 	Port int `pulumi:"port"`
-	// secret of RADIUS server
+	// Secretof RADIUS server
 	Secret string `pulumi:"secret"`
 }
 
@@ -29412,7 +29369,7 @@ type GetWlansSiteWlanAcctServerInput interface {
 }
 
 type GetWlansSiteWlanAcctServerArgs struct {
-	// ip / hostname of RADIUS server
+	// IP/ hostname of RADIUS server
 	Host           pulumi.StringInput `pulumi:"host"`
 	KeywrapEnabled pulumi.BoolInput   `pulumi:"keywrapEnabled"`
 	// enum: `ascii`, `hex`
@@ -29421,7 +29378,7 @@ type GetWlansSiteWlanAcctServerArgs struct {
 	KeywrapMack   pulumi.StringInput `pulumi:"keywrapMack"`
 	// Acct port of RADIUS server
 	Port pulumi.IntInput `pulumi:"port"`
-	// secret of RADIUS server
+	// Secretof RADIUS server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
 
@@ -29476,7 +29433,7 @@ func (o GetWlansSiteWlanAcctServerOutput) ToGetWlansSiteWlanAcctServerOutputWith
 	return o
 }
 
-// ip / hostname of RADIUS server
+// IP/ hostname of RADIUS server
 func (o GetWlansSiteWlanAcctServerOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAcctServer) string { return v.Host }).(pulumi.StringOutput)
 }
@@ -29503,7 +29460,7 @@ func (o GetWlansSiteWlanAcctServerOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAcctServer) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// secret of RADIUS server
+// Secretof RADIUS server
 func (o GetWlansSiteWlanAcctServerOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAcctServer) string { return v.Secret }).(pulumi.StringOutput)
 }
@@ -29531,12 +29488,12 @@ func (o GetWlansSiteWlanAcctServerArrayOutput) Index(i pulumi.IntInput) GetWlans
 type GetWlansSiteWlanAirwatch struct {
 	// API Key
 	ApiKey string `pulumi:"apiKey"`
-	// console URL
+	// Console URL
 	ConsoleUrl string `pulumi:"consoleUrl"`
 	Enabled    bool   `pulumi:"enabled"`
-	// password
+	// Password
 	Password string `pulumi:"password"`
-	// username
+	// Username
 	Username string `pulumi:"username"`
 }
 
@@ -29554,12 +29511,12 @@ type GetWlansSiteWlanAirwatchInput interface {
 type GetWlansSiteWlanAirwatchArgs struct {
 	// API Key
 	ApiKey pulumi.StringInput `pulumi:"apiKey"`
-	// console URL
+	// Console URL
 	ConsoleUrl pulumi.StringInput `pulumi:"consoleUrl"`
 	Enabled    pulumi.BoolInput   `pulumi:"enabled"`
-	// password
+	// Password
 	Password pulumi.StringInput `pulumi:"password"`
-	// username
+	// Username
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -29594,7 +29551,7 @@ func (o GetWlansSiteWlanAirwatchOutput) ApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAirwatch) string { return v.ApiKey }).(pulumi.StringOutput)
 }
 
-// console URL
+// Console URL
 func (o GetWlansSiteWlanAirwatchOutput) ConsoleUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAirwatch) string { return v.ConsoleUrl }).(pulumi.StringOutput)
 }
@@ -29603,12 +29560,12 @@ func (o GetWlansSiteWlanAirwatchOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAirwatch) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// password
+// Password
 func (o GetWlansSiteWlanAirwatchOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAirwatch) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// username
+// Username
 func (o GetWlansSiteWlanAirwatchOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAirwatch) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -29746,9 +29703,9 @@ func (o GetWlansSiteWlanAppQosOutput) Others() GetWlansSiteWlanAppQosOtherArrayO
 
 type GetWlansSiteWlanAppQosApps struct {
 	Dscp int `pulumi:"dscp"`
-	// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+	// Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
 	DstSubnet string `pulumi:"dstSubnet"`
-	// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+	// Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
 	SrcSubnet string `pulumi:"srcSubnet"`
 }
 
@@ -29765,9 +29722,9 @@ type GetWlansSiteWlanAppQosAppsInput interface {
 
 type GetWlansSiteWlanAppQosAppsArgs struct {
 	Dscp pulumi.IntInput `pulumi:"dscp"`
-	// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+	// Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
 	DstSubnet pulumi.StringInput `pulumi:"dstSubnet"`
-	// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+	// Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
 	SrcSubnet pulumi.StringInput `pulumi:"srcSubnet"`
 }
 
@@ -29826,12 +29783,12 @@ func (o GetWlansSiteWlanAppQosAppsOutput) Dscp() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAppQosApps) int { return v.Dscp }).(pulumi.IntOutput)
 }
 
-// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+// Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
 func (o GetWlansSiteWlanAppQosAppsOutput) DstSubnet() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAppQosApps) string { return v.DstSubnet }).(pulumi.StringOutput)
 }
 
-// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+// Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
 func (o GetWlansSiteWlanAppQosAppsOutput) SrcSubnet() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAppQosApps) string { return v.SrcSubnet }).(pulumi.StringOutput)
 }
@@ -29977,27 +29934,27 @@ func (o GetWlansSiteWlanAppQosOtherArrayOutput) Index(i pulumi.IntInput) GetWlan
 type GetWlansSiteWlanAuth struct {
 	// SAE anti-clogging token threshold
 	AnticlogThreshold int `pulumi:"anticlogThreshold"`
-	// whether to trigger EAP reauth when the session ends
+	// Whether to trigger EAP reauth when the session ends
 	EapReauth bool `pulumi:"eapReauth"`
-	// whether to enable MAC Auth, uses the same auth_servers
+	// Whether to enable MAC Auth, uses the same auth_servers
 	EnableMacAuth bool `pulumi:"enableMacAuth"`
-	// when `type`==`wep`
+	// When `type`==`wep`
 	KeyIdx int `pulumi:"keyIdx"`
-	// when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+	// When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
 	Keys []string `pulumi:"keys"`
-	// when `type`==`psk`, whether to only use multi_psk
+	// When `type`==`psk`, whether to only use multi_psk
 	MultiPskOnly bool `pulumi:"multiPskOnly"`
 	// if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
 	Owe string `pulumi:"owe"`
-	// when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+	// When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
 	Pairwises []string `pulumi:"pairwises"`
-	// when `multiPskOnly`==`true`, whether private wlan is enabled
+	// When `multiPskOnly`==`true`, whether private wlan is enabled
 	PrivateWlan bool `pulumi:"privateWlan"`
-	// when `type`==`psk`, 8-64 characters, or 64 hex characters
+	// When `type`==`psk`, 8-64 characters, or 64 hex characters
 	Psk string `pulumi:"psk"`
 	// enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
 	Type string `pulumi:"type"`
-	// enable WEP as secondary auth
+	// Enable WEP as secondary auth
 	WepAsSecondaryAuth bool `pulumi:"wepAsSecondaryAuth"`
 }
 
@@ -30015,27 +29972,27 @@ type GetWlansSiteWlanAuthInput interface {
 type GetWlansSiteWlanAuthArgs struct {
 	// SAE anti-clogging token threshold
 	AnticlogThreshold pulumi.IntInput `pulumi:"anticlogThreshold"`
-	// whether to trigger EAP reauth when the session ends
+	// Whether to trigger EAP reauth when the session ends
 	EapReauth pulumi.BoolInput `pulumi:"eapReauth"`
-	// whether to enable MAC Auth, uses the same auth_servers
+	// Whether to enable MAC Auth, uses the same auth_servers
 	EnableMacAuth pulumi.BoolInput `pulumi:"enableMacAuth"`
-	// when `type`==`wep`
+	// When `type`==`wep`
 	KeyIdx pulumi.IntInput `pulumi:"keyIdx"`
-	// when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+	// When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
 	Keys pulumi.StringArrayInput `pulumi:"keys"`
-	// when `type`==`psk`, whether to only use multi_psk
+	// When `type`==`psk`, whether to only use multi_psk
 	MultiPskOnly pulumi.BoolInput `pulumi:"multiPskOnly"`
 	// if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
 	Owe pulumi.StringInput `pulumi:"owe"`
-	// when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+	// When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
 	Pairwises pulumi.StringArrayInput `pulumi:"pairwises"`
-	// when `multiPskOnly`==`true`, whether private wlan is enabled
+	// When `multiPskOnly`==`true`, whether private wlan is enabled
 	PrivateWlan pulumi.BoolInput `pulumi:"privateWlan"`
-	// when `type`==`psk`, 8-64 characters, or 64 hex characters
+	// When `type`==`psk`, 8-64 characters, or 64 hex characters
 	Psk pulumi.StringInput `pulumi:"psk"`
 	// enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
 	Type pulumi.StringInput `pulumi:"type"`
-	// enable WEP as secondary auth
+	// Enable WEP as secondary auth
 	WepAsSecondaryAuth pulumi.BoolInput `pulumi:"wepAsSecondaryAuth"`
 }
 
@@ -30070,27 +30027,27 @@ func (o GetWlansSiteWlanAuthOutput) AnticlogThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAuth) int { return v.AnticlogThreshold }).(pulumi.IntOutput)
 }
 
-// whether to trigger EAP reauth when the session ends
+// Whether to trigger EAP reauth when the session ends
 func (o GetWlansSiteWlanAuthOutput) EapReauth() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAuth) bool { return v.EapReauth }).(pulumi.BoolOutput)
 }
 
-// whether to enable MAC Auth, uses the same auth_servers
+// Whether to enable MAC Auth, uses the same auth_servers
 func (o GetWlansSiteWlanAuthOutput) EnableMacAuth() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAuth) bool { return v.EnableMacAuth }).(pulumi.BoolOutput)
 }
 
-// when `type`==`wep`
+// When `type`==`wep`
 func (o GetWlansSiteWlanAuthOutput) KeyIdx() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAuth) int { return v.KeyIdx }).(pulumi.IntOutput)
 }
 
-// when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+// When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
 func (o GetWlansSiteWlanAuthOutput) Keys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAuth) []string { return v.Keys }).(pulumi.StringArrayOutput)
 }
 
-// when `type`==`psk`, whether to only use multi_psk
+// When `type`==`psk`, whether to only use multi_psk
 func (o GetWlansSiteWlanAuthOutput) MultiPskOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAuth) bool { return v.MultiPskOnly }).(pulumi.BoolOutput)
 }
@@ -30100,17 +30057,17 @@ func (o GetWlansSiteWlanAuthOutput) Owe() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAuth) string { return v.Owe }).(pulumi.StringOutput)
 }
 
-// when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+// When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
 func (o GetWlansSiteWlanAuthOutput) Pairwises() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAuth) []string { return v.Pairwises }).(pulumi.StringArrayOutput)
 }
 
-// when `multiPskOnly`==`true`, whether private wlan is enabled
+// When `multiPskOnly`==`true`, whether private wlan is enabled
 func (o GetWlansSiteWlanAuthOutput) PrivateWlan() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAuth) bool { return v.PrivateWlan }).(pulumi.BoolOutput)
 }
 
-// when `type`==`psk`, 8-64 characters, or 64 hex characters
+// When `type`==`psk`, 8-64 characters, or 64 hex characters
 func (o GetWlansSiteWlanAuthOutput) Psk() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAuth) string { return v.Psk }).(pulumi.StringOutput)
 }
@@ -30120,13 +30077,13 @@ func (o GetWlansSiteWlanAuthOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAuth) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// enable WEP as secondary auth
+// Enable WEP as secondary auth
 func (o GetWlansSiteWlanAuthOutput) WepAsSecondaryAuth() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAuth) bool { return v.WepAsSecondaryAuth }).(pulumi.BoolOutput)
 }
 
 type GetWlansSiteWlanAuthServer struct {
-	// ip / hostname of RADIUS server
+	// IP/ hostname of RADIUS server
 	Host           string `pulumi:"host"`
 	KeywrapEnabled bool   `pulumi:"keywrapEnabled"`
 	// enum: `ascii`, `hex`
@@ -30135,9 +30092,9 @@ type GetWlansSiteWlanAuthServer struct {
 	KeywrapMack   string `pulumi:"keywrapMack"`
 	// Auth port of RADIUS server
 	Port int `pulumi:"port"`
-	// whether to require Message-Authenticator in requests
+	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator bool `pulumi:"requireMessageAuthenticator"`
-	// secret of RADIUS server
+	// Secretof RADIUS server
 	Secret string `pulumi:"secret"`
 }
 
@@ -30153,7 +30110,7 @@ type GetWlansSiteWlanAuthServerInput interface {
 }
 
 type GetWlansSiteWlanAuthServerArgs struct {
-	// ip / hostname of RADIUS server
+	// IP/ hostname of RADIUS server
 	Host           pulumi.StringInput `pulumi:"host"`
 	KeywrapEnabled pulumi.BoolInput   `pulumi:"keywrapEnabled"`
 	// enum: `ascii`, `hex`
@@ -30162,9 +30119,9 @@ type GetWlansSiteWlanAuthServerArgs struct {
 	KeywrapMack   pulumi.StringInput `pulumi:"keywrapMack"`
 	// Auth port of RADIUS server
 	Port pulumi.IntInput `pulumi:"port"`
-	// whether to require Message-Authenticator in requests
+	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator pulumi.BoolInput `pulumi:"requireMessageAuthenticator"`
-	// secret of RADIUS server
+	// Secretof RADIUS server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
 
@@ -30219,7 +30176,7 @@ func (o GetWlansSiteWlanAuthServerOutput) ToGetWlansSiteWlanAuthServerOutputWith
 	return o
 }
 
-// ip / hostname of RADIUS server
+// IP/ hostname of RADIUS server
 func (o GetWlansSiteWlanAuthServerOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAuthServer) string { return v.Host }).(pulumi.StringOutput)
 }
@@ -30246,12 +30203,12 @@ func (o GetWlansSiteWlanAuthServerOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAuthServer) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// whether to require Message-Authenticator in requests
+// Whether to require Message-Authenticator in requests
 func (o GetWlansSiteWlanAuthServerOutput) RequireMessageAuthenticator() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAuthServer) bool { return v.RequireMessageAuthenticator }).(pulumi.BoolOutput)
 }
 
-// secret of RADIUS server
+// Secretof RADIUS server
 func (o GetWlansSiteWlanAuthServerOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAuthServer) string { return v.Secret }).(pulumi.StringOutput)
 }
@@ -30279,9 +30236,9 @@ func (o GetWlansSiteWlanAuthServerArrayOutput) Index(i pulumi.IntInput) GetWlans
 type GetWlansSiteWlanBonjour struct {
 	// additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
 	AdditionalVlanIds []string `pulumi:"additionalVlanIds"`
-	// whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
+	// Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
 	Enabled bool `pulumi:"enabled"`
-	// what services are allowed.
+	// What services are allowed.
 	// Property key is the service name
 	Services map[string]GetWlansSiteWlanBonjourServices `pulumi:"services"`
 }
@@ -30300,9 +30257,9 @@ type GetWlansSiteWlanBonjourInput interface {
 type GetWlansSiteWlanBonjourArgs struct {
 	// additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
 	AdditionalVlanIds pulumi.StringArrayInput `pulumi:"additionalVlanIds"`
-	// whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
+	// Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// what services are allowed.
+	// What services are allowed.
 	// Property key is the service name
 	Services GetWlansSiteWlanBonjourServicesMapInput `pulumi:"services"`
 }
@@ -30338,21 +30295,21 @@ func (o GetWlansSiteWlanBonjourOutput) AdditionalVlanIds() pulumi.StringArrayOut
 	return o.ApplyT(func(v GetWlansSiteWlanBonjour) []string { return v.AdditionalVlanIds }).(pulumi.StringArrayOutput)
 }
 
-// whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
+// Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
 func (o GetWlansSiteWlanBonjourOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanBonjour) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// what services are allowed.
+// What services are allowed.
 // Property key is the service name
 func (o GetWlansSiteWlanBonjourOutput) Services() GetWlansSiteWlanBonjourServicesMapOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanBonjour) map[string]GetWlansSiteWlanBonjourServices { return v.Services }).(GetWlansSiteWlanBonjourServicesMapOutput)
 }
 
 type GetWlansSiteWlanBonjourServices struct {
-	// whether to prevent wireless clients to discover bonjour devices on the same WLAN
+	// Whether to prevent wireless clients to discover bonjour devices on the same WLAN
 	DisableLocal bool `pulumi:"disableLocal"`
-	// optional, if the service is further restricted for certain RADIUS groups
+	// Optional, if the service is further restricted for certain RADIUS groups
 	RadiusGroups []string `pulumi:"radiusGroups"`
 	// how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
 	Scope string `pulumi:"scope"`
@@ -30370,9 +30327,9 @@ type GetWlansSiteWlanBonjourServicesInput interface {
 }
 
 type GetWlansSiteWlanBonjourServicesArgs struct {
-	// whether to prevent wireless clients to discover bonjour devices on the same WLAN
+	// Whether to prevent wireless clients to discover bonjour devices on the same WLAN
 	DisableLocal pulumi.BoolInput `pulumi:"disableLocal"`
-	// optional, if the service is further restricted for certain RADIUS groups
+	// Optional, if the service is further restricted for certain RADIUS groups
 	RadiusGroups pulumi.StringArrayInput `pulumi:"radiusGroups"`
 	// how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
 	Scope pulumi.StringInput `pulumi:"scope"`
@@ -30429,12 +30386,12 @@ func (o GetWlansSiteWlanBonjourServicesOutput) ToGetWlansSiteWlanBonjourServices
 	return o
 }
 
-// whether to prevent wireless clients to discover bonjour devices on the same WLAN
+// Whether to prevent wireless clients to discover bonjour devices on the same WLAN
 func (o GetWlansSiteWlanBonjourServicesOutput) DisableLocal() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanBonjourServices) bool { return v.DisableLocal }).(pulumi.BoolOutput)
 }
 
-// optional, if the service is further restricted for certain RADIUS groups
+// Optional, if the service is further restricted for certain RADIUS groups
 func (o GetWlansSiteWlanBonjourServicesOutput) RadiusGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanBonjourServices) []string { return v.RadiusGroups }).(pulumi.StringArrayOutput)
 }
@@ -30465,11 +30422,11 @@ func (o GetWlansSiteWlanBonjourServicesMapOutput) MapIndex(k pulumi.StringInput)
 }
 
 type GetWlansSiteWlanCiscoCwa struct {
-	// list of hostnames without http(s):// (matched by substring)
+	// List of hostnames without http(s):// (matched by substring)
 	AllowedHostnames []string `pulumi:"allowedHostnames"`
-	// list of CIDRs
+	// List of CIDRs
 	AllowedSubnets []string `pulumi:"allowedSubnets"`
-	// list of blocked CIDRs
+	// List of blocked CIDRs
 	BlockedSubnets []string `pulumi:"blockedSubnets"`
 	Enabled        bool     `pulumi:"enabled"`
 }
@@ -30486,11 +30443,11 @@ type GetWlansSiteWlanCiscoCwaInput interface {
 }
 
 type GetWlansSiteWlanCiscoCwaArgs struct {
-	// list of hostnames without http(s):// (matched by substring)
+	// List of hostnames without http(s):// (matched by substring)
 	AllowedHostnames pulumi.StringArrayInput `pulumi:"allowedHostnames"`
-	// list of CIDRs
+	// List of CIDRs
 	AllowedSubnets pulumi.StringArrayInput `pulumi:"allowedSubnets"`
-	// list of blocked CIDRs
+	// List of blocked CIDRs
 	BlockedSubnets pulumi.StringArrayInput `pulumi:"blockedSubnets"`
 	Enabled        pulumi.BoolInput        `pulumi:"enabled"`
 }
@@ -30521,17 +30478,17 @@ func (o GetWlansSiteWlanCiscoCwaOutput) ToGetWlansSiteWlanCiscoCwaOutputWithCont
 	return o
 }
 
-// list of hostnames without http(s):// (matched by substring)
+// List of hostnames without http(s):// (matched by substring)
 func (o GetWlansSiteWlanCiscoCwaOutput) AllowedHostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanCiscoCwa) []string { return v.AllowedHostnames }).(pulumi.StringArrayOutput)
 }
 
-// list of CIDRs
+// List of CIDRs
 func (o GetWlansSiteWlanCiscoCwaOutput) AllowedSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanCiscoCwa) []string { return v.AllowedSubnets }).(pulumi.StringArrayOutput)
 }
 
-// list of blocked CIDRs
+// List of blocked CIDRs
 func (o GetWlansSiteWlanCiscoCwaOutput) BlockedSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanCiscoCwa) []string { return v.BlockedSubnets }).(pulumi.StringArrayOutput)
 }
@@ -30541,7 +30498,7 @@ func (o GetWlansSiteWlanCiscoCwaOutput) Enabled() pulumi.BoolOutput {
 }
 
 type GetWlansSiteWlanCoaServer struct {
-	// whether to disable Event-Timestamp Check
+	// Whether to disable Event-Timestamp Check
 	DisableEventTimestampCheck bool   `pulumi:"disableEventTimestampCheck"`
 	Enabled                    bool   `pulumi:"enabled"`
 	Ip                         string `pulumi:"ip"`
@@ -30561,7 +30518,7 @@ type GetWlansSiteWlanCoaServerInput interface {
 }
 
 type GetWlansSiteWlanCoaServerArgs struct {
-	// whether to disable Event-Timestamp Check
+	// Whether to disable Event-Timestamp Check
 	DisableEventTimestampCheck pulumi.BoolInput   `pulumi:"disableEventTimestampCheck"`
 	Enabled                    pulumi.BoolInput   `pulumi:"enabled"`
 	Ip                         pulumi.StringInput `pulumi:"ip"`
@@ -30620,7 +30577,7 @@ func (o GetWlansSiteWlanCoaServerOutput) ToGetWlansSiteWlanCoaServerOutputWithCo
 	return o
 }
 
-// whether to disable Event-Timestamp Check
+// Whether to disable Event-Timestamp Check
 func (o GetWlansSiteWlanCoaServerOutput) DisableEventTimestampCheck() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanCoaServer) bool { return v.DisableEventTimestampCheck }).(pulumi.BoolOutput)
 }
@@ -30663,7 +30620,7 @@ func (o GetWlansSiteWlanCoaServerArrayOutput) Index(i pulumi.IntInput) GetWlansS
 
 type GetWlansSiteWlanDnsServerRewrite struct {
 	Enabled bool `pulumi:"enabled"`
-	// map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+	// Map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
 	RadiusGroups map[string]string `pulumi:"radiusGroups"`
 }
 
@@ -30680,7 +30637,7 @@ type GetWlansSiteWlanDnsServerRewriteInput interface {
 
 type GetWlansSiteWlanDnsServerRewriteArgs struct {
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+	// Map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
 	RadiusGroups pulumi.StringMapInput `pulumi:"radiusGroups"`
 }
 
@@ -30714,17 +30671,17 @@ func (o GetWlansSiteWlanDnsServerRewriteOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanDnsServerRewrite) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+// Map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
 func (o GetWlansSiteWlanDnsServerRewriteOutput) RadiusGroups() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanDnsServerRewrite) map[string]string { return v.RadiusGroups }).(pulumi.StringMapOutput)
 }
 
 type GetWlansSiteWlanDynamicPsk struct {
-	// default PSK to use if cloud WLC is not available, 8-63 characters
+	// Default PSK to use if cloud WLC is not available, 8-63 characters
 	DefaultPsk    string `pulumi:"defaultPsk"`
 	DefaultVlanId string `pulumi:"defaultVlanId"`
 	Enabled       bool   `pulumi:"enabled"`
-	// when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+	// When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
 	ForceLookup bool `pulumi:"forceLookup"`
 	// enum: `cloudPsks`, `radius`
 	Source string `pulumi:"source"`
@@ -30742,11 +30699,11 @@ type GetWlansSiteWlanDynamicPskInput interface {
 }
 
 type GetWlansSiteWlanDynamicPskArgs struct {
-	// default PSK to use if cloud WLC is not available, 8-63 characters
+	// Default PSK to use if cloud WLC is not available, 8-63 characters
 	DefaultPsk    pulumi.StringInput `pulumi:"defaultPsk"`
 	DefaultVlanId pulumi.StringInput `pulumi:"defaultVlanId"`
 	Enabled       pulumi.BoolInput   `pulumi:"enabled"`
-	// when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+	// When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
 	ForceLookup pulumi.BoolInput `pulumi:"forceLookup"`
 	// enum: `cloudPsks`, `radius`
 	Source pulumi.StringInput `pulumi:"source"`
@@ -30778,7 +30735,7 @@ func (o GetWlansSiteWlanDynamicPskOutput) ToGetWlansSiteWlanDynamicPskOutputWith
 	return o
 }
 
-// default PSK to use if cloud WLC is not available, 8-63 characters
+// Default PSK to use if cloud WLC is not available, 8-63 characters
 func (o GetWlansSiteWlanDynamicPskOutput) DefaultPsk() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanDynamicPsk) string { return v.DefaultPsk }).(pulumi.StringOutput)
 }
@@ -30791,7 +30748,7 @@ func (o GetWlansSiteWlanDynamicPskOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanDynamicPsk) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+// When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
 func (o GetWlansSiteWlanDynamicPskOutput) ForceLookup() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanDynamicPsk) bool { return v.ForceLookup }).(pulumi.BoolOutput)
 }
@@ -30806,11 +30763,11 @@ type GetWlansSiteWlanDynamicVlan struct {
 	DefaultVlanIds []string `pulumi:"defaultVlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
 	Enabled bool `pulumi:"enabled"`
-	// vlan_ids to be locally bridged
+	// VLAN_ids to be locally bridged
 	LocalVlanIds []string `pulumi:"localVlanIds"`
 	// standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
 	Type string `pulumi:"type"`
-	// map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
+	// Map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
 	//   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
 	//   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
 	Vlans map[string]string `pulumi:"vlans"`
@@ -30832,11 +30789,11 @@ type GetWlansSiteWlanDynamicVlanArgs struct {
 	DefaultVlanIds pulumi.StringArrayInput `pulumi:"defaultVlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// vlan_ids to be locally bridged
+	// VLAN_ids to be locally bridged
 	LocalVlanIds pulumi.StringArrayInput `pulumi:"localVlanIds"`
 	// standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
 	Type pulumi.StringInput `pulumi:"type"`
-	// map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
+	// Map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
 	//   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
 	//   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
 	Vlans pulumi.StringMapInput `pulumi:"vlans"`
@@ -30878,7 +30835,7 @@ func (o GetWlansSiteWlanDynamicVlanOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanDynamicVlan) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// vlan_ids to be locally bridged
+// VLAN_ids to be locally bridged
 func (o GetWlansSiteWlanDynamicVlanOutput) LocalVlanIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanDynamicVlan) []string { return v.LocalVlanIds }).(pulumi.StringArrayOutput)
 }
@@ -30888,7 +30845,7 @@ func (o GetWlansSiteWlanDynamicVlanOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanDynamicVlan) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
+// Map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
 //   - if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
 //   - if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
 func (o GetWlansSiteWlanDynamicVlanOutput) Vlans() pulumi.StringMapOutput {
@@ -30897,13 +30854,13 @@ func (o GetWlansSiteWlanDynamicVlanOutput) Vlans() pulumi.StringMapOutput {
 
 type GetWlansSiteWlanHotspot20 struct {
 	DomainNames []string `pulumi:"domainNames"`
-	// whether to enable hotspot 2.0 config
+	// Whether to enable hotspot 2.0 config
 	Enabled   bool     `pulumi:"enabled"`
 	NaiRealms []string `pulumi:"naiRealms"`
-	// list of operators to support
+	// List of operators to support
 	Operators []string `pulumi:"operators"`
 	Rcois     []string `pulumi:"rcois"`
-	// venue name, default is site name
+	// Venue name, default is site name
 	VenueName string `pulumi:"venueName"`
 }
 
@@ -30920,13 +30877,13 @@ type GetWlansSiteWlanHotspot20Input interface {
 
 type GetWlansSiteWlanHotspot20Args struct {
 	DomainNames pulumi.StringArrayInput `pulumi:"domainNames"`
-	// whether to enable hotspot 2.0 config
+	// Whether to enable hotspot 2.0 config
 	Enabled   pulumi.BoolInput        `pulumi:"enabled"`
 	NaiRealms pulumi.StringArrayInput `pulumi:"naiRealms"`
-	// list of operators to support
+	// List of operators to support
 	Operators pulumi.StringArrayInput `pulumi:"operators"`
 	Rcois     pulumi.StringArrayInput `pulumi:"rcois"`
-	// venue name, default is site name
+	// Venue name, default is site name
 	VenueName pulumi.StringInput `pulumi:"venueName"`
 }
 
@@ -30960,7 +30917,7 @@ func (o GetWlansSiteWlanHotspot20Output) DomainNames() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v GetWlansSiteWlanHotspot20) []string { return v.DomainNames }).(pulumi.StringArrayOutput)
 }
 
-// whether to enable hotspot 2.0 config
+// Whether to enable hotspot 2.0 config
 func (o GetWlansSiteWlanHotspot20Output) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanHotspot20) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -30969,7 +30926,7 @@ func (o GetWlansSiteWlanHotspot20Output) NaiRealms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanHotspot20) []string { return v.NaiRealms }).(pulumi.StringArrayOutput)
 }
 
-// list of operators to support
+// List of operators to support
 func (o GetWlansSiteWlanHotspot20Output) Operators() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanHotspot20) []string { return v.Operators }).(pulumi.StringArrayOutput)
 }
@@ -30978,13 +30935,13 @@ func (o GetWlansSiteWlanHotspot20Output) Rcois() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanHotspot20) []string { return v.Rcois }).(pulumi.StringArrayOutput)
 }
 
-// venue name, default is site name
+// Venue name, default is site name
 func (o GetWlansSiteWlanHotspot20Output) VenueName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanHotspot20) string { return v.VenueName }).(pulumi.StringOutput)
 }
 
 type GetWlansSiteWlanInjectDhcpOption82 struct {
-	// information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+	// Information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
 	//   * {{AP_MAC}}
 	//   * {{AP_MAC_DASHED}}
 	//   * {{AP_MODEL}}
@@ -30992,7 +30949,7 @@ type GetWlansSiteWlanInjectDhcpOption82 struct {
 	//   * {{SITE_NAME}}
 	//   * {{SSID}}
 	CircuitId string `pulumi:"circuitId"`
-	// whether to inject option 82 when forwarding DHCP packets
+	// Whether to inject option 82 when forwarding DHCP packets
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -31008,7 +30965,7 @@ type GetWlansSiteWlanInjectDhcpOption82Input interface {
 }
 
 type GetWlansSiteWlanInjectDhcpOption82Args struct {
-	// information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+	// Information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
 	//   * {{AP_MAC}}
 	//   * {{AP_MAC_DASHED}}
 	//   * {{AP_MODEL}}
@@ -31016,7 +30973,7 @@ type GetWlansSiteWlanInjectDhcpOption82Args struct {
 	//   * {{SITE_NAME}}
 	//   * {{SSID}}
 	CircuitId pulumi.StringInput `pulumi:"circuitId"`
-	// whether to inject option 82 when forwarding DHCP packets
+	// Whether to inject option 82 when forwarding DHCP packets
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -31046,7 +31003,7 @@ func (o GetWlansSiteWlanInjectDhcpOption82Output) ToGetWlansSiteWlanInjectDhcpOp
 	return o
 }
 
-// information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+// Information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
 //   - {{AP_MAC}}
 //   - {{AP_MAC_DASHED}}
 //   - {{AP_MODEL}}
@@ -31057,19 +31014,19 @@ func (o GetWlansSiteWlanInjectDhcpOption82Output) CircuitId() pulumi.StringOutpu
 	return o.ApplyT(func(v GetWlansSiteWlanInjectDhcpOption82) string { return v.CircuitId }).(pulumi.StringOutput)
 }
 
-// whether to inject option 82 when forwarding DHCP packets
+// Whether to inject option 82 when forwarding DHCP packets
 func (o GetWlansSiteWlanInjectDhcpOption82Output) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanInjectDhcpOption82) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 type GetWlansSiteWlanMistNac struct {
-	// when enabled:
+	// When enabled:
 	//   * `authServers` is ignored
 	//   * `acctServers` is ignored
 	//   * `auth_servers_*` are ignored
 	//   * `coaServers` is ignored
 	//   * `radsec` is ignored
-	//   * `coaEnabled` is assumed'
+	//   * `coaEnabled` is assumed
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -31085,13 +31042,13 @@ type GetWlansSiteWlanMistNacInput interface {
 }
 
 type GetWlansSiteWlanMistNacArgs struct {
-	// when enabled:
+	// When enabled:
 	//   * `authServers` is ignored
 	//   * `acctServers` is ignored
 	//   * `auth_servers_*` are ignored
 	//   * `coaServers` is ignored
 	//   * `radsec` is ignored
-	//   * `coaEnabled` is assumed'
+	//   * `coaEnabled` is assumed
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -31121,13 +31078,13 @@ func (o GetWlansSiteWlanMistNacOutput) ToGetWlansSiteWlanMistNacOutputWithContex
 	return o
 }
 
-// when enabled:
+// When enabled:
 //   - `authServers` is ignored
 //   - `acctServers` is ignored
 //   - `auth_servers_*` are ignored
 //   - `coaServers` is ignored
 //   - `radsec` is ignored
-//   - `coaEnabled` is assumed'
+//   - `coaEnabled` is assumed
 func (o GetWlansSiteWlanMistNacOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanMistNac) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -31141,7 +31098,7 @@ type GetWlansSiteWlanPortal struct {
 	AmazonClientSecret string `pulumi:"amazonClientSecret"`
 	// Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	AmazonEmailDomains []string `pulumi:"amazonEmailDomains"`
-	// whether amazon is enabled as a login method
+	// Whether amazon is enabled as a login method
 	AmazonEnabled bool `pulumi:"amazonEnabled"`
 	// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
 	AmazonExpire int `pulumi:"amazonExpire"`
@@ -31151,9 +31108,9 @@ type GetWlansSiteWlanPortal struct {
 	AzureClientId string `pulumi:"azureClientId"`
 	// Required if `azureEnabled`==`true`. Azure active directory app client secret
 	AzureClientSecret string `pulumi:"azureClientSecret"`
-	// whether Azure Active Directory is enabled as a login method
+	// Whether Azure Active Directory is enabled as a login method
 	AzureEnabled bool `pulumi:"azureEnabled"`
-	// interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+	// Interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
 	AzureExpire int `pulumi:"azureExpire"`
 	// Required if `azureEnabled`==`true`. Azure active directory tenant id.
 	AzureTenantId string `pulumi:"azureTenantId"`
@@ -31163,17 +31120,17 @@ type GetWlansSiteWlanPortal struct {
 	BroadnetSid string `pulumi:"broadnetSid"`
 	// Required if `smsProvider`==`broadnet`
 	BroadnetUserId string `pulumi:"broadnetUserId"`
-	// whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+	// Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
 	BypassWhenCloudDown bool `pulumi:"bypassWhenCloudDown"`
 	// Required if `smsProvider`==`clickatell`
 	ClickatellApiKey string `pulumi:"clickatellApiKey"`
-	// whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
+	// Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
 	CrossSite bool `pulumi:"crossSite"`
-	// whether email (access code verification) is enabled as a login method
+	// Whether email (access code verification) is enabled as a login method
 	EmailEnabled bool `pulumi:"emailEnabled"`
-	// whether guest portal is enabled
+	// Whether guest portal is enabled
 	Enabled bool `pulumi:"enabled"`
-	// how long to remain authorized, in minutes
+	// How long to remain authorized, in minutes
 	Expire int `pulumi:"expire"`
 	// Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
 	ExternalPortalUrl string `pulumi:"externalPortalUrl"`
@@ -31183,13 +31140,13 @@ type GetWlansSiteWlanPortal struct {
 	FacebookClientSecret string `pulumi:"facebookClientSecret"`
 	// Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	FacebookEmailDomains []string `pulumi:"facebookEmailDomains"`
-	// whether facebook is enabled as a login method
+	// Whether facebook is enabled as a login method
 	FacebookEnabled bool `pulumi:"facebookEnabled"`
 	// Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
 	FacebookExpire int `pulumi:"facebookExpire"`
-	// whether to forward the user to another URL after authorized
+	// Whether to forward the user to another URL after authorized
 	Forward bool `pulumi:"forward"`
-	// the URL to forward the user to
+	// URL to forward the user to
 	ForwardUrl string `pulumi:"forwardUrl"`
 	// Google OAuth2 app id. This is optional. If not provided, it will use a default one.
 	GoogleClientId string `pulumi:"googleClientId"`
@@ -31197,9 +31154,9 @@ type GetWlansSiteWlanPortal struct {
 	GoogleClientSecret string `pulumi:"googleClientSecret"`
 	// Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	GoogleEmailDomains []string `pulumi:"googleEmailDomains"`
-	// whether google is enabled as login method
+	// Whether Google is enabled as login method
 	GoogleEnabled bool `pulumi:"googleEnabled"`
-	// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+	// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
 	GoogleExpire int `pulumi:"googleExpire"`
 	// Required if `smsProvider`==`gupshup`
 	GupshupPassword string `pulumi:"gupshupPassword"`
@@ -31211,7 +31168,7 @@ type GetWlansSiteWlanPortal struct {
 	MicrosoftClientSecret string `pulumi:"microsoftClientSecret"`
 	// Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	MicrosoftEmailDomains []string `pulumi:"microsoftEmailDomains"`
-	// whether microsoft 365 is enabled as a login method
+	// Whether microsoft 365 is enabled as a login method
 	MicrosoftEnabled bool `pulumi:"microsoftEnabled"`
 	// Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
 	MicrosoftExpire int `pulumi:"microsoftExpire"`
@@ -31221,9 +31178,9 @@ type GetWlansSiteWlanPortal struct {
 	PassphraseExpire int `pulumi:"passphraseExpire"`
 	// Required if `passphraseEnabled`==`true`.
 	Password string `pulumi:"password"`
-	// whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+	// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
 	PredefinedSponsorsEnabled bool `pulumi:"predefinedSponsorsEnabled"`
-	// whether to hide sponsor’s email from list of sponsors
+	// Whether to hide sponsor’s email from list of sponsors
 	PredefinedSponsorsHideEmail bool `pulumi:"predefinedSponsorsHideEmail"`
 	Privacy                     bool `pulumi:"privacy"`
 	// Required if `smsProvider`==`puzzel`
@@ -31232,7 +31189,7 @@ type GetWlansSiteWlanPortal struct {
 	PuzzelServiceId string `pulumi:"puzzelServiceId"`
 	// Required if `smsProvider`==`puzzel`
 	PuzzelUsername string `pulumi:"puzzelUsername"`
-	// whether sms is enabled as a login method
+	// Whether sms is enabled as a login method
 	SmsEnabled bool `pulumi:"smsEnabled"`
 	// Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
 	SmsExpire int `pulumi:"smsExpire"`
@@ -31242,9 +31199,9 @@ type GetWlansSiteWlanPortal struct {
 	SmsProvider string `pulumi:"smsProvider"`
 	// Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
 	SponsorAutoApprove bool `pulumi:"sponsorAutoApprove"`
-	// list of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
+	// List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
 	SponsorEmailDomains []string `pulumi:"sponsorEmailDomains"`
-	// whether sponsor is enabled
+	// Whether sponsor is enabled
 	SponsorEnabled bool `pulumi:"sponsorEnabled"`
 	// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
 	SponsorExpire int `pulumi:"sponsorExpire"`
@@ -31305,7 +31262,7 @@ type GetWlansSiteWlanPortalArgs struct {
 	AmazonClientSecret pulumi.StringInput `pulumi:"amazonClientSecret"`
 	// Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	AmazonEmailDomains pulumi.StringArrayInput `pulumi:"amazonEmailDomains"`
-	// whether amazon is enabled as a login method
+	// Whether amazon is enabled as a login method
 	AmazonEnabled pulumi.BoolInput `pulumi:"amazonEnabled"`
 	// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
 	AmazonExpire pulumi.IntInput `pulumi:"amazonExpire"`
@@ -31315,9 +31272,9 @@ type GetWlansSiteWlanPortalArgs struct {
 	AzureClientId pulumi.StringInput `pulumi:"azureClientId"`
 	// Required if `azureEnabled`==`true`. Azure active directory app client secret
 	AzureClientSecret pulumi.StringInput `pulumi:"azureClientSecret"`
-	// whether Azure Active Directory is enabled as a login method
+	// Whether Azure Active Directory is enabled as a login method
 	AzureEnabled pulumi.BoolInput `pulumi:"azureEnabled"`
-	// interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+	// Interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
 	AzureExpire pulumi.IntInput `pulumi:"azureExpire"`
 	// Required if `azureEnabled`==`true`. Azure active directory tenant id.
 	AzureTenantId pulumi.StringInput `pulumi:"azureTenantId"`
@@ -31327,17 +31284,17 @@ type GetWlansSiteWlanPortalArgs struct {
 	BroadnetSid pulumi.StringInput `pulumi:"broadnetSid"`
 	// Required if `smsProvider`==`broadnet`
 	BroadnetUserId pulumi.StringInput `pulumi:"broadnetUserId"`
-	// whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+	// Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
 	BypassWhenCloudDown pulumi.BoolInput `pulumi:"bypassWhenCloudDown"`
 	// Required if `smsProvider`==`clickatell`
 	ClickatellApiKey pulumi.StringInput `pulumi:"clickatellApiKey"`
-	// whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
+	// Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
 	CrossSite pulumi.BoolInput `pulumi:"crossSite"`
-	// whether email (access code verification) is enabled as a login method
+	// Whether email (access code verification) is enabled as a login method
 	EmailEnabled pulumi.BoolInput `pulumi:"emailEnabled"`
-	// whether guest portal is enabled
+	// Whether guest portal is enabled
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// how long to remain authorized, in minutes
+	// How long to remain authorized, in minutes
 	Expire pulumi.IntInput `pulumi:"expire"`
 	// Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
 	ExternalPortalUrl pulumi.StringInput `pulumi:"externalPortalUrl"`
@@ -31347,13 +31304,13 @@ type GetWlansSiteWlanPortalArgs struct {
 	FacebookClientSecret pulumi.StringInput `pulumi:"facebookClientSecret"`
 	// Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	FacebookEmailDomains pulumi.StringArrayInput `pulumi:"facebookEmailDomains"`
-	// whether facebook is enabled as a login method
+	// Whether facebook is enabled as a login method
 	FacebookEnabled pulumi.BoolInput `pulumi:"facebookEnabled"`
 	// Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
 	FacebookExpire pulumi.IntInput `pulumi:"facebookExpire"`
-	// whether to forward the user to another URL after authorized
+	// Whether to forward the user to another URL after authorized
 	Forward pulumi.BoolInput `pulumi:"forward"`
-	// the URL to forward the user to
+	// URL to forward the user to
 	ForwardUrl pulumi.StringInput `pulumi:"forwardUrl"`
 	// Google OAuth2 app id. This is optional. If not provided, it will use a default one.
 	GoogleClientId pulumi.StringInput `pulumi:"googleClientId"`
@@ -31361,9 +31318,9 @@ type GetWlansSiteWlanPortalArgs struct {
 	GoogleClientSecret pulumi.StringInput `pulumi:"googleClientSecret"`
 	// Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	GoogleEmailDomains pulumi.StringArrayInput `pulumi:"googleEmailDomains"`
-	// whether google is enabled as login method
+	// Whether Google is enabled as login method
 	GoogleEnabled pulumi.BoolInput `pulumi:"googleEnabled"`
-	// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+	// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
 	GoogleExpire pulumi.IntInput `pulumi:"googleExpire"`
 	// Required if `smsProvider`==`gupshup`
 	GupshupPassword pulumi.StringInput `pulumi:"gupshupPassword"`
@@ -31375,7 +31332,7 @@ type GetWlansSiteWlanPortalArgs struct {
 	MicrosoftClientSecret pulumi.StringInput `pulumi:"microsoftClientSecret"`
 	// Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	MicrosoftEmailDomains pulumi.StringArrayInput `pulumi:"microsoftEmailDomains"`
-	// whether microsoft 365 is enabled as a login method
+	// Whether microsoft 365 is enabled as a login method
 	MicrosoftEnabled pulumi.BoolInput `pulumi:"microsoftEnabled"`
 	// Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
 	MicrosoftExpire pulumi.IntInput `pulumi:"microsoftExpire"`
@@ -31385,9 +31342,9 @@ type GetWlansSiteWlanPortalArgs struct {
 	PassphraseExpire pulumi.IntInput `pulumi:"passphraseExpire"`
 	// Required if `passphraseEnabled`==`true`.
 	Password pulumi.StringInput `pulumi:"password"`
-	// whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+	// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
 	PredefinedSponsorsEnabled pulumi.BoolInput `pulumi:"predefinedSponsorsEnabled"`
-	// whether to hide sponsor’s email from list of sponsors
+	// Whether to hide sponsor’s email from list of sponsors
 	PredefinedSponsorsHideEmail pulumi.BoolInput `pulumi:"predefinedSponsorsHideEmail"`
 	Privacy                     pulumi.BoolInput `pulumi:"privacy"`
 	// Required if `smsProvider`==`puzzel`
@@ -31396,7 +31353,7 @@ type GetWlansSiteWlanPortalArgs struct {
 	PuzzelServiceId pulumi.StringInput `pulumi:"puzzelServiceId"`
 	// Required if `smsProvider`==`puzzel`
 	PuzzelUsername pulumi.StringInput `pulumi:"puzzelUsername"`
-	// whether sms is enabled as a login method
+	// Whether sms is enabled as a login method
 	SmsEnabled pulumi.BoolInput `pulumi:"smsEnabled"`
 	// Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
 	SmsExpire pulumi.IntInput `pulumi:"smsExpire"`
@@ -31406,9 +31363,9 @@ type GetWlansSiteWlanPortalArgs struct {
 	SmsProvider pulumi.StringInput `pulumi:"smsProvider"`
 	// Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
 	SponsorAutoApprove pulumi.BoolInput `pulumi:"sponsorAutoApprove"`
-	// list of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
+	// List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
 	SponsorEmailDomains pulumi.StringArrayInput `pulumi:"sponsorEmailDomains"`
-	// whether sponsor is enabled
+	// Whether sponsor is enabled
 	SponsorEnabled pulumi.BoolInput `pulumi:"sponsorEnabled"`
 	// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
 	SponsorExpire pulumi.IntInput `pulumi:"sponsorExpire"`
@@ -31495,7 +31452,7 @@ func (o GetWlansSiteWlanPortalOutput) AmazonEmailDomains() pulumi.StringArrayOut
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) []string { return v.AmazonEmailDomains }).(pulumi.StringArrayOutput)
 }
 
-// whether amazon is enabled as a login method
+// Whether amazon is enabled as a login method
 func (o GetWlansSiteWlanPortalOutput) AmazonEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.AmazonEnabled }).(pulumi.BoolOutput)
 }
@@ -31520,12 +31477,12 @@ func (o GetWlansSiteWlanPortalOutput) AzureClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.AzureClientSecret }).(pulumi.StringOutput)
 }
 
-// whether Azure Active Directory is enabled as a login method
+// Whether Azure Active Directory is enabled as a login method
 func (o GetWlansSiteWlanPortalOutput) AzureEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.AzureEnabled }).(pulumi.BoolOutput)
 }
 
-// interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+// Interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
 func (o GetWlansSiteWlanPortalOutput) AzureExpire() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) int { return v.AzureExpire }).(pulumi.IntOutput)
 }
@@ -31550,7 +31507,7 @@ func (o GetWlansSiteWlanPortalOutput) BroadnetUserId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.BroadnetUserId }).(pulumi.StringOutput)
 }
 
-// whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+// Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
 func (o GetWlansSiteWlanPortalOutput) BypassWhenCloudDown() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.BypassWhenCloudDown }).(pulumi.BoolOutput)
 }
@@ -31560,22 +31517,22 @@ func (o GetWlansSiteWlanPortalOutput) ClickatellApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.ClickatellApiKey }).(pulumi.StringOutput)
 }
 
-// whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
+// Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
 func (o GetWlansSiteWlanPortalOutput) CrossSite() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.CrossSite }).(pulumi.BoolOutput)
 }
 
-// whether email (access code verification) is enabled as a login method
+// Whether email (access code verification) is enabled as a login method
 func (o GetWlansSiteWlanPortalOutput) EmailEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.EmailEnabled }).(pulumi.BoolOutput)
 }
 
-// whether guest portal is enabled
+// Whether guest portal is enabled
 func (o GetWlansSiteWlanPortalOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// how long to remain authorized, in minutes
+// How long to remain authorized, in minutes
 func (o GetWlansSiteWlanPortalOutput) Expire() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) int { return v.Expire }).(pulumi.IntOutput)
 }
@@ -31600,7 +31557,7 @@ func (o GetWlansSiteWlanPortalOutput) FacebookEmailDomains() pulumi.StringArrayO
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) []string { return v.FacebookEmailDomains }).(pulumi.StringArrayOutput)
 }
 
-// whether facebook is enabled as a login method
+// Whether facebook is enabled as a login method
 func (o GetWlansSiteWlanPortalOutput) FacebookEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.FacebookEnabled }).(pulumi.BoolOutput)
 }
@@ -31610,12 +31567,12 @@ func (o GetWlansSiteWlanPortalOutput) FacebookExpire() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) int { return v.FacebookExpire }).(pulumi.IntOutput)
 }
 
-// whether to forward the user to another URL after authorized
+// Whether to forward the user to another URL after authorized
 func (o GetWlansSiteWlanPortalOutput) Forward() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.Forward }).(pulumi.BoolOutput)
 }
 
-// the URL to forward the user to
+// URL to forward the user to
 func (o GetWlansSiteWlanPortalOutput) ForwardUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.ForwardUrl }).(pulumi.StringOutput)
 }
@@ -31635,12 +31592,12 @@ func (o GetWlansSiteWlanPortalOutput) GoogleEmailDomains() pulumi.StringArrayOut
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) []string { return v.GoogleEmailDomains }).(pulumi.StringArrayOutput)
 }
 
-// whether google is enabled as login method
+// Whether Google is enabled as login method
 func (o GetWlansSiteWlanPortalOutput) GoogleEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.GoogleEnabled }).(pulumi.BoolOutput)
 }
 
-// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
 func (o GetWlansSiteWlanPortalOutput) GoogleExpire() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) int { return v.GoogleExpire }).(pulumi.IntOutput)
 }
@@ -31670,7 +31627,7 @@ func (o GetWlansSiteWlanPortalOutput) MicrosoftEmailDomains() pulumi.StringArray
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) []string { return v.MicrosoftEmailDomains }).(pulumi.StringArrayOutput)
 }
 
-// whether microsoft 365 is enabled as a login method
+// Whether microsoft 365 is enabled as a login method
 func (o GetWlansSiteWlanPortalOutput) MicrosoftEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.MicrosoftEnabled }).(pulumi.BoolOutput)
 }
@@ -31695,12 +31652,12 @@ func (o GetWlansSiteWlanPortalOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
 func (o GetWlansSiteWlanPortalOutput) PredefinedSponsorsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.PredefinedSponsorsEnabled }).(pulumi.BoolOutput)
 }
 
-// whether to hide sponsor’s email from list of sponsors
+// Whether to hide sponsor’s email from list of sponsors
 func (o GetWlansSiteWlanPortalOutput) PredefinedSponsorsHideEmail() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.PredefinedSponsorsHideEmail }).(pulumi.BoolOutput)
 }
@@ -31724,7 +31681,7 @@ func (o GetWlansSiteWlanPortalOutput) PuzzelUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.PuzzelUsername }).(pulumi.StringOutput)
 }
 
-// whether sms is enabled as a login method
+// Whether sms is enabled as a login method
 func (o GetWlansSiteWlanPortalOutput) SmsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.SmsEnabled }).(pulumi.BoolOutput)
 }
@@ -31749,12 +31706,12 @@ func (o GetWlansSiteWlanPortalOutput) SponsorAutoApprove() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.SponsorAutoApprove }).(pulumi.BoolOutput)
 }
 
-// list of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
+// List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
 func (o GetWlansSiteWlanPortalOutput) SponsorEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) []string { return v.SponsorEmailDomains }).(pulumi.StringArrayOutput)
 }
 
-// whether sponsor is enabled
+// Whether sponsor is enabled
 func (o GetWlansSiteWlanPortalOutput) SponsorEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.SponsorEnabled }).(pulumi.BoolOutput)
 }
@@ -31851,7 +31808,7 @@ func (o GetWlansSiteWlanPortalOutput) TwilioSid() pulumi.StringOutput {
 type GetWlansSiteWlanQos struct {
 	// enum: `background`, `bestEffort`, `video`, `voice`
 	Class string `pulumi:"class"`
-	// whether to overwrite QoS
+	// Whether to overwrite QoS
 	Overwrite bool `pulumi:"overwrite"`
 }
 
@@ -31869,7 +31826,7 @@ type GetWlansSiteWlanQosInput interface {
 type GetWlansSiteWlanQosArgs struct {
 	// enum: `background`, `bestEffort`, `video`, `voice`
 	Class pulumi.StringInput `pulumi:"class"`
-	// whether to overwrite QoS
+	// Whether to overwrite QoS
 	Overwrite pulumi.BoolInput `pulumi:"overwrite"`
 }
 
@@ -31904,7 +31861,7 @@ func (o GetWlansSiteWlanQosOutput) Class() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanQos) string { return v.Class }).(pulumi.StringOutput)
 }
 
-// whether to overwrite QoS
+// Whether to overwrite QoS
 func (o GetWlansSiteWlanQosOutput) Overwrite() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanQos) bool { return v.Overwrite }).(pulumi.BoolOutput)
 }
@@ -31915,13 +31872,13 @@ type GetWlansSiteWlanRadsec struct {
 	IdleTimeout int  `pulumi:"idleTimeout"`
 	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
 	MxclusterIds []string `pulumi:"mxclusterIds"`
-	// default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+	// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
 	ProxyHosts []string `pulumi:"proxyHosts"`
-	// name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+	// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
 	ServerName string `pulumi:"serverName"`
-	// List of Radsec Servers. Only if not Mist Edge.
+	// List of RadSec Servers. Only if not Mist Edge.
 	Servers []GetWlansSiteWlanRadsecServer `pulumi:"servers"`
-	// use mxedge(s) as radsecproxy
+	// use mxedge(s) as RadSec Proxy
 	UseMxedge bool `pulumi:"useMxedge"`
 	// To use Site mxedges when this WLAN does not use mxtunnel
 	UseSiteMxedge bool `pulumi:"useSiteMxedge"`
@@ -31944,13 +31901,13 @@ type GetWlansSiteWlanRadsecArgs struct {
 	IdleTimeout pulumi.IntInput  `pulumi:"idleTimeout"`
 	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
 	MxclusterIds pulumi.StringArrayInput `pulumi:"mxclusterIds"`
-	// default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+	// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
 	ProxyHosts pulumi.StringArrayInput `pulumi:"proxyHosts"`
-	// name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+	// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
 	ServerName pulumi.StringInput `pulumi:"serverName"`
-	// List of Radsec Servers. Only if not Mist Edge.
+	// List of RadSec Servers. Only if not Mist Edge.
 	Servers GetWlansSiteWlanRadsecServerArrayInput `pulumi:"servers"`
-	// use mxedge(s) as radsecproxy
+	// use mxedge(s) as RadSec Proxy
 	UseMxedge pulumi.BoolInput `pulumi:"useMxedge"`
 	// To use Site mxedges when this WLAN does not use mxtunnel
 	UseSiteMxedge pulumi.BoolInput `pulumi:"useSiteMxedge"`
@@ -31999,22 +31956,22 @@ func (o GetWlansSiteWlanRadsecOutput) MxclusterIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanRadsec) []string { return v.MxclusterIds }).(pulumi.StringArrayOutput)
 }
 
-// default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
 func (o GetWlansSiteWlanRadsecOutput) ProxyHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanRadsec) []string { return v.ProxyHosts }).(pulumi.StringArrayOutput)
 }
 
-// name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
 func (o GetWlansSiteWlanRadsecOutput) ServerName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanRadsec) string { return v.ServerName }).(pulumi.StringOutput)
 }
 
-// List of Radsec Servers. Only if not Mist Edge.
+// List of RadSec Servers. Only if not Mist Edge.
 func (o GetWlansSiteWlanRadsecOutput) Servers() GetWlansSiteWlanRadsecServerArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanRadsec) []GetWlansSiteWlanRadsecServer { return v.Servers }).(GetWlansSiteWlanRadsecServerArrayOutput)
 }
 
-// use mxedge(s) as radsecproxy
+// use mxedge(s) as RadSec Proxy
 func (o GetWlansSiteWlanRadsecOutput) UseMxedge() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanRadsec) bool { return v.UseMxedge }).(pulumi.BoolOutput)
 }
@@ -32125,9 +32082,9 @@ func (o GetWlansSiteWlanRadsecServerArrayOutput) Index(i pulumi.IntInput) GetWla
 }
 
 type GetWlansSiteWlanRateset struct {
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+	// If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
 	Ht string `pulumi:"ht"`
-	// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+	// If `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
 	Legacies []string `pulumi:"legacies"`
 	// Minimum RSSI for client to connect, 0 means not enforcing
 	MinRssi int `pulumi:"minRssi"`
@@ -32138,7 +32095,7 @@ type GetWlansSiteWlanRateset struct {
 	//   * `high-density`: no 11b, no low rates
 	//   * `custom`: user defined
 	Template string `pulumi:"template"`
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+	// If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
 	Vht string `pulumi:"vht"`
 }
 
@@ -32154,9 +32111,9 @@ type GetWlansSiteWlanRatesetInput interface {
 }
 
 type GetWlansSiteWlanRatesetArgs struct {
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+	// If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
 	Ht pulumi.StringInput `pulumi:"ht"`
-	// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+	// If `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
 	Legacies pulumi.StringArrayInput `pulumi:"legacies"`
 	// Minimum RSSI for client to connect, 0 means not enforcing
 	MinRssi pulumi.IntInput `pulumi:"minRssi"`
@@ -32167,7 +32124,7 @@ type GetWlansSiteWlanRatesetArgs struct {
 	//   * `high-density`: no 11b, no low rates
 	//   * `custom`: user defined
 	Template pulumi.StringInput `pulumi:"template"`
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+	// If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
 	Vht pulumi.StringInput `pulumi:"vht"`
 }
 
@@ -32222,12 +32179,12 @@ func (o GetWlansSiteWlanRatesetOutput) ToGetWlansSiteWlanRatesetOutputWithContex
 	return o
 }
 
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+// If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
 func (o GetWlansSiteWlanRatesetOutput) Ht() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanRateset) string { return v.Ht }).(pulumi.StringOutput)
 }
 
-// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+// If `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
 func (o GetWlansSiteWlanRatesetOutput) Legacies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanRateset) []string { return v.Legacies }).(pulumi.StringArrayOutput)
 }
@@ -32247,7 +32204,7 @@ func (o GetWlansSiteWlanRatesetOutput) Template() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanRateset) string { return v.Template }).(pulumi.StringOutput)
 }
 
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+// If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
 func (o GetWlansSiteWlanRatesetOutput) Vht() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanRateset) string { return v.Vht }).(pulumi.StringOutput)
 }
@@ -32530,7 +32487,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSnmpConfigV3ConfigTargetParameterInput)(nil)).Elem(), NetworktemplateSnmpConfigV3ConfigTargetParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSnmpConfigV3ConfigTargetParameterArrayInput)(nil)).Elem(), NetworktemplateSnmpConfigV3ConfigTargetParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSnmpConfigV3ConfigUsmInput)(nil)).Elem(), NetworktemplateSnmpConfigV3ConfigUsmArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSnmpConfigV3ConfigUsmPtrInput)(nil)).Elem(), NetworktemplateSnmpConfigV3ConfigUsmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSnmpConfigV3ConfigUsmArrayInput)(nil)).Elem(), NetworktemplateSnmpConfigV3ConfigUsmArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSnmpConfigV3ConfigUsmUserInput)(nil)).Elem(), NetworktemplateSnmpConfigV3ConfigUsmUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSnmpConfigV3ConfigUsmUserArrayInput)(nil)).Elem(), NetworktemplateSnmpConfigV3ConfigUsmUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSnmpConfigV3ConfigVacmInput)(nil)).Elem(), NetworktemplateSnmpConfigV3ConfigVacmArgs{})
@@ -32855,7 +32812,7 @@ func init() {
 	pulumi.RegisterOutputType(NetworktemplateSnmpConfigV3ConfigTargetParameterOutput{})
 	pulumi.RegisterOutputType(NetworktemplateSnmpConfigV3ConfigTargetParameterArrayOutput{})
 	pulumi.RegisterOutputType(NetworktemplateSnmpConfigV3ConfigUsmOutput{})
-	pulumi.RegisterOutputType(NetworktemplateSnmpConfigV3ConfigUsmPtrOutput{})
+	pulumi.RegisterOutputType(NetworktemplateSnmpConfigV3ConfigUsmArrayOutput{})
 	pulumi.RegisterOutputType(NetworktemplateSnmpConfigV3ConfigUsmUserOutput{})
 	pulumi.RegisterOutputType(NetworktemplateSnmpConfigV3ConfigUsmUserArrayOutput{})
 	pulumi.RegisterOutputType(NetworktemplateSnmpConfigV3ConfigVacmOutput{})

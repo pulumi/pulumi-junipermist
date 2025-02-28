@@ -14,26 +14,26 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileApIpConfig
     {
         /// <summary>
-        /// if `type`==`static`
+        /// If `type`==`static`
         /// </summary>
         public readonly ImmutableArray<string> Dns;
         /// <summary>
-        /// required if `type`==`static`
+        /// Required if `type`==`static`
         /// </summary>
         public readonly ImmutableArray<string> DnsSuffixes;
         /// <summary>
-        /// required if `type`==`static`
+        /// Required if `type`==`static`
         /// </summary>
         public readonly string? Gateway;
         public readonly string? Gateway6;
         /// <summary>
-        /// required if `type`==`static`
+        /// Required if `type`==`static`
         /// </summary>
         public readonly string? Ip;
         public readonly string? Ip6;
         public readonly int? Mtu;
         /// <summary>
-        /// required if `type`==`static`
+        /// Required if `type`==`static`
         /// </summary>
         public readonly string? Netmask;
         public readonly string? Netmask6;
@@ -46,7 +46,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Type6;
         /// <summary>
-        /// management vlan id, default is 1 (untagged)
+        /// Management VLAN id, default is 1 (untagged)
         /// </summary>
         public readonly int? VlanId;
 

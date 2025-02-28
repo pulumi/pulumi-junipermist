@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class SettingAnalyticArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enable Advanced Analytic feature (using SUB-ANA license)
+        /// Enable Advanced Analytic feature (using SUB-ANA license)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

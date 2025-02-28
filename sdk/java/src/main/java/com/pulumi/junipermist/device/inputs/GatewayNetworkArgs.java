@@ -25,14 +25,14 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
     public static final GatewayNetworkArgs Empty = new GatewayNetworkArgs();
 
     /**
-     * whether to disallow Mist Devices in the network
+     * Whether to disallow Mist Devices in the network
      * 
      */
     @Import(name="disallowMistServices")
     private @Nullable Output<Boolean> disallowMistServices;
 
     /**
-     * @return whether to disallow Mist Devices in the network
+     * @return Whether to disallow Mist Devices in the network
      * 
      */
     public Optional<Output<Boolean>> disallowMistServices() {
@@ -61,14 +61,14 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * whether this network has direct internet access
+     * Whether this network has direct internet access
      * 
      */
     @Import(name="internetAccess")
     private @Nullable Output<GatewayNetworkInternetAccessArgs> internetAccess;
 
     /**
-     * @return whether this network has direct internet access
+     * @return Whether this network has direct internet access
      * 
      */
     public Optional<Output<GatewayNetworkInternetAccessArgs>> internetAccess() {
@@ -76,14 +76,14 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * whether to allow clients in the network to talk to each other
+     * Whether to allow clients in the network to talk to each other
      * 
      */
     @Import(name="isolation")
     private @Nullable Output<Boolean> isolation;
 
     /**
-     * @return whether to allow clients in the network to talk to each other
+     * @return Whether to allow clients in the network to talk to each other
      * 
      */
     public Optional<Output<Boolean>> isolation() {
@@ -91,14 +91,14 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * whether to enable multicast support (only PIM-sparse mode is supported)
+     * Whether to enable multicast support (only PIM-sparse mode is supported)
      * 
      */
     @Import(name="multicast")
     private @Nullable Output<GatewayNetworkMulticastArgs> multicast;
 
     /**
-     * @return whether to enable multicast support (only PIM-sparse mode is supported)
+     * @return Whether to enable multicast support (only PIM-sparse mode is supported)
      * 
      */
     public Optional<Output<GatewayNetworkMulticastArgs>> multicast() {
@@ -113,14 +113,14 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
      * 
      */
     @Import(name="routedForNetworks")
     private @Nullable Output<List<String>> routedForNetworks;
 
     /**
-     * @return for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * @return For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
      * 
      */
     public Optional<Output<List<String>>> routedForNetworks() {
@@ -216,7 +216,7 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param disallowMistServices whether to disallow Mist Devices in the network
+         * @param disallowMistServices Whether to disallow Mist Devices in the network
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param disallowMistServices whether to disallow Mist Devices in the network
+         * @param disallowMistServices Whether to disallow Mist Devices in the network
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param internetAccess whether this network has direct internet access
+         * @param internetAccess Whether this network has direct internet access
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param internetAccess whether this network has direct internet access
+         * @param internetAccess Whether this network has direct internet access
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param isolation whether to allow clients in the network to talk to each other
+         * @param isolation Whether to allow clients in the network to talk to each other
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param isolation whether to allow clients in the network to talk to each other
+         * @param isolation Whether to allow clients in the network to talk to each other
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param multicast whether to enable multicast support (only PIM-sparse mode is supported)
+         * @param multicast Whether to enable multicast support (only PIM-sparse mode is supported)
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param multicast whether to enable multicast support (only PIM-sparse mode is supported)
+         * @param multicast Whether to enable multicast support (only PIM-sparse mode is supported)
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param routedForNetworks for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+         * @param routedForNetworks For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param routedForNetworks for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+         * @param routedForNetworks For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param routedForNetworks for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+         * @param routedForNetworks For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
          * 
          * @return builder
          * 

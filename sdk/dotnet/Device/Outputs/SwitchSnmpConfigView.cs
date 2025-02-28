@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchSnmpConfigView
     {
         /// <summary>
-        /// if the root oid configured is included
+        /// If the root oid configured is included
         /// </summary>
         public readonly bool? Include;
         public readonly string? Oid;

@@ -14,36 +14,36 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingGatewayMgmt
     {
         /// <summary>
-        /// for SSR only, as direct root access is not allowed
+        /// For SSR only, as direct root access is not allowed
         /// </summary>
         public readonly ImmutableArray<string> AdminSshkeys;
         public readonly Outputs.SettingGatewayMgmtAppProbing? AppProbing;
         /// <summary>
-        /// consumes uplink bandwidth, requires WA license
+        /// Consumes uplink bandwidth, requires WA license
         /// </summary>
         public readonly bool? AppUsage;
         public readonly Outputs.SettingGatewayMgmtAutoSignatureUpdate? AutoSignatureUpdate;
         /// <summary>
-        /// he rollback timer for commit confirmed
+        /// Rollback timer for commit confirmed
         /// </summary>
         public readonly int? ConfigRevertTimer;
         /// <summary>
-        /// for both SSR and SRX disable console port
+        /// For both SSR and SRX disable console port
         /// </summary>
         public readonly bool? DisableConsole;
         /// <summary>
-        /// for both SSR and SRX disable management interface
+        /// For both SSR and SRX disable management interface
         /// </summary>
         public readonly bool? DisableOob;
         public readonly ImmutableArray<string> ProbeHosts;
         /// <summary>
-        /// restrict inbound-traffic to host
+        /// Restrict inbound-traffic to host
         /// when enabled, all traffic that is not essential to our operation will be dropped 
         /// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
         /// </summary>
         public readonly Outputs.SettingGatewayMgmtProtectRe? ProtectRe;
         /// <summary>
-        /// for SRX only
+        /// For SRX only
         /// </summary>
         public readonly string? RootPassword;
         public readonly string? SecurityLogSourceAddress;

@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingMgmt {
     /**
-     * @return list of Mist Tunnels
+     * @return List of Mist Tunnels
      * 
      */
     private @Nullable List<String> mxtunnelIds;
     /**
-     * @return whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
+     * @return Whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
      * 
      */
     private @Nullable Boolean useMxtunnel;
     /**
-     * @return whether to use wxtunnel for mgmt connectivity
+     * @return Whether to use wxtunnel for mgmt connectivity
      * 
      */
     private @Nullable Boolean useWxtunnel;
 
     private SettingMgmt() {}
     /**
-     * @return list of Mist Tunnels
+     * @return List of Mist Tunnels
      * 
      */
     public List<String> mxtunnelIds() {
         return this.mxtunnelIds == null ? List.of() : this.mxtunnelIds;
     }
     /**
-     * @return whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
+     * @return Whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
      * 
      */
     public Optional<Boolean> useMxtunnel() {
         return Optional.ofNullable(this.useMxtunnel);
     }
     /**
-     * @return whether to use wxtunnel for mgmt connectivity
+     * @return Whether to use wxtunnel for mgmt connectivity
      * 
      */
     public Optional<Boolean> useWxtunnel() {

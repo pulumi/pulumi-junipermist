@@ -22,14 +22,14 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
     public static final SettingGatewayMgmtArgs Empty = new SettingGatewayMgmtArgs();
 
     /**
-     * for SSR only, as direct root access is not allowed
+     * For SSR only, as direct root access is not allowed
      * 
      */
     @Import(name="adminSshkeys")
     private @Nullable Output<List<String>> adminSshkeys;
 
     /**
-     * @return for SSR only, as direct root access is not allowed
+     * @return For SSR only, as direct root access is not allowed
      * 
      */
     public Optional<Output<List<String>>> adminSshkeys() {
@@ -44,14 +44,14 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * consumes uplink bandwidth, requires WA license
+     * Consumes uplink bandwidth, requires WA license
      * 
      */
     @Import(name="appUsage")
     private @Nullable Output<Boolean> appUsage;
 
     /**
-     * @return consumes uplink bandwidth, requires WA license
+     * @return Consumes uplink bandwidth, requires WA license
      * 
      */
     public Optional<Output<Boolean>> appUsage() {
@@ -66,14 +66,14 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * he rollback timer for commit confirmed
+     * Rollback timer for commit confirmed
      * 
      */
     @Import(name="configRevertTimer")
     private @Nullable Output<Integer> configRevertTimer;
 
     /**
-     * @return he rollback timer for commit confirmed
+     * @return Rollback timer for commit confirmed
      * 
      */
     public Optional<Output<Integer>> configRevertTimer() {
@@ -81,14 +81,14 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * for both SSR and SRX disable console port
+     * For both SSR and SRX disable console port
      * 
      */
     @Import(name="disableConsole")
     private @Nullable Output<Boolean> disableConsole;
 
     /**
-     * @return for both SSR and SRX disable console port
+     * @return For both SSR and SRX disable console port
      * 
      */
     public Optional<Output<Boolean>> disableConsole() {
@@ -96,14 +96,14 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * for both SSR and SRX disable management interface
+     * For both SSR and SRX disable management interface
      * 
      */
     @Import(name="disableOob")
     private @Nullable Output<Boolean> disableOob;
 
     /**
-     * @return for both SSR and SRX disable management interface
+     * @return For both SSR and SRX disable management interface
      * 
      */
     public Optional<Output<Boolean>> disableOob() {
@@ -118,7 +118,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * restrict inbound-traffic to host
+     * Restrict inbound-traffic to host
      * when enabled, all traffic that is not essential to our operation will be dropped
      * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
      * 
@@ -127,7 +127,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<SettingGatewayMgmtProtectReArgs> protectRe;
 
     /**
-     * @return restrict inbound-traffic to host
+     * @return Restrict inbound-traffic to host
      * when enabled, all traffic that is not essential to our operation will be dropped
      * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
      * 
@@ -137,14 +137,14 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * for SRX only
+     * For SRX only
      * 
      */
     @Import(name="rootPassword")
     private @Nullable Output<String> rootPassword;
 
     /**
-     * @return for SRX only
+     * @return For SRX only
      * 
      */
     public Optional<Output<String>> rootPassword() {
@@ -201,7 +201,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param adminSshkeys for SSR only, as direct root access is not allowed
+         * @param adminSshkeys For SSR only, as direct root access is not allowed
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param adminSshkeys for SSR only, as direct root access is not allowed
+         * @param adminSshkeys For SSR only, as direct root access is not allowed
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param adminSshkeys for SSR only, as direct root access is not allowed
+         * @param adminSshkeys For SSR only, as direct root access is not allowed
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param appUsage consumes uplink bandwidth, requires WA license
+         * @param appUsage Consumes uplink bandwidth, requires WA license
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param appUsage consumes uplink bandwidth, requires WA license
+         * @param appUsage Consumes uplink bandwidth, requires WA license
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param configRevertTimer he rollback timer for commit confirmed
+         * @param configRevertTimer Rollback timer for commit confirmed
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param configRevertTimer he rollback timer for commit confirmed
+         * @param configRevertTimer Rollback timer for commit confirmed
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param disableConsole for both SSR and SRX disable console port
+         * @param disableConsole For both SSR and SRX disable console port
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param disableConsole for both SSR and SRX disable console port
+         * @param disableConsole For both SSR and SRX disable console port
          * 
          * @return builder
          * 
@@ -313,7 +313,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param disableOob for both SSR and SRX disable management interface
+         * @param disableOob For both SSR and SRX disable management interface
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param disableOob for both SSR and SRX disable management interface
+         * @param disableOob For both SSR and SRX disable management interface
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param protectRe restrict inbound-traffic to host
+         * @param protectRe Restrict inbound-traffic to host
          * when enabled, all traffic that is not essential to our operation will be dropped
          * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
          * 
@@ -360,7 +360,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param protectRe restrict inbound-traffic to host
+         * @param protectRe Restrict inbound-traffic to host
          * when enabled, all traffic that is not essential to our operation will be dropped
          * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
          * 
@@ -372,7 +372,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rootPassword for SRX only
+         * @param rootPassword For SRX only
          * 
          * @return builder
          * 
@@ -383,7 +383,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rootPassword for SRX only
+         * @param rootPassword For SRX only
          * 
          * @return builder
          * 

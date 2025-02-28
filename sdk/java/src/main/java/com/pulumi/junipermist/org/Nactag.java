@@ -75,58 +75,60 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/nactag:Nactag")
 public class Nactag extends com.pulumi.resources.CustomResource {
     /**
-     * can be set to true to allow the override by usermac result
+     * Can be set to true to allow the override by usermac result
      * 
      */
     @Export(name="allowUsermacOverride", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowUsermacOverride;
 
     /**
-     * @return can be set to true to allow the override by usermac result
+     * @return Can be set to true to allow the override by usermac result
      * 
      */
     public Output<Boolean> allowUsermacOverride() {
         return this.allowUsermacOverride;
     }
     /**
-     * if `type`==`egress_vlan_names`, list of egress vlans to return
+     * If `type`==`egress_vlan_names`, list of egress vlans to return
      * 
      */
     @Export(name="egressVlanNames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> egressVlanNames;
 
     /**
-     * @return if `type`==`egress_vlan_names`, list of egress vlans to return
+     * @return If `type`==`egress_vlan_names`, list of egress vlans to return
      * 
      */
     public Output<Optional<List<String>>> egressVlanNames() {
         return Codegen.optional(this.egressVlanNames);
     }
     /**
-     * if `type`==`gbp_tag`
+     * If `type`==`gbp_tag`
      * 
      */
     @Export(name="gbpTag", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> gbpTag;
 
     /**
-     * @return if `type`==`gbp_tag`
+     * @return If `type`==`gbp_tag`
      * 
      */
     public Output<Optional<Integer>> gbpTag() {
         return Codegen.optional(this.gbpTag);
     }
     /**
-     * if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `client_mac`, `idp_role`,
-     * `mdm_status`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+     * if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
+     * `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`,
+     * `usermac_label`
      * 
      */
     @Export(name="match", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> match;
 
     /**
-     * @return if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `client_mac`, `idp_role`,
-     * `mdm_status`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+     * @return if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
+     * `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`,
+     * `usermac_label`
      * 
      */
     public Output<Optional<String>> match() {
@@ -135,7 +137,7 @@ public class Nactag extends com.pulumi.resources.CustomResource {
     /**
      * This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
      * match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-     * set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`&#39;
+     * set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
      * 
      */
     @Export(name="matchAll", refs={Boolean.class}, tree="[0]")
@@ -144,7 +146,7 @@ public class Nactag extends com.pulumi.resources.CustomResource {
     /**
      * @return This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
      * match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-     * set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`&#39;
+     * set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
      * 
      */
     public Output<Boolean> matchAll() {
@@ -163,7 +165,7 @@ public class Nactag extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * if `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;. It is
+     * If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;. It is
      * the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
      * that it is allowed to have more than one radius_attrs in the result of a given rule.
      * 
@@ -172,7 +174,7 @@ public class Nactag extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> radiusAttrs;
 
     /**
-     * @return if `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;. It is
+     * @return If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;. It is
      * the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
      * that it is allowed to have more than one radius_attrs in the result of a given rule.
      * 
@@ -181,21 +183,21 @@ public class Nactag extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.radiusAttrs);
     }
     /**
-     * if `type`==`radius_group`
+     * If `type`==`radius_group`
      * 
      */
     @Export(name="radiusGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> radiusGroup;
 
     /**
-     * @return if `type`==`radius_group`
+     * @return If `type`==`radius_group`
      * 
      */
     public Output<Optional<String>> radiusGroup() {
         return Codegen.optional(this.radiusGroup);
     }
     /**
-     * if `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
+     * If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
      * &#34;radius_vendor_attrs&#34;. It is the responsibility of the user to provide a syntactically correct string, otherwise it may
      * not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
      * 
@@ -204,7 +206,7 @@ public class Nactag extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> radiusVendorAttrs;
 
     /**
-     * @return if `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
+     * @return If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
      * &#34;radius_vendor_attrs&#34;. It is the responsibility of the user to provide a syntactically correct string, otherwise it may
      * not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
      * 
@@ -213,14 +215,14 @@ public class Nactag extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.radiusVendorAttrs);
     }
     /**
-     * if `type`==`session_timeout, in seconds
+     * If `type`==`session_timeout, in seconds
      * 
      */
     @Export(name="sessionTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sessionTimeout;
 
     /**
-     * @return if `type`==`session_timeout, in seconds
+     * @return If `type`==`session_timeout, in seconds
      * 
      */
     public Output<Optional<Integer>> sessionTimeout() {
@@ -228,7 +230,7 @@ public class Nactag extends com.pulumi.resources.CustomResource {
     }
     /**
      * enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-     * `vlan`
+     * `username_attr`, `vlan`
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -236,35 +238,49 @@ public class Nactag extends com.pulumi.resources.CustomResource {
 
     /**
      * @return enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-     * `vlan`
+     * `username_attr`, `vlan`
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * if `type`==`match`
+     * enum: `automatic`, `cn`, `dns`, `email`, `upn`
+     * 
+     */
+    @Export(name="usernameAttr", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> usernameAttr;
+
+    /**
+     * @return enum: `automatic`, `cn`, `dns`, `email`, `upn`
+     * 
+     */
+    public Output<Optional<String>> usernameAttr() {
+        return Codegen.optional(this.usernameAttr);
+    }
+    /**
+     * If `type`==`match`
      * 
      */
     @Export(name="values", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> values;
 
     /**
-     * @return if `type`==`match`
+     * @return If `type`==`match`
      * 
      */
     public Output<Optional<List<String>>> values() {
         return Codegen.optional(this.values);
     }
     /**
-     * if `type`==`vlan`
+     * If `type`==`vlan`
      * 
      */
     @Export(name="vlan", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vlan;
 
     /**
-     * @return if `type`==`vlan`
+     * @return If `type`==`vlan`
      * 
      */
     public Output<Optional<String>> vlan() {

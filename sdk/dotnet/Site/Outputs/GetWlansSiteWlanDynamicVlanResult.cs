@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// vlan_ids to be locally bridged
+        /// VLAN_ids to be locally bridged
         /// </summary>
         public readonly ImmutableArray<string> LocalVlanIds;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
+        /// Map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
         ///   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
         ///   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
         /// </summary>

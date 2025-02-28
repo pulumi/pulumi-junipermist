@@ -20,7 +20,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly ImmutableDictionary<string, Outputs.GatewayNetworkInternetAccessDestinationNat>? DestinationNat;
         public readonly bool? Enabled;
         /// <summary>
-        /// by default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+        /// By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
         /// </summary>
         public readonly bool? Restricted;
         /// <summary>

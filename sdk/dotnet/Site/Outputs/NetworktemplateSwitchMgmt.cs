@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateSwitchMgmt
     {
         /// <summary>
-        /// ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+        /// AP_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
         /// </summary>
         public readonly int? ApAffinityThreshold;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? CliIdleTimeout;
         /// <summary>
-        /// the rollback timer for commit confirmed
+        /// Rollback timer for commit confirmed
         /// </summary>
         public readonly int? ConfigRevertTimer;
         /// <summary>
@@ -41,7 +41,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly string? MxedgeProxyHost;
         public readonly int? MxedgeProxyPort;
         /// <summary>
-        /// restrict inbound-traffic to host
+        /// Restrict inbound-traffic to host
         /// when enabled, all traffic that is not essential to our operation will be dropped 
         /// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
         /// </summary>
@@ -49,7 +49,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly string? RootPassword;
         public readonly Outputs.NetworktemplateSwitchMgmtTacacs? Tacacs;
         /// <summary>
-        /// to use mxedge as proxy
+        /// To use mxedge as proxy
         /// </summary>
         public readonly bool? UseMxedgeProxy;
 

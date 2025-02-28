@@ -14,23 +14,23 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplatePortUsagesStormControl
     {
         /// <summary>
-        /// whether to disable storm control on broadcast traffic
+        /// Whether to disable storm control on broadcast traffic
         /// </summary>
         public readonly bool? NoBroadcast;
         /// <summary>
-        /// whether to disable storm control on multicast traffic
+        /// Whether to disable storm control on multicast traffic
         /// </summary>
         public readonly bool? NoMulticast;
         /// <summary>
-        /// whether to disable storm control on registered multicast traffic
+        /// Whether to disable storm control on registered multicast traffic
         /// </summary>
         public readonly bool? NoRegisteredMulticast;
         /// <summary>
-        /// whether to disable storm control on unknown unicast traffic
+        /// Whether to disable storm control on unknown unicast traffic
         /// </summary>
         public readonly bool? NoUnknownUnicast;
         /// <summary>
-        /// bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+        /// Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
         /// </summary>
         public readonly int? Percentage;
 

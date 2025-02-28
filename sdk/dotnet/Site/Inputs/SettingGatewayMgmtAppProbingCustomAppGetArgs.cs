@@ -42,7 +42,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// if `protocol`==`icmp`
+        /// If `protocol`==`icmp`
         /// </summary>
         [Input("packetSize")]
         public Input<int>? PacketSize { get; set; }

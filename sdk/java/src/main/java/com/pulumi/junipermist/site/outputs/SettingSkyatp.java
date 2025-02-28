@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class SettingSkyatp {
     private @Nullable Boolean enabled;
     /**
-     * @return whether to send IP-MAC mapping to SkyATP
+     * @return Whether to send IP-MAC mapping to SkyATP
      * 
      */
     private @Nullable Boolean sendIpMacMapping;
@@ -23,7 +23,7 @@ public final class SettingSkyatp {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return whether to send IP-MAC mapping to SkyATP
+     * @return Whether to send IP-MAC mapping to SkyATP
      * 
      */
     public Optional<Boolean> sendIpMacMapping() {

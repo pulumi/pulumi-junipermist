@@ -24,14 +24,14 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to disable 11k
+     * Whether to disable 11k
      * 
      */
     @Import(name="disable11k")
     private @Nullable Output<Boolean> disable11k;
 
     /**
-     * @return whether to disable 11k
+     * @return Whether to disable 11k
      * 
      */
     public Optional<Output<Boolean>> disable11k() {
@@ -46,14 +46,14 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * when proxy_arp is enabled, check for arp spoofing.
+     * When proxy_arp is enabled, check for arp spoofing.
      * 
      */
     @Import(name="enableArpSpoofCheck")
     private @Nullable Output<Boolean> enableArpSpoofCheck;
 
     /**
-     * @return when proxy_arp is enabled, check for arp spoofing.
+     * @return When proxy_arp is enabled, check for arp spoofing.
      * 
      */
     public Optional<Output<Boolean>> enableArpSpoofCheck() {
@@ -68,14 +68,14 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enable WIFI feature (using SUB-MAN license)
+     * Enable Wi-Fi feature (using SUB-MAN license)
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return enable WIFI feature (using SUB-MAN license)
+     * @return Enable Wi-Fi feature (using SUB-MAN license)
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -83,14 +83,14 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to locate connected clients
+     * Whether to locate connected clients
      * 
      */
     @Import(name="locateConnected")
     private @Nullable Output<Boolean> locateConnected;
 
     /**
-     * @return whether to locate connected clients
+     * @return Whether to locate connected clients
      * 
      */
     public Optional<Output<Boolean>> locateConnected() {
@@ -98,14 +98,14 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to locate unconnected clients
+     * Whether to locate unconnected clients
      * 
      */
     @Import(name="locateUnconnected")
     private @Nullable Output<Boolean> locateUnconnected;
 
     /**
-     * @return whether to locate unconnected clients
+     * @return Whether to locate unconnected clients
      * 
      */
     public Optional<Output<Boolean>> locateUnconnected() {
@@ -113,14 +113,14 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+     * Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
      * 
      */
     @Import(name="meshAllowDfs")
     private @Nullable Output<Boolean> meshAllowDfs;
 
     /**
-     * @return whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+     * @return Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
      * 
      */
     public Optional<Output<Boolean>> meshAllowDfs() {
@@ -128,14 +128,14 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * used to enable/disable CRM
+     * Used to enable/disable CRM
      * 
      */
     @Import(name="meshEnableCrm")
     private @Nullable Output<Boolean> meshEnableCrm;
 
     /**
-     * @return used to enable/disable CRM
+     * @return Used to enable/disable CRM
      * 
      */
     public Optional<Output<Boolean>> meshEnableCrm() {
@@ -143,14 +143,14 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to enable Mesh feature for the site
+     * Whether to enable Mesh feature for the site
      * 
      */
     @Import(name="meshEnabled")
     private @Nullable Output<Boolean> meshEnabled;
 
     /**
-     * @return whether to enable Mesh feature for the site
+     * @return Whether to enable Mesh feature for the site
      * 
      */
     public Optional<Output<Boolean>> meshEnabled() {
@@ -158,14 +158,14 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * optional passphrase of mesh networking, default is generated randomly
+     * Optional passphrase of mesh networking, default is generated randomly
      * 
      */
     @Import(name="meshPsk")
     private @Nullable Output<String> meshPsk;
 
     /**
-     * @return optional passphrase of mesh networking, default is generated randomly
+     * @return Optional passphrase of mesh networking, default is generated randomly
      * 
      */
     public Optional<Output<String>> meshPsk() {
@@ -173,14 +173,14 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * optional ssid of mesh networking, default is based on site_id
+     * Optional ssid of mesh networking, default is based on site_id
      * 
      */
     @Import(name="meshSsid")
     private @Nullable Output<String> meshSsid;
 
     /**
-     * @return optional ssid of mesh networking, default is based on site_id
+     * @return Optional ssid of mesh networking, default is based on site_id
      * 
      */
     public Optional<Output<String>> meshSsid() {
@@ -249,7 +249,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disable11k whether to disable 11k
+         * @param disable11k Whether to disable 11k
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disable11k whether to disable 11k
+         * @param disable11k Whether to disable 11k
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableArpSpoofCheck when proxy_arp is enabled, check for arp spoofing.
+         * @param enableArpSpoofCheck When proxy_arp is enabled, check for arp spoofing.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableArpSpoofCheck when proxy_arp is enabled, check for arp spoofing.
+         * @param enableArpSpoofCheck When proxy_arp is enabled, check for arp spoofing.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled enable WIFI feature (using SUB-MAN license)
+         * @param enabled Enable Wi-Fi feature (using SUB-MAN license)
          * 
          * @return builder
          * 
@@ -320,7 +320,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled enable WIFI feature (using SUB-MAN license)
+         * @param enabled Enable Wi-Fi feature (using SUB-MAN license)
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param locateConnected whether to locate connected clients
+         * @param locateConnected Whether to locate connected clients
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param locateConnected whether to locate connected clients
+         * @param locateConnected Whether to locate connected clients
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param locateUnconnected whether to locate unconnected clients
+         * @param locateUnconnected Whether to locate unconnected clients
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param locateUnconnected whether to locate unconnected clients
+         * @param locateUnconnected Whether to locate unconnected clients
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshAllowDfs whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+         * @param meshAllowDfs Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
          * 
          * @return builder
          * 
@@ -383,7 +383,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshAllowDfs whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+         * @param meshAllowDfs Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshEnableCrm used to enable/disable CRM
+         * @param meshEnableCrm Used to enable/disable CRM
          * 
          * @return builder
          * 
@@ -404,7 +404,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshEnableCrm used to enable/disable CRM
+         * @param meshEnableCrm Used to enable/disable CRM
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshEnabled whether to enable Mesh feature for the site
+         * @param meshEnabled Whether to enable Mesh feature for the site
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshEnabled whether to enable Mesh feature for the site
+         * @param meshEnabled Whether to enable Mesh feature for the site
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshPsk optional passphrase of mesh networking, default is generated randomly
+         * @param meshPsk Optional passphrase of mesh networking, default is generated randomly
          * 
          * @return builder
          * 
@@ -446,7 +446,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshPsk optional passphrase of mesh networking, default is generated randomly
+         * @param meshPsk Optional passphrase of mesh networking, default is generated randomly
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshSsid optional ssid of mesh networking, default is based on site_id
+         * @param meshSsid Optional ssid of mesh networking, default is based on site_id
          * 
          * @return builder
          * 
@@ -467,7 +467,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshSsid optional ssid of mesh networking, default is based on site_id
+         * @param meshSsid Optional ssid of mesh networking, default is based on site_id
          * 
          * @return builder
          * 

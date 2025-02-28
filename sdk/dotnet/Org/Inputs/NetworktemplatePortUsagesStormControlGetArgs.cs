@@ -13,31 +13,31 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NetworktemplatePortUsagesStormControlGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// whether to disable storm control on broadcast traffic
+        /// Whether to disable storm control on broadcast traffic
         /// </summary>
         [Input("noBroadcast")]
         public Input<bool>? NoBroadcast { get; set; }
 
         /// <summary>
-        /// whether to disable storm control on multicast traffic
+        /// Whether to disable storm control on multicast traffic
         /// </summary>
         [Input("noMulticast")]
         public Input<bool>? NoMulticast { get; set; }
 
         /// <summary>
-        /// whether to disable storm control on registered multicast traffic
+        /// Whether to disable storm control on registered multicast traffic
         /// </summary>
         [Input("noRegisteredMulticast")]
         public Input<bool>? NoRegisteredMulticast { get; set; }
 
         /// <summary>
-        /// whether to disable storm control on unknown unicast traffic
+        /// Whether to disable storm control on unknown unicast traffic
         /// </summary>
         [Input("noUnknownUnicast")]
         public Input<bool>? NoUnknownUnicast { get; set; }
 
         /// <summary>
-        /// bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+        /// Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
         /// </summary>
         [Input("percentage")]
         public Input<int>? Percentage { get; set; }

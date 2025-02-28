@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateNetworks
     {
         /// <summary>
-        /// only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+        /// Only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
         /// </summary>
         public readonly string? Gateway;
         /// <summary>
-        /// only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+        /// Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
         /// </summary>
         public readonly string? Gateway6;
         /// <summary>
@@ -27,11 +27,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly bool? Isolation;
         public readonly string? IsolationVlanId;
         /// <summary>
-        /// optional for pure switching, required when L3 / routing features are used
+        /// Optional for pure switching, required when L3 / routing features are used
         /// </summary>
         public readonly string? Subnet;
         /// <summary>
-        /// optional for pure switching, required when L3 / routing features are used
+        /// Optional for pure switching, required when L3 / routing features are used
         /// </summary>
         public readonly string? Subnet6;
         public readonly string VlanId;

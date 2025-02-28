@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _equalsAnies;
 
         /// <summary>
-        /// use `equals_any` to match any item in a list
+        /// Use `equals_any` to match any item in a list
         /// </summary>
         public InputList<string> EqualsAnies
         {

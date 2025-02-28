@@ -35,7 +35,7 @@ public final class GetWlansOrgWlanPortal {
      */
     private List<String> amazonEmailDomains;
     /**
-     * @return whether amazon is enabled as a login method
+     * @return Whether amazon is enabled as a login method
      * 
      */
     private Boolean amazonEnabled;
@@ -60,12 +60,12 @@ public final class GetWlansOrgWlanPortal {
      */
     private String azureClientSecret;
     /**
-     * @return whether Azure Active Directory is enabled as a login method
+     * @return Whether Azure Active Directory is enabled as a login method
      * 
      */
     private Boolean azureEnabled;
     /**
-     * @return interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+     * @return Interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
      * 
      */
     private Integer azureExpire;
@@ -90,7 +90,7 @@ public final class GetWlansOrgWlanPortal {
      */
     private String broadnetUserId;
     /**
-     * @return whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+     * @return Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
      * 
      */
     private Boolean bypassWhenCloudDown;
@@ -100,22 +100,22 @@ public final class GetWlansOrgWlanPortal {
      */
     private String clickatellApiKey;
     /**
-     * @return whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
+     * @return Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
      * 
      */
     private Boolean crossSite;
     /**
-     * @return whether email (access code verification) is enabled as a login method
+     * @return Whether email (access code verification) is enabled as a login method
      * 
      */
     private Boolean emailEnabled;
     /**
-     * @return whether guest portal is enabled
+     * @return Whether guest portal is enabled
      * 
      */
     private Boolean enabled;
     /**
-     * @return how long to remain authorized, in minutes
+     * @return How long to remain authorized, in minutes
      * 
      */
     private Integer expire;
@@ -140,7 +140,7 @@ public final class GetWlansOrgWlanPortal {
      */
     private List<String> facebookEmailDomains;
     /**
-     * @return whether facebook is enabled as a login method
+     * @return Whether facebook is enabled as a login method
      * 
      */
     private Boolean facebookEnabled;
@@ -150,12 +150,12 @@ public final class GetWlansOrgWlanPortal {
      */
     private Integer facebookExpire;
     /**
-     * @return whether to forward the user to another URL after authorized
+     * @return Whether to forward the user to another URL after authorized
      * 
      */
     private Boolean forward;
     /**
-     * @return the URL to forward the user to
+     * @return URL to forward the user to
      * 
      */
     private String forwardUrl;
@@ -175,12 +175,12 @@ public final class GetWlansOrgWlanPortal {
      */
     private List<String> googleEmailDomains;
     /**
-     * @return whether google is enabled as login method
+     * @return Whether Google is enabled as login method
      * 
      */
     private Boolean googleEnabled;
     /**
-     * @return Optional if `google_enabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+     * @return Optional if `google_enabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
      * 
      */
     private Integer googleExpire;
@@ -210,7 +210,7 @@ public final class GetWlansOrgWlanPortal {
      */
     private List<String> microsoftEmailDomains;
     /**
-     * @return whether microsoft 365 is enabled as a login method
+     * @return Whether microsoft 365 is enabled as a login method
      * 
      */
     private Boolean microsoftEnabled;
@@ -235,12 +235,12 @@ public final class GetWlansOrgWlanPortal {
      */
     private String password;
     /**
-     * @return whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
      * 
      */
     private Boolean predefinedSponsorsEnabled;
     /**
-     * @return whether to hide sponsor’s email from list of sponsors
+     * @return Whether to hide sponsor’s email from list of sponsors
      * 
      */
     private Boolean predefinedSponsorsHideEmail;
@@ -261,7 +261,7 @@ public final class GetWlansOrgWlanPortal {
      */
     private String puzzelUsername;
     /**
-     * @return whether sms is enabled as a login method
+     * @return Whether sms is enabled as a login method
      * 
      */
     private Boolean smsEnabled;
@@ -286,12 +286,12 @@ public final class GetWlansOrgWlanPortal {
      */
     private Boolean sponsorAutoApprove;
     /**
-     * @return list of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+     * @return List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
      * 
      */
     private List<String> sponsorEmailDomains;
     /**
-     * @return whether sponsor is enabled
+     * @return Whether sponsor is enabled
      * 
      */
     private Boolean sponsorEnabled;
@@ -414,7 +414,7 @@ public final class GetWlansOrgWlanPortal {
         return this.amazonEmailDomains;
     }
     /**
-     * @return whether amazon is enabled as a login method
+     * @return Whether amazon is enabled as a login method
      * 
      */
     public Boolean amazonEnabled() {
@@ -449,14 +449,14 @@ public final class GetWlansOrgWlanPortal {
         return this.azureClientSecret;
     }
     /**
-     * @return whether Azure Active Directory is enabled as a login method
+     * @return Whether Azure Active Directory is enabled as a login method
      * 
      */
     public Boolean azureEnabled() {
         return this.azureEnabled;
     }
     /**
-     * @return interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+     * @return Interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
      * 
      */
     public Integer azureExpire() {
@@ -491,7 +491,7 @@ public final class GetWlansOrgWlanPortal {
         return this.broadnetUserId;
     }
     /**
-     * @return whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+     * @return Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
      * 
      */
     public Boolean bypassWhenCloudDown() {
@@ -505,28 +505,28 @@ public final class GetWlansOrgWlanPortal {
         return this.clickatellApiKey;
     }
     /**
-     * @return whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
+     * @return Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
      * 
      */
     public Boolean crossSite() {
         return this.crossSite;
     }
     /**
-     * @return whether email (access code verification) is enabled as a login method
+     * @return Whether email (access code verification) is enabled as a login method
      * 
      */
     public Boolean emailEnabled() {
         return this.emailEnabled;
     }
     /**
-     * @return whether guest portal is enabled
+     * @return Whether guest portal is enabled
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return how long to remain authorized, in minutes
+     * @return How long to remain authorized, in minutes
      * 
      */
     public Integer expire() {
@@ -561,7 +561,7 @@ public final class GetWlansOrgWlanPortal {
         return this.facebookEmailDomains;
     }
     /**
-     * @return whether facebook is enabled as a login method
+     * @return Whether facebook is enabled as a login method
      * 
      */
     public Boolean facebookEnabled() {
@@ -575,14 +575,14 @@ public final class GetWlansOrgWlanPortal {
         return this.facebookExpire;
     }
     /**
-     * @return whether to forward the user to another URL after authorized
+     * @return Whether to forward the user to another URL after authorized
      * 
      */
     public Boolean forward() {
         return this.forward;
     }
     /**
-     * @return the URL to forward the user to
+     * @return URL to forward the user to
      * 
      */
     public String forwardUrl() {
@@ -610,14 +610,14 @@ public final class GetWlansOrgWlanPortal {
         return this.googleEmailDomains;
     }
     /**
-     * @return whether google is enabled as login method
+     * @return Whether Google is enabled as login method
      * 
      */
     public Boolean googleEnabled() {
         return this.googleEnabled;
     }
     /**
-     * @return Optional if `google_enabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+     * @return Optional if `google_enabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
      * 
      */
     public Integer googleExpire() {
@@ -659,7 +659,7 @@ public final class GetWlansOrgWlanPortal {
         return this.microsoftEmailDomains;
     }
     /**
-     * @return whether microsoft 365 is enabled as a login method
+     * @return Whether microsoft 365 is enabled as a login method
      * 
      */
     public Boolean microsoftEnabled() {
@@ -694,14 +694,14 @@ public final class GetWlansOrgWlanPortal {
         return this.password;
     }
     /**
-     * @return whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
      * 
      */
     public Boolean predefinedSponsorsEnabled() {
         return this.predefinedSponsorsEnabled;
     }
     /**
-     * @return whether to hide sponsor’s email from list of sponsors
+     * @return Whether to hide sponsor’s email from list of sponsors
      * 
      */
     public Boolean predefinedSponsorsHideEmail() {
@@ -732,7 +732,7 @@ public final class GetWlansOrgWlanPortal {
         return this.puzzelUsername;
     }
     /**
-     * @return whether sms is enabled as a login method
+     * @return Whether sms is enabled as a login method
      * 
      */
     public Boolean smsEnabled() {
@@ -767,14 +767,14 @@ public final class GetWlansOrgWlanPortal {
         return this.sponsorAutoApprove;
     }
     /**
-     * @return list of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+     * @return List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
      * 
      */
     public List<String> sponsorEmailDomains() {
         return this.sponsorEmailDomains;
     }
     /**
-     * @return whether sponsor is enabled
+     * @return Whether sponsor is enabled
      * 
      */
     public Boolean sponsorEnabled() {

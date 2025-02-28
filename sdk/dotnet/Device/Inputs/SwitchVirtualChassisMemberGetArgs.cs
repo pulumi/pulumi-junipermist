@@ -15,17 +15,17 @@ namespace Pulumi.JuniperMist.Device.Inputs
         /// <summary>
         /// fpc0, same as the mac of device_id
         /// </summary>
-        [Input("mac")]
-        public Input<string>? Mac { get; set; }
+        [Input("mac", required: true)]
+        public Input<string> Mac { get; set; } = null!;
 
-        [Input("memberId")]
-        public Input<int>? MemberId { get; set; }
+        [Input("memberId", required: true)]
+        public Input<int> MemberId { get; set; } = null!;
 
         /// <summary>
         /// Both vc_role master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
         /// </summary>
-        [Input("vcRole")]
-        public Input<string>? VcRole { get; set; }
+        [Input("vcRole", required: true)]
+        public Input<string> VcRole { get; set; } = null!;
 
         public SwitchVirtualChassisMemberGetArgs()
         {

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingPasswordPolicy {
     /**
-     * @return whether the policy is enabled
+     * @return Whether the policy is enabled
      * 
      */
     private @Nullable Boolean enabled;
@@ -23,24 +23,24 @@ public final class SettingPasswordPolicy {
      */
     private @Nullable Integer expiryInDays;
     /**
-     * @return required password length
+     * @return Required password length
      * 
      */
     private @Nullable Integer minLength;
     /**
-     * @return whether to require special character
+     * @return Whether to require special character
      * 
      */
     private @Nullable Boolean requiresSpecialChar;
     /**
-     * @return whether to require two-factor auth
+     * @return Whether to require two-factor auth
      * 
      */
     private @Nullable Boolean requiresTwoFactorAuth;
 
     private SettingPasswordPolicy() {}
     /**
-     * @return whether the policy is enabled
+     * @return Whether the policy is enabled
      * 
      */
     public Optional<Boolean> enabled() {
@@ -54,21 +54,21 @@ public final class SettingPasswordPolicy {
         return Optional.ofNullable(this.expiryInDays);
     }
     /**
-     * @return required password length
+     * @return Required password length
      * 
      */
     public Optional<Integer> minLength() {
         return Optional.ofNullable(this.minLength);
     }
     /**
-     * @return whether to require special character
+     * @return Whether to require special character
      * 
      */
     public Optional<Boolean> requiresSpecialChar() {
         return Optional.ofNullable(this.requiresSpecialChar);
     }
     /**
-     * @return whether to require two-factor auth
+     * @return Whether to require two-factor auth
      * 
      */
     public Optional<Boolean> requiresTwoFactorAuth() {

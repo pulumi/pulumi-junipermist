@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
-        /// max_len of non-management packets to capture
+        /// Max_len of non-management packets to capture
         /// </summary>
         [Input("maxPktLen")]
         public Input<int>? MaxPktLen { get; set; }

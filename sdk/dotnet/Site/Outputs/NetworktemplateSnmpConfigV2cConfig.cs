@@ -15,12 +15,12 @@ namespace Pulumi.JuniperMist.Site.Outputs
     {
         public readonly string? Authorization;
         /// <summary>
-        /// client_list_name here should refer to client_list above
+        /// Client_list_name here should refer to client_list above
         /// </summary>
         public readonly string? ClientListName;
         public readonly string? CommunityName;
         /// <summary>
-        /// view name here should be defined in views above
+        /// View name here should be defined in views above
         /// </summary>
         public readonly string? View;
 

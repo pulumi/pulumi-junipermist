@@ -19,14 +19,14 @@ public final class SettingZoneOccupancyAlertArgs extends com.pulumi.resources.Re
     public static final SettingZoneOccupancyAlertArgs Empty = new SettingZoneOccupancyAlertArgs();
 
     /**
-     * list of email addresses to send email notifications when the alert threshold is reached
+     * List of email addresses to send email notifications when the alert threshold is reached
      * 
      */
     @Import(name="emailNotifiers")
     private @Nullable Output<List<String>> emailNotifiers;
 
     /**
-     * @return list of email addresses to send email notifications when the alert threshold is reached
+     * @return List of email addresses to send email notifications when the alert threshold is reached
      * 
      */
     public Optional<Output<List<String>>> emailNotifiers() {
@@ -34,14 +34,14 @@ public final class SettingZoneOccupancyAlertArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * indicate whether zone occupancy alert is enabled for the site
+     * Indicate whether zone occupancy alert is enabled for the site
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return indicate whether zone occupancy alert is enabled for the site
+     * @return Indicate whether zone occupancy alert is enabled for the site
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -49,14 +49,14 @@ public final class SettingZoneOccupancyAlertArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy &gt; occupancy_limit) for a minimum duration specified in the threshold, in minutes
+     * Sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy &gt; occupancy_limit) for a minimum duration specified in the threshold, in minutes
      * 
      */
     @Import(name="threshold")
     private @Nullable Output<Integer> threshold;
 
     /**
-     * @return sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy &gt; occupancy_limit) for a minimum duration specified in the threshold, in minutes
+     * @return Sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy &gt; occupancy_limit) for a minimum duration specified in the threshold, in minutes
      * 
      */
     public Optional<Output<Integer>> threshold() {
@@ -90,7 +90,7 @@ public final class SettingZoneOccupancyAlertArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param emailNotifiers list of email addresses to send email notifications when the alert threshold is reached
+         * @param emailNotifiers List of email addresses to send email notifications when the alert threshold is reached
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class SettingZoneOccupancyAlertArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param emailNotifiers list of email addresses to send email notifications when the alert threshold is reached
+         * @param emailNotifiers List of email addresses to send email notifications when the alert threshold is reached
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class SettingZoneOccupancyAlertArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param emailNotifiers list of email addresses to send email notifications when the alert threshold is reached
+         * @param emailNotifiers List of email addresses to send email notifications when the alert threshold is reached
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class SettingZoneOccupancyAlertArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enabled indicate whether zone occupancy alert is enabled for the site
+         * @param enabled Indicate whether zone occupancy alert is enabled for the site
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class SettingZoneOccupancyAlertArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enabled indicate whether zone occupancy alert is enabled for the site
+         * @param enabled Indicate whether zone occupancy alert is enabled for the site
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class SettingZoneOccupancyAlertArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param threshold sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy &gt; occupancy_limit) for a minimum duration specified in the threshold, in minutes
+         * @param threshold Sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy &gt; occupancy_limit) for a minimum duration specified in the threshold, in minutes
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class SettingZoneOccupancyAlertArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param threshold sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy &gt; occupancy_limit) for a minimum duration specified in the threshold, in minutes
+         * @param threshold Sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy &gt; occupancy_limit) for a minimum duration specified in the threshold, in minutes
          * 
          * @return builder
          * 

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class SettingSyntheticTestVlan {
     private @Nullable List<String> customTestUrls;
     /**
-     * @return for some vlans where we don&#39;t want this to run
+     * @return For some vlans where we don&#39;t want this to run
      * 
      */
     private @Nullable Boolean disabled;
@@ -26,7 +26,7 @@ public final class SettingSyntheticTestVlan {
         return this.customTestUrls == null ? List.of() : this.customTestUrls;
     }
     /**
-     * @return for some vlans where we don&#39;t want this to run
+     * @return For some vlans where we don&#39;t want this to run
      * 
      */
     public Optional<Boolean> disabled() {

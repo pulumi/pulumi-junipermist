@@ -36,11 +36,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string? InterfaceType;
         public readonly int? Metric;
         /// <summary>
-        /// by default, we'll re-advertise all learned OSPF routes toward overlay
+        /// By default, we'll re-advertise all learned OSPF routes toward overlay
         /// </summary>
         public readonly bool? NoReadvertiseToOverlay;
         /// <summary>
-        /// whether to send OSPF-Hello
+        /// Whether to send OSPF-Hello
         /// </summary>
         public readonly bool? Passive;
 

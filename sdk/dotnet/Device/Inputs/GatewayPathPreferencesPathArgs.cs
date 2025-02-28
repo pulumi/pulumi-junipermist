@@ -22,21 +22,21 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// only if `type`==`local`, if a different gateway is desired
+        /// Only if `type`==`local`, if a different gateway is desired
         /// </summary>
         [Input("gatewayIp")]
         public Input<string>? GatewayIp { get; set; }
 
         /// <summary>
-        /// only if `type`==`vpn`, if this vpn path can be used for internet
+        /// Only if `type`==`vpn`, if this vpn path can be used for internet
         /// </summary>
         [Input("internetAccess")]
         public Input<bool>? InternetAccess { get; set; }
 
         /// <summary>
-        /// required when 
+        /// Required when 
         ///   * `type`==`vpn`: the name of the VPN Path to use 
-        ///   * `type`==`wan`: the name of the WAN interface to use'
+        ///   * `type`==`wan`: the name of the WAN interface to use
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -45,7 +45,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _networks;
 
         /// <summary>
-        /// required when `type`==`local`
+        /// Required when `type`==`local`
         /// </summary>
         public InputList<string> Networks
         {
@@ -57,7 +57,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _targetIps;
 
         /// <summary>
-        /// if `type`==`local`, if destination IP is to be replaced
+        /// If `type`==`local`, if destination IP is to be replaced
         /// </summary>
         public InputList<string> TargetIps
         {
@@ -72,7 +72,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// optional if `type`==`vpn`
+        /// Optional if `type`==`vpn`
         /// </summary>
         [Input("wanName")]
         public Input<string>? WanName { get; set; }

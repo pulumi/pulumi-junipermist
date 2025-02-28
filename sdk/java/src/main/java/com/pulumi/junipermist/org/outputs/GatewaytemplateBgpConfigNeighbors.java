@@ -22,7 +22,7 @@ public final class GatewaytemplateBgpConfigNeighbors {
     private @Nullable Integer holdTime;
     private @Nullable String importPolicy;
     /**
-     * @return assuming BGP neighbor is directly connected
+     * @return Assuming BGP neighbor is directly connected
      * 
      */
     private @Nullable Integer multihopTtl;
@@ -46,7 +46,7 @@ public final class GatewaytemplateBgpConfigNeighbors {
         return Optional.ofNullable(this.importPolicy);
     }
     /**
-     * @return assuming BGP neighbor is directly connected
+     * @return Assuming BGP neighbor is directly connected
      * 
      */
     public Optional<Integer> multihopTtl() {

@@ -13,30 +13,30 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchSnmpConfigV3ConfigTargetAddress
     {
-        public readonly string? Address;
-        public readonly string? AddressMask;
-        public readonly int? Port;
+        public readonly string Address;
+        public readonly string AddressMask;
+        public readonly string? Port;
         /// <summary>
-        /// &lt;refer to notify tag, can be multiple with blank
+        /// Refer to notify tag, can be multiple with blank
         /// </summary>
         public readonly string? TagList;
-        public readonly string? TargetAddressName;
+        public readonly string TargetAddressName;
         /// <summary>
-        /// refer to notify target parameters name
+        /// Refer to notify target parameters name
         /// </summary>
         public readonly string? TargetParameters;
 
         [OutputConstructor]
         private SwitchSnmpConfigV3ConfigTargetAddress(
-            string? address,
+            string address,
 
-            string? addressMask,
+            string addressMask,
 
-            int? port,
+            string? port,
 
             string? tagList,
 
-            string? targetAddressName,
+            string targetAddressName,
 
             string? targetParameters)
         {

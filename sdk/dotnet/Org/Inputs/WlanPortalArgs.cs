@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// whether amazon is enabled as a login method
+        /// Whether amazon is enabled as a login method
         /// </summary>
         [Input("amazonEnabled")]
         public Input<bool>? AmazonEnabled { get; set; }
@@ -73,13 +73,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? AzureClientSecret { get; set; }
 
         /// <summary>
-        /// whether Azure Active Directory is enabled as a login method
+        /// Whether Azure Active Directory is enabled as a login method
         /// </summary>
         [Input("azureEnabled")]
         public Input<bool>? AzureEnabled { get; set; }
 
         /// <summary>
-        /// interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+        /// Interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
         /// </summary>
         [Input("azureExpire")]
         public Input<int>? AzureExpire { get; set; }
@@ -119,7 +119,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? BroadnetUserId { get; set; }
 
         /// <summary>
-        /// whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+        /// Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
         /// </summary>
         [Input("bypassWhenCloudDown")]
         public Input<bool>? BypassWhenCloudDown { get; set; }
@@ -131,25 +131,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? ClickatellApiKey { get; set; }
 
         /// <summary>
-        /// whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
+        /// Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
         /// </summary>
         [Input("crossSite")]
         public Input<bool>? CrossSite { get; set; }
 
         /// <summary>
-        /// whether email (access code verification) is enabled as a login method
+        /// Whether email (access code verification) is enabled as a login method
         /// </summary>
         [Input("emailEnabled")]
         public Input<bool>? EmailEnabled { get; set; }
 
         /// <summary>
-        /// whether guest portal is enabled
+        /// Whether guest portal is enabled
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// how long to remain authorized, in minutes
+        /// How long to remain authorized, in minutes
         /// </summary>
         [Input("expire")]
         public Input<int>? Expire { get; set; }
@@ -185,7 +185,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// whether facebook is enabled as a login method
+        /// Whether facebook is enabled as a login method
         /// </summary>
         [Input("facebookEnabled")]
         public Input<bool>? FacebookEnabled { get; set; }
@@ -197,13 +197,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? FacebookExpire { get; set; }
 
         /// <summary>
-        /// whether to forward the user to another URL after authorized
+        /// Whether to forward the user to another URL after authorized
         /// </summary>
         [Input("forward")]
         public Input<bool>? Forward { get; set; }
 
         /// <summary>
-        /// the URL to forward the user to
+        /// URL to forward the user to
         /// </summary>
         [Input("forwardUrl")]
         public Input<string>? ForwardUrl { get; set; }
@@ -233,13 +233,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// whether google is enabled as login method
+        /// Whether Google is enabled as login method
         /// </summary>
         [Input("googleEnabled")]
         public Input<bool>? GoogleEnabled { get; set; }
 
         /// <summary>
-        /// Optional if `google_enabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+        /// Optional if `google_enabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
         /// </summary>
         [Input("googleExpire")]
         public Input<int>? GoogleExpire { get; set; }
@@ -291,7 +291,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// whether microsoft 365 is enabled as a login method
+        /// Whether microsoft 365 is enabled as a login method
         /// </summary>
         [Input("microsoftEnabled")]
         public Input<bool>? MicrosoftEnabled { get; set; }
@@ -331,13 +331,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+        /// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
         /// </summary>
         [Input("predefinedSponsorsEnabled")]
         public Input<bool>? PredefinedSponsorsEnabled { get; set; }
 
         /// <summary>
-        /// whether to hide sponsor’s email from list of sponsors
+        /// Whether to hide sponsor’s email from list of sponsors
         /// </summary>
         [Input("predefinedSponsorsHideEmail")]
         public Input<bool>? PredefinedSponsorsHideEmail { get; set; }
@@ -374,7 +374,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? PuzzelUsername { get; set; }
 
         /// <summary>
-        /// whether sms is enabled as a login method
+        /// Whether sms is enabled as a login method
         /// </summary>
         [Input("smsEnabled")]
         public Input<bool>? SmsEnabled { get; set; }
@@ -407,7 +407,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _sponsorEmailDomains;
 
         /// <summary>
-        /// list of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+        /// List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
         /// </summary>
         public InputList<string> SponsorEmailDomains
         {
@@ -416,7 +416,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// whether sponsor is enabled
+        /// Whether sponsor is enabled
         /// </summary>
         [Input("sponsorEnabled")]
         public Input<bool>? SponsorEnabled { get; set; }

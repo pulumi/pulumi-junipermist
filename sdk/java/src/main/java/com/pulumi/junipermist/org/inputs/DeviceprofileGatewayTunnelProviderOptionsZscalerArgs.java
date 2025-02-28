@@ -42,14 +42,14 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
     }
 
     /**
-     * proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+     * Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
      * 
      */
     @Import(name="aupForceSslInspection")
     private @Nullable Output<Boolean> aupForceSslInspection;
 
     /**
-     * @return proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+     * @return Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
      * 
      */
     public Optional<Output<Boolean>> aupForceSslInspection() {
@@ -102,14 +102,14 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
     }
 
     /**
-     * the download bandwidth cap of the link, in Mbps. Disabled if not set
+     * Download bandwidth cap of the link, in Mbps. Disabled if not set
      * 
      */
     @Import(name="dnBandwidth")
     private @Nullable Output<Double> dnBandwidth;
 
     /**
-     * @return the download bandwidth cap of the link, in Mbps. Disabled if not set
+     * @return Download bandwidth cap of the link, in Mbps. Disabled if not set
      * 
      */
     public Optional<Output<Double>> dnBandwidth() {
@@ -132,14 +132,14 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
     }
 
     /**
-     * if `true`, enable the firewall control option
+     * If `true`, enable the firewall control option
      * 
      */
     @Import(name="ofwEnabled")
     private @Nullable Output<Boolean> ofwEnabled;
 
     /**
-     * @return if `true`, enable the firewall control option
+     * @return If `true`, enable the firewall control option
      * 
      */
     public Optional<Output<Boolean>> ofwEnabled() {
@@ -207,14 +207,14 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
     }
 
     /**
-     * the download bandwidth cap of the link, in Mbps. Disabled if not set
+     * Download bandwidth cap of the link, in Mbps. Disabled if not set
      * 
      */
     @Import(name="upBandwidth")
     private @Nullable Output<Double> upBandwidth;
 
     /**
-     * @return the download bandwidth cap of the link, in Mbps. Disabled if not set
+     * @return Download bandwidth cap of the link, in Mbps. Disabled if not set
      * 
      */
     public Optional<Output<Double>> upBandwidth() {
@@ -222,14 +222,14 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
     }
 
     /**
-     * location uses proxy chaining to forward traffic
+     * Location uses proxy chaining to forward traffic
      * 
      */
     @Import(name="xffForwardEnabled")
     private @Nullable Output<Boolean> xffForwardEnabled;
 
     /**
-     * @return location uses proxy chaining to forward traffic
+     * @return Location uses proxy chaining to forward traffic
      * 
      */
     public Optional<Output<Boolean>> xffForwardEnabled() {
@@ -305,7 +305,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param aupForceSslInspection proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+         * @param aupForceSslInspection Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param aupForceSslInspection proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+         * @param aupForceSslInspection Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param dnBandwidth the download bandwidth cap of the link, in Mbps. Disabled if not set
+         * @param dnBandwidth Download bandwidth cap of the link, in Mbps. Disabled if not set
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param dnBandwidth the download bandwidth cap of the link, in Mbps. Disabled if not set
+         * @param dnBandwidth Download bandwidth cap of the link, in Mbps. Disabled if not set
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param ofwEnabled if `true`, enable the firewall control option
+         * @param ofwEnabled If `true`, enable the firewall control option
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param ofwEnabled if `true`, enable the firewall control option
+         * @param ofwEnabled If `true`, enable the firewall control option
          * 
          * @return builder
          * 
@@ -546,7 +546,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param upBandwidth the download bandwidth cap of the link, in Mbps. Disabled if not set
+         * @param upBandwidth Download bandwidth cap of the link, in Mbps. Disabled if not set
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param upBandwidth the download bandwidth cap of the link, in Mbps. Disabled if not set
+         * @param upBandwidth Download bandwidth cap of the link, in Mbps. Disabled if not set
          * 
          * @return builder
          * 
@@ -567,7 +567,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param xffForwardEnabled location uses proxy chaining to forward traffic
+         * @param xffForwardEnabled Location uses proxy chaining to forward traffic
          * 
          * @return builder
          * 
@@ -578,7 +578,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param xffForwardEnabled location uses proxy chaining to forward traffic
+         * @param xffForwardEnabled Location uses proxy chaining to forward traffic
          * 
          * @return builder
          * 

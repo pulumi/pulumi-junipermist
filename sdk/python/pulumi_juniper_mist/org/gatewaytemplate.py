@@ -56,12 +56,12 @@ class GatewaytemplateArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]] ip_configs: Property key is the network name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: list of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input['GatewaytemplateOobIpConfigArgs'] oob_ip_config: out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
+        :param pulumi.Input['GatewaytemplateOobIpConfigArgs'] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePathPreferencesArgs']]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
                "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
-        :param pulumi.Input[str] router_id: auto assigned if not set
+        :param pulumi.Input[str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[str] type: enum: `spoke`, `standalone`
@@ -270,7 +270,7 @@ class GatewaytemplateArgs:
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of NTP servers specific to this device. By default, those in Site Settings will be used
+        List of NTP servers specific to this device. By default, those in Site Settings will be used
         """
         return pulumi.get(self, "ntp_servers")
 
@@ -282,7 +282,7 @@ class GatewaytemplateArgs:
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> Optional[pulumi.Input['GatewaytemplateOobIpConfigArgs']]:
         """
-        out-of-band (vme/em0/fxp0) IP config
+        Out-of-band (vme/em0/fxp0) IP config
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -319,7 +319,7 @@ class GatewaytemplateArgs:
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[pulumi.Input[str]]:
         """
-        auto assigned if not set
+        Auto assigned if not set
         """
         return pulumi.get(self, "router_id")
 
@@ -441,12 +441,12 @@ class _GatewaytemplateState:
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]] ip_configs: Property key is the network name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: list of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input['GatewaytemplateOobIpConfigArgs'] oob_ip_config: out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
+        :param pulumi.Input['GatewaytemplateOobIpConfigArgs'] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePathPreferencesArgs']]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
                "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
-        :param pulumi.Input[str] router_id: auto assigned if not set
+        :param pulumi.Input[str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[str] type: enum: `spoke`, `standalone`
@@ -647,7 +647,7 @@ class _GatewaytemplateState:
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of NTP servers specific to this device. By default, those in Site Settings will be used
+        List of NTP servers specific to this device. By default, those in Site Settings will be used
         """
         return pulumi.get(self, "ntp_servers")
 
@@ -659,7 +659,7 @@ class _GatewaytemplateState:
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> Optional[pulumi.Input['GatewaytemplateOobIpConfigArgs']]:
         """
-        out-of-band (vme/em0/fxp0) IP config
+        Out-of-band (vme/em0/fxp0) IP config
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -705,7 +705,7 @@ class _GatewaytemplateState:
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[pulumi.Input[str]]:
         """
-        auto assigned if not set
+        Auto assigned if not set
         """
         return pulumi.get(self, "router_id")
 
@@ -845,12 +845,12 @@ class Gatewaytemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]] ip_configs: Property key is the network name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: list of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']] oob_ip_config: out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
+        :param pulumi.Input[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict']]]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
                "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
-        :param pulumi.Input[str] router_id: auto assigned if not set
+        :param pulumi.Input[str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[str] type: enum: `spoke`, `standalone`
@@ -1005,12 +1005,12 @@ class Gatewaytemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]] ip_configs: Property key is the network name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: list of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']] oob_ip_config: out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
+        :param pulumi.Input[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict']]]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
                "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
-        :param pulumi.Input[str] router_id: auto assigned if not set
+        :param pulumi.Input[str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[str] type: enum: `spoke`, `standalone`
@@ -1138,7 +1138,7 @@ class Gatewaytemplate(pulumi.CustomResource):
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        list of NTP servers specific to this device. By default, those in Site Settings will be used
+        List of NTP servers specific to this device. By default, those in Site Settings will be used
         """
         return pulumi.get(self, "ntp_servers")
 
@@ -1146,7 +1146,7 @@ class Gatewaytemplate(pulumi.CustomResource):
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Output['outputs.GatewaytemplateOobIpConfig']:
         """
-        out-of-band (vme/em0/fxp0) IP config
+        Out-of-band (vme/em0/fxp0) IP config
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -1176,7 +1176,7 @@ class Gatewaytemplate(pulumi.CustomResource):
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Output[Optional[str]]:
         """
-        auto assigned if not set
+        Auto assigned if not set
         """
         return pulumi.get(self, "router_id")
 

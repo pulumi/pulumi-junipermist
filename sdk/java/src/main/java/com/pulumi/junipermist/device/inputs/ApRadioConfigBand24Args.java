@@ -93,14 +93,14 @@ public final class ApRadioConfigBand24Args extends com.pulumi.resources.Resource
     }
 
     /**
-     * whether to disable the radio
+     * Whether to disable the radio
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return whether to disable the radio
+     * @return Whether to disable the radio
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -123,14 +123,14 @@ public final class ApRadioConfigBand24Args extends com.pulumi.resources.Resource
     }
 
     /**
-     * when power=0, max tx power to use, HW-specific values will be used if not set
+     * When power=0, max tx power to use, HW-specific values will be used if not set
      * 
      */
     @Import(name="powerMax")
     private @Nullable Output<Integer> powerMax;
 
     /**
-     * @return when power=0, max tx power to use, HW-specific values will be used if not set
+     * @return When power=0, max tx power to use, HW-specific values will be used if not set
      * 
      */
     public Optional<Output<Integer>> powerMax() {
@@ -138,14 +138,14 @@ public final class ApRadioConfigBand24Args extends com.pulumi.resources.Resource
     }
 
     /**
-     * when power=0, min tx power to use, HW-specific values will be used if not set
+     * When power=0, min tx power to use, HW-specific values will be used if not set
      * 
      */
     @Import(name="powerMin")
     private @Nullable Output<Integer> powerMin;
 
     /**
-     * @return when power=0, min tx power to use, HW-specific values will be used if not set
+     * @return When power=0, min tx power to use, HW-specific values will be used if not set
      * 
      */
     public Optional<Output<Integer>> powerMin() {
@@ -314,7 +314,7 @@ public final class ApRadioConfigBand24Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param disabled whether to disable the radio
+         * @param disabled Whether to disable the radio
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class ApRadioConfigBand24Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param disabled whether to disable the radio
+         * @param disabled Whether to disable the radio
          * 
          * @return builder
          * 
@@ -356,7 +356,7 @@ public final class ApRadioConfigBand24Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param powerMax when power=0, max tx power to use, HW-specific values will be used if not set
+         * @param powerMax When power=0, max tx power to use, HW-specific values will be used if not set
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class ApRadioConfigBand24Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param powerMax when power=0, max tx power to use, HW-specific values will be used if not set
+         * @param powerMax When power=0, max tx power to use, HW-specific values will be used if not set
          * 
          * @return builder
          * 
@@ -377,7 +377,7 @@ public final class ApRadioConfigBand24Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param powerMin when power=0, min tx power to use, HW-specific values will be used if not set
+         * @param powerMin When power=0, min tx power to use, HW-specific values will be used if not set
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class ApRadioConfigBand24Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param powerMin when power=0, min tx power to use, HW-specific values will be used if not set
+         * @param powerMin When power=0, min tx power to use, HW-specific values will be used if not set
          * 
          * @return builder
          * 

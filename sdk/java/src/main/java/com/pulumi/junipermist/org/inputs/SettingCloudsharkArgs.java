@@ -24,14 +24,14 @@ public final class SettingCloudsharkArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if using CS Enteprise
+     * If using CS Enteprise
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return if using CS Enteprise
+     * @return If using CS Enteprise
      * 
      */
     public Optional<Output<String>> url() {
@@ -73,7 +73,7 @@ public final class SettingCloudsharkArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param url if using CS Enteprise
+         * @param url If using CS Enteprise
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class SettingCloudsharkArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param url if using CS Enteprise
+         * @param url If using CS Enteprise
          * 
          * @return builder
          * 

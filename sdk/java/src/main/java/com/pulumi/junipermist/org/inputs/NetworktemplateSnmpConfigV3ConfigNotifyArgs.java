@@ -5,43 +5,42 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class NetworktemplateSnmpConfigV3ConfigNotifyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NetworktemplateSnmpConfigV3ConfigNotifyArgs Empty = new NetworktemplateSnmpConfigV3ConfigNotifyArgs();
 
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
-    @Import(name="tag")
-    private @Nullable Output<String> tag;
+    @Import(name="tag", required=true)
+    private Output<String> tag;
 
-    public Optional<Output<String>> tag() {
-        return Optional.ofNullable(this.tag);
+    public Output<String> tag() {
+        return this.tag;
     }
 
     /**
      * enum: `inform`, `trap`
      * 
      */
-    @Import(name="type")
-    private @Nullable Output<String> type;
+    @Import(name="type", required=true)
+    private Output<String> type;
 
     /**
      * @return enum: `inform`, `trap`
      * 
      */
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     private NetworktemplateSnmpConfigV3ConfigNotifyArgs() {}
@@ -70,7 +69,7 @@ public final class NetworktemplateSnmpConfigV3ConfigNotifyArgs extends com.pulum
             $ = new NetworktemplateSnmpConfigV3ConfigNotifyArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -79,7 +78,7 @@ public final class NetworktemplateSnmpConfigV3ConfigNotifyArgs extends com.pulum
             return name(Output.of(name));
         }
 
-        public Builder tag(@Nullable Output<String> tag) {
+        public Builder tag(Output<String> tag) {
             $.tag = tag;
             return this;
         }
@@ -94,7 +93,7 @@ public final class NetworktemplateSnmpConfigV3ConfigNotifyArgs extends com.pulum
          * @return builder
          * 
          */
-        public Builder type(@Nullable Output<String> type) {
+        public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
@@ -110,6 +109,15 @@ public final class NetworktemplateSnmpConfigV3ConfigNotifyArgs extends com.pulum
         }
 
         public NetworktemplateSnmpConfigV3ConfigNotifyArgs build() {
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("NetworktemplateSnmpConfigV3ConfigNotifyArgs", "name");
+            }
+            if ($.tag == null) {
+                throw new MissingRequiredPropertyException("NetworktemplateSnmpConfigV3ConfigNotifyArgs", "tag");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("NetworktemplateSnmpConfigV3ConfigNotifyArgs", "type");
+            }
             return $;
         }
     }

@@ -14,7 +14,7 @@ import java.util.Objects;
 public final class GetWlansSiteWlanDnsServerRewrite {
     private Boolean enabled;
     /**
-     * @return map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+     * @return Map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
      * 
      */
     private Map<String,String> radiusGroups;
@@ -24,7 +24,7 @@ public final class GetWlansSiteWlanDnsServerRewrite {
         return this.enabled;
     }
     /**
-     * @return map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+     * @return Map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
      * 
      */
     public Map<String,String> radiusGroups() {

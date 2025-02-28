@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .alarmtemplate import *
 from .apitoken import *
+from .avprofile import *
 from .base import *
 from .deviceprofile_ap import *
 from .deviceprofile_assign import *
@@ -14,6 +15,7 @@ from .deviceprofile_gateway import *
 from .evpn_topology import *
 from .gatewaytemplate import *
 from .get_alarmtemplates import *
+from .get_avprofiles import *
 from .get_deviceprofiles_ap import *
 from .get_deviceprofiles_gateway import *
 from .get_evpn_topologies import *

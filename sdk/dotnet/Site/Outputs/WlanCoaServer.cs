@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class WlanCoaServer
     {
         /// <summary>
-        /// whether to disable Event-Timestamp Check
+        /// Whether to disable Event-Timestamp Check
         /// </summary>
         public readonly bool? DisableEventTimestampCheck;
         public readonly bool? Enabled;

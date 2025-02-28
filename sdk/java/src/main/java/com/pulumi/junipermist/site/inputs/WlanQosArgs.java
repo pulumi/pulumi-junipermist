@@ -32,14 +32,14 @@ public final class WlanQosArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to overwrite QoS
+     * Whether to overwrite QoS
      * 
      */
     @Import(name="overwrite")
     private @Nullable Output<Boolean> overwrite;
 
     /**
-     * @return whether to overwrite QoS
+     * @return Whether to overwrite QoS
      * 
      */
     public Optional<Output<Boolean>> overwrite() {
@@ -93,7 +93,7 @@ public final class WlanQosArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param overwrite whether to overwrite QoS
+         * @param overwrite Whether to overwrite QoS
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class WlanQosArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param overwrite whether to overwrite QoS
+         * @param overwrite Whether to overwrite QoS
          * 
          * @return builder
          * 

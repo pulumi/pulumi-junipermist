@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<Inputs.ApClientBridgeAuthArgs>? Auth { get; set; }
 
         /// <summary>
-        /// when acted as client bridge:
+        /// When acted as client bridge:
         ///   * only 5G radio can be used
         ///   * will not serve as AP on any radios
         /// </summary>

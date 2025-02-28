@@ -17,14 +17,14 @@ public final class SettingSecurityArgs extends com.pulumi.resources.ResourceArgs
     public static final SettingSecurityArgs Empty = new SettingSecurityArgs();
 
     /**
-     * whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
+     * Whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
      * 
      */
     @Import(name="disableLocalSsh")
     private @Nullable Output<Boolean> disableLocalSsh;
 
     /**
-     * @return whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
+     * @return Whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
      * 
      */
     public Optional<Output<Boolean>> disableLocalSsh() {
@@ -47,14 +47,14 @@ public final class SettingSecurityArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
+     * Whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
      * 
      */
     @Import(name="limitSshAccess")
     private @Nullable Output<Boolean> limitSshAccess;
 
     /**
-     * @return whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
+     * @return Whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
      * 
      */
     public Optional<Output<Boolean>> limitSshAccess() {
@@ -88,7 +88,7 @@ public final class SettingSecurityArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param disableLocalSsh whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
+         * @param disableLocalSsh Whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class SettingSecurityArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param disableLocalSsh whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
+         * @param disableLocalSsh Whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class SettingSecurityArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param limitSshAccess whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
+         * @param limitSshAccess Whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class SettingSecurityArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param limitSshAccess whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
+         * @param limitSshAccess Whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
          * 
          * @return builder
          * 

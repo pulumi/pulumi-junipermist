@@ -12,14 +12,14 @@ import java.util.Objects;
 @CustomType
 public final class GetWlansOrgWlanDynamicPsk {
     /**
-     * @return default PSK to use if cloud WLC is not available, 8-63 characters
+     * @return Default PSK to use if cloud WLC is not available, 8-63 characters
      * 
      */
     private String defaultPsk;
     private String defaultVlanId;
     private Boolean enabled;
     /**
-     * @return when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
+     * @return When 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
      * 
      */
     private Boolean forceLookup;
@@ -31,7 +31,7 @@ public final class GetWlansOrgWlanDynamicPsk {
 
     private GetWlansOrgWlanDynamicPsk() {}
     /**
-     * @return default PSK to use if cloud WLC is not available, 8-63 characters
+     * @return Default PSK to use if cloud WLC is not available, 8-63 characters
      * 
      */
     public String defaultPsk() {
@@ -44,7 +44,7 @@ public final class GetWlansOrgWlanDynamicPsk {
         return this.enabled;
     }
     /**
-     * @return when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
+     * @return When 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
      * 
      */
     public Boolean forceLookup() {

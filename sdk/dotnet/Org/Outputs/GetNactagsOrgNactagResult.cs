@@ -14,19 +14,19 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GetNactagsOrgNactagResult
     {
         /// <summary>
-        /// can be set to true to allow the override by usermac result
+        /// Can be set to true to allow the override by usermac result
         /// </summary>
         public readonly bool AllowUsermacOverride;
         /// <summary>
-        /// when the object has been created, in epoch
+        /// When the object has been created, in epoch
         /// </summary>
         public readonly double CreatedTime;
         /// <summary>
-        /// if `type`==`egress_vlan_names`, list of egress vlans to return
+        /// If `type`==`egress_vlan_names`, list of egress vlans to return
         /// </summary>
         public readonly ImmutableArray<string> EgressVlanNames;
         /// <summary>
-        /// if `type`==`gbp_tag`
+        /// If `type`==`gbp_tag`
         /// </summary>
         public readonly int GbpTag;
         /// <summary>
@@ -47,29 +47,29 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool MatchAll;
         /// <summary>
-        /// when the object has been modified for the last time, in epoch
+        /// When the object has been modified for the last time, in epoch
         /// </summary>
         public readonly double ModifiedTime;
         public readonly string Name;
         public readonly string OrgId;
         /// <summary>
-        /// if `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". 
+        /// If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". 
         /// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
         /// Note that it is allowed to have more than one radius_attrs in the result of a given rule.
         /// </summary>
         public readonly ImmutableArray<string> RadiusAttrs;
         /// <summary>
-        /// if `type`==`radius_group`
+        /// If `type`==`radius_group`
         /// </summary>
         public readonly string RadiusGroup;
         /// <summary>
-        /// if `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs". 
+        /// If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs". 
         /// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
         /// Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         /// </summary>
         public readonly ImmutableArray<string> RadiusVendorAttrs;
         /// <summary>
-        /// if `type`==`session_timeout, in seconds
+        /// If `type`==`session_timeout, in seconds
         /// </summary>
         public readonly int SessionTimeout;
         /// <summary>
@@ -81,11 +81,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string UsernameAttr;
         /// <summary>
-        /// if `type`==`match`
+        /// If `type`==`match`
         /// </summary>
         public readonly ImmutableArray<string> Values;
         /// <summary>
-        /// if `type`==`vlan`
+        /// If `type`==`vlan`
         /// </summary>
         public readonly string Vlan;
 

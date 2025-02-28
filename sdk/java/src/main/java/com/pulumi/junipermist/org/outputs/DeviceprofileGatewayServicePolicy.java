@@ -4,9 +4,11 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayServicePolicyAntivirus;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayServicePolicyAppqoe;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayServicePolicyEwf;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayServicePolicyIdp;
+import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayServicePolicySslProxy;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -21,6 +23,11 @@ public final class DeviceprofileGatewayServicePolicy {
      * 
      */
     private @Nullable String action;
+    /**
+     * @return For SRX-only
+     * 
+     */
+    private @Nullable DeviceprofileGatewayServicePolicyAntivirus antivirus;
     /**
      * @return For SRX Only
      * 
@@ -39,12 +46,12 @@ public final class DeviceprofileGatewayServicePolicy {
      */
     private @Nullable String name;
     /**
-     * @return by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+     * @return By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
      * 
      */
     private @Nullable String pathPreference;
     /**
-     * @return used to link servicepolicy defined at org level and overwrite some attributes
+     * @return Used to link servicepolicy defined at org level and overwrite some attributes
      * 
      */
     private @Nullable String servicepolicyId;
@@ -53,6 +60,11 @@ public final class DeviceprofileGatewayServicePolicy {
      * 
      */
     private @Nullable List<String> services;
+    /**
+     * @return For SRX-only
+     * 
+     */
+    private @Nullable DeviceprofileGatewayServicePolicySslProxy sslProxy;
     /**
      * @return Required when `servicepolicy_id` is not defined. List of Networks / Users
      * 
@@ -66,6 +78,13 @@ public final class DeviceprofileGatewayServicePolicy {
      */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
+    }
+    /**
+     * @return For SRX-only
+     * 
+     */
+    public Optional<DeviceprofileGatewayServicePolicyAntivirus> antivirus() {
+        return Optional.ofNullable(this.antivirus);
     }
     /**
      * @return For SRX Only
@@ -95,14 +114,14 @@ public final class DeviceprofileGatewayServicePolicy {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+     * @return By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
      * 
      */
     public Optional<String> pathPreference() {
         return Optional.ofNullable(this.pathPreference);
     }
     /**
-     * @return used to link servicepolicy defined at org level and overwrite some attributes
+     * @return Used to link servicepolicy defined at org level and overwrite some attributes
      * 
      */
     public Optional<String> servicepolicyId() {
@@ -114,6 +133,13 @@ public final class DeviceprofileGatewayServicePolicy {
      */
     public List<String> services() {
         return this.services == null ? List.of() : this.services;
+    }
+    /**
+     * @return For SRX-only
+     * 
+     */
+    public Optional<DeviceprofileGatewayServicePolicySslProxy> sslProxy() {
+        return Optional.ofNullable(this.sslProxy);
     }
     /**
      * @return Required when `servicepolicy_id` is not defined. List of Networks / Users
@@ -133,6 +159,7 @@ public final class DeviceprofileGatewayServicePolicy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String action;
+        private @Nullable DeviceprofileGatewayServicePolicyAntivirus antivirus;
         private @Nullable DeviceprofileGatewayServicePolicyAppqoe appqoe;
         private @Nullable List<DeviceprofileGatewayServicePolicyEwf> ewfs;
         private @Nullable DeviceprofileGatewayServicePolicyIdp idp;
@@ -141,11 +168,13 @@ public final class DeviceprofileGatewayServicePolicy {
         private @Nullable String pathPreference;
         private @Nullable String servicepolicyId;
         private @Nullable List<String> services;
+        private @Nullable DeviceprofileGatewayServicePolicySslProxy sslProxy;
         private @Nullable List<String> tenants;
         public Builder() {}
         public Builder(DeviceprofileGatewayServicePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
+    	      this.antivirus = defaults.antivirus;
     	      this.appqoe = defaults.appqoe;
     	      this.ewfs = defaults.ewfs;
     	      this.idp = defaults.idp;
@@ -154,6 +183,7 @@ public final class DeviceprofileGatewayServicePolicy {
     	      this.pathPreference = defaults.pathPreference;
     	      this.servicepolicyId = defaults.servicepolicyId;
     	      this.services = defaults.services;
+    	      this.sslProxy = defaults.sslProxy;
     	      this.tenants = defaults.tenants;
         }
 
@@ -161,6 +191,12 @@ public final class DeviceprofileGatewayServicePolicy {
         public Builder action(@Nullable String action) {
 
             this.action = action;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder antivirus(@Nullable DeviceprofileGatewayServicePolicyAntivirus antivirus) {
+
+            this.antivirus = antivirus;
             return this;
         }
         @CustomType.Setter
@@ -218,6 +254,12 @@ public final class DeviceprofileGatewayServicePolicy {
             return services(List.of(services));
         }
         @CustomType.Setter
+        public Builder sslProxy(@Nullable DeviceprofileGatewayServicePolicySslProxy sslProxy) {
+
+            this.sslProxy = sslProxy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tenants(@Nullable List<String> tenants) {
 
             this.tenants = tenants;
@@ -229,6 +271,7 @@ public final class DeviceprofileGatewayServicePolicy {
         public DeviceprofileGatewayServicePolicy build() {
             final var _resultValue = new DeviceprofileGatewayServicePolicy();
             _resultValue.action = action;
+            _resultValue.antivirus = antivirus;
             _resultValue.appqoe = appqoe;
             _resultValue.ewfs = ewfs;
             _resultValue.idp = idp;
@@ -237,6 +280,7 @@ public final class DeviceprofileGatewayServicePolicy {
             _resultValue.pathPreference = pathPreference;
             _resultValue.servicepolicyId = servicepolicyId;
             _resultValue.services = services;
+            _resultValue.sslProxy = sslProxy;
             _resultValue.tenants = tenants;
             return _resultValue;
         }

@@ -14,23 +14,23 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileApUsbConfig
     {
         /// <summary>
-        /// only if `type`==`imagotag`
+        /// Only if `type`==`imagotag`
         /// </summary>
         public readonly string? Cacert;
         /// <summary>
-        /// only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
+        /// Only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
         /// </summary>
         public readonly int? Channel;
         /// <summary>
-        /// whether to enable any usb config
+        /// Whether to enable any usb config
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// only if `type`==`imagotag`
+        /// Only if `type`==`imagotag`
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// only if `type`==`imagotag`
+        /// Only if `type`==`imagotag`
         /// </summary>
         public readonly int? Port;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// only if `type`==`imagotag`, whether to turn on SSL verification
+        /// Only if `type`==`imagotag`, whether to turn on SSL verification
         /// </summary>
         public readonly bool? VerifyCert;
         /// <summary>
-        /// only if `type`==`solum` or `type`==`hanshow`
+        /// Only if `type`==`solum` or `type`==`hanshow`
         /// </summary>
         public readonly int? VlanId;
 

@@ -96,56 +96,56 @@ public class Ap extends com.pulumi.resources.CustomResource {
         return this.deviceId;
     }
     /**
-     * whether to disable eth1 port
+     * Whether to disable eth1 port
      * 
      */
     @Export(name="disableEth1", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableEth1;
 
     /**
-     * @return whether to disable eth1 port
+     * @return Whether to disable eth1 port
      * 
      */
     public Output<Boolean> disableEth1() {
         return this.disableEth1;
     }
     /**
-     * whether to disable eth2 port
+     * Whether to disable eth2 port
      * 
      */
     @Export(name="disableEth2", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableEth2;
 
     /**
-     * @return whether to disable eth2 port
+     * @return Whether to disable eth2 port
      * 
      */
     public Output<Boolean> disableEth2() {
         return this.disableEth2;
     }
     /**
-     * whether to disable eth3 port
+     * Whether to disable eth3 port
      * 
      */
     @Export(name="disableEth3", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableEth3;
 
     /**
-     * @return whether to disable eth3 port
+     * @return Whether to disable eth3 port
      * 
      */
     public Output<Boolean> disableEth3() {
         return this.disableEth3;
     }
     /**
-     * whether to disable module port
+     * Whether to disable module port
      * 
      */
     @Export(name="disableModule", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableModule;
 
     /**
-     * @return whether to disable module port
+     * @return Whether to disable module port
      * 
      */
     public Output<Boolean> disableModule() {
@@ -158,14 +158,28 @@ public class Ap extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.eslConfig);
     }
     /**
-     * height, in meters, optional
+     * For some AP models, flow_control can be enabled to address some switch compatibility issue
+     * 
+     */
+    @Export(name="flowControl", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> flowControl;
+
+    /**
+     * @return For some AP models, flow_control can be enabled to address some switch compatibility issue
+     * 
+     */
+    public Output<Boolean> flowControl() {
+        return this.flowControl;
+    }
+    /**
+     * Height, in meters, optional
      * 
      */
     @Export(name="height", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> height;
 
     /**
-     * @return height, in meters, optional
+     * @return Height, in meters, optional
      * 
      */
     public Output<Optional<Double>> height() {
@@ -218,42 +232,42 @@ public class Ap extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.led);
     }
     /**
-     * whether this map is considered locked down
+     * Whether this map is considered locked down
      * 
      */
     @Export(name="locked", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> locked;
 
     /**
-     * @return whether this map is considered locked down
+     * @return Whether this map is considered locked down
      * 
      */
     public Output<Optional<Boolean>> locked() {
         return Codegen.optional(this.locked);
     }
     /**
-     * device MAC address
+     * Device MAC address
      * 
      */
     @Export(name="mac", refs={String.class}, tree="[0]")
     private Output<String> mac;
 
     /**
-     * @return device MAC address
+     * @return Device MAC address
      * 
      */
     public Output<String> mac() {
         return this.mac;
     }
     /**
-     * map where the device belongs to
+     * Map where the device belongs to
      * 
      */
     @Export(name="mapId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mapId;
 
     /**
-     * @return map where the device belongs to
+     * @return Map where the device belongs to
      * 
      */
     public Output<Optional<String>> mapId() {
@@ -274,14 +288,14 @@ public class Ap extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mesh);
     }
     /**
-     * device Model
+     * Device Model
      * 
      */
     @Export(name="model", refs={String.class}, tree="[0]")
     private Output<String> model;
 
     /**
-     * @return device Model
+     * @return Device Model
      * 
      */
     public Output<String> model() {
@@ -294,14 +308,14 @@ public class Ap extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * any notes about this AP
+     * Any notes about this AP
      * 
      */
     @Export(name="notes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notes;
 
     /**
-     * @return any notes about this AP
+     * @return Any notes about this AP
      * 
      */
     public Output<Optional<String>> notes() {
@@ -320,42 +334,42 @@ public class Ap extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * orientation, 0-359, in degrees, up is 0, right is 90.
+     * Orientation, 0-359, in degrees, up is 0, right is 90.
      * 
      */
     @Export(name="orientation", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> orientation;
 
     /**
-     * @return orientation, 0-359, in degrees, up is 0, right is 90.
+     * @return Orientation, 0-359, in degrees, up is 0, right is 90.
      * 
      */
     public Output<Optional<Integer>> orientation() {
         return Codegen.optional(this.orientation);
     }
     /**
-     * whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+     * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      * 
      */
     @Export(name="poePassthrough", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> poePassthrough;
 
     /**
-     * @return whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+     * @return Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      * 
      */
     public Output<Boolean> poePassthrough() {
         return this.poePassthrough;
     }
     /**
-     * power related configs
+     * Power related configs
      * 
      */
     @Export(name="pwrConfig", refs={ApPwrConfig.class}, tree="[0]")
     private Output</* @Nullable */ ApPwrConfig> pwrConfig;
 
     /**
-     * @return power related configs
+     * @return Power related configs
      * 
      */
     public Output<Optional<ApPwrConfig>> pwrConfig() {
@@ -376,14 +390,14 @@ public class Ap extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.radioConfig);
     }
     /**
-     * device Serial
+     * Device Serial
      * 
      */
     @Export(name="serial", refs={String.class}, tree="[0]")
     private Output<String> serial;
 
     /**
-     * @return device Serial
+     * @return Device Serial
      * 
      */
     public Output<String> serial() {
@@ -409,65 +423,73 @@ public class Ap extends com.pulumi.resources.CustomResource {
     public Output<String> type() {
         return this.type;
     }
+    /**
+     * AP Uplink port configuration
+     * 
+     */
     @Export(name="uplinkPortConfig", refs={ApUplinkPortConfig.class}, tree="[0]")
     private Output</* @Nullable */ ApUplinkPortConfig> uplinkPortConfig;
 
+    /**
+     * @return AP Uplink port configuration
+     * 
+     */
     public Output<Optional<ApUplinkPortConfig>> uplinkPortConfig() {
         return Codegen.optional(this.uplinkPortConfig);
     }
     /**
-     * USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-     * to ESL Config.
+     * USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+     * moved to ESL Config.
      * 
      */
     @Export(name="usbConfig", refs={ApUsbConfig.class}, tree="[0]")
     private Output</* @Nullable */ ApUsbConfig> usbConfig;
 
     /**
-     * @return USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-     * to ESL Config.
+     * @return USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+     * moved to ESL Config.
      * 
      */
     public Output<Optional<ApUsbConfig>> usbConfig() {
         return Codegen.optional(this.usbConfig);
     }
     /**
-     * a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
     @Export(name="vars", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> vars;
 
     /**
-     * @return a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * @return Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
     public Output<Optional<Map<String,String>>> vars() {
         return Codegen.optional(this.vars);
     }
     /**
-     * x in pixel
+     * X in pixel
      * 
      */
     @Export(name="x", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> x;
 
     /**
-     * @return x in pixel
+     * @return X in pixel
      * 
      */
     public Output<Optional<Double>> x() {
         return Codegen.optional(this.x);
     }
     /**
-     * y in pixel
+     * Y in pixel
      * 
      */
     @Export(name="y", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> y;
 
     /**
-     * @return y in pixel
+     * @return Y in pixel
      * 
      */
     public Output<Optional<Double>> y() {

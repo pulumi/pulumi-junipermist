@@ -19,17 +19,17 @@ import javax.annotation.Nullable;
 public final class ApRadioConfig {
     private @Nullable Boolean allowRrmDisable;
     /**
-     * @return antenna gain for 2.4G - for models with external antenna only
+     * @return Antenna gain for 2.4G - for models with external antenna only
      * 
      */
     private @Nullable Integer antGain24;
     /**
-     * @return antenna gain for 5G - for models with external antenna only
+     * @return Antenna gain for 5G - for models with external antenna only
      * 
      */
     private @Nullable Integer antGain5;
     /**
-     * @return antenna gain for 6G - for models with external antenna only
+     * @return Antenna gain for 6G - for models with external antenna only
      * 
      */
     private @Nullable Integer antGain6;
@@ -64,13 +64,12 @@ public final class ApRadioConfig {
      */
     private @Nullable ApRadioConfigBand6 band6;
     /**
-     * @return to make an outdoor operate indoor.
-     * for an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
+     * @return To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
      * 
      */
     private @Nullable Boolean indoorUse;
     /**
-     * @return whether scanning radio is enabled
+     * @return Whether scanning radio is enabled
      * 
      */
     private @Nullable Boolean scanningEnabled;
@@ -80,21 +79,21 @@ public final class ApRadioConfig {
         return Optional.ofNullable(this.allowRrmDisable);
     }
     /**
-     * @return antenna gain for 2.4G - for models with external antenna only
+     * @return Antenna gain for 2.4G - for models with external antenna only
      * 
      */
     public Optional<Integer> antGain24() {
         return Optional.ofNullable(this.antGain24);
     }
     /**
-     * @return antenna gain for 5G - for models with external antenna only
+     * @return Antenna gain for 5G - for models with external antenna only
      * 
      */
     public Optional<Integer> antGain5() {
         return Optional.ofNullable(this.antGain5);
     }
     /**
-     * @return antenna gain for 6G - for models with external antenna only
+     * @return Antenna gain for 6G - for models with external antenna only
      * 
      */
     public Optional<Integer> antGain6() {
@@ -143,15 +142,14 @@ public final class ApRadioConfig {
         return Optional.ofNullable(this.band6);
     }
     /**
-     * @return to make an outdoor operate indoor.
-     * for an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
+     * @return To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
      * 
      */
     public Optional<Boolean> indoorUse() {
         return Optional.ofNullable(this.indoorUse);
     }
     /**
-     * @return whether scanning radio is enabled
+     * @return Whether scanning radio is enabled
      * 
      */
     public Optional<Boolean> scanningEnabled() {

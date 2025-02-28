@@ -22,14 +22,14 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
     public static final GatewayNetworkVpnAccessArgs Empty = new GatewayNetworkVpnAccessArgs();
 
     /**
-     * if `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE&#39;s side
+     * If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE&#39;s side
      * 
      */
     @Import(name="advertisedSubnet")
     private @Nullable Output<String> advertisedSubnet;
 
     /**
-     * @return if `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE&#39;s side
+     * @return If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE&#39;s side
      * 
      */
     public Optional<Output<String>> advertisedSubnet() {
@@ -37,14 +37,14 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * whether to allow ping from vpn into this routed network
+     * Whether to allow ping from vpn into this routed network
      * 
      */
     @Import(name="allowPing")
     private @Nullable Output<Boolean> allowPing;
 
     /**
-     * @return whether to allow ping from vpn into this routed network
+     * @return Whether to allow ping from vpn into this routed network
      * 
      */
     public Optional<Output<Boolean>> allowPing() {
@@ -67,14 +67,14 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+     * If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
      * 
      */
     @Import(name="natPool")
     private @Nullable Output<String> natPool;
 
     /**
-     * @return if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+     * @return If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
      * 
      */
     public Optional<Output<String>> natPool() {
@@ -127,14 +127,14 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+     * By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
      * 
      */
     @Import(name="otherVrfs")
     private @Nullable Output<List<String>> otherVrfs;
 
     /**
-     * @return by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+     * @return By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
      * 
      */
     public Optional<Output<List<String>>> otherVrfs() {
@@ -142,14 +142,14 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * whether this network is routable
+     * Whether this network is routable
      * 
      */
     @Import(name="routed")
     private @Nullable Output<Boolean> routed;
 
     /**
-     * @return whether this network is routable
+     * @return Whether this network is routable
      * 
      */
     public Optional<Output<Boolean>> routed() {
@@ -157,14 +157,14 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+     * If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
      * 
      */
     @Import(name="sourceNat")
     private @Nullable Output<GatewayNetworkVpnAccessSourceNatArgs> sourceNat;
 
     /**
-     * @return if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+     * @return If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
      * 
      */
     public Optional<Output<GatewayNetworkVpnAccessSourceNatArgs>> sourceNat() {
@@ -269,7 +269,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param advertisedSubnet if `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE&#39;s side
+         * @param advertisedSubnet If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE&#39;s side
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param advertisedSubnet if `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE&#39;s side
+         * @param advertisedSubnet If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE&#39;s side
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param allowPing whether to allow ping from vpn into this routed network
+         * @param allowPing Whether to allow ping from vpn into this routed network
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param allowPing whether to allow ping from vpn into this routed network
+         * @param allowPing Whether to allow ping from vpn into this routed network
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param natPool if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+         * @param natPool If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param natPool if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+         * @param natPool If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param otherVrfs by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+         * @param otherVrfs By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param otherVrfs by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+         * @param otherVrfs By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
          * 
          * @return builder
          * 
@@ -437,7 +437,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param otherVrfs by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+         * @param otherVrfs By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
          * 
          * @return builder
          * 
@@ -447,7 +447,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param routed whether this network is routable
+         * @param routed Whether this network is routable
          * 
          * @return builder
          * 
@@ -458,7 +458,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param routed whether this network is routable
+         * @param routed Whether this network is routable
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sourceNat if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+         * @param sourceNat If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
          * 
          * @return builder
          * 
@@ -479,7 +479,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sourceNat if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+         * @param sourceNat If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
          * 
          * @return builder
          * 

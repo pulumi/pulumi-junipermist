@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateRadiusConfigAuthServer {
     /**
-     * @return ip / hostname of RADIUS server
+     * @return IP/ hostname of RADIUS server
      * 
      */
     private String host;
@@ -33,19 +33,19 @@ public final class NetworktemplateRadiusConfigAuthServer {
      */
     private @Nullable Integer port;
     /**
-     * @return whether to require Message-Authenticator in requests
+     * @return Whether to require Message-Authenticator in requests
      * 
      */
     private @Nullable Boolean requireMessageAuthenticator;
     /**
-     * @return secret of RADIUS server
+     * @return Secretof RADIUS server
      * 
      */
     private String secret;
 
     private NetworktemplateRadiusConfigAuthServer() {}
     /**
-     * @return ip / hostname of RADIUS server
+     * @return IP/ hostname of RADIUS server
      * 
      */
     public String host() {
@@ -75,14 +75,14 @@ public final class NetworktemplateRadiusConfigAuthServer {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return whether to require Message-Authenticator in requests
+     * @return Whether to require Message-Authenticator in requests
      * 
      */
     public Optional<Boolean> requireMessageAuthenticator() {
         return Optional.ofNullable(this.requireMessageAuthenticator);
     }
     /**
-     * @return secret of RADIUS server
+     * @return Secretof RADIUS server
      * 
      */
     public String secret() {

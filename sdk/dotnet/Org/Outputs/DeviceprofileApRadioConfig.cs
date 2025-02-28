@@ -15,15 +15,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
     {
         public readonly bool? AllowRrmDisable;
         /// <summary>
-        /// antenna gain for 2.4G - for models with external antenna only
+        /// Antenna gain for 2.4G - for models with external antenna only
         /// </summary>
         public readonly int? AntGain24;
         /// <summary>
-        /// antenna gain for 5G - for models with external antenna only
+        /// Antenna gain for 5G - for models with external antenna only
         /// </summary>
         public readonly int? AntGain5;
         /// <summary>
-        /// antenna gain for 6G - for models with external antenna only
+        /// Antenna gain for 6G - for models with external antenna only
         /// </summary>
         public readonly int? AntGain6;
         /// <summary>
@@ -51,12 +51,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.DeviceprofileApRadioConfigBand6? Band6;
         /// <summary>
-        /// to make an outdoor operate indoor.
-        /// for an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
+        /// To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
         /// </summary>
         public readonly bool? IndoorUse;
         /// <summary>
-        /// whether scanning radio is enabled
+        /// Whether scanning radio is enabled
         /// </summary>
         public readonly bool? ScanningEnabled;
 

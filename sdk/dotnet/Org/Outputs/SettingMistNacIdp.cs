@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingMistNacIdp
     {
         /// <summary>
-        /// when the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+        /// When the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
         /// </summary>
         public readonly ImmutableArray<string> ExcludeRealms;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// which realm should trigger this IDP. User Realm is extracted from:
+        /// Which realm should trigger this IDP. User Realm is extracted from:
         ///   * Username-AVP (`mist.com` from john@mist.com)
         ///   * Cert CN
         /// </summary>

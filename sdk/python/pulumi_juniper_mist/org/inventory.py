@@ -30,7 +30,7 @@ class InventoryArgs:
                replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
                `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
         :param pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]] inventory: Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-               Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+               Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
                already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
         """
         pulumi.set(__self__, "org_id", org_id)
@@ -74,7 +74,7 @@ Please update your configurations to use the `inventory` attribute.""")
     def inventory(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]]:
         """
         Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-        Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+        Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
         already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
         """
         return pulumi.get(self, "inventory")
@@ -96,7 +96,7 @@ class _InventoryState:
                replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
                `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
         :param pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]] inventory: Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-               Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+               Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
                already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
         """
         if devices is not None:
@@ -132,7 +132,7 @@ Please update your configurations to use the `inventory` attribute.""")
     def inventory(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]]:
         """
         Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-        Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+        Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
         already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
         """
         return pulumi.get(self, "inventory")
@@ -167,7 +167,7 @@ class Inventory(pulumi.CustomResource):
 
         ->Removing a device from the `devices` list or `inventory` map will NOT release it unless `unclaim_when_destroyed` is set to `true`
 
-        !> The `devices` attribute (List) is deprecated and is replaced by the `inventory` attribute (Map) as it can generate "inconsistent result after apply" errors. If this happen, is is required to force a refresh of the state to synchronise the new list.\\
+        !> The `devices` attribute (List) is deprecated and is replaced by the `inventory` attribute (Map) as it can generate "inconsistent result after apply" errors. If this happens, it is required to force a refresh of the state to synchronise the new list.\\
         The `devices` attribute will generate inconsistent result after apply when a device other than the last one is removed from the list or when a device is added somewhere other than the end of the list
 
         ## Import
@@ -186,7 +186,7 @@ class Inventory(pulumi.CustomResource):
                replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
                `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]] inventory: Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-               Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+               Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
                already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
         """
         ...
@@ -202,7 +202,7 @@ class Inventory(pulumi.CustomResource):
 
         ->Removing a device from the `devices` list or `inventory` map will NOT release it unless `unclaim_when_destroyed` is set to `true`
 
-        !> The `devices` attribute (List) is deprecated and is replaced by the `inventory` attribute (Map) as it can generate "inconsistent result after apply" errors. If this happen, is is required to force a refresh of the state to synchronise the new list.\\
+        !> The `devices` attribute (List) is deprecated and is replaced by the `inventory` attribute (Map) as it can generate "inconsistent result after apply" errors. If this happens, it is required to force a refresh of the state to synchronise the new list.\\
         The `devices` attribute will generate inconsistent result after apply when a device other than the last one is removed from the list or when a device is added somewhere other than the end of the list
 
         ## Import
@@ -271,7 +271,7 @@ class Inventory(pulumi.CustomResource):
                replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
                `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]] inventory: Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-               Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+               Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
                already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -300,7 +300,7 @@ Please update your configurations to use the `inventory` attribute.""")
     def inventory(self) -> pulumi.Output[Mapping[str, 'outputs.InventoryInventory']]:
         """
         Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-        Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+        Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
         already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
         """
         return pulumi.get(self, "inventory")

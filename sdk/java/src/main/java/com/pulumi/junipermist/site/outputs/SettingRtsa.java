@@ -16,7 +16,7 @@ public final class SettingRtsa {
     private @Nullable Boolean disablePressureSensor;
     private @Nullable Boolean enabled;
     /**
-     * @return asset tracking related
+     * @return Asset tracking related
      * 
      */
     private @Nullable Boolean trackAsset;
@@ -35,7 +35,7 @@ public final class SettingRtsa {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return asset tracking related
+     * @return Asset tracking related
      * 
      */
     public Optional<Boolean> trackAsset() {

@@ -16,14 +16,14 @@ public final class NetworktemplateVrfConfigArgs extends com.pulumi.resources.Res
     public static final NetworktemplateVrfConfigArgs Empty = new NetworktemplateVrfConfigArgs();
 
     /**
-     * whether to enable VRF (when supported on the device)
+     * Whether to enable VRF (when supported on the device)
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return whether to enable VRF (when supported on the device)
+     * @return Whether to enable VRF (when supported on the device)
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -55,7 +55,7 @@ public final class NetworktemplateVrfConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabled whether to enable VRF (when supported on the device)
+         * @param enabled Whether to enable VRF (when supported on the device)
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class NetworktemplateVrfConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabled whether to enable VRF (when supported on the device)
+         * @param enabled Whether to enable VRF (when supported on the device)
          * 
          * @return builder
          * 

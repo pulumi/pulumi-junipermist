@@ -19,19 +19,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? AnticlogThreshold { get; set; }
 
         /// <summary>
-        /// whether to trigger EAP reauth when the session ends
+        /// Whether to trigger EAP reauth when the session ends
         /// </summary>
         [Input("eapReauth")]
         public Input<bool>? EapReauth { get; set; }
 
         /// <summary>
-        /// whether to enable MAC Auth, uses the same auth_servers
+        /// Whether to enable MAC Auth, uses the same auth_servers
         /// </summary>
         [Input("enableMacAuth")]
         public Input<bool>? EnableMacAuth { get; set; }
 
         /// <summary>
-        /// when `type`==`wep`
+        /// When `type`==`wep`
         /// </summary>
         [Input("keyIdx")]
         public Input<int>? KeyIdx { get; set; }
@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _keys;
 
         /// <summary>
-        /// when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+        /// When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
         /// </summary>
         public InputList<string> Keys
         {
@@ -49,7 +49,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// when `type`==`psk`, whether to only use multi_psk
+        /// When `type`==`psk`, whether to only use multi_psk
         /// </summary>
         [Input("multiPskOnly")]
         public Input<bool>? MultiPskOnly { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _pairwises;
 
         /// <summary>
-        /// when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+        /// When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
         /// </summary>
         public InputList<string> Pairwises
         {
@@ -73,7 +73,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// when `multi_psk_only`==`true`, whether private wlan is enabled
+        /// When `multi_psk_only`==`true`, whether private wlan is enabled
         /// </summary>
         [Input("privateWlan")]
         public Input<bool>? PrivateWlan { get; set; }
@@ -82,7 +82,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private Input<string>? _psk;
 
         /// <summary>
-        /// when `type`==`psk`, 8-64 characters, or 64 hex characters
+        /// When `type`==`psk`, 8-64 characters, or 64 hex characters
         /// </summary>
         public Input<string>? Psk
         {
@@ -101,7 +101,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// enable WEP as secondary auth
+        /// Enable WEP as secondary auth
         /// </summary>
         [Input("wepAsSecondaryAuth")]
         public Input<bool>? WepAsSecondaryAuth { get; set; }

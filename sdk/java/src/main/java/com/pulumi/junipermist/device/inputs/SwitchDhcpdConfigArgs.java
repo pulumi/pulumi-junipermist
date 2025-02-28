@@ -34,14 +34,14 @@ public final class SwitchDhcpdConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if set to `true`, enable the DHCP server
+     * If set to `true`, enable the DHCP server
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return if set to `true`, enable the DHCP server
+     * @return If set to `true`, enable the DHCP server
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -95,7 +95,7 @@ public final class SwitchDhcpdConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enabled if set to `true`, enable the DHCP server
+         * @param enabled If set to `true`, enable the DHCP server
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class SwitchDhcpdConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enabled if set to `true`, enable the DHCP server
+         * @param enabled If set to `true`, enable the DHCP server
          * 
          * @return builder
          * 

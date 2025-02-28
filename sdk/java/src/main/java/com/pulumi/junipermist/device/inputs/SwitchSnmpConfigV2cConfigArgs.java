@@ -23,14 +23,14 @@ public final class SwitchSnmpConfigV2cConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * client_list_name here should refer to client_list above
+     * Client_list_name here should refer to client_list above
      * 
      */
     @Import(name="clientListName")
     private @Nullable Output<String> clientListName;
 
     /**
-     * @return client_list_name here should refer to client_list above
+     * @return Client_list_name here should refer to client_list above
      * 
      */
     public Optional<Output<String>> clientListName() {
@@ -45,14 +45,14 @@ public final class SwitchSnmpConfigV2cConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * view name here should be defined in views above
+     * View name here should be defined in views above
      * 
      */
     @Import(name="view")
     private @Nullable Output<String> view;
 
     /**
-     * @return view name here should be defined in views above
+     * @return View name here should be defined in views above
      * 
      */
     public Optional<Output<String>> view() {
@@ -96,7 +96,7 @@ public final class SwitchSnmpConfigV2cConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param clientListName client_list_name here should refer to client_list above
+         * @param clientListName Client_list_name here should refer to client_list above
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class SwitchSnmpConfigV2cConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param clientListName client_list_name here should refer to client_list above
+         * @param clientListName Client_list_name here should refer to client_list above
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class SwitchSnmpConfigV2cConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param view view name here should be defined in views above
+         * @param view View name here should be defined in views above
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class SwitchSnmpConfigV2cConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param view view name here should be defined in views above
+         * @param view View name here should be defined in views above
          * 
          * @return builder
          * 

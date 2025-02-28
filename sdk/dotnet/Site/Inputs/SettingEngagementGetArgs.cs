@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class SettingEngagementGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// name associated to each tag
+        /// Name associated to each tag
         /// </summary>
         [Input("dwellTagNames")]
         public Input<Inputs.SettingEngagementDwellTagNamesGetArgs>? DwellTagNames { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<Inputs.SettingEngagementHoursGetArgs>? Hours { get; set; }
 
         /// <summary>
-        /// max time, default is 43200(12h), max is 68400 (18h)
+        /// Max time, default is 43200(12h), max is 68400 (18h)
         /// </summary>
         [Input("maxDwell")]
         public Input<int>? MaxDwell { get; set; }

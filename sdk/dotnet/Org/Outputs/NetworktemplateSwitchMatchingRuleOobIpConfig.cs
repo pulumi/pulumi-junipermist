@@ -18,11 +18,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// if supported on the platform. If enabled, DNS will be using this routing-instance, too
+        /// If supported on the platform. If enabled, DNS will be using this routing-instance, too
         /// </summary>
         public readonly bool? UseMgmtVrf;
         /// <summary>
-        /// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        /// For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         /// </summary>
         public readonly bool? UseMgmtVrfForHostOut;
 

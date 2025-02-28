@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingConfigPushPolicy {
     /**
-     * @return stop any new config from being pushed to the device
+     * @return Stop any new config from being pushed to the device
      * 
      */
     private @Nullable Boolean noPush;
     /**
-     * @return if enabled, new config will only be pushed to device within the specified time window
+     * @return If enabled, new config will only be pushed to device within the specified time window
      * 
      */
     private @Nullable SettingConfigPushPolicyPushWindow pushWindow;
 
     private SettingConfigPushPolicy() {}
     /**
-     * @return stop any new config from being pushed to the device
+     * @return Stop any new config from being pushed to the device
      * 
      */
     public Optional<Boolean> noPush() {
         return Optional.ofNullable(this.noPush);
     }
     /**
-     * @return if enabled, new config will only be pushed to device within the specified time window
+     * @return If enabled, new config will only be pushed to device within the specified time window
      * 
      */
     public Optional<SettingConfigPushPolicyPushWindow> pushWindow() {

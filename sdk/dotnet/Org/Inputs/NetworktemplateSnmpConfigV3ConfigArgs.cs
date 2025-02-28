@@ -44,8 +44,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _targetParameters = value;
         }
 
-        [Input("usm")]
-        public Input<Inputs.NetworktemplateSnmpConfigV3ConfigUsmArgs>? Usm { get; set; }
+        [Input("usms")]
+        private InputList<Inputs.NetworktemplateSnmpConfigV3ConfigUsmArgs>? _usms;
+        public InputList<Inputs.NetworktemplateSnmpConfigV3ConfigUsmArgs> Usms
+        {
+            get => _usms ?? (_usms = new InputList<Inputs.NetworktemplateSnmpConfigV3ConfigUsmArgs>());
+            set => _usms = value;
+        }
 
         [Input("vacm")]
         public Input<Inputs.NetworktemplateSnmpConfigV3ConfigVacmArgs>? Vacm { get; set; }

@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
+        /// If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
+        /// If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.SwitchDhcpdConfigConfigFixedBindingsGetArgs>? _fixedBindings;
 
         /// <summary>
-        /// if `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+        /// If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         /// </summary>
         public InputMap<Inputs.SwitchDhcpdConfigConfigFixedBindingsGetArgs> FixedBindings
         {
@@ -49,37 +49,37 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// if `type`==`server`  - optional, `ip` will be used if not provided
+        /// If `type`==`server`  - optional, `ip` will be used if not provided
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
 
         /// <summary>
-        /// if `type`==`server`
+        /// If `type`==`server`
         /// </summary>
         [Input("ipEnd")]
         public Input<string>? IpEnd { get; set; }
 
         /// <summary>
-        /// if `type6`==`server`
+        /// If `type6`==`server`
         /// </summary>
         [Input("ipEnd6")]
         public Input<string>? IpEnd6 { get; set; }
 
         /// <summary>
-        /// if `type`==`server`
+        /// If `type`==`server`
         /// </summary>
         [Input("ipStart")]
         public Input<string>? IpStart { get; set; }
 
         /// <summary>
-        /// if `type6`==`server`
+        /// If `type6`==`server`
         /// </summary>
         [Input("ipStart6")]
         public Input<string>? IpStart6 { get; set; }
 
         /// <summary>
-        /// in seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
+        /// In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
         /// </summary>
         [Input("leaseTime")]
         public Input<int>? LeaseTime { get; set; }
@@ -88,7 +88,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.SwitchDhcpdConfigConfigOptionsGetArgs>? _options;
 
         /// <summary>
-        /// if `type`==`server` or `type6`==`server`. Property key is the DHCP option number
+        /// If `type`==`server` or `type6`==`server`. Property key is the DHCP option number
         /// </summary>
         public InputMap<Inputs.SwitchDhcpdConfigConfigOptionsGetArgs> Options
         {
@@ -107,7 +107,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _servers;
 
         /// <summary>
-        /// if `type`==`relay`
+        /// If `type`==`relay`
         /// </summary>
         public InputList<string> Servers
         {
@@ -119,7 +119,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _servers6s;
 
         /// <summary>
-        /// if `type6`==`relay`
+        /// If `type6`==`relay`
         /// </summary>
         public InputList<string> Servers6s
         {
@@ -143,7 +143,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.SwitchDhcpdConfigConfigVendorEncapsulatedGetArgs>? _vendorEncapsulated;
 
         /// <summary>
-        /// if `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+        /// If `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
         ///   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
         ///   * sub option code: 1-255, sub-option code'
         /// </summary>

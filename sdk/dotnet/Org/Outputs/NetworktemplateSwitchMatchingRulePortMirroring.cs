@@ -14,23 +14,23 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NetworktemplateSwitchMatchingRulePortMirroring
     {
         /// <summary>
-        /// at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        /// At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         /// </summary>
         public readonly ImmutableArray<string> InputNetworksIngresses;
         /// <summary>
-        /// at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        /// At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         /// </summary>
         public readonly ImmutableArray<string> InputPortIdsEgresses;
         /// <summary>
-        /// at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        /// At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         /// </summary>
         public readonly ImmutableArray<string> InputPortIdsIngresses;
         /// <summary>
-        /// exaclty one of the `output_port_id` or `output_network` should be provided
+        /// Exaclty one of the `output_port_id` or `output_network` should be provided
         /// </summary>
         public readonly string? OutputNetwork;
         /// <summary>
-        /// exaclty one of the `output_port_id` or `output_network` should be provided
+        /// Exaclty one of the `output_port_id` or `output_network` should be provided
         /// </summary>
         public readonly string? OutputPortId;
 

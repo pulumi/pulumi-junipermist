@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _allowedHostnames;
 
         /// <summary>
-        /// list of hostnames without http(s):// (matched by substring)
+        /// List of hostnames without http(s):// (matched by substring)
         /// </summary>
         public InputList<string> AllowedHostnames
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _allowedSubnets;
 
         /// <summary>
-        /// list of CIDRs
+        /// List of CIDRs
         /// </summary>
         public InputList<string> AllowedSubnets
         {
@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _blockedSubnets;
 
         /// <summary>
-        /// list of blocked CIDRs
+        /// List of blocked CIDRs
         /// </summary>
         public InputList<string> BlockedSubnets
         {

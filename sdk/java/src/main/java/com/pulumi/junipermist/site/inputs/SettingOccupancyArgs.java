@@ -17,14 +17,14 @@ public final class SettingOccupancyArgs extends com.pulumi.resources.ResourceArg
     public static final SettingOccupancyArgs Empty = new SettingOccupancyArgs();
 
     /**
-     * indicate whether named BLE assets should be included in the zone occupancy calculation
+     * Indicate whether named BLE assets should be included in the zone occupancy calculation
      * 
      */
     @Import(name="assetsEnabled")
     private @Nullable Output<Boolean> assetsEnabled;
 
     /**
-     * @return indicate whether named BLE assets should be included in the zone occupancy calculation
+     * @return Indicate whether named BLE assets should be included in the zone occupancy calculation
      * 
      */
     public Optional<Output<Boolean>> assetsEnabled() {
@@ -32,14 +32,14 @@ public final class SettingOccupancyArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * indicate whether connected WiFi clients should be included in the zone occupancy calculation
+     * Indicate whether connected Wi-Fi clients should be included in the zone occupancy calculation
      * 
      */
     @Import(name="clientsEnabled")
     private @Nullable Output<Boolean> clientsEnabled;
 
     /**
-     * @return indicate whether connected WiFi clients should be included in the zone occupancy calculation
+     * @return Indicate whether connected Wi-Fi clients should be included in the zone occupancy calculation
      * 
      */
     public Optional<Output<Boolean>> clientsEnabled() {
@@ -47,14 +47,14 @@ public final class SettingOccupancyArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * minimum duration
+     * Minimum duration
      * 
      */
     @Import(name="minDuration")
     private @Nullable Output<Integer> minDuration;
 
     /**
-     * @return minimum duration
+     * @return Minimum duration
      * 
      */
     public Optional<Output<Integer>> minDuration() {
@@ -62,14 +62,14 @@ public final class SettingOccupancyArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * indicate whether SDK clients should be included in the zone occupancy calculation
+     * Indicate whether SDK clients should be included in the zone occupancy calculation
      * 
      */
     @Import(name="sdkclientsEnabled")
     private @Nullable Output<Boolean> sdkclientsEnabled;
 
     /**
-     * @return indicate whether SDK clients should be included in the zone occupancy calculation
+     * @return Indicate whether SDK clients should be included in the zone occupancy calculation
      * 
      */
     public Optional<Output<Boolean>> sdkclientsEnabled() {
@@ -77,14 +77,14 @@ public final class SettingOccupancyArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * indicate whether unconnected WiFi clients should be included in the zone occupancy calculation
+     * Indicate whether unconnected Wi-Fi clients should be included in the zone occupancy calculation
      * 
      */
     @Import(name="unconnectedClientsEnabled")
     private @Nullable Output<Boolean> unconnectedClientsEnabled;
 
     /**
-     * @return indicate whether unconnected WiFi clients should be included in the zone occupancy calculation
+     * @return Indicate whether unconnected Wi-Fi clients should be included in the zone occupancy calculation
      * 
      */
     public Optional<Output<Boolean>> unconnectedClientsEnabled() {
@@ -120,7 +120,7 @@ public final class SettingOccupancyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param assetsEnabled indicate whether named BLE assets should be included in the zone occupancy calculation
+         * @param assetsEnabled Indicate whether named BLE assets should be included in the zone occupancy calculation
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class SettingOccupancyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param assetsEnabled indicate whether named BLE assets should be included in the zone occupancy calculation
+         * @param assetsEnabled Indicate whether named BLE assets should be included in the zone occupancy calculation
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class SettingOccupancyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param clientsEnabled indicate whether connected WiFi clients should be included in the zone occupancy calculation
+         * @param clientsEnabled Indicate whether connected Wi-Fi clients should be included in the zone occupancy calculation
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class SettingOccupancyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param clientsEnabled indicate whether connected WiFi clients should be included in the zone occupancy calculation
+         * @param clientsEnabled Indicate whether connected Wi-Fi clients should be included in the zone occupancy calculation
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class SettingOccupancyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minDuration minimum duration
+         * @param minDuration Minimum duration
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class SettingOccupancyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minDuration minimum duration
+         * @param minDuration Minimum duration
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class SettingOccupancyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sdkclientsEnabled indicate whether SDK clients should be included in the zone occupancy calculation
+         * @param sdkclientsEnabled Indicate whether SDK clients should be included in the zone occupancy calculation
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class SettingOccupancyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sdkclientsEnabled indicate whether SDK clients should be included in the zone occupancy calculation
+         * @param sdkclientsEnabled Indicate whether SDK clients should be included in the zone occupancy calculation
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class SettingOccupancyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param unconnectedClientsEnabled indicate whether unconnected WiFi clients should be included in the zone occupancy calculation
+         * @param unconnectedClientsEnabled Indicate whether unconnected Wi-Fi clients should be included in the zone occupancy calculation
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class SettingOccupancyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param unconnectedClientsEnabled indicate whether unconnected WiFi clients should be included in the zone occupancy calculation
+         * @param unconnectedClientsEnabled Indicate whether unconnected Wi-Fi clients should be included in the zone occupancy calculation
          * 
          * @return builder
          * 

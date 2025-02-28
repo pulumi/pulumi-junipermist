@@ -13,31 +13,31 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchOtherIpConfigsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// for EVPN, if anycast is desired
+        /// For EVPN, if anycast is desired
         /// </summary>
         [Input("evpnAnycast")]
         public Input<bool>? EvpnAnycast { get; set; }
 
         /// <summary>
-        /// required if `type`==`static`
+        /// Required if `type`==`static`
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// required if `type6`==`static`
+        /// Required if `type6`==`static`
         /// </summary>
         [Input("ip6")]
         public Input<string>? Ip6 { get; set; }
 
         /// <summary>
-        /// optional, `subnet` from `network` definition will be used if defined
+        /// Optional, `subnet` from `network` definition will be used if defined
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
         /// <summary>
-        /// optional, `subnet` from `network` definition will be used if defined
+        /// Optional, `subnet` from `network` definition will be used if defined
         /// </summary>
         [Input("netmask6")]
         public Input<string>? Netmask6 { get; set; }

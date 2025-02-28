@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class SettingPcap {
     private @Nullable String bucket;
     /**
-     * @return max_len of non-management packets to capture
+     * @return Max_len of non-management packets to capture
      * 
      */
     private @Nullable Integer maxPktLen;
@@ -24,7 +24,7 @@ public final class SettingPcap {
         return Optional.ofNullable(this.bucket);
     }
     /**
-     * @return max_len of non-management packets to capture
+     * @return Max_len of non-management packets to capture
      * 
      */
     public Optional<Integer> maxPktLen() {

@@ -50,16 +50,16 @@ type DeviceprofileGateway struct {
 	Name        pulumi.StringOutput                    `pulumi:"name"`
 	Networks    DeviceprofileGatewayNetworkArrayOutput `pulumi:"networks"`
 	NtpOverride pulumi.BoolOutput                      `pulumi:"ntpOverride"`
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
-	// out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band (vme/em0/fxp0) IP config
 	OobIpConfig DeviceprofileGatewayOobIpConfigOutput `pulumi:"oobIpConfig"`
 	OrgId       pulumi.StringOutput                   `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences DeviceprofileGatewayPathPreferencesMapOutput `pulumi:"pathPreferences"`
 	// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
 	PortConfig DeviceprofileGatewayPortConfigMapOutput `pulumi:"portConfig"`
-	// auto assigned if not set
+	// Auto assigned if not set
 	RouterId pulumi.StringPtrOutput `pulumi:"routerId"`
 	// Property key is the routing policy name
 	RoutingPolicies DeviceprofileGatewayRoutingPoliciesMapOutput `pulumi:"routingPolicies"`
@@ -127,16 +127,16 @@ type deviceprofileGatewayState struct {
 	Name        *string                                  `pulumi:"name"`
 	Networks    []DeviceprofileGatewayNetwork            `pulumi:"networks"`
 	NtpOverride *bool                                    `pulumi:"ntpOverride"`
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers []string `pulumi:"ntpServers"`
-	// out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band (vme/em0/fxp0) IP config
 	OobIpConfig *DeviceprofileGatewayOobIpConfig `pulumi:"oobIpConfig"`
 	OrgId       *string                          `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences map[string]DeviceprofileGatewayPathPreferences `pulumi:"pathPreferences"`
 	// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
 	PortConfig map[string]DeviceprofileGatewayPortConfig `pulumi:"portConfig"`
-	// auto assigned if not set
+	// Auto assigned if not set
 	RouterId *string `pulumi:"routerId"`
 	// Property key is the routing policy name
 	RoutingPolicies map[string]DeviceprofileGatewayRoutingPolicies `pulumi:"routingPolicies"`
@@ -172,16 +172,16 @@ type DeviceprofileGatewayState struct {
 	Name        pulumi.StringPtrInput
 	Networks    DeviceprofileGatewayNetworkArrayInput
 	NtpOverride pulumi.BoolPtrInput
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayInput
-	// out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band (vme/em0/fxp0) IP config
 	OobIpConfig DeviceprofileGatewayOobIpConfigPtrInput
 	OrgId       pulumi.StringPtrInput
 	// Property key is the path name
 	PathPreferences DeviceprofileGatewayPathPreferencesMapInput
 	// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
 	PortConfig DeviceprofileGatewayPortConfigMapInput
-	// auto assigned if not set
+	// Auto assigned if not set
 	RouterId pulumi.StringPtrInput
 	// Property key is the routing policy name
 	RoutingPolicies DeviceprofileGatewayRoutingPoliciesMapInput
@@ -221,16 +221,16 @@ type deviceprofileGatewayArgs struct {
 	Name        *string                                  `pulumi:"name"`
 	Networks    []DeviceprofileGatewayNetwork            `pulumi:"networks"`
 	NtpOverride *bool                                    `pulumi:"ntpOverride"`
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers []string `pulumi:"ntpServers"`
-	// out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band (vme/em0/fxp0) IP config
 	OobIpConfig *DeviceprofileGatewayOobIpConfig `pulumi:"oobIpConfig"`
 	OrgId       string                           `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences map[string]DeviceprofileGatewayPathPreferences `pulumi:"pathPreferences"`
 	// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
 	PortConfig map[string]DeviceprofileGatewayPortConfig `pulumi:"portConfig"`
-	// auto assigned if not set
+	// Auto assigned if not set
 	RouterId *string `pulumi:"routerId"`
 	// Property key is the routing policy name
 	RoutingPolicies map[string]DeviceprofileGatewayRoutingPolicies `pulumi:"routingPolicies"`
@@ -265,16 +265,16 @@ type DeviceprofileGatewayArgs struct {
 	Name        pulumi.StringPtrInput
 	Networks    DeviceprofileGatewayNetworkArrayInput
 	NtpOverride pulumi.BoolPtrInput
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayInput
-	// out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band (vme/em0/fxp0) IP config
 	OobIpConfig DeviceprofileGatewayOobIpConfigPtrInput
 	OrgId       pulumi.StringInput
 	// Property key is the path name
 	PathPreferences DeviceprofileGatewayPathPreferencesMapInput
 	// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
 	PortConfig DeviceprofileGatewayPortConfigMapInput
-	// auto assigned if not set
+	// Auto assigned if not set
 	RouterId pulumi.StringPtrInput
 	// Property key is the routing policy name
 	RoutingPolicies DeviceprofileGatewayRoutingPoliciesMapInput
@@ -433,12 +433,12 @@ func (o DeviceprofileGatewayOutput) NtpOverride() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.BoolOutput { return v.NtpOverride }).(pulumi.BoolOutput)
 }
 
-// list of NTP servers specific to this device. By default, those in Site Settings will be used
+// List of NTP servers specific to this device. By default, those in Site Settings will be used
 func (o DeviceprofileGatewayOutput) NtpServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.StringArrayOutput { return v.NtpServers }).(pulumi.StringArrayOutput)
 }
 
-// out-of-band (vme/em0/fxp0) IP config
+// Out-of-band (vme/em0/fxp0) IP config
 func (o DeviceprofileGatewayOutput) OobIpConfig() DeviceprofileGatewayOobIpConfigOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayOobIpConfigOutput { return v.OobIpConfig }).(DeviceprofileGatewayOobIpConfigOutput)
 }
@@ -457,7 +457,7 @@ func (o DeviceprofileGatewayOutput) PortConfig() DeviceprofileGatewayPortConfigM
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayPortConfigMapOutput { return v.PortConfig }).(DeviceprofileGatewayPortConfigMapOutput)
 }
 
-// auto assigned if not set
+// Auto assigned if not set
 func (o DeviceprofileGatewayOutput) RouterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.StringPtrOutput { return v.RouterId }).(pulumi.StringPtrOutput)
 }

@@ -13,19 +13,19 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// only required if `type`==`context_prefix`
+        /// Only required if `type`==`context_prefix`
         /// </summary>
         [Input("contextPrefix")]
         public Input<string>? ContextPrefix { get; set; }
 
         /// <summary>
-        /// refer to view name
+        /// Refer to view name
         /// </summary>
         [Input("notifyView")]
         public Input<string>? NotifyView { get; set; }
 
         /// <summary>
-        /// refer to view name
+        /// Refer to view name
         /// </summary>
         [Input("readView")]
         public Input<string>? ReadView { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// refer to view name
+        /// Refer to view name
         /// </summary>
         [Input("writeView")]
         public Input<string>? WriteView { get; set; }

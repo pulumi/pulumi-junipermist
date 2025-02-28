@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayVrfConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// whether to enable VRF (when supported on the device)
+        /// Whether to enable VRF (when supported on the device)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

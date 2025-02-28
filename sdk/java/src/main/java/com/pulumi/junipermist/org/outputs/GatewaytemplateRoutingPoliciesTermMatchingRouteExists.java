@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class GatewaytemplateRoutingPoliciesTermMatchingRouteExists {
     private @Nullable String route;
     /**
-     * @return name of the vrf instance, it can also be the name of the VPN or wan if they
+     * @return Name of the vrf instance, it can also be the name of the VPN or wan if they
      * 
      */
     private @Nullable String vrfName;
@@ -23,7 +23,7 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingRouteExists {
         return Optional.ofNullable(this.route);
     }
     /**
-     * @return name of the vrf instance, it can also be the name of the VPN or wan if they
+     * @return Name of the vrf instance, it can also be the name of the VPN or wan if they
      * 
      */
     public Optional<String> vrfName() {

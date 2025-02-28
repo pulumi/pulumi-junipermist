@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class WlanBonjourServicesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// whether to prevent wireless clients to discover bonjour devices on the same WLAN
+        /// Whether to prevent wireless clients to discover bonjour devices on the same WLAN
         /// </summary>
         [Input("disableLocal")]
         public Input<bool>? DisableLocal { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _radiusGroups;
 
         /// <summary>
-        /// optional, if the service is further restricted for certain RADIUS groups
+        /// Optional, if the service is further restricted for certain RADIUS groups
         /// </summary>
         public InputList<string> RadiusGroups
         {

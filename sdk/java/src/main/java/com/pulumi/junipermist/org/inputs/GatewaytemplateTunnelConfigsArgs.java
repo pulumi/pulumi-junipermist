@@ -61,14 +61,14 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
     }
 
     /**
-     * if `provider`==`custom-ipsec`
+     * If `provider`==`custom-ipsec`
      * 
      */
     @Import(name="ikeProposals")
     private @Nullable Output<List<GatewaytemplateTunnelConfigsIkeProposalArgs>> ikeProposals;
 
     /**
-     * @return if `provider`==`custom-ipsec`
+     * @return If `provider`==`custom-ipsec`
      * 
      */
     public Optional<Output<List<GatewaytemplateTunnelConfigsIkeProposalArgs>>> ikeProposals() {
@@ -136,14 +136,14 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
     }
 
     /**
-     * if `provider`==`custom-ipsec`, networks reachable via this tunnel
+     * If `provider`==`custom-ipsec`, networks reachable via this tunnel
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
     /**
-     * @return if `provider`==`custom-ipsec`, networks reachable via this tunnel
+     * @return If `provider`==`custom-ipsec`, networks reachable via this tunnel
      * 
      */
     public Optional<Output<List<String>>> networks() {
@@ -346,7 +346,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ikeProposals if `provider`==`custom-ipsec`
+         * @param ikeProposals If `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ikeProposals if `provider`==`custom-ipsec`
+         * @param ikeProposals If `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ikeProposals if `provider`==`custom-ipsec`
+         * @param ikeProposals If `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networks if `provider`==`custom-ipsec`, networks reachable via this tunnel
+         * @param networks If `provider`==`custom-ipsec`, networks reachable via this tunnel
          * 
          * @return builder
          * 
@@ -482,7 +482,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networks if `provider`==`custom-ipsec`, networks reachable via this tunnel
+         * @param networks If `provider`==`custom-ipsec`, networks reachable via this tunnel
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networks if `provider`==`custom-ipsec`, networks reachable via this tunnel
+         * @param networks If `provider`==`custom-ipsec`, networks reachable via this tunnel
          * 
          * @return builder
          * 

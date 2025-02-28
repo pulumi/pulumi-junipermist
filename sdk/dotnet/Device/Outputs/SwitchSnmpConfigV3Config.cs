@@ -17,7 +17,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly ImmutableArray<Outputs.SwitchSnmpConfigV3ConfigNotifyFilter> NotifyFilters;
         public readonly ImmutableArray<Outputs.SwitchSnmpConfigV3ConfigTargetAddress> TargetAddresses;
         public readonly ImmutableArray<Outputs.SwitchSnmpConfigV3ConfigTargetParameter> TargetParameters;
-        public readonly Outputs.SwitchSnmpConfigV3ConfigUsm? Usm;
+        public readonly ImmutableArray<Outputs.SwitchSnmpConfigV3ConfigUsm> Usms;
         public readonly Outputs.SwitchSnmpConfigV3ConfigVacm? Vacm;
 
         [OutputConstructor]
@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             ImmutableArray<Outputs.SwitchSnmpConfigV3ConfigTargetParameter> targetParameters,
 
-            Outputs.SwitchSnmpConfigV3ConfigUsm? usm,
+            ImmutableArray<Outputs.SwitchSnmpConfigV3ConfigUsm> usms,
 
             Outputs.SwitchSnmpConfigV3ConfigVacm? vacm)
         {
@@ -38,7 +38,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             NotifyFilters = notifyFilters;
             TargetAddresses = targetAddresses;
             TargetParameters = targetParameters;
-            Usm = usm;
+            Usms = usms;
             Vacm = vacm;
         }
     }

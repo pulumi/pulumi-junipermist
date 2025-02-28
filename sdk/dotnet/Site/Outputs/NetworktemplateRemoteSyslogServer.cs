@@ -32,7 +32,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? Severity;
         /// <summary>
-        /// if source_address is configured, will use the vlan firstly otherwise use source_ip
+        /// If source_address is configured, will use the vlan firstly otherwise use source_ip
         /// </summary>
         public readonly string? SourceAddress;
         public readonly bool? StructuredData;

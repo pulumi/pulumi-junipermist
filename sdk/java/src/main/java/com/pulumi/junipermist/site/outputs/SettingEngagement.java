@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingEngagement {
     /**
-     * @return name associated to each tag
+     * @return Name associated to each tag
      * 
      */
     private @Nullable SettingEngagementDwellTagNames dwellTagNames;
@@ -30,7 +30,7 @@ public final class SettingEngagement {
      */
     private @Nullable SettingEngagementHours hours;
     /**
-     * @return max time, default is 43200(12h), max is 68400 (18h)
+     * @return Max time, default is 43200(12h), max is 68400 (18h)
      * 
      */
     private @Nullable Integer maxDwell;
@@ -42,7 +42,7 @@ public final class SettingEngagement {
 
     private SettingEngagement() {}
     /**
-     * @return name associated to each tag
+     * @return Name associated to each tag
      * 
      */
     public Optional<SettingEngagementDwellTagNames> dwellTagNames() {
@@ -63,7 +63,7 @@ public final class SettingEngagement {
         return Optional.ofNullable(this.hours);
     }
     /**
-     * @return max time, default is 43200(12h), max is 68400 (18h)
+     * @return Max time, default is 43200(12h), max is 68400 (18h)
      * 
      */
     public Optional<Integer> maxDwell() {

@@ -18,14 +18,14 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
     public static final WlanCiscoCwaArgs Empty = new WlanCiscoCwaArgs();
 
     /**
-     * list of hostnames without http(s):// (matched by substring)
+     * List of hostnames without http(s):// (matched by substring)
      * 
      */
     @Import(name="allowedHostnames")
     private @Nullable Output<List<String>> allowedHostnames;
 
     /**
-     * @return list of hostnames without http(s):// (matched by substring)
+     * @return List of hostnames without http(s):// (matched by substring)
      * 
      */
     public Optional<Output<List<String>>> allowedHostnames() {
@@ -33,14 +33,14 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * list of CIDRs
+     * List of CIDRs
      * 
      */
     @Import(name="allowedSubnets")
     private @Nullable Output<List<String>> allowedSubnets;
 
     /**
-     * @return list of CIDRs
+     * @return List of CIDRs
      * 
      */
     public Optional<Output<List<String>>> allowedSubnets() {
@@ -48,14 +48,14 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * list of blocked CIDRs
+     * List of blocked CIDRs
      * 
      */
     @Import(name="blockedSubnets")
     private @Nullable Output<List<String>> blockedSubnets;
 
     /**
-     * @return list of blocked CIDRs
+     * @return List of blocked CIDRs
      * 
      */
     public Optional<Output<List<String>>> blockedSubnets() {
@@ -97,7 +97,7 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedHostnames list of hostnames without http(s):// (matched by substring)
+         * @param allowedHostnames List of hostnames without http(s):// (matched by substring)
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedHostnames list of hostnames without http(s):// (matched by substring)
+         * @param allowedHostnames List of hostnames without http(s):// (matched by substring)
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedHostnames list of hostnames without http(s):// (matched by substring)
+         * @param allowedHostnames List of hostnames without http(s):// (matched by substring)
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedSubnets list of CIDRs
+         * @param allowedSubnets List of CIDRs
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedSubnets list of CIDRs
+         * @param allowedSubnets List of CIDRs
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedSubnets list of CIDRs
+         * @param allowedSubnets List of CIDRs
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockedSubnets list of blocked CIDRs
+         * @param blockedSubnets List of blocked CIDRs
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockedSubnets list of blocked CIDRs
+         * @param blockedSubnets List of blocked CIDRs
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockedSubnets list of blocked CIDRs
+         * @param blockedSubnets List of blocked CIDRs
          * 
          * @return builder
          * 

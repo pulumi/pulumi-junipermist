@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchExtraRoutes
     {
         /// <summary>
-        /// this takes precedence
+        /// This takes precedence
         /// </summary>
         public readonly bool? Discard;
         public readonly int? Metric;
@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly bool? NoResolve;
         public readonly int? Preference;
         /// <summary>
-        /// next-hop IP Address
+        /// Next-hop IP Address
         /// </summary>
         public readonly string Via;
 

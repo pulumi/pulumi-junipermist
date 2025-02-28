@@ -20,7 +20,7 @@ public final class SwitchDhcpdConfig {
      */
     private @Nullable Map<String,SwitchDhcpdConfigConfig> config;
     /**
-     * @return if set to `true`, enable the DHCP server
+     * @return If set to `true`, enable the DHCP server
      * 
      */
     private @Nullable Boolean enabled;
@@ -34,7 +34,7 @@ public final class SwitchDhcpdConfig {
         return this.config == null ? Map.of() : this.config;
     }
     /**
-     * @return if set to `true`, enable the DHCP server
+     * @return If set to `true`, enable the DHCP server
      * 
      */
     public Optional<Boolean> enabled() {

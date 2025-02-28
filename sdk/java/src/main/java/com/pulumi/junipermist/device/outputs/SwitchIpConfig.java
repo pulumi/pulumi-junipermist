@@ -21,12 +21,12 @@ public final class SwitchIpConfig {
     private @Nullable String gateway;
     private @Nullable String ip;
     /**
-     * @return used only if `subnet` is not specified in `networks`
+     * @return Used only if `subnet` is not specified in `networks`
      * 
      */
     private @Nullable String netmask;
     /**
-     * @return the network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
+     * @return Network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
      * 
      */
     private @Nullable String network;
@@ -54,14 +54,14 @@ public final class SwitchIpConfig {
         return Optional.ofNullable(this.ip);
     }
     /**
-     * @return used only if `subnet` is not specified in `networks`
+     * @return Used only if `subnet` is not specified in `networks`
      * 
      */
     public Optional<String> netmask() {
         return Optional.ofNullable(this.netmask);
     }
     /**
-     * @return the network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
+     * @return Network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
      * 
      */
     public Optional<String> network() {

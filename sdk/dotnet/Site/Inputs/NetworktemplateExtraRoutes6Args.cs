@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class NetworktemplateExtraRoutes6Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// this takes precedence
+        /// This takes precedence
         /// </summary>
         [Input("discard")]
         public Input<bool>? Discard { get; set; }
@@ -36,7 +36,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<int>? Preference { get; set; }
 
         /// <summary>
-        /// next-hop IP Address
+        /// Next-hop IP Address
         /// </summary>
         [Input("via", required: true)]
         public Input<string> Via { get; set; } = null!;

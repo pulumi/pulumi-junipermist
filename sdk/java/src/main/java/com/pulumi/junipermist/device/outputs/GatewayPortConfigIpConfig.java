@@ -13,17 +13,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayPortConfigIpConfig {
     /**
-     * @return except for out-of_band interface (vme/em0/fxp0)
+     * @return Except for out-of_band interface (vme/em0/fxp0)
      * 
      */
     private @Nullable List<String> dns;
     /**
-     * @return except for out-of_band interface (vme/em0/fxp0)
+     * @return Except for out-of_band interface (vme/em0/fxp0)
      * 
      */
     private @Nullable List<String> dnsSuffixes;
     /**
-     * @return except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     private @Nullable String gateway;
@@ -33,17 +33,17 @@ public final class GatewayPortConfigIpConfig {
      */
     private @Nullable String ip;
     /**
-     * @return used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     private @Nullable String netmask;
     /**
-     * @return optional, the network to be used for mgmt
+     * @return Optional, the network to be used for mgmt
      * 
      */
     private @Nullable String network;
     /**
-     * @return if `type`==`pppoe`
+     * @return If `type`==`pppoe`
      * 
      */
     private @Nullable String poserPassword;
@@ -53,7 +53,7 @@ public final class GatewayPortConfigIpConfig {
      */
     private @Nullable String pppoeAuth;
     /**
-     * @return if `type`==`pppoe`
+     * @return If `type`==`pppoe`
      * 
      */
     private @Nullable String pppoeUsername;
@@ -65,21 +65,21 @@ public final class GatewayPortConfigIpConfig {
 
     private GatewayPortConfigIpConfig() {}
     /**
-     * @return except for out-of_band interface (vme/em0/fxp0)
+     * @return Except for out-of_band interface (vme/em0/fxp0)
      * 
      */
     public List<String> dns() {
         return this.dns == null ? List.of() : this.dns;
     }
     /**
-     * @return except for out-of_band interface (vme/em0/fxp0)
+     * @return Except for out-of_band interface (vme/em0/fxp0)
      * 
      */
     public List<String> dnsSuffixes() {
         return this.dnsSuffixes == null ? List.of() : this.dnsSuffixes;
     }
     /**
-     * @return except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<String> gateway() {
@@ -93,21 +93,21 @@ public final class GatewayPortConfigIpConfig {
         return Optional.ofNullable(this.ip);
     }
     /**
-     * @return used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<String> netmask() {
         return Optional.ofNullable(this.netmask);
     }
     /**
-     * @return optional, the network to be used for mgmt
+     * @return Optional, the network to be used for mgmt
      * 
      */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return if `type`==`pppoe`
+     * @return If `type`==`pppoe`
      * 
      */
     public Optional<String> poserPassword() {
@@ -121,7 +121,7 @@ public final class GatewayPortConfigIpConfig {
         return Optional.ofNullable(this.pppoeAuth);
     }
     /**
-     * @return if `type`==`pppoe`
+     * @return If `type`==`pppoe`
      * 
      */
     public Optional<String> pppoeUsername() {

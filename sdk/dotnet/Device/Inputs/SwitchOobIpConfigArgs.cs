@@ -19,13 +19,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// used only if `subnet` is not specified in `networks`
+        /// Used only if `subnet` is not specified in `networks`
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
         /// <summary>
-        /// optional, the network to be used for mgmt
+        /// Optional, the network to be used for mgmt
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -37,13 +37,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// if supported on the platform. If enabled, DNS will be using this routing-instance, too
+        /// If supported on the platform. If enabled, DNS will be using this routing-instance, too
         /// </summary>
         [Input("useMgmtVrf")]
         public Input<bool>? UseMgmtVrf { get; set; }
 
         /// <summary>
-        /// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        /// For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         /// </summary>
         [Input("useMgmtVrfForHostOut")]
         public Input<bool>? UseMgmtVrfForHostOut { get; set; }

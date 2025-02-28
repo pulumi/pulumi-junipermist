@@ -15,17 +15,17 @@ namespace Pulumi.JuniperMist.Site.Outputs
     {
         public readonly ImmutableArray<string> DomainNames;
         /// <summary>
-        /// whether to enable hotspot 2.0 config
+        /// Whether to enable hotspot 2.0 config
         /// </summary>
         public readonly bool Enabled;
         public readonly ImmutableArray<string> NaiRealms;
         /// <summary>
-        /// list of operators to support
+        /// List of operators to support
         /// </summary>
         public readonly ImmutableArray<string> Operators;
         public readonly ImmutableArray<string> Rcois;
         /// <summary>
-        /// venue name, default is site name
+        /// Venue name, default is site name
         /// </summary>
         public readonly string VenueName;
 

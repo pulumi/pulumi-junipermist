@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Authorization { get; set; }
 
         /// <summary>
-        /// client_list_name here should refer to client_list above
+        /// Client_list_name here should refer to client_list above
         /// </summary>
         [Input("clientListName")]
         public Input<string>? ClientListName { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? CommunityName { get; set; }
 
         /// <summary>
-        /// view name here should be defined in views above
+        /// View name here should be defined in views above
         /// </summary>
         [Input("view")]
         public Input<string>? View { get; set; }

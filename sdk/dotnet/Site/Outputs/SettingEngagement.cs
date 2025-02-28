@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingEngagement
     {
         /// <summary>
-        /// name associated to each tag
+        /// Name associated to each tag
         /// </summary>
         public readonly Outputs.SettingEngagementDwellTagNames? DwellTagNames;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly Outputs.SettingEngagementHours? Hours;
         /// <summary>
-        /// max time, default is 43200(12h), max is 68400 (18h)
+        /// Max time, default is 43200(12h), max is 68400 (18h)
         /// </summary>
         public readonly int? MaxDwell;
         /// <summary>

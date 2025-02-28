@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly ImmutableArray<string> AllowedServices;
         public readonly ImmutableArray<Outputs.SwitchSwitchMgmtProtectReCustom> Customs;
         /// <summary>
-        /// when enabled, all traffic that is not essential to our operation will be dropped
+        /// When enabled, all traffic that is not essential to our operation will be dropped
         /// e.g. ntp / dns / traffic to mist will be allowed by default
         ///      if dhcpd is enabled, we'll make sure it works
         /// </summary>

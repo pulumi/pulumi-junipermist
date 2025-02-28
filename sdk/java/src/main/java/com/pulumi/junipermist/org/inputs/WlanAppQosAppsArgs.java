@@ -24,14 +24,14 @@ public final class WlanAppQosAppsArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+     * Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
      * 
      */
     @Import(name="dstSubnet")
     private @Nullable Output<String> dstSubnet;
 
     /**
-     * @return subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+     * @return Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
      * 
      */
     public Optional<Output<String>> dstSubnet() {
@@ -39,14 +39,14 @@ public final class WlanAppQosAppsArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+     * Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
      * 
      */
     @Import(name="srcSubnet")
     private @Nullable Output<String> srcSubnet;
 
     /**
-     * @return subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+     * @return Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
      * 
      */
     public Optional<Output<String>> srcSubnet() {
@@ -89,7 +89,7 @@ public final class WlanAppQosAppsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dstSubnet subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+         * @param dstSubnet Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class WlanAppQosAppsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dstSubnet subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+         * @param dstSubnet Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class WlanAppQosAppsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param srcSubnet subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+         * @param srcSubnet Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class WlanAppQosAppsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param srcSubnet subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+         * @param srcSubnet Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
          * 
          * @return builder
          * 

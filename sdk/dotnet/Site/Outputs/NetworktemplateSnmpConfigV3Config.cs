@@ -17,7 +17,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly ImmutableArray<Outputs.NetworktemplateSnmpConfigV3ConfigNotifyFilter> NotifyFilters;
         public readonly ImmutableArray<Outputs.NetworktemplateSnmpConfigV3ConfigTargetAddress> TargetAddresses;
         public readonly ImmutableArray<Outputs.NetworktemplateSnmpConfigV3ConfigTargetParameter> TargetParameters;
-        public readonly Outputs.NetworktemplateSnmpConfigV3ConfigUsm? Usm;
+        public readonly ImmutableArray<Outputs.NetworktemplateSnmpConfigV3ConfigUsm> Usms;
         public readonly Outputs.NetworktemplateSnmpConfigV3ConfigVacm? Vacm;
 
         [OutputConstructor]
@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             ImmutableArray<Outputs.NetworktemplateSnmpConfigV3ConfigTargetParameter> targetParameters,
 
-            Outputs.NetworktemplateSnmpConfigV3ConfigUsm? usm,
+            ImmutableArray<Outputs.NetworktemplateSnmpConfigV3ConfigUsm> usms,
 
             Outputs.NetworktemplateSnmpConfigV3ConfigVacm? vacm)
         {
@@ -38,7 +38,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             NotifyFilters = notifyFilters;
             TargetAddresses = targetAddresses;
             TargetParameters = targetParameters;
-            Usm = usm;
+            Usms = usms;
             Vacm = vacm;
         }
     }

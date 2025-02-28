@@ -17,14 +17,14 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
     public static final SwitchOtherIpConfigsArgs Empty = new SwitchOtherIpConfigsArgs();
 
     /**
-     * for EVPN, if anycast is desired
+     * For EVPN, if anycast is desired
      * 
      */
     @Import(name="evpnAnycast")
     private @Nullable Output<Boolean> evpnAnycast;
 
     /**
-     * @return for EVPN, if anycast is desired
+     * @return For EVPN, if anycast is desired
      * 
      */
     public Optional<Output<Boolean>> evpnAnycast() {
@@ -32,14 +32,14 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * required if `type`==`static`
+     * Required if `type`==`static`
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     public Optional<Output<String>> ip() {
@@ -47,14 +47,14 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * required if `type6`==`static`
+     * Required if `type6`==`static`
      * 
      */
     @Import(name="ip6")
     private @Nullable Output<String> ip6;
 
     /**
-     * @return required if `type6`==`static`
+     * @return Required if `type6`==`static`
      * 
      */
     public Optional<Output<String>> ip6() {
@@ -62,14 +62,14 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * optional, `subnet` from `network` definition will be used if defined
+     * Optional, `subnet` from `network` definition will be used if defined
      * 
      */
     @Import(name="netmask")
     private @Nullable Output<String> netmask;
 
     /**
-     * @return optional, `subnet` from `network` definition will be used if defined
+     * @return Optional, `subnet` from `network` definition will be used if defined
      * 
      */
     public Optional<Output<String>> netmask() {
@@ -77,14 +77,14 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * optional, `subnet` from `network` definition will be used if defined
+     * Optional, `subnet` from `network` definition will be used if defined
      * 
      */
     @Import(name="netmask6")
     private @Nullable Output<String> netmask6;
 
     /**
-     * @return optional, `subnet` from `network` definition will be used if defined
+     * @return Optional, `subnet` from `network` definition will be used if defined
      * 
      */
     public Optional<Output<String>> netmask6() {
@@ -152,7 +152,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param evpnAnycast for EVPN, if anycast is desired
+         * @param evpnAnycast For EVPN, if anycast is desired
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param evpnAnycast for EVPN, if anycast is desired
+         * @param evpnAnycast For EVPN, if anycast is desired
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ip required if `type`==`static`
+         * @param ip Required if `type`==`static`
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ip required if `type`==`static`
+         * @param ip Required if `type`==`static`
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ip6 required if `type6`==`static`
+         * @param ip6 Required if `type6`==`static`
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ip6 required if `type6`==`static`
+         * @param ip6 Required if `type6`==`static`
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param netmask optional, `subnet` from `network` definition will be used if defined
+         * @param netmask Optional, `subnet` from `network` definition will be used if defined
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param netmask optional, `subnet` from `network` definition will be used if defined
+         * @param netmask Optional, `subnet` from `network` definition will be used if defined
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param netmask6 optional, `subnet` from `network` definition will be used if defined
+         * @param netmask6 Optional, `subnet` from `network` definition will be used if defined
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class SwitchOtherIpConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param netmask6 optional, `subnet` from `network` definition will be used if defined
+         * @param netmask6 Optional, `subnet` from `network` definition will be used if defined
          * 
          * @return builder
          * 

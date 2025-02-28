@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// asset tracking related
+        /// Asset tracking related
         /// </summary>
         [Input("trackAsset")]
         public Input<bool>? TrackAsset { get; set; }

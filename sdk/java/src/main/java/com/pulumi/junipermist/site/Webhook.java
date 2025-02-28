@@ -89,72 +89,70 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:site/webhook:Webhook")
 public class Webhook extends com.pulumi.resources.CustomResource {
     /**
-     * whether webhook is enabled
+     * Whether webhook is enabled
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return whether webhook is enabled
+     * @return Whether webhook is enabled
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * if `type`=`http-post`, additional custom HTTP headers to add
-     * the headers name and value must be string, total bytes of headers name and value must be less than 1000
+     * If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
      * 
      */
     @Export(name="headers", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> headers;
 
     /**
-     * @return if `type`=`http-post`, additional custom HTTP headers to add
-     * the headers name and value must be string, total bytes of headers name and value must be less than 1000
+     * @return If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
      * 
      */
     public Output<Optional<Map<String,String>>> headers() {
         return Codegen.optional(this.headers);
     }
     /**
-     * name of the webhook
+     * Name of the webhook
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return name of the webhook
+     * @return Name of the webhook
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * required when `oauth2_grant_type`==`client_credentials`
+     * Required when `oauth2_grant_type`==`client_credentials`
      * 
      */
     @Export(name="oauth2ClientId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauth2ClientId;
 
     /**
-     * @return required when `oauth2_grant_type`==`client_credentials`
+     * @return Required when `oauth2_grant_type`==`client_credentials`
      * 
      */
     public Output<Optional<String>> oauth2ClientId() {
         return Codegen.optional(this.oauth2ClientId);
     }
     /**
-     * required when `oauth2_grant_type`==`client_credentials`
+     * Required when `oauth2_grant_type`==`client_credentials`
      * 
      */
     @Export(name="oauth2ClientSecret", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauth2ClientSecret;
 
     /**
-     * @return required when `oauth2_grant_type`==`client_credentials`
+     * @return Required when `oauth2_grant_type`==`client_credentials`
      * 
      */
     public Output<Optional<String>> oauth2ClientSecret() {
@@ -175,56 +173,56 @@ public class Webhook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.oauth2GrantType);
     }
     /**
-     * required when `oauth2_grant_type`==`password`
+     * Required when `oauth2_grant_type`==`password`
      * 
      */
     @Export(name="oauth2Password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauth2Password;
 
     /**
-     * @return required when `oauth2_grant_type`==`password`
+     * @return Required when `oauth2_grant_type`==`password`
      * 
      */
     public Output<Optional<String>> oauth2Password() {
         return Codegen.optional(this.oauth2Password);
     }
     /**
-     * required when `type`==`oauth2`, if provided, will be used in the token request
+     * Required when `type`==`oauth2`, if provided, will be used in the token request
      * 
      */
     @Export(name="oauth2Scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> oauth2Scopes;
 
     /**
-     * @return required when `type`==`oauth2`, if provided, will be used in the token request
+     * @return Required when `type`==`oauth2`, if provided, will be used in the token request
      * 
      */
     public Output<Optional<List<String>>> oauth2Scopes() {
         return Codegen.optional(this.oauth2Scopes);
     }
     /**
-     * required when `type`==`oauth2`
+     * Required when `type`==`oauth2`
      * 
      */
     @Export(name="oauth2TokenUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauth2TokenUrl;
 
     /**
-     * @return required when `type`==`oauth2`
+     * @return Required when `type`==`oauth2`
      * 
      */
     public Output<Optional<String>> oauth2TokenUrl() {
         return Codegen.optional(this.oauth2TokenUrl);
     }
     /**
-     * required when `oauth2_grant_type`==`password`
+     * Required when `oauth2_grant_type`==`password`
      * 
      */
     @Export(name="oauth2Username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauth2Username;
 
     /**
-     * @return required when `oauth2_grant_type`==`password`
+     * @return Required when `oauth2_grant_type`==`password`
      * 
      */
     public Output<Optional<String>> oauth2Username() {
@@ -237,14 +235,14 @@ public class Webhook extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * only if `type`=`http-post`
+     * Only if `type`=`http-post`
      * 
      */
     @Export(name="secret", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secret;
 
     /**
-     * @return only if `type`=`http-post`
+     * @return Only if `type`=`http-post`
      * 
      */
     public Output<Optional<String>> secret() {
@@ -257,16 +255,16 @@ public class Webhook extends com.pulumi.resources.CustomResource {
         return this.siteId;
     }
     /**
-     * required if `type`=`splunk` If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-     * the webhook receiver is configured to accept it.&#39;
+     * Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
+     * the webhook receiver is configured to accept it.
      * 
      */
     @Export(name="splunkToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> splunkToken;
 
     /**
-     * @return required if `type`=`splunk` If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-     * the webhook receiver is configured to accept it.&#39;
+     * @return Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
+     * the webhook receiver is configured to accept it.
      * 
      */
     public Output<Optional<String>> splunkToken() {
@@ -307,14 +305,14 @@ public class Webhook extends com.pulumi.resources.CustomResource {
         return this.url;
     }
     /**
-     * when url uses HTTPS, whether to verify the certificate
+     * When url uses HTTPS, whether to verify the certificate
      * 
      */
     @Export(name="verifyCert", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> verifyCert;
 
     /**
-     * @return when url uses HTTPS, whether to verify the certificate
+     * @return When url uses HTTPS, whether to verify the certificate
      * 
      */
     public Output<Boolean> verifyCert() {

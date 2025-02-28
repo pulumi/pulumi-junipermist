@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingWidsRepeatedAuthFailures
     {
         /// <summary>
-        /// window where a trigger will be detected and action to be taken (in seconds)
+        /// Window where a trigger will be detected and action to be taken (in seconds)
         /// </summary>
         public readonly int? Duration;
         /// <summary>
-        /// count of events to trigger
+        /// Count of events to trigger
         /// </summary>
         public readonly int? Threshold;
 

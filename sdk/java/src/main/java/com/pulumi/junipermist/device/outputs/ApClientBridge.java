@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class ApClientBridge {
     private @Nullable ApClientBridgeAuth auth;
     /**
-     * @return when acted as client bridge:
+     * @return When acted as client bridge:
      *   * only 5G radio can be used
      *   * will not serve as AP on any radios
      * 
@@ -28,7 +28,7 @@ public final class ApClientBridge {
         return Optional.ofNullable(this.auth);
     }
     /**
-     * @return when acted as client bridge:
+     * @return When acted as client bridge:
      *   * only 5G radio can be used
      *   * will not serve as AP on any radios
      * 

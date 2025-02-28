@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchAclTagsSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// matched dst port, "0" means any
+        /// Matched dst port, "0" means any
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }

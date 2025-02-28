@@ -17,14 +17,14 @@ public final class DeviceprofileGatewayOobIpConfigNode1Args extends com.pulumi.r
     public static final DeviceprofileGatewayOobIpConfigNode1Args Empty = new DeviceprofileGatewayOobIpConfigNode1Args();
 
     /**
-     * if `type`==`static`
+     * If `type`==`static`
      * 
      */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
     /**
-     * @return if `type`==`static`
+     * @return If `type`==`static`
      * 
      */
     public Optional<Output<String>> gateway() {
@@ -39,14 +39,14 @@ public final class DeviceprofileGatewayOobIpConfigNode1Args extends com.pulumi.r
     }
 
     /**
-     * used only if `subnet` is not specified in `networks`
+     * Used only if `subnet` is not specified in `networks`
      * 
      */
     @Import(name="netmask")
     private @Nullable Output<String> netmask;
 
     /**
-     * @return used only if `subnet` is not specified in `networks`
+     * @return Used only if `subnet` is not specified in `networks`
      * 
      */
     public Optional<Output<String>> netmask() {
@@ -69,14 +69,14 @@ public final class DeviceprofileGatewayOobIpConfigNode1Args extends com.pulumi.r
     }
 
     /**
-     * if supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * If supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     @Import(name="useMgmtVrf")
     private @Nullable Output<Boolean> useMgmtVrf;
 
     /**
-     * @return if supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * @return If supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     public Optional<Output<Boolean>> useMgmtVrf() {
@@ -84,14 +84,14 @@ public final class DeviceprofileGatewayOobIpConfigNode1Args extends com.pulumi.r
     }
 
     /**
-     * whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+     * Whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     @Import(name="useMgmtVrfForHostOut")
     private @Nullable Output<Boolean> useMgmtVrfForHostOut;
 
     /**
-     * @return whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+     * @return Whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     public Optional<Output<Boolean>> useMgmtVrfForHostOut() {
@@ -136,7 +136,7 @@ public final class DeviceprofileGatewayOobIpConfigNode1Args extends com.pulumi.r
         }
 
         /**
-         * @param gateway if `type`==`static`
+         * @param gateway If `type`==`static`
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class DeviceprofileGatewayOobIpConfigNode1Args extends com.pulumi.r
         }
 
         /**
-         * @param gateway if `type`==`static`
+         * @param gateway If `type`==`static`
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class DeviceprofileGatewayOobIpConfigNode1Args extends com.pulumi.r
         }
 
         /**
-         * @param netmask used only if `subnet` is not specified in `networks`
+         * @param netmask Used only if `subnet` is not specified in `networks`
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class DeviceprofileGatewayOobIpConfigNode1Args extends com.pulumi.r
         }
 
         /**
-         * @param netmask used only if `subnet` is not specified in `networks`
+         * @param netmask Used only if `subnet` is not specified in `networks`
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class DeviceprofileGatewayOobIpConfigNode1Args extends com.pulumi.r
         }
 
         /**
-         * @param useMgmtVrf if supported on the platform. If enabled, DNS will be using this routing-instance, too
+         * @param useMgmtVrf If supported on the platform. If enabled, DNS will be using this routing-instance, too
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class DeviceprofileGatewayOobIpConfigNode1Args extends com.pulumi.r
         }
 
         /**
-         * @param useMgmtVrf if supported on the platform. If enabled, DNS will be using this routing-instance, too
+         * @param useMgmtVrf If supported on the platform. If enabled, DNS will be using this routing-instance, too
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class DeviceprofileGatewayOobIpConfigNode1Args extends com.pulumi.r
         }
 
         /**
-         * @param useMgmtVrfForHostOut whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+         * @param useMgmtVrfForHostOut Whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class DeviceprofileGatewayOobIpConfigNode1Args extends com.pulumi.r
         }
 
         /**
-         * @param useMgmtVrfForHostOut whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+         * @param useMgmtVrfForHostOut Whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          * 
          * @return builder
          * 

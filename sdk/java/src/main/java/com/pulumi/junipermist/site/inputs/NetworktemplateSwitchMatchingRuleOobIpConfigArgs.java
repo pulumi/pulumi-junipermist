@@ -32,14 +32,14 @@ public final class NetworktemplateSwitchMatchingRuleOobIpConfigArgs extends com.
     }
 
     /**
-     * if supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * If supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     @Import(name="useMgmtVrf")
     private @Nullable Output<Boolean> useMgmtVrf;
 
     /**
-     * @return if supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * @return If supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     public Optional<Output<Boolean>> useMgmtVrf() {
@@ -47,14 +47,14 @@ public final class NetworktemplateSwitchMatchingRuleOobIpConfigArgs extends com.
     }
 
     /**
-     * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+     * For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     @Import(name="useMgmtVrfForHostOut")
     private @Nullable Output<Boolean> useMgmtVrfForHostOut;
 
     /**
-     * @return for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+     * @return For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     public Optional<Output<Boolean>> useMgmtVrfForHostOut() {
@@ -109,7 +109,7 @@ public final class NetworktemplateSwitchMatchingRuleOobIpConfigArgs extends com.
         }
 
         /**
-         * @param useMgmtVrf if supported on the platform. If enabled, DNS will be using this routing-instance, too
+         * @param useMgmtVrf If supported on the platform. If enabled, DNS will be using this routing-instance, too
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class NetworktemplateSwitchMatchingRuleOobIpConfigArgs extends com.
         }
 
         /**
-         * @param useMgmtVrf if supported on the platform. If enabled, DNS will be using this routing-instance, too
+         * @param useMgmtVrf If supported on the platform. If enabled, DNS will be using this routing-instance, too
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class NetworktemplateSwitchMatchingRuleOobIpConfigArgs extends com.
         }
 
         /**
-         * @param useMgmtVrfForHostOut for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+         * @param useMgmtVrfForHostOut For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class NetworktemplateSwitchMatchingRuleOobIpConfigArgs extends com.
         }
 
         /**
-         * @param useMgmtVrfForHostOut for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+         * @param useMgmtVrfForHostOut For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          * 
          * @return builder
          * 

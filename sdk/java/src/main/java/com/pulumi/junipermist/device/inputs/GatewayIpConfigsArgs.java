@@ -32,14 +32,14 @@ public final class GatewayIpConfigsArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * optional list of secondary IPs in CIDR format
+     * Optional list of secondary IPs in CIDR format
      * 
      */
     @Import(name="secondaryIps")
     private @Nullable Output<List<String>> secondaryIps;
 
     /**
-     * @return optional list of secondary IPs in CIDR format
+     * @return Optional list of secondary IPs in CIDR format
      * 
      */
     public Optional<Output<List<String>>> secondaryIps() {
@@ -107,7 +107,7 @@ public final class GatewayIpConfigsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param secondaryIps optional list of secondary IPs in CIDR format
+         * @param secondaryIps Optional list of secondary IPs in CIDR format
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class GatewayIpConfigsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param secondaryIps optional list of secondary IPs in CIDR format
+         * @param secondaryIps Optional list of secondary IPs in CIDR format
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class GatewayIpConfigsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param secondaryIps optional list of secondary IPs in CIDR format
+         * @param secondaryIps Optional list of secondary IPs in CIDR format
          * 
          * @return builder
          * 

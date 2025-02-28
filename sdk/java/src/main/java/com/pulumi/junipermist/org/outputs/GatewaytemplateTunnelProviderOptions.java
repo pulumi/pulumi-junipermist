@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplateTunnelProviderOptions {
     /**
-     * @return for jse-ipsec, this allow provisioning of adequate resource on JSE. Make sure adequate licenses are added
+     * @return For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
      * 
      */
     private @Nullable GatewaytemplateTunnelProviderOptionsJse jse;
     /**
-     * @return for zscaler-ipsec and zscaler-gre
+     * @return For zscaler-ipsec and zscaler-gre
      * 
      */
     private @Nullable GatewaytemplateTunnelProviderOptionsZscaler zscaler;
 
     private GatewaytemplateTunnelProviderOptions() {}
     /**
-     * @return for jse-ipsec, this allow provisioning of adequate resource on JSE. Make sure adequate licenses are added
+     * @return For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
      * 
      */
     public Optional<GatewaytemplateTunnelProviderOptionsJse> jse() {
         return Optional.ofNullable(this.jse);
     }
     /**
-     * @return for zscaler-ipsec and zscaler-gre
+     * @return For zscaler-ipsec and zscaler-gre
      * 
      */
     public Optional<GatewaytemplateTunnelProviderOptionsZscaler> zscaler() {

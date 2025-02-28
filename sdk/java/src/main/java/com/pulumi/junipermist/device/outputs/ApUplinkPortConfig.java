@@ -17,7 +17,7 @@ public final class ApUplinkPortConfig {
      */
     private @Nullable Boolean dot1x;
     /**
-     * @return by default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
+     * @return By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
      * 
      */
     private @Nullable Boolean keepWlansUpIfDown;
@@ -31,7 +31,7 @@ public final class ApUplinkPortConfig {
         return Optional.ofNullable(this.dot1x);
     }
     /**
-     * @return by default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
+     * @return By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
      * 
      */
     public Optional<Boolean> keepWlansUpIfDown() {

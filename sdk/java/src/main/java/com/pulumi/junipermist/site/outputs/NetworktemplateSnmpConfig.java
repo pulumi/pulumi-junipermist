@@ -22,10 +22,6 @@ public final class NetworktemplateSnmpConfig {
     private @Nullable String contact;
     private @Nullable String description;
     private @Nullable Boolean enabled;
-    /**
-     * @return enum: `engine-id-suffix`, `local`, `use-default-ip-address`, `use_mac-address`
-     * 
-     */
     private @Nullable String engineId;
     private @Nullable String location;
     private @Nullable String name;
@@ -48,10 +44,6 @@ public final class NetworktemplateSnmpConfig {
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
-    /**
-     * @return enum: `engine-id-suffix`, `local`, `use-default-ip-address`, `use_mac-address`
-     * 
-     */
     public Optional<String> engineId() {
         return Optional.ofNullable(this.engineId);
     }

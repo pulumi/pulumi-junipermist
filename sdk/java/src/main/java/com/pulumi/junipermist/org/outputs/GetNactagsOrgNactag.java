@@ -15,22 +15,22 @@ import java.util.Objects;
 @CustomType
 public final class GetNactagsOrgNactag {
     /**
-     * @return can be set to true to allow the override by usermac result
+     * @return Can be set to true to allow the override by usermac result
      * 
      */
     private Boolean allowUsermacOverride;
     /**
-     * @return when the object has been created, in epoch
+     * @return When the object has been created, in epoch
      * 
      */
     private Double createdTime;
     /**
-     * @return if `type`==`egress_vlan_names`, list of egress vlans to return
+     * @return If `type`==`egress_vlan_names`, list of egress vlans to return
      * 
      */
     private List<String> egressVlanNames;
     /**
-     * @return if `type`==`gbp_tag`
+     * @return If `type`==`gbp_tag`
      * 
      */
     private Integer gbpTag;
@@ -54,33 +54,33 @@ public final class GetNactagsOrgNactag {
      */
     private Boolean matchAll;
     /**
-     * @return when the object has been modified for the last time, in epoch
+     * @return When the object has been modified for the last time, in epoch
      * 
      */
     private Double modifiedTime;
     private String name;
     private String orgId;
     /**
-     * @return if `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;.
+     * @return If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;.
      * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
      * Note that it is allowed to have more than one radius_attrs in the result of a given rule.
      * 
      */
     private List<String> radiusAttrs;
     /**
-     * @return if `type`==`radius_group`
+     * @return If `type`==`radius_group`
      * 
      */
     private String radiusGroup;
     /**
-     * @return if `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radius_vendor_attrs&#34;.
+     * @return If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radius_vendor_attrs&#34;.
      * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
      * Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
      * 
      */
     private List<String> radiusVendorAttrs;
     /**
-     * @return if `type`==`session_timeout, in seconds
+     * @return If `type`==`session_timeout, in seconds
      * 
      */
     private Integer sessionTimeout;
@@ -95,40 +95,40 @@ public final class GetNactagsOrgNactag {
      */
     private String usernameAttr;
     /**
-     * @return if `type`==`match`
+     * @return If `type`==`match`
      * 
      */
     private List<String> values;
     /**
-     * @return if `type`==`vlan`
+     * @return If `type`==`vlan`
      * 
      */
     private String vlan;
 
     private GetNactagsOrgNactag() {}
     /**
-     * @return can be set to true to allow the override by usermac result
+     * @return Can be set to true to allow the override by usermac result
      * 
      */
     public Boolean allowUsermacOverride() {
         return this.allowUsermacOverride;
     }
     /**
-     * @return when the object has been created, in epoch
+     * @return When the object has been created, in epoch
      * 
      */
     public Double createdTime() {
         return this.createdTime;
     }
     /**
-     * @return if `type`==`egress_vlan_names`, list of egress vlans to return
+     * @return If `type`==`egress_vlan_names`, list of egress vlans to return
      * 
      */
     public List<String> egressVlanNames() {
         return this.egressVlanNames;
     }
     /**
-     * @return if `type`==`gbp_tag`
+     * @return If `type`==`gbp_tag`
      * 
      */
     public Integer gbpTag() {
@@ -160,7 +160,7 @@ public final class GetNactagsOrgNactag {
         return this.matchAll;
     }
     /**
-     * @return when the object has been modified for the last time, in epoch
+     * @return When the object has been modified for the last time, in epoch
      * 
      */
     public Double modifiedTime() {
@@ -173,7 +173,7 @@ public final class GetNactagsOrgNactag {
         return this.orgId;
     }
     /**
-     * @return if `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;.
+     * @return If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;.
      * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
      * Note that it is allowed to have more than one radius_attrs in the result of a given rule.
      * 
@@ -182,14 +182,14 @@ public final class GetNactagsOrgNactag {
         return this.radiusAttrs;
     }
     /**
-     * @return if `type`==`radius_group`
+     * @return If `type`==`radius_group`
      * 
      */
     public String radiusGroup() {
         return this.radiusGroup;
     }
     /**
-     * @return if `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radius_vendor_attrs&#34;.
+     * @return If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radius_vendor_attrs&#34;.
      * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
      * Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
      * 
@@ -198,7 +198,7 @@ public final class GetNactagsOrgNactag {
         return this.radiusVendorAttrs;
     }
     /**
-     * @return if `type`==`session_timeout, in seconds
+     * @return If `type`==`session_timeout, in seconds
      * 
      */
     public Integer sessionTimeout() {
@@ -219,14 +219,14 @@ public final class GetNactagsOrgNactag {
         return this.usernameAttr;
     }
     /**
-     * @return if `type`==`match`
+     * @return If `type`==`match`
      * 
      */
     public List<String> values() {
         return this.values;
     }
     /**
-     * @return if `type`==`vlan`
+     * @return If `type`==`vlan`
      * 
      */
     public String vlan() {

@@ -12,17 +12,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList {
     /**
-     * @return only required if `type`==`context_prefix`
+     * @return Only required if `type`==`context_prefix`
      * 
      */
     private @Nullable String contextPrefix;
     /**
-     * @return refer to view name
+     * @return Refer to view name
      * 
      */
     private @Nullable String notifyView;
     /**
-     * @return refer to view name
+     * @return Refer to view name
      * 
      */
     private @Nullable String readView;
@@ -42,28 +42,28 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList {
      */
     private @Nullable String type;
     /**
-     * @return refer to view name
+     * @return Refer to view name
      * 
      */
     private @Nullable String writeView;
 
     private NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList() {}
     /**
-     * @return only required if `type`==`context_prefix`
+     * @return Only required if `type`==`context_prefix`
      * 
      */
     public Optional<String> contextPrefix() {
         return Optional.ofNullable(this.contextPrefix);
     }
     /**
-     * @return refer to view name
+     * @return Refer to view name
      * 
      */
     public Optional<String> notifyView() {
         return Optional.ofNullable(this.notifyView);
     }
     /**
-     * @return refer to view name
+     * @return Refer to view name
      * 
      */
     public Optional<String> readView() {
@@ -91,7 +91,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return refer to view name
+     * @return Refer to view name
      * 
      */
     public Optional<String> writeView() {

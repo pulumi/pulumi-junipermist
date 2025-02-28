@@ -19,14 +19,14 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
     public static final DeviceprofileApBleConfigArgs Empty = new DeviceprofileApBleConfigArgs();
 
     /**
-     * whether Mist beacons is enabled
+     * Whether Mist beacons is enabled
      * 
      */
     @Import(name="beaconEnabled")
     private @Nullable Output<Boolean> beaconEnabled;
 
     /**
-     * @return whether Mist beacons is enabled
+     * @return Whether Mist beacons is enabled
      * 
      */
     public Optional<Output<Boolean>> beaconEnabled() {
@@ -34,14 +34,14 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
+     * Required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
      * 
      */
     @Import(name="beaconRate")
     private @Nullable Output<Integer> beaconRate;
 
     /**
-     * @return required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
+     * @return Required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
      * 
      */
     public Optional<Output<Integer>> beaconRate() {
@@ -64,14 +64,14 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * list of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+     * List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
      * 
      */
     @Import(name="beamDisableds")
     private @Nullable Output<List<Integer>> beamDisableds;
 
     /**
-     * @return list of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+     * @return List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
      * 
      */
     public Optional<Output<List<Integer>>> beamDisableds() {
@@ -79,14 +79,14 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * can be enabled if `beacon_enabled`==`true`, whether to send custom packet
+     * Can be enabled if `beacon_enabled`==`true`, whether to send custom packet
      * 
      */
     @Import(name="customBlePacketEnabled")
     private @Nullable Output<Boolean> customBlePacketEnabled;
 
     /**
-     * @return can be enabled if `beacon_enabled`==`true`, whether to send custom packet
+     * @return Can be enabled if `beacon_enabled`==`true`, whether to send custom packet
      * 
      */
     public Optional<Output<Boolean>> customBlePacketEnabled() {
@@ -124,14 +124,14 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+     * Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
      * 
      */
     @Import(name="eddystoneUidAdvPower")
     private @Nullable Output<Integer> eddystoneUidAdvPower;
 
     /**
-     * @return advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+     * @return Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
      * 
      */
     public Optional<Output<Integer>> eddystoneUidAdvPower() {
@@ -146,14 +146,14 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
+     * Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
      * 
      */
     @Import(name="eddystoneUidEnabled")
     private @Nullable Output<Boolean> eddystoneUidEnabled;
 
     /**
-     * @return only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
+     * @return Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
      * 
      */
     public Optional<Output<Boolean>> eddystoneUidEnabled() {
@@ -206,14 +206,14 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+     * Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
      * 
      */
     @Import(name="eddystoneUrlAdvPower")
     private @Nullable Output<Integer> eddystoneUrlAdvPower;
 
     /**
-     * @return advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+     * @return Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
      * 
      */
     public Optional<Output<Integer>> eddystoneUrlAdvPower() {
@@ -228,14 +228,14 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
+     * Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
      * 
      */
     @Import(name="eddystoneUrlEnabled")
     private @Nullable Output<Boolean> eddystoneUrlEnabled;
 
     /**
-     * @return only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
+     * @return Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
      * 
      */
     public Optional<Output<Boolean>> eddystoneUrlEnabled() {
@@ -273,14 +273,14 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+     * Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
      * 
      */
     @Import(name="ibeaconAdvPower")
     private @Nullable Output<Integer> ibeaconAdvPower;
 
     /**
-     * @return advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+     * @return Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
      * 
      */
     public Optional<Output<Integer>> ibeaconAdvPower() {
@@ -295,14 +295,14 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
+     * Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
      * 
      */
     @Import(name="ibeaconEnabled")
     private @Nullable Output<Boolean> ibeaconEnabled;
 
     /**
-     * @return can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
+     * @return Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
      * 
      */
     public Optional<Output<Boolean>> ibeaconEnabled() {
@@ -355,14 +355,14 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * optional, if not specified, the same UUID as the beacon will be used
+     * Optional, if not specified, the same UUID as the beacon will be used
      * 
      */
     @Import(name="ibeaconUuid")
     private @Nullable Output<String> ibeaconUuid;
 
     /**
-     * @return optional, if not specified, the same UUID as the beacon will be used
+     * @return Optional, if not specified, the same UUID as the beacon will be used
      * 
      */
     public Optional<Output<String>> ibeaconUuid() {
@@ -370,14 +370,14 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * required if `power_mode`==`custom`
+     * Required if `power_mode`==`custom`; else use `power_mode` as default
      * 
      */
     @Import(name="power")
     private @Nullable Output<Integer> power;
 
     /**
-     * @return required if `power_mode`==`custom`
+     * @return Required if `power_mode`==`custom`; else use `power_mode` as default
      * 
      */
     public Optional<Output<Integer>> power() {
@@ -450,7 +450,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param beaconEnabled whether Mist beacons is enabled
+         * @param beaconEnabled Whether Mist beacons is enabled
          * 
          * @return builder
          * 
@@ -461,7 +461,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param beaconEnabled whether Mist beacons is enabled
+         * @param beaconEnabled Whether Mist beacons is enabled
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param beaconRate required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
+         * @param beaconRate Required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
          * 
          * @return builder
          * 
@@ -482,7 +482,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param beaconRate required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
+         * @param beaconRate Required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
          * 
          * @return builder
          * 
@@ -513,7 +513,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param beamDisableds list of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+         * @param beamDisableds List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
          * 
          * @return builder
          * 
@@ -524,7 +524,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param beamDisableds list of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+         * @param beamDisableds List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
          * 
          * @return builder
          * 
@@ -534,7 +534,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param beamDisableds list of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+         * @param beamDisableds List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param customBlePacketEnabled can be enabled if `beacon_enabled`==`true`, whether to send custom packet
+         * @param customBlePacketEnabled Can be enabled if `beacon_enabled`==`true`, whether to send custom packet
          * 
          * @return builder
          * 
@@ -555,7 +555,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param customBlePacketEnabled can be enabled if `beacon_enabled`==`true`, whether to send custom packet
+         * @param customBlePacketEnabled Can be enabled if `beacon_enabled`==`true`, whether to send custom packet
          * 
          * @return builder
          * 
@@ -607,7 +607,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param eddystoneUidAdvPower advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+         * @param eddystoneUidAdvPower Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
          * 
          * @return builder
          * 
@@ -618,7 +618,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param eddystoneUidAdvPower advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+         * @param eddystoneUidAdvPower Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
          * 
          * @return builder
          * 
@@ -637,7 +637,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param eddystoneUidEnabled only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
+         * @param eddystoneUidEnabled Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
          * 
          * @return builder
          * 
@@ -648,7 +648,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param eddystoneUidEnabled only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
+         * @param eddystoneUidEnabled Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
          * 
          * @return builder
          * 
@@ -721,7 +721,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param eddystoneUrlAdvPower advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+         * @param eddystoneUrlAdvPower Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
          * 
          * @return builder
          * 
@@ -732,7 +732,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param eddystoneUrlAdvPower advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+         * @param eddystoneUrlAdvPower Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
          * 
          * @return builder
          * 
@@ -751,7 +751,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param eddystoneUrlEnabled only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
+         * @param eddystoneUrlEnabled Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
          * 
          * @return builder
          * 
@@ -762,7 +762,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param eddystoneUrlEnabled only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
+         * @param eddystoneUrlEnabled Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
          * 
          * @return builder
          * 
@@ -814,7 +814,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ibeaconAdvPower advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+         * @param ibeaconAdvPower Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
          * 
          * @return builder
          * 
@@ -825,7 +825,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ibeaconAdvPower advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+         * @param ibeaconAdvPower Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
          * 
          * @return builder
          * 
@@ -844,7 +844,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ibeaconEnabled can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
+         * @param ibeaconEnabled Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
          * 
          * @return builder
          * 
@@ -855,7 +855,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ibeaconEnabled can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
+         * @param ibeaconEnabled Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
          * 
          * @return builder
          * 
@@ -928,7 +928,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ibeaconUuid optional, if not specified, the same UUID as the beacon will be used
+         * @param ibeaconUuid Optional, if not specified, the same UUID as the beacon will be used
          * 
          * @return builder
          * 
@@ -939,7 +939,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ibeaconUuid optional, if not specified, the same UUID as the beacon will be used
+         * @param ibeaconUuid Optional, if not specified, the same UUID as the beacon will be used
          * 
          * @return builder
          * 
@@ -949,7 +949,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param power required if `power_mode`==`custom`
+         * @param power Required if `power_mode`==`custom`; else use `power_mode` as default
          * 
          * @return builder
          * 
@@ -960,7 +960,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param power required if `power_mode`==`custom`
+         * @param power Required if `power_mode`==`custom`; else use `power_mode` as default
          * 
          * @return builder
          * 

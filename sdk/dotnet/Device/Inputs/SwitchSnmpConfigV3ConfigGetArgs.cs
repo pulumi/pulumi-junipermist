@@ -44,8 +44,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
             set => _targetParameters = value;
         }
 
-        [Input("usm")]
-        public Input<Inputs.SwitchSnmpConfigV3ConfigUsmGetArgs>? Usm { get; set; }
+        [Input("usms")]
+        private InputList<Inputs.SwitchSnmpConfigV3ConfigUsmGetArgs>? _usms;
+        public InputList<Inputs.SwitchSnmpConfigV3ConfigUsmGetArgs> Usms
+        {
+            get => _usms ?? (_usms = new InputList<Inputs.SwitchSnmpConfigV3ConfigUsmGetArgs>());
+            set => _usms = value;
+        }
 
         [Input("vacm")]
         public Input<Inputs.SwitchSnmpConfigV3ConfigVacmGetArgs>? Vacm { get; set; }

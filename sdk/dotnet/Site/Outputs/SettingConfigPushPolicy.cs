@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingConfigPushPolicy
     {
         /// <summary>
-        /// stop any new config from being pushed to the device
+        /// Stop any new config from being pushed to the device
         /// </summary>
         public readonly bool? NoPush;
         /// <summary>
-        /// if enabled, new config will only be pushed to device within the specified time window
+        /// If enabled, new config will only be pushed to device within the specified time window
         /// </summary>
         public readonly Outputs.SettingConfigPushPolicyPushWindow? PushWindow;
 

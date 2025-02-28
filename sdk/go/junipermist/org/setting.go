@@ -28,26 +28,26 @@ import (
 type Setting struct {
 	pulumi.CustomResourceState
 
-	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntOutput          `pulumi:"apUpdownThreshold"`
 	ApiPolicy         SettingApiPolicyPtrOutput `pulumi:"apiPolicy"`
-	// list of PEM-encoded ca certs
+	// List of PEM-encoded ca certs
 	Cacerts     pulumi.StringArrayOutput   `pulumi:"cacerts"`
 	Celona      SettingCelonaPtrOutput     `pulumi:"celona"`
 	Cloudshark  SettingCloudsharkPtrOutput `pulumi:"cloudshark"`
 	Cradlepoint SettingCradlepointOutput   `pulumi:"cradlepoint"`
 	// common device cert, optional
 	DeviceCert SettingDeviceCertPtrOutput `pulumi:"deviceCert"`
-	// enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+	// Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
 	// AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
 	// immediate)
 	DeviceUpdownThreshold pulumi.IntOutput `pulumi:"deviceUpdownThreshold"`
-	// whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+	// Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
 	DisablePcap pulumi.BoolOutput `pulumi:"disablePcap"`
-	// whether to disable remote shell access for an entire org
+	// Whether to disable remote shell access for an entire org
 	DisableRemoteShell pulumi.BoolOutput `pulumi:"disableRemoteShell"`
-	// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 	// `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold pulumi.IntOutput          `pulumi:"gatewayUpdownThreshold"`
 	Installer              SettingInstallerPtrOutput `pulumi:"installer"`
@@ -68,11 +68,11 @@ type Setting struct {
 	Pcap           SettingPcapPtrOutput           `pulumi:"pcap"`
 	Security       SettingSecurityPtrOutput       `pulumi:"security"`
 	SwitchMgmt     SettingSwitchMgmtPtrOutput     `pulumi:"switchMgmt"`
-	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold pulumi.IntOutput              `pulumi:"switchUpdownThreshold"`
 	SyntheticTest         SettingSyntheticTestPtrOutput `pulumi:"syntheticTest"`
-	// automatically logout the user when UI session is inactive. `0` means disabled
+	// Automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout pulumi.IntOutput            `pulumi:"uiIdleTimeout"`
 	VpnOptions    SettingVpnOptionsPtrOutput  `pulumi:"vpnOptions"`
 	WanPma        SettingWanPmaPtrOutput      `pulumi:"wanPma"`
@@ -113,26 +113,26 @@ func GetSetting(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Setting resources.
 type settingState struct {
-	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold *int              `pulumi:"apUpdownThreshold"`
 	ApiPolicy         *SettingApiPolicy `pulumi:"apiPolicy"`
-	// list of PEM-encoded ca certs
+	// List of PEM-encoded ca certs
 	Cacerts     []string            `pulumi:"cacerts"`
 	Celona      *SettingCelona      `pulumi:"celona"`
 	Cloudshark  *SettingCloudshark  `pulumi:"cloudshark"`
 	Cradlepoint *SettingCradlepoint `pulumi:"cradlepoint"`
 	// common device cert, optional
 	DeviceCert *SettingDeviceCert `pulumi:"deviceCert"`
-	// enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+	// Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
 	// AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
 	// immediate)
 	DeviceUpdownThreshold *int `pulumi:"deviceUpdownThreshold"`
-	// whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+	// Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
 	DisablePcap *bool `pulumi:"disablePcap"`
-	// whether to disable remote shell access for an entire org
+	// Whether to disable remote shell access for an entire org
 	DisableRemoteShell *bool `pulumi:"disableRemoteShell"`
-	// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 	// `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold *int              `pulumi:"gatewayUpdownThreshold"`
 	Installer              *SettingInstaller `pulumi:"installer"`
@@ -153,11 +153,11 @@ type settingState struct {
 	Pcap           *SettingPcap           `pulumi:"pcap"`
 	Security       *SettingSecurity       `pulumi:"security"`
 	SwitchMgmt     *SettingSwitchMgmt     `pulumi:"switchMgmt"`
-	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold *int                  `pulumi:"switchUpdownThreshold"`
 	SyntheticTest         *SettingSyntheticTest `pulumi:"syntheticTest"`
-	// automatically logout the user when UI session is inactive. `0` means disabled
+	// Automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout *int                `pulumi:"uiIdleTimeout"`
 	VpnOptions    *SettingVpnOptions  `pulumi:"vpnOptions"`
 	WanPma        *SettingWanPma      `pulumi:"wanPma"`
@@ -166,26 +166,26 @@ type settingState struct {
 }
 
 type SettingState struct {
-	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrInput
 	ApiPolicy         SettingApiPolicyPtrInput
-	// list of PEM-encoded ca certs
+	// List of PEM-encoded ca certs
 	Cacerts     pulumi.StringArrayInput
 	Celona      SettingCelonaPtrInput
 	Cloudshark  SettingCloudsharkPtrInput
 	Cradlepoint SettingCradlepointPtrInput
 	// common device cert, optional
 	DeviceCert SettingDeviceCertPtrInput
-	// enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+	// Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
 	// AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
 	// immediate)
 	DeviceUpdownThreshold pulumi.IntPtrInput
-	// whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+	// Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
 	DisablePcap pulumi.BoolPtrInput
-	// whether to disable remote shell access for an entire org
+	// Whether to disable remote shell access for an entire org
 	DisableRemoteShell pulumi.BoolPtrInput
-	// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 	// `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold pulumi.IntPtrInput
 	Installer              SettingInstallerPtrInput
@@ -206,11 +206,11 @@ type SettingState struct {
 	Pcap           SettingPcapPtrInput
 	Security       SettingSecurityPtrInput
 	SwitchMgmt     SettingSwitchMgmtPtrInput
-	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold pulumi.IntPtrInput
 	SyntheticTest         SettingSyntheticTestPtrInput
-	// automatically logout the user when UI session is inactive. `0` means disabled
+	// Automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout pulumi.IntPtrInput
 	VpnOptions    SettingVpnOptionsPtrInput
 	WanPma        SettingWanPmaPtrInput
@@ -223,25 +223,25 @@ func (SettingState) ElementType() reflect.Type {
 }
 
 type settingArgs struct {
-	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold *int              `pulumi:"apUpdownThreshold"`
 	ApiPolicy         *SettingApiPolicy `pulumi:"apiPolicy"`
-	// list of PEM-encoded ca certs
+	// List of PEM-encoded ca certs
 	Cacerts    []string           `pulumi:"cacerts"`
 	Celona     *SettingCelona     `pulumi:"celona"`
 	Cloudshark *SettingCloudshark `pulumi:"cloudshark"`
 	// common device cert, optional
 	DeviceCert *SettingDeviceCert `pulumi:"deviceCert"`
-	// enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+	// Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
 	// AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
 	// immediate)
 	DeviceUpdownThreshold *int `pulumi:"deviceUpdownThreshold"`
-	// whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+	// Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
 	DisablePcap *bool `pulumi:"disablePcap"`
-	// whether to disable remote shell access for an entire org
+	// Whether to disable remote shell access for an entire org
 	DisableRemoteShell *bool `pulumi:"disableRemoteShell"`
-	// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 	// `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold *int              `pulumi:"gatewayUpdownThreshold"`
 	Installer              *SettingInstaller `pulumi:"installer"`
@@ -261,11 +261,11 @@ type settingArgs struct {
 	Pcap           *SettingPcap           `pulumi:"pcap"`
 	Security       *SettingSecurity       `pulumi:"security"`
 	SwitchMgmt     *SettingSwitchMgmt     `pulumi:"switchMgmt"`
-	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold *int                  `pulumi:"switchUpdownThreshold"`
 	SyntheticTest         *SettingSyntheticTest `pulumi:"syntheticTest"`
-	// automatically logout the user when UI session is inactive. `0` means disabled
+	// Automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout *int                `pulumi:"uiIdleTimeout"`
 	VpnOptions    *SettingVpnOptions  `pulumi:"vpnOptions"`
 	WanPma        *SettingWanPma      `pulumi:"wanPma"`
@@ -275,25 +275,25 @@ type settingArgs struct {
 
 // The set of arguments for constructing a Setting resource.
 type SettingArgs struct {
-	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrInput
 	ApiPolicy         SettingApiPolicyPtrInput
-	// list of PEM-encoded ca certs
+	// List of PEM-encoded ca certs
 	Cacerts    pulumi.StringArrayInput
 	Celona     SettingCelonaPtrInput
 	Cloudshark SettingCloudsharkPtrInput
 	// common device cert, optional
 	DeviceCert SettingDeviceCertPtrInput
-	// enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+	// Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
 	// AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
 	// immediate)
 	DeviceUpdownThreshold pulumi.IntPtrInput
-	// whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+	// Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
 	DisablePcap pulumi.BoolPtrInput
-	// whether to disable remote shell access for an entire org
+	// Whether to disable remote shell access for an entire org
 	DisableRemoteShell pulumi.BoolPtrInput
-	// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 	// `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold pulumi.IntPtrInput
 	Installer              SettingInstallerPtrInput
@@ -313,11 +313,11 @@ type SettingArgs struct {
 	Pcap           SettingPcapPtrInput
 	Security       SettingSecurityPtrInput
 	SwitchMgmt     SettingSwitchMgmtPtrInput
-	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold pulumi.IntPtrInput
 	SyntheticTest         SettingSyntheticTestPtrInput
-	// automatically logout the user when UI session is inactive. `0` means disabled
+	// Automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout pulumi.IntPtrInput
 	VpnOptions    SettingVpnOptionsPtrInput
 	WanPma        SettingWanPmaPtrInput
@@ -412,7 +412,7 @@ func (o SettingOutput) ToSettingOutputWithContext(ctx context.Context) SettingOu
 	return o
 }
 
-// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
 // `deviceUpdownThreshold` is ignored.
 func (o SettingOutput) ApUpdownThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.ApUpdownThreshold }).(pulumi.IntOutput)
@@ -422,7 +422,7 @@ func (o SettingOutput) ApiPolicy() SettingApiPolicyPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingApiPolicyPtrOutput { return v.ApiPolicy }).(SettingApiPolicyPtrOutput)
 }
 
-// list of PEM-encoded ca certs
+// List of PEM-encoded ca certs
 func (o SettingOutput) Cacerts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Setting) pulumi.StringArrayOutput { return v.Cacerts }).(pulumi.StringArrayOutput)
 }
@@ -444,24 +444,24 @@ func (o SettingOutput) DeviceCert() SettingDeviceCertPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingDeviceCertPtrOutput { return v.DeviceCert }).(SettingDeviceCertPtrOutput)
 }
 
-// enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+// Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
 // AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
 // immediate)
 func (o SettingOutput) DeviceUpdownThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.DeviceUpdownThreshold }).(pulumi.IntOutput)
 }
 
-// whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+// Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
 func (o SettingOutput) DisablePcap() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.DisablePcap }).(pulumi.BoolOutput)
 }
 
-// whether to disable remote shell access for an entire org
+// Whether to disable remote shell access for an entire org
 func (o SettingOutput) DisableRemoteShell() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.DisableRemoteShell }).(pulumi.BoolOutput)
 }
 
-// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 // `deviceUpdownThreshold` is ignored.
 func (o SettingOutput) GatewayUpdownThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.GatewayUpdownThreshold }).(pulumi.IntOutput)
@@ -527,7 +527,7 @@ func (o SettingOutput) SwitchMgmt() SettingSwitchMgmtPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingSwitchMgmtPtrOutput { return v.SwitchMgmt }).(SettingSwitchMgmtPtrOutput)
 }
 
-// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 // `deviceUpdownThreshold` is ignored.
 func (o SettingOutput) SwitchUpdownThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.SwitchUpdownThreshold }).(pulumi.IntOutput)
@@ -537,7 +537,7 @@ func (o SettingOutput) SyntheticTest() SettingSyntheticTestPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingSyntheticTestPtrOutput { return v.SyntheticTest }).(SettingSyntheticTestPtrOutput)
 }
 
-// automatically logout the user when UI session is inactive. `0` means disabled
+// Automatically logout the user when UI session is inactive. `0` means disabled
 func (o SettingOutput) UiIdleTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.UiIdleTimeout }).(pulumi.IntOutput)
 }

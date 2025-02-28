@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// optional, Mist will decide the timing
+        /// Optional, Mist will decide the timing
         /// </summary>
         [Input("timeOfDay")]
         public Input<string>? TimeOfDay { get; set; }
