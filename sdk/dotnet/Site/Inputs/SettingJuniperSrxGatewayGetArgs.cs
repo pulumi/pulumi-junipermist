@@ -15,6 +15,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("apiKey")]
         public Input<string>? ApiKey { get; set; }
 
+        [Input("apiPassword")]
+        public Input<string>? ApiPassword { get; set; }
+
         [Input("apiUrl")]
         public Input<string>? ApiUrl { get; set; }
 

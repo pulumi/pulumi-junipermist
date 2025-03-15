@@ -20,14 +20,14 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
     public static final WlantemplateState Empty = new WlantemplateState();
 
     /**
-     * where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+     * Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
      * 
      */
     @Import(name="applies")
     private @Nullable Output<WlantemplateAppliesArgs> applies;
 
     /**
-     * @return where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+     * @return Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
      * 
      */
     public Optional<Output<WlantemplateAppliesArgs>> applies() {
@@ -35,14 +35,14 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * list of Device Profile ids
+     * List of Device Profile ids
      * 
      */
     @Import(name="deviceprofileIds")
     private @Nullable Output<List<String>> deviceprofileIds;
 
     /**
-     * @return list of Device Profile ids
+     * @return List of Device Profile ids
      * 
      */
     public Optional<Output<List<String>>> deviceprofileIds() {
@@ -50,14 +50,14 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * where this template should not be applied to (takes precedence)
+     * Where this template should not be applied to (takes precedence)
      * 
      */
     @Import(name="exceptions")
     private @Nullable Output<WlantemplateExceptionsArgs> exceptions;
 
     /**
-     * @return where this template should not be applied to (takes precedence)
+     * @return Where this template should not be applied to (takes precedence)
      * 
      */
     public Optional<Output<WlantemplateExceptionsArgs>> exceptions() {
@@ -65,14 +65,14 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to further filter by Device Profile
+     * Whether to further filter by Device Profile
      * 
      */
     @Import(name="filterByDeviceprofile")
     private @Nullable Output<Boolean> filterByDeviceprofile;
 
     /**
-     * @return whether to further filter by Device Profile
+     * @return Whether to further filter by Device Profile
      * 
      */
     public Optional<Output<Boolean>> filterByDeviceprofile() {
@@ -123,7 +123,7 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applies where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+         * @param applies Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applies where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+         * @param applies Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceprofileIds list of Device Profile ids
+         * @param deviceprofileIds List of Device Profile ids
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceprofileIds list of Device Profile ids
+         * @param deviceprofileIds List of Device Profile ids
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceprofileIds list of Device Profile ids
+         * @param deviceprofileIds List of Device Profile ids
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exceptions where this template should not be applied to (takes precedence)
+         * @param exceptions Where this template should not be applied to (takes precedence)
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exceptions where this template should not be applied to (takes precedence)
+         * @param exceptions Where this template should not be applied to (takes precedence)
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filterByDeviceprofile whether to further filter by Device Profile
+         * @param filterByDeviceprofile Whether to further filter by Device Profile
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filterByDeviceprofile whether to further filter by Device Profile
+         * @param filterByDeviceprofile Whether to further filter by Device Profile
          * 
          * @return builder
          * 

@@ -14,7 +14,7 @@ import (
 
 // This resource manages NAC Tags (Auth Policy Labels).
 //
-// # The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+// # The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
 //
 // ## Example Usage
 //
@@ -64,8 +64,7 @@ type Nactag struct {
 	AllowUsermacOverride pulumi.BoolOutput `pulumi:"allowUsermacOverride"`
 	// If `type`==`egressVlanNames`, list of egress vlans to return
 	EgressVlanNames pulumi.StringArrayOutput `pulumi:"egressVlanNames"`
-	// If `type`==`gbpTag`
-	GbpTag pulumi.IntPtrOutput `pulumi:"gbpTag"`
+	GbpTag          pulumi.StringPtrOutput   `pulumi:"gbpTag"`
 	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
 	// `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match pulumi.StringPtrOutput `pulumi:"match"`
@@ -138,8 +137,7 @@ type nactagState struct {
 	AllowUsermacOverride *bool `pulumi:"allowUsermacOverride"`
 	// If `type`==`egressVlanNames`, list of egress vlans to return
 	EgressVlanNames []string `pulumi:"egressVlanNames"`
-	// If `type`==`gbpTag`
-	GbpTag *int `pulumi:"gbpTag"`
+	GbpTag          *string  `pulumi:"gbpTag"`
 	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
 	// `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match *string `pulumi:"match"`
@@ -177,8 +175,7 @@ type NactagState struct {
 	AllowUsermacOverride pulumi.BoolPtrInput
 	// If `type`==`egressVlanNames`, list of egress vlans to return
 	EgressVlanNames pulumi.StringArrayInput
-	// If `type`==`gbpTag`
-	GbpTag pulumi.IntPtrInput
+	GbpTag          pulumi.StringPtrInput
 	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
 	// `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match pulumi.StringPtrInput
@@ -220,8 +217,7 @@ type nactagArgs struct {
 	AllowUsermacOverride *bool `pulumi:"allowUsermacOverride"`
 	// If `type`==`egressVlanNames`, list of egress vlans to return
 	EgressVlanNames []string `pulumi:"egressVlanNames"`
-	// If `type`==`gbpTag`
-	GbpTag *int `pulumi:"gbpTag"`
+	GbpTag          *string  `pulumi:"gbpTag"`
 	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
 	// `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match *string `pulumi:"match"`
@@ -260,8 +256,7 @@ type NactagArgs struct {
 	AllowUsermacOverride pulumi.BoolPtrInput
 	// If `type`==`egressVlanNames`, list of egress vlans to return
 	EgressVlanNames pulumi.StringArrayInput
-	// If `type`==`gbpTag`
-	GbpTag pulumi.IntPtrInput
+	GbpTag          pulumi.StringPtrInput
 	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
 	// `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match pulumi.StringPtrInput
@@ -391,9 +386,8 @@ func (o NactagOutput) EgressVlanNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Nactag) pulumi.StringArrayOutput { return v.EgressVlanNames }).(pulumi.StringArrayOutput)
 }
 
-// If `type`==`gbpTag`
-func (o NactagOutput) GbpTag() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Nactag) pulumi.IntPtrOutput { return v.GbpTag }).(pulumi.IntPtrOutput)
+func (o NactagOutput) GbpTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Nactag) pulumi.StringPtrOutput { return v.GbpTag }).(pulumi.StringPtrOutput)
 }
 
 // if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,

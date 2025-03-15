@@ -34,12 +34,28 @@ public final class GetApStatsDeviceApStatBleStat {
     private Integer major;
     private List<Integer> minors;
     private Integer power;
+    /**
+     * @return Amount of traffic received since connection
+     * 
+     */
     private Integer rxBytes;
+    /**
+     * @return Amount of packets received since connection
+     * 
+     */
     private Integer rxPkts;
+    /**
+     * @return Amount of traffic sent since connection
+     * 
+     */
     private Integer txBytes;
+    /**
+     * @return Amount of packets sent since connection
+     * 
+     */
     private Integer txPkts;
     /**
-     * @return resets due to tx hung
+     * @return Resets due to tx hung
      * 
      */
     private Integer txResets;
@@ -101,20 +117,36 @@ public final class GetApStatsDeviceApStatBleStat {
     public Integer power() {
         return this.power;
     }
+    /**
+     * @return Amount of traffic received since connection
+     * 
+     */
     public Integer rxBytes() {
         return this.rxBytes;
     }
+    /**
+     * @return Amount of packets received since connection
+     * 
+     */
     public Integer rxPkts() {
         return this.rxPkts;
     }
+    /**
+     * @return Amount of traffic sent since connection
+     * 
+     */
     public Integer txBytes() {
         return this.txBytes;
     }
+    /**
+     * @return Amount of packets sent since connection
+     * 
+     */
     public Integer txPkts() {
         return this.txPkts;
     }
     /**
-     * @return resets due to tx hung
+     * @return Resets due to tx hung
      * 
      */
     public Integer txResets() {

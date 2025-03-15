@@ -12,50 +12,62 @@ import java.util.Objects;
 @CustomType
 public final class GetConstWebhooksConstWebhook {
     /**
-     * @return can be used in org webhooks, optional
+     * @return supports single event per message results
+     * 
+     */
+    private Boolean allowsSingleEventPerMessage;
+    /**
+     * @return Can be used in org webhooks, optional
      * 
      */
     private Boolean forOrg;
     /**
-     * @return supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
+     * @return Supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
      * 
      */
     private Boolean hasDeliveryResults;
     /**
-     * @return internal topic (not selectable in site/org webhooks)
+     * @return Internal topic (not selectable in site/org webhooks)
      * 
      */
     private Boolean internal;
     /**
-     * @return webhook topic name
+     * @return Webhook topic name
      * 
      */
     private String key;
 
     private GetConstWebhooksConstWebhook() {}
     /**
-     * @return can be used in org webhooks, optional
+     * @return supports single event per message results
+     * 
+     */
+    public Boolean allowsSingleEventPerMessage() {
+        return this.allowsSingleEventPerMessage;
+    }
+    /**
+     * @return Can be used in org webhooks, optional
      * 
      */
     public Boolean forOrg() {
         return this.forOrg;
     }
     /**
-     * @return supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
+     * @return Supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
      * 
      */
     public Boolean hasDeliveryResults() {
         return this.hasDeliveryResults;
     }
     /**
-     * @return internal topic (not selectable in site/org webhooks)
+     * @return Internal topic (not selectable in site/org webhooks)
      * 
      */
     public Boolean internal() {
         return this.internal;
     }
     /**
-     * @return webhook topic name
+     * @return Webhook topic name
      * 
      */
     public String key() {
@@ -71,6 +83,7 @@ public final class GetConstWebhooksConstWebhook {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean allowsSingleEventPerMessage;
         private Boolean forOrg;
         private Boolean hasDeliveryResults;
         private Boolean internal;
@@ -78,12 +91,21 @@ public final class GetConstWebhooksConstWebhook {
         public Builder() {}
         public Builder(GetConstWebhooksConstWebhook defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowsSingleEventPerMessage = defaults.allowsSingleEventPerMessage;
     	      this.forOrg = defaults.forOrg;
     	      this.hasDeliveryResults = defaults.hasDeliveryResults;
     	      this.internal = defaults.internal;
     	      this.key = defaults.key;
         }
 
+        @CustomType.Setter
+        public Builder allowsSingleEventPerMessage(Boolean allowsSingleEventPerMessage) {
+            if (allowsSingleEventPerMessage == null) {
+              throw new MissingRequiredPropertyException("GetConstWebhooksConstWebhook", "allowsSingleEventPerMessage");
+            }
+            this.allowsSingleEventPerMessage = allowsSingleEventPerMessage;
+            return this;
+        }
         @CustomType.Setter
         public Builder forOrg(Boolean forOrg) {
             if (forOrg == null) {
@@ -118,6 +140,7 @@ public final class GetConstWebhooksConstWebhook {
         }
         public GetConstWebhooksConstWebhook build() {
             final var _resultValue = new GetConstWebhooksConstWebhook();
+            _resultValue.allowsSingleEventPerMessage = allowsSingleEventPerMessage;
             _resultValue.forOrg = forOrg;
             _resultValue.hasDeliveryResults = hasDeliveryResults;
             _resultValue.internal = internal;

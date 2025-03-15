@@ -19,6 +19,21 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
     public static final SettingRogueArgs Empty = new SettingRogueArgs();
 
     /**
+     * list of VLAN IDs on which rogue APs are ignored
+     * 
+     */
+    @Import(name="allowedVlanIds")
+    private @Nullable Output<List<Integer>> allowedVlanIds;
+
+    /**
+     * @return list of VLAN IDs on which rogue APs are ignored
+     * 
+     */
+    public Optional<Output<List<Integer>>> allowedVlanIds() {
+        return Optional.ofNullable(this.allowedVlanIds);
+    }
+
+    /**
      * Whether rogue detection is enabled
      * 
      */
@@ -49,14 +64,14 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Minimum duration for a bssid to be considered rogue
+     * Minimum duration for a bssid to be considered neighbor
      * 
      */
     @Import(name="minDuration")
     private @Nullable Output<Integer> minDuration;
 
     /**
-     * @return Minimum duration for a bssid to be considered rogue
+     * @return Minimum duration for a bssid to be considered neighbor
      * 
      */
     public Optional<Output<Integer>> minDuration() {
@@ -64,14 +79,44 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+     * Minimum duration for a bssid to be considered rogue
+     * 
+     */
+    @Import(name="minRogueDuration")
+    private @Nullable Output<Integer> minRogueDuration;
+
+    /**
+     * @return Minimum duration for a bssid to be considered rogue
+     * 
+     */
+    public Optional<Output<Integer>> minRogueDuration() {
+        return Optional.ofNullable(this.minRogueDuration);
+    }
+
+    /**
+     * Minimum RSSI for an AP to be considered rogue
+     * 
+     */
+    @Import(name="minRogueRssi")
+    private @Nullable Output<Integer> minRogueRssi;
+
+    /**
+     * @return Minimum RSSI for an AP to be considered rogue
+     * 
+     */
+    public Optional<Output<Integer>> minRogueRssi() {
+        return Optional.ofNullable(this.minRogueRssi);
+    }
+
+    /**
+     * Minimum RSSI for an AP to be considered neighbor (ignoring APs that’s far away)
      * 
      */
     @Import(name="minRssi")
     private @Nullable Output<Integer> minRssi;
 
     /**
-     * @return Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+     * @return Minimum RSSI for an AP to be considered neighbor (ignoring APs that’s far away)
      * 
      */
     public Optional<Output<Integer>> minRssi() {
@@ -111,9 +156,12 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
     private SettingRogueArgs() {}
 
     private SettingRogueArgs(SettingRogueArgs $) {
+        this.allowedVlanIds = $.allowedVlanIds;
         this.enabled = $.enabled;
         this.honeypotEnabled = $.honeypotEnabled;
         this.minDuration = $.minDuration;
+        this.minRogueDuration = $.minRogueDuration;
+        this.minRogueRssi = $.minRogueRssi;
         this.minRssi = $.minRssi;
         this.whitelistedBssids = $.whitelistedBssids;
         this.whitelistedSsids = $.whitelistedSsids;
@@ -135,6 +183,37 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SettingRogueArgs defaults) {
             $ = new SettingRogueArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowedVlanIds list of VLAN IDs on which rogue APs are ignored
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedVlanIds(@Nullable Output<List<Integer>> allowedVlanIds) {
+            $.allowedVlanIds = allowedVlanIds;
+            return this;
+        }
+
+        /**
+         * @param allowedVlanIds list of VLAN IDs on which rogue APs are ignored
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedVlanIds(List<Integer> allowedVlanIds) {
+            return allowedVlanIds(Output.of(allowedVlanIds));
+        }
+
+        /**
+         * @param allowedVlanIds list of VLAN IDs on which rogue APs are ignored
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedVlanIds(Integer... allowedVlanIds) {
+            return allowedVlanIds(List.of(allowedVlanIds));
         }
 
         /**
@@ -180,7 +259,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minDuration Minimum duration for a bssid to be considered rogue
+         * @param minDuration Minimum duration for a bssid to be considered neighbor
          * 
          * @return builder
          * 
@@ -191,7 +270,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minDuration Minimum duration for a bssid to be considered rogue
+         * @param minDuration Minimum duration for a bssid to be considered neighbor
          * 
          * @return builder
          * 
@@ -201,7 +280,49 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minRssi Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+         * @param minRogueDuration Minimum duration for a bssid to be considered rogue
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minRogueDuration(@Nullable Output<Integer> minRogueDuration) {
+            $.minRogueDuration = minRogueDuration;
+            return this;
+        }
+
+        /**
+         * @param minRogueDuration Minimum duration for a bssid to be considered rogue
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minRogueDuration(Integer minRogueDuration) {
+            return minRogueDuration(Output.of(minRogueDuration));
+        }
+
+        /**
+         * @param minRogueRssi Minimum RSSI for an AP to be considered rogue
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minRogueRssi(@Nullable Output<Integer> minRogueRssi) {
+            $.minRogueRssi = minRogueRssi;
+            return this;
+        }
+
+        /**
+         * @param minRogueRssi Minimum RSSI for an AP to be considered rogue
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minRogueRssi(Integer minRogueRssi) {
+            return minRogueRssi(Output.of(minRogueRssi));
+        }
+
+        /**
+         * @param minRssi Minimum RSSI for an AP to be considered neighbor (ignoring APs that’s far away)
          * 
          * @return builder
          * 
@@ -212,7 +333,7 @@ public final class SettingRogueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minRssi Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+         * @param minRssi Minimum RSSI for an AP to be considered neighbor (ignoring APs that’s far away)
          * 
          * @return builder
          * 

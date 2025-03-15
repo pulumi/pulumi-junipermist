@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the list of  available Alarms.
+// This data source provides the list of available Alarms.
 //
 // The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
 //

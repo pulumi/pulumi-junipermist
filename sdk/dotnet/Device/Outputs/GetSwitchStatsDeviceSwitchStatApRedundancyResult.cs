@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GetSwitchStatsDeviceSwitchStatApRedundancyResult
     {
         /// <summary>
-        /// for a VC / stacked switches.
+        /// For a VC / stacked switches.
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetSwitchStatsDeviceSwitchStatApRedundancyModulesResult> Modules;
         public readonly int NumAps;

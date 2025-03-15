@@ -26,6 +26,7 @@ export function getRftemplates(args: GetRftemplatesArgs, opts?: pulumi.InvokeOpt
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getRftemplates:getRftemplates", {
         "orgId": args.orgId,
+        "page": args.page,
     }, opts);
 }
 
@@ -34,6 +35,7 @@ export function getRftemplates(args: GetRftemplatesArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetRftemplatesArgs {
     orgId: string;
+    page?: number;
 }
 
 /**
@@ -46,6 +48,7 @@ export interface GetRftemplatesResult {
     readonly id: string;
     readonly orgId: string;
     readonly orgRftemplates: outputs.org.GetRftemplatesOrgRftemplate[];
+    readonly page?: number;
 }
 /**
  * This data source provides the list of RF Templates.
@@ -67,6 +70,7 @@ export function getRftemplatesOutput(args: GetRftemplatesOutputArgs, opts?: pulu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getRftemplates:getRftemplates", {
         "orgId": args.orgId,
+        "page": args.page,
     }, opts);
 }
 
@@ -75,4 +79,5 @@ export function getRftemplatesOutput(args: GetRftemplatesOutputArgs, opts?: pulu
  */
 export interface GetRftemplatesOutputArgs {
     orgId: pulumi.Input<string>;
+    page?: pulumi.Input<number>;
 }

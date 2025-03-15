@@ -152,20 +152,27 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
-     * is desired, use the following
+     * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
+     * type is desired, use the following
      * 
      */
     @Import(name="deviceUpdownThreshold")
     private @Nullable Output<Integer> deviceUpdownThreshold;
 
     /**
-     * @return By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
-     * is desired, use the following
+     * @return By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
+     * type is desired, use the following
      * 
      */
     public Optional<Output<Integer>> deviceUpdownThreshold() {
         return Optional.ofNullable(this.deviceUpdownThreshold);
+    }
+
+    @Import(name="enableUnii4")
+    private @Nullable Output<Boolean> enableUnii4;
+
+    public Optional<Output<Boolean>> enableUnii4() {
+        return Optional.ofNullable(this.enableUnii4);
     }
 
     /**
@@ -348,7 +355,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-     * window, there are more than Y distinct client encountring over X failures
+     * window, there are more than Y distinct client encountering over X failures
      * 
      */
     @Import(name="simpleAlert")
@@ -356,7 +363,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-     * window, there are more than Y distinct client encountring over X failures
+     * window, there are more than Y distinct client encountering over X failures
      * 
      */
     public Optional<Output<SettingSimpleAlertArgs>> simpleAlert() {
@@ -485,14 +492,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+     * Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
      * 
      */
     @Import(name="vsInstance")
     private @Nullable Output<Map<String,SettingVsInstanceArgs>> vsInstance;
 
     /**
-     * @return Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+     * @return Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
      * 
      */
     public Optional<Output<Map<String,SettingVsInstanceArgs>>> vsInstance() {
@@ -584,6 +591,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         this.configPushPolicy = $.configPushPolicy;
         this.criticalUrlMonitoring = $.criticalUrlMonitoring;
         this.deviceUpdownThreshold = $.deviceUpdownThreshold;
+        this.enableUnii4 = $.enableUnii4;
         this.engagement = $.engagement;
         this.gatewayMgmt = $.gatewayMgmt;
         this.gatewayUpdownThreshold = $.gatewayUpdownThreshold;
@@ -783,8 +791,8 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceUpdownThreshold By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
-         * is desired, use the following
+         * @param deviceUpdownThreshold By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
+         * type is desired, use the following
          * 
          * @return builder
          * 
@@ -795,14 +803,23 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceUpdownThreshold By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
-         * is desired, use the following
+         * @param deviceUpdownThreshold By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
+         * type is desired, use the following
          * 
          * @return builder
          * 
          */
         public Builder deviceUpdownThreshold(Integer deviceUpdownThreshold) {
             return deviceUpdownThreshold(Output.of(deviceUpdownThreshold));
+        }
+
+        public Builder enableUnii4(@Nullable Output<Boolean> enableUnii4) {
+            $.enableUnii4 = enableUnii4;
+            return this;
+        }
+
+        public Builder enableUnii4(Boolean enableUnii4) {
+            return enableUnii4(Output.of(enableUnii4));
         }
 
         /**
@@ -1053,7 +1070,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param simpleAlert Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-         * window, there are more than Y distinct client encountring over X failures
+         * window, there are more than Y distinct client encountering over X failures
          * 
          * @return builder
          * 
@@ -1065,7 +1082,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param simpleAlert Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-         * window, there are more than Y distinct client encountring over X failures
+         * window, there are more than Y distinct client encountering over X failures
          * 
          * @return builder
          * 
@@ -1249,7 +1266,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vsInstance Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+         * @param vsInstance Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
          * 
          * @return builder
          * 
@@ -1260,7 +1277,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vsInstance Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+         * @param vsInstance Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
          * 
          * @return builder
          * 

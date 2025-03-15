@@ -5,6 +5,7 @@ package com.pulumi.junipermist.site.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -468,6 +469,66 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         return Optional.ofNullable(this.field4label);
     }
 
+    /**
+     * label of the link to go to /marketing_policy
+     * 
+     */
+    @Import(name="marketingPolicyLink")
+    private @Nullable Output<String> marketingPolicyLink;
+
+    /**
+     * @return label of the link to go to /marketing_policy
+     * 
+     */
+    public Optional<Output<String>> marketingPolicyLink() {
+        return Optional.ofNullable(this.marketingPolicyLink);
+    }
+
+    /**
+     * Whether marketing policy optin is enabled
+     * 
+     */
+    @Import(name="marketingPolicyOptIn")
+    private @Nullable Output<Boolean> marketingPolicyOptIn;
+
+    /**
+     * @return Whether marketing policy optin is enabled
+     * 
+     */
+    public Optional<Output<Boolean>> marketingPolicyOptIn() {
+        return Optional.ofNullable(this.marketingPolicyOptIn);
+    }
+
+    /**
+     * label for marketing optin
+     * 
+     */
+    @Import(name="marketingPolicyOptInLabel")
+    private @Nullable Output<String> marketingPolicyOptInLabel;
+
+    /**
+     * @return label for marketing optin
+     * 
+     */
+    public Optional<Output<String>> marketingPolicyOptInLabel() {
+        return Optional.ofNullable(this.marketingPolicyOptInLabel);
+    }
+
+    /**
+     * marketing policy text
+     * 
+     */
+    @Import(name="marketingPolicyOptInText")
+    private @Nullable Output<String> marketingPolicyOptInText;
+
+    /**
+     * @return marketing policy text
+     * 
+     */
+    public Optional<Output<String>> marketingPolicyOptInText() {
+        return Optional.ofNullable(this.marketingPolicyOptInText);
+    }
+
     @Import(name="message")
     private @Nullable Output<String> message;
 
@@ -685,14 +746,14 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
     }
 
     /**
-     * Label of the button to /signin
+     * Label of the button to signin
      * 
      */
     @Import(name="signInLabel")
     private @Nullable Output<String> signInLabel;
 
     /**
-     * @return Label of the button to /signin
+     * @return Label of the button to signin
      * 
      */
     public Optional<Output<String>> signInLabel() {
@@ -1199,6 +1260,10 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         this.field3label = $.field3label;
         this.field4error = $.field4error;
         this.field4label = $.field4label;
+        this.marketingPolicyLink = $.marketingPolicyLink;
+        this.marketingPolicyOptIn = $.marketingPolicyOptIn;
+        this.marketingPolicyOptInLabel = $.marketingPolicyOptInLabel;
+        this.marketingPolicyOptInText = $.marketingPolicyOptInText;
         this.message = $.message;
         this.nameError = $.nameError;
         this.nameLabel = $.nameLabel;
@@ -1905,6 +1970,90 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
             return field4label(Output.of(field4label));
         }
 
+        /**
+         * @param marketingPolicyLink label of the link to go to /marketing_policy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder marketingPolicyLink(@Nullable Output<String> marketingPolicyLink) {
+            $.marketingPolicyLink = marketingPolicyLink;
+            return this;
+        }
+
+        /**
+         * @param marketingPolicyLink label of the link to go to /marketing_policy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder marketingPolicyLink(String marketingPolicyLink) {
+            return marketingPolicyLink(Output.of(marketingPolicyLink));
+        }
+
+        /**
+         * @param marketingPolicyOptIn Whether marketing policy optin is enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder marketingPolicyOptIn(@Nullable Output<Boolean> marketingPolicyOptIn) {
+            $.marketingPolicyOptIn = marketingPolicyOptIn;
+            return this;
+        }
+
+        /**
+         * @param marketingPolicyOptIn Whether marketing policy optin is enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder marketingPolicyOptIn(Boolean marketingPolicyOptIn) {
+            return marketingPolicyOptIn(Output.of(marketingPolicyOptIn));
+        }
+
+        /**
+         * @param marketingPolicyOptInLabel label for marketing optin
+         * 
+         * @return builder
+         * 
+         */
+        public Builder marketingPolicyOptInLabel(@Nullable Output<String> marketingPolicyOptInLabel) {
+            $.marketingPolicyOptInLabel = marketingPolicyOptInLabel;
+            return this;
+        }
+
+        /**
+         * @param marketingPolicyOptInLabel label for marketing optin
+         * 
+         * @return builder
+         * 
+         */
+        public Builder marketingPolicyOptInLabel(String marketingPolicyOptInLabel) {
+            return marketingPolicyOptInLabel(Output.of(marketingPolicyOptInLabel));
+        }
+
+        /**
+         * @param marketingPolicyOptInText marketing policy text
+         * 
+         * @return builder
+         * 
+         */
+        public Builder marketingPolicyOptInText(@Nullable Output<String> marketingPolicyOptInText) {
+            $.marketingPolicyOptInText = marketingPolicyOptInText;
+            return this;
+        }
+
+        /**
+         * @param marketingPolicyOptInText marketing policy text
+         * 
+         * @return builder
+         * 
+         */
+        public Builder marketingPolicyOptInText(String marketingPolicyOptInText) {
+            return marketingPolicyOptInText(Output.of(marketingPolicyOptInText));
+        }
+
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
@@ -2206,7 +2355,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param signInLabel Label of the button to /signin
+         * @param signInLabel Label of the button to signin
          * 
          * @return builder
          * 
@@ -2217,7 +2366,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param signInLabel Label of the button to /signin
+         * @param signInLabel Label of the button to signin
          * 
          * @return builder
          * 

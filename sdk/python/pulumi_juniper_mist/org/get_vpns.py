@@ -72,6 +72,15 @@ def get_vpns(org_id: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpnsResult:
     """
     This data source provide the list of the Org VPNs.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_junipermist as junipermist
+
+    vpns = junipermist.org.get_vpns(org_id="15fca2ac-b1a6-47cc-9953-cc6906281550")
+    ```
     """
     __args__ = dict()
     __args__['orgId'] = org_id
@@ -86,6 +95,15 @@ def get_vpns_output(org_id: Optional[pulumi.Input[str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpnsResult]:
     """
     This data source provide the list of the Org VPNs.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_junipermist as junipermist
+
+    vpns = junipermist.org.get_vpns(org_id="15fca2ac-b1a6-47cc-9953-cc6906281550")
+    ```
     """
     __args__ = dict()
     __args__['orgId'] = org_id

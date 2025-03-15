@@ -69,7 +69,7 @@ export class Wxrule extends pulumi.CustomResource {
     public readonly action!: pulumi.Output<string>;
     public readonly applyTags!: pulumi.Output<string[] | undefined>;
     /**
-     * blocked apps (always blocking, ignoring action), the key of Get Application List
+     * Blocked apps (always blocking, ignoring action), the key of Get Application List
      */
     public readonly blockedApps!: pulumi.Output<string[] | undefined>;
     /**
@@ -86,7 +86,7 @@ export class Wxrule extends pulumi.CustomResource {
     public readonly dstWxtags!: pulumi.Output<string[]>;
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+     * Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
      */
     public readonly order!: pulumi.Output<number>;
     public readonly siteId!: pulumi.Output<string>;
@@ -155,7 +155,7 @@ export interface WxruleState {
     action?: pulumi.Input<string>;
     applyTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * blocked apps (always blocking, ignoring action), the key of Get Application List
+     * Blocked apps (always blocking, ignoring action), the key of Get Application List
      */
     blockedApps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -172,7 +172,7 @@ export interface WxruleState {
     dstWxtags?: pulumi.Input<pulumi.Input<string>[]>;
     enabled?: pulumi.Input<boolean>;
     /**
-     * the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+     * Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
      */
     order?: pulumi.Input<number>;
     siteId?: pulumi.Input<string>;
@@ -192,7 +192,7 @@ export interface WxruleArgs {
     action: pulumi.Input<string>;
     applyTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * blocked apps (always blocking, ignoring action), the key of Get Application List
+     * Blocked apps (always blocking, ignoring action), the key of Get Application List
      */
     blockedApps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -209,7 +209,7 @@ export interface WxruleArgs {
     dstWxtags?: pulumi.Input<pulumi.Input<string>[]>;
     enabled?: pulumi.Input<boolean>;
     /**
-     * the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+     * Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
      */
     order: pulumi.Input<number>;
     siteId: pulumi.Input<string>;

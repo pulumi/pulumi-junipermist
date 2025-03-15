@@ -5,33 +5,199 @@ package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.junipermist.org.outputs.GetWxtagsOrgWxtagSpec;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetWxtagsOrgWxtag {
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
     private Double createdTime;
+    /**
+     * @return Unique ID of the object instance in the Mist Organization
+     * 
+     */
     private String id;
+    private List<String> lastIps;
+    /**
+     * @return If `type`==`client`, Client MAC Address
+     * 
+     */
+    private String mac;
+    /**
+     * @return required if `type`==`match`. enum: `ap_id`, `app`, `asset_mac`, `client_mac`, `hostname`, `ip_range_subnet`, `port`, `psk_name`, `psk_role`, `radius_attr`, `radius_class`, `radius_group`, `radius_username`, `sdkclient_uuid`, `wlan_id`
+     * 
+     */
+    private String match;
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
     private Double modifiedTime;
+    /**
+     * @return The name
+     * 
+     */
     private String name;
+    /**
+     * @return required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `not_in`
+     * 
+     */
+    private String op;
     private String orgId;
+    private String resourceMac;
+    private List<String> services;
+    private String siteId;
+    /**
+     * @return If `type`==`spec`
+     * 
+     */
+    private List<GetWxtagsOrgWxtagSpec> specs;
+    private String subnet;
+    /**
+     * @return enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
+     * 
+     */
+    private String type;
+    /**
+     * @return Required if `type`==`match` and
+     *   * `match`==`ap_id`: list of AP IDs
+     *   * `match`==`app`: list of Application Names
+     *   * `match`==`asset_mac`: list of Asset MAC Addresses
+     *   * `match`==`client_mac`: list of Client MAC Addresses
+     *   * `match`==`hostname`: list of Resources Hostnames
+     *   * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs
+     *   * `match`==`psk_name`: list of PSK Names
+     *   * `match`==`psk_role`: list of PSK Roles
+     *   * `match`==`port`: list of Ports or Port Ranges
+     *   * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ &#34;6=1&#34;, &#34;26=10.2.3.4&#34; ], this support other RADIUS attributes where we know the type
+     *   * `match`==`radius_class`: list of RADIUS Classes. This matches the ATTR-Class(25)
+     *   * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
+     *   * `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
+     *   * `match`==`sdkclient_uuid`: list of SDK UUIDs
+     *   * `match`==`wlan_id`: list of WLAN IDs
+     * 
+     * **Notes**:
+     * Variables are not allowed
+     * 
+     */
+    private List<String> values;
+    private String vlanId;
 
     private GetWxtagsOrgWxtag() {}
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
     public Double createdTime() {
         return this.createdTime;
     }
+    /**
+     * @return Unique ID of the object instance in the Mist Organization
+     * 
+     */
     public String id() {
         return this.id;
     }
+    public List<String> lastIps() {
+        return this.lastIps;
+    }
+    /**
+     * @return If `type`==`client`, Client MAC Address
+     * 
+     */
+    public String mac() {
+        return this.mac;
+    }
+    /**
+     * @return required if `type`==`match`. enum: `ap_id`, `app`, `asset_mac`, `client_mac`, `hostname`, `ip_range_subnet`, `port`, `psk_name`, `psk_role`, `radius_attr`, `radius_class`, `radius_group`, `radius_username`, `sdkclient_uuid`, `wlan_id`
+     * 
+     */
+    public String match() {
+        return this.match;
+    }
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
     public Double modifiedTime() {
         return this.modifiedTime;
     }
+    /**
+     * @return The name
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `not_in`
+     * 
+     */
+    public String op() {
+        return this.op;
+    }
     public String orgId() {
         return this.orgId;
+    }
+    public String resourceMac() {
+        return this.resourceMac;
+    }
+    public List<String> services() {
+        return this.services;
+    }
+    public String siteId() {
+        return this.siteId;
+    }
+    /**
+     * @return If `type`==`spec`
+     * 
+     */
+    public List<GetWxtagsOrgWxtagSpec> specs() {
+        return this.specs;
+    }
+    public String subnet() {
+        return this.subnet;
+    }
+    /**
+     * @return enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
+     * 
+     */
+    public String type() {
+        return this.type;
+    }
+    /**
+     * @return Required if `type`==`match` and
+     *   * `match`==`ap_id`: list of AP IDs
+     *   * `match`==`app`: list of Application Names
+     *   * `match`==`asset_mac`: list of Asset MAC Addresses
+     *   * `match`==`client_mac`: list of Client MAC Addresses
+     *   * `match`==`hostname`: list of Resources Hostnames
+     *   * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs
+     *   * `match`==`psk_name`: list of PSK Names
+     *   * `match`==`psk_role`: list of PSK Roles
+     *   * `match`==`port`: list of Ports or Port Ranges
+     *   * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ &#34;6=1&#34;, &#34;26=10.2.3.4&#34; ], this support other RADIUS attributes where we know the type
+     *   * `match`==`radius_class`: list of RADIUS Classes. This matches the ATTR-Class(25)
+     *   * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
+     *   * `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
+     *   * `match`==`sdkclient_uuid`: list of SDK UUIDs
+     *   * `match`==`wlan_id`: list of WLAN IDs
+     * 
+     * **Notes**:
+     * Variables are not allowed
+     * 
+     */
+    public List<String> values() {
+        return this.values;
+    }
+    public String vlanId() {
+        return this.vlanId;
     }
 
     public static Builder builder() {
@@ -45,17 +211,41 @@ public final class GetWxtagsOrgWxtag {
     public static final class Builder {
         private Double createdTime;
         private String id;
+        private List<String> lastIps;
+        private String mac;
+        private String match;
         private Double modifiedTime;
         private String name;
+        private String op;
         private String orgId;
+        private String resourceMac;
+        private List<String> services;
+        private String siteId;
+        private List<GetWxtagsOrgWxtagSpec> specs;
+        private String subnet;
+        private String type;
+        private List<String> values;
+        private String vlanId;
         public Builder() {}
         public Builder(GetWxtagsOrgWxtag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdTime = defaults.createdTime;
     	      this.id = defaults.id;
+    	      this.lastIps = defaults.lastIps;
+    	      this.mac = defaults.mac;
+    	      this.match = defaults.match;
     	      this.modifiedTime = defaults.modifiedTime;
     	      this.name = defaults.name;
+    	      this.op = defaults.op;
     	      this.orgId = defaults.orgId;
+    	      this.resourceMac = defaults.resourceMac;
+    	      this.services = defaults.services;
+    	      this.siteId = defaults.siteId;
+    	      this.specs = defaults.specs;
+    	      this.subnet = defaults.subnet;
+    	      this.type = defaults.type;
+    	      this.values = defaults.values;
+    	      this.vlanId = defaults.vlanId;
         }
 
         @CustomType.Setter
@@ -75,6 +265,33 @@ public final class GetWxtagsOrgWxtag {
             return this;
         }
         @CustomType.Setter
+        public Builder lastIps(List<String> lastIps) {
+            if (lastIps == null) {
+              throw new MissingRequiredPropertyException("GetWxtagsOrgWxtag", "lastIps");
+            }
+            this.lastIps = lastIps;
+            return this;
+        }
+        public Builder lastIps(String... lastIps) {
+            return lastIps(List.of(lastIps));
+        }
+        @CustomType.Setter
+        public Builder mac(String mac) {
+            if (mac == null) {
+              throw new MissingRequiredPropertyException("GetWxtagsOrgWxtag", "mac");
+            }
+            this.mac = mac;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder match(String match) {
+            if (match == null) {
+              throw new MissingRequiredPropertyException("GetWxtagsOrgWxtag", "match");
+            }
+            this.match = match;
+            return this;
+        }
+        @CustomType.Setter
         public Builder modifiedTime(Double modifiedTime) {
             if (modifiedTime == null) {
               throw new MissingRequiredPropertyException("GetWxtagsOrgWxtag", "modifiedTime");
@@ -91,6 +308,14 @@ public final class GetWxtagsOrgWxtag {
             return this;
         }
         @CustomType.Setter
+        public Builder op(String op) {
+            if (op == null) {
+              throw new MissingRequiredPropertyException("GetWxtagsOrgWxtag", "op");
+            }
+            this.op = op;
+            return this;
+        }
+        @CustomType.Setter
         public Builder orgId(String orgId) {
             if (orgId == null) {
               throw new MissingRequiredPropertyException("GetWxtagsOrgWxtag", "orgId");
@@ -98,13 +323,98 @@ public final class GetWxtagsOrgWxtag {
             this.orgId = orgId;
             return this;
         }
+        @CustomType.Setter
+        public Builder resourceMac(String resourceMac) {
+            if (resourceMac == null) {
+              throw new MissingRequiredPropertyException("GetWxtagsOrgWxtag", "resourceMac");
+            }
+            this.resourceMac = resourceMac;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder services(List<String> services) {
+            if (services == null) {
+              throw new MissingRequiredPropertyException("GetWxtagsOrgWxtag", "services");
+            }
+            this.services = services;
+            return this;
+        }
+        public Builder services(String... services) {
+            return services(List.of(services));
+        }
+        @CustomType.Setter
+        public Builder siteId(String siteId) {
+            if (siteId == null) {
+              throw new MissingRequiredPropertyException("GetWxtagsOrgWxtag", "siteId");
+            }
+            this.siteId = siteId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder specs(List<GetWxtagsOrgWxtagSpec> specs) {
+            if (specs == null) {
+              throw new MissingRequiredPropertyException("GetWxtagsOrgWxtag", "specs");
+            }
+            this.specs = specs;
+            return this;
+        }
+        public Builder specs(GetWxtagsOrgWxtagSpec... specs) {
+            return specs(List.of(specs));
+        }
+        @CustomType.Setter
+        public Builder subnet(String subnet) {
+            if (subnet == null) {
+              throw new MissingRequiredPropertyException("GetWxtagsOrgWxtag", "subnet");
+            }
+            this.subnet = subnet;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetWxtagsOrgWxtag", "type");
+            }
+            this.type = type;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder values(List<String> values) {
+            if (values == null) {
+              throw new MissingRequiredPropertyException("GetWxtagsOrgWxtag", "values");
+            }
+            this.values = values;
+            return this;
+        }
+        public Builder values(String... values) {
+            return values(List.of(values));
+        }
+        @CustomType.Setter
+        public Builder vlanId(String vlanId) {
+            if (vlanId == null) {
+              throw new MissingRequiredPropertyException("GetWxtagsOrgWxtag", "vlanId");
+            }
+            this.vlanId = vlanId;
+            return this;
+        }
         public GetWxtagsOrgWxtag build() {
             final var _resultValue = new GetWxtagsOrgWxtag();
             _resultValue.createdTime = createdTime;
             _resultValue.id = id;
+            _resultValue.lastIps = lastIps;
+            _resultValue.mac = mac;
+            _resultValue.match = match;
             _resultValue.modifiedTime = modifiedTime;
             _resultValue.name = name;
+            _resultValue.op = op;
             _resultValue.orgId = orgId;
+            _resultValue.resourceMac = resourceMac;
+            _resultValue.services = services;
+            _resultValue.siteId = siteId;
+            _resultValue.specs = specs;
+            _resultValue.subnet = subnet;
+            _resultValue.type = type;
+            _resultValue.values = values;
+            _resultValue.vlanId = vlanId;
             return _resultValue;
         }
     }

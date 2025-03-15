@@ -35,6 +35,7 @@ export function getInventory(args: GetInventoryArgs, opts?: pulumi.InvokeOptions
         "orgId": args.orgId,
         "serial": args.serial,
         "siteId": args.siteId,
+        "type": args.type,
         "unassigned": args.unassigned,
         "vc": args.vc,
         "vcMac": args.vcMac,
@@ -50,20 +51,24 @@ export interface GetInventoryArgs {
      */
     mac?: string;
     /**
-     * device model
+     * Device model
      */
     model?: string;
     orgId: string;
     /**
-     * device serial
+     * Device serial
      */
     serial?: string;
     /**
-     * site id if assigned, null if not assigned
+     * Site id if assigned, null if not assigned
      */
     siteId?: string;
     /**
-     * to display Unassigned devices
+     * enum: `ap`, `gateway`, `switch`
+     */
+    type?: string;
+    /**
+     * To display Unassigned devices
      */
     unassigned?: boolean;
     /**
@@ -89,24 +94,25 @@ export interface GetInventoryResult {
      */
     readonly mac?: string;
     /**
-     * device model
+     * Device model
      */
     readonly model?: string;
     readonly orgId: string;
-    /**
-     * List of devices
-     */
     readonly orgInventories: outputs.org.GetInventoryOrgInventory[];
     /**
-     * device serial
+     * Device serial
      */
     readonly serial?: string;
     /**
-     * site id if assigned, null if not assigned
+     * Site id if assigned, null if not assigned
      */
     readonly siteId?: string;
     /**
-     * to display Unassigned devices
+     * enum: `ap`, `gateway`, `switch`
+     */
+    readonly type?: string;
+    /**
+     * To display Unassigned devices
      */
     readonly unassigned?: boolean;
     /**
@@ -147,6 +153,7 @@ export function getInventoryOutput(args: GetInventoryOutputArgs, opts?: pulumi.I
         "orgId": args.orgId,
         "serial": args.serial,
         "siteId": args.siteId,
+        "type": args.type,
         "unassigned": args.unassigned,
         "vc": args.vc,
         "vcMac": args.vcMac,
@@ -162,20 +169,24 @@ export interface GetInventoryOutputArgs {
      */
     mac?: pulumi.Input<string>;
     /**
-     * device model
+     * Device model
      */
     model?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
     /**
-     * device serial
+     * Device serial
      */
     serial?: pulumi.Input<string>;
     /**
-     * site id if assigned, null if not assigned
+     * Site id if assigned, null if not assigned
      */
     siteId?: pulumi.Input<string>;
     /**
-     * to display Unassigned devices
+     * enum: `ap`, `gateway`, `switch`
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * To display Unassigned devices
      */
     unassigned?: pulumi.Input<boolean>;
     /**

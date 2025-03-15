@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _apps;
 
         /// <summary>
-        /// APp-keys from /api/v1/const/applications
+        /// APp-keys from List Applications
         /// </summary>
         public InputList<string> Apps
         {

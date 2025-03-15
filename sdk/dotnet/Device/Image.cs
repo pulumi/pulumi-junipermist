@@ -28,6 +28,9 @@ namespace Pulumi.JuniperMist.Device
         [Output("file")]
         public Output<string> File { get; private set; } = null!;
 
+        /// <summary>
+        /// number of the image, between 1 and 3
+        /// </summary>
         [Output("imageNumber")]
         public Output<int> ImageNumber { get; private set; } = null!;
 
@@ -90,6 +93,9 @@ namespace Pulumi.JuniperMist.Device
         [Input("file", required: true)]
         public Input<string> File { get; set; } = null!;
 
+        /// <summary>
+        /// number of the image, between 1 and 3
+        /// </summary>
         [Input("imageNumber", required: true)]
         public Input<int> ImageNumber { get; set; } = null!;
 
@@ -113,6 +119,9 @@ namespace Pulumi.JuniperMist.Device
         [Input("file")]
         public Input<string>? File { get; set; }
 
+        /// <summary>
+        /// number of the image, between 1 and 3
+        /// </summary>
         [Input("imageNumber")]
         public Input<int>? ImageNumber { get; set; }
 

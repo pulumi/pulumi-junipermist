@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GatewayClusterNode {
     /**
-     * @return Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * @return Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
      * 
      */
     private String mac;
 
     private GatewayClusterNode() {}
     /**
-     * @return Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * @return Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
      * 
      */
     public String mac() {

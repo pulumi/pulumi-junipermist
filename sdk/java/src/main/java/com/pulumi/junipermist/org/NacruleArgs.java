@@ -37,14 +37,14 @@ public final class NacruleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * all optional, this goes into Access-Accept
+     * All optional, this goes into Access-Accept
      * 
      */
     @Import(name="applyTags")
     private @Nullable Output<List<String>> applyTags;
 
     /**
-     * @return all optional, this goes into Access-Accept
+     * @return All optional, this goes into Access-Accept
      * 
      */
     public Optional<Output<List<String>>> applyTags() {
@@ -52,14 +52,14 @@ public final class NacruleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enabled or not
+     * Enabled or not
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return enabled or not
+     * @return Enabled or not
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -88,14 +88,14 @@ public final class NacruleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * the order of the rule, lower value implies higher priority
+     * Order of the rule, lower value implies higher priority
      * 
      */
     @Import(name="order", required=true)
     private Output<Integer> order;
 
     /**
-     * @return the order of the rule, lower value implies higher priority
+     * @return Order of the rule, lower value implies higher priority
      * 
      */
     public Output<Integer> order() {
@@ -162,7 +162,7 @@ public final class NacruleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applyTags all optional, this goes into Access-Accept
+         * @param applyTags All optional, this goes into Access-Accept
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class NacruleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applyTags all optional, this goes into Access-Accept
+         * @param applyTags All optional, this goes into Access-Accept
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class NacruleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applyTags all optional, this goes into Access-Accept
+         * @param applyTags All optional, this goes into Access-Accept
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class NacruleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled enabled or not
+         * @param enabled Enabled or not
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class NacruleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled enabled or not
+         * @param enabled Enabled or not
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class NacruleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param order the order of the rule, lower value implies higher priority
+         * @param order Order of the rule, lower value implies higher priority
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class NacruleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param order the order of the rule, lower value implies higher priority
+         * @param order Order of the rule, lower value implies higher priority
          * 
          * @return builder
          * 

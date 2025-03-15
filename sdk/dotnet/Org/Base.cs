@@ -62,7 +62,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> MspLogoUrl { get; private set; } = null!;
 
         /// <summary>
-        /// name of the msp the org belongs to
+        /// Name of the msp the org belongs to
         /// </summary>
         [Output("mspName")]
         public Output<string> MspName { get; private set; } = null!;
@@ -159,7 +159,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? MspLogoUrl { get; set; }
 
         /// <summary>
-        /// name of the msp the org belongs to
+        /// Name of the msp the org belongs to
         /// </summary>
         [Input("mspName")]
         public Input<string>? MspName { get; set; }

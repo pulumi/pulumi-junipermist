@@ -133,6 +133,11 @@ public final class DeviceprofileGatewayPortConfig {
      */
     private @Nullable Boolean redundant;
     /**
+     * @return If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
+     * 
+     */
+    private @Nullable Integer redundantGroup;
+    /**
      * @return If HA mode
      * 
      */
@@ -181,7 +186,7 @@ public final class DeviceprofileGatewayPortConfig {
      */
     private @Nullable String wanExtIp;
     /**
-     * @return Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+     * @return Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;100.100.100.0/24&#34;)
      * 
      */
     private @Nullable Map<String,DeviceprofileGatewayPortConfigWanExtraRoutes> wanExtraRoutes;
@@ -370,6 +375,13 @@ public final class DeviceprofileGatewayPortConfig {
         return Optional.ofNullable(this.redundant);
     }
     /**
+     * @return If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
+     * 
+     */
+    public Optional<Integer> redundantGroup() {
+        return Optional.ofNullable(this.redundantGroup);
+    }
+    /**
      * @return If HA mode
      * 
      */
@@ -442,7 +454,7 @@ public final class DeviceprofileGatewayPortConfig {
         return Optional.ofNullable(this.wanExtIp);
     }
     /**
-     * @return Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+     * @return Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;100.100.100.0/24&#34;)
      * 
      */
     public Map<String,DeviceprofileGatewayPortConfigWanExtraRoutes> wanExtraRoutes() {
@@ -512,6 +524,7 @@ public final class DeviceprofileGatewayPortConfig {
         private @Nullable String portNetwork;
         private @Nullable Boolean preserveDscp;
         private @Nullable Boolean redundant;
+        private @Nullable Integer redundantGroup;
         private @Nullable Integer rethIdx;
         private @Nullable String rethNode;
         private @Nullable List<String> rethNodes;
@@ -558,6 +571,7 @@ public final class DeviceprofileGatewayPortConfig {
     	      this.portNetwork = defaults.portNetwork;
     	      this.preserveDscp = defaults.preserveDscp;
     	      this.redundant = defaults.redundant;
+    	      this.redundantGroup = defaults.redundantGroup;
     	      this.rethIdx = defaults.rethIdx;
     	      this.rethNode = defaults.rethNode;
     	      this.rethNodes = defaults.rethNodes;
@@ -737,6 +751,12 @@ public final class DeviceprofileGatewayPortConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder redundantGroup(@Nullable Integer redundantGroup) {
+
+            this.redundantGroup = redundantGroup;
+            return this;
+        }
+        @CustomType.Setter
         public Builder rethIdx(@Nullable Integer rethIdx) {
 
             this.rethIdx = rethIdx;
@@ -874,6 +894,7 @@ public final class DeviceprofileGatewayPortConfig {
             _resultValue.portNetwork = portNetwork;
             _resultValue.preserveDscp = preserveDscp;
             _resultValue.redundant = redundant;
+            _resultValue.redundantGroup = redundantGroup;
             _resultValue.rethIdx = rethIdx;
             _resultValue.rethNode = rethNode;
             _resultValue.rethNodes = rethNodes;

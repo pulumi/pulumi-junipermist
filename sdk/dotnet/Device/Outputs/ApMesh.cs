@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class ApMesh
     {
         /// <summary>
+        /// List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+        /// </summary>
+        public readonly ImmutableArray<string> Bands;
+        /// <summary>
         /// Whether mesh is enabled on this AP
         /// </summary>
         public readonly bool? Enabled;
@@ -28,12 +32,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
         [OutputConstructor]
         private ApMesh(
+            ImmutableArray<string> bands,
+
             bool? enabled,
 
             int? group,
 
             string? role)
         {
+            Bands = bands;
             Enabled = enabled;
             Group = group;
             Role = role;
