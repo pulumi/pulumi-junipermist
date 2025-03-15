@@ -5,8 +5,12 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.junipermist.org.inputs.VpnPathsPeerPathsArgs;
+import com.pulumi.junipermist.org.inputs.VpnPathsTrafficShapingArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,18 +36,48 @@ public final class VpnPathsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * if different from the wan port
+     * If `type`==`mesh` and for SSR only, whether toi use tunnel mode
+     * 
+     */
+    @Import(name="bfdUseTunnelMode")
+    private @Nullable Output<Boolean> bfdUseTunnelMode;
+
+    /**
+     * @return If `type`==`mesh` and for SSR only, whether toi use tunnel mode
+     * 
+     */
+    public Optional<Output<Boolean>> bfdUseTunnelMode() {
+        return Optional.ofNullable(this.bfdUseTunnelMode);
+    }
+
+    /**
+     * If different from the wan port
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return if different from the wan port
+     * @return If different from the wan port
      * 
      */
     public Optional<Output<String>> ip() {
         return Optional.ofNullable(this.ip);
+    }
+
+    /**
+     * If `type`==`mesh`, Property key is the Peer Interface name
+     * 
+     */
+    @Import(name="peerPaths")
+    private @Nullable Output<Map<String,VpnPathsPeerPathsArgs>> peerPaths;
+
+    /**
+     * @return If `type`==`mesh`, Property key is the Peer Interface name
+     * 
+     */
+    public Optional<Output<Map<String,VpnPathsPeerPathsArgs>>> peerPaths() {
+        return Optional.ofNullable(this.peerPaths);
     }
 
     @Import(name="pod")
@@ -53,12 +87,22 @@ public final class VpnPathsArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pod);
     }
 
+    @Import(name="trafficShaping")
+    private @Nullable Output<VpnPathsTrafficShapingArgs> trafficShaping;
+
+    public Optional<Output<VpnPathsTrafficShapingArgs>> trafficShaping() {
+        return Optional.ofNullable(this.trafficShaping);
+    }
+
     private VpnPathsArgs() {}
 
     private VpnPathsArgs(VpnPathsArgs $) {
         this.bfdProfile = $.bfdProfile;
+        this.bfdUseTunnelMode = $.bfdUseTunnelMode;
         this.ip = $.ip;
+        this.peerPaths = $.peerPaths;
         this.pod = $.pod;
+        this.trafficShaping = $.trafficShaping;
     }
 
     public static Builder builder() {
@@ -101,7 +145,28 @@ public final class VpnPathsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ip if different from the wan port
+         * @param bfdUseTunnelMode If `type`==`mesh` and for SSR only, whether toi use tunnel mode
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bfdUseTunnelMode(@Nullable Output<Boolean> bfdUseTunnelMode) {
+            $.bfdUseTunnelMode = bfdUseTunnelMode;
+            return this;
+        }
+
+        /**
+         * @param bfdUseTunnelMode If `type`==`mesh` and for SSR only, whether toi use tunnel mode
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bfdUseTunnelMode(Boolean bfdUseTunnelMode) {
+            return bfdUseTunnelMode(Output.of(bfdUseTunnelMode));
+        }
+
+        /**
+         * @param ip If different from the wan port
          * 
          * @return builder
          * 
@@ -112,13 +177,34 @@ public final class VpnPathsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ip if different from the wan port
+         * @param ip If different from the wan port
          * 
          * @return builder
          * 
          */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
+        }
+
+        /**
+         * @param peerPaths If `type`==`mesh`, Property key is the Peer Interface name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder peerPaths(@Nullable Output<Map<String,VpnPathsPeerPathsArgs>> peerPaths) {
+            $.peerPaths = peerPaths;
+            return this;
+        }
+
+        /**
+         * @param peerPaths If `type`==`mesh`, Property key is the Peer Interface name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder peerPaths(Map<String,VpnPathsPeerPathsArgs> peerPaths) {
+            return peerPaths(Output.of(peerPaths));
         }
 
         public Builder pod(@Nullable Output<Integer> pod) {
@@ -128,6 +214,15 @@ public final class VpnPathsArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder pod(Integer pod) {
             return pod(Output.of(pod));
+        }
+
+        public Builder trafficShaping(@Nullable Output<VpnPathsTrafficShapingArgs> trafficShaping) {
+            $.trafficShaping = trafficShaping;
+            return this;
+        }
+
+        public Builder trafficShaping(VpnPathsTrafficShapingArgs trafficShaping) {
+            return trafficShaping(Output.of(trafficShaping));
         }
 
         public VpnPathsArgs build() {

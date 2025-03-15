@@ -19,7 +19,7 @@ public final class GetServicepoliciesOrgServicepolicyIdp {
      */
     private String idpprofileId;
     /**
-     * @return `strict` (default) / `standard` / or keys from from idp_profiles
+     * @return enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
      * 
      */
     private String profile;
@@ -39,7 +39,7 @@ public final class GetServicepoliciesOrgServicepolicyIdp {
         return this.idpprofileId;
     }
     /**
-     * @return `strict` (default) / `standard` / or keys from from idp_profiles
+     * @return enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
      * 
      */
     public String profile() {

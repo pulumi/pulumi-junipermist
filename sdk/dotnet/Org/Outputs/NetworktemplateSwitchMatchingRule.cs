@@ -42,17 +42,20 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? MatchType;
         public readonly string? MatchValue;
+        /// <summary>
+        /// Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
+        /// </summary>
         public readonly string? Name;
         /// <summary>
         /// Out-of-Band Management interface configuration
         /// </summary>
         public readonly Outputs.NetworktemplateSwitchMatchingRuleOobIpConfig? OobIpConfig;
         /// <summary>
-        /// Propery key is the interface name or interface range
+        /// Property key is the port name or range (e.g. "ge-0/0/0-10")
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworktemplateSwitchMatchingRulePortConfig>? PortConfig;
         /// <summary>
-        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworktemplateSwitchMatchingRulePortMirroring>? PortMirroring;
 

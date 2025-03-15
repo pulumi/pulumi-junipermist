@@ -53,14 +53,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
      * 
      */
     @Import(name="fixedBindings")
     private @Nullable Output<Map<String,SwitchDhcpdConfigConfigFixedBindingsArgs>> fixedBindings;
 
     /**
-     * @return If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * @return If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
      * 
      */
     public Optional<Output<Map<String,SwitchDhcpdConfigConfigFixedBindingsArgs>>> fixedBindings() {
@@ -370,7 +370,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param fixedBindings If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+         * @param fixedBindings If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param fixedBindings If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+         * @param fixedBindings If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
          * 
          * @return builder
          * 

@@ -20,7 +20,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly Outputs.GetSwitchStatsDeviceSwitchStatClientsStatsResult ClientsStats;
         public readonly string ConfigStatus;
         public readonly Outputs.GetSwitchStatsDeviceSwitchStatCpuStatResult CpuStat;
-        public readonly int CreatedTime;
+        /// <summary>
+        /// When the object has been created, in epoch
+        /// </summary>
+        public readonly double CreatedTime;
         public readonly string DeviceprofileId;
         /// <summary>
         /// Property key is the network name
@@ -30,17 +33,20 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly bool FwVersionsOutofsync;
         public readonly Outputs.GetSwitchStatsDeviceSwitchStatFwupdateResult Fwupdate;
         /// <summary>
-        /// whether the switch supports packet capture
+        /// Whether the switch supports packet capture
         /// </summary>
         public readonly bool HasPcap;
         /// <summary>
-        /// hostname reported by the device
+        /// Hostname reported by the device
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// device hardware revision number
+        /// Device hardware revision number
         /// </summary>
         public readonly string HwRev;
+        /// <summary>
+        /// Unique ID of the object instance in the Mist Organization
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Property key is the interface name
@@ -48,26 +54,33 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly ImmutableDictionary<string, Outputs.GetSwitchStatsDeviceSwitchStatIfStatResult> IfStat;
         public readonly string Ip;
         public readonly Outputs.GetSwitchStatsDeviceSwitchStatIpStatResult IpStat;
+        /// <summary>
+        /// Last seen timestamp
+        /// </summary>
         public readonly double LastSeen;
         /// <summary>
-        /// last trouble code of switch
+        /// Last trouble code of switch
         /// </summary>
         public readonly Outputs.GetSwitchStatsDeviceSwitchStatLastTroubleResult LastTrouble;
         public readonly string Mac;
         public readonly Outputs.GetSwitchStatsDeviceSwitchStatMacTableStatsResult MacTableStats;
         public readonly string MapId;
         /// <summary>
-        /// memory usage stat (for virtual chassis, memory usage of master RE)
+        /// Memory usage stat (for virtual chassis, memory usage of master RE)
         /// </summary>
         public readonly Outputs.GetSwitchStatsDeviceSwitchStatMemoryStatResult MemoryStat;
         public readonly string Model;
-        public readonly int ModifiedTime;
+        /// <summary>
+        /// When the object has been modified for the last time, in epoch
+        /// </summary>
+        public readonly double ModifiedTime;
         public readonly ImmutableArray<Outputs.GetSwitchStatsDeviceSwitchStatModuleStatResult> ModuleStats;
         /// <summary>
-        /// device name if configured
+        /// Device name if configured
         /// </summary>
         public readonly string Name;
         public readonly string OrgId;
+        public readonly ImmutableArray<Outputs.GetSwitchStatsDeviceSwitchStatPortResult> Ports;
         public readonly Outputs.GetSwitchStatsDeviceSwitchStatRouteSummaryStatsResult RouteSummaryStats;
         public readonly string Serial;
         public readonly ImmutableDictionary<string, Outputs.GetSwitchStatsDeviceSwitchStatServiceStatResult> ServiceStat;
@@ -94,7 +107,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             Outputs.GetSwitchStatsDeviceSwitchStatCpuStatResult cpuStat,
 
-            int createdTime,
+            double createdTime,
 
             string deviceprofileId,
 
@@ -134,13 +147,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string model,
 
-            int modifiedTime,
+            double modifiedTime,
 
             ImmutableArray<Outputs.GetSwitchStatsDeviceSwitchStatModuleStatResult> moduleStats,
 
             string name,
 
             string orgId,
+
+            ImmutableArray<Outputs.GetSwitchStatsDeviceSwitchStatPortResult> ports,
 
             Outputs.GetSwitchStatsDeviceSwitchStatRouteSummaryStatsResult routeSummaryStats,
 
@@ -191,6 +206,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             ModuleStats = moduleStats;
             Name = name;
             OrgId = orgId;
+            Ports = ports;
             RouteSummaryStats = routeSummaryStats;
             Serial = serial;
             ServiceStat = serviceStat;

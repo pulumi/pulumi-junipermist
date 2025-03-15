@@ -17,17 +17,17 @@ import javax.annotation.Nullable;
 public final class GetSwitchStatsResult {
     private List<GetSwitchStatsDeviceSwitchStat> deviceSwitchStats;
     /**
-     * @return duration like 7d, 2w
+     * @return Duration like 7d, 2w
      * 
      */
     private @Nullable String duration;
     /**
-     * @return end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * @return End datetime, can be epoch or relative time like -1d, -2h; now if not specified
      * 
      */
     private @Nullable Integer end;
     /**
-     * @return if `evpn_unused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+     * @return If `evpn_unused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
      * 
      */
     private @Nullable String evpnUnused;
@@ -45,10 +45,14 @@ public final class GetSwitchStatsResult {
     private String orgId;
     private @Nullable String siteId;
     /**
-     * @return start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * @return Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
      * 
      */
     private @Nullable Integer start;
+    /**
+     * @return enum: `all`, `connected`, `disconnected`
+     * 
+     */
     private @Nullable String status;
 
     private GetSwitchStatsResult() {}
@@ -56,21 +60,21 @@ public final class GetSwitchStatsResult {
         return this.deviceSwitchStats;
     }
     /**
-     * @return duration like 7d, 2w
+     * @return Duration like 7d, 2w
      * 
      */
     public Optional<String> duration() {
         return Optional.ofNullable(this.duration);
     }
     /**
-     * @return end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * @return End datetime, can be epoch or relative time like -1d, -2h; now if not specified
      * 
      */
     public Optional<Integer> end() {
         return Optional.ofNullable(this.end);
     }
     /**
-     * @return if `evpn_unused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+     * @return If `evpn_unused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
      * 
      */
     public Optional<String> evpnUnused() {
@@ -100,12 +104,16 @@ public final class GetSwitchStatsResult {
         return Optional.ofNullable(this.siteId);
     }
     /**
-     * @return start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * @return Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
      * 
      */
     public Optional<Integer> start() {
         return Optional.ofNullable(this.start);
     }
+    /**
+     * @return enum: `all`, `connected`, `disconnected`
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

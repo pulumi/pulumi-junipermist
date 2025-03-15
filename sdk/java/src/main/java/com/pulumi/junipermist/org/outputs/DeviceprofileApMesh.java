@@ -7,12 +7,18 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceprofileApMesh {
+    /**
+     * @return List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+     * 
+     */
+    private @Nullable List<String> bands;
     /**
      * @return Whether mesh is enabled on this AP
      * 
@@ -30,6 +36,13 @@ public final class DeviceprofileApMesh {
     private @Nullable String role;
 
     private DeviceprofileApMesh() {}
+    /**
+     * @return List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+     * 
+     */
+    public List<String> bands() {
+        return this.bands == null ? List.of() : this.bands;
+    }
     /**
      * @return Whether mesh is enabled on this AP
      * 
@@ -61,17 +74,28 @@ public final class DeviceprofileApMesh {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> bands;
         private @Nullable Boolean enabled;
         private @Nullable Integer group;
         private @Nullable String role;
         public Builder() {}
         public Builder(DeviceprofileApMesh defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bands = defaults.bands;
     	      this.enabled = defaults.enabled;
     	      this.group = defaults.group;
     	      this.role = defaults.role;
         }
 
+        @CustomType.Setter
+        public Builder bands(@Nullable List<String> bands) {
+
+            this.bands = bands;
+            return this;
+        }
+        public Builder bands(String... bands) {
+            return bands(List.of(bands));
+        }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
 
@@ -92,6 +116,7 @@ public final class DeviceprofileApMesh {
         }
         public DeviceprofileApMesh build() {
             final var _resultValue = new DeviceprofileApMesh();
+            _resultValue.bands = bands;
             _resultValue.enabled = enabled;
             _resultValue.group = group;
             _resultValue.role = role;

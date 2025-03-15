@@ -32,7 +32,7 @@ public final class GetSwitchStatsDeviceSwitchStatCpuStat {
      */
     private Double system;
     /**
-     * @return Percentage of CPU time being used by user processe
+     * @return Percentage of CPU time being used by user processes
      * 
      */
     private Double user;
@@ -67,7 +67,7 @@ public final class GetSwitchStatsDeviceSwitchStatCpuStat {
         return this.system;
     }
     /**
-     * @return Percentage of CPU time being used by user processe
+     * @return Percentage of CPU time being used by user processes
      * 
      */
     public Double user() {

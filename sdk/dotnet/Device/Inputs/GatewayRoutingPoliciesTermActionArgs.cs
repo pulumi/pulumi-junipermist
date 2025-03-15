@@ -35,18 +35,6 @@ namespace Pulumi.JuniperMist.Device.Inputs
             set => _addTargetVrfs = value;
         }
 
-        [Input("aggregates")]
-        private InputList<string>? _aggregates;
-
-        /// <summary>
-        /// route aggregation
-        /// </summary>
-        public InputList<string> Aggregates
-        {
-            get => _aggregates ?? (_aggregates = new InputList<string>());
-            set => _aggregates = value;
-        }
-
         [Input("communities")]
         private InputList<string>? _communities;
 
@@ -79,16 +67,16 @@ namespace Pulumi.JuniperMist.Device.Inputs
             set => _excludeCommunities = value;
         }
 
-        [Input("exportCommunitites")]
-        private InputList<string>? _exportCommunitites;
+        [Input("exportCommunities")]
+        private InputList<string>? _exportCommunities;
 
         /// <summary>
         /// When used as export policy, optional
         /// </summary>
-        public InputList<string> ExportCommunitites
+        public InputList<string> ExportCommunities
         {
-            get => _exportCommunitites ?? (_exportCommunitites = new InputList<string>());
-            set => _exportCommunitites = value;
+            get => _exportCommunities ?? (_exportCommunities = new InputList<string>());
+            set => _exportCommunities = value;
         }
 
         /// <summary>

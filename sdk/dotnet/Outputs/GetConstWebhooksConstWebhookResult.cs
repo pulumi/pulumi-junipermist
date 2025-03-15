@@ -14,24 +14,30 @@ namespace Pulumi.JuniperMist.Outputs
     public sealed class GetConstWebhooksConstWebhookResult
     {
         /// <summary>
-        /// can be used in org webhooks, optional
+        /// supports single event per message results
+        /// </summary>
+        public readonly bool AllowsSingleEventPerMessage;
+        /// <summary>
+        /// Can be used in org webhooks, optional
         /// </summary>
         public readonly bool ForOrg;
         /// <summary>
-        /// supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
+        /// Supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
         /// </summary>
         public readonly bool HasDeliveryResults;
         /// <summary>
-        /// internal topic (not selectable in site/org webhooks)
+        /// Internal topic (not selectable in site/org webhooks)
         /// </summary>
         public readonly bool Internal;
         /// <summary>
-        /// webhook topic name
+        /// Webhook topic name
         /// </summary>
         public readonly string Key;
 
         [OutputConstructor]
         private GetConstWebhooksConstWebhookResult(
+            bool allowsSingleEventPerMessage,
+
             bool forOrg,
 
             bool hasDeliveryResults,
@@ -40,6 +46,7 @@ namespace Pulumi.JuniperMist.Outputs
 
             string key)
         {
+            AllowsSingleEventPerMessage = allowsSingleEventPerMessage;
             ForOrg = forOrg;
             HasDeliveryResults = hasDeliveryResults;
             Internal = @internal;

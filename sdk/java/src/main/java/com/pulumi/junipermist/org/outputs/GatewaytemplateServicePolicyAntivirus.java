@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplateServicePolicyAntivirus {
     /**
-     * @return org-level AV Profile can be used, this takes precendence over &#39;profile&#39;
+     * @return org-level AV Profile can be used, this takes precedence over &#39;profile&#39;
      * 
      */
     private @Nullable String avprofileId;
@@ -26,7 +26,7 @@ public final class GatewaytemplateServicePolicyAntivirus {
 
     private GatewaytemplateServicePolicyAntivirus() {}
     /**
-     * @return org-level AV Profile can be used, this takes precendence over &#39;profile&#39;
+     * @return org-level AV Profile can be used, this takes precedence over &#39;profile&#39;
      * 
      */
     public Optional<String> avprofileId() {

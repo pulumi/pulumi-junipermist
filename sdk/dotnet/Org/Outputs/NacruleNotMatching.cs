@@ -14,21 +14,37 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NacruleNotMatching
     {
         /// <summary>
-        /// enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `psk`
+        /// enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
         /// </summary>
         public readonly string? AuthType;
+        /// <summary>
+        /// List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+        /// </summary>
+        public readonly ImmutableArray<string> Families;
+        /// <summary>
+        /// List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+        /// </summary>
+        public readonly ImmutableArray<string> Mfgs;
+        /// <summary>
+        /// List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+        /// </summary>
+        public readonly ImmutableArray<string> Models;
         public readonly ImmutableArray<string> Nactags;
+        /// <summary>
+        /// List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed os_type values
+        /// </summary>
+        public readonly ImmutableArray<string> OsTypes;
         public readonly ImmutableArray<string> PortTypes;
         /// <summary>
-        /// list of site ids to match
+        /// List of site ids to match
         /// </summary>
         public readonly ImmutableArray<string> SiteIds;
         /// <summary>
-        /// list of sitegroup ids to match
+        /// List of sitegroup ids to match
         /// </summary>
         public readonly ImmutableArray<string> SitegroupIds;
         /// <summary>
-        /// list of vendors to match
+        /// List of vendors to match
         /// </summary>
         public readonly ImmutableArray<string> Vendors;
 
@@ -36,7 +52,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
         private NacruleNotMatching(
             string? authType,
 
+            ImmutableArray<string> families,
+
+            ImmutableArray<string> mfgs,
+
+            ImmutableArray<string> models,
+
             ImmutableArray<string> nactags,
+
+            ImmutableArray<string> osTypes,
 
             ImmutableArray<string> portTypes,
 
@@ -47,7 +71,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
             ImmutableArray<string> vendors)
         {
             AuthType = authType;
+            Families = families;
+            Mfgs = mfgs;
+            Models = models;
             Nactags = nactags;
+            OsTypes = osTypes;
             PortTypes = portTypes;
             SiteIds = siteIds;
             SitegroupIds = sitegroupIds;

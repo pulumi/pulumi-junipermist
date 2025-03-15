@@ -33,7 +33,7 @@ public final class NetworktemplateRadiusConfigAcctServer {
      */
     private @Nullable Integer port;
     /**
-     * @return Secretof RADIUS server
+     * @return Secret of RADIUS server
      * 
      */
     private String secret;
@@ -70,7 +70,7 @@ public final class NetworktemplateRadiusConfigAcctServer {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return Secretof RADIUS server
+     * @return Secret of RADIUS server
      * 
      */
     public String secret() {

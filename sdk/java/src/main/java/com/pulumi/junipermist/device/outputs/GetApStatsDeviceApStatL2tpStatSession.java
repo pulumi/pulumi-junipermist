@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetApStatsDeviceApStatL2tpStatSession {
     /**
-     * @return remote sessions id (dynamically unless Tunnel is said to be static)
+     * @return Remote sessions id (dynamically unless Tunnel is said to be static)
      * 
      */
     private Integer localSid;
@@ -22,15 +22,19 @@ public final class GetApStatsDeviceApStatL2tpStatSession {
      */
     private String remoteId;
     /**
-     * @return remote sessions id (dynamically unless Tunnel is said to be static)
+     * @return Remote sessions id (dynamically unless Tunnel is said to be static)
      * 
      */
     private Integer remoteSid;
+    /**
+     * @return enum: `established`, `established_with_session`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+     * 
+     */
     private String state;
 
     private GetApStatsDeviceApStatL2tpStatSession() {}
     /**
-     * @return remote sessions id (dynamically unless Tunnel is said to be static)
+     * @return Remote sessions id (dynamically unless Tunnel is said to be static)
      * 
      */
     public Integer localSid() {
@@ -44,12 +48,16 @@ public final class GetApStatsDeviceApStatL2tpStatSession {
         return this.remoteId;
     }
     /**
-     * @return remote sessions id (dynamically unless Tunnel is said to be static)
+     * @return Remote sessions id (dynamically unless Tunnel is said to be static)
      * 
      */
     public Integer remoteSid() {
         return this.remoteSid;
     }
+    /**
+     * @return enum: `established`, `established_with_session`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+     * 
+     */
     public String state() {
         return this.state;
     }

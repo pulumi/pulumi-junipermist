@@ -83,7 +83,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<string?> AptemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// country code for the site (for AP config generation), in two-character
+        /// Country code for the site (for AP config generation), in two-character
         /// </summary>
         [Output("countryCode")]
         public Output<string?> CountryCode { get; private set; } = null!;
@@ -107,7 +107,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<string?> NetworktemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// optional, any notes about the site
+        /// Optional, any notes about the site
         /// </summary>
         [Output("notes")]
         public Output<string?> Notes { get; private set; } = null!;
@@ -128,7 +128,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<string?> SecpolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// sitegroups this site belongs to
+        /// Sitegroups this site belongs to
         /// </summary>
         [Output("sitegroupIds")]
         public Output<ImmutableArray<string>> SitegroupIds { get; private set; } = null!;
@@ -144,6 +144,9 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Output("timezone")]
         public Output<string> Timezone { get; private set; } = null!;
+
+        [Output("tzoffset")]
+        public Output<int> Tzoffset { get; private set; } = null!;
 
 
         /// <summary>
@@ -215,7 +218,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<string>? AptemplateId { get; set; }
 
         /// <summary>
-        /// country code for the site (for AP config generation), in two-character
+        /// Country code for the site (for AP config generation), in two-character
         /// </summary>
         [Input("countryCode")]
         public Input<string>? CountryCode { get; set; }
@@ -239,7 +242,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<string>? NetworktemplateId { get; set; }
 
         /// <summary>
-        /// optional, any notes about the site
+        /// Optional, any notes about the site
         /// </summary>
         [Input("notes")]
         public Input<string>? Notes { get; set; }
@@ -263,7 +266,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _sitegroupIds;
 
         /// <summary>
-        /// sitegroups this site belongs to
+        /// Sitegroups this site belongs to
         /// </summary>
         public InputList<string> SitegroupIds
         {
@@ -310,7 +313,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<string>? AptemplateId { get; set; }
 
         /// <summary>
-        /// country code for the site (for AP config generation), in two-character
+        /// Country code for the site (for AP config generation), in two-character
         /// </summary>
         [Input("countryCode")]
         public Input<string>? CountryCode { get; set; }
@@ -334,7 +337,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<string>? NetworktemplateId { get; set; }
 
         /// <summary>
-        /// optional, any notes about the site
+        /// Optional, any notes about the site
         /// </summary>
         [Input("notes")]
         public Input<string>? Notes { get; set; }
@@ -358,7 +361,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _sitegroupIds;
 
         /// <summary>
-        /// sitegroups this site belongs to
+        /// Sitegroups this site belongs to
         /// </summary>
         public InputList<string> SitegroupIds
         {
@@ -377,6 +380,9 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
+
+        [Input("tzoffset")]
+        public Input<int>? Tzoffset { get; set; }
 
         public BaseState()
         {

@@ -20,10 +20,6 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AddTargetVrfs;
         /// <summary>
-        /// route aggregation
-        /// </summary>
-        public readonly ImmutableArray<string> Aggregates;
-        /// <summary>
         /// When used as export policy, optional
         /// </summary>
         public readonly ImmutableArray<string> Communities;
@@ -35,7 +31,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// <summary>
         /// When used as export policy, optional
         /// </summary>
-        public readonly ImmutableArray<string> ExportCommunitites;
+        public readonly ImmutableArray<string> ExportCommunities;
         /// <summary>
         /// Optional, for an import policy, local_preference can be changed
         /// </summary>
@@ -53,15 +49,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             ImmutableArray<string> addTargetVrfs,
 
-            ImmutableArray<string> aggregates,
-
             ImmutableArray<string> communities,
 
             ImmutableArray<string> excludeAsPaths,
 
             ImmutableArray<string> excludeCommunities,
 
-            ImmutableArray<string> exportCommunitites,
+            ImmutableArray<string> exportCommunities,
 
             string? localPreference,
 
@@ -70,11 +64,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
             Accept = accept;
             AddCommunities = addCommunities;
             AddTargetVrfs = addTargetVrfs;
-            Aggregates = aggregates;
             Communities = communities;
             ExcludeAsPaths = excludeAsPaths;
             ExcludeCommunities = excludeCommunities;
-            ExportCommunitites = exportCommunitites;
+            ExportCommunities = exportCommunities;
             LocalPreference = localPreference;
             PrependAsPaths = prependAsPaths;
         }

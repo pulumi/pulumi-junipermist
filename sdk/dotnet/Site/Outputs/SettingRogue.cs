@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingRogue
     {
         /// <summary>
+        /// list of VLAN IDs on which rogue APs are ignored
+        /// </summary>
+        public readonly ImmutableArray<int> AllowedVlanIds;
+        /// <summary>
         /// Whether rogue detection is enabled
         /// </summary>
         public readonly bool? Enabled;
@@ -22,11 +26,19 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? HoneypotEnabled;
         /// <summary>
-        /// Minimum duration for a bssid to be considered rogue
+        /// Minimum duration for a bssid to be considered neighbor
         /// </summary>
         public readonly int? MinDuration;
         /// <summary>
-        /// Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+        /// Minimum duration for a bssid to be considered rogue
+        /// </summary>
+        public readonly int? MinRogueDuration;
+        /// <summary>
+        /// Minimum RSSI for an AP to be considered rogue
+        /// </summary>
+        public readonly int? MinRogueRssi;
+        /// <summary>
+        /// Minimum RSSI for an AP to be considered neighbor (ignoring APs that’s far away)
         /// </summary>
         public readonly int? MinRssi;
         /// <summary>
@@ -40,11 +52,17 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
         [OutputConstructor]
         private SettingRogue(
+            ImmutableArray<int> allowedVlanIds,
+
             bool? enabled,
 
             bool? honeypotEnabled,
 
             int? minDuration,
+
+            int? minRogueDuration,
+
+            int? minRogueRssi,
 
             int? minRssi,
 
@@ -52,9 +70,12 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             ImmutableArray<string> whitelistedSsids)
         {
+            AllowedVlanIds = allowedVlanIds;
             Enabled = enabled;
             HoneypotEnabled = honeypotEnabled;
             MinDuration = minDuration;
+            MinRogueDuration = minRogueDuration;
+            MinRogueRssi = minRogueRssi;
             MinRssi = minRssi;
             WhitelistedBssids = whitelistedBssids;
             WhitelistedSsids = whitelistedSsids;

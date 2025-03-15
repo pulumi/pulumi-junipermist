@@ -21,6 +21,10 @@ public final class UpgradeDeviceFwupdate {
      */
     private @Nullable String status;
     private @Nullable Integer statusId;
+    /**
+     * @return Epoch (seconds)
+     * 
+     */
     private @Nullable Double timestamp;
     private @Nullable Boolean willRetry;
 
@@ -38,6 +42,10 @@ public final class UpgradeDeviceFwupdate {
     public Optional<Integer> statusId() {
         return Optional.ofNullable(this.statusId);
     }
+    /**
+     * @return Epoch (seconds)
+     * 
+     */
     public Optional<Double> timestamp() {
         return Optional.ofNullable(this.timestamp);
     }

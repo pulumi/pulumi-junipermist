@@ -17,6 +17,25 @@ namespace Pulumi.JuniperMist.Site
         /// A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.  
         /// It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.  
         /// The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var webhooks = JuniperMist.Site.GetWebhooks.Invoke(new()
+        ///     {
+        ///         SiteId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetWebhooksResult> InvokeAsync(GetWebhooksArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWebhooksResult>("junipermist:site/getWebhooks:getWebhooks", args ?? new GetWebhooksArgs(), options.WithDefaults());
@@ -27,6 +46,25 @@ namespace Pulumi.JuniperMist.Site
         /// A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.  
         /// It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.  
         /// The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var webhooks = JuniperMist.Site.GetWebhooks.Invoke(new()
+        ///     {
+        ///         SiteId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetWebhooksResult> Invoke(GetWebhooksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebhooksResult>("junipermist:site/getWebhooks:getWebhooks", args ?? new GetWebhooksInvokeArgs(), options.WithDefaults());
@@ -37,6 +75,25 @@ namespace Pulumi.JuniperMist.Site
         /// A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.  
         /// It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.  
         /// The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var webhooks = JuniperMist.Site.GetWebhooks.Invoke(new()
+        ///     {
+        ///         SiteId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetWebhooksResult> Invoke(GetWebhooksInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebhooksResult>("junipermist:site/getWebhooks:getWebhooks", args ?? new GetWebhooksInvokeArgs(), options.WithDefaults());

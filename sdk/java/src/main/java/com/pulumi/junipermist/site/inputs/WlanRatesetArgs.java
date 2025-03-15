@@ -18,6 +18,36 @@ public final class WlanRatesetArgs extends com.pulumi.resources.ResourceArgs {
     public static final WlanRatesetArgs Empty = new WlanRatesetArgs();
 
     /**
+     * If `template`==`custom`. EHT MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit)
+     * 
+     */
+    @Import(name="eht")
+    private @Nullable Output<String> eht;
+
+    /**
+     * @return If `template`==`custom`. EHT MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit)
+     * 
+     */
+    public Optional<Output<String>> eht() {
+        return Optional.ofNullable(this.eht);
+    }
+
+    /**
+     * If `template`==`custom`. HE MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit
+     * 
+     */
+    @Import(name="he")
+    private @Nullable Output<String> he;
+
+    /**
+     * @return If `template`==`custom`. HE MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit
+     * 
+     */
+    public Optional<Output<String>> he() {
+        return Optional.ofNullable(this.he);
+    }
+
+    /**
      * If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
      * 
      */
@@ -105,6 +135,8 @@ public final class WlanRatesetArgs extends com.pulumi.resources.ResourceArgs {
     private WlanRatesetArgs() {}
 
     private WlanRatesetArgs(WlanRatesetArgs $) {
+        this.eht = $.eht;
+        this.he = $.he;
         this.ht = $.ht;
         this.legacies = $.legacies;
         this.minRssi = $.minRssi;
@@ -128,6 +160,48 @@ public final class WlanRatesetArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(WlanRatesetArgs defaults) {
             $ = new WlanRatesetArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param eht If `template`==`custom`. EHT MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eht(@Nullable Output<String> eht) {
+            $.eht = eht;
+            return this;
+        }
+
+        /**
+         * @param eht If `template`==`custom`. EHT MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eht(String eht) {
+            return eht(Output.of(eht));
+        }
+
+        /**
+         * @param he If `template`==`custom`. HE MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit
+         * 
+         * @return builder
+         * 
+         */
+        public Builder he(@Nullable Output<String> he) {
+            $.he = he;
+            return this;
+        }
+
+        /**
+         * @param he If `template`==`custom`. HE MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit
+         * 
+         * @return builder
+         * 
+         */
+        public Builder he(String he) {
+            return he(Output.of(he));
         }
 
         /**

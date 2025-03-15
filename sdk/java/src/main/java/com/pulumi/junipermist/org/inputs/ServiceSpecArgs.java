@@ -16,14 +16,14 @@ public final class ServiceSpecArgs extends com.pulumi.resources.ResourceArgs {
     public static final ServiceSpecArgs Empty = new ServiceSpecArgs();
 
     /**
-     * port number, port range, or variable
+     * Port number, port range, or variable
      * 
      */
     @Import(name="portRange")
     private @Nullable Output<String> portRange;
 
     /**
-     * @return port number, port range, or variable
+     * @return Port number, port range, or variable
      * 
      */
     public Optional<Output<String>> portRange() {
@@ -31,16 +31,14 @@ public final class ServiceSpecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`.
-     * `protocol_number` is between 1-254
+     * `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`.
-     * `protocol_number` is between 1-254
+     * @return `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -73,7 +71,7 @@ public final class ServiceSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portRange port number, port range, or variable
+         * @param portRange Port number, port range, or variable
          * 
          * @return builder
          * 
@@ -84,7 +82,7 @@ public final class ServiceSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portRange port number, port range, or variable
+         * @param portRange Port number, port range, or variable
          * 
          * @return builder
          * 
@@ -94,8 +92,7 @@ public final class ServiceSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`.
-         * `protocol_number` is between 1-254
+         * @param protocol `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254
          * 
          * @return builder
          * 
@@ -106,8 +103,7 @@ public final class ServiceSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`.
-         * `protocol_number` is between 1-254
+         * @param protocol `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254
          * 
          * @return builder
          * 

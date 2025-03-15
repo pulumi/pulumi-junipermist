@@ -16,12 +16,12 @@ import java.util.Objects;
 public final class GetApStatsDeviceApStatLldpStat {
     private String chassisId;
     /**
-     * @return whether it support LLDP-MED
+     * @return Whether it support LLDP-MED
      * 
      */
     private Boolean lldpMedSupported;
     /**
-     * @return switch’s management address (if advertised), can be IPv4, IPv6, or MAC
+     * @return Switch’s management address (if advertised), can be IPv4, IPv6, or MAC
      * 
      */
     private String mgmtAddr;
@@ -33,32 +33,32 @@ public final class GetApStatsDeviceApStatLldpStat {
     private String portDesc;
     private String portId;
     /**
-     * @return in mW, provided/allocated by PSE
+     * @return In mW, provided/allocated by PSE
      * 
      */
     private Double powerAllocated;
     /**
-     * @return in mW, total power needed by PD
+     * @return In mW, total power needed by PD
      * 
      */
     private Double powerDraw;
     /**
-     * @return number of negotiations, if it keeps increasing, we don’t have a stable power
+     * @return Number of negotiations, if it keeps increasing, we don’ t have a stable power
      * 
      */
     private Integer powerRequestCount;
     /**
-     * @return in mW, the current power requested by PD
+     * @return In mW, the current power requested by PD
      * 
      */
     private Double powerRequested;
     /**
-     * @return description provided by switch
+     * @return Description provided by switch
      * 
      */
     private String systemDesc;
     /**
-     * @return name of the switch
+     * @return Name of the switch
      * 
      */
     private String systemName;
@@ -68,14 +68,14 @@ public final class GetApStatsDeviceApStatLldpStat {
         return this.chassisId;
     }
     /**
-     * @return whether it support LLDP-MED
+     * @return Whether it support LLDP-MED
      * 
      */
     public Boolean lldpMedSupported() {
         return this.lldpMedSupported;
     }
     /**
-     * @return switch’s management address (if advertised), can be IPv4, IPv6, or MAC
+     * @return Switch’s management address (if advertised), can be IPv4, IPv6, or MAC
      * 
      */
     public String mgmtAddr() {
@@ -95,42 +95,42 @@ public final class GetApStatsDeviceApStatLldpStat {
         return this.portId;
     }
     /**
-     * @return in mW, provided/allocated by PSE
+     * @return In mW, provided/allocated by PSE
      * 
      */
     public Double powerAllocated() {
         return this.powerAllocated;
     }
     /**
-     * @return in mW, total power needed by PD
+     * @return In mW, total power needed by PD
      * 
      */
     public Double powerDraw() {
         return this.powerDraw;
     }
     /**
-     * @return number of negotiations, if it keeps increasing, we don’t have a stable power
+     * @return Number of negotiations, if it keeps increasing, we don’ t have a stable power
      * 
      */
     public Integer powerRequestCount() {
         return this.powerRequestCount;
     }
     /**
-     * @return in mW, the current power requested by PD
+     * @return In mW, the current power requested by PD
      * 
      */
     public Double powerRequested() {
         return this.powerRequested;
     }
     /**
-     * @return description provided by switch
+     * @return Description provided by switch
      * 
      */
     public String systemDesc() {
         return this.systemDesc;
     }
     /**
-     * @return name of the switch
+     * @return Name of the switch
      * 
      */
     public String systemName() {

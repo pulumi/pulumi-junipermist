@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Org
 {
     /// <summary>
-    /// This resource manages WAN Assurance Service Policies (Application Policiess).
+    /// This resource manages WAN Assurance Service Policies (Application Policies).
     /// 
     /// The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
     /// * the Gateway configuration (`mist_device_gateway.service_policies`)
@@ -31,6 +31,12 @@ namespace Pulumi.JuniperMist.Org
     [JuniperMistResourceType("junipermist:org/servicepolicy:Servicepolicy")]
     public partial class Servicepolicy : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// For SRX Only
+        /// </summary>
+        [Output("aamw")]
+        public Output<Outputs.ServicepolicyAamw?> Aamw { get; private set; } = null!;
+
         /// <summary>
         /// enum: `allow`, `deny`
         /// </summary>
@@ -133,6 +139,12 @@ namespace Pulumi.JuniperMist.Org
     public sealed class ServicepolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// For SRX Only
+        /// </summary>
+        [Input("aamw")]
+        public Input<Inputs.ServicepolicyAamwArgs>? Aamw { get; set; }
+
+        /// <summary>
         /// enum: `allow`, `deny`
         /// </summary>
         [Input("action")]
@@ -209,6 +221,12 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class ServicepolicyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// For SRX Only
+        /// </summary>
+        [Input("aamw")]
+        public Input<Inputs.ServicepolicyAamwGetArgs>? Aamw { get; set; }
+
         /// <summary>
         /// enum: `allow`, `deny`
         /// </summary>

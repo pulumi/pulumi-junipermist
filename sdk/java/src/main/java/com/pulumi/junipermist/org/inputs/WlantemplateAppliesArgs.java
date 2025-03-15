@@ -24,14 +24,14 @@ public final class WlantemplateAppliesArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * list of site ids
+     * List of site ids
      * 
      */
     @Import(name="siteIds")
     private @Nullable Output<List<String>> siteIds;
 
     /**
-     * @return list of site ids
+     * @return List of site ids
      * 
      */
     public Optional<Output<List<String>>> siteIds() {
@@ -39,14 +39,14 @@ public final class WlantemplateAppliesArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * list of sitegroup ids
+     * List of sitegroup ids
      * 
      */
     @Import(name="sitegroupIds")
     private @Nullable Output<List<String>> sitegroupIds;
 
     /**
-     * @return list of sitegroup ids
+     * @return List of sitegroup ids
      * 
      */
     public Optional<Output<List<String>>> sitegroupIds() {
@@ -89,7 +89,7 @@ public final class WlantemplateAppliesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param siteIds list of site ids
+         * @param siteIds List of site ids
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class WlantemplateAppliesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param siteIds list of site ids
+         * @param siteIds List of site ids
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class WlantemplateAppliesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param siteIds list of site ids
+         * @param siteIds List of site ids
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class WlantemplateAppliesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sitegroupIds list of sitegroup ids
+         * @param sitegroupIds List of sitegroup ids
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class WlantemplateAppliesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sitegroupIds list of sitegroup ids
+         * @param sitegroupIds List of sitegroup ids
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class WlantemplateAppliesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sitegroupIds list of sitegroup ids
+         * @param sitegroupIds List of sitegroup ids
          * 
          * @return builder
          * 

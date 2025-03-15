@@ -27,7 +27,7 @@ class GetInventoryResult:
     """
     A collection of values returned by getInventory.
     """
-    def __init__(__self__, id=None, mac=None, model=None, org_id=None, org_inventories=None, serial=None, site_id=None, unassigned=None, vc=None, vc_mac=None):
+    def __init__(__self__, id=None, mac=None, model=None, org_id=None, org_inventories=None, serial=None, site_id=None, type=None, unassigned=None, vc=None, vc_mac=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -49,6 +49,9 @@ class GetInventoryResult:
         if site_id and not isinstance(site_id, str):
             raise TypeError("Expected argument 'site_id' to be a str")
         pulumi.set(__self__, "site_id", site_id)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
         if unassigned and not isinstance(unassigned, bool):
             raise TypeError("Expected argument 'unassigned' to be a bool")
         pulumi.set(__self__, "unassigned", unassigned)
@@ -79,7 +82,7 @@ class GetInventoryResult:
     @pulumi.getter
     def model(self) -> Optional[str]:
         """
-        device model
+        Device model
         """
         return pulumi.get(self, "model")
 
@@ -91,16 +94,13 @@ class GetInventoryResult:
     @property
     @pulumi.getter(name="orgInventories")
     def org_inventories(self) -> Sequence['outputs.GetInventoryOrgInventoryResult']:
-        """
-        List of devices
-        """
         return pulumi.get(self, "org_inventories")
 
     @property
     @pulumi.getter
     def serial(self) -> Optional[str]:
         """
-        device serial
+        Device serial
         """
         return pulumi.get(self, "serial")
 
@@ -108,15 +108,23 @@ class GetInventoryResult:
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[str]:
         """
-        site id if assigned, null if not assigned
+        Site id if assigned, null if not assigned
         """
         return pulumi.get(self, "site_id")
 
     @property
     @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        enum: `ap`, `gateway`, `switch`
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
     def unassigned(self) -> Optional[bool]:
         """
-        to display Unassigned devices
+        To display Unassigned devices
         """
         return pulumi.get(self, "unassigned")
 
@@ -150,6 +158,7 @@ class AwaitableGetInventoryResult(GetInventoryResult):
             org_inventories=self.org_inventories,
             serial=self.serial,
             site_id=self.site_id,
+            type=self.type,
             unassigned=self.unassigned,
             vc=self.vc,
             vc_mac=self.vc_mac)
@@ -160,6 +169,7 @@ def get_inventory(mac: Optional[str] = None,
                   org_id: Optional[str] = None,
                   serial: Optional[str] = None,
                   site_id: Optional[str] = None,
+                  type: Optional[str] = None,
                   unassigned: Optional[bool] = None,
                   vc: Optional[bool] = None,
                   vc_mac: Optional[str] = None,
@@ -185,10 +195,11 @@ def get_inventory(mac: Optional[str] = None,
 
 
     :param str mac: MAC address
-    :param str model: device model
-    :param str serial: device serial
-    :param str site_id: site id if assigned, null if not assigned
-    :param bool unassigned: to display Unassigned devices
+    :param str model: Device model
+    :param str serial: Device serial
+    :param str site_id: Site id if assigned, null if not assigned
+    :param str type: enum: `ap`, `gateway`, `switch`
+    :param bool unassigned: To display Unassigned devices
     :param bool vc: To display Virtual Chassis members
     :param str vc_mac: Virtual Chassis MAC Address
     """
@@ -198,6 +209,7 @@ def get_inventory(mac: Optional[str] = None,
     __args__['orgId'] = org_id
     __args__['serial'] = serial
     __args__['siteId'] = site_id
+    __args__['type'] = type
     __args__['unassigned'] = unassigned
     __args__['vc'] = vc
     __args__['vcMac'] = vc_mac
@@ -212,6 +224,7 @@ def get_inventory(mac: Optional[str] = None,
         org_inventories=pulumi.get(__ret__, 'org_inventories'),
         serial=pulumi.get(__ret__, 'serial'),
         site_id=pulumi.get(__ret__, 'site_id'),
+        type=pulumi.get(__ret__, 'type'),
         unassigned=pulumi.get(__ret__, 'unassigned'),
         vc=pulumi.get(__ret__, 'vc'),
         vc_mac=pulumi.get(__ret__, 'vc_mac'))
@@ -220,6 +233,7 @@ def get_inventory_output(mac: Optional[pulumi.Input[Optional[str]]] = None,
                          org_id: Optional[pulumi.Input[str]] = None,
                          serial: Optional[pulumi.Input[Optional[str]]] = None,
                          site_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         type: Optional[pulumi.Input[Optional[str]]] = None,
                          unassigned: Optional[pulumi.Input[Optional[bool]]] = None,
                          vc: Optional[pulumi.Input[Optional[bool]]] = None,
                          vc_mac: Optional[pulumi.Input[Optional[str]]] = None,
@@ -245,10 +259,11 @@ def get_inventory_output(mac: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str mac: MAC address
-    :param str model: device model
-    :param str serial: device serial
-    :param str site_id: site id if assigned, null if not assigned
-    :param bool unassigned: to display Unassigned devices
+    :param str model: Device model
+    :param str serial: Device serial
+    :param str site_id: Site id if assigned, null if not assigned
+    :param str type: enum: `ap`, `gateway`, `switch`
+    :param bool unassigned: To display Unassigned devices
     :param bool vc: To display Virtual Chassis members
     :param str vc_mac: Virtual Chassis MAC Address
     """
@@ -258,6 +273,7 @@ def get_inventory_output(mac: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['orgId'] = org_id
     __args__['serial'] = serial
     __args__['siteId'] = site_id
+    __args__['type'] = type
     __args__['unassigned'] = unassigned
     __args__['vc'] = vc
     __args__['vcMac'] = vc_mac
@@ -271,6 +287,7 @@ def get_inventory_output(mac: Optional[pulumi.Input[Optional[str]]] = None,
         org_inventories=pulumi.get(__response__, 'org_inventories'),
         serial=pulumi.get(__response__, 'serial'),
         site_id=pulumi.get(__response__, 'site_id'),
+        type=pulumi.get(__response__, 'type'),
         unassigned=pulumi.get(__response__, 'unassigned'),
         vc=pulumi.get(__response__, 'vc'),
         vc_mac=pulumi.get(__response__, 'vc_mac')))

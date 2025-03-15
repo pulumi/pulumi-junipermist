@@ -25,14 +25,14 @@ public final class NetworktemplateSwitchMatchingArgs extends com.pulumi.resource
     }
 
     /**
-     * list of rules to define custom switch configuration based on different criterias. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
+     * list of rules to define custom switch configuration based on different criteria. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<NetworktemplateSwitchMatchingRuleArgs>> rules;
 
     /**
-     * @return list of rules to define custom switch configuration based on different criterias. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
+     * @return list of rules to define custom switch configuration based on different criteria. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
      * 
      */
     public Optional<Output<List<NetworktemplateSwitchMatchingRuleArgs>>> rules() {
@@ -74,7 +74,7 @@ public final class NetworktemplateSwitchMatchingArgs extends com.pulumi.resource
         }
 
         /**
-         * @param rules list of rules to define custom switch configuration based on different criterias. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
+         * @param rules list of rules to define custom switch configuration based on different criteria. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class NetworktemplateSwitchMatchingArgs extends com.pulumi.resource
         }
 
         /**
-         * @param rules list of rules to define custom switch configuration based on different criterias. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
+         * @param rules list of rules to define custom switch configuration based on different criteria. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class NetworktemplateSwitchMatchingArgs extends com.pulumi.resource
         }
 
         /**
-         * @param rules list of rules to define custom switch configuration based on different criterias. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
+         * @param rules list of rules to define custom switch configuration based on different criteria. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
          * 
          * @return builder
          * 

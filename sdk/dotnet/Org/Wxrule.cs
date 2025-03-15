@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Org
     ///     var wxruleOne = new JuniperMist.Org.Wxrule("wxrule_one", new()
     ///     {
     ///         OrgId = terraformTest.Id,
-    ///         TemplateId = wlantempalteOne.Id,
+    ///         TemplateId = wlantemplateOne.Id,
     ///         SrcWxtags = new[]
     ///         {
     ///             wxtagOne.Id,
@@ -68,7 +68,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableArray<string>> ApplyTags { get; private set; } = null!;
 
         /// <summary>
-        /// blocked apps (always blocking, ignoring action), the key of Get Application List
+        /// Blocked apps (always blocking, ignoring action), the key of Get Application List
         /// </summary>
         [Output("blockedApps")]
         public Output<ImmutableArray<string>> BlockedApps { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// the order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+        /// Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
         /// </summary>
         [Output("order")]
         public Output<int> Order { get; private set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _blockedApps;
 
         /// <summary>
-        /// blocked apps (always blocking, ignoring action), the key of Get Application List
+        /// Blocked apps (always blocking, ignoring action), the key of Get Application List
         /// </summary>
         public InputList<string> BlockedApps
         {
@@ -228,7 +228,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// the order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+        /// Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
         /// </summary>
         [Input("order", required: true)]
         public Input<int> Order { get; set; } = null!;
@@ -280,7 +280,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _blockedApps;
 
         /// <summary>
-        /// blocked apps (always blocking, ignoring action), the key of Get Application List
+        /// Blocked apps (always blocking, ignoring action), the key of Get Application List
         /// </summary>
         public InputList<string> BlockedApps
         {
@@ -328,7 +328,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// the order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+        /// Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
         /// </summary>
         [Input("order")]
         public Input<int>? Order { get; set; }
