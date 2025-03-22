@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Org
 {
     /// <summary>
-    /// This resourceis used to assign/unassign a device profile to one or multiple devices.
+    /// This resource is used to assign/unassign a device profile to one or multiple devices.
     /// 
-    /// The `junipermist.org.DeviceprofileGateway` resource can be assigned to Gateways, and the`junipermist.org.DeviceprofileAp` resource can be assigned the Wireless Access Points
+    /// The `junipermist.org.DeviceprofileGateway` resource can be assigned to Gateways, and the `junipermist.org.DeviceprofileAp` resource can be assigned the Wireless Access Points
     /// 
     /// ## Example Usage
     /// 

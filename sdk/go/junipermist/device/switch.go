@@ -43,7 +43,8 @@ type Switch struct {
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayOutput `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
-	DnsSuffixes pulumi.StringArrayOutput   `pulumi:"dnsSuffixes"`
+	DnsSuffixes pulumi.StringArrayOutput `pulumi:"dnsSuffixes"`
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
 	ExtraRoutes SwitchExtraRoutesMapOutput `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 SwitchExtraRoutes6MapOutput `pulumi:"extraRoutes6"`
@@ -83,7 +84,7 @@ type Switch struct {
 	PortConfig SwitchPortConfigMapOutput `pulumi:"portConfig"`
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 port mirrorings is allowed
+	// maximum 4 mirroring ports is allowed
 	PortMirroring SwitchPortMirroringMapOutput `pulumi:"portMirroring"`
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages SwitchPortUsagesMapOutput `pulumi:"portUsages"`
@@ -168,7 +169,8 @@ type switchState struct {
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers []string `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
-	DnsSuffixes []string                     `pulumi:"dnsSuffixes"`
+	DnsSuffixes []string `pulumi:"dnsSuffixes"`
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
 	ExtraRoutes map[string]SwitchExtraRoutes `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 map[string]SwitchExtraRoutes6 `pulumi:"extraRoutes6"`
@@ -208,7 +210,7 @@ type switchState struct {
 	PortConfig map[string]SwitchPortConfig `pulumi:"portConfig"`
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 port mirrorings is allowed
+	// maximum 4 mirroring ports is allowed
 	PortMirroring map[string]SwitchPortMirroring `pulumi:"portMirroring"`
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages map[string]SwitchPortUsages `pulumi:"portUsages"`
@@ -259,6 +261,7 @@ type SwitchState struct {
 	DnsServers pulumi.StringArrayInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes pulumi.StringArrayInput
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
 	ExtraRoutes SwitchExtraRoutesMapInput
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 SwitchExtraRoutes6MapInput
@@ -298,7 +301,7 @@ type SwitchState struct {
 	PortConfig SwitchPortConfigMapInput
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 port mirrorings is allowed
+	// maximum 4 mirroring ports is allowed
 	PortMirroring SwitchPortMirroringMapInput
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages SwitchPortUsagesMapInput
@@ -352,7 +355,8 @@ type switchArgs struct {
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers []string `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
-	DnsSuffixes []string                     `pulumi:"dnsSuffixes"`
+	DnsSuffixes []string `pulumi:"dnsSuffixes"`
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
 	ExtraRoutes map[string]SwitchExtraRoutes `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 map[string]SwitchExtraRoutes6 `pulumi:"extraRoutes6"`
@@ -384,7 +388,7 @@ type switchArgs struct {
 	PortConfig map[string]SwitchPortConfig `pulumi:"portConfig"`
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 port mirrorings is allowed
+	// maximum 4 mirroring ports is allowed
 	PortMirroring map[string]SwitchPortMirroring `pulumi:"portMirroring"`
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages map[string]SwitchPortUsages `pulumi:"portUsages"`
@@ -432,6 +436,7 @@ type SwitchArgs struct {
 	DnsServers pulumi.StringArrayInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes pulumi.StringArrayInput
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
 	ExtraRoutes SwitchExtraRoutesMapInput
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 SwitchExtraRoutes6MapInput
@@ -463,7 +468,7 @@ type SwitchArgs struct {
 	PortConfig SwitchPortConfigMapInput
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 port mirrorings is allowed
+	// maximum 4 mirroring ports is allowed
 	PortMirroring SwitchPortMirroringMapInput
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages SwitchPortUsagesMapInput
@@ -623,6 +628,7 @@ func (o SwitchOutput) DnsSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringArrayOutput { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
 }
 
+// Property key is the destination CIDR (e.g. "10.0.0.0/8")
 func (o SwitchOutput) ExtraRoutes() SwitchExtraRoutesMapOutput {
 	return o.ApplyT(func(v *Switch) SwitchExtraRoutesMapOutput { return v.ExtraRoutes }).(SwitchExtraRoutesMapOutput)
 }
@@ -725,7 +731,7 @@ func (o SwitchOutput) PortConfig() SwitchPortConfigMapOutput {
 
 // Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 // interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-// maximum 4 port mirrorings is allowed
+// maximum 4 mirroring ports is allowed
 func (o SwitchOutput) PortMirroring() SwitchPortMirroringMapOutput {
 	return o.ApplyT(func(v *Switch) SwitchPortMirroringMapOutput { return v.PortMirroring }).(SwitchPortMirroringMapOutput)
 }

@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provide the list of the Org VPNs.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/junipermist";
+ *
+ * const vpns = junipermist.org.getVpns({
+ *     orgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
+ * });
+ * ```
  */
 export function getVpns(args: GetVpnsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +47,17 @@ export interface GetVpnsResult {
 }
 /**
  * This data source provide the list of the Org VPNs.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/junipermist";
+ *
+ * const vpns = junipermist.org.getVpns({
+ *     orgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
+ * });
+ * ```
  */
 export function getVpnsOutput(args: GetVpnsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpnsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

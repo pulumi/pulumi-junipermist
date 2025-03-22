@@ -5,6 +5,7 @@ package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.junipermist.org.outputs.GetVpnsOrgVpnPathSelection;
 import com.pulumi.junipermist.org.outputs.GetVpnsOrgVpnPaths;
 import java.lang.Double;
 import java.lang.String;
@@ -13,20 +14,58 @@ import java.util.Objects;
 
 @CustomType
 public final class GetVpnsOrgVpn {
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
     private Double createdTime;
+    /**
+     * @return Unique ID of the object instance in the Mist Organization
+     * 
+     */
     private String id;
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
     private Double modifiedTime;
     private String name;
     private String orgId;
+    /**
+     * @return Only if `type`==`hub_spoke`
+     * 
+     */
+    private GetVpnsOrgVpnPathSelection pathSelection;
+    /**
+     * @return For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * 
+     */
     private Map<String,GetVpnsOrgVpnPaths> paths;
+    /**
+     * @return enum: `hub_spoke`, `mesh`
+     * 
+     */
+    private String type;
 
     private GetVpnsOrgVpn() {}
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
     public Double createdTime() {
         return this.createdTime;
     }
+    /**
+     * @return Unique ID of the object instance in the Mist Organization
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
     public Double modifiedTime() {
         return this.modifiedTime;
     }
@@ -36,8 +75,26 @@ public final class GetVpnsOrgVpn {
     public String orgId() {
         return this.orgId;
     }
+    /**
+     * @return Only if `type`==`hub_spoke`
+     * 
+     */
+    public GetVpnsOrgVpnPathSelection pathSelection() {
+        return this.pathSelection;
+    }
+    /**
+     * @return For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * 
+     */
     public Map<String,GetVpnsOrgVpnPaths> paths() {
         return this.paths;
+    }
+    /**
+     * @return enum: `hub_spoke`, `mesh`
+     * 
+     */
+    public String type() {
+        return this.type;
     }
 
     public static Builder builder() {
@@ -54,7 +111,9 @@ public final class GetVpnsOrgVpn {
         private Double modifiedTime;
         private String name;
         private String orgId;
+        private GetVpnsOrgVpnPathSelection pathSelection;
         private Map<String,GetVpnsOrgVpnPaths> paths;
+        private String type;
         public Builder() {}
         public Builder(GetVpnsOrgVpn defaults) {
     	      Objects.requireNonNull(defaults);
@@ -63,7 +122,9 @@ public final class GetVpnsOrgVpn {
     	      this.modifiedTime = defaults.modifiedTime;
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
+    	      this.pathSelection = defaults.pathSelection;
     	      this.paths = defaults.paths;
+    	      this.type = defaults.type;
         }
 
         @CustomType.Setter
@@ -107,11 +168,27 @@ public final class GetVpnsOrgVpn {
             return this;
         }
         @CustomType.Setter
+        public Builder pathSelection(GetVpnsOrgVpnPathSelection pathSelection) {
+            if (pathSelection == null) {
+              throw new MissingRequiredPropertyException("GetVpnsOrgVpn", "pathSelection");
+            }
+            this.pathSelection = pathSelection;
+            return this;
+        }
+        @CustomType.Setter
         public Builder paths(Map<String,GetVpnsOrgVpnPaths> paths) {
             if (paths == null) {
               throw new MissingRequiredPropertyException("GetVpnsOrgVpn", "paths");
             }
             this.paths = paths;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetVpnsOrgVpn", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetVpnsOrgVpn build() {
@@ -121,7 +198,9 @@ public final class GetVpnsOrgVpn {
             _resultValue.modifiedTime = modifiedTime;
             _resultValue.name = name;
             _resultValue.orgId = orgId;
+            _resultValue.pathSelection = pathSelection;
             _resultValue.paths = paths;
+            _resultValue.type = type;
             return _resultValue;
         }
     }

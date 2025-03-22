@@ -148,9 +148,17 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dnsSuffixes);
     }
 
+    /**
+     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * 
+     */
     @Import(name="extraRoutes")
     private @Nullable Output<Map<String,SwitchExtraRoutesArgs>> extraRoutes;
 
+    /**
+     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * 
+     */
     public Optional<Output<Map<String,SwitchExtraRoutesArgs>>> extraRoutes() {
         return Optional.ofNullable(this.extraRoutes);
     }
@@ -356,7 +364,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      * 
      */
     @Import(name="portMirroring")
@@ -365,7 +373,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      * 
      */
     public Optional<Output<Map<String,SwitchPortMirroringArgs>>> portMirroring() {
@@ -819,11 +827,23 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
             return dnsSuffixes(List.of(dnsSuffixes));
         }
 
+        /**
+         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraRoutes(@Nullable Output<Map<String,SwitchExtraRoutesArgs>> extraRoutes) {
             $.extraRoutes = extraRoutes;
             return this;
         }
 
+        /**
+         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraRoutes(Map<String,SwitchExtraRoutesArgs> extraRoutes) {
             return extraRoutes(Output.of(extraRoutes));
         }
@@ -1115,7 +1135,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
          * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-         * maximum 4 port mirrorings is allowed
+         * maximum 4 mirroring ports is allowed
          * 
          * @return builder
          * 
@@ -1128,7 +1148,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
          * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-         * maximum 4 port mirrorings is allowed
+         * maximum 4 mirroring ports is allowed
          * 
          * @return builder
          * 

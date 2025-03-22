@@ -103,6 +103,13 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.disableOobDownAlarm);
     }
 
+    @Import(name="fipsEnabled")
+    private @Nullable Output<Boolean> fipsEnabled;
+
+    public Optional<Output<Boolean>> fipsEnabled() {
+        return Optional.ofNullable(this.fipsEnabled);
+    }
+
     /**
      * Property key is the user name. For Local user authentication
      * 
@@ -189,6 +196,7 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
         this.configRevertTimer = $.configRevertTimer;
         this.dhcpOptionFqdn = $.dhcpOptionFqdn;
         this.disableOobDownAlarm = $.disableOobDownAlarm;
+        this.fipsEnabled = $.fipsEnabled;
         this.localAccounts = $.localAccounts;
         this.mxedgeProxyHost = $.mxedgeProxyHost;
         this.mxedgeProxyPort = $.mxedgeProxyPort;
@@ -328,6 +336,15 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
 
         public Builder disableOobDownAlarm(Boolean disableOobDownAlarm) {
             return disableOobDownAlarm(Output.of(disableOobDownAlarm));
+        }
+
+        public Builder fipsEnabled(@Nullable Output<Boolean> fipsEnabled) {
+            $.fipsEnabled = fipsEnabled;
+            return this;
+        }
+
+        public Builder fipsEnabled(Boolean fipsEnabled) {
+            return fipsEnabled(Output.of(fipsEnabled));
         }
 
         /**

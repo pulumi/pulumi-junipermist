@@ -36,7 +36,7 @@ public final class GetWlansOrgWlanAuthServer {
      */
     private Boolean requireMessageAuthenticator;
     /**
-     * @return Secretof RADIUS server
+     * @return Secret of RADIUS server
      * 
      */
     private String secret;
@@ -80,7 +80,7 @@ public final class GetWlansOrgWlanAuthServer {
         return this.requireMessageAuthenticator;
     }
     /**
-     * @return Secretof RADIUS server
+     * @return Secret of RADIUS server
      * 
      */
     public String secret() {

@@ -36,8 +36,8 @@ namespace Pulumi.JuniperMist.Device.Inputs
         /// <summary>
         /// Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         /// </summary>
-        [Input("bypassAuthWhenServerDownForUnkownClient")]
-        public Input<bool>? BypassAuthWhenServerDownForUnkownClient { get; set; }
+        [Input("bypassAuthWhenServerDownForUnknownClient")]
+        public Input<bool>? BypassAuthWhenServerDownForUnknownClient { get; set; }
 
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -172,10 +172,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? PortNetwork { get; set; }
 
         /// <summary>
-        /// Only if `port_auth`=`dot1x` reauthentication interval range
+        /// Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
         /// </summary>
         [Input("reauthInterval")]
-        public Input<int>? ReauthInterval { get; set; }
+        public Input<string>? ReauthInterval { get; set; }
 
         /// <summary>
         /// Only if `port_auth`==`dot1x` sets server fail fallback vlan

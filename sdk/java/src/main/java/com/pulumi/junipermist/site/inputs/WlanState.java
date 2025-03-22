@@ -521,6 +521,21 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * To disable Wi-Fi 7 EHT IEs
+     * 
+     */
+    @Import(name="disable11be")
+    private @Nullable Output<Boolean> disable11be;
+
+    /**
+     * @return To disable Wi-Fi 7 EHT IEs
+     * 
+     */
+    public Optional<Output<Boolean>> disable11be() {
+        return Optional.ofNullable(this.disable11be);
+    }
+
+    /**
      * To disable ht or vht rates
      * 
      */
@@ -698,7 +713,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-     * client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+     * client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
      * 
      */
     @Import(name="enableWirelessBridging")
@@ -706,7 +721,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-     * client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+     * client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
      * 
      */
     public Optional<Output<Boolean>> enableWirelessBridging() {
@@ -966,14 +981,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
      * 
      */
     @Import(name="mxtunnelNames")
     private @Nullable Output<List<String>> mxtunnelNames;
 
     /**
-     * @return When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * @return When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
      * 
      */
     public Optional<Output<List<String>>> mxtunnelNames() {
@@ -1271,14 +1286,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+     * if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
      * 
      */
     @Import(name="vlanIds")
     private @Nullable Output<List<String>> vlanIds;
 
     /**
-     * @return if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+     * @return if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
      * 
      */
     public Optional<Output<List<String>>> vlanIds() {
@@ -1441,6 +1456,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         this.clientLimitUpEnabled = $.clientLimitUpEnabled;
         this.coaServers = $.coaServers;
         this.disable11ax = $.disable11ax;
+        this.disable11be = $.disable11be;
         this.disableHtVhtRates = $.disableHtVhtRates;
         this.disableUapsd = $.disableUapsd;
         this.disableV1RoamNotify = $.disableV1RoamNotify;
@@ -2243,6 +2259,27 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param disable11be To disable Wi-Fi 7 EHT IEs
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disable11be(@Nullable Output<Boolean> disable11be) {
+            $.disable11be = disable11be;
+            return this;
+        }
+
+        /**
+         * @param disable11be To disable Wi-Fi 7 EHT IEs
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disable11be(Boolean disable11be) {
+            return disable11be(Output.of(disable11be));
+        }
+
+        /**
          * @param disableHtVhtRates To disable ht or vht rates
          * 
          * @return builder
@@ -2484,7 +2521,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param enableWirelessBridging By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-         * client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+         * client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
          * 
          * @return builder
          * 
@@ -2496,7 +2533,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param enableWirelessBridging By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-         * client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+         * client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
          * 
          * @return builder
          * 
@@ -2864,7 +2901,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelNames When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+         * @param mxtunnelNames When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
          * 
          * @return builder
          * 
@@ -2875,7 +2912,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelNames When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+         * @param mxtunnelNames When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
          * 
          * @return builder
          * 
@@ -2885,7 +2922,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelNames When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+         * @param mxtunnelNames When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
          * 
          * @return builder
          * 
@@ -3327,7 +3364,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanIds if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+         * @param vlanIds if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
          * 
          * @return builder
          * 
@@ -3338,7 +3375,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanIds if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+         * @param vlanIds if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
          * 
          * @return builder
          * 
@@ -3348,7 +3385,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanIds if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+         * @param vlanIds if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
          * 
          * @return builder
          * 

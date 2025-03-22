@@ -6,8 +6,11 @@ package com.pulumi.junipermist.org.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetRftemplatesArgs extends com.pulumi.resources.InvokeArgs {
@@ -21,10 +24,18 @@ public final class GetRftemplatesArgs extends com.pulumi.resources.InvokeArgs {
         return this.orgId;
     }
 
+    @Import(name="page")
+    private @Nullable Output<Integer> page;
+
+    public Optional<Output<Integer>> page() {
+        return Optional.ofNullable(this.page);
+    }
+
     private GetRftemplatesArgs() {}
 
     private GetRftemplatesArgs(GetRftemplatesArgs $) {
         this.orgId = $.orgId;
+        this.page = $.page;
     }
 
     public static Builder builder() {
@@ -52,6 +63,15 @@ public final class GetRftemplatesArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
+        }
+
+        public Builder page(@Nullable Output<Integer> page) {
+            $.page = page;
+            return this;
+        }
+
+        public Builder page(Integer page) {
+            return page(Output.of(page));
         }
 
         public GetRftemplatesArgs build() {

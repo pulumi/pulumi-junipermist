@@ -43,20 +43,11 @@ export function getApStats(args: GetApStatsArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getApStats.
  */
 export interface GetApStatsArgs {
-    /**
-     * duration like 7d, 2w
-     */
     duration?: string;
-    /**
-     * end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-     */
     end?: number;
     mac?: string;
     orgId: string;
     siteId?: string;
-    /**
-     * start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-     */
     start?: number;
     status?: string;
 }
@@ -66,13 +57,7 @@ export interface GetApStatsArgs {
  */
 export interface GetApStatsResult {
     readonly deviceApStats: outputs.device.GetApStatsDeviceApStat[];
-    /**
-     * duration like 7d, 2w
-     */
     readonly duration?: string;
-    /**
-     * end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-     */
     readonly end?: number;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -81,9 +66,6 @@ export interface GetApStatsResult {
     readonly mac?: string;
     readonly orgId: string;
     readonly siteId?: string;
-    /**
-     * start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-     */
     readonly start?: number;
     readonly status?: string;
 }
@@ -124,20 +106,11 @@ export function getApStatsOutput(args: GetApStatsOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getApStats.
  */
 export interface GetApStatsOutputArgs {
-    /**
-     * duration like 7d, 2w
-     */
     duration?: pulumi.Input<string>;
-    /**
-     * end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-     */
     end?: pulumi.Input<number>;
     mac?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
     siteId?: pulumi.Input<string>;
-    /**
-     * start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-     */
     start?: pulumi.Input<number>;
     status?: pulumi.Input<string>;
 }

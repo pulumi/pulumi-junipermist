@@ -18,14 +18,14 @@ public final class WxtagSpecArgs extends com.pulumi.resources.ResourceArgs {
     public static final WxtagSpecArgs Empty = new WxtagSpecArgs();
 
     /**
-     * matched destination port, &#34;0&#34; means any
+     * Matched destination port, &#34;0&#34; means any
      * 
      */
     @Import(name="portRange")
     private @Nullable Output<String> portRange;
 
     /**
-     * @return matched destination port, &#34;0&#34; means any
+     * @return Matched destination port, &#34;0&#34; means any
      * 
      */
     public Optional<Output<String>> portRange() {
@@ -48,14 +48,14 @@ public final class WxtagSpecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * matched destination subnets and/or IP Addresses
+     * Matched destination subnets and/or IP Addresses
      * 
      */
     @Import(name="subnets", required=true)
     private Output<List<String>> subnets;
 
     /**
-     * @return matched destination subnets and/or IP Addresses
+     * @return Matched destination subnets and/or IP Addresses
      * 
      */
     public Output<List<String>> subnets() {
@@ -89,7 +89,7 @@ public final class WxtagSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portRange matched destination port, &#34;0&#34; means any
+         * @param portRange Matched destination port, &#34;0&#34; means any
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class WxtagSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portRange matched destination port, &#34;0&#34; means any
+         * @param portRange Matched destination port, &#34;0&#34; means any
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class WxtagSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subnets matched destination subnets and/or IP Addresses
+         * @param subnets Matched destination subnets and/or IP Addresses
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class WxtagSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subnets matched destination subnets and/or IP Addresses
+         * @param subnets Matched destination subnets and/or IP Addresses
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class WxtagSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subnets matched destination subnets and/or IP Addresses
+         * @param subnets Matched destination subnets and/or IP Addresses
          * 
          * @return builder
          * 

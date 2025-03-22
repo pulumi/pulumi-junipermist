@@ -13,18 +13,75 @@ namespace Pulumi.JuniperMist.Org
     {
         /// <summary>
         /// This data source provide the list of the Org VPNs.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vpns = JuniperMist.Org.GetVpns.Invoke(new()
+        ///     {
+        ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetVpnsResult> InvokeAsync(GetVpnsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpnsResult>("junipermist:org/getVpns:getVpns", args ?? new GetVpnsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provide the list of the Org VPNs.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vpns = JuniperMist.Org.GetVpns.Invoke(new()
+        ///     {
+        ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetVpnsResult> Invoke(GetVpnsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpnsResult>("junipermist:org/getVpns:getVpns", args ?? new GetVpnsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provide the list of the Org VPNs.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vpns = JuniperMist.Org.GetVpns.Invoke(new()
+        ///     {
+        ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetVpnsResult> Invoke(GetVpnsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpnsResult>("junipermist:org/getVpns:getVpns", args ?? new GetVpnsInvokeArgs(), options.WithDefaults());

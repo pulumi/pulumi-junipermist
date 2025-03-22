@@ -58,30 +58,31 @@ func GetSwitchStats(ctx *pulumi.Context, args *GetSwitchStatsArgs, opts ...pulum
 
 // A collection of arguments for invoking getSwitchStats.
 type GetSwitchStatsArgs struct {
-	// duration like 7d, 2w
+	// Duration like 7d, 2w
 	Duration *string `pulumi:"duration"`
-	// end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+	// End datetime, can be epoch or relative time like -1d, -2h; now if not specified
 	End *int `pulumi:"end"`
-	// if `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+	// If `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
 	EvpnUnused *string `pulumi:"evpnUnused"`
 	// EVPN Topology ID
 	EvpntopoId *string `pulumi:"evpntopoId"`
 	Mac        *string `pulumi:"mac"`
 	OrgId      string  `pulumi:"orgId"`
 	SiteId     *string `pulumi:"siteId"`
-	// start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-	Start  *int    `pulumi:"start"`
+	// Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+	Start *int `pulumi:"start"`
+	// enum: `all`, `connected`, `disconnected`
 	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getSwitchStats.
 type GetSwitchStatsResult struct {
 	DeviceSwitchStats []GetSwitchStatsDeviceSwitchStat `pulumi:"deviceSwitchStats"`
-	// duration like 7d, 2w
+	// Duration like 7d, 2w
 	Duration *string `pulumi:"duration"`
-	// end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+	// End datetime, can be epoch or relative time like -1d, -2h; now if not specified
 	End *int `pulumi:"end"`
-	// if `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+	// If `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
 	EvpnUnused *string `pulumi:"evpnUnused"`
 	// EVPN Topology ID
 	EvpntopoId *string `pulumi:"evpntopoId"`
@@ -90,8 +91,9 @@ type GetSwitchStatsResult struct {
 	Mac    *string `pulumi:"mac"`
 	OrgId  string  `pulumi:"orgId"`
 	SiteId *string `pulumi:"siteId"`
-	// start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-	Start  *int    `pulumi:"start"`
+	// Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+	Start *int `pulumi:"start"`
+	// enum: `all`, `connected`, `disconnected`
 	Status *string `pulumi:"status"`
 }
 
@@ -106,19 +108,20 @@ func GetSwitchStatsOutput(ctx *pulumi.Context, args GetSwitchStatsOutputArgs, op
 
 // A collection of arguments for invoking getSwitchStats.
 type GetSwitchStatsOutputArgs struct {
-	// duration like 7d, 2w
+	// Duration like 7d, 2w
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
-	// end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+	// End datetime, can be epoch or relative time like -1d, -2h; now if not specified
 	End pulumi.IntPtrInput `pulumi:"end"`
-	// if `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+	// If `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
 	EvpnUnused pulumi.StringPtrInput `pulumi:"evpnUnused"`
 	// EVPN Topology ID
 	EvpntopoId pulumi.StringPtrInput `pulumi:"evpntopoId"`
 	Mac        pulumi.StringPtrInput `pulumi:"mac"`
 	OrgId      pulumi.StringInput    `pulumi:"orgId"`
 	SiteId     pulumi.StringPtrInput `pulumi:"siteId"`
-	// start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-	Start  pulumi.IntPtrInput    `pulumi:"start"`
+	// Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+	Start pulumi.IntPtrInput `pulumi:"start"`
+	// enum: `all`, `connected`, `disconnected`
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -145,17 +148,17 @@ func (o GetSwitchStatsResultOutput) DeviceSwitchStats() GetSwitchStatsDeviceSwit
 	return o.ApplyT(func(v GetSwitchStatsResult) []GetSwitchStatsDeviceSwitchStat { return v.DeviceSwitchStats }).(GetSwitchStatsDeviceSwitchStatArrayOutput)
 }
 
-// duration like 7d, 2w
+// Duration like 7d, 2w
 func (o GetSwitchStatsResultOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSwitchStatsResult) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
-// end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+// End datetime, can be epoch or relative time like -1d, -2h; now if not specified
 func (o GetSwitchStatsResultOutput) End() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetSwitchStatsResult) *int { return v.End }).(pulumi.IntPtrOutput)
 }
 
-// if `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+// If `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
 func (o GetSwitchStatsResultOutput) EvpnUnused() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSwitchStatsResult) *string { return v.EvpnUnused }).(pulumi.StringPtrOutput)
 }
@@ -182,11 +185,12 @@ func (o GetSwitchStatsResultOutput) SiteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSwitchStatsResult) *string { return v.SiteId }).(pulumi.StringPtrOutput)
 }
 
-// start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+// Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
 func (o GetSwitchStatsResultOutput) Start() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetSwitchStatsResult) *int { return v.Start }).(pulumi.IntPtrOutput)
 }
 
+// enum: `all`, `connected`, `disconnected`
 func (o GetSwitchStatsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSwitchStatsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

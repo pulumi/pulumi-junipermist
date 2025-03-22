@@ -33,12 +33,24 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly int Major;
         public readonly ImmutableArray<int> Minors;
         public readonly int Power;
+        /// <summary>
+        /// Amount of traffic received since connection
+        /// </summary>
         public readonly int RxBytes;
+        /// <summary>
+        /// Amount of packets received since connection
+        /// </summary>
         public readonly int RxPkts;
+        /// <summary>
+        /// Amount of traffic sent since connection
+        /// </summary>
         public readonly int TxBytes;
+        /// <summary>
+        /// Amount of packets sent since connection
+        /// </summary>
         public readonly int TxPkts;
         /// <summary>
-        /// resets due to tx hung
+        /// Resets due to tx hung
         /// </summary>
         public readonly int TxResets;
         public readonly string Uuid;

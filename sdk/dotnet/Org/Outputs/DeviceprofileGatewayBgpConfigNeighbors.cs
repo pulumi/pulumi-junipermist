@@ -24,7 +24,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Assuming BGP neighbor is directly connected
         /// </summary>
         public readonly int? MultihopTtl;
-        public readonly int? NeighborAs;
+        /// <summary>
+        /// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        /// </summary>
+        public readonly string? NeighborAs;
 
         [OutputConstructor]
         private DeviceprofileGatewayBgpConfigNeighbors(
@@ -38,7 +41,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             int? multihopTtl,
 
-            int? neighborAs)
+            string? neighborAs)
         {
             Disabled = disabled;
             ExportPolicy = exportPolicy;

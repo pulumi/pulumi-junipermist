@@ -14,8 +14,16 @@ import java.util.Objects;
 @CustomType
 public final class GetSwitchStatsDeviceSwitchStatFwupdate {
     private Integer progress;
+    /**
+     * @return enum: `inprogress`, `failed`, `upgraded`
+     * 
+     */
     private String status;
     private Integer statusId;
+    /**
+     * @return Epoch (seconds)
+     * 
+     */
     private Double timestamp;
     private Boolean willRetry;
 
@@ -23,12 +31,20 @@ public final class GetSwitchStatsDeviceSwitchStatFwupdate {
     public Integer progress() {
         return this.progress;
     }
+    /**
+     * @return enum: `inprogress`, `failed`, `upgraded`
+     * 
+     */
     public String status() {
         return this.status;
     }
     public Integer statusId() {
         return this.statusId;
     }
+    /**
+     * @return Epoch (seconds)
+     * 
+     */
     public Double timestamp() {
         return this.timestamp;
     }

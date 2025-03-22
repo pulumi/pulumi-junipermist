@@ -12,7 +12,7 @@ namespace Pulumi.JuniperMist
     public static class GetConstAlarms
     {
         /// <summary>
-        /// This data source provides the list of  available Alarms.
+        /// This data source provides the list of available Alarms.
         /// 
         /// The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
         /// 
@@ -36,7 +36,7 @@ namespace Pulumi.JuniperMist
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConstAlarmsResult>("junipermist:index/getConstAlarms:getConstAlarms", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the list of  available Alarms.
+        /// This data source provides the list of available Alarms.
         /// 
         /// The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
         /// 
@@ -60,7 +60,7 @@ namespace Pulumi.JuniperMist
             => global::Pulumi.Deployment.Instance.Invoke<GetConstAlarmsResult>("junipermist:index/getConstAlarms:getConstAlarms", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the list of  available Alarms.
+        /// This data source provides the list of available Alarms.
         /// 
         /// The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
         /// 

@@ -142,6 +142,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool Disable11ax;
         /// <summary>
+        /// To disable Wi-Fi 7 EHT IEs
+        /// </summary>
+        public readonly bool Disable11be;
+        /// <summary>
         /// To disable ht or vht rates
         /// </summary>
         public readonly bool DisableHtVhtRates;
@@ -195,7 +199,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool EnableLocalKeycaching;
         /// <summary>
-        /// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+        /// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
         /// </summary>
         public readonly bool EnableWirelessBridging;
         /// <summary>
@@ -223,7 +227,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.GetWlansOrgWlanHotspot20Result Hotspot20;
         /// <summary>
-        /// Unique ID of the object instance in the Mist Organnization
+        /// Unique ID of the object instance in the Mist Organization
         /// </summary>
         public readonly string Id;
         public readonly Outputs.GetWlansOrgWlanInjectDhcpOption82Result InjectDhcpOption82;
@@ -270,7 +274,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> MxtunnelIds;
         /// <summary>
-        /// When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        /// When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
         /// </summary>
         public readonly ImmutableArray<string> MxtunnelNames;
         /// <summary>
@@ -347,7 +351,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly bool VlanEnabled;
         public readonly string VlanId;
         /// <summary>
-        /// if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+        /// if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
         /// </summary>
         public readonly ImmutableArray<string> VlanIds;
         /// <summary>
@@ -448,6 +452,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
             double createdTime,
 
             bool disable11ax,
+
+            bool disable11be,
 
             bool disableHtVhtRates,
 
@@ -611,6 +617,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             CoaServers = coaServers;
             CreatedTime = createdTime;
             Disable11ax = disable11ax;
+            Disable11be = disable11be;
             DisableHtVhtRates = disableHtVhtRates;
             DisableUapsd = disableUapsd;
             DisableV1RoamNotify = disableV1RoamNotify;

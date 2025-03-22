@@ -12,6 +12,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class NetworktemplateVrfInstancesGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("evpnAutoLoopbackSubnet")]
+        public Input<string>? EvpnAutoLoopbackSubnet { get; set; }
+
+        [Input("evpnAutoLoopbackSubnet6")]
+        public Input<string>? EvpnAutoLoopbackSubnet6 { get; set; }
+
         [Input("extraRoutes")]
         private InputMap<Inputs.NetworktemplateVrfInstancesExtraRoutesGetArgs>? _extraRoutes;
 
@@ -22,6 +28,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
         {
             get => _extraRoutes ?? (_extraRoutes = new InputMap<Inputs.NetworktemplateVrfInstancesExtraRoutesGetArgs>());
             set => _extraRoutes = value;
+        }
+
+        [Input("extraRoutes6")]
+        private InputMap<Inputs.NetworktemplateVrfInstancesExtraRoutes6GetArgs>? _extraRoutes6;
+
+        /// <summary>
+        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// </summary>
+        public InputMap<Inputs.NetworktemplateVrfInstancesExtraRoutes6GetArgs> ExtraRoutes6
+        {
+            get => _extraRoutes6 ?? (_extraRoutes6 = new InputMap<Inputs.NetworktemplateVrfInstancesExtraRoutes6GetArgs>());
+            set => _extraRoutes6 = value;
         }
 
         [Input("networks")]

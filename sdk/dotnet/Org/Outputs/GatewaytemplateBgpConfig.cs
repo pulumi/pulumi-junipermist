@@ -47,8 +47,14 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Default import policies if no per-neighbor policies defined
         /// </summary>
         public readonly string? ImportPolicy;
-        public readonly int? LocalAs;
-        public readonly int? NeighborAs;
+        /// <summary>
+        /// Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        /// </summary>
+        public readonly string? LocalAs;
+        /// <summary>
+        /// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        /// </summary>
+        public readonly string? NeighborAs;
         /// <summary>
         /// If per-neighbor as is desired. Property key is the neighbor address
         /// </summary>
@@ -57,6 +63,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
         /// </summary>
         public readonly ImmutableArray<string> Networks;
+        public readonly bool? NoPrivateAs;
         /// <summary>
         /// By default, we'll re-advertise all learned BGP routers toward overlay
         /// </summary>
@@ -103,13 +110,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? importPolicy,
 
-            int? localAs,
+            string? localAs,
 
-            int? neighborAs,
+            string? neighborAs,
 
             ImmutableDictionary<string, Outputs.GatewaytemplateBgpConfigNeighbors>? neighbors,
 
             ImmutableArray<string> networks,
+
+            bool? noPrivateAs,
 
             bool? noReadvertiseToOverlay,
 
@@ -138,6 +147,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             NeighborAs = neighborAs;
             Neighbors = neighbors;
             Networks = networks;
+            NoPrivateAs = noPrivateAs;
             NoReadvertiseToOverlay = noReadvertiseToOverlay;
             TunnelName = tunnelName;
             Type = type;

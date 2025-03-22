@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Headers;
         /// <summary>
-        /// Unique ID of the object instance in the Mist Organnization
+        /// Unique ID of the object instance in the Mist Organization
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -70,6 +70,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// Only if `type`=`http-post`
         /// </summary>
         public readonly string Secret;
+        /// <summary>
+        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
+        /// </summary>
+        public readonly bool SingleEventPerMessage;
         public readonly string SiteId;
         /// <summary>
         /// Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
@@ -121,6 +125,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             string secret,
 
+            bool singleEventPerMessage,
+
             string siteId,
 
             string splunkToken,
@@ -148,6 +154,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             Oauth2Username = oauth2Username;
             OrgId = orgId;
             Secret = secret;
+            SingleEventPerMessage = singleEventPerMessage;
             SiteId = siteId;
             SplunkToken = splunkToken;
             Topics = topics;

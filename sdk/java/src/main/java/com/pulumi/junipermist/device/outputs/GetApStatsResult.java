@@ -16,15 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetApStatsResult {
     private List<GetApStatsDeviceApStat> deviceApStats;
-    /**
-     * @return duration like 7d, 2w
-     * 
-     */
     private @Nullable String duration;
-    /**
-     * @return end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-     * 
-     */
     private @Nullable Integer end;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -34,10 +26,6 @@ public final class GetApStatsResult {
     private @Nullable String mac;
     private String orgId;
     private @Nullable String siteId;
-    /**
-     * @return start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-     * 
-     */
     private @Nullable Integer start;
     private @Nullable String status;
 
@@ -45,17 +33,9 @@ public final class GetApStatsResult {
     public List<GetApStatsDeviceApStat> deviceApStats() {
         return this.deviceApStats;
     }
-    /**
-     * @return duration like 7d, 2w
-     * 
-     */
     public Optional<String> duration() {
         return Optional.ofNullable(this.duration);
     }
-    /**
-     * @return end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-     * 
-     */
     public Optional<Integer> end() {
         return Optional.ofNullable(this.end);
     }
@@ -75,10 +55,6 @@ public final class GetApStatsResult {
     public Optional<String> siteId() {
         return Optional.ofNullable(this.siteId);
     }
-    /**
-     * @return start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-     * 
-     */
     public Optional<Integer> start() {
         return Optional.ofNullable(this.start);
     }

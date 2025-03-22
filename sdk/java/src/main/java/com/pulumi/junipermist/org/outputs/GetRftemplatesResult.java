@@ -6,9 +6,12 @@ package com.pulumi.junipermist.org.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.org.outputs.GetRftemplatesOrgRftemplate;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRftemplatesResult {
@@ -19,6 +22,7 @@ public final class GetRftemplatesResult {
     private String id;
     private String orgId;
     private List<GetRftemplatesOrgRftemplate> orgRftemplates;
+    private @Nullable Integer page;
 
     private GetRftemplatesResult() {}
     /**
@@ -34,6 +38,9 @@ public final class GetRftemplatesResult {
     public List<GetRftemplatesOrgRftemplate> orgRftemplates() {
         return this.orgRftemplates;
     }
+    public Optional<Integer> page() {
+        return Optional.ofNullable(this.page);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -47,12 +54,14 @@ public final class GetRftemplatesResult {
         private String id;
         private String orgId;
         private List<GetRftemplatesOrgRftemplate> orgRftemplates;
+        private @Nullable Integer page;
         public Builder() {}
         public Builder(GetRftemplatesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.orgId = defaults.orgId;
     	      this.orgRftemplates = defaults.orgRftemplates;
+    	      this.page = defaults.page;
         }
 
         @CustomType.Setter
@@ -82,11 +91,18 @@ public final class GetRftemplatesResult {
         public Builder orgRftemplates(GetRftemplatesOrgRftemplate... orgRftemplates) {
             return orgRftemplates(List.of(orgRftemplates));
         }
+        @CustomType.Setter
+        public Builder page(@Nullable Integer page) {
+
+            this.page = page;
+            return this;
+        }
         public GetRftemplatesResult build() {
             final var _resultValue = new GetRftemplatesResult();
             _resultValue.id = id;
             _resultValue.orgId = orgId;
             _resultValue.orgRftemplates = orgRftemplates;
+            _resultValue.page = page;
             return _resultValue;
         }
     }

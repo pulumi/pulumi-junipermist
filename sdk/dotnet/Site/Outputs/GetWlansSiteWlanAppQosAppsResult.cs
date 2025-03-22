@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class GetWlansSiteWlanAppQosAppsResult
     {
-        public readonly int Dscp;
+        public readonly string Dscp;
         /// <summary>
         /// Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
         /// </summary>
@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
         [OutputConstructor]
         private GetWlansSiteWlanAppQosAppsResult(
-            int dscp,
+            string dscp,
 
             string dstSubnet,
 

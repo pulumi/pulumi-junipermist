@@ -32,7 +32,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        /// tx power of the radio, null or 0 means auto, when power*min=power*max=power=0 to indicate power=0
         /// </summary>
         public readonly int? Power;
         /// <summary>

@@ -13,13 +13,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NetworkVpnAccessGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// if `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
+        /// If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
         /// </summary>
         [Input("advertisedSubnet")]
         public Input<string>? AdvertisedSubnet { get; set; }
 
         /// <summary>
-        /// whether to allow ping from vpn into this routed network
+        /// Whether to allow ping from vpn into this routed network
         /// </summary>
         [Input("allowPing")]
         public Input<bool>? AllowPing { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+        /// If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
         /// </summary>
         [Input("natPool")]
         public Input<string>? NatPool { get; set; }
@@ -55,8 +55,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? NoReadvertiseToLanOspf { get; set; }
 
         /// <summary>
-        /// toward overlay
-        /// how HUB should deal with routes it received from Spokes
+        /// toward overlay, how HUB should deal with routes it received from Spokes
         /// </summary>
         [Input("noReadvertiseToOverlay")]
         public Input<bool>? NoReadvertiseToOverlay { get; set; }
@@ -65,8 +64,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _otherVrfs;
 
         /// <summary>
-        /// by default, the routes are only readvertised toward the same vrf on spoke
-        /// to allow it to be leaked to other vrfs
+        /// By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
         /// </summary>
         public InputList<string> OtherVrfs
         {
@@ -75,13 +73,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// whether this network is routable
+        /// Whether this network is routable
         /// </summary>
         [Input("routed")]
         public Input<bool>? Routed { get; set; }
 
         /// <summary>
-        /// if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+        /// If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
         /// </summary>
         [Input("sourceNat")]
         public Input<Inputs.NetworkVpnAccessSourceNatGetArgs>? SourceNat { get; set; }
@@ -99,8 +97,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// toward overlay
-        /// how HUB should deal with routes it received from Spokes
+        /// toward overlay, how HUB should deal with routes it received from Spokes
         /// </summary>
         [Input("summarizedSubnet")]
         public Input<string>? SummarizedSubnet { get; set; }

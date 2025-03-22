@@ -44,6 +44,12 @@ public final class SettingGatewayMgmt {
      * 
      */
     private @Nullable Boolean disableOob;
+    /**
+     * @return For SSR disable usb interface
+     * 
+     */
+    private @Nullable Boolean disableUsb;
+    private @Nullable Boolean fipsEnabled;
     private @Nullable List<String> probeHosts;
     /**
      * @return Restrict inbound-traffic to host
@@ -102,6 +108,16 @@ public final class SettingGatewayMgmt {
     public Optional<Boolean> disableOob() {
         return Optional.ofNullable(this.disableOob);
     }
+    /**
+     * @return For SSR disable usb interface
+     * 
+     */
+    public Optional<Boolean> disableUsb() {
+        return Optional.ofNullable(this.disableUsb);
+    }
+    public Optional<Boolean> fipsEnabled() {
+        return Optional.ofNullable(this.fipsEnabled);
+    }
     public List<String> probeHosts() {
         return this.probeHosts == null ? List.of() : this.probeHosts;
     }
@@ -144,6 +160,8 @@ public final class SettingGatewayMgmt {
         private @Nullable Integer configRevertTimer;
         private @Nullable Boolean disableConsole;
         private @Nullable Boolean disableOob;
+        private @Nullable Boolean disableUsb;
+        private @Nullable Boolean fipsEnabled;
         private @Nullable List<String> probeHosts;
         private @Nullable SettingGatewayMgmtProtectRe protectRe;
         private @Nullable String rootPassword;
@@ -159,6 +177,8 @@ public final class SettingGatewayMgmt {
     	      this.configRevertTimer = defaults.configRevertTimer;
     	      this.disableConsole = defaults.disableConsole;
     	      this.disableOob = defaults.disableOob;
+    	      this.disableUsb = defaults.disableUsb;
+    	      this.fipsEnabled = defaults.fipsEnabled;
     	      this.probeHosts = defaults.probeHosts;
     	      this.protectRe = defaults.protectRe;
     	      this.rootPassword = defaults.rootPassword;
@@ -212,6 +232,18 @@ public final class SettingGatewayMgmt {
             return this;
         }
         @CustomType.Setter
+        public Builder disableUsb(@Nullable Boolean disableUsb) {
+
+            this.disableUsb = disableUsb;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fipsEnabled(@Nullable Boolean fipsEnabled) {
+
+            this.fipsEnabled = fipsEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder probeHosts(@Nullable List<String> probeHosts) {
 
             this.probeHosts = probeHosts;
@@ -253,6 +285,8 @@ public final class SettingGatewayMgmt {
             _resultValue.configRevertTimer = configRevertTimer;
             _resultValue.disableConsole = disableConsole;
             _resultValue.disableOob = disableOob;
+            _resultValue.disableUsb = disableUsb;
+            _resultValue.fipsEnabled = fipsEnabled;
             _resultValue.probeHosts = probeHosts;
             _resultValue.protectRe = protectRe;
             _resultValue.rootPassword = rootPassword;

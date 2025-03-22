@@ -5,28 +5,36 @@ package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetSwitchStatsDeviceSwitchStatLastTrouble {
     /**
-     * @return Code definitions list at /api/v1/consts/ap*led*status
+     * @return Code definitions list at List Ap Led Definition
      * 
      */
     private String code;
-    private Integer timestamp;
+    /**
+     * @return Epoch (seconds)
+     * 
+     */
+    private Double timestamp;
 
     private GetSwitchStatsDeviceSwitchStatLastTrouble() {}
     /**
-     * @return Code definitions list at /api/v1/consts/ap*led*status
+     * @return Code definitions list at List Ap Led Definition
      * 
      */
     public String code() {
         return this.code;
     }
-    public Integer timestamp() {
+    /**
+     * @return Epoch (seconds)
+     * 
+     */
+    public Double timestamp() {
         return this.timestamp;
     }
 
@@ -40,7 +48,7 @@ public final class GetSwitchStatsDeviceSwitchStatLastTrouble {
     @CustomType.Builder
     public static final class Builder {
         private String code;
-        private Integer timestamp;
+        private Double timestamp;
         public Builder() {}
         public Builder(GetSwitchStatsDeviceSwitchStatLastTrouble defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,7 +65,7 @@ public final class GetSwitchStatsDeviceSwitchStatLastTrouble {
             return this;
         }
         @CustomType.Setter
-        public Builder timestamp(Integer timestamp) {
+        public Builder timestamp(Double timestamp) {
             if (timestamp == null) {
               throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatLastTrouble", "timestamp");
             }
