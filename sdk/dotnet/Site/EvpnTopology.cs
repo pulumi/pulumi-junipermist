@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Site
 {
     /// <summary>
-    /// This resource manages the Site Evpn Topologys.
+    /// This resource manages the Site Evpn Topology.
     /// 
     /// EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
     /// 

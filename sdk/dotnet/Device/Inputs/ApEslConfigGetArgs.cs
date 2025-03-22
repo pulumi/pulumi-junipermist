@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// note: ble_config will be ingored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+        /// note: ble_config will be ignored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

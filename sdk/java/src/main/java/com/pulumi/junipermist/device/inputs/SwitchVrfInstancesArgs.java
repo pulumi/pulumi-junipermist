@@ -5,7 +5,8 @@ package com.pulumi.junipermist.device.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.junipermist.device.inputs.SwitchVrfInstancesVrfExtraRoutesArgs;
+import com.pulumi.junipermist.device.inputs.SwitchVrfInstancesExtraRoutes6Args;
+import com.pulumi.junipermist.device.inputs.SwitchVrfInstancesExtraRoutesArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,50 @@ public final class SwitchVrfInstancesArgs extends com.pulumi.resources.ResourceA
 
     public static final SwitchVrfInstancesArgs Empty = new SwitchVrfInstancesArgs();
 
+    @Import(name="evpnAutoLoopbackSubnet")
+    private @Nullable Output<String> evpnAutoLoopbackSubnet;
+
+    public Optional<Output<String>> evpnAutoLoopbackSubnet() {
+        return Optional.ofNullable(this.evpnAutoLoopbackSubnet);
+    }
+
+    @Import(name="evpnAutoLoopbackSubnet6")
+    private @Nullable Output<String> evpnAutoLoopbackSubnet6;
+
+    public Optional<Output<String>> evpnAutoLoopbackSubnet6() {
+        return Optional.ofNullable(this.evpnAutoLoopbackSubnet6);
+    }
+
+    /**
+     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * 
+     */
+    @Import(name="extraRoutes")
+    private @Nullable Output<Map<String,SwitchVrfInstancesExtraRoutesArgs>> extraRoutes;
+
+    /**
+     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * 
+     */
+    public Optional<Output<Map<String,SwitchVrfInstancesExtraRoutesArgs>>> extraRoutes() {
+        return Optional.ofNullable(this.extraRoutes);
+    }
+
+    /**
+     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * 
+     */
+    @Import(name="extraRoutes6")
+    private @Nullable Output<Map<String,SwitchVrfInstancesExtraRoutes6Args>> extraRoutes6;
+
+    /**
+     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * 
+     */
+    public Optional<Output<Map<String,SwitchVrfInstancesExtraRoutes6Args>>> extraRoutes6() {
+        return Optional.ofNullable(this.extraRoutes6);
+    }
+
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
@@ -25,26 +70,14 @@ public final class SwitchVrfInstancesArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.networks);
     }
 
-    /**
-     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
-     * 
-     */
-    @Import(name="vrfExtraRoutes")
-    private @Nullable Output<Map<String,SwitchVrfInstancesVrfExtraRoutesArgs>> vrfExtraRoutes;
-
-    /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
-     * 
-     */
-    public Optional<Output<Map<String,SwitchVrfInstancesVrfExtraRoutesArgs>>> vrfExtraRoutes() {
-        return Optional.ofNullable(this.vrfExtraRoutes);
-    }
-
     private SwitchVrfInstancesArgs() {}
 
     private SwitchVrfInstancesArgs(SwitchVrfInstancesArgs $) {
+        this.evpnAutoLoopbackSubnet = $.evpnAutoLoopbackSubnet;
+        this.evpnAutoLoopbackSubnet6 = $.evpnAutoLoopbackSubnet6;
+        this.extraRoutes = $.extraRoutes;
+        this.extraRoutes6 = $.extraRoutes6;
         this.networks = $.networks;
-        this.vrfExtraRoutes = $.vrfExtraRoutes;
     }
 
     public static Builder builder() {
@@ -65,6 +98,66 @@ public final class SwitchVrfInstancesArgs extends com.pulumi.resources.ResourceA
             $ = new SwitchVrfInstancesArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder evpnAutoLoopbackSubnet(@Nullable Output<String> evpnAutoLoopbackSubnet) {
+            $.evpnAutoLoopbackSubnet = evpnAutoLoopbackSubnet;
+            return this;
+        }
+
+        public Builder evpnAutoLoopbackSubnet(String evpnAutoLoopbackSubnet) {
+            return evpnAutoLoopbackSubnet(Output.of(evpnAutoLoopbackSubnet));
+        }
+
+        public Builder evpnAutoLoopbackSubnet6(@Nullable Output<String> evpnAutoLoopbackSubnet6) {
+            $.evpnAutoLoopbackSubnet6 = evpnAutoLoopbackSubnet6;
+            return this;
+        }
+
+        public Builder evpnAutoLoopbackSubnet6(String evpnAutoLoopbackSubnet6) {
+            return evpnAutoLoopbackSubnet6(Output.of(evpnAutoLoopbackSubnet6));
+        }
+
+        /**
+         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extraRoutes(@Nullable Output<Map<String,SwitchVrfInstancesExtraRoutesArgs>> extraRoutes) {
+            $.extraRoutes = extraRoutes;
+            return this;
+        }
+
+        /**
+         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extraRoutes(Map<String,SwitchVrfInstancesExtraRoutesArgs> extraRoutes) {
+            return extraRoutes(Output.of(extraRoutes));
+        }
+
+        /**
+         * @param extraRoutes6 Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extraRoutes6(@Nullable Output<Map<String,SwitchVrfInstancesExtraRoutes6Args>> extraRoutes6) {
+            $.extraRoutes6 = extraRoutes6;
+            return this;
+        }
+
+        /**
+         * @param extraRoutes6 Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extraRoutes6(Map<String,SwitchVrfInstancesExtraRoutes6Args> extraRoutes6) {
+            return extraRoutes6(Output.of(extraRoutes6));
+        }
+
         public Builder networks(@Nullable Output<List<String>> networks) {
             $.networks = networks;
             return this;
@@ -76,27 +169,6 @@ public final class SwitchVrfInstancesArgs extends com.pulumi.resources.ResourceA
 
         public Builder networks(String... networks) {
             return networks(List.of(networks));
-        }
-
-        /**
-         * @param vrfExtraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder vrfExtraRoutes(@Nullable Output<Map<String,SwitchVrfInstancesVrfExtraRoutesArgs>> vrfExtraRoutes) {
-            $.vrfExtraRoutes = vrfExtraRoutes;
-            return this;
-        }
-
-        /**
-         * @param vrfExtraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder vrfExtraRoutes(Map<String,SwitchVrfInstancesVrfExtraRoutesArgs> vrfExtraRoutes) {
-            return vrfExtraRoutes(Output.of(vrfExtraRoutes));
         }
 
         public SwitchVrfInstancesArgs build() {

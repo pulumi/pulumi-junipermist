@@ -49,7 +49,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        /// tx power of the radio, null or 0 means auto, when power*min=power*max=power=0 to indicate power=0
         /// </summary>
         [Input("power")]
         public Input<int>? Power { get; set; }

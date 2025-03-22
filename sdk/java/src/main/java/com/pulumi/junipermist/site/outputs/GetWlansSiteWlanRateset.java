@@ -13,6 +13,16 @@ import java.util.Objects;
 @CustomType
 public final class GetWlansSiteWlanRateset {
     /**
+     * @return If `template`==`custom`. EHT MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit)
+     * 
+     */
+    private String eht;
+    /**
+     * @return If `template`==`custom`. HE MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit
+     * 
+     */
+    private String he;
+    /**
      * @return If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
      * 
      */
@@ -44,6 +54,20 @@ public final class GetWlansSiteWlanRateset {
     private String vht;
 
     private GetWlansSiteWlanRateset() {}
+    /**
+     * @return If `template`==`custom`. EHT MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit)
+     * 
+     */
+    public String eht() {
+        return this.eht;
+    }
+    /**
+     * @return If `template`==`custom`. HE MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit
+     * 
+     */
+    public String he() {
+        return this.he;
+    }
     /**
      * @return If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
      * 
@@ -94,6 +118,8 @@ public final class GetWlansSiteWlanRateset {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String eht;
+        private String he;
         private String ht;
         private List<String> legacies;
         private Integer minRssi;
@@ -102,6 +128,8 @@ public final class GetWlansSiteWlanRateset {
         public Builder() {}
         public Builder(GetWlansSiteWlanRateset defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.eht = defaults.eht;
+    	      this.he = defaults.he;
     	      this.ht = defaults.ht;
     	      this.legacies = defaults.legacies;
     	      this.minRssi = defaults.minRssi;
@@ -109,6 +137,22 @@ public final class GetWlansSiteWlanRateset {
     	      this.vht = defaults.vht;
         }
 
+        @CustomType.Setter
+        public Builder eht(String eht) {
+            if (eht == null) {
+              throw new MissingRequiredPropertyException("GetWlansSiteWlanRateset", "eht");
+            }
+            this.eht = eht;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder he(String he) {
+            if (he == null) {
+              throw new MissingRequiredPropertyException("GetWlansSiteWlanRateset", "he");
+            }
+            this.he = he;
+            return this;
+        }
         @CustomType.Setter
         public Builder ht(String ht) {
             if (ht == null) {
@@ -154,6 +198,8 @@ public final class GetWlansSiteWlanRateset {
         }
         public GetWlansSiteWlanRateset build() {
             final var _resultValue = new GetWlansSiteWlanRateset();
+            _resultValue.eht = eht;
+            _resultValue.he = he;
             _resultValue.ht = ht;
             _resultValue.legacies = legacies;
             _resultValue.minRssi = minRssi;

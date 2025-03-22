@@ -13,7 +13,7 @@ import (
 
 // This data source provides the SSO Metadata information.
 //
-// # The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the informationrequired to configure the IDP
+// # The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the information required to configure the IDP
 //
 // ## Example Usage
 //
@@ -59,14 +59,20 @@ type GetSsoMetadataArgs struct {
 
 // A collection of values returned by getSsoMetadata.
 type GetSsoMetadataResult struct {
-	AcsUrl   string `pulumi:"acsUrl"`
+	// If `idpType`==`saml`
+	AcsUrl string `pulumi:"acsUrl"`
+	// If `idpType`==`saml`
 	EntityId string `pulumi:"entityId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// If `idpType`==`saml`
 	LogoutUrl string `pulumi:"logoutUrl"`
-	Metadata  string `pulumi:"metadata"`
-	OrgId     string `pulumi:"orgId"`
-	SsoId     string `pulumi:"ssoId"`
+	// If `idpType`==`saml`
+	Metadata string `pulumi:"metadata"`
+	OrgId    string `pulumi:"orgId"`
+	// If `idpType`==`oauth` and `scimEnabled`==`true`
+	ScimBaseUrl string `pulumi:"scimBaseUrl"`
+	SsoId       string `pulumi:"ssoId"`
 }
 
 func GetSsoMetadataOutput(ctx *pulumi.Context, args GetSsoMetadataOutputArgs, opts ...pulumi.InvokeOption) GetSsoMetadataResultOutput {
@@ -103,10 +109,12 @@ func (o GetSsoMetadataResultOutput) ToGetSsoMetadataResultOutputWithContext(ctx 
 	return o
 }
 
+// If `idpType`==`saml`
 func (o GetSsoMetadataResultOutput) AcsUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSsoMetadataResult) string { return v.AcsUrl }).(pulumi.StringOutput)
 }
 
+// If `idpType`==`saml`
 func (o GetSsoMetadataResultOutput) EntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSsoMetadataResult) string { return v.EntityId }).(pulumi.StringOutput)
 }
@@ -116,16 +124,23 @@ func (o GetSsoMetadataResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSsoMetadataResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// If `idpType`==`saml`
 func (o GetSsoMetadataResultOutput) LogoutUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSsoMetadataResult) string { return v.LogoutUrl }).(pulumi.StringOutput)
 }
 
+// If `idpType`==`saml`
 func (o GetSsoMetadataResultOutput) Metadata() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSsoMetadataResult) string { return v.Metadata }).(pulumi.StringOutput)
 }
 
 func (o GetSsoMetadataResultOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSsoMetadataResult) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// If `idpType`==`oauth` and `scimEnabled`==`true`
+func (o GetSsoMetadataResultOutput) ScimBaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSsoMetadataResult) string { return v.ScimBaseUrl }).(pulumi.StringOutput)
 }
 
 func (o GetSsoMetadataResultOutput) SsoId() pulumi.StringOutput {

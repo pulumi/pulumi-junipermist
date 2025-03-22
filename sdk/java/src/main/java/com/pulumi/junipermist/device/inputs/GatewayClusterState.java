@@ -18,14 +18,14 @@ public final class GatewayClusterState extends com.pulumi.resources.ResourceArgs
     public static final GatewayClusterState Empty = new GatewayClusterState();
 
     /**
-     * when replacing a node, either mac has to remain the same as existing cluster
+     * When replacing a node, either mac has to remain the same as existing cluster
      * 
      */
     @Import(name="nodes")
     private @Nullable Output<List<GatewayClusterNodeArgs>> nodes;
 
     /**
-     * @return when replacing a node, either mac has to remain the same as existing cluster
+     * @return When replacing a node, either mac has to remain the same as existing cluster
      * 
      */
     public Optional<Output<List<GatewayClusterNodeArgs>>> nodes() {
@@ -65,7 +65,7 @@ public final class GatewayClusterState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nodes when replacing a node, either mac has to remain the same as existing cluster
+         * @param nodes When replacing a node, either mac has to remain the same as existing cluster
          * 
          * @return builder
          * 
@@ -76,7 +76,7 @@ public final class GatewayClusterState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nodes when replacing a node, either mac has to remain the same as existing cluster
+         * @param nodes When replacing a node, either mac has to remain the same as existing cluster
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class GatewayClusterState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nodes when replacing a node, either mac has to remain the same as existing cluster
+         * @param nodes When replacing a node, either mac has to remain the same as existing cluster
          * 
          * @return builder
          * 

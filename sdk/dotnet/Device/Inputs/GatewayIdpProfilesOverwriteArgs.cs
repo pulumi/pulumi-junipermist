@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         /// <summary>
         /// enum:
         ///   * alert (default)
-        ///   * drop: siliently dropping packets
+        ///   * drop: silently dropping packets
         ///   * close: notify client/server to close connection
         /// </summary>
         [Input("action")]

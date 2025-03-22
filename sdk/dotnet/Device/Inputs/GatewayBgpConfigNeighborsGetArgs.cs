@@ -33,8 +33,11 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("multihopTtl")]
         public Input<int>? MultihopTtl { get; set; }
 
+        /// <summary>
+        /// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        /// </summary>
         [Input("neighborAs")]
-        public Input<int>? NeighborAs { get; set; }
+        public Input<string>? NeighborAs { get; set; }
 
         public GatewayBgpConfigNeighborsGetArgs()
         {

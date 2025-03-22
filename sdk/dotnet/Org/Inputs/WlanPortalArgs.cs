@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? AmazonClientId { get; set; }
 
         /// <summary>
-        /// Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a correspoinding value. Else leave blank.
+        /// Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a corresponding value. Else leave blank.
         /// </summary>
         [Input("amazonClientSecret")]
         public Input<string>? AmazonClientSecret { get; set; }
@@ -167,7 +167,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? FacebookClientId { get; set; }
 
         /// <summary>
-        /// Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a correspoinding value. Else leave blank.
+        /// Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a corresponding value. Else leave blank.
         /// </summary>
         [Input("facebookClientSecret")]
         public Input<string>? FacebookClientSecret { get; set; }
@@ -215,7 +215,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? GoogleClientId { get; set; }
 
         /// <summary>
-        /// Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a correspoinding value. Else leave blank.
+        /// Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a corresponding value. Else leave blank.
         /// </summary>
         [Input("googleClientSecret")]
         public Input<string>? GoogleClientSecret { get; set; }
@@ -273,7 +273,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? MicrosoftClientId { get; set; }
 
         /// <summary>
-        /// Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a correspoinding value. Else leave blank.
+        /// Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a corresponding value. Else leave blank.
         /// </summary>
         [Input("microsoftClientSecret")]
         public Input<string>? MicrosoftClientSecret { get; set; }
@@ -461,13 +461,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Optionl if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+        /// Optional if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         /// </summary>
         [Input("ssoDefaultRole")]
         public Input<string>? SsoDefaultRole { get; set; }
 
         /// <summary>
-        /// Optionl if `wlan_portal_auth`==`sso`
+        /// Optional if `wlan_portal_auth`==`sso`
         /// </summary>
         [Input("ssoForcedRole")]
         public Input<string>? SsoForcedRole { get; set; }

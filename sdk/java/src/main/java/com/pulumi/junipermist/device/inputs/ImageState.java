@@ -38,9 +38,17 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.file);
     }
 
+    /**
+     * number of the image, between 1 and 3
+     * 
+     */
     @Import(name="imageNumber")
     private @Nullable Output<Integer> imageNumber;
 
+    /**
+     * @return number of the image, between 1 and 3
+     * 
+     */
     public Optional<Output<Integer>> imageNumber() {
         return Optional.ofNullable(this.imageNumber);
     }
@@ -109,11 +117,23 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
             return file(Output.of(file));
         }
 
+        /**
+         * @param imageNumber number of the image, between 1 and 3
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageNumber(@Nullable Output<Integer> imageNumber) {
             $.imageNumber = imageNumber;
             return this;
         }
 
+        /**
+         * @param imageNumber number of the image, between 1 and 3
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageNumber(Integer imageNumber) {
             return imageNumber(Output.of(imageNumber));
         }

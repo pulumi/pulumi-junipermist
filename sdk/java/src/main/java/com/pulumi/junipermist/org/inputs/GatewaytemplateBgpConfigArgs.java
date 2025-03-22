@@ -157,17 +157,33 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.importPolicy);
     }
 
+    /**
+     * Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * 
+     */
     @Import(name="localAs")
-    private @Nullable Output<Integer> localAs;
+    private @Nullable Output<String> localAs;
 
-    public Optional<Output<Integer>> localAs() {
+    /**
+     * @return Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * 
+     */
+    public Optional<Output<String>> localAs() {
         return Optional.ofNullable(this.localAs);
     }
 
+    /**
+     * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * 
+     */
     @Import(name="neighborAs")
-    private @Nullable Output<Integer> neighborAs;
+    private @Nullable Output<String> neighborAs;
 
-    public Optional<Output<Integer>> neighborAs() {
+    /**
+     * @return Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * 
+     */
+    public Optional<Output<String>> neighborAs() {
         return Optional.ofNullable(this.neighborAs);
     }
 
@@ -199,6 +215,13 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<List<String>>> networks() {
         return Optional.ofNullable(this.networks);
+    }
+
+    @Import(name="noPrivateAs")
+    private @Nullable Output<Boolean> noPrivateAs;
+
+    public Optional<Output<Boolean>> noPrivateAs() {
+        return Optional.ofNullable(this.noPrivateAs);
     }
 
     /**
@@ -301,6 +324,7 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
         this.neighborAs = $.neighborAs;
         this.neighbors = $.neighbors;
         this.networks = $.networks;
+        this.noPrivateAs = $.noPrivateAs;
         this.noReadvertiseToOverlay = $.noReadvertiseToOverlay;
         this.tunnelName = $.tunnelName;
         this.type = $.type;
@@ -514,21 +538,45 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
             return importPolicy(Output.of(importPolicy));
         }
 
-        public Builder localAs(@Nullable Output<Integer> localAs) {
+        /**
+         * @param localAs Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localAs(@Nullable Output<String> localAs) {
             $.localAs = localAs;
             return this;
         }
 
-        public Builder localAs(Integer localAs) {
+        /**
+         * @param localAs Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localAs(String localAs) {
             return localAs(Output.of(localAs));
         }
 
-        public Builder neighborAs(@Nullable Output<Integer> neighborAs) {
+        /**
+         * @param neighborAs Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder neighborAs(@Nullable Output<String> neighborAs) {
             $.neighborAs = neighborAs;
             return this;
         }
 
-        public Builder neighborAs(Integer neighborAs) {
+        /**
+         * @param neighborAs Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder neighborAs(String neighborAs) {
             return neighborAs(Output.of(neighborAs));
         }
 
@@ -582,6 +630,15 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
          */
         public Builder networks(String... networks) {
             return networks(List.of(networks));
+        }
+
+        public Builder noPrivateAs(@Nullable Output<Boolean> noPrivateAs) {
+            $.noPrivateAs = noPrivateAs;
+            return this;
+        }
+
+        public Builder noPrivateAs(Boolean noPrivateAs) {
+            return noPrivateAs(Output.of(noPrivateAs));
         }
 
         /**

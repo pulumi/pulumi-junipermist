@@ -76,15 +76,15 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
      * Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
-    @Import(name="bypassAuthWhenServerDownForUnkownClient")
-    private @Nullable Output<Boolean> bypassAuthWhenServerDownForUnkownClient;
+    @Import(name="bypassAuthWhenServerDownForUnknownClient")
+    private @Nullable Output<Boolean> bypassAuthWhenServerDownForUnknownClient;
 
     /**
      * @return Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
-    public Optional<Output<Boolean>> bypassAuthWhenServerDownForUnkownClient() {
-        return Optional.ofNullable(this.bypassAuthWhenServerDownForUnkownClient);
+    public Optional<Output<Boolean>> bypassAuthWhenServerDownForUnknownClient() {
+        return Optional.ofNullable(this.bypassAuthWhenServerDownForUnknownClient);
     }
 
     @Import(name="description")
@@ -387,17 +387,17 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Only if `port_auth`=`dot1x` reauthentication interval range
+     * Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
      * 
      */
     @Import(name="reauthInterval")
-    private @Nullable Output<Integer> reauthInterval;
+    private @Nullable Output<String> reauthInterval;
 
     /**
-     * @return Only if `port_auth`=`dot1x` reauthentication interval range
+     * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
      * 
      */
-    public Optional<Output<Integer>> reauthInterval() {
+    public Optional<Output<String>> reauthInterval() {
         return Optional.ofNullable(this.reauthInterval);
     }
 
@@ -542,7 +542,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         this.allowDhcpd = $.allowDhcpd;
         this.allowMultipleSupplicants = $.allowMultipleSupplicants;
         this.bypassAuthWhenServerDown = $.bypassAuthWhenServerDown;
-        this.bypassAuthWhenServerDownForUnkownClient = $.bypassAuthWhenServerDownForUnkownClient;
+        this.bypassAuthWhenServerDownForUnknownClient = $.bypassAuthWhenServerDownForUnknownClient;
         this.description = $.description;
         this.disableAutoneg = $.disableAutoneg;
         this.disabled = $.disabled;
@@ -668,24 +668,24 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param bypassAuthWhenServerDownForUnkownClient Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         * @param bypassAuthWhenServerDownForUnknownClient Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          * 
          * @return builder
          * 
          */
-        public Builder bypassAuthWhenServerDownForUnkownClient(@Nullable Output<Boolean> bypassAuthWhenServerDownForUnkownClient) {
-            $.bypassAuthWhenServerDownForUnkownClient = bypassAuthWhenServerDownForUnkownClient;
+        public Builder bypassAuthWhenServerDownForUnknownClient(@Nullable Output<Boolean> bypassAuthWhenServerDownForUnknownClient) {
+            $.bypassAuthWhenServerDownForUnknownClient = bypassAuthWhenServerDownForUnknownClient;
             return this;
         }
 
         /**
-         * @param bypassAuthWhenServerDownForUnkownClient Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         * @param bypassAuthWhenServerDownForUnknownClient Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          * 
          * @return builder
          * 
          */
-        public Builder bypassAuthWhenServerDownForUnkownClient(Boolean bypassAuthWhenServerDownForUnkownClient) {
-            return bypassAuthWhenServerDownForUnkownClient(Output.of(bypassAuthWhenServerDownForUnkownClient));
+        public Builder bypassAuthWhenServerDownForUnknownClient(Boolean bypassAuthWhenServerDownForUnknownClient) {
+            return bypassAuthWhenServerDownForUnknownClient(Output.of(bypassAuthWhenServerDownForUnknownClient));
         }
 
         public Builder description(@Nullable Output<String> description) {
@@ -1126,23 +1126,23 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param reauthInterval Only if `port_auth`=`dot1x` reauthentication interval range
+         * @param reauthInterval Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
          * 
          * @return builder
          * 
          */
-        public Builder reauthInterval(@Nullable Output<Integer> reauthInterval) {
+        public Builder reauthInterval(@Nullable Output<String> reauthInterval) {
             $.reauthInterval = reauthInterval;
             return this;
         }
 
         /**
-         * @param reauthInterval Only if `port_auth`=`dot1x` reauthentication interval range
+         * @param reauthInterval Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
          * 
          * @return builder
          * 
          */
-        public Builder reauthInterval(Integer reauthInterval) {
+        public Builder reauthInterval(String reauthInterval) {
             return reauthInterval(Output.of(reauthInterval));
         }
 

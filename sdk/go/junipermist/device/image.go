@@ -22,7 +22,8 @@ type Image struct {
 
 	DeviceId pulumi.StringOutput `pulumi:"deviceId"`
 	// path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
-	File        pulumi.StringOutput `pulumi:"file"`
+	File pulumi.StringOutput `pulumi:"file"`
+	// number of the image, between 1 and 3
 	ImageNumber pulumi.IntOutput    `pulumi:"imageNumber"`
 	SiteId      pulumi.StringOutput `pulumi:"siteId"`
 }
@@ -71,7 +72,8 @@ func GetImage(ctx *pulumi.Context,
 type imageState struct {
 	DeviceId *string `pulumi:"deviceId"`
 	// path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
-	File        *string `pulumi:"file"`
+	File *string `pulumi:"file"`
+	// number of the image, between 1 and 3
 	ImageNumber *int    `pulumi:"imageNumber"`
 	SiteId      *string `pulumi:"siteId"`
 }
@@ -79,7 +81,8 @@ type imageState struct {
 type ImageState struct {
 	DeviceId pulumi.StringPtrInput
 	// path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
-	File        pulumi.StringPtrInput
+	File pulumi.StringPtrInput
+	// number of the image, between 1 and 3
 	ImageNumber pulumi.IntPtrInput
 	SiteId      pulumi.StringPtrInput
 }
@@ -91,7 +94,8 @@ func (ImageState) ElementType() reflect.Type {
 type imageArgs struct {
 	DeviceId string `pulumi:"deviceId"`
 	// path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
-	File        string `pulumi:"file"`
+	File string `pulumi:"file"`
+	// number of the image, between 1 and 3
 	ImageNumber int    `pulumi:"imageNumber"`
 	SiteId      string `pulumi:"siteId"`
 }
@@ -100,7 +104,8 @@ type imageArgs struct {
 type ImageArgs struct {
 	DeviceId pulumi.StringInput
 	// path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
-	File        pulumi.StringInput
+	File pulumi.StringInput
+	// number of the image, between 1 and 3
 	ImageNumber pulumi.IntInput
 	SiteId      pulumi.StringInput
 }
@@ -201,6 +206,7 @@ func (o ImageOutput) File() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.File }).(pulumi.StringOutput)
 }
 
+// number of the image, between 1 and 3
 func (o ImageOutput) ImageNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v *Image) pulumi.IntOutput { return v.ImageNumber }).(pulumi.IntOutput)
 }

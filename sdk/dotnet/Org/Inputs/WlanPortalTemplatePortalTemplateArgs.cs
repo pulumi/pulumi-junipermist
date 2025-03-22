@@ -298,6 +298,30 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("logo")]
         public Input<string>? Logo { get; set; }
 
+        /// <summary>
+        /// label of the link to go to /marketing_policy
+        /// </summary>
+        [Input("marketingPolicyLink")]
+        public Input<string>? MarketingPolicyLink { get; set; }
+
+        /// <summary>
+        /// Whether marketing policy optin is enabled
+        /// </summary>
+        [Input("marketingPolicyOptIn")]
+        public Input<bool>? MarketingPolicyOptIn { get; set; }
+
+        /// <summary>
+        /// label for marketing optin
+        /// </summary>
+        [Input("marketingPolicyOptInLabel")]
+        public Input<string>? MarketingPolicyOptInLabel { get; set; }
+
+        /// <summary>
+        /// marketing policy text
+        /// </summary>
+        [Input("marketingPolicyOptInText")]
+        public Input<string>? MarketingPolicyOptInText { get; set; }
+
         [Input("message")]
         public Input<string>? Message { get; set; }
 
@@ -422,7 +446,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? ResponsiveLayout { get; set; }
 
         /// <summary>
-        /// Label of the button to /signin
+        /// Label of the button to signin
         /// </summary>
         [Input("signInLabel")]
         public Input<string>? SignInLabel { get; set; }

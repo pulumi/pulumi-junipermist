@@ -10,9 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.org.VpnArgs;
 import com.pulumi.junipermist.org.inputs.VpnState;
+import com.pulumi.junipermist.org.outputs.VpnPathSelection;
 import com.pulumi.junipermist.org.outputs.VpnPaths;
 import java.lang.String;
 import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -103,11 +105,47 @@ public class Vpn extends com.pulumi.resources.CustomResource {
     public Output<String> orgId() {
         return this.orgId;
     }
+    /**
+     * Only if `type`==`hub_spoke`
+     * 
+     */
+    @Export(name="pathSelection", refs={VpnPathSelection.class}, tree="[0]")
+    private Output</* @Nullable */ VpnPathSelection> pathSelection;
+
+    /**
+     * @return Only if `type`==`hub_spoke`
+     * 
+     */
+    public Output<Optional<VpnPathSelection>> pathSelection() {
+        return Codegen.optional(this.pathSelection);
+    }
+    /**
+     * For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * 
+     */
     @Export(name="paths", refs={Map.class,String.class,VpnPaths.class}, tree="[0,1,2]")
     private Output<Map<String,VpnPaths>> paths;
 
+    /**
+     * @return For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * 
+     */
     public Output<Map<String,VpnPaths>> paths() {
         return this.paths;
+    }
+    /**
+     * enum: `hub_spoke`, `mesh`
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output<String> type;
+
+    /**
+     * @return enum: `hub_spoke`, `mesh`
+     * 
+     */
+    public Output<String> type() {
+        return this.type;
     }
 
     /**

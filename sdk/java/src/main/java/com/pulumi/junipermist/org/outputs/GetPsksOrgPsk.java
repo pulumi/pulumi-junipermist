@@ -20,7 +20,7 @@ public final class GetPsksOrgPsk {
      */
     private String adminSsoId;
     /**
-     * @return when the object has been created, in epoch
+     * @return When the object has been created, in epoch
      * 
      */
     private Double createdTime;
@@ -40,17 +40,17 @@ public final class GetPsksOrgPsk {
      */
     private Integer expiryNotificationTime;
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     private String id;
     /**
-     * @return if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * @return If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      * 
      */
     private String mac;
     /**
-     * @return if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+     * @return If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
      * 
      */
     private List<String> macs;
@@ -60,7 +60,7 @@ public final class GetPsksOrgPsk {
      */
     private Integer maxUsage;
     /**
-     * @return when the object has been modified for the last time, in epoch
+     * @return When the object has been modified for the last time, in epoch
      * 
      */
     private Double modifiedTime;
@@ -109,7 +109,7 @@ public final class GetPsksOrgPsk {
         return this.adminSsoId;
     }
     /**
-     * @return when the object has been created, in epoch
+     * @return When the object has been created, in epoch
      * 
      */
     public Double createdTime() {
@@ -137,21 +137,21 @@ public final class GetPsksOrgPsk {
         return this.expiryNotificationTime;
     }
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * @return If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      * 
      */
     public String mac() {
         return this.mac;
     }
     /**
-     * @return if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+     * @return If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
      * 
      */
     public List<String> macs() {
@@ -165,7 +165,7 @@ public final class GetPsksOrgPsk {
         return this.maxUsage;
     }
     /**
-     * @return when the object has been modified for the last time, in epoch
+     * @return When the object has been modified for the last time, in epoch
      * 
      */
     public Double modifiedTime() {

@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class WxtagSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// matched destination port, "0" means any
+        /// Matched destination port, "0" means any
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _subnets;
 
         /// <summary>
-        /// matched destination subnets and/or IP Addresses
+        /// Matched destination subnets and/or IP Addresses
         /// </summary>
         public InputList<string> Subnets
         {

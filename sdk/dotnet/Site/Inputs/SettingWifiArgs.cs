@@ -52,7 +52,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? LocateUnconnected { get; set; }
 
         /// <summary>
-        /// Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+        /// Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will disrupt the connection. If roaming is desired, keep it disabled.
         /// </summary>
         [Input("meshAllowDfs")]
         public Input<bool>? MeshAllowDfs { get; set; }

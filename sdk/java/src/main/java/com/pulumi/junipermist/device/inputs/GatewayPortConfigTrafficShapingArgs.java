@@ -18,14 +18,14 @@ public final class GatewayPortConfigTrafficShapingArgs extends com.pulumi.resour
     public static final GatewayPortConfigTrafficShapingArgs Empty = new GatewayPortConfigTrafficShapingArgs();
 
     /**
-     * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+     * percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
      * 
      */
     @Import(name="classPercentages")
     private @Nullable Output<List<Integer>> classPercentages;
 
     /**
-     * @return percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+     * @return percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
      * 
      */
     public Optional<Output<List<Integer>>> classPercentages() {
@@ -81,7 +81,7 @@ public final class GatewayPortConfigTrafficShapingArgs extends com.pulumi.resour
         }
 
         /**
-         * @param classPercentages percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+         * @param classPercentages percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class GatewayPortConfigTrafficShapingArgs extends com.pulumi.resour
         }
 
         /**
-         * @param classPercentages percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+         * @param classPercentages percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GatewayPortConfigTrafficShapingArgs extends com.pulumi.resour
         }
 
         /**
-         * @param classPercentages percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+         * @param classPercentages percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          * 
          * @return builder
          * 

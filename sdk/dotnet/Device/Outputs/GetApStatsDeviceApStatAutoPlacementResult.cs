@@ -30,10 +30,6 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string StatusDetail;
         /// <summary>
-        /// Flag to represent if auto_placement values are currently utilized
-        /// </summary>
-        public readonly bool UseAutoPlacement;
-        /// <summary>
         /// X Autoplaced Position in pixels
         /// </summary>
         public readonly double X;
@@ -60,8 +56,6 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string statusDetail,
 
-            bool useAutoPlacement,
-
             double x,
 
             double xM,
@@ -74,7 +68,6 @@ namespace Pulumi.JuniperMist.Device.Outputs
             RecommendedAnchor = recommendedAnchor;
             Status = status;
             StatusDetail = statusDetail;
-            UseAutoPlacement = useAutoPlacement;
             X = x;
             XM = xM;
             Y = y;

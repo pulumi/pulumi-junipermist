@@ -44,20 +44,23 @@ export function getGatewayStats(args: GetGatewayStatsArgs, opts?: pulumi.InvokeO
  */
 export interface GetGatewayStatsArgs {
     /**
-     * duration like 7d, 2w
+     * Duration like 7d, 2w
      */
     duration?: string;
     /**
-     * end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * End datetime, can be epoch or relative time like -1d, -2h; now if not specified
      */
     end?: number;
     mac?: string;
     orgId: string;
     siteId?: string;
     /**
-     * start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
      */
     start?: number;
+    /**
+     * enum: `all`, `connected`, `disconnected`
+     */
     status?: string;
 }
 
@@ -67,11 +70,11 @@ export interface GetGatewayStatsArgs {
 export interface GetGatewayStatsResult {
     readonly deviceGatewayStats: outputs.device.GetGatewayStatsDeviceGatewayStat[];
     /**
-     * duration like 7d, 2w
+     * Duration like 7d, 2w
      */
     readonly duration?: string;
     /**
-     * end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * End datetime, can be epoch or relative time like -1d, -2h; now if not specified
      */
     readonly end?: number;
     /**
@@ -82,9 +85,12 @@ export interface GetGatewayStatsResult {
     readonly orgId: string;
     readonly siteId?: string;
     /**
-     * start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
      */
     readonly start?: number;
+    /**
+     * enum: `all`, `connected`, `disconnected`
+     */
     readonly status?: string;
 }
 /**
@@ -125,19 +131,22 @@ export function getGatewayStatsOutput(args: GetGatewayStatsOutputArgs, opts?: pu
  */
 export interface GetGatewayStatsOutputArgs {
     /**
-     * duration like 7d, 2w
+     * Duration like 7d, 2w
      */
     duration?: pulumi.Input<string>;
     /**
-     * end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * End datetime, can be epoch or relative time like -1d, -2h; now if not specified
      */
     end?: pulumi.Input<number>;
     mac?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
     siteId?: pulumi.Input<string>;
     /**
-     * start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
      */
     start?: pulumi.Input<number>;
+    /**
+     * enum: `all`, `connected`, `disconnected`
+     */
     status?: pulumi.Input<string>;
 }

@@ -6,6 +6,7 @@ package com.pulumi.junipermist.org;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.junipermist.org.inputs.VpnPathSelectionArgs;
 import com.pulumi.junipermist.org.inputs.VpnPathsArgs;
 import java.lang.String;
 import java.util.Map;
@@ -32,11 +33,49 @@ public final class VpnArgs extends com.pulumi.resources.ResourceArgs {
         return this.orgId;
     }
 
+    /**
+     * Only if `type`==`hub_spoke`
+     * 
+     */
+    @Import(name="pathSelection")
+    private @Nullable Output<VpnPathSelectionArgs> pathSelection;
+
+    /**
+     * @return Only if `type`==`hub_spoke`
+     * 
+     */
+    public Optional<Output<VpnPathSelectionArgs>> pathSelection() {
+        return Optional.ofNullable(this.pathSelection);
+    }
+
+    /**
+     * For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * 
+     */
     @Import(name="paths", required=true)
     private Output<Map<String,VpnPathsArgs>> paths;
 
+    /**
+     * @return For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * 
+     */
     public Output<Map<String,VpnPathsArgs>> paths() {
         return this.paths;
+    }
+
+    /**
+     * enum: `hub_spoke`, `mesh`
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return enum: `hub_spoke`, `mesh`
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     private VpnArgs() {}
@@ -44,7 +83,9 @@ public final class VpnArgs extends com.pulumi.resources.ResourceArgs {
     private VpnArgs(VpnArgs $) {
         this.name = $.name;
         this.orgId = $.orgId;
+        this.pathSelection = $.pathSelection;
         this.paths = $.paths;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -83,13 +124,67 @@ public final class VpnArgs extends com.pulumi.resources.ResourceArgs {
             return orgId(Output.of(orgId));
         }
 
+        /**
+         * @param pathSelection Only if `type`==`hub_spoke`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pathSelection(@Nullable Output<VpnPathSelectionArgs> pathSelection) {
+            $.pathSelection = pathSelection;
+            return this;
+        }
+
+        /**
+         * @param pathSelection Only if `type`==`hub_spoke`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pathSelection(VpnPathSelectionArgs pathSelection) {
+            return pathSelection(Output.of(pathSelection));
+        }
+
+        /**
+         * @param paths For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+         * 
+         * @return builder
+         * 
+         */
         public Builder paths(Output<Map<String,VpnPathsArgs>> paths) {
             $.paths = paths;
             return this;
         }
 
+        /**
+         * @param paths For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+         * 
+         * @return builder
+         * 
+         */
         public Builder paths(Map<String,VpnPathsArgs> paths) {
             return paths(Output.of(paths));
+        }
+
+        /**
+         * @param type enum: `hub_spoke`, `mesh`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type enum: `hub_spoke`, `mesh`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public VpnArgs build() {

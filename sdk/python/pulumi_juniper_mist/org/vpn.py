@@ -23,14 +23,23 @@ class VpnArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[str],
                  paths: pulumi.Input[Mapping[str, pulumi.Input['VpnPathsArgs']]],
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 path_selection: Optional[pulumi.Input['VpnPathSelectionArgs']] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Vpn resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input['VpnPathsArgs']]] paths: For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+        :param pulumi.Input['VpnPathSelectionArgs'] path_selection: Only if `type`==`hub_spoke`
+        :param pulumi.Input[str] type: enum: `hub_spoke`, `mesh`
         """
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "paths", paths)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if path_selection is not None:
+            pulumi.set(__self__, "path_selection", path_selection)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="orgId")
@@ -44,6 +53,9 @@ class VpnArgs:
     @property
     @pulumi.getter
     def paths(self) -> pulumi.Input[Mapping[str, pulumi.Input['VpnPathsArgs']]]:
+        """
+        For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+        """
         return pulumi.get(self, "paths")
 
     @paths.setter
@@ -59,22 +71,55 @@ class VpnArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="pathSelection")
+    def path_selection(self) -> Optional[pulumi.Input['VpnPathSelectionArgs']]:
+        """
+        Only if `type`==`hub_spoke`
+        """
+        return pulumi.get(self, "path_selection")
+
+    @path_selection.setter
+    def path_selection(self, value: Optional[pulumi.Input['VpnPathSelectionArgs']]):
+        pulumi.set(self, "path_selection", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        enum: `hub_spoke`, `mesh`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
 
 @pulumi.input_type
 class _VpnState:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 paths: Optional[pulumi.Input[Mapping[str, pulumi.Input['VpnPathsArgs']]]] = None):
+                 path_selection: Optional[pulumi.Input['VpnPathSelectionArgs']] = None,
+                 paths: Optional[pulumi.Input[Mapping[str, pulumi.Input['VpnPathsArgs']]]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Vpn resources.
+        :param pulumi.Input['VpnPathSelectionArgs'] path_selection: Only if `type`==`hub_spoke`
+        :param pulumi.Input[Mapping[str, pulumi.Input['VpnPathsArgs']]] paths: For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+        :param pulumi.Input[str] type: enum: `hub_spoke`, `mesh`
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
+        if path_selection is not None:
+            pulumi.set(__self__, "path_selection", path_selection)
         if paths is not None:
             pulumi.set(__self__, "paths", paths)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -95,13 +140,40 @@ class _VpnState:
         pulumi.set(self, "org_id", value)
 
     @property
+    @pulumi.getter(name="pathSelection")
+    def path_selection(self) -> Optional[pulumi.Input['VpnPathSelectionArgs']]:
+        """
+        Only if `type`==`hub_spoke`
+        """
+        return pulumi.get(self, "path_selection")
+
+    @path_selection.setter
+    def path_selection(self, value: Optional[pulumi.Input['VpnPathSelectionArgs']]):
+        pulumi.set(self, "path_selection", value)
+
+    @property
     @pulumi.getter
     def paths(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['VpnPathsArgs']]]]:
+        """
+        For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+        """
         return pulumi.get(self, "paths")
 
     @paths.setter
     def paths(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['VpnPathsArgs']]]]):
         pulumi.set(self, "paths", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        enum: `hub_spoke`, `mesh`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 class Vpn(pulumi.CustomResource):
@@ -111,7 +183,9 @@ class Vpn(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
+                 path_selection: Optional[pulumi.Input[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict']]] = None,
                  paths: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         This resource manages the Org VPN.
@@ -128,6 +202,9 @@ class Vpn(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict']] path_selection: Only if `type`==`hub_spoke`
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]] paths: For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+        :param pulumi.Input[str] type: enum: `hub_spoke`, `mesh`
         """
         ...
     @overload
@@ -165,7 +242,9 @@ class Vpn(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
+                 path_selection: Optional[pulumi.Input[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict']]] = None,
                  paths: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -179,9 +258,11 @@ class Vpn(pulumi.CustomResource):
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
+            __props__.__dict__["path_selection"] = path_selection
             if paths is None and not opts.urn:
                 raise TypeError("Missing required property 'paths'")
             __props__.__dict__["paths"] = paths
+            __props__.__dict__["type"] = type
         super(Vpn, __self__).__init__(
             'junipermist:org/vpn:Vpn',
             resource_name,
@@ -194,7 +275,9 @@ class Vpn(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
-            paths: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]]] = None) -> 'Vpn':
+            path_selection: Optional[pulumi.Input[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict']]] = None,
+            paths: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]]] = None,
+            type: Optional[pulumi.Input[str]] = None) -> 'Vpn':
         """
         Get an existing Vpn resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -202,6 +285,9 @@ class Vpn(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict']] path_selection: Only if `type`==`hub_spoke`
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]] paths: For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+        :param pulumi.Input[str] type: enum: `hub_spoke`, `mesh`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -209,7 +295,9 @@ class Vpn(pulumi.CustomResource):
 
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
+        __props__.__dict__["path_selection"] = path_selection
         __props__.__dict__["paths"] = paths
+        __props__.__dict__["type"] = type
         return Vpn(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -223,7 +311,26 @@ class Vpn(pulumi.CustomResource):
         return pulumi.get(self, "org_id")
 
     @property
+    @pulumi.getter(name="pathSelection")
+    def path_selection(self) -> pulumi.Output[Optional['outputs.VpnPathSelection']]:
+        """
+        Only if `type`==`hub_spoke`
+        """
+        return pulumi.get(self, "path_selection")
+
+    @property
     @pulumi.getter
     def paths(self) -> pulumi.Output[Mapping[str, 'outputs.VpnPaths']]:
+        """
+        For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+        """
         return pulumi.get(self, "paths")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        enum: `hub_spoke`, `mesh`
+        """
+        return pulumi.get(self, "type")
 

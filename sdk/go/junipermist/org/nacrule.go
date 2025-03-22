@@ -14,7 +14,7 @@ import (
 
 // This resource manages the NAC Rules (Auth Policies).
 //
-// A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+// A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
 //
 // ## Import
 //
@@ -30,14 +30,14 @@ type Nacrule struct {
 
 	// enum: `allow`, `block`
 	Action pulumi.StringOutput `pulumi:"action"`
-	// all optional, this goes into Access-Accept
+	// All optional, this goes into Access-Accept
 	ApplyTags pulumi.StringArrayOutput `pulumi:"applyTags"`
-	// enabled or not
+	// Enabled or not
 	Enabled     pulumi.BoolOutput           `pulumi:"enabled"`
 	Matching    NacruleMatchingPtrOutput    `pulumi:"matching"`
 	Name        pulumi.StringOutput         `pulumi:"name"`
 	NotMatching NacruleNotMatchingPtrOutput `pulumi:"notMatching"`
-	// the order of the rule, lower value implies higher priority
+	// Order of the rule, lower value implies higher priority
 	Order pulumi.IntOutput    `pulumi:"order"`
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 }
@@ -83,14 +83,14 @@ func GetNacrule(ctx *pulumi.Context,
 type nacruleState struct {
 	// enum: `allow`, `block`
 	Action *string `pulumi:"action"`
-	// all optional, this goes into Access-Accept
+	// All optional, this goes into Access-Accept
 	ApplyTags []string `pulumi:"applyTags"`
-	// enabled or not
+	// Enabled or not
 	Enabled     *bool               `pulumi:"enabled"`
 	Matching    *NacruleMatching    `pulumi:"matching"`
 	Name        *string             `pulumi:"name"`
 	NotMatching *NacruleNotMatching `pulumi:"notMatching"`
-	// the order of the rule, lower value implies higher priority
+	// Order of the rule, lower value implies higher priority
 	Order *int    `pulumi:"order"`
 	OrgId *string `pulumi:"orgId"`
 }
@@ -98,14 +98,14 @@ type nacruleState struct {
 type NacruleState struct {
 	// enum: `allow`, `block`
 	Action pulumi.StringPtrInput
-	// all optional, this goes into Access-Accept
+	// All optional, this goes into Access-Accept
 	ApplyTags pulumi.StringArrayInput
-	// enabled or not
+	// Enabled or not
 	Enabled     pulumi.BoolPtrInput
 	Matching    NacruleMatchingPtrInput
 	Name        pulumi.StringPtrInput
 	NotMatching NacruleNotMatchingPtrInput
-	// the order of the rule, lower value implies higher priority
+	// Order of the rule, lower value implies higher priority
 	Order pulumi.IntPtrInput
 	OrgId pulumi.StringPtrInput
 }
@@ -117,14 +117,14 @@ func (NacruleState) ElementType() reflect.Type {
 type nacruleArgs struct {
 	// enum: `allow`, `block`
 	Action string `pulumi:"action"`
-	// all optional, this goes into Access-Accept
+	// All optional, this goes into Access-Accept
 	ApplyTags []string `pulumi:"applyTags"`
-	// enabled or not
+	// Enabled or not
 	Enabled     *bool               `pulumi:"enabled"`
 	Matching    *NacruleMatching    `pulumi:"matching"`
 	Name        *string             `pulumi:"name"`
 	NotMatching *NacruleNotMatching `pulumi:"notMatching"`
-	// the order of the rule, lower value implies higher priority
+	// Order of the rule, lower value implies higher priority
 	Order int    `pulumi:"order"`
 	OrgId string `pulumi:"orgId"`
 }
@@ -133,14 +133,14 @@ type nacruleArgs struct {
 type NacruleArgs struct {
 	// enum: `allow`, `block`
 	Action pulumi.StringInput
-	// all optional, this goes into Access-Accept
+	// All optional, this goes into Access-Accept
 	ApplyTags pulumi.StringArrayInput
-	// enabled or not
+	// Enabled or not
 	Enabled     pulumi.BoolPtrInput
 	Matching    NacruleMatchingPtrInput
 	Name        pulumi.StringPtrInput
 	NotMatching NacruleNotMatchingPtrInput
-	// the order of the rule, lower value implies higher priority
+	// Order of the rule, lower value implies higher priority
 	Order pulumi.IntInput
 	OrgId pulumi.StringInput
 }
@@ -237,12 +237,12 @@ func (o NacruleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *Nacrule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
 
-// all optional, this goes into Access-Accept
+// All optional, this goes into Access-Accept
 func (o NacruleOutput) ApplyTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Nacrule) pulumi.StringArrayOutput { return v.ApplyTags }).(pulumi.StringArrayOutput)
 }
 
-// enabled or not
+// Enabled or not
 func (o NacruleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Nacrule) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -259,7 +259,7 @@ func (o NacruleOutput) NotMatching() NacruleNotMatchingPtrOutput {
 	return o.ApplyT(func(v *Nacrule) NacruleNotMatchingPtrOutput { return v.NotMatching }).(NacruleNotMatchingPtrOutput)
 }
 
-// the order of the rule, lower value implies higher priority
+// Order of the rule, lower value implies higher priority
 func (o NacruleOutput) Order() pulumi.IntOutput {
 	return o.ApplyT(func(v *Nacrule) pulumi.IntOutput { return v.Order }).(pulumi.IntOutput)
 }

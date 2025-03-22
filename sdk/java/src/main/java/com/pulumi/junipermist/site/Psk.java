@@ -124,14 +124,14 @@ public class Psk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.expiryNotificationTime);
     }
     /**
-     * if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      * 
      */
     @Export(name="mac", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mac;
 
     /**
-     * @return if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * @return If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      * 
      */
     public Output<Optional<String>> mac() {

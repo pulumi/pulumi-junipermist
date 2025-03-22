@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatApRedundancy;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatArpTableStats;
+import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatBgpPeer;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatClusterConfig;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatClusterStat;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatCpu2Stat;
@@ -22,12 +23,15 @@ import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatMem
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatMemoryStat;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatModule2Stat;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatModuleStat;
+import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatPort;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatRouteSummaryStats;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatService2Stat;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatServiceStat;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatServiceStatus;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatSpu2Stat;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatSpuStat;
+import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatTunnel;
+import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatVpnPeer;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -40,6 +44,11 @@ import java.util.Objects;
 public final class GetGatewayStatsDeviceGatewayStat {
     private GetGatewayStatsDeviceGatewayStatApRedundancy apRedundancy;
     private GetGatewayStatsDeviceGatewayStatArpTableStats arpTableStats;
+    /**
+     * @return Only present when `bgp_peers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
+     * 
+     */
+    private List<GetGatewayStatsDeviceGatewayStatBgpPeer> bgpPeers;
     private Integer certExpiry;
     private GetGatewayStatsDeviceGatewayStatClusterConfig clusterConfig;
     private GetGatewayStatsDeviceGatewayStatClusterStat clusterStat;
@@ -47,7 +56,11 @@ public final class GetGatewayStatsDeviceGatewayStat {
     private String configStatus;
     private GetGatewayStatsDeviceGatewayStatCpu2Stat cpu2Stat;
     private GetGatewayStatsDeviceGatewayStatCpuStat cpuStat;
-    private Integer createdTime;
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
+    private Double createdTime;
     private String deviceprofileId;
     /**
      * @return Property key is the network name
@@ -67,12 +80,12 @@ public final class GetGatewayStatsDeviceGatewayStat {
     private GetGatewayStatsDeviceGatewayStatFwupdate fwupdate;
     private Boolean hasPcap;
     /**
-     * @return hostname reported by the device
+     * @return Hostname reported by the device
      * 
      */
     private String hostname;
     /**
-     * @return serial
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     private String id;
@@ -95,73 +108,84 @@ public final class GetGatewayStatsDeviceGatewayStat {
     private GetGatewayStatsDeviceGatewayStatIpStat ipStat;
     private Boolean isHa;
     /**
-     * @return last seen timestamp
+     * @return Last seen timestamp
      * 
      */
     private Double lastSeen;
     /**
-     * @return device mac
+     * @return Device mac
      * 
      */
     private String mac;
     /**
-     * @return serial
+     * @return Serial Number
      * 
      */
     private String mapId;
     /**
-     * @return memory usage stat (for virtual chassis, memory usage of master RE)
+     * @return Memory usage stat (for virtual chassis, memory usage of master RE)
      * 
      */
     private GetGatewayStatsDeviceGatewayStatMemory2Stat memory2Stat;
     /**
-     * @return memory usage stat (for virtual chassis, memory usage of master RE)
+     * @return Memory usage stat (for virtual chassis, memory usage of master RE)
      * 
      */
     private GetGatewayStatsDeviceGatewayStatMemoryStat memoryStat;
     /**
-     * @return device model
+     * @return Device model
      * 
      */
     private String model;
-    private Integer modifiedTime;
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
+    private Double modifiedTime;
     private List<GetGatewayStatsDeviceGatewayStatModule2Stat> module2Stats;
     private List<GetGatewayStatsDeviceGatewayStatModuleStat> moduleStats;
     /**
-     * @return device name if configured
+     * @return Device name if configured
      * 
      */
     private String name;
     private String nodeName;
+    private String orgId;
     /**
-     * @return serial
+     * @return Only present when `ports` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/ports/search` result object, except that org*id, site*id, mac, model are removed
      * 
      */
-    private String orgId;
+    private List<GetGatewayStatsDeviceGatewayStatPort> ports;
     private GetGatewayStatsDeviceGatewayStatRouteSummaryStats routeSummaryStats;
     /**
-     * @return device name if configured
+     * @return Device name if configured
      * 
      */
     private String routerName;
     /**
-     * @return serial
+     * @return Serial Number
      * 
      */
     private String serial;
     private Map<String,GetGatewayStatsDeviceGatewayStatService2Stat> service2Stat;
     private Map<String,GetGatewayStatsDeviceGatewayStatServiceStat> serviceStat;
     private GetGatewayStatsDeviceGatewayStatServiceStatus serviceStatus;
-    /**
-     * @return serial
-     * 
-     */
     private String siteId;
     private List<GetGatewayStatsDeviceGatewayStatSpu2Stat> spu2Stats;
     private List<GetGatewayStatsDeviceGatewayStatSpuStat> spuStats;
     private String status;
+    /**
+     * @return Only present when `tunnels` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/tunnels/search` result object, except that org*id, site*id, mac, model are removed
+     * 
+     */
+    private List<GetGatewayStatsDeviceGatewayStatTunnel> tunnels;
     private Double uptime;
     private String version;
+    /**
+     * @return Only present when `vpn_peers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/vpn_peers/search` result object, except that org*id, site*id, mac, model are removed
+     * 
+     */
+    private List<GetGatewayStatsDeviceGatewayStatVpnPeer> vpnPeers;
 
     private GetGatewayStatsDeviceGatewayStat() {}
     public GetGatewayStatsDeviceGatewayStatApRedundancy apRedundancy() {
@@ -169,6 +193,13 @@ public final class GetGatewayStatsDeviceGatewayStat {
     }
     public GetGatewayStatsDeviceGatewayStatArpTableStats arpTableStats() {
         return this.arpTableStats;
+    }
+    /**
+     * @return Only present when `bgp_peers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
+     * 
+     */
+    public List<GetGatewayStatsDeviceGatewayStatBgpPeer> bgpPeers() {
+        return this.bgpPeers;
     }
     public Integer certExpiry() {
         return this.certExpiry;
@@ -191,7 +222,11 @@ public final class GetGatewayStatsDeviceGatewayStat {
     public GetGatewayStatsDeviceGatewayStatCpuStat cpuStat() {
         return this.cpuStat;
     }
-    public Integer createdTime() {
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
+    public Double createdTime() {
         return this.createdTime;
     }
     public String deviceprofileId() {
@@ -225,14 +260,14 @@ public final class GetGatewayStatsDeviceGatewayStat {
         return this.hasPcap;
     }
     /**
-     * @return hostname reported by the device
+     * @return Hostname reported by the device
      * 
      */
     public String hostname() {
         return this.hostname;
     }
     /**
-     * @return serial
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     public String id() {
@@ -269,48 +304,52 @@ public final class GetGatewayStatsDeviceGatewayStat {
         return this.isHa;
     }
     /**
-     * @return last seen timestamp
+     * @return Last seen timestamp
      * 
      */
     public Double lastSeen() {
         return this.lastSeen;
     }
     /**
-     * @return device mac
+     * @return Device mac
      * 
      */
     public String mac() {
         return this.mac;
     }
     /**
-     * @return serial
+     * @return Serial Number
      * 
      */
     public String mapId() {
         return this.mapId;
     }
     /**
-     * @return memory usage stat (for virtual chassis, memory usage of master RE)
+     * @return Memory usage stat (for virtual chassis, memory usage of master RE)
      * 
      */
     public GetGatewayStatsDeviceGatewayStatMemory2Stat memory2Stat() {
         return this.memory2Stat;
     }
     /**
-     * @return memory usage stat (for virtual chassis, memory usage of master RE)
+     * @return Memory usage stat (for virtual chassis, memory usage of master RE)
      * 
      */
     public GetGatewayStatsDeviceGatewayStatMemoryStat memoryStat() {
         return this.memoryStat;
     }
     /**
-     * @return device model
+     * @return Device model
      * 
      */
     public String model() {
         return this.model;
     }
-    public Integer modifiedTime() {
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
+    public Double modifiedTime() {
         return this.modifiedTime;
     }
     public List<GetGatewayStatsDeviceGatewayStatModule2Stat> module2Stats() {
@@ -320,7 +359,7 @@ public final class GetGatewayStatsDeviceGatewayStat {
         return this.moduleStats;
     }
     /**
-     * @return device name if configured
+     * @return Device name if configured
      * 
      */
     public String name() {
@@ -329,25 +368,28 @@ public final class GetGatewayStatsDeviceGatewayStat {
     public String nodeName() {
         return this.nodeName;
     }
-    /**
-     * @return serial
-     * 
-     */
     public String orgId() {
         return this.orgId;
+    }
+    /**
+     * @return Only present when `ports` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/ports/search` result object, except that org*id, site*id, mac, model are removed
+     * 
+     */
+    public List<GetGatewayStatsDeviceGatewayStatPort> ports() {
+        return this.ports;
     }
     public GetGatewayStatsDeviceGatewayStatRouteSummaryStats routeSummaryStats() {
         return this.routeSummaryStats;
     }
     /**
-     * @return device name if configured
+     * @return Device name if configured
      * 
      */
     public String routerName() {
         return this.routerName;
     }
     /**
-     * @return serial
+     * @return Serial Number
      * 
      */
     public String serial() {
@@ -362,10 +404,6 @@ public final class GetGatewayStatsDeviceGatewayStat {
     public GetGatewayStatsDeviceGatewayStatServiceStatus serviceStatus() {
         return this.serviceStatus;
     }
-    /**
-     * @return serial
-     * 
-     */
     public String siteId() {
         return this.siteId;
     }
@@ -378,11 +416,25 @@ public final class GetGatewayStatsDeviceGatewayStat {
     public String status() {
         return this.status;
     }
+    /**
+     * @return Only present when `tunnels` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/tunnels/search` result object, except that org*id, site*id, mac, model are removed
+     * 
+     */
+    public List<GetGatewayStatsDeviceGatewayStatTunnel> tunnels() {
+        return this.tunnels;
+    }
     public Double uptime() {
         return this.uptime;
     }
     public String version() {
         return this.version;
+    }
+    /**
+     * @return Only present when `vpn_peers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/vpn_peers/search` result object, except that org*id, site*id, mac, model are removed
+     * 
+     */
+    public List<GetGatewayStatsDeviceGatewayStatVpnPeer> vpnPeers() {
+        return this.vpnPeers;
     }
 
     public static Builder builder() {
@@ -396,6 +448,7 @@ public final class GetGatewayStatsDeviceGatewayStat {
     public static final class Builder {
         private GetGatewayStatsDeviceGatewayStatApRedundancy apRedundancy;
         private GetGatewayStatsDeviceGatewayStatArpTableStats arpTableStats;
+        private List<GetGatewayStatsDeviceGatewayStatBgpPeer> bgpPeers;
         private Integer certExpiry;
         private GetGatewayStatsDeviceGatewayStatClusterConfig clusterConfig;
         private GetGatewayStatsDeviceGatewayStatClusterStat clusterStat;
@@ -403,7 +456,7 @@ public final class GetGatewayStatsDeviceGatewayStat {
         private String configStatus;
         private GetGatewayStatsDeviceGatewayStatCpu2Stat cpu2Stat;
         private GetGatewayStatsDeviceGatewayStatCpuStat cpuStat;
-        private Integer createdTime;
+        private Double createdTime;
         private String deviceprofileId;
         private Map<String,GetGatewayStatsDeviceGatewayStatDhcpd2Stat> dhcpd2Stat;
         private Map<String,GetGatewayStatsDeviceGatewayStatDhcpdStat> dhcpdStat;
@@ -424,12 +477,13 @@ public final class GetGatewayStatsDeviceGatewayStat {
         private GetGatewayStatsDeviceGatewayStatMemory2Stat memory2Stat;
         private GetGatewayStatsDeviceGatewayStatMemoryStat memoryStat;
         private String model;
-        private Integer modifiedTime;
+        private Double modifiedTime;
         private List<GetGatewayStatsDeviceGatewayStatModule2Stat> module2Stats;
         private List<GetGatewayStatsDeviceGatewayStatModuleStat> moduleStats;
         private String name;
         private String nodeName;
         private String orgId;
+        private List<GetGatewayStatsDeviceGatewayStatPort> ports;
         private GetGatewayStatsDeviceGatewayStatRouteSummaryStats routeSummaryStats;
         private String routerName;
         private String serial;
@@ -440,13 +494,16 @@ public final class GetGatewayStatsDeviceGatewayStat {
         private List<GetGatewayStatsDeviceGatewayStatSpu2Stat> spu2Stats;
         private List<GetGatewayStatsDeviceGatewayStatSpuStat> spuStats;
         private String status;
+        private List<GetGatewayStatsDeviceGatewayStatTunnel> tunnels;
         private Double uptime;
         private String version;
+        private List<GetGatewayStatsDeviceGatewayStatVpnPeer> vpnPeers;
         public Builder() {}
         public Builder(GetGatewayStatsDeviceGatewayStat defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apRedundancy = defaults.apRedundancy;
     	      this.arpTableStats = defaults.arpTableStats;
+    	      this.bgpPeers = defaults.bgpPeers;
     	      this.certExpiry = defaults.certExpiry;
     	      this.clusterConfig = defaults.clusterConfig;
     	      this.clusterStat = defaults.clusterStat;
@@ -481,6 +538,7 @@ public final class GetGatewayStatsDeviceGatewayStat {
     	      this.name = defaults.name;
     	      this.nodeName = defaults.nodeName;
     	      this.orgId = defaults.orgId;
+    	      this.ports = defaults.ports;
     	      this.routeSummaryStats = defaults.routeSummaryStats;
     	      this.routerName = defaults.routerName;
     	      this.serial = defaults.serial;
@@ -491,8 +549,10 @@ public final class GetGatewayStatsDeviceGatewayStat {
     	      this.spu2Stats = defaults.spu2Stats;
     	      this.spuStats = defaults.spuStats;
     	      this.status = defaults.status;
+    	      this.tunnels = defaults.tunnels;
     	      this.uptime = defaults.uptime;
     	      this.version = defaults.version;
+    	      this.vpnPeers = defaults.vpnPeers;
         }
 
         @CustomType.Setter
@@ -510,6 +570,17 @@ public final class GetGatewayStatsDeviceGatewayStat {
             }
             this.arpTableStats = arpTableStats;
             return this;
+        }
+        @CustomType.Setter
+        public Builder bgpPeers(List<GetGatewayStatsDeviceGatewayStatBgpPeer> bgpPeers) {
+            if (bgpPeers == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "bgpPeers");
+            }
+            this.bgpPeers = bgpPeers;
+            return this;
+        }
+        public Builder bgpPeers(GetGatewayStatsDeviceGatewayStatBgpPeer... bgpPeers) {
+            return bgpPeers(List.of(bgpPeers));
         }
         @CustomType.Setter
         public Builder certExpiry(Integer certExpiry) {
@@ -568,7 +639,7 @@ public final class GetGatewayStatsDeviceGatewayStat {
             return this;
         }
         @CustomType.Setter
-        public Builder createdTime(Integer createdTime) {
+        public Builder createdTime(Double createdTime) {
             if (createdTime == null) {
               throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "createdTime");
             }
@@ -736,7 +807,7 @@ public final class GetGatewayStatsDeviceGatewayStat {
             return this;
         }
         @CustomType.Setter
-        public Builder modifiedTime(Integer modifiedTime) {
+        public Builder modifiedTime(Double modifiedTime) {
             if (modifiedTime == null) {
               throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "modifiedTime");
             }
@@ -788,6 +859,17 @@ public final class GetGatewayStatsDeviceGatewayStat {
             }
             this.orgId = orgId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ports(List<GetGatewayStatsDeviceGatewayStatPort> ports) {
+            if (ports == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "ports");
+            }
+            this.ports = ports;
+            return this;
+        }
+        public Builder ports(GetGatewayStatsDeviceGatewayStatPort... ports) {
+            return ports(List.of(ports));
         }
         @CustomType.Setter
         public Builder routeSummaryStats(GetGatewayStatsDeviceGatewayStatRouteSummaryStats routeSummaryStats) {
@@ -876,6 +958,17 @@ public final class GetGatewayStatsDeviceGatewayStat {
             return this;
         }
         @CustomType.Setter
+        public Builder tunnels(List<GetGatewayStatsDeviceGatewayStatTunnel> tunnels) {
+            if (tunnels == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "tunnels");
+            }
+            this.tunnels = tunnels;
+            return this;
+        }
+        public Builder tunnels(GetGatewayStatsDeviceGatewayStatTunnel... tunnels) {
+            return tunnels(List.of(tunnels));
+        }
+        @CustomType.Setter
         public Builder uptime(Double uptime) {
             if (uptime == null) {
               throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "uptime");
@@ -891,10 +984,22 @@ public final class GetGatewayStatsDeviceGatewayStat {
             this.version = version;
             return this;
         }
+        @CustomType.Setter
+        public Builder vpnPeers(List<GetGatewayStatsDeviceGatewayStatVpnPeer> vpnPeers) {
+            if (vpnPeers == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "vpnPeers");
+            }
+            this.vpnPeers = vpnPeers;
+            return this;
+        }
+        public Builder vpnPeers(GetGatewayStatsDeviceGatewayStatVpnPeer... vpnPeers) {
+            return vpnPeers(List.of(vpnPeers));
+        }
         public GetGatewayStatsDeviceGatewayStat build() {
             final var _resultValue = new GetGatewayStatsDeviceGatewayStat();
             _resultValue.apRedundancy = apRedundancy;
             _resultValue.arpTableStats = arpTableStats;
+            _resultValue.bgpPeers = bgpPeers;
             _resultValue.certExpiry = certExpiry;
             _resultValue.clusterConfig = clusterConfig;
             _resultValue.clusterStat = clusterStat;
@@ -929,6 +1034,7 @@ public final class GetGatewayStatsDeviceGatewayStat {
             _resultValue.name = name;
             _resultValue.nodeName = nodeName;
             _resultValue.orgId = orgId;
+            _resultValue.ports = ports;
             _resultValue.routeSummaryStats = routeSummaryStats;
             _resultValue.routerName = routerName;
             _resultValue.serial = serial;
@@ -939,8 +1045,10 @@ public final class GetGatewayStatsDeviceGatewayStat {
             _resultValue.spu2Stats = spu2Stats;
             _resultValue.spuStats = spuStats;
             _resultValue.status = status;
+            _resultValue.tunnels = tunnels;
             _resultValue.uptime = uptime;
             _resultValue.version = version;
+            _resultValue.vpnPeers = vpnPeers;
             return _resultValue;
         }
     }

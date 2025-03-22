@@ -11,6 +11,7 @@ import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.device.BaseArgs;
 import com.pulumi.junipermist.device.inputs.BaseState;
 import com.pulumi.junipermist.device.outputs.BaseLatlng;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -133,14 +134,14 @@ public class Base extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.aptemplateId);
     }
     /**
-     * country code for the site (for AP config generation), in two-character
+     * Country code for the site (for AP config generation), in two-character
      * 
      */
     @Export(name="countryCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> countryCode;
 
     /**
-     * @return country code for the site (for AP config generation), in two-character
+     * @return Country code for the site (for AP config generation), in two-character
      * 
      */
     public Output<Optional<String>> countryCode() {
@@ -187,14 +188,14 @@ public class Base extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.networktemplateId);
     }
     /**
-     * optional, any notes about the site
+     * Optional, any notes about the site
      * 
      */
     @Export(name="notes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notes;
 
     /**
-     * @return optional, any notes about the site
+     * @return Optional, any notes about the site
      * 
      */
     public Output<Optional<String>> notes() {
@@ -235,14 +236,14 @@ public class Base extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.secpolicyId);
     }
     /**
-     * sitegroups this site belongs to
+     * Sitegroups this site belongs to
      * 
      */
     @Export(name="sitegroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> sitegroupIds;
 
     /**
-     * @return sitegroups this site belongs to
+     * @return Sitegroups this site belongs to
      * 
      */
     public Output<Optional<List<String>>> sitegroupIds() {
@@ -275,6 +276,12 @@ public class Base extends com.pulumi.resources.CustomResource {
      */
     public Output<String> timezone() {
         return this.timezone;
+    }
+    @Export(name="tzoffset", refs={Integer.class}, tree="[0]")
+    private Output<Integer> tzoffset;
+
+    public Output<Integer> tzoffset() {
+        return this.tzoffset;
     }
 
     /**

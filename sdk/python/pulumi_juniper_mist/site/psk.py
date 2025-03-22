@@ -41,7 +41,7 @@ class PskArgs:
         :param pulumi.Input[str] email: email to send psk expiring notifications to
         :param pulumi.Input[int] expire_time: Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
         :param pulumi.Input[int] expiry_notification_time: Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
-        :param pulumi.Input[str] mac: if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        :param pulumi.Input[str] mac: If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         :param pulumi.Input[bool] notify_expiry: If set to true, reminder notification will be sent when psk is about to expire
         :param pulumi.Input[bool] notify_on_create_or_edit: If set to true, notification will be sent when psk is created or edited
         :param pulumi.Input[str] old_passphrase: previous passphrase of the PSK if it has been rotated
@@ -148,7 +148,7 @@ class PskArgs:
     @pulumi.getter
     def mac(self) -> Optional[pulumi.Input[str]]:
         """
-        if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         """
         return pulumi.get(self, "mac")
 
@@ -265,7 +265,7 @@ class _PskState:
         :param pulumi.Input[str] email: email to send psk expiring notifications to
         :param pulumi.Input[int] expire_time: Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
         :param pulumi.Input[int] expiry_notification_time: Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
-        :param pulumi.Input[str] mac: if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        :param pulumi.Input[str] mac: If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         :param pulumi.Input[bool] notify_expiry: If set to true, reminder notification will be sent when psk is about to expire
         :param pulumi.Input[bool] notify_on_create_or_edit: If set to true, notification will be sent when psk is created or edited
         :param pulumi.Input[str] old_passphrase: previous passphrase of the PSK if it has been rotated
@@ -346,7 +346,7 @@ class _PskState:
     @pulumi.getter
     def mac(self) -> Optional[pulumi.Input[str]]:
         """
-        if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         """
         return pulumi.get(self, "mac")
 
@@ -543,7 +543,7 @@ class Psk(pulumi.CustomResource):
         :param pulumi.Input[str] email: email to send psk expiring notifications to
         :param pulumi.Input[int] expire_time: Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
         :param pulumi.Input[int] expiry_notification_time: Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
-        :param pulumi.Input[str] mac: if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        :param pulumi.Input[str] mac: If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         :param pulumi.Input[bool] notify_expiry: If set to true, reminder notification will be sent when psk is about to expire
         :param pulumi.Input[bool] notify_on_create_or_edit: If set to true, notification will be sent when psk is created or edited
         :param pulumi.Input[str] old_passphrase: previous passphrase of the PSK if it has been rotated
@@ -692,7 +692,7 @@ class Psk(pulumi.CustomResource):
         :param pulumi.Input[str] email: email to send psk expiring notifications to
         :param pulumi.Input[int] expire_time: Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
         :param pulumi.Input[int] expiry_notification_time: Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
-        :param pulumi.Input[str] mac: if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        :param pulumi.Input[str] mac: If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         :param pulumi.Input[bool] notify_expiry: If set to true, reminder notification will be sent when psk is about to expire
         :param pulumi.Input[bool] notify_on_create_or_edit: If set to true, notification will be sent when psk is created or edited
         :param pulumi.Input[str] old_passphrase: previous passphrase of the PSK if it has been rotated
@@ -750,7 +750,7 @@ class Psk(pulumi.CustomResource):
     @pulumi.getter
     def mac(self) -> pulumi.Output[Optional[str]]:
         """
-        if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         """
         return pulumi.get(self, "mac")
 

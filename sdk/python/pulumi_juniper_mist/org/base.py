@@ -86,7 +86,7 @@ class _BaseState:
         """
         Input properties used for looking up and filtering Base resources.
         :param pulumi.Input[str] msp_logo_url: logo uploaded by the MSP with advanced tier, only present if provided
-        :param pulumi.Input[str] msp_name: name of the msp the org belongs to
+        :param pulumi.Input[str] msp_name: Name of the msp the org belongs to
         """
         if alarmtemplate_id is not None:
             pulumi.set(__self__, "alarmtemplate_id", alarmtemplate_id)
@@ -148,7 +148,7 @@ class _BaseState:
     @pulumi.getter(name="mspName")
     def msp_name(self) -> Optional[pulumi.Input[str]]:
         """
-        name of the msp the org belongs to
+        Name of the msp the org belongs to
         """
         return pulumi.get(self, "msp_name")
 
@@ -317,7 +317,7 @@ class Base(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] msp_logo_url: logo uploaded by the MSP with advanced tier, only present if provided
-        :param pulumi.Input[str] msp_name: name of the msp the org belongs to
+        :param pulumi.Input[str] msp_name: Name of the msp the org belongs to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -360,7 +360,7 @@ class Base(pulumi.CustomResource):
     @pulumi.getter(name="mspName")
     def msp_name(self) -> pulumi.Output[str]:
         """
-        name of the msp the org belongs to
+        Name of the msp the org belongs to
         """
         return pulumi.get(self, "msp_name")
 

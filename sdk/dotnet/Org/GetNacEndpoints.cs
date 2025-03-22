@@ -115,7 +115,7 @@ namespace Pulumi.JuniperMist.Org
         private List<string>? _labels;
 
         /// <summary>
-        /// optional, array of strings of labels
+        /// Optional, array of strings of labels
         /// </summary>
         public List<string> Labels
         {
@@ -124,7 +124,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// partial/full MAC addres
+        /// Partial/full MAC address
         /// </summary>
         [Input("mac")]
         public string? Mac { get; set; }
@@ -144,7 +144,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _labels;
 
         /// <summary>
-        /// optional, array of strings of labels
+        /// Optional, array of strings of labels
         /// </summary>
         public InputList<string> Labels
         {
@@ -153,7 +153,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// partial/full MAC addres
+        /// Partial/full MAC address
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
@@ -176,11 +176,11 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// optional, array of strings of labels
+        /// Optional, array of strings of labels
         /// </summary>
         public readonly ImmutableArray<string> Labels;
         /// <summary>
-        /// partial/full MAC addres
+        /// Partial/full MAC address
         /// </summary>
         public readonly string? Mac;
         public readonly string OrgId;
