@@ -10,7 +10,7 @@ replace github.com/Juniper/terraform-provider-mist => ../upstream
 
 require (
 	github.com/Juniper/terraform-provider-mist v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.105.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.105.1-0.20250325144020-f695bb1841ee
 	github.com/pulumi/pulumi/sdk/v3 v3.156.0
 )
 
@@ -161,6 +161,7 @@ require (
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
 	github.com/ulikunitz/xz v0.5.11 // indirect
+	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
@@ -186,6 +187,7 @@ require (
 	golang.org/x/time v0.5.0 // indirect
 	golang.org/x/tools v0.30.0 // indirect
 	google.golang.org/api v0.169.0 // indirect
+	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/genproto v0.0.0-20240311173647-c811ad7063a7 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20241202173237-19429a94021a // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250219182151-9fdb1cabc7b2 // indirect
