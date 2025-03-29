@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     {
         public readonly int? AsBase;
         /// <summary>
-        /// equiring /12 or bigger to support 16 private IPs for 65535 gateways
+        /// requiring /12 or bigger to support 16 private IPs for 65535 gateways
         /// </summary>
         public readonly string? StSubnet;
 

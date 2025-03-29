@@ -33,14 +33,14 @@ public final class GetInventoryArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * device model
+     * Device model
      * 
      */
     @Import(name="model")
     private @Nullable Output<String> model;
 
     /**
-     * @return device model
+     * @return Device model
      * 
      */
     public Optional<Output<String>> model() {
@@ -55,14 +55,14 @@ public final class GetInventoryArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * device serial
+     * Device serial
      * 
      */
     @Import(name="serial")
     private @Nullable Output<String> serial;
 
     /**
-     * @return device serial
+     * @return Device serial
      * 
      */
     public Optional<Output<String>> serial() {
@@ -70,14 +70,14 @@ public final class GetInventoryArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * site id if assigned, null if not assigned
+     * Site id if assigned, null if not assigned
      * 
      */
     @Import(name="siteId")
     private @Nullable Output<String> siteId;
 
     /**
-     * @return site id if assigned, null if not assigned
+     * @return Site id if assigned, null if not assigned
      * 
      */
     public Optional<Output<String>> siteId() {
@@ -85,14 +85,29 @@ public final class GetInventoryArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * to display Unassigned devices
+     * enum: `ap`, `gateway`, `switch`
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return enum: `ap`, `gateway`, `switch`
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
+    /**
+     * To display Unassigned devices
      * 
      */
     @Import(name="unassigned")
     private @Nullable Output<Boolean> unassigned;
 
     /**
-     * @return to display Unassigned devices
+     * @return To display Unassigned devices
      * 
      */
     public Optional<Output<Boolean>> unassigned() {
@@ -137,6 +152,7 @@ public final class GetInventoryArgs extends com.pulumi.resources.InvokeArgs {
         this.orgId = $.orgId;
         this.serial = $.serial;
         this.siteId = $.siteId;
+        this.type = $.type;
         this.unassigned = $.unassigned;
         this.vc = $.vc;
         this.vcMac = $.vcMac;
@@ -182,7 +198,7 @@ public final class GetInventoryArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param model device model
+         * @param model Device model
          * 
          * @return builder
          * 
@@ -193,7 +209,7 @@ public final class GetInventoryArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param model device model
+         * @param model Device model
          * 
          * @return builder
          * 
@@ -212,7 +228,7 @@ public final class GetInventoryArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param serial device serial
+         * @param serial Device serial
          * 
          * @return builder
          * 
@@ -223,7 +239,7 @@ public final class GetInventoryArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param serial device serial
+         * @param serial Device serial
          * 
          * @return builder
          * 
@@ -233,7 +249,7 @@ public final class GetInventoryArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param siteId site id if assigned, null if not assigned
+         * @param siteId Site id if assigned, null if not assigned
          * 
          * @return builder
          * 
@@ -244,7 +260,7 @@ public final class GetInventoryArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param siteId site id if assigned, null if not assigned
+         * @param siteId Site id if assigned, null if not assigned
          * 
          * @return builder
          * 
@@ -254,7 +270,28 @@ public final class GetInventoryArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param unassigned to display Unassigned devices
+         * @param type enum: `ap`, `gateway`, `switch`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type enum: `ap`, `gateway`, `switch`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
+        }
+
+        /**
+         * @param unassigned To display Unassigned devices
          * 
          * @return builder
          * 
@@ -265,7 +302,7 @@ public final class GetInventoryArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param unassigned to display Unassigned devices
+         * @param unassigned To display Unassigned devices
          * 
          * @return builder
          * 

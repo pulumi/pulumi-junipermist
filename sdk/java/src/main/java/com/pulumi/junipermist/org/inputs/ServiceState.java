@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.org.inputs.ServiceSpecArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,14 +20,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     public static final ServiceState Empty = new ServiceState();
 
     /**
-     * if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+     * If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
      * 
      */
     @Import(name="addresses")
     private @Nullable Output<List<String>> addresses;
 
     /**
-     * @return if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+     * @return If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
      * 
      */
     public Optional<Output<List<String>>> addresses() {
@@ -34,14 +35,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_categories
+     * When `type`==`app_categories`, list of application categories are available through List App Category Definitions
      * 
      */
     @Import(name="appCategories")
     private @Nullable Output<List<String>> appCategories;
 
     /**
-     * @return when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_categories
+     * @return When `type`==`app_categories`, list of application categories are available through List App Category Definitions
      * 
      */
     public Optional<Output<List<String>>> appCategories() {
@@ -49,14 +50,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_subcategories
+     * When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
      * 
      */
     @Import(name="appSubcategories")
     private @Nullable Output<List<String>> appSubcategories;
 
     /**
-     * @return when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_subcategories
+     * @return When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
      * 
      */
     public Optional<Output<List<String>>> appSubcategories() {
@@ -64,20 +65,50 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-     * /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
+     * When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+     * /insight/top_app_by-bytes?wired=true
      * 
      */
     @Import(name="apps")
     private @Nullable Output<List<String>> apps;
 
     /**
-     * @return when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-     * /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
+     * @return When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+     * /insight/top_app_by-bytes?wired=true
      * 
      */
     public Optional<Output<List<String>>> apps() {
         return Optional.ofNullable(this.apps);
+    }
+
+    /**
+     * 0 means unlimited
+     * 
+     */
+    @Import(name="clientLimitDown")
+    private @Nullable Output<Integer> clientLimitDown;
+
+    /**
+     * @return 0 means unlimited
+     * 
+     */
+    public Optional<Output<Integer>> clientLimitDown() {
+        return Optional.ofNullable(this.clientLimitDown);
+    }
+
+    /**
+     * 0 means unlimited
+     * 
+     */
+    @Import(name="clientLimitUp")
+    private @Nullable Output<Integer> clientLimitUp;
+
+    /**
+     * @return 0 means unlimited
+     * 
+     */
+    public Optional<Output<Integer>> clientLimitUp() {
+        return Optional.ofNullable(this.clientLimitUp);
     }
 
     @Import(name="description")
@@ -110,14 +141,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * if `type`==`custom`, web filtering
+     * If `type`==`custom`, web filtering
      * 
      */
     @Import(name="hostnames")
     private @Nullable Output<List<String>> hostnames;
 
     /**
-     * @return if `type`==`custom`, web filtering
+     * @return If `type`==`custom`, web filtering
      * 
      */
     public Optional<Output<List<String>>> hostnames() {
@@ -160,14 +191,44 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to enable measure SLE
+     * 0 means unlimited
+     * 
+     */
+    @Import(name="serviceLimitDown")
+    private @Nullable Output<Integer> serviceLimitDown;
+
+    /**
+     * @return 0 means unlimited
+     * 
+     */
+    public Optional<Output<Integer>> serviceLimitDown() {
+        return Optional.ofNullable(this.serviceLimitDown);
+    }
+
+    /**
+     * 0 means unlimited
+     * 
+     */
+    @Import(name="serviceLimitUp")
+    private @Nullable Output<Integer> serviceLimitUp;
+
+    /**
+     * @return 0 means unlimited
+     * 
+     */
+    public Optional<Output<Integer>> serviceLimitUp() {
+        return Optional.ofNullable(this.serviceLimitUp);
+    }
+
+    /**
+     * Whether to enable measure SLE
      * 
      */
     @Import(name="sleEnabled")
     private @Nullable Output<Boolean> sleEnabled;
 
     /**
-     * @return whether to enable measure SLE
+     * @return Whether to enable measure SLE
      * 
      */
     public Optional<Output<Boolean>> sleEnabled() {
@@ -175,14 +236,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * when `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
+     * When `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
      * 
      */
     @Import(name="specs")
     private @Nullable Output<List<ServiceSpecArgs>> specs;
 
     /**
-     * @return when `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
+     * @return When `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
      * 
      */
     public Optional<Output<List<ServiceSpecArgs>>> specs() {
@@ -212,14 +273,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * values from `/api/v1/consts/traffic_types`
+     * values from List Traffic Types
      * 
      */
     @Import(name="trafficType")
     private @Nullable Output<String> trafficType;
 
     /**
-     * @return values from `/api/v1/consts/traffic_types`
+     * @return values from List Traffic Types
      * 
      */
     public Optional<Output<String>> trafficType() {
@@ -242,14 +303,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * when `type`==`urls`, no need for spec as URL can encode the ports being used
+     * When `type`==`urls`, no need for spec as URL can encode the ports being used
      * 
      */
     @Import(name="urls")
     private @Nullable Output<List<String>> urls;
 
     /**
-     * @return when `type`==`urls`, no need for spec as URL can encode the ports being used
+     * @return When `type`==`urls`, no need for spec as URL can encode the ports being used
      * 
      */
     public Optional<Output<List<String>>> urls() {
@@ -263,6 +324,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         this.appCategories = $.appCategories;
         this.appSubcategories = $.appSubcategories;
         this.apps = $.apps;
+        this.clientLimitDown = $.clientLimitDown;
+        this.clientLimitUp = $.clientLimitUp;
         this.description = $.description;
         this.dscp = $.dscp;
         this.failoverPolicy = $.failoverPolicy;
@@ -272,6 +335,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         this.maxLoss = $.maxLoss;
         this.name = $.name;
         this.orgId = $.orgId;
+        this.serviceLimitDown = $.serviceLimitDown;
+        this.serviceLimitUp = $.serviceLimitUp;
         this.sleEnabled = $.sleEnabled;
         this.specs = $.specs;
         this.ssrRelaxedTcpStateEnforcement = $.ssrRelaxedTcpStateEnforcement;
@@ -300,7 +365,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addresses if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+         * @param addresses If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
          * 
          * @return builder
          * 
@@ -311,7 +376,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addresses if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+         * @param addresses If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
          * 
          * @return builder
          * 
@@ -321,7 +386,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addresses if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+         * @param addresses If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
          * 
          * @return builder
          * 
@@ -331,7 +396,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appCategories when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_categories
+         * @param appCategories When `type`==`app_categories`, list of application categories are available through List App Category Definitions
          * 
          * @return builder
          * 
@@ -342,7 +407,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appCategories when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_categories
+         * @param appCategories When `type`==`app_categories`, list of application categories are available through List App Category Definitions
          * 
          * @return builder
          * 
@@ -352,7 +417,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appCategories when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_categories
+         * @param appCategories When `type`==`app_categories`, list of application categories are available through List App Category Definitions
          * 
          * @return builder
          * 
@@ -362,7 +427,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appSubcategories when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_subcategories
+         * @param appSubcategories When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
          * 
          * @return builder
          * 
@@ -373,7 +438,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appSubcategories when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_subcategories
+         * @param appSubcategories When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
          * 
          * @return builder
          * 
@@ -383,7 +448,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appSubcategories when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_subcategories
+         * @param appSubcategories When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
          * 
          * @return builder
          * 
@@ -393,8 +458,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apps when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-         * /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
+         * @param apps When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+         * /insight/top_app_by-bytes?wired=true
          * 
          * @return builder
          * 
@@ -405,8 +470,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apps when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-         * /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
+         * @param apps When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+         * /insight/top_app_by-bytes?wired=true
          * 
          * @return builder
          * 
@@ -416,14 +481,56 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apps when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-         * /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
+         * @param apps When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+         * /insight/top_app_by-bytes?wired=true
          * 
          * @return builder
          * 
          */
         public Builder apps(String... apps) {
             return apps(List.of(apps));
+        }
+
+        /**
+         * @param clientLimitDown 0 means unlimited
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientLimitDown(@Nullable Output<Integer> clientLimitDown) {
+            $.clientLimitDown = clientLimitDown;
+            return this;
+        }
+
+        /**
+         * @param clientLimitDown 0 means unlimited
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientLimitDown(Integer clientLimitDown) {
+            return clientLimitDown(Output.of(clientLimitDown));
+        }
+
+        /**
+         * @param clientLimitUp 0 means unlimited
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientLimitUp(@Nullable Output<Integer> clientLimitUp) {
+            $.clientLimitUp = clientLimitUp;
+            return this;
+        }
+
+        /**
+         * @param clientLimitUp 0 means unlimited
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientLimitUp(Integer clientLimitUp) {
+            return clientLimitUp(Output.of(clientLimitUp));
         }
 
         public Builder description(@Nullable Output<String> description) {
@@ -466,7 +573,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostnames if `type`==`custom`, web filtering
+         * @param hostnames If `type`==`custom`, web filtering
          * 
          * @return builder
          * 
@@ -477,7 +584,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostnames if `type`==`custom`, web filtering
+         * @param hostnames If `type`==`custom`, web filtering
          * 
          * @return builder
          * 
@@ -487,7 +594,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostnames if `type`==`custom`, web filtering
+         * @param hostnames If `type`==`custom`, web filtering
          * 
          * @return builder
          * 
@@ -542,7 +649,49 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sleEnabled whether to enable measure SLE
+         * @param serviceLimitDown 0 means unlimited
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceLimitDown(@Nullable Output<Integer> serviceLimitDown) {
+            $.serviceLimitDown = serviceLimitDown;
+            return this;
+        }
+
+        /**
+         * @param serviceLimitDown 0 means unlimited
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceLimitDown(Integer serviceLimitDown) {
+            return serviceLimitDown(Output.of(serviceLimitDown));
+        }
+
+        /**
+         * @param serviceLimitUp 0 means unlimited
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceLimitUp(@Nullable Output<Integer> serviceLimitUp) {
+            $.serviceLimitUp = serviceLimitUp;
+            return this;
+        }
+
+        /**
+         * @param serviceLimitUp 0 means unlimited
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceLimitUp(Integer serviceLimitUp) {
+            return serviceLimitUp(Output.of(serviceLimitUp));
+        }
+
+        /**
+         * @param sleEnabled Whether to enable measure SLE
          * 
          * @return builder
          * 
@@ -553,7 +702,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sleEnabled whether to enable measure SLE
+         * @param sleEnabled Whether to enable measure SLE
          * 
          * @return builder
          * 
@@ -563,7 +712,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs when `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
+         * @param specs When `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
          * 
          * @return builder
          * 
@@ -574,7 +723,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs when `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
+         * @param specs When `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
          * 
          * @return builder
          * 
@@ -584,7 +733,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs when `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
+         * @param specs When `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
          * 
          * @return builder
          * 
@@ -624,7 +773,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trafficType values from `/api/v1/consts/traffic_types`
+         * @param trafficType values from List Traffic Types
          * 
          * @return builder
          * 
@@ -635,7 +784,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trafficType values from `/api/v1/consts/traffic_types`
+         * @param trafficType values from List Traffic Types
          * 
          * @return builder
          * 
@@ -666,7 +815,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param urls when `type`==`urls`, no need for spec as URL can encode the ports being used
+         * @param urls When `type`==`urls`, no need for spec as URL can encode the ports being used
          * 
          * @return builder
          * 
@@ -677,7 +826,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param urls when `type`==`urls`, no need for spec as URL can encode the ports being used
+         * @param urls When `type`==`urls`, no need for spec as URL can encode the ports being used
          * 
          * @return builder
          * 
@@ -687,7 +836,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param urls when `type`==`urls`, no need for spec as URL can encode the ports being used
+         * @param urls When `type`==`urls`, no need for spec as URL can encode the ports being used
          * 
          * @return builder
          * 

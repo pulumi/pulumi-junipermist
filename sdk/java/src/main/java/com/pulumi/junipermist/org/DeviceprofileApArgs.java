@@ -10,6 +10,7 @@ import com.pulumi.junipermist.org.inputs.DeviceprofileApAeroscoutArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApBleConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApEslConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApIpConfigArgs;
+import com.pulumi.junipermist.org.inputs.DeviceprofileApLacpConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApLedArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApMeshArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApPwrConfigArgs;
@@ -139,6 +140,13 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<DeviceprofileApIpConfigArgs>> ipConfig() {
         return Optional.ofNullable(this.ipConfig);
+    }
+
+    @Import(name="lacpConfig")
+    private @Nullable Output<DeviceprofileApLacpConfigArgs> lacpConfig;
+
+    public Optional<Output<DeviceprofileApLacpConfigArgs>> lacpConfig() {
+        return Optional.ofNullable(this.lacpConfig);
     }
 
     /**
@@ -302,6 +310,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         this.disableModule = $.disableModule;
         this.eslConfig = $.eslConfig;
         this.ipConfig = $.ipConfig;
+        this.lacpConfig = $.lacpConfig;
         this.led = $.led;
         this.mesh = $.mesh;
         this.name = $.name;
@@ -488,6 +497,15 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder ipConfig(DeviceprofileApIpConfigArgs ipConfig) {
             return ipConfig(Output.of(ipConfig));
+        }
+
+        public Builder lacpConfig(@Nullable Output<DeviceprofileApLacpConfigArgs> lacpConfig) {
+            $.lacpConfig = lacpConfig;
+            return this;
+        }
+
+        public Builder lacpConfig(DeviceprofileApLacpConfigArgs lacpConfig) {
+            return lacpConfig(Output.of(lacpConfig));
         }
 
         /**

@@ -50,8 +50,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var wlantempalteOne = new Wlantemplate("wlantempalteOne", WlantemplateArgs.builder()
- *             .name("wlantempalte_one")
+ *         var wlantemplateOne = new Wlantemplate("wlantemplateOne", WlantemplateArgs.builder()
+ *             .name("wlantemplate_one")
  *             .orgId(terraformTest.id())
  *             .applies(WlantemplateAppliesArgs.builder()
  *                 .site_ids(terraformSite.id())
@@ -78,56 +78,56 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/wlantemplate:Wlantemplate")
 public class Wlantemplate extends com.pulumi.resources.CustomResource {
     /**
-     * where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+     * Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
      * 
      */
     @Export(name="applies", refs={WlantemplateApplies.class}, tree="[0]")
     private Output<WlantemplateApplies> applies;
 
     /**
-     * @return where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+     * @return Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
      * 
      */
     public Output<WlantemplateApplies> applies() {
         return this.applies;
     }
     /**
-     * list of Device Profile ids
+     * List of Device Profile ids
      * 
      */
     @Export(name="deviceprofileIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> deviceprofileIds;
 
     /**
-     * @return list of Device Profile ids
+     * @return List of Device Profile ids
      * 
      */
     public Output<List<String>> deviceprofileIds() {
         return this.deviceprofileIds;
     }
     /**
-     * where this template should not be applied to (takes precedence)
+     * Where this template should not be applied to (takes precedence)
      * 
      */
     @Export(name="exceptions", refs={WlantemplateExceptions.class}, tree="[0]")
     private Output<WlantemplateExceptions> exceptions;
 
     /**
-     * @return where this template should not be applied to (takes precedence)
+     * @return Where this template should not be applied to (takes precedence)
      * 
      */
     public Output<WlantemplateExceptions> exceptions() {
         return this.exceptions;
     }
     /**
-     * whether to further filter by Device Profile
+     * Whether to further filter by Device Profile
      * 
      */
     @Export(name="filterByDeviceprofile", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> filterByDeviceprofile;
 
     /**
-     * @return whether to further filter by Device Profile
+     * @return Whether to further filter by Device Profile
      * 
      */
     public Output<Boolean> filterByDeviceprofile() {

@@ -57,20 +57,20 @@ import (
 type Network struct {
 	pulumi.CustomResourceState
 
-	// whether to disallow Mist Devices in the network
+	// Whether to disallow Mist Devices in the network
 	DisallowMistServices pulumi.BoolOutput              `pulumi:"disallowMistServices"`
 	Gateway              pulumi.StringPtrOutput         `pulumi:"gateway"`
 	Gateway6             pulumi.StringPtrOutput         `pulumi:"gateway6"`
 	InternalAccess       NetworkInternalAccessPtrOutput `pulumi:"internalAccess"`
-	// whether this network has direct internet access
+	// Whether this network has direct internet access
 	InternetAccess NetworkInternetAccessPtrOutput `pulumi:"internetAccess"`
-	// whether to allow clients in the network to talk to each other
+	// Whether to allow clients in the network to talk to each other
 	Isolation pulumi.BoolPtrOutput `pulumi:"isolation"`
-	// whether to enable multicast support (only PIM-sparse mode is supported)
+	// Whether to enable multicast support (only PIM-sparse mode is supported)
 	Multicast NetworkMulticastPtrOutput `pulumi:"multicast"`
 	Name      pulumi.StringOutput       `pulumi:"name"`
 	OrgId     pulumi.StringOutput       `pulumi:"orgId"`
-	// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+	// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
 	RoutedForNetworks pulumi.StringArrayOutput `pulumi:"routedForNetworks"`
 	Subnet            pulumi.StringOutput      `pulumi:"subnet"`
 	Subnet6           pulumi.StringPtrOutput   `pulumi:"subnet6"`
@@ -117,20 +117,20 @@ func GetNetwork(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Network resources.
 type networkState struct {
-	// whether to disallow Mist Devices in the network
+	// Whether to disallow Mist Devices in the network
 	DisallowMistServices *bool                  `pulumi:"disallowMistServices"`
 	Gateway              *string                `pulumi:"gateway"`
 	Gateway6             *string                `pulumi:"gateway6"`
 	InternalAccess       *NetworkInternalAccess `pulumi:"internalAccess"`
-	// whether this network has direct internet access
+	// Whether this network has direct internet access
 	InternetAccess *NetworkInternetAccess `pulumi:"internetAccess"`
-	// whether to allow clients in the network to talk to each other
+	// Whether to allow clients in the network to talk to each other
 	Isolation *bool `pulumi:"isolation"`
-	// whether to enable multicast support (only PIM-sparse mode is supported)
+	// Whether to enable multicast support (only PIM-sparse mode is supported)
 	Multicast *NetworkMulticast `pulumi:"multicast"`
 	Name      *string           `pulumi:"name"`
 	OrgId     *string           `pulumi:"orgId"`
-	// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+	// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
 	RoutedForNetworks []string `pulumi:"routedForNetworks"`
 	Subnet            *string  `pulumi:"subnet"`
 	Subnet6           *string  `pulumi:"subnet6"`
@@ -142,20 +142,20 @@ type networkState struct {
 }
 
 type NetworkState struct {
-	// whether to disallow Mist Devices in the network
+	// Whether to disallow Mist Devices in the network
 	DisallowMistServices pulumi.BoolPtrInput
 	Gateway              pulumi.StringPtrInput
 	Gateway6             pulumi.StringPtrInput
 	InternalAccess       NetworkInternalAccessPtrInput
-	// whether this network has direct internet access
+	// Whether this network has direct internet access
 	InternetAccess NetworkInternetAccessPtrInput
-	// whether to allow clients in the network to talk to each other
+	// Whether to allow clients in the network to talk to each other
 	Isolation pulumi.BoolPtrInput
-	// whether to enable multicast support (only PIM-sparse mode is supported)
+	// Whether to enable multicast support (only PIM-sparse mode is supported)
 	Multicast NetworkMulticastPtrInput
 	Name      pulumi.StringPtrInput
 	OrgId     pulumi.StringPtrInput
-	// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+	// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
 	RoutedForNetworks pulumi.StringArrayInput
 	Subnet            pulumi.StringPtrInput
 	Subnet6           pulumi.StringPtrInput
@@ -171,20 +171,20 @@ func (NetworkState) ElementType() reflect.Type {
 }
 
 type networkArgs struct {
-	// whether to disallow Mist Devices in the network
+	// Whether to disallow Mist Devices in the network
 	DisallowMistServices *bool                  `pulumi:"disallowMistServices"`
 	Gateway              *string                `pulumi:"gateway"`
 	Gateway6             *string                `pulumi:"gateway6"`
 	InternalAccess       *NetworkInternalAccess `pulumi:"internalAccess"`
-	// whether this network has direct internet access
+	// Whether this network has direct internet access
 	InternetAccess *NetworkInternetAccess `pulumi:"internetAccess"`
-	// whether to allow clients in the network to talk to each other
+	// Whether to allow clients in the network to talk to each other
 	Isolation *bool `pulumi:"isolation"`
-	// whether to enable multicast support (only PIM-sparse mode is supported)
+	// Whether to enable multicast support (only PIM-sparse mode is supported)
 	Multicast *NetworkMulticast `pulumi:"multicast"`
 	Name      *string           `pulumi:"name"`
 	OrgId     string            `pulumi:"orgId"`
-	// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+	// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
 	RoutedForNetworks []string `pulumi:"routedForNetworks"`
 	Subnet            string   `pulumi:"subnet"`
 	Subnet6           *string  `pulumi:"subnet6"`
@@ -197,20 +197,20 @@ type networkArgs struct {
 
 // The set of arguments for constructing a Network resource.
 type NetworkArgs struct {
-	// whether to disallow Mist Devices in the network
+	// Whether to disallow Mist Devices in the network
 	DisallowMistServices pulumi.BoolPtrInput
 	Gateway              pulumi.StringPtrInput
 	Gateway6             pulumi.StringPtrInput
 	InternalAccess       NetworkInternalAccessPtrInput
-	// whether this network has direct internet access
+	// Whether this network has direct internet access
 	InternetAccess NetworkInternetAccessPtrInput
-	// whether to allow clients in the network to talk to each other
+	// Whether to allow clients in the network to talk to each other
 	Isolation pulumi.BoolPtrInput
-	// whether to enable multicast support (only PIM-sparse mode is supported)
+	// Whether to enable multicast support (only PIM-sparse mode is supported)
 	Multicast NetworkMulticastPtrInput
 	Name      pulumi.StringPtrInput
 	OrgId     pulumi.StringInput
-	// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+	// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
 	RoutedForNetworks pulumi.StringArrayInput
 	Subnet            pulumi.StringInput
 	Subnet6           pulumi.StringPtrInput
@@ -308,7 +308,7 @@ func (o NetworkOutput) ToNetworkOutputWithContext(ctx context.Context) NetworkOu
 	return o
 }
 
-// whether to disallow Mist Devices in the network
+// Whether to disallow Mist Devices in the network
 func (o NetworkOutput) DisallowMistServices() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolOutput { return v.DisallowMistServices }).(pulumi.BoolOutput)
 }
@@ -325,17 +325,17 @@ func (o NetworkOutput) InternalAccess() NetworkInternalAccessPtrOutput {
 	return o.ApplyT(func(v *Network) NetworkInternalAccessPtrOutput { return v.InternalAccess }).(NetworkInternalAccessPtrOutput)
 }
 
-// whether this network has direct internet access
+// Whether this network has direct internet access
 func (o NetworkOutput) InternetAccess() NetworkInternetAccessPtrOutput {
 	return o.ApplyT(func(v *Network) NetworkInternetAccessPtrOutput { return v.InternetAccess }).(NetworkInternetAccessPtrOutput)
 }
 
-// whether to allow clients in the network to talk to each other
+// Whether to allow clients in the network to talk to each other
 func (o NetworkOutput) Isolation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.Isolation }).(pulumi.BoolPtrOutput)
 }
 
-// whether to enable multicast support (only PIM-sparse mode is supported)
+// Whether to enable multicast support (only PIM-sparse mode is supported)
 func (o NetworkOutput) Multicast() NetworkMulticastPtrOutput {
 	return o.ApplyT(func(v *Network) NetworkMulticastPtrOutput { return v.Multicast }).(NetworkMulticastPtrOutput)
 }
@@ -348,7 +348,7 @@ func (o NetworkOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
 func (o NetworkOutput) RoutedForNetworks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringArrayOutput { return v.RoutedForNetworks }).(pulumi.StringArrayOutput)
 }

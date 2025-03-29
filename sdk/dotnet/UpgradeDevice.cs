@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist
 {
     /// <summary>
-    /// This resource can be used to upgrade the frimware of a single device (Wi-Fi Access Points, Switches and SRX/SSR Gateways).
+    /// This resource can be used to upgrade the firmware of a single device (Wi-Fi Access Points, Switches and SRX/SSR Gateways).
     /// 
     /// The resource will send the upgrade command to Mist, which will take care of deploying the new firmware version to the device, and reboot it if required.
     /// 
@@ -127,7 +127,7 @@ namespace Pulumi.JuniperMist
         public Output<string> TargetVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp
+        /// Epoch (seconds)
         /// </summary>
         [Output("timestamp")]
         public Output<double> Timestamp { get; private set; } = null!;
@@ -323,7 +323,7 @@ namespace Pulumi.JuniperMist
         public Input<string>? TargetVersion { get; set; }
 
         /// <summary>
-        /// Timestamp
+        /// Epoch (seconds)
         /// </summary>
         [Input("timestamp")]
         public Input<double>? Timestamp { get; set; }

@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class GetWlansOrgWlanAppQosOtherResult
     {
-        public readonly int Dscp;
+        public readonly string Dscp;
         public readonly string DstSubnet;
         public readonly string PortRanges;
         public readonly string Protocol;
@@ -21,7 +21,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
         [OutputConstructor]
         private GetWlansOrgWlanAppQosOtherResult(
-            int dscp,
+            string dscp,
 
             string dstSubnet,
 

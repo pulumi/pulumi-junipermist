@@ -24,7 +24,7 @@ public final class GetAvprofilesOrgAvprofile {
      */
     private String fallbackAction;
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     private String id;
@@ -64,7 +64,7 @@ public final class GetAvprofilesOrgAvprofile {
         return this.fallbackAction;
     }
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     public String id() {

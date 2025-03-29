@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 public final class WlantemplateApplies {
     private @Nullable String orgId;
     /**
-     * @return list of site ids
+     * @return List of site ids
      * 
      */
     private @Nullable List<String> siteIds;
     /**
-     * @return list of sitegroup ids
+     * @return List of sitegroup ids
      * 
      */
     private @Nullable List<String> sitegroupIds;
@@ -29,14 +29,14 @@ public final class WlantemplateApplies {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return list of site ids
+     * @return List of site ids
      * 
      */
     public List<String> siteIds() {
         return this.siteIds == null ? List.of() : this.siteIds;
     }
     /**
-     * @return list of sitegroup ids
+     * @return List of sitegroup ids
      * 
      */
     public List<String> sitegroupIds() {

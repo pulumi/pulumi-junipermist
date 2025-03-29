@@ -92,6 +92,7 @@ export class Ap extends pulumi.CustomResource {
      * IP AP settings
      */
     public readonly ipConfig!: pulumi.Output<outputs.device.ApIpConfig | undefined>;
+    public readonly lacpConfig!: pulumi.Output<outputs.device.ApLacpConfig | undefined>;
     /**
      * LED AP settings
      */
@@ -199,6 +200,7 @@ export class Ap extends pulumi.CustomResource {
             resourceInputs["image2Url"] = state ? state.image2Url : undefined;
             resourceInputs["image3Url"] = state ? state.image3Url : undefined;
             resourceInputs["ipConfig"] = state ? state.ipConfig : undefined;
+            resourceInputs["lacpConfig"] = state ? state.lacpConfig : undefined;
             resourceInputs["led"] = state ? state.led : undefined;
             resourceInputs["locked"] = state ? state.locked : undefined;
             resourceInputs["mac"] = state ? state.mac : undefined;
@@ -242,6 +244,7 @@ export class Ap extends pulumi.CustomResource {
             resourceInputs["flowControl"] = args ? args.flowControl : undefined;
             resourceInputs["height"] = args ? args.height : undefined;
             resourceInputs["ipConfig"] = args ? args.ipConfig : undefined;
+            resourceInputs["lacpConfig"] = args ? args.lacpConfig : undefined;
             resourceInputs["led"] = args ? args.led : undefined;
             resourceInputs["locked"] = args ? args.locked : undefined;
             resourceInputs["mapId"] = args ? args.mapId : undefined;
@@ -320,6 +323,7 @@ export interface ApState {
      * IP AP settings
      */
     ipConfig?: pulumi.Input<inputs.device.ApIpConfig>;
+    lacpConfig?: pulumi.Input<inputs.device.ApLacpConfig>;
     /**
      * LED AP settings
      */
@@ -443,6 +447,7 @@ export interface ApArgs {
      * IP AP settings
      */
     ipConfig?: pulumi.Input<inputs.device.ApIpConfig>;
+    lacpConfig?: pulumi.Input<inputs.device.ApLacpConfig>;
     /**
      * LED AP settings
      */

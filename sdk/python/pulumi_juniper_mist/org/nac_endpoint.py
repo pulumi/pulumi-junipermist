@@ -28,7 +28,7 @@ class NacEndpointArgs:
                  vlan: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NacEndpoint resource.
-        :param pulumi.Input[str] mac: only non-local-admin MAC is accepted
+        :param pulumi.Input[str] mac: Only non-local-admin MAC is accepted
         """
         pulumi.set(__self__, "mac", mac)
         pulumi.set(__self__, "org_id", org_id)
@@ -47,7 +47,7 @@ class NacEndpointArgs:
     @pulumi.getter
     def mac(self) -> pulumi.Input[str]:
         """
-        only non-local-admin MAC is accepted
+        Only non-local-admin MAC is accepted
         """
         return pulumi.get(self, "mac")
 
@@ -122,7 +122,7 @@ class _NacEndpointState:
                  vlan: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NacEndpoint resources.
-        :param pulumi.Input[str] mac: only non-local-admin MAC is accepted
+        :param pulumi.Input[str] mac: Only non-local-admin MAC is accepted
         """
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
@@ -152,7 +152,7 @@ class _NacEndpointState:
     @pulumi.getter
     def mac(self) -> Optional[pulumi.Input[str]]:
         """
-        only non-local-admin MAC is accepted
+        Only non-local-admin MAC is accepted
         """
         return pulumi.get(self, "mac")
 
@@ -225,7 +225,7 @@ class NacEndpoint(pulumi.CustomResource):
         NAC Endpoints (User MACs) provide a database of endpoints identified by their MAC addresses. They can be used assign each endpoint with various attributes, such as name, VLAN, role and client label.  Once an endpoint is labeled, the label name can be used to create `org.Nactag` resource as match criteria.
 
         The `org.Nactag` resource can be used to create Tags regrouping one or multiple endpoint MAC Addresses, but the use of the User MACs provides additional features:
-        * possitility to assign specific attributes, like a Name, a Radius Group, a VLAN ID, ...
+        * possibility to assign specific attributes, like a Name, a Radius Group, a VLAN ID, ...
         * possibility to assign one or multiple Tags (Labels) to a User MAC
         * improved management for large list of MAC Addresses
 
@@ -259,7 +259,7 @@ class NacEndpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] mac: only non-local-admin MAC is accepted
+        :param pulumi.Input[str] mac: Only non-local-admin MAC is accepted
         """
         ...
     @overload
@@ -273,7 +273,7 @@ class NacEndpoint(pulumi.CustomResource):
         NAC Endpoints (User MACs) provide a database of endpoints identified by their MAC addresses. They can be used assign each endpoint with various attributes, such as name, VLAN, role and client label.  Once an endpoint is labeled, the label name can be used to create `org.Nactag` resource as match criteria.
 
         The `org.Nactag` resource can be used to create Tags regrouping one or multiple endpoint MAC Addresses, but the use of the User MACs provides additional features:
-        * possitility to assign specific attributes, like a Name, a Radius Group, a VLAN ID, ...
+        * possibility to assign specific attributes, like a Name, a Radius Group, a VLAN ID, ...
         * possibility to assign one or multiple Tags (Labels) to a User MAC
         * improved management for large list of MAC Addresses
 
@@ -371,7 +371,7 @@ class NacEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] mac: only non-local-admin MAC is accepted
+        :param pulumi.Input[str] mac: Only non-local-admin MAC is accepted
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -395,7 +395,7 @@ class NacEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def mac(self) -> pulumi.Output[str]:
         """
-        only non-local-admin MAC is accepted
+        Only non-local-admin MAC is accepted
         """
         return pulumi.get(self, "mac")
 

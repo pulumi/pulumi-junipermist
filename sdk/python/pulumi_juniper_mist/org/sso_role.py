@@ -114,7 +114,7 @@ class SsoRole(pulumi.CustomResource):
                  privileges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict']]]]] = None,
                  __props__=None):
         """
-        This resource manages Org SSO Roles for Admin Authantication.
+        This resource manages Org SSO Roles for Admin Authentication.
 
         SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\\
         These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\\
@@ -140,7 +140,7 @@ class SsoRole(pulumi.CustomResource):
                  args: SsoRoleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages Org SSO Roles for Admin Authantication.
+        This resource manages Org SSO Roles for Admin Authentication.
 
         SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\\
         These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\\

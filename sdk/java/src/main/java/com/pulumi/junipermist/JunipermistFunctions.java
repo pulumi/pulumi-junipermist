@@ -16,6 +16,7 @@ import com.pulumi.junipermist.outputs.GetConstAppCategoriesResult;
 import com.pulumi.junipermist.outputs.GetConstAppSubCategoriesResult;
 import com.pulumi.junipermist.outputs.GetConstApplicationsResult;
 import com.pulumi.junipermist.outputs.GetConstCountriesResult;
+import com.pulumi.junipermist.outputs.GetConstFingerprintsResult;
 import com.pulumi.junipermist.outputs.GetConstTrafficTypesResult;
 import com.pulumi.junipermist.outputs.GetConstWebhooksResult;
 import com.pulumi.junipermist.outputs.GetSitesResult;
@@ -24,7 +25,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class JunipermistFunctions {
     /**
-     * This data source provides the list of  available Alarms.
+     * This data source provides the list of available Alarms.
      * 
      * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
      * 
@@ -65,7 +66,7 @@ public final class JunipermistFunctions {
         return getConstAlarms(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the list of  available Alarms.
+     * This data source provides the list of available Alarms.
      * 
      * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
      * 
@@ -106,7 +107,7 @@ public final class JunipermistFunctions {
         return getConstAlarmsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the list of  available Alarms.
+     * This data source provides the list of available Alarms.
      * 
      * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
      * 
@@ -147,7 +148,7 @@ public final class JunipermistFunctions {
         return getConstAlarms(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the list of  available Alarms.
+     * This data source provides the list of available Alarms.
      * 
      * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
      * 
@@ -188,7 +189,7 @@ public final class JunipermistFunctions {
         return getConstAlarmsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the list of  available Alarms.
+     * This data source provides the list of available Alarms.
      * 
      * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
      * 
@@ -229,7 +230,7 @@ public final class JunipermistFunctions {
         return Deployment.getInstance().invoke("junipermist:index/getConstAlarms:getConstAlarms", TypeShape.of(GetConstAlarmsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the list of  available Alarms.
+     * This data source provides the list of available Alarms.
      * 
      * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
      * 
@@ -270,7 +271,7 @@ public final class JunipermistFunctions {
         return Deployment.getInstance().invoke("junipermist:index/getConstAlarms:getConstAlarms", TypeShape.of(GetConstAlarmsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the list of  available Alarms.
+     * This data source provides the list of available Alarms.
      * 
      * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
      * 
@@ -1478,6 +1479,328 @@ public final class JunipermistFunctions {
      */
     public static CompletableFuture<GetConstCountriesResult> getConstCountriesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:index/getConstCountries:getConstCountries", TypeShape.of(GetConstCountriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the of list of supported Fingerprints.
+     * 
+     * The Fingerprint information can be used within `matching` and `not_matching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
+     * 
+     * There are four different types of fingerprints available:* Family
+     * * Model
+     * * Mfg
+     * * OS Type
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfFingerprints = JunipermistFunctions.getConstFingerprints();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConstFingerprintsResult> getConstFingerprints() {
+        return getConstFingerprints(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the of list of supported Fingerprints.
+     * 
+     * The Fingerprint information can be used within `matching` and `not_matching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
+     * 
+     * There are four different types of fingerprints available:* Family
+     * * Model
+     * * Mfg
+     * * OS Type
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfFingerprints = JunipermistFunctions.getConstFingerprints();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConstFingerprintsResult> getConstFingerprintsPlain() {
+        return getConstFingerprintsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the of list of supported Fingerprints.
+     * 
+     * The Fingerprint information can be used within `matching` and `not_matching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
+     * 
+     * There are four different types of fingerprints available:* Family
+     * * Model
+     * * Mfg
+     * * OS Type
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfFingerprints = JunipermistFunctions.getConstFingerprints();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConstFingerprintsResult> getConstFingerprints(InvokeArgs args) {
+        return getConstFingerprints(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the of list of supported Fingerprints.
+     * 
+     * The Fingerprint information can be used within `matching` and `not_matching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
+     * 
+     * There are four different types of fingerprints available:* Family
+     * * Model
+     * * Mfg
+     * * OS Type
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfFingerprints = JunipermistFunctions.getConstFingerprints();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConstFingerprintsResult> getConstFingerprintsPlain(InvokeArgs args) {
+        return getConstFingerprintsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the of list of supported Fingerprints.
+     * 
+     * The Fingerprint information can be used within `matching` and `not_matching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
+     * 
+     * There are four different types of fingerprints available:* Family
+     * * Model
+     * * Mfg
+     * * OS Type
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfFingerprints = JunipermistFunctions.getConstFingerprints();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConstFingerprintsResult> getConstFingerprints(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:index/getConstFingerprints:getConstFingerprints", TypeShape.of(GetConstFingerprintsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the of list of supported Fingerprints.
+     * 
+     * The Fingerprint information can be used within `matching` and `not_matching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
+     * 
+     * There are four different types of fingerprints available:* Family
+     * * Model
+     * * Mfg
+     * * OS Type
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfFingerprints = JunipermistFunctions.getConstFingerprints();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConstFingerprintsResult> getConstFingerprints(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:index/getConstFingerprints:getConstFingerprints", TypeShape.of(GetConstFingerprintsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the of list of supported Fingerprints.
+     * 
+     * The Fingerprint information can be used within `matching` and `not_matching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
+     * 
+     * There are four different types of fingerprints available:* Family
+     * * Model
+     * * Mfg
+     * * OS Type
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfFingerprints = JunipermistFunctions.getConstFingerprints();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConstFingerprintsResult> getConstFingerprintsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("junipermist:index/getConstFingerprints:getConstFingerprints", TypeShape.of(GetConstFingerprintsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the of ConstTrafficTypes.

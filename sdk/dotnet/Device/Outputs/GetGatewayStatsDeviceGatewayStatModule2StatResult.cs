@@ -16,18 +16,17 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string BackupVersion;
         public readonly string BiosVersion;
         public readonly string CpldVersion;
-        /// <summary>
-        /// used to report all error states the device node is running into.
-        /// An error should always have `type` and `since` fields, and could have some other fields specific to that type.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatModule2StatErrorResult> Errors;
         public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatModule2StatFanResult> Fans;
         public readonly string FpgaVersion;
+        /// <summary>
+        /// Last seen timestamp
+        /// </summary>
         public readonly double LastSeen;
+        public readonly bool Locating;
+        public readonly string Mac;
         public readonly string Model;
         public readonly string OpticsCpldVersion;
         public readonly string PendingVersion;
-        public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatModule2StatPicResult> Pics;
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatModule2StatPoeResult Poe;
         public readonly string PoeVersion;
         public readonly string PowerCpldVersion;
@@ -43,7 +42,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatModule2StatVcLinkResult> VcLinks;
         public readonly string VcMode;
         /// <summary>
-        /// master / backup / linecard
+        /// enum: `master`, `backup`, `linecard`
         /// </summary>
         public readonly string VcRole;
         public readonly string VcState;
@@ -57,21 +56,21 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string cpldVersion,
 
-            ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatModule2StatErrorResult> errors,
-
             ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatModule2StatFanResult> fans,
 
             string fpgaVersion,
 
             double lastSeen,
 
+            bool locating,
+
+            string mac,
+
             string model,
 
             string opticsCpldVersion,
 
             string pendingVersion,
-
-            ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatModule2StatPicResult> pics,
 
             Outputs.GetGatewayStatsDeviceGatewayStatModule2StatPoeResult poe,
 
@@ -110,14 +109,14 @@ namespace Pulumi.JuniperMist.Device.Outputs
             BackupVersion = backupVersion;
             BiosVersion = biosVersion;
             CpldVersion = cpldVersion;
-            Errors = errors;
             Fans = fans;
             FpgaVersion = fpgaVersion;
             LastSeen = lastSeen;
+            Locating = locating;
+            Mac = mac;
             Model = model;
             OpticsCpldVersion = opticsCpldVersion;
             PendingVersion = pendingVersion;
-            Pics = pics;
             Poe = poe;
             PoeVersion = poeVersion;
             PowerCpldVersion = powerCpldVersion;

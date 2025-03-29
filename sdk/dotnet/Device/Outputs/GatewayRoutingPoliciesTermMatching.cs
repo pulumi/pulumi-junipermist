@@ -24,7 +24,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Prefixes;
         /// <summary>
-        /// `direct`, `bgp`, `osp`, ...
+        /// `direct`, `bgp`, `osp`, `static`, `aggregate`...
         /// </summary>
         public readonly ImmutableArray<string> Protocols;
         public readonly Outputs.GatewayRoutingPoliciesTermMatchingRouteExists? RouteExists;

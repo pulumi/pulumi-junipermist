@@ -47,9 +47,17 @@ public final class UpgradeDeviceFwupdateArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.statusId);
     }
 
+    /**
+     * Epoch (seconds)
+     * 
+     */
     @Import(name="timestamp")
     private @Nullable Output<Double> timestamp;
 
+    /**
+     * @return Epoch (seconds)
+     * 
+     */
     public Optional<Output<Double>> timestamp() {
         return Optional.ofNullable(this.timestamp);
     }
@@ -128,11 +136,23 @@ public final class UpgradeDeviceFwupdateArgs extends com.pulumi.resources.Resour
             return statusId(Output.of(statusId));
         }
 
+        /**
+         * @param timestamp Epoch (seconds)
+         * 
+         * @return builder
+         * 
+         */
         public Builder timestamp(@Nullable Output<Double> timestamp) {
             $.timestamp = timestamp;
             return this;
         }
 
+        /**
+         * @param timestamp Epoch (seconds)
+         * 
+         * @return builder
+         * 
+         */
         public Builder timestamp(Double timestamp) {
             return timestamp(Output.of(timestamp));
         }

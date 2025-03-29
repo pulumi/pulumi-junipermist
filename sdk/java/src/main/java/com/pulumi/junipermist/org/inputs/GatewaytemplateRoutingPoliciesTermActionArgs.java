@@ -47,21 +47,6 @@ public final class GatewaytemplateRoutingPoliciesTermActionArgs extends com.pulu
     }
 
     /**
-     * route aggregation
-     * 
-     */
-    @Import(name="aggregates")
-    private @Nullable Output<List<String>> aggregates;
-
-    /**
-     * @return route aggregation
-     * 
-     */
-    public Optional<Output<List<String>>> aggregates() {
-        return Optional.ofNullable(this.aggregates);
-    }
-
-    /**
      * When used as export policy, optional
      * 
      */
@@ -102,15 +87,15 @@ public final class GatewaytemplateRoutingPoliciesTermActionArgs extends com.pulu
      * When used as export policy, optional
      * 
      */
-    @Import(name="exportCommunitites")
-    private @Nullable Output<List<String>> exportCommunitites;
+    @Import(name="exportCommunities")
+    private @Nullable Output<List<String>> exportCommunities;
 
     /**
      * @return When used as export policy, optional
      * 
      */
-    public Optional<Output<List<String>>> exportCommunitites() {
-        return Optional.ofNullable(this.exportCommunitites);
+    public Optional<Output<List<String>>> exportCommunities() {
+        return Optional.ofNullable(this.exportCommunities);
     }
 
     /**
@@ -149,11 +134,10 @@ public final class GatewaytemplateRoutingPoliciesTermActionArgs extends com.pulu
         this.accept = $.accept;
         this.addCommunities = $.addCommunities;
         this.addTargetVrfs = $.addTargetVrfs;
-        this.aggregates = $.aggregates;
         this.communities = $.communities;
         this.excludeAsPaths = $.excludeAsPaths;
         this.excludeCommunities = $.excludeCommunities;
-        this.exportCommunitites = $.exportCommunitites;
+        this.exportCommunities = $.exportCommunities;
         this.localPreference = $.localPreference;
         this.prependAsPaths = $.prependAsPaths;
     }
@@ -227,37 +211,6 @@ public final class GatewaytemplateRoutingPoliciesTermActionArgs extends com.pulu
          */
         public Builder addTargetVrfs(String... addTargetVrfs) {
             return addTargetVrfs(List.of(addTargetVrfs));
-        }
-
-        /**
-         * @param aggregates route aggregation
-         * 
-         * @return builder
-         * 
-         */
-        public Builder aggregates(@Nullable Output<List<String>> aggregates) {
-            $.aggregates = aggregates;
-            return this;
-        }
-
-        /**
-         * @param aggregates route aggregation
-         * 
-         * @return builder
-         * 
-         */
-        public Builder aggregates(List<String> aggregates) {
-            return aggregates(Output.of(aggregates));
-        }
-
-        /**
-         * @param aggregates route aggregation
-         * 
-         * @return builder
-         * 
-         */
-        public Builder aggregates(String... aggregates) {
-            return aggregates(List.of(aggregates));
         }
 
         /**
@@ -336,34 +289,34 @@ public final class GatewaytemplateRoutingPoliciesTermActionArgs extends com.pulu
         }
 
         /**
-         * @param exportCommunitites When used as export policy, optional
+         * @param exportCommunities When used as export policy, optional
          * 
          * @return builder
          * 
          */
-        public Builder exportCommunitites(@Nullable Output<List<String>> exportCommunitites) {
-            $.exportCommunitites = exportCommunitites;
+        public Builder exportCommunities(@Nullable Output<List<String>> exportCommunities) {
+            $.exportCommunities = exportCommunities;
             return this;
         }
 
         /**
-         * @param exportCommunitites When used as export policy, optional
+         * @param exportCommunities When used as export policy, optional
          * 
          * @return builder
          * 
          */
-        public Builder exportCommunitites(List<String> exportCommunitites) {
-            return exportCommunitites(Output.of(exportCommunitites));
+        public Builder exportCommunities(List<String> exportCommunities) {
+            return exportCommunities(Output.of(exportCommunities));
         }
 
         /**
-         * @param exportCommunitites When used as export policy, optional
+         * @param exportCommunities When used as export policy, optional
          * 
          * @return builder
          * 
          */
-        public Builder exportCommunitites(String... exportCommunitites) {
-            return exportCommunitites(List.of(exportCommunitites));
+        public Builder exportCommunities(String... exportCommunities) {
+            return exportCommunities(List.of(exportCommunities));
         }
 
         /**

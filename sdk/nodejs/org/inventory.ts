@@ -55,15 +55,6 @@ export class Inventory extends pulumi.CustomResource {
     }
 
     /**
-     * **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-     * replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-     * `inventory` attribute. List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
-     *
-     * @deprecated The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-Please update your configurations to use the `inventory` attribute.
-     */
-    public readonly devices!: pulumi.Output<outputs.org.InventoryDevice[]>;
-    /**
      * Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
      * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
      * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
@@ -84,7 +75,6 @@ Please update your configurations to use the `inventory` attribute.
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InventoryState | undefined;
-            resourceInputs["devices"] = state ? state.devices : undefined;
             resourceInputs["inventory"] = state ? state.inventory : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
         } else {
@@ -92,7 +82,6 @@ Please update your configurations to use the `inventory` attribute.
             if ((!args || args.orgId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["devices"] = args ? args.devices : undefined;
             resourceInputs["inventory"] = args ? args.inventory : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
         }
@@ -106,15 +95,6 @@ Please update your configurations to use the `inventory` attribute.
  */
 export interface InventoryState {
     /**
-     * **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-     * replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-     * `inventory` attribute. List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
-     *
-     * @deprecated The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-Please update your configurations to use the `inventory` attribute.
-     */
-    devices?: pulumi.Input<pulumi.Input<inputs.org.InventoryDevice>[]>;
-    /**
      * Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
      * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
      * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
@@ -127,15 +107,6 @@ Please update your configurations to use the `inventory` attribute.
  * The set of arguments for constructing a Inventory resource.
  */
 export interface InventoryArgs {
-    /**
-     * **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-     * replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-     * `inventory` attribute. List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
-     *
-     * @deprecated The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-Please update your configurations to use the `inventory` attribute.
-     */
-    devices?: pulumi.Input<pulumi.Input<inputs.org.InventoryDevice>[]>;
     /**
      * Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
      * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
