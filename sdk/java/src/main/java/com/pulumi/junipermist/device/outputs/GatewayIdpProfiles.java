@@ -19,7 +19,7 @@ public final class GatewayIdpProfiles {
      */
     private @Nullable String baseProfile;
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     private @Nullable String id;
@@ -36,7 +36,7 @@ public final class GatewayIdpProfiles {
         return Optional.ofNullable(this.baseProfile);
     }
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     public Optional<String> id() {

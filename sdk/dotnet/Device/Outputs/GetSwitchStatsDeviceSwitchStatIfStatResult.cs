@@ -20,10 +20,22 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string PortId;
         public readonly string PortUsage;
         public readonly string RedundancyState;
+        /// <summary>
+        /// Amount of traffic received since connection
+        /// </summary>
         public readonly int RxBytes;
+        /// <summary>
+        /// Amount of packets received since connection
+        /// </summary>
         public readonly int RxPkts;
         public readonly Outputs.GetSwitchStatsDeviceSwitchStatIfStatServpInfoResult ServpInfo;
+        /// <summary>
+        /// Amount of traffic sent since connection
+        /// </summary>
         public readonly int TxBytes;
+        /// <summary>
+        /// Amount of packets sent since connection
+        /// </summary>
         public readonly int TxPkts;
         public readonly bool Up;
         public readonly int Vlan;

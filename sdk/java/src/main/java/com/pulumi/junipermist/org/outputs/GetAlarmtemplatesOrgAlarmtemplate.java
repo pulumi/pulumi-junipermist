@@ -15,7 +15,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAlarmtemplatesOrgAlarmtemplate {
     /**
-     * @return when the object has been created, in epoch
+     * @return When the object has been created, in epoch
      * 
      */
     private Double createdTime;
@@ -25,12 +25,12 @@ public final class GetAlarmtemplatesOrgAlarmtemplate {
      */
     private GetAlarmtemplatesOrgAlarmtemplateDelivery delivery;
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     private String id;
     /**
-     * @return when the object has been modified for the last time, in epoch
+     * @return When the object has been modified for the last time, in epoch
      * 
      */
     private Double modifiedTime;
@@ -48,7 +48,7 @@ public final class GetAlarmtemplatesOrgAlarmtemplate {
 
     private GetAlarmtemplatesOrgAlarmtemplate() {}
     /**
-     * @return when the object has been created, in epoch
+     * @return When the object has been created, in epoch
      * 
      */
     public Double createdTime() {
@@ -62,14 +62,14 @@ public final class GetAlarmtemplatesOrgAlarmtemplate {
         return this.delivery;
     }
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return when the object has been modified for the last time, in epoch
+     * @return When the object has been modified for the last time, in epoch
      * 
      */
     public Double modifiedTime() {

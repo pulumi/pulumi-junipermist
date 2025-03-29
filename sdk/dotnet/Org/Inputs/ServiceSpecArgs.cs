@@ -13,14 +13,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class ServiceSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// port number, port range, or variable
+        /// Port number, port range, or variable
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }
 
         /// <summary>
-        /// `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`.
-        /// `protocol_number` is between 1-254
+        /// `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

@@ -126,6 +126,22 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Label of field4
         /// </summary>
         public readonly string? Field4label;
+        /// <summary>
+        /// label of the link to go to /marketing_policy
+        /// </summary>
+        public readonly string? MarketingPolicyLink;
+        /// <summary>
+        /// Whether marketing policy optin is enabled
+        /// </summary>
+        public readonly bool? MarketingPolicyOptIn;
+        /// <summary>
+        /// label for marketing optin
+        /// </summary>
+        public readonly string? MarketingPolicyOptInLabel;
+        /// <summary>
+        /// marketing policy text
+        /// </summary>
+        public readonly string? MarketingPolicyOptInText;
         public readonly string? Message;
         /// <summary>
         /// Error message when name not provided
@@ -182,7 +198,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? RequiredFieldLabel;
         /// <summary>
-        /// Label of the button to /signin
+        /// Label of the button to signin
         /// </summary>
         public readonly string? SignInLabel;
         public readonly string? SmsCarrierDefault;
@@ -363,6 +379,14 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? field4label,
 
+            string? marketingPolicyLink,
+
+            bool? marketingPolicyOptIn,
+
+            string? marketingPolicyOptInLabel,
+
+            string? marketingPolicyOptInText,
+
             string? message,
 
             string? nameError,
@@ -516,6 +540,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
             Field3label = field3label;
             Field4error = field4error;
             Field4label = field4label;
+            MarketingPolicyLink = marketingPolicyLink;
+            MarketingPolicyOptIn = marketingPolicyOptIn;
+            MarketingPolicyOptInLabel = marketingPolicyOptInLabel;
+            MarketingPolicyOptInText = marketingPolicyOptInText;
             Message = message;
             NameError = nameError;
             NameLabel = nameLabel;

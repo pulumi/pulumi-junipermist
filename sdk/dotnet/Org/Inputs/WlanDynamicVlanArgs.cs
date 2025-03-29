@@ -52,7 +52,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<string>? _vlans;
 
         /// <summary>
-        /// Map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
+        /// Map between vlan_id (as string) to airespace interface names (comma-separated) or null for standard mapping
         ///   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
         ///   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
         /// </summary>

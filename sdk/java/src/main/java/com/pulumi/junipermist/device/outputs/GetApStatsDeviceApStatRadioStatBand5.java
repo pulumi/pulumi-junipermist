@@ -13,12 +13,12 @@ import java.util.Objects;
 @CustomType
 public final class GetApStatsDeviceApStatRadioStatBand5 {
     /**
-     * @return channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
+     * @return channel width for the band.enum: `20`, `40`, `80` (only applicable for band_5 and band_6), `160` (only for band_6)
      * 
      */
     private Integer bandwidth;
     /**
-     * @return current channel the radio is running on
+     * @return Current channel the radio is running on
      * 
      */
     private Integer channel;
@@ -26,70 +26,91 @@ public final class GetApStatsDeviceApStatRadioStatBand5 {
      * @return Use dynamic chaining for downlink
      * 
      */
-    private Boolean dynamicChainingEnalbed;
+    private Boolean dynamicChainingEnabled;
     /**
-     * @return radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+     * @return Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
      * 
      */
     private String mac;
     private Integer noiseFloor;
     private Integer numClients;
     /**
-     * @return transmit power (in dBm)
+     * @return How many WLANs are applied to the radio
+     * 
+     */
+    private Integer numWlans;
+    /**
+     * @return Transmit power (in dBm)
      * 
      */
     private Integer power;
+    /**
+     * @return Amount of traffic received since connection
+     * 
+     */
     private Integer rxBytes;
+    /**
+     * @return Amount of packets received since connection
+     * 
+     */
     private Integer rxPkts;
+    /**
+     * @return Amount of traffic sent since connection
+     * 
+     */
     private Integer txBytes;
+    /**
+     * @return Amount of packets sent since connection
+     * 
+     */
     private Integer txPkts;
     private String usage;
     /**
-     * @return all utilization in percentage
+     * @return All utilization in percentage
      * 
      */
     private Integer utilAll;
     /**
-     * @return reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+     * @return Reception of &#34;No Packets&#34; utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
      * 
      */
     private Integer utilNonWifi;
     /**
-     * @return reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
+     * @return Reception of &#34;In BSS&#34; utilization in percentage, only frames that are received from AP/STAs within the BSS
      * 
      */
     private Integer utilRxInBss;
     /**
-     * @return reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
+     * @return Reception of &#34;Other BSS&#34; utilization in percentage, all frames received from AP/STAs that are outside the BSS
      * 
      */
     private Integer utilRxOtherBss;
     /**
-     * @return transmission utilization in percentage
+     * @return Transmission utilization in percentage
      * 
      */
     private Integer utilTx;
     /**
-     * @return reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+     * @return Reception of &#34;UnDecodable Wifi&#34; utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
      * 
      */
     private Integer utilUndecodableWifi;
     /**
-     * @return reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+     * @return Reception of &#34;No Category&#34; utilization in percentage, all 802.11 frames that are corrupted at the receiver
      * 
      */
     private Integer utilUnknownWifi;
 
     private GetApStatsDeviceApStatRadioStatBand5() {}
     /**
-     * @return channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
+     * @return channel width for the band.enum: `20`, `40`, `80` (only applicable for band_5 and band_6), `160` (only for band_6)
      * 
      */
     public Integer bandwidth() {
         return this.bandwidth;
     }
     /**
-     * @return current channel the radio is running on
+     * @return Current channel the radio is running on
      * 
      */
     public Integer channel() {
@@ -99,11 +120,11 @@ public final class GetApStatsDeviceApStatRadioStatBand5 {
      * @return Use dynamic chaining for downlink
      * 
      */
-    public Boolean dynamicChainingEnalbed() {
-        return this.dynamicChainingEnalbed;
+    public Boolean dynamicChainingEnabled() {
+        return this.dynamicChainingEnabled;
     }
     /**
-     * @return radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+     * @return Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
      * 
      */
     public String mac() {
@@ -116,21 +137,44 @@ public final class GetApStatsDeviceApStatRadioStatBand5 {
         return this.numClients;
     }
     /**
-     * @return transmit power (in dBm)
+     * @return How many WLANs are applied to the radio
+     * 
+     */
+    public Integer numWlans() {
+        return this.numWlans;
+    }
+    /**
+     * @return Transmit power (in dBm)
      * 
      */
     public Integer power() {
         return this.power;
     }
+    /**
+     * @return Amount of traffic received since connection
+     * 
+     */
     public Integer rxBytes() {
         return this.rxBytes;
     }
+    /**
+     * @return Amount of packets received since connection
+     * 
+     */
     public Integer rxPkts() {
         return this.rxPkts;
     }
+    /**
+     * @return Amount of traffic sent since connection
+     * 
+     */
     public Integer txBytes() {
         return this.txBytes;
     }
+    /**
+     * @return Amount of packets sent since connection
+     * 
+     */
     public Integer txPkts() {
         return this.txPkts;
     }
@@ -138,49 +182,49 @@ public final class GetApStatsDeviceApStatRadioStatBand5 {
         return this.usage;
     }
     /**
-     * @return all utilization in percentage
+     * @return All utilization in percentage
      * 
      */
     public Integer utilAll() {
         return this.utilAll;
     }
     /**
-     * @return reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+     * @return Reception of &#34;No Packets&#34; utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
      * 
      */
     public Integer utilNonWifi() {
         return this.utilNonWifi;
     }
     /**
-     * @return reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
+     * @return Reception of &#34;In BSS&#34; utilization in percentage, only frames that are received from AP/STAs within the BSS
      * 
      */
     public Integer utilRxInBss() {
         return this.utilRxInBss;
     }
     /**
-     * @return reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
+     * @return Reception of &#34;Other BSS&#34; utilization in percentage, all frames received from AP/STAs that are outside the BSS
      * 
      */
     public Integer utilRxOtherBss() {
         return this.utilRxOtherBss;
     }
     /**
-     * @return transmission utilization in percentage
+     * @return Transmission utilization in percentage
      * 
      */
     public Integer utilTx() {
         return this.utilTx;
     }
     /**
-     * @return reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+     * @return Reception of &#34;UnDecodable Wifi&#34; utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
      * 
      */
     public Integer utilUndecodableWifi() {
         return this.utilUndecodableWifi;
     }
     /**
-     * @return reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+     * @return Reception of &#34;No Category&#34; utilization in percentage, all 802.11 frames that are corrupted at the receiver
      * 
      */
     public Integer utilUnknownWifi() {
@@ -198,10 +242,11 @@ public final class GetApStatsDeviceApStatRadioStatBand5 {
     public static final class Builder {
         private Integer bandwidth;
         private Integer channel;
-        private Boolean dynamicChainingEnalbed;
+        private Boolean dynamicChainingEnabled;
         private String mac;
         private Integer noiseFloor;
         private Integer numClients;
+        private Integer numWlans;
         private Integer power;
         private Integer rxBytes;
         private Integer rxPkts;
@@ -220,10 +265,11 @@ public final class GetApStatsDeviceApStatRadioStatBand5 {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidth = defaults.bandwidth;
     	      this.channel = defaults.channel;
-    	      this.dynamicChainingEnalbed = defaults.dynamicChainingEnalbed;
+    	      this.dynamicChainingEnabled = defaults.dynamicChainingEnabled;
     	      this.mac = defaults.mac;
     	      this.noiseFloor = defaults.noiseFloor;
     	      this.numClients = defaults.numClients;
+    	      this.numWlans = defaults.numWlans;
     	      this.power = defaults.power;
     	      this.rxBytes = defaults.rxBytes;
     	      this.rxPkts = defaults.rxPkts;
@@ -256,11 +302,11 @@ public final class GetApStatsDeviceApStatRadioStatBand5 {
             return this;
         }
         @CustomType.Setter
-        public Builder dynamicChainingEnalbed(Boolean dynamicChainingEnalbed) {
-            if (dynamicChainingEnalbed == null) {
-              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatRadioStatBand5", "dynamicChainingEnalbed");
+        public Builder dynamicChainingEnabled(Boolean dynamicChainingEnabled) {
+            if (dynamicChainingEnabled == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatRadioStatBand5", "dynamicChainingEnabled");
             }
-            this.dynamicChainingEnalbed = dynamicChainingEnalbed;
+            this.dynamicChainingEnabled = dynamicChainingEnabled;
             return this;
         }
         @CustomType.Setter
@@ -285,6 +331,14 @@ public final class GetApStatsDeviceApStatRadioStatBand5 {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStatRadioStatBand5", "numClients");
             }
             this.numClients = numClients;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder numWlans(Integer numWlans) {
+            if (numWlans == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatRadioStatBand5", "numWlans");
+            }
+            this.numWlans = numWlans;
             return this;
         }
         @CustomType.Setter
@@ -395,10 +449,11 @@ public final class GetApStatsDeviceApStatRadioStatBand5 {
             final var _resultValue = new GetApStatsDeviceApStatRadioStatBand5();
             _resultValue.bandwidth = bandwidth;
             _resultValue.channel = channel;
-            _resultValue.dynamicChainingEnalbed = dynamicChainingEnalbed;
+            _resultValue.dynamicChainingEnabled = dynamicChainingEnabled;
             _resultValue.mac = mac;
             _resultValue.noiseFloor = noiseFloor;
             _resultValue.numClients = numClients;
+            _resultValue.numWlans = numWlans;
             _resultValue.power = power;
             _resultValue.rxBytes = rxBytes;
             _resultValue.rxPkts = rxPkts;

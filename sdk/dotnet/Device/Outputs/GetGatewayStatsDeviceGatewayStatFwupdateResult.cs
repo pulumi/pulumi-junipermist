@@ -14,8 +14,14 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GetGatewayStatsDeviceGatewayStatFwupdateResult
     {
         public readonly int Progress;
+        /// <summary>
+        /// enum: `inprogress`, `failed`, `upgraded`
+        /// </summary>
         public readonly string Status;
         public readonly int StatusId;
+        /// <summary>
+        /// Epoch (seconds)
+        /// </summary>
         public readonly double Timestamp;
         public readonly bool WillRetry;
 

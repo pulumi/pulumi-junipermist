@@ -13,21 +13,21 @@ import java.util.Objects;
 @CustomType
 public final class GetConstCountriesConstCountry {
     /**
-     * @return country code, in two-character
+     * @return Country code, in two-character
      * 
      */
     private String alpha2;
     private Boolean certified;
     private String name;
     /**
-     * @return country code, ISO 3166-1 numeric
+     * @return Country code, ISO 3166-1 numeric
      * 
      */
     private Double numeric;
 
     private GetConstCountriesConstCountry() {}
     /**
-     * @return country code, in two-character
+     * @return Country code, in two-character
      * 
      */
     public String alpha2() {
@@ -40,7 +40,7 @@ public final class GetConstCountriesConstCountry {
         return this.name;
     }
     /**
-     * @return country code, ISO 3166-1 numeric
+     * @return Country code, ISO 3166-1 numeric
      * 
      */
     public Double numeric() {

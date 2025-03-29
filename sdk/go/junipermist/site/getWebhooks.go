@@ -16,6 +16,32 @@ import (
 // A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.\
 // It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.\
 // The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/site"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := site.GetWebhooks(ctx, &site.GetWebhooksArgs{
+//				SiteId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetWebhooks(ctx *pulumi.Context, args *GetWebhooksArgs, opts ...pulumi.InvokeOption) (*GetWebhooksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetWebhooksResult

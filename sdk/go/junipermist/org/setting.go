@@ -55,6 +55,8 @@ type Setting struct {
 	// JCloud Routing Assurance connexion
 	JcloudRa SettingJcloudRaPtrOutput `pulumi:"jcloudRa"`
 	Juniper  SettingJuniperOutput     `pulumi:"juniper"`
+	// by default, webshell access is only enabled for Admin user
+	JunosShellAccess SettingJunosShellAccessPtrOutput `pulumi:"junosShellAccess"`
 	// management-related properties
 	Mgmt              SettingMgmtPtrOutput       `pulumi:"mgmt"`
 	MistNac           SettingMistNacPtrOutput    `pulumi:"mistNac"`
@@ -140,6 +142,8 @@ type settingState struct {
 	// JCloud Routing Assurance connexion
 	JcloudRa *SettingJcloudRa `pulumi:"jcloudRa"`
 	Juniper  *SettingJuniper  `pulumi:"juniper"`
+	// by default, webshell access is only enabled for Admin user
+	JunosShellAccess *SettingJunosShellAccess `pulumi:"junosShellAccess"`
 	// management-related properties
 	Mgmt              *SettingMgmt       `pulumi:"mgmt"`
 	MistNac           *SettingMistNac    `pulumi:"mistNac"`
@@ -193,6 +197,8 @@ type SettingState struct {
 	// JCloud Routing Assurance connexion
 	JcloudRa SettingJcloudRaPtrInput
 	Juniper  SettingJuniperPtrInput
+	// by default, webshell access is only enabled for Admin user
+	JunosShellAccess SettingJunosShellAccessPtrInput
 	// management-related properties
 	Mgmt              SettingMgmtPtrInput
 	MistNac           SettingMistNacPtrInput
@@ -248,6 +254,8 @@ type settingArgs struct {
 	Jcloud                 *SettingJcloud    `pulumi:"jcloud"`
 	// JCloud Routing Assurance connexion
 	JcloudRa *SettingJcloudRa `pulumi:"jcloudRa"`
+	// by default, webshell access is only enabled for Admin user
+	JunosShellAccess *SettingJunosShellAccess `pulumi:"junosShellAccess"`
 	// management-related properties
 	Mgmt              *SettingMgmt       `pulumi:"mgmt"`
 	MistNac           *SettingMistNac    `pulumi:"mistNac"`
@@ -300,6 +308,8 @@ type SettingArgs struct {
 	Jcloud                 SettingJcloudPtrInput
 	// JCloud Routing Assurance connexion
 	JcloudRa SettingJcloudRaPtrInput
+	// by default, webshell access is only enabled for Admin user
+	JunosShellAccess SettingJunosShellAccessPtrInput
 	// management-related properties
 	Mgmt              SettingMgmtPtrInput
 	MistNac           SettingMistNacPtrInput
@@ -482,6 +492,11 @@ func (o SettingOutput) JcloudRa() SettingJcloudRaPtrOutput {
 
 func (o SettingOutput) Juniper() SettingJuniperOutput {
 	return o.ApplyT(func(v *Setting) SettingJuniperOutput { return v.Juniper }).(SettingJuniperOutput)
+}
+
+// by default, webshell access is only enabled for Admin user
+func (o SettingOutput) JunosShellAccess() SettingJunosShellAccessPtrOutput {
+	return o.ApplyT(func(v *Setting) SettingJunosShellAccessPtrOutput { return v.JunosShellAccess }).(SettingJunosShellAccessPtrOutput)
 }
 
 // management-related properties

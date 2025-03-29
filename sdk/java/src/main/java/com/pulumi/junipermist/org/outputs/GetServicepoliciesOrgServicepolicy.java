@@ -5,9 +5,12 @@ package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.junipermist.org.outputs.GetServicepoliciesOrgServicepolicyAamw;
+import com.pulumi.junipermist.org.outputs.GetServicepoliciesOrgServicepolicyAntivirus;
 import com.pulumi.junipermist.org.outputs.GetServicepoliciesOrgServicepolicyAppqoe;
 import com.pulumi.junipermist.org.outputs.GetServicepoliciesOrgServicepolicyEwf;
 import com.pulumi.junipermist.org.outputs.GetServicepoliciesOrgServicepolicyIdp;
+import com.pulumi.junipermist.org.outputs.GetServicepoliciesOrgServicepolicySslProxy;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -17,17 +20,35 @@ import java.util.Objects;
 @CustomType
 public final class GetServicepoliciesOrgServicepolicy {
     /**
+     * @return For SRX Only
+     * 
+     */
+    private GetServicepoliciesOrgServicepolicyAamw aamw;
+    /**
      * @return enum: `allow`, `deny`
      * 
      */
     private String action;
     /**
+     * @return For SRX-only
+     * 
+     */
+    private GetServicepoliciesOrgServicepolicyAntivirus antivirus;
+    /**
      * @return For SRX Only
      * 
      */
     private GetServicepoliciesOrgServicepolicyAppqoe appqoe;
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
     private Double createdTime;
     private List<GetServicepoliciesOrgServicepolicyEwf> ewfs;
+    /**
+     * @return Unique ID of the object instance in the Mist Organization
+     * 
+     */
     private String id;
     private GetServicepoliciesOrgServicepolicyIdp idp;
     /**
@@ -35,19 +56,34 @@ public final class GetServicepoliciesOrgServicepolicy {
      * 
      */
     private Boolean localRouting;
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
     private Double modifiedTime;
     private String name;
     private String orgId;
     /**
-     * @return by default, we derive all paths available and use them
-     * optionally, you can customize by using `path_preference`
+     * @return By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
      * 
      */
     private String pathPreference;
     private List<String> services;
+    /**
+     * @return For SRX-only
+     * 
+     */
+    private GetServicepoliciesOrgServicepolicySslProxy sslProxy;
     private List<String> tenants;
 
     private GetServicepoliciesOrgServicepolicy() {}
+    /**
+     * @return For SRX Only
+     * 
+     */
+    public GetServicepoliciesOrgServicepolicyAamw aamw() {
+        return this.aamw;
+    }
     /**
      * @return enum: `allow`, `deny`
      * 
@@ -56,18 +92,33 @@ public final class GetServicepoliciesOrgServicepolicy {
         return this.action;
     }
     /**
+     * @return For SRX-only
+     * 
+     */
+    public GetServicepoliciesOrgServicepolicyAntivirus antivirus() {
+        return this.antivirus;
+    }
+    /**
      * @return For SRX Only
      * 
      */
     public GetServicepoliciesOrgServicepolicyAppqoe appqoe() {
         return this.appqoe;
     }
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
     public Double createdTime() {
         return this.createdTime;
     }
     public List<GetServicepoliciesOrgServicepolicyEwf> ewfs() {
         return this.ewfs;
     }
+    /**
+     * @return Unique ID of the object instance in the Mist Organization
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -81,6 +132,10 @@ public final class GetServicepoliciesOrgServicepolicy {
     public Boolean localRouting() {
         return this.localRouting;
     }
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
     public Double modifiedTime() {
         return this.modifiedTime;
     }
@@ -91,8 +146,7 @@ public final class GetServicepoliciesOrgServicepolicy {
         return this.orgId;
     }
     /**
-     * @return by default, we derive all paths available and use them
-     * optionally, you can customize by using `path_preference`
+     * @return By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
      * 
      */
     public String pathPreference() {
@@ -100,6 +154,13 @@ public final class GetServicepoliciesOrgServicepolicy {
     }
     public List<String> services() {
         return this.services;
+    }
+    /**
+     * @return For SRX-only
+     * 
+     */
+    public GetServicepoliciesOrgServicepolicySslProxy sslProxy() {
+        return this.sslProxy;
     }
     public List<String> tenants() {
         return this.tenants;
@@ -114,7 +175,9 @@ public final class GetServicepoliciesOrgServicepolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private GetServicepoliciesOrgServicepolicyAamw aamw;
         private String action;
+        private GetServicepoliciesOrgServicepolicyAntivirus antivirus;
         private GetServicepoliciesOrgServicepolicyAppqoe appqoe;
         private Double createdTime;
         private List<GetServicepoliciesOrgServicepolicyEwf> ewfs;
@@ -126,11 +189,14 @@ public final class GetServicepoliciesOrgServicepolicy {
         private String orgId;
         private String pathPreference;
         private List<String> services;
+        private GetServicepoliciesOrgServicepolicySslProxy sslProxy;
         private List<String> tenants;
         public Builder() {}
         public Builder(GetServicepoliciesOrgServicepolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aamw = defaults.aamw;
     	      this.action = defaults.action;
+    	      this.antivirus = defaults.antivirus;
     	      this.appqoe = defaults.appqoe;
     	      this.createdTime = defaults.createdTime;
     	      this.ewfs = defaults.ewfs;
@@ -142,15 +208,32 @@ public final class GetServicepoliciesOrgServicepolicy {
     	      this.orgId = defaults.orgId;
     	      this.pathPreference = defaults.pathPreference;
     	      this.services = defaults.services;
+    	      this.sslProxy = defaults.sslProxy;
     	      this.tenants = defaults.tenants;
         }
 
+        @CustomType.Setter
+        public Builder aamw(GetServicepoliciesOrgServicepolicyAamw aamw) {
+            if (aamw == null) {
+              throw new MissingRequiredPropertyException("GetServicepoliciesOrgServicepolicy", "aamw");
+            }
+            this.aamw = aamw;
+            return this;
+        }
         @CustomType.Setter
         public Builder action(String action) {
             if (action == null) {
               throw new MissingRequiredPropertyException("GetServicepoliciesOrgServicepolicy", "action");
             }
             this.action = action;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder antivirus(GetServicepoliciesOrgServicepolicyAntivirus antivirus) {
+            if (antivirus == null) {
+              throw new MissingRequiredPropertyException("GetServicepoliciesOrgServicepolicy", "antivirus");
+            }
+            this.antivirus = antivirus;
             return this;
         }
         @CustomType.Setter
@@ -248,6 +331,14 @@ public final class GetServicepoliciesOrgServicepolicy {
             return services(List.of(services));
         }
         @CustomType.Setter
+        public Builder sslProxy(GetServicepoliciesOrgServicepolicySslProxy sslProxy) {
+            if (sslProxy == null) {
+              throw new MissingRequiredPropertyException("GetServicepoliciesOrgServicepolicy", "sslProxy");
+            }
+            this.sslProxy = sslProxy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tenants(List<String> tenants) {
             if (tenants == null) {
               throw new MissingRequiredPropertyException("GetServicepoliciesOrgServicepolicy", "tenants");
@@ -260,7 +351,9 @@ public final class GetServicepoliciesOrgServicepolicy {
         }
         public GetServicepoliciesOrgServicepolicy build() {
             final var _resultValue = new GetServicepoliciesOrgServicepolicy();
+            _resultValue.aamw = aamw;
             _resultValue.action = action;
+            _resultValue.antivirus = antivirus;
             _resultValue.appqoe = appqoe;
             _resultValue.createdTime = createdTime;
             _resultValue.ewfs = ewfs;
@@ -272,6 +365,7 @@ public final class GetServicepoliciesOrgServicepolicy {
             _resultValue.orgId = orgId;
             _resultValue.pathPreference = pathPreference;
             _resultValue.services = services;
+            _resultValue.sslProxy = sslProxy;
             _resultValue.tenants = tenants;
             return _resultValue;
         }

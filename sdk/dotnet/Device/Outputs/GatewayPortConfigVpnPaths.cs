@@ -22,15 +22,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? BfdUseTunnelMode;
         /// <summary>
-        /// Only if the VPN `type`==`mesh`
-        /// </summary>
-        public readonly string? LinkName;
-        /// <summary>
         /// Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
         /// </summary>
         public readonly int? Preference;
         /// <summary>
-        /// Only if the VPN `type`==`hub_spoke`. enum: `hub`, `spoke`
+        /// If the VPN `type`==`hub_spoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
         /// </summary>
         public readonly string? Role;
         public readonly Outputs.GatewayPortConfigVpnPathsTrafficShaping? TrafficShaping;
@@ -41,8 +37,6 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             bool? bfdUseTunnelMode,
 
-            string? linkName,
-
             int? preference,
 
             string? role,
@@ -51,7 +45,6 @@ namespace Pulumi.JuniperMist.Device.Outputs
         {
             BfdProfile = bfdProfile;
             BfdUseTunnelMode = bfdUseTunnelMode;
-            LinkName = linkName;
             Preference = preference;
             Role = role;
             TrafficShaping = trafficShaping;

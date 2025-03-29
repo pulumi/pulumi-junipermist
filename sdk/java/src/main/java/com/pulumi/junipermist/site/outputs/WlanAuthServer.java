@@ -38,7 +38,7 @@ public final class WlanAuthServer {
      */
     private @Nullable Boolean requireMessageAuthenticator;
     /**
-     * @return Secretof RADIUS server
+     * @return Secret of RADIUS server
      * 
      */
     private String secret;
@@ -82,7 +82,7 @@ public final class WlanAuthServer {
         return Optional.ofNullable(this.requireMessageAuthenticator);
     }
     /**
-     * @return Secretof RADIUS server
+     * @return Secret of RADIUS server
      * 
      */
     public String secret() {

@@ -189,6 +189,22 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
         /// </summary>
         public readonly string? Logo;
+        /// <summary>
+        /// label of the link to go to /marketing_policy
+        /// </summary>
+        public readonly string? MarketingPolicyLink;
+        /// <summary>
+        /// Whether marketing policy optin is enabled
+        /// </summary>
+        public readonly bool? MarketingPolicyOptIn;
+        /// <summary>
+        /// label for marketing optin
+        /// </summary>
+        public readonly string? MarketingPolicyOptInLabel;
+        /// <summary>
+        /// marketing policy text
+        /// </summary>
+        public readonly string? MarketingPolicyOptInText;
         public readonly string? Message;
         public readonly bool? MultiAuth;
         /// <summary>
@@ -267,7 +283,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? RequiredFieldLabel;
         public readonly bool? ResponsiveLayout;
         /// <summary>
-        /// Label of the button to /signin
+        /// Label of the button to signin
         /// </summary>
         public readonly string? SignInLabel;
         public readonly string? SmsCarrierDefault;
@@ -501,6 +517,14 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? logo,
 
+            string? marketingPolicyLink,
+
+            bool? marketingPolicyOptIn,
+
+            string? marketingPolicyOptInLabel,
+
+            string? marketingPolicyOptInText,
+
             string? message,
 
             bool? multiAuth,
@@ -693,6 +717,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
             Field4required = field4required;
             Locales = locales;
             Logo = logo;
+            MarketingPolicyLink = marketingPolicyLink;
+            MarketingPolicyOptIn = marketingPolicyOptIn;
+            MarketingPolicyOptInLabel = marketingPolicyOptInLabel;
+            MarketingPolicyOptInText = marketingPolicyOptInText;
             Message = message;
             MultiAuth = multiAuth;
             Name = name;

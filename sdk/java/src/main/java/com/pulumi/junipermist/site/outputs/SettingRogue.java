@@ -15,6 +15,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingRogue {
     /**
+     * @return list of VLAN IDs on which rogue APs are ignored
+     * 
+     */
+    private @Nullable List<Integer> allowedVlanIds;
+    /**
      * @return Whether rogue detection is enabled
      * 
      */
@@ -25,12 +30,22 @@ public final class SettingRogue {
      */
     private @Nullable Boolean honeypotEnabled;
     /**
-     * @return Minimum duration for a bssid to be considered rogue
+     * @return Minimum duration for a bssid to be considered neighbor
      * 
      */
     private @Nullable Integer minDuration;
     /**
-     * @return Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+     * @return Minimum duration for a bssid to be considered rogue
+     * 
+     */
+    private @Nullable Integer minRogueDuration;
+    /**
+     * @return Minimum RSSI for an AP to be considered rogue
+     * 
+     */
+    private @Nullable Integer minRogueRssi;
+    /**
+     * @return Minimum RSSI for an AP to be considered neighbor (ignoring APs that’s far away)
      * 
      */
     private @Nullable Integer minRssi;
@@ -47,6 +62,13 @@ public final class SettingRogue {
 
     private SettingRogue() {}
     /**
+     * @return list of VLAN IDs on which rogue APs are ignored
+     * 
+     */
+    public List<Integer> allowedVlanIds() {
+        return this.allowedVlanIds == null ? List.of() : this.allowedVlanIds;
+    }
+    /**
      * @return Whether rogue detection is enabled
      * 
      */
@@ -61,14 +83,28 @@ public final class SettingRogue {
         return Optional.ofNullable(this.honeypotEnabled);
     }
     /**
-     * @return Minimum duration for a bssid to be considered rogue
+     * @return Minimum duration for a bssid to be considered neighbor
      * 
      */
     public Optional<Integer> minDuration() {
         return Optional.ofNullable(this.minDuration);
     }
     /**
-     * @return Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+     * @return Minimum duration for a bssid to be considered rogue
+     * 
+     */
+    public Optional<Integer> minRogueDuration() {
+        return Optional.ofNullable(this.minRogueDuration);
+    }
+    /**
+     * @return Minimum RSSI for an AP to be considered rogue
+     * 
+     */
+    public Optional<Integer> minRogueRssi() {
+        return Optional.ofNullable(this.minRogueRssi);
+    }
+    /**
+     * @return Minimum RSSI for an AP to be considered neighbor (ignoring APs that’s far away)
      * 
      */
     public Optional<Integer> minRssi() {
@@ -98,23 +134,38 @@ public final class SettingRogue {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<Integer> allowedVlanIds;
         private @Nullable Boolean enabled;
         private @Nullable Boolean honeypotEnabled;
         private @Nullable Integer minDuration;
+        private @Nullable Integer minRogueDuration;
+        private @Nullable Integer minRogueRssi;
         private @Nullable Integer minRssi;
         private @Nullable List<String> whitelistedBssids;
         private @Nullable List<String> whitelistedSsids;
         public Builder() {}
         public Builder(SettingRogue defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowedVlanIds = defaults.allowedVlanIds;
     	      this.enabled = defaults.enabled;
     	      this.honeypotEnabled = defaults.honeypotEnabled;
     	      this.minDuration = defaults.minDuration;
+    	      this.minRogueDuration = defaults.minRogueDuration;
+    	      this.minRogueRssi = defaults.minRogueRssi;
     	      this.minRssi = defaults.minRssi;
     	      this.whitelistedBssids = defaults.whitelistedBssids;
     	      this.whitelistedSsids = defaults.whitelistedSsids;
         }
 
+        @CustomType.Setter
+        public Builder allowedVlanIds(@Nullable List<Integer> allowedVlanIds) {
+
+            this.allowedVlanIds = allowedVlanIds;
+            return this;
+        }
+        public Builder allowedVlanIds(Integer... allowedVlanIds) {
+            return allowedVlanIds(List.of(allowedVlanIds));
+        }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
 
@@ -131,6 +182,18 @@ public final class SettingRogue {
         public Builder minDuration(@Nullable Integer minDuration) {
 
             this.minDuration = minDuration;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder minRogueDuration(@Nullable Integer minRogueDuration) {
+
+            this.minRogueDuration = minRogueDuration;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder minRogueRssi(@Nullable Integer minRogueRssi) {
+
+            this.minRogueRssi = minRogueRssi;
             return this;
         }
         @CustomType.Setter
@@ -159,9 +222,12 @@ public final class SettingRogue {
         }
         public SettingRogue build() {
             final var _resultValue = new SettingRogue();
+            _resultValue.allowedVlanIds = allowedVlanIds;
             _resultValue.enabled = enabled;
             _resultValue.honeypotEnabled = honeypotEnabled;
             _resultValue.minDuration = minDuration;
+            _resultValue.minRogueDuration = minRogueDuration;
+            _resultValue.minRogueRssi = minRogueRssi;
             _resultValue.minRssi = minRssi;
             _resultValue.whitelistedBssids = whitelistedBssids;
             _resultValue.whitelistedSsids = whitelistedSsids;

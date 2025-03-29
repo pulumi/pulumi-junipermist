@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This resource manages WAN Assurance Service Policies (Application Policiess).
+ * This resource manages WAN Assurance Service Policies (Application Policies).
  *
  * The Service Policies can be used in the `servicePolicies` object by referencing the Service Policy ID as the `servicepolicyId` in:
  * * the Gateway configuration (`mist_device_gateway.service_policies`)
@@ -54,6 +54,10 @@ export class Servicepolicy extends pulumi.CustomResource {
     }
 
     /**
+     * For SRX Only
+     */
+    public readonly aamw!: pulumi.Output<outputs.org.ServicepolicyAamw | undefined>;
+    /**
      * enum: `allow`, `deny`
      */
     public readonly action!: pulumi.Output<string>;
@@ -97,6 +101,7 @@ export class Servicepolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicepolicyState | undefined;
+            resourceInputs["aamw"] = state ? state.aamw : undefined;
             resourceInputs["action"] = state ? state.action : undefined;
             resourceInputs["antivirus"] = state ? state.antivirus : undefined;
             resourceInputs["appqoe"] = state ? state.appqoe : undefined;
@@ -114,6 +119,7 @@ export class Servicepolicy extends pulumi.CustomResource {
             if ((!args || args.orgId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
+            resourceInputs["aamw"] = args ? args.aamw : undefined;
             resourceInputs["action"] = args ? args.action : undefined;
             resourceInputs["antivirus"] = args ? args.antivirus : undefined;
             resourceInputs["appqoe"] = args ? args.appqoe : undefined;
@@ -136,6 +142,10 @@ export class Servicepolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Servicepolicy resources.
  */
 export interface ServicepolicyState {
+    /**
+     * For SRX Only
+     */
+    aamw?: pulumi.Input<inputs.org.ServicepolicyAamw>;
     /**
      * enum: `allow`, `deny`
      */
@@ -172,6 +182,10 @@ export interface ServicepolicyState {
  * The set of arguments for constructing a Servicepolicy resource.
  */
 export interface ServicepolicyArgs {
+    /**
+     * For SRX Only
+     */
+    aamw?: pulumi.Input<inputs.org.ServicepolicyAamw>;
     /**
      * enum: `allow`, `deny`
      */

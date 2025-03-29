@@ -12,60 +12,59 @@ import java.util.Objects;
 @CustomType
 public final class GetInventoryOrgInventory {
     /**
-     * @return only if `type`==`switch` or `type`==`gateway`
-     * whether the switch/gateway is adopted
+     * @return Only if `type`==`switch` or `type`==`gateway`, whether the switch/gateway is adopted
      * 
      */
     private Boolean adopted;
     /**
-     * @return device claim code
+     * @return Device claim code
      * 
      */
     private String claimCode;
     /**
-     * @return whether the device is connected
+     * @return Whether the device is connected
      * 
      */
     private Boolean connected;
     /**
-     * @return deviceprofile id if assigned, null if not assigned
+     * @return Deviceprofile id if assigned, null if not assigned
      * 
      */
     private String deviceprofileId;
     /**
-     * @return hostname reported by the device
+     * @return Hostname reported by the device
      * 
      */
     private String hostname;
     /**
-     * @return device hardware revision number
+     * @return Device hardware revision number
      * 
      */
     private String hwRev;
     /**
-     * @return device id
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     private String id;
     private Boolean jsi;
     /**
-     * @return device MAC address
+     * @return Device MAC address
      * 
      */
     private String mac;
     /**
-     * @return device model
+     * @return Device model
      * 
      */
     private String model;
     /**
-     * @return device name if configured
+     * @return Device name if configured
      * 
      */
     private String name;
     private String orgId;
     /**
-     * @return device serial
+     * @return Device serial
      * 
      */
     private String serial;
@@ -75,7 +74,7 @@ public final class GetInventoryOrgInventory {
      */
     private String siteId;
     /**
-     * @return device stock keeping unit
+     * @return Device stock keeping unit
      * 
      */
     private String sku;
@@ -85,57 +84,56 @@ public final class GetInventoryOrgInventory {
      */
     private String type;
     /**
-     * @return if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+     * @return If `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
      * 
      */
     private String vcMac;
 
     private GetInventoryOrgInventory() {}
     /**
-     * @return only if `type`==`switch` or `type`==`gateway`
-     * whether the switch/gateway is adopted
+     * @return Only if `type`==`switch` or `type`==`gateway`, whether the switch/gateway is adopted
      * 
      */
     public Boolean adopted() {
         return this.adopted;
     }
     /**
-     * @return device claim code
+     * @return Device claim code
      * 
      */
     public String claimCode() {
         return this.claimCode;
     }
     /**
-     * @return whether the device is connected
+     * @return Whether the device is connected
      * 
      */
     public Boolean connected() {
         return this.connected;
     }
     /**
-     * @return deviceprofile id if assigned, null if not assigned
+     * @return Deviceprofile id if assigned, null if not assigned
      * 
      */
     public String deviceprofileId() {
         return this.deviceprofileId;
     }
     /**
-     * @return hostname reported by the device
+     * @return Hostname reported by the device
      * 
      */
     public String hostname() {
         return this.hostname;
     }
     /**
-     * @return device hardware revision number
+     * @return Device hardware revision number
      * 
      */
     public String hwRev() {
         return this.hwRev;
     }
     /**
-     * @return device id
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     public String id() {
@@ -145,21 +143,21 @@ public final class GetInventoryOrgInventory {
         return this.jsi;
     }
     /**
-     * @return device MAC address
+     * @return Device MAC address
      * 
      */
     public String mac() {
         return this.mac;
     }
     /**
-     * @return device model
+     * @return Device model
      * 
      */
     public String model() {
         return this.model;
     }
     /**
-     * @return device name if configured
+     * @return Device name if configured
      * 
      */
     public String name() {
@@ -169,7 +167,7 @@ public final class GetInventoryOrgInventory {
         return this.orgId;
     }
     /**
-     * @return device serial
+     * @return Device serial
      * 
      */
     public String serial() {
@@ -183,7 +181,7 @@ public final class GetInventoryOrgInventory {
         return this.siteId;
     }
     /**
-     * @return device stock keeping unit
+     * @return Device stock keeping unit
      * 
      */
     public String sku() {
@@ -197,7 +195,7 @@ public final class GetInventoryOrgInventory {
         return this.type;
     }
     /**
-     * @return if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+     * @return If `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
      * 
      */
     public String vcMac() {

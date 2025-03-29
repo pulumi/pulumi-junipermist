@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class WxtagSpec
     {
         /// <summary>
-        /// matched destination port, "0" means any
+        /// Matched destination port, "0" means any
         /// </summary>
         public readonly string? PortRange;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Protocol;
         /// <summary>
-        /// matched destination subnets and/or IP Addresses
+        /// Matched destination subnets and/or IP Addresses
         /// </summary>
         public readonly ImmutableArray<string> Subnets;
 

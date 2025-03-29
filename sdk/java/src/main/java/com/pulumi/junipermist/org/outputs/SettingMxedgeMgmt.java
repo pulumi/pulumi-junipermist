@@ -12,6 +12,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingMxedgeMgmt {
+    private @Nullable Boolean configAutoRevert;
     private @Nullable Boolean fipsEnabled;
     private @Nullable String mistPassword;
     /**
@@ -27,6 +28,9 @@ public final class SettingMxedgeMgmt {
     private @Nullable String rootPassword;
 
     private SettingMxedgeMgmt() {}
+    public Optional<Boolean> configAutoRevert() {
+        return Optional.ofNullable(this.configAutoRevert);
+    }
     public Optional<Boolean> fipsEnabled() {
         return Optional.ofNullable(this.fipsEnabled);
     }
@@ -60,6 +64,7 @@ public final class SettingMxedgeMgmt {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean configAutoRevert;
         private @Nullable Boolean fipsEnabled;
         private @Nullable String mistPassword;
         private @Nullable String oobIpType;
@@ -68,6 +73,7 @@ public final class SettingMxedgeMgmt {
         public Builder() {}
         public Builder(SettingMxedgeMgmt defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.configAutoRevert = defaults.configAutoRevert;
     	      this.fipsEnabled = defaults.fipsEnabled;
     	      this.mistPassword = defaults.mistPassword;
     	      this.oobIpType = defaults.oobIpType;
@@ -75,6 +81,12 @@ public final class SettingMxedgeMgmt {
     	      this.rootPassword = defaults.rootPassword;
         }
 
+        @CustomType.Setter
+        public Builder configAutoRevert(@Nullable Boolean configAutoRevert) {
+
+            this.configAutoRevert = configAutoRevert;
+            return this;
+        }
         @CustomType.Setter
         public Builder fipsEnabled(@Nullable Boolean fipsEnabled) {
 
@@ -107,6 +119,7 @@ public final class SettingMxedgeMgmt {
         }
         public SettingMxedgeMgmt build() {
             final var _resultValue = new SettingMxedgeMgmt();
+            _resultValue.configAutoRevert = configAutoRevert;
             _resultValue.fipsEnabled = fipsEnabled;
             _resultValue.mistPassword = mistPassword;
             _resultValue.oobIpType = oobIpType;

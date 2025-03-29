@@ -109,13 +109,13 @@ namespace Pulumi.JuniperMist.Device
     public sealed class GetGatewayStatsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// duration like 7d, 2w
+        /// Duration like 7d, 2w
         /// </summary>
         [Input("duration")]
         public string? Duration { get; set; }
 
         /// <summary>
-        /// end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+        /// End datetime, can be epoch or relative time like -1d, -2h; now if not specified
         /// </summary>
         [Input("end")]
         public int? End { get; set; }
@@ -130,11 +130,14 @@ namespace Pulumi.JuniperMist.Device
         public string? SiteId { get; set; }
 
         /// <summary>
-        /// start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+        /// Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
         /// </summary>
         [Input("start")]
         public int? Start { get; set; }
 
+        /// <summary>
+        /// enum: `all`, `connected`, `disconnected`
+        /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
@@ -147,13 +150,13 @@ namespace Pulumi.JuniperMist.Device
     public sealed class GetGatewayStatsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// duration like 7d, 2w
+        /// Duration like 7d, 2w
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
 
         /// <summary>
-        /// end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+        /// End datetime, can be epoch or relative time like -1d, -2h; now if not specified
         /// </summary>
         [Input("end")]
         public Input<int>? End { get; set; }
@@ -168,11 +171,14 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? SiteId { get; set; }
 
         /// <summary>
-        /// start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+        /// Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
         /// </summary>
         [Input("start")]
         public Input<int>? Start { get; set; }
 
+        /// <summary>
+        /// enum: `all`, `connected`, `disconnected`
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -188,11 +194,11 @@ namespace Pulumi.JuniperMist.Device
     {
         public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatResult> DeviceGatewayStats;
         /// <summary>
-        /// duration like 7d, 2w
+        /// Duration like 7d, 2w
         /// </summary>
         public readonly string? Duration;
         /// <summary>
-        /// end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+        /// End datetime, can be epoch or relative time like -1d, -2h; now if not specified
         /// </summary>
         public readonly int? End;
         /// <summary>
@@ -203,9 +209,12 @@ namespace Pulumi.JuniperMist.Device
         public readonly string OrgId;
         public readonly string? SiteId;
         /// <summary>
-        /// start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+        /// Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
         /// </summary>
         public readonly int? Start;
+        /// <summary>
+        /// enum: `all`, `connected`, `disconnected`
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

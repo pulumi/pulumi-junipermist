@@ -25,14 +25,14 @@ public final class NacEndpointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * only non-local-admin MAC is accepted
+     * Only non-local-admin MAC is accepted
      * 
      */
     @Import(name="mac", required=true)
     private Output<String> mac;
 
     /**
-     * @return only non-local-admin MAC is accepted
+     * @return Only non-local-admin MAC is accepted
      * 
      */
     public Output<String> mac() {
@@ -118,7 +118,7 @@ public final class NacEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac only non-local-admin MAC is accepted
+         * @param mac Only non-local-admin MAC is accepted
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class NacEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac only non-local-admin MAC is accepted
+         * @param mac Only non-local-admin MAC is accepted
          * 
          * @return builder
          * 

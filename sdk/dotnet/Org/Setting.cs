@@ -101,6 +101,12 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.SettingJuniper> Juniper { get; private set; } = null!;
 
         /// <summary>
+        /// by default, webshell access is only enabled for Admin user
+        /// </summary>
+        [Output("junosShellAccess")]
+        public Output<Outputs.SettingJunosShellAccess?> JunosShellAccess { get; private set; } = null!;
+
+        /// <summary>
         /// management-related properties
         /// </summary>
         [Output("mgmt")]
@@ -288,6 +294,12 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.SettingJcloudRaArgs>? JcloudRa { get; set; }
 
         /// <summary>
+        /// by default, webshell access is only enabled for Admin user
+        /// </summary>
+        [Input("junosShellAccess")]
+        public Input<Inputs.SettingJunosShellAccessArgs>? JunosShellAccess { get; set; }
+
+        /// <summary>
         /// management-related properties
         /// </summary>
         [Input("mgmt")]
@@ -446,6 +458,12 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("juniper")]
         public Input<Inputs.SettingJuniperGetArgs>? Juniper { get; set; }
+
+        /// <summary>
+        /// by default, webshell access is only enabled for Admin user
+        /// </summary>
+        [Input("junosShellAccess")]
+        public Input<Inputs.SettingJunosShellAccessGetArgs>? JunosShellAccess { get; set; }
 
         /// <summary>
         /// management-related properties

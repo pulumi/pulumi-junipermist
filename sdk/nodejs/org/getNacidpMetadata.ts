@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the NAC IDP Metadata information.
  *
- * The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the informationrequired to configure the IDP
+ * The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the information required to configure the IDP
  *
  * ## Example Usage
  *
@@ -41,21 +41,37 @@ export interface GetNacidpMetadataArgs {
  * A collection of values returned by getNacidpMetadata.
  */
 export interface GetNacidpMetadataResult {
+    /**
+     * If `idpType`==`saml`
+     */
     readonly acsUrl: string;
+    /**
+     * If `idpType`==`saml`
+     */
     readonly entityId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * If `idpType`==`saml`
+     */
     readonly logoutUrl: string;
+    /**
+     * If `idpType`==`saml`
+     */
     readonly metadata: string;
     readonly nacidpId: string;
     readonly orgId: string;
+    /**
+     * If `idpType`==`oauth` and `scimEnabled`==`true`
+     */
+    readonly scimBaseUrl: string;
 }
 /**
  * This data source provides the NAC IDP Metadata information.
  *
- * The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the informationrequired to configure the IDP
+ * The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the information required to configure the IDP
  *
  * ## Example Usage
  *

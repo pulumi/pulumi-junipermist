@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * This resource manages the AP Device Profiles.
  * AP Device profiles for aps are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They allow for efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
  *
- * The AP Devide Profile can be assigned to a gateway with the `junipermist.org.DeviceprofileAssign` resource.
+ * The AP Device Profile can be assigned to a gateway with the `junipermist.org.DeviceprofileAssign` resource.
  *
  * ## Example Usage
  *
@@ -96,6 +96,7 @@ export class DeviceprofileAp extends pulumi.CustomResource {
      * IP AP settings
      */
     public readonly ipConfig!: pulumi.Output<outputs.org.DeviceprofileApIpConfig | undefined>;
+    public readonly lacpConfig!: pulumi.Output<outputs.org.DeviceprofileApLacpConfig | undefined>;
     /**
      * LED AP settings
      */
@@ -159,6 +160,7 @@ export class DeviceprofileAp extends pulumi.CustomResource {
             resourceInputs["disableModule"] = state ? state.disableModule : undefined;
             resourceInputs["eslConfig"] = state ? state.eslConfig : undefined;
             resourceInputs["ipConfig"] = state ? state.ipConfig : undefined;
+            resourceInputs["lacpConfig"] = state ? state.lacpConfig : undefined;
             resourceInputs["led"] = state ? state.led : undefined;
             resourceInputs["mesh"] = state ? state.mesh : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -185,6 +187,7 @@ export class DeviceprofileAp extends pulumi.CustomResource {
             resourceInputs["disableModule"] = args ? args.disableModule : undefined;
             resourceInputs["eslConfig"] = args ? args.eslConfig : undefined;
             resourceInputs["ipConfig"] = args ? args.ipConfig : undefined;
+            resourceInputs["lacpConfig"] = args ? args.lacpConfig : undefined;
             resourceInputs["led"] = args ? args.led : undefined;
             resourceInputs["mesh"] = args ? args.mesh : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -237,6 +240,7 @@ export interface DeviceprofileApState {
      * IP AP settings
      */
     ipConfig?: pulumi.Input<inputs.org.DeviceprofileApIpConfig>;
+    lacpConfig?: pulumi.Input<inputs.org.DeviceprofileApLacpConfig>;
     /**
      * LED AP settings
      */
@@ -313,6 +317,7 @@ export interface DeviceprofileApArgs {
      * IP AP settings
      */
     ipConfig?: pulumi.Input<inputs.org.DeviceprofileApIpConfig>;
+    lacpConfig?: pulumi.Input<inputs.org.DeviceprofileApLacpConfig>;
     /**
      * LED AP settings
      */
