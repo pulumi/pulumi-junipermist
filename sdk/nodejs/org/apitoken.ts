@@ -47,16 +47,16 @@ export class Apitoken extends pulumi.CustomResource {
     public /*out*/ readonly createdBy!: pulumi.Output<string>;
     public /*out*/ readonly key!: pulumi.Output<string>;
     /**
-     * name of the token
+     * Name of the token
      */
     public readonly name!: pulumi.Output<string>;
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * list of privileges the token has on the orgs/sites
+     * List of privileges the token has on the orgs/sites
      */
     public readonly privileges!: pulumi.Output<outputs.org.ApitokenPrivilege[]>;
     /**
-     * list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+     * List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
      */
     public readonly srcIps!: pulumi.Output<string[] | undefined>;
 
@@ -111,16 +111,16 @@ export interface ApitokenState {
     createdBy?: pulumi.Input<string>;
     key?: pulumi.Input<string>;
     /**
-     * name of the token
+     * Name of the token
      */
     name?: pulumi.Input<string>;
     orgId?: pulumi.Input<string>;
     /**
-     * list of privileges the token has on the orgs/sites
+     * List of privileges the token has on the orgs/sites
      */
     privileges?: pulumi.Input<pulumi.Input<inputs.org.ApitokenPrivilege>[]>;
     /**
-     * list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+     * List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
      */
     srcIps?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -130,16 +130,16 @@ export interface ApitokenState {
  */
 export interface ApitokenArgs {
     /**
-     * name of the token
+     * Name of the token
      */
     name?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
     /**
-     * list of privileges the token has on the orgs/sites
+     * List of privileges the token has on the orgs/sites
      */
     privileges: pulumi.Input<pulumi.Input<inputs.org.ApitokenPrivilege>[]>;
     /**
-     * list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+     * List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
      */
     srcIps?: pulumi.Input<pulumi.Input<string>[]>;
 }

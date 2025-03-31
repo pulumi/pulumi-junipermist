@@ -13,7 +13,7 @@ import (
 
 // This data source provides the NAC IDP Metadata information.
 //
-// # The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the informationrequired to configure the IDP
+// # The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the information required to configure the IDP
 //
 // ## Example Usage
 //
@@ -59,14 +59,20 @@ type GetNacidpMetadataArgs struct {
 
 // A collection of values returned by getNacidpMetadata.
 type GetNacidpMetadataResult struct {
-	AcsUrl   string `pulumi:"acsUrl"`
+	// If `idpType`==`saml`
+	AcsUrl string `pulumi:"acsUrl"`
+	// If `idpType`==`saml`
 	EntityId string `pulumi:"entityId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// If `idpType`==`saml`
 	LogoutUrl string `pulumi:"logoutUrl"`
-	Metadata  string `pulumi:"metadata"`
-	NacidpId  string `pulumi:"nacidpId"`
-	OrgId     string `pulumi:"orgId"`
+	// If `idpType`==`saml`
+	Metadata string `pulumi:"metadata"`
+	NacidpId string `pulumi:"nacidpId"`
+	OrgId    string `pulumi:"orgId"`
+	// If `idpType`==`oauth` and `scimEnabled`==`true`
+	ScimBaseUrl string `pulumi:"scimBaseUrl"`
 }
 
 func GetNacidpMetadataOutput(ctx *pulumi.Context, args GetNacidpMetadataOutputArgs, opts ...pulumi.InvokeOption) GetNacidpMetadataResultOutput {
@@ -103,10 +109,12 @@ func (o GetNacidpMetadataResultOutput) ToGetNacidpMetadataResultOutputWithContex
 	return o
 }
 
+// If `idpType`==`saml`
 func (o GetNacidpMetadataResultOutput) AcsUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNacidpMetadataResult) string { return v.AcsUrl }).(pulumi.StringOutput)
 }
 
+// If `idpType`==`saml`
 func (o GetNacidpMetadataResultOutput) EntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNacidpMetadataResult) string { return v.EntityId }).(pulumi.StringOutput)
 }
@@ -116,10 +124,12 @@ func (o GetNacidpMetadataResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNacidpMetadataResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// If `idpType`==`saml`
 func (o GetNacidpMetadataResultOutput) LogoutUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNacidpMetadataResult) string { return v.LogoutUrl }).(pulumi.StringOutput)
 }
 
+// If `idpType`==`saml`
 func (o GetNacidpMetadataResultOutput) Metadata() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNacidpMetadataResult) string { return v.Metadata }).(pulumi.StringOutput)
 }
@@ -130,6 +140,11 @@ func (o GetNacidpMetadataResultOutput) NacidpId() pulumi.StringOutput {
 
 func (o GetNacidpMetadataResultOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNacidpMetadataResult) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// If `idpType`==`oauth` and `scimEnabled`==`true`
+func (o GetNacidpMetadataResultOutput) ScimBaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNacidpMetadataResult) string { return v.ScimBaseUrl }).(pulumi.StringOutput)
 }
 
 func init() {

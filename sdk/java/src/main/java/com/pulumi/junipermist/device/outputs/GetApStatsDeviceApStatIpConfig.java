@@ -13,59 +13,67 @@ import java.util.Objects;
 @CustomType
 public final class GetApStatsDeviceApStatIpConfig {
     /**
-     * @return if `type`==`static`
+     * @return If `type`==`static`
      * 
      */
     private List<String> dns;
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     private List<String> dnsSuffixes;
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     private String gateway;
     private String gateway6;
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     private String ip;
     private String ip6;
     private Integer mtu;
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     private String netmask;
     private String netmask6;
+    /**
+     * @return enum: `dhcp`, `static`
+     * 
+     */
     private String type;
+    /**
+     * @return enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * 
+     */
     private String type6;
     /**
-     * @return management vlan id, default is 1 (untagged)
+     * @return Management VLAN id, default is 1 (untagged)
      * 
      */
     private Integer vlanId;
 
     private GetApStatsDeviceApStatIpConfig() {}
     /**
-     * @return if `type`==`static`
+     * @return If `type`==`static`
      * 
      */
     public List<String> dns() {
         return this.dns;
     }
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     public List<String> dnsSuffixes() {
         return this.dnsSuffixes;
     }
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     public String gateway() {
@@ -75,7 +83,7 @@ public final class GetApStatsDeviceApStatIpConfig {
         return this.gateway6;
     }
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     public String ip() {
@@ -88,7 +96,7 @@ public final class GetApStatsDeviceApStatIpConfig {
         return this.mtu;
     }
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     public String netmask() {
@@ -97,14 +105,22 @@ public final class GetApStatsDeviceApStatIpConfig {
     public String netmask6() {
         return this.netmask6;
     }
+    /**
+     * @return enum: `dhcp`, `static`
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * 
+     */
     public String type6() {
         return this.type6;
     }
     /**
-     * @return management vlan id, default is 1 (untagged)
+     * @return Management VLAN id, default is 1 (untagged)
      * 
      */
     public Integer vlanId() {

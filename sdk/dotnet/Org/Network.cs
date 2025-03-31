@@ -49,7 +49,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Network : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// whether to disallow Mist Devices in the network
+        /// Whether to disallow Mist Devices in the network
         /// </summary>
         [Output("disallowMistServices")]
         public Output<bool> DisallowMistServices { get; private set; } = null!;
@@ -64,19 +64,19 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.NetworkInternalAccess?> InternalAccess { get; private set; } = null!;
 
         /// <summary>
-        /// whether this network has direct internet access
+        /// Whether this network has direct internet access
         /// </summary>
         [Output("internetAccess")]
         public Output<Outputs.NetworkInternetAccess?> InternetAccess { get; private set; } = null!;
 
         /// <summary>
-        /// whether to allow clients in the network to talk to each other
+        /// Whether to allow clients in the network to talk to each other
         /// </summary>
         [Output("isolation")]
         public Output<bool?> Isolation { get; private set; } = null!;
 
         /// <summary>
-        /// whether to enable multicast support (only PIM-sparse mode is supported)
+        /// Whether to enable multicast support (only PIM-sparse mode is supported)
         /// </summary>
         [Output("multicast")]
         public Output<Outputs.NetworkMulticast?> Multicast { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        /// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         /// </summary>
         [Output("routedForNetworks")]
         public Output<ImmutableArray<string>> RoutedForNetworks { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// whether to disallow Mist Devices in the network
+        /// Whether to disallow Mist Devices in the network
         /// </summary>
         [Input("disallowMistServices")]
         public Input<bool>? DisallowMistServices { get; set; }
@@ -177,19 +177,19 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.NetworkInternalAccessArgs>? InternalAccess { get; set; }
 
         /// <summary>
-        /// whether this network has direct internet access
+        /// Whether this network has direct internet access
         /// </summary>
         [Input("internetAccess")]
         public Input<Inputs.NetworkInternetAccessArgs>? InternetAccess { get; set; }
 
         /// <summary>
-        /// whether to allow clients in the network to talk to each other
+        /// Whether to allow clients in the network to talk to each other
         /// </summary>
         [Input("isolation")]
         public Input<bool>? Isolation { get; set; }
 
         /// <summary>
-        /// whether to enable multicast support (only PIM-sparse mode is supported)
+        /// Whether to enable multicast support (only PIM-sparse mode is supported)
         /// </summary>
         [Input("multicast")]
         public Input<Inputs.NetworkMulticastArgs>? Multicast { get; set; }
@@ -204,7 +204,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _routedForNetworks;
 
         /// <summary>
-        /// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        /// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         /// </summary>
         public InputList<string> RoutedForNetworks
         {
@@ -254,7 +254,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// whether to disallow Mist Devices in the network
+        /// Whether to disallow Mist Devices in the network
         /// </summary>
         [Input("disallowMistServices")]
         public Input<bool>? DisallowMistServices { get; set; }
@@ -269,19 +269,19 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.NetworkInternalAccessGetArgs>? InternalAccess { get; set; }
 
         /// <summary>
-        /// whether this network has direct internet access
+        /// Whether this network has direct internet access
         /// </summary>
         [Input("internetAccess")]
         public Input<Inputs.NetworkInternetAccessGetArgs>? InternetAccess { get; set; }
 
         /// <summary>
-        /// whether to allow clients in the network to talk to each other
+        /// Whether to allow clients in the network to talk to each other
         /// </summary>
         [Input("isolation")]
         public Input<bool>? Isolation { get; set; }
 
         /// <summary>
-        /// whether to enable multicast support (only PIM-sparse mode is supported)
+        /// Whether to enable multicast support (only PIM-sparse mode is supported)
         /// </summary>
         [Input("multicast")]
         public Input<Inputs.NetworkMulticastGetArgs>? Multicast { get; set; }
@@ -296,7 +296,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _routedForNetworks;
 
         /// <summary>
-        /// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        /// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         /// </summary>
         public InputList<string> RoutedForNetworks
         {

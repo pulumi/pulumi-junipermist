@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// If using CS Enteprise
+        /// If using CS Enterprise
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

@@ -44,7 +44,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? ServicepolicyId;
         /// <summary>
-        /// Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+        /// Required when `servicepolicy_id` is not defined. List of Applications / Destinations
         /// </summary>
         public readonly ImmutableArray<string> Services;
         /// <summary>

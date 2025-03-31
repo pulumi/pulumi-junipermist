@@ -99,6 +99,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("orgId", required: true)]
         public string OrgId { get; set; } = null!;
 
+        [Input("page")]
+        public int? Page { get; set; }
+
         public GetRftemplatesArgs()
         {
         }
@@ -109,6 +112,9 @@ namespace Pulumi.JuniperMist.Org
     {
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
+
+        [Input("page")]
+        public Input<int>? Page { get; set; }
 
         public GetRftemplatesInvokeArgs()
         {
@@ -126,6 +132,7 @@ namespace Pulumi.JuniperMist.Org
         public readonly string Id;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetRftemplatesOrgRftemplateResult> OrgRftemplates;
+        public readonly int? Page;
 
         [OutputConstructor]
         private GetRftemplatesResult(
@@ -133,11 +140,14 @@ namespace Pulumi.JuniperMist.Org
 
             string orgId,
 
-            ImmutableArray<Outputs.GetRftemplatesOrgRftemplateResult> orgRftemplates)
+            ImmutableArray<Outputs.GetRftemplatesOrgRftemplateResult> orgRftemplates,
+
+            int? page)
         {
             Id = id;
             OrgId = orgId;
             OrgRftemplates = orgRftemplates;
+            Page = page;
         }
     }
 }

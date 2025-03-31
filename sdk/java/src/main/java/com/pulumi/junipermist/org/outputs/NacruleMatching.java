@@ -13,58 +13,106 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NacruleMatching {
     /**
-     * @return enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `psk`
+     * @return enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
      * 
      */
     private @Nullable String authType;
+    /**
+     * @return List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+     * 
+     */
+    private @Nullable List<String> families;
+    /**
+     * @return List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+     * 
+     */
+    private @Nullable List<String> mfgs;
+    /**
+     * @return List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+     * 
+     */
+    private @Nullable List<String> models;
     private @Nullable List<String> nactags;
+    /**
+     * @return List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed os_type values
+     * 
+     */
+    private @Nullable List<String> osTypes;
     private @Nullable List<String> portTypes;
     /**
-     * @return list of site ids to match
+     * @return List of site ids to match
      * 
      */
     private @Nullable List<String> siteIds;
     /**
-     * @return list of sitegroup ids to match
+     * @return List of sitegroup ids to match
      * 
      */
     private @Nullable List<String> sitegroupIds;
     /**
-     * @return list of vendors to match
+     * @return List of vendors to match
      * 
      */
     private @Nullable List<String> vendors;
 
     private NacruleMatching() {}
     /**
-     * @return enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `psk`
+     * @return enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
      * 
      */
     public Optional<String> authType() {
         return Optional.ofNullable(this.authType);
     }
+    /**
+     * @return List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+     * 
+     */
+    public List<String> families() {
+        return this.families == null ? List.of() : this.families;
+    }
+    /**
+     * @return List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+     * 
+     */
+    public List<String> mfgs() {
+        return this.mfgs == null ? List.of() : this.mfgs;
+    }
+    /**
+     * @return List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+     * 
+     */
+    public List<String> models() {
+        return this.models == null ? List.of() : this.models;
+    }
     public List<String> nactags() {
         return this.nactags == null ? List.of() : this.nactags;
+    }
+    /**
+     * @return List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed os_type values
+     * 
+     */
+    public List<String> osTypes() {
+        return this.osTypes == null ? List.of() : this.osTypes;
     }
     public List<String> portTypes() {
         return this.portTypes == null ? List.of() : this.portTypes;
     }
     /**
-     * @return list of site ids to match
+     * @return List of site ids to match
      * 
      */
     public List<String> siteIds() {
         return this.siteIds == null ? List.of() : this.siteIds;
     }
     /**
-     * @return list of sitegroup ids to match
+     * @return List of sitegroup ids to match
      * 
      */
     public List<String> sitegroupIds() {
         return this.sitegroupIds == null ? List.of() : this.sitegroupIds;
     }
     /**
-     * @return list of vendors to match
+     * @return List of vendors to match
      * 
      */
     public List<String> vendors() {
@@ -81,7 +129,11 @@ public final class NacruleMatching {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String authType;
+        private @Nullable List<String> families;
+        private @Nullable List<String> mfgs;
+        private @Nullable List<String> models;
         private @Nullable List<String> nactags;
+        private @Nullable List<String> osTypes;
         private @Nullable List<String> portTypes;
         private @Nullable List<String> siteIds;
         private @Nullable List<String> sitegroupIds;
@@ -90,7 +142,11 @@ public final class NacruleMatching {
         public Builder(NacruleMatching defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authType = defaults.authType;
+    	      this.families = defaults.families;
+    	      this.mfgs = defaults.mfgs;
+    	      this.models = defaults.models;
     	      this.nactags = defaults.nactags;
+    	      this.osTypes = defaults.osTypes;
     	      this.portTypes = defaults.portTypes;
     	      this.siteIds = defaults.siteIds;
     	      this.sitegroupIds = defaults.sitegroupIds;
@@ -104,6 +160,33 @@ public final class NacruleMatching {
             return this;
         }
         @CustomType.Setter
+        public Builder families(@Nullable List<String> families) {
+
+            this.families = families;
+            return this;
+        }
+        public Builder families(String... families) {
+            return families(List.of(families));
+        }
+        @CustomType.Setter
+        public Builder mfgs(@Nullable List<String> mfgs) {
+
+            this.mfgs = mfgs;
+            return this;
+        }
+        public Builder mfgs(String... mfgs) {
+            return mfgs(List.of(mfgs));
+        }
+        @CustomType.Setter
+        public Builder models(@Nullable List<String> models) {
+
+            this.models = models;
+            return this;
+        }
+        public Builder models(String... models) {
+            return models(List.of(models));
+        }
+        @CustomType.Setter
         public Builder nactags(@Nullable List<String> nactags) {
 
             this.nactags = nactags;
@@ -111,6 +194,15 @@ public final class NacruleMatching {
         }
         public Builder nactags(String... nactags) {
             return nactags(List.of(nactags));
+        }
+        @CustomType.Setter
+        public Builder osTypes(@Nullable List<String> osTypes) {
+
+            this.osTypes = osTypes;
+            return this;
+        }
+        public Builder osTypes(String... osTypes) {
+            return osTypes(List.of(osTypes));
         }
         @CustomType.Setter
         public Builder portTypes(@Nullable List<String> portTypes) {
@@ -151,7 +243,11 @@ public final class NacruleMatching {
         public NacruleMatching build() {
             final var _resultValue = new NacruleMatching();
             _resultValue.authType = authType;
+            _resultValue.families = families;
+            _resultValue.mfgs = mfgs;
+            _resultValue.models = models;
             _resultValue.nactags = nactags;
+            _resultValue.osTypes = osTypes;
             _resultValue.portTypes = portTypes;
             _resultValue.siteIds = siteIds;
             _resultValue.sitegroupIds = sitegroupIds;

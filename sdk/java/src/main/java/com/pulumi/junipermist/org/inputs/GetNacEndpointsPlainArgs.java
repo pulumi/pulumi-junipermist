@@ -17,14 +17,14 @@ public final class GetNacEndpointsPlainArgs extends com.pulumi.resources.InvokeA
     public static final GetNacEndpointsPlainArgs Empty = new GetNacEndpointsPlainArgs();
 
     /**
-     * optional, array of strings of labels
+     * Optional, array of strings of labels
      * 
      */
     @Import(name="labels")
     private @Nullable List<String> labels;
 
     /**
-     * @return optional, array of strings of labels
+     * @return Optional, array of strings of labels
      * 
      */
     public Optional<List<String>> labels() {
@@ -32,14 +32,14 @@ public final class GetNacEndpointsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * partial/full MAC addres
+     * Partial/full MAC address
      * 
      */
     @Import(name="mac")
     private @Nullable String mac;
 
     /**
-     * @return partial/full MAC addres
+     * @return Partial/full MAC address
      * 
      */
     public Optional<String> mac() {
@@ -80,7 +80,7 @@ public final class GetNacEndpointsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param labels optional, array of strings of labels
+         * @param labels Optional, array of strings of labels
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetNacEndpointsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param labels optional, array of strings of labels
+         * @param labels Optional, array of strings of labels
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class GetNacEndpointsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param mac partial/full MAC addres
+         * @param mac Partial/full MAC address
          * 
          * @return builder
          * 

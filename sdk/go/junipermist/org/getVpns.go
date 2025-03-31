@@ -12,6 +12,32 @@ import (
 )
 
 // This data source provide the list of the Org VPNs.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.GetVpns(ctx, &org.GetVpnsArgs{
+//				OrgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetVpns(ctx *pulumi.Context, args *GetVpnsArgs, opts ...pulumi.InvokeOption) (*GetVpnsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpnsResult

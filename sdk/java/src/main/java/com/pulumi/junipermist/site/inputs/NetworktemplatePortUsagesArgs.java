@@ -84,15 +84,15 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
      * Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
-    @Import(name="bypassAuthWhenServerDownForUnkownClient")
-    private @Nullable Output<Boolean> bypassAuthWhenServerDownForUnkownClient;
+    @Import(name="bypassAuthWhenServerDownForUnknownClient")
+    private @Nullable Output<Boolean> bypassAuthWhenServerDownForUnknownClient;
 
     /**
      * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
-    public Optional<Output<Boolean>> bypassAuthWhenServerDownForUnkownClient() {
-        return Optional.ofNullable(this.bypassAuthWhenServerDownForUnkownClient);
+    public Optional<Output<Boolean>> bypassAuthWhenServerDownForUnknownClient() {
+        return Optional.ofNullable(this.bypassAuthWhenServerDownForUnknownClient);
     }
 
     /**
@@ -213,6 +213,21 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<String>> guestNetwork() {
         return Optional.ofNullable(this.guestNetwork);
+    }
+
+    /**
+     * `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
+     * 
+     */
+    @Import(name="interIsolationNetworkLink")
+    private @Nullable Output<Boolean> interIsolationNetworkLink;
+
+    /**
+     * @return `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
+     * 
+     */
+    public Optional<Output<Boolean>> interIsolationNetworkLink() {
+        return Optional.ofNullable(this.interIsolationNetworkLink);
     }
 
     /**
@@ -396,17 +411,17 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range
+     * Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
      * 
      */
     @Import(name="reauthInterval")
-    private @Nullable Output<Integer> reauthInterval;
+    private @Nullable Output<String> reauthInterval;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range
+     * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
      * 
      */
-    public Optional<Output<Integer>> reauthInterval() {
+    public Optional<Output<String>> reauthInterval() {
         return Optional.ofNullable(this.reauthInterval);
     }
 
@@ -581,7 +596,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         this.allowDhcpd = $.allowDhcpd;
         this.allowMultipleSupplicants = $.allowMultipleSupplicants;
         this.bypassAuthWhenServerDown = $.bypassAuthWhenServerDown;
-        this.bypassAuthWhenServerDownForUnkownClient = $.bypassAuthWhenServerDownForUnkownClient;
+        this.bypassAuthWhenServerDownForUnknownClient = $.bypassAuthWhenServerDownForUnknownClient;
         this.description = $.description;
         this.disableAutoneg = $.disableAutoneg;
         this.disabled = $.disabled;
@@ -590,6 +605,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         this.enableMacAuth = $.enableMacAuth;
         this.enableQos = $.enableQos;
         this.guestNetwork = $.guestNetwork;
+        this.interIsolationNetworkLink = $.interIsolationNetworkLink;
         this.interSwitchLink = $.interSwitchLink;
         this.macAuthOnly = $.macAuthOnly;
         this.macAuthPreferred = $.macAuthPreferred;
@@ -720,24 +736,24 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param bypassAuthWhenServerDownForUnkownClient Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         * @param bypassAuthWhenServerDownForUnknownClient Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          * 
          * @return builder
          * 
          */
-        public Builder bypassAuthWhenServerDownForUnkownClient(@Nullable Output<Boolean> bypassAuthWhenServerDownForUnkownClient) {
-            $.bypassAuthWhenServerDownForUnkownClient = bypassAuthWhenServerDownForUnkownClient;
+        public Builder bypassAuthWhenServerDownForUnknownClient(@Nullable Output<Boolean> bypassAuthWhenServerDownForUnknownClient) {
+            $.bypassAuthWhenServerDownForUnknownClient = bypassAuthWhenServerDownForUnknownClient;
             return this;
         }
 
         /**
-         * @param bypassAuthWhenServerDownForUnkownClient Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         * @param bypassAuthWhenServerDownForUnknownClient Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          * 
          * @return builder
          * 
          */
-        public Builder bypassAuthWhenServerDownForUnkownClient(Boolean bypassAuthWhenServerDownForUnkownClient) {
-            return bypassAuthWhenServerDownForUnkownClient(Output.of(bypassAuthWhenServerDownForUnkownClient));
+        public Builder bypassAuthWhenServerDownForUnknownClient(Boolean bypassAuthWhenServerDownForUnknownClient) {
+            return bypassAuthWhenServerDownForUnknownClient(Output.of(bypassAuthWhenServerDownForUnknownClient));
         }
 
         /**
@@ -916,6 +932,27 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
          */
         public Builder guestNetwork(String guestNetwork) {
             return guestNetwork(Output.of(guestNetwork));
+        }
+
+        /**
+         * @param interIsolationNetworkLink `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interIsolationNetworkLink(@Nullable Output<Boolean> interIsolationNetworkLink) {
+            $.interIsolationNetworkLink = interIsolationNetworkLink;
+            return this;
+        }
+
+        /**
+         * @param interIsolationNetworkLink `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interIsolationNetworkLink(Boolean interIsolationNetworkLink) {
+            return interIsolationNetworkLink(Output.of(interIsolationNetworkLink));
         }
 
         /**
@@ -1181,23 +1218,23 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param reauthInterval Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range
+         * @param reauthInterval Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
          * 
          * @return builder
          * 
          */
-        public Builder reauthInterval(@Nullable Output<Integer> reauthInterval) {
+        public Builder reauthInterval(@Nullable Output<String> reauthInterval) {
             $.reauthInterval = reauthInterval;
             return this;
         }
 
         /**
-         * @param reauthInterval Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range
+         * @param reauthInterval Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
          * 
          * @return builder
          * 
          */
-        public Builder reauthInterval(Integer reauthInterval) {
+        public Builder reauthInterval(String reauthInterval) {
             return reauthInterval(Output.of(reauthInterval));
         }
 

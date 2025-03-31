@@ -37,9 +37,17 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         return this.file;
     }
 
+    /**
+     * number of the image, between 1 and 3
+     * 
+     */
     @Import(name="imageNumber", required=true)
     private Output<Integer> imageNumber;
 
+    /**
+     * @return number of the image, between 1 and 3
+     * 
+     */
     public Output<Integer> imageNumber() {
         return this.imageNumber;
     }
@@ -108,11 +116,23 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
             return file(Output.of(file));
         }
 
+        /**
+         * @param imageNumber number of the image, between 1 and 3
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageNumber(Output<Integer> imageNumber) {
             $.imageNumber = imageNumber;
             return this;
         }
 
+        /**
+         * @param imageNumber number of the image, between 1 and 3
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageNumber(Integer imageNumber) {
             return imageNumber(Output.of(imageNumber));
         }

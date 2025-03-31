@@ -35,6 +35,7 @@ class SettingArgs:
                  installer: Optional[pulumi.Input['SettingInstallerArgs']] = None,
                  jcloud: Optional[pulumi.Input['SettingJcloudArgs']] = None,
                  jcloud_ra: Optional[pulumi.Input['SettingJcloudRaArgs']] = None,
+                 junos_shell_access: Optional[pulumi.Input['SettingJunosShellAccessArgs']] = None,
                  mgmt: Optional[pulumi.Input['SettingMgmtArgs']] = None,
                  mist_nac: Optional[pulumi.Input['SettingMistNacArgs']] = None,
                  mxedge_fips_enabled: Optional[pulumi.Input[bool]] = None,
@@ -65,6 +66,7 @@ class SettingArgs:
         :param pulumi.Input[int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingJcloudRaArgs'] jcloud_ra: JCloud Routing Assurance connexion
+        :param pulumi.Input['SettingJunosShellAccessArgs'] junos_shell_access: by default, webshell access is only enabled for Admin user
         :param pulumi.Input['SettingMgmtArgs'] mgmt: management-related properties
         :param pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input['SettingPasswordPolicyArgs'] password_policy: password policy
@@ -99,6 +101,8 @@ class SettingArgs:
             pulumi.set(__self__, "jcloud", jcloud)
         if jcloud_ra is not None:
             pulumi.set(__self__, "jcloud_ra", jcloud_ra)
+        if junos_shell_access is not None:
+            pulumi.set(__self__, "junos_shell_access", junos_shell_access)
         if mgmt is not None:
             pulumi.set(__self__, "mgmt", mgmt)
         if mist_nac is not None:
@@ -287,6 +291,18 @@ class SettingArgs:
         pulumi.set(self, "jcloud_ra", value)
 
     @property
+    @pulumi.getter(name="junosShellAccess")
+    def junos_shell_access(self) -> Optional[pulumi.Input['SettingJunosShellAccessArgs']]:
+        """
+        by default, webshell access is only enabled for Admin user
+        """
+        return pulumi.get(self, "junos_shell_access")
+
+    @junos_shell_access.setter
+    def junos_shell_access(self, value: Optional[pulumi.Input['SettingJunosShellAccessArgs']]):
+        pulumi.set(self, "junos_shell_access", value)
+
+    @property
     @pulumi.getter
     def mgmt(self) -> Optional[pulumi.Input['SettingMgmtArgs']]:
         """
@@ -465,6 +481,7 @@ class _SettingState:
                  jcloud: Optional[pulumi.Input['SettingJcloudArgs']] = None,
                  jcloud_ra: Optional[pulumi.Input['SettingJcloudRaArgs']] = None,
                  juniper: Optional[pulumi.Input['SettingJuniperArgs']] = None,
+                 junos_shell_access: Optional[pulumi.Input['SettingJunosShellAccessArgs']] = None,
                  mgmt: Optional[pulumi.Input['SettingMgmtArgs']] = None,
                  mist_nac: Optional[pulumi.Input['SettingMistNacArgs']] = None,
                  mxedge_fips_enabled: Optional[pulumi.Input[bool]] = None,
@@ -496,6 +513,7 @@ class _SettingState:
         :param pulumi.Input[int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingJcloudRaArgs'] jcloud_ra: JCloud Routing Assurance connexion
+        :param pulumi.Input['SettingJunosShellAccessArgs'] junos_shell_access: by default, webshell access is only enabled for Admin user
         :param pulumi.Input['SettingMgmtArgs'] mgmt: management-related properties
         :param pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input['SettingPasswordPolicyArgs'] password_policy: password policy
@@ -533,6 +551,8 @@ class _SettingState:
             pulumi.set(__self__, "jcloud_ra", jcloud_ra)
         if juniper is not None:
             pulumi.set(__self__, "juniper", juniper)
+        if junos_shell_access is not None:
+            pulumi.set(__self__, "junos_shell_access", junos_shell_access)
         if mgmt is not None:
             pulumi.set(__self__, "mgmt", mgmt)
         if mist_nac is not None:
@@ -732,6 +752,18 @@ class _SettingState:
         pulumi.set(self, "juniper", value)
 
     @property
+    @pulumi.getter(name="junosShellAccess")
+    def junos_shell_access(self) -> Optional[pulumi.Input['SettingJunosShellAccessArgs']]:
+        """
+        by default, webshell access is only enabled for Admin user
+        """
+        return pulumi.get(self, "junos_shell_access")
+
+    @junos_shell_access.setter
+    def junos_shell_access(self, value: Optional[pulumi.Input['SettingJunosShellAccessArgs']]):
+        pulumi.set(self, "junos_shell_access", value)
+
+    @property
     @pulumi.getter
     def mgmt(self) -> Optional[pulumi.Input['SettingMgmtArgs']]:
         """
@@ -919,6 +951,7 @@ class Setting(pulumi.CustomResource):
                  installer: Optional[pulumi.Input[Union['SettingInstallerArgs', 'SettingInstallerArgsDict']]] = None,
                  jcloud: Optional[pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']]] = None,
                  jcloud_ra: Optional[pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']]] = None,
+                 junos_shell_access: Optional[pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']]] = None,
                  mgmt: Optional[pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']]] = None,
                  mist_nac: Optional[pulumi.Input[Union['SettingMistNacArgs', 'SettingMistNacArgsDict']]] = None,
                  mxedge_fips_enabled: Optional[pulumi.Input[bool]] = None,
@@ -966,6 +999,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']] jcloud_ra: JCloud Routing Assurance connexion
+        :param pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']] junos_shell_access: by default, webshell access is only enabled for Admin user
         :param pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']] mgmt: management-related properties
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']] password_policy: password policy
@@ -1022,6 +1056,7 @@ class Setting(pulumi.CustomResource):
                  installer: Optional[pulumi.Input[Union['SettingInstallerArgs', 'SettingInstallerArgsDict']]] = None,
                  jcloud: Optional[pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']]] = None,
                  jcloud_ra: Optional[pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']]] = None,
+                 junos_shell_access: Optional[pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']]] = None,
                  mgmt: Optional[pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']]] = None,
                  mist_nac: Optional[pulumi.Input[Union['SettingMistNacArgs', 'SettingMistNacArgsDict']]] = None,
                  mxedge_fips_enabled: Optional[pulumi.Input[bool]] = None,
@@ -1061,6 +1096,7 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["installer"] = installer
             __props__.__dict__["jcloud"] = jcloud
             __props__.__dict__["jcloud_ra"] = jcloud_ra
+            __props__.__dict__["junos_shell_access"] = junos_shell_access
             __props__.__dict__["mgmt"] = mgmt
             __props__.__dict__["mist_nac"] = mist_nac
             __props__.__dict__["mxedge_fips_enabled"] = mxedge_fips_enabled
@@ -1107,6 +1143,7 @@ class Setting(pulumi.CustomResource):
             jcloud: Optional[pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']]] = None,
             jcloud_ra: Optional[pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']]] = None,
             juniper: Optional[pulumi.Input[Union['SettingJuniperArgs', 'SettingJuniperArgsDict']]] = None,
+            junos_shell_access: Optional[pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']]] = None,
             mgmt: Optional[pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']]] = None,
             mist_nac: Optional[pulumi.Input[Union['SettingMistNacArgs', 'SettingMistNacArgsDict']]] = None,
             mxedge_fips_enabled: Optional[pulumi.Input[bool]] = None,
@@ -1143,6 +1180,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']] jcloud_ra: JCloud Routing Assurance connexion
+        :param pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']] junos_shell_access: by default, webshell access is only enabled for Admin user
         :param pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']] mgmt: management-related properties
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']] password_policy: password policy
@@ -1169,6 +1207,7 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["jcloud"] = jcloud
         __props__.__dict__["jcloud_ra"] = jcloud_ra
         __props__.__dict__["juniper"] = juniper
+        __props__.__dict__["junos_shell_access"] = junos_shell_access
         __props__.__dict__["mgmt"] = mgmt
         __props__.__dict__["mist_nac"] = mist_nac
         __props__.__dict__["mxedge_fips_enabled"] = mxedge_fips_enabled
@@ -1290,6 +1329,14 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def juniper(self) -> pulumi.Output['outputs.SettingJuniper']:
         return pulumi.get(self, "juniper")
+
+    @property
+    @pulumi.getter(name="junosShellAccess")
+    def junos_shell_access(self) -> pulumi.Output[Optional['outputs.SettingJunosShellAccess']]:
+        """
+        by default, webshell access is only enabled for Admin user
+        """
+        return pulumi.get(self, "junos_shell_access")
 
     @property
     @pulumi.getter

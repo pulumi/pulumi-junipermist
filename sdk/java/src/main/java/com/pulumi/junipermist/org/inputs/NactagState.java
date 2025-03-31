@@ -48,18 +48,10 @@ public final class NactagState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.egressVlanNames);
     }
 
-    /**
-     * If `type`==`gbp_tag`
-     * 
-     */
     @Import(name="gbpTag")
-    private @Nullable Output<Integer> gbpTag;
+    private @Nullable Output<String> gbpTag;
 
-    /**
-     * @return If `type`==`gbp_tag`
-     * 
-     */
-    public Optional<Output<Integer>> gbpTag() {
+    public Optional<Output<String>> gbpTag() {
         return Optional.ofNullable(this.gbpTag);
     }
 
@@ -335,24 +327,12 @@ public final class NactagState extends com.pulumi.resources.ResourceArgs {
             return egressVlanNames(List.of(egressVlanNames));
         }
 
-        /**
-         * @param gbpTag If `type`==`gbp_tag`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder gbpTag(@Nullable Output<Integer> gbpTag) {
+        public Builder gbpTag(@Nullable Output<String> gbpTag) {
             $.gbpTag = gbpTag;
             return this;
         }
 
-        /**
-         * @param gbpTag If `type`==`gbp_tag`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder gbpTag(Integer gbpTag) {
+        public Builder gbpTag(String gbpTag) {
             return gbpTag(Output.of(gbpTag));
         }
 

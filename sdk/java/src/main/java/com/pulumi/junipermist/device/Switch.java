@@ -157,9 +157,17 @@ public class Switch extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> dnsSuffixes() {
         return Codegen.optional(this.dnsSuffixes);
     }
+    /**
+     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * 
+     */
     @Export(name="extraRoutes", refs={Map.class,String.class,SwitchExtraRoutes.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchExtraRoutes>> extraRoutes;
 
+    /**
+     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * 
+     */
     public Output<Optional<Map<String,SwitchExtraRoutes>>> extraRoutes() {
         return Codegen.optional(this.extraRoutes);
     }
@@ -402,7 +410,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
     /**
      * Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      * 
      */
     @Export(name="portMirroring", refs={Map.class,String.class,SwitchPortMirroring.class}, tree="[0,1,2]")
@@ -411,7 +419,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
     /**
      * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      * 
      */
     public Output<Optional<Map<String,SwitchPortMirroring>>> portMirroring() {

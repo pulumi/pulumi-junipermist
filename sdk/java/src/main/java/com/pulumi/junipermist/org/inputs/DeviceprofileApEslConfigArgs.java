@@ -93,14 +93,14 @@ public final class DeviceprofileApEslConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * note: ble_config will be ingored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+     * note: ble_config will be ignored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return note: ble_config will be ingored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+     * @return note: ble_config will be ignored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
      * 
      */
     public Optional<Output<String>> type() {
@@ -274,7 +274,7 @@ public final class DeviceprofileApEslConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type note: ble_config will be ingored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+         * @param type note: ble_config will be ignored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class DeviceprofileApEslConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type note: ble_config will be ingored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+         * @param type note: ble_config will be ignored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
          * 
          * @return builder
          * 

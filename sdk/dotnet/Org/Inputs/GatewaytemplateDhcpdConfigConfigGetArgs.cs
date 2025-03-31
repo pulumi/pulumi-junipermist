@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.GatewaytemplateDhcpdConfigConfigFixedBindingsGetArgs>? _fixedBindings;
 
         /// <summary>
-        /// If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+        /// If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
         /// </summary>
         public InputMap<Inputs.GatewaytemplateDhcpdConfigConfigFixedBindingsGetArgs> FixedBindings
         {

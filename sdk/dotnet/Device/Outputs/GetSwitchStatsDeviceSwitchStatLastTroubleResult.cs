@@ -14,16 +14,19 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GetSwitchStatsDeviceSwitchStatLastTroubleResult
     {
         /// <summary>
-        /// Code definitions list at /api/v1/consts/ap*led*status
+        /// Code definitions list at List Ap Led Definition
         /// </summary>
         public readonly string Code;
-        public readonly int Timestamp;
+        /// <summary>
+        /// Epoch (seconds)
+        /// </summary>
+        public readonly double Timestamp;
 
         [OutputConstructor]
         private GetSwitchStatsDeviceSwitchStatLastTroubleResult(
             string code,
 
-            int timestamp)
+            double timestamp)
         {
             Code = code;
             Timestamp = timestamp;

@@ -41,13 +41,13 @@ class BaseArgs:
         :param pulumi.Input[str] address: full address of the site
         :param pulumi.Input[str] alarmtemplate_id: Alarm Template ID, this takes precedence over the Org-level alarmtemplate_id
         :param pulumi.Input[str] aptemplate_id: AP Template ID, used by APs
-        :param pulumi.Input[str] country_code: country code for the site (for AP config generation), in two-character
+        :param pulumi.Input[str] country_code: Country code for the site (for AP config generation), in two-character
         :param pulumi.Input[str] gatewaytemplate_id: Gateway Template ID, used by gateways
         :param pulumi.Input[str] networktemplate_id: Network Template ID, this takes precedence over Site Settings
-        :param pulumi.Input[str] notes: optional, any notes about the site
+        :param pulumi.Input[str] notes: Optional, any notes about the site
         :param pulumi.Input[str] rftemplate_id: RF Template ID, this takes precedence over Site Settings
         :param pulumi.Input[str] secpolicy_id: SecPolicy ID
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sitegroup_ids: sitegroups this site belongs to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sitegroup_ids: Sitegroups this site belongs to
         :param pulumi.Input[str] sitetemplate_id: Site Template ID
         :param pulumi.Input[str] timezone: Timezone the site is at
         """
@@ -129,7 +129,7 @@ class BaseArgs:
     @pulumi.getter(name="countryCode")
     def country_code(self) -> Optional[pulumi.Input[str]]:
         """
-        country code for the site (for AP config generation), in two-character
+        Country code for the site (for AP config generation), in two-character
         """
         return pulumi.get(self, "country_code")
 
@@ -183,7 +183,7 @@ class BaseArgs:
     @pulumi.getter
     def notes(self) -> Optional[pulumi.Input[str]]:
         """
-        optional, any notes about the site
+        Optional, any notes about the site
         """
         return pulumi.get(self, "notes")
 
@@ -219,7 +219,7 @@ class BaseArgs:
     @pulumi.getter(name="sitegroupIds")
     def sitegroup_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        sitegroups this site belongs to
+        Sitegroups this site belongs to
         """
         return pulumi.get(self, "sitegroup_ids")
 
@@ -269,19 +269,20 @@ class _BaseState:
                  secpolicy_id: Optional[pulumi.Input[str]] = None,
                  sitegroup_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sitetemplate_id: Optional[pulumi.Input[str]] = None,
-                 timezone: Optional[pulumi.Input[str]] = None):
+                 timezone: Optional[pulumi.Input[str]] = None,
+                 tzoffset: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Base resources.
         :param pulumi.Input[str] address: full address of the site
         :param pulumi.Input[str] alarmtemplate_id: Alarm Template ID, this takes precedence over the Org-level alarmtemplate_id
         :param pulumi.Input[str] aptemplate_id: AP Template ID, used by APs
-        :param pulumi.Input[str] country_code: country code for the site (for AP config generation), in two-character
+        :param pulumi.Input[str] country_code: Country code for the site (for AP config generation), in two-character
         :param pulumi.Input[str] gatewaytemplate_id: Gateway Template ID, used by gateways
         :param pulumi.Input[str] networktemplate_id: Network Template ID, this takes precedence over Site Settings
-        :param pulumi.Input[str] notes: optional, any notes about the site
+        :param pulumi.Input[str] notes: Optional, any notes about the site
         :param pulumi.Input[str] rftemplate_id: RF Template ID, this takes precedence over Site Settings
         :param pulumi.Input[str] secpolicy_id: SecPolicy ID
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sitegroup_ids: sitegroups this site belongs to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sitegroup_ids: Sitegroups this site belongs to
         :param pulumi.Input[str] sitetemplate_id: Site Template ID
         :param pulumi.Input[str] timezone: Timezone the site is at
         """
@@ -315,6 +316,8 @@ class _BaseState:
             pulumi.set(__self__, "sitetemplate_id", sitetemplate_id)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
+        if tzoffset is not None:
+            pulumi.set(__self__, "tzoffset", tzoffset)
 
     @property
     @pulumi.getter
@@ -356,7 +359,7 @@ class _BaseState:
     @pulumi.getter(name="countryCode")
     def country_code(self) -> Optional[pulumi.Input[str]]:
         """
-        country code for the site (for AP config generation), in two-character
+        Country code for the site (for AP config generation), in two-character
         """
         return pulumi.get(self, "country_code")
 
@@ -410,7 +413,7 @@ class _BaseState:
     @pulumi.getter
     def notes(self) -> Optional[pulumi.Input[str]]:
         """
-        optional, any notes about the site
+        Optional, any notes about the site
         """
         return pulumi.get(self, "notes")
 
@@ -455,7 +458,7 @@ class _BaseState:
     @pulumi.getter(name="sitegroupIds")
     def sitegroup_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        sitegroups this site belongs to
+        Sitegroups this site belongs to
         """
         return pulumi.get(self, "sitegroup_ids")
 
@@ -486,6 +489,15 @@ class _BaseState:
     @timezone.setter
     def timezone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "timezone", value)
+
+    @property
+    @pulumi.getter
+    def tzoffset(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "tzoffset")
+
+    @tzoffset.setter
+    def tzoffset(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "tzoffset", value)
 
 
 warnings.warn("""junipermist.device/base.base has been deprecated in favor of junipermist.site/base.base""", DeprecationWarning)
@@ -561,13 +573,13 @@ class Base(pulumi.CustomResource):
         :param pulumi.Input[str] address: full address of the site
         :param pulumi.Input[str] alarmtemplate_id: Alarm Template ID, this takes precedence over the Org-level alarmtemplate_id
         :param pulumi.Input[str] aptemplate_id: AP Template ID, used by APs
-        :param pulumi.Input[str] country_code: country code for the site (for AP config generation), in two-character
+        :param pulumi.Input[str] country_code: Country code for the site (for AP config generation), in two-character
         :param pulumi.Input[str] gatewaytemplate_id: Gateway Template ID, used by gateways
         :param pulumi.Input[str] networktemplate_id: Network Template ID, this takes precedence over Site Settings
-        :param pulumi.Input[str] notes: optional, any notes about the site
+        :param pulumi.Input[str] notes: Optional, any notes about the site
         :param pulumi.Input[str] rftemplate_id: RF Template ID, this takes precedence over Site Settings
         :param pulumi.Input[str] secpolicy_id: SecPolicy ID
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sitegroup_ids: sitegroups this site belongs to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sitegroup_ids: Sitegroups this site belongs to
         :param pulumi.Input[str] sitetemplate_id: Site Template ID
         :param pulumi.Input[str] timezone: Timezone the site is at
         """
@@ -678,6 +690,7 @@ class Base(pulumi.CustomResource):
             __props__.__dict__["sitegroup_ids"] = sitegroup_ids
             __props__.__dict__["sitetemplate_id"] = sitetemplate_id
             __props__.__dict__["timezone"] = timezone
+            __props__.__dict__["tzoffset"] = None
         super(Base, __self__).__init__(
             'junipermist:device/base:base',
             resource_name,
@@ -702,7 +715,8 @@ class Base(pulumi.CustomResource):
             secpolicy_id: Optional[pulumi.Input[str]] = None,
             sitegroup_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             sitetemplate_id: Optional[pulumi.Input[str]] = None,
-            timezone: Optional[pulumi.Input[str]] = None) -> 'Base':
+            timezone: Optional[pulumi.Input[str]] = None,
+            tzoffset: Optional[pulumi.Input[int]] = None) -> 'Base':
         """
         Get an existing Base resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -713,13 +727,13 @@ class Base(pulumi.CustomResource):
         :param pulumi.Input[str] address: full address of the site
         :param pulumi.Input[str] alarmtemplate_id: Alarm Template ID, this takes precedence over the Org-level alarmtemplate_id
         :param pulumi.Input[str] aptemplate_id: AP Template ID, used by APs
-        :param pulumi.Input[str] country_code: country code for the site (for AP config generation), in two-character
+        :param pulumi.Input[str] country_code: Country code for the site (for AP config generation), in two-character
         :param pulumi.Input[str] gatewaytemplate_id: Gateway Template ID, used by gateways
         :param pulumi.Input[str] networktemplate_id: Network Template ID, this takes precedence over Site Settings
-        :param pulumi.Input[str] notes: optional, any notes about the site
+        :param pulumi.Input[str] notes: Optional, any notes about the site
         :param pulumi.Input[str] rftemplate_id: RF Template ID, this takes precedence over Site Settings
         :param pulumi.Input[str] secpolicy_id: SecPolicy ID
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sitegroup_ids: sitegroups this site belongs to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sitegroup_ids: Sitegroups this site belongs to
         :param pulumi.Input[str] sitetemplate_id: Site Template ID
         :param pulumi.Input[str] timezone: Timezone the site is at
         """
@@ -742,6 +756,7 @@ class Base(pulumi.CustomResource):
         __props__.__dict__["sitegroup_ids"] = sitegroup_ids
         __props__.__dict__["sitetemplate_id"] = sitetemplate_id
         __props__.__dict__["timezone"] = timezone
+        __props__.__dict__["tzoffset"] = tzoffset
         return Base(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -772,7 +787,7 @@ class Base(pulumi.CustomResource):
     @pulumi.getter(name="countryCode")
     def country_code(self) -> pulumi.Output[Optional[str]]:
         """
-        country code for the site (for AP config generation), in two-character
+        Country code for the site (for AP config generation), in two-character
         """
         return pulumi.get(self, "country_code")
 
@@ -806,7 +821,7 @@ class Base(pulumi.CustomResource):
     @pulumi.getter
     def notes(self) -> pulumi.Output[Optional[str]]:
         """
-        optional, any notes about the site
+        Optional, any notes about the site
         """
         return pulumi.get(self, "notes")
 
@@ -835,7 +850,7 @@ class Base(pulumi.CustomResource):
     @pulumi.getter(name="sitegroupIds")
     def sitegroup_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        sitegroups this site belongs to
+        Sitegroups this site belongs to
         """
         return pulumi.get(self, "sitegroup_ids")
 
@@ -854,4 +869,9 @@ class Base(pulumi.CustomResource):
         Timezone the site is at
         """
         return pulumi.get(self, "timezone")
+
+    @property
+    @pulumi.getter
+    def tzoffset(self) -> pulumi.Output[int]:
+        return pulumi.get(self, "tzoffset")
 

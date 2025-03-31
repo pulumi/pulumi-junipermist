@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Org
     /// NAC Endpoints (User MACs) provide a database of endpoints identified by their MAC addresses. They can be used assign each endpoint with various attributes, such as name, VLAN, role and client label.  Once an endpoint is labeled, the label name can be used to create `junipermist.org.Nactag` resource as match criteria.
     /// 
     /// The `junipermist.org.Nactag` resource can be used to create Tags regrouping one or multiple endpoint MAC Addresses, but the use of the User MACs provides additional features:
-    /// * possitility to assign specific attributes, like a Name, a Radius Group, a VLAN ID, ...
+    /// * possibility to assign specific attributes, like a Name, a Radius Group, a VLAN ID, ...
     /// * possibility to assign one or multiple Tags (Labels) to a User MAC
     /// * improved management for large list of MAC Addresses
     /// 
@@ -63,7 +63,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableArray<string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// only non-local-admin MAC is accepted
+        /// Only non-local-admin MAC is accepted
         /// </summary>
         [Output("mac")]
         public Output<string> Mac { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// only non-local-admin MAC is accepted
+        /// Only non-local-admin MAC is accepted
         /// </summary>
         [Input("mac", required: true)]
         public Input<string> Mac { get; set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// only non-local-admin MAC is accepted
+        /// Only non-local-admin MAC is accepted
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }

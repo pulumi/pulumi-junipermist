@@ -16,20 +16,53 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string Band;
         public readonly int Channel;
         public readonly int IdleTime;
+        /// <summary>
+        /// Last seen timestamp
+        /// </summary>
         public readonly double LastSeen;
         public readonly string Proto;
         public readonly int Rssi;
+        /// <summary>
+        /// Rate of receiving traffic, bits/seconds, last known
+        /// </summary>
         public readonly int RxBps;
+        /// <summary>
+        /// Amount of traffic received since connection
+        /// </summary>
         public readonly int RxBytes;
+        /// <summary>
+        /// Amount of packets received since connection
+        /// </summary>
         public readonly int RxPackets;
-        public readonly int RxRate;
+        /// <summary>
+        /// RX Rate, Mbps
+        /// </summary>
+        public readonly double RxRate;
+        /// <summary>
+        /// Amount of rx retries
+        /// </summary>
         public readonly int RxRetries;
         public readonly string SiteId;
         public readonly int Snr;
+        /// <summary>
+        /// Rate of transmitting traffic, bits/seconds, last known
+        /// </summary>
         public readonly int TxBps;
+        /// <summary>
+        /// Amount of traffic sent since connection
+        /// </summary>
         public readonly int TxBytes;
+        /// <summary>
+        /// Amount of packets sent since connection
+        /// </summary>
         public readonly int TxPackets;
-        public readonly int TxRate;
+        /// <summary>
+        /// TX Rate, Mbps
+        /// </summary>
+        public readonly double TxRate;
+        /// <summary>
+        /// Amount of tx retries
+        /// </summary>
         public readonly int TxRetries;
 
         [OutputConstructor]
@@ -52,7 +85,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             int rxPackets,
 
-            int rxRate,
+            double rxRate,
 
             int rxRetries,
 
@@ -66,7 +99,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             int txPackets,
 
-            int txRate,
+            double txRate,
 
             int txRetries)
         {
