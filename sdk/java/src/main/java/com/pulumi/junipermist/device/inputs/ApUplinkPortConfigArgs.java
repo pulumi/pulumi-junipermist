@@ -16,14 +16,14 @@ public final class ApUplinkPortConfigArgs extends com.pulumi.resources.ResourceA
     public static final ApUplinkPortConfigArgs Empty = new ApUplinkPortConfigArgs();
 
     /**
-     * Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org&#39;s CA Cert has to be provisioned at the switch
+     * Whether to do 802.1x against uplink switch. When enabled, AP cert will be used to do EAP-TLS and the Org&#39;s CA Cert has to be provisioned at the switch
      * 
      */
     @Import(name="dot1x")
     private @Nullable Output<Boolean> dot1x;
 
     /**
-     * @return Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org&#39;s CA Cert has to be provisioned at the switch
+     * @return Whether to do 802.1x against uplink switch. When enabled, AP cert will be used to do EAP-TLS and the Org&#39;s CA Cert has to be provisioned at the switch
      * 
      */
     public Optional<Output<Boolean>> dot1x() {
@@ -71,7 +71,7 @@ public final class ApUplinkPortConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param dot1x Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org&#39;s CA Cert has to be provisioned at the switch
+         * @param dot1x Whether to do 802.1x against uplink switch. When enabled, AP cert will be used to do EAP-TLS and the Org&#39;s CA Cert has to be provisioned at the switch
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ApUplinkPortConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param dot1x Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org&#39;s CA Cert has to be provisioned at the switch
+         * @param dot1x Whether to do 802.1x against uplink switch. When enabled, AP cert will be used to do EAP-TLS and the Org&#39;s CA Cert has to be provisioned at the switch
          * 
          * @return builder
          * 

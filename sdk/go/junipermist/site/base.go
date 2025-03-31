@@ -77,7 +77,7 @@ type Base struct {
 	AlarmtemplateId pulumi.StringPtrOutput `pulumi:"alarmtemplateId"`
 	// AP Template ID, used by APs
 	AptemplateId pulumi.StringPtrOutput `pulumi:"aptemplateId"`
-	// country code for the site (for AP config generation), in two-character
+	// Country code for the site (for AP config generation), in two-character
 	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
 	// Gateway Template ID, used by gateways
 	GatewaytemplateId pulumi.StringPtrOutput `pulumi:"gatewaytemplateId"`
@@ -85,19 +85,20 @@ type Base struct {
 	Name              pulumi.StringOutput    `pulumi:"name"`
 	// Network Template ID, this takes precedence over Site Settings
 	NetworktemplateId pulumi.StringPtrOutput `pulumi:"networktemplateId"`
-	// optional, any notes about the site
+	// Optional, any notes about the site
 	Notes pulumi.StringPtrOutput `pulumi:"notes"`
 	OrgId pulumi.StringOutput    `pulumi:"orgId"`
 	// RF Template ID, this takes precedence over Site Settings
 	RftemplateId pulumi.StringPtrOutput `pulumi:"rftemplateId"`
 	// SecPolicy ID
 	SecpolicyId pulumi.StringPtrOutput `pulumi:"secpolicyId"`
-	// sitegroups this site belongs to
+	// Sitegroups this site belongs to
 	SitegroupIds pulumi.StringArrayOutput `pulumi:"sitegroupIds"`
 	// Site Template ID
 	SitetemplateId pulumi.StringPtrOutput `pulumi:"sitetemplateId"`
 	// Timezone the site is at
 	Timezone pulumi.StringOutput `pulumi:"timezone"`
+	Tzoffset pulumi.IntOutput    `pulumi:"tzoffset"`
 }
 
 // NewBase registers a new resource with the given unique name, arguments, and options.
@@ -148,7 +149,7 @@ type baseState struct {
 	AlarmtemplateId *string `pulumi:"alarmtemplateId"`
 	// AP Template ID, used by APs
 	AptemplateId *string `pulumi:"aptemplateId"`
-	// country code for the site (for AP config generation), in two-character
+	// Country code for the site (for AP config generation), in two-character
 	CountryCode *string `pulumi:"countryCode"`
 	// Gateway Template ID, used by gateways
 	GatewaytemplateId *string     `pulumi:"gatewaytemplateId"`
@@ -156,19 +157,20 @@ type baseState struct {
 	Name              *string     `pulumi:"name"`
 	// Network Template ID, this takes precedence over Site Settings
 	NetworktemplateId *string `pulumi:"networktemplateId"`
-	// optional, any notes about the site
+	// Optional, any notes about the site
 	Notes *string `pulumi:"notes"`
 	OrgId *string `pulumi:"orgId"`
 	// RF Template ID, this takes precedence over Site Settings
 	RftemplateId *string `pulumi:"rftemplateId"`
 	// SecPolicy ID
 	SecpolicyId *string `pulumi:"secpolicyId"`
-	// sitegroups this site belongs to
+	// Sitegroups this site belongs to
 	SitegroupIds []string `pulumi:"sitegroupIds"`
 	// Site Template ID
 	SitetemplateId *string `pulumi:"sitetemplateId"`
 	// Timezone the site is at
 	Timezone *string `pulumi:"timezone"`
+	Tzoffset *int    `pulumi:"tzoffset"`
 }
 
 type BaseState struct {
@@ -178,7 +180,7 @@ type BaseState struct {
 	AlarmtemplateId pulumi.StringPtrInput
 	// AP Template ID, used by APs
 	AptemplateId pulumi.StringPtrInput
-	// country code for the site (for AP config generation), in two-character
+	// Country code for the site (for AP config generation), in two-character
 	CountryCode pulumi.StringPtrInput
 	// Gateway Template ID, used by gateways
 	GatewaytemplateId pulumi.StringPtrInput
@@ -186,19 +188,20 @@ type BaseState struct {
 	Name              pulumi.StringPtrInput
 	// Network Template ID, this takes precedence over Site Settings
 	NetworktemplateId pulumi.StringPtrInput
-	// optional, any notes about the site
+	// Optional, any notes about the site
 	Notes pulumi.StringPtrInput
 	OrgId pulumi.StringPtrInput
 	// RF Template ID, this takes precedence over Site Settings
 	RftemplateId pulumi.StringPtrInput
 	// SecPolicy ID
 	SecpolicyId pulumi.StringPtrInput
-	// sitegroups this site belongs to
+	// Sitegroups this site belongs to
 	SitegroupIds pulumi.StringArrayInput
 	// Site Template ID
 	SitetemplateId pulumi.StringPtrInput
 	// Timezone the site is at
 	Timezone pulumi.StringPtrInput
+	Tzoffset pulumi.IntPtrInput
 }
 
 func (BaseState) ElementType() reflect.Type {
@@ -212,7 +215,7 @@ type baseArgs struct {
 	AlarmtemplateId *string `pulumi:"alarmtemplateId"`
 	// AP Template ID, used by APs
 	AptemplateId *string `pulumi:"aptemplateId"`
-	// country code for the site (for AP config generation), in two-character
+	// Country code for the site (for AP config generation), in two-character
 	CountryCode *string `pulumi:"countryCode"`
 	// Gateway Template ID, used by gateways
 	GatewaytemplateId *string     `pulumi:"gatewaytemplateId"`
@@ -220,14 +223,14 @@ type baseArgs struct {
 	Name              *string     `pulumi:"name"`
 	// Network Template ID, this takes precedence over Site Settings
 	NetworktemplateId *string `pulumi:"networktemplateId"`
-	// optional, any notes about the site
+	// Optional, any notes about the site
 	Notes *string `pulumi:"notes"`
 	OrgId string  `pulumi:"orgId"`
 	// RF Template ID, this takes precedence over Site Settings
 	RftemplateId *string `pulumi:"rftemplateId"`
 	// SecPolicy ID
 	SecpolicyId *string `pulumi:"secpolicyId"`
-	// sitegroups this site belongs to
+	// Sitegroups this site belongs to
 	SitegroupIds []string `pulumi:"sitegroupIds"`
 	// Site Template ID
 	SitetemplateId *string `pulumi:"sitetemplateId"`
@@ -243,7 +246,7 @@ type BaseArgs struct {
 	AlarmtemplateId pulumi.StringPtrInput
 	// AP Template ID, used by APs
 	AptemplateId pulumi.StringPtrInput
-	// country code for the site (for AP config generation), in two-character
+	// Country code for the site (for AP config generation), in two-character
 	CountryCode pulumi.StringPtrInput
 	// Gateway Template ID, used by gateways
 	GatewaytemplateId pulumi.StringPtrInput
@@ -251,14 +254,14 @@ type BaseArgs struct {
 	Name              pulumi.StringPtrInput
 	// Network Template ID, this takes precedence over Site Settings
 	NetworktemplateId pulumi.StringPtrInput
-	// optional, any notes about the site
+	// Optional, any notes about the site
 	Notes pulumi.StringPtrInput
 	OrgId pulumi.StringInput
 	// RF Template ID, this takes precedence over Site Settings
 	RftemplateId pulumi.StringPtrInput
 	// SecPolicy ID
 	SecpolicyId pulumi.StringPtrInput
-	// sitegroups this site belongs to
+	// Sitegroups this site belongs to
 	SitegroupIds pulumi.StringArrayInput
 	// Site Template ID
 	SitetemplateId pulumi.StringPtrInput
@@ -368,7 +371,7 @@ func (o BaseOutput) AptemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringPtrOutput { return v.AptemplateId }).(pulumi.StringPtrOutput)
 }
 
-// country code for the site (for AP config generation), in two-character
+// Country code for the site (for AP config generation), in two-character
 func (o BaseOutput) CountryCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringPtrOutput { return v.CountryCode }).(pulumi.StringPtrOutput)
 }
@@ -391,7 +394,7 @@ func (o BaseOutput) NetworktemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringPtrOutput { return v.NetworktemplateId }).(pulumi.StringPtrOutput)
 }
 
-// optional, any notes about the site
+// Optional, any notes about the site
 func (o BaseOutput) Notes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
 }
@@ -410,7 +413,7 @@ func (o BaseOutput) SecpolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringPtrOutput { return v.SecpolicyId }).(pulumi.StringPtrOutput)
 }
 
-// sitegroups this site belongs to
+// Sitegroups this site belongs to
 func (o BaseOutput) SitegroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringArrayOutput { return v.SitegroupIds }).(pulumi.StringArrayOutput)
 }
@@ -423,6 +426,10 @@ func (o BaseOutput) SitetemplateId() pulumi.StringPtrOutput {
 // Timezone the site is at
 func (o BaseOutput) Timezone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
+}
+
+func (o BaseOutput) Tzoffset() pulumi.IntOutput {
+	return o.ApplyT(func(v *Base) pulumi.IntOutput { return v.Tzoffset }).(pulumi.IntOutput)
 }
 
 type BaseArrayOutput struct{ *pulumi.OutputState }

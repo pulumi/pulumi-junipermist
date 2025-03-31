@@ -43,6 +43,7 @@ public final class NetworktemplateSwitchMgmt {
      */
     private @Nullable Boolean dhcpOptionFqdn;
     private @Nullable Boolean disableOobDownAlarm;
+    private @Nullable Boolean fipsEnabled;
     /**
      * @return Property key is the user name. For Local user authentication
      * 
@@ -104,6 +105,9 @@ public final class NetworktemplateSwitchMgmt {
     public Optional<Boolean> disableOobDownAlarm() {
         return Optional.ofNullable(this.disableOobDownAlarm);
     }
+    public Optional<Boolean> fipsEnabled() {
+        return Optional.ofNullable(this.fipsEnabled);
+    }
     /**
      * @return Property key is the user name. For Local user authentication
      * 
@@ -155,6 +159,7 @@ public final class NetworktemplateSwitchMgmt {
         private @Nullable Integer configRevertTimer;
         private @Nullable Boolean dhcpOptionFqdn;
         private @Nullable Boolean disableOobDownAlarm;
+        private @Nullable Boolean fipsEnabled;
         private @Nullable Map<String,NetworktemplateSwitchMgmtLocalAccounts> localAccounts;
         private @Nullable String mxedgeProxyHost;
         private @Nullable Integer mxedgeProxyPort;
@@ -171,6 +176,7 @@ public final class NetworktemplateSwitchMgmt {
     	      this.configRevertTimer = defaults.configRevertTimer;
     	      this.dhcpOptionFqdn = defaults.dhcpOptionFqdn;
     	      this.disableOobDownAlarm = defaults.disableOobDownAlarm;
+    	      this.fipsEnabled = defaults.fipsEnabled;
     	      this.localAccounts = defaults.localAccounts;
     	      this.mxedgeProxyHost = defaults.mxedgeProxyHost;
     	      this.mxedgeProxyPort = defaults.mxedgeProxyPort;
@@ -214,6 +220,12 @@ public final class NetworktemplateSwitchMgmt {
         public Builder disableOobDownAlarm(@Nullable Boolean disableOobDownAlarm) {
 
             this.disableOobDownAlarm = disableOobDownAlarm;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fipsEnabled(@Nullable Boolean fipsEnabled) {
+
+            this.fipsEnabled = fipsEnabled;
             return this;
         }
         @CustomType.Setter
@@ -266,6 +278,7 @@ public final class NetworktemplateSwitchMgmt {
             _resultValue.configRevertTimer = configRevertTimer;
             _resultValue.dhcpOptionFqdn = dhcpOptionFqdn;
             _resultValue.disableOobDownAlarm = disableOobDownAlarm;
+            _resultValue.fipsEnabled = fipsEnabled;
             _resultValue.localAccounts = localAccounts;
             _resultValue.mxedgeProxyHost = mxedgeProxyHost;
             _resultValue.mxedgeProxyPort = mxedgeProxyPort;

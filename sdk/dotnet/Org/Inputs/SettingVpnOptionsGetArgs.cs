@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? AsBase { get; set; }
 
         /// <summary>
-        /// equiring /12 or bigger to support 16 private IPs for 65535 gateways
+        /// requiring /12 or bigger to support 16 private IPs for 65535 gateways
         /// </summary>
         [Input("stSubnet")]
         public Input<string>? StSubnet { get; set; }

@@ -28,7 +28,12 @@ type Vpn struct {
 
 	Name  pulumi.StringOutput `pulumi:"name"`
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	Paths VpnPathsMapOutput   `pulumi:"paths"`
+	// Only if `type`==`hubSpoke`
+	PathSelection VpnPathSelectionPtrOutput `pulumi:"pathSelection"`
+	// For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+	Paths VpnPathsMapOutput `pulumi:"paths"`
+	// enum: `hubSpoke`, `mesh`
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewVpn registers a new resource with the given unique name, arguments, and options.
@@ -67,15 +72,25 @@ func GetVpn(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Vpn resources.
 type vpnState struct {
-	Name  *string             `pulumi:"name"`
-	OrgId *string             `pulumi:"orgId"`
+	Name  *string `pulumi:"name"`
+	OrgId *string `pulumi:"orgId"`
+	// Only if `type`==`hubSpoke`
+	PathSelection *VpnPathSelection `pulumi:"pathSelection"`
+	// For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
 	Paths map[string]VpnPaths `pulumi:"paths"`
+	// enum: `hubSpoke`, `mesh`
+	Type *string `pulumi:"type"`
 }
 
 type VpnState struct {
 	Name  pulumi.StringPtrInput
 	OrgId pulumi.StringPtrInput
+	// Only if `type`==`hubSpoke`
+	PathSelection VpnPathSelectionPtrInput
+	// For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
 	Paths VpnPathsMapInput
+	// enum: `hubSpoke`, `mesh`
+	Type pulumi.StringPtrInput
 }
 
 func (VpnState) ElementType() reflect.Type {
@@ -83,16 +98,26 @@ func (VpnState) ElementType() reflect.Type {
 }
 
 type vpnArgs struct {
-	Name  *string             `pulumi:"name"`
-	OrgId string              `pulumi:"orgId"`
+	Name  *string `pulumi:"name"`
+	OrgId string  `pulumi:"orgId"`
+	// Only if `type`==`hubSpoke`
+	PathSelection *VpnPathSelection `pulumi:"pathSelection"`
+	// For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
 	Paths map[string]VpnPaths `pulumi:"paths"`
+	// enum: `hubSpoke`, `mesh`
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Vpn resource.
 type VpnArgs struct {
 	Name  pulumi.StringPtrInput
 	OrgId pulumi.StringInput
+	// Only if `type`==`hubSpoke`
+	PathSelection VpnPathSelectionPtrInput
+	// For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
 	Paths VpnPathsMapInput
+	// enum: `hubSpoke`, `mesh`
+	Type pulumi.StringPtrInput
 }
 
 func (VpnArgs) ElementType() reflect.Type {
@@ -190,8 +215,19 @@ func (o VpnOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpn) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
+// Only if `type`==`hubSpoke`
+func (o VpnOutput) PathSelection() VpnPathSelectionPtrOutput {
+	return o.ApplyT(func(v *Vpn) VpnPathSelectionPtrOutput { return v.PathSelection }).(VpnPathSelectionPtrOutput)
+}
+
+// For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
 func (o VpnOutput) Paths() VpnPathsMapOutput {
 	return o.ApplyT(func(v *Vpn) VpnPathsMapOutput { return v.Paths }).(VpnPathsMapOutput)
+}
+
+// enum: `hubSpoke`, `mesh`
+func (o VpnOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vpn) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 type VpnArrayOutput struct{ *pulumi.OutputState }

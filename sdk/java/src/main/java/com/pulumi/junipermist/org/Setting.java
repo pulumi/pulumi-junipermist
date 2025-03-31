@@ -19,6 +19,7 @@ import com.pulumi.junipermist.org.outputs.SettingInstaller;
 import com.pulumi.junipermist.org.outputs.SettingJcloud;
 import com.pulumi.junipermist.org.outputs.SettingJcloudRa;
 import com.pulumi.junipermist.org.outputs.SettingJuniper;
+import com.pulumi.junipermist.org.outputs.SettingJunosShellAccess;
 import com.pulumi.junipermist.org.outputs.SettingMgmt;
 import com.pulumi.junipermist.org.outputs.SettingMistNac;
 import com.pulumi.junipermist.org.outputs.SettingMxedgeMgmt;
@@ -224,6 +225,20 @@ public class Setting extends com.pulumi.resources.CustomResource {
 
     public Output<SettingJuniper> juniper() {
         return this.juniper;
+    }
+    /**
+     * by default, webshell access is only enabled for Admin user
+     * 
+     */
+    @Export(name="junosShellAccess", refs={SettingJunosShellAccess.class}, tree="[0]")
+    private Output</* @Nullable */ SettingJunosShellAccess> junosShellAccess;
+
+    /**
+     * @return by default, webshell access is only enabled for Admin user
+     * 
+     */
+    public Output<Optional<SettingJunosShellAccess>> junosShellAccess() {
+        return Codegen.optional(this.junosShellAccess);
     }
     /**
      * management-related properties

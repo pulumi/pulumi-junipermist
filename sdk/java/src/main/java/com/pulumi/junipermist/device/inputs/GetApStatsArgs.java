@@ -17,32 +17,16 @@ public final class GetApStatsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetApStatsArgs Empty = new GetApStatsArgs();
 
-    /**
-     * duration like 7d, 2w
-     * 
-     */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
-    /**
-     * @return duration like 7d, 2w
-     * 
-     */
     public Optional<Output<String>> duration() {
         return Optional.ofNullable(this.duration);
     }
 
-    /**
-     * end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-     * 
-     */
     @Import(name="end")
     private @Nullable Output<Integer> end;
 
-    /**
-     * @return end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-     * 
-     */
     public Optional<Output<Integer>> end() {
         return Optional.ofNullable(this.end);
     }
@@ -68,17 +52,9 @@ public final class GetApStatsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.siteId);
     }
 
-    /**
-     * start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-     * 
-     */
     @Import(name="start")
     private @Nullable Output<Integer> start;
 
-    /**
-     * @return start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-     * 
-     */
     public Optional<Output<Integer>> start() {
         return Optional.ofNullable(this.start);
     }
@@ -120,44 +96,20 @@ public final class GetApStatsArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetApStatsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param duration duration like 7d, 2w
-         * 
-         * @return builder
-         * 
-         */
         public Builder duration(@Nullable Output<String> duration) {
             $.duration = duration;
             return this;
         }
 
-        /**
-         * @param duration duration like 7d, 2w
-         * 
-         * @return builder
-         * 
-         */
         public Builder duration(String duration) {
             return duration(Output.of(duration));
         }
 
-        /**
-         * @param end end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-         * 
-         * @return builder
-         * 
-         */
         public Builder end(@Nullable Output<Integer> end) {
             $.end = end;
             return this;
         }
 
-        /**
-         * @param end end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-         * 
-         * @return builder
-         * 
-         */
         public Builder end(Integer end) {
             return end(Output.of(end));
         }
@@ -189,23 +141,11 @@ public final class GetApStatsArgs extends com.pulumi.resources.InvokeArgs {
             return siteId(Output.of(siteId));
         }
 
-        /**
-         * @param start start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-         * 
-         * @return builder
-         * 
-         */
         public Builder start(@Nullable Output<Integer> start) {
             $.start = start;
             return this;
         }
 
-        /**
-         * @param start start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-         * 
-         * @return builder
-         * 
-         */
         public Builder start(Integer start) {
             return start(Output.of(start));
         }

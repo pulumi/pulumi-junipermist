@@ -33,19 +33,19 @@ class WxtagArgs:
         """
         The set of arguments for constructing a Wxtag resource.
         :param pulumi.Input[str] type: enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
-        :param pulumi.Input[str] mac: if `type`==`client`, Client MAC Address
+        :param pulumi.Input[str] mac: If `type`==`client`, Client MAC Address
         :param pulumi.Input[str] match: required if `type`==`match`. enum: `ap_id`, `app`, `asset_mac`, `client_mac`, `hostname`, `ip_range_subnet`, `port`,
                `psk_name`, `psk_role`, `radius_attr`, `radius_class`, `radius_group`, `radius_username`, `sdkclient_uuid`, `wlan_id`
         :param pulumi.Input[str] name: The name
         :param pulumi.Input[str] op: required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `not_in`
-        :param pulumi.Input[Sequence[pulumi.Input['WxtagSpecArgs']]] specs: if `type`==`spec`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
+        :param pulumi.Input[Sequence[pulumi.Input['WxtagSpecArgs']]] specs: If `type`==`spec`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
                `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
                `match`==`hostname`: list of Resources Hostnames * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs *
                `match`==`psk_name`: list of PSK Names * `match`==`psk_role`: list of PSK Roles * `match`==`port`: list of Ports or Port
-               Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ “6=1”, “26=10.2.3.4” ], this
-               support other RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches
-               the ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
+               Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other
+               RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches the
+               ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
                Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1) *
                `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1) * `match`==`sdkclient_uuid`:
                list of SDK UUIDs * `match`==`wlan_id`: list of WLAN IDs **Notes**: Variables are not allowed
@@ -92,7 +92,7 @@ class WxtagArgs:
     @pulumi.getter
     def mac(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`client`, Client MAC Address
+        If `type`==`client`, Client MAC Address
         """
         return pulumi.get(self, "mac")
 
@@ -141,7 +141,7 @@ class WxtagArgs:
     @pulumi.getter
     def specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WxtagSpecArgs']]]]:
         """
-        if `type`==`spec`
+        If `type`==`spec`
         """
         return pulumi.get(self, "specs")
 
@@ -153,13 +153,13 @@ class WxtagArgs:
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
+        Required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
         `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
         `match`==`hostname`: list of Resources Hostnames * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs *
         `match`==`psk_name`: list of PSK Names * `match`==`psk_role`: list of PSK Roles * `match`==`port`: list of Ports or Port
-        Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ “6=1”, “26=10.2.3.4” ], this
-        support other RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches
-        the ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
+        Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other
+        RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches the
+        ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
         Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1) *
         `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1) * `match`==`sdkclient_uuid`:
         list of SDK UUIDs * `match`==`wlan_id`: list of WLAN IDs **Notes**: Variables are not allowed
@@ -194,20 +194,20 @@ class _WxtagState:
                  vlan_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Wxtag resources.
-        :param pulumi.Input[str] mac: if `type`==`client`, Client MAC Address
+        :param pulumi.Input[str] mac: If `type`==`client`, Client MAC Address
         :param pulumi.Input[str] match: required if `type`==`match`. enum: `ap_id`, `app`, `asset_mac`, `client_mac`, `hostname`, `ip_range_subnet`, `port`,
                `psk_name`, `psk_role`, `radius_attr`, `radius_class`, `radius_group`, `radius_username`, `sdkclient_uuid`, `wlan_id`
         :param pulumi.Input[str] name: The name
         :param pulumi.Input[str] op: required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `not_in`
-        :param pulumi.Input[Sequence[pulumi.Input['WxtagSpecArgs']]] specs: if `type`==`spec`
+        :param pulumi.Input[Sequence[pulumi.Input['WxtagSpecArgs']]] specs: If `type`==`spec`
         :param pulumi.Input[str] type: enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
                `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
                `match`==`hostname`: list of Resources Hostnames * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs *
                `match`==`psk_name`: list of PSK Names * `match`==`psk_role`: list of PSK Roles * `match`==`port`: list of Ports or Port
-               Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ “6=1”, “26=10.2.3.4” ], this
-               support other RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches
-               the ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
+               Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other
+               RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches the
+               ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
                Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1) *
                `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1) * `match`==`sdkclient_uuid`:
                list of SDK UUIDs * `match`==`wlan_id`: list of WLAN IDs **Notes**: Variables are not allowed
@@ -235,7 +235,7 @@ class _WxtagState:
     @pulumi.getter
     def mac(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`client`, Client MAC Address
+        If `type`==`client`, Client MAC Address
         """
         return pulumi.get(self, "mac")
 
@@ -293,7 +293,7 @@ class _WxtagState:
     @pulumi.getter
     def specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WxtagSpecArgs']]]]:
         """
-        if `type`==`spec`
+        If `type`==`spec`
         """
         return pulumi.get(self, "specs")
 
@@ -317,13 +317,13 @@ class _WxtagState:
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
+        Required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
         `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
         `match`==`hostname`: list of Resources Hostnames * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs *
         `match`==`psk_name`: list of PSK Names * `match`==`psk_role`: list of PSK Roles * `match`==`port`: list of Ports or Port
-        Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ “6=1”, “26=10.2.3.4” ], this
-        support other RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches
-        the ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
+        Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other
+        RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches the
+        ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
         Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1) *
         `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1) * `match`==`sdkclient_uuid`:
         list of SDK UUIDs * `match`==`wlan_id`: list of WLAN IDs **Notes**: Variables are not allowed
@@ -379,7 +379,7 @@ class Wxtag(pulumi.CustomResource):
         import pulumi
         import pulumi_juniper_mist as junipermist
 
-        wtag_one = junipermist.site.Wxtag("wtag_one",
+        wxtag_one = junipermist.site.Wxtag("wxtag_one",
             site_id=terraform_test["id"],
             name="wtag_one",
             values=["10.3.0.0/16"],
@@ -400,20 +400,20 @@ class Wxtag(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] mac: if `type`==`client`, Client MAC Address
+        :param pulumi.Input[str] mac: If `type`==`client`, Client MAC Address
         :param pulumi.Input[str] match: required if `type`==`match`. enum: `ap_id`, `app`, `asset_mac`, `client_mac`, `hostname`, `ip_range_subnet`, `port`,
                `psk_name`, `psk_role`, `radius_attr`, `radius_class`, `radius_group`, `radius_username`, `sdkclient_uuid`, `wlan_id`
         :param pulumi.Input[str] name: The name
         :param pulumi.Input[str] op: required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `not_in`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict']]]] specs: if `type`==`spec`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict']]]] specs: If `type`==`spec`
         :param pulumi.Input[str] type: enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
                `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
                `match`==`hostname`: list of Resources Hostnames * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs *
                `match`==`psk_name`: list of PSK Names * `match`==`psk_role`: list of PSK Roles * `match`==`port`: list of Ports or Port
-               Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ “6=1”, “26=10.2.3.4” ], this
-               support other RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches
-               the ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
+               Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other
+               RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches the
+               ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
                Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1) *
                `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1) * `match`==`sdkclient_uuid`:
                list of SDK UUIDs * `match`==`wlan_id`: list of WLAN IDs **Notes**: Variables are not allowed
@@ -444,7 +444,7 @@ class Wxtag(pulumi.CustomResource):
         import pulumi
         import pulumi_juniper_mist as junipermist
 
-        wtag_one = junipermist.site.Wxtag("wtag_one",
+        wxtag_one = junipermist.site.Wxtag("wxtag_one",
             site_id=terraform_test["id"],
             name="wtag_one",
             values=["10.3.0.0/16"],
@@ -535,20 +535,20 @@ class Wxtag(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] mac: if `type`==`client`, Client MAC Address
+        :param pulumi.Input[str] mac: If `type`==`client`, Client MAC Address
         :param pulumi.Input[str] match: required if `type`==`match`. enum: `ap_id`, `app`, `asset_mac`, `client_mac`, `hostname`, `ip_range_subnet`, `port`,
                `psk_name`, `psk_role`, `radius_attr`, `radius_class`, `radius_group`, `radius_username`, `sdkclient_uuid`, `wlan_id`
         :param pulumi.Input[str] name: The name
         :param pulumi.Input[str] op: required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `not_in`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict']]]] specs: if `type`==`spec`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict']]]] specs: If `type`==`spec`
         :param pulumi.Input[str] type: enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
                `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
                `match`==`hostname`: list of Resources Hostnames * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs *
                `match`==`psk_name`: list of PSK Names * `match`==`psk_role`: list of PSK Roles * `match`==`port`: list of Ports or Port
-               Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ “6=1”, “26=10.2.3.4” ], this
-               support other RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches
-               the ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
+               Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other
+               RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches the
+               ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
                Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1) *
                `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1) * `match`==`sdkclient_uuid`:
                list of SDK UUIDs * `match`==`wlan_id`: list of WLAN IDs **Notes**: Variables are not allowed
@@ -572,7 +572,7 @@ class Wxtag(pulumi.CustomResource):
     @pulumi.getter
     def mac(self) -> pulumi.Output[Optional[str]]:
         """
-        if `type`==`client`, Client MAC Address
+        If `type`==`client`, Client MAC Address
         """
         return pulumi.get(self, "mac")
 
@@ -610,7 +610,7 @@ class Wxtag(pulumi.CustomResource):
     @pulumi.getter
     def specs(self) -> pulumi.Output[Optional[Sequence['outputs.WxtagSpec']]]:
         """
-        if `type`==`spec`
+        If `type`==`spec`
         """
         return pulumi.get(self, "specs")
 
@@ -626,13 +626,13 @@ class Wxtag(pulumi.CustomResource):
     @pulumi.getter
     def values(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
+        Required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
         `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
         `match`==`hostname`: list of Resources Hostnames * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs *
         `match`==`psk_name`: list of PSK Names * `match`==`psk_role`: list of PSK Roles * `match`==`port`: list of Ports or Port
-        Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ “6=1”, “26=10.2.3.4” ], this
-        support other RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches
-        the ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
+        Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other
+        RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches the
+        ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
         Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1) *
         `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1) * `match`==`sdkclient_uuid`:
         list of SDK UUIDs * `match`==`wlan_id`: list of WLAN IDs **Notes**: Variables are not allowed

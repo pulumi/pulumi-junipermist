@@ -58,6 +58,9 @@ namespace Pulumi.JuniperMist.Org
         [Output("dnsSuffixes")]
         public Output<ImmutableArray<string>> DnsSuffixes { get; private set; } = null!;
 
+        /// <summary>
+        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// </summary>
         [Output("extraRoutes")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateExtraRoutes>?> ExtraRoutes { get; private set; } = null!;
 
@@ -100,7 +103,7 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
         /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-        /// maximum 4 port mirrorings is allowed
+        /// maximum 4 mirroring ports is allowed
         /// </summary>
         [Output("portMirroring")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplatePortMirroring>?> PortMirroring { get; private set; } = null!;
@@ -130,7 +133,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.NetworktemplateSnmpConfig?> SnmpConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Defines custom switch configuration based on different criterias
+        /// Defines custom switch configuration based on different criteria
         /// </summary>
         [Output("switchMatching")]
         public Output<Outputs.NetworktemplateSwitchMatching?> SwitchMatching { get; private set; } = null!;
@@ -258,6 +261,10 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("extraRoutes")]
         private InputMap<Inputs.NetworktemplateExtraRoutesArgs>? _extraRoutes;
+
+        /// <summary>
+        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// </summary>
         public InputMap<Inputs.NetworktemplateExtraRoutesArgs> ExtraRoutes
         {
             get => _extraRoutes ?? (_extraRoutes = new InputMap<Inputs.NetworktemplateExtraRoutesArgs>());
@@ -330,7 +337,7 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
         /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-        /// maximum 4 port mirrorings is allowed
+        /// maximum 4 mirroring ports is allowed
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortMirroringArgs> PortMirroring
         {
@@ -369,7 +376,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.NetworktemplateSnmpConfigArgs>? SnmpConfig { get; set; }
 
         /// <summary>
-        /// Defines custom switch configuration based on different criterias
+        /// Defines custom switch configuration based on different criteria
         /// </summary>
         [Input("switchMatching")]
         public Input<Inputs.NetworktemplateSwitchMatchingArgs>? SwitchMatching { get; set; }
@@ -464,6 +471,10 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("extraRoutes")]
         private InputMap<Inputs.NetworktemplateExtraRoutesGetArgs>? _extraRoutes;
+
+        /// <summary>
+        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// </summary>
         public InputMap<Inputs.NetworktemplateExtraRoutesGetArgs> ExtraRoutes
         {
             get => _extraRoutes ?? (_extraRoutes = new InputMap<Inputs.NetworktemplateExtraRoutesGetArgs>());
@@ -536,7 +547,7 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
         /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-        /// maximum 4 port mirrorings is allowed
+        /// maximum 4 mirroring ports is allowed
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortMirroringGetArgs> PortMirroring
         {
@@ -575,7 +586,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.NetworktemplateSnmpConfigGetArgs>? SnmpConfig { get; set; }
 
         /// <summary>
-        /// Defines custom switch configuration based on different criterias
+        /// Defines custom switch configuration based on different criteria
         /// </summary>
         [Input("switchMatching")]
         public Input<Inputs.NetworktemplateSwitchMatchingGetArgs>? SwitchMatching { get; set; }

@@ -76,6 +76,15 @@ def get_webhooks(site_id: Optional[str] = None,
     A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.\\
     It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.\\
     The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_junipermist as junipermist
+
+    webhooks = junipermist.site.get_webhooks(site_id="15fca2ac-b1a6-47cc-9953-cc6906281550")
+    ```
     """
     __args__ = dict()
     __args__['siteId'] = site_id
@@ -94,6 +103,15 @@ def get_webhooks_output(site_id: Optional[pulumi.Input[str]] = None,
     A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.\\
     It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.\\
     The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_junipermist as junipermist
+
+    webhooks = junipermist.site.get_webhooks(site_id="15fca2ac-b1a6-47cc-9953-cc6906281550")
+    ```
     """
     __args__ = dict()
     __args__['siteId'] = site_id

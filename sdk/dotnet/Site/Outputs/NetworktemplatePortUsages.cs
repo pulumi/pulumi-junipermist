@@ -32,7 +32,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// <summary>
         /// Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         /// </summary>
-        public readonly bool? BypassAuthWhenServerDownForUnkownClient;
+        public readonly bool? BypassAuthWhenServerDownForUnknownClient;
         /// <summary>
         /// Only if `mode`!=`dynamic`
         /// </summary>
@@ -65,6 +65,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// Only if `mode`!=`dynamic` and `port_auth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
         /// </summary>
         public readonly string? GuestNetwork;
+        /// <summary>
+        /// `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
+        /// </summary>
+        public readonly bool? InterIsolationNetworkLink;
         /// <summary>
         /// Only if `mode`!=`dynamic` inter_switch_link is used together with "isolation" under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
         /// </summary>
@@ -114,9 +118,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? PortNetwork;
         /// <summary>
-        /// Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range
+        /// Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
         /// </summary>
-        public readonly int? ReauthInterval;
+        public readonly string? ReauthInterval;
         /// <summary>
         /// Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
         /// </summary>
@@ -170,7 +174,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             bool? bypassAuthWhenServerDown,
 
-            bool? bypassAuthWhenServerDownForUnkownClient,
+            bool? bypassAuthWhenServerDownForUnknownClient,
 
             string? description,
 
@@ -187,6 +191,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
             bool? enableQos,
 
             string? guestNetwork,
+
+            bool? interIsolationNetworkLink,
 
             bool? interSwitchLink,
 
@@ -212,7 +218,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             string? portNetwork,
 
-            int? reauthInterval,
+            string? reauthInterval,
 
             string? resetDefaultWhen,
 
@@ -242,7 +248,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             AllowDhcpd = allowDhcpd;
             AllowMultipleSupplicants = allowMultipleSupplicants;
             BypassAuthWhenServerDown = bypassAuthWhenServerDown;
-            BypassAuthWhenServerDownForUnkownClient = bypassAuthWhenServerDownForUnkownClient;
+            BypassAuthWhenServerDownForUnknownClient = bypassAuthWhenServerDownForUnknownClient;
             Description = description;
             DisableAutoneg = disableAutoneg;
             Disabled = disabled;
@@ -251,6 +257,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             EnableMacAuth = enableMacAuth;
             EnableQos = enableQos;
             GuestNetwork = guestNetwork;
+            InterIsolationNetworkLink = interIsolationNetworkLink;
             InterSwitchLink = interSwitchLink;
             MacAuthOnly = macAuthOnly;
             MacAuthPreferred = macAuthPreferred;

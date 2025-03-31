@@ -10,22 +10,51 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSsoMetadataResult {
+    /**
+     * @return If `idp_type`==`saml`
+     * 
+     */
     private String acsUrl;
+    /**
+     * @return If `idp_type`==`saml`
+     * 
+     */
     private String entityId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return If `idp_type`==`saml`
+     * 
+     */
     private String logoutUrl;
+    /**
+     * @return If `idp_type`==`saml`
+     * 
+     */
     private String metadata;
     private String orgId;
+    /**
+     * @return If `idp_type`==`oauth` and `scim_enabled`==`true`
+     * 
+     */
+    private String scimBaseUrl;
     private String ssoId;
 
     private GetSsoMetadataResult() {}
+    /**
+     * @return If `idp_type`==`saml`
+     * 
+     */
     public String acsUrl() {
         return this.acsUrl;
     }
+    /**
+     * @return If `idp_type`==`saml`
+     * 
+     */
     public String entityId() {
         return this.entityId;
     }
@@ -36,14 +65,29 @@ public final class GetSsoMetadataResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return If `idp_type`==`saml`
+     * 
+     */
     public String logoutUrl() {
         return this.logoutUrl;
     }
+    /**
+     * @return If `idp_type`==`saml`
+     * 
+     */
     public String metadata() {
         return this.metadata;
     }
     public String orgId() {
         return this.orgId;
+    }
+    /**
+     * @return If `idp_type`==`oauth` and `scim_enabled`==`true`
+     * 
+     */
+    public String scimBaseUrl() {
+        return this.scimBaseUrl;
     }
     public String ssoId() {
         return this.ssoId;
@@ -64,6 +108,7 @@ public final class GetSsoMetadataResult {
         private String logoutUrl;
         private String metadata;
         private String orgId;
+        private String scimBaseUrl;
         private String ssoId;
         public Builder() {}
         public Builder(GetSsoMetadataResult defaults) {
@@ -74,6 +119,7 @@ public final class GetSsoMetadataResult {
     	      this.logoutUrl = defaults.logoutUrl;
     	      this.metadata = defaults.metadata;
     	      this.orgId = defaults.orgId;
+    	      this.scimBaseUrl = defaults.scimBaseUrl;
     	      this.ssoId = defaults.ssoId;
         }
 
@@ -126,6 +172,14 @@ public final class GetSsoMetadataResult {
             return this;
         }
         @CustomType.Setter
+        public Builder scimBaseUrl(String scimBaseUrl) {
+            if (scimBaseUrl == null) {
+              throw new MissingRequiredPropertyException("GetSsoMetadataResult", "scimBaseUrl");
+            }
+            this.scimBaseUrl = scimBaseUrl;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ssoId(String ssoId) {
             if (ssoId == null) {
               throw new MissingRequiredPropertyException("GetSsoMetadataResult", "ssoId");
@@ -141,6 +195,7 @@ public final class GetSsoMetadataResult {
             _resultValue.logoutUrl = logoutUrl;
             _resultValue.metadata = metadata;
             _resultValue.orgId = orgId;
+            _resultValue.scimBaseUrl = scimBaseUrl;
             _resultValue.ssoId = ssoId;
             return _resultValue;
         }

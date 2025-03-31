@@ -40,14 +40,14 @@ public final class EvpnTopologyEvpnOptionsUnderlayArgs extends com.pulumi.resour
     }
 
     /**
-     * underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+     * Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
      * 
      */
     @Import(name="subnet")
     private @Nullable Output<String> subnet;
 
     /**
-     * @return underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+     * @return Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
      * 
      */
     public Optional<Output<String>> subnet() {
@@ -55,14 +55,14 @@ public final class EvpnTopologyEvpnOptionsUnderlayArgs extends com.pulumi.resour
     }
 
     /**
-     * if v6 is desired for underlay
+     * If v6 is desired for underlay
      * 
      */
     @Import(name="useIpv6")
     private @Nullable Output<Boolean> useIpv6;
 
     /**
-     * @return if v6 is desired for underlay
+     * @return If v6 is desired for underlay
      * 
      */
     public Optional<Output<Boolean>> useIpv6() {
@@ -127,7 +127,7 @@ public final class EvpnTopologyEvpnOptionsUnderlayArgs extends com.pulumi.resour
         }
 
         /**
-         * @param subnet underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+         * @param subnet Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class EvpnTopologyEvpnOptionsUnderlayArgs extends com.pulumi.resour
         }
 
         /**
-         * @param subnet underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+         * @param subnet Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class EvpnTopologyEvpnOptionsUnderlayArgs extends com.pulumi.resour
         }
 
         /**
-         * @param useIpv6 if v6 is desired for underlay
+         * @param useIpv6 If v6 is desired for underlay
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class EvpnTopologyEvpnOptionsUnderlayArgs extends com.pulumi.resour
         }
 
         /**
-         * @param useIpv6 if v6 is desired for underlay
+         * @param useIpv6 If v6 is desired for underlay
          * 
          * @return builder
          * 

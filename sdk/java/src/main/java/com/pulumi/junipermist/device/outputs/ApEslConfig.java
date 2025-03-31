@@ -39,7 +39,7 @@ public final class ApEslConfig {
      */
     private @Nullable Integer port;
     /**
-     * @return note: ble_config will be ingored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+     * @return note: ble_config will be ignored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
      * 
      */
     private @Nullable String type;
@@ -91,7 +91,7 @@ public final class ApEslConfig {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return note: ble_config will be ingored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+     * @return note: ble_config will be ignored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
      * 
      */
     public Optional<String> type() {

@@ -377,6 +377,21 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
+     * 
+     */
+    @Import(name="redundantGroup")
+    private @Nullable Output<Integer> redundantGroup;
+
+    /**
+     * @return If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
+     * 
+     */
+    public Optional<Output<Integer>> redundantGroup() {
+        return Optional.ofNullable(this.redundantGroup);
+    }
+
+    /**
      * If HA mode
      * 
      */
@@ -533,14 +548,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+     * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;100.100.100.0/24&#34;)
      * 
      */
     @Import(name="wanExtraRoutes")
     private @Nullable Output<Map<String,GatewayPortConfigWanExtraRoutesArgs>> wanExtraRoutes;
 
     /**
-     * @return Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+     * @return Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;100.100.100.0/24&#34;)
      * 
      */
     public Optional<Output<Map<String,GatewayPortConfigWanExtraRoutesArgs>>> wanExtraRoutes() {
@@ -636,6 +651,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         this.portNetwork = $.portNetwork;
         this.preserveDscp = $.preserveDscp;
         this.redundant = $.redundant;
+        this.redundantGroup = $.redundantGroup;
         this.rethIdx = $.rethIdx;
         this.rethNode = $.rethNode;
         this.rethNodes = $.rethNodes;
@@ -1170,6 +1186,27 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param redundantGroup If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redundantGroup(@Nullable Output<Integer> redundantGroup) {
+            $.redundantGroup = redundantGroup;
+            return this;
+        }
+
+        /**
+         * @param redundantGroup If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redundantGroup(Integer redundantGroup) {
+            return redundantGroup(Output.of(redundantGroup));
+        }
+
+        /**
          * @param rethIdx If HA mode
          * 
          * @return builder
@@ -1396,7 +1433,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanExtraRoutes Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+         * @param wanExtraRoutes Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;100.100.100.0/24&#34;)
          * 
          * @return builder
          * 
@@ -1407,7 +1444,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanExtraRoutes Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+         * @param wanExtraRoutes Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;100.100.100.0/24&#34;)
          * 
          * @return builder
          * 

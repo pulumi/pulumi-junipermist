@@ -49,7 +49,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private Input<string>? _secret;
 
         /// <summary>
-        /// Secretof RADIUS server
+        /// Secret of RADIUS server
         /// </summary>
         public Input<string>? Secret
         {

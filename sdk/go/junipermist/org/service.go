@@ -32,38 +32,46 @@ import (
 type Service struct {
 	pulumi.CustomResourceState
 
-	// if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+	// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
 	Addresses pulumi.StringArrayOutput `pulumi:"addresses"`
-	// when `type`==`appCategories`, list of application categories are available through /api/v1/const/app_categories
+	// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
 	AppCategories pulumi.StringArrayOutput `pulumi:"appCategories"`
-	// when `type`==`appCategories`, list of application categories are available through /api/v1/const/app_subcategories
+	// When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
 	AppSubcategories pulumi.StringArrayOutput `pulumi:"appSubcategories"`
-	// when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-	// /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
-	Apps        pulumi.StringArrayOutput `pulumi:"apps"`
-	Description pulumi.StringPtrOutput   `pulumi:"description"`
-	Dscp        pulumi.StringPtrOutput   `pulumi:"dscp"`
+	// When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+	// /insight/top_app_by-bytes?wired=true
+	Apps pulumi.StringArrayOutput `pulumi:"apps"`
+	// 0 means unlimited
+	ClientLimitDown pulumi.IntOutput `pulumi:"clientLimitDown"`
+	// 0 means unlimited
+	ClientLimitUp pulumi.IntOutput       `pulumi:"clientLimitUp"`
+	Description   pulumi.StringPtrOutput `pulumi:"description"`
+	Dscp          pulumi.StringPtrOutput `pulumi:"dscp"`
 	// enum: `nonRevertable`, `none`, `revertable`
 	FailoverPolicy pulumi.StringOutput `pulumi:"failoverPolicy"`
-	// if `type`==`custom`, web filtering
+	// If `type`==`custom`, web filtering
 	Hostnames  pulumi.StringArrayOutput `pulumi:"hostnames"`
 	MaxJitter  pulumi.StringPtrOutput   `pulumi:"maxJitter"`
 	MaxLatency pulumi.StringPtrOutput   `pulumi:"maxLatency"`
 	MaxLoss    pulumi.StringPtrOutput   `pulumi:"maxLoss"`
 	Name       pulumi.StringOutput      `pulumi:"name"`
 	OrgId      pulumi.StringOutput      `pulumi:"orgId"`
-	// whether to enable measure SLE
+	// 0 means unlimited
+	ServiceLimitDown pulumi.IntOutput `pulumi:"serviceLimitDown"`
+	// 0 means unlimited
+	ServiceLimitUp pulumi.IntOutput `pulumi:"serviceLimitUp"`
+	// Whether to enable measure SLE
 	SleEnabled pulumi.BoolOutput `pulumi:"sleEnabled"`
-	// when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+	// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
 	Specs                         ServiceSpecArrayOutput `pulumi:"specs"`
 	SsrRelaxedTcpStateEnforcement pulumi.BoolOutput      `pulumi:"ssrRelaxedTcpStateEnforcement"`
 	// when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
 	TrafficClass pulumi.StringOutput `pulumi:"trafficClass"`
-	// values from `/api/v1/consts/traffic_types`
+	// values from List Traffic Types
 	TrafficType pulumi.StringOutput `pulumi:"trafficType"`
 	// enum: `appCategories`, `apps`, `custom`, `urls`
 	Type pulumi.StringOutput `pulumi:"type"`
-	// when `type`==`urls`, no need for spec as URL can encode the ports being used
+	// When `type`==`urls`, no need for spec as URL can encode the ports being used
 	Urls pulumi.StringArrayOutput `pulumi:"urls"`
 }
 
@@ -100,74 +108,90 @@ func GetService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Service resources.
 type serviceState struct {
-	// if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+	// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
 	Addresses []string `pulumi:"addresses"`
-	// when `type`==`appCategories`, list of application categories are available through /api/v1/const/app_categories
+	// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
 	AppCategories []string `pulumi:"appCategories"`
-	// when `type`==`appCategories`, list of application categories are available through /api/v1/const/app_subcategories
+	// When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
 	AppSubcategories []string `pulumi:"appSubcategories"`
-	// when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-	// /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
-	Apps        []string `pulumi:"apps"`
-	Description *string  `pulumi:"description"`
-	Dscp        *string  `pulumi:"dscp"`
+	// When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+	// /insight/top_app_by-bytes?wired=true
+	Apps []string `pulumi:"apps"`
+	// 0 means unlimited
+	ClientLimitDown *int `pulumi:"clientLimitDown"`
+	// 0 means unlimited
+	ClientLimitUp *int    `pulumi:"clientLimitUp"`
+	Description   *string `pulumi:"description"`
+	Dscp          *string `pulumi:"dscp"`
 	// enum: `nonRevertable`, `none`, `revertable`
 	FailoverPolicy *string `pulumi:"failoverPolicy"`
-	// if `type`==`custom`, web filtering
+	// If `type`==`custom`, web filtering
 	Hostnames  []string `pulumi:"hostnames"`
 	MaxJitter  *string  `pulumi:"maxJitter"`
 	MaxLatency *string  `pulumi:"maxLatency"`
 	MaxLoss    *string  `pulumi:"maxLoss"`
 	Name       *string  `pulumi:"name"`
 	OrgId      *string  `pulumi:"orgId"`
-	// whether to enable measure SLE
+	// 0 means unlimited
+	ServiceLimitDown *int `pulumi:"serviceLimitDown"`
+	// 0 means unlimited
+	ServiceLimitUp *int `pulumi:"serviceLimitUp"`
+	// Whether to enable measure SLE
 	SleEnabled *bool `pulumi:"sleEnabled"`
-	// when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+	// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
 	Specs                         []ServiceSpec `pulumi:"specs"`
 	SsrRelaxedTcpStateEnforcement *bool         `pulumi:"ssrRelaxedTcpStateEnforcement"`
 	// when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
 	TrafficClass *string `pulumi:"trafficClass"`
-	// values from `/api/v1/consts/traffic_types`
+	// values from List Traffic Types
 	TrafficType *string `pulumi:"trafficType"`
 	// enum: `appCategories`, `apps`, `custom`, `urls`
 	Type *string `pulumi:"type"`
-	// when `type`==`urls`, no need for spec as URL can encode the ports being used
+	// When `type`==`urls`, no need for spec as URL can encode the ports being used
 	Urls []string `pulumi:"urls"`
 }
 
 type ServiceState struct {
-	// if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+	// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
 	Addresses pulumi.StringArrayInput
-	// when `type`==`appCategories`, list of application categories are available through /api/v1/const/app_categories
+	// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
 	AppCategories pulumi.StringArrayInput
-	// when `type`==`appCategories`, list of application categories are available through /api/v1/const/app_subcategories
+	// When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
 	AppSubcategories pulumi.StringArrayInput
-	// when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-	// /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
-	Apps        pulumi.StringArrayInput
-	Description pulumi.StringPtrInput
-	Dscp        pulumi.StringPtrInput
+	// When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+	// /insight/top_app_by-bytes?wired=true
+	Apps pulumi.StringArrayInput
+	// 0 means unlimited
+	ClientLimitDown pulumi.IntPtrInput
+	// 0 means unlimited
+	ClientLimitUp pulumi.IntPtrInput
+	Description   pulumi.StringPtrInput
+	Dscp          pulumi.StringPtrInput
 	// enum: `nonRevertable`, `none`, `revertable`
 	FailoverPolicy pulumi.StringPtrInput
-	// if `type`==`custom`, web filtering
+	// If `type`==`custom`, web filtering
 	Hostnames  pulumi.StringArrayInput
 	MaxJitter  pulumi.StringPtrInput
 	MaxLatency pulumi.StringPtrInput
 	MaxLoss    pulumi.StringPtrInput
 	Name       pulumi.StringPtrInput
 	OrgId      pulumi.StringPtrInput
-	// whether to enable measure SLE
+	// 0 means unlimited
+	ServiceLimitDown pulumi.IntPtrInput
+	// 0 means unlimited
+	ServiceLimitUp pulumi.IntPtrInput
+	// Whether to enable measure SLE
 	SleEnabled pulumi.BoolPtrInput
-	// when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+	// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
 	Specs                         ServiceSpecArrayInput
 	SsrRelaxedTcpStateEnforcement pulumi.BoolPtrInput
 	// when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
 	TrafficClass pulumi.StringPtrInput
-	// values from `/api/v1/consts/traffic_types`
+	// values from List Traffic Types
 	TrafficType pulumi.StringPtrInput
 	// enum: `appCategories`, `apps`, `custom`, `urls`
 	Type pulumi.StringPtrInput
-	// when `type`==`urls`, no need for spec as URL can encode the ports being used
+	// When `type`==`urls`, no need for spec as URL can encode the ports being used
 	Urls pulumi.StringArrayInput
 }
 
@@ -176,75 +200,91 @@ func (ServiceState) ElementType() reflect.Type {
 }
 
 type serviceArgs struct {
-	// if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+	// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
 	Addresses []string `pulumi:"addresses"`
-	// when `type`==`appCategories`, list of application categories are available through /api/v1/const/app_categories
+	// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
 	AppCategories []string `pulumi:"appCategories"`
-	// when `type`==`appCategories`, list of application categories are available through /api/v1/const/app_subcategories
+	// When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
 	AppSubcategories []string `pulumi:"appSubcategories"`
-	// when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-	// /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
-	Apps        []string `pulumi:"apps"`
-	Description *string  `pulumi:"description"`
-	Dscp        *string  `pulumi:"dscp"`
+	// When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+	// /insight/top_app_by-bytes?wired=true
+	Apps []string `pulumi:"apps"`
+	// 0 means unlimited
+	ClientLimitDown *int `pulumi:"clientLimitDown"`
+	// 0 means unlimited
+	ClientLimitUp *int    `pulumi:"clientLimitUp"`
+	Description   *string `pulumi:"description"`
+	Dscp          *string `pulumi:"dscp"`
 	// enum: `nonRevertable`, `none`, `revertable`
 	FailoverPolicy *string `pulumi:"failoverPolicy"`
-	// if `type`==`custom`, web filtering
+	// If `type`==`custom`, web filtering
 	Hostnames  []string `pulumi:"hostnames"`
 	MaxJitter  *string  `pulumi:"maxJitter"`
 	MaxLatency *string  `pulumi:"maxLatency"`
 	MaxLoss    *string  `pulumi:"maxLoss"`
 	Name       *string  `pulumi:"name"`
 	OrgId      string   `pulumi:"orgId"`
-	// whether to enable measure SLE
+	// 0 means unlimited
+	ServiceLimitDown *int `pulumi:"serviceLimitDown"`
+	// 0 means unlimited
+	ServiceLimitUp *int `pulumi:"serviceLimitUp"`
+	// Whether to enable measure SLE
 	SleEnabled *bool `pulumi:"sleEnabled"`
-	// when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+	// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
 	Specs                         []ServiceSpec `pulumi:"specs"`
 	SsrRelaxedTcpStateEnforcement *bool         `pulumi:"ssrRelaxedTcpStateEnforcement"`
 	// when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
 	TrafficClass *string `pulumi:"trafficClass"`
-	// values from `/api/v1/consts/traffic_types`
+	// values from List Traffic Types
 	TrafficType *string `pulumi:"trafficType"`
 	// enum: `appCategories`, `apps`, `custom`, `urls`
 	Type *string `pulumi:"type"`
-	// when `type`==`urls`, no need for spec as URL can encode the ports being used
+	// When `type`==`urls`, no need for spec as URL can encode the ports being used
 	Urls []string `pulumi:"urls"`
 }
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
-	// if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+	// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
 	Addresses pulumi.StringArrayInput
-	// when `type`==`appCategories`, list of application categories are available through /api/v1/const/app_categories
+	// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
 	AppCategories pulumi.StringArrayInput
-	// when `type`==`appCategories`, list of application categories are available through /api/v1/const/app_subcategories
+	// When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
 	AppSubcategories pulumi.StringArrayInput
-	// when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-	// /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
-	Apps        pulumi.StringArrayInput
-	Description pulumi.StringPtrInput
-	Dscp        pulumi.StringPtrInput
+	// When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+	// /insight/top_app_by-bytes?wired=true
+	Apps pulumi.StringArrayInput
+	// 0 means unlimited
+	ClientLimitDown pulumi.IntPtrInput
+	// 0 means unlimited
+	ClientLimitUp pulumi.IntPtrInput
+	Description   pulumi.StringPtrInput
+	Dscp          pulumi.StringPtrInput
 	// enum: `nonRevertable`, `none`, `revertable`
 	FailoverPolicy pulumi.StringPtrInput
-	// if `type`==`custom`, web filtering
+	// If `type`==`custom`, web filtering
 	Hostnames  pulumi.StringArrayInput
 	MaxJitter  pulumi.StringPtrInput
 	MaxLatency pulumi.StringPtrInput
 	MaxLoss    pulumi.StringPtrInput
 	Name       pulumi.StringPtrInput
 	OrgId      pulumi.StringInput
-	// whether to enable measure SLE
+	// 0 means unlimited
+	ServiceLimitDown pulumi.IntPtrInput
+	// 0 means unlimited
+	ServiceLimitUp pulumi.IntPtrInput
+	// Whether to enable measure SLE
 	SleEnabled pulumi.BoolPtrInput
-	// when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+	// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
 	Specs                         ServiceSpecArrayInput
 	SsrRelaxedTcpStateEnforcement pulumi.BoolPtrInput
 	// when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
 	TrafficClass pulumi.StringPtrInput
-	// values from `/api/v1/consts/traffic_types`
+	// values from List Traffic Types
 	TrafficType pulumi.StringPtrInput
 	// enum: `appCategories`, `apps`, `custom`, `urls`
 	Type pulumi.StringPtrInput
-	// when `type`==`urls`, no need for spec as URL can encode the ports being used
+	// When `type`==`urls`, no need for spec as URL can encode the ports being used
 	Urls pulumi.StringArrayInput
 }
 
@@ -335,25 +375,35 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 	return o
 }
 
-// if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
 func (o ServiceOutput) Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.Addresses }).(pulumi.StringArrayOutput)
 }
 
-// when `type`==`appCategories`, list of application categories are available through /api/v1/const/app_categories
+// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
 func (o ServiceOutput) AppCategories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.AppCategories }).(pulumi.StringArrayOutput)
 }
 
-// when `type`==`appCategories`, list of application categories are available through /api/v1/const/app_subcategories
+// When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
 func (o ServiceOutput) AppSubcategories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.AppSubcategories }).(pulumi.StringArrayOutput)
 }
 
-// when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-// /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
+// When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+// /insight/top_app_by-bytes?wired=true
 func (o ServiceOutput) Apps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.Apps }).(pulumi.StringArrayOutput)
+}
+
+// 0 means unlimited
+func (o ServiceOutput) ClientLimitDown() pulumi.IntOutput {
+	return o.ApplyT(func(v *Service) pulumi.IntOutput { return v.ClientLimitDown }).(pulumi.IntOutput)
+}
+
+// 0 means unlimited
+func (o ServiceOutput) ClientLimitUp() pulumi.IntOutput {
+	return o.ApplyT(func(v *Service) pulumi.IntOutput { return v.ClientLimitUp }).(pulumi.IntOutput)
 }
 
 func (o ServiceOutput) Description() pulumi.StringPtrOutput {
@@ -369,7 +419,7 @@ func (o ServiceOutput) FailoverPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.FailoverPolicy }).(pulumi.StringOutput)
 }
 
-// if `type`==`custom`, web filtering
+// If `type`==`custom`, web filtering
 func (o ServiceOutput) Hostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
@@ -394,12 +444,22 @@ func (o ServiceOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// whether to enable measure SLE
+// 0 means unlimited
+func (o ServiceOutput) ServiceLimitDown() pulumi.IntOutput {
+	return o.ApplyT(func(v *Service) pulumi.IntOutput { return v.ServiceLimitDown }).(pulumi.IntOutput)
+}
+
+// 0 means unlimited
+func (o ServiceOutput) ServiceLimitUp() pulumi.IntOutput {
+	return o.ApplyT(func(v *Service) pulumi.IntOutput { return v.ServiceLimitUp }).(pulumi.IntOutput)
+}
+
+// Whether to enable measure SLE
 func (o ServiceOutput) SleEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolOutput { return v.SleEnabled }).(pulumi.BoolOutput)
 }
 
-// when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
 func (o ServiceOutput) Specs() ServiceSpecArrayOutput {
 	return o.ApplyT(func(v *Service) ServiceSpecArrayOutput { return v.Specs }).(ServiceSpecArrayOutput)
 }
@@ -413,7 +473,7 @@ func (o ServiceOutput) TrafficClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.TrafficClass }).(pulumi.StringOutput)
 }
 
-// values from `/api/v1/consts/traffic_types`
+// values from List Traffic Types
 func (o ServiceOutput) TrafficType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.TrafficType }).(pulumi.StringOutput)
 }
@@ -423,7 +483,7 @@ func (o ServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// when `type`==`urls`, no need for spec as URL can encode the ports being used
+// When `type`==`urls`, no need for spec as URL can encode the ports being used
 func (o ServiceOutput) Urls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.Urls }).(pulumi.StringArrayOutput)
 }

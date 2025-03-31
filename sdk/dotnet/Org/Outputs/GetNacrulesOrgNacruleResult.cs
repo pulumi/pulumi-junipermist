@@ -13,15 +13,34 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class GetNacrulesOrgNacruleResult
     {
+        /// <summary>
+        /// When the object has been created, in epoch
+        /// </summary>
         public readonly double CreatedTime;
+        /// <summary>
+        /// Enabled or not
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
+        /// Unique ID of the object instance in the Mist Organization
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// When the object has been modified for the last time, in epoch
+        /// </summary>
         public readonly double ModifiedTime;
         public readonly string Name;
+        /// <summary>
+        /// Order of the rule, lower value implies higher priority
+        /// </summary>
+        public readonly int Order;
         public readonly string OrgId;
 
         [OutputConstructor]
         private GetNacrulesOrgNacruleResult(
             double createdTime,
+
+            bool enabled,
 
             string id,
 
@@ -29,12 +48,16 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string name,
 
+            int order,
+
             string orgId)
         {
             CreatedTime = createdTime;
+            Enabled = enabled;
             Id = id;
             ModifiedTime = modifiedTime;
             Name = name;
+            Order = order;
             OrgId = orgId;
         }
     }

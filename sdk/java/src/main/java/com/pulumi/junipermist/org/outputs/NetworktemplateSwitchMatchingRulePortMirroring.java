@@ -28,12 +28,12 @@ public final class NetworktemplateSwitchMatchingRulePortMirroring {
      */
     private @Nullable List<String> inputPortIdsIngresses;
     /**
-     * @return Exaclty one of the `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `output_port_id` or `output_network` should be provided
      * 
      */
     private @Nullable String outputNetwork;
     /**
-     * @return Exaclty one of the `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `output_port_id` or `output_network` should be provided
      * 
      */
     private @Nullable String outputPortId;
@@ -61,14 +61,14 @@ public final class NetworktemplateSwitchMatchingRulePortMirroring {
         return this.inputPortIdsIngresses == null ? List.of() : this.inputPortIdsIngresses;
     }
     /**
-     * @return Exaclty one of the `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `output_port_id` or `output_network` should be provided
      * 
      */
     public Optional<String> outputNetwork() {
         return Optional.ofNullable(this.outputNetwork);
     }
     /**
-     * @return Exaclty one of the `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `output_port_id` or `output_network` should be provided
      * 
      */
     public Optional<String> outputPortId() {

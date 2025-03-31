@@ -191,6 +191,25 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+     * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+     * Topics)
+     * 
+     */
+    @Import(name="singleEventPerMessage")
+    private @Nullable Output<Boolean> singleEventPerMessage;
+
+    /**
+     * @return Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+     * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+     * Topics)
+     * 
+     */
+    public Optional<Output<Boolean>> singleEventPerMessage() {
+        return Optional.ofNullable(this.singleEventPerMessage);
+    }
+
+    /**
      * Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
      * the webhook receiver is configured to accept it.
      * 
@@ -274,6 +293,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         this.oauth2Username = $.oauth2Username;
         this.orgId = $.orgId;
         this.secret = $.secret;
+        this.singleEventPerMessage = $.singleEventPerMessage;
         this.splunkToken = $.splunkToken;
         this.topics = $.topics;
         this.type = $.type;
@@ -547,6 +567,31 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder secret(String secret) {
             return secret(Output.of(secret));
+        }
+
+        /**
+         * @param singleEventPerMessage Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+         * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+         * Topics)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder singleEventPerMessage(@Nullable Output<Boolean> singleEventPerMessage) {
+            $.singleEventPerMessage = singleEventPerMessage;
+            return this;
+        }
+
+        /**
+         * @param singleEventPerMessage Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+         * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+         * Topics)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder singleEventPerMessage(Boolean singleEventPerMessage) {
+            return singleEventPerMessage(Output.of(singleEventPerMessage));
         }
 
         /**

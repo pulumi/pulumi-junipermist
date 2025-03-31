@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WxtagSpec {
     /**
-     * @return matched destination port, &#34;0&#34; means any
+     * @return Matched destination port, &#34;0&#34; means any
      * 
      */
     private @Nullable String portRange;
@@ -24,14 +24,14 @@ public final class WxtagSpec {
      */
     private @Nullable String protocol;
     /**
-     * @return matched destination subnets and/or IP Addresses
+     * @return Matched destination subnets and/or IP Addresses
      * 
      */
     private List<String> subnets;
 
     private WxtagSpec() {}
     /**
-     * @return matched destination port, &#34;0&#34; means any
+     * @return Matched destination port, &#34;0&#34; means any
      * 
      */
     public Optional<String> portRange() {
@@ -45,7 +45,7 @@ public final class WxtagSpec {
         return Optional.ofNullable(this.protocol);
     }
     /**
-     * @return matched destination subnets and/or IP Addresses
+     * @return Matched destination subnets and/or IP Addresses
      * 
      */
     public List<String> subnets() {

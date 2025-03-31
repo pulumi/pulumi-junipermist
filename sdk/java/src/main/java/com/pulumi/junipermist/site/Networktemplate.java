@@ -37,11 +37,11 @@ import javax.annotation.Nullable;
 /**
  * This resource manages the Site Network configuration (Switch configuration).
  * 
- * The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings accross the site without having to create an Org Network template.
+ * The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings across the site without having to create an Org Network template.
  * 
  * &gt; When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, the `junipermist.site.Networktemplate` resource has been created to centralize all the site level switches related settings.
  * 
- * !&gt; Only ONE `junipermist.site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+ * !&gt; Only ONE `junipermist.site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
  * 
  * ## Example Usage
  * 
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .dnsSuffixes("mycorp.com")
  *             .ntpServers("pool.ntp.org")
  *             .additionalConfigCmds(            
- *                 "set system hostnam test",
+ *                 "set system hostname test",
  *                 "set system services ssh root-login allow")
  *             .networks(Map.ofEntries(
  *                 Map.entry("network_one", Map.of("vlanId", 10)),
@@ -162,6 +162,12 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> additionalConfigCmds() {
         return Codegen.optional(this.additionalConfigCmds);
     }
+    @Export(name="autoUpgradeLinecard", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> autoUpgradeLinecard;
+
+    public Output<Boolean> autoUpgradeLinecard() {
+        return this.autoUpgradeLinecard;
+    }
     @Export(name="dhcpSnooping", refs={NetworktemplateDhcpSnooping.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateDhcpSnooping> dhcpSnooping;
 
@@ -210,9 +216,17 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> dnsSuffixes() {
         return Codegen.optional(this.dnsSuffixes);
     }
+    /**
+     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * 
+     */
     @Export(name="extraRoutes", refs={Map.class,String.class,NetworktemplateExtraRoutes.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplateExtraRoutes>> extraRoutes;
 
+    /**
+     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * 
+     */
     public Output<Optional<Map<String,NetworktemplateExtraRoutes>>> extraRoutes() {
         return Codegen.optional(this.extraRoutes);
     }
@@ -289,7 +303,7 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
     /**
      * Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      * 
      */
     @Export(name="portMirroring", refs={Map.class,String.class,NetworktemplatePortMirroring.class}, tree="[0,1,2]")
@@ -298,7 +312,7 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
     /**
      * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      * 
      */
     public Output<Optional<Map<String,NetworktemplatePortMirroring>>> portMirroring() {
@@ -353,14 +367,14 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
         return this.removeExistingConfigs;
     }
     /**
-     * Unique ID of the object instance in the Mist Organnization
+     * Unique ID of the object instance in the Mist Organization
      * 
      */
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     public Output<String> siteId() {
@@ -373,14 +387,14 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.snmpConfig);
     }
     /**
-     * Defines custom switch configuration based on different criterias
+     * Defines custom switch configuration based on different criteria
      * 
      */
     @Export(name="switchMatching", refs={NetworktemplateSwitchMatching.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateSwitchMatching> switchMatching;
 
     /**
-     * @return Defines custom switch configuration based on different criterias
+     * @return Defines custom switch configuration based on different criteria
      * 
      */
     public Output<Optional<NetworktemplateSwitchMatching>> switchMatching() {

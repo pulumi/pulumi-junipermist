@@ -21,14 +21,14 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
     public static final EvpnTopologyEvpnOptionsArgs Empty = new EvpnTopologyEvpnOptionsArgs();
 
     /**
-     * optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+     * Optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
      * 
      */
     @Import(name="autoLoopbackSubnet")
     private @Nullable Output<String> autoLoopbackSubnet;
 
     /**
-     * @return optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+     * @return Optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
      * 
      */
     public Optional<Output<String>> autoLoopbackSubnet() {
@@ -36,14 +36,14 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+     * Optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
      * 
      */
     @Import(name="autoLoopbackSubnet6")
     private @Nullable Output<String> autoLoopbackSubnet6;
 
     /**
-     * @return optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+     * @return Optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
      * 
      */
     public Optional<Output<String>> autoLoopbackSubnet6() {
@@ -51,14 +51,14 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+     * Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
      * 
      */
     @Import(name="autoRouterIdSubnet")
     private @Nullable Output<String> autoRouterIdSubnet;
 
     /**
-     * @return optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+     * @return Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
      * 
      */
     public Optional<Output<String>> autoRouterIdSubnet() {
@@ -66,14 +66,14 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+     * Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
      * 
      */
     @Import(name="autoRouterIdSubnet6")
     private @Nullable Output<String> autoRouterIdSubnet6;
 
     /**
-     * @return optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+     * @return Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
      * 
      */
     public Optional<Output<String>> autoRouterIdSubnet6() {
@@ -81,16 +81,14 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway
-     * when `routed_at` != `core`, whether to do virtual-gateway at core as well
+     * Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routed_at` != `core`, whether to do virtual-gateway at core as well
      * 
      */
     @Import(name="coreAsBorder")
     private @Nullable Output<Boolean> coreAsBorder;
 
     /**
-     * @return optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway
-     * when `routed_at` != `core`, whether to do virtual-gateway at core as well
+     * @return Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routed_at` != `core`, whether to do virtual-gateway at core as well
      * 
      */
     public Optional<Output<Boolean>> coreAsBorder() {
@@ -105,20 +103,33 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * by default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address&#39;s v4_mac
-     * if enabled, 00-00-5e-00-XX-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
+     * Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address&#39;s v4_mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
      * 
      */
     @Import(name="perVlanVgaV4Mac")
     private @Nullable Output<Boolean> perVlanVgaV4Mac;
 
     /**
-     * @return by default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address&#39;s v4_mac
-     * if enabled, 00-00-5e-00-XX-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
+     * @return Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address&#39;s v4_mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
      * 
      */
     public Optional<Output<Boolean>> perVlanVgaV4Mac() {
         return Optional.ofNullable(this.perVlanVgaV4Mac);
+    }
+
+    /**
+     * Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address&#39;s v6_mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
+     * 
+     */
+    @Import(name="perVlanVgaV6Mac")
+    private @Nullable Output<Boolean> perVlanVgaV6Mac;
+
+    /**
+     * @return Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address&#39;s v6_mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
+     * 
+     */
+    public Optional<Output<Boolean>> perVlanVgaV6Mac() {
+        return Optional.ofNullable(this.perVlanVgaV6Mac);
     }
 
     /**
@@ -144,14 +155,14 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * optional, for EX9200 only to seggregate virtual-switches
+     * Optional, for EX9200 only to segregate virtual-switches
      * 
      */
     @Import(name="vsInstances")
     private @Nullable Output<Map<String,EvpnTopologyEvpnOptionsVsInstancesArgs>> vsInstances;
 
     /**
-     * @return optional, for EX9200 only to seggregate virtual-switches
+     * @return Optional, for EX9200 only to segregate virtual-switches
      * 
      */
     public Optional<Output<Map<String,EvpnTopologyEvpnOptionsVsInstancesArgs>>> vsInstances() {
@@ -168,6 +179,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         this.coreAsBorder = $.coreAsBorder;
         this.overlay = $.overlay;
         this.perVlanVgaV4Mac = $.perVlanVgaV4Mac;
+        this.perVlanVgaV6Mac = $.perVlanVgaV6Mac;
         this.routedAt = $.routedAt;
         this.underlay = $.underlay;
         this.vsInstances = $.vsInstances;
@@ -192,7 +204,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autoLoopbackSubnet optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+         * @param autoLoopbackSubnet Optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
          * 
          * @return builder
          * 
@@ -203,7 +215,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autoLoopbackSubnet optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+         * @param autoLoopbackSubnet Optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
          * 
          * @return builder
          * 
@@ -213,7 +225,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autoLoopbackSubnet6 optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+         * @param autoLoopbackSubnet6 Optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
          * 
          * @return builder
          * 
@@ -224,7 +236,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autoLoopbackSubnet6 optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+         * @param autoLoopbackSubnet6 Optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
          * 
          * @return builder
          * 
@@ -234,7 +246,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autoRouterIdSubnet optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+         * @param autoRouterIdSubnet Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
          * 
          * @return builder
          * 
@@ -245,7 +257,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autoRouterIdSubnet optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+         * @param autoRouterIdSubnet Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
          * 
          * @return builder
          * 
@@ -255,7 +267,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autoRouterIdSubnet6 optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+         * @param autoRouterIdSubnet6 Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
          * 
          * @return builder
          * 
@@ -266,7 +278,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autoRouterIdSubnet6 optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+         * @param autoRouterIdSubnet6 Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
          * 
          * @return builder
          * 
@@ -276,8 +288,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param coreAsBorder optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway
-         * when `routed_at` != `core`, whether to do virtual-gateway at core as well
+         * @param coreAsBorder Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routed_at` != `core`, whether to do virtual-gateway at core as well
          * 
          * @return builder
          * 
@@ -288,8 +299,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param coreAsBorder optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway
-         * when `routed_at` != `core`, whether to do virtual-gateway at core as well
+         * @param coreAsBorder Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routed_at` != `core`, whether to do virtual-gateway at core as well
          * 
          * @return builder
          * 
@@ -308,8 +318,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param perVlanVgaV4Mac by default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address&#39;s v4_mac
-         * if enabled, 00-00-5e-00-XX-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
+         * @param perVlanVgaV4Mac Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address&#39;s v4_mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
          * 
          * @return builder
          * 
@@ -320,14 +329,34 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param perVlanVgaV4Mac by default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address&#39;s v4_mac
-         * if enabled, 00-00-5e-00-XX-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
+         * @param perVlanVgaV4Mac Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address&#39;s v4_mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
          * 
          * @return builder
          * 
          */
         public Builder perVlanVgaV4Mac(Boolean perVlanVgaV4Mac) {
             return perVlanVgaV4Mac(Output.of(perVlanVgaV4Mac));
+        }
+
+        /**
+         * @param perVlanVgaV6Mac Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address&#39;s v6_mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perVlanVgaV6Mac(@Nullable Output<Boolean> perVlanVgaV6Mac) {
+            $.perVlanVgaV6Mac = perVlanVgaV6Mac;
+            return this;
+        }
+
+        /**
+         * @param perVlanVgaV6Mac Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address&#39;s v6_mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perVlanVgaV6Mac(Boolean perVlanVgaV6Mac) {
+            return perVlanVgaV6Mac(Output.of(perVlanVgaV6Mac));
         }
 
         /**
@@ -361,7 +390,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vsInstances optional, for EX9200 only to seggregate virtual-switches
+         * @param vsInstances Optional, for EX9200 only to segregate virtual-switches
          * 
          * @return builder
          * 
@@ -372,7 +401,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vsInstances optional, for EX9200 only to seggregate virtual-switches
+         * @param vsInstances Optional, for EX9200 only to segregate virtual-switches
          * 
          * @return builder
          * 

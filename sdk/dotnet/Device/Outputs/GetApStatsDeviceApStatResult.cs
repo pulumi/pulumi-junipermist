@@ -20,16 +20,23 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly bool ConfigReverted;
         public readonly int CpuSystem;
         public readonly int CpuUtil;
-        public readonly int CreatedTime;
+        /// <summary>
+        /// When the object has been created, in epoch
+        /// </summary>
+        public readonly double CreatedTime;
         public readonly string DeviceprofileId;
         /// <summary>
-        /// device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
+        /// Device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
         /// </summary>
         public readonly Outputs.GetApStatsDeviceApStatEnvStatResult EnvStat;
         public readonly Outputs.GetApStatsDeviceApStatEslStatResult EslStat;
         public readonly string ExtIp;
         public readonly Outputs.GetApStatsDeviceApStatFwupdateResult Fwupdate;
+        public readonly Outputs.GetApStatsDeviceApStatGpsResult Gps;
         public readonly string HwRev;
+        /// <summary>
+        /// Unique ID of the object instance in the Mist Organization
+        /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<int> InactiveWiredVlans;
         public readonly ImmutableDictionary<string, Outputs.GetApStatsDeviceApStatIotStatResult> IotStat;
@@ -40,15 +47,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly Outputs.GetApStatsDeviceApStatIpConfigResult IpConfig;
         public readonly Outputs.GetApStatsDeviceApStatIpStatResult IpStat;
         /// <summary>
-        /// l2tp tunnel status (key is the wxtunnel*id)
+        /// L2TP tunnel status (key is the wxtunnel_id)
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetApStatsDeviceApStatL2tpStatResult> L2tpStat;
         /// <summary>
-        /// last seen timestamp
+        /// Last seen timestamp
         /// </summary>
         public readonly double LastSeen;
         /// <summary>
-        /// last trouble code of switch
+        /// Last trouble code of switch
         /// </summary>
         public readonly Outputs.GetApStatsDeviceApStatLastTroubleResult LastTrouble;
         /// <summary>
@@ -61,47 +68,54 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly Outputs.GetApStatsDeviceApStatLldpStatResult LldpStat;
         public readonly bool Locating;
         /// <summary>
-        /// whether this AP is considered locked (placement / orientation has been vetted)
+        /// Whether this AP is considered locked (placement / orientation has been vetted)
         /// </summary>
         public readonly bool Locked;
         /// <summary>
-        /// device mac
+        /// Device mac
         /// </summary>
         public readonly string Mac;
         public readonly string MapId;
         public readonly int MemUsedKb;
         /// <summary>
-        /// Property key is the mesh downlink id (e.g `00000000-0000-0000-1000-5c5b35000010`)
+        /// Property key is the mesh downlink id (e.g. `00000000-0000-0000-1000-5c5b35000010`)
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetApStatsDeviceApStatMeshDownlinksResult> MeshDownlinks;
         public readonly Outputs.GetApStatsDeviceApStatMeshUplinkResult MeshUplink;
         /// <summary>
-        /// device model
+        /// Device model
         /// </summary>
         public readonly string Model;
-        public readonly int ModifiedTime;
+        /// <summary>
+        /// When the object has been modified for the last time, in epoch
+        /// </summary>
+        public readonly double ModifiedTime;
         public readonly string Mount;
         public readonly string Name;
         public readonly string Notes;
         /// <summary>
-        /// how many wireless clients are currently connected
+        /// How many wireless clients are currently connected
         /// </summary>
         public readonly int NumClients;
+        /// <summary>
+        /// How many WLANs are applied to the device
+        /// </summary>
+        public readonly int NumWlans;
         public readonly string OrgId;
         /// <summary>
         /// Property key is the port name (e.g. `eth0`)
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetApStatsDeviceApStatPortStatResult> PortStat;
         /// <summary>
-        /// in mW, surplus if positive or deficit if negative
+        /// In mW, surplus if positive or deficit if negative
         /// </summary>
         public readonly int PowerBudget;
         /// <summary>
-        /// whether insufficient power
+        /// Whether insufficient power
         /// </summary>
         public readonly bool PowerConstrained;
         /// <summary>
-        /// constrained mode
+        /// Constrained mode
         /// </summary>
         public readonly string PowerOpmode;
         /// <summary>
@@ -109,21 +123,39 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string PowerSrc;
         public readonly Outputs.GetApStatsDeviceApStatRadioStatResult RadioStat;
-        public readonly double RxBps;
+        /// <summary>
+        /// Rate of receiving traffic, bits/seconds, last known
+        /// </summary>
+        public readonly int RxBps;
+        /// <summary>
+        /// Amount of traffic received since connection
+        /// </summary>
         public readonly int RxBytes;
+        /// <summary>
+        /// Amount of packets received since connection
+        /// </summary>
         public readonly int RxPkts;
         /// <summary>
-        /// serial
+        /// Serial Number
         /// </summary>
         public readonly string Serial;
         public readonly string SiteId;
         public readonly string Status;
         public readonly Outputs.GetApStatsDeviceApStatSwitchRedundancyResult SwitchRedundancy;
-        public readonly double TxBps;
-        public readonly double TxBytes;
-        public readonly double TxPkts;
         /// <summary>
-        /// how long, in seconds, has the device been up (or rebooted)
+        /// Rate of transmitting traffic, bits/seconds, last known
+        /// </summary>
+        public readonly int TxBps;
+        /// <summary>
+        /// Amount of traffic sent since connection
+        /// </summary>
+        public readonly int TxBytes;
+        /// <summary>
+        /// Amount of packets sent since connection
+        /// </summary>
+        public readonly int TxPkts;
+        /// <summary>
+        /// How long, in seconds, has the device been up (or rebooted)
         /// </summary>
         public readonly double Uptime;
         public readonly Outputs.GetApStatsDeviceApStatUsbStatResult UsbStat;
@@ -147,7 +179,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             int cpuUtil,
 
-            int createdTime,
+            double createdTime,
 
             string deviceprofileId,
 
@@ -158,6 +190,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
             string extIp,
 
             Outputs.GetApStatsDeviceApStatFwupdateResult fwupdate,
+
+            Outputs.GetApStatsDeviceApStatGpsResult gps,
 
             string hwRev,
 
@@ -199,7 +233,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string model,
 
-            int modifiedTime,
+            double modifiedTime,
 
             string mount,
 
@@ -208,6 +242,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
             string notes,
 
             int numClients,
+
+            int numWlans,
 
             string orgId,
 
@@ -223,7 +259,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             Outputs.GetApStatsDeviceApStatRadioStatResult radioStat,
 
-            double rxBps,
+            int rxBps,
 
             int rxBytes,
 
@@ -237,11 +273,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             Outputs.GetApStatsDeviceApStatSwitchRedundancyResult switchRedundancy,
 
-            double txBps,
+            int txBps,
 
-            double txBytes,
+            int txBytes,
 
-            double txPkts,
+            int txPkts,
 
             double uptime,
 
@@ -266,6 +302,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             EslStat = eslStat;
             ExtIp = extIp;
             Fwupdate = fwupdate;
+            Gps = gps;
             HwRev = hwRev;
             Id = id;
             InactiveWiredVlans = inactiveWiredVlans;
@@ -291,6 +328,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             Name = name;
             Notes = notes;
             NumClients = numClients;
+            NumWlans = numWlans;
             OrgId = orgId;
             PortStat = portStat;
             PowerBudget = powerBudget;

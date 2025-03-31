@@ -16,6 +16,13 @@ public final class SettingMxedgeMgmtArgs extends com.pulumi.resources.ResourceAr
 
     public static final SettingMxedgeMgmtArgs Empty = new SettingMxedgeMgmtArgs();
 
+    @Import(name="configAutoRevert")
+    private @Nullable Output<Boolean> configAutoRevert;
+
+    public Optional<Output<Boolean>> configAutoRevert() {
+        return Optional.ofNullable(this.configAutoRevert);
+    }
+
     @Import(name="fipsEnabled")
     private @Nullable Output<Boolean> fipsEnabled;
 
@@ -70,6 +77,7 @@ public final class SettingMxedgeMgmtArgs extends com.pulumi.resources.ResourceAr
     private SettingMxedgeMgmtArgs() {}
 
     private SettingMxedgeMgmtArgs(SettingMxedgeMgmtArgs $) {
+        this.configAutoRevert = $.configAutoRevert;
         this.fipsEnabled = $.fipsEnabled;
         this.mistPassword = $.mistPassword;
         this.oobIpType = $.oobIpType;
@@ -93,6 +101,15 @@ public final class SettingMxedgeMgmtArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(SettingMxedgeMgmtArgs defaults) {
             $ = new SettingMxedgeMgmtArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder configAutoRevert(@Nullable Output<Boolean> configAutoRevert) {
+            $.configAutoRevert = configAutoRevert;
+            return this;
+        }
+
+        public Builder configAutoRevert(Boolean configAutoRevert) {
+            return configAutoRevert(Output.of(configAutoRevert));
         }
 
         public Builder fipsEnabled(@Nullable Output<Boolean> fipsEnabled) {

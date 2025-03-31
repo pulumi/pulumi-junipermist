@@ -12,6 +12,18 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class ApMeshArgs : global::Pulumi.ResourceArgs
     {
+        [Input("bands")]
+        private InputList<string>? _bands;
+
+        /// <summary>
+        /// List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+        /// </summary>
+        public InputList<string> Bands
+        {
+            get => _bands ?? (_bands = new InputList<string>());
+            set => _bands = value;
+        }
+
         /// <summary>
         /// Whether mesh is enabled on this AP
         /// </summary>

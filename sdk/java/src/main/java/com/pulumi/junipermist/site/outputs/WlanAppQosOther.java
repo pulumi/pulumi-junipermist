@@ -4,7 +4,6 @@
 package com.pulumi.junipermist.site.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,14 +11,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class WlanAppQosOther {
-    private @Nullable Integer dscp;
+    private @Nullable String dscp;
     private @Nullable String dstSubnet;
     private @Nullable String portRanges;
     private @Nullable String protocol;
     private @Nullable String srcSubnet;
 
     private WlanAppQosOther() {}
-    public Optional<Integer> dscp() {
+    public Optional<String> dscp() {
         return Optional.ofNullable(this.dscp);
     }
     public Optional<String> dstSubnet() {
@@ -44,7 +43,7 @@ public final class WlanAppQosOther {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer dscp;
+        private @Nullable String dscp;
         private @Nullable String dstSubnet;
         private @Nullable String portRanges;
         private @Nullable String protocol;
@@ -60,7 +59,7 @@ public final class WlanAppQosOther {
         }
 
         @CustomType.Setter
-        public Builder dscp(@Nullable Integer dscp) {
+        public Builder dscp(@Nullable String dscp) {
 
             this.dscp = dscp;
             return this;

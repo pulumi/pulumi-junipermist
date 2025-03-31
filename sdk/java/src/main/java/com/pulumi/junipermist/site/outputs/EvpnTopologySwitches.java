@@ -19,14 +19,14 @@ public final class EvpnTopologySwitches {
     private @Nullable String mac;
     private @Nullable String model;
     /**
-     * @return optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
+     * @return Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
      *   * for CLOS, to group dist / access switches into pods
      *   * for ERB/CRB, to group dist / esilag-access into pods
      * 
      */
     private @Nullable Integer pod;
     /**
-     * @return by default, core switches are assumed to be connecting all pods.
+     * @return By default, core switches are assumed to be connecting all pods.
      * if you want to limit the pods, you can specify pods.
      * 
      */
@@ -53,7 +53,7 @@ public final class EvpnTopologySwitches {
         return Optional.ofNullable(this.model);
     }
     /**
-     * @return optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
+     * @return Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
      *   * for CLOS, to group dist / access switches into pods
      *   * for ERB/CRB, to group dist / esilag-access into pods
      * 
@@ -62,7 +62,7 @@ public final class EvpnTopologySwitches {
         return Optional.ofNullable(this.pod);
     }
     /**
-     * @return by default, core switches are assumed to be connecting all pods.
+     * @return By default, core switches are assumed to be connecting all pods.
      * if you want to limit the pods, you can specify pods.
      * 
      */

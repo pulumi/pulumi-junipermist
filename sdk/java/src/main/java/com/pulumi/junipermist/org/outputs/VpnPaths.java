@@ -4,8 +4,12 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.junipermist.org.outputs.VpnPathsPeerPaths;
+import com.pulumi.junipermist.org.outputs.VpnPathsTrafficShaping;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,11 +22,22 @@ public final class VpnPaths {
      */
     private @Nullable String bfdProfile;
     /**
-     * @return if different from the wan port
+     * @return If `type`==`mesh` and for SSR only, whether toi use tunnel mode
+     * 
+     */
+    private @Nullable Boolean bfdUseTunnelMode;
+    /**
+     * @return If different from the wan port
      * 
      */
     private @Nullable String ip;
+    /**
+     * @return If `type`==`mesh`, Property key is the Peer Interface name
+     * 
+     */
+    private @Nullable Map<String,VpnPathsPeerPaths> peerPaths;
     private @Nullable Integer pod;
+    private @Nullable VpnPathsTrafficShaping trafficShaping;
 
     private VpnPaths() {}
     /**
@@ -33,14 +48,31 @@ public final class VpnPaths {
         return Optional.ofNullable(this.bfdProfile);
     }
     /**
-     * @return if different from the wan port
+     * @return If `type`==`mesh` and for SSR only, whether toi use tunnel mode
+     * 
+     */
+    public Optional<Boolean> bfdUseTunnelMode() {
+        return Optional.ofNullable(this.bfdUseTunnelMode);
+    }
+    /**
+     * @return If different from the wan port
      * 
      */
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
+    /**
+     * @return If `type`==`mesh`, Property key is the Peer Interface name
+     * 
+     */
+    public Map<String,VpnPathsPeerPaths> peerPaths() {
+        return this.peerPaths == null ? Map.of() : this.peerPaths;
+    }
     public Optional<Integer> pod() {
         return Optional.ofNullable(this.pod);
+    }
+    public Optional<VpnPathsTrafficShaping> trafficShaping() {
+        return Optional.ofNullable(this.trafficShaping);
     }
 
     public static Builder builder() {
@@ -53,14 +85,20 @@ public final class VpnPaths {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String bfdProfile;
+        private @Nullable Boolean bfdUseTunnelMode;
         private @Nullable String ip;
+        private @Nullable Map<String,VpnPathsPeerPaths> peerPaths;
         private @Nullable Integer pod;
+        private @Nullable VpnPathsTrafficShaping trafficShaping;
         public Builder() {}
         public Builder(VpnPaths defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bfdProfile = defaults.bfdProfile;
+    	      this.bfdUseTunnelMode = defaults.bfdUseTunnelMode;
     	      this.ip = defaults.ip;
+    	      this.peerPaths = defaults.peerPaths;
     	      this.pod = defaults.pod;
+    	      this.trafficShaping = defaults.trafficShaping;
         }
 
         @CustomType.Setter
@@ -70,9 +108,21 @@ public final class VpnPaths {
             return this;
         }
         @CustomType.Setter
+        public Builder bfdUseTunnelMode(@Nullable Boolean bfdUseTunnelMode) {
+
+            this.bfdUseTunnelMode = bfdUseTunnelMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ip(@Nullable String ip) {
 
             this.ip = ip;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder peerPaths(@Nullable Map<String,VpnPathsPeerPaths> peerPaths) {
+
+            this.peerPaths = peerPaths;
             return this;
         }
         @CustomType.Setter
@@ -81,11 +131,20 @@ public final class VpnPaths {
             this.pod = pod;
             return this;
         }
+        @CustomType.Setter
+        public Builder trafficShaping(@Nullable VpnPathsTrafficShaping trafficShaping) {
+
+            this.trafficShaping = trafficShaping;
+            return this;
+        }
         public VpnPaths build() {
             final var _resultValue = new VpnPaths();
             _resultValue.bfdProfile = bfdProfile;
+            _resultValue.bfdUseTunnelMode = bfdUseTunnelMode;
             _resultValue.ip = ip;
+            _resultValue.peerPaths = peerPaths;
             _resultValue.pod = pod;
+            _resultValue.trafficShaping = trafficShaping;
             return _resultValue;
         }
     }

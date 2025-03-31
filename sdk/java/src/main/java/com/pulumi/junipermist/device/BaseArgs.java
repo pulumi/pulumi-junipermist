@@ -64,14 +64,14 @@ public final class BaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * country code for the site (for AP config generation), in two-character
+     * Country code for the site (for AP config generation), in two-character
      * 
      */
     @Import(name="countryCode")
     private @Nullable Output<String> countryCode;
 
     /**
-     * @return country code for the site (for AP config generation), in two-character
+     * @return Country code for the site (for AP config generation), in two-character
      * 
      */
     public Optional<Output<String>> countryCode() {
@@ -123,14 +123,14 @@ public final class BaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * optional, any notes about the site
+     * Optional, any notes about the site
      * 
      */
     @Import(name="notes")
     private @Nullable Output<String> notes;
 
     /**
-     * @return optional, any notes about the site
+     * @return Optional, any notes about the site
      * 
      */
     public Optional<Output<String>> notes() {
@@ -175,14 +175,14 @@ public final class BaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * sitegroups this site belongs to
+     * Sitegroups this site belongs to
      * 
      */
     @Import(name="sitegroupIds")
     private @Nullable Output<List<String>> sitegroupIds;
 
     /**
-     * @return sitegroups this site belongs to
+     * @return Sitegroups this site belongs to
      * 
      */
     public Optional<Output<List<String>>> sitegroupIds() {
@@ -321,7 +321,7 @@ public final class BaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param countryCode country code for the site (for AP config generation), in two-character
+         * @param countryCode Country code for the site (for AP config generation), in two-character
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class BaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param countryCode country code for the site (for AP config generation), in two-character
+         * @param countryCode Country code for the site (for AP config generation), in two-character
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class BaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notes optional, any notes about the site
+         * @param notes Optional, any notes about the site
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class BaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notes optional, any notes about the site
+         * @param notes Optional, any notes about the site
          * 
          * @return builder
          * 
@@ -474,7 +474,7 @@ public final class BaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sitegroupIds sitegroups this site belongs to
+         * @param sitegroupIds Sitegroups this site belongs to
          * 
          * @return builder
          * 
@@ -485,7 +485,7 @@ public final class BaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sitegroupIds sitegroups this site belongs to
+         * @param sitegroupIds Sitegroups this site belongs to
          * 
          * @return builder
          * 
@@ -495,7 +495,7 @@ public final class BaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sitegroupIds sitegroups this site belongs to
+         * @param sitegroupIds Sitegroups this site belongs to
          * 
          * @return builder
          * 

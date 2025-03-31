@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * This resource manages NAC Tags (Auth Policy Labels).
  *
- * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+ * The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
  *
  * ## Example Usage
  *
@@ -70,10 +70,7 @@ export class Nactag extends pulumi.CustomResource {
      * If `type`==`egressVlanNames`, list of egress vlans to return
      */
     public readonly egressVlanNames!: pulumi.Output<string[] | undefined>;
-    /**
-     * If `type`==`gbpTag`
-     */
-    public readonly gbpTag!: pulumi.Output<number | undefined>;
+    public readonly gbpTag!: pulumi.Output<string | undefined>;
     /**
      * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
      * `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
@@ -194,10 +191,7 @@ export interface NactagState {
      * If `type`==`egressVlanNames`, list of egress vlans to return
      */
     egressVlanNames?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * If `type`==`gbpTag`
-     */
-    gbpTag?: pulumi.Input<number>;
+    gbpTag?: pulumi.Input<string>;
     /**
      * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
      * `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
@@ -262,10 +256,7 @@ export interface NactagArgs {
      * If `type`==`egressVlanNames`, list of egress vlans to return
      */
     egressVlanNames?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * If `type`==`gbpTag`
-     */
-    gbpTag?: pulumi.Input<number>;
+    gbpTag?: pulumi.Input<string>;
     /**
      * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
      * `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`

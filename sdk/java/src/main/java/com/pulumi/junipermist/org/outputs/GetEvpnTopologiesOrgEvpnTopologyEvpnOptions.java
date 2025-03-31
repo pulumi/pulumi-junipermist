@@ -16,36 +16,41 @@ import java.util.Objects;
 @CustomType
 public final class GetEvpnTopologiesOrgEvpnTopologyEvpnOptions {
     /**
-     * @return optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
+     * @return Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
      * 
      */
     private String autoLoopbackSubnet;
     /**
-     * @return optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
+     * @return Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
      * 
      */
     private String autoLoopbackSubnet6;
     /**
-     * @return optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+     * @return Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
      * 
      */
     private String autoRouterIdSubnet;
     /**
-     * @return optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+     * @return Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
      * 
      */
     private String autoRouterIdSubnet6;
     /**
-     * @return optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routed_at` != `core`, whether to do virtual-gateway at core as well
+     * @return Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routed_at` != `core`, whether to do virtual-gateway at core as well
      * 
      */
     private Boolean coreAsBorder;
     private GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay overlay;
     /**
-     * @return only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address&#39;s v4*mac. If enabled, 00-00-5e-00-XX-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)&#39;
+     * @return Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address&#39;s v4*mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
      * 
      */
     private Boolean perVlanVgaV4Mac;
+    /**
+     * @return Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address&#39;s v6*mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
+     * 
+     */
+    private Boolean perVlanVgaV6Mac;
     /**
      * @return optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
      * 
@@ -53,42 +58,42 @@ public final class GetEvpnTopologiesOrgEvpnTopologyEvpnOptions {
     private String routedAt;
     private GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay underlay;
     /**
-     * @return optional, for EX9200 only to seggregate virtual-switches
+     * @return Optional, for EX9200 only to segregate virtual-switches
      * 
      */
     private Map<String,GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances> vsInstances;
 
     private GetEvpnTopologiesOrgEvpnTopologyEvpnOptions() {}
     /**
-     * @return optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
+     * @return Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
      * 
      */
     public String autoLoopbackSubnet() {
         return this.autoLoopbackSubnet;
     }
     /**
-     * @return optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
+     * @return Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
      * 
      */
     public String autoLoopbackSubnet6() {
         return this.autoLoopbackSubnet6;
     }
     /**
-     * @return optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+     * @return Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
      * 
      */
     public String autoRouterIdSubnet() {
         return this.autoRouterIdSubnet;
     }
     /**
-     * @return optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+     * @return Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
      * 
      */
     public String autoRouterIdSubnet6() {
         return this.autoRouterIdSubnet6;
     }
     /**
-     * @return optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routed_at` != `core`, whether to do virtual-gateway at core as well
+     * @return Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routed_at` != `core`, whether to do virtual-gateway at core as well
      * 
      */
     public Boolean coreAsBorder() {
@@ -98,11 +103,18 @@ public final class GetEvpnTopologiesOrgEvpnTopologyEvpnOptions {
         return this.overlay;
     }
     /**
-     * @return only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address&#39;s v4*mac. If enabled, 00-00-5e-00-XX-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)&#39;
+     * @return Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address&#39;s v4*mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
      * 
      */
     public Boolean perVlanVgaV4Mac() {
         return this.perVlanVgaV4Mac;
+    }
+    /**
+     * @return Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address&#39;s v6*mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
+     * 
+     */
+    public Boolean perVlanVgaV6Mac() {
+        return this.perVlanVgaV6Mac;
     }
     /**
      * @return optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
@@ -115,7 +127,7 @@ public final class GetEvpnTopologiesOrgEvpnTopologyEvpnOptions {
         return this.underlay;
     }
     /**
-     * @return optional, for EX9200 only to seggregate virtual-switches
+     * @return Optional, for EX9200 only to segregate virtual-switches
      * 
      */
     public Map<String,GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances> vsInstances() {
@@ -138,6 +150,7 @@ public final class GetEvpnTopologiesOrgEvpnTopologyEvpnOptions {
         private Boolean coreAsBorder;
         private GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay overlay;
         private Boolean perVlanVgaV4Mac;
+        private Boolean perVlanVgaV6Mac;
         private String routedAt;
         private GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay underlay;
         private Map<String,GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances> vsInstances;
@@ -151,6 +164,7 @@ public final class GetEvpnTopologiesOrgEvpnTopologyEvpnOptions {
     	      this.coreAsBorder = defaults.coreAsBorder;
     	      this.overlay = defaults.overlay;
     	      this.perVlanVgaV4Mac = defaults.perVlanVgaV4Mac;
+    	      this.perVlanVgaV6Mac = defaults.perVlanVgaV6Mac;
     	      this.routedAt = defaults.routedAt;
     	      this.underlay = defaults.underlay;
     	      this.vsInstances = defaults.vsInstances;
@@ -213,6 +227,14 @@ public final class GetEvpnTopologiesOrgEvpnTopologyEvpnOptions {
             return this;
         }
         @CustomType.Setter
+        public Builder perVlanVgaV6Mac(Boolean perVlanVgaV6Mac) {
+            if (perVlanVgaV6Mac == null) {
+              throw new MissingRequiredPropertyException("GetEvpnTopologiesOrgEvpnTopologyEvpnOptions", "perVlanVgaV6Mac");
+            }
+            this.perVlanVgaV6Mac = perVlanVgaV6Mac;
+            return this;
+        }
+        @CustomType.Setter
         public Builder routedAt(String routedAt) {
             if (routedAt == null) {
               throw new MissingRequiredPropertyException("GetEvpnTopologiesOrgEvpnTopologyEvpnOptions", "routedAt");
@@ -245,6 +267,7 @@ public final class GetEvpnTopologiesOrgEvpnTopologyEvpnOptions {
             _resultValue.coreAsBorder = coreAsBorder;
             _resultValue.overlay = overlay;
             _resultValue.perVlanVgaV4Mac = perVlanVgaV4Mac;
+            _resultValue.perVlanVgaV6Mac = perVlanVgaV6Mac;
             _resultValue.routedAt = routedAt;
             _resultValue.underlay = underlay;
             _resultValue.vsInstances = vsInstances;

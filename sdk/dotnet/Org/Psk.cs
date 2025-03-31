@@ -76,13 +76,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<int?> ExpiryNotificationTime { get; private set; } = null!;
 
         /// <summary>
-        /// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        /// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         /// </summary>
         [Output("mac")]
         public Output<string?> Mac { get; private set; } = null!;
 
         /// <summary>
-        /// if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+        /// If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
         /// </summary>
         [Output("macs")]
         public Output<ImmutableArray<string>> Macs { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? ExpiryNotificationTime { get; set; }
 
         /// <summary>
-        /// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        /// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
@@ -224,7 +224,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _macs;
 
         /// <summary>
-        /// if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+        /// If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
         /// </summary>
         public InputList<string> Macs
         {
@@ -336,7 +336,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? ExpiryNotificationTime { get; set; }
 
         /// <summary>
-        /// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        /// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
@@ -345,7 +345,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _macs;
 
         /// <summary>
-        /// if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+        /// If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
         /// </summary>
         public InputList<string> Macs
         {

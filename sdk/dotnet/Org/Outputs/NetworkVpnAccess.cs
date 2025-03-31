@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NetworkVpnAccess
     {
         /// <summary>
-        /// if `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
+        /// If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
         /// </summary>
         public readonly string? AdvertisedSubnet;
         /// <summary>
-        /// whether to allow ping from vpn into this routed network
+        /// Whether to allow ping from vpn into this routed network
         /// </summary>
         public readonly bool? AllowPing;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworkVpnAccessDestinationNat>? DestinationNat;
         /// <summary>
-        /// if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+        /// If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
         /// </summary>
         public readonly string? NatPool;
         /// <summary>
@@ -38,21 +38,19 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? NoReadvertiseToLanOspf;
         /// <summary>
-        /// toward overlay
-        /// how HUB should deal with routes it received from Spokes
+        /// toward overlay, how HUB should deal with routes it received from Spokes
         /// </summary>
         public readonly bool? NoReadvertiseToOverlay;
         /// <summary>
-        /// by default, the routes are only readvertised toward the same vrf on spoke
-        /// to allow it to be leaked to other vrfs
+        /// By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
         /// </summary>
         public readonly ImmutableArray<string> OtherVrfs;
         /// <summary>
-        /// whether this network is routable
+        /// Whether this network is routable
         /// </summary>
         public readonly bool? Routed;
         /// <summary>
-        /// if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+        /// If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
         /// </summary>
         public readonly Outputs.NetworkVpnAccessSourceNat? SourceNat;
         /// <summary>
@@ -60,8 +58,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworkVpnAccessStaticNat>? StaticNat;
         /// <summary>
-        /// toward overlay
-        /// how HUB should deal with routes it received from Spokes
+        /// toward overlay, how HUB should deal with routes it received from Spokes
         /// </summary>
         public readonly string? SummarizedSubnet;
         /// <summary>

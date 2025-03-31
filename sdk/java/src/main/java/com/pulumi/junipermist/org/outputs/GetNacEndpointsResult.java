@@ -20,12 +20,12 @@ public final class GetNacEndpointsResult {
      */
     private String id;
     /**
-     * @return optional, array of strings of labels
+     * @return Optional, array of strings of labels
      * 
      */
     private @Nullable List<String> labels;
     /**
-     * @return partial/full MAC addres
+     * @return Partial/full MAC address
      * 
      */
     private @Nullable String mac;
@@ -41,14 +41,14 @@ public final class GetNacEndpointsResult {
         return this.id;
     }
     /**
-     * @return optional, array of strings of labels
+     * @return Optional, array of strings of labels
      * 
      */
     public List<String> labels() {
         return this.labels == null ? List.of() : this.labels;
     }
     /**
-     * @return partial/full MAC addres
+     * @return Partial/full MAC address
      * 
      */
     public Optional<String> mac() {

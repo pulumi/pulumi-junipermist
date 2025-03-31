@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * This resource manages the Org WxLan tags (labels).
  * 
- * A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used
+ * A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions. They can be used
  * * within the Org WxRules to create filtering rules:
  *   * `mist_org_wxrule.dst_allow_wxtags`
  *   * `mist_org_wxrule.dst_deny_wxtags`
@@ -56,9 +56,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var wtagOne = new Wxtag("wtagOne", WxtagArgs.builder()
+ *         var wxtagOne = new Wxtag("wxtagOne", WxtagArgs.builder()
  *             .orgId(terraformTest.id())
- *             .name("wtag_one")
+ *             .name("wxtag_one")
  *             .values("10.3.0.0/16")
  *             .op("in")
  *             .type("match")
@@ -85,14 +85,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/wxtag:Wxtag")
 public class Wxtag extends com.pulumi.resources.CustomResource {
     /**
-     * if `type`==`client`, Client MAC Address
+     * If `type`==`client`, Client MAC Address
      * 
      */
     @Export(name="mac", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mac;
 
     /**
-     * @return if `type`==`client`, Client MAC Address
+     * @return If `type`==`client`, Client MAC Address
      * 
      */
     public Output<Optional<String>> mac() {
@@ -149,14 +149,14 @@ public class Wxtag extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * if `type`==`spec`
+     * If `type`==`spec`
      * 
      */
     @Export(name="specs", refs={List.class,WxtagSpec.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WxtagSpec>> specs;
 
     /**
-     * @return if `type`==`spec`
+     * @return If `type`==`spec`
      * 
      */
     public Output<Optional<List<WxtagSpec>>> specs() {
@@ -177,13 +177,13 @@ public class Wxtag extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
+     * Required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
      * `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
      * `match`==`hostname`: list of Resources Hostnames * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs *
      * `match`==`psk_name`: list of PSK Names * `match`==`psk_role`: list of PSK Roles * `match`==`port`: list of Ports or Port
-     * Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ “6=1”, “26=10.2.3.4” ], this
-     * support other RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches
-     * the ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
+     * Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ &#34;6=1&#34;, &#34;26=10.2.3.4&#34; ], this support other
+     * RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches the
+     * ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
      * Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1) *
      * `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1) * `match`==`sdkclient_uuid`:
      * list of SDK UUIDs * `match`==`wlan_id`: list of WLAN IDs **Notes**: Variables are not allowed
@@ -193,13 +193,13 @@ public class Wxtag extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> values;
 
     /**
-     * @return required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
+     * @return Required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
      * `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
      * `match`==`hostname`: list of Resources Hostnames * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs *
      * `match`==`psk_name`: list of PSK Names * `match`==`psk_role`: list of PSK Roles * `match`==`port`: list of Ports or Port
-     * Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ “6=1”, “26=10.2.3.4” ], this
-     * support other RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches
-     * the ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
+     * Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ &#34;6=1&#34;, &#34;26=10.2.3.4&#34; ], this support other
+     * RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches the
+     * ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
      * Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1) *
      * `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1) * `match`==`sdkclient_uuid`:
      * list of SDK UUIDs * `match`==`wlan_id`: list of WLAN IDs **Notes**: Variables are not allowed

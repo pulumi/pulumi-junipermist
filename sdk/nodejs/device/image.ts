@@ -44,6 +44,9 @@ export class Image extends pulumi.CustomResource {
      * path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
      */
     public readonly file!: pulumi.Output<string>;
+    /**
+     * number of the image, between 1 and 3
+     */
     public readonly imageNumber!: pulumi.Output<number>;
     public readonly siteId!: pulumi.Output<string>;
 
@@ -97,6 +100,9 @@ export interface ImageState {
      * path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
      */
     file?: pulumi.Input<string>;
+    /**
+     * number of the image, between 1 and 3
+     */
     imageNumber?: pulumi.Input<number>;
     siteId?: pulumi.Input<string>;
 }
@@ -110,6 +116,9 @@ export interface ImageArgs {
      * path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
      */
     file: pulumi.Input<string>;
+    /**
+     * number of the image, between 1 and 3
+     */
     imageNumber: pulumi.Input<number>;
     siteId: pulumi.Input<string>;
 }

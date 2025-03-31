@@ -31,7 +31,7 @@ public final class GetWlansOrgWlanAcctServer {
      */
     private Integer port;
     /**
-     * @return Secretof RADIUS server
+     * @return Secret of RADIUS server
      * 
      */
     private String secret;
@@ -68,7 +68,7 @@ public final class GetWlansOrgWlanAcctServer {
         return this.port;
     }
     /**
-     * @return Secretof RADIUS server
+     * @return Secret of RADIUS server
      * 
      */
     public String secret() {

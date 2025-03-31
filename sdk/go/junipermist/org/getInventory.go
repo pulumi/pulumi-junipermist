@@ -59,14 +59,16 @@ func LookupInventory(ctx *pulumi.Context, args *LookupInventoryArgs, opts ...pul
 type LookupInventoryArgs struct {
 	// MAC address
 	Mac *string `pulumi:"mac"`
-	// device model
+	// Device model
 	Model *string `pulumi:"model"`
 	OrgId string  `pulumi:"orgId"`
-	// device serial
+	// Device serial
 	Serial *string `pulumi:"serial"`
-	// site id if assigned, null if not assigned
+	// Site id if assigned, null if not assigned
 	SiteId *string `pulumi:"siteId"`
-	// to display Unassigned devices
+	// enum: `ap`, `gateway`, `switch`
+	Type *string `pulumi:"type"`
+	// To display Unassigned devices
 	Unassigned *bool `pulumi:"unassigned"`
 	// To display Virtual Chassis members
 	Vc *bool `pulumi:"vc"`
@@ -80,16 +82,17 @@ type LookupInventoryResult struct {
 	Id string `pulumi:"id"`
 	// MAC address
 	Mac *string `pulumi:"mac"`
-	// device model
-	Model *string `pulumi:"model"`
-	OrgId string  `pulumi:"orgId"`
-	// List of devices
+	// Device model
+	Model          *string                    `pulumi:"model"`
+	OrgId          string                     `pulumi:"orgId"`
 	OrgInventories []GetInventoryOrgInventory `pulumi:"orgInventories"`
-	// device serial
+	// Device serial
 	Serial *string `pulumi:"serial"`
-	// site id if assigned, null if not assigned
+	// Site id if assigned, null if not assigned
 	SiteId *string `pulumi:"siteId"`
-	// to display Unassigned devices
+	// enum: `ap`, `gateway`, `switch`
+	Type *string `pulumi:"type"`
+	// To display Unassigned devices
 	Unassigned *bool `pulumi:"unassigned"`
 	// To display Virtual Chassis members
 	Vc *bool `pulumi:"vc"`
@@ -110,14 +113,16 @@ func LookupInventoryOutput(ctx *pulumi.Context, args LookupInventoryOutputArgs, 
 type LookupInventoryOutputArgs struct {
 	// MAC address
 	Mac pulumi.StringPtrInput `pulumi:"mac"`
-	// device model
+	// Device model
 	Model pulumi.StringPtrInput `pulumi:"model"`
 	OrgId pulumi.StringInput    `pulumi:"orgId"`
-	// device serial
+	// Device serial
 	Serial pulumi.StringPtrInput `pulumi:"serial"`
-	// site id if assigned, null if not assigned
+	// Site id if assigned, null if not assigned
 	SiteId pulumi.StringPtrInput `pulumi:"siteId"`
-	// to display Unassigned devices
+	// enum: `ap`, `gateway`, `switch`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// To display Unassigned devices
 	Unassigned pulumi.BoolPtrInput `pulumi:"unassigned"`
 	// To display Virtual Chassis members
 	Vc pulumi.BoolPtrInput `pulumi:"vc"`
@@ -154,7 +159,7 @@ func (o LookupInventoryResultOutput) Mac() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInventoryResult) *string { return v.Mac }).(pulumi.StringPtrOutput)
 }
 
-// device model
+// Device model
 func (o LookupInventoryResultOutput) Model() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInventoryResult) *string { return v.Model }).(pulumi.StringPtrOutput)
 }
@@ -163,22 +168,26 @@ func (o LookupInventoryResultOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInventoryResult) string { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// List of devices
 func (o LookupInventoryResultOutput) OrgInventories() GetInventoryOrgInventoryArrayOutput {
 	return o.ApplyT(func(v LookupInventoryResult) []GetInventoryOrgInventory { return v.OrgInventories }).(GetInventoryOrgInventoryArrayOutput)
 }
 
-// device serial
+// Device serial
 func (o LookupInventoryResultOutput) Serial() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInventoryResult) *string { return v.Serial }).(pulumi.StringPtrOutput)
 }
 
-// site id if assigned, null if not assigned
+// Site id if assigned, null if not assigned
 func (o LookupInventoryResultOutput) SiteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInventoryResult) *string { return v.SiteId }).(pulumi.StringPtrOutput)
 }
 
-// to display Unassigned devices
+// enum: `ap`, `gateway`, `switch`
+func (o LookupInventoryResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupInventoryResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// To display Unassigned devices
 func (o LookupInventoryResultOutput) Unassigned() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupInventoryResult) *bool { return v.Unassigned }).(pulumi.BoolPtrOutput)
 }

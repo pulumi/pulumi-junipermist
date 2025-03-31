@@ -93,6 +93,10 @@ export class Setting extends pulumi.CustomResource {
     public readonly jcloudRa!: pulumi.Output<outputs.org.SettingJcloudRa | undefined>;
     public /*out*/ readonly juniper!: pulumi.Output<outputs.org.SettingJuniper>;
     /**
+     * by default, webshell access is only enabled for Admin user
+     */
+    public readonly junosShellAccess!: pulumi.Output<outputs.org.SettingJunosShellAccess | undefined>;
+    /**
      * management-related properties
      */
     public readonly mgmt!: pulumi.Output<outputs.org.SettingMgmt | undefined>;
@@ -154,6 +158,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["jcloud"] = state ? state.jcloud : undefined;
             resourceInputs["jcloudRa"] = state ? state.jcloudRa : undefined;
             resourceInputs["juniper"] = state ? state.juniper : undefined;
+            resourceInputs["junosShellAccess"] = state ? state.junosShellAccess : undefined;
             resourceInputs["mgmt"] = state ? state.mgmt : undefined;
             resourceInputs["mistNac"] = state ? state.mistNac : undefined;
             resourceInputs["mxedgeFipsEnabled"] = state ? state.mxedgeFipsEnabled : undefined;
@@ -189,6 +194,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["installer"] = args ? args.installer : undefined;
             resourceInputs["jcloud"] = args ? args.jcloud : undefined;
             resourceInputs["jcloudRa"] = args ? args.jcloudRa : undefined;
+            resourceInputs["junosShellAccess"] = args ? args.junosShellAccess : undefined;
             resourceInputs["mgmt"] = args ? args.mgmt : undefined;
             resourceInputs["mistNac"] = args ? args.mistNac : undefined;
             resourceInputs["mxedgeFipsEnabled"] = args ? args.mxedgeFipsEnabled : undefined;
@@ -261,6 +267,10 @@ export interface SettingState {
      */
     jcloudRa?: pulumi.Input<inputs.org.SettingJcloudRa>;
     juniper?: pulumi.Input<inputs.org.SettingJuniper>;
+    /**
+     * by default, webshell access is only enabled for Admin user
+     */
+    junosShellAccess?: pulumi.Input<inputs.org.SettingJunosShellAccess>;
     /**
      * management-related properties
      */
@@ -341,6 +351,10 @@ export interface SettingArgs {
      * JCloud Routing Assurance connexion
      */
     jcloudRa?: pulumi.Input<inputs.org.SettingJcloudRa>;
+    /**
+     * by default, webshell access is only enabled for Admin user
+     */
+    junosShellAccess?: pulumi.Input<inputs.org.SettingJunosShellAccess>;
     /**
      * management-related properties
      */

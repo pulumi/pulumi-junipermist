@@ -5,8 +5,12 @@ package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.junipermist.org.outputs.GetVpnsOrgVpnPathsPeerPaths;
+import com.pulumi.junipermist.org.outputs.GetVpnsOrgVpnPathsTrafficShaping;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
@@ -17,11 +21,22 @@ public final class GetVpnsOrgVpnPaths {
      */
     private String bfdProfile;
     /**
-     * @return if different from the wan port
+     * @return If `type`==`mesh` and for SSR only, whether toi use tunnel mode
+     * 
+     */
+    private Boolean bfdUseTunnelMode;
+    /**
+     * @return If different from the wan port
      * 
      */
     private String ip;
+    /**
+     * @return If `type`==`mesh`, Property key is the Peer Interface name
+     * 
+     */
+    private Map<String,GetVpnsOrgVpnPathsPeerPaths> peerPaths;
     private Integer pod;
+    private GetVpnsOrgVpnPathsTrafficShaping trafficShaping;
 
     private GetVpnsOrgVpnPaths() {}
     /**
@@ -32,14 +47,31 @@ public final class GetVpnsOrgVpnPaths {
         return this.bfdProfile;
     }
     /**
-     * @return if different from the wan port
+     * @return If `type`==`mesh` and for SSR only, whether toi use tunnel mode
+     * 
+     */
+    public Boolean bfdUseTunnelMode() {
+        return this.bfdUseTunnelMode;
+    }
+    /**
+     * @return If different from the wan port
      * 
      */
     public String ip() {
         return this.ip;
     }
+    /**
+     * @return If `type`==`mesh`, Property key is the Peer Interface name
+     * 
+     */
+    public Map<String,GetVpnsOrgVpnPathsPeerPaths> peerPaths() {
+        return this.peerPaths;
+    }
     public Integer pod() {
         return this.pod;
+    }
+    public GetVpnsOrgVpnPathsTrafficShaping trafficShaping() {
+        return this.trafficShaping;
     }
 
     public static Builder builder() {
@@ -52,14 +84,20 @@ public final class GetVpnsOrgVpnPaths {
     @CustomType.Builder
     public static final class Builder {
         private String bfdProfile;
+        private Boolean bfdUseTunnelMode;
         private String ip;
+        private Map<String,GetVpnsOrgVpnPathsPeerPaths> peerPaths;
         private Integer pod;
+        private GetVpnsOrgVpnPathsTrafficShaping trafficShaping;
         public Builder() {}
         public Builder(GetVpnsOrgVpnPaths defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bfdProfile = defaults.bfdProfile;
+    	      this.bfdUseTunnelMode = defaults.bfdUseTunnelMode;
     	      this.ip = defaults.ip;
+    	      this.peerPaths = defaults.peerPaths;
     	      this.pod = defaults.pod;
+    	      this.trafficShaping = defaults.trafficShaping;
         }
 
         @CustomType.Setter
@@ -71,11 +109,27 @@ public final class GetVpnsOrgVpnPaths {
             return this;
         }
         @CustomType.Setter
+        public Builder bfdUseTunnelMode(Boolean bfdUseTunnelMode) {
+            if (bfdUseTunnelMode == null) {
+              throw new MissingRequiredPropertyException("GetVpnsOrgVpnPaths", "bfdUseTunnelMode");
+            }
+            this.bfdUseTunnelMode = bfdUseTunnelMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ip(String ip) {
             if (ip == null) {
               throw new MissingRequiredPropertyException("GetVpnsOrgVpnPaths", "ip");
             }
             this.ip = ip;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder peerPaths(Map<String,GetVpnsOrgVpnPathsPeerPaths> peerPaths) {
+            if (peerPaths == null) {
+              throw new MissingRequiredPropertyException("GetVpnsOrgVpnPaths", "peerPaths");
+            }
+            this.peerPaths = peerPaths;
             return this;
         }
         @CustomType.Setter
@@ -86,11 +140,22 @@ public final class GetVpnsOrgVpnPaths {
             this.pod = pod;
             return this;
         }
+        @CustomType.Setter
+        public Builder trafficShaping(GetVpnsOrgVpnPathsTrafficShaping trafficShaping) {
+            if (trafficShaping == null) {
+              throw new MissingRequiredPropertyException("GetVpnsOrgVpnPaths", "trafficShaping");
+            }
+            this.trafficShaping = trafficShaping;
+            return this;
+        }
         public GetVpnsOrgVpnPaths build() {
             final var _resultValue = new GetVpnsOrgVpnPaths();
             _resultValue.bfdProfile = bfdProfile;
+            _resultValue.bfdUseTunnelMode = bfdUseTunnelMode;
             _resultValue.ip = ip;
+            _resultValue.peerPaths = peerPaths;
             _resultValue.pod = pod;
+            _resultValue.trafficShaping = trafficShaping;
             return _resultValue;
         }
     }

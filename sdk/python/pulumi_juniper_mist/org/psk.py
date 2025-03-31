@@ -43,8 +43,8 @@ class PskArgs:
         :param pulumi.Input[str] email: email to send psk expiring notifications to
         :param pulumi.Input[int] expire_time: Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
         :param pulumi.Input[int] expiry_notification_time: Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
-        :param pulumi.Input[str] mac: if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] macs: if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+        :param pulumi.Input[str] mac: If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] macs: If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
         :param pulumi.Input[int] max_usage: For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
         :param pulumi.Input[bool] notify_expiry: If set to true, reminder notification will be sent when psk is about to expire
         :param pulumi.Input[bool] notify_on_create_or_edit: If set to true, notification will be sent when psk is created or edited
@@ -156,7 +156,7 @@ class PskArgs:
     @pulumi.getter
     def mac(self) -> Optional[pulumi.Input[str]]:
         """
-        if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         """
         return pulumi.get(self, "mac")
 
@@ -168,7 +168,7 @@ class PskArgs:
     @pulumi.getter
     def macs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+        If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
         """
         return pulumi.get(self, "macs")
 
@@ -298,8 +298,8 @@ class _PskState:
         :param pulumi.Input[str] email: email to send psk expiring notifications to
         :param pulumi.Input[int] expire_time: Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
         :param pulumi.Input[int] expiry_notification_time: Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
-        :param pulumi.Input[str] mac: if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] macs: if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+        :param pulumi.Input[str] mac: If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] macs: If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
         :param pulumi.Input[int] max_usage: For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
         :param pulumi.Input[bool] notify_expiry: If set to true, reminder notification will be sent when psk is about to expire
         :param pulumi.Input[bool] notify_on_create_or_edit: If set to true, notification will be sent when psk is created or edited
@@ -383,7 +383,7 @@ class _PskState:
     @pulumi.getter
     def mac(self) -> Optional[pulumi.Input[str]]:
         """
-        if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         """
         return pulumi.get(self, "mac")
 
@@ -395,7 +395,7 @@ class _PskState:
     @pulumi.getter
     def macs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+        If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
         """
         return pulumi.get(self, "macs")
 
@@ -598,8 +598,8 @@ class Psk(pulumi.CustomResource):
         :param pulumi.Input[str] email: email to send psk expiring notifications to
         :param pulumi.Input[int] expire_time: Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
         :param pulumi.Input[int] expiry_notification_time: Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
-        :param pulumi.Input[str] mac: if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] macs: if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+        :param pulumi.Input[str] mac: If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] macs: If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
         :param pulumi.Input[int] max_usage: For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
         :param pulumi.Input[bool] notify_expiry: If set to true, reminder notification will be sent when psk is about to expire
         :param pulumi.Input[bool] notify_on_create_or_edit: If set to true, notification will be sent when psk is created or edited
@@ -754,8 +754,8 @@ class Psk(pulumi.CustomResource):
         :param pulumi.Input[str] email: email to send psk expiring notifications to
         :param pulumi.Input[int] expire_time: Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
         :param pulumi.Input[int] expiry_notification_time: Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
-        :param pulumi.Input[str] mac: if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] macs: if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+        :param pulumi.Input[str] mac: If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] macs: If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
         :param pulumi.Input[int] max_usage: For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
         :param pulumi.Input[bool] notify_expiry: If set to true, reminder notification will be sent when psk is about to expire
         :param pulumi.Input[bool] notify_on_create_or_edit: If set to true, notification will be sent when psk is created or edited
@@ -815,7 +815,7 @@ class Psk(pulumi.CustomResource):
     @pulumi.getter
     def mac(self) -> pulumi.Output[Optional[str]]:
         """
-        if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         """
         return pulumi.get(self, "mac")
 
@@ -823,7 +823,7 @@ class Psk(pulumi.CustomResource):
     @pulumi.getter
     def macs(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+        If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
         """
         return pulumi.get(self, "macs")
 

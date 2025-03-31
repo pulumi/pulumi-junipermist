@@ -99,6 +99,14 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> Secret { get; private set; } = null!;
 
         /// <summary>
+        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+        /// `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+        /// Topics)
+        /// </summary>
+        [Output("singleEventPerMessage")]
+        public Output<bool> SingleEventPerMessage { get; private set; } = null!;
+
+        /// <summary>
         /// Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
         /// the webhook receiver is configured to accept it.
         /// </summary>
@@ -291,6 +299,14 @@ namespace Pulumi.JuniperMist.Org
             }
         }
 
+        /// <summary>
+        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+        /// `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+        /// Topics)
+        /// </summary>
+        [Input("singleEventPerMessage")]
+        public Input<bool>? SingleEventPerMessage { get; set; }
+
         [Input("splunkToken")]
         private Input<string>? _splunkToken;
 
@@ -453,6 +469,14 @@ namespace Pulumi.JuniperMist.Org
                 _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+        /// `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+        /// Topics)
+        /// </summary>
+        [Input("singleEventPerMessage")]
+        public Input<bool>? SingleEventPerMessage { get; set; }
 
         [Input("splunkToken")]
         private Input<string>? _splunkToken;

@@ -45,6 +45,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("disableOobDownAlarm")]
         public Input<bool>? DisableOobDownAlarm { get; set; }
 
+        [Input("fipsEnabled")]
+        public Input<bool>? FipsEnabled { get; set; }
+
         [Input("localAccounts")]
         private InputMap<Inputs.SwitchSwitchMgmtLocalAccountsArgs>? _localAccounts;
 

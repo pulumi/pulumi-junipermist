@@ -30,25 +30,25 @@ namespace Pulumi.JuniperMist.Org
     public partial class Wlantemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+        /// Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
         /// </summary>
         [Output("applies")]
         public Output<Outputs.WlantemplateApplies> Applies { get; private set; } = null!;
 
         /// <summary>
-        /// list of Device Profile ids
+        /// List of Device Profile ids
         /// </summary>
         [Output("deviceprofileIds")]
         public Output<ImmutableArray<string>> DeviceprofileIds { get; private set; } = null!;
 
         /// <summary>
-        /// where this template should not be applied to (takes precedence)
+        /// Where this template should not be applied to (takes precedence)
         /// </summary>
         [Output("exceptions")]
         public Output<Outputs.WlantemplateExceptions> Exceptions { get; private set; } = null!;
 
         /// <summary>
-        /// whether to further filter by Device Profile
+        /// Whether to further filter by Device Profile
         /// </summary>
         [Output("filterByDeviceprofile")]
         public Output<bool> FilterByDeviceprofile { get; private set; } = null!;
@@ -107,7 +107,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WlantemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+        /// Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
         /// </summary>
         [Input("applies")]
         public Input<Inputs.WlantemplateAppliesArgs>? Applies { get; set; }
@@ -116,7 +116,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _deviceprofileIds;
 
         /// <summary>
-        /// list of Device Profile ids
+        /// List of Device Profile ids
         /// </summary>
         public InputList<string> DeviceprofileIds
         {
@@ -125,13 +125,13 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// where this template should not be applied to (takes precedence)
+        /// Where this template should not be applied to (takes precedence)
         /// </summary>
         [Input("exceptions")]
         public Input<Inputs.WlantemplateExceptionsArgs>? Exceptions { get; set; }
 
         /// <summary>
-        /// whether to further filter by Device Profile
+        /// Whether to further filter by Device Profile
         /// </summary>
         [Input("filterByDeviceprofile")]
         public Input<bool>? FilterByDeviceprofile { get; set; }
@@ -151,7 +151,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WlantemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+        /// Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
         /// </summary>
         [Input("applies")]
         public Input<Inputs.WlantemplateAppliesGetArgs>? Applies { get; set; }
@@ -160,7 +160,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _deviceprofileIds;
 
         /// <summary>
-        /// list of Device Profile ids
+        /// List of Device Profile ids
         /// </summary>
         public InputList<string> DeviceprofileIds
         {
@@ -169,13 +169,13 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// where this template should not be applied to (takes precedence)
+        /// Where this template should not be applied to (takes precedence)
         /// </summary>
         [Input("exceptions")]
         public Input<Inputs.WlantemplateExceptionsGetArgs>? Exceptions { get; set; }
 
         /// <summary>
-        /// whether to further filter by Device Profile
+        /// Whether to further filter by Device Profile
         /// </summary>
         [Input("filterByDeviceprofile")]
         public Input<bool>? FilterByDeviceprofile { get; set; }

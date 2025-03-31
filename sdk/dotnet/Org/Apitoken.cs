@@ -29,7 +29,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// name of the token
+        /// Name of the token
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -38,13 +38,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// list of privileges the token has on the orgs/sites
+        /// List of privileges the token has on the orgs/sites
         /// </summary>
         [Output("privileges")]
         public Output<ImmutableArray<Outputs.ApitokenPrivilege>> Privileges { get; private set; } = null!;
 
         /// <summary>
-        /// list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        /// List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
         /// </summary>
         [Output("srcIps")]
         public Output<ImmutableArray<string>> SrcIps { get; private set; } = null!;
@@ -101,7 +101,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class ApitokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// name of the token
+        /// Name of the token
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -113,7 +113,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.ApitokenPrivilegeArgs>? _privileges;
 
         /// <summary>
-        /// list of privileges the token has on the orgs/sites
+        /// List of privileges the token has on the orgs/sites
         /// </summary>
         public InputList<Inputs.ApitokenPrivilegeArgs> Privileges
         {
@@ -125,7 +125,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _srcIps;
 
         /// <summary>
-        /// list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        /// List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
         /// </summary>
         public InputList<string> SrcIps
         {
@@ -160,7 +160,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// name of the token
+        /// Name of the token
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -172,7 +172,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.ApitokenPrivilegeGetArgs>? _privileges;
 
         /// <summary>
-        /// list of privileges the token has on the orgs/sites
+        /// List of privileges the token has on the orgs/sites
         /// </summary>
         public InputList<Inputs.ApitokenPrivilegeGetArgs> Privileges
         {
@@ -184,7 +184,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _srcIps;
 
         /// <summary>
-        /// list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        /// List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
         /// </summary>
         public InputList<string> SrcIps
         {

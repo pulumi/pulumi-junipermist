@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * This resource manages NAC Tags (Auth Policy Labels).
  * 
- * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+ * The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
  * 
  * ## Example Usage
  * 
@@ -102,18 +102,10 @@ public class Nactag extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> egressVlanNames() {
         return Codegen.optional(this.egressVlanNames);
     }
-    /**
-     * If `type`==`gbp_tag`
-     * 
-     */
-    @Export(name="gbpTag", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> gbpTag;
+    @Export(name="gbpTag", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> gbpTag;
 
-    /**
-     * @return If `type`==`gbp_tag`
-     * 
-     */
-    public Output<Optional<Integer>> gbpTag() {
+    public Output<Optional<String>> gbpTag() {
         return Codegen.optional(this.gbpTag);
     }
     /**

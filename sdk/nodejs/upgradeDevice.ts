@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * This resource can be used to upgrade the frimware of a single device (Wi-Fi Access Points, Switches and SRX/SSR Gateways).
+ * This resource can be used to upgrade the firmware of a single device (Wi-Fi Access Points, Switches and SRX/SSR Gateways).
  *
  * The resource will send the upgrade command to Mist, which will take care of deploying the new firmware version to the device, and reboot it if required.
  *
@@ -112,7 +112,7 @@ export class UpgradeDevice extends pulumi.CustomResource {
      */
     public readonly targetVersion!: pulumi.Output<string>;
     /**
-     * Timestamp
+     * Epoch (seconds)
      */
     public /*out*/ readonly timestamp!: pulumi.Output<number>;
 
@@ -228,7 +228,7 @@ export interface UpgradeDeviceState {
      */
     targetVersion?: pulumi.Input<string>;
     /**
-     * Timestamp
+     * Epoch (seconds)
      */
     timestamp?: pulumi.Input<number>;
 }

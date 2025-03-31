@@ -162,9 +162,17 @@ Please update your configurations. */
         return Optional.ofNullable(this.matchValue);
     }
 
+    /**
+     * Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -185,14 +193,14 @@ Please update your configurations. */
     }
 
     /**
-     * Propery key is the interface name or interface range
+     * Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
      * 
      */
     @Import(name="portConfig")
     private @Nullable Output<Map<String,NetworktemplateSwitchMatchingRulePortConfigArgs>> portConfig;
 
     /**
-     * @return Propery key is the interface name or interface range
+     * @return Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
      * 
      */
     public Optional<Output<Map<String,NetworktemplateSwitchMatchingRulePortConfigArgs>>> portConfig() {
@@ -200,14 +208,14 @@ Please update your configurations. */
     }
 
     /**
-     * Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+     * Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      * 
      */
     @Import(name="portMirroring")
     private @Nullable Output<Map<String,NetworktemplateSwitchMatchingRulePortMirroringArgs>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+     * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      * 
      */
     public Optional<Output<Map<String,NetworktemplateSwitchMatchingRulePortMirroringArgs>>> portMirroring() {
@@ -447,11 +455,23 @@ Please update your configurations. */
             return matchValue(Output.of(matchValue));
         }
 
+        /**
+         * @param name Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -478,7 +498,7 @@ Please update your configurations. */
         }
 
         /**
-         * @param portConfig Propery key is the interface name or interface range
+         * @param portConfig Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
          * 
          * @return builder
          * 
@@ -489,7 +509,7 @@ Please update your configurations. */
         }
 
         /**
-         * @param portConfig Propery key is the interface name or interface range
+         * @param portConfig Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
          * 
          * @return builder
          * 
@@ -499,7 +519,7 @@ Please update your configurations. */
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+         * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
          * 
          * @return builder
          * 
@@ -510,7 +530,7 @@ Please update your configurations. */
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+         * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
          * 
          * @return builder
          * 

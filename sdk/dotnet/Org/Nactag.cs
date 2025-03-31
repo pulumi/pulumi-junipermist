@@ -12,7 +12,7 @@ namespace Pulumi.JuniperMist.Org
     /// <summary>
     /// This resource manages NAC Tags (Auth Policy Labels).
     /// 
-    /// The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+    /// The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
     /// 
     /// ## Example Usage
     /// 
@@ -64,11 +64,8 @@ namespace Pulumi.JuniperMist.Org
         [Output("egressVlanNames")]
         public Output<ImmutableArray<string>> EgressVlanNames { get; private set; } = null!;
 
-        /// <summary>
-        /// If `type`==`gbp_tag`
-        /// </summary>
         [Output("gbpTag")]
-        public Output<int?> GbpTag { get; private set; } = null!;
+        public Output<string?> GbpTag { get; private set; } = null!;
 
         /// <summary>
         /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
@@ -210,11 +207,8 @@ namespace Pulumi.JuniperMist.Org
             set => _egressVlanNames = value;
         }
 
-        /// <summary>
-        /// If `type`==`gbp_tag`
-        /// </summary>
         [Input("gbpTag")]
-        public Input<int>? GbpTag { get; set; }
+        public Input<string>? GbpTag { get; set; }
 
         /// <summary>
         /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
@@ -335,11 +329,8 @@ namespace Pulumi.JuniperMist.Org
             set => _egressVlanNames = value;
         }
 
-        /// <summary>
-        /// If `type`==`gbp_tag`
-        /// </summary>
         [Input("gbpTag")]
-        public Input<int>? GbpTag { get; set; }
+        public Input<string>? GbpTag { get; set; }
 
         /// <summary>
         /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,

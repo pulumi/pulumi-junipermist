@@ -248,6 +248,24 @@ public class Webhook extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> secret() {
         return Codegen.optional(this.secret);
     }
+    /**
+     * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+     * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+     * Topics)
+     * 
+     */
+    @Export(name="singleEventPerMessage", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> singleEventPerMessage;
+
+    /**
+     * @return Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+     * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+     * Topics)
+     * 
+     */
+    public Output<Boolean> singleEventPerMessage() {
+        return this.singleEventPerMessage;
+    }
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 

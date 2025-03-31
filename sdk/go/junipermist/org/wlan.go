@@ -141,6 +141,8 @@ type Wlan struct {
 	CoaServers WlanCoaServerArrayOutput `pulumi:"coaServers"`
 	// Some old WLAN drivers may not be compatible
 	Disable11ax pulumi.BoolOutput `pulumi:"disable11ax"`
+	// To disable Wi-Fi 7 EHT IEs
+	Disable11be pulumi.BoolOutput `pulumi:"disable11be"`
 	// To disable ht or vht rates
 	DisableHtVhtRates pulumi.BoolOutput `pulumi:"disableHtVhtRates"`
 	// Whether to disable U-APSD
@@ -170,7 +172,7 @@ type Wlan struct {
 	// Enable AP-AP keycaching via multicast
 	EnableLocalKeycaching pulumi.BoolOutput `pulumi:"enableLocalKeycaching"`
 	// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-	// client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+	// client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
 	EnableWirelessBridging pulumi.BoolOutput `pulumi:"enableWirelessBridging"`
 	// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response
 	// packets to be forwarded to wireless
@@ -208,7 +210,7 @@ type Wlan struct {
 	MspId         pulumi.StringOutput `pulumi:"mspId"`
 	// When `interface`=`mxtunnel`, id of the Mist Tunnel
 	MxtunnelIds pulumi.StringArrayOutput `pulumi:"mxtunnelIds"`
-	// When `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+	// When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
 	MxtunnelNames pulumi.StringArrayOutput `pulumi:"mxtunnelNames"`
 	// Whether to only allow client to use DNS that we’ve learned from DHCP response
 	NoStaticDns pulumi.BoolOutput `pulumi:"noStaticDns"`
@@ -249,7 +251,7 @@ type Wlan struct {
 	// If vlan tagging is enabled
 	VlanEnabled pulumi.BoolOutput      `pulumi:"vlanEnabled"`
 	VlanId      pulumi.StringPtrOutput `pulumi:"vlanId"`
-	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
 	VlanIds pulumi.StringArrayOutput `pulumi:"vlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
 	// deterministic algorithm
@@ -379,6 +381,8 @@ type wlanState struct {
 	CoaServers []WlanCoaServer `pulumi:"coaServers"`
 	// Some old WLAN drivers may not be compatible
 	Disable11ax *bool `pulumi:"disable11ax"`
+	// To disable Wi-Fi 7 EHT IEs
+	Disable11be *bool `pulumi:"disable11be"`
 	// To disable ht or vht rates
 	DisableHtVhtRates *bool `pulumi:"disableHtVhtRates"`
 	// Whether to disable U-APSD
@@ -408,7 +412,7 @@ type wlanState struct {
 	// Enable AP-AP keycaching via multicast
 	EnableLocalKeycaching *bool `pulumi:"enableLocalKeycaching"`
 	// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-	// client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+	// client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
 	EnableWirelessBridging *bool `pulumi:"enableWirelessBridging"`
 	// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response
 	// packets to be forwarded to wireless
@@ -446,7 +450,7 @@ type wlanState struct {
 	MspId         *string      `pulumi:"mspId"`
 	// When `interface`=`mxtunnel`, id of the Mist Tunnel
 	MxtunnelIds []string `pulumi:"mxtunnelIds"`
-	// When `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+	// When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
 	MxtunnelNames []string `pulumi:"mxtunnelNames"`
 	// Whether to only allow client to use DNS that we’ve learned from DHCP response
 	NoStaticDns *bool `pulumi:"noStaticDns"`
@@ -487,7 +491,7 @@ type wlanState struct {
 	// If vlan tagging is enabled
 	VlanEnabled *bool   `pulumi:"vlanEnabled"`
 	VlanId      *string `pulumi:"vlanId"`
-	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
 	VlanIds []string `pulumi:"vlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
 	// deterministic algorithm
@@ -579,6 +583,8 @@ type WlanState struct {
 	CoaServers WlanCoaServerArrayInput
 	// Some old WLAN drivers may not be compatible
 	Disable11ax pulumi.BoolPtrInput
+	// To disable Wi-Fi 7 EHT IEs
+	Disable11be pulumi.BoolPtrInput
 	// To disable ht or vht rates
 	DisableHtVhtRates pulumi.BoolPtrInput
 	// Whether to disable U-APSD
@@ -608,7 +614,7 @@ type WlanState struct {
 	// Enable AP-AP keycaching via multicast
 	EnableLocalKeycaching pulumi.BoolPtrInput
 	// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-	// client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+	// client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
 	EnableWirelessBridging pulumi.BoolPtrInput
 	// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response
 	// packets to be forwarded to wireless
@@ -646,7 +652,7 @@ type WlanState struct {
 	MspId         pulumi.StringPtrInput
 	// When `interface`=`mxtunnel`, id of the Mist Tunnel
 	MxtunnelIds pulumi.StringArrayInput
-	// When `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+	// When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
 	MxtunnelNames pulumi.StringArrayInput
 	// Whether to only allow client to use DNS that we’ve learned from DHCP response
 	NoStaticDns pulumi.BoolPtrInput
@@ -687,7 +693,7 @@ type WlanState struct {
 	// If vlan tagging is enabled
 	VlanEnabled pulumi.BoolPtrInput
 	VlanId      pulumi.StringPtrInput
-	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
 	VlanIds pulumi.StringArrayInput
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
 	// deterministic algorithm
@@ -783,6 +789,8 @@ type wlanArgs struct {
 	CoaServers []WlanCoaServer `pulumi:"coaServers"`
 	// Some old WLAN drivers may not be compatible
 	Disable11ax *bool `pulumi:"disable11ax"`
+	// To disable Wi-Fi 7 EHT IEs
+	Disable11be *bool `pulumi:"disable11be"`
 	// To disable ht or vht rates
 	DisableHtVhtRates *bool `pulumi:"disableHtVhtRates"`
 	// Whether to disable U-APSD
@@ -812,7 +820,7 @@ type wlanArgs struct {
 	// Enable AP-AP keycaching via multicast
 	EnableLocalKeycaching *bool `pulumi:"enableLocalKeycaching"`
 	// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-	// client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+	// client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
 	EnableWirelessBridging *bool `pulumi:"enableWirelessBridging"`
 	// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response
 	// packets to be forwarded to wireless
@@ -849,7 +857,7 @@ type wlanArgs struct {
 	MistNac       *WlanMistNac `pulumi:"mistNac"`
 	// When `interface`=`mxtunnel`, id of the Mist Tunnel
 	MxtunnelIds []string `pulumi:"mxtunnelIds"`
-	// When `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+	// When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
 	MxtunnelNames []string `pulumi:"mxtunnelNames"`
 	// Whether to only allow client to use DNS that we’ve learned from DHCP response
 	NoStaticDns *bool `pulumi:"noStaticDns"`
@@ -885,7 +893,7 @@ type wlanArgs struct {
 	// If vlan tagging is enabled
 	VlanEnabled *bool   `pulumi:"vlanEnabled"`
 	VlanId      *string `pulumi:"vlanId"`
-	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
 	VlanIds []string `pulumi:"vlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
 	// deterministic algorithm
@@ -978,6 +986,8 @@ type WlanArgs struct {
 	CoaServers WlanCoaServerArrayInput
 	// Some old WLAN drivers may not be compatible
 	Disable11ax pulumi.BoolPtrInput
+	// To disable Wi-Fi 7 EHT IEs
+	Disable11be pulumi.BoolPtrInput
 	// To disable ht or vht rates
 	DisableHtVhtRates pulumi.BoolPtrInput
 	// Whether to disable U-APSD
@@ -1007,7 +1017,7 @@ type WlanArgs struct {
 	// Enable AP-AP keycaching via multicast
 	EnableLocalKeycaching pulumi.BoolPtrInput
 	// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-	// client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+	// client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
 	EnableWirelessBridging pulumi.BoolPtrInput
 	// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response
 	// packets to be forwarded to wireless
@@ -1044,7 +1054,7 @@ type WlanArgs struct {
 	MistNac       WlanMistNacPtrInput
 	// When `interface`=`mxtunnel`, id of the Mist Tunnel
 	MxtunnelIds pulumi.StringArrayInput
-	// When `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+	// When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
 	MxtunnelNames pulumi.StringArrayInput
 	// Whether to only allow client to use DNS that we’ve learned from DHCP response
 	NoStaticDns pulumi.BoolPtrInput
@@ -1080,7 +1090,7 @@ type WlanArgs struct {
 	// If vlan tagging is enabled
 	VlanEnabled pulumi.BoolPtrInput
 	VlanId      pulumi.StringPtrInput
-	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
 	VlanIds pulumi.StringArrayInput
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
 	// deterministic algorithm
@@ -1351,6 +1361,11 @@ func (o WlanOutput) Disable11ax() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.Disable11ax }).(pulumi.BoolOutput)
 }
 
+// To disable Wi-Fi 7 EHT IEs
+func (o WlanOutput) Disable11be() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.Disable11be }).(pulumi.BoolOutput)
+}
+
 // To disable ht or vht rates
 func (o WlanOutput) DisableHtVhtRates() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.DisableHtVhtRates }).(pulumi.BoolOutput)
@@ -1416,7 +1431,7 @@ func (o WlanOutput) EnableLocalKeycaching() pulumi.BoolOutput {
 }
 
 // By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-// client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+// client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
 func (o WlanOutput) EnableWirelessBridging() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.EnableWirelessBridging }).(pulumi.BoolOutput)
 }
@@ -1511,7 +1526,7 @@ func (o WlanOutput) MxtunnelIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringArrayOutput { return v.MxtunnelIds }).(pulumi.StringArrayOutput)
 }
 
-// When `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+// When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
 func (o WlanOutput) MxtunnelNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringArrayOutput { return v.MxtunnelNames }).(pulumi.StringArrayOutput)
 }
@@ -1621,7 +1636,7 @@ func (o WlanOutput) VlanId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringPtrOutput { return v.VlanId }).(pulumi.StringPtrOutput)
 }
 
-// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
 func (o WlanOutput) VlanIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringArrayOutput { return v.VlanIds }).(pulumi.StringArrayOutput)
 }

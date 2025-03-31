@@ -34,6 +34,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? DhcpOptionFqdn;
         public readonly bool? DisableOobDownAlarm;
+        public readonly bool? FipsEnabled;
         /// <summary>
         /// Property key is the user name. For Local user authentication
         /// </summary>
@@ -67,6 +68,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             bool? disableOobDownAlarm,
 
+            bool? fipsEnabled,
+
             ImmutableDictionary<string, Outputs.SwitchSwitchMgmtLocalAccounts>? localAccounts,
 
             string? mxedgeProxyHost,
@@ -87,6 +90,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             ConfigRevertTimer = configRevertTimer;
             DhcpOptionFqdn = dhcpOptionFqdn;
             DisableOobDownAlarm = disableOobDownAlarm;
+            FipsEnabled = fipsEnabled;
             LocalAccounts = localAccounts;
             MxedgeProxyHost = mxedgeProxyHost;
             MxedgeProxyPort = mxedgeProxyPort;

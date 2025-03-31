@@ -14,35 +14,59 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GetServicepoliciesOrgServicepolicyResult
     {
         /// <summary>
+        /// For SRX Only
+        /// </summary>
+        public readonly Outputs.GetServicepoliciesOrgServicepolicyAamwResult Aamw;
+        /// <summary>
         /// enum: `allow`, `deny`
         /// </summary>
         public readonly string Action;
         /// <summary>
+        /// For SRX-only
+        /// </summary>
+        public readonly Outputs.GetServicepoliciesOrgServicepolicyAntivirusResult Antivirus;
+        /// <summary>
         /// For SRX Only
         /// </summary>
         public readonly Outputs.GetServicepoliciesOrgServicepolicyAppqoeResult Appqoe;
+        /// <summary>
+        /// When the object has been created, in epoch
+        /// </summary>
         public readonly double CreatedTime;
         public readonly ImmutableArray<Outputs.GetServicepoliciesOrgServicepolicyEwfResult> Ewfs;
+        /// <summary>
+        /// Unique ID of the object instance in the Mist Organization
+        /// </summary>
         public readonly string Id;
         public readonly Outputs.GetServicepoliciesOrgServicepolicyIdpResult Idp;
         /// <summary>
         /// access within the same VRF
         /// </summary>
         public readonly bool LocalRouting;
+        /// <summary>
+        /// When the object has been modified for the last time, in epoch
+        /// </summary>
         public readonly double ModifiedTime;
         public readonly string Name;
         public readonly string OrgId;
         /// <summary>
-        /// by default, we derive all paths available and use them
-        /// optionally, you can customize by using `path_preference`
+        /// By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
         /// </summary>
         public readonly string PathPreference;
         public readonly ImmutableArray<string> Services;
+        /// <summary>
+        /// For SRX-only
+        /// </summary>
+        public readonly Outputs.GetServicepoliciesOrgServicepolicySslProxyResult SslProxy;
         public readonly ImmutableArray<string> Tenants;
 
         [OutputConstructor]
         private GetServicepoliciesOrgServicepolicyResult(
+            Outputs.GetServicepoliciesOrgServicepolicyAamwResult aamw,
+
             string action,
+
+            Outputs.GetServicepoliciesOrgServicepolicyAntivirusResult antivirus,
 
             Outputs.GetServicepoliciesOrgServicepolicyAppqoeResult appqoe,
 
@@ -66,9 +90,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             ImmutableArray<string> services,
 
+            Outputs.GetServicepoliciesOrgServicepolicySslProxyResult sslProxy,
+
             ImmutableArray<string> tenants)
         {
+            Aamw = aamw;
             Action = action;
+            Antivirus = antivirus;
             Appqoe = appqoe;
             CreatedTime = createdTime;
             Ewfs = ewfs;
@@ -80,6 +108,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             OrgId = orgId;
             PathPreference = pathPreference;
             Services = services;
+            SslProxy = sslProxy;
             Tenants = tenants;
         }
     }

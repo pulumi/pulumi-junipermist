@@ -4,29 +4,51 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.junipermist.org.outputs.NetworktemplateVrfInstancesExtraRoutes6;
 import com.pulumi.junipermist.org.outputs.NetworktemplateVrfInstancesExtraRoutes;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateVrfInstances {
+    private @Nullable String evpnAutoLoopbackSubnet;
+    private @Nullable String evpnAutoLoopbackSubnet6;
     /**
      * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
      * 
      */
     private @Nullable Map<String,NetworktemplateVrfInstancesExtraRoutes> extraRoutes;
+    /**
+     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * 
+     */
+    private @Nullable Map<String,NetworktemplateVrfInstancesExtraRoutes6> extraRoutes6;
     private @Nullable List<String> networks;
 
     private NetworktemplateVrfInstances() {}
+    public Optional<String> evpnAutoLoopbackSubnet() {
+        return Optional.ofNullable(this.evpnAutoLoopbackSubnet);
+    }
+    public Optional<String> evpnAutoLoopbackSubnet6() {
+        return Optional.ofNullable(this.evpnAutoLoopbackSubnet6);
+    }
     /**
      * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
      * 
      */
     public Map<String,NetworktemplateVrfInstancesExtraRoutes> extraRoutes() {
         return this.extraRoutes == null ? Map.of() : this.extraRoutes;
+    }
+    /**
+     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * 
+     */
+    public Map<String,NetworktemplateVrfInstancesExtraRoutes6> extraRoutes6() {
+        return this.extraRoutes6 == null ? Map.of() : this.extraRoutes6;
     }
     public List<String> networks() {
         return this.networks == null ? List.of() : this.networks;
@@ -41,19 +63,43 @@ public final class NetworktemplateVrfInstances {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String evpnAutoLoopbackSubnet;
+        private @Nullable String evpnAutoLoopbackSubnet6;
         private @Nullable Map<String,NetworktemplateVrfInstancesExtraRoutes> extraRoutes;
+        private @Nullable Map<String,NetworktemplateVrfInstancesExtraRoutes6> extraRoutes6;
         private @Nullable List<String> networks;
         public Builder() {}
         public Builder(NetworktemplateVrfInstances defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.evpnAutoLoopbackSubnet = defaults.evpnAutoLoopbackSubnet;
+    	      this.evpnAutoLoopbackSubnet6 = defaults.evpnAutoLoopbackSubnet6;
     	      this.extraRoutes = defaults.extraRoutes;
+    	      this.extraRoutes6 = defaults.extraRoutes6;
     	      this.networks = defaults.networks;
         }
 
         @CustomType.Setter
+        public Builder evpnAutoLoopbackSubnet(@Nullable String evpnAutoLoopbackSubnet) {
+
+            this.evpnAutoLoopbackSubnet = evpnAutoLoopbackSubnet;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder evpnAutoLoopbackSubnet6(@Nullable String evpnAutoLoopbackSubnet6) {
+
+            this.evpnAutoLoopbackSubnet6 = evpnAutoLoopbackSubnet6;
+            return this;
+        }
+        @CustomType.Setter
         public Builder extraRoutes(@Nullable Map<String,NetworktemplateVrfInstancesExtraRoutes> extraRoutes) {
 
             this.extraRoutes = extraRoutes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder extraRoutes6(@Nullable Map<String,NetworktemplateVrfInstancesExtraRoutes6> extraRoutes6) {
+
+            this.extraRoutes6 = extraRoutes6;
             return this;
         }
         @CustomType.Setter
@@ -67,7 +113,10 @@ public final class NetworktemplateVrfInstances {
         }
         public NetworktemplateVrfInstances build() {
             final var _resultValue = new NetworktemplateVrfInstances();
+            _resultValue.evpnAutoLoopbackSubnet = evpnAutoLoopbackSubnet;
+            _resultValue.evpnAutoLoopbackSubnet6 = evpnAutoLoopbackSubnet6;
             _resultValue.extraRoutes = extraRoutes;
+            _resultValue.extraRoutes6 = extraRoutes6;
             _resultValue.networks = networks;
             return _resultValue;
         }

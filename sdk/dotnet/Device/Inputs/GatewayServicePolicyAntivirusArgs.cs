@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayServicePolicyAntivirusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// org-level AV Profile can be used, this takes precendence over 'profile'
+        /// org-level AV Profile can be used, this takes precedence over 'profile'
         /// </summary>
         [Input("avprofileId")]
         public Input<string>? AvprofileId { get; set; }

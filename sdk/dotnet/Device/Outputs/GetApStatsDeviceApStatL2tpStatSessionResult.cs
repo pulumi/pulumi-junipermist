@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GetApStatsDeviceApStatL2tpStatSessionResult
     {
         /// <summary>
-        /// remote sessions id (dynamically unless Tunnel is said to be static)
+        /// Remote sessions id (dynamically unless Tunnel is said to be static)
         /// </summary>
         public readonly int LocalSid;
         /// <summary>
@@ -22,9 +22,12 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string RemoteId;
         /// <summary>
-        /// remote sessions id (dynamically unless Tunnel is said to be static)
+        /// Remote sessions id (dynamically unless Tunnel is said to be static)
         /// </summary>
         public readonly int RemoteSid;
+        /// <summary>
+        /// enum: `established`, `established_with_session`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+        /// </summary>
         public readonly string State;
 
         [OutputConstructor]

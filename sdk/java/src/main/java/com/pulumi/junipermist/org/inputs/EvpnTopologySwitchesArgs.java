@@ -47,7 +47,7 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
+     * Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
      *   * for CLOS, to group dist / access switches into pods
      *   * for ERB/CRB, to group dist / esilag-access into pods
      * 
@@ -56,7 +56,7 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<Integer> pod;
 
     /**
-     * @return optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
+     * @return Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
      *   * for CLOS, to group dist / access switches into pods
      *   * for ERB/CRB, to group dist / esilag-access into pods
      * 
@@ -66,7 +66,7 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * by default, core switches are assumed to be connecting all pods.
+     * By default, core switches are assumed to be connecting all pods.
      * if you want to limit the pods, you can specify pods.
      * 
      */
@@ -74,7 +74,7 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<List<Integer>> pods;
 
     /**
-     * @return by default, core switches are assumed to be connecting all pods.
+     * @return By default, core switches are assumed to be connecting all pods.
      * if you want to limit the pods, you can specify pods.
      * 
      */
@@ -180,7 +180,7 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pod optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
+         * @param pod Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
          *   * for CLOS, to group dist / access switches into pods
          *   * for ERB/CRB, to group dist / esilag-access into pods
          * 
@@ -193,7 +193,7 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pod optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
+         * @param pod Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
          *   * for CLOS, to group dist / access switches into pods
          *   * for ERB/CRB, to group dist / esilag-access into pods
          * 
@@ -205,7 +205,7 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pods by default, core switches are assumed to be connecting all pods.
+         * @param pods By default, core switches are assumed to be connecting all pods.
          * if you want to limit the pods, you can specify pods.
          * 
          * @return builder
@@ -217,7 +217,7 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pods by default, core switches are assumed to be connecting all pods.
+         * @param pods By default, core switches are assumed to be connecting all pods.
          * if you want to limit the pods, you can specify pods.
          * 
          * @return builder
@@ -228,7 +228,7 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pods by default, core switches are assumed to be connecting all pods.
+         * @param pods By default, core switches are assumed to be connecting all pods.
          * if you want to limit the pods, you can specify pods.
          * 
          * @return builder

@@ -14,6 +14,7 @@ import com.pulumi.junipermist.org.inputs.SettingInstallerArgs;
 import com.pulumi.junipermist.org.inputs.SettingJcloudArgs;
 import com.pulumi.junipermist.org.inputs.SettingJcloudRaArgs;
 import com.pulumi.junipermist.org.inputs.SettingJuniperArgs;
+import com.pulumi.junipermist.org.inputs.SettingJunosShellAccessArgs;
 import com.pulumi.junipermist.org.inputs.SettingMgmtArgs;
 import com.pulumi.junipermist.org.inputs.SettingMistNacArgs;
 import com.pulumi.junipermist.org.inputs.SettingMxedgeMgmtArgs;
@@ -219,6 +220,21 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * by default, webshell access is only enabled for Admin user
+     * 
+     */
+    @Import(name="junosShellAccess")
+    private @Nullable Output<SettingJunosShellAccessArgs> junosShellAccess;
+
+    /**
+     * @return by default, webshell access is only enabled for Admin user
+     * 
+     */
+    public Optional<Output<SettingJunosShellAccessArgs>> junosShellAccess() {
+        return Optional.ofNullable(this.junosShellAccess);
+    }
+
+    /**
      * management-related properties
      * 
      */
@@ -397,6 +413,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         this.jcloud = $.jcloud;
         this.jcloudRa = $.jcloudRa;
         this.juniper = $.juniper;
+        this.junosShellAccess = $.junosShellAccess;
         this.mgmt = $.mgmt;
         this.mistNac = $.mistNac;
         this.mxedgeFipsEnabled = $.mxedgeFipsEnabled;
@@ -681,6 +698,27 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
 
         public Builder juniper(SettingJuniperArgs juniper) {
             return juniper(Output.of(juniper));
+        }
+
+        /**
+         * @param junosShellAccess by default, webshell access is only enabled for Admin user
+         * 
+         * @return builder
+         * 
+         */
+        public Builder junosShellAccess(@Nullable Output<SettingJunosShellAccessArgs> junosShellAccess) {
+            $.junosShellAccess = junosShellAccess;
+            return this;
+        }
+
+        /**
+         * @param junosShellAccess by default, webshell access is only enabled for Admin user
+         * 
+         * @return builder
+         * 
+         */
+        public Builder junosShellAccess(SettingJunosShellAccessArgs junosShellAccess) {
+            return junosShellAccess(Output.of(junosShellAccess));
         }
 
         /**

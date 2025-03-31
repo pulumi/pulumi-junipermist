@@ -79,14 +79,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/network:Network")
 public class Network extends com.pulumi.resources.CustomResource {
     /**
-     * whether to disallow Mist Devices in the network
+     * Whether to disallow Mist Devices in the network
      * 
      */
     @Export(name="disallowMistServices", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disallowMistServices;
 
     /**
-     * @return whether to disallow Mist Devices in the network
+     * @return Whether to disallow Mist Devices in the network
      * 
      */
     public Output<Boolean> disallowMistServices() {
@@ -111,42 +111,42 @@ public class Network extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.internalAccess);
     }
     /**
-     * whether this network has direct internet access
+     * Whether this network has direct internet access
      * 
      */
     @Export(name="internetAccess", refs={NetworkInternetAccess.class}, tree="[0]")
     private Output</* @Nullable */ NetworkInternetAccess> internetAccess;
 
     /**
-     * @return whether this network has direct internet access
+     * @return Whether this network has direct internet access
      * 
      */
     public Output<Optional<NetworkInternetAccess>> internetAccess() {
         return Codegen.optional(this.internetAccess);
     }
     /**
-     * whether to allow clients in the network to talk to each other
+     * Whether to allow clients in the network to talk to each other
      * 
      */
     @Export(name="isolation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isolation;
 
     /**
-     * @return whether to allow clients in the network to talk to each other
+     * @return Whether to allow clients in the network to talk to each other
      * 
      */
     public Output<Optional<Boolean>> isolation() {
         return Codegen.optional(this.isolation);
     }
     /**
-     * whether to enable multicast support (only PIM-sparse mode is supported)
+     * Whether to enable multicast support (only PIM-sparse mode is supported)
      * 
      */
     @Export(name="multicast", refs={NetworkMulticast.class}, tree="[0]")
     private Output</* @Nullable */ NetworkMulticast> multicast;
 
     /**
-     * @return whether to enable multicast support (only PIM-sparse mode is supported)
+     * @return Whether to enable multicast support (only PIM-sparse mode is supported)
      * 
      */
     public Output<Optional<NetworkMulticast>> multicast() {
@@ -165,14 +165,14 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
      * 
      */
     @Export(name="routedForNetworks", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> routedForNetworks;
 
     /**
-     * @return for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * @return For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
      * 
      */
     public Output<Optional<List<String>>> routedForNetworks() {

@@ -134,6 +134,14 @@ namespace Pulumi.JuniperMist.Site
         [Output("secret")]
         public Output<string?> Secret { get; private set; } = null!;
 
+        /// <summary>
+        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+        /// `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+        /// Topics)
+        /// </summary>
+        [Output("singleEventPerMessage")]
+        public Output<bool> SingleEventPerMessage { get; private set; } = null!;
+
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
 
@@ -327,6 +335,14 @@ namespace Pulumi.JuniperMist.Site
             }
         }
 
+        /// <summary>
+        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+        /// `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+        /// Topics)
+        /// </summary>
+        [Input("singleEventPerMessage")]
+        public Input<bool>? SingleEventPerMessage { get; set; }
+
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
 
@@ -492,6 +508,14 @@ namespace Pulumi.JuniperMist.Site
                 _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+        /// `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+        /// Topics)
+        /// </summary>
+        [Input("singleEventPerMessage")]
+        public Input<bool>? SingleEventPerMessage { get; set; }
 
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }

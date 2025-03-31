@@ -33,9 +33,9 @@ class WxruleArgs:
         """
         The set of arguments for constructing a Wxrule resource.
         :param pulumi.Input[str] action: type of action, allow / block. enum: `allow`, `block`
-        :param pulumi.Input[int] order: the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+        :param pulumi.Input[int] order: Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
         :param pulumi.Input[str] template_id: Only for Org Level WxRule
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_apps: blocked apps (always blocking, ignoring action), the key of Get Application List
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_apps: Blocked apps (always blocking, ignoring action), the key of Get Application List
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_allow_wxtags: List of WxTag UUID to indicate these tags are allowed access
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_deny_wxtags: List of WxTag UUID to indicate these tags are blocked access
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_wxtags: List of WxTag UUID
@@ -76,7 +76,7 @@ class WxruleArgs:
     @pulumi.getter
     def order(self) -> pulumi.Input[int]:
         """
-        the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+        Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
         """
         return pulumi.get(self, "order")
 
@@ -118,7 +118,7 @@ class WxruleArgs:
     @pulumi.getter(name="blockedApps")
     def blocked_apps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        blocked apps (always blocking, ignoring action), the key of Get Application List
+        Blocked apps (always blocking, ignoring action), the key of Get Application List
         """
         return pulumi.get(self, "blocked_apps")
 
@@ -201,11 +201,11 @@ class _WxruleState:
         """
         Input properties used for looking up and filtering Wxrule resources.
         :param pulumi.Input[str] action: type of action, allow / block. enum: `allow`, `block`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_apps: blocked apps (always blocking, ignoring action), the key of Get Application List
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_apps: Blocked apps (always blocking, ignoring action), the key of Get Application List
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_allow_wxtags: List of WxTag UUID to indicate these tags are allowed access
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_deny_wxtags: List of WxTag UUID to indicate these tags are blocked access
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_wxtags: List of WxTag UUID
-        :param pulumi.Input[int] order: the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+        :param pulumi.Input[int] order: Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_wxtags: List of WxTag UUID to determine if this rule would match
         :param pulumi.Input[str] template_id: Only for Org Level WxRule
         """
@@ -257,7 +257,7 @@ class _WxruleState:
     @pulumi.getter(name="blockedApps")
     def blocked_apps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        blocked apps (always blocking, ignoring action), the key of Get Application List
+        Blocked apps (always blocking, ignoring action), the key of Get Application List
         """
         return pulumi.get(self, "blocked_apps")
 
@@ -314,7 +314,7 @@ class _WxruleState:
     @pulumi.getter
     def order(self) -> Optional[pulumi.Input[int]]:
         """
-        the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+        Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
         """
         return pulumi.get(self, "order")
 
@@ -387,7 +387,7 @@ class Wxrule(pulumi.CustomResource):
 
         wxrule_one = junipermist.org.Wxrule("wxrule_one",
             org_id=terraform_test["id"],
-            template_id=wlantempalte_one["id"],
+            template_id=wlantemplate_one["id"],
             src_wxtags=[wxtag_one["id"]],
             enabled=True,
             action="allow",
@@ -408,11 +408,11 @@ class Wxrule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: type of action, allow / block. enum: `allow`, `block`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_apps: blocked apps (always blocking, ignoring action), the key of Get Application List
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_apps: Blocked apps (always blocking, ignoring action), the key of Get Application List
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_allow_wxtags: List of WxTag UUID to indicate these tags are allowed access
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_deny_wxtags: List of WxTag UUID to indicate these tags are blocked access
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_wxtags: List of WxTag UUID
-        :param pulumi.Input[int] order: the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+        :param pulumi.Input[int] order: Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_wxtags: List of WxTag UUID to determine if this rule would match
         :param pulumi.Input[str] template_id: Only for Org Level WxRule
         """
@@ -436,7 +436,7 @@ class Wxrule(pulumi.CustomResource):
 
         wxrule_one = junipermist.org.Wxrule("wxrule_one",
             org_id=terraform_test["id"],
-            template_id=wlantempalte_one["id"],
+            template_id=wlantemplate_one["id"],
             src_wxtags=[wxtag_one["id"]],
             enabled=True,
             action="allow",
@@ -537,11 +537,11 @@ class Wxrule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: type of action, allow / block. enum: `allow`, `block`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_apps: blocked apps (always blocking, ignoring action), the key of Get Application List
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_apps: Blocked apps (always blocking, ignoring action), the key of Get Application List
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_allow_wxtags: List of WxTag UUID to indicate these tags are allowed access
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_deny_wxtags: List of WxTag UUID to indicate these tags are blocked access
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_wxtags: List of WxTag UUID
-        :param pulumi.Input[int] order: the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+        :param pulumi.Input[int] order: Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_wxtags: List of WxTag UUID to determine if this rule would match
         :param pulumi.Input[str] template_id: Only for Org Level WxRule
         """
@@ -579,7 +579,7 @@ class Wxrule(pulumi.CustomResource):
     @pulumi.getter(name="blockedApps")
     def blocked_apps(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        blocked apps (always blocking, ignoring action), the key of Get Application List
+        Blocked apps (always blocking, ignoring action), the key of Get Application List
         """
         return pulumi.get(self, "blocked_apps")
 
@@ -616,7 +616,7 @@ class Wxrule(pulumi.CustomResource):
     @pulumi.getter
     def order(self) -> pulumi.Output[int]:
         """
-        the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+        Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
         """
         return pulumi.get(self, "order")
 

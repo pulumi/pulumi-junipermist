@@ -5,6 +5,7 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.junipermist.org.inputs.ServicepolicyAamwArgs;
 import com.pulumi.junipermist.org.inputs.ServicepolicyAntivirusArgs;
 import com.pulumi.junipermist.org.inputs.ServicepolicyAppqoeArgs;
 import com.pulumi.junipermist.org.inputs.ServicepolicyEwfArgs;
@@ -21,6 +22,21 @@ import javax.annotation.Nullable;
 public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs {
 
     public static final ServicepolicyState Empty = new ServicepolicyState();
+
+    /**
+     * For SRX Only
+     * 
+     */
+    @Import(name="aamw")
+    private @Nullable Output<ServicepolicyAamwArgs> aamw;
+
+    /**
+     * @return For SRX Only
+     * 
+     */
+    public Optional<Output<ServicepolicyAamwArgs>> aamw() {
+        return Optional.ofNullable(this.aamw);
+    }
 
     /**
      * enum: `allow`, `deny`
@@ -157,6 +173,7 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
     private ServicepolicyState() {}
 
     private ServicepolicyState(ServicepolicyState $) {
+        this.aamw = $.aamw;
         this.action = $.action;
         this.antivirus = $.antivirus;
         this.appqoe = $.appqoe;
@@ -187,6 +204,27 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
 
         public Builder(ServicepolicyState defaults) {
             $ = new ServicepolicyState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aamw For SRX Only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aamw(@Nullable Output<ServicepolicyAamwArgs> aamw) {
+            $.aamw = aamw;
+            return this;
+        }
+
+        /**
+         * @param aamw For SRX Only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aamw(ServicepolicyAamwArgs aamw) {
+            return aamw(Output.of(aamw));
         }
 
         /**

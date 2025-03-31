@@ -125,28 +125,28 @@ public class Psk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.expiryNotificationTime);
     }
     /**
-     * if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      * 
      */
     @Export(name="mac", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mac;
 
     /**
-     * @return if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * @return If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      * 
      */
     public Output<Optional<String>> mac() {
         return Codegen.optional(this.mac);
     }
     /**
-     * if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+     * If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
      * 
      */
     @Export(name="macs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> macs;
 
     /**
-     * @return if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+     * @return If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
      * 
      */
     public Output<Optional<List<String>>> macs() {

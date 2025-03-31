@@ -19,7 +19,7 @@ public final class GatewaytemplateIdpProfilesOverwriteArgs extends com.pulumi.re
     /**
      * enum:
      *   * alert (default)
-     *   * drop: siliently dropping packets
+     *   * drop: silently dropping packets
      *   * close: notify client/server to close connection
      * 
      */
@@ -29,7 +29,7 @@ public final class GatewaytemplateIdpProfilesOverwriteArgs extends com.pulumi.re
     /**
      * @return enum:
      *   * alert (default)
-     *   * drop: siliently dropping packets
+     *   * drop: silently dropping packets
      *   * close: notify client/server to close connection
      * 
      */
@@ -80,7 +80,7 @@ public final class GatewaytemplateIdpProfilesOverwriteArgs extends com.pulumi.re
         /**
          * @param action enum:
          *   * alert (default)
-         *   * drop: siliently dropping packets
+         *   * drop: silently dropping packets
          *   * close: notify client/server to close connection
          * 
          * @return builder
@@ -94,7 +94,7 @@ public final class GatewaytemplateIdpProfilesOverwriteArgs extends com.pulumi.re
         /**
          * @param action enum:
          *   * alert (default)
-         *   * drop: siliently dropping packets
+         *   * drop: silently dropping packets
          *   * close: notify client/server to close connection
          * 
          * @return builder

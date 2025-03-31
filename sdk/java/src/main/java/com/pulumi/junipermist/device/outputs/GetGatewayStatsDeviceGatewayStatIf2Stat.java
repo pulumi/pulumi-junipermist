@@ -21,10 +21,26 @@ public final class GetGatewayStatsDeviceGatewayStatIf2Stat {
     private String portId;
     private String portUsage;
     private String redundancyState;
+    /**
+     * @return Amount of traffic received since connection
+     * 
+     */
     private Integer rxBytes;
+    /**
+     * @return Amount of packets received since connection
+     * 
+     */
     private Integer rxPkts;
     private GetGatewayStatsDeviceGatewayStatIf2StatServpInfo servpInfo;
+    /**
+     * @return Amount of traffic sent since connection
+     * 
+     */
     private Integer txBytes;
+    /**
+     * @return Amount of packets sent since connection
+     * 
+     */
     private Integer txPkts;
     private Boolean up;
     private Integer vlan;
@@ -53,18 +69,34 @@ public final class GetGatewayStatsDeviceGatewayStatIf2Stat {
     public String redundancyState() {
         return this.redundancyState;
     }
+    /**
+     * @return Amount of traffic received since connection
+     * 
+     */
     public Integer rxBytes() {
         return this.rxBytes;
     }
+    /**
+     * @return Amount of packets received since connection
+     * 
+     */
     public Integer rxPkts() {
         return this.rxPkts;
     }
     public GetGatewayStatsDeviceGatewayStatIf2StatServpInfo servpInfo() {
         return this.servpInfo;
     }
+    /**
+     * @return Amount of traffic sent since connection
+     * 
+     */
     public Integer txBytes() {
         return this.txBytes;
     }
+    /**
+     * @return Amount of packets sent since connection
+     * 
+     */
     public Integer txPkts() {
         return this.txPkts;
     }

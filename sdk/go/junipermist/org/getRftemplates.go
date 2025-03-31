@@ -53,6 +53,7 @@ func GetRftemplates(ctx *pulumi.Context, args *GetRftemplatesArgs, opts ...pulum
 // A collection of arguments for invoking getRftemplates.
 type GetRftemplatesArgs struct {
 	OrgId string `pulumi:"orgId"`
+	Page  *int   `pulumi:"page"`
 }
 
 // A collection of values returned by getRftemplates.
@@ -61,6 +62,7 @@ type GetRftemplatesResult struct {
 	Id             string                        `pulumi:"id"`
 	OrgId          string                        `pulumi:"orgId"`
 	OrgRftemplates []GetRftemplatesOrgRftemplate `pulumi:"orgRftemplates"`
+	Page           *int                          `pulumi:"page"`
 }
 
 func GetRftemplatesOutput(ctx *pulumi.Context, args GetRftemplatesOutputArgs, opts ...pulumi.InvokeOption) GetRftemplatesResultOutput {
@@ -75,6 +77,7 @@ func GetRftemplatesOutput(ctx *pulumi.Context, args GetRftemplatesOutputArgs, op
 // A collection of arguments for invoking getRftemplates.
 type GetRftemplatesOutputArgs struct {
 	OrgId pulumi.StringInput `pulumi:"orgId"`
+	Page  pulumi.IntPtrInput `pulumi:"page"`
 }
 
 func (GetRftemplatesOutputArgs) ElementType() reflect.Type {
@@ -107,6 +110,10 @@ func (o GetRftemplatesResultOutput) OrgId() pulumi.StringOutput {
 
 func (o GetRftemplatesResultOutput) OrgRftemplates() GetRftemplatesOrgRftemplateArrayOutput {
 	return o.ApplyT(func(v GetRftemplatesResult) []GetRftemplatesOrgRftemplate { return v.OrgRftemplates }).(GetRftemplatesOrgRftemplateArrayOutput)
+}
+
+func (o GetRftemplatesResultOutput) Page() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRftemplatesResult) *int { return v.Page }).(pulumi.IntPtrOutput)
 }
 
 func init() {

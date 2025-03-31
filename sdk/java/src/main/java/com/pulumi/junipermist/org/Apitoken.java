@@ -96,14 +96,14 @@ public class Apitoken extends com.pulumi.resources.CustomResource {
         return this.key;
     }
     /**
-     * name of the token
+     * Name of the token
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return name of the token
+     * @return Name of the token
      * 
      */
     public Output<String> name() {
@@ -116,28 +116,28 @@ public class Apitoken extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * list of privileges the token has on the orgs/sites
+     * List of privileges the token has on the orgs/sites
      * 
      */
     @Export(name="privileges", refs={List.class,ApitokenPrivilege.class}, tree="[0,1]")
     private Output<List<ApitokenPrivilege>> privileges;
 
     /**
-     * @return list of privileges the token has on the orgs/sites
+     * @return List of privileges the token has on the orgs/sites
      * 
      */
     public Output<List<ApitokenPrivilege>> privileges() {
         return this.privileges;
     }
     /**
-     * list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+     * List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
      * 
      */
     @Export(name="srcIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> srcIps;
 
     /**
-     * @return list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+     * @return List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
      * 
      */
     public Output<Optional<List<String>>> srcIps() {
