@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string AdminSsoId;
         /// <summary>
-        /// when the object has been created, in epoch
+        /// When the object has been created, in epoch
         /// </summary>
         public readonly double CreatedTime;
         /// <summary>
@@ -34,15 +34,15 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int ExpiryNotificationTime;
         /// <summary>
-        /// Unique ID of the object instance in the Mist Organnization
+        /// Unique ID of the object instance in the Mist Organization
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        /// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         /// </summary>
         public readonly string Mac;
         /// <summary>
-        /// when the object has been modified for the last time, in epoch
+        /// When the object has been modified for the last time, in epoch
         /// </summary>
         public readonly double ModifiedTime;
         public readonly string Name;

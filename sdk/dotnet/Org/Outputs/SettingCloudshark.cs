@@ -13,15 +13,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingCloudshark
     {
-        public readonly string Apitoken;
+        public readonly string? Apitoken;
         /// <summary>
-        /// If using CS Enteprise
+        /// If using CS Enterprise
         /// </summary>
         public readonly string? Url;
 
         [OutputConstructor]
         private SettingCloudshark(
-            string apitoken,
+            string? apitoken,
 
             string? url)
         {

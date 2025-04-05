@@ -74,13 +74,13 @@ export interface GetConstApplicationsConstApplication {
 
 export interface GetConstCountriesConstCountry {
     /**
-     * country code, in two-character
+     * Country code, in two-character
      */
     alpha2: string;
     certified: boolean;
     name: string;
     /**
-     * country code, ISO 3166-1 numeric
+     * Country code, ISO 3166-1 numeric
      */
     numeric: number;
 }
@@ -98,19 +98,23 @@ export interface GetConstTrafficTypesConstTrafficType {
 
 export interface GetConstWebhooksConstWebhook {
     /**
-     * can be used in org webhooks, optional
+     * supports single event per message results
+     */
+    allowsSingleEventPerMessage: boolean;
+    /**
+     * Can be used in org webhooks, optional
      */
     forOrg: boolean;
     /**
-     * supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
+     * Supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
      */
     hasDeliveryResults: boolean;
     /**
-     * internal topic (not selectable in site/org webhooks)
+     * Internal topic (not selectable in site/org webhooks)
      */
     internal: boolean;
     /**
-     * webhook topic name
+     * Webhook topic name
      */
     key: string;
 }
@@ -184,6 +188,9 @@ export interface UpgradeDeviceFwupdate {
      */
     status: string;
     statusId: number;
+    /**
+     * Epoch (seconds)
+     */
     timestamp: number;
     willRetry: boolean;
 }
@@ -197,11 +204,12 @@ export namespace device {
         /**
          * Required if enabled, aeroscout server host
          */
-        host?: string;
+        host: string;
         /**
          * Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
          */
         locateConnected: boolean;
+        port: number;
     }
 
     export interface ApBleConfig {
@@ -212,11 +220,11 @@ export namespace device {
         /**
          * Required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
          */
-        beaconRate: number;
+        beaconRate?: number;
         /**
          * enum: `custom`, `default`
          */
-        beaconRateMode: string;
+        beaconRateMode?: string;
         /**
          * List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
          */
@@ -224,86 +232,86 @@ export namespace device {
         /**
          * Can be enabled if `beaconEnabled`==`true`, whether to send custom packet
          */
-        customBlePacketEnabled: boolean;
+        customBlePacketEnabled?: boolean;
         /**
          * The custom frame to be sent out in this beacon. The frame must be a hexstring
          */
-        customBlePacketFrame: string;
+        customBlePacketFrame?: string;
         /**
          * Frequency (msec) of data emitted by custom ble beacon
          */
-        customBlePacketFreqMsec: number;
+        customBlePacketFreqMsec?: number;
         /**
          * Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
          */
-        eddystoneUidAdvPower: number;
-        eddystoneUidBeams: string;
+        eddystoneUidAdvPower?: number;
+        eddystoneUidBeams?: string;
         /**
          * Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
          */
-        eddystoneUidEnabled: boolean;
+        eddystoneUidEnabled?: boolean;
         /**
          * Frequency (msec) of data emmit by Eddystone-UID beacon
          */
-        eddystoneUidFreqMsec: number;
+        eddystoneUidFreqMsec?: number;
         /**
          * Eddystone-UID instance for the device
          */
-        eddystoneUidInstance: string;
+        eddystoneUidInstance?: string;
         /**
          * Eddystone-UID namespace
          */
-        eddystoneUidNamespace: string;
+        eddystoneUidNamespace?: string;
         /**
          * Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
          */
-        eddystoneUrlAdvPower: number;
-        eddystoneUrlBeams: string;
+        eddystoneUrlAdvPower?: number;
+        eddystoneUrlBeams?: string;
         /**
          * Only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
          */
-        eddystoneUrlEnabled: boolean;
+        eddystoneUrlEnabled?: boolean;
         /**
          * Frequency (msec) of data emit by Eddystone-UID beacon
          */
-        eddystoneUrlFreqMsec: number;
+        eddystoneUrlFreqMsec?: number;
         /**
          * URL pointed by Eddystone-URL beacon
          */
-        eddystoneUrlUrl: string;
+        eddystoneUrlUrl?: string;
         /**
          * Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
          */
-        ibeaconAdvPower: number;
-        ibeaconBeams: string;
+        ibeaconAdvPower?: number;
+        ibeaconBeams?: string;
         /**
          * Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
          */
-        ibeaconEnabled: boolean;
+        ibeaconEnabled?: boolean;
         /**
          * Frequency (msec) of data emmit for iBeacon
          */
-        ibeaconFreqMsec: number;
+        ibeaconFreqMsec?: number;
         /**
          * Major number for iBeacon
          */
-        ibeaconMajor: number;
+        ibeaconMajor?: number;
         /**
          * Minor number for iBeacon
          */
-        ibeaconMinor: number;
+        ibeaconMinor?: number;
         /**
          * Optional, if not specified, the same UUID as the beacon will be used
          */
-        ibeaconUuid: string;
+        ibeaconUuid?: string;
         /**
          * Required if `powerMode`==`custom`; else use `powerMode` as default
          */
-        power: number;
+        power?: number;
         /**
          * enum: `custom`, `default`
          */
-        powerMode: string;
+        powerMode?: string;
     }
 
     export interface ApCentrak {
@@ -345,15 +353,15 @@ export namespace device {
         /**
          * Only if `type`==`imagotag` or `type`==`native`
          */
-        host?: string;
+        host: string;
         /**
          * Only if `type`==`imagotag` or `type`==`native`
          */
         port?: number;
         /**
-         * note: bleConfig will be ingored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+         * note: bleConfig will be ignored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
          */
-        type?: string;
+        type: string;
         /**
          * Only if `type`==`imagotag` or `type`==`native`
          */
@@ -383,7 +391,7 @@ export namespace device {
          */
         ip?: string;
         ip6?: string;
-        mtu?: number;
+        mtu: number;
         /**
          * Required if `type`==`static`
          */
@@ -396,11 +404,15 @@ export namespace device {
         /**
          * enum: `autoconf`, `dhcp`, `disabled`, `static`
          */
-        type6: string;
+        type6?: string;
         /**
          * Management VLAN id, default is 1 (untagged)
          */
-        vlanId: number;
+        vlanId?: number;
+    }
+
+    export interface ApLacpConfig {
+        enabled: boolean;
     }
 
     export interface ApLed {
@@ -409,6 +421,10 @@ export namespace device {
     }
 
     export interface ApMesh {
+        /**
+         * List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+         */
+        bands?: string[];
         /**
          * Whether mesh is enabled on this AP
          */
@@ -435,7 +451,7 @@ export namespace device {
     }
 
     export interface ApRadioConfig {
-        allowRrmDisable: boolean;
+        allowRrmDisable?: boolean;
         /**
          * Antenna gain for 2.4G - for models with external antenna only
          */
@@ -451,7 +467,7 @@ export namespace device {
         /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
-        antennaMode: string;
+        antennaMode?: string;
         /**
          * Radio Band AP settings
          */
@@ -475,7 +491,7 @@ export namespace device {
         /**
          * To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
          */
-        indoorUse: boolean;
+        indoorUse?: boolean;
         /**
          * Whether scanning radio is enabled
          */
@@ -533,7 +549,7 @@ export namespace device {
         /**
          * channel width for the 5GHz band. enum: `20`, `40`, `80`
          */
-        bandwidth?: number;
+        bandwidth: number;
         /**
          * For Device. (primary) channel for the band, 0 means using the Site Setting
          */
@@ -574,7 +590,7 @@ export namespace device {
         /**
          * channel width for the 5GHz band. enum: `20`, `40`, `80`
          */
-        bandwidth?: number;
+        bandwidth: number;
         /**
          * For Device. (primary) channel for the band, 0 means using the Site Setting
          */
@@ -652,20 +668,20 @@ export namespace device {
 
     export interface ApUplinkPortConfig {
         /**
-         * Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
+         * Whether to do 802.1x against uplink switch. When enabled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
          */
         dot1x: boolean;
         /**
          * By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
          */
-        keepWlansUpIfDown: boolean;
+        keepWlansUpIfDown?: boolean;
     }
 
     export interface ApUsbConfig {
         /**
          * Only if `type`==`imagotag`
          */
-        cacert?: string;
+        cacert: string;
         /**
          * Only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
          */
@@ -677,11 +693,11 @@ export namespace device {
         /**
          * Only if `type`==`imagotag`
          */
-        host?: string;
+        host: string;
         /**
          * Only if `type`==`imagotag`
          */
-        port: number;
+        port?: number;
         /**
          * usb config type. enum: `hanshow`, `imagotag`, `solum`
          */
@@ -693,7 +709,7 @@ export namespace device {
         /**
          * Only if `type`==`solum` or `type`==`hanshow`
          */
-        vlanId: number;
+        vlanId?: number;
     }
 
     export interface BaseLatlng {
@@ -736,8 +752,14 @@ export namespace device {
          * Default import policies if no per-neighbor policies defined
          */
         importPolicy?: string;
-        localAs?: number;
-        neighborAs?: number;
+        /**
+         * Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         */
+        localAs?: string;
+        /**
+         * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         */
+        neighborAs?: string;
         /**
          * If per-neighbor as is desired. Property key is the neighbor address
          */
@@ -746,6 +768,7 @@ export namespace device {
          * If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
          */
         networks: string[];
+        noPrivateAs: boolean;
         /**
          * By default, we'll re-advertise all learned BGP routers toward overlay
          */
@@ -781,12 +804,15 @@ export namespace device {
          * Assuming BGP neighbor is directly connected
          */
         multihopTtl?: number;
-        neighborAs?: number;
+        /**
+         * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         */
+        neighborAs?: string;
     }
 
     export interface GatewayClusterNode {
         /**
-         * Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+         * Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
          */
         mac: string;
     }
@@ -812,7 +838,7 @@ export namespace device {
          */
         dnsSuffixes: string[];
         /**
-         * If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+         * If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
          */
         fixedBindings?: {[key: string]: outputs.device.GatewayDhcpdConfigConfigFixedBindings};
         /**
@@ -907,7 +933,7 @@ export namespace device {
          */
         baseProfile?: string;
         /**
-         * Unique ID of the object instance in the Mist Organnization
+         * Unique ID of the object instance in the Mist Organization
          */
         id?: string;
         name?: string;
@@ -919,7 +945,7 @@ export namespace device {
         /**
          * enum:
          *   * alert (default)
-         *   * drop: siliently dropping packets
+         *   * drop: silently dropping packets
          *   * close: notify client/server to close connection
          */
         action: string;
@@ -934,8 +960,8 @@ export namespace device {
     }
 
     export interface GatewayIpConfigs {
-        ip: string;
-        netmask: string;
+        ip?: string;
+        netmask?: string;
         /**
          * Optional list of secondary IPs in CIDR format
          */
@@ -1035,7 +1061,7 @@ export namespace device {
 
     export interface GatewayNetworkMulticast {
         /**
-         * If the network will only be the soruce of the multicast traffic, IGMP can be disabled
+         * If the network will only be the source of the multicast traffic, IGMP can be disabled
          */
         disableIgmp: boolean;
         enabled: boolean;
@@ -1330,9 +1356,13 @@ export namespace device {
          */
         redundant: boolean;
         /**
-         * If HA mode
+         * If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
          */
-        rethIdx?: number;
+        redundantGroup?: number;
+        /**
+         * For SRX only and if HA Mode
+         */
+        rethIdx?: string;
         /**
          * If HA mode
          */
@@ -1369,7 +1399,7 @@ export namespace device {
          */
         wanExtIp?: string;
         /**
-         * Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+         * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
          */
         wanExtraRoutes?: {[key: string]: outputs.device.GatewayPortConfigWanExtraRoutes};
         /**
@@ -1435,7 +1465,7 @@ export namespace device {
 
     export interface GatewayPortConfigTrafficShaping {
         /**
-         * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+         * percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: number[];
         enabled: boolean;
@@ -1455,15 +1485,11 @@ export namespace device {
          */
         bfdUseTunnelMode: boolean;
         /**
-         * Only if the VPN `type`==`mesh`
-         */
-        linkName?: string;
-        /**
          * Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
          */
         preference?: number;
         /**
-         * Only if the VPN `type`==`hubSpoke`. enum: `hub`, `spoke`
+         * If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
          */
         role: string;
         trafficShaping?: outputs.device.GatewayPortConfigVpnPathsTrafficShaping;
@@ -1471,7 +1497,7 @@ export namespace device {
 
     export interface GatewayPortConfigVpnPathsTrafficShaping {
         /**
-         * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+         * percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: number[];
         enabled: boolean;
@@ -1542,10 +1568,6 @@ export namespace device {
          */
         addTargetVrfs?: string[];
         /**
-         * route aggregation
-         */
-        aggregates?: string[];
-        /**
          * When used as export policy, optional
          */
         communities?: string[];
@@ -1557,7 +1579,7 @@ export namespace device {
         /**
          * When used as export policy, optional
          */
-        exportCommunitites?: string[];
+        exportCommunities?: string[];
         /**
          * Optional, for an import policy, localPreference can be changed
          */
@@ -1580,7 +1602,7 @@ export namespace device {
          */
         prefixes?: string[];
         /**
-         * `direct`, `bgp`, `osp`, ...
+         * `direct`, `bgp`, `osp`, `static`, `aggregate`...
          */
         protocols?: string[];
         routeExists?: outputs.device.GatewayRoutingPoliciesTermMatchingRouteExists;
@@ -1641,7 +1663,7 @@ export namespace device {
          */
         servicepolicyId?: string;
         /**
-         * Required when `servicepolicyId` is not defined. List of Applications / Desctinations
+         * Required when `servicepolicyId` is not defined. List of Applications / Destinations
          */
         services: string[];
         /**
@@ -1656,7 +1678,7 @@ export namespace device {
 
     export interface GatewayServicePolicyAntivirus {
         /**
-         * org-level AV Profile can be used, this takes precendence over 'profile'
+         * org-level AV Profile can be used, this takes precedence over 'profile'
          */
         avprofileId?: string;
         enabled: boolean;
@@ -2055,16 +2077,23 @@ export namespace device {
         configReverted: boolean;
         cpuSystem: number;
         cpuUtil: number;
+        /**
+         * When the object has been created, in epoch
+         */
         createdTime: number;
         deviceprofileId: string;
         /**
-         * device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
+         * Device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
          */
         envStat: outputs.device.GetApStatsDeviceApStatEnvStat;
         eslStat: outputs.device.GetApStatsDeviceApStatEslStat;
         extIp: string;
         fwupdate: outputs.device.GetApStatsDeviceApStatFwupdate;
+        gps: outputs.device.GetApStatsDeviceApStatGps;
         hwRev: string;
+        /**
+         * Unique ID of the object instance in the Mist Organization
+         */
         id: string;
         inactiveWiredVlans: number[];
         iotStat: {[key: string]: outputs.device.GetApStatsDeviceApStatIotStat};
@@ -2075,15 +2104,15 @@ export namespace device {
         ipConfig: outputs.device.GetApStatsDeviceApStatIpConfig;
         ipStat: outputs.device.GetApStatsDeviceApStatIpStat;
         /**
-         * l2tp tunnel status (key is the wxtunnel*id)
+         * L2TP tunnel status (key is the wxtunnel_id)
          */
         l2tpStat: {[key: string]: outputs.device.GetApStatsDeviceApStatL2tpStat};
         /**
-         * last seen timestamp
+         * Last seen timestamp
          */
         lastSeen: number;
         /**
-         * last trouble code of switch
+         * Last trouble code of switch
          */
         lastTrouble: outputs.device.GetApStatsDeviceApStatLastTrouble;
         /**
@@ -2096,47 +2125,54 @@ export namespace device {
         lldpStat: outputs.device.GetApStatsDeviceApStatLldpStat;
         locating: boolean;
         /**
-         * whether this AP is considered locked (placement / orientation has been vetted)
+         * Whether this AP is considered locked (placement / orientation has been vetted)
          */
         locked: boolean;
         /**
-         * device mac
+         * Device mac
          */
         mac: string;
         mapId: string;
         memUsedKb: number;
         /**
-         * Property key is the mesh downlink id (e.g `00000000-0000-0000-1000-5c5b35000010`)
+         * Property key is the mesh downlink id (e.g. `00000000-0000-0000-1000-5c5b35000010`)
          */
         meshDownlinks: {[key: string]: outputs.device.GetApStatsDeviceApStatMeshDownlinks};
         meshUplink: outputs.device.GetApStatsDeviceApStatMeshUplink;
         /**
-         * device model
+         * Device model
          */
         model: string;
+        /**
+         * When the object has been modified for the last time, in epoch
+         */
         modifiedTime: number;
         mount: string;
         name: string;
         notes: string;
         /**
-         * how many wireless clients are currently connected
+         * How many wireless clients are currently connected
          */
         numClients: number;
+        /**
+         * How many WLANs are applied to the device
+         */
+        numWlans: number;
         orgId: string;
         /**
          * Property key is the port name (e.g. `eth0`)
          */
         portStat: {[key: string]: outputs.device.GetApStatsDeviceApStatPortStat};
         /**
-         * in mW, surplus if positive or deficit if negative
+         * In mW, surplus if positive or deficit if negative
          */
         powerBudget: number;
         /**
-         * whether insufficient power
+         * Whether insufficient power
          */
         powerConstrained: boolean;
         /**
-         * constrained mode
+         * Constrained mode
          */
         powerOpmode: string;
         /**
@@ -2144,21 +2180,39 @@ export namespace device {
          */
         powerSrc: string;
         radioStat: outputs.device.GetApStatsDeviceApStatRadioStat;
+        /**
+         * Rate of receiving traffic, bits/seconds, last known
+         */
         rxBps: number;
+        /**
+         * Amount of traffic received since connection
+         */
         rxBytes: number;
+        /**
+         * Amount of packets received since connection
+         */
         rxPkts: number;
         /**
-         * serial
+         * Serial Number
          */
         serial: string;
         siteId: string;
         status: string;
         switchRedundancy: outputs.device.GetApStatsDeviceApStatSwitchRedundancy;
+        /**
+         * Rate of transmitting traffic, bits/seconds, last known
+         */
         txBps: number;
+        /**
+         * Amount of traffic sent since connection
+         */
         txBytes: number;
+        /**
+         * Amount of packets sent since connection
+         */
         txPkts: number;
         /**
-         * how long, in seconds, has the device been up (or rebooted)
+         * How long, in seconds, has the device been up (or rebooted)
          */
         uptime: number;
         usbStat: outputs.device.GetApStatsDeviceApStatUsbStat;
@@ -2184,10 +2238,6 @@ export namespace device {
          * Additional info about placement status
          */
         statusDetail: string;
-        /**
-         * Flag to represent if autoPlacement values are currently utilized
-         */
-        useAutoPlacement: boolean;
         /**
          * X Autoplaced Position in pixels
          */
@@ -2261,12 +2311,24 @@ export namespace device {
         major: number;
         minors: number[];
         power: number;
+        /**
+         * Amount of traffic received since connection
+         */
         rxBytes: number;
+        /**
+         * Amount of packets received since connection
+         */
         rxPkts: number;
+        /**
+         * Amount of traffic sent since connection
+         */
         txBytes: number;
+        /**
+         * Amount of packets sent since connection
+         */
         txPkts: number;
         /**
-         * resets due to tx hung
+         * Resets due to tx hung
          */
         txResets: number;
         uuid: string;
@@ -2296,10 +2358,45 @@ export namespace device {
 
     export interface GetApStatsDeviceApStatFwupdate {
         progress: number;
+        /**
+         * enum: `inprogress`, `failed`, `upgraded`
+         */
         status: string;
         statusId: number;
+        /**
+         * Epoch (seconds)
+         */
         timestamp: number;
         willRetry: boolean;
+    }
+
+    export interface GetApStatsDeviceApStatGps {
+        /**
+         * The estimated accuracy or accuracy of the GPS coordinates, measured in meters.
+         */
+        accuracy: number;
+        /**
+         * The elevation of the AP above sea level, measured in meters.
+         */
+        altitude: number;
+        /**
+         * The geographic latitude of the AP, measured in degrees.
+         */
+        latitude: number;
+        /**
+         * The geographic longitude of the AP, measured in degrees.
+         */
+        longitude: number;
+        /**
+         * The origin of the GPS data. enum:
+         *   * `gps`: from this device’s GPS estimates
+         *   * `otherAp` from neighboring device GPS estimates
+         */
+        src: string;
+        /**
+         * Epoch (seconds)
+         */
+        timestamp: number;
     }
 
     export interface GetApStatsDeviceApStatIotStat {
@@ -2308,33 +2405,39 @@ export namespace device {
 
     export interface GetApStatsDeviceApStatIpConfig {
         /**
-         * if `type`==`static`
+         * If `type`==`static`
          */
         dns: string[];
         /**
-         * required if `type`==`static`
+         * Required if `type`==`static`
          */
         dnsSuffixes: string[];
         /**
-         * required if `type`==`static`
+         * Required if `type`==`static`
          */
         gateway: string;
         gateway6: string;
         /**
-         * required if `type`==`static`
+         * Required if `type`==`static`
          */
         ip: string;
         ip6: string;
         mtu: number;
         /**
-         * required if `type`==`static`
+         * Required if `type`==`static`
          */
         netmask: string;
         netmask6: string;
+        /**
+         * enum: `dhcp`, `static`
+         */
         type: string;
+        /**
+         * enum: `autoconf`, `dhcp`, `disabled`, `static`
+         */
         type6: string;
         /**
-         * management vlan id, default is 1 (untagged)
+         * Management VLAN id, default is 1 (untagged)
          */
         vlanId: number;
     }
@@ -2354,12 +2457,15 @@ export namespace device {
 
     export interface GetApStatsDeviceApStatL2tpStat {
         /**
-         * list of sessions
+         * List of sessions
          */
         sessions: outputs.device.GetApStatsDeviceApStatL2tpStatSession[];
+        /**
+         * enum: `established`, `establishedWithSession`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+         */
         state: string;
         /**
-         * uptime
+         * Uptime
          */
         uptime: number;
         /**
@@ -2370,7 +2476,7 @@ export namespace device {
 
     export interface GetApStatsDeviceApStatL2tpStatSession {
         /**
-         * remote sessions id (dynamically unless Tunnel is said to be static)
+         * Remote sessions id (dynamically unless Tunnel is said to be static)
          */
         localSid: number;
         /**
@@ -2378,17 +2484,23 @@ export namespace device {
          */
         remoteId: string;
         /**
-         * remote sessions id (dynamically unless Tunnel is said to be static)
+         * Remote sessions id (dynamically unless Tunnel is said to be static)
          */
         remoteSid: number;
+        /**
+         * enum: `established`, `establishedWithSession`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+         */
         state: string;
     }
 
     export interface GetApStatsDeviceApStatLastTrouble {
         /**
-         * Code definitions list at /api/v1/consts/ap*led*status
+         * Code definitions list at List Ap Led Definition
          */
         code: string;
+        /**
+         * Epoch (seconds)
+         */
         timestamp: number;
     }
 
@@ -2400,11 +2512,11 @@ export namespace device {
     export interface GetApStatsDeviceApStatLldpStat {
         chassisId: string;
         /**
-         * whether it support LLDP-MED
+         * Whether it support LLDP-MED
          */
         lldpMedSupported: boolean;
         /**
-         * switch’s management address (if advertised), can be IPv4, IPv6, or MAC
+         * Switch’s management address (if advertised), can be IPv4, IPv6, or MAC
          */
         mgmtAddr: string;
         mgmtAddrs: string[];
@@ -2414,27 +2526,27 @@ export namespace device {
         portDesc: string;
         portId: string;
         /**
-         * in mW, provided/allocated by PSE
+         * In mW, provided/allocated by PSE
          */
         powerAllocated: number;
         /**
-         * in mW, total power needed by PD
+         * In mW, total power needed by PD
          */
         powerDraw: number;
         /**
-         * number of negotiations, if it keeps increasing, we don’t have a stable power
+         * Number of negotiations, if it keeps increasing, we don’ t have a stable power
          */
         powerRequestCount: number;
         /**
-         * in mW, the current power requested by PD
+         * In mW, the current power requested by PD
          */
         powerRequested: number;
         /**
-         * description provided by switch
+         * Description provided by switch
          */
         systemDesc: string;
         /**
-         * name of the switch
+         * Name of the switch
          */
         systemName: string;
     }
@@ -2443,20 +2555,53 @@ export namespace device {
         band: string;
         channel: number;
         idleTime: number;
+        /**
+         * Last seen timestamp
+         */
         lastSeen: number;
         proto: string;
         rssi: number;
+        /**
+         * Rate of receiving traffic, bits/seconds, last known
+         */
         rxBps: number;
+        /**
+         * Amount of traffic received since connection
+         */
         rxBytes: number;
+        /**
+         * Amount of packets received since connection
+         */
         rxPackets: number;
+        /**
+         * RX Rate, Mbps
+         */
         rxRate: number;
+        /**
+         * Amount of rx retries
+         */
         rxRetries: number;
         siteId: string;
         snr: number;
+        /**
+         * Rate of transmitting traffic, bits/seconds, last known
+         */
         txBps: number;
+        /**
+         * Amount of traffic sent since connection
+         */
         txBytes: number;
+        /**
+         * Amount of packets sent since connection
+         */
         txPackets: number;
+        /**
+         * TX Rate, Mbps
+         */
         txRate: number;
+        /**
+         * Amount of tx retries
+         */
         txRetries: number;
     }
 
@@ -2464,220 +2609,315 @@ export namespace device {
         band: string;
         channel: number;
         idleTime: number;
+        /**
+         * Last seen timestamp
+         */
         lastSeen: number;
         proto: string;
         rssi: number;
+        /**
+         * Rate of receiving traffic, bits/seconds, last known
+         */
         rxBps: number;
+        /**
+         * Amount of traffic received since connection
+         */
         rxBytes: number;
+        /**
+         * Amount of packets received since connection
+         */
         rxPackets: number;
+        /**
+         * RX Rate, Mbps
+         */
         rxRate: number;
+        /**
+         * Amount of rx retries
+         */
         rxRetries: number;
         siteId: string;
         snr: number;
+        /**
+         * Rate of transmitting traffic, bits/seconds, last known
+         */
         txBps: number;
+        /**
+         * Amount of traffic sent since connection
+         */
         txBytes: number;
+        /**
+         * Amount of packets sent since connection
+         */
         txPackets: number;
+        /**
+         * TX Rate, Mbps
+         */
         txRate: number;
+        /**
+         * Amount of tx retries
+         */
         txRetries: number;
         uplinkApId: string;
     }
 
     export interface GetApStatsDeviceApStatPortStat {
         fullDuplex: boolean;
+        /**
+         * Amount of traffic received since connection
+         */
         rxBytes: number;
         rxErrors: number;
+        rxPeakBps: number;
+        /**
+         * Amount of packets received since connection
+         */
         rxPkts: number;
         speed: number;
+        /**
+         * Amount of traffic sent since connection
+         */
         txBytes: number;
+        txPeakBps: number;
+        /**
+         * Amount of packets sent since connection
+         */
         txPkts: number;
         up: boolean;
     }
 
     export interface GetApStatsDeviceApStatRadioStat {
         /**
-         * radio stat
+         * Radio stat
          */
         band24: outputs.device.GetApStatsDeviceApStatRadioStatBand24;
         /**
-         * radio stat
+         * Radio stat
          */
         band5: outputs.device.GetApStatsDeviceApStatRadioStatBand5;
         /**
-         * radio stat
+         * Radio stat
          */
         band6: outputs.device.GetApStatsDeviceApStatRadioStatBand6;
     }
 
     export interface GetApStatsDeviceApStatRadioStatBand24 {
         /**
-         * channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
+         * channel width for the band.enum: `20`, `40`, `80` (only applicable for band5 and band_6), `160` (only for band_6)
          */
         bandwidth: number;
         /**
-         * current channel the radio is running on
+         * Current channel the radio is running on
          */
         channel: number;
         /**
          * Use dynamic chaining for downlink
          */
-        dynamicChainingEnalbed: boolean;
+        dynamicChainingEnabled: boolean;
         /**
-         * radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+         * Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
          */
         mac: string;
         noiseFloor: number;
         numClients: number;
         /**
-         * transmit power (in dBm)
+         * How many WLANs are applied to the radio
+         */
+        numWlans: number;
+        /**
+         * Transmit power (in dBm)
          */
         power: number;
+        /**
+         * Amount of traffic received since connection
+         */
         rxBytes: number;
+        /**
+         * Amount of packets received since connection
+         */
         rxPkts: number;
+        /**
+         * Amount of traffic sent since connection
+         */
         txBytes: number;
+        /**
+         * Amount of packets sent since connection
+         */
         txPkts: number;
         usage: string;
         /**
-         * all utilization in percentage
+         * All utilization in percentage
          */
         utilAll: number;
         /**
-         * reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+         * Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
          */
         utilNonWifi: number;
         /**
-         * reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
+         * Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
          */
         utilRxInBss: number;
         /**
-         * reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
+         * Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
          */
         utilRxOtherBss: number;
         /**
-         * transmission utilization in percentage
+         * Transmission utilization in percentage
          */
         utilTx: number;
         /**
-         * reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+         * Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
          */
         utilUndecodableWifi: number;
         /**
-         * reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+         * Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
          */
         utilUnknownWifi: number;
     }
 
     export interface GetApStatsDeviceApStatRadioStatBand5 {
         /**
-         * channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
+         * channel width for the band.enum: `20`, `40`, `80` (only applicable for band5 and band_6), `160` (only for band_6)
          */
         bandwidth: number;
         /**
-         * current channel the radio is running on
+         * Current channel the radio is running on
          */
         channel: number;
         /**
          * Use dynamic chaining for downlink
          */
-        dynamicChainingEnalbed: boolean;
+        dynamicChainingEnabled: boolean;
         /**
-         * radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+         * Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
          */
         mac: string;
         noiseFloor: number;
         numClients: number;
         /**
-         * transmit power (in dBm)
+         * How many WLANs are applied to the radio
+         */
+        numWlans: number;
+        /**
+         * Transmit power (in dBm)
          */
         power: number;
+        /**
+         * Amount of traffic received since connection
+         */
         rxBytes: number;
+        /**
+         * Amount of packets received since connection
+         */
         rxPkts: number;
+        /**
+         * Amount of traffic sent since connection
+         */
         txBytes: number;
+        /**
+         * Amount of packets sent since connection
+         */
         txPkts: number;
         usage: string;
         /**
-         * all utilization in percentage
+         * All utilization in percentage
          */
         utilAll: number;
         /**
-         * reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+         * Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
          */
         utilNonWifi: number;
         /**
-         * reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
+         * Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
          */
         utilRxInBss: number;
         /**
-         * reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
+         * Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
          */
         utilRxOtherBss: number;
         /**
-         * transmission utilization in percentage
+         * Transmission utilization in percentage
          */
         utilTx: number;
         /**
-         * reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+         * Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
          */
         utilUndecodableWifi: number;
         /**
-         * reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+         * Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
          */
         utilUnknownWifi: number;
     }
 
     export interface GetApStatsDeviceApStatRadioStatBand6 {
         /**
-         * channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
+         * channel width for the band.enum: `20`, `40`, `80` (only applicable for band5 and band_6), `160` (only for band_6)
          */
         bandwidth: number;
         /**
-         * current channel the radio is running on
+         * Current channel the radio is running on
          */
         channel: number;
         /**
          * Use dynamic chaining for downlink
          */
-        dynamicChainingEnalbed: boolean;
+        dynamicChainingEnabled: boolean;
         /**
-         * radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+         * Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
          */
         mac: string;
         noiseFloor: number;
         numClients: number;
         /**
-         * transmit power (in dBm)
+         * How many WLANs are applied to the radio
+         */
+        numWlans: number;
+        /**
+         * Transmit power (in dBm)
          */
         power: number;
+        /**
+         * Amount of traffic received since connection
+         */
         rxBytes: number;
+        /**
+         * Amount of packets received since connection
+         */
         rxPkts: number;
+        /**
+         * Amount of traffic sent since connection
+         */
         txBytes: number;
+        /**
+         * Amount of packets sent since connection
+         */
         txPkts: number;
         usage: string;
         /**
-         * all utilization in percentage
+         * All utilization in percentage
          */
         utilAll: number;
         /**
-         * reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+         * Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
          */
         utilNonWifi: number;
         /**
-         * reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
+         * Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
          */
         utilRxInBss: number;
         /**
-         * reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
+         * Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
          */
         utilRxOtherBss: number;
         /**
-         * transmission utilization in percentage
+         * Transmission utilization in percentage
          */
         utilTx: number;
         /**
-         * reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+         * Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
          */
         utilUndecodableWifi: number;
         /**
-         * reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+         * Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
          */
         utilUnknownWifi: number;
     }
@@ -2697,6 +2937,10 @@ export namespace device {
     export interface GetGatewayStatsDeviceGatewayStat {
         apRedundancy: outputs.device.GetGatewayStatsDeviceGatewayStatApRedundancy;
         arpTableStats: outputs.device.GetGatewayStatsDeviceGatewayStatArpTableStats;
+        /**
+         * Only present when `bgpPeers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
+         */
+        bgpPeers: outputs.device.GetGatewayStatsDeviceGatewayStatBgpPeer[];
         certExpiry: number;
         clusterConfig: outputs.device.GetGatewayStatsDeviceGatewayStatClusterConfig;
         clusterStat: outputs.device.GetGatewayStatsDeviceGatewayStatClusterStat;
@@ -2704,6 +2948,9 @@ export namespace device {
         configStatus: string;
         cpu2Stat: outputs.device.GetGatewayStatsDeviceGatewayStatCpu2Stat;
         cpuStat: outputs.device.GetGatewayStatsDeviceGatewayStatCpuStat;
+        /**
+         * When the object has been created, in epoch
+         */
         createdTime: number;
         deviceprofileId: string;
         /**
@@ -2721,11 +2968,11 @@ export namespace device {
         fwupdate: outputs.device.GetGatewayStatsDeviceGatewayStatFwupdate;
         hasPcap: boolean;
         /**
-         * hostname reported by the device
+         * Hostname reported by the device
          */
         hostname: string;
         /**
-         * serial
+         * Unique ID of the object instance in the Mist Organization
          */
         id: string;
         /**
@@ -2744,62 +2991,71 @@ export namespace device {
         ipStat: outputs.device.GetGatewayStatsDeviceGatewayStatIpStat;
         isHa: boolean;
         /**
-         * last seen timestamp
+         * Last seen timestamp
          */
         lastSeen: number;
         /**
-         * device mac
+         * Device mac
          */
         mac: string;
         /**
-         * serial
+         * Serial Number
          */
         mapId: string;
         /**
-         * memory usage stat (for virtual chassis, memory usage of master RE)
+         * Memory usage stat (for virtual chassis, memory usage of master RE)
          */
         memory2Stat: outputs.device.GetGatewayStatsDeviceGatewayStatMemory2Stat;
         /**
-         * memory usage stat (for virtual chassis, memory usage of master RE)
+         * Memory usage stat (for virtual chassis, memory usage of master RE)
          */
         memoryStat: outputs.device.GetGatewayStatsDeviceGatewayStatMemoryStat;
         /**
-         * device model
+         * Device model
          */
         model: string;
+        /**
+         * When the object has been modified for the last time, in epoch
+         */
         modifiedTime: number;
         module2Stats: outputs.device.GetGatewayStatsDeviceGatewayStatModule2Stat[];
         moduleStats: outputs.device.GetGatewayStatsDeviceGatewayStatModuleStat[];
         /**
-         * device name if configured
+         * Device name if configured
          */
         name: string;
         nodeName: string;
-        /**
-         * serial
-         */
         orgId: string;
+        /**
+         * Only present when `ports` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/ports/search` result object, except that org*id, site*id, mac, model are removed
+         */
+        ports: outputs.device.GetGatewayStatsDeviceGatewayStatPort[];
         routeSummaryStats: outputs.device.GetGatewayStatsDeviceGatewayStatRouteSummaryStats;
         /**
-         * device name if configured
+         * Device name if configured
          */
         routerName: string;
         /**
-         * serial
+         * Serial Number
          */
         serial: string;
         service2Stat: {[key: string]: outputs.device.GetGatewayStatsDeviceGatewayStatService2Stat};
         serviceStat: {[key: string]: outputs.device.GetGatewayStatsDeviceGatewayStatServiceStat};
         serviceStatus: outputs.device.GetGatewayStatsDeviceGatewayStatServiceStatus;
-        /**
-         * serial
-         */
         siteId: string;
         spu2Stats: outputs.device.GetGatewayStatsDeviceGatewayStatSpu2Stat[];
         spuStats: outputs.device.GetGatewayStatsDeviceGatewayStatSpuStat[];
         status: string;
+        /**
+         * Only present when `tunnels` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/tunnels/search` result object, except that org*id, site*id, mac, model are removed
+         */
+        tunnels: outputs.device.GetGatewayStatsDeviceGatewayStatTunnel[];
         uptime: number;
         version: string;
+        /**
+         * Only present when `vpnPeers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/vpn_peers/search` result object, except that org*id, site*id, mac, model are removed
+         */
+        vpnPeers: outputs.device.GetGatewayStatsDeviceGatewayStatVpnPeer[];
     }
 
     export interface GetGatewayStatsDeviceGatewayStatApRedundancy {
@@ -2819,6 +3075,52 @@ export namespace device {
     export interface GetGatewayStatsDeviceGatewayStatArpTableStats {
         arpTableCount: number;
         maxEntriesSupported: number;
+    }
+
+    export interface GetGatewayStatsDeviceGatewayStatBgpPeer {
+        /**
+         * If this is created for evpn overlay
+         */
+        evpnOverlay: boolean;
+        /**
+         * If this is created for overlay
+         */
+        forOverlay: boolean;
+        localAs: string;
+        neighbor: string;
+        neighborAs: string;
+        /**
+         * If it's another device in the same org
+         */
+        neighborMac: string;
+        /**
+         * Node0/node1
+         */
+        node: string;
+        /**
+         * Amount of packets received since connection
+         */
+        rxPkts: number;
+        /**
+         * Number of received routes
+         */
+        rxRoutes: number;
+        /**
+         * enum: `active`, `connect`, `established`, `idle`, `openConfig`, `openSent`
+         */
+        state: string;
+        /**
+         * Epoch (seconds)
+         */
+        timestamp: number;
+        /**
+         * Amount of packets sent since connection
+         */
+        txPkts: number;
+        txRoutes: number;
+        up: boolean;
+        uptime: number;
+        vrfName: string;
     }
 
     export interface GetGatewayStatsDeviceGatewayStatClusterConfig {
@@ -2880,7 +3182,7 @@ export namespace device {
          */
         system: number;
         /**
-         * Percentage of CPU time being used by user processe
+         * Percentage of CPU time being used by user processes
          */
         user: number;
     }
@@ -2903,7 +3205,7 @@ export namespace device {
          */
         system: number;
         /**
-         * Percentage of CPU time being used by user processe
+         * Percentage of CPU time being used by user processes
          */
         user: number;
     }
@@ -2920,8 +3222,14 @@ export namespace device {
 
     export interface GetGatewayStatsDeviceGatewayStatFwupdate {
         progress: number;
+        /**
+         * enum: `inprogress`, `failed`, `upgraded`
+         */
         status: string;
         statusId: number;
+        /**
+         * Epoch (seconds)
+         */
         timestamp: number;
         willRetry: boolean;
     }
@@ -2934,10 +3242,22 @@ export namespace device {
         portId: string;
         portUsage: string;
         redundancyState: string;
+        /**
+         * Amount of traffic received since connection
+         */
         rxBytes: number;
+        /**
+         * Amount of packets received since connection
+         */
         rxPkts: number;
         servpInfo: outputs.device.GetGatewayStatsDeviceGatewayStatIf2StatServpInfo;
+        /**
+         * Amount of traffic sent since connection
+         */
         txBytes: number;
+        /**
+         * Amount of packets sent since connection
+         */
         txPkts: number;
         up: boolean;
         vlan: number;
@@ -2963,10 +3283,22 @@ export namespace device {
         portId: string;
         portUsage: string;
         redundancyState: string;
+        /**
+         * Amount of traffic received since connection
+         */
         rxBytes: number;
+        /**
+         * Amount of packets received since connection
+         */
         rxPkts: number;
         servpInfo: outputs.device.GetGatewayStatsDeviceGatewayStatIfStatServpInfo;
+        /**
+         * Amount of traffic sent since connection
+         */
         txBytes: number;
+        /**
+         * Amount of packets sent since connection
+         */
         txPkts: number;
         up: boolean;
         vlan: number;
@@ -3022,18 +3354,17 @@ export namespace device {
         backupVersion: string;
         biosVersion: string;
         cpldVersion: string;
-        /**
-         * used to report all error states the device node is running into.
-         * An error should always have `type` and `since` fields, and could have some other fields specific to that type.
-         */
-        errors: outputs.device.GetGatewayStatsDeviceGatewayStatModule2StatError[];
         fans: outputs.device.GetGatewayStatsDeviceGatewayStatModule2StatFan[];
         fpgaVersion: string;
+        /**
+         * Last seen timestamp
+         */
         lastSeen: number;
+        locating: boolean;
+        mac: string;
         model: string;
         opticsCpldVersion: string;
         pendingVersion: string;
-        pics: outputs.device.GetGatewayStatsDeviceGatewayStatModule2StatPic[];
         poe: outputs.device.GetGatewayStatsDeviceGatewayStatModule2StatPoe;
         poeVersion: string;
         powerCpldVersion: string;
@@ -3049,36 +3380,17 @@ export namespace device {
         vcLinks: outputs.device.GetGatewayStatsDeviceGatewayStatModule2StatVcLink[];
         vcMode: string;
         /**
-         * master / backup / linecard
+         * enum: `master`, `backup`, `linecard`
          */
         vcRole: string;
         vcState: string;
         version: string;
     }
 
-    export interface GetGatewayStatsDeviceGatewayStatModule2StatError {
-        feature: string;
-        minimumVersion: string;
-        reason: string;
-        since: number;
-        type: string;
-    }
-
     export interface GetGatewayStatsDeviceGatewayStatModule2StatFan {
         airflow: string;
         name: string;
         status: string;
-    }
-
-    export interface GetGatewayStatsDeviceGatewayStatModule2StatPic {
-        index: number;
-        modelNumber: string;
-        portGroups: outputs.device.GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroup[];
-    }
-
-    export interface GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroup {
-        count: number;
-        type: string;
     }
 
     export interface GetGatewayStatsDeviceGatewayStatModule2StatPoe {
@@ -3107,18 +3419,17 @@ export namespace device {
         backupVersion: string;
         biosVersion: string;
         cpldVersion: string;
-        /**
-         * used to report all error states the device node is running into.
-         * An error should always have `type` and `since` fields, and could have some other fields specific to that type.
-         */
-        errors: outputs.device.GetGatewayStatsDeviceGatewayStatModuleStatError[];
         fans: outputs.device.GetGatewayStatsDeviceGatewayStatModuleStatFan[];
         fpgaVersion: string;
+        /**
+         * Last seen timestamp
+         */
         lastSeen: number;
+        locating: boolean;
+        mac: string;
         model: string;
         opticsCpldVersion: string;
         pendingVersion: string;
-        pics: outputs.device.GetGatewayStatsDeviceGatewayStatModuleStatPic[];
         poe: outputs.device.GetGatewayStatsDeviceGatewayStatModuleStatPoe;
         poeVersion: string;
         powerCpldVersion: string;
@@ -3134,36 +3445,17 @@ export namespace device {
         vcLinks: outputs.device.GetGatewayStatsDeviceGatewayStatModuleStatVcLink[];
         vcMode: string;
         /**
-         * master / backup / linecard
+         * enum: `master`, `backup`, `linecard`
          */
         vcRole: string;
         vcState: string;
         version: string;
     }
 
-    export interface GetGatewayStatsDeviceGatewayStatModuleStatError {
-        feature: string;
-        minimumVersion: string;
-        reason: string;
-        since: number;
-        type: string;
-    }
-
     export interface GetGatewayStatsDeviceGatewayStatModuleStatFan {
         airflow: string;
         name: string;
         status: string;
-    }
-
-    export interface GetGatewayStatsDeviceGatewayStatModuleStatPic {
-        index: number;
-        modelNumber: string;
-        portGroups: outputs.device.GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroup[];
-    }
-
-    export interface GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroup {
-        count: number;
-        type: string;
     }
 
     export interface GetGatewayStatsDeviceGatewayStatModuleStatPoe {
@@ -3186,6 +3478,179 @@ export namespace device {
         neighborModuleIdx: number;
         neighborPortId: string;
         portId: string;
+    }
+
+    export interface GetGatewayStatsDeviceGatewayStatPort {
+        /**
+         * Indicates if interface is active/inactive
+         */
+        active: boolean;
+        /**
+         * if `up`==`true` and has Authenticator role. enum: `authenticated`, `authenticating`, `held`, `init`
+         */
+        authState: string;
+        /**
+         * Indicates if interface is disabled
+         */
+        disabled: boolean;
+        forSite: boolean;
+        /**
+         * Indicates full or half duplex
+         */
+        fullDuplex: boolean;
+        /**
+         * Last sampled jitter of the interface
+         */
+        jitter: number;
+        /**
+         * Last sampled latency of the interface
+         */
+        latency: number;
+        /**
+         * Last sampled loss of the interface
+         */
+        loss: number;
+        /**
+         * LTE ICCID value, Check for null/empty
+         */
+        lteIccid: string;
+        /**
+         * LTE IMEI value, Check for null/empty
+         */
+        lteImei: string;
+        /**
+         * LTE IMSI value, Check for null/empty
+         */
+        lteImsi: string;
+        /**
+         * Number of mac addresses in the forwarding table
+         */
+        macCount: number;
+        /**
+         * Limit on number of dynamically learned macs
+         */
+        macLimit: number;
+        /**
+         * chassis identifier of the chassis type listed
+         */
+        neighborMac: string;
+        /**
+         * Description supplied by the system on the interface E.g. "GigabitEthernet2/0/39"
+         */
+        neighborPortDesc: string;
+        /**
+         * Name supplied by the system on the interface E.g. neighbor system name E.g. "Kumar-Acc-SW.mist.local"
+         */
+        neighborSystemName: string;
+        /**
+         * Is the POE configured not be disabled.
+         */
+        poeDisabled: boolean;
+        /**
+         * enum: `802.3af`, `802.3at`, `802.3bt`
+         */
+        poeMode: string;
+        /**
+         * Is the device attached to POE
+         */
+        poeOn: boolean;
+        portId: string;
+        /**
+         * Interface mac address
+         */
+        portMac: string;
+        /**
+         * gateway port usage. enum: `lan`
+         */
+        portUsage: string;
+        /**
+         * Amount of power being used by the interface at the time the command is executed. Unit in watts.
+         */
+        powerDraw: number;
+        /**
+         * Broadcast input packets
+         */
+        rxBcastPkts: number;
+        /**
+         * Rate of receiving traffic, bits/seconds, last known
+         */
+        rxBps: number;
+        /**
+         * Amount of traffic received since connection
+         */
+        rxBytes: number;
+        /**
+         * Input errors
+         */
+        rxErrors: number;
+        /**
+         * Multicast input packets
+         */
+        rxMcastPkts: number;
+        /**
+         * Amount of packets received since connection
+         */
+        rxPkts: number;
+        /**
+         * Port speed
+         */
+        speed: number;
+        /**
+         * if `up`==`true`. enum: `alternate`, `backup`, `designated`, `root`, `root-prevented`
+         */
+        stpRole: string;
+        /**
+         * if `up`==`true`. enum: `blocking`, `disabled`, `forwarding`, `learning`, `listening`
+         */
+        stpState: string;
+        /**
+         * Broadcast output packets
+         */
+        txBcastPkts: number;
+        /**
+         * Rate of transmitting traffic, bits/seconds, last known
+         */
+        txBps: number;
+        /**
+         * Amount of traffic sent since connection
+         */
+        txBytes: number;
+        /**
+         * Output errors
+         */
+        txErrors: number;
+        /**
+         * Multicast output packets
+         */
+        txMcastPkts: number;
+        /**
+         * Amount of packets sent since connection
+         */
+        txPkts: number;
+        /**
+         * device type. enum: `ap`, `ble`, `gateway`, `mxedge`, `nac`, `switch`
+         */
+        type: string;
+        /**
+         * Indicates if interface is unconfigured
+         */
+        unconfigured: boolean;
+        /**
+         * Indicates if interface is up
+         */
+        up: boolean;
+        /**
+         * Optic Slot ModelName, Check for null/empty
+         */
+        xcvrModel: string;
+        /**
+         * Optic Slot Partnumber, Check for null/empty
+         */
+        xcvrPartNumber: string;
+        /**
+         * Optic Slot SerialNumber, Check for null/empty
+         */
+        xcvrSerial: string;
     }
 
     export interface GetGatewayStatsDeviceGatewayStatRouteSummaryStats {
@@ -3248,6 +3713,117 @@ export namespace device {
         spuValidSession: number;
     }
 
+    export interface GetGatewayStatsDeviceGatewayStatTunnel {
+        /**
+         * Authentication algorithm
+         */
+        authAlgo: string;
+        /**
+         * Encryption algorithm
+         */
+        encryptAlgo: string;
+        /**
+         * IKE version
+         */
+        ikeVersion: string;
+        /**
+         * IP Address
+         */
+        ip: string;
+        /**
+         * Reason of why the tunnel is down
+         */
+        lastEvent: string;
+        /**
+         * Indicates when the port was last flapped
+         */
+        lastFlapped: number;
+        /**
+         * Node0/node1
+         */
+        node: string;
+        /**
+         * Peer host
+         */
+        peerHost: string;
+        /**
+         * Peer ip address
+         */
+        peerIp: string;
+        /**
+         * enum: `primary`, `secondary`
+         */
+        priority: string;
+        /**
+         * enum: `gre`, `ipsec`
+         */
+        protocol: string;
+        /**
+         * Amount of traffic received since connection
+         */
+        rxBytes: number;
+        /**
+         * Amount of packets received since connection
+         */
+        rxPkts: number;
+        /**
+         * Mist Tunnel Name
+         */
+        tunnelName: string;
+        /**
+         * Amount of traffic sent since connection
+         */
+        txBytes: number;
+        /**
+         * Amount of packets sent since connection
+         */
+        txPkts: number;
+        up: boolean;
+        /**
+         * Duration from first (or last) SA was established
+         */
+        uptime: number;
+        /**
+         * WAN interface name
+         */
+        wanName: string;
+    }
+
+    export interface GetGatewayStatsDeviceGatewayStatVpnPeer {
+        /**
+         * Redundancy status of the associated interface
+         */
+        isActive: boolean;
+        /**
+         * Last seen timestamp
+         */
+        lastSeen: number;
+        latency: number;
+        mos: number;
+        mtu: number;
+        /**
+         * Peer router mac address
+         */
+        peerMac: string;
+        /**
+         * Peer router device interface
+         */
+        peerPortId: string;
+        peerRouterName: string;
+        peerSiteId: string;
+        /**
+         * Router device interface
+         */
+        portId: string;
+        routerName: string;
+        /**
+         * `ipsec`for SRX, `svr` for 128T
+         */
+        type: string;
+        up: boolean;
+        uptime: number;
+    }
+
     export interface GetSwitchStatsDeviceSwitchStat {
         apRedundancy: outputs.device.GetSwitchStatsDeviceSwitchStatApRedundancy;
         arpTableStats: outputs.device.GetSwitchStatsDeviceSwitchStatArpTableStats;
@@ -3256,6 +3832,9 @@ export namespace device {
         clientsStats: outputs.device.GetSwitchStatsDeviceSwitchStatClientsStats;
         configStatus: string;
         cpuStat: outputs.device.GetSwitchStatsDeviceSwitchStatCpuStat;
+        /**
+         * When the object has been created, in epoch
+         */
         createdTime: number;
         deviceprofileId: string;
         /**
@@ -3266,17 +3845,20 @@ export namespace device {
         fwVersionsOutofsync: boolean;
         fwupdate: outputs.device.GetSwitchStatsDeviceSwitchStatFwupdate;
         /**
-         * whether the switch supports packet capture
+         * Whether the switch supports packet capture
          */
         hasPcap: boolean;
         /**
-         * hostname reported by the device
+         * Hostname reported by the device
          */
         hostname: string;
         /**
-         * device hardware revision number
+         * Device hardware revision number
          */
         hwRev: string;
+        /**
+         * Unique ID of the object instance in the Mist Organization
+         */
         id: string;
         /**
          * Property key is the interface name
@@ -3284,26 +3866,33 @@ export namespace device {
         ifStat: {[key: string]: outputs.device.GetSwitchStatsDeviceSwitchStatIfStat};
         ip: string;
         ipStat: outputs.device.GetSwitchStatsDeviceSwitchStatIpStat;
+        /**
+         * Last seen timestamp
+         */
         lastSeen: number;
         /**
-         * last trouble code of switch
+         * Last trouble code of switch
          */
         lastTrouble: outputs.device.GetSwitchStatsDeviceSwitchStatLastTrouble;
         mac: string;
         macTableStats: outputs.device.GetSwitchStatsDeviceSwitchStatMacTableStats;
         mapId: string;
         /**
-         * memory usage stat (for virtual chassis, memory usage of master RE)
+         * Memory usage stat (for virtual chassis, memory usage of master RE)
          */
         memoryStat: outputs.device.GetSwitchStatsDeviceSwitchStatMemoryStat;
         model: string;
+        /**
+         * When the object has been modified for the last time, in epoch
+         */
         modifiedTime: number;
         moduleStats: outputs.device.GetSwitchStatsDeviceSwitchStatModuleStat[];
         /**
-         * device name if configured
+         * Device name if configured
          */
         name: string;
         orgId: string;
+        ports: outputs.device.GetSwitchStatsDeviceSwitchStatPort[];
         routeSummaryStats: outputs.device.GetSwitchStatsDeviceSwitchStatRouteSummaryStats;
         serial: string;
         serviceStat: {[key: string]: outputs.device.GetSwitchStatsDeviceSwitchStatServiceStat};
@@ -3317,7 +3906,7 @@ export namespace device {
 
     export interface GetSwitchStatsDeviceSwitchStatApRedundancy {
         /**
-         * for a VC / stacked switches.
+         * For a VC / stacked switches.
          */
         modules: {[key: string]: outputs.device.GetSwitchStatsDeviceSwitchStatApRedundancyModules};
         numAps: number;
@@ -3368,7 +3957,7 @@ export namespace device {
          */
         system: number;
         /**
-         * Percentage of CPU time being used by user processe
+         * Percentage of CPU time being used by user processes
          */
         user: number;
     }
@@ -3380,8 +3969,14 @@ export namespace device {
 
     export interface GetSwitchStatsDeviceSwitchStatFwupdate {
         progress: number;
+        /**
+         * enum: `inprogress`, `failed`, `upgraded`
+         */
         status: string;
         statusId: number;
+        /**
+         * Epoch (seconds)
+         */
         timestamp: number;
         willRetry: boolean;
     }
@@ -3394,10 +3989,22 @@ export namespace device {
         portId: string;
         portUsage: string;
         redundancyState: string;
+        /**
+         * Amount of traffic received since connection
+         */
         rxBytes: number;
+        /**
+         * Amount of packets received since connection
+         */
         rxPkts: number;
         servpInfo: outputs.device.GetSwitchStatsDeviceSwitchStatIfStatServpInfo;
+        /**
+         * Amount of traffic sent since connection
+         */
         txBytes: number;
+        /**
+         * Amount of packets sent since connection
+         */
         txPkts: number;
         up: boolean;
         vlan: number;
@@ -3430,9 +4037,12 @@ export namespace device {
 
     export interface GetSwitchStatsDeviceSwitchStatLastTrouble {
         /**
-         * Code definitions list at /api/v1/consts/ap*led*status
+         * Code definitions list at List Ap Led Definition
          */
         code: string;
+        /**
+         * Epoch (seconds)
+         */
         timestamp: number;
     }
 
@@ -3449,15 +4059,20 @@ export namespace device {
         backupVersion: string;
         biosVersion: string;
         cpldVersion: string;
+        cpuStat: outputs.device.GetSwitchStatsDeviceSwitchStatModuleStatCpuStat;
         /**
-         * used to report all error states the device node is running into.
-         * An error should always have `type` and `since` fields, and could have some other fields specific to that type.
+         * Used to report all error states the device node is running into. An error should always have `type` and `since` fields, and could have some other fields specific to that type.
          */
         errors: outputs.device.GetSwitchStatsDeviceSwitchStatModuleStatError[];
         fans: outputs.device.GetSwitchStatsDeviceSwitchStatModuleStatFan[];
         fpcIdx: number;
         fpgaVersion: string;
+        /**
+         * Last seen timestamp
+         */
         lastSeen: number;
+        locating: boolean;
+        mac: string;
         model: string;
         opticsCpldVersion: string;
         pendingVersion: string;
@@ -3472,16 +4087,40 @@ export namespace device {
         status: string;
         temperatures: outputs.device.GetSwitchStatsDeviceSwitchStatModuleStatTemperature[];
         tmcFpgaVersion: string;
+        type: string;
         ubootVersion: string;
         uptime: number;
         vcLinks: outputs.device.GetSwitchStatsDeviceSwitchStatModuleStatVcLink[];
         vcMode: string;
         /**
-         * master / backup / linecard
+         * enum: `master`, `backup`, `linecard`
          */
         vcRole: string;
         vcState: string;
         version: string;
+    }
+
+    export interface GetSwitchStatsDeviceSwitchStatModuleStatCpuStat {
+        /**
+         * Percentage of CPU time that is idle
+         */
+        idle: number;
+        /**
+         * Percentage of CPU time being used by interrupts
+         */
+        interrupt: number;
+        /**
+         * Load averages for the last 1, 5, and 15 minutes
+         */
+        loadAvgs: number[];
+        /**
+         * Percentage of CPU time being used by system processes
+         */
+        system: number;
+        /**
+         * Percentage of CPU time being used by user processes
+         */
+        user: number;
     }
 
     export interface GetSwitchStatsDeviceSwitchStatModuleStatError {
@@ -3531,6 +4170,186 @@ export namespace device {
         portId: string;
     }
 
+    export interface GetSwitchStatsDeviceSwitchStatPort {
+        /**
+         * Indicates if interface is active/inactive
+         */
+        active: boolean;
+        /**
+         * if `up`==`true` and has Authenticator role. enum: `authenticated`, `authenticating`, `held`, `init`
+         */
+        authState: string;
+        /**
+         * Indicates if interface is disabled
+         */
+        disabled: boolean;
+        forSite: boolean;
+        /**
+         * Indicates full or half duplex
+         */
+        fullDuplex: boolean;
+        /**
+         * Last sampled jitter of the interface
+         */
+        jitter: number;
+        /**
+         * Indicates when the port was last flapped
+         */
+        lastFlapped: number;
+        /**
+         * Last sampled latency of the interface
+         */
+        latency: number;
+        /**
+         * Last sampled loss of the interface
+         */
+        loss: number;
+        /**
+         * LTE ICCID value, Check for null/empty
+         */
+        lteIccid: string;
+        /**
+         * LTE IMEI value, Check for null/empty
+         */
+        lteImei: string;
+        /**
+         * LTE IMSI value, Check for null/empty
+         */
+        lteImsi: string;
+        mac: string;
+        /**
+         * Number of mac addresses in the forwarding table
+         */
+        macCount: number;
+        /**
+         * Limit on number of dynamically learned macs
+         */
+        macLimit: number;
+        /**
+         * chassis identifier of the chassis type listed
+         */
+        neighborMac: string;
+        /**
+         * Description supplied by the system on the interface E.g. "GigabitEthernet2/0/39"
+         */
+        neighborPortDesc: string;
+        /**
+         * Name supplied by the system on the interface E.g. neighbor system name E.g. "Kumar-Acc-SW.mist.local"
+         */
+        neighborSystemName: string;
+        orgId: string;
+        /**
+         * Is the POE disabled
+         */
+        poeDisabled: boolean;
+        /**
+         * enum: `802.3af`, `802.3at`, `802.3bt`
+         */
+        poeMode: string;
+        /**
+         * Is the device attached to POE
+         */
+        poeOn: boolean;
+        portId: string;
+        /**
+         * Interface MAC address
+         */
+        portMac: string;
+        /**
+         * gateway port usage. enum: `lan`
+         */
+        portUsage: string;
+        /**
+         * Amount of power being used by the interface at the time the command is executed. Unit in watts.
+         */
+        powerDraw: number;
+        /**
+         * Broadcast input packets
+         */
+        rxBcastPkts: number;
+        /**
+         * Rate of receiving traffic, bits/seconds, last known
+         */
+        rxBps: number;
+        /**
+         * Amount of traffic received since connection
+         */
+        rxBytes: number;
+        /**
+         * Input errors
+         */
+        rxErrors: number;
+        /**
+         * Multicast input packets
+         */
+        rxMcastPkts: number;
+        /**
+         * Amount of packets received since connection
+         */
+        rxPkts: number;
+        siteId: string;
+        /**
+         * Port speed
+         */
+        speed: number;
+        /**
+         * if `up`==`true`. enum: `alternate`, `backup`, `designated`, `root`, `root-prevented`
+         */
+        stpRole: string;
+        /**
+         * if `up`==`true`. enum: `blocking`, `disabled`, `forwarding`, `learning`, `listening`
+         */
+        stpState: string;
+        /**
+         * Broadcast output packets
+         */
+        txBcastPkts: number;
+        /**
+         * Rate of transmitting traffic, bits/seconds, last known
+         */
+        txBps: number;
+        /**
+         * Amount of traffic sent since connection
+         */
+        txBytes: number;
+        /**
+         * Output errors
+         */
+        txErrors: number;
+        /**
+         * Multicast output packets
+         */
+        txMcastPkts: number;
+        /**
+         * Amount of packets sent since connection
+         */
+        txPkts: number;
+        /**
+         * device type. enum: `ap`, `ble`, `gateway`, `mxedge`, `nac`, `switch`
+         */
+        type: string;
+        /**
+         * Indicates if interface is unconfigured
+         */
+        unconfigured: boolean;
+        /**
+         * Indicates if interface is up
+         */
+        up: boolean;
+        /**
+         * Optic Slot ModelName, Check for null/empty
+         */
+        xcvrModel: string;
+        /**
+         * Optic Slot Partnumber, Check for null/empty
+         */
+        xcvrPartNumber: string;
+        /**
+         * Optic Slot SerialNumber, Check for null/empty
+         */
+        xcvrSerial: string;
+    }
+
     export interface GetSwitchStatsDeviceSwitchStatRouteSummaryStats {
         fibRoutes: number;
         maxUnicastRoutesSupported: number;
@@ -3551,7 +4370,11 @@ export namespace device {
 
     export interface GetSwitchStatsDeviceSwitchStatVcSetupInfo {
         configType: string;
+        currentStats: string;
         errMissingDevIdFpc: boolean;
+        lastUpdate: number;
+        requestTime: number;
+        requestType: string;
     }
 
     export interface GetVersionsDeviceVersion {
@@ -3698,7 +4521,7 @@ export namespace device {
          */
         dnsSuffixes: string[];
         /**
-         * If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+         * If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
          */
         fixedBindings?: {[key: string]: outputs.device.SwitchDhcpdConfigConfigFixedBindings};
         /**
@@ -3783,10 +4606,10 @@ export namespace device {
         /**
          * This takes precedence
          */
-        discard: boolean;
+        discard?: boolean;
         metric?: number;
         nextQualified?: {[key: string]: outputs.device.SwitchExtraRoutesNextQualified};
-        noResolve: boolean;
+        noResolve?: boolean;
         preference?: number;
         /**
          * Next-hop IP Address
@@ -3798,10 +4621,10 @@ export namespace device {
         /**
          * This takes precedence
          */
-        discard: boolean;
+        discard?: boolean;
         metric?: number;
         nextQualified?: {[key: string]: outputs.device.SwitchExtraRoutes6NextQualified};
-        noResolve: boolean;
+        noResolve?: boolean;
         preference?: number;
         /**
          * Next-hop IP Address
@@ -3858,12 +4681,12 @@ export namespace device {
         /**
          * Only if `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
-        bypassAuthWhenServerDownForUnkownClient: boolean;
+        bypassAuthWhenServerDownForUnknownClient: boolean;
         description?: string;
         /**
          * Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
          */
-        disableAutoneg: boolean;
+        disableAutoneg?: boolean;
         /**
          * Whether the port is disabled
          */
@@ -3871,7 +4694,7 @@ export namespace device {
         /**
          * link connection mode. enum: `auto`, `full`, `half`
          */
-        duplex: string;
+        duplex?: string;
         /**
          * Only if `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
          */
@@ -3928,7 +4751,7 @@ export namespace device {
         /**
          * Whether PoE capabilities are disabled for a port
          */
-        poeDisabled: boolean;
+        poeDisabled?: boolean;
         /**
          * if dot1x is desired, set to dot1x. enum: `dot1x`
          */
@@ -3938,9 +4761,9 @@ export namespace device {
          */
         portNetwork?: string;
         /**
-         * Only if `portAuth`=`dot1x` reauthentication interval range
+         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
          */
-        reauthInterval: number;
+        reauthInterval?: string;
         /**
          * Only if `portAuth`==`dot1x` sets server fail fallback vlan
          */
@@ -3952,7 +4775,7 @@ export namespace device {
         /**
          * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
-        speed: string;
+        speed?: string;
         /**
          * Switch storm control
          */
@@ -4017,7 +4840,7 @@ export namespace device {
         /**
          * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
          */
-        isolation: boolean;
+        isolation?: boolean;
         isolationVlanId?: string;
         /**
          * Optional for pure switching, required when L3 / routing features are used
@@ -4141,20 +4964,20 @@ export namespace device {
          * To use fast timeout
          */
         aeLacpSlow?: boolean;
-        aggregated: boolean;
+        aggregated?: boolean;
         /**
          * To generate port up/down alarm
          */
-        critical?: boolean;
+        critical: boolean;
         description?: string;
         /**
          * If `speed` and `duplex` are specified, whether to disable autonegotiation
          */
-        disableAutoneg: boolean;
+        disableAutoneg?: boolean;
         /**
          * enum: `auto`, `full`, `half`
          */
-        duplex: string;
+        duplex?: string;
         /**
          * Enable dynamic usage for this port. Set to `dynamic` to enable.
          */
@@ -4163,16 +4986,16 @@ export namespace device {
         /**
          * Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
          */
-        mtu: number;
+        mtu?: number;
         /**
          * Prevent helpdesk to override the port config
          */
-        noLocalOverwrite?: boolean;
-        poeDisabled: boolean;
+        noLocalOverwrite: boolean;
+        poeDisabled?: boolean;
         /**
          * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
-        speed: string;
+        speed?: string;
         /**
          * Port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
          */
@@ -4193,11 +5016,11 @@ export namespace device {
          */
         inputPortIdsIngresses: string[];
         /**
-         * Exaclty one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
          */
         outputNetwork?: string;
         /**
-         * Exaclty one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: string;
     }
@@ -4214,19 +5037,19 @@ export namespace device {
         /**
          * Only if `mode`!=`dynamic`
          */
-        allowMultipleSupplicants: boolean;
+        allowMultipleSupplicants?: boolean;
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
          */
-        bypassAuthWhenServerDown: boolean;
+        bypassAuthWhenServerDown?: boolean;
         /**
          * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
-        bypassAuthWhenServerDownForUnkownClient: boolean;
+        bypassAuthWhenServerDownForUnknownClient?: boolean;
         /**
          * Only if `mode`!=`dynamic`
          */
-        description?: string;
+        description: string;
         /**
          * Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
          */
@@ -4246,7 +5069,7 @@ export namespace device {
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
          */
-        enableMacAuth: boolean;
+        enableMacAuth?: boolean;
         /**
          * Only if `mode`!=`dynamic`
          */
@@ -4256,9 +5079,13 @@ export namespace device {
          */
         guestNetwork?: string;
         /**
+         * `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+         */
+        interIsolationNetworkLink?: boolean;
+        /**
          * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          */
-        interSwitchLink: boolean;
+        interSwitchLink?: boolean;
         /**
          * Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
          */
@@ -4270,19 +5097,19 @@ export namespace device {
         /**
          * Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
          */
-        macAuthProtocol: string;
+        macAuthProtocol?: string;
         /**
-         * Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+         * Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 to 16383 (upper bound constrained by platform)
          */
-        macLimit: number;
+        macLimit: string;
         /**
          * `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
          */
         mode?: string;
         /**
-         * Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+         * Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. Value between 256 and 9216, default value is 1514.
          */
-        mtu?: number;
+        mtu?: string;
         /**
          * Only if `mode`==`trunk`, the list of network/vlans
          */
@@ -4304,13 +5131,13 @@ export namespace device {
          */
         portNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range
+         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
          */
-        reauthInterval: number;
+        reauthInterval?: string;
         /**
          * Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
          */
-        resetDefaultWhen: string;
+        resetDefaultWhen?: string;
         /**
          * Only if `mode`==`dynamic`
          */
@@ -4335,12 +5162,12 @@ export namespace device {
          * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
          */
         stpEdge: boolean;
-        stpNoRootPort: boolean;
-        stpP2p: boolean;
+        stpNoRootPort?: boolean;
+        stpP2p?: boolean;
         /**
          * If this is connected to a vstp network
          */
-        useVstp: boolean;
+        useVstp?: boolean;
         /**
          * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
@@ -4373,31 +5200,36 @@ export namespace device {
         /**
          * Whether to disable storm control on broadcast traffic
          */
-        noBroadcast: boolean;
+        noBroadcast?: boolean;
         /**
          * Whether to disable storm control on multicast traffic
          */
-        noMulticast: boolean;
+        noMulticast?: boolean;
         /**
          * Whether to disable storm control on registered multicast traffic
          */
-        noRegisteredMulticast: boolean;
+        noRegisteredMulticast?: boolean;
         /**
          * Whether to disable storm control on unknown unicast traffic
          */
-        noUnknownUnicast: boolean;
+        noUnknownUnicast?: boolean;
         /**
          * Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
          */
-        percentage: number;
+        percentage?: number;
     }
 
     export interface SwitchRadiusConfig {
+        acctImmediateUpdate?: boolean;
         /**
          * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
          */
         acctInterimInterval: number;
         acctServers?: outputs.device.SwitchRadiusConfigAcctServer[];
+        /**
+         * enum: `ordered`, `unordered`
+         */
+        authServerSelection: string;
         authServers?: outputs.device.SwitchRadiusConfigAuthServer[];
         /**
          * Radius auth session retries
@@ -4407,6 +5239,9 @@ export namespace device {
          * Radius auth session timeout
          */
         authServersTimeout: number;
+        coaEnabled: boolean;
+        coaPort: string;
+        fastDot1xTimers: boolean;
         /**
          * Use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
          */
@@ -4434,7 +5269,7 @@ export namespace device {
          */
         port: number;
         /**
-         * Secretof RADIUS server
+         * Secret of RADIUS server
          */
         secret: string;
     }
@@ -4458,9 +5293,9 @@ export namespace device {
         /**
          * Whether to require Message-Authenticator in requests
          */
-        requireMessageAuthenticator: boolean;
+        requireMessageAuthenticator?: boolean;
         /**
-         * Secretof RADIUS server
+         * Secret of RADIUS server
          */
         secret: string;
     }
@@ -4474,7 +5309,7 @@ export namespace device {
          * If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
          */
         network?: string;
-        sendToAllServers: boolean;
+        sendToAllServers?: boolean;
         servers?: outputs.device.SwitchRemoteSyslogServer[];
         /**
          * enum: `millisecond`, `year`, `year millisecond`
@@ -4484,7 +5319,7 @@ export namespace device {
     }
 
     export interface SwitchRemoteSyslogArchive {
-        files?: number;
+        files?: string;
         size?: string;
     }
 
@@ -4513,7 +5348,7 @@ export namespace device {
     }
 
     export interface SwitchRemoteSyslogFileArchive {
-        files?: number;
+        files?: string;
         size?: string;
     }
 
@@ -4537,7 +5372,7 @@ export namespace device {
         facility: string;
         host?: string;
         match?: string;
-        port: number;
+        port?: string;
         /**
          * enum: `tcp`, `udp`
          */
@@ -4591,7 +5426,7 @@ export namespace device {
         engineId?: string;
         location?: string;
         name?: string;
-        network: string;
+        network?: string;
         trapGroups?: outputs.device.SwitchSnmpConfigTrapGroup[];
         v2cConfigs?: outputs.device.SwitchSnmpConfigV2cConfig[];
         v3Config?: outputs.device.SwitchSnmpConfigV3Config;
@@ -4796,7 +5631,7 @@ export namespace device {
 
     export interface SwitchStpConfig {
         /**
-         * Switch STP priority: from `0k` to `15k`
+         * Switch STP priority. Range [0, 4k, 8k.. 60k] in steps of 4k. Bridge priority applies to both VSTP and RSTP.
          */
         bridgePriority: string;
     }
@@ -4805,7 +5640,7 @@ export namespace device {
         /**
          * AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
          */
-        apAffinityThreshold: number;
+        apAffinityThreshold?: number;
         /**
          * Set Banners for switches. Allows markup formatting
          */
@@ -4821,14 +5656,21 @@ export namespace device {
         /**
          * Enable to provide the FQDN with DHCP option 81
          */
-        dhcpOptionFqdn: boolean;
+        dhcpOptionFqdn?: boolean;
         disableOobDownAlarm?: boolean;
+        fipsEnabled?: boolean;
         /**
          * Property key is the user name. For Local user authentication
          */
         localAccounts?: {[key: string]: outputs.device.SwitchSwitchMgmtLocalAccounts};
+        /**
+         * IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+         */
         mxedgeProxyHost?: string;
-        mxedgeProxyPort: number;
+        /**
+         * Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
+         */
+        mxedgeProxyPort?: string;
         /**
          * Restrict inbound-traffic to host
          * when enabled, all traffic that is not essential to our operation will be dropped 
@@ -4886,7 +5728,7 @@ export namespace device {
         /**
          * enum: `admin`, `helpdesk`, `none`, `read`
          */
-        defaultRole: string;
+        defaultRole?: string;
         enabled?: boolean;
         /**
          * Which network the TACACS server resides
@@ -4940,18 +5782,31 @@ export namespace device {
     }
 
     export interface SwitchVrfInstances {
-        networks?: string[];
+        evpnAutoLoopbackSubnet?: string;
+        evpnAutoLoopbackSubnet6?: string;
         /**
          * Property key is the destination CIDR (e.g. "10.0.0.0/8")
          */
-        vrfExtraRoutes?: {[key: string]: outputs.device.SwitchVrfInstancesVrfExtraRoutes};
+        extraRoutes?: {[key: string]: outputs.device.SwitchVrfInstancesExtraRoutes};
+        /**
+         * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+         */
+        extraRoutes6?: {[key: string]: outputs.device.SwitchVrfInstancesExtraRoutes6};
+        networks?: string[];
     }
 
-    export interface SwitchVrfInstancesVrfExtraRoutes {
+    export interface SwitchVrfInstancesExtraRoutes {
         /**
          * Next-hop address
          */
         via: string;
+    }
+
+    export interface SwitchVrfInstancesExtraRoutes6 {
+        /**
+         * Next-hop address
+         */
+        via?: string;
     }
 
     export interface SwitchVrrpConfig {
@@ -5042,11 +5897,12 @@ export namespace org {
         /**
          * Required if enabled, aeroscout server host
          */
-        host?: string;
+        host: string;
         /**
          * Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
          */
         locateConnected: boolean;
+        port: number;
     }
 
     export interface DeviceprofileApBleConfig {
@@ -5057,11 +5913,11 @@ export namespace org {
         /**
          * Required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
          */
-        beaconRate: number;
+        beaconRate?: number;
         /**
          * enum: `custom`, `default`
          */
-        beaconRateMode: string;
+        beaconRateMode?: string;
         /**
          * List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
          */
@@ -5069,86 +5925,86 @@ export namespace org {
         /**
          * Can be enabled if `beaconEnabled`==`true`, whether to send custom packet
          */
-        customBlePacketEnabled: boolean;
+        customBlePacketEnabled?: boolean;
         /**
          * The custom frame to be sent out in this beacon. The frame must be a hexstring
          */
-        customBlePacketFrame: string;
+        customBlePacketFrame?: string;
         /**
          * Frequency (msec) of data emitted by custom ble beacon
          */
-        customBlePacketFreqMsec: number;
+        customBlePacketFreqMsec?: number;
         /**
          * Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
          */
-        eddystoneUidAdvPower: number;
-        eddystoneUidBeams: string;
+        eddystoneUidAdvPower?: number;
+        eddystoneUidBeams?: string;
         /**
          * Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
          */
-        eddystoneUidEnabled: boolean;
+        eddystoneUidEnabled?: boolean;
         /**
          * Frequency (msec) of data emmit by Eddystone-UID beacon
          */
-        eddystoneUidFreqMsec: number;
+        eddystoneUidFreqMsec?: number;
         /**
          * Eddystone-UID instance for the device
          */
-        eddystoneUidInstance: string;
+        eddystoneUidInstance?: string;
         /**
          * Eddystone-UID namespace
          */
-        eddystoneUidNamespace: string;
+        eddystoneUidNamespace?: string;
         /**
          * Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
          */
-        eddystoneUrlAdvPower: number;
-        eddystoneUrlBeams: string;
+        eddystoneUrlAdvPower?: number;
+        eddystoneUrlBeams?: string;
         /**
          * Only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
          */
-        eddystoneUrlEnabled: boolean;
+        eddystoneUrlEnabled?: boolean;
         /**
          * Frequency (msec) of data emit by Eddystone-UID beacon
          */
-        eddystoneUrlFreqMsec: number;
+        eddystoneUrlFreqMsec?: number;
         /**
          * URL pointed by Eddystone-URL beacon
          */
-        eddystoneUrlUrl: string;
+        eddystoneUrlUrl?: string;
         /**
          * Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
          */
-        ibeaconAdvPower: number;
-        ibeaconBeams: string;
+        ibeaconAdvPower?: number;
+        ibeaconBeams?: string;
         /**
          * Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
          */
-        ibeaconEnabled: boolean;
+        ibeaconEnabled?: boolean;
         /**
          * Frequency (msec) of data emmit for iBeacon
          */
-        ibeaconFreqMsec: number;
+        ibeaconFreqMsec?: number;
         /**
          * Major number for iBeacon
          */
-        ibeaconMajor: number;
+        ibeaconMajor?: number;
         /**
          * Minor number for iBeacon
          */
-        ibeaconMinor: number;
+        ibeaconMinor?: number;
         /**
          * Optional, if not specified, the same UUID as the beacon will be used
          */
-        ibeaconUuid: string;
+        ibeaconUuid?: string;
         /**
          * Required if `powerMode`==`custom`; else use `powerMode` as default
          */
-        power: number;
+        power?: number;
         /**
          * enum: `custom`, `default`
          */
-        powerMode: string;
+        powerMode?: string;
     }
 
     export interface DeviceprofileApEslConfig {
@@ -5167,15 +6023,15 @@ export namespace org {
         /**
          * Only if `type`==`imagotag` or `type`==`native`
          */
-        host?: string;
+        host: string;
         /**
          * Only if `type`==`imagotag` or `type`==`native`
          */
         port?: number;
         /**
-         * note: bleConfig will be ingored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+         * note: bleConfig will be ignored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
          */
-        type?: string;
+        type: string;
         /**
          * Only if `type`==`imagotag` or `type`==`native`
          */
@@ -5205,7 +6061,7 @@ export namespace org {
          */
         ip?: string;
         ip6?: string;
-        mtu?: number;
+        mtu: number;
         /**
          * Required if `type`==`static`
          */
@@ -5218,11 +6074,15 @@ export namespace org {
         /**
          * enum: `autoconf`, `dhcp`, `disabled`, `static`
          */
-        type6: string;
+        type6?: string;
         /**
          * Management VLAN id, default is 1 (untagged)
          */
-        vlanId: number;
+        vlanId?: number;
+    }
+
+    export interface DeviceprofileApLacpConfig {
+        enabled: boolean;
     }
 
     export interface DeviceprofileApLed {
@@ -5231,6 +6091,10 @@ export namespace org {
     }
 
     export interface DeviceprofileApMesh {
+        /**
+         * List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+         */
+        bands?: string[];
         /**
          * Whether mesh is enabled on this AP
          */
@@ -5257,7 +6121,7 @@ export namespace org {
     }
 
     export interface DeviceprofileApRadioConfig {
-        allowRrmDisable: boolean;
+        allowRrmDisable?: boolean;
         /**
          * Antenna gain for 2.4G - for models with external antenna only
          */
@@ -5273,7 +6137,7 @@ export namespace org {
         /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
-        antennaMode: string;
+        antennaMode?: string;
         /**
          * Radio Band AP settings
          */
@@ -5297,7 +6161,7 @@ export namespace org {
         /**
          * To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
          */
-        indoorUse: boolean;
+        indoorUse?: boolean;
         /**
          * Whether scanning radio is enabled
          */
@@ -5355,7 +6219,7 @@ export namespace org {
         /**
          * channel width for the 5GHz band. enum: `20`, `40`, `80`
          */
-        bandwidth?: number;
+        bandwidth: number;
         /**
          * For Device. (primary) channel for the band, 0 means using the Site Setting
          */
@@ -5396,7 +6260,7 @@ export namespace org {
         /**
          * channel width for the 5GHz band. enum: `20`, `40`, `80`
          */
-        bandwidth?: number;
+        bandwidth: number;
         /**
          * For Device. (primary) channel for the band, 0 means using the Site Setting
          */
@@ -5474,20 +6338,20 @@ export namespace org {
 
     export interface DeviceprofileApUplinkPortConfig {
         /**
-         * Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
+         * Whether to do 802.1x against uplink switch. When enabled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
          */
         dot1x: boolean;
         /**
          * By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
          */
-        keepWlansUpIfDown: boolean;
+        keepWlansUpIfDown?: boolean;
     }
 
     export interface DeviceprofileApUsbConfig {
         /**
          * Only if `type`==`imagotag`
          */
-        cacert?: string;
+        cacert: string;
         /**
          * Only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
          */
@@ -5499,11 +6363,11 @@ export namespace org {
         /**
          * Only if `type`==`imagotag`
          */
-        host?: string;
+        host: string;
         /**
          * Only if `type`==`imagotag`
          */
-        port: number;
+        port?: number;
         /**
          * usb config type. enum: `hanshow`, `imagotag`, `solum`
          */
@@ -5515,7 +6379,7 @@ export namespace org {
         /**
          * Only if `type`==`solum` or `type`==`hanshow`
          */
-        vlanId: number;
+        vlanId?: number;
     }
 
     export interface DeviceprofileGatewayBgpConfig {
@@ -5553,8 +6417,14 @@ export namespace org {
          * Default import policies if no per-neighbor policies defined
          */
         importPolicy?: string;
-        localAs?: number;
-        neighborAs?: number;
+        /**
+         * Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         */
+        localAs?: string;
+        /**
+         * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         */
+        neighborAs?: string;
         /**
          * If per-neighbor as is desired. Property key is the neighbor address
          */
@@ -5563,6 +6433,7 @@ export namespace org {
          * If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
          */
         networks: string[];
+        noPrivateAs: boolean;
         /**
          * By default, we'll re-advertise all learned BGP routers toward overlay
          */
@@ -5598,7 +6469,10 @@ export namespace org {
          * Assuming BGP neighbor is directly connected
          */
         multihopTtl?: number;
-        neighborAs?: number;
+        /**
+         * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         */
+        neighborAs?: string;
     }
 
     export interface DeviceprofileGatewayDhcpdConfig {
@@ -5622,7 +6496,7 @@ export namespace org {
          */
         dnsSuffixes: string[];
         /**
-         * If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+         * If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
          */
         fixedBindings?: {[key: string]: outputs.org.DeviceprofileGatewayDhcpdConfigConfigFixedBindings};
         /**
@@ -5725,7 +6599,7 @@ export namespace org {
         /**
          * enum:
          *   * alert (default)
-         *   * drop: siliently dropping packets
+         *   * drop: silently dropping packets
          *   * close: notify client/server to close connection
          */
         action: string;
@@ -5740,8 +6614,8 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayIpConfigs {
-        ip: string;
-        netmask: string;
+        ip?: string;
+        netmask?: string;
         /**
          * Optional list of secondary IPs in CIDR format
          */
@@ -5841,7 +6715,7 @@ export namespace org {
 
     export interface DeviceprofileGatewayNetworkMulticast {
         /**
-         * If the network will only be the soruce of the multicast traffic, IGMP can be disabled
+         * If the network will only be the source of the multicast traffic, IGMP can be disabled
          */
         disableIgmp: boolean;
         enabled: boolean;
@@ -6136,9 +7010,13 @@ export namespace org {
          */
         redundant: boolean;
         /**
-         * If HA mode
+         * If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
          */
-        rethIdx?: number;
+        redundantGroup?: number;
+        /**
+         * For SRX only and if HA Mode
+         */
+        rethIdx?: string;
         /**
          * If HA mode
          */
@@ -6175,7 +7053,7 @@ export namespace org {
          */
         wanExtIp?: string;
         /**
-         * Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+         * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
          */
         wanExtraRoutes?: {[key: string]: outputs.org.DeviceprofileGatewayPortConfigWanExtraRoutes};
         /**
@@ -6241,7 +7119,7 @@ export namespace org {
 
     export interface DeviceprofileGatewayPortConfigTrafficShaping {
         /**
-         * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+         * percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: number[];
         enabled: boolean;
@@ -6261,15 +7139,11 @@ export namespace org {
          */
         bfdUseTunnelMode: boolean;
         /**
-         * Only if the VPN `type`==`mesh`
-         */
-        linkName?: string;
-        /**
          * Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
          */
         preference?: number;
         /**
-         * Only if the VPN `type`==`hubSpoke`. enum: `hub`, `spoke`
+         * If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
          */
         role: string;
         trafficShaping?: outputs.org.DeviceprofileGatewayPortConfigVpnPathsTrafficShaping;
@@ -6277,7 +7151,7 @@ export namespace org {
 
     export interface DeviceprofileGatewayPortConfigVpnPathsTrafficShaping {
         /**
-         * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+         * percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: number[];
         enabled: boolean;
@@ -6336,10 +7210,6 @@ export namespace org {
          */
         addTargetVrfs?: string[];
         /**
-         * route aggregation
-         */
-        aggregates?: string[];
-        /**
          * When used as export policy, optional
          */
         communities?: string[];
@@ -6351,7 +7221,7 @@ export namespace org {
         /**
          * When used as export policy, optional
          */
-        exportCommunitites?: string[];
+        exportCommunities?: string[];
         /**
          * Optional, for an import policy, localPreference can be changed
          */
@@ -6374,7 +7244,7 @@ export namespace org {
          */
         prefixes?: string[];
         /**
-         * `direct`, `bgp`, `osp`, ...
+         * `direct`, `bgp`, `osp`, `static`, `aggregate`...
          */
         protocols?: string[];
         routeExists?: outputs.org.DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExists;
@@ -6435,7 +7305,7 @@ export namespace org {
          */
         servicepolicyId?: string;
         /**
-         * Required when `servicepolicyId` is not defined. List of Applications / Desctinations
+         * Required when `servicepolicyId` is not defined. List of Applications / Destinations
          */
         services: string[];
         /**
@@ -6450,7 +7320,7 @@ export namespace org {
 
     export interface DeviceprofileGatewayServicePolicyAntivirus {
         /**
-         * org-level AV Profile can be used, this takes precendence over 'profile'
+         * org-level AV Profile can be used, this takes precedence over 'profile'
          */
         avprofileId?: string;
         enabled: boolean;
@@ -6843,39 +7713,41 @@ export namespace org {
 
     export interface EvpnTopologyEvpnOptions {
         /**
-         * optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+         * Optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
          */
         autoLoopbackSubnet: string;
         /**
-         * optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+         * Optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
          */
         autoLoopbackSubnet6: string;
         /**
-         * optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+         * Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
          */
         autoRouterIdSubnet: string;
         /**
-         * optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+         * Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
          */
         autoRouterIdSubnet6?: string;
         /**
-         * optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway
-         * when `routedAt` != `core`, whether to do virtual-gateway at core as well
+         * Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
          */
         coreAsBorder: boolean;
         overlay?: outputs.org.EvpnTopologyEvpnOptionsOverlay;
         /**
-         * by default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4Mac
-         * if enabled, 00-00-5e-00-XX-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
+         * Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4_mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
          */
         perVlanVgaV4Mac: boolean;
+        /**
+         * Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address's v6_mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
+         */
+        perVlanVgaV6Mac: boolean;
         /**
          * optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
          */
         routedAt: string;
         underlay?: outputs.org.EvpnTopologyEvpnOptionsUnderlay;
         /**
-         * optional, for EX9200 only to seggregate virtual-switches
+         * Optional, for EX9200 only to segregate virtual-switches
          */
         vsInstances?: {[key: string]: outputs.org.EvpnTopologyEvpnOptionsVsInstances};
     }
@@ -6894,11 +7766,11 @@ export namespace org {
         asBase: number;
         routedIdPrefix?: string;
         /**
-         * underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+         * Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
          */
         subnet?: string;
         /**
-         * if v6 is desired for underlay
+         * If v6 is desired for underlay
          */
         useIpv6: boolean;
     }
@@ -6913,13 +7785,13 @@ export namespace org {
         mac: string;
         model: string;
         /**
-         * optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+         * Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
          *   * for CLOS, to group dist / access switches into pods
          *   * for ERB/CRB, to group dist / esilag-access into pods
          */
         pod: number;
         /**
-         * by default, core switches are assumed to be connecting all pods. 
+         * By default, core switches are assumed to be connecting all pods. 
          * if you want to limit the pods, you can specify pods.
          */
         pods: number[];
@@ -6966,8 +7838,14 @@ export namespace org {
          * Default import policies if no per-neighbor policies defined
          */
         importPolicy?: string;
-        localAs?: number;
-        neighborAs?: number;
+        /**
+         * Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         */
+        localAs?: string;
+        /**
+         * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         */
+        neighborAs?: string;
         /**
          * If per-neighbor as is desired. Property key is the neighbor address
          */
@@ -6976,6 +7854,7 @@ export namespace org {
          * If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
          */
         networks: string[];
+        noPrivateAs: boolean;
         /**
          * By default, we'll re-advertise all learned BGP routers toward overlay
          */
@@ -7011,7 +7890,10 @@ export namespace org {
          * Assuming BGP neighbor is directly connected
          */
         multihopTtl?: number;
-        neighborAs?: number;
+        /**
+         * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         */
+        neighborAs?: string;
     }
 
     export interface GatewaytemplateDhcpdConfig {
@@ -7035,7 +7917,7 @@ export namespace org {
          */
         dnsSuffixes: string[];
         /**
-         * If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+         * If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
          */
         fixedBindings?: {[key: string]: outputs.org.GatewaytemplateDhcpdConfigConfigFixedBindings};
         /**
@@ -7138,7 +8020,7 @@ export namespace org {
         /**
          * enum:
          *   * alert (default)
-         *   * drop: siliently dropping packets
+         *   * drop: silently dropping packets
          *   * close: notify client/server to close connection
          */
         action: string;
@@ -7153,8 +8035,8 @@ export namespace org {
     }
 
     export interface GatewaytemplateIpConfigs {
-        ip: string;
-        netmask: string;
+        ip?: string;
+        netmask?: string;
         /**
          * Optional list of secondary IPs in CIDR format
          */
@@ -7254,7 +8136,7 @@ export namespace org {
 
     export interface GatewaytemplateNetworkMulticast {
         /**
-         * If the network will only be the soruce of the multicast traffic, IGMP can be disabled
+         * If the network will only be the source of the multicast traffic, IGMP can be disabled
          */
         disableIgmp: boolean;
         enabled: boolean;
@@ -7549,9 +8431,13 @@ export namespace org {
          */
         redundant: boolean;
         /**
-         * If HA mode
+         * If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
          */
-        rethIdx?: number;
+        redundantGroup?: number;
+        /**
+         * For SRX only and if HA Mode
+         */
+        rethIdx?: string;
         /**
          * If HA mode
          */
@@ -7588,7 +8474,7 @@ export namespace org {
          */
         wanExtIp?: string;
         /**
-         * Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+         * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
          */
         wanExtraRoutes?: {[key: string]: outputs.org.GatewaytemplatePortConfigWanExtraRoutes};
         /**
@@ -7654,7 +8540,7 @@ export namespace org {
 
     export interface GatewaytemplatePortConfigTrafficShaping {
         /**
-         * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+         * percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: number[];
         enabled: boolean;
@@ -7674,15 +8560,11 @@ export namespace org {
          */
         bfdUseTunnelMode: boolean;
         /**
-         * Only if the VPN `type`==`mesh`
-         */
-        linkName?: string;
-        /**
          * Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
          */
         preference?: number;
         /**
-         * Only if the VPN `type`==`hubSpoke`. enum: `hub`, `spoke`
+         * If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
          */
         role: string;
         trafficShaping?: outputs.org.GatewaytemplatePortConfigVpnPathsTrafficShaping;
@@ -7690,7 +8572,7 @@ export namespace org {
 
     export interface GatewaytemplatePortConfigVpnPathsTrafficShaping {
         /**
-         * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+         * percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: number[];
         enabled: boolean;
@@ -7749,10 +8631,6 @@ export namespace org {
          */
         addTargetVrfs?: string[];
         /**
-         * route aggregation
-         */
-        aggregates?: string[];
-        /**
          * When used as export policy, optional
          */
         communities?: string[];
@@ -7764,7 +8642,7 @@ export namespace org {
         /**
          * When used as export policy, optional
          */
-        exportCommunitites?: string[];
+        exportCommunities?: string[];
         /**
          * Optional, for an import policy, localPreference can be changed
          */
@@ -7787,7 +8665,7 @@ export namespace org {
          */
         prefixes?: string[];
         /**
-         * `direct`, `bgp`, `osp`, ...
+         * `direct`, `bgp`, `osp`, `static`, `aggregate`...
          */
         protocols?: string[];
         routeExists?: outputs.org.GatewaytemplateRoutingPoliciesTermMatchingRouteExists;
@@ -7848,7 +8726,7 @@ export namespace org {
          */
         servicepolicyId?: string;
         /**
-         * Required when `servicepolicyId` is not defined. List of Applications / Desctinations
+         * Required when `servicepolicyId` is not defined. List of Applications / Destinations
          */
         services: string[];
         /**
@@ -7863,7 +8741,7 @@ export namespace org {
 
     export interface GatewaytemplateServicePolicyAntivirus {
         /**
-         * org-level AV Profile can be used, this takes precendence over 'profile'
+         * org-level AV Profile can be used, this takes precedence over 'profile'
          */
         avprofileId?: string;
         enabled: boolean;
@@ -8256,7 +9134,7 @@ export namespace org {
 
     export interface GetAlarmtemplatesOrgAlarmtemplate {
         /**
-         * when the object has been created, in epoch
+         * When the object has been created, in epoch
          */
         createdTime: number;
         /**
@@ -8264,11 +9142,11 @@ export namespace org {
          */
         delivery: outputs.org.GetAlarmtemplatesOrgAlarmtemplateDelivery;
         /**
-         * Unique ID of the object instance in the Mist Organnization
+         * Unique ID of the object instance in the Mist Organization
          */
         id: string;
         /**
-         * when the object has been modified for the last time, in epoch
+         * When the object has been modified for the last time, in epoch
          */
         modifiedTime: number;
         /**
@@ -8338,7 +9216,7 @@ export namespace org {
          */
         fallbackAction: string;
         /**
-         * Unique ID of the object instance in the Mist Organnization
+         * Unique ID of the object instance in the Mist Organization
          */
         id: string;
         /**
@@ -8377,7 +9255,7 @@ export namespace org {
 
     export interface GetEvpnTopologiesOrgEvpnTopology {
         /**
-         * when the object has been created, in epoch
+         * When the object has been created, in epoch
          */
         createdTime: number;
         /**
@@ -8385,11 +9263,11 @@ export namespace org {
          */
         evpnOptions: outputs.org.GetEvpnTopologiesOrgEvpnTopologyEvpnOptions;
         /**
-         * Unique ID of the object instance in the Mist Organnization
+         * Unique ID of the object instance in the Mist Organization
          */
         id: string;
         /**
-         * when the object has been modified for the last time, in epoch
+         * When the object has been modified for the last time, in epoch
          */
         modifiedTime: number;
         name: string;
@@ -8402,37 +9280,41 @@ export namespace org {
 
     export interface GetEvpnTopologiesOrgEvpnTopologyEvpnOptions {
         /**
-         * optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
+         * Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
          */
         autoLoopbackSubnet: string;
         /**
-         * optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
+         * Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
          */
         autoLoopbackSubnet6: string;
         /**
-         * optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+         * Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
          */
         autoRouterIdSubnet: string;
         /**
-         * optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+         * Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
          */
         autoRouterIdSubnet6: string;
         /**
-         * optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
+         * Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
          */
         coreAsBorder: boolean;
         overlay: outputs.org.GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay;
         /**
-         * only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4*mac. If enabled, 00-00-5e-00-XX-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)'
+         * Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4*mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
          */
         perVlanVgaV4Mac: boolean;
+        /**
+         * Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address's v6*mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
+         */
+        perVlanVgaV6Mac: boolean;
         /**
          * optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
          */
         routedAt: string;
         underlay: outputs.org.GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay;
         /**
-         * optional, for EX9200 only to seggregate virtual-switches
+         * Optional, for EX9200 only to segregate virtual-switches
          */
         vsInstances: {[key: string]: outputs.org.GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances};
     }
@@ -8451,11 +9333,11 @@ export namespace org {
         asBase: number;
         routedIdPrefix: string;
         /**
-         * underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+         * Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
          */
         subnet: string;
         /**
-         * if v6 is desired for underlay
+         * If v6 is desired for underlay
          */
         useIpv6: boolean;
     }
@@ -8482,7 +9364,7 @@ export namespace org {
          */
         createdTime: number;
         /**
-         * Unique ID of the object instance in the Mist Organnization
+         * Unique ID of the object instance in the Mist Organization
          */
         id: string;
         /**
@@ -8498,7 +9380,7 @@ export namespace org {
         /**
          * enum:
          *   * alert (default)
-         *   * drop: siliently dropping packets
+         *   * drop: silently dropping packets
          *   * close: notify client/server to close connection
          */
         action: string;
@@ -8514,50 +9396,49 @@ export namespace org {
 
     export interface GetInventoryOrgInventory {
         /**
-         * only if `type`==`switch` or `type`==`gateway`
-         * whether the switch/gateway is adopted
+         * Only if `type`==`switch` or `type`==`gateway`, whether the switch/gateway is adopted
          */
         adopted: boolean;
         /**
-         * device claim code
+         * Device claim code
          */
         claimCode: string;
         /**
-         * whether the device is connected
+         * Whether the device is connected
          */
         connected: boolean;
         /**
-         * deviceprofile id if assigned, null if not assigned
+         * Deviceprofile id if assigned, null if not assigned
          */
         deviceprofileId: string;
         /**
-         * hostname reported by the device
+         * Hostname reported by the device
          */
         hostname: string;
         /**
-         * device hardware revision number
+         * Device hardware revision number
          */
         hwRev: string;
         /**
-         * device id
+         * Unique ID of the object instance in the Mist Organization
          */
         id: string;
         jsi: boolean;
         /**
-         * device MAC address
+         * Device MAC address
          */
         mac: string;
         /**
-         * device model
+         * Device model
          */
         model: string;
         /**
-         * device name if configured
+         * Device name if configured
          */
         name: string;
         orgId: string;
         /**
-         * device serial
+         * Device serial
          */
         serial: string;
         /**
@@ -8565,7 +9446,7 @@ export namespace org {
          */
         siteId: string;
         /**
-         * device stock keeping unit
+         * Device stock keeping unit
          */
         sku: string;
         /**
@@ -8573,19 +9454,19 @@ export namespace org {
          */
         type: string;
         /**
-         * if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+         * If `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
          */
         vcMac: string;
     }
 
     export interface GetNacEndpointsOrgUsermac {
         /**
-         * Unique ID of the object instance in the Mist Organnization
+         * Unique ID of the object instance in the Mist Organization
          */
         id: string;
         labels: string[];
         /**
-         * only non-local-admin MAC is accepted
+         * Only non-local-admin MAC is accepted
          */
         mac: string;
         name: string;
@@ -8595,10 +9476,27 @@ export namespace org {
     }
 
     export interface GetNacrulesOrgNacrule {
+        /**
+         * When the object has been created, in epoch
+         */
         createdTime: number;
+        /**
+         * Enabled or not
+         */
+        enabled: boolean;
+        /**
+         * Unique ID of the object instance in the Mist Organization
+         */
         id: string;
+        /**
+         * When the object has been modified for the last time, in epoch
+         */
         modifiedTime: number;
         name: string;
+        /**
+         * Order of the rule, lower value implies higher priority
+         */
+        order: number;
         orgId: string;
     }
 
@@ -8615,12 +9513,9 @@ export namespace org {
          * If `type`==`egressVlanNames`, list of egress vlans to return
          */
         egressVlanNames: string[];
+        gbpTag: string;
         /**
-         * If `type`==`gbpTag`
-         */
-        gbpTag: number;
-        /**
-         * Unique ID of the object instance in the Mist Organnization
+         * Unique ID of the object instance in the Mist Organization
          */
         id: string;
         /**
@@ -8681,16 +9576,37 @@ export namespace org {
     }
 
     export interface GetNetworksOrgNetwork {
+        /**
+         * When the object has been created, in epoch
+         */
         createdTime: number;
+        /**
+         * Unique ID of the object instance in the Mist Organization
+         */
         id: string;
+        /**
+         * When the object has been modified for the last time, in epoch
+         */
         modifiedTime: number;
         name: string;
         orgId: string;
+        subnet: string;
+        subnet6: string;
+        vlanId: string;
     }
 
     export interface GetNetworktemplatesOrgNetworktemplate {
+        /**
+         * When the object has been created, in epoch
+         */
         createdTime: number;
+        /**
+         * Unique ID of the object instance in the Mist Organization
+         */
         id: string;
+        /**
+         * When the object has been modified for the last time, in epoch
+         */
         modifiedTime: number;
         name: string;
         orgId: string;
@@ -8702,7 +9618,7 @@ export namespace org {
          */
         adminSsoId: string;
         /**
-         * when the object has been created, in epoch
+         * When the object has been created, in epoch
          */
         createdTime: number;
         /**
@@ -8718,15 +9634,15 @@ export namespace org {
          */
         expiryNotificationTime: number;
         /**
-         * Unique ID of the object instance in the Mist Organnization
+         * Unique ID of the object instance in the Mist Organization
          */
         id: string;
         /**
-         * if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+         * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
          */
         mac: string;
         /**
-         * if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+         * If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
          */
         macs: string[];
         /**
@@ -8734,7 +9650,7 @@ export namespace org {
          */
         maxUsage: number;
         /**
-         * when the object has been modified for the last time, in epoch
+         * When the object has been modified for the last time, in epoch
          */
         modifiedTime: number;
         name: string;
@@ -8769,40 +9685,100 @@ export namespace org {
     }
 
     export interface GetRftemplatesOrgRftemplate {
+        /**
+         * Optional, country code to use. If specified, this gets applied to all sites using the RF Template
+         */
+        countryCode: string;
+        /**
+         * When the object has been created, in epoch
+         */
         createdTime: number;
+        /**
+         * Unique ID of the object instance in the Mist Organization
+         */
         id: string;
+        /**
+         * When the object has been modified for the last time, in epoch
+         */
         modifiedTime: number;
+        /**
+         * The name of the RF template
+         */
         name: string;
         orgId: string;
     }
 
     export interface GetServicepoliciesOrgServicepolicy {
         /**
+         * For SRX Only
+         */
+        aamw: outputs.org.GetServicepoliciesOrgServicepolicyAamw;
+        /**
          * enum: `allow`, `deny`
          */
         action: string;
         /**
+         * For SRX-only
+         */
+        antivirus: outputs.org.GetServicepoliciesOrgServicepolicyAntivirus;
+        /**
          * For SRX Only
          */
         appqoe: outputs.org.GetServicepoliciesOrgServicepolicyAppqoe;
+        /**
+         * When the object has been created, in epoch
+         */
         createdTime: number;
         ewfs: outputs.org.GetServicepoliciesOrgServicepolicyEwf[];
+        /**
+         * Unique ID of the object instance in the Mist Organization
+         */
         id: string;
         idp: outputs.org.GetServicepoliciesOrgServicepolicyIdp;
         /**
          * access within the same VRF
          */
         localRouting: boolean;
+        /**
+         * When the object has been modified for the last time, in epoch
+         */
         modifiedTime: number;
         name: string;
         orgId: string;
         /**
-         * by default, we derive all paths available and use them
-         * optionally, you can customize by using `pathPreference`
+         * By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
          */
         pathPreference: string;
         services: string[];
+        /**
+         * For SRX-only
+         */
+        sslProxy: outputs.org.GetServicepoliciesOrgServicepolicySslProxy;
         tenants: string[];
+    }
+
+    export interface GetServicepoliciesOrgServicepolicyAamw {
+        /**
+         * org-level Advanced Advance Anti Malware Profile (SkyAtp) Profile can be used, this takes precedence over 'profile'
+         */
+        aamwprofileId: string;
+        enabled: boolean;
+        /**
+         * enum: `docsonly`, `executables`, `standard`
+         */
+        profile: string;
+    }
+
+    export interface GetServicepoliciesOrgServicepolicyAntivirus {
+        /**
+         * org-level AV Profile can be used, this takes precedence over 'profile'
+         */
+        avprofileId: string;
+        enabled: boolean;
+        /**
+         * Default / noftp / httponly / or keys from av_profiles
+         */
+        profile: string;
     }
 
     export interface GetServicepoliciesOrgServicepolicyAppqoe {
@@ -8827,22 +9803,132 @@ export namespace org {
          */
         idpprofileId: string;
         /**
-         * `strict` (default) / `standard` / or keys from from idp_profiles
+         * enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
          */
         profile: string;
     }
 
+    export interface GetServicepoliciesOrgServicepolicySslProxy {
+        /**
+         * enum: `medium`, `strong`, `weak`
+         */
+        ciphersCategory: string;
+        enabled: boolean;
+    }
+
     export interface GetServicesOrgService {
+        /**
+         * If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+         */
+        addresses: string[];
+        /**
+         * When `type`==`appCategories`, list of application categories are available through List App Category Definitions
+         */
+        appCategories: string[];
+        /**
+         * When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
+         */
+        appSubcategories: string[];
+        /**
+         * When `type`==`apps`, list of applications are available through:
+         *   * List Applications
+         *   * List Gateway Applications
+         *   * /insight/top_app_by-bytes?wired=true
+         */
+        apps: string[];
+        /**
+         * 0 means unlimited
+         */
+        clientLimitDown: number;
+        /**
+         * 0 means unlimited
+         */
+        clientLimitUp: number;
+        /**
+         * When the object has been created, in epoch
+         */
         createdTime: number;
+        description: string;
+        dscp: string;
+        /**
+         * enum: `nonRevertable`, `none`, `revertable`
+         */
+        failoverPolicy: string;
+        /**
+         * If `type`==`custom`, web filtering
+         */
+        hostnames: string[];
+        /**
+         * Unique ID of the object instance in the Mist Organization
+         */
         id: string;
+        maxJitter: string;
+        maxLatency: string;
+        maxLoss: string;
+        /**
+         * When the object has been modified for the last time, in epoch
+         */
         modifiedTime: number;
         name: string;
         orgId: string;
+        /**
+         * 0 means unlimited
+         */
+        serviceLimitDown: number;
+        /**
+         * 0 means unlimited
+         */
+        serviceLimitUp: number;
+        /**
+         * Whether to enable measure SLE
+         */
+        sleEnabled: boolean;
+        /**
+         * When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+         */
+        specs: outputs.org.GetServicesOrgServiceSpec[];
+        ssrRelaxedTcpStateEnforcement: boolean;
+        /**
+         * when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
+         */
+        trafficClass: string;
+        /**
+         * values from List Traffic Types
+         */
+        trafficType: string;
+        /**
+         * enum: `appCategories`, `apps`, `custom`, `urls`
+         */
+        type: string;
+        /**
+         * When `type`==`urls`, no need for spec as URL can encode the ports being used
+         */
+        urls: string[];
+    }
+
+    export interface GetServicesOrgServiceSpec {
+        /**
+         * Port number, port range, or variable
+         */
+        portRange: string;
+        /**
+         * `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`, `protocolNumber` is between 1-254
+         */
+        protocol: string;
     }
 
     export interface GetSitegroupsOrgSitegroup {
+        /**
+         * When the object has been created, in epoch
+         */
         createdTime: number;
+        /**
+         * Unique ID of the object instance in the Mist Organization
+         */
         id: string;
+        /**
+         * When the object has been modified for the last time, in epoch
+         */
         modifiedTime: number;
         name: string;
         orgId: string;
@@ -8855,7 +9941,7 @@ export namespace org {
          */
         createdTime: number;
         /**
-         * Unique ID of the object instance in the Mist Organnization
+         * Unique ID of the object instance in the Mist Organization
          */
         id: string;
         /**
@@ -8904,12 +9990,39 @@ export namespace org {
     }
 
     export interface GetVpnsOrgVpn {
+        /**
+         * When the object has been created, in epoch
+         */
         createdTime: number;
+        /**
+         * Unique ID of the object instance in the Mist Organization
+         */
         id: string;
+        /**
+         * When the object has been modified for the last time, in epoch
+         */
         modifiedTime: number;
         name: string;
         orgId: string;
+        /**
+         * Only if `type`==`hubSpoke`
+         */
+        pathSelection: outputs.org.GetVpnsOrgVpnPathSelection;
+        /**
+         * For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+         */
         paths: {[key: string]: outputs.org.GetVpnsOrgVpnPaths};
+        /**
+         * enum: `hubSpoke`, `mesh`
+         */
+        type: string;
+    }
+
+    export interface GetVpnsOrgVpnPathSelection {
+        /**
+         * enum: `disabled`, `simple`, `manual`
+         */
+        strategy: string;
     }
 
     export interface GetVpnsOrgVpnPaths {
@@ -8918,10 +10031,32 @@ export namespace org {
          */
         bfdProfile: string;
         /**
-         * if different from the wan port
+         * If `type`==`mesh` and for SSR only, whether toi use tunnel mode
+         */
+        bfdUseTunnelMode: boolean;
+        /**
+         * If different from the wan port
          */
         ip: string;
+        /**
+         * If `type`==`mesh`, Property key is the Peer Interface name
+         */
+        peerPaths: {[key: string]: outputs.org.GetVpnsOrgVpnPathsPeerPaths};
         pod: number;
+        trafficShaping: outputs.org.GetVpnsOrgVpnPathsTrafficShaping;
+    }
+
+    export interface GetVpnsOrgVpnPathsPeerPaths {
+        preference: number;
+    }
+
+    export interface GetVpnsOrgVpnPathsTrafficShaping {
+        /**
+         * percentages for different class of traffic: high / medium / low / best-effort adding up to 100
+         */
+        classPercentages: number[];
+        enabled: boolean;
+        maxTxKbps: number;
     }
 
     export interface GetWebhooksOrgWebhook {
@@ -8938,7 +10073,7 @@ export namespace org {
          */
         headers: {[key: string]: string};
         /**
-         * Unique ID of the object instance in the Mist Organnization
+         * Unique ID of the object instance in the Mist Organization
          */
         id: string;
         /**
@@ -8982,6 +10117,10 @@ export namespace org {
          * Only if `type`=`http-post`
          */
         secret: string;
+        /**
+         * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
+         */
+        singleEventPerMessage: boolean;
         /**
          * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
          */
@@ -9131,6 +10270,10 @@ export namespace org {
          */
         disable11ax: boolean;
         /**
+         * To disable Wi-Fi 7 EHT IEs
+         */
+        disable11be: boolean;
+        /**
          * To disable ht or vht rates
          */
         disableHtVhtRates: boolean;
@@ -9184,7 +10327,7 @@ export namespace org {
          */
         enableLocalKeycaching: boolean;
         /**
-         * By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+         * By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
          */
         enableWirelessBridging: boolean;
         /**
@@ -9212,7 +10355,7 @@ export namespace org {
          */
         hotspot20: outputs.org.GetWlansOrgWlanHotspot20;
         /**
-         * Unique ID of the object instance in the Mist Organnization
+         * Unique ID of the object instance in the Mist Organization
          */
         id: string;
         injectDhcpOption82: outputs.org.GetWlansOrgWlanInjectDhcpOption82;
@@ -9259,7 +10402,7 @@ export namespace org {
          */
         mxtunnelIds: string[];
         /**
-         * When `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+         * When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
          */
         mxtunnelNames: string[];
         /**
@@ -9336,7 +10479,7 @@ export namespace org {
         vlanEnabled: boolean;
         vlanId: string;
         /**
-         * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+         * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
          */
         vlanIds: string[];
         /**
@@ -9390,7 +10533,7 @@ export namespace org {
          */
         port: number;
         /**
-         * Secretof RADIUS server
+         * Secret of RADIUS server
          */
         secret: string;
     }
@@ -9435,7 +10578,7 @@ export namespace org {
     }
 
     export interface GetWlansOrgWlanAppQosApps {
-        dscp: number;
+        dscp: string;
         /**
          * Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
          */
@@ -9447,7 +10590,7 @@ export namespace org {
     }
 
     export interface GetWlansOrgWlanAppQosOther {
-        dscp: number;
+        dscp: string;
         dstSubnet: string;
         portRanges: string;
         protocol: string;
@@ -9526,7 +10669,7 @@ export namespace org {
          */
         requireMessageAuthenticator: boolean;
         /**
-         * Secretof RADIUS server
+         * Secret of RADIUS server
          */
         secret: string;
     }
@@ -9632,7 +10775,7 @@ export namespace org {
          */
         type: string;
         /**
-         * Map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
+         * Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
          *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
          *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
          */
@@ -9697,7 +10840,7 @@ export namespace org {
          */
         amazonClientId: string;
         /**
-         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a corresponding value. Else leave blank.
          */
         amazonClientSecret: string;
         /**
@@ -9781,7 +10924,7 @@ export namespace org {
          */
         facebookClientId: string;
         /**
-         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
+         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a corresponding value. Else leave blank.
          */
         facebookClientSecret: string;
         /**
@@ -9809,7 +10952,7 @@ export namespace org {
          */
         googleClientId: string;
         /**
-         * Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a corresponding value. Else leave blank.
          */
         googleClientSecret: string;
         /**
@@ -9837,7 +10980,7 @@ export namespace org {
          */
         microsoftClientId: string;
         /**
-         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a corresponding value. Else leave blank.
          */
         microsoftClientSecret: string;
         /**
@@ -9937,11 +11080,11 @@ export namespace org {
          */
         sponsors: {[key: string]: string};
         /**
-         * Optionl if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+         * Optional if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
          */
         ssoDefaultRole: string;
         /**
-         * Optionl if `wlanPortalAuth`==`sso`
+         * Optional if `wlanPortalAuth`==`sso`
          */
         ssoForcedRole: string;
         /**
@@ -10034,6 +11177,14 @@ export namespace org {
 
     export interface GetWlansOrgWlanRateset {
         /**
+         * If `template`==`custom`. EHT MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit)
+         */
+        eht: string;
+        /**
+         * If `template`==`custom`. HE MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit
+         */
+        he: string;
+        /**
          * If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
          */
         ht: string;
@@ -10100,26 +11251,110 @@ export namespace org {
     }
 
     export interface GetWlantemplatesOrgWlantemplate {
+        /**
+         * When the object has been created, in epoch
+         */
         createdTime: number;
+        /**
+         * Unique ID of the object instance in the Mist Organization
+         */
         id: string;
+        /**
+         * When the object has been modified for the last time, in epoch
+         */
         modifiedTime: number;
         name: string;
         orgId: string;
     }
 
     export interface GetWxtagsOrgWxtag {
+        /**
+         * When the object has been created, in epoch
+         */
         createdTime: number;
+        /**
+         * Unique ID of the object instance in the Mist Organization
+         */
         id: string;
+        lastIps: string[];
+        /**
+         * If `type`==`client`, Client MAC Address
+         */
+        mac: string;
+        /**
+         * required if `type`==`match`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`
+         */
+        match: string;
+        /**
+         * When the object has been modified for the last time, in epoch
+         */
         modifiedTime: number;
+        /**
+         * The name
+         */
         name: string;
+        /**
+         * required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
+         */
+        op: string;
         orgId: string;
+        resourceMac: string;
+        services: string[];
+        siteId: string;
+        /**
+         * If `type`==`spec`
+         */
+        specs: outputs.org.GetWxtagsOrgWxtagSpec[];
+        subnet: string;
+        /**
+         * enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
+         */
+        type: string;
+        /**
+         * Required if `type`==`match` and
+         *   * `match`==`apId`: list of AP IDs
+         *   * `match`==`app`: list of Application Names
+         *   * `match`==`assetMac`: list of Asset MAC Addresses
+         *   * `match`==`clientMac`: list of Client MAC Addresses
+         *   * `match`==`hostname`: list of Resources Hostnames
+         *   * `match`==`ipRangeSubnet`: list of IP Addresses and/or CIDRs
+         *   * `match`==`pskName`: list of PSK Names
+         *   * `match`==`pskRole`: list of PSK Roles
+         *   * `match`==`port`: list of Ports or Port Ranges
+         *   * `match`==`radiusAttr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other RADIUS attributes where we know the type
+         *   * `match`==`radiusClass`: list of RADIUS Classes. This matches the ATTR-Class(25)
+         *   * `match`==`radiusGroup`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
+         *   * `match`==`radiusUsername`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
+         *   * `match`==`sdkclientUuid`: list of SDK UUIDs
+         *   * `match`==`wlanId`: list of WLAN IDs
+         *
+         * **Notes**:
+         * Variables are not allowed
+         */
+        values: string[];
+        vlanId: string;
+    }
+
+    export interface GetWxtagsOrgWxtagSpec {
+        /**
+         * Matched destination port, "0" means any
+         */
+        portRange: string;
+        /**
+         * tcp / udp / icmp / gre / any / ":protocol_number", `protocolNumber` is between 1-254
+         */
+        protocol: string;
+        /**
+         * Matched destination subnets and/or IP Addresses
+         */
+        subnets: string[];
     }
 
     export interface IdpprofileOverwrite {
         /**
          * enum:
          *   * alert (default)
-         *   * drop: siliently dropping packets
+         *   * drop: silently dropping packets
          *   * close: notify client/server to close connection
          */
         action: string;
@@ -10131,54 +11366,6 @@ export namespace org {
         attackNames?: string[];
         dstSubnets?: string[];
         severities?: string[];
-    }
-
-    export interface InventoryDevice {
-        /**
-         * used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
-         */
-        claimCode: string;
-        /**
-         * deviceprofile id if assigned, null if not assigned
-         */
-        deviceprofileId: string;
-        /**
-         * hostname reported by the device
-         */
-        hostname: string;
-        /**
-         * device id
-         */
-        id: string;
-        /**
-         * used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
-         */
-        mac: string;
-        /**
-         * device model
-         */
-        model: string;
-        orgId: string;
-        /**
-         * device serial
-         */
-        serial: string;
-        /**
-         * Site ID. Used to assign device to a Site
-         */
-        siteId?: string;
-        /**
-         * enum: `ap`, `gateway`, `switch`
-         */
-        type: string;
-        /**
-         * Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
-         */
-        unclaimWhenDestroyed: boolean;
-        /**
-         * if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
-         */
-        vcMac: string;
     }
 
     export interface InventoryInventory {
@@ -10231,42 +11418,74 @@ export namespace org {
 
     export interface NacruleMatching {
         /**
-         * enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `psk`
+         * enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
          */
         authType?: string;
+        /**
+         * List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+         */
+        families?: string[];
+        /**
+         * List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+         */
+        mfgs?: string[];
+        /**
+         * List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+         */
+        models?: string[];
         nactags: string[];
+        /**
+         * List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed osType values
+         */
+        osTypes?: string[];
         portTypes: string[];
         /**
-         * list of site ids to match
+         * List of site ids to match
          */
         siteIds: string[];
         /**
-         * list of sitegroup ids to match
+         * List of sitegroup ids to match
          */
         sitegroupIds: string[];
         /**
-         * list of vendors to match
+         * List of vendors to match
          */
         vendors: string[];
     }
 
     export interface NacruleNotMatching {
         /**
-         * enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `psk`
+         * enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
          */
         authType?: string;
+        /**
+         * List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+         */
+        families?: string[];
+        /**
+         * List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+         */
+        mfgs?: string[];
+        /**
+         * List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+         */
+        models?: string[];
         nactags: string[];
+        /**
+         * List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed osType values
+         */
+        osTypes?: string[];
         portTypes: string[];
         /**
-         * list of site ids to match
+         * List of site ids to match
          */
         siteIds: string[];
         /**
-         * list of sitegroup ids to match
+         * List of sitegroup ids to match
          */
         sitegroupIds: string[];
         /**
-         * list of vendors to match
+         * List of vendors to match
          */
         vendors: string[];
     }
@@ -10283,7 +11502,7 @@ export namespace org {
         destinationNat?: {[key: string]: outputs.org.NetworkInternetAccessDestinationNat};
         enabled?: boolean;
         /**
-         * by default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+         * By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
          */
         restricted: boolean;
         /**
@@ -10322,7 +11541,7 @@ export namespace org {
 
     export interface NetworkMulticast {
         /**
-         * if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+         * If the network will only be the source of the multicast traffic, IGMP can be disabled
          */
         disableIgmp: boolean;
         enabled: boolean;
@@ -10345,11 +11564,11 @@ export namespace org {
 
     export interface NetworkVpnAccess {
         /**
-         * if `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
+         * If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
          */
         advertisedSubnet?: string;
         /**
-         * whether to allow ping from vpn into this routed network
+         * Whether to allow ping from vpn into this routed network
          */
         allowPing?: boolean;
         /**
@@ -10357,7 +11576,7 @@ export namespace org {
          */
         destinationNat?: {[key: string]: outputs.org.NetworkVpnAccessDestinationNat};
         /**
-         * if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+         * If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
          */
         natPool?: string;
         /**
@@ -10369,21 +11588,19 @@ export namespace org {
          */
         noReadvertiseToLanOspf: boolean;
         /**
-         * toward overlay
-         * how HUB should deal with routes it received from Spokes
+         * toward overlay, how HUB should deal with routes it received from Spokes
          */
         noReadvertiseToOverlay?: boolean;
         /**
-         * by default, the routes are only readvertised toward the same vrf on spoke
-         * to allow it to be leaked to other vrfs
+         * By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
          */
         otherVrfs: string[];
         /**
-         * whether this network is routable
+         * Whether this network is routable
          */
         routed?: boolean;
         /**
-         * if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+         * If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
          */
         sourceNat: outputs.org.NetworkVpnAccessSourceNat;
         /**
@@ -10391,8 +11608,7 @@ export namespace org {
          */
         staticNat: {[key: string]: outputs.org.NetworkVpnAccessStaticNat};
         /**
-         * toward overlay
-         * how HUB should deal with routes it received from Spokes
+         * toward overlay, how HUB should deal with routes it received from Spokes
          */
         summarizedSubnet?: string;
         /**
@@ -10538,10 +11754,10 @@ export namespace org {
         /**
          * This takes precedence
          */
-        discard: boolean;
+        discard?: boolean;
         metric?: number;
         nextQualified?: {[key: string]: outputs.org.NetworktemplateExtraRoutesNextQualified};
-        noResolve: boolean;
+        noResolve?: boolean;
         preference?: number;
         /**
          * Next-hop IP Address
@@ -10553,10 +11769,10 @@ export namespace org {
         /**
          * This takes precedence
          */
-        discard: boolean;
+        discard?: boolean;
         metric?: number;
         nextQualified?: {[key: string]: outputs.org.NetworktemplateExtraRoutes6NextQualified};
-        noResolve: boolean;
+        noResolve?: boolean;
         preference?: number;
         /**
          * Next-hop IP Address
@@ -10591,7 +11807,7 @@ export namespace org {
         /**
          * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
          */
-        isolation: boolean;
+        isolation?: boolean;
         isolationVlanId?: string;
         /**
          * Optional for pure switching, required when L3 / routing features are used
@@ -10660,11 +11876,11 @@ export namespace org {
          */
         inputPortIdsIngresses: string[];
         /**
-         * Exaclty one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
          */
         outputNetwork?: string;
         /**
-         * Exaclty one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: string;
     }
@@ -10681,19 +11897,19 @@ export namespace org {
         /**
          * Only if `mode`!=`dynamic`
          */
-        allowMultipleSupplicants: boolean;
+        allowMultipleSupplicants?: boolean;
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
          */
-        bypassAuthWhenServerDown: boolean;
+        bypassAuthWhenServerDown?: boolean;
         /**
          * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
-        bypassAuthWhenServerDownForUnkownClient: boolean;
+        bypassAuthWhenServerDownForUnknownClient?: boolean;
         /**
          * Only if `mode`!=`dynamic`
          */
-        description?: string;
+        description: string;
         /**
          * Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
          */
@@ -10713,7 +11929,7 @@ export namespace org {
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
          */
-        enableMacAuth: boolean;
+        enableMacAuth?: boolean;
         /**
          * Only if `mode`!=`dynamic`
          */
@@ -10723,9 +11939,13 @@ export namespace org {
          */
         guestNetwork?: string;
         /**
+         * `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+         */
+        interIsolationNetworkLink?: boolean;
+        /**
          * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          */
-        interSwitchLink: boolean;
+        interSwitchLink?: boolean;
         /**
          * Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
          */
@@ -10737,19 +11957,19 @@ export namespace org {
         /**
          * Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
          */
-        macAuthProtocol: string;
+        macAuthProtocol?: string;
         /**
-         * Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+         * Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 to 16383 (upper bound constrained by platform)
          */
-        macLimit: number;
+        macLimit: string;
         /**
          * `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
          */
         mode?: string;
         /**
-         * Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+         * Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. Value between 256 and 9216, default value is 1514.
          */
-        mtu?: number;
+        mtu?: string;
         /**
          * Only if `mode`==`trunk`, the list of network/vlans
          */
@@ -10771,13 +11991,13 @@ export namespace org {
          */
         portNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range
+         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
          */
-        reauthInterval: number;
+        reauthInterval?: string;
         /**
          * Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
          */
-        resetDefaultWhen: string;
+        resetDefaultWhen?: string;
         /**
          * Only if `mode`==`dynamic`
          */
@@ -10802,8 +12022,8 @@ export namespace org {
          * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
          */
         stpEdge: boolean;
-        stpNoRootPort: boolean;
-        stpP2p: boolean;
+        stpNoRootPort?: boolean;
+        stpP2p?: boolean;
         /**
          * Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
          */
@@ -10811,7 +12031,7 @@ export namespace org {
         /**
          * If this is connected to a vstp network
          */
-        useVstp: boolean;
+        useVstp?: boolean;
         /**
          * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
@@ -10844,31 +12064,36 @@ export namespace org {
         /**
          * Whether to disable storm control on broadcast traffic
          */
-        noBroadcast: boolean;
+        noBroadcast?: boolean;
         /**
          * Whether to disable storm control on multicast traffic
          */
-        noMulticast: boolean;
+        noMulticast?: boolean;
         /**
          * Whether to disable storm control on registered multicast traffic
          */
-        noRegisteredMulticast: boolean;
+        noRegisteredMulticast?: boolean;
         /**
          * Whether to disable storm control on unknown unicast traffic
          */
-        noUnknownUnicast: boolean;
+        noUnknownUnicast?: boolean;
         /**
          * Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
          */
-        percentage: number;
+        percentage?: number;
     }
 
     export interface NetworktemplateRadiusConfig {
+        acctImmediateUpdate?: boolean;
         /**
          * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
          */
         acctInterimInterval: number;
         acctServers?: outputs.org.NetworktemplateRadiusConfigAcctServer[];
+        /**
+         * enum: `ordered`, `unordered`
+         */
+        authServerSelection: string;
         authServers?: outputs.org.NetworktemplateRadiusConfigAuthServer[];
         /**
          * Radius auth session retries
@@ -10878,6 +12103,9 @@ export namespace org {
          * Radius auth session timeout
          */
         authServersTimeout: number;
+        coaEnabled: boolean;
+        coaPort: string;
+        fastDot1xTimers: boolean;
         /**
          * Use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
          */
@@ -10905,7 +12133,7 @@ export namespace org {
          */
         port: number;
         /**
-         * Secretof RADIUS server
+         * Secret of RADIUS server
          */
         secret: string;
     }
@@ -10929,9 +12157,9 @@ export namespace org {
         /**
          * Whether to require Message-Authenticator in requests
          */
-        requireMessageAuthenticator: boolean;
+        requireMessageAuthenticator?: boolean;
         /**
-         * Secretof RADIUS server
+         * Secret of RADIUS server
          */
         secret: string;
     }
@@ -10945,7 +12173,7 @@ export namespace org {
          * If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
          */
         network?: string;
-        sendToAllServers: boolean;
+        sendToAllServers?: boolean;
         servers?: outputs.org.NetworktemplateRemoteSyslogServer[];
         /**
          * enum: `millisecond`, `year`, `year millisecond`
@@ -10955,7 +12183,7 @@ export namespace org {
     }
 
     export interface NetworktemplateRemoteSyslogArchive {
-        files?: number;
+        files?: string;
         size?: string;
     }
 
@@ -10984,7 +12212,7 @@ export namespace org {
     }
 
     export interface NetworktemplateRemoteSyslogFileArchive {
-        files?: number;
+        files?: string;
         size?: string;
     }
 
@@ -11008,7 +12236,7 @@ export namespace org {
         facility: string;
         host?: string;
         match?: string;
-        port: number;
+        port?: string;
         /**
          * enum: `tcp`, `udp`
          */
@@ -11062,7 +12290,7 @@ export namespace org {
         engineId?: string;
         location?: string;
         name?: string;
-        network: string;
+        network?: string;
         trapGroups?: outputs.org.NetworktemplateSnmpConfigTrapGroup[];
         v2cConfigs?: outputs.org.NetworktemplateSnmpConfigV2cConfig[];
         v3Config?: outputs.org.NetworktemplateSnmpConfigV3Config;
@@ -11268,7 +12496,7 @@ export namespace org {
     export interface NetworktemplateSwitchMatching {
         enable?: boolean;
         /**
-         * list of rules to define custom switch configuration based on different criterias. Each list must have at least one of `matchModel`, `matchName` or `matchRole` must be defined
+         * list of rules to define custom switch configuration based on different criteria. Each list must have at least one of `matchModel`, `matchName` or `matchRole` must be defined
          */
         rules?: outputs.org.NetworktemplateSwitchMatchingRule[];
     }
@@ -11310,17 +12538,20 @@ Please update your configurations.
 Please update your configurations.
          */
         matchValue: string;
+        /**
+         * Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
+         */
         name?: string;
         /**
          * Out-of-Band Management interface configuration
          */
         oobIpConfig?: outputs.org.NetworktemplateSwitchMatchingRuleOobIpConfig;
         /**
-         * Propery key is the interface name or interface range
+         * Property key is the port name or range (e.g. "ge-0/0/0-10")
          */
         portConfig?: {[key: string]: outputs.org.NetworktemplateSwitchMatchingRulePortConfig};
         /**
-         * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+         * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
          */
         portMirroring?: {[key: string]: outputs.org.NetworktemplateSwitchMatchingRulePortMirroring};
     }
@@ -11348,7 +12579,7 @@ Please update your configurations.
         /**
          * For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          */
-        useMgmtVrfForHostOut: boolean;
+        useMgmtVrfForHostOut?: boolean;
     }
 
     export interface NetworktemplateSwitchMatchingRulePortConfig {
@@ -11364,20 +12595,20 @@ Please update your configurations.
          * To use fast timeout
          */
         aeLacpSlow?: boolean;
-        aggregated: boolean;
+        aggregated?: boolean;
         /**
          * To generate port up/down alarm
          */
-        critical?: boolean;
+        critical: boolean;
         description?: string;
         /**
          * If `speed` and `duplex` are specified, whether to disable autonegotiation
          */
-        disableAutoneg: boolean;
+        disableAutoneg?: boolean;
         /**
          * enum: `auto`, `full`, `half`
          */
-        duplex: string;
+        duplex?: string;
         /**
          * Enable dynamic usage for this port. Set to `dynamic` to enable.
          */
@@ -11386,16 +12617,16 @@ Please update your configurations.
         /**
          * Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
          */
-        mtu: number;
+        mtu?: number;
         /**
          * Prevent helpdesk to override the port config
          */
-        noLocalOverwrite?: boolean;
-        poeDisabled: boolean;
+        noLocalOverwrite: boolean;
+        poeDisabled?: boolean;
         /**
          * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
-        speed: string;
+        speed?: string;
         /**
          * Port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
          */
@@ -11416,11 +12647,11 @@ Please update your configurations.
          */
         inputPortIdsIngresses: string[];
         /**
-         * Exaclty one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
          */
         outputNetwork?: string;
         /**
-         * Exaclty one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: string;
     }
@@ -11429,7 +12660,7 @@ Please update your configurations.
         /**
          * AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
          */
-        apAffinityThreshold: number;
+        apAffinityThreshold?: number;
         /**
          * Set Banners for switches. Allows markup formatting
          */
@@ -11445,14 +12676,21 @@ Please update your configurations.
         /**
          * Enable to provide the FQDN with DHCP option 81
          */
-        dhcpOptionFqdn: boolean;
+        dhcpOptionFqdn?: boolean;
         disableOobDownAlarm?: boolean;
+        fipsEnabled?: boolean;
         /**
          * Property key is the user name. For Local user authentication
          */
         localAccounts?: {[key: string]: outputs.org.NetworktemplateSwitchMgmtLocalAccounts};
+        /**
+         * IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+         */
         mxedgeProxyHost?: string;
-        mxedgeProxyPort: number;
+        /**
+         * Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
+         */
+        mxedgeProxyPort?: string;
         /**
          * Restrict inbound-traffic to host
          * when enabled, all traffic that is not essential to our operation will be dropped 
@@ -11510,7 +12748,7 @@ Please update your configurations.
         /**
          * enum: `admin`, `helpdesk`, `none`, `read`
          */
-        defaultRole: string;
+        defaultRole?: string;
         enabled?: boolean;
         /**
          * Which network the TACACS server resides
@@ -11541,10 +12779,16 @@ Please update your configurations.
     }
 
     export interface NetworktemplateVrfInstances {
+        evpnAutoLoopbackSubnet?: string;
+        evpnAutoLoopbackSubnet6?: string;
         /**
          * Property key is the destination CIDR (e.g. "10.0.0.0/8")
          */
         extraRoutes?: {[key: string]: outputs.org.NetworktemplateVrfInstancesExtraRoutes};
+        /**
+         * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+         */
+        extraRoutes6?: {[key: string]: outputs.org.NetworktemplateVrfInstancesExtraRoutes6};
         networks?: string[];
     }
 
@@ -11555,13 +12799,20 @@ Please update your configurations.
         via: string;
     }
 
+    export interface NetworktemplateVrfInstancesExtraRoutes6 {
+        /**
+         * Next-hop address
+         */
+        via?: string;
+    }
+
     export interface RftemplateBand24 {
         allowRrmDisable: boolean;
         antGain: number;
         /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
-        antennaMode: string;
+        antennaMode?: string;
         /**
          * channel width for the 2.4GHz band. enum: `20`, `40`
          */
@@ -11575,9 +12826,9 @@ Please update your configurations.
          */
         disabled: boolean;
         /**
-         * Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+         * tx power of the radio, null or 0 means auto, when power*min=power*max=power=0 to indicate power=0
          */
-        power: number;
+        power?: number;
         /**
          * When power=0, max tx power to use, HW-specific values will be used if not set
          */
@@ -11598,11 +12849,11 @@ Please update your configurations.
         /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
-        antennaMode: string;
+        antennaMode?: string;
         /**
          * channel width for the 5GHz band. enum: `20`, `40`, `80`
          */
-        bandwidth?: number;
+        bandwidth: number;
         /**
          * For RFTemplates. List of channels, null or empty array means auto
          */
@@ -11614,7 +12865,7 @@ Please update your configurations.
         /**
          * Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
          */
-        power: number;
+        power?: number;
         /**
          * When power=0, max tx power to use, HW-specific values will be used if not set
          */
@@ -11639,7 +12890,7 @@ Please update your configurations.
         /**
          * channel width for the 5GHz band. enum: `20`, `40`, `80`
          */
-        bandwidth?: number;
+        bandwidth: number;
         /**
          * For RFTemplates. List of channels, null or empty array means auto
          */
@@ -11672,7 +12923,7 @@ Please update your configurations.
         /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
-        antennaMode: string;
+        antennaMode?: string;
         /**
          * channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
          */
@@ -11688,7 +12939,7 @@ Please update your configurations.
         /**
          * Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
          */
-        power: number;
+        power?: number;
         /**
          * When power=0, max tx power to use, HW-specific values will be used if not set
          */
@@ -11704,13 +12955,13 @@ Please update your configurations.
         /**
          * For 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed, and we'll fall back to Low Power Indoor if AFC failed
          */
-        standardPower: boolean;
+        standardPower?: boolean;
     }
 
     export interface RftemplateModelSpecific {
-        antGain24?: number;
-        antGain5?: number;
-        antGain6?: number;
+        antGain24: number;
+        antGain5: number;
+        antGain6: number;
         /**
          * Radio Band AP settings
          */
@@ -11735,11 +12986,11 @@ Please update your configurations.
 
     export interface RftemplateModelSpecificBand24 {
         allowRrmDisable: boolean;
-        antGain: number;
+        antGain?: number;
         /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
-        antennaMode: string;
+        antennaMode?: string;
         /**
          * channel width for the 2.4GHz band. enum: `20`, `40`
          */
@@ -11747,15 +12998,15 @@ Please update your configurations.
         /**
          * For RFTemplates. List of channels, null or empty array means auto
          */
-        channels?: number[];
+        channels: number[];
         /**
          * Whether to disable the radio
          */
         disabled: boolean;
         /**
-         * Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+         * tx power of the radio, null or 0 means auto, when power*min=power*max=power=0 to indicate power=0
          */
-        power: number;
+        power?: number;
         /**
          * When power=0, max tx power to use, HW-specific values will be used if not set
          */
@@ -11776,15 +13027,15 @@ Please update your configurations.
         /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
-        antennaMode: string;
+        antennaMode?: string;
         /**
          * channel width for the 5GHz band. enum: `20`, `40`, `80`
          */
-        bandwidth?: number;
+        bandwidth: number;
         /**
          * For RFTemplates. List of channels, null or empty array means auto
          */
-        channels?: number[];
+        channels: number[];
         /**
          * Whether to disable the radio
          */
@@ -11792,7 +13043,7 @@ Please update your configurations.
         /**
          * Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
          */
-        power: number;
+        power?: number;
         /**
          * When power=0, max tx power to use, HW-specific values will be used if not set
          */
@@ -11817,7 +13068,7 @@ Please update your configurations.
         /**
          * channel width for the 5GHz band. enum: `20`, `40`, `80`
          */
-        bandwidth?: number;
+        bandwidth: number;
         /**
          * For RFTemplates. List of channels, null or empty array means auto
          */
@@ -11850,7 +13101,7 @@ Please update your configurations.
         /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
-        antennaMode: string;
+        antennaMode?: string;
         /**
          * channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
          */
@@ -11858,7 +13109,7 @@ Please update your configurations.
         /**
          * For RFTemplates. List of channels, null or empty array means auto
          */
-        channels?: number[];
+        channels: number[];
         /**
          * Whether to disable the radio
          */
@@ -11866,7 +13117,7 @@ Please update your configurations.
         /**
          * Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
          */
-        power: number;
+        power?: number;
         /**
          * When power=0, max tx power to use, HW-specific values will be used if not set
          */
@@ -11882,24 +13133,35 @@ Please update your configurations.
         /**
          * For 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed, and we'll fall back to Low Power Indoor if AFC failed
          */
-        standardPower: boolean;
+        standardPower?: boolean;
     }
 
     export interface ServiceSpec {
         /**
-         * port number, port range, or variable
+         * Port number, port range, or variable
          */
         portRange?: string;
         /**
-         * `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`.
-         * `protocolNumber` is between 1-254
+         * `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`, `protocolNumber` is between 1-254
          */
         protocol: string;
     }
 
+    export interface ServicepolicyAamw {
+        /**
+         * org-level Advanced Advance Anti Malware Profile (SkyAtp) Profile can be used, this takes precedence over 'profile'
+         */
+        aamwprofileId?: string;
+        enabled: boolean;
+        /**
+         * enum: `docsonly`, `executables`, `standard`
+         */
+        profile?: string;
+    }
+
     export interface ServicepolicyAntivirus {
         /**
-         * org-level AV Profile can be used, this takes precendence over 'profile'
+         * org-level AV Profile can be used, this takes precedence over 'profile'
          */
         avprofileId?: string;
         enabled: boolean;
@@ -11920,7 +13182,7 @@ Please update your configurations.
         /**
          * enum: `critical`, `standard`, `strict`
          */
-        profile: string;
+        profile?: string;
     }
 
     export interface ServicepolicyIdp {
@@ -11933,7 +13195,7 @@ Please update your configurations.
         /**
          * enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
          */
-        profile: string;
+        profile?: string;
     }
 
     export interface ServicepolicySslProxy {
@@ -11950,7 +13212,7 @@ Please update your configurations.
          *   * `true`: API will hide passwords/secrets for all users
          *   * `false`: API will hide passwords/secrets for read-only users
          */
-        noReveal: boolean;
+        noReveal?: boolean;
     }
 
     export interface SettingCelona {
@@ -11961,9 +13223,9 @@ Please update your configurations.
     export interface SettingCloudshark {
         apitoken: string;
         /**
-         * If using CS Enteprise
+         * If using CS Enterprise
          */
-        url?: string;
+        url: string;
     }
 
     export interface SettingCradlepoint {
@@ -12025,6 +13287,25 @@ Please update your configurations.
         name: string;
     }
 
+    export interface SettingJunosShellAccess {
+        /**
+         * enum: `admin`, `viewer`, `none`
+         */
+        admin: string;
+        /**
+         * enum: `admin`, `viewer`, `none`
+         */
+        helpdesk: string;
+        /**
+         * enum: `admin`, `viewer`, `none`
+         */
+        read: string;
+        /**
+         * enum: `admin`, `viewer`, `none`
+         */
+        write: string;
+    }
+
     export interface SettingMgmt {
         /**
          * List of Mist Tunnels
@@ -12052,23 +13333,23 @@ Please update your configurations.
         /**
          * to disable RSAE_PSS_SHA256, RSAE_PSS_SHA384, RSAE_PSS_SHA512 from server side. see https://www.openssl.org/docs/man3.0/man1/openssl-ciphers.html
          */
-        disableRsaeAlgorithms: boolean;
+        disableRsaeAlgorithms?: boolean;
         /**
          * eap ssl security level, see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
          */
-        eapSslSecurityLevel: number;
+        eapSslSecurityLevel?: number;
         /**
-         * By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mistNac enabled
+         * By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mistNac enabled
          */
         euOnly: boolean;
         /**
          * allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
          */
-        idpMachineCertLookupField: string;
+        idpMachineCertLookupField?: string;
         /**
          * allow customer to choose the EAP-TLS client certificate's field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
          */
-        idpUserCertLookupField: string;
+        idpUserCertLookupField?: string;
         idps: outputs.org.SettingMistNacIdp[];
         /**
          * radius server cert to be presented in EAP TLS
@@ -12077,11 +13358,11 @@ Please update your configurations.
         /**
          * by default, NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
          */
-        useIpVersion: string;
+        useIpVersion?: string;
         /**
          * By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `useSslPort`==`true` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and mxedgeClusters that have mist-nac enabled
          */
-        useSslPort: boolean;
+        useSslPort?: boolean;
     }
 
     export interface SettingMistNacIdp {
@@ -12111,16 +13392,17 @@ Please update your configurations.
     }
 
     export interface SettingMxedgeMgmt {
+        configAutoRevert?: boolean;
         fipsEnabled: boolean;
         mistPassword?: string;
         /**
          * enum: `dhcp`, `disabled`, `static`
          */
-        oobIpType: string;
+        oobIpType?: string;
         /**
          * enum: `autoconf`, `dhcp`, `disabled`, `static`
          */
-        oobIpType6: string;
+        oobIpType6?: string;
         rootPassword?: string;
     }
 
@@ -12186,6 +13468,10 @@ Please update your configurations.
          * If the field is set in both site/setting and org/setting, the value from site/setting will be used.
          */
         apAffinityThreshold: number;
+        /**
+         * If `false`, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
+         */
+        removeExistingConfigs: boolean;
     }
 
     export interface SettingSyntheticTest {
@@ -12214,7 +13500,7 @@ Please update your configurations.
     export interface SettingVpnOptions {
         asBase?: number;
         /**
-         * equiring /12 or bigger to support 16 private IPs for 65535 gateways
+         * requiring /12 or bigger to support 16 private IPs for 65535 gateways
          */
         stSubnet: string;
     }
@@ -12267,16 +13553,45 @@ Please update your configurations.
         views: string[];
     }
 
+    export interface VpnPathSelection {
+        /**
+         * enum: `disabled`, `simple`, `manual`
+         */
+        strategy: string;
+    }
+
     export interface VpnPaths {
         /**
          * enum: `broadband`, `lte`
          */
-        bfdProfile: string;
+        bfdProfile?: string;
         /**
-         * if different from the wan port
+         * If `type`==`mesh` and for SSR only, whether to use tunnel mode
+         */
+        bfdUseTunnelMode?: boolean;
+        /**
+         * If different from the wan port
          */
         ip?: string;
-        pod: number;
+        /**
+         * If `type`==`mesh`, Property key is the Peer Interface name
+         */
+        peerPaths?: {[key: string]: outputs.org.VpnPathsPeerPaths};
+        pod?: number;
+        trafficShaping?: outputs.org.VpnPathsTrafficShaping;
+    }
+
+    export interface VpnPathsPeerPaths {
+        preference?: number;
+    }
+
+    export interface VpnPathsTrafficShaping {
+        /**
+         * percentages for different class of traffic: high / medium / low / best-effort adding up to 100
+         */
+        classPercentages?: number[];
+        enabled?: boolean;
+        maxTxKbps?: number;
     }
 
     export interface WlanAcctServer {
@@ -12296,7 +13611,7 @@ Please update your configurations.
          */
         port: number;
         /**
-         * Secretof RADIUS server
+         * Secret of RADIUS server
          */
         secret: string;
     }
@@ -12341,7 +13656,10 @@ Please update your configurations.
     }
 
     export interface WlanAppQosApps {
-        dscp?: number;
+        /**
+         * DSCP value range between 0 and 63
+         */
+        dscp?: string;
         /**
          * Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
          */
@@ -12353,7 +13671,7 @@ Please update your configurations.
     }
 
     export interface WlanAppQosOther {
-        dscp?: number;
+        dscp?: string;
         dstSubnet?: string;
         portRanges?: string;
         protocol?: string;
@@ -12432,7 +13750,7 @@ Please update your configurations.
          */
         requireMessageAuthenticator: boolean;
         /**
-         * Secretof RADIUS server
+         * Secret of RADIUS server
          */
         secret: string;
     }
@@ -12538,7 +13856,7 @@ Please update your configurations.
          */
         type: string;
         /**
-         * Map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
+         * Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
          *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
          *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
          */
@@ -12603,7 +13921,7 @@ Please update your configurations.
          */
         amazonClientId: string;
         /**
-         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a corresponding value. Else leave blank.
          */
         amazonClientSecret: string;
         /**
@@ -12687,7 +14005,7 @@ Please update your configurations.
          */
         facebookClientId: string;
         /**
-         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
+         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a corresponding value. Else leave blank.
          */
         facebookClientSecret: string;
         /**
@@ -12715,7 +14033,7 @@ Please update your configurations.
          */
         googleClientId: string;
         /**
-         * Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a corresponding value. Else leave blank.
          */
         googleClientSecret: string;
         /**
@@ -12743,7 +14061,7 @@ Please update your configurations.
          */
         microsoftClientId: string;
         /**
-         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a corresponding value. Else leave blank.
          */
         microsoftClientSecret: string;
         /**
@@ -12843,11 +14161,11 @@ Please update your configurations.
          */
         sponsors: {[key: string]: string};
         /**
-         * Optionl if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+         * Optional if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
          */
         ssoDefaultRole: string;
         /**
-         * Optionl if `wlanPortalAuth`==`sso`
+         * Optional if `wlanPortalAuth`==`sso`
          */
         ssoForcedRole: string;
         /**
@@ -13069,6 +14387,22 @@ Please update your configurations.
          * path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
          */
         logo: string;
+        /**
+         * label of the link to go to /marketing_policy
+         */
+        marketingPolicyLink: string;
+        /**
+         * Whether marketing policy optin is enabled
+         */
+        marketingPolicyOptIn: boolean;
+        /**
+         * label for marketing optin
+         */
+        marketingPolicyOptInLabel: string;
+        /**
+         * marketing policy text
+         */
+        marketingPolicyOptInText: string;
         message: string;
         multiAuth: boolean;
         /**
@@ -13147,7 +14481,7 @@ Please update your configurations.
         requiredFieldLabel: string;
         responsiveLayout: boolean;
         /**
-         * Label of the button to /signin
+         * Label of the button to signin
          */
         signInLabel: string;
         smsCarrierDefault: string;
@@ -13390,6 +14724,22 @@ Please update your configurations.
          * Label of field4
          */
         field4label?: string;
+        /**
+         * label of the link to go to /marketing_policy
+         */
+        marketingPolicyLink?: string;
+        /**
+         * Whether marketing policy optin is enabled
+         */
+        marketingPolicyOptIn?: boolean;
+        /**
+         * label for marketing optin
+         */
+        marketingPolicyOptInLabel?: string;
+        /**
+         * marketing policy text
+         */
+        marketingPolicyOptInText?: string;
         message?: string;
         /**
          * Error message when name not provided
@@ -13446,7 +14796,7 @@ Please update your configurations.
          */
         requiredFieldLabel?: string;
         /**
-         * Label of the button to /signin
+         * Label of the button to signin
          */
         signInLabel?: string;
         smsCarrierDefault?: string;
@@ -13604,6 +14954,14 @@ Please update your configurations.
 
     export interface WlanRateset {
         /**
+         * If `template`==`custom`. EHT MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit)
+         */
+        eht?: string;
+        /**
+         * If `template`==`custom`. HE MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit
+         */
+        he?: string;
+        /**
          * If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
          */
         ht?: string;
@@ -13672,29 +15030,29 @@ Please update your configurations.
     export interface WlantemplateApplies {
         orgId?: string;
         /**
-         * list of site ids
+         * List of site ids
          */
         siteIds: string[];
         /**
-         * list of sitegroup ids
+         * List of sitegroup ids
          */
         sitegroupIds: string[];
     }
 
     export interface WlantemplateExceptions {
         /**
-         * list of site ids
+         * List of site ids
          */
         siteIds: string[];
         /**
-         * list of sitegroup ids
+         * List of sitegroup ids
          */
         sitegroupIds: string[];
     }
 
     export interface WxtagSpec {
         /**
-         * matched destination port, "0" means any
+         * Matched destination port, "0" means any
          */
         portRange: string;
         /**
@@ -13702,7 +15060,7 @@ Please update your configurations.
          */
         protocol: string;
         /**
-         * matched destination subnets and/or IP Addresses
+         * Matched destination subnets and/or IP Addresses
          */
         subnets: string[];
     }
@@ -13717,39 +15075,41 @@ export namespace site {
 
     export interface EvpnTopologyEvpnOptions {
         /**
-         * optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+         * Optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
          */
         autoLoopbackSubnet: string;
         /**
-         * optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+         * Optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
          */
         autoLoopbackSubnet6: string;
         /**
-         * optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+         * Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
          */
         autoRouterIdSubnet: string;
         /**
-         * optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+         * Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
          */
         autoRouterIdSubnet6?: string;
         /**
-         * optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway
-         * when `routedAt` != `core`, whether to do virtual-gateway at core as well
+         * Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
          */
         coreAsBorder: boolean;
         overlay?: outputs.site.EvpnTopologyEvpnOptionsOverlay;
         /**
-         * by default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4Mac
-         * if enabled, 00-00-5e-00-XX-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
+         * Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4_mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
          */
         perVlanVgaV4Mac: boolean;
+        /**
+         * Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address's v6_mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
+         */
+        perVlanVgaV6Mac: boolean;
         /**
          * optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
          */
         routedAt: string;
         underlay?: outputs.site.EvpnTopologyEvpnOptionsUnderlay;
         /**
-         * optional, for EX9200 only to seggregate virtual-switches
+         * Optional, for EX9200 only to segregate virtual-switches
          */
         vsInstances?: {[key: string]: outputs.site.EvpnTopologyEvpnOptionsVsInstances};
     }
@@ -13768,11 +15128,11 @@ export namespace site {
         asBase: number;
         routedIdPrefix?: string;
         /**
-         * underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+         * Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
          */
         subnet?: string;
         /**
-         * if v6 is desired for underlay
+         * If v6 is desired for underlay
          */
         useIpv6: boolean;
     }
@@ -13787,13 +15147,13 @@ export namespace site {
         mac: string;
         model: string;
         /**
-         * optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+         * Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
          *   * for CLOS, to group dist / access switches into pods
          *   * for ERB/CRB, to group dist / esilag-access into pods
          */
         pod: number;
         /**
-         * by default, core switches are assumed to be connecting all pods. 
+         * By default, core switches are assumed to be connecting all pods. 
          * if you want to limit the pods, you can specify pods.
          */
         pods: number[];
@@ -13805,13 +15165,106 @@ export namespace site {
         siteId: string;
     }
 
+    export interface GetEvpnTopologiesSiteEvpnTopology {
+        /**
+         * When the object has been created, in epoch
+         */
+        createdTime: number;
+        /**
+         * EVPN Options
+         */
+        evpnOptions: outputs.site.GetEvpnTopologiesSiteEvpnTopologyEvpnOptions;
+        /**
+         * Unique ID of the object instance in the Mist Organization
+         */
+        id: string;
+        /**
+         * When the object has been modified for the last time, in epoch
+         */
+        modifiedTime: number;
+        name: string;
+        /**
+         * Property key is the pod number
+         */
+        podNames: {[key: string]: string};
+        siteId: string;
+    }
+
+    export interface GetEvpnTopologiesSiteEvpnTopologyEvpnOptions {
+        /**
+         * Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
+         */
+        autoLoopbackSubnet: string;
+        /**
+         * Optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
+         */
+        autoLoopbackSubnet6: string;
+        /**
+         * Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+         */
+        autoRouterIdSubnet: string;
+        /**
+         * Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+         */
+        autoRouterIdSubnet6: string;
+        /**
+         * Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
+         */
+        coreAsBorder: boolean;
+        overlay: outputs.site.GetEvpnTopologiesSiteEvpnTopologyEvpnOptionsOverlay;
+        /**
+         * Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4*mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
+         */
+        perVlanVgaV4Mac: boolean;
+        /**
+         * Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address's v6*mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
+         */
+        perVlanVgaV6Mac: boolean;
+        /**
+         * optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+         */
+        routedAt: string;
+        underlay: outputs.site.GetEvpnTopologiesSiteEvpnTopologyEvpnOptionsUnderlay;
+        /**
+         * Optional, for EX9200 only to segregate virtual-switches
+         */
+        vsInstances: {[key: string]: outputs.site.GetEvpnTopologiesSiteEvpnTopologyEvpnOptionsVsInstances};
+    }
+
+    export interface GetEvpnTopologiesSiteEvpnTopologyEvpnOptionsOverlay {
+        /**
+         * Overlay BGP Local AS Number
+         */
+        as: number;
+    }
+
+    export interface GetEvpnTopologiesSiteEvpnTopologyEvpnOptionsUnderlay {
+        /**
+         * Underlay BGP Base AS Number
+         */
+        asBase: number;
+        routedIdPrefix: string;
+        /**
+         * Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+         */
+        subnet: string;
+        /**
+         * If v6 is desired for underlay
+         */
+        useIpv6: boolean;
+    }
+
+    export interface GetEvpnTopologiesSiteEvpnTopologyEvpnOptionsVsInstances {
+        networks: string[];
+    }
+
     export interface GetPsksSitePsk {
         /**
          * sso id for psk created from psk portal
          */
         adminSsoId: string;
         /**
-         * when the object has been created, in epoch
+         * When the object has been created, in epoch
          */
         createdTime: number;
         /**
@@ -13827,15 +15280,15 @@ export namespace site {
          */
         expiryNotificationTime: number;
         /**
-         * Unique ID of the object instance in the Mist Organnization
+         * Unique ID of the object instance in the Mist Organization
          */
         id: string;
         /**
-         * if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+         * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
          */
         mac: string;
         /**
-         * when the object has been modified for the last time, in epoch
+         * When the object has been modified for the last time, in epoch
          */
         modifiedTime: number;
         name: string;
@@ -13884,7 +15337,7 @@ export namespace site {
          */
         headers: {[key: string]: string};
         /**
-         * Unique ID of the object instance in the Mist Organnization
+         * Unique ID of the object instance in the Mist Organization
          */
         id: string;
         /**
@@ -13928,6 +15381,10 @@ export namespace site {
          * Only if `type`=`http-post`
          */
         secret: string;
+        /**
+         * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
+         */
+        singleEventPerMessage: boolean;
         siteId: string;
         /**
          * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
@@ -14078,6 +15535,10 @@ export namespace site {
          */
         disable11ax: boolean;
         /**
+         * To disable Wi-Fi 7 EHT IEs
+         */
+        disable11be: boolean;
+        /**
          * To disable ht or vht rates
          */
         disableHtVhtRates: boolean;
@@ -14131,7 +15592,7 @@ export namespace site {
          */
         enableLocalKeycaching: boolean;
         /**
-         * By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+         * By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
          */
         enableWirelessBridging: boolean;
         /**
@@ -14159,7 +15620,7 @@ export namespace site {
          */
         hotspot20: outputs.site.GetWlansSiteWlanHotspot20;
         /**
-         * Unique ID of the object instance in the Mist Organnization
+         * Unique ID of the object instance in the Mist Organization
          */
         id: string;
         injectDhcpOption82: outputs.site.GetWlansSiteWlanInjectDhcpOption82;
@@ -14206,7 +15667,7 @@ export namespace site {
          */
         mxtunnelIds: string[];
         /**
-         * When `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+         * When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
          */
         mxtunnelNames: string[];
         /**
@@ -14283,7 +15744,7 @@ export namespace site {
         vlanEnabled: boolean;
         vlanId: string;
         /**
-         * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+         * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
          */
         vlanIds: string[];
         /**
@@ -14337,7 +15798,7 @@ export namespace site {
          */
         port: number;
         /**
-         * Secretof RADIUS server
+         * Secret of RADIUS server
          */
         secret: string;
     }
@@ -14382,7 +15843,7 @@ export namespace site {
     }
 
     export interface GetWlansSiteWlanAppQosApps {
-        dscp: number;
+        dscp: string;
         /**
          * Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
          */
@@ -14394,7 +15855,7 @@ export namespace site {
     }
 
     export interface GetWlansSiteWlanAppQosOther {
-        dscp: number;
+        dscp: string;
         dstSubnet: string;
         portRanges: string;
         protocol: string;
@@ -14473,7 +15934,7 @@ export namespace site {
          */
         requireMessageAuthenticator: boolean;
         /**
-         * Secretof RADIUS server
+         * Secret of RADIUS server
          */
         secret: string;
     }
@@ -14579,7 +16040,7 @@ export namespace site {
          */
         type: string;
         /**
-         * Map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
+         * Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
          *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
          *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
          */
@@ -14644,7 +16105,7 @@ export namespace site {
          */
         amazonClientId: string;
         /**
-         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a corresponding value. Else leave blank.
          */
         amazonClientSecret: string;
         /**
@@ -14728,7 +16189,7 @@ export namespace site {
          */
         facebookClientId: string;
         /**
-         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
+         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a corresponding value. Else leave blank.
          */
         facebookClientSecret: string;
         /**
@@ -14756,7 +16217,7 @@ export namespace site {
          */
         googleClientId: string;
         /**
-         * Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a corresponding value. Else leave blank.
          */
         googleClientSecret: string;
         /**
@@ -14784,7 +16245,7 @@ export namespace site {
          */
         microsoftClientId: string;
         /**
-         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a corresponding value. Else leave blank.
          */
         microsoftClientSecret: string;
         /**
@@ -14884,11 +16345,11 @@ export namespace site {
          */
         sponsors: {[key: string]: string};
         /**
-         * Optionl if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+         * Optional if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
          */
         ssoDefaultRole: string;
         /**
-         * Optionl if `wlanPortalAuth`==`sso`
+         * Optional if `wlanPortalAuth`==`sso`
          */
         ssoForcedRole: string;
         /**
@@ -14980,6 +16441,14 @@ export namespace site {
     }
 
     export interface GetWlansSiteWlanRateset {
+        /**
+         * If `template`==`custom`. EHT MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit)
+         */
+        eht: string;
+        /**
+         * If `template`==`custom`. HE MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit
+         */
+        he: string;
         /**
          * If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
          */
@@ -15158,10 +16627,10 @@ export namespace site {
         /**
          * This takes precedence
          */
-        discard: boolean;
+        discard?: boolean;
         metric?: number;
         nextQualified?: {[key: string]: outputs.site.NetworktemplateExtraRoutesNextQualified};
-        noResolve: boolean;
+        noResolve?: boolean;
         preference?: number;
         /**
          * Next-hop IP Address
@@ -15173,10 +16642,10 @@ export namespace site {
         /**
          * This takes precedence
          */
-        discard: boolean;
+        discard?: boolean;
         metric?: number;
         nextQualified?: {[key: string]: outputs.site.NetworktemplateExtraRoutes6NextQualified};
-        noResolve: boolean;
+        noResolve?: boolean;
         preference?: number;
         /**
          * Next-hop IP Address
@@ -15211,7 +16680,7 @@ export namespace site {
         /**
          * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
          */
-        isolation: boolean;
+        isolation?: boolean;
         isolationVlanId?: string;
         /**
          * Optional for pure switching, required when L3 / routing features are used
@@ -15226,14 +16695,14 @@ export namespace site {
 
     export interface NetworktemplateOspfAreas {
         includeLoopback: boolean;
-        ospfNetworks: {[key: string]: outputs.site.NetworktemplateOspfAreasOspfNetworks};
+        networks: {[key: string]: outputs.site.NetworktemplateOspfAreasNetworks};
         /**
          * OSPF type. enum: `default`, `nssa`, `stub`
          */
         type: string;
     }
 
-    export interface NetworktemplateOspfAreasOspfNetworks {
+    export interface NetworktemplateOspfAreasNetworks {
         /**
          * Required if `authType`==`md5`. Property key is the key number
          */
@@ -15280,11 +16749,11 @@ export namespace site {
          */
         inputPortIdsIngresses: string[];
         /**
-         * Exaclty one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
          */
         outputNetwork?: string;
         /**
-         * Exaclty one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: string;
     }
@@ -15301,19 +16770,19 @@ export namespace site {
         /**
          * Only if `mode`!=`dynamic`
          */
-        allowMultipleSupplicants: boolean;
+        allowMultipleSupplicants?: boolean;
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
          */
-        bypassAuthWhenServerDown: boolean;
+        bypassAuthWhenServerDown?: boolean;
         /**
          * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
-        bypassAuthWhenServerDownForUnkownClient: boolean;
+        bypassAuthWhenServerDownForUnknownClient?: boolean;
         /**
          * Only if `mode`!=`dynamic`
          */
-        description?: string;
+        description: string;
         /**
          * Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
          */
@@ -15333,7 +16802,7 @@ export namespace site {
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
          */
-        enableMacAuth: boolean;
+        enableMacAuth?: boolean;
         /**
          * Only if `mode`!=`dynamic`
          */
@@ -15343,9 +16812,13 @@ export namespace site {
          */
         guestNetwork?: string;
         /**
+         * `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+         */
+        interIsolationNetworkLink?: boolean;
+        /**
          * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          */
-        interSwitchLink: boolean;
+        interSwitchLink?: boolean;
         /**
          * Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
          */
@@ -15357,19 +16830,19 @@ export namespace site {
         /**
          * Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
          */
-        macAuthProtocol: string;
+        macAuthProtocol?: string;
         /**
-         * Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+         * Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 to 16383 (upper bound constrained by platform)
          */
-        macLimit: number;
+        macLimit: string;
         /**
          * `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
          */
         mode?: string;
         /**
-         * Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+         * Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. Value between 256 and 9216, default value is 1514.
          */
-        mtu?: number;
+        mtu?: string;
         /**
          * Only if `mode`==`trunk`, the list of network/vlans
          */
@@ -15391,13 +16864,13 @@ export namespace site {
          */
         portNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range
+         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
          */
-        reauthInterval: number;
+        reauthInterval?: string;
         /**
          * Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
          */
-        resetDefaultWhen: string;
+        resetDefaultWhen?: string;
         /**
          * Only if `mode`==`dynamic`
          */
@@ -15422,8 +16895,8 @@ export namespace site {
          * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
          */
         stpEdge: boolean;
-        stpNoRootPort: boolean;
-        stpP2p: boolean;
+        stpNoRootPort?: boolean;
+        stpP2p?: boolean;
         /**
          * Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
          */
@@ -15431,7 +16904,7 @@ export namespace site {
         /**
          * If this is connected to a vstp network
          */
-        useVstp: boolean;
+        useVstp?: boolean;
         /**
          * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
@@ -15464,31 +16937,36 @@ export namespace site {
         /**
          * Whether to disable storm control on broadcast traffic
          */
-        noBroadcast: boolean;
+        noBroadcast?: boolean;
         /**
          * Whether to disable storm control on multicast traffic
          */
-        noMulticast: boolean;
+        noMulticast?: boolean;
         /**
          * Whether to disable storm control on registered multicast traffic
          */
-        noRegisteredMulticast: boolean;
+        noRegisteredMulticast?: boolean;
         /**
          * Whether to disable storm control on unknown unicast traffic
          */
-        noUnknownUnicast: boolean;
+        noUnknownUnicast?: boolean;
         /**
          * Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
          */
-        percentage: number;
+        percentage?: number;
     }
 
     export interface NetworktemplateRadiusConfig {
+        acctImmediateUpdate?: boolean;
         /**
          * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
          */
         acctInterimInterval: number;
         acctServers?: outputs.site.NetworktemplateRadiusConfigAcctServer[];
+        /**
+         * enum: `ordered`, `unordered`
+         */
+        authServerSelection: string;
         authServers?: outputs.site.NetworktemplateRadiusConfigAuthServer[];
         /**
          * Radius auth session retries
@@ -15498,6 +16976,9 @@ export namespace site {
          * Radius auth session timeout
          */
         authServersTimeout: number;
+        coaEnabled: boolean;
+        coaPort: string;
+        fastDot1xTimers: boolean;
         /**
          * Use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
          */
@@ -15525,7 +17006,7 @@ export namespace site {
          */
         port: number;
         /**
-         * Secretof RADIUS server
+         * Secret of RADIUS server
          */
         secret: string;
     }
@@ -15549,9 +17030,9 @@ export namespace site {
         /**
          * Whether to require Message-Authenticator in requests
          */
-        requireMessageAuthenticator: boolean;
+        requireMessageAuthenticator?: boolean;
         /**
-         * Secretof RADIUS server
+         * Secret of RADIUS server
          */
         secret: string;
     }
@@ -15565,7 +17046,7 @@ export namespace site {
          * If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
          */
         network?: string;
-        sendToAllServers: boolean;
+        sendToAllServers?: boolean;
         servers?: outputs.site.NetworktemplateRemoteSyslogServer[];
         /**
          * enum: `millisecond`, `year`, `year millisecond`
@@ -15575,7 +17056,7 @@ export namespace site {
     }
 
     export interface NetworktemplateRemoteSyslogArchive {
-        files?: number;
+        files?: string;
         size?: string;
     }
 
@@ -15604,7 +17085,7 @@ export namespace site {
     }
 
     export interface NetworktemplateRemoteSyslogFileArchive {
-        files?: number;
+        files?: string;
         size?: string;
     }
 
@@ -15628,7 +17109,7 @@ export namespace site {
         facility: string;
         host?: string;
         match?: string;
-        port: number;
+        port?: string;
         /**
          * enum: `tcp`, `udp`
          */
@@ -15682,7 +17163,7 @@ export namespace site {
         engineId?: string;
         location?: string;
         name?: string;
-        network: string;
+        network?: string;
         trapGroups?: outputs.site.NetworktemplateSnmpConfigTrapGroup[];
         v2cConfigs?: outputs.site.NetworktemplateSnmpConfigV2cConfig[];
         v3Config?: outputs.site.NetworktemplateSnmpConfigV3Config;
@@ -15888,7 +17369,7 @@ export namespace site {
     export interface NetworktemplateSwitchMatching {
         enable?: boolean;
         /**
-         * list of rules to define custom switch configuration based on different criterias. Each list must have at least one of `matchModel`, `matchName` or `matchRole` must be defined
+         * list of rules to define custom switch configuration based on different criteria. Each list must have at least one of `matchModel`, `matchName` or `matchRole` must be defined
          */
         rules?: outputs.site.NetworktemplateSwitchMatchingRule[];
     }
@@ -15930,17 +17411,20 @@ Please update your configurations.
 Please update your configurations.
          */
         matchValue: string;
+        /**
+         * Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
+         */
         name?: string;
         /**
          * Out-of-Band Management interface configuration
          */
         oobIpConfig?: outputs.site.NetworktemplateSwitchMatchingRuleOobIpConfig;
         /**
-         * Propery key is the interface name or interface range
+         * Property key is the port name or range (e.g. "ge-0/0/0-10")
          */
         portConfig?: {[key: string]: outputs.site.NetworktemplateSwitchMatchingRulePortConfig};
         /**
-         * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+         * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
          */
         portMirroring?: {[key: string]: outputs.site.NetworktemplateSwitchMatchingRulePortMirroring};
     }
@@ -15968,7 +17452,7 @@ Please update your configurations.
         /**
          * For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          */
-        useMgmtVrfForHostOut: boolean;
+        useMgmtVrfForHostOut?: boolean;
     }
 
     export interface NetworktemplateSwitchMatchingRulePortConfig {
@@ -15984,20 +17468,20 @@ Please update your configurations.
          * To use fast timeout
          */
         aeLacpSlow?: boolean;
-        aggregated: boolean;
+        aggregated?: boolean;
         /**
          * To generate port up/down alarm
          */
-        critical?: boolean;
+        critical: boolean;
         description?: string;
         /**
          * If `speed` and `duplex` are specified, whether to disable autonegotiation
          */
-        disableAutoneg: boolean;
+        disableAutoneg?: boolean;
         /**
          * enum: `auto`, `full`, `half`
          */
-        duplex: string;
+        duplex?: string;
         /**
          * Enable dynamic usage for this port. Set to `dynamic` to enable.
          */
@@ -16006,16 +17490,16 @@ Please update your configurations.
         /**
          * Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
          */
-        mtu: number;
+        mtu?: number;
         /**
          * Prevent helpdesk to override the port config
          */
-        noLocalOverwrite?: boolean;
-        poeDisabled: boolean;
+        noLocalOverwrite: boolean;
+        poeDisabled?: boolean;
         /**
          * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
-        speed: string;
+        speed?: string;
         /**
          * Port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
          */
@@ -16036,11 +17520,11 @@ Please update your configurations.
          */
         inputPortIdsIngresses: string[];
         /**
-         * Exaclty one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
          */
         outputNetwork?: string;
         /**
-         * Exaclty one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: string;
     }
@@ -16049,7 +17533,7 @@ Please update your configurations.
         /**
          * AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
          */
-        apAffinityThreshold: number;
+        apAffinityThreshold?: number;
         /**
          * Set Banners for switches. Allows markup formatting
          */
@@ -16065,14 +17549,21 @@ Please update your configurations.
         /**
          * Enable to provide the FQDN with DHCP option 81
          */
-        dhcpOptionFqdn: boolean;
+        dhcpOptionFqdn?: boolean;
         disableOobDownAlarm?: boolean;
+        fipsEnabled?: boolean;
         /**
          * Property key is the user name. For Local user authentication
          */
         localAccounts?: {[key: string]: outputs.site.NetworktemplateSwitchMgmtLocalAccounts};
+        /**
+         * IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+         */
         mxedgeProxyHost?: string;
-        mxedgeProxyPort: number;
+        /**
+         * Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
+         */
+        mxedgeProxyPort?: string;
         /**
          * Restrict inbound-traffic to host
          * when enabled, all traffic that is not essential to our operation will be dropped 
@@ -16130,7 +17621,7 @@ Please update your configurations.
         /**
          * enum: `admin`, `helpdesk`, `none`, `read`
          */
-        defaultRole: string;
+        defaultRole?: string;
         enabled?: boolean;
         /**
          * Which network the TACACS server resides
@@ -16161,10 +17652,16 @@ Please update your configurations.
     }
 
     export interface NetworktemplateVrfInstances {
+        evpnAutoLoopbackSubnet?: string;
+        evpnAutoLoopbackSubnet6?: string;
         /**
          * Property key is the destination CIDR (e.g. "10.0.0.0/8")
          */
         extraRoutes?: {[key: string]: outputs.site.NetworktemplateVrfInstancesExtraRoutes};
+        /**
+         * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+         */
+        extraRoutes6?: {[key: string]: outputs.site.NetworktemplateVrfInstancesExtraRoutes6};
         networks?: string[];
     }
 
@@ -16173,6 +17670,13 @@ Please update your configurations.
          * Next-hop address
          */
         via: string;
+    }
+
+    export interface NetworktemplateVrfInstancesExtraRoutes6 {
+        /**
+         * Next-hop address
+         */
+        via?: string;
     }
 
     export interface SettingAnalytic {
@@ -16213,7 +17717,7 @@ Please update your configurations.
         /**
          * Required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
          */
-        beaconRate: number;
+        beaconRate?: number;
         /**
          * enum: `custom`, `default`
          */
@@ -16383,7 +17887,7 @@ Please update your configurations.
         /**
          * Max time, default is 43200(12h), max is 68400 (18h)
          */
-        maxDwell: number;
+        maxDwell?: number;
         /**
          * min time
          */
@@ -16432,31 +17936,31 @@ Please update your configurations.
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        fri: string;
+        fri?: string;
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        mon: string;
+        mon?: string;
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        sat: string;
+        sat?: string;
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        sun: string;
+        sun?: string;
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        thu: string;
+        thu?: string;
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        tue: string;
+        tue?: string;
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        wed: string;
+        wed?: string;
     }
 
     export interface SettingGatewayMgmt {
@@ -16473,15 +17977,20 @@ Please update your configurations.
         /**
          * Rollback timer for commit confirmed
          */
-        configRevertTimer: number;
+        configRevertTimer?: number;
         /**
          * For both SSR and SRX disable console port
          */
-        disableConsole: boolean;
+        disableConsole?: boolean;
         /**
          * For both SSR and SRX disable management interface
          */
-        disableOob: boolean;
+        disableOob?: boolean;
+        /**
+         * For SSR disable usb interface
+         */
+        disableUsb?: boolean;
+        fipsEnabled?: boolean;
         probeHosts: string[];
         /**
          * Restrict inbound-traffic to host
@@ -16494,12 +18003,12 @@ Please update your configurations.
          */
         rootPassword?: string;
         securityLogSourceAddress?: string;
-        securityLogSourceInterface?: string;
+        securityLogSourceInterface: string;
     }
 
     export interface SettingGatewayMgmtAppProbing {
         /**
-         * APp-keys from /api/v1/const/applications
+         * APp-keys from List Applications
          */
         apps?: string[];
         customApps?: outputs.site.SettingGatewayMgmtAppProbingCustomApp[];
@@ -16534,7 +18043,7 @@ Please update your configurations.
         /**
          * enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
          */
-        dayOfWeek?: string;
+        dayOfWeek: string;
         enable: boolean;
         /**
          * Optional, Mist will decide the timing
@@ -16579,6 +18088,7 @@ Please update your configurations.
 
     export interface SettingJuniperSrxGateway {
         apiKey?: string;
+        apiPassword?: string;
         apiUrl?: string;
     }
 
@@ -16599,7 +18109,7 @@ Please update your configurations.
         /**
          * Minimum duration
          */
-        minDuration: number;
+        minDuration?: number;
         /**
          * Indicate whether SDK clients should be included in the zone occupancy calculation
          */
@@ -16616,6 +18126,10 @@ Please update your configurations.
 
     export interface SettingRogue {
         /**
+         * list of VLAN IDs on which rogue APs are ignored
+         */
+        allowedVlanIds: number[];
+        /**
          * Whether rogue detection is enabled
          */
         enabled: boolean;
@@ -16624,11 +18138,19 @@ Please update your configurations.
          */
         honeypotEnabled: boolean;
         /**
-         * Minimum duration for a bssid to be considered rogue
+         * Minimum duration for a bssid to be considered neighbor
          */
         minDuration: number;
         /**
-         * Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+         * Minimum duration for a bssid to be considered rogue
+         */
+        minRogueDuration?: number;
+        /**
+         * Minimum RSSI for an AP to be considered rogue
+         */
+        minRogueRssi?: number;
+        /**
+         * Minimum RSSI for an AP to be considered neighbor (ignoring APs that’s far away)
          */
         minRssi: number;
         /**
@@ -16644,7 +18166,7 @@ Please update your configurations.
     export interface SettingRtsa {
         appWaking: boolean;
         disableDeadReckoning?: boolean;
-        disablePressureSensor: boolean;
+        disablePressureSensor?: boolean;
         enabled?: boolean;
         /**
          * Asset tracking related
@@ -16703,7 +18225,7 @@ Please update your configurations.
     }
 
     export interface SettingSyntheticTest {
-        disabled: boolean;
+        disabled?: boolean;
         vlans?: outputs.site.SettingSyntheticTestVlan[];
         wanSpeedtest?: outputs.site.SettingSyntheticTestWanSpeedtest;
     }
@@ -16727,9 +18249,9 @@ Please update your configurations.
 
     export interface SettingUplinkPortConfig {
         /**
-         * Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
+         * Whether to do 802.1x against uplink switch. When enabled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
          */
-        dot1x: boolean;
+        dot1x?: boolean;
         /**
          * By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
          */
@@ -16767,17 +18289,17 @@ Please update your configurations.
     }
 
     export interface SettingWifi {
-        ciscoEnabled: boolean;
+        ciscoEnabled?: boolean;
         /**
          * Whether to disable 11k
          */
-        disable11k: boolean;
-        disableRadiosWhenPowerConstrained: boolean;
+        disable11k?: boolean;
+        disableRadiosWhenPowerConstrained?: boolean;
         /**
          * When proxyArp is enabled, check for arp spoofing.
          */
-        enableArpSpoofCheck: boolean;
-        enableSharedRadioScanning: boolean;
+        enableArpSpoofCheck?: boolean;
+        enableSharedRadioScanning?: boolean;
         /**
          * Enable Wi-Fi feature (using SUB-MAN license)
          */
@@ -16791,13 +18313,13 @@ Please update your configurations.
          */
         locateUnconnected: boolean;
         /**
-         * Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+         * Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will disrupt the connection. If roaming is desired, keep it disabled.
          */
         meshAllowDfs: boolean;
         /**
          * Used to enable/disable CRM
          */
-        meshEnableCrm: boolean;
+        meshEnableCrm?: boolean;
         /**
          * Whether to enable Mesh feature for the site
          */
@@ -16852,7 +18374,7 @@ Please update your configurations.
          */
         port: number;
         /**
-         * Secretof RADIUS server
+         * Secret of RADIUS server
          */
         secret: string;
     }
@@ -16897,7 +18419,10 @@ Please update your configurations.
     }
 
     export interface WlanAppQosApps {
-        dscp?: number;
+        /**
+         * DSCP value range between 0 and 63
+         */
+        dscp?: string;
         /**
          * Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
          */
@@ -16909,7 +18434,7 @@ Please update your configurations.
     }
 
     export interface WlanAppQosOther {
-        dscp?: number;
+        dscp?: string;
         dstSubnet?: string;
         portRanges?: string;
         protocol?: string;
@@ -16988,7 +18513,7 @@ Please update your configurations.
          */
         requireMessageAuthenticator: boolean;
         /**
-         * Secretof RADIUS server
+         * Secret of RADIUS server
          */
         secret: string;
     }
@@ -17094,7 +18619,7 @@ Please update your configurations.
          */
         type: string;
         /**
-         * Map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
+         * Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
          *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
          *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
          */
@@ -17159,7 +18684,7 @@ Please update your configurations.
          */
         amazonClientId: string;
         /**
-         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a corresponding value. Else leave blank.
          */
         amazonClientSecret: string;
         /**
@@ -17243,7 +18768,7 @@ Please update your configurations.
          */
         facebookClientId: string;
         /**
-         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
+         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a corresponding value. Else leave blank.
          */
         facebookClientSecret: string;
         /**
@@ -17271,7 +18796,7 @@ Please update your configurations.
          */
         googleClientId: string;
         /**
-         * Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a corresponding value. Else leave blank.
          */
         googleClientSecret: string;
         /**
@@ -17299,7 +18824,7 @@ Please update your configurations.
          */
         microsoftClientId: string;
         /**
-         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a corresponding value. Else leave blank.
          */
         microsoftClientSecret: string;
         /**
@@ -17399,11 +18924,11 @@ Please update your configurations.
          */
         sponsors: {[key: string]: string};
         /**
-         * Optionl if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+         * Optional if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
          */
         ssoDefaultRole: string;
         /**
-         * Optionl if `wlanPortalAuth`==`sso`
+         * Optional if `wlanPortalAuth`==`sso`
          */
         ssoForcedRole: string;
         /**
@@ -17625,6 +19150,22 @@ Please update your configurations.
          * path to the background image file. File must be a `png` image`
          */
         logo: string;
+        /**
+         * label of the link to go to /marketing_policy
+         */
+        marketingPolicyLink: string;
+        /**
+         * Whether marketing policy optin is enabled
+         */
+        marketingPolicyOptIn: boolean;
+        /**
+         * label for marketing optin
+         */
+        marketingPolicyOptInLabel: string;
+        /**
+         * marketing policy text
+         */
+        marketingPolicyOptInText: string;
         message: string;
         multiAuth: boolean;
         /**
@@ -17703,7 +19244,7 @@ Please update your configurations.
         requiredFieldLabel: string;
         responsiveLayout: boolean;
         /**
-         * Label of the button to /signin
+         * Label of the button to signin
          */
         signInLabel: string;
         smsCarrierDefault: string;
@@ -17946,6 +19487,22 @@ Please update your configurations.
          * Label of field4
          */
         field4label?: string;
+        /**
+         * label of the link to go to /marketing_policy
+         */
+        marketingPolicyLink?: string;
+        /**
+         * Whether marketing policy optin is enabled
+         */
+        marketingPolicyOptIn?: boolean;
+        /**
+         * label for marketing optin
+         */
+        marketingPolicyOptInLabel?: string;
+        /**
+         * marketing policy text
+         */
+        marketingPolicyOptInText?: string;
         message?: string;
         /**
          * Error message when name not provided
@@ -18002,7 +19559,7 @@ Please update your configurations.
          */
         requiredFieldLabel?: string;
         /**
-         * Label of the button to /signin
+         * Label of the button to signin
          */
         signInLabel?: string;
         smsCarrierDefault?: string;
@@ -18160,6 +19717,14 @@ Please update your configurations.
 
     export interface WlanRateset {
         /**
+         * If `template`==`custom`. EHT MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit)
+         */
+        eht?: string;
+        /**
+         * If `template`==`custom`. HE MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit
+         */
+        he?: string;
+        /**
          * If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
          */
         ht?: string;
@@ -18227,7 +19792,7 @@ Please update your configurations.
 
     export interface WxtagSpec {
         /**
-         * matched destination port, "0" means any
+         * Matched destination port, "0" means any
          */
         portRange: string;
         /**
@@ -18235,7 +19800,7 @@ Please update your configurations.
          */
         protocol: string;
         /**
-         * matched destination subnets and/or IP Addresses
+         * Matched destination subnets and/or IP Addresses
          */
         subnets: string[];
     }

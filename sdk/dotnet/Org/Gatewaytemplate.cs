@@ -55,13 +55,14 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableArray<string>> DnsSuffixes { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         /// </summary>
         [Output("extraRoutes")]
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplateExtraRoutes>?> ExtraRoutes { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+        /// "{{myvar}}")
         /// </summary>
         [Output("extraRoutes6")]
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplateExtraRoutes6>?> ExtraRoutes6 { get; private set; } = null!;
@@ -255,7 +256,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplateExtraRoutesArgs>? _extraRoutes;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         /// </summary>
         public InputMap<Inputs.GatewaytemplateExtraRoutesArgs> ExtraRoutes
         {
@@ -267,7 +268,8 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplateExtraRoutes6Args>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+        /// "{{myvar}}")
         /// </summary>
         public InputMap<Inputs.GatewaytemplateExtraRoutes6Args> ExtraRoutes6
         {
@@ -483,7 +485,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplateExtraRoutesGetArgs>? _extraRoutes;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         /// </summary>
         public InputMap<Inputs.GatewaytemplateExtraRoutesGetArgs> ExtraRoutes
         {
@@ -495,7 +497,8 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplateExtraRoutes6GetArgs>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+        /// "{{myvar}}")
         /// </summary>
         public InputMap<Inputs.GatewaytemplateExtraRoutes6GetArgs> ExtraRoutes6
         {

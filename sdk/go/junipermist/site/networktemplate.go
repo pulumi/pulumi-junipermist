@@ -14,11 +14,11 @@ import (
 
 // This resource manages the Site Network configuration (Switch configuration).
 //
-// The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings accross the site without having to create an Org Network template.
+// The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings across the site without having to create an Org Network template.
 //
 // > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, the `site.Networktemplate` resource has been created to centralize all the site level switches related settings.
 //
-// !> Only ONE `site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+// !> Only ONE `site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
 //
 // ## Import
 //
@@ -37,13 +37,15 @@ type Networktemplate struct {
 	AclTags NetworktemplateAclTagsMapOutput `pulumi:"aclTags"`
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayOutput             `pulumi:"additionalConfigCmds"`
+	AutoUpgradeLinecard  pulumi.BoolOutput                    `pulumi:"autoUpgradeLinecard"`
 	DhcpSnooping         NetworktemplateDhcpSnoopingPtrOutput `pulumi:"dhcpSnooping"`
 	// If some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages pulumi.StringArrayOutput `pulumi:"disabledSystemDefinedPortUsages"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayOutput `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
-	DnsSuffixes pulumi.StringArrayOutput            `pulumi:"dnsSuffixes"`
+	DnsSuffixes pulumi.StringArrayOutput `pulumi:"dnsSuffixes"`
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
 	ExtraRoutes NetworktemplateExtraRoutesMapOutput `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 NetworktemplateExtraRoutes6MapOutput `pulumi:"extraRoutes6"`
@@ -57,7 +59,7 @@ type Networktemplate struct {
 	OspfAreas NetworktemplateOspfAreasMapOutput `pulumi:"ospfAreas"`
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 port mirrorings is allowed
+	// maximum 4 mirroring ports is allowed
 	PortMirroring NetworktemplatePortMirroringMapOutput `pulumi:"portMirroring"`
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages NetworktemplatePortUsagesMapOutput `pulumi:"portUsages"`
@@ -66,10 +68,10 @@ type Networktemplate struct {
 	RemoteSyslog NetworktemplateRemoteSyslogPtrOutput `pulumi:"remoteSyslog"`
 	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs pulumi.BoolOutput `pulumi:"removeExistingConfigs"`
-	// Unique ID of the object instance in the Mist Organnization
+	// Unique ID of the object instance in the Mist Organization
 	SiteId     pulumi.StringOutput                `pulumi:"siteId"`
 	SnmpConfig NetworktemplateSnmpConfigPtrOutput `pulumi:"snmpConfig"`
-	// Defines custom switch configuration based on different criterias
+	// Defines custom switch configuration based on different criteria
 	SwitchMatching NetworktemplateSwitchMatchingPtrOutput `pulumi:"switchMatching"`
 	// Switch settings
 	SwitchMgmt NetworktemplateSwitchMgmtPtrOutput `pulumi:"switchMgmt"`
@@ -116,13 +118,15 @@ type networktemplateState struct {
 	AclTags map[string]NetworktemplateAclTags `pulumi:"aclTags"`
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds []string                     `pulumi:"additionalConfigCmds"`
+	AutoUpgradeLinecard  *bool                        `pulumi:"autoUpgradeLinecard"`
 	DhcpSnooping         *NetworktemplateDhcpSnooping `pulumi:"dhcpSnooping"`
 	// If some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages []string `pulumi:"disabledSystemDefinedPortUsages"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers []string `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
-	DnsSuffixes []string                              `pulumi:"dnsSuffixes"`
+	DnsSuffixes []string `pulumi:"dnsSuffixes"`
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
 	ExtraRoutes map[string]NetworktemplateExtraRoutes `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 map[string]NetworktemplateExtraRoutes6 `pulumi:"extraRoutes6"`
@@ -136,7 +140,7 @@ type networktemplateState struct {
 	OspfAreas map[string]NetworktemplateOspfAreas `pulumi:"ospfAreas"`
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 port mirrorings is allowed
+	// maximum 4 mirroring ports is allowed
 	PortMirroring map[string]NetworktemplatePortMirroring `pulumi:"portMirroring"`
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages map[string]NetworktemplatePortUsages `pulumi:"portUsages"`
@@ -145,10 +149,10 @@ type networktemplateState struct {
 	RemoteSyslog *NetworktemplateRemoteSyslog `pulumi:"remoteSyslog"`
 	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs *bool `pulumi:"removeExistingConfigs"`
-	// Unique ID of the object instance in the Mist Organnization
+	// Unique ID of the object instance in the Mist Organization
 	SiteId     *string                    `pulumi:"siteId"`
 	SnmpConfig *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
-	// Defines custom switch configuration based on different criterias
+	// Defines custom switch configuration based on different criteria
 	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
 	// Switch settings
 	SwitchMgmt *NetworktemplateSwitchMgmt `pulumi:"switchMgmt"`
@@ -163,6 +167,7 @@ type NetworktemplateState struct {
 	AclTags NetworktemplateAclTagsMapInput
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
+	AutoUpgradeLinecard  pulumi.BoolPtrInput
 	DhcpSnooping         NetworktemplateDhcpSnoopingPtrInput
 	// If some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages pulumi.StringArrayInput
@@ -170,6 +175,7 @@ type NetworktemplateState struct {
 	DnsServers pulumi.StringArrayInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes pulumi.StringArrayInput
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
 	ExtraRoutes NetworktemplateExtraRoutesMapInput
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 NetworktemplateExtraRoutes6MapInput
@@ -183,7 +189,7 @@ type NetworktemplateState struct {
 	OspfAreas NetworktemplateOspfAreasMapInput
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 port mirrorings is allowed
+	// maximum 4 mirroring ports is allowed
 	PortMirroring NetworktemplatePortMirroringMapInput
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages NetworktemplatePortUsagesMapInput
@@ -192,10 +198,10 @@ type NetworktemplateState struct {
 	RemoteSyslog NetworktemplateRemoteSyslogPtrInput
 	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs pulumi.BoolPtrInput
-	// Unique ID of the object instance in the Mist Organnization
+	// Unique ID of the object instance in the Mist Organization
 	SiteId     pulumi.StringPtrInput
 	SnmpConfig NetworktemplateSnmpConfigPtrInput
-	// Defines custom switch configuration based on different criterias
+	// Defines custom switch configuration based on different criteria
 	SwitchMatching NetworktemplateSwitchMatchingPtrInput
 	// Switch settings
 	SwitchMgmt NetworktemplateSwitchMgmtPtrInput
@@ -214,13 +220,15 @@ type networktemplateArgs struct {
 	AclTags map[string]NetworktemplateAclTags `pulumi:"aclTags"`
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds []string                     `pulumi:"additionalConfigCmds"`
+	AutoUpgradeLinecard  *bool                        `pulumi:"autoUpgradeLinecard"`
 	DhcpSnooping         *NetworktemplateDhcpSnooping `pulumi:"dhcpSnooping"`
 	// If some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages []string `pulumi:"disabledSystemDefinedPortUsages"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers []string `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
-	DnsSuffixes []string                              `pulumi:"dnsSuffixes"`
+	DnsSuffixes []string `pulumi:"dnsSuffixes"`
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
 	ExtraRoutes map[string]NetworktemplateExtraRoutes `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 map[string]NetworktemplateExtraRoutes6 `pulumi:"extraRoutes6"`
@@ -234,7 +242,7 @@ type networktemplateArgs struct {
 	OspfAreas map[string]NetworktemplateOspfAreas `pulumi:"ospfAreas"`
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 port mirrorings is allowed
+	// maximum 4 mirroring ports is allowed
 	PortMirroring map[string]NetworktemplatePortMirroring `pulumi:"portMirroring"`
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages map[string]NetworktemplatePortUsages `pulumi:"portUsages"`
@@ -243,10 +251,10 @@ type networktemplateArgs struct {
 	RemoteSyslog *NetworktemplateRemoteSyslog `pulumi:"remoteSyslog"`
 	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs *bool `pulumi:"removeExistingConfigs"`
-	// Unique ID of the object instance in the Mist Organnization
+	// Unique ID of the object instance in the Mist Organization
 	SiteId     string                     `pulumi:"siteId"`
 	SnmpConfig *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
-	// Defines custom switch configuration based on different criterias
+	// Defines custom switch configuration based on different criteria
 	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
 	// Switch settings
 	SwitchMgmt *NetworktemplateSwitchMgmt `pulumi:"switchMgmt"`
@@ -262,6 +270,7 @@ type NetworktemplateArgs struct {
 	AclTags NetworktemplateAclTagsMapInput
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
+	AutoUpgradeLinecard  pulumi.BoolPtrInput
 	DhcpSnooping         NetworktemplateDhcpSnoopingPtrInput
 	// If some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages pulumi.StringArrayInput
@@ -269,6 +278,7 @@ type NetworktemplateArgs struct {
 	DnsServers pulumi.StringArrayInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes pulumi.StringArrayInput
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
 	ExtraRoutes NetworktemplateExtraRoutesMapInput
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 NetworktemplateExtraRoutes6MapInput
@@ -282,7 +292,7 @@ type NetworktemplateArgs struct {
 	OspfAreas NetworktemplateOspfAreasMapInput
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 port mirrorings is allowed
+	// maximum 4 mirroring ports is allowed
 	PortMirroring NetworktemplatePortMirroringMapInput
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages NetworktemplatePortUsagesMapInput
@@ -291,10 +301,10 @@ type NetworktemplateArgs struct {
 	RemoteSyslog NetworktemplateRemoteSyslogPtrInput
 	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs pulumi.BoolPtrInput
-	// Unique ID of the object instance in the Mist Organnization
+	// Unique ID of the object instance in the Mist Organization
 	SiteId     pulumi.StringInput
 	SnmpConfig NetworktemplateSnmpConfigPtrInput
-	// Defines custom switch configuration based on different criterias
+	// Defines custom switch configuration based on different criteria
 	SwitchMatching NetworktemplateSwitchMatchingPtrInput
 	// Switch settings
 	SwitchMgmt NetworktemplateSwitchMgmtPtrInput
@@ -404,6 +414,10 @@ func (o NetworktemplateOutput) AdditionalConfigCmds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.StringArrayOutput { return v.AdditionalConfigCmds }).(pulumi.StringArrayOutput)
 }
 
+func (o NetworktemplateOutput) AutoUpgradeLinecard() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Networktemplate) pulumi.BoolOutput { return v.AutoUpgradeLinecard }).(pulumi.BoolOutput)
+}
+
 func (o NetworktemplateOutput) DhcpSnooping() NetworktemplateDhcpSnoopingPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateDhcpSnoopingPtrOutput { return v.DhcpSnooping }).(NetworktemplateDhcpSnoopingPtrOutput)
 }
@@ -423,6 +437,7 @@ func (o NetworktemplateOutput) DnsSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.StringArrayOutput { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
 }
 
+// Property key is the destination CIDR (e.g. "10.0.0.0/8")
 func (o NetworktemplateOutput) ExtraRoutes() NetworktemplateExtraRoutesMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateExtraRoutesMapOutput { return v.ExtraRoutes }).(NetworktemplateExtraRoutesMapOutput)
 }
@@ -454,7 +469,7 @@ func (o NetworktemplateOutput) OspfAreas() NetworktemplateOspfAreasMapOutput {
 
 // Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 // interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-// maximum 4 port mirrorings is allowed
+// maximum 4 mirroring ports is allowed
 func (o NetworktemplateOutput) PortMirroring() NetworktemplatePortMirroringMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplatePortMirroringMapOutput { return v.PortMirroring }).(NetworktemplatePortMirroringMapOutput)
 }
@@ -478,7 +493,7 @@ func (o NetworktemplateOutput) RemoveExistingConfigs() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.BoolOutput { return v.RemoveExistingConfigs }).(pulumi.BoolOutput)
 }
 
-// Unique ID of the object instance in the Mist Organnization
+// Unique ID of the object instance in the Mist Organization
 func (o NetworktemplateOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
@@ -487,7 +502,7 @@ func (o NetworktemplateOutput) SnmpConfig() NetworktemplateSnmpConfigPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateSnmpConfigPtrOutput { return v.SnmpConfig }).(NetworktemplateSnmpConfigPtrOutput)
 }
 
-// Defines custom switch configuration based on different criterias
+// Defines custom switch configuration based on different criteria
 func (o NetworktemplateOutput) SwitchMatching() NetworktemplateSwitchMatchingPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateSwitchMatchingPtrOutput { return v.SwitchMatching }).(NetworktemplateSwitchMatchingPtrOutput)
 }

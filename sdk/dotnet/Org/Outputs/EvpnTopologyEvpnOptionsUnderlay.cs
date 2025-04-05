@@ -19,11 +19,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly int? AsBase;
         public readonly string? RoutedIdPrefix;
         /// <summary>
-        /// underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+        /// Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
         /// </summary>
         public readonly string? Subnet;
         /// <summary>
-        /// if v6 is desired for underlay
+        /// If v6 is desired for underlay
         /// </summary>
         public readonly bool? UseIpv6;
 

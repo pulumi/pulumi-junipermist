@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.junipermist.org.outputs.NetworktemplatePortUsagesRule;
 import com.pulumi.junipermist.org.outputs.NetworktemplatePortUsagesStormControl;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -40,7 +39,7 @@ public final class NetworktemplatePortUsages {
      * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
-    private @Nullable Boolean bypassAuthWhenServerDownForUnkownClient;
+    private @Nullable Boolean bypassAuthWhenServerDownForUnknownClient;
     /**
      * @return Only if `mode`!=`dynamic`
      * 
@@ -82,6 +81,11 @@ public final class NetworktemplatePortUsages {
      */
     private @Nullable String guestNetwork;
     /**
+     * @return `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
+     * 
+     */
+    private @Nullable Boolean interIsolationNetworkLink;
+    /**
      * @return Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
@@ -102,20 +106,20 @@ public final class NetworktemplatePortUsages {
      */
     private @Nullable String macAuthProtocol;
     /**
-     * @return Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+     * @return Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 to 16383 (upper bound constrained by platform)
      * 
      */
-    private @Nullable Integer macLimit;
+    private @Nullable String macLimit;
     /**
      * @return `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
      * 
      */
     private @Nullable String mode;
     /**
-     * @return Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+     * @return Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. Value between 256 and 9216, default value is 1514.
      * 
      */
-    private @Nullable Integer mtu;
+    private @Nullable String mtu;
     /**
      * @return Only if `mode`==`trunk`, the list of network/vlans
      * 
@@ -142,10 +146,10 @@ public final class NetworktemplatePortUsages {
      */
     private @Nullable String portNetwork;
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range
+     * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
      * 
      */
-    private @Nullable Integer reauthInterval;
+    private @Nullable String reauthInterval;
     /**
      * @return Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
      * 
@@ -232,8 +236,8 @@ public final class NetworktemplatePortUsages {
      * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
-    public Optional<Boolean> bypassAuthWhenServerDownForUnkownClient() {
-        return Optional.ofNullable(this.bypassAuthWhenServerDownForUnkownClient);
+    public Optional<Boolean> bypassAuthWhenServerDownForUnknownClient() {
+        return Optional.ofNullable(this.bypassAuthWhenServerDownForUnknownClient);
     }
     /**
      * @return Only if `mode`!=`dynamic`
@@ -292,6 +296,13 @@ public final class NetworktemplatePortUsages {
         return Optional.ofNullable(this.guestNetwork);
     }
     /**
+     * @return `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
+     * 
+     */
+    public Optional<Boolean> interIsolationNetworkLink() {
+        return Optional.ofNullable(this.interIsolationNetworkLink);
+    }
+    /**
      * @return Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
@@ -320,10 +331,10 @@ public final class NetworktemplatePortUsages {
         return Optional.ofNullable(this.macAuthProtocol);
     }
     /**
-     * @return Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+     * @return Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 to 16383 (upper bound constrained by platform)
      * 
      */
-    public Optional<Integer> macLimit() {
+    public Optional<String> macLimit() {
         return Optional.ofNullable(this.macLimit);
     }
     /**
@@ -334,10 +345,10 @@ public final class NetworktemplatePortUsages {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+     * @return Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. Value between 256 and 9216, default value is 1514.
      * 
      */
-    public Optional<Integer> mtu() {
+    public Optional<String> mtu() {
         return Optional.ofNullable(this.mtu);
     }
     /**
@@ -376,10 +387,10 @@ public final class NetworktemplatePortUsages {
         return Optional.ofNullable(this.portNetwork);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range
+     * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
      * 
      */
-    public Optional<Integer> reauthInterval() {
+    public Optional<String> reauthInterval() {
         return Optional.ofNullable(this.reauthInterval);
     }
     /**
@@ -472,7 +483,7 @@ public final class NetworktemplatePortUsages {
         private @Nullable Boolean allowDhcpd;
         private @Nullable Boolean allowMultipleSupplicants;
         private @Nullable Boolean bypassAuthWhenServerDown;
-        private @Nullable Boolean bypassAuthWhenServerDownForUnkownClient;
+        private @Nullable Boolean bypassAuthWhenServerDownForUnknownClient;
         private @Nullable String description;
         private @Nullable Boolean disableAutoneg;
         private @Nullable Boolean disabled;
@@ -481,19 +492,20 @@ public final class NetworktemplatePortUsages {
         private @Nullable Boolean enableMacAuth;
         private @Nullable Boolean enableQos;
         private @Nullable String guestNetwork;
+        private @Nullable Boolean interIsolationNetworkLink;
         private @Nullable Boolean interSwitchLink;
         private @Nullable Boolean macAuthOnly;
         private @Nullable Boolean macAuthPreferred;
         private @Nullable String macAuthProtocol;
-        private @Nullable Integer macLimit;
+        private @Nullable String macLimit;
         private @Nullable String mode;
-        private @Nullable Integer mtu;
+        private @Nullable String mtu;
         private @Nullable List<String> networks;
         private @Nullable Boolean persistMac;
         private @Nullable Boolean poeDisabled;
         private @Nullable String portAuth;
         private @Nullable String portNetwork;
-        private @Nullable Integer reauthInterval;
+        private @Nullable String reauthInterval;
         private @Nullable String resetDefaultWhen;
         private @Nullable List<NetworktemplatePortUsagesRule> rules;
         private @Nullable String serverFailNetwork;
@@ -513,7 +525,7 @@ public final class NetworktemplatePortUsages {
     	      this.allowDhcpd = defaults.allowDhcpd;
     	      this.allowMultipleSupplicants = defaults.allowMultipleSupplicants;
     	      this.bypassAuthWhenServerDown = defaults.bypassAuthWhenServerDown;
-    	      this.bypassAuthWhenServerDownForUnkownClient = defaults.bypassAuthWhenServerDownForUnkownClient;
+    	      this.bypassAuthWhenServerDownForUnknownClient = defaults.bypassAuthWhenServerDownForUnknownClient;
     	      this.description = defaults.description;
     	      this.disableAutoneg = defaults.disableAutoneg;
     	      this.disabled = defaults.disabled;
@@ -522,6 +534,7 @@ public final class NetworktemplatePortUsages {
     	      this.enableMacAuth = defaults.enableMacAuth;
     	      this.enableQos = defaults.enableQos;
     	      this.guestNetwork = defaults.guestNetwork;
+    	      this.interIsolationNetworkLink = defaults.interIsolationNetworkLink;
     	      this.interSwitchLink = defaults.interSwitchLink;
     	      this.macAuthOnly = defaults.macAuthOnly;
     	      this.macAuthPreferred = defaults.macAuthPreferred;
@@ -574,9 +587,9 @@ public final class NetworktemplatePortUsages {
             return this;
         }
         @CustomType.Setter
-        public Builder bypassAuthWhenServerDownForUnkownClient(@Nullable Boolean bypassAuthWhenServerDownForUnkownClient) {
+        public Builder bypassAuthWhenServerDownForUnknownClient(@Nullable Boolean bypassAuthWhenServerDownForUnknownClient) {
 
-            this.bypassAuthWhenServerDownForUnkownClient = bypassAuthWhenServerDownForUnkownClient;
+            this.bypassAuthWhenServerDownForUnknownClient = bypassAuthWhenServerDownForUnknownClient;
             return this;
         }
         @CustomType.Setter
@@ -631,6 +644,12 @@ public final class NetworktemplatePortUsages {
             return this;
         }
         @CustomType.Setter
+        public Builder interIsolationNetworkLink(@Nullable Boolean interIsolationNetworkLink) {
+
+            this.interIsolationNetworkLink = interIsolationNetworkLink;
+            return this;
+        }
+        @CustomType.Setter
         public Builder interSwitchLink(@Nullable Boolean interSwitchLink) {
 
             this.interSwitchLink = interSwitchLink;
@@ -655,7 +674,7 @@ public final class NetworktemplatePortUsages {
             return this;
         }
         @CustomType.Setter
-        public Builder macLimit(@Nullable Integer macLimit) {
+        public Builder macLimit(@Nullable String macLimit) {
 
             this.macLimit = macLimit;
             return this;
@@ -667,7 +686,7 @@ public final class NetworktemplatePortUsages {
             return this;
         }
         @CustomType.Setter
-        public Builder mtu(@Nullable Integer mtu) {
+        public Builder mtu(@Nullable String mtu) {
 
             this.mtu = mtu;
             return this;
@@ -706,7 +725,7 @@ public final class NetworktemplatePortUsages {
             return this;
         }
         @CustomType.Setter
-        public Builder reauthInterval(@Nullable Integer reauthInterval) {
+        public Builder reauthInterval(@Nullable String reauthInterval) {
 
             this.reauthInterval = reauthInterval;
             return this;
@@ -792,7 +811,7 @@ public final class NetworktemplatePortUsages {
             _resultValue.allowDhcpd = allowDhcpd;
             _resultValue.allowMultipleSupplicants = allowMultipleSupplicants;
             _resultValue.bypassAuthWhenServerDown = bypassAuthWhenServerDown;
-            _resultValue.bypassAuthWhenServerDownForUnkownClient = bypassAuthWhenServerDownForUnkownClient;
+            _resultValue.bypassAuthWhenServerDownForUnknownClient = bypassAuthWhenServerDownForUnknownClient;
             _resultValue.description = description;
             _resultValue.disableAutoneg = disableAutoneg;
             _resultValue.disabled = disabled;
@@ -801,6 +820,7 @@ public final class NetworktemplatePortUsages {
             _resultValue.enableMacAuth = enableMacAuth;
             _resultValue.enableQos = enableQos;
             _resultValue.guestNetwork = guestNetwork;
+            _resultValue.interIsolationNetworkLink = interIsolationNetworkLink;
             _resultValue.interSwitchLink = interSwitchLink;
             _resultValue.macAuthOnly = macAuthOnly;
             _resultValue.macAuthPreferred = macAuthPreferred;

@@ -12,7 +12,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingCloudsharkArgs : global::Pulumi.ResourceArgs
     {
-        [Input("apitoken", required: true)]
+        [Input("apitoken")]
         private Input<string>? _apitoken;
         public Input<string>? Apitoken
         {
@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// If using CS Enteprise
+        /// If using CS Enterprise
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

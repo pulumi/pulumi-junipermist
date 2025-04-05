@@ -170,10 +170,16 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Redundant { get; set; }
 
         /// <summary>
-        /// If HA mode
+        /// If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
+        /// </summary>
+        [Input("redundantGroup")]
+        public Input<int>? RedundantGroup { get; set; }
+
+        /// <summary>
+        /// For SRX only and if HA Mode
         /// </summary>
         [Input("rethIdx")]
-        public Input<int>? RethIdx { get; set; }
+        public Input<string>? RethIdx { get; set; }
 
         /// <summary>
         /// If HA mode
@@ -248,7 +254,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.GatewayPortConfigWanExtraRoutesArgs>? _wanExtraRoutes;
 
         /// <summary>
-        /// Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+        /// Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
         /// </summary>
         public InputMap<Inputs.GatewayPortConfigWanExtraRoutesArgs> WanExtraRoutes
         {

@@ -64,30 +64,30 @@ export class Network extends pulumi.CustomResource {
     }
 
     /**
-     * whether to disallow Mist Devices in the network
+     * Whether to disallow Mist Devices in the network
      */
     public readonly disallowMistServices!: pulumi.Output<boolean>;
     public readonly gateway!: pulumi.Output<string | undefined>;
     public readonly gateway6!: pulumi.Output<string | undefined>;
     public readonly internalAccess!: pulumi.Output<outputs.org.NetworkInternalAccess | undefined>;
     /**
-     * whether this network has direct internet access
+     * Whether this network has direct internet access
      */
     public readonly internetAccess!: pulumi.Output<outputs.org.NetworkInternetAccess | undefined>;
     /**
-     * whether to allow clients in the network to talk to each other
+     * Whether to allow clients in the network to talk to each other
      */
     public readonly isolation!: pulumi.Output<boolean | undefined>;
     /**
-     * whether to enable multicast support (only PIM-sparse mode is supported)
+     * Whether to enable multicast support (only PIM-sparse mode is supported)
      */
     public readonly multicast!: pulumi.Output<outputs.org.NetworkMulticast | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
      */
-    public readonly routedForNetworks!: pulumi.Output<string[] | undefined>;
+    public readonly routedForNetworks!: pulumi.Output<string[]>;
     public readonly subnet!: pulumi.Output<string>;
     public readonly subnet6!: pulumi.Output<string | undefined>;
     /**
@@ -162,28 +162,28 @@ export class Network extends pulumi.CustomResource {
  */
 export interface NetworkState {
     /**
-     * whether to disallow Mist Devices in the network
+     * Whether to disallow Mist Devices in the network
      */
     disallowMistServices?: pulumi.Input<boolean>;
     gateway?: pulumi.Input<string>;
     gateway6?: pulumi.Input<string>;
     internalAccess?: pulumi.Input<inputs.org.NetworkInternalAccess>;
     /**
-     * whether this network has direct internet access
+     * Whether this network has direct internet access
      */
     internetAccess?: pulumi.Input<inputs.org.NetworkInternetAccess>;
     /**
-     * whether to allow clients in the network to talk to each other
+     * Whether to allow clients in the network to talk to each other
      */
     isolation?: pulumi.Input<boolean>;
     /**
-     * whether to enable multicast support (only PIM-sparse mode is supported)
+     * Whether to enable multicast support (only PIM-sparse mode is supported)
      */
     multicast?: pulumi.Input<inputs.org.NetworkMulticast>;
     name?: pulumi.Input<string>;
     orgId?: pulumi.Input<string>;
     /**
-     * for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
      */
     routedForNetworks?: pulumi.Input<pulumi.Input<string>[]>;
     subnet?: pulumi.Input<string>;
@@ -204,28 +204,28 @@ export interface NetworkState {
  */
 export interface NetworkArgs {
     /**
-     * whether to disallow Mist Devices in the network
+     * Whether to disallow Mist Devices in the network
      */
     disallowMistServices?: pulumi.Input<boolean>;
     gateway?: pulumi.Input<string>;
     gateway6?: pulumi.Input<string>;
     internalAccess?: pulumi.Input<inputs.org.NetworkInternalAccess>;
     /**
-     * whether this network has direct internet access
+     * Whether this network has direct internet access
      */
     internetAccess?: pulumi.Input<inputs.org.NetworkInternetAccess>;
     /**
-     * whether to allow clients in the network to talk to each other
+     * Whether to allow clients in the network to talk to each other
      */
     isolation?: pulumi.Input<boolean>;
     /**
-     * whether to enable multicast support (only PIM-sparse mode is supported)
+     * Whether to enable multicast support (only PIM-sparse mode is supported)
      */
     multicast?: pulumi.Input<inputs.org.NetworkMulticast>;
     name?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
     /**
-     * for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
      */
     routedForNetworks?: pulumi.Input<pulumi.Input<string>[]>;
     subnet: pulumi.Input<string>;

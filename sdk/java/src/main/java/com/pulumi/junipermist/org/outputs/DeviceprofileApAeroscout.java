@@ -5,6 +5,7 @@ package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -27,6 +28,7 @@ public final class DeviceprofileApAeroscout {
      * 
      */
     private @Nullable Boolean locateConnected;
+    private @Nullable Integer port;
 
     private DeviceprofileApAeroscout() {}
     /**
@@ -50,6 +52,9 @@ public final class DeviceprofileApAeroscout {
     public Optional<Boolean> locateConnected() {
         return Optional.ofNullable(this.locateConnected);
     }
+    public Optional<Integer> port() {
+        return Optional.ofNullable(this.port);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -63,12 +68,14 @@ public final class DeviceprofileApAeroscout {
         private @Nullable Boolean enabled;
         private @Nullable String host;
         private @Nullable Boolean locateConnected;
+        private @Nullable Integer port;
         public Builder() {}
         public Builder(DeviceprofileApAeroscout defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.host = defaults.host;
     	      this.locateConnected = defaults.locateConnected;
+    	      this.port = defaults.port;
         }
 
         @CustomType.Setter
@@ -89,11 +96,18 @@ public final class DeviceprofileApAeroscout {
             this.locateConnected = locateConnected;
             return this;
         }
+        @CustomType.Setter
+        public Builder port(@Nullable Integer port) {
+
+            this.port = port;
+            return this;
+        }
         public DeviceprofileApAeroscout build() {
             final var _resultValue = new DeviceprofileApAeroscout();
             _resultValue.enabled = enabled;
             _resultValue.host = host;
             _resultValue.locateConnected = locateConnected;
+            _resultValue.port = port;
             return _resultValue;
         }
     }

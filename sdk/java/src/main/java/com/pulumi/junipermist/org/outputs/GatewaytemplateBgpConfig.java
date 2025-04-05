@@ -57,8 +57,16 @@ public final class GatewaytemplateBgpConfig {
      * 
      */
     private @Nullable String importPolicy;
-    private @Nullable Integer localAs;
-    private @Nullable Integer neighborAs;
+    /**
+     * @return Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * 
+     */
+    private @Nullable String localAs;
+    /**
+     * @return Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * 
+     */
+    private @Nullable String neighborAs;
     /**
      * @return If per-neighbor as is desired. Property key is the neighbor address
      * 
@@ -69,6 +77,7 @@ public final class GatewaytemplateBgpConfig {
      * 
      */
     private @Nullable List<String> networks;
+    private @Nullable Boolean noPrivateAs;
     /**
      * @return By default, we&#39;ll re-advertise all learned BGP routers toward overlay
      * 
@@ -160,10 +169,18 @@ public final class GatewaytemplateBgpConfig {
     public Optional<String> importPolicy() {
         return Optional.ofNullable(this.importPolicy);
     }
-    public Optional<Integer> localAs() {
+    /**
+     * @return Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * 
+     */
+    public Optional<String> localAs() {
         return Optional.ofNullable(this.localAs);
     }
-    public Optional<Integer> neighborAs() {
+    /**
+     * @return Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * 
+     */
+    public Optional<String> neighborAs() {
         return Optional.ofNullable(this.neighborAs);
     }
     /**
@@ -179,6 +196,9 @@ public final class GatewaytemplateBgpConfig {
      */
     public List<String> networks() {
         return this.networks == null ? List.of() : this.networks;
+    }
+    public Optional<Boolean> noPrivateAs() {
+        return Optional.ofNullable(this.noPrivateAs);
     }
     /**
      * @return By default, we&#39;ll re-advertise all learned BGP routers toward overlay
@@ -239,10 +259,11 @@ public final class GatewaytemplateBgpConfig {
         private @Nullable Integer holdTime;
         private @Nullable String import_;
         private @Nullable String importPolicy;
-        private @Nullable Integer localAs;
-        private @Nullable Integer neighborAs;
+        private @Nullable String localAs;
+        private @Nullable String neighborAs;
         private @Nullable Map<String,GatewaytemplateBgpConfigNeighbors> neighbors;
         private @Nullable List<String> networks;
+        private @Nullable Boolean noPrivateAs;
         private @Nullable Boolean noReadvertiseToOverlay;
         private @Nullable String tunnelName;
         private @Nullable String type;
@@ -267,6 +288,7 @@ public final class GatewaytemplateBgpConfig {
     	      this.neighborAs = defaults.neighborAs;
     	      this.neighbors = defaults.neighbors;
     	      this.networks = defaults.networks;
+    	      this.noPrivateAs = defaults.noPrivateAs;
     	      this.noReadvertiseToOverlay = defaults.noReadvertiseToOverlay;
     	      this.tunnelName = defaults.tunnelName;
     	      this.type = defaults.type;
@@ -342,13 +364,13 @@ public final class GatewaytemplateBgpConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder localAs(@Nullable Integer localAs) {
+        public Builder localAs(@Nullable String localAs) {
 
             this.localAs = localAs;
             return this;
         }
         @CustomType.Setter
-        public Builder neighborAs(@Nullable Integer neighborAs) {
+        public Builder neighborAs(@Nullable String neighborAs) {
 
             this.neighborAs = neighborAs;
             return this;
@@ -367,6 +389,12 @@ public final class GatewaytemplateBgpConfig {
         }
         public Builder networks(String... networks) {
             return networks(List.of(networks));
+        }
+        @CustomType.Setter
+        public Builder noPrivateAs(@Nullable Boolean noPrivateAs) {
+
+            this.noPrivateAs = noPrivateAs;
+            return this;
         }
         @CustomType.Setter
         public Builder noReadvertiseToOverlay(@Nullable Boolean noReadvertiseToOverlay) {
@@ -421,6 +449,7 @@ public final class GatewaytemplateBgpConfig {
             _resultValue.neighborAs = neighborAs;
             _resultValue.neighbors = neighbors;
             _resultValue.networks = networks;
+            _resultValue.noPrivateAs = noPrivateAs;
             _resultValue.noReadvertiseToOverlay = noReadvertiseToOverlay;
             _resultValue.tunnelName = tunnelName;
             _resultValue.type = type;

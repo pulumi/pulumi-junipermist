@@ -32,7 +32,7 @@ namespace Pulumi.JuniperMist.Org
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Output("apUpdownThreshold")]
-        public Output<int> ApUpdownThreshold { get; private set; } = null!;
+        public Output<int?> ApUpdownThreshold { get; private set; } = null!;
 
         [Output("apiPolicy")]
         public Output<Outputs.SettingApiPolicy?> ApiPolicy { get; private set; } = null!;
@@ -64,26 +64,26 @@ namespace Pulumi.JuniperMist.Org
         /// immediate)
         /// </summary>
         [Output("deviceUpdownThreshold")]
-        public Output<int> DeviceUpdownThreshold { get; private set; } = null!;
+        public Output<int?> DeviceUpdownThreshold { get; private set; } = null!;
 
         /// <summary>
         /// Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
         /// </summary>
         [Output("disablePcap")]
-        public Output<bool> DisablePcap { get; private set; } = null!;
+        public Output<bool?> DisablePcap { get; private set; } = null!;
 
         /// <summary>
         /// Whether to disable remote shell access for an entire org
         /// </summary>
         [Output("disableRemoteShell")]
-        public Output<bool> DisableRemoteShell { get; private set; } = null!;
+        public Output<bool?> DisableRemoteShell { get; private set; } = null!;
 
         /// <summary>
         /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Output("gatewayUpdownThreshold")]
-        public Output<int> GatewayUpdownThreshold { get; private set; } = null!;
+        public Output<int?> GatewayUpdownThreshold { get; private set; } = null!;
 
         [Output("installer")]
         public Output<Outputs.SettingInstaller?> Installer { get; private set; } = null!;
@@ -101,6 +101,12 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.SettingJuniper> Juniper { get; private set; } = null!;
 
         /// <summary>
+        /// by default, webshell access is only enabled for Admin user
+        /// </summary>
+        [Output("junosShellAccess")]
+        public Output<Outputs.SettingJunosShellAccess?> JunosShellAccess { get; private set; } = null!;
+
+        /// <summary>
         /// management-related properties
         /// </summary>
         [Output("mgmt")]
@@ -108,9 +114,6 @@ namespace Pulumi.JuniperMist.Org
 
         [Output("mistNac")]
         public Output<Outputs.SettingMistNac?> MistNac { get; private set; } = null!;
-
-        [Output("mxedgeFipsEnabled")]
-        public Output<bool> MxedgeFipsEnabled { get; private set; } = null!;
 
         [Output("mxedgeMgmt")]
         public Output<Outputs.SettingMxedgeMgmt?> MxedgeMgmt { get; private set; } = null!;
@@ -144,7 +147,7 @@ namespace Pulumi.JuniperMist.Org
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Output("switchUpdownThreshold")]
-        public Output<int> SwitchUpdownThreshold { get; private set; } = null!;
+        public Output<int?> SwitchUpdownThreshold { get; private set; } = null!;
 
         [Output("syntheticTest")]
         public Output<Outputs.SettingSyntheticTest?> SyntheticTest { get; private set; } = null!;
@@ -288,6 +291,12 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.SettingJcloudRaArgs>? JcloudRa { get; set; }
 
         /// <summary>
+        /// by default, webshell access is only enabled for Admin user
+        /// </summary>
+        [Input("junosShellAccess")]
+        public Input<Inputs.SettingJunosShellAccessArgs>? JunosShellAccess { get; set; }
+
+        /// <summary>
         /// management-related properties
         /// </summary>
         [Input("mgmt")]
@@ -295,9 +304,6 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("mistNac")]
         public Input<Inputs.SettingMistNacArgs>? MistNac { get; set; }
-
-        [Input("mxedgeFipsEnabled")]
-        public Input<bool>? MxedgeFipsEnabled { get; set; }
 
         [Input("mxedgeMgmt")]
         public Input<Inputs.SettingMxedgeMgmtArgs>? MxedgeMgmt { get; set; }
@@ -448,6 +454,12 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.SettingJuniperGetArgs>? Juniper { get; set; }
 
         /// <summary>
+        /// by default, webshell access is only enabled for Admin user
+        /// </summary>
+        [Input("junosShellAccess")]
+        public Input<Inputs.SettingJunosShellAccessGetArgs>? JunosShellAccess { get; set; }
+
+        /// <summary>
         /// management-related properties
         /// </summary>
         [Input("mgmt")]
@@ -455,9 +467,6 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("mistNac")]
         public Input<Inputs.SettingMistNacGetArgs>? MistNac { get; set; }
-
-        [Input("mxedgeFipsEnabled")]
-        public Input<bool>? MxedgeFipsEnabled { get; set; }
 
         [Input("mxedgeMgmt")]
         public Input<Inputs.SettingMxedgeMgmtGetArgs>? MxedgeMgmt { get; set; }

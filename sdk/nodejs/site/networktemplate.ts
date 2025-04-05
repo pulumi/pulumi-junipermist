@@ -9,11 +9,11 @@ import * as utilities from "../utilities";
 /**
  * This resource manages the Site Network configuration (Switch configuration).
  *
- * The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings accross the site without having to create an Org Network template.
+ * The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings across the site without having to create an Org Network template.
  *
  * > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, the `junipermist.site.Networktemplate` resource has been created to centralize all the site level switches related settings.
  *
- * !> Only ONE `junipermist.site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+ * !> Only ONE `junipermist.site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
  *
  * ## Import
  *
@@ -62,6 +62,7 @@ export class Networktemplate extends pulumi.CustomResource {
      * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     public readonly additionalConfigCmds!: pulumi.Output<string[] | undefined>;
+    public readonly autoUpgradeLinecard!: pulumi.Output<boolean>;
     public readonly dhcpSnooping!: pulumi.Output<outputs.site.NetworktemplateDhcpSnooping | undefined>;
     /**
      * If some system-default port usages are not desired - namely, ap / iot / uplink
@@ -70,11 +71,14 @@ export class Networktemplate extends pulumi.CustomResource {
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    public readonly dnsServers!: pulumi.Output<string[] | undefined>;
+    public readonly dnsServers!: pulumi.Output<string[]>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    public readonly dnsSuffixes!: pulumi.Output<string[] | undefined>;
+    public readonly dnsSuffixes!: pulumi.Output<string[]>;
+    /**
+     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     */
     public readonly extraRoutes!: pulumi.Output<{[key: string]: outputs.site.NetworktemplateExtraRoutes} | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -91,7 +95,7 @@ export class Networktemplate extends pulumi.CustomResource {
     /**
      * List of NTP servers
      */
-    public readonly ntpServers!: pulumi.Output<string[] | undefined>;
+    public readonly ntpServers!: pulumi.Output<string[]>;
     /**
      * Junos OSPF areas
      */
@@ -99,7 +103,7 @@ export class Networktemplate extends pulumi.CustomResource {
     /**
      * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      */
     public readonly portMirroring!: pulumi.Output<{[key: string]: outputs.site.NetworktemplatePortMirroring} | undefined>;
     /**
@@ -116,12 +120,12 @@ export class Networktemplate extends pulumi.CustomResource {
      */
     public readonly removeExistingConfigs!: pulumi.Output<boolean>;
     /**
-     * Unique ID of the object instance in the Mist Organnization
+     * Unique ID of the object instance in the Mist Organization
      */
     public readonly siteId!: pulumi.Output<string>;
     public readonly snmpConfig!: pulumi.Output<outputs.site.NetworktemplateSnmpConfig | undefined>;
     /**
-     * Defines custom switch configuration based on different criterias
+     * Defines custom switch configuration based on different criteria
      */
     public readonly switchMatching!: pulumi.Output<outputs.site.NetworktemplateSwitchMatching | undefined>;
     /**
@@ -150,6 +154,7 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["aclPolicies"] = state ? state.aclPolicies : undefined;
             resourceInputs["aclTags"] = state ? state.aclTags : undefined;
             resourceInputs["additionalConfigCmds"] = state ? state.additionalConfigCmds : undefined;
+            resourceInputs["autoUpgradeLinecard"] = state ? state.autoUpgradeLinecard : undefined;
             resourceInputs["dhcpSnooping"] = state ? state.dhcpSnooping : undefined;
             resourceInputs["disabledSystemDefinedPortUsages"] = state ? state.disabledSystemDefinedPortUsages : undefined;
             resourceInputs["dnsServers"] = state ? state.dnsServers : undefined;
@@ -179,6 +184,7 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["aclPolicies"] = args ? args.aclPolicies : undefined;
             resourceInputs["aclTags"] = args ? args.aclTags : undefined;
             resourceInputs["additionalConfigCmds"] = args ? args.additionalConfigCmds : undefined;
+            resourceInputs["autoUpgradeLinecard"] = args ? args.autoUpgradeLinecard : undefined;
             resourceInputs["dhcpSnooping"] = args ? args.dhcpSnooping : undefined;
             resourceInputs["disabledSystemDefinedPortUsages"] = args ? args.disabledSystemDefinedPortUsages : undefined;
             resourceInputs["dnsServers"] = args ? args.dnsServers : undefined;
@@ -219,6 +225,7 @@ export interface NetworktemplateState {
      * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
+    autoUpgradeLinecard?: pulumi.Input<boolean>;
     dhcpSnooping?: pulumi.Input<inputs.site.NetworktemplateDhcpSnooping>;
     /**
      * If some system-default port usages are not desired - namely, ap / iot / uplink
@@ -232,6 +239,9 @@ export interface NetworktemplateState {
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateExtraRoutes>}>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -256,7 +266,7 @@ export interface NetworktemplateState {
     /**
      * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortMirroring>}>;
     /**
@@ -273,12 +283,12 @@ export interface NetworktemplateState {
      */
     removeExistingConfigs?: pulumi.Input<boolean>;
     /**
-     * Unique ID of the object instance in the Mist Organnization
+     * Unique ID of the object instance in the Mist Organization
      */
     siteId?: pulumi.Input<string>;
     snmpConfig?: pulumi.Input<inputs.site.NetworktemplateSnmpConfig>;
     /**
-     * Defines custom switch configuration based on different criterias
+     * Defines custom switch configuration based on different criteria
      */
     switchMatching?: pulumi.Input<inputs.site.NetworktemplateSwitchMatching>;
     /**
@@ -305,6 +315,7 @@ export interface NetworktemplateArgs {
      * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
+    autoUpgradeLinecard?: pulumi.Input<boolean>;
     dhcpSnooping?: pulumi.Input<inputs.site.NetworktemplateDhcpSnooping>;
     /**
      * If some system-default port usages are not desired - namely, ap / iot / uplink
@@ -318,6 +329,9 @@ export interface NetworktemplateArgs {
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateExtraRoutes>}>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -342,7 +356,7 @@ export interface NetworktemplateArgs {
     /**
      * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortMirroring>}>;
     /**
@@ -359,12 +373,12 @@ export interface NetworktemplateArgs {
      */
     removeExistingConfigs?: pulumi.Input<boolean>;
     /**
-     * Unique ID of the object instance in the Mist Organnization
+     * Unique ID of the object instance in the Mist Organization
      */
     siteId: pulumi.Input<string>;
     snmpConfig?: pulumi.Input<inputs.site.NetworktemplateSnmpConfig>;
     /**
-     * Defines custom switch configuration based on different criterias
+     * Defines custom switch configuration based on different criteria
      */
     switchMatching?: pulumi.Input<inputs.site.NetworktemplateSwitchMatching>;
     /**

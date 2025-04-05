@@ -5,7 +5,6 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,22 +15,22 @@ public final class SettingCloudsharkArgs extends com.pulumi.resources.ResourceAr
 
     public static final SettingCloudsharkArgs Empty = new SettingCloudsharkArgs();
 
-    @Import(name="apitoken", required=true)
-    private Output<String> apitoken;
+    @Import(name="apitoken")
+    private @Nullable Output<String> apitoken;
 
-    public Output<String> apitoken() {
-        return this.apitoken;
+    public Optional<Output<String>> apitoken() {
+        return Optional.ofNullable(this.apitoken);
     }
 
     /**
-     * If using CS Enteprise
+     * If using CS Enterprise
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return If using CS Enteprise
+     * @return If using CS Enterprise
      * 
      */
     public Optional<Output<String>> url() {
@@ -63,7 +62,7 @@ public final class SettingCloudsharkArgs extends com.pulumi.resources.ResourceAr
             $ = new SettingCloudsharkArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder apitoken(Output<String> apitoken) {
+        public Builder apitoken(@Nullable Output<String> apitoken) {
             $.apitoken = apitoken;
             return this;
         }
@@ -73,7 +72,7 @@ public final class SettingCloudsharkArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param url If using CS Enteprise
+         * @param url If using CS Enterprise
          * 
          * @return builder
          * 
@@ -84,7 +83,7 @@ public final class SettingCloudsharkArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param url If using CS Enteprise
+         * @param url If using CS Enterprise
          * 
          * @return builder
          * 
@@ -94,9 +93,6 @@ public final class SettingCloudsharkArgs extends com.pulumi.resources.ResourceAr
         }
 
         public SettingCloudsharkArgs build() {
-            if ($.apitoken == null) {
-                throw new MissingRequiredPropertyException("SettingCloudsharkArgs", "apitoken");
-            }
             return $;
         }
     }

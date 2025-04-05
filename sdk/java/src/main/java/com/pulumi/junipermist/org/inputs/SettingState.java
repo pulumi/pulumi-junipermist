@@ -14,6 +14,7 @@ import com.pulumi.junipermist.org.inputs.SettingInstallerArgs;
 import com.pulumi.junipermist.org.inputs.SettingJcloudArgs;
 import com.pulumi.junipermist.org.inputs.SettingJcloudRaArgs;
 import com.pulumi.junipermist.org.inputs.SettingJuniperArgs;
+import com.pulumi.junipermist.org.inputs.SettingJunosShellAccessArgs;
 import com.pulumi.junipermist.org.inputs.SettingMgmtArgs;
 import com.pulumi.junipermist.org.inputs.SettingMistNacArgs;
 import com.pulumi.junipermist.org.inputs.SettingMxedgeMgmtArgs;
@@ -219,6 +220,21 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * by default, webshell access is only enabled for Admin user
+     * 
+     */
+    @Import(name="junosShellAccess")
+    private @Nullable Output<SettingJunosShellAccessArgs> junosShellAccess;
+
+    /**
+     * @return by default, webshell access is only enabled for Admin user
+     * 
+     */
+    public Optional<Output<SettingJunosShellAccessArgs>> junosShellAccess() {
+        return Optional.ofNullable(this.junosShellAccess);
+    }
+
+    /**
      * management-related properties
      * 
      */
@@ -238,13 +254,6 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<SettingMistNacArgs>> mistNac() {
         return Optional.ofNullable(this.mistNac);
-    }
-
-    @Import(name="mxedgeFipsEnabled")
-    private @Nullable Output<Boolean> mxedgeFipsEnabled;
-
-    public Optional<Output<Boolean>> mxedgeFipsEnabled() {
-        return Optional.ofNullable(this.mxedgeFipsEnabled);
     }
 
     @Import(name="mxedgeMgmt")
@@ -397,9 +406,9 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         this.jcloud = $.jcloud;
         this.jcloudRa = $.jcloudRa;
         this.juniper = $.juniper;
+        this.junosShellAccess = $.junosShellAccess;
         this.mgmt = $.mgmt;
         this.mistNac = $.mistNac;
-        this.mxedgeFipsEnabled = $.mxedgeFipsEnabled;
         this.mxedgeMgmt = $.mxedgeMgmt;
         this.opticPortConfig = $.opticPortConfig;
         this.orgId = $.orgId;
@@ -684,6 +693,27 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param junosShellAccess by default, webshell access is only enabled for Admin user
+         * 
+         * @return builder
+         * 
+         */
+        public Builder junosShellAccess(@Nullable Output<SettingJunosShellAccessArgs> junosShellAccess) {
+            $.junosShellAccess = junosShellAccess;
+            return this;
+        }
+
+        /**
+         * @param junosShellAccess by default, webshell access is only enabled for Admin user
+         * 
+         * @return builder
+         * 
+         */
+        public Builder junosShellAccess(SettingJunosShellAccessArgs junosShellAccess) {
+            return junosShellAccess(Output.of(junosShellAccess));
+        }
+
+        /**
          * @param mgmt management-related properties
          * 
          * @return builder
@@ -711,15 +741,6 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
 
         public Builder mistNac(SettingMistNacArgs mistNac) {
             return mistNac(Output.of(mistNac));
-        }
-
-        public Builder mxedgeFipsEnabled(@Nullable Output<Boolean> mxedgeFipsEnabled) {
-            $.mxedgeFipsEnabled = mxedgeFipsEnabled;
-            return this;
-        }
-
-        public Builder mxedgeFipsEnabled(Boolean mxedgeFipsEnabled) {
-            return mxedgeFipsEnabled(Output.of(mxedgeFipsEnabled));
         }
 
         public Builder mxedgeMgmt(@Nullable Output<SettingMxedgeMgmtArgs> mxedgeMgmt) {

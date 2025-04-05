@@ -5,13 +5,12 @@ package com.pulumi.junipermist.site.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetWlansSiteWlanAppQosApps {
-    private Integer dscp;
+    private String dscp;
     /**
      * @return Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
      * 
@@ -24,7 +23,7 @@ public final class GetWlansSiteWlanAppQosApps {
     private String srcSubnet;
 
     private GetWlansSiteWlanAppQosApps() {}
-    public Integer dscp() {
+    public String dscp() {
         return this.dscp;
     }
     /**
@@ -51,7 +50,7 @@ public final class GetWlansSiteWlanAppQosApps {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer dscp;
+        private String dscp;
         private String dstSubnet;
         private String srcSubnet;
         public Builder() {}
@@ -63,7 +62,7 @@ public final class GetWlansSiteWlanAppQosApps {
         }
 
         @CustomType.Setter
-        public Builder dscp(Integer dscp) {
+        public Builder dscp(String dscp) {
             if (dscp == null) {
               throw new MissingRequiredPropertyException("GetWlansSiteWlanAppQosApps", "dscp");
             }

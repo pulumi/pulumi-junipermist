@@ -13,12 +13,12 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchRemoteSyslogFileArchive
     {
-        public readonly int? Files;
+        public readonly string? Files;
         public readonly string? Size;
 
         [OutputConstructor]
         private SwitchRemoteSyslogFileArchive(
-            int? files,
+            string? files,
 
             string? size)
         {

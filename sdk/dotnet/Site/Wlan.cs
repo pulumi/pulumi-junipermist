@@ -257,6 +257,12 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool> Disable11ax { get; private set; } = null!;
 
         /// <summary>
+        /// To disable Wi-Fi 7 EHT IEs
+        /// </summary>
+        [Output("disable11be")]
+        public Output<bool> Disable11be { get; private set; } = null!;
+
+        /// <summary>
         /// To disable ht or vht rates
         /// </summary>
         [Output("disableHtVhtRates")]
@@ -330,7 +336,7 @@ namespace Pulumi.JuniperMist.Site
 
         /// <summary>
         /// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-        /// client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+        /// client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
         /// </summary>
         [Output("enableWirelessBridging")]
         public Output<bool> EnableWirelessBridging { get; private set; } = null!;
@@ -438,7 +444,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableArray<string>> MxtunnelIds { get; private set; } = null!;
 
         /// <summary>
-        /// When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        /// When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
         /// </summary>
         [Output("mxtunnelNames")]
         public Output<ImmutableArray<string>> MxtunnelNames { get; private set; } = null!;
@@ -561,7 +567,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<string?> VlanId { get; private set; } = null!;
 
         /// <summary>
-        /// if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+        /// if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
         /// </summary>
         [Output("vlanIds")]
         public Output<ImmutableArray<string>> VlanIds { get; private set; } = null!;
@@ -887,6 +893,12 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? Disable11ax { get; set; }
 
         /// <summary>
+        /// To disable Wi-Fi 7 EHT IEs
+        /// </summary>
+        [Input("disable11be")]
+        public Input<bool>? Disable11be { get; set; }
+
+        /// <summary>
         /// To disable ht or vht rates
         /// </summary>
         [Input("disableHtVhtRates")]
@@ -960,7 +972,7 @@ namespace Pulumi.JuniperMist.Site
 
         /// <summary>
         /// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-        /// client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+        /// client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
         /// </summary>
         [Input("enableWirelessBridging")]
         public Input<bool>? EnableWirelessBridging { get; set; }
@@ -1074,7 +1086,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _mxtunnelNames;
 
         /// <summary>
-        /// When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        /// When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
         /// </summary>
         public InputList<string> MxtunnelNames
         {
@@ -1209,7 +1221,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _vlanIds;
 
         /// <summary>
-        /// if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+        /// if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
         /// </summary>
         public InputList<string> VlanIds
         {
@@ -1505,6 +1517,12 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? Disable11ax { get; set; }
 
         /// <summary>
+        /// To disable Wi-Fi 7 EHT IEs
+        /// </summary>
+        [Input("disable11be")]
+        public Input<bool>? Disable11be { get; set; }
+
+        /// <summary>
         /// To disable ht or vht rates
         /// </summary>
         [Input("disableHtVhtRates")]
@@ -1578,7 +1596,7 @@ namespace Pulumi.JuniperMist.Site
 
         /// <summary>
         /// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-        /// client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+        /// client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
         /// </summary>
         [Input("enableWirelessBridging")]
         public Input<bool>? EnableWirelessBridging { get; set; }
@@ -1695,7 +1713,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _mxtunnelNames;
 
         /// <summary>
-        /// When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        /// When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
         /// </summary>
         public InputList<string> MxtunnelNames
         {
@@ -1848,7 +1866,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _vlanIds;
 
         /// <summary>
-        /// if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+        /// if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
         /// </summary>
         public InputList<string> VlanIds
         {

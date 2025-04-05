@@ -5,13 +5,12 @@ package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatModuleStatError;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatModuleStatFan;
-import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatModuleStatPic;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatModuleStatPoe;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatModuleStatPsus;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatModuleStatTemperature;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatModuleStatVcLink;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -23,19 +22,18 @@ public final class GetGatewayStatsDeviceGatewayStatModuleStat {
     private String backupVersion;
     private String biosVersion;
     private String cpldVersion;
-    /**
-     * @return used to report all error states the device node is running into.
-     * An error should always have `type` and `since` fields, and could have some other fields specific to that type.
-     * 
-     */
-    private List<GetGatewayStatsDeviceGatewayStatModuleStatError> errors;
     private List<GetGatewayStatsDeviceGatewayStatModuleStatFan> fans;
     private String fpgaVersion;
+    /**
+     * @return Last seen timestamp
+     * 
+     */
     private Double lastSeen;
+    private Boolean locating;
+    private String mac;
     private String model;
     private String opticsCpldVersion;
     private String pendingVersion;
-    private List<GetGatewayStatsDeviceGatewayStatModuleStatPic> pics;
     private GetGatewayStatsDeviceGatewayStatModuleStatPoe poe;
     private String poeVersion;
     private String powerCpldVersion;
@@ -51,7 +49,7 @@ public final class GetGatewayStatsDeviceGatewayStatModuleStat {
     private List<GetGatewayStatsDeviceGatewayStatModuleStatVcLink> vcLinks;
     private String vcMode;
     /**
-     * @return master / backup / linecard
+     * @return enum: `master`, `backup`, `linecard`
      * 
      */
     private String vcRole;
@@ -68,22 +66,24 @@ public final class GetGatewayStatsDeviceGatewayStatModuleStat {
     public String cpldVersion() {
         return this.cpldVersion;
     }
-    /**
-     * @return used to report all error states the device node is running into.
-     * An error should always have `type` and `since` fields, and could have some other fields specific to that type.
-     * 
-     */
-    public List<GetGatewayStatsDeviceGatewayStatModuleStatError> errors() {
-        return this.errors;
-    }
     public List<GetGatewayStatsDeviceGatewayStatModuleStatFan> fans() {
         return this.fans;
     }
     public String fpgaVersion() {
         return this.fpgaVersion;
     }
+    /**
+     * @return Last seen timestamp
+     * 
+     */
     public Double lastSeen() {
         return this.lastSeen;
+    }
+    public Boolean locating() {
+        return this.locating;
+    }
+    public String mac() {
+        return this.mac;
     }
     public String model() {
         return this.model;
@@ -93,9 +93,6 @@ public final class GetGatewayStatsDeviceGatewayStatModuleStat {
     }
     public String pendingVersion() {
         return this.pendingVersion;
-    }
-    public List<GetGatewayStatsDeviceGatewayStatModuleStatPic> pics() {
-        return this.pics;
     }
     public GetGatewayStatsDeviceGatewayStatModuleStatPoe poe() {
         return this.poe;
@@ -140,7 +137,7 @@ public final class GetGatewayStatsDeviceGatewayStatModuleStat {
         return this.vcMode;
     }
     /**
-     * @return master / backup / linecard
+     * @return enum: `master`, `backup`, `linecard`
      * 
      */
     public String vcRole() {
@@ -165,14 +162,14 @@ public final class GetGatewayStatsDeviceGatewayStatModuleStat {
         private String backupVersion;
         private String biosVersion;
         private String cpldVersion;
-        private List<GetGatewayStatsDeviceGatewayStatModuleStatError> errors;
         private List<GetGatewayStatsDeviceGatewayStatModuleStatFan> fans;
         private String fpgaVersion;
         private Double lastSeen;
+        private Boolean locating;
+        private String mac;
         private String model;
         private String opticsCpldVersion;
         private String pendingVersion;
-        private List<GetGatewayStatsDeviceGatewayStatModuleStatPic> pics;
         private GetGatewayStatsDeviceGatewayStatModuleStatPoe poe;
         private String poeVersion;
         private String powerCpldVersion;
@@ -196,14 +193,14 @@ public final class GetGatewayStatsDeviceGatewayStatModuleStat {
     	      this.backupVersion = defaults.backupVersion;
     	      this.biosVersion = defaults.biosVersion;
     	      this.cpldVersion = defaults.cpldVersion;
-    	      this.errors = defaults.errors;
     	      this.fans = defaults.fans;
     	      this.fpgaVersion = defaults.fpgaVersion;
     	      this.lastSeen = defaults.lastSeen;
+    	      this.locating = defaults.locating;
+    	      this.mac = defaults.mac;
     	      this.model = defaults.model;
     	      this.opticsCpldVersion = defaults.opticsCpldVersion;
     	      this.pendingVersion = defaults.pendingVersion;
-    	      this.pics = defaults.pics;
     	      this.poe = defaults.poe;
     	      this.poeVersion = defaults.poeVersion;
     	      this.powerCpldVersion = defaults.powerCpldVersion;
@@ -248,17 +245,6 @@ public final class GetGatewayStatsDeviceGatewayStatModuleStat {
             return this;
         }
         @CustomType.Setter
-        public Builder errors(List<GetGatewayStatsDeviceGatewayStatModuleStatError> errors) {
-            if (errors == null) {
-              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatModuleStat", "errors");
-            }
-            this.errors = errors;
-            return this;
-        }
-        public Builder errors(GetGatewayStatsDeviceGatewayStatModuleStatError... errors) {
-            return errors(List.of(errors));
-        }
-        @CustomType.Setter
         public Builder fans(List<GetGatewayStatsDeviceGatewayStatModuleStatFan> fans) {
             if (fans == null) {
               throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatModuleStat", "fans");
@@ -286,6 +272,22 @@ public final class GetGatewayStatsDeviceGatewayStatModuleStat {
             return this;
         }
         @CustomType.Setter
+        public Builder locating(Boolean locating) {
+            if (locating == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatModuleStat", "locating");
+            }
+            this.locating = locating;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mac(String mac) {
+            if (mac == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatModuleStat", "mac");
+            }
+            this.mac = mac;
+            return this;
+        }
+        @CustomType.Setter
         public Builder model(String model) {
             if (model == null) {
               throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatModuleStat", "model");
@@ -308,17 +310,6 @@ public final class GetGatewayStatsDeviceGatewayStatModuleStat {
             }
             this.pendingVersion = pendingVersion;
             return this;
-        }
-        @CustomType.Setter
-        public Builder pics(List<GetGatewayStatsDeviceGatewayStatModuleStatPic> pics) {
-            if (pics == null) {
-              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatModuleStat", "pics");
-            }
-            this.pics = pics;
-            return this;
-        }
-        public Builder pics(GetGatewayStatsDeviceGatewayStatModuleStatPic... pics) {
-            return pics(List.of(pics));
         }
         @CustomType.Setter
         public Builder poe(GetGatewayStatsDeviceGatewayStatModuleStatPoe poe) {
@@ -470,14 +461,14 @@ public final class GetGatewayStatsDeviceGatewayStatModuleStat {
             _resultValue.backupVersion = backupVersion;
             _resultValue.biosVersion = biosVersion;
             _resultValue.cpldVersion = cpldVersion;
-            _resultValue.errors = errors;
             _resultValue.fans = fans;
             _resultValue.fpgaVersion = fpgaVersion;
             _resultValue.lastSeen = lastSeen;
+            _resultValue.locating = locating;
+            _resultValue.mac = mac;
             _resultValue.model = model;
             _resultValue.opticsCpldVersion = opticsCpldVersion;
             _resultValue.pendingVersion = pendingVersion;
-            _resultValue.pics = pics;
             _resultValue.poe = poe;
             _resultValue.poeVersion = poeVersion;
             _resultValue.powerCpldVersion = powerCpldVersion;

@@ -21,11 +21,6 @@ public final class GatewaytemplateRoutingPoliciesTermAction {
      */
     private @Nullable List<String> addTargetVrfs;
     /**
-     * @return route aggregation
-     * 
-     */
-    private @Nullable List<String> aggregates;
-    /**
      * @return When used as export policy, optional
      * 
      */
@@ -40,7 +35,7 @@ public final class GatewaytemplateRoutingPoliciesTermAction {
      * @return When used as export policy, optional
      * 
      */
-    private @Nullable List<String> exportCommunitites;
+    private @Nullable List<String> exportCommunities;
     /**
      * @return Optional, for an import policy, local_preference can be changed
      * 
@@ -67,13 +62,6 @@ public final class GatewaytemplateRoutingPoliciesTermAction {
         return this.addTargetVrfs == null ? List.of() : this.addTargetVrfs;
     }
     /**
-     * @return route aggregation
-     * 
-     */
-    public List<String> aggregates() {
-        return this.aggregates == null ? List.of() : this.aggregates;
-    }
-    /**
      * @return When used as export policy, optional
      * 
      */
@@ -94,8 +82,8 @@ public final class GatewaytemplateRoutingPoliciesTermAction {
      * @return When used as export policy, optional
      * 
      */
-    public List<String> exportCommunitites() {
-        return this.exportCommunitites == null ? List.of() : this.exportCommunitites;
+    public List<String> exportCommunities() {
+        return this.exportCommunities == null ? List.of() : this.exportCommunities;
     }
     /**
      * @return Optional, for an import policy, local_preference can be changed
@@ -124,11 +112,10 @@ public final class GatewaytemplateRoutingPoliciesTermAction {
         private @Nullable Boolean accept;
         private @Nullable List<String> addCommunities;
         private @Nullable List<String> addTargetVrfs;
-        private @Nullable List<String> aggregates;
         private @Nullable List<String> communities;
         private @Nullable List<String> excludeAsPaths;
         private @Nullable List<String> excludeCommunities;
-        private @Nullable List<String> exportCommunitites;
+        private @Nullable List<String> exportCommunities;
         private @Nullable String localPreference;
         private @Nullable List<String> prependAsPaths;
         public Builder() {}
@@ -137,11 +124,10 @@ public final class GatewaytemplateRoutingPoliciesTermAction {
     	      this.accept = defaults.accept;
     	      this.addCommunities = defaults.addCommunities;
     	      this.addTargetVrfs = defaults.addTargetVrfs;
-    	      this.aggregates = defaults.aggregates;
     	      this.communities = defaults.communities;
     	      this.excludeAsPaths = defaults.excludeAsPaths;
     	      this.excludeCommunities = defaults.excludeCommunities;
-    	      this.exportCommunitites = defaults.exportCommunitites;
+    	      this.exportCommunities = defaults.exportCommunities;
     	      this.localPreference = defaults.localPreference;
     	      this.prependAsPaths = defaults.prependAsPaths;
         }
@@ -171,15 +157,6 @@ public final class GatewaytemplateRoutingPoliciesTermAction {
             return addTargetVrfs(List.of(addTargetVrfs));
         }
         @CustomType.Setter
-        public Builder aggregates(@Nullable List<String> aggregates) {
-
-            this.aggregates = aggregates;
-            return this;
-        }
-        public Builder aggregates(String... aggregates) {
-            return aggregates(List.of(aggregates));
-        }
-        @CustomType.Setter
         public Builder communities(@Nullable List<String> communities) {
 
             this.communities = communities;
@@ -207,13 +184,13 @@ public final class GatewaytemplateRoutingPoliciesTermAction {
             return excludeCommunities(List.of(excludeCommunities));
         }
         @CustomType.Setter
-        public Builder exportCommunitites(@Nullable List<String> exportCommunitites) {
+        public Builder exportCommunities(@Nullable List<String> exportCommunities) {
 
-            this.exportCommunitites = exportCommunitites;
+            this.exportCommunities = exportCommunities;
             return this;
         }
-        public Builder exportCommunitites(String... exportCommunitites) {
-            return exportCommunitites(List.of(exportCommunitites));
+        public Builder exportCommunities(String... exportCommunities) {
+            return exportCommunities(List.of(exportCommunities));
         }
         @CustomType.Setter
         public Builder localPreference(@Nullable String localPreference) {
@@ -235,11 +212,10 @@ public final class GatewaytemplateRoutingPoliciesTermAction {
             _resultValue.accept = accept;
             _resultValue.addCommunities = addCommunities;
             _resultValue.addTargetVrfs = addTargetVrfs;
-            _resultValue.aggregates = aggregates;
             _resultValue.communities = communities;
             _resultValue.excludeAsPaths = excludeAsPaths;
             _resultValue.excludeCommunities = excludeCommunities;
-            _resultValue.exportCommunitites = exportCommunitites;
+            _resultValue.exportCommunities = exportCommunities;
             _resultValue.localPreference = localPreference;
             _resultValue.prependAsPaths = prependAsPaths;
             return _resultValue;

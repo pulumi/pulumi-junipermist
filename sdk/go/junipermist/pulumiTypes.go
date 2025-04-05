@@ -16,8 +16,9 @@ var _ = internal.GetEnvOrDefault
 type UpgradeDeviceFwupdate struct {
 	Progress *int `pulumi:"progress"`
 	// enum: `inprogress`, `failed`, `upgraded`
-	Status    *string  `pulumi:"status"`
-	StatusId  *int     `pulumi:"statusId"`
+	Status   *string `pulumi:"status"`
+	StatusId *int    `pulumi:"statusId"`
+	// Epoch (seconds)
 	Timestamp *float64 `pulumi:"timestamp"`
 	WillRetry *bool    `pulumi:"willRetry"`
 }
@@ -36,8 +37,9 @@ type UpgradeDeviceFwupdateInput interface {
 type UpgradeDeviceFwupdateArgs struct {
 	Progress pulumi.IntPtrInput `pulumi:"progress"`
 	// enum: `inprogress`, `failed`, `upgraded`
-	Status    pulumi.StringPtrInput  `pulumi:"status"`
-	StatusId  pulumi.IntPtrInput     `pulumi:"statusId"`
+	Status   pulumi.StringPtrInput `pulumi:"status"`
+	StatusId pulumi.IntPtrInput    `pulumi:"statusId"`
+	// Epoch (seconds)
 	Timestamp pulumi.Float64PtrInput `pulumi:"timestamp"`
 	WillRetry pulumi.BoolPtrInput    `pulumi:"willRetry"`
 }
@@ -132,6 +134,7 @@ func (o UpgradeDeviceFwupdateOutput) StatusId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v UpgradeDeviceFwupdate) *int { return v.StatusId }).(pulumi.IntPtrOutput)
 }
 
+// Epoch (seconds)
 func (o UpgradeDeviceFwupdateOutput) Timestamp() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v UpgradeDeviceFwupdate) *float64 { return v.Timestamp }).(pulumi.Float64PtrOutput)
 }
@@ -192,6 +195,7 @@ func (o UpgradeDeviceFwupdatePtrOutput) StatusId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Epoch (seconds)
 func (o UpgradeDeviceFwupdatePtrOutput) Timestamp() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *UpgradeDeviceFwupdate) *float64 {
 		if v == nil {
@@ -770,11 +774,11 @@ func (o GetConstApplicationsConstApplicationArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetConstCountriesConstCountry struct {
-	// country code, in two-character
+	// Country code, in two-character
 	Alpha2    string `pulumi:"alpha2"`
 	Certified bool   `pulumi:"certified"`
 	Name      string `pulumi:"name"`
-	// country code, ISO 3166-1 numeric
+	// Country code, ISO 3166-1 numeric
 	Numeric float64 `pulumi:"numeric"`
 }
 
@@ -790,11 +794,11 @@ type GetConstCountriesConstCountryInput interface {
 }
 
 type GetConstCountriesConstCountryArgs struct {
-	// country code, in two-character
+	// Country code, in two-character
 	Alpha2    pulumi.StringInput `pulumi:"alpha2"`
 	Certified pulumi.BoolInput   `pulumi:"certified"`
 	Name      pulumi.StringInput `pulumi:"name"`
-	// country code, ISO 3166-1 numeric
+	// Country code, ISO 3166-1 numeric
 	Numeric pulumi.Float64Input `pulumi:"numeric"`
 }
 
@@ -849,7 +853,7 @@ func (o GetConstCountriesConstCountryOutput) ToGetConstCountriesConstCountryOutp
 	return o
 }
 
-// country code, in two-character
+// Country code, in two-character
 func (o GetConstCountriesConstCountryOutput) Alpha2() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConstCountriesConstCountry) string { return v.Alpha2 }).(pulumi.StringOutput)
 }
@@ -862,7 +866,7 @@ func (o GetConstCountriesConstCountryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConstCountriesConstCountry) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// country code, ISO 3166-1 numeric
+// Country code, ISO 3166-1 numeric
 func (o GetConstCountriesConstCountryOutput) Numeric() pulumi.Float64Output {
 	return o.ApplyT(func(v GetConstCountriesConstCountry) float64 { return v.Numeric }).(pulumi.Float64Output)
 }
@@ -1024,13 +1028,15 @@ func (o GetConstTrafficTypesConstTrafficTypeArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetConstWebhooksConstWebhook struct {
-	// can be used in org webhooks, optional
+	// supports single event per message results
+	AllowsSingleEventPerMessage bool `pulumi:"allowsSingleEventPerMessage"`
+	// Can be used in org webhooks, optional
 	ForOrg bool `pulumi:"forOrg"`
-	// supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
+	// Supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
 	HasDeliveryResults bool `pulumi:"hasDeliveryResults"`
-	// internal topic (not selectable in site/org webhooks)
+	// Internal topic (not selectable in site/org webhooks)
 	Internal bool `pulumi:"internal"`
-	// webhook topic name
+	// Webhook topic name
 	Key string `pulumi:"key"`
 }
 
@@ -1046,13 +1052,15 @@ type GetConstWebhooksConstWebhookInput interface {
 }
 
 type GetConstWebhooksConstWebhookArgs struct {
-	// can be used in org webhooks, optional
+	// supports single event per message results
+	AllowsSingleEventPerMessage pulumi.BoolInput `pulumi:"allowsSingleEventPerMessage"`
+	// Can be used in org webhooks, optional
 	ForOrg pulumi.BoolInput `pulumi:"forOrg"`
-	// supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
+	// Supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
 	HasDeliveryResults pulumi.BoolInput `pulumi:"hasDeliveryResults"`
-	// internal topic (not selectable in site/org webhooks)
+	// Internal topic (not selectable in site/org webhooks)
 	Internal pulumi.BoolInput `pulumi:"internal"`
-	// webhook topic name
+	// Webhook topic name
 	Key pulumi.StringInput `pulumi:"key"`
 }
 
@@ -1107,22 +1115,27 @@ func (o GetConstWebhooksConstWebhookOutput) ToGetConstWebhooksConstWebhookOutput
 	return o
 }
 
-// can be used in org webhooks, optional
+// supports single event per message results
+func (o GetConstWebhooksConstWebhookOutput) AllowsSingleEventPerMessage() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConstWebhooksConstWebhook) bool { return v.AllowsSingleEventPerMessage }).(pulumi.BoolOutput)
+}
+
+// Can be used in org webhooks, optional
 func (o GetConstWebhooksConstWebhookOutput) ForOrg() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConstWebhooksConstWebhook) bool { return v.ForOrg }).(pulumi.BoolOutput)
 }
 
-// supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
+// Supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
 func (o GetConstWebhooksConstWebhookOutput) HasDeliveryResults() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConstWebhooksConstWebhook) bool { return v.HasDeliveryResults }).(pulumi.BoolOutput)
 }
 
-// internal topic (not selectable in site/org webhooks)
+// Internal topic (not selectable in site/org webhooks)
 func (o GetConstWebhooksConstWebhookOutput) Internal() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConstWebhooksConstWebhook) bool { return v.Internal }).(pulumi.BoolOutput)
 }
 
-// webhook topic name
+// Webhook topic name
 func (o GetConstWebhooksConstWebhookOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConstWebhooksConstWebhook) string { return v.Key }).(pulumi.StringOutput)
 }

@@ -30,7 +30,7 @@ type Setting struct {
 
 	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
 	// `deviceUpdownThreshold` is ignored.
-	ApUpdownThreshold pulumi.IntOutput          `pulumi:"apUpdownThreshold"`
+	ApUpdownThreshold pulumi.IntPtrOutput       `pulumi:"apUpdownThreshold"`
 	ApiPolicy         SettingApiPolicyPtrOutput `pulumi:"apiPolicy"`
 	// List of PEM-encoded ca certs
 	Cacerts     pulumi.StringArrayOutput   `pulumi:"cacerts"`
@@ -42,24 +42,25 @@ type Setting struct {
 	// Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
 	// AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
 	// immediate)
-	DeviceUpdownThreshold pulumi.IntOutput `pulumi:"deviceUpdownThreshold"`
+	DeviceUpdownThreshold pulumi.IntPtrOutput `pulumi:"deviceUpdownThreshold"`
 	// Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
-	DisablePcap pulumi.BoolOutput `pulumi:"disablePcap"`
+	DisablePcap pulumi.BoolPtrOutput `pulumi:"disablePcap"`
 	// Whether to disable remote shell access for an entire org
-	DisableRemoteShell pulumi.BoolOutput `pulumi:"disableRemoteShell"`
+	DisableRemoteShell pulumi.BoolPtrOutput `pulumi:"disableRemoteShell"`
 	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 	// `deviceUpdownThreshold` is ignored.
-	GatewayUpdownThreshold pulumi.IntOutput          `pulumi:"gatewayUpdownThreshold"`
+	GatewayUpdownThreshold pulumi.IntPtrOutput       `pulumi:"gatewayUpdownThreshold"`
 	Installer              SettingInstallerPtrOutput `pulumi:"installer"`
 	Jcloud                 SettingJcloudPtrOutput    `pulumi:"jcloud"`
 	// JCloud Routing Assurance connexion
 	JcloudRa SettingJcloudRaPtrOutput `pulumi:"jcloudRa"`
 	Juniper  SettingJuniperOutput     `pulumi:"juniper"`
+	// by default, webshell access is only enabled for Admin user
+	JunosShellAccess SettingJunosShellAccessPtrOutput `pulumi:"junosShellAccess"`
 	// management-related properties
-	Mgmt              SettingMgmtPtrOutput       `pulumi:"mgmt"`
-	MistNac           SettingMistNacPtrOutput    `pulumi:"mistNac"`
-	MxedgeFipsEnabled pulumi.BoolOutput          `pulumi:"mxedgeFipsEnabled"`
-	MxedgeMgmt        SettingMxedgeMgmtPtrOutput `pulumi:"mxedgeMgmt"`
+	Mgmt       SettingMgmtPtrOutput       `pulumi:"mgmt"`
+	MistNac    SettingMistNacPtrOutput    `pulumi:"mistNac"`
+	MxedgeMgmt SettingMxedgeMgmtPtrOutput `pulumi:"mxedgeMgmt"`
 	// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
 	OpticPortConfig SettingOpticPortConfigMapOutput `pulumi:"opticPortConfig"`
 	OrgId           pulumi.StringOutput             `pulumi:"orgId"`
@@ -70,7 +71,7 @@ type Setting struct {
 	SwitchMgmt     SettingSwitchMgmtPtrOutput     `pulumi:"switchMgmt"`
 	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
-	SwitchUpdownThreshold pulumi.IntOutput              `pulumi:"switchUpdownThreshold"`
+	SwitchUpdownThreshold pulumi.IntPtrOutput           `pulumi:"switchUpdownThreshold"`
 	SyntheticTest         SettingSyntheticTestPtrOutput `pulumi:"syntheticTest"`
 	// Automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout pulumi.IntOutput            `pulumi:"uiIdleTimeout"`
@@ -140,11 +141,12 @@ type settingState struct {
 	// JCloud Routing Assurance connexion
 	JcloudRa *SettingJcloudRa `pulumi:"jcloudRa"`
 	Juniper  *SettingJuniper  `pulumi:"juniper"`
+	// by default, webshell access is only enabled for Admin user
+	JunosShellAccess *SettingJunosShellAccess `pulumi:"junosShellAccess"`
 	// management-related properties
-	Mgmt              *SettingMgmt       `pulumi:"mgmt"`
-	MistNac           *SettingMistNac    `pulumi:"mistNac"`
-	MxedgeFipsEnabled *bool              `pulumi:"mxedgeFipsEnabled"`
-	MxedgeMgmt        *SettingMxedgeMgmt `pulumi:"mxedgeMgmt"`
+	Mgmt       *SettingMgmt       `pulumi:"mgmt"`
+	MistNac    *SettingMistNac    `pulumi:"mistNac"`
+	MxedgeMgmt *SettingMxedgeMgmt `pulumi:"mxedgeMgmt"`
 	// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
 	OpticPortConfig map[string]SettingOpticPortConfig `pulumi:"opticPortConfig"`
 	OrgId           *string                           `pulumi:"orgId"`
@@ -193,11 +195,12 @@ type SettingState struct {
 	// JCloud Routing Assurance connexion
 	JcloudRa SettingJcloudRaPtrInput
 	Juniper  SettingJuniperPtrInput
+	// by default, webshell access is only enabled for Admin user
+	JunosShellAccess SettingJunosShellAccessPtrInput
 	// management-related properties
-	Mgmt              SettingMgmtPtrInput
-	MistNac           SettingMistNacPtrInput
-	MxedgeFipsEnabled pulumi.BoolPtrInput
-	MxedgeMgmt        SettingMxedgeMgmtPtrInput
+	Mgmt       SettingMgmtPtrInput
+	MistNac    SettingMistNacPtrInput
+	MxedgeMgmt SettingMxedgeMgmtPtrInput
 	// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
 	OpticPortConfig SettingOpticPortConfigMapInput
 	OrgId           pulumi.StringPtrInput
@@ -248,11 +251,12 @@ type settingArgs struct {
 	Jcloud                 *SettingJcloud    `pulumi:"jcloud"`
 	// JCloud Routing Assurance connexion
 	JcloudRa *SettingJcloudRa `pulumi:"jcloudRa"`
+	// by default, webshell access is only enabled for Admin user
+	JunosShellAccess *SettingJunosShellAccess `pulumi:"junosShellAccess"`
 	// management-related properties
-	Mgmt              *SettingMgmt       `pulumi:"mgmt"`
-	MistNac           *SettingMistNac    `pulumi:"mistNac"`
-	MxedgeFipsEnabled *bool              `pulumi:"mxedgeFipsEnabled"`
-	MxedgeMgmt        *SettingMxedgeMgmt `pulumi:"mxedgeMgmt"`
+	Mgmt       *SettingMgmt       `pulumi:"mgmt"`
+	MistNac    *SettingMistNac    `pulumi:"mistNac"`
+	MxedgeMgmt *SettingMxedgeMgmt `pulumi:"mxedgeMgmt"`
 	// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
 	OpticPortConfig map[string]SettingOpticPortConfig `pulumi:"opticPortConfig"`
 	OrgId           string                            `pulumi:"orgId"`
@@ -300,11 +304,12 @@ type SettingArgs struct {
 	Jcloud                 SettingJcloudPtrInput
 	// JCloud Routing Assurance connexion
 	JcloudRa SettingJcloudRaPtrInput
+	// by default, webshell access is only enabled for Admin user
+	JunosShellAccess SettingJunosShellAccessPtrInput
 	// management-related properties
-	Mgmt              SettingMgmtPtrInput
-	MistNac           SettingMistNacPtrInput
-	MxedgeFipsEnabled pulumi.BoolPtrInput
-	MxedgeMgmt        SettingMxedgeMgmtPtrInput
+	Mgmt       SettingMgmtPtrInput
+	MistNac    SettingMistNacPtrInput
+	MxedgeMgmt SettingMxedgeMgmtPtrInput
 	// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
 	OpticPortConfig SettingOpticPortConfigMapInput
 	OrgId           pulumi.StringInput
@@ -414,8 +419,8 @@ func (o SettingOutput) ToSettingOutputWithContext(ctx context.Context) SettingOu
 
 // Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
 // `deviceUpdownThreshold` is ignored.
-func (o SettingOutput) ApUpdownThreshold() pulumi.IntOutput {
-	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.ApUpdownThreshold }).(pulumi.IntOutput)
+func (o SettingOutput) ApUpdownThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.ApUpdownThreshold }).(pulumi.IntPtrOutput)
 }
 
 func (o SettingOutput) ApiPolicy() SettingApiPolicyPtrOutput {
@@ -447,24 +452,24 @@ func (o SettingOutput) DeviceCert() SettingDeviceCertPtrOutput {
 // Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
 // AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
 // immediate)
-func (o SettingOutput) DeviceUpdownThreshold() pulumi.IntOutput {
-	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.DeviceUpdownThreshold }).(pulumi.IntOutput)
+func (o SettingOutput) DeviceUpdownThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.DeviceUpdownThreshold }).(pulumi.IntPtrOutput)
 }
 
 // Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
-func (o SettingOutput) DisablePcap() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.DisablePcap }).(pulumi.BoolOutput)
+func (o SettingOutput) DisablePcap() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.BoolPtrOutput { return v.DisablePcap }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to disable remote shell access for an entire org
-func (o SettingOutput) DisableRemoteShell() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.DisableRemoteShell }).(pulumi.BoolOutput)
+func (o SettingOutput) DisableRemoteShell() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.BoolPtrOutput { return v.DisableRemoteShell }).(pulumi.BoolPtrOutput)
 }
 
 // Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 // `deviceUpdownThreshold` is ignored.
-func (o SettingOutput) GatewayUpdownThreshold() pulumi.IntOutput {
-	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.GatewayUpdownThreshold }).(pulumi.IntOutput)
+func (o SettingOutput) GatewayUpdownThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.GatewayUpdownThreshold }).(pulumi.IntPtrOutput)
 }
 
 func (o SettingOutput) Installer() SettingInstallerPtrOutput {
@@ -484,6 +489,11 @@ func (o SettingOutput) Juniper() SettingJuniperOutput {
 	return o.ApplyT(func(v *Setting) SettingJuniperOutput { return v.Juniper }).(SettingJuniperOutput)
 }
 
+// by default, webshell access is only enabled for Admin user
+func (o SettingOutput) JunosShellAccess() SettingJunosShellAccessPtrOutput {
+	return o.ApplyT(func(v *Setting) SettingJunosShellAccessPtrOutput { return v.JunosShellAccess }).(SettingJunosShellAccessPtrOutput)
+}
+
 // management-related properties
 func (o SettingOutput) Mgmt() SettingMgmtPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingMgmtPtrOutput { return v.Mgmt }).(SettingMgmtPtrOutput)
@@ -491,10 +501,6 @@ func (o SettingOutput) Mgmt() SettingMgmtPtrOutput {
 
 func (o SettingOutput) MistNac() SettingMistNacPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingMistNacPtrOutput { return v.MistNac }).(SettingMistNacPtrOutput)
-}
-
-func (o SettingOutput) MxedgeFipsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.MxedgeFipsEnabled }).(pulumi.BoolOutput)
 }
 
 func (o SettingOutput) MxedgeMgmt() SettingMxedgeMgmtPtrOutput {
@@ -529,8 +535,8 @@ func (o SettingOutput) SwitchMgmt() SettingSwitchMgmtPtrOutput {
 
 // Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 // `deviceUpdownThreshold` is ignored.
-func (o SettingOutput) SwitchUpdownThreshold() pulumi.IntOutput {
-	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.SwitchUpdownThreshold }).(pulumi.IntOutput)
+func (o SettingOutput) SwitchUpdownThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.SwitchUpdownThreshold }).(pulumi.IntPtrOutput)
 }
 
 func (o SettingOutput) SyntheticTest() SettingSyntheticTestPtrOutput {

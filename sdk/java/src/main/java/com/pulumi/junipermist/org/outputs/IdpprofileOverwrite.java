@@ -16,7 +16,7 @@ public final class IdpprofileOverwrite {
     /**
      * @return enum:
      *   * alert (default)
-     *   * drop: siliently dropping packets
+     *   * drop: silently dropping packets
      *   * close: notify client/server to close connection
      * 
      */
@@ -28,7 +28,7 @@ public final class IdpprofileOverwrite {
     /**
      * @return enum:
      *   * alert (default)
-     *   * drop: siliently dropping packets
+     *   * drop: silently dropping packets
      *   * close: notify client/server to close connection
      * 
      */

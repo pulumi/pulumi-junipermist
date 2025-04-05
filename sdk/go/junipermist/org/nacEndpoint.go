@@ -17,7 +17,7 @@ import (
 // NAC Endpoints (User MACs) provide a database of endpoints identified by their MAC addresses. They can be used assign each endpoint with various attributes, such as name, VLAN, role and client label.  Once an endpoint is labeled, the label name can be used to create `org.Nactag` resource as match criteria.
 //
 // The `org.Nactag` resource can be used to create Tags regrouping one or multiple endpoint MAC Addresses, but the use of the User MACs provides additional features:
-// * possitility to assign specific attributes, like a Name, a Radius Group, a VLAN ID, ...
+// * possibility to assign specific attributes, like a Name, a Radius Group, a VLAN ID, ...
 // * possibility to assign one or multiple Tags (Labels) to a User MAC
 // * improved management for large list of MAC Addresses
 //
@@ -68,7 +68,7 @@ type NacEndpoint struct {
 	pulumi.CustomResourceState
 
 	Labels pulumi.StringArrayOutput `pulumi:"labels"`
-	// only non-local-admin MAC is accepted
+	// Only non-local-admin MAC is accepted
 	Mac         pulumi.StringOutput `pulumi:"mac"`
 	Name        pulumi.StringOutput `pulumi:"name"`
 	Notes       pulumi.StringOutput `pulumi:"notes"`
@@ -114,7 +114,7 @@ func GetNacEndpoint(ctx *pulumi.Context,
 // Input properties used for looking up and filtering NacEndpoint resources.
 type nacEndpointState struct {
 	Labels []string `pulumi:"labels"`
-	// only non-local-admin MAC is accepted
+	// Only non-local-admin MAC is accepted
 	Mac         *string `pulumi:"mac"`
 	Name        *string `pulumi:"name"`
 	Notes       *string `pulumi:"notes"`
@@ -125,7 +125,7 @@ type nacEndpointState struct {
 
 type NacEndpointState struct {
 	Labels pulumi.StringArrayInput
-	// only non-local-admin MAC is accepted
+	// Only non-local-admin MAC is accepted
 	Mac         pulumi.StringPtrInput
 	Name        pulumi.StringPtrInput
 	Notes       pulumi.StringPtrInput
@@ -140,7 +140,7 @@ func (NacEndpointState) ElementType() reflect.Type {
 
 type nacEndpointArgs struct {
 	Labels []string `pulumi:"labels"`
-	// only non-local-admin MAC is accepted
+	// Only non-local-admin MAC is accepted
 	Mac         string  `pulumi:"mac"`
 	Name        *string `pulumi:"name"`
 	Notes       *string `pulumi:"notes"`
@@ -152,7 +152,7 @@ type nacEndpointArgs struct {
 // The set of arguments for constructing a NacEndpoint resource.
 type NacEndpointArgs struct {
 	Labels pulumi.StringArrayInput
-	// only non-local-admin MAC is accepted
+	// Only non-local-admin MAC is accepted
 	Mac         pulumi.StringInput
 	Name        pulumi.StringPtrInput
 	Notes       pulumi.StringPtrInput
@@ -252,7 +252,7 @@ func (o NacEndpointOutput) Labels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NacEndpoint) pulumi.StringArrayOutput { return v.Labels }).(pulumi.StringArrayOutput)
 }
 
-// only non-local-admin MAC is accepted
+// Only non-local-admin MAC is accepted
 func (o NacEndpointOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v *NacEndpoint) pulumi.StringOutput { return v.Mac }).(pulumi.StringOutput)
 }

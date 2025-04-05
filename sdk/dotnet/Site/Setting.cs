@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site
     /// 
     /// &gt; When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `junipermist.site.Networktemplate` resource
     /// 
-    /// !&gt; Only ONE `junipermist.site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+    /// !&gt; Only ONE `junipermist.site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
     /// 
     /// ## Import
     /// 
@@ -39,7 +39,7 @@ namespace Pulumi.JuniperMist.Site
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Output("apUpdownThreshold")]
-        public Output<int> ApUpdownThreshold { get; private set; } = null!;
+        public Output<int?> ApUpdownThreshold { get; private set; } = null!;
 
         /// <summary>
         /// Auto Upgrade Settings
@@ -75,11 +75,14 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingCriticalUrlMonitoring?> CriticalUrlMonitoring { get; private set; } = null!;
 
         /// <summary>
-        /// By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
-        /// is desired, use the following
+        /// By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
+        /// type is desired, use the following
         /// </summary>
         [Output("deviceUpdownThreshold")]
-        public Output<int> DeviceUpdownThreshold { get; private set; } = null!;
+        public Output<int?> DeviceUpdownThreshold { get; private set; } = null!;
+
+        [Output("enableUnii4")]
+        public Output<bool> EnableUnii4 { get; private set; } = null!;
 
         /// <summary>
         /// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
@@ -99,7 +102,7 @@ namespace Pulumi.JuniperMist.Site
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Output("gatewayUpdownThreshold")]
-        public Output<int> GatewayUpdownThreshold { get; private set; } = null!;
+        public Output<int?> GatewayUpdownThreshold { get; private set; } = null!;
 
         [Output("juniperSrx")]
         public Output<Outputs.SettingJuniperSrx?> JuniperSrx { get; private set; } = null!;
@@ -132,14 +135,14 @@ namespace Pulumi.JuniperMist.Site
         /// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
         /// </summary>
         [Output("removeExistingConfigs")]
-        public Output<bool> RemoveExistingConfigs { get; private set; } = null!;
+        public Output<bool?> RemoveExistingConfigs { get; private set; } = null!;
 
         /// <summary>
         /// Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
         /// serial number, battery %, temperature, humidity)
         /// </summary>
         [Output("reportGatt")]
-        public Output<bool> ReportGatt { get; private set; } = null!;
+        public Output<bool?> ReportGatt { get; private set; } = null!;
 
         /// <summary>
         /// Rogue site settings
@@ -155,7 +158,7 @@ namespace Pulumi.JuniperMist.Site
 
         /// <summary>
         /// Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-        /// window, there are more than Y distinct client encountring over X failures
+        /// window, there are more than Y distinct client encountering over X failures
         /// </summary>
         [Output("simpleAlert")]
         public Output<Outputs.SettingSimpleAlert?> SimpleAlert { get; private set; } = null!;
@@ -184,7 +187,7 @@ namespace Pulumi.JuniperMist.Site
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Output("switchUpdownThreshold")]
-        public Output<int> SwitchUpdownThreshold { get; private set; } = null!;
+        public Output<int?> SwitchUpdownThreshold { get; private set; } = null!;
 
         [Output("syntheticTest")]
         public Output<Outputs.SettingSyntheticTest?> SyntheticTest { get; private set; } = null!;
@@ -193,7 +196,7 @@ namespace Pulumi.JuniperMist.Site
         /// Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
         /// </summary>
         [Output("trackAnonymousDevices")]
-        public Output<bool> TrackAnonymousDevices { get; private set; } = null!;
+        public Output<bool?> TrackAnonymousDevices { get; private set; } = null!;
 
         /// <summary>
         /// AP Uplink port configuration
@@ -211,7 +214,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingVna?> Vna { get; private set; } = null!;
 
         /// <summary>
-        /// Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+        /// Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
         /// </summary>
         [Output("vsInstance")]
         public Output<ImmutableDictionary<string, Outputs.SettingVsInstance>?> VsInstance { get; private set; } = null!;
@@ -334,11 +337,14 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingCriticalUrlMonitoringArgs>? CriticalUrlMonitoring { get; set; }
 
         /// <summary>
-        /// By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
-        /// is desired, use the following
+        /// By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
+        /// type is desired, use the following
         /// </summary>
         [Input("deviceUpdownThreshold")]
         public Input<int>? DeviceUpdownThreshold { get; set; }
+
+        [Input("enableUnii4")]
+        public Input<bool>? EnableUnii4 { get; set; }
 
         /// <summary>
         /// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
@@ -414,7 +420,7 @@ namespace Pulumi.JuniperMist.Site
 
         /// <summary>
         /// Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-        /// window, there are more than Y distinct client encountring over X failures
+        /// window, there are more than Y distinct client encountering over X failures
         /// </summary>
         [Input("simpleAlert")]
         public Input<Inputs.SettingSimpleAlertArgs>? SimpleAlert { get; set; }
@@ -485,7 +491,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.SettingVsInstanceArgs>? _vsInstance;
 
         /// <summary>
-        /// Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+        /// Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
         /// </summary>
         public InputMap<Inputs.SettingVsInstanceArgs> VsInstance
         {
@@ -569,11 +575,14 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingCriticalUrlMonitoringGetArgs>? CriticalUrlMonitoring { get; set; }
 
         /// <summary>
-        /// By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
-        /// is desired, use the following
+        /// By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
+        /// type is desired, use the following
         /// </summary>
         [Input("deviceUpdownThreshold")]
         public Input<int>? DeviceUpdownThreshold { get; set; }
+
+        [Input("enableUnii4")]
+        public Input<bool>? EnableUnii4 { get; set; }
 
         /// <summary>
         /// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
@@ -649,7 +658,7 @@ namespace Pulumi.JuniperMist.Site
 
         /// <summary>
         /// Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-        /// window, there are more than Y distinct client encountring over X failures
+        /// window, there are more than Y distinct client encountering over X failures
         /// </summary>
         [Input("simpleAlert")]
         public Input<Inputs.SettingSimpleAlertGetArgs>? SimpleAlert { get; set; }
@@ -720,7 +729,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.SettingVsInstanceGetArgs>? _vsInstance;
 
         /// <summary>
-        /// Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+        /// Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
         /// </summary>
         public InputMap<Inputs.SettingVsInstanceGetArgs> VsInstance
         {

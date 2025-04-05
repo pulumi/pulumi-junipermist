@@ -14,12 +14,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GetNacEndpointsOrgUsermacResult
     {
         /// <summary>
-        /// Unique ID of the object instance in the Mist Organnization
+        /// Unique ID of the object instance in the Mist Organization
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Labels;
         /// <summary>
-        /// only non-local-admin MAC is accepted
+        /// Only non-local-admin MAC is accepted
         /// </summary>
         public readonly string Mac;
         public readonly string Name;

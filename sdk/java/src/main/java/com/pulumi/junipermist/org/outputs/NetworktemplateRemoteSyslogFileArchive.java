@@ -4,7 +4,6 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,11 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateRemoteSyslogFileArchive {
-    private @Nullable Integer files;
+    private @Nullable String files;
     private @Nullable String size;
 
     private NetworktemplateRemoteSyslogFileArchive() {}
-    public Optional<Integer> files() {
+    public Optional<String> files() {
         return Optional.ofNullable(this.files);
     }
     public Optional<String> size() {
@@ -32,7 +31,7 @@ public final class NetworktemplateRemoteSyslogFileArchive {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer files;
+        private @Nullable String files;
         private @Nullable String size;
         public Builder() {}
         public Builder(NetworktemplateRemoteSyslogFileArchive defaults) {
@@ -42,7 +41,7 @@ public final class NetworktemplateRemoteSyslogFileArchive {
         }
 
         @CustomType.Setter
-        public Builder files(@Nullable Integer files) {
+        public Builder files(@Nullable String files) {
 
             this.files = files;
             return this;

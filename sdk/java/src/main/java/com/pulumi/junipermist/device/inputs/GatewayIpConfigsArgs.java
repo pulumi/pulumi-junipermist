@@ -5,7 +5,6 @@ package com.pulumi.junipermist.device.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,18 +16,18 @@ public final class GatewayIpConfigsArgs extends com.pulumi.resources.ResourceArg
 
     public static final GatewayIpConfigsArgs Empty = new GatewayIpConfigsArgs();
 
-    @Import(name="ip", required=true)
-    private Output<String> ip;
+    @Import(name="ip")
+    private @Nullable Output<String> ip;
 
-    public Output<String> ip() {
-        return this.ip;
+    public Optional<Output<String>> ip() {
+        return Optional.ofNullable(this.ip);
     }
 
-    @Import(name="netmask", required=true)
-    private Output<String> netmask;
+    @Import(name="netmask")
+    private @Nullable Output<String> netmask;
 
-    public Output<String> netmask() {
-        return this.netmask;
+    public Optional<Output<String>> netmask() {
+        return Optional.ofNullable(this.netmask);
     }
 
     /**
@@ -88,7 +87,7 @@ public final class GatewayIpConfigsArgs extends com.pulumi.resources.ResourceArg
             $ = new GatewayIpConfigsArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder ip(Output<String> ip) {
+        public Builder ip(@Nullable Output<String> ip) {
             $.ip = ip;
             return this;
         }
@@ -97,7 +96,7 @@ public final class GatewayIpConfigsArgs extends com.pulumi.resources.ResourceArg
             return ip(Output.of(ip));
         }
 
-        public Builder netmask(Output<String> netmask) {
+        public Builder netmask(@Nullable Output<String> netmask) {
             $.netmask = netmask;
             return this;
         }
@@ -159,12 +158,6 @@ public final class GatewayIpConfigsArgs extends com.pulumi.resources.ResourceArg
         }
 
         public GatewayIpConfigsArgs build() {
-            if ($.ip == null) {
-                throw new MissingRequiredPropertyException("GatewayIpConfigsArgs", "ip");
-            }
-            if ($.netmask == null) {
-                throw new MissingRequiredPropertyException("GatewayIpConfigsArgs", "netmask");
-            }
             return $;
         }
     }

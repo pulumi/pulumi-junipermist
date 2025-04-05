@@ -17,14 +17,14 @@ public final class GatewaytemplateServicePolicyAntivirusArgs extends com.pulumi.
     public static final GatewaytemplateServicePolicyAntivirusArgs Empty = new GatewaytemplateServicePolicyAntivirusArgs();
 
     /**
-     * org-level AV Profile can be used, this takes precendence over &#39;profile&#39;
+     * org-level AV Profile can be used, this takes precedence over &#39;profile&#39;
      * 
      */
     @Import(name="avprofileId")
     private @Nullable Output<String> avprofileId;
 
     /**
-     * @return org-level AV Profile can be used, this takes precendence over &#39;profile&#39;
+     * @return org-level AV Profile can be used, this takes precedence over &#39;profile&#39;
      * 
      */
     public Optional<Output<String>> avprofileId() {
@@ -80,7 +80,7 @@ public final class GatewaytemplateServicePolicyAntivirusArgs extends com.pulumi.
         }
 
         /**
-         * @param avprofileId org-level AV Profile can be used, this takes precendence over &#39;profile&#39;
+         * @param avprofileId org-level AV Profile can be used, this takes precedence over &#39;profile&#39;
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GatewaytemplateServicePolicyAntivirusArgs extends com.pulumi.
         }
 
         /**
-         * @param avprofileId org-level AV Profile can be used, this takes precendence over &#39;profile&#39;
+         * @param avprofileId org-level AV Profile can be used, this takes precedence over &#39;profile&#39;
          * 
          * @return builder
          * 

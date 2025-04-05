@@ -29,10 +29,25 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> Name { get; private set; } = null!;
 
         [Output("orgId")]
-        public Output<string> OrgId { get; private set; } = null!;
+        public Output<string?> OrgId { get; private set; } = null!;
 
+        /// <summary>
+        /// Only if `type`==`hub_spoke`
+        /// </summary>
+        [Output("pathSelection")]
+        public Output<Outputs.VpnPathSelection?> PathSelection { get; private set; } = null!;
+
+        /// <summary>
+        /// For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+        /// </summary>
         [Output("paths")]
         public Output<ImmutableDictionary<string, Outputs.VpnPaths>> Paths { get; private set; } = null!;
+
+        /// <summary>
+        /// enum: `hub_spoke`, `mesh`
+        /// </summary>
+        [Output("type")]
+        public Output<string?> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -84,16 +99,32 @@ namespace Pulumi.JuniperMist.Org
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("orgId", required: true)]
-        public Input<string> OrgId { get; set; } = null!;
+        [Input("orgId")]
+        public Input<string>? OrgId { get; set; }
+
+        /// <summary>
+        /// Only if `type`==`hub_spoke`
+        /// </summary>
+        [Input("pathSelection")]
+        public Input<Inputs.VpnPathSelectionArgs>? PathSelection { get; set; }
 
         [Input("paths", required: true)]
         private InputMap<Inputs.VpnPathsArgs>? _paths;
+
+        /// <summary>
+        /// For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+        /// </summary>
         public InputMap<Inputs.VpnPathsArgs> Paths
         {
             get => _paths ?? (_paths = new InputMap<Inputs.VpnPathsArgs>());
             set => _paths = value;
         }
+
+        /// <summary>
+        /// enum: `hub_spoke`, `mesh`
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public VpnArgs()
         {
@@ -109,13 +140,29 @@ namespace Pulumi.JuniperMist.Org
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
+        /// <summary>
+        /// Only if `type`==`hub_spoke`
+        /// </summary>
+        [Input("pathSelection")]
+        public Input<Inputs.VpnPathSelectionGetArgs>? PathSelection { get; set; }
+
         [Input("paths")]
         private InputMap<Inputs.VpnPathsGetArgs>? _paths;
+
+        /// <summary>
+        /// For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+        /// </summary>
         public InputMap<Inputs.VpnPathsGetArgs> Paths
         {
             get => _paths ?? (_paths = new InputMap<Inputs.VpnPathsGetArgs>());
             set => _paths = value;
         }
+
+        /// <summary>
+        /// enum: `hub_spoke`, `mesh`
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public VpnState()
         {

@@ -37,9 +37,10 @@ type Gatewaytemplate struct {
 	DnsServers pulumi.StringArrayOutput `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes pulumi.StringArrayOutput `pulumi:"dnsSuffixes"`
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes GatewaytemplateExtraRoutesMapOutput `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+	// "{{myvar}}")
 	ExtraRoutes6 GatewaytemplateExtraRoutes6MapOutput `pulumi:"extraRoutes6"`
 	// Property key is the profile name
 	IdpProfiles GatewaytemplateIdpProfilesMapOutput `pulumi:"idpProfiles"`
@@ -115,9 +116,10 @@ type gatewaytemplateState struct {
 	DnsServers []string `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes map[string]GatewaytemplateExtraRoutes `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+	// "{{myvar}}")
 	ExtraRoutes6 map[string]GatewaytemplateExtraRoutes6 `pulumi:"extraRoutes6"`
 	// Property key is the profile name
 	IdpProfiles map[string]GatewaytemplateIdpProfiles `pulumi:"idpProfiles"`
@@ -161,9 +163,10 @@ type GatewaytemplateState struct {
 	DnsServers pulumi.StringArrayInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes pulumi.StringArrayInput
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes GatewaytemplateExtraRoutesMapInput
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+	// "{{myvar}}")
 	ExtraRoutes6 GatewaytemplateExtraRoutes6MapInput
 	// Property key is the profile name
 	IdpProfiles GatewaytemplateIdpProfilesMapInput
@@ -211,9 +214,10 @@ type gatewaytemplateArgs struct {
 	DnsServers []string `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes map[string]GatewaytemplateExtraRoutes `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+	// "{{myvar}}")
 	ExtraRoutes6 map[string]GatewaytemplateExtraRoutes6 `pulumi:"extraRoutes6"`
 	// Property key is the profile name
 	IdpProfiles map[string]GatewaytemplateIdpProfiles `pulumi:"idpProfiles"`
@@ -258,9 +262,10 @@ type GatewaytemplateArgs struct {
 	DnsServers pulumi.StringArrayInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes pulumi.StringArrayInput
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes GatewaytemplateExtraRoutesMapInput
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+	// "{{myvar}}")
 	ExtraRoutes6 GatewaytemplateExtraRoutes6MapInput
 	// Property key is the profile name
 	IdpProfiles GatewaytemplateIdpProfilesMapInput
@@ -408,12 +413,13 @@ func (o GatewaytemplateOutput) DnsSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.StringArrayOutput { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
 }
 
-// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 func (o GatewaytemplateOutput) ExtraRoutes() GatewaytemplateExtraRoutesMapOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateExtraRoutesMapOutput { return v.ExtraRoutes }).(GatewaytemplateExtraRoutesMapOutput)
 }
 
-// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+// "{{myvar}}")
 func (o GatewaytemplateOutput) ExtraRoutes6() GatewaytemplateExtraRoutes6MapOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateExtraRoutes6MapOutput { return v.ExtraRoutes6 }).(GatewaytemplateExtraRoutes6MapOutput)
 }

@@ -95,12 +95,18 @@ export class Webhook extends pulumi.CustomResource {
      */
     public readonly secret!: pulumi.Output<string | undefined>;
     /**
+     * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+     * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+     * Topics)
+     */
+    public readonly singleEventPerMessage!: pulumi.Output<boolean | undefined>;
+    /**
      * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if
      * the webhook receiver is configured to accept it.
      */
     public readonly splunkToken!: pulumi.Output<string | undefined>;
     /**
-     * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-updowns`, `device-events`, `mxedge-events`, `nac-accounting`, `nacEvents`
+     * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
      */
     public readonly topics!: pulumi.Output<string[]>;
     /**
@@ -138,6 +144,7 @@ export class Webhook extends pulumi.CustomResource {
             resourceInputs["oauth2Username"] = state ? state.oauth2Username : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["singleEventPerMessage"] = state ? state.singleEventPerMessage : undefined;
             resourceInputs["splunkToken"] = state ? state.splunkToken : undefined;
             resourceInputs["topics"] = state ? state.topics : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -166,6 +173,7 @@ export class Webhook extends pulumi.CustomResource {
             resourceInputs["oauth2Username"] = args ? args.oauth2Username : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
+            resourceInputs["singleEventPerMessage"] = args ? args.singleEventPerMessage : undefined;
             resourceInputs["splunkToken"] = args?.splunkToken ? pulumi.secret(args.splunkToken) : undefined;
             resourceInputs["topics"] = args ? args.topics : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -229,12 +237,18 @@ export interface WebhookState {
      */
     secret?: pulumi.Input<string>;
     /**
+     * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+     * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+     * Topics)
+     */
+    singleEventPerMessage?: pulumi.Input<boolean>;
+    /**
      * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if
      * the webhook receiver is configured to accept it.
      */
     splunkToken?: pulumi.Input<string>;
     /**
-     * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-updowns`, `device-events`, `mxedge-events`, `nac-accounting`, `nacEvents`
+     * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
      */
     topics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -298,12 +312,18 @@ export interface WebhookArgs {
      */
     secret?: pulumi.Input<string>;
     /**
+     * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+     * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+     * Topics)
+     */
+    singleEventPerMessage?: pulumi.Input<boolean>;
+    /**
      * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if
      * the webhook receiver is configured to accept it.
      */
     splunkToken?: pulumi.Input<string>;
     /**
-     * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-updowns`, `device-events`, `mxedge-events`, `nac-accounting`, `nacEvents`
+     * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
      */
     topics: pulumi.Input<pulumi.Input<string>[]>;
     /**

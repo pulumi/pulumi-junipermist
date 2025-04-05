@@ -5,7 +5,7 @@ package com.pulumi.junipermist.site.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.junipermist.site.outputs.NetworktemplateOspfAreasOspfNetworks;
+import com.pulumi.junipermist.site.outputs.NetworktemplateOspfAreasNetworks;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateOspfAreas {
     private @Nullable Boolean includeLoopback;
-    private Map<String,NetworktemplateOspfAreasOspfNetworks> ospfNetworks;
+    private Map<String,NetworktemplateOspfAreasNetworks> networks;
     /**
      * @return OSPF type. enum: `default`, `nssa`, `stub`
      * 
@@ -27,8 +27,8 @@ public final class NetworktemplateOspfAreas {
     public Optional<Boolean> includeLoopback() {
         return Optional.ofNullable(this.includeLoopback);
     }
-    public Map<String,NetworktemplateOspfAreasOspfNetworks> ospfNetworks() {
-        return this.ospfNetworks;
+    public Map<String,NetworktemplateOspfAreasNetworks> networks() {
+        return this.networks;
     }
     /**
      * @return OSPF type. enum: `default`, `nssa`, `stub`
@@ -48,13 +48,13 @@ public final class NetworktemplateOspfAreas {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean includeLoopback;
-        private Map<String,NetworktemplateOspfAreasOspfNetworks> ospfNetworks;
+        private Map<String,NetworktemplateOspfAreasNetworks> networks;
         private @Nullable String type;
         public Builder() {}
         public Builder(NetworktemplateOspfAreas defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.includeLoopback = defaults.includeLoopback;
-    	      this.ospfNetworks = defaults.ospfNetworks;
+    	      this.networks = defaults.networks;
     	      this.type = defaults.type;
         }
 
@@ -65,11 +65,11 @@ public final class NetworktemplateOspfAreas {
             return this;
         }
         @CustomType.Setter
-        public Builder ospfNetworks(Map<String,NetworktemplateOspfAreasOspfNetworks> ospfNetworks) {
-            if (ospfNetworks == null) {
-              throw new MissingRequiredPropertyException("NetworktemplateOspfAreas", "ospfNetworks");
+        public Builder networks(Map<String,NetworktemplateOspfAreasNetworks> networks) {
+            if (networks == null) {
+              throw new MissingRequiredPropertyException("NetworktemplateOspfAreas", "networks");
             }
-            this.ospfNetworks = ospfNetworks;
+            this.networks = networks;
             return this;
         }
         @CustomType.Setter
@@ -81,7 +81,7 @@ public final class NetworktemplateOspfAreas {
         public NetworktemplateOspfAreas build() {
             final var _resultValue = new NetworktemplateOspfAreas();
             _resultValue.includeLoopback = includeLoopback;
-            _resultValue.ospfNetworks = ospfNetworks;
+            _resultValue.networks = networks;
             _resultValue.type = type;
             return _resultValue;
         }

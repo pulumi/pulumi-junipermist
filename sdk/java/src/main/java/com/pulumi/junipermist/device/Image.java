@@ -44,9 +44,17 @@ public class Image extends com.pulumi.resources.CustomResource {
     public Output<String> file() {
         return this.file;
     }
+    /**
+     * number of the image, between 1 and 3
+     * 
+     */
     @Export(name="imageNumber", refs={Integer.class}, tree="[0]")
     private Output<Integer> imageNumber;
 
+    /**
+     * @return number of the image, between 1 and 3
+     * 
+     */
     public Output<Integer> imageNumber() {
         return this.imageNumber;
     }

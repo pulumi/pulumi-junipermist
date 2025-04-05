@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class SettingVpnOptions {
     private @Nullable Integer asBase;
     /**
-     * @return equiring /12 or bigger to support 16 private IPs for 65535 gateways
+     * @return requiring /12 or bigger to support 16 private IPs for 65535 gateways
      * 
      */
     private @Nullable String stSubnet;
@@ -24,7 +24,7 @@ public final class SettingVpnOptions {
         return Optional.ofNullable(this.asBase);
     }
     /**
-     * @return equiring /12 or bigger to support 16 private IPs for 65535 gateways
+     * @return requiring /12 or bigger to support 16 private IPs for 65535 gateways
      * 
      */
     public Optional<String> stSubnet() {

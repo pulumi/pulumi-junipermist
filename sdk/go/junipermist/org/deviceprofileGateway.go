@@ -16,7 +16,7 @@ import (
 //
 // A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options. HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
 //
-// The Gateway Devide Profile can be assigned to a gateway with the `org.DeviceprofileAssign` resource.
+// The Gateway Device Profile can be assigned to a gateway with the `org.DeviceprofileAssign` resource.
 //
 // ## Import
 //
@@ -39,9 +39,10 @@ type DeviceprofileGateway struct {
 	DnsServers pulumi.StringArrayOutput `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes pulumi.StringArrayOutput `pulumi:"dnsSuffixes"`
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes DeviceprofileGatewayExtraRoutesMapOutput `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+	// "{{myvar}}")
 	ExtraRoutes6 DeviceprofileGatewayExtraRoutes6MapOutput `pulumi:"extraRoutes6"`
 	// Property key is the profile name
 	IdpProfiles DeviceprofileGatewayIdpProfilesMapOutput `pulumi:"idpProfiles"`
@@ -116,9 +117,10 @@ type deviceprofileGatewayState struct {
 	DnsServers []string `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes map[string]DeviceprofileGatewayExtraRoutes `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+	// "{{myvar}}")
 	ExtraRoutes6 map[string]DeviceprofileGatewayExtraRoutes6 `pulumi:"extraRoutes6"`
 	// Property key is the profile name
 	IdpProfiles map[string]DeviceprofileGatewayIdpProfiles `pulumi:"idpProfiles"`
@@ -161,9 +163,10 @@ type DeviceprofileGatewayState struct {
 	DnsServers pulumi.StringArrayInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes pulumi.StringArrayInput
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes DeviceprofileGatewayExtraRoutesMapInput
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+	// "{{myvar}}")
 	ExtraRoutes6 DeviceprofileGatewayExtraRoutes6MapInput
 	// Property key is the profile name
 	IdpProfiles DeviceprofileGatewayIdpProfilesMapInput
@@ -210,9 +213,10 @@ type deviceprofileGatewayArgs struct {
 	DnsServers []string `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes map[string]DeviceprofileGatewayExtraRoutes `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+	// "{{myvar}}")
 	ExtraRoutes6 map[string]DeviceprofileGatewayExtraRoutes6 `pulumi:"extraRoutes6"`
 	// Property key is the profile name
 	IdpProfiles map[string]DeviceprofileGatewayIdpProfiles `pulumi:"idpProfiles"`
@@ -254,9 +258,10 @@ type DeviceprofileGatewayArgs struct {
 	DnsServers pulumi.StringArrayInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes pulumi.StringArrayInput
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes DeviceprofileGatewayExtraRoutesMapInput
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+	// "{{myvar}}")
 	ExtraRoutes6 DeviceprofileGatewayExtraRoutes6MapInput
 	// Property key is the profile name
 	IdpProfiles DeviceprofileGatewayIdpProfilesMapInput
@@ -401,12 +406,13 @@ func (o DeviceprofileGatewayOutput) DnsSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.StringArrayOutput { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
 }
 
-// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 func (o DeviceprofileGatewayOutput) ExtraRoutes() DeviceprofileGatewayExtraRoutesMapOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayExtraRoutesMapOutput { return v.ExtraRoutes }).(DeviceprofileGatewayExtraRoutesMapOutput)
 }
 
-// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+// "{{myvar}}")
 func (o DeviceprofileGatewayOutput) ExtraRoutes6() DeviceprofileGatewayExtraRoutes6MapOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayExtraRoutes6MapOutput { return v.ExtraRoutes6 }).(DeviceprofileGatewayExtraRoutes6MapOutput)
 }

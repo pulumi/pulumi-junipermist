@@ -134,6 +134,14 @@ namespace Pulumi.JuniperMist.Site
         [Output("secret")]
         public Output<string?> Secret { get; private set; } = null!;
 
+        /// <summary>
+        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+        /// `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+        /// Topics)
+        /// </summary>
+        [Output("singleEventPerMessage")]
+        public Output<bool?> SingleEventPerMessage { get; private set; } = null!;
+
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
 
@@ -145,7 +153,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<string?> SplunkToken { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-updowns`, `device-events`, `discovered-raw-rssi`, `location`, `location_asset`, `location_centrak`, `location_client`, `location_sdk`, `location_unclient`, `mxedge-events`, `nac-accounting`, `nac_events`, `occupancy-alerts`, `rssizone`, `sdkclient_scan_data`, `site_sle`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
+        /// enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
         /// </summary>
         [Output("topics")]
         public Output<ImmutableArray<string>> Topics { get; private set; } = null!;
@@ -327,6 +335,14 @@ namespace Pulumi.JuniperMist.Site
             }
         }
 
+        /// <summary>
+        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+        /// `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+        /// Topics)
+        /// </summary>
+        [Input("singleEventPerMessage")]
+        public Input<bool>? SingleEventPerMessage { get; set; }
+
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
 
@@ -351,7 +367,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _topics;
 
         /// <summary>
-        /// enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-updowns`, `device-events`, `discovered-raw-rssi`, `location`, `location_asset`, `location_centrak`, `location_client`, `location_sdk`, `location_unclient`, `mxedge-events`, `nac-accounting`, `nac_events`, `occupancy-alerts`, `rssizone`, `sdkclient_scan_data`, `site_sle`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
+        /// enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
         /// </summary>
         public InputList<string> Topics
         {
@@ -493,6 +509,14 @@ namespace Pulumi.JuniperMist.Site
             }
         }
 
+        /// <summary>
+        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+        /// `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+        /// Topics)
+        /// </summary>
+        [Input("singleEventPerMessage")]
+        public Input<bool>? SingleEventPerMessage { get; set; }
+
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
@@ -517,7 +541,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _topics;
 
         /// <summary>
-        /// enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-updowns`, `device-events`, `discovered-raw-rssi`, `location`, `location_asset`, `location_centrak`, `location_client`, `location_sdk`, `location_unclient`, `mxedge-events`, `nac-accounting`, `nac_events`, `occupancy-alerts`, `rssizone`, `sdkclient_scan_data`, `site_sle`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
+        /// enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
         /// </summary>
         public InputList<string> Topics
         {

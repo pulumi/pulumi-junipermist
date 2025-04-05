@@ -11,19 +11,46 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNetworksOrgNetwork {
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
     private Double createdTime;
+    /**
+     * @return Unique ID of the object instance in the Mist Organization
+     * 
+     */
     private String id;
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
     private Double modifiedTime;
     private String name;
     private String orgId;
+    private String subnet;
+    private String subnet6;
+    private String vlanId;
 
     private GetNetworksOrgNetwork() {}
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
     public Double createdTime() {
         return this.createdTime;
     }
+    /**
+     * @return Unique ID of the object instance in the Mist Organization
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
     public Double modifiedTime() {
         return this.modifiedTime;
     }
@@ -32,6 +59,15 @@ public final class GetNetworksOrgNetwork {
     }
     public String orgId() {
         return this.orgId;
+    }
+    public String subnet() {
+        return this.subnet;
+    }
+    public String subnet6() {
+        return this.subnet6;
+    }
+    public String vlanId() {
+        return this.vlanId;
     }
 
     public static Builder builder() {
@@ -48,6 +84,9 @@ public final class GetNetworksOrgNetwork {
         private Double modifiedTime;
         private String name;
         private String orgId;
+        private String subnet;
+        private String subnet6;
+        private String vlanId;
         public Builder() {}
         public Builder(GetNetworksOrgNetwork defaults) {
     	      Objects.requireNonNull(defaults);
@@ -56,6 +95,9 @@ public final class GetNetworksOrgNetwork {
     	      this.modifiedTime = defaults.modifiedTime;
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
+    	      this.subnet = defaults.subnet;
+    	      this.subnet6 = defaults.subnet6;
+    	      this.vlanId = defaults.vlanId;
         }
 
         @CustomType.Setter
@@ -98,6 +140,30 @@ public final class GetNetworksOrgNetwork {
             this.orgId = orgId;
             return this;
         }
+        @CustomType.Setter
+        public Builder subnet(String subnet) {
+            if (subnet == null) {
+              throw new MissingRequiredPropertyException("GetNetworksOrgNetwork", "subnet");
+            }
+            this.subnet = subnet;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder subnet6(String subnet6) {
+            if (subnet6 == null) {
+              throw new MissingRequiredPropertyException("GetNetworksOrgNetwork", "subnet6");
+            }
+            this.subnet6 = subnet6;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vlanId(String vlanId) {
+            if (vlanId == null) {
+              throw new MissingRequiredPropertyException("GetNetworksOrgNetwork", "vlanId");
+            }
+            this.vlanId = vlanId;
+            return this;
+        }
         public GetNetworksOrgNetwork build() {
             final var _resultValue = new GetNetworksOrgNetwork();
             _resultValue.createdTime = createdTime;
@@ -105,6 +171,9 @@ public final class GetNetworksOrgNetwork {
             _resultValue.modifiedTime = modifiedTime;
             _resultValue.name = name;
             _resultValue.orgId = orgId;
+            _resultValue.subnet = subnet;
+            _resultValue.subnet6 = subnet6;
+            _resultValue.vlanId = vlanId;
             return _resultValue;
         }
     }

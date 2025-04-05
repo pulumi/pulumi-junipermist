@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchStpConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Switch STP priority: from `0k` to `15k`
+        /// Switch STP priority. Range [0, 4k, 8k.. 60k] in steps of 4k. Bridge priority applies to both VSTP and RSTP.
         /// </summary>
         [Input("bridgePriority")]
         public Input<string>? BridgePriority { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options. HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
     /// 
-    /// The Gateway Devide Profile can be assigned to a gateway with the `junipermist.org.DeviceprofileAssign` resource.
+    /// The Gateway Device Profile can be assigned to a gateway with the `junipermist.org.DeviceprofileAssign` resource.
     /// 
     /// ## Import
     /// 
@@ -57,13 +57,14 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableArray<string>> DnsSuffixes { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         /// </summary>
         [Output("extraRoutes")]
         public Output<ImmutableDictionary<string, Outputs.DeviceprofileGatewayExtraRoutes>?> ExtraRoutes { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+        /// "{{myvar}}")
         /// </summary>
         [Output("extraRoutes6")]
         public Output<ImmutableDictionary<string, Outputs.DeviceprofileGatewayExtraRoutes6>?> ExtraRoutes6 { get; private set; } = null!;
@@ -256,7 +257,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileGatewayExtraRoutesArgs>? _extraRoutes;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayExtraRoutesArgs> ExtraRoutes
         {
@@ -268,7 +269,8 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileGatewayExtraRoutes6Args>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+        /// "{{myvar}}")
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayExtraRoutes6Args> ExtraRoutes6
         {
@@ -477,7 +479,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileGatewayExtraRoutesGetArgs>? _extraRoutes;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayExtraRoutesGetArgs> ExtraRoutes
         {
@@ -489,7 +491,8 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileGatewayExtraRoutes6GetArgs>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+        /// "{{myvar}}")
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayExtraRoutes6GetArgs> ExtraRoutes6
         {
