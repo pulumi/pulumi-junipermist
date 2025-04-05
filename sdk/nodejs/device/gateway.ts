@@ -92,11 +92,12 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly dnsSuffixes!: pulumi.Output<string[] | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     * Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
     public readonly extraRoutes!: pulumi.Output<{[key: string]: outputs.device.GatewayExtraRoutes} | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+     * "{{myvar}}")
      */
     public readonly extraRoutes6!: pulumi.Output<{[key: string]: outputs.device.GatewayExtraRoutes6} | undefined>;
     /**
@@ -310,11 +311,12 @@ export interface GatewayState {
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     * Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes>}>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+     * "{{myvar}}")
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes6>}>;
     /**
@@ -422,11 +424,12 @@ export interface GatewayArgs {
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     * Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes>}>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+     * "{{myvar}}")
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes6>}>;
     /**

@@ -13,12 +13,12 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class NetworktemplateRemoteSyslogArchive
     {
-        public readonly int? Files;
+        public readonly string? Files;
         public readonly string? Size;
 
         [OutputConstructor]
         private NetworktemplateRemoteSyslogArchive(
-            int? files,
+            string? files,
 
             string? size)
         {

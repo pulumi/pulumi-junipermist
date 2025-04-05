@@ -122,6 +122,12 @@ export class Webhook extends pulumi.CustomResource {
      * Only if `type`=`http-post`
      */
     public readonly secret!: pulumi.Output<string | undefined>;
+    /**
+     * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+     * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+     * Topics)
+     */
+    public readonly singleEventPerMessage!: pulumi.Output<boolean | undefined>;
     public readonly siteId!: pulumi.Output<string>;
     /**
      * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if
@@ -129,7 +135,7 @@ export class Webhook extends pulumi.CustomResource {
      */
     public readonly splunkToken!: pulumi.Output<string | undefined>;
     /**
-     * enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-updowns`, `device-events`, `discovered-raw-rssi`, `location`, `locationAsset`, `locationCentrak`, `locationClient`, `locationSdk`, `locationUnclient`, `mxedge-events`, `nac-accounting`, `nacEvents`, `occupancy-alerts`, `rssizone`, `sdkclientScanData`, `siteSle`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
+     * enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
      */
     public readonly topics!: pulumi.Output<string[]>;
     /**
@@ -167,6 +173,7 @@ export class Webhook extends pulumi.CustomResource {
             resourceInputs["oauth2Username"] = state ? state.oauth2Username : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["singleEventPerMessage"] = state ? state.singleEventPerMessage : undefined;
             resourceInputs["siteId"] = state ? state.siteId : undefined;
             resourceInputs["splunkToken"] = state ? state.splunkToken : undefined;
             resourceInputs["topics"] = state ? state.topics : undefined;
@@ -195,6 +202,7 @@ export class Webhook extends pulumi.CustomResource {
             resourceInputs["oauth2TokenUrl"] = args ? args.oauth2TokenUrl : undefined;
             resourceInputs["oauth2Username"] = args ? args.oauth2Username : undefined;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
+            resourceInputs["singleEventPerMessage"] = args ? args.singleEventPerMessage : undefined;
             resourceInputs["siteId"] = args ? args.siteId : undefined;
             resourceInputs["splunkToken"] = args?.splunkToken ? pulumi.secret(args.splunkToken) : undefined;
             resourceInputs["topics"] = args ? args.topics : undefined;
@@ -259,6 +267,12 @@ export interface WebhookState {
      * Only if `type`=`http-post`
      */
     secret?: pulumi.Input<string>;
+    /**
+     * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+     * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+     * Topics)
+     */
+    singleEventPerMessage?: pulumi.Input<boolean>;
     siteId?: pulumi.Input<string>;
     /**
      * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if
@@ -266,7 +280,7 @@ export interface WebhookState {
      */
     splunkToken?: pulumi.Input<string>;
     /**
-     * enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-updowns`, `device-events`, `discovered-raw-rssi`, `location`, `locationAsset`, `locationCentrak`, `locationClient`, `locationSdk`, `locationUnclient`, `mxedge-events`, `nac-accounting`, `nacEvents`, `occupancy-alerts`, `rssizone`, `sdkclientScanData`, `siteSle`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
+     * enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
      */
     topics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -328,6 +342,12 @@ export interface WebhookArgs {
      * Only if `type`=`http-post`
      */
     secret?: pulumi.Input<string>;
+    /**
+     * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+     * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+     * Topics)
+     */
+    singleEventPerMessage?: pulumi.Input<boolean>;
     siteId: pulumi.Input<string>;
     /**
      * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if
@@ -335,7 +355,7 @@ export interface WebhookArgs {
      */
     splunkToken?: pulumi.Input<string>;
     /**
-     * enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-updowns`, `device-events`, `discovered-raw-rssi`, `location`, `locationAsset`, `locationCentrak`, `locationClient`, `locationSdk`, `locationUnclient`, `mxedge-events`, `nac-accounting`, `nacEvents`, `occupancy-alerts`, `rssizone`, `sdkclientScanData`, `siteSle`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
+     * enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
      */
     topics: pulumi.Input<pulumi.Input<string>[]>;
     /**

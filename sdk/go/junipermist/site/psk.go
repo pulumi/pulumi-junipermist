@@ -71,7 +71,7 @@ type Psk struct {
 	ExpireTime pulumi.IntOutput `pulumi:"expireTime"`
 	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
 	ExpiryNotificationTime pulumi.IntPtrOutput `pulumi:"expiryNotificationTime"`
-	// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+	// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
 	Mac  pulumi.StringPtrOutput `pulumi:"mac"`
 	Name pulumi.StringOutput    `pulumi:"name"`
 	Note pulumi.StringPtrOutput `pulumi:"note"`
@@ -149,7 +149,7 @@ type pskState struct {
 	ExpireTime *int `pulumi:"expireTime"`
 	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
 	ExpiryNotificationTime *int `pulumi:"expiryNotificationTime"`
-	// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+	// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
 	Mac  *string `pulumi:"mac"`
 	Name *string `pulumi:"name"`
 	Note *string `pulumi:"note"`
@@ -178,7 +178,7 @@ type PskState struct {
 	ExpireTime pulumi.IntPtrInput
 	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
 	ExpiryNotificationTime pulumi.IntPtrInput
-	// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+	// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
 	Mac  pulumi.StringPtrInput
 	Name pulumi.StringPtrInput
 	Note pulumi.StringPtrInput
@@ -211,7 +211,7 @@ type pskArgs struct {
 	ExpireTime *int `pulumi:"expireTime"`
 	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
 	ExpiryNotificationTime *int `pulumi:"expiryNotificationTime"`
-	// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+	// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
 	Mac  *string `pulumi:"mac"`
 	Name *string `pulumi:"name"`
 	Note *string `pulumi:"note"`
@@ -240,7 +240,7 @@ type PskArgs struct {
 	ExpireTime pulumi.IntPtrInput
 	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
 	ExpiryNotificationTime pulumi.IntPtrInput
-	// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+	// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
 	Mac  pulumi.StringPtrInput
 	Name pulumi.StringPtrInput
 	Note pulumi.StringPtrInput
@@ -363,7 +363,7 @@ func (o PskOutput) ExpiryNotificationTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Psk) pulumi.IntPtrOutput { return v.ExpiryNotificationTime }).(pulumi.IntPtrOutput)
 }
 
-// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
 func (o PskOutput) Mac() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringPtrOutput { return v.Mac }).(pulumi.StringPtrOutput)
 }

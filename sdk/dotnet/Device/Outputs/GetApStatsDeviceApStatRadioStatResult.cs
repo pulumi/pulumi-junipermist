@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GetApStatsDeviceApStatRadioStatResult
     {
         /// <summary>
-        /// radio stat
+        /// Radio stat
         /// </summary>
         public readonly Outputs.GetApStatsDeviceApStatRadioStatBand24Result Band24;
         /// <summary>
-        /// radio stat
+        /// Radio stat
         /// </summary>
         public readonly Outputs.GetApStatsDeviceApStatRadioStatBand5Result Band5;
         /// <summary>
-        /// radio stat
+        /// Radio stat
         /// </summary>
         public readonly Outputs.GetApStatsDeviceApStatRadioStatBand6Result Band6;
 

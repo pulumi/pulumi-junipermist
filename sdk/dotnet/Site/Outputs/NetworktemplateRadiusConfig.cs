@@ -13,11 +13,16 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class NetworktemplateRadiusConfig
     {
+        public readonly bool? AcctImmediateUpdate;
         /// <summary>
         /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
         /// </summary>
         public readonly int? AcctInterimInterval;
         public readonly ImmutableArray<Outputs.NetworktemplateRadiusConfigAcctServer> AcctServers;
+        /// <summary>
+        /// enum: `ordered`, `unordered`
+        /// </summary>
+        public readonly string? AuthServerSelection;
         public readonly ImmutableArray<Outputs.NetworktemplateRadiusConfigAuthServer> AuthServers;
         /// <summary>
         /// Radius auth session retries
@@ -27,6 +32,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// Radius auth session timeout
         /// </summary>
         public readonly int? AuthServersTimeout;
+        public readonly bool? CoaEnabled;
+        public readonly string? CoaPort;
+        public readonly bool? FastDot1xTimers;
         /// <summary>
         /// Use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
         /// </summary>
@@ -38,9 +46,13 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
         [OutputConstructor]
         private NetworktemplateRadiusConfig(
+            bool? acctImmediateUpdate,
+
             int? acctInterimInterval,
 
             ImmutableArray<Outputs.NetworktemplateRadiusConfigAcctServer> acctServers,
+
+            string? authServerSelection,
 
             ImmutableArray<Outputs.NetworktemplateRadiusConfigAuthServer> authServers,
 
@@ -48,15 +60,26 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             int? authServersTimeout,
 
+            bool? coaEnabled,
+
+            string? coaPort,
+
+            bool? fastDot1xTimers,
+
             string? network,
 
             string? sourceIp)
         {
+            AcctImmediateUpdate = acctImmediateUpdate;
             AcctInterimInterval = acctInterimInterval;
             AcctServers = acctServers;
+            AuthServerSelection = authServerSelection;
             AuthServers = authServers;
             AuthServersRetries = authServersRetries;
             AuthServersTimeout = authServersTimeout;
+            CoaEnabled = coaEnabled;
+            CoaPort = coaPort;
+            FastDot1xTimers = fastDot1xTimers;
             Network = network;
             SourceIp = sourceIp;
         }

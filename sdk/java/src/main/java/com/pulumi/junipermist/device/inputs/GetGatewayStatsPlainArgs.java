@@ -17,14 +17,14 @@ public final class GetGatewayStatsPlainArgs extends com.pulumi.resources.InvokeA
     public static final GetGatewayStatsPlainArgs Empty = new GetGatewayStatsPlainArgs();
 
     /**
-     * duration like 7d, 2w
+     * Duration like 7d, 2w
      * 
      */
     @Import(name="duration")
     private @Nullable String duration;
 
     /**
-     * @return duration like 7d, 2w
+     * @return Duration like 7d, 2w
      * 
      */
     public Optional<String> duration() {
@@ -32,14 +32,14 @@ public final class GetGatewayStatsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * End datetime, can be epoch or relative time like -1d, -2h; now if not specified
      * 
      */
     @Import(name="end")
     private @Nullable Integer end;
 
     /**
-     * @return end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * @return End datetime, can be epoch or relative time like -1d, -2h; now if not specified
      * 
      */
     public Optional<Integer> end() {
@@ -68,23 +68,31 @@ public final class GetGatewayStatsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
      * 
      */
     @Import(name="start")
     private @Nullable Integer start;
 
     /**
-     * @return start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * @return Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
      * 
      */
     public Optional<Integer> start() {
         return Optional.ofNullable(this.start);
     }
 
+    /**
+     * enum: `all`, `connected`, `disconnected`
+     * 
+     */
     @Import(name="status")
     private @Nullable String status;
 
+    /**
+     * @return enum: `all`, `connected`, `disconnected`
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
@@ -120,7 +128,7 @@ public final class GetGatewayStatsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param duration duration like 7d, 2w
+         * @param duration Duration like 7d, 2w
          * 
          * @return builder
          * 
@@ -131,7 +139,7 @@ public final class GetGatewayStatsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param end end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+         * @param end End datetime, can be epoch or relative time like -1d, -2h; now if not specified
          * 
          * @return builder
          * 
@@ -157,7 +165,7 @@ public final class GetGatewayStatsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param start start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+         * @param start Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
          * 
          * @return builder
          * 
@@ -167,6 +175,12 @@ public final class GetGatewayStatsPlainArgs extends com.pulumi.resources.InvokeA
             return this;
         }
 
+        /**
+         * @param status enum: `all`, `connected`, `disconnected`
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable String status) {
             $.status = status;
             return this;

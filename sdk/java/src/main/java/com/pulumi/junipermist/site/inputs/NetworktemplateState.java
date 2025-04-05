@@ -72,6 +72,13 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.additionalConfigCmds);
     }
 
+    @Import(name="autoUpgradeLinecard")
+    private @Nullable Output<Boolean> autoUpgradeLinecard;
+
+    public Optional<Output<Boolean>> autoUpgradeLinecard() {
+        return Optional.ofNullable(this.autoUpgradeLinecard);
+    }
+
     @Import(name="dhcpSnooping")
     private @Nullable Output<NetworktemplateDhcpSnoopingArgs> dhcpSnooping;
 
@@ -124,9 +131,17 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.dnsSuffixes);
     }
 
+    /**
+     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * 
+     */
     @Import(name="extraRoutes")
     private @Nullable Output<Map<String,NetworktemplateExtraRoutesArgs>> extraRoutes;
 
+    /**
+     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * 
+     */
     public Optional<Output<Map<String,NetworktemplateExtraRoutesArgs>>> extraRoutes() {
         return Optional.ofNullable(this.extraRoutes);
     }
@@ -209,7 +224,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     /**
      * Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      * 
      */
     @Import(name="portMirroring")
@@ -218,7 +233,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     /**
      * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      * 
      */
     public Optional<Output<Map<String,NetworktemplatePortMirroringArgs>>> portMirroring() {
@@ -278,14 +293,14 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Unique ID of the object instance in the Mist Organnization
+     * Unique ID of the object instance in the Mist Organization
      * 
      */
     @Import(name="siteId")
     private @Nullable Output<String> siteId;
 
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     public Optional<Output<String>> siteId() {
@@ -300,14 +315,14 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Defines custom switch configuration based on different criterias
+     * Defines custom switch configuration based on different criteria
      * 
      */
     @Import(name="switchMatching")
     private @Nullable Output<NetworktemplateSwitchMatchingArgs> switchMatching;
 
     /**
-     * @return Defines custom switch configuration based on different criterias
+     * @return Defines custom switch configuration based on different criteria
      * 
      */
     public Optional<Output<NetworktemplateSwitchMatchingArgs>> switchMatching() {
@@ -357,6 +372,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         this.aclPolicies = $.aclPolicies;
         this.aclTags = $.aclTags;
         this.additionalConfigCmds = $.additionalConfigCmds;
+        this.autoUpgradeLinecard = $.autoUpgradeLinecard;
         this.dhcpSnooping = $.dhcpSnooping;
         this.disabledSystemDefinedPortUsages = $.disabledSystemDefinedPortUsages;
         this.dnsServers = $.dnsServers;
@@ -463,6 +479,15 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
             return additionalConfigCmds(List.of(additionalConfigCmds));
         }
 
+        public Builder autoUpgradeLinecard(@Nullable Output<Boolean> autoUpgradeLinecard) {
+            $.autoUpgradeLinecard = autoUpgradeLinecard;
+            return this;
+        }
+
+        public Builder autoUpgradeLinecard(Boolean autoUpgradeLinecard) {
+            return autoUpgradeLinecard(Output.of(autoUpgradeLinecard));
+        }
+
         public Builder dhcpSnooping(@Nullable Output<NetworktemplateDhcpSnoopingArgs> dhcpSnooping) {
             $.dhcpSnooping = dhcpSnooping;
             return this;
@@ -565,11 +590,23 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
             return dnsSuffixes(List.of(dnsSuffixes));
         }
 
+        /**
+         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraRoutes(@Nullable Output<Map<String,NetworktemplateExtraRoutesArgs>> extraRoutes) {
             $.extraRoutes = extraRoutes;
             return this;
         }
 
+        /**
+         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraRoutes(Map<String,NetworktemplateExtraRoutesArgs> extraRoutes) {
             return extraRoutes(Output.of(extraRoutes));
         }
@@ -692,7 +729,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         /**
          * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
          * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-         * maximum 4 port mirrorings is allowed
+         * maximum 4 mirroring ports is allowed
          * 
          * @return builder
          * 
@@ -705,7 +742,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         /**
          * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
          * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-         * maximum 4 port mirrorings is allowed
+         * maximum 4 mirroring ports is allowed
          * 
          * @return builder
          * 
@@ -787,7 +824,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param siteId Unique ID of the object instance in the Mist Organnization
+         * @param siteId Unique ID of the object instance in the Mist Organization
          * 
          * @return builder
          * 
@@ -798,7 +835,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param siteId Unique ID of the object instance in the Mist Organnization
+         * @param siteId Unique ID of the object instance in the Mist Organization
          * 
          * @return builder
          * 
@@ -817,7 +854,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param switchMatching Defines custom switch configuration based on different criterias
+         * @param switchMatching Defines custom switch configuration based on different criteria
          * 
          * @return builder
          * 
@@ -828,7 +865,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param switchMatching Defines custom switch configuration based on different criterias
+         * @param switchMatching Defines custom switch configuration based on different criteria
          * 
          * @return builder
          * 

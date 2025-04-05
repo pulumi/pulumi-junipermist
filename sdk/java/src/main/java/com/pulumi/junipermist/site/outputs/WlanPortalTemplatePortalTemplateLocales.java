@@ -4,6 +4,7 @@
 package com.pulumi.junipermist.site.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,6 +151,26 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      * 
      */
     private @Nullable String field4label;
+    /**
+     * @return label of the link to go to /marketing_policy
+     * 
+     */
+    private @Nullable String marketingPolicyLink;
+    /**
+     * @return Whether marketing policy optin is enabled
+     * 
+     */
+    private @Nullable Boolean marketingPolicyOptIn;
+    /**
+     * @return label for marketing optin
+     * 
+     */
+    private @Nullable String marketingPolicyOptInLabel;
+    /**
+     * @return marketing policy text
+     * 
+     */
+    private @Nullable String marketingPolicyOptInText;
     private @Nullable String message;
     /**
      * @return Error message when name not provided
@@ -219,7 +240,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      */
     private @Nullable String requiredFieldLabel;
     /**
-     * @return Label of the button to /signin
+     * @return Label of the button to signin
      * 
      */
     private @Nullable String signInLabel;
@@ -560,6 +581,34 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     public Optional<String> field4label() {
         return Optional.ofNullable(this.field4label);
     }
+    /**
+     * @return label of the link to go to /marketing_policy
+     * 
+     */
+    public Optional<String> marketingPolicyLink() {
+        return Optional.ofNullable(this.marketingPolicyLink);
+    }
+    /**
+     * @return Whether marketing policy optin is enabled
+     * 
+     */
+    public Optional<Boolean> marketingPolicyOptIn() {
+        return Optional.ofNullable(this.marketingPolicyOptIn);
+    }
+    /**
+     * @return label for marketing optin
+     * 
+     */
+    public Optional<String> marketingPolicyOptInLabel() {
+        return Optional.ofNullable(this.marketingPolicyOptInLabel);
+    }
+    /**
+     * @return marketing policy text
+     * 
+     */
+    public Optional<String> marketingPolicyOptInText() {
+        return Optional.ofNullable(this.marketingPolicyOptInText);
+    }
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
@@ -661,7 +710,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.requiredFieldLabel);
     }
     /**
-     * @return Label of the button to /signin
+     * @return Label of the button to signin
      * 
      */
     public Optional<String> signInLabel() {
@@ -922,6 +971,10 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         private @Nullable String field3label;
         private @Nullable String field4error;
         private @Nullable String field4label;
+        private @Nullable String marketingPolicyLink;
+        private @Nullable Boolean marketingPolicyOptIn;
+        private @Nullable String marketingPolicyOptInLabel;
+        private @Nullable String marketingPolicyOptInText;
         private @Nullable String message;
         private @Nullable String nameError;
         private @Nullable String nameLabel;
@@ -1019,6 +1072,10 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     	      this.field3label = defaults.field3label;
     	      this.field4error = defaults.field4error;
     	      this.field4label = defaults.field4label;
+    	      this.marketingPolicyLink = defaults.marketingPolicyLink;
+    	      this.marketingPolicyOptIn = defaults.marketingPolicyOptIn;
+    	      this.marketingPolicyOptInLabel = defaults.marketingPolicyOptInLabel;
+    	      this.marketingPolicyOptInText = defaults.marketingPolicyOptInText;
     	      this.message = defaults.message;
     	      this.nameError = defaults.nameError;
     	      this.nameLabel = defaults.nameLabel;
@@ -1288,6 +1345,30 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         public Builder field4label(@Nullable String field4label) {
 
             this.field4label = field4label;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder marketingPolicyLink(@Nullable String marketingPolicyLink) {
+
+            this.marketingPolicyLink = marketingPolicyLink;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder marketingPolicyOptIn(@Nullable Boolean marketingPolicyOptIn) {
+
+            this.marketingPolicyOptIn = marketingPolicyOptIn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder marketingPolicyOptInLabel(@Nullable String marketingPolicyOptInLabel) {
+
+            this.marketingPolicyOptInLabel = marketingPolicyOptInLabel;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder marketingPolicyOptInText(@Nullable String marketingPolicyOptInText) {
+
+            this.marketingPolicyOptInText = marketingPolicyOptInText;
             return this;
         }
         @CustomType.Setter
@@ -1681,6 +1762,10 @@ public final class WlanPortalTemplatePortalTemplateLocales {
             _resultValue.field3label = field3label;
             _resultValue.field4error = field4error;
             _resultValue.field4label = field4label;
+            _resultValue.marketingPolicyLink = marketingPolicyLink;
+            _resultValue.marketingPolicyOptIn = marketingPolicyOptIn;
+            _resultValue.marketingPolicyOptInLabel = marketingPolicyOptInLabel;
+            _resultValue.marketingPolicyOptInText = marketingPolicyOptInText;
             _resultValue.message = message;
             _resultValue.nameError = nameError;
             _resultValue.nameLabel = nameLabel;

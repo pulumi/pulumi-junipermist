@@ -12,11 +12,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingJuniperSrxGateway {
     private @Nullable String apiKey;
+    private @Nullable String apiPassword;
     private @Nullable String apiUrl;
 
     private SettingJuniperSrxGateway() {}
     public Optional<String> apiKey() {
         return Optional.ofNullable(this.apiKey);
+    }
+    public Optional<String> apiPassword() {
+        return Optional.ofNullable(this.apiPassword);
     }
     public Optional<String> apiUrl() {
         return Optional.ofNullable(this.apiUrl);
@@ -32,11 +36,13 @@ public final class SettingJuniperSrxGateway {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String apiKey;
+        private @Nullable String apiPassword;
         private @Nullable String apiUrl;
         public Builder() {}
         public Builder(SettingJuniperSrxGateway defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiKey = defaults.apiKey;
+    	      this.apiPassword = defaults.apiPassword;
     	      this.apiUrl = defaults.apiUrl;
         }
 
@@ -44,6 +50,12 @@ public final class SettingJuniperSrxGateway {
         public Builder apiKey(@Nullable String apiKey) {
 
             this.apiKey = apiKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder apiPassword(@Nullable String apiPassword) {
+
+            this.apiPassword = apiPassword;
             return this;
         }
         @CustomType.Setter
@@ -55,6 +67,7 @@ public final class SettingJuniperSrxGateway {
         public SettingJuniperSrxGateway build() {
             final var _resultValue = new SettingJuniperSrxGateway();
             _resultValue.apiKey = apiKey;
+            _resultValue.apiPassword = apiPassword;
             _resultValue.apiUrl = apiUrl;
             return _resultValue;
         }

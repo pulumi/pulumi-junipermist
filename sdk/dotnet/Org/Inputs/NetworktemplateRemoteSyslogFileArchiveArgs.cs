@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NetworktemplateRemoteSyslogFileArchiveArgs : global::Pulumi.ResourceArgs
     {
         [Input("files")]
-        public Input<int>? Files { get; set; }
+        public Input<string>? Files { get; set; }
 
         [Input("size")]
         public Input<string>? Size { get; set; }

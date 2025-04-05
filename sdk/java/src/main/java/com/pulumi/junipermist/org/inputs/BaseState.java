@@ -55,14 +55,14 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * name of the msp the org belongs to
+     * Name of the msp the org belongs to
      * 
      */
     @Import(name="mspName")
     private @Nullable Output<String> mspName;
 
     /**
-     * @return name of the msp the org belongs to
+     * @return Name of the msp the org belongs to
      * 
      */
     public Optional<Output<String>> mspName() {
@@ -170,7 +170,7 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mspName name of the msp the org belongs to
+         * @param mspName Name of the msp the org belongs to
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mspName name of the msp the org belongs to
+         * @param mspName Name of the msp the org belongs to
          * 
          * @return builder
          * 

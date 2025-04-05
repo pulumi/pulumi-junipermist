@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This resource manages the NAC Rules (Auth Policies).
  *
- * A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+ * A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
  *
  * ## Import
  *
@@ -54,18 +54,18 @@ export class Nacrule extends pulumi.CustomResource {
      */
     public readonly action!: pulumi.Output<string>;
     /**
-     * all optional, this goes into Access-Accept
+     * All optional, this goes into Access-Accept
      */
     public readonly applyTags!: pulumi.Output<string[]>;
     /**
-     * enabled or not
+     * Enabled or not
      */
     public readonly enabled!: pulumi.Output<boolean>;
     public readonly matching!: pulumi.Output<outputs.org.NacruleMatching | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly notMatching!: pulumi.Output<outputs.org.NacruleNotMatching | undefined>;
     /**
-     * the order of the rule, lower value implies higher priority
+     * Order of the rule, lower value implies higher priority
      */
     public readonly order!: pulumi.Output<number>;
     public readonly orgId!: pulumi.Output<string>;
@@ -125,18 +125,18 @@ export interface NacruleState {
      */
     action?: pulumi.Input<string>;
     /**
-     * all optional, this goes into Access-Accept
+     * All optional, this goes into Access-Accept
      */
     applyTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * enabled or not
+     * Enabled or not
      */
     enabled?: pulumi.Input<boolean>;
     matching?: pulumi.Input<inputs.org.NacruleMatching>;
     name?: pulumi.Input<string>;
     notMatching?: pulumi.Input<inputs.org.NacruleNotMatching>;
     /**
-     * the order of the rule, lower value implies higher priority
+     * Order of the rule, lower value implies higher priority
      */
     order?: pulumi.Input<number>;
     orgId?: pulumi.Input<string>;
@@ -151,18 +151,18 @@ export interface NacruleArgs {
      */
     action: pulumi.Input<string>;
     /**
-     * all optional, this goes into Access-Accept
+     * All optional, this goes into Access-Accept
      */
     applyTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * enabled or not
+     * Enabled or not
      */
     enabled?: pulumi.Input<boolean>;
     matching?: pulumi.Input<inputs.org.NacruleMatching>;
     name?: pulumi.Input<string>;
     notMatching?: pulumi.Input<inputs.org.NacruleNotMatching>;
     /**
-     * the order of the rule, lower value implies higher priority
+     * Order of the rule, lower value implies higher priority
      */
     order: pulumi.Input<number>;
     orgId: pulumi.Input<string>;

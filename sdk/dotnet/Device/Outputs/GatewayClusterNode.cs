@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayClusterNode
     {
         /// <summary>
-        /// Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+        /// Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
         /// </summary>
         public readonly string Mac;
 

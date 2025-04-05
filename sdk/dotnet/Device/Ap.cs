@@ -102,6 +102,9 @@ namespace Pulumi.JuniperMist.Device
         [Output("ipConfig")]
         public Output<Outputs.ApIpConfig?> IpConfig { get; private set; } = null!;
 
+        [Output("lacpConfig")]
+        public Output<Outputs.ApLacpConfig?> LacpConfig { get; private set; } = null!;
+
         /// <summary>
         /// LED AP settings
         /// </summary>
@@ -336,6 +339,9 @@ namespace Pulumi.JuniperMist.Device
         [Input("ipConfig")]
         public Input<Inputs.ApIpConfigArgs>? IpConfig { get; set; }
 
+        [Input("lacpConfig")]
+        public Input<Inputs.ApLacpConfigArgs>? LacpConfig { get; set; }
+
         /// <summary>
         /// LED AP settings
         /// </summary>
@@ -523,6 +529,9 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Input("ipConfig")]
         public Input<Inputs.ApIpConfigGetArgs>? IpConfig { get; set; }
+
+        [Input("lacpConfig")]
+        public Input<Inputs.ApLacpConfigGetArgs>? LacpConfig { get; set; }
 
         /// <summary>
         /// LED AP settings

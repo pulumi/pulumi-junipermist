@@ -36,7 +36,7 @@ public final class SwitchLocalPortConfig {
      * @return Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
-    private @Nullable Boolean bypassAuthWhenServerDownForUnkownClient;
+    private @Nullable Boolean bypassAuthWhenServerDownForUnknownClient;
     private @Nullable String description;
     /**
      * @return Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
@@ -135,10 +135,10 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable String portNetwork;
     /**
-     * @return Only if `port_auth`=`dot1x` reauthentication interval range
+     * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
      * 
      */
-    private @Nullable Integer reauthInterval;
+    private @Nullable String reauthInterval;
     /**
      * @return Only if `port_auth`==`dot1x` sets server fail fallback vlan
      * 
@@ -211,8 +211,8 @@ public final class SwitchLocalPortConfig {
      * @return Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
-    public Optional<Boolean> bypassAuthWhenServerDownForUnkownClient() {
-        return Optional.ofNullable(this.bypassAuthWhenServerDownForUnkownClient);
+    public Optional<Boolean> bypassAuthWhenServerDownForUnknownClient() {
+        return Optional.ofNullable(this.bypassAuthWhenServerDownForUnknownClient);
     }
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
@@ -354,10 +354,10 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.portNetwork);
     }
     /**
-     * @return Only if `port_auth`=`dot1x` reauthentication interval range
+     * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
      * 
      */
-    public Optional<Integer> reauthInterval() {
+    public Optional<String> reauthInterval() {
         return Optional.ofNullable(this.reauthInterval);
     }
     /**
@@ -436,7 +436,7 @@ public final class SwitchLocalPortConfig {
         private @Nullable Boolean allowDhcpd;
         private @Nullable Boolean allowMultipleSupplicants;
         private @Nullable Boolean bypassAuthWhenServerDown;
-        private @Nullable Boolean bypassAuthWhenServerDownForUnkownClient;
+        private @Nullable Boolean bypassAuthWhenServerDownForUnknownClient;
         private @Nullable String description;
         private @Nullable Boolean disableAutoneg;
         private @Nullable Boolean disabled;
@@ -458,7 +458,7 @@ public final class SwitchLocalPortConfig {
         private @Nullable Boolean poeDisabled;
         private @Nullable String portAuth;
         private @Nullable String portNetwork;
-        private @Nullable Integer reauthInterval;
+        private @Nullable String reauthInterval;
         private @Nullable String serverFailNetwork;
         private @Nullable String serverRejectNetwork;
         private @Nullable String speed;
@@ -476,7 +476,7 @@ public final class SwitchLocalPortConfig {
     	      this.allowDhcpd = defaults.allowDhcpd;
     	      this.allowMultipleSupplicants = defaults.allowMultipleSupplicants;
     	      this.bypassAuthWhenServerDown = defaults.bypassAuthWhenServerDown;
-    	      this.bypassAuthWhenServerDownForUnkownClient = defaults.bypassAuthWhenServerDownForUnkownClient;
+    	      this.bypassAuthWhenServerDownForUnknownClient = defaults.bypassAuthWhenServerDownForUnknownClient;
     	      this.description = defaults.description;
     	      this.disableAutoneg = defaults.disableAutoneg;
     	      this.disabled = defaults.disabled;
@@ -536,9 +536,9 @@ public final class SwitchLocalPortConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder bypassAuthWhenServerDownForUnkownClient(@Nullable Boolean bypassAuthWhenServerDownForUnkownClient) {
+        public Builder bypassAuthWhenServerDownForUnknownClient(@Nullable Boolean bypassAuthWhenServerDownForUnknownClient) {
 
-            this.bypassAuthWhenServerDownForUnkownClient = bypassAuthWhenServerDownForUnkownClient;
+            this.bypassAuthWhenServerDownForUnknownClient = bypassAuthWhenServerDownForUnknownClient;
             return this;
         }
         @CustomType.Setter
@@ -674,7 +674,7 @@ public final class SwitchLocalPortConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder reauthInterval(@Nullable Integer reauthInterval) {
+        public Builder reauthInterval(@Nullable String reauthInterval) {
 
             this.reauthInterval = reauthInterval;
             return this;
@@ -747,7 +747,7 @@ public final class SwitchLocalPortConfig {
             _resultValue.allowDhcpd = allowDhcpd;
             _resultValue.allowMultipleSupplicants = allowMultipleSupplicants;
             _resultValue.bypassAuthWhenServerDown = bypassAuthWhenServerDown;
-            _resultValue.bypassAuthWhenServerDownForUnkownClient = bypassAuthWhenServerDownForUnkownClient;
+            _resultValue.bypassAuthWhenServerDownForUnknownClient = bypassAuthWhenServerDownForUnknownClient;
             _resultValue.description = description;
             _resultValue.disableAutoneg = disableAutoneg;
             _resultValue.disabled = disabled;

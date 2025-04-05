@@ -26,9 +26,14 @@ import (
 type Vpn struct {
 	pulumi.CustomResourceState
 
-	Name  pulumi.StringOutput `pulumi:"name"`
-	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	Paths VpnPathsMapOutput   `pulumi:"paths"`
+	Name  pulumi.StringOutput    `pulumi:"name"`
+	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
+	// Only if `type`==`hubSpoke`
+	PathSelection VpnPathSelectionPtrOutput `pulumi:"pathSelection"`
+	// For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+	Paths VpnPathsMapOutput `pulumi:"paths"`
+	// enum: `hubSpoke`, `mesh`
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
 // NewVpn registers a new resource with the given unique name, arguments, and options.
@@ -38,9 +43,6 @@ func NewVpn(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.OrgId == nil {
-		return nil, errors.New("invalid value for required argument 'OrgId'")
-	}
 	if args.Paths == nil {
 		return nil, errors.New("invalid value for required argument 'Paths'")
 	}
@@ -67,15 +69,25 @@ func GetVpn(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Vpn resources.
 type vpnState struct {
-	Name  *string             `pulumi:"name"`
-	OrgId *string             `pulumi:"orgId"`
+	Name  *string `pulumi:"name"`
+	OrgId *string `pulumi:"orgId"`
+	// Only if `type`==`hubSpoke`
+	PathSelection *VpnPathSelection `pulumi:"pathSelection"`
+	// For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
 	Paths map[string]VpnPaths `pulumi:"paths"`
+	// enum: `hubSpoke`, `mesh`
+	Type *string `pulumi:"type"`
 }
 
 type VpnState struct {
 	Name  pulumi.StringPtrInput
 	OrgId pulumi.StringPtrInput
+	// Only if `type`==`hubSpoke`
+	PathSelection VpnPathSelectionPtrInput
+	// For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
 	Paths VpnPathsMapInput
+	// enum: `hubSpoke`, `mesh`
+	Type pulumi.StringPtrInput
 }
 
 func (VpnState) ElementType() reflect.Type {
@@ -83,16 +95,26 @@ func (VpnState) ElementType() reflect.Type {
 }
 
 type vpnArgs struct {
-	Name  *string             `pulumi:"name"`
-	OrgId string              `pulumi:"orgId"`
+	Name  *string `pulumi:"name"`
+	OrgId *string `pulumi:"orgId"`
+	// Only if `type`==`hubSpoke`
+	PathSelection *VpnPathSelection `pulumi:"pathSelection"`
+	// For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
 	Paths map[string]VpnPaths `pulumi:"paths"`
+	// enum: `hubSpoke`, `mesh`
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Vpn resource.
 type VpnArgs struct {
 	Name  pulumi.StringPtrInput
-	OrgId pulumi.StringInput
+	OrgId pulumi.StringPtrInput
+	// Only if `type`==`hubSpoke`
+	PathSelection VpnPathSelectionPtrInput
+	// For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
 	Paths VpnPathsMapInput
+	// enum: `hubSpoke`, `mesh`
+	Type pulumi.StringPtrInput
 }
 
 func (VpnArgs) ElementType() reflect.Type {
@@ -186,12 +208,23 @@ func (o VpnOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpn) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o VpnOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Vpn) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
+func (o VpnOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vpn) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
+// Only if `type`==`hubSpoke`
+func (o VpnOutput) PathSelection() VpnPathSelectionPtrOutput {
+	return o.ApplyT(func(v *Vpn) VpnPathSelectionPtrOutput { return v.PathSelection }).(VpnPathSelectionPtrOutput)
+}
+
+// For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
 func (o VpnOutput) Paths() VpnPathsMapOutput {
 	return o.ApplyT(func(v *Vpn) VpnPathsMapOutput { return v.Paths }).(VpnPathsMapOutput)
+}
+
+// enum: `hubSpoke`, `mesh`
+func (o VpnOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vpn) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type VpnArrayOutput struct{ *pulumi.OutputState }

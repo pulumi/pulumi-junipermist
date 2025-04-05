@@ -5,7 +5,6 @@ package com.pulumi.junipermist.site.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,9 +16,9 @@ public final class WlanAppQosOtherArgs extends com.pulumi.resources.ResourceArgs
     public static final WlanAppQosOtherArgs Empty = new WlanAppQosOtherArgs();
 
     @Import(name="dscp")
-    private @Nullable Output<Integer> dscp;
+    private @Nullable Output<String> dscp;
 
-    public Optional<Output<Integer>> dscp() {
+    public Optional<Output<String>> dscp() {
         return Optional.ofNullable(this.dscp);
     }
 
@@ -79,12 +78,12 @@ public final class WlanAppQosOtherArgs extends com.pulumi.resources.ResourceArgs
             $ = new WlanAppQosOtherArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder dscp(@Nullable Output<Integer> dscp) {
+        public Builder dscp(@Nullable Output<String> dscp) {
             $.dscp = dscp;
             return this;
         }
 
-        public Builder dscp(Integer dscp) {
+        public Builder dscp(String dscp) {
             return dscp(Output.of(dscp));
         }
 

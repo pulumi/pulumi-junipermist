@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.device.inputs.SwitchRadiusConfigAcctServerArgs;
 import com.pulumi.junipermist.device.inputs.SwitchRadiusConfigAuthServerArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -18,6 +19,13 @@ import javax.annotation.Nullable;
 public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SwitchRadiusConfigArgs Empty = new SwitchRadiusConfigArgs();
+
+    @Import(name="acctImmediateUpdate")
+    private @Nullable Output<Boolean> acctImmediateUpdate;
+
+    public Optional<Output<Boolean>> acctImmediateUpdate() {
+        return Optional.ofNullable(this.acctImmediateUpdate);
+    }
 
     /**
      * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
@@ -39,6 +47,21 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
 
     public Optional<Output<List<SwitchRadiusConfigAcctServerArgs>>> acctServers() {
         return Optional.ofNullable(this.acctServers);
+    }
+
+    /**
+     * enum: `ordered`, `unordered`
+     * 
+     */
+    @Import(name="authServerSelection")
+    private @Nullable Output<String> authServerSelection;
+
+    /**
+     * @return enum: `ordered`, `unordered`
+     * 
+     */
+    public Optional<Output<String>> authServerSelection() {
+        return Optional.ofNullable(this.authServerSelection);
     }
 
     @Import(name="authServers")
@@ -78,6 +101,27 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.authServersTimeout);
     }
 
+    @Import(name="coaEnabled")
+    private @Nullable Output<Boolean> coaEnabled;
+
+    public Optional<Output<Boolean>> coaEnabled() {
+        return Optional.ofNullable(this.coaEnabled);
+    }
+
+    @Import(name="coaPort")
+    private @Nullable Output<String> coaPort;
+
+    public Optional<Output<String>> coaPort() {
+        return Optional.ofNullable(this.coaPort);
+    }
+
+    @Import(name="fastDot1xTimers")
+    private @Nullable Output<Boolean> fastDot1xTimers;
+
+    public Optional<Output<Boolean>> fastDot1xTimers() {
+        return Optional.ofNullable(this.fastDot1xTimers);
+    }
+
     /**
      * Use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
      * 
@@ -111,11 +155,16 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
     private SwitchRadiusConfigArgs() {}
 
     private SwitchRadiusConfigArgs(SwitchRadiusConfigArgs $) {
+        this.acctImmediateUpdate = $.acctImmediateUpdate;
         this.acctInterimInterval = $.acctInterimInterval;
         this.acctServers = $.acctServers;
+        this.authServerSelection = $.authServerSelection;
         this.authServers = $.authServers;
         this.authServersRetries = $.authServersRetries;
         this.authServersTimeout = $.authServersTimeout;
+        this.coaEnabled = $.coaEnabled;
+        this.coaPort = $.coaPort;
+        this.fastDot1xTimers = $.fastDot1xTimers;
         this.network = $.network;
         this.sourceIp = $.sourceIp;
     }
@@ -136,6 +185,15 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
 
         public Builder(SwitchRadiusConfigArgs defaults) {
             $ = new SwitchRadiusConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder acctImmediateUpdate(@Nullable Output<Boolean> acctImmediateUpdate) {
+            $.acctImmediateUpdate = acctImmediateUpdate;
+            return this;
+        }
+
+        public Builder acctImmediateUpdate(Boolean acctImmediateUpdate) {
+            return acctImmediateUpdate(Output.of(acctImmediateUpdate));
         }
 
         /**
@@ -170,6 +228,27 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
 
         public Builder acctServers(SwitchRadiusConfigAcctServerArgs... acctServers) {
             return acctServers(List.of(acctServers));
+        }
+
+        /**
+         * @param authServerSelection enum: `ordered`, `unordered`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authServerSelection(@Nullable Output<String> authServerSelection) {
+            $.authServerSelection = authServerSelection;
+            return this;
+        }
+
+        /**
+         * @param authServerSelection enum: `ordered`, `unordered`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authServerSelection(String authServerSelection) {
+            return authServerSelection(Output.of(authServerSelection));
         }
 
         public Builder authServers(@Nullable Output<List<SwitchRadiusConfigAuthServerArgs>> authServers) {
@@ -225,6 +304,33 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder authServersTimeout(Integer authServersTimeout) {
             return authServersTimeout(Output.of(authServersTimeout));
+        }
+
+        public Builder coaEnabled(@Nullable Output<Boolean> coaEnabled) {
+            $.coaEnabled = coaEnabled;
+            return this;
+        }
+
+        public Builder coaEnabled(Boolean coaEnabled) {
+            return coaEnabled(Output.of(coaEnabled));
+        }
+
+        public Builder coaPort(@Nullable Output<String> coaPort) {
+            $.coaPort = coaPort;
+            return this;
+        }
+
+        public Builder coaPort(String coaPort) {
+            return coaPort(Output.of(coaPort));
+        }
+
+        public Builder fastDot1xTimers(@Nullable Output<Boolean> fastDot1xTimers) {
+            $.fastDot1xTimers = fastDot1xTimers;
+            return this;
+        }
+
+        public Builder fastDot1xTimers(Boolean fastDot1xTimers) {
+            return fastDot1xTimers(Output.of(fastDot1xTimers));
         }
 
         /**

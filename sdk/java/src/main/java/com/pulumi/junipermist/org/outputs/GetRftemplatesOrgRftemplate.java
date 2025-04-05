@@ -11,22 +11,66 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRftemplatesOrgRftemplate {
+    /**
+     * @return Optional, country code to use. If specified, this gets applied to all sites using the RF Template
+     * 
+     */
+    private String countryCode;
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
     private Double createdTime;
+    /**
+     * @return Unique ID of the object instance in the Mist Organization
+     * 
+     */
     private String id;
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
     private Double modifiedTime;
+    /**
+     * @return The name of the RF template
+     * 
+     */
     private String name;
     private String orgId;
 
     private GetRftemplatesOrgRftemplate() {}
+    /**
+     * @return Optional, country code to use. If specified, this gets applied to all sites using the RF Template
+     * 
+     */
+    public String countryCode() {
+        return this.countryCode;
+    }
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
     public Double createdTime() {
         return this.createdTime;
     }
+    /**
+     * @return Unique ID of the object instance in the Mist Organization
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
     public Double modifiedTime() {
         return this.modifiedTime;
     }
+    /**
+     * @return The name of the RF template
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -43,6 +87,7 @@ public final class GetRftemplatesOrgRftemplate {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String countryCode;
         private Double createdTime;
         private String id;
         private Double modifiedTime;
@@ -51,6 +96,7 @@ public final class GetRftemplatesOrgRftemplate {
         public Builder() {}
         public Builder(GetRftemplatesOrgRftemplate defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.countryCode = defaults.countryCode;
     	      this.createdTime = defaults.createdTime;
     	      this.id = defaults.id;
     	      this.modifiedTime = defaults.modifiedTime;
@@ -58,6 +104,14 @@ public final class GetRftemplatesOrgRftemplate {
     	      this.orgId = defaults.orgId;
         }
 
+        @CustomType.Setter
+        public Builder countryCode(String countryCode) {
+            if (countryCode == null) {
+              throw new MissingRequiredPropertyException("GetRftemplatesOrgRftemplate", "countryCode");
+            }
+            this.countryCode = countryCode;
+            return this;
+        }
         @CustomType.Setter
         public Builder createdTime(Double createdTime) {
             if (createdTime == null) {
@@ -100,6 +154,7 @@ public final class GetRftemplatesOrgRftemplate {
         }
         public GetRftemplatesOrgRftemplate build() {
             final var _resultValue = new GetRftemplatesOrgRftemplate();
+            _resultValue.countryCode = countryCode;
             _resultValue.createdTime = createdTime;
             _resultValue.id = id;
             _resultValue.modifiedTime = modifiedTime;

@@ -15,20 +15,64 @@ public final class GetApStatsDeviceApStatMeshDownlinks {
     private String band;
     private Integer channel;
     private Integer idleTime;
+    /**
+     * @return Last seen timestamp
+     * 
+     */
     private Double lastSeen;
     private String proto;
     private Integer rssi;
+    /**
+     * @return Rate of receiving traffic, bits/seconds, last known
+     * 
+     */
     private Integer rxBps;
+    /**
+     * @return Amount of traffic received since connection
+     * 
+     */
     private Integer rxBytes;
+    /**
+     * @return Amount of packets received since connection
+     * 
+     */
     private Integer rxPackets;
-    private Integer rxRate;
+    /**
+     * @return RX Rate, Mbps
+     * 
+     */
+    private Double rxRate;
+    /**
+     * @return Amount of rx retries
+     * 
+     */
     private Integer rxRetries;
     private String siteId;
     private Integer snr;
+    /**
+     * @return Rate of transmitting traffic, bits/seconds, last known
+     * 
+     */
     private Integer txBps;
+    /**
+     * @return Amount of traffic sent since connection
+     * 
+     */
     private Integer txBytes;
+    /**
+     * @return Amount of packets sent since connection
+     * 
+     */
     private Integer txPackets;
-    private Integer txRate;
+    /**
+     * @return TX Rate, Mbps
+     * 
+     */
+    private Double txRate;
+    /**
+     * @return Amount of tx retries
+     * 
+     */
     private Integer txRetries;
 
     private GetApStatsDeviceApStatMeshDownlinks() {}
@@ -41,6 +85,10 @@ public final class GetApStatsDeviceApStatMeshDownlinks {
     public Integer idleTime() {
         return this.idleTime;
     }
+    /**
+     * @return Last seen timestamp
+     * 
+     */
     public Double lastSeen() {
         return this.lastSeen;
     }
@@ -50,18 +98,38 @@ public final class GetApStatsDeviceApStatMeshDownlinks {
     public Integer rssi() {
         return this.rssi;
     }
+    /**
+     * @return Rate of receiving traffic, bits/seconds, last known
+     * 
+     */
     public Integer rxBps() {
         return this.rxBps;
     }
+    /**
+     * @return Amount of traffic received since connection
+     * 
+     */
     public Integer rxBytes() {
         return this.rxBytes;
     }
+    /**
+     * @return Amount of packets received since connection
+     * 
+     */
     public Integer rxPackets() {
         return this.rxPackets;
     }
-    public Integer rxRate() {
+    /**
+     * @return RX Rate, Mbps
+     * 
+     */
+    public Double rxRate() {
         return this.rxRate;
     }
+    /**
+     * @return Amount of rx retries
+     * 
+     */
     public Integer rxRetries() {
         return this.rxRetries;
     }
@@ -71,18 +139,38 @@ public final class GetApStatsDeviceApStatMeshDownlinks {
     public Integer snr() {
         return this.snr;
     }
+    /**
+     * @return Rate of transmitting traffic, bits/seconds, last known
+     * 
+     */
     public Integer txBps() {
         return this.txBps;
     }
+    /**
+     * @return Amount of traffic sent since connection
+     * 
+     */
     public Integer txBytes() {
         return this.txBytes;
     }
+    /**
+     * @return Amount of packets sent since connection
+     * 
+     */
     public Integer txPackets() {
         return this.txPackets;
     }
-    public Integer txRate() {
+    /**
+     * @return TX Rate, Mbps
+     * 
+     */
+    public Double txRate() {
         return this.txRate;
     }
+    /**
+     * @return Amount of tx retries
+     * 
+     */
     public Integer txRetries() {
         return this.txRetries;
     }
@@ -105,14 +193,14 @@ public final class GetApStatsDeviceApStatMeshDownlinks {
         private Integer rxBps;
         private Integer rxBytes;
         private Integer rxPackets;
-        private Integer rxRate;
+        private Double rxRate;
         private Integer rxRetries;
         private String siteId;
         private Integer snr;
         private Integer txBps;
         private Integer txBytes;
         private Integer txPackets;
-        private Integer txRate;
+        private Double txRate;
         private Integer txRetries;
         public Builder() {}
         public Builder(GetApStatsDeviceApStatMeshDownlinks defaults) {
@@ -210,7 +298,7 @@ public final class GetApStatsDeviceApStatMeshDownlinks {
             return this;
         }
         @CustomType.Setter
-        public Builder rxRate(Integer rxRate) {
+        public Builder rxRate(Double rxRate) {
             if (rxRate == null) {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStatMeshDownlinks", "rxRate");
             }
@@ -266,7 +354,7 @@ public final class GetApStatsDeviceApStatMeshDownlinks {
             return this;
         }
         @CustomType.Setter
-        public Builder txRate(Integer txRate) {
+        public Builder txRate(Double txRate) {
             if (txRate == null) {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStatMeshDownlinks", "txRate");
             }

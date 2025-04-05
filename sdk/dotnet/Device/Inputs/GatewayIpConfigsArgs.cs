@@ -12,11 +12,11 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayIpConfigsArgs : global::Pulumi.ResourceArgs
     {
-        [Input("ip", required: true)]
-        public Input<string> Ip { get; set; } = null!;
+        [Input("ip")]
+        public Input<string>? Ip { get; set; }
 
-        [Input("netmask", required: true)]
-        public Input<string> Netmask { get; set; } = null!;
+        [Input("netmask")]
+        public Input<string>? Netmask { get; set; }
 
         [Input("secondaryIps")]
         private InputList<string>? _secondaryIps;

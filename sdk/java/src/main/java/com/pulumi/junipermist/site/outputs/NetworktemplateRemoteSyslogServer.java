@@ -6,7 +6,6 @@ package com.pulumi.junipermist.site.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.junipermist.site.outputs.NetworktemplateRemoteSyslogServerContent;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -24,7 +23,7 @@ public final class NetworktemplateRemoteSyslogServer {
     private @Nullable String facility;
     private @Nullable String host;
     private @Nullable String match;
-    private @Nullable Integer port;
+    private @Nullable String port;
     /**
      * @return enum: `tcp`, `udp`
      * 
@@ -64,7 +63,7 @@ public final class NetworktemplateRemoteSyslogServer {
     public Optional<String> match() {
         return Optional.ofNullable(this.match);
     }
-    public Optional<Integer> port() {
+    public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
     /**
@@ -112,7 +111,7 @@ public final class NetworktemplateRemoteSyslogServer {
         private @Nullable String facility;
         private @Nullable String host;
         private @Nullable String match;
-        private @Nullable Integer port;
+        private @Nullable String port;
         private @Nullable String protocol;
         private @Nullable String routingInstance;
         private @Nullable String severity;
@@ -170,7 +169,7 @@ public final class NetworktemplateRemoteSyslogServer {
             return this;
         }
         @CustomType.Setter
-        public Builder port(@Nullable Integer port) {
+        public Builder port(@Nullable String port) {
 
             this.port = port;
             return this;

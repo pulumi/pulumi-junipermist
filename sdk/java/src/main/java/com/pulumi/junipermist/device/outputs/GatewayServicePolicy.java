@@ -56,7 +56,7 @@ public final class GatewayServicePolicy {
      */
     private @Nullable String servicepolicyId;
     /**
-     * @return Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+     * @return Required when `servicepolicy_id` is not defined. List of Applications / Destinations
      * 
      */
     private @Nullable List<String> services;
@@ -128,7 +128,7 @@ public final class GatewayServicePolicy {
         return Optional.ofNullable(this.servicepolicyId);
     }
     /**
-     * @return Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+     * @return Required when `servicepolicy_id` is not defined. List of Applications / Destinations
      * 
      */
     public List<String> services() {

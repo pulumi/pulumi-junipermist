@@ -13,10 +13,46 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NacruleNotMatchingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `psk`
+        /// enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
         /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }
+
+        [Input("families")]
+        private InputList<string>? _families;
+
+        /// <summary>
+        /// List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+        /// </summary>
+        public InputList<string> Families
+        {
+            get => _families ?? (_families = new InputList<string>());
+            set => _families = value;
+        }
+
+        [Input("mfgs")]
+        private InputList<string>? _mfgs;
+
+        /// <summary>
+        /// List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+        /// </summary>
+        public InputList<string> Mfgs
+        {
+            get => _mfgs ?? (_mfgs = new InputList<string>());
+            set => _mfgs = value;
+        }
+
+        [Input("models")]
+        private InputList<string>? _models;
+
+        /// <summary>
+        /// List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+        /// </summary>
+        public InputList<string> Models
+        {
+            get => _models ?? (_models = new InputList<string>());
+            set => _models = value;
+        }
 
         [Input("nactags")]
         private InputList<string>? _nactags;
@@ -24,6 +60,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
         {
             get => _nactags ?? (_nactags = new InputList<string>());
             set => _nactags = value;
+        }
+
+        [Input("osTypes")]
+        private InputList<string>? _osTypes;
+
+        /// <summary>
+        /// List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed os_type values
+        /// </summary>
+        public InputList<string> OsTypes
+        {
+            get => _osTypes ?? (_osTypes = new InputList<string>());
+            set => _osTypes = value;
         }
 
         [Input("portTypes")]
@@ -38,7 +86,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _siteIds;
 
         /// <summary>
-        /// list of site ids to match
+        /// List of site ids to match
         /// </summary>
         public InputList<string> SiteIds
         {
@@ -50,7 +98,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _sitegroupIds;
 
         /// <summary>
-        /// list of sitegroup ids to match
+        /// List of sitegroup ids to match
         /// </summary>
         public InputList<string> SitegroupIds
         {
@@ -62,7 +110,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _vendors;
 
         /// <summary>
-        /// list of vendors to match
+        /// List of vendors to match
         /// </summary>
         public InputList<string> Vendors
         {

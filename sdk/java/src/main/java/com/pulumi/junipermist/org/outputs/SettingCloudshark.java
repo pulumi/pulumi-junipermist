@@ -4,7 +4,6 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,19 +11,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingCloudshark {
-    private String apitoken;
+    private @Nullable String apitoken;
     /**
-     * @return If using CS Enteprise
+     * @return If using CS Enterprise
      * 
      */
     private @Nullable String url;
 
     private SettingCloudshark() {}
-    public String apitoken() {
-        return this.apitoken;
+    public Optional<String> apitoken() {
+        return Optional.ofNullable(this.apitoken);
     }
     /**
-     * @return If using CS Enteprise
+     * @return If using CS Enterprise
      * 
      */
     public Optional<String> url() {
@@ -40,7 +39,7 @@ public final class SettingCloudshark {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String apitoken;
+        private @Nullable String apitoken;
         private @Nullable String url;
         public Builder() {}
         public Builder(SettingCloudshark defaults) {
@@ -50,10 +49,8 @@ public final class SettingCloudshark {
         }
 
         @CustomType.Setter
-        public Builder apitoken(String apitoken) {
-            if (apitoken == null) {
-              throw new MissingRequiredPropertyException("SettingCloudshark", "apitoken");
-            }
+        public Builder apitoken(@Nullable String apitoken) {
+
             this.apitoken = apitoken;
             return this;
         }

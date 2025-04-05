@@ -70,11 +70,14 @@ export class Switch extends pulumi.CustomResource {
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    public readonly dnsServers!: pulumi.Output<string[] | undefined>;
+    public readonly dnsServers!: pulumi.Output<string[]>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    public readonly dnsSuffixes!: pulumi.Output<string[] | undefined>;
+    public readonly dnsSuffixes!: pulumi.Output<string[]>;
+    /**
+     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     */
     public readonly extraRoutes!: pulumi.Output<{[key: string]: outputs.device.SwitchExtraRoutes} | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -121,7 +124,7 @@ export class Switch extends pulumi.CustomResource {
     /**
      * List of NTP servers specific to this device. By default, those in Site Settings will be used
      */
-    public readonly ntpServers!: pulumi.Output<string[] | undefined>;
+    public readonly ntpServers!: pulumi.Output<string[]>;
     /**
      * Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
      * re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
@@ -143,7 +146,7 @@ export class Switch extends pulumi.CustomResource {
     /**
      * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      */
     public readonly portMirroring!: pulumi.Output<{[key: string]: outputs.device.SwitchPortMirroring} | undefined>;
     /**
@@ -360,6 +363,9 @@ export interface SwitchState {
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchExtraRoutes>}>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -428,7 +434,7 @@ export interface SwitchState {
     /**
      * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortMirroring>}>;
     /**
@@ -519,6 +525,9 @@ export interface SwitchArgs {
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchExtraRoutes>}>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -575,7 +584,7 @@ export interface SwitchArgs {
     /**
      * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortMirroring>}>;
     /**

@@ -14,15 +14,19 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingJuniperSrxGateway
     {
         public readonly string? ApiKey;
+        public readonly string? ApiPassword;
         public readonly string? ApiUrl;
 
         [OutputConstructor]
         private SettingJuniperSrxGateway(
             string? apiKey,
 
+            string? apiPassword,
+
             string? apiUrl)
         {
             ApiKey = apiKey;
+            ApiPassword = apiPassword;
             ApiUrl = apiUrl;
         }
     }

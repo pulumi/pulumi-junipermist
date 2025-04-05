@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * This resource manages NAC Tags (Auth Policy Labels).
  * 
- * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+ * The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
  * 
  * ## Example Usage
  * 
@@ -79,14 +79,14 @@ public class Nactag extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="allowUsermacOverride", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> allowUsermacOverride;
+    private Output</* @Nullable */ Boolean> allowUsermacOverride;
 
     /**
      * @return Can be set to true to allow the override by usermac result
      * 
      */
-    public Output<Boolean> allowUsermacOverride() {
-        return this.allowUsermacOverride;
+    public Output<Optional<Boolean>> allowUsermacOverride() {
+        return Codegen.optional(this.allowUsermacOverride);
     }
     /**
      * If `type`==`egress_vlan_names`, list of egress vlans to return
@@ -102,18 +102,10 @@ public class Nactag extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> egressVlanNames() {
         return Codegen.optional(this.egressVlanNames);
     }
-    /**
-     * If `type`==`gbp_tag`
-     * 
-     */
-    @Export(name="gbpTag", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> gbpTag;
+    @Export(name="gbpTag", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> gbpTag;
 
-    /**
-     * @return If `type`==`gbp_tag`
-     * 
-     */
-    public Output<Optional<Integer>> gbpTag() {
+    public Output<Optional<String>> gbpTag() {
         return Codegen.optional(this.gbpTag);
     }
     /**
@@ -141,7 +133,7 @@ public class Nactag extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="matchAll", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> matchAll;
+    private Output</* @Nullable */ Boolean> matchAll;
 
     /**
      * @return This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
@@ -149,8 +141,8 @@ public class Nactag extends com.pulumi.resources.CustomResource {
      * set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
      * 
      */
-    public Output<Boolean> matchAll() {
-        return this.matchAll;
+    public Output<Optional<Boolean>> matchAll() {
+        return Codegen.optional(this.matchAll);
     }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;

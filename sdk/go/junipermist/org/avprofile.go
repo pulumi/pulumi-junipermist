@@ -76,7 +76,7 @@ import (
 type Avprofile struct {
 	pulumi.CustomResourceState
 
-	// enum: `block`, `permit`
+	// enum: `block`, `log-and-permit`, `permit`
 	FallbackAction pulumi.StringPtrOutput `pulumi:"fallbackAction"`
 	// In KB
 	MaxFilesize    pulumi.IntOutput         `pulumi:"maxFilesize"`
@@ -124,7 +124,7 @@ func GetAvprofile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Avprofile resources.
 type avprofileState struct {
-	// enum: `block`, `permit`
+	// enum: `block`, `log-and-permit`, `permit`
 	FallbackAction *string `pulumi:"fallbackAction"`
 	// In KB
 	MaxFilesize    *int     `pulumi:"maxFilesize"`
@@ -137,7 +137,7 @@ type avprofileState struct {
 }
 
 type AvprofileState struct {
-	// enum: `block`, `permit`
+	// enum: `block`, `log-and-permit`, `permit`
 	FallbackAction pulumi.StringPtrInput
 	// In KB
 	MaxFilesize    pulumi.IntPtrInput
@@ -154,7 +154,7 @@ func (AvprofileState) ElementType() reflect.Type {
 }
 
 type avprofileArgs struct {
-	// enum: `block`, `permit`
+	// enum: `block`, `log-and-permit`, `permit`
 	FallbackAction *string `pulumi:"fallbackAction"`
 	// In KB
 	MaxFilesize    *int     `pulumi:"maxFilesize"`
@@ -168,7 +168,7 @@ type avprofileArgs struct {
 
 // The set of arguments for constructing a Avprofile resource.
 type AvprofileArgs struct {
-	// enum: `block`, `permit`
+	// enum: `block`, `log-and-permit`, `permit`
 	FallbackAction pulumi.StringPtrInput
 	// In KB
 	MaxFilesize    pulumi.IntPtrInput
@@ -267,7 +267,7 @@ func (o AvprofileOutput) ToAvprofileOutputWithContext(ctx context.Context) Avpro
 	return o
 }
 
-// enum: `block`, `permit`
+// enum: `block`, `log-and-permit`, `permit`
 func (o AvprofileOutput) FallbackAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Avprofile) pulumi.StringPtrOutput { return v.FallbackAction }).(pulumi.StringPtrOutput)
 }

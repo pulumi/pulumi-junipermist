@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingGatewayMgmtAppProbing
     {
         /// <summary>
-        /// APp-keys from /api/v1/const/applications
+        /// APp-keys from List Applications
         /// </summary>
         public readonly ImmutableArray<string> Apps;
         public readonly ImmutableArray<Outputs.SettingGatewayMgmtAppProbingCustomApp> CustomApps;

@@ -14,58 +14,74 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GetApStatsDeviceApStatRadioStatBand24Result
     {
         /// <summary>
-        /// channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
+        /// channel width for the band.enum: `20`, `40`, `80` (only applicable for band_5 and band_6), `160` (only for band_6)
         /// </summary>
         public readonly int Bandwidth;
         /// <summary>
-        /// current channel the radio is running on
+        /// Current channel the radio is running on
         /// </summary>
         public readonly int Channel;
         /// <summary>
         /// Use dynamic chaining for downlink
         /// </summary>
-        public readonly bool DynamicChainingEnalbed;
+        public readonly bool DynamicChainingEnabled;
         /// <summary>
-        /// radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+        /// Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
         /// </summary>
         public readonly string Mac;
         public readonly int NoiseFloor;
         public readonly int NumClients;
         /// <summary>
-        /// transmit power (in dBm)
+        /// How many WLANs are applied to the radio
+        /// </summary>
+        public readonly int NumWlans;
+        /// <summary>
+        /// Transmit power (in dBm)
         /// </summary>
         public readonly int Power;
+        /// <summary>
+        /// Amount of traffic received since connection
+        /// </summary>
         public readonly int RxBytes;
+        /// <summary>
+        /// Amount of packets received since connection
+        /// </summary>
         public readonly int RxPkts;
+        /// <summary>
+        /// Amount of traffic sent since connection
+        /// </summary>
         public readonly int TxBytes;
+        /// <summary>
+        /// Amount of packets sent since connection
+        /// </summary>
         public readonly int TxPkts;
         public readonly string Usage;
         /// <summary>
-        /// all utilization in percentage
+        /// All utilization in percentage
         /// </summary>
         public readonly int UtilAll;
         /// <summary>
-        /// reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+        /// Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
         /// </summary>
         public readonly int UtilNonWifi;
         /// <summary>
-        /// reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
+        /// Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
         /// </summary>
         public readonly int UtilRxInBss;
         /// <summary>
-        /// reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
+        /// Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
         /// </summary>
         public readonly int UtilRxOtherBss;
         /// <summary>
-        /// transmission utilization in percentage
+        /// Transmission utilization in percentage
         /// </summary>
         public readonly int UtilTx;
         /// <summary>
-        /// reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+        /// Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
         /// </summary>
         public readonly int UtilUndecodableWifi;
         /// <summary>
-        /// reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+        /// Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
         /// </summary>
         public readonly int UtilUnknownWifi;
 
@@ -75,13 +91,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             int channel,
 
-            bool dynamicChainingEnalbed,
+            bool dynamicChainingEnabled,
 
             string mac,
 
             int noiseFloor,
 
             int numClients,
+
+            int numWlans,
 
             int power,
 
@@ -111,10 +129,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         {
             Bandwidth = bandwidth;
             Channel = channel;
-            DynamicChainingEnalbed = dynamicChainingEnalbed;
+            DynamicChainingEnabled = dynamicChainingEnabled;
             Mac = mac;
             NoiseFloor = noiseFloor;
             NumClients = numClients;
+            NumWlans = numWlans;
             Power = power;
             RxBytes = rxBytes;
             RxPkts = rxPkts;

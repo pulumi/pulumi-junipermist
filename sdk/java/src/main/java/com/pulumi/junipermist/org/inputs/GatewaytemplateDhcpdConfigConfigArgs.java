@@ -53,14 +53,14 @@ public final class GatewaytemplateDhcpdConfigConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
      * 
      */
     @Import(name="fixedBindings")
     private @Nullable Output<Map<String,GatewaytemplateDhcpdConfigConfigFixedBindingsArgs>> fixedBindings;
 
     /**
-     * @return If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * @return If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
      * 
      */
     public Optional<Output<Map<String,GatewaytemplateDhcpdConfigConfigFixedBindingsArgs>>> fixedBindings() {
@@ -370,7 +370,7 @@ public final class GatewaytemplateDhcpdConfigConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param fixedBindings If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+         * @param fixedBindings If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class GatewaytemplateDhcpdConfigConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param fixedBindings If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+         * @param fixedBindings If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
          * 
          * @return builder
          * 

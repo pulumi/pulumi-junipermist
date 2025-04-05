@@ -54,30 +54,38 @@ export class Service extends pulumi.CustomResource {
     }
 
     /**
-     * if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+     * If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
      */
     public readonly addresses!: pulumi.Output<string[]>;
     /**
-     * when `type`==`appCategories`, list of application categories are available through /api/v1/const/app_categories
+     * When `type`==`appCategories`, list of application categories are available through List App Category Definitions
      */
     public readonly appCategories!: pulumi.Output<string[]>;
     /**
-     * when `type`==`appCategories`, list of application categories are available through /api/v1/const/app_subcategories
+     * When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
      */
     public readonly appSubcategories!: pulumi.Output<string[]>;
     /**
-     * when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-     * /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
+     * When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+     * /insight/top_app_by-bytes?wired=true
      */
     public readonly apps!: pulumi.Output<string[]>;
+    /**
+     * 0 means unlimited, value from 0 to 107374182
+     */
+    public readonly clientLimitDown!: pulumi.Output<number | undefined>;
+    /**
+     * 0 means unlimited, value from 0 to 107374182
+     */
+    public readonly clientLimitUp!: pulumi.Output<number | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly dscp!: pulumi.Output<string | undefined>;
     /**
-     * enum: `nonRevertable`, `none`, `revertable`
+     * enum: `nonRevertible`, `none`, `revertible`
      */
-    public readonly failoverPolicy!: pulumi.Output<string>;
+    public readonly failoverPolicy!: pulumi.Output<string | undefined>;
     /**
-     * if `type`==`custom`, web filtering
+     * If `type`==`custom`, web filtering
      */
     public readonly hostnames!: pulumi.Output<string[]>;
     public readonly maxJitter!: pulumi.Output<string | undefined>;
@@ -86,20 +94,28 @@ export class Service extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * whether to enable measure SLE
+     * 0 means unlimited, value from 0 to 107374182
      */
-    public readonly sleEnabled!: pulumi.Output<boolean>;
+    public readonly serviceLimitDown!: pulumi.Output<number | undefined>;
     /**
-     * when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+     * 0 means unlimited, value from 0 to 107374182
+     */
+    public readonly serviceLimitUp!: pulumi.Output<number | undefined>;
+    /**
+     * Whether to enable measure SLE
+     */
+    public readonly sleEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
      */
     public readonly specs!: pulumi.Output<outputs.org.ServiceSpec[] | undefined>;
-    public readonly ssrRelaxedTcpStateEnforcement!: pulumi.Output<boolean>;
+    public readonly ssrRelaxedTcpStateEnforcement!: pulumi.Output<boolean | undefined>;
     /**
      * when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
      */
-    public readonly trafficClass!: pulumi.Output<string>;
+    public readonly trafficClass!: pulumi.Output<string | undefined>;
     /**
-     * values from `/api/v1/consts/traffic_types`
+     * values from List Traffic Types
      */
     public readonly trafficType!: pulumi.Output<string>;
     /**
@@ -107,7 +123,7 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * when `type`==`urls`, no need for spec as URL can encode the ports being used
+     * When `type`==`urls`, no need for spec as URL can encode the ports being used
      */
     public readonly urls!: pulumi.Output<string[]>;
 
@@ -128,6 +144,8 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["appCategories"] = state ? state.appCategories : undefined;
             resourceInputs["appSubcategories"] = state ? state.appSubcategories : undefined;
             resourceInputs["apps"] = state ? state.apps : undefined;
+            resourceInputs["clientLimitDown"] = state ? state.clientLimitDown : undefined;
+            resourceInputs["clientLimitUp"] = state ? state.clientLimitUp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dscp"] = state ? state.dscp : undefined;
             resourceInputs["failoverPolicy"] = state ? state.failoverPolicy : undefined;
@@ -137,6 +155,8 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["maxLoss"] = state ? state.maxLoss : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["serviceLimitDown"] = state ? state.serviceLimitDown : undefined;
+            resourceInputs["serviceLimitUp"] = state ? state.serviceLimitUp : undefined;
             resourceInputs["sleEnabled"] = state ? state.sleEnabled : undefined;
             resourceInputs["specs"] = state ? state.specs : undefined;
             resourceInputs["ssrRelaxedTcpStateEnforcement"] = state ? state.ssrRelaxedTcpStateEnforcement : undefined;
@@ -153,6 +173,8 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["appCategories"] = args ? args.appCategories : undefined;
             resourceInputs["appSubcategories"] = args ? args.appSubcategories : undefined;
             resourceInputs["apps"] = args ? args.apps : undefined;
+            resourceInputs["clientLimitDown"] = args ? args.clientLimitDown : undefined;
+            resourceInputs["clientLimitUp"] = args ? args.clientLimitUp : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["dscp"] = args ? args.dscp : undefined;
             resourceInputs["failoverPolicy"] = args ? args.failoverPolicy : undefined;
@@ -162,6 +184,8 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["maxLoss"] = args ? args.maxLoss : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["serviceLimitDown"] = args ? args.serviceLimitDown : undefined;
+            resourceInputs["serviceLimitUp"] = args ? args.serviceLimitUp : undefined;
             resourceInputs["sleEnabled"] = args ? args.sleEnabled : undefined;
             resourceInputs["specs"] = args ? args.specs : undefined;
             resourceInputs["ssrRelaxedTcpStateEnforcement"] = args ? args.ssrRelaxedTcpStateEnforcement : undefined;
@@ -180,30 +204,38 @@ export class Service extends pulumi.CustomResource {
  */
 export interface ServiceState {
     /**
-     * if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+     * If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
      */
     addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * when `type`==`appCategories`, list of application categories are available through /api/v1/const/app_categories
+     * When `type`==`appCategories`, list of application categories are available through List App Category Definitions
      */
     appCategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * when `type`==`appCategories`, list of application categories are available through /api/v1/const/app_subcategories
+     * When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
      */
     appSubcategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-     * /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
+     * When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+     * /insight/top_app_by-bytes?wired=true
      */
     apps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * 0 means unlimited, value from 0 to 107374182
+     */
+    clientLimitDown?: pulumi.Input<number>;
+    /**
+     * 0 means unlimited, value from 0 to 107374182
+     */
+    clientLimitUp?: pulumi.Input<number>;
     description?: pulumi.Input<string>;
     dscp?: pulumi.Input<string>;
     /**
-     * enum: `nonRevertable`, `none`, `revertable`
+     * enum: `nonRevertible`, `none`, `revertible`
      */
     failoverPolicy?: pulumi.Input<string>;
     /**
-     * if `type`==`custom`, web filtering
+     * If `type`==`custom`, web filtering
      */
     hostnames?: pulumi.Input<pulumi.Input<string>[]>;
     maxJitter?: pulumi.Input<string>;
@@ -212,11 +244,19 @@ export interface ServiceState {
     name?: pulumi.Input<string>;
     orgId?: pulumi.Input<string>;
     /**
-     * whether to enable measure SLE
+     * 0 means unlimited, value from 0 to 107374182
+     */
+    serviceLimitDown?: pulumi.Input<number>;
+    /**
+     * 0 means unlimited, value from 0 to 107374182
+     */
+    serviceLimitUp?: pulumi.Input<number>;
+    /**
+     * Whether to enable measure SLE
      */
     sleEnabled?: pulumi.Input<boolean>;
     /**
-     * when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+     * When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
      */
     specs?: pulumi.Input<pulumi.Input<inputs.org.ServiceSpec>[]>;
     ssrRelaxedTcpStateEnforcement?: pulumi.Input<boolean>;
@@ -225,7 +265,7 @@ export interface ServiceState {
      */
     trafficClass?: pulumi.Input<string>;
     /**
-     * values from `/api/v1/consts/traffic_types`
+     * values from List Traffic Types
      */
     trafficType?: pulumi.Input<string>;
     /**
@@ -233,7 +273,7 @@ export interface ServiceState {
      */
     type?: pulumi.Input<string>;
     /**
-     * when `type`==`urls`, no need for spec as URL can encode the ports being used
+     * When `type`==`urls`, no need for spec as URL can encode the ports being used
      */
     urls?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -243,30 +283,38 @@ export interface ServiceState {
  */
 export interface ServiceArgs {
     /**
-     * if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+     * If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
      */
     addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * when `type`==`appCategories`, list of application categories are available through /api/v1/const/app_categories
+     * When `type`==`appCategories`, list of application categories are available through List App Category Definitions
      */
     appCategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * when `type`==`appCategories`, list of application categories are available through /api/v1/const/app_subcategories
+     * When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
      */
     appSubcategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-     * /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
+     * When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+     * /insight/top_app_by-bytes?wired=true
      */
     apps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * 0 means unlimited, value from 0 to 107374182
+     */
+    clientLimitDown?: pulumi.Input<number>;
+    /**
+     * 0 means unlimited, value from 0 to 107374182
+     */
+    clientLimitUp?: pulumi.Input<number>;
     description?: pulumi.Input<string>;
     dscp?: pulumi.Input<string>;
     /**
-     * enum: `nonRevertable`, `none`, `revertable`
+     * enum: `nonRevertible`, `none`, `revertible`
      */
     failoverPolicy?: pulumi.Input<string>;
     /**
-     * if `type`==`custom`, web filtering
+     * If `type`==`custom`, web filtering
      */
     hostnames?: pulumi.Input<pulumi.Input<string>[]>;
     maxJitter?: pulumi.Input<string>;
@@ -275,11 +323,19 @@ export interface ServiceArgs {
     name?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
     /**
-     * whether to enable measure SLE
+     * 0 means unlimited, value from 0 to 107374182
+     */
+    serviceLimitDown?: pulumi.Input<number>;
+    /**
+     * 0 means unlimited, value from 0 to 107374182
+     */
+    serviceLimitUp?: pulumi.Input<number>;
+    /**
+     * Whether to enable measure SLE
      */
     sleEnabled?: pulumi.Input<boolean>;
     /**
-     * when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+     * When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
      */
     specs?: pulumi.Input<pulumi.Input<inputs.org.ServiceSpec>[]>;
     ssrRelaxedTcpStateEnforcement?: pulumi.Input<boolean>;
@@ -288,7 +344,7 @@ export interface ServiceArgs {
      */
     trafficClass?: pulumi.Input<string>;
     /**
-     * values from `/api/v1/consts/traffic_types`
+     * values from List Traffic Types
      */
     trafficType?: pulumi.Input<string>;
     /**
@@ -296,7 +352,7 @@ export interface ServiceArgs {
      */
     type?: pulumi.Input<string>;
     /**
-     * when `type`==`urls`, no need for spec as URL can encode the ports being used
+     * When `type`==`urls`, no need for spec as URL can encode the ports being used
      */
     urls?: pulumi.Input<pulumi.Input<string>[]>;
 }

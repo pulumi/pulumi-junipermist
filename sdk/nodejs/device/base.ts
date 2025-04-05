@@ -93,7 +93,7 @@ export class Base extends pulumi.CustomResource {
      */
     public readonly aptemplateId!: pulumi.Output<string | undefined>;
     /**
-     * country code for the site (for AP config generation), in two-character
+     * Country code for the site (for AP config generation), in two-character
      */
     public readonly countryCode!: pulumi.Output<string | undefined>;
     /**
@@ -107,9 +107,9 @@ export class Base extends pulumi.CustomResource {
      */
     public readonly networktemplateId!: pulumi.Output<string | undefined>;
     /**
-     * optional, any notes about the site
+     * Optional, any notes about the site
      */
-    public readonly notes!: pulumi.Output<string | undefined>;
+    public readonly notes!: pulumi.Output<string>;
     public readonly orgId!: pulumi.Output<string>;
     /**
      * RF Template ID, this takes precedence over Site Settings
@@ -120,9 +120,9 @@ export class Base extends pulumi.CustomResource {
      */
     public readonly secpolicyId!: pulumi.Output<string | undefined>;
     /**
-     * sitegroups this site belongs to
+     * Sitegroups this site belongs to
      */
-    public readonly sitegroupIds!: pulumi.Output<string[] | undefined>;
+    public readonly sitegroupIds!: pulumi.Output<string[]>;
     /**
      * Site Template ID
      */
@@ -131,6 +131,7 @@ export class Base extends pulumi.CustomResource {
      * Timezone the site is at
      */
     public readonly timezone!: pulumi.Output<string>;
+    public /*out*/ readonly tzoffset!: pulumi.Output<number>;
 
     /**
      * Create a Base resource with the given unique name, arguments, and options.
@@ -163,6 +164,7 @@ export class Base extends pulumi.CustomResource {
             resourceInputs["sitegroupIds"] = state ? state.sitegroupIds : undefined;
             resourceInputs["sitetemplateId"] = state ? state.sitetemplateId : undefined;
             resourceInputs["timezone"] = state ? state.timezone : undefined;
+            resourceInputs["tzoffset"] = state ? state.tzoffset : undefined;
         } else {
             const args = argsOrState as BaseArgs | undefined;
             if ((!args || args.address === undefined) && !opts.urn) {
@@ -186,6 +188,7 @@ export class Base extends pulumi.CustomResource {
             resourceInputs["sitegroupIds"] = args ? args.sitegroupIds : undefined;
             resourceInputs["sitetemplateId"] = args ? args.sitetemplateId : undefined;
             resourceInputs["timezone"] = args ? args.timezone : undefined;
+            resourceInputs["tzoffset"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Base.__pulumiType, name, resourceInputs, opts);
@@ -209,7 +212,7 @@ export interface BaseState {
      */
     aptemplateId?: pulumi.Input<string>;
     /**
-     * country code for the site (for AP config generation), in two-character
+     * Country code for the site (for AP config generation), in two-character
      */
     countryCode?: pulumi.Input<string>;
     /**
@@ -223,7 +226,7 @@ export interface BaseState {
      */
     networktemplateId?: pulumi.Input<string>;
     /**
-     * optional, any notes about the site
+     * Optional, any notes about the site
      */
     notes?: pulumi.Input<string>;
     orgId?: pulumi.Input<string>;
@@ -236,7 +239,7 @@ export interface BaseState {
      */
     secpolicyId?: pulumi.Input<string>;
     /**
-     * sitegroups this site belongs to
+     * Sitegroups this site belongs to
      */
     sitegroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -247,6 +250,7 @@ export interface BaseState {
      * Timezone the site is at
      */
     timezone?: pulumi.Input<string>;
+    tzoffset?: pulumi.Input<number>;
 }
 
 /**
@@ -266,7 +270,7 @@ export interface BaseArgs {
      */
     aptemplateId?: pulumi.Input<string>;
     /**
-     * country code for the site (for AP config generation), in two-character
+     * Country code for the site (for AP config generation), in two-character
      */
     countryCode?: pulumi.Input<string>;
     /**
@@ -280,7 +284,7 @@ export interface BaseArgs {
      */
     networktemplateId?: pulumi.Input<string>;
     /**
-     * optional, any notes about the site
+     * Optional, any notes about the site
      */
     notes?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
@@ -293,7 +297,7 @@ export interface BaseArgs {
      */
     secpolicyId?: pulumi.Input<string>;
     /**
-     * sitegroups this site belongs to
+     * Sitegroups this site belongs to
      */
     sitegroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

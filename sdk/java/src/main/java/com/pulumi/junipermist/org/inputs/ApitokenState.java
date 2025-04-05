@@ -40,14 +40,14 @@ public final class ApitokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * name of the token
+     * Name of the token
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return name of the token
+     * @return Name of the token
      * 
      */
     public Optional<Output<String>> name() {
@@ -62,14 +62,14 @@ public final class ApitokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * list of privileges the token has on the orgs/sites
+     * List of privileges the token has on the orgs/sites
      * 
      */
     @Import(name="privileges")
     private @Nullable Output<List<ApitokenPrivilegeArgs>> privileges;
 
     /**
-     * @return list of privileges the token has on the orgs/sites
+     * @return List of privileges the token has on the orgs/sites
      * 
      */
     public Optional<Output<List<ApitokenPrivilegeArgs>>> privileges() {
@@ -77,14 +77,14 @@ public final class ApitokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+     * List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
      * 
      */
     @Import(name="srcIps")
     private @Nullable Output<List<String>> srcIps;
 
     /**
-     * @return list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+     * @return List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
      * 
      */
     public Optional<Output<List<String>>> srcIps() {
@@ -151,7 +151,7 @@ public final class ApitokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name name of the token
+         * @param name Name of the token
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class ApitokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name name of the token
+         * @param name Name of the token
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class ApitokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privileges list of privileges the token has on the orgs/sites
+         * @param privileges List of privileges the token has on the orgs/sites
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class ApitokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privileges list of privileges the token has on the orgs/sites
+         * @param privileges List of privileges the token has on the orgs/sites
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class ApitokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privileges list of privileges the token has on the orgs/sites
+         * @param privileges List of privileges the token has on the orgs/sites
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class ApitokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param srcIps list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+         * @param srcIps List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class ApitokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param srcIps list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+         * @param srcIps List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class ApitokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param srcIps list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+         * @param srcIps List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
          * 
          * @return builder
          * 

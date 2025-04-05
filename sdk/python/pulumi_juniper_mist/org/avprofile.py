@@ -29,7 +29,7 @@ class AvprofileArgs:
         """
         The set of arguments for constructing a Avprofile resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protocols: List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
-        :param pulumi.Input[str] fallback_action: enum: `block`, `permit`
+        :param pulumi.Input[str] fallback_action: enum: `block`, `log-and-permit`, `permit`
         :param pulumi.Input[int] max_filesize: In KB
         """
         pulumi.set(__self__, "org_id", org_id)
@@ -70,7 +70,7 @@ class AvprofileArgs:
     @pulumi.getter(name="fallbackAction")
     def fallback_action(self) -> Optional[pulumi.Input[str]]:
         """
-        enum: `block`, `permit`
+        enum: `block`, `log-and-permit`, `permit`
         """
         return pulumi.get(self, "fallback_action")
 
@@ -130,7 +130,7 @@ class _AvprofileState:
                  url_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Avprofile resources.
-        :param pulumi.Input[str] fallback_action: enum: `block`, `permit`
+        :param pulumi.Input[str] fallback_action: enum: `block`, `log-and-permit`, `permit`
         :param pulumi.Input[int] max_filesize: In KB
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protocols: List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
         """
@@ -153,7 +153,7 @@ class _AvprofileState:
     @pulumi.getter(name="fallbackAction")
     def fallback_action(self) -> Optional[pulumi.Input[str]]:
         """
-        enum: `block`, `permit`
+        enum: `block`, `log-and-permit`, `permit`
         """
         return pulumi.get(self, "fallback_action")
 
@@ -280,7 +280,7 @@ class Avprofile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] fallback_action: enum: `block`, `permit`
+        :param pulumi.Input[str] fallback_action: enum: `block`, `log-and-permit`, `permit`
         :param pulumi.Input[int] max_filesize: In KB
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protocols: List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
         """
@@ -399,7 +399,7 @@ class Avprofile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] fallback_action: enum: `block`, `permit`
+        :param pulumi.Input[str] fallback_action: enum: `block`, `log-and-permit`, `permit`
         :param pulumi.Input[int] max_filesize: In KB
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protocols: List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
         """
@@ -420,7 +420,7 @@ class Avprofile(pulumi.CustomResource):
     @pulumi.getter(name="fallbackAction")
     def fallback_action(self) -> pulumi.Output[Optional[str]]:
         """
-        enum: `block`, `permit`
+        enum: `block`, `log-and-permit`, `permit`
         """
         return pulumi.get(self, "fallback_action")
 
@@ -434,7 +434,7 @@ class Avprofile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mimeWhitelists")
-    def mime_whitelists(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def mime_whitelists(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "mime_whitelists")
 
     @property
@@ -457,6 +457,6 @@ class Avprofile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="urlWhitelists")
-    def url_whitelists(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def url_whitelists(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "url_whitelists")
 

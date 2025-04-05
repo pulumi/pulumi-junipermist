@@ -13,12 +13,32 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class GetVpnsOrgVpnResult
     {
+        /// <summary>
+        /// When the object has been created, in epoch
+        /// </summary>
         public readonly double CreatedTime;
+        /// <summary>
+        /// Unique ID of the object instance in the Mist Organization
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// When the object has been modified for the last time, in epoch
+        /// </summary>
         public readonly double ModifiedTime;
         public readonly string Name;
         public readonly string OrgId;
+        /// <summary>
+        /// Only if `type`==`hub_spoke`
+        /// </summary>
+        public readonly Outputs.GetVpnsOrgVpnPathSelectionResult PathSelection;
+        /// <summary>
+        /// For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+        /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetVpnsOrgVpnPathsResult> Paths;
+        /// <summary>
+        /// enum: `hub_spoke`, `mesh`
+        /// </summary>
+        public readonly string Type;
 
         [OutputConstructor]
         private GetVpnsOrgVpnResult(
@@ -32,14 +52,20 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string orgId,
 
-            ImmutableDictionary<string, Outputs.GetVpnsOrgVpnPathsResult> paths)
+            Outputs.GetVpnsOrgVpnPathSelectionResult pathSelection,
+
+            ImmutableDictionary<string, Outputs.GetVpnsOrgVpnPathsResult> paths,
+
+            string type)
         {
             CreatedTime = createdTime;
             Id = id;
             ModifiedTime = modifiedTime;
             Name = name;
             OrgId = orgId;
+            PathSelection = pathSelection;
             Paths = paths;
+            Type = type;
         }
     }
 }

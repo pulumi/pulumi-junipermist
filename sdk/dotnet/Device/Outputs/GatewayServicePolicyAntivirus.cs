@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayServicePolicyAntivirus
     {
         /// <summary>
-        /// org-level AV Profile can be used, this takes precendence over 'profile'
+        /// org-level AV Profile can be used, this takes precedence over 'profile'
         /// </summary>
         public readonly string? AvprofileId;
         public readonly bool? Enabled;

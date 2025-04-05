@@ -41,14 +41,14 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * blocked apps (always blocking, ignoring action), the key of Get Application List
+     * Blocked apps (always blocking, ignoring action), the key of Get Application List
      * 
      */
     @Import(name="blockedApps")
     private @Nullable Output<List<String>> blockedApps;
 
     /**
-     * @return blocked apps (always blocking, ignoring action), the key of Get Application List
+     * @return Blocked apps (always blocking, ignoring action), the key of Get Application List
      * 
      */
     public Optional<Output<List<String>>> blockedApps() {
@@ -108,14 +108,14 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * the order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+     * Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
      * 
      */
     @Import(name="order")
     private @Nullable Output<Integer> order;
 
     /**
-     * @return the order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+     * @return Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
      * 
      */
     public Optional<Output<Integer>> order() {
@@ -212,7 +212,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockedApps blocked apps (always blocking, ignoring action), the key of Get Application List
+         * @param blockedApps Blocked apps (always blocking, ignoring action), the key of Get Application List
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockedApps blocked apps (always blocking, ignoring action), the key of Get Application List
+         * @param blockedApps Blocked apps (always blocking, ignoring action), the key of Get Application List
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockedApps blocked apps (always blocking, ignoring action), the key of Get Application List
+         * @param blockedApps Blocked apps (always blocking, ignoring action), the key of Get Application List
          * 
          * @return builder
          * 
@@ -345,7 +345,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param order the order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+         * @param order Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
          * 
          * @return builder
          * 
@@ -356,7 +356,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param order the order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+         * @param order Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
          * 
          * @return builder
          * 

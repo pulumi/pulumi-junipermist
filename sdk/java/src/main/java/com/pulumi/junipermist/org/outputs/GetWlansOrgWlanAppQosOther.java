@@ -5,20 +5,19 @@ package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetWlansOrgWlanAppQosOther {
-    private Integer dscp;
+    private String dscp;
     private String dstSubnet;
     private String portRanges;
     private String protocol;
     private String srcSubnet;
 
     private GetWlansOrgWlanAppQosOther() {}
-    public Integer dscp() {
+    public String dscp() {
         return this.dscp;
     }
     public String dstSubnet() {
@@ -43,7 +42,7 @@ public final class GetWlansOrgWlanAppQosOther {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer dscp;
+        private String dscp;
         private String dstSubnet;
         private String portRanges;
         private String protocol;
@@ -59,7 +58,7 @@ public final class GetWlansOrgWlanAppQosOther {
         }
 
         @CustomType.Setter
-        public Builder dscp(Integer dscp) {
+        public Builder dscp(String dscp) {
             if (dscp == null) {
               throw new MissingRequiredPropertyException("GetWlansOrgWlanAppQosOther", "dscp");
             }

@@ -22,6 +22,13 @@ public final class SettingJuniperSrxGatewayArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.apiKey);
     }
 
+    @Import(name="apiPassword")
+    private @Nullable Output<String> apiPassword;
+
+    public Optional<Output<String>> apiPassword() {
+        return Optional.ofNullable(this.apiPassword);
+    }
+
     @Import(name="apiUrl")
     private @Nullable Output<String> apiUrl;
 
@@ -33,6 +40,7 @@ public final class SettingJuniperSrxGatewayArgs extends com.pulumi.resources.Res
 
     private SettingJuniperSrxGatewayArgs(SettingJuniperSrxGatewayArgs $) {
         this.apiKey = $.apiKey;
+        this.apiPassword = $.apiPassword;
         this.apiUrl = $.apiUrl;
     }
 
@@ -61,6 +69,15 @@ public final class SettingJuniperSrxGatewayArgs extends com.pulumi.resources.Res
 
         public Builder apiKey(String apiKey) {
             return apiKey(Output.of(apiKey));
+        }
+
+        public Builder apiPassword(@Nullable Output<String> apiPassword) {
+            $.apiPassword = apiPassword;
+            return this;
+        }
+
+        public Builder apiPassword(String apiPassword) {
+            return apiPassword(Output.of(apiPassword));
         }
 
         public Builder apiUrl(@Nullable Output<String> apiUrl) {

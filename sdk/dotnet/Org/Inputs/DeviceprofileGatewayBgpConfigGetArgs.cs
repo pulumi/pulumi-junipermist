@@ -68,11 +68,17 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("importPolicy")]
         public Input<string>? ImportPolicy { get; set; }
 
+        /// <summary>
+        /// Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        /// </summary>
         [Input("localAs")]
-        public Input<int>? LocalAs { get; set; }
+        public Input<string>? LocalAs { get; set; }
 
+        /// <summary>
+        /// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        /// </summary>
         [Input("neighborAs")]
-        public Input<int>? NeighborAs { get; set; }
+        public Input<string>? NeighborAs { get; set; }
 
         [Input("neighbors")]
         private InputMap<Inputs.DeviceprofileGatewayBgpConfigNeighborsGetArgs>? _neighbors;
@@ -97,6 +103,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
             get => _networks ?? (_networks = new InputList<string>());
             set => _networks = value;
         }
+
+        [Input("noPrivateAs")]
+        public Input<bool>? NoPrivateAs { get; set; }
 
         /// <summary>
         /// By default, we'll re-advertise all learned BGP routers toward overlay

@@ -29,7 +29,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// <summary>
         /// Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         /// </summary>
-        public readonly bool? BypassAuthWhenServerDownForUnkownClient;
+        public readonly bool? BypassAuthWhenServerDownForUnknownClient;
         public readonly string? Description;
         /// <summary>
         /// Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
@@ -109,9 +109,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? PortNetwork;
         /// <summary>
-        /// Only if `port_auth`=`dot1x` reauthentication interval range
+        /// Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
         /// </summary>
-        public readonly int? ReauthInterval;
+        public readonly string? ReauthInterval;
         /// <summary>
         /// Only if `port_auth`==`dot1x` sets server fail fallback vlan
         /// </summary>
@@ -157,7 +157,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             bool? bypassAuthWhenServerDown,
 
-            bool? bypassAuthWhenServerDownForUnkownClient,
+            bool? bypassAuthWhenServerDownForUnknownClient,
 
             string? description,
 
@@ -201,7 +201,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string? portNetwork,
 
-            int? reauthInterval,
+            string? reauthInterval,
 
             string? serverFailNetwork,
 
@@ -227,7 +227,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             AllowDhcpd = allowDhcpd;
             AllowMultipleSupplicants = allowMultipleSupplicants;
             BypassAuthWhenServerDown = bypassAuthWhenServerDown;
-            BypassAuthWhenServerDownForUnkownClient = bypassAuthWhenServerDownForUnkownClient;
+            BypassAuthWhenServerDownForUnknownClient = bypassAuthWhenServerDownForUnknownClient;
             Description = description;
             DisableAutoneg = disableAutoneg;
             Disabled = disabled;

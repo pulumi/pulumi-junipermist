@@ -11,19 +11,43 @@ import java.util.Objects;
 
 @CustomType
 public final class GetWlantemplatesOrgWlantemplate {
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
     private Double createdTime;
+    /**
+     * @return Unique ID of the object instance in the Mist Organization
+     * 
+     */
     private String id;
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
     private Double modifiedTime;
     private String name;
     private String orgId;
 
     private GetWlantemplatesOrgWlantemplate() {}
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
     public Double createdTime() {
         return this.createdTime;
     }
+    /**
+     * @return Unique ID of the object instance in the Mist Organization
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
     public Double modifiedTime() {
         return this.modifiedTime;
     }

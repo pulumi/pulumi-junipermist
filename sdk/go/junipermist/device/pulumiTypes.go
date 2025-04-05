@@ -20,6 +20,7 @@ type ApAeroscout struct {
 	Host *string `pulumi:"host"`
 	// Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
 	LocateConnected *bool `pulumi:"locateConnected"`
+	Port            *int  `pulumi:"port"`
 }
 
 // ApAeroscoutInput is an input type that accepts ApAeroscoutArgs and ApAeroscoutOutput values.
@@ -40,6 +41,7 @@ type ApAeroscoutArgs struct {
 	Host pulumi.StringPtrInput `pulumi:"host"`
 	// Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
 	LocateConnected pulumi.BoolPtrInput `pulumi:"locateConnected"`
+	Port            pulumi.IntPtrInput  `pulumi:"port"`
 }
 
 func (ApAeroscoutArgs) ElementType() reflect.Type {
@@ -134,6 +136,10 @@ func (o ApAeroscoutOutput) LocateConnected() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApAeroscout) *bool { return v.LocateConnected }).(pulumi.BoolPtrOutput)
 }
 
+func (o ApAeroscoutOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApAeroscout) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
 type ApAeroscoutPtrOutput struct{ *pulumi.OutputState }
 
 func (ApAeroscoutPtrOutput) ElementType() reflect.Type {
@@ -186,6 +192,15 @@ func (o ApAeroscoutPtrOutput) LocateConnected() pulumi.BoolPtrOutput {
 		}
 		return v.LocateConnected
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ApAeroscoutPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApAeroscout) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 type ApBleConfig struct {
@@ -1278,7 +1293,7 @@ type ApEslConfig struct {
 	Host *string `pulumi:"host"`
 	// Only if `type`==`imagotag` or `type`==`native`
 	Port *int `pulumi:"port"`
-	// note: bleConfig will be ingored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+	// note: bleConfig will be ignored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
 	Type *string `pulumi:"type"`
 	// Only if `type`==`imagotag` or `type`==`native`
 	VerifyCert *bool `pulumi:"verifyCert"`
@@ -1308,7 +1323,7 @@ type ApEslConfigArgs struct {
 	Host pulumi.StringPtrInput `pulumi:"host"`
 	// Only if `type`==`imagotag` or `type`==`native`
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// note: bleConfig will be ingored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+	// note: bleConfig will be ignored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Only if `type`==`imagotag` or `type`==`native`
 	VerifyCert pulumi.BoolPtrInput `pulumi:"verifyCert"`
@@ -1418,7 +1433,7 @@ func (o ApEslConfigOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApEslConfig) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// note: bleConfig will be ingored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+// note: bleConfig will be ignored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
 func (o ApEslConfigOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApEslConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1507,7 +1522,7 @@ func (o ApEslConfigPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// note: bleConfig will be ingored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+// note: bleConfig will be ignored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
 func (o ApEslConfigPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApEslConfig) *string {
 		if v == nil {
@@ -1867,6 +1882,139 @@ func (o ApIpConfigPtrOutput) VlanId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type ApLacpConfig struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ApLacpConfigInput is an input type that accepts ApLacpConfigArgs and ApLacpConfigOutput values.
+// You can construct a concrete instance of `ApLacpConfigInput` via:
+//
+//	ApLacpConfigArgs{...}
+type ApLacpConfigInput interface {
+	pulumi.Input
+
+	ToApLacpConfigOutput() ApLacpConfigOutput
+	ToApLacpConfigOutputWithContext(context.Context) ApLacpConfigOutput
+}
+
+type ApLacpConfigArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ApLacpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApLacpConfig)(nil)).Elem()
+}
+
+func (i ApLacpConfigArgs) ToApLacpConfigOutput() ApLacpConfigOutput {
+	return i.ToApLacpConfigOutputWithContext(context.Background())
+}
+
+func (i ApLacpConfigArgs) ToApLacpConfigOutputWithContext(ctx context.Context) ApLacpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApLacpConfigOutput)
+}
+
+func (i ApLacpConfigArgs) ToApLacpConfigPtrOutput() ApLacpConfigPtrOutput {
+	return i.ToApLacpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ApLacpConfigArgs) ToApLacpConfigPtrOutputWithContext(ctx context.Context) ApLacpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApLacpConfigOutput).ToApLacpConfigPtrOutputWithContext(ctx)
+}
+
+// ApLacpConfigPtrInput is an input type that accepts ApLacpConfigArgs, ApLacpConfigPtr and ApLacpConfigPtrOutput values.
+// You can construct a concrete instance of `ApLacpConfigPtrInput` via:
+//
+//	        ApLacpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApLacpConfigPtrInput interface {
+	pulumi.Input
+
+	ToApLacpConfigPtrOutput() ApLacpConfigPtrOutput
+	ToApLacpConfigPtrOutputWithContext(context.Context) ApLacpConfigPtrOutput
+}
+
+type apLacpConfigPtrType ApLacpConfigArgs
+
+func ApLacpConfigPtr(v *ApLacpConfigArgs) ApLacpConfigPtrInput {
+	return (*apLacpConfigPtrType)(v)
+}
+
+func (*apLacpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApLacpConfig)(nil)).Elem()
+}
+
+func (i *apLacpConfigPtrType) ToApLacpConfigPtrOutput() ApLacpConfigPtrOutput {
+	return i.ToApLacpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *apLacpConfigPtrType) ToApLacpConfigPtrOutputWithContext(ctx context.Context) ApLacpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApLacpConfigPtrOutput)
+}
+
+type ApLacpConfigOutput struct{ *pulumi.OutputState }
+
+func (ApLacpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApLacpConfig)(nil)).Elem()
+}
+
+func (o ApLacpConfigOutput) ToApLacpConfigOutput() ApLacpConfigOutput {
+	return o
+}
+
+func (o ApLacpConfigOutput) ToApLacpConfigOutputWithContext(ctx context.Context) ApLacpConfigOutput {
+	return o
+}
+
+func (o ApLacpConfigOutput) ToApLacpConfigPtrOutput() ApLacpConfigPtrOutput {
+	return o.ToApLacpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ApLacpConfigOutput) ToApLacpConfigPtrOutputWithContext(ctx context.Context) ApLacpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApLacpConfig) *ApLacpConfig {
+		return &v
+	}).(ApLacpConfigPtrOutput)
+}
+
+func (o ApLacpConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApLacpConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ApLacpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ApLacpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApLacpConfig)(nil)).Elem()
+}
+
+func (o ApLacpConfigPtrOutput) ToApLacpConfigPtrOutput() ApLacpConfigPtrOutput {
+	return o
+}
+
+func (o ApLacpConfigPtrOutput) ToApLacpConfigPtrOutputWithContext(ctx context.Context) ApLacpConfigPtrOutput {
+	return o
+}
+
+func (o ApLacpConfigPtrOutput) Elem() ApLacpConfigOutput {
+	return o.ApplyT(func(v *ApLacpConfig) ApLacpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ApLacpConfig
+		return ret
+	}).(ApLacpConfigOutput)
+}
+
+func (o ApLacpConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApLacpConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ApLed struct {
 	Brightness *int  `pulumi:"brightness"`
 	Enabled    *bool `pulumi:"enabled"`
@@ -2016,6 +2164,8 @@ func (o ApLedPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type ApMesh struct {
+	// List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+	Bands []string `pulumi:"bands"`
 	// Whether mesh is enabled on this AP
 	Enabled *bool `pulumi:"enabled"`
 	// Mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
@@ -2036,6 +2186,8 @@ type ApMeshInput interface {
 }
 
 type ApMeshArgs struct {
+	// List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+	Bands pulumi.StringArrayInput `pulumi:"bands"`
 	// Whether mesh is enabled on this AP
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
@@ -2121,6 +2273,11 @@ func (o ApMeshOutput) ToApMeshPtrOutputWithContext(ctx context.Context) ApMeshPt
 	}).(ApMeshPtrOutput)
 }
 
+// List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+func (o ApMeshOutput) Bands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApMesh) []string { return v.Bands }).(pulumi.StringArrayOutput)
+}
+
 // Whether mesh is enabled on this AP
 func (o ApMeshOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApMesh) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -2158,6 +2315,16 @@ func (o ApMeshPtrOutput) Elem() ApMeshOutput {
 		var ret ApMesh
 		return ret
 	}).(ApMeshOutput)
+}
+
+// List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+func (o ApMeshPtrOutput) Bands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApMesh) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Bands
+	}).(pulumi.StringArrayOutput)
 }
 
 // Whether mesh is enabled on this AP
@@ -3984,7 +4151,7 @@ func (o ApRadioConfigBand6PtrOutput) StandardPower() pulumi.BoolPtrOutput {
 }
 
 type ApUplinkPortConfig struct {
-	// Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
+	// Whether to do 802.1x against uplink switch. When enabled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
 	Dot1x *bool `pulumi:"dot1x"`
 	// By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
 	KeepWlansUpIfDown *bool `pulumi:"keepWlansUpIfDown"`
@@ -4002,7 +4169,7 @@ type ApUplinkPortConfigInput interface {
 }
 
 type ApUplinkPortConfigArgs struct {
-	// Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
+	// Whether to do 802.1x against uplink switch. When enabled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
 	Dot1x pulumi.BoolPtrInput `pulumi:"dot1x"`
 	// By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
 	KeepWlansUpIfDown pulumi.BoolPtrInput `pulumi:"keepWlansUpIfDown"`
@@ -4085,7 +4252,7 @@ func (o ApUplinkPortConfigOutput) ToApUplinkPortConfigPtrOutputWithContext(ctx c
 	}).(ApUplinkPortConfigPtrOutput)
 }
 
-// Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
+// Whether to do 802.1x against uplink switch. When enabled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
 func (o ApUplinkPortConfigOutput) Dot1x() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApUplinkPortConfig) *bool { return v.Dot1x }).(pulumi.BoolPtrOutput)
 }
@@ -4119,7 +4286,7 @@ func (o ApUplinkPortConfigPtrOutput) Elem() ApUplinkPortConfigOutput {
 	}).(ApUplinkPortConfigOutput)
 }
 
-// Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
+// Whether to do 802.1x against uplink switch. When enabled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
 func (o ApUplinkPortConfigPtrOutput) Dot1x() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApUplinkPortConfig) *bool {
 		if v == nil {
@@ -4430,12 +4597,15 @@ type GatewayBgpConfig struct {
 	Import              *string `pulumi:"import"`
 	// Default import policies if no per-neighbor policies defined
 	ImportPolicy *string `pulumi:"importPolicy"`
-	LocalAs      *int    `pulumi:"localAs"`
-	NeighborAs   *int    `pulumi:"neighborAs"`
+	// Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+	LocalAs *string `pulumi:"localAs"`
+	// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+	NeighborAs *string `pulumi:"neighborAs"`
 	// If per-neighbor as is desired. Property key is the neighbor address
 	Neighbors map[string]GatewayBgpConfigNeighbors `pulumi:"neighbors"`
 	// If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
-	Networks []string `pulumi:"networks"`
+	Networks    []string `pulumi:"networks"`
+	NoPrivateAs *bool    `pulumi:"noPrivateAs"`
 	// By default, we'll re-advertise all learned BGP routers toward overlay
 	NoReadvertiseToOverlay *bool `pulumi:"noReadvertiseToOverlay"`
 	// If `type`==`tunnel`
@@ -4481,12 +4651,15 @@ type GatewayBgpConfigArgs struct {
 	Import              pulumi.StringPtrInput `pulumi:"import"`
 	// Default import policies if no per-neighbor policies defined
 	ImportPolicy pulumi.StringPtrInput `pulumi:"importPolicy"`
-	LocalAs      pulumi.IntPtrInput    `pulumi:"localAs"`
-	NeighborAs   pulumi.IntPtrInput    `pulumi:"neighborAs"`
+	// Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+	LocalAs pulumi.StringPtrInput `pulumi:"localAs"`
+	// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+	NeighborAs pulumi.StringPtrInput `pulumi:"neighborAs"`
 	// If per-neighbor as is desired. Property key is the neighbor address
 	Neighbors GatewayBgpConfigNeighborsMapInput `pulumi:"neighbors"`
 	// If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
-	Networks pulumi.StringArrayInput `pulumi:"networks"`
+	Networks    pulumi.StringArrayInput `pulumi:"networks"`
+	NoPrivateAs pulumi.BoolPtrInput     `pulumi:"noPrivateAs"`
 	// By default, we'll re-advertise all learned BGP routers toward overlay
 	NoReadvertiseToOverlay pulumi.BoolPtrInput `pulumi:"noReadvertiseToOverlay"`
 	// If `type`==`tunnel`
@@ -4604,12 +4777,14 @@ func (o GatewayBgpConfigOutput) ImportPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *string { return v.ImportPolicy }).(pulumi.StringPtrOutput)
 }
 
-func (o GatewayBgpConfigOutput) LocalAs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GatewayBgpConfig) *int { return v.LocalAs }).(pulumi.IntPtrOutput)
+// Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+func (o GatewayBgpConfigOutput) LocalAs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayBgpConfig) *string { return v.LocalAs }).(pulumi.StringPtrOutput)
 }
 
-func (o GatewayBgpConfigOutput) NeighborAs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GatewayBgpConfig) *int { return v.NeighborAs }).(pulumi.IntPtrOutput)
+// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+func (o GatewayBgpConfigOutput) NeighborAs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayBgpConfig) *string { return v.NeighborAs }).(pulumi.StringPtrOutput)
 }
 
 // If per-neighbor as is desired. Property key is the neighbor address
@@ -4620,6 +4795,10 @@ func (o GatewayBgpConfigOutput) Neighbors() GatewayBgpConfigNeighborsMapOutput {
 // If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
 func (o GatewayBgpConfigOutput) Networks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) []string { return v.Networks }).(pulumi.StringArrayOutput)
+}
+
+func (o GatewayBgpConfigOutput) NoPrivateAs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayBgpConfig) *bool { return v.NoPrivateAs }).(pulumi.BoolPtrOutput)
 }
 
 // By default, we'll re-advertise all learned BGP routers toward overlay
@@ -4679,7 +4858,8 @@ type GatewayBgpConfigNeighbors struct {
 	ImportPolicy *string `pulumi:"importPolicy"`
 	// Assuming BGP neighbor is directly connected
 	MultihopTtl *int `pulumi:"multihopTtl"`
-	NeighborAs  *int `pulumi:"neighborAs"`
+	// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+	NeighborAs *string `pulumi:"neighborAs"`
 }
 
 // GatewayBgpConfigNeighborsInput is an input type that accepts GatewayBgpConfigNeighborsArgs and GatewayBgpConfigNeighborsOutput values.
@@ -4701,7 +4881,8 @@ type GatewayBgpConfigNeighborsArgs struct {
 	ImportPolicy pulumi.StringPtrInput `pulumi:"importPolicy"`
 	// Assuming BGP neighbor is directly connected
 	MultihopTtl pulumi.IntPtrInput `pulumi:"multihopTtl"`
-	NeighborAs  pulumi.IntPtrInput `pulumi:"neighborAs"`
+	// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+	NeighborAs pulumi.StringPtrInput `pulumi:"neighborAs"`
 }
 
 func (GatewayBgpConfigNeighborsArgs) ElementType() reflect.Type {
@@ -4777,8 +4958,9 @@ func (o GatewayBgpConfigNeighborsOutput) MultihopTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfigNeighbors) *int { return v.MultihopTtl }).(pulumi.IntPtrOutput)
 }
 
-func (o GatewayBgpConfigNeighborsOutput) NeighborAs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GatewayBgpConfigNeighbors) *int { return v.NeighborAs }).(pulumi.IntPtrOutput)
+// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+func (o GatewayBgpConfigNeighborsOutput) NeighborAs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayBgpConfigNeighbors) *string { return v.NeighborAs }).(pulumi.StringPtrOutput)
 }
 
 type GatewayBgpConfigNeighborsMapOutput struct{ *pulumi.OutputState }
@@ -4802,7 +4984,7 @@ func (o GatewayBgpConfigNeighborsMapOutput) MapIndex(k pulumi.StringInput) Gatew
 }
 
 type GatewayClusterNode struct {
-	// Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+	// Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
 	Mac string `pulumi:"mac"`
 }
 
@@ -4818,7 +5000,7 @@ type GatewayClusterNodeInput interface {
 }
 
 type GatewayClusterNodeArgs struct {
-	// Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+	// Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
 	Mac pulumi.StringInput `pulumi:"mac"`
 }
 
@@ -4873,7 +5055,7 @@ func (o GatewayClusterNodeOutput) ToGatewayClusterNodeOutputWithContext(ctx cont
 	return o
 }
 
-// Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+// Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
 func (o GatewayClusterNodeOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v GatewayClusterNode) string { return v.Mac }).(pulumi.StringOutput)
 }
@@ -5059,7 +5241,7 @@ type GatewayDhcpdConfigConfig struct {
 	DnsServers []string `pulumi:"dnsServers"`
 	// If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+	// If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
 	FixedBindings map[string]GatewayDhcpdConfigConfigFixedBindings `pulumi:"fixedBindings"`
 	// If `type`==`local` - optional, `ip` will be used if not provided
 	Gateway *string `pulumi:"gateway"`
@@ -5108,7 +5290,7 @@ type GatewayDhcpdConfigConfigArgs struct {
 	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
 	// If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
 	DnsSuffixes pulumi.StringArrayInput `pulumi:"dnsSuffixes"`
-	// If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+	// If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
 	FixedBindings GatewayDhcpdConfigConfigFixedBindingsMapInput `pulumi:"fixedBindings"`
 	// If `type`==`local` - optional, `ip` will be used if not provided
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
@@ -5202,7 +5384,7 @@ func (o GatewayDhcpdConfigConfigOutput) DnsSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayDhcpdConfigConfig) []string { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
 }
 
-// If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+// If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
 func (o GatewayDhcpdConfigConfigOutput) FixedBindings() GatewayDhcpdConfigConfigFixedBindingsMapOutput {
 	return o.ApplyT(func(v GatewayDhcpdConfigConfig) map[string]GatewayDhcpdConfigConfigFixedBindings {
 		return v.FixedBindings
@@ -5796,7 +5978,7 @@ func (o GatewayExtraRoutesMapOutput) MapIndex(k pulumi.StringInput) GatewayExtra
 type GatewayIdpProfiles struct {
 	// enum: `critical`, `standard`, `strict`
 	BaseProfile *string `pulumi:"baseProfile"`
-	// Unique ID of the object instance in the Mist Organnization
+	// Unique ID of the object instance in the Mist Organization
 	Id         *string                       `pulumi:"id"`
 	Name       *string                       `pulumi:"name"`
 	OrgId      *string                       `pulumi:"orgId"`
@@ -5817,7 +5999,7 @@ type GatewayIdpProfilesInput interface {
 type GatewayIdpProfilesArgs struct {
 	// enum: `critical`, `standard`, `strict`
 	BaseProfile pulumi.StringPtrInput `pulumi:"baseProfile"`
-	// Unique ID of the object instance in the Mist Organnization
+	// Unique ID of the object instance in the Mist Organization
 	Id         pulumi.StringPtrInput                 `pulumi:"id"`
 	Name       pulumi.StringPtrInput                 `pulumi:"name"`
 	OrgId      pulumi.StringPtrInput                 `pulumi:"orgId"`
@@ -5880,7 +6062,7 @@ func (o GatewayIdpProfilesOutput) BaseProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayIdpProfiles) *string { return v.BaseProfile }).(pulumi.StringPtrOutput)
 }
 
-// Unique ID of the object instance in the Mist Organnization
+// Unique ID of the object instance in the Mist Organization
 func (o GatewayIdpProfilesOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayIdpProfiles) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -5920,7 +6102,7 @@ func (o GatewayIdpProfilesMapOutput) MapIndex(k pulumi.StringInput) GatewayIdpPr
 type GatewayIdpProfilesOverwrite struct {
 	// enum:
 	//   * alert (default)
-	//   * drop: siliently dropping packets
+	//   * drop: silently dropping packets
 	//   * close: notify client/server to close connection
 	Action   *string                              `pulumi:"action"`
 	Matching *GatewayIdpProfilesOverwriteMatching `pulumi:"matching"`
@@ -5941,7 +6123,7 @@ type GatewayIdpProfilesOverwriteInput interface {
 type GatewayIdpProfilesOverwriteArgs struct {
 	// enum:
 	//   * alert (default)
-	//   * drop: siliently dropping packets
+	//   * drop: silently dropping packets
 	//   * close: notify client/server to close connection
 	Action   pulumi.StringPtrInput                       `pulumi:"action"`
 	Matching GatewayIdpProfilesOverwriteMatchingPtrInput `pulumi:"matching"`
@@ -6001,7 +6183,7 @@ func (o GatewayIdpProfilesOverwriteOutput) ToGatewayIdpProfilesOverwriteOutputWi
 
 // enum:
 //   - alert (default)
-//   - drop: siliently dropping packets
+//   - drop: silently dropping packets
 //   - close: notify client/server to close connection
 func (o GatewayIdpProfilesOverwriteOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayIdpProfilesOverwrite) *string { return v.Action }).(pulumi.StringPtrOutput)
@@ -6199,8 +6381,8 @@ func (o GatewayIdpProfilesOverwriteMatchingPtrOutput) Severities() pulumi.String
 }
 
 type GatewayIpConfigs struct {
-	Ip      string `pulumi:"ip"`
-	Netmask string `pulumi:"netmask"`
+	Ip      *string `pulumi:"ip"`
+	Netmask *string `pulumi:"netmask"`
 	// Optional list of secondary IPs in CIDR format
 	SecondaryIps []string `pulumi:"secondaryIps"`
 	// enum: `dhcp`, `static`
@@ -6219,8 +6401,8 @@ type GatewayIpConfigsInput interface {
 }
 
 type GatewayIpConfigsArgs struct {
-	Ip      pulumi.StringInput `pulumi:"ip"`
-	Netmask pulumi.StringInput `pulumi:"netmask"`
+	Ip      pulumi.StringPtrInput `pulumi:"ip"`
+	Netmask pulumi.StringPtrInput `pulumi:"netmask"`
 	// Optional list of secondary IPs in CIDR format
 	SecondaryIps pulumi.StringArrayInput `pulumi:"secondaryIps"`
 	// enum: `dhcp`, `static`
@@ -6278,12 +6460,12 @@ func (o GatewayIpConfigsOutput) ToGatewayIpConfigsOutputWithContext(ctx context.
 	return o
 }
 
-func (o GatewayIpConfigsOutput) Ip() pulumi.StringOutput {
-	return o.ApplyT(func(v GatewayIpConfigs) string { return v.Ip }).(pulumi.StringOutput)
+func (o GatewayIpConfigsOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayIpConfigs) *string { return v.Ip }).(pulumi.StringPtrOutput)
 }
 
-func (o GatewayIpConfigsOutput) Netmask() pulumi.StringOutput {
-	return o.ApplyT(func(v GatewayIpConfigs) string { return v.Netmask }).(pulumi.StringOutput)
+func (o GatewayIpConfigsOutput) Netmask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayIpConfigs) *string { return v.Netmask }).(pulumi.StringPtrOutput)
 }
 
 // Optional list of secondary IPs in CIDR format
@@ -7085,7 +7267,7 @@ func (o GatewayNetworkInternetAccessStaticNatMapOutput) MapIndex(k pulumi.String
 }
 
 type GatewayNetworkMulticast struct {
-	// If the network will only be the soruce of the multicast traffic, IGMP can be disabled
+	// If the network will only be the source of the multicast traffic, IGMP can be disabled
 	DisableIgmp *bool `pulumi:"disableIgmp"`
 	Enabled     *bool `pulumi:"enabled"`
 	// Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
@@ -7104,7 +7286,7 @@ type GatewayNetworkMulticastInput interface {
 }
 
 type GatewayNetworkMulticastArgs struct {
-	// If the network will only be the soruce of the multicast traffic, IGMP can be disabled
+	// If the network will only be the source of the multicast traffic, IGMP can be disabled
 	DisableIgmp pulumi.BoolPtrInput `pulumi:"disableIgmp"`
 	Enabled     pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
@@ -7188,7 +7370,7 @@ func (o GatewayNetworkMulticastOutput) ToGatewayNetworkMulticastPtrOutputWithCon
 	}).(GatewayNetworkMulticastPtrOutput)
 }
 
-// If the network will only be the soruce of the multicast traffic, IGMP can be disabled
+// If the network will only be the source of the multicast traffic, IGMP can be disabled
 func (o GatewayNetworkMulticastOutput) DisableIgmp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayNetworkMulticast) *bool { return v.DisableIgmp }).(pulumi.BoolPtrOutput)
 }
@@ -7226,7 +7408,7 @@ func (o GatewayNetworkMulticastPtrOutput) Elem() GatewayNetworkMulticastOutput {
 	}).(GatewayNetworkMulticastOutput)
 }
 
-// If the network will only be the soruce of the multicast traffic, IGMP can be disabled
+// If the network will only be the source of the multicast traffic, IGMP can be disabled
 func (o GatewayNetworkMulticastPtrOutput) DisableIgmp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewayNetworkMulticast) *bool {
 		if v == nil {
@@ -8839,8 +9021,10 @@ type GatewayPortConfig struct {
 	PreserveDscp *bool `pulumi:"preserveDscp"`
 	// If HA mode
 	Redundant *bool `pulumi:"redundant"`
-	// If HA mode
-	RethIdx *int `pulumi:"rethIdx"`
+	// If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
+	RedundantGroup *int `pulumi:"redundantGroup"`
+	// For SRX only and if HA Mode
+	RethIdx *string `pulumi:"rethIdx"`
 	// If HA mode
 	RethNode *string `pulumi:"rethNode"`
 	// SSR only - supporting vlan-based redundancy (matching the size of `networks`)
@@ -8860,7 +9044,7 @@ type GatewayPortConfig struct {
 	WanArpPolicer *string `pulumi:"wanArpPolicer"`
 	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 	WanExtIp *string `pulumi:"wanExtIp"`
-	// Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+	// Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
 	WanExtraRoutes map[string]GatewayPortConfigWanExtraRoutes `pulumi:"wanExtraRoutes"`
 	// Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
 	WanNetworks []string `pulumi:"wanNetworks"`
@@ -8931,8 +9115,10 @@ type GatewayPortConfigArgs struct {
 	PreserveDscp pulumi.BoolPtrInput `pulumi:"preserveDscp"`
 	// If HA mode
 	Redundant pulumi.BoolPtrInput `pulumi:"redundant"`
-	// If HA mode
-	RethIdx pulumi.IntPtrInput `pulumi:"rethIdx"`
+	// If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
+	RedundantGroup pulumi.IntPtrInput `pulumi:"redundantGroup"`
+	// For SRX only and if HA Mode
+	RethIdx pulumi.StringPtrInput `pulumi:"rethIdx"`
 	// If HA mode
 	RethNode pulumi.StringPtrInput `pulumi:"rethNode"`
 	// SSR only - supporting vlan-based redundancy (matching the size of `networks`)
@@ -8952,7 +9138,7 @@ type GatewayPortConfigArgs struct {
 	WanArpPolicer pulumi.StringPtrInput `pulumi:"wanArpPolicer"`
 	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 	WanExtIp pulumi.StringPtrInput `pulumi:"wanExtIp"`
-	// Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+	// Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
 	WanExtraRoutes GatewayPortConfigWanExtraRoutesMapInput `pulumi:"wanExtraRoutes"`
 	// Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
 	WanNetworks pulumi.StringArrayInput `pulumi:"wanNetworks"`
@@ -9140,9 +9326,14 @@ func (o GatewayPortConfigOutput) Redundant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *bool { return v.Redundant }).(pulumi.BoolPtrOutput)
 }
 
-// If HA mode
-func (o GatewayPortConfigOutput) RethIdx() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GatewayPortConfig) *int { return v.RethIdx }).(pulumi.IntPtrOutput)
+// If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
+func (o GatewayPortConfigOutput) RedundantGroup() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GatewayPortConfig) *int { return v.RedundantGroup }).(pulumi.IntPtrOutput)
+}
+
+// For SRX only and if HA Mode
+func (o GatewayPortConfigOutput) RethIdx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayPortConfig) *string { return v.RethIdx }).(pulumi.StringPtrOutput)
 }
 
 // If HA mode
@@ -9197,7 +9388,7 @@ func (o GatewayPortConfigOutput) WanExtIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *string { return v.WanExtIp }).(pulumi.StringPtrOutput)
 }
 
-// Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+// Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
 func (o GatewayPortConfigOutput) WanExtraRoutes() GatewayPortConfigWanExtraRoutesMapOutput {
 	return o.ApplyT(func(v GatewayPortConfig) map[string]GatewayPortConfigWanExtraRoutes { return v.WanExtraRoutes }).(GatewayPortConfigWanExtraRoutesMapOutput)
 }
@@ -9551,7 +9742,7 @@ func (o GatewayPortConfigIpConfigPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type GatewayPortConfigTrafficShaping struct {
-	// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+	// percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
 	ClassPercentages []int `pulumi:"classPercentages"`
 	Enabled          *bool `pulumi:"enabled"`
 	// Interface Transmit Cap in kbps
@@ -9570,7 +9761,7 @@ type GatewayPortConfigTrafficShapingInput interface {
 }
 
 type GatewayPortConfigTrafficShapingArgs struct {
-	// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+	// percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
 	ClassPercentages pulumi.IntArrayInput `pulumi:"classPercentages"`
 	Enabled          pulumi.BoolPtrInput  `pulumi:"enabled"`
 	// Interface Transmit Cap in kbps
@@ -9654,7 +9845,7 @@ func (o GatewayPortConfigTrafficShapingOutput) ToGatewayPortConfigTrafficShaping
 	}).(GatewayPortConfigTrafficShapingPtrOutput)
 }
 
-// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+// percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
 func (o GatewayPortConfigTrafficShapingOutput) ClassPercentages() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GatewayPortConfigTrafficShaping) []int { return v.ClassPercentages }).(pulumi.IntArrayOutput)
 }
@@ -9692,7 +9883,7 @@ func (o GatewayPortConfigTrafficShapingPtrOutput) Elem() GatewayPortConfigTraffi
 	}).(GatewayPortConfigTrafficShapingOutput)
 }
 
-// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+// percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
 func (o GatewayPortConfigTrafficShapingPtrOutput) ClassPercentages() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *GatewayPortConfigTrafficShaping) []int {
 		if v == nil {
@@ -9726,11 +9917,9 @@ type GatewayPortConfigVpnPaths struct {
 	BfdProfile *string `pulumi:"bfdProfile"`
 	// Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
 	BfdUseTunnelMode *bool `pulumi:"bfdUseTunnelMode"`
-	// Only if the VPN `type`==`mesh`
-	LinkName *string `pulumi:"linkName"`
 	// Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
 	Preference *int `pulumi:"preference"`
-	// Only if the VPN `type`==`hubSpoke`. enum: `hub`, `spoke`
+	// If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
 	Role           *string                                  `pulumi:"role"`
 	TrafficShaping *GatewayPortConfigVpnPathsTrafficShaping `pulumi:"trafficShaping"`
 }
@@ -9751,11 +9940,9 @@ type GatewayPortConfigVpnPathsArgs struct {
 	BfdProfile pulumi.StringPtrInput `pulumi:"bfdProfile"`
 	// Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
 	BfdUseTunnelMode pulumi.BoolPtrInput `pulumi:"bfdUseTunnelMode"`
-	// Only if the VPN `type`==`mesh`
-	LinkName pulumi.StringPtrInput `pulumi:"linkName"`
 	// Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
 	Preference pulumi.IntPtrInput `pulumi:"preference"`
-	// Only if the VPN `type`==`hubSpoke`. enum: `hub`, `spoke`
+	// If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
 	Role           pulumi.StringPtrInput                           `pulumi:"role"`
 	TrafficShaping GatewayPortConfigVpnPathsTrafficShapingPtrInput `pulumi:"trafficShaping"`
 }
@@ -9821,17 +10008,12 @@ func (o GatewayPortConfigVpnPathsOutput) BfdUseTunnelMode() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v GatewayPortConfigVpnPaths) *bool { return v.BfdUseTunnelMode }).(pulumi.BoolPtrOutput)
 }
 
-// Only if the VPN `type`==`mesh`
-func (o GatewayPortConfigVpnPathsOutput) LinkName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayPortConfigVpnPaths) *string { return v.LinkName }).(pulumi.StringPtrOutput)
-}
-
 // Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
 func (o GatewayPortConfigVpnPathsOutput) Preference() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfigVpnPaths) *int { return v.Preference }).(pulumi.IntPtrOutput)
 }
 
-// Only if the VPN `type`==`hubSpoke`. enum: `hub`, `spoke`
+// If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
 func (o GatewayPortConfigVpnPathsOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfigVpnPaths) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -9861,7 +10043,7 @@ func (o GatewayPortConfigVpnPathsMapOutput) MapIndex(k pulumi.StringInput) Gatew
 }
 
 type GatewayPortConfigVpnPathsTrafficShaping struct {
-	// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+	// percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
 	ClassPercentages []int `pulumi:"classPercentages"`
 	Enabled          *bool `pulumi:"enabled"`
 	// Interface Transmit Cap in kbps
@@ -9880,7 +10062,7 @@ type GatewayPortConfigVpnPathsTrafficShapingInput interface {
 }
 
 type GatewayPortConfigVpnPathsTrafficShapingArgs struct {
-	// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+	// percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
 	ClassPercentages pulumi.IntArrayInput `pulumi:"classPercentages"`
 	Enabled          pulumi.BoolPtrInput  `pulumi:"enabled"`
 	// Interface Transmit Cap in kbps
@@ -9964,7 +10146,7 @@ func (o GatewayPortConfigVpnPathsTrafficShapingOutput) ToGatewayPortConfigVpnPat
 	}).(GatewayPortConfigVpnPathsTrafficShapingPtrOutput)
 }
 
-// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+// percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
 func (o GatewayPortConfigVpnPathsTrafficShapingOutput) ClassPercentages() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GatewayPortConfigVpnPathsTrafficShaping) []int { return v.ClassPercentages }).(pulumi.IntArrayOutput)
 }
@@ -10002,7 +10184,7 @@ func (o GatewayPortConfigVpnPathsTrafficShapingPtrOutput) Elem() GatewayPortConf
 	}).(GatewayPortConfigVpnPathsTrafficShapingOutput)
 }
 
-// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+// percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
 func (o GatewayPortConfigVpnPathsTrafficShapingPtrOutput) ClassPercentages() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *GatewayPortConfigVpnPathsTrafficShaping) []int {
 		if v == nil {
@@ -10967,15 +11149,13 @@ type GatewayRoutingPoliciesTermAction struct {
 	AddCommunities []string `pulumi:"addCommunities"`
 	// For SSR, hub decides how VRF routes are leaked on spoke
 	AddTargetVrfs []string `pulumi:"addTargetVrfs"`
-	// route aggregation
-	Aggregates []string `pulumi:"aggregates"`
 	// When used as export policy, optional
 	Communities []string `pulumi:"communities"`
 	// When used as export policy, optional. To exclude certain AS
 	ExcludeAsPaths     []string `pulumi:"excludeAsPaths"`
 	ExcludeCommunities []string `pulumi:"excludeCommunities"`
 	// When used as export policy, optional
-	ExportCommunitites []string `pulumi:"exportCommunitites"`
+	ExportCommunities []string `pulumi:"exportCommunities"`
 	// Optional, for an import policy, localPreference can be changed
 	LocalPreference *string `pulumi:"localPreference"`
 	// When used as export policy, optional. By default, the local AS will be prepended, to change it
@@ -10998,15 +11178,13 @@ type GatewayRoutingPoliciesTermActionArgs struct {
 	AddCommunities pulumi.StringArrayInput `pulumi:"addCommunities"`
 	// For SSR, hub decides how VRF routes are leaked on spoke
 	AddTargetVrfs pulumi.StringArrayInput `pulumi:"addTargetVrfs"`
-	// route aggregation
-	Aggregates pulumi.StringArrayInput `pulumi:"aggregates"`
 	// When used as export policy, optional
 	Communities pulumi.StringArrayInput `pulumi:"communities"`
 	// When used as export policy, optional. To exclude certain AS
 	ExcludeAsPaths     pulumi.StringArrayInput `pulumi:"excludeAsPaths"`
 	ExcludeCommunities pulumi.StringArrayInput `pulumi:"excludeCommunities"`
 	// When used as export policy, optional
-	ExportCommunitites pulumi.StringArrayInput `pulumi:"exportCommunitites"`
+	ExportCommunities pulumi.StringArrayInput `pulumi:"exportCommunities"`
 	// Optional, for an import policy, localPreference can be changed
 	LocalPreference pulumi.StringPtrInput `pulumi:"localPreference"`
 	// When used as export policy, optional. By default, the local AS will be prepended, to change it
@@ -11103,11 +11281,6 @@ func (o GatewayRoutingPoliciesTermActionOutput) AddTargetVrfs() pulumi.StringArr
 	return o.ApplyT(func(v GatewayRoutingPoliciesTermAction) []string { return v.AddTargetVrfs }).(pulumi.StringArrayOutput)
 }
 
-// route aggregation
-func (o GatewayRoutingPoliciesTermActionOutput) Aggregates() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GatewayRoutingPoliciesTermAction) []string { return v.Aggregates }).(pulumi.StringArrayOutput)
-}
-
 // When used as export policy, optional
 func (o GatewayRoutingPoliciesTermActionOutput) Communities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayRoutingPoliciesTermAction) []string { return v.Communities }).(pulumi.StringArrayOutput)
@@ -11123,8 +11296,8 @@ func (o GatewayRoutingPoliciesTermActionOutput) ExcludeCommunities() pulumi.Stri
 }
 
 // When used as export policy, optional
-func (o GatewayRoutingPoliciesTermActionOutput) ExportCommunitites() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GatewayRoutingPoliciesTermAction) []string { return v.ExportCommunitites }).(pulumi.StringArrayOutput)
+func (o GatewayRoutingPoliciesTermActionOutput) ExportCommunities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayRoutingPoliciesTermAction) []string { return v.ExportCommunities }).(pulumi.StringArrayOutput)
 }
 
 // Optional, for an import policy, localPreference can be changed
@@ -11189,16 +11362,6 @@ func (o GatewayRoutingPoliciesTermActionPtrOutput) AddTargetVrfs() pulumi.String
 	}).(pulumi.StringArrayOutput)
 }
 
-// route aggregation
-func (o GatewayRoutingPoliciesTermActionPtrOutput) Aggregates() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GatewayRoutingPoliciesTermAction) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Aggregates
-	}).(pulumi.StringArrayOutput)
-}
-
 // When used as export policy, optional
 func (o GatewayRoutingPoliciesTermActionPtrOutput) Communities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewayRoutingPoliciesTermAction) []string {
@@ -11229,12 +11392,12 @@ func (o GatewayRoutingPoliciesTermActionPtrOutput) ExcludeCommunities() pulumi.S
 }
 
 // When used as export policy, optional
-func (o GatewayRoutingPoliciesTermActionPtrOutput) ExportCommunitites() pulumi.StringArrayOutput {
+func (o GatewayRoutingPoliciesTermActionPtrOutput) ExportCommunities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewayRoutingPoliciesTermAction) []string {
 		if v == nil {
 			return nil
 		}
-		return v.ExportCommunitites
+		return v.ExportCommunities
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -11265,7 +11428,7 @@ type GatewayRoutingPoliciesTermMatching struct {
 	Networks    []string `pulumi:"networks"`
 	// zero or more criteria/filter can be specified to match the term, all criteria have to be met
 	Prefixes []string `pulumi:"prefixes"`
-	// `direct`, `bgp`, `osp`, ...
+	// `direct`, `bgp`, `osp`, `static`, `aggregate`...
 	Protocols   []string                                       `pulumi:"protocols"`
 	RouteExists *GatewayRoutingPoliciesTermMatchingRouteExists `pulumi:"routeExists"`
 	// overlay-facing criteria (used for bgpConfig where via=vpn)
@@ -11293,7 +11456,7 @@ type GatewayRoutingPoliciesTermMatchingArgs struct {
 	Networks    pulumi.StringArrayInput `pulumi:"networks"`
 	// zero or more criteria/filter can be specified to match the term, all criteria have to be met
 	Prefixes pulumi.StringArrayInput `pulumi:"prefixes"`
-	// `direct`, `bgp`, `osp`, ...
+	// `direct`, `bgp`, `osp`, `static`, `aggregate`...
 	Protocols   pulumi.StringArrayInput                               `pulumi:"protocols"`
 	RouteExists GatewayRoutingPoliciesTermMatchingRouteExistsPtrInput `pulumi:"routeExists"`
 	// overlay-facing criteria (used for bgpConfig where via=vpn)
@@ -11398,7 +11561,7 @@ func (o GatewayRoutingPoliciesTermMatchingOutput) Prefixes() pulumi.StringArrayO
 	return o.ApplyT(func(v GatewayRoutingPoliciesTermMatching) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
 }
 
-// `direct`, `bgp`, `osp`, ...
+// `direct`, `bgp`, `osp`, `static`, `aggregate`...
 func (o GatewayRoutingPoliciesTermMatchingOutput) Protocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayRoutingPoliciesTermMatching) []string { return v.Protocols }).(pulumi.StringArrayOutput)
 }
@@ -11487,7 +11650,7 @@ func (o GatewayRoutingPoliciesTermMatchingPtrOutput) Prefixes() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
-// `direct`, `bgp`, `osp`, ...
+// `direct`, `bgp`, `osp`, `static`, `aggregate`...
 func (o GatewayRoutingPoliciesTermMatchingPtrOutput) Protocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewayRoutingPoliciesTermMatching) []string {
 		if v == nil {
@@ -11867,7 +12030,7 @@ type GatewayServicePolicy struct {
 	PathPreference *string `pulumi:"pathPreference"`
 	// Used to link servicepolicy defined at org level and overwrite some attributes
 	ServicepolicyId *string `pulumi:"servicepolicyId"`
-	// Required when `servicepolicyId` is not defined. List of Applications / Desctinations
+	// Required when `servicepolicyId` is not defined. List of Applications / Destinations
 	Services []string `pulumi:"services"`
 	// For SRX-only
 	SslProxy *GatewayServicePolicySslProxy `pulumi:"sslProxy"`
@@ -11903,7 +12066,7 @@ type GatewayServicePolicyArgs struct {
 	PathPreference pulumi.StringPtrInput `pulumi:"pathPreference"`
 	// Used to link servicepolicy defined at org level and overwrite some attributes
 	ServicepolicyId pulumi.StringPtrInput `pulumi:"servicepolicyId"`
-	// Required when `servicepolicyId` is not defined. List of Applications / Desctinations
+	// Required when `servicepolicyId` is not defined. List of Applications / Destinations
 	Services pulumi.StringArrayInput `pulumi:"services"`
 	// For SRX-only
 	SslProxy GatewayServicePolicySslProxyPtrInput `pulumi:"sslProxy"`
@@ -12005,7 +12168,7 @@ func (o GatewayServicePolicyOutput) ServicepolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayServicePolicy) *string { return v.ServicepolicyId }).(pulumi.StringPtrOutput)
 }
 
-// Required when `servicepolicyId` is not defined. List of Applications / Desctinations
+// Required when `servicepolicyId` is not defined. List of Applications / Destinations
 func (o GatewayServicePolicyOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayServicePolicy) []string { return v.Services }).(pulumi.StringArrayOutput)
 }
@@ -12041,7 +12204,7 @@ func (o GatewayServicePolicyArrayOutput) Index(i pulumi.IntInput) GatewayService
 }
 
 type GatewayServicePolicyAntivirus struct {
-	// org-level AV Profile can be used, this takes precendence over 'profile'
+	// org-level AV Profile can be used, this takes precedence over 'profile'
 	AvprofileId *string `pulumi:"avprofileId"`
 	Enabled     *bool   `pulumi:"enabled"`
 	// Default / noftp / httponly / or keys from av_profiles
@@ -12060,7 +12223,7 @@ type GatewayServicePolicyAntivirusInput interface {
 }
 
 type GatewayServicePolicyAntivirusArgs struct {
-	// org-level AV Profile can be used, this takes precendence over 'profile'
+	// org-level AV Profile can be used, this takes precedence over 'profile'
 	AvprofileId pulumi.StringPtrInput `pulumi:"avprofileId"`
 	Enabled     pulumi.BoolPtrInput   `pulumi:"enabled"`
 	// Default / noftp / httponly / or keys from av_profiles
@@ -12144,7 +12307,7 @@ func (o GatewayServicePolicyAntivirusOutput) ToGatewayServicePolicyAntivirusPtrO
 	}).(GatewayServicePolicyAntivirusPtrOutput)
 }
 
-// org-level AV Profile can be used, this takes precendence over 'profile'
+// org-level AV Profile can be used, this takes precedence over 'profile'
 func (o GatewayServicePolicyAntivirusOutput) AvprofileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayServicePolicyAntivirus) *string { return v.AvprofileId }).(pulumi.StringPtrOutput)
 }
@@ -12182,7 +12345,7 @@ func (o GatewayServicePolicyAntivirusPtrOutput) Elem() GatewayServicePolicyAntiv
 	}).(GatewayServicePolicyAntivirusOutput)
 }
 
-// org-level AV Profile can be used, this takes precendence over 'profile'
+// org-level AV Profile can be used, this takes precedence over 'profile'
 func (o GatewayServicePolicyAntivirusPtrOutput) AvprofileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayServicePolicyAntivirus) *string {
 		if v == nil {
@@ -16664,7 +16827,7 @@ type SwitchDhcpdConfigConfig struct {
 	DnsServers []string `pulumi:"dnsServers"`
 	// If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+	// If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
 	FixedBindings map[string]SwitchDhcpdConfigConfigFixedBindings `pulumi:"fixedBindings"`
 	// If `type`==`server`  - optional, `ip` will be used if not provided
 	Gateway *string `pulumi:"gateway"`
@@ -16713,7 +16876,7 @@ type SwitchDhcpdConfigConfigArgs struct {
 	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
 	// If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
 	DnsSuffixes pulumi.StringArrayInput `pulumi:"dnsSuffixes"`
-	// If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+	// If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
 	FixedBindings SwitchDhcpdConfigConfigFixedBindingsMapInput `pulumi:"fixedBindings"`
 	// If `type`==`server`  - optional, `ip` will be used if not provided
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
@@ -16807,7 +16970,7 @@ func (o SwitchDhcpdConfigConfigOutput) DnsSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SwitchDhcpdConfigConfig) []string { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
 }
 
-// If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+// If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
 func (o SwitchDhcpdConfigConfigOutput) FixedBindings() SwitchDhcpdConfigConfigFixedBindingsMapOutput {
 	return o.ApplyT(func(v SwitchDhcpdConfigConfig) map[string]SwitchDhcpdConfigConfigFixedBindings {
 		return v.FixedBindings
@@ -17918,8 +18081,8 @@ type SwitchLocalPortConfig struct {
 	// Only if `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
 	BypassAuthWhenServerDown *bool `pulumi:"bypassAuthWhenServerDown"`
 	// Only if `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
-	BypassAuthWhenServerDownForUnkownClient *bool   `pulumi:"bypassAuthWhenServerDownForUnkownClient"`
-	Description                             *string `pulumi:"description"`
+	BypassAuthWhenServerDownForUnknownClient *bool   `pulumi:"bypassAuthWhenServerDownForUnknownClient"`
+	Description                              *string `pulumi:"description"`
 	// Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
 	DisableAutoneg *bool `pulumi:"disableAutoneg"`
 	// Whether the port is disabled
@@ -17959,8 +18122,8 @@ type SwitchLocalPortConfig struct {
 	PortAuth *string `pulumi:"portAuth"`
 	// Native network/vlan for untagged traffic
 	PortNetwork *string `pulumi:"portNetwork"`
-	// Only if `portAuth`=`dot1x` reauthentication interval range
-	ReauthInterval *int `pulumi:"reauthInterval"`
+	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+	ReauthInterval *string `pulumi:"reauthInterval"`
 	// Only if `portAuth`==`dot1x` sets server fail fallback vlan
 	ServerFailNetwork *string `pulumi:"serverFailNetwork"`
 	// Only if `portAuth`==`dot1x` when radius server reject / fails
@@ -18001,8 +18164,8 @@ type SwitchLocalPortConfigArgs struct {
 	// Only if `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
 	BypassAuthWhenServerDown pulumi.BoolPtrInput `pulumi:"bypassAuthWhenServerDown"`
 	// Only if `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
-	BypassAuthWhenServerDownForUnkownClient pulumi.BoolPtrInput   `pulumi:"bypassAuthWhenServerDownForUnkownClient"`
-	Description                             pulumi.StringPtrInput `pulumi:"description"`
+	BypassAuthWhenServerDownForUnknownClient pulumi.BoolPtrInput   `pulumi:"bypassAuthWhenServerDownForUnknownClient"`
+	Description                              pulumi.StringPtrInput `pulumi:"description"`
 	// Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
 	DisableAutoneg pulumi.BoolPtrInput `pulumi:"disableAutoneg"`
 	// Whether the port is disabled
@@ -18042,8 +18205,8 @@ type SwitchLocalPortConfigArgs struct {
 	PortAuth pulumi.StringPtrInput `pulumi:"portAuth"`
 	// Native network/vlan for untagged traffic
 	PortNetwork pulumi.StringPtrInput `pulumi:"portNetwork"`
-	// Only if `portAuth`=`dot1x` reauthentication interval range
-	ReauthInterval pulumi.IntPtrInput `pulumi:"reauthInterval"`
+	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+	ReauthInterval pulumi.StringPtrInput `pulumi:"reauthInterval"`
 	// Only if `portAuth`==`dot1x` sets server fail fallback vlan
 	ServerFailNetwork pulumi.StringPtrInput `pulumi:"serverFailNetwork"`
 	// Only if `portAuth`==`dot1x` when radius server reject / fails
@@ -18135,8 +18298,8 @@ func (o SwitchLocalPortConfigOutput) BypassAuthWhenServerDown() pulumi.BoolPtrOu
 }
 
 // Only if `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
-func (o SwitchLocalPortConfigOutput) BypassAuthWhenServerDownForUnkownClient() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.BypassAuthWhenServerDownForUnkownClient }).(pulumi.BoolPtrOutput)
+func (o SwitchLocalPortConfigOutput) BypassAuthWhenServerDownForUnknownClient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.BypassAuthWhenServerDownForUnknownClient }).(pulumi.BoolPtrOutput)
 }
 
 func (o SwitchLocalPortConfigOutput) Description() pulumi.StringPtrOutput {
@@ -18242,9 +18405,9 @@ func (o SwitchLocalPortConfigOutput) PortNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.PortNetwork }).(pulumi.StringPtrOutput)
 }
 
-// Only if `portAuth`=`dot1x` reauthentication interval range
-func (o SwitchLocalPortConfigOutput) ReauthInterval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SwitchLocalPortConfig) *int { return v.ReauthInterval }).(pulumi.IntPtrOutput)
+// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+func (o SwitchLocalPortConfigOutput) ReauthInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.ReauthInterval }).(pulumi.StringPtrOutput)
 }
 
 // Only if `portAuth`==`dot1x` sets server fail fallback vlan
@@ -19720,9 +19883,9 @@ type SwitchPortMirroring struct {
 	InputPortIdsEgresses []string `pulumi:"inputPortIdsEgresses"`
 	// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 	InputPortIdsIngresses []string `pulumi:"inputPortIdsIngresses"`
-	// Exaclty one of the `outputPortId` or `outputNetwork` should be provided
+	// Exactly one of the `outputPortId` or `outputNetwork` should be provided
 	OutputNetwork *string `pulumi:"outputNetwork"`
-	// Exaclty one of the `outputPortId` or `outputNetwork` should be provided
+	// Exactly one of the `outputPortId` or `outputNetwork` should be provided
 	OutputPortId *string `pulumi:"outputPortId"`
 }
 
@@ -19744,9 +19907,9 @@ type SwitchPortMirroringArgs struct {
 	InputPortIdsEgresses pulumi.StringArrayInput `pulumi:"inputPortIdsEgresses"`
 	// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 	InputPortIdsIngresses pulumi.StringArrayInput `pulumi:"inputPortIdsIngresses"`
-	// Exaclty one of the `outputPortId` or `outputNetwork` should be provided
+	// Exactly one of the `outputPortId` or `outputNetwork` should be provided
 	OutputNetwork pulumi.StringPtrInput `pulumi:"outputNetwork"`
-	// Exaclty one of the `outputPortId` or `outputNetwork` should be provided
+	// Exactly one of the `outputPortId` or `outputNetwork` should be provided
 	OutputPortId pulumi.StringPtrInput `pulumi:"outputPortId"`
 }
 
@@ -19816,12 +19979,12 @@ func (o SwitchPortMirroringOutput) InputPortIdsIngresses() pulumi.StringArrayOut
 	return o.ApplyT(func(v SwitchPortMirroring) []string { return v.InputPortIdsIngresses }).(pulumi.StringArrayOutput)
 }
 
-// Exaclty one of the `outputPortId` or `outputNetwork` should be provided
+// Exactly one of the `outputPortId` or `outputNetwork` should be provided
 func (o SwitchPortMirroringOutput) OutputNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortMirroring) *string { return v.OutputNetwork }).(pulumi.StringPtrOutput)
 }
 
-// Exaclty one of the `outputPortId` or `outputNetwork` should be provided
+// Exactly one of the `outputPortId` or `outputNetwork` should be provided
 func (o SwitchPortMirroringOutput) OutputPortId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortMirroring) *string { return v.OutputPortId }).(pulumi.StringPtrOutput)
 }
@@ -19856,7 +20019,7 @@ type SwitchPortUsages struct {
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
 	BypassAuthWhenServerDown *bool `pulumi:"bypassAuthWhenServerDown"`
 	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
-	BypassAuthWhenServerDownForUnkownClient *bool `pulumi:"bypassAuthWhenServerDownForUnkownClient"`
+	BypassAuthWhenServerDownForUnknownClient *bool `pulumi:"bypassAuthWhenServerDownForUnknownClient"`
 	// Only if `mode`!=`dynamic`
 	Description *string `pulumi:"description"`
 	// Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
@@ -19873,6 +20036,8 @@ type SwitchPortUsages struct {
 	EnableQos *bool `pulumi:"enableQos"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
 	GuestNetwork *string `pulumi:"guestNetwork"`
+	// `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+	InterIsolationNetworkLink *bool `pulumi:"interIsolationNetworkLink"`
 	// Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
 	InterSwitchLink *bool `pulumi:"interSwitchLink"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
@@ -19881,12 +20046,12 @@ type SwitchPortUsages struct {
 	MacAuthPreferred *bool `pulumi:"macAuthPreferred"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
 	MacAuthProtocol *string `pulumi:"macAuthProtocol"`
-	// Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
-	MacLimit *int `pulumi:"macLimit"`
+	// Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 to 16383 (upper bound constrained by platform)
+	MacLimit *string `pulumi:"macLimit"`
 	// `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
 	Mode *string `pulumi:"mode"`
-	// Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
-	Mtu *int `pulumi:"mtu"`
+	// Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. Value between 256 and 9216, default value is 1514.
+	Mtu *string `pulumi:"mtu"`
 	// Only if `mode`==`trunk`, the list of network/vlans
 	Networks []string `pulumi:"networks"`
 	// Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
@@ -19897,8 +20062,8 @@ type SwitchPortUsages struct {
 	PortAuth *string `pulumi:"portAuth"`
 	// Only if `mode`!=`dynamic` native network/vlan for untagged traffic
 	PortNetwork *string `pulumi:"portNetwork"`
-	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range
-	ReauthInterval *int `pulumi:"reauthInterval"`
+	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+	ReauthInterval *string `pulumi:"reauthInterval"`
 	// Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
 	ResetDefaultWhen *string `pulumi:"resetDefaultWhen"`
 	// Only if `mode`==`dynamic`
@@ -19942,7 +20107,7 @@ type SwitchPortUsagesArgs struct {
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
 	BypassAuthWhenServerDown pulumi.BoolPtrInput `pulumi:"bypassAuthWhenServerDown"`
 	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
-	BypassAuthWhenServerDownForUnkownClient pulumi.BoolPtrInput `pulumi:"bypassAuthWhenServerDownForUnkownClient"`
+	BypassAuthWhenServerDownForUnknownClient pulumi.BoolPtrInput `pulumi:"bypassAuthWhenServerDownForUnknownClient"`
 	// Only if `mode`!=`dynamic`
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
@@ -19959,6 +20124,8 @@ type SwitchPortUsagesArgs struct {
 	EnableQos pulumi.BoolPtrInput `pulumi:"enableQos"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
 	GuestNetwork pulumi.StringPtrInput `pulumi:"guestNetwork"`
+	// `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+	InterIsolationNetworkLink pulumi.BoolPtrInput `pulumi:"interIsolationNetworkLink"`
 	// Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
 	InterSwitchLink pulumi.BoolPtrInput `pulumi:"interSwitchLink"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
@@ -19967,12 +20134,12 @@ type SwitchPortUsagesArgs struct {
 	MacAuthPreferred pulumi.BoolPtrInput `pulumi:"macAuthPreferred"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
 	MacAuthProtocol pulumi.StringPtrInput `pulumi:"macAuthProtocol"`
-	// Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
-	MacLimit pulumi.IntPtrInput `pulumi:"macLimit"`
+	// Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 to 16383 (upper bound constrained by platform)
+	MacLimit pulumi.StringPtrInput `pulumi:"macLimit"`
 	// `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
-	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
+	// Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. Value between 256 and 9216, default value is 1514.
+	Mtu pulumi.StringPtrInput `pulumi:"mtu"`
 	// Only if `mode`==`trunk`, the list of network/vlans
 	Networks pulumi.StringArrayInput `pulumi:"networks"`
 	// Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
@@ -19983,8 +20150,8 @@ type SwitchPortUsagesArgs struct {
 	PortAuth pulumi.StringPtrInput `pulumi:"portAuth"`
 	// Only if `mode`!=`dynamic` native network/vlan for untagged traffic
 	PortNetwork pulumi.StringPtrInput `pulumi:"portNetwork"`
-	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range
-	ReauthInterval pulumi.IntPtrInput `pulumi:"reauthInterval"`
+	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+	ReauthInterval pulumi.StringPtrInput `pulumi:"reauthInterval"`
 	// Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
 	ResetDefaultWhen pulumi.StringPtrInput `pulumi:"resetDefaultWhen"`
 	// Only if `mode`==`dynamic`
@@ -20079,8 +20246,8 @@ func (o SwitchPortUsagesOutput) BypassAuthWhenServerDown() pulumi.BoolPtrOutput 
 }
 
 // Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
-func (o SwitchPortUsagesOutput) BypassAuthWhenServerDownForUnkownClient() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.BypassAuthWhenServerDownForUnkownClient }).(pulumi.BoolPtrOutput)
+func (o SwitchPortUsagesOutput) BypassAuthWhenServerDownForUnknownClient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.BypassAuthWhenServerDownForUnknownClient }).(pulumi.BoolPtrOutput)
 }
 
 // Only if `mode`!=`dynamic`
@@ -20123,6 +20290,11 @@ func (o SwitchPortUsagesOutput) GuestNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *string { return v.GuestNetwork }).(pulumi.StringPtrOutput)
 }
 
+// `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+func (o SwitchPortUsagesOutput) InterIsolationNetworkLink() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.InterIsolationNetworkLink }).(pulumi.BoolPtrOutput)
+}
+
 // Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
 func (o SwitchPortUsagesOutput) InterSwitchLink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.InterSwitchLink }).(pulumi.BoolPtrOutput)
@@ -20143,9 +20315,9 @@ func (o SwitchPortUsagesOutput) MacAuthProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *string { return v.MacAuthProtocol }).(pulumi.StringPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
-func (o SwitchPortUsagesOutput) MacLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SwitchPortUsages) *int { return v.MacLimit }).(pulumi.IntPtrOutput)
+// Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 to 16383 (upper bound constrained by platform)
+func (o SwitchPortUsagesOutput) MacLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchPortUsages) *string { return v.MacLimit }).(pulumi.StringPtrOutput)
 }
 
 // `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
@@ -20153,9 +20325,9 @@ func (o SwitchPortUsagesOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
-func (o SwitchPortUsagesOutput) Mtu() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SwitchPortUsages) *int { return v.Mtu }).(pulumi.IntPtrOutput)
+// Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. Value between 256 and 9216, default value is 1514.
+func (o SwitchPortUsagesOutput) Mtu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchPortUsages) *string { return v.Mtu }).(pulumi.StringPtrOutput)
 }
 
 // Only if `mode`==`trunk`, the list of network/vlans
@@ -20183,9 +20355,9 @@ func (o SwitchPortUsagesOutput) PortNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *string { return v.PortNetwork }).(pulumi.StringPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range
-func (o SwitchPortUsagesOutput) ReauthInterval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SwitchPortUsages) *int { return v.ReauthInterval }).(pulumi.IntPtrOutput)
+// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+func (o SwitchPortUsagesOutput) ReauthInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchPortUsages) *string { return v.ReauthInterval }).(pulumi.StringPtrOutput)
 }
 
 // Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
@@ -20611,14 +20783,20 @@ func (o SwitchPortUsagesStormControlPtrOutput) Percentage() pulumi.IntPtrOutput 
 }
 
 type SwitchRadiusConfig struct {
+	AcctImmediateUpdate *bool `pulumi:"acctImmediateUpdate"`
 	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
 	AcctInterimInterval *int                           `pulumi:"acctInterimInterval"`
 	AcctServers         []SwitchRadiusConfigAcctServer `pulumi:"acctServers"`
+	// enum: `ordered`, `unordered`
+	AuthServerSelection *string                        `pulumi:"authServerSelection"`
 	AuthServers         []SwitchRadiusConfigAuthServer `pulumi:"authServers"`
 	// Radius auth session retries
 	AuthServersRetries *int `pulumi:"authServersRetries"`
 	// Radius auth session timeout
-	AuthServersTimeout *int `pulumi:"authServersTimeout"`
+	AuthServersTimeout *int    `pulumi:"authServersTimeout"`
+	CoaEnabled         *bool   `pulumi:"coaEnabled"`
+	CoaPort            *string `pulumi:"coaPort"`
+	FastDot1xTimers    *bool   `pulumi:"fastDot1xTimers"`
 	// Use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 	Network *string `pulumi:"network"`
 	// Use `network`or `sourceIp`
@@ -20637,14 +20815,20 @@ type SwitchRadiusConfigInput interface {
 }
 
 type SwitchRadiusConfigArgs struct {
+	AcctImmediateUpdate pulumi.BoolPtrInput `pulumi:"acctImmediateUpdate"`
 	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
 	AcctInterimInterval pulumi.IntPtrInput                     `pulumi:"acctInterimInterval"`
 	AcctServers         SwitchRadiusConfigAcctServerArrayInput `pulumi:"acctServers"`
+	// enum: `ordered`, `unordered`
+	AuthServerSelection pulumi.StringPtrInput                  `pulumi:"authServerSelection"`
 	AuthServers         SwitchRadiusConfigAuthServerArrayInput `pulumi:"authServers"`
 	// Radius auth session retries
 	AuthServersRetries pulumi.IntPtrInput `pulumi:"authServersRetries"`
 	// Radius auth session timeout
-	AuthServersTimeout pulumi.IntPtrInput `pulumi:"authServersTimeout"`
+	AuthServersTimeout pulumi.IntPtrInput    `pulumi:"authServersTimeout"`
+	CoaEnabled         pulumi.BoolPtrInput   `pulumi:"coaEnabled"`
+	CoaPort            pulumi.StringPtrInput `pulumi:"coaPort"`
+	FastDot1xTimers    pulumi.BoolPtrInput   `pulumi:"fastDot1xTimers"`
 	// Use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Use `network`or `sourceIp`
@@ -20728,6 +20912,10 @@ func (o SwitchRadiusConfigOutput) ToSwitchRadiusConfigPtrOutputWithContext(ctx c
 	}).(SwitchRadiusConfigPtrOutput)
 }
 
+func (o SwitchRadiusConfigOutput) AcctImmediateUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchRadiusConfig) *bool { return v.AcctImmediateUpdate }).(pulumi.BoolPtrOutput)
+}
+
 // How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
 func (o SwitchRadiusConfigOutput) AcctInterimInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SwitchRadiusConfig) *int { return v.AcctInterimInterval }).(pulumi.IntPtrOutput)
@@ -20735,6 +20923,11 @@ func (o SwitchRadiusConfigOutput) AcctInterimInterval() pulumi.IntPtrOutput {
 
 func (o SwitchRadiusConfigOutput) AcctServers() SwitchRadiusConfigAcctServerArrayOutput {
 	return o.ApplyT(func(v SwitchRadiusConfig) []SwitchRadiusConfigAcctServer { return v.AcctServers }).(SwitchRadiusConfigAcctServerArrayOutput)
+}
+
+// enum: `ordered`, `unordered`
+func (o SwitchRadiusConfigOutput) AuthServerSelection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchRadiusConfig) *string { return v.AuthServerSelection }).(pulumi.StringPtrOutput)
 }
 
 func (o SwitchRadiusConfigOutput) AuthServers() SwitchRadiusConfigAuthServerArrayOutput {
@@ -20749,6 +20942,18 @@ func (o SwitchRadiusConfigOutput) AuthServersRetries() pulumi.IntPtrOutput {
 // Radius auth session timeout
 func (o SwitchRadiusConfigOutput) AuthServersTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SwitchRadiusConfig) *int { return v.AuthServersTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o SwitchRadiusConfigOutput) CoaEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchRadiusConfig) *bool { return v.CoaEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o SwitchRadiusConfigOutput) CoaPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchRadiusConfig) *string { return v.CoaPort }).(pulumi.StringPtrOutput)
+}
+
+func (o SwitchRadiusConfigOutput) FastDot1xTimers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchRadiusConfig) *bool { return v.FastDot1xTimers }).(pulumi.BoolPtrOutput)
 }
 
 // Use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
@@ -20785,6 +20990,15 @@ func (o SwitchRadiusConfigPtrOutput) Elem() SwitchRadiusConfigOutput {
 	}).(SwitchRadiusConfigOutput)
 }
 
+func (o SwitchRadiusConfigPtrOutput) AcctImmediateUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SwitchRadiusConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AcctImmediateUpdate
+	}).(pulumi.BoolPtrOutput)
+}
+
 // How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
 func (o SwitchRadiusConfigPtrOutput) AcctInterimInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SwitchRadiusConfig) *int {
@@ -20802,6 +21016,16 @@ func (o SwitchRadiusConfigPtrOutput) AcctServers() SwitchRadiusConfigAcctServerA
 		}
 		return v.AcctServers
 	}).(SwitchRadiusConfigAcctServerArrayOutput)
+}
+
+// enum: `ordered`, `unordered`
+func (o SwitchRadiusConfigPtrOutput) AuthServerSelection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SwitchRadiusConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthServerSelection
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o SwitchRadiusConfigPtrOutput) AuthServers() SwitchRadiusConfigAuthServerArrayOutput {
@@ -20831,6 +21055,33 @@ func (o SwitchRadiusConfigPtrOutput) AuthServersTimeout() pulumi.IntPtrOutput {
 		}
 		return v.AuthServersTimeout
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o SwitchRadiusConfigPtrOutput) CoaEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SwitchRadiusConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CoaEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SwitchRadiusConfigPtrOutput) CoaPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SwitchRadiusConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CoaPort
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SwitchRadiusConfigPtrOutput) FastDot1xTimers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SwitchRadiusConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FastDot1xTimers
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
@@ -20863,7 +21114,7 @@ type SwitchRadiusConfigAcctServer struct {
 	KeywrapMack   *string `pulumi:"keywrapMack"`
 	// Acct port of RADIUS server
 	Port *int `pulumi:"port"`
-	// Secretof RADIUS server
+	// Secret of RADIUS server
 	Secret string `pulumi:"secret"`
 }
 
@@ -20888,7 +21139,7 @@ type SwitchRadiusConfigAcctServerArgs struct {
 	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
 	// Acct port of RADIUS server
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Secretof RADIUS server
+	// Secret of RADIUS server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
 
@@ -20970,7 +21221,7 @@ func (o SwitchRadiusConfigAcctServerOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SwitchRadiusConfigAcctServer) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Secretof RADIUS server
+// Secret of RADIUS server
 func (o SwitchRadiusConfigAcctServerOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v SwitchRadiusConfigAcctServer) string { return v.Secret }).(pulumi.StringOutput)
 }
@@ -21007,7 +21258,7 @@ type SwitchRadiusConfigAuthServer struct {
 	Port *int `pulumi:"port"`
 	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator *bool `pulumi:"requireMessageAuthenticator"`
-	// Secretof RADIUS server
+	// Secret of RADIUS server
 	Secret string `pulumi:"secret"`
 }
 
@@ -21034,7 +21285,7 @@ type SwitchRadiusConfigAuthServerArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator pulumi.BoolPtrInput `pulumi:"requireMessageAuthenticator"`
-	// Secretof RADIUS server
+	// Secret of RADIUS server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
 
@@ -21121,7 +21372,7 @@ func (o SwitchRadiusConfigAuthServerOutput) RequireMessageAuthenticator() pulumi
 	return o.ApplyT(func(v SwitchRadiusConfigAuthServer) *bool { return v.RequireMessageAuthenticator }).(pulumi.BoolPtrOutput)
 }
 
-// Secretof RADIUS server
+// Secret of RADIUS server
 func (o SwitchRadiusConfigAuthServerOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v SwitchRadiusConfigAuthServer) string { return v.Secret }).(pulumi.StringOutput)
 }
@@ -21408,7 +21659,7 @@ func (o SwitchRemoteSyslogPtrOutput) Users() SwitchRemoteSyslogUserArrayOutput {
 }
 
 type SwitchRemoteSyslogArchive struct {
-	Files *int    `pulumi:"files"`
+	Files *string `pulumi:"files"`
 	Size  *string `pulumi:"size"`
 }
 
@@ -21424,7 +21675,7 @@ type SwitchRemoteSyslogArchiveInput interface {
 }
 
 type SwitchRemoteSyslogArchiveArgs struct {
-	Files pulumi.IntPtrInput    `pulumi:"files"`
+	Files pulumi.StringPtrInput `pulumi:"files"`
 	Size  pulumi.StringPtrInput `pulumi:"size"`
 }
 
@@ -21505,8 +21756,8 @@ func (o SwitchRemoteSyslogArchiveOutput) ToSwitchRemoteSyslogArchivePtrOutputWit
 	}).(SwitchRemoteSyslogArchivePtrOutput)
 }
 
-func (o SwitchRemoteSyslogArchiveOutput) Files() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SwitchRemoteSyslogArchive) *int { return v.Files }).(pulumi.IntPtrOutput)
+func (o SwitchRemoteSyslogArchiveOutput) Files() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchRemoteSyslogArchive) *string { return v.Files }).(pulumi.StringPtrOutput)
 }
 
 func (o SwitchRemoteSyslogArchiveOutput) Size() pulumi.StringPtrOutput {
@@ -21537,13 +21788,13 @@ func (o SwitchRemoteSyslogArchivePtrOutput) Elem() SwitchRemoteSyslogArchiveOutp
 	}).(SwitchRemoteSyslogArchiveOutput)
 }
 
-func (o SwitchRemoteSyslogArchivePtrOutput) Files() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SwitchRemoteSyslogArchive) *int {
+func (o SwitchRemoteSyslogArchivePtrOutput) Files() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SwitchRemoteSyslogArchive) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Files
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o SwitchRemoteSyslogArchivePtrOutput) Size() pulumi.StringPtrOutput {
@@ -21919,7 +22170,7 @@ func (o SwitchRemoteSyslogFileArrayOutput) Index(i pulumi.IntInput) SwitchRemote
 }
 
 type SwitchRemoteSyslogFileArchive struct {
-	Files *int    `pulumi:"files"`
+	Files *string `pulumi:"files"`
 	Size  *string `pulumi:"size"`
 }
 
@@ -21935,7 +22186,7 @@ type SwitchRemoteSyslogFileArchiveInput interface {
 }
 
 type SwitchRemoteSyslogFileArchiveArgs struct {
-	Files pulumi.IntPtrInput    `pulumi:"files"`
+	Files pulumi.StringPtrInput `pulumi:"files"`
 	Size  pulumi.StringPtrInput `pulumi:"size"`
 }
 
@@ -22016,8 +22267,8 @@ func (o SwitchRemoteSyslogFileArchiveOutput) ToSwitchRemoteSyslogFileArchivePtrO
 	}).(SwitchRemoteSyslogFileArchivePtrOutput)
 }
 
-func (o SwitchRemoteSyslogFileArchiveOutput) Files() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SwitchRemoteSyslogFileArchive) *int { return v.Files }).(pulumi.IntPtrOutput)
+func (o SwitchRemoteSyslogFileArchiveOutput) Files() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchRemoteSyslogFileArchive) *string { return v.Files }).(pulumi.StringPtrOutput)
 }
 
 func (o SwitchRemoteSyslogFileArchiveOutput) Size() pulumi.StringPtrOutput {
@@ -22048,13 +22299,13 @@ func (o SwitchRemoteSyslogFileArchivePtrOutput) Elem() SwitchRemoteSyslogFileArc
 	}).(SwitchRemoteSyslogFileArchiveOutput)
 }
 
-func (o SwitchRemoteSyslogFileArchivePtrOutput) Files() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SwitchRemoteSyslogFileArchive) *int {
+func (o SwitchRemoteSyslogFileArchivePtrOutput) Files() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SwitchRemoteSyslogFileArchive) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Files
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o SwitchRemoteSyslogFileArchivePtrOutput) Size() pulumi.StringPtrOutput {
@@ -22179,7 +22430,7 @@ type SwitchRemoteSyslogServer struct {
 	Facility *string `pulumi:"facility"`
 	Host     *string `pulumi:"host"`
 	Match    *string `pulumi:"match"`
-	Port     *int    `pulumi:"port"`
+	Port     *string `pulumi:"port"`
 	// enum: `tcp`, `udp`
 	Protocol        *string `pulumi:"protocol"`
 	RoutingInstance *string `pulumi:"routingInstance"`
@@ -22209,7 +22460,7 @@ type SwitchRemoteSyslogServerArgs struct {
 	Facility pulumi.StringPtrInput `pulumi:"facility"`
 	Host     pulumi.StringPtrInput `pulumi:"host"`
 	Match    pulumi.StringPtrInput `pulumi:"match"`
-	Port     pulumi.IntPtrInput    `pulumi:"port"`
+	Port     pulumi.StringPtrInput `pulumi:"port"`
 	// enum: `tcp`, `udp`
 	Protocol        pulumi.StringPtrInput `pulumi:"protocol"`
 	RoutingInstance pulumi.StringPtrInput `pulumi:"routingInstance"`
@@ -22293,8 +22544,8 @@ func (o SwitchRemoteSyslogServerOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchRemoteSyslogServer) *string { return v.Match }).(pulumi.StringPtrOutput)
 }
 
-func (o SwitchRemoteSyslogServerOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SwitchRemoteSyslogServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o SwitchRemoteSyslogServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchRemoteSyslogServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 // enum: `tcp`, `udp`
@@ -25096,7 +25347,7 @@ func (o SwitchSnmpConfigViewArrayOutput) Index(i pulumi.IntInput) SwitchSnmpConf
 }
 
 type SwitchStpConfig struct {
-	// Switch STP priority: from `0k` to `15k`
+	// Switch STP priority. Range [0, 4k, 8k.. 60k] in steps of 4k. Bridge priority applies to both VSTP and RSTP.
 	BridgePriority *string `pulumi:"bridgePriority"`
 }
 
@@ -25112,7 +25363,7 @@ type SwitchStpConfigInput interface {
 }
 
 type SwitchStpConfigArgs struct {
-	// Switch STP priority: from `0k` to `15k`
+	// Switch STP priority. Range [0, 4k, 8k.. 60k] in steps of 4k. Bridge priority applies to both VSTP and RSTP.
 	BridgePriority pulumi.StringPtrInput `pulumi:"bridgePriority"`
 }
 
@@ -25193,7 +25444,7 @@ func (o SwitchStpConfigOutput) ToSwitchStpConfigPtrOutputWithContext(ctx context
 	}).(SwitchStpConfigPtrOutput)
 }
 
-// Switch STP priority: from `0k` to `15k`
+// Switch STP priority. Range [0, 4k, 8k.. 60k] in steps of 4k. Bridge priority applies to both VSTP and RSTP.
 func (o SwitchStpConfigOutput) BridgePriority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchStpConfig) *string { return v.BridgePriority }).(pulumi.StringPtrOutput)
 }
@@ -25222,7 +25473,7 @@ func (o SwitchStpConfigPtrOutput) Elem() SwitchStpConfigOutput {
 	}).(SwitchStpConfigOutput)
 }
 
-// Switch STP priority: from `0k` to `15k`
+// Switch STP priority. Range [0, 4k, 8k.. 60k] in steps of 4k. Bridge priority applies to both VSTP and RSTP.
 func (o SwitchStpConfigPtrOutput) BridgePriority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SwitchStpConfig) *string {
 		if v == nil {
@@ -25244,10 +25495,13 @@ type SwitchSwitchMgmt struct {
 	// Enable to provide the FQDN with DHCP option 81
 	DhcpOptionFqdn      *bool `pulumi:"dhcpOptionFqdn"`
 	DisableOobDownAlarm *bool `pulumi:"disableOobDownAlarm"`
+	FipsEnabled         *bool `pulumi:"fipsEnabled"`
 	// Property key is the user name. For Local user authentication
-	LocalAccounts   map[string]SwitchSwitchMgmtLocalAccounts `pulumi:"localAccounts"`
-	MxedgeProxyHost *string                                  `pulumi:"mxedgeProxyHost"`
-	MxedgeProxyPort *int                                     `pulumi:"mxedgeProxyPort"`
+	LocalAccounts map[string]SwitchSwitchMgmtLocalAccounts `pulumi:"localAccounts"`
+	// IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+	MxedgeProxyHost *string `pulumi:"mxedgeProxyHost"`
+	// Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
+	MxedgeProxyPort *string `pulumi:"mxedgeProxyPort"`
 	// Restrict inbound-traffic to host
 	// when enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
@@ -25281,10 +25535,13 @@ type SwitchSwitchMgmtArgs struct {
 	// Enable to provide the FQDN with DHCP option 81
 	DhcpOptionFqdn      pulumi.BoolPtrInput `pulumi:"dhcpOptionFqdn"`
 	DisableOobDownAlarm pulumi.BoolPtrInput `pulumi:"disableOobDownAlarm"`
+	FipsEnabled         pulumi.BoolPtrInput `pulumi:"fipsEnabled"`
 	// Property key is the user name. For Local user authentication
-	LocalAccounts   SwitchSwitchMgmtLocalAccountsMapInput `pulumi:"localAccounts"`
-	MxedgeProxyHost pulumi.StringPtrInput                 `pulumi:"mxedgeProxyHost"`
-	MxedgeProxyPort pulumi.IntPtrInput                    `pulumi:"mxedgeProxyPort"`
+	LocalAccounts SwitchSwitchMgmtLocalAccountsMapInput `pulumi:"localAccounts"`
+	// IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+	MxedgeProxyHost pulumi.StringPtrInput `pulumi:"mxedgeProxyHost"`
+	// Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
+	MxedgeProxyPort pulumi.StringPtrInput `pulumi:"mxedgeProxyPort"`
 	// Restrict inbound-traffic to host
 	// when enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
@@ -25401,17 +25658,23 @@ func (o SwitchSwitchMgmtOutput) DisableOobDownAlarm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchSwitchMgmt) *bool { return v.DisableOobDownAlarm }).(pulumi.BoolPtrOutput)
 }
 
+func (o SwitchSwitchMgmtOutput) FipsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchSwitchMgmt) *bool { return v.FipsEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Property key is the user name. For Local user authentication
 func (o SwitchSwitchMgmtOutput) LocalAccounts() SwitchSwitchMgmtLocalAccountsMapOutput {
 	return o.ApplyT(func(v SwitchSwitchMgmt) map[string]SwitchSwitchMgmtLocalAccounts { return v.LocalAccounts }).(SwitchSwitchMgmtLocalAccountsMapOutput)
 }
 
+// IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
 func (o SwitchSwitchMgmtOutput) MxedgeProxyHost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchSwitchMgmt) *string { return v.MxedgeProxyHost }).(pulumi.StringPtrOutput)
 }
 
-func (o SwitchSwitchMgmtOutput) MxedgeProxyPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SwitchSwitchMgmt) *int { return v.MxedgeProxyPort }).(pulumi.IntPtrOutput)
+// Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
+func (o SwitchSwitchMgmtOutput) MxedgeProxyPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchSwitchMgmt) *string { return v.MxedgeProxyPort }).(pulumi.StringPtrOutput)
 }
 
 // Restrict inbound-traffic to host
@@ -25517,6 +25780,15 @@ func (o SwitchSwitchMgmtPtrOutput) DisableOobDownAlarm() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+func (o SwitchSwitchMgmtPtrOutput) FipsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SwitchSwitchMgmt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FipsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Property key is the user name. For Local user authentication
 func (o SwitchSwitchMgmtPtrOutput) LocalAccounts() SwitchSwitchMgmtLocalAccountsMapOutput {
 	return o.ApplyT(func(v *SwitchSwitchMgmt) map[string]SwitchSwitchMgmtLocalAccounts {
@@ -25527,6 +25799,7 @@ func (o SwitchSwitchMgmtPtrOutput) LocalAccounts() SwitchSwitchMgmtLocalAccounts
 	}).(SwitchSwitchMgmtLocalAccountsMapOutput)
 }
 
+// IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
 func (o SwitchSwitchMgmtPtrOutput) MxedgeProxyHost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SwitchSwitchMgmt) *string {
 		if v == nil {
@@ -25536,13 +25809,14 @@ func (o SwitchSwitchMgmtPtrOutput) MxedgeProxyHost() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o SwitchSwitchMgmtPtrOutput) MxedgeProxyPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SwitchSwitchMgmt) *int {
+// Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
+func (o SwitchSwitchMgmtPtrOutput) MxedgeProxyPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SwitchSwitchMgmt) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MxedgeProxyPort
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // Restrict inbound-traffic to host
@@ -26831,9 +27105,13 @@ func (o SwitchVrfConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type SwitchVrfInstances struct {
-	Networks []string `pulumi:"networks"`
+	EvpnAutoLoopbackSubnet  *string `pulumi:"evpnAutoLoopbackSubnet"`
+	EvpnAutoLoopbackSubnet6 *string `pulumi:"evpnAutoLoopbackSubnet6"`
 	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
-	VrfExtraRoutes map[string]SwitchVrfInstancesVrfExtraRoutes `pulumi:"vrfExtraRoutes"`
+	ExtraRoutes map[string]SwitchVrfInstancesExtraRoutes `pulumi:"extraRoutes"`
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+	ExtraRoutes6 map[string]SwitchVrfInstancesExtraRoutes6 `pulumi:"extraRoutes6"`
+	Networks     []string                                  `pulumi:"networks"`
 }
 
 // SwitchVrfInstancesInput is an input type that accepts SwitchVrfInstancesArgs and SwitchVrfInstancesOutput values.
@@ -26848,9 +27126,13 @@ type SwitchVrfInstancesInput interface {
 }
 
 type SwitchVrfInstancesArgs struct {
-	Networks pulumi.StringArrayInput `pulumi:"networks"`
+	EvpnAutoLoopbackSubnet  pulumi.StringPtrInput `pulumi:"evpnAutoLoopbackSubnet"`
+	EvpnAutoLoopbackSubnet6 pulumi.StringPtrInput `pulumi:"evpnAutoLoopbackSubnet6"`
 	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
-	VrfExtraRoutes SwitchVrfInstancesVrfExtraRoutesMapInput `pulumi:"vrfExtraRoutes"`
+	ExtraRoutes SwitchVrfInstancesExtraRoutesMapInput `pulumi:"extraRoutes"`
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+	ExtraRoutes6 SwitchVrfInstancesExtraRoutes6MapInput `pulumi:"extraRoutes6"`
+	Networks     pulumi.StringArrayInput                `pulumi:"networks"`
 }
 
 func (SwitchVrfInstancesArgs) ElementType() reflect.Type {
@@ -26904,13 +27186,26 @@ func (o SwitchVrfInstancesOutput) ToSwitchVrfInstancesOutputWithContext(ctx cont
 	return o
 }
 
-func (o SwitchVrfInstancesOutput) Networks() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SwitchVrfInstances) []string { return v.Networks }).(pulumi.StringArrayOutput)
+func (o SwitchVrfInstancesOutput) EvpnAutoLoopbackSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchVrfInstances) *string { return v.EvpnAutoLoopbackSubnet }).(pulumi.StringPtrOutput)
+}
+
+func (o SwitchVrfInstancesOutput) EvpnAutoLoopbackSubnet6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchVrfInstances) *string { return v.EvpnAutoLoopbackSubnet6 }).(pulumi.StringPtrOutput)
 }
 
 // Property key is the destination CIDR (e.g. "10.0.0.0/8")
-func (o SwitchVrfInstancesOutput) VrfExtraRoutes() SwitchVrfInstancesVrfExtraRoutesMapOutput {
-	return o.ApplyT(func(v SwitchVrfInstances) map[string]SwitchVrfInstancesVrfExtraRoutes { return v.VrfExtraRoutes }).(SwitchVrfInstancesVrfExtraRoutesMapOutput)
+func (o SwitchVrfInstancesOutput) ExtraRoutes() SwitchVrfInstancesExtraRoutesMapOutput {
+	return o.ApplyT(func(v SwitchVrfInstances) map[string]SwitchVrfInstancesExtraRoutes { return v.ExtraRoutes }).(SwitchVrfInstancesExtraRoutesMapOutput)
+}
+
+// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+func (o SwitchVrfInstancesOutput) ExtraRoutes6() SwitchVrfInstancesExtraRoutes6MapOutput {
+	return o.ApplyT(func(v SwitchVrfInstances) map[string]SwitchVrfInstancesExtraRoutes6 { return v.ExtraRoutes6 }).(SwitchVrfInstancesExtraRoutes6MapOutput)
+}
+
+func (o SwitchVrfInstancesOutput) Networks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SwitchVrfInstances) []string { return v.Networks }).(pulumi.StringArrayOutput)
 }
 
 type SwitchVrfInstancesMapOutput struct{ *pulumi.OutputState }
@@ -26933,101 +27228,198 @@ func (o SwitchVrfInstancesMapOutput) MapIndex(k pulumi.StringInput) SwitchVrfIns
 	}).(SwitchVrfInstancesOutput)
 }
 
-type SwitchVrfInstancesVrfExtraRoutes struct {
+type SwitchVrfInstancesExtraRoutes6 struct {
 	// Next-hop address
-	Via string `pulumi:"via"`
+	Via *string `pulumi:"via"`
 }
 
-// SwitchVrfInstancesVrfExtraRoutesInput is an input type that accepts SwitchVrfInstancesVrfExtraRoutesArgs and SwitchVrfInstancesVrfExtraRoutesOutput values.
-// You can construct a concrete instance of `SwitchVrfInstancesVrfExtraRoutesInput` via:
+// SwitchVrfInstancesExtraRoutes6Input is an input type that accepts SwitchVrfInstancesExtraRoutes6Args and SwitchVrfInstancesExtraRoutes6Output values.
+// You can construct a concrete instance of `SwitchVrfInstancesExtraRoutes6Input` via:
 //
-//	SwitchVrfInstancesVrfExtraRoutesArgs{...}
-type SwitchVrfInstancesVrfExtraRoutesInput interface {
+//	SwitchVrfInstancesExtraRoutes6Args{...}
+type SwitchVrfInstancesExtraRoutes6Input interface {
 	pulumi.Input
 
-	ToSwitchVrfInstancesVrfExtraRoutesOutput() SwitchVrfInstancesVrfExtraRoutesOutput
-	ToSwitchVrfInstancesVrfExtraRoutesOutputWithContext(context.Context) SwitchVrfInstancesVrfExtraRoutesOutput
+	ToSwitchVrfInstancesExtraRoutes6Output() SwitchVrfInstancesExtraRoutes6Output
+	ToSwitchVrfInstancesExtraRoutes6OutputWithContext(context.Context) SwitchVrfInstancesExtraRoutes6Output
 }
 
-type SwitchVrfInstancesVrfExtraRoutesArgs struct {
+type SwitchVrfInstancesExtraRoutes6Args struct {
 	// Next-hop address
-	Via pulumi.StringInput `pulumi:"via"`
+	Via pulumi.StringPtrInput `pulumi:"via"`
 }
 
-func (SwitchVrfInstancesVrfExtraRoutesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SwitchVrfInstancesVrfExtraRoutes)(nil)).Elem()
+func (SwitchVrfInstancesExtraRoutes6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchVrfInstancesExtraRoutes6)(nil)).Elem()
 }
 
-func (i SwitchVrfInstancesVrfExtraRoutesArgs) ToSwitchVrfInstancesVrfExtraRoutesOutput() SwitchVrfInstancesVrfExtraRoutesOutput {
-	return i.ToSwitchVrfInstancesVrfExtraRoutesOutputWithContext(context.Background())
+func (i SwitchVrfInstancesExtraRoutes6Args) ToSwitchVrfInstancesExtraRoutes6Output() SwitchVrfInstancesExtraRoutes6Output {
+	return i.ToSwitchVrfInstancesExtraRoutes6OutputWithContext(context.Background())
 }
 
-func (i SwitchVrfInstancesVrfExtraRoutesArgs) ToSwitchVrfInstancesVrfExtraRoutesOutputWithContext(ctx context.Context) SwitchVrfInstancesVrfExtraRoutesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SwitchVrfInstancesVrfExtraRoutesOutput)
+func (i SwitchVrfInstancesExtraRoutes6Args) ToSwitchVrfInstancesExtraRoutes6OutputWithContext(ctx context.Context) SwitchVrfInstancesExtraRoutes6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchVrfInstancesExtraRoutes6Output)
 }
 
-// SwitchVrfInstancesVrfExtraRoutesMapInput is an input type that accepts SwitchVrfInstancesVrfExtraRoutesMap and SwitchVrfInstancesVrfExtraRoutesMapOutput values.
-// You can construct a concrete instance of `SwitchVrfInstancesVrfExtraRoutesMapInput` via:
+// SwitchVrfInstancesExtraRoutes6MapInput is an input type that accepts SwitchVrfInstancesExtraRoutes6Map and SwitchVrfInstancesExtraRoutes6MapOutput values.
+// You can construct a concrete instance of `SwitchVrfInstancesExtraRoutes6MapInput` via:
 //
-//	SwitchVrfInstancesVrfExtraRoutesMap{ "key": SwitchVrfInstancesVrfExtraRoutesArgs{...} }
-type SwitchVrfInstancesVrfExtraRoutesMapInput interface {
+//	SwitchVrfInstancesExtraRoutes6Map{ "key": SwitchVrfInstancesExtraRoutes6Args{...} }
+type SwitchVrfInstancesExtraRoutes6MapInput interface {
 	pulumi.Input
 
-	ToSwitchVrfInstancesVrfExtraRoutesMapOutput() SwitchVrfInstancesVrfExtraRoutesMapOutput
-	ToSwitchVrfInstancesVrfExtraRoutesMapOutputWithContext(context.Context) SwitchVrfInstancesVrfExtraRoutesMapOutput
+	ToSwitchVrfInstancesExtraRoutes6MapOutput() SwitchVrfInstancesExtraRoutes6MapOutput
+	ToSwitchVrfInstancesExtraRoutes6MapOutputWithContext(context.Context) SwitchVrfInstancesExtraRoutes6MapOutput
 }
 
-type SwitchVrfInstancesVrfExtraRoutesMap map[string]SwitchVrfInstancesVrfExtraRoutesInput
+type SwitchVrfInstancesExtraRoutes6Map map[string]SwitchVrfInstancesExtraRoutes6Input
 
-func (SwitchVrfInstancesVrfExtraRoutesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SwitchVrfInstancesVrfExtraRoutes)(nil)).Elem()
+func (SwitchVrfInstancesExtraRoutes6Map) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SwitchVrfInstancesExtraRoutes6)(nil)).Elem()
 }
 
-func (i SwitchVrfInstancesVrfExtraRoutesMap) ToSwitchVrfInstancesVrfExtraRoutesMapOutput() SwitchVrfInstancesVrfExtraRoutesMapOutput {
-	return i.ToSwitchVrfInstancesVrfExtraRoutesMapOutputWithContext(context.Background())
+func (i SwitchVrfInstancesExtraRoutes6Map) ToSwitchVrfInstancesExtraRoutes6MapOutput() SwitchVrfInstancesExtraRoutes6MapOutput {
+	return i.ToSwitchVrfInstancesExtraRoutes6MapOutputWithContext(context.Background())
 }
 
-func (i SwitchVrfInstancesVrfExtraRoutesMap) ToSwitchVrfInstancesVrfExtraRoutesMapOutputWithContext(ctx context.Context) SwitchVrfInstancesVrfExtraRoutesMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SwitchVrfInstancesVrfExtraRoutesMapOutput)
+func (i SwitchVrfInstancesExtraRoutes6Map) ToSwitchVrfInstancesExtraRoutes6MapOutputWithContext(ctx context.Context) SwitchVrfInstancesExtraRoutes6MapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchVrfInstancesExtraRoutes6MapOutput)
 }
 
-type SwitchVrfInstancesVrfExtraRoutesOutput struct{ *pulumi.OutputState }
+type SwitchVrfInstancesExtraRoutes6Output struct{ *pulumi.OutputState }
 
-func (SwitchVrfInstancesVrfExtraRoutesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SwitchVrfInstancesVrfExtraRoutes)(nil)).Elem()
+func (SwitchVrfInstancesExtraRoutes6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchVrfInstancesExtraRoutes6)(nil)).Elem()
 }
 
-func (o SwitchVrfInstancesVrfExtraRoutesOutput) ToSwitchVrfInstancesVrfExtraRoutesOutput() SwitchVrfInstancesVrfExtraRoutesOutput {
+func (o SwitchVrfInstancesExtraRoutes6Output) ToSwitchVrfInstancesExtraRoutes6Output() SwitchVrfInstancesExtraRoutes6Output {
 	return o
 }
 
-func (o SwitchVrfInstancesVrfExtraRoutesOutput) ToSwitchVrfInstancesVrfExtraRoutesOutputWithContext(ctx context.Context) SwitchVrfInstancesVrfExtraRoutesOutput {
+func (o SwitchVrfInstancesExtraRoutes6Output) ToSwitchVrfInstancesExtraRoutes6OutputWithContext(ctx context.Context) SwitchVrfInstancesExtraRoutes6Output {
 	return o
 }
 
 // Next-hop address
-func (o SwitchVrfInstancesVrfExtraRoutesOutput) Via() pulumi.StringOutput {
-	return o.ApplyT(func(v SwitchVrfInstancesVrfExtraRoutes) string { return v.Via }).(pulumi.StringOutput)
+func (o SwitchVrfInstancesExtraRoutes6Output) Via() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchVrfInstancesExtraRoutes6) *string { return v.Via }).(pulumi.StringPtrOutput)
 }
 
-type SwitchVrfInstancesVrfExtraRoutesMapOutput struct{ *pulumi.OutputState }
+type SwitchVrfInstancesExtraRoutes6MapOutput struct{ *pulumi.OutputState }
 
-func (SwitchVrfInstancesVrfExtraRoutesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SwitchVrfInstancesVrfExtraRoutes)(nil)).Elem()
+func (SwitchVrfInstancesExtraRoutes6MapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SwitchVrfInstancesExtraRoutes6)(nil)).Elem()
 }
 
-func (o SwitchVrfInstancesVrfExtraRoutesMapOutput) ToSwitchVrfInstancesVrfExtraRoutesMapOutput() SwitchVrfInstancesVrfExtraRoutesMapOutput {
+func (o SwitchVrfInstancesExtraRoutes6MapOutput) ToSwitchVrfInstancesExtraRoutes6MapOutput() SwitchVrfInstancesExtraRoutes6MapOutput {
 	return o
 }
 
-func (o SwitchVrfInstancesVrfExtraRoutesMapOutput) ToSwitchVrfInstancesVrfExtraRoutesMapOutputWithContext(ctx context.Context) SwitchVrfInstancesVrfExtraRoutesMapOutput {
+func (o SwitchVrfInstancesExtraRoutes6MapOutput) ToSwitchVrfInstancesExtraRoutes6MapOutputWithContext(ctx context.Context) SwitchVrfInstancesExtraRoutes6MapOutput {
 	return o
 }
 
-func (o SwitchVrfInstancesVrfExtraRoutesMapOutput) MapIndex(k pulumi.StringInput) SwitchVrfInstancesVrfExtraRoutesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SwitchVrfInstancesVrfExtraRoutes {
-		return vs[0].(map[string]SwitchVrfInstancesVrfExtraRoutes)[vs[1].(string)]
-	}).(SwitchVrfInstancesVrfExtraRoutesOutput)
+func (o SwitchVrfInstancesExtraRoutes6MapOutput) MapIndex(k pulumi.StringInput) SwitchVrfInstancesExtraRoutes6Output {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SwitchVrfInstancesExtraRoutes6 {
+		return vs[0].(map[string]SwitchVrfInstancesExtraRoutes6)[vs[1].(string)]
+	}).(SwitchVrfInstancesExtraRoutes6Output)
+}
+
+type SwitchVrfInstancesExtraRoutes struct {
+	// Next-hop address
+	Via string `pulumi:"via"`
+}
+
+// SwitchVrfInstancesExtraRoutesInput is an input type that accepts SwitchVrfInstancesExtraRoutesArgs and SwitchVrfInstancesExtraRoutesOutput values.
+// You can construct a concrete instance of `SwitchVrfInstancesExtraRoutesInput` via:
+//
+//	SwitchVrfInstancesExtraRoutesArgs{...}
+type SwitchVrfInstancesExtraRoutesInput interface {
+	pulumi.Input
+
+	ToSwitchVrfInstancesExtraRoutesOutput() SwitchVrfInstancesExtraRoutesOutput
+	ToSwitchVrfInstancesExtraRoutesOutputWithContext(context.Context) SwitchVrfInstancesExtraRoutesOutput
+}
+
+type SwitchVrfInstancesExtraRoutesArgs struct {
+	// Next-hop address
+	Via pulumi.StringInput `pulumi:"via"`
+}
+
+func (SwitchVrfInstancesExtraRoutesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchVrfInstancesExtraRoutes)(nil)).Elem()
+}
+
+func (i SwitchVrfInstancesExtraRoutesArgs) ToSwitchVrfInstancesExtraRoutesOutput() SwitchVrfInstancesExtraRoutesOutput {
+	return i.ToSwitchVrfInstancesExtraRoutesOutputWithContext(context.Background())
+}
+
+func (i SwitchVrfInstancesExtraRoutesArgs) ToSwitchVrfInstancesExtraRoutesOutputWithContext(ctx context.Context) SwitchVrfInstancesExtraRoutesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchVrfInstancesExtraRoutesOutput)
+}
+
+// SwitchVrfInstancesExtraRoutesMapInput is an input type that accepts SwitchVrfInstancesExtraRoutesMap and SwitchVrfInstancesExtraRoutesMapOutput values.
+// You can construct a concrete instance of `SwitchVrfInstancesExtraRoutesMapInput` via:
+//
+//	SwitchVrfInstancesExtraRoutesMap{ "key": SwitchVrfInstancesExtraRoutesArgs{...} }
+type SwitchVrfInstancesExtraRoutesMapInput interface {
+	pulumi.Input
+
+	ToSwitchVrfInstancesExtraRoutesMapOutput() SwitchVrfInstancesExtraRoutesMapOutput
+	ToSwitchVrfInstancesExtraRoutesMapOutputWithContext(context.Context) SwitchVrfInstancesExtraRoutesMapOutput
+}
+
+type SwitchVrfInstancesExtraRoutesMap map[string]SwitchVrfInstancesExtraRoutesInput
+
+func (SwitchVrfInstancesExtraRoutesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SwitchVrfInstancesExtraRoutes)(nil)).Elem()
+}
+
+func (i SwitchVrfInstancesExtraRoutesMap) ToSwitchVrfInstancesExtraRoutesMapOutput() SwitchVrfInstancesExtraRoutesMapOutput {
+	return i.ToSwitchVrfInstancesExtraRoutesMapOutputWithContext(context.Background())
+}
+
+func (i SwitchVrfInstancesExtraRoutesMap) ToSwitchVrfInstancesExtraRoutesMapOutputWithContext(ctx context.Context) SwitchVrfInstancesExtraRoutesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchVrfInstancesExtraRoutesMapOutput)
+}
+
+type SwitchVrfInstancesExtraRoutesOutput struct{ *pulumi.OutputState }
+
+func (SwitchVrfInstancesExtraRoutesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchVrfInstancesExtraRoutes)(nil)).Elem()
+}
+
+func (o SwitchVrfInstancesExtraRoutesOutput) ToSwitchVrfInstancesExtraRoutesOutput() SwitchVrfInstancesExtraRoutesOutput {
+	return o
+}
+
+func (o SwitchVrfInstancesExtraRoutesOutput) ToSwitchVrfInstancesExtraRoutesOutputWithContext(ctx context.Context) SwitchVrfInstancesExtraRoutesOutput {
+	return o
+}
+
+// Next-hop address
+func (o SwitchVrfInstancesExtraRoutesOutput) Via() pulumi.StringOutput {
+	return o.ApplyT(func(v SwitchVrfInstancesExtraRoutes) string { return v.Via }).(pulumi.StringOutput)
+}
+
+type SwitchVrfInstancesExtraRoutesMapOutput struct{ *pulumi.OutputState }
+
+func (SwitchVrfInstancesExtraRoutesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SwitchVrfInstancesExtraRoutes)(nil)).Elem()
+}
+
+func (o SwitchVrfInstancesExtraRoutesMapOutput) ToSwitchVrfInstancesExtraRoutesMapOutput() SwitchVrfInstancesExtraRoutesMapOutput {
+	return o
+}
+
+func (o SwitchVrfInstancesExtraRoutesMapOutput) ToSwitchVrfInstancesExtraRoutesMapOutputWithContext(ctx context.Context) SwitchVrfInstancesExtraRoutesMapOutput {
+	return o
+}
+
+func (o SwitchVrfInstancesExtraRoutesMapOutput) MapIndex(k pulumi.StringInput) SwitchVrfInstancesExtraRoutesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SwitchVrfInstancesExtraRoutes {
+		return vs[0].(map[string]SwitchVrfInstancesExtraRoutes)[vs[1].(string)]
+	}).(SwitchVrfInstancesExtraRoutesOutput)
 }
 
 type SwitchVrrpConfig struct {
@@ -27432,14 +27824,17 @@ type GetApStatsDeviceApStat struct {
 	ConfigReverted  bool                                  `pulumi:"configReverted"`
 	CpuSystem       int                                   `pulumi:"cpuSystem"`
 	CpuUtil         int                                   `pulumi:"cpuUtil"`
-	CreatedTime     int                                   `pulumi:"createdTime"`
-	DeviceprofileId string                                `pulumi:"deviceprofileId"`
-	// device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
-	EnvStat            GetApStatsDeviceApStatEnvStat            `pulumi:"envStat"`
-	EslStat            GetApStatsDeviceApStatEslStat            `pulumi:"eslStat"`
-	ExtIp              string                                   `pulumi:"extIp"`
-	Fwupdate           GetApStatsDeviceApStatFwupdate           `pulumi:"fwupdate"`
-	HwRev              string                                   `pulumi:"hwRev"`
+	// When the object has been created, in epoch
+	CreatedTime     float64 `pulumi:"createdTime"`
+	DeviceprofileId string  `pulumi:"deviceprofileId"`
+	// Device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
+	EnvStat  GetApStatsDeviceApStatEnvStat  `pulumi:"envStat"`
+	EslStat  GetApStatsDeviceApStatEslStat  `pulumi:"eslStat"`
+	ExtIp    string                         `pulumi:"extIp"`
+	Fwupdate GetApStatsDeviceApStatFwupdate `pulumi:"fwupdate"`
+	Gps      GetApStatsDeviceApStatGps      `pulumi:"gps"`
+	HwRev    string                         `pulumi:"hwRev"`
+	// Unique ID of the object instance in the Mist Organization
 	Id                 string                                   `pulumi:"id"`
 	InactiveWiredVlans []int                                    `pulumi:"inactiveWiredVlans"`
 	IotStat            map[string]GetApStatsDeviceApStatIotStat `pulumi:"iotStat"`
@@ -27447,58 +27842,67 @@ type GetApStatsDeviceApStat struct {
 	// IP AP settings
 	IpConfig GetApStatsDeviceApStatIpConfig `pulumi:"ipConfig"`
 	IpStat   GetApStatsDeviceApStatIpStat   `pulumi:"ipStat"`
-	// l2tp tunnel status (key is the wxtunnel*id)
+	// L2TP tunnel status (key is the wxtunnel_id)
 	L2tpStat map[string]GetApStatsDeviceApStatL2tpStat `pulumi:"l2tpStat"`
-	// last seen timestamp
+	// Last seen timestamp
 	LastSeen float64 `pulumi:"lastSeen"`
-	// last trouble code of switch
+	// Last trouble code of switch
 	LastTrouble GetApStatsDeviceApStatLastTrouble `pulumi:"lastTrouble"`
 	// LED AP settings
 	Led GetApStatsDeviceApStatLed `pulumi:"led"`
 	// LLDP Stat (neighbor information, power negotiations)
 	LldpStat GetApStatsDeviceApStatLldpStat `pulumi:"lldpStat"`
 	Locating bool                           `pulumi:"locating"`
-	// whether this AP is considered locked (placement / orientation has been vetted)
+	// Whether this AP is considered locked (placement / orientation has been vetted)
 	Locked bool `pulumi:"locked"`
-	// device mac
+	// Device mac
 	Mac       string `pulumi:"mac"`
 	MapId     string `pulumi:"mapId"`
 	MemUsedKb int    `pulumi:"memUsedKb"`
-	// Property key is the mesh downlink id (e.g `00000000-0000-0000-1000-5c5b35000010`)
+	// Property key is the mesh downlink id (e.g. `00000000-0000-0000-1000-5c5b35000010`)
 	MeshDownlinks map[string]GetApStatsDeviceApStatMeshDownlinks `pulumi:"meshDownlinks"`
 	MeshUplink    GetApStatsDeviceApStatMeshUplink               `pulumi:"meshUplink"`
-	// device model
-	Model        string `pulumi:"model"`
-	ModifiedTime int    `pulumi:"modifiedTime"`
-	Mount        string `pulumi:"mount"`
-	Name         string `pulumi:"name"`
-	Notes        string `pulumi:"notes"`
-	// how many wireless clients are currently connected
-	NumClients int    `pulumi:"numClients"`
-	OrgId      string `pulumi:"orgId"`
+	// Device model
+	Model string `pulumi:"model"`
+	// When the object has been modified for the last time, in epoch
+	ModifiedTime float64 `pulumi:"modifiedTime"`
+	Mount        string  `pulumi:"mount"`
+	Name         string  `pulumi:"name"`
+	Notes        string  `pulumi:"notes"`
+	// How many wireless clients are currently connected
+	NumClients int `pulumi:"numClients"`
+	// How many WLANs are applied to the device
+	NumWlans int    `pulumi:"numWlans"`
+	OrgId    string `pulumi:"orgId"`
 	// Property key is the port name (e.g. `eth0`)
 	PortStat map[string]GetApStatsDeviceApStatPortStat `pulumi:"portStat"`
-	// in mW, surplus if positive or deficit if negative
+	// In mW, surplus if positive or deficit if negative
 	PowerBudget int `pulumi:"powerBudget"`
-	// whether insufficient power
+	// Whether insufficient power
 	PowerConstrained bool `pulumi:"powerConstrained"`
-	// constrained mode
+	// Constrained mode
 	PowerOpmode string `pulumi:"powerOpmode"`
 	// DC Input / PoE 802.3at / PoE 802.3af / LLDP / ? (unknown)
 	PowerSrc  string                          `pulumi:"powerSrc"`
 	RadioStat GetApStatsDeviceApStatRadioStat `pulumi:"radioStat"`
-	RxBps     float64                         `pulumi:"rxBps"`
-	RxBytes   int                             `pulumi:"rxBytes"`
-	RxPkts    int                             `pulumi:"rxPkts"`
-	// serial
+	// Rate of receiving traffic, bits/seconds, last known
+	RxBps int `pulumi:"rxBps"`
+	// Amount of traffic received since connection
+	RxBytes int `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPkts int `pulumi:"rxPkts"`
+	// Serial Number
 	Serial           string                                 `pulumi:"serial"`
 	SiteId           string                                 `pulumi:"siteId"`
 	Status           string                                 `pulumi:"status"`
 	SwitchRedundancy GetApStatsDeviceApStatSwitchRedundancy `pulumi:"switchRedundancy"`
-	TxBps            float64                                `pulumi:"txBps"`
-	TxBytes          float64                                `pulumi:"txBytes"`
-	TxPkts           float64                                `pulumi:"txPkts"`
-	// how long, in seconds, has the device been up (or rebooted)
+	// Rate of transmitting traffic, bits/seconds, last known
+	TxBps int `pulumi:"txBps"`
+	// Amount of traffic sent since connection
+	TxBytes int `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPkts int `pulumi:"txPkts"`
+	// How long, in seconds, has the device been up (or rebooted)
 	Uptime  float64                       `pulumi:"uptime"`
 	UsbStat GetApStatsDeviceApStatUsbStat `pulumi:"usbStat"`
 	Version string                        `pulumi:"version"`
@@ -27525,14 +27929,17 @@ type GetApStatsDeviceApStatArgs struct {
 	ConfigReverted  pulumi.BoolInput                           `pulumi:"configReverted"`
 	CpuSystem       pulumi.IntInput                            `pulumi:"cpuSystem"`
 	CpuUtil         pulumi.IntInput                            `pulumi:"cpuUtil"`
-	CreatedTime     pulumi.IntInput                            `pulumi:"createdTime"`
-	DeviceprofileId pulumi.StringInput                         `pulumi:"deviceprofileId"`
-	// device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
-	EnvStat            GetApStatsDeviceApStatEnvStatInput    `pulumi:"envStat"`
-	EslStat            GetApStatsDeviceApStatEslStatInput    `pulumi:"eslStat"`
-	ExtIp              pulumi.StringInput                    `pulumi:"extIp"`
-	Fwupdate           GetApStatsDeviceApStatFwupdateInput   `pulumi:"fwupdate"`
-	HwRev              pulumi.StringInput                    `pulumi:"hwRev"`
+	// When the object has been created, in epoch
+	CreatedTime     pulumi.Float64Input `pulumi:"createdTime"`
+	DeviceprofileId pulumi.StringInput  `pulumi:"deviceprofileId"`
+	// Device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
+	EnvStat  GetApStatsDeviceApStatEnvStatInput  `pulumi:"envStat"`
+	EslStat  GetApStatsDeviceApStatEslStatInput  `pulumi:"eslStat"`
+	ExtIp    pulumi.StringInput                  `pulumi:"extIp"`
+	Fwupdate GetApStatsDeviceApStatFwupdateInput `pulumi:"fwupdate"`
+	Gps      GetApStatsDeviceApStatGpsInput      `pulumi:"gps"`
+	HwRev    pulumi.StringInput                  `pulumi:"hwRev"`
+	// Unique ID of the object instance in the Mist Organization
 	Id                 pulumi.StringInput                    `pulumi:"id"`
 	InactiveWiredVlans pulumi.IntArrayInput                  `pulumi:"inactiveWiredVlans"`
 	IotStat            GetApStatsDeviceApStatIotStatMapInput `pulumi:"iotStat"`
@@ -27540,58 +27947,67 @@ type GetApStatsDeviceApStatArgs struct {
 	// IP AP settings
 	IpConfig GetApStatsDeviceApStatIpConfigInput `pulumi:"ipConfig"`
 	IpStat   GetApStatsDeviceApStatIpStatInput   `pulumi:"ipStat"`
-	// l2tp tunnel status (key is the wxtunnel*id)
+	// L2TP tunnel status (key is the wxtunnel_id)
 	L2tpStat GetApStatsDeviceApStatL2tpStatMapInput `pulumi:"l2tpStat"`
-	// last seen timestamp
+	// Last seen timestamp
 	LastSeen pulumi.Float64Input `pulumi:"lastSeen"`
-	// last trouble code of switch
+	// Last trouble code of switch
 	LastTrouble GetApStatsDeviceApStatLastTroubleInput `pulumi:"lastTrouble"`
 	// LED AP settings
 	Led GetApStatsDeviceApStatLedInput `pulumi:"led"`
 	// LLDP Stat (neighbor information, power negotiations)
 	LldpStat GetApStatsDeviceApStatLldpStatInput `pulumi:"lldpStat"`
 	Locating pulumi.BoolInput                    `pulumi:"locating"`
-	// whether this AP is considered locked (placement / orientation has been vetted)
+	// Whether this AP is considered locked (placement / orientation has been vetted)
 	Locked pulumi.BoolInput `pulumi:"locked"`
-	// device mac
+	// Device mac
 	Mac       pulumi.StringInput `pulumi:"mac"`
 	MapId     pulumi.StringInput `pulumi:"mapId"`
 	MemUsedKb pulumi.IntInput    `pulumi:"memUsedKb"`
-	// Property key is the mesh downlink id (e.g `00000000-0000-0000-1000-5c5b35000010`)
+	// Property key is the mesh downlink id (e.g. `00000000-0000-0000-1000-5c5b35000010`)
 	MeshDownlinks GetApStatsDeviceApStatMeshDownlinksMapInput `pulumi:"meshDownlinks"`
 	MeshUplink    GetApStatsDeviceApStatMeshUplinkInput       `pulumi:"meshUplink"`
-	// device model
-	Model        pulumi.StringInput `pulumi:"model"`
-	ModifiedTime pulumi.IntInput    `pulumi:"modifiedTime"`
-	Mount        pulumi.StringInput `pulumi:"mount"`
-	Name         pulumi.StringInput `pulumi:"name"`
-	Notes        pulumi.StringInput `pulumi:"notes"`
-	// how many wireless clients are currently connected
-	NumClients pulumi.IntInput    `pulumi:"numClients"`
-	OrgId      pulumi.StringInput `pulumi:"orgId"`
+	// Device model
+	Model pulumi.StringInput `pulumi:"model"`
+	// When the object has been modified for the last time, in epoch
+	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
+	Mount        pulumi.StringInput  `pulumi:"mount"`
+	Name         pulumi.StringInput  `pulumi:"name"`
+	Notes        pulumi.StringInput  `pulumi:"notes"`
+	// How many wireless clients are currently connected
+	NumClients pulumi.IntInput `pulumi:"numClients"`
+	// How many WLANs are applied to the device
+	NumWlans pulumi.IntInput    `pulumi:"numWlans"`
+	OrgId    pulumi.StringInput `pulumi:"orgId"`
 	// Property key is the port name (e.g. `eth0`)
 	PortStat GetApStatsDeviceApStatPortStatMapInput `pulumi:"portStat"`
-	// in mW, surplus if positive or deficit if negative
+	// In mW, surplus if positive or deficit if negative
 	PowerBudget pulumi.IntInput `pulumi:"powerBudget"`
-	// whether insufficient power
+	// Whether insufficient power
 	PowerConstrained pulumi.BoolInput `pulumi:"powerConstrained"`
-	// constrained mode
+	// Constrained mode
 	PowerOpmode pulumi.StringInput `pulumi:"powerOpmode"`
 	// DC Input / PoE 802.3at / PoE 802.3af / LLDP / ? (unknown)
 	PowerSrc  pulumi.StringInput                   `pulumi:"powerSrc"`
 	RadioStat GetApStatsDeviceApStatRadioStatInput `pulumi:"radioStat"`
-	RxBps     pulumi.Float64Input                  `pulumi:"rxBps"`
-	RxBytes   pulumi.IntInput                      `pulumi:"rxBytes"`
-	RxPkts    pulumi.IntInput                      `pulumi:"rxPkts"`
-	// serial
+	// Rate of receiving traffic, bits/seconds, last known
+	RxBps pulumi.IntInput `pulumi:"rxBps"`
+	// Amount of traffic received since connection
+	RxBytes pulumi.IntInput `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPkts pulumi.IntInput `pulumi:"rxPkts"`
+	// Serial Number
 	Serial           pulumi.StringInput                          `pulumi:"serial"`
 	SiteId           pulumi.StringInput                          `pulumi:"siteId"`
 	Status           pulumi.StringInput                          `pulumi:"status"`
 	SwitchRedundancy GetApStatsDeviceApStatSwitchRedundancyInput `pulumi:"switchRedundancy"`
-	TxBps            pulumi.Float64Input                         `pulumi:"txBps"`
-	TxBytes          pulumi.Float64Input                         `pulumi:"txBytes"`
-	TxPkts           pulumi.Float64Input                         `pulumi:"txPkts"`
-	// how long, in seconds, has the device been up (or rebooted)
+	// Rate of transmitting traffic, bits/seconds, last known
+	TxBps pulumi.IntInput `pulumi:"txBps"`
+	// Amount of traffic sent since connection
+	TxBytes pulumi.IntInput `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPkts pulumi.IntInput `pulumi:"txPkts"`
+	// How long, in seconds, has the device been up (or rebooted)
 	Uptime  pulumi.Float64Input                `pulumi:"uptime"`
 	UsbStat GetApStatsDeviceApStatUsbStatInput `pulumi:"usbStat"`
 	Version pulumi.StringInput                 `pulumi:"version"`
@@ -27678,15 +28094,16 @@ func (o GetApStatsDeviceApStatOutput) CpuUtil() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) int { return v.CpuUtil }).(pulumi.IntOutput)
 }
 
-func (o GetApStatsDeviceApStatOutput) CreatedTime() pulumi.IntOutput {
-	return o.ApplyT(func(v GetApStatsDeviceApStat) int { return v.CreatedTime }).(pulumi.IntOutput)
+// When the object has been created, in epoch
+func (o GetApStatsDeviceApStatOutput) CreatedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApStatsDeviceApStat) float64 { return v.CreatedTime }).(pulumi.Float64Output)
 }
 
 func (o GetApStatsDeviceApStatOutput) DeviceprofileId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) string { return v.DeviceprofileId }).(pulumi.StringOutput)
 }
 
-// device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
+// Device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
 func (o GetApStatsDeviceApStatOutput) EnvStat() GetApStatsDeviceApStatEnvStatOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) GetApStatsDeviceApStatEnvStat { return v.EnvStat }).(GetApStatsDeviceApStatEnvStatOutput)
 }
@@ -27703,10 +28120,15 @@ func (o GetApStatsDeviceApStatOutput) Fwupdate() GetApStatsDeviceApStatFwupdateO
 	return o.ApplyT(func(v GetApStatsDeviceApStat) GetApStatsDeviceApStatFwupdate { return v.Fwupdate }).(GetApStatsDeviceApStatFwupdateOutput)
 }
 
+func (o GetApStatsDeviceApStatOutput) Gps() GetApStatsDeviceApStatGpsOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStat) GetApStatsDeviceApStatGps { return v.Gps }).(GetApStatsDeviceApStatGpsOutput)
+}
+
 func (o GetApStatsDeviceApStatOutput) HwRev() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) string { return v.HwRev }).(pulumi.StringOutput)
 }
 
+// Unique ID of the object instance in the Mist Organization
 func (o GetApStatsDeviceApStatOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -27732,17 +28154,17 @@ func (o GetApStatsDeviceApStatOutput) IpStat() GetApStatsDeviceApStatIpStatOutpu
 	return o.ApplyT(func(v GetApStatsDeviceApStat) GetApStatsDeviceApStatIpStat { return v.IpStat }).(GetApStatsDeviceApStatIpStatOutput)
 }
 
-// l2tp tunnel status (key is the wxtunnel*id)
+// L2TP tunnel status (key is the wxtunnel_id)
 func (o GetApStatsDeviceApStatOutput) L2tpStat() GetApStatsDeviceApStatL2tpStatMapOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) map[string]GetApStatsDeviceApStatL2tpStat { return v.L2tpStat }).(GetApStatsDeviceApStatL2tpStatMapOutput)
 }
 
-// last seen timestamp
+// Last seen timestamp
 func (o GetApStatsDeviceApStatOutput) LastSeen() pulumi.Float64Output {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) float64 { return v.LastSeen }).(pulumi.Float64Output)
 }
 
-// last trouble code of switch
+// Last trouble code of switch
 func (o GetApStatsDeviceApStatOutput) LastTrouble() GetApStatsDeviceApStatLastTroubleOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) GetApStatsDeviceApStatLastTrouble { return v.LastTrouble }).(GetApStatsDeviceApStatLastTroubleOutput)
 }
@@ -27761,12 +28183,12 @@ func (o GetApStatsDeviceApStatOutput) Locating() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) bool { return v.Locating }).(pulumi.BoolOutput)
 }
 
-// whether this AP is considered locked (placement / orientation has been vetted)
+// Whether this AP is considered locked (placement / orientation has been vetted)
 func (o GetApStatsDeviceApStatOutput) Locked() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) bool { return v.Locked }).(pulumi.BoolOutput)
 }
 
-// device mac
+// Device mac
 func (o GetApStatsDeviceApStatOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) string { return v.Mac }).(pulumi.StringOutput)
 }
@@ -27779,7 +28201,7 @@ func (o GetApStatsDeviceApStatOutput) MemUsedKb() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) int { return v.MemUsedKb }).(pulumi.IntOutput)
 }
 
-// Property key is the mesh downlink id (e.g `00000000-0000-0000-1000-5c5b35000010`)
+// Property key is the mesh downlink id (e.g. `00000000-0000-0000-1000-5c5b35000010`)
 func (o GetApStatsDeviceApStatOutput) MeshDownlinks() GetApStatsDeviceApStatMeshDownlinksMapOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) map[string]GetApStatsDeviceApStatMeshDownlinks { return v.MeshDownlinks }).(GetApStatsDeviceApStatMeshDownlinksMapOutput)
 }
@@ -27788,13 +28210,14 @@ func (o GetApStatsDeviceApStatOutput) MeshUplink() GetApStatsDeviceApStatMeshUpl
 	return o.ApplyT(func(v GetApStatsDeviceApStat) GetApStatsDeviceApStatMeshUplink { return v.MeshUplink }).(GetApStatsDeviceApStatMeshUplinkOutput)
 }
 
-// device model
+// Device model
 func (o GetApStatsDeviceApStatOutput) Model() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) string { return v.Model }).(pulumi.StringOutput)
 }
 
-func (o GetApStatsDeviceApStatOutput) ModifiedTime() pulumi.IntOutput {
-	return o.ApplyT(func(v GetApStatsDeviceApStat) int { return v.ModifiedTime }).(pulumi.IntOutput)
+// When the object has been modified for the last time, in epoch
+func (o GetApStatsDeviceApStatOutput) ModifiedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApStatsDeviceApStat) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
 }
 
 func (o GetApStatsDeviceApStatOutput) Mount() pulumi.StringOutput {
@@ -27809,9 +28232,14 @@ func (o GetApStatsDeviceApStatOutput) Notes() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) string { return v.Notes }).(pulumi.StringOutput)
 }
 
-// how many wireless clients are currently connected
+// How many wireless clients are currently connected
 func (o GetApStatsDeviceApStatOutput) NumClients() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) int { return v.NumClients }).(pulumi.IntOutput)
+}
+
+// How many WLANs are applied to the device
+func (o GetApStatsDeviceApStatOutput) NumWlans() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStat) int { return v.NumWlans }).(pulumi.IntOutput)
 }
 
 func (o GetApStatsDeviceApStatOutput) OrgId() pulumi.StringOutput {
@@ -27823,17 +28251,17 @@ func (o GetApStatsDeviceApStatOutput) PortStat() GetApStatsDeviceApStatPortStatM
 	return o.ApplyT(func(v GetApStatsDeviceApStat) map[string]GetApStatsDeviceApStatPortStat { return v.PortStat }).(GetApStatsDeviceApStatPortStatMapOutput)
 }
 
-// in mW, surplus if positive or deficit if negative
+// In mW, surplus if positive or deficit if negative
 func (o GetApStatsDeviceApStatOutput) PowerBudget() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) int { return v.PowerBudget }).(pulumi.IntOutput)
 }
 
-// whether insufficient power
+// Whether insufficient power
 func (o GetApStatsDeviceApStatOutput) PowerConstrained() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) bool { return v.PowerConstrained }).(pulumi.BoolOutput)
 }
 
-// constrained mode
+// Constrained mode
 func (o GetApStatsDeviceApStatOutput) PowerOpmode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) string { return v.PowerOpmode }).(pulumi.StringOutput)
 }
@@ -27847,19 +28275,22 @@ func (o GetApStatsDeviceApStatOutput) RadioStat() GetApStatsDeviceApStatRadioSta
 	return o.ApplyT(func(v GetApStatsDeviceApStat) GetApStatsDeviceApStatRadioStat { return v.RadioStat }).(GetApStatsDeviceApStatRadioStatOutput)
 }
 
-func (o GetApStatsDeviceApStatOutput) RxBps() pulumi.Float64Output {
-	return o.ApplyT(func(v GetApStatsDeviceApStat) float64 { return v.RxBps }).(pulumi.Float64Output)
+// Rate of receiving traffic, bits/seconds, last known
+func (o GetApStatsDeviceApStatOutput) RxBps() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStat) int { return v.RxBps }).(pulumi.IntOutput)
 }
 
+// Amount of traffic received since connection
 func (o GetApStatsDeviceApStatOutput) RxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) int { return v.RxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets received since connection
 func (o GetApStatsDeviceApStatOutput) RxPkts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) int { return v.RxPkts }).(pulumi.IntOutput)
 }
 
-// serial
+// Serial Number
 func (o GetApStatsDeviceApStatOutput) Serial() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) string { return v.Serial }).(pulumi.StringOutput)
 }
@@ -27876,19 +28307,22 @@ func (o GetApStatsDeviceApStatOutput) SwitchRedundancy() GetApStatsDeviceApStatS
 	return o.ApplyT(func(v GetApStatsDeviceApStat) GetApStatsDeviceApStatSwitchRedundancy { return v.SwitchRedundancy }).(GetApStatsDeviceApStatSwitchRedundancyOutput)
 }
 
-func (o GetApStatsDeviceApStatOutput) TxBps() pulumi.Float64Output {
-	return o.ApplyT(func(v GetApStatsDeviceApStat) float64 { return v.TxBps }).(pulumi.Float64Output)
+// Rate of transmitting traffic, bits/seconds, last known
+func (o GetApStatsDeviceApStatOutput) TxBps() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStat) int { return v.TxBps }).(pulumi.IntOutput)
 }
 
-func (o GetApStatsDeviceApStatOutput) TxBytes() pulumi.Float64Output {
-	return o.ApplyT(func(v GetApStatsDeviceApStat) float64 { return v.TxBytes }).(pulumi.Float64Output)
+// Amount of traffic sent since connection
+func (o GetApStatsDeviceApStatOutput) TxBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStat) int { return v.TxBytes }).(pulumi.IntOutput)
 }
 
-func (o GetApStatsDeviceApStatOutput) TxPkts() pulumi.Float64Output {
-	return o.ApplyT(func(v GetApStatsDeviceApStat) float64 { return v.TxPkts }).(pulumi.Float64Output)
+// Amount of packets sent since connection
+func (o GetApStatsDeviceApStatOutput) TxPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStat) int { return v.TxPkts }).(pulumi.IntOutput)
 }
 
-// how long, in seconds, has the device been up (or rebooted)
+// How long, in seconds, has the device been up (or rebooted)
 func (o GetApStatsDeviceApStatOutput) Uptime() pulumi.Float64Output {
 	return o.ApplyT(func(v GetApStatsDeviceApStat) float64 { return v.Uptime }).(pulumi.Float64Output)
 }
@@ -27938,8 +28372,6 @@ type GetApStatsDeviceApStatAutoPlacement struct {
 	Status string `pulumi:"status"`
 	// Additional info about placement status
 	StatusDetail string `pulumi:"statusDetail"`
-	// Flag to represent if autoPlacement values are currently utilized
-	UseAutoPlacement bool `pulumi:"useAutoPlacement"`
 	// X Autoplaced Position in pixels
 	X float64 `pulumi:"x"`
 	// X Autoplaced Position in meters
@@ -27970,8 +28402,6 @@ type GetApStatsDeviceApStatAutoPlacementArgs struct {
 	Status pulumi.StringInput `pulumi:"status"`
 	// Additional info about placement status
 	StatusDetail pulumi.StringInput `pulumi:"statusDetail"`
-	// Flag to represent if autoPlacement values are currently utilized
-	UseAutoPlacement pulumi.BoolInput `pulumi:"useAutoPlacement"`
 	// X Autoplaced Position in pixels
 	X pulumi.Float64Input `pulumi:"x"`
 	// X Autoplaced Position in meters
@@ -28026,11 +28456,6 @@ func (o GetApStatsDeviceApStatAutoPlacementOutput) Status() pulumi.StringOutput 
 // Additional info about placement status
 func (o GetApStatsDeviceApStatAutoPlacementOutput) StatusDetail() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatAutoPlacement) string { return v.StatusDetail }).(pulumi.StringOutput)
-}
-
-// Flag to represent if autoPlacement values are currently utilized
-func (o GetApStatsDeviceApStatAutoPlacementOutput) UseAutoPlacement() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetApStatsDeviceApStatAutoPlacement) bool { return v.UseAutoPlacement }).(pulumi.BoolOutput)
 }
 
 // X Autoplaced Position in pixels
@@ -28263,11 +28688,15 @@ type GetApStatsDeviceApStatBleStat struct {
 	Major                int    `pulumi:"major"`
 	Minors               []int  `pulumi:"minors"`
 	Power                int    `pulumi:"power"`
-	RxBytes              int    `pulumi:"rxBytes"`
-	RxPkts               int    `pulumi:"rxPkts"`
-	TxBytes              int    `pulumi:"txBytes"`
-	TxPkts               int    `pulumi:"txPkts"`
-	// resets due to tx hung
+	// Amount of traffic received since connection
+	RxBytes int `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPkts int `pulumi:"rxPkts"`
+	// Amount of traffic sent since connection
+	TxBytes int `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPkts int `pulumi:"txPkts"`
+	// Resets due to tx hung
 	TxResets int    `pulumi:"txResets"`
 	Uuid     string `pulumi:"uuid"`
 }
@@ -28302,11 +28731,15 @@ type GetApStatsDeviceApStatBleStatArgs struct {
 	Major                pulumi.IntInput      `pulumi:"major"`
 	Minors               pulumi.IntArrayInput `pulumi:"minors"`
 	Power                pulumi.IntInput      `pulumi:"power"`
-	RxBytes              pulumi.IntInput      `pulumi:"rxBytes"`
-	RxPkts               pulumi.IntInput      `pulumi:"rxPkts"`
-	TxBytes              pulumi.IntInput      `pulumi:"txBytes"`
-	TxPkts               pulumi.IntInput      `pulumi:"txPkts"`
-	// resets due to tx hung
+	// Amount of traffic received since connection
+	RxBytes pulumi.IntInput `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPkts pulumi.IntInput `pulumi:"rxPkts"`
+	// Amount of traffic sent since connection
+	TxBytes pulumi.IntInput `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPkts pulumi.IntInput `pulumi:"txPkts"`
+	// Resets due to tx hung
 	TxResets pulumi.IntInput    `pulumi:"txResets"`
 	Uuid     pulumi.StringInput `pulumi:"uuid"`
 }
@@ -28406,23 +28839,27 @@ func (o GetApStatsDeviceApStatBleStatOutput) Power() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatBleStat) int { return v.Power }).(pulumi.IntOutput)
 }
 
+// Amount of traffic received since connection
 func (o GetApStatsDeviceApStatBleStatOutput) RxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatBleStat) int { return v.RxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets received since connection
 func (o GetApStatsDeviceApStatBleStatOutput) RxPkts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatBleStat) int { return v.RxPkts }).(pulumi.IntOutput)
 }
 
+// Amount of traffic sent since connection
 func (o GetApStatsDeviceApStatBleStatOutput) TxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatBleStat) int { return v.TxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets sent since connection
 func (o GetApStatsDeviceApStatBleStatOutput) TxPkts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatBleStat) int { return v.TxPkts }).(pulumi.IntOutput)
 }
 
-// resets due to tx hung
+// Resets due to tx hung
 func (o GetApStatsDeviceApStatBleStatOutput) TxResets() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatBleStat) int { return v.TxResets }).(pulumi.IntOutput)
 }
@@ -28614,9 +29051,11 @@ func (o GetApStatsDeviceApStatEslStatOutput) Up() pulumi.BoolOutput {
 }
 
 type GetApStatsDeviceApStatFwupdate struct {
-	Progress  int     `pulumi:"progress"`
-	Status    string  `pulumi:"status"`
-	StatusId  int     `pulumi:"statusId"`
+	Progress int `pulumi:"progress"`
+	// enum: `inprogress`, `failed`, `upgraded`
+	Status   string `pulumi:"status"`
+	StatusId int    `pulumi:"statusId"`
+	// Epoch (seconds)
 	Timestamp float64 `pulumi:"timestamp"`
 	WillRetry bool    `pulumi:"willRetry"`
 }
@@ -28633,9 +29072,11 @@ type GetApStatsDeviceApStatFwupdateInput interface {
 }
 
 type GetApStatsDeviceApStatFwupdateArgs struct {
-	Progress  pulumi.IntInput     `pulumi:"progress"`
-	Status    pulumi.StringInput  `pulumi:"status"`
-	StatusId  pulumi.IntInput     `pulumi:"statusId"`
+	Progress pulumi.IntInput `pulumi:"progress"`
+	// enum: `inprogress`, `failed`, `upgraded`
+	Status   pulumi.StringInput `pulumi:"status"`
+	StatusId pulumi.IntInput    `pulumi:"statusId"`
+	// Epoch (seconds)
 	Timestamp pulumi.Float64Input `pulumi:"timestamp"`
 	WillRetry pulumi.BoolInput    `pulumi:"willRetry"`
 }
@@ -28670,6 +29111,7 @@ func (o GetApStatsDeviceApStatFwupdateOutput) Progress() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatFwupdate) int { return v.Progress }).(pulumi.IntOutput)
 }
 
+// enum: `inprogress`, `failed`, `upgraded`
 func (o GetApStatsDeviceApStatFwupdateOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatFwupdate) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -28678,12 +29120,116 @@ func (o GetApStatsDeviceApStatFwupdateOutput) StatusId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatFwupdate) int { return v.StatusId }).(pulumi.IntOutput)
 }
 
+// Epoch (seconds)
 func (o GetApStatsDeviceApStatFwupdateOutput) Timestamp() pulumi.Float64Output {
 	return o.ApplyT(func(v GetApStatsDeviceApStatFwupdate) float64 { return v.Timestamp }).(pulumi.Float64Output)
 }
 
 func (o GetApStatsDeviceApStatFwupdateOutput) WillRetry() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatFwupdate) bool { return v.WillRetry }).(pulumi.BoolOutput)
+}
+
+type GetApStatsDeviceApStatGps struct {
+	// The estimated accuracy or accuracy of the GPS coordinates, measured in meters.
+	Accuracy float64 `pulumi:"accuracy"`
+	// The elevation of the AP above sea level, measured in meters.
+	Altitude float64 `pulumi:"altitude"`
+	// The geographic latitude of the AP, measured in degrees.
+	Latitude float64 `pulumi:"latitude"`
+	// The geographic longitude of the AP, measured in degrees.
+	Longitude float64 `pulumi:"longitude"`
+	// The origin of the GPS data. enum:
+	//   * `gps`: from this device’s GPS estimates
+	//   * `otherAp` from neighboring device GPS estimates
+	Src string `pulumi:"src"`
+	// Epoch (seconds)
+	Timestamp float64 `pulumi:"timestamp"`
+}
+
+// GetApStatsDeviceApStatGpsInput is an input type that accepts GetApStatsDeviceApStatGpsArgs and GetApStatsDeviceApStatGpsOutput values.
+// You can construct a concrete instance of `GetApStatsDeviceApStatGpsInput` via:
+//
+//	GetApStatsDeviceApStatGpsArgs{...}
+type GetApStatsDeviceApStatGpsInput interface {
+	pulumi.Input
+
+	ToGetApStatsDeviceApStatGpsOutput() GetApStatsDeviceApStatGpsOutput
+	ToGetApStatsDeviceApStatGpsOutputWithContext(context.Context) GetApStatsDeviceApStatGpsOutput
+}
+
+type GetApStatsDeviceApStatGpsArgs struct {
+	// The estimated accuracy or accuracy of the GPS coordinates, measured in meters.
+	Accuracy pulumi.Float64Input `pulumi:"accuracy"`
+	// The elevation of the AP above sea level, measured in meters.
+	Altitude pulumi.Float64Input `pulumi:"altitude"`
+	// The geographic latitude of the AP, measured in degrees.
+	Latitude pulumi.Float64Input `pulumi:"latitude"`
+	// The geographic longitude of the AP, measured in degrees.
+	Longitude pulumi.Float64Input `pulumi:"longitude"`
+	// The origin of the GPS data. enum:
+	//   * `gps`: from this device’s GPS estimates
+	//   * `otherAp` from neighboring device GPS estimates
+	Src pulumi.StringInput `pulumi:"src"`
+	// Epoch (seconds)
+	Timestamp pulumi.Float64Input `pulumi:"timestamp"`
+}
+
+func (GetApStatsDeviceApStatGpsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApStatsDeviceApStatGps)(nil)).Elem()
+}
+
+func (i GetApStatsDeviceApStatGpsArgs) ToGetApStatsDeviceApStatGpsOutput() GetApStatsDeviceApStatGpsOutput {
+	return i.ToGetApStatsDeviceApStatGpsOutputWithContext(context.Background())
+}
+
+func (i GetApStatsDeviceApStatGpsArgs) ToGetApStatsDeviceApStatGpsOutputWithContext(ctx context.Context) GetApStatsDeviceApStatGpsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApStatsDeviceApStatGpsOutput)
+}
+
+type GetApStatsDeviceApStatGpsOutput struct{ *pulumi.OutputState }
+
+func (GetApStatsDeviceApStatGpsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApStatsDeviceApStatGps)(nil)).Elem()
+}
+
+func (o GetApStatsDeviceApStatGpsOutput) ToGetApStatsDeviceApStatGpsOutput() GetApStatsDeviceApStatGpsOutput {
+	return o
+}
+
+func (o GetApStatsDeviceApStatGpsOutput) ToGetApStatsDeviceApStatGpsOutputWithContext(ctx context.Context) GetApStatsDeviceApStatGpsOutput {
+	return o
+}
+
+// The estimated accuracy or accuracy of the GPS coordinates, measured in meters.
+func (o GetApStatsDeviceApStatGpsOutput) Accuracy() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApStatsDeviceApStatGps) float64 { return v.Accuracy }).(pulumi.Float64Output)
+}
+
+// The elevation of the AP above sea level, measured in meters.
+func (o GetApStatsDeviceApStatGpsOutput) Altitude() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApStatsDeviceApStatGps) float64 { return v.Altitude }).(pulumi.Float64Output)
+}
+
+// The geographic latitude of the AP, measured in degrees.
+func (o GetApStatsDeviceApStatGpsOutput) Latitude() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApStatsDeviceApStatGps) float64 { return v.Latitude }).(pulumi.Float64Output)
+}
+
+// The geographic longitude of the AP, measured in degrees.
+func (o GetApStatsDeviceApStatGpsOutput) Longitude() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApStatsDeviceApStatGps) float64 { return v.Longitude }).(pulumi.Float64Output)
+}
+
+// The origin of the GPS data. enum:
+//   - `gps`: from this device’s GPS estimates
+//   - `otherAp` from neighboring device GPS estimates
+func (o GetApStatsDeviceApStatGpsOutput) Src() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStatGps) string { return v.Src }).(pulumi.StringOutput)
+}
+
+// Epoch (seconds)
+func (o GetApStatsDeviceApStatGpsOutput) Timestamp() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApStatsDeviceApStatGps) float64 { return v.Timestamp }).(pulumi.Float64Output)
 }
 
 type GetApStatsDeviceApStatIotStat struct {
@@ -28781,23 +29327,25 @@ func (o GetApStatsDeviceApStatIotStatMapOutput) MapIndex(k pulumi.StringInput) G
 }
 
 type GetApStatsDeviceApStatIpConfig struct {
-	// if `type`==`static`
+	// If `type`==`static`
 	Dns []string `pulumi:"dns"`
-	// required if `type`==`static`
+	// Required if `type`==`static`
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// required if `type`==`static`
+	// Required if `type`==`static`
 	Gateway  string `pulumi:"gateway"`
 	Gateway6 string `pulumi:"gateway6"`
-	// required if `type`==`static`
+	// Required if `type`==`static`
 	Ip  string `pulumi:"ip"`
 	Ip6 string `pulumi:"ip6"`
 	Mtu int    `pulumi:"mtu"`
-	// required if `type`==`static`
+	// Required if `type`==`static`
 	Netmask  string `pulumi:"netmask"`
 	Netmask6 string `pulumi:"netmask6"`
-	Type     string `pulumi:"type"`
-	Type6    string `pulumi:"type6"`
-	// management vlan id, default is 1 (untagged)
+	// enum: `dhcp`, `static`
+	Type string `pulumi:"type"`
+	// enum: `autoconf`, `dhcp`, `disabled`, `static`
+	Type6 string `pulumi:"type6"`
+	// Management VLAN id, default is 1 (untagged)
 	VlanId int `pulumi:"vlanId"`
 }
 
@@ -28813,23 +29361,25 @@ type GetApStatsDeviceApStatIpConfigInput interface {
 }
 
 type GetApStatsDeviceApStatIpConfigArgs struct {
-	// if `type`==`static`
+	// If `type`==`static`
 	Dns pulumi.StringArrayInput `pulumi:"dns"`
-	// required if `type`==`static`
+	// Required if `type`==`static`
 	DnsSuffixes pulumi.StringArrayInput `pulumi:"dnsSuffixes"`
-	// required if `type`==`static`
+	// Required if `type`==`static`
 	Gateway  pulumi.StringInput `pulumi:"gateway"`
 	Gateway6 pulumi.StringInput `pulumi:"gateway6"`
-	// required if `type`==`static`
+	// Required if `type`==`static`
 	Ip  pulumi.StringInput `pulumi:"ip"`
 	Ip6 pulumi.StringInput `pulumi:"ip6"`
 	Mtu pulumi.IntInput    `pulumi:"mtu"`
-	// required if `type`==`static`
+	// Required if `type`==`static`
 	Netmask  pulumi.StringInput `pulumi:"netmask"`
 	Netmask6 pulumi.StringInput `pulumi:"netmask6"`
-	Type     pulumi.StringInput `pulumi:"type"`
-	Type6    pulumi.StringInput `pulumi:"type6"`
-	// management vlan id, default is 1 (untagged)
+	// enum: `dhcp`, `static`
+	Type pulumi.StringInput `pulumi:"type"`
+	// enum: `autoconf`, `dhcp`, `disabled`, `static`
+	Type6 pulumi.StringInput `pulumi:"type6"`
+	// Management VLAN id, default is 1 (untagged)
 	VlanId pulumi.IntInput `pulumi:"vlanId"`
 }
 
@@ -28859,17 +29409,17 @@ func (o GetApStatsDeviceApStatIpConfigOutput) ToGetApStatsDeviceApStatIpConfigOu
 	return o
 }
 
-// if `type`==`static`
+// If `type`==`static`
 func (o GetApStatsDeviceApStatIpConfigOutput) Dns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatIpConfig) []string { return v.Dns }).(pulumi.StringArrayOutput)
 }
 
-// required if `type`==`static`
+// Required if `type`==`static`
 func (o GetApStatsDeviceApStatIpConfigOutput) DnsSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatIpConfig) []string { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
 }
 
-// required if `type`==`static`
+// Required if `type`==`static`
 func (o GetApStatsDeviceApStatIpConfigOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatIpConfig) string { return v.Gateway }).(pulumi.StringOutput)
 }
@@ -28878,7 +29428,7 @@ func (o GetApStatsDeviceApStatIpConfigOutput) Gateway6() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatIpConfig) string { return v.Gateway6 }).(pulumi.StringOutput)
 }
 
-// required if `type`==`static`
+// Required if `type`==`static`
 func (o GetApStatsDeviceApStatIpConfigOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatIpConfig) string { return v.Ip }).(pulumi.StringOutput)
 }
@@ -28891,7 +29441,7 @@ func (o GetApStatsDeviceApStatIpConfigOutput) Mtu() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatIpConfig) int { return v.Mtu }).(pulumi.IntOutput)
 }
 
-// required if `type`==`static`
+// Required if `type`==`static`
 func (o GetApStatsDeviceApStatIpConfigOutput) Netmask() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatIpConfig) string { return v.Netmask }).(pulumi.StringOutput)
 }
@@ -28900,15 +29450,17 @@ func (o GetApStatsDeviceApStatIpConfigOutput) Netmask6() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatIpConfig) string { return v.Netmask6 }).(pulumi.StringOutput)
 }
 
+// enum: `dhcp`, `static`
 func (o GetApStatsDeviceApStatIpConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatIpConfig) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// enum: `autoconf`, `dhcp`, `disabled`, `static`
 func (o GetApStatsDeviceApStatIpConfigOutput) Type6() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatIpConfig) string { return v.Type6 }).(pulumi.StringOutput)
 }
 
-// management vlan id, default is 1 (untagged)
+// Management VLAN id, default is 1 (untagged)
 func (o GetApStatsDeviceApStatIpConfigOutput) VlanId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatIpConfig) int { return v.VlanId }).(pulumi.IntOutput)
 }
@@ -29017,10 +29569,11 @@ func (o GetApStatsDeviceApStatIpStatOutput) Netmask6() pulumi.StringOutput {
 }
 
 type GetApStatsDeviceApStatL2tpStat struct {
-	// list of sessions
+	// List of sessions
 	Sessions []GetApStatsDeviceApStatL2tpStatSession `pulumi:"sessions"`
-	State    string                                  `pulumi:"state"`
-	// uptime
+	// enum: `established`, `establishedWithSession`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+	State string `pulumi:"state"`
+	// Uptime
 	Uptime int `pulumi:"uptime"`
 	// WxlanTunnel ID
 	WxtunnelId string `pulumi:"wxtunnelId"`
@@ -29038,10 +29591,11 @@ type GetApStatsDeviceApStatL2tpStatInput interface {
 }
 
 type GetApStatsDeviceApStatL2tpStatArgs struct {
-	// list of sessions
+	// List of sessions
 	Sessions GetApStatsDeviceApStatL2tpStatSessionArrayInput `pulumi:"sessions"`
-	State    pulumi.StringInput                              `pulumi:"state"`
-	// uptime
+	// enum: `established`, `establishedWithSession`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+	State pulumi.StringInput `pulumi:"state"`
+	// Uptime
 	Uptime pulumi.IntInput `pulumi:"uptime"`
 	// WxlanTunnel ID
 	WxtunnelId pulumi.StringInput `pulumi:"wxtunnelId"`
@@ -29098,16 +29652,17 @@ func (o GetApStatsDeviceApStatL2tpStatOutput) ToGetApStatsDeviceApStatL2tpStatOu
 	return o
 }
 
-// list of sessions
+// List of sessions
 func (o GetApStatsDeviceApStatL2tpStatOutput) Sessions() GetApStatsDeviceApStatL2tpStatSessionArrayOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatL2tpStat) []GetApStatsDeviceApStatL2tpStatSession { return v.Sessions }).(GetApStatsDeviceApStatL2tpStatSessionArrayOutput)
 }
 
+// enum: `established`, `establishedWithSession`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
 func (o GetApStatsDeviceApStatL2tpStatOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatL2tpStat) string { return v.State }).(pulumi.StringOutput)
 }
 
-// uptime
+// Uptime
 func (o GetApStatsDeviceApStatL2tpStatOutput) Uptime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatL2tpStat) int { return v.Uptime }).(pulumi.IntOutput)
 }
@@ -29138,13 +29693,14 @@ func (o GetApStatsDeviceApStatL2tpStatMapOutput) MapIndex(k pulumi.StringInput) 
 }
 
 type GetApStatsDeviceApStatL2tpStatSession struct {
-	// remote sessions id (dynamically unless Tunnel is said to be static)
+	// Remote sessions id (dynamically unless Tunnel is said to be static)
 	LocalSid int `pulumi:"localSid"`
 	// WxlanTunnel Remote ID (user-configured)
 	RemoteId string `pulumi:"remoteId"`
-	// remote sessions id (dynamically unless Tunnel is said to be static)
-	RemoteSid int    `pulumi:"remoteSid"`
-	State     string `pulumi:"state"`
+	// Remote sessions id (dynamically unless Tunnel is said to be static)
+	RemoteSid int `pulumi:"remoteSid"`
+	// enum: `established`, `establishedWithSession`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+	State string `pulumi:"state"`
 }
 
 // GetApStatsDeviceApStatL2tpStatSessionInput is an input type that accepts GetApStatsDeviceApStatL2tpStatSessionArgs and GetApStatsDeviceApStatL2tpStatSessionOutput values.
@@ -29159,13 +29715,14 @@ type GetApStatsDeviceApStatL2tpStatSessionInput interface {
 }
 
 type GetApStatsDeviceApStatL2tpStatSessionArgs struct {
-	// remote sessions id (dynamically unless Tunnel is said to be static)
+	// Remote sessions id (dynamically unless Tunnel is said to be static)
 	LocalSid pulumi.IntInput `pulumi:"localSid"`
 	// WxlanTunnel Remote ID (user-configured)
 	RemoteId pulumi.StringInput `pulumi:"remoteId"`
-	// remote sessions id (dynamically unless Tunnel is said to be static)
-	RemoteSid pulumi.IntInput    `pulumi:"remoteSid"`
-	State     pulumi.StringInput `pulumi:"state"`
+	// Remote sessions id (dynamically unless Tunnel is said to be static)
+	RemoteSid pulumi.IntInput `pulumi:"remoteSid"`
+	// enum: `established`, `establishedWithSession`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+	State pulumi.StringInput `pulumi:"state"`
 }
 
 func (GetApStatsDeviceApStatL2tpStatSessionArgs) ElementType() reflect.Type {
@@ -29219,7 +29776,7 @@ func (o GetApStatsDeviceApStatL2tpStatSessionOutput) ToGetApStatsDeviceApStatL2t
 	return o
 }
 
-// remote sessions id (dynamically unless Tunnel is said to be static)
+// Remote sessions id (dynamically unless Tunnel is said to be static)
 func (o GetApStatsDeviceApStatL2tpStatSessionOutput) LocalSid() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatL2tpStatSession) int { return v.LocalSid }).(pulumi.IntOutput)
 }
@@ -29229,11 +29786,12 @@ func (o GetApStatsDeviceApStatL2tpStatSessionOutput) RemoteId() pulumi.StringOut
 	return o.ApplyT(func(v GetApStatsDeviceApStatL2tpStatSession) string { return v.RemoteId }).(pulumi.StringOutput)
 }
 
-// remote sessions id (dynamically unless Tunnel is said to be static)
+// Remote sessions id (dynamically unless Tunnel is said to be static)
 func (o GetApStatsDeviceApStatL2tpStatSessionOutput) RemoteSid() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatL2tpStatSession) int { return v.RemoteSid }).(pulumi.IntOutput)
 }
 
+// enum: `established`, `establishedWithSession`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
 func (o GetApStatsDeviceApStatL2tpStatSessionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatL2tpStatSession) string { return v.State }).(pulumi.StringOutput)
 }
@@ -29259,9 +29817,10 @@ func (o GetApStatsDeviceApStatL2tpStatSessionArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetApStatsDeviceApStatLastTrouble struct {
-	// Code definitions list at /api/v1/consts/ap*led*status
-	Code      string `pulumi:"code"`
-	Timestamp int    `pulumi:"timestamp"`
+	// Code definitions list at List Ap Led Definition
+	Code string `pulumi:"code"`
+	// Epoch (seconds)
+	Timestamp float64 `pulumi:"timestamp"`
 }
 
 // GetApStatsDeviceApStatLastTroubleInput is an input type that accepts GetApStatsDeviceApStatLastTroubleArgs and GetApStatsDeviceApStatLastTroubleOutput values.
@@ -29276,9 +29835,10 @@ type GetApStatsDeviceApStatLastTroubleInput interface {
 }
 
 type GetApStatsDeviceApStatLastTroubleArgs struct {
-	// Code definitions list at /api/v1/consts/ap*led*status
-	Code      pulumi.StringInput `pulumi:"code"`
-	Timestamp pulumi.IntInput    `pulumi:"timestamp"`
+	// Code definitions list at List Ap Led Definition
+	Code pulumi.StringInput `pulumi:"code"`
+	// Epoch (seconds)
+	Timestamp pulumi.Float64Input `pulumi:"timestamp"`
 }
 
 func (GetApStatsDeviceApStatLastTroubleArgs) ElementType() reflect.Type {
@@ -29307,13 +29867,14 @@ func (o GetApStatsDeviceApStatLastTroubleOutput) ToGetApStatsDeviceApStatLastTro
 	return o
 }
 
-// Code definitions list at /api/v1/consts/ap*led*status
+// Code definitions list at List Ap Led Definition
 func (o GetApStatsDeviceApStatLastTroubleOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatLastTrouble) string { return v.Code }).(pulumi.StringOutput)
 }
 
-func (o GetApStatsDeviceApStatLastTroubleOutput) Timestamp() pulumi.IntOutput {
-	return o.ApplyT(func(v GetApStatsDeviceApStatLastTrouble) int { return v.Timestamp }).(pulumi.IntOutput)
+// Epoch (seconds)
+func (o GetApStatsDeviceApStatLastTroubleOutput) Timestamp() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApStatsDeviceApStatLastTrouble) float64 { return v.Timestamp }).(pulumi.Float64Output)
 }
 
 type GetApStatsDeviceApStatLed struct {
@@ -29373,25 +29934,25 @@ func (o GetApStatsDeviceApStatLedOutput) Enabled() pulumi.BoolOutput {
 
 type GetApStatsDeviceApStatLldpStat struct {
 	ChassisId string `pulumi:"chassisId"`
-	// whether it support LLDP-MED
+	// Whether it support LLDP-MED
 	LldpMedSupported bool `pulumi:"lldpMedSupported"`
-	// switch’s management address (if advertised), can be IPv4, IPv6, or MAC
+	// Switch’s management address (if advertised), can be IPv4, IPv6, or MAC
 	MgmtAddr  string   `pulumi:"mgmtAddr"`
 	MgmtAddrs []string `pulumi:"mgmtAddrs"`
 	// ge-0/0/4
 	PortDesc string `pulumi:"portDesc"`
 	PortId   string `pulumi:"portId"`
-	// in mW, provided/allocated by PSE
+	// In mW, provided/allocated by PSE
 	PowerAllocated float64 `pulumi:"powerAllocated"`
-	// in mW, total power needed by PD
+	// In mW, total power needed by PD
 	PowerDraw float64 `pulumi:"powerDraw"`
-	// number of negotiations, if it keeps increasing, we don’t have a stable power
+	// Number of negotiations, if it keeps increasing, we don’ t have a stable power
 	PowerRequestCount int `pulumi:"powerRequestCount"`
-	// in mW, the current power requested by PD
+	// In mW, the current power requested by PD
 	PowerRequested float64 `pulumi:"powerRequested"`
-	// description provided by switch
+	// Description provided by switch
 	SystemDesc string `pulumi:"systemDesc"`
-	// name of the switch
+	// Name of the switch
 	SystemName string `pulumi:"systemName"`
 }
 
@@ -29408,25 +29969,25 @@ type GetApStatsDeviceApStatLldpStatInput interface {
 
 type GetApStatsDeviceApStatLldpStatArgs struct {
 	ChassisId pulumi.StringInput `pulumi:"chassisId"`
-	// whether it support LLDP-MED
+	// Whether it support LLDP-MED
 	LldpMedSupported pulumi.BoolInput `pulumi:"lldpMedSupported"`
-	// switch’s management address (if advertised), can be IPv4, IPv6, or MAC
+	// Switch’s management address (if advertised), can be IPv4, IPv6, or MAC
 	MgmtAddr  pulumi.StringInput      `pulumi:"mgmtAddr"`
 	MgmtAddrs pulumi.StringArrayInput `pulumi:"mgmtAddrs"`
 	// ge-0/0/4
 	PortDesc pulumi.StringInput `pulumi:"portDesc"`
 	PortId   pulumi.StringInput `pulumi:"portId"`
-	// in mW, provided/allocated by PSE
+	// In mW, provided/allocated by PSE
 	PowerAllocated pulumi.Float64Input `pulumi:"powerAllocated"`
-	// in mW, total power needed by PD
+	// In mW, total power needed by PD
 	PowerDraw pulumi.Float64Input `pulumi:"powerDraw"`
-	// number of negotiations, if it keeps increasing, we don’t have a stable power
+	// Number of negotiations, if it keeps increasing, we don’ t have a stable power
 	PowerRequestCount pulumi.IntInput `pulumi:"powerRequestCount"`
-	// in mW, the current power requested by PD
+	// In mW, the current power requested by PD
 	PowerRequested pulumi.Float64Input `pulumi:"powerRequested"`
-	// description provided by switch
+	// Description provided by switch
 	SystemDesc pulumi.StringInput `pulumi:"systemDesc"`
-	// name of the switch
+	// Name of the switch
 	SystemName pulumi.StringInput `pulumi:"systemName"`
 }
 
@@ -29460,12 +30021,12 @@ func (o GetApStatsDeviceApStatLldpStatOutput) ChassisId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatLldpStat) string { return v.ChassisId }).(pulumi.StringOutput)
 }
 
-// whether it support LLDP-MED
+// Whether it support LLDP-MED
 func (o GetApStatsDeviceApStatLldpStatOutput) LldpMedSupported() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatLldpStat) bool { return v.LldpMedSupported }).(pulumi.BoolOutput)
 }
 
-// switch’s management address (if advertised), can be IPv4, IPv6, or MAC
+// Switch’s management address (if advertised), can be IPv4, IPv6, or MAC
 func (o GetApStatsDeviceApStatLldpStatOutput) MgmtAddr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatLldpStat) string { return v.MgmtAddr }).(pulumi.StringOutput)
 }
@@ -29483,55 +30044,66 @@ func (o GetApStatsDeviceApStatLldpStatOutput) PortId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatLldpStat) string { return v.PortId }).(pulumi.StringOutput)
 }
 
-// in mW, provided/allocated by PSE
+// In mW, provided/allocated by PSE
 func (o GetApStatsDeviceApStatLldpStatOutput) PowerAllocated() pulumi.Float64Output {
 	return o.ApplyT(func(v GetApStatsDeviceApStatLldpStat) float64 { return v.PowerAllocated }).(pulumi.Float64Output)
 }
 
-// in mW, total power needed by PD
+// In mW, total power needed by PD
 func (o GetApStatsDeviceApStatLldpStatOutput) PowerDraw() pulumi.Float64Output {
 	return o.ApplyT(func(v GetApStatsDeviceApStatLldpStat) float64 { return v.PowerDraw }).(pulumi.Float64Output)
 }
 
-// number of negotiations, if it keeps increasing, we don’t have a stable power
+// Number of negotiations, if it keeps increasing, we don’ t have a stable power
 func (o GetApStatsDeviceApStatLldpStatOutput) PowerRequestCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatLldpStat) int { return v.PowerRequestCount }).(pulumi.IntOutput)
 }
 
-// in mW, the current power requested by PD
+// In mW, the current power requested by PD
 func (o GetApStatsDeviceApStatLldpStatOutput) PowerRequested() pulumi.Float64Output {
 	return o.ApplyT(func(v GetApStatsDeviceApStatLldpStat) float64 { return v.PowerRequested }).(pulumi.Float64Output)
 }
 
-// description provided by switch
+// Description provided by switch
 func (o GetApStatsDeviceApStatLldpStatOutput) SystemDesc() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatLldpStat) string { return v.SystemDesc }).(pulumi.StringOutput)
 }
 
-// name of the switch
+// Name of the switch
 func (o GetApStatsDeviceApStatLldpStatOutput) SystemName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatLldpStat) string { return v.SystemName }).(pulumi.StringOutput)
 }
 
 type GetApStatsDeviceApStatMeshDownlinks struct {
-	Band      string  `pulumi:"band"`
-	Channel   int     `pulumi:"channel"`
-	IdleTime  int     `pulumi:"idleTime"`
-	LastSeen  float64 `pulumi:"lastSeen"`
-	Proto     string  `pulumi:"proto"`
-	Rssi      int     `pulumi:"rssi"`
-	RxBps     int     `pulumi:"rxBps"`
-	RxBytes   int     `pulumi:"rxBytes"`
-	RxPackets int     `pulumi:"rxPackets"`
-	RxRate    int     `pulumi:"rxRate"`
-	RxRetries int     `pulumi:"rxRetries"`
-	SiteId    string  `pulumi:"siteId"`
-	Snr       int     `pulumi:"snr"`
-	TxBps     int     `pulumi:"txBps"`
-	TxBytes   int     `pulumi:"txBytes"`
-	TxPackets int     `pulumi:"txPackets"`
-	TxRate    int     `pulumi:"txRate"`
-	TxRetries int     `pulumi:"txRetries"`
+	Band     string `pulumi:"band"`
+	Channel  int    `pulumi:"channel"`
+	IdleTime int    `pulumi:"idleTime"`
+	// Last seen timestamp
+	LastSeen float64 `pulumi:"lastSeen"`
+	Proto    string  `pulumi:"proto"`
+	Rssi     int     `pulumi:"rssi"`
+	// Rate of receiving traffic, bits/seconds, last known
+	RxBps int `pulumi:"rxBps"`
+	// Amount of traffic received since connection
+	RxBytes int `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPackets int `pulumi:"rxPackets"`
+	// RX Rate, Mbps
+	RxRate float64 `pulumi:"rxRate"`
+	// Amount of rx retries
+	RxRetries int    `pulumi:"rxRetries"`
+	SiteId    string `pulumi:"siteId"`
+	Snr       int    `pulumi:"snr"`
+	// Rate of transmitting traffic, bits/seconds, last known
+	TxBps int `pulumi:"txBps"`
+	// Amount of traffic sent since connection
+	TxBytes int `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPackets int `pulumi:"txPackets"`
+	// TX Rate, Mbps
+	TxRate float64 `pulumi:"txRate"`
+	// Amount of tx retries
+	TxRetries int `pulumi:"txRetries"`
 }
 
 // GetApStatsDeviceApStatMeshDownlinksInput is an input type that accepts GetApStatsDeviceApStatMeshDownlinksArgs and GetApStatsDeviceApStatMeshDownlinksOutput values.
@@ -29546,24 +30118,35 @@ type GetApStatsDeviceApStatMeshDownlinksInput interface {
 }
 
 type GetApStatsDeviceApStatMeshDownlinksArgs struct {
-	Band      pulumi.StringInput  `pulumi:"band"`
-	Channel   pulumi.IntInput     `pulumi:"channel"`
-	IdleTime  pulumi.IntInput     `pulumi:"idleTime"`
-	LastSeen  pulumi.Float64Input `pulumi:"lastSeen"`
-	Proto     pulumi.StringInput  `pulumi:"proto"`
-	Rssi      pulumi.IntInput     `pulumi:"rssi"`
-	RxBps     pulumi.IntInput     `pulumi:"rxBps"`
-	RxBytes   pulumi.IntInput     `pulumi:"rxBytes"`
-	RxPackets pulumi.IntInput     `pulumi:"rxPackets"`
-	RxRate    pulumi.IntInput     `pulumi:"rxRate"`
-	RxRetries pulumi.IntInput     `pulumi:"rxRetries"`
-	SiteId    pulumi.StringInput  `pulumi:"siteId"`
-	Snr       pulumi.IntInput     `pulumi:"snr"`
-	TxBps     pulumi.IntInput     `pulumi:"txBps"`
-	TxBytes   pulumi.IntInput     `pulumi:"txBytes"`
-	TxPackets pulumi.IntInput     `pulumi:"txPackets"`
-	TxRate    pulumi.IntInput     `pulumi:"txRate"`
-	TxRetries pulumi.IntInput     `pulumi:"txRetries"`
+	Band     pulumi.StringInput `pulumi:"band"`
+	Channel  pulumi.IntInput    `pulumi:"channel"`
+	IdleTime pulumi.IntInput    `pulumi:"idleTime"`
+	// Last seen timestamp
+	LastSeen pulumi.Float64Input `pulumi:"lastSeen"`
+	Proto    pulumi.StringInput  `pulumi:"proto"`
+	Rssi     pulumi.IntInput     `pulumi:"rssi"`
+	// Rate of receiving traffic, bits/seconds, last known
+	RxBps pulumi.IntInput `pulumi:"rxBps"`
+	// Amount of traffic received since connection
+	RxBytes pulumi.IntInput `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPackets pulumi.IntInput `pulumi:"rxPackets"`
+	// RX Rate, Mbps
+	RxRate pulumi.Float64Input `pulumi:"rxRate"`
+	// Amount of rx retries
+	RxRetries pulumi.IntInput    `pulumi:"rxRetries"`
+	SiteId    pulumi.StringInput `pulumi:"siteId"`
+	Snr       pulumi.IntInput    `pulumi:"snr"`
+	// Rate of transmitting traffic, bits/seconds, last known
+	TxBps pulumi.IntInput `pulumi:"txBps"`
+	// Amount of traffic sent since connection
+	TxBytes pulumi.IntInput `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPackets pulumi.IntInput `pulumi:"txPackets"`
+	// TX Rate, Mbps
+	TxRate pulumi.Float64Input `pulumi:"txRate"`
+	// Amount of tx retries
+	TxRetries pulumi.IntInput `pulumi:"txRetries"`
 }
 
 func (GetApStatsDeviceApStatMeshDownlinksArgs) ElementType() reflect.Type {
@@ -29629,6 +30212,7 @@ func (o GetApStatsDeviceApStatMeshDownlinksOutput) IdleTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshDownlinks) int { return v.IdleTime }).(pulumi.IntOutput)
 }
 
+// Last seen timestamp
 func (o GetApStatsDeviceApStatMeshDownlinksOutput) LastSeen() pulumi.Float64Output {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshDownlinks) float64 { return v.LastSeen }).(pulumi.Float64Output)
 }
@@ -29641,22 +30225,27 @@ func (o GetApStatsDeviceApStatMeshDownlinksOutput) Rssi() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshDownlinks) int { return v.Rssi }).(pulumi.IntOutput)
 }
 
+// Rate of receiving traffic, bits/seconds, last known
 func (o GetApStatsDeviceApStatMeshDownlinksOutput) RxBps() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshDownlinks) int { return v.RxBps }).(pulumi.IntOutput)
 }
 
+// Amount of traffic received since connection
 func (o GetApStatsDeviceApStatMeshDownlinksOutput) RxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshDownlinks) int { return v.RxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets received since connection
 func (o GetApStatsDeviceApStatMeshDownlinksOutput) RxPackets() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshDownlinks) int { return v.RxPackets }).(pulumi.IntOutput)
 }
 
-func (o GetApStatsDeviceApStatMeshDownlinksOutput) RxRate() pulumi.IntOutput {
-	return o.ApplyT(func(v GetApStatsDeviceApStatMeshDownlinks) int { return v.RxRate }).(pulumi.IntOutput)
+// RX Rate, Mbps
+func (o GetApStatsDeviceApStatMeshDownlinksOutput) RxRate() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApStatsDeviceApStatMeshDownlinks) float64 { return v.RxRate }).(pulumi.Float64Output)
 }
 
+// Amount of rx retries
 func (o GetApStatsDeviceApStatMeshDownlinksOutput) RxRetries() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshDownlinks) int { return v.RxRetries }).(pulumi.IntOutput)
 }
@@ -29669,22 +30258,27 @@ func (o GetApStatsDeviceApStatMeshDownlinksOutput) Snr() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshDownlinks) int { return v.Snr }).(pulumi.IntOutput)
 }
 
+// Rate of transmitting traffic, bits/seconds, last known
 func (o GetApStatsDeviceApStatMeshDownlinksOutput) TxBps() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshDownlinks) int { return v.TxBps }).(pulumi.IntOutput)
 }
 
+// Amount of traffic sent since connection
 func (o GetApStatsDeviceApStatMeshDownlinksOutput) TxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshDownlinks) int { return v.TxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets sent since connection
 func (o GetApStatsDeviceApStatMeshDownlinksOutput) TxPackets() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshDownlinks) int { return v.TxPackets }).(pulumi.IntOutput)
 }
 
-func (o GetApStatsDeviceApStatMeshDownlinksOutput) TxRate() pulumi.IntOutput {
-	return o.ApplyT(func(v GetApStatsDeviceApStatMeshDownlinks) int { return v.TxRate }).(pulumi.IntOutput)
+// TX Rate, Mbps
+func (o GetApStatsDeviceApStatMeshDownlinksOutput) TxRate() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApStatsDeviceApStatMeshDownlinks) float64 { return v.TxRate }).(pulumi.Float64Output)
 }
 
+// Amount of tx retries
 func (o GetApStatsDeviceApStatMeshDownlinksOutput) TxRetries() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshDownlinks) int { return v.TxRetries }).(pulumi.IntOutput)
 }
@@ -29710,25 +30304,36 @@ func (o GetApStatsDeviceApStatMeshDownlinksMapOutput) MapIndex(k pulumi.StringIn
 }
 
 type GetApStatsDeviceApStatMeshUplink struct {
-	Band       string  `pulumi:"band"`
-	Channel    int     `pulumi:"channel"`
-	IdleTime   int     `pulumi:"idleTime"`
-	LastSeen   float64 `pulumi:"lastSeen"`
-	Proto      string  `pulumi:"proto"`
-	Rssi       int     `pulumi:"rssi"`
-	RxBps      int     `pulumi:"rxBps"`
-	RxBytes    int     `pulumi:"rxBytes"`
-	RxPackets  int     `pulumi:"rxPackets"`
-	RxRate     int     `pulumi:"rxRate"`
-	RxRetries  int     `pulumi:"rxRetries"`
-	SiteId     string  `pulumi:"siteId"`
-	Snr        int     `pulumi:"snr"`
-	TxBps      int     `pulumi:"txBps"`
-	TxBytes    int     `pulumi:"txBytes"`
-	TxPackets  int     `pulumi:"txPackets"`
-	TxRate     int     `pulumi:"txRate"`
-	TxRetries  int     `pulumi:"txRetries"`
-	UplinkApId string  `pulumi:"uplinkApId"`
+	Band     string `pulumi:"band"`
+	Channel  int    `pulumi:"channel"`
+	IdleTime int    `pulumi:"idleTime"`
+	// Last seen timestamp
+	LastSeen float64 `pulumi:"lastSeen"`
+	Proto    string  `pulumi:"proto"`
+	Rssi     int     `pulumi:"rssi"`
+	// Rate of receiving traffic, bits/seconds, last known
+	RxBps int `pulumi:"rxBps"`
+	// Amount of traffic received since connection
+	RxBytes int `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPackets int `pulumi:"rxPackets"`
+	// RX Rate, Mbps
+	RxRate float64 `pulumi:"rxRate"`
+	// Amount of rx retries
+	RxRetries int    `pulumi:"rxRetries"`
+	SiteId    string `pulumi:"siteId"`
+	Snr       int    `pulumi:"snr"`
+	// Rate of transmitting traffic, bits/seconds, last known
+	TxBps int `pulumi:"txBps"`
+	// Amount of traffic sent since connection
+	TxBytes int `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPackets int `pulumi:"txPackets"`
+	// TX Rate, Mbps
+	TxRate float64 `pulumi:"txRate"`
+	// Amount of tx retries
+	TxRetries  int    `pulumi:"txRetries"`
+	UplinkApId string `pulumi:"uplinkApId"`
 }
 
 // GetApStatsDeviceApStatMeshUplinkInput is an input type that accepts GetApStatsDeviceApStatMeshUplinkArgs and GetApStatsDeviceApStatMeshUplinkOutput values.
@@ -29743,25 +30348,36 @@ type GetApStatsDeviceApStatMeshUplinkInput interface {
 }
 
 type GetApStatsDeviceApStatMeshUplinkArgs struct {
-	Band       pulumi.StringInput  `pulumi:"band"`
-	Channel    pulumi.IntInput     `pulumi:"channel"`
-	IdleTime   pulumi.IntInput     `pulumi:"idleTime"`
-	LastSeen   pulumi.Float64Input `pulumi:"lastSeen"`
-	Proto      pulumi.StringInput  `pulumi:"proto"`
-	Rssi       pulumi.IntInput     `pulumi:"rssi"`
-	RxBps      pulumi.IntInput     `pulumi:"rxBps"`
-	RxBytes    pulumi.IntInput     `pulumi:"rxBytes"`
-	RxPackets  pulumi.IntInput     `pulumi:"rxPackets"`
-	RxRate     pulumi.IntInput     `pulumi:"rxRate"`
-	RxRetries  pulumi.IntInput     `pulumi:"rxRetries"`
-	SiteId     pulumi.StringInput  `pulumi:"siteId"`
-	Snr        pulumi.IntInput     `pulumi:"snr"`
-	TxBps      pulumi.IntInput     `pulumi:"txBps"`
-	TxBytes    pulumi.IntInput     `pulumi:"txBytes"`
-	TxPackets  pulumi.IntInput     `pulumi:"txPackets"`
-	TxRate     pulumi.IntInput     `pulumi:"txRate"`
-	TxRetries  pulumi.IntInput     `pulumi:"txRetries"`
-	UplinkApId pulumi.StringInput  `pulumi:"uplinkApId"`
+	Band     pulumi.StringInput `pulumi:"band"`
+	Channel  pulumi.IntInput    `pulumi:"channel"`
+	IdleTime pulumi.IntInput    `pulumi:"idleTime"`
+	// Last seen timestamp
+	LastSeen pulumi.Float64Input `pulumi:"lastSeen"`
+	Proto    pulumi.StringInput  `pulumi:"proto"`
+	Rssi     pulumi.IntInput     `pulumi:"rssi"`
+	// Rate of receiving traffic, bits/seconds, last known
+	RxBps pulumi.IntInput `pulumi:"rxBps"`
+	// Amount of traffic received since connection
+	RxBytes pulumi.IntInput `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPackets pulumi.IntInput `pulumi:"rxPackets"`
+	// RX Rate, Mbps
+	RxRate pulumi.Float64Input `pulumi:"rxRate"`
+	// Amount of rx retries
+	RxRetries pulumi.IntInput    `pulumi:"rxRetries"`
+	SiteId    pulumi.StringInput `pulumi:"siteId"`
+	Snr       pulumi.IntInput    `pulumi:"snr"`
+	// Rate of transmitting traffic, bits/seconds, last known
+	TxBps pulumi.IntInput `pulumi:"txBps"`
+	// Amount of traffic sent since connection
+	TxBytes pulumi.IntInput `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPackets pulumi.IntInput `pulumi:"txPackets"`
+	// TX Rate, Mbps
+	TxRate pulumi.Float64Input `pulumi:"txRate"`
+	// Amount of tx retries
+	TxRetries  pulumi.IntInput    `pulumi:"txRetries"`
+	UplinkApId pulumi.StringInput `pulumi:"uplinkApId"`
 }
 
 func (GetApStatsDeviceApStatMeshUplinkArgs) ElementType() reflect.Type {
@@ -29802,6 +30418,7 @@ func (o GetApStatsDeviceApStatMeshUplinkOutput) IdleTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshUplink) int { return v.IdleTime }).(pulumi.IntOutput)
 }
 
+// Last seen timestamp
 func (o GetApStatsDeviceApStatMeshUplinkOutput) LastSeen() pulumi.Float64Output {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshUplink) float64 { return v.LastSeen }).(pulumi.Float64Output)
 }
@@ -29814,22 +30431,27 @@ func (o GetApStatsDeviceApStatMeshUplinkOutput) Rssi() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshUplink) int { return v.Rssi }).(pulumi.IntOutput)
 }
 
+// Rate of receiving traffic, bits/seconds, last known
 func (o GetApStatsDeviceApStatMeshUplinkOutput) RxBps() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshUplink) int { return v.RxBps }).(pulumi.IntOutput)
 }
 
+// Amount of traffic received since connection
 func (o GetApStatsDeviceApStatMeshUplinkOutput) RxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshUplink) int { return v.RxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets received since connection
 func (o GetApStatsDeviceApStatMeshUplinkOutput) RxPackets() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshUplink) int { return v.RxPackets }).(pulumi.IntOutput)
 }
 
-func (o GetApStatsDeviceApStatMeshUplinkOutput) RxRate() pulumi.IntOutput {
-	return o.ApplyT(func(v GetApStatsDeviceApStatMeshUplink) int { return v.RxRate }).(pulumi.IntOutput)
+// RX Rate, Mbps
+func (o GetApStatsDeviceApStatMeshUplinkOutput) RxRate() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApStatsDeviceApStatMeshUplink) float64 { return v.RxRate }).(pulumi.Float64Output)
 }
 
+// Amount of rx retries
 func (o GetApStatsDeviceApStatMeshUplinkOutput) RxRetries() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshUplink) int { return v.RxRetries }).(pulumi.IntOutput)
 }
@@ -29842,22 +30464,27 @@ func (o GetApStatsDeviceApStatMeshUplinkOutput) Snr() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshUplink) int { return v.Snr }).(pulumi.IntOutput)
 }
 
+// Rate of transmitting traffic, bits/seconds, last known
 func (o GetApStatsDeviceApStatMeshUplinkOutput) TxBps() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshUplink) int { return v.TxBps }).(pulumi.IntOutput)
 }
 
+// Amount of traffic sent since connection
 func (o GetApStatsDeviceApStatMeshUplinkOutput) TxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshUplink) int { return v.TxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets sent since connection
 func (o GetApStatsDeviceApStatMeshUplinkOutput) TxPackets() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshUplink) int { return v.TxPackets }).(pulumi.IntOutput)
 }
 
-func (o GetApStatsDeviceApStatMeshUplinkOutput) TxRate() pulumi.IntOutput {
-	return o.ApplyT(func(v GetApStatsDeviceApStatMeshUplink) int { return v.TxRate }).(pulumi.IntOutput)
+// TX Rate, Mbps
+func (o GetApStatsDeviceApStatMeshUplinkOutput) TxRate() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApStatsDeviceApStatMeshUplink) float64 { return v.TxRate }).(pulumi.Float64Output)
 }
 
+// Amount of tx retries
 func (o GetApStatsDeviceApStatMeshUplinkOutput) TxRetries() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatMeshUplink) int { return v.TxRetries }).(pulumi.IntOutput)
 }
@@ -29867,14 +30494,20 @@ func (o GetApStatsDeviceApStatMeshUplinkOutput) UplinkApId() pulumi.StringOutput
 }
 
 type GetApStatsDeviceApStatPortStat struct {
-	FullDuplex bool    `pulumi:"fullDuplex"`
-	RxBytes    float64 `pulumi:"rxBytes"`
-	RxErrors   float64 `pulumi:"rxErrors"`
-	RxPkts     float64 `pulumi:"rxPkts"`
-	Speed      int     `pulumi:"speed"`
-	TxBytes    float64 `pulumi:"txBytes"`
-	TxPkts     float64 `pulumi:"txPkts"`
-	Up         bool    `pulumi:"up"`
+	FullDuplex bool `pulumi:"fullDuplex"`
+	// Amount of traffic received since connection
+	RxBytes   int `pulumi:"rxBytes"`
+	RxErrors  int `pulumi:"rxErrors"`
+	RxPeakBps int `pulumi:"rxPeakBps"`
+	// Amount of packets received since connection
+	RxPkts int `pulumi:"rxPkts"`
+	Speed  int `pulumi:"speed"`
+	// Amount of traffic sent since connection
+	TxBytes   int `pulumi:"txBytes"`
+	TxPeakBps int `pulumi:"txPeakBps"`
+	// Amount of packets sent since connection
+	TxPkts int  `pulumi:"txPkts"`
+	Up     bool `pulumi:"up"`
 }
 
 // GetApStatsDeviceApStatPortStatInput is an input type that accepts GetApStatsDeviceApStatPortStatArgs and GetApStatsDeviceApStatPortStatOutput values.
@@ -29889,14 +30522,20 @@ type GetApStatsDeviceApStatPortStatInput interface {
 }
 
 type GetApStatsDeviceApStatPortStatArgs struct {
-	FullDuplex pulumi.BoolInput    `pulumi:"fullDuplex"`
-	RxBytes    pulumi.Float64Input `pulumi:"rxBytes"`
-	RxErrors   pulumi.Float64Input `pulumi:"rxErrors"`
-	RxPkts     pulumi.Float64Input `pulumi:"rxPkts"`
-	Speed      pulumi.IntInput     `pulumi:"speed"`
-	TxBytes    pulumi.Float64Input `pulumi:"txBytes"`
-	TxPkts     pulumi.Float64Input `pulumi:"txPkts"`
-	Up         pulumi.BoolInput    `pulumi:"up"`
+	FullDuplex pulumi.BoolInput `pulumi:"fullDuplex"`
+	// Amount of traffic received since connection
+	RxBytes   pulumi.IntInput `pulumi:"rxBytes"`
+	RxErrors  pulumi.IntInput `pulumi:"rxErrors"`
+	RxPeakBps pulumi.IntInput `pulumi:"rxPeakBps"`
+	// Amount of packets received since connection
+	RxPkts pulumi.IntInput `pulumi:"rxPkts"`
+	Speed  pulumi.IntInput `pulumi:"speed"`
+	// Amount of traffic sent since connection
+	TxBytes   pulumi.IntInput `pulumi:"txBytes"`
+	TxPeakBps pulumi.IntInput `pulumi:"txPeakBps"`
+	// Amount of packets sent since connection
+	TxPkts pulumi.IntInput  `pulumi:"txPkts"`
+	Up     pulumi.BoolInput `pulumi:"up"`
 }
 
 func (GetApStatsDeviceApStatPortStatArgs) ElementType() reflect.Type {
@@ -29954,28 +30593,40 @@ func (o GetApStatsDeviceApStatPortStatOutput) FullDuplex() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatPortStat) bool { return v.FullDuplex }).(pulumi.BoolOutput)
 }
 
-func (o GetApStatsDeviceApStatPortStatOutput) RxBytes() pulumi.Float64Output {
-	return o.ApplyT(func(v GetApStatsDeviceApStatPortStat) float64 { return v.RxBytes }).(pulumi.Float64Output)
+// Amount of traffic received since connection
+func (o GetApStatsDeviceApStatPortStatOutput) RxBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStatPortStat) int { return v.RxBytes }).(pulumi.IntOutput)
 }
 
-func (o GetApStatsDeviceApStatPortStatOutput) RxErrors() pulumi.Float64Output {
-	return o.ApplyT(func(v GetApStatsDeviceApStatPortStat) float64 { return v.RxErrors }).(pulumi.Float64Output)
+func (o GetApStatsDeviceApStatPortStatOutput) RxErrors() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStatPortStat) int { return v.RxErrors }).(pulumi.IntOutput)
 }
 
-func (o GetApStatsDeviceApStatPortStatOutput) RxPkts() pulumi.Float64Output {
-	return o.ApplyT(func(v GetApStatsDeviceApStatPortStat) float64 { return v.RxPkts }).(pulumi.Float64Output)
+func (o GetApStatsDeviceApStatPortStatOutput) RxPeakBps() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStatPortStat) int { return v.RxPeakBps }).(pulumi.IntOutput)
+}
+
+// Amount of packets received since connection
+func (o GetApStatsDeviceApStatPortStatOutput) RxPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStatPortStat) int { return v.RxPkts }).(pulumi.IntOutput)
 }
 
 func (o GetApStatsDeviceApStatPortStatOutput) Speed() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatPortStat) int { return v.Speed }).(pulumi.IntOutput)
 }
 
-func (o GetApStatsDeviceApStatPortStatOutput) TxBytes() pulumi.Float64Output {
-	return o.ApplyT(func(v GetApStatsDeviceApStatPortStat) float64 { return v.TxBytes }).(pulumi.Float64Output)
+// Amount of traffic sent since connection
+func (o GetApStatsDeviceApStatPortStatOutput) TxBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStatPortStat) int { return v.TxBytes }).(pulumi.IntOutput)
 }
 
-func (o GetApStatsDeviceApStatPortStatOutput) TxPkts() pulumi.Float64Output {
-	return o.ApplyT(func(v GetApStatsDeviceApStatPortStat) float64 { return v.TxPkts }).(pulumi.Float64Output)
+func (o GetApStatsDeviceApStatPortStatOutput) TxPeakBps() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStatPortStat) int { return v.TxPeakBps }).(pulumi.IntOutput)
+}
+
+// Amount of packets sent since connection
+func (o GetApStatsDeviceApStatPortStatOutput) TxPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStatPortStat) int { return v.TxPkts }).(pulumi.IntOutput)
 }
 
 func (o GetApStatsDeviceApStatPortStatOutput) Up() pulumi.BoolOutput {
@@ -30003,11 +30654,11 @@ func (o GetApStatsDeviceApStatPortStatMapOutput) MapIndex(k pulumi.StringInput) 
 }
 
 type GetApStatsDeviceApStatRadioStat struct {
-	// radio stat
+	// Radio stat
 	Band24 GetApStatsDeviceApStatRadioStatBand24 `pulumi:"band24"`
-	// radio stat
+	// Radio stat
 	Band5 GetApStatsDeviceApStatRadioStatBand5 `pulumi:"band5"`
-	// radio stat
+	// Radio stat
 	Band6 GetApStatsDeviceApStatRadioStatBand6 `pulumi:"band6"`
 }
 
@@ -30023,11 +30674,11 @@ type GetApStatsDeviceApStatRadioStatInput interface {
 }
 
 type GetApStatsDeviceApStatRadioStatArgs struct {
-	// radio stat
+	// Radio stat
 	Band24 GetApStatsDeviceApStatRadioStatBand24Input `pulumi:"band24"`
-	// radio stat
+	// Radio stat
 	Band5 GetApStatsDeviceApStatRadioStatBand5Input `pulumi:"band5"`
-	// radio stat
+	// Radio stat
 	Band6 GetApStatsDeviceApStatRadioStatBand6Input `pulumi:"band6"`
 }
 
@@ -30057,52 +30708,58 @@ func (o GetApStatsDeviceApStatRadioStatOutput) ToGetApStatsDeviceApStatRadioStat
 	return o
 }
 
-// radio stat
+// Radio stat
 func (o GetApStatsDeviceApStatRadioStatOutput) Band24() GetApStatsDeviceApStatRadioStatBand24Output {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStat) GetApStatsDeviceApStatRadioStatBand24 { return v.Band24 }).(GetApStatsDeviceApStatRadioStatBand24Output)
 }
 
-// radio stat
+// Radio stat
 func (o GetApStatsDeviceApStatRadioStatOutput) Band5() GetApStatsDeviceApStatRadioStatBand5Output {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStat) GetApStatsDeviceApStatRadioStatBand5 { return v.Band5 }).(GetApStatsDeviceApStatRadioStatBand5Output)
 }
 
-// radio stat
+// Radio stat
 func (o GetApStatsDeviceApStatRadioStatOutput) Band6() GetApStatsDeviceApStatRadioStatBand6Output {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStat) GetApStatsDeviceApStatRadioStatBand6 { return v.Band6 }).(GetApStatsDeviceApStatRadioStatBand6Output)
 }
 
 type GetApStatsDeviceApStatRadioStatBand24 struct {
-	// channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
+	// channel width for the band.enum: `20`, `40`, `80` (only applicable for band5 and band_6), `160` (only for band_6)
 	Bandwidth int `pulumi:"bandwidth"`
-	// current channel the radio is running on
+	// Current channel the radio is running on
 	Channel int `pulumi:"channel"`
 	// Use dynamic chaining for downlink
-	DynamicChainingEnalbed bool `pulumi:"dynamicChainingEnalbed"`
-	// radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+	DynamicChainingEnabled bool `pulumi:"dynamicChainingEnabled"`
+	// Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
 	Mac        string `pulumi:"mac"`
 	NoiseFloor int    `pulumi:"noiseFloor"`
 	NumClients int    `pulumi:"numClients"`
-	// transmit power (in dBm)
-	Power   int    `pulumi:"power"`
-	RxBytes int    `pulumi:"rxBytes"`
-	RxPkts  int    `pulumi:"rxPkts"`
-	TxBytes int    `pulumi:"txBytes"`
-	TxPkts  int    `pulumi:"txPkts"`
-	Usage   string `pulumi:"usage"`
-	// all utilization in percentage
+	// How many WLANs are applied to the radio
+	NumWlans int `pulumi:"numWlans"`
+	// Transmit power (in dBm)
+	Power int `pulumi:"power"`
+	// Amount of traffic received since connection
+	RxBytes int `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPkts int `pulumi:"rxPkts"`
+	// Amount of traffic sent since connection
+	TxBytes int `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPkts int    `pulumi:"txPkts"`
+	Usage  string `pulumi:"usage"`
+	// All utilization in percentage
 	UtilAll int `pulumi:"utilAll"`
-	// reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+	// Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
 	UtilNonWifi int `pulumi:"utilNonWifi"`
-	// reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
+	// Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
 	UtilRxInBss int `pulumi:"utilRxInBss"`
-	// reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
+	// Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
 	UtilRxOtherBss int `pulumi:"utilRxOtherBss"`
-	// transmission utilization in percentage
+	// Transmission utilization in percentage
 	UtilTx int `pulumi:"utilTx"`
-	// reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+	// Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
 	UtilUndecodableWifi int `pulumi:"utilUndecodableWifi"`
-	// reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+	// Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
 	UtilUnknownWifi int `pulumi:"utilUnknownWifi"`
 }
 
@@ -30118,36 +30775,42 @@ type GetApStatsDeviceApStatRadioStatBand24Input interface {
 }
 
 type GetApStatsDeviceApStatRadioStatBand24Args struct {
-	// channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
+	// channel width for the band.enum: `20`, `40`, `80` (only applicable for band5 and band_6), `160` (only for band_6)
 	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
-	// current channel the radio is running on
+	// Current channel the radio is running on
 	Channel pulumi.IntInput `pulumi:"channel"`
 	// Use dynamic chaining for downlink
-	DynamicChainingEnalbed pulumi.BoolInput `pulumi:"dynamicChainingEnalbed"`
-	// radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+	DynamicChainingEnabled pulumi.BoolInput `pulumi:"dynamicChainingEnabled"`
+	// Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
 	Mac        pulumi.StringInput `pulumi:"mac"`
 	NoiseFloor pulumi.IntInput    `pulumi:"noiseFloor"`
 	NumClients pulumi.IntInput    `pulumi:"numClients"`
-	// transmit power (in dBm)
-	Power   pulumi.IntInput    `pulumi:"power"`
-	RxBytes pulumi.IntInput    `pulumi:"rxBytes"`
-	RxPkts  pulumi.IntInput    `pulumi:"rxPkts"`
-	TxBytes pulumi.IntInput    `pulumi:"txBytes"`
-	TxPkts  pulumi.IntInput    `pulumi:"txPkts"`
-	Usage   pulumi.StringInput `pulumi:"usage"`
-	// all utilization in percentage
+	// How many WLANs are applied to the radio
+	NumWlans pulumi.IntInput `pulumi:"numWlans"`
+	// Transmit power (in dBm)
+	Power pulumi.IntInput `pulumi:"power"`
+	// Amount of traffic received since connection
+	RxBytes pulumi.IntInput `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPkts pulumi.IntInput `pulumi:"rxPkts"`
+	// Amount of traffic sent since connection
+	TxBytes pulumi.IntInput `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPkts pulumi.IntInput    `pulumi:"txPkts"`
+	Usage  pulumi.StringInput `pulumi:"usage"`
+	// All utilization in percentage
 	UtilAll pulumi.IntInput `pulumi:"utilAll"`
-	// reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+	// Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
 	UtilNonWifi pulumi.IntInput `pulumi:"utilNonWifi"`
-	// reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
+	// Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
 	UtilRxInBss pulumi.IntInput `pulumi:"utilRxInBss"`
-	// reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
+	// Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
 	UtilRxOtherBss pulumi.IntInput `pulumi:"utilRxOtherBss"`
-	// transmission utilization in percentage
+	// Transmission utilization in percentage
 	UtilTx pulumi.IntInput `pulumi:"utilTx"`
-	// reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+	// Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
 	UtilUndecodableWifi pulumi.IntInput `pulumi:"utilUndecodableWifi"`
-	// reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+	// Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
 	UtilUnknownWifi pulumi.IntInput `pulumi:"utilUnknownWifi"`
 }
 
@@ -30177,22 +30840,22 @@ func (o GetApStatsDeviceApStatRadioStatBand24Output) ToGetApStatsDeviceApStatRad
 	return o
 }
 
-// channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
+// channel width for the band.enum: `20`, `40`, `80` (only applicable for band5 and band_6), `160` (only for band_6)
 func (o GetApStatsDeviceApStatRadioStatBand24Output) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
-// current channel the radio is running on
+// Current channel the radio is running on
 func (o GetApStatsDeviceApStatRadioStatBand24Output) Channel() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) int { return v.Channel }).(pulumi.IntOutput)
 }
 
 // Use dynamic chaining for downlink
-func (o GetApStatsDeviceApStatRadioStatBand24Output) DynamicChainingEnalbed() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) bool { return v.DynamicChainingEnalbed }).(pulumi.BoolOutput)
+func (o GetApStatsDeviceApStatRadioStatBand24Output) DynamicChainingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) bool { return v.DynamicChainingEnabled }).(pulumi.BoolOutput)
 }
 
-// radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+// Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
 func (o GetApStatsDeviceApStatRadioStatBand24Output) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) string { return v.Mac }).(pulumi.StringOutput)
 }
@@ -30205,23 +30868,32 @@ func (o GetApStatsDeviceApStatRadioStatBand24Output) NumClients() pulumi.IntOutp
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) int { return v.NumClients }).(pulumi.IntOutput)
 }
 
-// transmit power (in dBm)
+// How many WLANs are applied to the radio
+func (o GetApStatsDeviceApStatRadioStatBand24Output) NumWlans() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) int { return v.NumWlans }).(pulumi.IntOutput)
+}
+
+// Transmit power (in dBm)
 func (o GetApStatsDeviceApStatRadioStatBand24Output) Power() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) int { return v.Power }).(pulumi.IntOutput)
 }
 
+// Amount of traffic received since connection
 func (o GetApStatsDeviceApStatRadioStatBand24Output) RxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) int { return v.RxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets received since connection
 func (o GetApStatsDeviceApStatRadioStatBand24Output) RxPkts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) int { return v.RxPkts }).(pulumi.IntOutput)
 }
 
+// Amount of traffic sent since connection
 func (o GetApStatsDeviceApStatRadioStatBand24Output) TxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) int { return v.TxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets sent since connection
 func (o GetApStatsDeviceApStatRadioStatBand24Output) TxPkts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) int { return v.TxPkts }).(pulumi.IntOutput)
 }
@@ -30230,72 +30902,78 @@ func (o GetApStatsDeviceApStatRadioStatBand24Output) Usage() pulumi.StringOutput
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) string { return v.Usage }).(pulumi.StringOutput)
 }
 
-// all utilization in percentage
+// All utilization in percentage
 func (o GetApStatsDeviceApStatRadioStatBand24Output) UtilAll() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) int { return v.UtilAll }).(pulumi.IntOutput)
 }
 
-// reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+// Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
 func (o GetApStatsDeviceApStatRadioStatBand24Output) UtilNonWifi() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) int { return v.UtilNonWifi }).(pulumi.IntOutput)
 }
 
-// reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
+// Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
 func (o GetApStatsDeviceApStatRadioStatBand24Output) UtilRxInBss() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) int { return v.UtilRxInBss }).(pulumi.IntOutput)
 }
 
-// reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
+// Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
 func (o GetApStatsDeviceApStatRadioStatBand24Output) UtilRxOtherBss() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) int { return v.UtilRxOtherBss }).(pulumi.IntOutput)
 }
 
-// transmission utilization in percentage
+// Transmission utilization in percentage
 func (o GetApStatsDeviceApStatRadioStatBand24Output) UtilTx() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) int { return v.UtilTx }).(pulumi.IntOutput)
 }
 
-// reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+// Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
 func (o GetApStatsDeviceApStatRadioStatBand24Output) UtilUndecodableWifi() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) int { return v.UtilUndecodableWifi }).(pulumi.IntOutput)
 }
 
-// reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+// Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
 func (o GetApStatsDeviceApStatRadioStatBand24Output) UtilUnknownWifi() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand24) int { return v.UtilUnknownWifi }).(pulumi.IntOutput)
 }
 
 type GetApStatsDeviceApStatRadioStatBand5 struct {
-	// channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
+	// channel width for the band.enum: `20`, `40`, `80` (only applicable for band5 and band_6), `160` (only for band_6)
 	Bandwidth int `pulumi:"bandwidth"`
-	// current channel the radio is running on
+	// Current channel the radio is running on
 	Channel int `pulumi:"channel"`
 	// Use dynamic chaining for downlink
-	DynamicChainingEnalbed bool `pulumi:"dynamicChainingEnalbed"`
-	// radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+	DynamicChainingEnabled bool `pulumi:"dynamicChainingEnabled"`
+	// Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
 	Mac        string `pulumi:"mac"`
 	NoiseFloor int    `pulumi:"noiseFloor"`
 	NumClients int    `pulumi:"numClients"`
-	// transmit power (in dBm)
-	Power   int    `pulumi:"power"`
-	RxBytes int    `pulumi:"rxBytes"`
-	RxPkts  int    `pulumi:"rxPkts"`
-	TxBytes int    `pulumi:"txBytes"`
-	TxPkts  int    `pulumi:"txPkts"`
-	Usage   string `pulumi:"usage"`
-	// all utilization in percentage
+	// How many WLANs are applied to the radio
+	NumWlans int `pulumi:"numWlans"`
+	// Transmit power (in dBm)
+	Power int `pulumi:"power"`
+	// Amount of traffic received since connection
+	RxBytes int `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPkts int `pulumi:"rxPkts"`
+	// Amount of traffic sent since connection
+	TxBytes int `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPkts int    `pulumi:"txPkts"`
+	Usage  string `pulumi:"usage"`
+	// All utilization in percentage
 	UtilAll int `pulumi:"utilAll"`
-	// reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+	// Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
 	UtilNonWifi int `pulumi:"utilNonWifi"`
-	// reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
+	// Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
 	UtilRxInBss int `pulumi:"utilRxInBss"`
-	// reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
+	// Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
 	UtilRxOtherBss int `pulumi:"utilRxOtherBss"`
-	// transmission utilization in percentage
+	// Transmission utilization in percentage
 	UtilTx int `pulumi:"utilTx"`
-	// reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+	// Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
 	UtilUndecodableWifi int `pulumi:"utilUndecodableWifi"`
-	// reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+	// Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
 	UtilUnknownWifi int `pulumi:"utilUnknownWifi"`
 }
 
@@ -30311,36 +30989,42 @@ type GetApStatsDeviceApStatRadioStatBand5Input interface {
 }
 
 type GetApStatsDeviceApStatRadioStatBand5Args struct {
-	// channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
+	// channel width for the band.enum: `20`, `40`, `80` (only applicable for band5 and band_6), `160` (only for band_6)
 	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
-	// current channel the radio is running on
+	// Current channel the radio is running on
 	Channel pulumi.IntInput `pulumi:"channel"`
 	// Use dynamic chaining for downlink
-	DynamicChainingEnalbed pulumi.BoolInput `pulumi:"dynamicChainingEnalbed"`
-	// radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+	DynamicChainingEnabled pulumi.BoolInput `pulumi:"dynamicChainingEnabled"`
+	// Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
 	Mac        pulumi.StringInput `pulumi:"mac"`
 	NoiseFloor pulumi.IntInput    `pulumi:"noiseFloor"`
 	NumClients pulumi.IntInput    `pulumi:"numClients"`
-	// transmit power (in dBm)
-	Power   pulumi.IntInput    `pulumi:"power"`
-	RxBytes pulumi.IntInput    `pulumi:"rxBytes"`
-	RxPkts  pulumi.IntInput    `pulumi:"rxPkts"`
-	TxBytes pulumi.IntInput    `pulumi:"txBytes"`
-	TxPkts  pulumi.IntInput    `pulumi:"txPkts"`
-	Usage   pulumi.StringInput `pulumi:"usage"`
-	// all utilization in percentage
+	// How many WLANs are applied to the radio
+	NumWlans pulumi.IntInput `pulumi:"numWlans"`
+	// Transmit power (in dBm)
+	Power pulumi.IntInput `pulumi:"power"`
+	// Amount of traffic received since connection
+	RxBytes pulumi.IntInput `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPkts pulumi.IntInput `pulumi:"rxPkts"`
+	// Amount of traffic sent since connection
+	TxBytes pulumi.IntInput `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPkts pulumi.IntInput    `pulumi:"txPkts"`
+	Usage  pulumi.StringInput `pulumi:"usage"`
+	// All utilization in percentage
 	UtilAll pulumi.IntInput `pulumi:"utilAll"`
-	// reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+	// Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
 	UtilNonWifi pulumi.IntInput `pulumi:"utilNonWifi"`
-	// reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
+	// Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
 	UtilRxInBss pulumi.IntInput `pulumi:"utilRxInBss"`
-	// reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
+	// Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
 	UtilRxOtherBss pulumi.IntInput `pulumi:"utilRxOtherBss"`
-	// transmission utilization in percentage
+	// Transmission utilization in percentage
 	UtilTx pulumi.IntInput `pulumi:"utilTx"`
-	// reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+	// Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
 	UtilUndecodableWifi pulumi.IntInput `pulumi:"utilUndecodableWifi"`
-	// reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+	// Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
 	UtilUnknownWifi pulumi.IntInput `pulumi:"utilUnknownWifi"`
 }
 
@@ -30370,22 +31054,22 @@ func (o GetApStatsDeviceApStatRadioStatBand5Output) ToGetApStatsDeviceApStatRadi
 	return o
 }
 
-// channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
+// channel width for the band.enum: `20`, `40`, `80` (only applicable for band5 and band_6), `160` (only for band_6)
 func (o GetApStatsDeviceApStatRadioStatBand5Output) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
-// current channel the radio is running on
+// Current channel the radio is running on
 func (o GetApStatsDeviceApStatRadioStatBand5Output) Channel() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) int { return v.Channel }).(pulumi.IntOutput)
 }
 
 // Use dynamic chaining for downlink
-func (o GetApStatsDeviceApStatRadioStatBand5Output) DynamicChainingEnalbed() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) bool { return v.DynamicChainingEnalbed }).(pulumi.BoolOutput)
+func (o GetApStatsDeviceApStatRadioStatBand5Output) DynamicChainingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) bool { return v.DynamicChainingEnabled }).(pulumi.BoolOutput)
 }
 
-// radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+// Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
 func (o GetApStatsDeviceApStatRadioStatBand5Output) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) string { return v.Mac }).(pulumi.StringOutput)
 }
@@ -30398,23 +31082,32 @@ func (o GetApStatsDeviceApStatRadioStatBand5Output) NumClients() pulumi.IntOutpu
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) int { return v.NumClients }).(pulumi.IntOutput)
 }
 
-// transmit power (in dBm)
+// How many WLANs are applied to the radio
+func (o GetApStatsDeviceApStatRadioStatBand5Output) NumWlans() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) int { return v.NumWlans }).(pulumi.IntOutput)
+}
+
+// Transmit power (in dBm)
 func (o GetApStatsDeviceApStatRadioStatBand5Output) Power() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) int { return v.Power }).(pulumi.IntOutput)
 }
 
+// Amount of traffic received since connection
 func (o GetApStatsDeviceApStatRadioStatBand5Output) RxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) int { return v.RxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets received since connection
 func (o GetApStatsDeviceApStatRadioStatBand5Output) RxPkts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) int { return v.RxPkts }).(pulumi.IntOutput)
 }
 
+// Amount of traffic sent since connection
 func (o GetApStatsDeviceApStatRadioStatBand5Output) TxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) int { return v.TxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets sent since connection
 func (o GetApStatsDeviceApStatRadioStatBand5Output) TxPkts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) int { return v.TxPkts }).(pulumi.IntOutput)
 }
@@ -30423,72 +31116,78 @@ func (o GetApStatsDeviceApStatRadioStatBand5Output) Usage() pulumi.StringOutput 
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) string { return v.Usage }).(pulumi.StringOutput)
 }
 
-// all utilization in percentage
+// All utilization in percentage
 func (o GetApStatsDeviceApStatRadioStatBand5Output) UtilAll() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) int { return v.UtilAll }).(pulumi.IntOutput)
 }
 
-// reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+// Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
 func (o GetApStatsDeviceApStatRadioStatBand5Output) UtilNonWifi() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) int { return v.UtilNonWifi }).(pulumi.IntOutput)
 }
 
-// reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
+// Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
 func (o GetApStatsDeviceApStatRadioStatBand5Output) UtilRxInBss() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) int { return v.UtilRxInBss }).(pulumi.IntOutput)
 }
 
-// reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
+// Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
 func (o GetApStatsDeviceApStatRadioStatBand5Output) UtilRxOtherBss() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) int { return v.UtilRxOtherBss }).(pulumi.IntOutput)
 }
 
-// transmission utilization in percentage
+// Transmission utilization in percentage
 func (o GetApStatsDeviceApStatRadioStatBand5Output) UtilTx() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) int { return v.UtilTx }).(pulumi.IntOutput)
 }
 
-// reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+// Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
 func (o GetApStatsDeviceApStatRadioStatBand5Output) UtilUndecodableWifi() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) int { return v.UtilUndecodableWifi }).(pulumi.IntOutput)
 }
 
-// reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+// Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
 func (o GetApStatsDeviceApStatRadioStatBand5Output) UtilUnknownWifi() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand5) int { return v.UtilUnknownWifi }).(pulumi.IntOutput)
 }
 
 type GetApStatsDeviceApStatRadioStatBand6 struct {
-	// channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
+	// channel width for the band.enum: `20`, `40`, `80` (only applicable for band5 and band_6), `160` (only for band_6)
 	Bandwidth int `pulumi:"bandwidth"`
-	// current channel the radio is running on
+	// Current channel the radio is running on
 	Channel int `pulumi:"channel"`
 	// Use dynamic chaining for downlink
-	DynamicChainingEnalbed bool `pulumi:"dynamicChainingEnalbed"`
-	// radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+	DynamicChainingEnabled bool `pulumi:"dynamicChainingEnabled"`
+	// Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
 	Mac        string `pulumi:"mac"`
 	NoiseFloor int    `pulumi:"noiseFloor"`
 	NumClients int    `pulumi:"numClients"`
-	// transmit power (in dBm)
-	Power   int    `pulumi:"power"`
-	RxBytes int    `pulumi:"rxBytes"`
-	RxPkts  int    `pulumi:"rxPkts"`
-	TxBytes int    `pulumi:"txBytes"`
-	TxPkts  int    `pulumi:"txPkts"`
-	Usage   string `pulumi:"usage"`
-	// all utilization in percentage
+	// How many WLANs are applied to the radio
+	NumWlans int `pulumi:"numWlans"`
+	// Transmit power (in dBm)
+	Power int `pulumi:"power"`
+	// Amount of traffic received since connection
+	RxBytes int `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPkts int `pulumi:"rxPkts"`
+	// Amount of traffic sent since connection
+	TxBytes int `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPkts int    `pulumi:"txPkts"`
+	Usage  string `pulumi:"usage"`
+	// All utilization in percentage
 	UtilAll int `pulumi:"utilAll"`
-	// reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+	// Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
 	UtilNonWifi int `pulumi:"utilNonWifi"`
-	// reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
+	// Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
 	UtilRxInBss int `pulumi:"utilRxInBss"`
-	// reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
+	// Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
 	UtilRxOtherBss int `pulumi:"utilRxOtherBss"`
-	// transmission utilization in percentage
+	// Transmission utilization in percentage
 	UtilTx int `pulumi:"utilTx"`
-	// reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+	// Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
 	UtilUndecodableWifi int `pulumi:"utilUndecodableWifi"`
-	// reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+	// Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
 	UtilUnknownWifi int `pulumi:"utilUnknownWifi"`
 }
 
@@ -30504,36 +31203,42 @@ type GetApStatsDeviceApStatRadioStatBand6Input interface {
 }
 
 type GetApStatsDeviceApStatRadioStatBand6Args struct {
-	// channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
+	// channel width for the band.enum: `20`, `40`, `80` (only applicable for band5 and band_6), `160` (only for band_6)
 	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
-	// current channel the radio is running on
+	// Current channel the radio is running on
 	Channel pulumi.IntInput `pulumi:"channel"`
 	// Use dynamic chaining for downlink
-	DynamicChainingEnalbed pulumi.BoolInput `pulumi:"dynamicChainingEnalbed"`
-	// radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+	DynamicChainingEnabled pulumi.BoolInput `pulumi:"dynamicChainingEnabled"`
+	// Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
 	Mac        pulumi.StringInput `pulumi:"mac"`
 	NoiseFloor pulumi.IntInput    `pulumi:"noiseFloor"`
 	NumClients pulumi.IntInput    `pulumi:"numClients"`
-	// transmit power (in dBm)
-	Power   pulumi.IntInput    `pulumi:"power"`
-	RxBytes pulumi.IntInput    `pulumi:"rxBytes"`
-	RxPkts  pulumi.IntInput    `pulumi:"rxPkts"`
-	TxBytes pulumi.IntInput    `pulumi:"txBytes"`
-	TxPkts  pulumi.IntInput    `pulumi:"txPkts"`
-	Usage   pulumi.StringInput `pulumi:"usage"`
-	// all utilization in percentage
+	// How many WLANs are applied to the radio
+	NumWlans pulumi.IntInput `pulumi:"numWlans"`
+	// Transmit power (in dBm)
+	Power pulumi.IntInput `pulumi:"power"`
+	// Amount of traffic received since connection
+	RxBytes pulumi.IntInput `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPkts pulumi.IntInput `pulumi:"rxPkts"`
+	// Amount of traffic sent since connection
+	TxBytes pulumi.IntInput `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPkts pulumi.IntInput    `pulumi:"txPkts"`
+	Usage  pulumi.StringInput `pulumi:"usage"`
+	// All utilization in percentage
 	UtilAll pulumi.IntInput `pulumi:"utilAll"`
-	// reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+	// Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
 	UtilNonWifi pulumi.IntInput `pulumi:"utilNonWifi"`
-	// reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
+	// Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
 	UtilRxInBss pulumi.IntInput `pulumi:"utilRxInBss"`
-	// reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
+	// Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
 	UtilRxOtherBss pulumi.IntInput `pulumi:"utilRxOtherBss"`
-	// transmission utilization in percentage
+	// Transmission utilization in percentage
 	UtilTx pulumi.IntInput `pulumi:"utilTx"`
-	// reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+	// Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
 	UtilUndecodableWifi pulumi.IntInput `pulumi:"utilUndecodableWifi"`
-	// reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+	// Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
 	UtilUnknownWifi pulumi.IntInput `pulumi:"utilUnknownWifi"`
 }
 
@@ -30563,22 +31268,22 @@ func (o GetApStatsDeviceApStatRadioStatBand6Output) ToGetApStatsDeviceApStatRadi
 	return o
 }
 
-// channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
+// channel width for the band.enum: `20`, `40`, `80` (only applicable for band5 and band_6), `160` (only for band_6)
 func (o GetApStatsDeviceApStatRadioStatBand6Output) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
-// current channel the radio is running on
+// Current channel the radio is running on
 func (o GetApStatsDeviceApStatRadioStatBand6Output) Channel() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) int { return v.Channel }).(pulumi.IntOutput)
 }
 
 // Use dynamic chaining for downlink
-func (o GetApStatsDeviceApStatRadioStatBand6Output) DynamicChainingEnalbed() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) bool { return v.DynamicChainingEnalbed }).(pulumi.BoolOutput)
+func (o GetApStatsDeviceApStatRadioStatBand6Output) DynamicChainingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) bool { return v.DynamicChainingEnabled }).(pulumi.BoolOutput)
 }
 
-// radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+// Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
 func (o GetApStatsDeviceApStatRadioStatBand6Output) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) string { return v.Mac }).(pulumi.StringOutput)
 }
@@ -30591,23 +31296,32 @@ func (o GetApStatsDeviceApStatRadioStatBand6Output) NumClients() pulumi.IntOutpu
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) int { return v.NumClients }).(pulumi.IntOutput)
 }
 
-// transmit power (in dBm)
+// How many WLANs are applied to the radio
+func (o GetApStatsDeviceApStatRadioStatBand6Output) NumWlans() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) int { return v.NumWlans }).(pulumi.IntOutput)
+}
+
+// Transmit power (in dBm)
 func (o GetApStatsDeviceApStatRadioStatBand6Output) Power() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) int { return v.Power }).(pulumi.IntOutput)
 }
 
+// Amount of traffic received since connection
 func (o GetApStatsDeviceApStatRadioStatBand6Output) RxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) int { return v.RxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets received since connection
 func (o GetApStatsDeviceApStatRadioStatBand6Output) RxPkts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) int { return v.RxPkts }).(pulumi.IntOutput)
 }
 
+// Amount of traffic sent since connection
 func (o GetApStatsDeviceApStatRadioStatBand6Output) TxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) int { return v.TxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets sent since connection
 func (o GetApStatsDeviceApStatRadioStatBand6Output) TxPkts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) int { return v.TxPkts }).(pulumi.IntOutput)
 }
@@ -30616,37 +31330,37 @@ func (o GetApStatsDeviceApStatRadioStatBand6Output) Usage() pulumi.StringOutput 
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) string { return v.Usage }).(pulumi.StringOutput)
 }
 
-// all utilization in percentage
+// All utilization in percentage
 func (o GetApStatsDeviceApStatRadioStatBand6Output) UtilAll() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) int { return v.UtilAll }).(pulumi.IntOutput)
 }
 
-// reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+// Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
 func (o GetApStatsDeviceApStatRadioStatBand6Output) UtilNonWifi() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) int { return v.UtilNonWifi }).(pulumi.IntOutput)
 }
 
-// reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
+// Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
 func (o GetApStatsDeviceApStatRadioStatBand6Output) UtilRxInBss() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) int { return v.UtilRxInBss }).(pulumi.IntOutput)
 }
 
-// reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
+// Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
 func (o GetApStatsDeviceApStatRadioStatBand6Output) UtilRxOtherBss() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) int { return v.UtilRxOtherBss }).(pulumi.IntOutput)
 }
 
-// transmission utilization in percentage
+// Transmission utilization in percentage
 func (o GetApStatsDeviceApStatRadioStatBand6Output) UtilTx() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) int { return v.UtilTx }).(pulumi.IntOutput)
 }
 
-// reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+// Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
 func (o GetApStatsDeviceApStatRadioStatBand6Output) UtilUndecodableWifi() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) int { return v.UtilUndecodableWifi }).(pulumi.IntOutput)
 }
 
-// reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+// Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
 func (o GetApStatsDeviceApStatRadioStatBand6Output) UtilUnknownWifi() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApStatsDeviceApStatRadioStatBand6) int { return v.UtilUnknownWifi }).(pulumi.IntOutput)
 }
@@ -30774,17 +31488,20 @@ func (o GetApStatsDeviceApStatUsbStatOutput) Up() pulumi.BoolOutput {
 }
 
 type GetGatewayStatsDeviceGatewayStat struct {
-	ApRedundancy    GetGatewayStatsDeviceGatewayStatApRedundancy  `pulumi:"apRedundancy"`
-	ArpTableStats   GetGatewayStatsDeviceGatewayStatArpTableStats `pulumi:"arpTableStats"`
-	CertExpiry      int                                           `pulumi:"certExpiry"`
-	ClusterConfig   GetGatewayStatsDeviceGatewayStatClusterConfig `pulumi:"clusterConfig"`
-	ClusterStat     GetGatewayStatsDeviceGatewayStatClusterStat   `pulumi:"clusterStat"`
-	ConductorName   string                                        `pulumi:"conductorName"`
-	ConfigStatus    string                                        `pulumi:"configStatus"`
-	Cpu2Stat        GetGatewayStatsDeviceGatewayStatCpu2Stat      `pulumi:"cpu2Stat"`
-	CpuStat         GetGatewayStatsDeviceGatewayStatCpuStat       `pulumi:"cpuStat"`
-	CreatedTime     int                                           `pulumi:"createdTime"`
-	DeviceprofileId string                                        `pulumi:"deviceprofileId"`
+	ApRedundancy  GetGatewayStatsDeviceGatewayStatApRedundancy  `pulumi:"apRedundancy"`
+	ArpTableStats GetGatewayStatsDeviceGatewayStatArpTableStats `pulumi:"arpTableStats"`
+	// Only present when `bgpPeers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
+	BgpPeers      []GetGatewayStatsDeviceGatewayStatBgpPeer     `pulumi:"bgpPeers"`
+	CertExpiry    int                                           `pulumi:"certExpiry"`
+	ClusterConfig GetGatewayStatsDeviceGatewayStatClusterConfig `pulumi:"clusterConfig"`
+	ClusterStat   GetGatewayStatsDeviceGatewayStatClusterStat   `pulumi:"clusterStat"`
+	ConductorName string                                        `pulumi:"conductorName"`
+	ConfigStatus  string                                        `pulumi:"configStatus"`
+	Cpu2Stat      GetGatewayStatsDeviceGatewayStatCpu2Stat      `pulumi:"cpu2Stat"`
+	CpuStat       GetGatewayStatsDeviceGatewayStatCpuStat       `pulumi:"cpuStat"`
+	// When the object has been created, in epoch
+	CreatedTime     float64 `pulumi:"createdTime"`
+	DeviceprofileId string  `pulumi:"deviceprofileId"`
 	// Property key is the network name
 	Dhcpd2Stat map[string]GetGatewayStatsDeviceGatewayStatDhcpd2Stat `pulumi:"dhcpd2Stat"`
 	// Property key is the network name
@@ -30793,9 +31510,9 @@ type GetGatewayStatsDeviceGatewayStat struct {
 	ExtIp    string                                   `pulumi:"extIp"`
 	Fwupdate GetGatewayStatsDeviceGatewayStatFwupdate `pulumi:"fwupdate"`
 	HasPcap  bool                                     `pulumi:"hasPcap"`
-	// hostname reported by the device
+	// Hostname reported by the device
 	Hostname string `pulumi:"hostname"`
-	// serial
+	// Unique ID of the object instance in the Mist Organization
 	Id string `pulumi:"id"`
 	// Property key is the interface name
 	If2Stat map[string]GetGatewayStatsDeviceGatewayStatIf2Stat `pulumi:"if2Stat"`
@@ -30806,41 +31523,46 @@ type GetGatewayStatsDeviceGatewayStat struct {
 	Ip2Stat GetGatewayStatsDeviceGatewayStatIp2Stat `pulumi:"ip2Stat"`
 	IpStat  GetGatewayStatsDeviceGatewayStatIpStat  `pulumi:"ipStat"`
 	IsHa    bool                                    `pulumi:"isHa"`
-	// last seen timestamp
+	// Last seen timestamp
 	LastSeen float64 `pulumi:"lastSeen"`
-	// device mac
+	// Device mac
 	Mac string `pulumi:"mac"`
-	// serial
+	// Serial Number
 	MapId string `pulumi:"mapId"`
-	// memory usage stat (for virtual chassis, memory usage of master RE)
+	// Memory usage stat (for virtual chassis, memory usage of master RE)
 	Memory2Stat GetGatewayStatsDeviceGatewayStatMemory2Stat `pulumi:"memory2Stat"`
-	// memory usage stat (for virtual chassis, memory usage of master RE)
+	// Memory usage stat (for virtual chassis, memory usage of master RE)
 	MemoryStat GetGatewayStatsDeviceGatewayStatMemoryStat `pulumi:"memoryStat"`
-	// device model
-	Model        string                                        `pulumi:"model"`
-	ModifiedTime int                                           `pulumi:"modifiedTime"`
+	// Device model
+	Model string `pulumi:"model"`
+	// When the object has been modified for the last time, in epoch
+	ModifiedTime float64                                       `pulumi:"modifiedTime"`
 	Module2Stats []GetGatewayStatsDeviceGatewayStatModule2Stat `pulumi:"module2Stats"`
 	ModuleStats  []GetGatewayStatsDeviceGatewayStatModuleStat  `pulumi:"moduleStats"`
-	// device name if configured
+	// Device name if configured
 	Name     string `pulumi:"name"`
 	NodeName string `pulumi:"nodeName"`
-	// serial
-	OrgId             string                                            `pulumi:"orgId"`
+	OrgId    string `pulumi:"orgId"`
+	// Only present when `ports` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/ports/search` result object, except that org*id, site*id, mac, model are removed
+	Ports             []GetGatewayStatsDeviceGatewayStatPort            `pulumi:"ports"`
 	RouteSummaryStats GetGatewayStatsDeviceGatewayStatRouteSummaryStats `pulumi:"routeSummaryStats"`
-	// device name if configured
+	// Device name if configured
 	RouterName string `pulumi:"routerName"`
-	// serial
+	// Serial Number
 	Serial        string                                                  `pulumi:"serial"`
 	Service2Stat  map[string]GetGatewayStatsDeviceGatewayStatService2Stat `pulumi:"service2Stat"`
 	ServiceStat   map[string]GetGatewayStatsDeviceGatewayStatServiceStat  `pulumi:"serviceStat"`
 	ServiceStatus GetGatewayStatsDeviceGatewayStatServiceStatus           `pulumi:"serviceStatus"`
-	// serial
-	SiteId    string                                     `pulumi:"siteId"`
-	Spu2Stats []GetGatewayStatsDeviceGatewayStatSpu2Stat `pulumi:"spu2Stats"`
-	SpuStats  []GetGatewayStatsDeviceGatewayStatSpuStat  `pulumi:"spuStats"`
-	Status    string                                     `pulumi:"status"`
-	Uptime    float64                                    `pulumi:"uptime"`
-	Version   string                                     `pulumi:"version"`
+	SiteId        string                                                  `pulumi:"siteId"`
+	Spu2Stats     []GetGatewayStatsDeviceGatewayStatSpu2Stat              `pulumi:"spu2Stats"`
+	SpuStats      []GetGatewayStatsDeviceGatewayStatSpuStat               `pulumi:"spuStats"`
+	Status        string                                                  `pulumi:"status"`
+	// Only present when `tunnels` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/tunnels/search` result object, except that org*id, site*id, mac, model are removed
+	Tunnels []GetGatewayStatsDeviceGatewayStatTunnel `pulumi:"tunnels"`
+	Uptime  float64                                  `pulumi:"uptime"`
+	Version string                                   `pulumi:"version"`
+	// Only present when `vpnPeers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/vpn_peers/search` result object, except that org*id, site*id, mac, model are removed
+	VpnPeers []GetGatewayStatsDeviceGatewayStatVpnPeer `pulumi:"vpnPeers"`
 }
 
 // GetGatewayStatsDeviceGatewayStatInput is an input type that accepts GetGatewayStatsDeviceGatewayStatArgs and GetGatewayStatsDeviceGatewayStatOutput values.
@@ -30855,17 +31577,20 @@ type GetGatewayStatsDeviceGatewayStatInput interface {
 }
 
 type GetGatewayStatsDeviceGatewayStatArgs struct {
-	ApRedundancy    GetGatewayStatsDeviceGatewayStatApRedundancyInput  `pulumi:"apRedundancy"`
-	ArpTableStats   GetGatewayStatsDeviceGatewayStatArpTableStatsInput `pulumi:"arpTableStats"`
-	CertExpiry      pulumi.IntInput                                    `pulumi:"certExpiry"`
-	ClusterConfig   GetGatewayStatsDeviceGatewayStatClusterConfigInput `pulumi:"clusterConfig"`
-	ClusterStat     GetGatewayStatsDeviceGatewayStatClusterStatInput   `pulumi:"clusterStat"`
-	ConductorName   pulumi.StringInput                                 `pulumi:"conductorName"`
-	ConfigStatus    pulumi.StringInput                                 `pulumi:"configStatus"`
-	Cpu2Stat        GetGatewayStatsDeviceGatewayStatCpu2StatInput      `pulumi:"cpu2Stat"`
-	CpuStat         GetGatewayStatsDeviceGatewayStatCpuStatInput       `pulumi:"cpuStat"`
-	CreatedTime     pulumi.IntInput                                    `pulumi:"createdTime"`
-	DeviceprofileId pulumi.StringInput                                 `pulumi:"deviceprofileId"`
+	ApRedundancy  GetGatewayStatsDeviceGatewayStatApRedundancyInput  `pulumi:"apRedundancy"`
+	ArpTableStats GetGatewayStatsDeviceGatewayStatArpTableStatsInput `pulumi:"arpTableStats"`
+	// Only present when `bgpPeers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
+	BgpPeers      GetGatewayStatsDeviceGatewayStatBgpPeerArrayInput  `pulumi:"bgpPeers"`
+	CertExpiry    pulumi.IntInput                                    `pulumi:"certExpiry"`
+	ClusterConfig GetGatewayStatsDeviceGatewayStatClusterConfigInput `pulumi:"clusterConfig"`
+	ClusterStat   GetGatewayStatsDeviceGatewayStatClusterStatInput   `pulumi:"clusterStat"`
+	ConductorName pulumi.StringInput                                 `pulumi:"conductorName"`
+	ConfigStatus  pulumi.StringInput                                 `pulumi:"configStatus"`
+	Cpu2Stat      GetGatewayStatsDeviceGatewayStatCpu2StatInput      `pulumi:"cpu2Stat"`
+	CpuStat       GetGatewayStatsDeviceGatewayStatCpuStatInput       `pulumi:"cpuStat"`
+	// When the object has been created, in epoch
+	CreatedTime     pulumi.Float64Input `pulumi:"createdTime"`
+	DeviceprofileId pulumi.StringInput  `pulumi:"deviceprofileId"`
 	// Property key is the network name
 	Dhcpd2Stat GetGatewayStatsDeviceGatewayStatDhcpd2StatMapInput `pulumi:"dhcpd2Stat"`
 	// Property key is the network name
@@ -30874,9 +31599,9 @@ type GetGatewayStatsDeviceGatewayStatArgs struct {
 	ExtIp    pulumi.StringInput                            `pulumi:"extIp"`
 	Fwupdate GetGatewayStatsDeviceGatewayStatFwupdateInput `pulumi:"fwupdate"`
 	HasPcap  pulumi.BoolInput                              `pulumi:"hasPcap"`
-	// hostname reported by the device
+	// Hostname reported by the device
 	Hostname pulumi.StringInput `pulumi:"hostname"`
-	// serial
+	// Unique ID of the object instance in the Mist Organization
 	Id pulumi.StringInput `pulumi:"id"`
 	// Property key is the interface name
 	If2Stat GetGatewayStatsDeviceGatewayStatIf2StatMapInput `pulumi:"if2Stat"`
@@ -30887,41 +31612,46 @@ type GetGatewayStatsDeviceGatewayStatArgs struct {
 	Ip2Stat GetGatewayStatsDeviceGatewayStatIp2StatInput `pulumi:"ip2Stat"`
 	IpStat  GetGatewayStatsDeviceGatewayStatIpStatInput  `pulumi:"ipStat"`
 	IsHa    pulumi.BoolInput                             `pulumi:"isHa"`
-	// last seen timestamp
+	// Last seen timestamp
 	LastSeen pulumi.Float64Input `pulumi:"lastSeen"`
-	// device mac
+	// Device mac
 	Mac pulumi.StringInput `pulumi:"mac"`
-	// serial
+	// Serial Number
 	MapId pulumi.StringInput `pulumi:"mapId"`
-	// memory usage stat (for virtual chassis, memory usage of master RE)
+	// Memory usage stat (for virtual chassis, memory usage of master RE)
 	Memory2Stat GetGatewayStatsDeviceGatewayStatMemory2StatInput `pulumi:"memory2Stat"`
-	// memory usage stat (for virtual chassis, memory usage of master RE)
+	// Memory usage stat (for virtual chassis, memory usage of master RE)
 	MemoryStat GetGatewayStatsDeviceGatewayStatMemoryStatInput `pulumi:"memoryStat"`
-	// device model
-	Model        pulumi.StringInput                                    `pulumi:"model"`
-	ModifiedTime pulumi.IntInput                                       `pulumi:"modifiedTime"`
+	// Device model
+	Model pulumi.StringInput `pulumi:"model"`
+	// When the object has been modified for the last time, in epoch
+	ModifiedTime pulumi.Float64Input                                   `pulumi:"modifiedTime"`
 	Module2Stats GetGatewayStatsDeviceGatewayStatModule2StatArrayInput `pulumi:"module2Stats"`
 	ModuleStats  GetGatewayStatsDeviceGatewayStatModuleStatArrayInput  `pulumi:"moduleStats"`
-	// device name if configured
+	// Device name if configured
 	Name     pulumi.StringInput `pulumi:"name"`
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
-	// serial
-	OrgId             pulumi.StringInput                                     `pulumi:"orgId"`
+	OrgId    pulumi.StringInput `pulumi:"orgId"`
+	// Only present when `ports` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/ports/search` result object, except that org*id, site*id, mac, model are removed
+	Ports             GetGatewayStatsDeviceGatewayStatPortArrayInput         `pulumi:"ports"`
 	RouteSummaryStats GetGatewayStatsDeviceGatewayStatRouteSummaryStatsInput `pulumi:"routeSummaryStats"`
-	// device name if configured
+	// Device name if configured
 	RouterName pulumi.StringInput `pulumi:"routerName"`
-	// serial
+	// Serial Number
 	Serial        pulumi.StringInput                                   `pulumi:"serial"`
 	Service2Stat  GetGatewayStatsDeviceGatewayStatService2StatMapInput `pulumi:"service2Stat"`
 	ServiceStat   GetGatewayStatsDeviceGatewayStatServiceStatMapInput  `pulumi:"serviceStat"`
 	ServiceStatus GetGatewayStatsDeviceGatewayStatServiceStatusInput   `pulumi:"serviceStatus"`
-	// serial
-	SiteId    pulumi.StringInput                                 `pulumi:"siteId"`
-	Spu2Stats GetGatewayStatsDeviceGatewayStatSpu2StatArrayInput `pulumi:"spu2Stats"`
-	SpuStats  GetGatewayStatsDeviceGatewayStatSpuStatArrayInput  `pulumi:"spuStats"`
-	Status    pulumi.StringInput                                 `pulumi:"status"`
-	Uptime    pulumi.Float64Input                                `pulumi:"uptime"`
-	Version   pulumi.StringInput                                 `pulumi:"version"`
+	SiteId        pulumi.StringInput                                   `pulumi:"siteId"`
+	Spu2Stats     GetGatewayStatsDeviceGatewayStatSpu2StatArrayInput   `pulumi:"spu2Stats"`
+	SpuStats      GetGatewayStatsDeviceGatewayStatSpuStatArrayInput    `pulumi:"spuStats"`
+	Status        pulumi.StringInput                                   `pulumi:"status"`
+	// Only present when `tunnels` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/tunnels/search` result object, except that org*id, site*id, mac, model are removed
+	Tunnels GetGatewayStatsDeviceGatewayStatTunnelArrayInput `pulumi:"tunnels"`
+	Uptime  pulumi.Float64Input                              `pulumi:"uptime"`
+	Version pulumi.StringInput                               `pulumi:"version"`
+	// Only present when `vpnPeers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/vpn_peers/search` result object, except that org*id, site*id, mac, model are removed
+	VpnPeers GetGatewayStatsDeviceGatewayStatVpnPeerArrayInput `pulumi:"vpnPeers"`
 }
 
 func (GetGatewayStatsDeviceGatewayStatArgs) ElementType() reflect.Type {
@@ -30987,6 +31717,11 @@ func (o GetGatewayStatsDeviceGatewayStatOutput) ArpTableStats() GetGatewayStatsD
 	}).(GetGatewayStatsDeviceGatewayStatArpTableStatsOutput)
 }
 
+// Only present when `bgpPeers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
+func (o GetGatewayStatsDeviceGatewayStatOutput) BgpPeers() GetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) []GetGatewayStatsDeviceGatewayStatBgpPeer { return v.BgpPeers }).(GetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput)
+}
+
 func (o GetGatewayStatsDeviceGatewayStatOutput) CertExpiry() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) int { return v.CertExpiry }).(pulumi.IntOutput)
 }
@@ -31019,8 +31754,9 @@ func (o GetGatewayStatsDeviceGatewayStatOutput) CpuStat() GetGatewayStatsDeviceG
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) GetGatewayStatsDeviceGatewayStatCpuStat { return v.CpuStat }).(GetGatewayStatsDeviceGatewayStatCpuStatOutput)
 }
 
-func (o GetGatewayStatsDeviceGatewayStatOutput) CreatedTime() pulumi.IntOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) int { return v.CreatedTime }).(pulumi.IntOutput)
+// When the object has been created, in epoch
+func (o GetGatewayStatsDeviceGatewayStatOutput) CreatedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) float64 { return v.CreatedTime }).(pulumi.Float64Output)
 }
 
 func (o GetGatewayStatsDeviceGatewayStatOutput) DeviceprofileId() pulumi.StringOutput {
@@ -31054,12 +31790,12 @@ func (o GetGatewayStatsDeviceGatewayStatOutput) HasPcap() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) bool { return v.HasPcap }).(pulumi.BoolOutput)
 }
 
-// hostname reported by the device
+// Hostname reported by the device
 func (o GetGatewayStatsDeviceGatewayStatOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// serial
+// Unique ID of the object instance in the Mist Organization
 func (o GetGatewayStatsDeviceGatewayStatOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -31095,42 +31831,43 @@ func (o GetGatewayStatsDeviceGatewayStatOutput) IsHa() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) bool { return v.IsHa }).(pulumi.BoolOutput)
 }
 
-// last seen timestamp
+// Last seen timestamp
 func (o GetGatewayStatsDeviceGatewayStatOutput) LastSeen() pulumi.Float64Output {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) float64 { return v.LastSeen }).(pulumi.Float64Output)
 }
 
-// device mac
+// Device mac
 func (o GetGatewayStatsDeviceGatewayStatOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) string { return v.Mac }).(pulumi.StringOutput)
 }
 
-// serial
+// Serial Number
 func (o GetGatewayStatsDeviceGatewayStatOutput) MapId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) string { return v.MapId }).(pulumi.StringOutput)
 }
 
-// memory usage stat (for virtual chassis, memory usage of master RE)
+// Memory usage stat (for virtual chassis, memory usage of master RE)
 func (o GetGatewayStatsDeviceGatewayStatOutput) Memory2Stat() GetGatewayStatsDeviceGatewayStatMemory2StatOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) GetGatewayStatsDeviceGatewayStatMemory2Stat {
 		return v.Memory2Stat
 	}).(GetGatewayStatsDeviceGatewayStatMemory2StatOutput)
 }
 
-// memory usage stat (for virtual chassis, memory usage of master RE)
+// Memory usage stat (for virtual chassis, memory usage of master RE)
 func (o GetGatewayStatsDeviceGatewayStatOutput) MemoryStat() GetGatewayStatsDeviceGatewayStatMemoryStatOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) GetGatewayStatsDeviceGatewayStatMemoryStat {
 		return v.MemoryStat
 	}).(GetGatewayStatsDeviceGatewayStatMemoryStatOutput)
 }
 
-// device model
+// Device model
 func (o GetGatewayStatsDeviceGatewayStatOutput) Model() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) string { return v.Model }).(pulumi.StringOutput)
 }
 
-func (o GetGatewayStatsDeviceGatewayStatOutput) ModifiedTime() pulumi.IntOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) int { return v.ModifiedTime }).(pulumi.IntOutput)
+// When the object has been modified for the last time, in epoch
+func (o GetGatewayStatsDeviceGatewayStatOutput) ModifiedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
 }
 
 func (o GetGatewayStatsDeviceGatewayStatOutput) Module2Stats() GetGatewayStatsDeviceGatewayStatModule2StatArrayOutput {
@@ -31145,7 +31882,7 @@ func (o GetGatewayStatsDeviceGatewayStatOutput) ModuleStats() GetGatewayStatsDev
 	}).(GetGatewayStatsDeviceGatewayStatModuleStatArrayOutput)
 }
 
-// device name if configured
+// Device name if configured
 func (o GetGatewayStatsDeviceGatewayStatOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -31154,9 +31891,13 @@ func (o GetGatewayStatsDeviceGatewayStatOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) string { return v.NodeName }).(pulumi.StringOutput)
 }
 
-// serial
 func (o GetGatewayStatsDeviceGatewayStatOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// Only present when `ports` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/ports/search` result object, except that org*id, site*id, mac, model are removed
+func (o GetGatewayStatsDeviceGatewayStatOutput) Ports() GetGatewayStatsDeviceGatewayStatPortArrayOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) []GetGatewayStatsDeviceGatewayStatPort { return v.Ports }).(GetGatewayStatsDeviceGatewayStatPortArrayOutput)
 }
 
 func (o GetGatewayStatsDeviceGatewayStatOutput) RouteSummaryStats() GetGatewayStatsDeviceGatewayStatRouteSummaryStatsOutput {
@@ -31165,12 +31906,12 @@ func (o GetGatewayStatsDeviceGatewayStatOutput) RouteSummaryStats() GetGatewaySt
 	}).(GetGatewayStatsDeviceGatewayStatRouteSummaryStatsOutput)
 }
 
-// device name if configured
+// Device name if configured
 func (o GetGatewayStatsDeviceGatewayStatOutput) RouterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) string { return v.RouterName }).(pulumi.StringOutput)
 }
 
-// serial
+// Serial Number
 func (o GetGatewayStatsDeviceGatewayStatOutput) Serial() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) string { return v.Serial }).(pulumi.StringOutput)
 }
@@ -31193,7 +31934,6 @@ func (o GetGatewayStatsDeviceGatewayStatOutput) ServiceStatus() GetGatewayStatsD
 	}).(GetGatewayStatsDeviceGatewayStatServiceStatusOutput)
 }
 
-// serial
 func (o GetGatewayStatsDeviceGatewayStatOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) string { return v.SiteId }).(pulumi.StringOutput)
 }
@@ -31212,12 +31952,22 @@ func (o GetGatewayStatsDeviceGatewayStatOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// Only present when `tunnels` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/tunnels/search` result object, except that org*id, site*id, mac, model are removed
+func (o GetGatewayStatsDeviceGatewayStatOutput) Tunnels() GetGatewayStatsDeviceGatewayStatTunnelArrayOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) []GetGatewayStatsDeviceGatewayStatTunnel { return v.Tunnels }).(GetGatewayStatsDeviceGatewayStatTunnelArrayOutput)
+}
+
 func (o GetGatewayStatsDeviceGatewayStatOutput) Uptime() pulumi.Float64Output {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) float64 { return v.Uptime }).(pulumi.Float64Output)
 }
 
 func (o GetGatewayStatsDeviceGatewayStatOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// Only present when `vpnPeers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/vpn_peers/search` result object, except that org*id, site*id, mac, model are removed
+func (o GetGatewayStatsDeviceGatewayStatOutput) VpnPeers() GetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStat) []GetGatewayStatsDeviceGatewayStatVpnPeer { return v.VpnPeers }).(GetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput)
 }
 
 type GetGatewayStatsDeviceGatewayStatArrayOutput struct{ *pulumi.OutputState }
@@ -31459,6 +32209,217 @@ func (o GetGatewayStatsDeviceGatewayStatArpTableStatsOutput) ArpTableCount() pul
 
 func (o GetGatewayStatsDeviceGatewayStatArpTableStatsOutput) MaxEntriesSupported() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatArpTableStats) int { return v.MaxEntriesSupported }).(pulumi.IntOutput)
+}
+
+type GetGatewayStatsDeviceGatewayStatBgpPeer struct {
+	// If this is created for evpn overlay
+	EvpnOverlay bool `pulumi:"evpnOverlay"`
+	// If this is created for overlay
+	ForOverlay bool   `pulumi:"forOverlay"`
+	LocalAs    string `pulumi:"localAs"`
+	Neighbor   string `pulumi:"neighbor"`
+	NeighborAs string `pulumi:"neighborAs"`
+	// If it's another device in the same org
+	NeighborMac string `pulumi:"neighborMac"`
+	// Node0/node1
+	Node string `pulumi:"node"`
+	// Amount of packets received since connection
+	RxPkts int `pulumi:"rxPkts"`
+	// Number of received routes
+	RxRoutes int `pulumi:"rxRoutes"`
+	// enum: `active`, `connect`, `established`, `idle`, `openConfig`, `openSent`
+	State string `pulumi:"state"`
+	// Epoch (seconds)
+	Timestamp float64 `pulumi:"timestamp"`
+	// Amount of packets sent since connection
+	TxPkts   int    `pulumi:"txPkts"`
+	TxRoutes int    `pulumi:"txRoutes"`
+	Up       bool   `pulumi:"up"`
+	Uptime   int    `pulumi:"uptime"`
+	VrfName  string `pulumi:"vrfName"`
+}
+
+// GetGatewayStatsDeviceGatewayStatBgpPeerInput is an input type that accepts GetGatewayStatsDeviceGatewayStatBgpPeerArgs and GetGatewayStatsDeviceGatewayStatBgpPeerOutput values.
+// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatBgpPeerInput` via:
+//
+//	GetGatewayStatsDeviceGatewayStatBgpPeerArgs{...}
+type GetGatewayStatsDeviceGatewayStatBgpPeerInput interface {
+	pulumi.Input
+
+	ToGetGatewayStatsDeviceGatewayStatBgpPeerOutput() GetGatewayStatsDeviceGatewayStatBgpPeerOutput
+	ToGetGatewayStatsDeviceGatewayStatBgpPeerOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatBgpPeerOutput
+}
+
+type GetGatewayStatsDeviceGatewayStatBgpPeerArgs struct {
+	// If this is created for evpn overlay
+	EvpnOverlay pulumi.BoolInput `pulumi:"evpnOverlay"`
+	// If this is created for overlay
+	ForOverlay pulumi.BoolInput   `pulumi:"forOverlay"`
+	LocalAs    pulumi.StringInput `pulumi:"localAs"`
+	Neighbor   pulumi.StringInput `pulumi:"neighbor"`
+	NeighborAs pulumi.StringInput `pulumi:"neighborAs"`
+	// If it's another device in the same org
+	NeighborMac pulumi.StringInput `pulumi:"neighborMac"`
+	// Node0/node1
+	Node pulumi.StringInput `pulumi:"node"`
+	// Amount of packets received since connection
+	RxPkts pulumi.IntInput `pulumi:"rxPkts"`
+	// Number of received routes
+	RxRoutes pulumi.IntInput `pulumi:"rxRoutes"`
+	// enum: `active`, `connect`, `established`, `idle`, `openConfig`, `openSent`
+	State pulumi.StringInput `pulumi:"state"`
+	// Epoch (seconds)
+	Timestamp pulumi.Float64Input `pulumi:"timestamp"`
+	// Amount of packets sent since connection
+	TxPkts   pulumi.IntInput    `pulumi:"txPkts"`
+	TxRoutes pulumi.IntInput    `pulumi:"txRoutes"`
+	Up       pulumi.BoolInput   `pulumi:"up"`
+	Uptime   pulumi.IntInput    `pulumi:"uptime"`
+	VrfName  pulumi.StringInput `pulumi:"vrfName"`
+}
+
+func (GetGatewayStatsDeviceGatewayStatBgpPeerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatBgpPeer)(nil)).Elem()
+}
+
+func (i GetGatewayStatsDeviceGatewayStatBgpPeerArgs) ToGetGatewayStatsDeviceGatewayStatBgpPeerOutput() GetGatewayStatsDeviceGatewayStatBgpPeerOutput {
+	return i.ToGetGatewayStatsDeviceGatewayStatBgpPeerOutputWithContext(context.Background())
+}
+
+func (i GetGatewayStatsDeviceGatewayStatBgpPeerArgs) ToGetGatewayStatsDeviceGatewayStatBgpPeerOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatBgpPeerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatBgpPeerOutput)
+}
+
+// GetGatewayStatsDeviceGatewayStatBgpPeerArrayInput is an input type that accepts GetGatewayStatsDeviceGatewayStatBgpPeerArray and GetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput values.
+// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatBgpPeerArrayInput` via:
+//
+//	GetGatewayStatsDeviceGatewayStatBgpPeerArray{ GetGatewayStatsDeviceGatewayStatBgpPeerArgs{...} }
+type GetGatewayStatsDeviceGatewayStatBgpPeerArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput() GetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput
+	ToGetGatewayStatsDeviceGatewayStatBgpPeerArrayOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput
+}
+
+type GetGatewayStatsDeviceGatewayStatBgpPeerArray []GetGatewayStatsDeviceGatewayStatBgpPeerInput
+
+func (GetGatewayStatsDeviceGatewayStatBgpPeerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatBgpPeer)(nil)).Elem()
+}
+
+func (i GetGatewayStatsDeviceGatewayStatBgpPeerArray) ToGetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput() GetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput {
+	return i.ToGetGatewayStatsDeviceGatewayStatBgpPeerArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayStatsDeviceGatewayStatBgpPeerArray) ToGetGatewayStatsDeviceGatewayStatBgpPeerArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput)
+}
+
+type GetGatewayStatsDeviceGatewayStatBgpPeerOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayStatsDeviceGatewayStatBgpPeerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatBgpPeer)(nil)).Elem()
+}
+
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerOutput) ToGetGatewayStatsDeviceGatewayStatBgpPeerOutput() GetGatewayStatsDeviceGatewayStatBgpPeerOutput {
+	return o
+}
+
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerOutput) ToGetGatewayStatsDeviceGatewayStatBgpPeerOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatBgpPeerOutput {
+	return o
+}
+
+// If this is created for evpn overlay
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerOutput) EvpnOverlay() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatBgpPeer) bool { return v.EvpnOverlay }).(pulumi.BoolOutput)
+}
+
+// If this is created for overlay
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerOutput) ForOverlay() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatBgpPeer) bool { return v.ForOverlay }).(pulumi.BoolOutput)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerOutput) LocalAs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatBgpPeer) string { return v.LocalAs }).(pulumi.StringOutput)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerOutput) Neighbor() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatBgpPeer) string { return v.Neighbor }).(pulumi.StringOutput)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerOutput) NeighborAs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatBgpPeer) string { return v.NeighborAs }).(pulumi.StringOutput)
+}
+
+// If it's another device in the same org
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerOutput) NeighborMac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatBgpPeer) string { return v.NeighborMac }).(pulumi.StringOutput)
+}
+
+// Node0/node1
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerOutput) Node() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatBgpPeer) string { return v.Node }).(pulumi.StringOutput)
+}
+
+// Amount of packets received since connection
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerOutput) RxPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatBgpPeer) int { return v.RxPkts }).(pulumi.IntOutput)
+}
+
+// Number of received routes
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerOutput) RxRoutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatBgpPeer) int { return v.RxRoutes }).(pulumi.IntOutput)
+}
+
+// enum: `active`, `connect`, `established`, `idle`, `openConfig`, `openSent`
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatBgpPeer) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Epoch (seconds)
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerOutput) Timestamp() pulumi.Float64Output {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatBgpPeer) float64 { return v.Timestamp }).(pulumi.Float64Output)
+}
+
+// Amount of packets sent since connection
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerOutput) TxPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatBgpPeer) int { return v.TxPkts }).(pulumi.IntOutput)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerOutput) TxRoutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatBgpPeer) int { return v.TxRoutes }).(pulumi.IntOutput)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerOutput) Up() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatBgpPeer) bool { return v.Up }).(pulumi.BoolOutput)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerOutput) Uptime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatBgpPeer) int { return v.Uptime }).(pulumi.IntOutput)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerOutput) VrfName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatBgpPeer) string { return v.VrfName }).(pulumi.StringOutput)
+}
+
+type GetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatBgpPeer)(nil)).Elem()
+}
+
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput) ToGetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput() GetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput {
+	return o
+}
+
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput) ToGetGatewayStatsDeviceGatewayStatBgpPeerArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput {
+	return o
+}
+
+func (o GetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput) Index(i pulumi.IntInput) GetGatewayStatsDeviceGatewayStatBgpPeerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayStatsDeviceGatewayStatBgpPeer {
+		return vs[0].([]GetGatewayStatsDeviceGatewayStatBgpPeer)[vs[1].(int)]
+	}).(GetGatewayStatsDeviceGatewayStatBgpPeerOutput)
 }
 
 type GetGatewayStatsDeviceGatewayStatClusterConfig struct {
@@ -31970,7 +32931,7 @@ type GetGatewayStatsDeviceGatewayStatCpu2Stat struct {
 	LoadAvgs []float64 `pulumi:"loadAvgs"`
 	// Percentage of CPU time being used by system processes
 	System float64 `pulumi:"system"`
-	// Percentage of CPU time being used by user processe
+	// Percentage of CPU time being used by user processes
 	User float64 `pulumi:"user"`
 }
 
@@ -31994,7 +32955,7 @@ type GetGatewayStatsDeviceGatewayStatCpu2StatArgs struct {
 	LoadAvgs pulumi.Float64ArrayInput `pulumi:"loadAvgs"`
 	// Percentage of CPU time being used by system processes
 	System pulumi.Float64Input `pulumi:"system"`
-	// Percentage of CPU time being used by user processe
+	// Percentage of CPU time being used by user processes
 	User pulumi.Float64Input `pulumi:"user"`
 }
 
@@ -32044,7 +33005,7 @@ func (o GetGatewayStatsDeviceGatewayStatCpu2StatOutput) System() pulumi.Float64O
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatCpu2Stat) float64 { return v.System }).(pulumi.Float64Output)
 }
 
-// Percentage of CPU time being used by user processe
+// Percentage of CPU time being used by user processes
 func (o GetGatewayStatsDeviceGatewayStatCpu2StatOutput) User() pulumi.Float64Output {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatCpu2Stat) float64 { return v.User }).(pulumi.Float64Output)
 }
@@ -32058,7 +33019,7 @@ type GetGatewayStatsDeviceGatewayStatCpuStat struct {
 	LoadAvgs []float64 `pulumi:"loadAvgs"`
 	// Percentage of CPU time being used by system processes
 	System float64 `pulumi:"system"`
-	// Percentage of CPU time being used by user processe
+	// Percentage of CPU time being used by user processes
 	User float64 `pulumi:"user"`
 }
 
@@ -32082,7 +33043,7 @@ type GetGatewayStatsDeviceGatewayStatCpuStatArgs struct {
 	LoadAvgs pulumi.Float64ArrayInput `pulumi:"loadAvgs"`
 	// Percentage of CPU time being used by system processes
 	System pulumi.Float64Input `pulumi:"system"`
-	// Percentage of CPU time being used by user processe
+	// Percentage of CPU time being used by user processes
 	User pulumi.Float64Input `pulumi:"user"`
 }
 
@@ -32132,7 +33093,7 @@ func (o GetGatewayStatsDeviceGatewayStatCpuStatOutput) System() pulumi.Float64Ou
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatCpuStat) float64 { return v.System }).(pulumi.Float64Output)
 }
 
-// Percentage of CPU time being used by user processe
+// Percentage of CPU time being used by user processes
 func (o GetGatewayStatsDeviceGatewayStatCpuStatOutput) User() pulumi.Float64Output {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatCpuStat) float64 { return v.User }).(pulumi.Float64Output)
 }
@@ -32338,9 +33299,11 @@ func (o GetGatewayStatsDeviceGatewayStatDhcpdStatMapOutput) MapIndex(k pulumi.St
 }
 
 type GetGatewayStatsDeviceGatewayStatFwupdate struct {
-	Progress  int     `pulumi:"progress"`
-	Status    string  `pulumi:"status"`
-	StatusId  int     `pulumi:"statusId"`
+	Progress int `pulumi:"progress"`
+	// enum: `inprogress`, `failed`, `upgraded`
+	Status   string `pulumi:"status"`
+	StatusId int    `pulumi:"statusId"`
+	// Epoch (seconds)
 	Timestamp float64 `pulumi:"timestamp"`
 	WillRetry bool    `pulumi:"willRetry"`
 }
@@ -32357,9 +33320,11 @@ type GetGatewayStatsDeviceGatewayStatFwupdateInput interface {
 }
 
 type GetGatewayStatsDeviceGatewayStatFwupdateArgs struct {
-	Progress  pulumi.IntInput     `pulumi:"progress"`
-	Status    pulumi.StringInput  `pulumi:"status"`
-	StatusId  pulumi.IntInput     `pulumi:"statusId"`
+	Progress pulumi.IntInput `pulumi:"progress"`
+	// enum: `inprogress`, `failed`, `upgraded`
+	Status   pulumi.StringInput `pulumi:"status"`
+	StatusId pulumi.IntInput    `pulumi:"statusId"`
+	// Epoch (seconds)
 	Timestamp pulumi.Float64Input `pulumi:"timestamp"`
 	WillRetry pulumi.BoolInput    `pulumi:"willRetry"`
 }
@@ -32394,6 +33359,7 @@ func (o GetGatewayStatsDeviceGatewayStatFwupdateOutput) Progress() pulumi.IntOut
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatFwupdate) int { return v.Progress }).(pulumi.IntOutput)
 }
 
+// enum: `inprogress`, `failed`, `upgraded`
 func (o GetGatewayStatsDeviceGatewayStatFwupdateOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatFwupdate) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -32402,6 +33368,7 @@ func (o GetGatewayStatsDeviceGatewayStatFwupdateOutput) StatusId() pulumi.IntOut
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatFwupdate) int { return v.StatusId }).(pulumi.IntOutput)
 }
 
+// Epoch (seconds)
 func (o GetGatewayStatsDeviceGatewayStatFwupdateOutput) Timestamp() pulumi.Float64Output {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatFwupdate) float64 { return v.Timestamp }).(pulumi.Float64Output)
 }
@@ -32411,22 +33378,26 @@ func (o GetGatewayStatsDeviceGatewayStatFwupdateOutput) WillRetry() pulumi.BoolO
 }
 
 type GetGatewayStatsDeviceGatewayStatIf2Stat struct {
-	AddressMode     string                                           `pulumi:"addressMode"`
-	Ips             []string                                         `pulumi:"ips"`
-	NatAddresses    []string                                         `pulumi:"natAddresses"`
-	NetworkName     string                                           `pulumi:"networkName"`
-	PortId          string                                           `pulumi:"portId"`
-	PortUsage       string                                           `pulumi:"portUsage"`
-	RedundancyState string                                           `pulumi:"redundancyState"`
-	RxBytes         int                                              `pulumi:"rxBytes"`
-	RxPkts          int                                              `pulumi:"rxPkts"`
-	ServpInfo       GetGatewayStatsDeviceGatewayStatIf2StatServpInfo `pulumi:"servpInfo"`
-	TxBytes         int                                              `pulumi:"txBytes"`
-	TxPkts          int                                              `pulumi:"txPkts"`
-	Up              bool                                             `pulumi:"up"`
-	Vlan            int                                              `pulumi:"vlan"`
-	WanName         string                                           `pulumi:"wanName"`
-	WanType         string                                           `pulumi:"wanType"`
+	AddressMode     string   `pulumi:"addressMode"`
+	Ips             []string `pulumi:"ips"`
+	NatAddresses    []string `pulumi:"natAddresses"`
+	NetworkName     string   `pulumi:"networkName"`
+	PortId          string   `pulumi:"portId"`
+	PortUsage       string   `pulumi:"portUsage"`
+	RedundancyState string   `pulumi:"redundancyState"`
+	// Amount of traffic received since connection
+	RxBytes int `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPkts    int                                              `pulumi:"rxPkts"`
+	ServpInfo GetGatewayStatsDeviceGatewayStatIf2StatServpInfo `pulumi:"servpInfo"`
+	// Amount of traffic sent since connection
+	TxBytes int `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPkts  int    `pulumi:"txPkts"`
+	Up      bool   `pulumi:"up"`
+	Vlan    int    `pulumi:"vlan"`
+	WanName string `pulumi:"wanName"`
+	WanType string `pulumi:"wanType"`
 }
 
 // GetGatewayStatsDeviceGatewayStatIf2StatInput is an input type that accepts GetGatewayStatsDeviceGatewayStatIf2StatArgs and GetGatewayStatsDeviceGatewayStatIf2StatOutput values.
@@ -32441,22 +33412,26 @@ type GetGatewayStatsDeviceGatewayStatIf2StatInput interface {
 }
 
 type GetGatewayStatsDeviceGatewayStatIf2StatArgs struct {
-	AddressMode     pulumi.StringInput                                    `pulumi:"addressMode"`
-	Ips             pulumi.StringArrayInput                               `pulumi:"ips"`
-	NatAddresses    pulumi.StringArrayInput                               `pulumi:"natAddresses"`
-	NetworkName     pulumi.StringInput                                    `pulumi:"networkName"`
-	PortId          pulumi.StringInput                                    `pulumi:"portId"`
-	PortUsage       pulumi.StringInput                                    `pulumi:"portUsage"`
-	RedundancyState pulumi.StringInput                                    `pulumi:"redundancyState"`
-	RxBytes         pulumi.IntInput                                       `pulumi:"rxBytes"`
-	RxPkts          pulumi.IntInput                                       `pulumi:"rxPkts"`
-	ServpInfo       GetGatewayStatsDeviceGatewayStatIf2StatServpInfoInput `pulumi:"servpInfo"`
-	TxBytes         pulumi.IntInput                                       `pulumi:"txBytes"`
-	TxPkts          pulumi.IntInput                                       `pulumi:"txPkts"`
-	Up              pulumi.BoolInput                                      `pulumi:"up"`
-	Vlan            pulumi.IntInput                                       `pulumi:"vlan"`
-	WanName         pulumi.StringInput                                    `pulumi:"wanName"`
-	WanType         pulumi.StringInput                                    `pulumi:"wanType"`
+	AddressMode     pulumi.StringInput      `pulumi:"addressMode"`
+	Ips             pulumi.StringArrayInput `pulumi:"ips"`
+	NatAddresses    pulumi.StringArrayInput `pulumi:"natAddresses"`
+	NetworkName     pulumi.StringInput      `pulumi:"networkName"`
+	PortId          pulumi.StringInput      `pulumi:"portId"`
+	PortUsage       pulumi.StringInput      `pulumi:"portUsage"`
+	RedundancyState pulumi.StringInput      `pulumi:"redundancyState"`
+	// Amount of traffic received since connection
+	RxBytes pulumi.IntInput `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPkts    pulumi.IntInput                                       `pulumi:"rxPkts"`
+	ServpInfo GetGatewayStatsDeviceGatewayStatIf2StatServpInfoInput `pulumi:"servpInfo"`
+	// Amount of traffic sent since connection
+	TxBytes pulumi.IntInput `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPkts  pulumi.IntInput    `pulumi:"txPkts"`
+	Up      pulumi.BoolInput   `pulumi:"up"`
+	Vlan    pulumi.IntInput    `pulumi:"vlan"`
+	WanName pulumi.StringInput `pulumi:"wanName"`
+	WanType pulumi.StringInput `pulumi:"wanType"`
 }
 
 func (GetGatewayStatsDeviceGatewayStatIf2StatArgs) ElementType() reflect.Type {
@@ -32538,10 +33513,12 @@ func (o GetGatewayStatsDeviceGatewayStatIf2StatOutput) RedundancyState() pulumi.
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatIf2Stat) string { return v.RedundancyState }).(pulumi.StringOutput)
 }
 
+// Amount of traffic received since connection
 func (o GetGatewayStatsDeviceGatewayStatIf2StatOutput) RxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatIf2Stat) int { return v.RxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets received since connection
 func (o GetGatewayStatsDeviceGatewayStatIf2StatOutput) RxPkts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatIf2Stat) int { return v.RxPkts }).(pulumi.IntOutput)
 }
@@ -32552,10 +33529,12 @@ func (o GetGatewayStatsDeviceGatewayStatIf2StatOutput) ServpInfo() GetGatewaySta
 	}).(GetGatewayStatsDeviceGatewayStatIf2StatServpInfoOutput)
 }
 
+// Amount of traffic sent since connection
 func (o GetGatewayStatsDeviceGatewayStatIf2StatOutput) TxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatIf2Stat) int { return v.TxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets sent since connection
 func (o GetGatewayStatsDeviceGatewayStatIf2StatOutput) TxPkts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatIf2Stat) int { return v.TxPkts }).(pulumi.IntOutput)
 }
@@ -32682,22 +33661,26 @@ func (o GetGatewayStatsDeviceGatewayStatIf2StatServpInfoOutput) RegionCode() pul
 }
 
 type GetGatewayStatsDeviceGatewayStatIfStat struct {
-	AddressMode     string                                          `pulumi:"addressMode"`
-	Ips             []string                                        `pulumi:"ips"`
-	NatAddresses    []string                                        `pulumi:"natAddresses"`
-	NetworkName     string                                          `pulumi:"networkName"`
-	PortId          string                                          `pulumi:"portId"`
-	PortUsage       string                                          `pulumi:"portUsage"`
-	RedundancyState string                                          `pulumi:"redundancyState"`
-	RxBytes         int                                             `pulumi:"rxBytes"`
-	RxPkts          int                                             `pulumi:"rxPkts"`
-	ServpInfo       GetGatewayStatsDeviceGatewayStatIfStatServpInfo `pulumi:"servpInfo"`
-	TxBytes         int                                             `pulumi:"txBytes"`
-	TxPkts          int                                             `pulumi:"txPkts"`
-	Up              bool                                            `pulumi:"up"`
-	Vlan            int                                             `pulumi:"vlan"`
-	WanName         string                                          `pulumi:"wanName"`
-	WanType         string                                          `pulumi:"wanType"`
+	AddressMode     string   `pulumi:"addressMode"`
+	Ips             []string `pulumi:"ips"`
+	NatAddresses    []string `pulumi:"natAddresses"`
+	NetworkName     string   `pulumi:"networkName"`
+	PortId          string   `pulumi:"portId"`
+	PortUsage       string   `pulumi:"portUsage"`
+	RedundancyState string   `pulumi:"redundancyState"`
+	// Amount of traffic received since connection
+	RxBytes int `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPkts    int                                             `pulumi:"rxPkts"`
+	ServpInfo GetGatewayStatsDeviceGatewayStatIfStatServpInfo `pulumi:"servpInfo"`
+	// Amount of traffic sent since connection
+	TxBytes int `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPkts  int    `pulumi:"txPkts"`
+	Up      bool   `pulumi:"up"`
+	Vlan    int    `pulumi:"vlan"`
+	WanName string `pulumi:"wanName"`
+	WanType string `pulumi:"wanType"`
 }
 
 // GetGatewayStatsDeviceGatewayStatIfStatInput is an input type that accepts GetGatewayStatsDeviceGatewayStatIfStatArgs and GetGatewayStatsDeviceGatewayStatIfStatOutput values.
@@ -32712,22 +33695,26 @@ type GetGatewayStatsDeviceGatewayStatIfStatInput interface {
 }
 
 type GetGatewayStatsDeviceGatewayStatIfStatArgs struct {
-	AddressMode     pulumi.StringInput                                   `pulumi:"addressMode"`
-	Ips             pulumi.StringArrayInput                              `pulumi:"ips"`
-	NatAddresses    pulumi.StringArrayInput                              `pulumi:"natAddresses"`
-	NetworkName     pulumi.StringInput                                   `pulumi:"networkName"`
-	PortId          pulumi.StringInput                                   `pulumi:"portId"`
-	PortUsage       pulumi.StringInput                                   `pulumi:"portUsage"`
-	RedundancyState pulumi.StringInput                                   `pulumi:"redundancyState"`
-	RxBytes         pulumi.IntInput                                      `pulumi:"rxBytes"`
-	RxPkts          pulumi.IntInput                                      `pulumi:"rxPkts"`
-	ServpInfo       GetGatewayStatsDeviceGatewayStatIfStatServpInfoInput `pulumi:"servpInfo"`
-	TxBytes         pulumi.IntInput                                      `pulumi:"txBytes"`
-	TxPkts          pulumi.IntInput                                      `pulumi:"txPkts"`
-	Up              pulumi.BoolInput                                     `pulumi:"up"`
-	Vlan            pulumi.IntInput                                      `pulumi:"vlan"`
-	WanName         pulumi.StringInput                                   `pulumi:"wanName"`
-	WanType         pulumi.StringInput                                   `pulumi:"wanType"`
+	AddressMode     pulumi.StringInput      `pulumi:"addressMode"`
+	Ips             pulumi.StringArrayInput `pulumi:"ips"`
+	NatAddresses    pulumi.StringArrayInput `pulumi:"natAddresses"`
+	NetworkName     pulumi.StringInput      `pulumi:"networkName"`
+	PortId          pulumi.StringInput      `pulumi:"portId"`
+	PortUsage       pulumi.StringInput      `pulumi:"portUsage"`
+	RedundancyState pulumi.StringInput      `pulumi:"redundancyState"`
+	// Amount of traffic received since connection
+	RxBytes pulumi.IntInput `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPkts    pulumi.IntInput                                      `pulumi:"rxPkts"`
+	ServpInfo GetGatewayStatsDeviceGatewayStatIfStatServpInfoInput `pulumi:"servpInfo"`
+	// Amount of traffic sent since connection
+	TxBytes pulumi.IntInput `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPkts  pulumi.IntInput    `pulumi:"txPkts"`
+	Up      pulumi.BoolInput   `pulumi:"up"`
+	Vlan    pulumi.IntInput    `pulumi:"vlan"`
+	WanName pulumi.StringInput `pulumi:"wanName"`
+	WanType pulumi.StringInput `pulumi:"wanType"`
 }
 
 func (GetGatewayStatsDeviceGatewayStatIfStatArgs) ElementType() reflect.Type {
@@ -32809,10 +33796,12 @@ func (o GetGatewayStatsDeviceGatewayStatIfStatOutput) RedundancyState() pulumi.S
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatIfStat) string { return v.RedundancyState }).(pulumi.StringOutput)
 }
 
+// Amount of traffic received since connection
 func (o GetGatewayStatsDeviceGatewayStatIfStatOutput) RxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatIfStat) int { return v.RxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets received since connection
 func (o GetGatewayStatsDeviceGatewayStatIfStatOutput) RxPkts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatIfStat) int { return v.RxPkts }).(pulumi.IntOutput)
 }
@@ -32823,10 +33812,12 @@ func (o GetGatewayStatsDeviceGatewayStatIfStatOutput) ServpInfo() GetGatewayStat
 	}).(GetGatewayStatsDeviceGatewayStatIfStatServpInfoOutput)
 }
 
+// Amount of traffic sent since connection
 func (o GetGatewayStatsDeviceGatewayStatIfStatOutput) TxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatIfStat) int { return v.TxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets sent since connection
 func (o GetGatewayStatsDeviceGatewayStatIfStatOutput) TxPkts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatIfStat) int { return v.TxPkts }).(pulumi.IntOutput)
 }
@@ -33257,19 +34248,18 @@ func (o GetGatewayStatsDeviceGatewayStatMemoryStatOutput) Usage() pulumi.Float64
 }
 
 type GetGatewayStatsDeviceGatewayStatModule2Stat struct {
-	BackupVersion string `pulumi:"backupVersion"`
-	BiosVersion   string `pulumi:"biosVersion"`
-	CpldVersion   string `pulumi:"cpldVersion"`
-	// used to report all error states the device node is running into.
-	// An error should always have `type` and `since` fields, and could have some other fields specific to that type.
-	Errors            []GetGatewayStatsDeviceGatewayStatModule2StatError       `pulumi:"errors"`
-	Fans              []GetGatewayStatsDeviceGatewayStatModule2StatFan         `pulumi:"fans"`
-	FpgaVersion       string                                                   `pulumi:"fpgaVersion"`
+	BackupVersion string                                           `pulumi:"backupVersion"`
+	BiosVersion   string                                           `pulumi:"biosVersion"`
+	CpldVersion   string                                           `pulumi:"cpldVersion"`
+	Fans          []GetGatewayStatsDeviceGatewayStatModule2StatFan `pulumi:"fans"`
+	FpgaVersion   string                                           `pulumi:"fpgaVersion"`
+	// Last seen timestamp
 	LastSeen          float64                                                  `pulumi:"lastSeen"`
+	Locating          bool                                                     `pulumi:"locating"`
+	Mac               string                                                   `pulumi:"mac"`
 	Model             string                                                   `pulumi:"model"`
 	OpticsCpldVersion string                                                   `pulumi:"opticsCpldVersion"`
 	PendingVersion    string                                                   `pulumi:"pendingVersion"`
-	Pics              []GetGatewayStatsDeviceGatewayStatModule2StatPic         `pulumi:"pics"`
 	Poe               GetGatewayStatsDeviceGatewayStatModule2StatPoe           `pulumi:"poe"`
 	PoeVersion        string                                                   `pulumi:"poeVersion"`
 	PowerCpldVersion  string                                                   `pulumi:"powerCpldVersion"`
@@ -33284,7 +34274,7 @@ type GetGatewayStatsDeviceGatewayStatModule2Stat struct {
 	Uptime            int                                                      `pulumi:"uptime"`
 	VcLinks           []GetGatewayStatsDeviceGatewayStatModule2StatVcLink      `pulumi:"vcLinks"`
 	VcMode            string                                                   `pulumi:"vcMode"`
-	// master / backup / linecard
+	// enum: `master`, `backup`, `linecard`
 	VcRole  string `pulumi:"vcRole"`
 	VcState string `pulumi:"vcState"`
 	Version string `pulumi:"version"`
@@ -33302,19 +34292,18 @@ type GetGatewayStatsDeviceGatewayStatModule2StatInput interface {
 }
 
 type GetGatewayStatsDeviceGatewayStatModule2StatArgs struct {
-	BackupVersion pulumi.StringInput `pulumi:"backupVersion"`
-	BiosVersion   pulumi.StringInput `pulumi:"biosVersion"`
-	CpldVersion   pulumi.StringInput `pulumi:"cpldVersion"`
-	// used to report all error states the device node is running into.
-	// An error should always have `type` and `since` fields, and could have some other fields specific to that type.
-	Errors            GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayInput       `pulumi:"errors"`
-	Fans              GetGatewayStatsDeviceGatewayStatModule2StatFanArrayInput         `pulumi:"fans"`
-	FpgaVersion       pulumi.StringInput                                               `pulumi:"fpgaVersion"`
+	BackupVersion pulumi.StringInput                                       `pulumi:"backupVersion"`
+	BiosVersion   pulumi.StringInput                                       `pulumi:"biosVersion"`
+	CpldVersion   pulumi.StringInput                                       `pulumi:"cpldVersion"`
+	Fans          GetGatewayStatsDeviceGatewayStatModule2StatFanArrayInput `pulumi:"fans"`
+	FpgaVersion   pulumi.StringInput                                       `pulumi:"fpgaVersion"`
+	// Last seen timestamp
 	LastSeen          pulumi.Float64Input                                              `pulumi:"lastSeen"`
+	Locating          pulumi.BoolInput                                                 `pulumi:"locating"`
+	Mac               pulumi.StringInput                                               `pulumi:"mac"`
 	Model             pulumi.StringInput                                               `pulumi:"model"`
 	OpticsCpldVersion pulumi.StringInput                                               `pulumi:"opticsCpldVersion"`
 	PendingVersion    pulumi.StringInput                                               `pulumi:"pendingVersion"`
-	Pics              GetGatewayStatsDeviceGatewayStatModule2StatPicArrayInput         `pulumi:"pics"`
 	Poe               GetGatewayStatsDeviceGatewayStatModule2StatPoeInput              `pulumi:"poe"`
 	PoeVersion        pulumi.StringInput                                               `pulumi:"poeVersion"`
 	PowerCpldVersion  pulumi.StringInput                                               `pulumi:"powerCpldVersion"`
@@ -33329,7 +34318,7 @@ type GetGatewayStatsDeviceGatewayStatModule2StatArgs struct {
 	Uptime            pulumi.IntInput                                                  `pulumi:"uptime"`
 	VcLinks           GetGatewayStatsDeviceGatewayStatModule2StatVcLinkArrayInput      `pulumi:"vcLinks"`
 	VcMode            pulumi.StringInput                                               `pulumi:"vcMode"`
-	// master / backup / linecard
+	// enum: `master`, `backup`, `linecard`
 	VcRole  pulumi.StringInput `pulumi:"vcRole"`
 	VcState pulumi.StringInput `pulumi:"vcState"`
 	Version pulumi.StringInput `pulumi:"version"`
@@ -33398,14 +34387,6 @@ func (o GetGatewayStatsDeviceGatewayStatModule2StatOutput) CpldVersion() pulumi.
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2Stat) string { return v.CpldVersion }).(pulumi.StringOutput)
 }
 
-// used to report all error states the device node is running into.
-// An error should always have `type` and `since` fields, and could have some other fields specific to that type.
-func (o GetGatewayStatsDeviceGatewayStatModule2StatOutput) Errors() GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2Stat) []GetGatewayStatsDeviceGatewayStatModule2StatError {
-		return v.Errors
-	}).(GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput)
-}
-
 func (o GetGatewayStatsDeviceGatewayStatModule2StatOutput) Fans() GetGatewayStatsDeviceGatewayStatModule2StatFanArrayOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2Stat) []GetGatewayStatsDeviceGatewayStatModule2StatFan {
 		return v.Fans
@@ -33416,8 +34397,17 @@ func (o GetGatewayStatsDeviceGatewayStatModule2StatOutput) FpgaVersion() pulumi.
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2Stat) string { return v.FpgaVersion }).(pulumi.StringOutput)
 }
 
+// Last seen timestamp
 func (o GetGatewayStatsDeviceGatewayStatModule2StatOutput) LastSeen() pulumi.Float64Output {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2Stat) float64 { return v.LastSeen }).(pulumi.Float64Output)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatModule2StatOutput) Locating() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2Stat) bool { return v.Locating }).(pulumi.BoolOutput)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatModule2StatOutput) Mac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2Stat) string { return v.Mac }).(pulumi.StringOutput)
 }
 
 func (o GetGatewayStatsDeviceGatewayStatModule2StatOutput) Model() pulumi.StringOutput {
@@ -33430,12 +34420,6 @@ func (o GetGatewayStatsDeviceGatewayStatModule2StatOutput) OpticsCpldVersion() p
 
 func (o GetGatewayStatsDeviceGatewayStatModule2StatOutput) PendingVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2Stat) string { return v.PendingVersion }).(pulumi.StringOutput)
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatOutput) Pics() GetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2Stat) []GetGatewayStatsDeviceGatewayStatModule2StatPic {
-		return v.Pics
-	}).(GetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput)
 }
 
 func (o GetGatewayStatsDeviceGatewayStatModule2StatOutput) Poe() GetGatewayStatsDeviceGatewayStatModule2StatPoeOutput {
@@ -33502,7 +34486,7 @@ func (o GetGatewayStatsDeviceGatewayStatModule2StatOutput) VcMode() pulumi.Strin
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2Stat) string { return v.VcMode }).(pulumi.StringOutput)
 }
 
-// master / backup / linecard
+// enum: `master`, `backup`, `linecard`
 func (o GetGatewayStatsDeviceGatewayStatModule2StatOutput) VcRole() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2Stat) string { return v.VcRole }).(pulumi.StringOutput)
 }
@@ -33533,124 +34517,6 @@ func (o GetGatewayStatsDeviceGatewayStatModule2StatArrayOutput) Index(i pulumi.I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayStatsDeviceGatewayStatModule2Stat {
 		return vs[0].([]GetGatewayStatsDeviceGatewayStatModule2Stat)[vs[1].(int)]
 	}).(GetGatewayStatsDeviceGatewayStatModule2StatOutput)
-}
-
-type GetGatewayStatsDeviceGatewayStatModule2StatError struct {
-	Feature        string `pulumi:"feature"`
-	MinimumVersion string `pulumi:"minimumVersion"`
-	Reason         string `pulumi:"reason"`
-	Since          int    `pulumi:"since"`
-	Type           string `pulumi:"type"`
-}
-
-// GetGatewayStatsDeviceGatewayStatModule2StatErrorInput is an input type that accepts GetGatewayStatsDeviceGatewayStatModule2StatErrorArgs and GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput values.
-// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatModule2StatErrorInput` via:
-//
-//	GetGatewayStatsDeviceGatewayStatModule2StatErrorArgs{...}
-type GetGatewayStatsDeviceGatewayStatModule2StatErrorInput interface {
-	pulumi.Input
-
-	ToGetGatewayStatsDeviceGatewayStatModule2StatErrorOutput() GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput
-	ToGetGatewayStatsDeviceGatewayStatModule2StatErrorOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput
-}
-
-type GetGatewayStatsDeviceGatewayStatModule2StatErrorArgs struct {
-	Feature        pulumi.StringInput `pulumi:"feature"`
-	MinimumVersion pulumi.StringInput `pulumi:"minimumVersion"`
-	Reason         pulumi.StringInput `pulumi:"reason"`
-	Since          pulumi.IntInput    `pulumi:"since"`
-	Type           pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetGatewayStatsDeviceGatewayStatModule2StatErrorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatError)(nil)).Elem()
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModule2StatErrorArgs) ToGetGatewayStatsDeviceGatewayStatModule2StatErrorOutput() GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput {
-	return i.ToGetGatewayStatsDeviceGatewayStatModule2StatErrorOutputWithContext(context.Background())
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModule2StatErrorArgs) ToGetGatewayStatsDeviceGatewayStatModule2StatErrorOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput)
-}
-
-// GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayInput is an input type that accepts GetGatewayStatsDeviceGatewayStatModule2StatErrorArray and GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput values.
-// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayInput` via:
-//
-//	GetGatewayStatsDeviceGatewayStatModule2StatErrorArray{ GetGatewayStatsDeviceGatewayStatModule2StatErrorArgs{...} }
-type GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayInput interface {
-	pulumi.Input
-
-	ToGetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput() GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput
-	ToGetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput
-}
-
-type GetGatewayStatsDeviceGatewayStatModule2StatErrorArray []GetGatewayStatsDeviceGatewayStatModule2StatErrorInput
-
-func (GetGatewayStatsDeviceGatewayStatModule2StatErrorArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatModule2StatError)(nil)).Elem()
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModule2StatErrorArray) ToGetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput() GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput {
-	return i.ToGetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutputWithContext(context.Background())
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModule2StatErrorArray) ToGetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput)
-}
-
-type GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput struct{ *pulumi.OutputState }
-
-func (GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatError)(nil)).Elem()
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput) ToGetGatewayStatsDeviceGatewayStatModule2StatErrorOutput() GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput) ToGetGatewayStatsDeviceGatewayStatModule2StatErrorOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput) Feature() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2StatError) string { return v.Feature }).(pulumi.StringOutput)
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput) MinimumVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2StatError) string { return v.MinimumVersion }).(pulumi.StringOutput)
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput) Reason() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2StatError) string { return v.Reason }).(pulumi.StringOutput)
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput) Since() pulumi.IntOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2StatError) int { return v.Since }).(pulumi.IntOutput)
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2StatError) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatModule2StatError)(nil)).Elem()
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput) ToGetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput() GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput) ToGetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput) Index(i pulumi.IntInput) GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayStatsDeviceGatewayStatModule2StatError {
-		return vs[0].([]GetGatewayStatsDeviceGatewayStatModule2StatError)[vs[1].(int)]
-	}).(GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput)
 }
 
 type GetGatewayStatsDeviceGatewayStatModule2StatFan struct {
@@ -33757,214 +34623,6 @@ func (o GetGatewayStatsDeviceGatewayStatModule2StatFanArrayOutput) Index(i pulum
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayStatsDeviceGatewayStatModule2StatFan {
 		return vs[0].([]GetGatewayStatsDeviceGatewayStatModule2StatFan)[vs[1].(int)]
 	}).(GetGatewayStatsDeviceGatewayStatModule2StatFanOutput)
-}
-
-type GetGatewayStatsDeviceGatewayStatModule2StatPic struct {
-	Index       int                                                       `pulumi:"index"`
-	ModelNumber string                                                    `pulumi:"modelNumber"`
-	PortGroups  []GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroup `pulumi:"portGroups"`
-}
-
-// GetGatewayStatsDeviceGatewayStatModule2StatPicInput is an input type that accepts GetGatewayStatsDeviceGatewayStatModule2StatPicArgs and GetGatewayStatsDeviceGatewayStatModule2StatPicOutput values.
-// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatModule2StatPicInput` via:
-//
-//	GetGatewayStatsDeviceGatewayStatModule2StatPicArgs{...}
-type GetGatewayStatsDeviceGatewayStatModule2StatPicInput interface {
-	pulumi.Input
-
-	ToGetGatewayStatsDeviceGatewayStatModule2StatPicOutput() GetGatewayStatsDeviceGatewayStatModule2StatPicOutput
-	ToGetGatewayStatsDeviceGatewayStatModule2StatPicOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatModule2StatPicOutput
-}
-
-type GetGatewayStatsDeviceGatewayStatModule2StatPicArgs struct {
-	Index       pulumi.IntInput                                                   `pulumi:"index"`
-	ModelNumber pulumi.StringInput                                                `pulumi:"modelNumber"`
-	PortGroups  GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayInput `pulumi:"portGroups"`
-}
-
-func (GetGatewayStatsDeviceGatewayStatModule2StatPicArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatPic)(nil)).Elem()
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModule2StatPicArgs) ToGetGatewayStatsDeviceGatewayStatModule2StatPicOutput() GetGatewayStatsDeviceGatewayStatModule2StatPicOutput {
-	return i.ToGetGatewayStatsDeviceGatewayStatModule2StatPicOutputWithContext(context.Background())
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModule2StatPicArgs) ToGetGatewayStatsDeviceGatewayStatModule2StatPicOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModule2StatPicOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatModule2StatPicOutput)
-}
-
-// GetGatewayStatsDeviceGatewayStatModule2StatPicArrayInput is an input type that accepts GetGatewayStatsDeviceGatewayStatModule2StatPicArray and GetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput values.
-// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatModule2StatPicArrayInput` via:
-//
-//	GetGatewayStatsDeviceGatewayStatModule2StatPicArray{ GetGatewayStatsDeviceGatewayStatModule2StatPicArgs{...} }
-type GetGatewayStatsDeviceGatewayStatModule2StatPicArrayInput interface {
-	pulumi.Input
-
-	ToGetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput() GetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput
-	ToGetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput
-}
-
-type GetGatewayStatsDeviceGatewayStatModule2StatPicArray []GetGatewayStatsDeviceGatewayStatModule2StatPicInput
-
-func (GetGatewayStatsDeviceGatewayStatModule2StatPicArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatModule2StatPic)(nil)).Elem()
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModule2StatPicArray) ToGetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput() GetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput {
-	return i.ToGetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutputWithContext(context.Background())
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModule2StatPicArray) ToGetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput)
-}
-
-type GetGatewayStatsDeviceGatewayStatModule2StatPicOutput struct{ *pulumi.OutputState }
-
-func (GetGatewayStatsDeviceGatewayStatModule2StatPicOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatPic)(nil)).Elem()
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatPicOutput) ToGetGatewayStatsDeviceGatewayStatModule2StatPicOutput() GetGatewayStatsDeviceGatewayStatModule2StatPicOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatPicOutput) ToGetGatewayStatsDeviceGatewayStatModule2StatPicOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModule2StatPicOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatPicOutput) Index() pulumi.IntOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2StatPic) int { return v.Index }).(pulumi.IntOutput)
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatPicOutput) ModelNumber() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2StatPic) string { return v.ModelNumber }).(pulumi.StringOutput)
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatPicOutput) PortGroups() GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2StatPic) []GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroup {
-		return v.PortGroups
-	}).(GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput)
-}
-
-type GetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatModule2StatPic)(nil)).Elem()
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput) ToGetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput() GetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput) ToGetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput) Index(i pulumi.IntInput) GetGatewayStatsDeviceGatewayStatModule2StatPicOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayStatsDeviceGatewayStatModule2StatPic {
-		return vs[0].([]GetGatewayStatsDeviceGatewayStatModule2StatPic)[vs[1].(int)]
-	}).(GetGatewayStatsDeviceGatewayStatModule2StatPicOutput)
-}
-
-type GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroup struct {
-	Count int    `pulumi:"count"`
-	Type  string `pulumi:"type"`
-}
-
-// GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupInput is an input type that accepts GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArgs and GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput values.
-// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupInput` via:
-//
-//	GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArgs{...}
-type GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupInput interface {
-	pulumi.Input
-
-	ToGetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput() GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput
-	ToGetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput
-}
-
-type GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArgs struct {
-	Count pulumi.IntInput    `pulumi:"count"`
-	Type  pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroup)(nil)).Elem()
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArgs) ToGetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput() GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput {
-	return i.ToGetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutputWithContext(context.Background())
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArgs) ToGetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput)
-}
-
-// GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayInput is an input type that accepts GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArray and GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput values.
-// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayInput` via:
-//
-//	GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArray{ GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArgs{...} }
-type GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayInput interface {
-	pulumi.Input
-
-	ToGetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput() GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput
-	ToGetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput
-}
-
-type GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArray []GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupInput
-
-func (GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroup)(nil)).Elem()
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArray) ToGetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput() GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput {
-	return i.ToGetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutputWithContext(context.Background())
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArray) ToGetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput)
-}
-
-type GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput struct{ *pulumi.OutputState }
-
-func (GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroup)(nil)).Elem()
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput) ToGetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput() GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput) ToGetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput) Count() pulumi.IntOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroup) int { return v.Count }).(pulumi.IntOutput)
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroup) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroup)(nil)).Elem()
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput) ToGetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput() GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput) ToGetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput) Index(i pulumi.IntInput) GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroup {
-		return vs[0].([]GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroup)[vs[1].(int)]
-	}).(GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput)
 }
 
 type GetGatewayStatsDeviceGatewayStatModule2StatPoe struct {
@@ -34335,19 +34993,18 @@ func (o GetGatewayStatsDeviceGatewayStatModule2StatVcLinkArrayOutput) Index(i pu
 }
 
 type GetGatewayStatsDeviceGatewayStatModuleStat struct {
-	BackupVersion string `pulumi:"backupVersion"`
-	BiosVersion   string `pulumi:"biosVersion"`
-	CpldVersion   string `pulumi:"cpldVersion"`
-	// used to report all error states the device node is running into.
-	// An error should always have `type` and `since` fields, and could have some other fields specific to that type.
-	Errors            []GetGatewayStatsDeviceGatewayStatModuleStatError       `pulumi:"errors"`
-	Fans              []GetGatewayStatsDeviceGatewayStatModuleStatFan         `pulumi:"fans"`
-	FpgaVersion       string                                                  `pulumi:"fpgaVersion"`
+	BackupVersion string                                          `pulumi:"backupVersion"`
+	BiosVersion   string                                          `pulumi:"biosVersion"`
+	CpldVersion   string                                          `pulumi:"cpldVersion"`
+	Fans          []GetGatewayStatsDeviceGatewayStatModuleStatFan `pulumi:"fans"`
+	FpgaVersion   string                                          `pulumi:"fpgaVersion"`
+	// Last seen timestamp
 	LastSeen          float64                                                 `pulumi:"lastSeen"`
+	Locating          bool                                                    `pulumi:"locating"`
+	Mac               string                                                  `pulumi:"mac"`
 	Model             string                                                  `pulumi:"model"`
 	OpticsCpldVersion string                                                  `pulumi:"opticsCpldVersion"`
 	PendingVersion    string                                                  `pulumi:"pendingVersion"`
-	Pics              []GetGatewayStatsDeviceGatewayStatModuleStatPic         `pulumi:"pics"`
 	Poe               GetGatewayStatsDeviceGatewayStatModuleStatPoe           `pulumi:"poe"`
 	PoeVersion        string                                                  `pulumi:"poeVersion"`
 	PowerCpldVersion  string                                                  `pulumi:"powerCpldVersion"`
@@ -34362,7 +35019,7 @@ type GetGatewayStatsDeviceGatewayStatModuleStat struct {
 	Uptime            int                                                     `pulumi:"uptime"`
 	VcLinks           []GetGatewayStatsDeviceGatewayStatModuleStatVcLink      `pulumi:"vcLinks"`
 	VcMode            string                                                  `pulumi:"vcMode"`
-	// master / backup / linecard
+	// enum: `master`, `backup`, `linecard`
 	VcRole  string `pulumi:"vcRole"`
 	VcState string `pulumi:"vcState"`
 	Version string `pulumi:"version"`
@@ -34380,19 +35037,18 @@ type GetGatewayStatsDeviceGatewayStatModuleStatInput interface {
 }
 
 type GetGatewayStatsDeviceGatewayStatModuleStatArgs struct {
-	BackupVersion pulumi.StringInput `pulumi:"backupVersion"`
-	BiosVersion   pulumi.StringInput `pulumi:"biosVersion"`
-	CpldVersion   pulumi.StringInput `pulumi:"cpldVersion"`
-	// used to report all error states the device node is running into.
-	// An error should always have `type` and `since` fields, and could have some other fields specific to that type.
-	Errors            GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayInput       `pulumi:"errors"`
-	Fans              GetGatewayStatsDeviceGatewayStatModuleStatFanArrayInput         `pulumi:"fans"`
-	FpgaVersion       pulumi.StringInput                                              `pulumi:"fpgaVersion"`
+	BackupVersion pulumi.StringInput                                      `pulumi:"backupVersion"`
+	BiosVersion   pulumi.StringInput                                      `pulumi:"biosVersion"`
+	CpldVersion   pulumi.StringInput                                      `pulumi:"cpldVersion"`
+	Fans          GetGatewayStatsDeviceGatewayStatModuleStatFanArrayInput `pulumi:"fans"`
+	FpgaVersion   pulumi.StringInput                                      `pulumi:"fpgaVersion"`
+	// Last seen timestamp
 	LastSeen          pulumi.Float64Input                                             `pulumi:"lastSeen"`
+	Locating          pulumi.BoolInput                                                `pulumi:"locating"`
+	Mac               pulumi.StringInput                                              `pulumi:"mac"`
 	Model             pulumi.StringInput                                              `pulumi:"model"`
 	OpticsCpldVersion pulumi.StringInput                                              `pulumi:"opticsCpldVersion"`
 	PendingVersion    pulumi.StringInput                                              `pulumi:"pendingVersion"`
-	Pics              GetGatewayStatsDeviceGatewayStatModuleStatPicArrayInput         `pulumi:"pics"`
 	Poe               GetGatewayStatsDeviceGatewayStatModuleStatPoeInput              `pulumi:"poe"`
 	PoeVersion        pulumi.StringInput                                              `pulumi:"poeVersion"`
 	PowerCpldVersion  pulumi.StringInput                                              `pulumi:"powerCpldVersion"`
@@ -34407,7 +35063,7 @@ type GetGatewayStatsDeviceGatewayStatModuleStatArgs struct {
 	Uptime            pulumi.IntInput                                                 `pulumi:"uptime"`
 	VcLinks           GetGatewayStatsDeviceGatewayStatModuleStatVcLinkArrayInput      `pulumi:"vcLinks"`
 	VcMode            pulumi.StringInput                                              `pulumi:"vcMode"`
-	// master / backup / linecard
+	// enum: `master`, `backup`, `linecard`
 	VcRole  pulumi.StringInput `pulumi:"vcRole"`
 	VcState pulumi.StringInput `pulumi:"vcState"`
 	Version pulumi.StringInput `pulumi:"version"`
@@ -34476,14 +35132,6 @@ func (o GetGatewayStatsDeviceGatewayStatModuleStatOutput) CpldVersion() pulumi.S
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStat) string { return v.CpldVersion }).(pulumi.StringOutput)
 }
 
-// used to report all error states the device node is running into.
-// An error should always have `type` and `since` fields, and could have some other fields specific to that type.
-func (o GetGatewayStatsDeviceGatewayStatModuleStatOutput) Errors() GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStat) []GetGatewayStatsDeviceGatewayStatModuleStatError {
-		return v.Errors
-	}).(GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput)
-}
-
 func (o GetGatewayStatsDeviceGatewayStatModuleStatOutput) Fans() GetGatewayStatsDeviceGatewayStatModuleStatFanArrayOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStat) []GetGatewayStatsDeviceGatewayStatModuleStatFan {
 		return v.Fans
@@ -34494,8 +35142,17 @@ func (o GetGatewayStatsDeviceGatewayStatModuleStatOutput) FpgaVersion() pulumi.S
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStat) string { return v.FpgaVersion }).(pulumi.StringOutput)
 }
 
+// Last seen timestamp
 func (o GetGatewayStatsDeviceGatewayStatModuleStatOutput) LastSeen() pulumi.Float64Output {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStat) float64 { return v.LastSeen }).(pulumi.Float64Output)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatModuleStatOutput) Locating() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStat) bool { return v.Locating }).(pulumi.BoolOutput)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatModuleStatOutput) Mac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStat) string { return v.Mac }).(pulumi.StringOutput)
 }
 
 func (o GetGatewayStatsDeviceGatewayStatModuleStatOutput) Model() pulumi.StringOutput {
@@ -34508,12 +35165,6 @@ func (o GetGatewayStatsDeviceGatewayStatModuleStatOutput) OpticsCpldVersion() pu
 
 func (o GetGatewayStatsDeviceGatewayStatModuleStatOutput) PendingVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStat) string { return v.PendingVersion }).(pulumi.StringOutput)
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatOutput) Pics() GetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStat) []GetGatewayStatsDeviceGatewayStatModuleStatPic {
-		return v.Pics
-	}).(GetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput)
 }
 
 func (o GetGatewayStatsDeviceGatewayStatModuleStatOutput) Poe() GetGatewayStatsDeviceGatewayStatModuleStatPoeOutput {
@@ -34580,7 +35231,7 @@ func (o GetGatewayStatsDeviceGatewayStatModuleStatOutput) VcMode() pulumi.String
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStat) string { return v.VcMode }).(pulumi.StringOutput)
 }
 
-// master / backup / linecard
+// enum: `master`, `backup`, `linecard`
 func (o GetGatewayStatsDeviceGatewayStatModuleStatOutput) VcRole() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStat) string { return v.VcRole }).(pulumi.StringOutput)
 }
@@ -34611,124 +35262,6 @@ func (o GetGatewayStatsDeviceGatewayStatModuleStatArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayStatsDeviceGatewayStatModuleStat {
 		return vs[0].([]GetGatewayStatsDeviceGatewayStatModuleStat)[vs[1].(int)]
 	}).(GetGatewayStatsDeviceGatewayStatModuleStatOutput)
-}
-
-type GetGatewayStatsDeviceGatewayStatModuleStatError struct {
-	Feature        string `pulumi:"feature"`
-	MinimumVersion string `pulumi:"minimumVersion"`
-	Reason         string `pulumi:"reason"`
-	Since          int    `pulumi:"since"`
-	Type           string `pulumi:"type"`
-}
-
-// GetGatewayStatsDeviceGatewayStatModuleStatErrorInput is an input type that accepts GetGatewayStatsDeviceGatewayStatModuleStatErrorArgs and GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput values.
-// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatModuleStatErrorInput` via:
-//
-//	GetGatewayStatsDeviceGatewayStatModuleStatErrorArgs{...}
-type GetGatewayStatsDeviceGatewayStatModuleStatErrorInput interface {
-	pulumi.Input
-
-	ToGetGatewayStatsDeviceGatewayStatModuleStatErrorOutput() GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput
-	ToGetGatewayStatsDeviceGatewayStatModuleStatErrorOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput
-}
-
-type GetGatewayStatsDeviceGatewayStatModuleStatErrorArgs struct {
-	Feature        pulumi.StringInput `pulumi:"feature"`
-	MinimumVersion pulumi.StringInput `pulumi:"minimumVersion"`
-	Reason         pulumi.StringInput `pulumi:"reason"`
-	Since          pulumi.IntInput    `pulumi:"since"`
-	Type           pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetGatewayStatsDeviceGatewayStatModuleStatErrorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatError)(nil)).Elem()
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModuleStatErrorArgs) ToGetGatewayStatsDeviceGatewayStatModuleStatErrorOutput() GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput {
-	return i.ToGetGatewayStatsDeviceGatewayStatModuleStatErrorOutputWithContext(context.Background())
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModuleStatErrorArgs) ToGetGatewayStatsDeviceGatewayStatModuleStatErrorOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput)
-}
-
-// GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayInput is an input type that accepts GetGatewayStatsDeviceGatewayStatModuleStatErrorArray and GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput values.
-// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayInput` via:
-//
-//	GetGatewayStatsDeviceGatewayStatModuleStatErrorArray{ GetGatewayStatsDeviceGatewayStatModuleStatErrorArgs{...} }
-type GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayInput interface {
-	pulumi.Input
-
-	ToGetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput() GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput
-	ToGetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput
-}
-
-type GetGatewayStatsDeviceGatewayStatModuleStatErrorArray []GetGatewayStatsDeviceGatewayStatModuleStatErrorInput
-
-func (GetGatewayStatsDeviceGatewayStatModuleStatErrorArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatModuleStatError)(nil)).Elem()
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModuleStatErrorArray) ToGetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput() GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput {
-	return i.ToGetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutputWithContext(context.Background())
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModuleStatErrorArray) ToGetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput)
-}
-
-type GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput struct{ *pulumi.OutputState }
-
-func (GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatError)(nil)).Elem()
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput) ToGetGatewayStatsDeviceGatewayStatModuleStatErrorOutput() GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput) ToGetGatewayStatsDeviceGatewayStatModuleStatErrorOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput) Feature() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStatError) string { return v.Feature }).(pulumi.StringOutput)
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput) MinimumVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStatError) string { return v.MinimumVersion }).(pulumi.StringOutput)
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput) Reason() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStatError) string { return v.Reason }).(pulumi.StringOutput)
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput) Since() pulumi.IntOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStatError) int { return v.Since }).(pulumi.IntOutput)
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStatError) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatModuleStatError)(nil)).Elem()
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput) ToGetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput() GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput) ToGetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput) Index(i pulumi.IntInput) GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayStatsDeviceGatewayStatModuleStatError {
-		return vs[0].([]GetGatewayStatsDeviceGatewayStatModuleStatError)[vs[1].(int)]
-	}).(GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput)
 }
 
 type GetGatewayStatsDeviceGatewayStatModuleStatFan struct {
@@ -34835,214 +35368,6 @@ func (o GetGatewayStatsDeviceGatewayStatModuleStatFanArrayOutput) Index(i pulumi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayStatsDeviceGatewayStatModuleStatFan {
 		return vs[0].([]GetGatewayStatsDeviceGatewayStatModuleStatFan)[vs[1].(int)]
 	}).(GetGatewayStatsDeviceGatewayStatModuleStatFanOutput)
-}
-
-type GetGatewayStatsDeviceGatewayStatModuleStatPic struct {
-	Index       int                                                      `pulumi:"index"`
-	ModelNumber string                                                   `pulumi:"modelNumber"`
-	PortGroups  []GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroup `pulumi:"portGroups"`
-}
-
-// GetGatewayStatsDeviceGatewayStatModuleStatPicInput is an input type that accepts GetGatewayStatsDeviceGatewayStatModuleStatPicArgs and GetGatewayStatsDeviceGatewayStatModuleStatPicOutput values.
-// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatModuleStatPicInput` via:
-//
-//	GetGatewayStatsDeviceGatewayStatModuleStatPicArgs{...}
-type GetGatewayStatsDeviceGatewayStatModuleStatPicInput interface {
-	pulumi.Input
-
-	ToGetGatewayStatsDeviceGatewayStatModuleStatPicOutput() GetGatewayStatsDeviceGatewayStatModuleStatPicOutput
-	ToGetGatewayStatsDeviceGatewayStatModuleStatPicOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatModuleStatPicOutput
-}
-
-type GetGatewayStatsDeviceGatewayStatModuleStatPicArgs struct {
-	Index       pulumi.IntInput                                                  `pulumi:"index"`
-	ModelNumber pulumi.StringInput                                               `pulumi:"modelNumber"`
-	PortGroups  GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayInput `pulumi:"portGroups"`
-}
-
-func (GetGatewayStatsDeviceGatewayStatModuleStatPicArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatPic)(nil)).Elem()
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModuleStatPicArgs) ToGetGatewayStatsDeviceGatewayStatModuleStatPicOutput() GetGatewayStatsDeviceGatewayStatModuleStatPicOutput {
-	return i.ToGetGatewayStatsDeviceGatewayStatModuleStatPicOutputWithContext(context.Background())
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModuleStatPicArgs) ToGetGatewayStatsDeviceGatewayStatModuleStatPicOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModuleStatPicOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatModuleStatPicOutput)
-}
-
-// GetGatewayStatsDeviceGatewayStatModuleStatPicArrayInput is an input type that accepts GetGatewayStatsDeviceGatewayStatModuleStatPicArray and GetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput values.
-// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatModuleStatPicArrayInput` via:
-//
-//	GetGatewayStatsDeviceGatewayStatModuleStatPicArray{ GetGatewayStatsDeviceGatewayStatModuleStatPicArgs{...} }
-type GetGatewayStatsDeviceGatewayStatModuleStatPicArrayInput interface {
-	pulumi.Input
-
-	ToGetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput() GetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput
-	ToGetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput
-}
-
-type GetGatewayStatsDeviceGatewayStatModuleStatPicArray []GetGatewayStatsDeviceGatewayStatModuleStatPicInput
-
-func (GetGatewayStatsDeviceGatewayStatModuleStatPicArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatModuleStatPic)(nil)).Elem()
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModuleStatPicArray) ToGetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput() GetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput {
-	return i.ToGetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutputWithContext(context.Background())
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModuleStatPicArray) ToGetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput)
-}
-
-type GetGatewayStatsDeviceGatewayStatModuleStatPicOutput struct{ *pulumi.OutputState }
-
-func (GetGatewayStatsDeviceGatewayStatModuleStatPicOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatPic)(nil)).Elem()
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatPicOutput) ToGetGatewayStatsDeviceGatewayStatModuleStatPicOutput() GetGatewayStatsDeviceGatewayStatModuleStatPicOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatPicOutput) ToGetGatewayStatsDeviceGatewayStatModuleStatPicOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModuleStatPicOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatPicOutput) Index() pulumi.IntOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStatPic) int { return v.Index }).(pulumi.IntOutput)
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatPicOutput) ModelNumber() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStatPic) string { return v.ModelNumber }).(pulumi.StringOutput)
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatPicOutput) PortGroups() GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStatPic) []GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroup {
-		return v.PortGroups
-	}).(GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput)
-}
-
-type GetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatModuleStatPic)(nil)).Elem()
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput) ToGetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput() GetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput) ToGetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput) Index(i pulumi.IntInput) GetGatewayStatsDeviceGatewayStatModuleStatPicOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayStatsDeviceGatewayStatModuleStatPic {
-		return vs[0].([]GetGatewayStatsDeviceGatewayStatModuleStatPic)[vs[1].(int)]
-	}).(GetGatewayStatsDeviceGatewayStatModuleStatPicOutput)
-}
-
-type GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroup struct {
-	Count int    `pulumi:"count"`
-	Type  string `pulumi:"type"`
-}
-
-// GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupInput is an input type that accepts GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArgs and GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput values.
-// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupInput` via:
-//
-//	GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArgs{...}
-type GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupInput interface {
-	pulumi.Input
-
-	ToGetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput() GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput
-	ToGetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput
-}
-
-type GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArgs struct {
-	Count pulumi.IntInput    `pulumi:"count"`
-	Type  pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroup)(nil)).Elem()
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArgs) ToGetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput() GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput {
-	return i.ToGetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutputWithContext(context.Background())
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArgs) ToGetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput)
-}
-
-// GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayInput is an input type that accepts GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArray and GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput values.
-// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayInput` via:
-//
-//	GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArray{ GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArgs{...} }
-type GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayInput interface {
-	pulumi.Input
-
-	ToGetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput() GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput
-	ToGetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput
-}
-
-type GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArray []GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupInput
-
-func (GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroup)(nil)).Elem()
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArray) ToGetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput() GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput {
-	return i.ToGetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutputWithContext(context.Background())
-}
-
-func (i GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArray) ToGetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput)
-}
-
-type GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput struct{ *pulumi.OutputState }
-
-func (GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroup)(nil)).Elem()
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput) ToGetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput() GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput) ToGetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput) Count() pulumi.IntOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroup) int { return v.Count }).(pulumi.IntOutput)
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroup) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroup)(nil)).Elem()
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput) ToGetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput() GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput) ToGetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput {
-	return o
-}
-
-func (o GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput) Index(i pulumi.IntInput) GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroup {
-		return vs[0].([]GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroup)[vs[1].(int)]
-	}).(GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput)
 }
 
 type GetGatewayStatsDeviceGatewayStatModuleStatPoe struct {
@@ -35410,6 +35735,484 @@ func (o GetGatewayStatsDeviceGatewayStatModuleStatVcLinkArrayOutput) Index(i pul
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayStatsDeviceGatewayStatModuleStatVcLink {
 		return vs[0].([]GetGatewayStatsDeviceGatewayStatModuleStatVcLink)[vs[1].(int)]
 	}).(GetGatewayStatsDeviceGatewayStatModuleStatVcLinkOutput)
+}
+
+type GetGatewayStatsDeviceGatewayStatPort struct {
+	// Indicates if interface is active/inactive
+	Active bool `pulumi:"active"`
+	// if `up`==`true` and has Authenticator role. enum: `authenticated`, `authenticating`, `held`, `init`
+	AuthState string `pulumi:"authState"`
+	// Indicates if interface is disabled
+	Disabled bool `pulumi:"disabled"`
+	ForSite  bool `pulumi:"forSite"`
+	// Indicates full or half duplex
+	FullDuplex bool `pulumi:"fullDuplex"`
+	// Last sampled jitter of the interface
+	Jitter float64 `pulumi:"jitter"`
+	// Last sampled latency of the interface
+	Latency float64 `pulumi:"latency"`
+	// Last sampled loss of the interface
+	Loss float64 `pulumi:"loss"`
+	// LTE ICCID value, Check for null/empty
+	LteIccid string `pulumi:"lteIccid"`
+	// LTE IMEI value, Check for null/empty
+	LteImei string `pulumi:"lteImei"`
+	// LTE IMSI value, Check for null/empty
+	LteImsi string `pulumi:"lteImsi"`
+	// Number of mac addresses in the forwarding table
+	MacCount int `pulumi:"macCount"`
+	// Limit on number of dynamically learned macs
+	MacLimit int `pulumi:"macLimit"`
+	// chassis identifier of the chassis type listed
+	NeighborMac string `pulumi:"neighborMac"`
+	// Description supplied by the system on the interface E.g. "GigabitEthernet2/0/39"
+	NeighborPortDesc string `pulumi:"neighborPortDesc"`
+	// Name supplied by the system on the interface E.g. neighbor system name E.g. "Kumar-Acc-SW.mist.local"
+	NeighborSystemName string `pulumi:"neighborSystemName"`
+	// Is the POE configured not be disabled.
+	PoeDisabled bool `pulumi:"poeDisabled"`
+	// enum: `802.3af`, `802.3at`, `802.3bt`
+	PoeMode string `pulumi:"poeMode"`
+	// Is the device attached to POE
+	PoeOn  bool   `pulumi:"poeOn"`
+	PortId string `pulumi:"portId"`
+	// Interface mac address
+	PortMac string `pulumi:"portMac"`
+	// gateway port usage. enum: `lan`
+	PortUsage string `pulumi:"portUsage"`
+	// Amount of power being used by the interface at the time the command is executed. Unit in watts.
+	PowerDraw float64 `pulumi:"powerDraw"`
+	// Broadcast input packets
+	RxBcastPkts int `pulumi:"rxBcastPkts"`
+	// Rate of receiving traffic, bits/seconds, last known
+	RxBps int `pulumi:"rxBps"`
+	// Amount of traffic received since connection
+	RxBytes int `pulumi:"rxBytes"`
+	// Input errors
+	RxErrors int `pulumi:"rxErrors"`
+	// Multicast input packets
+	RxMcastPkts int `pulumi:"rxMcastPkts"`
+	// Amount of packets received since connection
+	RxPkts int `pulumi:"rxPkts"`
+	// Port speed
+	Speed int `pulumi:"speed"`
+	// if `up`==`true`. enum: `alternate`, `backup`, `designated`, `root`, `root-prevented`
+	StpRole string `pulumi:"stpRole"`
+	// if `up`==`true`. enum: `blocking`, `disabled`, `forwarding`, `learning`, `listening`
+	StpState string `pulumi:"stpState"`
+	// Broadcast output packets
+	TxBcastPkts int `pulumi:"txBcastPkts"`
+	// Rate of transmitting traffic, bits/seconds, last known
+	TxBps int `pulumi:"txBps"`
+	// Amount of traffic sent since connection
+	TxBytes int `pulumi:"txBytes"`
+	// Output errors
+	TxErrors int `pulumi:"txErrors"`
+	// Multicast output packets
+	TxMcastPkts int `pulumi:"txMcastPkts"`
+	// Amount of packets sent since connection
+	TxPkts int `pulumi:"txPkts"`
+	// device type. enum: `ap`, `ble`, `gateway`, `mxedge`, `nac`, `switch`
+	Type string `pulumi:"type"`
+	// Indicates if interface is unconfigured
+	Unconfigured bool `pulumi:"unconfigured"`
+	// Indicates if interface is up
+	Up bool `pulumi:"up"`
+	// Optic Slot ModelName, Check for null/empty
+	XcvrModel string `pulumi:"xcvrModel"`
+	// Optic Slot Partnumber, Check for null/empty
+	XcvrPartNumber string `pulumi:"xcvrPartNumber"`
+	// Optic Slot SerialNumber, Check for null/empty
+	XcvrSerial string `pulumi:"xcvrSerial"`
+}
+
+// GetGatewayStatsDeviceGatewayStatPortInput is an input type that accepts GetGatewayStatsDeviceGatewayStatPortArgs and GetGatewayStatsDeviceGatewayStatPortOutput values.
+// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatPortInput` via:
+//
+//	GetGatewayStatsDeviceGatewayStatPortArgs{...}
+type GetGatewayStatsDeviceGatewayStatPortInput interface {
+	pulumi.Input
+
+	ToGetGatewayStatsDeviceGatewayStatPortOutput() GetGatewayStatsDeviceGatewayStatPortOutput
+	ToGetGatewayStatsDeviceGatewayStatPortOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatPortOutput
+}
+
+type GetGatewayStatsDeviceGatewayStatPortArgs struct {
+	// Indicates if interface is active/inactive
+	Active pulumi.BoolInput `pulumi:"active"`
+	// if `up`==`true` and has Authenticator role. enum: `authenticated`, `authenticating`, `held`, `init`
+	AuthState pulumi.StringInput `pulumi:"authState"`
+	// Indicates if interface is disabled
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+	ForSite  pulumi.BoolInput `pulumi:"forSite"`
+	// Indicates full or half duplex
+	FullDuplex pulumi.BoolInput `pulumi:"fullDuplex"`
+	// Last sampled jitter of the interface
+	Jitter pulumi.Float64Input `pulumi:"jitter"`
+	// Last sampled latency of the interface
+	Latency pulumi.Float64Input `pulumi:"latency"`
+	// Last sampled loss of the interface
+	Loss pulumi.Float64Input `pulumi:"loss"`
+	// LTE ICCID value, Check for null/empty
+	LteIccid pulumi.StringInput `pulumi:"lteIccid"`
+	// LTE IMEI value, Check for null/empty
+	LteImei pulumi.StringInput `pulumi:"lteImei"`
+	// LTE IMSI value, Check for null/empty
+	LteImsi pulumi.StringInput `pulumi:"lteImsi"`
+	// Number of mac addresses in the forwarding table
+	MacCount pulumi.IntInput `pulumi:"macCount"`
+	// Limit on number of dynamically learned macs
+	MacLimit pulumi.IntInput `pulumi:"macLimit"`
+	// chassis identifier of the chassis type listed
+	NeighborMac pulumi.StringInput `pulumi:"neighborMac"`
+	// Description supplied by the system on the interface E.g. "GigabitEthernet2/0/39"
+	NeighborPortDesc pulumi.StringInput `pulumi:"neighborPortDesc"`
+	// Name supplied by the system on the interface E.g. neighbor system name E.g. "Kumar-Acc-SW.mist.local"
+	NeighborSystemName pulumi.StringInput `pulumi:"neighborSystemName"`
+	// Is the POE configured not be disabled.
+	PoeDisabled pulumi.BoolInput `pulumi:"poeDisabled"`
+	// enum: `802.3af`, `802.3at`, `802.3bt`
+	PoeMode pulumi.StringInput `pulumi:"poeMode"`
+	// Is the device attached to POE
+	PoeOn  pulumi.BoolInput   `pulumi:"poeOn"`
+	PortId pulumi.StringInput `pulumi:"portId"`
+	// Interface mac address
+	PortMac pulumi.StringInput `pulumi:"portMac"`
+	// gateway port usage. enum: `lan`
+	PortUsage pulumi.StringInput `pulumi:"portUsage"`
+	// Amount of power being used by the interface at the time the command is executed. Unit in watts.
+	PowerDraw pulumi.Float64Input `pulumi:"powerDraw"`
+	// Broadcast input packets
+	RxBcastPkts pulumi.IntInput `pulumi:"rxBcastPkts"`
+	// Rate of receiving traffic, bits/seconds, last known
+	RxBps pulumi.IntInput `pulumi:"rxBps"`
+	// Amount of traffic received since connection
+	RxBytes pulumi.IntInput `pulumi:"rxBytes"`
+	// Input errors
+	RxErrors pulumi.IntInput `pulumi:"rxErrors"`
+	// Multicast input packets
+	RxMcastPkts pulumi.IntInput `pulumi:"rxMcastPkts"`
+	// Amount of packets received since connection
+	RxPkts pulumi.IntInput `pulumi:"rxPkts"`
+	// Port speed
+	Speed pulumi.IntInput `pulumi:"speed"`
+	// if `up`==`true`. enum: `alternate`, `backup`, `designated`, `root`, `root-prevented`
+	StpRole pulumi.StringInput `pulumi:"stpRole"`
+	// if `up`==`true`. enum: `blocking`, `disabled`, `forwarding`, `learning`, `listening`
+	StpState pulumi.StringInput `pulumi:"stpState"`
+	// Broadcast output packets
+	TxBcastPkts pulumi.IntInput `pulumi:"txBcastPkts"`
+	// Rate of transmitting traffic, bits/seconds, last known
+	TxBps pulumi.IntInput `pulumi:"txBps"`
+	// Amount of traffic sent since connection
+	TxBytes pulumi.IntInput `pulumi:"txBytes"`
+	// Output errors
+	TxErrors pulumi.IntInput `pulumi:"txErrors"`
+	// Multicast output packets
+	TxMcastPkts pulumi.IntInput `pulumi:"txMcastPkts"`
+	// Amount of packets sent since connection
+	TxPkts pulumi.IntInput `pulumi:"txPkts"`
+	// device type. enum: `ap`, `ble`, `gateway`, `mxedge`, `nac`, `switch`
+	Type pulumi.StringInput `pulumi:"type"`
+	// Indicates if interface is unconfigured
+	Unconfigured pulumi.BoolInput `pulumi:"unconfigured"`
+	// Indicates if interface is up
+	Up pulumi.BoolInput `pulumi:"up"`
+	// Optic Slot ModelName, Check for null/empty
+	XcvrModel pulumi.StringInput `pulumi:"xcvrModel"`
+	// Optic Slot Partnumber, Check for null/empty
+	XcvrPartNumber pulumi.StringInput `pulumi:"xcvrPartNumber"`
+	// Optic Slot SerialNumber, Check for null/empty
+	XcvrSerial pulumi.StringInput `pulumi:"xcvrSerial"`
+}
+
+func (GetGatewayStatsDeviceGatewayStatPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatPort)(nil)).Elem()
+}
+
+func (i GetGatewayStatsDeviceGatewayStatPortArgs) ToGetGatewayStatsDeviceGatewayStatPortOutput() GetGatewayStatsDeviceGatewayStatPortOutput {
+	return i.ToGetGatewayStatsDeviceGatewayStatPortOutputWithContext(context.Background())
+}
+
+func (i GetGatewayStatsDeviceGatewayStatPortArgs) ToGetGatewayStatsDeviceGatewayStatPortOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatPortOutput)
+}
+
+// GetGatewayStatsDeviceGatewayStatPortArrayInput is an input type that accepts GetGatewayStatsDeviceGatewayStatPortArray and GetGatewayStatsDeviceGatewayStatPortArrayOutput values.
+// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatPortArrayInput` via:
+//
+//	GetGatewayStatsDeviceGatewayStatPortArray{ GetGatewayStatsDeviceGatewayStatPortArgs{...} }
+type GetGatewayStatsDeviceGatewayStatPortArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayStatsDeviceGatewayStatPortArrayOutput() GetGatewayStatsDeviceGatewayStatPortArrayOutput
+	ToGetGatewayStatsDeviceGatewayStatPortArrayOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatPortArrayOutput
+}
+
+type GetGatewayStatsDeviceGatewayStatPortArray []GetGatewayStatsDeviceGatewayStatPortInput
+
+func (GetGatewayStatsDeviceGatewayStatPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatPort)(nil)).Elem()
+}
+
+func (i GetGatewayStatsDeviceGatewayStatPortArray) ToGetGatewayStatsDeviceGatewayStatPortArrayOutput() GetGatewayStatsDeviceGatewayStatPortArrayOutput {
+	return i.ToGetGatewayStatsDeviceGatewayStatPortArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayStatsDeviceGatewayStatPortArray) ToGetGatewayStatsDeviceGatewayStatPortArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatPortArrayOutput)
+}
+
+type GetGatewayStatsDeviceGatewayStatPortOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayStatsDeviceGatewayStatPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatPort)(nil)).Elem()
+}
+
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) ToGetGatewayStatsDeviceGatewayStatPortOutput() GetGatewayStatsDeviceGatewayStatPortOutput {
+	return o
+}
+
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) ToGetGatewayStatsDeviceGatewayStatPortOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatPortOutput {
+	return o
+}
+
+// Indicates if interface is active/inactive
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// if `up`==`true` and has Authenticator role. enum: `authenticated`, `authenticating`, `held`, `init`
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) AuthState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) string { return v.AuthState }).(pulumi.StringOutput)
+}
+
+// Indicates if interface is disabled
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) ForSite() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) bool { return v.ForSite }).(pulumi.BoolOutput)
+}
+
+// Indicates full or half duplex
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) FullDuplex() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) bool { return v.FullDuplex }).(pulumi.BoolOutput)
+}
+
+// Last sampled jitter of the interface
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) Jitter() pulumi.Float64Output {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) float64 { return v.Jitter }).(pulumi.Float64Output)
+}
+
+// Last sampled latency of the interface
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) Latency() pulumi.Float64Output {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) float64 { return v.Latency }).(pulumi.Float64Output)
+}
+
+// Last sampled loss of the interface
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) Loss() pulumi.Float64Output {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) float64 { return v.Loss }).(pulumi.Float64Output)
+}
+
+// LTE ICCID value, Check for null/empty
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) LteIccid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) string { return v.LteIccid }).(pulumi.StringOutput)
+}
+
+// LTE IMEI value, Check for null/empty
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) LteImei() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) string { return v.LteImei }).(pulumi.StringOutput)
+}
+
+// LTE IMSI value, Check for null/empty
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) LteImsi() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) string { return v.LteImsi }).(pulumi.StringOutput)
+}
+
+// Number of mac addresses in the forwarding table
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) MacCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) int { return v.MacCount }).(pulumi.IntOutput)
+}
+
+// Limit on number of dynamically learned macs
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) MacLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) int { return v.MacLimit }).(pulumi.IntOutput)
+}
+
+// chassis identifier of the chassis type listed
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) NeighborMac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) string { return v.NeighborMac }).(pulumi.StringOutput)
+}
+
+// Description supplied by the system on the interface E.g. "GigabitEthernet2/0/39"
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) NeighborPortDesc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) string { return v.NeighborPortDesc }).(pulumi.StringOutput)
+}
+
+// Name supplied by the system on the interface E.g. neighbor system name E.g. "Kumar-Acc-SW.mist.local"
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) NeighborSystemName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) string { return v.NeighborSystemName }).(pulumi.StringOutput)
+}
+
+// Is the POE configured not be disabled.
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) PoeDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) bool { return v.PoeDisabled }).(pulumi.BoolOutput)
+}
+
+// enum: `802.3af`, `802.3at`, `802.3bt`
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) PoeMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) string { return v.PoeMode }).(pulumi.StringOutput)
+}
+
+// Is the device attached to POE
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) PoeOn() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) bool { return v.PoeOn }).(pulumi.BoolOutput)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) PortId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) string { return v.PortId }).(pulumi.StringOutput)
+}
+
+// Interface mac address
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) PortMac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) string { return v.PortMac }).(pulumi.StringOutput)
+}
+
+// gateway port usage. enum: `lan`
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) PortUsage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) string { return v.PortUsage }).(pulumi.StringOutput)
+}
+
+// Amount of power being used by the interface at the time the command is executed. Unit in watts.
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) PowerDraw() pulumi.Float64Output {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) float64 { return v.PowerDraw }).(pulumi.Float64Output)
+}
+
+// Broadcast input packets
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) RxBcastPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) int { return v.RxBcastPkts }).(pulumi.IntOutput)
+}
+
+// Rate of receiving traffic, bits/seconds, last known
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) RxBps() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) int { return v.RxBps }).(pulumi.IntOutput)
+}
+
+// Amount of traffic received since connection
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) RxBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) int { return v.RxBytes }).(pulumi.IntOutput)
+}
+
+// Input errors
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) RxErrors() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) int { return v.RxErrors }).(pulumi.IntOutput)
+}
+
+// Multicast input packets
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) RxMcastPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) int { return v.RxMcastPkts }).(pulumi.IntOutput)
+}
+
+// Amount of packets received since connection
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) RxPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) int { return v.RxPkts }).(pulumi.IntOutput)
+}
+
+// Port speed
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) Speed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) int { return v.Speed }).(pulumi.IntOutput)
+}
+
+// if `up`==`true`. enum: `alternate`, `backup`, `designated`, `root`, `root-prevented`
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) StpRole() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) string { return v.StpRole }).(pulumi.StringOutput)
+}
+
+// if `up`==`true`. enum: `blocking`, `disabled`, `forwarding`, `learning`, `listening`
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) StpState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) string { return v.StpState }).(pulumi.StringOutput)
+}
+
+// Broadcast output packets
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) TxBcastPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) int { return v.TxBcastPkts }).(pulumi.IntOutput)
+}
+
+// Rate of transmitting traffic, bits/seconds, last known
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) TxBps() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) int { return v.TxBps }).(pulumi.IntOutput)
+}
+
+// Amount of traffic sent since connection
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) TxBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) int { return v.TxBytes }).(pulumi.IntOutput)
+}
+
+// Output errors
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) TxErrors() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) int { return v.TxErrors }).(pulumi.IntOutput)
+}
+
+// Multicast output packets
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) TxMcastPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) int { return v.TxMcastPkts }).(pulumi.IntOutput)
+}
+
+// Amount of packets sent since connection
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) TxPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) int { return v.TxPkts }).(pulumi.IntOutput)
+}
+
+// device type. enum: `ap`, `ble`, `gateway`, `mxedge`, `nac`, `switch`
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Indicates if interface is unconfigured
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) Unconfigured() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) bool { return v.Unconfigured }).(pulumi.BoolOutput)
+}
+
+// Indicates if interface is up
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) Up() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) bool { return v.Up }).(pulumi.BoolOutput)
+}
+
+// Optic Slot ModelName, Check for null/empty
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) XcvrModel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) string { return v.XcvrModel }).(pulumi.StringOutput)
+}
+
+// Optic Slot Partnumber, Check for null/empty
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) XcvrPartNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) string { return v.XcvrPartNumber }).(pulumi.StringOutput)
+}
+
+// Optic Slot SerialNumber, Check for null/empty
+func (o GetGatewayStatsDeviceGatewayStatPortOutput) XcvrSerial() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatPort) string { return v.XcvrSerial }).(pulumi.StringOutput)
+}
+
+type GetGatewayStatsDeviceGatewayStatPortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayStatsDeviceGatewayStatPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatPort)(nil)).Elem()
+}
+
+func (o GetGatewayStatsDeviceGatewayStatPortArrayOutput) ToGetGatewayStatsDeviceGatewayStatPortArrayOutput() GetGatewayStatsDeviceGatewayStatPortArrayOutput {
+	return o
+}
+
+func (o GetGatewayStatsDeviceGatewayStatPortArrayOutput) ToGetGatewayStatsDeviceGatewayStatPortArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatPortArrayOutput {
+	return o
+}
+
+func (o GetGatewayStatsDeviceGatewayStatPortArrayOutput) Index(i pulumi.IntInput) GetGatewayStatsDeviceGatewayStatPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayStatsDeviceGatewayStatPort {
+		return vs[0].([]GetGatewayStatsDeviceGatewayStatPort)[vs[1].(int)]
+	}).(GetGatewayStatsDeviceGatewayStatPortOutput)
 }
 
 type GetGatewayStatsDeviceGatewayStatRouteSummaryStats struct {
@@ -36102,46 +36905,497 @@ func (o GetGatewayStatsDeviceGatewayStatSpuStatArrayOutput) Index(i pulumi.IntIn
 	}).(GetGatewayStatsDeviceGatewayStatSpuStatOutput)
 }
 
+type GetGatewayStatsDeviceGatewayStatTunnel struct {
+	// Authentication algorithm
+	AuthAlgo string `pulumi:"authAlgo"`
+	// Encryption algorithm
+	EncryptAlgo string `pulumi:"encryptAlgo"`
+	// IKE version
+	IkeVersion string `pulumi:"ikeVersion"`
+	// IP Address
+	Ip string `pulumi:"ip"`
+	// Reason of why the tunnel is down
+	LastEvent string `pulumi:"lastEvent"`
+	// Indicates when the port was last flapped
+	LastFlapped float64 `pulumi:"lastFlapped"`
+	// Node0/node1
+	Node string `pulumi:"node"`
+	// Peer host
+	PeerHost string `pulumi:"peerHost"`
+	// Peer ip address
+	PeerIp string `pulumi:"peerIp"`
+	// enum: `primary`, `secondary`
+	Priority string `pulumi:"priority"`
+	// enum: `gre`, `ipsec`
+	Protocol string `pulumi:"protocol"`
+	// Amount of traffic received since connection
+	RxBytes int `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPkts int `pulumi:"rxPkts"`
+	// Mist Tunnel Name
+	TunnelName string `pulumi:"tunnelName"`
+	// Amount of traffic sent since connection
+	TxBytes int `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPkts int  `pulumi:"txPkts"`
+	Up     bool `pulumi:"up"`
+	// Duration from first (or last) SA was established
+	Uptime int `pulumi:"uptime"`
+	// WAN interface name
+	WanName string `pulumi:"wanName"`
+}
+
+// GetGatewayStatsDeviceGatewayStatTunnelInput is an input type that accepts GetGatewayStatsDeviceGatewayStatTunnelArgs and GetGatewayStatsDeviceGatewayStatTunnelOutput values.
+// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatTunnelInput` via:
+//
+//	GetGatewayStatsDeviceGatewayStatTunnelArgs{...}
+type GetGatewayStatsDeviceGatewayStatTunnelInput interface {
+	pulumi.Input
+
+	ToGetGatewayStatsDeviceGatewayStatTunnelOutput() GetGatewayStatsDeviceGatewayStatTunnelOutput
+	ToGetGatewayStatsDeviceGatewayStatTunnelOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatTunnelOutput
+}
+
+type GetGatewayStatsDeviceGatewayStatTunnelArgs struct {
+	// Authentication algorithm
+	AuthAlgo pulumi.StringInput `pulumi:"authAlgo"`
+	// Encryption algorithm
+	EncryptAlgo pulumi.StringInput `pulumi:"encryptAlgo"`
+	// IKE version
+	IkeVersion pulumi.StringInput `pulumi:"ikeVersion"`
+	// IP Address
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// Reason of why the tunnel is down
+	LastEvent pulumi.StringInput `pulumi:"lastEvent"`
+	// Indicates when the port was last flapped
+	LastFlapped pulumi.Float64Input `pulumi:"lastFlapped"`
+	// Node0/node1
+	Node pulumi.StringInput `pulumi:"node"`
+	// Peer host
+	PeerHost pulumi.StringInput `pulumi:"peerHost"`
+	// Peer ip address
+	PeerIp pulumi.StringInput `pulumi:"peerIp"`
+	// enum: `primary`, `secondary`
+	Priority pulumi.StringInput `pulumi:"priority"`
+	// enum: `gre`, `ipsec`
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Amount of traffic received since connection
+	RxBytes pulumi.IntInput `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPkts pulumi.IntInput `pulumi:"rxPkts"`
+	// Mist Tunnel Name
+	TunnelName pulumi.StringInput `pulumi:"tunnelName"`
+	// Amount of traffic sent since connection
+	TxBytes pulumi.IntInput `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPkts pulumi.IntInput  `pulumi:"txPkts"`
+	Up     pulumi.BoolInput `pulumi:"up"`
+	// Duration from first (or last) SA was established
+	Uptime pulumi.IntInput `pulumi:"uptime"`
+	// WAN interface name
+	WanName pulumi.StringInput `pulumi:"wanName"`
+}
+
+func (GetGatewayStatsDeviceGatewayStatTunnelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatTunnel)(nil)).Elem()
+}
+
+func (i GetGatewayStatsDeviceGatewayStatTunnelArgs) ToGetGatewayStatsDeviceGatewayStatTunnelOutput() GetGatewayStatsDeviceGatewayStatTunnelOutput {
+	return i.ToGetGatewayStatsDeviceGatewayStatTunnelOutputWithContext(context.Background())
+}
+
+func (i GetGatewayStatsDeviceGatewayStatTunnelArgs) ToGetGatewayStatsDeviceGatewayStatTunnelOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatTunnelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatTunnelOutput)
+}
+
+// GetGatewayStatsDeviceGatewayStatTunnelArrayInput is an input type that accepts GetGatewayStatsDeviceGatewayStatTunnelArray and GetGatewayStatsDeviceGatewayStatTunnelArrayOutput values.
+// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatTunnelArrayInput` via:
+//
+//	GetGatewayStatsDeviceGatewayStatTunnelArray{ GetGatewayStatsDeviceGatewayStatTunnelArgs{...} }
+type GetGatewayStatsDeviceGatewayStatTunnelArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayStatsDeviceGatewayStatTunnelArrayOutput() GetGatewayStatsDeviceGatewayStatTunnelArrayOutput
+	ToGetGatewayStatsDeviceGatewayStatTunnelArrayOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatTunnelArrayOutput
+}
+
+type GetGatewayStatsDeviceGatewayStatTunnelArray []GetGatewayStatsDeviceGatewayStatTunnelInput
+
+func (GetGatewayStatsDeviceGatewayStatTunnelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatTunnel)(nil)).Elem()
+}
+
+func (i GetGatewayStatsDeviceGatewayStatTunnelArray) ToGetGatewayStatsDeviceGatewayStatTunnelArrayOutput() GetGatewayStatsDeviceGatewayStatTunnelArrayOutput {
+	return i.ToGetGatewayStatsDeviceGatewayStatTunnelArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayStatsDeviceGatewayStatTunnelArray) ToGetGatewayStatsDeviceGatewayStatTunnelArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatTunnelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatTunnelArrayOutput)
+}
+
+type GetGatewayStatsDeviceGatewayStatTunnelOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayStatsDeviceGatewayStatTunnelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatTunnel)(nil)).Elem()
+}
+
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) ToGetGatewayStatsDeviceGatewayStatTunnelOutput() GetGatewayStatsDeviceGatewayStatTunnelOutput {
+	return o
+}
+
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) ToGetGatewayStatsDeviceGatewayStatTunnelOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatTunnelOutput {
+	return o
+}
+
+// Authentication algorithm
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) AuthAlgo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) string { return v.AuthAlgo }).(pulumi.StringOutput)
+}
+
+// Encryption algorithm
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) EncryptAlgo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) string { return v.EncryptAlgo }).(pulumi.StringOutput)
+}
+
+// IKE version
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) IkeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) string { return v.IkeVersion }).(pulumi.StringOutput)
+}
+
+// IP Address
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// Reason of why the tunnel is down
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) LastEvent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) string { return v.LastEvent }).(pulumi.StringOutput)
+}
+
+// Indicates when the port was last flapped
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) LastFlapped() pulumi.Float64Output {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) float64 { return v.LastFlapped }).(pulumi.Float64Output)
+}
+
+// Node0/node1
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) Node() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) string { return v.Node }).(pulumi.StringOutput)
+}
+
+// Peer host
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) PeerHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) string { return v.PeerHost }).(pulumi.StringOutput)
+}
+
+// Peer ip address
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) PeerIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) string { return v.PeerIp }).(pulumi.StringOutput)
+}
+
+// enum: `primary`, `secondary`
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) string { return v.Priority }).(pulumi.StringOutput)
+}
+
+// enum: `gre`, `ipsec`
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Amount of traffic received since connection
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) RxBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) int { return v.RxBytes }).(pulumi.IntOutput)
+}
+
+// Amount of packets received since connection
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) RxPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) int { return v.RxPkts }).(pulumi.IntOutput)
+}
+
+// Mist Tunnel Name
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) TunnelName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) string { return v.TunnelName }).(pulumi.StringOutput)
+}
+
+// Amount of traffic sent since connection
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) TxBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) int { return v.TxBytes }).(pulumi.IntOutput)
+}
+
+// Amount of packets sent since connection
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) TxPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) int { return v.TxPkts }).(pulumi.IntOutput)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) Up() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) bool { return v.Up }).(pulumi.BoolOutput)
+}
+
+// Duration from first (or last) SA was established
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) Uptime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) int { return v.Uptime }).(pulumi.IntOutput)
+}
+
+// WAN interface name
+func (o GetGatewayStatsDeviceGatewayStatTunnelOutput) WanName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatTunnel) string { return v.WanName }).(pulumi.StringOutput)
+}
+
+type GetGatewayStatsDeviceGatewayStatTunnelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayStatsDeviceGatewayStatTunnelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatTunnel)(nil)).Elem()
+}
+
+func (o GetGatewayStatsDeviceGatewayStatTunnelArrayOutput) ToGetGatewayStatsDeviceGatewayStatTunnelArrayOutput() GetGatewayStatsDeviceGatewayStatTunnelArrayOutput {
+	return o
+}
+
+func (o GetGatewayStatsDeviceGatewayStatTunnelArrayOutput) ToGetGatewayStatsDeviceGatewayStatTunnelArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatTunnelArrayOutput {
+	return o
+}
+
+func (o GetGatewayStatsDeviceGatewayStatTunnelArrayOutput) Index(i pulumi.IntInput) GetGatewayStatsDeviceGatewayStatTunnelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayStatsDeviceGatewayStatTunnel {
+		return vs[0].([]GetGatewayStatsDeviceGatewayStatTunnel)[vs[1].(int)]
+	}).(GetGatewayStatsDeviceGatewayStatTunnelOutput)
+}
+
+type GetGatewayStatsDeviceGatewayStatVpnPeer struct {
+	// Redundancy status of the associated interface
+	IsActive bool `pulumi:"isActive"`
+	// Last seen timestamp
+	LastSeen float64 `pulumi:"lastSeen"`
+	Latency  float64 `pulumi:"latency"`
+	Mos      float64 `pulumi:"mos"`
+	Mtu      int     `pulumi:"mtu"`
+	// Peer router mac address
+	PeerMac string `pulumi:"peerMac"`
+	// Peer router device interface
+	PeerPortId     string `pulumi:"peerPortId"`
+	PeerRouterName string `pulumi:"peerRouterName"`
+	PeerSiteId     string `pulumi:"peerSiteId"`
+	// Router device interface
+	PortId     string `pulumi:"portId"`
+	RouterName string `pulumi:"routerName"`
+	// `ipsec`for SRX, `svr` for 128T
+	Type   string `pulumi:"type"`
+	Up     bool   `pulumi:"up"`
+	Uptime int    `pulumi:"uptime"`
+}
+
+// GetGatewayStatsDeviceGatewayStatVpnPeerInput is an input type that accepts GetGatewayStatsDeviceGatewayStatVpnPeerArgs and GetGatewayStatsDeviceGatewayStatVpnPeerOutput values.
+// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatVpnPeerInput` via:
+//
+//	GetGatewayStatsDeviceGatewayStatVpnPeerArgs{...}
+type GetGatewayStatsDeviceGatewayStatVpnPeerInput interface {
+	pulumi.Input
+
+	ToGetGatewayStatsDeviceGatewayStatVpnPeerOutput() GetGatewayStatsDeviceGatewayStatVpnPeerOutput
+	ToGetGatewayStatsDeviceGatewayStatVpnPeerOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatVpnPeerOutput
+}
+
+type GetGatewayStatsDeviceGatewayStatVpnPeerArgs struct {
+	// Redundancy status of the associated interface
+	IsActive pulumi.BoolInput `pulumi:"isActive"`
+	// Last seen timestamp
+	LastSeen pulumi.Float64Input `pulumi:"lastSeen"`
+	Latency  pulumi.Float64Input `pulumi:"latency"`
+	Mos      pulumi.Float64Input `pulumi:"mos"`
+	Mtu      pulumi.IntInput     `pulumi:"mtu"`
+	// Peer router mac address
+	PeerMac pulumi.StringInput `pulumi:"peerMac"`
+	// Peer router device interface
+	PeerPortId     pulumi.StringInput `pulumi:"peerPortId"`
+	PeerRouterName pulumi.StringInput `pulumi:"peerRouterName"`
+	PeerSiteId     pulumi.StringInput `pulumi:"peerSiteId"`
+	// Router device interface
+	PortId     pulumi.StringInput `pulumi:"portId"`
+	RouterName pulumi.StringInput `pulumi:"routerName"`
+	// `ipsec`for SRX, `svr` for 128T
+	Type   pulumi.StringInput `pulumi:"type"`
+	Up     pulumi.BoolInput   `pulumi:"up"`
+	Uptime pulumi.IntInput    `pulumi:"uptime"`
+}
+
+func (GetGatewayStatsDeviceGatewayStatVpnPeerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatVpnPeer)(nil)).Elem()
+}
+
+func (i GetGatewayStatsDeviceGatewayStatVpnPeerArgs) ToGetGatewayStatsDeviceGatewayStatVpnPeerOutput() GetGatewayStatsDeviceGatewayStatVpnPeerOutput {
+	return i.ToGetGatewayStatsDeviceGatewayStatVpnPeerOutputWithContext(context.Background())
+}
+
+func (i GetGatewayStatsDeviceGatewayStatVpnPeerArgs) ToGetGatewayStatsDeviceGatewayStatVpnPeerOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatVpnPeerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatVpnPeerOutput)
+}
+
+// GetGatewayStatsDeviceGatewayStatVpnPeerArrayInput is an input type that accepts GetGatewayStatsDeviceGatewayStatVpnPeerArray and GetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput values.
+// You can construct a concrete instance of `GetGatewayStatsDeviceGatewayStatVpnPeerArrayInput` via:
+//
+//	GetGatewayStatsDeviceGatewayStatVpnPeerArray{ GetGatewayStatsDeviceGatewayStatVpnPeerArgs{...} }
+type GetGatewayStatsDeviceGatewayStatVpnPeerArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput() GetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput
+	ToGetGatewayStatsDeviceGatewayStatVpnPeerArrayOutputWithContext(context.Context) GetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput
+}
+
+type GetGatewayStatsDeviceGatewayStatVpnPeerArray []GetGatewayStatsDeviceGatewayStatVpnPeerInput
+
+func (GetGatewayStatsDeviceGatewayStatVpnPeerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatVpnPeer)(nil)).Elem()
+}
+
+func (i GetGatewayStatsDeviceGatewayStatVpnPeerArray) ToGetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput() GetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput {
+	return i.ToGetGatewayStatsDeviceGatewayStatVpnPeerArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayStatsDeviceGatewayStatVpnPeerArray) ToGetGatewayStatsDeviceGatewayStatVpnPeerArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput)
+}
+
+type GetGatewayStatsDeviceGatewayStatVpnPeerOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayStatsDeviceGatewayStatVpnPeerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatVpnPeer)(nil)).Elem()
+}
+
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerOutput) ToGetGatewayStatsDeviceGatewayStatVpnPeerOutput() GetGatewayStatsDeviceGatewayStatVpnPeerOutput {
+	return o
+}
+
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerOutput) ToGetGatewayStatsDeviceGatewayStatVpnPeerOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatVpnPeerOutput {
+	return o
+}
+
+// Redundancy status of the associated interface
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerOutput) IsActive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatVpnPeer) bool { return v.IsActive }).(pulumi.BoolOutput)
+}
+
+// Last seen timestamp
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerOutput) LastSeen() pulumi.Float64Output {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatVpnPeer) float64 { return v.LastSeen }).(pulumi.Float64Output)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerOutput) Latency() pulumi.Float64Output {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatVpnPeer) float64 { return v.Latency }).(pulumi.Float64Output)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerOutput) Mos() pulumi.Float64Output {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatVpnPeer) float64 { return v.Mos }).(pulumi.Float64Output)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerOutput) Mtu() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatVpnPeer) int { return v.Mtu }).(pulumi.IntOutput)
+}
+
+// Peer router mac address
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerOutput) PeerMac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatVpnPeer) string { return v.PeerMac }).(pulumi.StringOutput)
+}
+
+// Peer router device interface
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerOutput) PeerPortId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatVpnPeer) string { return v.PeerPortId }).(pulumi.StringOutput)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerOutput) PeerRouterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatVpnPeer) string { return v.PeerRouterName }).(pulumi.StringOutput)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerOutput) PeerSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatVpnPeer) string { return v.PeerSiteId }).(pulumi.StringOutput)
+}
+
+// Router device interface
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerOutput) PortId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatVpnPeer) string { return v.PortId }).(pulumi.StringOutput)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerOutput) RouterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatVpnPeer) string { return v.RouterName }).(pulumi.StringOutput)
+}
+
+// `ipsec`for SRX, `svr` for 128T
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatVpnPeer) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerOutput) Up() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatVpnPeer) bool { return v.Up }).(pulumi.BoolOutput)
+}
+
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerOutput) Uptime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayStatsDeviceGatewayStatVpnPeer) int { return v.Uptime }).(pulumi.IntOutput)
+}
+
+type GetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayStatsDeviceGatewayStatVpnPeer)(nil)).Elem()
+}
+
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput) ToGetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput() GetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput {
+	return o
+}
+
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput) ToGetGatewayStatsDeviceGatewayStatVpnPeerArrayOutputWithContext(ctx context.Context) GetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput {
+	return o
+}
+
+func (o GetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput) Index(i pulumi.IntInput) GetGatewayStatsDeviceGatewayStatVpnPeerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayStatsDeviceGatewayStatVpnPeer {
+		return vs[0].([]GetGatewayStatsDeviceGatewayStatVpnPeer)[vs[1].(int)]
+	}).(GetGatewayStatsDeviceGatewayStatVpnPeerOutput)
+}
+
 type GetSwitchStatsDeviceSwitchStat struct {
-	ApRedundancy    GetSwitchStatsDeviceSwitchStatApRedundancy  `pulumi:"apRedundancy"`
-	ArpTableStats   GetSwitchStatsDeviceSwitchStatArpTableStats `pulumi:"arpTableStats"`
-	CertExpiry      int                                         `pulumi:"certExpiry"`
-	Clients         []GetSwitchStatsDeviceSwitchStatClient      `pulumi:"clients"`
-	ClientsStats    GetSwitchStatsDeviceSwitchStatClientsStats  `pulumi:"clientsStats"`
-	ConfigStatus    string                                      `pulumi:"configStatus"`
-	CpuStat         GetSwitchStatsDeviceSwitchStatCpuStat       `pulumi:"cpuStat"`
-	CreatedTime     int                                         `pulumi:"createdTime"`
-	DeviceprofileId string                                      `pulumi:"deviceprofileId"`
+	ApRedundancy  GetSwitchStatsDeviceSwitchStatApRedundancy  `pulumi:"apRedundancy"`
+	ArpTableStats GetSwitchStatsDeviceSwitchStatArpTableStats `pulumi:"arpTableStats"`
+	CertExpiry    int                                         `pulumi:"certExpiry"`
+	Clients       []GetSwitchStatsDeviceSwitchStatClient      `pulumi:"clients"`
+	ClientsStats  GetSwitchStatsDeviceSwitchStatClientsStats  `pulumi:"clientsStats"`
+	ConfigStatus  string                                      `pulumi:"configStatus"`
+	CpuStat       GetSwitchStatsDeviceSwitchStatCpuStat       `pulumi:"cpuStat"`
+	// When the object has been created, in epoch
+	CreatedTime     float64 `pulumi:"createdTime"`
+	DeviceprofileId string  `pulumi:"deviceprofileId"`
 	// Property key is the network name
 	DhcpdStat           map[string]GetSwitchStatsDeviceSwitchStatDhcpdStat `pulumi:"dhcpdStat"`
 	EvpntopoId          string                                             `pulumi:"evpntopoId"`
 	FwVersionsOutofsync bool                                               `pulumi:"fwVersionsOutofsync"`
 	Fwupdate            GetSwitchStatsDeviceSwitchStatFwupdate             `pulumi:"fwupdate"`
-	// whether the switch supports packet capture
+	// Whether the switch supports packet capture
 	HasPcap bool `pulumi:"hasPcap"`
-	// hostname reported by the device
+	// Hostname reported by the device
 	Hostname string `pulumi:"hostname"`
-	// device hardware revision number
+	// Device hardware revision number
 	HwRev string `pulumi:"hwRev"`
-	Id    string `pulumi:"id"`
+	// Unique ID of the object instance in the Mist Organization
+	Id string `pulumi:"id"`
 	// Property key is the interface name
-	IfStat   map[string]GetSwitchStatsDeviceSwitchStatIfStat `pulumi:"ifStat"`
-	Ip       string                                          `pulumi:"ip"`
-	IpStat   GetSwitchStatsDeviceSwitchStatIpStat            `pulumi:"ipStat"`
-	LastSeen float64                                         `pulumi:"lastSeen"`
-	// last trouble code of switch
+	IfStat map[string]GetSwitchStatsDeviceSwitchStatIfStat `pulumi:"ifStat"`
+	Ip     string                                          `pulumi:"ip"`
+	IpStat GetSwitchStatsDeviceSwitchStatIpStat            `pulumi:"ipStat"`
+	// Last seen timestamp
+	LastSeen float64 `pulumi:"lastSeen"`
+	// Last trouble code of switch
 	LastTrouble   GetSwitchStatsDeviceSwitchStatLastTrouble   `pulumi:"lastTrouble"`
 	Mac           string                                      `pulumi:"mac"`
 	MacTableStats GetSwitchStatsDeviceSwitchStatMacTableStats `pulumi:"macTableStats"`
 	MapId         string                                      `pulumi:"mapId"`
-	// memory usage stat (for virtual chassis, memory usage of master RE)
-	MemoryStat   GetSwitchStatsDeviceSwitchStatMemoryStat   `pulumi:"memoryStat"`
-	Model        string                                     `pulumi:"model"`
-	ModifiedTime int                                        `pulumi:"modifiedTime"`
+	// Memory usage stat (for virtual chassis, memory usage of master RE)
+	MemoryStat GetSwitchStatsDeviceSwitchStatMemoryStat `pulumi:"memoryStat"`
+	Model      string                                   `pulumi:"model"`
+	// When the object has been modified for the last time, in epoch
+	ModifiedTime float64                                    `pulumi:"modifiedTime"`
 	ModuleStats  []GetSwitchStatsDeviceSwitchStatModuleStat `pulumi:"moduleStats"`
-	// device name if configured
+	// Device name if configured
 	Name              string                                               `pulumi:"name"`
 	OrgId             string                                               `pulumi:"orgId"`
+	Ports             []GetSwitchStatsDeviceSwitchStatPort                 `pulumi:"ports"`
 	RouteSummaryStats GetSwitchStatsDeviceSwitchStatRouteSummaryStats      `pulumi:"routeSummaryStats"`
 	Serial            string                                               `pulumi:"serial"`
 	ServiceStat       map[string]GetSwitchStatsDeviceSwitchStatServiceStat `pulumi:"serviceStat"`
@@ -36165,45 +37419,50 @@ type GetSwitchStatsDeviceSwitchStatInput interface {
 }
 
 type GetSwitchStatsDeviceSwitchStatArgs struct {
-	ApRedundancy    GetSwitchStatsDeviceSwitchStatApRedundancyInput  `pulumi:"apRedundancy"`
-	ArpTableStats   GetSwitchStatsDeviceSwitchStatArpTableStatsInput `pulumi:"arpTableStats"`
-	CertExpiry      pulumi.IntInput                                  `pulumi:"certExpiry"`
-	Clients         GetSwitchStatsDeviceSwitchStatClientArrayInput   `pulumi:"clients"`
-	ClientsStats    GetSwitchStatsDeviceSwitchStatClientsStatsInput  `pulumi:"clientsStats"`
-	ConfigStatus    pulumi.StringInput                               `pulumi:"configStatus"`
-	CpuStat         GetSwitchStatsDeviceSwitchStatCpuStatInput       `pulumi:"cpuStat"`
-	CreatedTime     pulumi.IntInput                                  `pulumi:"createdTime"`
-	DeviceprofileId pulumi.StringInput                               `pulumi:"deviceprofileId"`
+	ApRedundancy  GetSwitchStatsDeviceSwitchStatApRedundancyInput  `pulumi:"apRedundancy"`
+	ArpTableStats GetSwitchStatsDeviceSwitchStatArpTableStatsInput `pulumi:"arpTableStats"`
+	CertExpiry    pulumi.IntInput                                  `pulumi:"certExpiry"`
+	Clients       GetSwitchStatsDeviceSwitchStatClientArrayInput   `pulumi:"clients"`
+	ClientsStats  GetSwitchStatsDeviceSwitchStatClientsStatsInput  `pulumi:"clientsStats"`
+	ConfigStatus  pulumi.StringInput                               `pulumi:"configStatus"`
+	CpuStat       GetSwitchStatsDeviceSwitchStatCpuStatInput       `pulumi:"cpuStat"`
+	// When the object has been created, in epoch
+	CreatedTime     pulumi.Float64Input `pulumi:"createdTime"`
+	DeviceprofileId pulumi.StringInput  `pulumi:"deviceprofileId"`
 	// Property key is the network name
 	DhcpdStat           GetSwitchStatsDeviceSwitchStatDhcpdStatMapInput `pulumi:"dhcpdStat"`
 	EvpntopoId          pulumi.StringInput                              `pulumi:"evpntopoId"`
 	FwVersionsOutofsync pulumi.BoolInput                                `pulumi:"fwVersionsOutofsync"`
 	Fwupdate            GetSwitchStatsDeviceSwitchStatFwupdateInput     `pulumi:"fwupdate"`
-	// whether the switch supports packet capture
+	// Whether the switch supports packet capture
 	HasPcap pulumi.BoolInput `pulumi:"hasPcap"`
-	// hostname reported by the device
+	// Hostname reported by the device
 	Hostname pulumi.StringInput `pulumi:"hostname"`
-	// device hardware revision number
+	// Device hardware revision number
 	HwRev pulumi.StringInput `pulumi:"hwRev"`
-	Id    pulumi.StringInput `pulumi:"id"`
+	// Unique ID of the object instance in the Mist Organization
+	Id pulumi.StringInput `pulumi:"id"`
 	// Property key is the interface name
-	IfStat   GetSwitchStatsDeviceSwitchStatIfStatMapInput `pulumi:"ifStat"`
-	Ip       pulumi.StringInput                           `pulumi:"ip"`
-	IpStat   GetSwitchStatsDeviceSwitchStatIpStatInput    `pulumi:"ipStat"`
-	LastSeen pulumi.Float64Input                          `pulumi:"lastSeen"`
-	// last trouble code of switch
+	IfStat GetSwitchStatsDeviceSwitchStatIfStatMapInput `pulumi:"ifStat"`
+	Ip     pulumi.StringInput                           `pulumi:"ip"`
+	IpStat GetSwitchStatsDeviceSwitchStatIpStatInput    `pulumi:"ipStat"`
+	// Last seen timestamp
+	LastSeen pulumi.Float64Input `pulumi:"lastSeen"`
+	// Last trouble code of switch
 	LastTrouble   GetSwitchStatsDeviceSwitchStatLastTroubleInput   `pulumi:"lastTrouble"`
 	Mac           pulumi.StringInput                               `pulumi:"mac"`
 	MacTableStats GetSwitchStatsDeviceSwitchStatMacTableStatsInput `pulumi:"macTableStats"`
 	MapId         pulumi.StringInput                               `pulumi:"mapId"`
-	// memory usage stat (for virtual chassis, memory usage of master RE)
-	MemoryStat   GetSwitchStatsDeviceSwitchStatMemoryStatInput      `pulumi:"memoryStat"`
-	Model        pulumi.StringInput                                 `pulumi:"model"`
-	ModifiedTime pulumi.IntInput                                    `pulumi:"modifiedTime"`
+	// Memory usage stat (for virtual chassis, memory usage of master RE)
+	MemoryStat GetSwitchStatsDeviceSwitchStatMemoryStatInput `pulumi:"memoryStat"`
+	Model      pulumi.StringInput                            `pulumi:"model"`
+	// When the object has been modified for the last time, in epoch
+	ModifiedTime pulumi.Float64Input                                `pulumi:"modifiedTime"`
 	ModuleStats  GetSwitchStatsDeviceSwitchStatModuleStatArrayInput `pulumi:"moduleStats"`
-	// device name if configured
+	// Device name if configured
 	Name              pulumi.StringInput                                   `pulumi:"name"`
 	OrgId             pulumi.StringInput                                   `pulumi:"orgId"`
+	Ports             GetSwitchStatsDeviceSwitchStatPortArrayInput         `pulumi:"ports"`
 	RouteSummaryStats GetSwitchStatsDeviceSwitchStatRouteSummaryStatsInput `pulumi:"routeSummaryStats"`
 	Serial            pulumi.StringInput                                   `pulumi:"serial"`
 	ServiceStat       GetSwitchStatsDeviceSwitchStatServiceStatMapInput    `pulumi:"serviceStat"`
@@ -36300,8 +37559,9 @@ func (o GetSwitchStatsDeviceSwitchStatOutput) CpuStat() GetSwitchStatsDeviceSwit
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) GetSwitchStatsDeviceSwitchStatCpuStat { return v.CpuStat }).(GetSwitchStatsDeviceSwitchStatCpuStatOutput)
 }
 
-func (o GetSwitchStatsDeviceSwitchStatOutput) CreatedTime() pulumi.IntOutput {
-	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) int { return v.CreatedTime }).(pulumi.IntOutput)
+// When the object has been created, in epoch
+func (o GetSwitchStatsDeviceSwitchStatOutput) CreatedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) float64 { return v.CreatedTime }).(pulumi.Float64Output)
 }
 
 func (o GetSwitchStatsDeviceSwitchStatOutput) DeviceprofileId() pulumi.StringOutput {
@@ -36327,21 +37587,22 @@ func (o GetSwitchStatsDeviceSwitchStatOutput) Fwupdate() GetSwitchStatsDeviceSwi
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) GetSwitchStatsDeviceSwitchStatFwupdate { return v.Fwupdate }).(GetSwitchStatsDeviceSwitchStatFwupdateOutput)
 }
 
-// whether the switch supports packet capture
+// Whether the switch supports packet capture
 func (o GetSwitchStatsDeviceSwitchStatOutput) HasPcap() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) bool { return v.HasPcap }).(pulumi.BoolOutput)
 }
 
-// hostname reported by the device
+// Hostname reported by the device
 func (o GetSwitchStatsDeviceSwitchStatOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// device hardware revision number
+// Device hardware revision number
 func (o GetSwitchStatsDeviceSwitchStatOutput) HwRev() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) string { return v.HwRev }).(pulumi.StringOutput)
 }
 
+// Unique ID of the object instance in the Mist Organization
 func (o GetSwitchStatsDeviceSwitchStatOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -36361,11 +37622,12 @@ func (o GetSwitchStatsDeviceSwitchStatOutput) IpStat() GetSwitchStatsDeviceSwitc
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) GetSwitchStatsDeviceSwitchStatIpStat { return v.IpStat }).(GetSwitchStatsDeviceSwitchStatIpStatOutput)
 }
 
+// Last seen timestamp
 func (o GetSwitchStatsDeviceSwitchStatOutput) LastSeen() pulumi.Float64Output {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) float64 { return v.LastSeen }).(pulumi.Float64Output)
 }
 
-// last trouble code of switch
+// Last trouble code of switch
 func (o GetSwitchStatsDeviceSwitchStatOutput) LastTrouble() GetSwitchStatsDeviceSwitchStatLastTroubleOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) GetSwitchStatsDeviceSwitchStatLastTrouble { return v.LastTrouble }).(GetSwitchStatsDeviceSwitchStatLastTroubleOutput)
 }
@@ -36384,7 +37646,7 @@ func (o GetSwitchStatsDeviceSwitchStatOutput) MapId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) string { return v.MapId }).(pulumi.StringOutput)
 }
 
-// memory usage stat (for virtual chassis, memory usage of master RE)
+// Memory usage stat (for virtual chassis, memory usage of master RE)
 func (o GetSwitchStatsDeviceSwitchStatOutput) MemoryStat() GetSwitchStatsDeviceSwitchStatMemoryStatOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) GetSwitchStatsDeviceSwitchStatMemoryStat { return v.MemoryStat }).(GetSwitchStatsDeviceSwitchStatMemoryStatOutput)
 }
@@ -36393,8 +37655,9 @@ func (o GetSwitchStatsDeviceSwitchStatOutput) Model() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) string { return v.Model }).(pulumi.StringOutput)
 }
 
-func (o GetSwitchStatsDeviceSwitchStatOutput) ModifiedTime() pulumi.IntOutput {
-	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) int { return v.ModifiedTime }).(pulumi.IntOutput)
+// When the object has been modified for the last time, in epoch
+func (o GetSwitchStatsDeviceSwitchStatOutput) ModifiedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
 }
 
 func (o GetSwitchStatsDeviceSwitchStatOutput) ModuleStats() GetSwitchStatsDeviceSwitchStatModuleStatArrayOutput {
@@ -36403,13 +37666,17 @@ func (o GetSwitchStatsDeviceSwitchStatOutput) ModuleStats() GetSwitchStatsDevice
 	}).(GetSwitchStatsDeviceSwitchStatModuleStatArrayOutput)
 }
 
-// device name if configured
+// Device name if configured
 func (o GetSwitchStatsDeviceSwitchStatOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o GetSwitchStatsDeviceSwitchStatOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+func (o GetSwitchStatsDeviceSwitchStatOutput) Ports() GetSwitchStatsDeviceSwitchStatPortArrayOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStat) []GetSwitchStatsDeviceSwitchStatPort { return v.Ports }).(GetSwitchStatsDeviceSwitchStatPortArrayOutput)
 }
 
 func (o GetSwitchStatsDeviceSwitchStatOutput) RouteSummaryStats() GetSwitchStatsDeviceSwitchStatRouteSummaryStatsOutput {
@@ -36473,7 +37740,7 @@ func (o GetSwitchStatsDeviceSwitchStatArrayOutput) Index(i pulumi.IntInput) GetS
 }
 
 type GetSwitchStatsDeviceSwitchStatApRedundancy struct {
-	// for a VC / stacked switches.
+	// For a VC / stacked switches.
 	Modules                    map[string]GetSwitchStatsDeviceSwitchStatApRedundancyModules `pulumi:"modules"`
 	NumAps                     int                                                          `pulumi:"numAps"`
 	NumApsWithSwitchRedundancy int                                                          `pulumi:"numApsWithSwitchRedundancy"`
@@ -36491,7 +37758,7 @@ type GetSwitchStatsDeviceSwitchStatApRedundancyInput interface {
 }
 
 type GetSwitchStatsDeviceSwitchStatApRedundancyArgs struct {
-	// for a VC / stacked switches.
+	// For a VC / stacked switches.
 	Modules                    GetSwitchStatsDeviceSwitchStatApRedundancyModulesMapInput `pulumi:"modules"`
 	NumAps                     pulumi.IntInput                                           `pulumi:"numAps"`
 	NumApsWithSwitchRedundancy pulumi.IntInput                                           `pulumi:"numApsWithSwitchRedundancy"`
@@ -36523,7 +37790,7 @@ func (o GetSwitchStatsDeviceSwitchStatApRedundancyOutput) ToGetSwitchStatsDevice
 	return o
 }
 
-// for a VC / stacked switches.
+// For a VC / stacked switches.
 func (o GetSwitchStatsDeviceSwitchStatApRedundancyOutput) Modules() GetSwitchStatsDeviceSwitchStatApRedundancyModulesMapOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatApRedundancy) map[string]GetSwitchStatsDeviceSwitchStatApRedundancyModules {
 		return v.Modules
@@ -36920,7 +38187,7 @@ type GetSwitchStatsDeviceSwitchStatCpuStat struct {
 	LoadAvgs []float64 `pulumi:"loadAvgs"`
 	// Percentage of CPU time being used by system processes
 	System float64 `pulumi:"system"`
-	// Percentage of CPU time being used by user processe
+	// Percentage of CPU time being used by user processes
 	User float64 `pulumi:"user"`
 }
 
@@ -36944,7 +38211,7 @@ type GetSwitchStatsDeviceSwitchStatCpuStatArgs struct {
 	LoadAvgs pulumi.Float64ArrayInput `pulumi:"loadAvgs"`
 	// Percentage of CPU time being used by system processes
 	System pulumi.Float64Input `pulumi:"system"`
-	// Percentage of CPU time being used by user processe
+	// Percentage of CPU time being used by user processes
 	User pulumi.Float64Input `pulumi:"user"`
 }
 
@@ -36994,7 +38261,7 @@ func (o GetSwitchStatsDeviceSwitchStatCpuStatOutput) System() pulumi.Float64Outp
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatCpuStat) float64 { return v.System }).(pulumi.Float64Output)
 }
 
-// Percentage of CPU time being used by user processe
+// Percentage of CPU time being used by user processes
 func (o GetSwitchStatsDeviceSwitchStatCpuStatOutput) User() pulumi.Float64Output {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatCpuStat) float64 { return v.User }).(pulumi.Float64Output)
 }
@@ -37100,9 +38367,11 @@ func (o GetSwitchStatsDeviceSwitchStatDhcpdStatMapOutput) MapIndex(k pulumi.Stri
 }
 
 type GetSwitchStatsDeviceSwitchStatFwupdate struct {
-	Progress  int     `pulumi:"progress"`
-	Status    string  `pulumi:"status"`
-	StatusId  int     `pulumi:"statusId"`
+	Progress int `pulumi:"progress"`
+	// enum: `inprogress`, `failed`, `upgraded`
+	Status   string `pulumi:"status"`
+	StatusId int    `pulumi:"statusId"`
+	// Epoch (seconds)
 	Timestamp float64 `pulumi:"timestamp"`
 	WillRetry bool    `pulumi:"willRetry"`
 }
@@ -37119,9 +38388,11 @@ type GetSwitchStatsDeviceSwitchStatFwupdateInput interface {
 }
 
 type GetSwitchStatsDeviceSwitchStatFwupdateArgs struct {
-	Progress  pulumi.IntInput     `pulumi:"progress"`
-	Status    pulumi.StringInput  `pulumi:"status"`
-	StatusId  pulumi.IntInput     `pulumi:"statusId"`
+	Progress pulumi.IntInput `pulumi:"progress"`
+	// enum: `inprogress`, `failed`, `upgraded`
+	Status   pulumi.StringInput `pulumi:"status"`
+	StatusId pulumi.IntInput    `pulumi:"statusId"`
+	// Epoch (seconds)
 	Timestamp pulumi.Float64Input `pulumi:"timestamp"`
 	WillRetry pulumi.BoolInput    `pulumi:"willRetry"`
 }
@@ -37156,6 +38427,7 @@ func (o GetSwitchStatsDeviceSwitchStatFwupdateOutput) Progress() pulumi.IntOutpu
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatFwupdate) int { return v.Progress }).(pulumi.IntOutput)
 }
 
+// enum: `inprogress`, `failed`, `upgraded`
 func (o GetSwitchStatsDeviceSwitchStatFwupdateOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatFwupdate) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -37164,6 +38436,7 @@ func (o GetSwitchStatsDeviceSwitchStatFwupdateOutput) StatusId() pulumi.IntOutpu
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatFwupdate) int { return v.StatusId }).(pulumi.IntOutput)
 }
 
+// Epoch (seconds)
 func (o GetSwitchStatsDeviceSwitchStatFwupdateOutput) Timestamp() pulumi.Float64Output {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatFwupdate) float64 { return v.Timestamp }).(pulumi.Float64Output)
 }
@@ -37173,22 +38446,26 @@ func (o GetSwitchStatsDeviceSwitchStatFwupdateOutput) WillRetry() pulumi.BoolOut
 }
 
 type GetSwitchStatsDeviceSwitchStatIfStat struct {
-	AddressMode     string                                        `pulumi:"addressMode"`
-	Ips             []string                                      `pulumi:"ips"`
-	NatAddresses    []string                                      `pulumi:"natAddresses"`
-	NetworkName     string                                        `pulumi:"networkName"`
-	PortId          string                                        `pulumi:"portId"`
-	PortUsage       string                                        `pulumi:"portUsage"`
-	RedundancyState string                                        `pulumi:"redundancyState"`
-	RxBytes         int                                           `pulumi:"rxBytes"`
-	RxPkts          int                                           `pulumi:"rxPkts"`
-	ServpInfo       GetSwitchStatsDeviceSwitchStatIfStatServpInfo `pulumi:"servpInfo"`
-	TxBytes         int                                           `pulumi:"txBytes"`
-	TxPkts          int                                           `pulumi:"txPkts"`
-	Up              bool                                          `pulumi:"up"`
-	Vlan            int                                           `pulumi:"vlan"`
-	WanName         string                                        `pulumi:"wanName"`
-	WanType         string                                        `pulumi:"wanType"`
+	AddressMode     string   `pulumi:"addressMode"`
+	Ips             []string `pulumi:"ips"`
+	NatAddresses    []string `pulumi:"natAddresses"`
+	NetworkName     string   `pulumi:"networkName"`
+	PortId          string   `pulumi:"portId"`
+	PortUsage       string   `pulumi:"portUsage"`
+	RedundancyState string   `pulumi:"redundancyState"`
+	// Amount of traffic received since connection
+	RxBytes int `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPkts    int                                           `pulumi:"rxPkts"`
+	ServpInfo GetSwitchStatsDeviceSwitchStatIfStatServpInfo `pulumi:"servpInfo"`
+	// Amount of traffic sent since connection
+	TxBytes int `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPkts  int    `pulumi:"txPkts"`
+	Up      bool   `pulumi:"up"`
+	Vlan    int    `pulumi:"vlan"`
+	WanName string `pulumi:"wanName"`
+	WanType string `pulumi:"wanType"`
 }
 
 // GetSwitchStatsDeviceSwitchStatIfStatInput is an input type that accepts GetSwitchStatsDeviceSwitchStatIfStatArgs and GetSwitchStatsDeviceSwitchStatIfStatOutput values.
@@ -37203,22 +38480,26 @@ type GetSwitchStatsDeviceSwitchStatIfStatInput interface {
 }
 
 type GetSwitchStatsDeviceSwitchStatIfStatArgs struct {
-	AddressMode     pulumi.StringInput                                 `pulumi:"addressMode"`
-	Ips             pulumi.StringArrayInput                            `pulumi:"ips"`
-	NatAddresses    pulumi.StringArrayInput                            `pulumi:"natAddresses"`
-	NetworkName     pulumi.StringInput                                 `pulumi:"networkName"`
-	PortId          pulumi.StringInput                                 `pulumi:"portId"`
-	PortUsage       pulumi.StringInput                                 `pulumi:"portUsage"`
-	RedundancyState pulumi.StringInput                                 `pulumi:"redundancyState"`
-	RxBytes         pulumi.IntInput                                    `pulumi:"rxBytes"`
-	RxPkts          pulumi.IntInput                                    `pulumi:"rxPkts"`
-	ServpInfo       GetSwitchStatsDeviceSwitchStatIfStatServpInfoInput `pulumi:"servpInfo"`
-	TxBytes         pulumi.IntInput                                    `pulumi:"txBytes"`
-	TxPkts          pulumi.IntInput                                    `pulumi:"txPkts"`
-	Up              pulumi.BoolInput                                   `pulumi:"up"`
-	Vlan            pulumi.IntInput                                    `pulumi:"vlan"`
-	WanName         pulumi.StringInput                                 `pulumi:"wanName"`
-	WanType         pulumi.StringInput                                 `pulumi:"wanType"`
+	AddressMode     pulumi.StringInput      `pulumi:"addressMode"`
+	Ips             pulumi.StringArrayInput `pulumi:"ips"`
+	NatAddresses    pulumi.StringArrayInput `pulumi:"natAddresses"`
+	NetworkName     pulumi.StringInput      `pulumi:"networkName"`
+	PortId          pulumi.StringInput      `pulumi:"portId"`
+	PortUsage       pulumi.StringInput      `pulumi:"portUsage"`
+	RedundancyState pulumi.StringInput      `pulumi:"redundancyState"`
+	// Amount of traffic received since connection
+	RxBytes pulumi.IntInput `pulumi:"rxBytes"`
+	// Amount of packets received since connection
+	RxPkts    pulumi.IntInput                                    `pulumi:"rxPkts"`
+	ServpInfo GetSwitchStatsDeviceSwitchStatIfStatServpInfoInput `pulumi:"servpInfo"`
+	// Amount of traffic sent since connection
+	TxBytes pulumi.IntInput `pulumi:"txBytes"`
+	// Amount of packets sent since connection
+	TxPkts  pulumi.IntInput    `pulumi:"txPkts"`
+	Up      pulumi.BoolInput   `pulumi:"up"`
+	Vlan    pulumi.IntInput    `pulumi:"vlan"`
+	WanName pulumi.StringInput `pulumi:"wanName"`
+	WanType pulumi.StringInput `pulumi:"wanType"`
 }
 
 func (GetSwitchStatsDeviceSwitchStatIfStatArgs) ElementType() reflect.Type {
@@ -37300,10 +38581,12 @@ func (o GetSwitchStatsDeviceSwitchStatIfStatOutput) RedundancyState() pulumi.Str
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatIfStat) string { return v.RedundancyState }).(pulumi.StringOutput)
 }
 
+// Amount of traffic received since connection
 func (o GetSwitchStatsDeviceSwitchStatIfStatOutput) RxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatIfStat) int { return v.RxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets received since connection
 func (o GetSwitchStatsDeviceSwitchStatIfStatOutput) RxPkts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatIfStat) int { return v.RxPkts }).(pulumi.IntOutput)
 }
@@ -37314,10 +38597,12 @@ func (o GetSwitchStatsDeviceSwitchStatIfStatOutput) ServpInfo() GetSwitchStatsDe
 	}).(GetSwitchStatsDeviceSwitchStatIfStatServpInfoOutput)
 }
 
+// Amount of traffic sent since connection
 func (o GetSwitchStatsDeviceSwitchStatIfStatOutput) TxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatIfStat) int { return v.TxBytes }).(pulumi.IntOutput)
 }
 
+// Amount of packets sent since connection
 func (o GetSwitchStatsDeviceSwitchStatIfStatOutput) TxPkts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatIfStat) int { return v.TxPkts }).(pulumi.IntOutput)
 }
@@ -37547,9 +38832,10 @@ func (o GetSwitchStatsDeviceSwitchStatIpStatOutput) Netmask6() pulumi.StringOutp
 }
 
 type GetSwitchStatsDeviceSwitchStatLastTrouble struct {
-	// Code definitions list at /api/v1/consts/ap*led*status
-	Code      string `pulumi:"code"`
-	Timestamp int    `pulumi:"timestamp"`
+	// Code definitions list at List Ap Led Definition
+	Code string `pulumi:"code"`
+	// Epoch (seconds)
+	Timestamp float64 `pulumi:"timestamp"`
 }
 
 // GetSwitchStatsDeviceSwitchStatLastTroubleInput is an input type that accepts GetSwitchStatsDeviceSwitchStatLastTroubleArgs and GetSwitchStatsDeviceSwitchStatLastTroubleOutput values.
@@ -37564,9 +38850,10 @@ type GetSwitchStatsDeviceSwitchStatLastTroubleInput interface {
 }
 
 type GetSwitchStatsDeviceSwitchStatLastTroubleArgs struct {
-	// Code definitions list at /api/v1/consts/ap*led*status
-	Code      pulumi.StringInput `pulumi:"code"`
-	Timestamp pulumi.IntInput    `pulumi:"timestamp"`
+	// Code definitions list at List Ap Led Definition
+	Code pulumi.StringInput `pulumi:"code"`
+	// Epoch (seconds)
+	Timestamp pulumi.Float64Input `pulumi:"timestamp"`
 }
 
 func (GetSwitchStatsDeviceSwitchStatLastTroubleArgs) ElementType() reflect.Type {
@@ -37595,13 +38882,14 @@ func (o GetSwitchStatsDeviceSwitchStatLastTroubleOutput) ToGetSwitchStatsDeviceS
 	return o
 }
 
-// Code definitions list at /api/v1/consts/ap*led*status
+// Code definitions list at List Ap Led Definition
 func (o GetSwitchStatsDeviceSwitchStatLastTroubleOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatLastTrouble) string { return v.Code }).(pulumi.StringOutput)
 }
 
-func (o GetSwitchStatsDeviceSwitchStatLastTroubleOutput) Timestamp() pulumi.IntOutput {
-	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatLastTrouble) int { return v.Timestamp }).(pulumi.IntOutput)
+// Epoch (seconds)
+func (o GetSwitchStatsDeviceSwitchStatLastTroubleOutput) Timestamp() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatLastTrouble) float64 { return v.Timestamp }).(pulumi.Float64Output)
 }
 
 type GetSwitchStatsDeviceSwitchStatMacTableStats struct {
@@ -37709,16 +38997,19 @@ func (o GetSwitchStatsDeviceSwitchStatMemoryStatOutput) Usage() pulumi.Float64Ou
 }
 
 type GetSwitchStatsDeviceSwitchStatModuleStat struct {
-	BackupVersion string `pulumi:"backupVersion"`
-	BiosVersion   string `pulumi:"biosVersion"`
-	CpldVersion   string `pulumi:"cpldVersion"`
-	// used to report all error states the device node is running into.
-	// An error should always have `type` and `since` fields, and could have some other fields specific to that type.
-	Errors            []GetSwitchStatsDeviceSwitchStatModuleStatError       `pulumi:"errors"`
-	Fans              []GetSwitchStatsDeviceSwitchStatModuleStatFan         `pulumi:"fans"`
-	FpcIdx            int                                                   `pulumi:"fpcIdx"`
-	FpgaVersion       string                                                `pulumi:"fpgaVersion"`
+	BackupVersion string                                          `pulumi:"backupVersion"`
+	BiosVersion   string                                          `pulumi:"biosVersion"`
+	CpldVersion   string                                          `pulumi:"cpldVersion"`
+	CpuStat       GetSwitchStatsDeviceSwitchStatModuleStatCpuStat `pulumi:"cpuStat"`
+	// Used to report all error states the device node is running into. An error should always have `type` and `since` fields, and could have some other fields specific to that type.
+	Errors      []GetSwitchStatsDeviceSwitchStatModuleStatError `pulumi:"errors"`
+	Fans        []GetSwitchStatsDeviceSwitchStatModuleStatFan   `pulumi:"fans"`
+	FpcIdx      int                                             `pulumi:"fpcIdx"`
+	FpgaVersion string                                          `pulumi:"fpgaVersion"`
+	// Last seen timestamp
 	LastSeen          float64                                               `pulumi:"lastSeen"`
+	Locating          bool                                                  `pulumi:"locating"`
+	Mac               string                                                `pulumi:"mac"`
 	Model             string                                                `pulumi:"model"`
 	OpticsCpldVersion string                                                `pulumi:"opticsCpldVersion"`
 	PendingVersion    string                                                `pulumi:"pendingVersion"`
@@ -37733,11 +39024,12 @@ type GetSwitchStatsDeviceSwitchStatModuleStat struct {
 	Status            string                                                `pulumi:"status"`
 	Temperatures      []GetSwitchStatsDeviceSwitchStatModuleStatTemperature `pulumi:"temperatures"`
 	TmcFpgaVersion    string                                                `pulumi:"tmcFpgaVersion"`
+	Type              string                                                `pulumi:"type"`
 	UbootVersion      string                                                `pulumi:"ubootVersion"`
 	Uptime            int                                                   `pulumi:"uptime"`
 	VcLinks           []GetSwitchStatsDeviceSwitchStatModuleStatVcLink      `pulumi:"vcLinks"`
 	VcMode            string                                                `pulumi:"vcMode"`
-	// master / backup / linecard
+	// enum: `master`, `backup`, `linecard`
 	VcRole  string `pulumi:"vcRole"`
 	VcState string `pulumi:"vcState"`
 	Version string `pulumi:"version"`
@@ -37755,16 +39047,19 @@ type GetSwitchStatsDeviceSwitchStatModuleStatInput interface {
 }
 
 type GetSwitchStatsDeviceSwitchStatModuleStatArgs struct {
-	BackupVersion pulumi.StringInput `pulumi:"backupVersion"`
-	BiosVersion   pulumi.StringInput `pulumi:"biosVersion"`
-	CpldVersion   pulumi.StringInput `pulumi:"cpldVersion"`
-	// used to report all error states the device node is running into.
-	// An error should always have `type` and `since` fields, and could have some other fields specific to that type.
-	Errors            GetSwitchStatsDeviceSwitchStatModuleStatErrorArrayInput       `pulumi:"errors"`
-	Fans              GetSwitchStatsDeviceSwitchStatModuleStatFanArrayInput         `pulumi:"fans"`
-	FpcIdx            pulumi.IntInput                                               `pulumi:"fpcIdx"`
-	FpgaVersion       pulumi.StringInput                                            `pulumi:"fpgaVersion"`
+	BackupVersion pulumi.StringInput                                   `pulumi:"backupVersion"`
+	BiosVersion   pulumi.StringInput                                   `pulumi:"biosVersion"`
+	CpldVersion   pulumi.StringInput                                   `pulumi:"cpldVersion"`
+	CpuStat       GetSwitchStatsDeviceSwitchStatModuleStatCpuStatInput `pulumi:"cpuStat"`
+	// Used to report all error states the device node is running into. An error should always have `type` and `since` fields, and could have some other fields specific to that type.
+	Errors      GetSwitchStatsDeviceSwitchStatModuleStatErrorArrayInput `pulumi:"errors"`
+	Fans        GetSwitchStatsDeviceSwitchStatModuleStatFanArrayInput   `pulumi:"fans"`
+	FpcIdx      pulumi.IntInput                                         `pulumi:"fpcIdx"`
+	FpgaVersion pulumi.StringInput                                      `pulumi:"fpgaVersion"`
+	// Last seen timestamp
 	LastSeen          pulumi.Float64Input                                           `pulumi:"lastSeen"`
+	Locating          pulumi.BoolInput                                              `pulumi:"locating"`
+	Mac               pulumi.StringInput                                            `pulumi:"mac"`
 	Model             pulumi.StringInput                                            `pulumi:"model"`
 	OpticsCpldVersion pulumi.StringInput                                            `pulumi:"opticsCpldVersion"`
 	PendingVersion    pulumi.StringInput                                            `pulumi:"pendingVersion"`
@@ -37779,11 +39074,12 @@ type GetSwitchStatsDeviceSwitchStatModuleStatArgs struct {
 	Status            pulumi.StringInput                                            `pulumi:"status"`
 	Temperatures      GetSwitchStatsDeviceSwitchStatModuleStatTemperatureArrayInput `pulumi:"temperatures"`
 	TmcFpgaVersion    pulumi.StringInput                                            `pulumi:"tmcFpgaVersion"`
+	Type              pulumi.StringInput                                            `pulumi:"type"`
 	UbootVersion      pulumi.StringInput                                            `pulumi:"ubootVersion"`
 	Uptime            pulumi.IntInput                                               `pulumi:"uptime"`
 	VcLinks           GetSwitchStatsDeviceSwitchStatModuleStatVcLinkArrayInput      `pulumi:"vcLinks"`
 	VcMode            pulumi.StringInput                                            `pulumi:"vcMode"`
-	// master / backup / linecard
+	// enum: `master`, `backup`, `linecard`
 	VcRole  pulumi.StringInput `pulumi:"vcRole"`
 	VcState pulumi.StringInput `pulumi:"vcState"`
 	Version pulumi.StringInput `pulumi:"version"`
@@ -37852,8 +39148,13 @@ func (o GetSwitchStatsDeviceSwitchStatModuleStatOutput) CpldVersion() pulumi.Str
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatModuleStat) string { return v.CpldVersion }).(pulumi.StringOutput)
 }
 
-// used to report all error states the device node is running into.
-// An error should always have `type` and `since` fields, and could have some other fields specific to that type.
+func (o GetSwitchStatsDeviceSwitchStatModuleStatOutput) CpuStat() GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatModuleStat) GetSwitchStatsDeviceSwitchStatModuleStatCpuStat {
+		return v.CpuStat
+	}).(GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput)
+}
+
+// Used to report all error states the device node is running into. An error should always have `type` and `since` fields, and could have some other fields specific to that type.
 func (o GetSwitchStatsDeviceSwitchStatModuleStatOutput) Errors() GetSwitchStatsDeviceSwitchStatModuleStatErrorArrayOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatModuleStat) []GetSwitchStatsDeviceSwitchStatModuleStatError {
 		return v.Errors
@@ -37874,8 +39175,17 @@ func (o GetSwitchStatsDeviceSwitchStatModuleStatOutput) FpgaVersion() pulumi.Str
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatModuleStat) string { return v.FpgaVersion }).(pulumi.StringOutput)
 }
 
+// Last seen timestamp
 func (o GetSwitchStatsDeviceSwitchStatModuleStatOutput) LastSeen() pulumi.Float64Output {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatModuleStat) float64 { return v.LastSeen }).(pulumi.Float64Output)
+}
+
+func (o GetSwitchStatsDeviceSwitchStatModuleStatOutput) Locating() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatModuleStat) bool { return v.Locating }).(pulumi.BoolOutput)
+}
+
+func (o GetSwitchStatsDeviceSwitchStatModuleStatOutput) Mac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatModuleStat) string { return v.Mac }).(pulumi.StringOutput)
 }
 
 func (o GetSwitchStatsDeviceSwitchStatModuleStatOutput) Model() pulumi.StringOutput {
@@ -37942,6 +39252,10 @@ func (o GetSwitchStatsDeviceSwitchStatModuleStatOutput) TmcFpgaVersion() pulumi.
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatModuleStat) string { return v.TmcFpgaVersion }).(pulumi.StringOutput)
 }
 
+func (o GetSwitchStatsDeviceSwitchStatModuleStatOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatModuleStat) string { return v.Type }).(pulumi.StringOutput)
+}
+
 func (o GetSwitchStatsDeviceSwitchStatModuleStatOutput) UbootVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatModuleStat) string { return v.UbootVersion }).(pulumi.StringOutput)
 }
@@ -37960,7 +39274,7 @@ func (o GetSwitchStatsDeviceSwitchStatModuleStatOutput) VcMode() pulumi.StringOu
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatModuleStat) string { return v.VcMode }).(pulumi.StringOutput)
 }
 
-// master / backup / linecard
+// enum: `master`, `backup`, `linecard`
 func (o GetSwitchStatsDeviceSwitchStatModuleStatOutput) VcRole() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatModuleStat) string { return v.VcRole }).(pulumi.StringOutput)
 }
@@ -37991,6 +39305,94 @@ func (o GetSwitchStatsDeviceSwitchStatModuleStatArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSwitchStatsDeviceSwitchStatModuleStat {
 		return vs[0].([]GetSwitchStatsDeviceSwitchStatModuleStat)[vs[1].(int)]
 	}).(GetSwitchStatsDeviceSwitchStatModuleStatOutput)
+}
+
+type GetSwitchStatsDeviceSwitchStatModuleStatCpuStat struct {
+	// Percentage of CPU time that is idle
+	Idle float64 `pulumi:"idle"`
+	// Percentage of CPU time being used by interrupts
+	Interrupt float64 `pulumi:"interrupt"`
+	// Load averages for the last 1, 5, and 15 minutes
+	LoadAvgs []float64 `pulumi:"loadAvgs"`
+	// Percentage of CPU time being used by system processes
+	System float64 `pulumi:"system"`
+	// Percentage of CPU time being used by user processes
+	User float64 `pulumi:"user"`
+}
+
+// GetSwitchStatsDeviceSwitchStatModuleStatCpuStatInput is an input type that accepts GetSwitchStatsDeviceSwitchStatModuleStatCpuStatArgs and GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput values.
+// You can construct a concrete instance of `GetSwitchStatsDeviceSwitchStatModuleStatCpuStatInput` via:
+//
+//	GetSwitchStatsDeviceSwitchStatModuleStatCpuStatArgs{...}
+type GetSwitchStatsDeviceSwitchStatModuleStatCpuStatInput interface {
+	pulumi.Input
+
+	ToGetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput() GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput
+	ToGetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutputWithContext(context.Context) GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput
+}
+
+type GetSwitchStatsDeviceSwitchStatModuleStatCpuStatArgs struct {
+	// Percentage of CPU time that is idle
+	Idle pulumi.Float64Input `pulumi:"idle"`
+	// Percentage of CPU time being used by interrupts
+	Interrupt pulumi.Float64Input `pulumi:"interrupt"`
+	// Load averages for the last 1, 5, and 15 minutes
+	LoadAvgs pulumi.Float64ArrayInput `pulumi:"loadAvgs"`
+	// Percentage of CPU time being used by system processes
+	System pulumi.Float64Input `pulumi:"system"`
+	// Percentage of CPU time being used by user processes
+	User pulumi.Float64Input `pulumi:"user"`
+}
+
+func (GetSwitchStatsDeviceSwitchStatModuleStatCpuStatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatModuleStatCpuStat)(nil)).Elem()
+}
+
+func (i GetSwitchStatsDeviceSwitchStatModuleStatCpuStatArgs) ToGetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput() GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput {
+	return i.ToGetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutputWithContext(context.Background())
+}
+
+func (i GetSwitchStatsDeviceSwitchStatModuleStatCpuStatArgs) ToGetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutputWithContext(ctx context.Context) GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput)
+}
+
+type GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput struct{ *pulumi.OutputState }
+
+func (GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatModuleStatCpuStat)(nil)).Elem()
+}
+
+func (o GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput) ToGetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput() GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput {
+	return o
+}
+
+func (o GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput) ToGetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutputWithContext(ctx context.Context) GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput {
+	return o
+}
+
+// Percentage of CPU time that is idle
+func (o GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput) Idle() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatModuleStatCpuStat) float64 { return v.Idle }).(pulumi.Float64Output)
+}
+
+// Percentage of CPU time being used by interrupts
+func (o GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput) Interrupt() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatModuleStatCpuStat) float64 { return v.Interrupt }).(pulumi.Float64Output)
+}
+
+// Load averages for the last 1, 5, and 15 minutes
+func (o GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput) LoadAvgs() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatModuleStatCpuStat) []float64 { return v.LoadAvgs }).(pulumi.Float64ArrayOutput)
+}
+
+// Percentage of CPU time being used by system processes
+func (o GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput) System() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatModuleStatCpuStat) float64 { return v.System }).(pulumi.Float64Output)
+}
+
+// Percentage of CPU time being used by user processes
+func (o GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput) User() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatModuleStatCpuStat) float64 { return v.User }).(pulumi.Float64Output)
 }
 
 type GetSwitchStatsDeviceSwitchStatModuleStatError struct {
@@ -38792,6 +40194,511 @@ func (o GetSwitchStatsDeviceSwitchStatModuleStatVcLinkArrayOutput) Index(i pulum
 	}).(GetSwitchStatsDeviceSwitchStatModuleStatVcLinkOutput)
 }
 
+type GetSwitchStatsDeviceSwitchStatPort struct {
+	// Indicates if interface is active/inactive
+	Active bool `pulumi:"active"`
+	// if `up`==`true` and has Authenticator role. enum: `authenticated`, `authenticating`, `held`, `init`
+	AuthState string `pulumi:"authState"`
+	// Indicates if interface is disabled
+	Disabled bool `pulumi:"disabled"`
+	ForSite  bool `pulumi:"forSite"`
+	// Indicates full or half duplex
+	FullDuplex bool `pulumi:"fullDuplex"`
+	// Last sampled jitter of the interface
+	Jitter float64 `pulumi:"jitter"`
+	// Indicates when the port was last flapped
+	LastFlapped float64 `pulumi:"lastFlapped"`
+	// Last sampled latency of the interface
+	Latency float64 `pulumi:"latency"`
+	// Last sampled loss of the interface
+	Loss float64 `pulumi:"loss"`
+	// LTE ICCID value, Check for null/empty
+	LteIccid string `pulumi:"lteIccid"`
+	// LTE IMEI value, Check for null/empty
+	LteImei string `pulumi:"lteImei"`
+	// LTE IMSI value, Check for null/empty
+	LteImsi string `pulumi:"lteImsi"`
+	Mac     string `pulumi:"mac"`
+	// Number of mac addresses in the forwarding table
+	MacCount int `pulumi:"macCount"`
+	// Limit on number of dynamically learned macs
+	MacLimit int `pulumi:"macLimit"`
+	// chassis identifier of the chassis type listed
+	NeighborMac string `pulumi:"neighborMac"`
+	// Description supplied by the system on the interface E.g. "GigabitEthernet2/0/39"
+	NeighborPortDesc string `pulumi:"neighborPortDesc"`
+	// Name supplied by the system on the interface E.g. neighbor system name E.g. "Kumar-Acc-SW.mist.local"
+	NeighborSystemName string `pulumi:"neighborSystemName"`
+	OrgId              string `pulumi:"orgId"`
+	// Is the POE disabled
+	PoeDisabled bool `pulumi:"poeDisabled"`
+	// enum: `802.3af`, `802.3at`, `802.3bt`
+	PoeMode string `pulumi:"poeMode"`
+	// Is the device attached to POE
+	PoeOn  bool   `pulumi:"poeOn"`
+	PortId string `pulumi:"portId"`
+	// Interface MAC address
+	PortMac string `pulumi:"portMac"`
+	// gateway port usage. enum: `lan`
+	PortUsage string `pulumi:"portUsage"`
+	// Amount of power being used by the interface at the time the command is executed. Unit in watts.
+	PowerDraw float64 `pulumi:"powerDraw"`
+	// Broadcast input packets
+	RxBcastPkts int `pulumi:"rxBcastPkts"`
+	// Rate of receiving traffic, bits/seconds, last known
+	RxBps int `pulumi:"rxBps"`
+	// Amount of traffic received since connection
+	RxBytes int `pulumi:"rxBytes"`
+	// Input errors
+	RxErrors int `pulumi:"rxErrors"`
+	// Multicast input packets
+	RxMcastPkts int `pulumi:"rxMcastPkts"`
+	// Amount of packets received since connection
+	RxPkts int    `pulumi:"rxPkts"`
+	SiteId string `pulumi:"siteId"`
+	// Port speed
+	Speed int `pulumi:"speed"`
+	// if `up`==`true`. enum: `alternate`, `backup`, `designated`, `root`, `root-prevented`
+	StpRole string `pulumi:"stpRole"`
+	// if `up`==`true`. enum: `blocking`, `disabled`, `forwarding`, `learning`, `listening`
+	StpState string `pulumi:"stpState"`
+	// Broadcast output packets
+	TxBcastPkts int `pulumi:"txBcastPkts"`
+	// Rate of transmitting traffic, bits/seconds, last known
+	TxBps int `pulumi:"txBps"`
+	// Amount of traffic sent since connection
+	TxBytes int `pulumi:"txBytes"`
+	// Output errors
+	TxErrors int `pulumi:"txErrors"`
+	// Multicast output packets
+	TxMcastPkts int `pulumi:"txMcastPkts"`
+	// Amount of packets sent since connection
+	TxPkts int `pulumi:"txPkts"`
+	// device type. enum: `ap`, `ble`, `gateway`, `mxedge`, `nac`, `switch`
+	Type string `pulumi:"type"`
+	// Indicates if interface is unconfigured
+	Unconfigured bool `pulumi:"unconfigured"`
+	// Indicates if interface is up
+	Up bool `pulumi:"up"`
+	// Optic Slot ModelName, Check for null/empty
+	XcvrModel string `pulumi:"xcvrModel"`
+	// Optic Slot Partnumber, Check for null/empty
+	XcvrPartNumber string `pulumi:"xcvrPartNumber"`
+	// Optic Slot SerialNumber, Check for null/empty
+	XcvrSerial string `pulumi:"xcvrSerial"`
+}
+
+// GetSwitchStatsDeviceSwitchStatPortInput is an input type that accepts GetSwitchStatsDeviceSwitchStatPortArgs and GetSwitchStatsDeviceSwitchStatPortOutput values.
+// You can construct a concrete instance of `GetSwitchStatsDeviceSwitchStatPortInput` via:
+//
+//	GetSwitchStatsDeviceSwitchStatPortArgs{...}
+type GetSwitchStatsDeviceSwitchStatPortInput interface {
+	pulumi.Input
+
+	ToGetSwitchStatsDeviceSwitchStatPortOutput() GetSwitchStatsDeviceSwitchStatPortOutput
+	ToGetSwitchStatsDeviceSwitchStatPortOutputWithContext(context.Context) GetSwitchStatsDeviceSwitchStatPortOutput
+}
+
+type GetSwitchStatsDeviceSwitchStatPortArgs struct {
+	// Indicates if interface is active/inactive
+	Active pulumi.BoolInput `pulumi:"active"`
+	// if `up`==`true` and has Authenticator role. enum: `authenticated`, `authenticating`, `held`, `init`
+	AuthState pulumi.StringInput `pulumi:"authState"`
+	// Indicates if interface is disabled
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+	ForSite  pulumi.BoolInput `pulumi:"forSite"`
+	// Indicates full or half duplex
+	FullDuplex pulumi.BoolInput `pulumi:"fullDuplex"`
+	// Last sampled jitter of the interface
+	Jitter pulumi.Float64Input `pulumi:"jitter"`
+	// Indicates when the port was last flapped
+	LastFlapped pulumi.Float64Input `pulumi:"lastFlapped"`
+	// Last sampled latency of the interface
+	Latency pulumi.Float64Input `pulumi:"latency"`
+	// Last sampled loss of the interface
+	Loss pulumi.Float64Input `pulumi:"loss"`
+	// LTE ICCID value, Check for null/empty
+	LteIccid pulumi.StringInput `pulumi:"lteIccid"`
+	// LTE IMEI value, Check for null/empty
+	LteImei pulumi.StringInput `pulumi:"lteImei"`
+	// LTE IMSI value, Check for null/empty
+	LteImsi pulumi.StringInput `pulumi:"lteImsi"`
+	Mac     pulumi.StringInput `pulumi:"mac"`
+	// Number of mac addresses in the forwarding table
+	MacCount pulumi.IntInput `pulumi:"macCount"`
+	// Limit on number of dynamically learned macs
+	MacLimit pulumi.IntInput `pulumi:"macLimit"`
+	// chassis identifier of the chassis type listed
+	NeighborMac pulumi.StringInput `pulumi:"neighborMac"`
+	// Description supplied by the system on the interface E.g. "GigabitEthernet2/0/39"
+	NeighborPortDesc pulumi.StringInput `pulumi:"neighborPortDesc"`
+	// Name supplied by the system on the interface E.g. neighbor system name E.g. "Kumar-Acc-SW.mist.local"
+	NeighborSystemName pulumi.StringInput `pulumi:"neighborSystemName"`
+	OrgId              pulumi.StringInput `pulumi:"orgId"`
+	// Is the POE disabled
+	PoeDisabled pulumi.BoolInput `pulumi:"poeDisabled"`
+	// enum: `802.3af`, `802.3at`, `802.3bt`
+	PoeMode pulumi.StringInput `pulumi:"poeMode"`
+	// Is the device attached to POE
+	PoeOn  pulumi.BoolInput   `pulumi:"poeOn"`
+	PortId pulumi.StringInput `pulumi:"portId"`
+	// Interface MAC address
+	PortMac pulumi.StringInput `pulumi:"portMac"`
+	// gateway port usage. enum: `lan`
+	PortUsage pulumi.StringInput `pulumi:"portUsage"`
+	// Amount of power being used by the interface at the time the command is executed. Unit in watts.
+	PowerDraw pulumi.Float64Input `pulumi:"powerDraw"`
+	// Broadcast input packets
+	RxBcastPkts pulumi.IntInput `pulumi:"rxBcastPkts"`
+	// Rate of receiving traffic, bits/seconds, last known
+	RxBps pulumi.IntInput `pulumi:"rxBps"`
+	// Amount of traffic received since connection
+	RxBytes pulumi.IntInput `pulumi:"rxBytes"`
+	// Input errors
+	RxErrors pulumi.IntInput `pulumi:"rxErrors"`
+	// Multicast input packets
+	RxMcastPkts pulumi.IntInput `pulumi:"rxMcastPkts"`
+	// Amount of packets received since connection
+	RxPkts pulumi.IntInput    `pulumi:"rxPkts"`
+	SiteId pulumi.StringInput `pulumi:"siteId"`
+	// Port speed
+	Speed pulumi.IntInput `pulumi:"speed"`
+	// if `up`==`true`. enum: `alternate`, `backup`, `designated`, `root`, `root-prevented`
+	StpRole pulumi.StringInput `pulumi:"stpRole"`
+	// if `up`==`true`. enum: `blocking`, `disabled`, `forwarding`, `learning`, `listening`
+	StpState pulumi.StringInput `pulumi:"stpState"`
+	// Broadcast output packets
+	TxBcastPkts pulumi.IntInput `pulumi:"txBcastPkts"`
+	// Rate of transmitting traffic, bits/seconds, last known
+	TxBps pulumi.IntInput `pulumi:"txBps"`
+	// Amount of traffic sent since connection
+	TxBytes pulumi.IntInput `pulumi:"txBytes"`
+	// Output errors
+	TxErrors pulumi.IntInput `pulumi:"txErrors"`
+	// Multicast output packets
+	TxMcastPkts pulumi.IntInput `pulumi:"txMcastPkts"`
+	// Amount of packets sent since connection
+	TxPkts pulumi.IntInput `pulumi:"txPkts"`
+	// device type. enum: `ap`, `ble`, `gateway`, `mxedge`, `nac`, `switch`
+	Type pulumi.StringInput `pulumi:"type"`
+	// Indicates if interface is unconfigured
+	Unconfigured pulumi.BoolInput `pulumi:"unconfigured"`
+	// Indicates if interface is up
+	Up pulumi.BoolInput `pulumi:"up"`
+	// Optic Slot ModelName, Check for null/empty
+	XcvrModel pulumi.StringInput `pulumi:"xcvrModel"`
+	// Optic Slot Partnumber, Check for null/empty
+	XcvrPartNumber pulumi.StringInput `pulumi:"xcvrPartNumber"`
+	// Optic Slot SerialNumber, Check for null/empty
+	XcvrSerial pulumi.StringInput `pulumi:"xcvrSerial"`
+}
+
+func (GetSwitchStatsDeviceSwitchStatPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatPort)(nil)).Elem()
+}
+
+func (i GetSwitchStatsDeviceSwitchStatPortArgs) ToGetSwitchStatsDeviceSwitchStatPortOutput() GetSwitchStatsDeviceSwitchStatPortOutput {
+	return i.ToGetSwitchStatsDeviceSwitchStatPortOutputWithContext(context.Background())
+}
+
+func (i GetSwitchStatsDeviceSwitchStatPortArgs) ToGetSwitchStatsDeviceSwitchStatPortOutputWithContext(ctx context.Context) GetSwitchStatsDeviceSwitchStatPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSwitchStatsDeviceSwitchStatPortOutput)
+}
+
+// GetSwitchStatsDeviceSwitchStatPortArrayInput is an input type that accepts GetSwitchStatsDeviceSwitchStatPortArray and GetSwitchStatsDeviceSwitchStatPortArrayOutput values.
+// You can construct a concrete instance of `GetSwitchStatsDeviceSwitchStatPortArrayInput` via:
+//
+//	GetSwitchStatsDeviceSwitchStatPortArray{ GetSwitchStatsDeviceSwitchStatPortArgs{...} }
+type GetSwitchStatsDeviceSwitchStatPortArrayInput interface {
+	pulumi.Input
+
+	ToGetSwitchStatsDeviceSwitchStatPortArrayOutput() GetSwitchStatsDeviceSwitchStatPortArrayOutput
+	ToGetSwitchStatsDeviceSwitchStatPortArrayOutputWithContext(context.Context) GetSwitchStatsDeviceSwitchStatPortArrayOutput
+}
+
+type GetSwitchStatsDeviceSwitchStatPortArray []GetSwitchStatsDeviceSwitchStatPortInput
+
+func (GetSwitchStatsDeviceSwitchStatPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSwitchStatsDeviceSwitchStatPort)(nil)).Elem()
+}
+
+func (i GetSwitchStatsDeviceSwitchStatPortArray) ToGetSwitchStatsDeviceSwitchStatPortArrayOutput() GetSwitchStatsDeviceSwitchStatPortArrayOutput {
+	return i.ToGetSwitchStatsDeviceSwitchStatPortArrayOutputWithContext(context.Background())
+}
+
+func (i GetSwitchStatsDeviceSwitchStatPortArray) ToGetSwitchStatsDeviceSwitchStatPortArrayOutputWithContext(ctx context.Context) GetSwitchStatsDeviceSwitchStatPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSwitchStatsDeviceSwitchStatPortArrayOutput)
+}
+
+type GetSwitchStatsDeviceSwitchStatPortOutput struct{ *pulumi.OutputState }
+
+func (GetSwitchStatsDeviceSwitchStatPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatPort)(nil)).Elem()
+}
+
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) ToGetSwitchStatsDeviceSwitchStatPortOutput() GetSwitchStatsDeviceSwitchStatPortOutput {
+	return o
+}
+
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) ToGetSwitchStatsDeviceSwitchStatPortOutputWithContext(ctx context.Context) GetSwitchStatsDeviceSwitchStatPortOutput {
+	return o
+}
+
+// Indicates if interface is active/inactive
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// if `up`==`true` and has Authenticator role. enum: `authenticated`, `authenticating`, `held`, `init`
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) AuthState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.AuthState }).(pulumi.StringOutput)
+}
+
+// Indicates if interface is disabled
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) ForSite() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) bool { return v.ForSite }).(pulumi.BoolOutput)
+}
+
+// Indicates full or half duplex
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) FullDuplex() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) bool { return v.FullDuplex }).(pulumi.BoolOutput)
+}
+
+// Last sampled jitter of the interface
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) Jitter() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) float64 { return v.Jitter }).(pulumi.Float64Output)
+}
+
+// Indicates when the port was last flapped
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) LastFlapped() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) float64 { return v.LastFlapped }).(pulumi.Float64Output)
+}
+
+// Last sampled latency of the interface
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) Latency() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) float64 { return v.Latency }).(pulumi.Float64Output)
+}
+
+// Last sampled loss of the interface
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) Loss() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) float64 { return v.Loss }).(pulumi.Float64Output)
+}
+
+// LTE ICCID value, Check for null/empty
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) LteIccid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.LteIccid }).(pulumi.StringOutput)
+}
+
+// LTE IMEI value, Check for null/empty
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) LteImei() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.LteImei }).(pulumi.StringOutput)
+}
+
+// LTE IMSI value, Check for null/empty
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) LteImsi() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.LteImsi }).(pulumi.StringOutput)
+}
+
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) Mac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.Mac }).(pulumi.StringOutput)
+}
+
+// Number of mac addresses in the forwarding table
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) MacCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) int { return v.MacCount }).(pulumi.IntOutput)
+}
+
+// Limit on number of dynamically learned macs
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) MacLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) int { return v.MacLimit }).(pulumi.IntOutput)
+}
+
+// chassis identifier of the chassis type listed
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) NeighborMac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.NeighborMac }).(pulumi.StringOutput)
+}
+
+// Description supplied by the system on the interface E.g. "GigabitEthernet2/0/39"
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) NeighborPortDesc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.NeighborPortDesc }).(pulumi.StringOutput)
+}
+
+// Name supplied by the system on the interface E.g. neighbor system name E.g. "Kumar-Acc-SW.mist.local"
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) NeighborSystemName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.NeighborSystemName }).(pulumi.StringOutput)
+}
+
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// Is the POE disabled
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) PoeDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) bool { return v.PoeDisabled }).(pulumi.BoolOutput)
+}
+
+// enum: `802.3af`, `802.3at`, `802.3bt`
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) PoeMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.PoeMode }).(pulumi.StringOutput)
+}
+
+// Is the device attached to POE
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) PoeOn() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) bool { return v.PoeOn }).(pulumi.BoolOutput)
+}
+
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) PortId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.PortId }).(pulumi.StringOutput)
+}
+
+// Interface MAC address
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) PortMac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.PortMac }).(pulumi.StringOutput)
+}
+
+// gateway port usage. enum: `lan`
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) PortUsage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.PortUsage }).(pulumi.StringOutput)
+}
+
+// Amount of power being used by the interface at the time the command is executed. Unit in watts.
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) PowerDraw() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) float64 { return v.PowerDraw }).(pulumi.Float64Output)
+}
+
+// Broadcast input packets
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) RxBcastPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) int { return v.RxBcastPkts }).(pulumi.IntOutput)
+}
+
+// Rate of receiving traffic, bits/seconds, last known
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) RxBps() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) int { return v.RxBps }).(pulumi.IntOutput)
+}
+
+// Amount of traffic received since connection
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) RxBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) int { return v.RxBytes }).(pulumi.IntOutput)
+}
+
+// Input errors
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) RxErrors() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) int { return v.RxErrors }).(pulumi.IntOutput)
+}
+
+// Multicast input packets
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) RxMcastPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) int { return v.RxMcastPkts }).(pulumi.IntOutput)
+}
+
+// Amount of packets received since connection
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) RxPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) int { return v.RxPkts }).(pulumi.IntOutput)
+}
+
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.SiteId }).(pulumi.StringOutput)
+}
+
+// Port speed
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) Speed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) int { return v.Speed }).(pulumi.IntOutput)
+}
+
+// if `up`==`true`. enum: `alternate`, `backup`, `designated`, `root`, `root-prevented`
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) StpRole() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.StpRole }).(pulumi.StringOutput)
+}
+
+// if `up`==`true`. enum: `blocking`, `disabled`, `forwarding`, `learning`, `listening`
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) StpState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.StpState }).(pulumi.StringOutput)
+}
+
+// Broadcast output packets
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) TxBcastPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) int { return v.TxBcastPkts }).(pulumi.IntOutput)
+}
+
+// Rate of transmitting traffic, bits/seconds, last known
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) TxBps() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) int { return v.TxBps }).(pulumi.IntOutput)
+}
+
+// Amount of traffic sent since connection
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) TxBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) int { return v.TxBytes }).(pulumi.IntOutput)
+}
+
+// Output errors
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) TxErrors() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) int { return v.TxErrors }).(pulumi.IntOutput)
+}
+
+// Multicast output packets
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) TxMcastPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) int { return v.TxMcastPkts }).(pulumi.IntOutput)
+}
+
+// Amount of packets sent since connection
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) TxPkts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) int { return v.TxPkts }).(pulumi.IntOutput)
+}
+
+// device type. enum: `ap`, `ble`, `gateway`, `mxedge`, `nac`, `switch`
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Indicates if interface is unconfigured
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) Unconfigured() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) bool { return v.Unconfigured }).(pulumi.BoolOutput)
+}
+
+// Indicates if interface is up
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) Up() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) bool { return v.Up }).(pulumi.BoolOutput)
+}
+
+// Optic Slot ModelName, Check for null/empty
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) XcvrModel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.XcvrModel }).(pulumi.StringOutput)
+}
+
+// Optic Slot Partnumber, Check for null/empty
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) XcvrPartNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.XcvrPartNumber }).(pulumi.StringOutput)
+}
+
+// Optic Slot SerialNumber, Check for null/empty
+func (o GetSwitchStatsDeviceSwitchStatPortOutput) XcvrSerial() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatPort) string { return v.XcvrSerial }).(pulumi.StringOutput)
+}
+
+type GetSwitchStatsDeviceSwitchStatPortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSwitchStatsDeviceSwitchStatPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSwitchStatsDeviceSwitchStatPort)(nil)).Elem()
+}
+
+func (o GetSwitchStatsDeviceSwitchStatPortArrayOutput) ToGetSwitchStatsDeviceSwitchStatPortArrayOutput() GetSwitchStatsDeviceSwitchStatPortArrayOutput {
+	return o
+}
+
+func (o GetSwitchStatsDeviceSwitchStatPortArrayOutput) ToGetSwitchStatsDeviceSwitchStatPortArrayOutputWithContext(ctx context.Context) GetSwitchStatsDeviceSwitchStatPortArrayOutput {
+	return o
+}
+
+func (o GetSwitchStatsDeviceSwitchStatPortArrayOutput) Index(i pulumi.IntInput) GetSwitchStatsDeviceSwitchStatPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSwitchStatsDeviceSwitchStatPort {
+		return vs[0].([]GetSwitchStatsDeviceSwitchStatPort)[vs[1].(int)]
+	}).(GetSwitchStatsDeviceSwitchStatPortOutput)
+}
+
 type GetSwitchStatsDeviceSwitchStatRouteSummaryStats struct {
 	FibRoutes                 int `pulumi:"fibRoutes"`
 	MaxUnicastRoutesSupported int `pulumi:"maxUnicastRoutesSupported"`
@@ -38996,8 +40903,12 @@ func (o GetSwitchStatsDeviceSwitchStatServiceStatMapOutput) MapIndex(k pulumi.St
 }
 
 type GetSwitchStatsDeviceSwitchStatVcSetupInfo struct {
-	ConfigType         string `pulumi:"configType"`
-	ErrMissingDevIdFpc bool   `pulumi:"errMissingDevIdFpc"`
+	ConfigType         string  `pulumi:"configType"`
+	CurrentStats       string  `pulumi:"currentStats"`
+	ErrMissingDevIdFpc bool    `pulumi:"errMissingDevIdFpc"`
+	LastUpdate         float64 `pulumi:"lastUpdate"`
+	RequestTime        float64 `pulumi:"requestTime"`
+	RequestType        string  `pulumi:"requestType"`
 }
 
 // GetSwitchStatsDeviceSwitchStatVcSetupInfoInput is an input type that accepts GetSwitchStatsDeviceSwitchStatVcSetupInfoArgs and GetSwitchStatsDeviceSwitchStatVcSetupInfoOutput values.
@@ -39012,8 +40923,12 @@ type GetSwitchStatsDeviceSwitchStatVcSetupInfoInput interface {
 }
 
 type GetSwitchStatsDeviceSwitchStatVcSetupInfoArgs struct {
-	ConfigType         pulumi.StringInput `pulumi:"configType"`
-	ErrMissingDevIdFpc pulumi.BoolInput   `pulumi:"errMissingDevIdFpc"`
+	ConfigType         pulumi.StringInput  `pulumi:"configType"`
+	CurrentStats       pulumi.StringInput  `pulumi:"currentStats"`
+	ErrMissingDevIdFpc pulumi.BoolInput    `pulumi:"errMissingDevIdFpc"`
+	LastUpdate         pulumi.Float64Input `pulumi:"lastUpdate"`
+	RequestTime        pulumi.Float64Input `pulumi:"requestTime"`
+	RequestType        pulumi.StringInput  `pulumi:"requestType"`
 }
 
 func (GetSwitchStatsDeviceSwitchStatVcSetupInfoArgs) ElementType() reflect.Type {
@@ -39046,8 +40961,24 @@ func (o GetSwitchStatsDeviceSwitchStatVcSetupInfoOutput) ConfigType() pulumi.Str
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatVcSetupInfo) string { return v.ConfigType }).(pulumi.StringOutput)
 }
 
+func (o GetSwitchStatsDeviceSwitchStatVcSetupInfoOutput) CurrentStats() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatVcSetupInfo) string { return v.CurrentStats }).(pulumi.StringOutput)
+}
+
 func (o GetSwitchStatsDeviceSwitchStatVcSetupInfoOutput) ErrMissingDevIdFpc() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatVcSetupInfo) bool { return v.ErrMissingDevIdFpc }).(pulumi.BoolOutput)
+}
+
+func (o GetSwitchStatsDeviceSwitchStatVcSetupInfoOutput) LastUpdate() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatVcSetupInfo) float64 { return v.LastUpdate }).(pulumi.Float64Output)
+}
+
+func (o GetSwitchStatsDeviceSwitchStatVcSetupInfoOutput) RequestTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatVcSetupInfo) float64 { return v.RequestTime }).(pulumi.Float64Output)
+}
+
+func (o GetSwitchStatsDeviceSwitchStatVcSetupInfoOutput) RequestType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatVcSetupInfo) string { return v.RequestType }).(pulumi.StringOutput)
 }
 
 type GetVersionsDeviceVersion struct {
@@ -39180,6 +41111,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApEslConfigPtrInput)(nil)).Elem(), ApEslConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApIpConfigInput)(nil)).Elem(), ApIpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApIpConfigPtrInput)(nil)).Elem(), ApIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApLacpConfigInput)(nil)).Elem(), ApLacpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApLacpConfigPtrInput)(nil)).Elem(), ApLacpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApLedInput)(nil)).Elem(), ApLedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApLedPtrInput)(nil)).Elem(), ApLedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApMeshInput)(nil)).Elem(), ApMeshArgs{})
@@ -39480,8 +41413,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrfConfigPtrInput)(nil)).Elem(), SwitchVrfConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrfInstancesInput)(nil)).Elem(), SwitchVrfInstancesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrfInstancesMapInput)(nil)).Elem(), SwitchVrfInstancesMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrfInstancesVrfExtraRoutesInput)(nil)).Elem(), SwitchVrfInstancesVrfExtraRoutesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrfInstancesVrfExtraRoutesMapInput)(nil)).Elem(), SwitchVrfInstancesVrfExtraRoutesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrfInstancesExtraRoutes6Input)(nil)).Elem(), SwitchVrfInstancesExtraRoutes6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrfInstancesExtraRoutes6MapInput)(nil)).Elem(), SwitchVrfInstancesExtraRoutes6Map{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrfInstancesExtraRoutesInput)(nil)).Elem(), SwitchVrfInstancesExtraRoutesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrfInstancesExtraRoutesMapInput)(nil)).Elem(), SwitchVrfInstancesExtraRoutesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrrpConfigInput)(nil)).Elem(), SwitchVrrpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrrpConfigPtrInput)(nil)).Elem(), SwitchVrrpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchVrrpConfigGroupsInput)(nil)).Elem(), SwitchVrrpConfigGroupsArgs{})
@@ -39498,6 +41433,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApStatsDeviceApStatEnvStatInput)(nil)).Elem(), GetApStatsDeviceApStatEnvStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApStatsDeviceApStatEslStatInput)(nil)).Elem(), GetApStatsDeviceApStatEslStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApStatsDeviceApStatFwupdateInput)(nil)).Elem(), GetApStatsDeviceApStatFwupdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApStatsDeviceApStatGpsInput)(nil)).Elem(), GetApStatsDeviceApStatGpsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApStatsDeviceApStatIotStatInput)(nil)).Elem(), GetApStatsDeviceApStatIotStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApStatsDeviceApStatIotStatMapInput)(nil)).Elem(), GetApStatsDeviceApStatIotStatMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApStatsDeviceApStatIpConfigInput)(nil)).Elem(), GetApStatsDeviceApStatIpConfigArgs{})
@@ -39526,6 +41462,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatApRedundancyModulesInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatApRedundancyModulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatApRedundancyModulesMapInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatApRedundancyModulesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatArpTableStatsInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatArpTableStatsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatBgpPeerInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatBgpPeerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatBgpPeerArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatBgpPeerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatClusterConfigInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatClusterConfigControlLinkInfoInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatClusterConfigControlLinkInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatClusterConfigEthernetConnectionInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatClusterConfigEthernetConnectionArgs{})
@@ -39553,14 +41491,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatMemoryStatInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatMemoryStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModule2StatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModule2StatArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatErrorInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModule2StatErrorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModule2StatErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatFanInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModule2StatFanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatFanArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModule2StatFanArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatPicInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModule2StatPicArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatPicArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModule2StatPicArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatPoeInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModule2StatPoeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatPsusInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModule2StatPsusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatPsusArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModule2StatPsusArray{})
@@ -39570,14 +41502,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModule2StatVcLinkArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModule2StatVcLinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModuleStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModuleStatArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatErrorInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModuleStatErrorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModuleStatErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatFanInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModuleStatFanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatFanArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModuleStatFanArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatPicInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModuleStatPicArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatPicArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModuleStatPicArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatPoeInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModuleStatPoeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatPsusInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModuleStatPsusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatPsusArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModuleStatPsusArray{})
@@ -39585,6 +41511,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatTemperatureArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModuleStatTemperatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatVcLinkInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModuleStatVcLinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatModuleStatVcLinkArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatModuleStatVcLinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatPortInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatPortArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatRouteSummaryStatsInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatRouteSummaryStatsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatService2StatInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatService2StatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatService2StatMapInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatService2StatMap{})
@@ -39595,6 +41523,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatSpu2StatArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatSpu2StatArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatSpuStatInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatSpuStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatSpuStatArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatSpuStatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatTunnelInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatTunnelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatTunnelArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatTunnelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatVpnPeerInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatVpnPeerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayStatsDeviceGatewayStatVpnPeerArrayInput)(nil)).Elem(), GetGatewayStatsDeviceGatewayStatVpnPeerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatArrayInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatApRedundancyInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatApRedundancyArgs{})
@@ -39618,6 +41550,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatMemoryStatInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatMemoryStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatModuleStatInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatModuleStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatModuleStatArrayInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatModuleStatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatModuleStatCpuStatInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatModuleStatCpuStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatModuleStatErrorInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatModuleStatErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatModuleStatErrorArrayInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatModuleStatErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatModuleStatFanInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatModuleStatFanArgs{})
@@ -39633,6 +41566,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatModuleStatTemperatureArrayInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatModuleStatTemperatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatModuleStatVcLinkInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatModuleStatVcLinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatModuleStatVcLinkArrayInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatModuleStatVcLinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatPortInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatPortArrayInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatRouteSummaryStatsInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatRouteSummaryStatsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatServiceStatInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatServiceStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatServiceStatMapInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatServiceStatMap{})
@@ -39653,6 +41588,8 @@ func init() {
 	pulumi.RegisterOutputType(ApEslConfigPtrOutput{})
 	pulumi.RegisterOutputType(ApIpConfigOutput{})
 	pulumi.RegisterOutputType(ApIpConfigPtrOutput{})
+	pulumi.RegisterOutputType(ApLacpConfigOutput{})
+	pulumi.RegisterOutputType(ApLacpConfigPtrOutput{})
 	pulumi.RegisterOutputType(ApLedOutput{})
 	pulumi.RegisterOutputType(ApLedPtrOutput{})
 	pulumi.RegisterOutputType(ApMeshOutput{})
@@ -39953,8 +41890,10 @@ func init() {
 	pulumi.RegisterOutputType(SwitchVrfConfigPtrOutput{})
 	pulumi.RegisterOutputType(SwitchVrfInstancesOutput{})
 	pulumi.RegisterOutputType(SwitchVrfInstancesMapOutput{})
-	pulumi.RegisterOutputType(SwitchVrfInstancesVrfExtraRoutesOutput{})
-	pulumi.RegisterOutputType(SwitchVrfInstancesVrfExtraRoutesMapOutput{})
+	pulumi.RegisterOutputType(SwitchVrfInstancesExtraRoutes6Output{})
+	pulumi.RegisterOutputType(SwitchVrfInstancesExtraRoutes6MapOutput{})
+	pulumi.RegisterOutputType(SwitchVrfInstancesExtraRoutesOutput{})
+	pulumi.RegisterOutputType(SwitchVrfInstancesExtraRoutesMapOutput{})
 	pulumi.RegisterOutputType(SwitchVrrpConfigOutput{})
 	pulumi.RegisterOutputType(SwitchVrrpConfigPtrOutput{})
 	pulumi.RegisterOutputType(SwitchVrrpConfigGroupsOutput{})
@@ -39971,6 +41910,7 @@ func init() {
 	pulumi.RegisterOutputType(GetApStatsDeviceApStatEnvStatOutput{})
 	pulumi.RegisterOutputType(GetApStatsDeviceApStatEslStatOutput{})
 	pulumi.RegisterOutputType(GetApStatsDeviceApStatFwupdateOutput{})
+	pulumi.RegisterOutputType(GetApStatsDeviceApStatGpsOutput{})
 	pulumi.RegisterOutputType(GetApStatsDeviceApStatIotStatOutput{})
 	pulumi.RegisterOutputType(GetApStatsDeviceApStatIotStatMapOutput{})
 	pulumi.RegisterOutputType(GetApStatsDeviceApStatIpConfigOutput{})
@@ -39999,6 +41939,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatApRedundancyModulesOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatApRedundancyModulesMapOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatArpTableStatsOutput{})
+	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatBgpPeerOutput{})
+	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatBgpPeerArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatClusterConfigOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatClusterConfigControlLinkInfoOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatClusterConfigEthernetConnectionOutput{})
@@ -40026,14 +41968,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatMemoryStatOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModule2StatOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModule2StatArrayOutput{})
-	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModule2StatErrorOutput{})
-	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModule2StatErrorArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModule2StatFanOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModule2StatFanArrayOutput{})
-	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModule2StatPicOutput{})
-	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModule2StatPicArrayOutput{})
-	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupOutput{})
-	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModule2StatPoeOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModule2StatPsusOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModule2StatPsusArrayOutput{})
@@ -40043,14 +41979,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModule2StatVcLinkArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModuleStatOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModuleStatArrayOutput{})
-	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModuleStatErrorOutput{})
-	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModuleStatErrorArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModuleStatFanOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModuleStatFanArrayOutput{})
-	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModuleStatPicOutput{})
-	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModuleStatPicArrayOutput{})
-	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupOutput{})
-	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModuleStatPoeOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModuleStatPsusOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModuleStatPsusArrayOutput{})
@@ -40058,6 +41988,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModuleStatTemperatureArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModuleStatVcLinkOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatModuleStatVcLinkArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatPortOutput{})
+	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatPortArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatRouteSummaryStatsOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatService2StatOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatService2StatMapOutput{})
@@ -40068,6 +42000,10 @@ func init() {
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatSpu2StatArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatSpuStatOutput{})
 	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatSpuStatArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatTunnelOutput{})
+	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatTunnelArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatVpnPeerOutput{})
+	pulumi.RegisterOutputType(GetGatewayStatsDeviceGatewayStatVpnPeerArrayOutput{})
 	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatOutput{})
 	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatArrayOutput{})
 	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatApRedundancyOutput{})
@@ -40091,6 +42027,7 @@ func init() {
 	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatMemoryStatOutput{})
 	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatModuleStatOutput{})
 	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatModuleStatArrayOutput{})
+	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatModuleStatCpuStatOutput{})
 	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatModuleStatErrorOutput{})
 	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatModuleStatErrorArrayOutput{})
 	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatModuleStatFanOutput{})
@@ -40106,6 +42043,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatModuleStatTemperatureArrayOutput{})
 	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatModuleStatVcLinkOutput{})
 	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatModuleStatVcLinkArrayOutput{})
+	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatPortOutput{})
+	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatPortArrayOutput{})
 	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatRouteSummaryStatsOutput{})
 	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatServiceStatOutput{})
 	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatServiceStatMapOutput{})

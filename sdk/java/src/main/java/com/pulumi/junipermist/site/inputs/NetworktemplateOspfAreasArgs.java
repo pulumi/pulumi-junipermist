@@ -6,7 +6,7 @@ package com.pulumi.junipermist.site.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.junipermist.site.inputs.NetworktemplateOspfAreasOspfNetworksArgs;
+import com.pulumi.junipermist.site.inputs.NetworktemplateOspfAreasNetworksArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -26,11 +26,11 @@ public final class NetworktemplateOspfAreasArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.includeLoopback);
     }
 
-    @Import(name="ospfNetworks", required=true)
-    private Output<Map<String,NetworktemplateOspfAreasOspfNetworksArgs>> ospfNetworks;
+    @Import(name="networks", required=true)
+    private Output<Map<String,NetworktemplateOspfAreasNetworksArgs>> networks;
 
-    public Output<Map<String,NetworktemplateOspfAreasOspfNetworksArgs>> ospfNetworks() {
-        return this.ospfNetworks;
+    public Output<Map<String,NetworktemplateOspfAreasNetworksArgs>> networks() {
+        return this.networks;
     }
 
     /**
@@ -52,7 +52,7 @@ public final class NetworktemplateOspfAreasArgs extends com.pulumi.resources.Res
 
     private NetworktemplateOspfAreasArgs(NetworktemplateOspfAreasArgs $) {
         this.includeLoopback = $.includeLoopback;
-        this.ospfNetworks = $.ospfNetworks;
+        this.networks = $.networks;
         this.type = $.type;
     }
 
@@ -83,13 +83,13 @@ public final class NetworktemplateOspfAreasArgs extends com.pulumi.resources.Res
             return includeLoopback(Output.of(includeLoopback));
         }
 
-        public Builder ospfNetworks(Output<Map<String,NetworktemplateOspfAreasOspfNetworksArgs>> ospfNetworks) {
-            $.ospfNetworks = ospfNetworks;
+        public Builder networks(Output<Map<String,NetworktemplateOspfAreasNetworksArgs>> networks) {
+            $.networks = networks;
             return this;
         }
 
-        public Builder ospfNetworks(Map<String,NetworktemplateOspfAreasOspfNetworksArgs> ospfNetworks) {
-            return ospfNetworks(Output.of(ospfNetworks));
+        public Builder networks(Map<String,NetworktemplateOspfAreasNetworksArgs> networks) {
+            return networks(Output.of(networks));
         }
 
         /**
@@ -114,8 +114,8 @@ public final class NetworktemplateOspfAreasArgs extends com.pulumi.resources.Res
         }
 
         public NetworktemplateOspfAreasArgs build() {
-            if ($.ospfNetworks == null) {
-                throw new MissingRequiredPropertyException("NetworktemplateOspfAreasArgs", "ospfNetworks");
+            if ($.networks == null) {
+                throw new MissingRequiredPropertyException("NetworktemplateOspfAreasArgs", "networks");
             }
             return $;
         }

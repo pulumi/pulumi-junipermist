@@ -6,20 +6,37 @@ package com.pulumi.junipermist.device.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetSwitchStatsDeviceSwitchStatVcSetupInfo {
     private String configType;
+    private String currentStats;
     private Boolean errMissingDevIdFpc;
+    private Double lastUpdate;
+    private Double requestTime;
+    private String requestType;
 
     private GetSwitchStatsDeviceSwitchStatVcSetupInfo() {}
     public String configType() {
         return this.configType;
     }
+    public String currentStats() {
+        return this.currentStats;
+    }
     public Boolean errMissingDevIdFpc() {
         return this.errMissingDevIdFpc;
+    }
+    public Double lastUpdate() {
+        return this.lastUpdate;
+    }
+    public Double requestTime() {
+        return this.requestTime;
+    }
+    public String requestType() {
+        return this.requestType;
     }
 
     public static Builder builder() {
@@ -32,12 +49,20 @@ public final class GetSwitchStatsDeviceSwitchStatVcSetupInfo {
     @CustomType.Builder
     public static final class Builder {
         private String configType;
+        private String currentStats;
         private Boolean errMissingDevIdFpc;
+        private Double lastUpdate;
+        private Double requestTime;
+        private String requestType;
         public Builder() {}
         public Builder(GetSwitchStatsDeviceSwitchStatVcSetupInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configType = defaults.configType;
+    	      this.currentStats = defaults.currentStats;
     	      this.errMissingDevIdFpc = defaults.errMissingDevIdFpc;
+    	      this.lastUpdate = defaults.lastUpdate;
+    	      this.requestTime = defaults.requestTime;
+    	      this.requestType = defaults.requestType;
         }
 
         @CustomType.Setter
@@ -49,6 +74,14 @@ public final class GetSwitchStatsDeviceSwitchStatVcSetupInfo {
             return this;
         }
         @CustomType.Setter
+        public Builder currentStats(String currentStats) {
+            if (currentStats == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatVcSetupInfo", "currentStats");
+            }
+            this.currentStats = currentStats;
+            return this;
+        }
+        @CustomType.Setter
         public Builder errMissingDevIdFpc(Boolean errMissingDevIdFpc) {
             if (errMissingDevIdFpc == null) {
               throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatVcSetupInfo", "errMissingDevIdFpc");
@@ -56,10 +89,38 @@ public final class GetSwitchStatsDeviceSwitchStatVcSetupInfo {
             this.errMissingDevIdFpc = errMissingDevIdFpc;
             return this;
         }
+        @CustomType.Setter
+        public Builder lastUpdate(Double lastUpdate) {
+            if (lastUpdate == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatVcSetupInfo", "lastUpdate");
+            }
+            this.lastUpdate = lastUpdate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder requestTime(Double requestTime) {
+            if (requestTime == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatVcSetupInfo", "requestTime");
+            }
+            this.requestTime = requestTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder requestType(String requestType) {
+            if (requestType == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatVcSetupInfo", "requestType");
+            }
+            this.requestType = requestType;
+            return this;
+        }
         public GetSwitchStatsDeviceSwitchStatVcSetupInfo build() {
             final var _resultValue = new GetSwitchStatsDeviceSwitchStatVcSetupInfo();
             _resultValue.configType = configType;
+            _resultValue.currentStats = currentStats;
             _resultValue.errMissingDevIdFpc = errMissingDevIdFpc;
+            _resultValue.lastUpdate = lastUpdate;
+            _resultValue.requestTime = requestTime;
+            _resultValue.requestType = requestType;
             return _resultValue;
         }
     }
