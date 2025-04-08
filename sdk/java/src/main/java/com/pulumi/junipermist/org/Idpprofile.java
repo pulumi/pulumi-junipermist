@@ -26,57 +26,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.junipermist.org.Idpprofile;
- * import com.pulumi.junipermist.org.IdpprofileArgs;
- * import com.pulumi.junipermist.org.inputs.IdpprofileOverwriteArgs;
- * import com.pulumi.junipermist.org.inputs.IdpprofileOverwriteMatchingArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var idpprofileOne = new Idpprofile("idpprofileOne", IdpprofileArgs.builder()
- *             .orgId(terraformTest.id())
- *             .baseProfile("standard")
- *             .overwrites(            
- *                 IdpprofileOverwriteArgs.builder()
- *                     .name("server_bypass")
- *                     .matching(IdpprofileOverwriteMatchingArgs.builder()
- *                         .severity()
- *                         .dstSubnet()
- *                         .attackName("SSL:OVERFLOW:KEY-ARG-NO-ENTROPY")
- *                         .build())
- *                     .build(),
- *                 IdpprofileOverwriteArgs.builder()
- *                     .name("guest-bypass")
- *                     .matching(IdpprofileOverwriteMatchingArgs.builder()
- *                         .severity()
- *                         .dstSubnet("8.8.8.8/32")
- *                         .attackName("UDP:ZERO-DATA")
- *                         .build())
- *                     .build())
- *             .name("idpprofile_one")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

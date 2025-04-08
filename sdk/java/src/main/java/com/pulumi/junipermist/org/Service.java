@@ -29,46 +29,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.junipermist.org.Service;
- * import com.pulumi.junipermist.org.ServiceArgs;
- * import com.pulumi.junipermist.org.inputs.ServiceSpecArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var serviceOne = new Service("serviceOne", ServiceArgs.builder()
- *             .orgId(terraformTest.id())
- *             .name("service_one")
- *             .addresses(            
- *                 "10.3.0.0/24",
- *                 "10.4.0.0/24")
- *             .type("custom")
- *             .specs(ServiceSpecArgs.builder()
- *                 .protocol("tcp")
- *                 .port_range("443")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

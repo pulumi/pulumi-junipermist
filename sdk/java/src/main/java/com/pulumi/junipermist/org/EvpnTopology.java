@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.mist.orgSiteEvpnTopology;
- * import com.pulumi.mist.OrgSiteEvpnTopologyArgs;
+ * import com.pulumi.mist.orgSiteEvpnTopologyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -52,14 +52,45 @@ import javax.annotation.Nullable;
  *         var evpnOne = new OrgSiteEvpnTopology("evpnOne", OrgSiteEvpnTopologyArgs.builder()
  *             .orgId(terraformTest.id())
  *             .name("evpn_one")
- *             .evpnOptions(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *             .switches(            
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .evpnOptions(Map.ofEntries(
+ *                 Map.entry("routedAt", "core"),
+ *                 Map.entry("overlay", Map.of("as", 65000)),
+ *                 Map.entry("coreAsBorder", true),
+ *                 Map.entry("autoLoopbackSubnet", "172.16.192.0/24"),
+ *                 Map.entry("autoLoopbackSubnet6", "fd33:ab00:2::/64"),
+ *                 Map.entry("perVlanVgaV4Mac", false),
+ *                 Map.entry("underlay", Map.ofEntries(
+ *                     Map.entry("asBase", 65001),
+ *                     Map.entry("useIpv6", false),
+ *                     Map.entry("subnet", "10.255.240.0/20")
+ *                 )),
+ *                 Map.entry("autoRouterIdSubnet", "172.16.254.0/23")
+ *             ))
+ *             .switches(List.of(            
+ *                 Map.ofEntries(
+ *                     Map.entry("mac", "020004000001"),
+ *                     Map.entry("role", "core")
+ *                 ),
+ *                 Map.ofEntries(
+ *                     Map.entry("mac", "02000400002"),
+ *                     Map.entry("role", "core")
+ *                 ),
+ *                 Map.ofEntries(
+ *                     Map.entry("mac", "02000400003"),
+ *                     Map.entry("role", "distribution")
+ *                 ),
+ *                 Map.ofEntries(
+ *                     Map.entry("mac", "02000400004"),
+ *                     Map.entry("role", "distribution")
+ *                 ),
+ *                 Map.ofEntries(
+ *                     Map.entry("mac", "02000400005"),
+ *                     Map.entry("role", "access")
+ *                 ),
+ *                 Map.ofEntries(
+ *                     Map.entry("mac", "02000400006"),
+ *                     Map.entry("role", "access")
+ *                 )))
  *             .build());
  * 
  *     }
