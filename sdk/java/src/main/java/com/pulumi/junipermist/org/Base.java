@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.junipermist.org.base;
- * import com.pulumi.junipermist.org.BaseArgs;
+ * import com.pulumi.junipermist.org.baseArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;

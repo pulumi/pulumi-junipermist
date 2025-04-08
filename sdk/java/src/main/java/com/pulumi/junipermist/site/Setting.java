@@ -56,57 +56,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.junipermist.site.Setting;
- * import com.pulumi.junipermist.site.SettingArgs;
- * import com.pulumi.junipermist.site.inputs.SettingAutoUpgradeArgs;
- * import com.pulumi.junipermist.site.inputs.SettingProxyArgs;
- * import com.pulumi.junipermist.site.inputs.SettingRogueArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var siteOne = new Setting("siteOne", SettingArgs.builder()
- *             .siteId(terraformSite.id())
- *             .apUpdownThreshold(5)
- *             .deviceUpdownThreshold(5)
- *             .autoUpgrade(SettingAutoUpgradeArgs.builder()
- *                 .enabled(true)
- *                 .day_of_week("tue")
- *                 .time_of_day("02:00")
- *                 .version("beta")
- *                 .build())
- *             .configAutoRevert(true)
- *             .persistConfigOnDevice(true)
- *             .proxy(SettingProxyArgs.builder()
- *                 .url("http://myproxy:3128")
- *                 .build())
- *             .rogue(SettingRogueArgs.builder()
- *                 .enabled(true)
- *                 .honeypot_enabled(true)
- *                 .min_duration(5)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
