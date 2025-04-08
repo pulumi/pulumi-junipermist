@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var wxruleOne = new Wxrule("wxruleOne", WxruleArgs.builder()
  *             .orgId(terraformTest.id())
- *             .templateId(wlantempalteOne.id())
+ *             .templateId(wlantemplateOne.id())
  *             .srcWxtags(wxtagOne.id())
  *             .enabled(true)
  *             .action("allow")
@@ -98,14 +98,14 @@ public class Wxrule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.applyTags);
     }
     /**
-     * blocked apps (always blocking, ignoring action), the key of Get Application List
+     * Blocked apps (always blocking, ignoring action), the key of Get Application List
      * 
      */
     @Export(name="blockedApps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blockedApps;
 
     /**
-     * @return blocked apps (always blocking, ignoring action), the key of Get Application List
+     * @return Blocked apps (always blocking, ignoring action), the key of Get Application List
      * 
      */
     public Output<Optional<List<String>>> blockedApps() {
@@ -160,14 +160,14 @@ public class Wxrule extends com.pulumi.resources.CustomResource {
         return this.enabled;
     }
     /**
-     * the order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+     * Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
      * 
      */
     @Export(name="order", refs={Integer.class}, tree="[0]")
     private Output<Integer> order;
 
     /**
-     * @return the order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+     * @return Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
      * 
      */
     public Output<Integer> order() {
@@ -247,7 +247,6 @@ public class Wxrule extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

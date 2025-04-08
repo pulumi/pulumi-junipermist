@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetSwitchStatsDeviceSwitchStatApRedundancy {
     /**
-     * @return for a VC / stacked switches.
+     * @return For a VC / stacked switches.
      * 
      */
     private Map<String,GetSwitchStatsDeviceSwitchStatApRedundancyModules> modules;
@@ -23,7 +23,7 @@ public final class GetSwitchStatsDeviceSwitchStatApRedundancy {
 
     private GetSwitchStatsDeviceSwitchStatApRedundancy() {}
     /**
-     * @return for a VC / stacked switches.
+     * @return For a VC / stacked switches.
      * 
      */
     public Map<String,GetSwitchStatsDeviceSwitchStatApRedundancyModules> modules() {

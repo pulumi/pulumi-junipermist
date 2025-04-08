@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateOspfAreas
     {
         public readonly bool? IncludeLoopback;
-        public readonly ImmutableDictionary<string, Outputs.NetworktemplateOspfAreasOspfNetworks> OspfNetworks;
+        public readonly ImmutableDictionary<string, Outputs.NetworktemplateOspfAreasNetworks> Networks;
         /// <summary>
         /// OSPF type. enum: `default`, `nssa`, `stub`
         /// </summary>
@@ -24,12 +24,12 @@ namespace Pulumi.JuniperMist.Site.Outputs
         private NetworktemplateOspfAreas(
             bool? includeLoopback,
 
-            ImmutableDictionary<string, Outputs.NetworktemplateOspfAreasOspfNetworks> ospfNetworks,
+            ImmutableDictionary<string, Outputs.NetworktemplateOspfAreasNetworks> networks,
 
             string? type)
         {
             IncludeLoopback = includeLoopback;
-            OspfNetworks = ospfNetworks;
+            Networks = networks;
             Type = type;
         }
     }

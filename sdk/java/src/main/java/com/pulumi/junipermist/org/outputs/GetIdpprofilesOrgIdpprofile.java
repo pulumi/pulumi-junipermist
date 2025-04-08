@@ -24,7 +24,7 @@ public final class GetIdpprofilesOrgIdpprofile {
      */
     private Double createdTime;
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     private String id;
@@ -53,7 +53,7 @@ public final class GetIdpprofilesOrgIdpprofile {
         return this.createdTime;
     }
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     public String id() {

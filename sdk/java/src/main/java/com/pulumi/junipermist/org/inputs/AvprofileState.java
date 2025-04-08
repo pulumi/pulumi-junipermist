@@ -18,14 +18,14 @@ public final class AvprofileState extends com.pulumi.resources.ResourceArgs {
     public static final AvprofileState Empty = new AvprofileState();
 
     /**
-     * enum: `block`, `permit`
+     * enum: `block`, `log-and-permit`, `permit`
      * 
      */
     @Import(name="fallbackAction")
     private @Nullable Output<String> fallbackAction;
 
     /**
-     * @return enum: `block`, `permit`
+     * @return enum: `block`, `log-and-permit`, `permit`
      * 
      */
     public Optional<Output<String>> fallbackAction() {
@@ -121,7 +121,7 @@ public final class AvprofileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fallbackAction enum: `block`, `permit`
+         * @param fallbackAction enum: `block`, `log-and-permit`, `permit`
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class AvprofileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fallbackAction enum: `block`, `permit`
+         * @param fallbackAction enum: `block`, `log-and-permit`, `permit`
          * 
          * @return builder
          * 

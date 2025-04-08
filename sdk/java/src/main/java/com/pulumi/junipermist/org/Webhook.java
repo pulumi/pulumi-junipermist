@@ -203,6 +203,24 @@ public class Webhook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.secret);
     }
     /**
+     * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+     * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+     * Topics)
+     * 
+     */
+    @Export(name="singleEventPerMessage", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> singleEventPerMessage;
+
+    /**
+     * @return Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+     * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+     * Topics)
+     * 
+     */
+    public Output<Optional<Boolean>> singleEventPerMessage() {
+        return Codegen.optional(this.singleEventPerMessage);
+    }
+    /**
      * Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
      * the webhook receiver is configured to accept it.
      * 
@@ -219,14 +237,14 @@ public class Webhook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.splunkToken);
     }
     /**
-     * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-updowns`, `device-events`, `mxedge-events`, `nac-accounting`, `nac_events`
+     * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
      * 
      */
     @Export(name="topics", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> topics;
 
     /**
-     * @return enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-updowns`, `device-events`, `mxedge-events`, `nac-accounting`, `nac_events`
+     * @return enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
      * 
      */
     public Output<List<String>> topics() {
@@ -306,7 +324,6 @@ public class Webhook extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .additionalSecretOutputs(List.of(
                 "oauth2ClientSecret",
                 "oauth2Password",

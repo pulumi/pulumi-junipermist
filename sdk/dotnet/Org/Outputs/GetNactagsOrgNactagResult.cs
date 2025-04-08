@@ -25,12 +25,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// If `type`==`egress_vlan_names`, list of egress vlans to return
         /// </summary>
         public readonly ImmutableArray<string> EgressVlanNames;
+        public readonly string GbpTag;
         /// <summary>
-        /// If `type`==`gbp_tag`
-        /// </summary>
-        public readonly int GbpTag;
-        /// <summary>
-        /// Unique ID of the object instance in the Mist Organnization
+        /// Unique ID of the object instance in the Mist Organization
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -97,7 +94,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             ImmutableArray<string> egressVlanNames,
 
-            int gbpTag,
+            string gbpTag,
 
             string id,
 

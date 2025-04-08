@@ -25,7 +25,7 @@ class GatewayClusterArgs:
                  site_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a GatewayCluster resource.
-        :param pulumi.Input[Sequence[pulumi.Input['GatewayClusterNodeArgs']]] nodes: when replacing a node, either mac has to remain the same as existing cluster
+        :param pulumi.Input[Sequence[pulumi.Input['GatewayClusterNodeArgs']]] nodes: When replacing a node, either mac has to remain the same as existing cluster
         """
         pulumi.set(__self__, "nodes", nodes)
         pulumi.set(__self__, "site_id", site_id)
@@ -34,7 +34,7 @@ class GatewayClusterArgs:
     @pulumi.getter
     def nodes(self) -> pulumi.Input[Sequence[pulumi.Input['GatewayClusterNodeArgs']]]:
         """
-        when replacing a node, either mac has to remain the same as existing cluster
+        When replacing a node, either mac has to remain the same as existing cluster
         """
         return pulumi.get(self, "nodes")
 
@@ -59,7 +59,7 @@ class _GatewayClusterState:
                  site_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GatewayCluster resources.
-        :param pulumi.Input[Sequence[pulumi.Input['GatewayClusterNodeArgs']]] nodes: when replacing a node, either mac has to remain the same as existing cluster
+        :param pulumi.Input[Sequence[pulumi.Input['GatewayClusterNodeArgs']]] nodes: When replacing a node, either mac has to remain the same as existing cluster
         """
         if nodes is not None:
             pulumi.set(__self__, "nodes", nodes)
@@ -70,7 +70,7 @@ class _GatewayClusterState:
     @pulumi.getter
     def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GatewayClusterNodeArgs']]]]:
         """
-        when replacing a node, either mac has to remain the same as existing cluster
+        When replacing a node, either mac has to remain the same as existing cluster
         """
         return pulumi.get(self, "nodes")
 
@@ -138,7 +138,7 @@ class GatewayCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]] nodes: when replacing a node, either mac has to remain the same as existing cluster
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]] nodes: When replacing a node, either mac has to remain the same as existing cluster
         """
         ...
     @overload
@@ -237,7 +237,7 @@ class GatewayCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]] nodes: when replacing a node, either mac has to remain the same as existing cluster
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]] nodes: When replacing a node, either mac has to remain the same as existing cluster
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -251,7 +251,7 @@ class GatewayCluster(pulumi.CustomResource):
     @pulumi.getter
     def nodes(self) -> pulumi.Output[Sequence['outputs.GatewayClusterNode']]:
         """
-        when replacing a node, either mac has to remain the same as existing cluster
+        When replacing a node, either mac has to remain the same as existing cluster
         """
         return pulumi.get(self, "nodes")
 

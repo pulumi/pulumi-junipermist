@@ -18,7 +18,7 @@ import (
 //
 // > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `site.Networktemplate` resource
 //
-// !> Only ONE `site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+// !> Only ONE `site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
 //
 // ## Import
 //
@@ -35,7 +35,7 @@ type Setting struct {
 	Analytic SettingAnalyticPtrOutput `pulumi:"analytic"`
 	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
 	// `deviceUpdownThreshold` is ignored.
-	ApUpdownThreshold pulumi.IntOutput `pulumi:"apUpdownThreshold"`
+	ApUpdownThreshold pulumi.IntPtrOutput `pulumi:"apUpdownThreshold"`
 	// Auto Upgrade Settings
 	AutoUpgrade  SettingAutoUpgradePtrOutput `pulumi:"autoUpgrade"`
 	BlacklistUrl pulumi.StringOutput         `pulumi:"blacklistUrl"`
@@ -47,9 +47,10 @@ type Setting struct {
 	ConfigPushPolicy SettingConfigPushPolicyPtrOutput `pulumi:"configPushPolicy"`
 	// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
 	CriticalUrlMonitoring SettingCriticalUrlMonitoringPtrOutput `pulumi:"criticalUrlMonitoring"`
-	// By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
-	// is desired, use the following
-	DeviceUpdownThreshold pulumi.IntOutput `pulumi:"deviceUpdownThreshold"`
+	// By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
+	// type is desired, use the following
+	DeviceUpdownThreshold pulumi.IntPtrOutput `pulumi:"deviceUpdownThreshold"`
+	EnableUnii4           pulumi.BoolOutput   `pulumi:"enableUnii4"`
 	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
 	// ranges for the same day
 	Engagement SettingEngagementPtrOutput `pulumi:"engagement"`
@@ -57,7 +58,7 @@ type Setting struct {
 	GatewayMgmt SettingGatewayMgmtPtrOutput `pulumi:"gatewayMgmt"`
 	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 	// `deviceUpdownThreshold` is ignored.
-	GatewayUpdownThreshold pulumi.IntOutput           `pulumi:"gatewayUpdownThreshold"`
+	GatewayUpdownThreshold pulumi.IntPtrOutput        `pulumi:"gatewayUpdownThreshold"`
 	JuniperSrx             SettingJuniperSrxPtrOutput `pulumi:"juniperSrx"`
 	// LED AP settings
 	Led SettingLedPtrOutput `pulumi:"led"`
@@ -68,16 +69,16 @@ type Setting struct {
 	// Proxy Configuration to talk to Mist
 	Proxy SettingProxyPtrOutput `pulumi:"proxy"`
 	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
-	RemoveExistingConfigs pulumi.BoolOutput `pulumi:"removeExistingConfigs"`
+	RemoveExistingConfigs pulumi.BoolPtrOutput `pulumi:"removeExistingConfigs"`
 	// Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
 	// serial number, battery %, temperature, humidity)
-	ReportGatt pulumi.BoolOutput `pulumi:"reportGatt"`
+	ReportGatt pulumi.BoolPtrOutput `pulumi:"reportGatt"`
 	// Rogue site settings
 	Rogue SettingRoguePtrOutput `pulumi:"rogue"`
 	// Managed mobility
 	Rtsa SettingRtsaPtrOutput `pulumi:"rtsa"`
 	// Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-	// window, there are more than Y distinct client encountring over X failures
+	// window, there are more than Y distinct client encountering over X failures
 	SimpleAlert SettingSimpleAlertPtrOutput `pulumi:"simpleAlert"`
 	SiteId      pulumi.StringOutput         `pulumi:"siteId"`
 	Skyatp      SettingSkyatpPtrOutput      `pulumi:"skyatp"`
@@ -88,16 +89,16 @@ type Setting struct {
 	Ssr     SettingSsrPtrOutput      `pulumi:"ssr"`
 	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
-	SwitchUpdownThreshold pulumi.IntOutput              `pulumi:"switchUpdownThreshold"`
+	SwitchUpdownThreshold pulumi.IntPtrOutput           `pulumi:"switchUpdownThreshold"`
 	SyntheticTest         SettingSyntheticTestPtrOutput `pulumi:"syntheticTest"`
 	// Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
-	TrackAnonymousDevices pulumi.BoolOutput `pulumi:"trackAnonymousDevices"`
+	TrackAnonymousDevices pulumi.BoolPtrOutput `pulumi:"trackAnonymousDevices"`
 	// AP Uplink port configuration
 	UplinkPortConfig SettingUplinkPortConfigPtrOutput `pulumi:"uplinkPortConfig"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapOutput `pulumi:"vars"`
 	Vna  SettingVnaPtrOutput    `pulumi:"vna"`
-	// Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+	// Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
 	VsInstance        SettingVsInstanceMapOutput `pulumi:"vsInstance"`
 	WanVna            SettingWanVnaPtrOutput     `pulumi:"wanVna"`
 	WatchedStationUrl pulumi.StringOutput        `pulumi:"watchedStationUrl"`
@@ -159,9 +160,10 @@ type settingState struct {
 	ConfigPushPolicy *SettingConfigPushPolicy `pulumi:"configPushPolicy"`
 	// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
 	CriticalUrlMonitoring *SettingCriticalUrlMonitoring `pulumi:"criticalUrlMonitoring"`
-	// By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
-	// is desired, use the following
-	DeviceUpdownThreshold *int `pulumi:"deviceUpdownThreshold"`
+	// By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
+	// type is desired, use the following
+	DeviceUpdownThreshold *int  `pulumi:"deviceUpdownThreshold"`
+	EnableUnii4           *bool `pulumi:"enableUnii4"`
 	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
 	// ranges for the same day
 	Engagement *SettingEngagement `pulumi:"engagement"`
@@ -189,7 +191,7 @@ type settingState struct {
 	// Managed mobility
 	Rtsa *SettingRtsa `pulumi:"rtsa"`
 	// Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-	// window, there are more than Y distinct client encountring over X failures
+	// window, there are more than Y distinct client encountering over X failures
 	SimpleAlert *SettingSimpleAlert `pulumi:"simpleAlert"`
 	SiteId      *string             `pulumi:"siteId"`
 	Skyatp      *SettingSkyatp      `pulumi:"skyatp"`
@@ -209,7 +211,7 @@ type settingState struct {
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
 	Vna  *SettingVna       `pulumi:"vna"`
-	// Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+	// Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
 	VsInstance        map[string]SettingVsInstance `pulumi:"vsInstance"`
 	WanVna            *SettingWanVna               `pulumi:"wanVna"`
 	WatchedStationUrl *string                      `pulumi:"watchedStationUrl"`
@@ -239,9 +241,10 @@ type SettingState struct {
 	ConfigPushPolicy SettingConfigPushPolicyPtrInput
 	// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
 	CriticalUrlMonitoring SettingCriticalUrlMonitoringPtrInput
-	// By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
-	// is desired, use the following
+	// By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
+	// type is desired, use the following
 	DeviceUpdownThreshold pulumi.IntPtrInput
+	EnableUnii4           pulumi.BoolPtrInput
 	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
 	// ranges for the same day
 	Engagement SettingEngagementPtrInput
@@ -269,7 +272,7 @@ type SettingState struct {
 	// Managed mobility
 	Rtsa SettingRtsaPtrInput
 	// Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-	// window, there are more than Y distinct client encountring over X failures
+	// window, there are more than Y distinct client encountering over X failures
 	SimpleAlert SettingSimpleAlertPtrInput
 	SiteId      pulumi.StringPtrInput
 	Skyatp      SettingSkyatpPtrInput
@@ -289,7 +292,7 @@ type SettingState struct {
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
 	Vna  SettingVnaPtrInput
-	// Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+	// Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
 	VsInstance        SettingVsInstanceMapInput
 	WanVna            SettingWanVnaPtrInput
 	WatchedStationUrl pulumi.StringPtrInput
@@ -322,9 +325,10 @@ type settingArgs struct {
 	ConfigPushPolicy *SettingConfigPushPolicy `pulumi:"configPushPolicy"`
 	// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
 	CriticalUrlMonitoring *SettingCriticalUrlMonitoring `pulumi:"criticalUrlMonitoring"`
-	// By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
-	// is desired, use the following
-	DeviceUpdownThreshold *int `pulumi:"deviceUpdownThreshold"`
+	// By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
+	// type is desired, use the following
+	DeviceUpdownThreshold *int  `pulumi:"deviceUpdownThreshold"`
+	EnableUnii4           *bool `pulumi:"enableUnii4"`
 	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
 	// ranges for the same day
 	Engagement *SettingEngagement `pulumi:"engagement"`
@@ -352,7 +356,7 @@ type settingArgs struct {
 	// Managed mobility
 	Rtsa *SettingRtsa `pulumi:"rtsa"`
 	// Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-	// window, there are more than Y distinct client encountring over X failures
+	// window, there are more than Y distinct client encountering over X failures
 	SimpleAlert *SettingSimpleAlert `pulumi:"simpleAlert"`
 	SiteId      string              `pulumi:"siteId"`
 	Skyatp      *SettingSkyatp      `pulumi:"skyatp"`
@@ -372,7 +376,7 @@ type settingArgs struct {
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
 	Vna  *SettingVna       `pulumi:"vna"`
-	// Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+	// Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
 	VsInstance map[string]SettingVsInstance `pulumi:"vsInstance"`
 	WanVna     *SettingWanVna               `pulumi:"wanVna"`
 	// WIDS site settings
@@ -400,9 +404,10 @@ type SettingArgs struct {
 	ConfigPushPolicy SettingConfigPushPolicyPtrInput
 	// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
 	CriticalUrlMonitoring SettingCriticalUrlMonitoringPtrInput
-	// By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
-	// is desired, use the following
+	// By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
+	// type is desired, use the following
 	DeviceUpdownThreshold pulumi.IntPtrInput
+	EnableUnii4           pulumi.BoolPtrInput
 	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
 	// ranges for the same day
 	Engagement SettingEngagementPtrInput
@@ -430,7 +435,7 @@ type SettingArgs struct {
 	// Managed mobility
 	Rtsa SettingRtsaPtrInput
 	// Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-	// window, there are more than Y distinct client encountring over X failures
+	// window, there are more than Y distinct client encountering over X failures
 	SimpleAlert SettingSimpleAlertPtrInput
 	SiteId      pulumi.StringInput
 	Skyatp      SettingSkyatpPtrInput
@@ -450,7 +455,7 @@ type SettingArgs struct {
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
 	Vna  SettingVnaPtrInput
-	// Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+	// Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
 	VsInstance SettingVsInstanceMapInput
 	WanVna     SettingWanVnaPtrInput
 	// WIDS site settings
@@ -555,8 +560,8 @@ func (o SettingOutput) Analytic() SettingAnalyticPtrOutput {
 
 // Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
 // `deviceUpdownThreshold` is ignored.
-func (o SettingOutput) ApUpdownThreshold() pulumi.IntOutput {
-	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.ApUpdownThreshold }).(pulumi.IntOutput)
+func (o SettingOutput) ApUpdownThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.ApUpdownThreshold }).(pulumi.IntPtrOutput)
 }
 
 // Auto Upgrade Settings
@@ -588,10 +593,14 @@ func (o SettingOutput) CriticalUrlMonitoring() SettingCriticalUrlMonitoringPtrOu
 	return o.ApplyT(func(v *Setting) SettingCriticalUrlMonitoringPtrOutput { return v.CriticalUrlMonitoring }).(SettingCriticalUrlMonitoringPtrOutput)
 }
 
-// By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
-// is desired, use the following
-func (o SettingOutput) DeviceUpdownThreshold() pulumi.IntOutput {
-	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.DeviceUpdownThreshold }).(pulumi.IntOutput)
+// By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
+// type is desired, use the following
+func (o SettingOutput) DeviceUpdownThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.DeviceUpdownThreshold }).(pulumi.IntPtrOutput)
+}
+
+func (o SettingOutput) EnableUnii4() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.EnableUnii4 }).(pulumi.BoolOutput)
 }
 
 // **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
@@ -607,8 +616,8 @@ func (o SettingOutput) GatewayMgmt() SettingGatewayMgmtPtrOutput {
 
 // Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 // `deviceUpdownThreshold` is ignored.
-func (o SettingOutput) GatewayUpdownThreshold() pulumi.IntOutput {
-	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.GatewayUpdownThreshold }).(pulumi.IntOutput)
+func (o SettingOutput) GatewayUpdownThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.GatewayUpdownThreshold }).(pulumi.IntPtrOutput)
 }
 
 func (o SettingOutput) JuniperSrx() SettingJuniperSrxPtrOutput {
@@ -636,14 +645,14 @@ func (o SettingOutput) Proxy() SettingProxyPtrOutput {
 }
 
 // By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
-func (o SettingOutput) RemoveExistingConfigs() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.RemoveExistingConfigs }).(pulumi.BoolOutput)
+func (o SettingOutput) RemoveExistingConfigs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.BoolPtrOutput { return v.RemoveExistingConfigs }).(pulumi.BoolPtrOutput)
 }
 
 // Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
 // serial number, battery %, temperature, humidity)
-func (o SettingOutput) ReportGatt() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.ReportGatt }).(pulumi.BoolOutput)
+func (o SettingOutput) ReportGatt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.BoolPtrOutput { return v.ReportGatt }).(pulumi.BoolPtrOutput)
 }
 
 // Rogue site settings
@@ -657,7 +666,7 @@ func (o SettingOutput) Rtsa() SettingRtsaPtrOutput {
 }
 
 // Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-// window, there are more than Y distinct client encountring over X failures
+// window, there are more than Y distinct client encountering over X failures
 func (o SettingOutput) SimpleAlert() SettingSimpleAlertPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingSimpleAlertPtrOutput { return v.SimpleAlert }).(SettingSimpleAlertPtrOutput)
 }
@@ -686,8 +695,8 @@ func (o SettingOutput) Ssr() SettingSsrPtrOutput {
 
 // Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 // `deviceUpdownThreshold` is ignored.
-func (o SettingOutput) SwitchUpdownThreshold() pulumi.IntOutput {
-	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.SwitchUpdownThreshold }).(pulumi.IntOutput)
+func (o SettingOutput) SwitchUpdownThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.SwitchUpdownThreshold }).(pulumi.IntPtrOutput)
 }
 
 func (o SettingOutput) SyntheticTest() SettingSyntheticTestPtrOutput {
@@ -695,8 +704,8 @@ func (o SettingOutput) SyntheticTest() SettingSyntheticTestPtrOutput {
 }
 
 // Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
-func (o SettingOutput) TrackAnonymousDevices() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.TrackAnonymousDevices }).(pulumi.BoolOutput)
+func (o SettingOutput) TrackAnonymousDevices() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.BoolPtrOutput { return v.TrackAnonymousDevices }).(pulumi.BoolPtrOutput)
 }
 
 // AP Uplink port configuration
@@ -713,7 +722,7 @@ func (o SettingOutput) Vna() SettingVnaPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingVnaPtrOutput { return v.Vna }).(SettingVnaPtrOutput)
 }
 
-// Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+// Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
 func (o SettingOutput) VsInstance() SettingVsInstanceMapOutput {
 	return o.ApplyT(func(v *Setting) SettingVsInstanceMapOutput { return v.VsInstance }).(SettingVsInstanceMapOutput)
 }

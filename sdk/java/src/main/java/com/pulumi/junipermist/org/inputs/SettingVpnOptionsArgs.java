@@ -24,14 +24,14 @@ public final class SettingVpnOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * equiring /12 or bigger to support 16 private IPs for 65535 gateways
+     * requiring /12 or bigger to support 16 private IPs for 65535 gateways
      * 
      */
     @Import(name="stSubnet")
     private @Nullable Output<String> stSubnet;
 
     /**
-     * @return equiring /12 or bigger to support 16 private IPs for 65535 gateways
+     * @return requiring /12 or bigger to support 16 private IPs for 65535 gateways
      * 
      */
     public Optional<Output<String>> stSubnet() {
@@ -73,7 +73,7 @@ public final class SettingVpnOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param stSubnet equiring /12 or bigger to support 16 private IPs for 65535 gateways
+         * @param stSubnet requiring /12 or bigger to support 16 private IPs for 65535 gateways
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class SettingVpnOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param stSubnet equiring /12 or bigger to support 16 private IPs for 65535 gateways
+         * @param stSubnet requiring /12 or bigger to support 16 private IPs for 65535 gateways
          * 
          * @return builder
          * 

@@ -14,13 +14,13 @@ namespace Pulumi.JuniperMist.Outputs
     public sealed class GetConstCountriesConstCountryResult
     {
         /// <summary>
-        /// country code, in two-character
+        /// Country code, in two-character
         /// </summary>
         public readonly string Alpha2;
         public readonly bool Certified;
         public readonly string Name;
         /// <summary>
-        /// country code, ISO 3166-1 numeric
+        /// Country code, ISO 3166-1 numeric
         /// </summary>
         public readonly double Numeric;
 

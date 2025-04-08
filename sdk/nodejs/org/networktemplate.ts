@@ -63,11 +63,14 @@ export class Networktemplate extends pulumi.CustomResource {
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    public readonly dnsServers!: pulumi.Output<string[] | undefined>;
+    public readonly dnsServers!: pulumi.Output<string[]>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    public readonly dnsSuffixes!: pulumi.Output<string[] | undefined>;
+    public readonly dnsSuffixes!: pulumi.Output<string[]>;
+    /**
+     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     */
     public readonly extraRoutes!: pulumi.Output<{[key: string]: outputs.org.NetworktemplateExtraRoutes} | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -85,7 +88,7 @@ export class Networktemplate extends pulumi.CustomResource {
     /**
      * List of NTP servers specific to this device. By default, those in Site Settings will be used
      */
-    public readonly ntpServers!: pulumi.Output<string[] | undefined>;
+    public readonly ntpServers!: pulumi.Output<string[]>;
     public readonly orgId!: pulumi.Output<string>;
     /**
      * Junos OSPF areas
@@ -94,7 +97,7 @@ export class Networktemplate extends pulumi.CustomResource {
     /**
      * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      */
     public readonly portMirroring!: pulumi.Output<{[key: string]: outputs.org.NetworktemplatePortMirroring} | undefined>;
     /**
@@ -112,7 +115,7 @@ export class Networktemplate extends pulumi.CustomResource {
     public readonly removeExistingConfigs!: pulumi.Output<boolean>;
     public readonly snmpConfig!: pulumi.Output<outputs.org.NetworktemplateSnmpConfig | undefined>;
     /**
-     * Defines custom switch configuration based on different criterias
+     * Defines custom switch configuration based on different criteria
      */
     public readonly switchMatching!: pulumi.Output<outputs.org.NetworktemplateSwitchMatching | undefined>;
     /**
@@ -219,6 +222,9 @@ export interface NetworktemplateState {
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateExtraRoutes>}>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -245,7 +251,7 @@ export interface NetworktemplateState {
     /**
      * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplatePortMirroring>}>;
     /**
@@ -263,7 +269,7 @@ export interface NetworktemplateState {
     removeExistingConfigs?: pulumi.Input<boolean>;
     snmpConfig?: pulumi.Input<inputs.org.NetworktemplateSnmpConfig>;
     /**
-     * Defines custom switch configuration based on different criterias
+     * Defines custom switch configuration based on different criteria
      */
     switchMatching?: pulumi.Input<inputs.org.NetworktemplateSwitchMatching>;
     /**
@@ -299,6 +305,9 @@ export interface NetworktemplateArgs {
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateExtraRoutes>}>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -325,7 +334,7 @@ export interface NetworktemplateArgs {
     /**
      * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplatePortMirroring>}>;
     /**
@@ -343,7 +352,7 @@ export interface NetworktemplateArgs {
     removeExistingConfigs?: pulumi.Input<boolean>;
     snmpConfig?: pulumi.Input<inputs.org.NetworktemplateSnmpConfig>;
     /**
-     * Defines custom switch configuration based on different criterias
+     * Defines custom switch configuration based on different criteria
      */
     switchMatching?: pulumi.Input<inputs.org.NetworktemplateSwitchMatching>;
     /**

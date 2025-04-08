@@ -5,6 +5,7 @@ package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatModuleStatCpuStat;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatModuleStatError;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatModuleStatFan;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatModuleStatPic;
@@ -12,6 +13,7 @@ import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatModul
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatModuleStatPsus;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatModuleStatTemperature;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatModuleStatVcLink;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -23,16 +25,22 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
     private String backupVersion;
     private String biosVersion;
     private String cpldVersion;
+    private GetSwitchStatsDeviceSwitchStatModuleStatCpuStat cpuStat;
     /**
-     * @return used to report all error states the device node is running into.
-     * An error should always have `type` and `since` fields, and could have some other fields specific to that type.
+     * @return Used to report all error states the device node is running into. An error should always have `type` and `since` fields, and could have some other fields specific to that type.
      * 
      */
     private List<GetSwitchStatsDeviceSwitchStatModuleStatError> errors;
     private List<GetSwitchStatsDeviceSwitchStatModuleStatFan> fans;
     private Integer fpcIdx;
     private String fpgaVersion;
+    /**
+     * @return Last seen timestamp
+     * 
+     */
     private Double lastSeen;
+    private Boolean locating;
+    private String mac;
     private String model;
     private String opticsCpldVersion;
     private String pendingVersion;
@@ -47,12 +55,13 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
     private String status;
     private List<GetSwitchStatsDeviceSwitchStatModuleStatTemperature> temperatures;
     private String tmcFpgaVersion;
+    private String type;
     private String ubootVersion;
     private Integer uptime;
     private List<GetSwitchStatsDeviceSwitchStatModuleStatVcLink> vcLinks;
     private String vcMode;
     /**
-     * @return master / backup / linecard
+     * @return enum: `master`, `backup`, `linecard`
      * 
      */
     private String vcRole;
@@ -69,9 +78,11 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
     public String cpldVersion() {
         return this.cpldVersion;
     }
+    public GetSwitchStatsDeviceSwitchStatModuleStatCpuStat cpuStat() {
+        return this.cpuStat;
+    }
     /**
-     * @return used to report all error states the device node is running into.
-     * An error should always have `type` and `since` fields, and could have some other fields specific to that type.
+     * @return Used to report all error states the device node is running into. An error should always have `type` and `since` fields, and could have some other fields specific to that type.
      * 
      */
     public List<GetSwitchStatsDeviceSwitchStatModuleStatError> errors() {
@@ -86,8 +97,18 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
     public String fpgaVersion() {
         return this.fpgaVersion;
     }
+    /**
+     * @return Last seen timestamp
+     * 
+     */
     public Double lastSeen() {
         return this.lastSeen;
+    }
+    public Boolean locating() {
+        return this.locating;
+    }
+    public String mac() {
+        return this.mac;
     }
     public String model() {
         return this.model;
@@ -131,6 +152,9 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
     public String tmcFpgaVersion() {
         return this.tmcFpgaVersion;
     }
+    public String type() {
+        return this.type;
+    }
     public String ubootVersion() {
         return this.ubootVersion;
     }
@@ -144,7 +168,7 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
         return this.vcMode;
     }
     /**
-     * @return master / backup / linecard
+     * @return enum: `master`, `backup`, `linecard`
      * 
      */
     public String vcRole() {
@@ -169,11 +193,14 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
         private String backupVersion;
         private String biosVersion;
         private String cpldVersion;
+        private GetSwitchStatsDeviceSwitchStatModuleStatCpuStat cpuStat;
         private List<GetSwitchStatsDeviceSwitchStatModuleStatError> errors;
         private List<GetSwitchStatsDeviceSwitchStatModuleStatFan> fans;
         private Integer fpcIdx;
         private String fpgaVersion;
         private Double lastSeen;
+        private Boolean locating;
+        private String mac;
         private String model;
         private String opticsCpldVersion;
         private String pendingVersion;
@@ -188,6 +215,7 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
         private String status;
         private List<GetSwitchStatsDeviceSwitchStatModuleStatTemperature> temperatures;
         private String tmcFpgaVersion;
+        private String type;
         private String ubootVersion;
         private Integer uptime;
         private List<GetSwitchStatsDeviceSwitchStatModuleStatVcLink> vcLinks;
@@ -201,11 +229,14 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
     	      this.backupVersion = defaults.backupVersion;
     	      this.biosVersion = defaults.biosVersion;
     	      this.cpldVersion = defaults.cpldVersion;
+    	      this.cpuStat = defaults.cpuStat;
     	      this.errors = defaults.errors;
     	      this.fans = defaults.fans;
     	      this.fpcIdx = defaults.fpcIdx;
     	      this.fpgaVersion = defaults.fpgaVersion;
     	      this.lastSeen = defaults.lastSeen;
+    	      this.locating = defaults.locating;
+    	      this.mac = defaults.mac;
     	      this.model = defaults.model;
     	      this.opticsCpldVersion = defaults.opticsCpldVersion;
     	      this.pendingVersion = defaults.pendingVersion;
@@ -220,6 +251,7 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
     	      this.status = defaults.status;
     	      this.temperatures = defaults.temperatures;
     	      this.tmcFpgaVersion = defaults.tmcFpgaVersion;
+    	      this.type = defaults.type;
     	      this.ubootVersion = defaults.ubootVersion;
     	      this.uptime = defaults.uptime;
     	      this.vcLinks = defaults.vcLinks;
@@ -251,6 +283,14 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
               throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatModuleStat", "cpldVersion");
             }
             this.cpldVersion = cpldVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cpuStat(GetSwitchStatsDeviceSwitchStatModuleStatCpuStat cpuStat) {
+            if (cpuStat == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatModuleStat", "cpuStat");
+            }
+            this.cpuStat = cpuStat;
             return this;
         }
         @CustomType.Setter
@@ -297,6 +337,22 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
               throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatModuleStat", "lastSeen");
             }
             this.lastSeen = lastSeen;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder locating(Boolean locating) {
+            if (locating == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatModuleStat", "locating");
+            }
+            this.locating = locating;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mac(String mac) {
+            if (mac == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatModuleStat", "mac");
+            }
+            this.mac = mac;
             return this;
         }
         @CustomType.Setter
@@ -421,6 +477,14 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
             return this;
         }
         @CustomType.Setter
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatModuleStat", "type");
+            }
+            this.type = type;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ubootVersion(String ubootVersion) {
             if (ubootVersion == null) {
               throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatModuleStat", "ubootVersion");
@@ -484,11 +548,14 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
             _resultValue.backupVersion = backupVersion;
             _resultValue.biosVersion = biosVersion;
             _resultValue.cpldVersion = cpldVersion;
+            _resultValue.cpuStat = cpuStat;
             _resultValue.errors = errors;
             _resultValue.fans = fans;
             _resultValue.fpcIdx = fpcIdx;
             _resultValue.fpgaVersion = fpgaVersion;
             _resultValue.lastSeen = lastSeen;
+            _resultValue.locating = locating;
+            _resultValue.mac = mac;
             _resultValue.model = model;
             _resultValue.opticsCpldVersion = opticsCpldVersion;
             _resultValue.pendingVersion = pendingVersion;
@@ -503,6 +570,7 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
             _resultValue.status = status;
             _resultValue.temperatures = temperatures;
             _resultValue.tmcFpgaVersion = tmcFpgaVersion;
+            _resultValue.type = type;
             _resultValue.ubootVersion = ubootVersion;
             _resultValue.uptime = uptime;
             _resultValue.vcLinks = vcLinks;

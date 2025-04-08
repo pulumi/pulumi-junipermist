@@ -559,6 +559,20 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return this.disable11ax;
     }
     /**
+     * To disable Wi-Fi 7 EHT IEs
+     * 
+     */
+    @Export(name="disable11be", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> disable11be;
+
+    /**
+     * @return To disable Wi-Fi 7 EHT IEs
+     * 
+     */
+    public Output<Boolean> disable11be() {
+        return this.disable11be;
+    }
+    /**
      * To disable ht or vht rates
      * 
      */
@@ -724,7 +738,7 @@ public class Wlan extends com.pulumi.resources.CustomResource {
     }
     /**
      * By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-     * client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+     * client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
      * 
      */
     @Export(name="enableWirelessBridging", refs={Boolean.class}, tree="[0]")
@@ -732,7 +746,7 @@ public class Wlan extends com.pulumi.resources.CustomResource {
 
     /**
      * @return By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-     * client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+     * client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
      * 
      */
     public Output<Boolean> enableWirelessBridging() {
@@ -973,14 +987,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return this.mxtunnelIds;
     }
     /**
-     * When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
      * 
      */
     @Export(name="mxtunnelNames", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> mxtunnelNames;
 
     /**
-     * @return When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * @return When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
      * 
      */
     public Output<List<String>> mxtunnelNames() {
@@ -1255,14 +1269,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vlanId);
     }
     /**
-     * if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+     * if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
      * 
      */
     @Export(name="vlanIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> vlanIds;
 
     /**
-     * @return if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+     * @return if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
      * 
      */
     public Output<List<String>> vlanIds() {
@@ -1422,7 +1436,6 @@ public class Wlan extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

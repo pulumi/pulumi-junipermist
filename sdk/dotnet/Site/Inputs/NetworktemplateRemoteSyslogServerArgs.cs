@@ -36,7 +36,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Match { get; set; }
 
         [Input("port")]
-        public Input<int>? Port { get; set; }
+        public Input<string>? Port { get; set; }
 
         /// <summary>
         /// enum: `tcp`, `udp`

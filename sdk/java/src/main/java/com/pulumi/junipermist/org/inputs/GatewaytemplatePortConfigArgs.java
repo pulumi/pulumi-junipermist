@@ -377,17 +377,32 @@ public final class GatewaytemplatePortConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * If HA mode
+     * If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
+     * 
+     */
+    @Import(name="redundantGroup")
+    private @Nullable Output<Integer> redundantGroup;
+
+    /**
+     * @return If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
+     * 
+     */
+    public Optional<Output<Integer>> redundantGroup() {
+        return Optional.ofNullable(this.redundantGroup);
+    }
+
+    /**
+     * For SRX only and if HA Mode
      * 
      */
     @Import(name="rethIdx")
-    private @Nullable Output<Integer> rethIdx;
+    private @Nullable Output<String> rethIdx;
 
     /**
-     * @return If HA mode
+     * @return For SRX only and if HA Mode
      * 
      */
-    public Optional<Output<Integer>> rethIdx() {
+    public Optional<Output<String>> rethIdx() {
         return Optional.ofNullable(this.rethIdx);
     }
 
@@ -533,14 +548,14 @@ public final class GatewaytemplatePortConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+     * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;100.100.100.0/24&#34;)
      * 
      */
     @Import(name="wanExtraRoutes")
     private @Nullable Output<Map<String,GatewaytemplatePortConfigWanExtraRoutesArgs>> wanExtraRoutes;
 
     /**
-     * @return Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+     * @return Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;100.100.100.0/24&#34;)
      * 
      */
     public Optional<Output<Map<String,GatewaytemplatePortConfigWanExtraRoutesArgs>>> wanExtraRoutes() {
@@ -636,6 +651,7 @@ public final class GatewaytemplatePortConfigArgs extends com.pulumi.resources.Re
         this.portNetwork = $.portNetwork;
         this.preserveDscp = $.preserveDscp;
         this.redundant = $.redundant;
+        this.redundantGroup = $.redundantGroup;
         this.rethIdx = $.rethIdx;
         this.rethNode = $.rethNode;
         this.rethNodes = $.rethNodes;
@@ -1170,23 +1186,44 @@ public final class GatewaytemplatePortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param rethIdx If HA mode
+         * @param redundantGroup If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
          * 
          * @return builder
          * 
          */
-        public Builder rethIdx(@Nullable Output<Integer> rethIdx) {
+        public Builder redundantGroup(@Nullable Output<Integer> redundantGroup) {
+            $.redundantGroup = redundantGroup;
+            return this;
+        }
+
+        /**
+         * @param redundantGroup If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redundantGroup(Integer redundantGroup) {
+            return redundantGroup(Output.of(redundantGroup));
+        }
+
+        /**
+         * @param rethIdx For SRX only and if HA Mode
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rethIdx(@Nullable Output<String> rethIdx) {
             $.rethIdx = rethIdx;
             return this;
         }
 
         /**
-         * @param rethIdx If HA mode
+         * @param rethIdx For SRX only and if HA Mode
          * 
          * @return builder
          * 
          */
-        public Builder rethIdx(Integer rethIdx) {
+        public Builder rethIdx(String rethIdx) {
             return rethIdx(Output.of(rethIdx));
         }
 
@@ -1396,7 +1433,7 @@ public final class GatewaytemplatePortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param wanExtraRoutes Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+         * @param wanExtraRoutes Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;100.100.100.0/24&#34;)
          * 
          * @return builder
          * 
@@ -1407,7 +1444,7 @@ public final class GatewaytemplatePortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param wanExtraRoutes Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+         * @param wanExtraRoutes Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;100.100.100.0/24&#34;)
          * 
          * @return builder
          * 

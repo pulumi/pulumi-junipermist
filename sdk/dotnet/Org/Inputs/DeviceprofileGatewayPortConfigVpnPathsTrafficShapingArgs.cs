@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<int>? _classPercentages;
 
         /// <summary>
-        /// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+        /// percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
         /// </summary>
         public InputList<int> ClassPercentages
         {

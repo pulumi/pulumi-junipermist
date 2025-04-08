@@ -45,6 +45,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("disableOobDownAlarm")]
         public Input<bool>? DisableOobDownAlarm { get; set; }
 
+        [Input("fipsEnabled")]
+        public Input<bool>? FipsEnabled { get; set; }
+
         [Input("localAccounts")]
         private InputMap<Inputs.NetworktemplateSwitchMgmtLocalAccountsArgs>? _localAccounts;
 
@@ -57,11 +60,17 @@ namespace Pulumi.JuniperMist.Site.Inputs
             set => _localAccounts = value;
         }
 
+        /// <summary>
+        /// IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+        /// </summary>
         [Input("mxedgeProxyHost")]
         public Input<string>? MxedgeProxyHost { get; set; }
 
+        /// <summary>
+        /// Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
+        /// </summary>
         [Input("mxedgeProxyPort")]
-        public Input<int>? MxedgeProxyPort { get; set; }
+        public Input<string>? MxedgeProxyPort { get; set; }
 
         /// <summary>
         /// Restrict inbound-traffic to host

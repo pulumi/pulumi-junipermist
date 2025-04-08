@@ -93,14 +93,14 @@ public final class RftemplateModelSpecificBand24Args extends com.pulumi.resource
     }
 
     /**
-     * Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+     * tx power of the radio, null or 0 means auto, when power*min=power*max=power=0 to indicate power=0
      * 
      */
     @Import(name="power")
     private @Nullable Output<Integer> power;
 
     /**
-     * @return Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+     * @return tx power of the radio, null or 0 means auto, when power*min=power*max=power=0 to indicate power=0
      * 
      */
     public Optional<Output<Integer>> power() {
@@ -298,7 +298,7 @@ public final class RftemplateModelSpecificBand24Args extends com.pulumi.resource
         }
 
         /**
-         * @param power Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+         * @param power tx power of the radio, null or 0 means auto, when power*min=power*max=power=0 to indicate power=0
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class RftemplateModelSpecificBand24Args extends com.pulumi.resource
         }
 
         /**
-         * @param power Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+         * @param power tx power of the radio, null or 0 means auto, when power*min=power*max=power=0 to indicate power=0
          * 
          * @return builder
          * 

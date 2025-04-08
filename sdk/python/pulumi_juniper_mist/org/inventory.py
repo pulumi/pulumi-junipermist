@@ -22,25 +22,14 @@ __all__ = ['InventoryArgs', 'Inventory']
 class InventoryArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[str],
-                 devices: Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]] = None,
                  inventory: Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]] = None):
         """
         The set of arguments for constructing a Inventory resource.
-        :param pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]] devices: **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-               replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-               `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
         :param pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]] inventory: Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
                Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
                already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
         """
         pulumi.set(__self__, "org_id", org_id)
-        if devices is not None:
-            warnings.warn("""The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-Please update your configurations to use the `inventory` attribute.""", DeprecationWarning)
-            pulumi.log.warn("""devices is deprecated: The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-Please update your configurations to use the `inventory` attribute.""")
-        if devices is not None:
-            pulumi.set(__self__, "devices", devices)
         if inventory is not None:
             pulumi.set(__self__, "inventory", inventory)
 
@@ -52,22 +41,6 @@ Please update your configurations to use the `inventory` attribute.""")
     @org_id.setter
     def org_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "org_id", value)
-
-    @property
-    @pulumi.getter
-    @_utilities.deprecated("""The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-Please update your configurations to use the `inventory` attribute.""")
-    def devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]]:
-        """
-        **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-        replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-        `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
-        """
-        return pulumi.get(self, "devices")
-
-    @devices.setter
-    def devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]]):
-        pulumi.set(self, "devices", value)
 
     @property
     @pulumi.getter
@@ -87,45 +60,18 @@ Please update your configurations to use the `inventory` attribute.""")
 @pulumi.input_type
 class _InventoryState:
     def __init__(__self__, *,
-                 devices: Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]] = None,
                  inventory: Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Inventory resources.
-        :param pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]] devices: **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-               replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-               `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
         :param pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]] inventory: Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
                Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
                already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
         """
-        if devices is not None:
-            warnings.warn("""The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-Please update your configurations to use the `inventory` attribute.""", DeprecationWarning)
-            pulumi.log.warn("""devices is deprecated: The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-Please update your configurations to use the `inventory` attribute.""")
-        if devices is not None:
-            pulumi.set(__self__, "devices", devices)
         if inventory is not None:
             pulumi.set(__self__, "inventory", inventory)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
-
-    @property
-    @pulumi.getter
-    @_utilities.deprecated("""The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-Please update your configurations to use the `inventory` attribute.""")
-    def devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]]:
-        """
-        **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-        replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-        `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
-        """
-        return pulumi.get(self, "devices")
-
-    @devices.setter
-    def devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]]):
-        pulumi.set(self, "devices", value)
 
     @property
     @pulumi.getter
@@ -156,7 +102,6 @@ class Inventory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InventoryDeviceArgs', 'InventoryDeviceArgsDict']]]]] = None,
                  inventory: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -182,9 +127,6 @@ class Inventory(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InventoryDeviceArgs', 'InventoryDeviceArgsDict']]]] devices: **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-               replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-               `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]] inventory: Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
                Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
                already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
@@ -230,7 +172,6 @@ class Inventory(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InventoryDeviceArgs', 'InventoryDeviceArgsDict']]]]] = None,
                  inventory: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -242,7 +183,6 @@ class Inventory(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InventoryArgs.__new__(InventoryArgs)
 
-            __props__.__dict__["devices"] = devices
             __props__.__dict__["inventory"] = inventory
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
@@ -257,7 +197,6 @@ class Inventory(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InventoryDeviceArgs', 'InventoryDeviceArgsDict']]]]] = None,
             inventory: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]]] = None,
             org_id: Optional[pulumi.Input[str]] = None) -> 'Inventory':
         """
@@ -267,9 +206,6 @@ class Inventory(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InventoryDeviceArgs', 'InventoryDeviceArgsDict']]]] devices: **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-               replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-               `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]] inventory: Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
                Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
                already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
@@ -278,22 +214,9 @@ class Inventory(pulumi.CustomResource):
 
         __props__ = _InventoryState.__new__(_InventoryState)
 
-        __props__.__dict__["devices"] = devices
         __props__.__dict__["inventory"] = inventory
         __props__.__dict__["org_id"] = org_id
         return Inventory(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter
-    @_utilities.deprecated("""The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-Please update your configurations to use the `inventory` attribute.""")
-    def devices(self) -> pulumi.Output[Sequence['outputs.InventoryDevice']]:
-        """
-        **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-        replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-        `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
-        """
-        return pulumi.get(self, "devices")
 
     @property
     @pulumi.getter

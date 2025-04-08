@@ -64,7 +64,7 @@ namespace Pulumi.JuniperMist.Device
     public partial class GatewayCluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// when replacing a node, either mac has to remain the same as existing cluster
+        /// When replacing a node, either mac has to remain the same as existing cluster
         /// </summary>
         [Output("nodes")]
         public Output<ImmutableArray<Outputs.GatewayClusterNode>> Nodes { get; private set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.JuniperMist.Device
         private InputList<Inputs.GatewayClusterNodeArgs>? _nodes;
 
         /// <summary>
-        /// when replacing a node, either mac has to remain the same as existing cluster
+        /// When replacing a node, either mac has to remain the same as existing cluster
         /// </summary>
         public InputList<Inputs.GatewayClusterNodeArgs> Nodes
         {
@@ -146,7 +146,7 @@ namespace Pulumi.JuniperMist.Device
         private InputList<Inputs.GatewayClusterNodeGetArgs>? _nodes;
 
         /// <summary>
-        /// when replacing a node, either mac has to remain the same as existing cluster
+        /// When replacing a node, either mac has to remain the same as existing cluster
         /// </summary>
         public InputList<Inputs.GatewayClusterNodeGetArgs> Nodes
         {

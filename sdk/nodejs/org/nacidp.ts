@@ -128,27 +128,27 @@ export class Nacidp extends pulumi.CustomResource {
      */
     public readonly ldapCacerts!: pulumi.Output<string[] | undefined>;
     /**
-     * if `idpType`==`ldap`, LDAPS Client certificate
+     * If `idpType`==`ldap`, LDAPS Client certificate
      */
     public readonly ldapClientCert!: pulumi.Output<string | undefined>;
     /**
-     * if `idpType`==`ldap`, Key for the `ldapClientCert`
+     * If `idpType`==`ldap`, Key for the `ldapClientCert`
      */
     public readonly ldapClientKey!: pulumi.Output<string | undefined>;
     /**
-     * if `ldapType`==`custom`
+     * If `ldapType`==`custom`
      */
     public readonly ldapGroupAttr!: pulumi.Output<string | undefined>;
     /**
-     * if `ldapType`==`custom`
+     * If `ldapType`==`custom`
      */
     public readonly ldapGroupDn!: pulumi.Output<string | undefined>;
     /**
-     * if `idpType`==`ldap`, whether to recursively resolve LDAP groups
+     * If `idpType`==`ldap`, whether to recursively resolve LDAP groups
      */
     public readonly ldapResolveGroups!: pulumi.Output<boolean>;
     /**
-     * if `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+     * If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
      */
     public readonly ldapServerHosts!: pulumi.Output<string[] | undefined>;
     /**
@@ -164,7 +164,7 @@ export class Nacidp extends pulumi.CustomResource {
      */
     public readonly memberFilter!: pulumi.Output<string | undefined>;
     /**
-     * name
+     * Name
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -176,7 +176,7 @@ export class Nacidp extends pulumi.CustomResource {
      */
     public readonly oauthCcClientSecret!: pulumi.Output<string | undefined>;
     /**
-     * if `idpType`==`oauth`
+     * If `idpType`==`oauth`
      */
     public readonly oauthDiscoveryUrl!: pulumi.Output<string | undefined>;
     /**
@@ -184,11 +184,11 @@ export class Nacidp extends pulumi.CustomResource {
      */
     public readonly oauthPingIdentityRegion!: pulumi.Output<string>;
     /**
-     * if `idpType`==`oauth`, ropc = Resource Owner Password Credentials
+     * If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
      */
     public readonly oauthRopcClientId!: pulumi.Output<string | undefined>;
     /**
-     * if `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
+     * If `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
      */
     public readonly oauthRopcClientSecret!: pulumi.Output<string | undefined>;
     /**
@@ -201,11 +201,11 @@ export class Nacidp extends pulumi.CustomResource {
     public readonly oauthType!: pulumi.Output<string>;
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * if `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+     * If `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
      */
     public readonly scimEnabled!: pulumi.Output<boolean>;
     /**
-     * if `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+     * If `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
      */
     public readonly scimSecretToken!: pulumi.Output<string>;
 
@@ -319,27 +319,27 @@ export interface NacidpState {
      */
     ldapCacerts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * if `idpType`==`ldap`, LDAPS Client certificate
+     * If `idpType`==`ldap`, LDAPS Client certificate
      */
     ldapClientCert?: pulumi.Input<string>;
     /**
-     * if `idpType`==`ldap`, Key for the `ldapClientCert`
+     * If `idpType`==`ldap`, Key for the `ldapClientCert`
      */
     ldapClientKey?: pulumi.Input<string>;
     /**
-     * if `ldapType`==`custom`
+     * If `ldapType`==`custom`
      */
     ldapGroupAttr?: pulumi.Input<string>;
     /**
-     * if `ldapType`==`custom`
+     * If `ldapType`==`custom`
      */
     ldapGroupDn?: pulumi.Input<string>;
     /**
-     * if `idpType`==`ldap`, whether to recursively resolve LDAP groups
+     * If `idpType`==`ldap`, whether to recursively resolve LDAP groups
      */
     ldapResolveGroups?: pulumi.Input<boolean>;
     /**
-     * if `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+     * If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
      */
     ldapServerHosts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -355,7 +355,7 @@ export interface NacidpState {
      */
     memberFilter?: pulumi.Input<string>;
     /**
-     * name
+     * Name
      */
     name?: pulumi.Input<string>;
     /**
@@ -367,7 +367,7 @@ export interface NacidpState {
      */
     oauthCcClientSecret?: pulumi.Input<string>;
     /**
-     * if `idpType`==`oauth`
+     * If `idpType`==`oauth`
      */
     oauthDiscoveryUrl?: pulumi.Input<string>;
     /**
@@ -375,11 +375,11 @@ export interface NacidpState {
      */
     oauthPingIdentityRegion?: pulumi.Input<string>;
     /**
-     * if `idpType`==`oauth`, ropc = Resource Owner Password Credentials
+     * If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
      */
     oauthRopcClientId?: pulumi.Input<string>;
     /**
-     * if `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
+     * If `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
      */
     oauthRopcClientSecret?: pulumi.Input<string>;
     /**
@@ -392,11 +392,11 @@ export interface NacidpState {
     oauthType?: pulumi.Input<string>;
     orgId?: pulumi.Input<string>;
     /**
-     * if `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+     * If `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
      */
     scimEnabled?: pulumi.Input<boolean>;
     /**
-     * if `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+     * If `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
      */
     scimSecretToken?: pulumi.Input<string>;
 }
@@ -430,27 +430,27 @@ export interface NacidpArgs {
      */
     ldapCacerts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * if `idpType`==`ldap`, LDAPS Client certificate
+     * If `idpType`==`ldap`, LDAPS Client certificate
      */
     ldapClientCert?: pulumi.Input<string>;
     /**
-     * if `idpType`==`ldap`, Key for the `ldapClientCert`
+     * If `idpType`==`ldap`, Key for the `ldapClientCert`
      */
     ldapClientKey?: pulumi.Input<string>;
     /**
-     * if `ldapType`==`custom`
+     * If `ldapType`==`custom`
      */
     ldapGroupAttr?: pulumi.Input<string>;
     /**
-     * if `ldapType`==`custom`
+     * If `ldapType`==`custom`
      */
     ldapGroupDn?: pulumi.Input<string>;
     /**
-     * if `idpType`==`ldap`, whether to recursively resolve LDAP groups
+     * If `idpType`==`ldap`, whether to recursively resolve LDAP groups
      */
     ldapResolveGroups?: pulumi.Input<boolean>;
     /**
-     * if `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+     * If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
      */
     ldapServerHosts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -466,7 +466,7 @@ export interface NacidpArgs {
      */
     memberFilter?: pulumi.Input<string>;
     /**
-     * name
+     * Name
      */
     name?: pulumi.Input<string>;
     /**
@@ -478,7 +478,7 @@ export interface NacidpArgs {
      */
     oauthCcClientSecret?: pulumi.Input<string>;
     /**
-     * if `idpType`==`oauth`
+     * If `idpType`==`oauth`
      */
     oauthDiscoveryUrl?: pulumi.Input<string>;
     /**
@@ -486,11 +486,11 @@ export interface NacidpArgs {
      */
     oauthPingIdentityRegion?: pulumi.Input<string>;
     /**
-     * if `idpType`==`oauth`, ropc = Resource Owner Password Credentials
+     * If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
      */
     oauthRopcClientId?: pulumi.Input<string>;
     /**
-     * if `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
+     * If `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
      */
     oauthRopcClientSecret?: pulumi.Input<string>;
     /**
@@ -503,11 +503,11 @@ export interface NacidpArgs {
     oauthType?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
     /**
-     * if `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+     * If `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
      */
     scimEnabled?: pulumi.Input<boolean>;
     /**
-     * if `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+     * If `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
      */
     scimSecretToken?: pulumi.Input<string>;
 }

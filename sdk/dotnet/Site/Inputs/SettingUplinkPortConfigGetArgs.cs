@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class SettingUplinkPortConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
+        /// Whether to do 802.1x against uplink switch. When enabled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
         /// </summary>
         [Input("dot1x")]
         public Input<bool>? Dot1x { get; set; }

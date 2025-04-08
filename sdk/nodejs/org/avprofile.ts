@@ -77,21 +77,21 @@ export class Avprofile extends pulumi.CustomResource {
     }
 
     /**
-     * enum: `block`, `permit`
+     * enum: `block`, `log-and-permit`, `permit`
      */
     public readonly fallbackAction!: pulumi.Output<string | undefined>;
     /**
      * In KB
      */
     public readonly maxFilesize!: pulumi.Output<number>;
-    public readonly mimeWhitelists!: pulumi.Output<string[] | undefined>;
+    public readonly mimeWhitelists!: pulumi.Output<string[]>;
     public readonly name!: pulumi.Output<string>;
     public readonly orgId!: pulumi.Output<string>;
     /**
      * List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
      */
     public readonly protocols!: pulumi.Output<string[]>;
-    public readonly urlWhitelists!: pulumi.Output<string[] | undefined>;
+    public readonly urlWhitelists!: pulumi.Output<string[]>;
 
     /**
      * Create a Avprofile resource with the given unique name, arguments, and options.
@@ -139,7 +139,7 @@ export class Avprofile extends pulumi.CustomResource {
  */
 export interface AvprofileState {
     /**
-     * enum: `block`, `permit`
+     * enum: `block`, `log-and-permit`, `permit`
      */
     fallbackAction?: pulumi.Input<string>;
     /**
@@ -161,7 +161,7 @@ export interface AvprofileState {
  */
 export interface AvprofileArgs {
     /**
-     * enum: `block`, `permit`
+     * enum: `block`, `log-and-permit`, `permit`
      */
     fallbackAction?: pulumi.Input<string>;
     /**

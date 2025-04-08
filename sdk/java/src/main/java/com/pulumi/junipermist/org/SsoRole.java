@@ -16,7 +16,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * This resource manages Org SSO Roles for Admin Authantication.
+ * This resource manages Org SSO Roles for Admin Authentication.
  * 
  * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
  * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
@@ -135,7 +135,6 @@ public class SsoRole extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

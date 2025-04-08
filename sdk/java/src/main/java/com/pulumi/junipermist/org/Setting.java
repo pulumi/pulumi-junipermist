@@ -19,6 +19,7 @@ import com.pulumi.junipermist.org.outputs.SettingInstaller;
 import com.pulumi.junipermist.org.outputs.SettingJcloud;
 import com.pulumi.junipermist.org.outputs.SettingJcloudRa;
 import com.pulumi.junipermist.org.outputs.SettingJuniper;
+import com.pulumi.junipermist.org.outputs.SettingJunosShellAccess;
 import com.pulumi.junipermist.org.outputs.SettingMgmt;
 import com.pulumi.junipermist.org.outputs.SettingMistNac;
 import com.pulumi.junipermist.org.outputs.SettingMxedgeMgmt;
@@ -69,15 +70,15 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="apUpdownThreshold", refs={Integer.class}, tree="[0]")
-    private Output<Integer> apUpdownThreshold;
+    private Output</* @Nullable */ Integer> apUpdownThreshold;
 
     /**
      * @return Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
      * `device_updown_threshold` is ignored.
      * 
      */
-    public Output<Integer> apUpdownThreshold() {
-        return this.apUpdownThreshold;
+    public Output<Optional<Integer>> apUpdownThreshold() {
+        return Codegen.optional(this.apUpdownThreshold);
     }
     @Export(name="apiPolicy", refs={SettingApiPolicy.class}, tree="[0]")
     private Output</* @Nullable */ SettingApiPolicy> apiPolicy;
@@ -138,7 +139,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="deviceUpdownThreshold", refs={Integer.class}, tree="[0]")
-    private Output<Integer> deviceUpdownThreshold;
+    private Output</* @Nullable */ Integer> deviceUpdownThreshold;
 
     /**
      * @return Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
@@ -146,36 +147,36 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * immediate)
      * 
      */
-    public Output<Integer> deviceUpdownThreshold() {
-        return this.deviceUpdownThreshold;
+    public Output<Optional<Integer>> deviceUpdownThreshold() {
+        return Codegen.optional(this.deviceUpdownThreshold);
     }
     /**
      * Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
      * 
      */
     @Export(name="disablePcap", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> disablePcap;
+    private Output</* @Nullable */ Boolean> disablePcap;
 
     /**
      * @return Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
      * 
      */
-    public Output<Boolean> disablePcap() {
-        return this.disablePcap;
+    public Output<Optional<Boolean>> disablePcap() {
+        return Codegen.optional(this.disablePcap);
     }
     /**
      * Whether to disable remote shell access for an entire org
      * 
      */
     @Export(name="disableRemoteShell", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> disableRemoteShell;
+    private Output</* @Nullable */ Boolean> disableRemoteShell;
 
     /**
      * @return Whether to disable remote shell access for an entire org
      * 
      */
-    public Output<Boolean> disableRemoteShell() {
-        return this.disableRemoteShell;
+    public Output<Optional<Boolean>> disableRemoteShell() {
+        return Codegen.optional(this.disableRemoteShell);
     }
     /**
      * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
@@ -183,15 +184,15 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="gatewayUpdownThreshold", refs={Integer.class}, tree="[0]")
-    private Output<Integer> gatewayUpdownThreshold;
+    private Output</* @Nullable */ Integer> gatewayUpdownThreshold;
 
     /**
      * @return Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
      * `device_updown_threshold` is ignored.
      * 
      */
-    public Output<Integer> gatewayUpdownThreshold() {
-        return this.gatewayUpdownThreshold;
+    public Output<Optional<Integer>> gatewayUpdownThreshold() {
+        return Codegen.optional(this.gatewayUpdownThreshold);
     }
     @Export(name="installer", refs={SettingInstaller.class}, tree="[0]")
     private Output</* @Nullable */ SettingInstaller> installer;
@@ -226,6 +227,20 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return this.juniper;
     }
     /**
+     * by default, webshell access is only enabled for Admin user
+     * 
+     */
+    @Export(name="junosShellAccess", refs={SettingJunosShellAccess.class}, tree="[0]")
+    private Output</* @Nullable */ SettingJunosShellAccess> junosShellAccess;
+
+    /**
+     * @return by default, webshell access is only enabled for Admin user
+     * 
+     */
+    public Output<Optional<SettingJunosShellAccess>> junosShellAccess() {
+        return Codegen.optional(this.junosShellAccess);
+    }
+    /**
      * management-related properties
      * 
      */
@@ -244,12 +259,6 @@ public class Setting extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<SettingMistNac>> mistNac() {
         return Codegen.optional(this.mistNac);
-    }
-    @Export(name="mxedgeFipsEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> mxedgeFipsEnabled;
-
-    public Output<Boolean> mxedgeFipsEnabled() {
-        return this.mxedgeFipsEnabled;
     }
     @Export(name="mxedgeMgmt", refs={SettingMxedgeMgmt.class}, tree="[0]")
     private Output</* @Nullable */ SettingMxedgeMgmt> mxedgeMgmt;
@@ -315,15 +324,15 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="switchUpdownThreshold", refs={Integer.class}, tree="[0]")
-    private Output<Integer> switchUpdownThreshold;
+    private Output</* @Nullable */ Integer> switchUpdownThreshold;
 
     /**
      * @return Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
      * `device_updown_threshold` is ignored.
      * 
      */
-    public Output<Integer> switchUpdownThreshold() {
-        return this.switchUpdownThreshold;
+    public Output<Optional<Integer>> switchUpdownThreshold() {
+        return Codegen.optional(this.switchUpdownThreshold);
     }
     @Export(name="syntheticTest", refs={SettingSyntheticTest.class}, tree="[0]")
     private Output</* @Nullable */ SettingSyntheticTest> syntheticTest;
@@ -409,7 +418,6 @@ public class Setting extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

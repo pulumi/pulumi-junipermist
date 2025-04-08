@@ -84,14 +84,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:device/gatewayCluster:GatewayCluster")
 public class GatewayCluster extends com.pulumi.resources.CustomResource {
     /**
-     * when replacing a node, either mac has to remain the same as existing cluster
+     * When replacing a node, either mac has to remain the same as existing cluster
      * 
      */
     @Export(name="nodes", refs={List.class,GatewayClusterNode.class}, tree="[0,1]")
     private Output<List<GatewayClusterNode>> nodes;
 
     /**
-     * @return when replacing a node, either mac has to remain the same as existing cluster
+     * @return When replacing a node, either mac has to remain the same as existing cluster
      * 
      */
     public Output<List<GatewayClusterNode>> nodes() {
@@ -143,7 +143,6 @@ public class GatewayCluster extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

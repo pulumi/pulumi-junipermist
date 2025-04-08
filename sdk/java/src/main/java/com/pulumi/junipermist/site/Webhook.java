@@ -248,6 +248,24 @@ public class Webhook extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> secret() {
         return Codegen.optional(this.secret);
     }
+    /**
+     * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+     * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+     * Topics)
+     * 
+     */
+    @Export(name="singleEventPerMessage", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> singleEventPerMessage;
+
+    /**
+     * @return Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+     * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+     * Topics)
+     * 
+     */
+    public Output<Optional<Boolean>> singleEventPerMessage() {
+        return Codegen.optional(this.singleEventPerMessage);
+    }
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 
@@ -271,14 +289,14 @@ public class Webhook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.splunkToken);
     }
     /**
-     * enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-updowns`, `device-events`, `discovered-raw-rssi`, `location`, `location_asset`, `location_centrak`, `location_client`, `location_sdk`, `location_unclient`, `mxedge-events`, `nac-accounting`, `nac_events`, `occupancy-alerts`, `rssizone`, `sdkclient_scan_data`, `site_sle`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
+     * enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
      * 
      */
     @Export(name="topics", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> topics;
 
     /**
-     * @return enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-updowns`, `device-events`, `discovered-raw-rssi`, `location`, `location_asset`, `location_centrak`, `location_client`, `location_sdk`, `location_unclient`, `mxedge-events`, `nac-accounting`, `nac_events`, `occupancy-alerts`, `rssizone`, `sdkclient_scan_data`, `site_sle`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
+     * @return enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
      * 
      */
     public Output<List<String>> topics() {
@@ -358,7 +376,6 @@ public class Webhook extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .additionalSecretOutputs(List.of(
                 "oauth2ClientSecret",
                 "oauth2Password",

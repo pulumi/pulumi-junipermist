@@ -82,7 +82,7 @@ export class Psk extends pulumi.CustomResource {
      */
     public readonly expiryNotificationTime!: pulumi.Output<number | undefined>;
     /**
-     * if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      */
     public readonly mac!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
@@ -197,7 +197,7 @@ export interface PskState {
      */
     expiryNotificationTime?: pulumi.Input<number>;
     /**
-     * if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      */
     mac?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
@@ -249,7 +249,7 @@ export interface PskArgs {
      */
     expiryNotificationTime?: pulumi.Input<number>;
     /**
-     * if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      */
     mac?: pulumi.Input<string>;
     name?: pulumi.Input<string>;

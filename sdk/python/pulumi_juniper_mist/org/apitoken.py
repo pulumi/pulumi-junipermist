@@ -27,9 +27,9 @@ class ApitokenArgs:
                  src_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Apitoken resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ApitokenPrivilegeArgs']]] privileges: list of privileges the token has on the orgs/sites
-        :param pulumi.Input[str] name: name of the token
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ips: list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        :param pulumi.Input[Sequence[pulumi.Input['ApitokenPrivilegeArgs']]] privileges: List of privileges the token has on the orgs/sites
+        :param pulumi.Input[str] name: Name of the token
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ips: List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
         """
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "privileges", privileges)
@@ -51,7 +51,7 @@ class ApitokenArgs:
     @pulumi.getter
     def privileges(self) -> pulumi.Input[Sequence[pulumi.Input['ApitokenPrivilegeArgs']]]:
         """
-        list of privileges the token has on the orgs/sites
+        List of privileges the token has on the orgs/sites
         """
         return pulumi.get(self, "privileges")
 
@@ -63,7 +63,7 @@ class ApitokenArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        name of the token
+        Name of the token
         """
         return pulumi.get(self, "name")
 
@@ -75,7 +75,7 @@ class ApitokenArgs:
     @pulumi.getter(name="srcIps")
     def src_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
         """
         return pulumi.get(self, "src_ips")
 
@@ -96,9 +96,9 @@ class _ApitokenState:
         """
         Input properties used for looking up and filtering Apitoken resources.
         :param pulumi.Input[str] created_by: email of the token creator / null if creator is deleted
-        :param pulumi.Input[str] name: name of the token
-        :param pulumi.Input[Sequence[pulumi.Input['ApitokenPrivilegeArgs']]] privileges: list of privileges the token has on the orgs/sites
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ips: list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        :param pulumi.Input[str] name: Name of the token
+        :param pulumi.Input[Sequence[pulumi.Input['ApitokenPrivilegeArgs']]] privileges: List of privileges the token has on the orgs/sites
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ips: List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
         """
         if created_by is not None:
             pulumi.set(__self__, "created_by", created_by)
@@ -138,7 +138,7 @@ class _ApitokenState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        name of the token
+        Name of the token
         """
         return pulumi.get(self, "name")
 
@@ -159,7 +159,7 @@ class _ApitokenState:
     @pulumi.getter
     def privileges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApitokenPrivilegeArgs']]]]:
         """
-        list of privileges the token has on the orgs/sites
+        List of privileges the token has on the orgs/sites
         """
         return pulumi.get(self, "privileges")
 
@@ -171,7 +171,7 @@ class _ApitokenState:
     @pulumi.getter(name="srcIps")
     def src_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
         """
         return pulumi.get(self, "src_ips")
 
@@ -199,9 +199,9 @@ class Apitoken(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: name of the token
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict']]]] privileges: list of privileges the token has on the orgs/sites
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ips: list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        :param pulumi.Input[str] name: Name of the token
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict']]]] privileges: List of privileges the token has on the orgs/sites
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ips: List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
         """
         ...
     @overload
@@ -280,9 +280,9 @@ class Apitoken(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_by: email of the token creator / null if creator is deleted
-        :param pulumi.Input[str] name: name of the token
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict']]]] privileges: list of privileges the token has on the orgs/sites
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ips: list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        :param pulumi.Input[str] name: Name of the token
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict']]]] privileges: List of privileges the token has on the orgs/sites
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ips: List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -313,7 +313,7 @@ class Apitoken(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        name of the token
+        Name of the token
         """
         return pulumi.get(self, "name")
 
@@ -326,7 +326,7 @@ class Apitoken(pulumi.CustomResource):
     @pulumi.getter
     def privileges(self) -> pulumi.Output[Sequence['outputs.ApitokenPrivilege']]:
         """
-        list of privileges the token has on the orgs/sites
+        List of privileges the token has on the orgs/sites
         """
         return pulumi.get(self, "privileges")
 
@@ -334,7 +334,7 @@ class Apitoken(pulumi.CustomResource):
     @pulumi.getter(name="srcIps")
     def src_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
         """
         return pulumi.get(self, "src_ips")
 

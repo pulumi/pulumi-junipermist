@@ -18,14 +18,14 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
     public static final WxtagState Empty = new WxtagState();
 
     /**
-     * if `type`==`client`, Client MAC Address
+     * If `type`==`client`, Client MAC Address
      * 
      */
     @Import(name="mac")
     private @Nullable Output<String> mac;
 
     /**
-     * @return if `type`==`client`, Client MAC Address
+     * @return If `type`==`client`, Client MAC Address
      * 
      */
     public Optional<Output<String>> mac() {
@@ -87,14 +87,14 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * if `type`==`spec`
+     * If `type`==`spec`
      * 
      */
     @Import(name="specs")
     private @Nullable Output<List<WxtagSpecArgs>> specs;
 
     /**
-     * @return if `type`==`spec`
+     * @return If `type`==`spec`
      * 
      */
     public Optional<Output<List<WxtagSpecArgs>>> specs() {
@@ -117,13 +117,13 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
+     * Required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
      * `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
      * `match`==`hostname`: list of Resources Hostnames * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs *
      * `match`==`psk_name`: list of PSK Names * `match`==`psk_role`: list of PSK Roles * `match`==`port`: list of Ports or Port
-     * Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ “6=1”, “26=10.2.3.4” ], this
-     * support other RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches
-     * the ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
+     * Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ &#34;6=1&#34;, &#34;26=10.2.3.4&#34; ], this support other
+     * RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches the
+     * ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
      * Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1) *
      * `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1) * `match`==`sdkclient_uuid`:
      * list of SDK UUIDs * `match`==`wlan_id`: list of WLAN IDs **Notes**: Variables are not allowed
@@ -133,13 +133,13 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> values;
 
     /**
-     * @return required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
+     * @return Required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
      * `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
      * `match`==`hostname`: list of Resources Hostnames * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs *
      * `match`==`psk_name`: list of PSK Names * `match`==`psk_role`: list of PSK Roles * `match`==`port`: list of Ports or Port
-     * Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ “6=1”, “26=10.2.3.4” ], this
-     * support other RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches
-     * the ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
+     * Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ &#34;6=1&#34;, &#34;26=10.2.3.4&#34; ], this support other
+     * RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches the
+     * ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
      * Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1) *
      * `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1) * `match`==`sdkclient_uuid`:
      * list of SDK UUIDs * `match`==`wlan_id`: list of WLAN IDs **Notes**: Variables are not allowed
@@ -189,7 +189,7 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac if `type`==`client`, Client MAC Address
+         * @param mac If `type`==`client`, Client MAC Address
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac if `type`==`client`, Client MAC Address
+         * @param mac If `type`==`client`, Client MAC Address
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs if `type`==`spec`
+         * @param specs If `type`==`spec`
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs if `type`==`spec`
+         * @param specs If `type`==`spec`
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs if `type`==`spec`
+         * @param specs If `type`==`spec`
          * 
          * @return builder
          * 
@@ -336,13 +336,13 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param values required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
+         * @param values Required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
          * `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
          * `match`==`hostname`: list of Resources Hostnames * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs *
          * `match`==`psk_name`: list of PSK Names * `match`==`psk_role`: list of PSK Roles * `match`==`port`: list of Ports or Port
-         * Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ “6=1”, “26=10.2.3.4” ], this
-         * support other RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches
-         * the ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
+         * Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ &#34;6=1&#34;, &#34;26=10.2.3.4&#34; ], this support other
+         * RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches the
+         * ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
          * Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1) *
          * `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1) * `match`==`sdkclient_uuid`:
          * list of SDK UUIDs * `match`==`wlan_id`: list of WLAN IDs **Notes**: Variables are not allowed
@@ -356,13 +356,13 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param values required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
+         * @param values Required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
          * `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
          * `match`==`hostname`: list of Resources Hostnames * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs *
          * `match`==`psk_name`: list of PSK Names * `match`==`psk_role`: list of PSK Roles * `match`==`port`: list of Ports or Port
-         * Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ “6=1”, “26=10.2.3.4” ], this
-         * support other RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches
-         * the ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
+         * Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ &#34;6=1&#34;, &#34;26=10.2.3.4&#34; ], this support other
+         * RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches the
+         * ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
          * Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1) *
          * `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1) * `match`==`sdkclient_uuid`:
          * list of SDK UUIDs * `match`==`wlan_id`: list of WLAN IDs **Notes**: Variables are not allowed
@@ -375,13 +375,13 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param values required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
+         * @param values Required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
          * `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
          * `match`==`hostname`: list of Resources Hostnames * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs *
          * `match`==`psk_name`: list of PSK Names * `match`==`psk_role`: list of PSK Roles * `match`==`port`: list of Ports or Port
-         * Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ “6=1”, “26=10.2.3.4” ], this
-         * support other RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches
-         * the ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
+         * Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ &#34;6=1&#34;, &#34;26=10.2.3.4&#34; ], this support other
+         * RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches the
+         * ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
          * Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1) *
          * `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1) * `match`==`sdkclient_uuid`:
          * list of SDK UUIDs * `match`==`wlan_id`: list of WLAN IDs **Notes**: Variables are not allowed

@@ -20,7 +20,7 @@ public final class IdpprofileOverwriteArgs extends com.pulumi.resources.Resource
     /**
      * enum:
      *   * alert (default)
-     *   * drop: siliently dropping packets
+     *   * drop: silently dropping packets
      *   * close: notify client/server to close connection
      * 
      */
@@ -30,7 +30,7 @@ public final class IdpprofileOverwriteArgs extends com.pulumi.resources.Resource
     /**
      * @return enum:
      *   * alert (default)
-     *   * drop: siliently dropping packets
+     *   * drop: silently dropping packets
      *   * close: notify client/server to close connection
      * 
      */
@@ -81,7 +81,7 @@ public final class IdpprofileOverwriteArgs extends com.pulumi.resources.Resource
         /**
          * @param action enum:
          *   * alert (default)
-         *   * drop: siliently dropping packets
+         *   * drop: silently dropping packets
          *   * close: notify client/server to close connection
          * 
          * @return builder
@@ -95,7 +95,7 @@ public final class IdpprofileOverwriteArgs extends com.pulumi.resources.Resource
         /**
          * @param action enum:
          *   * alert (default)
-         *   * drop: siliently dropping packets
+         *   * drop: silently dropping packets
          *   * close: notify client/server to close connection
          * 
          * @return builder

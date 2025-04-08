@@ -16,6 +16,7 @@ import com.pulumi.junipermist.device.outputs.ApCentrak;
 import com.pulumi.junipermist.device.outputs.ApClientBridge;
 import com.pulumi.junipermist.device.outputs.ApEslConfig;
 import com.pulumi.junipermist.device.outputs.ApIpConfig;
+import com.pulumi.junipermist.device.outputs.ApLacpConfig;
 import com.pulumi.junipermist.device.outputs.ApLed;
 import com.pulumi.junipermist.device.outputs.ApMesh;
 import com.pulumi.junipermist.device.outputs.ApPwrConfig;
@@ -216,6 +217,12 @@ public class Ap extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ApIpConfig>> ipConfig() {
         return Codegen.optional(this.ipConfig);
+    }
+    @Export(name="lacpConfig", refs={ApLacpConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ApLacpConfig> lacpConfig;
+
+    public Output<Optional<ApLacpConfig>> lacpConfig() {
+        return Codegen.optional(this.lacpConfig);
     }
     /**
      * LED AP settings
@@ -535,7 +542,6 @@ public class Ap extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

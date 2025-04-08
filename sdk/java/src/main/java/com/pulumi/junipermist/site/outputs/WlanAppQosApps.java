@@ -4,7 +4,6 @@
 package com.pulumi.junipermist.site.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,7 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class WlanAppQosApps {
-    private @Nullable Integer dscp;
+    /**
+     * @return DSCP value range between 0 and 63
+     * 
+     */
+    private @Nullable String dscp;
     /**
      * @return Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
      * 
@@ -25,7 +28,11 @@ public final class WlanAppQosApps {
     private @Nullable String srcSubnet;
 
     private WlanAppQosApps() {}
-    public Optional<Integer> dscp() {
+    /**
+     * @return DSCP value range between 0 and 63
+     * 
+     */
+    public Optional<String> dscp() {
         return Optional.ofNullable(this.dscp);
     }
     /**
@@ -52,7 +59,7 @@ public final class WlanAppQosApps {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer dscp;
+        private @Nullable String dscp;
         private @Nullable String dstSubnet;
         private @Nullable String srcSubnet;
         public Builder() {}
@@ -64,7 +71,7 @@ public final class WlanAppQosApps {
         }
 
         @CustomType.Setter
-        public Builder dscp(@Nullable Integer dscp) {
+        public Builder dscp(@Nullable String dscp) {
 
             this.dscp = dscp;
             return this;

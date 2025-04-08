@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org
     /// This resource manages the AP Device Profiles.
     /// AP Device profiles for aps are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They allow for efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
     /// 
-    /// The AP Devide Profile can be assigned to a gateway with the `junipermist.org.DeviceprofileAssign` resource.
+    /// The AP Device Profile can be assigned to a gateway with the `junipermist.org.DeviceprofileAssign` resource.
     /// 
     /// ## Example Usage
     /// 
@@ -97,6 +97,9 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Output("ipConfig")]
         public Output<Outputs.DeviceprofileApIpConfig?> IpConfig { get; private set; } = null!;
+
+        [Output("lacpConfig")]
+        public Output<Outputs.DeviceprofileApLacpConfig?> LacpConfig { get; private set; } = null!;
 
         /// <summary>
         /// LED AP settings
@@ -257,6 +260,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("ipConfig")]
         public Input<Inputs.DeviceprofileApIpConfigArgs>? IpConfig { get; set; }
 
+        [Input("lacpConfig")]
+        public Input<Inputs.DeviceprofileApLacpConfigArgs>? LacpConfig { get; set; }
+
         /// <summary>
         /// LED AP settings
         /// </summary>
@@ -381,6 +387,9 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("ipConfig")]
         public Input<Inputs.DeviceprofileApIpConfigGetArgs>? IpConfig { get; set; }
+
+        [Input("lacpConfig")]
+        public Input<Inputs.DeviceprofileApLacpConfigGetArgs>? LacpConfig { get; set; }
 
         /// <summary>
         /// LED AP settings

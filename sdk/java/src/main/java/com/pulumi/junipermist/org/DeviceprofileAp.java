@@ -14,6 +14,7 @@ import com.pulumi.junipermist.org.outputs.DeviceprofileApAeroscout;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApBleConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApEslConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApIpConfig;
+import com.pulumi.junipermist.org.outputs.DeviceprofileApLacpConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApLed;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApMesh;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApPwrConfig;
@@ -31,7 +32,7 @@ import javax.annotation.Nullable;
  * This resource manages the AP Device Profiles.
  * AP Device profiles for aps are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They allow for efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
  * 
- * The AP Devide Profile can be assigned to a gateway with the `junipermist.org.DeviceprofileAssign` resource.
+ * The AP Device Profile can be assigned to a gateway with the `junipermist.org.DeviceprofileAssign` resource.
  * 
  * ## Example Usage
  * 
@@ -191,6 +192,12 @@ public class DeviceprofileAp extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<DeviceprofileApIpConfig>> ipConfig() {
         return Codegen.optional(this.ipConfig);
+    }
+    @Export(name="lacpConfig", refs={DeviceprofileApLacpConfig.class}, tree="[0]")
+    private Output</* @Nullable */ DeviceprofileApLacpConfig> lacpConfig;
+
+    public Output<Optional<DeviceprofileApLacpConfig>> lacpConfig() {
+        return Codegen.optional(this.lacpConfig);
     }
     /**
      * LED AP settings
@@ -384,7 +391,6 @@ public class DeviceprofileAp extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

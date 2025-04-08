@@ -125,28 +125,28 @@ public class Psk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.expiryNotificationTime);
     }
     /**
-     * if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      * 
      */
     @Export(name="mac", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mac;
 
     /**
-     * @return if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * @return If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      * 
      */
     public Output<Optional<String>> mac() {
         return Codegen.optional(this.mac);
     }
     /**
-     * if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+     * If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
      * 
      */
     @Export(name="macs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> macs;
 
     /**
-     * @return if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+     * @return If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
      * 
      */
     public Output<Optional<List<String>>> macs() {
@@ -157,14 +157,14 @@ public class Psk extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="maxUsage", refs={Integer.class}, tree="[0]")
-    private Output<Integer> maxUsage;
+    private Output</* @Nullable */ Integer> maxUsage;
 
     /**
      * @return For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
      * 
      */
-    public Output<Integer> maxUsage() {
-        return this.maxUsage;
+    public Output<Optional<Integer>> maxUsage() {
+        return Codegen.optional(this.maxUsage);
     }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -320,7 +320,6 @@ public class Psk extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .additionalSecretOutputs(List.of(
                 "oldPassphrase",
                 "passphrase"

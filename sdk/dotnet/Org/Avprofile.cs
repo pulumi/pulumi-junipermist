@@ -71,7 +71,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Avprofile : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// enum: `block`, `permit`
+        /// enum: `block`, `log-and-permit`, `permit`
         /// </summary>
         [Output("fallbackAction")]
         public Output<string?> FallbackAction { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class AvprofileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `block`, `permit`
+        /// enum: `block`, `log-and-permit`, `permit`
         /// </summary>
         [Input("fallbackAction")]
         public Input<string>? FallbackAction { get; set; }
@@ -202,7 +202,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class AvprofileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `block`, `permit`
+        /// enum: `block`, `log-and-permit`, `permit`
         /// </summary>
         [Input("fallbackAction")]
         public Input<string>? FallbackAction { get; set; }

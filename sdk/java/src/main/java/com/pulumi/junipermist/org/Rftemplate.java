@@ -55,8 +55,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var rftempalteOne = new Rftemplate("rftempalteOne", RftemplateArgs.builder()
- *             .name("rftempalte_one")
+ *         var rftemplateOne = new Rftemplate("rftemplateOne", RftemplateArgs.builder()
+ *             .name("rftemplate_one")
  *             .orgId(terraformTest.id())
  *             .band24Usage("auto")
  *             .band5(RftemplateBand5Args.builder()
@@ -294,7 +294,6 @@ public class Rftemplate extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

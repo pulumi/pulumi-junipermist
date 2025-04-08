@@ -63,14 +63,14 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
     }
 
     /**
-     * `direct`, `bgp`, `osp`, ...
+     * `direct`, `bgp`, `osp`, `static`, `aggregate`...
      * 
      */
     @Import(name="protocols")
     private @Nullable Output<List<String>> protocols;
 
     /**
-     * @return `direct`, `bgp`, `osp`, ...
+     * @return `direct`, `bgp`, `osp`, `static`, `aggregate`...
      * 
      */
     public Optional<Output<List<String>>> protocols() {
@@ -242,7 +242,7 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
         }
 
         /**
-         * @param protocols `direct`, `bgp`, `osp`, ...
+         * @param protocols `direct`, `bgp`, `osp`, `static`, `aggregate`...
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
         }
 
         /**
-         * @param protocols `direct`, `bgp`, `osp`, ...
+         * @param protocols `direct`, `bgp`, `osp`, `static`, `aggregate`...
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
         }
 
         /**
-         * @param protocols `direct`, `bgp`, `osp`, ...
+         * @param protocols `direct`, `bgp`, `osp`, `static`, `aggregate`...
          * 
          * @return builder
          * 

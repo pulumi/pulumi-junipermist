@@ -56,7 +56,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _protocols;
 
         /// <summary>
-        /// `direct`, `bgp`, `osp`, ...
+        /// `direct`, `bgp`, `osp`, `static`, `aggregate`...
         /// </summary>
         public InputList<string> Protocols
         {

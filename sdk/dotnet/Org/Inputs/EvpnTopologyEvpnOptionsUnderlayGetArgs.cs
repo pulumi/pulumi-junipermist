@@ -22,13 +22,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? RoutedIdPrefix { get; set; }
 
         /// <summary>
-        /// underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+        /// Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
         /// </summary>
         [Input("subnet")]
         public Input<string>? Subnet { get; set; }
 
         /// <summary>
-        /// if v6 is desired for underlay
+        /// If v6 is desired for underlay
         /// </summary>
         [Input("useIpv6")]
         public Input<bool>? UseIpv6 { get; set; }

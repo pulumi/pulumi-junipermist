@@ -14,12 +14,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class ServiceSpec
     {
         /// <summary>
-        /// port number, port range, or variable
+        /// Port number, port range, or variable
         /// </summary>
         public readonly string? PortRange;
         /// <summary>
-        /// `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`.
-        /// `protocol_number` is between 1-254
+        /// `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254
         /// </summary>
         public readonly string? Protocol;
 

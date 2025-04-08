@@ -108,15 +108,9 @@ namespace Pulumi.JuniperMist.Device
 
     public sealed class GetApStatsArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// duration like 7d, 2w
-        /// </summary>
         [Input("duration")]
         public string? Duration { get; set; }
 
-        /// <summary>
-        /// end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-        /// </summary>
         [Input("end")]
         public int? End { get; set; }
 
@@ -129,9 +123,6 @@ namespace Pulumi.JuniperMist.Device
         [Input("siteId")]
         public string? SiteId { get; set; }
 
-        /// <summary>
-        /// start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-        /// </summary>
         [Input("start")]
         public int? Start { get; set; }
 
@@ -146,15 +137,9 @@ namespace Pulumi.JuniperMist.Device
 
     public sealed class GetApStatsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// duration like 7d, 2w
-        /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
 
-        /// <summary>
-        /// end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-        /// </summary>
         [Input("end")]
         public Input<int>? End { get; set; }
 
@@ -167,9 +152,6 @@ namespace Pulumi.JuniperMist.Device
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
-        /// <summary>
-        /// start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-        /// </summary>
         [Input("start")]
         public Input<int>? Start { get; set; }
 
@@ -187,13 +169,7 @@ namespace Pulumi.JuniperMist.Device
     public sealed class GetApStatsResult
     {
         public readonly ImmutableArray<Outputs.GetApStatsDeviceApStatResult> DeviceApStats;
-        /// <summary>
-        /// duration like 7d, 2w
-        /// </summary>
         public readonly string? Duration;
-        /// <summary>
-        /// end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-        /// </summary>
         public readonly int? End;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -202,9 +178,6 @@ namespace Pulumi.JuniperMist.Device
         public readonly string? Mac;
         public readonly string OrgId;
         public readonly string? SiteId;
-        /// <summary>
-        /// start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-        /// </summary>
         public readonly int? Start;
         public readonly string? Status;
 

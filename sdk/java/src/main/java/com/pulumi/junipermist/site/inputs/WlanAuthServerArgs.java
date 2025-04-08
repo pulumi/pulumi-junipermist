@@ -100,14 +100,14 @@ public final class WlanAuthServerArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Secretof RADIUS server
+     * Secret of RADIUS server
      * 
      */
     @Import(name="secret", required=true)
     private Output<String> secret;
 
     /**
-     * @return Secretof RADIUS server
+     * @return Secret of RADIUS server
      * 
      */
     public Output<String> secret() {
@@ -257,7 +257,7 @@ public final class WlanAuthServerArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param secret Secretof RADIUS server
+         * @param secret Secret of RADIUS server
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class WlanAuthServerArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param secret Secretof RADIUS server
+         * @param secret Secret of RADIUS server
          * 
          * @return builder
          * 

@@ -34,12 +34,19 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? DhcpOptionFqdn;
         public readonly bool? DisableOobDownAlarm;
+        public readonly bool? FipsEnabled;
         /// <summary>
         /// Property key is the user name. For Local user authentication
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.SwitchSwitchMgmtLocalAccounts>? LocalAccounts;
+        /// <summary>
+        /// IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+        /// </summary>
         public readonly string? MxedgeProxyHost;
-        public readonly int? MxedgeProxyPort;
+        /// <summary>
+        /// Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
+        /// </summary>
+        public readonly string? MxedgeProxyPort;
         /// <summary>
         /// Restrict inbound-traffic to host
         /// when enabled, all traffic that is not essential to our operation will be dropped 
@@ -67,11 +74,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             bool? disableOobDownAlarm,
 
+            bool? fipsEnabled,
+
             ImmutableDictionary<string, Outputs.SwitchSwitchMgmtLocalAccounts>? localAccounts,
 
             string? mxedgeProxyHost,
 
-            int? mxedgeProxyPort,
+            string? mxedgeProxyPort,
 
             Outputs.SwitchSwitchMgmtProtectRe? protectRe,
 
@@ -87,6 +96,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             ConfigRevertTimer = configRevertTimer;
             DhcpOptionFqdn = dhcpOptionFqdn;
             DisableOobDownAlarm = disableOobDownAlarm;
+            FipsEnabled = fipsEnabled;
             LocalAccounts = localAccounts;
             MxedgeProxyHost = mxedgeProxyHost;
             MxedgeProxyPort = mxedgeProxyPort;

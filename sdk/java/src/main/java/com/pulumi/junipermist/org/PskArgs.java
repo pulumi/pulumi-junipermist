@@ -65,14 +65,14 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      * 
      */
     @Import(name="mac")
     private @Nullable Output<String> mac;
 
     /**
-     * @return if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * @return If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      * 
      */
     public Optional<Output<String>> mac() {
@@ -80,14 +80,14 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+     * If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
      * 
      */
     @Import(name="macs")
     private @Nullable Output<List<String>> macs;
 
     /**
-     * @return if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+     * @return If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
      * 
      */
     public Optional<Output<List<String>>> macs() {
@@ -338,7 +338,7 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+         * @param mac If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+         * @param mac If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param macs if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+         * @param macs If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param macs if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+         * @param macs If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class PskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param macs if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+         * @param macs If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
          * 
          * @return builder
          * 

@@ -14,16 +14,32 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GetSwitchStatsDeviceSwitchStatVcSetupInfoResult
     {
         public readonly string ConfigType;
+        public readonly string CurrentStats;
         public readonly bool ErrMissingDevIdFpc;
+        public readonly double LastUpdate;
+        public readonly double RequestTime;
+        public readonly string RequestType;
 
         [OutputConstructor]
         private GetSwitchStatsDeviceSwitchStatVcSetupInfoResult(
             string configType,
 
-            bool errMissingDevIdFpc)
+            string currentStats,
+
+            bool errMissingDevIdFpc,
+
+            double lastUpdate,
+
+            double requestTime,
+
+            string requestType)
         {
             ConfigType = configType;
+            CurrentStats = currentStats;
             ErrMissingDevIdFpc = errMissingDevIdFpc;
+            LastUpdate = lastUpdate;
+            RequestTime = requestTime;
+            RequestType = requestType;
         }
     }
 }

@@ -33,14 +33,6 @@ namespace Pulumi.JuniperMist.Org
     public partial class Inventory : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-        /// replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-        /// `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
-        /// </summary>
-        [Output("devices")]
-        public Output<ImmutableArray<Outputs.InventoryDevice>> Devices { get; private set; } = null!;
-
-        /// <summary>
         /// Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
         /// Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
         /// already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
@@ -98,22 +90,6 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class InventoryArgs : global::Pulumi.ResourceArgs
     {
-        [Input("devices")]
-        private InputList<Inputs.InventoryDeviceArgs>? _devices;
-
-        /// <summary>
-        /// **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-        /// replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-        /// `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
-        /// </summary>
-        [Obsolete(@"The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-Please update your configurations to use the `inventory` attribute.")]
-        public InputList<Inputs.InventoryDeviceArgs> Devices
-        {
-            get => _devices ?? (_devices = new InputList<Inputs.InventoryDeviceArgs>());
-            set => _devices = value;
-        }
-
         [Input("inventory")]
         private InputMap<Inputs.InventoryInventoryArgs>? _inventory;
 
@@ -139,22 +115,6 @@ Please update your configurations to use the `inventory` attribute.")]
 
     public sealed class InventoryState : global::Pulumi.ResourceArgs
     {
-        [Input("devices")]
-        private InputList<Inputs.InventoryDeviceGetArgs>? _devices;
-
-        /// <summary>
-        /// **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-        /// replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-        /// `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
-        /// </summary>
-        [Obsolete(@"The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-Please update your configurations to use the `inventory` attribute.")]
-        public InputList<Inputs.InventoryDeviceGetArgs> Devices
-        {
-            get => _devices ?? (_devices = new InputList<Inputs.InventoryDeviceGetArgs>());
-            set => _devices = value;
-        }
-
         [Input("inventory")]
         private InputMap<Inputs.InventoryInventoryGetArgs>? _inventory;
 

@@ -32,7 +32,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// <summary>
         /// Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         /// </summary>
-        public readonly bool? BypassAuthWhenServerDownForUnkownClient;
+        public readonly bool? BypassAuthWhenServerDownForUnknownClient;
         /// <summary>
         /// Only if `mode`!=`dynamic`
         /// </summary>
@@ -66,6 +66,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? GuestNetwork;
         /// <summary>
+        /// `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
+        /// </summary>
+        public readonly bool? InterIsolationNetworkLink;
+        /// <summary>
         /// Only if `mode`!=`dynamic` inter_switch_link is used together with "isolation" under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
         /// </summary>
         public readonly bool? InterSwitchLink;
@@ -82,17 +86,17 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? MacAuthProtocol;
         /// <summary>
-        /// Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+        /// Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 to 16383 (upper bound constrained by platform)
         /// </summary>
-        public readonly int? MacLimit;
+        public readonly string? MacLimit;
         /// <summary>
         /// `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+        /// Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. Value between 256 and 9216, default value is 1514.
         /// </summary>
-        public readonly int? Mtu;
+        public readonly string? Mtu;
         /// <summary>
         /// Only if `mode`==`trunk`, the list of network/vlans
         /// </summary>
@@ -114,9 +118,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? PortNetwork;
         /// <summary>
-        /// Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range
+        /// Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
         /// </summary>
-        public readonly int? ReauthInterval;
+        public readonly string? ReauthInterval;
         /// <summary>
         /// Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
         /// </summary>
@@ -170,7 +174,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             bool? bypassAuthWhenServerDown,
 
-            bool? bypassAuthWhenServerDownForUnkownClient,
+            bool? bypassAuthWhenServerDownForUnknownClient,
 
             string? description,
 
@@ -188,6 +192,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             string? guestNetwork,
 
+            bool? interIsolationNetworkLink,
+
             bool? interSwitchLink,
 
             bool? macAuthOnly,
@@ -196,11 +202,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             string? macAuthProtocol,
 
-            int? macLimit,
+            string? macLimit,
 
             string? mode,
 
-            int? mtu,
+            string? mtu,
 
             ImmutableArray<string> networks,
 
@@ -212,7 +218,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             string? portNetwork,
 
-            int? reauthInterval,
+            string? reauthInterval,
 
             string? resetDefaultWhen,
 
@@ -242,7 +248,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             AllowDhcpd = allowDhcpd;
             AllowMultipleSupplicants = allowMultipleSupplicants;
             BypassAuthWhenServerDown = bypassAuthWhenServerDown;
-            BypassAuthWhenServerDownForUnkownClient = bypassAuthWhenServerDownForUnkownClient;
+            BypassAuthWhenServerDownForUnknownClient = bypassAuthWhenServerDownForUnknownClient;
             Description = description;
             DisableAutoneg = disableAutoneg;
             Disabled = disabled;
@@ -251,6 +257,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             EnableMacAuth = enableMacAuth;
             EnableQos = enableQos;
             GuestNetwork = guestNetwork;
+            InterIsolationNetworkLink = interIsolationNetworkLink;
             InterSwitchLink = interSwitchLink;
             MacAuthOnly = macAuthOnly;
             MacAuthPreferred = macAuthPreferred;

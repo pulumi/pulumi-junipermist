@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingUplinkPortConfig {
     /**
-     * @return Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org&#39;s CA Cert has to be provisioned at the switch
+     * @return Whether to do 802.1x against uplink switch. When enabled, AP cert will be used to do EAP-TLS and the Org&#39;s CA Cert has to be provisioned at the switch
      * 
      */
     private @Nullable Boolean dot1x;
@@ -24,7 +24,7 @@ public final class SettingUplinkPortConfig {
 
     private SettingUplinkPortConfig() {}
     /**
-     * @return Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org&#39;s CA Cert has to be provisioned at the switch
+     * @return Whether to do 802.1x against uplink switch. When enabled, AP cert will be used to do EAP-TLS and the Org&#39;s CA Cert has to be provisioned at the switch
      * 
      */
     public Optional<Boolean> dot1x() {

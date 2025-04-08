@@ -19,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource can be used to upgrade the frimware of a single device (Wi-Fi Access Points, Switches and SRX/SSR Gateways).
+ * This resource can be used to upgrade the firmware of a single device (Wi-Fi Access Points, Switches and SRX/SSR Gateways).
  * 
  * The resource will send the upgrade command to Mist, which will take care of deploying the new firmware version to the device, and reboot it if required.
  * 
@@ -249,14 +249,14 @@ public class UpgradeDevice extends com.pulumi.resources.CustomResource {
         return this.targetVersion;
     }
     /**
-     * Timestamp
+     * Epoch (seconds)
      * 
      */
     @Export(name="timestamp", refs={Double.class}, tree="[0]")
     private Output<Double> timestamp;
 
     /**
-     * @return Timestamp
+     * @return Epoch (seconds)
      * 
      */
     public Output<Double> timestamp() {
@@ -302,7 +302,6 @@ public class UpgradeDevice extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

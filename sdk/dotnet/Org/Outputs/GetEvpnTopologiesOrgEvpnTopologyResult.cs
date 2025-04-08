@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GetEvpnTopologiesOrgEvpnTopologyResult
     {
         /// <summary>
-        /// when the object has been created, in epoch
+        /// When the object has been created, in epoch
         /// </summary>
         public readonly double CreatedTime;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsResult EvpnOptions;
         /// <summary>
-        /// Unique ID of the object instance in the Mist Organnization
+        /// Unique ID of the object instance in the Mist Organization
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// when the object has been modified for the last time, in epoch
+        /// When the object has been modified for the last time, in epoch
         /// </summary>
         public readonly double ModifiedTime;
         public readonly string Name;

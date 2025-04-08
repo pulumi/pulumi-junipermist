@@ -34,7 +34,7 @@ public final class GetWlansSiteWlanDynamicVlan {
      */
     private String type;
     /**
-     * @return Map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
+     * @return Map between vlan_id (as string) to airespace interface names (comma-separated) or null for standard mapping
      *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
      *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
      * 
@@ -71,7 +71,7 @@ public final class GetWlansSiteWlanDynamicVlan {
         return this.type;
     }
     /**
-     * @return Map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
+     * @return Map between vlan_id (as string) to airespace interface names (comma-separated) or null for standard mapping
      *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
      *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
      * 

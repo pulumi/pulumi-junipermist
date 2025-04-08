@@ -12,6 +12,18 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingRogueGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allowedVlanIds")]
+        private InputList<int>? _allowedVlanIds;
+
+        /// <summary>
+        /// list of VLAN IDs on which rogue APs are ignored
+        /// </summary>
+        public InputList<int> AllowedVlanIds
+        {
+            get => _allowedVlanIds ?? (_allowedVlanIds = new InputList<int>());
+            set => _allowedVlanIds = value;
+        }
+
         /// <summary>
         /// Whether rogue detection is enabled
         /// </summary>
@@ -25,13 +37,25 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? HoneypotEnabled { get; set; }
 
         /// <summary>
-        /// Minimum duration for a bssid to be considered rogue
+        /// Minimum duration for a bssid to be considered neighbor
         /// </summary>
         [Input("minDuration")]
         public Input<int>? MinDuration { get; set; }
 
         /// <summary>
-        /// Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+        /// Minimum duration for a bssid to be considered rogue
+        /// </summary>
+        [Input("minRogueDuration")]
+        public Input<int>? MinRogueDuration { get; set; }
+
+        /// <summary>
+        /// Minimum RSSI for an AP to be considered rogue
+        /// </summary>
+        [Input("minRogueRssi")]
+        public Input<int>? MinRogueRssi { get; set; }
+
+        /// <summary>
+        /// Minimum RSSI for an AP to be considered neighbor (ignoring APs that’s far away)
         /// </summary>
         [Input("minRssi")]
         public Input<int>? MinRssi { get; set; }

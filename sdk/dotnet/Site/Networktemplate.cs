@@ -12,11 +12,11 @@ namespace Pulumi.JuniperMist.Site
     /// <summary>
     /// This resource manages the Site Network configuration (Switch configuration).
     /// 
-    /// The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings accross the site without having to create an Org Network template.
+    /// The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings across the site without having to create an Org Network template.
     /// 
     /// &gt; When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, the `junipermist.site.Networktemplate` resource has been created to centralize all the site level switches related settings.
     /// 
-    /// !&gt; Only ONE `junipermist.site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+    /// !&gt; Only ONE `junipermist.site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
     /// 
     /// ## Import
     /// 
@@ -46,6 +46,9 @@ namespace Pulumi.JuniperMist.Site
         [Output("additionalConfigCmds")]
         public Output<ImmutableArray<string>> AdditionalConfigCmds { get; private set; } = null!;
 
+        [Output("autoUpgradeLinecard")]
+        public Output<bool> AutoUpgradeLinecard { get; private set; } = null!;
+
         [Output("dhcpSnooping")]
         public Output<Outputs.NetworktemplateDhcpSnooping?> DhcpSnooping { get; private set; } = null!;
 
@@ -67,6 +70,9 @@ namespace Pulumi.JuniperMist.Site
         [Output("dnsSuffixes")]
         public Output<ImmutableArray<string>> DnsSuffixes { get; private set; } = null!;
 
+        /// <summary>
+        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// </summary>
         [Output("extraRoutes")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateExtraRoutes>?> ExtraRoutes { get; private set; } = null!;
 
@@ -103,7 +109,7 @@ namespace Pulumi.JuniperMist.Site
         /// <summary>
         /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
         /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-        /// maximum 4 port mirrorings is allowed
+        /// maximum 4 mirroring ports is allowed
         /// </summary>
         [Output("portMirroring")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplatePortMirroring>?> PortMirroring { get; private set; } = null!;
@@ -130,7 +136,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool> RemoveExistingConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// Unique ID of the object instance in the Mist Organnization
+        /// Unique ID of the object instance in the Mist Organization
         /// </summary>
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
@@ -139,7 +145,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.NetworktemplateSnmpConfig?> SnmpConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Defines custom switch configuration based on different criterias
+        /// Defines custom switch configuration based on different criteria
         /// </summary>
         [Output("switchMatching")]
         public Output<Outputs.NetworktemplateSwitchMatching?> SwitchMatching { get; private set; } = null!;
@@ -238,6 +244,9 @@ namespace Pulumi.JuniperMist.Site
             set => _additionalConfigCmds = value;
         }
 
+        [Input("autoUpgradeLinecard")]
+        public Input<bool>? AutoUpgradeLinecard { get; set; }
+
         [Input("dhcpSnooping")]
         public Input<Inputs.NetworktemplateDhcpSnoopingArgs>? DhcpSnooping { get; set; }
 
@@ -279,6 +288,10 @@ namespace Pulumi.JuniperMist.Site
 
         [Input("extraRoutes")]
         private InputMap<Inputs.NetworktemplateExtraRoutesArgs>? _extraRoutes;
+
+        /// <summary>
+        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// </summary>
         public InputMap<Inputs.NetworktemplateExtraRoutesArgs> ExtraRoutes
         {
             get => _extraRoutes ?? (_extraRoutes = new InputMap<Inputs.NetworktemplateExtraRoutesArgs>());
@@ -345,7 +358,7 @@ namespace Pulumi.JuniperMist.Site
         /// <summary>
         /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
         /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-        /// maximum 4 port mirrorings is allowed
+        /// maximum 4 mirroring ports is allowed
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortMirroringArgs> PortMirroring
         {
@@ -381,7 +394,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? RemoveExistingConfigs { get; set; }
 
         /// <summary>
-        /// Unique ID of the object instance in the Mist Organnization
+        /// Unique ID of the object instance in the Mist Organization
         /// </summary>
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
@@ -390,7 +403,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.NetworktemplateSnmpConfigArgs>? SnmpConfig { get; set; }
 
         /// <summary>
-        /// Defines custom switch configuration based on different criterias
+        /// Defines custom switch configuration based on different criteria
         /// </summary>
         [Input("switchMatching")]
         public Input<Inputs.NetworktemplateSwitchMatchingArgs>? SwitchMatching { get; set; }
@@ -456,6 +469,9 @@ namespace Pulumi.JuniperMist.Site
             set => _additionalConfigCmds = value;
         }
 
+        [Input("autoUpgradeLinecard")]
+        public Input<bool>? AutoUpgradeLinecard { get; set; }
+
         [Input("dhcpSnooping")]
         public Input<Inputs.NetworktemplateDhcpSnoopingGetArgs>? DhcpSnooping { get; set; }
 
@@ -497,6 +513,10 @@ namespace Pulumi.JuniperMist.Site
 
         [Input("extraRoutes")]
         private InputMap<Inputs.NetworktemplateExtraRoutesGetArgs>? _extraRoutes;
+
+        /// <summary>
+        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// </summary>
         public InputMap<Inputs.NetworktemplateExtraRoutesGetArgs> ExtraRoutes
         {
             get => _extraRoutes ?? (_extraRoutes = new InputMap<Inputs.NetworktemplateExtraRoutesGetArgs>());
@@ -563,7 +583,7 @@ namespace Pulumi.JuniperMist.Site
         /// <summary>
         /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
         /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-        /// maximum 4 port mirrorings is allowed
+        /// maximum 4 mirroring ports is allowed
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortMirroringGetArgs> PortMirroring
         {
@@ -599,7 +619,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? RemoveExistingConfigs { get; set; }
 
         /// <summary>
-        /// Unique ID of the object instance in the Mist Organnization
+        /// Unique ID of the object instance in the Mist Organization
         /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
@@ -608,7 +628,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.NetworktemplateSnmpConfigGetArgs>? SnmpConfig { get; set; }
 
         /// <summary>
-        /// Defines custom switch configuration based on different criterias
+        /// Defines custom switch configuration based on different criteria
         /// </summary>
         [Input("switchMatching")]
         public Input<Inputs.NetworktemplateSwitchMatchingGetArgs>? SwitchMatching { get; set; }

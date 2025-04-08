@@ -12,7 +12,7 @@ namespace Pulumi.JuniperMist.Org
     /// <summary>
     /// This resource manages the NAC Rules (Auth Policies).
     /// 
-    /// A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+    /// A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
     /// 
     /// ## Import
     /// 
@@ -34,13 +34,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> Action { get; private set; } = null!;
 
         /// <summary>
-        /// all optional, this goes into Access-Accept
+        /// All optional, this goes into Access-Accept
         /// </summary>
         [Output("applyTags")]
         public Output<ImmutableArray<string>> ApplyTags { get; private set; } = null!;
 
         /// <summary>
-        /// enabled or not
+        /// Enabled or not
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
@@ -55,7 +55,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.NacruleNotMatching?> NotMatching { get; private set; } = null!;
 
         /// <summary>
-        /// the order of the rule, lower value implies higher priority
+        /// Order of the rule, lower value implies higher priority
         /// </summary>
         [Output("order")]
         public Output<int> Order { get; private set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _applyTags;
 
         /// <summary>
-        /// all optional, this goes into Access-Accept
+        /// All optional, this goes into Access-Accept
         /// </summary>
         public InputList<string> ApplyTags
         {
@@ -129,7 +129,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// enabled or not
+        /// Enabled or not
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -144,7 +144,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.NacruleNotMatchingArgs>? NotMatching { get; set; }
 
         /// <summary>
-        /// the order of the rule, lower value implies higher priority
+        /// Order of the rule, lower value implies higher priority
         /// </summary>
         [Input("order", required: true)]
         public Input<int> Order { get; set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _applyTags;
 
         /// <summary>
-        /// all optional, this goes into Access-Accept
+        /// All optional, this goes into Access-Accept
         /// </summary>
         public InputList<string> ApplyTags
         {
@@ -179,7 +179,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// enabled or not
+        /// Enabled or not
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -194,7 +194,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.NacruleNotMatchingGetArgs>? NotMatching { get; set; }
 
         /// <summary>
-        /// the order of the rule, lower value implies higher priority
+        /// Order of the rule, lower value implies higher priority
         /// </summary>
         [Input("order")]
         public Input<int>? Order { get; set; }

@@ -49,21 +49,6 @@ public final class DeviceprofileGatewayPortConfigVpnPathsArgs extends com.pulumi
     }
 
     /**
-     * Only if the VPN `type`==`mesh`
-     * 
-     */
-    @Import(name="linkName")
-    private @Nullable Output<String> linkName;
-
-    /**
-     * @return Only if the VPN `type`==`mesh`
-     * 
-     */
-    public Optional<Output<String>> linkName() {
-        return Optional.ofNullable(this.linkName);
-    }
-
-    /**
      * Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
      * 
      */
@@ -79,14 +64,14 @@ public final class DeviceprofileGatewayPortConfigVpnPathsArgs extends com.pulumi
     }
 
     /**
-     * Only if the VPN `type`==`hub_spoke`. enum: `hub`, `spoke`
+     * If the VPN `type`==`hub_spoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return Only if the VPN `type`==`hub_spoke`. enum: `hub`, `spoke`
+     * @return If the VPN `type`==`hub_spoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
      * 
      */
     public Optional<Output<String>> role() {
@@ -105,7 +90,6 @@ public final class DeviceprofileGatewayPortConfigVpnPathsArgs extends com.pulumi
     private DeviceprofileGatewayPortConfigVpnPathsArgs(DeviceprofileGatewayPortConfigVpnPathsArgs $) {
         this.bfdProfile = $.bfdProfile;
         this.bfdUseTunnelMode = $.bfdUseTunnelMode;
-        this.linkName = $.linkName;
         this.preference = $.preference;
         this.role = $.role;
         this.trafficShaping = $.trafficShaping;
@@ -172,27 +156,6 @@ public final class DeviceprofileGatewayPortConfigVpnPathsArgs extends com.pulumi
         }
 
         /**
-         * @param linkName Only if the VPN `type`==`mesh`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder linkName(@Nullable Output<String> linkName) {
-            $.linkName = linkName;
-            return this;
-        }
-
-        /**
-         * @param linkName Only if the VPN `type`==`mesh`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder linkName(String linkName) {
-            return linkName(Output.of(linkName));
-        }
-
-        /**
          * @param preference Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
          * 
          * @return builder
@@ -214,7 +177,7 @@ public final class DeviceprofileGatewayPortConfigVpnPathsArgs extends com.pulumi
         }
 
         /**
-         * @param role Only if the VPN `type`==`hub_spoke`. enum: `hub`, `spoke`
+         * @param role If the VPN `type`==`hub_spoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
          * 
          * @return builder
          * 
@@ -225,7 +188,7 @@ public final class DeviceprofileGatewayPortConfigVpnPathsArgs extends com.pulumi
         }
 
         /**
-         * @param role Only if the VPN `type`==`hub_spoke`. enum: `hub`, `spoke`
+         * @param role If the VPN `type`==`hub_spoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
          * 
          * @return builder
          * 

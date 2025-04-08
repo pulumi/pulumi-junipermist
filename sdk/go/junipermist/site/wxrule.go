@@ -66,7 +66,7 @@ type Wxrule struct {
 	// type of action, allow / block. enum: `allow`, `block`
 	Action    pulumi.StringOutput      `pulumi:"action"`
 	ApplyTags pulumi.StringArrayOutput `pulumi:"applyTags"`
-	// blocked apps (always blocking, ignoring action), the key of Get Application List
+	// Blocked apps (always blocking, ignoring action), the key of Get Application List
 	BlockedApps pulumi.StringArrayOutput `pulumi:"blockedApps"`
 	// List of WxTag UUID to indicate these tags are allowed access
 	DstAllowWxtags pulumi.StringArrayOutput `pulumi:"dstAllowWxtags"`
@@ -75,7 +75,7 @@ type Wxrule struct {
 	// List of WxTag UUID
 	DstWxtags pulumi.StringArrayOutput `pulumi:"dstWxtags"`
 	Enabled   pulumi.BoolOutput        `pulumi:"enabled"`
-	// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+	// Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 	Order  pulumi.IntOutput    `pulumi:"order"`
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// List of WxTag UUID to determine if this rule would match
@@ -124,7 +124,7 @@ type wxruleState struct {
 	// type of action, allow / block. enum: `allow`, `block`
 	Action    *string  `pulumi:"action"`
 	ApplyTags []string `pulumi:"applyTags"`
-	// blocked apps (always blocking, ignoring action), the key of Get Application List
+	// Blocked apps (always blocking, ignoring action), the key of Get Application List
 	BlockedApps []string `pulumi:"blockedApps"`
 	// List of WxTag UUID to indicate these tags are allowed access
 	DstAllowWxtags []string `pulumi:"dstAllowWxtags"`
@@ -133,7 +133,7 @@ type wxruleState struct {
 	// List of WxTag UUID
 	DstWxtags []string `pulumi:"dstWxtags"`
 	Enabled   *bool    `pulumi:"enabled"`
-	// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+	// Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 	Order  *int    `pulumi:"order"`
 	SiteId *string `pulumi:"siteId"`
 	// List of WxTag UUID to determine if this rule would match
@@ -144,7 +144,7 @@ type WxruleState struct {
 	// type of action, allow / block. enum: `allow`, `block`
 	Action    pulumi.StringPtrInput
 	ApplyTags pulumi.StringArrayInput
-	// blocked apps (always blocking, ignoring action), the key of Get Application List
+	// Blocked apps (always blocking, ignoring action), the key of Get Application List
 	BlockedApps pulumi.StringArrayInput
 	// List of WxTag UUID to indicate these tags are allowed access
 	DstAllowWxtags pulumi.StringArrayInput
@@ -153,7 +153,7 @@ type WxruleState struct {
 	// List of WxTag UUID
 	DstWxtags pulumi.StringArrayInput
 	Enabled   pulumi.BoolPtrInput
-	// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+	// Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 	Order  pulumi.IntPtrInput
 	SiteId pulumi.StringPtrInput
 	// List of WxTag UUID to determine if this rule would match
@@ -168,7 +168,7 @@ type wxruleArgs struct {
 	// type of action, allow / block. enum: `allow`, `block`
 	Action    string   `pulumi:"action"`
 	ApplyTags []string `pulumi:"applyTags"`
-	// blocked apps (always blocking, ignoring action), the key of Get Application List
+	// Blocked apps (always blocking, ignoring action), the key of Get Application List
 	BlockedApps []string `pulumi:"blockedApps"`
 	// List of WxTag UUID to indicate these tags are allowed access
 	DstAllowWxtags []string `pulumi:"dstAllowWxtags"`
@@ -177,7 +177,7 @@ type wxruleArgs struct {
 	// List of WxTag UUID
 	DstWxtags []string `pulumi:"dstWxtags"`
 	Enabled   *bool    `pulumi:"enabled"`
-	// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+	// Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 	Order  int    `pulumi:"order"`
 	SiteId string `pulumi:"siteId"`
 	// List of WxTag UUID to determine if this rule would match
@@ -189,7 +189,7 @@ type WxruleArgs struct {
 	// type of action, allow / block. enum: `allow`, `block`
 	Action    pulumi.StringInput
 	ApplyTags pulumi.StringArrayInput
-	// blocked apps (always blocking, ignoring action), the key of Get Application List
+	// Blocked apps (always blocking, ignoring action), the key of Get Application List
 	BlockedApps pulumi.StringArrayInput
 	// List of WxTag UUID to indicate these tags are allowed access
 	DstAllowWxtags pulumi.StringArrayInput
@@ -198,7 +198,7 @@ type WxruleArgs struct {
 	// List of WxTag UUID
 	DstWxtags pulumi.StringArrayInput
 	Enabled   pulumi.BoolPtrInput
-	// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+	// Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 	Order  pulumi.IntInput
 	SiteId pulumi.StringInput
 	// List of WxTag UUID to determine if this rule would match
@@ -301,7 +301,7 @@ func (o WxruleOutput) ApplyTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringArrayOutput { return v.ApplyTags }).(pulumi.StringArrayOutput)
 }
 
-// blocked apps (always blocking, ignoring action), the key of Get Application List
+// Blocked apps (always blocking, ignoring action), the key of Get Application List
 func (o WxruleOutput) BlockedApps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringArrayOutput { return v.BlockedApps }).(pulumi.StringArrayOutput)
 }
@@ -325,7 +325,7 @@ func (o WxruleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+// Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 func (o WxruleOutput) Order() pulumi.IntOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.IntOutput { return v.Order }).(pulumi.IntOutput)
 }

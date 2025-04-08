@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options. HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
  *
- * The Gateway Devide Profile can be assigned to a gateway with the `junipermist.org.DeviceprofileAssign` resource.
+ * The Gateway Device Profile can be assigned to a gateway with the `junipermist.org.DeviceprofileAssign` resource.
  *
  * ## Import
  *
@@ -67,11 +67,12 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
      */
     public readonly dnsSuffixes!: pulumi.Output<string[] | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     * Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
     public readonly extraRoutes!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayExtraRoutes} | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+     * "{{myvar}}")
      */
     public readonly extraRoutes6!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayExtraRoutes6} | undefined>;
     /**
@@ -222,11 +223,12 @@ export interface DeviceprofileGatewayState {
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     * Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayExtraRoutes>}>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+     * "{{myvar}}")
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayExtraRoutes6>}>;
     /**
@@ -302,11 +304,12 @@ export interface DeviceprofileGatewayArgs {
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     * Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayExtraRoutes>}>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
+     * "{{myvar}}")
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayExtraRoutes6>}>;
     /**

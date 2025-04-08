@@ -52,7 +52,8 @@ type Ap struct {
 	Image2Url pulumi.StringOutput     `pulumi:"image2Url"`
 	Image3Url pulumi.StringOutput     `pulumi:"image3Url"`
 	// IP AP settings
-	IpConfig ApIpConfigPtrOutput `pulumi:"ipConfig"`
+	IpConfig   ApIpConfigPtrOutput   `pulumi:"ipConfig"`
+	LacpConfig ApLacpConfigPtrOutput `pulumi:"lacpConfig"`
 	// LED AP settings
 	Led ApLedPtrOutput `pulumi:"led"`
 	// Whether this map is considered locked down
@@ -156,7 +157,8 @@ type apState struct {
 	Image2Url *string  `pulumi:"image2Url"`
 	Image3Url *string  `pulumi:"image3Url"`
 	// IP AP settings
-	IpConfig *ApIpConfig `pulumi:"ipConfig"`
+	IpConfig   *ApIpConfig   `pulumi:"ipConfig"`
+	LacpConfig *ApLacpConfig `pulumi:"lacpConfig"`
 	// LED AP settings
 	Led *ApLed `pulumi:"led"`
 	// Whether this map is considered locked down
@@ -225,7 +227,8 @@ type ApState struct {
 	Image2Url pulumi.StringPtrInput
 	Image3Url pulumi.StringPtrInput
 	// IP AP settings
-	IpConfig ApIpConfigPtrInput
+	IpConfig   ApIpConfigPtrInput
+	LacpConfig ApLacpConfigPtrInput
 	// LED AP settings
 	Led ApLedPtrInput
 	// Whether this map is considered locked down
@@ -295,7 +298,8 @@ type apArgs struct {
 	// Height, in meters, optional
 	Height *float64 `pulumi:"height"`
 	// IP AP settings
-	IpConfig *ApIpConfig `pulumi:"ipConfig"`
+	IpConfig   *ApIpConfig   `pulumi:"ipConfig"`
+	LacpConfig *ApLacpConfig `pulumi:"lacpConfig"`
 	// LED AP settings
 	Led *ApLed `pulumi:"led"`
 	// Whether this map is considered locked down
@@ -353,7 +357,8 @@ type ApArgs struct {
 	// Height, in meters, optional
 	Height pulumi.Float64PtrInput
 	// IP AP settings
-	IpConfig ApIpConfigPtrInput
+	IpConfig   ApIpConfigPtrInput
+	LacpConfig ApLacpConfigPtrInput
 	// LED AP settings
 	Led ApLedPtrInput
 	// Whether this map is considered locked down
@@ -546,6 +551,10 @@ func (o ApOutput) Image3Url() pulumi.StringOutput {
 // IP AP settings
 func (o ApOutput) IpConfig() ApIpConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApIpConfigPtrOutput { return v.IpConfig }).(ApIpConfigPtrOutput)
+}
+
+func (o ApOutput) LacpConfig() ApLacpConfigPtrOutput {
+	return o.ApplyT(func(v *Ap) ApLacpConfigPtrOutput { return v.LacpConfig }).(ApLacpConfigPtrOutput)
 }
 
 // LED AP settings

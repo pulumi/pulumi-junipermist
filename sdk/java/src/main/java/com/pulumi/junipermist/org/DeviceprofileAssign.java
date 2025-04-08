@@ -15,9 +15,9 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * This resourceis used to assign/unassign a device profile to one or multiple devices.
+ * This resource is used to assign/unassign a device profile to one or multiple devices.
  * 
- * The `junipermist.org.DeviceprofileGateway` resource can be assigned to Gateways, and the`junipermist.org.DeviceprofileAp` resource can be assigned the Wireless Access Points
+ * The `junipermist.org.DeviceprofileGateway` resource can be assigned to Gateways, and the `junipermist.org.DeviceprofileAp` resource can be assigned the Wireless Access Points
  * 
  * ## Example Usage
  * 
@@ -119,7 +119,6 @@ public class DeviceprofileAssign extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

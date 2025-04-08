@@ -87,14 +87,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/avprofile:Avprofile")
 public class Avprofile extends com.pulumi.resources.CustomResource {
     /**
-     * enum: `block`, `permit`
+     * enum: `block`, `log-and-permit`, `permit`
      * 
      */
     @Export(name="fallbackAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fallbackAction;
 
     /**
-     * @return enum: `block`, `permit`
+     * @return enum: `block`, `log-and-permit`, `permit`
      * 
      */
     public Output<Optional<String>> fallbackAction() {
@@ -115,10 +115,10 @@ public class Avprofile extends com.pulumi.resources.CustomResource {
         return this.maxFilesize;
     }
     @Export(name="mimeWhitelists", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> mimeWhitelists;
+    private Output<List<String>> mimeWhitelists;
 
-    public Output<Optional<List<String>>> mimeWhitelists() {
-        return Codegen.optional(this.mimeWhitelists);
+    public Output<List<String>> mimeWhitelists() {
+        return this.mimeWhitelists;
     }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -147,10 +147,10 @@ public class Avprofile extends com.pulumi.resources.CustomResource {
         return this.protocols;
     }
     @Export(name="urlWhitelists", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> urlWhitelists;
+    private Output<List<String>> urlWhitelists;
 
-    public Output<Optional<List<String>>> urlWhitelists() {
-        return Codegen.optional(this.urlWhitelists);
+    public Output<List<String>> urlWhitelists() {
+        return this.urlWhitelists;
     }
 
     /**
@@ -192,7 +192,6 @@ public class Avprofile extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

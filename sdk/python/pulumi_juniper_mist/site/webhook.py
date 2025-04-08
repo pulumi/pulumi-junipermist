@@ -33,12 +33,13 @@ class WebhookArgs:
                  oauth2_token_url: Optional[pulumi.Input[str]] = None,
                  oauth2_username: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
+                 single_event_per_message: Optional[pulumi.Input[bool]] = None,
                  splunk_token: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  verify_cert: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Webhook resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-updowns`, `device-events`, `discovered-raw-rssi`, `location`, `location_asset`, `location_centrak`, `location_client`, `location_sdk`, `location_unclient`, `mxedge-events`, `nac-accounting`, `nac_events`, `occupancy-alerts`, `rssizone`, `sdkclient_scan_data`, `site_sle`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
         :param pulumi.Input[bool] enabled: Whether webhook is enabled
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         :param pulumi.Input[str] name: Name of the webhook
@@ -50,6 +51,9 @@ class WebhookArgs:
         :param pulumi.Input[str] oauth2_token_url: Required when `type`==`oauth2`
         :param pulumi.Input[str] oauth2_username: Required when `oauth2_grant_type`==`password`
         :param pulumi.Input[str] secret: Only if `type`=`http-post`
+        :param pulumi.Input[bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+               `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+               Topics)
         :param pulumi.Input[str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
                the webhook receiver is configured to accept it.
         :param pulumi.Input[str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
@@ -80,6 +84,8 @@ class WebhookArgs:
             pulumi.set(__self__, "oauth2_username", oauth2_username)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
+        if single_event_per_message is not None:
+            pulumi.set(__self__, "single_event_per_message", single_event_per_message)
         if splunk_token is not None:
             pulumi.set(__self__, "splunk_token", splunk_token)
         if type is not None:
@@ -100,7 +106,7 @@ class WebhookArgs:
     @pulumi.getter
     def topics(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-updowns`, `device-events`, `discovered-raw-rssi`, `location`, `location_asset`, `location_centrak`, `location_client`, `location_sdk`, `location_unclient`, `mxedge-events`, `nac-accounting`, `nac_events`, `occupancy-alerts`, `rssizone`, `sdkclient_scan_data`, `site_sle`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
+        enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
         """
         return pulumi.get(self, "topics")
 
@@ -250,6 +256,20 @@ class WebhookArgs:
         pulumi.set(self, "secret", value)
 
     @property
+    @pulumi.getter(name="singleEventPerMessage")
+    def single_event_per_message(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+        `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+        Topics)
+        """
+        return pulumi.get(self, "single_event_per_message")
+
+    @single_event_per_message.setter
+    def single_event_per_message(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "single_event_per_message", value)
+
+    @property
     @pulumi.getter(name="splunkToken")
     def splunk_token(self) -> Optional[pulumi.Input[str]]:
         """
@@ -302,6 +322,7 @@ class _WebhookState:
                  oauth2_username: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
+                 single_event_per_message: Optional[pulumi.Input[bool]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
                  splunk_token: Optional[pulumi.Input[str]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -321,9 +342,12 @@ class _WebhookState:
         :param pulumi.Input[str] oauth2_token_url: Required when `type`==`oauth2`
         :param pulumi.Input[str] oauth2_username: Required when `oauth2_grant_type`==`password`
         :param pulumi.Input[str] secret: Only if `type`=`http-post`
+        :param pulumi.Input[bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+               `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+               Topics)
         :param pulumi.Input[str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
                the webhook receiver is configured to accept it.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-updowns`, `device-events`, `discovered-raw-rssi`, `location`, `location_asset`, `location_centrak`, `location_client`, `location_sdk`, `location_unclient`, `mxedge-events`, `nac-accounting`, `nac_events`, `occupancy-alerts`, `rssizone`, `sdkclient_scan_data`, `site_sle`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
         :param pulumi.Input[str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
         :param pulumi.Input[bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
@@ -351,6 +375,8 @@ class _WebhookState:
             pulumi.set(__self__, "org_id", org_id)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
+        if single_event_per_message is not None:
+            pulumi.set(__self__, "single_event_per_message", single_event_per_message)
         if site_id is not None:
             pulumi.set(__self__, "site_id", site_id)
         if splunk_token is not None:
@@ -506,6 +532,20 @@ class _WebhookState:
         pulumi.set(self, "secret", value)
 
     @property
+    @pulumi.getter(name="singleEventPerMessage")
+    def single_event_per_message(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+        `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+        Topics)
+        """
+        return pulumi.get(self, "single_event_per_message")
+
+    @single_event_per_message.setter
+    def single_event_per_message(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "single_event_per_message", value)
+
+    @property
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "site_id")
@@ -531,7 +571,7 @@ class _WebhookState:
     @pulumi.getter
     def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-updowns`, `device-events`, `discovered-raw-rssi`, `location`, `location_asset`, `location_centrak`, `location_client`, `location_sdk`, `location_unclient`, `mxedge-events`, `nac-accounting`, `nac_events`, `occupancy-alerts`, `rssizone`, `sdkclient_scan_data`, `site_sle`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
+        enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
         """
         return pulumi.get(self, "topics")
 
@@ -589,6 +629,7 @@ class Webhook(pulumi.CustomResource):
                  oauth2_token_url: Optional[pulumi.Input[str]] = None,
                  oauth2_username: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
+                 single_event_per_message: Optional[pulumi.Input[bool]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
                  splunk_token: Optional[pulumi.Input[str]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -653,9 +694,12 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[str] oauth2_token_url: Required when `type`==`oauth2`
         :param pulumi.Input[str] oauth2_username: Required when `oauth2_grant_type`==`password`
         :param pulumi.Input[str] secret: Only if `type`=`http-post`
+        :param pulumi.Input[bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+               `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+               Topics)
         :param pulumi.Input[str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
                the webhook receiver is configured to accept it.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-updowns`, `device-events`, `discovered-raw-rssi`, `location`, `location_asset`, `location_centrak`, `location_client`, `location_sdk`, `location_unclient`, `mxedge-events`, `nac-accounting`, `nac_events`, `occupancy-alerts`, `rssizone`, `sdkclient_scan_data`, `site_sle`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
         :param pulumi.Input[str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
         :param pulumi.Input[bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
@@ -735,6 +779,7 @@ class Webhook(pulumi.CustomResource):
                  oauth2_token_url: Optional[pulumi.Input[str]] = None,
                  oauth2_username: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
+                 single_event_per_message: Optional[pulumi.Input[bool]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
                  splunk_token: Optional[pulumi.Input[str]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -761,6 +806,7 @@ class Webhook(pulumi.CustomResource):
             __props__.__dict__["oauth2_token_url"] = oauth2_token_url
             __props__.__dict__["oauth2_username"] = oauth2_username
             __props__.__dict__["secret"] = None if secret is None else pulumi.Output.secret(secret)
+            __props__.__dict__["single_event_per_message"] = single_event_per_message
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
@@ -798,6 +844,7 @@ class Webhook(pulumi.CustomResource):
             oauth2_username: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             secret: Optional[pulumi.Input[str]] = None,
+            single_event_per_message: Optional[pulumi.Input[bool]] = None,
             site_id: Optional[pulumi.Input[str]] = None,
             splunk_token: Optional[pulumi.Input[str]] = None,
             topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -822,9 +869,12 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[str] oauth2_token_url: Required when `type`==`oauth2`
         :param pulumi.Input[str] oauth2_username: Required when `oauth2_grant_type`==`password`
         :param pulumi.Input[str] secret: Only if `type`=`http-post`
+        :param pulumi.Input[bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+               `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+               Topics)
         :param pulumi.Input[str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
                the webhook receiver is configured to accept it.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-updowns`, `device-events`, `discovered-raw-rssi`, `location`, `location_asset`, `location_centrak`, `location_client`, `location_sdk`, `location_unclient`, `mxedge-events`, `nac-accounting`, `nac_events`, `occupancy-alerts`, `rssizone`, `sdkclient_scan_data`, `site_sle`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
         :param pulumi.Input[str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
         :param pulumi.Input[bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
@@ -844,6 +894,7 @@ class Webhook(pulumi.CustomResource):
         __props__.__dict__["oauth2_username"] = oauth2_username
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["secret"] = secret
+        __props__.__dict__["single_event_per_message"] = single_event_per_message
         __props__.__dict__["site_id"] = site_id
         __props__.__dict__["splunk_token"] = splunk_token
         __props__.__dict__["topics"] = topics
@@ -946,6 +997,16 @@ class Webhook(pulumi.CustomResource):
         return pulumi.get(self, "secret")
 
     @property
+    @pulumi.getter(name="singleEventPerMessage")
+    def single_event_per_message(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+        `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+        Topics)
+        """
+        return pulumi.get(self, "single_event_per_message")
+
+    @property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "site_id")
@@ -963,7 +1024,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter
     def topics(self) -> pulumi.Output[Sequence[str]]:
         """
-        enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-updowns`, `device-events`, `discovered-raw-rssi`, `location`, `location_asset`, `location_centrak`, `location_client`, `location_sdk`, `location_unclient`, `mxedge-events`, `nac-accounting`, `nac_events`, `occupancy-alerts`, `rssizone`, `sdkclient_scan_data`, `site_sle`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
+        enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
         """
         return pulumi.get(self, "topics")
 

@@ -15,6 +15,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
     {
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatApRedundancyResult ApRedundancy;
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatArpTableStatsResult ArpTableStats;
+        /// <summary>
+        /// Only present when `bgp_peers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatBgpPeerResult> BgpPeers;
         public readonly int CertExpiry;
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatClusterConfigResult ClusterConfig;
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatClusterStatResult ClusterStat;
@@ -22,7 +26,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string ConfigStatus;
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatCpu2StatResult Cpu2Stat;
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatCpuStatResult CpuStat;
-        public readonly int CreatedTime;
+        /// <summary>
+        /// When the object has been created, in epoch
+        /// </summary>
+        public readonly double CreatedTime;
         public readonly string DeviceprofileId;
         /// <summary>
         /// Property key is the network name
@@ -39,11 +46,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatFwupdateResult Fwupdate;
         public readonly bool HasPcap;
         /// <summary>
-        /// hostname reported by the device
+        /// Hostname reported by the device
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// serial
+        /// Unique ID of the object instance in the Mist Organization
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -62,68 +69,79 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatIpStatResult IpStat;
         public readonly bool IsHa;
         /// <summary>
-        /// last seen timestamp
+        /// Last seen timestamp
         /// </summary>
         public readonly double LastSeen;
         /// <summary>
-        /// device mac
+        /// Device mac
         /// </summary>
         public readonly string Mac;
         /// <summary>
-        /// serial
+        /// Serial Number
         /// </summary>
         public readonly string MapId;
         /// <summary>
-        /// memory usage stat (for virtual chassis, memory usage of master RE)
+        /// Memory usage stat (for virtual chassis, memory usage of master RE)
         /// </summary>
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatMemory2StatResult Memory2Stat;
         /// <summary>
-        /// memory usage stat (for virtual chassis, memory usage of master RE)
+        /// Memory usage stat (for virtual chassis, memory usage of master RE)
         /// </summary>
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatMemoryStatResult MemoryStat;
         /// <summary>
-        /// device model
+        /// Device model
         /// </summary>
         public readonly string Model;
-        public readonly int ModifiedTime;
+        /// <summary>
+        /// When the object has been modified for the last time, in epoch
+        /// </summary>
+        public readonly double ModifiedTime;
         public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatModule2StatResult> Module2Stats;
         public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatModuleStatResult> ModuleStats;
         /// <summary>
-        /// device name if configured
+        /// Device name if configured
         /// </summary>
         public readonly string Name;
         public readonly string NodeName;
-        /// <summary>
-        /// serial
-        /// </summary>
         public readonly string OrgId;
+        /// <summary>
+        /// Only present when `ports` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/ports/search` result object, except that org*id, site*id, mac, model are removed
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatPortResult> Ports;
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatRouteSummaryStatsResult RouteSummaryStats;
         /// <summary>
-        /// device name if configured
+        /// Device name if configured
         /// </summary>
         public readonly string RouterName;
         /// <summary>
-        /// serial
+        /// Serial Number
         /// </summary>
         public readonly string Serial;
         public readonly ImmutableDictionary<string, Outputs.GetGatewayStatsDeviceGatewayStatService2StatResult> Service2Stat;
         public readonly ImmutableDictionary<string, Outputs.GetGatewayStatsDeviceGatewayStatServiceStatResult> ServiceStat;
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatServiceStatusResult ServiceStatus;
-        /// <summary>
-        /// serial
-        /// </summary>
         public readonly string SiteId;
         public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatSpu2StatResult> Spu2Stats;
         public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatSpuStatResult> SpuStats;
         public readonly string Status;
+        /// <summary>
+        /// Only present when `tunnels` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/tunnels/search` result object, except that org*id, site*id, mac, model are removed
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatTunnelResult> Tunnels;
         public readonly double Uptime;
         public readonly string Version;
+        /// <summary>
+        /// Only present when `vpn_peers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/vpn_peers/search` result object, except that org*id, site*id, mac, model are removed
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatVpnPeerResult> VpnPeers;
 
         [OutputConstructor]
         private GetGatewayStatsDeviceGatewayStatResult(
             Outputs.GetGatewayStatsDeviceGatewayStatApRedundancyResult apRedundancy,
 
             Outputs.GetGatewayStatsDeviceGatewayStatArpTableStatsResult arpTableStats,
+
+            ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatBgpPeerResult> bgpPeers,
 
             int certExpiry,
 
@@ -139,7 +157,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             Outputs.GetGatewayStatsDeviceGatewayStatCpuStatResult cpuStat,
 
-            int createdTime,
+            double createdTime,
 
             string deviceprofileId,
 
@@ -181,7 +199,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string model,
 
-            int modifiedTime,
+            double modifiedTime,
 
             ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatModule2StatResult> module2Stats,
 
@@ -192,6 +210,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
             string nodeName,
 
             string orgId,
+
+            ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatPortResult> ports,
 
             Outputs.GetGatewayStatsDeviceGatewayStatRouteSummaryStatsResult routeSummaryStats,
 
@@ -213,12 +233,17 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string status,
 
+            ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatTunnelResult> tunnels,
+
             double uptime,
 
-            string version)
+            string version,
+
+            ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatVpnPeerResult> vpnPeers)
         {
             ApRedundancy = apRedundancy;
             ArpTableStats = arpTableStats;
+            BgpPeers = bgpPeers;
             CertExpiry = certExpiry;
             ClusterConfig = clusterConfig;
             ClusterStat = clusterStat;
@@ -253,6 +278,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             Name = name;
             NodeName = nodeName;
             OrgId = orgId;
+            Ports = ports;
             RouteSummaryStats = routeSummaryStats;
             RouterName = routerName;
             Serial = serial;
@@ -263,8 +289,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
             Spu2Stats = spu2Stats;
             SpuStats = spuStats;
             Status = status;
+            Tunnels = tunnels;
             Uptime = uptime;
             Version = version;
+            VpnPeers = vpnPeers;
         }
     }
 }

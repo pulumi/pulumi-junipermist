@@ -165,28 +165,30 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dnsSuffixes);
     }
     /**
-     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
      * 
      */
     @Export(name="extraRoutes", refs={Map.class,String.class,GatewayExtraRoutes.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,GatewayExtraRoutes>> extraRoutes;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
      * 
      */
     public Output<Optional<Map<String,GatewayExtraRoutes>>> extraRoutes() {
         return Codegen.optional(this.extraRoutes);
     }
     /**
-     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g.
+     * &#34;{{myvar}}&#34;)
      * 
      */
     @Export(name="extraRoutes6", refs={Map.class,String.class,GatewayExtraRoutes6.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,GatewayExtraRoutes6>> extraRoutes6;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g.
+     * &#34;{{myvar}}&#34;)
      * 
      */
     public Output<Optional<Map<String,GatewayExtraRoutes6>>> extraRoutes6() {
@@ -560,7 +562,6 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

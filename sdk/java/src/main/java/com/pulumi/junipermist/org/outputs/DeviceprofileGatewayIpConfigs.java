@@ -4,7 +4,6 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,8 +12,8 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceprofileGatewayIpConfigs {
-    private String ip;
-    private String netmask;
+    private @Nullable String ip;
+    private @Nullable String netmask;
     /**
      * @return Optional list of secondary IPs in CIDR format
      * 
@@ -27,11 +26,11 @@ public final class DeviceprofileGatewayIpConfigs {
     private @Nullable String type;
 
     private DeviceprofileGatewayIpConfigs() {}
-    public String ip() {
-        return this.ip;
+    public Optional<String> ip() {
+        return Optional.ofNullable(this.ip);
     }
-    public String netmask() {
-        return this.netmask;
+    public Optional<String> netmask() {
+        return Optional.ofNullable(this.netmask);
     }
     /**
      * @return Optional list of secondary IPs in CIDR format
@@ -57,8 +56,8 @@ public final class DeviceprofileGatewayIpConfigs {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String ip;
-        private String netmask;
+        private @Nullable String ip;
+        private @Nullable String netmask;
         private @Nullable List<String> secondaryIps;
         private @Nullable String type;
         public Builder() {}
@@ -71,18 +70,14 @@ public final class DeviceprofileGatewayIpConfigs {
         }
 
         @CustomType.Setter
-        public Builder ip(String ip) {
-            if (ip == null) {
-              throw new MissingRequiredPropertyException("DeviceprofileGatewayIpConfigs", "ip");
-            }
+        public Builder ip(@Nullable String ip) {
+
             this.ip = ip;
             return this;
         }
         @CustomType.Setter
-        public Builder netmask(String netmask) {
-            if (netmask == null) {
-              throw new MissingRequiredPropertyException("DeviceprofileGatewayIpConfigs", "netmask");
-            }
+        public Builder netmask(@Nullable String netmask) {
+
             this.netmask = netmask;
             return this;
         }

@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Model { get; set; }
 
         /// <summary>
-        /// optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+        /// Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
         ///   * for CLOS, to group dist / access switches into pods
         ///   * for ERB/CRB, to group dist / esilag-access into pods
         /// </summary>
@@ -36,7 +36,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<int>? _pods;
 
         /// <summary>
-        /// by default, core switches are assumed to be connecting all pods. 
+        /// By default, core switches are assumed to be connecting all pods. 
         /// if you want to limit the pods, you can specify pods.
         /// </summary>
         public InputList<int> Pods

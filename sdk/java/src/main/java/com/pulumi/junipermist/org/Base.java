@@ -104,14 +104,14 @@ public class Base extends com.pulumi.resources.CustomResource {
         return this.mspLogoUrl;
     }
     /**
-     * name of the msp the org belongs to
+     * Name of the msp the org belongs to
      * 
      */
     @Export(name="mspName", refs={String.class}, tree="[0]")
     private Output<String> mspName;
 
     /**
-     * @return name of the msp the org belongs to
+     * @return Name of the msp the org belongs to
      * 
      */
     public Output<String> mspName() {
@@ -175,7 +175,6 @@ public class Base extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

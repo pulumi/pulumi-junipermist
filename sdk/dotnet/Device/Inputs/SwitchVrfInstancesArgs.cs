@@ -12,24 +12,42 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class SwitchVrfInstancesArgs : global::Pulumi.ResourceArgs
     {
+        [Input("evpnAutoLoopbackSubnet")]
+        public Input<string>? EvpnAutoLoopbackSubnet { get; set; }
+
+        [Input("evpnAutoLoopbackSubnet6")]
+        public Input<string>? EvpnAutoLoopbackSubnet6 { get; set; }
+
+        [Input("extraRoutes")]
+        private InputMap<Inputs.SwitchVrfInstancesExtraRoutesArgs>? _extraRoutes;
+
+        /// <summary>
+        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// </summary>
+        public InputMap<Inputs.SwitchVrfInstancesExtraRoutesArgs> ExtraRoutes
+        {
+            get => _extraRoutes ?? (_extraRoutes = new InputMap<Inputs.SwitchVrfInstancesExtraRoutesArgs>());
+            set => _extraRoutes = value;
+        }
+
+        [Input("extraRoutes6")]
+        private InputMap<Inputs.SwitchVrfInstancesExtraRoutes6Args>? _extraRoutes6;
+
+        /// <summary>
+        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// </summary>
+        public InputMap<Inputs.SwitchVrfInstancesExtraRoutes6Args> ExtraRoutes6
+        {
+            get => _extraRoutes6 ?? (_extraRoutes6 = new InputMap<Inputs.SwitchVrfInstancesExtraRoutes6Args>());
+            set => _extraRoutes6 = value;
+        }
+
         [Input("networks")]
         private InputList<string>? _networks;
         public InputList<string> Networks
         {
             get => _networks ?? (_networks = new InputList<string>());
             set => _networks = value;
-        }
-
-        [Input("vrfExtraRoutes")]
-        private InputMap<Inputs.SwitchVrfInstancesVrfExtraRoutesArgs>? _vrfExtraRoutes;
-
-        /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
-        /// </summary>
-        public InputMap<Inputs.SwitchVrfInstancesVrfExtraRoutesArgs> VrfExtraRoutes
-        {
-            get => _vrfExtraRoutes ?? (_vrfExtraRoutes = new InputMap<Inputs.SwitchVrfInstancesVrfExtraRoutesArgs>());
-            set => _vrfExtraRoutes = value;
         }
 
         public SwitchVrfInstancesArgs()

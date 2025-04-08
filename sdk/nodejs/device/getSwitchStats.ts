@@ -48,15 +48,15 @@ export function getSwitchStats(args: GetSwitchStatsArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetSwitchStatsArgs {
     /**
-     * duration like 7d, 2w
+     * Duration like 7d, 2w
      */
     duration?: string;
     /**
-     * end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * End datetime, can be epoch or relative time like -1d, -2h; now if not specified
      */
     end?: number;
     /**
-     * if `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+     * If `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
      */
     evpnUnused?: string;
     /**
@@ -67,9 +67,12 @@ export interface GetSwitchStatsArgs {
     orgId: string;
     siteId?: string;
     /**
-     * start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
      */
     start?: number;
+    /**
+     * enum: `all`, `connected`, `disconnected`
+     */
     status?: string;
 }
 
@@ -79,15 +82,15 @@ export interface GetSwitchStatsArgs {
 export interface GetSwitchStatsResult {
     readonly deviceSwitchStats: outputs.device.GetSwitchStatsDeviceSwitchStat[];
     /**
-     * duration like 7d, 2w
+     * Duration like 7d, 2w
      */
     readonly duration?: string;
     /**
-     * end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * End datetime, can be epoch or relative time like -1d, -2h; now if not specified
      */
     readonly end?: number;
     /**
-     * if `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+     * If `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
      */
     readonly evpnUnused?: string;
     /**
@@ -102,9 +105,12 @@ export interface GetSwitchStatsResult {
     readonly orgId: string;
     readonly siteId?: string;
     /**
-     * start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
      */
     readonly start?: number;
+    /**
+     * enum: `all`, `connected`, `disconnected`
+     */
     readonly status?: string;
 }
 /**
@@ -149,15 +155,15 @@ export function getSwitchStatsOutput(args: GetSwitchStatsOutputArgs, opts?: pulu
  */
 export interface GetSwitchStatsOutputArgs {
     /**
-     * duration like 7d, 2w
+     * Duration like 7d, 2w
      */
     duration?: pulumi.Input<string>;
     /**
-     * end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * End datetime, can be epoch or relative time like -1d, -2h; now if not specified
      */
     end?: pulumi.Input<number>;
     /**
-     * if `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+     * If `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
      */
     evpnUnused?: pulumi.Input<string>;
     /**
@@ -168,8 +174,11 @@ export interface GetSwitchStatsOutputArgs {
     orgId: pulumi.Input<string>;
     siteId?: pulumi.Input<string>;
     /**
-     * start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
      */
     start?: pulumi.Input<number>;
+    /**
+     * enum: `all`, `connected`, `disconnected`
+     */
     status?: pulumi.Input<string>;
 }

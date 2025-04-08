@@ -10,10 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.org.InventoryArgs;
 import com.pulumi.junipermist.org.inputs.InventoryState;
-import com.pulumi.junipermist.org.outputs.InventoryDevice;
 import com.pulumi.junipermist.org.outputs.InventoryInventory;
 import java.lang.String;
-import java.util.List;
 import java.util.Map;
 import javax.annotation.Nullable;
 
@@ -40,30 +38,6 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:org/inventory:Inventory")
 public class Inventory extends com.pulumi.resources.CustomResource {
-    /**
-     * **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-     * replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-     * `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
-     * 
-     * @deprecated
-     * The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-     * Please update your configurations to use the `inventory` attribute.
-     * 
-     */
-    @Deprecated /* The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-Please update your configurations to use the `inventory` attribute. */
-    @Export(name="devices", refs={List.class,InventoryDevice.class}, tree="[0,1]")
-    private Output<List<InventoryDevice>> devices;
-
-    /**
-     * @return **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-     * replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-     * `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
-     * 
-     */
-    public Output<List<InventoryDevice>> devices() {
-        return this.devices;
-    }
     /**
      * Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
      * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
@@ -128,7 +102,6 @@ Please update your configurations to use the `inventory` attribute. */
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

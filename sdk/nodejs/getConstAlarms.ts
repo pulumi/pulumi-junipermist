@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * This data source provides the list of  available Alarms.
+ * This data source provides the list of available Alarms.
  *
  * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
  *
@@ -37,7 +37,7 @@ export interface GetConstAlarmsResult {
     readonly id: string;
 }
 /**
- * This data source provides the list of  available Alarms.
+ * This data source provides the list of available Alarms.
  *
  * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
  *

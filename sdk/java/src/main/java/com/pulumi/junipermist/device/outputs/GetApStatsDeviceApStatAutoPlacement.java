@@ -34,11 +34,6 @@ public final class GetApStatsDeviceApStatAutoPlacement {
      */
     private String statusDetail;
     /**
-     * @return Flag to represent if auto_placement values are currently utilized
-     * 
-     */
-    private Boolean useAutoPlacement;
-    /**
      * @return X Autoplaced Position in pixels
      * 
      */
@@ -89,13 +84,6 @@ public final class GetApStatsDeviceApStatAutoPlacement {
         return this.statusDetail;
     }
     /**
-     * @return Flag to represent if auto_placement values are currently utilized
-     * 
-     */
-    public Boolean useAutoPlacement() {
-        return this.useAutoPlacement;
-    }
-    /**
      * @return X Autoplaced Position in pixels
      * 
      */
@@ -137,7 +125,6 @@ public final class GetApStatsDeviceApStatAutoPlacement {
         private Boolean recommendedAnchor;
         private String status;
         private String statusDetail;
-        private Boolean useAutoPlacement;
         private Double x;
         private Double xM;
         private Double y;
@@ -149,7 +136,6 @@ public final class GetApStatsDeviceApStatAutoPlacement {
     	      this.recommendedAnchor = defaults.recommendedAnchor;
     	      this.status = defaults.status;
     	      this.statusDetail = defaults.statusDetail;
-    	      this.useAutoPlacement = defaults.useAutoPlacement;
     	      this.x = defaults.x;
     	      this.xM = defaults.xM;
     	      this.y = defaults.y;
@@ -186,14 +172,6 @@ public final class GetApStatsDeviceApStatAutoPlacement {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStatAutoPlacement", "statusDetail");
             }
             this.statusDetail = statusDetail;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder useAutoPlacement(Boolean useAutoPlacement) {
-            if (useAutoPlacement == null) {
-              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatAutoPlacement", "useAutoPlacement");
-            }
-            this.useAutoPlacement = useAutoPlacement;
             return this;
         }
         @CustomType.Setter
@@ -234,7 +212,6 @@ public final class GetApStatsDeviceApStatAutoPlacement {
             _resultValue.recommendedAnchor = recommendedAnchor;
             _resultValue.status = status;
             _resultValue.statusDetail = statusDetail;
-            _resultValue.useAutoPlacement = useAutoPlacement;
             _resultValue.x = x;
             _resultValue.xM = xM;
             _resultValue.y = y;

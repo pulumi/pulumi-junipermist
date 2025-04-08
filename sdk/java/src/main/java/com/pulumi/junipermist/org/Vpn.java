@@ -10,9 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.org.VpnArgs;
 import com.pulumi.junipermist.org.inputs.VpnState;
+import com.pulumi.junipermist.org.outputs.VpnPathSelection;
 import com.pulumi.junipermist.org.outputs.VpnPaths;
 import java.lang.String;
 import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -98,16 +100,52 @@ public class Vpn extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     @Export(name="orgId", refs={String.class}, tree="[0]")
-    private Output<String> orgId;
+    private Output</* @Nullable */ String> orgId;
 
-    public Output<String> orgId() {
-        return this.orgId;
+    public Output<Optional<String>> orgId() {
+        return Codegen.optional(this.orgId);
     }
+    /**
+     * Only if `type`==`hub_spoke`
+     * 
+     */
+    @Export(name="pathSelection", refs={VpnPathSelection.class}, tree="[0]")
+    private Output</* @Nullable */ VpnPathSelection> pathSelection;
+
+    /**
+     * @return Only if `type`==`hub_spoke`
+     * 
+     */
+    public Output<Optional<VpnPathSelection>> pathSelection() {
+        return Codegen.optional(this.pathSelection);
+    }
+    /**
+     * For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * 
+     */
     @Export(name="paths", refs={Map.class,String.class,VpnPaths.class}, tree="[0,1,2]")
     private Output<Map<String,VpnPaths>> paths;
 
+    /**
+     * @return For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * 
+     */
     public Output<Map<String,VpnPaths>> paths() {
         return this.paths;
+    }
+    /**
+     * enum: `hub_spoke`, `mesh`
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> type;
+
+    /**
+     * @return enum: `hub_spoke`, `mesh`
+     * 
+     */
+    public Output<Optional<String>> type() {
+        return Codegen.optional(this.type);
     }
 
     /**
@@ -149,7 +187,6 @@ public class Vpn extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

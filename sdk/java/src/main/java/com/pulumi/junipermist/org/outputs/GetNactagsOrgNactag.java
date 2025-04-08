@@ -29,13 +29,9 @@ public final class GetNactagsOrgNactag {
      * 
      */
     private List<String> egressVlanNames;
+    private String gbpTag;
     /**
-     * @return If `type`==`gbp_tag`
-     * 
-     */
-    private Integer gbpTag;
-    /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     private String id;
@@ -127,15 +123,11 @@ public final class GetNactagsOrgNactag {
     public List<String> egressVlanNames() {
         return this.egressVlanNames;
     }
-    /**
-     * @return If `type`==`gbp_tag`
-     * 
-     */
-    public Integer gbpTag() {
+    public String gbpTag() {
         return this.gbpTag;
     }
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     public String id() {
@@ -245,7 +237,7 @@ public final class GetNactagsOrgNactag {
         private Boolean allowUsermacOverride;
         private Double createdTime;
         private List<String> egressVlanNames;
-        private Integer gbpTag;
+        private String gbpTag;
         private String id;
         private String match;
         private Boolean matchAll;
@@ -311,7 +303,7 @@ public final class GetNactagsOrgNactag {
             return egressVlanNames(List.of(egressVlanNames));
         }
         @CustomType.Setter
-        public Builder gbpTag(Integer gbpTag) {
+        public Builder gbpTag(String gbpTag) {
             if (gbpTag == null) {
               throw new MissingRequiredPropertyException("GetNactagsOrgNactag", "gbpTag");
             }

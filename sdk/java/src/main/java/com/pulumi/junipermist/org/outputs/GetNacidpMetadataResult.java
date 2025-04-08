@@ -10,22 +10,51 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNacidpMetadataResult {
+    /**
+     * @return If `idp_type`==`saml`
+     * 
+     */
     private String acsUrl;
+    /**
+     * @return If `idp_type`==`saml`
+     * 
+     */
     private String entityId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return If `idp_type`==`saml`
+     * 
+     */
     private String logoutUrl;
+    /**
+     * @return If `idp_type`==`saml`
+     * 
+     */
     private String metadata;
     private String nacidpId;
     private String orgId;
+    /**
+     * @return If `idp_type`==`oauth` and `scim_enabled`==`true`
+     * 
+     */
+    private String scimBaseUrl;
 
     private GetNacidpMetadataResult() {}
+    /**
+     * @return If `idp_type`==`saml`
+     * 
+     */
     public String acsUrl() {
         return this.acsUrl;
     }
+    /**
+     * @return If `idp_type`==`saml`
+     * 
+     */
     public String entityId() {
         return this.entityId;
     }
@@ -36,9 +65,17 @@ public final class GetNacidpMetadataResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return If `idp_type`==`saml`
+     * 
+     */
     public String logoutUrl() {
         return this.logoutUrl;
     }
+    /**
+     * @return If `idp_type`==`saml`
+     * 
+     */
     public String metadata() {
         return this.metadata;
     }
@@ -47,6 +84,13 @@ public final class GetNacidpMetadataResult {
     }
     public String orgId() {
         return this.orgId;
+    }
+    /**
+     * @return If `idp_type`==`oauth` and `scim_enabled`==`true`
+     * 
+     */
+    public String scimBaseUrl() {
+        return this.scimBaseUrl;
     }
 
     public static Builder builder() {
@@ -65,6 +109,7 @@ public final class GetNacidpMetadataResult {
         private String metadata;
         private String nacidpId;
         private String orgId;
+        private String scimBaseUrl;
         public Builder() {}
         public Builder(GetNacidpMetadataResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -75,6 +120,7 @@ public final class GetNacidpMetadataResult {
     	      this.metadata = defaults.metadata;
     	      this.nacidpId = defaults.nacidpId;
     	      this.orgId = defaults.orgId;
+    	      this.scimBaseUrl = defaults.scimBaseUrl;
         }
 
         @CustomType.Setter
@@ -133,6 +179,14 @@ public final class GetNacidpMetadataResult {
             this.orgId = orgId;
             return this;
         }
+        @CustomType.Setter
+        public Builder scimBaseUrl(String scimBaseUrl) {
+            if (scimBaseUrl == null) {
+              throw new MissingRequiredPropertyException("GetNacidpMetadataResult", "scimBaseUrl");
+            }
+            this.scimBaseUrl = scimBaseUrl;
+            return this;
+        }
         public GetNacidpMetadataResult build() {
             final var _resultValue = new GetNacidpMetadataResult();
             _resultValue.acsUrl = acsUrl;
@@ -142,6 +196,7 @@ public final class GetNacidpMetadataResult {
             _resultValue.metadata = metadata;
             _resultValue.nacidpId = nacidpId;
             _resultValue.orgId = orgId;
+            _resultValue.scimBaseUrl = scimBaseUrl;
             return _resultValue;
         }
     }

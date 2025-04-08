@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `junipermist.site.Networktemplate` resource
  *
- * !> Only ONE `junipermist.site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+ * !> Only ONE `junipermist.site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
  *
  * ## Import
  *
@@ -58,7 +58,7 @@ export class Setting extends pulumi.CustomResource {
      * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
      * `deviceUpdownThreshold` is ignored.
      */
-    public readonly apUpdownThreshold!: pulumi.Output<number>;
+    public readonly apUpdownThreshold!: pulumi.Output<number | undefined>;
     /**
      * Auto Upgrade Settings
      */
@@ -81,10 +81,11 @@ export class Setting extends pulumi.CustomResource {
      */
     public readonly criticalUrlMonitoring!: pulumi.Output<outputs.site.SettingCriticalUrlMonitoring | undefined>;
     /**
-     * By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
-     * is desired, use the following
+     * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
+     * type is desired, use the following
      */
-    public readonly deviceUpdownThreshold!: pulumi.Output<number>;
+    public readonly deviceUpdownThreshold!: pulumi.Output<number | undefined>;
+    public readonly enableUnii4!: pulumi.Output<boolean>;
     /**
      * **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
      * ranges for the same day
@@ -98,7 +99,7 @@ export class Setting extends pulumi.CustomResource {
      * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
      * `deviceUpdownThreshold` is ignored.
      */
-    public readonly gatewayUpdownThreshold!: pulumi.Output<number>;
+    public readonly gatewayUpdownThreshold!: pulumi.Output<number | undefined>;
     public readonly juniperSrx!: pulumi.Output<outputs.site.SettingJuniperSrx | undefined>;
     /**
      * LED AP settings
@@ -119,12 +120,12 @@ export class Setting extends pulumi.CustomResource {
     /**
      * By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
      */
-    public readonly removeExistingConfigs!: pulumi.Output<boolean>;
+    public readonly removeExistingConfigs!: pulumi.Output<boolean | undefined>;
     /**
      * Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
      * serial number, battery %, temperature, humidity)
      */
-    public readonly reportGatt!: pulumi.Output<boolean>;
+    public readonly reportGatt!: pulumi.Output<boolean | undefined>;
     /**
      * Rogue site settings
      */
@@ -135,7 +136,7 @@ export class Setting extends pulumi.CustomResource {
     public readonly rtsa!: pulumi.Output<outputs.site.SettingRtsa | undefined>;
     /**
      * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-     * window, there are more than Y distinct client encountring over X failures
+     * window, there are more than Y distinct client encountering over X failures
      */
     public readonly simpleAlert!: pulumi.Output<outputs.site.SettingSimpleAlert | undefined>;
     public readonly siteId!: pulumi.Output<string>;
@@ -151,12 +152,12 @@ export class Setting extends pulumi.CustomResource {
      * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
      * `deviceUpdownThreshold` is ignored.
      */
-    public readonly switchUpdownThreshold!: pulumi.Output<number>;
+    public readonly switchUpdownThreshold!: pulumi.Output<number | undefined>;
     public readonly syntheticTest!: pulumi.Output<outputs.site.SettingSyntheticTest | undefined>;
     /**
      * Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
      */
-    public readonly trackAnonymousDevices!: pulumi.Output<boolean>;
+    public readonly trackAnonymousDevices!: pulumi.Output<boolean | undefined>;
     /**
      * AP Uplink port configuration
      */
@@ -167,7 +168,7 @@ export class Setting extends pulumi.CustomResource {
     public readonly vars!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly vna!: pulumi.Output<outputs.site.SettingVna | undefined>;
     /**
-     * Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+     * Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
      */
     public readonly vsInstance!: pulumi.Output<{[key: string]: outputs.site.SettingVsInstance} | undefined>;
     public readonly wanVna!: pulumi.Output<outputs.site.SettingWanVna | undefined>;
@@ -209,6 +210,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["configPushPolicy"] = state ? state.configPushPolicy : undefined;
             resourceInputs["criticalUrlMonitoring"] = state ? state.criticalUrlMonitoring : undefined;
             resourceInputs["deviceUpdownThreshold"] = state ? state.deviceUpdownThreshold : undefined;
+            resourceInputs["enableUnii4"] = state ? state.enableUnii4 : undefined;
             resourceInputs["engagement"] = state ? state.engagement : undefined;
             resourceInputs["gatewayMgmt"] = state ? state.gatewayMgmt : undefined;
             resourceInputs["gatewayUpdownThreshold"] = state ? state.gatewayUpdownThreshold : undefined;
@@ -254,6 +256,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["configPushPolicy"] = args ? args.configPushPolicy : undefined;
             resourceInputs["criticalUrlMonitoring"] = args ? args.criticalUrlMonitoring : undefined;
             resourceInputs["deviceUpdownThreshold"] = args ? args.deviceUpdownThreshold : undefined;
+            resourceInputs["enableUnii4"] = args ? args.enableUnii4 : undefined;
             resourceInputs["engagement"] = args ? args.engagement : undefined;
             resourceInputs["gatewayMgmt"] = args ? args.gatewayMgmt : undefined;
             resourceInputs["gatewayUpdownThreshold"] = args ? args.gatewayUpdownThreshold : undefined;
@@ -325,10 +328,11 @@ export interface SettingState {
      */
     criticalUrlMonitoring?: pulumi.Input<inputs.site.SettingCriticalUrlMonitoring>;
     /**
-     * By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
-     * is desired, use the following
+     * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
+     * type is desired, use the following
      */
     deviceUpdownThreshold?: pulumi.Input<number>;
+    enableUnii4?: pulumi.Input<boolean>;
     /**
      * **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
      * ranges for the same day
@@ -379,7 +383,7 @@ export interface SettingState {
     rtsa?: pulumi.Input<inputs.site.SettingRtsa>;
     /**
      * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-     * window, there are more than Y distinct client encountring over X failures
+     * window, there are more than Y distinct client encountering over X failures
      */
     simpleAlert?: pulumi.Input<inputs.site.SettingSimpleAlert>;
     siteId?: pulumi.Input<string>;
@@ -411,7 +415,7 @@ export interface SettingState {
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     vna?: pulumi.Input<inputs.site.SettingVna>;
     /**
-     * Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+     * Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
      */
     vsInstance?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.SettingVsInstance>}>;
     wanVna?: pulumi.Input<inputs.site.SettingWanVna>;
@@ -463,10 +467,11 @@ export interface SettingArgs {
      */
     criticalUrlMonitoring?: pulumi.Input<inputs.site.SettingCriticalUrlMonitoring>;
     /**
-     * By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
-     * is desired, use the following
+     * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
+     * type is desired, use the following
      */
     deviceUpdownThreshold?: pulumi.Input<number>;
+    enableUnii4?: pulumi.Input<boolean>;
     /**
      * **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
      * ranges for the same day
@@ -517,7 +522,7 @@ export interface SettingArgs {
     rtsa?: pulumi.Input<inputs.site.SettingRtsa>;
     /**
      * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-     * window, there are more than Y distinct client encountring over X failures
+     * window, there are more than Y distinct client encountering over X failures
      */
     simpleAlert?: pulumi.Input<inputs.site.SettingSimpleAlert>;
     siteId: pulumi.Input<string>;
@@ -549,7 +554,7 @@ export interface SettingArgs {
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     vna?: pulumi.Input<inputs.site.SettingVna>;
     /**
-     * Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+     * Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
      */
     vsInstance?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.SettingVsInstance>}>;
     wanVna?: pulumi.Input<inputs.site.SettingWanVna>;

@@ -32,29 +32,41 @@ namespace Pulumi.JuniperMist.Org
     public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        /// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
         /// </summary>
         [Output("addresses")]
         public Output<ImmutableArray<string>> Addresses { get; private set; } = null!;
 
         /// <summary>
-        /// when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_categories
+        /// When `type`==`app_categories`, list of application categories are available through List App Category Definitions
         /// </summary>
         [Output("appCategories")]
         public Output<ImmutableArray<string>> AppCategories { get; private set; } = null!;
 
         /// <summary>
-        /// when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_subcategories
+        /// When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
         /// </summary>
         [Output("appSubcategories")]
         public Output<ImmutableArray<string>> AppSubcategories { get; private set; } = null!;
 
         /// <summary>
-        /// when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-        /// /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
+        /// When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+        /// /insight/top_app_by-bytes?wired=true
         /// </summary>
         [Output("apps")]
         public Output<ImmutableArray<string>> Apps { get; private set; } = null!;
+
+        /// <summary>
+        /// 0 means unlimited, value from 0 to 107374182
+        /// </summary>
+        [Output("clientLimitDown")]
+        public Output<int?> ClientLimitDown { get; private set; } = null!;
+
+        /// <summary>
+        /// 0 means unlimited, value from 0 to 107374182
+        /// </summary>
+        [Output("clientLimitUp")]
+        public Output<int?> ClientLimitUp { get; private set; } = null!;
 
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -63,13 +75,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> Dscp { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `non_revertable`, `none`, `revertable`
+        /// enum: `non_revertible`, `none`, `revertible`
         /// </summary>
         [Output("failoverPolicy")]
-        public Output<string> FailoverPolicy { get; private set; } = null!;
+        public Output<string?> FailoverPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// if `type`==`custom`, web filtering
+        /// If `type`==`custom`, web filtering
         /// </summary>
         [Output("hostnames")]
         public Output<ImmutableArray<string>> Hostnames { get; private set; } = null!;
@@ -90,28 +102,40 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// whether to enable measure SLE
+        /// 0 means unlimited, value from 0 to 107374182
         /// </summary>
-        [Output("sleEnabled")]
-        public Output<bool> SleEnabled { get; private set; } = null!;
+        [Output("serviceLimitDown")]
+        public Output<int?> ServiceLimitDown { get; private set; } = null!;
 
         /// <summary>
-        /// when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+        /// 0 means unlimited, value from 0 to 107374182
+        /// </summary>
+        [Output("serviceLimitUp")]
+        public Output<int?> ServiceLimitUp { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable measure SLE
+        /// </summary>
+        [Output("sleEnabled")]
+        public Output<bool?> SleEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
         /// </summary>
         [Output("specs")]
         public Output<ImmutableArray<Outputs.ServiceSpec>> Specs { get; private set; } = null!;
 
         [Output("ssrRelaxedTcpStateEnforcement")]
-        public Output<bool> SsrRelaxedTcpStateEnforcement { get; private set; } = null!;
+        public Output<bool?> SsrRelaxedTcpStateEnforcement { get; private set; } = null!;
 
         /// <summary>
         /// when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
         /// </summary>
         [Output("trafficClass")]
-        public Output<string> TrafficClass { get; private set; } = null!;
+        public Output<string?> TrafficClass { get; private set; } = null!;
 
         /// <summary>
-        /// values from `/api/v1/consts/traffic_types`
+        /// values from List Traffic Types
         /// </summary>
         [Output("trafficType")]
         public Output<string> TrafficType { get; private set; } = null!;
@@ -123,7 +147,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// when `type`==`urls`, no need for spec as URL can encode the ports being used
+        /// When `type`==`urls`, no need for spec as URL can encode the ports being used
         /// </summary>
         [Output("urls")]
         public Output<ImmutableArray<string>> Urls { get; private set; } = null!;
@@ -179,7 +203,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _addresses;
 
         /// <summary>
-        /// if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        /// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
         /// </summary>
         public InputList<string> Addresses
         {
@@ -191,7 +215,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _appCategories;
 
         /// <summary>
-        /// when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_categories
+        /// When `type`==`app_categories`, list of application categories are available through List App Category Definitions
         /// </summary>
         public InputList<string> AppCategories
         {
@@ -203,7 +227,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _appSubcategories;
 
         /// <summary>
-        /// when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_subcategories
+        /// When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
         /// </summary>
         public InputList<string> AppSubcategories
         {
@@ -215,14 +239,26 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _apps;
 
         /// <summary>
-        /// when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-        /// /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
+        /// When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+        /// /insight/top_app_by-bytes?wired=true
         /// </summary>
         public InputList<string> Apps
         {
             get => _apps ?? (_apps = new InputList<string>());
             set => _apps = value;
         }
+
+        /// <summary>
+        /// 0 means unlimited, value from 0 to 107374182
+        /// </summary>
+        [Input("clientLimitDown")]
+        public Input<int>? ClientLimitDown { get; set; }
+
+        /// <summary>
+        /// 0 means unlimited, value from 0 to 107374182
+        /// </summary>
+        [Input("clientLimitUp")]
+        public Input<int>? ClientLimitUp { get; set; }
 
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -231,7 +267,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Dscp { get; set; }
 
         /// <summary>
-        /// enum: `non_revertable`, `none`, `revertable`
+        /// enum: `non_revertible`, `none`, `revertible`
         /// </summary>
         [Input("failoverPolicy")]
         public Input<string>? FailoverPolicy { get; set; }
@@ -240,7 +276,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _hostnames;
 
         /// <summary>
-        /// if `type`==`custom`, web filtering
+        /// If `type`==`custom`, web filtering
         /// </summary>
         public InputList<string> Hostnames
         {
@@ -264,7 +300,19 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// whether to enable measure SLE
+        /// 0 means unlimited, value from 0 to 107374182
+        /// </summary>
+        [Input("serviceLimitDown")]
+        public Input<int>? ServiceLimitDown { get; set; }
+
+        /// <summary>
+        /// 0 means unlimited, value from 0 to 107374182
+        /// </summary>
+        [Input("serviceLimitUp")]
+        public Input<int>? ServiceLimitUp { get; set; }
+
+        /// <summary>
+        /// Whether to enable measure SLE
         /// </summary>
         [Input("sleEnabled")]
         public Input<bool>? SleEnabled { get; set; }
@@ -273,7 +321,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.ServiceSpecArgs>? _specs;
 
         /// <summary>
-        /// when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+        /// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
         /// </summary>
         public InputList<Inputs.ServiceSpecArgs> Specs
         {
@@ -291,7 +339,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? TrafficClass { get; set; }
 
         /// <summary>
-        /// values from `/api/v1/consts/traffic_types`
+        /// values from List Traffic Types
         /// </summary>
         [Input("trafficType")]
         public Input<string>? TrafficType { get; set; }
@@ -306,7 +354,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _urls;
 
         /// <summary>
-        /// when `type`==`urls`, no need for spec as URL can encode the ports being used
+        /// When `type`==`urls`, no need for spec as URL can encode the ports being used
         /// </summary>
         public InputList<string> Urls
         {
@@ -326,7 +374,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _addresses;
 
         /// <summary>
-        /// if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        /// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
         /// </summary>
         public InputList<string> Addresses
         {
@@ -338,7 +386,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _appCategories;
 
         /// <summary>
-        /// when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_categories
+        /// When `type`==`app_categories`, list of application categories are available through List App Category Definitions
         /// </summary>
         public InputList<string> AppCategories
         {
@@ -350,7 +398,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _appSubcategories;
 
         /// <summary>
-        /// when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_subcategories
+        /// When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
         /// </summary>
         public InputList<string> AppSubcategories
         {
@@ -362,14 +410,26 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _apps;
 
         /// <summary>
-        /// when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-        /// /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
+        /// When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+        /// /insight/top_app_by-bytes?wired=true
         /// </summary>
         public InputList<string> Apps
         {
             get => _apps ?? (_apps = new InputList<string>());
             set => _apps = value;
         }
+
+        /// <summary>
+        /// 0 means unlimited, value from 0 to 107374182
+        /// </summary>
+        [Input("clientLimitDown")]
+        public Input<int>? ClientLimitDown { get; set; }
+
+        /// <summary>
+        /// 0 means unlimited, value from 0 to 107374182
+        /// </summary>
+        [Input("clientLimitUp")]
+        public Input<int>? ClientLimitUp { get; set; }
 
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -378,7 +438,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Dscp { get; set; }
 
         /// <summary>
-        /// enum: `non_revertable`, `none`, `revertable`
+        /// enum: `non_revertible`, `none`, `revertible`
         /// </summary>
         [Input("failoverPolicy")]
         public Input<string>? FailoverPolicy { get; set; }
@@ -387,7 +447,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _hostnames;
 
         /// <summary>
-        /// if `type`==`custom`, web filtering
+        /// If `type`==`custom`, web filtering
         /// </summary>
         public InputList<string> Hostnames
         {
@@ -411,7 +471,19 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// whether to enable measure SLE
+        /// 0 means unlimited, value from 0 to 107374182
+        /// </summary>
+        [Input("serviceLimitDown")]
+        public Input<int>? ServiceLimitDown { get; set; }
+
+        /// <summary>
+        /// 0 means unlimited, value from 0 to 107374182
+        /// </summary>
+        [Input("serviceLimitUp")]
+        public Input<int>? ServiceLimitUp { get; set; }
+
+        /// <summary>
+        /// Whether to enable measure SLE
         /// </summary>
         [Input("sleEnabled")]
         public Input<bool>? SleEnabled { get; set; }
@@ -420,7 +492,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.ServiceSpecGetArgs>? _specs;
 
         /// <summary>
-        /// when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+        /// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
         /// </summary>
         public InputList<Inputs.ServiceSpecGetArgs> Specs
         {
@@ -438,7 +510,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? TrafficClass { get; set; }
 
         /// <summary>
-        /// values from `/api/v1/consts/traffic_types`
+        /// values from List Traffic Types
         /// </summary>
         [Input("trafficType")]
         public Input<string>? TrafficType { get; set; }
@@ -453,7 +525,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _urls;
 
         /// <summary>
-        /// when `type`==`urls`, no need for spec as URL can encode the ports being used
+        /// When `type`==`urls`, no need for spec as URL can encode the ports being used
         /// </summary>
         public InputList<string> Urls
         {

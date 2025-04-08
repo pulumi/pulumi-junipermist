@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * NAC Endpoints (User MACs) provide a database of endpoints identified by their MAC addresses. They can be used assign each endpoint with various attributes, such as name, VLAN, role and client label.  Once an endpoint is labeled, the label name can be used to create `junipermist.org.Nactag` resource as match criteria.
  * 
  * The `junipermist.org.Nactag` resource can be used to create Tags regrouping one or multiple endpoint MAC Addresses, but the use of the User MACs provides additional features:
- * * possitility to assign specific attributes, like a Name, a Radius Group, a VLAN ID, ...
+ * * possibility to assign specific attributes, like a Name, a Radius Group, a VLAN ID, ...
  * * possibility to assign one or multiple Tags (Labels) to a User MAC
  * * improved management for large list of MAC Addresses
  * 
@@ -86,14 +86,14 @@ public class NacEndpoint extends com.pulumi.resources.CustomResource {
         return this.labels;
     }
     /**
-     * only non-local-admin MAC is accepted
+     * Only non-local-admin MAC is accepted
      * 
      */
     @Export(name="mac", refs={String.class}, tree="[0]")
     private Output<String> mac;
 
     /**
-     * @return only non-local-admin MAC is accepted
+     * @return Only non-local-admin MAC is accepted
      * 
      */
     public Output<String> mac() {
@@ -169,7 +169,6 @@ public class NacEndpoint extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

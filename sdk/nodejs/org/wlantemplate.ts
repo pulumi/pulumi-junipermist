@@ -52,19 +52,19 @@ export class Wlantemplate extends pulumi.CustomResource {
     }
 
     /**
-     * where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+     * Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
      */
     public readonly applies!: pulumi.Output<outputs.org.WlantemplateApplies>;
     /**
-     * list of Device Profile ids
+     * List of Device Profile ids
      */
     public readonly deviceprofileIds!: pulumi.Output<string[]>;
     /**
-     * where this template should not be applied to (takes precedence)
+     * Where this template should not be applied to (takes precedence)
      */
     public readonly exceptions!: pulumi.Output<outputs.org.WlantemplateExceptions>;
     /**
-     * whether to further filter by Device Profile
+     * Whether to further filter by Device Profile
      */
     public readonly filterByDeviceprofile!: pulumi.Output<boolean>;
     public readonly name!: pulumi.Output<string>;
@@ -111,19 +111,19 @@ export class Wlantemplate extends pulumi.CustomResource {
  */
 export interface WlantemplateState {
     /**
-     * where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+     * Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
      */
     applies?: pulumi.Input<inputs.org.WlantemplateApplies>;
     /**
-     * list of Device Profile ids
+     * List of Device Profile ids
      */
     deviceprofileIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * where this template should not be applied to (takes precedence)
+     * Where this template should not be applied to (takes precedence)
      */
     exceptions?: pulumi.Input<inputs.org.WlantemplateExceptions>;
     /**
-     * whether to further filter by Device Profile
+     * Whether to further filter by Device Profile
      */
     filterByDeviceprofile?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
@@ -135,19 +135,19 @@ export interface WlantemplateState {
  */
 export interface WlantemplateArgs {
     /**
-     * where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+     * Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
      */
     applies?: pulumi.Input<inputs.org.WlantemplateApplies>;
     /**
-     * list of Device Profile ids
+     * List of Device Profile ids
      */
     deviceprofileIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * where this template should not be applied to (takes precedence)
+     * Where this template should not be applied to (takes precedence)
      */
     exceptions?: pulumi.Input<inputs.org.WlantemplateExceptions>;
     /**
-     * whether to further filter by Device Profile
+     * Whether to further filter by Device Profile
      */
     filterByDeviceprofile?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;

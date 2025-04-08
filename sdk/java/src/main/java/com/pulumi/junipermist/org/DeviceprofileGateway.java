@@ -38,7 +38,7 @@ import javax.annotation.Nullable;
  * 
  * A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options. HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
  * 
- * The Gateway Devide Profile can be assigned to a gateway with the `junipermist.org.DeviceprofileAssign` resource.
+ * The Gateway Device Profile can be assigned to a gateway with the `junipermist.org.DeviceprofileAssign` resource.
  * 
  * ## Example Usage
  * 
@@ -219,28 +219,30 @@ public class DeviceprofileGateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dnsSuffixes);
     }
     /**
-     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
      * 
      */
     @Export(name="extraRoutes", refs={Map.class,String.class,DeviceprofileGatewayExtraRoutes.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,DeviceprofileGatewayExtraRoutes>> extraRoutes;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
      * 
      */
     public Output<Optional<Map<String,DeviceprofileGatewayExtraRoutes>>> extraRoutes() {
         return Codegen.optional(this.extraRoutes);
     }
     /**
-     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g.
+     * &#34;{{myvar}}&#34;)
      * 
      */
     @Export(name="extraRoutes6", refs={Map.class,String.class,DeviceprofileGatewayExtraRoutes6.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,DeviceprofileGatewayExtraRoutes6>> extraRoutes6;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g.
+     * &#34;{{myvar}}&#34;)
      * 
      */
     public Output<Optional<Map<String,DeviceprofileGatewayExtraRoutes6>>> extraRoutes6() {
@@ -482,7 +484,6 @@ public class DeviceprofileGateway extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

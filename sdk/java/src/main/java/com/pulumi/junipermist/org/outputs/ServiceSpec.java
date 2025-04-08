@@ -12,28 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceSpec {
     /**
-     * @return port number, port range, or variable
+     * @return Port number, port range, or variable
      * 
      */
     private @Nullable String portRange;
     /**
-     * @return `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`.
-     * `protocol_number` is between 1-254
+     * @return `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254
      * 
      */
     private @Nullable String protocol;
 
     private ServiceSpec() {}
     /**
-     * @return port number, port range, or variable
+     * @return Port number, port range, or variable
      * 
      */
     public Optional<String> portRange() {
         return Optional.ofNullable(this.portRange);
     }
     /**
-     * @return `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`.
-     * `protocol_number` is between 1-254
+     * @return `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254
      * 
      */
     public Optional<String> protocol() {

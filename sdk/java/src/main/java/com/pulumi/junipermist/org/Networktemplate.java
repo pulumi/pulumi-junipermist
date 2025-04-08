@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .dnsSuffixes("mycorp.com")
  *             .ntpServers("pool.ntp.org")
  *             .additionalConfigCmds(            
- *                 "set system hostnam test",
+ *                 "set system hostname test",
  *                 "set system services ssh root-login allow")
  *             .networks(Map.ofEntries(
  *                 Map.entry("network_one", Map.of("vlanId", 10)),
@@ -171,32 +171,40 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="dnsServers", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> dnsServers;
+    private Output<List<String>> dnsServers;
 
     /**
      * @return Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
      * 
      */
-    public Output<Optional<List<String>>> dnsServers() {
-        return Codegen.optional(this.dnsServers);
+    public Output<List<String>> dnsServers() {
+        return this.dnsServers;
     }
     /**
      * Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
      * 
      */
     @Export(name="dnsSuffixes", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> dnsSuffixes;
+    private Output<List<String>> dnsSuffixes;
 
     /**
      * @return Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
      * 
      */
-    public Output<Optional<List<String>>> dnsSuffixes() {
-        return Codegen.optional(this.dnsSuffixes);
+    public Output<List<String>> dnsSuffixes() {
+        return this.dnsSuffixes;
     }
+    /**
+     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * 
+     */
     @Export(name="extraRoutes", refs={Map.class,String.class,NetworktemplateExtraRoutes.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplateExtraRoutes>> extraRoutes;
 
+    /**
+     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * 
+     */
     public Output<Optional<Map<String,NetworktemplateExtraRoutes>>> extraRoutes() {
         return Codegen.optional(this.extraRoutes);
     }
@@ -253,14 +261,14 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ntpServers", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> ntpServers;
+    private Output<List<String>> ntpServers;
 
     /**
      * @return List of NTP servers specific to this device. By default, those in Site Settings will be used
      * 
      */
-    public Output<Optional<List<String>>> ntpServers() {
-        return Codegen.optional(this.ntpServers);
+    public Output<List<String>> ntpServers() {
+        return this.ntpServers;
     }
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
@@ -285,7 +293,7 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
     /**
      * Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      * 
      */
     @Export(name="portMirroring", refs={Map.class,String.class,NetworktemplatePortMirroring.class}, tree="[0,1,2]")
@@ -294,7 +302,7 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
     /**
      * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      * 
      */
     public Output<Optional<Map<String,NetworktemplatePortMirroring>>> portMirroring() {
@@ -355,14 +363,14 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.snmpConfig);
     }
     /**
-     * Defines custom switch configuration based on different criterias
+     * Defines custom switch configuration based on different criteria
      * 
      */
     @Export(name="switchMatching", refs={NetworktemplateSwitchMatching.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateSwitchMatching> switchMatching;
 
     /**
-     * @return Defines custom switch configuration based on different criterias
+     * @return Defines custom switch configuration based on different criteria
      * 
      */
     public Output<Optional<NetworktemplateSwitchMatching>> switchMatching() {
@@ -442,7 +450,6 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

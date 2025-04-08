@@ -26,7 +26,11 @@ public final class GatewayBgpConfigNeighbors {
      * 
      */
     private @Nullable Integer multihopTtl;
-    private @Nullable Integer neighborAs;
+    /**
+     * @return Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * 
+     */
+    private @Nullable String neighborAs;
 
     private GatewayBgpConfigNeighbors() {}
     /**
@@ -52,7 +56,11 @@ public final class GatewayBgpConfigNeighbors {
     public Optional<Integer> multihopTtl() {
         return Optional.ofNullable(this.multihopTtl);
     }
-    public Optional<Integer> neighborAs() {
+    /**
+     * @return Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * 
+     */
+    public Optional<String> neighborAs() {
         return Optional.ofNullable(this.neighborAs);
     }
 
@@ -70,7 +78,7 @@ public final class GatewayBgpConfigNeighbors {
         private @Nullable Integer holdTime;
         private @Nullable String importPolicy;
         private @Nullable Integer multihopTtl;
-        private @Nullable Integer neighborAs;
+        private @Nullable String neighborAs;
         public Builder() {}
         public Builder(GatewayBgpConfigNeighbors defaults) {
     	      Objects.requireNonNull(defaults);
@@ -113,7 +121,7 @@ public final class GatewayBgpConfigNeighbors {
             return this;
         }
         @CustomType.Setter
-        public Builder neighborAs(@Nullable Integer neighborAs) {
+        public Builder neighborAs(@Nullable String neighborAs) {
 
             this.neighborAs = neighborAs;
             return this;
