@@ -10,8 +10,8 @@ replace github.com/Juniper/terraform-provider-mist => ../upstream
 
 require (
 	github.com/Juniper/terraform-provider-mist v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.105.0
-	github.com/pulumi/pulumi/sdk/v3 v3.156.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.106.0
+	github.com/pulumi/pulumi/sdk/v3 v3.160.0
 )
 
 require (
@@ -55,14 +55,14 @@ require (
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
-	github.com/go-git/go-billy/v5 v5.6.1 // indirect
-	github.com/go-git/go-git/v5 v5.13.1 // indirect
+	github.com/go-git/go-billy/v5 v5.6.2 // indirect
+	github.com/go-git/go-git/v5 v5.13.2 // indirect
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-test/deep v1.1.0 // indirect
 	github.com/gofrs/uuid v4.4.0+incompatible // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
-	github.com/golang/glog v1.2.3 // indirect
+	github.com/golang/glog v1.2.4 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/s2a-go v0.1.7 // indirect
@@ -128,7 +128,7 @@ require (
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/pgavlin/fx v0.1.6 // indirect
 	github.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386 // indirect
-	github.com/pjbgf/sha1cd v0.3.0 // indirect
+	github.com/pjbgf/sha1cd v0.3.2 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pkg/term v1.1.0 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
@@ -136,9 +136,9 @@ require (
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.10.0 // indirect
 	github.com/pulumi/inflector v0.1.1 // indirect
-	github.com/pulumi/pulumi-java/pkg v0.19.0 // indirect
-	github.com/pulumi/pulumi-yaml v1.12.0 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.156.0 // indirect
+	github.com/pulumi/pulumi-java/pkg v1.8.0 // indirect
+	github.com/pulumi/pulumi-yaml v1.15.1 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.160.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.13.1 // indirect
@@ -152,8 +152,8 @@ require (
 	github.com/skeema/knownhosts v1.3.0 // indirect
 	github.com/spf13/afero v1.11.0 // indirect
 	github.com/spf13/cast v1.7.1 // indirect
-	github.com/spf13/cobra v1.8.0 // indirect
-	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/spf13/cobra v1.9.1 // indirect
+	github.com/spf13/pflag v1.0.6 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
