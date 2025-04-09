@@ -223,7 +223,7 @@ class _UpgradeDeviceState:
         :param pulumi.Input[builtins.int] sync_upgrade_start_timeout: if set to `sync_upgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
         :param pulumi.Input[builtins.int] sync_upgrade_timeout: if set to `sync_upgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
         :param pulumi.Input[builtins.str] target_version: firmware version to deploy to the device. Use the `device_get_versions` datasource to get the list of available firmware versions
-        :param pulumi.Input[builtins.float] timestamp: Timestamp
+        :param pulumi.Input[builtins.float] timestamp: Epoch (seconds)
         """
         if device_id is not None:
             pulumi.set(__self__, "device_id", device_id)
@@ -419,7 +419,7 @@ class _UpgradeDeviceState:
     @pulumi.getter
     def timestamp(self) -> Optional[pulumi.Input[builtins.float]]:
         """
-        Timestamp
+        Epoch (seconds)
         """
         return pulumi.get(self, "timestamp")
 
@@ -446,7 +446,7 @@ class UpgradeDevice(pulumi.CustomResource):
                  target_version: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        This resource can be used to upgrade the frimware of a single device (Wi-Fi Access Points, Switches and SRX/SSR Gateways).
+        This resource can be used to upgrade the firmware of a single device (Wi-Fi Access Points, Switches and SRX/SSR Gateways).
 
         The resource will send the upgrade command to Mist, which will take care of deploying the new firmware version to the device, and reboot it if required.
 
@@ -492,7 +492,7 @@ class UpgradeDevice(pulumi.CustomResource):
                  args: UpgradeDeviceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource can be used to upgrade the frimware of a single device (Wi-Fi Access Points, Switches and SRX/SSR Gateways).
+        This resource can be used to upgrade the firmware of a single device (Wi-Fi Access Points, Switches and SRX/SSR Gateways).
 
         The resource will send the upgrade command to Mist, which will take care of deploying the new firmware version to the device, and reboot it if required.
 
@@ -618,7 +618,7 @@ class UpgradeDevice(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] sync_upgrade_start_timeout: if set to `sync_upgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
         :param pulumi.Input[builtins.int] sync_upgrade_timeout: if set to `sync_upgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
         :param pulumi.Input[builtins.str] target_version: firmware version to deploy to the device. Use the `device_get_versions` datasource to get the list of available firmware versions
-        :param pulumi.Input[builtins.float] timestamp: Timestamp
+        :param pulumi.Input[builtins.float] timestamp: Epoch (seconds)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -748,7 +748,7 @@ class UpgradeDevice(pulumi.CustomResource):
     @pulumi.getter
     def timestamp(self) -> pulumi.Output[builtins.float]:
         """
-        Timestamp
+        Epoch (seconds)
         """
         return pulumi.get(self, "timestamp")
 

@@ -38,7 +38,8 @@ type Networktemplate struct {
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayOutput `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
-	DnsSuffixes pulumi.StringArrayOutput            `pulumi:"dnsSuffixes"`
+	DnsSuffixes pulumi.StringArrayOutput `pulumi:"dnsSuffixes"`
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
 	ExtraRoutes NetworktemplateExtraRoutesMapOutput `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 NetworktemplateExtraRoutes6MapOutput `pulumi:"extraRoutes6"`
@@ -54,7 +55,7 @@ type Networktemplate struct {
 	OspfAreas NetworktemplateOspfAreasMapOutput `pulumi:"ospfAreas"`
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 port mirrorings is allowed
+	// maximum 4 mirroring ports is allowed
 	PortMirroring NetworktemplatePortMirroringMapOutput `pulumi:"portMirroring"`
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages NetworktemplatePortUsagesMapOutput `pulumi:"portUsages"`
@@ -64,7 +65,7 @@ type Networktemplate struct {
 	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs pulumi.BoolOutput                  `pulumi:"removeExistingConfigs"`
 	SnmpConfig            NetworktemplateSnmpConfigPtrOutput `pulumi:"snmpConfig"`
-	// Defines custom switch configuration based on different criterias
+	// Defines custom switch configuration based on different criteria
 	SwitchMatching NetworktemplateSwitchMatchingPtrOutput `pulumi:"switchMatching"`
 	// Switch settings
 	SwitchMgmt NetworktemplateSwitchMgmtPtrOutput `pulumi:"switchMgmt"`
@@ -115,7 +116,8 @@ type networktemplateState struct {
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers []string `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
-	DnsSuffixes []string                              `pulumi:"dnsSuffixes"`
+	DnsSuffixes []string `pulumi:"dnsSuffixes"`
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
 	ExtraRoutes map[string]NetworktemplateExtraRoutes `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 map[string]NetworktemplateExtraRoutes6 `pulumi:"extraRoutes6"`
@@ -131,7 +133,7 @@ type networktemplateState struct {
 	OspfAreas map[string]NetworktemplateOspfAreas `pulumi:"ospfAreas"`
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 port mirrorings is allowed
+	// maximum 4 mirroring ports is allowed
 	PortMirroring map[string]NetworktemplatePortMirroring `pulumi:"portMirroring"`
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages map[string]NetworktemplatePortUsages `pulumi:"portUsages"`
@@ -141,7 +143,7 @@ type networktemplateState struct {
 	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs *bool                      `pulumi:"removeExistingConfigs"`
 	SnmpConfig            *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
-	// Defines custom switch configuration based on different criterias
+	// Defines custom switch configuration based on different criteria
 	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
 	// Switch settings
 	SwitchMgmt *NetworktemplateSwitchMgmt `pulumi:"switchMgmt"`
@@ -161,6 +163,7 @@ type NetworktemplateState struct {
 	DnsServers pulumi.StringArrayInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes pulumi.StringArrayInput
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
 	ExtraRoutes NetworktemplateExtraRoutesMapInput
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 NetworktemplateExtraRoutes6MapInput
@@ -176,7 +179,7 @@ type NetworktemplateState struct {
 	OspfAreas NetworktemplateOspfAreasMapInput
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 port mirrorings is allowed
+	// maximum 4 mirroring ports is allowed
 	PortMirroring NetworktemplatePortMirroringMapInput
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages NetworktemplatePortUsagesMapInput
@@ -186,7 +189,7 @@ type NetworktemplateState struct {
 	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs pulumi.BoolPtrInput
 	SnmpConfig            NetworktemplateSnmpConfigPtrInput
-	// Defines custom switch configuration based on different criterias
+	// Defines custom switch configuration based on different criteria
 	SwitchMatching NetworktemplateSwitchMatchingPtrInput
 	// Switch settings
 	SwitchMgmt NetworktemplateSwitchMgmtPtrInput
@@ -209,7 +212,8 @@ type networktemplateArgs struct {
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers []string `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
-	DnsSuffixes []string                              `pulumi:"dnsSuffixes"`
+	DnsSuffixes []string `pulumi:"dnsSuffixes"`
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
 	ExtraRoutes map[string]NetworktemplateExtraRoutes `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 map[string]NetworktemplateExtraRoutes6 `pulumi:"extraRoutes6"`
@@ -225,7 +229,7 @@ type networktemplateArgs struct {
 	OspfAreas map[string]NetworktemplateOspfAreas `pulumi:"ospfAreas"`
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 port mirrorings is allowed
+	// maximum 4 mirroring ports is allowed
 	PortMirroring map[string]NetworktemplatePortMirroring `pulumi:"portMirroring"`
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages map[string]NetworktemplatePortUsages `pulumi:"portUsages"`
@@ -235,7 +239,7 @@ type networktemplateArgs struct {
 	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs *bool                      `pulumi:"removeExistingConfigs"`
 	SnmpConfig            *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
-	// Defines custom switch configuration based on different criterias
+	// Defines custom switch configuration based on different criteria
 	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
 	// Switch settings
 	SwitchMgmt *NetworktemplateSwitchMgmt `pulumi:"switchMgmt"`
@@ -256,6 +260,7 @@ type NetworktemplateArgs struct {
 	DnsServers pulumi.StringArrayInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes pulumi.StringArrayInput
+	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
 	ExtraRoutes NetworktemplateExtraRoutesMapInput
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 NetworktemplateExtraRoutes6MapInput
@@ -271,7 +276,7 @@ type NetworktemplateArgs struct {
 	OspfAreas NetworktemplateOspfAreasMapInput
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 port mirrorings is allowed
+	// maximum 4 mirroring ports is allowed
 	PortMirroring NetworktemplatePortMirroringMapInput
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages NetworktemplatePortUsagesMapInput
@@ -281,7 +286,7 @@ type NetworktemplateArgs struct {
 	// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
 	RemoveExistingConfigs pulumi.BoolPtrInput
 	SnmpConfig            NetworktemplateSnmpConfigPtrInput
-	// Defines custom switch configuration based on different criterias
+	// Defines custom switch configuration based on different criteria
 	SwitchMatching NetworktemplateSwitchMatchingPtrInput
 	// Switch settings
 	SwitchMgmt NetworktemplateSwitchMgmtPtrInput
@@ -405,6 +410,7 @@ func (o NetworktemplateOutput) DnsSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.StringArrayOutput { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
 }
 
+// Property key is the destination CIDR (e.g. "10.0.0.0/8")
 func (o NetworktemplateOutput) ExtraRoutes() NetworktemplateExtraRoutesMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateExtraRoutesMapOutput { return v.ExtraRoutes }).(NetworktemplateExtraRoutesMapOutput)
 }
@@ -444,7 +450,7 @@ func (o NetworktemplateOutput) OspfAreas() NetworktemplateOspfAreasMapOutput {
 
 // Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 // interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-// maximum 4 port mirrorings is allowed
+// maximum 4 mirroring ports is allowed
 func (o NetworktemplateOutput) PortMirroring() NetworktemplatePortMirroringMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplatePortMirroringMapOutput { return v.PortMirroring }).(NetworktemplatePortMirroringMapOutput)
 }
@@ -472,7 +478,7 @@ func (o NetworktemplateOutput) SnmpConfig() NetworktemplateSnmpConfigPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateSnmpConfigPtrOutput { return v.SnmpConfig }).(NetworktemplateSnmpConfigPtrOutput)
 }
 
-// Defines custom switch configuration based on different criterias
+// Defines custom switch configuration based on different criteria
 func (o NetworktemplateOutput) SwitchMatching() NetworktemplateSwitchMatchingPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateSwitchMatchingPtrOutput { return v.SwitchMatching }).(NetworktemplateSwitchMatchingPtrOutput)
 }

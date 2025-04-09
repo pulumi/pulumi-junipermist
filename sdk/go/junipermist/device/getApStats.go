@@ -56,31 +56,25 @@ func GetApStats(ctx *pulumi.Context, args *GetApStatsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getApStats.
 type GetApStatsArgs struct {
-	// duration like 7d, 2w
 	Duration *string `pulumi:"duration"`
-	// end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-	End    *int    `pulumi:"end"`
-	Mac    *string `pulumi:"mac"`
-	OrgId  string  `pulumi:"orgId"`
-	SiteId *string `pulumi:"siteId"`
-	// start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-	Start  *int    `pulumi:"start"`
-	Status *string `pulumi:"status"`
+	End      *int    `pulumi:"end"`
+	Mac      *string `pulumi:"mac"`
+	OrgId    string  `pulumi:"orgId"`
+	SiteId   *string `pulumi:"siteId"`
+	Start    *int    `pulumi:"start"`
+	Status   *string `pulumi:"status"`
 }
 
 // A collection of values returned by getApStats.
 type GetApStatsResult struct {
 	DeviceApStats []GetApStatsDeviceApStat `pulumi:"deviceApStats"`
-	// duration like 7d, 2w
-	Duration *string `pulumi:"duration"`
-	// end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-	End *int `pulumi:"end"`
+	Duration      *string                  `pulumi:"duration"`
+	End           *int                     `pulumi:"end"`
 	// The provider-assigned unique ID for this managed resource.
 	Id     string  `pulumi:"id"`
 	Mac    *string `pulumi:"mac"`
 	OrgId  string  `pulumi:"orgId"`
 	SiteId *string `pulumi:"siteId"`
-	// start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
 	Start  *int    `pulumi:"start"`
 	Status *string `pulumi:"status"`
 }
@@ -96,16 +90,13 @@ func GetApStatsOutput(ctx *pulumi.Context, args GetApStatsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getApStats.
 type GetApStatsOutputArgs struct {
-	// duration like 7d, 2w
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
-	// end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-	End    pulumi.IntPtrInput    `pulumi:"end"`
-	Mac    pulumi.StringPtrInput `pulumi:"mac"`
-	OrgId  pulumi.StringInput    `pulumi:"orgId"`
-	SiteId pulumi.StringPtrInput `pulumi:"siteId"`
-	// start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-	Start  pulumi.IntPtrInput    `pulumi:"start"`
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	End      pulumi.IntPtrInput    `pulumi:"end"`
+	Mac      pulumi.StringPtrInput `pulumi:"mac"`
+	OrgId    pulumi.StringInput    `pulumi:"orgId"`
+	SiteId   pulumi.StringPtrInput `pulumi:"siteId"`
+	Start    pulumi.IntPtrInput    `pulumi:"start"`
+	Status   pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (GetApStatsOutputArgs) ElementType() reflect.Type {
@@ -131,12 +122,10 @@ func (o GetApStatsResultOutput) DeviceApStats() GetApStatsDeviceApStatArrayOutpu
 	return o.ApplyT(func(v GetApStatsResult) []GetApStatsDeviceApStat { return v.DeviceApStats }).(GetApStatsDeviceApStatArrayOutput)
 }
 
-// duration like 7d, 2w
 func (o GetApStatsResultOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApStatsResult) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
-// end datetime, can be epoch or relative time like -1d, -2h; now if not specified
 func (o GetApStatsResultOutput) End() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetApStatsResult) *int { return v.End }).(pulumi.IntPtrOutput)
 }
@@ -158,7 +147,6 @@ func (o GetApStatsResultOutput) SiteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApStatsResult) *string { return v.SiteId }).(pulumi.StringPtrOutput)
 }
 
-// start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
 func (o GetApStatsResultOutput) Start() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetApStatsResult) *int { return v.Start }).(pulumi.IntPtrOutput)
 }

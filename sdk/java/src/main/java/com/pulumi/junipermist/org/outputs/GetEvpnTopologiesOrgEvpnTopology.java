@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetEvpnTopologiesOrgEvpnTopology {
     /**
-     * @return when the object has been created, in epoch
+     * @return When the object has been created, in epoch
      * 
      */
     private Double createdTime;
@@ -24,12 +24,12 @@ public final class GetEvpnTopologiesOrgEvpnTopology {
      */
     private GetEvpnTopologiesOrgEvpnTopologyEvpnOptions evpnOptions;
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     private String id;
     /**
-     * @return when the object has been modified for the last time, in epoch
+     * @return When the object has been modified for the last time, in epoch
      * 
      */
     private Double modifiedTime;
@@ -43,7 +43,7 @@ public final class GetEvpnTopologiesOrgEvpnTopology {
 
     private GetEvpnTopologiesOrgEvpnTopology() {}
     /**
-     * @return when the object has been created, in epoch
+     * @return When the object has been created, in epoch
      * 
      */
     public Double createdTime() {
@@ -57,14 +57,14 @@ public final class GetEvpnTopologiesOrgEvpnTopology {
         return this.evpnOptions;
     }
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return when the object has been modified for the last time, in epoch
+     * @return When the object has been modified for the last time, in epoch
      * 
      */
     public Double modifiedTime() {

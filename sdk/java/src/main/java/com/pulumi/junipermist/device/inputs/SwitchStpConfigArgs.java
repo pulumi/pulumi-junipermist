@@ -16,14 +16,14 @@ public final class SwitchStpConfigArgs extends com.pulumi.resources.ResourceArgs
     public static final SwitchStpConfigArgs Empty = new SwitchStpConfigArgs();
 
     /**
-     * Switch STP priority: from `0k` to `15k`
+     * Switch STP priority. Range [0, 4k, 8k.. 60k] in steps of 4k. Bridge priority applies to both VSTP and RSTP.
      * 
      */
     @Import(name="bridgePriority")
     private @Nullable Output<String> bridgePriority;
 
     /**
-     * @return Switch STP priority: from `0k` to `15k`
+     * @return Switch STP priority. Range [0, 4k, 8k.. 60k] in steps of 4k. Bridge priority applies to both VSTP and RSTP.
      * 
      */
     public Optional<Output<String>> bridgePriority() {
@@ -55,7 +55,7 @@ public final class SwitchStpConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bridgePriority Switch STP priority: from `0k` to `15k`
+         * @param bridgePriority Switch STP priority. Range [0, 4k, 8k.. 60k] in steps of 4k. Bridge priority applies to both VSTP and RSTP.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class SwitchStpConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bridgePriority Switch STP priority: from `0k` to `15k`
+         * @param bridgePriority Switch STP priority. Range [0, 4k, 8k.. 60k] in steps of 4k. Bridge priority applies to both VSTP and RSTP.
          * 
          * @return builder
          * 

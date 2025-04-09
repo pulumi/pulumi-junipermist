@@ -13,38 +13,38 @@ import java.util.Objects;
 @CustomType
 public final class GetApStatsDeviceApStatRadioStat {
     /**
-     * @return radio stat
+     * @return Radio stat
      * 
      */
     private GetApStatsDeviceApStatRadioStatBand24 band24;
     /**
-     * @return radio stat
+     * @return Radio stat
      * 
      */
     private GetApStatsDeviceApStatRadioStatBand5 band5;
     /**
-     * @return radio stat
+     * @return Radio stat
      * 
      */
     private GetApStatsDeviceApStatRadioStatBand6 band6;
 
     private GetApStatsDeviceApStatRadioStat() {}
     /**
-     * @return radio stat
+     * @return Radio stat
      * 
      */
     public GetApStatsDeviceApStatRadioStatBand24 band24() {
         return this.band24;
     }
     /**
-     * @return radio stat
+     * @return Radio stat
      * 
      */
     public GetApStatsDeviceApStatRadioStatBand5 band5() {
         return this.band5;
     }
     /**
-     * @return radio stat
+     * @return Radio stat
      * 
      */
     public GetApStatsDeviceApStatRadioStatBand6 band6() {

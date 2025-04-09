@@ -38,11 +38,11 @@ export function getNacEndpoints(args: GetNacEndpointsArgs, opts?: pulumi.InvokeO
  */
 export interface GetNacEndpointsArgs {
     /**
-     * optional, array of strings of labels
+     * Optional, array of strings of labels
      */
     labels?: string[];
     /**
-     * partial/full MAC addres
+     * Partial/full MAC address
      */
     mac?: string;
     orgId: string;
@@ -57,11 +57,11 @@ export interface GetNacEndpointsResult {
      */
     readonly id: string;
     /**
-     * optional, array of strings of labels
+     * Optional, array of strings of labels
      */
     readonly labels?: string[];
     /**
-     * partial/full MAC addres
+     * Partial/full MAC address
      */
     readonly mac?: string;
     readonly orgId: string;
@@ -99,11 +99,11 @@ export function getNacEndpointsOutput(args: GetNacEndpointsOutputArgs, opts?: pu
  */
 export interface GetNacEndpointsOutputArgs {
     /**
-     * optional, array of strings of labels
+     * Optional, array of strings of labels
      */
     labels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * partial/full MAC addres
+     * Partial/full MAC address
      */
     mac?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;

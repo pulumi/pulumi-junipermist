@@ -14,13 +14,17 @@ import java.util.Objects;
 @CustomType
 public final class GetApStatsDeviceApStatL2tpStat {
     /**
-     * @return list of sessions
+     * @return List of sessions
      * 
      */
     private List<GetApStatsDeviceApStatL2tpStatSession> sessions;
+    /**
+     * @return enum: `established`, `established_with_session`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+     * 
+     */
     private String state;
     /**
-     * @return uptime
+     * @return Uptime
      * 
      */
     private Integer uptime;
@@ -32,17 +36,21 @@ public final class GetApStatsDeviceApStatL2tpStat {
 
     private GetApStatsDeviceApStatL2tpStat() {}
     /**
-     * @return list of sessions
+     * @return List of sessions
      * 
      */
     public List<GetApStatsDeviceApStatL2tpStatSession> sessions() {
         return this.sessions;
     }
+    /**
+     * @return enum: `established`, `established_with_session`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+     * 
+     */
     public String state() {
         return this.state;
     }
     /**
-     * @return uptime
+     * @return Uptime
      * 
      */
     public Integer uptime() {

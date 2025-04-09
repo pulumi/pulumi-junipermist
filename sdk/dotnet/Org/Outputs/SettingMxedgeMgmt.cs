@@ -13,6 +13,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingMxedgeMgmt
     {
+        public readonly bool? ConfigAutoRevert;
         public readonly bool? FipsEnabled;
         public readonly string? MistPassword;
         /// <summary>
@@ -27,6 +28,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
         [OutputConstructor]
         private SettingMxedgeMgmt(
+            bool? configAutoRevert,
+
             bool? fipsEnabled,
 
             string? mistPassword,
@@ -37,6 +40,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? rootPassword)
         {
+            ConfigAutoRevert = configAutoRevert;
             FipsEnabled = fipsEnabled;
             MistPassword = mistPassword;
             OobIpType = oobIpType;

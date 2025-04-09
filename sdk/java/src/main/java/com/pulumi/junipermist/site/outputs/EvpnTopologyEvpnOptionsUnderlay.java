@@ -20,12 +20,12 @@ public final class EvpnTopologyEvpnOptionsUnderlay {
     private @Nullable Integer asBase;
     private @Nullable String routedIdPrefix;
     /**
-     * @return underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+     * @return Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
      * 
      */
     private @Nullable String subnet;
     /**
-     * @return if v6 is desired for underlay
+     * @return If v6 is desired for underlay
      * 
      */
     private @Nullable Boolean useIpv6;
@@ -42,14 +42,14 @@ public final class EvpnTopologyEvpnOptionsUnderlay {
         return Optional.ofNullable(this.routedIdPrefix);
     }
     /**
-     * @return underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+     * @return Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
      * 
      */
     public Optional<String> subnet() {
         return Optional.ofNullable(this.subnet);
     }
     /**
-     * @return if v6 is desired for underlay
+     * @return If v6 is desired for underlay
      * 
      */
     public Optional<Boolean> useIpv6() {

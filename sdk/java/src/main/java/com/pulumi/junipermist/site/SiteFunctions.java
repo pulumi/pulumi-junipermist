@@ -9,18 +9,241 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.junipermist.Utilities;
+import com.pulumi.junipermist.site.inputs.GetEvpnTopologiesArgs;
+import com.pulumi.junipermist.site.inputs.GetEvpnTopologiesPlainArgs;
 import com.pulumi.junipermist.site.inputs.GetPsksArgs;
 import com.pulumi.junipermist.site.inputs.GetPsksPlainArgs;
 import com.pulumi.junipermist.site.inputs.GetWebhooksArgs;
 import com.pulumi.junipermist.site.inputs.GetWebhooksPlainArgs;
 import com.pulumi.junipermist.site.inputs.GetWlansArgs;
 import com.pulumi.junipermist.site.inputs.GetWlansPlainArgs;
+import com.pulumi.junipermist.site.outputs.GetEvpnTopologiesResult;
 import com.pulumi.junipermist.site.outputs.GetPsksResult;
 import com.pulumi.junipermist.site.outputs.GetWebhooksResult;
 import com.pulumi.junipermist.site.outputs.GetWlansResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class SiteFunctions {
+    /**
+     * This data source provides the list of Site Evpn Topologies
+     * 
+     * EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.site.SiteFunctions;
+     * import com.pulumi.junipermist.site.inputs.GetEvpnTopologiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var siteEvpnTopologies = SiteFunctions.getEvpnTopologies(GetEvpnTopologiesArgs.builder()
+     *             .siteId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEvpnTopologiesResult> getEvpnTopologies(GetEvpnTopologiesArgs args) {
+        return getEvpnTopologies(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of Site Evpn Topologies
+     * 
+     * EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.site.SiteFunctions;
+     * import com.pulumi.junipermist.site.inputs.GetEvpnTopologiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var siteEvpnTopologies = SiteFunctions.getEvpnTopologies(GetEvpnTopologiesArgs.builder()
+     *             .siteId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEvpnTopologiesResult> getEvpnTopologiesPlain(GetEvpnTopologiesPlainArgs args) {
+        return getEvpnTopologiesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of Site Evpn Topologies
+     * 
+     * EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.site.SiteFunctions;
+     * import com.pulumi.junipermist.site.inputs.GetEvpnTopologiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var siteEvpnTopologies = SiteFunctions.getEvpnTopologies(GetEvpnTopologiesArgs.builder()
+     *             .siteId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEvpnTopologiesResult> getEvpnTopologies(GetEvpnTopologiesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:site/getEvpnTopologies:getEvpnTopologies", TypeShape.of(GetEvpnTopologiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of Site Evpn Topologies
+     * 
+     * EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.site.SiteFunctions;
+     * import com.pulumi.junipermist.site.inputs.GetEvpnTopologiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var siteEvpnTopologies = SiteFunctions.getEvpnTopologies(GetEvpnTopologiesArgs.builder()
+     *             .siteId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEvpnTopologiesResult> getEvpnTopologies(GetEvpnTopologiesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:site/getEvpnTopologies:getEvpnTopologies", TypeShape.of(GetEvpnTopologiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of Site Evpn Topologies
+     * 
+     * EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.site.SiteFunctions;
+     * import com.pulumi.junipermist.site.inputs.GetEvpnTopologiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var siteEvpnTopologies = SiteFunctions.getEvpnTopologies(GetEvpnTopologiesArgs.builder()
+     *             .siteId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEvpnTopologiesResult> getEvpnTopologiesPlain(GetEvpnTopologiesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("junipermist:site/getEvpnTopologies:getEvpnTopologies", TypeShape.of(GetEvpnTopologiesResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * This data source provides the list of Site Psks.
      * 
@@ -281,6 +504,36 @@ public final class SiteFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.site.SiteFunctions;
+     * import com.pulumi.junipermist.site.inputs.GetWebhooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var webhooks = SiteFunctions.getWebhooks(GetWebhooksArgs.builder()
+     *             .siteId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -297,6 +550,36 @@ public final class SiteFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.site.SiteFunctions;
+     * import com.pulumi.junipermist.site.inputs.GetWebhooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var webhooks = SiteFunctions.getWebhooks(GetWebhooksArgs.builder()
+     *             .siteId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -313,6 +596,36 @@ public final class SiteFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.site.SiteFunctions;
+     * import com.pulumi.junipermist.site.inputs.GetWebhooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var webhooks = SiteFunctions.getWebhooks(GetWebhooksArgs.builder()
+     *             .siteId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -329,6 +642,36 @@ public final class SiteFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.site.SiteFunctions;
+     * import com.pulumi.junipermist.site.inputs.GetWebhooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var webhooks = SiteFunctions.getWebhooks(GetWebhooksArgs.builder()
+     *             .siteId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -345,6 +688,36 @@ public final class SiteFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.site.SiteFunctions;
+     * import com.pulumi.junipermist.site.inputs.GetWebhooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var webhooks = SiteFunctions.getWebhooks(GetWebhooksArgs.builder()
+     *             .siteId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

@@ -36,6 +36,7 @@ class ApArgs:
                  flow_control: Optional[pulumi.Input[builtins.bool]] = None,
                  height: Optional[pulumi.Input[builtins.float]] = None,
                  ip_config: Optional[pulumi.Input['ApIpConfigArgs']] = None,
+                 lacp_config: Optional[pulumi.Input['ApLacpConfigArgs']] = None,
                  led: Optional[pulumi.Input['ApLedArgs']] = None,
                  locked: Optional[pulumi.Input[builtins.bool]] = None,
                  map_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -105,6 +106,8 @@ class ApArgs:
             pulumi.set(__self__, "height", height)
         if ip_config is not None:
             pulumi.set(__self__, "ip_config", ip_config)
+        if lacp_config is not None:
+            pulumi.set(__self__, "lacp_config", lacp_config)
         if led is not None:
             pulumi.set(__self__, "led", led)
         if locked is not None:
@@ -290,6 +293,15 @@ class ApArgs:
     @ip_config.setter
     def ip_config(self, value: Optional[pulumi.Input['ApIpConfigArgs']]):
         pulumi.set(self, "ip_config", value)
+
+    @property
+    @pulumi.getter(name="lacpConfig")
+    def lacp_config(self) -> Optional[pulumi.Input['ApLacpConfigArgs']]:
+        return pulumi.get(self, "lacp_config")
+
+    @lacp_config.setter
+    def lacp_config(self, value: Optional[pulumi.Input['ApLacpConfigArgs']]):
+        pulumi.set(self, "lacp_config", value)
 
     @property
     @pulumi.getter
@@ -498,6 +510,7 @@ class _ApState:
                  image2_url: Optional[pulumi.Input[builtins.str]] = None,
                  image3_url: Optional[pulumi.Input[builtins.str]] = None,
                  ip_config: Optional[pulumi.Input['ApIpConfigArgs']] = None,
+                 lacp_config: Optional[pulumi.Input['ApLacpConfigArgs']] = None,
                  led: Optional[pulumi.Input['ApLedArgs']] = None,
                  locked: Optional[pulumi.Input[builtins.bool]] = None,
                  mac: Optional[pulumi.Input[builtins.str]] = None,
@@ -583,6 +596,8 @@ class _ApState:
             pulumi.set(__self__, "image3_url", image3_url)
         if ip_config is not None:
             pulumi.set(__self__, "ip_config", ip_config)
+        if lacp_config is not None:
+            pulumi.set(__self__, "lacp_config", lacp_config)
         if led is not None:
             pulumi.set(__self__, "led", led)
         if locked is not None:
@@ -798,6 +813,15 @@ class _ApState:
     @ip_config.setter
     def ip_config(self, value: Optional[pulumi.Input['ApIpConfigArgs']]):
         pulumi.set(self, "ip_config", value)
+
+    @property
+    @pulumi.getter(name="lacpConfig")
+    def lacp_config(self) -> Optional[pulumi.Input['ApLacpConfigArgs']]:
+        return pulumi.get(self, "lacp_config")
+
+    @lacp_config.setter
+    def lacp_config(self, value: Optional[pulumi.Input['ApLacpConfigArgs']]):
+        pulumi.set(self, "lacp_config", value)
 
     @property
     @pulumi.getter
@@ -1071,6 +1095,7 @@ class Ap(pulumi.CustomResource):
                  flow_control: Optional[pulumi.Input[builtins.bool]] = None,
                  height: Optional[pulumi.Input[builtins.float]] = None,
                  ip_config: Optional[pulumi.Input[Union['ApIpConfigArgs', 'ApIpConfigArgsDict']]] = None,
+                 lacp_config: Optional[pulumi.Input[Union['ApLacpConfigArgs', 'ApLacpConfigArgsDict']]] = None,
                  led: Optional[pulumi.Input[Union['ApLedArgs', 'ApLedArgsDict']]] = None,
                  locked: Optional[pulumi.Input[builtins.bool]] = None,
                  map_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1180,6 +1205,7 @@ class Ap(pulumi.CustomResource):
                  flow_control: Optional[pulumi.Input[builtins.bool]] = None,
                  height: Optional[pulumi.Input[builtins.float]] = None,
                  ip_config: Optional[pulumi.Input[Union['ApIpConfigArgs', 'ApIpConfigArgsDict']]] = None,
+                 lacp_config: Optional[pulumi.Input[Union['ApLacpConfigArgs', 'ApLacpConfigArgsDict']]] = None,
                  led: Optional[pulumi.Input[Union['ApLedArgs', 'ApLedArgsDict']]] = None,
                  locked: Optional[pulumi.Input[builtins.bool]] = None,
                  map_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1221,6 +1247,7 @@ class Ap(pulumi.CustomResource):
             __props__.__dict__["flow_control"] = flow_control
             __props__.__dict__["height"] = height
             __props__.__dict__["ip_config"] = ip_config
+            __props__.__dict__["lacp_config"] = lacp_config
             __props__.__dict__["led"] = led
             __props__.__dict__["locked"] = locked
             __props__.__dict__["map_id"] = map_id
@@ -1274,6 +1301,7 @@ class Ap(pulumi.CustomResource):
             image2_url: Optional[pulumi.Input[builtins.str]] = None,
             image3_url: Optional[pulumi.Input[builtins.str]] = None,
             ip_config: Optional[pulumi.Input[Union['ApIpConfigArgs', 'ApIpConfigArgsDict']]] = None,
+            lacp_config: Optional[pulumi.Input[Union['ApLacpConfigArgs', 'ApLacpConfigArgsDict']]] = None,
             led: Optional[pulumi.Input[Union['ApLedArgs', 'ApLedArgsDict']]] = None,
             locked: Optional[pulumi.Input[builtins.bool]] = None,
             mac: Optional[pulumi.Input[builtins.str]] = None,
@@ -1352,6 +1380,7 @@ class Ap(pulumi.CustomResource):
         __props__.__dict__["image2_url"] = image2_url
         __props__.__dict__["image3_url"] = image3_url
         __props__.__dict__["ip_config"] = ip_config
+        __props__.__dict__["lacp_config"] = lacp_config
         __props__.__dict__["led"] = led
         __props__.__dict__["locked"] = locked
         __props__.__dict__["mac"] = mac
@@ -1482,6 +1511,11 @@ class Ap(pulumi.CustomResource):
         IP AP settings
         """
         return pulumi.get(self, "ip_config")
+
+    @property
+    @pulumi.getter(name="lacpConfig")
+    def lacp_config(self) -> pulumi.Output[Optional['outputs.ApLacpConfig']]:
+        return pulumi.get(self, "lacp_config")
 
     @property
     @pulumi.getter

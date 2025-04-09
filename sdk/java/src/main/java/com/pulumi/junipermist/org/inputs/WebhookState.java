@@ -191,6 +191,25 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+     * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+     * Topics)
+     * 
+     */
+    @Import(name="singleEventPerMessage")
+    private @Nullable Output<Boolean> singleEventPerMessage;
+
+    /**
+     * @return Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+     * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+     * Topics)
+     * 
+     */
+    public Optional<Output<Boolean>> singleEventPerMessage() {
+        return Optional.ofNullable(this.singleEventPerMessage);
+    }
+
+    /**
      * Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
      * the webhook receiver is configured to accept it.
      * 
@@ -208,14 +227,14 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-updowns`, `device-events`, `mxedge-events`, `nac-accounting`, `nac_events`
+     * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
      * 
      */
     @Import(name="topics")
     private @Nullable Output<List<String>> topics;
 
     /**
-     * @return enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-updowns`, `device-events`, `mxedge-events`, `nac-accounting`, `nac_events`
+     * @return enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
      * 
      */
     public Optional<Output<List<String>>> topics() {
@@ -274,6 +293,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         this.oauth2Username = $.oauth2Username;
         this.orgId = $.orgId;
         this.secret = $.secret;
+        this.singleEventPerMessage = $.singleEventPerMessage;
         this.splunkToken = $.splunkToken;
         this.topics = $.topics;
         this.type = $.type;
@@ -550,6 +570,31 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param singleEventPerMessage Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+         * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+         * Topics)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder singleEventPerMessage(@Nullable Output<Boolean> singleEventPerMessage) {
+            $.singleEventPerMessage = singleEventPerMessage;
+            return this;
+        }
+
+        /**
+         * @param singleEventPerMessage Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
+         * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
+         * Topics)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder singleEventPerMessage(Boolean singleEventPerMessage) {
+            return singleEventPerMessage(Output.of(singleEventPerMessage));
+        }
+
+        /**
          * @param splunkToken Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
          * the webhook receiver is configured to accept it.
          * 
@@ -573,7 +618,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topics enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-updowns`, `device-events`, `mxedge-events`, `nac-accounting`, `nac_events`
+         * @param topics enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
          * 
          * @return builder
          * 
@@ -584,7 +629,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topics enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-updowns`, `device-events`, `mxedge-events`, `nac-accounting`, `nac_events`
+         * @param topics enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
          * 
          * @return builder
          * 
@@ -594,7 +639,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topics enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-updowns`, `device-events`, `mxedge-events`, `nac-accounting`, `nac_events`
+         * @param topics enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
          * 
          * @return builder
          * 

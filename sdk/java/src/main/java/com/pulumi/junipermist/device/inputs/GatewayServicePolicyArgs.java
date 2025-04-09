@@ -142,14 +142,14 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+     * Required when `servicepolicy_id` is not defined. List of Applications / Destinations
      * 
      */
     @Import(name="services")
     private @Nullable Output<List<String>> services;
 
     /**
-     * @return Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+     * @return Required when `servicepolicy_id` is not defined. List of Applications / Destinations
      * 
      */
     public Optional<Output<List<String>>> services() {
@@ -391,7 +391,7 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param services Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+         * @param services Required when `servicepolicy_id` is not defined. List of Applications / Destinations
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param services Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+         * @param services Required when `servicepolicy_id` is not defined. List of Applications / Destinations
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param services Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+         * @param services Required when `servicepolicy_id` is not defined. List of Applications / Destinations
          * 
          * @return builder
          * 

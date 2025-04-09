@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchStpConfig {
     /**
-     * @return Switch STP priority: from `0k` to `15k`
+     * @return Switch STP priority. Range [0, 4k, 8k.. 60k] in steps of 4k. Bridge priority applies to both VSTP and RSTP.
      * 
      */
     private @Nullable String bridgePriority;
 
     private SwitchStpConfig() {}
     /**
-     * @return Switch STP priority: from `0k` to `15k`
+     * @return Switch STP priority. Range [0, 4k, 8k.. 60k] in steps of 4k. Bridge priority applies to both VSTP and RSTP.
      * 
      */
     public Optional<String> bridgePriority() {

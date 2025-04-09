@@ -15,14 +15,14 @@ public final class GatewayClusterNodeArgs extends com.pulumi.resources.ResourceA
     public static final GatewayClusterNodeArgs Empty = new GatewayClusterNodeArgs();
 
     /**
-     * Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
      * 
      */
     @Import(name="mac", required=true)
     private Output<String> mac;
 
     /**
-     * @return Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * @return Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
      * 
      */
     public Output<String> mac() {
@@ -54,7 +54,7 @@ public final class GatewayClusterNodeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param mac Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+         * @param mac Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class GatewayClusterNodeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param mac Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+         * @param mac Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
          * 
          * @return builder
          * 

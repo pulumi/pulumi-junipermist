@@ -55,6 +55,7 @@ class WlanArgs:
                  client_limit_up_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  coa_servers: Optional[pulumi.Input[Sequence[pulumi.Input['WlanCoaServerArgs']]]] = None,
                  disable11ax: Optional[pulumi.Input[builtins.bool]] = None,
+                 disable11be: Optional[pulumi.Input[builtins.bool]] = None,
                  disable_ht_vht_rates: Optional[pulumi.Input[builtins.bool]] = None,
                  disable_uapsd: Optional[pulumi.Input[builtins.bool]] = None,
                  disable_v1_roam_notify: Optional[pulumi.Input[builtins.bool]] = None,
@@ -153,6 +154,7 @@ class WlanArgs:
         :param pulumi.Input[builtins.bool] client_limit_up_enabled: If uplink limiting per-client is enabled
         :param pulumi.Input[Sequence[pulumi.Input['WlanCoaServerArgs']]] coa_servers: List of COA (change of authorization) servers, optional
         :param pulumi.Input[builtins.bool] disable11ax: Some old WLAN drivers may not be compatible
+        :param pulumi.Input[builtins.bool] disable11be: To disable Wi-Fi 7 EHT IEs
         :param pulumi.Input[builtins.bool] disable_ht_vht_rates: To disable ht or vht rates
         :param pulumi.Input[builtins.bool] disable_uapsd: Whether to disable U-APSD
         :param pulumi.Input[builtins.bool] disable_v1_roam_notify: Disable sending v2 roam notification messages
@@ -170,7 +172,7 @@ class WlanArgs:
         :param pulumi.Input['WlanDynamicVlanArgs'] dynamic_vlan: For 802.1x
         :param pulumi.Input[builtins.bool] enable_local_keycaching: Enable AP-AP keycaching via multicast
         :param pulumi.Input[builtins.bool] enable_wireless_bridging: By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-               client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+               client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
         :param pulumi.Input[builtins.bool] enable_wireless_bridging_dhcp_tracking: If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
                packets to be forwarded to wireless
         :param pulumi.Input[builtins.bool] enabled: If this wlan is enabled
@@ -189,7 +191,7 @@ class WlanArgs:
         :param pulumi.Input[builtins.int] max_idletime: Max idle time in seconds
         :param pulumi.Input[builtins.int] max_num_clients: Maximum number of client connected to the SSID. `0` means unlimited
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] mxtunnel_ids: When `interface`=`mxtunnel`, id of the Mist Tunnel
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] mxtunnel_names: When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] mxtunnel_names: When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
         :param pulumi.Input[builtins.bool] no_static_dns: Whether to only allow client to use DNS that we’ve learned from DHCP response
         :param pulumi.Input[builtins.bool] no_static_ip: Whether to only allow client that we’ve learned from DHCP exchange to talk
         :param pulumi.Input['WlanPortalArgs'] portal: Portal wlan settings
@@ -204,7 +206,7 @@ class WlanArgs:
         :param pulumi.Input[builtins.bool] sle_excluded: Whether to exclude this WLAN from SLE metrics
         :param pulumi.Input[builtins.bool] use_eapol_v1: If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
         :param pulumi.Input[builtins.bool] vlan_enabled: If vlan tagging is enabled
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
         :param pulumi.Input[builtins.bool] vlan_pooling: Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
                deterministic algorithm
         :param pulumi.Input[builtins.int] wlan_limit_down: In kbps
@@ -279,6 +281,8 @@ class WlanArgs:
             pulumi.set(__self__, "coa_servers", coa_servers)
         if disable11ax is not None:
             pulumi.set(__self__, "disable11ax", disable11ax)
+        if disable11be is not None:
+            pulumi.set(__self__, "disable11be", disable11be)
         if disable_ht_vht_rates is not None:
             pulumi.set(__self__, "disable_ht_vht_rates", disable_ht_vht_rates)
         if disable_uapsd is not None:
@@ -794,6 +798,18 @@ class WlanArgs:
         pulumi.set(self, "disable11ax", value)
 
     @property
+    @pulumi.getter
+    def disable11be(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        To disable Wi-Fi 7 EHT IEs
+        """
+        return pulumi.get(self, "disable11be")
+
+    @disable11be.setter
+    def disable11be(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "disable11be", value)
+
+    @property
     @pulumi.getter(name="disableHtVhtRates")
     def disable_ht_vht_rates(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -942,7 +958,7 @@ class WlanArgs:
     def enable_wireless_bridging(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-        client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+        client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
         """
         return pulumi.get(self, "enable_wireless_bridging")
 
@@ -1155,7 +1171,7 @@ class WlanArgs:
     @pulumi.getter(name="mxtunnelNames")
     def mxtunnel_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
         """
         return pulumi.get(self, "mxtunnel_names")
 
@@ -1353,7 +1369,7 @@ class WlanArgs:
     @pulumi.getter(name="vlanIds")
     def vlan_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+        if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
         """
         return pulumi.get(self, "vlan_ids")
 
@@ -1493,6 +1509,7 @@ class _WlanState:
                  client_limit_up_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  coa_servers: Optional[pulumi.Input[Sequence[pulumi.Input['WlanCoaServerArgs']]]] = None,
                  disable11ax: Optional[pulumi.Input[builtins.bool]] = None,
+                 disable11be: Optional[pulumi.Input[builtins.bool]] = None,
                  disable_ht_vht_rates: Optional[pulumi.Input[builtins.bool]] = None,
                  disable_uapsd: Optional[pulumi.Input[builtins.bool]] = None,
                  disable_v1_roam_notify: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1597,6 +1614,7 @@ class _WlanState:
         :param pulumi.Input[builtins.bool] client_limit_up_enabled: If uplink limiting per-client is enabled
         :param pulumi.Input[Sequence[pulumi.Input['WlanCoaServerArgs']]] coa_servers: List of COA (change of authorization) servers, optional
         :param pulumi.Input[builtins.bool] disable11ax: Some old WLAN drivers may not be compatible
+        :param pulumi.Input[builtins.bool] disable11be: To disable Wi-Fi 7 EHT IEs
         :param pulumi.Input[builtins.bool] disable_ht_vht_rates: To disable ht or vht rates
         :param pulumi.Input[builtins.bool] disable_uapsd: Whether to disable U-APSD
         :param pulumi.Input[builtins.bool] disable_v1_roam_notify: Disable sending v2 roam notification messages
@@ -1614,7 +1632,7 @@ class _WlanState:
         :param pulumi.Input['WlanDynamicVlanArgs'] dynamic_vlan: For 802.1x
         :param pulumi.Input[builtins.bool] enable_local_keycaching: Enable AP-AP keycaching via multicast
         :param pulumi.Input[builtins.bool] enable_wireless_bridging: By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-               client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+               client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
         :param pulumi.Input[builtins.bool] enable_wireless_bridging_dhcp_tracking: If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
                packets to be forwarded to wireless
         :param pulumi.Input[builtins.bool] enabled: If this wlan is enabled
@@ -1633,7 +1651,7 @@ class _WlanState:
         :param pulumi.Input[builtins.int] max_idletime: Max idle time in seconds
         :param pulumi.Input[builtins.int] max_num_clients: Maximum number of client connected to the SSID. `0` means unlimited
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] mxtunnel_ids: When `interface`=`mxtunnel`, id of the Mist Tunnel
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] mxtunnel_names: When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] mxtunnel_names: When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
         :param pulumi.Input[builtins.bool] no_static_dns: Whether to only allow client to use DNS that we’ve learned from DHCP response
         :param pulumi.Input[builtins.bool] no_static_ip: Whether to only allow client that we’ve learned from DHCP exchange to talk
         :param pulumi.Input['WlanPortalArgs'] portal: Portal wlan settings
@@ -1651,7 +1669,7 @@ class _WlanState:
         :param pulumi.Input[builtins.str] ssid: Name of the SSID
         :param pulumi.Input[builtins.bool] use_eapol_v1: If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
         :param pulumi.Input[builtins.bool] vlan_enabled: If vlan tagging is enabled
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
         :param pulumi.Input[builtins.bool] vlan_pooling: Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
                deterministic algorithm
         :param pulumi.Input[builtins.int] wlan_limit_down: In kbps
@@ -1724,6 +1742,8 @@ class _WlanState:
             pulumi.set(__self__, "coa_servers", coa_servers)
         if disable11ax is not None:
             pulumi.set(__self__, "disable11ax", disable11ax)
+        if disable11be is not None:
+            pulumi.set(__self__, "disable11be", disable11be)
         if disable_ht_vht_rates is not None:
             pulumi.set(__self__, "disable_ht_vht_rates", disable_ht_vht_rates)
         if disable_uapsd is not None:
@@ -2232,6 +2252,18 @@ class _WlanState:
         pulumi.set(self, "disable11ax", value)
 
     @property
+    @pulumi.getter
+    def disable11be(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        To disable Wi-Fi 7 EHT IEs
+        """
+        return pulumi.get(self, "disable11be")
+
+    @disable11be.setter
+    def disable11be(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "disable11be", value)
+
+    @property
     @pulumi.getter(name="disableHtVhtRates")
     def disable_ht_vht_rates(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -2380,7 +2412,7 @@ class _WlanState:
     def enable_wireless_bridging(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-        client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+        client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
         """
         return pulumi.get(self, "enable_wireless_bridging")
 
@@ -2602,7 +2634,7 @@ class _WlanState:
     @pulumi.getter(name="mxtunnelNames")
     def mxtunnel_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
         """
         return pulumi.get(self, "mxtunnel_names")
 
@@ -2863,7 +2895,7 @@ class _WlanState:
     @pulumi.getter(name="vlanIds")
     def vlan_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+        if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
         """
         return pulumi.get(self, "vlan_ids")
 
@@ -3005,6 +3037,7 @@ class Wlan(pulumi.CustomResource):
                  client_limit_up_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  coa_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]]] = None,
                  disable11ax: Optional[pulumi.Input[builtins.bool]] = None,
+                 disable11be: Optional[pulumi.Input[builtins.bool]] = None,
                  disable_ht_vht_rates: Optional[pulumi.Input[builtins.bool]] = None,
                  disable_uapsd: Optional[pulumi.Input[builtins.bool]] = None,
                  disable_v1_roam_notify: Optional[pulumi.Input[builtins.bool]] = None,
@@ -3145,6 +3178,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] client_limit_up_enabled: If uplink limiting per-client is enabled
         :param pulumi.Input[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]] coa_servers: List of COA (change of authorization) servers, optional
         :param pulumi.Input[builtins.bool] disable11ax: Some old WLAN drivers may not be compatible
+        :param pulumi.Input[builtins.bool] disable11be: To disable Wi-Fi 7 EHT IEs
         :param pulumi.Input[builtins.bool] disable_ht_vht_rates: To disable ht or vht rates
         :param pulumi.Input[builtins.bool] disable_uapsd: Whether to disable U-APSD
         :param pulumi.Input[builtins.bool] disable_v1_roam_notify: Disable sending v2 roam notification messages
@@ -3162,7 +3196,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[Union['WlanDynamicVlanArgs', 'WlanDynamicVlanArgsDict']] dynamic_vlan: For 802.1x
         :param pulumi.Input[builtins.bool] enable_local_keycaching: Enable AP-AP keycaching via multicast
         :param pulumi.Input[builtins.bool] enable_wireless_bridging: By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-               client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+               client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
         :param pulumi.Input[builtins.bool] enable_wireless_bridging_dhcp_tracking: If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
                packets to be forwarded to wireless
         :param pulumi.Input[builtins.bool] enabled: If this wlan is enabled
@@ -3181,7 +3215,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] max_idletime: Max idle time in seconds
         :param pulumi.Input[builtins.int] max_num_clients: Maximum number of client connected to the SSID. `0` means unlimited
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] mxtunnel_ids: When `interface`=`mxtunnel`, id of the Mist Tunnel
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] mxtunnel_names: When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] mxtunnel_names: When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
         :param pulumi.Input[builtins.bool] no_static_dns: Whether to only allow client to use DNS that we’ve learned from DHCP response
         :param pulumi.Input[builtins.bool] no_static_ip: Whether to only allow client that we’ve learned from DHCP exchange to talk
         :param pulumi.Input[Union['WlanPortalArgs', 'WlanPortalArgsDict']] portal: Portal wlan settings
@@ -3197,7 +3231,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] ssid: Name of the SSID
         :param pulumi.Input[builtins.bool] use_eapol_v1: If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
         :param pulumi.Input[builtins.bool] vlan_enabled: If vlan tagging is enabled
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
         :param pulumi.Input[builtins.bool] vlan_pooling: Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
                deterministic algorithm
         :param pulumi.Input[builtins.int] wlan_limit_down: In kbps
@@ -3300,6 +3334,7 @@ class Wlan(pulumi.CustomResource):
                  client_limit_up_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  coa_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]]] = None,
                  disable11ax: Optional[pulumi.Input[builtins.bool]] = None,
+                 disable11be: Optional[pulumi.Input[builtins.bool]] = None,
                  disable_ht_vht_rates: Optional[pulumi.Input[builtins.bool]] = None,
                  disable_uapsd: Optional[pulumi.Input[builtins.bool]] = None,
                  disable_v1_roam_notify: Optional[pulumi.Input[builtins.bool]] = None,
@@ -3398,6 +3433,7 @@ class Wlan(pulumi.CustomResource):
             __props__.__dict__["client_limit_up_enabled"] = client_limit_up_enabled
             __props__.__dict__["coa_servers"] = coa_servers
             __props__.__dict__["disable11ax"] = disable11ax
+            __props__.__dict__["disable11be"] = disable11be
             __props__.__dict__["disable_ht_vht_rates"] = disable_ht_vht_rates
             __props__.__dict__["disable_uapsd"] = disable_uapsd
             __props__.__dict__["disable_v1_roam_notify"] = disable_v1_roam_notify
@@ -3506,6 +3542,7 @@ class Wlan(pulumi.CustomResource):
             client_limit_up_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             coa_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]]] = None,
             disable11ax: Optional[pulumi.Input[builtins.bool]] = None,
+            disable11be: Optional[pulumi.Input[builtins.bool]] = None,
             disable_ht_vht_rates: Optional[pulumi.Input[builtins.bool]] = None,
             disable_uapsd: Optional[pulumi.Input[builtins.bool]] = None,
             disable_v1_roam_notify: Optional[pulumi.Input[builtins.bool]] = None,
@@ -3615,6 +3652,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] client_limit_up_enabled: If uplink limiting per-client is enabled
         :param pulumi.Input[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]] coa_servers: List of COA (change of authorization) servers, optional
         :param pulumi.Input[builtins.bool] disable11ax: Some old WLAN drivers may not be compatible
+        :param pulumi.Input[builtins.bool] disable11be: To disable Wi-Fi 7 EHT IEs
         :param pulumi.Input[builtins.bool] disable_ht_vht_rates: To disable ht or vht rates
         :param pulumi.Input[builtins.bool] disable_uapsd: Whether to disable U-APSD
         :param pulumi.Input[builtins.bool] disable_v1_roam_notify: Disable sending v2 roam notification messages
@@ -3632,7 +3670,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[Union['WlanDynamicVlanArgs', 'WlanDynamicVlanArgsDict']] dynamic_vlan: For 802.1x
         :param pulumi.Input[builtins.bool] enable_local_keycaching: Enable AP-AP keycaching via multicast
         :param pulumi.Input[builtins.bool] enable_wireless_bridging: By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-               client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+               client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
         :param pulumi.Input[builtins.bool] enable_wireless_bridging_dhcp_tracking: If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
                packets to be forwarded to wireless
         :param pulumi.Input[builtins.bool] enabled: If this wlan is enabled
@@ -3651,7 +3689,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] max_idletime: Max idle time in seconds
         :param pulumi.Input[builtins.int] max_num_clients: Maximum number of client connected to the SSID. `0` means unlimited
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] mxtunnel_ids: When `interface`=`mxtunnel`, id of the Mist Tunnel
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] mxtunnel_names: When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] mxtunnel_names: When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
         :param pulumi.Input[builtins.bool] no_static_dns: Whether to only allow client to use DNS that we’ve learned from DHCP response
         :param pulumi.Input[builtins.bool] no_static_ip: Whether to only allow client that we’ve learned from DHCP exchange to talk
         :param pulumi.Input[Union['WlanPortalArgs', 'WlanPortalArgsDict']] portal: Portal wlan settings
@@ -3669,7 +3707,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] ssid: Name of the SSID
         :param pulumi.Input[builtins.bool] use_eapol_v1: If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
         :param pulumi.Input[builtins.bool] vlan_enabled: If vlan tagging is enabled
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
         :param pulumi.Input[builtins.bool] vlan_pooling: Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
                deterministic algorithm
         :param pulumi.Input[builtins.int] wlan_limit_down: In kbps
@@ -3715,6 +3753,7 @@ class Wlan(pulumi.CustomResource):
         __props__.__dict__["client_limit_up_enabled"] = client_limit_up_enabled
         __props__.__dict__["coa_servers"] = coa_servers
         __props__.__dict__["disable11ax"] = disable11ax
+        __props__.__dict__["disable11be"] = disable11be
         __props__.__dict__["disable_ht_vht_rates"] = disable_ht_vht_rates
         __props__.__dict__["disable_uapsd"] = disable_uapsd
         __props__.__dict__["disable_v1_roam_notify"] = disable_v1_roam_notify
@@ -4037,6 +4076,14 @@ class Wlan(pulumi.CustomResource):
         return pulumi.get(self, "disable11ax")
 
     @property
+    @pulumi.getter
+    def disable11be(self) -> pulumi.Output[builtins.bool]:
+        """
+        To disable Wi-Fi 7 EHT IEs
+        """
+        return pulumi.get(self, "disable11be")
+
+    @property
     @pulumi.getter(name="disableHtVhtRates")
     def disable_ht_vht_rates(self) -> pulumi.Output[builtins.bool]:
         """
@@ -4137,7 +4184,7 @@ class Wlan(pulumi.CustomResource):
     def enable_wireless_bridging(self) -> pulumi.Output[builtins.bool]:
         """
         By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-        client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+        client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
         """
         return pulumi.get(self, "enable_wireless_bridging")
 
@@ -4283,7 +4330,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="mxtunnelNames")
     def mxtunnel_names(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+        When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
         """
         return pulumi.get(self, "mxtunnel_names")
 
@@ -4452,7 +4499,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="vlanIds")
     def vlan_ids(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+        if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
         """
         return pulumi.get(self, "vlan_ids")
 

@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 /**
  * This resource manages the NAC Rules (Auth Policies).
  * 
- * A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+ * A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
  * 
  * ## Example Usage
  * 
@@ -57,28 +57,28 @@ public class Nacrule extends com.pulumi.resources.CustomResource {
         return this.action;
     }
     /**
-     * all optional, this goes into Access-Accept
+     * All optional, this goes into Access-Accept
      * 
      */
     @Export(name="applyTags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> applyTags;
 
     /**
-     * @return all optional, this goes into Access-Accept
+     * @return All optional, this goes into Access-Accept
      * 
      */
     public Output<List<String>> applyTags() {
         return this.applyTags;
     }
     /**
-     * enabled or not
+     * Enabled or not
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return enabled or not
+     * @return Enabled or not
      * 
      */
     public Output<Boolean> enabled() {
@@ -103,14 +103,14 @@ public class Nacrule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notMatching);
     }
     /**
-     * the order of the rule, lower value implies higher priority
+     * Order of the rule, lower value implies higher priority
      * 
      */
     @Export(name="order", refs={Integer.class}, tree="[0]")
     private Output<Integer> order;
 
     /**
-     * @return the order of the rule, lower value implies higher priority
+     * @return Order of the rule, lower value implies higher priority
      * 
      */
     public Output<Integer> order() {

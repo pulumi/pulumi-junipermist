@@ -12,6 +12,7 @@ import com.pulumi.junipermist.org.ServiceArgs;
 import com.pulumi.junipermist.org.inputs.ServiceState;
 import com.pulumi.junipermist.org.outputs.ServiceSpec;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -45,62 +46,90 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/service:Service")
 public class Service extends com.pulumi.resources.CustomResource {
     /**
-     * if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+     * If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
      * 
      */
     @Export(name="addresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> addresses;
 
     /**
-     * @return if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+     * @return If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
      * 
      */
     public Output<List<String>> addresses() {
         return this.addresses;
     }
     /**
-     * when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_categories
+     * When `type`==`app_categories`, list of application categories are available through List App Category Definitions
      * 
      */
     @Export(name="appCategories", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> appCategories;
 
     /**
-     * @return when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_categories
+     * @return When `type`==`app_categories`, list of application categories are available through List App Category Definitions
      * 
      */
     public Output<List<String>> appCategories() {
         return this.appCategories;
     }
     /**
-     * when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_subcategories
+     * When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
      * 
      */
     @Export(name="appSubcategories", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> appSubcategories;
 
     /**
-     * @return when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_subcategories
+     * @return When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
      * 
      */
     public Output<List<String>> appSubcategories() {
         return this.appSubcategories;
     }
     /**
-     * when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-     * /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
+     * When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+     * /insight/top_app_by-bytes?wired=true
      * 
      */
     @Export(name="apps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> apps;
 
     /**
-     * @return when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-     * /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
+     * @return When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+     * /insight/top_app_by-bytes?wired=true
      * 
      */
     public Output<List<String>> apps() {
         return this.apps;
+    }
+    /**
+     * 0 means unlimited, value from 0 to 107374182
+     * 
+     */
+    @Export(name="clientLimitDown", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> clientLimitDown;
+
+    /**
+     * @return 0 means unlimited, value from 0 to 107374182
+     * 
+     */
+    public Output<Optional<Integer>> clientLimitDown() {
+        return Codegen.optional(this.clientLimitDown);
+    }
+    /**
+     * 0 means unlimited, value from 0 to 107374182
+     * 
+     */
+    @Export(name="clientLimitUp", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> clientLimitUp;
+
+    /**
+     * @return 0 means unlimited, value from 0 to 107374182
+     * 
+     */
+    public Output<Optional<Integer>> clientLimitUp() {
+        return Codegen.optional(this.clientLimitUp);
     }
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
@@ -115,28 +144,28 @@ public class Service extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dscp);
     }
     /**
-     * enum: `non_revertable`, `none`, `revertable`
+     * enum: `non_revertible`, `none`, `revertible`
      * 
      */
     @Export(name="failoverPolicy", refs={String.class}, tree="[0]")
-    private Output<String> failoverPolicy;
+    private Output</* @Nullable */ String> failoverPolicy;
 
     /**
-     * @return enum: `non_revertable`, `none`, `revertable`
+     * @return enum: `non_revertible`, `none`, `revertible`
      * 
      */
-    public Output<String> failoverPolicy() {
-        return this.failoverPolicy;
+    public Output<Optional<String>> failoverPolicy() {
+        return Codegen.optional(this.failoverPolicy);
     }
     /**
-     * if `type`==`custom`, web filtering
+     * If `type`==`custom`, web filtering
      * 
      */
     @Export(name="hostnames", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> hostnames;
 
     /**
-     * @return if `type`==`custom`, web filtering
+     * @return If `type`==`custom`, web filtering
      * 
      */
     public Output<List<String>> hostnames() {
@@ -173,62 +202,90 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * whether to enable measure SLE
+     * 0 means unlimited, value from 0 to 107374182
+     * 
+     */
+    @Export(name="serviceLimitDown", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> serviceLimitDown;
+
+    /**
+     * @return 0 means unlimited, value from 0 to 107374182
+     * 
+     */
+    public Output<Optional<Integer>> serviceLimitDown() {
+        return Codegen.optional(this.serviceLimitDown);
+    }
+    /**
+     * 0 means unlimited, value from 0 to 107374182
+     * 
+     */
+    @Export(name="serviceLimitUp", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> serviceLimitUp;
+
+    /**
+     * @return 0 means unlimited, value from 0 to 107374182
+     * 
+     */
+    public Output<Optional<Integer>> serviceLimitUp() {
+        return Codegen.optional(this.serviceLimitUp);
+    }
+    /**
+     * Whether to enable measure SLE
      * 
      */
     @Export(name="sleEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> sleEnabled;
+    private Output</* @Nullable */ Boolean> sleEnabled;
 
     /**
-     * @return whether to enable measure SLE
+     * @return Whether to enable measure SLE
      * 
      */
-    public Output<Boolean> sleEnabled() {
-        return this.sleEnabled;
+    public Output<Optional<Boolean>> sleEnabled() {
+        return Codegen.optional(this.sleEnabled);
     }
     /**
-     * when `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
+     * When `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
      * 
      */
     @Export(name="specs", refs={List.class,ServiceSpec.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ServiceSpec>> specs;
 
     /**
-     * @return when `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
+     * @return When `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
      * 
      */
     public Output<Optional<List<ServiceSpec>>> specs() {
         return Codegen.optional(this.specs);
     }
     @Export(name="ssrRelaxedTcpStateEnforcement", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> ssrRelaxedTcpStateEnforcement;
+    private Output</* @Nullable */ Boolean> ssrRelaxedTcpStateEnforcement;
 
-    public Output<Boolean> ssrRelaxedTcpStateEnforcement() {
-        return this.ssrRelaxedTcpStateEnforcement;
+    public Output<Optional<Boolean>> ssrRelaxedTcpStateEnforcement() {
+        return Codegen.optional(this.ssrRelaxedTcpStateEnforcement);
     }
     /**
      * when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
      * 
      */
     @Export(name="trafficClass", refs={String.class}, tree="[0]")
-    private Output<String> trafficClass;
+    private Output</* @Nullable */ String> trafficClass;
 
     /**
      * @return when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
      * 
      */
-    public Output<String> trafficClass() {
-        return this.trafficClass;
+    public Output<Optional<String>> trafficClass() {
+        return Codegen.optional(this.trafficClass);
     }
     /**
-     * values from `/api/v1/consts/traffic_types`
+     * values from List Traffic Types
      * 
      */
     @Export(name="trafficType", refs={String.class}, tree="[0]")
     private Output<String> trafficType;
 
     /**
-     * @return values from `/api/v1/consts/traffic_types`
+     * @return values from List Traffic Types
      * 
      */
     public Output<String> trafficType() {
@@ -249,14 +306,14 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * when `type`==`urls`, no need for spec as URL can encode the ports being used
+     * When `type`==`urls`, no need for spec as URL can encode the ports being used
      * 
      */
     @Export(name="urls", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> urls;
 
     /**
-     * @return when `type`==`urls`, no need for spec as URL can encode the ports being used
+     * @return When `type`==`urls`, no need for spec as URL can encode the ports being used
      * 
      */
     public Output<List<String>> urls() {

@@ -55,26 +55,26 @@ class NacidpArgs:
         :param pulumi.Input[builtins.str] ldap_bind_dn: Required if `idp_type`==`ldap`, the account used to authenticate against the LDAP
         :param pulumi.Input[builtins.str] ldap_bind_password: Required if `idp_type`==`ldap`, the password used to authenticate against the LDAP
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ldap_cacerts: Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
-        :param pulumi.Input[builtins.str] ldap_client_cert: if `idp_type`==`ldap`, LDAPS Client certificate
-        :param pulumi.Input[builtins.str] ldap_client_key: if `idp_type`==`ldap`, Key for the `ldap_client_cert`
-        :param pulumi.Input[builtins.str] ldap_group_attr: if `ldap_type`==`custom`
-        :param pulumi.Input[builtins.str] ldap_group_dn: if `ldap_type`==`custom`
-        :param pulumi.Input[builtins.bool] ldap_resolve_groups: if `idp_type`==`ldap`, whether to recursively resolve LDAP groups
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ldap_server_hosts: if `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+        :param pulumi.Input[builtins.str] ldap_client_cert: If `idp_type`==`ldap`, LDAPS Client certificate
+        :param pulumi.Input[builtins.str] ldap_client_key: If `idp_type`==`ldap`, Key for the `ldap_client_cert`
+        :param pulumi.Input[builtins.str] ldap_group_attr: If `ldap_type`==`custom`
+        :param pulumi.Input[builtins.str] ldap_group_dn: If `ldap_type`==`custom`
+        :param pulumi.Input[builtins.bool] ldap_resolve_groups: If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ldap_server_hosts: If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
         :param pulumi.Input[builtins.str] ldap_type: if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
         :param pulumi.Input[builtins.str] ldap_user_filter: Required if `ldap_type`==`custom`, LDAP filter that will identify the type of user
         :param pulumi.Input[builtins.str] member_filter: Required if `ldap_type`==`custom`,LDAP filter that will identify the type of member
-        :param pulumi.Input[builtins.str] name: name
+        :param pulumi.Input[builtins.str] name: Name
         :param pulumi.Input[builtins.str] oauth_cc_client_id: Required if `idp_type`==`oauth`, Client Credentials
         :param pulumi.Input[builtins.str] oauth_cc_client_secret: Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
-        :param pulumi.Input[builtins.str] oauth_discovery_url: if `idp_type`==`oauth`
+        :param pulumi.Input[builtins.str] oauth_discovery_url: If `idp_type`==`oauth`
         :param pulumi.Input[builtins.str] oauth_ping_identity_region: enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
-        :param pulumi.Input[builtins.str] oauth_ropc_client_id: if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
-        :param pulumi.Input[builtins.str] oauth_ropc_client_secret: if `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
+        :param pulumi.Input[builtins.str] oauth_ropc_client_id: If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
+        :param pulumi.Input[builtins.str] oauth_ropc_client_secret: If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         :param pulumi.Input[builtins.str] oauth_tenant_id: Required if `idp_type`==`oauth`, oauth*tenant*id
         :param pulumi.Input[builtins.str] oauth_type: if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
-        :param pulumi.Input[builtins.bool] scim_enabled: if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
-        :param pulumi.Input[builtins.str] scim_secret_token: if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+        :param pulumi.Input[builtins.bool] scim_enabled: If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        :param pulumi.Input[builtins.str] scim_secret_token: If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         """
         pulumi.set(__self__, "idp_type", idp_type)
         pulumi.set(__self__, "org_id", org_id)
@@ -214,7 +214,7 @@ class NacidpArgs:
     @pulumi.getter(name="ldapClientCert")
     def ldap_client_cert(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        if `idp_type`==`ldap`, LDAPS Client certificate
+        If `idp_type`==`ldap`, LDAPS Client certificate
         """
         return pulumi.get(self, "ldap_client_cert")
 
@@ -226,7 +226,7 @@ class NacidpArgs:
     @pulumi.getter(name="ldapClientKey")
     def ldap_client_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        if `idp_type`==`ldap`, Key for the `ldap_client_cert`
+        If `idp_type`==`ldap`, Key for the `ldap_client_cert`
         """
         return pulumi.get(self, "ldap_client_key")
 
@@ -238,7 +238,7 @@ class NacidpArgs:
     @pulumi.getter(name="ldapGroupAttr")
     def ldap_group_attr(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        if `ldap_type`==`custom`
+        If `ldap_type`==`custom`
         """
         return pulumi.get(self, "ldap_group_attr")
 
@@ -250,7 +250,7 @@ class NacidpArgs:
     @pulumi.getter(name="ldapGroupDn")
     def ldap_group_dn(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        if `ldap_type`==`custom`
+        If `ldap_type`==`custom`
         """
         return pulumi.get(self, "ldap_group_dn")
 
@@ -262,7 +262,7 @@ class NacidpArgs:
     @pulumi.getter(name="ldapResolveGroups")
     def ldap_resolve_groups(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        if `idp_type`==`ldap`, whether to recursively resolve LDAP groups
+        If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
         """
         return pulumi.get(self, "ldap_resolve_groups")
 
@@ -274,7 +274,7 @@ class NacidpArgs:
     @pulumi.getter(name="ldapServerHosts")
     def ldap_server_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        if `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+        If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
         """
         return pulumi.get(self, "ldap_server_hosts")
 
@@ -322,7 +322,7 @@ class NacidpArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        name
+        Name
         """
         return pulumi.get(self, "name")
 
@@ -358,7 +358,7 @@ class NacidpArgs:
     @pulumi.getter(name="oauthDiscoveryUrl")
     def oauth_discovery_url(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        if `idp_type`==`oauth`
+        If `idp_type`==`oauth`
         """
         return pulumi.get(self, "oauth_discovery_url")
 
@@ -382,7 +382,7 @@ class NacidpArgs:
     @pulumi.getter(name="oauthRopcClientId")
     def oauth_ropc_client_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
+        If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         """
         return pulumi.get(self, "oauth_ropc_client_id")
 
@@ -394,7 +394,7 @@ class NacidpArgs:
     @pulumi.getter(name="oauthRopcClientSecret")
     def oauth_ropc_client_secret(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        if `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
+        If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         """
         return pulumi.get(self, "oauth_ropc_client_secret")
 
@@ -430,7 +430,7 @@ class NacidpArgs:
     @pulumi.getter(name="scimEnabled")
     def scim_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
         """
         return pulumi.get(self, "scim_enabled")
 
@@ -442,7 +442,7 @@ class NacidpArgs:
     @pulumi.getter(name="scimSecretToken")
     def scim_secret_token(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+        If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         """
         return pulumi.get(self, "scim_secret_token")
 
@@ -489,26 +489,26 @@ class _NacidpState:
         :param pulumi.Input[builtins.str] ldap_bind_dn: Required if `idp_type`==`ldap`, the account used to authenticate against the LDAP
         :param pulumi.Input[builtins.str] ldap_bind_password: Required if `idp_type`==`ldap`, the password used to authenticate against the LDAP
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ldap_cacerts: Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
-        :param pulumi.Input[builtins.str] ldap_client_cert: if `idp_type`==`ldap`, LDAPS Client certificate
-        :param pulumi.Input[builtins.str] ldap_client_key: if `idp_type`==`ldap`, Key for the `ldap_client_cert`
-        :param pulumi.Input[builtins.str] ldap_group_attr: if `ldap_type`==`custom`
-        :param pulumi.Input[builtins.str] ldap_group_dn: if `ldap_type`==`custom`
-        :param pulumi.Input[builtins.bool] ldap_resolve_groups: if `idp_type`==`ldap`, whether to recursively resolve LDAP groups
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ldap_server_hosts: if `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+        :param pulumi.Input[builtins.str] ldap_client_cert: If `idp_type`==`ldap`, LDAPS Client certificate
+        :param pulumi.Input[builtins.str] ldap_client_key: If `idp_type`==`ldap`, Key for the `ldap_client_cert`
+        :param pulumi.Input[builtins.str] ldap_group_attr: If `ldap_type`==`custom`
+        :param pulumi.Input[builtins.str] ldap_group_dn: If `ldap_type`==`custom`
+        :param pulumi.Input[builtins.bool] ldap_resolve_groups: If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ldap_server_hosts: If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
         :param pulumi.Input[builtins.str] ldap_type: if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
         :param pulumi.Input[builtins.str] ldap_user_filter: Required if `ldap_type`==`custom`, LDAP filter that will identify the type of user
         :param pulumi.Input[builtins.str] member_filter: Required if `ldap_type`==`custom`,LDAP filter that will identify the type of member
-        :param pulumi.Input[builtins.str] name: name
+        :param pulumi.Input[builtins.str] name: Name
         :param pulumi.Input[builtins.str] oauth_cc_client_id: Required if `idp_type`==`oauth`, Client Credentials
         :param pulumi.Input[builtins.str] oauth_cc_client_secret: Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
-        :param pulumi.Input[builtins.str] oauth_discovery_url: if `idp_type`==`oauth`
+        :param pulumi.Input[builtins.str] oauth_discovery_url: If `idp_type`==`oauth`
         :param pulumi.Input[builtins.str] oauth_ping_identity_region: enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
-        :param pulumi.Input[builtins.str] oauth_ropc_client_id: if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
-        :param pulumi.Input[builtins.str] oauth_ropc_client_secret: if `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
+        :param pulumi.Input[builtins.str] oauth_ropc_client_id: If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
+        :param pulumi.Input[builtins.str] oauth_ropc_client_secret: If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         :param pulumi.Input[builtins.str] oauth_tenant_id: Required if `idp_type`==`oauth`, oauth*tenant*id
         :param pulumi.Input[builtins.str] oauth_type: if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
-        :param pulumi.Input[builtins.bool] scim_enabled: if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
-        :param pulumi.Input[builtins.str] scim_secret_token: if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+        :param pulumi.Input[builtins.bool] scim_enabled: If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        :param pulumi.Input[builtins.str] scim_secret_token: If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         """
         if group_filter is not None:
             pulumi.set(__self__, "group_filter", group_filter)
@@ -641,7 +641,7 @@ class _NacidpState:
     @pulumi.getter(name="ldapClientCert")
     def ldap_client_cert(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        if `idp_type`==`ldap`, LDAPS Client certificate
+        If `idp_type`==`ldap`, LDAPS Client certificate
         """
         return pulumi.get(self, "ldap_client_cert")
 
@@ -653,7 +653,7 @@ class _NacidpState:
     @pulumi.getter(name="ldapClientKey")
     def ldap_client_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        if `idp_type`==`ldap`, Key for the `ldap_client_cert`
+        If `idp_type`==`ldap`, Key for the `ldap_client_cert`
         """
         return pulumi.get(self, "ldap_client_key")
 
@@ -665,7 +665,7 @@ class _NacidpState:
     @pulumi.getter(name="ldapGroupAttr")
     def ldap_group_attr(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        if `ldap_type`==`custom`
+        If `ldap_type`==`custom`
         """
         return pulumi.get(self, "ldap_group_attr")
 
@@ -677,7 +677,7 @@ class _NacidpState:
     @pulumi.getter(name="ldapGroupDn")
     def ldap_group_dn(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        if `ldap_type`==`custom`
+        If `ldap_type`==`custom`
         """
         return pulumi.get(self, "ldap_group_dn")
 
@@ -689,7 +689,7 @@ class _NacidpState:
     @pulumi.getter(name="ldapResolveGroups")
     def ldap_resolve_groups(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        if `idp_type`==`ldap`, whether to recursively resolve LDAP groups
+        If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
         """
         return pulumi.get(self, "ldap_resolve_groups")
 
@@ -701,7 +701,7 @@ class _NacidpState:
     @pulumi.getter(name="ldapServerHosts")
     def ldap_server_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        if `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+        If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
         """
         return pulumi.get(self, "ldap_server_hosts")
 
@@ -749,7 +749,7 @@ class _NacidpState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        name
+        Name
         """
         return pulumi.get(self, "name")
 
@@ -785,7 +785,7 @@ class _NacidpState:
     @pulumi.getter(name="oauthDiscoveryUrl")
     def oauth_discovery_url(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        if `idp_type`==`oauth`
+        If `idp_type`==`oauth`
         """
         return pulumi.get(self, "oauth_discovery_url")
 
@@ -809,7 +809,7 @@ class _NacidpState:
     @pulumi.getter(name="oauthRopcClientId")
     def oauth_ropc_client_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
+        If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         """
         return pulumi.get(self, "oauth_ropc_client_id")
 
@@ -821,7 +821,7 @@ class _NacidpState:
     @pulumi.getter(name="oauthRopcClientSecret")
     def oauth_ropc_client_secret(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        if `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
+        If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         """
         return pulumi.get(self, "oauth_ropc_client_secret")
 
@@ -866,7 +866,7 @@ class _NacidpState:
     @pulumi.getter(name="scimEnabled")
     def scim_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
         """
         return pulumi.get(self, "scim_enabled")
 
@@ -878,7 +878,7 @@ class _NacidpState:
     @pulumi.getter(name="scimSecretToken")
     def scim_secret_token(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+        If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         """
         return pulumi.get(self, "scim_secret_token")
 
@@ -997,26 +997,26 @@ class Nacidp(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] ldap_bind_dn: Required if `idp_type`==`ldap`, the account used to authenticate against the LDAP
         :param pulumi.Input[builtins.str] ldap_bind_password: Required if `idp_type`==`ldap`, the password used to authenticate against the LDAP
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ldap_cacerts: Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
-        :param pulumi.Input[builtins.str] ldap_client_cert: if `idp_type`==`ldap`, LDAPS Client certificate
-        :param pulumi.Input[builtins.str] ldap_client_key: if `idp_type`==`ldap`, Key for the `ldap_client_cert`
-        :param pulumi.Input[builtins.str] ldap_group_attr: if `ldap_type`==`custom`
-        :param pulumi.Input[builtins.str] ldap_group_dn: if `ldap_type`==`custom`
-        :param pulumi.Input[builtins.bool] ldap_resolve_groups: if `idp_type`==`ldap`, whether to recursively resolve LDAP groups
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ldap_server_hosts: if `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+        :param pulumi.Input[builtins.str] ldap_client_cert: If `idp_type`==`ldap`, LDAPS Client certificate
+        :param pulumi.Input[builtins.str] ldap_client_key: If `idp_type`==`ldap`, Key for the `ldap_client_cert`
+        :param pulumi.Input[builtins.str] ldap_group_attr: If `ldap_type`==`custom`
+        :param pulumi.Input[builtins.str] ldap_group_dn: If `ldap_type`==`custom`
+        :param pulumi.Input[builtins.bool] ldap_resolve_groups: If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ldap_server_hosts: If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
         :param pulumi.Input[builtins.str] ldap_type: if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
         :param pulumi.Input[builtins.str] ldap_user_filter: Required if `ldap_type`==`custom`, LDAP filter that will identify the type of user
         :param pulumi.Input[builtins.str] member_filter: Required if `ldap_type`==`custom`,LDAP filter that will identify the type of member
-        :param pulumi.Input[builtins.str] name: name
+        :param pulumi.Input[builtins.str] name: Name
         :param pulumi.Input[builtins.str] oauth_cc_client_id: Required if `idp_type`==`oauth`, Client Credentials
         :param pulumi.Input[builtins.str] oauth_cc_client_secret: Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
-        :param pulumi.Input[builtins.str] oauth_discovery_url: if `idp_type`==`oauth`
+        :param pulumi.Input[builtins.str] oauth_discovery_url: If `idp_type`==`oauth`
         :param pulumi.Input[builtins.str] oauth_ping_identity_region: enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
-        :param pulumi.Input[builtins.str] oauth_ropc_client_id: if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
-        :param pulumi.Input[builtins.str] oauth_ropc_client_secret: if `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
+        :param pulumi.Input[builtins.str] oauth_ropc_client_id: If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
+        :param pulumi.Input[builtins.str] oauth_ropc_client_secret: If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         :param pulumi.Input[builtins.str] oauth_tenant_id: Required if `idp_type`==`oauth`, oauth*tenant*id
         :param pulumi.Input[builtins.str] oauth_type: if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
-        :param pulumi.Input[builtins.bool] scim_enabled: if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
-        :param pulumi.Input[builtins.str] scim_secret_token: if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+        :param pulumi.Input[builtins.bool] scim_enabled: If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        :param pulumi.Input[builtins.str] scim_secret_token: If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         """
         ...
     @overload
@@ -1225,26 +1225,26 @@ class Nacidp(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] ldap_bind_dn: Required if `idp_type`==`ldap`, the account used to authenticate against the LDAP
         :param pulumi.Input[builtins.str] ldap_bind_password: Required if `idp_type`==`ldap`, the password used to authenticate against the LDAP
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ldap_cacerts: Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
-        :param pulumi.Input[builtins.str] ldap_client_cert: if `idp_type`==`ldap`, LDAPS Client certificate
-        :param pulumi.Input[builtins.str] ldap_client_key: if `idp_type`==`ldap`, Key for the `ldap_client_cert`
-        :param pulumi.Input[builtins.str] ldap_group_attr: if `ldap_type`==`custom`
-        :param pulumi.Input[builtins.str] ldap_group_dn: if `ldap_type`==`custom`
-        :param pulumi.Input[builtins.bool] ldap_resolve_groups: if `idp_type`==`ldap`, whether to recursively resolve LDAP groups
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ldap_server_hosts: if `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+        :param pulumi.Input[builtins.str] ldap_client_cert: If `idp_type`==`ldap`, LDAPS Client certificate
+        :param pulumi.Input[builtins.str] ldap_client_key: If `idp_type`==`ldap`, Key for the `ldap_client_cert`
+        :param pulumi.Input[builtins.str] ldap_group_attr: If `ldap_type`==`custom`
+        :param pulumi.Input[builtins.str] ldap_group_dn: If `ldap_type`==`custom`
+        :param pulumi.Input[builtins.bool] ldap_resolve_groups: If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ldap_server_hosts: If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
         :param pulumi.Input[builtins.str] ldap_type: if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
         :param pulumi.Input[builtins.str] ldap_user_filter: Required if `ldap_type`==`custom`, LDAP filter that will identify the type of user
         :param pulumi.Input[builtins.str] member_filter: Required if `ldap_type`==`custom`,LDAP filter that will identify the type of member
-        :param pulumi.Input[builtins.str] name: name
+        :param pulumi.Input[builtins.str] name: Name
         :param pulumi.Input[builtins.str] oauth_cc_client_id: Required if `idp_type`==`oauth`, Client Credentials
         :param pulumi.Input[builtins.str] oauth_cc_client_secret: Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
-        :param pulumi.Input[builtins.str] oauth_discovery_url: if `idp_type`==`oauth`
+        :param pulumi.Input[builtins.str] oauth_discovery_url: If `idp_type`==`oauth`
         :param pulumi.Input[builtins.str] oauth_ping_identity_region: enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
-        :param pulumi.Input[builtins.str] oauth_ropc_client_id: if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
-        :param pulumi.Input[builtins.str] oauth_ropc_client_secret: if `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
+        :param pulumi.Input[builtins.str] oauth_ropc_client_id: If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
+        :param pulumi.Input[builtins.str] oauth_ropc_client_secret: If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         :param pulumi.Input[builtins.str] oauth_tenant_id: Required if `idp_type`==`oauth`, oauth*tenant*id
         :param pulumi.Input[builtins.str] oauth_type: if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
-        :param pulumi.Input[builtins.bool] scim_enabled: if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
-        :param pulumi.Input[builtins.str] scim_secret_token: if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+        :param pulumi.Input[builtins.bool] scim_enabled: If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        :param pulumi.Input[builtins.str] scim_secret_token: If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1331,7 +1331,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="ldapClientCert")
     def ldap_client_cert(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        if `idp_type`==`ldap`, LDAPS Client certificate
+        If `idp_type`==`ldap`, LDAPS Client certificate
         """
         return pulumi.get(self, "ldap_client_cert")
 
@@ -1339,7 +1339,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="ldapClientKey")
     def ldap_client_key(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        if `idp_type`==`ldap`, Key for the `ldap_client_cert`
+        If `idp_type`==`ldap`, Key for the `ldap_client_cert`
         """
         return pulumi.get(self, "ldap_client_key")
 
@@ -1347,7 +1347,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="ldapGroupAttr")
     def ldap_group_attr(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        if `ldap_type`==`custom`
+        If `ldap_type`==`custom`
         """
         return pulumi.get(self, "ldap_group_attr")
 
@@ -1355,7 +1355,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="ldapGroupDn")
     def ldap_group_dn(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        if `ldap_type`==`custom`
+        If `ldap_type`==`custom`
         """
         return pulumi.get(self, "ldap_group_dn")
 
@@ -1363,7 +1363,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="ldapResolveGroups")
     def ldap_resolve_groups(self) -> pulumi.Output[builtins.bool]:
         """
-        if `idp_type`==`ldap`, whether to recursively resolve LDAP groups
+        If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
         """
         return pulumi.get(self, "ldap_resolve_groups")
 
@@ -1371,7 +1371,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="ldapServerHosts")
     def ldap_server_hosts(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
         """
-        if `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+        If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
         """
         return pulumi.get(self, "ldap_server_hosts")
 
@@ -1403,7 +1403,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        name
+        Name
         """
         return pulumi.get(self, "name")
 
@@ -1427,7 +1427,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="oauthDiscoveryUrl")
     def oauth_discovery_url(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        if `idp_type`==`oauth`
+        If `idp_type`==`oauth`
         """
         return pulumi.get(self, "oauth_discovery_url")
 
@@ -1443,7 +1443,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="oauthRopcClientId")
     def oauth_ropc_client_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
+        If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         """
         return pulumi.get(self, "oauth_ropc_client_id")
 
@@ -1451,7 +1451,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="oauthRopcClientSecret")
     def oauth_ropc_client_secret(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        if `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
+        If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         """
         return pulumi.get(self, "oauth_ropc_client_secret")
 
@@ -1480,7 +1480,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="scimEnabled")
     def scim_enabled(self) -> pulumi.Output[builtins.bool]:
         """
-        if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
         """
         return pulumi.get(self, "scim_enabled")
 
@@ -1488,7 +1488,7 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="scimSecretToken")
     def scim_secret_token(self) -> pulumi.Output[builtins.str]:
         """
-        if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+        If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         """
         return pulumi.get(self, "scim_secret_token")
 

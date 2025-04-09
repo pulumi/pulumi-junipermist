@@ -29,7 +29,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// Secretof RADIUS server
+        /// Secret of RADIUS server
         /// </summary>
         public readonly string Secret;
 

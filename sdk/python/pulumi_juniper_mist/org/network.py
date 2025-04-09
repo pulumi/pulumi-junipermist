@@ -39,11 +39,11 @@ class NetworkArgs:
                  vpn_access: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]] = None):
         """
         The set of arguments for constructing a Network resource.
-        :param pulumi.Input[builtins.bool] disallow_mist_services: whether to disallow Mist Devices in the network
-        :param pulumi.Input['NetworkInternetAccessArgs'] internet_access: whether this network has direct internet access
-        :param pulumi.Input[builtins.bool] isolation: whether to allow clients in the network to talk to each other
-        :param pulumi.Input['NetworkMulticastArgs'] multicast: whether to enable multicast support (only PIM-sparse mode is supported)
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] routed_for_networks: for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        :param pulumi.Input[builtins.bool] disallow_mist_services: Whether to disallow Mist Devices in the network
+        :param pulumi.Input['NetworkInternetAccessArgs'] internet_access: Whether this network has direct internet access
+        :param pulumi.Input[builtins.bool] isolation: Whether to allow clients in the network to talk to each other
+        :param pulumi.Input['NetworkMulticastArgs'] multicast: Whether to enable multicast support (only PIM-sparse mode is supported)
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] routed_for_networks: For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworkTenantsArgs']]] tenants: Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
         """
@@ -98,7 +98,7 @@ class NetworkArgs:
     @pulumi.getter(name="disallowMistServices")
     def disallow_mist_services(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        whether to disallow Mist Devices in the network
+        Whether to disallow Mist Devices in the network
         """
         return pulumi.get(self, "disallow_mist_services")
 
@@ -137,7 +137,7 @@ class NetworkArgs:
     @pulumi.getter(name="internetAccess")
     def internet_access(self) -> Optional[pulumi.Input['NetworkInternetAccessArgs']]:
         """
-        whether this network has direct internet access
+        Whether this network has direct internet access
         """
         return pulumi.get(self, "internet_access")
 
@@ -149,7 +149,7 @@ class NetworkArgs:
     @pulumi.getter
     def isolation(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        whether to allow clients in the network to talk to each other
+        Whether to allow clients in the network to talk to each other
         """
         return pulumi.get(self, "isolation")
 
@@ -161,7 +161,7 @@ class NetworkArgs:
     @pulumi.getter
     def multicast(self) -> Optional[pulumi.Input['NetworkMulticastArgs']]:
         """
-        whether to enable multicast support (only PIM-sparse mode is supported)
+        Whether to enable multicast support (only PIM-sparse mode is supported)
         """
         return pulumi.get(self, "multicast")
 
@@ -182,7 +182,7 @@ class NetworkArgs:
     @pulumi.getter(name="routedForNetworks")
     def routed_for_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         """
         return pulumi.get(self, "routed_for_networks")
 
@@ -253,11 +253,11 @@ class _NetworkState:
                  vpn_access: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]] = None):
         """
         Input properties used for looking up and filtering Network resources.
-        :param pulumi.Input[builtins.bool] disallow_mist_services: whether to disallow Mist Devices in the network
-        :param pulumi.Input['NetworkInternetAccessArgs'] internet_access: whether this network has direct internet access
-        :param pulumi.Input[builtins.bool] isolation: whether to allow clients in the network to talk to each other
-        :param pulumi.Input['NetworkMulticastArgs'] multicast: whether to enable multicast support (only PIM-sparse mode is supported)
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] routed_for_networks: for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        :param pulumi.Input[builtins.bool] disallow_mist_services: Whether to disallow Mist Devices in the network
+        :param pulumi.Input['NetworkInternetAccessArgs'] internet_access: Whether this network has direct internet access
+        :param pulumi.Input[builtins.bool] isolation: Whether to allow clients in the network to talk to each other
+        :param pulumi.Input['NetworkMulticastArgs'] multicast: Whether to enable multicast support (only PIM-sparse mode is supported)
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] routed_for_networks: For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworkTenantsArgs']]] tenants: Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
         """
@@ -296,7 +296,7 @@ class _NetworkState:
     @pulumi.getter(name="disallowMistServices")
     def disallow_mist_services(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        whether to disallow Mist Devices in the network
+        Whether to disallow Mist Devices in the network
         """
         return pulumi.get(self, "disallow_mist_services")
 
@@ -335,7 +335,7 @@ class _NetworkState:
     @pulumi.getter(name="internetAccess")
     def internet_access(self) -> Optional[pulumi.Input['NetworkInternetAccessArgs']]:
         """
-        whether this network has direct internet access
+        Whether this network has direct internet access
         """
         return pulumi.get(self, "internet_access")
 
@@ -347,7 +347,7 @@ class _NetworkState:
     @pulumi.getter
     def isolation(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        whether to allow clients in the network to talk to each other
+        Whether to allow clients in the network to talk to each other
         """
         return pulumi.get(self, "isolation")
 
@@ -359,7 +359,7 @@ class _NetworkState:
     @pulumi.getter
     def multicast(self) -> Optional[pulumi.Input['NetworkMulticastArgs']]:
         """
-        whether to enable multicast support (only PIM-sparse mode is supported)
+        Whether to enable multicast support (only PIM-sparse mode is supported)
         """
         return pulumi.get(self, "multicast")
 
@@ -389,7 +389,7 @@ class _NetworkState:
     @pulumi.getter(name="routedForNetworks")
     def routed_for_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         """
         return pulumi.get(self, "routed_for_networks")
 
@@ -500,11 +500,11 @@ class Network(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] disallow_mist_services: whether to disallow Mist Devices in the network
-        :param pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']] internet_access: whether this network has direct internet access
-        :param pulumi.Input[builtins.bool] isolation: whether to allow clients in the network to talk to each other
-        :param pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']] multicast: whether to enable multicast support (only PIM-sparse mode is supported)
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] routed_for_networks: for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        :param pulumi.Input[builtins.bool] disallow_mist_services: Whether to disallow Mist Devices in the network
+        :param pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']] internet_access: Whether this network has direct internet access
+        :param pulumi.Input[builtins.bool] isolation: Whether to allow clients in the network to talk to each other
+        :param pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']] multicast: Whether to enable multicast support (only PIM-sparse mode is supported)
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] routed_for_networks: For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]] tenants: Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
         """
@@ -632,11 +632,11 @@ class Network(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] disallow_mist_services: whether to disallow Mist Devices in the network
-        :param pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']] internet_access: whether this network has direct internet access
-        :param pulumi.Input[builtins.bool] isolation: whether to allow clients in the network to talk to each other
-        :param pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']] multicast: whether to enable multicast support (only PIM-sparse mode is supported)
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] routed_for_networks: for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        :param pulumi.Input[builtins.bool] disallow_mist_services: Whether to disallow Mist Devices in the network
+        :param pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']] internet_access: Whether this network has direct internet access
+        :param pulumi.Input[builtins.bool] isolation: Whether to allow clients in the network to talk to each other
+        :param pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']] multicast: Whether to enable multicast support (only PIM-sparse mode is supported)
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] routed_for_networks: For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]] tenants: Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
         """
@@ -665,7 +665,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="disallowMistServices")
     def disallow_mist_services(self) -> pulumi.Output[builtins.bool]:
         """
-        whether to disallow Mist Devices in the network
+        Whether to disallow Mist Devices in the network
         """
         return pulumi.get(self, "disallow_mist_services")
 
@@ -688,7 +688,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="internetAccess")
     def internet_access(self) -> pulumi.Output[Optional['outputs.NetworkInternetAccess']]:
         """
-        whether this network has direct internet access
+        Whether this network has direct internet access
         """
         return pulumi.get(self, "internet_access")
 
@@ -696,7 +696,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter
     def isolation(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        whether to allow clients in the network to talk to each other
+        Whether to allow clients in the network to talk to each other
         """
         return pulumi.get(self, "isolation")
 
@@ -704,7 +704,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter
     def multicast(self) -> pulumi.Output[Optional['outputs.NetworkMulticast']]:
         """
-        whether to enable multicast support (only PIM-sparse mode is supported)
+        Whether to enable multicast support (only PIM-sparse mode is supported)
         """
         return pulumi.get(self, "multicast")
 
@@ -720,9 +720,9 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routedForNetworks")
-    def routed_for_networks(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+    def routed_for_networks(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         """
         return pulumi.get(self, "routed_for_networks")
 

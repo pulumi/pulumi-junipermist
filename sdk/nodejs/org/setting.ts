@@ -53,7 +53,7 @@ export class Setting extends pulumi.CustomResource {
      * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
      * `deviceUpdownThreshold` is ignored.
      */
-    public readonly apUpdownThreshold!: pulumi.Output<number>;
+    public readonly apUpdownThreshold!: pulumi.Output<number | undefined>;
     public readonly apiPolicy!: pulumi.Output<outputs.org.SettingApiPolicy | undefined>;
     /**
      * List of PEM-encoded ca certs
@@ -71,20 +71,20 @@ export class Setting extends pulumi.CustomResource {
      * AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
      * immediate)
      */
-    public readonly deviceUpdownThreshold!: pulumi.Output<number>;
+    public readonly deviceUpdownThreshold!: pulumi.Output<number | undefined>;
     /**
      * Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
      */
-    public readonly disablePcap!: pulumi.Output<boolean>;
+    public readonly disablePcap!: pulumi.Output<boolean | undefined>;
     /**
      * Whether to disable remote shell access for an entire org
      */
-    public readonly disableRemoteShell!: pulumi.Output<boolean>;
+    public readonly disableRemoteShell!: pulumi.Output<boolean | undefined>;
     /**
      * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
      * `deviceUpdownThreshold` is ignored.
      */
-    public readonly gatewayUpdownThreshold!: pulumi.Output<number>;
+    public readonly gatewayUpdownThreshold!: pulumi.Output<number | undefined>;
     public readonly installer!: pulumi.Output<outputs.org.SettingInstaller | undefined>;
     public readonly jcloud!: pulumi.Output<outputs.org.SettingJcloud | undefined>;
     /**
@@ -93,11 +93,14 @@ export class Setting extends pulumi.CustomResource {
     public readonly jcloudRa!: pulumi.Output<outputs.org.SettingJcloudRa | undefined>;
     public /*out*/ readonly juniper!: pulumi.Output<outputs.org.SettingJuniper>;
     /**
+     * by default, webshell access is only enabled for Admin user
+     */
+    public readonly junosShellAccess!: pulumi.Output<outputs.org.SettingJunosShellAccess | undefined>;
+    /**
      * management-related properties
      */
     public readonly mgmt!: pulumi.Output<outputs.org.SettingMgmt | undefined>;
     public readonly mistNac!: pulumi.Output<outputs.org.SettingMistNac | undefined>;
-    public readonly mxedgeFipsEnabled!: pulumi.Output<boolean>;
     public readonly mxedgeMgmt!: pulumi.Output<outputs.org.SettingMxedgeMgmt | undefined>;
     /**
      * Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
@@ -115,7 +118,7 @@ export class Setting extends pulumi.CustomResource {
      * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
      * `deviceUpdownThreshold` is ignored.
      */
-    public readonly switchUpdownThreshold!: pulumi.Output<number>;
+    public readonly switchUpdownThreshold!: pulumi.Output<number | undefined>;
     public readonly syntheticTest!: pulumi.Output<outputs.org.SettingSyntheticTest | undefined>;
     /**
      * Automatically logout the user when UI session is inactive. `0` means disabled
@@ -154,9 +157,9 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["jcloud"] = state ? state.jcloud : undefined;
             resourceInputs["jcloudRa"] = state ? state.jcloudRa : undefined;
             resourceInputs["juniper"] = state ? state.juniper : undefined;
+            resourceInputs["junosShellAccess"] = state ? state.junosShellAccess : undefined;
             resourceInputs["mgmt"] = state ? state.mgmt : undefined;
             resourceInputs["mistNac"] = state ? state.mistNac : undefined;
-            resourceInputs["mxedgeFipsEnabled"] = state ? state.mxedgeFipsEnabled : undefined;
             resourceInputs["mxedgeMgmt"] = state ? state.mxedgeMgmt : undefined;
             resourceInputs["opticPortConfig"] = state ? state.opticPortConfig : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
@@ -189,9 +192,9 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["installer"] = args ? args.installer : undefined;
             resourceInputs["jcloud"] = args ? args.jcloud : undefined;
             resourceInputs["jcloudRa"] = args ? args.jcloudRa : undefined;
+            resourceInputs["junosShellAccess"] = args ? args.junosShellAccess : undefined;
             resourceInputs["mgmt"] = args ? args.mgmt : undefined;
             resourceInputs["mistNac"] = args ? args.mistNac : undefined;
-            resourceInputs["mxedgeFipsEnabled"] = args ? args.mxedgeFipsEnabled : undefined;
             resourceInputs["mxedgeMgmt"] = args ? args.mxedgeMgmt : undefined;
             resourceInputs["opticPortConfig"] = args ? args.opticPortConfig : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
@@ -262,11 +265,14 @@ export interface SettingState {
     jcloudRa?: pulumi.Input<inputs.org.SettingJcloudRa>;
     juniper?: pulumi.Input<inputs.org.SettingJuniper>;
     /**
+     * by default, webshell access is only enabled for Admin user
+     */
+    junosShellAccess?: pulumi.Input<inputs.org.SettingJunosShellAccess>;
+    /**
      * management-related properties
      */
     mgmt?: pulumi.Input<inputs.org.SettingMgmt>;
     mistNac?: pulumi.Input<inputs.org.SettingMistNac>;
-    mxedgeFipsEnabled?: pulumi.Input<boolean>;
     mxedgeMgmt?: pulumi.Input<inputs.org.SettingMxedgeMgmt>;
     /**
      * Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
@@ -342,11 +348,14 @@ export interface SettingArgs {
      */
     jcloudRa?: pulumi.Input<inputs.org.SettingJcloudRa>;
     /**
+     * by default, webshell access is only enabled for Admin user
+     */
+    junosShellAccess?: pulumi.Input<inputs.org.SettingJunosShellAccess>;
+    /**
      * management-related properties
      */
     mgmt?: pulumi.Input<inputs.org.SettingMgmt>;
     mistNac?: pulumi.Input<inputs.org.SettingMistNac>;
-    mxedgeFipsEnabled?: pulumi.Input<boolean>;
     mxedgeMgmt?: pulumi.Input<inputs.org.SettingMxedgeMgmt>;
     /**
      * Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)

@@ -11,6 +11,7 @@ from .get_const_app_categories import *
 from .get_const_app_sub_categories import *
 from .get_const_applications import *
 from .get_const_countries import *
+from .get_const_fingerprints import *
 from .get_const_traffic_types import *
 from .get_const_webhooks import *
 from .get_sites import *

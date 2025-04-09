@@ -56,9 +56,9 @@ func GetNacEndpoints(ctx *pulumi.Context, args *GetNacEndpointsArgs, opts ...pul
 
 // A collection of arguments for invoking getNacEndpoints.
 type GetNacEndpointsArgs struct {
-	// optional, array of strings of labels
+	// Optional, array of strings of labels
 	Labels []string `pulumi:"labels"`
-	// partial/full MAC addres
+	// Partial/full MAC address
 	Mac   *string `pulumi:"mac"`
 	OrgId string  `pulumi:"orgId"`
 }
@@ -67,9 +67,9 @@ type GetNacEndpointsArgs struct {
 type GetNacEndpointsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// optional, array of strings of labels
+	// Optional, array of strings of labels
 	Labels []string `pulumi:"labels"`
-	// partial/full MAC addres
+	// Partial/full MAC address
 	Mac         *string                     `pulumi:"mac"`
 	OrgId       string                      `pulumi:"orgId"`
 	OrgUsermacs []GetNacEndpointsOrgUsermac `pulumi:"orgUsermacs"`
@@ -86,9 +86,9 @@ func GetNacEndpointsOutput(ctx *pulumi.Context, args GetNacEndpointsOutputArgs, 
 
 // A collection of arguments for invoking getNacEndpoints.
 type GetNacEndpointsOutputArgs struct {
-	// optional, array of strings of labels
+	// Optional, array of strings of labels
 	Labels pulumi.StringArrayInput `pulumi:"labels"`
-	// partial/full MAC addres
+	// Partial/full MAC address
 	Mac   pulumi.StringPtrInput `pulumi:"mac"`
 	OrgId pulumi.StringInput    `pulumi:"orgId"`
 }
@@ -117,12 +117,12 @@ func (o GetNacEndpointsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNacEndpointsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// optional, array of strings of labels
+// Optional, array of strings of labels
 func (o GetNacEndpointsResultOutput) Labels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNacEndpointsResult) []string { return v.Labels }).(pulumi.StringArrayOutput)
 }
 
-// partial/full MAC addres
+// Partial/full MAC address
 func (o GetNacEndpointsResultOutput) Mac() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNacEndpointsResult) *string { return v.Mac }).(pulumi.StringPtrOutput)
 }

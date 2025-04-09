@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlantemplateExceptions {
     /**
-     * @return list of site ids
+     * @return List of site ids
      * 
      */
     private @Nullable List<String> siteIds;
     /**
-     * @return list of sitegroup ids
+     * @return List of sitegroup ids
      * 
      */
     private @Nullable List<String> sitegroupIds;
 
     private WlantemplateExceptions() {}
     /**
-     * @return list of site ids
+     * @return List of site ids
      * 
      */
     public List<String> siteIds() {
         return this.siteIds == null ? List.of() : this.siteIds;
     }
     /**
-     * @return list of sitegroup ids
+     * @return List of sitegroup ids
      * 
      */
     public List<String> sitegroupIds() {

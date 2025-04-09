@@ -104,7 +104,7 @@ def get_nactags(match: Optional[builtins.str] = None,
     """
     This data source provides the list of NAC Tags (Auth Policy Labels).
 
-    The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+    The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
 
     ## Example Usage
 
@@ -140,7 +140,7 @@ def get_nactags_output(match: Optional[pulumi.Input[Optional[builtins.str]]] = N
     """
     This data source provides the list of NAC Tags (Auth Policy Labels).
 
-    The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+    The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
 
     ## Example Usage
 

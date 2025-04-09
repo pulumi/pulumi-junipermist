@@ -66,7 +66,7 @@ class GetGatewayStatsResult:
     @pulumi.getter
     def duration(self) -> Optional[builtins.str]:
         """
-        duration like 7d, 2w
+        Duration like 7d, 2w
         """
         return pulumi.get(self, "duration")
 
@@ -74,7 +74,7 @@ class GetGatewayStatsResult:
     @pulumi.getter
     def end(self) -> Optional[builtins.int]:
         """
-        end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+        End datetime, can be epoch or relative time like -1d, -2h; now if not specified
         """
         return pulumi.get(self, "end")
 
@@ -105,13 +105,16 @@ class GetGatewayStatsResult:
     @pulumi.getter
     def start(self) -> Optional[builtins.int]:
         """
-        start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+        Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
         """
         return pulumi.get(self, "start")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[builtins.str]:
+        """
+        enum: `all`, `connected`, `disconnected`
+        """
         return pulumi.get(self, "status")
 
 
@@ -159,9 +162,10 @@ def get_gateway_stats(duration: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str duration: duration like 7d, 2w
-    :param builtins.int end: end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-    :param builtins.int start: start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+    :param builtins.str duration: Duration like 7d, 2w
+    :param builtins.int end: End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+    :param builtins.int start: Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+    :param builtins.str status: enum: `all`, `connected`, `disconnected`
     """
     __args__ = dict()
     __args__['duration'] = duration
@@ -211,9 +215,10 @@ def get_gateway_stats_output(duration: Optional[pulumi.Input[Optional[builtins.s
     ```
 
 
-    :param builtins.str duration: duration like 7d, 2w
-    :param builtins.int end: end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-    :param builtins.int start: start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+    :param builtins.str duration: Duration like 7d, 2w
+    :param builtins.int end: End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+    :param builtins.int start: Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+    :param builtins.str status: enum: `all`, `connected`, `disconnected`
     """
     __args__ = dict()
     __args__['duration'] = duration

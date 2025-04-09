@@ -30,10 +30,10 @@ class WlantemplateArgs:
                  name: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Wlantemplate resource.
-        :param pulumi.Input['WlantemplateAppliesArgs'] applies: where this template should be applied to, can be org*id, site*ids, sitegroup_ids
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] deviceprofile_ids: list of Device Profile ids
-        :param pulumi.Input['WlantemplateExceptionsArgs'] exceptions: where this template should not be applied to (takes precedence)
-        :param pulumi.Input[builtins.bool] filter_by_deviceprofile: whether to further filter by Device Profile
+        :param pulumi.Input['WlantemplateAppliesArgs'] applies: Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] deviceprofile_ids: List of Device Profile ids
+        :param pulumi.Input['WlantemplateExceptionsArgs'] exceptions: Where this template should not be applied to (takes precedence)
+        :param pulumi.Input[builtins.bool] filter_by_deviceprofile: Whether to further filter by Device Profile
         """
         pulumi.set(__self__, "org_id", org_id)
         if applies is not None:
@@ -60,7 +60,7 @@ class WlantemplateArgs:
     @pulumi.getter
     def applies(self) -> Optional[pulumi.Input['WlantemplateAppliesArgs']]:
         """
-        where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+        Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
         """
         return pulumi.get(self, "applies")
 
@@ -72,7 +72,7 @@ class WlantemplateArgs:
     @pulumi.getter(name="deviceprofileIds")
     def deviceprofile_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        list of Device Profile ids
+        List of Device Profile ids
         """
         return pulumi.get(self, "deviceprofile_ids")
 
@@ -84,7 +84,7 @@ class WlantemplateArgs:
     @pulumi.getter
     def exceptions(self) -> Optional[pulumi.Input['WlantemplateExceptionsArgs']]:
         """
-        where this template should not be applied to (takes precedence)
+        Where this template should not be applied to (takes precedence)
         """
         return pulumi.get(self, "exceptions")
 
@@ -96,7 +96,7 @@ class WlantemplateArgs:
     @pulumi.getter(name="filterByDeviceprofile")
     def filter_by_deviceprofile(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        whether to further filter by Device Profile
+        Whether to further filter by Device Profile
         """
         return pulumi.get(self, "filter_by_deviceprofile")
 
@@ -125,10 +125,10 @@ class _WlantemplateState:
                  org_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Wlantemplate resources.
-        :param pulumi.Input['WlantemplateAppliesArgs'] applies: where this template should be applied to, can be org*id, site*ids, sitegroup_ids
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] deviceprofile_ids: list of Device Profile ids
-        :param pulumi.Input['WlantemplateExceptionsArgs'] exceptions: where this template should not be applied to (takes precedence)
-        :param pulumi.Input[builtins.bool] filter_by_deviceprofile: whether to further filter by Device Profile
+        :param pulumi.Input['WlantemplateAppliesArgs'] applies: Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] deviceprofile_ids: List of Device Profile ids
+        :param pulumi.Input['WlantemplateExceptionsArgs'] exceptions: Where this template should not be applied to (takes precedence)
+        :param pulumi.Input[builtins.bool] filter_by_deviceprofile: Whether to further filter by Device Profile
         """
         if applies is not None:
             pulumi.set(__self__, "applies", applies)
@@ -147,7 +147,7 @@ class _WlantemplateState:
     @pulumi.getter
     def applies(self) -> Optional[pulumi.Input['WlantemplateAppliesArgs']]:
         """
-        where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+        Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
         """
         return pulumi.get(self, "applies")
 
@@ -159,7 +159,7 @@ class _WlantemplateState:
     @pulumi.getter(name="deviceprofileIds")
     def deviceprofile_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        list of Device Profile ids
+        List of Device Profile ids
         """
         return pulumi.get(self, "deviceprofile_ids")
 
@@ -171,7 +171,7 @@ class _WlantemplateState:
     @pulumi.getter
     def exceptions(self) -> Optional[pulumi.Input['WlantemplateExceptionsArgs']]:
         """
-        where this template should not be applied to (takes precedence)
+        Where this template should not be applied to (takes precedence)
         """
         return pulumi.get(self, "exceptions")
 
@@ -183,7 +183,7 @@ class _WlantemplateState:
     @pulumi.getter(name="filterByDeviceprofile")
     def filter_by_deviceprofile(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        whether to further filter by Device Profile
+        Whether to further filter by Device Profile
         """
         return pulumi.get(self, "filter_by_deviceprofile")
 
@@ -241,10 +241,10 @@ class Wlantemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict']] applies: where this template should be applied to, can be org*id, site*ids, sitegroup_ids
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] deviceprofile_ids: list of Device Profile ids
-        :param pulumi.Input[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict']] exceptions: where this template should not be applied to (takes precedence)
-        :param pulumi.Input[builtins.bool] filter_by_deviceprofile: whether to further filter by Device Profile
+        :param pulumi.Input[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict']] applies: Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] deviceprofile_ids: List of Device Profile ids
+        :param pulumi.Input[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict']] exceptions: Where this template should not be applied to (takes precedence)
+        :param pulumi.Input[builtins.bool] filter_by_deviceprofile: Whether to further filter by Device Profile
         """
         ...
     @overload
@@ -330,10 +330,10 @@ class Wlantemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict']] applies: where this template should be applied to, can be org*id, site*ids, sitegroup_ids
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] deviceprofile_ids: list of Device Profile ids
-        :param pulumi.Input[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict']] exceptions: where this template should not be applied to (takes precedence)
-        :param pulumi.Input[builtins.bool] filter_by_deviceprofile: whether to further filter by Device Profile
+        :param pulumi.Input[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict']] applies: Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] deviceprofile_ids: List of Device Profile ids
+        :param pulumi.Input[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict']] exceptions: Where this template should not be applied to (takes precedence)
+        :param pulumi.Input[builtins.bool] filter_by_deviceprofile: Whether to further filter by Device Profile
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -351,7 +351,7 @@ class Wlantemplate(pulumi.CustomResource):
     @pulumi.getter
     def applies(self) -> pulumi.Output['outputs.WlantemplateApplies']:
         """
-        where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+        Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
         """
         return pulumi.get(self, "applies")
 
@@ -359,7 +359,7 @@ class Wlantemplate(pulumi.CustomResource):
     @pulumi.getter(name="deviceprofileIds")
     def deviceprofile_ids(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        list of Device Profile ids
+        List of Device Profile ids
         """
         return pulumi.get(self, "deviceprofile_ids")
 
@@ -367,7 +367,7 @@ class Wlantemplate(pulumi.CustomResource):
     @pulumi.getter
     def exceptions(self) -> pulumi.Output['outputs.WlantemplateExceptions']:
         """
-        where this template should not be applied to (takes precedence)
+        Where this template should not be applied to (takes precedence)
         """
         return pulumi.get(self, "exceptions")
 
@@ -375,7 +375,7 @@ class Wlantemplate(pulumi.CustomResource):
     @pulumi.getter(name="filterByDeviceprofile")
     def filter_by_deviceprofile(self) -> pulumi.Output[builtins.bool]:
         """
-        whether to further filter by Device Profile
+        Whether to further filter by Device Profile
         """
         return pulumi.get(self, "filter_by_deviceprofile")
 

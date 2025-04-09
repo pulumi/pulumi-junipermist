@@ -4,7 +4,6 @@
 package com.pulumi.junipermist.site.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -14,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WxtagSpec {
     /**
-     * @return matched destination port, &#34;0&#34; means any
+     * @return Matched destination port, &#34;0&#34; means any
      * 
      */
     private @Nullable String portRange;
@@ -24,14 +23,14 @@ public final class WxtagSpec {
      */
     private @Nullable String protocol;
     /**
-     * @return matched destination subnets and/or IP Addresses
+     * @return Matched destination subnets and/or IP Addresses
      * 
      */
-    private List<String> subnets;
+    private @Nullable List<String> subnets;
 
     private WxtagSpec() {}
     /**
-     * @return matched destination port, &#34;0&#34; means any
+     * @return Matched destination port, &#34;0&#34; means any
      * 
      */
     public Optional<String> portRange() {
@@ -45,11 +44,11 @@ public final class WxtagSpec {
         return Optional.ofNullable(this.protocol);
     }
     /**
-     * @return matched destination subnets and/or IP Addresses
+     * @return Matched destination subnets and/or IP Addresses
      * 
      */
     public List<String> subnets() {
-        return this.subnets;
+        return this.subnets == null ? List.of() : this.subnets;
     }
 
     public static Builder builder() {
@@ -63,7 +62,7 @@ public final class WxtagSpec {
     public static final class Builder {
         private @Nullable String portRange;
         private @Nullable String protocol;
-        private List<String> subnets;
+        private @Nullable List<String> subnets;
         public Builder() {}
         public Builder(WxtagSpec defaults) {
     	      Objects.requireNonNull(defaults);
@@ -85,10 +84,8 @@ public final class WxtagSpec {
             return this;
         }
         @CustomType.Setter
-        public Builder subnets(List<String> subnets) {
-            if (subnets == null) {
-              throw new MissingRequiredPropertyException("WxtagSpec", "subnets");
-            }
+        public Builder subnets(@Nullable List<String> subnets) {
+
             this.subnets = subnets;
             return this;
         }

@@ -25,6 +25,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
         /// </summary>
         public readonly bool? LocateConnected;
+        public readonly int? Port;
 
         [OutputConstructor]
         private DeviceprofileApAeroscout(
@@ -32,11 +33,14 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? host,
 
-            bool? locateConnected)
+            bool? locateConnected,
+
+            int? port)
         {
             Enabled = enabled;
             Host = host;
             LocateConnected = locateConnected;
+            Port = port;
         }
     }
 }

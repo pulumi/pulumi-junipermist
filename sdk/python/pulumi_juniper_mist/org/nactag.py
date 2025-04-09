@@ -24,7 +24,7 @@ class NactagArgs:
                  type: pulumi.Input[builtins.str],
                  allow_usermac_override: Optional[pulumi.Input[builtins.bool]] = None,
                  egress_vlan_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-                 gbp_tag: Optional[pulumi.Input[builtins.int]] = None,
+                 gbp_tag: Optional[pulumi.Input[builtins.str]] = None,
                  match: Optional[pulumi.Input[builtins.str]] = None,
                  match_all: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -41,7 +41,6 @@ class NactagArgs:
                `username_attr`, `vlan`
         :param pulumi.Input[builtins.bool] allow_usermac_override: Can be set to true to allow the override by usermac result
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress vlans to return
-        :param pulumi.Input[builtins.int] gbp_tag: If `type`==`gbp_tag`
         :param pulumi.Input[builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
                `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`,
                `usermac_label`
@@ -137,14 +136,11 @@ class NactagArgs:
 
     @property
     @pulumi.getter(name="gbpTag")
-    def gbp_tag(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        If `type`==`gbp_tag`
-        """
+    def gbp_tag(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "gbp_tag")
 
     @gbp_tag.setter
-    def gbp_tag(self, value: Optional[pulumi.Input[builtins.int]]):
+    def gbp_tag(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "gbp_tag", value)
 
     @property
@@ -278,7 +274,7 @@ class _NactagState:
     def __init__(__self__, *,
                  allow_usermac_override: Optional[pulumi.Input[builtins.bool]] = None,
                  egress_vlan_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-                 gbp_tag: Optional[pulumi.Input[builtins.int]] = None,
+                 gbp_tag: Optional[pulumi.Input[builtins.str]] = None,
                  match: Optional[pulumi.Input[builtins.str]] = None,
                  match_all: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -295,7 +291,6 @@ class _NactagState:
         Input properties used for looking up and filtering Nactag resources.
         :param pulumi.Input[builtins.bool] allow_usermac_override: Can be set to true to allow the override by usermac result
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress vlans to return
-        :param pulumi.Input[builtins.int] gbp_tag: If `type`==`gbp_tag`
         :param pulumi.Input[builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
                `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`,
                `usermac_label`
@@ -373,14 +368,11 @@ class _NactagState:
 
     @property
     @pulumi.getter(name="gbpTag")
-    def gbp_tag(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        If `type`==`gbp_tag`
-        """
+    def gbp_tag(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "gbp_tag")
 
     @gbp_tag.setter
-    def gbp_tag(self, value: Optional[pulumi.Input[builtins.int]]):
+    def gbp_tag(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "gbp_tag", value)
 
     @property
@@ -538,7 +530,7 @@ class Nactag(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_usermac_override: Optional[pulumi.Input[builtins.bool]] = None,
                  egress_vlan_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-                 gbp_tag: Optional[pulumi.Input[builtins.int]] = None,
+                 gbp_tag: Optional[pulumi.Input[builtins.str]] = None,
                  match: Optional[pulumi.Input[builtins.str]] = None,
                  match_all: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -555,7 +547,7 @@ class Nactag(pulumi.CustomResource):
         """
         This resource manages NAC Tags (Auth Policy Labels).
 
-        The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+        The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
 
         ## Example Usage
 
@@ -585,7 +577,6 @@ class Nactag(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] allow_usermac_override: Can be set to true to allow the override by usermac result
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress vlans to return
-        :param pulumi.Input[builtins.int] gbp_tag: If `type`==`gbp_tag`
         :param pulumi.Input[builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
                `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`,
                `usermac_label`
@@ -615,7 +606,7 @@ class Nactag(pulumi.CustomResource):
         """
         This resource manages NAC Tags (Auth Policy Labels).
 
-        The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+        The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
 
         ## Example Usage
 
@@ -658,7 +649,7 @@ class Nactag(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_usermac_override: Optional[pulumi.Input[builtins.bool]] = None,
                  egress_vlan_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-                 gbp_tag: Optional[pulumi.Input[builtins.int]] = None,
+                 gbp_tag: Optional[pulumi.Input[builtins.str]] = None,
                  match: Optional[pulumi.Input[builtins.str]] = None,
                  match_all: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -711,7 +702,7 @@ class Nactag(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_usermac_override: Optional[pulumi.Input[builtins.bool]] = None,
             egress_vlan_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-            gbp_tag: Optional[pulumi.Input[builtins.int]] = None,
+            gbp_tag: Optional[pulumi.Input[builtins.str]] = None,
             match: Optional[pulumi.Input[builtins.str]] = None,
             match_all: Optional[pulumi.Input[builtins.bool]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
@@ -733,7 +724,6 @@ class Nactag(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] allow_usermac_override: Can be set to true to allow the override by usermac result
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress vlans to return
-        :param pulumi.Input[builtins.int] gbp_tag: If `type`==`gbp_tag`
         :param pulumi.Input[builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
                `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`,
                `usermac_label`
@@ -777,7 +767,7 @@ class Nactag(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowUsermacOverride")
-    def allow_usermac_override(self) -> pulumi.Output[builtins.bool]:
+    def allow_usermac_override(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         Can be set to true to allow the override by usermac result
         """
@@ -793,10 +783,7 @@ class Nactag(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gbpTag")
-    def gbp_tag(self) -> pulumi.Output[Optional[builtins.int]]:
-        """
-        If `type`==`gbp_tag`
-        """
+    def gbp_tag(self) -> pulumi.Output[Optional[builtins.str]]:
         return pulumi.get(self, "gbp_tag")
 
     @property
@@ -811,7 +798,7 @@ class Nactag(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="matchAll")
-    def match_all(self) -> pulumi.Output[builtins.bool]:
+    def match_all(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
         match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to

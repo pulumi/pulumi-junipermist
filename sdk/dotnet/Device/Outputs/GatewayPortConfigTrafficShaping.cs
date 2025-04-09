@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayPortConfigTrafficShaping
     {
         /// <summary>
-        /// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+        /// percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
         /// </summary>
         public readonly ImmutableArray<int> ClassPercentages;
         public readonly bool? Enabled;

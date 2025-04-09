@@ -25,19 +25,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? BfdUseTunnelMode { get; set; }
 
         /// <summary>
-        /// Only if the VPN `type`==`mesh`
-        /// </summary>
-        [Input("linkName")]
-        public Input<string>? LinkName { get; set; }
-
-        /// <summary>
         /// Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
         /// </summary>
         [Input("preference")]
         public Input<int>? Preference { get; set; }
 
         /// <summary>
-        /// Only if the VPN `type`==`hub_spoke`. enum: `hub`, `spoke`
+        /// If the VPN `type`==`hub_spoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

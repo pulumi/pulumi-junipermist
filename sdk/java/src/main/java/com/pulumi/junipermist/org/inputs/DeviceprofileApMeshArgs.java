@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class DeviceprofileApMeshArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DeviceprofileApMeshArgs Empty = new DeviceprofileApMeshArgs();
+
+    /**
+     * List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+     * 
+     */
+    @Import(name="bands")
+    private @Nullable Output<List<String>> bands;
+
+    /**
+     * @return List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+     * 
+     */
+    public Optional<Output<List<String>>> bands() {
+        return Optional.ofNullable(this.bands);
+    }
 
     /**
      * Whether mesh is enabled on this AP
@@ -65,6 +81,7 @@ public final class DeviceprofileApMeshArgs extends com.pulumi.resources.Resource
     private DeviceprofileApMeshArgs() {}
 
     private DeviceprofileApMeshArgs(DeviceprofileApMeshArgs $) {
+        this.bands = $.bands;
         this.enabled = $.enabled;
         this.group = $.group;
         this.role = $.role;
@@ -86,6 +103,37 @@ public final class DeviceprofileApMeshArgs extends com.pulumi.resources.Resource
 
         public Builder(DeviceprofileApMeshArgs defaults) {
             $ = new DeviceprofileApMeshArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bands List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bands(@Nullable Output<List<String>> bands) {
+            $.bands = bands;
+            return this;
+        }
+
+        /**
+         * @param bands List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bands(List<String> bands) {
+            return bands(Output.of(bands));
+        }
+
+        /**
+         * @param bands List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bands(String... bands) {
+            return bands(List.of(bands));
         }
 
         /**

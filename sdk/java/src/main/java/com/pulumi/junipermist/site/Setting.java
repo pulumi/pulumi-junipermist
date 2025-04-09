@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `junipermist.site.Networktemplate` resource
  * 
- * !&gt; Only ONE `junipermist.site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+ * !&gt; Only ONE `junipermist.site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
  * 
  * ## Example Usage
  * 
@@ -83,15 +83,15 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="apUpdownThreshold", refs={Integer.class}, tree="[0]")
-    private Output<Integer> apUpdownThreshold;
+    private Output</* @Nullable */ Integer> apUpdownThreshold;
 
     /**
      * @return Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
      * `device_updown_threshold` is ignored.
      * 
      */
-    public Output<Integer> apUpdownThreshold() {
-        return this.apUpdownThreshold;
+    public Output<Optional<Integer>> apUpdownThreshold() {
+        return Codegen.optional(this.apUpdownThreshold);
     }
     /**
      * Auto Upgrade Settings
@@ -170,20 +170,26 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.criticalUrlMonitoring);
     }
     /**
-     * By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
-     * is desired, use the following
+     * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
+     * type is desired, use the following
      * 
      */
     @Export(name="deviceUpdownThreshold", refs={Integer.class}, tree="[0]")
-    private Output<Integer> deviceUpdownThreshold;
+    private Output</* @Nullable */ Integer> deviceUpdownThreshold;
 
     /**
-     * @return By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
-     * is desired, use the following
+     * @return By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
+     * type is desired, use the following
      * 
      */
-    public Output<Integer> deviceUpdownThreshold() {
-        return this.deviceUpdownThreshold;
+    public Output<Optional<Integer>> deviceUpdownThreshold() {
+        return Codegen.optional(this.deviceUpdownThreshold);
+    }
+    @Export(name="enableUnii4", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableUnii4;
+
+    public Output<Boolean> enableUnii4() {
+        return this.enableUnii4;
     }
     /**
      * **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently, we don&#39;t allow multiple
@@ -221,15 +227,15 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="gatewayUpdownThreshold", refs={Integer.class}, tree="[0]")
-    private Output<Integer> gatewayUpdownThreshold;
+    private Output</* @Nullable */ Integer> gatewayUpdownThreshold;
 
     /**
      * @return Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
      * `device_updown_threshold` is ignored.
      * 
      */
-    public Output<Integer> gatewayUpdownThreshold() {
-        return this.gatewayUpdownThreshold;
+    public Output<Optional<Integer>> gatewayUpdownThreshold() {
+        return Codegen.optional(this.gatewayUpdownThreshold);
     }
     @Export(name="juniperSrx", refs={SettingJuniperSrx.class}, tree="[0]")
     private Output</* @Nullable */ SettingJuniperSrx> juniperSrx;
@@ -298,14 +304,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="removeExistingConfigs", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> removeExistingConfigs;
+    private Output</* @Nullable */ Boolean> removeExistingConfigs;
 
     /**
      * @return By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
      * 
      */
-    public Output<Boolean> removeExistingConfigs() {
-        return this.removeExistingConfigs;
+    public Output<Optional<Boolean>> removeExistingConfigs() {
+        return Codegen.optional(this.removeExistingConfigs);
     }
     /**
      * Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
@@ -313,15 +319,15 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="reportGatt", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> reportGatt;
+    private Output</* @Nullable */ Boolean> reportGatt;
 
     /**
      * @return Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
      * serial number, battery %, temperature, humidity)
      * 
      */
-    public Output<Boolean> reportGatt() {
-        return this.reportGatt;
+    public Output<Optional<Boolean>> reportGatt() {
+        return Codegen.optional(this.reportGatt);
     }
     /**
      * Rogue site settings
@@ -353,7 +359,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
     }
     /**
      * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-     * window, there are more than Y distinct client encountring over X failures
+     * window, there are more than Y distinct client encountering over X failures
      * 
      */
     @Export(name="simpleAlert", refs={SettingSimpleAlert.class}, tree="[0]")
@@ -361,7 +367,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-     * window, there are more than Y distinct client encountring over X failures
+     * window, there are more than Y distinct client encountering over X failures
      * 
      */
     public Output<Optional<SettingSimpleAlert>> simpleAlert() {
@@ -413,15 +419,15 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="switchUpdownThreshold", refs={Integer.class}, tree="[0]")
-    private Output<Integer> switchUpdownThreshold;
+    private Output</* @Nullable */ Integer> switchUpdownThreshold;
 
     /**
      * @return Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
      * `device_updown_threshold` is ignored.
      * 
      */
-    public Output<Integer> switchUpdownThreshold() {
-        return this.switchUpdownThreshold;
+    public Output<Optional<Integer>> switchUpdownThreshold() {
+        return Codegen.optional(this.switchUpdownThreshold);
     }
     @Export(name="syntheticTest", refs={SettingSyntheticTest.class}, tree="[0]")
     private Output</* @Nullable */ SettingSyntheticTest> syntheticTest;
@@ -434,14 +440,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="trackAnonymousDevices", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> trackAnonymousDevices;
+    private Output</* @Nullable */ Boolean> trackAnonymousDevices;
 
     /**
      * @return Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
      * 
      */
-    public Output<Boolean> trackAnonymousDevices() {
-        return this.trackAnonymousDevices;
+    public Output<Optional<Boolean>> trackAnonymousDevices() {
+        return Codegen.optional(this.trackAnonymousDevices);
     }
     /**
      * AP Uplink port configuration
@@ -478,14 +484,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vna);
     }
     /**
-     * Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+     * Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
      * 
      */
     @Export(name="vsInstance", refs={Map.class,String.class,SettingVsInstance.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SettingVsInstance>> vsInstance;
 
     /**
-     * @return Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+     * @return Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
      * 
      */
     public Output<Optional<Map<String,SettingVsInstance>>> vsInstance() {

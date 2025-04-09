@@ -52,6 +52,7 @@ class NetworktemplateArgs:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input['NetworktemplateMistNacArgs'] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateNetworksArgs']]] networks: Property key is network name
@@ -59,11 +60,11 @@ class NetworktemplateArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasArgs']]] ospf_areas: Junos OSPF areas
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-               maximum 4 port mirrorings is allowed
+               maximum 4 mirroring ports is allowed
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input['NetworktemplateRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input[builtins.bool] remove_existing_configs: By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
-        :param pulumi.Input['NetworktemplateSwitchMatchingArgs'] switch_matching: Defines custom switch configuration based on different criterias
+        :param pulumi.Input['NetworktemplateSwitchMatchingArgs'] switch_matching: Defines custom switch configuration based on different criteria
         :param pulumi.Input['NetworktemplateSwitchMgmtArgs'] switch_mgmt: Switch settings
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateVrfInstancesArgs']]] vrf_instances: Property key is the network name
         """
@@ -193,6 +194,9 @@ class NetworktemplateArgs:
     @property
     @pulumi.getter(name="extraRoutes")
     def extra_routes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateExtraRoutesArgs']]]]:
+        """
+        Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        """
         return pulumi.get(self, "extra_routes")
 
     @extra_routes.setter
@@ -274,7 +278,7 @@ class NetworktemplateArgs:
         """
         Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
         interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-        maximum 4 port mirrorings is allowed
+        maximum 4 mirroring ports is allowed
         """
         return pulumi.get(self, "port_mirroring")
 
@@ -340,7 +344,7 @@ class NetworktemplateArgs:
     @pulumi.getter(name="switchMatching")
     def switch_matching(self) -> Optional[pulumi.Input['NetworktemplateSwitchMatchingArgs']]:
         """
-        Defines custom switch configuration based on different criterias
+        Defines custom switch configuration based on different criteria
         """
         return pulumi.get(self, "switch_matching")
 
@@ -415,6 +419,7 @@ class _NetworktemplateState:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input['NetworktemplateMistNacArgs'] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateNetworksArgs']]] networks: Property key is network name
@@ -422,11 +427,11 @@ class _NetworktemplateState:
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasArgs']]] ospf_areas: Junos OSPF areas
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-               maximum 4 port mirrorings is allowed
+               maximum 4 mirroring ports is allowed
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input['NetworktemplateRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input[builtins.bool] remove_existing_configs: By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
-        :param pulumi.Input['NetworktemplateSwitchMatchingArgs'] switch_matching: Defines custom switch configuration based on different criterias
+        :param pulumi.Input['NetworktemplateSwitchMatchingArgs'] switch_matching: Defines custom switch configuration based on different criteria
         :param pulumi.Input['NetworktemplateSwitchMgmtArgs'] switch_mgmt: Switch settings
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateVrfInstancesArgs']]] vrf_instances: Property key is the network name
         """
@@ -548,6 +553,9 @@ class _NetworktemplateState:
     @property
     @pulumi.getter(name="extraRoutes")
     def extra_routes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateExtraRoutesArgs']]]]:
+        """
+        Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        """
         return pulumi.get(self, "extra_routes")
 
     @extra_routes.setter
@@ -638,7 +646,7 @@ class _NetworktemplateState:
         """
         Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
         interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-        maximum 4 port mirrorings is allowed
+        maximum 4 mirroring ports is allowed
         """
         return pulumi.get(self, "port_mirroring")
 
@@ -704,7 +712,7 @@ class _NetworktemplateState:
     @pulumi.getter(name="switchMatching")
     def switch_matching(self) -> Optional[pulumi.Input['NetworktemplateSwitchMatchingArgs']]:
         """
-        Defines custom switch configuration based on different criterias
+        Defines custom switch configuration based on different criteria
         """
         return pulumi.get(self, "switch_matching")
 
@@ -798,6 +806,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutesArgs', 'NetworktemplateExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutes6Args', 'NetworktemplateExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Union['NetworktemplateMistNacArgs', 'NetworktemplateMistNacArgsDict']] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]] networks: Property key is network name
@@ -805,11 +814,11 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateOspfAreasArgs', 'NetworktemplateOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-               maximum 4 port mirrorings is allowed
+               maximum 4 mirroring ports is allowed
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[builtins.bool] remove_existing_configs: By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
-        :param pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']] switch_matching: Defines custom switch configuration based on different criterias
+        :param pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']] switch_matching: Defines custom switch configuration based on different criteria
         :param pulumi.Input[Union['NetworktemplateSwitchMgmtArgs', 'NetworktemplateSwitchMgmtArgsDict']] switch_mgmt: Switch settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateVrfInstancesArgs', 'NetworktemplateVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
         """
@@ -954,6 +963,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutesArgs', 'NetworktemplateExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutes6Args', 'NetworktemplateExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Union['NetworktemplateMistNacArgs', 'NetworktemplateMistNacArgsDict']] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]] networks: Property key is network name
@@ -961,11 +971,11 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateOspfAreasArgs', 'NetworktemplateOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-               maximum 4 port mirrorings is allowed
+               maximum 4 mirroring ports is allowed
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[builtins.bool] remove_existing_configs: By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
-        :param pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']] switch_matching: Defines custom switch configuration based on different criterias
+        :param pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']] switch_matching: Defines custom switch configuration based on different criteria
         :param pulumi.Input[Union['NetworktemplateSwitchMgmtArgs', 'NetworktemplateSwitchMgmtArgsDict']] switch_mgmt: Switch settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateVrfInstancesArgs', 'NetworktemplateVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
         """
@@ -1027,7 +1037,7 @@ class Networktemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnsServers")
-    def dns_servers(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+    def dns_servers(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
         Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         """
@@ -1035,7 +1045,7 @@ class Networktemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnsSuffixes")
-    def dns_suffixes(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+    def dns_suffixes(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
         Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         """
@@ -1044,6 +1054,9 @@ class Networktemplate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="extraRoutes")
     def extra_routes(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.NetworktemplateExtraRoutes']]]:
+        """
+        Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        """
         return pulumi.get(self, "extra_routes")
 
     @property
@@ -1077,7 +1090,7 @@ class Networktemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ntpServers")
-    def ntp_servers(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+    def ntp_servers(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
         List of NTP servers specific to this device. By default, those in Site Settings will be used
         """
@@ -1102,7 +1115,7 @@ class Networktemplate(pulumi.CustomResource):
         """
         Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
         interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-        maximum 4 port mirrorings is allowed
+        maximum 4 mirroring ports is allowed
         """
         return pulumi.get(self, "port_mirroring")
 
@@ -1144,7 +1157,7 @@ class Networktemplate(pulumi.CustomResource):
     @pulumi.getter(name="switchMatching")
     def switch_matching(self) -> pulumi.Output[Optional['outputs.NetworktemplateSwitchMatching']]:
         """
-        Defines custom switch configuration based on different criterias
+        Defines custom switch configuration based on different criteria
         """
         return pulumi.get(self, "switch_matching")
 

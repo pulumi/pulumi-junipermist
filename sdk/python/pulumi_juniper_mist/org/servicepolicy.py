@@ -23,6 +23,7 @@ __all__ = ['ServicepolicyArgs', 'Servicepolicy']
 class ServicepolicyArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[builtins.str],
+                 aamw: Optional[pulumi.Input['ServicepolicyAamwArgs']] = None,
                  action: Optional[pulumi.Input[builtins.str]] = None,
                  antivirus: Optional[pulumi.Input['ServicepolicyAntivirusArgs']] = None,
                  appqoe: Optional[pulumi.Input['ServicepolicyAppqoeArgs']] = None,
@@ -36,6 +37,7 @@ class ServicepolicyArgs:
                  tenants: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         The set of arguments for constructing a Servicepolicy resource.
+        :param pulumi.Input['ServicepolicyAamwArgs'] aamw: For SRX Only
         :param pulumi.Input[builtins.str] action: enum: `allow`, `deny`
         :param pulumi.Input['ServicepolicyAntivirusArgs'] antivirus: For SRX-only
         :param pulumi.Input['ServicepolicyAppqoeArgs'] appqoe: For SRX Only
@@ -44,6 +46,8 @@ class ServicepolicyArgs:
         :param pulumi.Input['ServicepolicySslProxyArgs'] ssl_proxy: For SRX-only
         """
         pulumi.set(__self__, "org_id", org_id)
+        if aamw is not None:
+            pulumi.set(__self__, "aamw", aamw)
         if action is not None:
             pulumi.set(__self__, "action", action)
         if antivirus is not None:
@@ -75,6 +79,18 @@ class ServicepolicyArgs:
     @org_id.setter
     def org_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "org_id", value)
+
+    @property
+    @pulumi.getter
+    def aamw(self) -> Optional[pulumi.Input['ServicepolicyAamwArgs']]:
+        """
+        For SRX Only
+        """
+        return pulumi.get(self, "aamw")
+
+    @aamw.setter
+    def aamw(self, value: Optional[pulumi.Input['ServicepolicyAamwArgs']]):
+        pulumi.set(self, "aamw", value)
 
     @property
     @pulumi.getter
@@ -197,6 +213,7 @@ class ServicepolicyArgs:
 @pulumi.input_type
 class _ServicepolicyState:
     def __init__(__self__, *,
+                 aamw: Optional[pulumi.Input['ServicepolicyAamwArgs']] = None,
                  action: Optional[pulumi.Input[builtins.str]] = None,
                  antivirus: Optional[pulumi.Input['ServicepolicyAntivirusArgs']] = None,
                  appqoe: Optional[pulumi.Input['ServicepolicyAppqoeArgs']] = None,
@@ -211,6 +228,7 @@ class _ServicepolicyState:
                  tenants: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Servicepolicy resources.
+        :param pulumi.Input['ServicepolicyAamwArgs'] aamw: For SRX Only
         :param pulumi.Input[builtins.str] action: enum: `allow`, `deny`
         :param pulumi.Input['ServicepolicyAntivirusArgs'] antivirus: For SRX-only
         :param pulumi.Input['ServicepolicyAppqoeArgs'] appqoe: For SRX Only
@@ -218,6 +236,8 @@ class _ServicepolicyState:
         :param pulumi.Input[builtins.str] path_preference: By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
         :param pulumi.Input['ServicepolicySslProxyArgs'] ssl_proxy: For SRX-only
         """
+        if aamw is not None:
+            pulumi.set(__self__, "aamw", aamw)
         if action is not None:
             pulumi.set(__self__, "action", action)
         if antivirus is not None:
@@ -242,6 +262,18 @@ class _ServicepolicyState:
             pulumi.set(__self__, "ssl_proxy", ssl_proxy)
         if tenants is not None:
             pulumi.set(__self__, "tenants", tenants)
+
+    @property
+    @pulumi.getter
+    def aamw(self) -> Optional[pulumi.Input['ServicepolicyAamwArgs']]:
+        """
+        For SRX Only
+        """
+        return pulumi.get(self, "aamw")
+
+    @aamw.setter
+    def aamw(self, value: Optional[pulumi.Input['ServicepolicyAamwArgs']]):
+        pulumi.set(self, "aamw", value)
 
     @property
     @pulumi.getter
@@ -375,6 +407,7 @@ class Servicepolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 aamw: Optional[pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']]] = None,
                  action: Optional[pulumi.Input[builtins.str]] = None,
                  antivirus: Optional[pulumi.Input[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']]] = None,
                  appqoe: Optional[pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']]] = None,
@@ -389,7 +422,7 @@ class Servicepolicy(pulumi.CustomResource):
                  tenants: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  __props__=None):
         """
-        This resource manages WAN Assurance Service Policies (Application Policiess).
+        This resource manages WAN Assurance Service Policies (Application Policies).
 
         The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
         * the Gateway configuration (`mist_device_gateway.service_policies`)
@@ -409,6 +442,7 @@ class Servicepolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']] aamw: For SRX Only
         :param pulumi.Input[builtins.str] action: enum: `allow`, `deny`
         :param pulumi.Input[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']] antivirus: For SRX-only
         :param pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']] appqoe: For SRX Only
@@ -423,7 +457,7 @@ class Servicepolicy(pulumi.CustomResource):
                  args: ServicepolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages WAN Assurance Service Policies (Application Policiess).
+        This resource manages WAN Assurance Service Policies (Application Policies).
 
         The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
         * the Gateway configuration (`mist_device_gateway.service_policies`)
@@ -456,6 +490,7 @@ class Servicepolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 aamw: Optional[pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']]] = None,
                  action: Optional[pulumi.Input[builtins.str]] = None,
                  antivirus: Optional[pulumi.Input[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']]] = None,
                  appqoe: Optional[pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']]] = None,
@@ -477,6 +512,7 @@ class Servicepolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServicepolicyArgs.__new__(ServicepolicyArgs)
 
+            __props__.__dict__["aamw"] = aamw
             __props__.__dict__["action"] = action
             __props__.__dict__["antivirus"] = antivirus
             __props__.__dict__["appqoe"] = appqoe
@@ -501,6 +537,7 @@ class Servicepolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            aamw: Optional[pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']]] = None,
             action: Optional[pulumi.Input[builtins.str]] = None,
             antivirus: Optional[pulumi.Input[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']]] = None,
             appqoe: Optional[pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']]] = None,
@@ -520,6 +557,7 @@ class Servicepolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']] aamw: For SRX Only
         :param pulumi.Input[builtins.str] action: enum: `allow`, `deny`
         :param pulumi.Input[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']] antivirus: For SRX-only
         :param pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']] appqoe: For SRX Only
@@ -531,6 +569,7 @@ class Servicepolicy(pulumi.CustomResource):
 
         __props__ = _ServicepolicyState.__new__(_ServicepolicyState)
 
+        __props__.__dict__["aamw"] = aamw
         __props__.__dict__["action"] = action
         __props__.__dict__["antivirus"] = antivirus
         __props__.__dict__["appqoe"] = appqoe
@@ -544,6 +583,14 @@ class Servicepolicy(pulumi.CustomResource):
         __props__.__dict__["ssl_proxy"] = ssl_proxy
         __props__.__dict__["tenants"] = tenants
         return Servicepolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def aamw(self) -> pulumi.Output[Optional['outputs.ServicepolicyAamw']]:
+        """
+        For SRX Only
+        """
+        return pulumi.get(self, "aamw")
 
     @property
     @pulumi.getter

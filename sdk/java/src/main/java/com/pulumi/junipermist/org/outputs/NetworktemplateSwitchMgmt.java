@@ -43,13 +43,22 @@ public final class NetworktemplateSwitchMgmt {
      */
     private @Nullable Boolean dhcpOptionFqdn;
     private @Nullable Boolean disableOobDownAlarm;
+    private @Nullable Boolean fipsEnabled;
     /**
      * @return Property key is the user name. For Local user authentication
      * 
      */
     private @Nullable Map<String,NetworktemplateSwitchMgmtLocalAccounts> localAccounts;
+    /**
+     * @return IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+     * 
+     */
     private @Nullable String mxedgeProxyHost;
-    private @Nullable Integer mxedgeProxyPort;
+    /**
+     * @return Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
+     * 
+     */
+    private @Nullable String mxedgeProxyPort;
     /**
      * @return Restrict inbound-traffic to host
      * when enabled, all traffic that is not essential to our operation will be dropped
@@ -104,6 +113,9 @@ public final class NetworktemplateSwitchMgmt {
     public Optional<Boolean> disableOobDownAlarm() {
         return Optional.ofNullable(this.disableOobDownAlarm);
     }
+    public Optional<Boolean> fipsEnabled() {
+        return Optional.ofNullable(this.fipsEnabled);
+    }
     /**
      * @return Property key is the user name. For Local user authentication
      * 
@@ -111,10 +123,18 @@ public final class NetworktemplateSwitchMgmt {
     public Map<String,NetworktemplateSwitchMgmtLocalAccounts> localAccounts() {
         return this.localAccounts == null ? Map.of() : this.localAccounts;
     }
+    /**
+     * @return IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+     * 
+     */
     public Optional<String> mxedgeProxyHost() {
         return Optional.ofNullable(this.mxedgeProxyHost);
     }
-    public Optional<Integer> mxedgeProxyPort() {
+    /**
+     * @return Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
+     * 
+     */
+    public Optional<String> mxedgeProxyPort() {
         return Optional.ofNullable(this.mxedgeProxyPort);
     }
     /**
@@ -155,9 +175,10 @@ public final class NetworktemplateSwitchMgmt {
         private @Nullable Integer configRevertTimer;
         private @Nullable Boolean dhcpOptionFqdn;
         private @Nullable Boolean disableOobDownAlarm;
+        private @Nullable Boolean fipsEnabled;
         private @Nullable Map<String,NetworktemplateSwitchMgmtLocalAccounts> localAccounts;
         private @Nullable String mxedgeProxyHost;
-        private @Nullable Integer mxedgeProxyPort;
+        private @Nullable String mxedgeProxyPort;
         private @Nullable NetworktemplateSwitchMgmtProtectRe protectRe;
         private @Nullable String rootPassword;
         private @Nullable NetworktemplateSwitchMgmtTacacs tacacs;
@@ -171,6 +192,7 @@ public final class NetworktemplateSwitchMgmt {
     	      this.configRevertTimer = defaults.configRevertTimer;
     	      this.dhcpOptionFqdn = defaults.dhcpOptionFqdn;
     	      this.disableOobDownAlarm = defaults.disableOobDownAlarm;
+    	      this.fipsEnabled = defaults.fipsEnabled;
     	      this.localAccounts = defaults.localAccounts;
     	      this.mxedgeProxyHost = defaults.mxedgeProxyHost;
     	      this.mxedgeProxyPort = defaults.mxedgeProxyPort;
@@ -217,6 +239,12 @@ public final class NetworktemplateSwitchMgmt {
             return this;
         }
         @CustomType.Setter
+        public Builder fipsEnabled(@Nullable Boolean fipsEnabled) {
+
+            this.fipsEnabled = fipsEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder localAccounts(@Nullable Map<String,NetworktemplateSwitchMgmtLocalAccounts> localAccounts) {
 
             this.localAccounts = localAccounts;
@@ -229,7 +257,7 @@ public final class NetworktemplateSwitchMgmt {
             return this;
         }
         @CustomType.Setter
-        public Builder mxedgeProxyPort(@Nullable Integer mxedgeProxyPort) {
+        public Builder mxedgeProxyPort(@Nullable String mxedgeProxyPort) {
 
             this.mxedgeProxyPort = mxedgeProxyPort;
             return this;
@@ -266,6 +294,7 @@ public final class NetworktemplateSwitchMgmt {
             _resultValue.configRevertTimer = configRevertTimer;
             _resultValue.dhcpOptionFqdn = dhcpOptionFqdn;
             _resultValue.disableOobDownAlarm = disableOobDownAlarm;
+            _resultValue.fipsEnabled = fipsEnabled;
             _resultValue.localAccounts = localAccounts;
             _resultValue.mxedgeProxyHost = mxedgeProxyHost;
             _resultValue.mxedgeProxyPort = mxedgeProxyPort;

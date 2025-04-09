@@ -21,7 +21,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly string? Facility;
         public readonly string? Host;
         public readonly string? Match;
-        public readonly int? Port;
+        public readonly string? Port;
         /// <summary>
         /// enum: `tcp`, `udp`
         /// </summary>
@@ -50,7 +50,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             string? match,
 
-            int? port,
+            string? port,
 
             string? protocol,
 

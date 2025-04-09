@@ -27,6 +27,8 @@ class ServiceArgs:
                  app_categories: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  app_subcategories: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  apps: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 client_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+                 client_limit_up: Optional[pulumi.Input[builtins.int]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  dscp: Optional[pulumi.Input[builtins.str]] = None,
                  failover_policy: Optional[pulumi.Input[builtins.str]] = None,
@@ -35,6 +37,8 @@ class ServiceArgs:
                  max_latency: Optional[pulumi.Input[builtins.str]] = None,
                  max_loss: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 service_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+                 service_limit_up: Optional[pulumi.Input[builtins.int]] = None,
                  sle_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  specs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceSpecArgs']]]] = None,
                  ssr_relaxed_tcp_state_enforcement: Optional[pulumi.Input[builtins.bool]] = None,
@@ -44,19 +48,23 @@ class ServiceArgs:
                  urls: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         The set of arguments for constructing a Service resource.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] addresses: if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] app_categories: when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_categories
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] app_subcategories: when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_subcategories
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] apps: when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-               /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
-        :param pulumi.Input[builtins.str] failover_policy: enum: `non_revertable`, `none`, `revertable`
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] hostnames: if `type`==`custom`, web filtering
-        :param pulumi.Input[builtins.bool] sle_enabled: whether to enable measure SLE
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceSpecArgs']]] specs: when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] addresses: If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] app_categories: When `type`==`app_categories`, list of application categories are available through List App Category Definitions
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] app_subcategories: When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] apps: When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+               /insight/top_app_by-bytes?wired=true
+        :param pulumi.Input[builtins.int] client_limit_down: 0 means unlimited, value from 0 to 107374182
+        :param pulumi.Input[builtins.int] client_limit_up: 0 means unlimited, value from 0 to 107374182
+        :param pulumi.Input[builtins.str] failover_policy: enum: `non_revertible`, `none`, `revertible`
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] hostnames: If `type`==`custom`, web filtering
+        :param pulumi.Input[builtins.int] service_limit_down: 0 means unlimited, value from 0 to 107374182
+        :param pulumi.Input[builtins.int] service_limit_up: 0 means unlimited, value from 0 to 107374182
+        :param pulumi.Input[builtins.bool] sle_enabled: Whether to enable measure SLE
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceSpecArgs']]] specs: When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
         :param pulumi.Input[builtins.str] traffic_class: when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
-        :param pulumi.Input[builtins.str] traffic_type: values from `/api/v1/consts/traffic_types`
+        :param pulumi.Input[builtins.str] traffic_type: values from List Traffic Types
         :param pulumi.Input[builtins.str] type: enum: `app_categories`, `apps`, `custom`, `urls`
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] urls: when `type`==`urls`, no need for spec as URL can encode the ports being used
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] urls: When `type`==`urls`, no need for spec as URL can encode the ports being used
         """
         pulumi.set(__self__, "org_id", org_id)
         if addresses is not None:
@@ -67,6 +75,10 @@ class ServiceArgs:
             pulumi.set(__self__, "app_subcategories", app_subcategories)
         if apps is not None:
             pulumi.set(__self__, "apps", apps)
+        if client_limit_down is not None:
+            pulumi.set(__self__, "client_limit_down", client_limit_down)
+        if client_limit_up is not None:
+            pulumi.set(__self__, "client_limit_up", client_limit_up)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dscp is not None:
@@ -83,6 +95,10 @@ class ServiceArgs:
             pulumi.set(__self__, "max_loss", max_loss)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if service_limit_down is not None:
+            pulumi.set(__self__, "service_limit_down", service_limit_down)
+        if service_limit_up is not None:
+            pulumi.set(__self__, "service_limit_up", service_limit_up)
         if sle_enabled is not None:
             pulumi.set(__self__, "sle_enabled", sle_enabled)
         if specs is not None:
@@ -111,7 +127,7 @@ class ServiceArgs:
     @pulumi.getter
     def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
         """
         return pulumi.get(self, "addresses")
 
@@ -123,7 +139,7 @@ class ServiceArgs:
     @pulumi.getter(name="appCategories")
     def app_categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_categories
+        When `type`==`app_categories`, list of application categories are available through List App Category Definitions
         """
         return pulumi.get(self, "app_categories")
 
@@ -135,7 +151,7 @@ class ServiceArgs:
     @pulumi.getter(name="appSubcategories")
     def app_subcategories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_subcategories
+        When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
         """
         return pulumi.get(self, "app_subcategories")
 
@@ -147,14 +163,38 @@ class ServiceArgs:
     @pulumi.getter
     def apps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-        /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
+        When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+        /insight/top_app_by-bytes?wired=true
         """
         return pulumi.get(self, "apps")
 
     @apps.setter
     def apps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "apps", value)
+
+    @property
+    @pulumi.getter(name="clientLimitDown")
+    def client_limit_down(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        0 means unlimited, value from 0 to 107374182
+        """
+        return pulumi.get(self, "client_limit_down")
+
+    @client_limit_down.setter
+    def client_limit_down(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "client_limit_down", value)
+
+    @property
+    @pulumi.getter(name="clientLimitUp")
+    def client_limit_up(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        0 means unlimited, value from 0 to 107374182
+        """
+        return pulumi.get(self, "client_limit_up")
+
+    @client_limit_up.setter
+    def client_limit_up(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "client_limit_up", value)
 
     @property
     @pulumi.getter
@@ -178,7 +218,7 @@ class ServiceArgs:
     @pulumi.getter(name="failoverPolicy")
     def failover_policy(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        enum: `non_revertable`, `none`, `revertable`
+        enum: `non_revertible`, `none`, `revertible`
         """
         return pulumi.get(self, "failover_policy")
 
@@ -190,7 +230,7 @@ class ServiceArgs:
     @pulumi.getter
     def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        if `type`==`custom`, web filtering
+        If `type`==`custom`, web filtering
         """
         return pulumi.get(self, "hostnames")
 
@@ -235,10 +275,34 @@ class ServiceArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="serviceLimitDown")
+    def service_limit_down(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        0 means unlimited, value from 0 to 107374182
+        """
+        return pulumi.get(self, "service_limit_down")
+
+    @service_limit_down.setter
+    def service_limit_down(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "service_limit_down", value)
+
+    @property
+    @pulumi.getter(name="serviceLimitUp")
+    def service_limit_up(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        0 means unlimited, value from 0 to 107374182
+        """
+        return pulumi.get(self, "service_limit_up")
+
+    @service_limit_up.setter
+    def service_limit_up(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "service_limit_up", value)
+
+    @property
     @pulumi.getter(name="sleEnabled")
     def sle_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        whether to enable measure SLE
+        Whether to enable measure SLE
         """
         return pulumi.get(self, "sle_enabled")
 
@@ -250,7 +314,7 @@ class ServiceArgs:
     @pulumi.getter
     def specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceSpecArgs']]]]:
         """
-        when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+        When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
         """
         return pulumi.get(self, "specs")
 
@@ -283,7 +347,7 @@ class ServiceArgs:
     @pulumi.getter(name="trafficType")
     def traffic_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        values from `/api/v1/consts/traffic_types`
+        values from List Traffic Types
         """
         return pulumi.get(self, "traffic_type")
 
@@ -307,7 +371,7 @@ class ServiceArgs:
     @pulumi.getter
     def urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        when `type`==`urls`, no need for spec as URL can encode the ports being used
+        When `type`==`urls`, no need for spec as URL can encode the ports being used
         """
         return pulumi.get(self, "urls")
 
@@ -323,6 +387,8 @@ class _ServiceState:
                  app_categories: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  app_subcategories: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  apps: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 client_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+                 client_limit_up: Optional[pulumi.Input[builtins.int]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  dscp: Optional[pulumi.Input[builtins.str]] = None,
                  failover_policy: Optional[pulumi.Input[builtins.str]] = None,
@@ -332,6 +398,8 @@ class _ServiceState:
                  max_loss: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  org_id: Optional[pulumi.Input[builtins.str]] = None,
+                 service_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+                 service_limit_up: Optional[pulumi.Input[builtins.int]] = None,
                  sle_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  specs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceSpecArgs']]]] = None,
                  ssr_relaxed_tcp_state_enforcement: Optional[pulumi.Input[builtins.bool]] = None,
@@ -341,19 +409,23 @@ class _ServiceState:
                  urls: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Service resources.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] addresses: if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] app_categories: when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_categories
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] app_subcategories: when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_subcategories
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] apps: when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-               /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
-        :param pulumi.Input[builtins.str] failover_policy: enum: `non_revertable`, `none`, `revertable`
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] hostnames: if `type`==`custom`, web filtering
-        :param pulumi.Input[builtins.bool] sle_enabled: whether to enable measure SLE
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceSpecArgs']]] specs: when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] addresses: If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] app_categories: When `type`==`app_categories`, list of application categories are available through List App Category Definitions
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] app_subcategories: When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] apps: When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+               /insight/top_app_by-bytes?wired=true
+        :param pulumi.Input[builtins.int] client_limit_down: 0 means unlimited, value from 0 to 107374182
+        :param pulumi.Input[builtins.int] client_limit_up: 0 means unlimited, value from 0 to 107374182
+        :param pulumi.Input[builtins.str] failover_policy: enum: `non_revertible`, `none`, `revertible`
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] hostnames: If `type`==`custom`, web filtering
+        :param pulumi.Input[builtins.int] service_limit_down: 0 means unlimited, value from 0 to 107374182
+        :param pulumi.Input[builtins.int] service_limit_up: 0 means unlimited, value from 0 to 107374182
+        :param pulumi.Input[builtins.bool] sle_enabled: Whether to enable measure SLE
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceSpecArgs']]] specs: When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
         :param pulumi.Input[builtins.str] traffic_class: when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
-        :param pulumi.Input[builtins.str] traffic_type: values from `/api/v1/consts/traffic_types`
+        :param pulumi.Input[builtins.str] traffic_type: values from List Traffic Types
         :param pulumi.Input[builtins.str] type: enum: `app_categories`, `apps`, `custom`, `urls`
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] urls: when `type`==`urls`, no need for spec as URL can encode the ports being used
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] urls: When `type`==`urls`, no need for spec as URL can encode the ports being used
         """
         if addresses is not None:
             pulumi.set(__self__, "addresses", addresses)
@@ -363,6 +435,10 @@ class _ServiceState:
             pulumi.set(__self__, "app_subcategories", app_subcategories)
         if apps is not None:
             pulumi.set(__self__, "apps", apps)
+        if client_limit_down is not None:
+            pulumi.set(__self__, "client_limit_down", client_limit_down)
+        if client_limit_up is not None:
+            pulumi.set(__self__, "client_limit_up", client_limit_up)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dscp is not None:
@@ -381,6 +457,10 @@ class _ServiceState:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
+        if service_limit_down is not None:
+            pulumi.set(__self__, "service_limit_down", service_limit_down)
+        if service_limit_up is not None:
+            pulumi.set(__self__, "service_limit_up", service_limit_up)
         if sle_enabled is not None:
             pulumi.set(__self__, "sle_enabled", sle_enabled)
         if specs is not None:
@@ -400,7 +480,7 @@ class _ServiceState:
     @pulumi.getter
     def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
         """
         return pulumi.get(self, "addresses")
 
@@ -412,7 +492,7 @@ class _ServiceState:
     @pulumi.getter(name="appCategories")
     def app_categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_categories
+        When `type`==`app_categories`, list of application categories are available through List App Category Definitions
         """
         return pulumi.get(self, "app_categories")
 
@@ -424,7 +504,7 @@ class _ServiceState:
     @pulumi.getter(name="appSubcategories")
     def app_subcategories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_subcategories
+        When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
         """
         return pulumi.get(self, "app_subcategories")
 
@@ -436,14 +516,38 @@ class _ServiceState:
     @pulumi.getter
     def apps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-        /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
+        When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+        /insight/top_app_by-bytes?wired=true
         """
         return pulumi.get(self, "apps")
 
     @apps.setter
     def apps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "apps", value)
+
+    @property
+    @pulumi.getter(name="clientLimitDown")
+    def client_limit_down(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        0 means unlimited, value from 0 to 107374182
+        """
+        return pulumi.get(self, "client_limit_down")
+
+    @client_limit_down.setter
+    def client_limit_down(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "client_limit_down", value)
+
+    @property
+    @pulumi.getter(name="clientLimitUp")
+    def client_limit_up(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        0 means unlimited, value from 0 to 107374182
+        """
+        return pulumi.get(self, "client_limit_up")
+
+    @client_limit_up.setter
+    def client_limit_up(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "client_limit_up", value)
 
     @property
     @pulumi.getter
@@ -467,7 +571,7 @@ class _ServiceState:
     @pulumi.getter(name="failoverPolicy")
     def failover_policy(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        enum: `non_revertable`, `none`, `revertable`
+        enum: `non_revertible`, `none`, `revertible`
         """
         return pulumi.get(self, "failover_policy")
 
@@ -479,7 +583,7 @@ class _ServiceState:
     @pulumi.getter
     def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        if `type`==`custom`, web filtering
+        If `type`==`custom`, web filtering
         """
         return pulumi.get(self, "hostnames")
 
@@ -533,10 +637,34 @@ class _ServiceState:
         pulumi.set(self, "org_id", value)
 
     @property
+    @pulumi.getter(name="serviceLimitDown")
+    def service_limit_down(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        0 means unlimited, value from 0 to 107374182
+        """
+        return pulumi.get(self, "service_limit_down")
+
+    @service_limit_down.setter
+    def service_limit_down(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "service_limit_down", value)
+
+    @property
+    @pulumi.getter(name="serviceLimitUp")
+    def service_limit_up(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        0 means unlimited, value from 0 to 107374182
+        """
+        return pulumi.get(self, "service_limit_up")
+
+    @service_limit_up.setter
+    def service_limit_up(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "service_limit_up", value)
+
+    @property
     @pulumi.getter(name="sleEnabled")
     def sle_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        whether to enable measure SLE
+        Whether to enable measure SLE
         """
         return pulumi.get(self, "sle_enabled")
 
@@ -548,7 +676,7 @@ class _ServiceState:
     @pulumi.getter
     def specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceSpecArgs']]]]:
         """
-        when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+        When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
         """
         return pulumi.get(self, "specs")
 
@@ -581,7 +709,7 @@ class _ServiceState:
     @pulumi.getter(name="trafficType")
     def traffic_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        values from `/api/v1/consts/traffic_types`
+        values from List Traffic Types
         """
         return pulumi.get(self, "traffic_type")
 
@@ -605,7 +733,7 @@ class _ServiceState:
     @pulumi.getter
     def urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        when `type`==`urls`, no need for spec as URL can encode the ports being used
+        When `type`==`urls`, no need for spec as URL can encode the ports being used
         """
         return pulumi.get(self, "urls")
 
@@ -623,6 +751,8 @@ class Service(pulumi.CustomResource):
                  app_categories: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  app_subcategories: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  apps: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 client_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+                 client_limit_up: Optional[pulumi.Input[builtins.int]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  dscp: Optional[pulumi.Input[builtins.str]] = None,
                  failover_policy: Optional[pulumi.Input[builtins.str]] = None,
@@ -632,6 +762,8 @@ class Service(pulumi.CustomResource):
                  max_loss: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  org_id: Optional[pulumi.Input[builtins.str]] = None,
+                 service_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+                 service_limit_up: Optional[pulumi.Input[builtins.int]] = None,
                  sle_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]]] = None,
                  ssr_relaxed_tcp_state_enforcement: Optional[pulumi.Input[builtins.bool]] = None,
@@ -661,19 +793,23 @@ class Service(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] addresses: if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] app_categories: when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_categories
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] app_subcategories: when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_subcategories
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] apps: when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-               /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
-        :param pulumi.Input[builtins.str] failover_policy: enum: `non_revertable`, `none`, `revertable`
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] hostnames: if `type`==`custom`, web filtering
-        :param pulumi.Input[builtins.bool] sle_enabled: whether to enable measure SLE
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]] specs: when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] addresses: If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] app_categories: When `type`==`app_categories`, list of application categories are available through List App Category Definitions
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] app_subcategories: When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] apps: When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+               /insight/top_app_by-bytes?wired=true
+        :param pulumi.Input[builtins.int] client_limit_down: 0 means unlimited, value from 0 to 107374182
+        :param pulumi.Input[builtins.int] client_limit_up: 0 means unlimited, value from 0 to 107374182
+        :param pulumi.Input[builtins.str] failover_policy: enum: `non_revertible`, `none`, `revertible`
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] hostnames: If `type`==`custom`, web filtering
+        :param pulumi.Input[builtins.int] service_limit_down: 0 means unlimited, value from 0 to 107374182
+        :param pulumi.Input[builtins.int] service_limit_up: 0 means unlimited, value from 0 to 107374182
+        :param pulumi.Input[builtins.bool] sle_enabled: Whether to enable measure SLE
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]] specs: When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
         :param pulumi.Input[builtins.str] traffic_class: when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
-        :param pulumi.Input[builtins.str] traffic_type: values from `/api/v1/consts/traffic_types`
+        :param pulumi.Input[builtins.str] traffic_type: values from List Traffic Types
         :param pulumi.Input[builtins.str] type: enum: `app_categories`, `apps`, `custom`, `urls`
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] urls: when `type`==`urls`, no need for spec as URL can encode the ports being used
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] urls: When `type`==`urls`, no need for spec as URL can encode the ports being used
         """
         ...
     @overload
@@ -719,6 +855,8 @@ class Service(pulumi.CustomResource):
                  app_categories: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  app_subcategories: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  apps: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 client_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+                 client_limit_up: Optional[pulumi.Input[builtins.int]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  dscp: Optional[pulumi.Input[builtins.str]] = None,
                  failover_policy: Optional[pulumi.Input[builtins.str]] = None,
@@ -728,6 +866,8 @@ class Service(pulumi.CustomResource):
                  max_loss: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  org_id: Optional[pulumi.Input[builtins.str]] = None,
+                 service_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+                 service_limit_up: Optional[pulumi.Input[builtins.int]] = None,
                  sle_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]]] = None,
                  ssr_relaxed_tcp_state_enforcement: Optional[pulumi.Input[builtins.bool]] = None,
@@ -748,6 +888,8 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["app_categories"] = app_categories
             __props__.__dict__["app_subcategories"] = app_subcategories
             __props__.__dict__["apps"] = apps
+            __props__.__dict__["client_limit_down"] = client_limit_down
+            __props__.__dict__["client_limit_up"] = client_limit_up
             __props__.__dict__["description"] = description
             __props__.__dict__["dscp"] = dscp
             __props__.__dict__["failover_policy"] = failover_policy
@@ -759,6 +901,8 @@ class Service(pulumi.CustomResource):
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
+            __props__.__dict__["service_limit_down"] = service_limit_down
+            __props__.__dict__["service_limit_up"] = service_limit_up
             __props__.__dict__["sle_enabled"] = sle_enabled
             __props__.__dict__["specs"] = specs
             __props__.__dict__["ssr_relaxed_tcp_state_enforcement"] = ssr_relaxed_tcp_state_enforcement
@@ -780,6 +924,8 @@ class Service(pulumi.CustomResource):
             app_categories: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             app_subcategories: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             apps: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            client_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+            client_limit_up: Optional[pulumi.Input[builtins.int]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             dscp: Optional[pulumi.Input[builtins.str]] = None,
             failover_policy: Optional[pulumi.Input[builtins.str]] = None,
@@ -789,6 +935,8 @@ class Service(pulumi.CustomResource):
             max_loss: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             org_id: Optional[pulumi.Input[builtins.str]] = None,
+            service_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+            service_limit_up: Optional[pulumi.Input[builtins.int]] = None,
             sle_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]]] = None,
             ssr_relaxed_tcp_state_enforcement: Optional[pulumi.Input[builtins.bool]] = None,
@@ -803,19 +951,23 @@ class Service(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] addresses: if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] app_categories: when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_categories
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] app_subcategories: when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_subcategories
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] apps: when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-               /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
-        :param pulumi.Input[builtins.str] failover_policy: enum: `non_revertable`, `none`, `revertable`
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] hostnames: if `type`==`custom`, web filtering
-        :param pulumi.Input[builtins.bool] sle_enabled: whether to enable measure SLE
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]] specs: when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] addresses: If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] app_categories: When `type`==`app_categories`, list of application categories are available through List App Category Definitions
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] app_subcategories: When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] apps: When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+               /insight/top_app_by-bytes?wired=true
+        :param pulumi.Input[builtins.int] client_limit_down: 0 means unlimited, value from 0 to 107374182
+        :param pulumi.Input[builtins.int] client_limit_up: 0 means unlimited, value from 0 to 107374182
+        :param pulumi.Input[builtins.str] failover_policy: enum: `non_revertible`, `none`, `revertible`
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] hostnames: If `type`==`custom`, web filtering
+        :param pulumi.Input[builtins.int] service_limit_down: 0 means unlimited, value from 0 to 107374182
+        :param pulumi.Input[builtins.int] service_limit_up: 0 means unlimited, value from 0 to 107374182
+        :param pulumi.Input[builtins.bool] sle_enabled: Whether to enable measure SLE
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]] specs: When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
         :param pulumi.Input[builtins.str] traffic_class: when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
-        :param pulumi.Input[builtins.str] traffic_type: values from `/api/v1/consts/traffic_types`
+        :param pulumi.Input[builtins.str] traffic_type: values from List Traffic Types
         :param pulumi.Input[builtins.str] type: enum: `app_categories`, `apps`, `custom`, `urls`
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] urls: when `type`==`urls`, no need for spec as URL can encode the ports being used
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] urls: When `type`==`urls`, no need for spec as URL can encode the ports being used
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -825,6 +977,8 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["app_categories"] = app_categories
         __props__.__dict__["app_subcategories"] = app_subcategories
         __props__.__dict__["apps"] = apps
+        __props__.__dict__["client_limit_down"] = client_limit_down
+        __props__.__dict__["client_limit_up"] = client_limit_up
         __props__.__dict__["description"] = description
         __props__.__dict__["dscp"] = dscp
         __props__.__dict__["failover_policy"] = failover_policy
@@ -834,6 +988,8 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["max_loss"] = max_loss
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
+        __props__.__dict__["service_limit_down"] = service_limit_down
+        __props__.__dict__["service_limit_up"] = service_limit_up
         __props__.__dict__["sle_enabled"] = sle_enabled
         __props__.__dict__["specs"] = specs
         __props__.__dict__["ssr_relaxed_tcp_state_enforcement"] = ssr_relaxed_tcp_state_enforcement
@@ -847,7 +1003,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def addresses(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        if `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
         """
         return pulumi.get(self, "addresses")
 
@@ -855,7 +1011,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="appCategories")
     def app_categories(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_categories
+        When `type`==`app_categories`, list of application categories are available through List App Category Definitions
         """
         return pulumi.get(self, "app_categories")
 
@@ -863,7 +1019,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="appSubcategories")
     def app_subcategories(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        when `type`==`app_categories`, list of application categories are available through /api/v1/const/app_subcategories
+        When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
         """
         return pulumi.get(self, "app_subcategories")
 
@@ -871,10 +1027,26 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def apps(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        when `type`==`apps`, list of applications are available through: * /api/v1/const/applications *
-        /api/v1/const/gateway_applications * /insight/top_app_by-bytes?wired=true
+        When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
+        /insight/top_app_by-bytes?wired=true
         """
         return pulumi.get(self, "apps")
+
+    @property
+    @pulumi.getter(name="clientLimitDown")
+    def client_limit_down(self) -> pulumi.Output[Optional[builtins.int]]:
+        """
+        0 means unlimited, value from 0 to 107374182
+        """
+        return pulumi.get(self, "client_limit_down")
+
+    @property
+    @pulumi.getter(name="clientLimitUp")
+    def client_limit_up(self) -> pulumi.Output[Optional[builtins.int]]:
+        """
+        0 means unlimited, value from 0 to 107374182
+        """
+        return pulumi.get(self, "client_limit_up")
 
     @property
     @pulumi.getter
@@ -888,9 +1060,9 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="failoverPolicy")
-    def failover_policy(self) -> pulumi.Output[builtins.str]:
+    def failover_policy(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        enum: `non_revertable`, `none`, `revertable`
+        enum: `non_revertible`, `none`, `revertible`
         """
         return pulumi.get(self, "failover_policy")
 
@@ -898,7 +1070,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def hostnames(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        if `type`==`custom`, web filtering
+        If `type`==`custom`, web filtering
         """
         return pulumi.get(self, "hostnames")
 
@@ -928,10 +1100,26 @@ class Service(pulumi.CustomResource):
         return pulumi.get(self, "org_id")
 
     @property
-    @pulumi.getter(name="sleEnabled")
-    def sle_enabled(self) -> pulumi.Output[builtins.bool]:
+    @pulumi.getter(name="serviceLimitDown")
+    def service_limit_down(self) -> pulumi.Output[Optional[builtins.int]]:
         """
-        whether to enable measure SLE
+        0 means unlimited, value from 0 to 107374182
+        """
+        return pulumi.get(self, "service_limit_down")
+
+    @property
+    @pulumi.getter(name="serviceLimitUp")
+    def service_limit_up(self) -> pulumi.Output[Optional[builtins.int]]:
+        """
+        0 means unlimited, value from 0 to 107374182
+        """
+        return pulumi.get(self, "service_limit_up")
+
+    @property
+    @pulumi.getter(name="sleEnabled")
+    def sle_enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Whether to enable measure SLE
         """
         return pulumi.get(self, "sle_enabled")
 
@@ -939,18 +1127,18 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def specs(self) -> pulumi.Output[Optional[Sequence['outputs.ServiceSpec']]]:
         """
-        when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+        When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
         """
         return pulumi.get(self, "specs")
 
     @property
     @pulumi.getter(name="ssrRelaxedTcpStateEnforcement")
-    def ssr_relaxed_tcp_state_enforcement(self) -> pulumi.Output[builtins.bool]:
+    def ssr_relaxed_tcp_state_enforcement(self) -> pulumi.Output[Optional[builtins.bool]]:
         return pulumi.get(self, "ssr_relaxed_tcp_state_enforcement")
 
     @property
     @pulumi.getter(name="trafficClass")
-    def traffic_class(self) -> pulumi.Output[builtins.str]:
+    def traffic_class(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
         """
@@ -960,7 +1148,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="trafficType")
     def traffic_type(self) -> pulumi.Output[builtins.str]:
         """
-        values from `/api/v1/consts/traffic_types`
+        values from List Traffic Types
         """
         return pulumi.get(self, "traffic_type")
 
@@ -976,7 +1164,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def urls(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        when `type`==`urls`, no need for spec as URL can encode the ports being used
+        When `type`==`urls`, no need for spec as URL can encode the ports being used
         """
         return pulumi.get(self, "urls")
 

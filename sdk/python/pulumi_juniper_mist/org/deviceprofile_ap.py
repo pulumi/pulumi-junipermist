@@ -31,6 +31,7 @@ class DeviceprofileApArgs:
                  disable_module: Optional[pulumi.Input[builtins.bool]] = None,
                  esl_config: Optional[pulumi.Input['DeviceprofileApEslConfigArgs']] = None,
                  ip_config: Optional[pulumi.Input['DeviceprofileApIpConfigArgs']] = None,
+                 lacp_config: Optional[pulumi.Input['DeviceprofileApLacpConfigArgs']] = None,
                  led: Optional[pulumi.Input['DeviceprofileApLedArgs']] = None,
                  mesh: Optional[pulumi.Input['DeviceprofileApMeshArgs']] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -78,6 +79,8 @@ class DeviceprofileApArgs:
             pulumi.set(__self__, "esl_config", esl_config)
         if ip_config is not None:
             pulumi.set(__self__, "ip_config", ip_config)
+        if lacp_config is not None:
+            pulumi.set(__self__, "lacp_config", lacp_config)
         if led is not None:
             pulumi.set(__self__, "led", led)
         if mesh is not None:
@@ -202,6 +205,15 @@ class DeviceprofileApArgs:
     @ip_config.setter
     def ip_config(self, value: Optional[pulumi.Input['DeviceprofileApIpConfigArgs']]):
         pulumi.set(self, "ip_config", value)
+
+    @property
+    @pulumi.getter(name="lacpConfig")
+    def lacp_config(self) -> Optional[pulumi.Input['DeviceprofileApLacpConfigArgs']]:
+        return pulumi.get(self, "lacp_config")
+
+    @lacp_config.setter
+    def lacp_config(self, value: Optional[pulumi.Input['DeviceprofileApLacpConfigArgs']]):
+        pulumi.set(self, "lacp_config", value)
 
     @property
     @pulumi.getter
@@ -339,6 +351,7 @@ class _DeviceprofileApState:
                  disable_module: Optional[pulumi.Input[builtins.bool]] = None,
                  esl_config: Optional[pulumi.Input['DeviceprofileApEslConfigArgs']] = None,
                  ip_config: Optional[pulumi.Input['DeviceprofileApIpConfigArgs']] = None,
+                 lacp_config: Optional[pulumi.Input['DeviceprofileApLacpConfigArgs']] = None,
                  led: Optional[pulumi.Input['DeviceprofileApLedArgs']] = None,
                  mesh: Optional[pulumi.Input['DeviceprofileApMeshArgs']] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -388,6 +401,8 @@ class _DeviceprofileApState:
             pulumi.set(__self__, "esl_config", esl_config)
         if ip_config is not None:
             pulumi.set(__self__, "ip_config", ip_config)
+        if lacp_config is not None:
+            pulumi.set(__self__, "lacp_config", lacp_config)
         if led is not None:
             pulumi.set(__self__, "led", led)
         if mesh is not None:
@@ -507,6 +522,15 @@ class _DeviceprofileApState:
     @ip_config.setter
     def ip_config(self, value: Optional[pulumi.Input['DeviceprofileApIpConfigArgs']]):
         pulumi.set(self, "ip_config", value)
+
+    @property
+    @pulumi.getter(name="lacpConfig")
+    def lacp_config(self) -> Optional[pulumi.Input['DeviceprofileApLacpConfigArgs']]:
+        return pulumi.get(self, "lacp_config")
+
+    @lacp_config.setter
+    def lacp_config(self, value: Optional[pulumi.Input['DeviceprofileApLacpConfigArgs']]):
+        pulumi.set(self, "lacp_config", value)
 
     @property
     @pulumi.getter
@@ -667,6 +691,7 @@ class DeviceprofileAp(pulumi.CustomResource):
                  disable_module: Optional[pulumi.Input[builtins.bool]] = None,
                  esl_config: Optional[pulumi.Input[Union['DeviceprofileApEslConfigArgs', 'DeviceprofileApEslConfigArgsDict']]] = None,
                  ip_config: Optional[pulumi.Input[Union['DeviceprofileApIpConfigArgs', 'DeviceprofileApIpConfigArgsDict']]] = None,
+                 lacp_config: Optional[pulumi.Input[Union['DeviceprofileApLacpConfigArgs', 'DeviceprofileApLacpConfigArgsDict']]] = None,
                  led: Optional[pulumi.Input[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict']]] = None,
                  mesh: Optional[pulumi.Input[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict']]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -684,7 +709,7 @@ class DeviceprofileAp(pulumi.CustomResource):
         This resource manages the AP Device Profiles.
         AP Device profiles for aps are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They allow for efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
 
-        The AP Devide Profile can be assigned to a gateway with the `org.DeviceprofileAssign` resource.
+        The AP Device Profile can be assigned to a gateway with the `org.DeviceprofileAssign` resource.
 
         ## Example Usage
 
@@ -741,7 +766,7 @@ class DeviceprofileAp(pulumi.CustomResource):
         This resource manages the AP Device Profiles.
         AP Device profiles for aps are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They allow for efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
 
-        The AP Devide Profile can be assigned to a gateway with the `org.DeviceprofileAssign` resource.
+        The AP Device Profile can be assigned to a gateway with the `org.DeviceprofileAssign` resource.
 
         ## Example Usage
 
@@ -792,6 +817,7 @@ class DeviceprofileAp(pulumi.CustomResource):
                  disable_module: Optional[pulumi.Input[builtins.bool]] = None,
                  esl_config: Optional[pulumi.Input[Union['DeviceprofileApEslConfigArgs', 'DeviceprofileApEslConfigArgsDict']]] = None,
                  ip_config: Optional[pulumi.Input[Union['DeviceprofileApIpConfigArgs', 'DeviceprofileApIpConfigArgsDict']]] = None,
+                 lacp_config: Optional[pulumi.Input[Union['DeviceprofileApLacpConfigArgs', 'DeviceprofileApLacpConfigArgsDict']]] = None,
                  led: Optional[pulumi.Input[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict']]] = None,
                  mesh: Optional[pulumi.Input[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict']]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -821,6 +847,7 @@ class DeviceprofileAp(pulumi.CustomResource):
             __props__.__dict__["disable_module"] = disable_module
             __props__.__dict__["esl_config"] = esl_config
             __props__.__dict__["ip_config"] = ip_config
+            __props__.__dict__["lacp_config"] = lacp_config
             __props__.__dict__["led"] = led
             __props__.__dict__["mesh"] = mesh
             __props__.__dict__["name"] = name
@@ -854,6 +881,7 @@ class DeviceprofileAp(pulumi.CustomResource):
             disable_module: Optional[pulumi.Input[builtins.bool]] = None,
             esl_config: Optional[pulumi.Input[Union['DeviceprofileApEslConfigArgs', 'DeviceprofileApEslConfigArgsDict']]] = None,
             ip_config: Optional[pulumi.Input[Union['DeviceprofileApIpConfigArgs', 'DeviceprofileApIpConfigArgsDict']]] = None,
+            lacp_config: Optional[pulumi.Input[Union['DeviceprofileApLacpConfigArgs', 'DeviceprofileApLacpConfigArgsDict']]] = None,
             led: Optional[pulumi.Input[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict']]] = None,
             mesh: Optional[pulumi.Input[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict']]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
@@ -904,6 +932,7 @@ class DeviceprofileAp(pulumi.CustomResource):
         __props__.__dict__["disable_module"] = disable_module
         __props__.__dict__["esl_config"] = esl_config
         __props__.__dict__["ip_config"] = ip_config
+        __props__.__dict__["lacp_config"] = lacp_config
         __props__.__dict__["led"] = led
         __props__.__dict__["mesh"] = mesh
         __props__.__dict__["name"] = name
@@ -979,6 +1008,11 @@ class DeviceprofileAp(pulumi.CustomResource):
         IP AP settings
         """
         return pulumi.get(self, "ip_config")
+
+    @property
+    @pulumi.getter(name="lacpConfig")
+    def lacp_config(self) -> pulumi.Output[Optional['outputs.DeviceprofileApLacpConfig']]:
+        return pulumi.get(self, "lacp_config")
 
     @property
     @pulumi.getter

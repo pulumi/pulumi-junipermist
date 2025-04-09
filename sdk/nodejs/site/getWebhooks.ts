@@ -12,6 +12,17 @@ import * as utilities from "../utilities";
  * A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.\
  * It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.\
  * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/junipermist";
+ *
+ * const webhooks = junipermist.site.getWebhooks({
+ *     siteId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
+ * });
+ * ```
  */
 export function getWebhooks(args: GetWebhooksArgs, opts?: pulumi.InvokeOptions): Promise<GetWebhooksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -44,6 +55,17 @@ export interface GetWebhooksResult {
  * A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.\
  * It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.\
  * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/junipermist";
+ *
+ * const webhooks = junipermist.site.getWebhooks({
+ *     siteId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
+ * });
+ * ```
  */
 export function getWebhooksOutput(args: GetWebhooksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebhooksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

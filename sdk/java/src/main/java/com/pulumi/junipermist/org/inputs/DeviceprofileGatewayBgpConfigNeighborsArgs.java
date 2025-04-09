@@ -68,10 +68,18 @@ public final class DeviceprofileGatewayBgpConfigNeighborsArgs extends com.pulumi
         return Optional.ofNullable(this.multihopTtl);
     }
 
+    /**
+     * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * 
+     */
     @Import(name="neighborAs")
-    private @Nullable Output<Integer> neighborAs;
+    private @Nullable Output<String> neighborAs;
 
-    public Optional<Output<Integer>> neighborAs() {
+    /**
+     * @return Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * 
+     */
+    public Optional<Output<String>> neighborAs() {
         return Optional.ofNullable(this.neighborAs);
     }
 
@@ -173,12 +181,24 @@ public final class DeviceprofileGatewayBgpConfigNeighborsArgs extends com.pulumi
             return multihopTtl(Output.of(multihopTtl));
         }
 
-        public Builder neighborAs(@Nullable Output<Integer> neighborAs) {
+        /**
+         * @param neighborAs Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder neighborAs(@Nullable Output<String> neighborAs) {
             $.neighborAs = neighborAs;
             return this;
         }
 
-        public Builder neighborAs(Integer neighborAs) {
+        /**
+         * @param neighborAs Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder neighborAs(String neighborAs) {
             return neighborAs(Output.of(neighborAs));
         }
 

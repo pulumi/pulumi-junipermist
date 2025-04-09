@@ -27,7 +27,7 @@ class GetNacidpMetadataResult:
     """
     A collection of values returned by getNacidpMetadata.
     """
-    def __init__(__self__, acs_url=None, entity_id=None, id=None, logout_url=None, metadata=None, nacidp_id=None, org_id=None):
+    def __init__(__self__, acs_url=None, entity_id=None, id=None, logout_url=None, metadata=None, nacidp_id=None, org_id=None, scim_base_url=None):
         if acs_url and not isinstance(acs_url, str):
             raise TypeError("Expected argument 'acs_url' to be a str")
         pulumi.set(__self__, "acs_url", acs_url)
@@ -49,15 +49,24 @@ class GetNacidpMetadataResult:
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
+        if scim_base_url and not isinstance(scim_base_url, str):
+            raise TypeError("Expected argument 'scim_base_url' to be a str")
+        pulumi.set(__self__, "scim_base_url", scim_base_url)
 
     @property
     @pulumi.getter(name="acsUrl")
     def acs_url(self) -> builtins.str:
+        """
+        If `idp_type`==`saml`
+        """
         return pulumi.get(self, "acs_url")
 
     @property
     @pulumi.getter(name="entityId")
     def entity_id(self) -> builtins.str:
+        """
+        If `idp_type`==`saml`
+        """
         return pulumi.get(self, "entity_id")
 
     @property
@@ -71,11 +80,17 @@ class GetNacidpMetadataResult:
     @property
     @pulumi.getter(name="logoutUrl")
     def logout_url(self) -> builtins.str:
+        """
+        If `idp_type`==`saml`
+        """
         return pulumi.get(self, "logout_url")
 
     @property
     @pulumi.getter
     def metadata(self) -> builtins.str:
+        """
+        If `idp_type`==`saml`
+        """
         return pulumi.get(self, "metadata")
 
     @property
@@ -87,6 +102,14 @@ class GetNacidpMetadataResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> builtins.str:
         return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter(name="scimBaseUrl")
+    def scim_base_url(self) -> builtins.str:
+        """
+        If `idp_type`==`oauth` and `scim_enabled`==`true`
+        """
+        return pulumi.get(self, "scim_base_url")
 
 
 class AwaitableGetNacidpMetadataResult(GetNacidpMetadataResult):
@@ -101,7 +124,8 @@ class AwaitableGetNacidpMetadataResult(GetNacidpMetadataResult):
             logout_url=self.logout_url,
             metadata=self.metadata,
             nacidp_id=self.nacidp_id,
-            org_id=self.org_id)
+            org_id=self.org_id,
+            scim_base_url=self.scim_base_url)
 
 
 def get_nacidp_metadata(nacidp_id: Optional[builtins.str] = None,
@@ -110,7 +134,7 @@ def get_nacidp_metadata(nacidp_id: Optional[builtins.str] = None,
     """
     This data source provides the NAC IDP Metadata information.
 
-    The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+    The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
 
     ## Example Usage
 
@@ -135,14 +159,15 @@ def get_nacidp_metadata(nacidp_id: Optional[builtins.str] = None,
         logout_url=pulumi.get(__ret__, 'logout_url'),
         metadata=pulumi.get(__ret__, 'metadata'),
         nacidp_id=pulumi.get(__ret__, 'nacidp_id'),
-        org_id=pulumi.get(__ret__, 'org_id'))
+        org_id=pulumi.get(__ret__, 'org_id'),
+        scim_base_url=pulumi.get(__ret__, 'scim_base_url'))
 def get_nacidp_metadata_output(nacidp_id: Optional[pulumi.Input[builtins.str]] = None,
                                org_id: Optional[pulumi.Input[builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNacidpMetadataResult]:
     """
     This data source provides the NAC IDP Metadata information.
 
-    The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+    The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
 
     ## Example Usage
 
@@ -166,4 +191,5 @@ def get_nacidp_metadata_output(nacidp_id: Optional[pulumi.Input[builtins.str]] =
         logout_url=pulumi.get(__response__, 'logout_url'),
         metadata=pulumi.get(__response__, 'metadata'),
         nacidp_id=pulumi.get(__response__, 'nacidp_id'),
-        org_id=pulumi.get(__response__, 'org_id')))
+        org_id=pulumi.get(__response__, 'org_id'),
+        scim_base_url=pulumi.get(__response__, 'scim_base_url')))

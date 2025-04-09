@@ -51,7 +51,7 @@ const gateway = new junipermist.device.Gateway(`gateway-01`, {
       disableAutoneg: true,
       duplex: "full",
       redundant: true,
-      rethIdx: 1,
+      rethIdx: "1",
       wanType: "broadband",
       rethNode: "node0",
     },

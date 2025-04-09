@@ -69,7 +69,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _services;
 
         /// <summary>
-        /// Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+        /// Required when `servicepolicy_id` is not defined. List of Applications / Destinations
         /// </summary>
         public InputList<string> Services
         {

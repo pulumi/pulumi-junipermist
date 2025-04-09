@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplatePortConfigTrafficShaping {
     /**
-     * @return percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+     * @return percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
      * 
      */
     private @Nullable List<Integer> classPercentages;
@@ -27,7 +27,7 @@ public final class GatewaytemplatePortConfigTrafficShaping {
 
     private GatewaytemplatePortConfigTrafficShaping() {}
     /**
-     * @return percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+     * @return percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
      * 
      */
     public List<Integer> classPercentages() {

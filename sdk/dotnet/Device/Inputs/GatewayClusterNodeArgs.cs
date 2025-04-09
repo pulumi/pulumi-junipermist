@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayClusterNodeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+        /// Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
         /// </summary>
         [Input("mac", required: true)]
         public Input<string> Mac { get; set; } = null!;

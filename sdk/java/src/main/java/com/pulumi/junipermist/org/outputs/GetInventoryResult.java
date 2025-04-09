@@ -26,28 +26,29 @@ public final class GetInventoryResult {
      */
     private @Nullable String mac;
     /**
-     * @return device model
+     * @return Device model
      * 
      */
     private @Nullable String model;
     private String orgId;
-    /**
-     * @return List of devices
-     * 
-     */
     private List<GetInventoryOrgInventory> orgInventories;
     /**
-     * @return device serial
+     * @return Device serial
      * 
      */
     private @Nullable String serial;
     /**
-     * @return site id if assigned, null if not assigned
+     * @return Site id if assigned, null if not assigned
      * 
      */
     private @Nullable String siteId;
     /**
-     * @return to display Unassigned devices
+     * @return enum: `ap`, `gateway`, `switch`
+     * 
+     */
+    private @Nullable String type;
+    /**
+     * @return To display Unassigned devices
      * 
      */
     private @Nullable Boolean unassigned;
@@ -78,7 +79,7 @@ public final class GetInventoryResult {
         return Optional.ofNullable(this.mac);
     }
     /**
-     * @return device model
+     * @return Device model
      * 
      */
     public Optional<String> model() {
@@ -87,29 +88,32 @@ public final class GetInventoryResult {
     public String orgId() {
         return this.orgId;
     }
-    /**
-     * @return List of devices
-     * 
-     */
     public List<GetInventoryOrgInventory> orgInventories() {
         return this.orgInventories;
     }
     /**
-     * @return device serial
+     * @return Device serial
      * 
      */
     public Optional<String> serial() {
         return Optional.ofNullable(this.serial);
     }
     /**
-     * @return site id if assigned, null if not assigned
+     * @return Site id if assigned, null if not assigned
      * 
      */
     public Optional<String> siteId() {
         return Optional.ofNullable(this.siteId);
     }
     /**
-     * @return to display Unassigned devices
+     * @return enum: `ap`, `gateway`, `switch`
+     * 
+     */
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
+    }
+    /**
+     * @return To display Unassigned devices
      * 
      */
     public Optional<Boolean> unassigned() {
@@ -146,6 +150,7 @@ public final class GetInventoryResult {
         private List<GetInventoryOrgInventory> orgInventories;
         private @Nullable String serial;
         private @Nullable String siteId;
+        private @Nullable String type;
         private @Nullable Boolean unassigned;
         private @Nullable Boolean vc;
         private @Nullable String vcMac;
@@ -159,6 +164,7 @@ public final class GetInventoryResult {
     	      this.orgInventories = defaults.orgInventories;
     	      this.serial = defaults.serial;
     	      this.siteId = defaults.siteId;
+    	      this.type = defaults.type;
     	      this.unassigned = defaults.unassigned;
     	      this.vc = defaults.vc;
     	      this.vcMac = defaults.vcMac;
@@ -216,6 +222,12 @@ public final class GetInventoryResult {
             return this;
         }
         @CustomType.Setter
+        public Builder type(@Nullable String type) {
+
+            this.type = type;
+            return this;
+        }
+        @CustomType.Setter
         public Builder unassigned(@Nullable Boolean unassigned) {
 
             this.unassigned = unassigned;
@@ -242,6 +254,7 @@ public final class GetInventoryResult {
             _resultValue.orgInventories = orgInventories;
             _resultValue.serial = serial;
             _resultValue.siteId = siteId;
+            _resultValue.type = type;
             _resultValue.unassigned = unassigned;
             _resultValue.vc = vc;
             _resultValue.vcMac = vcMac;

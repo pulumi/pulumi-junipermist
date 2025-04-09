@@ -18,6 +18,7 @@ import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatLastT
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatMacTableStats;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatMemoryStat;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatModuleStat;
+import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatPort;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatRouteSummaryStats;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatServiceStat;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatVcSetupInfo;
@@ -38,7 +39,11 @@ public final class GetSwitchStatsDeviceSwitchStat {
     private GetSwitchStatsDeviceSwitchStatClientsStats clientsStats;
     private String configStatus;
     private GetSwitchStatsDeviceSwitchStatCpuStat cpuStat;
-    private Integer createdTime;
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
+    private Double createdTime;
     private String deviceprofileId;
     /**
      * @return Property key is the network name
@@ -49,20 +54,24 @@ public final class GetSwitchStatsDeviceSwitchStat {
     private Boolean fwVersionsOutofsync;
     private GetSwitchStatsDeviceSwitchStatFwupdate fwupdate;
     /**
-     * @return whether the switch supports packet capture
+     * @return Whether the switch supports packet capture
      * 
      */
     private Boolean hasPcap;
     /**
-     * @return hostname reported by the device
+     * @return Hostname reported by the device
      * 
      */
     private String hostname;
     /**
-     * @return device hardware revision number
+     * @return Device hardware revision number
      * 
      */
     private String hwRev;
+    /**
+     * @return Unique ID of the object instance in the Mist Organization
+     * 
+     */
     private String id;
     /**
      * @return Property key is the interface name
@@ -71,9 +80,13 @@ public final class GetSwitchStatsDeviceSwitchStat {
     private Map<String,GetSwitchStatsDeviceSwitchStatIfStat> ifStat;
     private String ip;
     private GetSwitchStatsDeviceSwitchStatIpStat ipStat;
+    /**
+     * @return Last seen timestamp
+     * 
+     */
     private Double lastSeen;
     /**
-     * @return last trouble code of switch
+     * @return Last trouble code of switch
      * 
      */
     private GetSwitchStatsDeviceSwitchStatLastTrouble lastTrouble;
@@ -81,19 +94,24 @@ public final class GetSwitchStatsDeviceSwitchStat {
     private GetSwitchStatsDeviceSwitchStatMacTableStats macTableStats;
     private String mapId;
     /**
-     * @return memory usage stat (for virtual chassis, memory usage of master RE)
+     * @return Memory usage stat (for virtual chassis, memory usage of master RE)
      * 
      */
     private GetSwitchStatsDeviceSwitchStatMemoryStat memoryStat;
     private String model;
-    private Integer modifiedTime;
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
+    private Double modifiedTime;
     private List<GetSwitchStatsDeviceSwitchStatModuleStat> moduleStats;
     /**
-     * @return device name if configured
+     * @return Device name if configured
      * 
      */
     private String name;
     private String orgId;
+    private List<GetSwitchStatsDeviceSwitchStatPort> ports;
     private GetSwitchStatsDeviceSwitchStatRouteSummaryStats routeSummaryStats;
     private String serial;
     private Map<String,GetSwitchStatsDeviceSwitchStatServiceStat> serviceStat;
@@ -126,7 +144,11 @@ public final class GetSwitchStatsDeviceSwitchStat {
     public GetSwitchStatsDeviceSwitchStatCpuStat cpuStat() {
         return this.cpuStat;
     }
-    public Integer createdTime() {
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
+    public Double createdTime() {
         return this.createdTime;
     }
     public String deviceprofileId() {
@@ -149,26 +171,30 @@ public final class GetSwitchStatsDeviceSwitchStat {
         return this.fwupdate;
     }
     /**
-     * @return whether the switch supports packet capture
+     * @return Whether the switch supports packet capture
      * 
      */
     public Boolean hasPcap() {
         return this.hasPcap;
     }
     /**
-     * @return hostname reported by the device
+     * @return Hostname reported by the device
      * 
      */
     public String hostname() {
         return this.hostname;
     }
     /**
-     * @return device hardware revision number
+     * @return Device hardware revision number
      * 
      */
     public String hwRev() {
         return this.hwRev;
     }
+    /**
+     * @return Unique ID of the object instance in the Mist Organization
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -185,11 +211,15 @@ public final class GetSwitchStatsDeviceSwitchStat {
     public GetSwitchStatsDeviceSwitchStatIpStat ipStat() {
         return this.ipStat;
     }
+    /**
+     * @return Last seen timestamp
+     * 
+     */
     public Double lastSeen() {
         return this.lastSeen;
     }
     /**
-     * @return last trouble code of switch
+     * @return Last trouble code of switch
      * 
      */
     public GetSwitchStatsDeviceSwitchStatLastTrouble lastTrouble() {
@@ -205,7 +235,7 @@ public final class GetSwitchStatsDeviceSwitchStat {
         return this.mapId;
     }
     /**
-     * @return memory usage stat (for virtual chassis, memory usage of master RE)
+     * @return Memory usage stat (for virtual chassis, memory usage of master RE)
      * 
      */
     public GetSwitchStatsDeviceSwitchStatMemoryStat memoryStat() {
@@ -214,14 +244,18 @@ public final class GetSwitchStatsDeviceSwitchStat {
     public String model() {
         return this.model;
     }
-    public Integer modifiedTime() {
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
+    public Double modifiedTime() {
         return this.modifiedTime;
     }
     public List<GetSwitchStatsDeviceSwitchStatModuleStat> moduleStats() {
         return this.moduleStats;
     }
     /**
-     * @return device name if configured
+     * @return Device name if configured
      * 
      */
     public String name() {
@@ -229,6 +263,9 @@ public final class GetSwitchStatsDeviceSwitchStat {
     }
     public String orgId() {
         return this.orgId;
+    }
+    public List<GetSwitchStatsDeviceSwitchStatPort> ports() {
+        return this.ports;
     }
     public GetSwitchStatsDeviceSwitchStatRouteSummaryStats routeSummaryStats() {
         return this.routeSummaryStats;
@@ -274,7 +311,7 @@ public final class GetSwitchStatsDeviceSwitchStat {
         private GetSwitchStatsDeviceSwitchStatClientsStats clientsStats;
         private String configStatus;
         private GetSwitchStatsDeviceSwitchStatCpuStat cpuStat;
-        private Integer createdTime;
+        private Double createdTime;
         private String deviceprofileId;
         private Map<String,GetSwitchStatsDeviceSwitchStatDhcpdStat> dhcpdStat;
         private String evpntopoId;
@@ -294,10 +331,11 @@ public final class GetSwitchStatsDeviceSwitchStat {
         private String mapId;
         private GetSwitchStatsDeviceSwitchStatMemoryStat memoryStat;
         private String model;
-        private Integer modifiedTime;
+        private Double modifiedTime;
         private List<GetSwitchStatsDeviceSwitchStatModuleStat> moduleStats;
         private String name;
         private String orgId;
+        private List<GetSwitchStatsDeviceSwitchStatPort> ports;
         private GetSwitchStatsDeviceSwitchStatRouteSummaryStats routeSummaryStats;
         private String serial;
         private Map<String,GetSwitchStatsDeviceSwitchStatServiceStat> serviceStat;
@@ -341,6 +379,7 @@ public final class GetSwitchStatsDeviceSwitchStat {
     	      this.moduleStats = defaults.moduleStats;
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
+    	      this.ports = defaults.ports;
     	      this.routeSummaryStats = defaults.routeSummaryStats;
     	      this.serial = defaults.serial;
     	      this.serviceStat = defaults.serviceStat;
@@ -412,7 +451,7 @@ public final class GetSwitchStatsDeviceSwitchStat {
             return this;
         }
         @CustomType.Setter
-        public Builder createdTime(Integer createdTime) {
+        public Builder createdTime(Double createdTime) {
             if (createdTime == null) {
               throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStat", "createdTime");
             }
@@ -572,7 +611,7 @@ public final class GetSwitchStatsDeviceSwitchStat {
             return this;
         }
         @CustomType.Setter
-        public Builder modifiedTime(Integer modifiedTime) {
+        public Builder modifiedTime(Double modifiedTime) {
             if (modifiedTime == null) {
               throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStat", "modifiedTime");
             }
@@ -605,6 +644,17 @@ public final class GetSwitchStatsDeviceSwitchStat {
             }
             this.orgId = orgId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ports(List<GetSwitchStatsDeviceSwitchStatPort> ports) {
+            if (ports == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStat", "ports");
+            }
+            this.ports = ports;
+            return this;
+        }
+        public Builder ports(GetSwitchStatsDeviceSwitchStatPort... ports) {
+            return ports(List.of(ports));
         }
         @CustomType.Setter
         public Builder routeSummaryStats(GetSwitchStatsDeviceSwitchStatRouteSummaryStats routeSummaryStats) {
@@ -711,6 +761,7 @@ public final class GetSwitchStatsDeviceSwitchStat {
             _resultValue.moduleStats = moduleStats;
             _resultValue.name = name;
             _resultValue.orgId = orgId;
+            _resultValue.ports = ports;
             _resultValue.routeSummaryStats = routeSummaryStats;
             _resultValue.serial = serial;
             _resultValue.serviceStat = serviceStat;

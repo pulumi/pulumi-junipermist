@@ -30,7 +30,7 @@ public final class GetWebhooksOrgWebhook {
      */
     private Map<String,String> headers;
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     private String id;
@@ -86,6 +86,11 @@ public final class GetWebhooksOrgWebhook {
      */
     private String secret;
     /**
+     * @return Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
+     * 
+     */
+    private Boolean singleEventPerMessage;
+    /**
      * @return Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
      * 
      */
@@ -130,7 +135,7 @@ public final class GetWebhooksOrgWebhook {
         return this.headers;
     }
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     public String id() {
@@ -210,6 +215,13 @@ public final class GetWebhooksOrgWebhook {
         return this.secret;
     }
     /**
+     * @return Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
+     * 
+     */
+    public Boolean singleEventPerMessage() {
+        return this.singleEventPerMessage;
+    }
+    /**
      * @return Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
      * 
      */
@@ -265,6 +277,7 @@ public final class GetWebhooksOrgWebhook {
         private String oauth2Username;
         private String orgId;
         private String secret;
+        private Boolean singleEventPerMessage;
         private String splunkToken;
         private List<String> topics;
         private String type;
@@ -288,6 +301,7 @@ public final class GetWebhooksOrgWebhook {
     	      this.oauth2Username = defaults.oauth2Username;
     	      this.orgId = defaults.orgId;
     	      this.secret = defaults.secret;
+    	      this.singleEventPerMessage = defaults.singleEventPerMessage;
     	      this.splunkToken = defaults.splunkToken;
     	      this.topics = defaults.topics;
     	      this.type = defaults.type;
@@ -419,6 +433,14 @@ public final class GetWebhooksOrgWebhook {
             return this;
         }
         @CustomType.Setter
+        public Builder singleEventPerMessage(Boolean singleEventPerMessage) {
+            if (singleEventPerMessage == null) {
+              throw new MissingRequiredPropertyException("GetWebhooksOrgWebhook", "singleEventPerMessage");
+            }
+            this.singleEventPerMessage = singleEventPerMessage;
+            return this;
+        }
+        @CustomType.Setter
         public Builder splunkToken(String splunkToken) {
             if (splunkToken == null) {
               throw new MissingRequiredPropertyException("GetWebhooksOrgWebhook", "splunkToken");
@@ -478,6 +500,7 @@ public final class GetWebhooksOrgWebhook {
             _resultValue.oauth2Username = oauth2Username;
             _resultValue.orgId = orgId;
             _resultValue.secret = secret;
+            _resultValue.singleEventPerMessage = singleEventPerMessage;
             _resultValue.splunkToken = splunkToken;
             _resultValue.topics = topics;
             _resultValue.type = type;

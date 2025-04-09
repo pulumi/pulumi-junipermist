@@ -16,15 +16,20 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string BackupVersion;
         public readonly string BiosVersion;
         public readonly string CpldVersion;
+        public readonly Outputs.GetSwitchStatsDeviceSwitchStatModuleStatCpuStatResult CpuStat;
         /// <summary>
-        /// used to report all error states the device node is running into.
-        /// An error should always have `type` and `since` fields, and could have some other fields specific to that type.
+        /// Used to report all error states the device node is running into. An error should always have `type` and `since` fields, and could have some other fields specific to that type.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSwitchStatsDeviceSwitchStatModuleStatErrorResult> Errors;
         public readonly ImmutableArray<Outputs.GetSwitchStatsDeviceSwitchStatModuleStatFanResult> Fans;
         public readonly int FpcIdx;
         public readonly string FpgaVersion;
+        /// <summary>
+        /// Last seen timestamp
+        /// </summary>
         public readonly double LastSeen;
+        public readonly bool Locating;
+        public readonly string Mac;
         public readonly string Model;
         public readonly string OpticsCpldVersion;
         public readonly string PendingVersion;
@@ -39,12 +44,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string Status;
         public readonly ImmutableArray<Outputs.GetSwitchStatsDeviceSwitchStatModuleStatTemperatureResult> Temperatures;
         public readonly string TmcFpgaVersion;
+        public readonly string Type;
         public readonly string UbootVersion;
         public readonly int Uptime;
         public readonly ImmutableArray<Outputs.GetSwitchStatsDeviceSwitchStatModuleStatVcLinkResult> VcLinks;
         public readonly string VcMode;
         /// <summary>
-        /// master / backup / linecard
+        /// enum: `master`, `backup`, `linecard`
         /// </summary>
         public readonly string VcRole;
         public readonly string VcState;
@@ -58,6 +64,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string cpldVersion,
 
+            Outputs.GetSwitchStatsDeviceSwitchStatModuleStatCpuStatResult cpuStat,
+
             ImmutableArray<Outputs.GetSwitchStatsDeviceSwitchStatModuleStatErrorResult> errors,
 
             ImmutableArray<Outputs.GetSwitchStatsDeviceSwitchStatModuleStatFanResult> fans,
@@ -67,6 +75,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
             string fpgaVersion,
 
             double lastSeen,
+
+            bool locating,
+
+            string mac,
 
             string model,
 
@@ -96,6 +108,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string tmcFpgaVersion,
 
+            string type,
+
             string ubootVersion,
 
             int uptime,
@@ -113,11 +127,14 @@ namespace Pulumi.JuniperMist.Device.Outputs
             BackupVersion = backupVersion;
             BiosVersion = biosVersion;
             CpldVersion = cpldVersion;
+            CpuStat = cpuStat;
             Errors = errors;
             Fans = fans;
             FpcIdx = fpcIdx;
             FpgaVersion = fpgaVersion;
             LastSeen = lastSeen;
+            Locating = locating;
+            Mac = mac;
             Model = model;
             OpticsCpldVersion = opticsCpldVersion;
             PendingVersion = pendingVersion;
@@ -132,6 +149,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             Status = status;
             Temperatures = temperatures;
             TmcFpgaVersion = tmcFpgaVersion;
+            Type = type;
             UbootVersion = ubootVersion;
             Uptime = uptime;
             VcLinks = vcLinks;

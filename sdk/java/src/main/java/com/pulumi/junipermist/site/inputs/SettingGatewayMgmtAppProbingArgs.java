@@ -19,14 +19,14 @@ public final class SettingGatewayMgmtAppProbingArgs extends com.pulumi.resources
     public static final SettingGatewayMgmtAppProbingArgs Empty = new SettingGatewayMgmtAppProbingArgs();
 
     /**
-     * APp-keys from /api/v1/const/applications
+     * APp-keys from List Applications
      * 
      */
     @Import(name="apps")
     private @Nullable Output<List<String>> apps;
 
     /**
-     * @return APp-keys from /api/v1/const/applications
+     * @return APp-keys from List Applications
      * 
      */
     public Optional<Output<List<String>>> apps() {
@@ -74,7 +74,7 @@ public final class SettingGatewayMgmtAppProbingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param apps APp-keys from /api/v1/const/applications
+         * @param apps APp-keys from List Applications
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class SettingGatewayMgmtAppProbingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param apps APp-keys from /api/v1/const/applications
+         * @param apps APp-keys from List Applications
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class SettingGatewayMgmtAppProbingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param apps APp-keys from /api/v1/const/applications
+         * @param apps APp-keys from List Applications
          * 
          * @return builder
          * 

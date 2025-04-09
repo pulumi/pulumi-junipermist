@@ -65,17 +65,11 @@ class GetApStatsResult:
     @property
     @pulumi.getter
     def duration(self) -> Optional[builtins.str]:
-        """
-        duration like 7d, 2w
-        """
         return pulumi.get(self, "duration")
 
     @property
     @pulumi.getter
     def end(self) -> Optional[builtins.int]:
-        """
-        end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-        """
         return pulumi.get(self, "end")
 
     @property
@@ -104,9 +98,6 @@ class GetApStatsResult:
     @property
     @pulumi.getter
     def start(self) -> Optional[builtins.int]:
-        """
-        start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-        """
         return pulumi.get(self, "start")
 
     @property
@@ -157,11 +148,6 @@ def get_ap_stats(duration: Optional[builtins.str] = None,
         start=1736031600,
         end=1736175934)
     ```
-
-
-    :param builtins.str duration: duration like 7d, 2w
-    :param builtins.int end: end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-    :param builtins.int start: start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
     """
     __args__ = dict()
     __args__['duration'] = duration
@@ -209,11 +195,6 @@ def get_ap_stats_output(duration: Optional[pulumi.Input[Optional[builtins.str]]]
         start=1736031600,
         end=1736175934)
     ```
-
-
-    :param builtins.str duration: duration like 7d, 2w
-    :param builtins.int end: end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-    :param builtins.int start: start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
     """
     __args__ = dict()
     __args__['duration'] = duration

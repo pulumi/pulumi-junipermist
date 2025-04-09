@@ -15,6 +15,11 @@ export type EvpnTopology = import("./evpnTopology").EvpnTopology;
 export const EvpnTopology: typeof import("./evpnTopology").EvpnTopology = null as any;
 utilities.lazyLoad(exports, ["EvpnTopology"], () => require("./evpnTopology"));
 
+export { GetEvpnTopologiesArgs, GetEvpnTopologiesResult, GetEvpnTopologiesOutputArgs } from "./getEvpnTopologies";
+export const getEvpnTopologies: typeof import("./getEvpnTopologies").getEvpnTopologies = null as any;
+export const getEvpnTopologiesOutput: typeof import("./getEvpnTopologies").getEvpnTopologiesOutput = null as any;
+utilities.lazyLoad(exports, ["getEvpnTopologies","getEvpnTopologiesOutput"], () => require("./getEvpnTopologies"));
+
 export { GetPsksArgs, GetPsksResult, GetPsksOutputArgs } from "./getPsks";
 export const getPsks: typeof import("./getPsks").getPsks = null as any;
 export const getPsksOutput: typeof import("./getPsks").getPsksOutput = null as any;

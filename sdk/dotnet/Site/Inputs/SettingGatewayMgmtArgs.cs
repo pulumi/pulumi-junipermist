@@ -54,6 +54,15 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("disableOob")]
         public Input<bool>? DisableOob { get; set; }
 
+        /// <summary>
+        /// For SSR disable usb interface
+        /// </summary>
+        [Input("disableUsb")]
+        public Input<bool>? DisableUsb { get; set; }
+
+        [Input("fipsEnabled")]
+        public Input<bool>? FipsEnabled { get; set; }
+
         [Input("probeHosts")]
         private InputList<string>? _probeHosts;
         public InputList<string> ProbeHosts

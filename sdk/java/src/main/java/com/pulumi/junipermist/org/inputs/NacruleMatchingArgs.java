@@ -17,18 +17,63 @@ public final class NacruleMatchingArgs extends com.pulumi.resources.ResourceArgs
     public static final NacruleMatchingArgs Empty = new NacruleMatchingArgs();
 
     /**
-     * enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `psk`
+     * enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
      * 
      */
     @Import(name="authType")
     private @Nullable Output<String> authType;
 
     /**
-     * @return enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `psk`
+     * @return enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
      * 
      */
     public Optional<Output<String>> authType() {
         return Optional.ofNullable(this.authType);
+    }
+
+    /**
+     * List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+     * 
+     */
+    @Import(name="families")
+    private @Nullable Output<List<String>> families;
+
+    /**
+     * @return List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+     * 
+     */
+    public Optional<Output<List<String>>> families() {
+        return Optional.ofNullable(this.families);
+    }
+
+    /**
+     * List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+     * 
+     */
+    @Import(name="mfgs")
+    private @Nullable Output<List<String>> mfgs;
+
+    /**
+     * @return List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+     * 
+     */
+    public Optional<Output<List<String>>> mfgs() {
+        return Optional.ofNullable(this.mfgs);
+    }
+
+    /**
+     * List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+     * 
+     */
+    @Import(name="models")
+    private @Nullable Output<List<String>> models;
+
+    /**
+     * @return List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+     * 
+     */
+    public Optional<Output<List<String>>> models() {
+        return Optional.ofNullable(this.models);
     }
 
     @Import(name="nactags")
@@ -36,6 +81,21 @@ public final class NacruleMatchingArgs extends com.pulumi.resources.ResourceArgs
 
     public Optional<Output<List<String>>> nactags() {
         return Optional.ofNullable(this.nactags);
+    }
+
+    /**
+     * List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed os_type values
+     * 
+     */
+    @Import(name="osTypes")
+    private @Nullable Output<List<String>> osTypes;
+
+    /**
+     * @return List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed os_type values
+     * 
+     */
+    public Optional<Output<List<String>>> osTypes() {
+        return Optional.ofNullable(this.osTypes);
     }
 
     @Import(name="portTypes")
@@ -46,14 +106,14 @@ public final class NacruleMatchingArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * list of site ids to match
+     * List of site ids to match
      * 
      */
     @Import(name="siteIds")
     private @Nullable Output<List<String>> siteIds;
 
     /**
-     * @return list of site ids to match
+     * @return List of site ids to match
      * 
      */
     public Optional<Output<List<String>>> siteIds() {
@@ -61,14 +121,14 @@ public final class NacruleMatchingArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * list of sitegroup ids to match
+     * List of sitegroup ids to match
      * 
      */
     @Import(name="sitegroupIds")
     private @Nullable Output<List<String>> sitegroupIds;
 
     /**
-     * @return list of sitegroup ids to match
+     * @return List of sitegroup ids to match
      * 
      */
     public Optional<Output<List<String>>> sitegroupIds() {
@@ -76,14 +136,14 @@ public final class NacruleMatchingArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * list of vendors to match
+     * List of vendors to match
      * 
      */
     @Import(name="vendors")
     private @Nullable Output<List<String>> vendors;
 
     /**
-     * @return list of vendors to match
+     * @return List of vendors to match
      * 
      */
     public Optional<Output<List<String>>> vendors() {
@@ -94,7 +154,11 @@ public final class NacruleMatchingArgs extends com.pulumi.resources.ResourceArgs
 
     private NacruleMatchingArgs(NacruleMatchingArgs $) {
         this.authType = $.authType;
+        this.families = $.families;
+        this.mfgs = $.mfgs;
+        this.models = $.models;
         this.nactags = $.nactags;
+        this.osTypes = $.osTypes;
         this.portTypes = $.portTypes;
         this.siteIds = $.siteIds;
         this.sitegroupIds = $.sitegroupIds;
@@ -120,7 +184,7 @@ public final class NacruleMatchingArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authType enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `psk`
+         * @param authType enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
          * 
          * @return builder
          * 
@@ -131,13 +195,106 @@ public final class NacruleMatchingArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authType enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `psk`
+         * @param authType enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
          * 
          * @return builder
          * 
          */
         public Builder authType(String authType) {
             return authType(Output.of(authType));
+        }
+
+        /**
+         * @param families List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder families(@Nullable Output<List<String>> families) {
+            $.families = families;
+            return this;
+        }
+
+        /**
+         * @param families List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder families(List<String> families) {
+            return families(Output.of(families));
+        }
+
+        /**
+         * @param families List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder families(String... families) {
+            return families(List.of(families));
+        }
+
+        /**
+         * @param mfgs List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfgs(@Nullable Output<List<String>> mfgs) {
+            $.mfgs = mfgs;
+            return this;
+        }
+
+        /**
+         * @param mfgs List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfgs(List<String> mfgs) {
+            return mfgs(Output.of(mfgs));
+        }
+
+        /**
+         * @param mfgs List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfgs(String... mfgs) {
+            return mfgs(List.of(mfgs));
+        }
+
+        /**
+         * @param models List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder models(@Nullable Output<List<String>> models) {
+            $.models = models;
+            return this;
+        }
+
+        /**
+         * @param models List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder models(List<String> models) {
+            return models(Output.of(models));
+        }
+
+        /**
+         * @param models List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder models(String... models) {
+            return models(List.of(models));
         }
 
         public Builder nactags(@Nullable Output<List<String>> nactags) {
@@ -151,6 +308,37 @@ public final class NacruleMatchingArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder nactags(String... nactags) {
             return nactags(List.of(nactags));
+        }
+
+        /**
+         * @param osTypes List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed os_type values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder osTypes(@Nullable Output<List<String>> osTypes) {
+            $.osTypes = osTypes;
+            return this;
+        }
+
+        /**
+         * @param osTypes List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed os_type values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder osTypes(List<String> osTypes) {
+            return osTypes(Output.of(osTypes));
+        }
+
+        /**
+         * @param osTypes List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed os_type values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder osTypes(String... osTypes) {
+            return osTypes(List.of(osTypes));
         }
 
         public Builder portTypes(@Nullable Output<List<String>> portTypes) {
@@ -167,7 +355,7 @@ public final class NacruleMatchingArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param siteIds list of site ids to match
+         * @param siteIds List of site ids to match
          * 
          * @return builder
          * 
@@ -178,7 +366,7 @@ public final class NacruleMatchingArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param siteIds list of site ids to match
+         * @param siteIds List of site ids to match
          * 
          * @return builder
          * 
@@ -188,7 +376,7 @@ public final class NacruleMatchingArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param siteIds list of site ids to match
+         * @param siteIds List of site ids to match
          * 
          * @return builder
          * 
@@ -198,7 +386,7 @@ public final class NacruleMatchingArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param sitegroupIds list of sitegroup ids to match
+         * @param sitegroupIds List of sitegroup ids to match
          * 
          * @return builder
          * 
@@ -209,7 +397,7 @@ public final class NacruleMatchingArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param sitegroupIds list of sitegroup ids to match
+         * @param sitegroupIds List of sitegroup ids to match
          * 
          * @return builder
          * 
@@ -219,7 +407,7 @@ public final class NacruleMatchingArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param sitegroupIds list of sitegroup ids to match
+         * @param sitegroupIds List of sitegroup ids to match
          * 
          * @return builder
          * 
@@ -229,7 +417,7 @@ public final class NacruleMatchingArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vendors list of vendors to match
+         * @param vendors List of vendors to match
          * 
          * @return builder
          * 
@@ -240,7 +428,7 @@ public final class NacruleMatchingArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vendors list of vendors to match
+         * @param vendors List of vendors to match
          * 
          * @return builder
          * 
@@ -250,7 +438,7 @@ public final class NacruleMatchingArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vendors list of vendors to match
+         * @param vendors List of vendors to match
          * 
          * @return builder
          * 

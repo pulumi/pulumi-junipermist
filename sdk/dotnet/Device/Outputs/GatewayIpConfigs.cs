@@ -13,8 +13,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayIpConfigs
     {
-        public readonly string Ip;
-        public readonly string Netmask;
+        public readonly string? Ip;
+        public readonly string? Netmask;
         /// <summary>
         /// Optional list of secondary IPs in CIDR format
         /// </summary>
@@ -26,9 +26,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
         [OutputConstructor]
         private GatewayIpConfigs(
-            string ip,
+            string? ip,
 
-            string netmask,
+            string? netmask,
 
             ImmutableArray<string> secondaryIps,
 

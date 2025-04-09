@@ -57,7 +57,7 @@ class GetNacEndpointsResult:
     @pulumi.getter
     def labels(self) -> Optional[Sequence[builtins.str]]:
         """
-        optional, array of strings of labels
+        Optional, array of strings of labels
         """
         return pulumi.get(self, "labels")
 
@@ -65,7 +65,7 @@ class GetNacEndpointsResult:
     @pulumi.getter
     def mac(self) -> Optional[builtins.str]:
         """
-        partial/full MAC addres
+        Partial/full MAC address
         """
         return pulumi.get(self, "mac")
 
@@ -114,8 +114,8 @@ def get_nac_endpoints(labels: Optional[Sequence[builtins.str]] = None,
     ```
 
 
-    :param Sequence[builtins.str] labels: optional, array of strings of labels
-    :param builtins.str mac: partial/full MAC addres
+    :param Sequence[builtins.str] labels: Optional, array of strings of labels
+    :param builtins.str mac: Partial/full MAC address
     """
     __args__ = dict()
     __args__['labels'] = labels
@@ -151,8 +151,8 @@ def get_nac_endpoints_output(labels: Optional[pulumi.Input[Optional[Sequence[bui
     ```
 
 
-    :param Sequence[builtins.str] labels: optional, array of strings of labels
-    :param builtins.str mac: partial/full MAC addres
+    :param Sequence[builtins.str] labels: Optional, array of strings of labels
+    :param builtins.str mac: Partial/full MAC address
     """
     __args__ = dict()
     __args__['labels'] = labels

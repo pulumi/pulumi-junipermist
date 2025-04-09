@@ -59,6 +59,7 @@ class UpgradeDeviceFwupdate(dict):
                  will_retry: Optional[builtins.bool] = None):
         """
         :param builtins.str status: enum: `inprogress`, `failed`, `upgraded`
+        :param builtins.float timestamp: Epoch (seconds)
         """
         if progress is not None:
             pulumi.set(__self__, "progress", progress)
@@ -92,6 +93,9 @@ class UpgradeDeviceFwupdate(dict):
     @property
     @pulumi.getter
     def timestamp(self) -> Optional[builtins.float]:
+        """
+        Epoch (seconds)
+        """
         return pulumi.get(self, "timestamp")
 
     @property
@@ -333,8 +337,8 @@ class GetConstCountriesConstCountryResult(dict):
                  name: builtins.str,
                  numeric: builtins.float):
         """
-        :param builtins.str alpha2: country code, in two-character
-        :param builtins.float numeric: country code, ISO 3166-1 numeric
+        :param builtins.str alpha2: Country code, in two-character
+        :param builtins.float numeric: Country code, ISO 3166-1 numeric
         """
         pulumi.set(__self__, "alpha2", alpha2)
         pulumi.set(__self__, "certified", certified)
@@ -345,7 +349,7 @@ class GetConstCountriesConstCountryResult(dict):
     @pulumi.getter
     def alpha2(self) -> builtins.str:
         """
-        country code, in two-character
+        Country code, in two-character
         """
         return pulumi.get(self, "alpha2")
 
@@ -363,7 +367,7 @@ class GetConstCountriesConstCountryResult(dict):
     @pulumi.getter
     def numeric(self) -> builtins.float:
         """
-        country code, ISO 3166-1 numeric
+        Country code, ISO 3166-1 numeric
         """
         return pulumi.get(self, "numeric")
 
@@ -432,26 +436,37 @@ class GetConstTrafficTypesConstTrafficTypeResult(dict):
 @pulumi.output_type
 class GetConstWebhooksConstWebhookResult(dict):
     def __init__(__self__, *,
+                 allows_single_event_per_message: builtins.bool,
                  for_org: builtins.bool,
                  has_delivery_results: builtins.bool,
                  internal: builtins.bool,
                  key: builtins.str):
         """
-        :param builtins.bool for_org: can be used in org webhooks, optional
-        :param builtins.bool has_delivery_results: supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
-        :param builtins.bool internal: internal topic (not selectable in site/org webhooks)
-        :param builtins.str key: webhook topic name
+        :param builtins.bool allows_single_event_per_message: supports single event per message results
+        :param builtins.bool for_org: Can be used in org webhooks, optional
+        :param builtins.bool has_delivery_results: Supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
+        :param builtins.bool internal: Internal topic (not selectable in site/org webhooks)
+        :param builtins.str key: Webhook topic name
         """
+        pulumi.set(__self__, "allows_single_event_per_message", allows_single_event_per_message)
         pulumi.set(__self__, "for_org", for_org)
         pulumi.set(__self__, "has_delivery_results", has_delivery_results)
         pulumi.set(__self__, "internal", internal)
         pulumi.set(__self__, "key", key)
 
     @property
+    @pulumi.getter(name="allowsSingleEventPerMessage")
+    def allows_single_event_per_message(self) -> builtins.bool:
+        """
+        supports single event per message results
+        """
+        return pulumi.get(self, "allows_single_event_per_message")
+
+    @property
     @pulumi.getter(name="forOrg")
     def for_org(self) -> builtins.bool:
         """
-        can be used in org webhooks, optional
+        Can be used in org webhooks, optional
         """
         return pulumi.get(self, "for_org")
 
@@ -459,7 +474,7 @@ class GetConstWebhooksConstWebhookResult(dict):
     @pulumi.getter(name="hasDeliveryResults")
     def has_delivery_results(self) -> builtins.bool:
         """
-        supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
+        Supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
         """
         return pulumi.get(self, "has_delivery_results")
 
@@ -467,7 +482,7 @@ class GetConstWebhooksConstWebhookResult(dict):
     @pulumi.getter
     def internal(self) -> builtins.bool:
         """
-        internal topic (not selectable in site/org webhooks)
+        Internal topic (not selectable in site/org webhooks)
         """
         return pulumi.get(self, "internal")
 
@@ -475,7 +490,7 @@ class GetConstWebhooksConstWebhookResult(dict):
     @pulumi.getter
     def key(self) -> builtins.str:
         """
-        webhook topic name
+        Webhook topic name
         """
         return pulumi.get(self, "key")
 

@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource can be used to upgrade the frimware of a single device (Wi-Fi Access Points, Switches and SRX/SSR Gateways).
+// This resource can be used to upgrade the firmware of a single device (Wi-Fi Access Points, Switches and SRX/SSR Gateways).
 //
 // The resource will send the upgrade command to Mist, which will take care of deploying the new firmware version to the device, and reboot it if required.
 //
@@ -86,7 +86,7 @@ type UpgradeDevice struct {
 	SyncUpgradeTimeout pulumi.IntOutput `pulumi:"syncUpgradeTimeout"`
 	// firmware version to deploy to the device. Use the `device.getVersions` datasource to get the list of available firmware versions
 	TargetVersion pulumi.StringOutput `pulumi:"targetVersion"`
-	// Timestamp
+	// Epoch (seconds)
 	Timestamp pulumi.Float64Output `pulumi:"timestamp"`
 }
 
@@ -154,7 +154,7 @@ type upgradeDeviceState struct {
 	SyncUpgradeTimeout *int `pulumi:"syncUpgradeTimeout"`
 	// firmware version to deploy to the device. Use the `device.getVersions` datasource to get the list of available firmware versions
 	TargetVersion *string `pulumi:"targetVersion"`
-	// Timestamp
+	// Epoch (seconds)
 	Timestamp *float64 `pulumi:"timestamp"`
 }
 
@@ -184,7 +184,7 @@ type UpgradeDeviceState struct {
 	SyncUpgradeTimeout pulumi.IntPtrInput
 	// firmware version to deploy to the device. Use the `device.getVersions` datasource to get the list of available firmware versions
 	TargetVersion pulumi.StringPtrInput
-	// Timestamp
+	// Epoch (seconds)
 	Timestamp pulumi.Float64PtrInput
 }
 
@@ -393,7 +393,7 @@ func (o UpgradeDeviceOutput) TargetVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.StringOutput { return v.TargetVersion }).(pulumi.StringOutput)
 }
 
-// Timestamp
+// Epoch (seconds)
 func (o UpgradeDeviceOutput) Timestamp() pulumi.Float64Output {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.Float64Output { return v.Timestamp }).(pulumi.Float64Output)
 }

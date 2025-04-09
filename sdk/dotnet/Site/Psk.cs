@@ -75,7 +75,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<int?> ExpiryNotificationTime { get; private set; } = null!;
 
         /// <summary>
-        /// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        /// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         /// </summary>
         [Output("mac")]
         public Output<string?> Mac { get; private set; } = null!;
@@ -205,7 +205,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<int>? ExpiryNotificationTime { get; set; }
 
         /// <summary>
-        /// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        /// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
@@ -308,7 +308,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<int>? ExpiryNotificationTime { get; set; }
 
         /// <summary>
-        /// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        /// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }

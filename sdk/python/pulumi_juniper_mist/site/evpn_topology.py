@@ -201,7 +201,7 @@ class EvpnTopology(pulumi.CustomResource):
                  switches: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict']]]]] = None,
                  __props__=None):
         """
-        This resource manages the Site Evpn Topologys.
+        This resource manages the Site Evpn Topology.
 
         EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
 
@@ -283,7 +283,7 @@ class EvpnTopology(pulumi.CustomResource):
                  args: EvpnTopologyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages the Site Evpn Topologys.
+        This resource manages the Site Evpn Topology.
 
         EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
 

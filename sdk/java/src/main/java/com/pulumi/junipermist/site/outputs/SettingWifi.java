@@ -41,7 +41,7 @@ public final class SettingWifi {
      */
     private @Nullable Boolean locateUnconnected;
     /**
-     * @return Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+     * @return Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will disrupt the connection. If roaming is desired, keep it disabled.
      * 
      */
     private @Nullable Boolean meshAllowDfs;
@@ -117,7 +117,7 @@ public final class SettingWifi {
         return Optional.ofNullable(this.locateUnconnected);
     }
     /**
-     * @return Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+     * @return Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will disrupt the connection. If roaming is desired, keep it disabled.
      * 
      */
     public Optional<Boolean> meshAllowDfs() {

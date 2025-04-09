@@ -8,6 +8,7 @@ import typing
 # Export this package's modules as members:
 from .base import *
 from .evpn_topology import *
+from .get_evpn_topologies import *
 from .get_psks import *
 from .get_webhooks import *
 from .get_wlans import *

@@ -28,7 +28,7 @@ class GetRftemplatesResult:
     """
     A collection of values returned by getRftemplates.
     """
-    def __init__(__self__, id=None, org_id=None, org_rftemplates=None):
+    def __init__(__self__, id=None, org_id=None, org_rftemplates=None, page=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -38,6 +38,9 @@ class GetRftemplatesResult:
         if org_rftemplates and not isinstance(org_rftemplates, list):
             raise TypeError("Expected argument 'org_rftemplates' to be a list")
         pulumi.set(__self__, "org_rftemplates", org_rftemplates)
+        if page and not isinstance(page, int):
+            raise TypeError("Expected argument 'page' to be a int")
+        pulumi.set(__self__, "page", page)
 
     @property
     @pulumi.getter
@@ -57,6 +60,11 @@ class GetRftemplatesResult:
     def org_rftemplates(self) -> Sequence['outputs.GetRftemplatesOrgRftemplateResult']:
         return pulumi.get(self, "org_rftemplates")
 
+    @property
+    @pulumi.getter
+    def page(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "page")
+
 
 class AwaitableGetRftemplatesResult(GetRftemplatesResult):
     # pylint: disable=using-constant-test
@@ -66,10 +74,12 @@ class AwaitableGetRftemplatesResult(GetRftemplatesResult):
         return GetRftemplatesResult(
             id=self.id,
             org_id=self.org_id,
-            org_rftemplates=self.org_rftemplates)
+            org_rftemplates=self.org_rftemplates,
+            page=self.page)
 
 
 def get_rftemplates(org_id: Optional[builtins.str] = None,
+                    page: Optional[builtins.int] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRftemplatesResult:
     """
     This data source provides the list of RF Templates.
@@ -87,14 +97,17 @@ def get_rftemplates(org_id: Optional[builtins.str] = None,
     """
     __args__ = dict()
     __args__['orgId'] = org_id
+    __args__['page'] = page
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('junipermist:org/getRftemplates:getRftemplates', __args__, opts=opts, typ=GetRftemplatesResult).value
 
     return AwaitableGetRftemplatesResult(
         id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
-        org_rftemplates=pulumi.get(__ret__, 'org_rftemplates'))
+        org_rftemplates=pulumi.get(__ret__, 'org_rftemplates'),
+        page=pulumi.get(__ret__, 'page'))
 def get_rftemplates_output(org_id: Optional[pulumi.Input[builtins.str]] = None,
+                           page: Optional[pulumi.Input[Optional[builtins.int]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRftemplatesResult]:
     """
     This data source provides the list of RF Templates.
@@ -112,9 +125,11 @@ def get_rftemplates_output(org_id: Optional[pulumi.Input[builtins.str]] = None,
     """
     __args__ = dict()
     __args__['orgId'] = org_id
+    __args__['page'] = page
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getRftemplates:getRftemplates', __args__, opts=opts, typ=GetRftemplatesResult)
     return __ret__.apply(lambda __response__: GetRftemplatesResult(
         id=pulumi.get(__response__, 'id'),
         org_id=pulumi.get(__response__, 'org_id'),
-        org_rftemplates=pulumi.get(__response__, 'org_rftemplates')))
+        org_rftemplates=pulumi.get(__response__, 'org_rftemplates'),
+        page=pulumi.get(__response__, 'page')))

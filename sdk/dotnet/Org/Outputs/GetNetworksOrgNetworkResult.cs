@@ -13,11 +13,23 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class GetNetworksOrgNetworkResult
     {
+        /// <summary>
+        /// When the object has been created, in epoch
+        /// </summary>
         public readonly double CreatedTime;
+        /// <summary>
+        /// Unique ID of the object instance in the Mist Organization
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// When the object has been modified for the last time, in epoch
+        /// </summary>
         public readonly double ModifiedTime;
         public readonly string Name;
         public readonly string OrgId;
+        public readonly string Subnet;
+        public readonly string Subnet6;
+        public readonly string VlanId;
 
         [OutputConstructor]
         private GetNetworksOrgNetworkResult(
@@ -29,13 +41,22 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string name,
 
-            string orgId)
+            string orgId,
+
+            string subnet,
+
+            string subnet6,
+
+            string vlanId)
         {
             CreatedTime = createdTime;
             Id = id;
             ModifiedTime = modifiedTime;
             Name = name;
             OrgId = orgId;
+            Subnet = subnet;
+            Subnet6 = subnet6;
+            VlanId = vlanId;
         }
     }
 }

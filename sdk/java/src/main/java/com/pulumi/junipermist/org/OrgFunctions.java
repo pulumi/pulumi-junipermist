@@ -1233,7 +1233,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Gateway Templates.
      * 
-     * A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
+     * A Gateway template can be used to define generic gateway configuration at the org level and be applied to one or multiple Sites. It works like a blueprint of the network of the site.
      * 
      * ## Example Usage
      * 
@@ -1277,7 +1277,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Gateway Templates.
      * 
-     * A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
+     * A Gateway template can be used to define generic gateway configuration at the org level and be applied to one or multiple Sites. It works like a blueprint of the network of the site.
      * 
      * ## Example Usage
      * 
@@ -1321,7 +1321,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Gateway Templates.
      * 
-     * A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
+     * A Gateway template can be used to define generic gateway configuration at the org level and be applied to one or multiple Sites. It works like a blueprint of the network of the site.
      * 
      * ## Example Usage
      * 
@@ -1365,7 +1365,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Gateway Templates.
      * 
-     * A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
+     * A Gateway template can be used to define generic gateway configuration at the org level and be applied to one or multiple Sites. It works like a blueprint of the network of the site.
      * 
      * ## Example Usage
      * 
@@ -1409,7 +1409,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Gateway Templates.
      * 
-     * A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
+     * A Gateway template can be used to define generic gateway configuration at the org level and be applied to one or multiple Sites. It works like a blueprint of the network of the site.
      * 
      * ## Example Usage
      * 
@@ -2158,7 +2158,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the NAC IDP Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -2203,7 +2203,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the NAC IDP Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -2248,7 +2248,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the NAC IDP Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -2293,7 +2293,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the NAC IDP Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -2338,7 +2338,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the NAC IDP Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -2383,7 +2383,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of NAC Rules (Auth Policies).
      * 
-     * A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+     * A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
      * 
      * ## Example Usage
      * 
@@ -2427,7 +2427,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of NAC Rules (Auth Policies).
      * 
-     * A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+     * A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
      * 
      * ## Example Usage
      * 
@@ -2471,7 +2471,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of NAC Rules (Auth Policies).
      * 
-     * A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+     * A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
      * 
      * ## Example Usage
      * 
@@ -2515,7 +2515,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of NAC Rules (Auth Policies).
      * 
-     * A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+     * A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
      * 
      * ## Example Usage
      * 
@@ -2559,7 +2559,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of NAC Rules (Auth Policies).
      * 
-     * A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+     * A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
      * 
      * ## Example Usage
      * 
@@ -2603,7 +2603,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of NAC Tags (Auth Policy Labels).
      * 
-     * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+     * The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
      * 
      * ## Example Usage
      * 
@@ -2649,7 +2649,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of NAC Tags (Auth Policy Labels).
      * 
-     * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+     * The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
      * 
      * ## Example Usage
      * 
@@ -2695,7 +2695,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of NAC Tags (Auth Policy Labels).
      * 
-     * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+     * The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
      * 
      * ## Example Usage
      * 
@@ -2741,7 +2741,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of NAC Tags (Auth Policy Labels).
      * 
-     * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+     * The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
      * 
      * ## Example Usage
      * 
@@ -2787,7 +2787,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of NAC Tags (Auth Policy Labels).
      * 
-     * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+     * The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
      * 
      * ## Example Usage
      * 
@@ -3746,13 +3746,13 @@ public final class OrgFunctions {
         return Deployment.getInstance().invokeAsync("junipermist:org/getRftemplates:getRftemplates", TypeShape.of(GetRftemplatesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the list of WAN Assurance Service Policies (Application Policiess).
+     * This data source provides the list of WAN Assurance Service Policies (Application Policies).
      * 
      * The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
      * * the Gateway configuration (`mist_device_gateway.service_policies`)
      * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
      * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
-     *   They can be used to manage common policies betweeen multiples configurations
+     *   They can be used to manage common policies between multiples configurations
      * 
      * ## Example Usage
      * 
@@ -3794,13 +3794,13 @@ public final class OrgFunctions {
         return getServicepolicies(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the list of WAN Assurance Service Policies (Application Policiess).
+     * This data source provides the list of WAN Assurance Service Policies (Application Policies).
      * 
      * The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
      * * the Gateway configuration (`mist_device_gateway.service_policies`)
      * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
      * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
-     *   They can be used to manage common policies betweeen multiples configurations
+     *   They can be used to manage common policies between multiples configurations
      * 
      * ## Example Usage
      * 
@@ -3842,13 +3842,13 @@ public final class OrgFunctions {
         return getServicepoliciesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the list of WAN Assurance Service Policies (Application Policiess).
+     * This data source provides the list of WAN Assurance Service Policies (Application Policies).
      * 
      * The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
      * * the Gateway configuration (`mist_device_gateway.service_policies`)
      * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
      * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
-     *   They can be used to manage common policies betweeen multiples configurations
+     *   They can be used to manage common policies between multiples configurations
      * 
      * ## Example Usage
      * 
@@ -3890,13 +3890,13 @@ public final class OrgFunctions {
         return Deployment.getInstance().invoke("junipermist:org/getServicepolicies:getServicepolicies", TypeShape.of(GetServicepoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the list of WAN Assurance Service Policies (Application Policiess).
+     * This data source provides the list of WAN Assurance Service Policies (Application Policies).
      * 
      * The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
      * * the Gateway configuration (`mist_device_gateway.service_policies`)
      * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
      * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
-     *   They can be used to manage common policies betweeen multiples configurations
+     *   They can be used to manage common policies between multiples configurations
      * 
      * ## Example Usage
      * 
@@ -3938,13 +3938,13 @@ public final class OrgFunctions {
         return Deployment.getInstance().invoke("junipermist:org/getServicepolicies:getServicepolicies", TypeShape.of(GetServicepoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the list of WAN Assurance Service Policies (Application Policiess).
+     * This data source provides the list of WAN Assurance Service Policies (Application Policies).
      * 
      * The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
      * * the Gateway configuration (`mist_device_gateway.service_policies`)
      * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
      * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
-     *   They can be used to manage common policies betweeen multiples configurations
+     *   They can be used to manage common policies between multiples configurations
      * 
      * ## Example Usage
      * 
@@ -4453,7 +4453,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the SSO Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -4498,7 +4498,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the SSO Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -4543,7 +4543,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the SSO Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -4588,7 +4588,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the SSO Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -4633,7 +4633,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the SSO Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -4908,12 +4908,82 @@ public final class OrgFunctions {
     /**
      * This data source provide the list of the Org VPNs.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetVpnsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpns = OrgFunctions.getVpns(GetVpnsArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVpnsResult> getVpns(GetVpnsArgs args) {
         return getVpns(args, InvokeOptions.Empty);
     }
     /**
      * This data source provide the list of the Org VPNs.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetVpnsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpns = OrgFunctions.getVpns(GetVpnsArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpnsResult> getVpnsPlain(GetVpnsPlainArgs args) {
@@ -4922,6 +4992,41 @@ public final class OrgFunctions {
     /**
      * This data source provide the list of the Org VPNs.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetVpnsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpns = OrgFunctions.getVpns(GetVpnsArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVpnsResult> getVpns(GetVpnsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("junipermist:org/getVpns:getVpns", TypeShape.of(GetVpnsResult.class), args, Utilities.withVersion(options));
@@ -4929,12 +5034,82 @@ public final class OrgFunctions {
     /**
      * This data source provide the list of the Org VPNs.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetVpnsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpns = OrgFunctions.getVpns(GetVpnsArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVpnsResult> getVpns(GetVpnsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("junipermist:org/getVpns:getVpns", TypeShape.of(GetVpnsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provide the list of the Org VPNs.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetVpnsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpns = OrgFunctions.getVpns(GetVpnsArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpnsResult> getVpnsPlain(GetVpnsPlainArgs args, InvokeOptions options) {

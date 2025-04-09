@@ -30,6 +30,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("locateConnected")]
         public Input<bool>? LocateConnected { get; set; }
 
+        [Input("port")]
+        public Input<int>? Port { get; set; }
+
         public DeviceprofileApAeroscoutArgs()
         {
         }

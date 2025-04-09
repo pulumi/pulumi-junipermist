@@ -18,22 +18,40 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string BfdProfile;
         /// <summary>
-        /// if different from the wan port
+        /// If `type`==`mesh` and for SSR only, whether toi use tunnel mode
+        /// </summary>
+        public readonly bool BfdUseTunnelMode;
+        /// <summary>
+        /// If different from the wan port
         /// </summary>
         public readonly string Ip;
+        /// <summary>
+        /// If `type`==`mesh`, Property key is the Peer Interface name
+        /// </summary>
+        public readonly ImmutableDictionary<string, Outputs.GetVpnsOrgVpnPathsPeerPathsResult> PeerPaths;
         public readonly int Pod;
+        public readonly Outputs.GetVpnsOrgVpnPathsTrafficShapingResult TrafficShaping;
 
         [OutputConstructor]
         private GetVpnsOrgVpnPathsResult(
             string bfdProfile,
 
+            bool bfdUseTunnelMode,
+
             string ip,
 
-            int pod)
+            ImmutableDictionary<string, Outputs.GetVpnsOrgVpnPathsPeerPathsResult> peerPaths,
+
+            int pod,
+
+            Outputs.GetVpnsOrgVpnPathsTrafficShapingResult trafficShaping)
         {
             BfdProfile = bfdProfile;
+            BfdUseTunnelMode = bfdUseTunnelMode;
             Ip = ip;
+            PeerPaths = peerPaths;
             Pod = pod;
+            TrafficShaping = trafficShaping;
         }
     }
 }

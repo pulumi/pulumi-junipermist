@@ -206,14 +206,14 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Timestamp
+     * Epoch (seconds)
      * 
      */
     @Import(name="timestamp")
     private @Nullable Output<Double> timestamp;
 
     /**
-     * @return Timestamp
+     * @return Epoch (seconds)
      * 
      */
     public Optional<Output<Double>> timestamp() {
@@ -517,7 +517,7 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timestamp Timestamp
+         * @param timestamp Epoch (seconds)
          * 
          * @return builder
          * 
@@ -528,7 +528,7 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timestamp Timestamp
+         * @param timestamp Epoch (seconds)
          * 
          * @return builder
          * 

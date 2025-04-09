@@ -6,6 +6,7 @@ package com.pulumi.junipermist.org.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -61,12 +62,20 @@ public final class DeviceprofileApAeroscoutArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.locateConnected);
     }
 
+    @Import(name="port")
+    private @Nullable Output<Integer> port;
+
+    public Optional<Output<Integer>> port() {
+        return Optional.ofNullable(this.port);
+    }
+
     private DeviceprofileApAeroscoutArgs() {}
 
     private DeviceprofileApAeroscoutArgs(DeviceprofileApAeroscoutArgs $) {
         this.enabled = $.enabled;
         this.host = $.host;
         this.locateConnected = $.locateConnected;
+        this.port = $.port;
     }
 
     public static Builder builder() {
@@ -148,6 +157,15 @@ public final class DeviceprofileApAeroscoutArgs extends com.pulumi.resources.Res
          */
         public Builder locateConnected(Boolean locateConnected) {
             return locateConnected(Output.of(locateConnected));
+        }
+
+        public Builder port(@Nullable Output<Integer> port) {
+            $.port = port;
+            return this;
+        }
+
+        public Builder port(Integer port) {
+            return port(Output.of(port));
         }
 
         public DeviceprofileApAeroscoutArgs build() {

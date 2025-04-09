@@ -33,9 +33,9 @@ class NacruleArgs:
         """
         The set of arguments for constructing a Nacrule resource.
         :param pulumi.Input[builtins.str] action: enum: `allow`, `block`
-        :param pulumi.Input[builtins.int] order: the order of the rule, lower value implies higher priority
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] apply_tags: all optional, this goes into Access-Accept
-        :param pulumi.Input[builtins.bool] enabled: enabled or not
+        :param pulumi.Input[builtins.int] order: Order of the rule, lower value implies higher priority
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] apply_tags: All optional, this goes into Access-Accept
+        :param pulumi.Input[builtins.bool] enabled: Enabled or not
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "order", order)
@@ -67,7 +67,7 @@ class NacruleArgs:
     @pulumi.getter
     def order(self) -> pulumi.Input[builtins.int]:
         """
-        the order of the rule, lower value implies higher priority
+        Order of the rule, lower value implies higher priority
         """
         return pulumi.get(self, "order")
 
@@ -88,7 +88,7 @@ class NacruleArgs:
     @pulumi.getter(name="applyTags")
     def apply_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        all optional, this goes into Access-Accept
+        All optional, this goes into Access-Accept
         """
         return pulumi.get(self, "apply_tags")
 
@@ -100,7 +100,7 @@ class NacruleArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        enabled or not
+        Enabled or not
         """
         return pulumi.get(self, "enabled")
 
@@ -150,9 +150,9 @@ class _NacruleState:
         """
         Input properties used for looking up and filtering Nacrule resources.
         :param pulumi.Input[builtins.str] action: enum: `allow`, `block`
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] apply_tags: all optional, this goes into Access-Accept
-        :param pulumi.Input[builtins.bool] enabled: enabled or not
-        :param pulumi.Input[builtins.int] order: the order of the rule, lower value implies higher priority
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] apply_tags: All optional, this goes into Access-Accept
+        :param pulumi.Input[builtins.bool] enabled: Enabled or not
+        :param pulumi.Input[builtins.int] order: Order of the rule, lower value implies higher priority
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -187,7 +187,7 @@ class _NacruleState:
     @pulumi.getter(name="applyTags")
     def apply_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        all optional, this goes into Access-Accept
+        All optional, this goes into Access-Accept
         """
         return pulumi.get(self, "apply_tags")
 
@@ -199,7 +199,7 @@ class _NacruleState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        enabled or not
+        Enabled or not
         """
         return pulumi.get(self, "enabled")
 
@@ -238,7 +238,7 @@ class _NacruleState:
     @pulumi.getter
     def order(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        the order of the rule, lower value implies higher priority
+        Order of the rule, lower value implies higher priority
         """
         return pulumi.get(self, "order")
 
@@ -273,7 +273,7 @@ class Nacrule(pulumi.CustomResource):
         """
         This resource manages the NAC Rules (Auth Policies).
 
-        A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+        A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
 
         ## Import
 
@@ -288,9 +288,9 @@ class Nacrule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] action: enum: `allow`, `block`
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] apply_tags: all optional, this goes into Access-Accept
-        :param pulumi.Input[builtins.bool] enabled: enabled or not
-        :param pulumi.Input[builtins.int] order: the order of the rule, lower value implies higher priority
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] apply_tags: All optional, this goes into Access-Accept
+        :param pulumi.Input[builtins.bool] enabled: Enabled or not
+        :param pulumi.Input[builtins.int] order: Order of the rule, lower value implies higher priority
         """
         ...
     @overload
@@ -301,7 +301,7 @@ class Nacrule(pulumi.CustomResource):
         """
         This resource manages the NAC Rules (Auth Policies).
 
-        A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+        A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
 
         ## Import
 
@@ -385,9 +385,9 @@ class Nacrule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] action: enum: `allow`, `block`
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] apply_tags: all optional, this goes into Access-Accept
-        :param pulumi.Input[builtins.bool] enabled: enabled or not
-        :param pulumi.Input[builtins.int] order: the order of the rule, lower value implies higher priority
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] apply_tags: All optional, this goes into Access-Accept
+        :param pulumi.Input[builtins.bool] enabled: Enabled or not
+        :param pulumi.Input[builtins.int] order: Order of the rule, lower value implies higher priority
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -415,7 +415,7 @@ class Nacrule(pulumi.CustomResource):
     @pulumi.getter(name="applyTags")
     def apply_tags(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        all optional, this goes into Access-Accept
+        All optional, this goes into Access-Accept
         """
         return pulumi.get(self, "apply_tags")
 
@@ -423,7 +423,7 @@ class Nacrule(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[builtins.bool]:
         """
-        enabled or not
+        Enabled or not
         """
         return pulumi.get(self, "enabled")
 
@@ -446,7 +446,7 @@ class Nacrule(pulumi.CustomResource):
     @pulumi.getter
     def order(self) -> pulumi.Output[builtins.int]:
         """
-        the order of the rule, lower value implies higher priority
+        Order of the rule, lower value implies higher priority
         """
         return pulumi.get(self, "order")
 

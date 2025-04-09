@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly double System;
         /// <summary>
-        /// Percentage of CPU time being used by user processe
+        /// Percentage of CPU time being used by user processes
         /// </summary>
         public readonly double User;
 

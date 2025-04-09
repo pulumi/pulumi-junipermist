@@ -33,14 +33,14 @@ public final class GatewayIdpProfilesArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Unique ID of the object instance in the Mist Organnization
+     * Unique ID of the object instance in the Mist Organization
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     public Optional<Output<String>> id() {
@@ -118,7 +118,7 @@ public final class GatewayIdpProfilesArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param id Unique ID of the object instance in the Mist Organnization
+         * @param id Unique ID of the object instance in the Mist Organization
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class GatewayIdpProfilesArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param id Unique ID of the object instance in the Mist Organnization
+         * @param id Unique ID of the object instance in the Mist Organization
          * 
          * @return builder
          * 

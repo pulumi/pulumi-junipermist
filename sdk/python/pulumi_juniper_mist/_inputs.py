@@ -31,6 +31,9 @@ if not MYPY:
         """
         status_id: NotRequired[pulumi.Input[builtins.int]]
         timestamp: NotRequired[pulumi.Input[builtins.float]]
+        """
+        Epoch (seconds)
+        """
         will_retry: NotRequired[pulumi.Input[builtins.bool]]
 elif False:
     UpgradeDeviceFwupdateArgsDict: TypeAlias = Mapping[str, Any]
@@ -45,6 +48,7 @@ class UpgradeDeviceFwupdateArgs:
                  will_retry: Optional[pulumi.Input[builtins.bool]] = None):
         """
         :param pulumi.Input[builtins.str] status: enum: `inprogress`, `failed`, `upgraded`
+        :param pulumi.Input[builtins.float] timestamp: Epoch (seconds)
         """
         if progress is not None:
             pulumi.set(__self__, "progress", progress)
@@ -90,6 +94,9 @@ class UpgradeDeviceFwupdateArgs:
     @property
     @pulumi.getter
     def timestamp(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        Epoch (seconds)
+        """
         return pulumi.get(self, "timestamp")
 
     @timestamp.setter

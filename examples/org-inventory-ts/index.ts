@@ -8,12 +8,10 @@ const claimCode2 = config.requireSecret("claimCode2");
 
 new junipermist.org.Inventory("ap", {
   orgId: organizationId,
-  devices: [
-    {
-      claimCode: claimCode1,
-    },
-    {
-      claimCode: claimCode2,
-    },
-  ],
+  inventory: pulumi
+    .all([claimCode1, claimCode2])
+    .apply(([claimCode1, claimCode2]) => ({
+      [claimCode1]: {},
+      [claimCode2]: {},
+    })),
 });

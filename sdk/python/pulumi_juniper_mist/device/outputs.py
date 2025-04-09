@@ -24,6 +24,7 @@ __all__ = [
     'ApClientBridgeAuth',
     'ApEslConfig',
     'ApIpConfig',
+    'ApLacpConfig',
     'ApLed',
     'ApMesh',
     'ApPwrConfig',
@@ -174,7 +175,8 @@ __all__ = [
     'SwitchVirtualChassisMember',
     'SwitchVrfConfig',
     'SwitchVrfInstances',
-    'SwitchVrfInstancesVrfExtraRoutes',
+    'SwitchVrfInstancesExtraRoutes6',
+    'SwitchVrfInstancesExtraRoutes',
     'SwitchVrrpConfig',
     'SwitchVrrpConfigGroups',
     'BaseLatlng',
@@ -187,6 +189,7 @@ __all__ = [
     'GetApStatsDeviceApStatEnvStatResult',
     'GetApStatsDeviceApStatEslStatResult',
     'GetApStatsDeviceApStatFwupdateResult',
+    'GetApStatsDeviceApStatGpsResult',
     'GetApStatsDeviceApStatIotStatResult',
     'GetApStatsDeviceApStatIpConfigResult',
     'GetApStatsDeviceApStatIpStatResult',
@@ -208,6 +211,7 @@ __all__ = [
     'GetGatewayStatsDeviceGatewayStatApRedundancyResult',
     'GetGatewayStatsDeviceGatewayStatApRedundancyModulesResult',
     'GetGatewayStatsDeviceGatewayStatArpTableStatsResult',
+    'GetGatewayStatsDeviceGatewayStatBgpPeerResult',
     'GetGatewayStatsDeviceGatewayStatClusterConfigResult',
     'GetGatewayStatsDeviceGatewayStatClusterConfigControlLinkInfoResult',
     'GetGatewayStatsDeviceGatewayStatClusterConfigEthernetConnectionResult',
@@ -228,29 +232,26 @@ __all__ = [
     'GetGatewayStatsDeviceGatewayStatMemory2StatResult',
     'GetGatewayStatsDeviceGatewayStatMemoryStatResult',
     'GetGatewayStatsDeviceGatewayStatModule2StatResult',
-    'GetGatewayStatsDeviceGatewayStatModule2StatErrorResult',
     'GetGatewayStatsDeviceGatewayStatModule2StatFanResult',
-    'GetGatewayStatsDeviceGatewayStatModule2StatPicResult',
-    'GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupResult',
     'GetGatewayStatsDeviceGatewayStatModule2StatPoeResult',
     'GetGatewayStatsDeviceGatewayStatModule2StatPsusResult',
     'GetGatewayStatsDeviceGatewayStatModule2StatTemperatureResult',
     'GetGatewayStatsDeviceGatewayStatModule2StatVcLinkResult',
     'GetGatewayStatsDeviceGatewayStatModuleStatResult',
-    'GetGatewayStatsDeviceGatewayStatModuleStatErrorResult',
     'GetGatewayStatsDeviceGatewayStatModuleStatFanResult',
-    'GetGatewayStatsDeviceGatewayStatModuleStatPicResult',
-    'GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupResult',
     'GetGatewayStatsDeviceGatewayStatModuleStatPoeResult',
     'GetGatewayStatsDeviceGatewayStatModuleStatPsusResult',
     'GetGatewayStatsDeviceGatewayStatModuleStatTemperatureResult',
     'GetGatewayStatsDeviceGatewayStatModuleStatVcLinkResult',
+    'GetGatewayStatsDeviceGatewayStatPortResult',
     'GetGatewayStatsDeviceGatewayStatRouteSummaryStatsResult',
     'GetGatewayStatsDeviceGatewayStatService2StatResult',
     'GetGatewayStatsDeviceGatewayStatServiceStatResult',
     'GetGatewayStatsDeviceGatewayStatServiceStatusResult',
     'GetGatewayStatsDeviceGatewayStatSpu2StatResult',
     'GetGatewayStatsDeviceGatewayStatSpuStatResult',
+    'GetGatewayStatsDeviceGatewayStatTunnelResult',
+    'GetGatewayStatsDeviceGatewayStatVpnPeerResult',
     'GetSwitchStatsDeviceSwitchStatResult',
     'GetSwitchStatsDeviceSwitchStatApRedundancyResult',
     'GetSwitchStatsDeviceSwitchStatApRedundancyModulesResult',
@@ -268,6 +269,7 @@ __all__ = [
     'GetSwitchStatsDeviceSwitchStatMacTableStatsResult',
     'GetSwitchStatsDeviceSwitchStatMemoryStatResult',
     'GetSwitchStatsDeviceSwitchStatModuleStatResult',
+    'GetSwitchStatsDeviceSwitchStatModuleStatCpuStatResult',
     'GetSwitchStatsDeviceSwitchStatModuleStatErrorResult',
     'GetSwitchStatsDeviceSwitchStatModuleStatFanResult',
     'GetSwitchStatsDeviceSwitchStatModuleStatPicResult',
@@ -276,6 +278,7 @@ __all__ = [
     'GetSwitchStatsDeviceSwitchStatModuleStatPsusResult',
     'GetSwitchStatsDeviceSwitchStatModuleStatTemperatureResult',
     'GetSwitchStatsDeviceSwitchStatModuleStatVcLinkResult',
+    'GetSwitchStatsDeviceSwitchStatPortResult',
     'GetSwitchStatsDeviceSwitchStatRouteSummaryStatsResult',
     'GetSwitchStatsDeviceSwitchStatServiceStatResult',
     'GetSwitchStatsDeviceSwitchStatVcSetupInfoResult',
@@ -304,7 +307,8 @@ class ApAeroscout(dict):
     def __init__(__self__, *,
                  enabled: Optional[builtins.bool] = None,
                  host: Optional[builtins.str] = None,
-                 locate_connected: Optional[builtins.bool] = None):
+                 locate_connected: Optional[builtins.bool] = None,
+                 port: Optional[builtins.int] = None):
         """
         :param builtins.bool enabled: Whether to enable aeroscout config
         :param builtins.str host: Required if enabled, aeroscout server host
@@ -316,6 +320,8 @@ class ApAeroscout(dict):
             pulumi.set(__self__, "host", host)
         if locate_connected is not None:
             pulumi.set(__self__, "locate_connected", locate_connected)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
@@ -340,6 +346,11 @@ class ApAeroscout(dict):
         Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
         """
         return pulumi.get(self, "locate_connected")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type
@@ -843,7 +854,7 @@ class ApEslConfig(dict):
         :param builtins.bool enabled: usb_config is ignored if esl_config enabled
         :param builtins.str host: Only if `type`==`imagotag` or `type`==`native`
         :param builtins.int port: Only if `type`==`imagotag` or `type`==`native`
-        :param builtins.str type: note: ble_config will be ingored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+        :param builtins.str type: note: ble_config will be ignored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
         :param builtins.bool verify_cert: Only if `type`==`imagotag` or `type`==`native`
         :param builtins.int vlan_id: Only if `type`==`solum` or `type`==`hanshow`
         """
@@ -908,7 +919,7 @@ class ApEslConfig(dict):
     @pulumi.getter
     def type(self) -> Optional[builtins.str]:
         """
-        note: ble_config will be ingored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+        note: ble_config will be ignored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
         """
         return pulumi.get(self, "type")
 
@@ -1084,6 +1095,19 @@ class ApIpConfig(dict):
 
 
 @pulumi.output_type
+class ApLacpConfig(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[builtins.bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class ApLed(dict):
     def __init__(__self__, *,
                  brightness: Optional[builtins.int] = None,
@@ -1107,20 +1131,32 @@ class ApLed(dict):
 @pulumi.output_type
 class ApMesh(dict):
     def __init__(__self__, *,
+                 bands: Optional[Sequence[builtins.str]] = None,
                  enabled: Optional[builtins.bool] = None,
                  group: Optional[builtins.int] = None,
                  role: Optional[builtins.str] = None):
         """
+        :param Sequence[builtins.str] bands: List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
         :param builtins.bool enabled: Whether mesh is enabled on this AP
         :param builtins.int group: Mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
         :param builtins.str role: enum: `base`, `remote`
         """
+        if bands is not None:
+            pulumi.set(__self__, "bands", bands)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if group is not None:
             pulumi.set(__self__, "group", group)
         if role is not None:
             pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def bands(self) -> Optional[Sequence[builtins.str]]:
+        """
+        List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+        """
+        return pulumi.get(self, "bands")
 
     @property
     @pulumi.getter
@@ -2036,7 +2072,7 @@ class ApUplinkPortConfig(dict):
                  dot1x: Optional[builtins.bool] = None,
                  keep_wlans_up_if_down: Optional[builtins.bool] = None):
         """
-        :param builtins.bool dot1x: Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
+        :param builtins.bool dot1x: Whether to do 802.1x against uplink switch. When enabled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
         :param builtins.bool keep_wlans_up_if_down: By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
         """
         if dot1x is not None:
@@ -2048,7 +2084,7 @@ class ApUplinkPortConfig(dict):
     @pulumi.getter
     def dot1x(self) -> Optional[builtins.bool]:
         """
-        Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
+        Whether to do 802.1x against uplink switch. When enabled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
         """
         return pulumi.get(self, "dot1x")
 
@@ -2212,6 +2248,8 @@ class GatewayBgpConfig(dict):
             suggest = "local_as"
         elif key == "neighborAs":
             suggest = "neighbor_as"
+        elif key == "noPrivateAs":
+            suggest = "no_private_as"
         elif key == "noReadvertiseToOverlay":
             suggest = "no_readvertise_to_overlay"
         elif key == "tunnelName":
@@ -2244,10 +2282,11 @@ class GatewayBgpConfig(dict):
                  hold_time: Optional[builtins.int] = None,
                  import_: Optional[builtins.str] = None,
                  import_policy: Optional[builtins.str] = None,
-                 local_as: Optional[builtins.int] = None,
-                 neighbor_as: Optional[builtins.int] = None,
+                 local_as: Optional[builtins.str] = None,
+                 neighbor_as: Optional[builtins.str] = None,
                  neighbors: Optional[Mapping[str, 'outputs.GatewayBgpConfigNeighbors']] = None,
                  networks: Optional[Sequence[builtins.str]] = None,
+                 no_private_as: Optional[builtins.bool] = None,
                  no_readvertise_to_overlay: Optional[builtins.bool] = None,
                  tunnel_name: Optional[builtins.str] = None,
                  type: Optional[builtins.str] = None,
@@ -2264,6 +2303,8 @@ class GatewayBgpConfig(dict):
         :param builtins.bool extended_v4_nexthop: By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         :param builtins.int graceful_restart_time: `0` means disable
         :param builtins.str import_policy: Default import policies if no per-neighbor policies defined
+        :param builtins.str local_as: Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        :param builtins.str neighbor_as: Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         :param Mapping[str, 'GatewayBgpConfigNeighborsArgs'] neighbors: If per-neighbor as is desired. Property key is the neighbor address
         :param Sequence[builtins.str] networks: If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
         :param builtins.bool no_readvertise_to_overlay: By default, we'll re-advertise all learned BGP routers toward overlay
@@ -2302,6 +2343,8 @@ class GatewayBgpConfig(dict):
             pulumi.set(__self__, "neighbors", neighbors)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
+        if no_private_as is not None:
+            pulumi.set(__self__, "no_private_as", no_private_as)
         if no_readvertise_to_overlay is not None:
             pulumi.set(__self__, "no_readvertise_to_overlay", no_readvertise_to_overlay)
         if tunnel_name is not None:
@@ -2395,12 +2438,18 @@ class GatewayBgpConfig(dict):
 
     @property
     @pulumi.getter(name="localAs")
-    def local_as(self) -> Optional[builtins.int]:
+    def local_as(self) -> Optional[builtins.str]:
+        """
+        Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        """
         return pulumi.get(self, "local_as")
 
     @property
     @pulumi.getter(name="neighborAs")
-    def neighbor_as(self) -> Optional[builtins.int]:
+    def neighbor_as(self) -> Optional[builtins.str]:
+        """
+        Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        """
         return pulumi.get(self, "neighbor_as")
 
     @property
@@ -2418,6 +2467,11 @@ class GatewayBgpConfig(dict):
         If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
         """
         return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter(name="noPrivateAs")
+    def no_private_as(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "no_private_as")
 
     @property
     @pulumi.getter(name="noReadvertiseToOverlay")
@@ -2498,10 +2552,11 @@ class GatewayBgpConfigNeighbors(dict):
                  hold_time: Optional[builtins.int] = None,
                  import_policy: Optional[builtins.str] = None,
                  multihop_ttl: Optional[builtins.int] = None,
-                 neighbor_as: Optional[builtins.int] = None):
+                 neighbor_as: Optional[builtins.str] = None):
         """
         :param builtins.bool disabled: If true, the BGP session to this neighbor will be administratively disabled/shutdown
         :param builtins.int multihop_ttl: Assuming BGP neighbor is directly connected
+        :param builtins.str neighbor_as: Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
@@ -2549,7 +2604,10 @@ class GatewayBgpConfigNeighbors(dict):
 
     @property
     @pulumi.getter(name="neighborAs")
-    def neighbor_as(self) -> Optional[builtins.int]:
+    def neighbor_as(self) -> Optional[builtins.str]:
+        """
+        Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        """
         return pulumi.get(self, "neighbor_as")
 
 
@@ -2558,7 +2616,7 @@ class GatewayClusterNode(dict):
     def __init__(__self__, *,
                  mac: builtins.str):
         """
-        :param builtins.str mac: Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+        :param builtins.str mac: Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
         """
         pulumi.set(__self__, "mac", mac)
 
@@ -2566,7 +2624,7 @@ class GatewayClusterNode(dict):
     @pulumi.getter
     def mac(self) -> builtins.str:
         """
-        Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+        Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
         """
         return pulumi.get(self, "mac")
 
@@ -2659,7 +2717,7 @@ class GatewayDhcpdConfigConfig(dict):
         """
         :param Sequence[builtins.str] dns_servers: If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
         :param Sequence[builtins.str] dns_suffixes: If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
-        :param Mapping[str, 'GatewayDhcpdConfigConfigFixedBindingsArgs'] fixed_bindings: If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+        :param Mapping[str, 'GatewayDhcpdConfigConfigFixedBindingsArgs'] fixed_bindings: If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
         :param builtins.str gateway: If `type`==`local` - optional, `ip` will be used if not provided
         :param builtins.str ip_end: If `type`==`local`
         :param builtins.str ip_end6: If `type6`==`local`
@@ -2730,7 +2788,7 @@ class GatewayDhcpdConfigConfig(dict):
     @pulumi.getter(name="fixedBindings")
     def fixed_bindings(self) -> Optional[Mapping[str, 'outputs.GatewayDhcpdConfigConfigFixedBindings']]:
         """
-        If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+        If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
         """
         return pulumi.get(self, "fixed_bindings")
 
@@ -2969,7 +3027,7 @@ class GatewayIdpProfiles(dict):
                  overwrites: Optional[Sequence['outputs.GatewayIdpProfilesOverwrite']] = None):
         """
         :param builtins.str base_profile: enum: `critical`, `standard`, `strict`
-        :param builtins.str id: Unique ID of the object instance in the Mist Organnization
+        :param builtins.str id: Unique ID of the object instance in the Mist Organization
         """
         if base_profile is not None:
             pulumi.set(__self__, "base_profile", base_profile)
@@ -2994,7 +3052,7 @@ class GatewayIdpProfiles(dict):
     @pulumi.getter
     def id(self) -> Optional[builtins.str]:
         """
-        Unique ID of the object instance in the Mist Organnization
+        Unique ID of the object instance in the Mist Organization
         """
         return pulumi.get(self, "id")
 
@@ -3023,7 +3081,7 @@ class GatewayIdpProfilesOverwrite(dict):
         """
         :param builtins.str action: enum:
                  * alert (default)
-                 * drop: siliently dropping packets
+                 * drop: silently dropping packets
                  * close: notify client/server to close connection
         """
         if action is not None:
@@ -3039,7 +3097,7 @@ class GatewayIdpProfilesOverwrite(dict):
         """
         enum:
           * alert (default)
-          * drop: siliently dropping packets
+          * drop: silently dropping packets
           * close: notify client/server to close connection
         """
         return pulumi.get(self, "action")
@@ -3123,16 +3181,18 @@ class GatewayIpConfigs(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 ip: builtins.str,
-                 netmask: builtins.str,
+                 ip: Optional[builtins.str] = None,
+                 netmask: Optional[builtins.str] = None,
                  secondary_ips: Optional[Sequence[builtins.str]] = None,
                  type: Optional[builtins.str] = None):
         """
         :param Sequence[builtins.str] secondary_ips: Optional list of secondary IPs in CIDR format
         :param builtins.str type: enum: `dhcp`, `static`
         """
-        pulumi.set(__self__, "ip", ip)
-        pulumi.set(__self__, "netmask", netmask)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if netmask is not None:
+            pulumi.set(__self__, "netmask", netmask)
         if secondary_ips is not None:
             pulumi.set(__self__, "secondary_ips", secondary_ips)
         if type is not None:
@@ -3140,12 +3200,12 @@ class GatewayIpConfigs(dict):
 
     @property
     @pulumi.getter
-    def ip(self) -> builtins.str:
+    def ip(self) -> Optional[builtins.str]:
         return pulumi.get(self, "ip")
 
     @property
     @pulumi.getter
-    def netmask(self) -> builtins.str:
+    def netmask(self) -> Optional[builtins.str]:
         return pulumi.get(self, "netmask")
 
     @property
@@ -3580,7 +3640,7 @@ class GatewayNetworkMulticast(dict):
                  enabled: Optional[builtins.bool] = None,
                  groups: Optional[Mapping[str, 'outputs.GatewayNetworkMulticastGroups']] = None):
         """
-        :param builtins.bool disable_igmp: If the network will only be the soruce of the multicast traffic, IGMP can be disabled
+        :param builtins.bool disable_igmp: If the network will only be the source of the multicast traffic, IGMP can be disabled
         :param Mapping[str, 'GatewayNetworkMulticastGroupsArgs'] groups: Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
         """
         if disable_igmp is not None:
@@ -3594,7 +3654,7 @@ class GatewayNetworkMulticast(dict):
     @pulumi.getter(name="disableIgmp")
     def disable_igmp(self) -> Optional[builtins.bool]:
         """
-        If the network will only be the soruce of the multicast traffic, IGMP can be disabled
+        If the network will only be the source of the multicast traffic, IGMP can be disabled
         """
         return pulumi.get(self, "disable_igmp")
 
@@ -4429,6 +4489,8 @@ class GatewayPortConfig(dict):
             suggest = "port_network"
         elif key == "preserveDscp":
             suggest = "preserve_dscp"
+        elif key == "redundantGroup":
+            suggest = "redundant_group"
         elif key == "rethIdx":
             suggest = "reth_idx"
         elif key == "rethNode":
@@ -4499,7 +4561,8 @@ class GatewayPortConfig(dict):
                  port_network: Optional[builtins.str] = None,
                  preserve_dscp: Optional[builtins.bool] = None,
                  redundant: Optional[builtins.bool] = None,
-                 reth_idx: Optional[builtins.int] = None,
+                 redundant_group: Optional[builtins.int] = None,
+                 reth_idx: Optional[builtins.str] = None,
                  reth_node: Optional[builtins.str] = None,
                  reth_nodes: Optional[Sequence[builtins.str]] = None,
                  speed: Optional[builtins.str] = None,
@@ -4538,7 +4601,8 @@ class GatewayPortConfig(dict):
         :param builtins.str port_network: Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
         :param builtins.bool preserve_dscp: Whether to preserve dscp when sending traffic over VPN (SSR-only)
         :param builtins.bool redundant: If HA mode
-        :param builtins.int reth_idx: If HA mode
+        :param builtins.int redundant_group: If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
+        :param builtins.str reth_idx: For SRX only and if HA Mode
         :param builtins.str reth_node: If HA mode
         :param Sequence[builtins.str] reth_nodes: SSR only - supporting vlan-based redundancy (matching the size of `networks`)
         :param builtins.bool ssr_no_virtual_mac: When SSR is running as VM, this is required on certain hosting platforms
@@ -4546,7 +4610,7 @@ class GatewayPortConfig(dict):
         :param Mapping[str, 'GatewayPortConfigVpnPathsArgs'] vpn_paths: Property key is the VPN name
         :param builtins.str wan_arp_policer: Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
         :param builtins.str wan_ext_ip: Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
-        :param Mapping[str, 'GatewayPortConfigWanExtraRoutesArgs'] wan_extra_routes: Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+        :param Mapping[str, 'GatewayPortConfigWanExtraRoutesArgs'] wan_extra_routes: Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
         :param Sequence[builtins.str] wan_networks: Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
         :param 'GatewayPortConfigWanProbeOverrideArgs' wan_probe_override: Only if `usage`==`wan`
         :param 'GatewayPortConfigWanSourceNatArgs' wan_source_nat: Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
@@ -4605,6 +4669,8 @@ class GatewayPortConfig(dict):
             pulumi.set(__self__, "preserve_dscp", preserve_dscp)
         if redundant is not None:
             pulumi.set(__self__, "redundant", redundant)
+        if redundant_group is not None:
+            pulumi.set(__self__, "redundant_group", redundant_group)
         if reth_idx is not None:
             pulumi.set(__self__, "reth_idx", reth_idx)
         if reth_node is not None:
@@ -4840,10 +4906,18 @@ class GatewayPortConfig(dict):
         return pulumi.get(self, "redundant")
 
     @property
-    @pulumi.getter(name="rethIdx")
-    def reth_idx(self) -> Optional[builtins.int]:
+    @pulumi.getter(name="redundantGroup")
+    def redundant_group(self) -> Optional[builtins.int]:
         """
-        If HA mode
+        If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
+        """
+        return pulumi.get(self, "redundant_group")
+
+    @property
+    @pulumi.getter(name="rethIdx")
+    def reth_idx(self) -> Optional[builtins.str]:
+        """
+        For SRX only and if HA Mode
         """
         return pulumi.get(self, "reth_idx")
 
@@ -4922,7 +4996,7 @@ class GatewayPortConfig(dict):
     @pulumi.getter(name="wanExtraRoutes")
     def wan_extra_routes(self) -> Optional[Mapping[str, 'outputs.GatewayPortConfigWanExtraRoutes']]:
         """
-        Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+        Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
         """
         return pulumi.get(self, "wan_extra_routes")
 
@@ -5135,7 +5209,7 @@ class GatewayPortConfigTrafficShaping(dict):
                  enabled: Optional[builtins.bool] = None,
                  max_tx_kbps: Optional[builtins.int] = None):
         """
-        :param Sequence[builtins.int] class_percentages: percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+        :param Sequence[builtins.int] class_percentages: percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
         :param builtins.int max_tx_kbps: Interface Transmit Cap in kbps
         """
         if class_percentages is not None:
@@ -5149,7 +5223,7 @@ class GatewayPortConfigTrafficShaping(dict):
     @pulumi.getter(name="classPercentages")
     def class_percentages(self) -> Optional[Sequence[builtins.int]]:
         """
-        percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+        percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
         """
         return pulumi.get(self, "class_percentages")
 
@@ -5176,8 +5250,6 @@ class GatewayPortConfigVpnPaths(dict):
             suggest = "bfd_profile"
         elif key == "bfdUseTunnelMode":
             suggest = "bfd_use_tunnel_mode"
-        elif key == "linkName":
-            suggest = "link_name"
         elif key == "trafficShaping":
             suggest = "traffic_shaping"
 
@@ -5195,23 +5267,19 @@ class GatewayPortConfigVpnPaths(dict):
     def __init__(__self__, *,
                  bfd_profile: Optional[builtins.str] = None,
                  bfd_use_tunnel_mode: Optional[builtins.bool] = None,
-                 link_name: Optional[builtins.str] = None,
                  preference: Optional[builtins.int] = None,
                  role: Optional[builtins.str] = None,
                  traffic_shaping: Optional['outputs.GatewayPortConfigVpnPathsTrafficShaping'] = None):
         """
         :param builtins.str bfd_profile: Only if the VPN `type`==`hub_spoke`. enum: `broadband`, `lte`
         :param builtins.bool bfd_use_tunnel_mode: Only if the VPN `type`==`hub_spoke`. Whether to use tunnel mode. SSR only
-        :param builtins.str link_name: Only if the VPN `type`==`mesh`
         :param builtins.int preference: Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
-        :param builtins.str role: Only if the VPN `type`==`hub_spoke`. enum: `hub`, `spoke`
+        :param builtins.str role: If the VPN `type`==`hub_spoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
         """
         if bfd_profile is not None:
             pulumi.set(__self__, "bfd_profile", bfd_profile)
         if bfd_use_tunnel_mode is not None:
             pulumi.set(__self__, "bfd_use_tunnel_mode", bfd_use_tunnel_mode)
-        if link_name is not None:
-            pulumi.set(__self__, "link_name", link_name)
         if preference is not None:
             pulumi.set(__self__, "preference", preference)
         if role is not None:
@@ -5236,14 +5304,6 @@ class GatewayPortConfigVpnPaths(dict):
         return pulumi.get(self, "bfd_use_tunnel_mode")
 
     @property
-    @pulumi.getter(name="linkName")
-    def link_name(self) -> Optional[builtins.str]:
-        """
-        Only if the VPN `type`==`mesh`
-        """
-        return pulumi.get(self, "link_name")
-
-    @property
     @pulumi.getter
     def preference(self) -> Optional[builtins.int]:
         """
@@ -5255,7 +5315,7 @@ class GatewayPortConfigVpnPaths(dict):
     @pulumi.getter
     def role(self) -> Optional[builtins.str]:
         """
-        Only if the VPN `type`==`hub_spoke`. enum: `hub`, `spoke`
+        If the VPN `type`==`hub_spoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
         """
         return pulumi.get(self, "role")
 
@@ -5291,7 +5351,7 @@ class GatewayPortConfigVpnPathsTrafficShaping(dict):
                  enabled: Optional[builtins.bool] = None,
                  max_tx_kbps: Optional[builtins.int] = None):
         """
-        :param Sequence[builtins.int] class_percentages: percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+        :param Sequence[builtins.int] class_percentages: percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
         :param builtins.int max_tx_kbps: Interface Transmit Cap in kbps
         """
         if class_percentages is not None:
@@ -5305,7 +5365,7 @@ class GatewayPortConfigVpnPathsTrafficShaping(dict):
     @pulumi.getter(name="classPercentages")
     def class_percentages(self) -> Optional[Sequence[builtins.int]]:
         """
-        percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+        percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
         """
         return pulumi.get(self, "class_percentages")
 
@@ -5589,8 +5649,8 @@ class GatewayRoutingPoliciesTermAction(dict):
             suggest = "exclude_as_paths"
         elif key == "excludeCommunities":
             suggest = "exclude_communities"
-        elif key == "exportCommunitites":
-            suggest = "export_communitites"
+        elif key == "exportCommunities":
+            suggest = "export_communities"
         elif key == "localPreference":
             suggest = "local_preference"
         elif key == "prependAsPaths":
@@ -5611,19 +5671,17 @@ class GatewayRoutingPoliciesTermAction(dict):
                  accept: Optional[builtins.bool] = None,
                  add_communities: Optional[Sequence[builtins.str]] = None,
                  add_target_vrfs: Optional[Sequence[builtins.str]] = None,
-                 aggregates: Optional[Sequence[builtins.str]] = None,
                  communities: Optional[Sequence[builtins.str]] = None,
                  exclude_as_paths: Optional[Sequence[builtins.str]] = None,
                  exclude_communities: Optional[Sequence[builtins.str]] = None,
-                 export_communitites: Optional[Sequence[builtins.str]] = None,
+                 export_communities: Optional[Sequence[builtins.str]] = None,
                  local_preference: Optional[builtins.str] = None,
                  prepend_as_paths: Optional[Sequence[builtins.str]] = None):
         """
         :param Sequence[builtins.str] add_target_vrfs: For SSR, hub decides how VRF routes are leaked on spoke
-        :param Sequence[builtins.str] aggregates: route aggregation
         :param Sequence[builtins.str] communities: When used as export policy, optional
         :param Sequence[builtins.str] exclude_as_paths: When used as export policy, optional. To exclude certain AS
-        :param Sequence[builtins.str] export_communitites: When used as export policy, optional
+        :param Sequence[builtins.str] export_communities: When used as export policy, optional
         :param builtins.str local_preference: Optional, for an import policy, local_preference can be changed
         :param Sequence[builtins.str] prepend_as_paths: When used as export policy, optional. By default, the local AS will be prepended, to change it
         """
@@ -5633,16 +5691,14 @@ class GatewayRoutingPoliciesTermAction(dict):
             pulumi.set(__self__, "add_communities", add_communities)
         if add_target_vrfs is not None:
             pulumi.set(__self__, "add_target_vrfs", add_target_vrfs)
-        if aggregates is not None:
-            pulumi.set(__self__, "aggregates", aggregates)
         if communities is not None:
             pulumi.set(__self__, "communities", communities)
         if exclude_as_paths is not None:
             pulumi.set(__self__, "exclude_as_paths", exclude_as_paths)
         if exclude_communities is not None:
             pulumi.set(__self__, "exclude_communities", exclude_communities)
-        if export_communitites is not None:
-            pulumi.set(__self__, "export_communitites", export_communitites)
+        if export_communities is not None:
+            pulumi.set(__self__, "export_communities", export_communities)
         if local_preference is not None:
             pulumi.set(__self__, "local_preference", local_preference)
         if prepend_as_paths is not None:
@@ -5668,14 +5724,6 @@ class GatewayRoutingPoliciesTermAction(dict):
 
     @property
     @pulumi.getter
-    def aggregates(self) -> Optional[Sequence[builtins.str]]:
-        """
-        route aggregation
-        """
-        return pulumi.get(self, "aggregates")
-
-    @property
-    @pulumi.getter
     def communities(self) -> Optional[Sequence[builtins.str]]:
         """
         When used as export policy, optional
@@ -5696,12 +5744,12 @@ class GatewayRoutingPoliciesTermAction(dict):
         return pulumi.get(self, "exclude_communities")
 
     @property
-    @pulumi.getter(name="exportCommunitites")
-    def export_communitites(self) -> Optional[Sequence[builtins.str]]:
+    @pulumi.getter(name="exportCommunities")
+    def export_communities(self) -> Optional[Sequence[builtins.str]]:
         """
         When used as export policy, optional
         """
-        return pulumi.get(self, "export_communitites")
+        return pulumi.get(self, "export_communities")
 
     @property
     @pulumi.getter(name="localPreference")
@@ -5760,7 +5808,7 @@ class GatewayRoutingPoliciesTermMatching(dict):
         """
         :param Sequence[builtins.str] as_paths: takes regular expression
         :param Sequence[builtins.str] prefixes: zero or more criteria/filter can be specified to match the term, all criteria have to be met
-        :param Sequence[builtins.str] protocols: `direct`, `bgp`, `osp`, ...
+        :param Sequence[builtins.str] protocols: `direct`, `bgp`, `osp`, `static`, `aggregate`...
         :param Sequence[builtins.str] vpn_neighbor_macs: overlay-facing criteria (used for bgp_config where via=vpn)
         :param Sequence[builtins.str] vpn_paths: overlay-facing criteria (used for bgp_config where via=vpn). ordered-
         """
@@ -5813,7 +5861,7 @@ class GatewayRoutingPoliciesTermMatching(dict):
     @pulumi.getter
     def protocols(self) -> Optional[Sequence[builtins.str]]:
         """
-        `direct`, `bgp`, `osp`, ...
+        `direct`, `bgp`, `osp`, `static`, `aggregate`...
         """
         return pulumi.get(self, "protocols")
 
@@ -5984,7 +6032,7 @@ class GatewayServicePolicy(dict):
         :param builtins.str name: Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
         :param builtins.str path_preference: By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
         :param builtins.str servicepolicy_id: Used to link servicepolicy defined at org level and overwrite some attributes
-        :param Sequence[builtins.str] services: Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+        :param Sequence[builtins.str] services: Required when `servicepolicy_id` is not defined. List of Applications / Destinations
         :param 'GatewayServicePolicySslProxyArgs' ssl_proxy: For SRX-only
         :param Sequence[builtins.str] tenants: Required when `servicepolicy_id` is not defined. List of Networks / Users
         """
@@ -6083,7 +6131,7 @@ class GatewayServicePolicy(dict):
     @pulumi.getter
     def services(self) -> Optional[Sequence[builtins.str]]:
         """
-        Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+        Required when `servicepolicy_id` is not defined. List of Applications / Destinations
         """
         return pulumi.get(self, "services")
 
@@ -6128,7 +6176,7 @@ class GatewayServicePolicyAntivirus(dict):
                  enabled: Optional[builtins.bool] = None,
                  profile: Optional[builtins.str] = None):
         """
-        :param builtins.str avprofile_id: org-level AV Profile can be used, this takes precendence over 'profile'
+        :param builtins.str avprofile_id: org-level AV Profile can be used, this takes precedence over 'profile'
         :param builtins.str profile: Default / noftp / httponly / or keys from av_profiles
         """
         if avprofile_id is not None:
@@ -6142,7 +6190,7 @@ class GatewayServicePolicyAntivirus(dict):
     @pulumi.getter(name="avprofileId")
     def avprofile_id(self) -> Optional[builtins.str]:
         """
-        org-level AV Profile can be used, this takes precendence over 'profile'
+        org-level AV Profile can be used, this takes precedence over 'profile'
         """
         return pulumi.get(self, "avprofile_id")
 
@@ -8152,7 +8200,7 @@ class SwitchDhcpdConfigConfig(dict):
         """
         :param Sequence[builtins.str] dns_servers: If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
         :param Sequence[builtins.str] dns_suffixes: If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
-        :param Mapping[str, 'SwitchDhcpdConfigConfigFixedBindingsArgs'] fixed_bindings: If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+        :param Mapping[str, 'SwitchDhcpdConfigConfigFixedBindingsArgs'] fixed_bindings: If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
         :param builtins.str gateway: If `type`==`server`  - optional, `ip` will be used if not provided
         :param builtins.str ip_end: If `type`==`server`
         :param builtins.str ip_end6: If `type6`==`server`
@@ -8223,7 +8271,7 @@ class SwitchDhcpdConfigConfig(dict):
     @pulumi.getter(name="fixedBindings")
     def fixed_bindings(self) -> Optional[Mapping[str, 'outputs.SwitchDhcpdConfigConfigFixedBindings']]:
         """
-        If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+        If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
         """
         return pulumi.get(self, "fixed_bindings")
 
@@ -8722,8 +8770,8 @@ class SwitchLocalPortConfig(dict):
             suggest = "allow_multiple_supplicants"
         elif key == "bypassAuthWhenServerDown":
             suggest = "bypass_auth_when_server_down"
-        elif key == "bypassAuthWhenServerDownForUnkownClient":
-            suggest = "bypass_auth_when_server_down_for_unkown_client"
+        elif key == "bypassAuthWhenServerDownForUnknownClient":
+            suggest = "bypass_auth_when_server_down_for_unknown_client"
         elif key == "disableAutoneg":
             suggest = "disable_autoneg"
         elif key == "dynamicVlanNetworks":
@@ -8788,7 +8836,7 @@ class SwitchLocalPortConfig(dict):
                  allow_dhcpd: Optional[builtins.bool] = None,
                  allow_multiple_supplicants: Optional[builtins.bool] = None,
                  bypass_auth_when_server_down: Optional[builtins.bool] = None,
-                 bypass_auth_when_server_down_for_unkown_client: Optional[builtins.bool] = None,
+                 bypass_auth_when_server_down_for_unknown_client: Optional[builtins.bool] = None,
                  description: Optional[builtins.str] = None,
                  disable_autoneg: Optional[builtins.bool] = None,
                  disabled: Optional[builtins.bool] = None,
@@ -8810,7 +8858,7 @@ class SwitchLocalPortConfig(dict):
                  poe_disabled: Optional[builtins.bool] = None,
                  port_auth: Optional[builtins.str] = None,
                  port_network: Optional[builtins.str] = None,
-                 reauth_interval: Optional[builtins.int] = None,
+                 reauth_interval: Optional[builtins.str] = None,
                  server_fail_network: Optional[builtins.str] = None,
                  server_reject_network: Optional[builtins.str] = None,
                  speed: Optional[builtins.str] = None,
@@ -8825,7 +8873,7 @@ class SwitchLocalPortConfig(dict):
         :param builtins.bool all_networks: Only if `mode`==`trunk` whether to trunk all network/vlans
         :param builtins.bool allow_dhcpd: If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
         :param builtins.bool bypass_auth_when_server_down: Only if `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
-        :param builtins.bool bypass_auth_when_server_down_for_unkown_client: Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+        :param builtins.bool bypass_auth_when_server_down_for_unknown_client: Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         :param builtins.bool disable_autoneg: Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
         :param builtins.bool disabled: Whether the port is disabled
         :param builtins.str duplex: link connection mode. enum: `auto`, `full`, `half`
@@ -8845,7 +8893,7 @@ class SwitchLocalPortConfig(dict):
         :param builtins.bool poe_disabled: Whether PoE capabilities are disabled for a port
         :param builtins.str port_auth: if dot1x is desired, set to dot1x. enum: `dot1x`
         :param builtins.str port_network: Native network/vlan for untagged traffic
-        :param builtins.int reauth_interval: Only if `port_auth`=`dot1x` reauthentication interval range
+        :param builtins.str reauth_interval: Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
         :param builtins.str server_fail_network: Only if `port_auth`==`dot1x` sets server fail fallback vlan
         :param builtins.str server_reject_network: Only if `port_auth`==`dot1x` when radius server reject / fails
         :param builtins.str speed: enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
@@ -8863,8 +8911,8 @@ class SwitchLocalPortConfig(dict):
             pulumi.set(__self__, "allow_multiple_supplicants", allow_multiple_supplicants)
         if bypass_auth_when_server_down is not None:
             pulumi.set(__self__, "bypass_auth_when_server_down", bypass_auth_when_server_down)
-        if bypass_auth_when_server_down_for_unkown_client is not None:
-            pulumi.set(__self__, "bypass_auth_when_server_down_for_unkown_client", bypass_auth_when_server_down_for_unkown_client)
+        if bypass_auth_when_server_down_for_unknown_client is not None:
+            pulumi.set(__self__, "bypass_auth_when_server_down_for_unknown_client", bypass_auth_when_server_down_for_unknown_client)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disable_autoneg is not None:
@@ -8966,12 +9014,12 @@ class SwitchLocalPortConfig(dict):
         return pulumi.get(self, "bypass_auth_when_server_down")
 
     @property
-    @pulumi.getter(name="bypassAuthWhenServerDownForUnkownClient")
-    def bypass_auth_when_server_down_for_unkown_client(self) -> Optional[builtins.bool]:
+    @pulumi.getter(name="bypassAuthWhenServerDownForUnknownClient")
+    def bypass_auth_when_server_down_for_unknown_client(self) -> Optional[builtins.bool]:
         """
         Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         """
-        return pulumi.get(self, "bypass_auth_when_server_down_for_unkown_client")
+        return pulumi.get(self, "bypass_auth_when_server_down_for_unknown_client")
 
     @property
     @pulumi.getter
@@ -9137,9 +9185,9 @@ class SwitchLocalPortConfig(dict):
 
     @property
     @pulumi.getter(name="reauthInterval")
-    def reauth_interval(self) -> Optional[builtins.int]:
+    def reauth_interval(self) -> Optional[builtins.str]:
         """
-        Only if `port_auth`=`dot1x` reauthentication interval range
+        Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
         """
         return pulumi.get(self, "reauth_interval")
 
@@ -10081,8 +10129,8 @@ class SwitchPortMirroring(dict):
         :param Sequence[builtins.str] input_networks_ingresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         :param Sequence[builtins.str] input_port_ids_egresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         :param Sequence[builtins.str] input_port_ids_ingresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
-        :param builtins.str output_network: Exaclty one of the `output_port_id` or `output_network` should be provided
-        :param builtins.str output_port_id: Exaclty one of the `output_port_id` or `output_network` should be provided
+        :param builtins.str output_network: Exactly one of the `output_port_id` or `output_network` should be provided
+        :param builtins.str output_port_id: Exactly one of the `output_port_id` or `output_network` should be provided
         """
         if input_networks_ingresses is not None:
             pulumi.set(__self__, "input_networks_ingresses", input_networks_ingresses)
@@ -10123,7 +10171,7 @@ class SwitchPortMirroring(dict):
     @pulumi.getter(name="outputNetwork")
     def output_network(self) -> Optional[builtins.str]:
         """
-        Exaclty one of the `output_port_id` or `output_network` should be provided
+        Exactly one of the `output_port_id` or `output_network` should be provided
         """
         return pulumi.get(self, "output_network")
 
@@ -10131,7 +10179,7 @@ class SwitchPortMirroring(dict):
     @pulumi.getter(name="outputPortId")
     def output_port_id(self) -> Optional[builtins.str]:
         """
-        Exaclty one of the `output_port_id` or `output_network` should be provided
+        Exactly one of the `output_port_id` or `output_network` should be provided
         """
         return pulumi.get(self, "output_port_id")
 
@@ -10149,8 +10197,8 @@ class SwitchPortUsages(dict):
             suggest = "allow_multiple_supplicants"
         elif key == "bypassAuthWhenServerDown":
             suggest = "bypass_auth_when_server_down"
-        elif key == "bypassAuthWhenServerDownForUnkownClient":
-            suggest = "bypass_auth_when_server_down_for_unkown_client"
+        elif key == "bypassAuthWhenServerDownForUnknownClient":
+            suggest = "bypass_auth_when_server_down_for_unknown_client"
         elif key == "disableAutoneg":
             suggest = "disable_autoneg"
         elif key == "dynamicVlanNetworks":
@@ -10161,6 +10209,8 @@ class SwitchPortUsages(dict):
             suggest = "enable_qos"
         elif key == "guestNetwork":
             suggest = "guest_network"
+        elif key == "interIsolationNetworkLink":
+            suggest = "inter_isolation_network_link"
         elif key == "interSwitchLink":
             suggest = "inter_switch_link"
         elif key == "macAuthOnly":
@@ -10216,7 +10266,7 @@ class SwitchPortUsages(dict):
                  allow_dhcpd: Optional[builtins.bool] = None,
                  allow_multiple_supplicants: Optional[builtins.bool] = None,
                  bypass_auth_when_server_down: Optional[builtins.bool] = None,
-                 bypass_auth_when_server_down_for_unkown_client: Optional[builtins.bool] = None,
+                 bypass_auth_when_server_down_for_unknown_client: Optional[builtins.bool] = None,
                  description: Optional[builtins.str] = None,
                  disable_autoneg: Optional[builtins.bool] = None,
                  disabled: Optional[builtins.bool] = None,
@@ -10225,19 +10275,20 @@ class SwitchPortUsages(dict):
                  enable_mac_auth: Optional[builtins.bool] = None,
                  enable_qos: Optional[builtins.bool] = None,
                  guest_network: Optional[builtins.str] = None,
+                 inter_isolation_network_link: Optional[builtins.bool] = None,
                  inter_switch_link: Optional[builtins.bool] = None,
                  mac_auth_only: Optional[builtins.bool] = None,
                  mac_auth_preferred: Optional[builtins.bool] = None,
                  mac_auth_protocol: Optional[builtins.str] = None,
-                 mac_limit: Optional[builtins.int] = None,
+                 mac_limit: Optional[builtins.str] = None,
                  mode: Optional[builtins.str] = None,
-                 mtu: Optional[builtins.int] = None,
+                 mtu: Optional[builtins.str] = None,
                  networks: Optional[Sequence[builtins.str]] = None,
                  persist_mac: Optional[builtins.bool] = None,
                  poe_disabled: Optional[builtins.bool] = None,
                  port_auth: Optional[builtins.str] = None,
                  port_network: Optional[builtins.str] = None,
-                 reauth_interval: Optional[builtins.int] = None,
+                 reauth_interval: Optional[builtins.str] = None,
                  reset_default_when: Optional[builtins.str] = None,
                  rules: Optional[Sequence['outputs.SwitchPortUsagesRule']] = None,
                  server_fail_network: Optional[builtins.str] = None,
@@ -10254,7 +10305,7 @@ class SwitchPortUsages(dict):
         :param builtins.bool allow_dhcpd: Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
         :param builtins.bool allow_multiple_supplicants: Only if `mode`!=`dynamic`
         :param builtins.bool bypass_auth_when_server_down: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
-        :param builtins.bool bypass_auth_when_server_down_for_unkown_client: Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+        :param builtins.bool bypass_auth_when_server_down_for_unknown_client: Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         :param builtins.str description: Only if `mode`!=`dynamic`
         :param builtins.bool disable_autoneg: Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
         :param builtins.bool disabled: Only if `mode`!=`dynamic` whether the port is disabled
@@ -10263,19 +10314,20 @@ class SwitchPortUsages(dict):
         :param builtins.bool enable_mac_auth: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` whether to enable MAC Auth
         :param builtins.bool enable_qos: Only if `mode`!=`dynamic`
         :param builtins.str guest_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+        :param builtins.bool inter_isolation_network_link: `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
         :param builtins.bool inter_switch_link: Only if `mode`!=`dynamic` inter_switch_link is used together with "isolation" under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
         :param builtins.bool mac_auth_only: Only if `mode`!=`dynamic` and `enable_mac_auth`==`true`
         :param builtins.bool mac_auth_preferred: Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
         :param builtins.str mac_auth_protocol: Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
-        :param builtins.int mac_limit: Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+        :param builtins.str mac_limit: Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 to 16383 (upper bound constrained by platform)
         :param builtins.str mode: `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
-        :param builtins.int mtu: Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+        :param builtins.str mtu: Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. Value between 256 and 9216, default value is 1514.
         :param Sequence[builtins.str] networks: Only if `mode`==`trunk`, the list of network/vlans
         :param builtins.bool persist_mac: Only if `mode`==`access` and `port_auth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
         :param builtins.bool poe_disabled: Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
         :param builtins.str port_auth: Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
         :param builtins.str port_network: Only if `mode`!=`dynamic` native network/vlan for untagged traffic
-        :param builtins.int reauth_interval: Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range
+        :param builtins.str reauth_interval: Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
         :param builtins.str reset_default_when: Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
         :param Sequence['SwitchPortUsagesRuleArgs'] rules: Only if `mode`==`dynamic`
         :param builtins.str server_fail_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
@@ -10294,8 +10346,8 @@ class SwitchPortUsages(dict):
             pulumi.set(__self__, "allow_multiple_supplicants", allow_multiple_supplicants)
         if bypass_auth_when_server_down is not None:
             pulumi.set(__self__, "bypass_auth_when_server_down", bypass_auth_when_server_down)
-        if bypass_auth_when_server_down_for_unkown_client is not None:
-            pulumi.set(__self__, "bypass_auth_when_server_down_for_unkown_client", bypass_auth_when_server_down_for_unkown_client)
+        if bypass_auth_when_server_down_for_unknown_client is not None:
+            pulumi.set(__self__, "bypass_auth_when_server_down_for_unknown_client", bypass_auth_when_server_down_for_unknown_client)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disable_autoneg is not None:
@@ -10312,6 +10364,8 @@ class SwitchPortUsages(dict):
             pulumi.set(__self__, "enable_qos", enable_qos)
         if guest_network is not None:
             pulumi.set(__self__, "guest_network", guest_network)
+        if inter_isolation_network_link is not None:
+            pulumi.set(__self__, "inter_isolation_network_link", inter_isolation_network_link)
         if inter_switch_link is not None:
             pulumi.set(__self__, "inter_switch_link", inter_switch_link)
         if mac_auth_only is not None:
@@ -10394,12 +10448,12 @@ class SwitchPortUsages(dict):
         return pulumi.get(self, "bypass_auth_when_server_down")
 
     @property
-    @pulumi.getter(name="bypassAuthWhenServerDownForUnkownClient")
-    def bypass_auth_when_server_down_for_unkown_client(self) -> Optional[builtins.bool]:
+    @pulumi.getter(name="bypassAuthWhenServerDownForUnknownClient")
+    def bypass_auth_when_server_down_for_unknown_client(self) -> Optional[builtins.bool]:
         """
         Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         """
-        return pulumi.get(self, "bypass_auth_when_server_down_for_unkown_client")
+        return pulumi.get(self, "bypass_auth_when_server_down_for_unknown_client")
 
     @property
     @pulumi.getter
@@ -10466,6 +10520,14 @@ class SwitchPortUsages(dict):
         return pulumi.get(self, "guest_network")
 
     @property
+    @pulumi.getter(name="interIsolationNetworkLink")
+    def inter_isolation_network_link(self) -> Optional[builtins.bool]:
+        """
+        `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
+        """
+        return pulumi.get(self, "inter_isolation_network_link")
+
+    @property
     @pulumi.getter(name="interSwitchLink")
     def inter_switch_link(self) -> Optional[builtins.bool]:
         """
@@ -10499,9 +10561,9 @@ class SwitchPortUsages(dict):
 
     @property
     @pulumi.getter(name="macLimit")
-    def mac_limit(self) -> Optional[builtins.int]:
+    def mac_limit(self) -> Optional[builtins.str]:
         """
-        Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+        Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 to 16383 (upper bound constrained by platform)
         """
         return pulumi.get(self, "mac_limit")
 
@@ -10515,9 +10577,9 @@ class SwitchPortUsages(dict):
 
     @property
     @pulumi.getter
-    def mtu(self) -> Optional[builtins.int]:
+    def mtu(self) -> Optional[builtins.str]:
         """
-        Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+        Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. Value between 256 and 9216, default value is 1514.
         """
         return pulumi.get(self, "mtu")
 
@@ -10563,9 +10625,9 @@ class SwitchPortUsages(dict):
 
     @property
     @pulumi.getter(name="reauthInterval")
-    def reauth_interval(self) -> Optional[builtins.int]:
+    def reauth_interval(self) -> Optional[builtins.str]:
         """
-        Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range
+        Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
         """
         return pulumi.get(self, "reauth_interval")
 
@@ -10830,16 +10892,26 @@ class SwitchRadiusConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "acctInterimInterval":
+        if key == "acctImmediateUpdate":
+            suggest = "acct_immediate_update"
+        elif key == "acctInterimInterval":
             suggest = "acct_interim_interval"
         elif key == "acctServers":
             suggest = "acct_servers"
+        elif key == "authServerSelection":
+            suggest = "auth_server_selection"
         elif key == "authServers":
             suggest = "auth_servers"
         elif key == "authServersRetries":
             suggest = "auth_servers_retries"
         elif key == "authServersTimeout":
             suggest = "auth_servers_timeout"
+        elif key == "coaEnabled":
+            suggest = "coa_enabled"
+        elif key == "coaPort":
+            suggest = "coa_port"
+        elif key == "fastDot1xTimers":
+            suggest = "fast_dot1x_timers"
         elif key == "sourceIp":
             suggest = "source_ip"
 
@@ -10855,34 +10927,55 @@ class SwitchRadiusConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 acct_immediate_update: Optional[builtins.bool] = None,
                  acct_interim_interval: Optional[builtins.int] = None,
                  acct_servers: Optional[Sequence['outputs.SwitchRadiusConfigAcctServer']] = None,
+                 auth_server_selection: Optional[builtins.str] = None,
                  auth_servers: Optional[Sequence['outputs.SwitchRadiusConfigAuthServer']] = None,
                  auth_servers_retries: Optional[builtins.int] = None,
                  auth_servers_timeout: Optional[builtins.int] = None,
+                 coa_enabled: Optional[builtins.bool] = None,
+                 coa_port: Optional[builtins.str] = None,
+                 fast_dot1x_timers: Optional[builtins.bool] = None,
                  network: Optional[builtins.str] = None,
                  source_ip: Optional[builtins.str] = None):
         """
         :param builtins.int acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+        :param builtins.str auth_server_selection: enum: `ordered`, `unordered`
         :param builtins.int auth_servers_retries: Radius auth session retries
         :param builtins.int auth_servers_timeout: Radius auth session timeout
         :param builtins.str network: Use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
         :param builtins.str source_ip: Use `network`or `source_ip`
         """
+        if acct_immediate_update is not None:
+            pulumi.set(__self__, "acct_immediate_update", acct_immediate_update)
         if acct_interim_interval is not None:
             pulumi.set(__self__, "acct_interim_interval", acct_interim_interval)
         if acct_servers is not None:
             pulumi.set(__self__, "acct_servers", acct_servers)
+        if auth_server_selection is not None:
+            pulumi.set(__self__, "auth_server_selection", auth_server_selection)
         if auth_servers is not None:
             pulumi.set(__self__, "auth_servers", auth_servers)
         if auth_servers_retries is not None:
             pulumi.set(__self__, "auth_servers_retries", auth_servers_retries)
         if auth_servers_timeout is not None:
             pulumi.set(__self__, "auth_servers_timeout", auth_servers_timeout)
+        if coa_enabled is not None:
+            pulumi.set(__self__, "coa_enabled", coa_enabled)
+        if coa_port is not None:
+            pulumi.set(__self__, "coa_port", coa_port)
+        if fast_dot1x_timers is not None:
+            pulumi.set(__self__, "fast_dot1x_timers", fast_dot1x_timers)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if source_ip is not None:
             pulumi.set(__self__, "source_ip", source_ip)
+
+    @property
+    @pulumi.getter(name="acctImmediateUpdate")
+    def acct_immediate_update(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "acct_immediate_update")
 
     @property
     @pulumi.getter(name="acctInterimInterval")
@@ -10896,6 +10989,14 @@ class SwitchRadiusConfig(dict):
     @pulumi.getter(name="acctServers")
     def acct_servers(self) -> Optional[Sequence['outputs.SwitchRadiusConfigAcctServer']]:
         return pulumi.get(self, "acct_servers")
+
+    @property
+    @pulumi.getter(name="authServerSelection")
+    def auth_server_selection(self) -> Optional[builtins.str]:
+        """
+        enum: `ordered`, `unordered`
+        """
+        return pulumi.get(self, "auth_server_selection")
 
     @property
     @pulumi.getter(name="authServers")
@@ -10917,6 +11018,21 @@ class SwitchRadiusConfig(dict):
         Radius auth session timeout
         """
         return pulumi.get(self, "auth_servers_timeout")
+
+    @property
+    @pulumi.getter(name="coaEnabled")
+    def coa_enabled(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "coa_enabled")
+
+    @property
+    @pulumi.getter(name="coaPort")
+    def coa_port(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "coa_port")
+
+    @property
+    @pulumi.getter(name="fastDot1xTimers")
+    def fast_dot1x_timers(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "fast_dot1x_timers")
 
     @property
     @pulumi.getter
@@ -10970,7 +11086,7 @@ class SwitchRadiusConfigAcctServer(dict):
                  port: Optional[builtins.int] = None):
         """
         :param builtins.str host: IP/ hostname of RADIUS server
-        :param builtins.str secret: Secretof RADIUS server
+        :param builtins.str secret: Secret of RADIUS server
         :param builtins.str keywrap_format: enum: `ascii`, `hex`
         :param builtins.int port: Acct port of RADIUS server
         """
@@ -10999,7 +11115,7 @@ class SwitchRadiusConfigAcctServer(dict):
     @pulumi.getter
     def secret(self) -> builtins.str:
         """
-        Secretof RADIUS server
+        Secret of RADIUS server
         """
         return pulumi.get(self, "secret")
 
@@ -11073,7 +11189,7 @@ class SwitchRadiusConfigAuthServer(dict):
                  require_message_authenticator: Optional[builtins.bool] = None):
         """
         :param builtins.str host: IP/ hostname of RADIUS server
-        :param builtins.str secret: Secretof RADIUS server
+        :param builtins.str secret: Secret of RADIUS server
         :param builtins.str keywrap_format: enum: `ascii`, `hex`
         :param builtins.int port: Auth port of RADIUS server
         :param builtins.bool require_message_authenticator: Whether to require Message-Authenticator in requests
@@ -11105,7 +11221,7 @@ class SwitchRadiusConfigAuthServer(dict):
     @pulumi.getter
     def secret(self) -> builtins.str:
         """
-        Secretof RADIUS server
+        Secret of RADIUS server
         """
         return pulumi.get(self, "secret")
 
@@ -11258,7 +11374,7 @@ class SwitchRemoteSyslog(dict):
 @pulumi.output_type
 class SwitchRemoteSyslogArchive(dict):
     def __init__(__self__, *,
-                 files: Optional[builtins.int] = None,
+                 files: Optional[builtins.str] = None,
                  size: Optional[builtins.str] = None):
         if files is not None:
             pulumi.set(__self__, "files", files)
@@ -11267,7 +11383,7 @@ class SwitchRemoteSyslogArchive(dict):
 
     @property
     @pulumi.getter
-    def files(self) -> Optional[builtins.int]:
+    def files(self) -> Optional[builtins.str]:
         return pulumi.get(self, "files")
 
     @property
@@ -11395,7 +11511,7 @@ class SwitchRemoteSyslogFile(dict):
 @pulumi.output_type
 class SwitchRemoteSyslogFileArchive(dict):
     def __init__(__self__, *,
-                 files: Optional[builtins.int] = None,
+                 files: Optional[builtins.str] = None,
                  size: Optional[builtins.str] = None):
         if files is not None:
             pulumi.set(__self__, "files", files)
@@ -11404,7 +11520,7 @@ class SwitchRemoteSyslogFileArchive(dict):
 
     @property
     @pulumi.getter
-    def files(self) -> Optional[builtins.int]:
+    def files(self) -> Optional[builtins.str]:
         return pulumi.get(self, "files")
 
     @property
@@ -11475,7 +11591,7 @@ class SwitchRemoteSyslogServer(dict):
                  facility: Optional[builtins.str] = None,
                  host: Optional[builtins.str] = None,
                  match: Optional[builtins.str] = None,
-                 port: Optional[builtins.int] = None,
+                 port: Optional[builtins.str] = None,
                  protocol: Optional[builtins.str] = None,
                  routing_instance: Optional[builtins.str] = None,
                  severity: Optional[builtins.str] = None,
@@ -11543,7 +11659,7 @@ class SwitchRemoteSyslogServer(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[builtins.int]:
+    def port(self) -> Optional[builtins.str]:
         return pulumi.get(self, "port")
 
     @property
@@ -12817,7 +12933,7 @@ class SwitchStpConfig(dict):
     def __init__(__self__, *,
                  bridge_priority: Optional[builtins.str] = None):
         """
-        :param builtins.str bridge_priority: Switch STP priority: from `0k` to `15k`
+        :param builtins.str bridge_priority: Switch STP priority. Range [0, 4k, 8k.. 60k] in steps of 4k. Bridge priority applies to both VSTP and RSTP.
         """
         if bridge_priority is not None:
             pulumi.set(__self__, "bridge_priority", bridge_priority)
@@ -12826,7 +12942,7 @@ class SwitchStpConfig(dict):
     @pulumi.getter(name="bridgePriority")
     def bridge_priority(self) -> Optional[builtins.str]:
         """
-        Switch STP priority: from `0k` to `15k`
+        Switch STP priority. Range [0, 4k, 8k.. 60k] in steps of 4k. Bridge priority applies to both VSTP and RSTP.
         """
         return pulumi.get(self, "bridge_priority")
 
@@ -12848,6 +12964,8 @@ class SwitchSwitchMgmt(dict):
             suggest = "dhcp_option_fqdn"
         elif key == "disableOobDownAlarm":
             suggest = "disable_oob_down_alarm"
+        elif key == "fipsEnabled":
+            suggest = "fips_enabled"
         elif key == "localAccounts":
             suggest = "local_accounts"
         elif key == "mxedgeProxyHost":
@@ -12879,9 +12997,10 @@ class SwitchSwitchMgmt(dict):
                  config_revert_timer: Optional[builtins.int] = None,
                  dhcp_option_fqdn: Optional[builtins.bool] = None,
                  disable_oob_down_alarm: Optional[builtins.bool] = None,
+                 fips_enabled: Optional[builtins.bool] = None,
                  local_accounts: Optional[Mapping[str, 'outputs.SwitchSwitchMgmtLocalAccounts']] = None,
                  mxedge_proxy_host: Optional[builtins.str] = None,
-                 mxedge_proxy_port: Optional[builtins.int] = None,
+                 mxedge_proxy_port: Optional[builtins.str] = None,
                  protect_re: Optional['outputs.SwitchSwitchMgmtProtectRe'] = None,
                  root_password: Optional[builtins.str] = None,
                  tacacs: Optional['outputs.SwitchSwitchMgmtTacacs'] = None,
@@ -12893,6 +13012,8 @@ class SwitchSwitchMgmt(dict):
         :param builtins.int config_revert_timer: Rollback timer for commit confirmed
         :param builtins.bool dhcp_option_fqdn: Enable to provide the FQDN with DHCP option 81
         :param Mapping[str, 'SwitchSwitchMgmtLocalAccountsArgs'] local_accounts: Property key is the user name. For Local user authentication
+        :param builtins.str mxedge_proxy_host: IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+        :param builtins.str mxedge_proxy_port: Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
         :param 'SwitchSwitchMgmtProtectReArgs' protect_re: Restrict inbound-traffic to host
                when enabled, all traffic that is not essential to our operation will be dropped 
                e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
@@ -12910,6 +13031,8 @@ class SwitchSwitchMgmt(dict):
             pulumi.set(__self__, "dhcp_option_fqdn", dhcp_option_fqdn)
         if disable_oob_down_alarm is not None:
             pulumi.set(__self__, "disable_oob_down_alarm", disable_oob_down_alarm)
+        if fips_enabled is not None:
+            pulumi.set(__self__, "fips_enabled", fips_enabled)
         if local_accounts is not None:
             pulumi.set(__self__, "local_accounts", local_accounts)
         if mxedge_proxy_host is not None:
@@ -12971,6 +13094,11 @@ class SwitchSwitchMgmt(dict):
         return pulumi.get(self, "disable_oob_down_alarm")
 
     @property
+    @pulumi.getter(name="fipsEnabled")
+    def fips_enabled(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "fips_enabled")
+
+    @property
     @pulumi.getter(name="localAccounts")
     def local_accounts(self) -> Optional[Mapping[str, 'outputs.SwitchSwitchMgmtLocalAccounts']]:
         """
@@ -12981,11 +13109,17 @@ class SwitchSwitchMgmt(dict):
     @property
     @pulumi.getter(name="mxedgeProxyHost")
     def mxedge_proxy_host(self) -> Optional[builtins.str]:
+        """
+        IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+        """
         return pulumi.get(self, "mxedge_proxy_host")
 
     @property
     @pulumi.getter(name="mxedgeProxyPort")
-    def mxedge_proxy_port(self) -> Optional[builtins.int]:
+    def mxedge_proxy_port(self) -> Optional[builtins.str]:
+        """
+        Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
+        """
         return pulumi.get(self, "mxedge_proxy_port")
 
     @property
@@ -13433,8 +13567,14 @@ class SwitchVrfInstances(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "vrfExtraRoutes":
-            suggest = "vrf_extra_routes"
+        if key == "evpnAutoLoopbackSubnet":
+            suggest = "evpn_auto_loopback_subnet"
+        elif key == "evpnAutoLoopbackSubnet6":
+            suggest = "evpn_auto_loopback_subnet6"
+        elif key == "extraRoutes":
+            suggest = "extra_routes"
+        elif key == "extraRoutes6":
+            suggest = "extra_routes6"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SwitchVrfInstances. Access the value via the '{suggest}' property getter instead.")
@@ -13448,32 +13588,79 @@ class SwitchVrfInstances(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 networks: Optional[Sequence[builtins.str]] = None,
-                 vrf_extra_routes: Optional[Mapping[str, 'outputs.SwitchVrfInstancesVrfExtraRoutes']] = None):
+                 evpn_auto_loopback_subnet: Optional[builtins.str] = None,
+                 evpn_auto_loopback_subnet6: Optional[builtins.str] = None,
+                 extra_routes: Optional[Mapping[str, 'outputs.SwitchVrfInstancesExtraRoutes']] = None,
+                 extra_routes6: Optional[Mapping[str, 'outputs.SwitchVrfInstancesExtraRoutes6']] = None,
+                 networks: Optional[Sequence[builtins.str]] = None):
         """
-        :param Mapping[str, 'SwitchVrfInstancesVrfExtraRoutesArgs'] vrf_extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        :param Mapping[str, 'SwitchVrfInstancesExtraRoutesArgs'] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        :param Mapping[str, 'SwitchVrfInstancesExtraRoutes6Args'] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         """
+        if evpn_auto_loopback_subnet is not None:
+            pulumi.set(__self__, "evpn_auto_loopback_subnet", evpn_auto_loopback_subnet)
+        if evpn_auto_loopback_subnet6 is not None:
+            pulumi.set(__self__, "evpn_auto_loopback_subnet6", evpn_auto_loopback_subnet6)
+        if extra_routes is not None:
+            pulumi.set(__self__, "extra_routes", extra_routes)
+        if extra_routes6 is not None:
+            pulumi.set(__self__, "extra_routes6", extra_routes6)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
-        if vrf_extra_routes is not None:
-            pulumi.set(__self__, "vrf_extra_routes", vrf_extra_routes)
+
+    @property
+    @pulumi.getter(name="evpnAutoLoopbackSubnet")
+    def evpn_auto_loopback_subnet(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "evpn_auto_loopback_subnet")
+
+    @property
+    @pulumi.getter(name="evpnAutoLoopbackSubnet6")
+    def evpn_auto_loopback_subnet6(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "evpn_auto_loopback_subnet6")
+
+    @property
+    @pulumi.getter(name="extraRoutes")
+    def extra_routes(self) -> Optional[Mapping[str, 'outputs.SwitchVrfInstancesExtraRoutes']]:
+        """
+        Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        """
+        return pulumi.get(self, "extra_routes")
+
+    @property
+    @pulumi.getter(name="extraRoutes6")
+    def extra_routes6(self) -> Optional[Mapping[str, 'outputs.SwitchVrfInstancesExtraRoutes6']]:
+        """
+        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        """
+        return pulumi.get(self, "extra_routes6")
 
     @property
     @pulumi.getter
     def networks(self) -> Optional[Sequence[builtins.str]]:
         return pulumi.get(self, "networks")
 
+
+@pulumi.output_type
+class SwitchVrfInstancesExtraRoutes6(dict):
+    def __init__(__self__, *,
+                 via: Optional[builtins.str] = None):
+        """
+        :param builtins.str via: Next-hop address
+        """
+        if via is not None:
+            pulumi.set(__self__, "via", via)
+
     @property
-    @pulumi.getter(name="vrfExtraRoutes")
-    def vrf_extra_routes(self) -> Optional[Mapping[str, 'outputs.SwitchVrfInstancesVrfExtraRoutes']]:
+    @pulumi.getter
+    def via(self) -> Optional[builtins.str]:
         """
-        Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        Next-hop address
         """
-        return pulumi.get(self, "vrf_extra_routes")
+        return pulumi.get(self, "via")
 
 
 @pulumi.output_type
-class SwitchVrfInstancesVrfExtraRoutes(dict):
+class SwitchVrfInstancesExtraRoutes(dict):
     def __init__(__self__, *,
                  via: builtins.str):
         """
@@ -13559,12 +13746,13 @@ class GetApStatsDeviceApStatResult(dict):
                  config_reverted: builtins.bool,
                  cpu_system: builtins.int,
                  cpu_util: builtins.int,
-                 created_time: builtins.int,
+                 created_time: builtins.float,
                  deviceprofile_id: builtins.str,
                  env_stat: 'outputs.GetApStatsDeviceApStatEnvStatResult',
                  esl_stat: 'outputs.GetApStatsDeviceApStatEslStatResult',
                  ext_ip: builtins.str,
                  fwupdate: 'outputs.GetApStatsDeviceApStatFwupdateResult',
+                 gps: 'outputs.GetApStatsDeviceApStatGpsResult',
                  hw_rev: builtins.str,
                  id: builtins.str,
                  inactive_wired_vlans: Sequence[builtins.int],
@@ -13585,11 +13773,12 @@ class GetApStatsDeviceApStatResult(dict):
                  mesh_downlinks: Mapping[str, 'outputs.GetApStatsDeviceApStatMeshDownlinksResult'],
                  mesh_uplink: 'outputs.GetApStatsDeviceApStatMeshUplinkResult',
                  model: builtins.str,
-                 modified_time: builtins.int,
+                 modified_time: builtins.float,
                  mount: builtins.str,
                  name: builtins.str,
                  notes: builtins.str,
                  num_clients: builtins.int,
+                 num_wlans: builtins.int,
                  org_id: builtins.str,
                  port_stat: Mapping[str, 'outputs.GetApStatsDeviceApStatPortStatResult'],
                  power_budget: builtins.int,
@@ -13597,41 +13786,51 @@ class GetApStatsDeviceApStatResult(dict):
                  power_opmode: builtins.str,
                  power_src: builtins.str,
                  radio_stat: 'outputs.GetApStatsDeviceApStatRadioStatResult',
-                 rx_bps: builtins.float,
+                 rx_bps: builtins.int,
                  rx_bytes: builtins.int,
                  rx_pkts: builtins.int,
                  serial: builtins.str,
                  site_id: builtins.str,
                  status: builtins.str,
                  switch_redundancy: 'outputs.GetApStatsDeviceApStatSwitchRedundancyResult',
-                 tx_bps: builtins.float,
-                 tx_bytes: builtins.float,
-                 tx_pkts: builtins.float,
+                 tx_bps: builtins.int,
+                 tx_bytes: builtins.int,
+                 tx_pkts: builtins.int,
                  uptime: builtins.float,
                  usb_stat: 'outputs.GetApStatsDeviceApStatUsbStatResult',
                  version: builtins.str,
                  x: builtins.float,
                  y: builtins.float):
         """
-        :param 'GetApStatsDeviceApStatEnvStatArgs' env_stat: device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
+        :param builtins.float created_time: When the object has been created, in epoch
+        :param 'GetApStatsDeviceApStatEnvStatArgs' env_stat: Device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
+        :param builtins.str id: Unique ID of the object instance in the Mist Organization
         :param 'GetApStatsDeviceApStatIpConfigArgs' ip_config: IP AP settings
-        :param Mapping[str, 'GetApStatsDeviceApStatL2tpStatArgs'] l2tp_stat: l2tp tunnel status (key is the wxtunnel*id)
-        :param builtins.float last_seen: last seen timestamp
-        :param 'GetApStatsDeviceApStatLastTroubleArgs' last_trouble: last trouble code of switch
+        :param Mapping[str, 'GetApStatsDeviceApStatL2tpStatArgs'] l2tp_stat: L2TP tunnel status (key is the wxtunnel_id)
+        :param builtins.float last_seen: Last seen timestamp
+        :param 'GetApStatsDeviceApStatLastTroubleArgs' last_trouble: Last trouble code of switch
         :param 'GetApStatsDeviceApStatLedArgs' led: LED AP settings
         :param 'GetApStatsDeviceApStatLldpStatArgs' lldp_stat: LLDP Stat (neighbor information, power negotiations)
-        :param builtins.bool locked: whether this AP is considered locked (placement / orientation has been vetted)
-        :param builtins.str mac: device mac
-        :param Mapping[str, 'GetApStatsDeviceApStatMeshDownlinksArgs'] mesh_downlinks: Property key is the mesh downlink id (e.g `00000000-0000-0000-1000-5c5b35000010`)
-        :param builtins.str model: device model
-        :param builtins.int num_clients: how many wireless clients are currently connected
+        :param builtins.bool locked: Whether this AP is considered locked (placement / orientation has been vetted)
+        :param builtins.str mac: Device mac
+        :param Mapping[str, 'GetApStatsDeviceApStatMeshDownlinksArgs'] mesh_downlinks: Property key is the mesh downlink id (e.g. `00000000-0000-0000-1000-5c5b35000010`)
+        :param builtins.str model: Device model
+        :param builtins.float modified_time: When the object has been modified for the last time, in epoch
+        :param builtins.int num_clients: How many wireless clients are currently connected
+        :param builtins.int num_wlans: How many WLANs are applied to the device
         :param Mapping[str, 'GetApStatsDeviceApStatPortStatArgs'] port_stat: Property key is the port name (e.g. `eth0`)
-        :param builtins.int power_budget: in mW, surplus if positive or deficit if negative
-        :param builtins.bool power_constrained: whether insufficient power
-        :param builtins.str power_opmode: constrained mode
+        :param builtins.int power_budget: In mW, surplus if positive or deficit if negative
+        :param builtins.bool power_constrained: Whether insufficient power
+        :param builtins.str power_opmode: Constrained mode
         :param builtins.str power_src: DC Input / PoE 802.3at / PoE 802.3af / LLDP / ? (unknown)
-        :param builtins.str serial: serial
-        :param builtins.float uptime: how long, in seconds, has the device been up (or rebooted)
+        :param builtins.int rx_bps: Rate of receiving traffic, bits/seconds, last known
+        :param builtins.int rx_bytes: Amount of traffic received since connection
+        :param builtins.int rx_pkts: Amount of packets received since connection
+        :param builtins.str serial: Serial Number
+        :param builtins.int tx_bps: Rate of transmitting traffic, bits/seconds, last known
+        :param builtins.int tx_bytes: Amount of traffic sent since connection
+        :param builtins.int tx_pkts: Amount of packets sent since connection
+        :param builtins.float uptime: How long, in seconds, has the device been up (or rebooted)
         """
         pulumi.set(__self__, "auto_placement", auto_placement)
         pulumi.set(__self__, "auto_upgrade_stat", auto_upgrade_stat)
@@ -13646,6 +13845,7 @@ class GetApStatsDeviceApStatResult(dict):
         pulumi.set(__self__, "esl_stat", esl_stat)
         pulumi.set(__self__, "ext_ip", ext_ip)
         pulumi.set(__self__, "fwupdate", fwupdate)
+        pulumi.set(__self__, "gps", gps)
         pulumi.set(__self__, "hw_rev", hw_rev)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "inactive_wired_vlans", inactive_wired_vlans)
@@ -13671,6 +13871,7 @@ class GetApStatsDeviceApStatResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "notes", notes)
         pulumi.set(__self__, "num_clients", num_clients)
+        pulumi.set(__self__, "num_wlans", num_wlans)
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "port_stat", port_stat)
         pulumi.set(__self__, "power_budget", power_budget)
@@ -13731,7 +13932,10 @@ class GetApStatsDeviceApStatResult(dict):
 
     @property
     @pulumi.getter(name="createdTime")
-    def created_time(self) -> builtins.int:
+    def created_time(self) -> builtins.float:
+        """
+        When the object has been created, in epoch
+        """
         return pulumi.get(self, "created_time")
 
     @property
@@ -13743,7 +13947,7 @@ class GetApStatsDeviceApStatResult(dict):
     @pulumi.getter(name="envStat")
     def env_stat(self) -> 'outputs.GetApStatsDeviceApStatEnvStatResult':
         """
-        device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
+        Device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
         """
         return pulumi.get(self, "env_stat")
 
@@ -13763,6 +13967,11 @@ class GetApStatsDeviceApStatResult(dict):
         return pulumi.get(self, "fwupdate")
 
     @property
+    @pulumi.getter
+    def gps(self) -> 'outputs.GetApStatsDeviceApStatGpsResult':
+        return pulumi.get(self, "gps")
+
+    @property
     @pulumi.getter(name="hwRev")
     def hw_rev(self) -> builtins.str:
         return pulumi.get(self, "hw_rev")
@@ -13770,6 +13979,9 @@ class GetApStatsDeviceApStatResult(dict):
     @property
     @pulumi.getter
     def id(self) -> builtins.str:
+        """
+        Unique ID of the object instance in the Mist Organization
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -13804,7 +14016,7 @@ class GetApStatsDeviceApStatResult(dict):
     @pulumi.getter(name="l2tpStat")
     def l2tp_stat(self) -> Mapping[str, 'outputs.GetApStatsDeviceApStatL2tpStatResult']:
         """
-        l2tp tunnel status (key is the wxtunnel*id)
+        L2TP tunnel status (key is the wxtunnel_id)
         """
         return pulumi.get(self, "l2tp_stat")
 
@@ -13812,7 +14024,7 @@ class GetApStatsDeviceApStatResult(dict):
     @pulumi.getter(name="lastSeen")
     def last_seen(self) -> builtins.float:
         """
-        last seen timestamp
+        Last seen timestamp
         """
         return pulumi.get(self, "last_seen")
 
@@ -13820,7 +14032,7 @@ class GetApStatsDeviceApStatResult(dict):
     @pulumi.getter(name="lastTrouble")
     def last_trouble(self) -> 'outputs.GetApStatsDeviceApStatLastTroubleResult':
         """
-        last trouble code of switch
+        Last trouble code of switch
         """
         return pulumi.get(self, "last_trouble")
 
@@ -13849,7 +14061,7 @@ class GetApStatsDeviceApStatResult(dict):
     @pulumi.getter
     def locked(self) -> builtins.bool:
         """
-        whether this AP is considered locked (placement / orientation has been vetted)
+        Whether this AP is considered locked (placement / orientation has been vetted)
         """
         return pulumi.get(self, "locked")
 
@@ -13857,7 +14069,7 @@ class GetApStatsDeviceApStatResult(dict):
     @pulumi.getter
     def mac(self) -> builtins.str:
         """
-        device mac
+        Device mac
         """
         return pulumi.get(self, "mac")
 
@@ -13875,7 +14087,7 @@ class GetApStatsDeviceApStatResult(dict):
     @pulumi.getter(name="meshDownlinks")
     def mesh_downlinks(self) -> Mapping[str, 'outputs.GetApStatsDeviceApStatMeshDownlinksResult']:
         """
-        Property key is the mesh downlink id (e.g `00000000-0000-0000-1000-5c5b35000010`)
+        Property key is the mesh downlink id (e.g. `00000000-0000-0000-1000-5c5b35000010`)
         """
         return pulumi.get(self, "mesh_downlinks")
 
@@ -13888,13 +14100,16 @@ class GetApStatsDeviceApStatResult(dict):
     @pulumi.getter
     def model(self) -> builtins.str:
         """
-        device model
+        Device model
         """
         return pulumi.get(self, "model")
 
     @property
     @pulumi.getter(name="modifiedTime")
-    def modified_time(self) -> builtins.int:
+    def modified_time(self) -> builtins.float:
+        """
+        When the object has been modified for the last time, in epoch
+        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -13916,9 +14131,17 @@ class GetApStatsDeviceApStatResult(dict):
     @pulumi.getter(name="numClients")
     def num_clients(self) -> builtins.int:
         """
-        how many wireless clients are currently connected
+        How many wireless clients are currently connected
         """
         return pulumi.get(self, "num_clients")
+
+    @property
+    @pulumi.getter(name="numWlans")
+    def num_wlans(self) -> builtins.int:
+        """
+        How many WLANs are applied to the device
+        """
+        return pulumi.get(self, "num_wlans")
 
     @property
     @pulumi.getter(name="orgId")
@@ -13937,7 +14160,7 @@ class GetApStatsDeviceApStatResult(dict):
     @pulumi.getter(name="powerBudget")
     def power_budget(self) -> builtins.int:
         """
-        in mW, surplus if positive or deficit if negative
+        In mW, surplus if positive or deficit if negative
         """
         return pulumi.get(self, "power_budget")
 
@@ -13945,7 +14168,7 @@ class GetApStatsDeviceApStatResult(dict):
     @pulumi.getter(name="powerConstrained")
     def power_constrained(self) -> builtins.bool:
         """
-        whether insufficient power
+        Whether insufficient power
         """
         return pulumi.get(self, "power_constrained")
 
@@ -13953,7 +14176,7 @@ class GetApStatsDeviceApStatResult(dict):
     @pulumi.getter(name="powerOpmode")
     def power_opmode(self) -> builtins.str:
         """
-        constrained mode
+        Constrained mode
         """
         return pulumi.get(self, "power_opmode")
 
@@ -13972,24 +14195,33 @@ class GetApStatsDeviceApStatResult(dict):
 
     @property
     @pulumi.getter(name="rxBps")
-    def rx_bps(self) -> builtins.float:
+    def rx_bps(self) -> builtins.int:
+        """
+        Rate of receiving traffic, bits/seconds, last known
+        """
         return pulumi.get(self, "rx_bps")
 
     @property
     @pulumi.getter(name="rxBytes")
     def rx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic received since connection
+        """
         return pulumi.get(self, "rx_bytes")
 
     @property
     @pulumi.getter(name="rxPkts")
     def rx_pkts(self) -> builtins.int:
+        """
+        Amount of packets received since connection
+        """
         return pulumi.get(self, "rx_pkts")
 
     @property
     @pulumi.getter
     def serial(self) -> builtins.str:
         """
-        serial
+        Serial Number
         """
         return pulumi.get(self, "serial")
 
@@ -14010,24 +14242,33 @@ class GetApStatsDeviceApStatResult(dict):
 
     @property
     @pulumi.getter(name="txBps")
-    def tx_bps(self) -> builtins.float:
+    def tx_bps(self) -> builtins.int:
+        """
+        Rate of transmitting traffic, bits/seconds, last known
+        """
         return pulumi.get(self, "tx_bps")
 
     @property
     @pulumi.getter(name="txBytes")
-    def tx_bytes(self) -> builtins.float:
+    def tx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic sent since connection
+        """
         return pulumi.get(self, "tx_bytes")
 
     @property
     @pulumi.getter(name="txPkts")
-    def tx_pkts(self) -> builtins.float:
+    def tx_pkts(self) -> builtins.int:
+        """
+        Amount of packets sent since connection
+        """
         return pulumi.get(self, "tx_pkts")
 
     @property
     @pulumi.getter
     def uptime(self) -> builtins.float:
         """
-        how long, in seconds, has the device been up (or rebooted)
+        How long, in seconds, has the device been up (or rebooted)
         """
         return pulumi.get(self, "uptime")
 
@@ -14059,7 +14300,6 @@ class GetApStatsDeviceApStatAutoPlacementResult(dict):
                  recommended_anchor: builtins.bool,
                  status: builtins.str,
                  status_detail: builtins.str,
-                 use_auto_placement: builtins.bool,
                  x: builtins.float,
                  x_m: builtins.float,
                  y: builtins.float,
@@ -14069,7 +14309,6 @@ class GetApStatsDeviceApStatAutoPlacementResult(dict):
         :param builtins.bool recommended_anchor: Flag to represent if AP is recommended as an anchor by auto placement service
         :param builtins.str status: Basic Placement Status
         :param builtins.str status_detail: Additional info about placement status
-        :param builtins.bool use_auto_placement: Flag to represent if auto_placement values are currently utilized
         :param builtins.float x: X Autoplaced Position in pixels
         :param builtins.float x_m: X Autoplaced Position in meters
         :param builtins.float y: Y Autoplaced Position in pixels
@@ -14079,7 +14318,6 @@ class GetApStatsDeviceApStatAutoPlacementResult(dict):
         pulumi.set(__self__, "recommended_anchor", recommended_anchor)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "status_detail", status_detail)
-        pulumi.set(__self__, "use_auto_placement", use_auto_placement)
         pulumi.set(__self__, "x", x)
         pulumi.set(__self__, "x_m", x_m)
         pulumi.set(__self__, "y", y)
@@ -14116,14 +14354,6 @@ class GetApStatsDeviceApStatAutoPlacementResult(dict):
         Additional info about placement status
         """
         return pulumi.get(self, "status_detail")
-
-    @property
-    @pulumi.getter(name="useAutoPlacement")
-    def use_auto_placement(self) -> builtins.bool:
-        """
-        Flag to represent if auto_placement values are currently utilized
-        """
-        return pulumi.get(self, "use_auto_placement")
 
     @property
     @pulumi.getter
@@ -14278,7 +14508,11 @@ class GetApStatsDeviceApStatBleStatResult(dict):
                  uuid: builtins.str):
         """
         :param builtins.int eddystone_url_freq_msec: Frequency (msec) of data emmit by Eddystone-UID beacon
-        :param builtins.int tx_resets: resets due to tx hung
+        :param builtins.int rx_bytes: Amount of traffic received since connection
+        :param builtins.int rx_pkts: Amount of packets received since connection
+        :param builtins.int tx_bytes: Amount of traffic sent since connection
+        :param builtins.int tx_pkts: Amount of packets sent since connection
+        :param builtins.int tx_resets: Resets due to tx hung
         """
         pulumi.set(__self__, "beacon_enabled", beacon_enabled)
         pulumi.set(__self__, "beacon_rate", beacon_rate)
@@ -14395,28 +14629,40 @@ class GetApStatsDeviceApStatBleStatResult(dict):
     @property
     @pulumi.getter(name="rxBytes")
     def rx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic received since connection
+        """
         return pulumi.get(self, "rx_bytes")
 
     @property
     @pulumi.getter(name="rxPkts")
     def rx_pkts(self) -> builtins.int:
+        """
+        Amount of packets received since connection
+        """
         return pulumi.get(self, "rx_pkts")
 
     @property
     @pulumi.getter(name="txBytes")
     def tx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic sent since connection
+        """
         return pulumi.get(self, "tx_bytes")
 
     @property
     @pulumi.getter(name="txPkts")
     def tx_pkts(self) -> builtins.int:
+        """
+        Amount of packets sent since connection
+        """
         return pulumi.get(self, "tx_pkts")
 
     @property
     @pulumi.getter(name="txResets")
     def tx_resets(self) -> builtins.int:
         """
-        resets due to tx hung
+        Resets due to tx hung
         """
         return pulumi.get(self, "tx_resets")
 
@@ -14556,6 +14802,10 @@ class GetApStatsDeviceApStatFwupdateResult(dict):
                  status_id: builtins.int,
                  timestamp: builtins.float,
                  will_retry: builtins.bool):
+        """
+        :param builtins.str status: enum: `inprogress`, `failed`, `upgraded`
+        :param builtins.float timestamp: Epoch (seconds)
+        """
         pulumi.set(__self__, "progress", progress)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "status_id", status_id)
@@ -14570,6 +14820,9 @@ class GetApStatsDeviceApStatFwupdateResult(dict):
     @property
     @pulumi.getter
     def status(self) -> builtins.str:
+        """
+        enum: `inprogress`, `failed`, `upgraded`
+        """
         return pulumi.get(self, "status")
 
     @property
@@ -14580,12 +14833,92 @@ class GetApStatsDeviceApStatFwupdateResult(dict):
     @property
     @pulumi.getter
     def timestamp(self) -> builtins.float:
+        """
+        Epoch (seconds)
+        """
         return pulumi.get(self, "timestamp")
 
     @property
     @pulumi.getter(name="willRetry")
     def will_retry(self) -> builtins.bool:
         return pulumi.get(self, "will_retry")
+
+
+@pulumi.output_type
+class GetApStatsDeviceApStatGpsResult(dict):
+    def __init__(__self__, *,
+                 accuracy: builtins.float,
+                 altitude: builtins.float,
+                 latitude: builtins.float,
+                 longitude: builtins.float,
+                 src: builtins.str,
+                 timestamp: builtins.float):
+        """
+        :param builtins.float accuracy: The estimated accuracy or accuracy of the GPS coordinates, measured in meters.
+        :param builtins.float altitude: The elevation of the AP above sea level, measured in meters.
+        :param builtins.float latitude: The geographic latitude of the AP, measured in degrees.
+        :param builtins.float longitude: The geographic longitude of the AP, measured in degrees.
+        :param builtins.str src: The origin of the GPS data. enum:
+                 * `gps`: from this device’s GPS estimates
+                 * `other_ap` from neighboring device GPS estimates
+        :param builtins.float timestamp: Epoch (seconds)
+        """
+        pulumi.set(__self__, "accuracy", accuracy)
+        pulumi.set(__self__, "altitude", altitude)
+        pulumi.set(__self__, "latitude", latitude)
+        pulumi.set(__self__, "longitude", longitude)
+        pulumi.set(__self__, "src", src)
+        pulumi.set(__self__, "timestamp", timestamp)
+
+    @property
+    @pulumi.getter
+    def accuracy(self) -> builtins.float:
+        """
+        The estimated accuracy or accuracy of the GPS coordinates, measured in meters.
+        """
+        return pulumi.get(self, "accuracy")
+
+    @property
+    @pulumi.getter
+    def altitude(self) -> builtins.float:
+        """
+        The elevation of the AP above sea level, measured in meters.
+        """
+        return pulumi.get(self, "altitude")
+
+    @property
+    @pulumi.getter
+    def latitude(self) -> builtins.float:
+        """
+        The geographic latitude of the AP, measured in degrees.
+        """
+        return pulumi.get(self, "latitude")
+
+    @property
+    @pulumi.getter
+    def longitude(self) -> builtins.float:
+        """
+        The geographic longitude of the AP, measured in degrees.
+        """
+        return pulumi.get(self, "longitude")
+
+    @property
+    @pulumi.getter
+    def src(self) -> builtins.str:
+        """
+        The origin of the GPS data. enum:
+          * `gps`: from this device’s GPS estimates
+          * `other_ap` from neighboring device GPS estimates
+        """
+        return pulumi.get(self, "src")
+
+    @property
+    @pulumi.getter
+    def timestamp(self) -> builtins.float:
+        """
+        Epoch (seconds)
+        """
+        return pulumi.get(self, "timestamp")
 
 
 @pulumi.output_type
@@ -14616,12 +14949,14 @@ class GetApStatsDeviceApStatIpConfigResult(dict):
                  type6: builtins.str,
                  vlan_id: builtins.int):
         """
-        :param Sequence[builtins.str] dns: if `type`==`static`
-        :param Sequence[builtins.str] dns_suffixes: required if `type`==`static`
-        :param builtins.str gateway: required if `type`==`static`
-        :param builtins.str ip: required if `type`==`static`
-        :param builtins.str netmask: required if `type`==`static`
-        :param builtins.int vlan_id: management vlan id, default is 1 (untagged)
+        :param Sequence[builtins.str] dns: If `type`==`static`
+        :param Sequence[builtins.str] dns_suffixes: Required if `type`==`static`
+        :param builtins.str gateway: Required if `type`==`static`
+        :param builtins.str ip: Required if `type`==`static`
+        :param builtins.str netmask: Required if `type`==`static`
+        :param builtins.str type: enum: `dhcp`, `static`
+        :param builtins.str type6: enum: `autoconf`, `dhcp`, `disabled`, `static`
+        :param builtins.int vlan_id: Management VLAN id, default is 1 (untagged)
         """
         pulumi.set(__self__, "dns", dns)
         pulumi.set(__self__, "dns_suffixes", dns_suffixes)
@@ -14640,7 +14975,7 @@ class GetApStatsDeviceApStatIpConfigResult(dict):
     @pulumi.getter
     def dns(self) -> Sequence[builtins.str]:
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         return pulumi.get(self, "dns")
 
@@ -14648,7 +14983,7 @@ class GetApStatsDeviceApStatIpConfigResult(dict):
     @pulumi.getter(name="dnsSuffixes")
     def dns_suffixes(self) -> Sequence[builtins.str]:
         """
-        required if `type`==`static`
+        Required if `type`==`static`
         """
         return pulumi.get(self, "dns_suffixes")
 
@@ -14656,7 +14991,7 @@ class GetApStatsDeviceApStatIpConfigResult(dict):
     @pulumi.getter
     def gateway(self) -> builtins.str:
         """
-        required if `type`==`static`
+        Required if `type`==`static`
         """
         return pulumi.get(self, "gateway")
 
@@ -14669,7 +15004,7 @@ class GetApStatsDeviceApStatIpConfigResult(dict):
     @pulumi.getter
     def ip(self) -> builtins.str:
         """
-        required if `type`==`static`
+        Required if `type`==`static`
         """
         return pulumi.get(self, "ip")
 
@@ -14687,7 +15022,7 @@ class GetApStatsDeviceApStatIpConfigResult(dict):
     @pulumi.getter
     def netmask(self) -> builtins.str:
         """
-        required if `type`==`static`
+        Required if `type`==`static`
         """
         return pulumi.get(self, "netmask")
 
@@ -14699,18 +15034,24 @@ class GetApStatsDeviceApStatIpConfigResult(dict):
     @property
     @pulumi.getter
     def type(self) -> builtins.str:
+        """
+        enum: `dhcp`, `static`
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def type6(self) -> builtins.str:
+        """
+        enum: `autoconf`, `dhcp`, `disabled`, `static`
+        """
         return pulumi.get(self, "type6")
 
     @property
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> builtins.int:
         """
-        management vlan id, default is 1 (untagged)
+        Management VLAN id, default is 1 (untagged)
         """
         return pulumi.get(self, "vlan_id")
 
@@ -14798,8 +15139,9 @@ class GetApStatsDeviceApStatL2tpStatResult(dict):
                  uptime: builtins.int,
                  wxtunnel_id: builtins.str):
         """
-        :param Sequence['GetApStatsDeviceApStatL2tpStatSessionArgs'] sessions: list of sessions
-        :param builtins.int uptime: uptime
+        :param Sequence['GetApStatsDeviceApStatL2tpStatSessionArgs'] sessions: List of sessions
+        :param builtins.str state: enum: `established`, `established_with_session`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+        :param builtins.int uptime: Uptime
         :param builtins.str wxtunnel_id: WxlanTunnel ID
         """
         pulumi.set(__self__, "sessions", sessions)
@@ -14811,20 +15153,23 @@ class GetApStatsDeviceApStatL2tpStatResult(dict):
     @pulumi.getter
     def sessions(self) -> Sequence['outputs.GetApStatsDeviceApStatL2tpStatSessionResult']:
         """
-        list of sessions
+        List of sessions
         """
         return pulumi.get(self, "sessions")
 
     @property
     @pulumi.getter
     def state(self) -> builtins.str:
+        """
+        enum: `established`, `established_with_session`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def uptime(self) -> builtins.int:
         """
-        uptime
+        Uptime
         """
         return pulumi.get(self, "uptime")
 
@@ -14845,9 +15190,10 @@ class GetApStatsDeviceApStatL2tpStatSessionResult(dict):
                  remote_sid: builtins.int,
                  state: builtins.str):
         """
-        :param builtins.int local_sid: remote sessions id (dynamically unless Tunnel is said to be static)
+        :param builtins.int local_sid: Remote sessions id (dynamically unless Tunnel is said to be static)
         :param builtins.str remote_id: WxlanTunnel Remote ID (user-configured)
-        :param builtins.int remote_sid: remote sessions id (dynamically unless Tunnel is said to be static)
+        :param builtins.int remote_sid: Remote sessions id (dynamically unless Tunnel is said to be static)
+        :param builtins.str state: enum: `established`, `established_with_session`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
         """
         pulumi.set(__self__, "local_sid", local_sid)
         pulumi.set(__self__, "remote_id", remote_id)
@@ -14858,7 +15204,7 @@ class GetApStatsDeviceApStatL2tpStatSessionResult(dict):
     @pulumi.getter(name="localSid")
     def local_sid(self) -> builtins.int:
         """
-        remote sessions id (dynamically unless Tunnel is said to be static)
+        Remote sessions id (dynamically unless Tunnel is said to be static)
         """
         return pulumi.get(self, "local_sid")
 
@@ -14874,13 +15220,16 @@ class GetApStatsDeviceApStatL2tpStatSessionResult(dict):
     @pulumi.getter(name="remoteSid")
     def remote_sid(self) -> builtins.int:
         """
-        remote sessions id (dynamically unless Tunnel is said to be static)
+        Remote sessions id (dynamically unless Tunnel is said to be static)
         """
         return pulumi.get(self, "remote_sid")
 
     @property
     @pulumi.getter
     def state(self) -> builtins.str:
+        """
+        enum: `established`, `established_with_session`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+        """
         return pulumi.get(self, "state")
 
 
@@ -14888,9 +15237,10 @@ class GetApStatsDeviceApStatL2tpStatSessionResult(dict):
 class GetApStatsDeviceApStatLastTroubleResult(dict):
     def __init__(__self__, *,
                  code: builtins.str,
-                 timestamp: builtins.int):
+                 timestamp: builtins.float):
         """
-        :param builtins.str code: Code definitions list at /api/v1/consts/ap*led*status
+        :param builtins.str code: Code definitions list at List Ap Led Definition
+        :param builtins.float timestamp: Epoch (seconds)
         """
         pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "timestamp", timestamp)
@@ -14899,13 +15249,16 @@ class GetApStatsDeviceApStatLastTroubleResult(dict):
     @pulumi.getter
     def code(self) -> builtins.str:
         """
-        Code definitions list at /api/v1/consts/ap*led*status
+        Code definitions list at List Ap Led Definition
         """
         return pulumi.get(self, "code")
 
     @property
     @pulumi.getter
-    def timestamp(self) -> builtins.int:
+    def timestamp(self) -> builtins.float:
+        """
+        Epoch (seconds)
+        """
         return pulumi.get(self, "timestamp")
 
 
@@ -14944,15 +15297,15 @@ class GetApStatsDeviceApStatLldpStatResult(dict):
                  system_desc: builtins.str,
                  system_name: builtins.str):
         """
-        :param builtins.bool lldp_med_supported: whether it support LLDP-MED
-        :param builtins.str mgmt_addr: switch’s management address (if advertised), can be IPv4, IPv6, or MAC
+        :param builtins.bool lldp_med_supported: Whether it support LLDP-MED
+        :param builtins.str mgmt_addr: Switch’s management address (if advertised), can be IPv4, IPv6, or MAC
         :param builtins.str port_desc: ge-0/0/4
-        :param builtins.float power_allocated: in mW, provided/allocated by PSE
-        :param builtins.float power_draw: in mW, total power needed by PD
-        :param builtins.int power_request_count: number of negotiations, if it keeps increasing, we don’t have a stable power
-        :param builtins.float power_requested: in mW, the current power requested by PD
-        :param builtins.str system_desc: description provided by switch
-        :param builtins.str system_name: name of the switch
+        :param builtins.float power_allocated: In mW, provided/allocated by PSE
+        :param builtins.float power_draw: In mW, total power needed by PD
+        :param builtins.int power_request_count: Number of negotiations, if it keeps increasing, we don’ t have a stable power
+        :param builtins.float power_requested: In mW, the current power requested by PD
+        :param builtins.str system_desc: Description provided by switch
+        :param builtins.str system_name: Name of the switch
         """
         pulumi.set(__self__, "chassis_id", chassis_id)
         pulumi.set(__self__, "lldp_med_supported", lldp_med_supported)
@@ -14976,7 +15329,7 @@ class GetApStatsDeviceApStatLldpStatResult(dict):
     @pulumi.getter(name="lldpMedSupported")
     def lldp_med_supported(self) -> builtins.bool:
         """
-        whether it support LLDP-MED
+        Whether it support LLDP-MED
         """
         return pulumi.get(self, "lldp_med_supported")
 
@@ -14984,7 +15337,7 @@ class GetApStatsDeviceApStatLldpStatResult(dict):
     @pulumi.getter(name="mgmtAddr")
     def mgmt_addr(self) -> builtins.str:
         """
-        switch’s management address (if advertised), can be IPv4, IPv6, or MAC
+        Switch’s management address (if advertised), can be IPv4, IPv6, or MAC
         """
         return pulumi.get(self, "mgmt_addr")
 
@@ -15010,7 +15363,7 @@ class GetApStatsDeviceApStatLldpStatResult(dict):
     @pulumi.getter(name="powerAllocated")
     def power_allocated(self) -> builtins.float:
         """
-        in mW, provided/allocated by PSE
+        In mW, provided/allocated by PSE
         """
         return pulumi.get(self, "power_allocated")
 
@@ -15018,7 +15371,7 @@ class GetApStatsDeviceApStatLldpStatResult(dict):
     @pulumi.getter(name="powerDraw")
     def power_draw(self) -> builtins.float:
         """
-        in mW, total power needed by PD
+        In mW, total power needed by PD
         """
         return pulumi.get(self, "power_draw")
 
@@ -15026,7 +15379,7 @@ class GetApStatsDeviceApStatLldpStatResult(dict):
     @pulumi.getter(name="powerRequestCount")
     def power_request_count(self) -> builtins.int:
         """
-        number of negotiations, if it keeps increasing, we don’t have a stable power
+        Number of negotiations, if it keeps increasing, we don’ t have a stable power
         """
         return pulumi.get(self, "power_request_count")
 
@@ -15034,7 +15387,7 @@ class GetApStatsDeviceApStatLldpStatResult(dict):
     @pulumi.getter(name="powerRequested")
     def power_requested(self) -> builtins.float:
         """
-        in mW, the current power requested by PD
+        In mW, the current power requested by PD
         """
         return pulumi.get(self, "power_requested")
 
@@ -15042,7 +15395,7 @@ class GetApStatsDeviceApStatLldpStatResult(dict):
     @pulumi.getter(name="systemDesc")
     def system_desc(self) -> builtins.str:
         """
-        description provided by switch
+        Description provided by switch
         """
         return pulumi.get(self, "system_desc")
 
@@ -15050,7 +15403,7 @@ class GetApStatsDeviceApStatLldpStatResult(dict):
     @pulumi.getter(name="systemName")
     def system_name(self) -> builtins.str:
         """
-        name of the switch
+        Name of the switch
         """
         return pulumi.get(self, "system_name")
 
@@ -15067,15 +15420,28 @@ class GetApStatsDeviceApStatMeshDownlinksResult(dict):
                  rx_bps: builtins.int,
                  rx_bytes: builtins.int,
                  rx_packets: builtins.int,
-                 rx_rate: builtins.int,
+                 rx_rate: builtins.float,
                  rx_retries: builtins.int,
                  site_id: builtins.str,
                  snr: builtins.int,
                  tx_bps: builtins.int,
                  tx_bytes: builtins.int,
                  tx_packets: builtins.int,
-                 tx_rate: builtins.int,
+                 tx_rate: builtins.float,
                  tx_retries: builtins.int):
+        """
+        :param builtins.float last_seen: Last seen timestamp
+        :param builtins.int rx_bps: Rate of receiving traffic, bits/seconds, last known
+        :param builtins.int rx_bytes: Amount of traffic received since connection
+        :param builtins.int rx_packets: Amount of packets received since connection
+        :param builtins.float rx_rate: RX Rate, Mbps
+        :param builtins.int rx_retries: Amount of rx retries
+        :param builtins.int tx_bps: Rate of transmitting traffic, bits/seconds, last known
+        :param builtins.int tx_bytes: Amount of traffic sent since connection
+        :param builtins.int tx_packets: Amount of packets sent since connection
+        :param builtins.float tx_rate: TX Rate, Mbps
+        :param builtins.int tx_retries: Amount of tx retries
+        """
         pulumi.set(__self__, "band", band)
         pulumi.set(__self__, "channel", channel)
         pulumi.set(__self__, "idle_time", idle_time)
@@ -15113,6 +15479,9 @@ class GetApStatsDeviceApStatMeshDownlinksResult(dict):
     @property
     @pulumi.getter(name="lastSeen")
     def last_seen(self) -> builtins.float:
+        """
+        Last seen timestamp
+        """
         return pulumi.get(self, "last_seen")
 
     @property
@@ -15128,26 +15497,41 @@ class GetApStatsDeviceApStatMeshDownlinksResult(dict):
     @property
     @pulumi.getter(name="rxBps")
     def rx_bps(self) -> builtins.int:
+        """
+        Rate of receiving traffic, bits/seconds, last known
+        """
         return pulumi.get(self, "rx_bps")
 
     @property
     @pulumi.getter(name="rxBytes")
     def rx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic received since connection
+        """
         return pulumi.get(self, "rx_bytes")
 
     @property
     @pulumi.getter(name="rxPackets")
     def rx_packets(self) -> builtins.int:
+        """
+        Amount of packets received since connection
+        """
         return pulumi.get(self, "rx_packets")
 
     @property
     @pulumi.getter(name="rxRate")
-    def rx_rate(self) -> builtins.int:
+    def rx_rate(self) -> builtins.float:
+        """
+        RX Rate, Mbps
+        """
         return pulumi.get(self, "rx_rate")
 
     @property
     @pulumi.getter(name="rxRetries")
     def rx_retries(self) -> builtins.int:
+        """
+        Amount of rx retries
+        """
         return pulumi.get(self, "rx_retries")
 
     @property
@@ -15163,26 +15547,41 @@ class GetApStatsDeviceApStatMeshDownlinksResult(dict):
     @property
     @pulumi.getter(name="txBps")
     def tx_bps(self) -> builtins.int:
+        """
+        Rate of transmitting traffic, bits/seconds, last known
+        """
         return pulumi.get(self, "tx_bps")
 
     @property
     @pulumi.getter(name="txBytes")
     def tx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic sent since connection
+        """
         return pulumi.get(self, "tx_bytes")
 
     @property
     @pulumi.getter(name="txPackets")
     def tx_packets(self) -> builtins.int:
+        """
+        Amount of packets sent since connection
+        """
         return pulumi.get(self, "tx_packets")
 
     @property
     @pulumi.getter(name="txRate")
-    def tx_rate(self) -> builtins.int:
+    def tx_rate(self) -> builtins.float:
+        """
+        TX Rate, Mbps
+        """
         return pulumi.get(self, "tx_rate")
 
     @property
     @pulumi.getter(name="txRetries")
     def tx_retries(self) -> builtins.int:
+        """
+        Amount of tx retries
+        """
         return pulumi.get(self, "tx_retries")
 
 
@@ -15198,16 +15597,29 @@ class GetApStatsDeviceApStatMeshUplinkResult(dict):
                  rx_bps: builtins.int,
                  rx_bytes: builtins.int,
                  rx_packets: builtins.int,
-                 rx_rate: builtins.int,
+                 rx_rate: builtins.float,
                  rx_retries: builtins.int,
                  site_id: builtins.str,
                  snr: builtins.int,
                  tx_bps: builtins.int,
                  tx_bytes: builtins.int,
                  tx_packets: builtins.int,
-                 tx_rate: builtins.int,
+                 tx_rate: builtins.float,
                  tx_retries: builtins.int,
                  uplink_ap_id: builtins.str):
+        """
+        :param builtins.float last_seen: Last seen timestamp
+        :param builtins.int rx_bps: Rate of receiving traffic, bits/seconds, last known
+        :param builtins.int rx_bytes: Amount of traffic received since connection
+        :param builtins.int rx_packets: Amount of packets received since connection
+        :param builtins.float rx_rate: RX Rate, Mbps
+        :param builtins.int rx_retries: Amount of rx retries
+        :param builtins.int tx_bps: Rate of transmitting traffic, bits/seconds, last known
+        :param builtins.int tx_bytes: Amount of traffic sent since connection
+        :param builtins.int tx_packets: Amount of packets sent since connection
+        :param builtins.float tx_rate: TX Rate, Mbps
+        :param builtins.int tx_retries: Amount of tx retries
+        """
         pulumi.set(__self__, "band", band)
         pulumi.set(__self__, "channel", channel)
         pulumi.set(__self__, "idle_time", idle_time)
@@ -15246,6 +15658,9 @@ class GetApStatsDeviceApStatMeshUplinkResult(dict):
     @property
     @pulumi.getter(name="lastSeen")
     def last_seen(self) -> builtins.float:
+        """
+        Last seen timestamp
+        """
         return pulumi.get(self, "last_seen")
 
     @property
@@ -15261,26 +15676,41 @@ class GetApStatsDeviceApStatMeshUplinkResult(dict):
     @property
     @pulumi.getter(name="rxBps")
     def rx_bps(self) -> builtins.int:
+        """
+        Rate of receiving traffic, bits/seconds, last known
+        """
         return pulumi.get(self, "rx_bps")
 
     @property
     @pulumi.getter(name="rxBytes")
     def rx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic received since connection
+        """
         return pulumi.get(self, "rx_bytes")
 
     @property
     @pulumi.getter(name="rxPackets")
     def rx_packets(self) -> builtins.int:
+        """
+        Amount of packets received since connection
+        """
         return pulumi.get(self, "rx_packets")
 
     @property
     @pulumi.getter(name="rxRate")
-    def rx_rate(self) -> builtins.int:
+    def rx_rate(self) -> builtins.float:
+        """
+        RX Rate, Mbps
+        """
         return pulumi.get(self, "rx_rate")
 
     @property
     @pulumi.getter(name="rxRetries")
     def rx_retries(self) -> builtins.int:
+        """
+        Amount of rx retries
+        """
         return pulumi.get(self, "rx_retries")
 
     @property
@@ -15296,26 +15726,41 @@ class GetApStatsDeviceApStatMeshUplinkResult(dict):
     @property
     @pulumi.getter(name="txBps")
     def tx_bps(self) -> builtins.int:
+        """
+        Rate of transmitting traffic, bits/seconds, last known
+        """
         return pulumi.get(self, "tx_bps")
 
     @property
     @pulumi.getter(name="txBytes")
     def tx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic sent since connection
+        """
         return pulumi.get(self, "tx_bytes")
 
     @property
     @pulumi.getter(name="txPackets")
     def tx_packets(self) -> builtins.int:
+        """
+        Amount of packets sent since connection
+        """
         return pulumi.get(self, "tx_packets")
 
     @property
     @pulumi.getter(name="txRate")
-    def tx_rate(self) -> builtins.int:
+    def tx_rate(self) -> builtins.float:
+        """
+        TX Rate, Mbps
+        """
         return pulumi.get(self, "tx_rate")
 
     @property
     @pulumi.getter(name="txRetries")
     def tx_retries(self) -> builtins.int:
+        """
+        Amount of tx retries
+        """
         return pulumi.get(self, "tx_retries")
 
     @property
@@ -15328,19 +15773,29 @@ class GetApStatsDeviceApStatMeshUplinkResult(dict):
 class GetApStatsDeviceApStatPortStatResult(dict):
     def __init__(__self__, *,
                  full_duplex: builtins.bool,
-                 rx_bytes: builtins.float,
-                 rx_errors: builtins.float,
-                 rx_pkts: builtins.float,
+                 rx_bytes: builtins.int,
+                 rx_errors: builtins.int,
+                 rx_peak_bps: builtins.int,
+                 rx_pkts: builtins.int,
                  speed: builtins.int,
-                 tx_bytes: builtins.float,
-                 tx_pkts: builtins.float,
+                 tx_bytes: builtins.int,
+                 tx_peak_bps: builtins.int,
+                 tx_pkts: builtins.int,
                  up: builtins.bool):
+        """
+        :param builtins.int rx_bytes: Amount of traffic received since connection
+        :param builtins.int rx_pkts: Amount of packets received since connection
+        :param builtins.int tx_bytes: Amount of traffic sent since connection
+        :param builtins.int tx_pkts: Amount of packets sent since connection
+        """
         pulumi.set(__self__, "full_duplex", full_duplex)
         pulumi.set(__self__, "rx_bytes", rx_bytes)
         pulumi.set(__self__, "rx_errors", rx_errors)
+        pulumi.set(__self__, "rx_peak_bps", rx_peak_bps)
         pulumi.set(__self__, "rx_pkts", rx_pkts)
         pulumi.set(__self__, "speed", speed)
         pulumi.set(__self__, "tx_bytes", tx_bytes)
+        pulumi.set(__self__, "tx_peak_bps", tx_peak_bps)
         pulumi.set(__self__, "tx_pkts", tx_pkts)
         pulumi.set(__self__, "up", up)
 
@@ -15351,17 +15806,28 @@ class GetApStatsDeviceApStatPortStatResult(dict):
 
     @property
     @pulumi.getter(name="rxBytes")
-    def rx_bytes(self) -> builtins.float:
+    def rx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic received since connection
+        """
         return pulumi.get(self, "rx_bytes")
 
     @property
     @pulumi.getter(name="rxErrors")
-    def rx_errors(self) -> builtins.float:
+    def rx_errors(self) -> builtins.int:
         return pulumi.get(self, "rx_errors")
 
     @property
+    @pulumi.getter(name="rxPeakBps")
+    def rx_peak_bps(self) -> builtins.int:
+        return pulumi.get(self, "rx_peak_bps")
+
+    @property
     @pulumi.getter(name="rxPkts")
-    def rx_pkts(self) -> builtins.float:
+    def rx_pkts(self) -> builtins.int:
+        """
+        Amount of packets received since connection
+        """
         return pulumi.get(self, "rx_pkts")
 
     @property
@@ -15371,12 +15837,23 @@ class GetApStatsDeviceApStatPortStatResult(dict):
 
     @property
     @pulumi.getter(name="txBytes")
-    def tx_bytes(self) -> builtins.float:
+    def tx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic sent since connection
+        """
         return pulumi.get(self, "tx_bytes")
 
     @property
+    @pulumi.getter(name="txPeakBps")
+    def tx_peak_bps(self) -> builtins.int:
+        return pulumi.get(self, "tx_peak_bps")
+
+    @property
     @pulumi.getter(name="txPkts")
-    def tx_pkts(self) -> builtins.float:
+    def tx_pkts(self) -> builtins.int:
+        """
+        Amount of packets sent since connection
+        """
         return pulumi.get(self, "tx_pkts")
 
     @property
@@ -15392,9 +15869,9 @@ class GetApStatsDeviceApStatRadioStatResult(dict):
                  band5: 'outputs.GetApStatsDeviceApStatRadioStatBand5Result',
                  band6: 'outputs.GetApStatsDeviceApStatRadioStatBand6Result'):
         """
-        :param 'GetApStatsDeviceApStatRadioStatBand24Args' band24: radio stat
-        :param 'GetApStatsDeviceApStatRadioStatBand5Args' band5: radio stat
-        :param 'GetApStatsDeviceApStatRadioStatBand6Args' band6: radio stat
+        :param 'GetApStatsDeviceApStatRadioStatBand24Args' band24: Radio stat
+        :param 'GetApStatsDeviceApStatRadioStatBand5Args' band5: Radio stat
+        :param 'GetApStatsDeviceApStatRadioStatBand6Args' band6: Radio stat
         """
         pulumi.set(__self__, "band24", band24)
         pulumi.set(__self__, "band5", band5)
@@ -15404,7 +15881,7 @@ class GetApStatsDeviceApStatRadioStatResult(dict):
     @pulumi.getter
     def band24(self) -> 'outputs.GetApStatsDeviceApStatRadioStatBand24Result':
         """
-        radio stat
+        Radio stat
         """
         return pulumi.get(self, "band24")
 
@@ -15412,7 +15889,7 @@ class GetApStatsDeviceApStatRadioStatResult(dict):
     @pulumi.getter
     def band5(self) -> 'outputs.GetApStatsDeviceApStatRadioStatBand5Result':
         """
-        radio stat
+        Radio stat
         """
         return pulumi.get(self, "band5")
 
@@ -15420,7 +15897,7 @@ class GetApStatsDeviceApStatRadioStatResult(dict):
     @pulumi.getter
     def band6(self) -> 'outputs.GetApStatsDeviceApStatRadioStatBand6Result':
         """
-        radio stat
+        Radio stat
         """
         return pulumi.get(self, "band6")
 
@@ -15430,10 +15907,11 @@ class GetApStatsDeviceApStatRadioStatBand24Result(dict):
     def __init__(__self__, *,
                  bandwidth: builtins.int,
                  channel: builtins.int,
-                 dynamic_chaining_enalbed: builtins.bool,
+                 dynamic_chaining_enabled: builtins.bool,
                  mac: builtins.str,
                  noise_floor: builtins.int,
                  num_clients: builtins.int,
+                 num_wlans: builtins.int,
                  power: builtins.int,
                  rx_bytes: builtins.int,
                  rx_pkts: builtins.int,
@@ -15448,25 +15926,31 @@ class GetApStatsDeviceApStatRadioStatBand24Result(dict):
                  util_undecodable_wifi: builtins.int,
                  util_unknown_wifi: builtins.int):
         """
-        :param builtins.int bandwidth: channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
-        :param builtins.int channel: current channel the radio is running on
-        :param builtins.bool dynamic_chaining_enalbed: Use dynamic chaining for downlink
-        :param builtins.str mac: radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
-        :param builtins.int power: transmit power (in dBm)
-        :param builtins.int util_all: all utilization in percentage
-        :param builtins.int util_non_wifi: reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
-        :param builtins.int util_rx_in_bss: reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
-        :param builtins.int util_rx_other_bss: reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
-        :param builtins.int util_tx: transmission utilization in percentage
-        :param builtins.int util_undecodable_wifi: reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
-        :param builtins.int util_unknown_wifi: reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+        :param builtins.int bandwidth: channel width for the band.enum: `20`, `40`, `80` (only applicable for band_5 and band_6), `160` (only for band_6)
+        :param builtins.int channel: Current channel the radio is running on
+        :param builtins.bool dynamic_chaining_enabled: Use dynamic chaining for downlink
+        :param builtins.str mac: Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+        :param builtins.int num_wlans: How many WLANs are applied to the radio
+        :param builtins.int power: Transmit power (in dBm)
+        :param builtins.int rx_bytes: Amount of traffic received since connection
+        :param builtins.int rx_pkts: Amount of packets received since connection
+        :param builtins.int tx_bytes: Amount of traffic sent since connection
+        :param builtins.int tx_pkts: Amount of packets sent since connection
+        :param builtins.int util_all: All utilization in percentage
+        :param builtins.int util_non_wifi: Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+        :param builtins.int util_rx_in_bss: Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
+        :param builtins.int util_rx_other_bss: Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
+        :param builtins.int util_tx: Transmission utilization in percentage
+        :param builtins.int util_undecodable_wifi: Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+        :param builtins.int util_unknown_wifi: Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "channel", channel)
-        pulumi.set(__self__, "dynamic_chaining_enalbed", dynamic_chaining_enalbed)
+        pulumi.set(__self__, "dynamic_chaining_enabled", dynamic_chaining_enabled)
         pulumi.set(__self__, "mac", mac)
         pulumi.set(__self__, "noise_floor", noise_floor)
         pulumi.set(__self__, "num_clients", num_clients)
+        pulumi.set(__self__, "num_wlans", num_wlans)
         pulumi.set(__self__, "power", power)
         pulumi.set(__self__, "rx_bytes", rx_bytes)
         pulumi.set(__self__, "rx_pkts", rx_pkts)
@@ -15485,7 +15969,7 @@ class GetApStatsDeviceApStatRadioStatBand24Result(dict):
     @pulumi.getter
     def bandwidth(self) -> builtins.int:
         """
-        channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
+        channel width for the band.enum: `20`, `40`, `80` (only applicable for band_5 and band_6), `160` (only for band_6)
         """
         return pulumi.get(self, "bandwidth")
 
@@ -15493,23 +15977,23 @@ class GetApStatsDeviceApStatRadioStatBand24Result(dict):
     @pulumi.getter
     def channel(self) -> builtins.int:
         """
-        current channel the radio is running on
+        Current channel the radio is running on
         """
         return pulumi.get(self, "channel")
 
     @property
-    @pulumi.getter(name="dynamicChainingEnalbed")
-    def dynamic_chaining_enalbed(self) -> builtins.bool:
+    @pulumi.getter(name="dynamicChainingEnabled")
+    def dynamic_chaining_enabled(self) -> builtins.bool:
         """
         Use dynamic chaining for downlink
         """
-        return pulumi.get(self, "dynamic_chaining_enalbed")
+        return pulumi.get(self, "dynamic_chaining_enabled")
 
     @property
     @pulumi.getter
     def mac(self) -> builtins.str:
         """
-        radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+        Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
         """
         return pulumi.get(self, "mac")
 
@@ -15524,31 +16008,51 @@ class GetApStatsDeviceApStatRadioStatBand24Result(dict):
         return pulumi.get(self, "num_clients")
 
     @property
+    @pulumi.getter(name="numWlans")
+    def num_wlans(self) -> builtins.int:
+        """
+        How many WLANs are applied to the radio
+        """
+        return pulumi.get(self, "num_wlans")
+
+    @property
     @pulumi.getter
     def power(self) -> builtins.int:
         """
-        transmit power (in dBm)
+        Transmit power (in dBm)
         """
         return pulumi.get(self, "power")
 
     @property
     @pulumi.getter(name="rxBytes")
     def rx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic received since connection
+        """
         return pulumi.get(self, "rx_bytes")
 
     @property
     @pulumi.getter(name="rxPkts")
     def rx_pkts(self) -> builtins.int:
+        """
+        Amount of packets received since connection
+        """
         return pulumi.get(self, "rx_pkts")
 
     @property
     @pulumi.getter(name="txBytes")
     def tx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic sent since connection
+        """
         return pulumi.get(self, "tx_bytes")
 
     @property
     @pulumi.getter(name="txPkts")
     def tx_pkts(self) -> builtins.int:
+        """
+        Amount of packets sent since connection
+        """
         return pulumi.get(self, "tx_pkts")
 
     @property
@@ -15560,7 +16064,7 @@ class GetApStatsDeviceApStatRadioStatBand24Result(dict):
     @pulumi.getter(name="utilAll")
     def util_all(self) -> builtins.int:
         """
-        all utilization in percentage
+        All utilization in percentage
         """
         return pulumi.get(self, "util_all")
 
@@ -15568,7 +16072,7 @@ class GetApStatsDeviceApStatRadioStatBand24Result(dict):
     @pulumi.getter(name="utilNonWifi")
     def util_non_wifi(self) -> builtins.int:
         """
-        reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+        Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
         """
         return pulumi.get(self, "util_non_wifi")
 
@@ -15576,7 +16080,7 @@ class GetApStatsDeviceApStatRadioStatBand24Result(dict):
     @pulumi.getter(name="utilRxInBss")
     def util_rx_in_bss(self) -> builtins.int:
         """
-        reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
+        Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
         """
         return pulumi.get(self, "util_rx_in_bss")
 
@@ -15584,7 +16088,7 @@ class GetApStatsDeviceApStatRadioStatBand24Result(dict):
     @pulumi.getter(name="utilRxOtherBss")
     def util_rx_other_bss(self) -> builtins.int:
         """
-        reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
+        Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
         """
         return pulumi.get(self, "util_rx_other_bss")
 
@@ -15592,7 +16096,7 @@ class GetApStatsDeviceApStatRadioStatBand24Result(dict):
     @pulumi.getter(name="utilTx")
     def util_tx(self) -> builtins.int:
         """
-        transmission utilization in percentage
+        Transmission utilization in percentage
         """
         return pulumi.get(self, "util_tx")
 
@@ -15600,7 +16104,7 @@ class GetApStatsDeviceApStatRadioStatBand24Result(dict):
     @pulumi.getter(name="utilUndecodableWifi")
     def util_undecodable_wifi(self) -> builtins.int:
         """
-        reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+        Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
         """
         return pulumi.get(self, "util_undecodable_wifi")
 
@@ -15608,7 +16112,7 @@ class GetApStatsDeviceApStatRadioStatBand24Result(dict):
     @pulumi.getter(name="utilUnknownWifi")
     def util_unknown_wifi(self) -> builtins.int:
         """
-        reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+        Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
         """
         return pulumi.get(self, "util_unknown_wifi")
 
@@ -15618,10 +16122,11 @@ class GetApStatsDeviceApStatRadioStatBand5Result(dict):
     def __init__(__self__, *,
                  bandwidth: builtins.int,
                  channel: builtins.int,
-                 dynamic_chaining_enalbed: builtins.bool,
+                 dynamic_chaining_enabled: builtins.bool,
                  mac: builtins.str,
                  noise_floor: builtins.int,
                  num_clients: builtins.int,
+                 num_wlans: builtins.int,
                  power: builtins.int,
                  rx_bytes: builtins.int,
                  rx_pkts: builtins.int,
@@ -15636,25 +16141,31 @@ class GetApStatsDeviceApStatRadioStatBand5Result(dict):
                  util_undecodable_wifi: builtins.int,
                  util_unknown_wifi: builtins.int):
         """
-        :param builtins.int bandwidth: channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
-        :param builtins.int channel: current channel the radio is running on
-        :param builtins.bool dynamic_chaining_enalbed: Use dynamic chaining for downlink
-        :param builtins.str mac: radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
-        :param builtins.int power: transmit power (in dBm)
-        :param builtins.int util_all: all utilization in percentage
-        :param builtins.int util_non_wifi: reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
-        :param builtins.int util_rx_in_bss: reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
-        :param builtins.int util_rx_other_bss: reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
-        :param builtins.int util_tx: transmission utilization in percentage
-        :param builtins.int util_undecodable_wifi: reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
-        :param builtins.int util_unknown_wifi: reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+        :param builtins.int bandwidth: channel width for the band.enum: `20`, `40`, `80` (only applicable for band_5 and band_6), `160` (only for band_6)
+        :param builtins.int channel: Current channel the radio is running on
+        :param builtins.bool dynamic_chaining_enabled: Use dynamic chaining for downlink
+        :param builtins.str mac: Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+        :param builtins.int num_wlans: How many WLANs are applied to the radio
+        :param builtins.int power: Transmit power (in dBm)
+        :param builtins.int rx_bytes: Amount of traffic received since connection
+        :param builtins.int rx_pkts: Amount of packets received since connection
+        :param builtins.int tx_bytes: Amount of traffic sent since connection
+        :param builtins.int tx_pkts: Amount of packets sent since connection
+        :param builtins.int util_all: All utilization in percentage
+        :param builtins.int util_non_wifi: Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+        :param builtins.int util_rx_in_bss: Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
+        :param builtins.int util_rx_other_bss: Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
+        :param builtins.int util_tx: Transmission utilization in percentage
+        :param builtins.int util_undecodable_wifi: Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+        :param builtins.int util_unknown_wifi: Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "channel", channel)
-        pulumi.set(__self__, "dynamic_chaining_enalbed", dynamic_chaining_enalbed)
+        pulumi.set(__self__, "dynamic_chaining_enabled", dynamic_chaining_enabled)
         pulumi.set(__self__, "mac", mac)
         pulumi.set(__self__, "noise_floor", noise_floor)
         pulumi.set(__self__, "num_clients", num_clients)
+        pulumi.set(__self__, "num_wlans", num_wlans)
         pulumi.set(__self__, "power", power)
         pulumi.set(__self__, "rx_bytes", rx_bytes)
         pulumi.set(__self__, "rx_pkts", rx_pkts)
@@ -15673,7 +16184,7 @@ class GetApStatsDeviceApStatRadioStatBand5Result(dict):
     @pulumi.getter
     def bandwidth(self) -> builtins.int:
         """
-        channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
+        channel width for the band.enum: `20`, `40`, `80` (only applicable for band_5 and band_6), `160` (only for band_6)
         """
         return pulumi.get(self, "bandwidth")
 
@@ -15681,23 +16192,23 @@ class GetApStatsDeviceApStatRadioStatBand5Result(dict):
     @pulumi.getter
     def channel(self) -> builtins.int:
         """
-        current channel the radio is running on
+        Current channel the radio is running on
         """
         return pulumi.get(self, "channel")
 
     @property
-    @pulumi.getter(name="dynamicChainingEnalbed")
-    def dynamic_chaining_enalbed(self) -> builtins.bool:
+    @pulumi.getter(name="dynamicChainingEnabled")
+    def dynamic_chaining_enabled(self) -> builtins.bool:
         """
         Use dynamic chaining for downlink
         """
-        return pulumi.get(self, "dynamic_chaining_enalbed")
+        return pulumi.get(self, "dynamic_chaining_enabled")
 
     @property
     @pulumi.getter
     def mac(self) -> builtins.str:
         """
-        radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+        Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
         """
         return pulumi.get(self, "mac")
 
@@ -15712,31 +16223,51 @@ class GetApStatsDeviceApStatRadioStatBand5Result(dict):
         return pulumi.get(self, "num_clients")
 
     @property
+    @pulumi.getter(name="numWlans")
+    def num_wlans(self) -> builtins.int:
+        """
+        How many WLANs are applied to the radio
+        """
+        return pulumi.get(self, "num_wlans")
+
+    @property
     @pulumi.getter
     def power(self) -> builtins.int:
         """
-        transmit power (in dBm)
+        Transmit power (in dBm)
         """
         return pulumi.get(self, "power")
 
     @property
     @pulumi.getter(name="rxBytes")
     def rx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic received since connection
+        """
         return pulumi.get(self, "rx_bytes")
 
     @property
     @pulumi.getter(name="rxPkts")
     def rx_pkts(self) -> builtins.int:
+        """
+        Amount of packets received since connection
+        """
         return pulumi.get(self, "rx_pkts")
 
     @property
     @pulumi.getter(name="txBytes")
     def tx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic sent since connection
+        """
         return pulumi.get(self, "tx_bytes")
 
     @property
     @pulumi.getter(name="txPkts")
     def tx_pkts(self) -> builtins.int:
+        """
+        Amount of packets sent since connection
+        """
         return pulumi.get(self, "tx_pkts")
 
     @property
@@ -15748,7 +16279,7 @@ class GetApStatsDeviceApStatRadioStatBand5Result(dict):
     @pulumi.getter(name="utilAll")
     def util_all(self) -> builtins.int:
         """
-        all utilization in percentage
+        All utilization in percentage
         """
         return pulumi.get(self, "util_all")
 
@@ -15756,7 +16287,7 @@ class GetApStatsDeviceApStatRadioStatBand5Result(dict):
     @pulumi.getter(name="utilNonWifi")
     def util_non_wifi(self) -> builtins.int:
         """
-        reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+        Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
         """
         return pulumi.get(self, "util_non_wifi")
 
@@ -15764,7 +16295,7 @@ class GetApStatsDeviceApStatRadioStatBand5Result(dict):
     @pulumi.getter(name="utilRxInBss")
     def util_rx_in_bss(self) -> builtins.int:
         """
-        reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
+        Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
         """
         return pulumi.get(self, "util_rx_in_bss")
 
@@ -15772,7 +16303,7 @@ class GetApStatsDeviceApStatRadioStatBand5Result(dict):
     @pulumi.getter(name="utilRxOtherBss")
     def util_rx_other_bss(self) -> builtins.int:
         """
-        reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
+        Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
         """
         return pulumi.get(self, "util_rx_other_bss")
 
@@ -15780,7 +16311,7 @@ class GetApStatsDeviceApStatRadioStatBand5Result(dict):
     @pulumi.getter(name="utilTx")
     def util_tx(self) -> builtins.int:
         """
-        transmission utilization in percentage
+        Transmission utilization in percentage
         """
         return pulumi.get(self, "util_tx")
 
@@ -15788,7 +16319,7 @@ class GetApStatsDeviceApStatRadioStatBand5Result(dict):
     @pulumi.getter(name="utilUndecodableWifi")
     def util_undecodable_wifi(self) -> builtins.int:
         """
-        reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+        Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
         """
         return pulumi.get(self, "util_undecodable_wifi")
 
@@ -15796,7 +16327,7 @@ class GetApStatsDeviceApStatRadioStatBand5Result(dict):
     @pulumi.getter(name="utilUnknownWifi")
     def util_unknown_wifi(self) -> builtins.int:
         """
-        reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+        Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
         """
         return pulumi.get(self, "util_unknown_wifi")
 
@@ -15806,10 +16337,11 @@ class GetApStatsDeviceApStatRadioStatBand6Result(dict):
     def __init__(__self__, *,
                  bandwidth: builtins.int,
                  channel: builtins.int,
-                 dynamic_chaining_enalbed: builtins.bool,
+                 dynamic_chaining_enabled: builtins.bool,
                  mac: builtins.str,
                  noise_floor: builtins.int,
                  num_clients: builtins.int,
+                 num_wlans: builtins.int,
                  power: builtins.int,
                  rx_bytes: builtins.int,
                  rx_pkts: builtins.int,
@@ -15824,25 +16356,31 @@ class GetApStatsDeviceApStatRadioStatBand6Result(dict):
                  util_undecodable_wifi: builtins.int,
                  util_unknown_wifi: builtins.int):
         """
-        :param builtins.int bandwidth: channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
-        :param builtins.int channel: current channel the radio is running on
-        :param builtins.bool dynamic_chaining_enalbed: Use dynamic chaining for downlink
-        :param builtins.str mac: radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
-        :param builtins.int power: transmit power (in dBm)
-        :param builtins.int util_all: all utilization in percentage
-        :param builtins.int util_non_wifi: reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
-        :param builtins.int util_rx_in_bss: reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
-        :param builtins.int util_rx_other_bss: reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
-        :param builtins.int util_tx: transmission utilization in percentage
-        :param builtins.int util_undecodable_wifi: reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
-        :param builtins.int util_unknown_wifi: reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+        :param builtins.int bandwidth: channel width for the band.enum: `20`, `40`, `80` (only applicable for band_5 and band_6), `160` (only for band_6)
+        :param builtins.int channel: Current channel the radio is running on
+        :param builtins.bool dynamic_chaining_enabled: Use dynamic chaining for downlink
+        :param builtins.str mac: Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+        :param builtins.int num_wlans: How many WLANs are applied to the radio
+        :param builtins.int power: Transmit power (in dBm)
+        :param builtins.int rx_bytes: Amount of traffic received since connection
+        :param builtins.int rx_pkts: Amount of packets received since connection
+        :param builtins.int tx_bytes: Amount of traffic sent since connection
+        :param builtins.int tx_pkts: Amount of packets sent since connection
+        :param builtins.int util_all: All utilization in percentage
+        :param builtins.int util_non_wifi: Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+        :param builtins.int util_rx_in_bss: Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
+        :param builtins.int util_rx_other_bss: Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
+        :param builtins.int util_tx: Transmission utilization in percentage
+        :param builtins.int util_undecodable_wifi: Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+        :param builtins.int util_unknown_wifi: Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "channel", channel)
-        pulumi.set(__self__, "dynamic_chaining_enalbed", dynamic_chaining_enalbed)
+        pulumi.set(__self__, "dynamic_chaining_enabled", dynamic_chaining_enabled)
         pulumi.set(__self__, "mac", mac)
         pulumi.set(__self__, "noise_floor", noise_floor)
         pulumi.set(__self__, "num_clients", num_clients)
+        pulumi.set(__self__, "num_wlans", num_wlans)
         pulumi.set(__self__, "power", power)
         pulumi.set(__self__, "rx_bytes", rx_bytes)
         pulumi.set(__self__, "rx_pkts", rx_pkts)
@@ -15861,7 +16399,7 @@ class GetApStatsDeviceApStatRadioStatBand6Result(dict):
     @pulumi.getter
     def bandwidth(self) -> builtins.int:
         """
-        channel width for the band * `80` is only applicable for band*5 and band*6 * `160` is only for band_6
+        channel width for the band.enum: `20`, `40`, `80` (only applicable for band_5 and band_6), `160` (only for band_6)
         """
         return pulumi.get(self, "bandwidth")
 
@@ -15869,23 +16407,23 @@ class GetApStatsDeviceApStatRadioStatBand6Result(dict):
     @pulumi.getter
     def channel(self) -> builtins.int:
         """
-        current channel the radio is running on
+        Current channel the radio is running on
         """
         return pulumi.get(self, "channel")
 
     @property
-    @pulumi.getter(name="dynamicChainingEnalbed")
-    def dynamic_chaining_enalbed(self) -> builtins.bool:
+    @pulumi.getter(name="dynamicChainingEnabled")
+    def dynamic_chaining_enabled(self) -> builtins.bool:
         """
         Use dynamic chaining for downlink
         """
-        return pulumi.get(self, "dynamic_chaining_enalbed")
+        return pulumi.get(self, "dynamic_chaining_enabled")
 
     @property
     @pulumi.getter
     def mac(self) -> builtins.str:
         """
-        radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
+        Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
         """
         return pulumi.get(self, "mac")
 
@@ -15900,31 +16438,51 @@ class GetApStatsDeviceApStatRadioStatBand6Result(dict):
         return pulumi.get(self, "num_clients")
 
     @property
+    @pulumi.getter(name="numWlans")
+    def num_wlans(self) -> builtins.int:
+        """
+        How many WLANs are applied to the radio
+        """
+        return pulumi.get(self, "num_wlans")
+
+    @property
     @pulumi.getter
     def power(self) -> builtins.int:
         """
-        transmit power (in dBm)
+        Transmit power (in dBm)
         """
         return pulumi.get(self, "power")
 
     @property
     @pulumi.getter(name="rxBytes")
     def rx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic received since connection
+        """
         return pulumi.get(self, "rx_bytes")
 
     @property
     @pulumi.getter(name="rxPkts")
     def rx_pkts(self) -> builtins.int:
+        """
+        Amount of packets received since connection
+        """
         return pulumi.get(self, "rx_pkts")
 
     @property
     @pulumi.getter(name="txBytes")
     def tx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic sent since connection
+        """
         return pulumi.get(self, "tx_bytes")
 
     @property
     @pulumi.getter(name="txPkts")
     def tx_pkts(self) -> builtins.int:
+        """
+        Amount of packets sent since connection
+        """
         return pulumi.get(self, "tx_pkts")
 
     @property
@@ -15936,7 +16494,7 @@ class GetApStatsDeviceApStatRadioStatBand6Result(dict):
     @pulumi.getter(name="utilAll")
     def util_all(self) -> builtins.int:
         """
-        all utilization in percentage
+        All utilization in percentage
         """
         return pulumi.get(self, "util_all")
 
@@ -15944,7 +16502,7 @@ class GetApStatsDeviceApStatRadioStatBand6Result(dict):
     @pulumi.getter(name="utilNonWifi")
     def util_non_wifi(self) -> builtins.int:
         """
-        reception of “No Packets” utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
+        Reception of "No Packets" utilization in percentage, received frames with invalid PLCPs and CRS glitches as noise
         """
         return pulumi.get(self, "util_non_wifi")
 
@@ -15952,7 +16510,7 @@ class GetApStatsDeviceApStatRadioStatBand6Result(dict):
     @pulumi.getter(name="utilRxInBss")
     def util_rx_in_bss(self) -> builtins.int:
         """
-        reception of “In BSS” utilization in percentage, only frames that are received from AP/STAs within the BSS
+        Reception of "In BSS" utilization in percentage, only frames that are received from AP/STAs within the BSS
         """
         return pulumi.get(self, "util_rx_in_bss")
 
@@ -15960,7 +16518,7 @@ class GetApStatsDeviceApStatRadioStatBand6Result(dict):
     @pulumi.getter(name="utilRxOtherBss")
     def util_rx_other_bss(self) -> builtins.int:
         """
-        reception of “Other BSS” utilization in percentage, all frames received from AP/STAs that are outside the BSS
+        Reception of "Other BSS" utilization in percentage, all frames received from AP/STAs that are outside the BSS
         """
         return pulumi.get(self, "util_rx_other_bss")
 
@@ -15968,7 +16526,7 @@ class GetApStatsDeviceApStatRadioStatBand6Result(dict):
     @pulumi.getter(name="utilTx")
     def util_tx(self) -> builtins.int:
         """
-        transmission utilization in percentage
+        Transmission utilization in percentage
         """
         return pulumi.get(self, "util_tx")
 
@@ -15976,7 +16534,7 @@ class GetApStatsDeviceApStatRadioStatBand6Result(dict):
     @pulumi.getter(name="utilUndecodableWifi")
     def util_undecodable_wifi(self) -> builtins.int:
         """
-        reception of “UnDecodable Wifi“ utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
+        Reception of "UnDecodable Wifi" utilization in percentage, only Preamble, PLCP header is decoded, Rest is undecodable in this radio
         """
         return pulumi.get(self, "util_undecodable_wifi")
 
@@ -15984,7 +16542,7 @@ class GetApStatsDeviceApStatRadioStatBand6Result(dict):
     @pulumi.getter(name="utilUnknownWifi")
     def util_unknown_wifi(self) -> builtins.int:
         """
-        reception of “No Category” utilization in percentage, all 802.11 frames that are corrupted at the receiver
+        Reception of "No Category" utilization in percentage, all 802.11 frames that are corrupted at the receiver
         """
         return pulumi.get(self, "util_unknown_wifi")
 
@@ -16046,6 +16604,7 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     def __init__(__self__, *,
                  ap_redundancy: 'outputs.GetGatewayStatsDeviceGatewayStatApRedundancyResult',
                  arp_table_stats: 'outputs.GetGatewayStatsDeviceGatewayStatArpTableStatsResult',
+                 bgp_peers: Sequence['outputs.GetGatewayStatsDeviceGatewayStatBgpPeerResult'],
                  cert_expiry: builtins.int,
                  cluster_config: 'outputs.GetGatewayStatsDeviceGatewayStatClusterConfigResult',
                  cluster_stat: 'outputs.GetGatewayStatsDeviceGatewayStatClusterStatResult',
@@ -16053,7 +16612,7 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
                  config_status: builtins.str,
                  cpu2_stat: 'outputs.GetGatewayStatsDeviceGatewayStatCpu2StatResult',
                  cpu_stat: 'outputs.GetGatewayStatsDeviceGatewayStatCpuStatResult',
-                 created_time: builtins.int,
+                 created_time: builtins.float,
                  deviceprofile_id: builtins.str,
                  dhcpd2_stat: Mapping[str, 'outputs.GetGatewayStatsDeviceGatewayStatDhcpd2StatResult'],
                  dhcpd_stat: Mapping[str, 'outputs.GetGatewayStatsDeviceGatewayStatDhcpdStatResult'],
@@ -16074,12 +16633,13 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
                  memory2_stat: 'outputs.GetGatewayStatsDeviceGatewayStatMemory2StatResult',
                  memory_stat: 'outputs.GetGatewayStatsDeviceGatewayStatMemoryStatResult',
                  model: builtins.str,
-                 modified_time: builtins.int,
+                 modified_time: builtins.float,
                  module2_stats: Sequence['outputs.GetGatewayStatsDeviceGatewayStatModule2StatResult'],
                  module_stats: Sequence['outputs.GetGatewayStatsDeviceGatewayStatModuleStatResult'],
                  name: builtins.str,
                  node_name: builtins.str,
                  org_id: builtins.str,
+                 ports: Sequence['outputs.GetGatewayStatsDeviceGatewayStatPortResult'],
                  route_summary_stats: 'outputs.GetGatewayStatsDeviceGatewayStatRouteSummaryStatsResult',
                  router_name: builtins.str,
                  serial: builtins.str,
@@ -16090,31 +16650,38 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
                  spu2_stats: Sequence['outputs.GetGatewayStatsDeviceGatewayStatSpu2StatResult'],
                  spu_stats: Sequence['outputs.GetGatewayStatsDeviceGatewayStatSpuStatResult'],
                  status: builtins.str,
+                 tunnels: Sequence['outputs.GetGatewayStatsDeviceGatewayStatTunnelResult'],
                  uptime: builtins.float,
-                 version: builtins.str):
+                 version: builtins.str,
+                 vpn_peers: Sequence['outputs.GetGatewayStatsDeviceGatewayStatVpnPeerResult']):
         """
+        :param Sequence['GetGatewayStatsDeviceGatewayStatBgpPeerArgs'] bgp_peers: Only present when `bgp_peers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
+        :param builtins.float created_time: When the object has been created, in epoch
         :param Mapping[str, 'GetGatewayStatsDeviceGatewayStatDhcpd2StatArgs'] dhcpd2_stat: Property key is the network name
         :param Mapping[str, 'GetGatewayStatsDeviceGatewayStatDhcpdStatArgs'] dhcpd_stat: Property key is the network name
         :param builtins.str ext_ip: IP address
-        :param builtins.str hostname: hostname reported by the device
-        :param builtins.str id: serial
+        :param builtins.str hostname: Hostname reported by the device
+        :param builtins.str id: Unique ID of the object instance in the Mist Organization
         :param Mapping[str, 'GetGatewayStatsDeviceGatewayStatIf2StatArgs'] if2_stat: Property key is the interface name
         :param Mapping[str, 'GetGatewayStatsDeviceGatewayStatIfStatArgs'] if_stat: Property key is the interface name
         :param builtins.str ip: IP address
-        :param builtins.float last_seen: last seen timestamp
-        :param builtins.str mac: device mac
-        :param builtins.str map_id: serial
-        :param 'GetGatewayStatsDeviceGatewayStatMemory2StatArgs' memory2_stat: memory usage stat (for virtual chassis, memory usage of master RE)
-        :param 'GetGatewayStatsDeviceGatewayStatMemoryStatArgs' memory_stat: memory usage stat (for virtual chassis, memory usage of master RE)
-        :param builtins.str model: device model
-        :param builtins.str name: device name if configured
-        :param builtins.str org_id: serial
-        :param builtins.str router_name: device name if configured
-        :param builtins.str serial: serial
-        :param builtins.str site_id: serial
+        :param builtins.float last_seen: Last seen timestamp
+        :param builtins.str mac: Device mac
+        :param builtins.str map_id: Serial Number
+        :param 'GetGatewayStatsDeviceGatewayStatMemory2StatArgs' memory2_stat: Memory usage stat (for virtual chassis, memory usage of master RE)
+        :param 'GetGatewayStatsDeviceGatewayStatMemoryStatArgs' memory_stat: Memory usage stat (for virtual chassis, memory usage of master RE)
+        :param builtins.str model: Device model
+        :param builtins.float modified_time: When the object has been modified for the last time, in epoch
+        :param builtins.str name: Device name if configured
+        :param Sequence['GetGatewayStatsDeviceGatewayStatPortArgs'] ports: Only present when `ports` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/ports/search` result object, except that org*id, site*id, mac, model are removed
+        :param builtins.str router_name: Device name if configured
+        :param builtins.str serial: Serial Number
+        :param Sequence['GetGatewayStatsDeviceGatewayStatTunnelArgs'] tunnels: Only present when `tunnels` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/tunnels/search` result object, except that org*id, site*id, mac, model are removed
+        :param Sequence['GetGatewayStatsDeviceGatewayStatVpnPeerArgs'] vpn_peers: Only present when `vpn_peers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/vpn_peers/search` result object, except that org*id, site*id, mac, model are removed
         """
         pulumi.set(__self__, "ap_redundancy", ap_redundancy)
         pulumi.set(__self__, "arp_table_stats", arp_table_stats)
+        pulumi.set(__self__, "bgp_peers", bgp_peers)
         pulumi.set(__self__, "cert_expiry", cert_expiry)
         pulumi.set(__self__, "cluster_config", cluster_config)
         pulumi.set(__self__, "cluster_stat", cluster_stat)
@@ -16149,6 +16716,7 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "node_name", node_name)
         pulumi.set(__self__, "org_id", org_id)
+        pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "route_summary_stats", route_summary_stats)
         pulumi.set(__self__, "router_name", router_name)
         pulumi.set(__self__, "serial", serial)
@@ -16159,8 +16727,10 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
         pulumi.set(__self__, "spu2_stats", spu2_stats)
         pulumi.set(__self__, "spu_stats", spu_stats)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tunnels", tunnels)
         pulumi.set(__self__, "uptime", uptime)
         pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "vpn_peers", vpn_peers)
 
     @property
     @pulumi.getter(name="apRedundancy")
@@ -16171,6 +16741,14 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     @pulumi.getter(name="arpTableStats")
     def arp_table_stats(self) -> 'outputs.GetGatewayStatsDeviceGatewayStatArpTableStatsResult':
         return pulumi.get(self, "arp_table_stats")
+
+    @property
+    @pulumi.getter(name="bgpPeers")
+    def bgp_peers(self) -> Sequence['outputs.GetGatewayStatsDeviceGatewayStatBgpPeerResult']:
+        """
+        Only present when `bgp_peers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
+        """
+        return pulumi.get(self, "bgp_peers")
 
     @property
     @pulumi.getter(name="certExpiry")
@@ -16209,7 +16787,10 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
 
     @property
     @pulumi.getter(name="createdTime")
-    def created_time(self) -> builtins.int:
+    def created_time(self) -> builtins.float:
+        """
+        When the object has been created, in epoch
+        """
         return pulumi.get(self, "created_time")
 
     @property
@@ -16255,7 +16836,7 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     @pulumi.getter
     def hostname(self) -> builtins.str:
         """
-        hostname reported by the device
+        Hostname reported by the device
         """
         return pulumi.get(self, "hostname")
 
@@ -16263,7 +16844,7 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        serial
+        Unique ID of the object instance in the Mist Organization
         """
         return pulumi.get(self, "id")
 
@@ -16310,7 +16891,7 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     @pulumi.getter(name="lastSeen")
     def last_seen(self) -> builtins.float:
         """
-        last seen timestamp
+        Last seen timestamp
         """
         return pulumi.get(self, "last_seen")
 
@@ -16318,7 +16899,7 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     @pulumi.getter
     def mac(self) -> builtins.str:
         """
-        device mac
+        Device mac
         """
         return pulumi.get(self, "mac")
 
@@ -16326,7 +16907,7 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     @pulumi.getter(name="mapId")
     def map_id(self) -> builtins.str:
         """
-        serial
+        Serial Number
         """
         return pulumi.get(self, "map_id")
 
@@ -16334,7 +16915,7 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     @pulumi.getter(name="memory2Stat")
     def memory2_stat(self) -> 'outputs.GetGatewayStatsDeviceGatewayStatMemory2StatResult':
         """
-        memory usage stat (for virtual chassis, memory usage of master RE)
+        Memory usage stat (for virtual chassis, memory usage of master RE)
         """
         return pulumi.get(self, "memory2_stat")
 
@@ -16342,7 +16923,7 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     @pulumi.getter(name="memoryStat")
     def memory_stat(self) -> 'outputs.GetGatewayStatsDeviceGatewayStatMemoryStatResult':
         """
-        memory usage stat (for virtual chassis, memory usage of master RE)
+        Memory usage stat (for virtual chassis, memory usage of master RE)
         """
         return pulumi.get(self, "memory_stat")
 
@@ -16350,13 +16931,16 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     @pulumi.getter
     def model(self) -> builtins.str:
         """
-        device model
+        Device model
         """
         return pulumi.get(self, "model")
 
     @property
     @pulumi.getter(name="modifiedTime")
-    def modified_time(self) -> builtins.int:
+    def modified_time(self) -> builtins.float:
+        """
+        When the object has been modified for the last time, in epoch
+        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -16373,7 +16957,7 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     @pulumi.getter
     def name(self) -> builtins.str:
         """
-        device name if configured
+        Device name if configured
         """
         return pulumi.get(self, "name")
 
@@ -16385,10 +16969,15 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> builtins.str:
-        """
-        serial
-        """
         return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Sequence['outputs.GetGatewayStatsDeviceGatewayStatPortResult']:
+        """
+        Only present when `ports` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/ports/search` result object, except that org*id, site*id, mac, model are removed
+        """
+        return pulumi.get(self, "ports")
 
     @property
     @pulumi.getter(name="routeSummaryStats")
@@ -16399,7 +16988,7 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     @pulumi.getter(name="routerName")
     def router_name(self) -> builtins.str:
         """
-        device name if configured
+        Device name if configured
         """
         return pulumi.get(self, "router_name")
 
@@ -16407,7 +16996,7 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     @pulumi.getter
     def serial(self) -> builtins.str:
         """
-        serial
+        Serial Number
         """
         return pulumi.get(self, "serial")
 
@@ -16429,9 +17018,6 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     @property
     @pulumi.getter(name="siteId")
     def site_id(self) -> builtins.str:
-        """
-        serial
-        """
         return pulumi.get(self, "site_id")
 
     @property
@@ -16451,6 +17037,14 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
 
     @property
     @pulumi.getter
+    def tunnels(self) -> Sequence['outputs.GetGatewayStatsDeviceGatewayStatTunnelResult']:
+        """
+        Only present when `tunnels` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/tunnels/search` result object, except that org*id, site*id, mac, model are removed
+        """
+        return pulumi.get(self, "tunnels")
+
+    @property
+    @pulumi.getter
     def uptime(self) -> builtins.float:
         return pulumi.get(self, "uptime")
 
@@ -16458,6 +17052,14 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     @pulumi.getter
     def version(self) -> builtins.str:
         return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter(name="vpnPeers")
+    def vpn_peers(self) -> Sequence['outputs.GetGatewayStatsDeviceGatewayStatVpnPeerResult']:
+        """
+        Only present when `vpn_peers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/vpn_peers/search` result object, except that org*id, site*id, mac, model are removed
+        """
+        return pulumi.get(self, "vpn_peers")
 
 
 @pulumi.output_type
@@ -16528,6 +17130,161 @@ class GetGatewayStatsDeviceGatewayStatArpTableStatsResult(dict):
     @pulumi.getter(name="maxEntriesSupported")
     def max_entries_supported(self) -> builtins.int:
         return pulumi.get(self, "max_entries_supported")
+
+
+@pulumi.output_type
+class GetGatewayStatsDeviceGatewayStatBgpPeerResult(dict):
+    def __init__(__self__, *,
+                 evpn_overlay: builtins.bool,
+                 for_overlay: builtins.bool,
+                 local_as: builtins.str,
+                 neighbor: builtins.str,
+                 neighbor_as: builtins.str,
+                 neighbor_mac: builtins.str,
+                 node: builtins.str,
+                 rx_pkts: builtins.int,
+                 rx_routes: builtins.int,
+                 state: builtins.str,
+                 timestamp: builtins.float,
+                 tx_pkts: builtins.int,
+                 tx_routes: builtins.int,
+                 up: builtins.bool,
+                 uptime: builtins.int,
+                 vrf_name: builtins.str):
+        """
+        :param builtins.bool evpn_overlay: If this is created for evpn overlay
+        :param builtins.bool for_overlay: If this is created for overlay
+        :param builtins.str neighbor_mac: If it's another device in the same org
+        :param builtins.str node: Node0/node1
+        :param builtins.int rx_pkts: Amount of packets received since connection
+        :param builtins.int rx_routes: Number of received routes
+        :param builtins.str state: enum: `active`, `connect`, `established`, `idle`, `open_config`, `open_sent`
+        :param builtins.float timestamp: Epoch (seconds)
+        :param builtins.int tx_pkts: Amount of packets sent since connection
+        """
+        pulumi.set(__self__, "evpn_overlay", evpn_overlay)
+        pulumi.set(__self__, "for_overlay", for_overlay)
+        pulumi.set(__self__, "local_as", local_as)
+        pulumi.set(__self__, "neighbor", neighbor)
+        pulumi.set(__self__, "neighbor_as", neighbor_as)
+        pulumi.set(__self__, "neighbor_mac", neighbor_mac)
+        pulumi.set(__self__, "node", node)
+        pulumi.set(__self__, "rx_pkts", rx_pkts)
+        pulumi.set(__self__, "rx_routes", rx_routes)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "timestamp", timestamp)
+        pulumi.set(__self__, "tx_pkts", tx_pkts)
+        pulumi.set(__self__, "tx_routes", tx_routes)
+        pulumi.set(__self__, "up", up)
+        pulumi.set(__self__, "uptime", uptime)
+        pulumi.set(__self__, "vrf_name", vrf_name)
+
+    @property
+    @pulumi.getter(name="evpnOverlay")
+    def evpn_overlay(self) -> builtins.bool:
+        """
+        If this is created for evpn overlay
+        """
+        return pulumi.get(self, "evpn_overlay")
+
+    @property
+    @pulumi.getter(name="forOverlay")
+    def for_overlay(self) -> builtins.bool:
+        """
+        If this is created for overlay
+        """
+        return pulumi.get(self, "for_overlay")
+
+    @property
+    @pulumi.getter(name="localAs")
+    def local_as(self) -> builtins.str:
+        return pulumi.get(self, "local_as")
+
+    @property
+    @pulumi.getter
+    def neighbor(self) -> builtins.str:
+        return pulumi.get(self, "neighbor")
+
+    @property
+    @pulumi.getter(name="neighborAs")
+    def neighbor_as(self) -> builtins.str:
+        return pulumi.get(self, "neighbor_as")
+
+    @property
+    @pulumi.getter(name="neighborMac")
+    def neighbor_mac(self) -> builtins.str:
+        """
+        If it's another device in the same org
+        """
+        return pulumi.get(self, "neighbor_mac")
+
+    @property
+    @pulumi.getter
+    def node(self) -> builtins.str:
+        """
+        Node0/node1
+        """
+        return pulumi.get(self, "node")
+
+    @property
+    @pulumi.getter(name="rxPkts")
+    def rx_pkts(self) -> builtins.int:
+        """
+        Amount of packets received since connection
+        """
+        return pulumi.get(self, "rx_pkts")
+
+    @property
+    @pulumi.getter(name="rxRoutes")
+    def rx_routes(self) -> builtins.int:
+        """
+        Number of received routes
+        """
+        return pulumi.get(self, "rx_routes")
+
+    @property
+    @pulumi.getter
+    def state(self) -> builtins.str:
+        """
+        enum: `active`, `connect`, `established`, `idle`, `open_config`, `open_sent`
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def timestamp(self) -> builtins.float:
+        """
+        Epoch (seconds)
+        """
+        return pulumi.get(self, "timestamp")
+
+    @property
+    @pulumi.getter(name="txPkts")
+    def tx_pkts(self) -> builtins.int:
+        """
+        Amount of packets sent since connection
+        """
+        return pulumi.get(self, "tx_pkts")
+
+    @property
+    @pulumi.getter(name="txRoutes")
+    def tx_routes(self) -> builtins.int:
+        return pulumi.get(self, "tx_routes")
+
+    @property
+    @pulumi.getter
+    def up(self) -> builtins.bool:
+        return pulumi.get(self, "up")
+
+    @property
+    @pulumi.getter
+    def uptime(self) -> builtins.int:
+        return pulumi.get(self, "uptime")
+
+    @property
+    @pulumi.getter(name="vrfName")
+    def vrf_name(self) -> builtins.str:
+        return pulumi.get(self, "vrf_name")
 
 
 @pulumi.output_type
@@ -16734,7 +17491,7 @@ class GetGatewayStatsDeviceGatewayStatCpu2StatResult(dict):
         :param builtins.float interrupt: Percentage of CPU time being used by interrupts
         :param Sequence[builtins.float] load_avgs: Load averages for the last 1, 5, and 15 minutes
         :param builtins.float system: Percentage of CPU time being used by system processes
-        :param builtins.float user: Percentage of CPU time being used by user processe
+        :param builtins.float user: Percentage of CPU time being used by user processes
         """
         pulumi.set(__self__, "idle", idle)
         pulumi.set(__self__, "interrupt", interrupt)
@@ -16778,7 +17535,7 @@ class GetGatewayStatsDeviceGatewayStatCpu2StatResult(dict):
     @pulumi.getter
     def user(self) -> builtins.float:
         """
-        Percentage of CPU time being used by user processe
+        Percentage of CPU time being used by user processes
         """
         return pulumi.get(self, "user")
 
@@ -16796,7 +17553,7 @@ class GetGatewayStatsDeviceGatewayStatCpuStatResult(dict):
         :param builtins.float interrupt: Percentage of CPU time being used by interrupts
         :param Sequence[builtins.float] load_avgs: Load averages for the last 1, 5, and 15 minutes
         :param builtins.float system: Percentage of CPU time being used by system processes
-        :param builtins.float user: Percentage of CPU time being used by user processe
+        :param builtins.float user: Percentage of CPU time being used by user processes
         """
         pulumi.set(__self__, "idle", idle)
         pulumi.set(__self__, "interrupt", interrupt)
@@ -16840,7 +17597,7 @@ class GetGatewayStatsDeviceGatewayStatCpuStatResult(dict):
     @pulumi.getter
     def user(self) -> builtins.float:
         """
-        Percentage of CPU time being used by user processe
+        Percentage of CPU time being used by user processes
         """
         return pulumi.get(self, "user")
 
@@ -16891,6 +17648,10 @@ class GetGatewayStatsDeviceGatewayStatFwupdateResult(dict):
                  status_id: builtins.int,
                  timestamp: builtins.float,
                  will_retry: builtins.bool):
+        """
+        :param builtins.str status: enum: `inprogress`, `failed`, `upgraded`
+        :param builtins.float timestamp: Epoch (seconds)
+        """
         pulumi.set(__self__, "progress", progress)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "status_id", status_id)
@@ -16905,6 +17666,9 @@ class GetGatewayStatsDeviceGatewayStatFwupdateResult(dict):
     @property
     @pulumi.getter
     def status(self) -> builtins.str:
+        """
+        enum: `inprogress`, `failed`, `upgraded`
+        """
         return pulumi.get(self, "status")
 
     @property
@@ -16915,6 +17679,9 @@ class GetGatewayStatsDeviceGatewayStatFwupdateResult(dict):
     @property
     @pulumi.getter
     def timestamp(self) -> builtins.float:
+        """
+        Epoch (seconds)
+        """
         return pulumi.get(self, "timestamp")
 
     @property
@@ -16942,6 +17709,12 @@ class GetGatewayStatsDeviceGatewayStatIf2StatResult(dict):
                  vlan: builtins.int,
                  wan_name: builtins.str,
                  wan_type: builtins.str):
+        """
+        :param builtins.int rx_bytes: Amount of traffic received since connection
+        :param builtins.int rx_pkts: Amount of packets received since connection
+        :param builtins.int tx_bytes: Amount of traffic sent since connection
+        :param builtins.int tx_pkts: Amount of packets sent since connection
+        """
         pulumi.set(__self__, "address_mode", address_mode)
         pulumi.set(__self__, "ips", ips)
         pulumi.set(__self__, "nat_addresses", nat_addresses)
@@ -16997,11 +17770,17 @@ class GetGatewayStatsDeviceGatewayStatIf2StatResult(dict):
     @property
     @pulumi.getter(name="rxBytes")
     def rx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic received since connection
+        """
         return pulumi.get(self, "rx_bytes")
 
     @property
     @pulumi.getter(name="rxPkts")
     def rx_pkts(self) -> builtins.int:
+        """
+        Amount of packets received since connection
+        """
         return pulumi.get(self, "rx_pkts")
 
     @property
@@ -17012,11 +17791,17 @@ class GetGatewayStatsDeviceGatewayStatIf2StatResult(dict):
     @property
     @pulumi.getter(name="txBytes")
     def tx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic sent since connection
+        """
         return pulumi.get(self, "tx_bytes")
 
     @property
     @pulumi.getter(name="txPkts")
     def tx_pkts(self) -> builtins.int:
+        """
+        Amount of packets sent since connection
+        """
         return pulumi.get(self, "tx_pkts")
 
     @property
@@ -17113,6 +17898,12 @@ class GetGatewayStatsDeviceGatewayStatIfStatResult(dict):
                  vlan: builtins.int,
                  wan_name: builtins.str,
                  wan_type: builtins.str):
+        """
+        :param builtins.int rx_bytes: Amount of traffic received since connection
+        :param builtins.int rx_pkts: Amount of packets received since connection
+        :param builtins.int tx_bytes: Amount of traffic sent since connection
+        :param builtins.int tx_pkts: Amount of packets sent since connection
+        """
         pulumi.set(__self__, "address_mode", address_mode)
         pulumi.set(__self__, "ips", ips)
         pulumi.set(__self__, "nat_addresses", nat_addresses)
@@ -17168,11 +17959,17 @@ class GetGatewayStatsDeviceGatewayStatIfStatResult(dict):
     @property
     @pulumi.getter(name="rxBytes")
     def rx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic received since connection
+        """
         return pulumi.get(self, "rx_bytes")
 
     @property
     @pulumi.getter(name="rxPkts")
     def rx_pkts(self) -> builtins.int:
+        """
+        Amount of packets received since connection
+        """
         return pulumi.get(self, "rx_pkts")
 
     @property
@@ -17183,11 +17980,17 @@ class GetGatewayStatsDeviceGatewayStatIfStatResult(dict):
     @property
     @pulumi.getter(name="txBytes")
     def tx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic sent since connection
+        """
         return pulumi.get(self, "tx_bytes")
 
     @property
     @pulumi.getter(name="txPkts")
     def tx_pkts(self) -> builtins.int:
+        """
+        Amount of packets sent since connection
+        """
         return pulumi.get(self, "tx_pkts")
 
     @property
@@ -17445,14 +18248,14 @@ class GetGatewayStatsDeviceGatewayStatModule2StatResult(dict):
                  backup_version: builtins.str,
                  bios_version: builtins.str,
                  cpld_version: builtins.str,
-                 errors: Sequence['outputs.GetGatewayStatsDeviceGatewayStatModule2StatErrorResult'],
                  fans: Sequence['outputs.GetGatewayStatsDeviceGatewayStatModule2StatFanResult'],
                  fpga_version: builtins.str,
                  last_seen: builtins.float,
+                 locating: builtins.bool,
+                 mac: builtins.str,
                  model: builtins.str,
                  optics_cpld_version: builtins.str,
                  pending_version: builtins.str,
-                 pics: Sequence['outputs.GetGatewayStatsDeviceGatewayStatModule2StatPicResult'],
                  poe: 'outputs.GetGatewayStatsDeviceGatewayStatModule2StatPoeResult',
                  poe_version: builtins.str,
                  power_cpld_version: builtins.str,
@@ -17471,21 +18274,20 @@ class GetGatewayStatsDeviceGatewayStatModule2StatResult(dict):
                  vc_state: builtins.str,
                  version: builtins.str):
         """
-        :param Sequence['GetGatewayStatsDeviceGatewayStatModule2StatErrorArgs'] errors: used to report all error states the device node is running into.
-               An error should always have `type` and `since` fields, and could have some other fields specific to that type.
-        :param builtins.str vc_role: master / backup / linecard
+        :param builtins.float last_seen: Last seen timestamp
+        :param builtins.str vc_role: enum: `master`, `backup`, `linecard`
         """
         pulumi.set(__self__, "backup_version", backup_version)
         pulumi.set(__self__, "bios_version", bios_version)
         pulumi.set(__self__, "cpld_version", cpld_version)
-        pulumi.set(__self__, "errors", errors)
         pulumi.set(__self__, "fans", fans)
         pulumi.set(__self__, "fpga_version", fpga_version)
         pulumi.set(__self__, "last_seen", last_seen)
+        pulumi.set(__self__, "locating", locating)
+        pulumi.set(__self__, "mac", mac)
         pulumi.set(__self__, "model", model)
         pulumi.set(__self__, "optics_cpld_version", optics_cpld_version)
         pulumi.set(__self__, "pending_version", pending_version)
-        pulumi.set(__self__, "pics", pics)
         pulumi.set(__self__, "poe", poe)
         pulumi.set(__self__, "poe_version", poe_version)
         pulumi.set(__self__, "power_cpld_version", power_cpld_version)
@@ -17521,15 +18323,6 @@ class GetGatewayStatsDeviceGatewayStatModule2StatResult(dict):
 
     @property
     @pulumi.getter
-    def errors(self) -> Sequence['outputs.GetGatewayStatsDeviceGatewayStatModule2StatErrorResult']:
-        """
-        used to report all error states the device node is running into.
-        An error should always have `type` and `since` fields, and could have some other fields specific to that type.
-        """
-        return pulumi.get(self, "errors")
-
-    @property
-    @pulumi.getter
     def fans(self) -> Sequence['outputs.GetGatewayStatsDeviceGatewayStatModule2StatFanResult']:
         return pulumi.get(self, "fans")
 
@@ -17541,7 +18334,20 @@ class GetGatewayStatsDeviceGatewayStatModule2StatResult(dict):
     @property
     @pulumi.getter(name="lastSeen")
     def last_seen(self) -> builtins.float:
+        """
+        Last seen timestamp
+        """
         return pulumi.get(self, "last_seen")
+
+    @property
+    @pulumi.getter
+    def locating(self) -> builtins.bool:
+        return pulumi.get(self, "locating")
+
+    @property
+    @pulumi.getter
+    def mac(self) -> builtins.str:
+        return pulumi.get(self, "mac")
 
     @property
     @pulumi.getter
@@ -17557,11 +18363,6 @@ class GetGatewayStatsDeviceGatewayStatModule2StatResult(dict):
     @pulumi.getter(name="pendingVersion")
     def pending_version(self) -> builtins.str:
         return pulumi.get(self, "pending_version")
-
-    @property
-    @pulumi.getter
-    def pics(self) -> Sequence['outputs.GetGatewayStatsDeviceGatewayStatModule2StatPicResult']:
-        return pulumi.get(self, "pics")
 
     @property
     @pulumi.getter
@@ -17637,7 +18438,7 @@ class GetGatewayStatsDeviceGatewayStatModule2StatResult(dict):
     @pulumi.getter(name="vcRole")
     def vc_role(self) -> builtins.str:
         """
-        master / backup / linecard
+        enum: `master`, `backup`, `linecard`
         """
         return pulumi.get(self, "vc_role")
 
@@ -17650,46 +18451,6 @@ class GetGatewayStatsDeviceGatewayStatModule2StatResult(dict):
     @pulumi.getter
     def version(self) -> builtins.str:
         return pulumi.get(self, "version")
-
-
-@pulumi.output_type
-class GetGatewayStatsDeviceGatewayStatModule2StatErrorResult(dict):
-    def __init__(__self__, *,
-                 feature: builtins.str,
-                 minimum_version: builtins.str,
-                 reason: builtins.str,
-                 since: builtins.int,
-                 type: builtins.str):
-        pulumi.set(__self__, "feature", feature)
-        pulumi.set(__self__, "minimum_version", minimum_version)
-        pulumi.set(__self__, "reason", reason)
-        pulumi.set(__self__, "since", since)
-        pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def feature(self) -> builtins.str:
-        return pulumi.get(self, "feature")
-
-    @property
-    @pulumi.getter(name="minimumVersion")
-    def minimum_version(self) -> builtins.str:
-        return pulumi.get(self, "minimum_version")
-
-    @property
-    @pulumi.getter
-    def reason(self) -> builtins.str:
-        return pulumi.get(self, "reason")
-
-    @property
-    @pulumi.getter
-    def since(self) -> builtins.int:
-        return pulumi.get(self, "since")
-
-    @property
-    @pulumi.getter
-    def type(self) -> builtins.str:
-        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -17716,51 +18477,6 @@ class GetGatewayStatsDeviceGatewayStatModule2StatFanResult(dict):
     @pulumi.getter
     def status(self) -> builtins.str:
         return pulumi.get(self, "status")
-
-
-@pulumi.output_type
-class GetGatewayStatsDeviceGatewayStatModule2StatPicResult(dict):
-    def __init__(__self__, *,
-                 index: builtins.int,
-                 model_number: builtins.str,
-                 port_groups: Sequence['outputs.GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupResult']):
-        pulumi.set(__self__, "index", index)
-        pulumi.set(__self__, "model_number", model_number)
-        pulumi.set(__self__, "port_groups", port_groups)
-
-    @property
-    @pulumi.getter
-    def index(self) -> builtins.int:
-        return pulumi.get(self, "index")
-
-    @property
-    @pulumi.getter(name="modelNumber")
-    def model_number(self) -> builtins.str:
-        return pulumi.get(self, "model_number")
-
-    @property
-    @pulumi.getter(name="portGroups")
-    def port_groups(self) -> Sequence['outputs.GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupResult']:
-        return pulumi.get(self, "port_groups")
-
-
-@pulumi.output_type
-class GetGatewayStatsDeviceGatewayStatModule2StatPicPortGroupResult(dict):
-    def __init__(__self__, *,
-                 count: builtins.int,
-                 type: builtins.str):
-        pulumi.set(__self__, "count", count)
-        pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def count(self) -> builtins.int:
-        return pulumi.get(self, "count")
-
-    @property
-    @pulumi.getter
-    def type(self) -> builtins.str:
-        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -17859,14 +18575,14 @@ class GetGatewayStatsDeviceGatewayStatModuleStatResult(dict):
                  backup_version: builtins.str,
                  bios_version: builtins.str,
                  cpld_version: builtins.str,
-                 errors: Sequence['outputs.GetGatewayStatsDeviceGatewayStatModuleStatErrorResult'],
                  fans: Sequence['outputs.GetGatewayStatsDeviceGatewayStatModuleStatFanResult'],
                  fpga_version: builtins.str,
                  last_seen: builtins.float,
+                 locating: builtins.bool,
+                 mac: builtins.str,
                  model: builtins.str,
                  optics_cpld_version: builtins.str,
                  pending_version: builtins.str,
-                 pics: Sequence['outputs.GetGatewayStatsDeviceGatewayStatModuleStatPicResult'],
                  poe: 'outputs.GetGatewayStatsDeviceGatewayStatModuleStatPoeResult',
                  poe_version: builtins.str,
                  power_cpld_version: builtins.str,
@@ -17885,21 +18601,20 @@ class GetGatewayStatsDeviceGatewayStatModuleStatResult(dict):
                  vc_state: builtins.str,
                  version: builtins.str):
         """
-        :param Sequence['GetGatewayStatsDeviceGatewayStatModuleStatErrorArgs'] errors: used to report all error states the device node is running into.
-               An error should always have `type` and `since` fields, and could have some other fields specific to that type.
-        :param builtins.str vc_role: master / backup / linecard
+        :param builtins.float last_seen: Last seen timestamp
+        :param builtins.str vc_role: enum: `master`, `backup`, `linecard`
         """
         pulumi.set(__self__, "backup_version", backup_version)
         pulumi.set(__self__, "bios_version", bios_version)
         pulumi.set(__self__, "cpld_version", cpld_version)
-        pulumi.set(__self__, "errors", errors)
         pulumi.set(__self__, "fans", fans)
         pulumi.set(__self__, "fpga_version", fpga_version)
         pulumi.set(__self__, "last_seen", last_seen)
+        pulumi.set(__self__, "locating", locating)
+        pulumi.set(__self__, "mac", mac)
         pulumi.set(__self__, "model", model)
         pulumi.set(__self__, "optics_cpld_version", optics_cpld_version)
         pulumi.set(__self__, "pending_version", pending_version)
-        pulumi.set(__self__, "pics", pics)
         pulumi.set(__self__, "poe", poe)
         pulumi.set(__self__, "poe_version", poe_version)
         pulumi.set(__self__, "power_cpld_version", power_cpld_version)
@@ -17935,15 +18650,6 @@ class GetGatewayStatsDeviceGatewayStatModuleStatResult(dict):
 
     @property
     @pulumi.getter
-    def errors(self) -> Sequence['outputs.GetGatewayStatsDeviceGatewayStatModuleStatErrorResult']:
-        """
-        used to report all error states the device node is running into.
-        An error should always have `type` and `since` fields, and could have some other fields specific to that type.
-        """
-        return pulumi.get(self, "errors")
-
-    @property
-    @pulumi.getter
     def fans(self) -> Sequence['outputs.GetGatewayStatsDeviceGatewayStatModuleStatFanResult']:
         return pulumi.get(self, "fans")
 
@@ -17955,7 +18661,20 @@ class GetGatewayStatsDeviceGatewayStatModuleStatResult(dict):
     @property
     @pulumi.getter(name="lastSeen")
     def last_seen(self) -> builtins.float:
+        """
+        Last seen timestamp
+        """
         return pulumi.get(self, "last_seen")
+
+    @property
+    @pulumi.getter
+    def locating(self) -> builtins.bool:
+        return pulumi.get(self, "locating")
+
+    @property
+    @pulumi.getter
+    def mac(self) -> builtins.str:
+        return pulumi.get(self, "mac")
 
     @property
     @pulumi.getter
@@ -17971,11 +18690,6 @@ class GetGatewayStatsDeviceGatewayStatModuleStatResult(dict):
     @pulumi.getter(name="pendingVersion")
     def pending_version(self) -> builtins.str:
         return pulumi.get(self, "pending_version")
-
-    @property
-    @pulumi.getter
-    def pics(self) -> Sequence['outputs.GetGatewayStatsDeviceGatewayStatModuleStatPicResult']:
-        return pulumi.get(self, "pics")
 
     @property
     @pulumi.getter
@@ -18051,7 +18765,7 @@ class GetGatewayStatsDeviceGatewayStatModuleStatResult(dict):
     @pulumi.getter(name="vcRole")
     def vc_role(self) -> builtins.str:
         """
-        master / backup / linecard
+        enum: `master`, `backup`, `linecard`
         """
         return pulumi.get(self, "vc_role")
 
@@ -18064,46 +18778,6 @@ class GetGatewayStatsDeviceGatewayStatModuleStatResult(dict):
     @pulumi.getter
     def version(self) -> builtins.str:
         return pulumi.get(self, "version")
-
-
-@pulumi.output_type
-class GetGatewayStatsDeviceGatewayStatModuleStatErrorResult(dict):
-    def __init__(__self__, *,
-                 feature: builtins.str,
-                 minimum_version: builtins.str,
-                 reason: builtins.str,
-                 since: builtins.int,
-                 type: builtins.str):
-        pulumi.set(__self__, "feature", feature)
-        pulumi.set(__self__, "minimum_version", minimum_version)
-        pulumi.set(__self__, "reason", reason)
-        pulumi.set(__self__, "since", since)
-        pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def feature(self) -> builtins.str:
-        return pulumi.get(self, "feature")
-
-    @property
-    @pulumi.getter(name="minimumVersion")
-    def minimum_version(self) -> builtins.str:
-        return pulumi.get(self, "minimum_version")
-
-    @property
-    @pulumi.getter
-    def reason(self) -> builtins.str:
-        return pulumi.get(self, "reason")
-
-    @property
-    @pulumi.getter
-    def since(self) -> builtins.int:
-        return pulumi.get(self, "since")
-
-    @property
-    @pulumi.getter
-    def type(self) -> builtins.str:
-        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -18130,51 +18804,6 @@ class GetGatewayStatsDeviceGatewayStatModuleStatFanResult(dict):
     @pulumi.getter
     def status(self) -> builtins.str:
         return pulumi.get(self, "status")
-
-
-@pulumi.output_type
-class GetGatewayStatsDeviceGatewayStatModuleStatPicResult(dict):
-    def __init__(__self__, *,
-                 index: builtins.int,
-                 model_number: builtins.str,
-                 port_groups: Sequence['outputs.GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupResult']):
-        pulumi.set(__self__, "index", index)
-        pulumi.set(__self__, "model_number", model_number)
-        pulumi.set(__self__, "port_groups", port_groups)
-
-    @property
-    @pulumi.getter
-    def index(self) -> builtins.int:
-        return pulumi.get(self, "index")
-
-    @property
-    @pulumi.getter(name="modelNumber")
-    def model_number(self) -> builtins.str:
-        return pulumi.get(self, "model_number")
-
-    @property
-    @pulumi.getter(name="portGroups")
-    def port_groups(self) -> Sequence['outputs.GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupResult']:
-        return pulumi.get(self, "port_groups")
-
-
-@pulumi.output_type
-class GetGatewayStatsDeviceGatewayStatModuleStatPicPortGroupResult(dict):
-    def __init__(__self__, *,
-                 count: builtins.int,
-                 type: builtins.str):
-        pulumi.set(__self__, "count", count)
-        pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def count(self) -> builtins.int:
-        return pulumi.get(self, "count")
-
-    @property
-    @pulumi.getter
-    def type(self) -> builtins.str:
-        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -18265,6 +18894,489 @@ class GetGatewayStatsDeviceGatewayStatModuleStatVcLinkResult(dict):
     @pulumi.getter(name="portId")
     def port_id(self) -> builtins.str:
         return pulumi.get(self, "port_id")
+
+
+@pulumi.output_type
+class GetGatewayStatsDeviceGatewayStatPortResult(dict):
+    def __init__(__self__, *,
+                 active: builtins.bool,
+                 auth_state: builtins.str,
+                 disabled: builtins.bool,
+                 for_site: builtins.bool,
+                 full_duplex: builtins.bool,
+                 jitter: builtins.float,
+                 latency: builtins.float,
+                 loss: builtins.float,
+                 lte_iccid: builtins.str,
+                 lte_imei: builtins.str,
+                 lte_imsi: builtins.str,
+                 mac_count: builtins.int,
+                 mac_limit: builtins.int,
+                 neighbor_mac: builtins.str,
+                 neighbor_port_desc: builtins.str,
+                 neighbor_system_name: builtins.str,
+                 poe_disabled: builtins.bool,
+                 poe_mode: builtins.str,
+                 poe_on: builtins.bool,
+                 port_id: builtins.str,
+                 port_mac: builtins.str,
+                 port_usage: builtins.str,
+                 power_draw: builtins.float,
+                 rx_bcast_pkts: builtins.int,
+                 rx_bps: builtins.int,
+                 rx_bytes: builtins.int,
+                 rx_errors: builtins.int,
+                 rx_mcast_pkts: builtins.int,
+                 rx_pkts: builtins.int,
+                 speed: builtins.int,
+                 stp_role: builtins.str,
+                 stp_state: builtins.str,
+                 tx_bcast_pkts: builtins.int,
+                 tx_bps: builtins.int,
+                 tx_bytes: builtins.int,
+                 tx_errors: builtins.int,
+                 tx_mcast_pkts: builtins.int,
+                 tx_pkts: builtins.int,
+                 type: builtins.str,
+                 unconfigured: builtins.bool,
+                 up: builtins.bool,
+                 xcvr_model: builtins.str,
+                 xcvr_part_number: builtins.str,
+                 xcvr_serial: builtins.str):
+        """
+        :param builtins.bool active: Indicates if interface is active/inactive
+        :param builtins.str auth_state: if `up`==`true` and has Authenticator role. enum: `authenticated`, `authenticating`, `held`, `init`
+        :param builtins.bool disabled: Indicates if interface is disabled
+        :param builtins.bool full_duplex: Indicates full or half duplex
+        :param builtins.float jitter: Last sampled jitter of the interface
+        :param builtins.float latency: Last sampled latency of the interface
+        :param builtins.float loss: Last sampled loss of the interface
+        :param builtins.str lte_iccid: LTE ICCID value, Check for null/empty
+        :param builtins.str lte_imei: LTE IMEI value, Check for null/empty
+        :param builtins.str lte_imsi: LTE IMSI value, Check for null/empty
+        :param builtins.int mac_count: Number of mac addresses in the forwarding table
+        :param builtins.int mac_limit: Limit on number of dynamically learned macs
+        :param builtins.str neighbor_mac: chassis identifier of the chassis type listed
+        :param builtins.str neighbor_port_desc: Description supplied by the system on the interface E.g. "GigabitEthernet2/0/39"
+        :param builtins.str neighbor_system_name: Name supplied by the system on the interface E.g. neighbor system name E.g. "Kumar-Acc-SW.mist.local"
+        :param builtins.bool poe_disabled: Is the POE configured not be disabled.
+        :param builtins.str poe_mode: enum: `802.3af`, `802.3at`, `802.3bt`
+        :param builtins.bool poe_on: Is the device attached to POE
+        :param builtins.str port_mac: Interface mac address
+        :param builtins.str port_usage: gateway port usage. enum: `lan`
+        :param builtins.float power_draw: Amount of power being used by the interface at the time the command is executed. Unit in watts.
+        :param builtins.int rx_bcast_pkts: Broadcast input packets
+        :param builtins.int rx_bps: Rate of receiving traffic, bits/seconds, last known
+        :param builtins.int rx_bytes: Amount of traffic received since connection
+        :param builtins.int rx_errors: Input errors
+        :param builtins.int rx_mcast_pkts: Multicast input packets
+        :param builtins.int rx_pkts: Amount of packets received since connection
+        :param builtins.int speed: Port speed
+        :param builtins.str stp_role: if `up`==`true`. enum: `alternate`, `backup`, `designated`, `root`, `root-prevented`
+        :param builtins.str stp_state: if `up`==`true`. enum: `blocking`, `disabled`, `forwarding`, `learning`, `listening`
+        :param builtins.int tx_bcast_pkts: Broadcast output packets
+        :param builtins.int tx_bps: Rate of transmitting traffic, bits/seconds, last known
+        :param builtins.int tx_bytes: Amount of traffic sent since connection
+        :param builtins.int tx_errors: Output errors
+        :param builtins.int tx_mcast_pkts: Multicast output packets
+        :param builtins.int tx_pkts: Amount of packets sent since connection
+        :param builtins.str type: device type. enum: `ap`, `ble`, `gateway`, `mxedge`, `nac`, `switch`
+        :param builtins.bool unconfigured: Indicates if interface is unconfigured
+        :param builtins.bool up: Indicates if interface is up
+        :param builtins.str xcvr_model: Optic Slot ModelName, Check for null/empty
+        :param builtins.str xcvr_part_number: Optic Slot Partnumber, Check for null/empty
+        :param builtins.str xcvr_serial: Optic Slot SerialNumber, Check for null/empty
+        """
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "auth_state", auth_state)
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "for_site", for_site)
+        pulumi.set(__self__, "full_duplex", full_duplex)
+        pulumi.set(__self__, "jitter", jitter)
+        pulumi.set(__self__, "latency", latency)
+        pulumi.set(__self__, "loss", loss)
+        pulumi.set(__self__, "lte_iccid", lte_iccid)
+        pulumi.set(__self__, "lte_imei", lte_imei)
+        pulumi.set(__self__, "lte_imsi", lte_imsi)
+        pulumi.set(__self__, "mac_count", mac_count)
+        pulumi.set(__self__, "mac_limit", mac_limit)
+        pulumi.set(__self__, "neighbor_mac", neighbor_mac)
+        pulumi.set(__self__, "neighbor_port_desc", neighbor_port_desc)
+        pulumi.set(__self__, "neighbor_system_name", neighbor_system_name)
+        pulumi.set(__self__, "poe_disabled", poe_disabled)
+        pulumi.set(__self__, "poe_mode", poe_mode)
+        pulumi.set(__self__, "poe_on", poe_on)
+        pulumi.set(__self__, "port_id", port_id)
+        pulumi.set(__self__, "port_mac", port_mac)
+        pulumi.set(__self__, "port_usage", port_usage)
+        pulumi.set(__self__, "power_draw", power_draw)
+        pulumi.set(__self__, "rx_bcast_pkts", rx_bcast_pkts)
+        pulumi.set(__self__, "rx_bps", rx_bps)
+        pulumi.set(__self__, "rx_bytes", rx_bytes)
+        pulumi.set(__self__, "rx_errors", rx_errors)
+        pulumi.set(__self__, "rx_mcast_pkts", rx_mcast_pkts)
+        pulumi.set(__self__, "rx_pkts", rx_pkts)
+        pulumi.set(__self__, "speed", speed)
+        pulumi.set(__self__, "stp_role", stp_role)
+        pulumi.set(__self__, "stp_state", stp_state)
+        pulumi.set(__self__, "tx_bcast_pkts", tx_bcast_pkts)
+        pulumi.set(__self__, "tx_bps", tx_bps)
+        pulumi.set(__self__, "tx_bytes", tx_bytes)
+        pulumi.set(__self__, "tx_errors", tx_errors)
+        pulumi.set(__self__, "tx_mcast_pkts", tx_mcast_pkts)
+        pulumi.set(__self__, "tx_pkts", tx_pkts)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "unconfigured", unconfigured)
+        pulumi.set(__self__, "up", up)
+        pulumi.set(__self__, "xcvr_model", xcvr_model)
+        pulumi.set(__self__, "xcvr_part_number", xcvr_part_number)
+        pulumi.set(__self__, "xcvr_serial", xcvr_serial)
+
+    @property
+    @pulumi.getter
+    def active(self) -> builtins.bool:
+        """
+        Indicates if interface is active/inactive
+        """
+        return pulumi.get(self, "active")
+
+    @property
+    @pulumi.getter(name="authState")
+    def auth_state(self) -> builtins.str:
+        """
+        if `up`==`true` and has Authenticator role. enum: `authenticated`, `authenticating`, `held`, `init`
+        """
+        return pulumi.get(self, "auth_state")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> builtins.bool:
+        """
+        Indicates if interface is disabled
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="forSite")
+    def for_site(self) -> builtins.bool:
+        return pulumi.get(self, "for_site")
+
+    @property
+    @pulumi.getter(name="fullDuplex")
+    def full_duplex(self) -> builtins.bool:
+        """
+        Indicates full or half duplex
+        """
+        return pulumi.get(self, "full_duplex")
+
+    @property
+    @pulumi.getter
+    def jitter(self) -> builtins.float:
+        """
+        Last sampled jitter of the interface
+        """
+        return pulumi.get(self, "jitter")
+
+    @property
+    @pulumi.getter
+    def latency(self) -> builtins.float:
+        """
+        Last sampled latency of the interface
+        """
+        return pulumi.get(self, "latency")
+
+    @property
+    @pulumi.getter
+    def loss(self) -> builtins.float:
+        """
+        Last sampled loss of the interface
+        """
+        return pulumi.get(self, "loss")
+
+    @property
+    @pulumi.getter(name="lteIccid")
+    def lte_iccid(self) -> builtins.str:
+        """
+        LTE ICCID value, Check for null/empty
+        """
+        return pulumi.get(self, "lte_iccid")
+
+    @property
+    @pulumi.getter(name="lteImei")
+    def lte_imei(self) -> builtins.str:
+        """
+        LTE IMEI value, Check for null/empty
+        """
+        return pulumi.get(self, "lte_imei")
+
+    @property
+    @pulumi.getter(name="lteImsi")
+    def lte_imsi(self) -> builtins.str:
+        """
+        LTE IMSI value, Check for null/empty
+        """
+        return pulumi.get(self, "lte_imsi")
+
+    @property
+    @pulumi.getter(name="macCount")
+    def mac_count(self) -> builtins.int:
+        """
+        Number of mac addresses in the forwarding table
+        """
+        return pulumi.get(self, "mac_count")
+
+    @property
+    @pulumi.getter(name="macLimit")
+    def mac_limit(self) -> builtins.int:
+        """
+        Limit on number of dynamically learned macs
+        """
+        return pulumi.get(self, "mac_limit")
+
+    @property
+    @pulumi.getter(name="neighborMac")
+    def neighbor_mac(self) -> builtins.str:
+        """
+        chassis identifier of the chassis type listed
+        """
+        return pulumi.get(self, "neighbor_mac")
+
+    @property
+    @pulumi.getter(name="neighborPortDesc")
+    def neighbor_port_desc(self) -> builtins.str:
+        """
+        Description supplied by the system on the interface E.g. "GigabitEthernet2/0/39"
+        """
+        return pulumi.get(self, "neighbor_port_desc")
+
+    @property
+    @pulumi.getter(name="neighborSystemName")
+    def neighbor_system_name(self) -> builtins.str:
+        """
+        Name supplied by the system on the interface E.g. neighbor system name E.g. "Kumar-Acc-SW.mist.local"
+        """
+        return pulumi.get(self, "neighbor_system_name")
+
+    @property
+    @pulumi.getter(name="poeDisabled")
+    def poe_disabled(self) -> builtins.bool:
+        """
+        Is the POE configured not be disabled.
+        """
+        return pulumi.get(self, "poe_disabled")
+
+    @property
+    @pulumi.getter(name="poeMode")
+    def poe_mode(self) -> builtins.str:
+        """
+        enum: `802.3af`, `802.3at`, `802.3bt`
+        """
+        return pulumi.get(self, "poe_mode")
+
+    @property
+    @pulumi.getter(name="poeOn")
+    def poe_on(self) -> builtins.bool:
+        """
+        Is the device attached to POE
+        """
+        return pulumi.get(self, "poe_on")
+
+    @property
+    @pulumi.getter(name="portId")
+    def port_id(self) -> builtins.str:
+        return pulumi.get(self, "port_id")
+
+    @property
+    @pulumi.getter(name="portMac")
+    def port_mac(self) -> builtins.str:
+        """
+        Interface mac address
+        """
+        return pulumi.get(self, "port_mac")
+
+    @property
+    @pulumi.getter(name="portUsage")
+    def port_usage(self) -> builtins.str:
+        """
+        gateway port usage. enum: `lan`
+        """
+        return pulumi.get(self, "port_usage")
+
+    @property
+    @pulumi.getter(name="powerDraw")
+    def power_draw(self) -> builtins.float:
+        """
+        Amount of power being used by the interface at the time the command is executed. Unit in watts.
+        """
+        return pulumi.get(self, "power_draw")
+
+    @property
+    @pulumi.getter(name="rxBcastPkts")
+    def rx_bcast_pkts(self) -> builtins.int:
+        """
+        Broadcast input packets
+        """
+        return pulumi.get(self, "rx_bcast_pkts")
+
+    @property
+    @pulumi.getter(name="rxBps")
+    def rx_bps(self) -> builtins.int:
+        """
+        Rate of receiving traffic, bits/seconds, last known
+        """
+        return pulumi.get(self, "rx_bps")
+
+    @property
+    @pulumi.getter(name="rxBytes")
+    def rx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic received since connection
+        """
+        return pulumi.get(self, "rx_bytes")
+
+    @property
+    @pulumi.getter(name="rxErrors")
+    def rx_errors(self) -> builtins.int:
+        """
+        Input errors
+        """
+        return pulumi.get(self, "rx_errors")
+
+    @property
+    @pulumi.getter(name="rxMcastPkts")
+    def rx_mcast_pkts(self) -> builtins.int:
+        """
+        Multicast input packets
+        """
+        return pulumi.get(self, "rx_mcast_pkts")
+
+    @property
+    @pulumi.getter(name="rxPkts")
+    def rx_pkts(self) -> builtins.int:
+        """
+        Amount of packets received since connection
+        """
+        return pulumi.get(self, "rx_pkts")
+
+    @property
+    @pulumi.getter
+    def speed(self) -> builtins.int:
+        """
+        Port speed
+        """
+        return pulumi.get(self, "speed")
+
+    @property
+    @pulumi.getter(name="stpRole")
+    def stp_role(self) -> builtins.str:
+        """
+        if `up`==`true`. enum: `alternate`, `backup`, `designated`, `root`, `root-prevented`
+        """
+        return pulumi.get(self, "stp_role")
+
+    @property
+    @pulumi.getter(name="stpState")
+    def stp_state(self) -> builtins.str:
+        """
+        if `up`==`true`. enum: `blocking`, `disabled`, `forwarding`, `learning`, `listening`
+        """
+        return pulumi.get(self, "stp_state")
+
+    @property
+    @pulumi.getter(name="txBcastPkts")
+    def tx_bcast_pkts(self) -> builtins.int:
+        """
+        Broadcast output packets
+        """
+        return pulumi.get(self, "tx_bcast_pkts")
+
+    @property
+    @pulumi.getter(name="txBps")
+    def tx_bps(self) -> builtins.int:
+        """
+        Rate of transmitting traffic, bits/seconds, last known
+        """
+        return pulumi.get(self, "tx_bps")
+
+    @property
+    @pulumi.getter(name="txBytes")
+    def tx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic sent since connection
+        """
+        return pulumi.get(self, "tx_bytes")
+
+    @property
+    @pulumi.getter(name="txErrors")
+    def tx_errors(self) -> builtins.int:
+        """
+        Output errors
+        """
+        return pulumi.get(self, "tx_errors")
+
+    @property
+    @pulumi.getter(name="txMcastPkts")
+    def tx_mcast_pkts(self) -> builtins.int:
+        """
+        Multicast output packets
+        """
+        return pulumi.get(self, "tx_mcast_pkts")
+
+    @property
+    @pulumi.getter(name="txPkts")
+    def tx_pkts(self) -> builtins.int:
+        """
+        Amount of packets sent since connection
+        """
+        return pulumi.get(self, "tx_pkts")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        """
+        device type. enum: `ap`, `ble`, `gateway`, `mxedge`, `nac`, `switch`
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unconfigured(self) -> builtins.bool:
+        """
+        Indicates if interface is unconfigured
+        """
+        return pulumi.get(self, "unconfigured")
+
+    @property
+    @pulumi.getter
+    def up(self) -> builtins.bool:
+        """
+        Indicates if interface is up
+        """
+        return pulumi.get(self, "up")
+
+    @property
+    @pulumi.getter(name="xcvrModel")
+    def xcvr_model(self) -> builtins.str:
+        """
+        Optic Slot ModelName, Check for null/empty
+        """
+        return pulumi.get(self, "xcvr_model")
+
+    @property
+    @pulumi.getter(name="xcvrPartNumber")
+    def xcvr_part_number(self) -> builtins.str:
+        """
+        Optic Slot Partnumber, Check for null/empty
+        """
+        return pulumi.get(self, "xcvr_part_number")
+
+    @property
+    @pulumi.getter(name="xcvrSerial")
+    def xcvr_serial(self) -> builtins.str:
+        """
+        Optic Slot SerialNumber, Check for null/empty
+        """
+        return pulumi.get(self, "xcvr_serial")
 
 
 @pulumi.output_type
@@ -18592,6 +19704,347 @@ class GetGatewayStatsDeviceGatewayStatSpuStatResult(dict):
 
 
 @pulumi.output_type
+class GetGatewayStatsDeviceGatewayStatTunnelResult(dict):
+    def __init__(__self__, *,
+                 auth_algo: builtins.str,
+                 encrypt_algo: builtins.str,
+                 ike_version: builtins.str,
+                 ip: builtins.str,
+                 last_event: builtins.str,
+                 last_flapped: builtins.float,
+                 node: builtins.str,
+                 peer_host: builtins.str,
+                 peer_ip: builtins.str,
+                 priority: builtins.str,
+                 protocol: builtins.str,
+                 rx_bytes: builtins.int,
+                 rx_pkts: builtins.int,
+                 tunnel_name: builtins.str,
+                 tx_bytes: builtins.int,
+                 tx_pkts: builtins.int,
+                 up: builtins.bool,
+                 uptime: builtins.int,
+                 wan_name: builtins.str):
+        """
+        :param builtins.str auth_algo: Authentication algorithm
+        :param builtins.str encrypt_algo: Encryption algorithm
+        :param builtins.str ike_version: IKE version
+        :param builtins.str ip: IP Address
+        :param builtins.str last_event: Reason of why the tunnel is down
+        :param builtins.float last_flapped: Indicates when the port was last flapped
+        :param builtins.str node: Node0/node1
+        :param builtins.str peer_host: Peer host
+        :param builtins.str peer_ip: Peer ip address
+        :param builtins.str priority: enum: `primary`, `secondary`
+        :param builtins.str protocol: enum: `gre`, `ipsec`
+        :param builtins.int rx_bytes: Amount of traffic received since connection
+        :param builtins.int rx_pkts: Amount of packets received since connection
+        :param builtins.str tunnel_name: Mist Tunnel Name
+        :param builtins.int tx_bytes: Amount of traffic sent since connection
+        :param builtins.int tx_pkts: Amount of packets sent since connection
+        :param builtins.int uptime: Duration from first (or last) SA was established
+        :param builtins.str wan_name: WAN interface name
+        """
+        pulumi.set(__self__, "auth_algo", auth_algo)
+        pulumi.set(__self__, "encrypt_algo", encrypt_algo)
+        pulumi.set(__self__, "ike_version", ike_version)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "last_event", last_event)
+        pulumi.set(__self__, "last_flapped", last_flapped)
+        pulumi.set(__self__, "node", node)
+        pulumi.set(__self__, "peer_host", peer_host)
+        pulumi.set(__self__, "peer_ip", peer_ip)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "rx_bytes", rx_bytes)
+        pulumi.set(__self__, "rx_pkts", rx_pkts)
+        pulumi.set(__self__, "tunnel_name", tunnel_name)
+        pulumi.set(__self__, "tx_bytes", tx_bytes)
+        pulumi.set(__self__, "tx_pkts", tx_pkts)
+        pulumi.set(__self__, "up", up)
+        pulumi.set(__self__, "uptime", uptime)
+        pulumi.set(__self__, "wan_name", wan_name)
+
+    @property
+    @pulumi.getter(name="authAlgo")
+    def auth_algo(self) -> builtins.str:
+        """
+        Authentication algorithm
+        """
+        return pulumi.get(self, "auth_algo")
+
+    @property
+    @pulumi.getter(name="encryptAlgo")
+    def encrypt_algo(self) -> builtins.str:
+        """
+        Encryption algorithm
+        """
+        return pulumi.get(self, "encrypt_algo")
+
+    @property
+    @pulumi.getter(name="ikeVersion")
+    def ike_version(self) -> builtins.str:
+        """
+        IKE version
+        """
+        return pulumi.get(self, "ike_version")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> builtins.str:
+        """
+        IP Address
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter(name="lastEvent")
+    def last_event(self) -> builtins.str:
+        """
+        Reason of why the tunnel is down
+        """
+        return pulumi.get(self, "last_event")
+
+    @property
+    @pulumi.getter(name="lastFlapped")
+    def last_flapped(self) -> builtins.float:
+        """
+        Indicates when the port was last flapped
+        """
+        return pulumi.get(self, "last_flapped")
+
+    @property
+    @pulumi.getter
+    def node(self) -> builtins.str:
+        """
+        Node0/node1
+        """
+        return pulumi.get(self, "node")
+
+    @property
+    @pulumi.getter(name="peerHost")
+    def peer_host(self) -> builtins.str:
+        """
+        Peer host
+        """
+        return pulumi.get(self, "peer_host")
+
+    @property
+    @pulumi.getter(name="peerIp")
+    def peer_ip(self) -> builtins.str:
+        """
+        Peer ip address
+        """
+        return pulumi.get(self, "peer_ip")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> builtins.str:
+        """
+        enum: `primary`, `secondary`
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> builtins.str:
+        """
+        enum: `gre`, `ipsec`
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="rxBytes")
+    def rx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic received since connection
+        """
+        return pulumi.get(self, "rx_bytes")
+
+    @property
+    @pulumi.getter(name="rxPkts")
+    def rx_pkts(self) -> builtins.int:
+        """
+        Amount of packets received since connection
+        """
+        return pulumi.get(self, "rx_pkts")
+
+    @property
+    @pulumi.getter(name="tunnelName")
+    def tunnel_name(self) -> builtins.str:
+        """
+        Mist Tunnel Name
+        """
+        return pulumi.get(self, "tunnel_name")
+
+    @property
+    @pulumi.getter(name="txBytes")
+    def tx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic sent since connection
+        """
+        return pulumi.get(self, "tx_bytes")
+
+    @property
+    @pulumi.getter(name="txPkts")
+    def tx_pkts(self) -> builtins.int:
+        """
+        Amount of packets sent since connection
+        """
+        return pulumi.get(self, "tx_pkts")
+
+    @property
+    @pulumi.getter
+    def up(self) -> builtins.bool:
+        return pulumi.get(self, "up")
+
+    @property
+    @pulumi.getter
+    def uptime(self) -> builtins.int:
+        """
+        Duration from first (or last) SA was established
+        """
+        return pulumi.get(self, "uptime")
+
+    @property
+    @pulumi.getter(name="wanName")
+    def wan_name(self) -> builtins.str:
+        """
+        WAN interface name
+        """
+        return pulumi.get(self, "wan_name")
+
+
+@pulumi.output_type
+class GetGatewayStatsDeviceGatewayStatVpnPeerResult(dict):
+    def __init__(__self__, *,
+                 is_active: builtins.bool,
+                 last_seen: builtins.float,
+                 latency: builtins.float,
+                 mos: builtins.float,
+                 mtu: builtins.int,
+                 peer_mac: builtins.str,
+                 peer_port_id: builtins.str,
+                 peer_router_name: builtins.str,
+                 peer_site_id: builtins.str,
+                 port_id: builtins.str,
+                 router_name: builtins.str,
+                 type: builtins.str,
+                 up: builtins.bool,
+                 uptime: builtins.int):
+        """
+        :param builtins.bool is_active: Redundancy status of the associated interface
+        :param builtins.float last_seen: Last seen timestamp
+        :param builtins.str peer_mac: Peer router mac address
+        :param builtins.str peer_port_id: Peer router device interface
+        :param builtins.str port_id: Router device interface
+        :param builtins.str type: `ipsec`for SRX, `svr` for 128T
+        """
+        pulumi.set(__self__, "is_active", is_active)
+        pulumi.set(__self__, "last_seen", last_seen)
+        pulumi.set(__self__, "latency", latency)
+        pulumi.set(__self__, "mos", mos)
+        pulumi.set(__self__, "mtu", mtu)
+        pulumi.set(__self__, "peer_mac", peer_mac)
+        pulumi.set(__self__, "peer_port_id", peer_port_id)
+        pulumi.set(__self__, "peer_router_name", peer_router_name)
+        pulumi.set(__self__, "peer_site_id", peer_site_id)
+        pulumi.set(__self__, "port_id", port_id)
+        pulumi.set(__self__, "router_name", router_name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "up", up)
+        pulumi.set(__self__, "uptime", uptime)
+
+    @property
+    @pulumi.getter(name="isActive")
+    def is_active(self) -> builtins.bool:
+        """
+        Redundancy status of the associated interface
+        """
+        return pulumi.get(self, "is_active")
+
+    @property
+    @pulumi.getter(name="lastSeen")
+    def last_seen(self) -> builtins.float:
+        """
+        Last seen timestamp
+        """
+        return pulumi.get(self, "last_seen")
+
+    @property
+    @pulumi.getter
+    def latency(self) -> builtins.float:
+        return pulumi.get(self, "latency")
+
+    @property
+    @pulumi.getter
+    def mos(self) -> builtins.float:
+        return pulumi.get(self, "mos")
+
+    @property
+    @pulumi.getter
+    def mtu(self) -> builtins.int:
+        return pulumi.get(self, "mtu")
+
+    @property
+    @pulumi.getter(name="peerMac")
+    def peer_mac(self) -> builtins.str:
+        """
+        Peer router mac address
+        """
+        return pulumi.get(self, "peer_mac")
+
+    @property
+    @pulumi.getter(name="peerPortId")
+    def peer_port_id(self) -> builtins.str:
+        """
+        Peer router device interface
+        """
+        return pulumi.get(self, "peer_port_id")
+
+    @property
+    @pulumi.getter(name="peerRouterName")
+    def peer_router_name(self) -> builtins.str:
+        return pulumi.get(self, "peer_router_name")
+
+    @property
+    @pulumi.getter(name="peerSiteId")
+    def peer_site_id(self) -> builtins.str:
+        return pulumi.get(self, "peer_site_id")
+
+    @property
+    @pulumi.getter(name="portId")
+    def port_id(self) -> builtins.str:
+        """
+        Router device interface
+        """
+        return pulumi.get(self, "port_id")
+
+    @property
+    @pulumi.getter(name="routerName")
+    def router_name(self) -> builtins.str:
+        return pulumi.get(self, "router_name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        """
+        `ipsec`for SRX, `svr` for 128T
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def up(self) -> builtins.bool:
+        return pulumi.get(self, "up")
+
+    @property
+    @pulumi.getter
+    def uptime(self) -> builtins.int:
+        return pulumi.get(self, "uptime")
+
+
+@pulumi.output_type
 class GetSwitchStatsDeviceSwitchStatResult(dict):
     def __init__(__self__, *,
                  ap_redundancy: 'outputs.GetSwitchStatsDeviceSwitchStatApRedundancyResult',
@@ -18601,7 +20054,7 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
                  clients_stats: 'outputs.GetSwitchStatsDeviceSwitchStatClientsStatsResult',
                  config_status: builtins.str,
                  cpu_stat: 'outputs.GetSwitchStatsDeviceSwitchStatCpuStatResult',
-                 created_time: builtins.int,
+                 created_time: builtins.float,
                  deviceprofile_id: builtins.str,
                  dhcpd_stat: Mapping[str, 'outputs.GetSwitchStatsDeviceSwitchStatDhcpdStatResult'],
                  evpntopo_id: builtins.str,
@@ -18621,10 +20074,11 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
                  map_id: builtins.str,
                  memory_stat: 'outputs.GetSwitchStatsDeviceSwitchStatMemoryStatResult',
                  model: builtins.str,
-                 modified_time: builtins.int,
+                 modified_time: builtins.float,
                  module_stats: Sequence['outputs.GetSwitchStatsDeviceSwitchStatModuleStatResult'],
                  name: builtins.str,
                  org_id: builtins.str,
+                 ports: Sequence['outputs.GetSwitchStatsDeviceSwitchStatPortResult'],
                  route_summary_stats: 'outputs.GetSwitchStatsDeviceSwitchStatRouteSummaryStatsResult',
                  serial: builtins.str,
                  service_stat: Mapping[str, 'outputs.GetSwitchStatsDeviceSwitchStatServiceStatResult'],
@@ -18635,14 +20089,18 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
                  vc_setup_info: 'outputs.GetSwitchStatsDeviceSwitchStatVcSetupInfoResult',
                  version: builtins.str):
         """
+        :param builtins.float created_time: When the object has been created, in epoch
         :param Mapping[str, 'GetSwitchStatsDeviceSwitchStatDhcpdStatArgs'] dhcpd_stat: Property key is the network name
-        :param builtins.bool has_pcap: whether the switch supports packet capture
-        :param builtins.str hostname: hostname reported by the device
-        :param builtins.str hw_rev: device hardware revision number
+        :param builtins.bool has_pcap: Whether the switch supports packet capture
+        :param builtins.str hostname: Hostname reported by the device
+        :param builtins.str hw_rev: Device hardware revision number
+        :param builtins.str id: Unique ID of the object instance in the Mist Organization
         :param Mapping[str, 'GetSwitchStatsDeviceSwitchStatIfStatArgs'] if_stat: Property key is the interface name
-        :param 'GetSwitchStatsDeviceSwitchStatLastTroubleArgs' last_trouble: last trouble code of switch
-        :param 'GetSwitchStatsDeviceSwitchStatMemoryStatArgs' memory_stat: memory usage stat (for virtual chassis, memory usage of master RE)
-        :param builtins.str name: device name if configured
+        :param builtins.float last_seen: Last seen timestamp
+        :param 'GetSwitchStatsDeviceSwitchStatLastTroubleArgs' last_trouble: Last trouble code of switch
+        :param 'GetSwitchStatsDeviceSwitchStatMemoryStatArgs' memory_stat: Memory usage stat (for virtual chassis, memory usage of master RE)
+        :param builtins.float modified_time: When the object has been modified for the last time, in epoch
+        :param builtins.str name: Device name if configured
         """
         pulumi.set(__self__, "ap_redundancy", ap_redundancy)
         pulumi.set(__self__, "arp_table_stats", arp_table_stats)
@@ -18675,6 +20133,7 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
         pulumi.set(__self__, "module_stats", module_stats)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "org_id", org_id)
+        pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "route_summary_stats", route_summary_stats)
         pulumi.set(__self__, "serial", serial)
         pulumi.set(__self__, "service_stat", service_stat)
@@ -18722,7 +20181,10 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
 
     @property
     @pulumi.getter(name="createdTime")
-    def created_time(self) -> builtins.int:
+    def created_time(self) -> builtins.float:
+        """
+        When the object has been created, in epoch
+        """
         return pulumi.get(self, "created_time")
 
     @property
@@ -18757,7 +20219,7 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
     @pulumi.getter(name="hasPcap")
     def has_pcap(self) -> builtins.bool:
         """
-        whether the switch supports packet capture
+        Whether the switch supports packet capture
         """
         return pulumi.get(self, "has_pcap")
 
@@ -18765,7 +20227,7 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
     @pulumi.getter
     def hostname(self) -> builtins.str:
         """
-        hostname reported by the device
+        Hostname reported by the device
         """
         return pulumi.get(self, "hostname")
 
@@ -18773,13 +20235,16 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
     @pulumi.getter(name="hwRev")
     def hw_rev(self) -> builtins.str:
         """
-        device hardware revision number
+        Device hardware revision number
         """
         return pulumi.get(self, "hw_rev")
 
     @property
     @pulumi.getter
     def id(self) -> builtins.str:
+        """
+        Unique ID of the object instance in the Mist Organization
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -18803,13 +20268,16 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
     @property
     @pulumi.getter(name="lastSeen")
     def last_seen(self) -> builtins.float:
+        """
+        Last seen timestamp
+        """
         return pulumi.get(self, "last_seen")
 
     @property
     @pulumi.getter(name="lastTrouble")
     def last_trouble(self) -> 'outputs.GetSwitchStatsDeviceSwitchStatLastTroubleResult':
         """
-        last trouble code of switch
+        Last trouble code of switch
         """
         return pulumi.get(self, "last_trouble")
 
@@ -18832,7 +20300,7 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
     @pulumi.getter(name="memoryStat")
     def memory_stat(self) -> 'outputs.GetSwitchStatsDeviceSwitchStatMemoryStatResult':
         """
-        memory usage stat (for virtual chassis, memory usage of master RE)
+        Memory usage stat (for virtual chassis, memory usage of master RE)
         """
         return pulumi.get(self, "memory_stat")
 
@@ -18843,7 +20311,10 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
 
     @property
     @pulumi.getter(name="modifiedTime")
-    def modified_time(self) -> builtins.int:
+    def modified_time(self) -> builtins.float:
+        """
+        When the object has been modified for the last time, in epoch
+        """
         return pulumi.get(self, "modified_time")
 
     @property
@@ -18855,7 +20326,7 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
     @pulumi.getter
     def name(self) -> builtins.str:
         """
-        device name if configured
+        Device name if configured
         """
         return pulumi.get(self, "name")
 
@@ -18863,6 +20334,11 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
     @pulumi.getter(name="orgId")
     def org_id(self) -> builtins.str:
         return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Sequence['outputs.GetSwitchStatsDeviceSwitchStatPortResult']:
+        return pulumi.get(self, "ports")
 
     @property
     @pulumi.getter(name="routeSummaryStats")
@@ -18917,7 +20393,7 @@ class GetSwitchStatsDeviceSwitchStatApRedundancyResult(dict):
                  num_aps: builtins.int,
                  num_aps_with_switch_redundancy: builtins.int):
         """
-        :param Mapping[str, 'GetSwitchStatsDeviceSwitchStatApRedundancyModulesArgs'] modules: for a VC / stacked switches.
+        :param Mapping[str, 'GetSwitchStatsDeviceSwitchStatApRedundancyModulesArgs'] modules: For a VC / stacked switches.
         """
         pulumi.set(__self__, "modules", modules)
         pulumi.set(__self__, "num_aps", num_aps)
@@ -18927,7 +20403,7 @@ class GetSwitchStatsDeviceSwitchStatApRedundancyResult(dict):
     @pulumi.getter
     def modules(self) -> Mapping[str, 'outputs.GetSwitchStatsDeviceSwitchStatApRedundancyModulesResult']:
         """
-        for a VC / stacked switches.
+        For a VC / stacked switches.
         """
         return pulumi.get(self, "modules")
 
@@ -19057,7 +20533,7 @@ class GetSwitchStatsDeviceSwitchStatCpuStatResult(dict):
         :param builtins.float interrupt: Percentage of CPU time being used by interrupts
         :param Sequence[builtins.float] load_avgs: Load averages for the last 1, 5, and 15 minutes
         :param builtins.float system: Percentage of CPU time being used by system processes
-        :param builtins.float user: Percentage of CPU time being used by user processe
+        :param builtins.float user: Percentage of CPU time being used by user processes
         """
         pulumi.set(__self__, "idle", idle)
         pulumi.set(__self__, "interrupt", interrupt)
@@ -19101,7 +20577,7 @@ class GetSwitchStatsDeviceSwitchStatCpuStatResult(dict):
     @pulumi.getter
     def user(self) -> builtins.float:
         """
-        Percentage of CPU time being used by user processe
+        Percentage of CPU time being used by user processes
         """
         return pulumi.get(self, "user")
 
@@ -19133,6 +20609,10 @@ class GetSwitchStatsDeviceSwitchStatFwupdateResult(dict):
                  status_id: builtins.int,
                  timestamp: builtins.float,
                  will_retry: builtins.bool):
+        """
+        :param builtins.str status: enum: `inprogress`, `failed`, `upgraded`
+        :param builtins.float timestamp: Epoch (seconds)
+        """
         pulumi.set(__self__, "progress", progress)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "status_id", status_id)
@@ -19147,6 +20627,9 @@ class GetSwitchStatsDeviceSwitchStatFwupdateResult(dict):
     @property
     @pulumi.getter
     def status(self) -> builtins.str:
+        """
+        enum: `inprogress`, `failed`, `upgraded`
+        """
         return pulumi.get(self, "status")
 
     @property
@@ -19157,6 +20640,9 @@ class GetSwitchStatsDeviceSwitchStatFwupdateResult(dict):
     @property
     @pulumi.getter
     def timestamp(self) -> builtins.float:
+        """
+        Epoch (seconds)
+        """
         return pulumi.get(self, "timestamp")
 
     @property
@@ -19184,6 +20670,12 @@ class GetSwitchStatsDeviceSwitchStatIfStatResult(dict):
                  vlan: builtins.int,
                  wan_name: builtins.str,
                  wan_type: builtins.str):
+        """
+        :param builtins.int rx_bytes: Amount of traffic received since connection
+        :param builtins.int rx_pkts: Amount of packets received since connection
+        :param builtins.int tx_bytes: Amount of traffic sent since connection
+        :param builtins.int tx_pkts: Amount of packets sent since connection
+        """
         pulumi.set(__self__, "address_mode", address_mode)
         pulumi.set(__self__, "ips", ips)
         pulumi.set(__self__, "nat_addresses", nat_addresses)
@@ -19239,11 +20731,17 @@ class GetSwitchStatsDeviceSwitchStatIfStatResult(dict):
     @property
     @pulumi.getter(name="rxBytes")
     def rx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic received since connection
+        """
         return pulumi.get(self, "rx_bytes")
 
     @property
     @pulumi.getter(name="rxPkts")
     def rx_pkts(self) -> builtins.int:
+        """
+        Amount of packets received since connection
+        """
         return pulumi.get(self, "rx_pkts")
 
     @property
@@ -19254,11 +20752,17 @@ class GetSwitchStatsDeviceSwitchStatIfStatResult(dict):
     @property
     @pulumi.getter(name="txBytes")
     def tx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic sent since connection
+        """
         return pulumi.get(self, "tx_bytes")
 
     @property
     @pulumi.getter(name="txPkts")
     def tx_pkts(self) -> builtins.int:
+        """
+        Amount of packets sent since connection
+        """
         return pulumi.get(self, "tx_pkts")
 
     @property
@@ -19415,9 +20919,10 @@ class GetSwitchStatsDeviceSwitchStatIpStatResult(dict):
 class GetSwitchStatsDeviceSwitchStatLastTroubleResult(dict):
     def __init__(__self__, *,
                  code: builtins.str,
-                 timestamp: builtins.int):
+                 timestamp: builtins.float):
         """
-        :param builtins.str code: Code definitions list at /api/v1/consts/ap*led*status
+        :param builtins.str code: Code definitions list at List Ap Led Definition
+        :param builtins.float timestamp: Epoch (seconds)
         """
         pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "timestamp", timestamp)
@@ -19426,13 +20931,16 @@ class GetSwitchStatsDeviceSwitchStatLastTroubleResult(dict):
     @pulumi.getter
     def code(self) -> builtins.str:
         """
-        Code definitions list at /api/v1/consts/ap*led*status
+        Code definitions list at List Ap Led Definition
         """
         return pulumi.get(self, "code")
 
     @property
     @pulumi.getter
-    def timestamp(self) -> builtins.int:
+    def timestamp(self) -> builtins.float:
+        """
+        Epoch (seconds)
+        """
         return pulumi.get(self, "timestamp")
 
 
@@ -19473,11 +20981,14 @@ class GetSwitchStatsDeviceSwitchStatModuleStatResult(dict):
                  backup_version: builtins.str,
                  bios_version: builtins.str,
                  cpld_version: builtins.str,
+                 cpu_stat: 'outputs.GetSwitchStatsDeviceSwitchStatModuleStatCpuStatResult',
                  errors: Sequence['outputs.GetSwitchStatsDeviceSwitchStatModuleStatErrorResult'],
                  fans: Sequence['outputs.GetSwitchStatsDeviceSwitchStatModuleStatFanResult'],
                  fpc_idx: builtins.int,
                  fpga_version: builtins.str,
                  last_seen: builtins.float,
+                 locating: builtins.bool,
+                 mac: builtins.str,
                  model: builtins.str,
                  optics_cpld_version: builtins.str,
                  pending_version: builtins.str,
@@ -19492,6 +21003,7 @@ class GetSwitchStatsDeviceSwitchStatModuleStatResult(dict):
                  status: builtins.str,
                  temperatures: Sequence['outputs.GetSwitchStatsDeviceSwitchStatModuleStatTemperatureResult'],
                  tmc_fpga_version: builtins.str,
+                 type: builtins.str,
                  uboot_version: builtins.str,
                  uptime: builtins.int,
                  vc_links: Sequence['outputs.GetSwitchStatsDeviceSwitchStatModuleStatVcLinkResult'],
@@ -19500,18 +21012,21 @@ class GetSwitchStatsDeviceSwitchStatModuleStatResult(dict):
                  vc_state: builtins.str,
                  version: builtins.str):
         """
-        :param Sequence['GetSwitchStatsDeviceSwitchStatModuleStatErrorArgs'] errors: used to report all error states the device node is running into.
-               An error should always have `type` and `since` fields, and could have some other fields specific to that type.
-        :param builtins.str vc_role: master / backup / linecard
+        :param Sequence['GetSwitchStatsDeviceSwitchStatModuleStatErrorArgs'] errors: Used to report all error states the device node is running into. An error should always have `type` and `since` fields, and could have some other fields specific to that type.
+        :param builtins.float last_seen: Last seen timestamp
+        :param builtins.str vc_role: enum: `master`, `backup`, `linecard`
         """
         pulumi.set(__self__, "backup_version", backup_version)
         pulumi.set(__self__, "bios_version", bios_version)
         pulumi.set(__self__, "cpld_version", cpld_version)
+        pulumi.set(__self__, "cpu_stat", cpu_stat)
         pulumi.set(__self__, "errors", errors)
         pulumi.set(__self__, "fans", fans)
         pulumi.set(__self__, "fpc_idx", fpc_idx)
         pulumi.set(__self__, "fpga_version", fpga_version)
         pulumi.set(__self__, "last_seen", last_seen)
+        pulumi.set(__self__, "locating", locating)
+        pulumi.set(__self__, "mac", mac)
         pulumi.set(__self__, "model", model)
         pulumi.set(__self__, "optics_cpld_version", optics_cpld_version)
         pulumi.set(__self__, "pending_version", pending_version)
@@ -19526,6 +21041,7 @@ class GetSwitchStatsDeviceSwitchStatModuleStatResult(dict):
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "temperatures", temperatures)
         pulumi.set(__self__, "tmc_fpga_version", tmc_fpga_version)
+        pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uboot_version", uboot_version)
         pulumi.set(__self__, "uptime", uptime)
         pulumi.set(__self__, "vc_links", vc_links)
@@ -19550,11 +21066,15 @@ class GetSwitchStatsDeviceSwitchStatModuleStatResult(dict):
         return pulumi.get(self, "cpld_version")
 
     @property
+    @pulumi.getter(name="cpuStat")
+    def cpu_stat(self) -> 'outputs.GetSwitchStatsDeviceSwitchStatModuleStatCpuStatResult':
+        return pulumi.get(self, "cpu_stat")
+
+    @property
     @pulumi.getter
     def errors(self) -> Sequence['outputs.GetSwitchStatsDeviceSwitchStatModuleStatErrorResult']:
         """
-        used to report all error states the device node is running into.
-        An error should always have `type` and `since` fields, and could have some other fields specific to that type.
+        Used to report all error states the device node is running into. An error should always have `type` and `since` fields, and could have some other fields specific to that type.
         """
         return pulumi.get(self, "errors")
 
@@ -19576,7 +21096,20 @@ class GetSwitchStatsDeviceSwitchStatModuleStatResult(dict):
     @property
     @pulumi.getter(name="lastSeen")
     def last_seen(self) -> builtins.float:
+        """
+        Last seen timestamp
+        """
         return pulumi.get(self, "last_seen")
+
+    @property
+    @pulumi.getter
+    def locating(self) -> builtins.bool:
+        return pulumi.get(self, "locating")
+
+    @property
+    @pulumi.getter
+    def mac(self) -> builtins.str:
+        return pulumi.get(self, "mac")
 
     @property
     @pulumi.getter
@@ -19649,6 +21182,11 @@ class GetSwitchStatsDeviceSwitchStatModuleStatResult(dict):
         return pulumi.get(self, "tmc_fpga_version")
 
     @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+    @property
     @pulumi.getter(name="ubootVersion")
     def uboot_version(self) -> builtins.str:
         return pulumi.get(self, "uboot_version")
@@ -19672,7 +21210,7 @@ class GetSwitchStatsDeviceSwitchStatModuleStatResult(dict):
     @pulumi.getter(name="vcRole")
     def vc_role(self) -> builtins.str:
         """
-        master / backup / linecard
+        enum: `master`, `backup`, `linecard`
         """
         return pulumi.get(self, "vc_role")
 
@@ -19685,6 +21223,68 @@ class GetSwitchStatsDeviceSwitchStatModuleStatResult(dict):
     @pulumi.getter
     def version(self) -> builtins.str:
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetSwitchStatsDeviceSwitchStatModuleStatCpuStatResult(dict):
+    def __init__(__self__, *,
+                 idle: builtins.float,
+                 interrupt: builtins.float,
+                 load_avgs: Sequence[builtins.float],
+                 system: builtins.float,
+                 user: builtins.float):
+        """
+        :param builtins.float idle: Percentage of CPU time that is idle
+        :param builtins.float interrupt: Percentage of CPU time being used by interrupts
+        :param Sequence[builtins.float] load_avgs: Load averages for the last 1, 5, and 15 minutes
+        :param builtins.float system: Percentage of CPU time being used by system processes
+        :param builtins.float user: Percentage of CPU time being used by user processes
+        """
+        pulumi.set(__self__, "idle", idle)
+        pulumi.set(__self__, "interrupt", interrupt)
+        pulumi.set(__self__, "load_avgs", load_avgs)
+        pulumi.set(__self__, "system", system)
+        pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def idle(self) -> builtins.float:
+        """
+        Percentage of CPU time that is idle
+        """
+        return pulumi.get(self, "idle")
+
+    @property
+    @pulumi.getter
+    def interrupt(self) -> builtins.float:
+        """
+        Percentage of CPU time being used by interrupts
+        """
+        return pulumi.get(self, "interrupt")
+
+    @property
+    @pulumi.getter(name="loadAvgs")
+    def load_avgs(self) -> Sequence[builtins.float]:
+        """
+        Load averages for the last 1, 5, and 15 minutes
+        """
+        return pulumi.get(self, "load_avgs")
+
+    @property
+    @pulumi.getter
+    def system(self) -> builtins.float:
+        """
+        Percentage of CPU time being used by system processes
+        """
+        return pulumi.get(self, "system")
+
+    @property
+    @pulumi.getter
+    def user(self) -> builtins.float:
+        """
+        Percentage of CPU time being used by user processes
+        """
+        return pulumi.get(self, "user")
 
 
 @pulumi.output_type
@@ -19889,6 +21489,521 @@ class GetSwitchStatsDeviceSwitchStatModuleStatVcLinkResult(dict):
 
 
 @pulumi.output_type
+class GetSwitchStatsDeviceSwitchStatPortResult(dict):
+    def __init__(__self__, *,
+                 active: builtins.bool,
+                 auth_state: builtins.str,
+                 disabled: builtins.bool,
+                 for_site: builtins.bool,
+                 full_duplex: builtins.bool,
+                 jitter: builtins.float,
+                 last_flapped: builtins.float,
+                 latency: builtins.float,
+                 loss: builtins.float,
+                 lte_iccid: builtins.str,
+                 lte_imei: builtins.str,
+                 lte_imsi: builtins.str,
+                 mac: builtins.str,
+                 mac_count: builtins.int,
+                 mac_limit: builtins.int,
+                 neighbor_mac: builtins.str,
+                 neighbor_port_desc: builtins.str,
+                 neighbor_system_name: builtins.str,
+                 org_id: builtins.str,
+                 poe_disabled: builtins.bool,
+                 poe_mode: builtins.str,
+                 poe_on: builtins.bool,
+                 port_id: builtins.str,
+                 port_mac: builtins.str,
+                 port_usage: builtins.str,
+                 power_draw: builtins.float,
+                 rx_bcast_pkts: builtins.int,
+                 rx_bps: builtins.int,
+                 rx_bytes: builtins.int,
+                 rx_errors: builtins.int,
+                 rx_mcast_pkts: builtins.int,
+                 rx_pkts: builtins.int,
+                 site_id: builtins.str,
+                 speed: builtins.int,
+                 stp_role: builtins.str,
+                 stp_state: builtins.str,
+                 tx_bcast_pkts: builtins.int,
+                 tx_bps: builtins.int,
+                 tx_bytes: builtins.int,
+                 tx_errors: builtins.int,
+                 tx_mcast_pkts: builtins.int,
+                 tx_pkts: builtins.int,
+                 type: builtins.str,
+                 unconfigured: builtins.bool,
+                 up: builtins.bool,
+                 xcvr_model: builtins.str,
+                 xcvr_part_number: builtins.str,
+                 xcvr_serial: builtins.str):
+        """
+        :param builtins.bool active: Indicates if interface is active/inactive
+        :param builtins.str auth_state: if `up`==`true` and has Authenticator role. enum: `authenticated`, `authenticating`, `held`, `init`
+        :param builtins.bool disabled: Indicates if interface is disabled
+        :param builtins.bool full_duplex: Indicates full or half duplex
+        :param builtins.float jitter: Last sampled jitter of the interface
+        :param builtins.float last_flapped: Indicates when the port was last flapped
+        :param builtins.float latency: Last sampled latency of the interface
+        :param builtins.float loss: Last sampled loss of the interface
+        :param builtins.str lte_iccid: LTE ICCID value, Check for null/empty
+        :param builtins.str lte_imei: LTE IMEI value, Check for null/empty
+        :param builtins.str lte_imsi: LTE IMSI value, Check for null/empty
+        :param builtins.int mac_count: Number of mac addresses in the forwarding table
+        :param builtins.int mac_limit: Limit on number of dynamically learned macs
+        :param builtins.str neighbor_mac: chassis identifier of the chassis type listed
+        :param builtins.str neighbor_port_desc: Description supplied by the system on the interface E.g. "GigabitEthernet2/0/39"
+        :param builtins.str neighbor_system_name: Name supplied by the system on the interface E.g. neighbor system name E.g. "Kumar-Acc-SW.mist.local"
+        :param builtins.bool poe_disabled: Is the POE disabled
+        :param builtins.str poe_mode: enum: `802.3af`, `802.3at`, `802.3bt`
+        :param builtins.bool poe_on: Is the device attached to POE
+        :param builtins.str port_mac: Interface MAC address
+        :param builtins.str port_usage: gateway port usage. enum: `lan`
+        :param builtins.float power_draw: Amount of power being used by the interface at the time the command is executed. Unit in watts.
+        :param builtins.int rx_bcast_pkts: Broadcast input packets
+        :param builtins.int rx_bps: Rate of receiving traffic, bits/seconds, last known
+        :param builtins.int rx_bytes: Amount of traffic received since connection
+        :param builtins.int rx_errors: Input errors
+        :param builtins.int rx_mcast_pkts: Multicast input packets
+        :param builtins.int rx_pkts: Amount of packets received since connection
+        :param builtins.int speed: Port speed
+        :param builtins.str stp_role: if `up`==`true`. enum: `alternate`, `backup`, `designated`, `root`, `root-prevented`
+        :param builtins.str stp_state: if `up`==`true`. enum: `blocking`, `disabled`, `forwarding`, `learning`, `listening`
+        :param builtins.int tx_bcast_pkts: Broadcast output packets
+        :param builtins.int tx_bps: Rate of transmitting traffic, bits/seconds, last known
+        :param builtins.int tx_bytes: Amount of traffic sent since connection
+        :param builtins.int tx_errors: Output errors
+        :param builtins.int tx_mcast_pkts: Multicast output packets
+        :param builtins.int tx_pkts: Amount of packets sent since connection
+        :param builtins.str type: device type. enum: `ap`, `ble`, `gateway`, `mxedge`, `nac`, `switch`
+        :param builtins.bool unconfigured: Indicates if interface is unconfigured
+        :param builtins.bool up: Indicates if interface is up
+        :param builtins.str xcvr_model: Optic Slot ModelName, Check for null/empty
+        :param builtins.str xcvr_part_number: Optic Slot Partnumber, Check for null/empty
+        :param builtins.str xcvr_serial: Optic Slot SerialNumber, Check for null/empty
+        """
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "auth_state", auth_state)
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "for_site", for_site)
+        pulumi.set(__self__, "full_duplex", full_duplex)
+        pulumi.set(__self__, "jitter", jitter)
+        pulumi.set(__self__, "last_flapped", last_flapped)
+        pulumi.set(__self__, "latency", latency)
+        pulumi.set(__self__, "loss", loss)
+        pulumi.set(__self__, "lte_iccid", lte_iccid)
+        pulumi.set(__self__, "lte_imei", lte_imei)
+        pulumi.set(__self__, "lte_imsi", lte_imsi)
+        pulumi.set(__self__, "mac", mac)
+        pulumi.set(__self__, "mac_count", mac_count)
+        pulumi.set(__self__, "mac_limit", mac_limit)
+        pulumi.set(__self__, "neighbor_mac", neighbor_mac)
+        pulumi.set(__self__, "neighbor_port_desc", neighbor_port_desc)
+        pulumi.set(__self__, "neighbor_system_name", neighbor_system_name)
+        pulumi.set(__self__, "org_id", org_id)
+        pulumi.set(__self__, "poe_disabled", poe_disabled)
+        pulumi.set(__self__, "poe_mode", poe_mode)
+        pulumi.set(__self__, "poe_on", poe_on)
+        pulumi.set(__self__, "port_id", port_id)
+        pulumi.set(__self__, "port_mac", port_mac)
+        pulumi.set(__self__, "port_usage", port_usage)
+        pulumi.set(__self__, "power_draw", power_draw)
+        pulumi.set(__self__, "rx_bcast_pkts", rx_bcast_pkts)
+        pulumi.set(__self__, "rx_bps", rx_bps)
+        pulumi.set(__self__, "rx_bytes", rx_bytes)
+        pulumi.set(__self__, "rx_errors", rx_errors)
+        pulumi.set(__self__, "rx_mcast_pkts", rx_mcast_pkts)
+        pulumi.set(__self__, "rx_pkts", rx_pkts)
+        pulumi.set(__self__, "site_id", site_id)
+        pulumi.set(__self__, "speed", speed)
+        pulumi.set(__self__, "stp_role", stp_role)
+        pulumi.set(__self__, "stp_state", stp_state)
+        pulumi.set(__self__, "tx_bcast_pkts", tx_bcast_pkts)
+        pulumi.set(__self__, "tx_bps", tx_bps)
+        pulumi.set(__self__, "tx_bytes", tx_bytes)
+        pulumi.set(__self__, "tx_errors", tx_errors)
+        pulumi.set(__self__, "tx_mcast_pkts", tx_mcast_pkts)
+        pulumi.set(__self__, "tx_pkts", tx_pkts)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "unconfigured", unconfigured)
+        pulumi.set(__self__, "up", up)
+        pulumi.set(__self__, "xcvr_model", xcvr_model)
+        pulumi.set(__self__, "xcvr_part_number", xcvr_part_number)
+        pulumi.set(__self__, "xcvr_serial", xcvr_serial)
+
+    @property
+    @pulumi.getter
+    def active(self) -> builtins.bool:
+        """
+        Indicates if interface is active/inactive
+        """
+        return pulumi.get(self, "active")
+
+    @property
+    @pulumi.getter(name="authState")
+    def auth_state(self) -> builtins.str:
+        """
+        if `up`==`true` and has Authenticator role. enum: `authenticated`, `authenticating`, `held`, `init`
+        """
+        return pulumi.get(self, "auth_state")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> builtins.bool:
+        """
+        Indicates if interface is disabled
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="forSite")
+    def for_site(self) -> builtins.bool:
+        return pulumi.get(self, "for_site")
+
+    @property
+    @pulumi.getter(name="fullDuplex")
+    def full_duplex(self) -> builtins.bool:
+        """
+        Indicates full or half duplex
+        """
+        return pulumi.get(self, "full_duplex")
+
+    @property
+    @pulumi.getter
+    def jitter(self) -> builtins.float:
+        """
+        Last sampled jitter of the interface
+        """
+        return pulumi.get(self, "jitter")
+
+    @property
+    @pulumi.getter(name="lastFlapped")
+    def last_flapped(self) -> builtins.float:
+        """
+        Indicates when the port was last flapped
+        """
+        return pulumi.get(self, "last_flapped")
+
+    @property
+    @pulumi.getter
+    def latency(self) -> builtins.float:
+        """
+        Last sampled latency of the interface
+        """
+        return pulumi.get(self, "latency")
+
+    @property
+    @pulumi.getter
+    def loss(self) -> builtins.float:
+        """
+        Last sampled loss of the interface
+        """
+        return pulumi.get(self, "loss")
+
+    @property
+    @pulumi.getter(name="lteIccid")
+    def lte_iccid(self) -> builtins.str:
+        """
+        LTE ICCID value, Check for null/empty
+        """
+        return pulumi.get(self, "lte_iccid")
+
+    @property
+    @pulumi.getter(name="lteImei")
+    def lte_imei(self) -> builtins.str:
+        """
+        LTE IMEI value, Check for null/empty
+        """
+        return pulumi.get(self, "lte_imei")
+
+    @property
+    @pulumi.getter(name="lteImsi")
+    def lte_imsi(self) -> builtins.str:
+        """
+        LTE IMSI value, Check for null/empty
+        """
+        return pulumi.get(self, "lte_imsi")
+
+    @property
+    @pulumi.getter
+    def mac(self) -> builtins.str:
+        return pulumi.get(self, "mac")
+
+    @property
+    @pulumi.getter(name="macCount")
+    def mac_count(self) -> builtins.int:
+        """
+        Number of mac addresses in the forwarding table
+        """
+        return pulumi.get(self, "mac_count")
+
+    @property
+    @pulumi.getter(name="macLimit")
+    def mac_limit(self) -> builtins.int:
+        """
+        Limit on number of dynamically learned macs
+        """
+        return pulumi.get(self, "mac_limit")
+
+    @property
+    @pulumi.getter(name="neighborMac")
+    def neighbor_mac(self) -> builtins.str:
+        """
+        chassis identifier of the chassis type listed
+        """
+        return pulumi.get(self, "neighbor_mac")
+
+    @property
+    @pulumi.getter(name="neighborPortDesc")
+    def neighbor_port_desc(self) -> builtins.str:
+        """
+        Description supplied by the system on the interface E.g. "GigabitEthernet2/0/39"
+        """
+        return pulumi.get(self, "neighbor_port_desc")
+
+    @property
+    @pulumi.getter(name="neighborSystemName")
+    def neighbor_system_name(self) -> builtins.str:
+        """
+        Name supplied by the system on the interface E.g. neighbor system name E.g. "Kumar-Acc-SW.mist.local"
+        """
+        return pulumi.get(self, "neighbor_system_name")
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> builtins.str:
+        return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter(name="poeDisabled")
+    def poe_disabled(self) -> builtins.bool:
+        """
+        Is the POE disabled
+        """
+        return pulumi.get(self, "poe_disabled")
+
+    @property
+    @pulumi.getter(name="poeMode")
+    def poe_mode(self) -> builtins.str:
+        """
+        enum: `802.3af`, `802.3at`, `802.3bt`
+        """
+        return pulumi.get(self, "poe_mode")
+
+    @property
+    @pulumi.getter(name="poeOn")
+    def poe_on(self) -> builtins.bool:
+        """
+        Is the device attached to POE
+        """
+        return pulumi.get(self, "poe_on")
+
+    @property
+    @pulumi.getter(name="portId")
+    def port_id(self) -> builtins.str:
+        return pulumi.get(self, "port_id")
+
+    @property
+    @pulumi.getter(name="portMac")
+    def port_mac(self) -> builtins.str:
+        """
+        Interface MAC address
+        """
+        return pulumi.get(self, "port_mac")
+
+    @property
+    @pulumi.getter(name="portUsage")
+    def port_usage(self) -> builtins.str:
+        """
+        gateway port usage. enum: `lan`
+        """
+        return pulumi.get(self, "port_usage")
+
+    @property
+    @pulumi.getter(name="powerDraw")
+    def power_draw(self) -> builtins.float:
+        """
+        Amount of power being used by the interface at the time the command is executed. Unit in watts.
+        """
+        return pulumi.get(self, "power_draw")
+
+    @property
+    @pulumi.getter(name="rxBcastPkts")
+    def rx_bcast_pkts(self) -> builtins.int:
+        """
+        Broadcast input packets
+        """
+        return pulumi.get(self, "rx_bcast_pkts")
+
+    @property
+    @pulumi.getter(name="rxBps")
+    def rx_bps(self) -> builtins.int:
+        """
+        Rate of receiving traffic, bits/seconds, last known
+        """
+        return pulumi.get(self, "rx_bps")
+
+    @property
+    @pulumi.getter(name="rxBytes")
+    def rx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic received since connection
+        """
+        return pulumi.get(self, "rx_bytes")
+
+    @property
+    @pulumi.getter(name="rxErrors")
+    def rx_errors(self) -> builtins.int:
+        """
+        Input errors
+        """
+        return pulumi.get(self, "rx_errors")
+
+    @property
+    @pulumi.getter(name="rxMcastPkts")
+    def rx_mcast_pkts(self) -> builtins.int:
+        """
+        Multicast input packets
+        """
+        return pulumi.get(self, "rx_mcast_pkts")
+
+    @property
+    @pulumi.getter(name="rxPkts")
+    def rx_pkts(self) -> builtins.int:
+        """
+        Amount of packets received since connection
+        """
+        return pulumi.get(self, "rx_pkts")
+
+    @property
+    @pulumi.getter(name="siteId")
+    def site_id(self) -> builtins.str:
+        return pulumi.get(self, "site_id")
+
+    @property
+    @pulumi.getter
+    def speed(self) -> builtins.int:
+        """
+        Port speed
+        """
+        return pulumi.get(self, "speed")
+
+    @property
+    @pulumi.getter(name="stpRole")
+    def stp_role(self) -> builtins.str:
+        """
+        if `up`==`true`. enum: `alternate`, `backup`, `designated`, `root`, `root-prevented`
+        """
+        return pulumi.get(self, "stp_role")
+
+    @property
+    @pulumi.getter(name="stpState")
+    def stp_state(self) -> builtins.str:
+        """
+        if `up`==`true`. enum: `blocking`, `disabled`, `forwarding`, `learning`, `listening`
+        """
+        return pulumi.get(self, "stp_state")
+
+    @property
+    @pulumi.getter(name="txBcastPkts")
+    def tx_bcast_pkts(self) -> builtins.int:
+        """
+        Broadcast output packets
+        """
+        return pulumi.get(self, "tx_bcast_pkts")
+
+    @property
+    @pulumi.getter(name="txBps")
+    def tx_bps(self) -> builtins.int:
+        """
+        Rate of transmitting traffic, bits/seconds, last known
+        """
+        return pulumi.get(self, "tx_bps")
+
+    @property
+    @pulumi.getter(name="txBytes")
+    def tx_bytes(self) -> builtins.int:
+        """
+        Amount of traffic sent since connection
+        """
+        return pulumi.get(self, "tx_bytes")
+
+    @property
+    @pulumi.getter(name="txErrors")
+    def tx_errors(self) -> builtins.int:
+        """
+        Output errors
+        """
+        return pulumi.get(self, "tx_errors")
+
+    @property
+    @pulumi.getter(name="txMcastPkts")
+    def tx_mcast_pkts(self) -> builtins.int:
+        """
+        Multicast output packets
+        """
+        return pulumi.get(self, "tx_mcast_pkts")
+
+    @property
+    @pulumi.getter(name="txPkts")
+    def tx_pkts(self) -> builtins.int:
+        """
+        Amount of packets sent since connection
+        """
+        return pulumi.get(self, "tx_pkts")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        """
+        device type. enum: `ap`, `ble`, `gateway`, `mxedge`, `nac`, `switch`
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unconfigured(self) -> builtins.bool:
+        """
+        Indicates if interface is unconfigured
+        """
+        return pulumi.get(self, "unconfigured")
+
+    @property
+    @pulumi.getter
+    def up(self) -> builtins.bool:
+        """
+        Indicates if interface is up
+        """
+        return pulumi.get(self, "up")
+
+    @property
+    @pulumi.getter(name="xcvrModel")
+    def xcvr_model(self) -> builtins.str:
+        """
+        Optic Slot ModelName, Check for null/empty
+        """
+        return pulumi.get(self, "xcvr_model")
+
+    @property
+    @pulumi.getter(name="xcvrPartNumber")
+    def xcvr_part_number(self) -> builtins.str:
+        """
+        Optic Slot Partnumber, Check for null/empty
+        """
+        return pulumi.get(self, "xcvr_part_number")
+
+    @property
+    @pulumi.getter(name="xcvrSerial")
+    def xcvr_serial(self) -> builtins.str:
+        """
+        Optic Slot SerialNumber, Check for null/empty
+        """
+        return pulumi.get(self, "xcvr_serial")
+
+
+@pulumi.output_type
 class GetSwitchStatsDeviceSwitchStatRouteSummaryStatsResult(dict):
     def __init__(__self__, *,
                  fib_routes: builtins.int,
@@ -19986,9 +22101,17 @@ class GetSwitchStatsDeviceSwitchStatServiceStatResult(dict):
 class GetSwitchStatsDeviceSwitchStatVcSetupInfoResult(dict):
     def __init__(__self__, *,
                  config_type: builtins.str,
-                 err_missing_dev_id_fpc: builtins.bool):
+                 current_stats: builtins.str,
+                 err_missing_dev_id_fpc: builtins.bool,
+                 last_update: builtins.float,
+                 request_time: builtins.float,
+                 request_type: builtins.str):
         pulumi.set(__self__, "config_type", config_type)
+        pulumi.set(__self__, "current_stats", current_stats)
         pulumi.set(__self__, "err_missing_dev_id_fpc", err_missing_dev_id_fpc)
+        pulumi.set(__self__, "last_update", last_update)
+        pulumi.set(__self__, "request_time", request_time)
+        pulumi.set(__self__, "request_type", request_type)
 
     @property
     @pulumi.getter(name="configType")
@@ -19996,9 +22119,29 @@ class GetSwitchStatsDeviceSwitchStatVcSetupInfoResult(dict):
         return pulumi.get(self, "config_type")
 
     @property
+    @pulumi.getter(name="currentStats")
+    def current_stats(self) -> builtins.str:
+        return pulumi.get(self, "current_stats")
+
+    @property
     @pulumi.getter(name="errMissingDevIdFpc")
     def err_missing_dev_id_fpc(self) -> builtins.bool:
         return pulumi.get(self, "err_missing_dev_id_fpc")
+
+    @property
+    @pulumi.getter(name="lastUpdate")
+    def last_update(self) -> builtins.float:
+        return pulumi.get(self, "last_update")
+
+    @property
+    @pulumi.getter(name="requestTime")
+    def request_time(self) -> builtins.float:
+        return pulumi.get(self, "request_time")
+
+    @property
+    @pulumi.getter(name="requestType")
+    def request_type(self) -> builtins.str:
+        return pulumi.get(self, "request_type")
 
 
 @pulumi.output_type

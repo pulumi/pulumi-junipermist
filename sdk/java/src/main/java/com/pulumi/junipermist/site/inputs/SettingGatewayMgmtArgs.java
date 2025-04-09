@@ -110,6 +110,28 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.disableOob);
     }
 
+    /**
+     * For SSR disable usb interface
+     * 
+     */
+    @Import(name="disableUsb")
+    private @Nullable Output<Boolean> disableUsb;
+
+    /**
+     * @return For SSR disable usb interface
+     * 
+     */
+    public Optional<Output<Boolean>> disableUsb() {
+        return Optional.ofNullable(this.disableUsb);
+    }
+
+    @Import(name="fipsEnabled")
+    private @Nullable Output<Boolean> fipsEnabled;
+
+    public Optional<Output<Boolean>> fipsEnabled() {
+        return Optional.ofNullable(this.fipsEnabled);
+    }
+
     @Import(name="probeHosts")
     private @Nullable Output<List<String>> probeHosts;
 
@@ -175,6 +197,8 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         this.configRevertTimer = $.configRevertTimer;
         this.disableConsole = $.disableConsole;
         this.disableOob = $.disableOob;
+        this.disableUsb = $.disableUsb;
+        this.fipsEnabled = $.fipsEnabled;
         this.probeHosts = $.probeHosts;
         this.protectRe = $.protectRe;
         this.rootPassword = $.rootPassword;
@@ -331,6 +355,36 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
          */
         public Builder disableOob(Boolean disableOob) {
             return disableOob(Output.of(disableOob));
+        }
+
+        /**
+         * @param disableUsb For SSR disable usb interface
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableUsb(@Nullable Output<Boolean> disableUsb) {
+            $.disableUsb = disableUsb;
+            return this;
+        }
+
+        /**
+         * @param disableUsb For SSR disable usb interface
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableUsb(Boolean disableUsb) {
+            return disableUsb(Output.of(disableUsb));
+        }
+
+        public Builder fipsEnabled(@Nullable Output<Boolean> fipsEnabled) {
+            $.fipsEnabled = fipsEnabled;
+            return this;
+        }
+
+        public Builder fipsEnabled(Boolean fipsEnabled) {
+            return fipsEnabled(Output.of(fipsEnabled));
         }
 
         public Builder probeHosts(@Nullable Output<List<String>> probeHosts) {
