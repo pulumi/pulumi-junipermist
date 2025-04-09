@@ -27,49 +27,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.junipermist.org.Nacrule;
- * import com.pulumi.junipermist.org.NacruleArgs;
- * import com.pulumi.junipermist.org.inputs.NacruleMatchingArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var nacruleOne = new Nacrule("nacruleOne", NacruleArgs.builder()
- *             .name("rule_one")
- *             .action("allow")
- *             .orgId(terraformTest.id())
- *             .matching(NacruleMatchingArgs.builder()
- *                 .port_types("wired")
- *                 .auth_type("mab")
- *                 .nactags("c055c60b-351a-4311-8ee5-9b7be5e5f902")
- *                 .build())
- *             .applyTags(            
- *                 "61c11327-5e1b-40ed-bbbf-5e95642c4f59",
- *                 "3f292454-ac5f-4a36-9aff-d0518d90b47a")
- *             .enabled(true)
- *             .order(9)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
