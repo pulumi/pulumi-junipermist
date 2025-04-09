@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *                 "5",
  *                 "6")
  *             .vlanEnabled(true)
- *             .vlanId(143)
+ *             .vlanId("143")
  *             .wlanLimitUp(10000)
  *             .wlanLimitDown(20000)
  *             .clientLimitUp(512)

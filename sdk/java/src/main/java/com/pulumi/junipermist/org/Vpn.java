@@ -23,61 +23,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.junipermist.org.Setting;
- * import com.pulumi.junipermist.org.SettingArgs;
- * import com.pulumi.junipermist.org.inputs.SettingPasswordPolicyArgs;
- * import com.pulumi.junipermist.org.inputs.SettingMistNacArgs;
- * import com.pulumi.junipermist.org.inputs.SettingSyntheticTestArgs;
- * import com.pulumi.junipermist.org.inputs.SettingApiPolicyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var terraformTest = new Setting("terraformTest", SettingArgs.builder()
- *             .orgId(terraformTestMistOrg.id())
- *             .passwordPolicy(SettingPasswordPolicyArgs.builder()
- *                 .enabled(true)
- *                 .min_length(8)
- *                 .requires_special_char(true)
- *                 .requires_two_factor_auth(true)
- *                 .build())
- *             .mistNac(SettingMistNacArgs.builder()
- *                 .eu_only(true)
- *                 .build())
- *             .syntheticTest(SettingSyntheticTestArgs.builder()
- *                 .disabled(false)
- *                 .vlans(SettingSyntheticTestVlanArgs.builder()
- *                     .vlanIds(                    
- *                         "8",
- *                         "999")
- *                     .disabled(true)
- *                     .build())
- *                 .build())
- *             .apiPolicy(SettingApiPolicyArgs.builder()
- *                 .no_reveal(false)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
