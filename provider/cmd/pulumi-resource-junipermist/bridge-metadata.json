@@ -21,6 +21,13 @@
                             }
                         }
                     },
+                    "mesh": {
+                        "fields": {
+                            "bands": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "ntp_servers": {
                         "maxItemsOne": false
                     },
@@ -264,9 +271,6 @@
                                                     "add_target_vrfs": {
                                                         "maxItemsOne": false
                                                     },
-                                                    "aggregate": {
-                                                        "maxItemsOne": false
-                                                    },
                                                     "community": {
                                                         "maxItemsOne": false
                                                     },
@@ -276,7 +280,7 @@
                                                     "exclude_community": {
                                                         "maxItemsOne": false
                                                     },
-                                                    "export_communitites": {
+                                                    "export_communities": {
                                                         "maxItemsOne": false
                                                     },
                                                     "prepend_as_path": {
@@ -840,6 +844,13 @@
                             }
                         }
                     },
+                    "mesh": {
+                        "fields": {
+                            "bands": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "ntp_servers": {
                         "maxItemsOne": false
                     },
@@ -1080,9 +1091,6 @@
                                                     "add_target_vrfs": {
                                                         "maxItemsOne": false
                                                     },
-                                                    "aggregate": {
-                                                        "maxItemsOne": false
-                                                    },
                                                     "community": {
                                                         "maxItemsOne": false
                                                     },
@@ -1092,7 +1100,7 @@
                                                     "exclude_community": {
                                                         "maxItemsOne": false
                                                     },
-                                                    "export_communitites": {
+                                                    "export_communities": {
                                                         "maxItemsOne": false
                                                     },
                                                     "prepend_as_path": {
@@ -1468,9 +1476,6 @@
                                                     "add_target_vrfs": {
                                                         "maxItemsOne": false
                                                     },
-                                                    "aggregate": {
-                                                        "maxItemsOne": false
-                                                    },
                                                     "community": {
                                                         "maxItemsOne": false
                                                     },
@@ -1480,7 +1485,7 @@
                                                     "exclude_community": {
                                                         "maxItemsOne": false
                                                     },
-                                                    "export_communitites": {
+                                                    "export_communities": {
                                                         "maxItemsOne": false
                                                     },
                                                     "prepend_as_path": {
@@ -1660,12 +1665,7 @@
                 }
             },
             "mist_org_inventory": {
-                "current": "junipermist:org/inventory:Inventory",
-                "fields": {
-                    "devices": {
-                        "maxItemsOne": false
-                    }
-                }
+                "current": "junipermist:org/inventory:Inventory"
             },
             "mist_org_nac_endpoint": {
                 "current": "junipermist:org/nacEndpoint:NacEndpoint",
@@ -1694,7 +1694,19 @@
                     },
                     "matching": {
                         "fields": {
+                            "family": {
+                                "maxItemsOne": false
+                            },
+                            "mfg": {
+                                "maxItemsOne": false
+                            },
+                            "model": {
+                                "maxItemsOne": false
+                            },
                             "nactags": {
+                                "maxItemsOne": false
+                            },
+                            "os_type": {
                                 "maxItemsOne": false
                             },
                             "port_types": {
@@ -1713,7 +1725,19 @@
                     },
                     "not_matching": {
                         "fields": {
+                            "family": {
+                                "maxItemsOne": false
+                            },
+                            "mfg": {
+                                "maxItemsOne": false
+                            },
+                            "model": {
+                                "maxItemsOne": false
+                            },
                             "nactags": {
+                                "maxItemsOne": false
+                            },
+                            "os_type": {
                                 "maxItemsOne": false
                             },
                             "port_types": {
@@ -2277,7 +2301,22 @@
                 }
             },
             "mist_org_vpn": {
-                "current": "junipermist:org/vpn:Vpn"
+                "current": "junipermist:org/vpn:Vpn",
+                "fields": {
+                    "paths": {
+                        "elem": {
+                            "fields": {
+                                "traffic_shaping": {
+                                    "fields": {
+                                        "class_percentage": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "mist_org_webhook": {
                 "current": "junipermist:org/webhook:Webhook",
@@ -2939,6 +2978,9 @@
                     },
                     "rogue": {
                         "fields": {
+                            "allowed_vlan_ids": {
+                                "maxItemsOne": false
+                            },
                             "whitelisted_bssids": {
                                 "maxItemsOne": false
                             },
@@ -3266,6 +3308,23 @@
                     }
                 }
             },
+            "mist_const_fingerprints": {
+                "current": "junipermist:index/getConstFingerprints:getConstFingerprints",
+                "fields": {
+                    "family": {
+                        "maxItemsOne": false
+                    },
+                    "mfg": {
+                        "maxItemsOne": false
+                    },
+                    "model": {
+                        "maxItemsOne": false
+                    },
+                    "os": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "mist_const_traffic_types": {
                 "current": "junipermist:index/getConstTrafficTypes:getConstTrafficTypes",
                 "fields": {
@@ -3347,6 +3406,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "bgp_peers": {
+                                    "maxItemsOne": false
+                                },
                                 "cluster_config": {
                                     "fields": {
                                         "ethernet_connection": {
@@ -3426,21 +3488,8 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
-                                            "errors": {
-                                                "maxItemsOne": false
-                                            },
                                             "fans": {
                                                 "maxItemsOne": false
-                                            },
-                                            "pics": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "port_groups": {
-                                                            "maxItemsOne": false
-                                                        }
-                                                    }
-                                                }
                                             },
                                             "psus": {
                                                 "maxItemsOne": false
@@ -3458,21 +3507,8 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
-                                            "errors": {
-                                                "maxItemsOne": false
-                                            },
                                             "fans": {
                                                 "maxItemsOne": false
-                                            },
-                                            "pics": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "port_groups": {
-                                                            "maxItemsOne": false
-                                                        }
-                                                    }
-                                                }
                                             },
                                             "psus": {
                                                 "maxItemsOne": false
@@ -3486,10 +3522,19 @@
                                         }
                                     }
                                 },
+                                "ports": {
+                                    "maxItemsOne": false
+                                },
                                 "spu2_stat": {
                                     "maxItemsOne": false
                                 },
                                 "spu_stat": {
+                                    "maxItemsOne": false
+                                },
+                                "tunnels": {
+                                    "maxItemsOne": false
+                                },
+                                "vpn_peers": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -3551,6 +3596,13 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "cpu_stat": {
+                                                "fields": {
+                                                    "load_avg": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            },
                                             "errors": {
                                                 "maxItemsOne": false
                                             },
@@ -3578,6 +3630,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "ports": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -3851,7 +3906,32 @@
                 "current": "junipermist:org/getServices:getServices",
                 "fields": {
                     "org_services": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "addresses": {
+                                    "maxItemsOne": false
+                                },
+                                "app_categories": {
+                                    "maxItemsOne": false
+                                },
+                                "app_subcategories": {
+                                    "maxItemsOne": false
+                                },
+                                "apps": {
+                                    "maxItemsOne": false
+                                },
+                                "hostnames": {
+                                    "maxItemsOne": false
+                                },
+                                "specs": {
+                                    "maxItemsOne": false
+                                },
+                                "urls": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -3899,7 +3979,24 @@
                 "current": "junipermist:org/getVpns:getVpns",
                 "fields": {
                     "org_vpns": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "paths": {
+                                    "elem": {
+                                        "fields": {
+                                            "traffic_shaping": {
+                                                "fields": {
+                                                    "class_percentage": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -4094,7 +4191,55 @@
                 "current": "junipermist:org/getWxtags:getWxtags",
                 "fields": {
                     "org_wxtags": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "last_ips": {
+                                    "maxItemsOne": false
+                                },
+                                "services": {
+                                    "maxItemsOne": false
+                                },
+                                "specs": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "subnets": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "mist_site_evpn_topologies": {
+                "current": "junipermist:site/getEvpnTopologies:getEvpnTopologies",
+                "fields": {
+                    "site_evpn_topologies": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "evpn_options": {
+                                    "fields": {
+                                        "vs_instances": {
+                                            "elem": {
+                                                "fields": {
+                                                    "networks": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
