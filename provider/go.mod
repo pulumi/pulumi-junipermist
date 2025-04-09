@@ -10,7 +10,7 @@ replace github.com/Juniper/terraform-provider-mist => ../upstream
 
 require (
 	github.com/Juniper/terraform-provider-mist v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.106.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.106.1-0.20250409190246-b733e4cbd1fb
 	github.com/pulumi/pulumi/sdk/v3 v3.160.0
 )
 
