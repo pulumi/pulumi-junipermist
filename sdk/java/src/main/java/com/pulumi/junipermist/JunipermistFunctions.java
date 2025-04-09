@@ -52,7 +52,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms();
+     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -93,7 +93,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms();
+     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -134,7 +134,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms();
+     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -175,7 +175,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms();
+     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -216,7 +216,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms();
+     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -257,7 +257,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms();
+     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -298,7 +298,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms();
+     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -339,7 +339,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAppCategories = JunipermistFunctions.getConstAppCategories();
+     *         final var listOfAppCategories = JunipermistFunctions.getConstAppCategories(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -380,7 +380,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAppCategories = JunipermistFunctions.getConstAppCategories();
+     *         final var listOfAppCategories = JunipermistFunctions.getConstAppCategories(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -421,7 +421,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAppCategories = JunipermistFunctions.getConstAppCategories();
+     *         final var listOfAppCategories = JunipermistFunctions.getConstAppCategories(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -462,7 +462,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAppCategories = JunipermistFunctions.getConstAppCategories();
+     *         final var listOfAppCategories = JunipermistFunctions.getConstAppCategories(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -503,7 +503,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAppCategories = JunipermistFunctions.getConstAppCategories();
+     *         final var listOfAppCategories = JunipermistFunctions.getConstAppCategories(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -544,7 +544,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAppCategories = JunipermistFunctions.getConstAppCategories();
+     *         final var listOfAppCategories = JunipermistFunctions.getConstAppCategories(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -585,7 +585,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAppCategories = JunipermistFunctions.getConstAppCategories();
+     *         final var listOfAppCategories = JunipermistFunctions.getConstAppCategories(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -626,7 +626,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAppSubCategories = JunipermistFunctions.getConstAppSubCategories();
+     *         final var listOfAppSubCategories = JunipermistFunctions.getConstAppSubCategories(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -667,7 +667,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAppSubCategories = JunipermistFunctions.getConstAppSubCategories();
+     *         final var listOfAppSubCategories = JunipermistFunctions.getConstAppSubCategories(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -708,7 +708,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAppSubCategories = JunipermistFunctions.getConstAppSubCategories();
+     *         final var listOfAppSubCategories = JunipermistFunctions.getConstAppSubCategories(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -749,7 +749,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAppSubCategories = JunipermistFunctions.getConstAppSubCategories();
+     *         final var listOfAppSubCategories = JunipermistFunctions.getConstAppSubCategories(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -790,7 +790,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAppSubCategories = JunipermistFunctions.getConstAppSubCategories();
+     *         final var listOfAppSubCategories = JunipermistFunctions.getConstAppSubCategories(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -831,7 +831,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAppSubCategories = JunipermistFunctions.getConstAppSubCategories();
+     *         final var listOfAppSubCategories = JunipermistFunctions.getConstAppSubCategories(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -872,7 +872,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfAppSubCategories = JunipermistFunctions.getConstAppSubCategories();
+     *         final var listOfAppSubCategories = JunipermistFunctions.getConstAppSubCategories(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -916,7 +916,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfApplications = JunipermistFunctions.getConstApplications();
+     *         final var listOfApplications = JunipermistFunctions.getConstApplications(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -960,7 +960,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfApplications = JunipermistFunctions.getConstApplications();
+     *         final var listOfApplications = JunipermistFunctions.getConstApplications(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1004,7 +1004,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfApplications = JunipermistFunctions.getConstApplications();
+     *         final var listOfApplications = JunipermistFunctions.getConstApplications(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1048,7 +1048,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfApplications = JunipermistFunctions.getConstApplications();
+     *         final var listOfApplications = JunipermistFunctions.getConstApplications(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1092,7 +1092,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfApplications = JunipermistFunctions.getConstApplications();
+     *         final var listOfApplications = JunipermistFunctions.getConstApplications(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1136,7 +1136,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfApplications = JunipermistFunctions.getConstApplications();
+     *         final var listOfApplications = JunipermistFunctions.getConstApplications(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1180,7 +1180,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfApplications = JunipermistFunctions.getConstApplications();
+     *         final var listOfApplications = JunipermistFunctions.getConstApplications(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1221,7 +1221,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfCountries = JunipermistFunctions.getConstCountries();
+     *         final var listOfCountries = JunipermistFunctions.getConstCountries(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1262,7 +1262,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfCountries = JunipermistFunctions.getConstCountries();
+     *         final var listOfCountries = JunipermistFunctions.getConstCountries(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1303,7 +1303,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfCountries = JunipermistFunctions.getConstCountries();
+     *         final var listOfCountries = JunipermistFunctions.getConstCountries(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1344,7 +1344,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfCountries = JunipermistFunctions.getConstCountries();
+     *         final var listOfCountries = JunipermistFunctions.getConstCountries(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1385,7 +1385,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfCountries = JunipermistFunctions.getConstCountries();
+     *         final var listOfCountries = JunipermistFunctions.getConstCountries(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1426,7 +1426,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfCountries = JunipermistFunctions.getConstCountries();
+     *         final var listOfCountries = JunipermistFunctions.getConstCountries(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1467,7 +1467,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfCountries = JunipermistFunctions.getConstCountries();
+     *         final var listOfCountries = JunipermistFunctions.getConstCountries(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1508,7 +1508,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfTrafficTypes = JunipermistFunctions.getConstTrafficTypes();
+     *         final var listOfTrafficTypes = JunipermistFunctions.getConstTrafficTypes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1549,7 +1549,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfTrafficTypes = JunipermistFunctions.getConstTrafficTypes();
+     *         final var listOfTrafficTypes = JunipermistFunctions.getConstTrafficTypes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1590,7 +1590,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfTrafficTypes = JunipermistFunctions.getConstTrafficTypes();
+     *         final var listOfTrafficTypes = JunipermistFunctions.getConstTrafficTypes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1631,7 +1631,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfTrafficTypes = JunipermistFunctions.getConstTrafficTypes();
+     *         final var listOfTrafficTypes = JunipermistFunctions.getConstTrafficTypes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1672,7 +1672,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfTrafficTypes = JunipermistFunctions.getConstTrafficTypes();
+     *         final var listOfTrafficTypes = JunipermistFunctions.getConstTrafficTypes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1713,7 +1713,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfTrafficTypes = JunipermistFunctions.getConstTrafficTypes();
+     *         final var listOfTrafficTypes = JunipermistFunctions.getConstTrafficTypes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1754,7 +1754,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfTrafficTypes = JunipermistFunctions.getConstTrafficTypes();
+     *         final var listOfTrafficTypes = JunipermistFunctions.getConstTrafficTypes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1797,7 +1797,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks();
+     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1840,7 +1840,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks();
+     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1883,7 +1883,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks();
+     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1926,7 +1926,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks();
+     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1969,7 +1969,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks();
+     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -2012,7 +2012,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks();
+     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -2055,7 +2055,7 @@ public final class JunipermistFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks();
+     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
