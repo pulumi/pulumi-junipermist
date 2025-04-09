@@ -6,41 +6,80 @@ package com.pulumi.junipermist.device.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
 
 @CustomType
 public final class GetApStatsDeviceApStatPortStat {
     private Boolean fullDuplex;
-    private Double rxBytes;
-    private Double rxErrors;
-    private Double rxPkts;
+    /**
+     * @return Amount of traffic received since connection
+     * 
+     */
+    private Integer rxBytes;
+    private Integer rxErrors;
+    private Integer rxPeakBps;
+    /**
+     * @return Amount of packets received since connection
+     * 
+     */
+    private Integer rxPkts;
     private Integer speed;
-    private Double txBytes;
-    private Double txPkts;
+    /**
+     * @return Amount of traffic sent since connection
+     * 
+     */
+    private Integer txBytes;
+    private Integer txPeakBps;
+    /**
+     * @return Amount of packets sent since connection
+     * 
+     */
+    private Integer txPkts;
     private Boolean up;
 
     private GetApStatsDeviceApStatPortStat() {}
     public Boolean fullDuplex() {
         return this.fullDuplex;
     }
-    public Double rxBytes() {
+    /**
+     * @return Amount of traffic received since connection
+     * 
+     */
+    public Integer rxBytes() {
         return this.rxBytes;
     }
-    public Double rxErrors() {
+    public Integer rxErrors() {
         return this.rxErrors;
     }
-    public Double rxPkts() {
+    public Integer rxPeakBps() {
+        return this.rxPeakBps;
+    }
+    /**
+     * @return Amount of packets received since connection
+     * 
+     */
+    public Integer rxPkts() {
         return this.rxPkts;
     }
     public Integer speed() {
         return this.speed;
     }
-    public Double txBytes() {
+    /**
+     * @return Amount of traffic sent since connection
+     * 
+     */
+    public Integer txBytes() {
         return this.txBytes;
     }
-    public Double txPkts() {
+    public Integer txPeakBps() {
+        return this.txPeakBps;
+    }
+    /**
+     * @return Amount of packets sent since connection
+     * 
+     */
+    public Integer txPkts() {
         return this.txPkts;
     }
     public Boolean up() {
@@ -57,12 +96,14 @@ public final class GetApStatsDeviceApStatPortStat {
     @CustomType.Builder
     public static final class Builder {
         private Boolean fullDuplex;
-        private Double rxBytes;
-        private Double rxErrors;
-        private Double rxPkts;
+        private Integer rxBytes;
+        private Integer rxErrors;
+        private Integer rxPeakBps;
+        private Integer rxPkts;
         private Integer speed;
-        private Double txBytes;
-        private Double txPkts;
+        private Integer txBytes;
+        private Integer txPeakBps;
+        private Integer txPkts;
         private Boolean up;
         public Builder() {}
         public Builder(GetApStatsDeviceApStatPortStat defaults) {
@@ -70,9 +111,11 @@ public final class GetApStatsDeviceApStatPortStat {
     	      this.fullDuplex = defaults.fullDuplex;
     	      this.rxBytes = defaults.rxBytes;
     	      this.rxErrors = defaults.rxErrors;
+    	      this.rxPeakBps = defaults.rxPeakBps;
     	      this.rxPkts = defaults.rxPkts;
     	      this.speed = defaults.speed;
     	      this.txBytes = defaults.txBytes;
+    	      this.txPeakBps = defaults.txPeakBps;
     	      this.txPkts = defaults.txPkts;
     	      this.up = defaults.up;
         }
@@ -86,7 +129,7 @@ public final class GetApStatsDeviceApStatPortStat {
             return this;
         }
         @CustomType.Setter
-        public Builder rxBytes(Double rxBytes) {
+        public Builder rxBytes(Integer rxBytes) {
             if (rxBytes == null) {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStatPortStat", "rxBytes");
             }
@@ -94,7 +137,7 @@ public final class GetApStatsDeviceApStatPortStat {
             return this;
         }
         @CustomType.Setter
-        public Builder rxErrors(Double rxErrors) {
+        public Builder rxErrors(Integer rxErrors) {
             if (rxErrors == null) {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStatPortStat", "rxErrors");
             }
@@ -102,7 +145,15 @@ public final class GetApStatsDeviceApStatPortStat {
             return this;
         }
         @CustomType.Setter
-        public Builder rxPkts(Double rxPkts) {
+        public Builder rxPeakBps(Integer rxPeakBps) {
+            if (rxPeakBps == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatPortStat", "rxPeakBps");
+            }
+            this.rxPeakBps = rxPeakBps;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rxPkts(Integer rxPkts) {
             if (rxPkts == null) {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStatPortStat", "rxPkts");
             }
@@ -118,7 +169,7 @@ public final class GetApStatsDeviceApStatPortStat {
             return this;
         }
         @CustomType.Setter
-        public Builder txBytes(Double txBytes) {
+        public Builder txBytes(Integer txBytes) {
             if (txBytes == null) {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStatPortStat", "txBytes");
             }
@@ -126,7 +177,15 @@ public final class GetApStatsDeviceApStatPortStat {
             return this;
         }
         @CustomType.Setter
-        public Builder txPkts(Double txPkts) {
+        public Builder txPeakBps(Integer txPeakBps) {
+            if (txPeakBps == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatPortStat", "txPeakBps");
+            }
+            this.txPeakBps = txPeakBps;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder txPkts(Integer txPkts) {
             if (txPkts == null) {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStatPortStat", "txPkts");
             }
@@ -146,9 +205,11 @@ public final class GetApStatsDeviceApStatPortStat {
             _resultValue.fullDuplex = fullDuplex;
             _resultValue.rxBytes = rxBytes;
             _resultValue.rxErrors = rxErrors;
+            _resultValue.rxPeakBps = rxPeakBps;
             _resultValue.rxPkts = rxPkts;
             _resultValue.speed = speed;
             _resultValue.txBytes = txBytes;
+            _resultValue.txPeakBps = txPeakBps;
             _resultValue.txPkts = txPkts;
             _resultValue.up = up;
             return _resultValue;

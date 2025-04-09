@@ -201,84 +201,84 @@ public class Nacidp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ldapCacerts);
     }
     /**
-     * if `idp_type`==`ldap`, LDAPS Client certificate
+     * If `idp_type`==`ldap`, LDAPS Client certificate
      * 
      */
     @Export(name="ldapClientCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ldapClientCert;
 
     /**
-     * @return if `idp_type`==`ldap`, LDAPS Client certificate
+     * @return If `idp_type`==`ldap`, LDAPS Client certificate
      * 
      */
     public Output<Optional<String>> ldapClientCert() {
         return Codegen.optional(this.ldapClientCert);
     }
     /**
-     * if `idp_type`==`ldap`, Key for the `ldap_client_cert`
+     * If `idp_type`==`ldap`, Key for the `ldap_client_cert`
      * 
      */
     @Export(name="ldapClientKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ldapClientKey;
 
     /**
-     * @return if `idp_type`==`ldap`, Key for the `ldap_client_cert`
+     * @return If `idp_type`==`ldap`, Key for the `ldap_client_cert`
      * 
      */
     public Output<Optional<String>> ldapClientKey() {
         return Codegen.optional(this.ldapClientKey);
     }
     /**
-     * if `ldap_type`==`custom`
+     * If `ldap_type`==`custom`
      * 
      */
     @Export(name="ldapGroupAttr", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ldapGroupAttr;
 
     /**
-     * @return if `ldap_type`==`custom`
+     * @return If `ldap_type`==`custom`
      * 
      */
     public Output<Optional<String>> ldapGroupAttr() {
         return Codegen.optional(this.ldapGroupAttr);
     }
     /**
-     * if `ldap_type`==`custom`
+     * If `ldap_type`==`custom`
      * 
      */
     @Export(name="ldapGroupDn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ldapGroupDn;
 
     /**
-     * @return if `ldap_type`==`custom`
+     * @return If `ldap_type`==`custom`
      * 
      */
     public Output<Optional<String>> ldapGroupDn() {
         return Codegen.optional(this.ldapGroupDn);
     }
     /**
-     * if `idp_type`==`ldap`, whether to recursively resolve LDAP groups
+     * If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
      * 
      */
     @Export(name="ldapResolveGroups", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ldapResolveGroups;
 
     /**
-     * @return if `idp_type`==`ldap`, whether to recursively resolve LDAP groups
+     * @return If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
      * 
      */
     public Output<Boolean> ldapResolveGroups() {
         return this.ldapResolveGroups;
     }
     /**
-     * if `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+     * If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
      * 
      */
     @Export(name="ldapServerHosts", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ldapServerHosts;
 
     /**
-     * @return if `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+     * @return If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
      * 
      */
     public Output<Optional<List<String>>> ldapServerHosts() {
@@ -327,14 +327,14 @@ public class Nacidp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.memberFilter);
     }
     /**
-     * name
+     * Name
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return name
+     * @return Name
      * 
      */
     public Output<String> name() {
@@ -369,14 +369,14 @@ public class Nacidp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.oauthCcClientSecret);
     }
     /**
-     * if `idp_type`==`oauth`
+     * If `idp_type`==`oauth`
      * 
      */
     @Export(name="oauthDiscoveryUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauthDiscoveryUrl;
 
     /**
-     * @return if `idp_type`==`oauth`
+     * @return If `idp_type`==`oauth`
      * 
      */
     public Output<Optional<String>> oauthDiscoveryUrl() {
@@ -397,28 +397,28 @@ public class Nacidp extends com.pulumi.resources.CustomResource {
         return this.oauthPingIdentityRegion;
     }
     /**
-     * if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
+     * If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
      * 
      */
     @Export(name="oauthRopcClientId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauthRopcClientId;
 
     /**
-     * @return if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
+     * @return If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
      * 
      */
     public Output<Optional<String>> oauthRopcClientId() {
         return Codegen.optional(this.oauthRopcClientId);
     }
     /**
-     * if `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
+     * If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
      * 
      */
     @Export(name="oauthRopcClientSecret", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauthRopcClientSecret;
 
     /**
-     * @return if `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
+     * @return If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
      * 
      */
     public Output<Optional<String>> oauthRopcClientSecret() {
@@ -459,28 +459,28 @@ public class Nacidp extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+     * If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
      * 
      */
     @Export(name="scimEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> scimEnabled;
 
     /**
-     * @return if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+     * @return If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
      * 
      */
     public Output<Boolean> scimEnabled() {
         return this.scimEnabled;
     }
     /**
-     * if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+     * If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
      * 
      */
     @Export(name="scimSecretToken", refs={String.class}, tree="[0]")
     private Output<String> scimSecretToken;
 
     /**
-     * @return if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+     * @return If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
      * 
      */
     public Output<String> scimSecretToken() {

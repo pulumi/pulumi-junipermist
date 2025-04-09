@@ -118,7 +118,7 @@ namespace Pulumi.JuniperMist.Org
         public string? Mac { get; set; }
 
         /// <summary>
-        /// device model
+        /// Device model
         /// </summary>
         [Input("model")]
         public string? Model { get; set; }
@@ -127,19 +127,25 @@ namespace Pulumi.JuniperMist.Org
         public string OrgId { get; set; } = null!;
 
         /// <summary>
-        /// device serial
+        /// Device serial
         /// </summary>
         [Input("serial")]
         public string? Serial { get; set; }
 
         /// <summary>
-        /// site id if assigned, null if not assigned
+        /// Site id if assigned, null if not assigned
         /// </summary>
         [Input("siteId")]
         public string? SiteId { get; set; }
 
         /// <summary>
-        /// to display Unassigned devices
+        /// enum: `ap`, `gateway`, `switch`
+        /// </summary>
+        [Input("type")]
+        public string? Type { get; set; }
+
+        /// <summary>
+        /// To display Unassigned devices
         /// </summary>
         [Input("unassigned")]
         public bool? Unassigned { get; set; }
@@ -171,7 +177,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// device model
+        /// Device model
         /// </summary>
         [Input("model")]
         public Input<string>? Model { get; set; }
@@ -180,19 +186,25 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// device serial
+        /// Device serial
         /// </summary>
         [Input("serial")]
         public Input<string>? Serial { get; set; }
 
         /// <summary>
-        /// site id if assigned, null if not assigned
+        /// Site id if assigned, null if not assigned
         /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
         /// <summary>
-        /// to display Unassigned devices
+        /// enum: `ap`, `gateway`, `switch`
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// To display Unassigned devices
         /// </summary>
         [Input("unassigned")]
         public Input<bool>? Unassigned { get; set; }
@@ -228,24 +240,25 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         public readonly string? Mac;
         /// <summary>
-        /// device model
+        /// Device model
         /// </summary>
         public readonly string? Model;
         public readonly string OrgId;
-        /// <summary>
-        /// List of devices
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetInventoryOrgInventoryResult> OrgInventories;
         /// <summary>
-        /// device serial
+        /// Device serial
         /// </summary>
         public readonly string? Serial;
         /// <summary>
-        /// site id if assigned, null if not assigned
+        /// Site id if assigned, null if not assigned
         /// </summary>
         public readonly string? SiteId;
         /// <summary>
-        /// to display Unassigned devices
+        /// enum: `ap`, `gateway`, `switch`
+        /// </summary>
+        public readonly string? Type;
+        /// <summary>
+        /// To display Unassigned devices
         /// </summary>
         public readonly bool? Unassigned;
         /// <summary>
@@ -273,6 +286,8 @@ namespace Pulumi.JuniperMist.Org
 
             string? siteId,
 
+            string? type,
+
             bool? unassigned,
 
             bool? vc,
@@ -286,6 +301,7 @@ namespace Pulumi.JuniperMist.Org
             OrgInventories = orgInventories;
             Serial = serial;
             SiteId = siteId;
+            Type = type;
             Unassigned = unassigned;
             Vc = vc;
             VcMac = vcMac;

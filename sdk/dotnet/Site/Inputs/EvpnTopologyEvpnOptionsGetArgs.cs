@@ -13,32 +13,31 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class EvpnTopologyEvpnOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+        /// Optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
         /// </summary>
         [Input("autoLoopbackSubnet")]
         public Input<string>? AutoLoopbackSubnet { get; set; }
 
         /// <summary>
-        /// optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+        /// Optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
         /// </summary>
         [Input("autoLoopbackSubnet6")]
         public Input<string>? AutoLoopbackSubnet6 { get; set; }
 
         /// <summary>
-        /// optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+        /// Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
         /// </summary>
         [Input("autoRouterIdSubnet")]
         public Input<string>? AutoRouterIdSubnet { get; set; }
 
         /// <summary>
-        /// optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+        /// Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
         /// </summary>
         [Input("autoRouterIdSubnet6")]
         public Input<string>? AutoRouterIdSubnet6 { get; set; }
 
         /// <summary>
-        /// optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway
-        /// when `routed_at` != `core`, whether to do virtual-gateway at core as well
+        /// Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routed_at` != `core`, whether to do virtual-gateway at core as well
         /// </summary>
         [Input("coreAsBorder")]
         public Input<bool>? CoreAsBorder { get; set; }
@@ -47,11 +46,16 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<Inputs.EvpnTopologyEvpnOptionsOverlayGetArgs>? Overlay { get; set; }
 
         /// <summary>
-        /// by default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4_mac
-        /// if enabled, 00-00-5e-00-XX-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
+        /// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4_mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
         /// </summary>
         [Input("perVlanVgaV4Mac")]
         public Input<bool>? PerVlanVgaV4Mac { get; set; }
+
+        /// <summary>
+        /// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address's v6_mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
+        /// </summary>
+        [Input("perVlanVgaV6Mac")]
+        public Input<bool>? PerVlanVgaV6Mac { get; set; }
 
         /// <summary>
         /// optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
@@ -66,7 +70,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputMap<Inputs.EvpnTopologyEvpnOptionsVsInstancesGetArgs>? _vsInstances;
 
         /// <summary>
-        /// optional, for EX9200 only to seggregate virtual-switches
+        /// Optional, for EX9200 only to segregate virtual-switches
         /// </summary>
         public InputMap<Inputs.EvpnTopologyEvpnOptionsVsInstancesGetArgs> VsInstances
         {

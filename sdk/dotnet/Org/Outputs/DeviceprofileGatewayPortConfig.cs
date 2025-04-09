@@ -103,9 +103,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Redundant;
         /// <summary>
-        /// If HA mode
+        /// If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
         /// </summary>
-        public readonly int? RethIdx;
+        public readonly int? RedundantGroup;
+        /// <summary>
+        /// For SRX only and if HA Mode
+        /// </summary>
+        public readonly string? RethIdx;
         /// <summary>
         /// If HA mode
         /// </summary>
@@ -142,7 +146,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? WanExtIp;
         /// <summary>
-        /// Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+        /// Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.DeviceprofileGatewayPortConfigWanExtraRoutes>? WanExtraRoutes;
         /// <summary>
@@ -216,7 +220,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             bool? redundant,
 
-            int? rethIdx,
+            int? redundantGroup,
+
+            string? rethIdx,
 
             string? rethNode,
 
@@ -276,6 +282,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             PortNetwork = portNetwork;
             PreserveDscp = preserveDscp;
             Redundant = redundant;
+            RedundantGroup = redundantGroup;
             RethIdx = rethIdx;
             RethNode = rethNode;
             RethNodes = rethNodes;

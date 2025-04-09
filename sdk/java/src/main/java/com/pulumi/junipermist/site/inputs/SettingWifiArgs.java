@@ -113,14 +113,14 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+     * Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will disrupt the connection. If roaming is desired, keep it disabled.
      * 
      */
     @Import(name="meshAllowDfs")
     private @Nullable Output<Boolean> meshAllowDfs;
 
     /**
-     * @return Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+     * @return Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will disrupt the connection. If roaming is desired, keep it disabled.
      * 
      */
     public Optional<Output<Boolean>> meshAllowDfs() {
@@ -372,7 +372,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshAllowDfs Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+         * @param meshAllowDfs Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will disrupt the connection. If roaming is desired, keep it disabled.
          * 
          * @return builder
          * 
@@ -383,7 +383,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshAllowDfs Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+         * @param meshAllowDfs Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will disrupt the connection. If roaming is desired, keep it disabled.
          * 
          * @return builder
          * 

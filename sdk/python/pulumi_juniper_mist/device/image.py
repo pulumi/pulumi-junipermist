@@ -26,6 +26,7 @@ class ImageArgs:
         """
         The set of arguments for constructing a Image resource.
         :param pulumi.Input[str] file: path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
+        :param pulumi.Input[int] image_number: number of the image, between 1 and 3
         """
         pulumi.set(__self__, "device_id", device_id)
         pulumi.set(__self__, "file", file)
@@ -56,6 +57,9 @@ class ImageArgs:
     @property
     @pulumi.getter(name="imageNumber")
     def image_number(self) -> pulumi.Input[int]:
+        """
+        number of the image, between 1 and 3
+        """
         return pulumi.get(self, "image_number")
 
     @image_number.setter
@@ -82,6 +86,7 @@ class _ImageState:
         """
         Input properties used for looking up and filtering Image resources.
         :param pulumi.Input[str] file: path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
+        :param pulumi.Input[int] image_number: number of the image, between 1 and 3
         """
         if device_id is not None:
             pulumi.set(__self__, "device_id", device_id)
@@ -116,6 +121,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="imageNumber")
     def image_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        number of the image, between 1 and 3
+        """
         return pulumi.get(self, "image_number")
 
     @image_number.setter
@@ -152,6 +160,7 @@ class Image(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] file: path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
+        :param pulumi.Input[int] image_number: number of the image, between 1 and 3
         """
         ...
     @overload
@@ -228,6 +237,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] file: path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
+        :param pulumi.Input[int] image_number: number of the image, between 1 and 3
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -255,6 +265,9 @@ class Image(pulumi.CustomResource):
     @property
     @pulumi.getter(name="imageNumber")
     def image_number(self) -> pulumi.Output[int]:
+        """
+        number of the image, between 1 and 3
+        """
         return pulumi.get(self, "image_number")
 
     @property

@@ -83,17 +83,17 @@ export class Psk extends pulumi.CustomResource {
      */
     public readonly expiryNotificationTime!: pulumi.Output<number | undefined>;
     /**
-     * if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      */
     public readonly mac!: pulumi.Output<string | undefined>;
     /**
-     * if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+     * If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
      */
     public readonly macs!: pulumi.Output<string[] | undefined>;
     /**
      * For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
      */
-    public readonly maxUsage!: pulumi.Output<number>;
+    public readonly maxUsage!: pulumi.Output<number | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly note!: pulumi.Output<string | undefined>;
     /**
@@ -207,11 +207,11 @@ export interface PskState {
      */
     expiryNotificationTime?: pulumi.Input<number>;
     /**
-     * if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      */
     mac?: pulumi.Input<string>;
     /**
-     * if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+     * If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
      */
     macs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -266,11 +266,11 @@ export interface PskArgs {
      */
     expiryNotificationTime?: pulumi.Input<number>;
     /**
-     * if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      */
     mac?: pulumi.Input<string>;
     /**
-     * if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+     * If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
      */
     macs?: pulumi.Input<pulumi.Input<string>[]>;
     /**

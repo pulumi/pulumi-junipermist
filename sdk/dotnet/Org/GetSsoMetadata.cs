@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the SSO Metadata information.
         /// 
-        /// The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+        /// The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
         /// 
         /// 
         /// ## Example Usage
@@ -42,7 +42,7 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the SSO Metadata information.
         /// 
-        /// The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+        /// The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
         /// 
         /// 
         /// ## Example Usage
@@ -70,7 +70,7 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the SSO Metadata information.
         /// 
-        /// The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+        /// The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
         /// 
         /// 
         /// ## Example Usage
@@ -129,15 +129,31 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetSsoMetadataResult
     {
+        /// <summary>
+        /// If `idp_type`==`saml`
+        /// </summary>
         public readonly string AcsUrl;
+        /// <summary>
+        /// If `idp_type`==`saml`
+        /// </summary>
         public readonly string EntityId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// If `idp_type`==`saml`
+        /// </summary>
         public readonly string LogoutUrl;
+        /// <summary>
+        /// If `idp_type`==`saml`
+        /// </summary>
         public readonly string Metadata;
         public readonly string OrgId;
+        /// <summary>
+        /// If `idp_type`==`oauth` and `scim_enabled`==`true`
+        /// </summary>
+        public readonly string ScimBaseUrl;
         public readonly string SsoId;
 
         [OutputConstructor]
@@ -154,6 +170,8 @@ namespace Pulumi.JuniperMist.Org
 
             string orgId,
 
+            string scimBaseUrl,
+
             string ssoId)
         {
             AcsUrl = acsUrl;
@@ -162,6 +180,7 @@ namespace Pulumi.JuniperMist.Org
             LogoutUrl = logoutUrl;
             Metadata = metadata;
             OrgId = orgId;
+            ScimBaseUrl = scimBaseUrl;
             SsoId = ssoId;
         }
     }

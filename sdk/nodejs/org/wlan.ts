@@ -210,6 +210,10 @@ export class Wlan extends pulumi.CustomResource {
      */
     public readonly disable11ax!: pulumi.Output<boolean>;
     /**
+     * To disable Wi-Fi 7 EHT IEs
+     */
+    public readonly disable11be!: pulumi.Output<boolean>;
+    /**
      * To disable ht or vht rates
      */
     public readonly disableHtVhtRates!: pulumi.Output<boolean>;
@@ -259,7 +263,7 @@ export class Wlan extends pulumi.CustomResource {
     public readonly enableLocalKeycaching!: pulumi.Output<boolean>;
     /**
      * By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-     * client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+     * client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
      */
     public readonly enableWirelessBridging!: pulumi.Output<boolean>;
     /**
@@ -329,7 +333,7 @@ export class Wlan extends pulumi.CustomResource {
      */
     public readonly mxtunnelIds!: pulumi.Output<string[]>;
     /**
-     * When `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
      */
     public readonly mxtunnelNames!: pulumi.Output<string[]>;
     /**
@@ -406,7 +410,7 @@ export class Wlan extends pulumi.CustomResource {
     public readonly vlanEnabled!: pulumi.Output<boolean>;
     public readonly vlanId!: pulumi.Output<string | undefined>;
     /**
-     * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+     * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
      */
     public readonly vlanIds!: pulumi.Output<string[]>;
     /**
@@ -487,6 +491,7 @@ export class Wlan extends pulumi.CustomResource {
             resourceInputs["clientLimitUpEnabled"] = state ? state.clientLimitUpEnabled : undefined;
             resourceInputs["coaServers"] = state ? state.coaServers : undefined;
             resourceInputs["disable11ax"] = state ? state.disable11ax : undefined;
+            resourceInputs["disable11be"] = state ? state.disable11be : undefined;
             resourceInputs["disableHtVhtRates"] = state ? state.disableHtVhtRates : undefined;
             resourceInputs["disableUapsd"] = state ? state.disableUapsd : undefined;
             resourceInputs["disableV1RoamNotify"] = state ? state.disableV1RoamNotify : undefined;
@@ -592,6 +597,7 @@ export class Wlan extends pulumi.CustomResource {
             resourceInputs["clientLimitUpEnabled"] = args ? args.clientLimitUpEnabled : undefined;
             resourceInputs["coaServers"] = args ? args.coaServers : undefined;
             resourceInputs["disable11ax"] = args ? args.disable11ax : undefined;
+            resourceInputs["disable11be"] = args ? args.disable11be : undefined;
             resourceInputs["disableHtVhtRates"] = args ? args.disableHtVhtRates : undefined;
             resourceInputs["disableUapsd"] = args ? args.disableUapsd : undefined;
             resourceInputs["disableV1RoamNotify"] = args ? args.disableV1RoamNotify : undefined;
@@ -798,6 +804,10 @@ export interface WlanState {
      */
     disable11ax?: pulumi.Input<boolean>;
     /**
+     * To disable Wi-Fi 7 EHT IEs
+     */
+    disable11be?: pulumi.Input<boolean>;
+    /**
      * To disable ht or vht rates
      */
     disableHtVhtRates?: pulumi.Input<boolean>;
@@ -847,7 +857,7 @@ export interface WlanState {
     enableLocalKeycaching?: pulumi.Input<boolean>;
     /**
      * By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-     * client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+     * client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
      */
     enableWirelessBridging?: pulumi.Input<boolean>;
     /**
@@ -917,7 +927,7 @@ export interface WlanState {
      */
     mxtunnelIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * When `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
      */
     mxtunnelNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -994,7 +1004,7 @@ export interface WlanState {
     vlanEnabled?: pulumi.Input<boolean>;
     vlanId?: pulumi.Input<string>;
     /**
-     * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+     * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
      */
     vlanIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1169,6 +1179,10 @@ export interface WlanArgs {
      */
     disable11ax?: pulumi.Input<boolean>;
     /**
+     * To disable Wi-Fi 7 EHT IEs
+     */
+    disable11be?: pulumi.Input<boolean>;
+    /**
      * To disable ht or vht rates
      */
     disableHtVhtRates?: pulumi.Input<boolean>;
@@ -1218,7 +1232,7 @@ export interface WlanArgs {
     enableLocalKeycaching?: pulumi.Input<boolean>;
     /**
      * By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-     * client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+     * client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
      */
     enableWirelessBridging?: pulumi.Input<boolean>;
     /**
@@ -1287,7 +1301,7 @@ export interface WlanArgs {
      */
     mxtunnelIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * When `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
      */
     mxtunnelNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1355,7 +1369,7 @@ export interface WlanArgs {
     vlanEnabled?: pulumi.Input<boolean>;
     vlanId?: pulumi.Input<string>;
     /**
-     * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+     * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
      */
     vlanIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -25,7 +25,7 @@ public final class GetWlansSiteWlanPortal {
      */
     private String amazonClientId;
     /**
-     * @return Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a corresponding value. Else leave blank.
      * 
      */
     private String amazonClientSecret;
@@ -130,7 +130,7 @@ public final class GetWlansSiteWlanPortal {
      */
     private String facebookClientId;
     /**
-     * @return Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a corresponding value. Else leave blank.
      * 
      */
     private String facebookClientSecret;
@@ -165,7 +165,7 @@ public final class GetWlansSiteWlanPortal {
      */
     private String googleClientId;
     /**
-     * @return Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a corresponding value. Else leave blank.
      * 
      */
     private String googleClientSecret;
@@ -200,7 +200,7 @@ public final class GetWlansSiteWlanPortal {
      */
     private String microsoftClientId;
     /**
-     * @return Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a corresponding value. Else leave blank.
      * 
      */
     private String microsoftClientSecret;
@@ -324,12 +324,12 @@ public final class GetWlansSiteWlanPortal {
      */
     private Map<String,String> sponsors;
     /**
-     * @return Optionl if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+     * @return Optional if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      * 
      */
     private String ssoDefaultRole;
     /**
-     * @return Optionl if `wlan_portal_auth`==`sso`
+     * @return Optional if `wlan_portal_auth`==`sso`
      * 
      */
     private String ssoForcedRole;
@@ -400,7 +400,7 @@ public final class GetWlansSiteWlanPortal {
         return this.amazonClientId;
     }
     /**
-     * @return Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a corresponding value. Else leave blank.
      * 
      */
     public String amazonClientSecret() {
@@ -547,7 +547,7 @@ public final class GetWlansSiteWlanPortal {
         return this.facebookClientId;
     }
     /**
-     * @return Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a corresponding value. Else leave blank.
      * 
      */
     public String facebookClientSecret() {
@@ -596,7 +596,7 @@ public final class GetWlansSiteWlanPortal {
         return this.googleClientId;
     }
     /**
-     * @return Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a corresponding value. Else leave blank.
      * 
      */
     public String googleClientSecret() {
@@ -645,7 +645,7 @@ public final class GetWlansSiteWlanPortal {
         return this.microsoftClientId;
     }
     /**
-     * @return Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a corresponding value. Else leave blank.
      * 
      */
     public String microsoftClientSecret() {
@@ -819,14 +819,14 @@ public final class GetWlansSiteWlanPortal {
         return this.sponsors;
     }
     /**
-     * @return Optionl if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+     * @return Optional if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      * 
      */
     public String ssoDefaultRole() {
         return this.ssoDefaultRole;
     }
     /**
-     * @return Optionl if `wlan_portal_auth`==`sso`
+     * @return Optional if `wlan_portal_auth`==`sso`
      * 
      */
     public String ssoForcedRole() {

@@ -14,6 +14,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanRateset {
     /**
+     * @return If `template`==`custom`. EHT MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit)
+     * 
+     */
+    private @Nullable String eht;
+    /**
+     * @return If `template`==`custom`. HE MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit
+     * 
+     */
+    private @Nullable String he;
+    /**
      * @return If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
      * 
      */
@@ -45,6 +55,20 @@ public final class WlanRateset {
     private @Nullable String vht;
 
     private WlanRateset() {}
+    /**
+     * @return If `template`==`custom`. EHT MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit)
+     * 
+     */
+    public Optional<String> eht() {
+        return Optional.ofNullable(this.eht);
+    }
+    /**
+     * @return If `template`==`custom`. HE MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit
+     * 
+     */
+    public Optional<String> he() {
+        return Optional.ofNullable(this.he);
+    }
     /**
      * @return If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
      * 
@@ -95,6 +119,8 @@ public final class WlanRateset {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String eht;
+        private @Nullable String he;
         private @Nullable String ht;
         private @Nullable List<String> legacies;
         private @Nullable Integer minRssi;
@@ -103,6 +129,8 @@ public final class WlanRateset {
         public Builder() {}
         public Builder(WlanRateset defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.eht = defaults.eht;
+    	      this.he = defaults.he;
     	      this.ht = defaults.ht;
     	      this.legacies = defaults.legacies;
     	      this.minRssi = defaults.minRssi;
@@ -110,6 +138,18 @@ public final class WlanRateset {
     	      this.vht = defaults.vht;
         }
 
+        @CustomType.Setter
+        public Builder eht(@Nullable String eht) {
+
+            this.eht = eht;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder he(@Nullable String he) {
+
+            this.he = he;
+            return this;
+        }
         @CustomType.Setter
         public Builder ht(@Nullable String ht) {
 
@@ -145,6 +185,8 @@ public final class WlanRateset {
         }
         public WlanRateset build() {
             final var _resultValue = new WlanRateset();
+            _resultValue.eht = eht;
+            _resultValue.he = he;
             _resultValue.ht = ht;
             _resultValue.legacies = legacies;
             _resultValue.minRssi = minRssi;

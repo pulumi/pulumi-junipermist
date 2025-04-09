@@ -96,14 +96,14 @@ public class Wxrule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.applyTags);
     }
     /**
-     * blocked apps (always blocking, ignoring action), the key of Get Application List
+     * Blocked apps (always blocking, ignoring action), the key of Get Application List
      * 
      */
     @Export(name="blockedApps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blockedApps;
 
     /**
-     * @return blocked apps (always blocking, ignoring action), the key of Get Application List
+     * @return Blocked apps (always blocking, ignoring action), the key of Get Application List
      * 
      */
     public Output<Optional<List<String>>> blockedApps() {
@@ -158,14 +158,14 @@ public class Wxrule extends com.pulumi.resources.CustomResource {
         return this.enabled;
     }
     /**
-     * the order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+     * Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
      * 
      */
     @Export(name="order", refs={Integer.class}, tree="[0]")
     private Output<Integer> order;
 
     /**
-     * @return the order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+     * @return Order how rules would be looked up, &gt; 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
      * 
      */
     public Output<Integer> order() {

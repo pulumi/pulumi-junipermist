@@ -68,6 +68,10 @@ Please update your configurations. */
     @Deprecated /* The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
 Please update your configurations. */
     private @Nullable String matchValue;
+    /**
+     * @return Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
+     * 
+     */
     private @Nullable String name;
     /**
      * @return Out-of-Band Management interface configuration
@@ -75,12 +79,12 @@ Please update your configurations. */
      */
     private @Nullable NetworktemplateSwitchMatchingRuleOobIpConfig oobIpConfig;
     /**
-     * @return Propery key is the interface name or interface range
+     * @return Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
      * 
      */
     private @Nullable Map<String,NetworktemplateSwitchMatchingRulePortConfig> portConfig;
     /**
-     * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+     * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      * 
      */
     private @Nullable Map<String,NetworktemplateSwitchMatchingRulePortMirroring> portMirroring;
@@ -152,6 +156,10 @@ Please update your configurations. */
     public Optional<String> matchValue() {
         return Optional.ofNullable(this.matchValue);
     }
+    /**
+     * @return Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -163,14 +171,14 @@ Please update your configurations. */
         return Optional.ofNullable(this.oobIpConfig);
     }
     /**
-     * @return Propery key is the interface name or interface range
+     * @return Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
      * 
      */
     public Map<String,NetworktemplateSwitchMatchingRulePortConfig> portConfig() {
         return this.portConfig == null ? Map.of() : this.portConfig;
     }
     /**
-     * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+     * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      * 
      */
     public Map<String,NetworktemplateSwitchMatchingRulePortMirroring> portMirroring() {

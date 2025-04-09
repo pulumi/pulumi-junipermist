@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class WlanAppQosOtherArgs : global::Pulumi.ResourceArgs
     {
         [Input("dscp")]
-        public Input<int>? Dscp { get; set; }
+        public Input<string>? Dscp { get; set; }
 
         [Input("dstSubnet")]
         public Input<string>? DstSubnet { get; set; }

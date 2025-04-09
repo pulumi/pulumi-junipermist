@@ -13,7 +13,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class WlanAppQosApps
     {
-        public readonly int? Dscp;
+        /// <summary>
+        /// DSCP value range between 0 and 63
+        /// </summary>
+        public readonly string? Dscp;
         /// <summary>
         /// Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
         /// </summary>
@@ -25,7 +28,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
         [OutputConstructor]
         private WlanAppQosApps(
-            int? dscp,
+            string? dscp,
 
             string? dstSubnet,
 

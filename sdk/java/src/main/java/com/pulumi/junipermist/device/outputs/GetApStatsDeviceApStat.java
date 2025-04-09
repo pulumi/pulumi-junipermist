@@ -11,6 +11,7 @@ import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatBleStat;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatEnvStat;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatEslStat;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatFwupdate;
+import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatGps;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatIotStat;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatIpConfig;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatIpStat;
@@ -41,17 +42,26 @@ public final class GetApStatsDeviceApStat {
     private Boolean configReverted;
     private Integer cpuSystem;
     private Integer cpuUtil;
-    private Integer createdTime;
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
+    private Double createdTime;
     private String deviceprofileId;
     /**
-     * @return device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
+     * @return Device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
      * 
      */
     private GetApStatsDeviceApStatEnvStat envStat;
     private GetApStatsDeviceApStatEslStat eslStat;
     private String extIp;
     private GetApStatsDeviceApStatFwupdate fwupdate;
+    private GetApStatsDeviceApStatGps gps;
     private String hwRev;
+    /**
+     * @return Unique ID of the object instance in the Mist Organization
+     * 
+     */
     private String id;
     private List<Integer> inactiveWiredVlans;
     private Map<String,GetApStatsDeviceApStatIotStat> iotStat;
@@ -63,17 +73,17 @@ public final class GetApStatsDeviceApStat {
     private GetApStatsDeviceApStatIpConfig ipConfig;
     private GetApStatsDeviceApStatIpStat ipStat;
     /**
-     * @return l2tp tunnel status (key is the wxtunnel*id)
+     * @return L2TP tunnel status (key is the wxtunnel_id)
      * 
      */
     private Map<String,GetApStatsDeviceApStatL2tpStat> l2tpStat;
     /**
-     * @return last seen timestamp
+     * @return Last seen timestamp
      * 
      */
     private Double lastSeen;
     /**
-     * @return last trouble code of switch
+     * @return Last trouble code of switch
      * 
      */
     private GetApStatsDeviceApStatLastTrouble lastTrouble;
@@ -89,37 +99,46 @@ public final class GetApStatsDeviceApStat {
     private GetApStatsDeviceApStatLldpStat lldpStat;
     private Boolean locating;
     /**
-     * @return whether this AP is considered locked (placement / orientation has been vetted)
+     * @return Whether this AP is considered locked (placement / orientation has been vetted)
      * 
      */
     private Boolean locked;
     /**
-     * @return device mac
+     * @return Device mac
      * 
      */
     private String mac;
     private String mapId;
     private Integer memUsedKb;
     /**
-     * @return Property key is the mesh downlink id (e.g `00000000-0000-0000-1000-5c5b35000010`)
+     * @return Property key is the mesh downlink id (e.g. `00000000-0000-0000-1000-5c5b35000010`)
      * 
      */
     private Map<String,GetApStatsDeviceApStatMeshDownlinks> meshDownlinks;
     private GetApStatsDeviceApStatMeshUplink meshUplink;
     /**
-     * @return device model
+     * @return Device model
      * 
      */
     private String model;
-    private Integer modifiedTime;
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
+    private Double modifiedTime;
     private String mount;
     private String name;
     private String notes;
     /**
-     * @return how many wireless clients are currently connected
+     * @return How many wireless clients are currently connected
      * 
      */
     private Integer numClients;
+    /**
+     * @return How many WLANs are applied to the device
+     * 
+     */
+    private Integer numWlans;
     private String orgId;
     /**
      * @return Property key is the port name (e.g. `eth0`)
@@ -127,17 +146,17 @@ public final class GetApStatsDeviceApStat {
      */
     private Map<String,GetApStatsDeviceApStatPortStat> portStat;
     /**
-     * @return in mW, surplus if positive or deficit if negative
+     * @return In mW, surplus if positive or deficit if negative
      * 
      */
     private Integer powerBudget;
     /**
-     * @return whether insufficient power
+     * @return Whether insufficient power
      * 
      */
     private Boolean powerConstrained;
     /**
-     * @return constrained mode
+     * @return Constrained mode
      * 
      */
     private String powerOpmode;
@@ -147,22 +166,46 @@ public final class GetApStatsDeviceApStat {
      */
     private String powerSrc;
     private GetApStatsDeviceApStatRadioStat radioStat;
-    private Double rxBps;
+    /**
+     * @return Rate of receiving traffic, bits/seconds, last known
+     * 
+     */
+    private Integer rxBps;
+    /**
+     * @return Amount of traffic received since connection
+     * 
+     */
     private Integer rxBytes;
+    /**
+     * @return Amount of packets received since connection
+     * 
+     */
     private Integer rxPkts;
     /**
-     * @return serial
+     * @return Serial Number
      * 
      */
     private String serial;
     private String siteId;
     private String status;
     private GetApStatsDeviceApStatSwitchRedundancy switchRedundancy;
-    private Double txBps;
-    private Double txBytes;
-    private Double txPkts;
     /**
-     * @return how long, in seconds, has the device been up (or rebooted)
+     * @return Rate of transmitting traffic, bits/seconds, last known
+     * 
+     */
+    private Integer txBps;
+    /**
+     * @return Amount of traffic sent since connection
+     * 
+     */
+    private Integer txBytes;
+    /**
+     * @return Amount of packets sent since connection
+     * 
+     */
+    private Integer txPkts;
+    /**
+     * @return How long, in seconds, has the device been up (or rebooted)
      * 
      */
     private Double uptime;
@@ -193,14 +236,18 @@ public final class GetApStatsDeviceApStat {
     public Integer cpuUtil() {
         return this.cpuUtil;
     }
-    public Integer createdTime() {
+    /**
+     * @return When the object has been created, in epoch
+     * 
+     */
+    public Double createdTime() {
         return this.createdTime;
     }
     public String deviceprofileId() {
         return this.deviceprofileId;
     }
     /**
-     * @return device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
+     * @return Device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
      * 
      */
     public GetApStatsDeviceApStatEnvStat envStat() {
@@ -215,9 +262,16 @@ public final class GetApStatsDeviceApStat {
     public GetApStatsDeviceApStatFwupdate fwupdate() {
         return this.fwupdate;
     }
+    public GetApStatsDeviceApStatGps gps() {
+        return this.gps;
+    }
     public String hwRev() {
         return this.hwRev;
     }
+    /**
+     * @return Unique ID of the object instance in the Mist Organization
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -241,21 +295,21 @@ public final class GetApStatsDeviceApStat {
         return this.ipStat;
     }
     /**
-     * @return l2tp tunnel status (key is the wxtunnel*id)
+     * @return L2TP tunnel status (key is the wxtunnel_id)
      * 
      */
     public Map<String,GetApStatsDeviceApStatL2tpStat> l2tpStat() {
         return this.l2tpStat;
     }
     /**
-     * @return last seen timestamp
+     * @return Last seen timestamp
      * 
      */
     public Double lastSeen() {
         return this.lastSeen;
     }
     /**
-     * @return last trouble code of switch
+     * @return Last trouble code of switch
      * 
      */
     public GetApStatsDeviceApStatLastTrouble lastTrouble() {
@@ -279,14 +333,14 @@ public final class GetApStatsDeviceApStat {
         return this.locating;
     }
     /**
-     * @return whether this AP is considered locked (placement / orientation has been vetted)
+     * @return Whether this AP is considered locked (placement / orientation has been vetted)
      * 
      */
     public Boolean locked() {
         return this.locked;
     }
     /**
-     * @return device mac
+     * @return Device mac
      * 
      */
     public String mac() {
@@ -299,7 +353,7 @@ public final class GetApStatsDeviceApStat {
         return this.memUsedKb;
     }
     /**
-     * @return Property key is the mesh downlink id (e.g `00000000-0000-0000-1000-5c5b35000010`)
+     * @return Property key is the mesh downlink id (e.g. `00000000-0000-0000-1000-5c5b35000010`)
      * 
      */
     public Map<String,GetApStatsDeviceApStatMeshDownlinks> meshDownlinks() {
@@ -309,13 +363,17 @@ public final class GetApStatsDeviceApStat {
         return this.meshUplink;
     }
     /**
-     * @return device model
+     * @return Device model
      * 
      */
     public String model() {
         return this.model;
     }
-    public Integer modifiedTime() {
+    /**
+     * @return When the object has been modified for the last time, in epoch
+     * 
+     */
+    public Double modifiedTime() {
         return this.modifiedTime;
     }
     public String mount() {
@@ -328,11 +386,18 @@ public final class GetApStatsDeviceApStat {
         return this.notes;
     }
     /**
-     * @return how many wireless clients are currently connected
+     * @return How many wireless clients are currently connected
      * 
      */
     public Integer numClients() {
         return this.numClients;
+    }
+    /**
+     * @return How many WLANs are applied to the device
+     * 
+     */
+    public Integer numWlans() {
+        return this.numWlans;
     }
     public String orgId() {
         return this.orgId;
@@ -345,21 +410,21 @@ public final class GetApStatsDeviceApStat {
         return this.portStat;
     }
     /**
-     * @return in mW, surplus if positive or deficit if negative
+     * @return In mW, surplus if positive or deficit if negative
      * 
      */
     public Integer powerBudget() {
         return this.powerBudget;
     }
     /**
-     * @return whether insufficient power
+     * @return Whether insufficient power
      * 
      */
     public Boolean powerConstrained() {
         return this.powerConstrained;
     }
     /**
-     * @return constrained mode
+     * @return Constrained mode
      * 
      */
     public String powerOpmode() {
@@ -375,17 +440,29 @@ public final class GetApStatsDeviceApStat {
     public GetApStatsDeviceApStatRadioStat radioStat() {
         return this.radioStat;
     }
-    public Double rxBps() {
+    /**
+     * @return Rate of receiving traffic, bits/seconds, last known
+     * 
+     */
+    public Integer rxBps() {
         return this.rxBps;
     }
+    /**
+     * @return Amount of traffic received since connection
+     * 
+     */
     public Integer rxBytes() {
         return this.rxBytes;
     }
+    /**
+     * @return Amount of packets received since connection
+     * 
+     */
     public Integer rxPkts() {
         return this.rxPkts;
     }
     /**
-     * @return serial
+     * @return Serial Number
      * 
      */
     public String serial() {
@@ -400,17 +477,29 @@ public final class GetApStatsDeviceApStat {
     public GetApStatsDeviceApStatSwitchRedundancy switchRedundancy() {
         return this.switchRedundancy;
     }
-    public Double txBps() {
+    /**
+     * @return Rate of transmitting traffic, bits/seconds, last known
+     * 
+     */
+    public Integer txBps() {
         return this.txBps;
     }
-    public Double txBytes() {
+    /**
+     * @return Amount of traffic sent since connection
+     * 
+     */
+    public Integer txBytes() {
         return this.txBytes;
     }
-    public Double txPkts() {
+    /**
+     * @return Amount of packets sent since connection
+     * 
+     */
+    public Integer txPkts() {
         return this.txPkts;
     }
     /**
-     * @return how long, in seconds, has the device been up (or rebooted)
+     * @return How long, in seconds, has the device been up (or rebooted)
      * 
      */
     public Double uptime() {
@@ -445,12 +534,13 @@ public final class GetApStatsDeviceApStat {
         private Boolean configReverted;
         private Integer cpuSystem;
         private Integer cpuUtil;
-        private Integer createdTime;
+        private Double createdTime;
         private String deviceprofileId;
         private GetApStatsDeviceApStatEnvStat envStat;
         private GetApStatsDeviceApStatEslStat eslStat;
         private String extIp;
         private GetApStatsDeviceApStatFwupdate fwupdate;
+        private GetApStatsDeviceApStatGps gps;
         private String hwRev;
         private String id;
         private List<Integer> inactiveWiredVlans;
@@ -471,11 +561,12 @@ public final class GetApStatsDeviceApStat {
         private Map<String,GetApStatsDeviceApStatMeshDownlinks> meshDownlinks;
         private GetApStatsDeviceApStatMeshUplink meshUplink;
         private String model;
-        private Integer modifiedTime;
+        private Double modifiedTime;
         private String mount;
         private String name;
         private String notes;
         private Integer numClients;
+        private Integer numWlans;
         private String orgId;
         private Map<String,GetApStatsDeviceApStatPortStat> portStat;
         private Integer powerBudget;
@@ -483,16 +574,16 @@ public final class GetApStatsDeviceApStat {
         private String powerOpmode;
         private String powerSrc;
         private GetApStatsDeviceApStatRadioStat radioStat;
-        private Double rxBps;
+        private Integer rxBps;
         private Integer rxBytes;
         private Integer rxPkts;
         private String serial;
         private String siteId;
         private String status;
         private GetApStatsDeviceApStatSwitchRedundancy switchRedundancy;
-        private Double txBps;
-        private Double txBytes;
-        private Double txPkts;
+        private Integer txBps;
+        private Integer txBytes;
+        private Integer txPkts;
         private Double uptime;
         private GetApStatsDeviceApStatUsbStat usbStat;
         private String version;
@@ -514,6 +605,7 @@ public final class GetApStatsDeviceApStat {
     	      this.eslStat = defaults.eslStat;
     	      this.extIp = defaults.extIp;
     	      this.fwupdate = defaults.fwupdate;
+    	      this.gps = defaults.gps;
     	      this.hwRev = defaults.hwRev;
     	      this.id = defaults.id;
     	      this.inactiveWiredVlans = defaults.inactiveWiredVlans;
@@ -539,6 +631,7 @@ public final class GetApStatsDeviceApStat {
     	      this.name = defaults.name;
     	      this.notes = defaults.notes;
     	      this.numClients = defaults.numClients;
+    	      this.numWlans = defaults.numWlans;
     	      this.orgId = defaults.orgId;
     	      this.portStat = defaults.portStat;
     	      this.powerBudget = defaults.powerBudget;
@@ -620,7 +713,7 @@ public final class GetApStatsDeviceApStat {
             return this;
         }
         @CustomType.Setter
-        public Builder createdTime(Integer createdTime) {
+        public Builder createdTime(Double createdTime) {
             if (createdTime == null) {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "createdTime");
             }
@@ -665,6 +758,14 @@ public final class GetApStatsDeviceApStat {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "fwupdate");
             }
             this.fwupdate = fwupdate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gps(GetApStatsDeviceApStatGps gps) {
+            if (gps == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "gps");
+            }
+            this.gps = gps;
             return this;
         }
         @CustomType.Setter
@@ -831,7 +932,7 @@ public final class GetApStatsDeviceApStat {
             return this;
         }
         @CustomType.Setter
-        public Builder modifiedTime(Integer modifiedTime) {
+        public Builder modifiedTime(Double modifiedTime) {
             if (modifiedTime == null) {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "modifiedTime");
             }
@@ -868,6 +969,14 @@ public final class GetApStatsDeviceApStat {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "numClients");
             }
             this.numClients = numClients;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder numWlans(Integer numWlans) {
+            if (numWlans == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "numWlans");
+            }
+            this.numWlans = numWlans;
             return this;
         }
         @CustomType.Setter
@@ -927,7 +1036,7 @@ public final class GetApStatsDeviceApStat {
             return this;
         }
         @CustomType.Setter
-        public Builder rxBps(Double rxBps) {
+        public Builder rxBps(Integer rxBps) {
             if (rxBps == null) {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "rxBps");
             }
@@ -983,7 +1092,7 @@ public final class GetApStatsDeviceApStat {
             return this;
         }
         @CustomType.Setter
-        public Builder txBps(Double txBps) {
+        public Builder txBps(Integer txBps) {
             if (txBps == null) {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "txBps");
             }
@@ -991,7 +1100,7 @@ public final class GetApStatsDeviceApStat {
             return this;
         }
         @CustomType.Setter
-        public Builder txBytes(Double txBytes) {
+        public Builder txBytes(Integer txBytes) {
             if (txBytes == null) {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "txBytes");
             }
@@ -999,7 +1108,7 @@ public final class GetApStatsDeviceApStat {
             return this;
         }
         @CustomType.Setter
-        public Builder txPkts(Double txPkts) {
+        public Builder txPkts(Integer txPkts) {
             if (txPkts == null) {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "txPkts");
             }
@@ -1061,6 +1170,7 @@ public final class GetApStatsDeviceApStat {
             _resultValue.eslStat = eslStat;
             _resultValue.extIp = extIp;
             _resultValue.fwupdate = fwupdate;
+            _resultValue.gps = gps;
             _resultValue.hwRev = hwRev;
             _resultValue.id = id;
             _resultValue.inactiveWiredVlans = inactiveWiredVlans;
@@ -1086,6 +1196,7 @@ public final class GetApStatsDeviceApStat {
             _resultValue.name = name;
             _resultValue.notes = notes;
             _resultValue.numClients = numClients;
+            _resultValue.numWlans = numWlans;
             _resultValue.orgId = orgId;
             _resultValue.portStat = portStat;
             _resultValue.powerBudget = powerBudget;

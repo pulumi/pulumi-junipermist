@@ -72,12 +72,12 @@ type Psk struct {
 	ExpireTime pulumi.IntOutput `pulumi:"expireTime"`
 	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
 	ExpiryNotificationTime pulumi.IntPtrOutput `pulumi:"expiryNotificationTime"`
-	// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+	// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
 	Mac pulumi.StringPtrOutput `pulumi:"mac"`
-	// if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+	// If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
 	Macs pulumi.StringArrayOutput `pulumi:"macs"`
 	// For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
-	MaxUsage pulumi.IntOutput       `pulumi:"maxUsage"`
+	MaxUsage pulumi.IntPtrOutput    `pulumi:"maxUsage"`
 	Name     pulumi.StringOutput    `pulumi:"name"`
 	Note     pulumi.StringPtrOutput `pulumi:"note"`
 	// If set to true, reminder notification will be sent when psk is about to expire
@@ -153,9 +153,9 @@ type pskState struct {
 	ExpireTime *int `pulumi:"expireTime"`
 	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
 	ExpiryNotificationTime *int `pulumi:"expiryNotificationTime"`
-	// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+	// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
 	Mac *string `pulumi:"mac"`
-	// if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+	// If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
 	Macs []string `pulumi:"macs"`
 	// For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
 	MaxUsage *int    `pulumi:"maxUsage"`
@@ -185,9 +185,9 @@ type PskState struct {
 	ExpireTime pulumi.IntPtrInput
 	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
 	ExpiryNotificationTime pulumi.IntPtrInput
-	// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+	// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
 	Mac pulumi.StringPtrInput
-	// if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+	// If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
 	Macs pulumi.StringArrayInput
 	// For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
 	MaxUsage pulumi.IntPtrInput
@@ -221,9 +221,9 @@ type pskArgs struct {
 	ExpireTime *int `pulumi:"expireTime"`
 	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
 	ExpiryNotificationTime *int `pulumi:"expiryNotificationTime"`
-	// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+	// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
 	Mac *string `pulumi:"mac"`
-	// if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+	// If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
 	Macs []string `pulumi:"macs"`
 	// For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
 	MaxUsage *int    `pulumi:"maxUsage"`
@@ -254,9 +254,9 @@ type PskArgs struct {
 	ExpireTime pulumi.IntPtrInput
 	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
 	ExpiryNotificationTime pulumi.IntPtrInput
-	// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+	// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
 	Mac pulumi.StringPtrInput
-	// if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+	// If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
 	Macs pulumi.StringArrayInput
 	// For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
 	MaxUsage pulumi.IntPtrInput
@@ -381,19 +381,19 @@ func (o PskOutput) ExpiryNotificationTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Psk) pulumi.IntPtrOutput { return v.ExpiryNotificationTime }).(pulumi.IntPtrOutput)
 }
 
-// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
 func (o PskOutput) Mac() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringPtrOutput { return v.Mac }).(pulumi.StringPtrOutput)
 }
 
-// if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+// If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
 func (o PskOutput) Macs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringArrayOutput { return v.Macs }).(pulumi.StringArrayOutput)
 }
 
 // For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
-func (o PskOutput) MaxUsage() pulumi.IntOutput {
-	return o.ApplyT(func(v *Psk) pulumi.IntOutput { return v.MaxUsage }).(pulumi.IntOutput)
+func (o PskOutput) MaxUsage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Psk) pulumi.IntPtrOutput { return v.MaxUsage }).(pulumi.IntPtrOutput)
 }
 
 func (o PskOutput) Name() pulumi.StringOutput {

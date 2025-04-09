@@ -29,7 +29,7 @@ public final class GatewaytemplateDhcpdConfigConfig {
      */
     private @Nullable List<String> dnsSuffixes;
     /**
-     * @return If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * @return If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
      * 
      */
     private @Nullable Map<String,GatewaytemplateDhcpdConfigConfigFixedBindings> fixedBindings;
@@ -118,7 +118,7 @@ public final class GatewaytemplateDhcpdConfigConfig {
         return this.dnsSuffixes == null ? List.of() : this.dnsSuffixes;
     }
     /**
-     * @return If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * @return If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
      * 
      */
     public Map<String,GatewaytemplateDhcpdConfigConfigFixedBindings> fixedBindings() {

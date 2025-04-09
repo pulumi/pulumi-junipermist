@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class NetworktemplateRadiusConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("acctImmediateUpdate")]
+        public Input<bool>? AcctImmediateUpdate { get; set; }
+
         /// <summary>
         /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
         /// </summary>
@@ -25,6 +28,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
             get => _acctServers ?? (_acctServers = new InputList<Inputs.NetworktemplateRadiusConfigAcctServerGetArgs>());
             set => _acctServers = value;
         }
+
+        /// <summary>
+        /// enum: `ordered`, `unordered`
+        /// </summary>
+        [Input("authServerSelection")]
+        public Input<string>? AuthServerSelection { get; set; }
 
         [Input("authServers")]
         private InputList<Inputs.NetworktemplateRadiusConfigAuthServerGetArgs>? _authServers;
@@ -45,6 +54,15 @@ namespace Pulumi.JuniperMist.Site.Inputs
         /// </summary>
         [Input("authServersTimeout")]
         public Input<int>? AuthServersTimeout { get; set; }
+
+        [Input("coaEnabled")]
+        public Input<bool>? CoaEnabled { get; set; }
+
+        [Input("coaPort")]
+        public Input<string>? CoaPort { get; set; }
+
+        [Input("fastDot1xTimers")]
+        public Input<bool>? FastDot1xTimers { get; set; }
 
         /// <summary>
         /// Use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip

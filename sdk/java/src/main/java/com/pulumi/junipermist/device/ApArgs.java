@@ -12,6 +12,7 @@ import com.pulumi.junipermist.device.inputs.ApCentrakArgs;
 import com.pulumi.junipermist.device.inputs.ApClientBridgeArgs;
 import com.pulumi.junipermist.device.inputs.ApEslConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApIpConfigArgs;
+import com.pulumi.junipermist.device.inputs.ApLacpConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApLedArgs;
 import com.pulumi.junipermist.device.inputs.ApMeshArgs;
 import com.pulumi.junipermist.device.inputs.ApPwrConfigArgs;
@@ -194,6 +195,13 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ApIpConfigArgs>> ipConfig() {
         return Optional.ofNullable(this.ipConfig);
+    }
+
+    @Import(name="lacpConfig")
+    private @Nullable Output<ApLacpConfigArgs> lacpConfig;
+
+    public Optional<Output<ApLacpConfigArgs>> lacpConfig() {
+        return Optional.ofNullable(this.lacpConfig);
     }
 
     /**
@@ -445,6 +453,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         this.flowControl = $.flowControl;
         this.height = $.height;
         this.ipConfig = $.ipConfig;
+        this.lacpConfig = $.lacpConfig;
         this.led = $.led;
         this.locked = $.locked;
         this.mapId = $.mapId;
@@ -705,6 +714,15 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ipConfig(ApIpConfigArgs ipConfig) {
             return ipConfig(Output.of(ipConfig));
+        }
+
+        public Builder lacpConfig(@Nullable Output<ApLacpConfigArgs> lacpConfig) {
+            $.lacpConfig = lacpConfig;
+            return this;
+        }
+
+        public Builder lacpConfig(ApLacpConfigArgs lacpConfig) {
+            return lacpConfig(Output.of(lacpConfig));
         }
 
         /**

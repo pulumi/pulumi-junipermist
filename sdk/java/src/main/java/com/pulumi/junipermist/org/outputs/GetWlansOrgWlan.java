@@ -196,6 +196,11 @@ public final class GetWlansOrgWlan {
      */
     private Boolean disable11ax;
     /**
+     * @return To disable Wi-Fi 7 EHT IEs
+     * 
+     */
+    private Boolean disable11be;
+    /**
      * @return To disable ht or vht rates
      * 
      */
@@ -259,7 +264,7 @@ public final class GetWlansOrgWlan {
      */
     private Boolean enableLocalKeycaching;
     /**
-     * @return By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+     * @return By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
      * 
      */
     private Boolean enableWirelessBridging;
@@ -294,7 +299,7 @@ public final class GetWlansOrgWlan {
      */
     private GetWlansOrgWlanHotspot20 hotspot20;
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     private String id;
@@ -352,7 +357,7 @@ public final class GetWlansOrgWlan {
      */
     private List<String> mxtunnelIds;
     /**
-     * @return When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * @return When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
      * 
      */
     private List<String> mxtunnelNames;
@@ -447,7 +452,7 @@ public final class GetWlansOrgWlan {
     private Boolean vlanEnabled;
     private String vlanId;
     /**
-     * @return if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+     * @return if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
      * 
      */
     private List<String> vlanIds;
@@ -718,6 +723,13 @@ public final class GetWlansOrgWlan {
         return this.disable11ax;
     }
     /**
+     * @return To disable Wi-Fi 7 EHT IEs
+     * 
+     */
+    public Boolean disable11be() {
+        return this.disable11be;
+    }
+    /**
      * @return To disable ht or vht rates
      * 
      */
@@ -805,7 +817,7 @@ public final class GetWlansOrgWlan {
         return this.enableLocalKeycaching;
     }
     /**
-     * @return By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+     * @return By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
      * 
      */
     public Boolean enableWirelessBridging() {
@@ -854,7 +866,7 @@ public final class GetWlansOrgWlan {
         return this.hotspot20;
     }
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     public String id() {
@@ -940,7 +952,7 @@ public final class GetWlansOrgWlan {
         return this.mxtunnelIds;
     }
     /**
-     * @return When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * @return When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
      * 
      */
     public List<String> mxtunnelNames() {
@@ -1081,7 +1093,7 @@ public final class GetWlansOrgWlan {
         return this.vlanId;
     }
     /**
-     * @return if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+     * @return if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
      * 
      */
     public List<String> vlanIds() {
@@ -1185,6 +1197,7 @@ public final class GetWlansOrgWlan {
         private List<GetWlansOrgWlanCoaServer> coaServers;
         private Double createdTime;
         private Boolean disable11ax;
+        private Boolean disable11be;
         private Boolean disableHtVhtRates;
         private Boolean disableUapsd;
         private Boolean disableV1RoamNotify;
@@ -1285,6 +1298,7 @@ public final class GetWlansOrgWlan {
     	      this.coaServers = defaults.coaServers;
     	      this.createdTime = defaults.createdTime;
     	      this.disable11ax = defaults.disable11ax;
+    	      this.disable11be = defaults.disable11be;
     	      this.disableHtVhtRates = defaults.disableHtVhtRates;
     	      this.disableUapsd = defaults.disableUapsd;
     	      this.disableV1RoamNotify = defaults.disableV1RoamNotify;
@@ -1621,6 +1635,14 @@ public final class GetWlansOrgWlan {
               throw new MissingRequiredPropertyException("GetWlansOrgWlan", "disable11ax");
             }
             this.disable11ax = disable11ax;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disable11be(Boolean disable11be) {
+            if (disable11be == null) {
+              throw new MissingRequiredPropertyException("GetWlansOrgWlan", "disable11be");
+            }
+            this.disable11be = disable11be;
             return this;
         }
         @CustomType.Setter
@@ -2198,6 +2220,7 @@ public final class GetWlansOrgWlan {
             _resultValue.coaServers = coaServers;
             _resultValue.createdTime = createdTime;
             _resultValue.disable11ax = disable11ax;
+            _resultValue.disable11be = disable11be;
             _resultValue.disableHtVhtRates = disableHtVhtRates;
             _resultValue.disableUapsd = disableUapsd;
             _resultValue.disableV1RoamNotify = disableV1RoamNotify;

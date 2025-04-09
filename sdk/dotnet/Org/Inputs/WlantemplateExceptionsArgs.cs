@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _siteIds;
 
         /// <summary>
-        /// list of site ids
+        /// List of site ids
         /// </summary>
         public InputList<string> SiteIds
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _sitegroupIds;
 
         /// <summary>
-        /// list of sitegroup ids
+        /// List of sitegroup ids
         /// </summary>
         public InputList<string> SitegroupIds
         {

@@ -12,13 +12,13 @@ import java.util.Objects;
 @CustomType
 public final class GetNacEndpointsOrgUsermac {
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     private String id;
     private List<String> labels;
     /**
-     * @return only non-local-admin MAC is accepted
+     * @return Only non-local-admin MAC is accepted
      * 
      */
     private String mac;
@@ -29,7 +29,7 @@ public final class GetNacEndpointsOrgUsermac {
 
     private GetNacEndpointsOrgUsermac() {}
     /**
-     * @return Unique ID of the object instance in the Mist Organnization
+     * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     public String id() {
@@ -39,7 +39,7 @@ public final class GetNacEndpointsOrgUsermac {
         return this.labels;
     }
     /**
-     * @return only non-local-admin MAC is accepted
+     * @return Only non-local-admin MAC is accepted
      * 
      */
     public String mac() {

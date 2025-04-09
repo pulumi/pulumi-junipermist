@@ -14,38 +14,58 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GetApStatsDeviceApStatPortStatResult
     {
         public readonly bool FullDuplex;
-        public readonly double RxBytes;
-        public readonly double RxErrors;
-        public readonly double RxPkts;
+        /// <summary>
+        /// Amount of traffic received since connection
+        /// </summary>
+        public readonly int RxBytes;
+        public readonly int RxErrors;
+        public readonly int RxPeakBps;
+        /// <summary>
+        /// Amount of packets received since connection
+        /// </summary>
+        public readonly int RxPkts;
         public readonly int Speed;
-        public readonly double TxBytes;
-        public readonly double TxPkts;
+        /// <summary>
+        /// Amount of traffic sent since connection
+        /// </summary>
+        public readonly int TxBytes;
+        public readonly int TxPeakBps;
+        /// <summary>
+        /// Amount of packets sent since connection
+        /// </summary>
+        public readonly int TxPkts;
         public readonly bool Up;
 
         [OutputConstructor]
         private GetApStatsDeviceApStatPortStatResult(
             bool fullDuplex,
 
-            double rxBytes,
+            int rxBytes,
 
-            double rxErrors,
+            int rxErrors,
 
-            double rxPkts,
+            int rxPeakBps,
+
+            int rxPkts,
 
             int speed,
 
-            double txBytes,
+            int txBytes,
 
-            double txPkts,
+            int txPeakBps,
+
+            int txPkts,
 
             bool up)
         {
             FullDuplex = fullDuplex;
             RxBytes = rxBytes;
             RxErrors = rxErrors;
+            RxPeakBps = rxPeakBps;
             RxPkts = rxPkts;
             Speed = speed;
             TxBytes = txBytes;
+            TxPeakBps = txPeakBps;
             TxPkts = txPkts;
             Up = up;
         }

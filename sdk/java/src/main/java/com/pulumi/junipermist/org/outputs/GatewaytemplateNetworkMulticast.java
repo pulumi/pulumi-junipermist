@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplateNetworkMulticast {
     /**
-     * @return If the network will only be the soruce of the multicast traffic, IGMP can be disabled
+     * @return If the network will only be the source of the multicast traffic, IGMP can be disabled
      * 
      */
     private @Nullable Boolean disableIgmp;
@@ -28,7 +28,7 @@ public final class GatewaytemplateNetworkMulticast {
 
     private GatewaytemplateNetworkMulticast() {}
     /**
-     * @return If the network will only be the soruce of the multicast traffic, IGMP can be disabled
+     * @return If the network will only be the source of the multicast traffic, IGMP can be disabled
      * 
      */
     public Optional<Boolean> disableIgmp() {

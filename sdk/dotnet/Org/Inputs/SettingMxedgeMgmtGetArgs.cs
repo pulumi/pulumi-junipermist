@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingMxedgeMgmtGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("configAutoRevert")]
+        public Input<bool>? ConfigAutoRevert { get; set; }
+
         [Input("fipsEnabled")]
         public Input<bool>? FipsEnabled { get; set; }
 

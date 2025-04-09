@@ -16,6 +16,7 @@ import com.pulumi.junipermist.device.outputs.ApCentrak;
 import com.pulumi.junipermist.device.outputs.ApClientBridge;
 import com.pulumi.junipermist.device.outputs.ApEslConfig;
 import com.pulumi.junipermist.device.outputs.ApIpConfig;
+import com.pulumi.junipermist.device.outputs.ApLacpConfig;
 import com.pulumi.junipermist.device.outputs.ApLed;
 import com.pulumi.junipermist.device.outputs.ApMesh;
 import com.pulumi.junipermist.device.outputs.ApPwrConfig;
@@ -216,6 +217,12 @@ public class Ap extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ApIpConfig>> ipConfig() {
         return Codegen.optional(this.ipConfig);
+    }
+    @Export(name="lacpConfig", refs={ApLacpConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ApLacpConfig> lacpConfig;
+
+    public Output<Optional<ApLacpConfig>> lacpConfig() {
+        return Codegen.optional(this.lacpConfig);
     }
     /**
      * LED AP settings

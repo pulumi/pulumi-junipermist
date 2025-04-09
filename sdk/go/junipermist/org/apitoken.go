@@ -23,12 +23,12 @@ type Apitoken struct {
 	// email of the token creator / null if creator is deleted
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	Key       pulumi.StringOutput `pulumi:"key"`
-	// name of the token
+	// Name of the token
 	Name  pulumi.StringOutput `pulumi:"name"`
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// list of privileges the token has on the orgs/sites
+	// List of privileges the token has on the orgs/sites
 	Privileges ApitokenPrivilegeArrayOutput `pulumi:"privileges"`
-	// list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+	// List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
 	SrcIps pulumi.StringArrayOutput `pulumi:"srcIps"`
 }
 
@@ -75,12 +75,12 @@ type apitokenState struct {
 	// email of the token creator / null if creator is deleted
 	CreatedBy *string `pulumi:"createdBy"`
 	Key       *string `pulumi:"key"`
-	// name of the token
+	// Name of the token
 	Name  *string `pulumi:"name"`
 	OrgId *string `pulumi:"orgId"`
-	// list of privileges the token has on the orgs/sites
+	// List of privileges the token has on the orgs/sites
 	Privileges []ApitokenPrivilege `pulumi:"privileges"`
-	// list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+	// List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
 	SrcIps []string `pulumi:"srcIps"`
 }
 
@@ -88,12 +88,12 @@ type ApitokenState struct {
 	// email of the token creator / null if creator is deleted
 	CreatedBy pulumi.StringPtrInput
 	Key       pulumi.StringPtrInput
-	// name of the token
+	// Name of the token
 	Name  pulumi.StringPtrInput
 	OrgId pulumi.StringPtrInput
-	// list of privileges the token has on the orgs/sites
+	// List of privileges the token has on the orgs/sites
 	Privileges ApitokenPrivilegeArrayInput
-	// list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+	// List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
 	SrcIps pulumi.StringArrayInput
 }
 
@@ -102,23 +102,23 @@ func (ApitokenState) ElementType() reflect.Type {
 }
 
 type apitokenArgs struct {
-	// name of the token
+	// Name of the token
 	Name  *string `pulumi:"name"`
 	OrgId string  `pulumi:"orgId"`
-	// list of privileges the token has on the orgs/sites
+	// List of privileges the token has on the orgs/sites
 	Privileges []ApitokenPrivilege `pulumi:"privileges"`
-	// list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+	// List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
 	SrcIps []string `pulumi:"srcIps"`
 }
 
 // The set of arguments for constructing a Apitoken resource.
 type ApitokenArgs struct {
-	// name of the token
+	// Name of the token
 	Name  pulumi.StringPtrInput
 	OrgId pulumi.StringInput
-	// list of privileges the token has on the orgs/sites
+	// List of privileges the token has on the orgs/sites
 	Privileges ApitokenPrivilegeArrayInput
-	// list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+	// List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
 	SrcIps pulumi.StringArrayInput
 }
 
@@ -218,7 +218,7 @@ func (o ApitokenOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *Apitoken) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// name of the token
+// Name of the token
 func (o ApitokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Apitoken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -227,12 +227,12 @@ func (o ApitokenOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Apitoken) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// list of privileges the token has on the orgs/sites
+// List of privileges the token has on the orgs/sites
 func (o ApitokenOutput) Privileges() ApitokenPrivilegeArrayOutput {
 	return o.ApplyT(func(v *Apitoken) ApitokenPrivilegeArrayOutput { return v.Privileges }).(ApitokenPrivilegeArrayOutput)
 }
 
-// list of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+// List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
 func (o ApitokenOutput) SrcIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Apitoken) pulumi.StringArrayOutput { return v.SrcIps }).(pulumi.StringArrayOutput)
 }

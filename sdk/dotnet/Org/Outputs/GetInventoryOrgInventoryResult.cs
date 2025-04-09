@@ -14,50 +14,49 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GetInventoryOrgInventoryResult
     {
         /// <summary>
-        /// only if `type`==`switch` or `type`==`gateway`
-        /// whether the switch/gateway is adopted
+        /// Only if `type`==`switch` or `type`==`gateway`, whether the switch/gateway is adopted
         /// </summary>
         public readonly bool Adopted;
         /// <summary>
-        /// device claim code
+        /// Device claim code
         /// </summary>
         public readonly string ClaimCode;
         /// <summary>
-        /// whether the device is connected
+        /// Whether the device is connected
         /// </summary>
         public readonly bool Connected;
         /// <summary>
-        /// deviceprofile id if assigned, null if not assigned
+        /// Deviceprofile id if assigned, null if not assigned
         /// </summary>
         public readonly string DeviceprofileId;
         /// <summary>
-        /// hostname reported by the device
+        /// Hostname reported by the device
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// device hardware revision number
+        /// Device hardware revision number
         /// </summary>
         public readonly string HwRev;
         /// <summary>
-        /// device id
+        /// Unique ID of the object instance in the Mist Organization
         /// </summary>
         public readonly string Id;
         public readonly bool Jsi;
         /// <summary>
-        /// device MAC address
+        /// Device MAC address
         /// </summary>
         public readonly string Mac;
         /// <summary>
-        /// device model
+        /// Device model
         /// </summary>
         public readonly string Model;
         /// <summary>
-        /// device name if configured
+        /// Device name if configured
         /// </summary>
         public readonly string Name;
         public readonly string OrgId;
         /// <summary>
-        /// device serial
+        /// Device serial
         /// </summary>
         public readonly string Serial;
         /// <summary>
@@ -65,7 +64,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string SiteId;
         /// <summary>
-        /// device stock keeping unit
+        /// Device stock keeping unit
         /// </summary>
         public readonly string Sku;
         /// <summary>
@@ -73,7 +72,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+        /// If `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
         /// </summary>
         public readonly string VcMac;
 

@@ -39,8 +39,8 @@ namespace Pulumi.JuniperMist.Org.Inputs
         /// <summary>
         /// Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         /// </summary>
-        [Input("bypassAuthWhenServerDownForUnkownClient")]
-        public Input<bool>? BypassAuthWhenServerDownForUnkownClient { get; set; }
+        [Input("bypassAuthWhenServerDownForUnknownClient")]
+        public Input<bool>? BypassAuthWhenServerDownForUnknownClient { get; set; }
 
         /// <summary>
         /// Only if `mode`!=`dynamic`
@@ -97,6 +97,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? GuestNetwork { get; set; }
 
         /// <summary>
+        /// `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
+        /// </summary>
+        [Input("interIsolationNetworkLink")]
+        public Input<bool>? InterIsolationNetworkLink { get; set; }
+
+        /// <summary>
         /// Only if `mode`!=`dynamic` inter_switch_link is used together with "isolation" under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
         /// </summary>
         [Input("interSwitchLink")]
@@ -121,10 +127,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? MacAuthProtocol { get; set; }
 
         /// <summary>
-        /// Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+        /// Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 to 16383 (upper bound constrained by platform)
         /// </summary>
         [Input("macLimit")]
-        public Input<int>? MacLimit { get; set; }
+        public Input<string>? MacLimit { get; set; }
 
         /// <summary>
         /// `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
@@ -133,10 +139,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+        /// Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. Value between 256 and 9216, default value is 1514.
         /// </summary>
         [Input("mtu")]
-        public Input<int>? Mtu { get; set; }
+        public Input<string>? Mtu { get; set; }
 
         [Input("networks")]
         private InputList<string>? _networks;
@@ -175,10 +181,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? PortNetwork { get; set; }
 
         /// <summary>
-        /// Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range
+        /// Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
         /// </summary>
         [Input("reauthInterval")]
-        public Input<int>? ReauthInterval { get; set; }
+        public Input<string>? ReauthInterval { get; set; }
 
         /// <summary>
         /// Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)

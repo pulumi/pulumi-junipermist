@@ -16,7 +16,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * This resource manages Org SSO Roles for Admin Authantication.
+ * This resource manages Org SSO Roles for Admin Authentication.
  * 
  * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
  * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\

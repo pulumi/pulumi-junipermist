@@ -15,12 +15,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("includeLoopback")]
         public Input<bool>? IncludeLoopback { get; set; }
 
-        [Input("ospfNetworks", required: true)]
-        private InputMap<Inputs.NetworktemplateOspfAreasOspfNetworksArgs>? _ospfNetworks;
-        public InputMap<Inputs.NetworktemplateOspfAreasOspfNetworksArgs> OspfNetworks
+        [Input("networks", required: true)]
+        private InputMap<Inputs.NetworktemplateOspfAreasNetworksArgs>? _networks;
+        public InputMap<Inputs.NetworktemplateOspfAreasNetworksArgs> Networks
         {
-            get => _ospfNetworks ?? (_ospfNetworks = new InputMap<Inputs.NetworktemplateOspfAreasOspfNetworksArgs>());
-            set => _ospfNetworks = value;
+            get => _networks ?? (_networks = new InputMap<Inputs.NetworktemplateOspfAreasNetworksArgs>());
+            set => _networks = value;
         }
 
         /// <summary>

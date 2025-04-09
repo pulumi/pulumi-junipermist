@@ -35,6 +35,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// For both SSR and SRX disable management interface
         /// </summary>
         public readonly bool? DisableOob;
+        /// <summary>
+        /// For SSR disable usb interface
+        /// </summary>
+        public readonly bool? DisableUsb;
+        public readonly bool? FipsEnabled;
         public readonly ImmutableArray<string> ProbeHosts;
         /// <summary>
         /// Restrict inbound-traffic to host
@@ -65,6 +70,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             bool? disableOob,
 
+            bool? disableUsb,
+
+            bool? fipsEnabled,
+
             ImmutableArray<string> probeHosts,
 
             Outputs.SettingGatewayMgmtProtectRe? protectRe,
@@ -82,6 +91,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
             ConfigRevertTimer = configRevertTimer;
             DisableConsole = disableConsole;
             DisableOob = disableOob;
+            DisableUsb = disableUsb;
+            FipsEnabled = fipsEnabled;
             ProbeHosts = probeHosts;
             ProtectRe = protectRe;
             RootPassword = rootPassword;

@@ -67,7 +67,7 @@ export class Base extends pulumi.CustomResource {
      */
     public /*out*/ readonly mspLogoUrl!: pulumi.Output<string>;
     /**
-     * name of the msp the org belongs to
+     * Name of the msp the org belongs to
      */
     public /*out*/ readonly mspName!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
@@ -123,7 +123,7 @@ export interface BaseState {
      */
     mspLogoUrl?: pulumi.Input<string>;
     /**
-     * name of the msp the org belongs to
+     * Name of the msp the org belongs to
      */
     mspName?: pulumi.Input<string>;
     name?: pulumi.Input<string>;

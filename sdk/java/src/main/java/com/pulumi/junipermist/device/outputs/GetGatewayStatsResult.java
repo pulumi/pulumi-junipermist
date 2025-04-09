@@ -17,12 +17,12 @@ import javax.annotation.Nullable;
 public final class GetGatewayStatsResult {
     private List<GetGatewayStatsDeviceGatewayStat> deviceGatewayStats;
     /**
-     * @return duration like 7d, 2w
+     * @return Duration like 7d, 2w
      * 
      */
     private @Nullable String duration;
     /**
-     * @return end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * @return End datetime, can be epoch or relative time like -1d, -2h; now if not specified
      * 
      */
     private @Nullable Integer end;
@@ -35,10 +35,14 @@ public final class GetGatewayStatsResult {
     private String orgId;
     private @Nullable String siteId;
     /**
-     * @return start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * @return Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
      * 
      */
     private @Nullable Integer start;
+    /**
+     * @return enum: `all`, `connected`, `disconnected`
+     * 
+     */
     private @Nullable String status;
 
     private GetGatewayStatsResult() {}
@@ -46,14 +50,14 @@ public final class GetGatewayStatsResult {
         return this.deviceGatewayStats;
     }
     /**
-     * @return duration like 7d, 2w
+     * @return Duration like 7d, 2w
      * 
      */
     public Optional<String> duration() {
         return Optional.ofNullable(this.duration);
     }
     /**
-     * @return end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * @return End datetime, can be epoch or relative time like -1d, -2h; now if not specified
      * 
      */
     public Optional<Integer> end() {
@@ -76,12 +80,16 @@ public final class GetGatewayStatsResult {
         return Optional.ofNullable(this.siteId);
     }
     /**
-     * @return start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * @return Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
      * 
      */
     public Optional<Integer> start() {
         return Optional.ofNullable(this.start);
     }
+    /**
+     * @return enum: `all`, `connected`, `disconnected`
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

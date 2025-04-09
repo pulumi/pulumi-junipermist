@@ -5,10 +5,8 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.junipermist.org.inputs.InventoryDeviceArgs;
 import com.pulumi.junipermist.org.inputs.InventoryInventoryArgs;
 import java.lang.String;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,37 +16,6 @@ import javax.annotation.Nullable;
 public final class InventoryState extends com.pulumi.resources.ResourceArgs {
 
     public static final InventoryState Empty = new InventoryState();
-
-    /**
-     * **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-     * replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-     * `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
-     * 
-     * @deprecated
-     * The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-     * Please update your configurations to use the `inventory` attribute.
-     * 
-     */
-    @Deprecated /* The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-Please update your configurations to use the `inventory` attribute. */
-    @Import(name="devices")
-    private @Nullable Output<List<InventoryDeviceArgs>> devices;
-
-    /**
-     * @return **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-     * replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-     * `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
-     * 
-     * @deprecated
-     * The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-     * Please update your configurations to use the `inventory` attribute.
-     * 
-     */
-    @Deprecated /* The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-Please update your configurations to use the `inventory` attribute. */
-    public Optional<Output<List<InventoryDeviceArgs>>> devices() {
-        return Optional.ofNullable(this.devices);
-    }
 
     /**
      * Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
@@ -79,7 +46,6 @@ Please update your configurations to use the `inventory` attribute. */
     private InventoryState() {}
 
     private InventoryState(InventoryState $) {
-        this.devices = $.devices;
         this.inventory = $.inventory;
         this.orgId = $.orgId;
     }
@@ -100,61 +66,6 @@ Please update your configurations to use the `inventory` attribute. */
 
         public Builder(InventoryState defaults) {
             $ = new InventoryState(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param devices **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-         * replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-         * `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-         * Please update your configurations to use the `inventory` attribute.
-         * 
-         */
-        @Deprecated /* The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-Please update your configurations to use the `inventory` attribute. */
-        public Builder devices(@Nullable Output<List<InventoryDeviceArgs>> devices) {
-            $.devices = devices;
-            return this;
-        }
-
-        /**
-         * @param devices **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-         * replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-         * `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-         * Please update your configurations to use the `inventory` attribute.
-         * 
-         */
-        @Deprecated /* The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-Please update your configurations to use the `inventory` attribute. */
-        public Builder devices(List<InventoryDeviceArgs> devices) {
-            return devices(Output.of(devices));
-        }
-
-        /**
-         * @param devices **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
-         * replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
-         * `inventory` attribute. List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-         * Please update your configurations to use the `inventory` attribute.
-         * 
-         */
-        @Deprecated /* The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
-Please update your configurations to use the `inventory` attribute. */
-        public Builder devices(InventoryDeviceArgs... devices) {
-            return devices(List.of(devices));
         }
 
         /**

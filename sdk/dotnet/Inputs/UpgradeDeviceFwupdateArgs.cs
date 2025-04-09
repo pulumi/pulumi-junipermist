@@ -24,6 +24,9 @@ namespace Pulumi.JuniperMist.Inputs
         [Input("statusId")]
         public Input<int>? StatusId { get; set; }
 
+        /// <summary>
+        /// Epoch (seconds)
+        /// </summary>
         [Input("timestamp")]
         public Input<double>? Timestamp { get; set; }
 

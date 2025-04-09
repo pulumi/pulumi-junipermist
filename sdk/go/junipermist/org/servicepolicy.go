@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource manages WAN Assurance Service Policies (Application Policiess).
+// This resource manages WAN Assurance Service Policies (Application Policies).
 //
 // The Service Policies can be used in the `servicePolicies` object by referencing the Service Policy ID as the `servicepolicyId` in:
 //   - the Gateway configuration (`mist_device_gateway.service_policies`)
@@ -32,6 +32,8 @@ import (
 type Servicepolicy struct {
 	pulumi.CustomResourceState
 
+	// For SRX Only
+	Aamw ServicepolicyAamwPtrOutput `pulumi:"aamw"`
 	// enum: `allow`, `deny`
 	Action pulumi.StringOutput `pulumi:"action"`
 	// For SRX-only
@@ -85,6 +87,8 @@ func GetServicepolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Servicepolicy resources.
 type servicepolicyState struct {
+	// For SRX Only
+	Aamw *ServicepolicyAamw `pulumi:"aamw"`
 	// enum: `allow`, `deny`
 	Action *string `pulumi:"action"`
 	// For SRX-only
@@ -106,6 +110,8 @@ type servicepolicyState struct {
 }
 
 type ServicepolicyState struct {
+	// For SRX Only
+	Aamw ServicepolicyAamwPtrInput
 	// enum: `allow`, `deny`
 	Action pulumi.StringPtrInput
 	// For SRX-only
@@ -131,6 +137,8 @@ func (ServicepolicyState) ElementType() reflect.Type {
 }
 
 type servicepolicyArgs struct {
+	// For SRX Only
+	Aamw *ServicepolicyAamw `pulumi:"aamw"`
 	// enum: `allow`, `deny`
 	Action *string `pulumi:"action"`
 	// For SRX-only
@@ -153,6 +161,8 @@ type servicepolicyArgs struct {
 
 // The set of arguments for constructing a Servicepolicy resource.
 type ServicepolicyArgs struct {
+	// For SRX Only
+	Aamw ServicepolicyAamwPtrInput
 	// enum: `allow`, `deny`
 	Action pulumi.StringPtrInput
 	// For SRX-only
@@ -258,6 +268,11 @@ func (o ServicepolicyOutput) ToServicepolicyOutput() ServicepolicyOutput {
 
 func (o ServicepolicyOutput) ToServicepolicyOutputWithContext(ctx context.Context) ServicepolicyOutput {
 	return o
+}
+
+// For SRX Only
+func (o ServicepolicyOutput) Aamw() ServicepolicyAamwPtrOutput {
+	return o.ApplyT(func(v *Servicepolicy) ServicepolicyAamwPtrOutput { return v.Aamw }).(ServicepolicyAamwPtrOutput)
 }
 
 // enum: `allow`, `deny`

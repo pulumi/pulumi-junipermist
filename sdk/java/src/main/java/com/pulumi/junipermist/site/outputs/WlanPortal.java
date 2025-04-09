@@ -26,7 +26,7 @@ public final class WlanPortal {
      */
     private @Nullable String amazonClientId;
     /**
-     * @return Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a corresponding value. Else leave blank.
      * 
      */
     private @Nullable String amazonClientSecret;
@@ -131,7 +131,7 @@ public final class WlanPortal {
      */
     private @Nullable String facebookClientId;
     /**
-     * @return Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a corresponding value. Else leave blank.
      * 
      */
     private @Nullable String facebookClientSecret;
@@ -166,7 +166,7 @@ public final class WlanPortal {
      */
     private @Nullable String googleClientId;
     /**
-     * @return Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a corresponding value. Else leave blank.
      * 
      */
     private @Nullable String googleClientSecret;
@@ -201,7 +201,7 @@ public final class WlanPortal {
      */
     private @Nullable String microsoftClientId;
     /**
-     * @return Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a corresponding value. Else leave blank.
      * 
      */
     private @Nullable String microsoftClientSecret;
@@ -325,12 +325,12 @@ public final class WlanPortal {
      */
     private @Nullable Map<String,String> sponsors;
     /**
-     * @return Optionl if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+     * @return Optional if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      * 
      */
     private @Nullable String ssoDefaultRole;
     /**
-     * @return Optionl if `wlan_portal_auth`==`sso`
+     * @return Optional if `wlan_portal_auth`==`sso`
      * 
      */
     private @Nullable String ssoForcedRole;
@@ -401,7 +401,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.amazonClientId);
     }
     /**
-     * @return Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a corresponding value. Else leave blank.
      * 
      */
     public Optional<String> amazonClientSecret() {
@@ -548,7 +548,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.facebookClientId);
     }
     /**
-     * @return Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a corresponding value. Else leave blank.
      * 
      */
     public Optional<String> facebookClientSecret() {
@@ -597,7 +597,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.googleClientId);
     }
     /**
-     * @return Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a corresponding value. Else leave blank.
      * 
      */
     public Optional<String> googleClientSecret() {
@@ -646,7 +646,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.microsoftClientId);
     }
     /**
-     * @return Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a corresponding value. Else leave blank.
      * 
      */
     public Optional<String> microsoftClientSecret() {
@@ -820,14 +820,14 @@ public final class WlanPortal {
         return this.sponsors == null ? Map.of() : this.sponsors;
     }
     /**
-     * @return Optionl if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+     * @return Optional if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      * 
      */
     public Optional<String> ssoDefaultRole() {
         return Optional.ofNullable(this.ssoDefaultRole);
     }
     /**
-     * @return Optionl if `wlan_portal_auth`==`sso`
+     * @return Optional if `wlan_portal_auth`==`sso`
      * 
      */
     public Optional<String> ssoForcedRole() {

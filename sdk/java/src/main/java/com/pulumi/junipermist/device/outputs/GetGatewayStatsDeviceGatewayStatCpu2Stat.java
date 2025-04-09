@@ -32,7 +32,7 @@ public final class GetGatewayStatsDeviceGatewayStatCpu2Stat {
      */
     private Double system;
     /**
-     * @return Percentage of CPU time being used by user processe
+     * @return Percentage of CPU time being used by user processes
      * 
      */
     private Double user;
@@ -67,7 +67,7 @@ public final class GetGatewayStatsDeviceGatewayStatCpu2Stat {
         return this.system;
     }
     /**
-     * @return Percentage of CPU time being used by user processe
+     * @return Percentage of CPU time being used by user processes
      * 
      */
     public Double user() {

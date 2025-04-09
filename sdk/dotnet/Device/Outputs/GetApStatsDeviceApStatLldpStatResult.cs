@@ -15,11 +15,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
     {
         public readonly string ChassisId;
         /// <summary>
-        /// whether it support LLDP-MED
+        /// Whether it support LLDP-MED
         /// </summary>
         public readonly bool LldpMedSupported;
         /// <summary>
-        /// switch’s management address (if advertised), can be IPv4, IPv6, or MAC
+        /// Switch’s management address (if advertised), can be IPv4, IPv6, or MAC
         /// </summary>
         public readonly string MgmtAddr;
         public readonly ImmutableArray<string> MgmtAddrs;
@@ -29,27 +29,27 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string PortDesc;
         public readonly string PortId;
         /// <summary>
-        /// in mW, provided/allocated by PSE
+        /// In mW, provided/allocated by PSE
         /// </summary>
         public readonly double PowerAllocated;
         /// <summary>
-        /// in mW, total power needed by PD
+        /// In mW, total power needed by PD
         /// </summary>
         public readonly double PowerDraw;
         /// <summary>
-        /// number of negotiations, if it keeps increasing, we don’t have a stable power
+        /// Number of negotiations, if it keeps increasing, we don’ t have a stable power
         /// </summary>
         public readonly int PowerRequestCount;
         /// <summary>
-        /// in mW, the current power requested by PD
+        /// In mW, the current power requested by PD
         /// </summary>
         public readonly double PowerRequested;
         /// <summary>
-        /// description provided by switch
+        /// Description provided by switch
         /// </summary>
         public readonly string SystemDesc;
         /// <summary>
-        /// name of the switch
+        /// Name of the switch
         /// </summary>
         public readonly string SystemName;
 

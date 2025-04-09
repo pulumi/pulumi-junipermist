@@ -59,7 +59,7 @@ type Base struct {
 	MspId           pulumi.StringOutput    `pulumi:"mspId"`
 	// logo uploaded by the MSP with advanced tier, only present if provided
 	MspLogoUrl pulumi.StringOutput `pulumi:"mspLogoUrl"`
-	// name of the msp the org belongs to
+	// Name of the msp the org belongs to
 	MspName       pulumi.StringOutput      `pulumi:"mspName"`
 	Name          pulumi.StringOutput      `pulumi:"name"`
 	OrggroupIds   pulumi.StringArrayOutput `pulumi:"orggroupIds"`
@@ -101,7 +101,7 @@ type baseState struct {
 	MspId           *string `pulumi:"mspId"`
 	// logo uploaded by the MSP with advanced tier, only present if provided
 	MspLogoUrl *string `pulumi:"mspLogoUrl"`
-	// name of the msp the org belongs to
+	// Name of the msp the org belongs to
 	MspName       *string  `pulumi:"mspName"`
 	Name          *string  `pulumi:"name"`
 	OrggroupIds   []string `pulumi:"orggroupIds"`
@@ -114,7 +114,7 @@ type BaseState struct {
 	MspId           pulumi.StringPtrInput
 	// logo uploaded by the MSP with advanced tier, only present if provided
 	MspLogoUrl pulumi.StringPtrInput
-	// name of the msp the org belongs to
+	// Name of the msp the org belongs to
 	MspName       pulumi.StringPtrInput
 	Name          pulumi.StringPtrInput
 	OrggroupIds   pulumi.StringArrayInput
@@ -244,7 +244,7 @@ func (o BaseOutput) MspLogoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringOutput { return v.MspLogoUrl }).(pulumi.StringOutput)
 }
 
-// name of the msp the org belongs to
+// Name of the msp the org belongs to
 func (o BaseOutput) MspName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringOutput { return v.MspName }).(pulumi.StringOutput)
 }

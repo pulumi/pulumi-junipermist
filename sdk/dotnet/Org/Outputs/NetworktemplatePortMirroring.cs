@@ -26,11 +26,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> InputPortIdsIngresses;
         /// <summary>
-        /// Exaclty one of the `output_port_id` or `output_network` should be provided
+        /// Exactly one of the `output_port_id` or `output_network` should be provided
         /// </summary>
         public readonly string? OutputNetwork;
         /// <summary>
-        /// Exaclty one of the `output_port_id` or `output_network` should be provided
+        /// Exactly one of the `output_port_id` or `output_network` should be provided
         /// </summary>
         public readonly string? OutputPortId;
 

@@ -27,7 +27,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatching {
      */
     private @Nullable List<String> prefixes;
     /**
-     * @return `direct`, `bgp`, `osp`, ...
+     * @return `direct`, `bgp`, `osp`, `static`, `aggregate`...
      * 
      */
     private @Nullable List<String> protocols;
@@ -66,7 +66,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatching {
         return this.prefixes == null ? List.of() : this.prefixes;
     }
     /**
-     * @return `direct`, `bgp`, `osp`, ...
+     * @return `direct`, `bgp`, `osp`, `static`, `aggregate`...
      * 
      */
     public List<String> protocols() {

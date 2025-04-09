@@ -18,14 +18,14 @@ public final class GetGatewayStatsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetGatewayStatsArgs Empty = new GetGatewayStatsArgs();
 
     /**
-     * duration like 7d, 2w
+     * Duration like 7d, 2w
      * 
      */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
     /**
-     * @return duration like 7d, 2w
+     * @return Duration like 7d, 2w
      * 
      */
     public Optional<Output<String>> duration() {
@@ -33,14 +33,14 @@ public final class GetGatewayStatsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * End datetime, can be epoch or relative time like -1d, -2h; now if not specified
      * 
      */
     @Import(name="end")
     private @Nullable Output<Integer> end;
 
     /**
-     * @return end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * @return End datetime, can be epoch or relative time like -1d, -2h; now if not specified
      * 
      */
     public Optional<Output<Integer>> end() {
@@ -69,23 +69,31 @@ public final class GetGatewayStatsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
      * 
      */
     @Import(name="start")
     private @Nullable Output<Integer> start;
 
     /**
-     * @return start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * @return Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
      * 
      */
     public Optional<Output<Integer>> start() {
         return Optional.ofNullable(this.start);
     }
 
+    /**
+     * enum: `all`, `connected`, `disconnected`
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return enum: `all`, `connected`, `disconnected`
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -121,7 +129,7 @@ public final class GetGatewayStatsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param duration duration like 7d, 2w
+         * @param duration Duration like 7d, 2w
          * 
          * @return builder
          * 
@@ -132,7 +140,7 @@ public final class GetGatewayStatsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param duration duration like 7d, 2w
+         * @param duration Duration like 7d, 2w
          * 
          * @return builder
          * 
@@ -142,7 +150,7 @@ public final class GetGatewayStatsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param end end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+         * @param end End datetime, can be epoch or relative time like -1d, -2h; now if not specified
          * 
          * @return builder
          * 
@@ -153,7 +161,7 @@ public final class GetGatewayStatsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param end end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+         * @param end End datetime, can be epoch or relative time like -1d, -2h; now if not specified
          * 
          * @return builder
          * 
@@ -190,7 +198,7 @@ public final class GetGatewayStatsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param start start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+         * @param start Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
          * 
          * @return builder
          * 
@@ -201,7 +209,7 @@ public final class GetGatewayStatsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param start start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+         * @param start Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
          * 
          * @return builder
          * 
@@ -210,11 +218,23 @@ public final class GetGatewayStatsArgs extends com.pulumi.resources.InvokeArgs {
             return start(Output.of(start));
         }
 
+        /**
+         * @param status enum: `all`, `connected`, `disconnected`
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status enum: `all`, `connected`, `disconnected`
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

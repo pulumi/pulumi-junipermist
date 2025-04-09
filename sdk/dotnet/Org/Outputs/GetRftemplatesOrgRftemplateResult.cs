@@ -13,14 +13,32 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class GetRftemplatesOrgRftemplateResult
     {
+        /// <summary>
+        /// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
+        /// </summary>
+        public readonly string CountryCode;
+        /// <summary>
+        /// When the object has been created, in epoch
+        /// </summary>
         public readonly double CreatedTime;
+        /// <summary>
+        /// Unique ID of the object instance in the Mist Organization
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// When the object has been modified for the last time, in epoch
+        /// </summary>
         public readonly double ModifiedTime;
+        /// <summary>
+        /// The name of the RF template
+        /// </summary>
         public readonly string Name;
         public readonly string OrgId;
 
         [OutputConstructor]
         private GetRftemplatesOrgRftemplateResult(
+            string countryCode,
+
             double createdTime,
 
             string id,
@@ -31,6 +49,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string orgId)
         {
+            CountryCode = countryCode;
             CreatedTime = createdTime;
             Id = id;
             ModifiedTime = modifiedTime;

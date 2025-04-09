@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * This resource manages NAC Tags (Auth Policy Labels).
  *
- * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+ * The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
  *
  * ## Example Usage
  *
@@ -65,15 +65,12 @@ export class Nactag extends pulumi.CustomResource {
     /**
      * Can be set to true to allow the override by usermac result
      */
-    public readonly allowUsermacOverride!: pulumi.Output<boolean>;
+    public readonly allowUsermacOverride!: pulumi.Output<boolean | undefined>;
     /**
      * If `type`==`egressVlanNames`, list of egress vlans to return
      */
     public readonly egressVlanNames!: pulumi.Output<string[] | undefined>;
-    /**
-     * If `type`==`gbpTag`
-     */
-    public readonly gbpTag!: pulumi.Output<number | undefined>;
+    public readonly gbpTag!: pulumi.Output<string | undefined>;
     /**
      * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
      * `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
@@ -84,7 +81,7 @@ export class Nactag extends pulumi.CustomResource {
      * match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
      * set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
      */
-    public readonly matchAll!: pulumi.Output<boolean>;
+    public readonly matchAll!: pulumi.Output<boolean | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly orgId!: pulumi.Output<string>;
     /**
@@ -194,10 +191,7 @@ export interface NactagState {
      * If `type`==`egressVlanNames`, list of egress vlans to return
      */
     egressVlanNames?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * If `type`==`gbpTag`
-     */
-    gbpTag?: pulumi.Input<number>;
+    gbpTag?: pulumi.Input<string>;
     /**
      * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
      * `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
@@ -262,10 +256,7 @@ export interface NactagArgs {
      * If `type`==`egressVlanNames`, list of egress vlans to return
      */
     egressVlanNames?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * If `type`==`gbpTag`
-     */
-    gbpTag?: pulumi.Input<number>;
+    gbpTag?: pulumi.Input<string>;
     /**
      * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
      * `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`

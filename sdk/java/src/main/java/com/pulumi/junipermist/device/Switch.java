@@ -134,32 +134,40 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="dnsServers", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> dnsServers;
+    private Output<List<String>> dnsServers;
 
     /**
      * @return Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
      * 
      */
-    public Output<Optional<List<String>>> dnsServers() {
-        return Codegen.optional(this.dnsServers);
+    public Output<List<String>> dnsServers() {
+        return this.dnsServers;
     }
     /**
      * Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
      * 
      */
     @Export(name="dnsSuffixes", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> dnsSuffixes;
+    private Output<List<String>> dnsSuffixes;
 
     /**
      * @return Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
      * 
      */
-    public Output<Optional<List<String>>> dnsSuffixes() {
-        return Codegen.optional(this.dnsSuffixes);
+    public Output<List<String>> dnsSuffixes() {
+        return this.dnsSuffixes;
     }
+    /**
+     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * 
+     */
     @Export(name="extraRoutes", refs={Map.class,String.class,SwitchExtraRoutes.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchExtraRoutes>> extraRoutes;
 
+    /**
+     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * 
+     */
     public Output<Optional<Map<String,SwitchExtraRoutes>>> extraRoutes() {
         return Codegen.optional(this.extraRoutes);
     }
@@ -326,14 +334,14 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ntpServers", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> ntpServers;
+    private Output<List<String>> ntpServers;
 
     /**
      * @return List of NTP servers specific to this device. By default, those in Site Settings will be used
      * 
      */
-    public Output<Optional<List<String>>> ntpServers() {
-        return Codegen.optional(this.ntpServers);
+    public Output<List<String>> ntpServers() {
+        return this.ntpServers;
     }
     /**
      * Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
@@ -402,7 +410,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
     /**
      * Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      * 
      */
     @Export(name="portMirroring", refs={Map.class,String.class,SwitchPortMirroring.class}, tree="[0,1,2]")
@@ -411,7 +419,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
     /**
      * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 port mirrorings is allowed
+     * maximum 4 mirroring ports is allowed
      * 
      */
     public Output<Optional<Map<String,SwitchPortMirroring>>> portMirroring() {

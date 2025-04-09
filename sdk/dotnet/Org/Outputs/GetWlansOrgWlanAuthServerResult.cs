@@ -33,7 +33,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool RequireMessageAuthenticator;
         /// <summary>
-        /// Secretof RADIUS server
+        /// Secret of RADIUS server
         /// </summary>
         public readonly string Secret;
 

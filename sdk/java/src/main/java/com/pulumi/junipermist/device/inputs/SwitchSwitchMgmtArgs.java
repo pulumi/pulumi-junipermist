@@ -103,6 +103,13 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.disableOobDownAlarm);
     }
 
+    @Import(name="fipsEnabled")
+    private @Nullable Output<Boolean> fipsEnabled;
+
+    public Optional<Output<Boolean>> fipsEnabled() {
+        return Optional.ofNullable(this.fipsEnabled);
+    }
+
     /**
      * Property key is the user name. For Local user authentication
      * 
@@ -118,17 +125,33 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.localAccounts);
     }
 
+    /**
+     * IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+     * 
+     */
     @Import(name="mxedgeProxyHost")
     private @Nullable Output<String> mxedgeProxyHost;
 
+    /**
+     * @return IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+     * 
+     */
     public Optional<Output<String>> mxedgeProxyHost() {
         return Optional.ofNullable(this.mxedgeProxyHost);
     }
 
+    /**
+     * Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
+     * 
+     */
     @Import(name="mxedgeProxyPort")
-    private @Nullable Output<Integer> mxedgeProxyPort;
+    private @Nullable Output<String> mxedgeProxyPort;
 
-    public Optional<Output<Integer>> mxedgeProxyPort() {
+    /**
+     * @return Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
+     * 
+     */
+    public Optional<Output<String>> mxedgeProxyPort() {
         return Optional.ofNullable(this.mxedgeProxyPort);
     }
 
@@ -189,6 +212,7 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
         this.configRevertTimer = $.configRevertTimer;
         this.dhcpOptionFqdn = $.dhcpOptionFqdn;
         this.disableOobDownAlarm = $.disableOobDownAlarm;
+        this.fipsEnabled = $.fipsEnabled;
         this.localAccounts = $.localAccounts;
         this.mxedgeProxyHost = $.mxedgeProxyHost;
         this.mxedgeProxyPort = $.mxedgeProxyPort;
@@ -330,6 +354,15 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
             return disableOobDownAlarm(Output.of(disableOobDownAlarm));
         }
 
+        public Builder fipsEnabled(@Nullable Output<Boolean> fipsEnabled) {
+            $.fipsEnabled = fipsEnabled;
+            return this;
+        }
+
+        public Builder fipsEnabled(Boolean fipsEnabled) {
+            return fipsEnabled(Output.of(fipsEnabled));
+        }
+
         /**
          * @param localAccounts Property key is the user name. For Local user authentication
          * 
@@ -351,21 +384,45 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
             return localAccounts(Output.of(localAccounts));
         }
 
+        /**
+         * @param mxedgeProxyHost IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+         * 
+         * @return builder
+         * 
+         */
         public Builder mxedgeProxyHost(@Nullable Output<String> mxedgeProxyHost) {
             $.mxedgeProxyHost = mxedgeProxyHost;
             return this;
         }
 
+        /**
+         * @param mxedgeProxyHost IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+         * 
+         * @return builder
+         * 
+         */
         public Builder mxedgeProxyHost(String mxedgeProxyHost) {
             return mxedgeProxyHost(Output.of(mxedgeProxyHost));
         }
 
-        public Builder mxedgeProxyPort(@Nullable Output<Integer> mxedgeProxyPort) {
+        /**
+         * @param mxedgeProxyPort Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mxedgeProxyPort(@Nullable Output<String> mxedgeProxyPort) {
             $.mxedgeProxyPort = mxedgeProxyPort;
             return this;
         }
 
-        public Builder mxedgeProxyPort(Integer mxedgeProxyPort) {
+        /**
+         * @param mxedgeProxyPort Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mxedgeProxyPort(String mxedgeProxyPort) {
             return mxedgeProxyPort(Output.of(mxedgeProxyPort));
         }
 

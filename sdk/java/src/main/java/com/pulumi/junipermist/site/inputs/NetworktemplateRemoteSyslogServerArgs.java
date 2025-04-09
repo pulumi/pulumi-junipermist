@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.site.inputs.NetworktemplateRemoteSyslogServerContentArgs;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -63,9 +62,9 @@ public final class NetworktemplateRemoteSyslogServerArgs extends com.pulumi.reso
     }
 
     @Import(name="port")
-    private @Nullable Output<Integer> port;
+    private @Nullable Output<String> port;
 
-    public Optional<Output<Integer>> port() {
+    public Optional<Output<String>> port() {
         return Optional.ofNullable(this.port);
     }
 
@@ -231,12 +230,12 @@ public final class NetworktemplateRemoteSyslogServerArgs extends com.pulumi.reso
             return match(Output.of(match));
         }
 
-        public Builder port(@Nullable Output<Integer> port) {
+        public Builder port(@Nullable Output<String> port) {
             $.port = port;
             return this;
         }
 
-        public Builder port(Integer port) {
+        public Builder port(String port) {
             return port(Output.of(port));
         }
 

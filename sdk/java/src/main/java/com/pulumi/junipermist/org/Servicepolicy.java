@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.org.ServicepolicyArgs;
 import com.pulumi.junipermist.org.inputs.ServicepolicyState;
+import com.pulumi.junipermist.org.outputs.ServicepolicyAamw;
 import com.pulumi.junipermist.org.outputs.ServicepolicyAntivirus;
 import com.pulumi.junipermist.org.outputs.ServicepolicyAppqoe;
 import com.pulumi.junipermist.org.outputs.ServicepolicyEwf;
@@ -22,7 +23,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource manages WAN Assurance Service Policies (Application Policiess).
+ * This resource manages WAN Assurance Service Policies (Application Policies).
  * 
  * The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
  * * the Gateway configuration (`mist_device_gateway.service_policies`)
@@ -88,6 +89,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:org/servicepolicy:Servicepolicy")
 public class Servicepolicy extends com.pulumi.resources.CustomResource {
+    /**
+     * For SRX Only
+     * 
+     */
+    @Export(name="aamw", refs={ServicepolicyAamw.class}, tree="[0]")
+    private Output</* @Nullable */ ServicepolicyAamw> aamw;
+
+    /**
+     * @return For SRX Only
+     * 
+     */
+    public Output<Optional<ServicepolicyAamw>> aamw() {
+        return Codegen.optional(this.aamw);
+    }
     /**
      * enum: `allow`, `deny`
      * 

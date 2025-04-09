@@ -231,6 +231,26 @@ public final class WlanPortalTemplatePortalTemplate {
      * 
      */
     private @Nullable String logo;
+    /**
+     * @return label of the link to go to /marketing_policy
+     * 
+     */
+    private @Nullable String marketingPolicyLink;
+    /**
+     * @return Whether marketing policy optin is enabled
+     * 
+     */
+    private @Nullable Boolean marketingPolicyOptIn;
+    /**
+     * @return label for marketing optin
+     * 
+     */
+    private @Nullable String marketingPolicyOptInLabel;
+    /**
+     * @return marketing policy text
+     * 
+     */
+    private @Nullable String marketingPolicyOptInText;
     private @Nullable String message;
     private @Nullable Boolean multiAuth;
     /**
@@ -327,7 +347,7 @@ public final class WlanPortalTemplatePortalTemplate {
     private @Nullable String requiredFieldLabel;
     private @Nullable Boolean responsiveLayout;
     /**
-     * @return Label of the button to /signin
+     * @return Label of the button to signin
      * 
      */
     private @Nullable String signInLabel;
@@ -800,6 +820,34 @@ public final class WlanPortalTemplatePortalTemplate {
     public Optional<String> logo() {
         return Optional.ofNullable(this.logo);
     }
+    /**
+     * @return label of the link to go to /marketing_policy
+     * 
+     */
+    public Optional<String> marketingPolicyLink() {
+        return Optional.ofNullable(this.marketingPolicyLink);
+    }
+    /**
+     * @return Whether marketing policy optin is enabled
+     * 
+     */
+    public Optional<Boolean> marketingPolicyOptIn() {
+        return Optional.ofNullable(this.marketingPolicyOptIn);
+    }
+    /**
+     * @return label for marketing optin
+     * 
+     */
+    public Optional<String> marketingPolicyOptInLabel() {
+        return Optional.ofNullable(this.marketingPolicyOptInLabel);
+    }
+    /**
+     * @return marketing policy text
+     * 
+     */
+    public Optional<String> marketingPolicyOptInText() {
+        return Optional.ofNullable(this.marketingPolicyOptInText);
+    }
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
@@ -942,7 +990,7 @@ public final class WlanPortalTemplatePortalTemplate {
         return Optional.ofNullable(this.responsiveLayout);
     }
     /**
-     * @return Label of the button to /signin
+     * @return Label of the button to signin
      * 
      */
     public Optional<String> signInLabel() {
@@ -1249,6 +1297,10 @@ public final class WlanPortalTemplatePortalTemplate {
         private @Nullable Boolean field4required;
         private @Nullable Map<String,WlanPortalTemplatePortalTemplateLocales> locales;
         private @Nullable String logo;
+        private @Nullable String marketingPolicyLink;
+        private @Nullable Boolean marketingPolicyOptIn;
+        private @Nullable String marketingPolicyOptInLabel;
+        private @Nullable String marketingPolicyOptInText;
         private @Nullable String message;
         private @Nullable Boolean multiAuth;
         private @Nullable Boolean name;
@@ -1374,6 +1426,10 @@ public final class WlanPortalTemplatePortalTemplate {
     	      this.field4required = defaults.field4required;
     	      this.locales = defaults.locales;
     	      this.logo = defaults.logo;
+    	      this.marketingPolicyLink = defaults.marketingPolicyLink;
+    	      this.marketingPolicyOptIn = defaults.marketingPolicyOptIn;
+    	      this.marketingPolicyOptInLabel = defaults.marketingPolicyOptInLabel;
+    	      this.marketingPolicyOptInText = defaults.marketingPolicyOptInText;
     	      this.message = defaults.message;
     	      this.multiAuth = defaults.multiAuth;
     	      this.name = defaults.name;
@@ -1756,6 +1812,30 @@ public final class WlanPortalTemplatePortalTemplate {
         public Builder logo(@Nullable String logo) {
 
             this.logo = logo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder marketingPolicyLink(@Nullable String marketingPolicyLink) {
+
+            this.marketingPolicyLink = marketingPolicyLink;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder marketingPolicyOptIn(@Nullable Boolean marketingPolicyOptIn) {
+
+            this.marketingPolicyOptIn = marketingPolicyOptIn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder marketingPolicyOptInLabel(@Nullable String marketingPolicyOptInLabel) {
+
+            this.marketingPolicyOptInLabel = marketingPolicyOptInLabel;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder marketingPolicyOptInText(@Nullable String marketingPolicyOptInText) {
+
+            this.marketingPolicyOptInText = marketingPolicyOptInText;
             return this;
         }
         @CustomType.Setter
@@ -2232,6 +2312,10 @@ public final class WlanPortalTemplatePortalTemplate {
             _resultValue.field4required = field4required;
             _resultValue.locales = locales;
             _resultValue.logo = logo;
+            _resultValue.marketingPolicyLink = marketingPolicyLink;
+            _resultValue.marketingPolicyOptIn = marketingPolicyOptIn;
+            _resultValue.marketingPolicyOptInLabel = marketingPolicyOptInLabel;
+            _resultValue.marketingPolicyOptInText = marketingPolicyOptInText;
             _resultValue.message = message;
             _resultValue.multiAuth = multiAuth;
             _resultValue.name = name;

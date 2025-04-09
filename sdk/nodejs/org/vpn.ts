@@ -48,8 +48,19 @@ export class Vpn extends pulumi.CustomResource {
     }
 
     public readonly name!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
+    public readonly orgId!: pulumi.Output<string | undefined>;
+    /**
+     * Only if `type`==`hubSpoke`
+     */
+    public readonly pathSelection!: pulumi.Output<outputs.org.VpnPathSelection | undefined>;
+    /**
+     * For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     */
     public readonly paths!: pulumi.Output<{[key: string]: outputs.org.VpnPaths}>;
+    /**
+     * enum: `hubSpoke`, `mesh`
+     */
+    public readonly type!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Vpn resource with the given unique name, arguments, and options.
@@ -66,18 +77,19 @@ export class Vpn extends pulumi.CustomResource {
             const state = argsOrState as VpnState | undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["pathSelection"] = state ? state.pathSelection : undefined;
             resourceInputs["paths"] = state ? state.paths : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as VpnArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'orgId'");
-            }
             if ((!args || args.paths === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'paths'");
             }
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["pathSelection"] = args ? args.pathSelection : undefined;
             resourceInputs["paths"] = args ? args.paths : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Vpn.__pulumiType, name, resourceInputs, opts);
@@ -90,7 +102,18 @@ export class Vpn extends pulumi.CustomResource {
 export interface VpnState {
     name?: pulumi.Input<string>;
     orgId?: pulumi.Input<string>;
+    /**
+     * Only if `type`==`hubSpoke`
+     */
+    pathSelection?: pulumi.Input<inputs.org.VpnPathSelection>;
+    /**
+     * For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     */
     paths?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.VpnPaths>}>;
+    /**
+     * enum: `hubSpoke`, `mesh`
+     */
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -98,6 +121,17 @@ export interface VpnState {
  */
 export interface VpnArgs {
     name?: pulumi.Input<string>;
-    orgId: pulumi.Input<string>;
+    orgId?: pulumi.Input<string>;
+    /**
+     * Only if `type`==`hubSpoke`
+     */
+    pathSelection?: pulumi.Input<inputs.org.VpnPathSelection>;
+    /**
+     * For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     */
     paths: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.VpnPaths>}>;
+    /**
+     * enum: `hubSpoke`, `mesh`
+     */
+    type?: pulumi.Input<string>;
 }

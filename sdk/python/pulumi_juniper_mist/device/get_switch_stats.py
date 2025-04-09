@@ -71,7 +71,7 @@ class GetSwitchStatsResult:
     @pulumi.getter
     def duration(self) -> Optional[str]:
         """
-        duration like 7d, 2w
+        Duration like 7d, 2w
         """
         return pulumi.get(self, "duration")
 
@@ -79,7 +79,7 @@ class GetSwitchStatsResult:
     @pulumi.getter
     def end(self) -> Optional[int]:
         """
-        end datetime, can be epoch or relative time like -1d, -2h; now if not specified
+        End datetime, can be epoch or relative time like -1d, -2h; now if not specified
         """
         return pulumi.get(self, "end")
 
@@ -87,7 +87,7 @@ class GetSwitchStatsResult:
     @pulumi.getter(name="evpnUnused")
     def evpn_unused(self) -> Optional[str]:
         """
-        if `evpn_unused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+        If `evpn_unused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
         """
         return pulumi.get(self, "evpn_unused")
 
@@ -126,13 +126,16 @@ class GetSwitchStatsResult:
     @pulumi.getter
     def start(self) -> Optional[int]:
         """
-        start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+        Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
         """
         return pulumi.get(self, "start")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        enum: `all`, `connected`, `disconnected`
+        """
         return pulumi.get(self, "status")
 
 
@@ -186,11 +189,12 @@ def get_switch_stats(duration: Optional[str] = None,
     ```
 
 
-    :param str duration: duration like 7d, 2w
-    :param int end: end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-    :param str evpn_unused: if `evpn_unused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+    :param str duration: Duration like 7d, 2w
+    :param int end: End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+    :param str evpn_unused: If `evpn_unused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
     :param str evpntopo_id: EVPN Topology ID
-    :param int start: start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+    :param int start: Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+    :param str status: enum: `all`, `connected`, `disconnected`
     """
     __args__ = dict()
     __args__['duration'] = duration
@@ -248,11 +252,12 @@ def get_switch_stats_output(duration: Optional[pulumi.Input[Optional[str]]] = No
     ```
 
 
-    :param str duration: duration like 7d, 2w
-    :param int end: end datetime, can be epoch or relative time like -1d, -2h; now if not specified
-    :param str evpn_unused: if `evpn_unused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+    :param str duration: Duration like 7d, 2w
+    :param int end: End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+    :param str evpn_unused: If `evpn_unused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
     :param str evpntopo_id: EVPN Topology ID
-    :param int start: start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+    :param int start: Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+    :param str status: enum: `all`, `connected`, `disconnected`
     """
     __args__ = dict()
     __args__['duration'] = duration

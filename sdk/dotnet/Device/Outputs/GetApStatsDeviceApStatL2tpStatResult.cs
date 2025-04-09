@@ -14,12 +14,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GetApStatsDeviceApStatL2tpStatResult
     {
         /// <summary>
-        /// list of sessions
+        /// List of sessions
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApStatsDeviceApStatL2tpStatSessionResult> Sessions;
+        /// <summary>
+        /// enum: `established`, `established_with_session`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+        /// </summary>
         public readonly string State;
         /// <summary>
-        /// uptime
+        /// Uptime
         /// </summary>
         public readonly int Uptime;
         /// <summary>

@@ -14,6 +14,14 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class WlanRateset
     {
         /// <summary>
+        /// If `template`==`custom`. EHT MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit)
+        /// </summary>
+        public readonly string? Eht;
+        /// <summary>
+        /// If `template`==`custom`. HE MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit
+        /// </summary>
+        public readonly string? He;
+        /// <summary>
         /// If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
         /// </summary>
         public readonly string? Ht;
@@ -41,6 +49,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
         [OutputConstructor]
         private WlanRateset(
+            string? eht,
+
+            string? he,
+
             string? ht,
 
             ImmutableArray<string> legacies,
@@ -51,6 +63,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             string? vht)
         {
+            Eht = eht;
+            He = he;
             Ht = ht;
             Legacies = legacies;
             MinRssi = minRssi;

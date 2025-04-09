@@ -5,7 +5,6 @@ package com.pulumi.junipermist.device.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,9 +16,9 @@ public final class SwitchRemoteSyslogFileArchiveArgs extends com.pulumi.resource
     public static final SwitchRemoteSyslogFileArchiveArgs Empty = new SwitchRemoteSyslogFileArchiveArgs();
 
     @Import(name="files")
-    private @Nullable Output<Integer> files;
+    private @Nullable Output<String> files;
 
-    public Optional<Output<Integer>> files() {
+    public Optional<Output<String>> files() {
         return Optional.ofNullable(this.files);
     }
 
@@ -55,12 +54,12 @@ public final class SwitchRemoteSyslogFileArchiveArgs extends com.pulumi.resource
             $ = new SwitchRemoteSyslogFileArchiveArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder files(@Nullable Output<Integer> files) {
+        public Builder files(@Nullable Output<String> files) {
             $.files = files;
             return this;
         }
 
-        public Builder files(Integer files) {
+        public Builder files(String files) {
             return files(Output.of(files));
         }
 

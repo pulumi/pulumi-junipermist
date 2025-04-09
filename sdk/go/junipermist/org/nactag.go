@@ -14,7 +14,7 @@ import (
 
 // This resource manages NAC Tags (Auth Policy Labels).
 //
-// # The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+// # The NAC Tags can be used in the NAC Rules to define the matching criteria or the returned RADIUS Attributes
 //
 // ## Example Usage
 //
@@ -61,20 +61,19 @@ type Nactag struct {
 	pulumi.CustomResourceState
 
 	// Can be set to true to allow the override by usermac result
-	AllowUsermacOverride pulumi.BoolOutput `pulumi:"allowUsermacOverride"`
+	AllowUsermacOverride pulumi.BoolPtrOutput `pulumi:"allowUsermacOverride"`
 	// If `type`==`egressVlanNames`, list of egress vlans to return
 	EgressVlanNames pulumi.StringArrayOutput `pulumi:"egressVlanNames"`
-	// If `type`==`gbpTag`
-	GbpTag pulumi.IntPtrOutput `pulumi:"gbpTag"`
+	GbpTag          pulumi.StringPtrOutput   `pulumi:"gbpTag"`
 	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
 	// `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match pulumi.StringPtrOutput `pulumi:"match"`
 	// This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
 	// match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
 	// set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
-	MatchAll pulumi.BoolOutput   `pulumi:"matchAll"`
-	Name     pulumi.StringOutput `pulumi:"name"`
-	OrgId    pulumi.StringOutput `pulumi:"orgId"`
+	MatchAll pulumi.BoolPtrOutput `pulumi:"matchAll"`
+	Name     pulumi.StringOutput  `pulumi:"name"`
+	OrgId    pulumi.StringOutput  `pulumi:"orgId"`
 	// If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". It is
 	// the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
 	// that it is allowed to have more than one radiusAttrs in the result of a given rule.
@@ -138,8 +137,7 @@ type nactagState struct {
 	AllowUsermacOverride *bool `pulumi:"allowUsermacOverride"`
 	// If `type`==`egressVlanNames`, list of egress vlans to return
 	EgressVlanNames []string `pulumi:"egressVlanNames"`
-	// If `type`==`gbpTag`
-	GbpTag *int `pulumi:"gbpTag"`
+	GbpTag          *string  `pulumi:"gbpTag"`
 	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
 	// `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match *string `pulumi:"match"`
@@ -177,8 +175,7 @@ type NactagState struct {
 	AllowUsermacOverride pulumi.BoolPtrInput
 	// If `type`==`egressVlanNames`, list of egress vlans to return
 	EgressVlanNames pulumi.StringArrayInput
-	// If `type`==`gbpTag`
-	GbpTag pulumi.IntPtrInput
+	GbpTag          pulumi.StringPtrInput
 	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
 	// `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match pulumi.StringPtrInput
@@ -220,8 +217,7 @@ type nactagArgs struct {
 	AllowUsermacOverride *bool `pulumi:"allowUsermacOverride"`
 	// If `type`==`egressVlanNames`, list of egress vlans to return
 	EgressVlanNames []string `pulumi:"egressVlanNames"`
-	// If `type`==`gbpTag`
-	GbpTag *int `pulumi:"gbpTag"`
+	GbpTag          *string  `pulumi:"gbpTag"`
 	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
 	// `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match *string `pulumi:"match"`
@@ -260,8 +256,7 @@ type NactagArgs struct {
 	AllowUsermacOverride pulumi.BoolPtrInput
 	// If `type`==`egressVlanNames`, list of egress vlans to return
 	EgressVlanNames pulumi.StringArrayInput
-	// If `type`==`gbpTag`
-	GbpTag pulumi.IntPtrInput
+	GbpTag          pulumi.StringPtrInput
 	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
 	// `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match pulumi.StringPtrInput
@@ -382,8 +377,8 @@ func (o NactagOutput) ToNactagOutputWithContext(ctx context.Context) NactagOutpu
 }
 
 // Can be set to true to allow the override by usermac result
-func (o NactagOutput) AllowUsermacOverride() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Nactag) pulumi.BoolOutput { return v.AllowUsermacOverride }).(pulumi.BoolOutput)
+func (o NactagOutput) AllowUsermacOverride() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Nactag) pulumi.BoolPtrOutput { return v.AllowUsermacOverride }).(pulumi.BoolPtrOutput)
 }
 
 // If `type`==`egressVlanNames`, list of egress vlans to return
@@ -391,9 +386,8 @@ func (o NactagOutput) EgressVlanNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Nactag) pulumi.StringArrayOutput { return v.EgressVlanNames }).(pulumi.StringArrayOutput)
 }
 
-// If `type`==`gbpTag`
-func (o NactagOutput) GbpTag() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Nactag) pulumi.IntPtrOutput { return v.GbpTag }).(pulumi.IntPtrOutput)
+func (o NactagOutput) GbpTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Nactag) pulumi.StringPtrOutput { return v.GbpTag }).(pulumi.StringPtrOutput)
 }
 
 // if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
@@ -405,8 +399,8 @@ func (o NactagOutput) Match() pulumi.StringPtrOutput {
 // This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
 // match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
 // set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
-func (o NactagOutput) MatchAll() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Nactag) pulumi.BoolOutput { return v.MatchAll }).(pulumi.BoolOutput)
+func (o NactagOutput) MatchAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Nactag) pulumi.BoolPtrOutput { return v.MatchAll }).(pulumi.BoolPtrOutput)
 }
 
 func (o NactagOutput) Name() pulumi.StringOutput {
