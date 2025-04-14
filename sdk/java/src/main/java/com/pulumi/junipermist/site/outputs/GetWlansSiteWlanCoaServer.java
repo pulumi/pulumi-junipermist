@@ -6,7 +6,6 @@ package com.pulumi.junipermist.site.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -19,7 +18,7 @@ public final class GetWlansSiteWlanCoaServer {
     private Boolean disableEventTimestampCheck;
     private Boolean enabled;
     private String ip;
-    private Integer port;
+    private String port;
     private String secret;
 
     private GetWlansSiteWlanCoaServer() {}
@@ -36,7 +35,7 @@ public final class GetWlansSiteWlanCoaServer {
     public String ip() {
         return this.ip;
     }
-    public Integer port() {
+    public String port() {
         return this.port;
     }
     public String secret() {
@@ -55,7 +54,7 @@ public final class GetWlansSiteWlanCoaServer {
         private Boolean disableEventTimestampCheck;
         private Boolean enabled;
         private String ip;
-        private Integer port;
+        private String port;
         private String secret;
         public Builder() {}
         public Builder(GetWlansSiteWlanCoaServer defaults) {
@@ -92,7 +91,7 @@ public final class GetWlansSiteWlanCoaServer {
             return this;
         }
         @CustomType.Setter
-        public Builder port(Integer port) {
+        public Builder port(String port) {
             if (port == null) {
               throw new MissingRequiredPropertyException("GetWlansSiteWlanCoaServer", "port");
             }

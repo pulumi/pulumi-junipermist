@@ -46,7 +46,7 @@ public final class WlanPortal {
      */
     private @Nullable Integer amazonExpire;
     /**
-     * @return authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+     * @return authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
      * 
      */
     private @Nullable String auth;
@@ -302,7 +302,7 @@ public final class WlanPortal {
      */
     private @Nullable Integer sponsorExpire;
     /**
-     * @return Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+     * @return Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
      * 
      */
     private @Nullable String sponsorLinkValidityDuration;
@@ -429,7 +429,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.amazonExpire);
     }
     /**
-     * @return authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+     * @return authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
      * 
      */
     public Optional<String> auth() {
@@ -789,7 +789,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.sponsorExpire);
     }
     /**
-     * @return Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+     * @return Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
      * 
      */
     public Optional<String> sponsorLinkValidityDuration() {

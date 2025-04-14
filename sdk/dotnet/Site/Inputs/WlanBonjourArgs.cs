@@ -12,7 +12,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class WlanBonjourArgs : global::Pulumi.ResourceArgs
     {
-        [Input("additionalVlanIds", required: true)]
+        [Input("additionalVlanIds")]
         private InputList<string>? _additionalVlanIds;
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        [Input("services", required: true)]
+        [Input("services")]
         private InputMap<Inputs.WlanBonjourServicesArgs>? _services;
 
         /// <summary>

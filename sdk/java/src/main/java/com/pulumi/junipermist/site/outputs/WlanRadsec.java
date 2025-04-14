@@ -6,7 +6,6 @@ package com.pulumi.junipermist.site.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.junipermist.site.outputs.WlanRadsecServer;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,7 +16,7 @@ import javax.annotation.Nullable;
 public final class WlanRadsec {
     private @Nullable Boolean coaEnabled;
     private @Nullable Boolean enabled;
-    private @Nullable Integer idleTimeout;
+    private @Nullable String idleTimeout;
     /**
      * @return To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
      * 
@@ -56,7 +55,7 @@ public final class WlanRadsec {
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
-    public Optional<Integer> idleTimeout() {
+    public Optional<String> idleTimeout() {
         return Optional.ofNullable(this.idleTimeout);
     }
     /**
@@ -113,7 +112,7 @@ public final class WlanRadsec {
     public static final class Builder {
         private @Nullable Boolean coaEnabled;
         private @Nullable Boolean enabled;
-        private @Nullable Integer idleTimeout;
+        private @Nullable String idleTimeout;
         private @Nullable List<String> mxclusterIds;
         private @Nullable List<String> proxyHosts;
         private @Nullable String serverName;
@@ -147,7 +146,7 @@ public final class WlanRadsec {
             return this;
         }
         @CustomType.Setter
-        public Builder idleTimeout(@Nullable Integer idleTimeout) {
+        public Builder idleTimeout(@Nullable String idleTimeout) {
 
             this.idleTimeout = idleTimeout;
             return this;

@@ -12,7 +12,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class WlanDynamicVlanArgs : global::Pulumi.ResourceArgs
     {
-        [Input("defaultVlanIds", required: true)]
+        [Input("defaultVlanIds")]
         private InputList<string>? _defaultVlanIds;
 
         /// <summary>

@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? Enabled { get; set; }
 
         [Input("idleTimeout")]
-        public Input<int>? IdleTimeout { get; set; }
+        public Input<string>? IdleTimeout { get; set; }
 
         [Input("mxclusterIds")]
         private InputList<string>? _mxclusterIds;

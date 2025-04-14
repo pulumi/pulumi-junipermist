@@ -24,10 +24,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string KeywrapFormat;
         public readonly string KeywrapKek;
         public readonly string KeywrapMack;
-        /// <summary>
-        /// Acct port of RADIUS server
-        /// </summary>
-        public readonly int Port;
+        public readonly string Port;
         /// <summary>
         /// Secret of RADIUS server
         /// </summary>
@@ -45,7 +42,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string keywrapMack,
 
-            int port,
+            string port,
 
             string secret)
         {

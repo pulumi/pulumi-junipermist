@@ -6,7 +6,6 @@ package com.pulumi.junipermist.org.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -27,11 +26,7 @@ public final class NetworktemplateRadiusConfigAcctServer {
     private @Nullable String keywrapFormat;
     private @Nullable String keywrapKek;
     private @Nullable String keywrapMack;
-    /**
-     * @return Acct port of RADIUS server
-     * 
-     */
-    private @Nullable Integer port;
+    private @Nullable String port;
     /**
      * @return Secret of RADIUS server
      * 
@@ -62,11 +57,7 @@ public final class NetworktemplateRadiusConfigAcctServer {
     public Optional<String> keywrapMack() {
         return Optional.ofNullable(this.keywrapMack);
     }
-    /**
-     * @return Acct port of RADIUS server
-     * 
-     */
-    public Optional<Integer> port() {
+    public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
     /**
@@ -91,7 +82,7 @@ public final class NetworktemplateRadiusConfigAcctServer {
         private @Nullable String keywrapFormat;
         private @Nullable String keywrapKek;
         private @Nullable String keywrapMack;
-        private @Nullable Integer port;
+        private @Nullable String port;
         private String secret;
         public Builder() {}
         public Builder(NetworktemplateRadiusConfigAcctServer defaults) {
@@ -138,7 +129,7 @@ public final class NetworktemplateRadiusConfigAcctServer {
             return this;
         }
         @CustomType.Setter
-        public Builder port(@Nullable Integer port) {
+        public Builder port(@Nullable String port) {
 
             this.port = port;
             return this;

@@ -12984,7 +12984,7 @@ type GatewayTunnelConfigs struct {
 	Probe *GatewayTunnelConfigsProbe `pulumi:"probe"`
 	// Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
 	Protocol *string `pulumi:"protocol"`
-	// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+	// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
 	Provider *string `pulumi:"provider"`
 	// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 	Psk *string `pulumi:"psk"`
@@ -13029,7 +13029,7 @@ type GatewayTunnelConfigsArgs struct {
 	Probe GatewayTunnelConfigsProbePtrInput `pulumi:"probe"`
 	// Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+	// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
 	// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 	Psk pulumi.StringPtrInput `pulumi:"psk"`
@@ -13149,7 +13149,7 @@ func (o GatewayTunnelConfigsOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
 func (o GatewayTunnelConfigsOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
@@ -21112,8 +21112,7 @@ type SwitchRadiusConfigAcctServer struct {
 	KeywrapFormat *string `pulumi:"keywrapFormat"`
 	KeywrapKek    *string `pulumi:"keywrapKek"`
 	KeywrapMack   *string `pulumi:"keywrapMack"`
-	// Acct port of RADIUS server
-	Port *int `pulumi:"port"`
+	Port          *string `pulumi:"port"`
 	// Secret of RADIUS server
 	Secret string `pulumi:"secret"`
 }
@@ -21137,8 +21136,7 @@ type SwitchRadiusConfigAcctServerArgs struct {
 	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
 	KeywrapKek    pulumi.StringPtrInput `pulumi:"keywrapKek"`
 	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
-	// Acct port of RADIUS server
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Port          pulumi.StringPtrInput `pulumi:"port"`
 	// Secret of RADIUS server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
@@ -21216,9 +21214,8 @@ func (o SwitchRadiusConfigAcctServerOutput) KeywrapMack() pulumi.StringPtrOutput
 	return o.ApplyT(func(v SwitchRadiusConfigAcctServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
 }
 
-// Acct port of RADIUS server
-func (o SwitchRadiusConfigAcctServerOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SwitchRadiusConfigAcctServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o SwitchRadiusConfigAcctServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchRadiusConfigAcctServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 // Secret of RADIUS server
@@ -21254,8 +21251,7 @@ type SwitchRadiusConfigAuthServer struct {
 	KeywrapFormat *string `pulumi:"keywrapFormat"`
 	KeywrapKek    *string `pulumi:"keywrapKek"`
 	KeywrapMack   *string `pulumi:"keywrapMack"`
-	// Auth port of RADIUS server
-	Port *int `pulumi:"port"`
+	Port          *string `pulumi:"port"`
 	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator *bool `pulumi:"requireMessageAuthenticator"`
 	// Secret of RADIUS server
@@ -21281,8 +21277,7 @@ type SwitchRadiusConfigAuthServerArgs struct {
 	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
 	KeywrapKek    pulumi.StringPtrInput `pulumi:"keywrapKek"`
 	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
-	// Auth port of RADIUS server
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Port          pulumi.StringPtrInput `pulumi:"port"`
 	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator pulumi.BoolPtrInput `pulumi:"requireMessageAuthenticator"`
 	// Secret of RADIUS server
@@ -21362,9 +21357,8 @@ func (o SwitchRadiusConfigAuthServerOutput) KeywrapMack() pulumi.StringPtrOutput
 	return o.ApplyT(func(v SwitchRadiusConfigAuthServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
 }
 
-// Auth port of RADIUS server
-func (o SwitchRadiusConfigAuthServerOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SwitchRadiusConfigAuthServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o SwitchRadiusConfigAuthServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchRadiusConfigAuthServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 // Whether to require Message-Authenticator in requests

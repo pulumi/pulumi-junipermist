@@ -33,11 +33,8 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("keywrapMack")]
         public Input<string>? KeywrapMack { get; set; }
 
-        /// <summary>
-        /// Acct port of RADIUS server
-        /// </summary>
         [Input("port")]
-        public Input<int>? Port { get; set; }
+        public Input<string>? Port { get; set; }
 
         [Input("secret", required: true)]
         private Input<string>? _secret;

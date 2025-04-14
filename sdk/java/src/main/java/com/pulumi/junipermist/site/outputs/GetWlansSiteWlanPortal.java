@@ -45,7 +45,7 @@ public final class GetWlansSiteWlanPortal {
      */
     private Integer amazonExpire;
     /**
-     * @return authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+     * @return authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
      * 
      */
     private String auth;
@@ -300,10 +300,6 @@ public final class GetWlansSiteWlanPortal {
      * 
      */
     private Integer sponsorExpire;
-    /**
-     * @return Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
-     * 
-     */
     private String sponsorLinkValidityDuration;
     /**
      * @return Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
@@ -428,7 +424,7 @@ public final class GetWlansSiteWlanPortal {
         return this.amazonExpire;
     }
     /**
-     * @return authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+     * @return authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
      * 
      */
     public String auth() {
@@ -787,10 +783,6 @@ public final class GetWlansSiteWlanPortal {
     public Integer sponsorExpire() {
         return this.sponsorExpire;
     }
-    /**
-     * @return Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
-     * 
-     */
     public String sponsorLinkValidityDuration() {
         return this.sponsorLinkValidityDuration;
     }

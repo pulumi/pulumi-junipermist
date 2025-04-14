@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -48,9 +47,9 @@ public final class WlanCoaServerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     @Import(name="port")
-    private @Nullable Output<Integer> port;
+    private @Nullable Output<String> port;
 
-    public Optional<Output<Integer>> port() {
+    public Optional<Output<String>> port() {
         return Optional.ofNullable(this.port);
     }
 
@@ -128,12 +127,12 @@ public final class WlanCoaServerArgs extends com.pulumi.resources.ResourceArgs {
             return ip(Output.of(ip));
         }
 
-        public Builder port(@Nullable Output<Integer> port) {
+        public Builder port(@Nullable Output<String> port) {
             $.port = port;
             return this;
         }
 
-        public Builder port(Integer port) {
+        public Builder port(String port) {
             return port(Output.of(port));
         }
 

@@ -6,7 +6,6 @@ package com.pulumi.junipermist.site.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -25,11 +24,7 @@ public final class GetWlansSiteWlanAuthServer {
     private String keywrapFormat;
     private String keywrapKek;
     private String keywrapMack;
-    /**
-     * @return Auth port of RADIUS server
-     * 
-     */
-    private Integer port;
+    private String port;
     /**
      * @return Whether to require Message-Authenticator in requests
      * 
@@ -65,11 +60,7 @@ public final class GetWlansSiteWlanAuthServer {
     public String keywrapMack() {
         return this.keywrapMack;
     }
-    /**
-     * @return Auth port of RADIUS server
-     * 
-     */
-    public Integer port() {
+    public String port() {
         return this.port;
     }
     /**
@@ -101,7 +92,7 @@ public final class GetWlansSiteWlanAuthServer {
         private String keywrapFormat;
         private String keywrapKek;
         private String keywrapMack;
-        private Integer port;
+        private String port;
         private Boolean requireMessageAuthenticator;
         private String secret;
         public Builder() {}
@@ -158,7 +149,7 @@ public final class GetWlansSiteWlanAuthServer {
             return this;
         }
         @CustomType.Setter
-        public Builder port(Integer port) {
+        public Builder port(String port) {
             if (port == null) {
               throw new MissingRequiredPropertyException("GetWlansSiteWlanAuthServer", "port");
             }

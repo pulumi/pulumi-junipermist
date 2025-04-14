@@ -6,7 +6,6 @@ package com.pulumi.junipermist.org.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -25,11 +24,7 @@ public final class GetWlansOrgWlanAcctServer {
     private String keywrapFormat;
     private String keywrapKek;
     private String keywrapMack;
-    /**
-     * @return Acct port of RADIUS server
-     * 
-     */
-    private Integer port;
+    private String port;
     /**
      * @return Secret of RADIUS server
      * 
@@ -60,11 +55,7 @@ public final class GetWlansOrgWlanAcctServer {
     public String keywrapMack() {
         return this.keywrapMack;
     }
-    /**
-     * @return Acct port of RADIUS server
-     * 
-     */
-    public Integer port() {
+    public String port() {
         return this.port;
     }
     /**
@@ -89,7 +80,7 @@ public final class GetWlansOrgWlanAcctServer {
         private String keywrapFormat;
         private String keywrapKek;
         private String keywrapMack;
-        private Integer port;
+        private String port;
         private String secret;
         public Builder() {}
         public Builder(GetWlansOrgWlanAcctServer defaults) {
@@ -144,7 +135,7 @@ public final class GetWlansOrgWlanAcctServer {
             return this;
         }
         @CustomType.Setter
-        public Builder port(Integer port) {
+        public Builder port(String port) {
             if (port == null) {
               throw new MissingRequiredPropertyException("GetWlansOrgWlanAcctServer", "port");
             }

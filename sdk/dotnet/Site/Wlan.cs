@@ -34,10 +34,10 @@ namespace Pulumi.JuniperMist.Site
     ///         },
     ///         VlanEnabled = true,
     ///         VlanId = "143",
-    ///         WlanLimitUp = 10000,
-    ///         WlanLimitDown = 20000,
-    ///         ClientLimitUp = 512,
-    ///         ClientLimitDown = 1000,
+    ///         WlanLimitUp = "10000",
+    ///         WlanLimitDown = "20000",
+    ///         ClientLimitUp = "512",
+    ///         ClientLimitDown = "1000",
     ///         Auth = new JuniperMist.Site.Inputs.WlanAuthArgs
     ///         {
     ///             Type = "psk",
@@ -116,7 +116,7 @@ namespace Pulumi.JuniperMist.Site
         /// Bandwidth limiting for apps (applies to up/down)
         /// </summary>
         [Output("appLimit")]
-        public Output<Outputs.WlanAppLimit> AppLimit { get; private set; } = null!;
+        public Output<Outputs.WlanAppLimit?> AppLimit { get; private set; } = null!;
 
         /// <summary>
         /// APp qos wlan settings
@@ -173,7 +173,7 @@ namespace Pulumi.JuniperMist.Site
         /// value to 3.
         /// </summary>
         [Output("authServersRetries")]
-        public Output<int> AuthServersRetries { get; private set; } = null!;
+        public Output<int?> AuthServersRetries { get; private set; } = null!;
 
         /// <summary>
         /// Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’
@@ -181,7 +181,7 @@ namespace Pulumi.JuniperMist.Site
         /// setting auth_servers_timeout and is set to default value of 10.
         /// </summary>
         [Output("authServersTimeout")]
-        public Output<int> AuthServersTimeout { get; private set; } = null!;
+        public Output<int?> AuthServersTimeout { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable band_steering, this works only when band==both
@@ -193,7 +193,7 @@ namespace Pulumi.JuniperMist.Site
         /// Force dual_band capable client to connect to 5G
         /// </summary>
         [Output("bandSteerForceBand5")]
-        public Output<bool> BandSteerForceBand5 { get; private set; } = null!;
+        public Output<bool?> BandSteerForceBand5 { get; private set; } = null!;
 
         /// <summary>
         /// list of radios that the wlan should apply to. enum: `24`, `5`, `6`
@@ -205,13 +205,13 @@ namespace Pulumi.JuniperMist.Site
         /// Whether to block the clients in the blacklist (up to first 256 macs)
         /// </summary>
         [Output("blockBlacklistClients")]
-        public Output<bool> BlockBlacklistClients { get; private set; } = null!;
+        public Output<bool?> BlockBlacklistClients { get; private set; } = null!;
 
         /// <summary>
         /// Bonjour gateway wlan settings
         /// </summary>
         [Output("bonjour")]
-        public Output<Outputs.WlanBonjour> Bonjour { get; private set; } = null!;
+        public Output<Outputs.WlanBonjour?> Bonjour { get; private set; } = null!;
 
         /// <summary>
         /// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
@@ -220,29 +220,23 @@ namespace Pulumi.JuniperMist.Site
         [Output("ciscoCwa")]
         public Output<Outputs.WlanCiscoCwa> CiscoCwa { get; private set; } = null!;
 
-        /// <summary>
-        /// In kbps
-        /// </summary>
         [Output("clientLimitDown")]
-        public Output<int> ClientLimitDown { get; private set; } = null!;
+        public Output<string> ClientLimitDown { get; private set; } = null!;
 
         /// <summary>
         /// If downlink limiting per-client is enabled
         /// </summary>
         [Output("clientLimitDownEnabled")]
-        public Output<bool> ClientLimitDownEnabled { get; private set; } = null!;
+        public Output<bool?> ClientLimitDownEnabled { get; private set; } = null!;
 
-        /// <summary>
-        /// In kbps
-        /// </summary>
         [Output("clientLimitUp")]
-        public Output<int> ClientLimitUp { get; private set; } = null!;
+        public Output<string> ClientLimitUp { get; private set; } = null!;
 
         /// <summary>
         /// If uplink limiting per-client is enabled
         /// </summary>
         [Output("clientLimitUpEnabled")]
-        public Output<bool> ClientLimitUpEnabled { get; private set; } = null!;
+        public Output<bool?> ClientLimitUpEnabled { get; private set; } = null!;
 
         /// <summary>
         /// List of COA (change of authorization) servers, optional
@@ -260,13 +254,13 @@ namespace Pulumi.JuniperMist.Site
         /// To disable Wi-Fi 7 EHT IEs
         /// </summary>
         [Output("disable11be")]
-        public Output<bool> Disable11be { get; private set; } = null!;
+        public Output<bool?> Disable11be { get; private set; } = null!;
 
         /// <summary>
         /// To disable ht or vht rates
         /// </summary>
         [Output("disableHtVhtRates")]
-        public Output<bool> DisableHtVhtRates { get; private set; } = null!;
+        public Output<bool?> DisableHtVhtRates { get; private set; } = null!;
 
         /// <summary>
         /// Whether to disable U-APSD
@@ -278,13 +272,13 @@ namespace Pulumi.JuniperMist.Site
         /// Disable sending v2 roam notification messages
         /// </summary>
         [Output("disableV1RoamNotify")]
-        public Output<bool> DisableV1RoamNotify { get; private set; } = null!;
+        public Output<bool?> DisableV1RoamNotify { get; private set; } = null!;
 
         /// <summary>
         /// Disable sending v2 roam notification messages
         /// </summary>
         [Output("disableV2RoamNotify")]
-        public Output<bool> DisableV2RoamNotify { get; private set; } = null!;
+        public Output<bool?> DisableV2RoamNotify { get; private set; } = null!;
 
         /// <summary>
         /// When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
@@ -306,7 +300,7 @@ namespace Pulumi.JuniperMist.Site
         /// For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
         /// </summary>
         [Output("dnsServerRewrite")]
-        public Output<Outputs.WlanDnsServerRewrite> DnsServerRewrite { get; private set; } = null!;
+        public Output<Outputs.WlanDnsServerRewrite?> DnsServerRewrite { get; private set; } = null!;
 
         [Output("dtim")]
         public Output<int> Dtim { get; private set; } = null!;
@@ -332,21 +326,21 @@ namespace Pulumi.JuniperMist.Site
         /// Enable AP-AP keycaching via multicast
         /// </summary>
         [Output("enableLocalKeycaching")]
-        public Output<bool> EnableLocalKeycaching { get; private set; } = null!;
+        public Output<bool?> EnableLocalKeycaching { get; private set; } = null!;
 
         /// <summary>
         /// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
         /// client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
         /// </summary>
         [Output("enableWirelessBridging")]
-        public Output<bool> EnableWirelessBridging { get; private set; } = null!;
+        public Output<bool?> EnableWirelessBridging { get; private set; } = null!;
 
         /// <summary>
         /// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
         /// packets to be forwarded to wireless
         /// </summary>
         [Output("enableWirelessBridgingDhcpTracking")]
-        public Output<bool> EnableWirelessBridgingDhcpTracking { get; private set; } = null!;
+        public Output<bool?> EnableWirelessBridgingDhcpTracking { get; private set; } = null!;
 
         /// <summary>
         /// If this wlan is enabled
@@ -359,7 +353,7 @@ namespace Pulumi.JuniperMist.Site
         /// ‘auth_server_retries’ .
         /// </summary>
         [Output("fastDot1xTimers")]
-        public Output<bool> FastDot1xTimers { get; private set; } = null!;
+        public Output<bool?> FastDot1xTimers { get; private set; } = null!;
 
         /// <summary>
         /// Whether to hide SSID in beacon
@@ -377,7 +371,7 @@ namespace Pulumi.JuniperMist.Site
         /// Hostspot 2.0 wlan settings
         /// </summary>
         [Output("hotspot20")]
-        public Output<Outputs.WlanHotspot20> Hotspot20 { get; private set; } = null!;
+        public Output<Outputs.WlanHotspot20?> Hotspot20 { get; private set; } = null!;
 
         [Output("injectDhcpOption82")]
         public Output<Outputs.WlanInjectDhcpOption82?> InjectDhcpOption82 { get; private set; } = null!;
@@ -392,20 +386,20 @@ namespace Pulumi.JuniperMist.Site
         /// Whether to stop clients to talk to each other
         /// </summary>
         [Output("isolation")]
-        public Output<bool> Isolation { get; private set; } = null!;
+        public Output<bool?> Isolation { get; private set; } = null!;
 
         /// <summary>
         /// If isolation is enabled, whether to deny clients to talk to L2 on the LAN
         /// </summary>
         [Output("l2Isolation")]
-        public Output<bool> L2Isolation { get; private set; } = null!;
+        public Output<bool?> L2Isolation { get; private set; } = null!;
 
         /// <summary>
         /// Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
         /// Enabling this will cause problem for iOS devices.
         /// </summary>
         [Output("legacyOverds")]
-        public Output<bool> LegacyOverds { get; private set; } = null!;
+        public Output<bool?> LegacyOverds { get; private set; } = null!;
 
         /// <summary>
         /// Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
@@ -429,7 +423,7 @@ namespace Pulumi.JuniperMist.Site
         /// Maximum number of client connected to the SSID. `0` means unlimited
         /// </summary>
         [Output("maxNumClients")]
-        public Output<int> MaxNumClients { get; private set; } = null!;
+        public Output<int?> MaxNumClients { get; private set; } = null!;
 
         [Output("mistNac")]
         public Output<Outputs.WlanMistNac> MistNac { get; private set; } = null!;
@@ -528,7 +522,7 @@ namespace Pulumi.JuniperMist.Site
         /// enum: `11r`, `OKC`, `NONE`
         /// </summary>
         [Output("roamMode")]
-        public Output<string> RoamMode { get; private set; } = null!;
+        public Output<string?> RoamMode { get; private set; } = null!;
 
         /// <summary>
         /// WLAN operating schedule, default is disabled
@@ -543,7 +537,7 @@ namespace Pulumi.JuniperMist.Site
         /// Whether to exclude this WLAN from SLE metrics
         /// </summary>
         [Output("sleExcluded")]
-        public Output<bool> SleExcluded { get; private set; } = null!;
+        public Output<bool?> SleExcluded { get; private set; } = null!;
 
         /// <summary>
         /// Name of the SSID
@@ -579,29 +573,23 @@ namespace Pulumi.JuniperMist.Site
         [Output("vlanPooling")]
         public Output<bool> VlanPooling { get; private set; } = null!;
 
-        /// <summary>
-        /// In kbps
-        /// </summary>
         [Output("wlanLimitDown")]
-        public Output<int> WlanLimitDown { get; private set; } = null!;
+        public Output<string> WlanLimitDown { get; private set; } = null!;
 
         /// <summary>
         /// If downlink limiting for whole wlan is enabled
         /// </summary>
         [Output("wlanLimitDownEnabled")]
-        public Output<bool> WlanLimitDownEnabled { get; private set; } = null!;
+        public Output<bool?> WlanLimitDownEnabled { get; private set; } = null!;
 
-        /// <summary>
-        /// In kbps
-        /// </summary>
         [Output("wlanLimitUp")]
-        public Output<int> WlanLimitUp { get; private set; } = null!;
+        public Output<string> WlanLimitUp { get; private set; } = null!;
 
         /// <summary>
         /// If uplink limiting for whole wlan is enabled
         /// </summary>
         [Output("wlanLimitUpEnabled")]
-        public Output<bool> WlanLimitUpEnabled { get; private set; } = null!;
+        public Output<bool?> WlanLimitUpEnabled { get; private set; } = null!;
 
         /// <summary>
         /// List of wxtag_ids
@@ -850,11 +838,8 @@ namespace Pulumi.JuniperMist.Site
         [Input("ciscoCwa")]
         public Input<Inputs.WlanCiscoCwaArgs>? CiscoCwa { get; set; }
 
-        /// <summary>
-        /// In kbps
-        /// </summary>
         [Input("clientLimitDown")]
-        public Input<int>? ClientLimitDown { get; set; }
+        public Input<string>? ClientLimitDown { get; set; }
 
         /// <summary>
         /// If downlink limiting per-client is enabled
@@ -862,11 +847,8 @@ namespace Pulumi.JuniperMist.Site
         [Input("clientLimitDownEnabled")]
         public Input<bool>? ClientLimitDownEnabled { get; set; }
 
-        /// <summary>
-        /// In kbps
-        /// </summary>
         [Input("clientLimitUp")]
-        public Input<int>? ClientLimitUp { get; set; }
+        public Input<string>? ClientLimitUp { get; set; }
 
         /// <summary>
         /// If uplink limiting per-client is enabled
@@ -1236,11 +1218,8 @@ namespace Pulumi.JuniperMist.Site
         [Input("vlanPooling")]
         public Input<bool>? VlanPooling { get; set; }
 
-        /// <summary>
-        /// In kbps
-        /// </summary>
         [Input("wlanLimitDown")]
-        public Input<int>? WlanLimitDown { get; set; }
+        public Input<string>? WlanLimitDown { get; set; }
 
         /// <summary>
         /// If downlink limiting for whole wlan is enabled
@@ -1248,11 +1227,8 @@ namespace Pulumi.JuniperMist.Site
         [Input("wlanLimitDownEnabled")]
         public Input<bool>? WlanLimitDownEnabled { get; set; }
 
-        /// <summary>
-        /// In kbps
-        /// </summary>
         [Input("wlanLimitUp")]
-        public Input<int>? WlanLimitUp { get; set; }
+        public Input<string>? WlanLimitUp { get; set; }
 
         /// <summary>
         /// If uplink limiting for whole wlan is enabled
@@ -1474,11 +1450,8 @@ namespace Pulumi.JuniperMist.Site
         [Input("ciscoCwa")]
         public Input<Inputs.WlanCiscoCwaGetArgs>? CiscoCwa { get; set; }
 
-        /// <summary>
-        /// In kbps
-        /// </summary>
         [Input("clientLimitDown")]
-        public Input<int>? ClientLimitDown { get; set; }
+        public Input<string>? ClientLimitDown { get; set; }
 
         /// <summary>
         /// If downlink limiting per-client is enabled
@@ -1486,11 +1459,8 @@ namespace Pulumi.JuniperMist.Site
         [Input("clientLimitDownEnabled")]
         public Input<bool>? ClientLimitDownEnabled { get; set; }
 
-        /// <summary>
-        /// In kbps
-        /// </summary>
         [Input("clientLimitUp")]
-        public Input<int>? ClientLimitUp { get; set; }
+        public Input<string>? ClientLimitUp { get; set; }
 
         /// <summary>
         /// If uplink limiting per-client is enabled
@@ -1881,11 +1851,8 @@ namespace Pulumi.JuniperMist.Site
         [Input("vlanPooling")]
         public Input<bool>? VlanPooling { get; set; }
 
-        /// <summary>
-        /// In kbps
-        /// </summary>
         [Input("wlanLimitDown")]
-        public Input<int>? WlanLimitDown { get; set; }
+        public Input<string>? WlanLimitDown { get; set; }
 
         /// <summary>
         /// If downlink limiting for whole wlan is enabled
@@ -1893,11 +1860,8 @@ namespace Pulumi.JuniperMist.Site
         [Input("wlanLimitDownEnabled")]
         public Input<bool>? WlanLimitDownEnabled { get; set; }
 
-        /// <summary>
-        /// In kbps
-        /// </summary>
         [Input("wlanLimitUp")]
-        public Input<int>? WlanLimitUp { get; set; }
+        public Input<string>? WlanLimitUp { get; set; }
 
         /// <summary>
         /// If uplink limiting for whole wlan is enabled

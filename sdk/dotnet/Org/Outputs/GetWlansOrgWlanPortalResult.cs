@@ -38,7 +38,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int AmazonExpire;
         /// <summary>
-        /// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+        /// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
         /// </summary>
         public readonly string Auth;
         /// <summary>
@@ -242,9 +242,6 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
         /// </summary>
         public readonly int SponsorExpire;
-        /// <summary>
-        /// Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
-        /// </summary>
         public readonly string SponsorLinkValidityDuration;
         /// <summary>
         /// Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.

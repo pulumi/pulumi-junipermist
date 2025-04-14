@@ -100,7 +100,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+        /// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }

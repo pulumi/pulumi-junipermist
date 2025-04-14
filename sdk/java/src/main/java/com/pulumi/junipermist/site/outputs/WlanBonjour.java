@@ -4,7 +4,6 @@
 package com.pulumi.junipermist.site.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.site.outputs.WlanBonjourServices;
 import java.lang.Boolean;
 import java.lang.String;
@@ -20,7 +19,7 @@ public final class WlanBonjour {
      * @return additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
      * 
      */
-    private List<String> additionalVlanIds;
+    private @Nullable List<String> additionalVlanIds;
     /**
      * @return Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
      * 
@@ -31,7 +30,7 @@ public final class WlanBonjour {
      * Property key is the service name
      * 
      */
-    private Map<String,WlanBonjourServices> services;
+    private @Nullable Map<String,WlanBonjourServices> services;
 
     private WlanBonjour() {}
     /**
@@ -39,7 +38,7 @@ public final class WlanBonjour {
      * 
      */
     public List<String> additionalVlanIds() {
-        return this.additionalVlanIds;
+        return this.additionalVlanIds == null ? List.of() : this.additionalVlanIds;
     }
     /**
      * @return Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
@@ -54,7 +53,7 @@ public final class WlanBonjour {
      * 
      */
     public Map<String,WlanBonjourServices> services() {
-        return this.services;
+        return this.services == null ? Map.of() : this.services;
     }
 
     public static Builder builder() {
@@ -66,9 +65,9 @@ public final class WlanBonjour {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> additionalVlanIds;
+        private @Nullable List<String> additionalVlanIds;
         private @Nullable Boolean enabled;
-        private Map<String,WlanBonjourServices> services;
+        private @Nullable Map<String,WlanBonjourServices> services;
         public Builder() {}
         public Builder(WlanBonjour defaults) {
     	      Objects.requireNonNull(defaults);
@@ -78,10 +77,8 @@ public final class WlanBonjour {
         }
 
         @CustomType.Setter
-        public Builder additionalVlanIds(List<String> additionalVlanIds) {
-            if (additionalVlanIds == null) {
-              throw new MissingRequiredPropertyException("WlanBonjour", "additionalVlanIds");
-            }
+        public Builder additionalVlanIds(@Nullable List<String> additionalVlanIds) {
+
             this.additionalVlanIds = additionalVlanIds;
             return this;
         }
@@ -95,10 +92,8 @@ public final class WlanBonjour {
             return this;
         }
         @CustomType.Setter
-        public Builder services(Map<String,WlanBonjourServices> services) {
-            if (services == null) {
-              throw new MissingRequiredPropertyException("WlanBonjour", "services");
-            }
+        public Builder services(@Nullable Map<String,WlanBonjourServices> services) {
+
             this.services = services;
             return this;
         }

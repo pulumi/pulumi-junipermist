@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.site.outputs.GetWlansSiteWlanRadsecServer;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,7 +15,7 @@ import java.util.Objects;
 public final class GetWlansSiteWlanRadsec {
     private Boolean coaEnabled;
     private Boolean enabled;
-    private Integer idleTimeout;
+    private String idleTimeout;
     /**
      * @return To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
      * 
@@ -55,7 +54,7 @@ public final class GetWlansSiteWlanRadsec {
     public Boolean enabled() {
         return this.enabled;
     }
-    public Integer idleTimeout() {
+    public String idleTimeout() {
         return this.idleTimeout;
     }
     /**
@@ -112,7 +111,7 @@ public final class GetWlansSiteWlanRadsec {
     public static final class Builder {
         private Boolean coaEnabled;
         private Boolean enabled;
-        private Integer idleTimeout;
+        private String idleTimeout;
         private List<String> mxclusterIds;
         private List<String> proxyHosts;
         private String serverName;
@@ -150,7 +149,7 @@ public final class GetWlansSiteWlanRadsec {
             return this;
         }
         @CustomType.Setter
-        public Builder idleTimeout(Integer idleTimeout) {
+        public Builder idleTimeout(String idleTimeout) {
             if (idleTimeout == null) {
               throw new MissingRequiredPropertyException("GetWlansSiteWlanRadsec", "idleTimeout");
             }

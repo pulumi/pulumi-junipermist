@@ -5,8 +5,16 @@ package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.junipermist.org.outputs.GetNetworksOrgNetworkInternalAccess;
+import com.pulumi.junipermist.org.outputs.GetNetworksOrgNetworkInternetAccess;
+import com.pulumi.junipermist.org.outputs.GetNetworksOrgNetworkMulticast;
+import com.pulumi.junipermist.org.outputs.GetNetworksOrgNetworkTenants;
+import com.pulumi.junipermist.org.outputs.GetNetworksOrgNetworkVpnAccess;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
@@ -17,20 +25,58 @@ public final class GetNetworksOrgNetwork {
      */
     private Double createdTime;
     /**
+     * @return Whether to disallow Mist Devices in the network
+     * 
+     */
+    private Boolean disallowMistServices;
+    private String gateway;
+    private String gateway6;
+    /**
      * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     private String id;
+    private GetNetworksOrgNetworkInternalAccess internalAccess;
+    /**
+     * @return Whether this network has direct internet access
+     * 
+     */
+    private GetNetworksOrgNetworkInternetAccess internetAccess;
+    /**
+     * @return Whether to allow clients in the network to talk to each other
+     * 
+     */
+    private Boolean isolation;
     /**
      * @return When the object has been modified for the last time, in epoch
      * 
      */
     private Double modifiedTime;
+    /**
+     * @return Whether to enable multicast support (only PIM-sparse mode is supported)
+     * 
+     */
+    private GetNetworksOrgNetworkMulticast multicast;
     private String name;
     private String orgId;
+    /**
+     * @return For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * 
+     */
+    private List<String> routedForNetworks;
     private String subnet;
     private String subnet6;
+    /**
+     * @return Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
+    private Map<String,GetNetworksOrgNetworkTenants> tenants;
     private String vlanId;
+    /**
+     * @return Property key is the VPN name. Whether this network can be accessed from vpn
+     * 
+     */
+    private Map<String,GetNetworksOrgNetworkVpnAccess> vpnAccess;
 
     private GetNetworksOrgNetwork() {}
     /**
@@ -41,11 +87,41 @@ public final class GetNetworksOrgNetwork {
         return this.createdTime;
     }
     /**
+     * @return Whether to disallow Mist Devices in the network
+     * 
+     */
+    public Boolean disallowMistServices() {
+        return this.disallowMistServices;
+    }
+    public String gateway() {
+        return this.gateway;
+    }
+    public String gateway6() {
+        return this.gateway6;
+    }
+    /**
      * @return Unique ID of the object instance in the Mist Organization
      * 
      */
     public String id() {
         return this.id;
+    }
+    public GetNetworksOrgNetworkInternalAccess internalAccess() {
+        return this.internalAccess;
+    }
+    /**
+     * @return Whether this network has direct internet access
+     * 
+     */
+    public GetNetworksOrgNetworkInternetAccess internetAccess() {
+        return this.internetAccess;
+    }
+    /**
+     * @return Whether to allow clients in the network to talk to each other
+     * 
+     */
+    public Boolean isolation() {
+        return this.isolation;
     }
     /**
      * @return When the object has been modified for the last time, in epoch
@@ -54,11 +130,25 @@ public final class GetNetworksOrgNetwork {
     public Double modifiedTime() {
         return this.modifiedTime;
     }
+    /**
+     * @return Whether to enable multicast support (only PIM-sparse mode is supported)
+     * 
+     */
+    public GetNetworksOrgNetworkMulticast multicast() {
+        return this.multicast;
+    }
     public String name() {
         return this.name;
     }
     public String orgId() {
         return this.orgId;
+    }
+    /**
+     * @return For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * 
+     */
+    public List<String> routedForNetworks() {
+        return this.routedForNetworks;
     }
     public String subnet() {
         return this.subnet;
@@ -66,8 +156,22 @@ public final class GetNetworksOrgNetwork {
     public String subnet6() {
         return this.subnet6;
     }
+    /**
+     * @return Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
+    public Map<String,GetNetworksOrgNetworkTenants> tenants() {
+        return this.tenants;
+    }
     public String vlanId() {
         return this.vlanId;
+    }
+    /**
+     * @return Property key is the VPN name. Whether this network can be accessed from vpn
+     * 
+     */
+    public Map<String,GetNetworksOrgNetworkVpnAccess> vpnAccess() {
+        return this.vpnAccess;
     }
 
     public static Builder builder() {
@@ -80,24 +184,44 @@ public final class GetNetworksOrgNetwork {
     @CustomType.Builder
     public static final class Builder {
         private Double createdTime;
+        private Boolean disallowMistServices;
+        private String gateway;
+        private String gateway6;
         private String id;
+        private GetNetworksOrgNetworkInternalAccess internalAccess;
+        private GetNetworksOrgNetworkInternetAccess internetAccess;
+        private Boolean isolation;
         private Double modifiedTime;
+        private GetNetworksOrgNetworkMulticast multicast;
         private String name;
         private String orgId;
+        private List<String> routedForNetworks;
         private String subnet;
         private String subnet6;
+        private Map<String,GetNetworksOrgNetworkTenants> tenants;
         private String vlanId;
+        private Map<String,GetNetworksOrgNetworkVpnAccess> vpnAccess;
         public Builder() {}
         public Builder(GetNetworksOrgNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdTime = defaults.createdTime;
+    	      this.disallowMistServices = defaults.disallowMistServices;
+    	      this.gateway = defaults.gateway;
+    	      this.gateway6 = defaults.gateway6;
     	      this.id = defaults.id;
+    	      this.internalAccess = defaults.internalAccess;
+    	      this.internetAccess = defaults.internetAccess;
+    	      this.isolation = defaults.isolation;
     	      this.modifiedTime = defaults.modifiedTime;
+    	      this.multicast = defaults.multicast;
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
+    	      this.routedForNetworks = defaults.routedForNetworks;
     	      this.subnet = defaults.subnet;
     	      this.subnet6 = defaults.subnet6;
+    	      this.tenants = defaults.tenants;
     	      this.vlanId = defaults.vlanId;
+    	      this.vpnAccess = defaults.vpnAccess;
         }
 
         @CustomType.Setter
@@ -109,6 +233,30 @@ public final class GetNetworksOrgNetwork {
             return this;
         }
         @CustomType.Setter
+        public Builder disallowMistServices(Boolean disallowMistServices) {
+            if (disallowMistServices == null) {
+              throw new MissingRequiredPropertyException("GetNetworksOrgNetwork", "disallowMistServices");
+            }
+            this.disallowMistServices = disallowMistServices;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gateway(String gateway) {
+            if (gateway == null) {
+              throw new MissingRequiredPropertyException("GetNetworksOrgNetwork", "gateway");
+            }
+            this.gateway = gateway;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gateway6(String gateway6) {
+            if (gateway6 == null) {
+              throw new MissingRequiredPropertyException("GetNetworksOrgNetwork", "gateway6");
+            }
+            this.gateway6 = gateway6;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetNetworksOrgNetwork", "id");
@@ -117,11 +265,43 @@ public final class GetNetworksOrgNetwork {
             return this;
         }
         @CustomType.Setter
+        public Builder internalAccess(GetNetworksOrgNetworkInternalAccess internalAccess) {
+            if (internalAccess == null) {
+              throw new MissingRequiredPropertyException("GetNetworksOrgNetwork", "internalAccess");
+            }
+            this.internalAccess = internalAccess;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder internetAccess(GetNetworksOrgNetworkInternetAccess internetAccess) {
+            if (internetAccess == null) {
+              throw new MissingRequiredPropertyException("GetNetworksOrgNetwork", "internetAccess");
+            }
+            this.internetAccess = internetAccess;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isolation(Boolean isolation) {
+            if (isolation == null) {
+              throw new MissingRequiredPropertyException("GetNetworksOrgNetwork", "isolation");
+            }
+            this.isolation = isolation;
+            return this;
+        }
+        @CustomType.Setter
         public Builder modifiedTime(Double modifiedTime) {
             if (modifiedTime == null) {
               throw new MissingRequiredPropertyException("GetNetworksOrgNetwork", "modifiedTime");
             }
             this.modifiedTime = modifiedTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder multicast(GetNetworksOrgNetworkMulticast multicast) {
+            if (multicast == null) {
+              throw new MissingRequiredPropertyException("GetNetworksOrgNetwork", "multicast");
+            }
+            this.multicast = multicast;
             return this;
         }
         @CustomType.Setter
@@ -141,6 +321,17 @@ public final class GetNetworksOrgNetwork {
             return this;
         }
         @CustomType.Setter
+        public Builder routedForNetworks(List<String> routedForNetworks) {
+            if (routedForNetworks == null) {
+              throw new MissingRequiredPropertyException("GetNetworksOrgNetwork", "routedForNetworks");
+            }
+            this.routedForNetworks = routedForNetworks;
+            return this;
+        }
+        public Builder routedForNetworks(String... routedForNetworks) {
+            return routedForNetworks(List.of(routedForNetworks));
+        }
+        @CustomType.Setter
         public Builder subnet(String subnet) {
             if (subnet == null) {
               throw new MissingRequiredPropertyException("GetNetworksOrgNetwork", "subnet");
@@ -157,6 +348,14 @@ public final class GetNetworksOrgNetwork {
             return this;
         }
         @CustomType.Setter
+        public Builder tenants(Map<String,GetNetworksOrgNetworkTenants> tenants) {
+            if (tenants == null) {
+              throw new MissingRequiredPropertyException("GetNetworksOrgNetwork", "tenants");
+            }
+            this.tenants = tenants;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vlanId(String vlanId) {
             if (vlanId == null) {
               throw new MissingRequiredPropertyException("GetNetworksOrgNetwork", "vlanId");
@@ -164,16 +363,34 @@ public final class GetNetworksOrgNetwork {
             this.vlanId = vlanId;
             return this;
         }
+        @CustomType.Setter
+        public Builder vpnAccess(Map<String,GetNetworksOrgNetworkVpnAccess> vpnAccess) {
+            if (vpnAccess == null) {
+              throw new MissingRequiredPropertyException("GetNetworksOrgNetwork", "vpnAccess");
+            }
+            this.vpnAccess = vpnAccess;
+            return this;
+        }
         public GetNetworksOrgNetwork build() {
             final var _resultValue = new GetNetworksOrgNetwork();
             _resultValue.createdTime = createdTime;
+            _resultValue.disallowMistServices = disallowMistServices;
+            _resultValue.gateway = gateway;
+            _resultValue.gateway6 = gateway6;
             _resultValue.id = id;
+            _resultValue.internalAccess = internalAccess;
+            _resultValue.internetAccess = internetAccess;
+            _resultValue.isolation = isolation;
             _resultValue.modifiedTime = modifiedTime;
+            _resultValue.multicast = multicast;
             _resultValue.name = name;
             _resultValue.orgId = orgId;
+            _resultValue.routedForNetworks = routedForNetworks;
             _resultValue.subnet = subnet;
             _resultValue.subnet6 = subnet6;
+            _resultValue.tenants = tenants;
             _resultValue.vlanId = vlanId;
+            _resultValue.vpnAccess = vpnAccess;
             return _resultValue;
         }
     }
