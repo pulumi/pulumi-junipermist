@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// What services are allowed. 
         /// Property key is the service name
         /// </summary>
-        public readonly ImmutableDictionary<string, Outputs.WlanBonjourServices> Services;
+        public readonly ImmutableDictionary<string, Outputs.WlanBonjourServices>? Services;
 
         [OutputConstructor]
         private WlanBonjour(
@@ -33,7 +33,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             bool? enabled,
 
-            ImmutableDictionary<string, Outputs.WlanBonjourServices> services)
+            ImmutableDictionary<string, Outputs.WlanBonjourServices>? services)
         {
             AdditionalVlanIds = additionalVlanIds;
             Enabled = enabled;

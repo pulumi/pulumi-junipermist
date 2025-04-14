@@ -196,14 +196,14 @@ public final class DeviceprofileGatewayTunnelConfigsArgs extends com.pulumi.reso
     }
 
     /**
-     * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+     * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
      * 
      */
     @Import(name="provider")
     private @Nullable Output<String> provider;
 
     /**
-     * @return Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+     * @return Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
      * 
      */
     public Optional<Output<String>> provider() {
@@ -565,7 +565,7 @@ public final class DeviceprofileGatewayTunnelConfigsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param provider Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * @param provider Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          * 
          * @return builder
          * 
@@ -576,7 +576,7 @@ public final class DeviceprofileGatewayTunnelConfigsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param provider Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * @param provider Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          * 
          * @return builder
          * 

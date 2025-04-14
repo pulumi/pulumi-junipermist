@@ -113,18 +113,12 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
         /// </summary>
         public readonly Outputs.GetWlansSiteWlanCiscoCwaResult CiscoCwa;
-        /// <summary>
-        /// In kbps
-        /// </summary>
-        public readonly int ClientLimitDown;
+        public readonly string ClientLimitDown;
         /// <summary>
         /// If downlink limiting per-client is enabled
         /// </summary>
         public readonly bool ClientLimitDownEnabled;
-        /// <summary>
-        /// In kbps
-        /// </summary>
-        public readonly int ClientLimitUp;
+        public readonly string ClientLimitUp;
         /// <summary>
         /// If uplink limiting per-client is enabled
         /// </summary>
@@ -358,18 +352,12 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
         /// </summary>
         public readonly bool VlanPooling;
-        /// <summary>
-        /// In kbps
-        /// </summary>
-        public readonly int WlanLimitDown;
+        public readonly string WlanLimitDown;
         /// <summary>
         /// If downlink limiting for whole wlan is enabled
         /// </summary>
         public readonly bool WlanLimitDownEnabled;
-        /// <summary>
-        /// In kbps
-        /// </summary>
-        public readonly int WlanLimitUp;
+        public readonly string WlanLimitUp;
         /// <summary>
         /// If uplink limiting for whole wlan is enabled
         /// </summary>
@@ -439,11 +427,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             Outputs.GetWlansSiteWlanCiscoCwaResult ciscoCwa,
 
-            int clientLimitDown,
+            string clientLimitDown,
 
             bool clientLimitDownEnabled,
 
-            int clientLimitUp,
+            string clientLimitUp,
 
             bool clientLimitUpEnabled,
 
@@ -571,11 +559,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             bool vlanPooling,
 
-            int wlanLimitDown,
+            string wlanLimitDown,
 
             bool wlanLimitDownEnabled,
 
-            int wlanLimitUp,
+            string wlanLimitUp,
 
             bool wlanLimitUpEnabled,
 

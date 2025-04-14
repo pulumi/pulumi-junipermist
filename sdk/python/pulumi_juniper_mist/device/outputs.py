@@ -6453,7 +6453,7 @@ class GatewayTunnelConfigs(dict):
         :param 'GatewayTunnelConfigsPrimaryArgs' primary: Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         :param 'GatewayTunnelConfigsProbeArgs' probe: Only if `provider`==`custom-ipsec`
         :param builtins.str protocol: Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
-        :param builtins.str provider: Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+        :param builtins.str provider: Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
         :param builtins.str psk: Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         :param 'GatewayTunnelConfigsSecondaryArgs' secondary: Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         :param builtins.str version: Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
@@ -6588,7 +6588,7 @@ class GatewayTunnelConfigs(dict):
     @pulumi.getter
     def provider(self) -> Optional[builtins.str]:
         """
-        Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+        Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
         """
         return pulumi.get(self, "provider")
 
@@ -11083,12 +11083,11 @@ class SwitchRadiusConfigAcctServer(dict):
                  keywrap_format: Optional[builtins.str] = None,
                  keywrap_kek: Optional[builtins.str] = None,
                  keywrap_mack: Optional[builtins.str] = None,
-                 port: Optional[builtins.int] = None):
+                 port: Optional[builtins.str] = None):
         """
         :param builtins.str host: IP/ hostname of RADIUS server
         :param builtins.str secret: Secret of RADIUS server
         :param builtins.str keywrap_format: enum: `ascii`, `hex`
-        :param builtins.int port: Acct port of RADIUS server
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "secret", secret)
@@ -11144,10 +11143,7 @@ class SwitchRadiusConfigAcctServer(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[builtins.int]:
-        """
-        Acct port of RADIUS server
-        """
+    def port(self) -> Optional[builtins.str]:
         return pulumi.get(self, "port")
 
 
@@ -11185,13 +11181,12 @@ class SwitchRadiusConfigAuthServer(dict):
                  keywrap_format: Optional[builtins.str] = None,
                  keywrap_kek: Optional[builtins.str] = None,
                  keywrap_mack: Optional[builtins.str] = None,
-                 port: Optional[builtins.int] = None,
+                 port: Optional[builtins.str] = None,
                  require_message_authenticator: Optional[builtins.bool] = None):
         """
         :param builtins.str host: IP/ hostname of RADIUS server
         :param builtins.str secret: Secret of RADIUS server
         :param builtins.str keywrap_format: enum: `ascii`, `hex`
-        :param builtins.int port: Auth port of RADIUS server
         :param builtins.bool require_message_authenticator: Whether to require Message-Authenticator in requests
         """
         pulumi.set(__self__, "host", host)
@@ -11250,10 +11245,7 @@ class SwitchRadiusConfigAuthServer(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[builtins.int]:
-        """
-        Auth port of RADIUS server
-        """
+    def port(self) -> Optional[builtins.str]:
         return pulumi.get(self, "port")
 
     @property

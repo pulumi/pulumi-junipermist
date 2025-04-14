@@ -5,7 +5,6 @@ package com.pulumi.junipermist.site.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -23,15 +22,15 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
      * Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
      * 
      */
-    @Import(name="defaultVlanIds", required=true)
-    private Output<List<String>> defaultVlanIds;
+    @Import(name="defaultVlanIds")
+    private @Nullable Output<List<String>> defaultVlanIds;
 
     /**
      * @return Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
      * 
      */
-    public Output<List<String>> defaultVlanIds() {
-        return this.defaultVlanIds;
+    public Optional<Output<List<String>>> defaultVlanIds() {
+        return Optional.ofNullable(this.defaultVlanIds);
     }
 
     /**
@@ -132,7 +131,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder defaultVlanIds(Output<List<String>> defaultVlanIds) {
+        public Builder defaultVlanIds(@Nullable Output<List<String>> defaultVlanIds) {
             $.defaultVlanIds = defaultVlanIds;
             return this;
         }
@@ -256,9 +255,6 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public WlanDynamicVlanArgs build() {
-            if ($.defaultVlanIds == null) {
-                throw new MissingRequiredPropertyException("WlanDynamicVlanArgs", "defaultVlanIds");
-            }
             return $;
         }
     }

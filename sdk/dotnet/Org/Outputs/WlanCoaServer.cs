@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly bool? DisableEventTimestampCheck;
         public readonly bool? Enabled;
         public readonly string Ip;
-        public readonly int? Port;
+        public readonly string? Port;
         public readonly string Secret;
 
         [OutputConstructor]
@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string ip,
 
-            int? port,
+            string? port,
 
             string secret)
         {

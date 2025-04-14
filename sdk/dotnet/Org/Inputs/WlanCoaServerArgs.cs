@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string> Ip { get; set; } = null!;
 
         [Input("port")]
-        public Input<int>? Port { get; set; }
+        public Input<string>? Port { get; set; }
 
         [Input("secret", required: true)]
         private Input<string>? _secret;

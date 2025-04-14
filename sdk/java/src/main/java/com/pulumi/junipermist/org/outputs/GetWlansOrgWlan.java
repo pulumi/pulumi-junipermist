@@ -160,21 +160,13 @@ public final class GetWlansOrgWlan {
      * 
      */
     private GetWlansOrgWlanCiscoCwa ciscoCwa;
-    /**
-     * @return In kbps
-     * 
-     */
-    private Integer clientLimitDown;
+    private String clientLimitDown;
     /**
      * @return If downlink limiting per-client is enabled
      * 
      */
     private Boolean clientLimitDownEnabled;
-    /**
-     * @return In kbps
-     * 
-     */
-    private Integer clientLimitUp;
+    private String clientLimitUp;
     /**
      * @return If uplink limiting per-client is enabled
      * 
@@ -461,21 +453,13 @@ public final class GetWlansOrgWlan {
      * 
      */
     private Boolean vlanPooling;
-    /**
-     * @return In kbps
-     * 
-     */
-    private Integer wlanLimitDown;
+    private String wlanLimitDown;
     /**
      * @return If downlink limiting for whole wlan is enabled
      * 
      */
     private Boolean wlanLimitDownEnabled;
-    /**
-     * @return In kbps
-     * 
-     */
-    private Integer wlanLimitUp;
+    private String wlanLimitUp;
     /**
      * @return If uplink limiting for whole wlan is enabled
      * 
@@ -673,11 +657,7 @@ public final class GetWlansOrgWlan {
     public GetWlansOrgWlanCiscoCwa ciscoCwa() {
         return this.ciscoCwa;
     }
-    /**
-     * @return In kbps
-     * 
-     */
-    public Integer clientLimitDown() {
+    public String clientLimitDown() {
         return this.clientLimitDown;
     }
     /**
@@ -687,11 +667,7 @@ public final class GetWlansOrgWlan {
     public Boolean clientLimitDownEnabled() {
         return this.clientLimitDownEnabled;
     }
-    /**
-     * @return In kbps
-     * 
-     */
-    public Integer clientLimitUp() {
+    public String clientLimitUp() {
         return this.clientLimitUp;
     }
     /**
@@ -1106,11 +1082,7 @@ public final class GetWlansOrgWlan {
     public Boolean vlanPooling() {
         return this.vlanPooling;
     }
-    /**
-     * @return In kbps
-     * 
-     */
-    public Integer wlanLimitDown() {
+    public String wlanLimitDown() {
         return this.wlanLimitDown;
     }
     /**
@@ -1120,11 +1092,7 @@ public final class GetWlansOrgWlan {
     public Boolean wlanLimitDownEnabled() {
         return this.wlanLimitDownEnabled;
     }
-    /**
-     * @return In kbps
-     * 
-     */
-    public Integer wlanLimitUp() {
+    public String wlanLimitUp() {
         return this.wlanLimitUp;
     }
     /**
@@ -1190,9 +1158,9 @@ public final class GetWlansOrgWlan {
         private Boolean blockBlacklistClients;
         private GetWlansOrgWlanBonjour bonjour;
         private GetWlansOrgWlanCiscoCwa ciscoCwa;
-        private Integer clientLimitDown;
+        private String clientLimitDown;
         private Boolean clientLimitDownEnabled;
-        private Integer clientLimitUp;
+        private String clientLimitUp;
         private Boolean clientLimitUpEnabled;
         private List<GetWlansOrgWlanCoaServer> coaServers;
         private Double createdTime;
@@ -1256,9 +1224,9 @@ public final class GetWlansOrgWlan {
         private String vlanId;
         private List<String> vlanIds;
         private Boolean vlanPooling;
-        private Integer wlanLimitDown;
+        private String wlanLimitDown;
         private Boolean wlanLimitDownEnabled;
-        private Integer wlanLimitUp;
+        private String wlanLimitUp;
         private Boolean wlanLimitUpEnabled;
         private List<String> wxtagIds;
         private String wxtunnelId;
@@ -1579,7 +1547,7 @@ public final class GetWlansOrgWlan {
             return this;
         }
         @CustomType.Setter
-        public Builder clientLimitDown(Integer clientLimitDown) {
+        public Builder clientLimitDown(String clientLimitDown) {
             if (clientLimitDown == null) {
               throw new MissingRequiredPropertyException("GetWlansOrgWlan", "clientLimitDown");
             }
@@ -1595,7 +1563,7 @@ public final class GetWlansOrgWlan {
             return this;
         }
         @CustomType.Setter
-        public Builder clientLimitUp(Integer clientLimitUp) {
+        public Builder clientLimitUp(String clientLimitUp) {
             if (clientLimitUp == null) {
               throw new MissingRequiredPropertyException("GetWlansOrgWlan", "clientLimitUp");
             }
@@ -2128,7 +2096,7 @@ public final class GetWlansOrgWlan {
             return this;
         }
         @CustomType.Setter
-        public Builder wlanLimitDown(Integer wlanLimitDown) {
+        public Builder wlanLimitDown(String wlanLimitDown) {
             if (wlanLimitDown == null) {
               throw new MissingRequiredPropertyException("GetWlansOrgWlan", "wlanLimitDown");
             }
@@ -2144,7 +2112,7 @@ public final class GetWlansOrgWlan {
             return this;
         }
         @CustomType.Setter
-        public Builder wlanLimitUp(Integer wlanLimitUp) {
+        public Builder wlanLimitUp(String wlanLimitUp) {
             if (wlanLimitUp == null) {
               throw new MissingRequiredPropertyException("GetWlansOrgWlan", "wlanLimitUp");
             }

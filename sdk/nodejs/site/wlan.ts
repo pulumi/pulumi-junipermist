@@ -25,10 +25,10 @@ import * as utilities from "../utilities";
  *     ],
  *     vlanEnabled: true,
  *     vlanId: "143",
- *     wlanLimitUp: 10000,
- *     wlanLimitDown: 20000,
- *     clientLimitUp: 512,
- *     clientLimitDown: 1000,
+ *     wlanLimitUp: "10000",
+ *     wlanLimitDown: "20000",
+ *     clientLimitUp: "512",
+ *     clientLimitDown: "1000",
  *     auth: {
  *         type: "psk",
  *         psk: "secretpsk",
@@ -112,7 +112,7 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * Bandwidth limiting for apps (applies to up/down)
      */
-    public readonly appLimit!: pulumi.Output<outputs.site.WlanAppLimit>;
+    public readonly appLimit!: pulumi.Output<outputs.site.WlanAppLimit | undefined>;
     /**
      * APp qos wlan settings
      */
@@ -151,13 +151,13 @@ export class Wlan extends pulumi.CustomResource {
      * to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default
      * value to 3.
      */
-    public readonly authServersRetries!: pulumi.Output<number>;
+    public readonly authServersRetries!: pulumi.Output<number | undefined>;
     /**
      * Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’ and
      * ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
      * setting authServersTimeout and is set to default value of 10.
      */
-    public readonly authServersTimeout!: pulumi.Output<number>;
+    public readonly authServersTimeout!: pulumi.Output<number | undefined>;
     /**
      * Whether to enable band_steering, this works only when band==both
      */
@@ -165,7 +165,7 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * Force dualBand capable client to connect to 5G
      */
-    public readonly bandSteerForceBand5!: pulumi.Output<boolean>;
+    public readonly bandSteerForceBand5!: pulumi.Output<boolean | undefined>;
     /**
      * list of radios that the wlan should apply to. enum: `24`, `5`, `6`
      */
@@ -173,36 +173,30 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * Whether to block the clients in the blacklist (up to first 256 macs)
      */
-    public readonly blockBlacklistClients!: pulumi.Output<boolean>;
+    public readonly blockBlacklistClients!: pulumi.Output<boolean | undefined>;
     /**
      * Bonjour gateway wlan settings
      */
-    public readonly bonjour!: pulumi.Output<outputs.site.WlanBonjour>;
+    public readonly bonjour!: pulumi.Output<outputs.site.WlanBonjour | undefined>;
     /**
      * Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
      * https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
      */
     public readonly ciscoCwa!: pulumi.Output<outputs.site.WlanCiscoCwa>;
-    /**
-     * In kbps
-     */
-    public readonly clientLimitDown!: pulumi.Output<number>;
+    public readonly clientLimitDown!: pulumi.Output<string>;
     /**
      * If downlink limiting per-client is enabled
      */
-    public readonly clientLimitDownEnabled!: pulumi.Output<boolean>;
-    /**
-     * In kbps
-     */
-    public readonly clientLimitUp!: pulumi.Output<number>;
+    public readonly clientLimitDownEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly clientLimitUp!: pulumi.Output<string>;
     /**
      * If uplink limiting per-client is enabled
      */
-    public readonly clientLimitUpEnabled!: pulumi.Output<boolean>;
+    public readonly clientLimitUpEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * List of COA (change of authorization) servers, optional
      */
-    public readonly coaServers!: pulumi.Output<outputs.site.WlanCoaServer[]>;
+    public readonly coaServers!: pulumi.Output<outputs.site.WlanCoaServer[] | undefined>;
     /**
      * Some old WLAN drivers may not be compatible
      */
@@ -210,11 +204,11 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * To disable Wi-Fi 7 EHT IEs
      */
-    public readonly disable11be!: pulumi.Output<boolean>;
+    public readonly disable11be!: pulumi.Output<boolean | undefined>;
     /**
      * To disable ht or vht rates
      */
-    public readonly disableHtVhtRates!: pulumi.Output<boolean>;
+    public readonly disableHtVhtRates!: pulumi.Output<boolean | undefined>;
     /**
      * Whether to disable U-APSD
      */
@@ -222,11 +216,11 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * Disable sending v2 roam notification messages
      */
-    public readonly disableV1RoamNotify!: pulumi.Output<boolean>;
+    public readonly disableV1RoamNotify!: pulumi.Output<boolean | undefined>;
     /**
      * Disable sending v2 roam notification messages
      */
-    public readonly disableV2RoamNotify!: pulumi.Output<boolean>;
+    public readonly disableV2RoamNotify!: pulumi.Output<boolean | undefined>;
     /**
      * When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
      * reach default gateway
@@ -240,7 +234,7 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
      */
-    public readonly dnsServerRewrite!: pulumi.Output<outputs.site.WlanDnsServerRewrite>;
+    public readonly dnsServerRewrite!: pulumi.Output<outputs.site.WlanDnsServerRewrite | undefined>;
     public readonly dtim!: pulumi.Output<number>;
     /**
      * For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on
@@ -258,17 +252,17 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * Enable AP-AP keycaching via multicast
      */
-    public readonly enableLocalKeycaching!: pulumi.Output<boolean>;
+    public readonly enableLocalKeycaching!: pulumi.Output<boolean | undefined>;
     /**
      * By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
      * client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
      */
-    public readonly enableWirelessBridging!: pulumi.Output<boolean>;
+    public readonly enableWirelessBridging!: pulumi.Output<boolean | undefined>;
     /**
      * If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response
      * packets to be forwarded to wireless
      */
-    public readonly enableWirelessBridgingDhcpTracking!: pulumi.Output<boolean>;
+    public readonly enableWirelessBridgingDhcpTracking!: pulumi.Output<boolean | undefined>;
     /**
      * If this wlan is enabled
      */
@@ -277,7 +271,7 @@ export class Wlan extends pulumi.CustomResource {
      * If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
      * ‘auth_server_retries’ .
      */
-    public readonly fastDot1xTimers!: pulumi.Output<boolean>;
+    public readonly fastDot1xTimers!: pulumi.Output<boolean | undefined>;
     /**
      * Whether to hide SSID in beacon
      */
@@ -289,7 +283,7 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * Hostspot 2.0 wlan settings
      */
-    public readonly hotspot20!: pulumi.Output<outputs.site.WlanHotspot20>;
+    public readonly hotspot20!: pulumi.Output<outputs.site.WlanHotspot20 | undefined>;
     public readonly injectDhcpOption82!: pulumi.Output<outputs.site.WlanInjectDhcpOption82 | undefined>;
     /**
      * where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
@@ -298,16 +292,16 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * Whether to stop clients to talk to each other
      */
-    public readonly isolation!: pulumi.Output<boolean>;
+    public readonly isolation!: pulumi.Output<boolean | undefined>;
     /**
      * If isolation is enabled, whether to deny clients to talk to L2 on the LAN
      */
-    public readonly l2Isolation!: pulumi.Output<boolean>;
+    public readonly l2Isolation!: pulumi.Output<boolean | undefined>;
     /**
      * Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
      * Enabling this will cause problem for iOS devices.
      */
-    public readonly legacyOverds!: pulumi.Output<boolean>;
+    public readonly legacyOverds!: pulumi.Output<boolean | undefined>;
     /**
      * Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
      */
@@ -323,7 +317,7 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * Maximum number of client connected to the SSID. `0` means unlimited
      */
-    public readonly maxNumClients!: pulumi.Output<number>;
+    public readonly maxNumClients!: pulumi.Output<number | undefined>;
     public readonly mistNac!: pulumi.Output<outputs.site.WlanMistNac>;
     public /*out*/ readonly mspId!: pulumi.Output<string>;
     /**
@@ -384,7 +378,7 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * enum: `11r`, `OKC`, `NONE`
      */
-    public readonly roamMode!: pulumi.Output<string>;
+    public readonly roamMode!: pulumi.Output<string | undefined>;
     /**
      * WLAN operating schedule, default is disabled
      */
@@ -393,7 +387,7 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * Whether to exclude this WLAN from SLE metrics
      */
-    public readonly sleExcluded!: pulumi.Output<boolean>;
+    public readonly sleExcluded!: pulumi.Output<boolean | undefined>;
     /**
      * Name of the SSID
      */
@@ -416,22 +410,16 @@ export class Wlan extends pulumi.CustomResource {
      * deterministic algorithm
      */
     public readonly vlanPooling!: pulumi.Output<boolean>;
-    /**
-     * In kbps
-     */
-    public readonly wlanLimitDown!: pulumi.Output<number>;
+    public readonly wlanLimitDown!: pulumi.Output<string>;
     /**
      * If downlink limiting for whole wlan is enabled
      */
-    public readonly wlanLimitDownEnabled!: pulumi.Output<boolean>;
-    /**
-     * In kbps
-     */
-    public readonly wlanLimitUp!: pulumi.Output<number>;
+    public readonly wlanLimitDownEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly wlanLimitUp!: pulumi.Output<string>;
     /**
      * If uplink limiting for whole wlan is enabled
      */
-    public readonly wlanLimitUpEnabled!: pulumi.Output<boolean>;
+    public readonly wlanLimitUpEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * List of wxtag_ids
      */
@@ -774,18 +762,12 @@ export interface WlanState {
      * https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
      */
     ciscoCwa?: pulumi.Input<inputs.site.WlanCiscoCwa>;
-    /**
-     * In kbps
-     */
-    clientLimitDown?: pulumi.Input<number>;
+    clientLimitDown?: pulumi.Input<string>;
     /**
      * If downlink limiting per-client is enabled
      */
     clientLimitDownEnabled?: pulumi.Input<boolean>;
-    /**
-     * In kbps
-     */
-    clientLimitUp?: pulumi.Input<number>;
+    clientLimitUp?: pulumi.Input<string>;
     /**
      * If uplink limiting per-client is enabled
      */
@@ -1007,18 +989,12 @@ export interface WlanState {
      * deterministic algorithm
      */
     vlanPooling?: pulumi.Input<boolean>;
-    /**
-     * In kbps
-     */
-    wlanLimitDown?: pulumi.Input<number>;
+    wlanLimitDown?: pulumi.Input<string>;
     /**
      * If downlink limiting for whole wlan is enabled
      */
     wlanLimitDownEnabled?: pulumi.Input<boolean>;
-    /**
-     * In kbps
-     */
-    wlanLimitUp?: pulumi.Input<number>;
+    wlanLimitUp?: pulumi.Input<string>;
     /**
      * If uplink limiting for whole wlan is enabled
      */
@@ -1149,18 +1125,12 @@ export interface WlanArgs {
      * https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
      */
     ciscoCwa?: pulumi.Input<inputs.site.WlanCiscoCwa>;
-    /**
-     * In kbps
-     */
-    clientLimitDown?: pulumi.Input<number>;
+    clientLimitDown?: pulumi.Input<string>;
     /**
      * If downlink limiting per-client is enabled
      */
     clientLimitDownEnabled?: pulumi.Input<boolean>;
-    /**
-     * In kbps
-     */
-    clientLimitUp?: pulumi.Input<number>;
+    clientLimitUp?: pulumi.Input<string>;
     /**
      * If uplink limiting per-client is enabled
      */
@@ -1371,18 +1341,12 @@ export interface WlanArgs {
      * deterministic algorithm
      */
     vlanPooling?: pulumi.Input<boolean>;
-    /**
-     * In kbps
-     */
-    wlanLimitDown?: pulumi.Input<number>;
+    wlanLimitDown?: pulumi.Input<string>;
     /**
      * If downlink limiting for whole wlan is enabled
      */
     wlanLimitDownEnabled?: pulumi.Input<boolean>;
-    /**
-     * In kbps
-     */
-    wlanLimitUp?: pulumi.Input<number>;
+    wlanLimitUp?: pulumi.Input<string>;
     /**
      * If uplink limiting for whole wlan is enabled
      */

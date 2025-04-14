@@ -3378,10 +3378,7 @@ if not MYPY:
         """
         keywrap_kek: NotRequired[pulumi.Input[builtins.str]]
         keywrap_mack: NotRequired[pulumi.Input[builtins.str]]
-        port: NotRequired[pulumi.Input[builtins.int]]
-        """
-        Acct port of RADIUS server
-        """
+        port: NotRequired[pulumi.Input[builtins.str]]
 elif False:
     NetworktemplateRadiusConfigAcctServerArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3394,12 +3391,11 @@ class NetworktemplateRadiusConfigAcctServerArgs:
                  keywrap_format: Optional[pulumi.Input[builtins.str]] = None,
                  keywrap_kek: Optional[pulumi.Input[builtins.str]] = None,
                  keywrap_mack: Optional[pulumi.Input[builtins.str]] = None,
-                 port: Optional[pulumi.Input[builtins.int]] = None):
+                 port: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] host: IP/ hostname of RADIUS server
         :param pulumi.Input[builtins.str] secret: Secret of RADIUS server
         :param pulumi.Input[builtins.str] keywrap_format: enum: `ascii`, `hex`
-        :param pulumi.Input[builtins.int] port: Acct port of RADIUS server
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "secret", secret)
@@ -3479,14 +3475,11 @@ class NetworktemplateRadiusConfigAcctServerArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        Acct port of RADIUS server
-        """
+    def port(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[builtins.int]]):
+    def port(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "port", value)
 
 
@@ -3507,10 +3500,7 @@ if not MYPY:
         """
         keywrap_kek: NotRequired[pulumi.Input[builtins.str]]
         keywrap_mack: NotRequired[pulumi.Input[builtins.str]]
-        port: NotRequired[pulumi.Input[builtins.int]]
-        """
-        Auth port of RADIUS server
-        """
+        port: NotRequired[pulumi.Input[builtins.str]]
         require_message_authenticator: NotRequired[pulumi.Input[builtins.bool]]
         """
         Whether to require Message-Authenticator in requests
@@ -3527,13 +3517,12 @@ class NetworktemplateRadiusConfigAuthServerArgs:
                  keywrap_format: Optional[pulumi.Input[builtins.str]] = None,
                  keywrap_kek: Optional[pulumi.Input[builtins.str]] = None,
                  keywrap_mack: Optional[pulumi.Input[builtins.str]] = None,
-                 port: Optional[pulumi.Input[builtins.int]] = None,
+                 port: Optional[pulumi.Input[builtins.str]] = None,
                  require_message_authenticator: Optional[pulumi.Input[builtins.bool]] = None):
         """
         :param pulumi.Input[builtins.str] host: IP/ hostname of RADIUS server
         :param pulumi.Input[builtins.str] secret: Secret of RADIUS server
         :param pulumi.Input[builtins.str] keywrap_format: enum: `ascii`, `hex`
-        :param pulumi.Input[builtins.int] port: Auth port of RADIUS server
         :param pulumi.Input[builtins.bool] require_message_authenticator: Whether to require Message-Authenticator in requests
         """
         pulumi.set(__self__, "host", host)
@@ -3616,14 +3605,11 @@ class NetworktemplateRadiusConfigAuthServerArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        Auth port of RADIUS server
-        """
+    def port(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[builtins.int]]):
+    def port(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "port", value)
 
     @property
@@ -11192,10 +11178,7 @@ if not MYPY:
         """
         keywrap_kek: NotRequired[pulumi.Input[builtins.str]]
         keywrap_mack: NotRequired[pulumi.Input[builtins.str]]
-        port: NotRequired[pulumi.Input[builtins.int]]
-        """
-        Acct port of RADIUS server
-        """
+        port: NotRequired[pulumi.Input[builtins.str]]
 elif False:
     WlanAcctServerArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -11208,12 +11191,11 @@ class WlanAcctServerArgs:
                  keywrap_format: Optional[pulumi.Input[builtins.str]] = None,
                  keywrap_kek: Optional[pulumi.Input[builtins.str]] = None,
                  keywrap_mack: Optional[pulumi.Input[builtins.str]] = None,
-                 port: Optional[pulumi.Input[builtins.int]] = None):
+                 port: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] host: IP/ hostname of RADIUS server
         :param pulumi.Input[builtins.str] secret: Secret of RADIUS server
         :param pulumi.Input[builtins.str] keywrap_format: enum: `ascii`, `hex`
-        :param pulumi.Input[builtins.int] port: Acct port of RADIUS server
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "secret", secret)
@@ -11293,14 +11275,11 @@ class WlanAcctServerArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        Acct port of RADIUS server
-        """
+    def port(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[builtins.int]]):
+    def port(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "port", value)
 
 
@@ -11942,10 +11921,7 @@ if not MYPY:
         """
         keywrap_kek: NotRequired[pulumi.Input[builtins.str]]
         keywrap_mack: NotRequired[pulumi.Input[builtins.str]]
-        port: NotRequired[pulumi.Input[builtins.int]]
-        """
-        Auth port of RADIUS server
-        """
+        port: NotRequired[pulumi.Input[builtins.str]]
         require_message_authenticator: NotRequired[pulumi.Input[builtins.bool]]
         """
         Whether to require Message-Authenticator in requests
@@ -11962,13 +11938,12 @@ class WlanAuthServerArgs:
                  keywrap_format: Optional[pulumi.Input[builtins.str]] = None,
                  keywrap_kek: Optional[pulumi.Input[builtins.str]] = None,
                  keywrap_mack: Optional[pulumi.Input[builtins.str]] = None,
-                 port: Optional[pulumi.Input[builtins.int]] = None,
+                 port: Optional[pulumi.Input[builtins.str]] = None,
                  require_message_authenticator: Optional[pulumi.Input[builtins.bool]] = None):
         """
         :param pulumi.Input[builtins.str] host: IP/ hostname of RADIUS server
         :param pulumi.Input[builtins.str] secret: Secret of RADIUS server
         :param pulumi.Input[builtins.str] keywrap_format: enum: `ascii`, `hex`
-        :param pulumi.Input[builtins.int] port: Auth port of RADIUS server
         :param pulumi.Input[builtins.bool] require_message_authenticator: Whether to require Message-Authenticator in requests
         """
         pulumi.set(__self__, "host", host)
@@ -12051,14 +12026,11 @@ class WlanAuthServerArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        Auth port of RADIUS server
-        """
+    def port(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[builtins.int]]):
+    def port(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "port", value)
 
     @property
@@ -12076,18 +12048,18 @@ class WlanAuthServerArgs:
 
 if not MYPY:
     class WlanBonjourArgsDict(TypedDict):
-        additional_vlan_ids: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
+        additional_vlan_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         """
         additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
-        """
-        services: pulumi.Input[Mapping[str, pulumi.Input['WlanBonjourServicesArgsDict']]]
-        """
-        What services are allowed. 
-        Property key is the service name
         """
         enabled: NotRequired[pulumi.Input[builtins.bool]]
         """
         Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+        """
+        services: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['WlanBonjourServicesArgsDict']]]]
+        """
+        What services are allowed. 
+        Property key is the service name
         """
 elif False:
     WlanBonjourArgsDict: TypeAlias = Mapping[str, Any]
@@ -12095,44 +12067,33 @@ elif False:
 @pulumi.input_type
 class WlanBonjourArgs:
     def __init__(__self__, *,
-                 additional_vlan_ids: pulumi.Input[Sequence[pulumi.Input[builtins.str]]],
-                 services: pulumi.Input[Mapping[str, pulumi.Input['WlanBonjourServicesArgs']]],
-                 enabled: Optional[pulumi.Input[builtins.bool]] = None):
+                 additional_vlan_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 services: Optional[pulumi.Input[Mapping[str, pulumi.Input['WlanBonjourServicesArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] additional_vlan_ids: additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+        :param pulumi.Input[builtins.bool] enabled: Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
         :param pulumi.Input[Mapping[str, pulumi.Input['WlanBonjourServicesArgs']]] services: What services are allowed. 
                Property key is the service name
-        :param pulumi.Input[builtins.bool] enabled: Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
         """
-        pulumi.set(__self__, "additional_vlan_ids", additional_vlan_ids)
-        pulumi.set(__self__, "services", services)
+        if additional_vlan_ids is not None:
+            pulumi.set(__self__, "additional_vlan_ids", additional_vlan_ids)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
 
     @property
     @pulumi.getter(name="additionalVlanIds")
-    def additional_vlan_ids(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
+    def additional_vlan_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
         """
         return pulumi.get(self, "additional_vlan_ids")
 
     @additional_vlan_ids.setter
-    def additional_vlan_ids(self, value: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
+    def additional_vlan_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "additional_vlan_ids", value)
-
-    @property
-    @pulumi.getter
-    def services(self) -> pulumi.Input[Mapping[str, pulumi.Input['WlanBonjourServicesArgs']]]:
-        """
-        What services are allowed. 
-        Property key is the service name
-        """
-        return pulumi.get(self, "services")
-
-    @services.setter
-    def services(self, value: pulumi.Input[Mapping[str, pulumi.Input['WlanBonjourServicesArgs']]]):
-        pulumi.set(self, "services", value)
 
     @property
     @pulumi.getter
@@ -12145,6 +12106,19 @@ class WlanBonjourArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def services(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['WlanBonjourServicesArgs']]]]:
+        """
+        What services are allowed. 
+        Property key is the service name
+        """
+        return pulumi.get(self, "services")
+
+    @services.setter
+    def services(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['WlanBonjourServicesArgs']]]]):
+        pulumi.set(self, "services", value)
 
 
 if not MYPY:
@@ -12313,7 +12287,7 @@ if not MYPY:
         Whether to disable Event-Timestamp Check
         """
         enabled: NotRequired[pulumi.Input[builtins.bool]]
-        port: NotRequired[pulumi.Input[builtins.int]]
+        port: NotRequired[pulumi.Input[builtins.str]]
 elif False:
     WlanCoaServerArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -12324,7 +12298,7 @@ class WlanCoaServerArgs:
                  secret: pulumi.Input[builtins.str],
                  disable_event_timestamp_check: Optional[pulumi.Input[builtins.bool]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 port: Optional[pulumi.Input[builtins.int]] = None):
+                 port: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.bool] disable_event_timestamp_check: Whether to disable Event-Timestamp Check
         """
@@ -12378,11 +12352,11 @@ class WlanCoaServerArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[builtins.int]]:
+    def port(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[builtins.int]]):
+    def port(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "port", value)
 
 
@@ -12531,7 +12505,7 @@ class WlanDynamicPskArgs:
 
 if not MYPY:
     class WlanDynamicVlanArgsDict(TypedDict):
-        default_vlan_ids: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
+        default_vlan_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         """
         Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
         """
@@ -12559,7 +12533,7 @@ elif False:
 @pulumi.input_type
 class WlanDynamicVlanArgs:
     def __init__(__self__, *,
-                 default_vlan_ids: pulumi.Input[Sequence[pulumi.Input[builtins.str]]],
+                 default_vlan_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  local_vlan_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
@@ -12573,7 +12547,8 @@ class WlanDynamicVlanArgs:
                  * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \\"\\"
                  * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
         """
-        pulumi.set(__self__, "default_vlan_ids", default_vlan_ids)
+        if default_vlan_ids is not None:
+            pulumi.set(__self__, "default_vlan_ids", default_vlan_ids)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if local_vlan_ids is not None:
@@ -12585,14 +12560,14 @@ class WlanDynamicVlanArgs:
 
     @property
     @pulumi.getter(name="defaultVlanIds")
-    def default_vlan_ids(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
+    def default_vlan_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
         """
         return pulumi.get(self, "default_vlan_ids")
 
     @default_vlan_ids.setter
-    def default_vlan_ids(self, value: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
+    def default_vlan_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "default_vlan_ids", value)
 
     @property
@@ -12905,7 +12880,7 @@ if not MYPY:
         """
         auth: NotRequired[pulumi.Input[builtins.str]]
         """
-        authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+        authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
         """
         azure_client_id: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -13110,7 +13085,7 @@ if not MYPY:
         """
         sponsor_link_validity_duration: NotRequired[pulumi.Input[builtins.str]]
         """
-        Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+        Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
         """
         sponsor_notify_all: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -13262,7 +13237,7 @@ class WlanPortalArgs:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] amazon_email_domains: Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         :param pulumi.Input[builtins.bool] amazon_enabled: Whether amazon is enabled as a login method
         :param pulumi.Input[builtins.int] amazon_expire: Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
-        :param pulumi.Input[builtins.str] auth: authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+        :param pulumi.Input[builtins.str] auth: authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
         :param pulumi.Input[builtins.str] azure_client_id: Required if `azure_enabled`==`true`. Azure active directory app client id
         :param pulumi.Input[builtins.str] azure_client_secret: Required if `azure_enabled`==`true`. Azure active directory app client secret
         :param pulumi.Input[builtins.bool] azure_enabled: Whether Azure Active Directory is enabled as a login method
@@ -13313,7 +13288,7 @@ class WlanPortalArgs:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] sponsor_email_domains: List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
         :param pulumi.Input[builtins.bool] sponsor_enabled: Whether sponsor is enabled
         :param pulumi.Input[builtins.int] sponsor_expire: Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
-        :param pulumi.Input[builtins.str] sponsor_link_validity_duration: Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+        :param pulumi.Input[builtins.str] sponsor_link_validity_duration: Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
         :param pulumi.Input[builtins.bool] sponsor_notify_all: Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
         :param pulumi.Input[builtins.bool] sponsor_status_notify: Optional if `sponsor_enabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] sponsors: object of allowed sponsors email with name. Required if `sponsor_enabled`
@@ -13558,7 +13533,7 @@ class WlanPortalArgs:
     @pulumi.getter
     def auth(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+        authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
         """
         return pulumi.get(self, "auth")
 
@@ -14179,7 +14154,7 @@ class WlanPortalArgs:
     @pulumi.getter(name="sponsorLinkValidityDuration")
     def sponsor_link_validity_duration(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+        Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
         """
         return pulumi.get(self, "sponsor_link_validity_duration")
 
@@ -18459,7 +18434,7 @@ if not MYPY:
     class WlanRadsecArgsDict(TypedDict):
         coa_enabled: NotRequired[pulumi.Input[builtins.bool]]
         enabled: NotRequired[pulumi.Input[builtins.bool]]
-        idle_timeout: NotRequired[pulumi.Input[builtins.int]]
+        idle_timeout: NotRequired[pulumi.Input[builtins.str]]
         mxcluster_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         """
         To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
@@ -18492,7 +18467,7 @@ class WlanRadsecArgs:
     def __init__(__self__, *,
                  coa_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 idle_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 idle_timeout: Optional[pulumi.Input[builtins.str]] = None,
                  mxcluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  proxy_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  server_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -18546,11 +18521,11 @@ class WlanRadsecArgs:
 
     @property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+    def idle_timeout(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "idle_timeout")
 
     @idle_timeout.setter
-    def idle_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+    def idle_timeout(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "idle_timeout", value)
 
     @property

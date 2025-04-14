@@ -38,10 +38,10 @@ import (
 //				},
 //				VlanEnabled:     pulumi.Bool(true),
 //				VlanId:          pulumi.String("143"),
-//				WlanLimitUp:     pulumi.Int(10000),
-//				WlanLimitDown:   pulumi.Int(20000),
-//				ClientLimitUp:   pulumi.Int(512),
-//				ClientLimitDown: pulumi.Int(1000),
+//				WlanLimitUp:     pulumi.String("10000"),
+//				WlanLimitDown:   pulumi.String("20000"),
+//				ClientLimitUp:   pulumi.String("512"),
+//				ClientLimitDown: pulumi.String("1000"),
 //				Auth: &site.WlanAuthArgs{
 //					Type: pulumi.String("psk"),
 //					Psk:  pulumi.String("secretpsk"),
@@ -88,7 +88,7 @@ type Wlan struct {
 	// List of device ids
 	ApIds pulumi.StringArrayOutput `pulumi:"apIds"`
 	// Bandwidth limiting for apps (applies to up/down)
-	AppLimit WlanAppLimitOutput `pulumi:"appLimit"`
+	AppLimit WlanAppLimitPtrOutput `pulumi:"appLimit"`
 	// APp qos wlan settings
 	AppQos WlanAppQosOutput `pulumi:"appQos"`
 	// enum: `aps`, `site`, `wxtags`
@@ -109,46 +109,44 @@ type Wlan struct {
 	// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set
 	// to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default
 	// value to 3.
-	AuthServersRetries pulumi.IntOutput `pulumi:"authServersRetries"`
+	AuthServersRetries pulumi.IntPtrOutput `pulumi:"authServersRetries"`
 	// Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’ and
 	// ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
 	// setting authServersTimeout and is set to default value of 10.
-	AuthServersTimeout pulumi.IntOutput `pulumi:"authServersTimeout"`
+	AuthServersTimeout pulumi.IntPtrOutput `pulumi:"authServersTimeout"`
 	// Whether to enable band_steering, this works only when band==both
 	BandSteer pulumi.BoolOutput `pulumi:"bandSteer"`
 	// Force dualBand capable client to connect to 5G
-	BandSteerForceBand5 pulumi.BoolOutput `pulumi:"bandSteerForceBand5"`
+	BandSteerForceBand5 pulumi.BoolPtrOutput `pulumi:"bandSteerForceBand5"`
 	// list of radios that the wlan should apply to. enum: `24`, `5`, `6`
 	Bands pulumi.StringArrayOutput `pulumi:"bands"`
 	// Whether to block the clients in the blacklist (up to first 256 macs)
-	BlockBlacklistClients pulumi.BoolOutput `pulumi:"blockBlacklistClients"`
+	BlockBlacklistClients pulumi.BoolPtrOutput `pulumi:"blockBlacklistClients"`
 	// Bonjour gateway wlan settings
-	Bonjour WlanBonjourOutput `pulumi:"bonjour"`
+	Bonjour WlanBonjourPtrOutput `pulumi:"bonjour"`
 	// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
 	// https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-	CiscoCwa WlanCiscoCwaOutput `pulumi:"ciscoCwa"`
-	// In kbps
-	ClientLimitDown pulumi.IntOutput `pulumi:"clientLimitDown"`
+	CiscoCwa        WlanCiscoCwaOutput  `pulumi:"ciscoCwa"`
+	ClientLimitDown pulumi.StringOutput `pulumi:"clientLimitDown"`
 	// If downlink limiting per-client is enabled
-	ClientLimitDownEnabled pulumi.BoolOutput `pulumi:"clientLimitDownEnabled"`
-	// In kbps
-	ClientLimitUp pulumi.IntOutput `pulumi:"clientLimitUp"`
+	ClientLimitDownEnabled pulumi.BoolPtrOutput `pulumi:"clientLimitDownEnabled"`
+	ClientLimitUp          pulumi.StringOutput  `pulumi:"clientLimitUp"`
 	// If uplink limiting per-client is enabled
-	ClientLimitUpEnabled pulumi.BoolOutput `pulumi:"clientLimitUpEnabled"`
+	ClientLimitUpEnabled pulumi.BoolPtrOutput `pulumi:"clientLimitUpEnabled"`
 	// List of COA (change of authorization) servers, optional
 	CoaServers WlanCoaServerArrayOutput `pulumi:"coaServers"`
 	// Some old WLAN drivers may not be compatible
 	Disable11ax pulumi.BoolOutput `pulumi:"disable11ax"`
 	// To disable Wi-Fi 7 EHT IEs
-	Disable11be pulumi.BoolOutput `pulumi:"disable11be"`
+	Disable11be pulumi.BoolPtrOutput `pulumi:"disable11be"`
 	// To disable ht or vht rates
-	DisableHtVhtRates pulumi.BoolOutput `pulumi:"disableHtVhtRates"`
+	DisableHtVhtRates pulumi.BoolPtrOutput `pulumi:"disableHtVhtRates"`
 	// Whether to disable U-APSD
 	DisableUapsd pulumi.BoolOutput `pulumi:"disableUapsd"`
 	// Disable sending v2 roam notification messages
-	DisableV1RoamNotify pulumi.BoolOutput `pulumi:"disableV1RoamNotify"`
+	DisableV1RoamNotify pulumi.BoolPtrOutput `pulumi:"disableV1RoamNotify"`
 	// Disable sending v2 roam notification messages
-	DisableV2RoamNotify pulumi.BoolOutput `pulumi:"disableV2RoamNotify"`
+	DisableV2RoamNotify pulumi.BoolPtrOutput `pulumi:"disableV2RoamNotify"`
 	// When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
 	// reach default gateway
 	DisableWhenGatewayUnreachable pulumi.BoolPtrOutput `pulumi:"disableWhenGatewayUnreachable"`
@@ -156,8 +154,8 @@ type Wlan struct {
 	// Whether to disable WMM
 	DisableWmm pulumi.BoolOutput `pulumi:"disableWmm"`
 	// For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
-	DnsServerRewrite WlanDnsServerRewriteOutput `pulumi:"dnsServerRewrite"`
-	Dtim             pulumi.IntOutput           `pulumi:"dtim"`
+	DnsServerRewrite WlanDnsServerRewritePtrOutput `pulumi:"dnsServerRewrite"`
+	Dtim             pulumi.IntOutput              `pulumi:"dtim"`
 	// For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on
 	// context (wlan/site/user/...) thus following configurations are assumed (currently) * PSK will come from RADIUS server *
 	// AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed) * AP sends BSSID:SSID as
@@ -168,34 +166,34 @@ type Wlan struct {
 	// For 802.1x
 	DynamicVlan WlanDynamicVlanPtrOutput `pulumi:"dynamicVlan"`
 	// Enable AP-AP keycaching via multicast
-	EnableLocalKeycaching pulumi.BoolOutput `pulumi:"enableLocalKeycaching"`
+	EnableLocalKeycaching pulumi.BoolPtrOutput `pulumi:"enableLocalKeycaching"`
 	// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
 	// client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
-	EnableWirelessBridging pulumi.BoolOutput `pulumi:"enableWirelessBridging"`
+	EnableWirelessBridging pulumi.BoolPtrOutput `pulumi:"enableWirelessBridging"`
 	// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response
 	// packets to be forwarded to wireless
-	EnableWirelessBridgingDhcpTracking pulumi.BoolOutput `pulumi:"enableWirelessBridgingDhcpTracking"`
+	EnableWirelessBridgingDhcpTracking pulumi.BoolPtrOutput `pulumi:"enableWirelessBridgingDhcpTracking"`
 	// If this wlan is enabled
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
 	// ‘auth_server_retries’ .
-	FastDot1xTimers pulumi.BoolOutput `pulumi:"fastDot1xTimers"`
+	FastDot1xTimers pulumi.BoolPtrOutput `pulumi:"fastDot1xTimers"`
 	// Whether to hide SSID in beacon
 	HideSsid pulumi.BoolOutput `pulumi:"hideSsid"`
 	// Include hostname inside IE in AP beacons / probe responses
 	HostnameIe pulumi.BoolOutput `pulumi:"hostnameIe"`
 	// Hostspot 2.0 wlan settings
-	Hotspot20          WlanHotspot20Output             `pulumi:"hotspot20"`
+	Hotspot20          WlanHotspot20PtrOutput          `pulumi:"hotspot20"`
 	InjectDhcpOption82 WlanInjectDhcpOption82PtrOutput `pulumi:"injectDhcpOption82"`
 	// where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
 	Interface pulumi.StringOutput `pulumi:"interface"`
 	// Whether to stop clients to talk to each other
-	Isolation pulumi.BoolOutput `pulumi:"isolation"`
+	Isolation pulumi.BoolPtrOutput `pulumi:"isolation"`
 	// If isolation is enabled, whether to deny clients to talk to L2 on the LAN
-	L2Isolation pulumi.BoolOutput `pulumi:"l2Isolation"`
+	L2Isolation pulumi.BoolPtrOutput `pulumi:"l2Isolation"`
 	// Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
 	// Enabling this will cause problem for iOS devices.
-	LegacyOverds pulumi.BoolOutput `pulumi:"legacyOverds"`
+	LegacyOverds pulumi.BoolPtrOutput `pulumi:"legacyOverds"`
 	// Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
 	LimitBcast pulumi.BoolOutput `pulumi:"limitBcast"`
 	// Limit probe response base on some heuristic rules
@@ -203,7 +201,7 @@ type Wlan struct {
 	// Max idle time in seconds
 	MaxIdletime pulumi.IntOutput `pulumi:"maxIdletime"`
 	// Maximum number of client connected to the SSID. `0` means unlimited
-	MaxNumClients pulumi.IntOutput    `pulumi:"maxNumClients"`
+	MaxNumClients pulumi.IntPtrOutput `pulumi:"maxNumClients"`
 	MistNac       WlanMistNacOutput   `pulumi:"mistNac"`
 	MspId         pulumi.StringOutput `pulumi:"mspId"`
 	// When `interface`=`mxtunnel`, id of the Mist Tunnel
@@ -236,12 +234,12 @@ type Wlan struct {
 	// When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
 	ReconnectClientsWhenRoamingMxcluster pulumi.BoolPtrOutput `pulumi:"reconnectClientsWhenRoamingMxcluster"`
 	// enum: `11r`, `OKC`, `NONE`
-	RoamMode pulumi.StringOutput `pulumi:"roamMode"`
+	RoamMode pulumi.StringPtrOutput `pulumi:"roamMode"`
 	// WLAN operating schedule, default is disabled
 	Schedule WlanScheduleOutput  `pulumi:"schedule"`
 	SiteId   pulumi.StringOutput `pulumi:"siteId"`
 	// Whether to exclude this WLAN from SLE metrics
-	SleExcluded pulumi.BoolOutput `pulumi:"sleExcluded"`
+	SleExcluded pulumi.BoolPtrOutput `pulumi:"sleExcluded"`
 	// Name of the SSID
 	Ssid pulumi.StringOutput `pulumi:"ssid"`
 	// If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
@@ -253,15 +251,13 @@ type Wlan struct {
 	VlanIds pulumi.StringArrayOutput `pulumi:"vlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
 	// deterministic algorithm
-	VlanPooling pulumi.BoolOutput `pulumi:"vlanPooling"`
-	// In kbps
-	WlanLimitDown pulumi.IntOutput `pulumi:"wlanLimitDown"`
+	VlanPooling   pulumi.BoolOutput   `pulumi:"vlanPooling"`
+	WlanLimitDown pulumi.StringOutput `pulumi:"wlanLimitDown"`
 	// If downlink limiting for whole wlan is enabled
-	WlanLimitDownEnabled pulumi.BoolOutput `pulumi:"wlanLimitDownEnabled"`
-	// In kbps
-	WlanLimitUp pulumi.IntOutput `pulumi:"wlanLimitUp"`
+	WlanLimitDownEnabled pulumi.BoolPtrOutput `pulumi:"wlanLimitDownEnabled"`
+	WlanLimitUp          pulumi.StringOutput  `pulumi:"wlanLimitUp"`
 	// If uplink limiting for whole wlan is enabled
-	WlanLimitUpEnabled pulumi.BoolOutput `pulumi:"wlanLimitUpEnabled"`
+	WlanLimitUpEnabled pulumi.BoolPtrOutput `pulumi:"wlanLimitUpEnabled"`
 	// List of wxtag_ids
 	WxtagIds pulumi.StringArrayOutput `pulumi:"wxtagIds"`
 	// When `interface`=`wxtunnel`, id of the WXLAN Tunnel
@@ -363,13 +359,11 @@ type wlanState struct {
 	Bonjour *WlanBonjour `pulumi:"bonjour"`
 	// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
 	// https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-	CiscoCwa *WlanCiscoCwa `pulumi:"ciscoCwa"`
-	// In kbps
-	ClientLimitDown *int `pulumi:"clientLimitDown"`
+	CiscoCwa        *WlanCiscoCwa `pulumi:"ciscoCwa"`
+	ClientLimitDown *string       `pulumi:"clientLimitDown"`
 	// If downlink limiting per-client is enabled
-	ClientLimitDownEnabled *bool `pulumi:"clientLimitDownEnabled"`
-	// In kbps
-	ClientLimitUp *int `pulumi:"clientLimitUp"`
+	ClientLimitDownEnabled *bool   `pulumi:"clientLimitDownEnabled"`
+	ClientLimitUp          *string `pulumi:"clientLimitUp"`
 	// If uplink limiting per-client is enabled
 	ClientLimitUpEnabled *bool `pulumi:"clientLimitUpEnabled"`
 	// List of COA (change of authorization) servers, optional
@@ -490,13 +484,11 @@ type wlanState struct {
 	VlanIds []string `pulumi:"vlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
 	// deterministic algorithm
-	VlanPooling *bool `pulumi:"vlanPooling"`
-	// In kbps
-	WlanLimitDown *int `pulumi:"wlanLimitDown"`
+	VlanPooling   *bool   `pulumi:"vlanPooling"`
+	WlanLimitDown *string `pulumi:"wlanLimitDown"`
 	// If downlink limiting for whole wlan is enabled
-	WlanLimitDownEnabled *bool `pulumi:"wlanLimitDownEnabled"`
-	// In kbps
-	WlanLimitUp *int `pulumi:"wlanLimitUp"`
+	WlanLimitDownEnabled *bool   `pulumi:"wlanLimitDownEnabled"`
+	WlanLimitUp          *string `pulumi:"wlanLimitUp"`
 	// If uplink limiting for whole wlan is enabled
 	WlanLimitUpEnabled *bool `pulumi:"wlanLimitUpEnabled"`
 	// List of wxtag_ids
@@ -565,13 +557,11 @@ type WlanState struct {
 	Bonjour WlanBonjourPtrInput
 	// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
 	// https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-	CiscoCwa WlanCiscoCwaPtrInput
-	// In kbps
-	ClientLimitDown pulumi.IntPtrInput
+	CiscoCwa        WlanCiscoCwaPtrInput
+	ClientLimitDown pulumi.StringPtrInput
 	// If downlink limiting per-client is enabled
 	ClientLimitDownEnabled pulumi.BoolPtrInput
-	// In kbps
-	ClientLimitUp pulumi.IntPtrInput
+	ClientLimitUp          pulumi.StringPtrInput
 	// If uplink limiting per-client is enabled
 	ClientLimitUpEnabled pulumi.BoolPtrInput
 	// List of COA (change of authorization) servers, optional
@@ -692,13 +682,11 @@ type WlanState struct {
 	VlanIds pulumi.StringArrayInput
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
 	// deterministic algorithm
-	VlanPooling pulumi.BoolPtrInput
-	// In kbps
-	WlanLimitDown pulumi.IntPtrInput
+	VlanPooling   pulumi.BoolPtrInput
+	WlanLimitDown pulumi.StringPtrInput
 	// If downlink limiting for whole wlan is enabled
 	WlanLimitDownEnabled pulumi.BoolPtrInput
-	// In kbps
-	WlanLimitUp pulumi.IntPtrInput
+	WlanLimitUp          pulumi.StringPtrInput
 	// If uplink limiting for whole wlan is enabled
 	WlanLimitUpEnabled pulumi.BoolPtrInput
 	// List of wxtag_ids
@@ -771,13 +759,11 @@ type wlanArgs struct {
 	Bonjour *WlanBonjour `pulumi:"bonjour"`
 	// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
 	// https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-	CiscoCwa *WlanCiscoCwa `pulumi:"ciscoCwa"`
-	// In kbps
-	ClientLimitDown *int `pulumi:"clientLimitDown"`
+	CiscoCwa        *WlanCiscoCwa `pulumi:"ciscoCwa"`
+	ClientLimitDown *string       `pulumi:"clientLimitDown"`
 	// If downlink limiting per-client is enabled
-	ClientLimitDownEnabled *bool `pulumi:"clientLimitDownEnabled"`
-	// In kbps
-	ClientLimitUp *int `pulumi:"clientLimitUp"`
+	ClientLimitDownEnabled *bool   `pulumi:"clientLimitDownEnabled"`
+	ClientLimitUp          *string `pulumi:"clientLimitUp"`
 	// If uplink limiting per-client is enabled
 	ClientLimitUpEnabled *bool `pulumi:"clientLimitUpEnabled"`
 	// List of COA (change of authorization) servers, optional
@@ -891,13 +877,11 @@ type wlanArgs struct {
 	VlanIds []string `pulumi:"vlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
 	// deterministic algorithm
-	VlanPooling *bool `pulumi:"vlanPooling"`
-	// In kbps
-	WlanLimitDown *int `pulumi:"wlanLimitDown"`
+	VlanPooling   *bool   `pulumi:"vlanPooling"`
+	WlanLimitDown *string `pulumi:"wlanLimitDown"`
 	// If downlink limiting for whole wlan is enabled
-	WlanLimitDownEnabled *bool `pulumi:"wlanLimitDownEnabled"`
-	// In kbps
-	WlanLimitUp *int `pulumi:"wlanLimitUp"`
+	WlanLimitDownEnabled *bool   `pulumi:"wlanLimitDownEnabled"`
+	WlanLimitUp          *string `pulumi:"wlanLimitUp"`
 	// If uplink limiting for whole wlan is enabled
 	WlanLimitUpEnabled *bool `pulumi:"wlanLimitUpEnabled"`
 	// List of wxtag_ids
@@ -967,13 +951,11 @@ type WlanArgs struct {
 	Bonjour WlanBonjourPtrInput
 	// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
 	// https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-	CiscoCwa WlanCiscoCwaPtrInput
-	// In kbps
-	ClientLimitDown pulumi.IntPtrInput
+	CiscoCwa        WlanCiscoCwaPtrInput
+	ClientLimitDown pulumi.StringPtrInput
 	// If downlink limiting per-client is enabled
 	ClientLimitDownEnabled pulumi.BoolPtrInput
-	// In kbps
-	ClientLimitUp pulumi.IntPtrInput
+	ClientLimitUp          pulumi.StringPtrInput
 	// If uplink limiting per-client is enabled
 	ClientLimitUpEnabled pulumi.BoolPtrInput
 	// List of COA (change of authorization) servers, optional
@@ -1087,13 +1069,11 @@ type WlanArgs struct {
 	VlanIds pulumi.StringArrayInput
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
 	// deterministic algorithm
-	VlanPooling pulumi.BoolPtrInput
-	// In kbps
-	WlanLimitDown pulumi.IntPtrInput
+	VlanPooling   pulumi.BoolPtrInput
+	WlanLimitDown pulumi.StringPtrInput
 	// If downlink limiting for whole wlan is enabled
 	WlanLimitDownEnabled pulumi.BoolPtrInput
-	// In kbps
-	WlanLimitUp pulumi.IntPtrInput
+	WlanLimitUp          pulumi.StringPtrInput
 	// If uplink limiting for whole wlan is enabled
 	WlanLimitUpEnabled pulumi.BoolPtrInput
 	// List of wxtag_ids
@@ -1234,8 +1214,8 @@ func (o WlanOutput) ApIds() pulumi.StringArrayOutput {
 }
 
 // Bandwidth limiting for apps (applies to up/down)
-func (o WlanOutput) AppLimit() WlanAppLimitOutput {
-	return o.ApplyT(func(v *Wlan) WlanAppLimitOutput { return v.AppLimit }).(WlanAppLimitOutput)
+func (o WlanOutput) AppLimit() WlanAppLimitPtrOutput {
+	return o.ApplyT(func(v *Wlan) WlanAppLimitPtrOutput { return v.AppLimit }).(WlanAppLimitPtrOutput)
 }
 
 // APp qos wlan settings
@@ -1282,15 +1262,15 @@ func (o WlanOutput) AuthServersNasIp() pulumi.StringOutput {
 // Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set
 // to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default
 // value to 3.
-func (o WlanOutput) AuthServersRetries() pulumi.IntOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.IntOutput { return v.AuthServersRetries }).(pulumi.IntOutput)
+func (o WlanOutput) AuthServersRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.IntPtrOutput { return v.AuthServersRetries }).(pulumi.IntPtrOutput)
 }
 
 // Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’ and
 // ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
 // setting authServersTimeout and is set to default value of 10.
-func (o WlanOutput) AuthServersTimeout() pulumi.IntOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.IntOutput { return v.AuthServersTimeout }).(pulumi.IntOutput)
+func (o WlanOutput) AuthServersTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.IntPtrOutput { return v.AuthServersTimeout }).(pulumi.IntPtrOutput)
 }
 
 // Whether to enable band_steering, this works only when band==both
@@ -1299,8 +1279,8 @@ func (o WlanOutput) BandSteer() pulumi.BoolOutput {
 }
 
 // Force dualBand capable client to connect to 5G
-func (o WlanOutput) BandSteerForceBand5() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.BandSteerForceBand5 }).(pulumi.BoolOutput)
+func (o WlanOutput) BandSteerForceBand5() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.BandSteerForceBand5 }).(pulumi.BoolPtrOutput)
 }
 
 // list of radios that the wlan should apply to. enum: `24`, `5`, `6`
@@ -1309,13 +1289,13 @@ func (o WlanOutput) Bands() pulumi.StringArrayOutput {
 }
 
 // Whether to block the clients in the blacklist (up to first 256 macs)
-func (o WlanOutput) BlockBlacklistClients() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.BlockBlacklistClients }).(pulumi.BoolOutput)
+func (o WlanOutput) BlockBlacklistClients() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.BlockBlacklistClients }).(pulumi.BoolPtrOutput)
 }
 
 // Bonjour gateway wlan settings
-func (o WlanOutput) Bonjour() WlanBonjourOutput {
-	return o.ApplyT(func(v *Wlan) WlanBonjourOutput { return v.Bonjour }).(WlanBonjourOutput)
+func (o WlanOutput) Bonjour() WlanBonjourPtrOutput {
+	return o.ApplyT(func(v *Wlan) WlanBonjourPtrOutput { return v.Bonjour }).(WlanBonjourPtrOutput)
 }
 
 // Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
@@ -1324,24 +1304,22 @@ func (o WlanOutput) CiscoCwa() WlanCiscoCwaOutput {
 	return o.ApplyT(func(v *Wlan) WlanCiscoCwaOutput { return v.CiscoCwa }).(WlanCiscoCwaOutput)
 }
 
-// In kbps
-func (o WlanOutput) ClientLimitDown() pulumi.IntOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.IntOutput { return v.ClientLimitDown }).(pulumi.IntOutput)
+func (o WlanOutput) ClientLimitDown() pulumi.StringOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.ClientLimitDown }).(pulumi.StringOutput)
 }
 
 // If downlink limiting per-client is enabled
-func (o WlanOutput) ClientLimitDownEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.ClientLimitDownEnabled }).(pulumi.BoolOutput)
+func (o WlanOutput) ClientLimitDownEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.ClientLimitDownEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// In kbps
-func (o WlanOutput) ClientLimitUp() pulumi.IntOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.IntOutput { return v.ClientLimitUp }).(pulumi.IntOutput)
+func (o WlanOutput) ClientLimitUp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.ClientLimitUp }).(pulumi.StringOutput)
 }
 
 // If uplink limiting per-client is enabled
-func (o WlanOutput) ClientLimitUpEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.ClientLimitUpEnabled }).(pulumi.BoolOutput)
+func (o WlanOutput) ClientLimitUpEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.ClientLimitUpEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // List of COA (change of authorization) servers, optional
@@ -1355,13 +1333,13 @@ func (o WlanOutput) Disable11ax() pulumi.BoolOutput {
 }
 
 // To disable Wi-Fi 7 EHT IEs
-func (o WlanOutput) Disable11be() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.Disable11be }).(pulumi.BoolOutput)
+func (o WlanOutput) Disable11be() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.Disable11be }).(pulumi.BoolPtrOutput)
 }
 
 // To disable ht or vht rates
-func (o WlanOutput) DisableHtVhtRates() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.DisableHtVhtRates }).(pulumi.BoolOutput)
+func (o WlanOutput) DisableHtVhtRates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.DisableHtVhtRates }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to disable U-APSD
@@ -1370,13 +1348,13 @@ func (o WlanOutput) DisableUapsd() pulumi.BoolOutput {
 }
 
 // Disable sending v2 roam notification messages
-func (o WlanOutput) DisableV1RoamNotify() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.DisableV1RoamNotify }).(pulumi.BoolOutput)
+func (o WlanOutput) DisableV1RoamNotify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.DisableV1RoamNotify }).(pulumi.BoolPtrOutput)
 }
 
 // Disable sending v2 roam notification messages
-func (o WlanOutput) DisableV2RoamNotify() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.DisableV2RoamNotify }).(pulumi.BoolOutput)
+func (o WlanOutput) DisableV2RoamNotify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.DisableV2RoamNotify }).(pulumi.BoolPtrOutput)
 }
 
 // When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
@@ -1395,8 +1373,8 @@ func (o WlanOutput) DisableWmm() pulumi.BoolOutput {
 }
 
 // For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
-func (o WlanOutput) DnsServerRewrite() WlanDnsServerRewriteOutput {
-	return o.ApplyT(func(v *Wlan) WlanDnsServerRewriteOutput { return v.DnsServerRewrite }).(WlanDnsServerRewriteOutput)
+func (o WlanOutput) DnsServerRewrite() WlanDnsServerRewritePtrOutput {
+	return o.ApplyT(func(v *Wlan) WlanDnsServerRewritePtrOutput { return v.DnsServerRewrite }).(WlanDnsServerRewritePtrOutput)
 }
 
 func (o WlanOutput) Dtim() pulumi.IntOutput {
@@ -1419,20 +1397,20 @@ func (o WlanOutput) DynamicVlan() WlanDynamicVlanPtrOutput {
 }
 
 // Enable AP-AP keycaching via multicast
-func (o WlanOutput) EnableLocalKeycaching() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.EnableLocalKeycaching }).(pulumi.BoolOutput)
+func (o WlanOutput) EnableLocalKeycaching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.EnableLocalKeycaching }).(pulumi.BoolPtrOutput)
 }
 
 // By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
 // client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
-func (o WlanOutput) EnableWirelessBridging() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.EnableWirelessBridging }).(pulumi.BoolOutput)
+func (o WlanOutput) EnableWirelessBridging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.EnableWirelessBridging }).(pulumi.BoolPtrOutput)
 }
 
 // If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response
 // packets to be forwarded to wireless
-func (o WlanOutput) EnableWirelessBridgingDhcpTracking() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.EnableWirelessBridgingDhcpTracking }).(pulumi.BoolOutput)
+func (o WlanOutput) EnableWirelessBridgingDhcpTracking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.EnableWirelessBridgingDhcpTracking }).(pulumi.BoolPtrOutput)
 }
 
 // If this wlan is enabled
@@ -1442,8 +1420,8 @@ func (o WlanOutput) Enabled() pulumi.BoolOutput {
 
 // If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
 // ‘auth_server_retries’ .
-func (o WlanOutput) FastDot1xTimers() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.FastDot1xTimers }).(pulumi.BoolOutput)
+func (o WlanOutput) FastDot1xTimers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.FastDot1xTimers }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to hide SSID in beacon
@@ -1457,8 +1435,8 @@ func (o WlanOutput) HostnameIe() pulumi.BoolOutput {
 }
 
 // Hostspot 2.0 wlan settings
-func (o WlanOutput) Hotspot20() WlanHotspot20Output {
-	return o.ApplyT(func(v *Wlan) WlanHotspot20Output { return v.Hotspot20 }).(WlanHotspot20Output)
+func (o WlanOutput) Hotspot20() WlanHotspot20PtrOutput {
+	return o.ApplyT(func(v *Wlan) WlanHotspot20PtrOutput { return v.Hotspot20 }).(WlanHotspot20PtrOutput)
 }
 
 func (o WlanOutput) InjectDhcpOption82() WlanInjectDhcpOption82PtrOutput {
@@ -1471,19 +1449,19 @@ func (o WlanOutput) Interface() pulumi.StringOutput {
 }
 
 // Whether to stop clients to talk to each other
-func (o WlanOutput) Isolation() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.Isolation }).(pulumi.BoolOutput)
+func (o WlanOutput) Isolation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.Isolation }).(pulumi.BoolPtrOutput)
 }
 
 // If isolation is enabled, whether to deny clients to talk to L2 on the LAN
-func (o WlanOutput) L2Isolation() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.L2Isolation }).(pulumi.BoolOutput)
+func (o WlanOutput) L2Isolation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.L2Isolation }).(pulumi.BoolPtrOutput)
 }
 
 // Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
 // Enabling this will cause problem for iOS devices.
-func (o WlanOutput) LegacyOverds() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.LegacyOverds }).(pulumi.BoolOutput)
+func (o WlanOutput) LegacyOverds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.LegacyOverds }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
@@ -1502,8 +1480,8 @@ func (o WlanOutput) MaxIdletime() pulumi.IntOutput {
 }
 
 // Maximum number of client connected to the SSID. `0` means unlimited
-func (o WlanOutput) MaxNumClients() pulumi.IntOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.IntOutput { return v.MaxNumClients }).(pulumi.IntOutput)
+func (o WlanOutput) MaxNumClients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.IntPtrOutput { return v.MaxNumClients }).(pulumi.IntPtrOutput)
 }
 
 func (o WlanOutput) MistNac() WlanMistNacOutput {
@@ -1592,8 +1570,8 @@ func (o WlanOutput) ReconnectClientsWhenRoamingMxcluster() pulumi.BoolPtrOutput 
 }
 
 // enum: `11r`, `OKC`, `NONE`
-func (o WlanOutput) RoamMode() pulumi.StringOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.RoamMode }).(pulumi.StringOutput)
+func (o WlanOutput) RoamMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.StringPtrOutput { return v.RoamMode }).(pulumi.StringPtrOutput)
 }
 
 // WLAN operating schedule, default is disabled
@@ -1606,8 +1584,8 @@ func (o WlanOutput) SiteId() pulumi.StringOutput {
 }
 
 // Whether to exclude this WLAN from SLE metrics
-func (o WlanOutput) SleExcluded() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.SleExcluded }).(pulumi.BoolOutput)
+func (o WlanOutput) SleExcluded() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.SleExcluded }).(pulumi.BoolPtrOutput)
 }
 
 // Name of the SSID
@@ -1640,24 +1618,22 @@ func (o WlanOutput) VlanPooling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.VlanPooling }).(pulumi.BoolOutput)
 }
 
-// In kbps
-func (o WlanOutput) WlanLimitDown() pulumi.IntOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.IntOutput { return v.WlanLimitDown }).(pulumi.IntOutput)
+func (o WlanOutput) WlanLimitDown() pulumi.StringOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.WlanLimitDown }).(pulumi.StringOutput)
 }
 
 // If downlink limiting for whole wlan is enabled
-func (o WlanOutput) WlanLimitDownEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.WlanLimitDownEnabled }).(pulumi.BoolOutput)
+func (o WlanOutput) WlanLimitDownEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.WlanLimitDownEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// In kbps
-func (o WlanOutput) WlanLimitUp() pulumi.IntOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.IntOutput { return v.WlanLimitUp }).(pulumi.IntOutput)
+func (o WlanOutput) WlanLimitUp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.WlanLimitUp }).(pulumi.StringOutput)
 }
 
 // If uplink limiting for whole wlan is enabled
-func (o WlanOutput) WlanLimitUpEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.WlanLimitUpEnabled }).(pulumi.BoolOutput)
+func (o WlanOutput) WlanLimitUpEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.WlanLimitUpEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // List of wxtag_ids

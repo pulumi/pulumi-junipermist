@@ -12749,7 +12749,7 @@ type DeviceprofileGatewayTunnelConfigs struct {
 	Probe *DeviceprofileGatewayTunnelConfigsProbe `pulumi:"probe"`
 	// Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
 	Protocol *string `pulumi:"protocol"`
-	// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+	// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
 	Provider *string `pulumi:"provider"`
 	// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 	Psk *string `pulumi:"psk"`
@@ -12794,7 +12794,7 @@ type DeviceprofileGatewayTunnelConfigsArgs struct {
 	Probe DeviceprofileGatewayTunnelConfigsProbePtrInput `pulumi:"probe"`
 	// Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+	// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
 	// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 	Psk pulumi.StringPtrInput `pulumi:"psk"`
@@ -12920,7 +12920,7 @@ func (o DeviceprofileGatewayTunnelConfigsOutput) Protocol() pulumi.StringPtrOutp
 	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigs) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
 func (o DeviceprofileGatewayTunnelConfigsOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigs) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
@@ -24583,7 +24583,7 @@ type GatewaytemplateTunnelConfigs struct {
 	Probe *GatewaytemplateTunnelConfigsProbe `pulumi:"probe"`
 	// Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
 	Protocol *string `pulumi:"protocol"`
-	// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+	// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
 	Provider *string `pulumi:"provider"`
 	// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 	Psk *string `pulumi:"psk"`
@@ -24628,7 +24628,7 @@ type GatewaytemplateTunnelConfigsArgs struct {
 	Probe GatewaytemplateTunnelConfigsProbePtrInput `pulumi:"probe"`
 	// Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+	// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
 	// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 	Psk pulumi.StringPtrInput `pulumi:"psk"`
@@ -24752,7 +24752,7 @@ func (o GatewaytemplateTunnelConfigsOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewaytemplateTunnelConfigs) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
 func (o GatewaytemplateTunnelConfigsOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewaytemplateTunnelConfigs) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
@@ -33136,8 +33136,7 @@ type NetworktemplateRadiusConfigAcctServer struct {
 	KeywrapFormat *string `pulumi:"keywrapFormat"`
 	KeywrapKek    *string `pulumi:"keywrapKek"`
 	KeywrapMack   *string `pulumi:"keywrapMack"`
-	// Acct port of RADIUS server
-	Port *int `pulumi:"port"`
+	Port          *string `pulumi:"port"`
 	// Secret of RADIUS server
 	Secret string `pulumi:"secret"`
 }
@@ -33161,8 +33160,7 @@ type NetworktemplateRadiusConfigAcctServerArgs struct {
 	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
 	KeywrapKek    pulumi.StringPtrInput `pulumi:"keywrapKek"`
 	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
-	// Acct port of RADIUS server
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Port          pulumi.StringPtrInput `pulumi:"port"`
 	// Secret of RADIUS server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
@@ -33240,9 +33238,8 @@ func (o NetworktemplateRadiusConfigAcctServerOutput) KeywrapMack() pulumi.String
 	return o.ApplyT(func(v NetworktemplateRadiusConfigAcctServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
 }
 
-// Acct port of RADIUS server
-func (o NetworktemplateRadiusConfigAcctServerOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NetworktemplateRadiusConfigAcctServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o NetworktemplateRadiusConfigAcctServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateRadiusConfigAcctServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 // Secret of RADIUS server
@@ -33278,8 +33275,7 @@ type NetworktemplateRadiusConfigAuthServer struct {
 	KeywrapFormat *string `pulumi:"keywrapFormat"`
 	KeywrapKek    *string `pulumi:"keywrapKek"`
 	KeywrapMack   *string `pulumi:"keywrapMack"`
-	// Auth port of RADIUS server
-	Port *int `pulumi:"port"`
+	Port          *string `pulumi:"port"`
 	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator *bool `pulumi:"requireMessageAuthenticator"`
 	// Secret of RADIUS server
@@ -33305,8 +33301,7 @@ type NetworktemplateRadiusConfigAuthServerArgs struct {
 	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
 	KeywrapKek    pulumi.StringPtrInput `pulumi:"keywrapKek"`
 	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
-	// Auth port of RADIUS server
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Port          pulumi.StringPtrInput `pulumi:"port"`
 	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator pulumi.BoolPtrInput `pulumi:"requireMessageAuthenticator"`
 	// Secret of RADIUS server
@@ -33386,9 +33381,8 @@ func (o NetworktemplateRadiusConfigAuthServerOutput) KeywrapMack() pulumi.String
 	return o.ApplyT(func(v NetworktemplateRadiusConfigAuthServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
 }
 
-// Auth port of RADIUS server
-func (o NetworktemplateRadiusConfigAuthServerOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NetworktemplateRadiusConfigAuthServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o NetworktemplateRadiusConfigAuthServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateRadiusConfigAuthServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 // Whether to require Message-Authenticator in requests
@@ -48967,8 +48961,7 @@ type WlanAcctServer struct {
 	KeywrapFormat *string `pulumi:"keywrapFormat"`
 	KeywrapKek    *string `pulumi:"keywrapKek"`
 	KeywrapMack   *string `pulumi:"keywrapMack"`
-	// Acct port of RADIUS server
-	Port *int `pulumi:"port"`
+	Port          *string `pulumi:"port"`
 	// Secret of RADIUS server
 	Secret string `pulumi:"secret"`
 }
@@ -48992,8 +48985,7 @@ type WlanAcctServerArgs struct {
 	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
 	KeywrapKek    pulumi.StringPtrInput `pulumi:"keywrapKek"`
 	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
-	// Acct port of RADIUS server
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Port          pulumi.StringPtrInput `pulumi:"port"`
 	// Secret of RADIUS server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
@@ -49071,9 +49063,8 @@ func (o WlanAcctServerOutput) KeywrapMack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAcctServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
 }
 
-// Acct port of RADIUS server
-func (o WlanAcctServerOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WlanAcctServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o WlanAcctServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanAcctServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 // Secret of RADIUS server
@@ -50235,8 +50226,7 @@ type WlanAuthServer struct {
 	KeywrapFormat *string `pulumi:"keywrapFormat"`
 	KeywrapKek    *string `pulumi:"keywrapKek"`
 	KeywrapMack   *string `pulumi:"keywrapMack"`
-	// Auth port of RADIUS server
-	Port *int `pulumi:"port"`
+	Port          *string `pulumi:"port"`
 	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator *bool `pulumi:"requireMessageAuthenticator"`
 	// Secret of RADIUS server
@@ -50262,8 +50252,7 @@ type WlanAuthServerArgs struct {
 	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
 	KeywrapKek    pulumi.StringPtrInput `pulumi:"keywrapKek"`
 	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
-	// Auth port of RADIUS server
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Port          pulumi.StringPtrInput `pulumi:"port"`
 	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator pulumi.BoolPtrInput `pulumi:"requireMessageAuthenticator"`
 	// Secret of RADIUS server
@@ -50343,9 +50332,8 @@ func (o WlanAuthServerOutput) KeywrapMack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAuthServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
 }
 
-// Auth port of RADIUS server
-func (o WlanAuthServerOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WlanAuthServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o WlanAuthServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanAuthServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 // Whether to require Message-Authenticator in requests
@@ -50864,11 +50852,11 @@ func (o WlanCiscoCwaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 
 type WlanCoaServer struct {
 	// Whether to disable Event-Timestamp Check
-	DisableEventTimestampCheck *bool  `pulumi:"disableEventTimestampCheck"`
-	Enabled                    *bool  `pulumi:"enabled"`
-	Ip                         string `pulumi:"ip"`
-	Port                       *int   `pulumi:"port"`
-	Secret                     string `pulumi:"secret"`
+	DisableEventTimestampCheck *bool   `pulumi:"disableEventTimestampCheck"`
+	Enabled                    *bool   `pulumi:"enabled"`
+	Ip                         string  `pulumi:"ip"`
+	Port                       *string `pulumi:"port"`
+	Secret                     string  `pulumi:"secret"`
 }
 
 // WlanCoaServerInput is an input type that accepts WlanCoaServerArgs and WlanCoaServerOutput values.
@@ -50884,11 +50872,11 @@ type WlanCoaServerInput interface {
 
 type WlanCoaServerArgs struct {
 	// Whether to disable Event-Timestamp Check
-	DisableEventTimestampCheck pulumi.BoolPtrInput `pulumi:"disableEventTimestampCheck"`
-	Enabled                    pulumi.BoolPtrInput `pulumi:"enabled"`
-	Ip                         pulumi.StringInput  `pulumi:"ip"`
-	Port                       pulumi.IntPtrInput  `pulumi:"port"`
-	Secret                     pulumi.StringInput  `pulumi:"secret"`
+	DisableEventTimestampCheck pulumi.BoolPtrInput   `pulumi:"disableEventTimestampCheck"`
+	Enabled                    pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Ip                         pulumi.StringInput    `pulumi:"ip"`
+	Port                       pulumi.StringPtrInput `pulumi:"port"`
+	Secret                     pulumi.StringInput    `pulumi:"secret"`
 }
 
 func (WlanCoaServerArgs) ElementType() reflect.Type {
@@ -50955,8 +50943,8 @@ func (o WlanCoaServerOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v WlanCoaServer) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-func (o WlanCoaServerOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WlanCoaServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o WlanCoaServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanCoaServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 func (o WlanCoaServerOutput) Secret() pulumi.StringOutput {
@@ -52135,7 +52123,7 @@ type WlanPortal struct {
 	AmazonEnabled *bool `pulumi:"amazonEnabled"`
 	// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
 	AmazonExpire *int `pulumi:"amazonExpire"`
-	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
 	Auth *string `pulumi:"auth"`
 	// Required if `azureEnabled`==`true`. Azure active directory app client id
 	AzureClientId *string `pulumi:"azureClientId"`
@@ -52238,7 +52226,7 @@ type WlanPortal struct {
 	SponsorEnabled *bool `pulumi:"sponsorEnabled"`
 	// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
 	SponsorExpire *int `pulumi:"sponsorExpire"`
-	// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+	// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
 	SponsorLinkValidityDuration *string `pulumi:"sponsorLinkValidityDuration"`
 	// Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
 	SponsorNotifyAll *bool `pulumi:"sponsorNotifyAll"`
@@ -52299,7 +52287,7 @@ type WlanPortalArgs struct {
 	AmazonEnabled pulumi.BoolPtrInput `pulumi:"amazonEnabled"`
 	// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
 	AmazonExpire pulumi.IntPtrInput `pulumi:"amazonExpire"`
-	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
 	Auth pulumi.StringPtrInput `pulumi:"auth"`
 	// Required if `azureEnabled`==`true`. Azure active directory app client id
 	AzureClientId pulumi.StringPtrInput `pulumi:"azureClientId"`
@@ -52402,7 +52390,7 @@ type WlanPortalArgs struct {
 	SponsorEnabled pulumi.BoolPtrInput `pulumi:"sponsorEnabled"`
 	// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
 	SponsorExpire pulumi.IntPtrInput `pulumi:"sponsorExpire"`
-	// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+	// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
 	SponsorLinkValidityDuration pulumi.StringPtrInput `pulumi:"sponsorLinkValidityDuration"`
 	// Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
 	SponsorNotifyAll pulumi.BoolPtrInput `pulumi:"sponsorNotifyAll"`
@@ -52546,7 +52534,7 @@ func (o WlanPortalOutput) AmazonExpire() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *int { return v.AmazonExpire }).(pulumi.IntPtrOutput)
 }
 
-// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
 func (o WlanPortalOutput) Auth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.Auth }).(pulumi.StringPtrOutput)
 }
@@ -52805,7 +52793,7 @@ func (o WlanPortalOutput) SponsorExpire() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *int { return v.SponsorExpire }).(pulumi.IntPtrOutput)
 }
 
-// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
 func (o WlanPortalOutput) SponsorLinkValidityDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SponsorLinkValidityDuration }).(pulumi.StringPtrOutput)
 }
@@ -52973,7 +52961,7 @@ func (o WlanPortalPtrOutput) AmazonExpire() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
 func (o WlanPortalPtrOutput) Auth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -53492,7 +53480,7 @@ func (o WlanPortalPtrOutput) SponsorExpire() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
 func (o WlanPortalPtrOutput) SponsorLinkValidityDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -57092,9 +57080,9 @@ func (o WlanQosPtrOutput) Overwrite() pulumi.BoolPtrOutput {
 }
 
 type WlanRadsec struct {
-	CoaEnabled  *bool `pulumi:"coaEnabled"`
-	Enabled     *bool `pulumi:"enabled"`
-	IdleTimeout *int  `pulumi:"idleTimeout"`
+	CoaEnabled  *bool   `pulumi:"coaEnabled"`
+	Enabled     *bool   `pulumi:"enabled"`
+	IdleTimeout *string `pulumi:"idleTimeout"`
 	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
 	MxclusterIds []string `pulumi:"mxclusterIds"`
 	// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
@@ -57121,9 +57109,9 @@ type WlanRadsecInput interface {
 }
 
 type WlanRadsecArgs struct {
-	CoaEnabled  pulumi.BoolPtrInput `pulumi:"coaEnabled"`
-	Enabled     pulumi.BoolPtrInput `pulumi:"enabled"`
-	IdleTimeout pulumi.IntPtrInput  `pulumi:"idleTimeout"`
+	CoaEnabled  pulumi.BoolPtrInput   `pulumi:"coaEnabled"`
+	Enabled     pulumi.BoolPtrInput   `pulumi:"enabled"`
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
 	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
 	MxclusterIds pulumi.StringArrayInput `pulumi:"mxclusterIds"`
 	// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
@@ -57223,8 +57211,8 @@ func (o WlanRadsecOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanRadsec) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-func (o WlanRadsecOutput) IdleTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WlanRadsec) *int { return v.IdleTimeout }).(pulumi.IntPtrOutput)
+func (o WlanRadsecOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanRadsec) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
 }
 
 // To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
@@ -57299,13 +57287,13 @@ func (o WlanRadsecPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o WlanRadsecPtrOutput) IdleTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WlanRadsec) *int {
+func (o WlanRadsecPtrOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanRadsec) *string {
 		if v == nil {
 			return nil
 		}
 		return v.IdleTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
@@ -61030,15 +61018,32 @@ func (o GetNactagsOrgNactagArrayOutput) Index(i pulumi.IntInput) GetNactagsOrgNa
 type GetNetworksOrgNetwork struct {
 	// When the object has been created, in epoch
 	CreatedTime float64 `pulumi:"createdTime"`
+	// Whether to disallow Mist Devices in the network
+	DisallowMistServices bool   `pulumi:"disallowMistServices"`
+	Gateway              string `pulumi:"gateway"`
+	Gateway6             string `pulumi:"gateway6"`
 	// Unique ID of the object instance in the Mist Organization
-	Id string `pulumi:"id"`
+	Id             string                              `pulumi:"id"`
+	InternalAccess GetNetworksOrgNetworkInternalAccess `pulumi:"internalAccess"`
+	// Whether this network has direct internet access
+	InternetAccess GetNetworksOrgNetworkInternetAccess `pulumi:"internetAccess"`
+	// Whether to allow clients in the network to talk to each other
+	Isolation bool `pulumi:"isolation"`
 	// When the object has been modified for the last time, in epoch
 	ModifiedTime float64 `pulumi:"modifiedTime"`
-	Name         string  `pulumi:"name"`
-	OrgId        string  `pulumi:"orgId"`
-	Subnet       string  `pulumi:"subnet"`
-	Subnet6      string  `pulumi:"subnet6"`
-	VlanId       string  `pulumi:"vlanId"`
+	// Whether to enable multicast support (only PIM-sparse mode is supported)
+	Multicast GetNetworksOrgNetworkMulticast `pulumi:"multicast"`
+	Name      string                         `pulumi:"name"`
+	OrgId     string                         `pulumi:"orgId"`
+	// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+	RoutedForNetworks []string `pulumi:"routedForNetworks"`
+	Subnet            string   `pulumi:"subnet"`
+	Subnet6           string   `pulumi:"subnet6"`
+	// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+	Tenants map[string]GetNetworksOrgNetworkTenants `pulumi:"tenants"`
+	VlanId  string                                  `pulumi:"vlanId"`
+	// Property key is the VPN name. Whether this network can be accessed from vpn
+	VpnAccess map[string]GetNetworksOrgNetworkVpnAccess `pulumi:"vpnAccess"`
 }
 
 // GetNetworksOrgNetworkInput is an input type that accepts GetNetworksOrgNetworkArgs and GetNetworksOrgNetworkOutput values.
@@ -61055,15 +61060,32 @@ type GetNetworksOrgNetworkInput interface {
 type GetNetworksOrgNetworkArgs struct {
 	// When the object has been created, in epoch
 	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
+	// Whether to disallow Mist Devices in the network
+	DisallowMistServices pulumi.BoolInput   `pulumi:"disallowMistServices"`
+	Gateway              pulumi.StringInput `pulumi:"gateway"`
+	Gateway6             pulumi.StringInput `pulumi:"gateway6"`
 	// Unique ID of the object instance in the Mist Organization
-	Id pulumi.StringInput `pulumi:"id"`
+	Id             pulumi.StringInput                       `pulumi:"id"`
+	InternalAccess GetNetworksOrgNetworkInternalAccessInput `pulumi:"internalAccess"`
+	// Whether this network has direct internet access
+	InternetAccess GetNetworksOrgNetworkInternetAccessInput `pulumi:"internetAccess"`
+	// Whether to allow clients in the network to talk to each other
+	Isolation pulumi.BoolInput `pulumi:"isolation"`
 	// When the object has been modified for the last time, in epoch
 	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
-	Name         pulumi.StringInput  `pulumi:"name"`
-	OrgId        pulumi.StringInput  `pulumi:"orgId"`
-	Subnet       pulumi.StringInput  `pulumi:"subnet"`
-	Subnet6      pulumi.StringInput  `pulumi:"subnet6"`
-	VlanId       pulumi.StringInput  `pulumi:"vlanId"`
+	// Whether to enable multicast support (only PIM-sparse mode is supported)
+	Multicast GetNetworksOrgNetworkMulticastInput `pulumi:"multicast"`
+	Name      pulumi.StringInput                  `pulumi:"name"`
+	OrgId     pulumi.StringInput                  `pulumi:"orgId"`
+	// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+	RoutedForNetworks pulumi.StringArrayInput `pulumi:"routedForNetworks"`
+	Subnet            pulumi.StringInput      `pulumi:"subnet"`
+	Subnet6           pulumi.StringInput      `pulumi:"subnet6"`
+	// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+	Tenants GetNetworksOrgNetworkTenantsMapInput `pulumi:"tenants"`
+	VlanId  pulumi.StringInput                   `pulumi:"vlanId"`
+	// Property key is the VPN name. Whether this network can be accessed from vpn
+	VpnAccess GetNetworksOrgNetworkVpnAccessMapInput `pulumi:"vpnAccess"`
 }
 
 func (GetNetworksOrgNetworkArgs) ElementType() reflect.Type {
@@ -61122,14 +61144,46 @@ func (o GetNetworksOrgNetworkOutput) CreatedTime() pulumi.Float64Output {
 	return o.ApplyT(func(v GetNetworksOrgNetwork) float64 { return v.CreatedTime }).(pulumi.Float64Output)
 }
 
+// Whether to disallow Mist Devices in the network
+func (o GetNetworksOrgNetworkOutput) DisallowMistServices() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetwork) bool { return v.DisallowMistServices }).(pulumi.BoolOutput)
+}
+
+func (o GetNetworksOrgNetworkOutput) Gateway() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetwork) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+func (o GetNetworksOrgNetworkOutput) Gateway6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetwork) string { return v.Gateway6 }).(pulumi.StringOutput)
+}
+
 // Unique ID of the object instance in the Mist Organization
 func (o GetNetworksOrgNetworkOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworksOrgNetwork) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o GetNetworksOrgNetworkOutput) InternalAccess() GetNetworksOrgNetworkInternalAccessOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetwork) GetNetworksOrgNetworkInternalAccess { return v.InternalAccess }).(GetNetworksOrgNetworkInternalAccessOutput)
+}
+
+// Whether this network has direct internet access
+func (o GetNetworksOrgNetworkOutput) InternetAccess() GetNetworksOrgNetworkInternetAccessOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetwork) GetNetworksOrgNetworkInternetAccess { return v.InternetAccess }).(GetNetworksOrgNetworkInternetAccessOutput)
+}
+
+// Whether to allow clients in the network to talk to each other
+func (o GetNetworksOrgNetworkOutput) Isolation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetwork) bool { return v.Isolation }).(pulumi.BoolOutput)
+}
+
 // When the object has been modified for the last time, in epoch
 func (o GetNetworksOrgNetworkOutput) ModifiedTime() pulumi.Float64Output {
 	return o.ApplyT(func(v GetNetworksOrgNetwork) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
+}
+
+// Whether to enable multicast support (only PIM-sparse mode is supported)
+func (o GetNetworksOrgNetworkOutput) Multicast() GetNetworksOrgNetworkMulticastOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetwork) GetNetworksOrgNetworkMulticast { return v.Multicast }).(GetNetworksOrgNetworkMulticastOutput)
 }
 
 func (o GetNetworksOrgNetworkOutput) Name() pulumi.StringOutput {
@@ -61140,6 +61194,11 @@ func (o GetNetworksOrgNetworkOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworksOrgNetwork) string { return v.OrgId }).(pulumi.StringOutput)
 }
 
+// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+func (o GetNetworksOrgNetworkOutput) RoutedForNetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetwork) []string { return v.RoutedForNetworks }).(pulumi.StringArrayOutput)
+}
+
 func (o GetNetworksOrgNetworkOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworksOrgNetwork) string { return v.Subnet }).(pulumi.StringOutput)
 }
@@ -61148,8 +61207,18 @@ func (o GetNetworksOrgNetworkOutput) Subnet6() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworksOrgNetwork) string { return v.Subnet6 }).(pulumi.StringOutput)
 }
 
+// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+func (o GetNetworksOrgNetworkOutput) Tenants() GetNetworksOrgNetworkTenantsMapOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetwork) map[string]GetNetworksOrgNetworkTenants { return v.Tenants }).(GetNetworksOrgNetworkTenantsMapOutput)
+}
+
 func (o GetNetworksOrgNetworkOutput) VlanId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworksOrgNetwork) string { return v.VlanId }).(pulumi.StringOutput)
+}
+
+// Property key is the VPN name. Whether this network can be accessed from vpn
+func (o GetNetworksOrgNetworkOutput) VpnAccess() GetNetworksOrgNetworkVpnAccessMapOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetwork) map[string]GetNetworksOrgNetworkVpnAccess { return v.VpnAccess }).(GetNetworksOrgNetworkVpnAccessMapOutput)
 }
 
 type GetNetworksOrgNetworkArrayOutput struct{ *pulumi.OutputState }
@@ -61170,6 +61239,1113 @@ func (o GetNetworksOrgNetworkArrayOutput) Index(i pulumi.IntInput) GetNetworksOr
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworksOrgNetwork {
 		return vs[0].([]GetNetworksOrgNetwork)[vs[1].(int)]
 	}).(GetNetworksOrgNetworkOutput)
+}
+
+type GetNetworksOrgNetworkInternalAccess struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetNetworksOrgNetworkInternalAccessInput is an input type that accepts GetNetworksOrgNetworkInternalAccessArgs and GetNetworksOrgNetworkInternalAccessOutput values.
+// You can construct a concrete instance of `GetNetworksOrgNetworkInternalAccessInput` via:
+//
+//	GetNetworksOrgNetworkInternalAccessArgs{...}
+type GetNetworksOrgNetworkInternalAccessInput interface {
+	pulumi.Input
+
+	ToGetNetworksOrgNetworkInternalAccessOutput() GetNetworksOrgNetworkInternalAccessOutput
+	ToGetNetworksOrgNetworkInternalAccessOutputWithContext(context.Context) GetNetworksOrgNetworkInternalAccessOutput
+}
+
+type GetNetworksOrgNetworkInternalAccessArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetNetworksOrgNetworkInternalAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkInternalAccess)(nil)).Elem()
+}
+
+func (i GetNetworksOrgNetworkInternalAccessArgs) ToGetNetworksOrgNetworkInternalAccessOutput() GetNetworksOrgNetworkInternalAccessOutput {
+	return i.ToGetNetworksOrgNetworkInternalAccessOutputWithContext(context.Background())
+}
+
+func (i GetNetworksOrgNetworkInternalAccessArgs) ToGetNetworksOrgNetworkInternalAccessOutputWithContext(ctx context.Context) GetNetworksOrgNetworkInternalAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksOrgNetworkInternalAccessOutput)
+}
+
+type GetNetworksOrgNetworkInternalAccessOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksOrgNetworkInternalAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkInternalAccess)(nil)).Elem()
+}
+
+func (o GetNetworksOrgNetworkInternalAccessOutput) ToGetNetworksOrgNetworkInternalAccessOutput() GetNetworksOrgNetworkInternalAccessOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkInternalAccessOutput) ToGetNetworksOrgNetworkInternalAccessOutputWithContext(ctx context.Context) GetNetworksOrgNetworkInternalAccessOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkInternalAccessOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkInternalAccess) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetNetworksOrgNetworkInternetAccess struct {
+	CreateSimpleServicePolicy bool `pulumi:"createSimpleServicePolicy"`
+	// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
+	DestinationNat map[string]GetNetworksOrgNetworkInternetAccessDestinationNat `pulumi:"destinationNat"`
+	Enabled        bool                                                         `pulumi:"enabled"`
+	// By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+	Restricted bool `pulumi:"restricted"`
+	// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
+	StaticNat map[string]GetNetworksOrgNetworkInternetAccessStaticNat `pulumi:"staticNat"`
+}
+
+// GetNetworksOrgNetworkInternetAccessInput is an input type that accepts GetNetworksOrgNetworkInternetAccessArgs and GetNetworksOrgNetworkInternetAccessOutput values.
+// You can construct a concrete instance of `GetNetworksOrgNetworkInternetAccessInput` via:
+//
+//	GetNetworksOrgNetworkInternetAccessArgs{...}
+type GetNetworksOrgNetworkInternetAccessInput interface {
+	pulumi.Input
+
+	ToGetNetworksOrgNetworkInternetAccessOutput() GetNetworksOrgNetworkInternetAccessOutput
+	ToGetNetworksOrgNetworkInternetAccessOutputWithContext(context.Context) GetNetworksOrgNetworkInternetAccessOutput
+}
+
+type GetNetworksOrgNetworkInternetAccessArgs struct {
+	CreateSimpleServicePolicy pulumi.BoolInput `pulumi:"createSimpleServicePolicy"`
+	// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
+	DestinationNat GetNetworksOrgNetworkInternetAccessDestinationNatMapInput `pulumi:"destinationNat"`
+	Enabled        pulumi.BoolInput                                          `pulumi:"enabled"`
+	// By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+	Restricted pulumi.BoolInput `pulumi:"restricted"`
+	// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
+	StaticNat GetNetworksOrgNetworkInternetAccessStaticNatMapInput `pulumi:"staticNat"`
+}
+
+func (GetNetworksOrgNetworkInternetAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkInternetAccess)(nil)).Elem()
+}
+
+func (i GetNetworksOrgNetworkInternetAccessArgs) ToGetNetworksOrgNetworkInternetAccessOutput() GetNetworksOrgNetworkInternetAccessOutput {
+	return i.ToGetNetworksOrgNetworkInternetAccessOutputWithContext(context.Background())
+}
+
+func (i GetNetworksOrgNetworkInternetAccessArgs) ToGetNetworksOrgNetworkInternetAccessOutputWithContext(ctx context.Context) GetNetworksOrgNetworkInternetAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksOrgNetworkInternetAccessOutput)
+}
+
+type GetNetworksOrgNetworkInternetAccessOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksOrgNetworkInternetAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkInternetAccess)(nil)).Elem()
+}
+
+func (o GetNetworksOrgNetworkInternetAccessOutput) ToGetNetworksOrgNetworkInternetAccessOutput() GetNetworksOrgNetworkInternetAccessOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkInternetAccessOutput) ToGetNetworksOrgNetworkInternetAccessOutputWithContext(ctx context.Context) GetNetworksOrgNetworkInternetAccessOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkInternetAccessOutput) CreateSimpleServicePolicy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkInternetAccess) bool { return v.CreateSimpleServicePolicy }).(pulumi.BoolOutput)
+}
+
+// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
+func (o GetNetworksOrgNetworkInternetAccessOutput) DestinationNat() GetNetworksOrgNetworkInternetAccessDestinationNatMapOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkInternetAccess) map[string]GetNetworksOrgNetworkInternetAccessDestinationNat {
+		return v.DestinationNat
+	}).(GetNetworksOrgNetworkInternetAccessDestinationNatMapOutput)
+}
+
+func (o GetNetworksOrgNetworkInternetAccessOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkInternetAccess) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+func (o GetNetworksOrgNetworkInternetAccessOutput) Restricted() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkInternetAccess) bool { return v.Restricted }).(pulumi.BoolOutput)
+}
+
+// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
+func (o GetNetworksOrgNetworkInternetAccessOutput) StaticNat() GetNetworksOrgNetworkInternetAccessStaticNatMapOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkInternetAccess) map[string]GetNetworksOrgNetworkInternetAccessStaticNat {
+		return v.StaticNat
+	}).(GetNetworksOrgNetworkInternetAccessStaticNatMapOutput)
+}
+
+type GetNetworksOrgNetworkInternetAccessDestinationNat struct {
+	// The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+	InternalIp string `pulumi:"internalIp"`
+	Name       string `pulumi:"name"`
+	// The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+	Port string `pulumi:"port"`
+	// SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity
+	WanName string `pulumi:"wanName"`
+}
+
+// GetNetworksOrgNetworkInternetAccessDestinationNatInput is an input type that accepts GetNetworksOrgNetworkInternetAccessDestinationNatArgs and GetNetworksOrgNetworkInternetAccessDestinationNatOutput values.
+// You can construct a concrete instance of `GetNetworksOrgNetworkInternetAccessDestinationNatInput` via:
+//
+//	GetNetworksOrgNetworkInternetAccessDestinationNatArgs{...}
+type GetNetworksOrgNetworkInternetAccessDestinationNatInput interface {
+	pulumi.Input
+
+	ToGetNetworksOrgNetworkInternetAccessDestinationNatOutput() GetNetworksOrgNetworkInternetAccessDestinationNatOutput
+	ToGetNetworksOrgNetworkInternetAccessDestinationNatOutputWithContext(context.Context) GetNetworksOrgNetworkInternetAccessDestinationNatOutput
+}
+
+type GetNetworksOrgNetworkInternetAccessDestinationNatArgs struct {
+	// The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+	InternalIp pulumi.StringInput `pulumi:"internalIp"`
+	Name       pulumi.StringInput `pulumi:"name"`
+	// The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+	Port pulumi.StringInput `pulumi:"port"`
+	// SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity
+	WanName pulumi.StringInput `pulumi:"wanName"`
+}
+
+func (GetNetworksOrgNetworkInternetAccessDestinationNatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkInternetAccessDestinationNat)(nil)).Elem()
+}
+
+func (i GetNetworksOrgNetworkInternetAccessDestinationNatArgs) ToGetNetworksOrgNetworkInternetAccessDestinationNatOutput() GetNetworksOrgNetworkInternetAccessDestinationNatOutput {
+	return i.ToGetNetworksOrgNetworkInternetAccessDestinationNatOutputWithContext(context.Background())
+}
+
+func (i GetNetworksOrgNetworkInternetAccessDestinationNatArgs) ToGetNetworksOrgNetworkInternetAccessDestinationNatOutputWithContext(ctx context.Context) GetNetworksOrgNetworkInternetAccessDestinationNatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksOrgNetworkInternetAccessDestinationNatOutput)
+}
+
+// GetNetworksOrgNetworkInternetAccessDestinationNatMapInput is an input type that accepts GetNetworksOrgNetworkInternetAccessDestinationNatMap and GetNetworksOrgNetworkInternetAccessDestinationNatMapOutput values.
+// You can construct a concrete instance of `GetNetworksOrgNetworkInternetAccessDestinationNatMapInput` via:
+//
+//	GetNetworksOrgNetworkInternetAccessDestinationNatMap{ "key": GetNetworksOrgNetworkInternetAccessDestinationNatArgs{...} }
+type GetNetworksOrgNetworkInternetAccessDestinationNatMapInput interface {
+	pulumi.Input
+
+	ToGetNetworksOrgNetworkInternetAccessDestinationNatMapOutput() GetNetworksOrgNetworkInternetAccessDestinationNatMapOutput
+	ToGetNetworksOrgNetworkInternetAccessDestinationNatMapOutputWithContext(context.Context) GetNetworksOrgNetworkInternetAccessDestinationNatMapOutput
+}
+
+type GetNetworksOrgNetworkInternetAccessDestinationNatMap map[string]GetNetworksOrgNetworkInternetAccessDestinationNatInput
+
+func (GetNetworksOrgNetworkInternetAccessDestinationNatMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetNetworksOrgNetworkInternetAccessDestinationNat)(nil)).Elem()
+}
+
+func (i GetNetworksOrgNetworkInternetAccessDestinationNatMap) ToGetNetworksOrgNetworkInternetAccessDestinationNatMapOutput() GetNetworksOrgNetworkInternetAccessDestinationNatMapOutput {
+	return i.ToGetNetworksOrgNetworkInternetAccessDestinationNatMapOutputWithContext(context.Background())
+}
+
+func (i GetNetworksOrgNetworkInternetAccessDestinationNatMap) ToGetNetworksOrgNetworkInternetAccessDestinationNatMapOutputWithContext(ctx context.Context) GetNetworksOrgNetworkInternetAccessDestinationNatMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksOrgNetworkInternetAccessDestinationNatMapOutput)
+}
+
+type GetNetworksOrgNetworkInternetAccessDestinationNatOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksOrgNetworkInternetAccessDestinationNatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkInternetAccessDestinationNat)(nil)).Elem()
+}
+
+func (o GetNetworksOrgNetworkInternetAccessDestinationNatOutput) ToGetNetworksOrgNetworkInternetAccessDestinationNatOutput() GetNetworksOrgNetworkInternetAccessDestinationNatOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkInternetAccessDestinationNatOutput) ToGetNetworksOrgNetworkInternetAccessDestinationNatOutputWithContext(ctx context.Context) GetNetworksOrgNetworkInternetAccessDestinationNatOutput {
+	return o
+}
+
+// The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+func (o GetNetworksOrgNetworkInternetAccessDestinationNatOutput) InternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkInternetAccessDestinationNat) string { return v.InternalIp }).(pulumi.StringOutput)
+}
+
+func (o GetNetworksOrgNetworkInternetAccessDestinationNatOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkInternetAccessDestinationNat) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+func (o GetNetworksOrgNetworkInternetAccessDestinationNatOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkInternetAccessDestinationNat) string { return v.Port }).(pulumi.StringOutput)
+}
+
+// SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity
+func (o GetNetworksOrgNetworkInternetAccessDestinationNatOutput) WanName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkInternetAccessDestinationNat) string { return v.WanName }).(pulumi.StringOutput)
+}
+
+type GetNetworksOrgNetworkInternetAccessDestinationNatMapOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksOrgNetworkInternetAccessDestinationNatMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetNetworksOrgNetworkInternetAccessDestinationNat)(nil)).Elem()
+}
+
+func (o GetNetworksOrgNetworkInternetAccessDestinationNatMapOutput) ToGetNetworksOrgNetworkInternetAccessDestinationNatMapOutput() GetNetworksOrgNetworkInternetAccessDestinationNatMapOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkInternetAccessDestinationNatMapOutput) ToGetNetworksOrgNetworkInternetAccessDestinationNatMapOutputWithContext(ctx context.Context) GetNetworksOrgNetworkInternetAccessDestinationNatMapOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkInternetAccessDestinationNatMapOutput) MapIndex(k pulumi.StringInput) GetNetworksOrgNetworkInternetAccessDestinationNatOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetNetworksOrgNetworkInternetAccessDestinationNat {
+		return vs[0].(map[string]GetNetworksOrgNetworkInternetAccessDestinationNat)[vs[1].(string)]
+	}).(GetNetworksOrgNetworkInternetAccessDestinationNatOutput)
+}
+
+type GetNetworksOrgNetworkInternetAccessStaticNat struct {
+	// The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+	InternalIp string `pulumi:"internalIp"`
+	Name       string `pulumi:"name"`
+	// SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. "{{myvar}}")
+	WanName string `pulumi:"wanName"`
+}
+
+// GetNetworksOrgNetworkInternetAccessStaticNatInput is an input type that accepts GetNetworksOrgNetworkInternetAccessStaticNatArgs and GetNetworksOrgNetworkInternetAccessStaticNatOutput values.
+// You can construct a concrete instance of `GetNetworksOrgNetworkInternetAccessStaticNatInput` via:
+//
+//	GetNetworksOrgNetworkInternetAccessStaticNatArgs{...}
+type GetNetworksOrgNetworkInternetAccessStaticNatInput interface {
+	pulumi.Input
+
+	ToGetNetworksOrgNetworkInternetAccessStaticNatOutput() GetNetworksOrgNetworkInternetAccessStaticNatOutput
+	ToGetNetworksOrgNetworkInternetAccessStaticNatOutputWithContext(context.Context) GetNetworksOrgNetworkInternetAccessStaticNatOutput
+}
+
+type GetNetworksOrgNetworkInternetAccessStaticNatArgs struct {
+	// The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+	InternalIp pulumi.StringInput `pulumi:"internalIp"`
+	Name       pulumi.StringInput `pulumi:"name"`
+	// SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. "{{myvar}}")
+	WanName pulumi.StringInput `pulumi:"wanName"`
+}
+
+func (GetNetworksOrgNetworkInternetAccessStaticNatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkInternetAccessStaticNat)(nil)).Elem()
+}
+
+func (i GetNetworksOrgNetworkInternetAccessStaticNatArgs) ToGetNetworksOrgNetworkInternetAccessStaticNatOutput() GetNetworksOrgNetworkInternetAccessStaticNatOutput {
+	return i.ToGetNetworksOrgNetworkInternetAccessStaticNatOutputWithContext(context.Background())
+}
+
+func (i GetNetworksOrgNetworkInternetAccessStaticNatArgs) ToGetNetworksOrgNetworkInternetAccessStaticNatOutputWithContext(ctx context.Context) GetNetworksOrgNetworkInternetAccessStaticNatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksOrgNetworkInternetAccessStaticNatOutput)
+}
+
+// GetNetworksOrgNetworkInternetAccessStaticNatMapInput is an input type that accepts GetNetworksOrgNetworkInternetAccessStaticNatMap and GetNetworksOrgNetworkInternetAccessStaticNatMapOutput values.
+// You can construct a concrete instance of `GetNetworksOrgNetworkInternetAccessStaticNatMapInput` via:
+//
+//	GetNetworksOrgNetworkInternetAccessStaticNatMap{ "key": GetNetworksOrgNetworkInternetAccessStaticNatArgs{...} }
+type GetNetworksOrgNetworkInternetAccessStaticNatMapInput interface {
+	pulumi.Input
+
+	ToGetNetworksOrgNetworkInternetAccessStaticNatMapOutput() GetNetworksOrgNetworkInternetAccessStaticNatMapOutput
+	ToGetNetworksOrgNetworkInternetAccessStaticNatMapOutputWithContext(context.Context) GetNetworksOrgNetworkInternetAccessStaticNatMapOutput
+}
+
+type GetNetworksOrgNetworkInternetAccessStaticNatMap map[string]GetNetworksOrgNetworkInternetAccessStaticNatInput
+
+func (GetNetworksOrgNetworkInternetAccessStaticNatMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetNetworksOrgNetworkInternetAccessStaticNat)(nil)).Elem()
+}
+
+func (i GetNetworksOrgNetworkInternetAccessStaticNatMap) ToGetNetworksOrgNetworkInternetAccessStaticNatMapOutput() GetNetworksOrgNetworkInternetAccessStaticNatMapOutput {
+	return i.ToGetNetworksOrgNetworkInternetAccessStaticNatMapOutputWithContext(context.Background())
+}
+
+func (i GetNetworksOrgNetworkInternetAccessStaticNatMap) ToGetNetworksOrgNetworkInternetAccessStaticNatMapOutputWithContext(ctx context.Context) GetNetworksOrgNetworkInternetAccessStaticNatMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksOrgNetworkInternetAccessStaticNatMapOutput)
+}
+
+type GetNetworksOrgNetworkInternetAccessStaticNatOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksOrgNetworkInternetAccessStaticNatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkInternetAccessStaticNat)(nil)).Elem()
+}
+
+func (o GetNetworksOrgNetworkInternetAccessStaticNatOutput) ToGetNetworksOrgNetworkInternetAccessStaticNatOutput() GetNetworksOrgNetworkInternetAccessStaticNatOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkInternetAccessStaticNatOutput) ToGetNetworksOrgNetworkInternetAccessStaticNatOutputWithContext(ctx context.Context) GetNetworksOrgNetworkInternetAccessStaticNatOutput {
+	return o
+}
+
+// The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+func (o GetNetworksOrgNetworkInternetAccessStaticNatOutput) InternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkInternetAccessStaticNat) string { return v.InternalIp }).(pulumi.StringOutput)
+}
+
+func (o GetNetworksOrgNetworkInternetAccessStaticNatOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkInternetAccessStaticNat) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. "{{myvar}}")
+func (o GetNetworksOrgNetworkInternetAccessStaticNatOutput) WanName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkInternetAccessStaticNat) string { return v.WanName }).(pulumi.StringOutput)
+}
+
+type GetNetworksOrgNetworkInternetAccessStaticNatMapOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksOrgNetworkInternetAccessStaticNatMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetNetworksOrgNetworkInternetAccessStaticNat)(nil)).Elem()
+}
+
+func (o GetNetworksOrgNetworkInternetAccessStaticNatMapOutput) ToGetNetworksOrgNetworkInternetAccessStaticNatMapOutput() GetNetworksOrgNetworkInternetAccessStaticNatMapOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkInternetAccessStaticNatMapOutput) ToGetNetworksOrgNetworkInternetAccessStaticNatMapOutputWithContext(ctx context.Context) GetNetworksOrgNetworkInternetAccessStaticNatMapOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkInternetAccessStaticNatMapOutput) MapIndex(k pulumi.StringInput) GetNetworksOrgNetworkInternetAccessStaticNatOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetNetworksOrgNetworkInternetAccessStaticNat {
+		return vs[0].(map[string]GetNetworksOrgNetworkInternetAccessStaticNat)[vs[1].(string)]
+	}).(GetNetworksOrgNetworkInternetAccessStaticNatOutput)
+}
+
+type GetNetworksOrgNetworkMulticast struct {
+	// If the network will only be the source of the multicast traffic, IGMP can be disabled
+	DisableIgmp bool `pulumi:"disableIgmp"`
+	Enabled     bool `pulumi:"enabled"`
+	// Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
+	Groups map[string]GetNetworksOrgNetworkMulticastGroups `pulumi:"groups"`
+}
+
+// GetNetworksOrgNetworkMulticastInput is an input type that accepts GetNetworksOrgNetworkMulticastArgs and GetNetworksOrgNetworkMulticastOutput values.
+// You can construct a concrete instance of `GetNetworksOrgNetworkMulticastInput` via:
+//
+//	GetNetworksOrgNetworkMulticastArgs{...}
+type GetNetworksOrgNetworkMulticastInput interface {
+	pulumi.Input
+
+	ToGetNetworksOrgNetworkMulticastOutput() GetNetworksOrgNetworkMulticastOutput
+	ToGetNetworksOrgNetworkMulticastOutputWithContext(context.Context) GetNetworksOrgNetworkMulticastOutput
+}
+
+type GetNetworksOrgNetworkMulticastArgs struct {
+	// If the network will only be the source of the multicast traffic, IGMP can be disabled
+	DisableIgmp pulumi.BoolInput `pulumi:"disableIgmp"`
+	Enabled     pulumi.BoolInput `pulumi:"enabled"`
+	// Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
+	Groups GetNetworksOrgNetworkMulticastGroupsMapInput `pulumi:"groups"`
+}
+
+func (GetNetworksOrgNetworkMulticastArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkMulticast)(nil)).Elem()
+}
+
+func (i GetNetworksOrgNetworkMulticastArgs) ToGetNetworksOrgNetworkMulticastOutput() GetNetworksOrgNetworkMulticastOutput {
+	return i.ToGetNetworksOrgNetworkMulticastOutputWithContext(context.Background())
+}
+
+func (i GetNetworksOrgNetworkMulticastArgs) ToGetNetworksOrgNetworkMulticastOutputWithContext(ctx context.Context) GetNetworksOrgNetworkMulticastOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksOrgNetworkMulticastOutput)
+}
+
+type GetNetworksOrgNetworkMulticastOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksOrgNetworkMulticastOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkMulticast)(nil)).Elem()
+}
+
+func (o GetNetworksOrgNetworkMulticastOutput) ToGetNetworksOrgNetworkMulticastOutput() GetNetworksOrgNetworkMulticastOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkMulticastOutput) ToGetNetworksOrgNetworkMulticastOutputWithContext(ctx context.Context) GetNetworksOrgNetworkMulticastOutput {
+	return o
+}
+
+// If the network will only be the source of the multicast traffic, IGMP can be disabled
+func (o GetNetworksOrgNetworkMulticastOutput) DisableIgmp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkMulticast) bool { return v.DisableIgmp }).(pulumi.BoolOutput)
+}
+
+func (o GetNetworksOrgNetworkMulticastOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkMulticast) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
+func (o GetNetworksOrgNetworkMulticastOutput) Groups() GetNetworksOrgNetworkMulticastGroupsMapOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkMulticast) map[string]GetNetworksOrgNetworkMulticastGroups {
+		return v.Groups
+	}).(GetNetworksOrgNetworkMulticastGroupsMapOutput)
+}
+
+type GetNetworksOrgNetworkMulticastGroups struct {
+	// RP (rendezvous point) IP Address
+	RpIp string `pulumi:"rpIp"`
+}
+
+// GetNetworksOrgNetworkMulticastGroupsInput is an input type that accepts GetNetworksOrgNetworkMulticastGroupsArgs and GetNetworksOrgNetworkMulticastGroupsOutput values.
+// You can construct a concrete instance of `GetNetworksOrgNetworkMulticastGroupsInput` via:
+//
+//	GetNetworksOrgNetworkMulticastGroupsArgs{...}
+type GetNetworksOrgNetworkMulticastGroupsInput interface {
+	pulumi.Input
+
+	ToGetNetworksOrgNetworkMulticastGroupsOutput() GetNetworksOrgNetworkMulticastGroupsOutput
+	ToGetNetworksOrgNetworkMulticastGroupsOutputWithContext(context.Context) GetNetworksOrgNetworkMulticastGroupsOutput
+}
+
+type GetNetworksOrgNetworkMulticastGroupsArgs struct {
+	// RP (rendezvous point) IP Address
+	RpIp pulumi.StringInput `pulumi:"rpIp"`
+}
+
+func (GetNetworksOrgNetworkMulticastGroupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkMulticastGroups)(nil)).Elem()
+}
+
+func (i GetNetworksOrgNetworkMulticastGroupsArgs) ToGetNetworksOrgNetworkMulticastGroupsOutput() GetNetworksOrgNetworkMulticastGroupsOutput {
+	return i.ToGetNetworksOrgNetworkMulticastGroupsOutputWithContext(context.Background())
+}
+
+func (i GetNetworksOrgNetworkMulticastGroupsArgs) ToGetNetworksOrgNetworkMulticastGroupsOutputWithContext(ctx context.Context) GetNetworksOrgNetworkMulticastGroupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksOrgNetworkMulticastGroupsOutput)
+}
+
+// GetNetworksOrgNetworkMulticastGroupsMapInput is an input type that accepts GetNetworksOrgNetworkMulticastGroupsMap and GetNetworksOrgNetworkMulticastGroupsMapOutput values.
+// You can construct a concrete instance of `GetNetworksOrgNetworkMulticastGroupsMapInput` via:
+//
+//	GetNetworksOrgNetworkMulticastGroupsMap{ "key": GetNetworksOrgNetworkMulticastGroupsArgs{...} }
+type GetNetworksOrgNetworkMulticastGroupsMapInput interface {
+	pulumi.Input
+
+	ToGetNetworksOrgNetworkMulticastGroupsMapOutput() GetNetworksOrgNetworkMulticastGroupsMapOutput
+	ToGetNetworksOrgNetworkMulticastGroupsMapOutputWithContext(context.Context) GetNetworksOrgNetworkMulticastGroupsMapOutput
+}
+
+type GetNetworksOrgNetworkMulticastGroupsMap map[string]GetNetworksOrgNetworkMulticastGroupsInput
+
+func (GetNetworksOrgNetworkMulticastGroupsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetNetworksOrgNetworkMulticastGroups)(nil)).Elem()
+}
+
+func (i GetNetworksOrgNetworkMulticastGroupsMap) ToGetNetworksOrgNetworkMulticastGroupsMapOutput() GetNetworksOrgNetworkMulticastGroupsMapOutput {
+	return i.ToGetNetworksOrgNetworkMulticastGroupsMapOutputWithContext(context.Background())
+}
+
+func (i GetNetworksOrgNetworkMulticastGroupsMap) ToGetNetworksOrgNetworkMulticastGroupsMapOutputWithContext(ctx context.Context) GetNetworksOrgNetworkMulticastGroupsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksOrgNetworkMulticastGroupsMapOutput)
+}
+
+type GetNetworksOrgNetworkMulticastGroupsOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksOrgNetworkMulticastGroupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkMulticastGroups)(nil)).Elem()
+}
+
+func (o GetNetworksOrgNetworkMulticastGroupsOutput) ToGetNetworksOrgNetworkMulticastGroupsOutput() GetNetworksOrgNetworkMulticastGroupsOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkMulticastGroupsOutput) ToGetNetworksOrgNetworkMulticastGroupsOutputWithContext(ctx context.Context) GetNetworksOrgNetworkMulticastGroupsOutput {
+	return o
+}
+
+// RP (rendezvous point) IP Address
+func (o GetNetworksOrgNetworkMulticastGroupsOutput) RpIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkMulticastGroups) string { return v.RpIp }).(pulumi.StringOutput)
+}
+
+type GetNetworksOrgNetworkMulticastGroupsMapOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksOrgNetworkMulticastGroupsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetNetworksOrgNetworkMulticastGroups)(nil)).Elem()
+}
+
+func (o GetNetworksOrgNetworkMulticastGroupsMapOutput) ToGetNetworksOrgNetworkMulticastGroupsMapOutput() GetNetworksOrgNetworkMulticastGroupsMapOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkMulticastGroupsMapOutput) ToGetNetworksOrgNetworkMulticastGroupsMapOutputWithContext(ctx context.Context) GetNetworksOrgNetworkMulticastGroupsMapOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkMulticastGroupsMapOutput) MapIndex(k pulumi.StringInput) GetNetworksOrgNetworkMulticastGroupsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetNetworksOrgNetworkMulticastGroups {
+		return vs[0].(map[string]GetNetworksOrgNetworkMulticastGroups)[vs[1].(string)]
+	}).(GetNetworksOrgNetworkMulticastGroupsOutput)
+}
+
+type GetNetworksOrgNetworkTenants struct {
+	Addresses []string `pulumi:"addresses"`
+}
+
+// GetNetworksOrgNetworkTenantsInput is an input type that accepts GetNetworksOrgNetworkTenantsArgs and GetNetworksOrgNetworkTenantsOutput values.
+// You can construct a concrete instance of `GetNetworksOrgNetworkTenantsInput` via:
+//
+//	GetNetworksOrgNetworkTenantsArgs{...}
+type GetNetworksOrgNetworkTenantsInput interface {
+	pulumi.Input
+
+	ToGetNetworksOrgNetworkTenantsOutput() GetNetworksOrgNetworkTenantsOutput
+	ToGetNetworksOrgNetworkTenantsOutputWithContext(context.Context) GetNetworksOrgNetworkTenantsOutput
+}
+
+type GetNetworksOrgNetworkTenantsArgs struct {
+	Addresses pulumi.StringArrayInput `pulumi:"addresses"`
+}
+
+func (GetNetworksOrgNetworkTenantsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkTenants)(nil)).Elem()
+}
+
+func (i GetNetworksOrgNetworkTenantsArgs) ToGetNetworksOrgNetworkTenantsOutput() GetNetworksOrgNetworkTenantsOutput {
+	return i.ToGetNetworksOrgNetworkTenantsOutputWithContext(context.Background())
+}
+
+func (i GetNetworksOrgNetworkTenantsArgs) ToGetNetworksOrgNetworkTenantsOutputWithContext(ctx context.Context) GetNetworksOrgNetworkTenantsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksOrgNetworkTenantsOutput)
+}
+
+// GetNetworksOrgNetworkTenantsMapInput is an input type that accepts GetNetworksOrgNetworkTenantsMap and GetNetworksOrgNetworkTenantsMapOutput values.
+// You can construct a concrete instance of `GetNetworksOrgNetworkTenantsMapInput` via:
+//
+//	GetNetworksOrgNetworkTenantsMap{ "key": GetNetworksOrgNetworkTenantsArgs{...} }
+type GetNetworksOrgNetworkTenantsMapInput interface {
+	pulumi.Input
+
+	ToGetNetworksOrgNetworkTenantsMapOutput() GetNetworksOrgNetworkTenantsMapOutput
+	ToGetNetworksOrgNetworkTenantsMapOutputWithContext(context.Context) GetNetworksOrgNetworkTenantsMapOutput
+}
+
+type GetNetworksOrgNetworkTenantsMap map[string]GetNetworksOrgNetworkTenantsInput
+
+func (GetNetworksOrgNetworkTenantsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetNetworksOrgNetworkTenants)(nil)).Elem()
+}
+
+func (i GetNetworksOrgNetworkTenantsMap) ToGetNetworksOrgNetworkTenantsMapOutput() GetNetworksOrgNetworkTenantsMapOutput {
+	return i.ToGetNetworksOrgNetworkTenantsMapOutputWithContext(context.Background())
+}
+
+func (i GetNetworksOrgNetworkTenantsMap) ToGetNetworksOrgNetworkTenantsMapOutputWithContext(ctx context.Context) GetNetworksOrgNetworkTenantsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksOrgNetworkTenantsMapOutput)
+}
+
+type GetNetworksOrgNetworkTenantsOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksOrgNetworkTenantsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkTenants)(nil)).Elem()
+}
+
+func (o GetNetworksOrgNetworkTenantsOutput) ToGetNetworksOrgNetworkTenantsOutput() GetNetworksOrgNetworkTenantsOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkTenantsOutput) ToGetNetworksOrgNetworkTenantsOutputWithContext(ctx context.Context) GetNetworksOrgNetworkTenantsOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkTenantsOutput) Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkTenants) []string { return v.Addresses }).(pulumi.StringArrayOutput)
+}
+
+type GetNetworksOrgNetworkTenantsMapOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksOrgNetworkTenantsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetNetworksOrgNetworkTenants)(nil)).Elem()
+}
+
+func (o GetNetworksOrgNetworkTenantsMapOutput) ToGetNetworksOrgNetworkTenantsMapOutput() GetNetworksOrgNetworkTenantsMapOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkTenantsMapOutput) ToGetNetworksOrgNetworkTenantsMapOutputWithContext(ctx context.Context) GetNetworksOrgNetworkTenantsMapOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkTenantsMapOutput) MapIndex(k pulumi.StringInput) GetNetworksOrgNetworkTenantsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetNetworksOrgNetworkTenants {
+		return vs[0].(map[string]GetNetworksOrgNetworkTenants)[vs[1].(string)]
+	}).(GetNetworksOrgNetworkTenantsOutput)
+}
+
+type GetNetworksOrgNetworkVpnAccess struct {
+	// If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
+	AdvertisedSubnet string `pulumi:"advertisedSubnet"`
+	// Whether to allow ping from vpn into this routed network
+	AllowPing bool `pulumi:"allowPing"`
+	// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
+	DestinationNat map[string]GetNetworksOrgNetworkVpnAccessDestinationNat `pulumi:"destinationNat"`
+	// If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+	NatPool string `pulumi:"natPool"`
+	// toward LAN-side BGP peers
+	NoReadvertiseToLanBgp bool `pulumi:"noReadvertiseToLanBgp"`
+	// toward LAN-side OSPF peers
+	NoReadvertiseToLanOspf bool `pulumi:"noReadvertiseToLanOspf"`
+	// toward overlay, how HUB should deal with routes it received from Spokes
+	NoReadvertiseToOverlay bool `pulumi:"noReadvertiseToOverlay"`
+	// By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+	OtherVrfs []string `pulumi:"otherVrfs"`
+	// Whether this network is routable
+	Routed bool `pulumi:"routed"`
+	// If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+	SourceNat GetNetworksOrgNetworkVpnAccessSourceNat `pulumi:"sourceNat"`
+	// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
+	StaticNat map[string]GetNetworksOrgNetworkVpnAccessStaticNat `pulumi:"staticNat"`
+	// toward overlay, how HUB should deal with routes it received from Spokes
+	SummarizedSubnet string `pulumi:"summarizedSubnet"`
+	// toward LAN-side BGP peers
+	SummarizedSubnetToLanBgp string `pulumi:"summarizedSubnetToLanBgp"`
+	// toward LAN-side OSPF peers
+	SummarizedSubnetToLanOspf string `pulumi:"summarizedSubnetToLanOspf"`
+}
+
+// GetNetworksOrgNetworkVpnAccessInput is an input type that accepts GetNetworksOrgNetworkVpnAccessArgs and GetNetworksOrgNetworkVpnAccessOutput values.
+// You can construct a concrete instance of `GetNetworksOrgNetworkVpnAccessInput` via:
+//
+//	GetNetworksOrgNetworkVpnAccessArgs{...}
+type GetNetworksOrgNetworkVpnAccessInput interface {
+	pulumi.Input
+
+	ToGetNetworksOrgNetworkVpnAccessOutput() GetNetworksOrgNetworkVpnAccessOutput
+	ToGetNetworksOrgNetworkVpnAccessOutputWithContext(context.Context) GetNetworksOrgNetworkVpnAccessOutput
+}
+
+type GetNetworksOrgNetworkVpnAccessArgs struct {
+	// If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
+	AdvertisedSubnet pulumi.StringInput `pulumi:"advertisedSubnet"`
+	// Whether to allow ping from vpn into this routed network
+	AllowPing pulumi.BoolInput `pulumi:"allowPing"`
+	// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
+	DestinationNat GetNetworksOrgNetworkVpnAccessDestinationNatMapInput `pulumi:"destinationNat"`
+	// If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+	NatPool pulumi.StringInput `pulumi:"natPool"`
+	// toward LAN-side BGP peers
+	NoReadvertiseToLanBgp pulumi.BoolInput `pulumi:"noReadvertiseToLanBgp"`
+	// toward LAN-side OSPF peers
+	NoReadvertiseToLanOspf pulumi.BoolInput `pulumi:"noReadvertiseToLanOspf"`
+	// toward overlay, how HUB should deal with routes it received from Spokes
+	NoReadvertiseToOverlay pulumi.BoolInput `pulumi:"noReadvertiseToOverlay"`
+	// By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+	OtherVrfs pulumi.StringArrayInput `pulumi:"otherVrfs"`
+	// Whether this network is routable
+	Routed pulumi.BoolInput `pulumi:"routed"`
+	// If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+	SourceNat GetNetworksOrgNetworkVpnAccessSourceNatInput `pulumi:"sourceNat"`
+	// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
+	StaticNat GetNetworksOrgNetworkVpnAccessStaticNatMapInput `pulumi:"staticNat"`
+	// toward overlay, how HUB should deal with routes it received from Spokes
+	SummarizedSubnet pulumi.StringInput `pulumi:"summarizedSubnet"`
+	// toward LAN-side BGP peers
+	SummarizedSubnetToLanBgp pulumi.StringInput `pulumi:"summarizedSubnetToLanBgp"`
+	// toward LAN-side OSPF peers
+	SummarizedSubnetToLanOspf pulumi.StringInput `pulumi:"summarizedSubnetToLanOspf"`
+}
+
+func (GetNetworksOrgNetworkVpnAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkVpnAccess)(nil)).Elem()
+}
+
+func (i GetNetworksOrgNetworkVpnAccessArgs) ToGetNetworksOrgNetworkVpnAccessOutput() GetNetworksOrgNetworkVpnAccessOutput {
+	return i.ToGetNetworksOrgNetworkVpnAccessOutputWithContext(context.Background())
+}
+
+func (i GetNetworksOrgNetworkVpnAccessArgs) ToGetNetworksOrgNetworkVpnAccessOutputWithContext(ctx context.Context) GetNetworksOrgNetworkVpnAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksOrgNetworkVpnAccessOutput)
+}
+
+// GetNetworksOrgNetworkVpnAccessMapInput is an input type that accepts GetNetworksOrgNetworkVpnAccessMap and GetNetworksOrgNetworkVpnAccessMapOutput values.
+// You can construct a concrete instance of `GetNetworksOrgNetworkVpnAccessMapInput` via:
+//
+//	GetNetworksOrgNetworkVpnAccessMap{ "key": GetNetworksOrgNetworkVpnAccessArgs{...} }
+type GetNetworksOrgNetworkVpnAccessMapInput interface {
+	pulumi.Input
+
+	ToGetNetworksOrgNetworkVpnAccessMapOutput() GetNetworksOrgNetworkVpnAccessMapOutput
+	ToGetNetworksOrgNetworkVpnAccessMapOutputWithContext(context.Context) GetNetworksOrgNetworkVpnAccessMapOutput
+}
+
+type GetNetworksOrgNetworkVpnAccessMap map[string]GetNetworksOrgNetworkVpnAccessInput
+
+func (GetNetworksOrgNetworkVpnAccessMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetNetworksOrgNetworkVpnAccess)(nil)).Elem()
+}
+
+func (i GetNetworksOrgNetworkVpnAccessMap) ToGetNetworksOrgNetworkVpnAccessMapOutput() GetNetworksOrgNetworkVpnAccessMapOutput {
+	return i.ToGetNetworksOrgNetworkVpnAccessMapOutputWithContext(context.Background())
+}
+
+func (i GetNetworksOrgNetworkVpnAccessMap) ToGetNetworksOrgNetworkVpnAccessMapOutputWithContext(ctx context.Context) GetNetworksOrgNetworkVpnAccessMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksOrgNetworkVpnAccessMapOutput)
+}
+
+type GetNetworksOrgNetworkVpnAccessOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksOrgNetworkVpnAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkVpnAccess)(nil)).Elem()
+}
+
+func (o GetNetworksOrgNetworkVpnAccessOutput) ToGetNetworksOrgNetworkVpnAccessOutput() GetNetworksOrgNetworkVpnAccessOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkVpnAccessOutput) ToGetNetworksOrgNetworkVpnAccessOutputWithContext(ctx context.Context) GetNetworksOrgNetworkVpnAccessOutput {
+	return o
+}
+
+// If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
+func (o GetNetworksOrgNetworkVpnAccessOutput) AdvertisedSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccess) string { return v.AdvertisedSubnet }).(pulumi.StringOutput)
+}
+
+// Whether to allow ping from vpn into this routed network
+func (o GetNetworksOrgNetworkVpnAccessOutput) AllowPing() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccess) bool { return v.AllowPing }).(pulumi.BoolOutput)
+}
+
+// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
+func (o GetNetworksOrgNetworkVpnAccessOutput) DestinationNat() GetNetworksOrgNetworkVpnAccessDestinationNatMapOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccess) map[string]GetNetworksOrgNetworkVpnAccessDestinationNat {
+		return v.DestinationNat
+	}).(GetNetworksOrgNetworkVpnAccessDestinationNatMapOutput)
+}
+
+// If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+func (o GetNetworksOrgNetworkVpnAccessOutput) NatPool() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccess) string { return v.NatPool }).(pulumi.StringOutput)
+}
+
+// toward LAN-side BGP peers
+func (o GetNetworksOrgNetworkVpnAccessOutput) NoReadvertiseToLanBgp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccess) bool { return v.NoReadvertiseToLanBgp }).(pulumi.BoolOutput)
+}
+
+// toward LAN-side OSPF peers
+func (o GetNetworksOrgNetworkVpnAccessOutput) NoReadvertiseToLanOspf() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccess) bool { return v.NoReadvertiseToLanOspf }).(pulumi.BoolOutput)
+}
+
+// toward overlay, how HUB should deal with routes it received from Spokes
+func (o GetNetworksOrgNetworkVpnAccessOutput) NoReadvertiseToOverlay() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccess) bool { return v.NoReadvertiseToOverlay }).(pulumi.BoolOutput)
+}
+
+// By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+func (o GetNetworksOrgNetworkVpnAccessOutput) OtherVrfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccess) []string { return v.OtherVrfs }).(pulumi.StringArrayOutput)
+}
+
+// Whether this network is routable
+func (o GetNetworksOrgNetworkVpnAccessOutput) Routed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccess) bool { return v.Routed }).(pulumi.BoolOutput)
+}
+
+// If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+func (o GetNetworksOrgNetworkVpnAccessOutput) SourceNat() GetNetworksOrgNetworkVpnAccessSourceNatOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccess) GetNetworksOrgNetworkVpnAccessSourceNat { return v.SourceNat }).(GetNetworksOrgNetworkVpnAccessSourceNatOutput)
+}
+
+// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
+func (o GetNetworksOrgNetworkVpnAccessOutput) StaticNat() GetNetworksOrgNetworkVpnAccessStaticNatMapOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccess) map[string]GetNetworksOrgNetworkVpnAccessStaticNat {
+		return v.StaticNat
+	}).(GetNetworksOrgNetworkVpnAccessStaticNatMapOutput)
+}
+
+// toward overlay, how HUB should deal with routes it received from Spokes
+func (o GetNetworksOrgNetworkVpnAccessOutput) SummarizedSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccess) string { return v.SummarizedSubnet }).(pulumi.StringOutput)
+}
+
+// toward LAN-side BGP peers
+func (o GetNetworksOrgNetworkVpnAccessOutput) SummarizedSubnetToLanBgp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccess) string { return v.SummarizedSubnetToLanBgp }).(pulumi.StringOutput)
+}
+
+// toward LAN-side OSPF peers
+func (o GetNetworksOrgNetworkVpnAccessOutput) SummarizedSubnetToLanOspf() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccess) string { return v.SummarizedSubnetToLanOspf }).(pulumi.StringOutput)
+}
+
+type GetNetworksOrgNetworkVpnAccessMapOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksOrgNetworkVpnAccessMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetNetworksOrgNetworkVpnAccess)(nil)).Elem()
+}
+
+func (o GetNetworksOrgNetworkVpnAccessMapOutput) ToGetNetworksOrgNetworkVpnAccessMapOutput() GetNetworksOrgNetworkVpnAccessMapOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkVpnAccessMapOutput) ToGetNetworksOrgNetworkVpnAccessMapOutputWithContext(ctx context.Context) GetNetworksOrgNetworkVpnAccessMapOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkVpnAccessMapOutput) MapIndex(k pulumi.StringInput) GetNetworksOrgNetworkVpnAccessOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetNetworksOrgNetworkVpnAccess {
+		return vs[0].(map[string]GetNetworksOrgNetworkVpnAccess)[vs[1].(string)]
+	}).(GetNetworksOrgNetworkVpnAccessOutput)
+}
+
+type GetNetworksOrgNetworkVpnAccessDestinationNat struct {
+	// The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+	InternalIp string `pulumi:"internalIp"`
+	Name       string `pulumi:"name"`
+	Port       string `pulumi:"port"`
+}
+
+// GetNetworksOrgNetworkVpnAccessDestinationNatInput is an input type that accepts GetNetworksOrgNetworkVpnAccessDestinationNatArgs and GetNetworksOrgNetworkVpnAccessDestinationNatOutput values.
+// You can construct a concrete instance of `GetNetworksOrgNetworkVpnAccessDestinationNatInput` via:
+//
+//	GetNetworksOrgNetworkVpnAccessDestinationNatArgs{...}
+type GetNetworksOrgNetworkVpnAccessDestinationNatInput interface {
+	pulumi.Input
+
+	ToGetNetworksOrgNetworkVpnAccessDestinationNatOutput() GetNetworksOrgNetworkVpnAccessDestinationNatOutput
+	ToGetNetworksOrgNetworkVpnAccessDestinationNatOutputWithContext(context.Context) GetNetworksOrgNetworkVpnAccessDestinationNatOutput
+}
+
+type GetNetworksOrgNetworkVpnAccessDestinationNatArgs struct {
+	// The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+	InternalIp pulumi.StringInput `pulumi:"internalIp"`
+	Name       pulumi.StringInput `pulumi:"name"`
+	Port       pulumi.StringInput `pulumi:"port"`
+}
+
+func (GetNetworksOrgNetworkVpnAccessDestinationNatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkVpnAccessDestinationNat)(nil)).Elem()
+}
+
+func (i GetNetworksOrgNetworkVpnAccessDestinationNatArgs) ToGetNetworksOrgNetworkVpnAccessDestinationNatOutput() GetNetworksOrgNetworkVpnAccessDestinationNatOutput {
+	return i.ToGetNetworksOrgNetworkVpnAccessDestinationNatOutputWithContext(context.Background())
+}
+
+func (i GetNetworksOrgNetworkVpnAccessDestinationNatArgs) ToGetNetworksOrgNetworkVpnAccessDestinationNatOutputWithContext(ctx context.Context) GetNetworksOrgNetworkVpnAccessDestinationNatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksOrgNetworkVpnAccessDestinationNatOutput)
+}
+
+// GetNetworksOrgNetworkVpnAccessDestinationNatMapInput is an input type that accepts GetNetworksOrgNetworkVpnAccessDestinationNatMap and GetNetworksOrgNetworkVpnAccessDestinationNatMapOutput values.
+// You can construct a concrete instance of `GetNetworksOrgNetworkVpnAccessDestinationNatMapInput` via:
+//
+//	GetNetworksOrgNetworkVpnAccessDestinationNatMap{ "key": GetNetworksOrgNetworkVpnAccessDestinationNatArgs{...} }
+type GetNetworksOrgNetworkVpnAccessDestinationNatMapInput interface {
+	pulumi.Input
+
+	ToGetNetworksOrgNetworkVpnAccessDestinationNatMapOutput() GetNetworksOrgNetworkVpnAccessDestinationNatMapOutput
+	ToGetNetworksOrgNetworkVpnAccessDestinationNatMapOutputWithContext(context.Context) GetNetworksOrgNetworkVpnAccessDestinationNatMapOutput
+}
+
+type GetNetworksOrgNetworkVpnAccessDestinationNatMap map[string]GetNetworksOrgNetworkVpnAccessDestinationNatInput
+
+func (GetNetworksOrgNetworkVpnAccessDestinationNatMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetNetworksOrgNetworkVpnAccessDestinationNat)(nil)).Elem()
+}
+
+func (i GetNetworksOrgNetworkVpnAccessDestinationNatMap) ToGetNetworksOrgNetworkVpnAccessDestinationNatMapOutput() GetNetworksOrgNetworkVpnAccessDestinationNatMapOutput {
+	return i.ToGetNetworksOrgNetworkVpnAccessDestinationNatMapOutputWithContext(context.Background())
+}
+
+func (i GetNetworksOrgNetworkVpnAccessDestinationNatMap) ToGetNetworksOrgNetworkVpnAccessDestinationNatMapOutputWithContext(ctx context.Context) GetNetworksOrgNetworkVpnAccessDestinationNatMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksOrgNetworkVpnAccessDestinationNatMapOutput)
+}
+
+type GetNetworksOrgNetworkVpnAccessDestinationNatOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksOrgNetworkVpnAccessDestinationNatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkVpnAccessDestinationNat)(nil)).Elem()
+}
+
+func (o GetNetworksOrgNetworkVpnAccessDestinationNatOutput) ToGetNetworksOrgNetworkVpnAccessDestinationNatOutput() GetNetworksOrgNetworkVpnAccessDestinationNatOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkVpnAccessDestinationNatOutput) ToGetNetworksOrgNetworkVpnAccessDestinationNatOutputWithContext(ctx context.Context) GetNetworksOrgNetworkVpnAccessDestinationNatOutput {
+	return o
+}
+
+// The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+func (o GetNetworksOrgNetworkVpnAccessDestinationNatOutput) InternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccessDestinationNat) string { return v.InternalIp }).(pulumi.StringOutput)
+}
+
+func (o GetNetworksOrgNetworkVpnAccessDestinationNatOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccessDestinationNat) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetNetworksOrgNetworkVpnAccessDestinationNatOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccessDestinationNat) string { return v.Port }).(pulumi.StringOutput)
+}
+
+type GetNetworksOrgNetworkVpnAccessDestinationNatMapOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksOrgNetworkVpnAccessDestinationNatMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetNetworksOrgNetworkVpnAccessDestinationNat)(nil)).Elem()
+}
+
+func (o GetNetworksOrgNetworkVpnAccessDestinationNatMapOutput) ToGetNetworksOrgNetworkVpnAccessDestinationNatMapOutput() GetNetworksOrgNetworkVpnAccessDestinationNatMapOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkVpnAccessDestinationNatMapOutput) ToGetNetworksOrgNetworkVpnAccessDestinationNatMapOutputWithContext(ctx context.Context) GetNetworksOrgNetworkVpnAccessDestinationNatMapOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkVpnAccessDestinationNatMapOutput) MapIndex(k pulumi.StringInput) GetNetworksOrgNetworkVpnAccessDestinationNatOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetNetworksOrgNetworkVpnAccessDestinationNat {
+		return vs[0].(map[string]GetNetworksOrgNetworkVpnAccessDestinationNat)[vs[1].(string)]
+	}).(GetNetworksOrgNetworkVpnAccessDestinationNatOutput)
+}
+
+type GetNetworksOrgNetworkVpnAccessSourceNat struct {
+	ExternalIp string `pulumi:"externalIp"`
+}
+
+// GetNetworksOrgNetworkVpnAccessSourceNatInput is an input type that accepts GetNetworksOrgNetworkVpnAccessSourceNatArgs and GetNetworksOrgNetworkVpnAccessSourceNatOutput values.
+// You can construct a concrete instance of `GetNetworksOrgNetworkVpnAccessSourceNatInput` via:
+//
+//	GetNetworksOrgNetworkVpnAccessSourceNatArgs{...}
+type GetNetworksOrgNetworkVpnAccessSourceNatInput interface {
+	pulumi.Input
+
+	ToGetNetworksOrgNetworkVpnAccessSourceNatOutput() GetNetworksOrgNetworkVpnAccessSourceNatOutput
+	ToGetNetworksOrgNetworkVpnAccessSourceNatOutputWithContext(context.Context) GetNetworksOrgNetworkVpnAccessSourceNatOutput
+}
+
+type GetNetworksOrgNetworkVpnAccessSourceNatArgs struct {
+	ExternalIp pulumi.StringInput `pulumi:"externalIp"`
+}
+
+func (GetNetworksOrgNetworkVpnAccessSourceNatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkVpnAccessSourceNat)(nil)).Elem()
+}
+
+func (i GetNetworksOrgNetworkVpnAccessSourceNatArgs) ToGetNetworksOrgNetworkVpnAccessSourceNatOutput() GetNetworksOrgNetworkVpnAccessSourceNatOutput {
+	return i.ToGetNetworksOrgNetworkVpnAccessSourceNatOutputWithContext(context.Background())
+}
+
+func (i GetNetworksOrgNetworkVpnAccessSourceNatArgs) ToGetNetworksOrgNetworkVpnAccessSourceNatOutputWithContext(ctx context.Context) GetNetworksOrgNetworkVpnAccessSourceNatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksOrgNetworkVpnAccessSourceNatOutput)
+}
+
+type GetNetworksOrgNetworkVpnAccessSourceNatOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksOrgNetworkVpnAccessSourceNatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkVpnAccessSourceNat)(nil)).Elem()
+}
+
+func (o GetNetworksOrgNetworkVpnAccessSourceNatOutput) ToGetNetworksOrgNetworkVpnAccessSourceNatOutput() GetNetworksOrgNetworkVpnAccessSourceNatOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkVpnAccessSourceNatOutput) ToGetNetworksOrgNetworkVpnAccessSourceNatOutputWithContext(ctx context.Context) GetNetworksOrgNetworkVpnAccessSourceNatOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkVpnAccessSourceNatOutput) ExternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccessSourceNat) string { return v.ExternalIp }).(pulumi.StringOutput)
+}
+
+type GetNetworksOrgNetworkVpnAccessStaticNat struct {
+	// The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+	InternalIp string `pulumi:"internalIp"`
+	Name       string `pulumi:"name"`
+}
+
+// GetNetworksOrgNetworkVpnAccessStaticNatInput is an input type that accepts GetNetworksOrgNetworkVpnAccessStaticNatArgs and GetNetworksOrgNetworkVpnAccessStaticNatOutput values.
+// You can construct a concrete instance of `GetNetworksOrgNetworkVpnAccessStaticNatInput` via:
+//
+//	GetNetworksOrgNetworkVpnAccessStaticNatArgs{...}
+type GetNetworksOrgNetworkVpnAccessStaticNatInput interface {
+	pulumi.Input
+
+	ToGetNetworksOrgNetworkVpnAccessStaticNatOutput() GetNetworksOrgNetworkVpnAccessStaticNatOutput
+	ToGetNetworksOrgNetworkVpnAccessStaticNatOutputWithContext(context.Context) GetNetworksOrgNetworkVpnAccessStaticNatOutput
+}
+
+type GetNetworksOrgNetworkVpnAccessStaticNatArgs struct {
+	// The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+	InternalIp pulumi.StringInput `pulumi:"internalIp"`
+	Name       pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetNetworksOrgNetworkVpnAccessStaticNatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkVpnAccessStaticNat)(nil)).Elem()
+}
+
+func (i GetNetworksOrgNetworkVpnAccessStaticNatArgs) ToGetNetworksOrgNetworkVpnAccessStaticNatOutput() GetNetworksOrgNetworkVpnAccessStaticNatOutput {
+	return i.ToGetNetworksOrgNetworkVpnAccessStaticNatOutputWithContext(context.Background())
+}
+
+func (i GetNetworksOrgNetworkVpnAccessStaticNatArgs) ToGetNetworksOrgNetworkVpnAccessStaticNatOutputWithContext(ctx context.Context) GetNetworksOrgNetworkVpnAccessStaticNatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksOrgNetworkVpnAccessStaticNatOutput)
+}
+
+// GetNetworksOrgNetworkVpnAccessStaticNatMapInput is an input type that accepts GetNetworksOrgNetworkVpnAccessStaticNatMap and GetNetworksOrgNetworkVpnAccessStaticNatMapOutput values.
+// You can construct a concrete instance of `GetNetworksOrgNetworkVpnAccessStaticNatMapInput` via:
+//
+//	GetNetworksOrgNetworkVpnAccessStaticNatMap{ "key": GetNetworksOrgNetworkVpnAccessStaticNatArgs{...} }
+type GetNetworksOrgNetworkVpnAccessStaticNatMapInput interface {
+	pulumi.Input
+
+	ToGetNetworksOrgNetworkVpnAccessStaticNatMapOutput() GetNetworksOrgNetworkVpnAccessStaticNatMapOutput
+	ToGetNetworksOrgNetworkVpnAccessStaticNatMapOutputWithContext(context.Context) GetNetworksOrgNetworkVpnAccessStaticNatMapOutput
+}
+
+type GetNetworksOrgNetworkVpnAccessStaticNatMap map[string]GetNetworksOrgNetworkVpnAccessStaticNatInput
+
+func (GetNetworksOrgNetworkVpnAccessStaticNatMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetNetworksOrgNetworkVpnAccessStaticNat)(nil)).Elem()
+}
+
+func (i GetNetworksOrgNetworkVpnAccessStaticNatMap) ToGetNetworksOrgNetworkVpnAccessStaticNatMapOutput() GetNetworksOrgNetworkVpnAccessStaticNatMapOutput {
+	return i.ToGetNetworksOrgNetworkVpnAccessStaticNatMapOutputWithContext(context.Background())
+}
+
+func (i GetNetworksOrgNetworkVpnAccessStaticNatMap) ToGetNetworksOrgNetworkVpnAccessStaticNatMapOutputWithContext(ctx context.Context) GetNetworksOrgNetworkVpnAccessStaticNatMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksOrgNetworkVpnAccessStaticNatMapOutput)
+}
+
+type GetNetworksOrgNetworkVpnAccessStaticNatOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksOrgNetworkVpnAccessStaticNatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksOrgNetworkVpnAccessStaticNat)(nil)).Elem()
+}
+
+func (o GetNetworksOrgNetworkVpnAccessStaticNatOutput) ToGetNetworksOrgNetworkVpnAccessStaticNatOutput() GetNetworksOrgNetworkVpnAccessStaticNatOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkVpnAccessStaticNatOutput) ToGetNetworksOrgNetworkVpnAccessStaticNatOutputWithContext(ctx context.Context) GetNetworksOrgNetworkVpnAccessStaticNatOutput {
+	return o
+}
+
+// The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+func (o GetNetworksOrgNetworkVpnAccessStaticNatOutput) InternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccessStaticNat) string { return v.InternalIp }).(pulumi.StringOutput)
+}
+
+func (o GetNetworksOrgNetworkVpnAccessStaticNatOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksOrgNetworkVpnAccessStaticNat) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetNetworksOrgNetworkVpnAccessStaticNatMapOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksOrgNetworkVpnAccessStaticNatMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetNetworksOrgNetworkVpnAccessStaticNat)(nil)).Elem()
+}
+
+func (o GetNetworksOrgNetworkVpnAccessStaticNatMapOutput) ToGetNetworksOrgNetworkVpnAccessStaticNatMapOutput() GetNetworksOrgNetworkVpnAccessStaticNatMapOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkVpnAccessStaticNatMapOutput) ToGetNetworksOrgNetworkVpnAccessStaticNatMapOutputWithContext(ctx context.Context) GetNetworksOrgNetworkVpnAccessStaticNatMapOutput {
+	return o
+}
+
+func (o GetNetworksOrgNetworkVpnAccessStaticNatMapOutput) MapIndex(k pulumi.StringInput) GetNetworksOrgNetworkVpnAccessStaticNatOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetNetworksOrgNetworkVpnAccessStaticNat {
+		return vs[0].(map[string]GetNetworksOrgNetworkVpnAccessStaticNat)[vs[1].(string)]
+	}).(GetNetworksOrgNetworkVpnAccessStaticNatOutput)
 }
 
 type GetNetworktemplatesOrgNetworktemplate struct {
@@ -64028,13 +65204,11 @@ type GetWlansOrgWlan struct {
 	// Bonjour gateway wlan settings
 	Bonjour GetWlansOrgWlanBonjour `pulumi:"bonjour"`
 	// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-	CiscoCwa GetWlansOrgWlanCiscoCwa `pulumi:"ciscoCwa"`
-	// In kbps
-	ClientLimitDown int `pulumi:"clientLimitDown"`
+	CiscoCwa        GetWlansOrgWlanCiscoCwa `pulumi:"ciscoCwa"`
+	ClientLimitDown string                  `pulumi:"clientLimitDown"`
 	// If downlink limiting per-client is enabled
-	ClientLimitDownEnabled bool `pulumi:"clientLimitDownEnabled"`
-	// In kbps
-	ClientLimitUp int `pulumi:"clientLimitUp"`
+	ClientLimitDownEnabled bool   `pulumi:"clientLimitDownEnabled"`
+	ClientLimitUp          string `pulumi:"clientLimitUp"`
 	// If uplink limiting per-client is enabled
 	ClientLimitUpEnabled bool `pulumi:"clientLimitUpEnabled"`
 	// List of COA (change of authorization) servers, optional
@@ -64161,13 +65335,11 @@ type GetWlansOrgWlan struct {
 	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
 	VlanIds []string `pulumi:"vlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
-	VlanPooling bool `pulumi:"vlanPooling"`
-	// In kbps
-	WlanLimitDown int `pulumi:"wlanLimitDown"`
+	VlanPooling   bool   `pulumi:"vlanPooling"`
+	WlanLimitDown string `pulumi:"wlanLimitDown"`
 	// If downlink limiting for whole wlan is enabled
-	WlanLimitDownEnabled bool `pulumi:"wlanLimitDownEnabled"`
-	// In kbps
-	WlanLimitUp int `pulumi:"wlanLimitUp"`
+	WlanLimitDownEnabled bool   `pulumi:"wlanLimitDownEnabled"`
+	WlanLimitUp          string `pulumi:"wlanLimitUp"`
 	// If uplink limiting for whole wlan is enabled
 	WlanLimitUpEnabled bool `pulumi:"wlanLimitUpEnabled"`
 	// List of wxtag_ids
@@ -64239,13 +65411,11 @@ type GetWlansOrgWlanArgs struct {
 	// Bonjour gateway wlan settings
 	Bonjour GetWlansOrgWlanBonjourInput `pulumi:"bonjour"`
 	// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-	CiscoCwa GetWlansOrgWlanCiscoCwaInput `pulumi:"ciscoCwa"`
-	// In kbps
-	ClientLimitDown pulumi.IntInput `pulumi:"clientLimitDown"`
+	CiscoCwa        GetWlansOrgWlanCiscoCwaInput `pulumi:"ciscoCwa"`
+	ClientLimitDown pulumi.StringInput           `pulumi:"clientLimitDown"`
 	// If downlink limiting per-client is enabled
-	ClientLimitDownEnabled pulumi.BoolInput `pulumi:"clientLimitDownEnabled"`
-	// In kbps
-	ClientLimitUp pulumi.IntInput `pulumi:"clientLimitUp"`
+	ClientLimitDownEnabled pulumi.BoolInput   `pulumi:"clientLimitDownEnabled"`
+	ClientLimitUp          pulumi.StringInput `pulumi:"clientLimitUp"`
 	// If uplink limiting per-client is enabled
 	ClientLimitUpEnabled pulumi.BoolInput `pulumi:"clientLimitUpEnabled"`
 	// List of COA (change of authorization) servers, optional
@@ -64372,13 +65542,11 @@ type GetWlansOrgWlanArgs struct {
 	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
 	VlanIds pulumi.StringArrayInput `pulumi:"vlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
-	VlanPooling pulumi.BoolInput `pulumi:"vlanPooling"`
-	// In kbps
-	WlanLimitDown pulumi.IntInput `pulumi:"wlanLimitDown"`
+	VlanPooling   pulumi.BoolInput   `pulumi:"vlanPooling"`
+	WlanLimitDown pulumi.StringInput `pulumi:"wlanLimitDown"`
 	// If downlink limiting for whole wlan is enabled
-	WlanLimitDownEnabled pulumi.BoolInput `pulumi:"wlanLimitDownEnabled"`
-	// In kbps
-	WlanLimitUp pulumi.IntInput `pulumi:"wlanLimitUp"`
+	WlanLimitDownEnabled pulumi.BoolInput   `pulumi:"wlanLimitDownEnabled"`
+	WlanLimitUp          pulumi.StringInput `pulumi:"wlanLimitUp"`
 	// If uplink limiting for whole wlan is enabled
 	WlanLimitUpEnabled pulumi.BoolInput `pulumi:"wlanLimitUpEnabled"`
 	// List of wxtag_ids
@@ -64565,9 +65733,8 @@ func (o GetWlansOrgWlanOutput) CiscoCwa() GetWlansOrgWlanCiscoCwaOutput {
 	return o.ApplyT(func(v GetWlansOrgWlan) GetWlansOrgWlanCiscoCwa { return v.CiscoCwa }).(GetWlansOrgWlanCiscoCwaOutput)
 }
 
-// In kbps
-func (o GetWlansOrgWlanOutput) ClientLimitDown() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWlansOrgWlan) int { return v.ClientLimitDown }).(pulumi.IntOutput)
+func (o GetWlansOrgWlanOutput) ClientLimitDown() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansOrgWlan) string { return v.ClientLimitDown }).(pulumi.StringOutput)
 }
 
 // If downlink limiting per-client is enabled
@@ -64575,9 +65742,8 @@ func (o GetWlansOrgWlanOutput) ClientLimitDownEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansOrgWlan) bool { return v.ClientLimitDownEnabled }).(pulumi.BoolOutput)
 }
 
-// In kbps
-func (o GetWlansOrgWlanOutput) ClientLimitUp() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWlansOrgWlan) int { return v.ClientLimitUp }).(pulumi.IntOutput)
+func (o GetWlansOrgWlanOutput) ClientLimitUp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansOrgWlan) string { return v.ClientLimitUp }).(pulumi.StringOutput)
 }
 
 // If uplink limiting per-client is enabled
@@ -64896,9 +66062,8 @@ func (o GetWlansOrgWlanOutput) VlanPooling() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansOrgWlan) bool { return v.VlanPooling }).(pulumi.BoolOutput)
 }
 
-// In kbps
-func (o GetWlansOrgWlanOutput) WlanLimitDown() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWlansOrgWlan) int { return v.WlanLimitDown }).(pulumi.IntOutput)
+func (o GetWlansOrgWlanOutput) WlanLimitDown() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansOrgWlan) string { return v.WlanLimitDown }).(pulumi.StringOutput)
 }
 
 // If downlink limiting for whole wlan is enabled
@@ -64906,9 +66071,8 @@ func (o GetWlansOrgWlanOutput) WlanLimitDownEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansOrgWlan) bool { return v.WlanLimitDownEnabled }).(pulumi.BoolOutput)
 }
 
-// In kbps
-func (o GetWlansOrgWlanOutput) WlanLimitUp() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWlansOrgWlan) int { return v.WlanLimitUp }).(pulumi.IntOutput)
+func (o GetWlansOrgWlanOutput) WlanLimitUp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansOrgWlan) string { return v.WlanLimitUp }).(pulumi.StringOutput)
 }
 
 // If uplink limiting for whole wlan is enabled
@@ -64959,8 +66123,7 @@ type GetWlansOrgWlanAcctServer struct {
 	KeywrapFormat string `pulumi:"keywrapFormat"`
 	KeywrapKek    string `pulumi:"keywrapKek"`
 	KeywrapMack   string `pulumi:"keywrapMack"`
-	// Acct port of RADIUS server
-	Port int `pulumi:"port"`
+	Port          string `pulumi:"port"`
 	// Secret of RADIUS server
 	Secret string `pulumi:"secret"`
 }
@@ -64984,8 +66147,7 @@ type GetWlansOrgWlanAcctServerArgs struct {
 	KeywrapFormat pulumi.StringInput `pulumi:"keywrapFormat"`
 	KeywrapKek    pulumi.StringInput `pulumi:"keywrapKek"`
 	KeywrapMack   pulumi.StringInput `pulumi:"keywrapMack"`
-	// Acct port of RADIUS server
-	Port pulumi.IntInput `pulumi:"port"`
+	Port          pulumi.StringInput `pulumi:"port"`
 	// Secret of RADIUS server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
@@ -65063,9 +66225,8 @@ func (o GetWlansOrgWlanAcctServerOutput) KeywrapMack() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansOrgWlanAcctServer) string { return v.KeywrapMack }).(pulumi.StringOutput)
 }
 
-// Acct port of RADIUS server
-func (o GetWlansOrgWlanAcctServerOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWlansOrgWlanAcctServer) int { return v.Port }).(pulumi.IntOutput)
+func (o GetWlansOrgWlanAcctServerOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansOrgWlanAcctServer) string { return v.Port }).(pulumi.StringOutput)
 }
 
 // Secret of RADIUS server
@@ -65698,8 +66859,7 @@ type GetWlansOrgWlanAuthServer struct {
 	KeywrapFormat string `pulumi:"keywrapFormat"`
 	KeywrapKek    string `pulumi:"keywrapKek"`
 	KeywrapMack   string `pulumi:"keywrapMack"`
-	// Auth port of RADIUS server
-	Port int `pulumi:"port"`
+	Port          string `pulumi:"port"`
 	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator bool `pulumi:"requireMessageAuthenticator"`
 	// Secret of RADIUS server
@@ -65725,8 +66885,7 @@ type GetWlansOrgWlanAuthServerArgs struct {
 	KeywrapFormat pulumi.StringInput `pulumi:"keywrapFormat"`
 	KeywrapKek    pulumi.StringInput `pulumi:"keywrapKek"`
 	KeywrapMack   pulumi.StringInput `pulumi:"keywrapMack"`
-	// Auth port of RADIUS server
-	Port pulumi.IntInput `pulumi:"port"`
+	Port          pulumi.StringInput `pulumi:"port"`
 	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator pulumi.BoolInput `pulumi:"requireMessageAuthenticator"`
 	// Secret of RADIUS server
@@ -65806,9 +66965,8 @@ func (o GetWlansOrgWlanAuthServerOutput) KeywrapMack() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansOrgWlanAuthServer) string { return v.KeywrapMack }).(pulumi.StringOutput)
 }
 
-// Auth port of RADIUS server
-func (o GetWlansOrgWlanAuthServerOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWlansOrgWlanAuthServer) int { return v.Port }).(pulumi.IntOutput)
+func (o GetWlansOrgWlanAuthServerOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansOrgWlanAuthServer) string { return v.Port }).(pulumi.StringOutput)
 }
 
 // Whether to require Message-Authenticator in requests
@@ -66110,7 +67268,7 @@ type GetWlansOrgWlanCoaServer struct {
 	DisableEventTimestampCheck bool   `pulumi:"disableEventTimestampCheck"`
 	Enabled                    bool   `pulumi:"enabled"`
 	Ip                         string `pulumi:"ip"`
-	Port                       int    `pulumi:"port"`
+	Port                       string `pulumi:"port"`
 	Secret                     string `pulumi:"secret"`
 }
 
@@ -66130,7 +67288,7 @@ type GetWlansOrgWlanCoaServerArgs struct {
 	DisableEventTimestampCheck pulumi.BoolInput   `pulumi:"disableEventTimestampCheck"`
 	Enabled                    pulumi.BoolInput   `pulumi:"enabled"`
 	Ip                         pulumi.StringInput `pulumi:"ip"`
-	Port                       pulumi.IntInput    `pulumi:"port"`
+	Port                       pulumi.StringInput `pulumi:"port"`
 	Secret                     pulumi.StringInput `pulumi:"secret"`
 }
 
@@ -66198,8 +67356,8 @@ func (o GetWlansOrgWlanCoaServerOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansOrgWlanCoaServer) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-func (o GetWlansOrgWlanCoaServerOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWlansOrgWlanCoaServer) int { return v.Port }).(pulumi.IntOutput)
+func (o GetWlansOrgWlanCoaServerOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansOrgWlanCoaServer) string { return v.Port }).(pulumi.StringOutput)
 }
 
 func (o GetWlansOrgWlanCoaServerOutput) Secret() pulumi.StringOutput {
@@ -66710,7 +67868,7 @@ type GetWlansOrgWlanPortal struct {
 	AmazonEnabled bool `pulumi:"amazonEnabled"`
 	// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
 	AmazonExpire int `pulumi:"amazonExpire"`
-	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
 	Auth string `pulumi:"auth"`
 	// Required if `azureEnabled`==`true`. Azure active directory app client id
 	AzureClientId string `pulumi:"azureClientId"`
@@ -66812,8 +67970,7 @@ type GetWlansOrgWlanPortal struct {
 	// Whether sponsor is enabled
 	SponsorEnabled bool `pulumi:"sponsorEnabled"`
 	// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
-	SponsorExpire int `pulumi:"sponsorExpire"`
-	// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+	SponsorExpire               int    `pulumi:"sponsorExpire"`
 	SponsorLinkValidityDuration string `pulumi:"sponsorLinkValidityDuration"`
 	// Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
 	SponsorNotifyAll bool `pulumi:"sponsorNotifyAll"`
@@ -66874,7 +68031,7 @@ type GetWlansOrgWlanPortalArgs struct {
 	AmazonEnabled pulumi.BoolInput `pulumi:"amazonEnabled"`
 	// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
 	AmazonExpire pulumi.IntInput `pulumi:"amazonExpire"`
-	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
 	Auth pulumi.StringInput `pulumi:"auth"`
 	// Required if `azureEnabled`==`true`. Azure active directory app client id
 	AzureClientId pulumi.StringInput `pulumi:"azureClientId"`
@@ -66976,8 +68133,7 @@ type GetWlansOrgWlanPortalArgs struct {
 	// Whether sponsor is enabled
 	SponsorEnabled pulumi.BoolInput `pulumi:"sponsorEnabled"`
 	// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
-	SponsorExpire pulumi.IntInput `pulumi:"sponsorExpire"`
-	// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+	SponsorExpire               pulumi.IntInput    `pulumi:"sponsorExpire"`
 	SponsorLinkValidityDuration pulumi.StringInput `pulumi:"sponsorLinkValidityDuration"`
 	// Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
 	SponsorNotifyAll pulumi.BoolInput `pulumi:"sponsorNotifyAll"`
@@ -67070,7 +68226,7 @@ func (o GetWlansOrgWlanPortalOutput) AmazonExpire() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansOrgWlanPortal) int { return v.AmazonExpire }).(pulumi.IntOutput)
 }
 
-// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
 func (o GetWlansOrgWlanPortalOutput) Auth() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansOrgWlanPortal) string { return v.Auth }).(pulumi.StringOutput)
 }
@@ -67329,7 +68485,6 @@ func (o GetWlansOrgWlanPortalOutput) SponsorExpire() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansOrgWlanPortal) int { return v.SponsorExpire }).(pulumi.IntOutput)
 }
 
-// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
 func (o GetWlansOrgWlanPortalOutput) SponsorLinkValidityDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansOrgWlanPortal) string { return v.SponsorLinkValidityDuration }).(pulumi.StringOutput)
 }
@@ -67475,9 +68630,9 @@ func (o GetWlansOrgWlanQosOutput) Overwrite() pulumi.BoolOutput {
 }
 
 type GetWlansOrgWlanRadsec struct {
-	CoaEnabled  bool `pulumi:"coaEnabled"`
-	Enabled     bool `pulumi:"enabled"`
-	IdleTimeout int  `pulumi:"idleTimeout"`
+	CoaEnabled  bool   `pulumi:"coaEnabled"`
+	Enabled     bool   `pulumi:"enabled"`
+	IdleTimeout string `pulumi:"idleTimeout"`
 	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
 	MxclusterIds []string `pulumi:"mxclusterIds"`
 	// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
@@ -67504,9 +68659,9 @@ type GetWlansOrgWlanRadsecInput interface {
 }
 
 type GetWlansOrgWlanRadsecArgs struct {
-	CoaEnabled  pulumi.BoolInput `pulumi:"coaEnabled"`
-	Enabled     pulumi.BoolInput `pulumi:"enabled"`
-	IdleTimeout pulumi.IntInput  `pulumi:"idleTimeout"`
+	CoaEnabled  pulumi.BoolInput   `pulumi:"coaEnabled"`
+	Enabled     pulumi.BoolInput   `pulumi:"enabled"`
+	IdleTimeout pulumi.StringInput `pulumi:"idleTimeout"`
 	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
 	MxclusterIds pulumi.StringArrayInput `pulumi:"mxclusterIds"`
 	// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
@@ -67555,8 +68710,8 @@ func (o GetWlansOrgWlanRadsecOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansOrgWlanRadsec) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-func (o GetWlansOrgWlanRadsecOutput) IdleTimeout() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWlansOrgWlanRadsec) int { return v.IdleTimeout }).(pulumi.IntOutput)
+func (o GetWlansOrgWlanRadsecOutput) IdleTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansOrgWlanRadsec) string { return v.IdleTimeout }).(pulumi.StringOutput)
 }
 
 // To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
@@ -69202,6 +70357,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNactagsOrgNactagArrayInput)(nil)).Elem(), GetNactagsOrgNactagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkInput)(nil)).Elem(), GetNetworksOrgNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkArrayInput)(nil)).Elem(), GetNetworksOrgNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkInternalAccessInput)(nil)).Elem(), GetNetworksOrgNetworkInternalAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkInternetAccessInput)(nil)).Elem(), GetNetworksOrgNetworkInternetAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkInternetAccessDestinationNatInput)(nil)).Elem(), GetNetworksOrgNetworkInternetAccessDestinationNatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkInternetAccessDestinationNatMapInput)(nil)).Elem(), GetNetworksOrgNetworkInternetAccessDestinationNatMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkInternetAccessStaticNatInput)(nil)).Elem(), GetNetworksOrgNetworkInternetAccessStaticNatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkInternetAccessStaticNatMapInput)(nil)).Elem(), GetNetworksOrgNetworkInternetAccessStaticNatMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkMulticastInput)(nil)).Elem(), GetNetworksOrgNetworkMulticastArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkMulticastGroupsInput)(nil)).Elem(), GetNetworksOrgNetworkMulticastGroupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkMulticastGroupsMapInput)(nil)).Elem(), GetNetworksOrgNetworkMulticastGroupsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkTenantsInput)(nil)).Elem(), GetNetworksOrgNetworkTenantsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkTenantsMapInput)(nil)).Elem(), GetNetworksOrgNetworkTenantsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkVpnAccessInput)(nil)).Elem(), GetNetworksOrgNetworkVpnAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkVpnAccessMapInput)(nil)).Elem(), GetNetworksOrgNetworkVpnAccessMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkVpnAccessDestinationNatInput)(nil)).Elem(), GetNetworksOrgNetworkVpnAccessDestinationNatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkVpnAccessDestinationNatMapInput)(nil)).Elem(), GetNetworksOrgNetworkVpnAccessDestinationNatMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkVpnAccessSourceNatInput)(nil)).Elem(), GetNetworksOrgNetworkVpnAccessSourceNatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkVpnAccessStaticNatInput)(nil)).Elem(), GetNetworksOrgNetworkVpnAccessStaticNatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksOrgNetworkVpnAccessStaticNatMapInput)(nil)).Elem(), GetNetworksOrgNetworkVpnAccessStaticNatMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworktemplatesOrgNetworktemplateInput)(nil)).Elem(), GetNetworktemplatesOrgNetworktemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworktemplatesOrgNetworktemplateArrayInput)(nil)).Elem(), GetNetworktemplatesOrgNetworktemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPsksOrgPskInput)(nil)).Elem(), GetPsksOrgPskArgs{})
@@ -69944,6 +71117,24 @@ func init() {
 	pulumi.RegisterOutputType(GetNactagsOrgNactagArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworksOrgNetworkOutput{})
 	pulumi.RegisterOutputType(GetNetworksOrgNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworksOrgNetworkInternalAccessOutput{})
+	pulumi.RegisterOutputType(GetNetworksOrgNetworkInternetAccessOutput{})
+	pulumi.RegisterOutputType(GetNetworksOrgNetworkInternetAccessDestinationNatOutput{})
+	pulumi.RegisterOutputType(GetNetworksOrgNetworkInternetAccessDestinationNatMapOutput{})
+	pulumi.RegisterOutputType(GetNetworksOrgNetworkInternetAccessStaticNatOutput{})
+	pulumi.RegisterOutputType(GetNetworksOrgNetworkInternetAccessStaticNatMapOutput{})
+	pulumi.RegisterOutputType(GetNetworksOrgNetworkMulticastOutput{})
+	pulumi.RegisterOutputType(GetNetworksOrgNetworkMulticastGroupsOutput{})
+	pulumi.RegisterOutputType(GetNetworksOrgNetworkMulticastGroupsMapOutput{})
+	pulumi.RegisterOutputType(GetNetworksOrgNetworkTenantsOutput{})
+	pulumi.RegisterOutputType(GetNetworksOrgNetworkTenantsMapOutput{})
+	pulumi.RegisterOutputType(GetNetworksOrgNetworkVpnAccessOutput{})
+	pulumi.RegisterOutputType(GetNetworksOrgNetworkVpnAccessMapOutput{})
+	pulumi.RegisterOutputType(GetNetworksOrgNetworkVpnAccessDestinationNatOutput{})
+	pulumi.RegisterOutputType(GetNetworksOrgNetworkVpnAccessDestinationNatMapOutput{})
+	pulumi.RegisterOutputType(GetNetworksOrgNetworkVpnAccessSourceNatOutput{})
+	pulumi.RegisterOutputType(GetNetworksOrgNetworkVpnAccessStaticNatOutput{})
+	pulumi.RegisterOutputType(GetNetworksOrgNetworkVpnAccessStaticNatMapOutput{})
 	pulumi.RegisterOutputType(GetNetworktemplatesOrgNetworktemplateOutput{})
 	pulumi.RegisterOutputType(GetNetworktemplatesOrgNetworktemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetPsksOrgPskOutput{})

@@ -430,18 +430,10 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ciscoCwa);
     }
 
-    /**
-     * In kbps
-     * 
-     */
     @Import(name="clientLimitDown")
-    private @Nullable Output<Integer> clientLimitDown;
+    private @Nullable Output<String> clientLimitDown;
 
-    /**
-     * @return In kbps
-     * 
-     */
-    public Optional<Output<Integer>> clientLimitDown() {
+    public Optional<Output<String>> clientLimitDown() {
         return Optional.ofNullable(this.clientLimitDown);
     }
 
@@ -460,18 +452,10 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clientLimitDownEnabled);
     }
 
-    /**
-     * In kbps
-     * 
-     */
     @Import(name="clientLimitUp")
-    private @Nullable Output<Integer> clientLimitUp;
+    private @Nullable Output<String> clientLimitUp;
 
-    /**
-     * @return In kbps
-     * 
-     */
-    public Optional<Output<Integer>> clientLimitUp() {
+    public Optional<Output<String>> clientLimitUp() {
         return Optional.ofNullable(this.clientLimitUp);
     }
 
@@ -1317,18 +1301,10 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vlanPooling);
     }
 
-    /**
-     * In kbps
-     * 
-     */
     @Import(name="wlanLimitDown")
-    private @Nullable Output<Integer> wlanLimitDown;
+    private @Nullable Output<String> wlanLimitDown;
 
-    /**
-     * @return In kbps
-     * 
-     */
-    public Optional<Output<Integer>> wlanLimitDown() {
+    public Optional<Output<String>> wlanLimitDown() {
         return Optional.ofNullable(this.wlanLimitDown);
     }
 
@@ -1347,18 +1323,10 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.wlanLimitDownEnabled);
     }
 
-    /**
-     * In kbps
-     * 
-     */
     @Import(name="wlanLimitUp")
-    private @Nullable Output<Integer> wlanLimitUp;
+    private @Nullable Output<String> wlanLimitUp;
 
-    /**
-     * @return In kbps
-     * 
-     */
-    public Optional<Output<Integer>> wlanLimitUp() {
+    public Optional<Output<String>> wlanLimitUp() {
         return Optional.ofNullable(this.wlanLimitUp);
     }
 
@@ -2122,24 +2090,12 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return ciscoCwa(Output.of(ciscoCwa));
         }
 
-        /**
-         * @param clientLimitDown In kbps
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clientLimitDown(@Nullable Output<Integer> clientLimitDown) {
+        public Builder clientLimitDown(@Nullable Output<String> clientLimitDown) {
             $.clientLimitDown = clientLimitDown;
             return this;
         }
 
-        /**
-         * @param clientLimitDown In kbps
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clientLimitDown(Integer clientLimitDown) {
+        public Builder clientLimitDown(String clientLimitDown) {
             return clientLimitDown(Output.of(clientLimitDown));
         }
 
@@ -2164,24 +2120,12 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return clientLimitDownEnabled(Output.of(clientLimitDownEnabled));
         }
 
-        /**
-         * @param clientLimitUp In kbps
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clientLimitUp(@Nullable Output<Integer> clientLimitUp) {
+        public Builder clientLimitUp(@Nullable Output<String> clientLimitUp) {
             $.clientLimitUp = clientLimitUp;
             return this;
         }
 
-        /**
-         * @param clientLimitUp In kbps
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clientLimitUp(Integer clientLimitUp) {
+        public Builder clientLimitUp(String clientLimitUp) {
             return clientLimitUp(Output.of(clientLimitUp));
         }
 
@@ -3417,24 +3361,12 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return vlanPooling(Output.of(vlanPooling));
         }
 
-        /**
-         * @param wlanLimitDown In kbps
-         * 
-         * @return builder
-         * 
-         */
-        public Builder wlanLimitDown(@Nullable Output<Integer> wlanLimitDown) {
+        public Builder wlanLimitDown(@Nullable Output<String> wlanLimitDown) {
             $.wlanLimitDown = wlanLimitDown;
             return this;
         }
 
-        /**
-         * @param wlanLimitDown In kbps
-         * 
-         * @return builder
-         * 
-         */
-        public Builder wlanLimitDown(Integer wlanLimitDown) {
+        public Builder wlanLimitDown(String wlanLimitDown) {
             return wlanLimitDown(Output.of(wlanLimitDown));
         }
 
@@ -3459,24 +3391,12 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return wlanLimitDownEnabled(Output.of(wlanLimitDownEnabled));
         }
 
-        /**
-         * @param wlanLimitUp In kbps
-         * 
-         * @return builder
-         * 
-         */
-        public Builder wlanLimitUp(@Nullable Output<Integer> wlanLimitUp) {
+        public Builder wlanLimitUp(@Nullable Output<String> wlanLimitUp) {
             $.wlanLimitUp = wlanLimitUp;
             return this;
         }
 
-        /**
-         * @param wlanLimitUp In kbps
-         * 
-         * @return builder
-         * 
-         */
-        public Builder wlanLimitUp(Integer wlanLimitUp) {
+        public Builder wlanLimitUp(String wlanLimitUp) {
             return wlanLimitUp(Output.of(wlanLimitUp));
         }
 

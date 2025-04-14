@@ -1593,7 +1593,7 @@ export namespace device {
          */
         protocol?: pulumi.Input<string>;
         /**
-         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          */
         provider?: pulumi.Input<string>;
         /**
@@ -2764,10 +2764,7 @@ export namespace device {
         keywrapFormat?: pulumi.Input<string>;
         keywrapKek?: pulumi.Input<string>;
         keywrapMack?: pulumi.Input<string>;
-        /**
-         * Acct port of RADIUS server
-         */
-        port?: pulumi.Input<number>;
+        port?: pulumi.Input<string>;
         /**
          * Secret of RADIUS server
          */
@@ -2786,10 +2783,7 @@ export namespace device {
         keywrapFormat?: pulumi.Input<string>;
         keywrapKek?: pulumi.Input<string>;
         keywrapMack?: pulumi.Input<string>;
-        /**
-         * Auth port of RADIUS server
-         */
-        port?: pulumi.Input<number>;
+        port?: pulumi.Input<string>;
         /**
          * Whether to require Message-Authenticator in requests
          */
@@ -4911,7 +4905,7 @@ export namespace org {
          */
         protocol?: pulumi.Input<string>;
         /**
-         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          */
         provider?: pulumi.Input<string>;
         /**
@@ -6332,7 +6326,7 @@ export namespace org {
          */
         protocol?: pulumi.Input<string>;
         /**
-         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          */
         provider?: pulumi.Input<string>;
         /**
@@ -7409,10 +7403,7 @@ export namespace org {
         keywrapFormat?: pulumi.Input<string>;
         keywrapKek?: pulumi.Input<string>;
         keywrapMack?: pulumi.Input<string>;
-        /**
-         * Acct port of RADIUS server
-         */
-        port?: pulumi.Input<number>;
+        port?: pulumi.Input<string>;
         /**
          * Secret of RADIUS server
          */
@@ -7431,10 +7422,7 @@ export namespace org {
         keywrapFormat?: pulumi.Input<string>;
         keywrapKek?: pulumi.Input<string>;
         keywrapMack?: pulumi.Input<string>;
-        /**
-         * Auth port of RADIUS server
-         */
-        port?: pulumi.Input<number>;
+        port?: pulumi.Input<string>;
         /**
          * Whether to require Message-Authenticator in requests
          */
@@ -8887,10 +8875,7 @@ Please update your configurations.
         keywrapFormat?: pulumi.Input<string>;
         keywrapKek?: pulumi.Input<string>;
         keywrapMack?: pulumi.Input<string>;
-        /**
-         * Acct port of RADIUS server
-         */
-        port?: pulumi.Input<number>;
+        port?: pulumi.Input<string>;
         /**
          * Secret of RADIUS server
          */
@@ -9022,10 +9007,7 @@ Please update your configurations.
         keywrapFormat?: pulumi.Input<string>;
         keywrapKek?: pulumi.Input<string>;
         keywrapMack?: pulumi.Input<string>;
-        /**
-         * Auth port of RADIUS server
-         */
-        port?: pulumi.Input<number>;
+        port?: pulumi.Input<string>;
         /**
          * Whether to require Message-Authenticator in requests
          */
@@ -9040,7 +9022,7 @@ Please update your configurations.
         /**
          * additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
          */
-        additionalVlanIds: pulumi.Input<pulumi.Input<string>[]>;
+        additionalVlanIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
          */
@@ -9049,7 +9031,7 @@ Please update your configurations.
          * What services are allowed. 
          * Property key is the service name
          */
-        services: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.WlanBonjourServices>}>;
+        services?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.WlanBonjourServices>}>;
     }
 
     export interface WlanBonjourServices {
@@ -9090,7 +9072,7 @@ Please update your configurations.
         disableEventTimestampCheck?: pulumi.Input<boolean>;
         enabled?: pulumi.Input<boolean>;
         ip: pulumi.Input<string>;
-        port?: pulumi.Input<number>;
+        port?: pulumi.Input<string>;
         secret: pulumi.Input<string>;
     }
 
@@ -9123,7 +9105,7 @@ Please update your configurations.
         /**
          * Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
          */
-        defaultVlanIds: pulumi.Input<pulumi.Input<string>[]>;
+        defaultVlanIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
          */
@@ -9218,7 +9200,7 @@ Please update your configurations.
          */
         amazonExpire?: pulumi.Input<number>;
         /**
-         * authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+         * authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
          */
         auth?: pulumi.Input<string>;
         /**
@@ -9423,7 +9405,7 @@ Please update your configurations.
          */
         sponsorExpire?: pulumi.Input<number>;
         /**
-         * Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+         * Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
          */
         sponsorLinkValidityDuration?: pulumi.Input<string>;
         /**
@@ -10201,7 +10183,7 @@ Please update your configurations.
     export interface WlanRadsec {
         coaEnabled?: pulumi.Input<boolean>;
         enabled?: pulumi.Input<boolean>;
-        idleTimeout?: pulumi.Input<number>;
+        idleTimeout?: pulumi.Input<string>;
         /**
          * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
          */
@@ -10931,10 +10913,7 @@ export namespace site {
         keywrapFormat?: pulumi.Input<string>;
         keywrapKek?: pulumi.Input<string>;
         keywrapMack?: pulumi.Input<string>;
-        /**
-         * Acct port of RADIUS server
-         */
-        port?: pulumi.Input<number>;
+        port?: pulumi.Input<string>;
         /**
          * Secret of RADIUS server
          */
@@ -10953,10 +10932,7 @@ export namespace site {
         keywrapFormat?: pulumi.Input<string>;
         keywrapKek?: pulumi.Input<string>;
         keywrapMack?: pulumi.Input<string>;
-        /**
-         * Auth port of RADIUS server
-         */
-        port?: pulumi.Input<number>;
+        port?: pulumi.Input<string>;
         /**
          * Whether to require Message-Authenticator in requests
          */
@@ -12299,10 +12275,7 @@ Please update your configurations.
         keywrapFormat?: pulumi.Input<string>;
         keywrapKek?: pulumi.Input<string>;
         keywrapMack?: pulumi.Input<string>;
-        /**
-         * Acct port of RADIUS server
-         */
-        port?: pulumi.Input<number>;
+        port?: pulumi.Input<string>;
         /**
          * Secret of RADIUS server
          */
@@ -12434,10 +12407,7 @@ Please update your configurations.
         keywrapFormat?: pulumi.Input<string>;
         keywrapKek?: pulumi.Input<string>;
         keywrapMack?: pulumi.Input<string>;
-        /**
-         * Auth port of RADIUS server
-         */
-        port?: pulumi.Input<number>;
+        port?: pulumi.Input<string>;
         /**
          * Whether to require Message-Authenticator in requests
          */
@@ -12452,7 +12422,7 @@ Please update your configurations.
         /**
          * additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
          */
-        additionalVlanIds: pulumi.Input<pulumi.Input<string>[]>;
+        additionalVlanIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
          */
@@ -12461,7 +12431,7 @@ Please update your configurations.
          * What services are allowed. 
          * Property key is the service name
          */
-        services: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.WlanBonjourServices>}>;
+        services?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.WlanBonjourServices>}>;
     }
 
     export interface WlanBonjourServices {
@@ -12502,7 +12472,7 @@ Please update your configurations.
         disableEventTimestampCheck?: pulumi.Input<boolean>;
         enabled?: pulumi.Input<boolean>;
         ip: pulumi.Input<string>;
-        port?: pulumi.Input<number>;
+        port?: pulumi.Input<string>;
         secret: pulumi.Input<string>;
     }
 
@@ -12535,7 +12505,7 @@ Please update your configurations.
         /**
          * Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
          */
-        defaultVlanIds: pulumi.Input<pulumi.Input<string>[]>;
+        defaultVlanIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
          */
@@ -12630,7 +12600,7 @@ Please update your configurations.
          */
         amazonExpire?: pulumi.Input<number>;
         /**
-         * authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+         * authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
          */
         auth?: pulumi.Input<string>;
         /**
@@ -12835,7 +12805,7 @@ Please update your configurations.
          */
         sponsorExpire?: pulumi.Input<number>;
         /**
-         * Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+         * Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
          */
         sponsorLinkValidityDuration?: pulumi.Input<string>;
         /**
@@ -13613,7 +13583,7 @@ Please update your configurations.
     export interface WlanRadsec {
         coaEnabled?: pulumi.Input<boolean>;
         enabled?: pulumi.Input<boolean>;
-        idleTimeout?: pulumi.Input<number>;
+        idleTimeout?: pulumi.Input<string>;
         /**
          * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
          */

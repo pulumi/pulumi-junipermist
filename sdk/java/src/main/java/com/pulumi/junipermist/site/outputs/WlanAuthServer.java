@@ -6,7 +6,6 @@ package com.pulumi.junipermist.site.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -27,11 +26,7 @@ public final class WlanAuthServer {
     private @Nullable String keywrapFormat;
     private @Nullable String keywrapKek;
     private @Nullable String keywrapMack;
-    /**
-     * @return Auth port of RADIUS server
-     * 
-     */
-    private @Nullable Integer port;
+    private @Nullable String port;
     /**
      * @return Whether to require Message-Authenticator in requests
      * 
@@ -67,11 +62,7 @@ public final class WlanAuthServer {
     public Optional<String> keywrapMack() {
         return Optional.ofNullable(this.keywrapMack);
     }
-    /**
-     * @return Auth port of RADIUS server
-     * 
-     */
-    public Optional<Integer> port() {
+    public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
     /**
@@ -103,7 +94,7 @@ public final class WlanAuthServer {
         private @Nullable String keywrapFormat;
         private @Nullable String keywrapKek;
         private @Nullable String keywrapMack;
-        private @Nullable Integer port;
+        private @Nullable String port;
         private @Nullable Boolean requireMessageAuthenticator;
         private String secret;
         public Builder() {}
@@ -152,7 +143,7 @@ public final class WlanAuthServer {
             return this;
         }
         @CustomType.Setter
-        public Builder port(@Nullable Integer port) {
+        public Builder port(@Nullable String port) {
 
             this.port = port;
             return this;

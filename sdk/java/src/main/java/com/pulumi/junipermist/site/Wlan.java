@@ -76,10 +76,10 @@ import javax.annotation.Nullable;
  *                 "6")
  *             .vlanEnabled(true)
  *             .vlanId("143")
- *             .wlanLimitUp(10000)
- *             .wlanLimitDown(20000)
- *             .clientLimitUp(512)
- *             .clientLimitDown(1000)
+ *             .wlanLimitUp("10000")
+ *             .wlanLimitDown("20000")
+ *             .clientLimitUp("512")
+ *             .clientLimitDown("1000")
  *             .auth(WlanAuthArgs.builder()
  *                 .type("psk")
  *                 .psk("secretpsk")
@@ -227,14 +227,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="appLimit", refs={WlanAppLimit.class}, tree="[0]")
-    private Output<WlanAppLimit> appLimit;
+    private Output</* @Nullable */ WlanAppLimit> appLimit;
 
     /**
      * @return Bandwidth limiting for apps (applies to up/down)
      * 
      */
-    public Output<WlanAppLimit> appLimit() {
-        return this.appLimit;
+    public Output<Optional<WlanAppLimit>> appLimit() {
+        return Codegen.optional(this.appLimit);
     }
     /**
      * APp qos wlan settings
@@ -357,7 +357,7 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="authServersRetries", refs={Integer.class}, tree="[0]")
-    private Output<Integer> authServersRetries;
+    private Output</* @Nullable */ Integer> authServersRetries;
 
     /**
      * @return Radius auth session retries. Following fast timers are set if &#34;fast_dot1x_timers&#34; knob is enabled. ‘retries’ are set
@@ -365,8 +365,8 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * value to 3.
      * 
      */
-    public Output<Integer> authServersRetries() {
-        return this.authServersRetries;
+    public Output<Optional<Integer>> authServersRetries() {
+        return Codegen.optional(this.authServersRetries);
     }
     /**
      * Radius auth session timeout. Following fast timers are set if &#34;fast_dot1x_timers&#34; knob is enabled. ‘quite-period’
@@ -375,7 +375,7 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="authServersTimeout", refs={Integer.class}, tree="[0]")
-    private Output<Integer> authServersTimeout;
+    private Output</* @Nullable */ Integer> authServersTimeout;
 
     /**
      * @return Radius auth session timeout. Following fast timers are set if &#34;fast_dot1x_timers&#34; knob is enabled. ‘quite-period’
@@ -383,8 +383,8 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * setting auth_servers_timeout and is set to default value of 10.
      * 
      */
-    public Output<Integer> authServersTimeout() {
-        return this.authServersTimeout;
+    public Output<Optional<Integer>> authServersTimeout() {
+        return Codegen.optional(this.authServersTimeout);
     }
     /**
      * Whether to enable band_steering, this works only when band==both
@@ -405,14 +405,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="bandSteerForceBand5", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> bandSteerForceBand5;
+    private Output</* @Nullable */ Boolean> bandSteerForceBand5;
 
     /**
      * @return Force dual_band capable client to connect to 5G
      * 
      */
-    public Output<Boolean> bandSteerForceBand5() {
-        return this.bandSteerForceBand5;
+    public Output<Optional<Boolean>> bandSteerForceBand5() {
+        return Codegen.optional(this.bandSteerForceBand5);
     }
     /**
      * list of radios that the wlan should apply to. enum: `24`, `5`, `6`
@@ -433,28 +433,28 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="blockBlacklistClients", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> blockBlacklistClients;
+    private Output</* @Nullable */ Boolean> blockBlacklistClients;
 
     /**
      * @return Whether to block the clients in the blacklist (up to first 256 macs)
      * 
      */
-    public Output<Boolean> blockBlacklistClients() {
-        return this.blockBlacklistClients;
+    public Output<Optional<Boolean>> blockBlacklistClients() {
+        return Codegen.optional(this.blockBlacklistClients);
     }
     /**
      * Bonjour gateway wlan settings
      * 
      */
     @Export(name="bonjour", refs={WlanBonjour.class}, tree="[0]")
-    private Output<WlanBonjour> bonjour;
+    private Output</* @Nullable */ WlanBonjour> bonjour;
 
     /**
      * @return Bonjour gateway wlan settings
      * 
      */
-    public Output<WlanBonjour> bonjour() {
-        return this.bonjour;
+    public Output<Optional<WlanBonjour>> bonjour() {
+        return Codegen.optional(this.bonjour);
     }
     /**
      * Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
@@ -472,18 +472,10 @@ public class Wlan extends com.pulumi.resources.CustomResource {
     public Output<WlanCiscoCwa> ciscoCwa() {
         return this.ciscoCwa;
     }
-    /**
-     * In kbps
-     * 
-     */
-    @Export(name="clientLimitDown", refs={Integer.class}, tree="[0]")
-    private Output<Integer> clientLimitDown;
+    @Export(name="clientLimitDown", refs={String.class}, tree="[0]")
+    private Output<String> clientLimitDown;
 
-    /**
-     * @return In kbps
-     * 
-     */
-    public Output<Integer> clientLimitDown() {
+    public Output<String> clientLimitDown() {
         return this.clientLimitDown;
     }
     /**
@@ -491,27 +483,19 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="clientLimitDownEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> clientLimitDownEnabled;
+    private Output</* @Nullable */ Boolean> clientLimitDownEnabled;
 
     /**
      * @return If downlink limiting per-client is enabled
      * 
      */
-    public Output<Boolean> clientLimitDownEnabled() {
-        return this.clientLimitDownEnabled;
+    public Output<Optional<Boolean>> clientLimitDownEnabled() {
+        return Codegen.optional(this.clientLimitDownEnabled);
     }
-    /**
-     * In kbps
-     * 
-     */
-    @Export(name="clientLimitUp", refs={Integer.class}, tree="[0]")
-    private Output<Integer> clientLimitUp;
+    @Export(name="clientLimitUp", refs={String.class}, tree="[0]")
+    private Output<String> clientLimitUp;
 
-    /**
-     * @return In kbps
-     * 
-     */
-    public Output<Integer> clientLimitUp() {
+    public Output<String> clientLimitUp() {
         return this.clientLimitUp;
     }
     /**
@@ -519,28 +503,28 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="clientLimitUpEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> clientLimitUpEnabled;
+    private Output</* @Nullable */ Boolean> clientLimitUpEnabled;
 
     /**
      * @return If uplink limiting per-client is enabled
      * 
      */
-    public Output<Boolean> clientLimitUpEnabled() {
-        return this.clientLimitUpEnabled;
+    public Output<Optional<Boolean>> clientLimitUpEnabled() {
+        return Codegen.optional(this.clientLimitUpEnabled);
     }
     /**
      * List of COA (change of authorization) servers, optional
      * 
      */
     @Export(name="coaServers", refs={List.class,WlanCoaServer.class}, tree="[0,1]")
-    private Output<List<WlanCoaServer>> coaServers;
+    private Output</* @Nullable */ List<WlanCoaServer>> coaServers;
 
     /**
      * @return List of COA (change of authorization) servers, optional
      * 
      */
-    public Output<List<WlanCoaServer>> coaServers() {
-        return this.coaServers;
+    public Output<Optional<List<WlanCoaServer>>> coaServers() {
+        return Codegen.optional(this.coaServers);
     }
     /**
      * Some old WLAN drivers may not be compatible
@@ -561,28 +545,28 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="disable11be", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> disable11be;
+    private Output</* @Nullable */ Boolean> disable11be;
 
     /**
      * @return To disable Wi-Fi 7 EHT IEs
      * 
      */
-    public Output<Boolean> disable11be() {
-        return this.disable11be;
+    public Output<Optional<Boolean>> disable11be() {
+        return Codegen.optional(this.disable11be);
     }
     /**
      * To disable ht or vht rates
      * 
      */
     @Export(name="disableHtVhtRates", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> disableHtVhtRates;
+    private Output</* @Nullable */ Boolean> disableHtVhtRates;
 
     /**
      * @return To disable ht or vht rates
      * 
      */
-    public Output<Boolean> disableHtVhtRates() {
-        return this.disableHtVhtRates;
+    public Output<Optional<Boolean>> disableHtVhtRates() {
+        return Codegen.optional(this.disableHtVhtRates);
     }
     /**
      * Whether to disable U-APSD
@@ -603,28 +587,28 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="disableV1RoamNotify", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> disableV1RoamNotify;
+    private Output</* @Nullable */ Boolean> disableV1RoamNotify;
 
     /**
      * @return Disable sending v2 roam notification messages
      * 
      */
-    public Output<Boolean> disableV1RoamNotify() {
-        return this.disableV1RoamNotify;
+    public Output<Optional<Boolean>> disableV1RoamNotify() {
+        return Codegen.optional(this.disableV1RoamNotify);
     }
     /**
      * Disable sending v2 roam notification messages
      * 
      */
     @Export(name="disableV2RoamNotify", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> disableV2RoamNotify;
+    private Output</* @Nullable */ Boolean> disableV2RoamNotify;
 
     /**
      * @return Disable sending v2 roam notification messages
      * 
      */
-    public Output<Boolean> disableV2RoamNotify() {
-        return this.disableV2RoamNotify;
+    public Output<Optional<Boolean>> disableV2RoamNotify() {
+        return Codegen.optional(this.disableV2RoamNotify);
     }
     /**
      * When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
@@ -667,14 +651,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="dnsServerRewrite", refs={WlanDnsServerRewrite.class}, tree="[0]")
-    private Output<WlanDnsServerRewrite> dnsServerRewrite;
+    private Output</* @Nullable */ WlanDnsServerRewrite> dnsServerRewrite;
 
     /**
      * @return For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
      * 
      */
-    public Output<WlanDnsServerRewrite> dnsServerRewrite() {
-        return this.dnsServerRewrite;
+    public Output<Optional<WlanDnsServerRewrite>> dnsServerRewrite() {
+        return Codegen.optional(this.dnsServerRewrite);
     }
     @Export(name="dtim", refs={Integer.class}, tree="[0]")
     private Output<Integer> dtim;
@@ -725,14 +709,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="enableLocalKeycaching", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> enableLocalKeycaching;
+    private Output</* @Nullable */ Boolean> enableLocalKeycaching;
 
     /**
      * @return Enable AP-AP keycaching via multicast
      * 
      */
-    public Output<Boolean> enableLocalKeycaching() {
-        return this.enableLocalKeycaching;
+    public Output<Optional<Boolean>> enableLocalKeycaching() {
+        return Codegen.optional(this.enableLocalKeycaching);
     }
     /**
      * By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
@@ -740,15 +724,15 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="enableWirelessBridging", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> enableWirelessBridging;
+    private Output</* @Nullable */ Boolean> enableWirelessBridging;
 
     /**
      * @return By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
      * client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
      * 
      */
-    public Output<Boolean> enableWirelessBridging() {
-        return this.enableWirelessBridging;
+    public Output<Optional<Boolean>> enableWirelessBridging() {
+        return Codegen.optional(this.enableWirelessBridging);
     }
     /**
      * If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
@@ -756,15 +740,15 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="enableWirelessBridgingDhcpTracking", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> enableWirelessBridgingDhcpTracking;
+    private Output</* @Nullable */ Boolean> enableWirelessBridgingDhcpTracking;
 
     /**
      * @return If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
      * packets to be forwarded to wireless
      * 
      */
-    public Output<Boolean> enableWirelessBridgingDhcpTracking() {
-        return this.enableWirelessBridgingDhcpTracking;
+    public Output<Optional<Boolean>> enableWirelessBridgingDhcpTracking() {
+        return Codegen.optional(this.enableWirelessBridgingDhcpTracking);
     }
     /**
      * If this wlan is enabled
@@ -786,15 +770,15 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="fastDot1xTimers", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> fastDot1xTimers;
+    private Output</* @Nullable */ Boolean> fastDot1xTimers;
 
     /**
      * @return If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
      * ‘auth_server_retries’ .
      * 
      */
-    public Output<Boolean> fastDot1xTimers() {
-        return this.fastDot1xTimers;
+    public Output<Optional<Boolean>> fastDot1xTimers() {
+        return Codegen.optional(this.fastDot1xTimers);
     }
     /**
      * Whether to hide SSID in beacon
@@ -829,14 +813,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="hotspot20", refs={WlanHotspot20.class}, tree="[0]")
-    private Output<WlanHotspot20> hotspot20;
+    private Output</* @Nullable */ WlanHotspot20> hotspot20;
 
     /**
      * @return Hostspot 2.0 wlan settings
      * 
      */
-    public Output<WlanHotspot20> hotspot20() {
-        return this.hotspot20;
+    public Output<Optional<WlanHotspot20>> hotspot20() {
+        return Codegen.optional(this.hotspot20);
     }
     @Export(name="injectDhcpOption82", refs={WlanInjectDhcpOption82.class}, tree="[0]")
     private Output</* @Nullable */ WlanInjectDhcpOption82> injectDhcpOption82;
@@ -863,28 +847,28 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="isolation", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> isolation;
+    private Output</* @Nullable */ Boolean> isolation;
 
     /**
      * @return Whether to stop clients to talk to each other
      * 
      */
-    public Output<Boolean> isolation() {
-        return this.isolation;
+    public Output<Optional<Boolean>> isolation() {
+        return Codegen.optional(this.isolation);
     }
     /**
      * If isolation is enabled, whether to deny clients to talk to L2 on the LAN
      * 
      */
     @Export(name="l2Isolation", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> l2Isolation;
+    private Output</* @Nullable */ Boolean> l2Isolation;
 
     /**
      * @return If isolation is enabled, whether to deny clients to talk to L2 on the LAN
      * 
      */
-    public Output<Boolean> l2Isolation() {
-        return this.l2Isolation;
+    public Output<Optional<Boolean>> l2Isolation() {
+        return Codegen.optional(this.l2Isolation);
     }
     /**
      * Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
@@ -892,15 +876,15 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="legacyOverds", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> legacyOverds;
+    private Output</* @Nullable */ Boolean> legacyOverds;
 
     /**
      * @return Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
      * Enabling this will cause problem for iOS devices.
      * 
      */
-    public Output<Boolean> legacyOverds() {
-        return this.legacyOverds;
+    public Output<Optional<Boolean>> legacyOverds() {
+        return Codegen.optional(this.legacyOverds);
     }
     /**
      * Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
@@ -949,14 +933,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="maxNumClients", refs={Integer.class}, tree="[0]")
-    private Output<Integer> maxNumClients;
+    private Output</* @Nullable */ Integer> maxNumClients;
 
     /**
      * @return Maximum number of client connected to the SSID. `0` means unlimited
      * 
      */
-    public Output<Integer> maxNumClients() {
-        return this.maxNumClients;
+    public Output<Optional<Integer>> maxNumClients() {
+        return Codegen.optional(this.maxNumClients);
     }
     @Export(name="mistNac", refs={WlanMistNac.class}, tree="[0]")
     private Output<WlanMistNac> mistNac;
@@ -1175,14 +1159,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="roamMode", refs={String.class}, tree="[0]")
-    private Output<String> roamMode;
+    private Output</* @Nullable */ String> roamMode;
 
     /**
      * @return enum: `11r`, `OKC`, `NONE`
      * 
      */
-    public Output<String> roamMode() {
-        return this.roamMode;
+    public Output<Optional<String>> roamMode() {
+        return Codegen.optional(this.roamMode);
     }
     /**
      * WLAN operating schedule, default is disabled
@@ -1209,14 +1193,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sleExcluded", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> sleExcluded;
+    private Output</* @Nullable */ Boolean> sleExcluded;
 
     /**
      * @return Whether to exclude this WLAN from SLE metrics
      * 
      */
-    public Output<Boolean> sleExcluded() {
-        return this.sleExcluded;
+    public Output<Optional<Boolean>> sleExcluded() {
+        return Codegen.optional(this.sleExcluded);
     }
     /**
      * Name of the SSID
@@ -1296,18 +1280,10 @@ public class Wlan extends com.pulumi.resources.CustomResource {
     public Output<Boolean> vlanPooling() {
         return this.vlanPooling;
     }
-    /**
-     * In kbps
-     * 
-     */
-    @Export(name="wlanLimitDown", refs={Integer.class}, tree="[0]")
-    private Output<Integer> wlanLimitDown;
+    @Export(name="wlanLimitDown", refs={String.class}, tree="[0]")
+    private Output<String> wlanLimitDown;
 
-    /**
-     * @return In kbps
-     * 
-     */
-    public Output<Integer> wlanLimitDown() {
+    public Output<String> wlanLimitDown() {
         return this.wlanLimitDown;
     }
     /**
@@ -1315,27 +1291,19 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="wlanLimitDownEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> wlanLimitDownEnabled;
+    private Output</* @Nullable */ Boolean> wlanLimitDownEnabled;
 
     /**
      * @return If downlink limiting for whole wlan is enabled
      * 
      */
-    public Output<Boolean> wlanLimitDownEnabled() {
-        return this.wlanLimitDownEnabled;
+    public Output<Optional<Boolean>> wlanLimitDownEnabled() {
+        return Codegen.optional(this.wlanLimitDownEnabled);
     }
-    /**
-     * In kbps
-     * 
-     */
-    @Export(name="wlanLimitUp", refs={Integer.class}, tree="[0]")
-    private Output<Integer> wlanLimitUp;
+    @Export(name="wlanLimitUp", refs={String.class}, tree="[0]")
+    private Output<String> wlanLimitUp;
 
-    /**
-     * @return In kbps
-     * 
-     */
-    public Output<Integer> wlanLimitUp() {
+    public Output<String> wlanLimitUp() {
         return this.wlanLimitUp;
     }
     /**
@@ -1343,14 +1311,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="wlanLimitUpEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> wlanLimitUpEnabled;
+    private Output</* @Nullable */ Boolean> wlanLimitUpEnabled;
 
     /**
      * @return If uplink limiting for whole wlan is enabled
      * 
      */
-    public Output<Boolean> wlanLimitUpEnabled() {
-        return this.wlanLimitUpEnabled;
+    public Output<Optional<Boolean>> wlanLimitUpEnabled() {
+        return Codegen.optional(this.wlanLimitUpEnabled);
     }
     /**
      * List of wxtag_ids

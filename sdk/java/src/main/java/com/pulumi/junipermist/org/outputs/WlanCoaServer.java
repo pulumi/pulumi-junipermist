@@ -6,7 +6,6 @@ package com.pulumi.junipermist.org.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,7 +20,7 @@ public final class WlanCoaServer {
     private @Nullable Boolean disableEventTimestampCheck;
     private @Nullable Boolean enabled;
     private String ip;
-    private @Nullable Integer port;
+    private @Nullable String port;
     private String secret;
 
     private WlanCoaServer() {}
@@ -38,7 +37,7 @@ public final class WlanCoaServer {
     public String ip() {
         return this.ip;
     }
-    public Optional<Integer> port() {
+    public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
     public String secret() {
@@ -57,7 +56,7 @@ public final class WlanCoaServer {
         private @Nullable Boolean disableEventTimestampCheck;
         private @Nullable Boolean enabled;
         private String ip;
-        private @Nullable Integer port;
+        private @Nullable String port;
         private String secret;
         public Builder() {}
         public Builder(WlanCoaServer defaults) {
@@ -90,7 +89,7 @@ public final class WlanCoaServer {
             return this;
         }
         @CustomType.Setter
-        public Builder port(@Nullable Integer port) {
+        public Builder port(@Nullable String port) {
 
             this.port = port;
             return this;

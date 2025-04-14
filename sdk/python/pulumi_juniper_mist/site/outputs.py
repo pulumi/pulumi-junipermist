@@ -2538,12 +2538,11 @@ class NetworktemplateRadiusConfigAcctServer(dict):
                  keywrap_format: Optional[builtins.str] = None,
                  keywrap_kek: Optional[builtins.str] = None,
                  keywrap_mack: Optional[builtins.str] = None,
-                 port: Optional[builtins.int] = None):
+                 port: Optional[builtins.str] = None):
         """
         :param builtins.str host: IP/ hostname of RADIUS server
         :param builtins.str secret: Secret of RADIUS server
         :param builtins.str keywrap_format: enum: `ascii`, `hex`
-        :param builtins.int port: Acct port of RADIUS server
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "secret", secret)
@@ -2599,10 +2598,7 @@ class NetworktemplateRadiusConfigAcctServer(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[builtins.int]:
-        """
-        Acct port of RADIUS server
-        """
+    def port(self) -> Optional[builtins.str]:
         return pulumi.get(self, "port")
 
 
@@ -2640,13 +2636,12 @@ class NetworktemplateRadiusConfigAuthServer(dict):
                  keywrap_format: Optional[builtins.str] = None,
                  keywrap_kek: Optional[builtins.str] = None,
                  keywrap_mack: Optional[builtins.str] = None,
-                 port: Optional[builtins.int] = None,
+                 port: Optional[builtins.str] = None,
                  require_message_authenticator: Optional[builtins.bool] = None):
         """
         :param builtins.str host: IP/ hostname of RADIUS server
         :param builtins.str secret: Secret of RADIUS server
         :param builtins.str keywrap_format: enum: `ascii`, `hex`
-        :param builtins.int port: Auth port of RADIUS server
         :param builtins.bool require_message_authenticator: Whether to require Message-Authenticator in requests
         """
         pulumi.set(__self__, "host", host)
@@ -2705,10 +2700,7 @@ class NetworktemplateRadiusConfigAuthServer(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[builtins.int]:
-        """
-        Auth port of RADIUS server
-        """
+    def port(self) -> Optional[builtins.str]:
         return pulumi.get(self, "port")
 
     @property
@@ -8524,12 +8516,11 @@ class WlanAcctServer(dict):
                  keywrap_format: Optional[builtins.str] = None,
                  keywrap_kek: Optional[builtins.str] = None,
                  keywrap_mack: Optional[builtins.str] = None,
-                 port: Optional[builtins.int] = None):
+                 port: Optional[builtins.str] = None):
         """
         :param builtins.str host: IP/ hostname of RADIUS server
         :param builtins.str secret: Secret of RADIUS server
         :param builtins.str keywrap_format: enum: `ascii`, `hex`
-        :param builtins.int port: Acct port of RADIUS server
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "secret", secret)
@@ -8585,10 +8576,7 @@ class WlanAcctServer(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[builtins.int]:
-        """
-        Acct port of RADIUS server
-        """
+    def port(self) -> Optional[builtins.str]:
         return pulumi.get(self, "port")
 
 
@@ -9103,13 +9091,12 @@ class WlanAuthServer(dict):
                  keywrap_format: Optional[builtins.str] = None,
                  keywrap_kek: Optional[builtins.str] = None,
                  keywrap_mack: Optional[builtins.str] = None,
-                 port: Optional[builtins.int] = None,
+                 port: Optional[builtins.str] = None,
                  require_message_authenticator: Optional[builtins.bool] = None):
         """
         :param builtins.str host: IP/ hostname of RADIUS server
         :param builtins.str secret: Secret of RADIUS server
         :param builtins.str keywrap_format: enum: `ascii`, `hex`
-        :param builtins.int port: Auth port of RADIUS server
         :param builtins.bool require_message_authenticator: Whether to require Message-Authenticator in requests
         """
         pulumi.set(__self__, "host", host)
@@ -9168,10 +9155,7 @@ class WlanAuthServer(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[builtins.int]:
-        """
-        Auth port of RADIUS server
-        """
+    def port(self) -> Optional[builtins.str]:
         return pulumi.get(self, "port")
 
     @property
@@ -9203,36 +9187,29 @@ class WlanBonjour(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 additional_vlan_ids: Sequence[builtins.str],
-                 services: Mapping[str, 'outputs.WlanBonjourServices'],
-                 enabled: Optional[builtins.bool] = None):
+                 additional_vlan_ids: Optional[Sequence[builtins.str]] = None,
+                 enabled: Optional[builtins.bool] = None,
+                 services: Optional[Mapping[str, 'outputs.WlanBonjourServices']] = None):
         """
         :param Sequence[builtins.str] additional_vlan_ids: additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+        :param builtins.bool enabled: Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
         :param Mapping[str, 'WlanBonjourServicesArgs'] services: What services are allowed. 
                Property key is the service name
-        :param builtins.bool enabled: Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
         """
-        pulumi.set(__self__, "additional_vlan_ids", additional_vlan_ids)
-        pulumi.set(__self__, "services", services)
+        if additional_vlan_ids is not None:
+            pulumi.set(__self__, "additional_vlan_ids", additional_vlan_ids)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
 
     @property
     @pulumi.getter(name="additionalVlanIds")
-    def additional_vlan_ids(self) -> Sequence[builtins.str]:
+    def additional_vlan_ids(self) -> Optional[Sequence[builtins.str]]:
         """
         additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
         """
         return pulumi.get(self, "additional_vlan_ids")
-
-    @property
-    @pulumi.getter
-    def services(self) -> Mapping[str, 'outputs.WlanBonjourServices']:
-        """
-        What services are allowed. 
-        Property key is the service name
-        """
-        return pulumi.get(self, "services")
 
     @property
     @pulumi.getter
@@ -9241,6 +9218,15 @@ class WlanBonjour(dict):
         Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def services(self) -> Optional[Mapping[str, 'outputs.WlanBonjourServices']]:
+        """
+        What services are allowed. 
+        Property key is the service name
+        """
+        return pulumi.get(self, "services")
 
 
 @pulumi.output_type
@@ -9401,7 +9387,7 @@ class WlanCoaServer(dict):
                  secret: builtins.str,
                  disable_event_timestamp_check: Optional[builtins.bool] = None,
                  enabled: Optional[builtins.bool] = None,
-                 port: Optional[builtins.int] = None):
+                 port: Optional[builtins.str] = None):
         """
         :param builtins.bool disable_event_timestamp_check: Whether to disable Event-Timestamp Check
         """
@@ -9439,7 +9425,7 @@ class WlanCoaServer(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[builtins.int]:
+    def port(self) -> Optional[builtins.str]:
         return pulumi.get(self, "port")
 
 
@@ -9589,7 +9575,7 @@ class WlanDynamicVlan(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 default_vlan_ids: Sequence[builtins.str],
+                 default_vlan_ids: Optional[Sequence[builtins.str]] = None,
                  enabled: Optional[builtins.bool] = None,
                  local_vlan_ids: Optional[Sequence[builtins.str]] = None,
                  type: Optional[builtins.str] = None,
@@ -9603,7 +9589,8 @@ class WlanDynamicVlan(dict):
                  * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \\"\\"
                  * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
         """
-        pulumi.set(__self__, "default_vlan_ids", default_vlan_ids)
+        if default_vlan_ids is not None:
+            pulumi.set(__self__, "default_vlan_ids", default_vlan_ids)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if local_vlan_ids is not None:
@@ -9615,7 +9602,7 @@ class WlanDynamicVlan(dict):
 
     @property
     @pulumi.getter(name="defaultVlanIds")
-    def default_vlan_ids(self) -> Sequence[builtins.str]:
+    def default_vlan_ids(self) -> Optional[Sequence[builtins.str]]:
         """
         Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
         """
@@ -10068,7 +10055,7 @@ class WlanPortal(dict):
         :param Sequence[builtins.str] amazon_email_domains: Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         :param builtins.bool amazon_enabled: Whether amazon is enabled as a login method
         :param builtins.int amazon_expire: Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
-        :param builtins.str auth: authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+        :param builtins.str auth: authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
         :param builtins.str azure_client_id: Required if `azure_enabled`==`true`. Azure active directory app client id
         :param builtins.str azure_client_secret: Required if `azure_enabled`==`true`. Azure active directory app client secret
         :param builtins.bool azure_enabled: Whether Azure Active Directory is enabled as a login method
@@ -10119,7 +10106,7 @@ class WlanPortal(dict):
         :param Sequence[builtins.str] sponsor_email_domains: List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
         :param builtins.bool sponsor_enabled: Whether sponsor is enabled
         :param builtins.int sponsor_expire: Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
-        :param builtins.str sponsor_link_validity_duration: Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+        :param builtins.str sponsor_link_validity_duration: Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
         :param builtins.bool sponsor_notify_all: Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
         :param builtins.bool sponsor_status_notify: Optional if `sponsor_enabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
         :param Mapping[str, builtins.str] sponsors: object of allowed sponsors email with name. Required if `sponsor_enabled`
@@ -10340,7 +10327,7 @@ class WlanPortal(dict):
     @pulumi.getter
     def auth(self) -> Optional[builtins.str]:
         """
-        authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+        authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
         """
         return pulumi.get(self, "auth")
 
@@ -10753,7 +10740,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="sponsorLinkValidityDuration")
     def sponsor_link_validity_duration(self) -> Optional[builtins.str]:
         """
-        Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+        Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
         """
         return pulumi.get(self, "sponsor_link_validity_duration")
 
@@ -13805,7 +13792,7 @@ class WlanRadsec(dict):
     def __init__(__self__, *,
                  coa_enabled: Optional[builtins.bool] = None,
                  enabled: Optional[builtins.bool] = None,
-                 idle_timeout: Optional[builtins.int] = None,
+                 idle_timeout: Optional[builtins.str] = None,
                  mxcluster_ids: Optional[Sequence[builtins.str]] = None,
                  proxy_hosts: Optional[Sequence[builtins.str]] = None,
                  server_name: Optional[builtins.str] = None,
@@ -13851,7 +13838,7 @@ class WlanRadsec(dict):
 
     @property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> Optional[builtins.int]:
+    def idle_timeout(self) -> Optional[builtins.str]:
         return pulumi.get(self, "idle_timeout")
 
     @property
@@ -14980,9 +14967,9 @@ class GetWlansSiteWlanResult(dict):
                  block_blacklist_clients: builtins.bool,
                  bonjour: 'outputs.GetWlansSiteWlanBonjourResult',
                  cisco_cwa: 'outputs.GetWlansSiteWlanCiscoCwaResult',
-                 client_limit_down: builtins.int,
+                 client_limit_down: builtins.str,
                  client_limit_down_enabled: builtins.bool,
-                 client_limit_up: builtins.int,
+                 client_limit_up: builtins.str,
                  client_limit_up_enabled: builtins.bool,
                  coa_servers: Sequence['outputs.GetWlansSiteWlanCoaServerResult'],
                  created_time: builtins.float,
@@ -15046,9 +15033,9 @@ class GetWlansSiteWlanResult(dict):
                  vlan_id: builtins.str,
                  vlan_ids: Sequence[builtins.str],
                  vlan_pooling: builtins.bool,
-                 wlan_limit_down: builtins.int,
+                 wlan_limit_down: builtins.str,
                  wlan_limit_down_enabled: builtins.bool,
-                 wlan_limit_up: builtins.int,
+                 wlan_limit_up: builtins.str,
                  wlan_limit_up_enabled: builtins.bool,
                  wxtag_ids: Sequence[builtins.str],
                  wxtunnel_id: builtins.str,
@@ -15079,9 +15066,7 @@ class GetWlansSiteWlanResult(dict):
         :param builtins.bool block_blacklist_clients: Whether to block the clients in the blacklist (up to first 256 macs)
         :param 'GetWlansSiteWlanBonjourArgs' bonjour: Bonjour gateway wlan settings
         :param 'GetWlansSiteWlanCiscoCwaArgs' cisco_cwa: Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-        :param builtins.int client_limit_down: In kbps
         :param builtins.bool client_limit_down_enabled: If downlink limiting per-client is enabled
-        :param builtins.int client_limit_up: In kbps
         :param builtins.bool client_limit_up_enabled: If uplink limiting per-client is enabled
         :param Sequence['GetWlansSiteWlanCoaServerArgs'] coa_servers: List of COA (change of authorization) servers, optional
         :param builtins.float created_time: When the object has been created, in epoch
@@ -15146,9 +15131,7 @@ class GetWlansSiteWlanResult(dict):
         :param builtins.bool vlan_enabled: If vlan tagging is enabled
         :param Sequence[builtins.str] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
         :param builtins.bool vlan_pooling: Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
-        :param builtins.int wlan_limit_down: In kbps
         :param builtins.bool wlan_limit_down_enabled: If downlink limiting for whole wlan is enabled
-        :param builtins.int wlan_limit_up: In kbps
         :param builtins.bool wlan_limit_up_enabled: If uplink limiting for whole wlan is enabled
         :param Sequence[builtins.str] wxtag_ids: List of wxtag_ids
         :param builtins.str wxtunnel_id: When `interface`=`wxtunnel`, id of the WXLAN Tunnel
@@ -15455,10 +15438,7 @@ class GetWlansSiteWlanResult(dict):
 
     @property
     @pulumi.getter(name="clientLimitDown")
-    def client_limit_down(self) -> builtins.int:
-        """
-        In kbps
-        """
+    def client_limit_down(self) -> builtins.str:
         return pulumi.get(self, "client_limit_down")
 
     @property
@@ -15471,10 +15451,7 @@ class GetWlansSiteWlanResult(dict):
 
     @property
     @pulumi.getter(name="clientLimitUp")
-    def client_limit_up(self) -> builtins.int:
-        """
-        In kbps
-        """
+    def client_limit_up(self) -> builtins.str:
         return pulumi.get(self, "client_limit_up")
 
     @property
@@ -15964,10 +15941,7 @@ class GetWlansSiteWlanResult(dict):
 
     @property
     @pulumi.getter(name="wlanLimitDown")
-    def wlan_limit_down(self) -> builtins.int:
-        """
-        In kbps
-        """
+    def wlan_limit_down(self) -> builtins.str:
         return pulumi.get(self, "wlan_limit_down")
 
     @property
@@ -15980,10 +15954,7 @@ class GetWlansSiteWlanResult(dict):
 
     @property
     @pulumi.getter(name="wlanLimitUp")
-    def wlan_limit_up(self) -> builtins.int:
-        """
-        In kbps
-        """
+    def wlan_limit_up(self) -> builtins.str:
         return pulumi.get(self, "wlan_limit_up")
 
     @property
@@ -16027,12 +15998,11 @@ class GetWlansSiteWlanAcctServerResult(dict):
                  keywrap_format: builtins.str,
                  keywrap_kek: builtins.str,
                  keywrap_mack: builtins.str,
-                 port: builtins.int,
+                 port: builtins.str,
                  secret: builtins.str):
         """
         :param builtins.str host: IP/ hostname of RADIUS server
         :param builtins.str keywrap_format: enum: `ascii`, `hex`
-        :param builtins.int port: Acct port of RADIUS server
         :param builtins.str secret: Secret of RADIUS server
         """
         pulumi.set(__self__, "host", host)
@@ -16076,10 +16046,7 @@ class GetWlansSiteWlanAcctServerResult(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> builtins.int:
-        """
-        Acct port of RADIUS server
-        """
+    def port(self) -> builtins.str:
         return pulumi.get(self, "port")
 
     @property
@@ -16436,13 +16403,12 @@ class GetWlansSiteWlanAuthServerResult(dict):
                  keywrap_format: builtins.str,
                  keywrap_kek: builtins.str,
                  keywrap_mack: builtins.str,
-                 port: builtins.int,
+                 port: builtins.str,
                  require_message_authenticator: builtins.bool,
                  secret: builtins.str):
         """
         :param builtins.str host: IP/ hostname of RADIUS server
         :param builtins.str keywrap_format: enum: `ascii`, `hex`
-        :param builtins.int port: Auth port of RADIUS server
         :param builtins.bool require_message_authenticator: Whether to require Message-Authenticator in requests
         :param builtins.str secret: Secret of RADIUS server
         """
@@ -16488,10 +16454,7 @@ class GetWlansSiteWlanAuthServerResult(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> builtins.int:
-        """
-        Auth port of RADIUS server
-        """
+    def port(self) -> builtins.str:
         return pulumi.get(self, "port")
 
     @property
@@ -16646,7 +16609,7 @@ class GetWlansSiteWlanCoaServerResult(dict):
                  disable_event_timestamp_check: builtins.bool,
                  enabled: builtins.bool,
                  ip: builtins.str,
-                 port: builtins.int,
+                 port: builtins.str,
                  secret: builtins.str):
         """
         :param builtins.bool disable_event_timestamp_check: Whether to disable Event-Timestamp Check
@@ -16677,7 +16640,7 @@ class GetWlansSiteWlanCoaServerResult(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> builtins.int:
+    def port(self) -> builtins.str:
         return pulumi.get(self, "port")
 
     @property
@@ -17047,7 +17010,7 @@ class GetWlansSiteWlanPortalResult(dict):
         :param Sequence[builtins.str] amazon_email_domains: Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         :param builtins.bool amazon_enabled: Whether amazon is enabled as a login method
         :param builtins.int amazon_expire: Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
-        :param builtins.str auth: authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+        :param builtins.str auth: authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
         :param builtins.str azure_client_id: Required if `azure_enabled`==`true`. Azure active directory app client id
         :param builtins.str azure_client_secret: Required if `azure_enabled`==`true`. Azure active directory app client secret
         :param builtins.bool azure_enabled: Whether Azure Active Directory is enabled as a login method
@@ -17098,7 +17061,6 @@ class GetWlansSiteWlanPortalResult(dict):
         :param Sequence[builtins.str] sponsor_email_domains: List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
         :param builtins.bool sponsor_enabled: Whether sponsor is enabled
         :param builtins.int sponsor_expire: Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
-        :param builtins.str sponsor_link_validity_duration: Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
         :param builtins.bool sponsor_notify_all: Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
         :param builtins.bool sponsor_status_notify: Optional if `sponsor_enabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
         :param Mapping[str, builtins.str] sponsors: object of allowed sponsors email with name. Required if `sponsor_enabled`
@@ -17245,7 +17207,7 @@ class GetWlansSiteWlanPortalResult(dict):
     @pulumi.getter
     def auth(self) -> builtins.str:
         """
-        authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+        authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
         """
         return pulumi.get(self, "auth")
 
@@ -17657,9 +17619,6 @@ class GetWlansSiteWlanPortalResult(dict):
     @property
     @pulumi.getter(name="sponsorLinkValidityDuration")
     def sponsor_link_validity_duration(self) -> builtins.str:
-        """
-        Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
-        """
         return pulumi.get(self, "sponsor_link_validity_duration")
 
     @property
@@ -17820,7 +17779,7 @@ class GetWlansSiteWlanRadsecResult(dict):
     def __init__(__self__, *,
                  coa_enabled: builtins.bool,
                  enabled: builtins.bool,
-                 idle_timeout: builtins.int,
+                 idle_timeout: builtins.str,
                  mxcluster_ids: Sequence[builtins.str],
                  proxy_hosts: Sequence[builtins.str],
                  server_name: builtins.str,
@@ -17857,7 +17816,7 @@ class GetWlansSiteWlanRadsecResult(dict):
 
     @property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> builtins.int:
+    def idle_timeout(self) -> builtins.str:
         return pulumi.get(self, "idle_timeout")
 
     @property

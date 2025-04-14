@@ -3846,7 +3846,32 @@
                 "current": "junipermist:org/getNetworks:getNetworks",
                 "fields": {
                     "org_networks": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "routed_for_networks": {
+                                    "maxItemsOne": false
+                                },
+                                "tenants": {
+                                    "elem": {
+                                        "fields": {
+                                            "addresses": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "vpn_access": {
+                                    "elem": {
+                                        "fields": {
+                                            "other_vrfs": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },

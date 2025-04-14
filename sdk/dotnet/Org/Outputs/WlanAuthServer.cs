@@ -24,10 +24,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? KeywrapFormat;
         public readonly string? KeywrapKek;
         public readonly string? KeywrapMack;
-        /// <summary>
-        /// Auth port of RADIUS server
-        /// </summary>
-        public readonly int? Port;
+        public readonly string? Port;
         /// <summary>
         /// Whether to require Message-Authenticator in requests
         /// </summary>
@@ -49,7 +46,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? keywrapMack,
 
-            int? port,
+            string? port,
 
             bool? requireMessageAuthenticator,
 

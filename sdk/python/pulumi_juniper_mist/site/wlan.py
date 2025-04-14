@@ -49,9 +49,9 @@ class WlanArgs:
                  block_blacklist_clients: Optional[pulumi.Input[builtins.bool]] = None,
                  bonjour: Optional[pulumi.Input['WlanBonjourArgs']] = None,
                  cisco_cwa: Optional[pulumi.Input['WlanCiscoCwaArgs']] = None,
-                 client_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+                 client_limit_down: Optional[pulumi.Input[builtins.str]] = None,
                  client_limit_down_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 client_limit_up: Optional[pulumi.Input[builtins.int]] = None,
+                 client_limit_up: Optional[pulumi.Input[builtins.str]] = None,
                  client_limit_up_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  coa_servers: Optional[pulumi.Input[Sequence[pulumi.Input['WlanCoaServerArgs']]]] = None,
                  disable11ax: Optional[pulumi.Input[builtins.bool]] = None,
@@ -105,9 +105,9 @@ class WlanArgs:
                  vlan_id: Optional[pulumi.Input[builtins.str]] = None,
                  vlan_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  vlan_pooling: Optional[pulumi.Input[builtins.bool]] = None,
-                 wlan_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+                 wlan_limit_down: Optional[pulumi.Input[builtins.str]] = None,
                  wlan_limit_down_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 wlan_limit_up: Optional[pulumi.Input[builtins.int]] = None,
+                 wlan_limit_up: Optional[pulumi.Input[builtins.str]] = None,
                  wlan_limit_up_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  wxtag_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  wxtunnel_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -148,9 +148,7 @@ class WlanArgs:
         :param pulumi.Input['WlanBonjourArgs'] bonjour: Bonjour gateway wlan settings
         :param pulumi.Input['WlanCiscoCwaArgs'] cisco_cwa: Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
                https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-        :param pulumi.Input[builtins.int] client_limit_down: In kbps
         :param pulumi.Input[builtins.bool] client_limit_down_enabled: If downlink limiting per-client is enabled
-        :param pulumi.Input[builtins.int] client_limit_up: In kbps
         :param pulumi.Input[builtins.bool] client_limit_up_enabled: If uplink limiting per-client is enabled
         :param pulumi.Input[Sequence[pulumi.Input['WlanCoaServerArgs']]] coa_servers: List of COA (change of authorization) servers, optional
         :param pulumi.Input[builtins.bool] disable11ax: Some old WLAN drivers may not be compatible
@@ -209,9 +207,7 @@ class WlanArgs:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
         :param pulumi.Input[builtins.bool] vlan_pooling: Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
                deterministic algorithm
-        :param pulumi.Input[builtins.int] wlan_limit_down: In kbps
         :param pulumi.Input[builtins.bool] wlan_limit_down_enabled: If downlink limiting for whole wlan is enabled
-        :param pulumi.Input[builtins.int] wlan_limit_up: In kbps
         :param pulumi.Input[builtins.bool] wlan_limit_up_enabled: If uplink limiting for whole wlan is enabled
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] wxtag_ids: List of wxtag_ids
         :param pulumi.Input[builtins.str] wxtunnel_id: When `interface`=`wxtunnel`, id of the WXLAN Tunnel
@@ -727,14 +723,11 @@ class WlanArgs:
 
     @property
     @pulumi.getter(name="clientLimitDown")
-    def client_limit_down(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        In kbps
-        """
+    def client_limit_down(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "client_limit_down")
 
     @client_limit_down.setter
-    def client_limit_down(self, value: Optional[pulumi.Input[builtins.int]]):
+    def client_limit_down(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "client_limit_down", value)
 
     @property
@@ -751,14 +744,11 @@ class WlanArgs:
 
     @property
     @pulumi.getter(name="clientLimitUp")
-    def client_limit_up(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        In kbps
-        """
+    def client_limit_up(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "client_limit_up")
 
     @client_limit_up.setter
-    def client_limit_up(self, value: Optional[pulumi.Input[builtins.int]]):
+    def client_limit_up(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "client_limit_up", value)
 
     @property
@@ -1392,14 +1382,11 @@ class WlanArgs:
 
     @property
     @pulumi.getter(name="wlanLimitDown")
-    def wlan_limit_down(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        In kbps
-        """
+    def wlan_limit_down(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "wlan_limit_down")
 
     @wlan_limit_down.setter
-    def wlan_limit_down(self, value: Optional[pulumi.Input[builtins.int]]):
+    def wlan_limit_down(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "wlan_limit_down", value)
 
     @property
@@ -1416,14 +1403,11 @@ class WlanArgs:
 
     @property
     @pulumi.getter(name="wlanLimitUp")
-    def wlan_limit_up(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        In kbps
-        """
+    def wlan_limit_up(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "wlan_limit_up")
 
     @wlan_limit_up.setter
-    def wlan_limit_up(self, value: Optional[pulumi.Input[builtins.int]]):
+    def wlan_limit_up(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "wlan_limit_up", value)
 
     @property
@@ -1503,9 +1487,9 @@ class _WlanState:
                  block_blacklist_clients: Optional[pulumi.Input[builtins.bool]] = None,
                  bonjour: Optional[pulumi.Input['WlanBonjourArgs']] = None,
                  cisco_cwa: Optional[pulumi.Input['WlanCiscoCwaArgs']] = None,
-                 client_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+                 client_limit_down: Optional[pulumi.Input[builtins.str]] = None,
                  client_limit_down_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 client_limit_up: Optional[pulumi.Input[builtins.int]] = None,
+                 client_limit_up: Optional[pulumi.Input[builtins.str]] = None,
                  client_limit_up_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  coa_servers: Optional[pulumi.Input[Sequence[pulumi.Input['WlanCoaServerArgs']]]] = None,
                  disable11ax: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1566,9 +1550,9 @@ class _WlanState:
                  vlan_id: Optional[pulumi.Input[builtins.str]] = None,
                  vlan_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  vlan_pooling: Optional[pulumi.Input[builtins.bool]] = None,
-                 wlan_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+                 wlan_limit_down: Optional[pulumi.Input[builtins.str]] = None,
                  wlan_limit_down_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 wlan_limit_up: Optional[pulumi.Input[builtins.int]] = None,
+                 wlan_limit_up: Optional[pulumi.Input[builtins.str]] = None,
                  wlan_limit_up_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  wxtag_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  wxtunnel_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1608,9 +1592,7 @@ class _WlanState:
         :param pulumi.Input['WlanBonjourArgs'] bonjour: Bonjour gateway wlan settings
         :param pulumi.Input['WlanCiscoCwaArgs'] cisco_cwa: Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
                https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-        :param pulumi.Input[builtins.int] client_limit_down: In kbps
         :param pulumi.Input[builtins.bool] client_limit_down_enabled: If downlink limiting per-client is enabled
-        :param pulumi.Input[builtins.int] client_limit_up: In kbps
         :param pulumi.Input[builtins.bool] client_limit_up_enabled: If uplink limiting per-client is enabled
         :param pulumi.Input[Sequence[pulumi.Input['WlanCoaServerArgs']]] coa_servers: List of COA (change of authorization) servers, optional
         :param pulumi.Input[builtins.bool] disable11ax: Some old WLAN drivers may not be compatible
@@ -1672,9 +1654,7 @@ class _WlanState:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
         :param pulumi.Input[builtins.bool] vlan_pooling: Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
                deterministic algorithm
-        :param pulumi.Input[builtins.int] wlan_limit_down: In kbps
         :param pulumi.Input[builtins.bool] wlan_limit_down_enabled: If downlink limiting for whole wlan is enabled
-        :param pulumi.Input[builtins.int] wlan_limit_up: In kbps
         :param pulumi.Input[builtins.bool] wlan_limit_up_enabled: If uplink limiting for whole wlan is enabled
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] wxtag_ids: List of wxtag_ids
         :param pulumi.Input[builtins.str] wxtunnel_id: When `interface`=`wxtunnel`, id of the WXLAN Tunnel
@@ -2181,14 +2161,11 @@ class _WlanState:
 
     @property
     @pulumi.getter(name="clientLimitDown")
-    def client_limit_down(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        In kbps
-        """
+    def client_limit_down(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "client_limit_down")
 
     @client_limit_down.setter
-    def client_limit_down(self, value: Optional[pulumi.Input[builtins.int]]):
+    def client_limit_down(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "client_limit_down", value)
 
     @property
@@ -2205,14 +2182,11 @@ class _WlanState:
 
     @property
     @pulumi.getter(name="clientLimitUp")
-    def client_limit_up(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        In kbps
-        """
+    def client_limit_up(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "client_limit_up")
 
     @client_limit_up.setter
-    def client_limit_up(self, value: Optional[pulumi.Input[builtins.int]]):
+    def client_limit_up(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "client_limit_up", value)
 
     @property
@@ -2918,14 +2892,11 @@ class _WlanState:
 
     @property
     @pulumi.getter(name="wlanLimitDown")
-    def wlan_limit_down(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        In kbps
-        """
+    def wlan_limit_down(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "wlan_limit_down")
 
     @wlan_limit_down.setter
-    def wlan_limit_down(self, value: Optional[pulumi.Input[builtins.int]]):
+    def wlan_limit_down(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "wlan_limit_down", value)
 
     @property
@@ -2942,14 +2913,11 @@ class _WlanState:
 
     @property
     @pulumi.getter(name="wlanLimitUp")
-    def wlan_limit_up(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        In kbps
-        """
+    def wlan_limit_up(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "wlan_limit_up")
 
     @wlan_limit_up.setter
-    def wlan_limit_up(self, value: Optional[pulumi.Input[builtins.int]]):
+    def wlan_limit_up(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "wlan_limit_up", value)
 
     @property
@@ -3031,9 +2999,9 @@ class Wlan(pulumi.CustomResource):
                  block_blacklist_clients: Optional[pulumi.Input[builtins.bool]] = None,
                  bonjour: Optional[pulumi.Input[Union['WlanBonjourArgs', 'WlanBonjourArgsDict']]] = None,
                  cisco_cwa: Optional[pulumi.Input[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict']]] = None,
-                 client_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+                 client_limit_down: Optional[pulumi.Input[builtins.str]] = None,
                  client_limit_down_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 client_limit_up: Optional[pulumi.Input[builtins.int]] = None,
+                 client_limit_up: Optional[pulumi.Input[builtins.str]] = None,
                  client_limit_up_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  coa_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]]] = None,
                  disable11ax: Optional[pulumi.Input[builtins.bool]] = None,
@@ -3089,9 +3057,9 @@ class Wlan(pulumi.CustomResource):
                  vlan_id: Optional[pulumi.Input[builtins.str]] = None,
                  vlan_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  vlan_pooling: Optional[pulumi.Input[builtins.bool]] = None,
-                 wlan_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+                 wlan_limit_down: Optional[pulumi.Input[builtins.str]] = None,
                  wlan_limit_down_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 wlan_limit_up: Optional[pulumi.Input[builtins.int]] = None,
+                 wlan_limit_up: Optional[pulumi.Input[builtins.str]] = None,
                  wlan_limit_up_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  wxtag_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  wxtunnel_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -3116,10 +3084,10 @@ class Wlan(pulumi.CustomResource):
             ],
             vlan_enabled=True,
             vlan_id="143",
-            wlan_limit_up=10000,
-            wlan_limit_down=20000,
-            client_limit_up=512,
-            client_limit_down=1000,
+            wlan_limit_up="10000",
+            wlan_limit_down="20000",
+            client_limit_up="512",
+            client_limit_down="1000",
             auth={
                 "type": "psk",
                 "psk": "secretpsk",
@@ -3172,9 +3140,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[Union['WlanBonjourArgs', 'WlanBonjourArgsDict']] bonjour: Bonjour gateway wlan settings
         :param pulumi.Input[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict']] cisco_cwa: Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
                https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-        :param pulumi.Input[builtins.int] client_limit_down: In kbps
         :param pulumi.Input[builtins.bool] client_limit_down_enabled: If downlink limiting per-client is enabled
-        :param pulumi.Input[builtins.int] client_limit_up: In kbps
         :param pulumi.Input[builtins.bool] client_limit_up_enabled: If uplink limiting per-client is enabled
         :param pulumi.Input[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]] coa_servers: List of COA (change of authorization) servers, optional
         :param pulumi.Input[builtins.bool] disable11ax: Some old WLAN drivers may not be compatible
@@ -3234,9 +3200,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
         :param pulumi.Input[builtins.bool] vlan_pooling: Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
                deterministic algorithm
-        :param pulumi.Input[builtins.int] wlan_limit_down: In kbps
         :param pulumi.Input[builtins.bool] wlan_limit_down_enabled: If downlink limiting for whole wlan is enabled
-        :param pulumi.Input[builtins.int] wlan_limit_up: In kbps
         :param pulumi.Input[builtins.bool] wlan_limit_up_enabled: If uplink limiting for whole wlan is enabled
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] wxtag_ids: List of wxtag_ids
         :param pulumi.Input[builtins.str] wxtunnel_id: When `interface`=`wxtunnel`, id of the WXLAN Tunnel
@@ -3267,10 +3231,10 @@ class Wlan(pulumi.CustomResource):
             ],
             vlan_enabled=True,
             vlan_id="143",
-            wlan_limit_up=10000,
-            wlan_limit_down=20000,
-            client_limit_up=512,
-            client_limit_down=1000,
+            wlan_limit_up="10000",
+            wlan_limit_down="20000",
+            client_limit_up="512",
+            client_limit_down="1000",
             auth={
                 "type": "psk",
                 "psk": "secretpsk",
@@ -3328,9 +3292,9 @@ class Wlan(pulumi.CustomResource):
                  block_blacklist_clients: Optional[pulumi.Input[builtins.bool]] = None,
                  bonjour: Optional[pulumi.Input[Union['WlanBonjourArgs', 'WlanBonjourArgsDict']]] = None,
                  cisco_cwa: Optional[pulumi.Input[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict']]] = None,
-                 client_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+                 client_limit_down: Optional[pulumi.Input[builtins.str]] = None,
                  client_limit_down_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 client_limit_up: Optional[pulumi.Input[builtins.int]] = None,
+                 client_limit_up: Optional[pulumi.Input[builtins.str]] = None,
                  client_limit_up_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  coa_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]]] = None,
                  disable11ax: Optional[pulumi.Input[builtins.bool]] = None,
@@ -3386,9 +3350,9 @@ class Wlan(pulumi.CustomResource):
                  vlan_id: Optional[pulumi.Input[builtins.str]] = None,
                  vlan_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  vlan_pooling: Optional[pulumi.Input[builtins.bool]] = None,
-                 wlan_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+                 wlan_limit_down: Optional[pulumi.Input[builtins.str]] = None,
                  wlan_limit_down_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 wlan_limit_up: Optional[pulumi.Input[builtins.int]] = None,
+                 wlan_limit_up: Optional[pulumi.Input[builtins.str]] = None,
                  wlan_limit_up_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  wxtag_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  wxtunnel_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -3536,9 +3500,9 @@ class Wlan(pulumi.CustomResource):
             block_blacklist_clients: Optional[pulumi.Input[builtins.bool]] = None,
             bonjour: Optional[pulumi.Input[Union['WlanBonjourArgs', 'WlanBonjourArgsDict']]] = None,
             cisco_cwa: Optional[pulumi.Input[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict']]] = None,
-            client_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+            client_limit_down: Optional[pulumi.Input[builtins.str]] = None,
             client_limit_down_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-            client_limit_up: Optional[pulumi.Input[builtins.int]] = None,
+            client_limit_up: Optional[pulumi.Input[builtins.str]] = None,
             client_limit_up_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             coa_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]]] = None,
             disable11ax: Optional[pulumi.Input[builtins.bool]] = None,
@@ -3599,9 +3563,9 @@ class Wlan(pulumi.CustomResource):
             vlan_id: Optional[pulumi.Input[builtins.str]] = None,
             vlan_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             vlan_pooling: Optional[pulumi.Input[builtins.bool]] = None,
-            wlan_limit_down: Optional[pulumi.Input[builtins.int]] = None,
+            wlan_limit_down: Optional[pulumi.Input[builtins.str]] = None,
             wlan_limit_down_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-            wlan_limit_up: Optional[pulumi.Input[builtins.int]] = None,
+            wlan_limit_up: Optional[pulumi.Input[builtins.str]] = None,
             wlan_limit_up_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             wxtag_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             wxtunnel_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -3646,9 +3610,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[Union['WlanBonjourArgs', 'WlanBonjourArgsDict']] bonjour: Bonjour gateway wlan settings
         :param pulumi.Input[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict']] cisco_cwa: Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
                https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-        :param pulumi.Input[builtins.int] client_limit_down: In kbps
         :param pulumi.Input[builtins.bool] client_limit_down_enabled: If downlink limiting per-client is enabled
-        :param pulumi.Input[builtins.int] client_limit_up: In kbps
         :param pulumi.Input[builtins.bool] client_limit_up_enabled: If uplink limiting per-client is enabled
         :param pulumi.Input[Sequence[pulumi.Input[Union['WlanCoaServerArgs', 'WlanCoaServerArgsDict']]]] coa_servers: List of COA (change of authorization) servers, optional
         :param pulumi.Input[builtins.bool] disable11ax: Some old WLAN drivers may not be compatible
@@ -3710,9 +3672,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
         :param pulumi.Input[builtins.bool] vlan_pooling: Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
                deterministic algorithm
-        :param pulumi.Input[builtins.int] wlan_limit_down: In kbps
         :param pulumi.Input[builtins.bool] wlan_limit_down_enabled: If downlink limiting for whole wlan is enabled
-        :param pulumi.Input[builtins.int] wlan_limit_up: In kbps
         :param pulumi.Input[builtins.bool] wlan_limit_up_enabled: If uplink limiting for whole wlan is enabled
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] wxtag_ids: List of wxtag_ids
         :param pulumi.Input[builtins.str] wxtunnel_id: When `interface`=`wxtunnel`, id of the WXLAN Tunnel
@@ -3887,7 +3847,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appLimit")
-    def app_limit(self) -> pulumi.Output['outputs.WlanAppLimit']:
+    def app_limit(self) -> pulumi.Output[Optional['outputs.WlanAppLimit']]:
         """
         Bandwidth limiting for apps (applies to up/down)
         """
@@ -3960,7 +3920,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authServersRetries")
-    def auth_servers_retries(self) -> pulumi.Output[builtins.int]:
+    def auth_servers_retries(self) -> pulumi.Output[Optional[builtins.int]]:
         """
         Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set
         to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default
@@ -3970,7 +3930,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authServersTimeout")
-    def auth_servers_timeout(self) -> pulumi.Output[builtins.int]:
+    def auth_servers_timeout(self) -> pulumi.Output[Optional[builtins.int]]:
         """
         Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’
         and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
@@ -3988,7 +3948,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bandSteerForceBand5")
-    def band_steer_force_band5(self) -> pulumi.Output[builtins.bool]:
+    def band_steer_force_band5(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         Force dual_band capable client to connect to 5G
         """
@@ -4004,7 +3964,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="blockBlacklistClients")
-    def block_blacklist_clients(self) -> pulumi.Output[builtins.bool]:
+    def block_blacklist_clients(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         Whether to block the clients in the blacklist (up to first 256 macs)
         """
@@ -4012,7 +3972,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bonjour(self) -> pulumi.Output['outputs.WlanBonjour']:
+    def bonjour(self) -> pulumi.Output[Optional['outputs.WlanBonjour']]:
         """
         Bonjour gateway wlan settings
         """
@@ -4029,15 +3989,12 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientLimitDown")
-    def client_limit_down(self) -> pulumi.Output[builtins.int]:
-        """
-        In kbps
-        """
+    def client_limit_down(self) -> pulumi.Output[builtins.str]:
         return pulumi.get(self, "client_limit_down")
 
     @property
     @pulumi.getter(name="clientLimitDownEnabled")
-    def client_limit_down_enabled(self) -> pulumi.Output[builtins.bool]:
+    def client_limit_down_enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         If downlink limiting per-client is enabled
         """
@@ -4045,15 +4002,12 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientLimitUp")
-    def client_limit_up(self) -> pulumi.Output[builtins.int]:
-        """
-        In kbps
-        """
+    def client_limit_up(self) -> pulumi.Output[builtins.str]:
         return pulumi.get(self, "client_limit_up")
 
     @property
     @pulumi.getter(name="clientLimitUpEnabled")
-    def client_limit_up_enabled(self) -> pulumi.Output[builtins.bool]:
+    def client_limit_up_enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         If uplink limiting per-client is enabled
         """
@@ -4061,7 +4015,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="coaServers")
-    def coa_servers(self) -> pulumi.Output[Sequence['outputs.WlanCoaServer']]:
+    def coa_servers(self) -> pulumi.Output[Optional[Sequence['outputs.WlanCoaServer']]]:
         """
         List of COA (change of authorization) servers, optional
         """
@@ -4077,7 +4031,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disable11be(self) -> pulumi.Output[builtins.bool]:
+    def disable11be(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         To disable Wi-Fi 7 EHT IEs
         """
@@ -4085,7 +4039,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="disableHtVhtRates")
-    def disable_ht_vht_rates(self) -> pulumi.Output[builtins.bool]:
+    def disable_ht_vht_rates(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         To disable ht or vht rates
         """
@@ -4101,7 +4055,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="disableV1RoamNotify")
-    def disable_v1_roam_notify(self) -> pulumi.Output[builtins.bool]:
+    def disable_v1_roam_notify(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         Disable sending v2 roam notification messages
         """
@@ -4109,7 +4063,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="disableV2RoamNotify")
-    def disable_v2_roam_notify(self) -> pulumi.Output[builtins.bool]:
+    def disable_v2_roam_notify(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         Disable sending v2 roam notification messages
         """
@@ -4139,7 +4093,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnsServerRewrite")
-    def dns_server_rewrite(self) -> pulumi.Output['outputs.WlanDnsServerRewrite']:
+    def dns_server_rewrite(self) -> pulumi.Output[Optional['outputs.WlanDnsServerRewrite']]:
         """
         For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
         """
@@ -4173,7 +4127,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableLocalKeycaching")
-    def enable_local_keycaching(self) -> pulumi.Output[builtins.bool]:
+    def enable_local_keycaching(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         Enable AP-AP keycaching via multicast
         """
@@ -4181,7 +4135,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableWirelessBridging")
-    def enable_wireless_bridging(self) -> pulumi.Output[builtins.bool]:
+    def enable_wireless_bridging(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
         client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
@@ -4190,7 +4144,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableWirelessBridgingDhcpTracking")
-    def enable_wireless_bridging_dhcp_tracking(self) -> pulumi.Output[builtins.bool]:
+    def enable_wireless_bridging_dhcp_tracking(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
         packets to be forwarded to wireless
@@ -4207,7 +4161,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fastDot1xTimers")
-    def fast_dot1x_timers(self) -> pulumi.Output[builtins.bool]:
+    def fast_dot1x_timers(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
         ‘auth_server_retries’ .
@@ -4232,7 +4186,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def hotspot20(self) -> pulumi.Output['outputs.WlanHotspot20']:
+    def hotspot20(self) -> pulumi.Output[Optional['outputs.WlanHotspot20']]:
         """
         Hostspot 2.0 wlan settings
         """
@@ -4253,7 +4207,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def isolation(self) -> pulumi.Output[builtins.bool]:
+    def isolation(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         Whether to stop clients to talk to each other
         """
@@ -4261,7 +4215,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="l2Isolation")
-    def l2_isolation(self) -> pulumi.Output[builtins.bool]:
+    def l2_isolation(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         If isolation is enabled, whether to deny clients to talk to L2 on the LAN
         """
@@ -4269,7 +4223,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="legacyOverds")
-    def legacy_overds(self) -> pulumi.Output[builtins.bool]:
+    def legacy_overds(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
         Enabling this will cause problem for iOS devices.
@@ -4302,7 +4256,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxNumClients")
-    def max_num_clients(self) -> pulumi.Output[builtins.int]:
+    def max_num_clients(self) -> pulumi.Output[Optional[builtins.int]]:
         """
         Maximum number of client connected to the SSID. `0` means unlimited
         """
@@ -4439,7 +4393,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roamMode")
-    def roam_mode(self) -> pulumi.Output[builtins.str]:
+    def roam_mode(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         enum: `11r`, `OKC`, `NONE`
         """
@@ -4460,7 +4414,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sleExcluded")
-    def sle_excluded(self) -> pulumi.Output[builtins.bool]:
+    def sle_excluded(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         Whether to exclude this WLAN from SLE metrics
         """
@@ -4514,15 +4468,12 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="wlanLimitDown")
-    def wlan_limit_down(self) -> pulumi.Output[builtins.int]:
-        """
-        In kbps
-        """
+    def wlan_limit_down(self) -> pulumi.Output[builtins.str]:
         return pulumi.get(self, "wlan_limit_down")
 
     @property
     @pulumi.getter(name="wlanLimitDownEnabled")
-    def wlan_limit_down_enabled(self) -> pulumi.Output[builtins.bool]:
+    def wlan_limit_down_enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         If downlink limiting for whole wlan is enabled
         """
@@ -4530,15 +4481,12 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="wlanLimitUp")
-    def wlan_limit_up(self) -> pulumi.Output[builtins.int]:
-        """
-        In kbps
-        """
+    def wlan_limit_up(self) -> pulumi.Output[builtins.str]:
         return pulumi.get(self, "wlan_limit_up")
 
     @property
     @pulumi.getter(name="wlanLimitUpEnabled")
-    def wlan_limit_up_enabled(self) -> pulumi.Output[builtins.bool]:
+    def wlan_limit_up_enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         If uplink limiting for whole wlan is enabled
         """

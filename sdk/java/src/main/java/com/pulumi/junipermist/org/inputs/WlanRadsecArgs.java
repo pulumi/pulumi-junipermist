@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.org.inputs.WlanRadsecServerArgs;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -34,9 +33,9 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     @Import(name="idleTimeout")
-    private @Nullable Output<Integer> idleTimeout;
+    private @Nullable Output<String> idleTimeout;
 
-    public Optional<Output<Integer>> idleTimeout() {
+    public Optional<Output<String>> idleTimeout() {
         return Optional.ofNullable(this.idleTimeout);
     }
 
@@ -180,12 +179,12 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
             return enabled(Output.of(enabled));
         }
 
-        public Builder idleTimeout(@Nullable Output<Integer> idleTimeout) {
+        public Builder idleTimeout(@Nullable Output<String> idleTimeout) {
             $.idleTimeout = idleTimeout;
             return this;
         }
 
-        public Builder idleTimeout(Integer idleTimeout) {
+        public Builder idleTimeout(String idleTimeout) {
             return idleTimeout(Output.of(idleTimeout));
         }
 

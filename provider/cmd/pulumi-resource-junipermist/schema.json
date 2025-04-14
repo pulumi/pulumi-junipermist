@@ -2018,13 +2018,13 @@
                         "networks",
                         "poeDisabled",
                         "preserveDscp",
-                        "redundant",
                         "rethNodes",
                         "speed",
                         "ssrNoVirtualMac",
                         "svrPortRange",
                         "usage",
                         "wanArpPolicer",
+                        "wanExtraRoutes",
                         "wanNetworks",
                         "wanType"
                     ]
@@ -2585,7 +2585,6 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "alertOnly",
                         "enabled",
                         "profile"
                     ]
@@ -2672,7 +2671,7 @@
                 },
                 "provider": {
                     "type": "string",
-                    "description": "Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`\n"
+                    "description": "Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`\n"
                 },
                 "psk": {
                     "type": "string",
@@ -4415,8 +4414,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "Acct port of RADIUS server\n"
+                    "type": "string"
                 },
                 "secret": {
                     "type": "string",
@@ -4428,16 +4426,7 @@
             "required": [
                 "host",
                 "secret"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "host",
-                        "port",
-                        "secret"
-                    ]
-                }
-            }
+            ]
         },
         "junipermist:device/SwitchRadiusConfigAuthServer:SwitchRadiusConfigAuthServer": {
             "properties": {
@@ -4459,8 +4448,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "Auth port of RADIUS server\n"
+                    "type": "string"
                 },
                 "requireMessageAuthenticator": {
                     "type": "boolean",
@@ -4476,16 +4464,7 @@
             "required": [
                 "host",
                 "secret"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "host",
-                        "port",
-                        "secret"
-                    ]
-                }
-            }
+            ]
         },
         "junipermist:device/SwitchRemoteSyslog:SwitchRemoteSyslog": {
             "properties": {
@@ -13440,13 +13419,13 @@
                         "networks",
                         "poeDisabled",
                         "preserveDscp",
-                        "redundant",
                         "rethNodes",
                         "speed",
                         "ssrNoVirtualMac",
                         "svrPortRange",
                         "usage",
                         "wanArpPolicer",
+                        "wanExtraRoutes",
                         "wanNetworks",
                         "wanType"
                     ]
@@ -13976,7 +13955,6 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "alertOnly",
                         "enabled",
                         "profile"
                     ]
@@ -14063,7 +14041,7 @@
                 },
                 "provider": {
                     "type": "string",
-                    "description": "Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`\n"
+                    "description": "Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`\n"
                 },
                 "psk": {
                     "type": "string",
@@ -15796,13 +15774,13 @@
                         "networks",
                         "poeDisabled",
                         "preserveDscp",
-                        "redundant",
                         "rethNodes",
                         "speed",
                         "ssrNoVirtualMac",
                         "svrPortRange",
                         "usage",
                         "wanArpPolicer",
+                        "wanExtraRoutes",
                         "wanNetworks",
                         "wanType"
                     ]
@@ -16332,7 +16310,6 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "alertOnly",
                         "enabled",
                         "profile"
                     ]
@@ -16419,7 +16396,7 @@
                 },
                 "provider": {
                     "type": "string",
-                    "description": "Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`\n"
+                    "description": "Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`\n"
                 },
                 "psk": {
                     "type": "string",
@@ -17049,7 +17026,11 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "families",
+                        "mfgs",
+                        "models",
                         "nactags",
+                        "osTypes",
                         "portTypes",
                         "siteIds",
                         "sitegroupIds",
@@ -17130,7 +17111,11 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "families",
+                        "mfgs",
+                        "models",
                         "nactags",
+                        "osTypes",
                         "portTypes",
                         "siteIds",
                         "sitegroupIds",
@@ -18120,8 +18105,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "Acct port of RADIUS server\n"
+                    "type": "string"
                 },
                 "secret": {
                     "type": "string",
@@ -18133,16 +18117,7 @@
             "required": [
                 "host",
                 "secret"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "host",
-                        "port",
-                        "secret"
-                    ]
-                }
-            }
+            ]
         },
         "junipermist:org/NetworktemplateRadiusConfigAuthServer:NetworktemplateRadiusConfigAuthServer": {
             "properties": {
@@ -18164,8 +18139,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "Auth port of RADIUS server\n"
+                    "type": "string"
                 },
                 "requireMessageAuthenticator": {
                     "type": "boolean",
@@ -18181,16 +18155,7 @@
             "required": [
                 "host",
                 "secret"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "host",
-                        "port",
-                        "secret"
-                    ]
-                }
-            }
+            ]
         },
         "junipermist:org/NetworktemplateRemoteSyslog:NetworktemplateRemoteSyslog": {
             "properties": {
@@ -20922,8 +20887,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "Acct port of RADIUS server\n"
+                    "type": "string"
                 },
                 "secret": {
                     "type": "string",
@@ -20935,16 +20899,7 @@
             "required": [
                 "host",
                 "secret"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "host",
-                        "port",
-                        "secret"
-                    ]
-                }
-            }
+            ]
         },
         "junipermist:org/WlanAirwatch:WlanAirwatch": {
             "properties": {
@@ -21006,6 +20961,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "apps",
                         "enabled",
                         "wxtagIds"
                     ]
@@ -21143,7 +21099,6 @@
                         "keyIdx",
                         "keys",
                         "multiPskOnly",
-                        "pairwises",
                         "privateWlan",
                         "psk",
                         "type"
@@ -21171,8 +21126,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "Auth port of RADIUS server\n"
+                    "type": "string"
                 },
                 "requireMessageAuthenticator": {
                     "type": "boolean",
@@ -21193,7 +21147,6 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "host",
-                        "port",
                         "requireMessageAuthenticator",
                         "secret"
                     ]
@@ -21221,20 +21174,7 @@
                     "description": "What services are allowed. \nProperty key is the service name\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "additionalVlanIds",
-                "services"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "additionalVlanIds",
-                        "enabled",
-                        "services"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/WlanBonjourServices:WlanBonjourServices": {
             "properties": {
@@ -21295,6 +21235,9 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "allowedHostnames",
+                        "allowedSubnets",
+                        "blockedSubnets",
                         "enabled"
                     ]
                 }
@@ -21313,7 +21256,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "secret": {
                     "type": "string",
@@ -21331,7 +21274,6 @@
                         "disableEventTimestampCheck",
                         "enabled",
                         "ip",
-                        "port",
                         "secret"
                     ]
                 }
@@ -21425,13 +21367,9 @@
                 }
             },
             "type": "object",
-            "required": [
-                "defaultVlanIds"
-            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "defaultVlanIds",
                         "enabled",
                         "localVlanIds",
                         "type"
@@ -21544,7 +21482,7 @@
                 },
                 "auth": {
                     "type": "string",
-                    "description": "authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`\n"
+                    "description": "authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`\n"
                 },
                 "azureClientId": {
                     "type": "string",
@@ -21767,7 +21705,7 @@
                 },
                 "sponsorLinkValidityDuration": {
                     "type": "string",
-                    "description": "Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.\n"
+                    "description": "Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.\n"
                 },
                 "sponsorNotifyAll": {
                     "type": "boolean",
@@ -22881,7 +22819,7 @@
                     "type": "boolean"
                 },
                 "idleTimeout": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "mxclusterIds": {
                     "type": "array",
@@ -22921,10 +22859,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "coaEnabled",
-                        "mxclusterIds",
-                        "proxyHosts",
-                        "useSiteMxedge"
+                        "serverName"
                     ]
                 }
             }
@@ -22978,7 +22913,6 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "legacies",
                         "minRssi",
                         "template"
                     ]
@@ -23035,20 +22969,7 @@
                     "description": "Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "fri",
-                        "mon",
-                        "sat",
-                        "sun",
-                        "thu",
-                        "tue",
-                        "wed"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/WlantemplateApplies:WlantemplateApplies": {
             "properties": {
@@ -24029,13 +23950,38 @@
                     "type": "number",
                     "description": "When the object has been created, in epoch\n"
                 },
+                "disallowMistServices": {
+                    "type": "boolean",
+                    "description": "Whether to disallow Mist Devices in the network\n"
+                },
+                "gateway": {
+                    "type": "string"
+                },
+                "gateway6": {
+                    "type": "string"
+                },
                 "id": {
                     "type": "string",
                     "description": "Unique ID of the object instance in the Mist Organization\n"
                 },
+                "internalAccess": {
+                    "$ref": "#/types/junipermist:org/getNetworksOrgNetworkInternalAccess:getNetworksOrgNetworkInternalAccess"
+                },
+                "internetAccess": {
+                    "$ref": "#/types/junipermist:org/getNetworksOrgNetworkInternetAccess:getNetworksOrgNetworkInternetAccess",
+                    "description": "Whether this network has direct internet access\n"
+                },
+                "isolation": {
+                    "type": "boolean",
+                    "description": "Whether to allow clients in the network to talk to each other\n"
+                },
                 "modifiedTime": {
                     "type": "number",
                     "description": "When the object has been modified for the last time, in epoch\n"
+                },
+                "multicast": {
+                    "$ref": "#/types/junipermist:org/getNetworksOrgNetworkMulticast:getNetworksOrgNetworkMulticast",
+                    "description": "Whether to enable multicast support (only PIM-sparse mode is supported)\n"
                 },
                 "name": {
                     "type": "string"
@@ -24043,26 +23989,389 @@
                 "orgId": {
                     "type": "string"
                 },
+                "routedForNetworks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)\n"
+                },
                 "subnet": {
                     "type": "string"
                 },
                 "subnet6": {
                     "type": "string"
                 },
+                "tenants": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/getNetworksOrgNetworkTenants:getNetworksOrgNetworkTenants"
+                    },
+                    "description": "Property key must be the user/tenant name (i.e. \"printer-1\") or a Variable (i.e. \"{{myvar}}\")\n"
+                },
                 "vlanId": {
                     "type": "string"
+                },
+                "vpnAccess": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/getNetworksOrgNetworkVpnAccess:getNetworksOrgNetworkVpnAccess"
+                    },
+                    "description": "Property key is the VPN name. Whether this network can be accessed from vpn\n"
                 }
             },
             "type": "object",
             "required": [
                 "createdTime",
+                "disallowMistServices",
+                "gateway",
+                "gateway6",
                 "id",
+                "internalAccess",
+                "internetAccess",
+                "isolation",
                 "modifiedTime",
+                "multicast",
                 "name",
                 "orgId",
+                "routedForNetworks",
                 "subnet",
                 "subnet6",
-                "vlanId"
+                "tenants",
+                "vlanId",
+                "vpnAccess"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "junipermist:org/getNetworksOrgNetworkInternalAccess:getNetworksOrgNetworkInternalAccess": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "junipermist:org/getNetworksOrgNetworkInternetAccess:getNetworksOrgNetworkInternetAccess": {
+            "properties": {
+                "createSimpleServicePolicy": {
+                    "type": "boolean"
+                },
+                "destinationNat": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/getNetworksOrgNetworkInternetAccessDestinationNat:getNetworksOrgNetworkInternetAccessDestinationNat"
+                    },
+                    "description": "Property key can be an External IP (i.e. \"63.16.0.3\"), an External IP:Port (i.e. \"63.16.0.3:443\"), an External Port (i.e. \":443\"), an External CIDR (i.e. \"63.16.0.0/30\"), an External CIDR:Port (i.e. \"63.16.0.0/30:443\") or a Variable (i.e. \"{{myvar}}\"). At least one of the `internal_ip` or `port` must be defined\n"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "restricted": {
+                    "type": "boolean",
+                    "description": "By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies\n"
+                },
+                "staticNat": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/getNetworksOrgNetworkInternetAccessStaticNat:getNetworksOrgNetworkInternetAccessStaticNat"
+                    },
+                    "description": "Property key may be an External IP Address (i.e. \"63.16.0.3\"), a CIDR (i.e. \"63.16.0.12/20\") or a Variable (i.e. \"{{myvar}}\")\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createSimpleServicePolicy",
+                "destinationNat",
+                "enabled",
+                "restricted",
+                "staticNat"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "junipermist:org/getNetworksOrgNetworkInternetAccessDestinationNat:getNetworksOrgNetworkInternetAccessDestinationNat": {
+            "properties": {
+                "internalIp": {
+                    "type": "string",
+                    "description": "The Destination NAT destination IP Address. Must be an IP (i.e. \"192.168.70.30\") or a Variable (i.e. \"{{myvar}}\")\n"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "string",
+                    "description": "The Destination NAT destination IP Address. Must be a Port (i.e. \"443\") or a Variable (i.e. \"{{myvar}}\")\n"
+                },
+                "wanName": {
+                    "type": "string",
+                    "description": "SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "internalIp",
+                "name",
+                "port",
+                "wanName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "junipermist:org/getNetworksOrgNetworkInternetAccessStaticNat:getNetworksOrgNetworkInternetAccessStaticNat": {
+            "properties": {
+                "internalIp": {
+                    "type": "string",
+                    "description": "The Static NAT destination IP Address. Must be an IP Address (i.e. \"192.168.70.3\") or a Variable (i.e. \"{{myvar}}\")\n"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "wanName": {
+                    "type": "string",
+                    "description": "SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. \"{{myvar}}\")\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "internalIp",
+                "name",
+                "wanName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "junipermist:org/getNetworksOrgNetworkMulticast:getNetworksOrgNetworkMulticast": {
+            "properties": {
+                "disableIgmp": {
+                    "type": "boolean",
+                    "description": "If the network will only be the source of the multicast traffic, IGMP can be disabled\n"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "groups": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/getNetworksOrgNetworkMulticastGroups:getNetworksOrgNetworkMulticastGroups"
+                    },
+                    "description": "Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example \"225.1.0.3/32\")\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "disableIgmp",
+                "enabled",
+                "groups"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "junipermist:org/getNetworksOrgNetworkMulticastGroups:getNetworksOrgNetworkMulticastGroups": {
+            "properties": {
+                "rpIp": {
+                    "type": "string",
+                    "description": "RP (rendezvous point) IP Address\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rpIp"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "junipermist:org/getNetworksOrgNetworkTenants:getNetworksOrgNetworkTenants": {
+            "properties": {
+                "addresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "addresses"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "junipermist:org/getNetworksOrgNetworkVpnAccess:getNetworksOrgNetworkVpnAccess": {
+            "properties": {
+                "advertisedSubnet": {
+                    "type": "string",
+                    "description": "If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side\n"
+                },
+                "allowPing": {
+                    "type": "boolean",
+                    "description": "Whether to allow ping from vpn into this routed network\n"
+                },
+                "destinationNat": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/getNetworksOrgNetworkVpnAccessDestinationNat:getNetworksOrgNetworkVpnAccessDestinationNat"
+                    },
+                    "description": "Property key can be an External IP (i.e. \"63.16.0.3\"), an External IP:Port (i.e. \"63.16.0.3:443\"), an External Port (i.e. \":443\"), an External CIDR (i.e. \"63.16.0.0/30\"), an External CIDR:Port (i.e. \"63.16.0.0/30:443\") or a Variable (i.e. \"{{myvar}}\"). At least one of the `internal_ip` or `port` must be defined\n"
+                },
+                "natPool": {
+                    "type": "string",
+                    "description": "If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub\n"
+                },
+                "noReadvertiseToLanBgp": {
+                    "type": "boolean",
+                    "description": "toward LAN-side BGP peers\n"
+                },
+                "noReadvertiseToLanOspf": {
+                    "type": "boolean",
+                    "description": "toward LAN-side OSPF peers\n"
+                },
+                "noReadvertiseToOverlay": {
+                    "type": "boolean",
+                    "description": "toward overlay, how HUB should deal with routes it received from Spokes\n"
+                },
+                "otherVrfs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs\n"
+                },
+                "routed": {
+                    "type": "boolean",
+                    "description": "Whether this network is routable\n"
+                },
+                "sourceNat": {
+                    "$ref": "#/types/junipermist:org/getNetworksOrgNetworkVpnAccessSourceNat:getNetworksOrgNetworkVpnAccessSourceNat",
+                    "description": "If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub\n"
+                },
+                "staticNat": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/getNetworksOrgNetworkVpnAccessStaticNat:getNetworksOrgNetworkVpnAccessStaticNat"
+                    },
+                    "description": "Property key may be an External IP Address (i.e. \"63.16.0.3\"), a CIDR (i.e. \"63.16.0.12/20\") or a Variable (i.e. \"{{myvar}}\")\n"
+                },
+                "summarizedSubnet": {
+                    "type": "string",
+                    "description": "toward overlay, how HUB should deal with routes it received from Spokes\n"
+                },
+                "summarizedSubnetToLanBgp": {
+                    "type": "string",
+                    "description": "toward LAN-side BGP peers\n"
+                },
+                "summarizedSubnetToLanOspf": {
+                    "type": "string",
+                    "description": "toward LAN-side OSPF peers\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "advertisedSubnet",
+                "allowPing",
+                "destinationNat",
+                "natPool",
+                "noReadvertiseToLanBgp",
+                "noReadvertiseToLanOspf",
+                "noReadvertiseToOverlay",
+                "otherVrfs",
+                "routed",
+                "sourceNat",
+                "staticNat",
+                "summarizedSubnet",
+                "summarizedSubnetToLanBgp",
+                "summarizedSubnetToLanOspf"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "junipermist:org/getNetworksOrgNetworkVpnAccessDestinationNat:getNetworksOrgNetworkVpnAccessDestinationNat": {
+            "properties": {
+                "internalIp": {
+                    "type": "string",
+                    "description": "The Destination NAT destination IP Address. Must be an IP (i.e. \"192.168.70.30\") or a Variable (i.e. \"{{myvar}}\")\n"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "internalIp",
+                "name",
+                "port"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "junipermist:org/getNetworksOrgNetworkVpnAccessSourceNat:getNetworksOrgNetworkVpnAccessSourceNat": {
+            "properties": {
+                "externalIp": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "externalIp"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "junipermist:org/getNetworksOrgNetworkVpnAccessStaticNat:getNetworksOrgNetworkVpnAccessStaticNat": {
+            "properties": {
+                "internalIp": {
+                    "type": "string",
+                    "description": "The Static NAT destination IP Address. Must be an IP Address (i.e. \"192.168.70.3\") or a Variable (i.e. \"{{myvar}}\")\n"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "internalIp",
+                "name"
             ],
             "language": {
                 "nodejs": {
@@ -25212,16 +25521,14 @@
                     "description": "Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html\n"
                 },
                 "clientLimitDown": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "clientLimitDownEnabled": {
                     "type": "boolean",
                     "description": "If downlink limiting per-client is enabled\n"
                 },
                 "clientLimitUp": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "clientLimitUpEnabled": {
                     "type": "boolean",
@@ -25490,16 +25797,14 @@
                     "description": "Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm\n"
                 },
                 "wlanLimitDown": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "wlanLimitDownEnabled": {
                     "type": "boolean",
                     "description": "If downlink limiting for whole wlan is enabled\n"
                 },
                 "wlanLimitUp": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "wlanLimitUpEnabled": {
                     "type": "boolean",
@@ -25648,8 +25953,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "Acct port of RADIUS server\n"
+                    "type": "string"
                 },
                 "secret": {
                     "type": "string",
@@ -25929,8 +26233,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "Auth port of RADIUS server\n"
+                    "type": "string"
                 },
                 "requireMessageAuthenticator": {
                     "type": "boolean",
@@ -26075,7 +26378,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "secret": {
                     "type": "string",
@@ -26323,7 +26626,7 @@
                 },
                 "auth": {
                     "type": "string",
-                    "description": "authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`\n"
+                    "description": "authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`\n"
                 },
                 "azureClientId": {
                     "type": "string",
@@ -26545,8 +26848,7 @@
                     "description": "Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`\n"
                 },
                 "sponsorLinkValidityDuration": {
-                    "type": "string",
-                    "description": "Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.\n"
+                    "type": "string"
                 },
                 "sponsorNotifyAll": {
                     "type": "boolean",
@@ -26726,7 +27028,7 @@
                     "type": "boolean"
                 },
                 "idleTimeout": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "mxclusterIds": {
                     "type": "array",
@@ -27988,8 +28290,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "Acct port of RADIUS server\n"
+                    "type": "string"
                 },
                 "secret": {
                     "type": "string",
@@ -28001,16 +28302,7 @@
             "required": [
                 "host",
                 "secret"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "host",
-                        "port",
-                        "secret"
-                    ]
-                }
-            }
+            ]
         },
         "junipermist:site/NetworktemplateRadiusConfigAuthServer:NetworktemplateRadiusConfigAuthServer": {
             "properties": {
@@ -28032,8 +28324,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "Auth port of RADIUS server\n"
+                    "type": "string"
                 },
                 "requireMessageAuthenticator": {
                     "type": "boolean",
@@ -28049,16 +28340,7 @@
             "required": [
                 "host",
                 "secret"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "host",
-                        "port",
-                        "secret"
-                    ]
-                }
-            }
+            ]
         },
         "junipermist:site/NetworktemplateRemoteSyslog:NetworktemplateRemoteSyslog": {
             "properties": {
@@ -29808,8 +30090,6 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "adminSshkeys",
-                        "probeHosts",
                         "securityLogSourceInterface"
                     ]
                 }
@@ -30130,7 +30410,6 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "allowedVlanIds",
                         "enabled",
                         "honeypotEnabled",
                         "minDuration",
@@ -30593,8 +30872,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "Acct port of RADIUS server\n"
+                    "type": "string"
                 },
                 "secret": {
                     "type": "string",
@@ -30606,16 +30884,7 @@
             "required": [
                 "host",
                 "secret"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "host",
-                        "port",
-                        "secret"
-                    ]
-                }
-            }
+            ]
         },
         "junipermist:site/WlanAirwatch:WlanAirwatch": {
             "properties": {
@@ -30677,6 +30946,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "apps",
                         "enabled",
                         "wxtagIds"
                     ]
@@ -30814,7 +31084,6 @@
                         "keyIdx",
                         "keys",
                         "multiPskOnly",
-                        "pairwises",
                         "privateWlan",
                         "psk",
                         "type"
@@ -30842,8 +31111,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "Auth port of RADIUS server\n"
+                    "type": "string"
                 },
                 "requireMessageAuthenticator": {
                     "type": "boolean",
@@ -30864,7 +31132,6 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "host",
-                        "port",
                         "requireMessageAuthenticator",
                         "secret"
                     ]
@@ -30892,20 +31159,7 @@
                     "description": "What services are allowed. \nProperty key is the service name\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "additionalVlanIds",
-                "services"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "additionalVlanIds",
-                        "enabled",
-                        "services"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:site/WlanBonjourServices:WlanBonjourServices": {
             "properties": {
@@ -30966,6 +31220,9 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "allowedHostnames",
+                        "allowedSubnets",
+                        "blockedSubnets",
                         "enabled"
                     ]
                 }
@@ -30984,7 +31241,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "secret": {
                     "type": "string",
@@ -31002,7 +31259,6 @@
                         "disableEventTimestampCheck",
                         "enabled",
                         "ip",
-                        "port",
                         "secret"
                     ]
                 }
@@ -31096,13 +31352,9 @@
                 }
             },
             "type": "object",
-            "required": [
-                "defaultVlanIds"
-            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "defaultVlanIds",
                         "enabled",
                         "localVlanIds",
                         "type"
@@ -31215,7 +31467,7 @@
                 },
                 "auth": {
                     "type": "string",
-                    "description": "authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`\n"
+                    "description": "authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`\n"
                 },
                 "azureClientId": {
                     "type": "string",
@@ -31438,7 +31690,7 @@
                 },
                 "sponsorLinkValidityDuration": {
                     "type": "string",
-                    "description": "Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.\n"
+                    "description": "Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.\n"
                 },
                 "sponsorNotifyAll": {
                     "type": "boolean",
@@ -32552,7 +32804,7 @@
                     "type": "boolean"
                 },
                 "idleTimeout": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "mxclusterIds": {
                     "type": "array",
@@ -32592,10 +32844,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "coaEnabled",
-                        "mxclusterIds",
-                        "proxyHosts",
-                        "useSiteMxedge"
+                        "serverName"
                     ]
                 }
             }
@@ -32649,7 +32898,6 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "legacies",
                         "minRssi",
                         "template"
                     ]
@@ -32706,20 +32954,7 @@
                     "description": "Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "fri",
-                        "mon",
-                        "sat",
-                        "sun",
-                        "thu",
-                        "tue",
-                        "wed"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:site/WxtagSpec:WxtagSpec": {
             "properties": {
@@ -33303,16 +33538,14 @@
                     "description": "Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html\n"
                 },
                 "clientLimitDown": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "clientLimitDownEnabled": {
                     "type": "boolean",
                     "description": "If downlink limiting per-client is enabled\n"
                 },
                 "clientLimitUp": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "clientLimitUpEnabled": {
                     "type": "boolean",
@@ -33581,16 +33814,14 @@
                     "description": "Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm\n"
                 },
                 "wlanLimitDown": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "wlanLimitDownEnabled": {
                     "type": "boolean",
                     "description": "If downlink limiting for whole wlan is enabled\n"
                 },
                 "wlanLimitUp": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "wlanLimitUpEnabled": {
                     "type": "boolean",
@@ -33739,8 +33970,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "Acct port of RADIUS server\n"
+                    "type": "string"
                 },
                 "secret": {
                     "type": "string",
@@ -34020,8 +34250,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "Auth port of RADIUS server\n"
+                    "type": "string"
                 },
                 "requireMessageAuthenticator": {
                     "type": "boolean",
@@ -34166,7 +34395,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "secret": {
                     "type": "string",
@@ -34414,7 +34643,7 @@
                 },
                 "auth": {
                     "type": "string",
-                    "description": "authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`\n"
+                    "description": "authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`\n"
                 },
                 "azureClientId": {
                     "type": "string",
@@ -34636,8 +34865,7 @@
                     "description": "Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`\n"
                 },
                 "sponsorLinkValidityDuration": {
-                    "type": "string",
-                    "description": "Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.\n"
+                    "type": "string"
                 },
                 "sponsorNotifyAll": {
                     "type": "boolean",
@@ -34817,7 +35045,7 @@
                     "type": "boolean"
                 },
                 "idleTimeout": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "mxclusterIds": {
                     "type": "array",
@@ -42599,7 +42827,7 @@
             }
         },
         "junipermist:org/wlan:Wlan": {
-            "description": "This resource manages the Org Wlans.\n\nThe WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst wlanOne = new junipermist.org.Wlan(\"wlan_one\", {\n    ssid: \"wlan_one\",\n    orgId: terraformTest.id,\n    templateId: test101.id,\n    bands: [\n        \"5\",\n        \"6\",\n    ],\n    vlanEnabled: true,\n    vlanId: \"143\",\n    wlanLimitUp: 10000,\n    wlanLimitDown: 20000,\n    clientLimitUp: 512,\n    clientLimitDown: 1000,\n    auth: {\n        type: \"psk\",\n        psk: \"secretpsk\",\n    },\n    \"interface\": \"all\",\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\nwlan_one = junipermist.org.Wlan(\"wlan_one\",\n    ssid=\"wlan_one\",\n    org_id=terraform_test[\"id\"],\n    template_id=test101[\"id\"],\n    bands=[\n        \"5\",\n        \"6\",\n    ],\n    vlan_enabled=True,\n    vlan_id=\"143\",\n    wlan_limit_up=10000,\n    wlan_limit_down=20000,\n    client_limit_up=512,\n    client_limit_down=1000,\n    auth={\n        \"type\": \"psk\",\n        \"psk\": \"secretpsk\",\n    },\n    interface=\"all\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var wlanOne = new JuniperMist.Org.Wlan(\"wlan_one\", new()\n    {\n        Ssid = \"wlan_one\",\n        OrgId = terraformTest.Id,\n        TemplateId = test101.Id,\n        Bands = new[]\n        {\n            \"5\",\n            \"6\",\n        },\n        VlanEnabled = true,\n        VlanId = \"143\",\n        WlanLimitUp = 10000,\n        WlanLimitDown = 20000,\n        ClientLimitUp = 512,\n        ClientLimitDown = 1000,\n        Auth = new JuniperMist.Org.Inputs.WlanAuthArgs\n        {\n            Type = \"psk\",\n            Psk = \"secretpsk\",\n        },\n        Interface = \"all\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := org.NewWlan(ctx, \"wlan_one\", \u0026org.WlanArgs{\n\t\t\tSsid:       pulumi.String(\"wlan_one\"),\n\t\t\tOrgId:      pulumi.Any(terraformTest.Id),\n\t\t\tTemplateId: pulumi.Any(test101.Id),\n\t\t\tBands: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"5\"),\n\t\t\t\tpulumi.String(\"6\"),\n\t\t\t},\n\t\t\tVlanEnabled:     pulumi.Bool(true),\n\t\t\tVlanId:          pulumi.String(\"143\"),\n\t\t\tWlanLimitUp:     pulumi.Int(10000),\n\t\t\tWlanLimitDown:   pulumi.Int(20000),\n\t\t\tClientLimitUp:   pulumi.Int(512),\n\t\t\tClientLimitDown: pulumi.Int(1000),\n\t\t\tAuth: \u0026org.WlanAuthArgs{\n\t\t\t\tType: pulumi.String(\"psk\"),\n\t\t\t\tPsk:  pulumi.String(\"secretpsk\"),\n\t\t\t},\n\t\t\tInterface: pulumi.String(\"all\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.org.Wlan;\nimport com.pulumi.junipermist.org.WlanArgs;\nimport com.pulumi.junipermist.org.inputs.WlanAuthArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var wlanOne = new Wlan(\"wlanOne\", WlanArgs.builder()\n            .ssid(\"wlan_one\")\n            .orgId(terraformTest.id())\n            .templateId(test101.id())\n            .bands(            \n                \"5\",\n                \"6\")\n            .vlanEnabled(true)\n            .vlanId(\"143\")\n            .wlanLimitUp(10000)\n            .wlanLimitDown(20000)\n            .clientLimitUp(512)\n            .clientLimitDown(1000)\n            .auth(WlanAuthArgs.builder()\n                .type(\"psk\")\n                .psk(\"secretpsk\")\n                .build())\n            .interface_(\"all\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  wlanOne:\n    type: junipermist:org:Wlan\n    name: wlan_one\n    properties:\n      ssid: wlan_one\n      orgId: ${terraformTest.id}\n      templateId: ${test101.id}\n      bands:\n        - '5'\n        - '6'\n      vlanEnabled: true\n      vlanId: 143\n      wlanLimitUp: 10000\n      wlanLimitDown: 20000\n      clientLimitUp: 512\n      clientLimitDown: 1000\n      auth:\n        type: psk\n        psk: secretpsk\n      interface: all\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_org_wlan` with:\n\nOrg WLAN can be imported by specifying the org_id and the wlan_id\n\n```sh\n$ pulumi import junipermist:org/wlan:Wlan wlan_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
+            "description": "This resource manages the Org Wlans.\n\nThe WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst wlanOne = new junipermist.org.Wlan(\"wlan_one\", {\n    ssid: \"wlan_one\",\n    orgId: terraformTest.id,\n    templateId: test101.id,\n    bands: [\n        \"5\",\n        \"6\",\n    ],\n    vlanEnabled: true,\n    vlanId: \"143\",\n    wlanLimitUp: \"10000\",\n    wlanLimitDown: \"20000\",\n    clientLimitUp: \"512\",\n    clientLimitDown: \"1000\",\n    auth: {\n        type: \"psk\",\n        psk: \"secretpsk\",\n    },\n    \"interface\": \"all\",\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\nwlan_one = junipermist.org.Wlan(\"wlan_one\",\n    ssid=\"wlan_one\",\n    org_id=terraform_test[\"id\"],\n    template_id=test101[\"id\"],\n    bands=[\n        \"5\",\n        \"6\",\n    ],\n    vlan_enabled=True,\n    vlan_id=\"143\",\n    wlan_limit_up=\"10000\",\n    wlan_limit_down=\"20000\",\n    client_limit_up=\"512\",\n    client_limit_down=\"1000\",\n    auth={\n        \"type\": \"psk\",\n        \"psk\": \"secretpsk\",\n    },\n    interface=\"all\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var wlanOne = new JuniperMist.Org.Wlan(\"wlan_one\", new()\n    {\n        Ssid = \"wlan_one\",\n        OrgId = terraformTest.Id,\n        TemplateId = test101.Id,\n        Bands = new[]\n        {\n            \"5\",\n            \"6\",\n        },\n        VlanEnabled = true,\n        VlanId = \"143\",\n        WlanLimitUp = \"10000\",\n        WlanLimitDown = \"20000\",\n        ClientLimitUp = \"512\",\n        ClientLimitDown = \"1000\",\n        Auth = new JuniperMist.Org.Inputs.WlanAuthArgs\n        {\n            Type = \"psk\",\n            Psk = \"secretpsk\",\n        },\n        Interface = \"all\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := org.NewWlan(ctx, \"wlan_one\", \u0026org.WlanArgs{\n\t\t\tSsid:       pulumi.String(\"wlan_one\"),\n\t\t\tOrgId:      pulumi.Any(terraformTest.Id),\n\t\t\tTemplateId: pulumi.Any(test101.Id),\n\t\t\tBands: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"5\"),\n\t\t\t\tpulumi.String(\"6\"),\n\t\t\t},\n\t\t\tVlanEnabled:     pulumi.Bool(true),\n\t\t\tVlanId:          pulumi.String(\"143\"),\n\t\t\tWlanLimitUp:     pulumi.String(\"10000\"),\n\t\t\tWlanLimitDown:   pulumi.String(\"20000\"),\n\t\t\tClientLimitUp:   pulumi.String(\"512\"),\n\t\t\tClientLimitDown: pulumi.String(\"1000\"),\n\t\t\tAuth: \u0026org.WlanAuthArgs{\n\t\t\t\tType: pulumi.String(\"psk\"),\n\t\t\t\tPsk:  pulumi.String(\"secretpsk\"),\n\t\t\t},\n\t\t\tInterface: pulumi.String(\"all\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.org.Wlan;\nimport com.pulumi.junipermist.org.WlanArgs;\nimport com.pulumi.junipermist.org.inputs.WlanAuthArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var wlanOne = new Wlan(\"wlanOne\", WlanArgs.builder()\n            .ssid(\"wlan_one\")\n            .orgId(terraformTest.id())\n            .templateId(test101.id())\n            .bands(            \n                \"5\",\n                \"6\")\n            .vlanEnabled(true)\n            .vlanId(\"143\")\n            .wlanLimitUp(\"10000\")\n            .wlanLimitDown(\"20000\")\n            .clientLimitUp(\"512\")\n            .clientLimitDown(\"1000\")\n            .auth(WlanAuthArgs.builder()\n                .type(\"psk\")\n                .psk(\"secretpsk\")\n                .build())\n            .interface_(\"all\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  wlanOne:\n    type: junipermist:org:Wlan\n    name: wlan_one\n    properties:\n      ssid: wlan_one\n      orgId: ${terraformTest.id}\n      templateId: ${test101.id}\n      bands:\n        - '5'\n        - '6'\n      vlanEnabled: true\n      vlanId: 143\n      wlanLimitUp: 10000\n      wlanLimitDown: 20000\n      clientLimitUp: 512\n      clientLimitDown: 1000\n      auth:\n        type: psk\n        psk: secretpsk\n      interface: all\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_org_wlan` with:\n\nOrg WLAN can be imported by specifying the org_id and the wlan_id\n\n```sh\n$ pulumi import junipermist:org/wlan:Wlan wlan_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
             "properties": {
                 "acctImmediateUpdate": {
                     "type": "boolean",
@@ -42714,16 +42942,14 @@
                     "description": "Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:\nhttps://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html\n"
                 },
                 "clientLimitDown": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "clientLimitDownEnabled": {
                     "type": "boolean",
                     "description": "If downlink limiting per-client is enabled\n"
                 },
                 "clientLimitUp": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "clientLimitUpEnabled": {
                     "type": "boolean",
@@ -42980,16 +43206,14 @@
                     "description": "Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a\ndeterministic algorithm\n"
                 },
                 "wlanLimitDown": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "wlanLimitDownEnabled": {
                     "type": "boolean",
                     "description": "If downlink limiting for whole wlan is enabled\n"
                 },
                 "wlanLimitUp": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "wlanLimitUpEnabled": {
                     "type": "boolean",
@@ -43020,7 +43244,6 @@
                 "allowMdns",
                 "allowSsdp",
                 "apIds",
-                "appLimit",
                 "appQos",
                 "applyTo",
                 "arpFilter",
@@ -43028,43 +43251,21 @@
                 "authServers",
                 "authServersNasId",
                 "authServersNasIp",
-                "authServersRetries",
-                "authServersTimeout",
                 "bandSteer",
-                "bandSteerForceBand5",
-                "blockBlacklistClients",
-                "bonjour",
                 "ciscoCwa",
                 "clientLimitDown",
-                "clientLimitDownEnabled",
                 "clientLimitUp",
-                "clientLimitUpEnabled",
-                "coaServers",
                 "disable11ax",
-                "disable11be",
-                "disableHtVhtRates",
                 "disableUapsd",
-                "disableV1RoamNotify",
-                "disableV2RoamNotify",
                 "disableWmm",
-                "dnsServerRewrite",
                 "dtim",
-                "enableLocalKeycaching",
-                "enableWirelessBridging",
-                "enableWirelessBridgingDhcpTracking",
                 "enabled",
-                "fastDot1xTimers",
                 "hideSsid",
                 "hostnameIe",
-                "hotspot20",
                 "interface",
-                "isolation",
-                "l2Isolation",
-                "legacyOverds",
                 "limitBcast",
                 "limitProbeResponse",
                 "maxIdletime",
-                "maxNumClients",
                 "mistNac",
                 "mspId",
                 "mxtunnelIds",
@@ -43082,9 +43283,7 @@
                 "qos",
                 "radsec",
                 "rateset",
-                "roamMode",
                 "schedule",
-                "sleExcluded",
                 "ssid",
                 "templateId",
                 "useEapolV1",
@@ -43092,9 +43291,7 @@
                 "vlanIds",
                 "vlanPooling",
                 "wlanLimitDown",
-                "wlanLimitDownEnabled",
                 "wlanLimitUp",
-                "wlanLimitUpEnabled",
                 "wxtagIds",
                 "wxtunnelId",
                 "wxtunnelRemoteId"
@@ -43213,16 +43410,14 @@
                     "description": "Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:\nhttps://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html\n"
                 },
                 "clientLimitDown": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "clientLimitDownEnabled": {
                     "type": "boolean",
                     "description": "If downlink limiting per-client is enabled\n"
                 },
                 "clientLimitUp": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "clientLimitUpEnabled": {
                     "type": "boolean",
@@ -43465,16 +43660,14 @@
                     "description": "Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a\ndeterministic algorithm\n"
                 },
                 "wlanLimitDown": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "wlanLimitDownEnabled": {
                     "type": "boolean",
                     "description": "If downlink limiting for whole wlan is enabled\n"
                 },
                 "wlanLimitUp": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "wlanLimitUpEnabled": {
                     "type": "boolean",
@@ -43617,16 +43810,14 @@
                         "description": "Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:\nhttps://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html\n"
                     },
                     "clientLimitDown": {
-                        "type": "integer",
-                        "description": "In kbps\n"
+                        "type": "string"
                     },
                     "clientLimitDownEnabled": {
                         "type": "boolean",
                         "description": "If downlink limiting per-client is enabled\n"
                     },
                     "clientLimitUp": {
-                        "type": "integer",
-                        "description": "In kbps\n"
+                        "type": "string"
                     },
                     "clientLimitUpEnabled": {
                         "type": "boolean",
@@ -43883,16 +44074,14 @@
                         "description": "Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a\ndeterministic algorithm\n"
                     },
                     "wlanLimitDown": {
-                        "type": "integer",
-                        "description": "In kbps\n"
+                        "type": "string"
                     },
                     "wlanLimitDownEnabled": {
                         "type": "boolean",
                         "description": "If downlink limiting for whole wlan is enabled\n"
                     },
                     "wlanLimitUp": {
-                        "type": "integer",
-                        "description": "In kbps\n"
+                        "type": "string"
                     },
                     "wlanLimitUpEnabled": {
                         "type": "boolean",
@@ -46223,7 +46412,7 @@
             }
         },
         "junipermist:site/wlan:Wlan": {
-            "description": "This resource manages the Site Wlans.\nThe WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst wlanOne = new junipermist.site.Wlan(\"wlan_one\", {\n    ssid: \"wlan_one\",\n    siteId: terraformTest.id,\n    bands: [\n        \"5\",\n        \"6\",\n    ],\n    vlanEnabled: true,\n    vlanId: \"143\",\n    wlanLimitUp: 10000,\n    wlanLimitDown: 20000,\n    clientLimitUp: 512,\n    clientLimitDown: 1000,\n    auth: {\n        type: \"psk\",\n        psk: \"secretpsk\",\n    },\n    \"interface\": \"all\",\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\nwlan_one = junipermist.site.Wlan(\"wlan_one\",\n    ssid=\"wlan_one\",\n    site_id=terraform_test[\"id\"],\n    bands=[\n        \"5\",\n        \"6\",\n    ],\n    vlan_enabled=True,\n    vlan_id=\"143\",\n    wlan_limit_up=10000,\n    wlan_limit_down=20000,\n    client_limit_up=512,\n    client_limit_down=1000,\n    auth={\n        \"type\": \"psk\",\n        \"psk\": \"secretpsk\",\n    },\n    interface=\"all\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var wlanOne = new JuniperMist.Site.Wlan(\"wlan_one\", new()\n    {\n        Ssid = \"wlan_one\",\n        SiteId = terraformTest.Id,\n        Bands = new[]\n        {\n            \"5\",\n            \"6\",\n        },\n        VlanEnabled = true,\n        VlanId = \"143\",\n        WlanLimitUp = 10000,\n        WlanLimitDown = 20000,\n        ClientLimitUp = 512,\n        ClientLimitDown = 1000,\n        Auth = new JuniperMist.Site.Inputs.WlanAuthArgs\n        {\n            Type = \"psk\",\n            Psk = \"secretpsk\",\n        },\n        Interface = \"all\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/site\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := site.NewWlan(ctx, \"wlan_one\", \u0026site.WlanArgs{\n\t\t\tSsid:   pulumi.String(\"wlan_one\"),\n\t\t\tSiteId: pulumi.Any(terraformTest.Id),\n\t\t\tBands: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"5\"),\n\t\t\t\tpulumi.String(\"6\"),\n\t\t\t},\n\t\t\tVlanEnabled:     pulumi.Bool(true),\n\t\t\tVlanId:          pulumi.String(\"143\"),\n\t\t\tWlanLimitUp:     pulumi.Int(10000),\n\t\t\tWlanLimitDown:   pulumi.Int(20000),\n\t\t\tClientLimitUp:   pulumi.Int(512),\n\t\t\tClientLimitDown: pulumi.Int(1000),\n\t\t\tAuth: \u0026site.WlanAuthArgs{\n\t\t\t\tType: pulumi.String(\"psk\"),\n\t\t\t\tPsk:  pulumi.String(\"secretpsk\"),\n\t\t\t},\n\t\t\tInterface: pulumi.String(\"all\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.site.Wlan;\nimport com.pulumi.junipermist.site.WlanArgs;\nimport com.pulumi.junipermist.site.inputs.WlanAuthArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var wlanOne = new Wlan(\"wlanOne\", WlanArgs.builder()\n            .ssid(\"wlan_one\")\n            .siteId(terraformTest.id())\n            .bands(            \n                \"5\",\n                \"6\")\n            .vlanEnabled(true)\n            .vlanId(\"143\")\n            .wlanLimitUp(10000)\n            .wlanLimitDown(20000)\n            .clientLimitUp(512)\n            .clientLimitDown(1000)\n            .auth(WlanAuthArgs.builder()\n                .type(\"psk\")\n                .psk(\"secretpsk\")\n                .build())\n            .interface_(\"all\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  wlanOne:\n    type: junipermist:site:Wlan\n    name: wlan_one\n    properties:\n      ssid: wlan_one\n      siteId: ${terraformTest.id}\n      bands:\n        - '5'\n        - '6'\n      vlanEnabled: true\n      vlanId: 143\n      wlanLimitUp: 10000\n      wlanLimitDown: 20000\n      clientLimitUp: 512\n      clientLimitDown: 1000\n      auth:\n        type: psk\n        psk: secretpsk\n      interface: all\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_site_wlan` with:\n\nSite WLAN can be imported by specifying the site_id and the wlan_id\n\n```sh\n$ pulumi import junipermist:site/wlan:Wlan wlan_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
+            "description": "This resource manages the Site Wlans.\nThe WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst wlanOne = new junipermist.site.Wlan(\"wlan_one\", {\n    ssid: \"wlan_one\",\n    siteId: terraformTest.id,\n    bands: [\n        \"5\",\n        \"6\",\n    ],\n    vlanEnabled: true,\n    vlanId: \"143\",\n    wlanLimitUp: \"10000\",\n    wlanLimitDown: \"20000\",\n    clientLimitUp: \"512\",\n    clientLimitDown: \"1000\",\n    auth: {\n        type: \"psk\",\n        psk: \"secretpsk\",\n    },\n    \"interface\": \"all\",\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\nwlan_one = junipermist.site.Wlan(\"wlan_one\",\n    ssid=\"wlan_one\",\n    site_id=terraform_test[\"id\"],\n    bands=[\n        \"5\",\n        \"6\",\n    ],\n    vlan_enabled=True,\n    vlan_id=\"143\",\n    wlan_limit_up=\"10000\",\n    wlan_limit_down=\"20000\",\n    client_limit_up=\"512\",\n    client_limit_down=\"1000\",\n    auth={\n        \"type\": \"psk\",\n        \"psk\": \"secretpsk\",\n    },\n    interface=\"all\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var wlanOne = new JuniperMist.Site.Wlan(\"wlan_one\", new()\n    {\n        Ssid = \"wlan_one\",\n        SiteId = terraformTest.Id,\n        Bands = new[]\n        {\n            \"5\",\n            \"6\",\n        },\n        VlanEnabled = true,\n        VlanId = \"143\",\n        WlanLimitUp = \"10000\",\n        WlanLimitDown = \"20000\",\n        ClientLimitUp = \"512\",\n        ClientLimitDown = \"1000\",\n        Auth = new JuniperMist.Site.Inputs.WlanAuthArgs\n        {\n            Type = \"psk\",\n            Psk = \"secretpsk\",\n        },\n        Interface = \"all\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/site\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := site.NewWlan(ctx, \"wlan_one\", \u0026site.WlanArgs{\n\t\t\tSsid:   pulumi.String(\"wlan_one\"),\n\t\t\tSiteId: pulumi.Any(terraformTest.Id),\n\t\t\tBands: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"5\"),\n\t\t\t\tpulumi.String(\"6\"),\n\t\t\t},\n\t\t\tVlanEnabled:     pulumi.Bool(true),\n\t\t\tVlanId:          pulumi.String(\"143\"),\n\t\t\tWlanLimitUp:     pulumi.String(\"10000\"),\n\t\t\tWlanLimitDown:   pulumi.String(\"20000\"),\n\t\t\tClientLimitUp:   pulumi.String(\"512\"),\n\t\t\tClientLimitDown: pulumi.String(\"1000\"),\n\t\t\tAuth: \u0026site.WlanAuthArgs{\n\t\t\t\tType: pulumi.String(\"psk\"),\n\t\t\t\tPsk:  pulumi.String(\"secretpsk\"),\n\t\t\t},\n\t\t\tInterface: pulumi.String(\"all\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.site.Wlan;\nimport com.pulumi.junipermist.site.WlanArgs;\nimport com.pulumi.junipermist.site.inputs.WlanAuthArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var wlanOne = new Wlan(\"wlanOne\", WlanArgs.builder()\n            .ssid(\"wlan_one\")\n            .siteId(terraformTest.id())\n            .bands(            \n                \"5\",\n                \"6\")\n            .vlanEnabled(true)\n            .vlanId(\"143\")\n            .wlanLimitUp(\"10000\")\n            .wlanLimitDown(\"20000\")\n            .clientLimitUp(\"512\")\n            .clientLimitDown(\"1000\")\n            .auth(WlanAuthArgs.builder()\n                .type(\"psk\")\n                .psk(\"secretpsk\")\n                .build())\n            .interface_(\"all\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  wlanOne:\n    type: junipermist:site:Wlan\n    name: wlan_one\n    properties:\n      ssid: wlan_one\n      siteId: ${terraformTest.id}\n      bands:\n        - '5'\n        - '6'\n      vlanEnabled: true\n      vlanId: 143\n      wlanLimitUp: 10000\n      wlanLimitDown: 20000\n      clientLimitUp: 512\n      clientLimitDown: 1000\n      auth:\n        type: psk\n        psk: secretpsk\n      interface: all\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_site_wlan` with:\n\nSite WLAN can be imported by specifying the site_id and the wlan_id\n\n```sh\n$ pulumi import junipermist:site/wlan:Wlan wlan_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
             "properties": {
                 "acctImmediateUpdate": {
                     "type": "boolean",
@@ -46338,16 +46527,14 @@
                     "description": "Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:\nhttps://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html\n"
                 },
                 "clientLimitDown": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "clientLimitDownEnabled": {
                     "type": "boolean",
                     "description": "If downlink limiting per-client is enabled\n"
                 },
                 "clientLimitUp": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "clientLimitUpEnabled": {
                     "type": "boolean",
@@ -46604,16 +46791,14 @@
                     "description": "Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a\ndeterministic algorithm\n"
                 },
                 "wlanLimitDown": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "wlanLimitDownEnabled": {
                     "type": "boolean",
                     "description": "If downlink limiting for whole wlan is enabled\n"
                 },
                 "wlanLimitUp": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "wlanLimitUpEnabled": {
                     "type": "boolean",
@@ -46644,7 +46829,6 @@
                 "allowMdns",
                 "allowSsdp",
                 "apIds",
-                "appLimit",
                 "appQos",
                 "applyTo",
                 "arpFilter",
@@ -46652,43 +46836,21 @@
                 "authServers",
                 "authServersNasId",
                 "authServersNasIp",
-                "authServersRetries",
-                "authServersTimeout",
                 "bandSteer",
-                "bandSteerForceBand5",
-                "blockBlacklistClients",
-                "bonjour",
                 "ciscoCwa",
                 "clientLimitDown",
-                "clientLimitDownEnabled",
                 "clientLimitUp",
-                "clientLimitUpEnabled",
-                "coaServers",
                 "disable11ax",
-                "disable11be",
-                "disableHtVhtRates",
                 "disableUapsd",
-                "disableV1RoamNotify",
-                "disableV2RoamNotify",
                 "disableWmm",
-                "dnsServerRewrite",
                 "dtim",
-                "enableLocalKeycaching",
-                "enableWirelessBridging",
-                "enableWirelessBridgingDhcpTracking",
                 "enabled",
-                "fastDot1xTimers",
                 "hideSsid",
                 "hostnameIe",
-                "hotspot20",
                 "interface",
-                "isolation",
-                "l2Isolation",
-                "legacyOverds",
                 "limitBcast",
                 "limitProbeResponse",
                 "maxIdletime",
-                "maxNumClients",
                 "mistNac",
                 "mspId",
                 "mxtunnelIds",
@@ -46706,19 +46868,15 @@
                 "qos",
                 "radsec",
                 "rateset",
-                "roamMode",
                 "schedule",
                 "siteId",
-                "sleExcluded",
                 "ssid",
                 "useEapolV1",
                 "vlanEnabled",
                 "vlanIds",
                 "vlanPooling",
                 "wlanLimitDown",
-                "wlanLimitDownEnabled",
                 "wlanLimitUp",
-                "wlanLimitUpEnabled",
                 "wxtagIds",
                 "wxtunnelId",
                 "wxtunnelRemoteId"
@@ -46837,16 +46995,14 @@
                     "description": "Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:\nhttps://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html\n"
                 },
                 "clientLimitDown": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "clientLimitDownEnabled": {
                     "type": "boolean",
                     "description": "If downlink limiting per-client is enabled\n"
                 },
                 "clientLimitUp": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "clientLimitUpEnabled": {
                     "type": "boolean",
@@ -47086,16 +47242,14 @@
                     "description": "Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a\ndeterministic algorithm\n"
                 },
                 "wlanLimitDown": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "wlanLimitDownEnabled": {
                     "type": "boolean",
                     "description": "If downlink limiting for whole wlan is enabled\n"
                 },
                 "wlanLimitUp": {
-                    "type": "integer",
-                    "description": "In kbps\n"
+                    "type": "string"
                 },
                 "wlanLimitUpEnabled": {
                     "type": "boolean",
@@ -47237,16 +47391,14 @@
                         "description": "Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:\nhttps://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html\n"
                     },
                     "clientLimitDown": {
-                        "type": "integer",
-                        "description": "In kbps\n"
+                        "type": "string"
                     },
                     "clientLimitDownEnabled": {
                         "type": "boolean",
                         "description": "If downlink limiting per-client is enabled\n"
                     },
                     "clientLimitUp": {
-                        "type": "integer",
-                        "description": "In kbps\n"
+                        "type": "string"
                     },
                     "clientLimitUpEnabled": {
                         "type": "boolean",
@@ -47503,16 +47655,14 @@
                         "description": "Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a\ndeterministic algorithm\n"
                     },
                     "wlanLimitDown": {
-                        "type": "integer",
-                        "description": "In kbps\n"
+                        "type": "string"
                     },
                     "wlanLimitDownEnabled": {
                         "type": "boolean",
                         "description": "If downlink limiting for whole wlan is enabled\n"
                     },
                     "wlanLimitUp": {
-                        "type": "integer",
-                        "description": "In kbps\n"
+                        "type": "string"
                     },
                     "wlanLimitUpEnabled": {
                         "type": "boolean",

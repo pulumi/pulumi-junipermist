@@ -55,7 +55,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<int>? AmazonExpire { get; set; }
 
         /// <summary>
-        /// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+        /// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
         /// </summary>
         [Input("auth")]
         public Input<string>? Auth { get; set; }
@@ -428,7 +428,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<int>? SponsorExpire { get; set; }
 
         /// <summary>
-        /// Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+        /// Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
         /// </summary>
         [Input("sponsorLinkValidityDuration")]
         public Input<string>? SponsorLinkValidityDuration { get; set; }

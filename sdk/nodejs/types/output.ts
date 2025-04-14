@@ -1354,7 +1354,7 @@ export namespace device {
         /**
          * If HA mode
          */
-        redundant: boolean;
+        redundant?: boolean;
         /**
          * If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
          */
@@ -1401,7 +1401,7 @@ export namespace device {
         /**
          * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
          */
-        wanExtraRoutes?: {[key: string]: outputs.device.GatewayPortConfigWanExtraRoutes};
+        wanExtraRoutes: {[key: string]: outputs.device.GatewayPortConfigWanExtraRoutes};
         /**
          * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
          */
@@ -1703,7 +1703,7 @@ export namespace device {
     }
 
     export interface GatewayServicePolicyIdp {
-        alertOnly: boolean;
+        alertOnly?: boolean;
         enabled: boolean;
         /**
          * org_level IDP Profile can be used, this takes precedence over `profile`
@@ -1770,7 +1770,7 @@ export namespace device {
          */
         protocol?: string;
         /**
-         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          */
         provider?: string;
         /**
@@ -5264,10 +5264,7 @@ export namespace device {
         keywrapFormat?: string;
         keywrapKek?: string;
         keywrapMack?: string;
-        /**
-         * Acct port of RADIUS server
-         */
-        port: number;
+        port?: string;
         /**
          * Secret of RADIUS server
          */
@@ -5286,10 +5283,7 @@ export namespace device {
         keywrapFormat?: string;
         keywrapKek?: string;
         keywrapMack?: string;
-        /**
-         * Auth port of RADIUS server
-         */
-        port: number;
+        port?: string;
         /**
          * Whether to require Message-Authenticator in requests
          */
@@ -7008,7 +7002,7 @@ export namespace org {
         /**
          * If HA mode
          */
-        redundant: boolean;
+        redundant?: boolean;
         /**
          * If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
          */
@@ -7055,7 +7049,7 @@ export namespace org {
         /**
          * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
          */
-        wanExtraRoutes?: {[key: string]: outputs.org.DeviceprofileGatewayPortConfigWanExtraRoutes};
+        wanExtraRoutes: {[key: string]: outputs.org.DeviceprofileGatewayPortConfigWanExtraRoutes};
         /**
          * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
          */
@@ -7345,7 +7339,7 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayServicePolicyIdp {
-        alertOnly: boolean;
+        alertOnly?: boolean;
         enabled: boolean;
         /**
          * org_level IDP Profile can be used, this takes precedence over `profile`
@@ -7412,7 +7406,7 @@ export namespace org {
          */
         protocol?: string;
         /**
-         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          */
         provider?: string;
         /**
@@ -8429,7 +8423,7 @@ export namespace org {
         /**
          * If HA mode
          */
-        redundant: boolean;
+        redundant?: boolean;
         /**
          * If HA mode, SRX Only - support redundancy-group. 1-128 for physical SRX, 1-64 for virtual SRX
          */
@@ -8476,7 +8470,7 @@ export namespace org {
         /**
          * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
          */
-        wanExtraRoutes?: {[key: string]: outputs.org.GatewaytemplatePortConfigWanExtraRoutes};
+        wanExtraRoutes: {[key: string]: outputs.org.GatewaytemplatePortConfigWanExtraRoutes};
         /**
          * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
          */
@@ -8766,7 +8760,7 @@ export namespace org {
     }
 
     export interface GatewaytemplateServicePolicyIdp {
-        alertOnly: boolean;
+        alertOnly?: boolean;
         enabled: boolean;
         /**
          * org_level IDP Profile can be used, this takes precedence over `profile`
@@ -8833,7 +8827,7 @@ export namespace org {
          */
         protocol?: string;
         /**
-         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          */
         provider?: string;
         /**
@@ -9581,18 +9575,201 @@ export namespace org {
          */
         createdTime: number;
         /**
+         * Whether to disallow Mist Devices in the network
+         */
+        disallowMistServices: boolean;
+        gateway: string;
+        gateway6: string;
+        /**
          * Unique ID of the object instance in the Mist Organization
          */
         id: string;
+        internalAccess: outputs.org.GetNetworksOrgNetworkInternalAccess;
+        /**
+         * Whether this network has direct internet access
+         */
+        internetAccess: outputs.org.GetNetworksOrgNetworkInternetAccess;
+        /**
+         * Whether to allow clients in the network to talk to each other
+         */
+        isolation: boolean;
         /**
          * When the object has been modified for the last time, in epoch
          */
         modifiedTime: number;
+        /**
+         * Whether to enable multicast support (only PIM-sparse mode is supported)
+         */
+        multicast: outputs.org.GetNetworksOrgNetworkMulticast;
         name: string;
         orgId: string;
+        /**
+         * For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+         */
+        routedForNetworks: string[];
         subnet: string;
         subnet6: string;
+        /**
+         * Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+         */
+        tenants: {[key: string]: outputs.org.GetNetworksOrgNetworkTenants};
         vlanId: string;
+        /**
+         * Property key is the VPN name. Whether this network can be accessed from vpn
+         */
+        vpnAccess: {[key: string]: outputs.org.GetNetworksOrgNetworkVpnAccess};
+    }
+
+    export interface GetNetworksOrgNetworkInternalAccess {
+        enabled: boolean;
+    }
+
+    export interface GetNetworksOrgNetworkInternetAccess {
+        createSimpleServicePolicy: boolean;
+        /**
+         * Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
+         */
+        destinationNat: {[key: string]: outputs.org.GetNetworksOrgNetworkInternetAccessDestinationNat};
+        enabled: boolean;
+        /**
+         * By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+         */
+        restricted: boolean;
+        /**
+         * Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
+         */
+        staticNat: {[key: string]: outputs.org.GetNetworksOrgNetworkInternetAccessStaticNat};
+    }
+
+    export interface GetNetworksOrgNetworkInternetAccessDestinationNat {
+        /**
+         * The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+         */
+        internalIp: string;
+        name: string;
+        /**
+         * The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+         */
+        port: string;
+        /**
+         * SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity
+         */
+        wanName: string;
+    }
+
+    export interface GetNetworksOrgNetworkInternetAccessStaticNat {
+        /**
+         * The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+         */
+        internalIp: string;
+        name: string;
+        /**
+         * SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. "{{myvar}}")
+         */
+        wanName: string;
+    }
+
+    export interface GetNetworksOrgNetworkMulticast {
+        /**
+         * If the network will only be the source of the multicast traffic, IGMP can be disabled
+         */
+        disableIgmp: boolean;
+        enabled: boolean;
+        /**
+         * Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
+         */
+        groups: {[key: string]: outputs.org.GetNetworksOrgNetworkMulticastGroups};
+    }
+
+    export interface GetNetworksOrgNetworkMulticastGroups {
+        /**
+         * RP (rendezvous point) IP Address
+         */
+        rpIp: string;
+    }
+
+    export interface GetNetworksOrgNetworkTenants {
+        addresses: string[];
+    }
+
+    export interface GetNetworksOrgNetworkVpnAccess {
+        /**
+         * If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
+         */
+        advertisedSubnet: string;
+        /**
+         * Whether to allow ping from vpn into this routed network
+         */
+        allowPing: boolean;
+        /**
+         * Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
+         */
+        destinationNat: {[key: string]: outputs.org.GetNetworksOrgNetworkVpnAccessDestinationNat};
+        /**
+         * If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+         */
+        natPool: string;
+        /**
+         * toward LAN-side BGP peers
+         */
+        noReadvertiseToLanBgp: boolean;
+        /**
+         * toward LAN-side OSPF peers
+         */
+        noReadvertiseToLanOspf: boolean;
+        /**
+         * toward overlay, how HUB should deal with routes it received from Spokes
+         */
+        noReadvertiseToOverlay: boolean;
+        /**
+         * By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+         */
+        otherVrfs: string[];
+        /**
+         * Whether this network is routable
+         */
+        routed: boolean;
+        /**
+         * If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+         */
+        sourceNat: outputs.org.GetNetworksOrgNetworkVpnAccessSourceNat;
+        /**
+         * Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
+         */
+        staticNat: {[key: string]: outputs.org.GetNetworksOrgNetworkVpnAccessStaticNat};
+        /**
+         * toward overlay, how HUB should deal with routes it received from Spokes
+         */
+        summarizedSubnet: string;
+        /**
+         * toward LAN-side BGP peers
+         */
+        summarizedSubnetToLanBgp: string;
+        /**
+         * toward LAN-side OSPF peers
+         */
+        summarizedSubnetToLanOspf: string;
+    }
+
+    export interface GetNetworksOrgNetworkVpnAccessDestinationNat {
+        /**
+         * The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+         */
+        internalIp: string;
+        name: string;
+        port: string;
+    }
+
+    export interface GetNetworksOrgNetworkVpnAccessSourceNat {
+        externalIp: string;
+    }
+
+    export interface GetNetworksOrgNetworkVpnAccessStaticNat {
+        /**
+         * The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+         */
+        internalIp: string;
+        name: string;
     }
 
     export interface GetNetworktemplatesOrgNetworktemplate {
@@ -10241,18 +10418,12 @@ export namespace org {
          * Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
          */
         ciscoCwa: outputs.org.GetWlansOrgWlanCiscoCwa;
-        /**
-         * In kbps
-         */
-        clientLimitDown: number;
+        clientLimitDown: string;
         /**
          * If downlink limiting per-client is enabled
          */
         clientLimitDownEnabled: boolean;
-        /**
-         * In kbps
-         */
-        clientLimitUp: number;
+        clientLimitUp: string;
         /**
          * If uplink limiting per-client is enabled
          */
@@ -10486,18 +10657,12 @@ export namespace org {
          * Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
          */
         vlanPooling: boolean;
-        /**
-         * In kbps
-         */
-        wlanLimitDown: number;
+        wlanLimitDown: string;
         /**
          * If downlink limiting for whole wlan is enabled
          */
         wlanLimitDownEnabled: boolean;
-        /**
-         * In kbps
-         */
-        wlanLimitUp: number;
+        wlanLimitUp: string;
         /**
          * If uplink limiting for whole wlan is enabled
          */
@@ -10528,10 +10693,7 @@ export namespace org {
         keywrapFormat: string;
         keywrapKek: string;
         keywrapMack: string;
-        /**
-         * Acct port of RADIUS server
-         */
-        port: number;
+        port: string;
         /**
          * Secret of RADIUS server
          */
@@ -10660,10 +10822,7 @@ export namespace org {
         keywrapFormat: string;
         keywrapKek: string;
         keywrapMack: string;
-        /**
-         * Auth port of RADIUS server
-         */
-        port: number;
+        port: string;
         /**
          * Whether to require Message-Authenticator in requests
          */
@@ -10728,7 +10887,7 @@ export namespace org {
         disableEventTimestampCheck: boolean;
         enabled: boolean;
         ip: string;
-        port: number;
+        port: string;
         secret: string;
     }
 
@@ -10856,7 +11015,7 @@ export namespace org {
          */
         amazonExpire: number;
         /**
-         * authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+         * authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
          */
         auth: string;
         /**
@@ -11060,9 +11219,6 @@ export namespace org {
          * Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
          */
         sponsorExpire: number;
-        /**
-         * Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
-         */
         sponsorLinkValidityDuration: string;
         /**
          * Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
@@ -11143,7 +11299,7 @@ export namespace org {
     export interface GetWlansOrgWlanRadsec {
         coaEnabled: boolean;
         enabled: boolean;
-        idleTimeout: number;
+        idleTimeout: string;
         /**
          * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
          */
@@ -11424,20 +11580,20 @@ export namespace org {
         /**
          * List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
          */
-        families?: string[];
+        families: string[];
         /**
          * List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
          */
-        mfgs?: string[];
+        mfgs: string[];
         /**
          * List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
          */
-        models?: string[];
+        models: string[];
         nactags: string[];
         /**
          * List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed osType values
          */
-        osTypes?: string[];
+        osTypes: string[];
         portTypes: string[];
         /**
          * List of site ids to match
@@ -11461,20 +11617,20 @@ export namespace org {
         /**
          * List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
          */
-        families?: string[];
+        families: string[];
         /**
          * List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
          */
-        mfgs?: string[];
+        mfgs: string[];
         /**
          * List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
          */
-        models?: string[];
+        models: string[];
         nactags: string[];
         /**
          * List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed osType values
          */
-        osTypes?: string[];
+        osTypes: string[];
         portTypes: string[];
         /**
          * List of site ids to match
@@ -12128,10 +12284,7 @@ export namespace org {
         keywrapFormat?: string;
         keywrapKek?: string;
         keywrapMack?: string;
-        /**
-         * Acct port of RADIUS server
-         */
-        port: number;
+        port?: string;
         /**
          * Secret of RADIUS server
          */
@@ -12150,10 +12303,7 @@ export namespace org {
         keywrapFormat?: string;
         keywrapKek?: string;
         keywrapMack?: string;
-        /**
-         * Auth port of RADIUS server
-         */
-        port: number;
+        port?: string;
         /**
          * Whether to require Message-Authenticator in requests
          */
@@ -13606,10 +13756,7 @@ Please update your configurations.
         keywrapFormat?: string;
         keywrapKek?: string;
         keywrapMack?: string;
-        /**
-         * Acct port of RADIUS server
-         */
-        port: number;
+        port?: string;
         /**
          * Secret of RADIUS server
          */
@@ -13641,7 +13788,7 @@ Please update your configurations.
          * Map from app key to bandwidth in kbps. 
          * Property key is the app key, defined in Get Application List
          */
-        apps?: {[key: string]: number};
+        apps: {[key: string]: number};
         enabled: boolean;
         /**
          * Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
@@ -13710,7 +13857,7 @@ Please update your configurations.
         /**
          * When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
          */
-        pairwises: string[];
+        pairwises?: string[];
         /**
          * When `multiPskOnly`==`true`, whether private wlan is enabled
          */
@@ -13741,10 +13888,7 @@ Please update your configurations.
         keywrapFormat?: string;
         keywrapKek?: string;
         keywrapMack?: string;
-        /**
-         * Auth port of RADIUS server
-         */
-        port: number;
+        port?: string;
         /**
          * Whether to require Message-Authenticator in requests
          */
@@ -13759,16 +13903,16 @@ Please update your configurations.
         /**
          * additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
          */
-        additionalVlanIds: string[];
+        additionalVlanIds?: string[];
         /**
          * Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
          */
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * What services are allowed. 
          * Property key is the service name
          */
-        services: {[key: string]: outputs.org.WlanBonjourServices};
+        services?: {[key: string]: outputs.org.WlanBonjourServices};
     }
 
     export interface WlanBonjourServices {
@@ -13790,15 +13934,15 @@ Please update your configurations.
         /**
          * List of hostnames without http(s):// (matched by substring)
          */
-        allowedHostnames?: string[];
+        allowedHostnames: string[];
         /**
          * List of CIDRs
          */
-        allowedSubnets?: string[];
+        allowedSubnets: string[];
         /**
          * List of blocked CIDRs
          */
-        blockedSubnets?: string[];
+        blockedSubnets: string[];
         enabled: boolean;
     }
 
@@ -13809,7 +13953,7 @@ Please update your configurations.
         disableEventTimestampCheck: boolean;
         enabled: boolean;
         ip: string;
-        port: number;
+        port?: string;
         secret: string;
     }
 
@@ -13842,7 +13986,7 @@ Please update your configurations.
         /**
          * Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
          */
-        defaultVlanIds: string[];
+        defaultVlanIds?: string[];
         /**
          * Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
          */
@@ -13937,7 +14081,7 @@ Please update your configurations.
          */
         amazonExpire?: number;
         /**
-         * authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+         * authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
          */
         auth: string;
         /**
@@ -14142,7 +14286,7 @@ Please update your configurations.
          */
         sponsorExpire?: number;
         /**
-         * Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+         * Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
          */
         sponsorLinkValidityDuration: string;
         /**
@@ -14918,21 +15062,21 @@ Please update your configurations.
     }
 
     export interface WlanRadsec {
-        coaEnabled: boolean;
+        coaEnabled?: boolean;
         enabled?: boolean;
-        idleTimeout?: number;
+        idleTimeout?: string;
         /**
          * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
          */
-        mxclusterIds: string[];
+        mxclusterIds?: string[];
         /**
          * Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
          */
-        proxyHosts: string[];
+        proxyHosts?: string[];
         /**
          * Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
          */
-        serverName?: string;
+        serverName: string;
         /**
          * List of RadSec Servers. Only if not Mist Edge.
          */
@@ -14944,7 +15088,7 @@ Please update your configurations.
         /**
          * To use Site mxedges when this WLAN does not use mxtunnel
          */
-        useSiteMxedge: boolean;
+        useSiteMxedge?: boolean;
     }
 
     export interface WlanRadsecServer {
@@ -14968,7 +15112,7 @@ Please update your configurations.
         /**
          * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
          */
-        legacies: string[];
+        legacies?: string[];
         /**
          * Minimum RSSI for client to connect, 0 means not enforcing
          */
@@ -15000,31 +15144,31 @@ Please update your configurations.
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        fri: string;
+        fri?: string;
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        mon: string;
+        mon?: string;
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        sat: string;
+        sat?: string;
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        sun: string;
+        sun?: string;
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        thu: string;
+        thu?: string;
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        tue: string;
+        tue?: string;
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        wed: string;
+        wed?: string;
     }
 
     export interface WlantemplateApplies {
@@ -15506,18 +15650,12 @@ export namespace site {
          * Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
          */
         ciscoCwa: outputs.site.GetWlansSiteWlanCiscoCwa;
-        /**
-         * In kbps
-         */
-        clientLimitDown: number;
+        clientLimitDown: string;
         /**
          * If downlink limiting per-client is enabled
          */
         clientLimitDownEnabled: boolean;
-        /**
-         * In kbps
-         */
-        clientLimitUp: number;
+        clientLimitUp: string;
         /**
          * If uplink limiting per-client is enabled
          */
@@ -15751,18 +15889,12 @@ export namespace site {
          * Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
          */
         vlanPooling: boolean;
-        /**
-         * In kbps
-         */
-        wlanLimitDown: number;
+        wlanLimitDown: string;
         /**
          * If downlink limiting for whole wlan is enabled
          */
         wlanLimitDownEnabled: boolean;
-        /**
-         * In kbps
-         */
-        wlanLimitUp: number;
+        wlanLimitUp: string;
         /**
          * If uplink limiting for whole wlan is enabled
          */
@@ -15793,10 +15925,7 @@ export namespace site {
         keywrapFormat: string;
         keywrapKek: string;
         keywrapMack: string;
-        /**
-         * Acct port of RADIUS server
-         */
-        port: number;
+        port: string;
         /**
          * Secret of RADIUS server
          */
@@ -15925,10 +16054,7 @@ export namespace site {
         keywrapFormat: string;
         keywrapKek: string;
         keywrapMack: string;
-        /**
-         * Auth port of RADIUS server
-         */
-        port: number;
+        port: string;
         /**
          * Whether to require Message-Authenticator in requests
          */
@@ -15993,7 +16119,7 @@ export namespace site {
         disableEventTimestampCheck: boolean;
         enabled: boolean;
         ip: string;
-        port: number;
+        port: string;
         secret: string;
     }
 
@@ -16121,7 +16247,7 @@ export namespace site {
          */
         amazonExpire: number;
         /**
-         * authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+         * authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
          */
         auth: string;
         /**
@@ -16325,9 +16451,6 @@ export namespace site {
          * Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
          */
         sponsorExpire: number;
-        /**
-         * Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
-         */
         sponsorLinkValidityDuration: string;
         /**
          * Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
@@ -16408,7 +16531,7 @@ export namespace site {
     export interface GetWlansSiteWlanRadsec {
         coaEnabled: boolean;
         enabled: boolean;
-        idleTimeout: number;
+        idleTimeout: string;
         /**
          * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
          */
@@ -17001,10 +17124,7 @@ export namespace site {
         keywrapFormat?: string;
         keywrapKek?: string;
         keywrapMack?: string;
-        /**
-         * Acct port of RADIUS server
-         */
-        port: number;
+        port?: string;
         /**
          * Secret of RADIUS server
          */
@@ -17023,10 +17143,7 @@ export namespace site {
         keywrapFormat?: string;
         keywrapKek?: string;
         keywrapMack?: string;
-        /**
-         * Auth port of RADIUS server
-         */
-        port: number;
+        port?: string;
         /**
          * Whether to require Message-Authenticator in requests
          */
@@ -17967,7 +18084,7 @@ Please update your configurations.
         /**
          * For SSR only, as direct root access is not allowed
          */
-        adminSshkeys: string[];
+        adminSshkeys?: string[];
         appProbing?: outputs.site.SettingGatewayMgmtAppProbing;
         /**
          * Consumes uplink bandwidth, requires WA license
@@ -17991,7 +18108,7 @@ Please update your configurations.
          */
         disableUsb?: boolean;
         fipsEnabled?: boolean;
-        probeHosts: string[];
+        probeHosts?: string[];
         /**
          * Restrict inbound-traffic to host
          * when enabled, all traffic that is not essential to our operation will be dropped 
@@ -18128,7 +18245,7 @@ Please update your configurations.
         /**
          * list of VLAN IDs on which rogue APs are ignored
          */
-        allowedVlanIds: number[];
+        allowedVlanIds?: number[];
         /**
          * Whether rogue detection is enabled
          */
@@ -18369,10 +18486,7 @@ Please update your configurations.
         keywrapFormat?: string;
         keywrapKek?: string;
         keywrapMack?: string;
-        /**
-         * Acct port of RADIUS server
-         */
-        port: number;
+        port?: string;
         /**
          * Secret of RADIUS server
          */
@@ -18404,7 +18518,7 @@ Please update your configurations.
          * Map from app key to bandwidth in kbps. 
          * Property key is the app key, defined in Get Application List
          */
-        apps?: {[key: string]: number};
+        apps: {[key: string]: number};
         enabled: boolean;
         /**
          * Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
@@ -18473,7 +18587,7 @@ Please update your configurations.
         /**
          * When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
          */
-        pairwises: string[];
+        pairwises?: string[];
         /**
          * When `multiPskOnly`==`true`, whether private wlan is enabled
          */
@@ -18504,10 +18618,7 @@ Please update your configurations.
         keywrapFormat?: string;
         keywrapKek?: string;
         keywrapMack?: string;
-        /**
-         * Auth port of RADIUS server
-         */
-        port: number;
+        port?: string;
         /**
          * Whether to require Message-Authenticator in requests
          */
@@ -18522,16 +18633,16 @@ Please update your configurations.
         /**
          * additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
          */
-        additionalVlanIds: string[];
+        additionalVlanIds?: string[];
         /**
          * Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
          */
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * What services are allowed. 
          * Property key is the service name
          */
-        services: {[key: string]: outputs.site.WlanBonjourServices};
+        services?: {[key: string]: outputs.site.WlanBonjourServices};
     }
 
     export interface WlanBonjourServices {
@@ -18553,15 +18664,15 @@ Please update your configurations.
         /**
          * List of hostnames without http(s):// (matched by substring)
          */
-        allowedHostnames?: string[];
+        allowedHostnames: string[];
         /**
          * List of CIDRs
          */
-        allowedSubnets?: string[];
+        allowedSubnets: string[];
         /**
          * List of blocked CIDRs
          */
-        blockedSubnets?: string[];
+        blockedSubnets: string[];
         enabled: boolean;
     }
 
@@ -18572,7 +18683,7 @@ Please update your configurations.
         disableEventTimestampCheck: boolean;
         enabled: boolean;
         ip: string;
-        port: number;
+        port?: string;
         secret: string;
     }
 
@@ -18605,7 +18716,7 @@ Please update your configurations.
         /**
          * Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
          */
-        defaultVlanIds: string[];
+        defaultVlanIds?: string[];
         /**
          * Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
          */
@@ -18700,7 +18811,7 @@ Please update your configurations.
          */
         amazonExpire?: number;
         /**
-         * authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+         * authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
          */
         auth: string;
         /**
@@ -18905,7 +19016,7 @@ Please update your configurations.
          */
         sponsorExpire?: number;
         /**
-         * Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+         * Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
          */
         sponsorLinkValidityDuration: string;
         /**
@@ -19681,21 +19792,21 @@ Please update your configurations.
     }
 
     export interface WlanRadsec {
-        coaEnabled: boolean;
+        coaEnabled?: boolean;
         enabled?: boolean;
-        idleTimeout?: number;
+        idleTimeout?: string;
         /**
          * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
          */
-        mxclusterIds: string[];
+        mxclusterIds?: string[];
         /**
          * Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
          */
-        proxyHosts: string[];
+        proxyHosts?: string[];
         /**
          * Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
          */
-        serverName?: string;
+        serverName: string;
         /**
          * List of RadSec Servers. Only if not Mist Edge.
          */
@@ -19707,7 +19818,7 @@ Please update your configurations.
         /**
          * To use Site mxedges when this WLAN does not use mxtunnel
          */
-        useSiteMxedge: boolean;
+        useSiteMxedge?: boolean;
     }
 
     export interface WlanRadsecServer {
@@ -19731,7 +19842,7 @@ Please update your configurations.
         /**
          * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
          */
-        legacies: string[];
+        legacies?: string[];
         /**
          * Minimum RSSI for client to connect, 0 means not enforcing
          */
@@ -19763,31 +19874,31 @@ Please update your configurations.
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        fri: string;
+        fri?: string;
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        mon: string;
+        mon?: string;
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        sat: string;
+        sat?: string;
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        sun: string;
+        sun?: string;
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        thu: string;
+        thu?: string;
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        tue: string;
+        tue?: string;
         /**
          * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
          */
-        wed: string;
+        wed?: string;
     }
 
     export interface WxtagSpec {

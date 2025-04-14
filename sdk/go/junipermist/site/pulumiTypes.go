@@ -3966,8 +3966,7 @@ type NetworktemplateRadiusConfigAcctServer struct {
 	KeywrapFormat *string `pulumi:"keywrapFormat"`
 	KeywrapKek    *string `pulumi:"keywrapKek"`
 	KeywrapMack   *string `pulumi:"keywrapMack"`
-	// Acct port of RADIUS server
-	Port *int `pulumi:"port"`
+	Port          *string `pulumi:"port"`
 	// Secret of RADIUS server
 	Secret string `pulumi:"secret"`
 }
@@ -3991,8 +3990,7 @@ type NetworktemplateRadiusConfigAcctServerArgs struct {
 	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
 	KeywrapKek    pulumi.StringPtrInput `pulumi:"keywrapKek"`
 	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
-	// Acct port of RADIUS server
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Port          pulumi.StringPtrInput `pulumi:"port"`
 	// Secret of RADIUS server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
@@ -4070,9 +4068,8 @@ func (o NetworktemplateRadiusConfigAcctServerOutput) KeywrapMack() pulumi.String
 	return o.ApplyT(func(v NetworktemplateRadiusConfigAcctServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
 }
 
-// Acct port of RADIUS server
-func (o NetworktemplateRadiusConfigAcctServerOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NetworktemplateRadiusConfigAcctServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o NetworktemplateRadiusConfigAcctServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateRadiusConfigAcctServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 // Secret of RADIUS server
@@ -4108,8 +4105,7 @@ type NetworktemplateRadiusConfigAuthServer struct {
 	KeywrapFormat *string `pulumi:"keywrapFormat"`
 	KeywrapKek    *string `pulumi:"keywrapKek"`
 	KeywrapMack   *string `pulumi:"keywrapMack"`
-	// Auth port of RADIUS server
-	Port *int `pulumi:"port"`
+	Port          *string `pulumi:"port"`
 	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator *bool `pulumi:"requireMessageAuthenticator"`
 	// Secret of RADIUS server
@@ -4135,8 +4131,7 @@ type NetworktemplateRadiusConfigAuthServerArgs struct {
 	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
 	KeywrapKek    pulumi.StringPtrInput `pulumi:"keywrapKek"`
 	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
-	// Auth port of RADIUS server
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Port          pulumi.StringPtrInput `pulumi:"port"`
 	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator pulumi.BoolPtrInput `pulumi:"requireMessageAuthenticator"`
 	// Secret of RADIUS server
@@ -4216,9 +4211,8 @@ func (o NetworktemplateRadiusConfigAuthServerOutput) KeywrapMack() pulumi.String
 	return o.ApplyT(func(v NetworktemplateRadiusConfigAuthServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
 }
 
-// Auth port of RADIUS server
-func (o NetworktemplateRadiusConfigAuthServerOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NetworktemplateRadiusConfigAuthServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o NetworktemplateRadiusConfigAuthServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateRadiusConfigAuthServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 // Whether to require Message-Authenticator in requests
@@ -19001,8 +18995,7 @@ type WlanAcctServer struct {
 	KeywrapFormat *string `pulumi:"keywrapFormat"`
 	KeywrapKek    *string `pulumi:"keywrapKek"`
 	KeywrapMack   *string `pulumi:"keywrapMack"`
-	// Acct port of RADIUS server
-	Port *int `pulumi:"port"`
+	Port          *string `pulumi:"port"`
 	// Secret of RADIUS server
 	Secret string `pulumi:"secret"`
 }
@@ -19026,8 +19019,7 @@ type WlanAcctServerArgs struct {
 	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
 	KeywrapKek    pulumi.StringPtrInput `pulumi:"keywrapKek"`
 	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
-	// Acct port of RADIUS server
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Port          pulumi.StringPtrInput `pulumi:"port"`
 	// Secret of RADIUS server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
@@ -19105,9 +19097,8 @@ func (o WlanAcctServerOutput) KeywrapMack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAcctServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
 }
 
-// Acct port of RADIUS server
-func (o WlanAcctServerOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WlanAcctServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o WlanAcctServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanAcctServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 // Secret of RADIUS server
@@ -20269,8 +20260,7 @@ type WlanAuthServer struct {
 	KeywrapFormat *string `pulumi:"keywrapFormat"`
 	KeywrapKek    *string `pulumi:"keywrapKek"`
 	KeywrapMack   *string `pulumi:"keywrapMack"`
-	// Auth port of RADIUS server
-	Port *int `pulumi:"port"`
+	Port          *string `pulumi:"port"`
 	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator *bool `pulumi:"requireMessageAuthenticator"`
 	// Secret of RADIUS server
@@ -20296,8 +20286,7 @@ type WlanAuthServerArgs struct {
 	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
 	KeywrapKek    pulumi.StringPtrInput `pulumi:"keywrapKek"`
 	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
-	// Auth port of RADIUS server
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Port          pulumi.StringPtrInput `pulumi:"port"`
 	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator pulumi.BoolPtrInput `pulumi:"requireMessageAuthenticator"`
 	// Secret of RADIUS server
@@ -20377,9 +20366,8 @@ func (o WlanAuthServerOutput) KeywrapMack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanAuthServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
 }
 
-// Auth port of RADIUS server
-func (o WlanAuthServerOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WlanAuthServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o WlanAuthServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanAuthServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 // Whether to require Message-Authenticator in requests
@@ -20898,11 +20886,11 @@ func (o WlanCiscoCwaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 
 type WlanCoaServer struct {
 	// Whether to disable Event-Timestamp Check
-	DisableEventTimestampCheck *bool  `pulumi:"disableEventTimestampCheck"`
-	Enabled                    *bool  `pulumi:"enabled"`
-	Ip                         string `pulumi:"ip"`
-	Port                       *int   `pulumi:"port"`
-	Secret                     string `pulumi:"secret"`
+	DisableEventTimestampCheck *bool   `pulumi:"disableEventTimestampCheck"`
+	Enabled                    *bool   `pulumi:"enabled"`
+	Ip                         string  `pulumi:"ip"`
+	Port                       *string `pulumi:"port"`
+	Secret                     string  `pulumi:"secret"`
 }
 
 // WlanCoaServerInput is an input type that accepts WlanCoaServerArgs and WlanCoaServerOutput values.
@@ -20918,11 +20906,11 @@ type WlanCoaServerInput interface {
 
 type WlanCoaServerArgs struct {
 	// Whether to disable Event-Timestamp Check
-	DisableEventTimestampCheck pulumi.BoolPtrInput `pulumi:"disableEventTimestampCheck"`
-	Enabled                    pulumi.BoolPtrInput `pulumi:"enabled"`
-	Ip                         pulumi.StringInput  `pulumi:"ip"`
-	Port                       pulumi.IntPtrInput  `pulumi:"port"`
-	Secret                     pulumi.StringInput  `pulumi:"secret"`
+	DisableEventTimestampCheck pulumi.BoolPtrInput   `pulumi:"disableEventTimestampCheck"`
+	Enabled                    pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Ip                         pulumi.StringInput    `pulumi:"ip"`
+	Port                       pulumi.StringPtrInput `pulumi:"port"`
+	Secret                     pulumi.StringInput    `pulumi:"secret"`
 }
 
 func (WlanCoaServerArgs) ElementType() reflect.Type {
@@ -20989,8 +20977,8 @@ func (o WlanCoaServerOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v WlanCoaServer) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-func (o WlanCoaServerOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WlanCoaServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o WlanCoaServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanCoaServer) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 func (o WlanCoaServerOutput) Secret() pulumi.StringOutput {
@@ -22169,7 +22157,7 @@ type WlanPortal struct {
 	AmazonEnabled *bool `pulumi:"amazonEnabled"`
 	// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
 	AmazonExpire *int `pulumi:"amazonExpire"`
-	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
 	Auth *string `pulumi:"auth"`
 	// Required if `azureEnabled`==`true`. Azure active directory app client id
 	AzureClientId *string `pulumi:"azureClientId"`
@@ -22272,7 +22260,7 @@ type WlanPortal struct {
 	SponsorEnabled *bool `pulumi:"sponsorEnabled"`
 	// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
 	SponsorExpire *int `pulumi:"sponsorExpire"`
-	// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+	// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
 	SponsorLinkValidityDuration *string `pulumi:"sponsorLinkValidityDuration"`
 	// Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
 	SponsorNotifyAll *bool `pulumi:"sponsorNotifyAll"`
@@ -22333,7 +22321,7 @@ type WlanPortalArgs struct {
 	AmazonEnabled pulumi.BoolPtrInput `pulumi:"amazonEnabled"`
 	// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
 	AmazonExpire pulumi.IntPtrInput `pulumi:"amazonExpire"`
-	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
 	Auth pulumi.StringPtrInput `pulumi:"auth"`
 	// Required if `azureEnabled`==`true`. Azure active directory app client id
 	AzureClientId pulumi.StringPtrInput `pulumi:"azureClientId"`
@@ -22436,7 +22424,7 @@ type WlanPortalArgs struct {
 	SponsorEnabled pulumi.BoolPtrInput `pulumi:"sponsorEnabled"`
 	// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
 	SponsorExpire pulumi.IntPtrInput `pulumi:"sponsorExpire"`
-	// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+	// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
 	SponsorLinkValidityDuration pulumi.StringPtrInput `pulumi:"sponsorLinkValidityDuration"`
 	// Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
 	SponsorNotifyAll pulumi.BoolPtrInput `pulumi:"sponsorNotifyAll"`
@@ -22580,7 +22568,7 @@ func (o WlanPortalOutput) AmazonExpire() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *int { return v.AmazonExpire }).(pulumi.IntPtrOutput)
 }
 
-// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
 func (o WlanPortalOutput) Auth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.Auth }).(pulumi.StringPtrOutput)
 }
@@ -22839,7 +22827,7 @@ func (o WlanPortalOutput) SponsorExpire() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *int { return v.SponsorExpire }).(pulumi.IntPtrOutput)
 }
 
-// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
 func (o WlanPortalOutput) SponsorLinkValidityDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SponsorLinkValidityDuration }).(pulumi.StringPtrOutput)
 }
@@ -23007,7 +22995,7 @@ func (o WlanPortalPtrOutput) AmazonExpire() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
 func (o WlanPortalPtrOutput) Auth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -23526,7 +23514,7 @@ func (o WlanPortalPtrOutput) SponsorExpire() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
 func (o WlanPortalPtrOutput) SponsorLinkValidityDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -27126,9 +27114,9 @@ func (o WlanQosPtrOutput) Overwrite() pulumi.BoolPtrOutput {
 }
 
 type WlanRadsec struct {
-	CoaEnabled  *bool `pulumi:"coaEnabled"`
-	Enabled     *bool `pulumi:"enabled"`
-	IdleTimeout *int  `pulumi:"idleTimeout"`
+	CoaEnabled  *bool   `pulumi:"coaEnabled"`
+	Enabled     *bool   `pulumi:"enabled"`
+	IdleTimeout *string `pulumi:"idleTimeout"`
 	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
 	MxclusterIds []string `pulumi:"mxclusterIds"`
 	// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
@@ -27155,9 +27143,9 @@ type WlanRadsecInput interface {
 }
 
 type WlanRadsecArgs struct {
-	CoaEnabled  pulumi.BoolPtrInput `pulumi:"coaEnabled"`
-	Enabled     pulumi.BoolPtrInput `pulumi:"enabled"`
-	IdleTimeout pulumi.IntPtrInput  `pulumi:"idleTimeout"`
+	CoaEnabled  pulumi.BoolPtrInput   `pulumi:"coaEnabled"`
+	Enabled     pulumi.BoolPtrInput   `pulumi:"enabled"`
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
 	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
 	MxclusterIds pulumi.StringArrayInput `pulumi:"mxclusterIds"`
 	// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
@@ -27257,8 +27245,8 @@ func (o WlanRadsecOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanRadsec) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-func (o WlanRadsecOutput) IdleTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WlanRadsec) *int { return v.IdleTimeout }).(pulumi.IntPtrOutput)
+func (o WlanRadsecOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanRadsec) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
 }
 
 // To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
@@ -27333,13 +27321,13 @@ func (o WlanRadsecPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o WlanRadsecPtrOutput) IdleTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WlanRadsec) *int {
+func (o WlanRadsecPtrOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanRadsec) *string {
 		if v == nil {
 			return nil
 		}
 		return v.IdleTimeout
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
@@ -29422,13 +29410,11 @@ type GetWlansSiteWlan struct {
 	// Bonjour gateway wlan settings
 	Bonjour GetWlansSiteWlanBonjour `pulumi:"bonjour"`
 	// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-	CiscoCwa GetWlansSiteWlanCiscoCwa `pulumi:"ciscoCwa"`
-	// In kbps
-	ClientLimitDown int `pulumi:"clientLimitDown"`
+	CiscoCwa        GetWlansSiteWlanCiscoCwa `pulumi:"ciscoCwa"`
+	ClientLimitDown string                   `pulumi:"clientLimitDown"`
 	// If downlink limiting per-client is enabled
-	ClientLimitDownEnabled bool `pulumi:"clientLimitDownEnabled"`
-	// In kbps
-	ClientLimitUp int `pulumi:"clientLimitUp"`
+	ClientLimitDownEnabled bool   `pulumi:"clientLimitDownEnabled"`
+	ClientLimitUp          string `pulumi:"clientLimitUp"`
 	// If uplink limiting per-client is enabled
 	ClientLimitUpEnabled bool `pulumi:"clientLimitUpEnabled"`
 	// List of COA (change of authorization) servers, optional
@@ -29555,13 +29541,11 @@ type GetWlansSiteWlan struct {
 	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
 	VlanIds []string `pulumi:"vlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
-	VlanPooling bool `pulumi:"vlanPooling"`
-	// In kbps
-	WlanLimitDown int `pulumi:"wlanLimitDown"`
+	VlanPooling   bool   `pulumi:"vlanPooling"`
+	WlanLimitDown string `pulumi:"wlanLimitDown"`
 	// If downlink limiting for whole wlan is enabled
-	WlanLimitDownEnabled bool `pulumi:"wlanLimitDownEnabled"`
-	// In kbps
-	WlanLimitUp int `pulumi:"wlanLimitUp"`
+	WlanLimitDownEnabled bool   `pulumi:"wlanLimitDownEnabled"`
+	WlanLimitUp          string `pulumi:"wlanLimitUp"`
 	// If uplink limiting for whole wlan is enabled
 	WlanLimitUpEnabled bool `pulumi:"wlanLimitUpEnabled"`
 	// List of wxtag_ids
@@ -29633,13 +29617,11 @@ type GetWlansSiteWlanArgs struct {
 	// Bonjour gateway wlan settings
 	Bonjour GetWlansSiteWlanBonjourInput `pulumi:"bonjour"`
 	// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-	CiscoCwa GetWlansSiteWlanCiscoCwaInput `pulumi:"ciscoCwa"`
-	// In kbps
-	ClientLimitDown pulumi.IntInput `pulumi:"clientLimitDown"`
+	CiscoCwa        GetWlansSiteWlanCiscoCwaInput `pulumi:"ciscoCwa"`
+	ClientLimitDown pulumi.StringInput            `pulumi:"clientLimitDown"`
 	// If downlink limiting per-client is enabled
-	ClientLimitDownEnabled pulumi.BoolInput `pulumi:"clientLimitDownEnabled"`
-	// In kbps
-	ClientLimitUp pulumi.IntInput `pulumi:"clientLimitUp"`
+	ClientLimitDownEnabled pulumi.BoolInput   `pulumi:"clientLimitDownEnabled"`
+	ClientLimitUp          pulumi.StringInput `pulumi:"clientLimitUp"`
 	// If uplink limiting per-client is enabled
 	ClientLimitUpEnabled pulumi.BoolInput `pulumi:"clientLimitUpEnabled"`
 	// List of COA (change of authorization) servers, optional
@@ -29766,13 +29748,11 @@ type GetWlansSiteWlanArgs struct {
 	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
 	VlanIds pulumi.StringArrayInput `pulumi:"vlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
-	VlanPooling pulumi.BoolInput `pulumi:"vlanPooling"`
-	// In kbps
-	WlanLimitDown pulumi.IntInput `pulumi:"wlanLimitDown"`
+	VlanPooling   pulumi.BoolInput   `pulumi:"vlanPooling"`
+	WlanLimitDown pulumi.StringInput `pulumi:"wlanLimitDown"`
 	// If downlink limiting for whole wlan is enabled
-	WlanLimitDownEnabled pulumi.BoolInput `pulumi:"wlanLimitDownEnabled"`
-	// In kbps
-	WlanLimitUp pulumi.IntInput `pulumi:"wlanLimitUp"`
+	WlanLimitDownEnabled pulumi.BoolInput   `pulumi:"wlanLimitDownEnabled"`
+	WlanLimitUp          pulumi.StringInput `pulumi:"wlanLimitUp"`
 	// If uplink limiting for whole wlan is enabled
 	WlanLimitUpEnabled pulumi.BoolInput `pulumi:"wlanLimitUpEnabled"`
 	// List of wxtag_ids
@@ -29959,9 +29939,8 @@ func (o GetWlansSiteWlanOutput) CiscoCwa() GetWlansSiteWlanCiscoCwaOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanCiscoCwa { return v.CiscoCwa }).(GetWlansSiteWlanCiscoCwaOutput)
 }
 
-// In kbps
-func (o GetWlansSiteWlanOutput) ClientLimitDown() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.ClientLimitDown }).(pulumi.IntOutput)
+func (o GetWlansSiteWlanOutput) ClientLimitDown() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.ClientLimitDown }).(pulumi.StringOutput)
 }
 
 // If downlink limiting per-client is enabled
@@ -29969,9 +29948,8 @@ func (o GetWlansSiteWlanOutput) ClientLimitDownEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.ClientLimitDownEnabled }).(pulumi.BoolOutput)
 }
 
-// In kbps
-func (o GetWlansSiteWlanOutput) ClientLimitUp() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.ClientLimitUp }).(pulumi.IntOutput)
+func (o GetWlansSiteWlanOutput) ClientLimitUp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.ClientLimitUp }).(pulumi.StringOutput)
 }
 
 // If uplink limiting per-client is enabled
@@ -30290,9 +30268,8 @@ func (o GetWlansSiteWlanOutput) VlanPooling() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.VlanPooling }).(pulumi.BoolOutput)
 }
 
-// In kbps
-func (o GetWlansSiteWlanOutput) WlanLimitDown() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.WlanLimitDown }).(pulumi.IntOutput)
+func (o GetWlansSiteWlanOutput) WlanLimitDown() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.WlanLimitDown }).(pulumi.StringOutput)
 }
 
 // If downlink limiting for whole wlan is enabled
@@ -30300,9 +30277,8 @@ func (o GetWlansSiteWlanOutput) WlanLimitDownEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.WlanLimitDownEnabled }).(pulumi.BoolOutput)
 }
 
-// In kbps
-func (o GetWlansSiteWlanOutput) WlanLimitUp() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.WlanLimitUp }).(pulumi.IntOutput)
+func (o GetWlansSiteWlanOutput) WlanLimitUp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.WlanLimitUp }).(pulumi.StringOutput)
 }
 
 // If uplink limiting for whole wlan is enabled
@@ -30353,8 +30329,7 @@ type GetWlansSiteWlanAcctServer struct {
 	KeywrapFormat string `pulumi:"keywrapFormat"`
 	KeywrapKek    string `pulumi:"keywrapKek"`
 	KeywrapMack   string `pulumi:"keywrapMack"`
-	// Acct port of RADIUS server
-	Port int `pulumi:"port"`
+	Port          string `pulumi:"port"`
 	// Secret of RADIUS server
 	Secret string `pulumi:"secret"`
 }
@@ -30378,8 +30353,7 @@ type GetWlansSiteWlanAcctServerArgs struct {
 	KeywrapFormat pulumi.StringInput `pulumi:"keywrapFormat"`
 	KeywrapKek    pulumi.StringInput `pulumi:"keywrapKek"`
 	KeywrapMack   pulumi.StringInput `pulumi:"keywrapMack"`
-	// Acct port of RADIUS server
-	Port pulumi.IntInput `pulumi:"port"`
+	Port          pulumi.StringInput `pulumi:"port"`
 	// Secret of RADIUS server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
@@ -30457,9 +30431,8 @@ func (o GetWlansSiteWlanAcctServerOutput) KeywrapMack() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAcctServer) string { return v.KeywrapMack }).(pulumi.StringOutput)
 }
 
-// Acct port of RADIUS server
-func (o GetWlansSiteWlanAcctServerOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWlansSiteWlanAcctServer) int { return v.Port }).(pulumi.IntOutput)
+func (o GetWlansSiteWlanAcctServerOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAcctServer) string { return v.Port }).(pulumi.StringOutput)
 }
 
 // Secret of RADIUS server
@@ -31092,8 +31065,7 @@ type GetWlansSiteWlanAuthServer struct {
 	KeywrapFormat string `pulumi:"keywrapFormat"`
 	KeywrapKek    string `pulumi:"keywrapKek"`
 	KeywrapMack   string `pulumi:"keywrapMack"`
-	// Auth port of RADIUS server
-	Port int `pulumi:"port"`
+	Port          string `pulumi:"port"`
 	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator bool `pulumi:"requireMessageAuthenticator"`
 	// Secret of RADIUS server
@@ -31119,8 +31091,7 @@ type GetWlansSiteWlanAuthServerArgs struct {
 	KeywrapFormat pulumi.StringInput `pulumi:"keywrapFormat"`
 	KeywrapKek    pulumi.StringInput `pulumi:"keywrapKek"`
 	KeywrapMack   pulumi.StringInput `pulumi:"keywrapMack"`
-	// Auth port of RADIUS server
-	Port pulumi.IntInput `pulumi:"port"`
+	Port          pulumi.StringInput `pulumi:"port"`
 	// Whether to require Message-Authenticator in requests
 	RequireMessageAuthenticator pulumi.BoolInput `pulumi:"requireMessageAuthenticator"`
 	// Secret of RADIUS server
@@ -31200,9 +31171,8 @@ func (o GetWlansSiteWlanAuthServerOutput) KeywrapMack() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanAuthServer) string { return v.KeywrapMack }).(pulumi.StringOutput)
 }
 
-// Auth port of RADIUS server
-func (o GetWlansSiteWlanAuthServerOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWlansSiteWlanAuthServer) int { return v.Port }).(pulumi.IntOutput)
+func (o GetWlansSiteWlanAuthServerOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuthServer) string { return v.Port }).(pulumi.StringOutput)
 }
 
 // Whether to require Message-Authenticator in requests
@@ -31504,7 +31474,7 @@ type GetWlansSiteWlanCoaServer struct {
 	DisableEventTimestampCheck bool   `pulumi:"disableEventTimestampCheck"`
 	Enabled                    bool   `pulumi:"enabled"`
 	Ip                         string `pulumi:"ip"`
-	Port                       int    `pulumi:"port"`
+	Port                       string `pulumi:"port"`
 	Secret                     string `pulumi:"secret"`
 }
 
@@ -31524,7 +31494,7 @@ type GetWlansSiteWlanCoaServerArgs struct {
 	DisableEventTimestampCheck pulumi.BoolInput   `pulumi:"disableEventTimestampCheck"`
 	Enabled                    pulumi.BoolInput   `pulumi:"enabled"`
 	Ip                         pulumi.StringInput `pulumi:"ip"`
-	Port                       pulumi.IntInput    `pulumi:"port"`
+	Port                       pulumi.StringInput `pulumi:"port"`
 	Secret                     pulumi.StringInput `pulumi:"secret"`
 }
 
@@ -31592,8 +31562,8 @@ func (o GetWlansSiteWlanCoaServerOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanCoaServer) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-func (o GetWlansSiteWlanCoaServerOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWlansSiteWlanCoaServer) int { return v.Port }).(pulumi.IntOutput)
+func (o GetWlansSiteWlanCoaServerOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanCoaServer) string { return v.Port }).(pulumi.StringOutput)
 }
 
 func (o GetWlansSiteWlanCoaServerOutput) Secret() pulumi.StringOutput {
@@ -32104,7 +32074,7 @@ type GetWlansSiteWlanPortal struct {
 	AmazonEnabled bool `pulumi:"amazonEnabled"`
 	// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
 	AmazonExpire int `pulumi:"amazonExpire"`
-	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
 	Auth string `pulumi:"auth"`
 	// Required if `azureEnabled`==`true`. Azure active directory app client id
 	AzureClientId string `pulumi:"azureClientId"`
@@ -32206,8 +32176,7 @@ type GetWlansSiteWlanPortal struct {
 	// Whether sponsor is enabled
 	SponsorEnabled bool `pulumi:"sponsorEnabled"`
 	// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
-	SponsorExpire int `pulumi:"sponsorExpire"`
-	// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+	SponsorExpire               int    `pulumi:"sponsorExpire"`
 	SponsorLinkValidityDuration string `pulumi:"sponsorLinkValidityDuration"`
 	// Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
 	SponsorNotifyAll bool `pulumi:"sponsorNotifyAll"`
@@ -32268,7 +32237,7 @@ type GetWlansSiteWlanPortalArgs struct {
 	AmazonEnabled pulumi.BoolInput `pulumi:"amazonEnabled"`
 	// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
 	AmazonExpire pulumi.IntInput `pulumi:"amazonExpire"`
-	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
 	Auth pulumi.StringInput `pulumi:"auth"`
 	// Required if `azureEnabled`==`true`. Azure active directory app client id
 	AzureClientId pulumi.StringInput `pulumi:"azureClientId"`
@@ -32370,8 +32339,7 @@ type GetWlansSiteWlanPortalArgs struct {
 	// Whether sponsor is enabled
 	SponsorEnabled pulumi.BoolInput `pulumi:"sponsorEnabled"`
 	// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
-	SponsorExpire pulumi.IntInput `pulumi:"sponsorExpire"`
-	// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+	SponsorExpire               pulumi.IntInput    `pulumi:"sponsorExpire"`
 	SponsorLinkValidityDuration pulumi.StringInput `pulumi:"sponsorLinkValidityDuration"`
 	// Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
 	SponsorNotifyAll pulumi.BoolInput `pulumi:"sponsorNotifyAll"`
@@ -32464,7 +32432,7 @@ func (o GetWlansSiteWlanPortalOutput) AmazonExpire() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) int { return v.AmazonExpire }).(pulumi.IntOutput)
 }
 
-// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
 func (o GetWlansSiteWlanPortalOutput) Auth() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.Auth }).(pulumi.StringOutput)
 }
@@ -32723,7 +32691,6 @@ func (o GetWlansSiteWlanPortalOutput) SponsorExpire() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) int { return v.SponsorExpire }).(pulumi.IntOutput)
 }
 
-// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
 func (o GetWlansSiteWlanPortalOutput) SponsorLinkValidityDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.SponsorLinkValidityDuration }).(pulumi.StringOutput)
 }
@@ -32869,9 +32836,9 @@ func (o GetWlansSiteWlanQosOutput) Overwrite() pulumi.BoolOutput {
 }
 
 type GetWlansSiteWlanRadsec struct {
-	CoaEnabled  bool `pulumi:"coaEnabled"`
-	Enabled     bool `pulumi:"enabled"`
-	IdleTimeout int  `pulumi:"idleTimeout"`
+	CoaEnabled  bool   `pulumi:"coaEnabled"`
+	Enabled     bool   `pulumi:"enabled"`
+	IdleTimeout string `pulumi:"idleTimeout"`
 	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
 	MxclusterIds []string `pulumi:"mxclusterIds"`
 	// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
@@ -32898,9 +32865,9 @@ type GetWlansSiteWlanRadsecInput interface {
 }
 
 type GetWlansSiteWlanRadsecArgs struct {
-	CoaEnabled  pulumi.BoolInput `pulumi:"coaEnabled"`
-	Enabled     pulumi.BoolInput `pulumi:"enabled"`
-	IdleTimeout pulumi.IntInput  `pulumi:"idleTimeout"`
+	CoaEnabled  pulumi.BoolInput   `pulumi:"coaEnabled"`
+	Enabled     pulumi.BoolInput   `pulumi:"enabled"`
+	IdleTimeout pulumi.StringInput `pulumi:"idleTimeout"`
 	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
 	MxclusterIds pulumi.StringArrayInput `pulumi:"mxclusterIds"`
 	// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
@@ -32949,8 +32916,8 @@ func (o GetWlansSiteWlanRadsecOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansSiteWlanRadsec) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-func (o GetWlansSiteWlanRadsecOutput) IdleTimeout() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWlansSiteWlanRadsec) int { return v.IdleTimeout }).(pulumi.IntOutput)
+func (o GetWlansSiteWlanRadsecOutput) IdleTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanRadsec) string { return v.IdleTimeout }).(pulumi.StringOutput)
 }
 
 // To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids

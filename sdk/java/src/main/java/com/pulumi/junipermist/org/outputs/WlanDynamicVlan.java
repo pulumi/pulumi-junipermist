@@ -4,7 +4,6 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -19,7 +18,7 @@ public final class WlanDynamicVlan {
      * @return Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
      * 
      */
-    private List<String> defaultVlanIds;
+    private @Nullable List<String> defaultVlanIds;
     /**
      * @return Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
      * 
@@ -49,7 +48,7 @@ public final class WlanDynamicVlan {
      * 
      */
     public List<String> defaultVlanIds() {
-        return this.defaultVlanIds;
+        return this.defaultVlanIds == null ? List.of() : this.defaultVlanIds;
     }
     /**
      * @return Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
@@ -91,7 +90,7 @@ public final class WlanDynamicVlan {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> defaultVlanIds;
+        private @Nullable List<String> defaultVlanIds;
         private @Nullable Boolean enabled;
         private @Nullable List<String> localVlanIds;
         private @Nullable String type;
@@ -107,10 +106,8 @@ public final class WlanDynamicVlan {
         }
 
         @CustomType.Setter
-        public Builder defaultVlanIds(List<String> defaultVlanIds) {
-            if (defaultVlanIds == null) {
-              throw new MissingRequiredPropertyException("WlanDynamicVlan", "defaultVlanIds");
-            }
+        public Builder defaultVlanIds(@Nullable List<String> defaultVlanIds) {
+
             this.defaultVlanIds = defaultVlanIds;
             return this;
         }

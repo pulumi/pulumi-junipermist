@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     {
         public readonly bool CoaEnabled;
         public readonly bool Enabled;
-        public readonly int IdleTimeout;
+        public readonly string IdleTimeout;
         /// <summary>
         /// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
         /// </summary>
@@ -47,7 +47,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             bool enabled,
 
-            int idleTimeout,
+            string idleTimeout,
 
             ImmutableArray<string> mxclusterIds,
 

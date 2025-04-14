@@ -5,7 +5,6 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.org.inputs.WlanBonjourServicesArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -24,15 +23,15 @@ public final class WlanBonjourArgs extends com.pulumi.resources.ResourceArgs {
      * additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
      * 
      */
-    @Import(name="additionalVlanIds", required=true)
-    private Output<List<String>> additionalVlanIds;
+    @Import(name="additionalVlanIds")
+    private @Nullable Output<List<String>> additionalVlanIds;
 
     /**
      * @return additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
      * 
      */
-    public Output<List<String>> additionalVlanIds() {
-        return this.additionalVlanIds;
+    public Optional<Output<List<String>>> additionalVlanIds() {
+        return Optional.ofNullable(this.additionalVlanIds);
     }
 
     /**
@@ -55,16 +54,16 @@ public final class WlanBonjourArgs extends com.pulumi.resources.ResourceArgs {
      * Property key is the service name
      * 
      */
-    @Import(name="services", required=true)
-    private Output<Map<String,WlanBonjourServicesArgs>> services;
+    @Import(name="services")
+    private @Nullable Output<Map<String,WlanBonjourServicesArgs>> services;
 
     /**
      * @return What services are allowed.
      * Property key is the service name
      * 
      */
-    public Output<Map<String,WlanBonjourServicesArgs>> services() {
-        return this.services;
+    public Optional<Output<Map<String,WlanBonjourServicesArgs>>> services() {
+        return Optional.ofNullable(this.services);
     }
 
     private WlanBonjourArgs() {}
@@ -99,7 +98,7 @@ public final class WlanBonjourArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder additionalVlanIds(Output<List<String>> additionalVlanIds) {
+        public Builder additionalVlanIds(@Nullable Output<List<String>> additionalVlanIds) {
             $.additionalVlanIds = additionalVlanIds;
             return this;
         }
@@ -152,7 +151,7 @@ public final class WlanBonjourArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder services(Output<Map<String,WlanBonjourServicesArgs>> services) {
+        public Builder services(@Nullable Output<Map<String,WlanBonjourServicesArgs>> services) {
             $.services = services;
             return this;
         }
@@ -169,12 +168,6 @@ public final class WlanBonjourArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WlanBonjourArgs build() {
-            if ($.additionalVlanIds == null) {
-                throw new MissingRequiredPropertyException("WlanBonjourArgs", "additionalVlanIds");
-            }
-            if ($.services == null) {
-                throw new MissingRequiredPropertyException("WlanBonjourArgs", "services");
-            }
             return $;
         }
     }
