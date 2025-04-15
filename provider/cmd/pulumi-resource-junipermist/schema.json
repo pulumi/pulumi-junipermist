@@ -29357,7 +29357,8 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "configRevertTimer"
+                        "configRevertTimer",
+                        "useMxedgeProxy"
                     ]
                 }
             }
@@ -30090,6 +30091,8 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "adminSshkeys",
+                        "probeHosts",
                         "securityLogSourceInterface"
                     ]
                 }
@@ -30410,6 +30413,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "allowedVlanIds",
                         "enabled",
                         "honeypotEnabled",
                         "minDuration",
@@ -30846,6 +30850,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "emailNotifiers",
                         "enabled",
                         "threshold"
                     ]
@@ -45790,14 +45795,28 @@
                 }
             },
             "required": [
+                "analytic",
+                "autoUpgrade",
                 "blacklistUrl",
                 "configAutoRevert",
                 "enableUnii4",
+                "engagement",
+                "gatewayMgmt",
+                "led",
+                "occupancy",
                 "persistConfigOnDevice",
+                "rogue",
+                "rtsa",
                 "siteId",
                 "sshKeys",
+                "ssr",
+                "syntheticTest",
+                "uplinkPortConfig",
                 "watchedStationUrl",
-                "whitelistUrl"
+                "whitelistUrl",
+                "wids",
+                "wifi",
+                "zoneOccupancyAlert"
             ],
             "inputProperties": {
                 "analytic": {
