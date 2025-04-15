@@ -32,13 +32,13 @@ import (
 type Setting struct {
 	pulumi.CustomResourceState
 
-	Analytic SettingAnalyticPtrOutput `pulumi:"analytic"`
+	Analytic SettingAnalyticOutput `pulumi:"analytic"`
 	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrOutput `pulumi:"apUpdownThreshold"`
 	// Auto Upgrade Settings
-	AutoUpgrade  SettingAutoUpgradePtrOutput `pulumi:"autoUpgrade"`
-	BlacklistUrl pulumi.StringOutput         `pulumi:"blacklistUrl"`
+	AutoUpgrade  SettingAutoUpgradeOutput `pulumi:"autoUpgrade"`
+	BlacklistUrl pulumi.StringOutput      `pulumi:"blacklistUrl"`
 	// BLE AP settings
 	BleConfig SettingBleConfigPtrOutput `pulumi:"bleConfig"`
 	// Whether to enable ap auto config revert
@@ -53,17 +53,17 @@ type Setting struct {
 	EnableUnii4           pulumi.BoolOutput   `pulumi:"enableUnii4"`
 	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
 	// ranges for the same day
-	Engagement SettingEngagementPtrOutput `pulumi:"engagement"`
+	Engagement SettingEngagementOutput `pulumi:"engagement"`
 	// Gateway Site settings
-	GatewayMgmt SettingGatewayMgmtPtrOutput `pulumi:"gatewayMgmt"`
+	GatewayMgmt SettingGatewayMgmtOutput `pulumi:"gatewayMgmt"`
 	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 	// `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold pulumi.IntPtrOutput        `pulumi:"gatewayUpdownThreshold"`
 	JuniperSrx             SettingJuniperSrxPtrOutput `pulumi:"juniperSrx"`
 	// LED AP settings
-	Led SettingLedPtrOutput `pulumi:"led"`
+	Led SettingLedOutput `pulumi:"led"`
 	// Occupancy Analytics settings
-	Occupancy SettingOccupancyPtrOutput `pulumi:"occupancy"`
+	Occupancy SettingOccupancyOutput `pulumi:"occupancy"`
 	// Whether to store the config on AP
 	PersistConfigOnDevice pulumi.BoolOutput `pulumi:"persistConfigOnDevice"`
 	// Proxy Configuration to talk to Mist
@@ -74,9 +74,9 @@ type Setting struct {
 	// serial number, battery %, temperature, humidity)
 	ReportGatt pulumi.BoolPtrOutput `pulumi:"reportGatt"`
 	// Rogue site settings
-	Rogue SettingRoguePtrOutput `pulumi:"rogue"`
+	Rogue SettingRogueOutput `pulumi:"rogue"`
 	// Managed mobility
-	Rtsa SettingRtsaPtrOutput `pulumi:"rtsa"`
+	Rtsa SettingRtsaOutput `pulumi:"rtsa"`
 	// Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
 	// window, there are more than Y distinct client encountering over X failures
 	SimpleAlert SettingSimpleAlertPtrOutput `pulumi:"simpleAlert"`
@@ -86,15 +86,15 @@ type Setting struct {
 	// When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
 	// Org:Setting)
 	SshKeys pulumi.StringArrayOutput `pulumi:"sshKeys"`
-	Ssr     SettingSsrPtrOutput      `pulumi:"ssr"`
+	Ssr     SettingSsrOutput         `pulumi:"ssr"`
 	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
-	SwitchUpdownThreshold pulumi.IntPtrOutput           `pulumi:"switchUpdownThreshold"`
-	SyntheticTest         SettingSyntheticTestPtrOutput `pulumi:"syntheticTest"`
+	SwitchUpdownThreshold pulumi.IntPtrOutput        `pulumi:"switchUpdownThreshold"`
+	SyntheticTest         SettingSyntheticTestOutput `pulumi:"syntheticTest"`
 	// Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
 	TrackAnonymousDevices pulumi.BoolPtrOutput `pulumi:"trackAnonymousDevices"`
 	// AP Uplink port configuration
-	UplinkPortConfig SettingUplinkPortConfigPtrOutput `pulumi:"uplinkPortConfig"`
+	UplinkPortConfig SettingUplinkPortConfigOutput `pulumi:"uplinkPortConfig"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapOutput `pulumi:"vars"`
 	Vna  SettingVnaPtrOutput    `pulumi:"vna"`
@@ -104,12 +104,12 @@ type Setting struct {
 	WatchedStationUrl pulumi.StringOutput        `pulumi:"watchedStationUrl"`
 	WhitelistUrl      pulumi.StringOutput        `pulumi:"whitelistUrl"`
 	// WIDS site settings
-	Wids SettingWidsPtrOutput `pulumi:"wids"`
+	Wids SettingWidsOutput `pulumi:"wids"`
 	// Wi-Fi site settings
-	Wifi     SettingWifiPtrOutput     `pulumi:"wifi"`
+	Wifi     SettingWifiOutput        `pulumi:"wifi"`
 	WiredVna SettingWiredVnaPtrOutput `pulumi:"wiredVna"`
 	// Zone Occupancy alert site settings
-	ZoneOccupancyAlert SettingZoneOccupancyAlertPtrOutput `pulumi:"zoneOccupancyAlert"`
+	ZoneOccupancyAlert SettingZoneOccupancyAlertOutput `pulumi:"zoneOccupancyAlert"`
 }
 
 // NewSetting registers a new resource with the given unique name, arguments, and options.
@@ -554,8 +554,8 @@ func (o SettingOutput) ToSettingOutputWithContext(ctx context.Context) SettingOu
 	return o
 }
 
-func (o SettingOutput) Analytic() SettingAnalyticPtrOutput {
-	return o.ApplyT(func(v *Setting) SettingAnalyticPtrOutput { return v.Analytic }).(SettingAnalyticPtrOutput)
+func (o SettingOutput) Analytic() SettingAnalyticOutput {
+	return o.ApplyT(func(v *Setting) SettingAnalyticOutput { return v.Analytic }).(SettingAnalyticOutput)
 }
 
 // Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
@@ -565,8 +565,8 @@ func (o SettingOutput) ApUpdownThreshold() pulumi.IntPtrOutput {
 }
 
 // Auto Upgrade Settings
-func (o SettingOutput) AutoUpgrade() SettingAutoUpgradePtrOutput {
-	return o.ApplyT(func(v *Setting) SettingAutoUpgradePtrOutput { return v.AutoUpgrade }).(SettingAutoUpgradePtrOutput)
+func (o SettingOutput) AutoUpgrade() SettingAutoUpgradeOutput {
+	return o.ApplyT(func(v *Setting) SettingAutoUpgradeOutput { return v.AutoUpgrade }).(SettingAutoUpgradeOutput)
 }
 
 func (o SettingOutput) BlacklistUrl() pulumi.StringOutput {
@@ -605,13 +605,13 @@ func (o SettingOutput) EnableUnii4() pulumi.BoolOutput {
 
 // **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
 // ranges for the same day
-func (o SettingOutput) Engagement() SettingEngagementPtrOutput {
-	return o.ApplyT(func(v *Setting) SettingEngagementPtrOutput { return v.Engagement }).(SettingEngagementPtrOutput)
+func (o SettingOutput) Engagement() SettingEngagementOutput {
+	return o.ApplyT(func(v *Setting) SettingEngagementOutput { return v.Engagement }).(SettingEngagementOutput)
 }
 
 // Gateway Site settings
-func (o SettingOutput) GatewayMgmt() SettingGatewayMgmtPtrOutput {
-	return o.ApplyT(func(v *Setting) SettingGatewayMgmtPtrOutput { return v.GatewayMgmt }).(SettingGatewayMgmtPtrOutput)
+func (o SettingOutput) GatewayMgmt() SettingGatewayMgmtOutput {
+	return o.ApplyT(func(v *Setting) SettingGatewayMgmtOutput { return v.GatewayMgmt }).(SettingGatewayMgmtOutput)
 }
 
 // Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
@@ -625,13 +625,13 @@ func (o SettingOutput) JuniperSrx() SettingJuniperSrxPtrOutput {
 }
 
 // LED AP settings
-func (o SettingOutput) Led() SettingLedPtrOutput {
-	return o.ApplyT(func(v *Setting) SettingLedPtrOutput { return v.Led }).(SettingLedPtrOutput)
+func (o SettingOutput) Led() SettingLedOutput {
+	return o.ApplyT(func(v *Setting) SettingLedOutput { return v.Led }).(SettingLedOutput)
 }
 
 // Occupancy Analytics settings
-func (o SettingOutput) Occupancy() SettingOccupancyPtrOutput {
-	return o.ApplyT(func(v *Setting) SettingOccupancyPtrOutput { return v.Occupancy }).(SettingOccupancyPtrOutput)
+func (o SettingOutput) Occupancy() SettingOccupancyOutput {
+	return o.ApplyT(func(v *Setting) SettingOccupancyOutput { return v.Occupancy }).(SettingOccupancyOutput)
 }
 
 // Whether to store the config on AP
@@ -656,13 +656,13 @@ func (o SettingOutput) ReportGatt() pulumi.BoolPtrOutput {
 }
 
 // Rogue site settings
-func (o SettingOutput) Rogue() SettingRoguePtrOutput {
-	return o.ApplyT(func(v *Setting) SettingRoguePtrOutput { return v.Rogue }).(SettingRoguePtrOutput)
+func (o SettingOutput) Rogue() SettingRogueOutput {
+	return o.ApplyT(func(v *Setting) SettingRogueOutput { return v.Rogue }).(SettingRogueOutput)
 }
 
 // Managed mobility
-func (o SettingOutput) Rtsa() SettingRtsaPtrOutput {
-	return o.ApplyT(func(v *Setting) SettingRtsaPtrOutput { return v.Rtsa }).(SettingRtsaPtrOutput)
+func (o SettingOutput) Rtsa() SettingRtsaOutput {
+	return o.ApplyT(func(v *Setting) SettingRtsaOutput { return v.Rtsa }).(SettingRtsaOutput)
 }
 
 // Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
@@ -689,8 +689,8 @@ func (o SettingOutput) SshKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Setting) pulumi.StringArrayOutput { return v.SshKeys }).(pulumi.StringArrayOutput)
 }
 
-func (o SettingOutput) Ssr() SettingSsrPtrOutput {
-	return o.ApplyT(func(v *Setting) SettingSsrPtrOutput { return v.Ssr }).(SettingSsrPtrOutput)
+func (o SettingOutput) Ssr() SettingSsrOutput {
+	return o.ApplyT(func(v *Setting) SettingSsrOutput { return v.Ssr }).(SettingSsrOutput)
 }
 
 // Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
@@ -699,8 +699,8 @@ func (o SettingOutput) SwitchUpdownThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.SwitchUpdownThreshold }).(pulumi.IntPtrOutput)
 }
 
-func (o SettingOutput) SyntheticTest() SettingSyntheticTestPtrOutput {
-	return o.ApplyT(func(v *Setting) SettingSyntheticTestPtrOutput { return v.SyntheticTest }).(SettingSyntheticTestPtrOutput)
+func (o SettingOutput) SyntheticTest() SettingSyntheticTestOutput {
+	return o.ApplyT(func(v *Setting) SettingSyntheticTestOutput { return v.SyntheticTest }).(SettingSyntheticTestOutput)
 }
 
 // Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
@@ -709,8 +709,8 @@ func (o SettingOutput) TrackAnonymousDevices() pulumi.BoolPtrOutput {
 }
 
 // AP Uplink port configuration
-func (o SettingOutput) UplinkPortConfig() SettingUplinkPortConfigPtrOutput {
-	return o.ApplyT(func(v *Setting) SettingUplinkPortConfigPtrOutput { return v.UplinkPortConfig }).(SettingUplinkPortConfigPtrOutput)
+func (o SettingOutput) UplinkPortConfig() SettingUplinkPortConfigOutput {
+	return o.ApplyT(func(v *Setting) SettingUplinkPortConfigOutput { return v.UplinkPortConfig }).(SettingUplinkPortConfigOutput)
 }
 
 // Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
@@ -740,13 +740,13 @@ func (o SettingOutput) WhitelistUrl() pulumi.StringOutput {
 }
 
 // WIDS site settings
-func (o SettingOutput) Wids() SettingWidsPtrOutput {
-	return o.ApplyT(func(v *Setting) SettingWidsPtrOutput { return v.Wids }).(SettingWidsPtrOutput)
+func (o SettingOutput) Wids() SettingWidsOutput {
+	return o.ApplyT(func(v *Setting) SettingWidsOutput { return v.Wids }).(SettingWidsOutput)
 }
 
 // Wi-Fi site settings
-func (o SettingOutput) Wifi() SettingWifiPtrOutput {
-	return o.ApplyT(func(v *Setting) SettingWifiPtrOutput { return v.Wifi }).(SettingWifiPtrOutput)
+func (o SettingOutput) Wifi() SettingWifiOutput {
+	return o.ApplyT(func(v *Setting) SettingWifiOutput { return v.Wifi }).(SettingWifiOutput)
 }
 
 func (o SettingOutput) WiredVna() SettingWiredVnaPtrOutput {
@@ -754,8 +754,8 @@ func (o SettingOutput) WiredVna() SettingWiredVnaPtrOutput {
 }
 
 // Zone Occupancy alert site settings
-func (o SettingOutput) ZoneOccupancyAlert() SettingZoneOccupancyAlertPtrOutput {
-	return o.ApplyT(func(v *Setting) SettingZoneOccupancyAlertPtrOutput { return v.ZoneOccupancyAlert }).(SettingZoneOccupancyAlertPtrOutput)
+func (o SettingOutput) ZoneOccupancyAlert() SettingZoneOccupancyAlertOutput {
+	return o.ApplyT(func(v *Setting) SettingZoneOccupancyAlertOutput { return v.ZoneOccupancyAlert }).(SettingZoneOccupancyAlertOutput)
 }
 
 type SettingArrayOutput struct{ *pulumi.OutputState }

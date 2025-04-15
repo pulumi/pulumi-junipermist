@@ -1643,7 +1643,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def analytic(self) -> pulumi.Output[Optional['outputs.SettingAnalytic']]:
+    def analytic(self) -> pulumi.Output['outputs.SettingAnalytic']:
         return pulumi.get(self, "analytic")
 
     @property
@@ -1657,7 +1657,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoUpgrade")
-    def auto_upgrade(self) -> pulumi.Output[Optional['outputs.SettingAutoUpgrade']]:
+    def auto_upgrade(self) -> pulumi.Output['outputs.SettingAutoUpgrade']:
         """
         Auto Upgrade Settings
         """
@@ -1716,7 +1716,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def engagement(self) -> pulumi.Output[Optional['outputs.SettingEngagement']]:
+    def engagement(self) -> pulumi.Output['outputs.SettingEngagement']:
         """
         **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
         ranges for the same day
@@ -1725,7 +1725,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gatewayMgmt")
-    def gateway_mgmt(self) -> pulumi.Output[Optional['outputs.SettingGatewayMgmt']]:
+    def gateway_mgmt(self) -> pulumi.Output['outputs.SettingGatewayMgmt']:
         """
         Gateway Site settings
         """
@@ -1747,7 +1747,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def led(self) -> pulumi.Output[Optional['outputs.SettingLed']]:
+    def led(self) -> pulumi.Output['outputs.SettingLed']:
         """
         LED AP settings
         """
@@ -1755,7 +1755,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def occupancy(self) -> pulumi.Output[Optional['outputs.SettingOccupancy']]:
+    def occupancy(self) -> pulumi.Output['outputs.SettingOccupancy']:
         """
         Occupancy Analytics settings
         """
@@ -1796,7 +1796,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rogue(self) -> pulumi.Output[Optional['outputs.SettingRogue']]:
+    def rogue(self) -> pulumi.Output['outputs.SettingRogue']:
         """
         Rogue site settings
         """
@@ -1804,7 +1804,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rtsa(self) -> pulumi.Output[Optional['outputs.SettingRtsa']]:
+    def rtsa(self) -> pulumi.Output['outputs.SettingRtsa']:
         """
         Managed mobility
         """
@@ -1845,7 +1845,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ssr(self) -> pulumi.Output[Optional['outputs.SettingSsr']]:
+    def ssr(self) -> pulumi.Output['outputs.SettingSsr']:
         return pulumi.get(self, "ssr")
 
     @property
@@ -1859,7 +1859,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="syntheticTest")
-    def synthetic_test(self) -> pulumi.Output[Optional['outputs.SettingSyntheticTest']]:
+    def synthetic_test(self) -> pulumi.Output['outputs.SettingSyntheticTest']:
         return pulumi.get(self, "synthetic_test")
 
     @property
@@ -1872,7 +1872,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="uplinkPortConfig")
-    def uplink_port_config(self) -> pulumi.Output[Optional['outputs.SettingUplinkPortConfig']]:
+    def uplink_port_config(self) -> pulumi.Output['outputs.SettingUplinkPortConfig']:
         """
         AP Uplink port configuration
         """
@@ -1916,7 +1916,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def wids(self) -> pulumi.Output[Optional['outputs.SettingWids']]:
+    def wids(self) -> pulumi.Output['outputs.SettingWids']:
         """
         WIDS site settings
         """
@@ -1924,7 +1924,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def wifi(self) -> pulumi.Output[Optional['outputs.SettingWifi']]:
+    def wifi(self) -> pulumi.Output['outputs.SettingWifi']:
         """
         Wi-Fi site settings
         """
@@ -1937,7 +1937,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneOccupancyAlert")
-    def zone_occupancy_alert(self) -> pulumi.Output[Optional['outputs.SettingZoneOccupancyAlert']]:
+    def zone_occupancy_alert(self) -> pulumi.Output['outputs.SettingZoneOccupancyAlert']:
         """
         Zone Occupancy alert site settings
         """

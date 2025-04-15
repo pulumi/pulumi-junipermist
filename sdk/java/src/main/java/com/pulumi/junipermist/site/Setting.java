@@ -72,10 +72,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:site/setting:Setting")
 public class Setting extends com.pulumi.resources.CustomResource {
     @Export(name="analytic", refs={SettingAnalytic.class}, tree="[0]")
-    private Output</* @Nullable */ SettingAnalytic> analytic;
+    private Output<SettingAnalytic> analytic;
 
-    public Output<Optional<SettingAnalytic>> analytic() {
-        return Codegen.optional(this.analytic);
+    public Output<SettingAnalytic> analytic() {
+        return this.analytic;
     }
     /**
      * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
@@ -98,14 +98,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="autoUpgrade", refs={SettingAutoUpgrade.class}, tree="[0]")
-    private Output</* @Nullable */ SettingAutoUpgrade> autoUpgrade;
+    private Output<SettingAutoUpgrade> autoUpgrade;
 
     /**
      * @return Auto Upgrade Settings
      * 
      */
-    public Output<Optional<SettingAutoUpgrade>> autoUpgrade() {
-        return Codegen.optional(this.autoUpgrade);
+    public Output<SettingAutoUpgrade> autoUpgrade() {
+        return this.autoUpgrade;
     }
     @Export(name="blacklistUrl", refs={String.class}, tree="[0]")
     private Output<String> blacklistUrl;
@@ -197,29 +197,29 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="engagement", refs={SettingEngagement.class}, tree="[0]")
-    private Output</* @Nullable */ SettingEngagement> engagement;
+    private Output<SettingEngagement> engagement;
 
     /**
      * @return **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently, we don&#39;t allow multiple
      * ranges for the same day
      * 
      */
-    public Output<Optional<SettingEngagement>> engagement() {
-        return Codegen.optional(this.engagement);
+    public Output<SettingEngagement> engagement() {
+        return this.engagement;
     }
     /**
      * Gateway Site settings
      * 
      */
     @Export(name="gatewayMgmt", refs={SettingGatewayMgmt.class}, tree="[0]")
-    private Output</* @Nullable */ SettingGatewayMgmt> gatewayMgmt;
+    private Output<SettingGatewayMgmt> gatewayMgmt;
 
     /**
      * @return Gateway Site settings
      * 
      */
-    public Output<Optional<SettingGatewayMgmt>> gatewayMgmt() {
-        return Codegen.optional(this.gatewayMgmt);
+    public Output<SettingGatewayMgmt> gatewayMgmt() {
+        return this.gatewayMgmt;
     }
     /**
      * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
@@ -248,28 +248,28 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="led", refs={SettingLed.class}, tree="[0]")
-    private Output</* @Nullable */ SettingLed> led;
+    private Output<SettingLed> led;
 
     /**
      * @return LED AP settings
      * 
      */
-    public Output<Optional<SettingLed>> led() {
-        return Codegen.optional(this.led);
+    public Output<SettingLed> led() {
+        return this.led;
     }
     /**
      * Occupancy Analytics settings
      * 
      */
     @Export(name="occupancy", refs={SettingOccupancy.class}, tree="[0]")
-    private Output</* @Nullable */ SettingOccupancy> occupancy;
+    private Output<SettingOccupancy> occupancy;
 
     /**
      * @return Occupancy Analytics settings
      * 
      */
-    public Output<Optional<SettingOccupancy>> occupancy() {
-        return Codegen.optional(this.occupancy);
+    public Output<SettingOccupancy> occupancy() {
+        return this.occupancy;
     }
     /**
      * Whether to store the config on AP
@@ -334,28 +334,28 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="rogue", refs={SettingRogue.class}, tree="[0]")
-    private Output</* @Nullable */ SettingRogue> rogue;
+    private Output<SettingRogue> rogue;
 
     /**
      * @return Rogue site settings
      * 
      */
-    public Output<Optional<SettingRogue>> rogue() {
-        return Codegen.optional(this.rogue);
+    public Output<SettingRogue> rogue() {
+        return this.rogue;
     }
     /**
      * Managed mobility
      * 
      */
     @Export(name="rtsa", refs={SettingRtsa.class}, tree="[0]")
-    private Output</* @Nullable */ SettingRtsa> rtsa;
+    private Output<SettingRtsa> rtsa;
 
     /**
      * @return Managed mobility
      * 
      */
-    public Output<Optional<SettingRtsa>> rtsa() {
-        return Codegen.optional(this.rtsa);
+    public Output<SettingRtsa> rtsa() {
+        return this.rtsa;
     }
     /**
      * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
@@ -408,10 +408,10 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return this.sshKeys;
     }
     @Export(name="ssr", refs={SettingSsr.class}, tree="[0]")
-    private Output</* @Nullable */ SettingSsr> ssr;
+    private Output<SettingSsr> ssr;
 
-    public Output<Optional<SettingSsr>> ssr() {
-        return Codegen.optional(this.ssr);
+    public Output<SettingSsr> ssr() {
+        return this.ssr;
     }
     /**
      * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
@@ -430,10 +430,10 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.switchUpdownThreshold);
     }
     @Export(name="syntheticTest", refs={SettingSyntheticTest.class}, tree="[0]")
-    private Output</* @Nullable */ SettingSyntheticTest> syntheticTest;
+    private Output<SettingSyntheticTest> syntheticTest;
 
-    public Output<Optional<SettingSyntheticTest>> syntheticTest() {
-        return Codegen.optional(this.syntheticTest);
+    public Output<SettingSyntheticTest> syntheticTest() {
+        return this.syntheticTest;
     }
     /**
      * Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
@@ -454,14 +454,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="uplinkPortConfig", refs={SettingUplinkPortConfig.class}, tree="[0]")
-    private Output</* @Nullable */ SettingUplinkPortConfig> uplinkPortConfig;
+    private Output<SettingUplinkPortConfig> uplinkPortConfig;
 
     /**
      * @return AP Uplink port configuration
      * 
      */
-    public Output<Optional<SettingUplinkPortConfig>> uplinkPortConfig() {
-        return Codegen.optional(this.uplinkPortConfig);
+    public Output<SettingUplinkPortConfig> uplinkPortConfig() {
+        return this.uplinkPortConfig;
     }
     /**
      * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
@@ -520,28 +520,28 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="wids", refs={SettingWids.class}, tree="[0]")
-    private Output</* @Nullable */ SettingWids> wids;
+    private Output<SettingWids> wids;
 
     /**
      * @return WIDS site settings
      * 
      */
-    public Output<Optional<SettingWids>> wids() {
-        return Codegen.optional(this.wids);
+    public Output<SettingWids> wids() {
+        return this.wids;
     }
     /**
      * Wi-Fi site settings
      * 
      */
     @Export(name="wifi", refs={SettingWifi.class}, tree="[0]")
-    private Output</* @Nullable */ SettingWifi> wifi;
+    private Output<SettingWifi> wifi;
 
     /**
      * @return Wi-Fi site settings
      * 
      */
-    public Output<Optional<SettingWifi>> wifi() {
-        return Codegen.optional(this.wifi);
+    public Output<SettingWifi> wifi() {
+        return this.wifi;
     }
     @Export(name="wiredVna", refs={SettingWiredVna.class}, tree="[0]")
     private Output</* @Nullable */ SettingWiredVna> wiredVna;
@@ -554,14 +554,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneOccupancyAlert", refs={SettingZoneOccupancyAlert.class}, tree="[0]")
-    private Output</* @Nullable */ SettingZoneOccupancyAlert> zoneOccupancyAlert;
+    private Output<SettingZoneOccupancyAlert> zoneOccupancyAlert;
 
     /**
      * @return Zone Occupancy alert site settings
      * 
      */
-    public Output<Optional<SettingZoneOccupancyAlert>> zoneOccupancyAlert() {
-        return Codegen.optional(this.zoneOccupancyAlert);
+    public Output<SettingZoneOccupancyAlert> zoneOccupancyAlert() {
+        return this.zoneOccupancyAlert;
     }
 
     /**
