@@ -17692,7 +17692,7 @@ Please update your configurations.
         /**
          * To use mxedge as proxy
          */
-        useMxedgeProxy?: boolean;
+        useMxedgeProxy: boolean;
     }
 
     export interface NetworktemplateSwitchMgmtLocalAccounts {
@@ -18084,7 +18084,7 @@ Please update your configurations.
         /**
          * For SSR only, as direct root access is not allowed
          */
-        adminSshkeys?: string[];
+        adminSshkeys: string[];
         appProbing?: outputs.site.SettingGatewayMgmtAppProbing;
         /**
          * Consumes uplink bandwidth, requires WA license
@@ -18108,7 +18108,7 @@ Please update your configurations.
          */
         disableUsb?: boolean;
         fipsEnabled?: boolean;
-        probeHosts?: string[];
+        probeHosts: string[];
         /**
          * Restrict inbound-traffic to host
          * when enabled, all traffic that is not essential to our operation will be dropped 
@@ -18245,7 +18245,7 @@ Please update your configurations.
         /**
          * list of VLAN IDs on which rogue APs are ignored
          */
-        allowedVlanIds?: number[];
+        allowedVlanIds: number[];
         /**
          * Whether rogue detection is enabled
          */
@@ -18463,7 +18463,7 @@ Please update your configurations.
         /**
          * List of email addresses to send email notifications when the alert threshold is reached
          */
-        emailNotifiers?: string[];
+        emailNotifiers: string[];
         /**
          * Indicate whether zone occupancy alert is enabled for the site
          */

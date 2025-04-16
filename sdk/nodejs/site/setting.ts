@@ -53,7 +53,7 @@ export class Setting extends pulumi.CustomResource {
         return obj['__pulumiType'] === Setting.__pulumiType;
     }
 
-    public readonly analytic!: pulumi.Output<outputs.site.SettingAnalytic | undefined>;
+    public readonly analytic!: pulumi.Output<outputs.site.SettingAnalytic>;
     /**
      * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
      * `deviceUpdownThreshold` is ignored.
@@ -62,7 +62,7 @@ export class Setting extends pulumi.CustomResource {
     /**
      * Auto Upgrade Settings
      */
-    public readonly autoUpgrade!: pulumi.Output<outputs.site.SettingAutoUpgrade | undefined>;
+    public readonly autoUpgrade!: pulumi.Output<outputs.site.SettingAutoUpgrade>;
     public /*out*/ readonly blacklistUrl!: pulumi.Output<string>;
     /**
      * BLE AP settings
@@ -90,11 +90,11 @@ export class Setting extends pulumi.CustomResource {
      * **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
      * ranges for the same day
      */
-    public readonly engagement!: pulumi.Output<outputs.site.SettingEngagement | undefined>;
+    public readonly engagement!: pulumi.Output<outputs.site.SettingEngagement>;
     /**
      * Gateway Site settings
      */
-    public readonly gatewayMgmt!: pulumi.Output<outputs.site.SettingGatewayMgmt | undefined>;
+    public readonly gatewayMgmt!: pulumi.Output<outputs.site.SettingGatewayMgmt>;
     /**
      * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
      * `deviceUpdownThreshold` is ignored.
@@ -104,11 +104,11 @@ export class Setting extends pulumi.CustomResource {
     /**
      * LED AP settings
      */
-    public readonly led!: pulumi.Output<outputs.site.SettingLed | undefined>;
+    public readonly led!: pulumi.Output<outputs.site.SettingLed>;
     /**
      * Occupancy Analytics settings
      */
-    public readonly occupancy!: pulumi.Output<outputs.site.SettingOccupancy | undefined>;
+    public readonly occupancy!: pulumi.Output<outputs.site.SettingOccupancy>;
     /**
      * Whether to store the config on AP
      */
@@ -129,11 +129,11 @@ export class Setting extends pulumi.CustomResource {
     /**
      * Rogue site settings
      */
-    public readonly rogue!: pulumi.Output<outputs.site.SettingRogue | undefined>;
+    public readonly rogue!: pulumi.Output<outputs.site.SettingRogue>;
     /**
      * Managed mobility
      */
-    public readonly rtsa!: pulumi.Output<outputs.site.SettingRtsa | undefined>;
+    public readonly rtsa!: pulumi.Output<outputs.site.SettingRtsa>;
     /**
      * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
      * window, there are more than Y distinct client encountering over X failures
@@ -147,13 +147,13 @@ export class Setting extends pulumi.CustomResource {
      * Org:Setting)
      */
     public readonly sshKeys!: pulumi.Output<string[]>;
-    public readonly ssr!: pulumi.Output<outputs.site.SettingSsr | undefined>;
+    public readonly ssr!: pulumi.Output<outputs.site.SettingSsr>;
     /**
      * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
      * `deviceUpdownThreshold` is ignored.
      */
     public readonly switchUpdownThreshold!: pulumi.Output<number | undefined>;
-    public readonly syntheticTest!: pulumi.Output<outputs.site.SettingSyntheticTest | undefined>;
+    public readonly syntheticTest!: pulumi.Output<outputs.site.SettingSyntheticTest>;
     /**
      * Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
      */
@@ -161,7 +161,7 @@ export class Setting extends pulumi.CustomResource {
     /**
      * AP Uplink port configuration
      */
-    public readonly uplinkPortConfig!: pulumi.Output<outputs.site.SettingUplinkPortConfig | undefined>;
+    public readonly uplinkPortConfig!: pulumi.Output<outputs.site.SettingUplinkPortConfig>;
     /**
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
@@ -177,16 +177,16 @@ export class Setting extends pulumi.CustomResource {
     /**
      * WIDS site settings
      */
-    public readonly wids!: pulumi.Output<outputs.site.SettingWids | undefined>;
+    public readonly wids!: pulumi.Output<outputs.site.SettingWids>;
     /**
      * Wi-Fi site settings
      */
-    public readonly wifi!: pulumi.Output<outputs.site.SettingWifi | undefined>;
+    public readonly wifi!: pulumi.Output<outputs.site.SettingWifi>;
     public readonly wiredVna!: pulumi.Output<outputs.site.SettingWiredVna | undefined>;
     /**
      * Zone Occupancy alert site settings
      */
-    public readonly zoneOccupancyAlert!: pulumi.Output<outputs.site.SettingZoneOccupancyAlert | undefined>;
+    public readonly zoneOccupancyAlert!: pulumi.Output<outputs.site.SettingZoneOccupancyAlert>;
 
     /**
      * Create a Setting resource with the given unique name, arguments, and options.

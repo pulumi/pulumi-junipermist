@@ -32,7 +32,7 @@ namespace Pulumi.JuniperMist.Site
     public partial class Setting : global::Pulumi.CustomResource
     {
         [Output("analytic")]
-        public Output<Outputs.SettingAnalytic?> Analytic { get; private set; } = null!;
+        public Output<Outputs.SettingAnalytic> Analytic { get; private set; } = null!;
 
         /// <summary>
         /// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
@@ -45,7 +45,7 @@ namespace Pulumi.JuniperMist.Site
         /// Auto Upgrade Settings
         /// </summary>
         [Output("autoUpgrade")]
-        public Output<Outputs.SettingAutoUpgrade?> AutoUpgrade { get; private set; } = null!;
+        public Output<Outputs.SettingAutoUpgrade> AutoUpgrade { get; private set; } = null!;
 
         [Output("blacklistUrl")]
         public Output<string> BlacklistUrl { get; private set; } = null!;
@@ -89,13 +89,13 @@ namespace Pulumi.JuniperMist.Site
         /// ranges for the same day
         /// </summary>
         [Output("engagement")]
-        public Output<Outputs.SettingEngagement?> Engagement { get; private set; } = null!;
+        public Output<Outputs.SettingEngagement> Engagement { get; private set; } = null!;
 
         /// <summary>
         /// Gateway Site settings
         /// </summary>
         [Output("gatewayMgmt")]
-        public Output<Outputs.SettingGatewayMgmt?> GatewayMgmt { get; private set; } = null!;
+        public Output<Outputs.SettingGatewayMgmt> GatewayMgmt { get; private set; } = null!;
 
         /// <summary>
         /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
@@ -111,13 +111,13 @@ namespace Pulumi.JuniperMist.Site
         /// LED AP settings
         /// </summary>
         [Output("led")]
-        public Output<Outputs.SettingLed?> Led { get; private set; } = null!;
+        public Output<Outputs.SettingLed> Led { get; private set; } = null!;
 
         /// <summary>
         /// Occupancy Analytics settings
         /// </summary>
         [Output("occupancy")]
-        public Output<Outputs.SettingOccupancy?> Occupancy { get; private set; } = null!;
+        public Output<Outputs.SettingOccupancy> Occupancy { get; private set; } = null!;
 
         /// <summary>
         /// Whether to store the config on AP
@@ -148,13 +148,13 @@ namespace Pulumi.JuniperMist.Site
         /// Rogue site settings
         /// </summary>
         [Output("rogue")]
-        public Output<Outputs.SettingRogue?> Rogue { get; private set; } = null!;
+        public Output<Outputs.SettingRogue> Rogue { get; private set; } = null!;
 
         /// <summary>
         /// Managed mobility
         /// </summary>
         [Output("rtsa")]
-        public Output<Outputs.SettingRtsa?> Rtsa { get; private set; } = null!;
+        public Output<Outputs.SettingRtsa> Rtsa { get; private set; } = null!;
 
         /// <summary>
         /// Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
@@ -180,7 +180,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableArray<string>> SshKeys { get; private set; } = null!;
 
         [Output("ssr")]
-        public Output<Outputs.SettingSsr?> Ssr { get; private set; } = null!;
+        public Output<Outputs.SettingSsr> Ssr { get; private set; } = null!;
 
         /// <summary>
         /// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
@@ -190,7 +190,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<int?> SwitchUpdownThreshold { get; private set; } = null!;
 
         [Output("syntheticTest")]
-        public Output<Outputs.SettingSyntheticTest?> SyntheticTest { get; private set; } = null!;
+        public Output<Outputs.SettingSyntheticTest> SyntheticTest { get; private set; } = null!;
 
         /// <summary>
         /// Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
@@ -202,7 +202,7 @@ namespace Pulumi.JuniperMist.Site
         /// AP Uplink port configuration
         /// </summary>
         [Output("uplinkPortConfig")]
-        public Output<Outputs.SettingUplinkPortConfig?> UplinkPortConfig { get; private set; } = null!;
+        public Output<Outputs.SettingUplinkPortConfig> UplinkPortConfig { get; private set; } = null!;
 
         /// <summary>
         /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
@@ -232,13 +232,13 @@ namespace Pulumi.JuniperMist.Site
         /// WIDS site settings
         /// </summary>
         [Output("wids")]
-        public Output<Outputs.SettingWids?> Wids { get; private set; } = null!;
+        public Output<Outputs.SettingWids> Wids { get; private set; } = null!;
 
         /// <summary>
         /// Wi-Fi site settings
         /// </summary>
         [Output("wifi")]
-        public Output<Outputs.SettingWifi?> Wifi { get; private set; } = null!;
+        public Output<Outputs.SettingWifi> Wifi { get; private set; } = null!;
 
         [Output("wiredVna")]
         public Output<Outputs.SettingWiredVna?> WiredVna { get; private set; } = null!;
@@ -247,7 +247,7 @@ namespace Pulumi.JuniperMist.Site
         /// Zone Occupancy alert site settings
         /// </summary>
         [Output("zoneOccupancyAlert")]
-        public Output<Outputs.SettingZoneOccupancyAlert?> ZoneOccupancyAlert { get; private set; } = null!;
+        public Output<Outputs.SettingZoneOccupancyAlert> ZoneOccupancyAlert { get; private set; } = null!;
 
 
         /// <summary>
