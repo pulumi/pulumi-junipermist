@@ -755,6 +755,9 @@ class _NetworktemplateState:
 
 
 class Networktemplate(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/networktemplate:Networktemplate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

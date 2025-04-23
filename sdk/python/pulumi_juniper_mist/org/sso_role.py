@@ -106,6 +106,9 @@ class _SsoRoleState:
 
 
 class SsoRole(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/ssoRole:SsoRole"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

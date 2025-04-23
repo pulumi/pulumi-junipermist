@@ -153,6 +153,9 @@ class _AlarmtemplateState:
 
 
 class Alarmtemplate(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/alarmtemplate:Alarmtemplate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

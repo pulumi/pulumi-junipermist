@@ -911,6 +911,9 @@ class _SettingState:
 
 
 class Setting(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/setting:Setting"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

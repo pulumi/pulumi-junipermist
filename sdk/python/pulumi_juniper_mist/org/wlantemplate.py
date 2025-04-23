@@ -211,6 +211,9 @@ class _WlantemplateState:
 
 
 class Wlantemplate(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/wlantemplate:Wlantemplate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

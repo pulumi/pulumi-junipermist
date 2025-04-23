@@ -182,6 +182,9 @@ class _ApitokenState:
 
 
 class Apitoken(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/apitoken:Apitoken"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
