@@ -403,6 +403,9 @@ class _ServicepolicyState:
 
 
 class Servicepolicy(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/servicepolicy:Servicepolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

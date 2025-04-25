@@ -615,6 +615,9 @@ class _WebhookState:
 
 
 class Webhook(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:site/webhook:Webhook"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

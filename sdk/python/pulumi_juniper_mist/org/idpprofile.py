@@ -138,6 +138,9 @@ class _IdpprofileState:
 
 
 class Idpprofile(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/idpprofile:Idpprofile"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

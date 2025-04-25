@@ -535,6 +535,9 @@ class _PskState:
 
 
 class Psk(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/psk:Psk"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

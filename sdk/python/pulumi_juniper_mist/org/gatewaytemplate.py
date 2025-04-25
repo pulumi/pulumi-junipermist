@@ -795,6 +795,9 @@ class _GatewaytemplateState:
 
 
 class Gatewaytemplate(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/gatewaytemplate:Gatewaytemplate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

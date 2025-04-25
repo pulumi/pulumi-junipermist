@@ -346,6 +346,9 @@ class _WxtagState:
 
 
 class Wxtag(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:site/wxtag:Wxtag"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

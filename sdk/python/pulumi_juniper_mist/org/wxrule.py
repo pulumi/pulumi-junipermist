@@ -358,6 +358,9 @@ class _WxruleState:
 
 
 class Wxrule(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/wxrule:Wxrule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

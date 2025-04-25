@@ -90,6 +90,9 @@ class _GatewayClusterState:
 
 
 class GatewayCluster(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:device/gatewayCluster:GatewayCluster"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

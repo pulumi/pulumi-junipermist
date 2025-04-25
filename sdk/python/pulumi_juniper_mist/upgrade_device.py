@@ -429,6 +429,9 @@ class _UpgradeDeviceState:
 
 
 class UpgradeDevice(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:index/upgradeDevice:UpgradeDevice"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -178,6 +178,9 @@ class _EvpnTopologyState:
 
 
 class EvpnTopology(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/evpnTopology:EvpnTopology"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

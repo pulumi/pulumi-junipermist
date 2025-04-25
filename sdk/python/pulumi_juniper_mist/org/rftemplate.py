@@ -419,6 +419,9 @@ class _RftemplateState:
 
 
 class Rftemplate(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/rftemplate:Rftemplate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
