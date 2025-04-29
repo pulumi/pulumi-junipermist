@@ -888,6 +888,9 @@ class _NacidpState:
 
 
 class Nacidp(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/nacidp:Nacidp"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

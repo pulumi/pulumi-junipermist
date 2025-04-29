@@ -2981,6 +2981,9 @@ class _WlanState:
 
 
 class Wlan(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/wlan:Wlan"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

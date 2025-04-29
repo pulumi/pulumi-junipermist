@@ -1062,6 +1062,9 @@ class _GatewayState:
 
 
 class Gateway(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:device/gateway:Gateway"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

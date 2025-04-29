@@ -81,6 +81,9 @@ class _SitegroupState:
 
 
 class Sitegroup(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/sitegroup:Sitegroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -775,6 +775,9 @@ class _DeviceprofileGatewayState:
 
 
 class DeviceprofileGateway(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/deviceprofileGateway:DeviceprofileGateway"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

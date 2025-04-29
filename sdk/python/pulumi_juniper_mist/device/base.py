@@ -507,6 +507,9 @@ warnings.warn("""junipermist.device/base.base has been deprecated in favor of ju
 class Base(pulumi.CustomResource):
     warnings.warn("""junipermist.device/base.base has been deprecated in favor of junipermist.site/base.base""", DeprecationWarning)
 
+
+    pulumi_type = "junipermist:device/base:base"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

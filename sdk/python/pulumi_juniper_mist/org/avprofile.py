@@ -224,6 +224,9 @@ class _AvprofileState:
 
 
 class Avprofile(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/avprofile:Avprofile"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
