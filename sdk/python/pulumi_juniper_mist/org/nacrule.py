@@ -257,6 +257,9 @@ class _NacruleState:
 
 
 class Nacrule(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/nacrule:Nacrule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

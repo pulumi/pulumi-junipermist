@@ -99,6 +99,9 @@ class _InventoryState:
 
 
 class Inventory(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/inventory:Inventory"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -524,6 +524,9 @@ class _NactagState:
 
 
 class Nactag(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/nactag:Nactag"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -119,6 +119,9 @@ class _WlanPortalImageState:
 
 
 class WlanPortalImage(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:site/wlanPortalImage:WlanPortalImage"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

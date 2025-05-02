@@ -179,6 +179,9 @@ class _VpnState:
 
 
 class Vpn(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/vpn:Vpn"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

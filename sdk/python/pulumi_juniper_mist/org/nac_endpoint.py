@@ -208,6 +208,9 @@ class _NacEndpointState:
 
 
 class NacEndpoint(pulumi.CustomResource):
+
+    pulumi_type = "junipermist:org/nacEndpoint:NacEndpoint"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
