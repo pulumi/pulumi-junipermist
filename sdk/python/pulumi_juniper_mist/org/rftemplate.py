@@ -418,10 +418,8 @@ class _RftemplateState:
         pulumi.set(self, "scanning_enabled", value)
 
 
+@pulumi.type_token("junipermist:org/rftemplate:Rftemplate")
 class Rftemplate(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/rftemplate:Rftemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

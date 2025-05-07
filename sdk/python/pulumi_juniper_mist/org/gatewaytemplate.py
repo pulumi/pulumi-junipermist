@@ -794,10 +794,8 @@ class _GatewaytemplateState:
         pulumi.set(self, "vrf_instances", value)
 
 
+@pulumi.type_token("junipermist:org/gatewaytemplate:Gatewaytemplate")
 class Gatewaytemplate(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/gatewaytemplate:Gatewaytemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

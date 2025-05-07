@@ -120,10 +120,8 @@ class _WlanPortalTemplateState:
         pulumi.set(self, "wlan_id", value)
 
 
+@pulumi.type_token("junipermist:site/wlanPortalTemplate:WlanPortalTemplate")
 class WlanPortalTemplate(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:site/wlanPortalTemplate:WlanPortalTemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

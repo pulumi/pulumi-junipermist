@@ -402,10 +402,8 @@ class _ServicepolicyState:
         pulumi.set(self, "tenants", value)
 
 
+@pulumi.type_token("junipermist:org/servicepolicy:Servicepolicy")
 class Servicepolicy(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/servicepolicy:Servicepolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

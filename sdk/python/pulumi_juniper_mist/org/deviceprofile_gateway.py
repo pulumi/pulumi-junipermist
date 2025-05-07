@@ -774,10 +774,8 @@ class _DeviceprofileGatewayState:
         pulumi.set(self, "vrf_instances", value)
 
 
+@pulumi.type_token("junipermist:org/deviceprofileGateway:DeviceprofileGateway")
 class DeviceprofileGateway(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/deviceprofileGateway:DeviceprofileGateway"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

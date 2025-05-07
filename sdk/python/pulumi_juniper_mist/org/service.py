@@ -742,10 +742,8 @@ class _ServiceState:
         pulumi.set(self, "urls", value)
 
 
+@pulumi.type_token("junipermist:org/service:Service")
 class Service(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/service:Service"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

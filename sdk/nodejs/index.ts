@@ -50,10 +50,8 @@ export const getSites: typeof import("./getSites").getSites = null as any;
 export const getSitesOutput: typeof import("./getSites").getSitesOutput = null as any;
 utilities.lazyLoad(exports, ["getSites","getSitesOutput"], () => require("./getSites"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { UpgradeDeviceArgs, UpgradeDeviceState } from "./upgradeDevice";
 export type UpgradeDevice = import("./upgradeDevice").UpgradeDevice;

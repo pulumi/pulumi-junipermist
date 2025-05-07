@@ -887,10 +887,8 @@ class _NacidpState:
         pulumi.set(self, "scim_secret_token", value)
 
 
+@pulumi.type_token("junipermist:org/nacidp:Nacidp")
 class Nacidp(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/nacidp:Nacidp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
