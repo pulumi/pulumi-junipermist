@@ -207,10 +207,8 @@ class _NacEndpointState:
         pulumi.set(self, "vlan", value)
 
 
+@pulumi.type_token("junipermist:org/nacEndpoint:NacEndpoint")
 class NacEndpoint(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/nacEndpoint:NacEndpoint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

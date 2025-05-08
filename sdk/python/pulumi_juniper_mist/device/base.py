@@ -504,11 +504,9 @@ class _BaseState:
 warnings.warn("""junipermist.device/base.base has been deprecated in favor of junipermist.site/base.base""", DeprecationWarning)
 
 
+@pulumi.type_token("junipermist:device/base:base")
 class Base(pulumi.CustomResource):
     warnings.warn("""junipermist.device/base.base has been deprecated in favor of junipermist.site/base.base""", DeprecationWarning)
-
-
-    pulumi_type = "junipermist:device/base:base"
 
     @overload
     def __init__(__self__,

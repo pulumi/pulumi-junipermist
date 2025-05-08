@@ -35308,6 +35308,9 @@
                 "type": "string",
                 "description": "For username/password authentication, the Mist Account username.\n"
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:junipermist/terraformConfig"
         }
     },
     "resources": {
@@ -50079,6 +50082,35 @@
                     "siteId",
                     "siteWlans",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "pulumi:providers:junipermist/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:junipermist"
+                    }
+                },
+                "type": "pulumi:providers:junipermist/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
                 ],
                 "type": "object"
             }

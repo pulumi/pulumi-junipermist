@@ -141,10 +141,8 @@ class _ImageState:
         pulumi.set(self, "site_id", value)
 
 
+@pulumi.type_token("junipermist:device/image:Image")
 class Image(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:device/image:Image"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

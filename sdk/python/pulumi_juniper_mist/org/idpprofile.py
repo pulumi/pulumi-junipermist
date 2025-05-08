@@ -137,10 +137,8 @@ class _IdpprofileState:
         pulumi.set(self, "overwrites", value)
 
 
+@pulumi.type_token("junipermist:org/idpprofile:Idpprofile")
 class Idpprofile(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/idpprofile:Idpprofile"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

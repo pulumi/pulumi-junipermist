@@ -1262,10 +1262,8 @@ class _SettingState:
         pulumi.set(self, "zone_occupancy_alert", value)
 
 
+@pulumi.type_token("junipermist:site/setting:Setting")
 class Setting(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:site/setting:Setting"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

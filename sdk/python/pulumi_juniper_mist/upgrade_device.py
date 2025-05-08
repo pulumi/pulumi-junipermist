@@ -428,10 +428,8 @@ class _UpgradeDeviceState:
         pulumi.set(self, "timestamp", value)
 
 
+@pulumi.type_token("junipermist:index/upgradeDevice:UpgradeDevice")
 class UpgradeDevice(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:index/upgradeDevice:UpgradeDevice"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

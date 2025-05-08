@@ -523,10 +523,8 @@ class _NactagState:
         pulumi.set(self, "vlan", value)
 
 
+@pulumi.type_token("junipermist:org/nactag:Nactag")
 class Nactag(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/nactag:Nactag"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

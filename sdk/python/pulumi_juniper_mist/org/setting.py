@@ -910,10 +910,8 @@ class _SettingState:
         pulumi.set(self, "wireless_pma", value)
 
 
+@pulumi.type_token("junipermist:org/setting:Setting")
 class Setting(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/setting:Setting"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

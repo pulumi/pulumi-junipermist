@@ -181,10 +181,8 @@ class _ApitokenState:
         pulumi.set(self, "src_ips", value)
 
 
+@pulumi.type_token("junipermist:org/apitoken:Apitoken")
 class Apitoken(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/apitoken:Apitoken"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

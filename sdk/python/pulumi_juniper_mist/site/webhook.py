@@ -614,10 +614,8 @@ class _WebhookState:
         pulumi.set(self, "verify_cert", value)
 
 
+@pulumi.type_token("junipermist:site/webhook:Webhook")
 class Webhook(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:site/webhook:Webhook"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

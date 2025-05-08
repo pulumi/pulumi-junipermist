@@ -449,10 +449,8 @@ class _NetworkState:
         pulumi.set(self, "vpn_access", value)
 
 
+@pulumi.type_token("junipermist:org/network:Network")
 class Network(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/network:Network"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

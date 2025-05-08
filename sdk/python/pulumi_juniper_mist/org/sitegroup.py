@@ -80,10 +80,8 @@ class _SitegroupState:
         pulumi.set(self, "org_id", value)
 
 
+@pulumi.type_token("junipermist:org/sitegroup:Sitegroup")
 class Sitegroup(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/sitegroup:Sitegroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
