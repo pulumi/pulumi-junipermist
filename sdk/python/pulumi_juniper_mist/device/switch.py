@@ -1409,10 +1409,8 @@ class _SwitchState:
         pulumi.set(self, "y", value)
 
 
+@pulumi.type_token("junipermist:device/switch:Switch")
 class Switch(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:device/switch:Switch"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

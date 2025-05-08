@@ -223,10 +223,8 @@ class _AvprofileState:
         pulumi.set(self, "url_whitelists", value)
 
 
+@pulumi.type_token("junipermist:org/avprofile:Avprofile")
 class Avprofile(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/avprofile:Avprofile"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

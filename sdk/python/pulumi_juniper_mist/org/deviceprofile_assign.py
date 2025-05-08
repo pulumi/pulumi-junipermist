@@ -102,10 +102,8 @@ class _DeviceprofileAssignState:
         pulumi.set(self, "org_id", value)
 
 
+@pulumi.type_token("junipermist:org/deviceprofileAssign:DeviceprofileAssign")
 class DeviceprofileAssign(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/deviceprofileAssign:DeviceprofileAssign"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -345,10 +345,8 @@ class _WxtagState:
         pulumi.set(self, "vlan_id", value)
 
 
+@pulumi.type_token("junipermist:org/wxtag:Wxtag")
 class Wxtag(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/wxtag:Wxtag"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

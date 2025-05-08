@@ -256,10 +256,8 @@ class _NacruleState:
         pulumi.set(self, "org_id", value)
 
 
+@pulumi.type_token("junipermist:org/nacrule:Nacrule")
 class Nacrule(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/nacrule:Nacrule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

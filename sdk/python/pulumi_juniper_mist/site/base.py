@@ -501,10 +501,8 @@ class _BaseState:
         pulumi.set(self, "tzoffset", value)
 
 
+@pulumi.type_token("junipermist:site/base:base")
 class Base(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:site/base:base"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

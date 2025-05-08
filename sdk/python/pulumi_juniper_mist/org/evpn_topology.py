@@ -177,10 +177,8 @@ class _EvpnTopologyState:
         pulumi.set(self, "switches", value)
 
 
+@pulumi.type_token("junipermist:org/evpnTopology:EvpnTopology")
 class EvpnTopology(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/evpnTopology:EvpnTopology"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

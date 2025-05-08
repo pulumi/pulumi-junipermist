@@ -2969,10 +2969,8 @@ class _WlanState:
         pulumi.set(self, "wxtunnel_remote_id", value)
 
 
+@pulumi.type_token("junipermist:site/wlan:Wlan")
 class Wlan(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:site/wlan:Wlan"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -210,10 +210,8 @@ class _WlantemplateState:
         pulumi.set(self, "org_id", value)
 
 
+@pulumi.type_token("junipermist:org/wlantemplate:Wlantemplate")
 class Wlantemplate(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/wlantemplate:Wlantemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

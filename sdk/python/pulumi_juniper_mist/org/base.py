@@ -185,10 +185,8 @@ class _BaseState:
         pulumi.set(self, "session_expiry", value)
 
 
+@pulumi.type_token("junipermist:org/base:base")
 class Base(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/base:base"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

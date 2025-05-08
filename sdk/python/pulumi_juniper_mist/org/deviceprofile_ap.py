@@ -678,10 +678,8 @@ class _DeviceprofileApState:
         pulumi.set(self, "vars", value)
 
 
+@pulumi.type_token("junipermist:org/deviceprofileAp:DeviceprofileAp")
 class DeviceprofileAp(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/deviceprofileAp:DeviceprofileAp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

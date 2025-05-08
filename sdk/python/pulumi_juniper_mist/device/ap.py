@@ -1077,10 +1077,8 @@ class _ApState:
         pulumi.set(self, "y", value)
 
 
+@pulumi.type_token("junipermist:device/ap:Ap")
 class Ap(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:device/ap:Ap"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

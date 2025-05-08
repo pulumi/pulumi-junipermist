@@ -754,10 +754,8 @@ class _NetworktemplateState:
         pulumi.set(self, "vrf_instances", value)
 
 
+@pulumi.type_token("junipermist:org/networktemplate:Networktemplate")
 class Networktemplate(pulumi.CustomResource):
-
-    pulumi_type = "junipermist:org/networktemplate:Networktemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
