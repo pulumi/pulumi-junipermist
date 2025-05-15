@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as junipermist from "@pulumi/junipermist";
+ * import * as junipermist from "@pulumi/juniper-mist";
  *
  * const vpns = junipermist.org.getVpns({
  *     orgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
@@ -52,7 +52,7 @@ export interface GetVpnsResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as junipermist from "@pulumi/junipermist";
+ * import * as junipermist from "@pulumi/juniper-mist";
  *
  * const vpns = junipermist.org.getVpns({
  *     orgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",

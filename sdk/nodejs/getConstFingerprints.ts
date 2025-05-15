@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as junipermist from "@pulumi/junipermist";
+ * import * as junipermist from "@pulumi/juniper-mist";
  *
  * const listOfFingerprints = junipermist.getConstFingerprints({});
  * ```
@@ -56,7 +56,7 @@ export interface GetConstFingerprintsResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as junipermist from "@pulumi/junipermist";
+ * import * as junipermist from "@pulumi/juniper-mist";
  *
  * const listOfFingerprints = junipermist.getConstFingerprints({});
  * ```
