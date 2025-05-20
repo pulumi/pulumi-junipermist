@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as junipermist from "@pulumi/junipermist";
+ * import * as junipermist from "@pulumi/juniper-mist";
  *
  * const ssoIdp = junipermist.org.getSsoMetadata({
  *     orgId: terraformTest.id,
@@ -77,7 +77,7 @@ export interface GetSsoMetadataResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as junipermist from "@pulumi/junipermist";
+ * import * as junipermist from "@pulumi/juniper-mist";
  *
  * const ssoIdp = junipermist.org.getSsoMetadata({
  *     orgId: terraformTest.id,

@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as junipermist from "@pulumi/junipermist";
+ * import * as junipermist from "@pulumi/juniper-mist";
  *
  * const listOfAppSubCategories = junipermist.getConstAppSubCategories({});
  * ```
@@ -45,7 +45,7 @@ export interface GetConstAppSubCategoriesResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as junipermist from "@pulumi/junipermist";
+ * import * as junipermist from "@pulumi/juniper-mist";
  *
  * const listOfAppSubCategories = junipermist.getConstAppSubCategories({});
  * ```

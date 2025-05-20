@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as junipermist from "@pulumi/junipermist";
+ * import * as junipermist from "@pulumi/juniper-mist";
  *
  * const psksVip = junipermist.org.getPsks({
  *     orgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
@@ -74,7 +74,7 @@ export interface GetPsksResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as junipermist from "@pulumi/junipermist";
+ * import * as junipermist from "@pulumi/juniper-mist";
  *
  * const psksVip = junipermist.org.getPsks({
  *     orgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as junipermist from "@pulumi/junipermist";
+ * import * as junipermist from "@pulumi/juniper-mist";
  *
  * const apStats = junipermist.device.getApStats({
  *     orgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
@@ -76,7 +76,7 @@ export interface GetApStatsResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as junipermist from "@pulumi/junipermist";
+ * import * as junipermist from "@pulumi/juniper-mist";
  *
  * const apStats = junipermist.device.getApStats({
  *     orgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",

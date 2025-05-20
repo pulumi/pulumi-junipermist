@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as junipermist from "@pulumi/junipermist";
+ * import * as junipermist from "@pulumi/juniper-mist";
  *
  * const listOfApplications = junipermist.getConstApplications({});
  * ```
@@ -51,7 +51,7 @@ export interface GetConstApplicationsResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as junipermist from "@pulumi/junipermist";
+ * import * as junipermist from "@pulumi/juniper-mist";
  *
  * const listOfApplications = junipermist.getConstApplications({});
  * ```
