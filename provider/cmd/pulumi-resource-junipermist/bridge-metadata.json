@@ -31,6 +31,38 @@
                     "ntp_servers": {
                         "maxItemsOne": false
                     },
+                    "port_config": {
+                        "elem": {
+                            "fields": {
+                                "radius_config": {
+                                    "fields": {
+                                        "acct_servers": {
+                                            "maxItemsOne": false
+                                        },
+                                        "auth_servers": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "radsec": {
+                                    "fields": {
+                                        "mxcluster_ids": {
+                                            "maxItemsOne": false
+                                        },
+                                        "proxy_hosts": {
+                                            "maxItemsOne": false
+                                        },
+                                        "servers": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "vlan_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "radio_config": {
                         "fields": {
                             "band_24": {
@@ -853,6 +885,38 @@
                     },
                     "ntp_servers": {
                         "maxItemsOne": false
+                    },
+                    "port_config": {
+                        "elem": {
+                            "fields": {
+                                "radius_config": {
+                                    "fields": {
+                                        "acct_servers": {
+                                            "maxItemsOne": false
+                                        },
+                                        "auth_servers": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "radsec": {
+                                    "fields": {
+                                        "mxcluster_ids": {
+                                            "maxItemsOne": false
+                                        },
+                                        "proxy_hosts": {
+                                            "maxItemsOne": false
+                                        },
+                                        "servers": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "vlan_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "radio_config": {
                         "fields": {
