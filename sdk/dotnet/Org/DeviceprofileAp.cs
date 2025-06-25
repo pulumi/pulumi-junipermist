@@ -129,6 +129,12 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool> PoePassthrough { get; private set; } = null!;
 
         /// <summary>
+        /// Property key is the interface(s) name (e.g. "eth1,eth2")
+        /// </summary>
+        [Output("portConfig")]
+        public Output<ImmutableDictionary<string, Outputs.DeviceprofileApPortConfig>?> PortConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Power related configs
         /// </summary>
         [Output("pwrConfig")]
@@ -295,6 +301,18 @@ namespace Pulumi.JuniperMist.Org
         [Input("poePassthrough")]
         public Input<bool>? PoePassthrough { get; set; }
 
+        [Input("portConfig")]
+        private InputMap<Inputs.DeviceprofileApPortConfigArgs>? _portConfig;
+
+        /// <summary>
+        /// Property key is the interface(s) name (e.g. "eth1,eth2")
+        /// </summary>
+        public InputMap<Inputs.DeviceprofileApPortConfigArgs> PortConfig
+        {
+            get => _portConfig ?? (_portConfig = new InputMap<Inputs.DeviceprofileApPortConfigArgs>());
+            set => _portConfig = value;
+        }
+
         /// <summary>
         /// Power related configs
         /// </summary>
@@ -422,6 +440,18 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("poePassthrough")]
         public Input<bool>? PoePassthrough { get; set; }
+
+        [Input("portConfig")]
+        private InputMap<Inputs.DeviceprofileApPortConfigGetArgs>? _portConfig;
+
+        /// <summary>
+        /// Property key is the interface(s) name (e.g. "eth1,eth2")
+        /// </summary>
+        public InputMap<Inputs.DeviceprofileApPortConfigGetArgs> PortConfig
+        {
+            get => _portConfig ?? (_portConfig = new InputMap<Inputs.DeviceprofileApPortConfigGetArgs>());
+            set => _portConfig = value;
+        }
 
         /// <summary>
         /// Power related configs

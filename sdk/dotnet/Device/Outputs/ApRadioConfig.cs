@@ -51,6 +51,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly Outputs.ApRadioConfigBand6? Band6;
         /// <summary>
+        /// Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+        /// </summary>
+        public readonly bool? FullAutomaticRrm;
+        /// <summary>
         /// To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
         /// </summary>
         public readonly bool? IndoorUse;
@@ -81,6 +85,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             Outputs.ApRadioConfigBand6? band6,
 
+            bool? fullAutomaticRrm,
+
             bool? indoorUse,
 
             bool? scanningEnabled)
@@ -95,6 +101,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             Band5 = band5;
             Band5On24Radio = band5On24Radio;
             Band6 = band6;
+            FullAutomaticRrm = fullAutomaticRrm;
             IndoorUse = indoorUse;
             ScanningEnabled = scanningEnabled;
         }

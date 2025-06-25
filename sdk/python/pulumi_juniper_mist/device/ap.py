@@ -46,6 +46,7 @@ class ApArgs:
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  orientation: Optional[pulumi.Input[builtins.int]] = None,
                  poe_passthrough: Optional[pulumi.Input[builtins.bool]] = None,
+                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]]] = None,
                  pwr_config: Optional[pulumi.Input['ApPwrConfigArgs']] = None,
                  radio_config: Optional[pulumi.Input['ApRadioConfigArgs']] = None,
                  uplink_port_config: Optional[pulumi.Input['ApUplinkPortConfigArgs']] = None,
@@ -71,6 +72,8 @@ class ApArgs:
         :param pulumi.Input[builtins.str] notes: Any notes about this AP
         :param pulumi.Input[builtins.int] orientation: Orientation, 0-359, in degrees, up is 0, right is 90.
         :param pulumi.Input[builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        :param pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+               predecence over switch_config (deprecated)
         :param pulumi.Input['ApPwrConfigArgs'] pwr_config: Power related configs
         :param pulumi.Input['ApRadioConfigArgs'] radio_config: Radio AP settings
         :param pulumi.Input['ApUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
@@ -126,6 +129,8 @@ class ApArgs:
             pulumi.set(__self__, "orientation", orientation)
         if poe_passthrough is not None:
             pulumi.set(__self__, "poe_passthrough", poe_passthrough)
+        if port_config is not None:
+            pulumi.set(__self__, "port_config", port_config)
         if pwr_config is not None:
             pulumi.set(__self__, "pwr_config", pwr_config)
         if radio_config is not None:
@@ -406,6 +411,19 @@ class ApArgs:
         pulumi.set(self, "poe_passthrough", value)
 
     @property
+    @pulumi.getter(name="portConfig")
+    def port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]]]:
+        """
+        eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+        predecence over switch_config (deprecated)
+        """
+        return pulumi.get(self, "port_config")
+
+    @port_config.setter
+    def port_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]]]):
+        pulumi.set(self, "port_config", value)
+
+    @property
     @pulumi.getter(name="pwrConfig")
     def pwr_config(self) -> Optional[pulumi.Input['ApPwrConfigArgs']]:
         """
@@ -523,6 +541,7 @@ class _ApState:
                  org_id: Optional[pulumi.Input[builtins.str]] = None,
                  orientation: Optional[pulumi.Input[builtins.int]] = None,
                  poe_passthrough: Optional[pulumi.Input[builtins.bool]] = None,
+                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]]] = None,
                  pwr_config: Optional[pulumi.Input['ApPwrConfigArgs']] = None,
                  radio_config: Optional[pulumi.Input['ApRadioConfigArgs']] = None,
                  serial: Optional[pulumi.Input[builtins.str]] = None,
@@ -553,6 +572,8 @@ class _ApState:
         :param pulumi.Input[builtins.str] notes: Any notes about this AP
         :param pulumi.Input[builtins.int] orientation: Orientation, 0-359, in degrees, up is 0, right is 90.
         :param pulumi.Input[builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        :param pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+               predecence over switch_config (deprecated)
         :param pulumi.Input['ApPwrConfigArgs'] pwr_config: Power related configs
         :param pulumi.Input['ApRadioConfigArgs'] radio_config: Radio AP settings
         :param pulumi.Input[builtins.str] serial: Device Serial
@@ -622,6 +643,8 @@ class _ApState:
             pulumi.set(__self__, "orientation", orientation)
         if poe_passthrough is not None:
             pulumi.set(__self__, "poe_passthrough", poe_passthrough)
+        if port_config is not None:
+            pulumi.set(__self__, "port_config", port_config)
         if pwr_config is not None:
             pulumi.set(__self__, "pwr_config", pwr_config)
         if radio_config is not None:
@@ -959,6 +982,19 @@ class _ApState:
         pulumi.set(self, "poe_passthrough", value)
 
     @property
+    @pulumi.getter(name="portConfig")
+    def port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]]]:
+        """
+        eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+        predecence over switch_config (deprecated)
+        """
+        return pulumi.get(self, "port_config")
+
+    @port_config.setter
+    def port_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]]]):
+        pulumi.set(self, "port_config", value)
+
+    @property
     @pulumi.getter(name="pwrConfig")
     def pwr_config(self) -> Optional[pulumi.Input['ApPwrConfigArgs']]:
         """
@@ -1106,6 +1142,7 @@ class Ap(pulumi.CustomResource):
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  orientation: Optional[pulumi.Input[builtins.int]] = None,
                  poe_passthrough: Optional[pulumi.Input[builtins.bool]] = None,
+                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ApPortConfigArgs', 'ApPortConfigArgsDict']]]]] = None,
                  pwr_config: Optional[pulumi.Input[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']]] = None,
                  radio_config: Optional[pulumi.Input[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']]] = None,
                  site_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1148,6 +1185,8 @@ class Ap(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] notes: Any notes about this AP
         :param pulumi.Input[builtins.int] orientation: Orientation, 0-359, in degrees, up is 0, right is 90.
         :param pulumi.Input[builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['ApPortConfigArgs', 'ApPortConfigArgsDict']]]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+               predecence over switch_config (deprecated)
         :param pulumi.Input[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']] pwr_config: Power related configs
         :param pulumi.Input[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']] radio_config: Radio AP settings
         :param pulumi.Input[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
@@ -1216,6 +1255,7 @@ class Ap(pulumi.CustomResource):
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  orientation: Optional[pulumi.Input[builtins.int]] = None,
                  poe_passthrough: Optional[pulumi.Input[builtins.bool]] = None,
+                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ApPortConfigArgs', 'ApPortConfigArgsDict']]]]] = None,
                  pwr_config: Optional[pulumi.Input[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']]] = None,
                  radio_config: Optional[pulumi.Input[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']]] = None,
                  site_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -1258,6 +1298,7 @@ class Ap(pulumi.CustomResource):
             __props__.__dict__["ntp_servers"] = ntp_servers
             __props__.__dict__["orientation"] = orientation
             __props__.__dict__["poe_passthrough"] = poe_passthrough
+            __props__.__dict__["port_config"] = port_config
             __props__.__dict__["pwr_config"] = pwr_config
             __props__.__dict__["radio_config"] = radio_config
             if site_id is None and not opts.urn:
@@ -1315,6 +1356,7 @@ class Ap(pulumi.CustomResource):
             org_id: Optional[pulumi.Input[builtins.str]] = None,
             orientation: Optional[pulumi.Input[builtins.int]] = None,
             poe_passthrough: Optional[pulumi.Input[builtins.bool]] = None,
+            port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ApPortConfigArgs', 'ApPortConfigArgsDict']]]]] = None,
             pwr_config: Optional[pulumi.Input[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']]] = None,
             radio_config: Optional[pulumi.Input[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']]] = None,
             serial: Optional[pulumi.Input[builtins.str]] = None,
@@ -1350,6 +1392,8 @@ class Ap(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] notes: Any notes about this AP
         :param pulumi.Input[builtins.int] orientation: Orientation, 0-359, in degrees, up is 0, right is 90.
         :param pulumi.Input[builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['ApPortConfigArgs', 'ApPortConfigArgsDict']]]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+               predecence over switch_config (deprecated)
         :param pulumi.Input[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']] pwr_config: Power related configs
         :param pulumi.Input[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']] radio_config: Radio AP settings
         :param pulumi.Input[builtins.str] serial: Device Serial
@@ -1394,6 +1438,7 @@ class Ap(pulumi.CustomResource):
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["orientation"] = orientation
         __props__.__dict__["poe_passthrough"] = poe_passthrough
+        __props__.__dict__["port_config"] = port_config
         __props__.__dict__["pwr_config"] = pwr_config
         __props__.__dict__["radio_config"] = radio_config
         __props__.__dict__["serial"] = serial
@@ -1604,6 +1649,15 @@ class Ap(pulumi.CustomResource):
         Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
         """
         return pulumi.get(self, "poe_passthrough")
+
+    @property
+    @pulumi.getter(name="portConfig")
+    def port_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.ApPortConfig']]]:
+        """
+        eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+        predecence over switch_config (deprecated)
+        """
+        return pulumi.get(self, "port_config")
 
     @property
     @pulumi.getter(name="pwrConfig")
