@@ -2357,6 +2357,1535 @@ func (o ApMeshPtrOutput) Role() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ApPortConfig struct {
+	Disabled *bool `pulumi:"disabled"`
+	// Optional dynamic vlan
+	DynamicVlan   *ApPortConfigDynamicVlan `pulumi:"dynamicVlan"`
+	EnableMacAuth *bool                    `pulumi:"enableMacAuth"`
+	// enum:
+	//   * `all`: local breakout, All VLANs
+	//   * `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
+	//   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
+	//   * `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
+	//   * `wxtunnel`': central breakout to an Org WxTunnel (requires `wxtunnelId`)
+	Forwarding *string `pulumi:"forwarding"`
+	// When `true`, we'll do dot1x then mac_auth. enable this to prefer mac_auth
+	MacAuthPreferred *bool `pulumi:"macAuthPreferred"`
+	// if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+	MacAuthProtocol *string              `pulumi:"macAuthProtocol"`
+	MistNac         *ApPortConfigMistNac `pulumi:"mistNac"`
+	// If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
+	MxTunnelId *string `pulumi:"mxTunnelId"`
+	// If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+	MxtunnelName *string `pulumi:"mxtunnelName"`
+	// When doing port auth. enum: `dot1x`, `none`
+	PortAuth *string `pulumi:"portAuth"`
+	// If `forwarding`==`limited`
+	PortVlanId *int `pulumi:"portVlanId"`
+	// Junos Radius config
+	RadiusConfig *ApPortConfigRadiusConfig `pulumi:"radiusConfig"`
+	// RadSec settings
+	Radsec *ApPortConfigRadsec `pulumi:"radsec"`
+	// Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+	//   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+	//   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+	VlanId *int `pulumi:"vlanId"`
+	// If `forwarding`==`limited`
+	VlanIds []int `pulumi:"vlanIds"`
+	// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+	WxtunnelId *string `pulumi:"wxtunnelId"`
+	// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+	WxtunnelRemoteId *string `pulumi:"wxtunnelRemoteId"`
+}
+
+// ApPortConfigInput is an input type that accepts ApPortConfigArgs and ApPortConfigOutput values.
+// You can construct a concrete instance of `ApPortConfigInput` via:
+//
+//	ApPortConfigArgs{...}
+type ApPortConfigInput interface {
+	pulumi.Input
+
+	ToApPortConfigOutput() ApPortConfigOutput
+	ToApPortConfigOutputWithContext(context.Context) ApPortConfigOutput
+}
+
+type ApPortConfigArgs struct {
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Optional dynamic vlan
+	DynamicVlan   ApPortConfigDynamicVlanPtrInput `pulumi:"dynamicVlan"`
+	EnableMacAuth pulumi.BoolPtrInput             `pulumi:"enableMacAuth"`
+	// enum:
+	//   * `all`: local breakout, All VLANs
+	//   * `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
+	//   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
+	//   * `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
+	//   * `wxtunnel`': central breakout to an Org WxTunnel (requires `wxtunnelId`)
+	Forwarding pulumi.StringPtrInput `pulumi:"forwarding"`
+	// When `true`, we'll do dot1x then mac_auth. enable this to prefer mac_auth
+	MacAuthPreferred pulumi.BoolPtrInput `pulumi:"macAuthPreferred"`
+	// if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+	MacAuthProtocol pulumi.StringPtrInput       `pulumi:"macAuthProtocol"`
+	MistNac         ApPortConfigMistNacPtrInput `pulumi:"mistNac"`
+	// If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
+	MxTunnelId pulumi.StringPtrInput `pulumi:"mxTunnelId"`
+	// If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+	MxtunnelName pulumi.StringPtrInput `pulumi:"mxtunnelName"`
+	// When doing port auth. enum: `dot1x`, `none`
+	PortAuth pulumi.StringPtrInput `pulumi:"portAuth"`
+	// If `forwarding`==`limited`
+	PortVlanId pulumi.IntPtrInput `pulumi:"portVlanId"`
+	// Junos Radius config
+	RadiusConfig ApPortConfigRadiusConfigPtrInput `pulumi:"radiusConfig"`
+	// RadSec settings
+	Radsec ApPortConfigRadsecPtrInput `pulumi:"radsec"`
+	// Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+	//   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+	//   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+	VlanId pulumi.IntPtrInput `pulumi:"vlanId"`
+	// If `forwarding`==`limited`
+	VlanIds pulumi.IntArrayInput `pulumi:"vlanIds"`
+	// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+	WxtunnelId pulumi.StringPtrInput `pulumi:"wxtunnelId"`
+	// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+	WxtunnelRemoteId pulumi.StringPtrInput `pulumi:"wxtunnelRemoteId"`
+}
+
+func (ApPortConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApPortConfig)(nil)).Elem()
+}
+
+func (i ApPortConfigArgs) ToApPortConfigOutput() ApPortConfigOutput {
+	return i.ToApPortConfigOutputWithContext(context.Background())
+}
+
+func (i ApPortConfigArgs) ToApPortConfigOutputWithContext(ctx context.Context) ApPortConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigOutput)
+}
+
+// ApPortConfigMapInput is an input type that accepts ApPortConfigMap and ApPortConfigMapOutput values.
+// You can construct a concrete instance of `ApPortConfigMapInput` via:
+//
+//	ApPortConfigMap{ "key": ApPortConfigArgs{...} }
+type ApPortConfigMapInput interface {
+	pulumi.Input
+
+	ToApPortConfigMapOutput() ApPortConfigMapOutput
+	ToApPortConfigMapOutputWithContext(context.Context) ApPortConfigMapOutput
+}
+
+type ApPortConfigMap map[string]ApPortConfigInput
+
+func (ApPortConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ApPortConfig)(nil)).Elem()
+}
+
+func (i ApPortConfigMap) ToApPortConfigMapOutput() ApPortConfigMapOutput {
+	return i.ToApPortConfigMapOutputWithContext(context.Background())
+}
+
+func (i ApPortConfigMap) ToApPortConfigMapOutputWithContext(ctx context.Context) ApPortConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigMapOutput)
+}
+
+type ApPortConfigOutput struct{ *pulumi.OutputState }
+
+func (ApPortConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApPortConfig)(nil)).Elem()
+}
+
+func (o ApPortConfigOutput) ToApPortConfigOutput() ApPortConfigOutput {
+	return o
+}
+
+func (o ApPortConfigOutput) ToApPortConfigOutputWithContext(ctx context.Context) ApPortConfigOutput {
+	return o
+}
+
+func (o ApPortConfigOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApPortConfig) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optional dynamic vlan
+func (o ApPortConfigOutput) DynamicVlan() ApPortConfigDynamicVlanPtrOutput {
+	return o.ApplyT(func(v ApPortConfig) *ApPortConfigDynamicVlan { return v.DynamicVlan }).(ApPortConfigDynamicVlanPtrOutput)
+}
+
+func (o ApPortConfigOutput) EnableMacAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApPortConfig) *bool { return v.EnableMacAuth }).(pulumi.BoolPtrOutput)
+}
+
+// enum:
+//   - `all`: local breakout, All VLANs
+//   - `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
+//   - `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
+//   - `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
+//   - `wxtunnel`': central breakout to an Org WxTunnel (requires `wxtunnelId`)
+func (o ApPortConfigOutput) Forwarding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfig) *string { return v.Forwarding }).(pulumi.StringPtrOutput)
+}
+
+// When `true`, we'll do dot1x then mac_auth. enable this to prefer mac_auth
+func (o ApPortConfigOutput) MacAuthPreferred() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApPortConfig) *bool { return v.MacAuthPreferred }).(pulumi.BoolPtrOutput)
+}
+
+// if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+func (o ApPortConfigOutput) MacAuthProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfig) *string { return v.MacAuthProtocol }).(pulumi.StringPtrOutput)
+}
+
+func (o ApPortConfigOutput) MistNac() ApPortConfigMistNacPtrOutput {
+	return o.ApplyT(func(v ApPortConfig) *ApPortConfigMistNac { return v.MistNac }).(ApPortConfigMistNacPtrOutput)
+}
+
+// If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
+func (o ApPortConfigOutput) MxTunnelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfig) *string { return v.MxTunnelId }).(pulumi.StringPtrOutput)
+}
+
+// If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+func (o ApPortConfigOutput) MxtunnelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfig) *string { return v.MxtunnelName }).(pulumi.StringPtrOutput)
+}
+
+// When doing port auth. enum: `dot1x`, `none`
+func (o ApPortConfigOutput) PortAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfig) *string { return v.PortAuth }).(pulumi.StringPtrOutput)
+}
+
+// If `forwarding`==`limited`
+func (o ApPortConfigOutput) PortVlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApPortConfig) *int { return v.PortVlanId }).(pulumi.IntPtrOutput)
+}
+
+// Junos Radius config
+func (o ApPortConfigOutput) RadiusConfig() ApPortConfigRadiusConfigPtrOutput {
+	return o.ApplyT(func(v ApPortConfig) *ApPortConfigRadiusConfig { return v.RadiusConfig }).(ApPortConfigRadiusConfigPtrOutput)
+}
+
+// RadSec settings
+func (o ApPortConfigOutput) Radsec() ApPortConfigRadsecPtrOutput {
+	return o.ApplyT(func(v ApPortConfig) *ApPortConfigRadsec { return v.Radsec }).(ApPortConfigRadsecPtrOutput)
+}
+
+// Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+//   - if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+//   - if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+func (o ApPortConfigOutput) VlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApPortConfig) *int { return v.VlanId }).(pulumi.IntPtrOutput)
+}
+
+// If `forwarding`==`limited`
+func (o ApPortConfigOutput) VlanIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v ApPortConfig) []int { return v.VlanIds }).(pulumi.IntArrayOutput)
+}
+
+// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+func (o ApPortConfigOutput) WxtunnelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfig) *string { return v.WxtunnelId }).(pulumi.StringPtrOutput)
+}
+
+// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+func (o ApPortConfigOutput) WxtunnelRemoteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfig) *string { return v.WxtunnelRemoteId }).(pulumi.StringPtrOutput)
+}
+
+type ApPortConfigMapOutput struct{ *pulumi.OutputState }
+
+func (ApPortConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ApPortConfig)(nil)).Elem()
+}
+
+func (o ApPortConfigMapOutput) ToApPortConfigMapOutput() ApPortConfigMapOutput {
+	return o
+}
+
+func (o ApPortConfigMapOutput) ToApPortConfigMapOutputWithContext(ctx context.Context) ApPortConfigMapOutput {
+	return o
+}
+
+func (o ApPortConfigMapOutput) MapIndex(k pulumi.StringInput) ApPortConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ApPortConfig {
+		return vs[0].(map[string]ApPortConfig)[vs[1].(string)]
+	}).(ApPortConfigOutput)
+}
+
+type ApPortConfigDynamicVlan struct {
+	DefaultVlanId *int              `pulumi:"defaultVlanId"`
+	Enabled       *bool             `pulumi:"enabled"`
+	Type          *string           `pulumi:"type"`
+	Vlans         map[string]string `pulumi:"vlans"`
+}
+
+// ApPortConfigDynamicVlanInput is an input type that accepts ApPortConfigDynamicVlanArgs and ApPortConfigDynamicVlanOutput values.
+// You can construct a concrete instance of `ApPortConfigDynamicVlanInput` via:
+//
+//	ApPortConfigDynamicVlanArgs{...}
+type ApPortConfigDynamicVlanInput interface {
+	pulumi.Input
+
+	ToApPortConfigDynamicVlanOutput() ApPortConfigDynamicVlanOutput
+	ToApPortConfigDynamicVlanOutputWithContext(context.Context) ApPortConfigDynamicVlanOutput
+}
+
+type ApPortConfigDynamicVlanArgs struct {
+	DefaultVlanId pulumi.IntPtrInput    `pulumi:"defaultVlanId"`
+	Enabled       pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Type          pulumi.StringPtrInput `pulumi:"type"`
+	Vlans         pulumi.StringMapInput `pulumi:"vlans"`
+}
+
+func (ApPortConfigDynamicVlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApPortConfigDynamicVlan)(nil)).Elem()
+}
+
+func (i ApPortConfigDynamicVlanArgs) ToApPortConfigDynamicVlanOutput() ApPortConfigDynamicVlanOutput {
+	return i.ToApPortConfigDynamicVlanOutputWithContext(context.Background())
+}
+
+func (i ApPortConfigDynamicVlanArgs) ToApPortConfigDynamicVlanOutputWithContext(ctx context.Context) ApPortConfigDynamicVlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigDynamicVlanOutput)
+}
+
+func (i ApPortConfigDynamicVlanArgs) ToApPortConfigDynamicVlanPtrOutput() ApPortConfigDynamicVlanPtrOutput {
+	return i.ToApPortConfigDynamicVlanPtrOutputWithContext(context.Background())
+}
+
+func (i ApPortConfigDynamicVlanArgs) ToApPortConfigDynamicVlanPtrOutputWithContext(ctx context.Context) ApPortConfigDynamicVlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigDynamicVlanOutput).ToApPortConfigDynamicVlanPtrOutputWithContext(ctx)
+}
+
+// ApPortConfigDynamicVlanPtrInput is an input type that accepts ApPortConfigDynamicVlanArgs, ApPortConfigDynamicVlanPtr and ApPortConfigDynamicVlanPtrOutput values.
+// You can construct a concrete instance of `ApPortConfigDynamicVlanPtrInput` via:
+//
+//	        ApPortConfigDynamicVlanArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApPortConfigDynamicVlanPtrInput interface {
+	pulumi.Input
+
+	ToApPortConfigDynamicVlanPtrOutput() ApPortConfigDynamicVlanPtrOutput
+	ToApPortConfigDynamicVlanPtrOutputWithContext(context.Context) ApPortConfigDynamicVlanPtrOutput
+}
+
+type apPortConfigDynamicVlanPtrType ApPortConfigDynamicVlanArgs
+
+func ApPortConfigDynamicVlanPtr(v *ApPortConfigDynamicVlanArgs) ApPortConfigDynamicVlanPtrInput {
+	return (*apPortConfigDynamicVlanPtrType)(v)
+}
+
+func (*apPortConfigDynamicVlanPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApPortConfigDynamicVlan)(nil)).Elem()
+}
+
+func (i *apPortConfigDynamicVlanPtrType) ToApPortConfigDynamicVlanPtrOutput() ApPortConfigDynamicVlanPtrOutput {
+	return i.ToApPortConfigDynamicVlanPtrOutputWithContext(context.Background())
+}
+
+func (i *apPortConfigDynamicVlanPtrType) ToApPortConfigDynamicVlanPtrOutputWithContext(ctx context.Context) ApPortConfigDynamicVlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigDynamicVlanPtrOutput)
+}
+
+type ApPortConfigDynamicVlanOutput struct{ *pulumi.OutputState }
+
+func (ApPortConfigDynamicVlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApPortConfigDynamicVlan)(nil)).Elem()
+}
+
+func (o ApPortConfigDynamicVlanOutput) ToApPortConfigDynamicVlanOutput() ApPortConfigDynamicVlanOutput {
+	return o
+}
+
+func (o ApPortConfigDynamicVlanOutput) ToApPortConfigDynamicVlanOutputWithContext(ctx context.Context) ApPortConfigDynamicVlanOutput {
+	return o
+}
+
+func (o ApPortConfigDynamicVlanOutput) ToApPortConfigDynamicVlanPtrOutput() ApPortConfigDynamicVlanPtrOutput {
+	return o.ToApPortConfigDynamicVlanPtrOutputWithContext(context.Background())
+}
+
+func (o ApPortConfigDynamicVlanOutput) ToApPortConfigDynamicVlanPtrOutputWithContext(ctx context.Context) ApPortConfigDynamicVlanPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApPortConfigDynamicVlan) *ApPortConfigDynamicVlan {
+		return &v
+	}).(ApPortConfigDynamicVlanPtrOutput)
+}
+
+func (o ApPortConfigDynamicVlanOutput) DefaultVlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApPortConfigDynamicVlan) *int { return v.DefaultVlanId }).(pulumi.IntPtrOutput)
+}
+
+func (o ApPortConfigDynamicVlanOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApPortConfigDynamicVlan) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ApPortConfigDynamicVlanOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfigDynamicVlan) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o ApPortConfigDynamicVlanOutput) Vlans() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ApPortConfigDynamicVlan) map[string]string { return v.Vlans }).(pulumi.StringMapOutput)
+}
+
+type ApPortConfigDynamicVlanPtrOutput struct{ *pulumi.OutputState }
+
+func (ApPortConfigDynamicVlanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApPortConfigDynamicVlan)(nil)).Elem()
+}
+
+func (o ApPortConfigDynamicVlanPtrOutput) ToApPortConfigDynamicVlanPtrOutput() ApPortConfigDynamicVlanPtrOutput {
+	return o
+}
+
+func (o ApPortConfigDynamicVlanPtrOutput) ToApPortConfigDynamicVlanPtrOutputWithContext(ctx context.Context) ApPortConfigDynamicVlanPtrOutput {
+	return o
+}
+
+func (o ApPortConfigDynamicVlanPtrOutput) Elem() ApPortConfigDynamicVlanOutput {
+	return o.ApplyT(func(v *ApPortConfigDynamicVlan) ApPortConfigDynamicVlan {
+		if v != nil {
+			return *v
+		}
+		var ret ApPortConfigDynamicVlan
+		return ret
+	}).(ApPortConfigDynamicVlanOutput)
+}
+
+func (o ApPortConfigDynamicVlanPtrOutput) DefaultVlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApPortConfigDynamicVlan) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultVlanId
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ApPortConfigDynamicVlanPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApPortConfigDynamicVlan) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ApPortConfigDynamicVlanPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApPortConfigDynamicVlan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ApPortConfigDynamicVlanPtrOutput) Vlans() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ApPortConfigDynamicVlan) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Vlans
+	}).(pulumi.StringMapOutput)
+}
+
+type ApPortConfigMistNac struct {
+	// When enabled:
+	//   * `authServers` is ignored
+	//   * `acctServers` is ignored
+	//   * `auth_servers_*` are ignored
+	//   * `coaServers` is ignored
+	//   * `radsec` is ignored
+	//   * `coaEnabled` is assumed
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ApPortConfigMistNacInput is an input type that accepts ApPortConfigMistNacArgs and ApPortConfigMistNacOutput values.
+// You can construct a concrete instance of `ApPortConfigMistNacInput` via:
+//
+//	ApPortConfigMistNacArgs{...}
+type ApPortConfigMistNacInput interface {
+	pulumi.Input
+
+	ToApPortConfigMistNacOutput() ApPortConfigMistNacOutput
+	ToApPortConfigMistNacOutputWithContext(context.Context) ApPortConfigMistNacOutput
+}
+
+type ApPortConfigMistNacArgs struct {
+	// When enabled:
+	//   * `authServers` is ignored
+	//   * `acctServers` is ignored
+	//   * `auth_servers_*` are ignored
+	//   * `coaServers` is ignored
+	//   * `radsec` is ignored
+	//   * `coaEnabled` is assumed
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ApPortConfigMistNacArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApPortConfigMistNac)(nil)).Elem()
+}
+
+func (i ApPortConfigMistNacArgs) ToApPortConfigMistNacOutput() ApPortConfigMistNacOutput {
+	return i.ToApPortConfigMistNacOutputWithContext(context.Background())
+}
+
+func (i ApPortConfigMistNacArgs) ToApPortConfigMistNacOutputWithContext(ctx context.Context) ApPortConfigMistNacOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigMistNacOutput)
+}
+
+func (i ApPortConfigMistNacArgs) ToApPortConfigMistNacPtrOutput() ApPortConfigMistNacPtrOutput {
+	return i.ToApPortConfigMistNacPtrOutputWithContext(context.Background())
+}
+
+func (i ApPortConfigMistNacArgs) ToApPortConfigMistNacPtrOutputWithContext(ctx context.Context) ApPortConfigMistNacPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigMistNacOutput).ToApPortConfigMistNacPtrOutputWithContext(ctx)
+}
+
+// ApPortConfigMistNacPtrInput is an input type that accepts ApPortConfigMistNacArgs, ApPortConfigMistNacPtr and ApPortConfigMistNacPtrOutput values.
+// You can construct a concrete instance of `ApPortConfigMistNacPtrInput` via:
+//
+//	        ApPortConfigMistNacArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApPortConfigMistNacPtrInput interface {
+	pulumi.Input
+
+	ToApPortConfigMistNacPtrOutput() ApPortConfigMistNacPtrOutput
+	ToApPortConfigMistNacPtrOutputWithContext(context.Context) ApPortConfigMistNacPtrOutput
+}
+
+type apPortConfigMistNacPtrType ApPortConfigMistNacArgs
+
+func ApPortConfigMistNacPtr(v *ApPortConfigMistNacArgs) ApPortConfigMistNacPtrInput {
+	return (*apPortConfigMistNacPtrType)(v)
+}
+
+func (*apPortConfigMistNacPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApPortConfigMistNac)(nil)).Elem()
+}
+
+func (i *apPortConfigMistNacPtrType) ToApPortConfigMistNacPtrOutput() ApPortConfigMistNacPtrOutput {
+	return i.ToApPortConfigMistNacPtrOutputWithContext(context.Background())
+}
+
+func (i *apPortConfigMistNacPtrType) ToApPortConfigMistNacPtrOutputWithContext(ctx context.Context) ApPortConfigMistNacPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigMistNacPtrOutput)
+}
+
+type ApPortConfigMistNacOutput struct{ *pulumi.OutputState }
+
+func (ApPortConfigMistNacOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApPortConfigMistNac)(nil)).Elem()
+}
+
+func (o ApPortConfigMistNacOutput) ToApPortConfigMistNacOutput() ApPortConfigMistNacOutput {
+	return o
+}
+
+func (o ApPortConfigMistNacOutput) ToApPortConfigMistNacOutputWithContext(ctx context.Context) ApPortConfigMistNacOutput {
+	return o
+}
+
+func (o ApPortConfigMistNacOutput) ToApPortConfigMistNacPtrOutput() ApPortConfigMistNacPtrOutput {
+	return o.ToApPortConfigMistNacPtrOutputWithContext(context.Background())
+}
+
+func (o ApPortConfigMistNacOutput) ToApPortConfigMistNacPtrOutputWithContext(ctx context.Context) ApPortConfigMistNacPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApPortConfigMistNac) *ApPortConfigMistNac {
+		return &v
+	}).(ApPortConfigMistNacPtrOutput)
+}
+
+// When enabled:
+//   - `authServers` is ignored
+//   - `acctServers` is ignored
+//   - `auth_servers_*` are ignored
+//   - `coaServers` is ignored
+//   - `radsec` is ignored
+//   - `coaEnabled` is assumed
+func (o ApPortConfigMistNacOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApPortConfigMistNac) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ApPortConfigMistNacPtrOutput struct{ *pulumi.OutputState }
+
+func (ApPortConfigMistNacPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApPortConfigMistNac)(nil)).Elem()
+}
+
+func (o ApPortConfigMistNacPtrOutput) ToApPortConfigMistNacPtrOutput() ApPortConfigMistNacPtrOutput {
+	return o
+}
+
+func (o ApPortConfigMistNacPtrOutput) ToApPortConfigMistNacPtrOutputWithContext(ctx context.Context) ApPortConfigMistNacPtrOutput {
+	return o
+}
+
+func (o ApPortConfigMistNacPtrOutput) Elem() ApPortConfigMistNacOutput {
+	return o.ApplyT(func(v *ApPortConfigMistNac) ApPortConfigMistNac {
+		if v != nil {
+			return *v
+		}
+		var ret ApPortConfigMistNac
+		return ret
+	}).(ApPortConfigMistNacOutput)
+}
+
+// When enabled:
+//   - `authServers` is ignored
+//   - `acctServers` is ignored
+//   - `auth_servers_*` are ignored
+//   - `coaServers` is ignored
+//   - `radsec` is ignored
+//   - `coaEnabled` is assumed
+func (o ApPortConfigMistNacPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApPortConfigMistNac) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ApPortConfigRadiusConfig struct {
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+	AcctInterimInterval *int                                 `pulumi:"acctInterimInterval"`
+	AcctServers         []ApPortConfigRadiusConfigAcctServer `pulumi:"acctServers"`
+	AuthServers         []ApPortConfigRadiusConfigAuthServer `pulumi:"authServers"`
+	// radius auth session retries
+	AuthServersRetries *int `pulumi:"authServersRetries"`
+	// radius auth session timeout
+	AuthServersTimeout *int  `pulumi:"authServersTimeout"`
+	CoaEnabled         *bool `pulumi:"coaEnabled"`
+	CoaPort            *int  `pulumi:"coaPort"`
+	// use `network`or `sourceIp`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+	Network *string `pulumi:"network"`
+	// use `network`or `sourceIp`
+	SourceIp *string `pulumi:"sourceIp"`
+}
+
+// ApPortConfigRadiusConfigInput is an input type that accepts ApPortConfigRadiusConfigArgs and ApPortConfigRadiusConfigOutput values.
+// You can construct a concrete instance of `ApPortConfigRadiusConfigInput` via:
+//
+//	ApPortConfigRadiusConfigArgs{...}
+type ApPortConfigRadiusConfigInput interface {
+	pulumi.Input
+
+	ToApPortConfigRadiusConfigOutput() ApPortConfigRadiusConfigOutput
+	ToApPortConfigRadiusConfigOutputWithContext(context.Context) ApPortConfigRadiusConfigOutput
+}
+
+type ApPortConfigRadiusConfigArgs struct {
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+	AcctInterimInterval pulumi.IntPtrInput                           `pulumi:"acctInterimInterval"`
+	AcctServers         ApPortConfigRadiusConfigAcctServerArrayInput `pulumi:"acctServers"`
+	AuthServers         ApPortConfigRadiusConfigAuthServerArrayInput `pulumi:"authServers"`
+	// radius auth session retries
+	AuthServersRetries pulumi.IntPtrInput `pulumi:"authServersRetries"`
+	// radius auth session timeout
+	AuthServersTimeout pulumi.IntPtrInput  `pulumi:"authServersTimeout"`
+	CoaEnabled         pulumi.BoolPtrInput `pulumi:"coaEnabled"`
+	CoaPort            pulumi.IntPtrInput  `pulumi:"coaPort"`
+	// use `network`or `sourceIp`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// use `network`or `sourceIp`
+	SourceIp pulumi.StringPtrInput `pulumi:"sourceIp"`
+}
+
+func (ApPortConfigRadiusConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApPortConfigRadiusConfig)(nil)).Elem()
+}
+
+func (i ApPortConfigRadiusConfigArgs) ToApPortConfigRadiusConfigOutput() ApPortConfigRadiusConfigOutput {
+	return i.ToApPortConfigRadiusConfigOutputWithContext(context.Background())
+}
+
+func (i ApPortConfigRadiusConfigArgs) ToApPortConfigRadiusConfigOutputWithContext(ctx context.Context) ApPortConfigRadiusConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigRadiusConfigOutput)
+}
+
+func (i ApPortConfigRadiusConfigArgs) ToApPortConfigRadiusConfigPtrOutput() ApPortConfigRadiusConfigPtrOutput {
+	return i.ToApPortConfigRadiusConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ApPortConfigRadiusConfigArgs) ToApPortConfigRadiusConfigPtrOutputWithContext(ctx context.Context) ApPortConfigRadiusConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigRadiusConfigOutput).ToApPortConfigRadiusConfigPtrOutputWithContext(ctx)
+}
+
+// ApPortConfigRadiusConfigPtrInput is an input type that accepts ApPortConfigRadiusConfigArgs, ApPortConfigRadiusConfigPtr and ApPortConfigRadiusConfigPtrOutput values.
+// You can construct a concrete instance of `ApPortConfigRadiusConfigPtrInput` via:
+//
+//	        ApPortConfigRadiusConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApPortConfigRadiusConfigPtrInput interface {
+	pulumi.Input
+
+	ToApPortConfigRadiusConfigPtrOutput() ApPortConfigRadiusConfigPtrOutput
+	ToApPortConfigRadiusConfigPtrOutputWithContext(context.Context) ApPortConfigRadiusConfigPtrOutput
+}
+
+type apPortConfigRadiusConfigPtrType ApPortConfigRadiusConfigArgs
+
+func ApPortConfigRadiusConfigPtr(v *ApPortConfigRadiusConfigArgs) ApPortConfigRadiusConfigPtrInput {
+	return (*apPortConfigRadiusConfigPtrType)(v)
+}
+
+func (*apPortConfigRadiusConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApPortConfigRadiusConfig)(nil)).Elem()
+}
+
+func (i *apPortConfigRadiusConfigPtrType) ToApPortConfigRadiusConfigPtrOutput() ApPortConfigRadiusConfigPtrOutput {
+	return i.ToApPortConfigRadiusConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *apPortConfigRadiusConfigPtrType) ToApPortConfigRadiusConfigPtrOutputWithContext(ctx context.Context) ApPortConfigRadiusConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigRadiusConfigPtrOutput)
+}
+
+type ApPortConfigRadiusConfigOutput struct{ *pulumi.OutputState }
+
+func (ApPortConfigRadiusConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApPortConfigRadiusConfig)(nil)).Elem()
+}
+
+func (o ApPortConfigRadiusConfigOutput) ToApPortConfigRadiusConfigOutput() ApPortConfigRadiusConfigOutput {
+	return o
+}
+
+func (o ApPortConfigRadiusConfigOutput) ToApPortConfigRadiusConfigOutputWithContext(ctx context.Context) ApPortConfigRadiusConfigOutput {
+	return o
+}
+
+func (o ApPortConfigRadiusConfigOutput) ToApPortConfigRadiusConfigPtrOutput() ApPortConfigRadiusConfigPtrOutput {
+	return o.ToApPortConfigRadiusConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ApPortConfigRadiusConfigOutput) ToApPortConfigRadiusConfigPtrOutputWithContext(ctx context.Context) ApPortConfigRadiusConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApPortConfigRadiusConfig) *ApPortConfigRadiusConfig {
+		return &v
+	}).(ApPortConfigRadiusConfigPtrOutput)
+}
+
+// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+func (o ApPortConfigRadiusConfigOutput) AcctInterimInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfig) *int { return v.AcctInterimInterval }).(pulumi.IntPtrOutput)
+}
+
+func (o ApPortConfigRadiusConfigOutput) AcctServers() ApPortConfigRadiusConfigAcctServerArrayOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfig) []ApPortConfigRadiusConfigAcctServer { return v.AcctServers }).(ApPortConfigRadiusConfigAcctServerArrayOutput)
+}
+
+func (o ApPortConfigRadiusConfigOutput) AuthServers() ApPortConfigRadiusConfigAuthServerArrayOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfig) []ApPortConfigRadiusConfigAuthServer { return v.AuthServers }).(ApPortConfigRadiusConfigAuthServerArrayOutput)
+}
+
+// radius auth session retries
+func (o ApPortConfigRadiusConfigOutput) AuthServersRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfig) *int { return v.AuthServersRetries }).(pulumi.IntPtrOutput)
+}
+
+// radius auth session timeout
+func (o ApPortConfigRadiusConfigOutput) AuthServersTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfig) *int { return v.AuthServersTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o ApPortConfigRadiusConfigOutput) CoaEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfig) *bool { return v.CoaEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ApPortConfigRadiusConfigOutput) CoaPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfig) *int { return v.CoaPort }).(pulumi.IntPtrOutput)
+}
+
+// use `network`or `sourceIp`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+func (o ApPortConfigRadiusConfigOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// use `network`or `sourceIp`
+func (o ApPortConfigRadiusConfigOutput) SourceIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfig) *string { return v.SourceIp }).(pulumi.StringPtrOutput)
+}
+
+type ApPortConfigRadiusConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ApPortConfigRadiusConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApPortConfigRadiusConfig)(nil)).Elem()
+}
+
+func (o ApPortConfigRadiusConfigPtrOutput) ToApPortConfigRadiusConfigPtrOutput() ApPortConfigRadiusConfigPtrOutput {
+	return o
+}
+
+func (o ApPortConfigRadiusConfigPtrOutput) ToApPortConfigRadiusConfigPtrOutputWithContext(ctx context.Context) ApPortConfigRadiusConfigPtrOutput {
+	return o
+}
+
+func (o ApPortConfigRadiusConfigPtrOutput) Elem() ApPortConfigRadiusConfigOutput {
+	return o.ApplyT(func(v *ApPortConfigRadiusConfig) ApPortConfigRadiusConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ApPortConfigRadiusConfig
+		return ret
+	}).(ApPortConfigRadiusConfigOutput)
+}
+
+// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+func (o ApPortConfigRadiusConfigPtrOutput) AcctInterimInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApPortConfigRadiusConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AcctInterimInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ApPortConfigRadiusConfigPtrOutput) AcctServers() ApPortConfigRadiusConfigAcctServerArrayOutput {
+	return o.ApplyT(func(v *ApPortConfigRadiusConfig) []ApPortConfigRadiusConfigAcctServer {
+		if v == nil {
+			return nil
+		}
+		return v.AcctServers
+	}).(ApPortConfigRadiusConfigAcctServerArrayOutput)
+}
+
+func (o ApPortConfigRadiusConfigPtrOutput) AuthServers() ApPortConfigRadiusConfigAuthServerArrayOutput {
+	return o.ApplyT(func(v *ApPortConfigRadiusConfig) []ApPortConfigRadiusConfigAuthServer {
+		if v == nil {
+			return nil
+		}
+		return v.AuthServers
+	}).(ApPortConfigRadiusConfigAuthServerArrayOutput)
+}
+
+// radius auth session retries
+func (o ApPortConfigRadiusConfigPtrOutput) AuthServersRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApPortConfigRadiusConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AuthServersRetries
+	}).(pulumi.IntPtrOutput)
+}
+
+// radius auth session timeout
+func (o ApPortConfigRadiusConfigPtrOutput) AuthServersTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApPortConfigRadiusConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AuthServersTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ApPortConfigRadiusConfigPtrOutput) CoaEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApPortConfigRadiusConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CoaEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ApPortConfigRadiusConfigPtrOutput) CoaPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApPortConfigRadiusConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CoaPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// use `network`or `sourceIp`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+func (o ApPortConfigRadiusConfigPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApPortConfigRadiusConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// use `network`or `sourceIp`
+func (o ApPortConfigRadiusConfigPtrOutput) SourceIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApPortConfigRadiusConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceIp
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApPortConfigRadiusConfigAcctServer struct {
+	// IP/ hostname of RADIUS server
+	Host           string `pulumi:"host"`
+	KeywrapEnabled *bool  `pulumi:"keywrapEnabled"`
+	// enum: `ascii`, `hex`
+	KeywrapFormat *string `pulumi:"keywrapFormat"`
+	KeywrapKek    *string `pulumi:"keywrapKek"`
+	KeywrapMack   *string `pulumi:"keywrapMack"`
+	Port          *string `pulumi:"port"`
+	// Secret of RADIUS server
+	Secret string `pulumi:"secret"`
+}
+
+// ApPortConfigRadiusConfigAcctServerInput is an input type that accepts ApPortConfigRadiusConfigAcctServerArgs and ApPortConfigRadiusConfigAcctServerOutput values.
+// You can construct a concrete instance of `ApPortConfigRadiusConfigAcctServerInput` via:
+//
+//	ApPortConfigRadiusConfigAcctServerArgs{...}
+type ApPortConfigRadiusConfigAcctServerInput interface {
+	pulumi.Input
+
+	ToApPortConfigRadiusConfigAcctServerOutput() ApPortConfigRadiusConfigAcctServerOutput
+	ToApPortConfigRadiusConfigAcctServerOutputWithContext(context.Context) ApPortConfigRadiusConfigAcctServerOutput
+}
+
+type ApPortConfigRadiusConfigAcctServerArgs struct {
+	// IP/ hostname of RADIUS server
+	Host           pulumi.StringInput  `pulumi:"host"`
+	KeywrapEnabled pulumi.BoolPtrInput `pulumi:"keywrapEnabled"`
+	// enum: `ascii`, `hex`
+	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
+	KeywrapKek    pulumi.StringPtrInput `pulumi:"keywrapKek"`
+	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
+	Port          pulumi.StringPtrInput `pulumi:"port"`
+	// Secret of RADIUS server
+	Secret pulumi.StringInput `pulumi:"secret"`
+}
+
+func (ApPortConfigRadiusConfigAcctServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApPortConfigRadiusConfigAcctServer)(nil)).Elem()
+}
+
+func (i ApPortConfigRadiusConfigAcctServerArgs) ToApPortConfigRadiusConfigAcctServerOutput() ApPortConfigRadiusConfigAcctServerOutput {
+	return i.ToApPortConfigRadiusConfigAcctServerOutputWithContext(context.Background())
+}
+
+func (i ApPortConfigRadiusConfigAcctServerArgs) ToApPortConfigRadiusConfigAcctServerOutputWithContext(ctx context.Context) ApPortConfigRadiusConfigAcctServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigRadiusConfigAcctServerOutput)
+}
+
+// ApPortConfigRadiusConfigAcctServerArrayInput is an input type that accepts ApPortConfigRadiusConfigAcctServerArray and ApPortConfigRadiusConfigAcctServerArrayOutput values.
+// You can construct a concrete instance of `ApPortConfigRadiusConfigAcctServerArrayInput` via:
+//
+//	ApPortConfigRadiusConfigAcctServerArray{ ApPortConfigRadiusConfigAcctServerArgs{...} }
+type ApPortConfigRadiusConfigAcctServerArrayInput interface {
+	pulumi.Input
+
+	ToApPortConfigRadiusConfigAcctServerArrayOutput() ApPortConfigRadiusConfigAcctServerArrayOutput
+	ToApPortConfigRadiusConfigAcctServerArrayOutputWithContext(context.Context) ApPortConfigRadiusConfigAcctServerArrayOutput
+}
+
+type ApPortConfigRadiusConfigAcctServerArray []ApPortConfigRadiusConfigAcctServerInput
+
+func (ApPortConfigRadiusConfigAcctServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApPortConfigRadiusConfigAcctServer)(nil)).Elem()
+}
+
+func (i ApPortConfigRadiusConfigAcctServerArray) ToApPortConfigRadiusConfigAcctServerArrayOutput() ApPortConfigRadiusConfigAcctServerArrayOutput {
+	return i.ToApPortConfigRadiusConfigAcctServerArrayOutputWithContext(context.Background())
+}
+
+func (i ApPortConfigRadiusConfigAcctServerArray) ToApPortConfigRadiusConfigAcctServerArrayOutputWithContext(ctx context.Context) ApPortConfigRadiusConfigAcctServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigRadiusConfigAcctServerArrayOutput)
+}
+
+type ApPortConfigRadiusConfigAcctServerOutput struct{ *pulumi.OutputState }
+
+func (ApPortConfigRadiusConfigAcctServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApPortConfigRadiusConfigAcctServer)(nil)).Elem()
+}
+
+func (o ApPortConfigRadiusConfigAcctServerOutput) ToApPortConfigRadiusConfigAcctServerOutput() ApPortConfigRadiusConfigAcctServerOutput {
+	return o
+}
+
+func (o ApPortConfigRadiusConfigAcctServerOutput) ToApPortConfigRadiusConfigAcctServerOutputWithContext(ctx context.Context) ApPortConfigRadiusConfigAcctServerOutput {
+	return o
+}
+
+// IP/ hostname of RADIUS server
+func (o ApPortConfigRadiusConfigAcctServerOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfigAcctServer) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o ApPortConfigRadiusConfigAcctServerOutput) KeywrapEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfigAcctServer) *bool { return v.KeywrapEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// enum: `ascii`, `hex`
+func (o ApPortConfigRadiusConfigAcctServerOutput) KeywrapFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfigAcctServer) *string { return v.KeywrapFormat }).(pulumi.StringPtrOutput)
+}
+
+func (o ApPortConfigRadiusConfigAcctServerOutput) KeywrapKek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfigAcctServer) *string { return v.KeywrapKek }).(pulumi.StringPtrOutput)
+}
+
+func (o ApPortConfigRadiusConfigAcctServerOutput) KeywrapMack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfigAcctServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
+}
+
+func (o ApPortConfigRadiusConfigAcctServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfigAcctServer) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// Secret of RADIUS server
+func (o ApPortConfigRadiusConfigAcctServerOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfigAcctServer) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+type ApPortConfigRadiusConfigAcctServerArrayOutput struct{ *pulumi.OutputState }
+
+func (ApPortConfigRadiusConfigAcctServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApPortConfigRadiusConfigAcctServer)(nil)).Elem()
+}
+
+func (o ApPortConfigRadiusConfigAcctServerArrayOutput) ToApPortConfigRadiusConfigAcctServerArrayOutput() ApPortConfigRadiusConfigAcctServerArrayOutput {
+	return o
+}
+
+func (o ApPortConfigRadiusConfigAcctServerArrayOutput) ToApPortConfigRadiusConfigAcctServerArrayOutputWithContext(ctx context.Context) ApPortConfigRadiusConfigAcctServerArrayOutput {
+	return o
+}
+
+func (o ApPortConfigRadiusConfigAcctServerArrayOutput) Index(i pulumi.IntInput) ApPortConfigRadiusConfigAcctServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApPortConfigRadiusConfigAcctServer {
+		return vs[0].([]ApPortConfigRadiusConfigAcctServer)[vs[1].(int)]
+	}).(ApPortConfigRadiusConfigAcctServerOutput)
+}
+
+type ApPortConfigRadiusConfigAuthServer struct {
+	// IP/ hostname of RADIUS server
+	Host           string `pulumi:"host"`
+	KeywrapEnabled *bool  `pulumi:"keywrapEnabled"`
+	// enum: `ascii`, `hex`
+	KeywrapFormat *string `pulumi:"keywrapFormat"`
+	KeywrapKek    *string `pulumi:"keywrapKek"`
+	KeywrapMack   *string `pulumi:"keywrapMack"`
+	Port          *string `pulumi:"port"`
+	// Whether to require Message-Authenticator in requests
+	RequireMessageAuthenticator *bool `pulumi:"requireMessageAuthenticator"`
+	// Secret of RADIUS server
+	Secret string `pulumi:"secret"`
+}
+
+// ApPortConfigRadiusConfigAuthServerInput is an input type that accepts ApPortConfigRadiusConfigAuthServerArgs and ApPortConfigRadiusConfigAuthServerOutput values.
+// You can construct a concrete instance of `ApPortConfigRadiusConfigAuthServerInput` via:
+//
+//	ApPortConfigRadiusConfigAuthServerArgs{...}
+type ApPortConfigRadiusConfigAuthServerInput interface {
+	pulumi.Input
+
+	ToApPortConfigRadiusConfigAuthServerOutput() ApPortConfigRadiusConfigAuthServerOutput
+	ToApPortConfigRadiusConfigAuthServerOutputWithContext(context.Context) ApPortConfigRadiusConfigAuthServerOutput
+}
+
+type ApPortConfigRadiusConfigAuthServerArgs struct {
+	// IP/ hostname of RADIUS server
+	Host           pulumi.StringInput  `pulumi:"host"`
+	KeywrapEnabled pulumi.BoolPtrInput `pulumi:"keywrapEnabled"`
+	// enum: `ascii`, `hex`
+	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
+	KeywrapKek    pulumi.StringPtrInput `pulumi:"keywrapKek"`
+	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
+	Port          pulumi.StringPtrInput `pulumi:"port"`
+	// Whether to require Message-Authenticator in requests
+	RequireMessageAuthenticator pulumi.BoolPtrInput `pulumi:"requireMessageAuthenticator"`
+	// Secret of RADIUS server
+	Secret pulumi.StringInput `pulumi:"secret"`
+}
+
+func (ApPortConfigRadiusConfigAuthServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApPortConfigRadiusConfigAuthServer)(nil)).Elem()
+}
+
+func (i ApPortConfigRadiusConfigAuthServerArgs) ToApPortConfigRadiusConfigAuthServerOutput() ApPortConfigRadiusConfigAuthServerOutput {
+	return i.ToApPortConfigRadiusConfigAuthServerOutputWithContext(context.Background())
+}
+
+func (i ApPortConfigRadiusConfigAuthServerArgs) ToApPortConfigRadiusConfigAuthServerOutputWithContext(ctx context.Context) ApPortConfigRadiusConfigAuthServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigRadiusConfigAuthServerOutput)
+}
+
+// ApPortConfigRadiusConfigAuthServerArrayInput is an input type that accepts ApPortConfigRadiusConfigAuthServerArray and ApPortConfigRadiusConfigAuthServerArrayOutput values.
+// You can construct a concrete instance of `ApPortConfigRadiusConfigAuthServerArrayInput` via:
+//
+//	ApPortConfigRadiusConfigAuthServerArray{ ApPortConfigRadiusConfigAuthServerArgs{...} }
+type ApPortConfigRadiusConfigAuthServerArrayInput interface {
+	pulumi.Input
+
+	ToApPortConfigRadiusConfigAuthServerArrayOutput() ApPortConfigRadiusConfigAuthServerArrayOutput
+	ToApPortConfigRadiusConfigAuthServerArrayOutputWithContext(context.Context) ApPortConfigRadiusConfigAuthServerArrayOutput
+}
+
+type ApPortConfigRadiusConfigAuthServerArray []ApPortConfigRadiusConfigAuthServerInput
+
+func (ApPortConfigRadiusConfigAuthServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApPortConfigRadiusConfigAuthServer)(nil)).Elem()
+}
+
+func (i ApPortConfigRadiusConfigAuthServerArray) ToApPortConfigRadiusConfigAuthServerArrayOutput() ApPortConfigRadiusConfigAuthServerArrayOutput {
+	return i.ToApPortConfigRadiusConfigAuthServerArrayOutputWithContext(context.Background())
+}
+
+func (i ApPortConfigRadiusConfigAuthServerArray) ToApPortConfigRadiusConfigAuthServerArrayOutputWithContext(ctx context.Context) ApPortConfigRadiusConfigAuthServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigRadiusConfigAuthServerArrayOutput)
+}
+
+type ApPortConfigRadiusConfigAuthServerOutput struct{ *pulumi.OutputState }
+
+func (ApPortConfigRadiusConfigAuthServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApPortConfigRadiusConfigAuthServer)(nil)).Elem()
+}
+
+func (o ApPortConfigRadiusConfigAuthServerOutput) ToApPortConfigRadiusConfigAuthServerOutput() ApPortConfigRadiusConfigAuthServerOutput {
+	return o
+}
+
+func (o ApPortConfigRadiusConfigAuthServerOutput) ToApPortConfigRadiusConfigAuthServerOutputWithContext(ctx context.Context) ApPortConfigRadiusConfigAuthServerOutput {
+	return o
+}
+
+// IP/ hostname of RADIUS server
+func (o ApPortConfigRadiusConfigAuthServerOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfigAuthServer) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o ApPortConfigRadiusConfigAuthServerOutput) KeywrapEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfigAuthServer) *bool { return v.KeywrapEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// enum: `ascii`, `hex`
+func (o ApPortConfigRadiusConfigAuthServerOutput) KeywrapFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfigAuthServer) *string { return v.KeywrapFormat }).(pulumi.StringPtrOutput)
+}
+
+func (o ApPortConfigRadiusConfigAuthServerOutput) KeywrapKek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfigAuthServer) *string { return v.KeywrapKek }).(pulumi.StringPtrOutput)
+}
+
+func (o ApPortConfigRadiusConfigAuthServerOutput) KeywrapMack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfigAuthServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
+}
+
+func (o ApPortConfigRadiusConfigAuthServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfigAuthServer) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// Whether to require Message-Authenticator in requests
+func (o ApPortConfigRadiusConfigAuthServerOutput) RequireMessageAuthenticator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfigAuthServer) *bool { return v.RequireMessageAuthenticator }).(pulumi.BoolPtrOutput)
+}
+
+// Secret of RADIUS server
+func (o ApPortConfigRadiusConfigAuthServerOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v ApPortConfigRadiusConfigAuthServer) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+type ApPortConfigRadiusConfigAuthServerArrayOutput struct{ *pulumi.OutputState }
+
+func (ApPortConfigRadiusConfigAuthServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApPortConfigRadiusConfigAuthServer)(nil)).Elem()
+}
+
+func (o ApPortConfigRadiusConfigAuthServerArrayOutput) ToApPortConfigRadiusConfigAuthServerArrayOutput() ApPortConfigRadiusConfigAuthServerArrayOutput {
+	return o
+}
+
+func (o ApPortConfigRadiusConfigAuthServerArrayOutput) ToApPortConfigRadiusConfigAuthServerArrayOutputWithContext(ctx context.Context) ApPortConfigRadiusConfigAuthServerArrayOutput {
+	return o
+}
+
+func (o ApPortConfigRadiusConfigAuthServerArrayOutput) Index(i pulumi.IntInput) ApPortConfigRadiusConfigAuthServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApPortConfigRadiusConfigAuthServer {
+		return vs[0].([]ApPortConfigRadiusConfigAuthServer)[vs[1].(int)]
+	}).(ApPortConfigRadiusConfigAuthServerOutput)
+}
+
+type ApPortConfigRadsec struct {
+	CoaEnabled  *bool   `pulumi:"coaEnabled"`
+	Enabled     *bool   `pulumi:"enabled"`
+	IdleTimeout *string `pulumi:"idleTimeout"`
+	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+	MxclusterIds []string `pulumi:"mxclusterIds"`
+	// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+	ProxyHosts []string `pulumi:"proxyHosts"`
+	// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+	ServerName *string `pulumi:"serverName"`
+	// List of RadSec Servers. Only if not Mist Edge.
+	Servers []ApPortConfigRadsecServer `pulumi:"servers"`
+	// use mxedge(s) as RadSec Proxy
+	UseMxedge *bool `pulumi:"useMxedge"`
+	// To use Site mxedges when this WLAN does not use mxtunnel
+	UseSiteMxedge *bool `pulumi:"useSiteMxedge"`
+}
+
+// ApPortConfigRadsecInput is an input type that accepts ApPortConfigRadsecArgs and ApPortConfigRadsecOutput values.
+// You can construct a concrete instance of `ApPortConfigRadsecInput` via:
+//
+//	ApPortConfigRadsecArgs{...}
+type ApPortConfigRadsecInput interface {
+	pulumi.Input
+
+	ToApPortConfigRadsecOutput() ApPortConfigRadsecOutput
+	ToApPortConfigRadsecOutputWithContext(context.Context) ApPortConfigRadsecOutput
+}
+
+type ApPortConfigRadsecArgs struct {
+	CoaEnabled  pulumi.BoolPtrInput   `pulumi:"coaEnabled"`
+	Enabled     pulumi.BoolPtrInput   `pulumi:"enabled"`
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
+	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+	MxclusterIds pulumi.StringArrayInput `pulumi:"mxclusterIds"`
+	// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+	ProxyHosts pulumi.StringArrayInput `pulumi:"proxyHosts"`
+	// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
+	// List of RadSec Servers. Only if not Mist Edge.
+	Servers ApPortConfigRadsecServerArrayInput `pulumi:"servers"`
+	// use mxedge(s) as RadSec Proxy
+	UseMxedge pulumi.BoolPtrInput `pulumi:"useMxedge"`
+	// To use Site mxedges when this WLAN does not use mxtunnel
+	UseSiteMxedge pulumi.BoolPtrInput `pulumi:"useSiteMxedge"`
+}
+
+func (ApPortConfigRadsecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApPortConfigRadsec)(nil)).Elem()
+}
+
+func (i ApPortConfigRadsecArgs) ToApPortConfigRadsecOutput() ApPortConfigRadsecOutput {
+	return i.ToApPortConfigRadsecOutputWithContext(context.Background())
+}
+
+func (i ApPortConfigRadsecArgs) ToApPortConfigRadsecOutputWithContext(ctx context.Context) ApPortConfigRadsecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigRadsecOutput)
+}
+
+func (i ApPortConfigRadsecArgs) ToApPortConfigRadsecPtrOutput() ApPortConfigRadsecPtrOutput {
+	return i.ToApPortConfigRadsecPtrOutputWithContext(context.Background())
+}
+
+func (i ApPortConfigRadsecArgs) ToApPortConfigRadsecPtrOutputWithContext(ctx context.Context) ApPortConfigRadsecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigRadsecOutput).ToApPortConfigRadsecPtrOutputWithContext(ctx)
+}
+
+// ApPortConfigRadsecPtrInput is an input type that accepts ApPortConfigRadsecArgs, ApPortConfigRadsecPtr and ApPortConfigRadsecPtrOutput values.
+// You can construct a concrete instance of `ApPortConfigRadsecPtrInput` via:
+//
+//	        ApPortConfigRadsecArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApPortConfigRadsecPtrInput interface {
+	pulumi.Input
+
+	ToApPortConfigRadsecPtrOutput() ApPortConfigRadsecPtrOutput
+	ToApPortConfigRadsecPtrOutputWithContext(context.Context) ApPortConfigRadsecPtrOutput
+}
+
+type apPortConfigRadsecPtrType ApPortConfigRadsecArgs
+
+func ApPortConfigRadsecPtr(v *ApPortConfigRadsecArgs) ApPortConfigRadsecPtrInput {
+	return (*apPortConfigRadsecPtrType)(v)
+}
+
+func (*apPortConfigRadsecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApPortConfigRadsec)(nil)).Elem()
+}
+
+func (i *apPortConfigRadsecPtrType) ToApPortConfigRadsecPtrOutput() ApPortConfigRadsecPtrOutput {
+	return i.ToApPortConfigRadsecPtrOutputWithContext(context.Background())
+}
+
+func (i *apPortConfigRadsecPtrType) ToApPortConfigRadsecPtrOutputWithContext(ctx context.Context) ApPortConfigRadsecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigRadsecPtrOutput)
+}
+
+type ApPortConfigRadsecOutput struct{ *pulumi.OutputState }
+
+func (ApPortConfigRadsecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApPortConfigRadsec)(nil)).Elem()
+}
+
+func (o ApPortConfigRadsecOutput) ToApPortConfigRadsecOutput() ApPortConfigRadsecOutput {
+	return o
+}
+
+func (o ApPortConfigRadsecOutput) ToApPortConfigRadsecOutputWithContext(ctx context.Context) ApPortConfigRadsecOutput {
+	return o
+}
+
+func (o ApPortConfigRadsecOutput) ToApPortConfigRadsecPtrOutput() ApPortConfigRadsecPtrOutput {
+	return o.ToApPortConfigRadsecPtrOutputWithContext(context.Background())
+}
+
+func (o ApPortConfigRadsecOutput) ToApPortConfigRadsecPtrOutputWithContext(ctx context.Context) ApPortConfigRadsecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApPortConfigRadsec) *ApPortConfigRadsec {
+		return &v
+	}).(ApPortConfigRadsecPtrOutput)
+}
+
+func (o ApPortConfigRadsecOutput) CoaEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadsec) *bool { return v.CoaEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ApPortConfigRadsecOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadsec) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ApPortConfigRadsecOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadsec) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
+}
+
+// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+func (o ApPortConfigRadsecOutput) MxclusterIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApPortConfigRadsec) []string { return v.MxclusterIds }).(pulumi.StringArrayOutput)
+}
+
+// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+func (o ApPortConfigRadsecOutput) ProxyHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApPortConfigRadsec) []string { return v.ProxyHosts }).(pulumi.StringArrayOutput)
+}
+
+// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+func (o ApPortConfigRadsecOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadsec) *string { return v.ServerName }).(pulumi.StringPtrOutput)
+}
+
+// List of RadSec Servers. Only if not Mist Edge.
+func (o ApPortConfigRadsecOutput) Servers() ApPortConfigRadsecServerArrayOutput {
+	return o.ApplyT(func(v ApPortConfigRadsec) []ApPortConfigRadsecServer { return v.Servers }).(ApPortConfigRadsecServerArrayOutput)
+}
+
+// use mxedge(s) as RadSec Proxy
+func (o ApPortConfigRadsecOutput) UseMxedge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadsec) *bool { return v.UseMxedge }).(pulumi.BoolPtrOutput)
+}
+
+// To use Site mxedges when this WLAN does not use mxtunnel
+func (o ApPortConfigRadsecOutput) UseSiteMxedge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadsec) *bool { return v.UseSiteMxedge }).(pulumi.BoolPtrOutput)
+}
+
+type ApPortConfigRadsecPtrOutput struct{ *pulumi.OutputState }
+
+func (ApPortConfigRadsecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApPortConfigRadsec)(nil)).Elem()
+}
+
+func (o ApPortConfigRadsecPtrOutput) ToApPortConfigRadsecPtrOutput() ApPortConfigRadsecPtrOutput {
+	return o
+}
+
+func (o ApPortConfigRadsecPtrOutput) ToApPortConfigRadsecPtrOutputWithContext(ctx context.Context) ApPortConfigRadsecPtrOutput {
+	return o
+}
+
+func (o ApPortConfigRadsecPtrOutput) Elem() ApPortConfigRadsecOutput {
+	return o.ApplyT(func(v *ApPortConfigRadsec) ApPortConfigRadsec {
+		if v != nil {
+			return *v
+		}
+		var ret ApPortConfigRadsec
+		return ret
+	}).(ApPortConfigRadsecOutput)
+}
+
+func (o ApPortConfigRadsecPtrOutput) CoaEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApPortConfigRadsec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CoaEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ApPortConfigRadsecPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApPortConfigRadsec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ApPortConfigRadsecPtrOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApPortConfigRadsec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+func (o ApPortConfigRadsecPtrOutput) MxclusterIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApPortConfigRadsec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MxclusterIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+func (o ApPortConfigRadsecPtrOutput) ProxyHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApPortConfigRadsec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+func (o ApPortConfigRadsecPtrOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApPortConfigRadsec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of RadSec Servers. Only if not Mist Edge.
+func (o ApPortConfigRadsecPtrOutput) Servers() ApPortConfigRadsecServerArrayOutput {
+	return o.ApplyT(func(v *ApPortConfigRadsec) []ApPortConfigRadsecServer {
+		if v == nil {
+			return nil
+		}
+		return v.Servers
+	}).(ApPortConfigRadsecServerArrayOutput)
+}
+
+// use mxedge(s) as RadSec Proxy
+func (o ApPortConfigRadsecPtrOutput) UseMxedge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApPortConfigRadsec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseMxedge
+	}).(pulumi.BoolPtrOutput)
+}
+
+// To use Site mxedges when this WLAN does not use mxtunnel
+func (o ApPortConfigRadsecPtrOutput) UseSiteMxedge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApPortConfigRadsec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseSiteMxedge
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ApPortConfigRadsecServer struct {
+	Host *string `pulumi:"host"`
+	Port *int    `pulumi:"port"`
+}
+
+// ApPortConfigRadsecServerInput is an input type that accepts ApPortConfigRadsecServerArgs and ApPortConfigRadsecServerOutput values.
+// You can construct a concrete instance of `ApPortConfigRadsecServerInput` via:
+//
+//	ApPortConfigRadsecServerArgs{...}
+type ApPortConfigRadsecServerInput interface {
+	pulumi.Input
+
+	ToApPortConfigRadsecServerOutput() ApPortConfigRadsecServerOutput
+	ToApPortConfigRadsecServerOutputWithContext(context.Context) ApPortConfigRadsecServerOutput
+}
+
+type ApPortConfigRadsecServerArgs struct {
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	Port pulumi.IntPtrInput    `pulumi:"port"`
+}
+
+func (ApPortConfigRadsecServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApPortConfigRadsecServer)(nil)).Elem()
+}
+
+func (i ApPortConfigRadsecServerArgs) ToApPortConfigRadsecServerOutput() ApPortConfigRadsecServerOutput {
+	return i.ToApPortConfigRadsecServerOutputWithContext(context.Background())
+}
+
+func (i ApPortConfigRadsecServerArgs) ToApPortConfigRadsecServerOutputWithContext(ctx context.Context) ApPortConfigRadsecServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigRadsecServerOutput)
+}
+
+// ApPortConfigRadsecServerArrayInput is an input type that accepts ApPortConfigRadsecServerArray and ApPortConfigRadsecServerArrayOutput values.
+// You can construct a concrete instance of `ApPortConfigRadsecServerArrayInput` via:
+//
+//	ApPortConfigRadsecServerArray{ ApPortConfigRadsecServerArgs{...} }
+type ApPortConfigRadsecServerArrayInput interface {
+	pulumi.Input
+
+	ToApPortConfigRadsecServerArrayOutput() ApPortConfigRadsecServerArrayOutput
+	ToApPortConfigRadsecServerArrayOutputWithContext(context.Context) ApPortConfigRadsecServerArrayOutput
+}
+
+type ApPortConfigRadsecServerArray []ApPortConfigRadsecServerInput
+
+func (ApPortConfigRadsecServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApPortConfigRadsecServer)(nil)).Elem()
+}
+
+func (i ApPortConfigRadsecServerArray) ToApPortConfigRadsecServerArrayOutput() ApPortConfigRadsecServerArrayOutput {
+	return i.ToApPortConfigRadsecServerArrayOutputWithContext(context.Background())
+}
+
+func (i ApPortConfigRadsecServerArray) ToApPortConfigRadsecServerArrayOutputWithContext(ctx context.Context) ApPortConfigRadsecServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApPortConfigRadsecServerArrayOutput)
+}
+
+type ApPortConfigRadsecServerOutput struct{ *pulumi.OutputState }
+
+func (ApPortConfigRadsecServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApPortConfigRadsecServer)(nil)).Elem()
+}
+
+func (o ApPortConfigRadsecServerOutput) ToApPortConfigRadsecServerOutput() ApPortConfigRadsecServerOutput {
+	return o
+}
+
+func (o ApPortConfigRadsecServerOutput) ToApPortConfigRadsecServerOutputWithContext(ctx context.Context) ApPortConfigRadsecServerOutput {
+	return o
+}
+
+func (o ApPortConfigRadsecServerOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadsecServer) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+func (o ApPortConfigRadsecServerOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApPortConfigRadsecServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type ApPortConfigRadsecServerArrayOutput struct{ *pulumi.OutputState }
+
+func (ApPortConfigRadsecServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApPortConfigRadsecServer)(nil)).Elem()
+}
+
+func (o ApPortConfigRadsecServerArrayOutput) ToApPortConfigRadsecServerArrayOutput() ApPortConfigRadsecServerArrayOutput {
+	return o
+}
+
+func (o ApPortConfigRadsecServerArrayOutput) ToApPortConfigRadsecServerArrayOutputWithContext(ctx context.Context) ApPortConfigRadsecServerArrayOutput {
+	return o
+}
+
+func (o ApPortConfigRadsecServerArrayOutput) Index(i pulumi.IntInput) ApPortConfigRadsecServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApPortConfigRadsecServer {
+		return vs[0].([]ApPortConfigRadsecServer)[vs[1].(int)]
+	}).(ApPortConfigRadsecServerOutput)
+}
+
 type ApPwrConfig struct {
 	// Additional power to request during negotiating with PSE over PoE, in mW
 	Base *int `pulumi:"base"`
@@ -2533,6 +4062,8 @@ type ApRadioConfig struct {
 	Band5On24Radio *ApRadioConfigBand5On24Radio `pulumi:"band5On24Radio"`
 	// Radio Band AP settings
 	Band6 *ApRadioConfigBand6 `pulumi:"band6"`
+	// Let RRM control everything, only the `channels` and `antGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+	FullAutomaticRrm *bool `pulumi:"fullAutomaticRrm"`
 	// To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
 	IndoorUse *bool `pulumi:"indoorUse"`
 	// Whether scanning radio is enabled
@@ -2570,6 +4101,8 @@ type ApRadioConfigArgs struct {
 	Band5On24Radio ApRadioConfigBand5On24RadioPtrInput `pulumi:"band5On24Radio"`
 	// Radio Band AP settings
 	Band6 ApRadioConfigBand6PtrInput `pulumi:"band6"`
+	// Let RRM control everything, only the `channels` and `antGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+	FullAutomaticRrm pulumi.BoolPtrInput `pulumi:"fullAutomaticRrm"`
 	// To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
 	IndoorUse pulumi.BoolPtrInput `pulumi:"indoorUse"`
 	// Whether scanning radio is enabled
@@ -2700,6 +4233,11 @@ func (o ApRadioConfigOutput) Band5On24Radio() ApRadioConfigBand5On24RadioPtrOutp
 // Radio Band AP settings
 func (o ApRadioConfigOutput) Band6() ApRadioConfigBand6PtrOutput {
 	return o.ApplyT(func(v ApRadioConfig) *ApRadioConfigBand6 { return v.Band6 }).(ApRadioConfigBand6PtrOutput)
+}
+
+// Let RRM control everything, only the `channels` and `antGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+func (o ApRadioConfigOutput) FullAutomaticRrm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApRadioConfig) *bool { return v.FullAutomaticRrm }).(pulumi.BoolPtrOutput)
 }
 
 // To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
@@ -2833,6 +4371,16 @@ func (o ApRadioConfigPtrOutput) Band6() ApRadioConfigBand6PtrOutput {
 		}
 		return v.Band6
 	}).(ApRadioConfigBand6PtrOutput)
+}
+
+// Let RRM control everything, only the `channels` and `antGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+func (o ApRadioConfigPtrOutput) FullAutomaticRrm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApRadioConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FullAutomaticRrm
+	}).(pulumi.BoolPtrOutput)
 }
 
 // To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
@@ -41111,6 +42659,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApLedPtrInput)(nil)).Elem(), ApLedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApMeshInput)(nil)).Elem(), ApMeshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApMeshPtrInput)(nil)).Elem(), ApMeshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApPortConfigInput)(nil)).Elem(), ApPortConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApPortConfigMapInput)(nil)).Elem(), ApPortConfigMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApPortConfigDynamicVlanInput)(nil)).Elem(), ApPortConfigDynamicVlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApPortConfigDynamicVlanPtrInput)(nil)).Elem(), ApPortConfigDynamicVlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApPortConfigMistNacInput)(nil)).Elem(), ApPortConfigMistNacArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApPortConfigMistNacPtrInput)(nil)).Elem(), ApPortConfigMistNacArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApPortConfigRadiusConfigInput)(nil)).Elem(), ApPortConfigRadiusConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApPortConfigRadiusConfigPtrInput)(nil)).Elem(), ApPortConfigRadiusConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApPortConfigRadiusConfigAcctServerInput)(nil)).Elem(), ApPortConfigRadiusConfigAcctServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApPortConfigRadiusConfigAcctServerArrayInput)(nil)).Elem(), ApPortConfigRadiusConfigAcctServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApPortConfigRadiusConfigAuthServerInput)(nil)).Elem(), ApPortConfigRadiusConfigAuthServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApPortConfigRadiusConfigAuthServerArrayInput)(nil)).Elem(), ApPortConfigRadiusConfigAuthServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApPortConfigRadsecInput)(nil)).Elem(), ApPortConfigRadsecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApPortConfigRadsecPtrInput)(nil)).Elem(), ApPortConfigRadsecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApPortConfigRadsecServerInput)(nil)).Elem(), ApPortConfigRadsecServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApPortConfigRadsecServerArrayInput)(nil)).Elem(), ApPortConfigRadsecServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApPwrConfigInput)(nil)).Elem(), ApPwrConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApPwrConfigPtrInput)(nil)).Elem(), ApPwrConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApRadioConfigInput)(nil)).Elem(), ApRadioConfigArgs{})
@@ -41588,6 +43152,22 @@ func init() {
 	pulumi.RegisterOutputType(ApLedPtrOutput{})
 	pulumi.RegisterOutputType(ApMeshOutput{})
 	pulumi.RegisterOutputType(ApMeshPtrOutput{})
+	pulumi.RegisterOutputType(ApPortConfigOutput{})
+	pulumi.RegisterOutputType(ApPortConfigMapOutput{})
+	pulumi.RegisterOutputType(ApPortConfigDynamicVlanOutput{})
+	pulumi.RegisterOutputType(ApPortConfigDynamicVlanPtrOutput{})
+	pulumi.RegisterOutputType(ApPortConfigMistNacOutput{})
+	pulumi.RegisterOutputType(ApPortConfigMistNacPtrOutput{})
+	pulumi.RegisterOutputType(ApPortConfigRadiusConfigOutput{})
+	pulumi.RegisterOutputType(ApPortConfigRadiusConfigPtrOutput{})
+	pulumi.RegisterOutputType(ApPortConfigRadiusConfigAcctServerOutput{})
+	pulumi.RegisterOutputType(ApPortConfigRadiusConfigAcctServerArrayOutput{})
+	pulumi.RegisterOutputType(ApPortConfigRadiusConfigAuthServerOutput{})
+	pulumi.RegisterOutputType(ApPortConfigRadiusConfigAuthServerArrayOutput{})
+	pulumi.RegisterOutputType(ApPortConfigRadsecOutput{})
+	pulumi.RegisterOutputType(ApPortConfigRadsecPtrOutput{})
+	pulumi.RegisterOutputType(ApPortConfigRadsecServerOutput{})
+	pulumi.RegisterOutputType(ApPortConfigRadsecServerArrayOutput{})
 	pulumi.RegisterOutputType(ApPwrConfigOutput{})
 	pulumi.RegisterOutputType(ApPwrConfigPtrOutput{})
 	pulumi.RegisterOutputType(ApRadioConfigOutput{})

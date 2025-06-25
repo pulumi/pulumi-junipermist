@@ -2512,6 +2512,1539 @@ func (o DeviceprofileApMeshPtrOutput) Role() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type DeviceprofileApPortConfig struct {
+	Disabled *bool `pulumi:"disabled"`
+	// Optional dynamic vlan
+	DynamicVlan   *DeviceprofileApPortConfigDynamicVlan `pulumi:"dynamicVlan"`
+	EnableMacAuth *bool                                 `pulumi:"enableMacAuth"`
+	// enum:
+	//   * `all`: local breakout, All VLANs
+	//   * `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
+	//   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
+	//   * `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
+	//   * `wxtunnel`': central breakout to an Org WxTunnel (requires `wxtunnelId`)
+	Forwarding *string `pulumi:"forwarding"`
+	// When `true`, we'll do dot1x then mac_auth. enable this to prefer mac_auth
+	MacAuthPreferred *bool `pulumi:"macAuthPreferred"`
+	// if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+	MacAuthProtocol *string                           `pulumi:"macAuthProtocol"`
+	MistNac         *DeviceprofileApPortConfigMistNac `pulumi:"mistNac"`
+	// If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
+	MxTunnelId *string `pulumi:"mxTunnelId"`
+	// If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+	MxtunnelName *string `pulumi:"mxtunnelName"`
+	// When doing port auth. enum: `dot1x`, `none`
+	PortAuth *string `pulumi:"portAuth"`
+	// If `forwarding`==`limited`
+	PortVlanId *int `pulumi:"portVlanId"`
+	// Junos Radius config
+	RadiusConfig *DeviceprofileApPortConfigRadiusConfig `pulumi:"radiusConfig"`
+	// RadSec settings
+	Radsec *DeviceprofileApPortConfigRadsec `pulumi:"radsec"`
+	// Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+	//   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+	//   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+	VlanId *int `pulumi:"vlanId"`
+	// If `forwarding`==`limited`
+	VlanIds []int `pulumi:"vlanIds"`
+	// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+	WxtunnelId *string `pulumi:"wxtunnelId"`
+	// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+	WxtunnelRemoteId *string `pulumi:"wxtunnelRemoteId"`
+}
+
+// DeviceprofileApPortConfigInput is an input type that accepts DeviceprofileApPortConfigArgs and DeviceprofileApPortConfigOutput values.
+// You can construct a concrete instance of `DeviceprofileApPortConfigInput` via:
+//
+//	DeviceprofileApPortConfigArgs{...}
+type DeviceprofileApPortConfigInput interface {
+	pulumi.Input
+
+	ToDeviceprofileApPortConfigOutput() DeviceprofileApPortConfigOutput
+	ToDeviceprofileApPortConfigOutputWithContext(context.Context) DeviceprofileApPortConfigOutput
+}
+
+type DeviceprofileApPortConfigArgs struct {
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Optional dynamic vlan
+	DynamicVlan   DeviceprofileApPortConfigDynamicVlanPtrInput `pulumi:"dynamicVlan"`
+	EnableMacAuth pulumi.BoolPtrInput                          `pulumi:"enableMacAuth"`
+	// enum:
+	//   * `all`: local breakout, All VLANs
+	//   * `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
+	//   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
+	//   * `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
+	//   * `wxtunnel`': central breakout to an Org WxTunnel (requires `wxtunnelId`)
+	Forwarding pulumi.StringPtrInput `pulumi:"forwarding"`
+	// When `true`, we'll do dot1x then mac_auth. enable this to prefer mac_auth
+	MacAuthPreferred pulumi.BoolPtrInput `pulumi:"macAuthPreferred"`
+	// if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+	MacAuthProtocol pulumi.StringPtrInput                    `pulumi:"macAuthProtocol"`
+	MistNac         DeviceprofileApPortConfigMistNacPtrInput `pulumi:"mistNac"`
+	// If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
+	MxTunnelId pulumi.StringPtrInput `pulumi:"mxTunnelId"`
+	// If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+	MxtunnelName pulumi.StringPtrInput `pulumi:"mxtunnelName"`
+	// When doing port auth. enum: `dot1x`, `none`
+	PortAuth pulumi.StringPtrInput `pulumi:"portAuth"`
+	// If `forwarding`==`limited`
+	PortVlanId pulumi.IntPtrInput `pulumi:"portVlanId"`
+	// Junos Radius config
+	RadiusConfig DeviceprofileApPortConfigRadiusConfigPtrInput `pulumi:"radiusConfig"`
+	// RadSec settings
+	Radsec DeviceprofileApPortConfigRadsecPtrInput `pulumi:"radsec"`
+	// Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+	//   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+	//   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+	VlanId pulumi.IntPtrInput `pulumi:"vlanId"`
+	// If `forwarding`==`limited`
+	VlanIds pulumi.IntArrayInput `pulumi:"vlanIds"`
+	// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+	WxtunnelId pulumi.StringPtrInput `pulumi:"wxtunnelId"`
+	// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+	WxtunnelRemoteId pulumi.StringPtrInput `pulumi:"wxtunnelRemoteId"`
+}
+
+func (DeviceprofileApPortConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileApPortConfig)(nil)).Elem()
+}
+
+func (i DeviceprofileApPortConfigArgs) ToDeviceprofileApPortConfigOutput() DeviceprofileApPortConfigOutput {
+	return i.ToDeviceprofileApPortConfigOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileApPortConfigArgs) ToDeviceprofileApPortConfigOutputWithContext(ctx context.Context) DeviceprofileApPortConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigOutput)
+}
+
+// DeviceprofileApPortConfigMapInput is an input type that accepts DeviceprofileApPortConfigMap and DeviceprofileApPortConfigMapOutput values.
+// You can construct a concrete instance of `DeviceprofileApPortConfigMapInput` via:
+//
+//	DeviceprofileApPortConfigMap{ "key": DeviceprofileApPortConfigArgs{...} }
+type DeviceprofileApPortConfigMapInput interface {
+	pulumi.Input
+
+	ToDeviceprofileApPortConfigMapOutput() DeviceprofileApPortConfigMapOutput
+	ToDeviceprofileApPortConfigMapOutputWithContext(context.Context) DeviceprofileApPortConfigMapOutput
+}
+
+type DeviceprofileApPortConfigMap map[string]DeviceprofileApPortConfigInput
+
+func (DeviceprofileApPortConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeviceprofileApPortConfig)(nil)).Elem()
+}
+
+func (i DeviceprofileApPortConfigMap) ToDeviceprofileApPortConfigMapOutput() DeviceprofileApPortConfigMapOutput {
+	return i.ToDeviceprofileApPortConfigMapOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileApPortConfigMap) ToDeviceprofileApPortConfigMapOutputWithContext(ctx context.Context) DeviceprofileApPortConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigMapOutput)
+}
+
+type DeviceprofileApPortConfigOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileApPortConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileApPortConfig)(nil)).Elem()
+}
+
+func (o DeviceprofileApPortConfigOutput) ToDeviceprofileApPortConfigOutput() DeviceprofileApPortConfigOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigOutput) ToDeviceprofileApPortConfigOutputWithContext(ctx context.Context) DeviceprofileApPortConfigOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfig) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optional dynamic vlan
+func (o DeviceprofileApPortConfigOutput) DynamicVlan() DeviceprofileApPortConfigDynamicVlanPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfig) *DeviceprofileApPortConfigDynamicVlan { return v.DynamicVlan }).(DeviceprofileApPortConfigDynamicVlanPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigOutput) EnableMacAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfig) *bool { return v.EnableMacAuth }).(pulumi.BoolPtrOutput)
+}
+
+// enum:
+//   - `all`: local breakout, All VLANs
+//   - `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
+//   - `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
+//   - `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
+//   - `wxtunnel`': central breakout to an Org WxTunnel (requires `wxtunnelId`)
+func (o DeviceprofileApPortConfigOutput) Forwarding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfig) *string { return v.Forwarding }).(pulumi.StringPtrOutput)
+}
+
+// When `true`, we'll do dot1x then mac_auth. enable this to prefer mac_auth
+func (o DeviceprofileApPortConfigOutput) MacAuthPreferred() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfig) *bool { return v.MacAuthPreferred }).(pulumi.BoolPtrOutput)
+}
+
+// if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+func (o DeviceprofileApPortConfigOutput) MacAuthProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfig) *string { return v.MacAuthProtocol }).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigOutput) MistNac() DeviceprofileApPortConfigMistNacPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfig) *DeviceprofileApPortConfigMistNac { return v.MistNac }).(DeviceprofileApPortConfigMistNacPtrOutput)
+}
+
+// If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
+func (o DeviceprofileApPortConfigOutput) MxTunnelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfig) *string { return v.MxTunnelId }).(pulumi.StringPtrOutput)
+}
+
+// If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+func (o DeviceprofileApPortConfigOutput) MxtunnelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfig) *string { return v.MxtunnelName }).(pulumi.StringPtrOutput)
+}
+
+// When doing port auth. enum: `dot1x`, `none`
+func (o DeviceprofileApPortConfigOutput) PortAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfig) *string { return v.PortAuth }).(pulumi.StringPtrOutput)
+}
+
+// If `forwarding`==`limited`
+func (o DeviceprofileApPortConfigOutput) PortVlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfig) *int { return v.PortVlanId }).(pulumi.IntPtrOutput)
+}
+
+// Junos Radius config
+func (o DeviceprofileApPortConfigOutput) RadiusConfig() DeviceprofileApPortConfigRadiusConfigPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfig) *DeviceprofileApPortConfigRadiusConfig { return v.RadiusConfig }).(DeviceprofileApPortConfigRadiusConfigPtrOutput)
+}
+
+// RadSec settings
+func (o DeviceprofileApPortConfigOutput) Radsec() DeviceprofileApPortConfigRadsecPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfig) *DeviceprofileApPortConfigRadsec { return v.Radsec }).(DeviceprofileApPortConfigRadsecPtrOutput)
+}
+
+// Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+//   - if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+//   - if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+func (o DeviceprofileApPortConfigOutput) VlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfig) *int { return v.VlanId }).(pulumi.IntPtrOutput)
+}
+
+// If `forwarding`==`limited`
+func (o DeviceprofileApPortConfigOutput) VlanIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfig) []int { return v.VlanIds }).(pulumi.IntArrayOutput)
+}
+
+// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+func (o DeviceprofileApPortConfigOutput) WxtunnelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfig) *string { return v.WxtunnelId }).(pulumi.StringPtrOutput)
+}
+
+// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+func (o DeviceprofileApPortConfigOutput) WxtunnelRemoteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfig) *string { return v.WxtunnelRemoteId }).(pulumi.StringPtrOutput)
+}
+
+type DeviceprofileApPortConfigMapOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileApPortConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeviceprofileApPortConfig)(nil)).Elem()
+}
+
+func (o DeviceprofileApPortConfigMapOutput) ToDeviceprofileApPortConfigMapOutput() DeviceprofileApPortConfigMapOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigMapOutput) ToDeviceprofileApPortConfigMapOutputWithContext(ctx context.Context) DeviceprofileApPortConfigMapOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigMapOutput) MapIndex(k pulumi.StringInput) DeviceprofileApPortConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeviceprofileApPortConfig {
+		return vs[0].(map[string]DeviceprofileApPortConfig)[vs[1].(string)]
+	}).(DeviceprofileApPortConfigOutput)
+}
+
+type DeviceprofileApPortConfigDynamicVlan struct {
+	DefaultVlanId *int              `pulumi:"defaultVlanId"`
+	Enabled       *bool             `pulumi:"enabled"`
+	Type          *string           `pulumi:"type"`
+	Vlans         map[string]string `pulumi:"vlans"`
+}
+
+// DeviceprofileApPortConfigDynamicVlanInput is an input type that accepts DeviceprofileApPortConfigDynamicVlanArgs and DeviceprofileApPortConfigDynamicVlanOutput values.
+// You can construct a concrete instance of `DeviceprofileApPortConfigDynamicVlanInput` via:
+//
+//	DeviceprofileApPortConfigDynamicVlanArgs{...}
+type DeviceprofileApPortConfigDynamicVlanInput interface {
+	pulumi.Input
+
+	ToDeviceprofileApPortConfigDynamicVlanOutput() DeviceprofileApPortConfigDynamicVlanOutput
+	ToDeviceprofileApPortConfigDynamicVlanOutputWithContext(context.Context) DeviceprofileApPortConfigDynamicVlanOutput
+}
+
+type DeviceprofileApPortConfigDynamicVlanArgs struct {
+	DefaultVlanId pulumi.IntPtrInput    `pulumi:"defaultVlanId"`
+	Enabled       pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Type          pulumi.StringPtrInput `pulumi:"type"`
+	Vlans         pulumi.StringMapInput `pulumi:"vlans"`
+}
+
+func (DeviceprofileApPortConfigDynamicVlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileApPortConfigDynamicVlan)(nil)).Elem()
+}
+
+func (i DeviceprofileApPortConfigDynamicVlanArgs) ToDeviceprofileApPortConfigDynamicVlanOutput() DeviceprofileApPortConfigDynamicVlanOutput {
+	return i.ToDeviceprofileApPortConfigDynamicVlanOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileApPortConfigDynamicVlanArgs) ToDeviceprofileApPortConfigDynamicVlanOutputWithContext(ctx context.Context) DeviceprofileApPortConfigDynamicVlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigDynamicVlanOutput)
+}
+
+func (i DeviceprofileApPortConfigDynamicVlanArgs) ToDeviceprofileApPortConfigDynamicVlanPtrOutput() DeviceprofileApPortConfigDynamicVlanPtrOutput {
+	return i.ToDeviceprofileApPortConfigDynamicVlanPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileApPortConfigDynamicVlanArgs) ToDeviceprofileApPortConfigDynamicVlanPtrOutputWithContext(ctx context.Context) DeviceprofileApPortConfigDynamicVlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigDynamicVlanOutput).ToDeviceprofileApPortConfigDynamicVlanPtrOutputWithContext(ctx)
+}
+
+// DeviceprofileApPortConfigDynamicVlanPtrInput is an input type that accepts DeviceprofileApPortConfigDynamicVlanArgs, DeviceprofileApPortConfigDynamicVlanPtr and DeviceprofileApPortConfigDynamicVlanPtrOutput values.
+// You can construct a concrete instance of `DeviceprofileApPortConfigDynamicVlanPtrInput` via:
+//
+//	        DeviceprofileApPortConfigDynamicVlanArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeviceprofileApPortConfigDynamicVlanPtrInput interface {
+	pulumi.Input
+
+	ToDeviceprofileApPortConfigDynamicVlanPtrOutput() DeviceprofileApPortConfigDynamicVlanPtrOutput
+	ToDeviceprofileApPortConfigDynamicVlanPtrOutputWithContext(context.Context) DeviceprofileApPortConfigDynamicVlanPtrOutput
+}
+
+type deviceprofileApPortConfigDynamicVlanPtrType DeviceprofileApPortConfigDynamicVlanArgs
+
+func DeviceprofileApPortConfigDynamicVlanPtr(v *DeviceprofileApPortConfigDynamicVlanArgs) DeviceprofileApPortConfigDynamicVlanPtrInput {
+	return (*deviceprofileApPortConfigDynamicVlanPtrType)(v)
+}
+
+func (*deviceprofileApPortConfigDynamicVlanPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileApPortConfigDynamicVlan)(nil)).Elem()
+}
+
+func (i *deviceprofileApPortConfigDynamicVlanPtrType) ToDeviceprofileApPortConfigDynamicVlanPtrOutput() DeviceprofileApPortConfigDynamicVlanPtrOutput {
+	return i.ToDeviceprofileApPortConfigDynamicVlanPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceprofileApPortConfigDynamicVlanPtrType) ToDeviceprofileApPortConfigDynamicVlanPtrOutputWithContext(ctx context.Context) DeviceprofileApPortConfigDynamicVlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigDynamicVlanPtrOutput)
+}
+
+type DeviceprofileApPortConfigDynamicVlanOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileApPortConfigDynamicVlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileApPortConfigDynamicVlan)(nil)).Elem()
+}
+
+func (o DeviceprofileApPortConfigDynamicVlanOutput) ToDeviceprofileApPortConfigDynamicVlanOutput() DeviceprofileApPortConfigDynamicVlanOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigDynamicVlanOutput) ToDeviceprofileApPortConfigDynamicVlanOutputWithContext(ctx context.Context) DeviceprofileApPortConfigDynamicVlanOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigDynamicVlanOutput) ToDeviceprofileApPortConfigDynamicVlanPtrOutput() DeviceprofileApPortConfigDynamicVlanPtrOutput {
+	return o.ToDeviceprofileApPortConfigDynamicVlanPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceprofileApPortConfigDynamicVlanOutput) ToDeviceprofileApPortConfigDynamicVlanPtrOutputWithContext(ctx context.Context) DeviceprofileApPortConfigDynamicVlanPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceprofileApPortConfigDynamicVlan) *DeviceprofileApPortConfigDynamicVlan {
+		return &v
+	}).(DeviceprofileApPortConfigDynamicVlanPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigDynamicVlanOutput) DefaultVlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigDynamicVlan) *int { return v.DefaultVlanId }).(pulumi.IntPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigDynamicVlanOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigDynamicVlan) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigDynamicVlanOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigDynamicVlan) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigDynamicVlanOutput) Vlans() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigDynamicVlan) map[string]string { return v.Vlans }).(pulumi.StringMapOutput)
+}
+
+type DeviceprofileApPortConfigDynamicVlanPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileApPortConfigDynamicVlanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileApPortConfigDynamicVlan)(nil)).Elem()
+}
+
+func (o DeviceprofileApPortConfigDynamicVlanPtrOutput) ToDeviceprofileApPortConfigDynamicVlanPtrOutput() DeviceprofileApPortConfigDynamicVlanPtrOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigDynamicVlanPtrOutput) ToDeviceprofileApPortConfigDynamicVlanPtrOutputWithContext(ctx context.Context) DeviceprofileApPortConfigDynamicVlanPtrOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigDynamicVlanPtrOutput) Elem() DeviceprofileApPortConfigDynamicVlanOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigDynamicVlan) DeviceprofileApPortConfigDynamicVlan {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceprofileApPortConfigDynamicVlan
+		return ret
+	}).(DeviceprofileApPortConfigDynamicVlanOutput)
+}
+
+func (o DeviceprofileApPortConfigDynamicVlanPtrOutput) DefaultVlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigDynamicVlan) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultVlanId
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigDynamicVlanPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigDynamicVlan) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigDynamicVlanPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigDynamicVlan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigDynamicVlanPtrOutput) Vlans() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigDynamicVlan) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Vlans
+	}).(pulumi.StringMapOutput)
+}
+
+type DeviceprofileApPortConfigMistNac struct {
+	// When enabled:
+	//   * `authServers` is ignored
+	//   * `acctServers` is ignored
+	//   * `auth_servers_*` are ignored
+	//   * `coaServers` is ignored
+	//   * `radsec` is ignored
+	//   * `coaEnabled` is assumed
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// DeviceprofileApPortConfigMistNacInput is an input type that accepts DeviceprofileApPortConfigMistNacArgs and DeviceprofileApPortConfigMistNacOutput values.
+// You can construct a concrete instance of `DeviceprofileApPortConfigMistNacInput` via:
+//
+//	DeviceprofileApPortConfigMistNacArgs{...}
+type DeviceprofileApPortConfigMistNacInput interface {
+	pulumi.Input
+
+	ToDeviceprofileApPortConfigMistNacOutput() DeviceprofileApPortConfigMistNacOutput
+	ToDeviceprofileApPortConfigMistNacOutputWithContext(context.Context) DeviceprofileApPortConfigMistNacOutput
+}
+
+type DeviceprofileApPortConfigMistNacArgs struct {
+	// When enabled:
+	//   * `authServers` is ignored
+	//   * `acctServers` is ignored
+	//   * `auth_servers_*` are ignored
+	//   * `coaServers` is ignored
+	//   * `radsec` is ignored
+	//   * `coaEnabled` is assumed
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (DeviceprofileApPortConfigMistNacArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileApPortConfigMistNac)(nil)).Elem()
+}
+
+func (i DeviceprofileApPortConfigMistNacArgs) ToDeviceprofileApPortConfigMistNacOutput() DeviceprofileApPortConfigMistNacOutput {
+	return i.ToDeviceprofileApPortConfigMistNacOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileApPortConfigMistNacArgs) ToDeviceprofileApPortConfigMistNacOutputWithContext(ctx context.Context) DeviceprofileApPortConfigMistNacOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigMistNacOutput)
+}
+
+func (i DeviceprofileApPortConfigMistNacArgs) ToDeviceprofileApPortConfigMistNacPtrOutput() DeviceprofileApPortConfigMistNacPtrOutput {
+	return i.ToDeviceprofileApPortConfigMistNacPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileApPortConfigMistNacArgs) ToDeviceprofileApPortConfigMistNacPtrOutputWithContext(ctx context.Context) DeviceprofileApPortConfigMistNacPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigMistNacOutput).ToDeviceprofileApPortConfigMistNacPtrOutputWithContext(ctx)
+}
+
+// DeviceprofileApPortConfigMistNacPtrInput is an input type that accepts DeviceprofileApPortConfigMistNacArgs, DeviceprofileApPortConfigMistNacPtr and DeviceprofileApPortConfigMistNacPtrOutput values.
+// You can construct a concrete instance of `DeviceprofileApPortConfigMistNacPtrInput` via:
+//
+//	        DeviceprofileApPortConfigMistNacArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeviceprofileApPortConfigMistNacPtrInput interface {
+	pulumi.Input
+
+	ToDeviceprofileApPortConfigMistNacPtrOutput() DeviceprofileApPortConfigMistNacPtrOutput
+	ToDeviceprofileApPortConfigMistNacPtrOutputWithContext(context.Context) DeviceprofileApPortConfigMistNacPtrOutput
+}
+
+type deviceprofileApPortConfigMistNacPtrType DeviceprofileApPortConfigMistNacArgs
+
+func DeviceprofileApPortConfigMistNacPtr(v *DeviceprofileApPortConfigMistNacArgs) DeviceprofileApPortConfigMistNacPtrInput {
+	return (*deviceprofileApPortConfigMistNacPtrType)(v)
+}
+
+func (*deviceprofileApPortConfigMistNacPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileApPortConfigMistNac)(nil)).Elem()
+}
+
+func (i *deviceprofileApPortConfigMistNacPtrType) ToDeviceprofileApPortConfigMistNacPtrOutput() DeviceprofileApPortConfigMistNacPtrOutput {
+	return i.ToDeviceprofileApPortConfigMistNacPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceprofileApPortConfigMistNacPtrType) ToDeviceprofileApPortConfigMistNacPtrOutputWithContext(ctx context.Context) DeviceprofileApPortConfigMistNacPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigMistNacPtrOutput)
+}
+
+type DeviceprofileApPortConfigMistNacOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileApPortConfigMistNacOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileApPortConfigMistNac)(nil)).Elem()
+}
+
+func (o DeviceprofileApPortConfigMistNacOutput) ToDeviceprofileApPortConfigMistNacOutput() DeviceprofileApPortConfigMistNacOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigMistNacOutput) ToDeviceprofileApPortConfigMistNacOutputWithContext(ctx context.Context) DeviceprofileApPortConfigMistNacOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigMistNacOutput) ToDeviceprofileApPortConfigMistNacPtrOutput() DeviceprofileApPortConfigMistNacPtrOutput {
+	return o.ToDeviceprofileApPortConfigMistNacPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceprofileApPortConfigMistNacOutput) ToDeviceprofileApPortConfigMistNacPtrOutputWithContext(ctx context.Context) DeviceprofileApPortConfigMistNacPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceprofileApPortConfigMistNac) *DeviceprofileApPortConfigMistNac {
+		return &v
+	}).(DeviceprofileApPortConfigMistNacPtrOutput)
+}
+
+// When enabled:
+//   - `authServers` is ignored
+//   - `acctServers` is ignored
+//   - `auth_servers_*` are ignored
+//   - `coaServers` is ignored
+//   - `radsec` is ignored
+//   - `coaEnabled` is assumed
+func (o DeviceprofileApPortConfigMistNacOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigMistNac) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DeviceprofileApPortConfigMistNacPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileApPortConfigMistNacPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileApPortConfigMistNac)(nil)).Elem()
+}
+
+func (o DeviceprofileApPortConfigMistNacPtrOutput) ToDeviceprofileApPortConfigMistNacPtrOutput() DeviceprofileApPortConfigMistNacPtrOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigMistNacPtrOutput) ToDeviceprofileApPortConfigMistNacPtrOutputWithContext(ctx context.Context) DeviceprofileApPortConfigMistNacPtrOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigMistNacPtrOutput) Elem() DeviceprofileApPortConfigMistNacOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigMistNac) DeviceprofileApPortConfigMistNac {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceprofileApPortConfigMistNac
+		return ret
+	}).(DeviceprofileApPortConfigMistNacOutput)
+}
+
+// When enabled:
+//   - `authServers` is ignored
+//   - `acctServers` is ignored
+//   - `auth_servers_*` are ignored
+//   - `coaServers` is ignored
+//   - `radsec` is ignored
+//   - `coaEnabled` is assumed
+func (o DeviceprofileApPortConfigMistNacPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigMistNac) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DeviceprofileApPortConfigRadiusConfig struct {
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+	AcctInterimInterval *int                                              `pulumi:"acctInterimInterval"`
+	AcctServers         []DeviceprofileApPortConfigRadiusConfigAcctServer `pulumi:"acctServers"`
+	AuthServers         []DeviceprofileApPortConfigRadiusConfigAuthServer `pulumi:"authServers"`
+	// radius auth session retries
+	AuthServersRetries *int `pulumi:"authServersRetries"`
+	// radius auth session timeout
+	AuthServersTimeout *int  `pulumi:"authServersTimeout"`
+	CoaEnabled         *bool `pulumi:"coaEnabled"`
+	CoaPort            *int  `pulumi:"coaPort"`
+	// use `network`or `sourceIp`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+	Network *string `pulumi:"network"`
+	// use `network`or `sourceIp`
+	SourceIp *string `pulumi:"sourceIp"`
+}
+
+// DeviceprofileApPortConfigRadiusConfigInput is an input type that accepts DeviceprofileApPortConfigRadiusConfigArgs and DeviceprofileApPortConfigRadiusConfigOutput values.
+// You can construct a concrete instance of `DeviceprofileApPortConfigRadiusConfigInput` via:
+//
+//	DeviceprofileApPortConfigRadiusConfigArgs{...}
+type DeviceprofileApPortConfigRadiusConfigInput interface {
+	pulumi.Input
+
+	ToDeviceprofileApPortConfigRadiusConfigOutput() DeviceprofileApPortConfigRadiusConfigOutput
+	ToDeviceprofileApPortConfigRadiusConfigOutputWithContext(context.Context) DeviceprofileApPortConfigRadiusConfigOutput
+}
+
+type DeviceprofileApPortConfigRadiusConfigArgs struct {
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+	AcctInterimInterval pulumi.IntPtrInput                                        `pulumi:"acctInterimInterval"`
+	AcctServers         DeviceprofileApPortConfigRadiusConfigAcctServerArrayInput `pulumi:"acctServers"`
+	AuthServers         DeviceprofileApPortConfigRadiusConfigAuthServerArrayInput `pulumi:"authServers"`
+	// radius auth session retries
+	AuthServersRetries pulumi.IntPtrInput `pulumi:"authServersRetries"`
+	// radius auth session timeout
+	AuthServersTimeout pulumi.IntPtrInput  `pulumi:"authServersTimeout"`
+	CoaEnabled         pulumi.BoolPtrInput `pulumi:"coaEnabled"`
+	CoaPort            pulumi.IntPtrInput  `pulumi:"coaPort"`
+	// use `network`or `sourceIp`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// use `network`or `sourceIp`
+	SourceIp pulumi.StringPtrInput `pulumi:"sourceIp"`
+}
+
+func (DeviceprofileApPortConfigRadiusConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileApPortConfigRadiusConfig)(nil)).Elem()
+}
+
+func (i DeviceprofileApPortConfigRadiusConfigArgs) ToDeviceprofileApPortConfigRadiusConfigOutput() DeviceprofileApPortConfigRadiusConfigOutput {
+	return i.ToDeviceprofileApPortConfigRadiusConfigOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileApPortConfigRadiusConfigArgs) ToDeviceprofileApPortConfigRadiusConfigOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadiusConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigRadiusConfigOutput)
+}
+
+func (i DeviceprofileApPortConfigRadiusConfigArgs) ToDeviceprofileApPortConfigRadiusConfigPtrOutput() DeviceprofileApPortConfigRadiusConfigPtrOutput {
+	return i.ToDeviceprofileApPortConfigRadiusConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileApPortConfigRadiusConfigArgs) ToDeviceprofileApPortConfigRadiusConfigPtrOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadiusConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigRadiusConfigOutput).ToDeviceprofileApPortConfigRadiusConfigPtrOutputWithContext(ctx)
+}
+
+// DeviceprofileApPortConfigRadiusConfigPtrInput is an input type that accepts DeviceprofileApPortConfigRadiusConfigArgs, DeviceprofileApPortConfigRadiusConfigPtr and DeviceprofileApPortConfigRadiusConfigPtrOutput values.
+// You can construct a concrete instance of `DeviceprofileApPortConfigRadiusConfigPtrInput` via:
+//
+//	        DeviceprofileApPortConfigRadiusConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeviceprofileApPortConfigRadiusConfigPtrInput interface {
+	pulumi.Input
+
+	ToDeviceprofileApPortConfigRadiusConfigPtrOutput() DeviceprofileApPortConfigRadiusConfigPtrOutput
+	ToDeviceprofileApPortConfigRadiusConfigPtrOutputWithContext(context.Context) DeviceprofileApPortConfigRadiusConfigPtrOutput
+}
+
+type deviceprofileApPortConfigRadiusConfigPtrType DeviceprofileApPortConfigRadiusConfigArgs
+
+func DeviceprofileApPortConfigRadiusConfigPtr(v *DeviceprofileApPortConfigRadiusConfigArgs) DeviceprofileApPortConfigRadiusConfigPtrInput {
+	return (*deviceprofileApPortConfigRadiusConfigPtrType)(v)
+}
+
+func (*deviceprofileApPortConfigRadiusConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileApPortConfigRadiusConfig)(nil)).Elem()
+}
+
+func (i *deviceprofileApPortConfigRadiusConfigPtrType) ToDeviceprofileApPortConfigRadiusConfigPtrOutput() DeviceprofileApPortConfigRadiusConfigPtrOutput {
+	return i.ToDeviceprofileApPortConfigRadiusConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceprofileApPortConfigRadiusConfigPtrType) ToDeviceprofileApPortConfigRadiusConfigPtrOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadiusConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigRadiusConfigPtrOutput)
+}
+
+type DeviceprofileApPortConfigRadiusConfigOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileApPortConfigRadiusConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileApPortConfigRadiusConfig)(nil)).Elem()
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigOutput) ToDeviceprofileApPortConfigRadiusConfigOutput() DeviceprofileApPortConfigRadiusConfigOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigOutput) ToDeviceprofileApPortConfigRadiusConfigOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadiusConfigOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigOutput) ToDeviceprofileApPortConfigRadiusConfigPtrOutput() DeviceprofileApPortConfigRadiusConfigPtrOutput {
+	return o.ToDeviceprofileApPortConfigRadiusConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigOutput) ToDeviceprofileApPortConfigRadiusConfigPtrOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadiusConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceprofileApPortConfigRadiusConfig) *DeviceprofileApPortConfigRadiusConfig {
+		return &v
+	}).(DeviceprofileApPortConfigRadiusConfigPtrOutput)
+}
+
+// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+func (o DeviceprofileApPortConfigRadiusConfigOutput) AcctInterimInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfig) *int { return v.AcctInterimInterval }).(pulumi.IntPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigOutput) AcctServers() DeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfig) []DeviceprofileApPortConfigRadiusConfigAcctServer {
+		return v.AcctServers
+	}).(DeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput)
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigOutput) AuthServers() DeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfig) []DeviceprofileApPortConfigRadiusConfigAuthServer {
+		return v.AuthServers
+	}).(DeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput)
+}
+
+// radius auth session retries
+func (o DeviceprofileApPortConfigRadiusConfigOutput) AuthServersRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfig) *int { return v.AuthServersRetries }).(pulumi.IntPtrOutput)
+}
+
+// radius auth session timeout
+func (o DeviceprofileApPortConfigRadiusConfigOutput) AuthServersTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfig) *int { return v.AuthServersTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigOutput) CoaEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfig) *bool { return v.CoaEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigOutput) CoaPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfig) *int { return v.CoaPort }).(pulumi.IntPtrOutput)
+}
+
+// use `network`or `sourceIp`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+func (o DeviceprofileApPortConfigRadiusConfigOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// use `network`or `sourceIp`
+func (o DeviceprofileApPortConfigRadiusConfigOutput) SourceIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfig) *string { return v.SourceIp }).(pulumi.StringPtrOutput)
+}
+
+type DeviceprofileApPortConfigRadiusConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileApPortConfigRadiusConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileApPortConfigRadiusConfig)(nil)).Elem()
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigPtrOutput) ToDeviceprofileApPortConfigRadiusConfigPtrOutput() DeviceprofileApPortConfigRadiusConfigPtrOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigPtrOutput) ToDeviceprofileApPortConfigRadiusConfigPtrOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadiusConfigPtrOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigPtrOutput) Elem() DeviceprofileApPortConfigRadiusConfigOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadiusConfig) DeviceprofileApPortConfigRadiusConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceprofileApPortConfigRadiusConfig
+		return ret
+	}).(DeviceprofileApPortConfigRadiusConfigOutput)
+}
+
+// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+func (o DeviceprofileApPortConfigRadiusConfigPtrOutput) AcctInterimInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadiusConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AcctInterimInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigPtrOutput) AcctServers() DeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadiusConfig) []DeviceprofileApPortConfigRadiusConfigAcctServer {
+		if v == nil {
+			return nil
+		}
+		return v.AcctServers
+	}).(DeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput)
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigPtrOutput) AuthServers() DeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadiusConfig) []DeviceprofileApPortConfigRadiusConfigAuthServer {
+		if v == nil {
+			return nil
+		}
+		return v.AuthServers
+	}).(DeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput)
+}
+
+// radius auth session retries
+func (o DeviceprofileApPortConfigRadiusConfigPtrOutput) AuthServersRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadiusConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AuthServersRetries
+	}).(pulumi.IntPtrOutput)
+}
+
+// radius auth session timeout
+func (o DeviceprofileApPortConfigRadiusConfigPtrOutput) AuthServersTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadiusConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AuthServersTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigPtrOutput) CoaEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadiusConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CoaEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigPtrOutput) CoaPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadiusConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CoaPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// use `network`or `sourceIp`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+func (o DeviceprofileApPortConfigRadiusConfigPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadiusConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// use `network`or `sourceIp`
+func (o DeviceprofileApPortConfigRadiusConfigPtrOutput) SourceIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadiusConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceIp
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeviceprofileApPortConfigRadiusConfigAcctServer struct {
+	// IP/ hostname of RADIUS server
+	Host           string `pulumi:"host"`
+	KeywrapEnabled *bool  `pulumi:"keywrapEnabled"`
+	// enum: `ascii`, `hex`
+	KeywrapFormat *string `pulumi:"keywrapFormat"`
+	KeywrapKek    *string `pulumi:"keywrapKek"`
+	KeywrapMack   *string `pulumi:"keywrapMack"`
+	Port          *string `pulumi:"port"`
+	// Secret of RADIUS server
+	Secret string `pulumi:"secret"`
+}
+
+// DeviceprofileApPortConfigRadiusConfigAcctServerInput is an input type that accepts DeviceprofileApPortConfigRadiusConfigAcctServerArgs and DeviceprofileApPortConfigRadiusConfigAcctServerOutput values.
+// You can construct a concrete instance of `DeviceprofileApPortConfigRadiusConfigAcctServerInput` via:
+//
+//	DeviceprofileApPortConfigRadiusConfigAcctServerArgs{...}
+type DeviceprofileApPortConfigRadiusConfigAcctServerInput interface {
+	pulumi.Input
+
+	ToDeviceprofileApPortConfigRadiusConfigAcctServerOutput() DeviceprofileApPortConfigRadiusConfigAcctServerOutput
+	ToDeviceprofileApPortConfigRadiusConfigAcctServerOutputWithContext(context.Context) DeviceprofileApPortConfigRadiusConfigAcctServerOutput
+}
+
+type DeviceprofileApPortConfigRadiusConfigAcctServerArgs struct {
+	// IP/ hostname of RADIUS server
+	Host           pulumi.StringInput  `pulumi:"host"`
+	KeywrapEnabled pulumi.BoolPtrInput `pulumi:"keywrapEnabled"`
+	// enum: `ascii`, `hex`
+	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
+	KeywrapKek    pulumi.StringPtrInput `pulumi:"keywrapKek"`
+	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
+	Port          pulumi.StringPtrInput `pulumi:"port"`
+	// Secret of RADIUS server
+	Secret pulumi.StringInput `pulumi:"secret"`
+}
+
+func (DeviceprofileApPortConfigRadiusConfigAcctServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileApPortConfigRadiusConfigAcctServer)(nil)).Elem()
+}
+
+func (i DeviceprofileApPortConfigRadiusConfigAcctServerArgs) ToDeviceprofileApPortConfigRadiusConfigAcctServerOutput() DeviceprofileApPortConfigRadiusConfigAcctServerOutput {
+	return i.ToDeviceprofileApPortConfigRadiusConfigAcctServerOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileApPortConfigRadiusConfigAcctServerArgs) ToDeviceprofileApPortConfigRadiusConfigAcctServerOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadiusConfigAcctServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigRadiusConfigAcctServerOutput)
+}
+
+// DeviceprofileApPortConfigRadiusConfigAcctServerArrayInput is an input type that accepts DeviceprofileApPortConfigRadiusConfigAcctServerArray and DeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput values.
+// You can construct a concrete instance of `DeviceprofileApPortConfigRadiusConfigAcctServerArrayInput` via:
+//
+//	DeviceprofileApPortConfigRadiusConfigAcctServerArray{ DeviceprofileApPortConfigRadiusConfigAcctServerArgs{...} }
+type DeviceprofileApPortConfigRadiusConfigAcctServerArrayInput interface {
+	pulumi.Input
+
+	ToDeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput() DeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput
+	ToDeviceprofileApPortConfigRadiusConfigAcctServerArrayOutputWithContext(context.Context) DeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput
+}
+
+type DeviceprofileApPortConfigRadiusConfigAcctServerArray []DeviceprofileApPortConfigRadiusConfigAcctServerInput
+
+func (DeviceprofileApPortConfigRadiusConfigAcctServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceprofileApPortConfigRadiusConfigAcctServer)(nil)).Elem()
+}
+
+func (i DeviceprofileApPortConfigRadiusConfigAcctServerArray) ToDeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput() DeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput {
+	return i.ToDeviceprofileApPortConfigRadiusConfigAcctServerArrayOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileApPortConfigRadiusConfigAcctServerArray) ToDeviceprofileApPortConfigRadiusConfigAcctServerArrayOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput)
+}
+
+type DeviceprofileApPortConfigRadiusConfigAcctServerOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileApPortConfigRadiusConfigAcctServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileApPortConfigRadiusConfigAcctServer)(nil)).Elem()
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigAcctServerOutput) ToDeviceprofileApPortConfigRadiusConfigAcctServerOutput() DeviceprofileApPortConfigRadiusConfigAcctServerOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigAcctServerOutput) ToDeviceprofileApPortConfigRadiusConfigAcctServerOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadiusConfigAcctServerOutput {
+	return o
+}
+
+// IP/ hostname of RADIUS server
+func (o DeviceprofileApPortConfigRadiusConfigAcctServerOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfigAcctServer) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigAcctServerOutput) KeywrapEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfigAcctServer) *bool { return v.KeywrapEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// enum: `ascii`, `hex`
+func (o DeviceprofileApPortConfigRadiusConfigAcctServerOutput) KeywrapFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfigAcctServer) *string { return v.KeywrapFormat }).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigAcctServerOutput) KeywrapKek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfigAcctServer) *string { return v.KeywrapKek }).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigAcctServerOutput) KeywrapMack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfigAcctServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigAcctServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfigAcctServer) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// Secret of RADIUS server
+func (o DeviceprofileApPortConfigRadiusConfigAcctServerOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfigAcctServer) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+type DeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceprofileApPortConfigRadiusConfigAcctServer)(nil)).Elem()
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput) ToDeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput() DeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput) ToDeviceprofileApPortConfigRadiusConfigAcctServerArrayOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput) Index(i pulumi.IntInput) DeviceprofileApPortConfigRadiusConfigAcctServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceprofileApPortConfigRadiusConfigAcctServer {
+		return vs[0].([]DeviceprofileApPortConfigRadiusConfigAcctServer)[vs[1].(int)]
+	}).(DeviceprofileApPortConfigRadiusConfigAcctServerOutput)
+}
+
+type DeviceprofileApPortConfigRadiusConfigAuthServer struct {
+	// IP/ hostname of RADIUS server
+	Host           string `pulumi:"host"`
+	KeywrapEnabled *bool  `pulumi:"keywrapEnabled"`
+	// enum: `ascii`, `hex`
+	KeywrapFormat *string `pulumi:"keywrapFormat"`
+	KeywrapKek    *string `pulumi:"keywrapKek"`
+	KeywrapMack   *string `pulumi:"keywrapMack"`
+	Port          *string `pulumi:"port"`
+	// Whether to require Message-Authenticator in requests
+	RequireMessageAuthenticator *bool `pulumi:"requireMessageAuthenticator"`
+	// Secret of RADIUS server
+	Secret string `pulumi:"secret"`
+}
+
+// DeviceprofileApPortConfigRadiusConfigAuthServerInput is an input type that accepts DeviceprofileApPortConfigRadiusConfigAuthServerArgs and DeviceprofileApPortConfigRadiusConfigAuthServerOutput values.
+// You can construct a concrete instance of `DeviceprofileApPortConfigRadiusConfigAuthServerInput` via:
+//
+//	DeviceprofileApPortConfigRadiusConfigAuthServerArgs{...}
+type DeviceprofileApPortConfigRadiusConfigAuthServerInput interface {
+	pulumi.Input
+
+	ToDeviceprofileApPortConfigRadiusConfigAuthServerOutput() DeviceprofileApPortConfigRadiusConfigAuthServerOutput
+	ToDeviceprofileApPortConfigRadiusConfigAuthServerOutputWithContext(context.Context) DeviceprofileApPortConfigRadiusConfigAuthServerOutput
+}
+
+type DeviceprofileApPortConfigRadiusConfigAuthServerArgs struct {
+	// IP/ hostname of RADIUS server
+	Host           pulumi.StringInput  `pulumi:"host"`
+	KeywrapEnabled pulumi.BoolPtrInput `pulumi:"keywrapEnabled"`
+	// enum: `ascii`, `hex`
+	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
+	KeywrapKek    pulumi.StringPtrInput `pulumi:"keywrapKek"`
+	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
+	Port          pulumi.StringPtrInput `pulumi:"port"`
+	// Whether to require Message-Authenticator in requests
+	RequireMessageAuthenticator pulumi.BoolPtrInput `pulumi:"requireMessageAuthenticator"`
+	// Secret of RADIUS server
+	Secret pulumi.StringInput `pulumi:"secret"`
+}
+
+func (DeviceprofileApPortConfigRadiusConfigAuthServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileApPortConfigRadiusConfigAuthServer)(nil)).Elem()
+}
+
+func (i DeviceprofileApPortConfigRadiusConfigAuthServerArgs) ToDeviceprofileApPortConfigRadiusConfigAuthServerOutput() DeviceprofileApPortConfigRadiusConfigAuthServerOutput {
+	return i.ToDeviceprofileApPortConfigRadiusConfigAuthServerOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileApPortConfigRadiusConfigAuthServerArgs) ToDeviceprofileApPortConfigRadiusConfigAuthServerOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadiusConfigAuthServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigRadiusConfigAuthServerOutput)
+}
+
+// DeviceprofileApPortConfigRadiusConfigAuthServerArrayInput is an input type that accepts DeviceprofileApPortConfigRadiusConfigAuthServerArray and DeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput values.
+// You can construct a concrete instance of `DeviceprofileApPortConfigRadiusConfigAuthServerArrayInput` via:
+//
+//	DeviceprofileApPortConfigRadiusConfigAuthServerArray{ DeviceprofileApPortConfigRadiusConfigAuthServerArgs{...} }
+type DeviceprofileApPortConfigRadiusConfigAuthServerArrayInput interface {
+	pulumi.Input
+
+	ToDeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput() DeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput
+	ToDeviceprofileApPortConfigRadiusConfigAuthServerArrayOutputWithContext(context.Context) DeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput
+}
+
+type DeviceprofileApPortConfigRadiusConfigAuthServerArray []DeviceprofileApPortConfigRadiusConfigAuthServerInput
+
+func (DeviceprofileApPortConfigRadiusConfigAuthServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceprofileApPortConfigRadiusConfigAuthServer)(nil)).Elem()
+}
+
+func (i DeviceprofileApPortConfigRadiusConfigAuthServerArray) ToDeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput() DeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput {
+	return i.ToDeviceprofileApPortConfigRadiusConfigAuthServerArrayOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileApPortConfigRadiusConfigAuthServerArray) ToDeviceprofileApPortConfigRadiusConfigAuthServerArrayOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput)
+}
+
+type DeviceprofileApPortConfigRadiusConfigAuthServerOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileApPortConfigRadiusConfigAuthServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileApPortConfigRadiusConfigAuthServer)(nil)).Elem()
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigAuthServerOutput) ToDeviceprofileApPortConfigRadiusConfigAuthServerOutput() DeviceprofileApPortConfigRadiusConfigAuthServerOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigAuthServerOutput) ToDeviceprofileApPortConfigRadiusConfigAuthServerOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadiusConfigAuthServerOutput {
+	return o
+}
+
+// IP/ hostname of RADIUS server
+func (o DeviceprofileApPortConfigRadiusConfigAuthServerOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfigAuthServer) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigAuthServerOutput) KeywrapEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfigAuthServer) *bool { return v.KeywrapEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// enum: `ascii`, `hex`
+func (o DeviceprofileApPortConfigRadiusConfigAuthServerOutput) KeywrapFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfigAuthServer) *string { return v.KeywrapFormat }).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigAuthServerOutput) KeywrapKek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfigAuthServer) *string { return v.KeywrapKek }).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigAuthServerOutput) KeywrapMack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfigAuthServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigAuthServerOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfigAuthServer) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// Whether to require Message-Authenticator in requests
+func (o DeviceprofileApPortConfigRadiusConfigAuthServerOutput) RequireMessageAuthenticator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfigAuthServer) *bool { return v.RequireMessageAuthenticator }).(pulumi.BoolPtrOutput)
+}
+
+// Secret of RADIUS server
+func (o DeviceprofileApPortConfigRadiusConfigAuthServerOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadiusConfigAuthServer) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+type DeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceprofileApPortConfigRadiusConfigAuthServer)(nil)).Elem()
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput) ToDeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput() DeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput) ToDeviceprofileApPortConfigRadiusConfigAuthServerArrayOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput) Index(i pulumi.IntInput) DeviceprofileApPortConfigRadiusConfigAuthServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceprofileApPortConfigRadiusConfigAuthServer {
+		return vs[0].([]DeviceprofileApPortConfigRadiusConfigAuthServer)[vs[1].(int)]
+	}).(DeviceprofileApPortConfigRadiusConfigAuthServerOutput)
+}
+
+type DeviceprofileApPortConfigRadsec struct {
+	CoaEnabled  *bool   `pulumi:"coaEnabled"`
+	Enabled     *bool   `pulumi:"enabled"`
+	IdleTimeout *string `pulumi:"idleTimeout"`
+	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+	MxclusterIds []string `pulumi:"mxclusterIds"`
+	// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+	ProxyHosts []string `pulumi:"proxyHosts"`
+	// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+	ServerName *string `pulumi:"serverName"`
+	// List of RadSec Servers. Only if not Mist Edge.
+	Servers []DeviceprofileApPortConfigRadsecServer `pulumi:"servers"`
+	// use mxedge(s) as RadSec Proxy
+	UseMxedge *bool `pulumi:"useMxedge"`
+	// To use Site mxedges when this WLAN does not use mxtunnel
+	UseSiteMxedge *bool `pulumi:"useSiteMxedge"`
+}
+
+// DeviceprofileApPortConfigRadsecInput is an input type that accepts DeviceprofileApPortConfigRadsecArgs and DeviceprofileApPortConfigRadsecOutput values.
+// You can construct a concrete instance of `DeviceprofileApPortConfigRadsecInput` via:
+//
+//	DeviceprofileApPortConfigRadsecArgs{...}
+type DeviceprofileApPortConfigRadsecInput interface {
+	pulumi.Input
+
+	ToDeviceprofileApPortConfigRadsecOutput() DeviceprofileApPortConfigRadsecOutput
+	ToDeviceprofileApPortConfigRadsecOutputWithContext(context.Context) DeviceprofileApPortConfigRadsecOutput
+}
+
+type DeviceprofileApPortConfigRadsecArgs struct {
+	CoaEnabled  pulumi.BoolPtrInput   `pulumi:"coaEnabled"`
+	Enabled     pulumi.BoolPtrInput   `pulumi:"enabled"`
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
+	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+	MxclusterIds pulumi.StringArrayInput `pulumi:"mxclusterIds"`
+	// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+	ProxyHosts pulumi.StringArrayInput `pulumi:"proxyHosts"`
+	// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
+	// List of RadSec Servers. Only if not Mist Edge.
+	Servers DeviceprofileApPortConfigRadsecServerArrayInput `pulumi:"servers"`
+	// use mxedge(s) as RadSec Proxy
+	UseMxedge pulumi.BoolPtrInput `pulumi:"useMxedge"`
+	// To use Site mxedges when this WLAN does not use mxtunnel
+	UseSiteMxedge pulumi.BoolPtrInput `pulumi:"useSiteMxedge"`
+}
+
+func (DeviceprofileApPortConfigRadsecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileApPortConfigRadsec)(nil)).Elem()
+}
+
+func (i DeviceprofileApPortConfigRadsecArgs) ToDeviceprofileApPortConfigRadsecOutput() DeviceprofileApPortConfigRadsecOutput {
+	return i.ToDeviceprofileApPortConfigRadsecOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileApPortConfigRadsecArgs) ToDeviceprofileApPortConfigRadsecOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadsecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigRadsecOutput)
+}
+
+func (i DeviceprofileApPortConfigRadsecArgs) ToDeviceprofileApPortConfigRadsecPtrOutput() DeviceprofileApPortConfigRadsecPtrOutput {
+	return i.ToDeviceprofileApPortConfigRadsecPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileApPortConfigRadsecArgs) ToDeviceprofileApPortConfigRadsecPtrOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadsecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigRadsecOutput).ToDeviceprofileApPortConfigRadsecPtrOutputWithContext(ctx)
+}
+
+// DeviceprofileApPortConfigRadsecPtrInput is an input type that accepts DeviceprofileApPortConfigRadsecArgs, DeviceprofileApPortConfigRadsecPtr and DeviceprofileApPortConfigRadsecPtrOutput values.
+// You can construct a concrete instance of `DeviceprofileApPortConfigRadsecPtrInput` via:
+//
+//	        DeviceprofileApPortConfigRadsecArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeviceprofileApPortConfigRadsecPtrInput interface {
+	pulumi.Input
+
+	ToDeviceprofileApPortConfigRadsecPtrOutput() DeviceprofileApPortConfigRadsecPtrOutput
+	ToDeviceprofileApPortConfigRadsecPtrOutputWithContext(context.Context) DeviceprofileApPortConfigRadsecPtrOutput
+}
+
+type deviceprofileApPortConfigRadsecPtrType DeviceprofileApPortConfigRadsecArgs
+
+func DeviceprofileApPortConfigRadsecPtr(v *DeviceprofileApPortConfigRadsecArgs) DeviceprofileApPortConfigRadsecPtrInput {
+	return (*deviceprofileApPortConfigRadsecPtrType)(v)
+}
+
+func (*deviceprofileApPortConfigRadsecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileApPortConfigRadsec)(nil)).Elem()
+}
+
+func (i *deviceprofileApPortConfigRadsecPtrType) ToDeviceprofileApPortConfigRadsecPtrOutput() DeviceprofileApPortConfigRadsecPtrOutput {
+	return i.ToDeviceprofileApPortConfigRadsecPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceprofileApPortConfigRadsecPtrType) ToDeviceprofileApPortConfigRadsecPtrOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadsecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigRadsecPtrOutput)
+}
+
+type DeviceprofileApPortConfigRadsecOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileApPortConfigRadsecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileApPortConfigRadsec)(nil)).Elem()
+}
+
+func (o DeviceprofileApPortConfigRadsecOutput) ToDeviceprofileApPortConfigRadsecOutput() DeviceprofileApPortConfigRadsecOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigRadsecOutput) ToDeviceprofileApPortConfigRadsecOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadsecOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigRadsecOutput) ToDeviceprofileApPortConfigRadsecPtrOutput() DeviceprofileApPortConfigRadsecPtrOutput {
+	return o.ToDeviceprofileApPortConfigRadsecPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceprofileApPortConfigRadsecOutput) ToDeviceprofileApPortConfigRadsecPtrOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadsecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceprofileApPortConfigRadsec) *DeviceprofileApPortConfigRadsec {
+		return &v
+	}).(DeviceprofileApPortConfigRadsecPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigRadsecOutput) CoaEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadsec) *bool { return v.CoaEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigRadsecOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadsec) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigRadsecOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadsec) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
+}
+
+// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+func (o DeviceprofileApPortConfigRadsecOutput) MxclusterIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadsec) []string { return v.MxclusterIds }).(pulumi.StringArrayOutput)
+}
+
+// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+func (o DeviceprofileApPortConfigRadsecOutput) ProxyHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadsec) []string { return v.ProxyHosts }).(pulumi.StringArrayOutput)
+}
+
+// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+func (o DeviceprofileApPortConfigRadsecOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadsec) *string { return v.ServerName }).(pulumi.StringPtrOutput)
+}
+
+// List of RadSec Servers. Only if not Mist Edge.
+func (o DeviceprofileApPortConfigRadsecOutput) Servers() DeviceprofileApPortConfigRadsecServerArrayOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadsec) []DeviceprofileApPortConfigRadsecServer { return v.Servers }).(DeviceprofileApPortConfigRadsecServerArrayOutput)
+}
+
+// use mxedge(s) as RadSec Proxy
+func (o DeviceprofileApPortConfigRadsecOutput) UseMxedge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadsec) *bool { return v.UseMxedge }).(pulumi.BoolPtrOutput)
+}
+
+// To use Site mxedges when this WLAN does not use mxtunnel
+func (o DeviceprofileApPortConfigRadsecOutput) UseSiteMxedge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadsec) *bool { return v.UseSiteMxedge }).(pulumi.BoolPtrOutput)
+}
+
+type DeviceprofileApPortConfigRadsecPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileApPortConfigRadsecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileApPortConfigRadsec)(nil)).Elem()
+}
+
+func (o DeviceprofileApPortConfigRadsecPtrOutput) ToDeviceprofileApPortConfigRadsecPtrOutput() DeviceprofileApPortConfigRadsecPtrOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigRadsecPtrOutput) ToDeviceprofileApPortConfigRadsecPtrOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadsecPtrOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigRadsecPtrOutput) Elem() DeviceprofileApPortConfigRadsecOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadsec) DeviceprofileApPortConfigRadsec {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceprofileApPortConfigRadsec
+		return ret
+	}).(DeviceprofileApPortConfigRadsecOutput)
+}
+
+func (o DeviceprofileApPortConfigRadsecPtrOutput) CoaEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadsec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CoaEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigRadsecPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadsec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigRadsecPtrOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadsec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+func (o DeviceprofileApPortConfigRadsecPtrOutput) MxclusterIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadsec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MxclusterIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+func (o DeviceprofileApPortConfigRadsecPtrOutput) ProxyHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadsec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+func (o DeviceprofileApPortConfigRadsecPtrOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadsec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of RadSec Servers. Only if not Mist Edge.
+func (o DeviceprofileApPortConfigRadsecPtrOutput) Servers() DeviceprofileApPortConfigRadsecServerArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadsec) []DeviceprofileApPortConfigRadsecServer {
+		if v == nil {
+			return nil
+		}
+		return v.Servers
+	}).(DeviceprofileApPortConfigRadsecServerArrayOutput)
+}
+
+// use mxedge(s) as RadSec Proxy
+func (o DeviceprofileApPortConfigRadsecPtrOutput) UseMxedge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadsec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseMxedge
+	}).(pulumi.BoolPtrOutput)
+}
+
+// To use Site mxedges when this WLAN does not use mxtunnel
+func (o DeviceprofileApPortConfigRadsecPtrOutput) UseSiteMxedge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApPortConfigRadsec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseSiteMxedge
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DeviceprofileApPortConfigRadsecServer struct {
+	Host *string `pulumi:"host"`
+	Port *int    `pulumi:"port"`
+}
+
+// DeviceprofileApPortConfigRadsecServerInput is an input type that accepts DeviceprofileApPortConfigRadsecServerArgs and DeviceprofileApPortConfigRadsecServerOutput values.
+// You can construct a concrete instance of `DeviceprofileApPortConfigRadsecServerInput` via:
+//
+//	DeviceprofileApPortConfigRadsecServerArgs{...}
+type DeviceprofileApPortConfigRadsecServerInput interface {
+	pulumi.Input
+
+	ToDeviceprofileApPortConfigRadsecServerOutput() DeviceprofileApPortConfigRadsecServerOutput
+	ToDeviceprofileApPortConfigRadsecServerOutputWithContext(context.Context) DeviceprofileApPortConfigRadsecServerOutput
+}
+
+type DeviceprofileApPortConfigRadsecServerArgs struct {
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	Port pulumi.IntPtrInput    `pulumi:"port"`
+}
+
+func (DeviceprofileApPortConfigRadsecServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileApPortConfigRadsecServer)(nil)).Elem()
+}
+
+func (i DeviceprofileApPortConfigRadsecServerArgs) ToDeviceprofileApPortConfigRadsecServerOutput() DeviceprofileApPortConfigRadsecServerOutput {
+	return i.ToDeviceprofileApPortConfigRadsecServerOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileApPortConfigRadsecServerArgs) ToDeviceprofileApPortConfigRadsecServerOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadsecServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigRadsecServerOutput)
+}
+
+// DeviceprofileApPortConfigRadsecServerArrayInput is an input type that accepts DeviceprofileApPortConfigRadsecServerArray and DeviceprofileApPortConfigRadsecServerArrayOutput values.
+// You can construct a concrete instance of `DeviceprofileApPortConfigRadsecServerArrayInput` via:
+//
+//	DeviceprofileApPortConfigRadsecServerArray{ DeviceprofileApPortConfigRadsecServerArgs{...} }
+type DeviceprofileApPortConfigRadsecServerArrayInput interface {
+	pulumi.Input
+
+	ToDeviceprofileApPortConfigRadsecServerArrayOutput() DeviceprofileApPortConfigRadsecServerArrayOutput
+	ToDeviceprofileApPortConfigRadsecServerArrayOutputWithContext(context.Context) DeviceprofileApPortConfigRadsecServerArrayOutput
+}
+
+type DeviceprofileApPortConfigRadsecServerArray []DeviceprofileApPortConfigRadsecServerInput
+
+func (DeviceprofileApPortConfigRadsecServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceprofileApPortConfigRadsecServer)(nil)).Elem()
+}
+
+func (i DeviceprofileApPortConfigRadsecServerArray) ToDeviceprofileApPortConfigRadsecServerArrayOutput() DeviceprofileApPortConfigRadsecServerArrayOutput {
+	return i.ToDeviceprofileApPortConfigRadsecServerArrayOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileApPortConfigRadsecServerArray) ToDeviceprofileApPortConfigRadsecServerArrayOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadsecServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileApPortConfigRadsecServerArrayOutput)
+}
+
+type DeviceprofileApPortConfigRadsecServerOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileApPortConfigRadsecServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileApPortConfigRadsecServer)(nil)).Elem()
+}
+
+func (o DeviceprofileApPortConfigRadsecServerOutput) ToDeviceprofileApPortConfigRadsecServerOutput() DeviceprofileApPortConfigRadsecServerOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigRadsecServerOutput) ToDeviceprofileApPortConfigRadsecServerOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadsecServerOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigRadsecServerOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadsecServer) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceprofileApPortConfigRadsecServerOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfigRadsecServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type DeviceprofileApPortConfigRadsecServerArrayOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileApPortConfigRadsecServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceprofileApPortConfigRadsecServer)(nil)).Elem()
+}
+
+func (o DeviceprofileApPortConfigRadsecServerArrayOutput) ToDeviceprofileApPortConfigRadsecServerArrayOutput() DeviceprofileApPortConfigRadsecServerArrayOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigRadsecServerArrayOutput) ToDeviceprofileApPortConfigRadsecServerArrayOutputWithContext(ctx context.Context) DeviceprofileApPortConfigRadsecServerArrayOutput {
+	return o
+}
+
+func (o DeviceprofileApPortConfigRadsecServerArrayOutput) Index(i pulumi.IntInput) DeviceprofileApPortConfigRadsecServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceprofileApPortConfigRadsecServer {
+		return vs[0].([]DeviceprofileApPortConfigRadsecServer)[vs[1].(int)]
+	}).(DeviceprofileApPortConfigRadsecServerOutput)
+}
+
 type DeviceprofileApPwrConfig struct {
 	// Additional power to request during negotiating with PSE over PoE, in mW
 	Base *int `pulumi:"base"`
@@ -2688,6 +4221,8 @@ type DeviceprofileApRadioConfig struct {
 	Band5On24Radio *DeviceprofileApRadioConfigBand5On24Radio `pulumi:"band5On24Radio"`
 	// Radio Band AP settings
 	Band6 *DeviceprofileApRadioConfigBand6 `pulumi:"band6"`
+	// Let RRM control everything, only the `channels` and `antGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+	FullAutomaticRrm *bool `pulumi:"fullAutomaticRrm"`
 	// To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
 	IndoorUse *bool `pulumi:"indoorUse"`
 	// Whether scanning radio is enabled
@@ -2725,6 +4260,8 @@ type DeviceprofileApRadioConfigArgs struct {
 	Band5On24Radio DeviceprofileApRadioConfigBand5On24RadioPtrInput `pulumi:"band5On24Radio"`
 	// Radio Band AP settings
 	Band6 DeviceprofileApRadioConfigBand6PtrInput `pulumi:"band6"`
+	// Let RRM control everything, only the `channels` and `antGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+	FullAutomaticRrm pulumi.BoolPtrInput `pulumi:"fullAutomaticRrm"`
 	// To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
 	IndoorUse pulumi.BoolPtrInput `pulumi:"indoorUse"`
 	// Whether scanning radio is enabled
@@ -2855,6 +4392,11 @@ func (o DeviceprofileApRadioConfigOutput) Band5On24Radio() DeviceprofileApRadioC
 // Radio Band AP settings
 func (o DeviceprofileApRadioConfigOutput) Band6() DeviceprofileApRadioConfigBand6PtrOutput {
 	return o.ApplyT(func(v DeviceprofileApRadioConfig) *DeviceprofileApRadioConfigBand6 { return v.Band6 }).(DeviceprofileApRadioConfigBand6PtrOutput)
+}
+
+// Let RRM control everything, only the `channels` and `antGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+func (o DeviceprofileApRadioConfigOutput) FullAutomaticRrm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApRadioConfig) *bool { return v.FullAutomaticRrm }).(pulumi.BoolPtrOutput)
 }
 
 // To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
@@ -2988,6 +4530,16 @@ func (o DeviceprofileApRadioConfigPtrOutput) Band6() DeviceprofileApRadioConfigB
 		}
 		return v.Band6
 	}).(DeviceprofileApRadioConfigBand6PtrOutput)
+}
+
+// Let RRM control everything, only the `channels` and `antGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+func (o DeviceprofileApRadioConfigPtrOutput) FullAutomaticRrm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApRadioConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FullAutomaticRrm
+	}).(pulumi.BoolPtrOutput)
 }
 
 // To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
@@ -69713,6 +71265,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApLedPtrInput)(nil)).Elem(), DeviceprofileApLedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApMeshInput)(nil)).Elem(), DeviceprofileApMeshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApMeshPtrInput)(nil)).Elem(), DeviceprofileApMeshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApPortConfigInput)(nil)).Elem(), DeviceprofileApPortConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApPortConfigMapInput)(nil)).Elem(), DeviceprofileApPortConfigMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApPortConfigDynamicVlanInput)(nil)).Elem(), DeviceprofileApPortConfigDynamicVlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApPortConfigDynamicVlanPtrInput)(nil)).Elem(), DeviceprofileApPortConfigDynamicVlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApPortConfigMistNacInput)(nil)).Elem(), DeviceprofileApPortConfigMistNacArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApPortConfigMistNacPtrInput)(nil)).Elem(), DeviceprofileApPortConfigMistNacArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApPortConfigRadiusConfigInput)(nil)).Elem(), DeviceprofileApPortConfigRadiusConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApPortConfigRadiusConfigPtrInput)(nil)).Elem(), DeviceprofileApPortConfigRadiusConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApPortConfigRadiusConfigAcctServerInput)(nil)).Elem(), DeviceprofileApPortConfigRadiusConfigAcctServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApPortConfigRadiusConfigAcctServerArrayInput)(nil)).Elem(), DeviceprofileApPortConfigRadiusConfigAcctServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApPortConfigRadiusConfigAuthServerInput)(nil)).Elem(), DeviceprofileApPortConfigRadiusConfigAuthServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApPortConfigRadiusConfigAuthServerArrayInput)(nil)).Elem(), DeviceprofileApPortConfigRadiusConfigAuthServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApPortConfigRadsecInput)(nil)).Elem(), DeviceprofileApPortConfigRadsecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApPortConfigRadsecPtrInput)(nil)).Elem(), DeviceprofileApPortConfigRadsecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApPortConfigRadsecServerInput)(nil)).Elem(), DeviceprofileApPortConfigRadsecServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApPortConfigRadsecServerArrayInput)(nil)).Elem(), DeviceprofileApPortConfigRadsecServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApPwrConfigInput)(nil)).Elem(), DeviceprofileApPwrConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApPwrConfigPtrInput)(nil)).Elem(), DeviceprofileApPwrConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApRadioConfigInput)(nil)).Elem(), DeviceprofileApRadioConfigArgs{})
@@ -70473,6 +72041,22 @@ func init() {
 	pulumi.RegisterOutputType(DeviceprofileApLedPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileApMeshOutput{})
 	pulumi.RegisterOutputType(DeviceprofileApMeshPtrOutput{})
+	pulumi.RegisterOutputType(DeviceprofileApPortConfigOutput{})
+	pulumi.RegisterOutputType(DeviceprofileApPortConfigMapOutput{})
+	pulumi.RegisterOutputType(DeviceprofileApPortConfigDynamicVlanOutput{})
+	pulumi.RegisterOutputType(DeviceprofileApPortConfigDynamicVlanPtrOutput{})
+	pulumi.RegisterOutputType(DeviceprofileApPortConfigMistNacOutput{})
+	pulumi.RegisterOutputType(DeviceprofileApPortConfigMistNacPtrOutput{})
+	pulumi.RegisterOutputType(DeviceprofileApPortConfigRadiusConfigOutput{})
+	pulumi.RegisterOutputType(DeviceprofileApPortConfigRadiusConfigPtrOutput{})
+	pulumi.RegisterOutputType(DeviceprofileApPortConfigRadiusConfigAcctServerOutput{})
+	pulumi.RegisterOutputType(DeviceprofileApPortConfigRadiusConfigAcctServerArrayOutput{})
+	pulumi.RegisterOutputType(DeviceprofileApPortConfigRadiusConfigAuthServerOutput{})
+	pulumi.RegisterOutputType(DeviceprofileApPortConfigRadiusConfigAuthServerArrayOutput{})
+	pulumi.RegisterOutputType(DeviceprofileApPortConfigRadsecOutput{})
+	pulumi.RegisterOutputType(DeviceprofileApPortConfigRadsecPtrOutput{})
+	pulumi.RegisterOutputType(DeviceprofileApPortConfigRadsecServerOutput{})
+	pulumi.RegisterOutputType(DeviceprofileApPortConfigRadsecServerArrayOutput{})
 	pulumi.RegisterOutputType(DeviceprofileApPwrConfigOutput{})
 	pulumi.RegisterOutputType(DeviceprofileApPwrConfigPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileApRadioConfigOutput{})

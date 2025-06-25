@@ -38,6 +38,22 @@ __all__ = [
     'DeviceprofileApLedArgsDict',
     'DeviceprofileApMeshArgs',
     'DeviceprofileApMeshArgsDict',
+    'DeviceprofileApPortConfigArgs',
+    'DeviceprofileApPortConfigArgsDict',
+    'DeviceprofileApPortConfigDynamicVlanArgs',
+    'DeviceprofileApPortConfigDynamicVlanArgsDict',
+    'DeviceprofileApPortConfigMistNacArgs',
+    'DeviceprofileApPortConfigMistNacArgsDict',
+    'DeviceprofileApPortConfigRadiusConfigArgs',
+    'DeviceprofileApPortConfigRadiusConfigArgsDict',
+    'DeviceprofileApPortConfigRadiusConfigAcctServerArgs',
+    'DeviceprofileApPortConfigRadiusConfigAcctServerArgsDict',
+    'DeviceprofileApPortConfigRadiusConfigAuthServerArgs',
+    'DeviceprofileApPortConfigRadiusConfigAuthServerArgsDict',
+    'DeviceprofileApPortConfigRadsecArgs',
+    'DeviceprofileApPortConfigRadsecArgsDict',
+    'DeviceprofileApPortConfigRadsecServerArgs',
+    'DeviceprofileApPortConfigRadsecServerArgsDict',
     'DeviceprofileApPwrConfigArgs',
     'DeviceprofileApPwrConfigArgsDict',
     'DeviceprofileApRadioConfigArgs',
@@ -2131,6 +2147,1105 @@ class DeviceprofileApMeshArgs:
 
 
 if not MYPY:
+    class DeviceprofileApPortConfigArgsDict(TypedDict):
+        disabled: NotRequired[pulumi.Input[builtins.bool]]
+        dynamic_vlan: NotRequired[pulumi.Input['DeviceprofileApPortConfigDynamicVlanArgsDict']]
+        """
+        Optional dynamic vlan
+        """
+        enable_mac_auth: NotRequired[pulumi.Input[builtins.bool]]
+        forwarding: NotRequired[pulumi.Input[builtins.str]]
+        """
+        enum: 
+          * `all`: local breakout, All VLANs
+          * `limited`: local breakout, only the VLANs configured in `port_vlan_id` and `vlan_ids`
+          * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnel_id`)
+          * `site_mxedge`: central breakout to a Site Mist Edge (requires `mxtunnel_name`)
+          * `wxtunnel`': central breakout to an Org WxTunnel (requires `wxtunnel_id`)
+        """
+        mac_auth_preferred: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        When `true`, we'll do dot1x then mac_auth. enable this to prefer mac_auth
+        """
+        mac_auth_protocol: NotRequired[pulumi.Input[builtins.str]]
+        """
+        if `enable_mac_auth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+        """
+        mist_nac: NotRequired[pulumi.Input['DeviceprofileApPortConfigMistNacArgsDict']]
+        mx_tunnel_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        If `forwarding`==`mxtunnel`, vlan_ids comes from mxtunnel
+        """
+        mxtunnel_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        If `forwarding`==`site_mxedge`, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+        """
+        port_auth: NotRequired[pulumi.Input[builtins.str]]
+        """
+        When doing port auth. enum: `dot1x`, `none`
+        """
+        port_vlan_id: NotRequired[pulumi.Input[builtins.int]]
+        """
+        If `forwarding`==`limited`
+        """
+        radius_config: NotRequired[pulumi.Input['DeviceprofileApPortConfigRadiusConfigArgsDict']]
+        """
+        Junos Radius config
+        """
+        radsec: NotRequired[pulumi.Input['DeviceprofileApPortConfigRadsecArgsDict']]
+        """
+        RadSec settings
+        """
+        vlan_id: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `site_mxedge`.
+          * if vlan_id is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+          * if forwarding == site_mxedge, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+        """
+        vlan_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]
+        """
+        If `forwarding`==`limited`
+        """
+        wxtunnel_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+        """
+        wxtunnel_remote_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+        """
+elif False:
+    DeviceprofileApPortConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeviceprofileApPortConfigArgs:
+    def __init__(__self__, *,
+                 disabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 dynamic_vlan: Optional[pulumi.Input['DeviceprofileApPortConfigDynamicVlanArgs']] = None,
+                 enable_mac_auth: Optional[pulumi.Input[builtins.bool]] = None,
+                 forwarding: Optional[pulumi.Input[builtins.str]] = None,
+                 mac_auth_preferred: Optional[pulumi.Input[builtins.bool]] = None,
+                 mac_auth_protocol: Optional[pulumi.Input[builtins.str]] = None,
+                 mist_nac: Optional[pulumi.Input['DeviceprofileApPortConfigMistNacArgs']] = None,
+                 mx_tunnel_id: Optional[pulumi.Input[builtins.str]] = None,
+                 mxtunnel_name: Optional[pulumi.Input[builtins.str]] = None,
+                 port_auth: Optional[pulumi.Input[builtins.str]] = None,
+                 port_vlan_id: Optional[pulumi.Input[builtins.int]] = None,
+                 radius_config: Optional[pulumi.Input['DeviceprofileApPortConfigRadiusConfigArgs']] = None,
+                 radsec: Optional[pulumi.Input['DeviceprofileApPortConfigRadsecArgs']] = None,
+                 vlan_id: Optional[pulumi.Input[builtins.int]] = None,
+                 vlan_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None,
+                 wxtunnel_id: Optional[pulumi.Input[builtins.str]] = None,
+                 wxtunnel_remote_id: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input['DeviceprofileApPortConfigDynamicVlanArgs'] dynamic_vlan: Optional dynamic vlan
+        :param pulumi.Input[builtins.str] forwarding: enum: 
+                 * `all`: local breakout, All VLANs
+                 * `limited`: local breakout, only the VLANs configured in `port_vlan_id` and `vlan_ids`
+                 * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnel_id`)
+                 * `site_mxedge`: central breakout to a Site Mist Edge (requires `mxtunnel_name`)
+                 * `wxtunnel`': central breakout to an Org WxTunnel (requires `wxtunnel_id`)
+        :param pulumi.Input[builtins.bool] mac_auth_preferred: When `true`, we'll do dot1x then mac_auth. enable this to prefer mac_auth
+        :param pulumi.Input[builtins.str] mac_auth_protocol: if `enable_mac_auth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+        :param pulumi.Input[builtins.str] mx_tunnel_id: If `forwarding`==`mxtunnel`, vlan_ids comes from mxtunnel
+        :param pulumi.Input[builtins.str] mxtunnel_name: If `forwarding`==`site_mxedge`, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+        :param pulumi.Input[builtins.str] port_auth: When doing port auth. enum: `dot1x`, `none`
+        :param pulumi.Input[builtins.int] port_vlan_id: If `forwarding`==`limited`
+        :param pulumi.Input['DeviceprofileApPortConfigRadiusConfigArgs'] radius_config: Junos Radius config
+        :param pulumi.Input['DeviceprofileApPortConfigRadsecArgs'] radsec: RadSec settings
+        :param pulumi.Input[builtins.int] vlan_id: Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `site_mxedge`.
+                 * if vlan_id is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+                 * if forwarding == site_mxedge, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] vlan_ids: If `forwarding`==`limited`
+        :param pulumi.Input[builtins.str] wxtunnel_id: If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+        :param pulumi.Input[builtins.str] wxtunnel_remote_id: If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if dynamic_vlan is not None:
+            pulumi.set(__self__, "dynamic_vlan", dynamic_vlan)
+        if enable_mac_auth is not None:
+            pulumi.set(__self__, "enable_mac_auth", enable_mac_auth)
+        if forwarding is not None:
+            pulumi.set(__self__, "forwarding", forwarding)
+        if mac_auth_preferred is not None:
+            pulumi.set(__self__, "mac_auth_preferred", mac_auth_preferred)
+        if mac_auth_protocol is not None:
+            pulumi.set(__self__, "mac_auth_protocol", mac_auth_protocol)
+        if mist_nac is not None:
+            pulumi.set(__self__, "mist_nac", mist_nac)
+        if mx_tunnel_id is not None:
+            pulumi.set(__self__, "mx_tunnel_id", mx_tunnel_id)
+        if mxtunnel_name is not None:
+            pulumi.set(__self__, "mxtunnel_name", mxtunnel_name)
+        if port_auth is not None:
+            pulumi.set(__self__, "port_auth", port_auth)
+        if port_vlan_id is not None:
+            pulumi.set(__self__, "port_vlan_id", port_vlan_id)
+        if radius_config is not None:
+            pulumi.set(__self__, "radius_config", radius_config)
+        if radsec is not None:
+            pulumi.set(__self__, "radsec", radsec)
+        if vlan_id is not None:
+            pulumi.set(__self__, "vlan_id", vlan_id)
+        if vlan_ids is not None:
+            pulumi.set(__self__, "vlan_ids", vlan_ids)
+        if wxtunnel_id is not None:
+            pulumi.set(__self__, "wxtunnel_id", wxtunnel_id)
+        if wxtunnel_remote_id is not None:
+            pulumi.set(__self__, "wxtunnel_remote_id", wxtunnel_remote_id)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="dynamicVlan")
+    def dynamic_vlan(self) -> Optional[pulumi.Input['DeviceprofileApPortConfigDynamicVlanArgs']]:
+        """
+        Optional dynamic vlan
+        """
+        return pulumi.get(self, "dynamic_vlan")
+
+    @dynamic_vlan.setter
+    def dynamic_vlan(self, value: Optional[pulumi.Input['DeviceprofileApPortConfigDynamicVlanArgs']]):
+        pulumi.set(self, "dynamic_vlan", value)
+
+    @property
+    @pulumi.getter(name="enableMacAuth")
+    def enable_mac_auth(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "enable_mac_auth")
+
+    @enable_mac_auth.setter
+    def enable_mac_auth(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enable_mac_auth", value)
+
+    @property
+    @pulumi.getter
+    def forwarding(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        enum: 
+          * `all`: local breakout, All VLANs
+          * `limited`: local breakout, only the VLANs configured in `port_vlan_id` and `vlan_ids`
+          * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnel_id`)
+          * `site_mxedge`: central breakout to a Site Mist Edge (requires `mxtunnel_name`)
+          * `wxtunnel`': central breakout to an Org WxTunnel (requires `wxtunnel_id`)
+        """
+        return pulumi.get(self, "forwarding")
+
+    @forwarding.setter
+    def forwarding(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "forwarding", value)
+
+    @property
+    @pulumi.getter(name="macAuthPreferred")
+    def mac_auth_preferred(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        When `true`, we'll do dot1x then mac_auth. enable this to prefer mac_auth
+        """
+        return pulumi.get(self, "mac_auth_preferred")
+
+    @mac_auth_preferred.setter
+    def mac_auth_preferred(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "mac_auth_preferred", value)
+
+    @property
+    @pulumi.getter(name="macAuthProtocol")
+    def mac_auth_protocol(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        if `enable_mac_auth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+        """
+        return pulumi.get(self, "mac_auth_protocol")
+
+    @mac_auth_protocol.setter
+    def mac_auth_protocol(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "mac_auth_protocol", value)
+
+    @property
+    @pulumi.getter(name="mistNac")
+    def mist_nac(self) -> Optional[pulumi.Input['DeviceprofileApPortConfigMistNacArgs']]:
+        return pulumi.get(self, "mist_nac")
+
+    @mist_nac.setter
+    def mist_nac(self, value: Optional[pulumi.Input['DeviceprofileApPortConfigMistNacArgs']]):
+        pulumi.set(self, "mist_nac", value)
+
+    @property
+    @pulumi.getter(name="mxTunnelId")
+    def mx_tunnel_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        If `forwarding`==`mxtunnel`, vlan_ids comes from mxtunnel
+        """
+        return pulumi.get(self, "mx_tunnel_id")
+
+    @mx_tunnel_id.setter
+    def mx_tunnel_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "mx_tunnel_id", value)
+
+    @property
+    @pulumi.getter(name="mxtunnelName")
+    def mxtunnel_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        If `forwarding`==`site_mxedge`, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+        """
+        return pulumi.get(self, "mxtunnel_name")
+
+    @mxtunnel_name.setter
+    def mxtunnel_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "mxtunnel_name", value)
+
+    @property
+    @pulumi.getter(name="portAuth")
+    def port_auth(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        When doing port auth. enum: `dot1x`, `none`
+        """
+        return pulumi.get(self, "port_auth")
+
+    @port_auth.setter
+    def port_auth(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "port_auth", value)
+
+    @property
+    @pulumi.getter(name="portVlanId")
+    def port_vlan_id(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        If `forwarding`==`limited`
+        """
+        return pulumi.get(self, "port_vlan_id")
+
+    @port_vlan_id.setter
+    def port_vlan_id(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "port_vlan_id", value)
+
+    @property
+    @pulumi.getter(name="radiusConfig")
+    def radius_config(self) -> Optional[pulumi.Input['DeviceprofileApPortConfigRadiusConfigArgs']]:
+        """
+        Junos Radius config
+        """
+        return pulumi.get(self, "radius_config")
+
+    @radius_config.setter
+    def radius_config(self, value: Optional[pulumi.Input['DeviceprofileApPortConfigRadiusConfigArgs']]):
+        pulumi.set(self, "radius_config", value)
+
+    @property
+    @pulumi.getter
+    def radsec(self) -> Optional[pulumi.Input['DeviceprofileApPortConfigRadsecArgs']]:
+        """
+        RadSec settings
+        """
+        return pulumi.get(self, "radsec")
+
+    @radsec.setter
+    def radsec(self, value: Optional[pulumi.Input['DeviceprofileApPortConfigRadsecArgs']]):
+        pulumi.set(self, "radsec", value)
+
+    @property
+    @pulumi.getter(name="vlanId")
+    def vlan_id(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `site_mxedge`.
+          * if vlan_id is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+          * if forwarding == site_mxedge, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+        """
+        return pulumi.get(self, "vlan_id")
+
+    @vlan_id.setter
+    def vlan_id(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "vlan_id", value)
+
+    @property
+    @pulumi.getter(name="vlanIds")
+    def vlan_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]:
+        """
+        If `forwarding`==`limited`
+        """
+        return pulumi.get(self, "vlan_ids")
+
+    @vlan_ids.setter
+    def vlan_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]):
+        pulumi.set(self, "vlan_ids", value)
+
+    @property
+    @pulumi.getter(name="wxtunnelId")
+    def wxtunnel_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+        """
+        return pulumi.get(self, "wxtunnel_id")
+
+    @wxtunnel_id.setter
+    def wxtunnel_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "wxtunnel_id", value)
+
+    @property
+    @pulumi.getter(name="wxtunnelRemoteId")
+    def wxtunnel_remote_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+        """
+        return pulumi.get(self, "wxtunnel_remote_id")
+
+    @wxtunnel_remote_id.setter
+    def wxtunnel_remote_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "wxtunnel_remote_id", value)
+
+
+if not MYPY:
+    class DeviceprofileApPortConfigDynamicVlanArgsDict(TypedDict):
+        default_vlan_id: NotRequired[pulumi.Input[builtins.int]]
+        enabled: NotRequired[pulumi.Input[builtins.bool]]
+        type: NotRequired[pulumi.Input[builtins.str]]
+        vlans: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
+elif False:
+    DeviceprofileApPortConfigDynamicVlanArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeviceprofileApPortConfigDynamicVlanArgs:
+    def __init__(__self__, *,
+                 default_vlan_id: Optional[pulumi.Input[builtins.int]] = None,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None,
+                 vlans: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
+        if default_vlan_id is not None:
+            pulumi.set(__self__, "default_vlan_id", default_vlan_id)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if vlans is not None:
+            pulumi.set(__self__, "vlans", vlans)
+
+    @property
+    @pulumi.getter(name="defaultVlanId")
+    def default_vlan_id(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "default_vlan_id")
+
+    @default_vlan_id.setter
+    def default_vlan_id(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "default_vlan_id", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def vlans(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "vlans")
+
+    @vlans.setter
+    def vlans(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "vlans", value)
+
+
+if not MYPY:
+    class DeviceprofileApPortConfigMistNacArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        When enabled:
+          * `auth_servers` is ignored
+          * `acct_servers` is ignored
+          * `auth_servers_*` are ignored
+          * `coa_servers` is ignored
+          * `radsec` is ignored
+          * `coa_enabled` is assumed
+        """
+elif False:
+    DeviceprofileApPortConfigMistNacArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeviceprofileApPortConfigMistNacArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.bool] enabled: When enabled:
+                 * `auth_servers` is ignored
+                 * `acct_servers` is ignored
+                 * `auth_servers_*` are ignored
+                 * `coa_servers` is ignored
+                 * `radsec` is ignored
+                 * `coa_enabled` is assumed
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        When enabled:
+          * `auth_servers` is ignored
+          * `acct_servers` is ignored
+          * `auth_servers_*` are ignored
+          * `coa_servers` is ignored
+          * `radsec` is ignored
+          * `coa_enabled` is assumed
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class DeviceprofileApPortConfigRadiusConfigArgsDict(TypedDict):
+        acct_interim_interval: NotRequired[pulumi.Input[builtins.int]]
+        """
+        How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+        """
+        acct_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeviceprofileApPortConfigRadiusConfigAcctServerArgsDict']]]]
+        auth_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeviceprofileApPortConfigRadiusConfigAuthServerArgsDict']]]]
+        auth_servers_retries: NotRequired[pulumi.Input[builtins.int]]
+        """
+        radius auth session retries
+        """
+        auth_servers_timeout: NotRequired[pulumi.Input[builtins.int]]
+        """
+        radius auth session timeout
+        """
+        coa_enabled: NotRequired[pulumi.Input[builtins.bool]]
+        coa_port: NotRequired[pulumi.Input[builtins.int]]
+        network: NotRequired[pulumi.Input[builtins.str]]
+        """
+        use `network`or `source_ip`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        """
+        source_ip: NotRequired[pulumi.Input[builtins.str]]
+        """
+        use `network`or `source_ip`
+        """
+elif False:
+    DeviceprofileApPortConfigRadiusConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeviceprofileApPortConfigRadiusConfigArgs:
+    def __init__(__self__, *,
+                 acct_interim_interval: Optional[pulumi.Input[builtins.int]] = None,
+                 acct_servers: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceprofileApPortConfigRadiusConfigAcctServerArgs']]]] = None,
+                 auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceprofileApPortConfigRadiusConfigAuthServerArgs']]]] = None,
+                 auth_servers_retries: Optional[pulumi.Input[builtins.int]] = None,
+                 auth_servers_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 coa_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 coa_port: Optional[pulumi.Input[builtins.int]] = None,
+                 network: Optional[pulumi.Input[builtins.str]] = None,
+                 source_ip: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+        :param pulumi.Input[builtins.int] auth_servers_retries: radius auth session retries
+        :param pulumi.Input[builtins.int] auth_servers_timeout: radius auth session timeout
+        :param pulumi.Input[builtins.str] network: use `network`or `source_ip`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        :param pulumi.Input[builtins.str] source_ip: use `network`or `source_ip`
+        """
+        if acct_interim_interval is not None:
+            pulumi.set(__self__, "acct_interim_interval", acct_interim_interval)
+        if acct_servers is not None:
+            pulumi.set(__self__, "acct_servers", acct_servers)
+        if auth_servers is not None:
+            pulumi.set(__self__, "auth_servers", auth_servers)
+        if auth_servers_retries is not None:
+            pulumi.set(__self__, "auth_servers_retries", auth_servers_retries)
+        if auth_servers_timeout is not None:
+            pulumi.set(__self__, "auth_servers_timeout", auth_servers_timeout)
+        if coa_enabled is not None:
+            pulumi.set(__self__, "coa_enabled", coa_enabled)
+        if coa_port is not None:
+            pulumi.set(__self__, "coa_port", coa_port)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if source_ip is not None:
+            pulumi.set(__self__, "source_ip", source_ip)
+
+    @property
+    @pulumi.getter(name="acctInterimInterval")
+    def acct_interim_interval(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+        """
+        return pulumi.get(self, "acct_interim_interval")
+
+    @acct_interim_interval.setter
+    def acct_interim_interval(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "acct_interim_interval", value)
+
+    @property
+    @pulumi.getter(name="acctServers")
+    def acct_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceprofileApPortConfigRadiusConfigAcctServerArgs']]]]:
+        return pulumi.get(self, "acct_servers")
+
+    @acct_servers.setter
+    def acct_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceprofileApPortConfigRadiusConfigAcctServerArgs']]]]):
+        pulumi.set(self, "acct_servers", value)
+
+    @property
+    @pulumi.getter(name="authServers")
+    def auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceprofileApPortConfigRadiusConfigAuthServerArgs']]]]:
+        return pulumi.get(self, "auth_servers")
+
+    @auth_servers.setter
+    def auth_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceprofileApPortConfigRadiusConfigAuthServerArgs']]]]):
+        pulumi.set(self, "auth_servers", value)
+
+    @property
+    @pulumi.getter(name="authServersRetries")
+    def auth_servers_retries(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        radius auth session retries
+        """
+        return pulumi.get(self, "auth_servers_retries")
+
+    @auth_servers_retries.setter
+    def auth_servers_retries(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "auth_servers_retries", value)
+
+    @property
+    @pulumi.getter(name="authServersTimeout")
+    def auth_servers_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        radius auth session timeout
+        """
+        return pulumi.get(self, "auth_servers_timeout")
+
+    @auth_servers_timeout.setter
+    def auth_servers_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "auth_servers_timeout", value)
+
+    @property
+    @pulumi.getter(name="coaEnabled")
+    def coa_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "coa_enabled")
+
+    @coa_enabled.setter
+    def coa_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "coa_enabled", value)
+
+    @property
+    @pulumi.getter(name="coaPort")
+    def coa_port(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "coa_port")
+
+    @coa_port.setter
+    def coa_port(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "coa_port", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        use `network`or `source_ip`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="sourceIp")
+    def source_ip(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        use `network`or `source_ip`
+        """
+        return pulumi.get(self, "source_ip")
+
+    @source_ip.setter
+    def source_ip(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "source_ip", value)
+
+
+if not MYPY:
+    class DeviceprofileApPortConfigRadiusConfigAcctServerArgsDict(TypedDict):
+        host: pulumi.Input[builtins.str]
+        """
+        IP/ hostname of RADIUS server
+        """
+        secret: pulumi.Input[builtins.str]
+        """
+        Secret of RADIUS server
+        """
+        keywrap_enabled: NotRequired[pulumi.Input[builtins.bool]]
+        keywrap_format: NotRequired[pulumi.Input[builtins.str]]
+        """
+        enum: `ascii`, `hex`
+        """
+        keywrap_kek: NotRequired[pulumi.Input[builtins.str]]
+        keywrap_mack: NotRequired[pulumi.Input[builtins.str]]
+        port: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    DeviceprofileApPortConfigRadiusConfigAcctServerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeviceprofileApPortConfigRadiusConfigAcctServerArgs:
+    def __init__(__self__, *,
+                 host: pulumi.Input[builtins.str],
+                 secret: pulumi.Input[builtins.str],
+                 keywrap_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 keywrap_format: Optional[pulumi.Input[builtins.str]] = None,
+                 keywrap_kek: Optional[pulumi.Input[builtins.str]] = None,
+                 keywrap_mack: Optional[pulumi.Input[builtins.str]] = None,
+                 port: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] host: IP/ hostname of RADIUS server
+        :param pulumi.Input[builtins.str] secret: Secret of RADIUS server
+        :param pulumi.Input[builtins.str] keywrap_format: enum: `ascii`, `hex`
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "secret", secret)
+        if keywrap_enabled is not None:
+            pulumi.set(__self__, "keywrap_enabled", keywrap_enabled)
+        if keywrap_format is not None:
+            pulumi.set(__self__, "keywrap_format", keywrap_format)
+        if keywrap_kek is not None:
+            pulumi.set(__self__, "keywrap_kek", keywrap_kek)
+        if keywrap_mack is not None:
+            pulumi.set(__self__, "keywrap_mack", keywrap_mack)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[builtins.str]:
+        """
+        IP/ hostname of RADIUS server
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> pulumi.Input[builtins.str]:
+        """
+        Secret of RADIUS server
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "secret", value)
+
+    @property
+    @pulumi.getter(name="keywrapEnabled")
+    def keywrap_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "keywrap_enabled")
+
+    @keywrap_enabled.setter
+    def keywrap_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "keywrap_enabled", value)
+
+    @property
+    @pulumi.getter(name="keywrapFormat")
+    def keywrap_format(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        enum: `ascii`, `hex`
+        """
+        return pulumi.get(self, "keywrap_format")
+
+    @keywrap_format.setter
+    def keywrap_format(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "keywrap_format", value)
+
+    @property
+    @pulumi.getter(name="keywrapKek")
+    def keywrap_kek(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "keywrap_kek")
+
+    @keywrap_kek.setter
+    def keywrap_kek(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "keywrap_kek", value)
+
+    @property
+    @pulumi.getter(name="keywrapMack")
+    def keywrap_mack(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "keywrap_mack")
+
+    @keywrap_mack.setter
+    def keywrap_mack(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "keywrap_mack", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class DeviceprofileApPortConfigRadiusConfigAuthServerArgsDict(TypedDict):
+        host: pulumi.Input[builtins.str]
+        """
+        IP/ hostname of RADIUS server
+        """
+        secret: pulumi.Input[builtins.str]
+        """
+        Secret of RADIUS server
+        """
+        keywrap_enabled: NotRequired[pulumi.Input[builtins.bool]]
+        keywrap_format: NotRequired[pulumi.Input[builtins.str]]
+        """
+        enum: `ascii`, `hex`
+        """
+        keywrap_kek: NotRequired[pulumi.Input[builtins.str]]
+        keywrap_mack: NotRequired[pulumi.Input[builtins.str]]
+        port: NotRequired[pulumi.Input[builtins.str]]
+        require_message_authenticator: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Whether to require Message-Authenticator in requests
+        """
+elif False:
+    DeviceprofileApPortConfigRadiusConfigAuthServerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeviceprofileApPortConfigRadiusConfigAuthServerArgs:
+    def __init__(__self__, *,
+                 host: pulumi.Input[builtins.str],
+                 secret: pulumi.Input[builtins.str],
+                 keywrap_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 keywrap_format: Optional[pulumi.Input[builtins.str]] = None,
+                 keywrap_kek: Optional[pulumi.Input[builtins.str]] = None,
+                 keywrap_mack: Optional[pulumi.Input[builtins.str]] = None,
+                 port: Optional[pulumi.Input[builtins.str]] = None,
+                 require_message_authenticator: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.str] host: IP/ hostname of RADIUS server
+        :param pulumi.Input[builtins.str] secret: Secret of RADIUS server
+        :param pulumi.Input[builtins.str] keywrap_format: enum: `ascii`, `hex`
+        :param pulumi.Input[builtins.bool] require_message_authenticator: Whether to require Message-Authenticator in requests
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "secret", secret)
+        if keywrap_enabled is not None:
+            pulumi.set(__self__, "keywrap_enabled", keywrap_enabled)
+        if keywrap_format is not None:
+            pulumi.set(__self__, "keywrap_format", keywrap_format)
+        if keywrap_kek is not None:
+            pulumi.set(__self__, "keywrap_kek", keywrap_kek)
+        if keywrap_mack is not None:
+            pulumi.set(__self__, "keywrap_mack", keywrap_mack)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if require_message_authenticator is not None:
+            pulumi.set(__self__, "require_message_authenticator", require_message_authenticator)
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[builtins.str]:
+        """
+        IP/ hostname of RADIUS server
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> pulumi.Input[builtins.str]:
+        """
+        Secret of RADIUS server
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "secret", value)
+
+    @property
+    @pulumi.getter(name="keywrapEnabled")
+    def keywrap_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "keywrap_enabled")
+
+    @keywrap_enabled.setter
+    def keywrap_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "keywrap_enabled", value)
+
+    @property
+    @pulumi.getter(name="keywrapFormat")
+    def keywrap_format(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        enum: `ascii`, `hex`
+        """
+        return pulumi.get(self, "keywrap_format")
+
+    @keywrap_format.setter
+    def keywrap_format(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "keywrap_format", value)
+
+    @property
+    @pulumi.getter(name="keywrapKek")
+    def keywrap_kek(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "keywrap_kek")
+
+    @keywrap_kek.setter
+    def keywrap_kek(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "keywrap_kek", value)
+
+    @property
+    @pulumi.getter(name="keywrapMack")
+    def keywrap_mack(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "keywrap_mack")
+
+    @keywrap_mack.setter
+    def keywrap_mack(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "keywrap_mack", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="requireMessageAuthenticator")
+    def require_message_authenticator(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether to require Message-Authenticator in requests
+        """
+        return pulumi.get(self, "require_message_authenticator")
+
+    @require_message_authenticator.setter
+    def require_message_authenticator(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "require_message_authenticator", value)
+
+
+if not MYPY:
+    class DeviceprofileApPortConfigRadsecArgsDict(TypedDict):
+        coa_enabled: NotRequired[pulumi.Input[builtins.bool]]
+        enabled: NotRequired[pulumi.Input[builtins.bool]]
+        idle_timeout: NotRequired[pulumi.Input[builtins.str]]
+        mxcluster_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+        """
+        proxy_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
+        """
+        server_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+        """
+        servers: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeviceprofileApPortConfigRadsecServerArgsDict']]]]
+        """
+        List of RadSec Servers. Only if not Mist Edge.
+        """
+        use_mxedge: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        use mxedge(s) as RadSec Proxy
+        """
+        use_site_mxedge: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        To use Site mxedges when this WLAN does not use mxtunnel
+        """
+elif False:
+    DeviceprofileApPortConfigRadsecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeviceprofileApPortConfigRadsecArgs:
+    def __init__(__self__, *,
+                 coa_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 idle_timeout: Optional[pulumi.Input[builtins.str]] = None,
+                 mxcluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 proxy_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 server_name: Optional[pulumi.Input[builtins.str]] = None,
+                 servers: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceprofileApPortConfigRadsecServerArgs']]]] = None,
+                 use_mxedge: Optional[pulumi.Input[builtins.bool]] = None,
+                 use_site_mxedge: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] mxcluster_ids: To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] proxy_hosts: Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
+        :param pulumi.Input[builtins.str] server_name: Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceprofileApPortConfigRadsecServerArgs']]] servers: List of RadSec Servers. Only if not Mist Edge.
+        :param pulumi.Input[builtins.bool] use_mxedge: use mxedge(s) as RadSec Proxy
+        :param pulumi.Input[builtins.bool] use_site_mxedge: To use Site mxedges when this WLAN does not use mxtunnel
+        """
+        if coa_enabled is not None:
+            pulumi.set(__self__, "coa_enabled", coa_enabled)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
+        if mxcluster_ids is not None:
+            pulumi.set(__self__, "mxcluster_ids", mxcluster_ids)
+        if proxy_hosts is not None:
+            pulumi.set(__self__, "proxy_hosts", proxy_hosts)
+        if server_name is not None:
+            pulumi.set(__self__, "server_name", server_name)
+        if servers is not None:
+            pulumi.set(__self__, "servers", servers)
+        if use_mxedge is not None:
+            pulumi.set(__self__, "use_mxedge", use_mxedge)
+        if use_site_mxedge is not None:
+            pulumi.set(__self__, "use_site_mxedge", use_site_mxedge)
+
+    @property
+    @pulumi.getter(name="coaEnabled")
+    def coa_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "coa_enabled")
+
+    @coa_enabled.setter
+    def coa_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "coa_enabled", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "idle_timeout")
+
+    @idle_timeout.setter
+    def idle_timeout(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "idle_timeout", value)
+
+    @property
+    @pulumi.getter(name="mxclusterIds")
+    def mxcluster_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+        """
+        return pulumi.get(self, "mxcluster_ids")
+
+    @mxcluster_ids.setter
+    def mxcluster_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "mxcluster_ids", value)
+
+    @property
+    @pulumi.getter(name="proxyHosts")
+    def proxy_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
+        """
+        return pulumi.get(self, "proxy_hosts")
+
+    @proxy_hosts.setter
+    def proxy_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "proxy_hosts", value)
+
+    @property
+    @pulumi.getter(name="serverName")
+    def server_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+        """
+        return pulumi.get(self, "server_name")
+
+    @server_name.setter
+    def server_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "server_name", value)
+
+    @property
+    @pulumi.getter
+    def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceprofileApPortConfigRadsecServerArgs']]]]:
+        """
+        List of RadSec Servers. Only if not Mist Edge.
+        """
+        return pulumi.get(self, "servers")
+
+    @servers.setter
+    def servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceprofileApPortConfigRadsecServerArgs']]]]):
+        pulumi.set(self, "servers", value)
+
+    @property
+    @pulumi.getter(name="useMxedge")
+    def use_mxedge(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        use mxedge(s) as RadSec Proxy
+        """
+        return pulumi.get(self, "use_mxedge")
+
+    @use_mxedge.setter
+    def use_mxedge(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "use_mxedge", value)
+
+    @property
+    @pulumi.getter(name="useSiteMxedge")
+    def use_site_mxedge(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        To use Site mxedges when this WLAN does not use mxtunnel
+        """
+        return pulumi.get(self, "use_site_mxedge")
+
+    @use_site_mxedge.setter
+    def use_site_mxedge(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "use_site_mxedge", value)
+
+
+if not MYPY:
+    class DeviceprofileApPortConfigRadsecServerArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[builtins.str]]
+        port: NotRequired[pulumi.Input[builtins.int]]
+elif False:
+    DeviceprofileApPortConfigRadsecServerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeviceprofileApPortConfigRadsecServerArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[builtins.str]] = None,
+                 port: Optional[pulumi.Input[builtins.int]] = None):
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
     class DeviceprofileApPwrConfigArgsDict(TypedDict):
         base: NotRequired[pulumi.Input[builtins.int]]
         """
@@ -2221,6 +3336,10 @@ if not MYPY:
         """
         Radio Band AP settings
         """
+        full_automatic_rrm: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+        """
         indoor_use: NotRequired[pulumi.Input[builtins.bool]]
         """
         To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
@@ -2245,6 +3364,7 @@ class DeviceprofileApRadioConfigArgs:
                  band5: Optional[pulumi.Input['DeviceprofileApRadioConfigBand5Args']] = None,
                  band5_on24_radio: Optional[pulumi.Input['DeviceprofileApRadioConfigBand5On24RadioArgs']] = None,
                  band6: Optional[pulumi.Input['DeviceprofileApRadioConfigBand6Args']] = None,
+                 full_automatic_rrm: Optional[pulumi.Input[builtins.bool]] = None,
                  indoor_use: Optional[pulumi.Input[builtins.bool]] = None,
                  scanning_enabled: Optional[pulumi.Input[builtins.bool]] = None):
         """
@@ -2257,6 +3377,7 @@ class DeviceprofileApRadioConfigArgs:
         :param pulumi.Input['DeviceprofileApRadioConfigBand5Args'] band5: Radio Band AP settings
         :param pulumi.Input['DeviceprofileApRadioConfigBand5On24RadioArgs'] band5_on24_radio: Radio Band AP settings
         :param pulumi.Input['DeviceprofileApRadioConfigBand6Args'] band6: Radio Band AP settings
+        :param pulumi.Input[builtins.bool] full_automatic_rrm: Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
         :param pulumi.Input[builtins.bool] indoor_use: To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
         :param pulumi.Input[builtins.bool] scanning_enabled: Whether scanning radio is enabled
         """
@@ -2280,6 +3401,8 @@ class DeviceprofileApRadioConfigArgs:
             pulumi.set(__self__, "band5_on24_radio", band5_on24_radio)
         if band6 is not None:
             pulumi.set(__self__, "band6", band6)
+        if full_automatic_rrm is not None:
+            pulumi.set(__self__, "full_automatic_rrm", full_automatic_rrm)
         if indoor_use is not None:
             pulumi.set(__self__, "indoor_use", indoor_use)
         if scanning_enabled is not None:
@@ -2401,6 +3524,18 @@ class DeviceprofileApRadioConfigArgs:
     @band6.setter
     def band6(self, value: Optional[pulumi.Input['DeviceprofileApRadioConfigBand6Args']]):
         pulumi.set(self, "band6", value)
+
+    @property
+    @pulumi.getter(name="fullAutomaticRrm")
+    def full_automatic_rrm(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+        """
+        return pulumi.get(self, "full_automatic_rrm")
+
+    @full_automatic_rrm.setter
+    def full_automatic_rrm(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "full_automatic_rrm", value)
 
     @property
     @pulumi.getter(name="indoorUse")

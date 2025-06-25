@@ -169,6 +169,13 @@ namespace Pulumi.JuniperMist.Device
         public Output<bool> PoePassthrough { get; private set; } = null!;
 
         /// <summary>
+        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+        /// predecence over switch_config (deprecated)
+        /// </summary>
+        [Output("portConfig")]
+        public Output<ImmutableDictionary<string, Outputs.ApPortConfig>?> PortConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Power related configs
         /// </summary>
         [Output("pwrConfig")]
@@ -395,6 +402,19 @@ namespace Pulumi.JuniperMist.Device
         [Input("poePassthrough")]
         public Input<bool>? PoePassthrough { get; set; }
 
+        [Input("portConfig")]
+        private InputMap<Inputs.ApPortConfigArgs>? _portConfig;
+
+        /// <summary>
+        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+        /// predecence over switch_config (deprecated)
+        /// </summary>
+        public InputMap<Inputs.ApPortConfigArgs> PortConfig
+        {
+            get => _portConfig ?? (_portConfig = new InputMap<Inputs.ApPortConfigArgs>());
+            set => _portConfig = value;
+        }
+
         /// <summary>
         /// Power related configs
         /// </summary>
@@ -600,6 +620,19 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Input("poePassthrough")]
         public Input<bool>? PoePassthrough { get; set; }
+
+        [Input("portConfig")]
+        private InputMap<Inputs.ApPortConfigGetArgs>? _portConfig;
+
+        /// <summary>
+        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+        /// predecence over switch_config (deprecated)
+        /// </summary>
+        public InputMap<Inputs.ApPortConfigGetArgs> PortConfig
+        {
+            get => _portConfig ?? (_portConfig = new InputMap<Inputs.ApPortConfigGetArgs>());
+            set => _portConfig = value;
+        }
 
         /// <summary>
         /// Power related configs

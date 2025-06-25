@@ -19,6 +19,7 @@ import com.pulumi.junipermist.device.outputs.ApIpConfig;
 import com.pulumi.junipermist.device.outputs.ApLacpConfig;
 import com.pulumi.junipermist.device.outputs.ApLed;
 import com.pulumi.junipermist.device.outputs.ApMesh;
+import com.pulumi.junipermist.device.outputs.ApPortConfig;
 import com.pulumi.junipermist.device.outputs.ApPwrConfig;
 import com.pulumi.junipermist.device.outputs.ApRadioConfig;
 import com.pulumi.junipermist.device.outputs.ApUplinkPortConfig;
@@ -367,6 +368,22 @@ public class Ap extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> poePassthrough() {
         return this.poePassthrough;
+    }
+    /**
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+     * predecence over switch_config (deprecated)
+     * 
+     */
+    @Export(name="portConfig", refs={Map.class,String.class,ApPortConfig.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,ApPortConfig>> portConfig;
+
+    /**
+     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+     * predecence over switch_config (deprecated)
+     * 
+     */
+    public Output<Optional<Map<String,ApPortConfig>>> portConfig() {
+        return Codegen.optional(this.portConfig);
     }
     /**
      * Power related configs

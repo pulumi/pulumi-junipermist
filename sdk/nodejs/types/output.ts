@@ -439,6 +439,199 @@ export namespace device {
         role?: string;
     }
 
+    export interface ApPortConfig {
+        disabled: boolean;
+        /**
+         * Optional dynamic vlan
+         */
+        dynamicVlan?: outputs.device.ApPortConfigDynamicVlan;
+        enableMacAuth: boolean;
+        /**
+         * enum: 
+         *   * `all`: local breakout, All VLANs
+         *   * `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
+         *   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
+         *   * `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
+         *   * `wxtunnel`': central breakout to an Org WxTunnel (requires `wxtunnelId`)
+         */
+        forwarding: string;
+        /**
+         * When `true`, we'll do dot1x then mac_auth. enable this to prefer mac_auth
+         */
+        macAuthPreferred: boolean;
+        /**
+         * if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+         */
+        macAuthProtocol: string;
+        mistNac?: outputs.device.ApPortConfigMistNac;
+        /**
+         * If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
+         */
+        mxTunnelId: string;
+        /**
+         * If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+         */
+        mxtunnelName: string;
+        /**
+         * When doing port auth. enum: `dot1x`, `none`
+         */
+        portAuth: string;
+        /**
+         * If `forwarding`==`limited`
+         */
+        portVlanId?: number;
+        /**
+         * Junos Radius config
+         */
+        radiusConfig?: outputs.device.ApPortConfigRadiusConfig;
+        /**
+         * RadSec settings
+         */
+        radsec?: outputs.device.ApPortConfigRadsec;
+        /**
+         * Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+         *   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+         *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+         */
+        vlanId?: number;
+        /**
+         * If `forwarding`==`limited`
+         */
+        vlanIds?: number[];
+        /**
+         * If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+         */
+        wxtunnelId: string;
+        /**
+         * If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+         */
+        wxtunnelRemoteId: string;
+    }
+
+    export interface ApPortConfigDynamicVlan {
+        defaultVlanId?: number;
+        enabled?: boolean;
+        type?: string;
+        vlans?: {[key: string]: string};
+    }
+
+    export interface ApPortConfigMistNac {
+        /**
+         * When enabled:
+         *   * `authServers` is ignored
+         *   * `acctServers` is ignored
+         *   * `auth_servers_*` are ignored
+         *   * `coaServers` is ignored
+         *   * `radsec` is ignored
+         *   * `coaEnabled` is assumed
+         */
+        enabled: boolean;
+    }
+
+    export interface ApPortConfigRadiusConfig {
+        /**
+         * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+         */
+        acctInterimInterval: number;
+        acctServers?: outputs.device.ApPortConfigRadiusConfigAcctServer[];
+        authServers?: outputs.device.ApPortConfigRadiusConfigAuthServer[];
+        /**
+         * radius auth session retries
+         */
+        authServersRetries: number;
+        /**
+         * radius auth session timeout
+         */
+        authServersTimeout: number;
+        coaEnabled: boolean;
+        coaPort: number;
+        /**
+         * use `network`or `sourceIp`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+         */
+        network?: string;
+        /**
+         * use `network`or `sourceIp`
+         */
+        sourceIp?: string;
+    }
+
+    export interface ApPortConfigRadiusConfigAcctServer {
+        /**
+         * IP/ hostname of RADIUS server
+         */
+        host: string;
+        keywrapEnabled?: boolean;
+        /**
+         * enum: `ascii`, `hex`
+         */
+        keywrapFormat?: string;
+        keywrapKek?: string;
+        keywrapMack?: string;
+        port?: string;
+        /**
+         * Secret of RADIUS server
+         */
+        secret: string;
+    }
+
+    export interface ApPortConfigRadiusConfigAuthServer {
+        /**
+         * IP/ hostname of RADIUS server
+         */
+        host: string;
+        keywrapEnabled?: boolean;
+        /**
+         * enum: `ascii`, `hex`
+         */
+        keywrapFormat?: string;
+        keywrapKek?: string;
+        keywrapMack?: string;
+        port?: string;
+        /**
+         * Whether to require Message-Authenticator in requests
+         */
+        requireMessageAuthenticator: boolean;
+        /**
+         * Secret of RADIUS server
+         */
+        secret: string;
+    }
+
+    export interface ApPortConfigRadsec {
+        coaEnabled: boolean;
+        enabled?: boolean;
+        idleTimeout?: string;
+        /**
+         * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+         */
+        mxclusterIds?: string[];
+        /**
+         * Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+         */
+        proxyHosts?: string[];
+        /**
+         * Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+         */
+        serverName?: string;
+        /**
+         * List of RadSec Servers. Only if not Mist Edge.
+         */
+        servers?: outputs.device.ApPortConfigRadsecServer[];
+        /**
+         * use mxedge(s) as RadSec Proxy
+         */
+        useMxedge?: boolean;
+        /**
+         * To use Site mxedges when this WLAN does not use mxtunnel
+         */
+        useSiteMxedge: boolean;
+    }
+
+    export interface ApPortConfigRadsecServer {
+        host?: string;
+        port?: number;
+    }
+
     export interface ApPwrConfig {
         /**
          * Additional power to request during negotiating with PSE over PoE, in mW
@@ -488,6 +681,10 @@ export namespace device {
          * Radio Band AP settings
          */
         band6?: outputs.device.ApRadioConfigBand6;
+        /**
+         * Let RRM control everything, only the `channels` and `antGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+         */
+        fullAutomaticRrm: boolean;
         /**
          * To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
          */
@@ -6103,6 +6300,199 @@ export namespace org {
         role?: string;
     }
 
+    export interface DeviceprofileApPortConfig {
+        disabled: boolean;
+        /**
+         * Optional dynamic vlan
+         */
+        dynamicVlan?: outputs.org.DeviceprofileApPortConfigDynamicVlan;
+        enableMacAuth: boolean;
+        /**
+         * enum: 
+         *   * `all`: local breakout, All VLANs
+         *   * `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
+         *   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
+         *   * `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
+         *   * `wxtunnel`': central breakout to an Org WxTunnel (requires `wxtunnelId`)
+         */
+        forwarding: string;
+        /**
+         * When `true`, we'll do dot1x then mac_auth. enable this to prefer mac_auth
+         */
+        macAuthPreferred: boolean;
+        /**
+         * if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+         */
+        macAuthProtocol: string;
+        mistNac?: outputs.org.DeviceprofileApPortConfigMistNac;
+        /**
+         * If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
+         */
+        mxTunnelId: string;
+        /**
+         * If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+         */
+        mxtunnelName: string;
+        /**
+         * When doing port auth. enum: `dot1x`, `none`
+         */
+        portAuth: string;
+        /**
+         * If `forwarding`==`limited`
+         */
+        portVlanId?: number;
+        /**
+         * Junos Radius config
+         */
+        radiusConfig?: outputs.org.DeviceprofileApPortConfigRadiusConfig;
+        /**
+         * RadSec settings
+         */
+        radsec?: outputs.org.DeviceprofileApPortConfigRadsec;
+        /**
+         * Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+         *   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+         *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+         */
+        vlanId?: number;
+        /**
+         * If `forwarding`==`limited`
+         */
+        vlanIds?: number[];
+        /**
+         * If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+         */
+        wxtunnelId: string;
+        /**
+         * If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+         */
+        wxtunnelRemoteId: string;
+    }
+
+    export interface DeviceprofileApPortConfigDynamicVlan {
+        defaultVlanId?: number;
+        enabled?: boolean;
+        type?: string;
+        vlans?: {[key: string]: string};
+    }
+
+    export interface DeviceprofileApPortConfigMistNac {
+        /**
+         * When enabled:
+         *   * `authServers` is ignored
+         *   * `acctServers` is ignored
+         *   * `auth_servers_*` are ignored
+         *   * `coaServers` is ignored
+         *   * `radsec` is ignored
+         *   * `coaEnabled` is assumed
+         */
+        enabled: boolean;
+    }
+
+    export interface DeviceprofileApPortConfigRadiusConfig {
+        /**
+         * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+         */
+        acctInterimInterval: number;
+        acctServers?: outputs.org.DeviceprofileApPortConfigRadiusConfigAcctServer[];
+        authServers?: outputs.org.DeviceprofileApPortConfigRadiusConfigAuthServer[];
+        /**
+         * radius auth session retries
+         */
+        authServersRetries: number;
+        /**
+         * radius auth session timeout
+         */
+        authServersTimeout: number;
+        coaEnabled: boolean;
+        coaPort: number;
+        /**
+         * use `network`or `sourceIp`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+         */
+        network?: string;
+        /**
+         * use `network`or `sourceIp`
+         */
+        sourceIp?: string;
+    }
+
+    export interface DeviceprofileApPortConfigRadiusConfigAcctServer {
+        /**
+         * IP/ hostname of RADIUS server
+         */
+        host: string;
+        keywrapEnabled?: boolean;
+        /**
+         * enum: `ascii`, `hex`
+         */
+        keywrapFormat?: string;
+        keywrapKek?: string;
+        keywrapMack?: string;
+        port?: string;
+        /**
+         * Secret of RADIUS server
+         */
+        secret: string;
+    }
+
+    export interface DeviceprofileApPortConfigRadiusConfigAuthServer {
+        /**
+         * IP/ hostname of RADIUS server
+         */
+        host: string;
+        keywrapEnabled?: boolean;
+        /**
+         * enum: `ascii`, `hex`
+         */
+        keywrapFormat?: string;
+        keywrapKek?: string;
+        keywrapMack?: string;
+        port?: string;
+        /**
+         * Whether to require Message-Authenticator in requests
+         */
+        requireMessageAuthenticator: boolean;
+        /**
+         * Secret of RADIUS server
+         */
+        secret: string;
+    }
+
+    export interface DeviceprofileApPortConfigRadsec {
+        coaEnabled: boolean;
+        enabled?: boolean;
+        idleTimeout?: string;
+        /**
+         * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+         */
+        mxclusterIds?: string[];
+        /**
+         * Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+         */
+        proxyHosts?: string[];
+        /**
+         * Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+         */
+        serverName?: string;
+        /**
+         * List of RadSec Servers. Only if not Mist Edge.
+         */
+        servers?: outputs.org.DeviceprofileApPortConfigRadsecServer[];
+        /**
+         * use mxedge(s) as RadSec Proxy
+         */
+        useMxedge?: boolean;
+        /**
+         * To use Site mxedges when this WLAN does not use mxtunnel
+         */
+        useSiteMxedge: boolean;
+    }
+
+    export interface DeviceprofileApPortConfigRadsecServer {
+        host?: string;
+        port?: number;
+    }
+
     export interface DeviceprofileApPwrConfig {
         /**
          * Additional power to request during negotiating with PSE over PoE, in mW
@@ -6152,6 +6542,10 @@ export namespace org {
          * Radio Band AP settings
          */
         band6?: outputs.org.DeviceprofileApRadioConfigBand6;
+        /**
+         * Let RRM control everything, only the `channels` and `antGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+         */
+        fullAutomaticRrm: boolean;
         /**
          * To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
          */
