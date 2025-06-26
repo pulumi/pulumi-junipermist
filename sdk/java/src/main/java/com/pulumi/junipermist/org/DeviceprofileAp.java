@@ -17,6 +17,7 @@ import com.pulumi.junipermist.org.outputs.DeviceprofileApIpConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApLacpConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApLed;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApMesh;
+import com.pulumi.junipermist.org.outputs.DeviceprofileApPortConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApPwrConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApRadioConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApUplinkPortConfig;
@@ -258,6 +259,20 @@ public class DeviceprofileAp extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> poePassthrough() {
         return this.poePassthrough;
+    }
+    /**
+     * Property key is the interface(s) name (e.g. &#34;eth1,eth2&#34;)
+     * 
+     */
+    @Export(name="portConfig", refs={Map.class,String.class,DeviceprofileApPortConfig.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,DeviceprofileApPortConfig>> portConfig;
+
+    /**
+     * @return Property key is the interface(s) name (e.g. &#34;eth1,eth2&#34;)
+     * 
+     */
+    public Output<Optional<Map<String,DeviceprofileApPortConfig>>> portConfig() {
+        return Codegen.optional(this.portConfig);
     }
     /**
      * Power related configs

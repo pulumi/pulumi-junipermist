@@ -113,6 +113,10 @@ export class DeviceprofileAp extends pulumi.CustomResource {
      */
     public readonly poePassthrough!: pulumi.Output<boolean>;
     /**
+     * Property key is the interface(s) name (e.g. "eth1,eth2")
+     */
+    public readonly portConfig!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileApPortConfig} | undefined>;
+    /**
      * Power related configs
      */
     public readonly pwrConfig!: pulumi.Output<outputs.org.DeviceprofileApPwrConfig | undefined>;
@@ -167,6 +171,7 @@ export class DeviceprofileAp extends pulumi.CustomResource {
             resourceInputs["ntpServers"] = state ? state.ntpServers : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["poePassthrough"] = state ? state.poePassthrough : undefined;
+            resourceInputs["portConfig"] = state ? state.portConfig : undefined;
             resourceInputs["pwrConfig"] = state ? state.pwrConfig : undefined;
             resourceInputs["radioConfig"] = state ? state.radioConfig : undefined;
             resourceInputs["siteId"] = state ? state.siteId : undefined;
@@ -194,6 +199,7 @@ export class DeviceprofileAp extends pulumi.CustomResource {
             resourceInputs["ntpServers"] = args ? args.ntpServers : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["poePassthrough"] = args ? args.poePassthrough : undefined;
+            resourceInputs["portConfig"] = args ? args.portConfig : undefined;
             resourceInputs["pwrConfig"] = args ? args.pwrConfig : undefined;
             resourceInputs["radioConfig"] = args ? args.radioConfig : undefined;
             resourceInputs["siteId"] = args ? args.siteId : undefined;
@@ -256,6 +262,10 @@ export interface DeviceprofileApState {
      * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      */
     poePassthrough?: pulumi.Input<boolean>;
+    /**
+     * Property key is the interface(s) name (e.g. "eth1,eth2")
+     */
+    portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileApPortConfig>}>;
     /**
      * Power related configs
      */
@@ -333,6 +343,10 @@ export interface DeviceprofileApArgs {
      * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      */
     poePassthrough?: pulumi.Input<boolean>;
+    /**
+     * Property key is the interface(s) name (e.g. "eth1,eth2")
+     */
+    portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileApPortConfig>}>;
     /**
      * Power related configs
      */

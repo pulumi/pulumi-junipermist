@@ -13,6 +13,7 @@ import com.pulumi.junipermist.org.inputs.DeviceprofileApIpConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApLacpConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApLedArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApMeshArgs;
+import com.pulumi.junipermist.org.inputs.DeviceprofileApPortConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApPwrConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApRadioConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApUplinkPortConfigArgs;
@@ -216,6 +217,21 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Property key is the interface(s) name (e.g. &#34;eth1,eth2&#34;)
+     * 
+     */
+    @Import(name="portConfig")
+    private @Nullable Output<Map<String,DeviceprofileApPortConfigArgs>> portConfig;
+
+    /**
+     * @return Property key is the interface(s) name (e.g. &#34;eth1,eth2&#34;)
+     * 
+     */
+    public Optional<Output<Map<String,DeviceprofileApPortConfigArgs>>> portConfig() {
+        return Optional.ofNullable(this.portConfig);
+    }
+
+    /**
      * Power related configs
      * 
      */
@@ -317,6 +333,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
         this.ntpServers = $.ntpServers;
         this.orgId = $.orgId;
         this.poePassthrough = $.poePassthrough;
+        this.portConfig = $.portConfig;
         this.pwrConfig = $.pwrConfig;
         this.radioConfig = $.radioConfig;
         this.siteId = $.siteId;
@@ -600,6 +617,27 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder poePassthrough(Boolean poePassthrough) {
             return poePassthrough(Output.of(poePassthrough));
+        }
+
+        /**
+         * @param portConfig Property key is the interface(s) name (e.g. &#34;eth1,eth2&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder portConfig(@Nullable Output<Map<String,DeviceprofileApPortConfigArgs>> portConfig) {
+            $.portConfig = portConfig;
+            return this;
+        }
+
+        /**
+         * @param portConfig Property key is the interface(s) name (e.g. &#34;eth1,eth2&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder portConfig(Map<String,DeviceprofileApPortConfigArgs> portConfig) {
+            return portConfig(Output.of(portConfig));
         }
 
         /**

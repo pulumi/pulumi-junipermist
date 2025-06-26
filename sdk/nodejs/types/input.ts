@@ -262,6 +262,199 @@ export namespace device {
         role?: pulumi.Input<string>;
     }
 
+    export interface ApPortConfig {
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * Optional dynamic vlan
+         */
+        dynamicVlan?: pulumi.Input<inputs.device.ApPortConfigDynamicVlan>;
+        enableMacAuth?: pulumi.Input<boolean>;
+        /**
+         * enum: 
+         *   * `all`: local breakout, All VLANs
+         *   * `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
+         *   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
+         *   * `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
+         *   * `wxtunnel`': central breakout to an Org WxTunnel (requires `wxtunnelId`)
+         */
+        forwarding?: pulumi.Input<string>;
+        /**
+         * When `true`, we'll do dot1x then mac_auth. enable this to prefer mac_auth
+         */
+        macAuthPreferred?: pulumi.Input<boolean>;
+        /**
+         * if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+         */
+        macAuthProtocol?: pulumi.Input<string>;
+        mistNac?: pulumi.Input<inputs.device.ApPortConfigMistNac>;
+        /**
+         * If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
+         */
+        mxTunnelId?: pulumi.Input<string>;
+        /**
+         * If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+         */
+        mxtunnelName?: pulumi.Input<string>;
+        /**
+         * When doing port auth. enum: `dot1x`, `none`
+         */
+        portAuth?: pulumi.Input<string>;
+        /**
+         * If `forwarding`==`limited`
+         */
+        portVlanId?: pulumi.Input<number>;
+        /**
+         * Junos Radius config
+         */
+        radiusConfig?: pulumi.Input<inputs.device.ApPortConfigRadiusConfig>;
+        /**
+         * RadSec settings
+         */
+        radsec?: pulumi.Input<inputs.device.ApPortConfigRadsec>;
+        /**
+         * Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+         *   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+         *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+         */
+        vlanId?: pulumi.Input<number>;
+        /**
+         * If `forwarding`==`limited`
+         */
+        vlanIds?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+         */
+        wxtunnelId?: pulumi.Input<string>;
+        /**
+         * If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+         */
+        wxtunnelRemoteId?: pulumi.Input<string>;
+    }
+
+    export interface ApPortConfigDynamicVlan {
+        defaultVlanId?: pulumi.Input<number>;
+        enabled?: pulumi.Input<boolean>;
+        type?: pulumi.Input<string>;
+        vlans?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface ApPortConfigMistNac {
+        /**
+         * When enabled:
+         *   * `authServers` is ignored
+         *   * `acctServers` is ignored
+         *   * `auth_servers_*` are ignored
+         *   * `coaServers` is ignored
+         *   * `radsec` is ignored
+         *   * `coaEnabled` is assumed
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface ApPortConfigRadiusConfig {
+        /**
+         * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+         */
+        acctInterimInterval?: pulumi.Input<number>;
+        acctServers?: pulumi.Input<pulumi.Input<inputs.device.ApPortConfigRadiusConfigAcctServer>[]>;
+        authServers?: pulumi.Input<pulumi.Input<inputs.device.ApPortConfigRadiusConfigAuthServer>[]>;
+        /**
+         * radius auth session retries
+         */
+        authServersRetries?: pulumi.Input<number>;
+        /**
+         * radius auth session timeout
+         */
+        authServersTimeout?: pulumi.Input<number>;
+        coaEnabled?: pulumi.Input<boolean>;
+        coaPort?: pulumi.Input<number>;
+        /**
+         * use `network`or `sourceIp`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * use `network`or `sourceIp`
+         */
+        sourceIp?: pulumi.Input<string>;
+    }
+
+    export interface ApPortConfigRadiusConfigAcctServer {
+        /**
+         * IP/ hostname of RADIUS server
+         */
+        host: pulumi.Input<string>;
+        keywrapEnabled?: pulumi.Input<boolean>;
+        /**
+         * enum: `ascii`, `hex`
+         */
+        keywrapFormat?: pulumi.Input<string>;
+        keywrapKek?: pulumi.Input<string>;
+        keywrapMack?: pulumi.Input<string>;
+        port?: pulumi.Input<string>;
+        /**
+         * Secret of RADIUS server
+         */
+        secret: pulumi.Input<string>;
+    }
+
+    export interface ApPortConfigRadiusConfigAuthServer {
+        /**
+         * IP/ hostname of RADIUS server
+         */
+        host: pulumi.Input<string>;
+        keywrapEnabled?: pulumi.Input<boolean>;
+        /**
+         * enum: `ascii`, `hex`
+         */
+        keywrapFormat?: pulumi.Input<string>;
+        keywrapKek?: pulumi.Input<string>;
+        keywrapMack?: pulumi.Input<string>;
+        port?: pulumi.Input<string>;
+        /**
+         * Whether to require Message-Authenticator in requests
+         */
+        requireMessageAuthenticator?: pulumi.Input<boolean>;
+        /**
+         * Secret of RADIUS server
+         */
+        secret: pulumi.Input<string>;
+    }
+
+    export interface ApPortConfigRadsec {
+        coaEnabled?: pulumi.Input<boolean>;
+        enabled?: pulumi.Input<boolean>;
+        idleTimeout?: pulumi.Input<string>;
+        /**
+         * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+         */
+        mxclusterIds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+         */
+        proxyHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+         */
+        serverName?: pulumi.Input<string>;
+        /**
+         * List of RadSec Servers. Only if not Mist Edge.
+         */
+        servers?: pulumi.Input<pulumi.Input<inputs.device.ApPortConfigRadsecServer>[]>;
+        /**
+         * use mxedge(s) as RadSec Proxy
+         */
+        useMxedge?: pulumi.Input<boolean>;
+        /**
+         * To use Site mxedges when this WLAN does not use mxtunnel
+         */
+        useSiteMxedge?: pulumi.Input<boolean>;
+    }
+
+    export interface ApPortConfigRadsecServer {
+        host?: pulumi.Input<string>;
+        port?: pulumi.Input<number>;
+    }
+
     export interface ApPwrConfig {
         /**
          * Additional power to request during negotiating with PSE over PoE, in mW
@@ -311,6 +504,10 @@ export namespace device {
          * Radio Band AP settings
          */
         band6?: pulumi.Input<inputs.device.ApRadioConfigBand6>;
+        /**
+         * Let RRM control everything, only the `channels` and `antGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+         */
+        fullAutomaticRrm?: pulumi.Input<boolean>;
         /**
          * To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
          */
@@ -3602,6 +3799,199 @@ export namespace org {
         role?: pulumi.Input<string>;
     }
 
+    export interface DeviceprofileApPortConfig {
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * Optional dynamic vlan
+         */
+        dynamicVlan?: pulumi.Input<inputs.org.DeviceprofileApPortConfigDynamicVlan>;
+        enableMacAuth?: pulumi.Input<boolean>;
+        /**
+         * enum: 
+         *   * `all`: local breakout, All VLANs
+         *   * `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
+         *   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
+         *   * `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
+         *   * `wxtunnel`': central breakout to an Org WxTunnel (requires `wxtunnelId`)
+         */
+        forwarding?: pulumi.Input<string>;
+        /**
+         * When `true`, we'll do dot1x then mac_auth. enable this to prefer mac_auth
+         */
+        macAuthPreferred?: pulumi.Input<boolean>;
+        /**
+         * if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+         */
+        macAuthProtocol?: pulumi.Input<string>;
+        mistNac?: pulumi.Input<inputs.org.DeviceprofileApPortConfigMistNac>;
+        /**
+         * If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
+         */
+        mxTunnelId?: pulumi.Input<string>;
+        /**
+         * If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+         */
+        mxtunnelName?: pulumi.Input<string>;
+        /**
+         * When doing port auth. enum: `dot1x`, `none`
+         */
+        portAuth?: pulumi.Input<string>;
+        /**
+         * If `forwarding`==`limited`
+         */
+        portVlanId?: pulumi.Input<number>;
+        /**
+         * Junos Radius config
+         */
+        radiusConfig?: pulumi.Input<inputs.org.DeviceprofileApPortConfigRadiusConfig>;
+        /**
+         * RadSec settings
+         */
+        radsec?: pulumi.Input<inputs.org.DeviceprofileApPortConfigRadsec>;
+        /**
+         * Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+         *   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+         *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
+         */
+        vlanId?: pulumi.Input<number>;
+        /**
+         * If `forwarding`==`limited`
+         */
+        vlanIds?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+         */
+        wxtunnelId?: pulumi.Input<string>;
+        /**
+         * If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+         */
+        wxtunnelRemoteId?: pulumi.Input<string>;
+    }
+
+    export interface DeviceprofileApPortConfigDynamicVlan {
+        defaultVlanId?: pulumi.Input<number>;
+        enabled?: pulumi.Input<boolean>;
+        type?: pulumi.Input<string>;
+        vlans?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface DeviceprofileApPortConfigMistNac {
+        /**
+         * When enabled:
+         *   * `authServers` is ignored
+         *   * `acctServers` is ignored
+         *   * `auth_servers_*` are ignored
+         *   * `coaServers` is ignored
+         *   * `radsec` is ignored
+         *   * `coaEnabled` is assumed
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface DeviceprofileApPortConfigRadiusConfig {
+        /**
+         * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+         */
+        acctInterimInterval?: pulumi.Input<number>;
+        acctServers?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileApPortConfigRadiusConfigAcctServer>[]>;
+        authServers?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileApPortConfigRadiusConfigAuthServer>[]>;
+        /**
+         * radius auth session retries
+         */
+        authServersRetries?: pulumi.Input<number>;
+        /**
+         * radius auth session timeout
+         */
+        authServersTimeout?: pulumi.Input<number>;
+        coaEnabled?: pulumi.Input<boolean>;
+        coaPort?: pulumi.Input<number>;
+        /**
+         * use `network`or `sourceIp`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * use `network`or `sourceIp`
+         */
+        sourceIp?: pulumi.Input<string>;
+    }
+
+    export interface DeviceprofileApPortConfigRadiusConfigAcctServer {
+        /**
+         * IP/ hostname of RADIUS server
+         */
+        host: pulumi.Input<string>;
+        keywrapEnabled?: pulumi.Input<boolean>;
+        /**
+         * enum: `ascii`, `hex`
+         */
+        keywrapFormat?: pulumi.Input<string>;
+        keywrapKek?: pulumi.Input<string>;
+        keywrapMack?: pulumi.Input<string>;
+        port?: pulumi.Input<string>;
+        /**
+         * Secret of RADIUS server
+         */
+        secret: pulumi.Input<string>;
+    }
+
+    export interface DeviceprofileApPortConfigRadiusConfigAuthServer {
+        /**
+         * IP/ hostname of RADIUS server
+         */
+        host: pulumi.Input<string>;
+        keywrapEnabled?: pulumi.Input<boolean>;
+        /**
+         * enum: `ascii`, `hex`
+         */
+        keywrapFormat?: pulumi.Input<string>;
+        keywrapKek?: pulumi.Input<string>;
+        keywrapMack?: pulumi.Input<string>;
+        port?: pulumi.Input<string>;
+        /**
+         * Whether to require Message-Authenticator in requests
+         */
+        requireMessageAuthenticator?: pulumi.Input<boolean>;
+        /**
+         * Secret of RADIUS server
+         */
+        secret: pulumi.Input<string>;
+    }
+
+    export interface DeviceprofileApPortConfigRadsec {
+        coaEnabled?: pulumi.Input<boolean>;
+        enabled?: pulumi.Input<boolean>;
+        idleTimeout?: pulumi.Input<string>;
+        /**
+         * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+         */
+        mxclusterIds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+         */
+        proxyHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+         */
+        serverName?: pulumi.Input<string>;
+        /**
+         * List of RadSec Servers. Only if not Mist Edge.
+         */
+        servers?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileApPortConfigRadsecServer>[]>;
+        /**
+         * use mxedge(s) as RadSec Proxy
+         */
+        useMxedge?: pulumi.Input<boolean>;
+        /**
+         * To use Site mxedges when this WLAN does not use mxtunnel
+         */
+        useSiteMxedge?: pulumi.Input<boolean>;
+    }
+
+    export interface DeviceprofileApPortConfigRadsecServer {
+        host?: pulumi.Input<string>;
+        port?: pulumi.Input<number>;
+    }
+
     export interface DeviceprofileApPwrConfig {
         /**
          * Additional power to request during negotiating with PSE over PoE, in mW
@@ -3651,6 +4041,10 @@ export namespace org {
          * Radio Band AP settings
          */
         band6?: pulumi.Input<inputs.org.DeviceprofileApRadioConfigBand6>;
+        /**
+         * Let RRM control everything, only the `channels` and `antGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+         */
+        fullAutomaticRrm?: pulumi.Input<boolean>;
         /**
          * To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
          */

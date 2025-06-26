@@ -64,6 +64,11 @@ public final class DeviceprofileApRadioConfig {
      */
     private @Nullable DeviceprofileApRadioConfigBand6 band6;
     /**
+     * @return Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+     * 
+     */
+    private @Nullable Boolean fullAutomaticRrm;
+    /**
      * @return To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
      * 
      */
@@ -142,6 +147,13 @@ public final class DeviceprofileApRadioConfig {
         return Optional.ofNullable(this.band6);
     }
     /**
+     * @return Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+     * 
+     */
+    public Optional<Boolean> fullAutomaticRrm() {
+        return Optional.ofNullable(this.fullAutomaticRrm);
+    }
+    /**
      * @return To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
      * 
      */
@@ -175,6 +187,7 @@ public final class DeviceprofileApRadioConfig {
         private @Nullable DeviceprofileApRadioConfigBand5 band5;
         private @Nullable DeviceprofileApRadioConfigBand5On24Radio band5On24Radio;
         private @Nullable DeviceprofileApRadioConfigBand6 band6;
+        private @Nullable Boolean fullAutomaticRrm;
         private @Nullable Boolean indoorUse;
         private @Nullable Boolean scanningEnabled;
         public Builder() {}
@@ -190,6 +203,7 @@ public final class DeviceprofileApRadioConfig {
     	      this.band5 = defaults.band5;
     	      this.band5On24Radio = defaults.band5On24Radio;
     	      this.band6 = defaults.band6;
+    	      this.fullAutomaticRrm = defaults.fullAutomaticRrm;
     	      this.indoorUse = defaults.indoorUse;
     	      this.scanningEnabled = defaults.scanningEnabled;
         }
@@ -255,6 +269,12 @@ public final class DeviceprofileApRadioConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder fullAutomaticRrm(@Nullable Boolean fullAutomaticRrm) {
+
+            this.fullAutomaticRrm = fullAutomaticRrm;
+            return this;
+        }
+        @CustomType.Setter
         public Builder indoorUse(@Nullable Boolean indoorUse) {
 
             this.indoorUse = indoorUse;
@@ -278,6 +298,7 @@ public final class DeviceprofileApRadioConfig {
             _resultValue.band5 = band5;
             _resultValue.band5On24Radio = band5On24Radio;
             _resultValue.band6 = band6;
+            _resultValue.fullAutomaticRrm = fullAutomaticRrm;
             _resultValue.indoorUse = indoorUse;
             _resultValue.scanningEnabled = scanningEnabled;
             return _resultValue;

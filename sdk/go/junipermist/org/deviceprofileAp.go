@@ -86,6 +86,8 @@ type DeviceprofileAp struct {
 	OrgId      pulumi.StringOutput          `pulumi:"orgId"`
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolOutput `pulumi:"poePassthrough"`
+	// Property key is the interface(s) name (e.g. "eth1,eth2")
+	PortConfig DeviceprofileApPortConfigMapOutput `pulumi:"portConfig"`
 	// Power related configs
 	PwrConfig DeviceprofileApPwrConfigPtrOutput `pulumi:"pwrConfig"`
 	// Radio AP settings
@@ -160,6 +162,8 @@ type deviceprofileApState struct {
 	OrgId      *string              `pulumi:"orgId"`
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough *bool `pulumi:"poePassthrough"`
+	// Property key is the interface(s) name (e.g. "eth1,eth2")
+	PortConfig map[string]DeviceprofileApPortConfig `pulumi:"portConfig"`
 	// Power related configs
 	PwrConfig *DeviceprofileApPwrConfig `pulumi:"pwrConfig"`
 	// Radio AP settings
@@ -202,6 +206,8 @@ type DeviceprofileApState struct {
 	OrgId      pulumi.StringPtrInput
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolPtrInput
+	// Property key is the interface(s) name (e.g. "eth1,eth2")
+	PortConfig DeviceprofileApPortConfigMapInput
 	// Power related configs
 	PwrConfig DeviceprofileApPwrConfigPtrInput
 	// Radio AP settings
@@ -248,6 +254,8 @@ type deviceprofileApArgs struct {
 	OrgId      string               `pulumi:"orgId"`
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough *bool `pulumi:"poePassthrough"`
+	// Property key is the interface(s) name (e.g. "eth1,eth2")
+	PortConfig map[string]DeviceprofileApPortConfig `pulumi:"portConfig"`
 	// Power related configs
 	PwrConfig *DeviceprofileApPwrConfig `pulumi:"pwrConfig"`
 	// Radio AP settings
@@ -289,6 +297,8 @@ type DeviceprofileApArgs struct {
 	OrgId      pulumi.StringInput
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolPtrInput
+	// Property key is the interface(s) name (e.g. "eth1,eth2")
+	PortConfig DeviceprofileApPortConfigMapInput
 	// Power related configs
 	PwrConfig DeviceprofileApPwrConfigPtrInput
 	// Radio AP settings
@@ -458,6 +468,11 @@ func (o DeviceprofileApOutput) OrgId() pulumi.StringOutput {
 // Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 func (o DeviceprofileApOutput) PoePassthrough() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) pulumi.BoolOutput { return v.PoePassthrough }).(pulumi.BoolOutput)
+}
+
+// Property key is the interface(s) name (e.g. "eth1,eth2")
+func (o DeviceprofileApOutput) PortConfig() DeviceprofileApPortConfigMapOutput {
+	return o.ApplyT(func(v *DeviceprofileAp) DeviceprofileApPortConfigMapOutput { return v.PortConfig }).(DeviceprofileApPortConfigMapOutput)
 }
 
 // Power related configs
