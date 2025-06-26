@@ -37,6 +37,7 @@ class DeviceprofileApArgs:
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  poe_passthrough: Optional[pulumi.Input[builtins.bool]] = None,
+                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]]] = None,
                  pwr_config: Optional[pulumi.Input['DeviceprofileApPwrConfigArgs']] = None,
                  radio_config: Optional[pulumi.Input['DeviceprofileApRadioConfigArgs']] = None,
                  site_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -55,6 +56,7 @@ class DeviceprofileApArgs:
         :param pulumi.Input['DeviceprofileApLedArgs'] led: LED AP settings
         :param pulumi.Input['DeviceprofileApMeshArgs'] mesh: Mesh AP settings
         :param pulumi.Input[builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]] port_config: Property key is the interface(s) name (e.g. "eth1,eth2")
         :param pulumi.Input['DeviceprofileApPwrConfigArgs'] pwr_config: Power related configs
         :param pulumi.Input['DeviceprofileApRadioConfigArgs'] radio_config: Radio AP settings
         :param pulumi.Input['DeviceprofileApUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
@@ -91,6 +93,8 @@ class DeviceprofileApArgs:
             pulumi.set(__self__, "ntp_servers", ntp_servers)
         if poe_passthrough is not None:
             pulumi.set(__self__, "poe_passthrough", poe_passthrough)
+        if port_config is not None:
+            pulumi.set(__self__, "port_config", port_config)
         if pwr_config is not None:
             pulumi.set(__self__, "pwr_config", pwr_config)
         if radio_config is not None:
@@ -270,6 +274,18 @@ class DeviceprofileApArgs:
         pulumi.set(self, "poe_passthrough", value)
 
     @property
+    @pulumi.getter(name="portConfig")
+    def port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]]]:
+        """
+        Property key is the interface(s) name (e.g. "eth1,eth2")
+        """
+        return pulumi.get(self, "port_config")
+
+    @port_config.setter
+    def port_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]]]):
+        pulumi.set(self, "port_config", value)
+
+    @property
     @pulumi.getter(name="pwrConfig")
     def pwr_config(self) -> Optional[pulumi.Input['DeviceprofileApPwrConfigArgs']]:
         """
@@ -358,6 +374,7 @@ class _DeviceprofileApState:
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  org_id: Optional[pulumi.Input[builtins.str]] = None,
                  poe_passthrough: Optional[pulumi.Input[builtins.bool]] = None,
+                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]]] = None,
                  pwr_config: Optional[pulumi.Input['DeviceprofileApPwrConfigArgs']] = None,
                  radio_config: Optional[pulumi.Input['DeviceprofileApRadioConfigArgs']] = None,
                  site_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -377,6 +394,7 @@ class _DeviceprofileApState:
         :param pulumi.Input['DeviceprofileApLedArgs'] led: LED AP settings
         :param pulumi.Input['DeviceprofileApMeshArgs'] mesh: Mesh AP settings
         :param pulumi.Input[builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]] port_config: Property key is the interface(s) name (e.g. "eth1,eth2")
         :param pulumi.Input['DeviceprofileApPwrConfigArgs'] pwr_config: Power related configs
         :param pulumi.Input['DeviceprofileApRadioConfigArgs'] radio_config: Radio AP settings
         :param pulumi.Input[builtins.str] type: Device Type. enum: `ap`
@@ -415,6 +433,8 @@ class _DeviceprofileApState:
             pulumi.set(__self__, "org_id", org_id)
         if poe_passthrough is not None:
             pulumi.set(__self__, "poe_passthrough", poe_passthrough)
+        if port_config is not None:
+            pulumi.set(__self__, "port_config", port_config)
         if pwr_config is not None:
             pulumi.set(__self__, "pwr_config", pwr_config)
         if radio_config is not None:
@@ -596,6 +616,18 @@ class _DeviceprofileApState:
         pulumi.set(self, "poe_passthrough", value)
 
     @property
+    @pulumi.getter(name="portConfig")
+    def port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]]]:
+        """
+        Property key is the interface(s) name (e.g. "eth1,eth2")
+        """
+        return pulumi.get(self, "port_config")
+
+    @port_config.setter
+    def port_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]]]):
+        pulumi.set(self, "port_config", value)
+
+    @property
     @pulumi.getter(name="pwrConfig")
     def pwr_config(self) -> Optional[pulumi.Input['DeviceprofileApPwrConfigArgs']]:
         """
@@ -699,6 +731,7 @@ class DeviceprofileAp(pulumi.CustomResource):
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  org_id: Optional[pulumi.Input[builtins.str]] = None,
                  poe_passthrough: Optional[pulumi.Input[builtins.bool]] = None,
+                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict']]]]] = None,
                  pwr_config: Optional[pulumi.Input[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict']]] = None,
                  radio_config: Optional[pulumi.Input[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict']]] = None,
                  site_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -750,6 +783,7 @@ class DeviceprofileAp(pulumi.CustomResource):
         :param pulumi.Input[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict']] led: LED AP settings
         :param pulumi.Input[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict']] mesh: Mesh AP settings
         :param pulumi.Input[builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict']]]] port_config: Property key is the interface(s) name (e.g. "eth1,eth2")
         :param pulumi.Input[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict']] pwr_config: Power related configs
         :param pulumi.Input[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict']] radio_config: Radio AP settings
         :param pulumi.Input[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
@@ -825,6 +859,7 @@ class DeviceprofileAp(pulumi.CustomResource):
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  org_id: Optional[pulumi.Input[builtins.str]] = None,
                  poe_passthrough: Optional[pulumi.Input[builtins.bool]] = None,
+                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict']]]]] = None,
                  pwr_config: Optional[pulumi.Input[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict']]] = None,
                  radio_config: Optional[pulumi.Input[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict']]] = None,
                  site_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -857,6 +892,7 @@ class DeviceprofileAp(pulumi.CustomResource):
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["poe_passthrough"] = poe_passthrough
+            __props__.__dict__["port_config"] = port_config
             __props__.__dict__["pwr_config"] = pwr_config
             __props__.__dict__["radio_config"] = radio_config
             __props__.__dict__["site_id"] = site_id
@@ -889,6 +925,7 @@ class DeviceprofileAp(pulumi.CustomResource):
             ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             org_id: Optional[pulumi.Input[builtins.str]] = None,
             poe_passthrough: Optional[pulumi.Input[builtins.bool]] = None,
+            port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict']]]]] = None,
             pwr_config: Optional[pulumi.Input[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict']]] = None,
             radio_config: Optional[pulumi.Input[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict']]] = None,
             site_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -913,6 +950,7 @@ class DeviceprofileAp(pulumi.CustomResource):
         :param pulumi.Input[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict']] led: LED AP settings
         :param pulumi.Input[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict']] mesh: Mesh AP settings
         :param pulumi.Input[builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict']]]] port_config: Property key is the interface(s) name (e.g. "eth1,eth2")
         :param pulumi.Input[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict']] pwr_config: Power related configs
         :param pulumi.Input[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict']] radio_config: Radio AP settings
         :param pulumi.Input[builtins.str] type: Device Type. enum: `ap`
@@ -940,6 +978,7 @@ class DeviceprofileAp(pulumi.CustomResource):
         __props__.__dict__["ntp_servers"] = ntp_servers
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["poe_passthrough"] = poe_passthrough
+        __props__.__dict__["port_config"] = port_config
         __props__.__dict__["pwr_config"] = pwr_config
         __props__.__dict__["radio_config"] = radio_config
         __props__.__dict__["site_id"] = site_id
@@ -1053,6 +1092,14 @@ class DeviceprofileAp(pulumi.CustomResource):
         Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
         """
         return pulumi.get(self, "poe_passthrough")
+
+    @property
+    @pulumi.getter(name="portConfig")
+    def port_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.DeviceprofileApPortConfig']]]:
+        """
+        Property key is the interface(s) name (e.g. "eth1,eth2")
+        """
+        return pulumi.get(self, "port_config")
 
     @property
     @pulumi.getter(name="pwrConfig")

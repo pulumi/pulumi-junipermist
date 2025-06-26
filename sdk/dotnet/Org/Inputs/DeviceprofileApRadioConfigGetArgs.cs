@@ -70,6 +70,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<Inputs.DeviceprofileApRadioConfigBand6GetArgs>? Band6 { get; set; }
 
         /// <summary>
+        /// Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+        /// </summary>
+        [Input("fullAutomaticRrm")]
+        public Input<bool>? FullAutomaticRrm { get; set; }
+
+        /// <summary>
         /// To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
         /// </summary>
         [Input("indoorUse")]

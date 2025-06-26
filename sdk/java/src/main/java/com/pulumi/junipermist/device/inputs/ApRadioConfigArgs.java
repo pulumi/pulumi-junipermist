@@ -164,6 +164,21 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+     * 
+     */
+    @Import(name="fullAutomaticRrm")
+    private @Nullable Output<Boolean> fullAutomaticRrm;
+
+    /**
+     * @return Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+     * 
+     */
+    public Optional<Output<Boolean>> fullAutomaticRrm() {
+        return Optional.ofNullable(this.fullAutomaticRrm);
+    }
+
+    /**
      * To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
      * 
      */
@@ -206,6 +221,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         this.band5 = $.band5;
         this.band5On24Radio = $.band5On24Radio;
         this.band6 = $.band6;
+        this.fullAutomaticRrm = $.fullAutomaticRrm;
         this.indoorUse = $.indoorUse;
         this.scanningEnabled = $.scanningEnabled;
     }
@@ -424,6 +440,27 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder band6(ApRadioConfigBand6Args band6) {
             return band6(Output.of(band6));
+        }
+
+        /**
+         * @param fullAutomaticRrm Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fullAutomaticRrm(@Nullable Output<Boolean> fullAutomaticRrm) {
+            $.fullAutomaticRrm = fullAutomaticRrm;
+            return this;
+        }
+
+        /**
+         * @param fullAutomaticRrm Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fullAutomaticRrm(Boolean fullAutomaticRrm) {
+            return fullAutomaticRrm(Output.of(fullAutomaticRrm));
         }
 
         /**

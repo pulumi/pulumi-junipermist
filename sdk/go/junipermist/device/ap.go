@@ -75,6 +75,9 @@ type Ap struct {
 	Orientation pulumi.IntPtrOutput `pulumi:"orientation"`
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolOutput `pulumi:"poePassthrough"`
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+	// predecence over switchConfig (deprecated)
+	PortConfig ApPortConfigMapOutput `pulumi:"portConfig"`
 	// Power related configs
 	PwrConfig ApPwrConfigPtrOutput `pulumi:"pwrConfig"`
 	// Radio AP settings
@@ -180,6 +183,9 @@ type apState struct {
 	Orientation *int `pulumi:"orientation"`
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough *bool `pulumi:"poePassthrough"`
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+	// predecence over switchConfig (deprecated)
+	PortConfig map[string]ApPortConfig `pulumi:"portConfig"`
 	// Power related configs
 	PwrConfig *ApPwrConfig `pulumi:"pwrConfig"`
 	// Radio AP settings
@@ -250,6 +256,9 @@ type ApState struct {
 	Orientation pulumi.IntPtrInput
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolPtrInput
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+	// predecence over switchConfig (deprecated)
+	PortConfig ApPortConfigMapInput
 	// Power related configs
 	PwrConfig ApPwrConfigPtrInput
 	// Radio AP settings
@@ -316,6 +325,9 @@ type apArgs struct {
 	Orientation *int `pulumi:"orientation"`
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough *bool `pulumi:"poePassthrough"`
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+	// predecence over switchConfig (deprecated)
+	PortConfig map[string]ApPortConfig `pulumi:"portConfig"`
 	// Power related configs
 	PwrConfig *ApPwrConfig `pulumi:"pwrConfig"`
 	// Radio AP settings
@@ -375,6 +387,9 @@ type ApArgs struct {
 	Orientation pulumi.IntPtrInput
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolPtrInput
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+	// predecence over switchConfig (deprecated)
+	PortConfig ApPortConfigMapInput
 	// Power related configs
 	PwrConfig ApPwrConfigPtrInput
 	// Radio AP settings
@@ -612,6 +627,12 @@ func (o ApOutput) Orientation() pulumi.IntPtrOutput {
 // Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 func (o ApOutput) PoePassthrough() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Ap) pulumi.BoolOutput { return v.PoePassthrough }).(pulumi.BoolOutput)
+}
+
+// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+// predecence over switchConfig (deprecated)
+func (o ApOutput) PortConfig() ApPortConfigMapOutput {
+	return o.ApplyT(func(v *Ap) ApPortConfigMapOutput { return v.PortConfig }).(ApPortConfigMapOutput)
 }
 
 // Power related configs

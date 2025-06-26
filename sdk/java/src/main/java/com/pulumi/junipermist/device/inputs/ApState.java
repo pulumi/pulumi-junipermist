@@ -14,6 +14,7 @@ import com.pulumi.junipermist.device.inputs.ApIpConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApLacpConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApLedArgs;
 import com.pulumi.junipermist.device.inputs.ApMeshArgs;
+import com.pulumi.junipermist.device.inputs.ApPortConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApPwrConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApRadioConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApUplinkPortConfigArgs;
@@ -381,6 +382,23 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+     * predecence over switch_config (deprecated)
+     * 
+     */
+    @Import(name="portConfig")
+    private @Nullable Output<Map<String,ApPortConfigArgs>> portConfig;
+
+    /**
+     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+     * predecence over switch_config (deprecated)
+     * 
+     */
+    public Optional<Output<Map<String,ApPortConfigArgs>>> portConfig() {
+        return Optional.ofNullable(this.portConfig);
+    }
+
+    /**
      * Power related configs
      * 
      */
@@ -556,6 +574,7 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
         this.orgId = $.orgId;
         this.orientation = $.orientation;
         this.poePassthrough = $.poePassthrough;
+        this.portConfig = $.portConfig;
         this.pwrConfig = $.pwrConfig;
         this.radioConfig = $.radioConfig;
         this.serial = $.serial;
@@ -1065,6 +1084,29 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder poePassthrough(Boolean poePassthrough) {
             return poePassthrough(Output.of(poePassthrough));
+        }
+
+        /**
+         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+         * predecence over switch_config (deprecated)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder portConfig(@Nullable Output<Map<String,ApPortConfigArgs>> portConfig) {
+            $.portConfig = portConfig;
+            return this;
+        }
+
+        /**
+         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+         * predecence over switch_config (deprecated)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder portConfig(Map<String,ApPortConfigArgs> portConfig) {
+            return portConfig(Output.of(portConfig));
         }
 
         /**

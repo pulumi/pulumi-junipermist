@@ -133,6 +133,11 @@ export class Ap extends pulumi.CustomResource {
      */
     public readonly poePassthrough!: pulumi.Output<boolean>;
     /**
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+     * predecence over switchConfig (deprecated)
+     */
+    public readonly portConfig!: pulumi.Output<{[key: string]: outputs.device.ApPortConfig} | undefined>;
+    /**
      * Power related configs
      */
     public readonly pwrConfig!: pulumi.Output<outputs.device.ApPwrConfig | undefined>;
@@ -213,6 +218,7 @@ export class Ap extends pulumi.CustomResource {
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["orientation"] = state ? state.orientation : undefined;
             resourceInputs["poePassthrough"] = state ? state.poePassthrough : undefined;
+            resourceInputs["portConfig"] = state ? state.portConfig : undefined;
             resourceInputs["pwrConfig"] = state ? state.pwrConfig : undefined;
             resourceInputs["radioConfig"] = state ? state.radioConfig : undefined;
             resourceInputs["serial"] = state ? state.serial : undefined;
@@ -254,6 +260,7 @@ export class Ap extends pulumi.CustomResource {
             resourceInputs["ntpServers"] = args ? args.ntpServers : undefined;
             resourceInputs["orientation"] = args ? args.orientation : undefined;
             resourceInputs["poePassthrough"] = args ? args.poePassthrough : undefined;
+            resourceInputs["portConfig"] = args ? args.portConfig : undefined;
             resourceInputs["pwrConfig"] = args ? args.pwrConfig : undefined;
             resourceInputs["radioConfig"] = args ? args.radioConfig : undefined;
             resourceInputs["siteId"] = args ? args.siteId : undefined;
@@ -363,6 +370,11 @@ export interface ApState {
      * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      */
     poePassthrough?: pulumi.Input<boolean>;
+    /**
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+     * predecence over switchConfig (deprecated)
+     */
+    portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.ApPortConfig>}>;
     /**
      * Power related configs
      */
@@ -478,6 +490,11 @@ export interface ApArgs {
      * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      */
     poePassthrough?: pulumi.Input<boolean>;
+    /**
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+     * predecence over switchConfig (deprecated)
+     */
+    portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.ApPortConfig>}>;
     /**
      * Power related configs
      */

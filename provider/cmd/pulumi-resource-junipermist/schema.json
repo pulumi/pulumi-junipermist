@@ -476,6 +476,332 @@
                 }
             }
         },
+        "junipermist:device/ApPortConfig:ApPortConfig": {
+            "properties": {
+                "disabled": {
+                    "type": "boolean"
+                },
+                "dynamicVlan": {
+                    "$ref": "#/types/junipermist:device/ApPortConfigDynamicVlan:ApPortConfigDynamicVlan",
+                    "description": "Optional dynamic vlan\n"
+                },
+                "enableMacAuth": {
+                    "type": "boolean"
+                },
+                "forwarding": {
+                    "type": "string",
+                    "description": "enum: \n  * `all`: local breakout, All VLANs\n  * `limited`: local breakout, only the VLANs configured in `port_vlan_id` and `vlan_ids`\n  * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnel_id`)\n  * `site_mxedge`: central breakout to a Site Mist Edge (requires `mxtunnel_name`)\n  * `wxtunnel`': central breakout to an Org WxTunnel (requires `wxtunnel_id`)\n"
+                },
+                "macAuthPreferred": {
+                    "type": "boolean",
+                    "description": "When `true`, we'll do dot1x then mac_auth. enable this to prefer mac_auth\n"
+                },
+                "macAuthProtocol": {
+                    "type": "string",
+                    "description": "if `enable_mac_auth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`\n"
+                },
+                "mistNac": {
+                    "$ref": "#/types/junipermist:device/ApPortConfigMistNac:ApPortConfigMistNac"
+                },
+                "mxTunnelId": {
+                    "type": "string",
+                    "description": "If `forwarding`==`mxtunnel`, vlan_ids comes from mxtunnel\n"
+                },
+                "mxtunnelName": {
+                    "type": "string",
+                    "description": "If `forwarding`==`site_mxedge`, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)\n"
+                },
+                "portAuth": {
+                    "type": "string",
+                    "description": "When doing port auth. enum: `dot1x`, `none`\n"
+                },
+                "portVlanId": {
+                    "type": "integer",
+                    "description": "If `forwarding`==`limited`\n"
+                },
+                "radiusConfig": {
+                    "$ref": "#/types/junipermist:device/ApPortConfigRadiusConfig:ApPortConfigRadiusConfig",
+                    "description": "Junos Radius config\n"
+                },
+                "radsec": {
+                    "$ref": "#/types/junipermist:device/ApPortConfigRadsec:ApPortConfigRadsec",
+                    "description": "RadSec settings\n"
+                },
+                "vlanId": {
+                    "type": "integer",
+                    "description": "Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `site_mxedge`.\n  * if vlan_id is not specified then it will use first one in vlan_ids[] of the mxtunnel.\n  * if forwarding == site_mxedge, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)\n"
+                },
+                "vlanIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "If `forwarding`==`limited`\n"
+                },
+                "wxtunnelId": {
+                    "type": "string",
+                    "description": "If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session\n"
+                },
+                "wxtunnelRemoteId": {
+                    "type": "string",
+                    "description": "If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "disabled",
+                        "enableMacAuth",
+                        "forwarding",
+                        "macAuthPreferred",
+                        "macAuthProtocol",
+                        "mxTunnelId",
+                        "mxtunnelName",
+                        "portAuth",
+                        "wxtunnelId",
+                        "wxtunnelRemoteId"
+                    ]
+                }
+            }
+        },
+        "junipermist:device/ApPortConfigDynamicVlan:ApPortConfigDynamicVlan": {
+            "properties": {
+                "defaultVlanId": {
+                    "type": "integer"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "vlans": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:device/ApPortConfigMistNac:ApPortConfigMistNac": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "When enabled:\n  * `auth_servers` is ignored\n  * `acct_servers` is ignored\n  * `auth_servers_*` are ignored\n  * `coa_servers` is ignored\n  * `radsec` is ignored\n  * `coa_enabled` is assumed\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "junipermist:device/ApPortConfigRadiusConfig:ApPortConfigRadiusConfig": {
+            "properties": {
+                "acctInterimInterval": {
+                    "type": "integer",
+                    "description": "How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled\n"
+                },
+                "acctServers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/junipermist:device/ApPortConfigRadiusConfigAcctServer:ApPortConfigRadiusConfigAcctServer"
+                    }
+                },
+                "authServers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/junipermist:device/ApPortConfigRadiusConfigAuthServer:ApPortConfigRadiusConfigAuthServer"
+                    }
+                },
+                "authServersRetries": {
+                    "type": "integer",
+                    "description": "radius auth session retries\n"
+                },
+                "authServersTimeout": {
+                    "type": "integer",
+                    "description": "radius auth session timeout\n"
+                },
+                "coaEnabled": {
+                    "type": "boolean"
+                },
+                "coaPort": {
+                    "type": "integer"
+                },
+                "network": {
+                    "type": "string",
+                    "description": "use `network`or `source_ip`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip\n"
+                },
+                "sourceIp": {
+                    "type": "string",
+                    "description": "use `network`or `source_ip`\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "acctInterimInterval",
+                        "authServersRetries",
+                        "authServersTimeout",
+                        "coaEnabled",
+                        "coaPort"
+                    ]
+                }
+            }
+        },
+        "junipermist:device/ApPortConfigRadiusConfigAcctServer:ApPortConfigRadiusConfigAcctServer": {
+            "properties": {
+                "host": {
+                    "type": "string",
+                    "description": "IP/ hostname of RADIUS server\n"
+                },
+                "keywrapEnabled": {
+                    "type": "boolean"
+                },
+                "keywrapFormat": {
+                    "type": "string",
+                    "description": "enum: `ascii`, `hex`\n"
+                },
+                "keywrapKek": {
+                    "type": "string"
+                },
+                "keywrapMack": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "string"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "Secret of RADIUS server\n",
+                    "secret": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "host",
+                "secret"
+            ]
+        },
+        "junipermist:device/ApPortConfigRadiusConfigAuthServer:ApPortConfigRadiusConfigAuthServer": {
+            "properties": {
+                "host": {
+                    "type": "string",
+                    "description": "IP/ hostname of RADIUS server\n"
+                },
+                "keywrapEnabled": {
+                    "type": "boolean"
+                },
+                "keywrapFormat": {
+                    "type": "string",
+                    "description": "enum: `ascii`, `hex`\n"
+                },
+                "keywrapKek": {
+                    "type": "string"
+                },
+                "keywrapMack": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "string"
+                },
+                "requireMessageAuthenticator": {
+                    "type": "boolean",
+                    "description": "Whether to require Message-Authenticator in requests\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "Secret of RADIUS server\n",
+                    "secret": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "host",
+                "secret"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "host",
+                        "requireMessageAuthenticator",
+                        "secret"
+                    ]
+                }
+            }
+        },
+        "junipermist:device/ApPortConfigRadsec:ApPortConfigRadsec": {
+            "properties": {
+                "coaEnabled": {
+                    "type": "boolean"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "idleTimeout": {
+                    "type": "string"
+                },
+                "mxclusterIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids\n"
+                },
+                "proxyHosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`\n"
+                },
+                "serverName": {
+                    "type": "string",
+                    "description": "Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.\n"
+                },
+                "servers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/junipermist:device/ApPortConfigRadsecServer:ApPortConfigRadsecServer"
+                    },
+                    "description": "List of RadSec Servers. Only if not Mist Edge.\n"
+                },
+                "useMxedge": {
+                    "type": "boolean",
+                    "description": "use mxedge(s) as RadSec Proxy\n"
+                },
+                "useSiteMxedge": {
+                    "type": "boolean",
+                    "description": "To use Site mxedges when this WLAN does not use mxtunnel\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "coaEnabled",
+                        "useSiteMxedge"
+                    ]
+                }
+            }
+        },
+        "junipermist:device/ApPortConfigRadsecServer:ApPortConfigRadsecServer": {
+            "properties": {
+                "host": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "junipermist:device/ApPwrConfig:ApPwrConfig": {
             "properties": {
                 "base": {
@@ -538,6 +864,10 @@
                     "$ref": "#/types/junipermist:device/ApRadioConfigBand6:ApRadioConfigBand6",
                     "description": "Radio Band AP settings\n"
                 },
+                "fullAutomaticRrm": {
+                    "type": "boolean",
+                    "description": "Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)\n"
+                },
                 "indoorUse": {
                     "type": "boolean",
                     "description": "To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap\n"
@@ -547,7 +877,14 @@
                     "description": "Whether scanning radio is enabled\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "fullAutomaticRrm"
+                    ]
+                }
+            }
         },
         "junipermist:device/ApRadioConfigBand24:ApRadioConfigBand24": {
             "properties": {
@@ -11893,6 +12230,332 @@
                 }
             }
         },
+        "junipermist:org/DeviceprofileApPortConfig:DeviceprofileApPortConfig": {
+            "properties": {
+                "disabled": {
+                    "type": "boolean"
+                },
+                "dynamicVlan": {
+                    "$ref": "#/types/junipermist:org/DeviceprofileApPortConfigDynamicVlan:DeviceprofileApPortConfigDynamicVlan",
+                    "description": "Optional dynamic vlan\n"
+                },
+                "enableMacAuth": {
+                    "type": "boolean"
+                },
+                "forwarding": {
+                    "type": "string",
+                    "description": "enum: \n  * `all`: local breakout, All VLANs\n  * `limited`: local breakout, only the VLANs configured in `port_vlan_id` and `vlan_ids`\n  * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnel_id`)\n  * `site_mxedge`: central breakout to a Site Mist Edge (requires `mxtunnel_name`)\n  * `wxtunnel`': central breakout to an Org WxTunnel (requires `wxtunnel_id`)\n"
+                },
+                "macAuthPreferred": {
+                    "type": "boolean",
+                    "description": "When `true`, we'll do dot1x then mac_auth. enable this to prefer mac_auth\n"
+                },
+                "macAuthProtocol": {
+                    "type": "string",
+                    "description": "if `enable_mac_auth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`\n"
+                },
+                "mistNac": {
+                    "$ref": "#/types/junipermist:org/DeviceprofileApPortConfigMistNac:DeviceprofileApPortConfigMistNac"
+                },
+                "mxTunnelId": {
+                    "type": "string",
+                    "description": "If `forwarding`==`mxtunnel`, vlan_ids comes from mxtunnel\n"
+                },
+                "mxtunnelName": {
+                    "type": "string",
+                    "description": "If `forwarding`==`site_mxedge`, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)\n"
+                },
+                "portAuth": {
+                    "type": "string",
+                    "description": "When doing port auth. enum: `dot1x`, `none`\n"
+                },
+                "portVlanId": {
+                    "type": "integer",
+                    "description": "If `forwarding`==`limited`\n"
+                },
+                "radiusConfig": {
+                    "$ref": "#/types/junipermist:org/DeviceprofileApPortConfigRadiusConfig:DeviceprofileApPortConfigRadiusConfig",
+                    "description": "Junos Radius config\n"
+                },
+                "radsec": {
+                    "$ref": "#/types/junipermist:org/DeviceprofileApPortConfigRadsec:DeviceprofileApPortConfigRadsec",
+                    "description": "RadSec settings\n"
+                },
+                "vlanId": {
+                    "type": "integer",
+                    "description": "Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `site_mxedge`.\n  * if vlan_id is not specified then it will use first one in vlan_ids[] of the mxtunnel.\n  * if forwarding == site_mxedge, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)\n"
+                },
+                "vlanIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "If `forwarding`==`limited`\n"
+                },
+                "wxtunnelId": {
+                    "type": "string",
+                    "description": "If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session\n"
+                },
+                "wxtunnelRemoteId": {
+                    "type": "string",
+                    "description": "If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "disabled",
+                        "enableMacAuth",
+                        "forwarding",
+                        "macAuthPreferred",
+                        "macAuthProtocol",
+                        "mxTunnelId",
+                        "mxtunnelName",
+                        "portAuth",
+                        "wxtunnelId",
+                        "wxtunnelRemoteId"
+                    ]
+                }
+            }
+        },
+        "junipermist:org/DeviceprofileApPortConfigDynamicVlan:DeviceprofileApPortConfigDynamicVlan": {
+            "properties": {
+                "defaultVlanId": {
+                    "type": "integer"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "vlans": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:org/DeviceprofileApPortConfigMistNac:DeviceprofileApPortConfigMistNac": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "When enabled:\n  * `auth_servers` is ignored\n  * `acct_servers` is ignored\n  * `auth_servers_*` are ignored\n  * `coa_servers` is ignored\n  * `radsec` is ignored\n  * `coa_enabled` is assumed\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "junipermist:org/DeviceprofileApPortConfigRadiusConfig:DeviceprofileApPortConfigRadiusConfig": {
+            "properties": {
+                "acctInterimInterval": {
+                    "type": "integer",
+                    "description": "How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled\n"
+                },
+                "acctServers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/junipermist:org/DeviceprofileApPortConfigRadiusConfigAcctServer:DeviceprofileApPortConfigRadiusConfigAcctServer"
+                    }
+                },
+                "authServers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/junipermist:org/DeviceprofileApPortConfigRadiusConfigAuthServer:DeviceprofileApPortConfigRadiusConfigAuthServer"
+                    }
+                },
+                "authServersRetries": {
+                    "type": "integer",
+                    "description": "radius auth session retries\n"
+                },
+                "authServersTimeout": {
+                    "type": "integer",
+                    "description": "radius auth session timeout\n"
+                },
+                "coaEnabled": {
+                    "type": "boolean"
+                },
+                "coaPort": {
+                    "type": "integer"
+                },
+                "network": {
+                    "type": "string",
+                    "description": "use `network`or `source_ip`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip\n"
+                },
+                "sourceIp": {
+                    "type": "string",
+                    "description": "use `network`or `source_ip`\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "acctInterimInterval",
+                        "authServersRetries",
+                        "authServersTimeout",
+                        "coaEnabled",
+                        "coaPort"
+                    ]
+                }
+            }
+        },
+        "junipermist:org/DeviceprofileApPortConfigRadiusConfigAcctServer:DeviceprofileApPortConfigRadiusConfigAcctServer": {
+            "properties": {
+                "host": {
+                    "type": "string",
+                    "description": "IP/ hostname of RADIUS server\n"
+                },
+                "keywrapEnabled": {
+                    "type": "boolean"
+                },
+                "keywrapFormat": {
+                    "type": "string",
+                    "description": "enum: `ascii`, `hex`\n"
+                },
+                "keywrapKek": {
+                    "type": "string"
+                },
+                "keywrapMack": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "string"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "Secret of RADIUS server\n",
+                    "secret": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "host",
+                "secret"
+            ]
+        },
+        "junipermist:org/DeviceprofileApPortConfigRadiusConfigAuthServer:DeviceprofileApPortConfigRadiusConfigAuthServer": {
+            "properties": {
+                "host": {
+                    "type": "string",
+                    "description": "IP/ hostname of RADIUS server\n"
+                },
+                "keywrapEnabled": {
+                    "type": "boolean"
+                },
+                "keywrapFormat": {
+                    "type": "string",
+                    "description": "enum: `ascii`, `hex`\n"
+                },
+                "keywrapKek": {
+                    "type": "string"
+                },
+                "keywrapMack": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "string"
+                },
+                "requireMessageAuthenticator": {
+                    "type": "boolean",
+                    "description": "Whether to require Message-Authenticator in requests\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "Secret of RADIUS server\n",
+                    "secret": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "host",
+                "secret"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "host",
+                        "requireMessageAuthenticator",
+                        "secret"
+                    ]
+                }
+            }
+        },
+        "junipermist:org/DeviceprofileApPortConfigRadsec:DeviceprofileApPortConfigRadsec": {
+            "properties": {
+                "coaEnabled": {
+                    "type": "boolean"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "idleTimeout": {
+                    "type": "string"
+                },
+                "mxclusterIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids\n"
+                },
+                "proxyHosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`\n"
+                },
+                "serverName": {
+                    "type": "string",
+                    "description": "Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.\n"
+                },
+                "servers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/junipermist:org/DeviceprofileApPortConfigRadsecServer:DeviceprofileApPortConfigRadsecServer"
+                    },
+                    "description": "List of RadSec Servers. Only if not Mist Edge.\n"
+                },
+                "useMxedge": {
+                    "type": "boolean",
+                    "description": "use mxedge(s) as RadSec Proxy\n"
+                },
+                "useSiteMxedge": {
+                    "type": "boolean",
+                    "description": "To use Site mxedges when this WLAN does not use mxtunnel\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "coaEnabled",
+                        "useSiteMxedge"
+                    ]
+                }
+            }
+        },
+        "junipermist:org/DeviceprofileApPortConfigRadsecServer:DeviceprofileApPortConfigRadsecServer": {
+            "properties": {
+                "host": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "junipermist:org/DeviceprofileApPwrConfig:DeviceprofileApPwrConfig": {
             "properties": {
                 "base": {
@@ -11955,6 +12618,10 @@
                     "$ref": "#/types/junipermist:org/DeviceprofileApRadioConfigBand6:DeviceprofileApRadioConfigBand6",
                     "description": "Radio Band AP settings\n"
                 },
+                "fullAutomaticRrm": {
+                    "type": "boolean",
+                    "description": "Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)\n"
+                },
                 "indoorUse": {
                     "type": "boolean",
                     "description": "To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap\n"
@@ -11964,7 +12631,14 @@
                     "description": "Whether scanning radio is enabled\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "fullAutomaticRrm"
+                    ]
+                }
+            }
         },
         "junipermist:org/DeviceprofileApRadioConfigBand24:DeviceprofileApRadioConfigBand24": {
             "properties": {
@@ -35425,6 +36099,13 @@
                     "type": "boolean",
                     "description": "Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)\n"
                 },
+                "portConfig": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:device/ApPortConfig:ApPortConfig"
+                    },
+                    "description": "eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes\npredecence over switch_config (deprecated)\n"
+                },
                 "pwrConfig": {
                     "$ref": "#/types/junipermist:device/ApPwrConfig:ApPwrConfig",
                     "description": "Power related configs\n"
@@ -35576,6 +36257,13 @@
                     "type": "boolean",
                     "description": "Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)\n"
                 },
+                "portConfig": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:device/ApPortConfig:ApPortConfig"
+                    },
+                    "description": "eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes\npredecence over switch_config (deprecated)\n"
+                },
                 "pwrConfig": {
                     "$ref": "#/types/junipermist:device/ApPwrConfig:ApPwrConfig",
                     "description": "Power related configs\n"
@@ -35725,6 +36413,13 @@
                     "poePassthrough": {
                         "type": "boolean",
                         "description": "Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)\n"
+                    },
+                    "portConfig": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/junipermist:device/ApPortConfig:ApPortConfig"
+                        },
+                        "description": "eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes\npredecence over switch_config (deprecated)\n"
                     },
                     "pwrConfig": {
                         "$ref": "#/types/junipermist:device/ApPwrConfig:ApPwrConfig",
@@ -38046,6 +38741,13 @@
                     "type": "boolean",
                     "description": "Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)\n"
                 },
+                "portConfig": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/DeviceprofileApPortConfig:DeviceprofileApPortConfig"
+                    },
+                    "description": "Property key is the interface(s) name (e.g. \"eth1,eth2\")\n"
+                },
                 "pwrConfig": {
                     "$ref": "#/types/junipermist:org/DeviceprofileApPwrConfig:DeviceprofileApPwrConfig",
                     "description": "Power related configs\n"
@@ -38146,6 +38848,13 @@
                     "type": "boolean",
                     "description": "Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)\n"
                 },
+                "portConfig": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/DeviceprofileApPortConfig:DeviceprofileApPortConfig"
+                    },
+                    "description": "Property key is the interface(s) name (e.g. \"eth1,eth2\")\n"
+                },
                 "pwrConfig": {
                     "$ref": "#/types/junipermist:org/DeviceprofileApPwrConfig:DeviceprofileApPwrConfig",
                     "description": "Power related configs\n"
@@ -38236,6 +38945,13 @@
                     "poePassthrough": {
                         "type": "boolean",
                         "description": "Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)\n"
+                    },
+                    "portConfig": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/junipermist:org/DeviceprofileApPortConfig:DeviceprofileApPortConfig"
+                        },
+                        "description": "Property key is the interface(s) name (e.g. \"eth1,eth2\")\n"
                     },
                     "pwrConfig": {
                         "$ref": "#/types/junipermist:org/DeviceprofileApPwrConfig:DeviceprofileApPwrConfig",
