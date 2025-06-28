@@ -142,6 +142,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? WanArpPolicer;
         /// <summary>
+        /// If `wan_type`==`wan`, disable speedtest
+        /// </summary>
+        public readonly bool? WanDisableSpeedtest;
+        /// <summary>
         /// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
         /// </summary>
         public readonly string? WanExtIp;
@@ -244,6 +248,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? wanArpPolicer,
 
+            bool? wanDisableSpeedtest,
+
             string? wanExtIp,
 
             ImmutableDictionary<string, Outputs.DeviceprofileGatewayPortConfigWanExtraRoutes>? wanExtraRoutes,
@@ -294,6 +300,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             VlanId = vlanId;
             VpnPaths = vpnPaths;
             WanArpPolicer = wanArpPolicer;
+            WanDisableSpeedtest = wanDisableSpeedtest;
             WanExtIp = wanExtIp;
             WanExtraRoutes = wanExtraRoutes;
             WanNetworks = wanNetworks;

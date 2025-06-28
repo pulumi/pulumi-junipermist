@@ -38,7 +38,8 @@ type Switch struct {
 	DeviceId             pulumi.StringOutput         `pulumi:"deviceId"`
 	DhcpSnooping         SwitchDhcpSnoopingPtrOutput `pulumi:"dhcpSnooping"`
 	DhcpdConfig          SwitchDhcpdConfigPtrOutput  `pulumi:"dhcpdConfig"`
-	// For a claimed switch, we control the configs by default. This option (disables the behavior)
+	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+	// `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 	DisableAutoConfig pulumi.BoolOutput `pulumi:"disableAutoConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayOutput `pulumi:"dnsServers"`
@@ -58,7 +59,8 @@ type Switch struct {
 	LocalPortConfig SwitchLocalPortConfigMapOutput `pulumi:"localPortConfig"`
 	// Device MAC address
 	Mac pulumi.StringOutput `pulumi:"mac"`
-	// For an adopted switch, we don’t overwrite their existing configs automatically
+	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+	// the adopted switch/gateway to be managed/configured by Mist.
 	Managed pulumi.BoolOutput `pulumi:"managed"`
 	// Map where the device belongs to
 	MapId pulumi.StringPtrOutput `pulumi:"mapId"`
@@ -164,7 +166,8 @@ type switchState struct {
 	DeviceId             *string             `pulumi:"deviceId"`
 	DhcpSnooping         *SwitchDhcpSnooping `pulumi:"dhcpSnooping"`
 	DhcpdConfig          *SwitchDhcpdConfig  `pulumi:"dhcpdConfig"`
-	// For a claimed switch, we control the configs by default. This option (disables the behavior)
+	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+	// `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 	DisableAutoConfig *bool `pulumi:"disableAutoConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers []string `pulumi:"dnsServers"`
@@ -184,7 +187,8 @@ type switchState struct {
 	LocalPortConfig map[string]SwitchLocalPortConfig `pulumi:"localPortConfig"`
 	// Device MAC address
 	Mac *string `pulumi:"mac"`
-	// For an adopted switch, we don’t overwrite their existing configs automatically
+	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+	// the adopted switch/gateway to be managed/configured by Mist.
 	Managed *bool `pulumi:"managed"`
 	// Map where the device belongs to
 	MapId *string `pulumi:"mapId"`
@@ -255,7 +259,8 @@ type SwitchState struct {
 	DeviceId             pulumi.StringPtrInput
 	DhcpSnooping         SwitchDhcpSnoopingPtrInput
 	DhcpdConfig          SwitchDhcpdConfigPtrInput
-	// For a claimed switch, we control the configs by default. This option (disables the behavior)
+	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+	// `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 	DisableAutoConfig pulumi.BoolPtrInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayInput
@@ -275,7 +280,8 @@ type SwitchState struct {
 	LocalPortConfig SwitchLocalPortConfigMapInput
 	// Device MAC address
 	Mac pulumi.StringPtrInput
-	// For an adopted switch, we don’t overwrite their existing configs automatically
+	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+	// the adopted switch/gateway to be managed/configured by Mist.
 	Managed pulumi.BoolPtrInput
 	// Map where the device belongs to
 	MapId pulumi.StringPtrInput
@@ -350,7 +356,8 @@ type switchArgs struct {
 	DeviceId             string              `pulumi:"deviceId"`
 	DhcpSnooping         *SwitchDhcpSnooping `pulumi:"dhcpSnooping"`
 	DhcpdConfig          *SwitchDhcpdConfig  `pulumi:"dhcpdConfig"`
-	// For a claimed switch, we control the configs by default. This option (disables the behavior)
+	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+	// `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 	DisableAutoConfig *bool `pulumi:"disableAutoConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers []string `pulumi:"dnsServers"`
@@ -365,7 +372,8 @@ type switchArgs struct {
 	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
 	// "ge-0/0/0-10")
 	LocalPortConfig map[string]SwitchLocalPortConfig `pulumi:"localPortConfig"`
-	// For an adopted switch, we don’t overwrite their existing configs automatically
+	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+	// the adopted switch/gateway to be managed/configured by Mist.
 	Managed *bool `pulumi:"managed"`
 	// Map where the device belongs to
 	MapId *string `pulumi:"mapId"`
@@ -430,7 +438,8 @@ type SwitchArgs struct {
 	DeviceId             pulumi.StringInput
 	DhcpSnooping         SwitchDhcpSnoopingPtrInput
 	DhcpdConfig          SwitchDhcpdConfigPtrInput
-	// For a claimed switch, we control the configs by default. This option (disables the behavior)
+	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+	// `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 	DisableAutoConfig pulumi.BoolPtrInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayInput
@@ -445,7 +454,8 @@ type SwitchArgs struct {
 	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
 	// "ge-0/0/0-10")
 	LocalPortConfig SwitchLocalPortConfigMapInput
-	// For an adopted switch, we don’t overwrite their existing configs automatically
+	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+	// the adopted switch/gateway to be managed/configured by Mist.
 	Managed pulumi.BoolPtrInput
 	// Map where the device belongs to
 	MapId pulumi.StringPtrInput
@@ -613,7 +623,8 @@ func (o SwitchOutput) DhcpdConfig() SwitchDhcpdConfigPtrOutput {
 	return o.ApplyT(func(v *Switch) SwitchDhcpdConfigPtrOutput { return v.DhcpdConfig }).(SwitchDhcpdConfigPtrOutput)
 }
 
-// For a claimed switch, we control the configs by default. This option (disables the behavior)
+// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+// `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 func (o SwitchOutput) DisableAutoConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Switch) pulumi.BoolOutput { return v.DisableAutoConfig }).(pulumi.BoolOutput)
 }
@@ -666,7 +677,8 @@ func (o SwitchOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.Mac }).(pulumi.StringOutput)
 }
 
-// For an adopted switch, we don’t overwrite their existing configs automatically
+// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+// the adopted switch/gateway to be managed/configured by Mist.
 func (o SwitchOutput) Managed() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Switch) pulumi.BoolOutput { return v.Managed }).(pulumi.BoolOutput)
 }

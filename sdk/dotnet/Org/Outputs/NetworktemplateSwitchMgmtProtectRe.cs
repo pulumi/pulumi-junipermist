@@ -25,6 +25,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
+        /// Whether to enable hit count for Protect_RE policy
+        /// </summary>
+        public readonly bool? HitCount;
+        /// <summary>
         /// host/subnets we'll allow traffic to/from
         /// </summary>
         public readonly ImmutableArray<string> TrustedHosts;
@@ -37,11 +41,14 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             bool? enabled,
 
+            bool? hitCount,
+
             ImmutableArray<string> trustedHosts)
         {
             AllowedServices = allowedServices;
             Customs = customs;
             Enabled = enabled;
+            HitCount = hitCount;
             TrustedHosts = trustedHosts;
         }
     }

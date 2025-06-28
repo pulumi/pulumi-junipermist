@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateAclTags
     {
         /// <summary>
+        /// Can only be used under dst tags.
+        /// </summary>
+        public readonly ImmutableArray<string> EtherTypes;
+        /// <summary>
         /// Required if
         ///   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
         ///   - `type`==`gbp_resource`
@@ -36,6 +40,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? Network;
         /// <summary>
+        /// Required if `type`==`port_usage`
+        /// </summary>
+        public readonly string? PortUsage;
+        /// <summary>
         /// Required if:
         ///   * `type`==`radius_group`
         ///   * `type`==`static_gbp`
@@ -43,7 +51,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? RadiusGroup;
         /// <summary>
-        /// If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+        /// If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateAclTagsSpec> Specs;
         /// <summary>
@@ -60,6 +68,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         ///   * `gbp_resource`: can only be used in `dst_tags`
         ///   * `mac`
         ///   * `network`
+        ///   * `port_usage`
         ///   * `radius_group`
         ///   * `resource`: can only be used in `dst_tags`
         ///   * `static_gbp`: applying gbp tag against matching conditions
@@ -69,11 +78,15 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
         [OutputConstructor]
         private NetworktemplateAclTags(
+            ImmutableArray<string> etherTypes,
+
             int? gbpTag,
 
             ImmutableArray<string> macs,
 
             string? network,
+
+            string? portUsage,
 
             string? radiusGroup,
 
@@ -83,9 +96,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             string type)
         {
+            EtherTypes = etherTypes;
             GbpTag = gbpTag;
             Macs = macs;
             Network = network;
+            PortUsage = portUsage;
             RadiusGroup = radiusGroup;
             Specs = specs;
             Subnets = subnets;

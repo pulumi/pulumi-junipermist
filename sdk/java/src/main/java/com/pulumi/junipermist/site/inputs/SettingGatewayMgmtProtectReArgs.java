@@ -60,6 +60,21 @@ public final class SettingGatewayMgmtProtectReArgs extends com.pulumi.resources.
     }
 
     /**
+     * Whether to enable hit count for Protect_RE policy
+     * 
+     */
+    @Import(name="hitCount")
+    private @Nullable Output<Boolean> hitCount;
+
+    /**
+     * @return Whether to enable hit count for Protect_RE policy
+     * 
+     */
+    public Optional<Output<Boolean>> hitCount() {
+        return Optional.ofNullable(this.hitCount);
+    }
+
+    /**
      * host/subnets we&#39;ll allow traffic to/from
      * 
      */
@@ -80,6 +95,7 @@ public final class SettingGatewayMgmtProtectReArgs extends com.pulumi.resources.
         this.allowedServices = $.allowedServices;
         this.customs = $.customs;
         this.enabled = $.enabled;
+        this.hitCount = $.hitCount;
         this.trustedHosts = $.trustedHosts;
     }
 
@@ -168,6 +184,27 @@ public final class SettingGatewayMgmtProtectReArgs extends com.pulumi.resources.
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param hitCount Whether to enable hit count for Protect_RE policy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hitCount(@Nullable Output<Boolean> hitCount) {
+            $.hitCount = hitCount;
+            return this;
+        }
+
+        /**
+         * @param hitCount Whether to enable hit count for Protect_RE policy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hitCount(Boolean hitCount) {
+            return hitCount(Output.of(hitCount));
         }
 
         /**

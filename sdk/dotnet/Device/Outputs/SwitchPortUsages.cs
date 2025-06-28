@@ -34,6 +34,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? BypassAuthWhenServerDownForUnknownClient;
         /// <summary>
+        /// Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+        /// </summary>
+        public readonly int? CommunityVlanId;
+        /// <summary>
         /// Only if `mode`!=`dynamic`
         /// </summary>
         public readonly string? Description;
@@ -172,6 +176,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             bool? bypassAuthWhenServerDownForUnknownClient,
 
+            int? communityVlanId,
+
             string? description,
 
             bool? disableAutoneg,
@@ -243,6 +249,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             AllowMultipleSupplicants = allowMultipleSupplicants;
             BypassAuthWhenServerDown = bypassAuthWhenServerDown;
             BypassAuthWhenServerDownForUnknownClient = bypassAuthWhenServerDownForUnknownClient;
+            CommunityVlanId = communityVlanId;
             Description = description;
             DisableAutoneg = disableAutoneg;
             Disabled = disabled;

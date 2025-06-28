@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NacruleMatchingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
+        /// enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
         /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }

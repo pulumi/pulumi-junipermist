@@ -277,10 +277,20 @@ public final class WlanPortal {
      */
     private @Nullable String smsMessageFormat;
     /**
-     * @return Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+     * @return Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
      * 
      */
     private @Nullable String smsProvider;
+    /**
+     * @return Required if `sms_provider`==`smsglobal`, Client API Key
+     * 
+     */
+    private @Nullable String smsglobalApiKey;
+    /**
+     * @return Required if `sms_provider`==`smsglobal`, Client secret
+     * 
+     */
+    private @Nullable String smsglobalApiSecret;
     /**
      * @return Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
      * 
@@ -754,11 +764,25 @@ public final class WlanPortal {
         return Optional.ofNullable(this.smsMessageFormat);
     }
     /**
-     * @return Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+     * @return Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
      * 
      */
     public Optional<String> smsProvider() {
         return Optional.ofNullable(this.smsProvider);
+    }
+    /**
+     * @return Required if `sms_provider`==`smsglobal`, Client API Key
+     * 
+     */
+    public Optional<String> smsglobalApiKey() {
+        return Optional.ofNullable(this.smsglobalApiKey);
+    }
+    /**
+     * @return Required if `sms_provider`==`smsglobal`, Client secret
+     * 
+     */
+    public Optional<String> smsglobalApiSecret() {
+        return Optional.ofNullable(this.smsglobalApiSecret);
     }
     /**
      * @return Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
@@ -967,6 +991,8 @@ public final class WlanPortal {
         private @Nullable Integer smsExpire;
         private @Nullable String smsMessageFormat;
         private @Nullable String smsProvider;
+        private @Nullable String smsglobalApiKey;
+        private @Nullable String smsglobalApiSecret;
         private @Nullable Boolean sponsorAutoApprove;
         private @Nullable List<String> sponsorEmailDomains;
         private @Nullable Boolean sponsorEnabled;
@@ -1044,6 +1070,8 @@ public final class WlanPortal {
     	      this.smsExpire = defaults.smsExpire;
     	      this.smsMessageFormat = defaults.smsMessageFormat;
     	      this.smsProvider = defaults.smsProvider;
+    	      this.smsglobalApiKey = defaults.smsglobalApiKey;
+    	      this.smsglobalApiSecret = defaults.smsglobalApiSecret;
     	      this.sponsorAutoApprove = defaults.sponsorAutoApprove;
     	      this.sponsorEmailDomains = defaults.sponsorEmailDomains;
     	      this.sponsorEnabled = defaults.sponsorEnabled;
@@ -1403,6 +1431,18 @@ public final class WlanPortal {
             return this;
         }
         @CustomType.Setter
+        public Builder smsglobalApiKey(@Nullable String smsglobalApiKey) {
+
+            this.smsglobalApiKey = smsglobalApiKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder smsglobalApiSecret(@Nullable String smsglobalApiSecret) {
+
+            this.smsglobalApiSecret = smsglobalApiSecret;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sponsorAutoApprove(@Nullable Boolean sponsorAutoApprove) {
 
             this.sponsorAutoApprove = sponsorAutoApprove;
@@ -1581,6 +1621,8 @@ public final class WlanPortal {
             _resultValue.smsExpire = smsExpire;
             _resultValue.smsMessageFormat = smsMessageFormat;
             _resultValue.smsProvider = smsProvider;
+            _resultValue.smsglobalApiKey = smsglobalApiKey;
+            _resultValue.smsglobalApiSecret = smsglobalApiSecret;
             _resultValue.sponsorAutoApprove = sponsorAutoApprove;
             _resultValue.sponsorEmailDomains = sponsorEmailDomains;
             _resultValue.sponsorEnabled = sponsorEnabled;

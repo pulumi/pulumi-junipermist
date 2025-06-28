@@ -129,7 +129,8 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool> PoePassthrough { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the interface(s) name (e.g. "eth1,eth2")
+        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+        /// precedence over switch_config (deprecated)
         /// </summary>
         [Output("portConfig")]
         public Output<ImmutableDictionary<string, Outputs.DeviceprofileApPortConfig>?> PortConfig { get; private set; } = null!;
@@ -305,7 +306,8 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileApPortConfigArgs>? _portConfig;
 
         /// <summary>
-        /// Property key is the interface(s) name (e.g. "eth1,eth2")
+        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+        /// precedence over switch_config (deprecated)
         /// </summary>
         public InputMap<Inputs.DeviceprofileApPortConfigArgs> PortConfig
         {
@@ -445,7 +447,8 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileApPortConfigGetArgs>? _portConfig;
 
         /// <summary>
-        /// Property key is the interface(s) name (e.g. "eth1,eth2")
+        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+        /// precedence over switch_config (deprecated)
         /// </summary>
         public InputMap<Inputs.DeviceprofileApPortConfigGetArgs> PortConfig
         {

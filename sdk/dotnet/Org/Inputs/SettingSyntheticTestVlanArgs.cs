@@ -14,6 +14,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     {
         [Input("customTestUrls")]
         private InputList<string>? _customTestUrls;
+        [Obsolete(@"This attribute is deprecated.")]
         public InputList<string> CustomTestUrls
         {
             get => _customTestUrls ?? (_customTestUrls = new InputList<string>());
@@ -25,6 +26,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
+
+        [Input("probes")]
+        private InputList<string>? _probes;
+
+        /// <summary>
+        /// app name comes from `custom_probes` above or /const/synthetic_test_probes
+        /// </summary>
+        public InputList<string> Probes
+        {
+            get => _probes ?? (_probes = new InputList<string>());
+            set => _probes = value;
+        }
 
         [Input("vlanIds")]
         private InputList<string>? _vlanIds;

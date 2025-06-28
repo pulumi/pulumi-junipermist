@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchRemoteSyslog {
     private @Nullable SwitchRemoteSyslogArchive archive;
+    private @Nullable List<String> cacerts;
     private @Nullable SwitchRemoteSyslogConsole console;
     private @Nullable Boolean enabled;
     private @Nullable List<SwitchRemoteSyslogFile> files;
@@ -39,6 +40,9 @@ public final class SwitchRemoteSyslog {
     private SwitchRemoteSyslog() {}
     public Optional<SwitchRemoteSyslogArchive> archive() {
         return Optional.ofNullable(this.archive);
+    }
+    public List<String> cacerts() {
+        return this.cacerts == null ? List.of() : this.cacerts;
     }
     public Optional<SwitchRemoteSyslogConsole> console() {
         return Optional.ofNullable(this.console);
@@ -83,6 +87,7 @@ public final class SwitchRemoteSyslog {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable SwitchRemoteSyslogArchive archive;
+        private @Nullable List<String> cacerts;
         private @Nullable SwitchRemoteSyslogConsole console;
         private @Nullable Boolean enabled;
         private @Nullable List<SwitchRemoteSyslogFile> files;
@@ -95,6 +100,7 @@ public final class SwitchRemoteSyslog {
         public Builder(SwitchRemoteSyslog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.archive = defaults.archive;
+    	      this.cacerts = defaults.cacerts;
     	      this.console = defaults.console;
     	      this.enabled = defaults.enabled;
     	      this.files = defaults.files;
@@ -110,6 +116,15 @@ public final class SwitchRemoteSyslog {
 
             this.archive = archive;
             return this;
+        }
+        @CustomType.Setter
+        public Builder cacerts(@Nullable List<String> cacerts) {
+
+            this.cacerts = cacerts;
+            return this;
+        }
+        public Builder cacerts(String... cacerts) {
+            return cacerts(List.of(cacerts));
         }
         @CustomType.Setter
         public Builder console(@Nullable SwitchRemoteSyslogConsole console) {
@@ -171,6 +186,7 @@ public final class SwitchRemoteSyslog {
         public SwitchRemoteSyslog build() {
             final var _resultValue = new SwitchRemoteSyslog();
             _resultValue.archive = archive;
+            _resultValue.cacerts = cacerts;
             _resultValue.console = console;
             _resultValue.enabled = enabled;
             _resultValue.files = files;

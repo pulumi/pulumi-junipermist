@@ -56,7 +56,7 @@ public final class GatewayTunnelConfigs {
      */
     private @Nullable String mode;
     /**
-     * @return If `provider`==`custom-ipsec`, networks reachable via this tunnel
+     * @return If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
      * 
      */
     private @Nullable List<String> networks;
@@ -76,7 +76,7 @@ public final class GatewayTunnelConfigs {
      */
     private @Nullable String protocol;
     /**
-     * @return Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+     * @return Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
      * 
      */
     private @Nullable String provider;
@@ -150,7 +150,7 @@ public final class GatewayTunnelConfigs {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return If `provider`==`custom-ipsec`, networks reachable via this tunnel
+     * @return If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
      * 
      */
     public List<String> networks() {
@@ -178,7 +178,7 @@ public final class GatewayTunnelConfigs {
         return Optional.ofNullable(this.protocol);
     }
     /**
-     * @return Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+     * @return Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
      * 
      */
     public Optional<String> provider() {

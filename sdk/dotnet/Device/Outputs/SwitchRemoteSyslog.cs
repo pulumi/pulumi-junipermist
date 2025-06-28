@@ -14,6 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchRemoteSyslog
     {
         public readonly Outputs.SwitchRemoteSyslogArchive? Archive;
+        public readonly ImmutableArray<string> Cacerts;
         public readonly Outputs.SwitchRemoteSyslogConsole? Console;
         public readonly bool? Enabled;
         public readonly ImmutableArray<Outputs.SwitchRemoteSyslogFile> Files;
@@ -33,6 +34,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
         private SwitchRemoteSyslog(
             Outputs.SwitchRemoteSyslogArchive? archive,
 
+            ImmutableArray<string> cacerts,
+
             Outputs.SwitchRemoteSyslogConsole? console,
 
             bool? enabled,
@@ -50,6 +53,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             ImmutableArray<Outputs.SwitchRemoteSyslogUser> users)
         {
             Archive = archive;
+            Cacerts = cacerts;
             Console = console;
             Enabled = enabled;
             Files = files;

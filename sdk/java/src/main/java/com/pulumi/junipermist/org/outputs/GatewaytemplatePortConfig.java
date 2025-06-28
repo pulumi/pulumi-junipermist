@@ -181,6 +181,11 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable String wanArpPolicer;
     /**
+     * @return If `wan_type`==`wan`, disable speedtest
+     * 
+     */
+    private @Nullable Boolean wanDisableSpeedtest;
+    /**
      * @return Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
      * 
      */
@@ -447,6 +452,13 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.wanArpPolicer);
     }
     /**
+     * @return If `wan_type`==`wan`, disable speedtest
+     * 
+     */
+    public Optional<Boolean> wanDisableSpeedtest() {
+        return Optional.ofNullable(this.wanDisableSpeedtest);
+    }
+    /**
      * @return Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
      * 
      */
@@ -536,6 +548,7 @@ public final class GatewaytemplatePortConfig {
         private @Nullable String vlanId;
         private @Nullable Map<String,GatewaytemplatePortConfigVpnPaths> vpnPaths;
         private @Nullable String wanArpPolicer;
+        private @Nullable Boolean wanDisableSpeedtest;
         private @Nullable String wanExtIp;
         private @Nullable Map<String,GatewaytemplatePortConfigWanExtraRoutes> wanExtraRoutes;
         private @Nullable List<String> wanNetworks;
@@ -583,6 +596,7 @@ public final class GatewaytemplatePortConfig {
     	      this.vlanId = defaults.vlanId;
     	      this.vpnPaths = defaults.vpnPaths;
     	      this.wanArpPolicer = defaults.wanArpPolicer;
+    	      this.wanDisableSpeedtest = defaults.wanDisableSpeedtest;
     	      this.wanExtIp = defaults.wanExtIp;
     	      this.wanExtraRoutes = defaults.wanExtraRoutes;
     	      this.wanNetworks = defaults.wanNetworks;
@@ -828,6 +842,12 @@ public final class GatewaytemplatePortConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder wanDisableSpeedtest(@Nullable Boolean wanDisableSpeedtest) {
+
+            this.wanDisableSpeedtest = wanDisableSpeedtest;
+            return this;
+        }
+        @CustomType.Setter
         public Builder wanExtIp(@Nullable String wanExtIp) {
 
             this.wanExtIp = wanExtIp;
@@ -906,6 +926,7 @@ public final class GatewaytemplatePortConfig {
             _resultValue.vlanId = vlanId;
             _resultValue.vpnPaths = vpnPaths;
             _resultValue.wanArpPolicer = wanArpPolicer;
+            _resultValue.wanDisableSpeedtest = wanDisableSpeedtest;
             _resultValue.wanExtIp = wanExtIp;
             _resultValue.wanExtraRoutes = wanExtraRoutes;
             _resultValue.wanNetworks = wanNetworks;

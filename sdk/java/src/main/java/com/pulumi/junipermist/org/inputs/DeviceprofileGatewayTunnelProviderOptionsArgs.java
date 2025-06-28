@@ -6,6 +6,7 @@ package com.pulumi.junipermist.org.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayTunnelProviderOptionsJseArgs;
+import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayTunnelProviderOptionsPrismaArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayTunnelProviderOptionsZscalerArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,6 +32,13 @@ public final class DeviceprofileGatewayTunnelProviderOptionsArgs extends com.pul
         return Optional.ofNullable(this.jse);
     }
 
+    @Import(name="prisma")
+    private @Nullable Output<DeviceprofileGatewayTunnelProviderOptionsPrismaArgs> prisma;
+
+    public Optional<Output<DeviceprofileGatewayTunnelProviderOptionsPrismaArgs>> prisma() {
+        return Optional.ofNullable(this.prisma);
+    }
+
     /**
      * For zscaler-ipsec and zscaler-gre
      * 
@@ -50,6 +58,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsArgs extends com.pul
 
     private DeviceprofileGatewayTunnelProviderOptionsArgs(DeviceprofileGatewayTunnelProviderOptionsArgs $) {
         this.jse = $.jse;
+        this.prisma = $.prisma;
         this.zscaler = $.zscaler;
     }
 
@@ -90,6 +99,15 @@ public final class DeviceprofileGatewayTunnelProviderOptionsArgs extends com.pul
          */
         public Builder jse(DeviceprofileGatewayTunnelProviderOptionsJseArgs jse) {
             return jse(Output.of(jse));
+        }
+
+        public Builder prisma(@Nullable Output<DeviceprofileGatewayTunnelProviderOptionsPrismaArgs> prisma) {
+            $.prisma = prisma;
+            return this;
+        }
+
+        public Builder prisma(DeviceprofileGatewayTunnelProviderOptionsPrismaArgs prisma) {
+            return prisma(Output.of(prisma));
         }
 
         /**

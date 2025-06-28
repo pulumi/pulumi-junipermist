@@ -17,14 +17,14 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
     public static final NacruleNotMatchingArgs Empty = new NacruleNotMatchingArgs();
 
     /**
-     * enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
+     * enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
      * 
      */
     @Import(name="authType")
     private @Nullable Output<String> authType;
 
     /**
-     * @return enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
+     * @return enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
      * 
      */
     public Optional<Output<String>> authType() {
@@ -184,7 +184,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authType enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
+         * @param authType enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authType enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
+         * @param authType enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
          * 
          * @return builder
          * 

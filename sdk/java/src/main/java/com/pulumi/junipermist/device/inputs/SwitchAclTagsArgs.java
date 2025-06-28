@@ -20,6 +20,21 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
     public static final SwitchAclTagsArgs Empty = new SwitchAclTagsArgs();
 
     /**
+     * Can only be used under dst tags.
+     * 
+     */
+    @Import(name="etherTypes")
+    private @Nullable Output<List<String>> etherTypes;
+
+    /**
+     * @return Can only be used under dst tags.
+     * 
+     */
+    public Optional<Output<List<String>>> etherTypes() {
+        return Optional.ofNullable(this.etherTypes);
+    }
+
+    /**
      * Required if
      *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
      *   - `type`==`gbp_resource`
@@ -85,6 +100,21 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Required if `type`==`port_usage`
+     * 
+     */
+    @Import(name="portUsage")
+    private @Nullable Output<String> portUsage;
+
+    /**
+     * @return Required if `type`==`port_usage`
+     * 
+     */
+    public Optional<Output<String>> portUsage() {
+        return Optional.ofNullable(this.portUsage);
+    }
+
+    /**
      * Required if:
      *   * `type`==`radius_group`
      *   * `type`==`static_gbp`
@@ -106,14 +136,14 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+     * If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
      * 
      */
     @Import(name="specs")
     private @Nullable Output<List<SwitchAclTagsSpecArgs>> specs;
 
     /**
-     * @return If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+     * @return If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
      * 
      */
     public Optional<Output<List<SwitchAclTagsSpecArgs>>> specs() {
@@ -148,6 +178,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
      *   * `gbp_resource`: can only be used in `dst_tags`
      *   * `mac`
      *   * `network`
+     *   * `port_usage`
      *   * `radius_group`
      *   * `resource`: can only be used in `dst_tags`
      *   * `static_gbp`: applying gbp tag against matching conditions
@@ -164,6 +195,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
      *   * `gbp_resource`: can only be used in `dst_tags`
      *   * `mac`
      *   * `network`
+     *   * `port_usage`
      *   * `radius_group`
      *   * `resource`: can only be used in `dst_tags`
      *   * `static_gbp`: applying gbp tag against matching conditions
@@ -177,9 +209,11 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
     private SwitchAclTagsArgs() {}
 
     private SwitchAclTagsArgs(SwitchAclTagsArgs $) {
+        this.etherTypes = $.etherTypes;
         this.gbpTag = $.gbpTag;
         this.macs = $.macs;
         this.network = $.network;
+        this.portUsage = $.portUsage;
         this.radiusGroup = $.radiusGroup;
         this.specs = $.specs;
         this.subnets = $.subnets;
@@ -202,6 +236,37 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SwitchAclTagsArgs defaults) {
             $ = new SwitchAclTagsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param etherTypes Can only be used under dst tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etherTypes(@Nullable Output<List<String>> etherTypes) {
+            $.etherTypes = etherTypes;
+            return this;
+        }
+
+        /**
+         * @param etherTypes Can only be used under dst tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etherTypes(List<String> etherTypes) {
+            return etherTypes(Output.of(etherTypes));
+        }
+
+        /**
+         * @param etherTypes Can only be used under dst tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etherTypes(String... etherTypes) {
+            return etherTypes(List.of(etherTypes));
         }
 
         /**
@@ -300,6 +365,27 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param portUsage Required if `type`==`port_usage`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder portUsage(@Nullable Output<String> portUsage) {
+            $.portUsage = portUsage;
+            return this;
+        }
+
+        /**
+         * @param portUsage Required if `type`==`port_usage`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder portUsage(String portUsage) {
+            return portUsage(Output.of(portUsage));
+        }
+
+        /**
          * @param radiusGroup Required if:
          *   * `type`==`radius_group`
          *   * `type`==`static_gbp`
@@ -327,7 +413,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+         * @param specs If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
          * 
          * @return builder
          * 
@@ -338,7 +424,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+         * @param specs If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
          * 
          * @return builder
          * 
@@ -348,7 +434,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+         * @param specs If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
          * 
          * @return builder
          * 
@@ -404,6 +490,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
          *   * `gbp_resource`: can only be used in `dst_tags`
          *   * `mac`
          *   * `network`
+         *   * `port_usage`
          *   * `radius_group`
          *   * `resource`: can only be used in `dst_tags`
          *   * `static_gbp`: applying gbp tag against matching conditions
@@ -424,6 +511,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
          *   * `gbp_resource`: can only be used in `dst_tags`
          *   * `mac`
          *   * `network`
+         *   * `port_usage`
          *   * `radius_group`
          *   * `resource`: can only be used in `dst_tags`
          *   * `static_gbp`: applying gbp tag against matching conditions

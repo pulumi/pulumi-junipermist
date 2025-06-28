@@ -40,6 +40,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Whether to enable hit count for Protect_RE policy
+        /// </summary>
+        [Input("hitCount")]
+        public Input<bool>? HitCount { get; set; }
+
         [Input("trustedHosts")]
         private InputList<string>? _trustedHosts;
 

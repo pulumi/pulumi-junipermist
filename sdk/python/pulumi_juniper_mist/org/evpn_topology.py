@@ -196,59 +196,6 @@ class EvpnTopology(pulumi.CustomResource):
 
         > To create or manage your EVPN Topology with the Mist Provider, please refer to the `How To - EVPN Topology` Guide.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_mist as mist
-
-        evpn_one = mist.index.OrgSiteEvpnTopology("evpn_one",
-            org_id=terraform_test.id,
-            name=evpn_one,
-            evpn_options={
-                routedAt: core,
-                overlay: {
-                    as: 65000,
-                },
-                coreAsBorder: True,
-                autoLoopbackSubnet: 172.16.192.0/24,
-                autoLoopbackSubnet6: fd33:ab00:2::/64,
-                perVlanVgaV4Mac: False,
-                underlay: {
-                    asBase: 65001,
-                    useIpv6: False,
-                    subnet: 10.255.240.0/20,
-                },
-                autoRouterIdSubnet: 172.16.254.0/23,
-            },
-            switches=[
-                {
-                    mac: 020004000001,
-                    role: core,
-                },
-                {
-                    mac: 02000400002,
-                    role: core,
-                },
-                {
-                    mac: 02000400003,
-                    role: distribution,
-                },
-                {
-                    mac: 02000400004,
-                    role: distribution,
-                },
-                {
-                    mac: 02000400005,
-                    role: access,
-                },
-                {
-                    mac: 02000400006,
-                    role: access,
-                },
-            ])
-        ```
-
         ## Import
 
         Using `pulumi import`, import `mist_org_evpn_topology` with:
@@ -277,59 +224,6 @@ class EvpnTopology(pulumi.CustomResource):
         EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
 
         > To create or manage your EVPN Topology with the Mist Provider, please refer to the `How To - EVPN Topology` Guide.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_mist as mist
-
-        evpn_one = mist.index.OrgSiteEvpnTopology("evpn_one",
-            org_id=terraform_test.id,
-            name=evpn_one,
-            evpn_options={
-                routedAt: core,
-                overlay: {
-                    as: 65000,
-                },
-                coreAsBorder: True,
-                autoLoopbackSubnet: 172.16.192.0/24,
-                autoLoopbackSubnet6: fd33:ab00:2::/64,
-                perVlanVgaV4Mac: False,
-                underlay: {
-                    asBase: 65001,
-                    useIpv6: False,
-                    subnet: 10.255.240.0/20,
-                },
-                autoRouterIdSubnet: 172.16.254.0/23,
-            },
-            switches=[
-                {
-                    mac: 020004000001,
-                    role: core,
-                },
-                {
-                    mac: 02000400002,
-                    role: core,
-                },
-                {
-                    mac: 02000400003,
-                    role: distribution,
-                },
-                {
-                    mac: 02000400004,
-                    role: distribution,
-                },
-                {
-                    mac: 02000400005,
-                    role: access,
-                },
-                {
-                    mac: 02000400006,
-                    role: access,
-                },
-            ])
-        ```
 
         ## Import
 

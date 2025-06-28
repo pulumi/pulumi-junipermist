@@ -33,6 +33,21 @@ public final class NetworktemplateRemoteSyslogFileArgs extends com.pulumi.resour
         return Optional.ofNullable(this.contents);
     }
 
+    /**
+     * Only if `protocol`==`tcp`
+     * 
+     */
+    @Import(name="enableTls")
+    private @Nullable Output<Boolean> enableTls;
+
+    /**
+     * @return Only if `protocol`==`tcp`
+     * 
+     */
+    public Optional<Output<Boolean>> enableTls() {
+        return Optional.ofNullable(this.enableTls);
+    }
+
     @Import(name="explicitPriority")
     private @Nullable Output<Boolean> explicitPriority;
 
@@ -66,6 +81,7 @@ public final class NetworktemplateRemoteSyslogFileArgs extends com.pulumi.resour
     private NetworktemplateRemoteSyslogFileArgs(NetworktemplateRemoteSyslogFileArgs $) {
         this.archive = $.archive;
         this.contents = $.contents;
+        this.enableTls = $.enableTls;
         this.explicitPriority = $.explicitPriority;
         this.file = $.file;
         this.match = $.match;
@@ -110,6 +126,27 @@ public final class NetworktemplateRemoteSyslogFileArgs extends com.pulumi.resour
 
         public Builder contents(NetworktemplateRemoteSyslogFileContentArgs... contents) {
             return contents(List.of(contents));
+        }
+
+        /**
+         * @param enableTls Only if `protocol`==`tcp`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableTls(@Nullable Output<Boolean> enableTls) {
+            $.enableTls = enableTls;
+            return this;
+        }
+
+        /**
+         * @param enableTls Only if `protocol`==`tcp`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableTls(Boolean enableTls) {
+            return enableTls(Output.of(enableTls));
         }
 
         public Builder explicitPriority(@Nullable Output<Boolean> explicitPriority) {

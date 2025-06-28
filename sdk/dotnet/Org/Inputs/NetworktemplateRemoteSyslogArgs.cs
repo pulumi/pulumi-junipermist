@@ -15,6 +15,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("archive")]
         public Input<Inputs.NetworktemplateRemoteSyslogArchiveArgs>? Archive { get; set; }
 
+        [Input("cacerts")]
+        private InputList<string>? _cacerts;
+        public InputList<string> Cacerts
+        {
+            get => _cacerts ?? (_cacerts = new InputList<string>());
+            set => _cacerts = value;
+        }
+
         [Input("console")]
         public Input<Inputs.NetworktemplateRemoteSyslogConsoleArgs>? Console { get; set; }
 

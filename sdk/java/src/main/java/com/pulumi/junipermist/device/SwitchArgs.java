@@ -104,14 +104,16 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * For a claimed switch, we control the configs by default. This option (disables the behavior)
+     * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+     * `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
      * 
      */
     @Import(name="disableAutoConfig")
     private @Nullable Output<Boolean> disableAutoConfig;
 
     /**
-     * @return For a claimed switch, we control the configs by default. This option (disables the behavior)
+     * @return This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+     * `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
      * 
      */
     public Optional<Output<Boolean>> disableAutoConfig() {
@@ -211,14 +213,16 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * For an adopted switch, we don’t overwrite their existing configs automatically
+     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+     * the adopted switch/gateway to be managed/configured by Mist.
      * 
      */
     @Import(name="managed")
     private @Nullable Output<Boolean> managed;
 
     /**
-     * @return For an adopted switch, we don’t overwrite their existing configs automatically
+     * @return An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+     * the adopted switch/gateway to be managed/configured by Mist.
      * 
      */
     public Optional<Output<Boolean>> managed() {
@@ -745,7 +749,8 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableAutoConfig For a claimed switch, we control the configs by default. This option (disables the behavior)
+         * @param disableAutoConfig This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+         * `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
          * 
          * @return builder
          * 
@@ -756,7 +761,8 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableAutoConfig For a claimed switch, we control the configs by default. This option (disables the behavior)
+         * @param disableAutoConfig This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+         * `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
          * 
          * @return builder
          * 
@@ -914,7 +920,8 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managed For an adopted switch, we don’t overwrite their existing configs automatically
+         * @param managed An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+         * the adopted switch/gateway to be managed/configured by Mist.
          * 
          * @return builder
          * 
@@ -925,7 +932,8 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managed For an adopted switch, we don’t overwrite their existing configs automatically
+         * @param managed An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+         * the adopted switch/gateway to be managed/configured by Mist.
          * 
          * @return builder
          * 

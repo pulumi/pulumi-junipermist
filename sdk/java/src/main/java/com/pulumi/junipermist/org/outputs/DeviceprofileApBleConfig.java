@@ -61,7 +61,7 @@ public final class DeviceprofileApBleConfig {
      */
     private @Nullable Boolean eddystoneUidEnabled;
     /**
-     * @return Frequency (msec) of data emmit by Eddystone-UID beacon
+     * @return Frequency (msec) of data emit by Eddystone-UID beacon
      * 
      */
     private @Nullable Integer eddystoneUidFreqMsec;
@@ -108,7 +108,7 @@ public final class DeviceprofileApBleConfig {
      */
     private @Nullable Boolean ibeaconEnabled;
     /**
-     * @return Frequency (msec) of data emmit for iBeacon
+     * @return Frequency (msec) of data emit for iBeacon
      * 
      */
     private @Nullable Integer ibeaconFreqMsec;
@@ -206,7 +206,7 @@ public final class DeviceprofileApBleConfig {
         return Optional.ofNullable(this.eddystoneUidEnabled);
     }
     /**
-     * @return Frequency (msec) of data emmit by Eddystone-UID beacon
+     * @return Frequency (msec) of data emit by Eddystone-UID beacon
      * 
      */
     public Optional<Integer> eddystoneUidFreqMsec() {
@@ -275,7 +275,7 @@ public final class DeviceprofileApBleConfig {
         return Optional.ofNullable(this.ibeaconEnabled);
     }
     /**
-     * @return Frequency (msec) of data emmit for iBeacon
+     * @return Frequency (msec) of data emit for iBeacon
      * 
      */
     public Optional<Integer> ibeaconFreqMsec() {

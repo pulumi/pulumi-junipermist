@@ -29,6 +29,13 @@ public final class SwitchRemoteSyslogArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.archive);
     }
 
+    @Import(name="cacerts")
+    private @Nullable Output<List<String>> cacerts;
+
+    public Optional<Output<List<String>>> cacerts() {
+        return Optional.ofNullable(this.cacerts);
+    }
+
     @Import(name="console")
     private @Nullable Output<SwitchRemoteSyslogConsoleArgs> console;
 
@@ -105,6 +112,7 @@ public final class SwitchRemoteSyslogArgs extends com.pulumi.resources.ResourceA
 
     private SwitchRemoteSyslogArgs(SwitchRemoteSyslogArgs $) {
         this.archive = $.archive;
+        this.cacerts = $.cacerts;
         this.console = $.console;
         this.enabled = $.enabled;
         this.files = $.files;
@@ -140,6 +148,19 @@ public final class SwitchRemoteSyslogArgs extends com.pulumi.resources.ResourceA
 
         public Builder archive(SwitchRemoteSyslogArchiveArgs archive) {
             return archive(Output.of(archive));
+        }
+
+        public Builder cacerts(@Nullable Output<List<String>> cacerts) {
+            $.cacerts = cacerts;
+            return this;
+        }
+
+        public Builder cacerts(List<String> cacerts) {
+            return cacerts(Output.of(cacerts));
+        }
+
+        public Builder cacerts(String... cacerts) {
+            return cacerts(List.of(cacerts));
         }
 
         public Builder console(@Nullable Output<SwitchRemoteSyslogConsoleArgs> console) {

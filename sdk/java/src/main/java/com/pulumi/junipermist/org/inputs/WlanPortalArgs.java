@@ -807,18 +807,48 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+     * Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
      * 
      */
     @Import(name="smsProvider")
     private @Nullable Output<String> smsProvider;
 
     /**
-     * @return Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+     * @return Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
      * 
      */
     public Optional<Output<String>> smsProvider() {
         return Optional.ofNullable(this.smsProvider);
+    }
+
+    /**
+     * Required if `sms_provider`==`smsglobal`, Client API Key
+     * 
+     */
+    @Import(name="smsglobalApiKey")
+    private @Nullable Output<String> smsglobalApiKey;
+
+    /**
+     * @return Required if `sms_provider`==`smsglobal`, Client API Key
+     * 
+     */
+    public Optional<Output<String>> smsglobalApiKey() {
+        return Optional.ofNullable(this.smsglobalApiKey);
+    }
+
+    /**
+     * Required if `sms_provider`==`smsglobal`, Client secret
+     * 
+     */
+    @Import(name="smsglobalApiSecret")
+    private @Nullable Output<String> smsglobalApiSecret;
+
+    /**
+     * @return Required if `sms_provider`==`smsglobal`, Client secret
+     * 
+     */
+    public Optional<Output<String>> smsglobalApiSecret() {
+        return Optional.ofNullable(this.smsglobalApiSecret);
     }
 
     /**
@@ -1184,6 +1214,8 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         this.smsExpire = $.smsExpire;
         this.smsMessageFormat = $.smsMessageFormat;
         this.smsProvider = $.smsProvider;
+        this.smsglobalApiKey = $.smsglobalApiKey;
+        this.smsglobalApiSecret = $.smsglobalApiSecret;
         this.sponsorAutoApprove = $.sponsorAutoApprove;
         this.sponsorEmailDomains = $.sponsorEmailDomains;
         this.sponsorEnabled = $.sponsorEnabled;
@@ -2366,7 +2398,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smsProvider Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+         * @param smsProvider Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
          * 
          * @return builder
          * 
@@ -2377,13 +2409,55 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smsProvider Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+         * @param smsProvider Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
          * 
          * @return builder
          * 
          */
         public Builder smsProvider(String smsProvider) {
             return smsProvider(Output.of(smsProvider));
+        }
+
+        /**
+         * @param smsglobalApiKey Required if `sms_provider`==`smsglobal`, Client API Key
+         * 
+         * @return builder
+         * 
+         */
+        public Builder smsglobalApiKey(@Nullable Output<String> smsglobalApiKey) {
+            $.smsglobalApiKey = smsglobalApiKey;
+            return this;
+        }
+
+        /**
+         * @param smsglobalApiKey Required if `sms_provider`==`smsglobal`, Client API Key
+         * 
+         * @return builder
+         * 
+         */
+        public Builder smsglobalApiKey(String smsglobalApiKey) {
+            return smsglobalApiKey(Output.of(smsglobalApiKey));
+        }
+
+        /**
+         * @param smsglobalApiSecret Required if `sms_provider`==`smsglobal`, Client secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder smsglobalApiSecret(@Nullable Output<String> smsglobalApiSecret) {
+            $.smsglobalApiSecret = smsglobalApiSecret;
+            return this;
+        }
+
+        /**
+         * @param smsglobalApiSecret Required if `sms_provider`==`smsglobal`, Client secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder smsglobalApiSecret(String smsglobalApiSecret) {
+            return smsglobalApiSecret(Output.of(smsglobalApiSecret));
         }
 
         /**

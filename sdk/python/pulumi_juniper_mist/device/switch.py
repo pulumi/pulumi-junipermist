@@ -68,7 +68,8 @@ class SwitchArgs:
         The set of arguments for constructing a Switch resource.
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[builtins.bool] disable_auto_config: For a claimed switch, we control the configs by default. This option (disables the behavior)
+        :param pulumi.Input[builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+               `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
@@ -76,7 +77,8 @@ class SwitchArgs:
         :param pulumi.Input['SwitchIpConfigArgs'] ip_config: Junos IP Config
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
                "ge-0/0/0-10")
-        :param pulumi.Input[builtins.bool] managed: For an adopted switch, we don’t overwrite their existing configs automatically
+        :param pulumi.Input[builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+               the adopted switch/gateway to be managed/configured by Mist.
         :param pulumi.Input[builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input['SwitchMistNacArgs'] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchNetworksArgs']]] networks: Property key is network name
@@ -257,7 +259,8 @@ class SwitchArgs:
     @pulumi.getter(name="disableAutoConfig")
     def disable_auto_config(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        For a claimed switch, we control the configs by default. This option (disables the behavior)
+        This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+        `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         """
         return pulumi.get(self, "disable_auto_config")
 
@@ -342,7 +345,8 @@ class SwitchArgs:
     @pulumi.getter
     def managed(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        For an adopted switch, we don’t overwrite their existing configs automatically
+        An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+        the adopted switch/gateway to be managed/configured by Mist.
         """
         return pulumi.get(self, "managed")
 
@@ -714,7 +718,8 @@ class _SwitchState:
         Input properties used for looking up and filtering Switch resources.
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[builtins.bool] disable_auto_config: For a claimed switch, we control the configs by default. This option (disables the behavior)
+        :param pulumi.Input[builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+               `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
@@ -723,7 +728,8 @@ class _SwitchState:
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
                "ge-0/0/0-10")
         :param pulumi.Input[builtins.str] mac: Device MAC address
-        :param pulumi.Input[builtins.bool] managed: For an adopted switch, we don’t overwrite their existing configs automatically
+        :param pulumi.Input[builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+               the adopted switch/gateway to be managed/configured by Mist.
         :param pulumi.Input[builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input['SwitchMistNacArgs'] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[builtins.str] model: Device Model
@@ -916,7 +922,8 @@ class _SwitchState:
     @pulumi.getter(name="disableAutoConfig")
     def disable_auto_config(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        For a claimed switch, we control the configs by default. This option (disables the behavior)
+        This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+        `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         """
         return pulumi.get(self, "disable_auto_config")
 
@@ -1040,7 +1047,8 @@ class _SwitchState:
     @pulumi.getter
     def managed(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        For an adopted switch, we don’t overwrite their existing configs automatically
+        An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+        the adopted switch/gateway to be managed/configured by Mist.
         """
         return pulumi.get(self, "managed")
 
@@ -1479,7 +1487,8 @@ class Switch(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[builtins.bool] disable_auto_config: For a claimed switch, we control the configs by default. This option (disables the behavior)
+        :param pulumi.Input[builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+               `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
@@ -1487,7 +1496,8 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']] ip_config: Junos IP Config
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
                "ge-0/0/0-10")
-        :param pulumi.Input[builtins.bool] managed: For an adopted switch, we don’t overwrite their existing configs automatically
+        :param pulumi.Input[builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+               the adopted switch/gateway to be managed/configured by Mist.
         :param pulumi.Input[builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]] networks: Property key is network name
@@ -1724,7 +1734,8 @@ class Switch(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[builtins.bool] disable_auto_config: For a claimed switch, we control the configs by default. This option (disables the behavior)
+        :param pulumi.Input[builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+               `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
@@ -1733,7 +1744,8 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
                "ge-0/0/0-10")
         :param pulumi.Input[builtins.str] mac: Device MAC address
-        :param pulumi.Input[builtins.bool] managed: For an adopted switch, we don’t overwrite their existing configs automatically
+        :param pulumi.Input[builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+               the adopted switch/gateway to be managed/configured by Mist.
         :param pulumi.Input[builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[builtins.str] model: Device Model
@@ -1857,7 +1869,8 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="disableAutoConfig")
     def disable_auto_config(self) -> pulumi.Output[builtins.bool]:
         """
-        For a claimed switch, we control the configs by default. This option (disables the behavior)
+        This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+        `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         """
         return pulumi.get(self, "disable_auto_config")
 
@@ -1937,7 +1950,8 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter
     def managed(self) -> pulumi.Output[builtins.bool]:
         """
-        For an adopted switch, we don’t overwrite their existing configs automatically
+        An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+        the adopted switch/gateway to be managed/configured by Mist.
         """
         return pulumi.get(self, "managed")
 

@@ -190,7 +190,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+        /// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
         /// </summary>
         public readonly bool? PredefinedSponsorsEnabled;
         /// <summary>
@@ -223,9 +223,17 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? SmsMessageFormat;
         /// <summary>
-        /// Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+        /// Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
         /// </summary>
         public readonly string? SmsProvider;
+        /// <summary>
+        /// Required if `sms_provider`==`smsglobal`, Client API Key
+        /// </summary>
+        public readonly string? SmsglobalApiKey;
+        /// <summary>
+        /// Required if `sms_provider`==`smsglobal`, Client secret
+        /// </summary>
+        public readonly string? SmsglobalApiSecret;
         /// <summary>
         /// Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
         /// </summary>
@@ -274,7 +282,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? SsoIdpCert;
         /// <summary>
-        /// Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+        /// Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
         /// </summary>
         public readonly string? SsoIdpSignAlgo;
         /// <summary>
@@ -420,6 +428,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             string? smsProvider,
 
+            string? smsglobalApiKey,
+
+            string? smsglobalApiSecret,
+
             bool? sponsorAutoApprove,
 
             ImmutableArray<string> sponsorEmailDomains,
@@ -514,6 +526,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
             SmsExpire = smsExpire;
             SmsMessageFormat = smsMessageFormat;
             SmsProvider = smsProvider;
+            SmsglobalApiKey = smsglobalApiKey;
+            SmsglobalApiSecret = smsglobalApiSecret;
             SponsorAutoApprove = sponsorAutoApprove;
             SponsorEmailDomains = sponsorEmailDomains;
             SponsorEnabled = sponsorEnabled;

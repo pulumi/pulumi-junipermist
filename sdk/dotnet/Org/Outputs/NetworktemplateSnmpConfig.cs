@@ -18,6 +18,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? Description;
         public readonly bool? Enabled;
         public readonly string? EngineId;
+        /// <summary>
+        /// enum: `local`, `use_mac_address`
+        /// </summary>
+        public readonly string? EngineIdType;
         public readonly string? Location;
         public readonly string? Name;
         public readonly string? Network;
@@ -38,6 +42,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? engineId,
 
+            string? engineIdType,
+
             string? location,
 
             string? name,
@@ -57,6 +63,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             Description = description;
             Enabled = enabled;
             EngineId = engineId;
+            EngineIdType = engineIdType;
             Location = location;
             Name = name;
             Network = network;

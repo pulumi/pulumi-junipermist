@@ -5,6 +5,7 @@ package com.pulumi.junipermist.device.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,36 @@ import javax.annotation.Nullable;
 public final class SwitchVrrpConfigGroupsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SwitchVrrpConfigGroupsArgs Empty = new SwitchVrrpConfigGroupsArgs();
+
+    /**
+     * If `true`, accept packets destined for VRRP address
+     * 
+     */
+    @Import(name="acceptData")
+    private @Nullable Output<Boolean> acceptData;
+
+    /**
+     * @return If `true`, accept packets destined for VRRP address
+     * 
+     */
+    public Optional<Output<Boolean>> acceptData() {
+        return Optional.ofNullable(this.acceptData);
+    }
+
+    /**
+     * If `true`, allow preemption (a backup router can preempt a primary router)
+     * 
+     */
+    @Import(name="preempt")
+    private @Nullable Output<Boolean> preempt;
+
+    /**
+     * @return If `true`, allow preemption (a backup router can preempt a primary router)
+     * 
+     */
+    public Optional<Output<Boolean>> preempt() {
+        return Optional.ofNullable(this.preempt);
+    }
 
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
@@ -25,6 +56,8 @@ public final class SwitchVrrpConfigGroupsArgs extends com.pulumi.resources.Resou
     private SwitchVrrpConfigGroupsArgs() {}
 
     private SwitchVrrpConfigGroupsArgs(SwitchVrrpConfigGroupsArgs $) {
+        this.acceptData = $.acceptData;
+        this.preempt = $.preempt;
         this.priority = $.priority;
     }
 
@@ -44,6 +77,48 @@ public final class SwitchVrrpConfigGroupsArgs extends com.pulumi.resources.Resou
 
         public Builder(SwitchVrrpConfigGroupsArgs defaults) {
             $ = new SwitchVrrpConfigGroupsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param acceptData If `true`, accept packets destined for VRRP address
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceptData(@Nullable Output<Boolean> acceptData) {
+            $.acceptData = acceptData;
+            return this;
+        }
+
+        /**
+         * @param acceptData If `true`, accept packets destined for VRRP address
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceptData(Boolean acceptData) {
+            return acceptData(Output.of(acceptData));
+        }
+
+        /**
+         * @param preempt If `true`, allow preemption (a backup router can preempt a primary router)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preempt(@Nullable Output<Boolean> preempt) {
+            $.preempt = preempt;
+            return this;
+        }
+
+        /**
+         * @param preempt If `true`, allow preemption (a backup router can preempt a primary router)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preempt(Boolean preempt) {
+            return preempt(Output.of(preempt));
         }
 
         public Builder priority(@Nullable Output<Integer> priority) {

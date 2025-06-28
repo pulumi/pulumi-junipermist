@@ -331,7 +331,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+        /// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
         /// </summary>
         [Input("predefinedSponsorsEnabled")]
         public Input<bool>? PredefinedSponsorsEnabled { get; set; }
@@ -392,10 +392,22 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? SmsMessageFormat { get; set; }
 
         /// <summary>
-        /// Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+        /// Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
         /// </summary>
         [Input("smsProvider")]
         public Input<string>? SmsProvider { get; set; }
+
+        /// <summary>
+        /// Required if `sms_provider`==`smsglobal`, Client API Key
+        /// </summary>
+        [Input("smsglobalApiKey")]
+        public Input<string>? SmsglobalApiKey { get; set; }
+
+        /// <summary>
+        /// Required if `sms_provider`==`smsglobal`, Client secret
+        /// </summary>
+        [Input("smsglobalApiSecret")]
+        public Input<string>? SmsglobalApiSecret { get; set; }
 
         /// <summary>
         /// Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
@@ -479,7 +491,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? SsoIdpCert { get; set; }
 
         /// <summary>
-        /// Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+        /// Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
         /// </summary>
         [Input("ssoIdpSignAlgo")]
         public Input<string>? SsoIdpSignAlgo { get; set; }

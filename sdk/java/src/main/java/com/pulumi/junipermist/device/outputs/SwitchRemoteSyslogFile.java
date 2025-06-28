@@ -17,6 +17,11 @@ import javax.annotation.Nullable;
 public final class SwitchRemoteSyslogFile {
     private @Nullable SwitchRemoteSyslogFileArchive archive;
     private @Nullable List<SwitchRemoteSyslogFileContent> contents;
+    /**
+     * @return Only if `protocol`==`tcp`
+     * 
+     */
+    private @Nullable Boolean enableTls;
     private @Nullable Boolean explicitPriority;
     private @Nullable String file;
     private @Nullable String match;
@@ -28,6 +33,13 @@ public final class SwitchRemoteSyslogFile {
     }
     public List<SwitchRemoteSyslogFileContent> contents() {
         return this.contents == null ? List.of() : this.contents;
+    }
+    /**
+     * @return Only if `protocol`==`tcp`
+     * 
+     */
+    public Optional<Boolean> enableTls() {
+        return Optional.ofNullable(this.enableTls);
     }
     public Optional<Boolean> explicitPriority() {
         return Optional.ofNullable(this.explicitPriority);
@@ -53,6 +65,7 @@ public final class SwitchRemoteSyslogFile {
     public static final class Builder {
         private @Nullable SwitchRemoteSyslogFileArchive archive;
         private @Nullable List<SwitchRemoteSyslogFileContent> contents;
+        private @Nullable Boolean enableTls;
         private @Nullable Boolean explicitPriority;
         private @Nullable String file;
         private @Nullable String match;
@@ -62,6 +75,7 @@ public final class SwitchRemoteSyslogFile {
     	      Objects.requireNonNull(defaults);
     	      this.archive = defaults.archive;
     	      this.contents = defaults.contents;
+    	      this.enableTls = defaults.enableTls;
     	      this.explicitPriority = defaults.explicitPriority;
     	      this.file = defaults.file;
     	      this.match = defaults.match;
@@ -82,6 +96,12 @@ public final class SwitchRemoteSyslogFile {
         }
         public Builder contents(SwitchRemoteSyslogFileContent... contents) {
             return contents(List.of(contents));
+        }
+        @CustomType.Setter
+        public Builder enableTls(@Nullable Boolean enableTls) {
+
+            this.enableTls = enableTls;
+            return this;
         }
         @CustomType.Setter
         public Builder explicitPriority(@Nullable Boolean explicitPriority) {
@@ -111,6 +131,7 @@ public final class SwitchRemoteSyslogFile {
             final var _resultValue = new SwitchRemoteSyslogFile();
             _resultValue.archive = archive;
             _resultValue.contents = contents;
+            _resultValue.enableTls = enableTls;
             _resultValue.explicitPriority = explicitPriority;
             _resultValue.file = file;
             _resultValue.match = match;

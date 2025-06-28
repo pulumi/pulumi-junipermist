@@ -161,14 +161,14 @@ public final class SettingBleConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Frequency (msec) of data emmit by Eddystone-UID beacon
+     * Frequency (msec) of data emit by Eddystone-UID beacon
      * 
      */
     @Import(name="eddystoneUidFreqMsec")
     private @Nullable Output<Integer> eddystoneUidFreqMsec;
 
     /**
-     * @return Frequency (msec) of data emmit by Eddystone-UID beacon
+     * @return Frequency (msec) of data emit by Eddystone-UID beacon
      * 
      */
     public Optional<Output<Integer>> eddystoneUidFreqMsec() {
@@ -310,14 +310,14 @@ public final class SettingBleConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Frequency (msec) of data emmit for iBeacon
+     * Frequency (msec) of data emit for iBeacon
      * 
      */
     @Import(name="ibeaconFreqMsec")
     private @Nullable Output<Integer> ibeaconFreqMsec;
 
     /**
-     * @return Frequency (msec) of data emmit for iBeacon
+     * @return Frequency (msec) of data emit for iBeacon
      * 
      */
     public Optional<Output<Integer>> ibeaconFreqMsec() {
@@ -658,7 +658,7 @@ public final class SettingBleConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param eddystoneUidFreqMsec Frequency (msec) of data emmit by Eddystone-UID beacon
+         * @param eddystoneUidFreqMsec Frequency (msec) of data emit by Eddystone-UID beacon
          * 
          * @return builder
          * 
@@ -669,7 +669,7 @@ public final class SettingBleConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param eddystoneUidFreqMsec Frequency (msec) of data emmit by Eddystone-UID beacon
+         * @param eddystoneUidFreqMsec Frequency (msec) of data emit by Eddystone-UID beacon
          * 
          * @return builder
          * 
@@ -865,7 +865,7 @@ public final class SettingBleConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ibeaconFreqMsec Frequency (msec) of data emmit for iBeacon
+         * @param ibeaconFreqMsec Frequency (msec) of data emit for iBeacon
          * 
          * @return builder
          * 
@@ -876,7 +876,7 @@ public final class SettingBleConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ibeaconFreqMsec Frequency (msec) of data emmit for iBeacon
+         * @param ibeaconFreqMsec Frequency (msec) of data emit for iBeacon
          * 
          * @return builder
          * 

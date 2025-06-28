@@ -69,8 +69,8 @@ namespace Pulumi.JuniperMist.Org
 
         /// <summary>
         /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-        /// `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`,
-        /// `usermac_label`
+        /// `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
+        /// `user_name`, `usermac_label`
         /// </summary>
         [Output("match")]
         public Output<string?> Match { get; private set; } = null!;
@@ -212,8 +212,8 @@ namespace Pulumi.JuniperMist.Org
 
         /// <summary>
         /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-        /// `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`,
-        /// `usermac_label`
+        /// `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
+        /// `user_name`, `usermac_label`
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -334,8 +334,8 @@ namespace Pulumi.JuniperMist.Org
 
         /// <summary>
         /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-        /// `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`,
-        /// `usermac_label`
+        /// `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
+        /// `user_name`, `usermac_label`
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }

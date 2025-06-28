@@ -133,8 +133,8 @@ export class Ap extends pulumi.CustomResource {
      */
     public readonly poePassthrough!: pulumi.Output<boolean>;
     /**
-     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-     * predecence over switchConfig (deprecated)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+     * precedence over switchConfig (deprecated)
      */
     public readonly portConfig!: pulumi.Output<{[key: string]: outputs.device.ApPortConfig} | undefined>;
     /**
@@ -371,8 +371,8 @@ export interface ApState {
      */
     poePassthrough?: pulumi.Input<boolean>;
     /**
-     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-     * predecence over switchConfig (deprecated)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+     * precedence over switchConfig (deprecated)
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.ApPortConfig>}>;
     /**
@@ -491,8 +491,8 @@ export interface ApArgs {
      */
     poePassthrough?: pulumi.Input<boolean>;
     /**
-     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-     * predecence over switchConfig (deprecated)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+     * precedence over switchConfig (deprecated)
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.ApPortConfig>}>;
     /**

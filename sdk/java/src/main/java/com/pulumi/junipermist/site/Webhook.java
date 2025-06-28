@@ -89,6 +89,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:site/webhook:Webhook")
 public class Webhook extends com.pulumi.resources.CustomResource {
     /**
+     * Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+     * 
+     */
+    @Export(name="assetfilterIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> assetfilterIds;
+
+    /**
+     * @return Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+     * 
+     */
+    public Output<Optional<List<String>>> assetfilterIds() {
+        return Codegen.optional(this.assetfilterIds);
+    }
+    /**
      * Whether webhook is enabled
      * 
      */

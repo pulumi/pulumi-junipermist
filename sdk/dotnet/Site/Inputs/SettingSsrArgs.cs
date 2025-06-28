@@ -14,12 +14,35 @@ namespace Pulumi.JuniperMist.Site.Inputs
     {
         [Input("conductorHosts")]
         private InputList<string>? _conductorHosts;
+
+        /// <summary>
+        /// List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+        /// </summary>
         public InputList<string> ConductorHosts
         {
             get => _conductorHosts ?? (_conductorHosts = new InputList<string>());
             set => _conductorHosts = value;
         }
 
+        [Input("conductorToken")]
+        private Input<string>? _conductorToken;
+
+        /// <summary>
+        /// Token to be used by the SSR Devices to connect to the Conductor
+        /// </summary>
+        public Input<string>? ConductorToken
+        {
+            get => _conductorToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _conductorToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Disable stats collection on SSR devices
+        /// </summary>
         [Input("disableStats")]
         public Input<bool>? DisableStats { get; set; }
 

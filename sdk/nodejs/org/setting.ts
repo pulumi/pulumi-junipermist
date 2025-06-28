@@ -56,7 +56,7 @@ export class Setting extends pulumi.CustomResource {
     public readonly apUpdownThreshold!: pulumi.Output<number | undefined>;
     public readonly apiPolicy!: pulumi.Output<outputs.org.SettingApiPolicy | undefined>;
     /**
-     * List of PEM-encoded ca certs
+     * RADSec certificates for AP
      */
     public readonly cacerts!: pulumi.Output<string[]>;
     public readonly celona!: pulumi.Output<outputs.org.SettingCelona | undefined>;
@@ -96,6 +96,7 @@ export class Setting extends pulumi.CustomResource {
      * by default, webshell access is only enabled for Admin user
      */
     public readonly junosShellAccess!: pulumi.Output<outputs.org.SettingJunosShellAccess | undefined>;
+    public readonly marvis!: pulumi.Output<outputs.org.SettingMarvis | undefined>;
     /**
      * management-related properties
      */
@@ -113,6 +114,8 @@ export class Setting extends pulumi.CustomResource {
     public readonly passwordPolicy!: pulumi.Output<outputs.org.SettingPasswordPolicy | undefined>;
     public readonly pcap!: pulumi.Output<outputs.org.SettingPcap | undefined>;
     public readonly security!: pulumi.Output<outputs.org.SettingSecurity | undefined>;
+    public readonly ssr!: pulumi.Output<outputs.org.SettingSsr | undefined>;
+    public readonly switch!: pulumi.Output<outputs.org.SettingSwitch | undefined>;
     public readonly switchMgmt!: pulumi.Output<outputs.org.SettingSwitchMgmt | undefined>;
     /**
      * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
@@ -158,6 +161,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["jcloudRa"] = state ? state.jcloudRa : undefined;
             resourceInputs["juniper"] = state ? state.juniper : undefined;
             resourceInputs["junosShellAccess"] = state ? state.junosShellAccess : undefined;
+            resourceInputs["marvis"] = state ? state.marvis : undefined;
             resourceInputs["mgmt"] = state ? state.mgmt : undefined;
             resourceInputs["mistNac"] = state ? state.mistNac : undefined;
             resourceInputs["mxedgeMgmt"] = state ? state.mxedgeMgmt : undefined;
@@ -166,6 +170,8 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["passwordPolicy"] = state ? state.passwordPolicy : undefined;
             resourceInputs["pcap"] = state ? state.pcap : undefined;
             resourceInputs["security"] = state ? state.security : undefined;
+            resourceInputs["ssr"] = state ? state.ssr : undefined;
+            resourceInputs["switch"] = state ? state.switch : undefined;
             resourceInputs["switchMgmt"] = state ? state.switchMgmt : undefined;
             resourceInputs["switchUpdownThreshold"] = state ? state.switchUpdownThreshold : undefined;
             resourceInputs["syntheticTest"] = state ? state.syntheticTest : undefined;
@@ -193,6 +199,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["jcloud"] = args ? args.jcloud : undefined;
             resourceInputs["jcloudRa"] = args ? args.jcloudRa : undefined;
             resourceInputs["junosShellAccess"] = args ? args.junosShellAccess : undefined;
+            resourceInputs["marvis"] = args ? args.marvis : undefined;
             resourceInputs["mgmt"] = args ? args.mgmt : undefined;
             resourceInputs["mistNac"] = args ? args.mistNac : undefined;
             resourceInputs["mxedgeMgmt"] = args ? args.mxedgeMgmt : undefined;
@@ -201,6 +208,8 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["passwordPolicy"] = args ? args.passwordPolicy : undefined;
             resourceInputs["pcap"] = args ? args.pcap : undefined;
             resourceInputs["security"] = args ? args.security : undefined;
+            resourceInputs["ssr"] = args ? args.ssr : undefined;
+            resourceInputs["switch"] = args ? args.switch : undefined;
             resourceInputs["switchMgmt"] = args ? args.switchMgmt : undefined;
             resourceInputs["switchUpdownThreshold"] = args ? args.switchUpdownThreshold : undefined;
             resourceInputs["syntheticTest"] = args ? args.syntheticTest : undefined;
@@ -228,7 +237,7 @@ export interface SettingState {
     apUpdownThreshold?: pulumi.Input<number>;
     apiPolicy?: pulumi.Input<inputs.org.SettingApiPolicy>;
     /**
-     * List of PEM-encoded ca certs
+     * RADSec certificates for AP
      */
     cacerts?: pulumi.Input<pulumi.Input<string>[]>;
     celona?: pulumi.Input<inputs.org.SettingCelona>;
@@ -268,6 +277,7 @@ export interface SettingState {
      * by default, webshell access is only enabled for Admin user
      */
     junosShellAccess?: pulumi.Input<inputs.org.SettingJunosShellAccess>;
+    marvis?: pulumi.Input<inputs.org.SettingMarvis>;
     /**
      * management-related properties
      */
@@ -285,6 +295,8 @@ export interface SettingState {
     passwordPolicy?: pulumi.Input<inputs.org.SettingPasswordPolicy>;
     pcap?: pulumi.Input<inputs.org.SettingPcap>;
     security?: pulumi.Input<inputs.org.SettingSecurity>;
+    ssr?: pulumi.Input<inputs.org.SettingSsr>;
+    switch?: pulumi.Input<inputs.org.SettingSwitch>;
     switchMgmt?: pulumi.Input<inputs.org.SettingSwitchMgmt>;
     /**
      * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
@@ -313,7 +325,7 @@ export interface SettingArgs {
     apUpdownThreshold?: pulumi.Input<number>;
     apiPolicy?: pulumi.Input<inputs.org.SettingApiPolicy>;
     /**
-     * List of PEM-encoded ca certs
+     * RADSec certificates for AP
      */
     cacerts?: pulumi.Input<pulumi.Input<string>[]>;
     celona?: pulumi.Input<inputs.org.SettingCelona>;
@@ -351,6 +363,7 @@ export interface SettingArgs {
      * by default, webshell access is only enabled for Admin user
      */
     junosShellAccess?: pulumi.Input<inputs.org.SettingJunosShellAccess>;
+    marvis?: pulumi.Input<inputs.org.SettingMarvis>;
     /**
      * management-related properties
      */
@@ -368,6 +381,8 @@ export interface SettingArgs {
     passwordPolicy?: pulumi.Input<inputs.org.SettingPasswordPolicy>;
     pcap?: pulumi.Input<inputs.org.SettingPcap>;
     security?: pulumi.Input<inputs.org.SettingSecurity>;
+    ssr?: pulumi.Input<inputs.org.SettingSsr>;
+    switch?: pulumi.Input<inputs.org.SettingSwitch>;
     switchMgmt?: pulumi.Input<inputs.org.SettingSwitchMgmt>;
     /**
      * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and

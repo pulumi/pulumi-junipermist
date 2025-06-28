@@ -4,23 +4,63 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.junipermist.org.outputs.SettingSyntheticTestCustomProbes;
+import com.pulumi.junipermist.org.outputs.SettingSyntheticTestLanNetwork;
 import com.pulumi.junipermist.org.outputs.SettingSyntheticTestVlan;
 import com.pulumi.junipermist.org.outputs.SettingSyntheticTestWanSpeedtest;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingSyntheticTest {
+    /**
+     * @return enum: `auto`, `high`, `low`
+     * 
+     */
+    private @Nullable String aggressiveness;
+    /**
+     * @return Custom probes to be used for synthetic tests
+     * 
+     */
+    private @Nullable Map<String,SettingSyntheticTestCustomProbes> customProbes;
     private @Nullable Boolean disabled;
+    /**
+     * @return List of networks to be used for synthetic tests
+     * 
+     */
+    private @Nullable List<SettingSyntheticTestLanNetwork> lanNetworks;
     private @Nullable List<SettingSyntheticTestVlan> vlans;
     private @Nullable SettingSyntheticTestWanSpeedtest wanSpeedtest;
 
     private SettingSyntheticTest() {}
+    /**
+     * @return enum: `auto`, `high`, `low`
+     * 
+     */
+    public Optional<String> aggressiveness() {
+        return Optional.ofNullable(this.aggressiveness);
+    }
+    /**
+     * @return Custom probes to be used for synthetic tests
+     * 
+     */
+    public Map<String,SettingSyntheticTestCustomProbes> customProbes() {
+        return this.customProbes == null ? Map.of() : this.customProbes;
+    }
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
+    }
+    /**
+     * @return List of networks to be used for synthetic tests
+     * 
+     */
+    public List<SettingSyntheticTestLanNetwork> lanNetworks() {
+        return this.lanNetworks == null ? List.of() : this.lanNetworks;
     }
     public List<SettingSyntheticTestVlan> vlans() {
         return this.vlans == null ? List.of() : this.vlans;
@@ -38,22 +78,49 @@ public final class SettingSyntheticTest {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String aggressiveness;
+        private @Nullable Map<String,SettingSyntheticTestCustomProbes> customProbes;
         private @Nullable Boolean disabled;
+        private @Nullable List<SettingSyntheticTestLanNetwork> lanNetworks;
         private @Nullable List<SettingSyntheticTestVlan> vlans;
         private @Nullable SettingSyntheticTestWanSpeedtest wanSpeedtest;
         public Builder() {}
         public Builder(SettingSyntheticTest defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aggressiveness = defaults.aggressiveness;
+    	      this.customProbes = defaults.customProbes;
     	      this.disabled = defaults.disabled;
+    	      this.lanNetworks = defaults.lanNetworks;
     	      this.vlans = defaults.vlans;
     	      this.wanSpeedtest = defaults.wanSpeedtest;
         }
 
         @CustomType.Setter
+        public Builder aggressiveness(@Nullable String aggressiveness) {
+
+            this.aggressiveness = aggressiveness;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customProbes(@Nullable Map<String,SettingSyntheticTestCustomProbes> customProbes) {
+
+            this.customProbes = customProbes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
 
             this.disabled = disabled;
             return this;
+        }
+        @CustomType.Setter
+        public Builder lanNetworks(@Nullable List<SettingSyntheticTestLanNetwork> lanNetworks) {
+
+            this.lanNetworks = lanNetworks;
+            return this;
+        }
+        public Builder lanNetworks(SettingSyntheticTestLanNetwork... lanNetworks) {
+            return lanNetworks(List.of(lanNetworks));
         }
         @CustomType.Setter
         public Builder vlans(@Nullable List<SettingSyntheticTestVlan> vlans) {
@@ -72,7 +139,10 @@ public final class SettingSyntheticTest {
         }
         public SettingSyntheticTest build() {
             final var _resultValue = new SettingSyntheticTest();
+            _resultValue.aggressiveness = aggressiveness;
+            _resultValue.customProbes = customProbes;
             _resultValue.disabled = disabled;
+            _resultValue.lanNetworks = lanNetworks;
             _resultValue.vlans = vlans;
             _resultValue.wanSpeedtest = wanSpeedtest;
             return _resultValue;

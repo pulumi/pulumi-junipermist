@@ -261,14 +261,16 @@ public class DeviceprofileAp extends com.pulumi.resources.CustomResource {
         return this.poePassthrough;
     }
     /**
-     * Property key is the interface(s) name (e.g. &#34;eth1,eth2&#34;)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+     * precedence over switch_config (deprecated)
      * 
      */
     @Export(name="portConfig", refs={Map.class,String.class,DeviceprofileApPortConfig.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,DeviceprofileApPortConfig>> portConfig;
 
     /**
-     * @return Property key is the interface(s) name (e.g. &#34;eth1,eth2&#34;)
+     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+     * precedence over switch_config (deprecated)
      * 
      */
     public Output<Optional<Map<String,DeviceprofileApPortConfig>>> portConfig() {

@@ -64,12 +64,17 @@ public final class SwitchPortConfig {
     private @Nullable Boolean noLocalOverwrite;
     private @Nullable Boolean poeDisabled;
     /**
+     * @return Required if `usage`==`vlan_tunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+     * 
+     */
+    private @Nullable String portNetwork;
+    /**
      * @return enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
      * 
      */
     private @Nullable String speed;
     /**
-     * @return Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+     * @return Port usage name. For Q-in-Q, use `vlan_tunnel`. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
      * 
      */
     private String usage;
@@ -151,6 +156,13 @@ public final class SwitchPortConfig {
         return Optional.ofNullable(this.poeDisabled);
     }
     /**
+     * @return Required if `usage`==`vlan_tunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+     * 
+     */
+    public Optional<String> portNetwork() {
+        return Optional.ofNullable(this.portNetwork);
+    }
+    /**
      * @return enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
      * 
      */
@@ -158,7 +170,7 @@ public final class SwitchPortConfig {
         return Optional.ofNullable(this.speed);
     }
     /**
-     * @return Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+     * @return Port usage name. For Q-in-Q, use `vlan_tunnel`. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
      * 
      */
     public String usage() {
@@ -187,6 +199,7 @@ public final class SwitchPortConfig {
         private @Nullable Integer mtu;
         private @Nullable Boolean noLocalOverwrite;
         private @Nullable Boolean poeDisabled;
+        private @Nullable String portNetwork;
         private @Nullable String speed;
         private String usage;
         public Builder() {}
@@ -205,6 +218,7 @@ public final class SwitchPortConfig {
     	      this.mtu = defaults.mtu;
     	      this.noLocalOverwrite = defaults.noLocalOverwrite;
     	      this.poeDisabled = defaults.poeDisabled;
+    	      this.portNetwork = defaults.portNetwork;
     	      this.speed = defaults.speed;
     	      this.usage = defaults.usage;
         }
@@ -288,6 +302,12 @@ public final class SwitchPortConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder portNetwork(@Nullable String portNetwork) {
+
+            this.portNetwork = portNetwork;
+            return this;
+        }
+        @CustomType.Setter
         public Builder speed(@Nullable String speed) {
 
             this.speed = speed;
@@ -316,6 +336,7 @@ public final class SwitchPortConfig {
             _resultValue.mtu = mtu;
             _resultValue.noLocalOverwrite = noLocalOverwrite;
             _resultValue.poeDisabled = poeDisabled;
+            _resultValue.portNetwork = portNetwork;
             _resultValue.speed = speed;
             _resultValue.usage = usage;
             return _resultValue;

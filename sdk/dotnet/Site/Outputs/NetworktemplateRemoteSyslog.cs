@@ -14,6 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateRemoteSyslog
     {
         public readonly Outputs.NetworktemplateRemoteSyslogArchive? Archive;
+        public readonly ImmutableArray<string> Cacerts;
         public readonly Outputs.NetworktemplateRemoteSyslogConsole? Console;
         public readonly bool? Enabled;
         public readonly ImmutableArray<Outputs.NetworktemplateRemoteSyslogFile> Files;
@@ -33,6 +34,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
         private NetworktemplateRemoteSyslog(
             Outputs.NetworktemplateRemoteSyslogArchive? archive,
 
+            ImmutableArray<string> cacerts,
+
             Outputs.NetworktemplateRemoteSyslogConsole? console,
 
             bool? enabled,
@@ -50,6 +53,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             ImmutableArray<Outputs.NetworktemplateRemoteSyslogUser> users)
         {
             Archive = archive;
+            Cacerts = cacerts;
             Console = console;
             Enabled = enabled;
             Files = files;

@@ -79,13 +79,19 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? PoeDisabled { get; set; }
 
         /// <summary>
+        /// Required if `usage`==`vlan_tunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+        /// </summary>
+        [Input("portNetwork")]
+        public Input<string>? PortNetwork { get; set; }
+
+        /// <summary>
         /// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }
 
         /// <summary>
-        /// Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+        /// Port usage name. For Q-in-Q, use `vlan_tunnel`. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
         /// </summary>
         [Input("usage", required: true)]
         public Input<string> Usage { get; set; } = null!;

@@ -66,6 +66,12 @@ namespace Pulumi.JuniperMist.Site
     public partial class Webhook : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+        /// </summary>
+        [Output("assetfilterIds")]
+        public Output<ImmutableArray<string>> AssetfilterIds { get; private set; } = null!;
+
+        /// <summary>
         /// Whether webhook is enabled
         /// </summary>
         [Output("enabled")]
@@ -227,6 +233,18 @@ namespace Pulumi.JuniperMist.Site
 
     public sealed class WebhookArgs : global::Pulumi.ResourceArgs
     {
+        [Input("assetfilterIds")]
+        private InputList<string>? _assetfilterIds;
+
+        /// <summary>
+        /// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+        /// </summary>
+        public InputList<string> AssetfilterIds
+        {
+            get => _assetfilterIds ?? (_assetfilterIds = new InputList<string>());
+            set => _assetfilterIds = value;
+        }
+
         /// <summary>
         /// Whether webhook is enabled
         /// </summary>
@@ -398,6 +416,18 @@ namespace Pulumi.JuniperMist.Site
 
     public sealed class WebhookState : global::Pulumi.ResourceArgs
     {
+        [Input("assetfilterIds")]
+        private InputList<string>? _assetfilterIds;
+
+        /// <summary>
+        /// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+        /// </summary>
+        public InputList<string> AssetfilterIds
+        {
+            get => _assetfilterIds ?? (_assetfilterIds = new InputList<string>());
+            set => _assetfilterIds = value;
+        }
+
         /// <summary>
         /// Whether webhook is enabled
         /// </summary>

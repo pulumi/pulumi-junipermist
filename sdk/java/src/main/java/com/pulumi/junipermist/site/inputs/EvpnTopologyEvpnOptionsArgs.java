@@ -95,6 +95,21 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.coreAsBorder);
     }
 
+    /**
+     * if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+     * 
+     */
+    @Import(name="enableInbandZtp")
+    private @Nullable Output<Boolean> enableInbandZtp;
+
+    /**
+     * @return if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+     * 
+     */
+    public Optional<Output<Boolean>> enableInbandZtp() {
+        return Optional.ofNullable(this.enableInbandZtp);
+    }
+
     @Import(name="overlay")
     private @Nullable Output<EvpnTopologyEvpnOptionsOverlayArgs> overlay;
 
@@ -177,6 +192,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         this.autoRouterIdSubnet = $.autoRouterIdSubnet;
         this.autoRouterIdSubnet6 = $.autoRouterIdSubnet6;
         this.coreAsBorder = $.coreAsBorder;
+        this.enableInbandZtp = $.enableInbandZtp;
         this.overlay = $.overlay;
         this.perVlanVgaV4Mac = $.perVlanVgaV4Mac;
         this.perVlanVgaV6Mac = $.perVlanVgaV6Mac;
@@ -306,6 +322,27 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
          */
         public Builder coreAsBorder(Boolean coreAsBorder) {
             return coreAsBorder(Output.of(coreAsBorder));
+        }
+
+        /**
+         * @param enableInbandZtp if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableInbandZtp(@Nullable Output<Boolean> enableInbandZtp) {
+            $.enableInbandZtp = enableInbandZtp;
+            return this;
+        }
+
+        /**
+         * @param enableInbandZtp if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableInbandZtp(Boolean enableInbandZtp) {
+            return enableInbandZtp(Output.of(enableInbandZtp));
         }
 
         public Builder overlay(@Nullable Output<EvpnTopologyEvpnOptionsOverlayArgs> overlay) {

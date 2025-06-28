@@ -57,6 +57,21 @@ public final class NetworktemplateSnmpConfigArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.engineId);
     }
 
+    /**
+     * enum: `local`, `use_mac_address`
+     * 
+     */
+    @Import(name="engineIdType")
+    private @Nullable Output<String> engineIdType;
+
+    /**
+     * @return enum: `local`, `use_mac_address`
+     * 
+     */
+    public Optional<Output<String>> engineIdType() {
+        return Optional.ofNullable(this.engineIdType);
+    }
+
     @Import(name="location")
     private @Nullable Output<String> location;
 
@@ -114,6 +129,7 @@ public final class NetworktemplateSnmpConfigArgs extends com.pulumi.resources.Re
         this.description = $.description;
         this.enabled = $.enabled;
         this.engineId = $.engineId;
+        this.engineIdType = $.engineIdType;
         this.location = $.location;
         this.name = $.name;
         this.network = $.network;
@@ -188,6 +204,27 @@ public final class NetworktemplateSnmpConfigArgs extends com.pulumi.resources.Re
 
         public Builder engineId(String engineId) {
             return engineId(Output.of(engineId));
+        }
+
+        /**
+         * @param engineIdType enum: `local`, `use_mac_address`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineIdType(@Nullable Output<String> engineIdType) {
+            $.engineIdType = engineIdType;
+            return this;
+        }
+
+        /**
+         * @param engineIdType enum: `local`, `use_mac_address`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineIdType(String engineIdType) {
+            return engineIdType(Output.of(engineIdType));
         }
 
         public Builder location(@Nullable Output<String> location) {

@@ -43,6 +43,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? BypassAuthWhenServerDownForUnknownClient { get; set; }
 
         /// <summary>
+        /// Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+        /// </summary>
+        [Input("communityVlanId")]
+        public Input<int>? CommunityVlanId { get; set; }
+
+        /// <summary>
         /// Only if `mode`!=`dynamic`
         /// </summary>
         [Input("description")]

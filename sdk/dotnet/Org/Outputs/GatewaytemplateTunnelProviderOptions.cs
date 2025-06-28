@@ -17,6 +17,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
         /// </summary>
         public readonly Outputs.GatewaytemplateTunnelProviderOptionsJse? Jse;
+        public readonly Outputs.GatewaytemplateTunnelProviderOptionsPrisma? Prisma;
         /// <summary>
         /// For zscaler-ipsec and zscaler-gre
         /// </summary>
@@ -26,9 +27,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
         private GatewaytemplateTunnelProviderOptions(
             Outputs.GatewaytemplateTunnelProviderOptionsJse? jse,
 
+            Outputs.GatewaytemplateTunnelProviderOptionsPrisma? prisma,
+
             Outputs.GatewaytemplateTunnelProviderOptionsZscaler? zscaler)
         {
             Jse = jse;
+            Prisma = prisma;
             Zscaler = zscaler;
         }
     }

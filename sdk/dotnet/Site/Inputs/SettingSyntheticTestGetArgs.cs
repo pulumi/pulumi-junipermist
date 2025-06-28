@@ -12,8 +12,38 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingSyntheticTestGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// enum: `auto`, `high`, `low`
+        /// </summary>
+        [Input("aggressiveness")]
+        public Input<string>? Aggressiveness { get; set; }
+
+        [Input("customProbes")]
+        private InputMap<Inputs.SettingSyntheticTestCustomProbesGetArgs>? _customProbes;
+
+        /// <summary>
+        /// Custom probes to be used for synthetic tests
+        /// </summary>
+        public InputMap<Inputs.SettingSyntheticTestCustomProbesGetArgs> CustomProbes
+        {
+            get => _customProbes ?? (_customProbes = new InputMap<Inputs.SettingSyntheticTestCustomProbesGetArgs>());
+            set => _customProbes = value;
+        }
+
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
+
+        [Input("lanNetworks")]
+        private InputList<Inputs.SettingSyntheticTestLanNetworkGetArgs>? _lanNetworks;
+
+        /// <summary>
+        /// List of networks to be used for synthetic tests
+        /// </summary>
+        public InputList<Inputs.SettingSyntheticTestLanNetworkGetArgs> LanNetworks
+        {
+            get => _lanNetworks ?? (_lanNetworks = new InputList<Inputs.SettingSyntheticTestLanNetworkGetArgs>());
+            set => _lanNetworks = value;
+        }
 
         [Input("vlans")]
         private InputList<Inputs.SettingSyntheticTestVlanGetArgs>? _vlans;

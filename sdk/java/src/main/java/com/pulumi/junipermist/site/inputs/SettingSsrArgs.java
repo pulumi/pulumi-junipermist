@@ -17,16 +17,47 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingSsrArgs Empty = new SettingSsrArgs();
 
+    /**
+     * List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+     * 
+     */
     @Import(name="conductorHosts")
     private @Nullable Output<List<String>> conductorHosts;
 
+    /**
+     * @return List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+     * 
+     */
     public Optional<Output<List<String>>> conductorHosts() {
         return Optional.ofNullable(this.conductorHosts);
     }
 
+    /**
+     * Token to be used by the SSR Devices to connect to the Conductor
+     * 
+     */
+    @Import(name="conductorToken")
+    private @Nullable Output<String> conductorToken;
+
+    /**
+     * @return Token to be used by the SSR Devices to connect to the Conductor
+     * 
+     */
+    public Optional<Output<String>> conductorToken() {
+        return Optional.ofNullable(this.conductorToken);
+    }
+
+    /**
+     * Disable stats collection on SSR devices
+     * 
+     */
     @Import(name="disableStats")
     private @Nullable Output<Boolean> disableStats;
 
+    /**
+     * @return Disable stats collection on SSR devices
+     * 
+     */
     public Optional<Output<Boolean>> disableStats() {
         return Optional.ofNullable(this.disableStats);
     }
@@ -35,6 +66,7 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
 
     private SettingSsrArgs(SettingSsrArgs $) {
         this.conductorHosts = $.conductorHosts;
+        this.conductorToken = $.conductorToken;
         this.disableStats = $.disableStats;
     }
 
@@ -56,24 +88,75 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SettingSsrArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param conductorHosts List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder conductorHosts(@Nullable Output<List<String>> conductorHosts) {
             $.conductorHosts = conductorHosts;
             return this;
         }
 
+        /**
+         * @param conductorHosts List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder conductorHosts(List<String> conductorHosts) {
             return conductorHosts(Output.of(conductorHosts));
         }
 
+        /**
+         * @param conductorHosts List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder conductorHosts(String... conductorHosts) {
             return conductorHosts(List.of(conductorHosts));
         }
 
+        /**
+         * @param conductorToken Token to be used by the SSR Devices to connect to the Conductor
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conductorToken(@Nullable Output<String> conductorToken) {
+            $.conductorToken = conductorToken;
+            return this;
+        }
+
+        /**
+         * @param conductorToken Token to be used by the SSR Devices to connect to the Conductor
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conductorToken(String conductorToken) {
+            return conductorToken(Output.of(conductorToken));
+        }
+
+        /**
+         * @param disableStats Disable stats collection on SSR devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableStats(@Nullable Output<Boolean> disableStats) {
             $.disableStats = disableStats;
             return this;
         }
 
+        /**
+         * @param disableStats Disable stats collection on SSR devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableStats(Boolean disableStats) {
             return disableStats(Output.of(disableStats));
         }

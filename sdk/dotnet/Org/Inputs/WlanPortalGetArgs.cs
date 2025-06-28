@@ -392,10 +392,22 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? SmsMessageFormat { get; set; }
 
         /// <summary>
-        /// Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+        /// Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
         /// </summary>
         [Input("smsProvider")]
         public Input<string>? SmsProvider { get; set; }
+
+        /// <summary>
+        /// Required if `sms_provider`==`smsglobal`, Client API Key
+        /// </summary>
+        [Input("smsglobalApiKey")]
+        public Input<string>? SmsglobalApiKey { get; set; }
+
+        /// <summary>
+        /// Required if `sms_provider`==`smsglobal`, Client secret
+        /// </summary>
+        [Input("smsglobalApiSecret")]
+        public Input<string>? SmsglobalApiSecret { get; set; }
 
         /// <summary>
         /// Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled

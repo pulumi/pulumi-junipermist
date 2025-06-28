@@ -38,7 +38,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.SettingApiPolicy?> ApiPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// List of PEM-encoded ca certs
+        /// RADSec certificates for AP
         /// </summary>
         [Output("cacerts")]
         public Output<ImmutableArray<string>> Cacerts { get; private set; } = null!;
@@ -106,6 +106,9 @@ namespace Pulumi.JuniperMist.Org
         [Output("junosShellAccess")]
         public Output<Outputs.SettingJunosShellAccess?> JunosShellAccess { get; private set; } = null!;
 
+        [Output("marvis")]
+        public Output<Outputs.SettingMarvis?> Marvis { get; private set; } = null!;
+
         /// <summary>
         /// management-related properties
         /// </summary>
@@ -138,6 +141,12 @@ namespace Pulumi.JuniperMist.Org
 
         [Output("security")]
         public Output<Outputs.SettingSecurity?> Security { get; private set; } = null!;
+
+        [Output("ssr")]
+        public Output<Outputs.SettingSsr?> Ssr { get; private set; } = null!;
+
+        [Output("switch")]
+        public Output<Outputs.SettingSwitch?> Switch { get; private set; } = null!;
 
         [Output("switchMgmt")]
         public Output<Outputs.SettingSwitchMgmt?> SwitchMgmt { get; private set; } = null!;
@@ -231,7 +240,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _cacerts;
 
         /// <summary>
-        /// List of PEM-encoded ca certs
+        /// RADSec certificates for AP
         /// </summary>
         public InputList<string> Cacerts
         {
@@ -296,6 +305,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("junosShellAccess")]
         public Input<Inputs.SettingJunosShellAccessArgs>? JunosShellAccess { get; set; }
 
+        [Input("marvis")]
+        public Input<Inputs.SettingMarvisArgs>? Marvis { get; set; }
+
         /// <summary>
         /// management-related properties
         /// </summary>
@@ -334,6 +346,12 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("security")]
         public Input<Inputs.SettingSecurityArgs>? Security { get; set; }
+
+        [Input("ssr")]
+        public Input<Inputs.SettingSsrArgs>? Ssr { get; set; }
+
+        [Input("switch")]
+        public Input<Inputs.SettingSwitchArgs>? Switch { get; set; }
 
         [Input("switchMgmt")]
         public Input<Inputs.SettingSwitchMgmtArgs>? SwitchMgmt { get; set; }
@@ -388,7 +406,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _cacerts;
 
         /// <summary>
-        /// List of PEM-encoded ca certs
+        /// RADSec certificates for AP
         /// </summary>
         public InputList<string> Cacerts
         {
@@ -459,6 +477,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("junosShellAccess")]
         public Input<Inputs.SettingJunosShellAccessGetArgs>? JunosShellAccess { get; set; }
 
+        [Input("marvis")]
+        public Input<Inputs.SettingMarvisGetArgs>? Marvis { get; set; }
+
         /// <summary>
         /// management-related properties
         /// </summary>
@@ -497,6 +518,12 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("security")]
         public Input<Inputs.SettingSecurityGetArgs>? Security { get; set; }
+
+        [Input("ssr")]
+        public Input<Inputs.SettingSsrGetArgs>? Ssr { get; set; }
+
+        [Input("switch")]
+        public Input<Inputs.SettingSwitchGetArgs>? Switch { get; set; }
 
         [Input("switchMgmt")]
         public Input<Inputs.SettingSwitchMgmtGetArgs>? SwitchMgmt { get; set; }

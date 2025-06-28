@@ -13,19 +13,40 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingSyntheticTest
     {
+        /// <summary>
+        /// enum: `auto`, `high`, `low`
+        /// </summary>
+        public readonly string? Aggressiveness;
+        /// <summary>
+        /// Custom probes to be used for synthetic tests
+        /// </summary>
+        public readonly ImmutableDictionary<string, Outputs.SettingSyntheticTestCustomProbes>? CustomProbes;
         public readonly bool? Disabled;
+        /// <summary>
+        /// List of networks to be used for synthetic tests
+        /// </summary>
+        public readonly ImmutableArray<Outputs.SettingSyntheticTestLanNetwork> LanNetworks;
         public readonly ImmutableArray<Outputs.SettingSyntheticTestVlan> Vlans;
         public readonly Outputs.SettingSyntheticTestWanSpeedtest? WanSpeedtest;
 
         [OutputConstructor]
         private SettingSyntheticTest(
+            string? aggressiveness,
+
+            ImmutableDictionary<string, Outputs.SettingSyntheticTestCustomProbes>? customProbes,
+
             bool? disabled,
+
+            ImmutableArray<Outputs.SettingSyntheticTestLanNetwork> lanNetworks,
 
             ImmutableArray<Outputs.SettingSyntheticTestVlan> vlans,
 
             Outputs.SettingSyntheticTestWanSpeedtest? wanSpeedtest)
         {
+            Aggressiveness = aggressiveness;
+            CustomProbes = customProbes;
             Disabled = disabled;
+            LanNetworks = lanNetworks;
             Vlans = vlans;
             WanSpeedtest = wanSpeedtest;
         }

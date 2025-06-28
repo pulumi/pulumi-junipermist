@@ -13,15 +13,32 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingSyntheticTestVlan {
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     private @Nullable List<String> customTestUrls;
     /**
      * @return For some vlans where we don&#39;t want this to run
      * 
      */
     private @Nullable Boolean disabled;
+    /**
+     * @return app name comes from `custom_probes` above or /const/synthetic_test_probes
+     * 
+     */
+    private @Nullable List<String> probes;
     private @Nullable List<String> vlanIds;
 
     private SettingSyntheticTestVlan() {}
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public List<String> customTestUrls() {
         return this.customTestUrls == null ? List.of() : this.customTestUrls;
     }
@@ -31,6 +48,13 @@ public final class SettingSyntheticTestVlan {
      */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
+    }
+    /**
+     * @return app name comes from `custom_probes` above or /const/synthetic_test_probes
+     * 
+     */
+    public List<String> probes() {
+        return this.probes == null ? List.of() : this.probes;
     }
     public List<String> vlanIds() {
         return this.vlanIds == null ? List.of() : this.vlanIds;
@@ -47,12 +71,14 @@ public final class SettingSyntheticTestVlan {
     public static final class Builder {
         private @Nullable List<String> customTestUrls;
         private @Nullable Boolean disabled;
+        private @Nullable List<String> probes;
         private @Nullable List<String> vlanIds;
         public Builder() {}
         public Builder(SettingSyntheticTestVlan defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customTestUrls = defaults.customTestUrls;
     	      this.disabled = defaults.disabled;
+    	      this.probes = defaults.probes;
     	      this.vlanIds = defaults.vlanIds;
         }
 
@@ -72,6 +98,15 @@ public final class SettingSyntheticTestVlan {
             return this;
         }
         @CustomType.Setter
+        public Builder probes(@Nullable List<String> probes) {
+
+            this.probes = probes;
+            return this;
+        }
+        public Builder probes(String... probes) {
+            return probes(List.of(probes));
+        }
+        @CustomType.Setter
         public Builder vlanIds(@Nullable List<String> vlanIds) {
 
             this.vlanIds = vlanIds;
@@ -84,6 +119,7 @@ public final class SettingSyntheticTestVlan {
             final var _resultValue = new SettingSyntheticTestVlan();
             _resultValue.customTestUrls = customTestUrls;
             _resultValue.disabled = disabled;
+            _resultValue.probes = probes;
             _resultValue.vlanIds = vlanIds;
             return _resultValue;
         }
