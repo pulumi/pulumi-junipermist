@@ -23,6 +23,12 @@ namespace Pulumi.JuniperMist.Device.Inputs
             set => _contents = value;
         }
 
+        /// <summary>
+        /// Only if `protocol`==`tcp`
+        /// </summary>
+        [Input("enableTls")]
+        public Input<bool>? EnableTls { get; set; }
+
         [Input("explicitPriority")]
         public Input<bool>? ExplicitPriority { get; set; }
 

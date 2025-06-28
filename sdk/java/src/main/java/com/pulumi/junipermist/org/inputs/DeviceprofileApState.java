@@ -216,14 +216,16 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Property key is the interface(s) name (e.g. &#34;eth1,eth2&#34;)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+     * precedence over switch_config (deprecated)
      * 
      */
     @Import(name="portConfig")
     private @Nullable Output<Map<String,DeviceprofileApPortConfigArgs>> portConfig;
 
     /**
-     * @return Property key is the interface(s) name (e.g. &#34;eth1,eth2&#34;)
+     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+     * precedence over switch_config (deprecated)
      * 
      */
     public Optional<Output<Map<String,DeviceprofileApPortConfigArgs>>> portConfig() {
@@ -635,7 +637,8 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param portConfig Property key is the interface(s) name (e.g. &#34;eth1,eth2&#34;)
+         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+         * precedence over switch_config (deprecated)
          * 
          * @return builder
          * 
@@ -646,7 +649,8 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param portConfig Property key is the interface(s) name (e.g. &#34;eth1,eth2&#34;)
+         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+         * precedence over switch_config (deprecated)
          * 
          * @return builder
          * 

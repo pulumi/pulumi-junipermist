@@ -66,7 +66,7 @@ type Nactag struct {
 	EgressVlanNames pulumi.StringArrayOutput `pulumi:"egressVlanNames"`
 	GbpTag          pulumi.StringPtrOutput   `pulumi:"gbpTag"`
 	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
-	// `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+	// `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match pulumi.StringPtrOutput `pulumi:"match"`
 	// This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
 	// match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
@@ -139,7 +139,7 @@ type nactagState struct {
 	EgressVlanNames []string `pulumi:"egressVlanNames"`
 	GbpTag          *string  `pulumi:"gbpTag"`
 	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
-	// `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+	// `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match *string `pulumi:"match"`
 	// This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
 	// match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
@@ -177,7 +177,7 @@ type NactagState struct {
 	EgressVlanNames pulumi.StringArrayInput
 	GbpTag          pulumi.StringPtrInput
 	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
-	// `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+	// `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match pulumi.StringPtrInput
 	// This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
 	// match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
@@ -219,7 +219,7 @@ type nactagArgs struct {
 	EgressVlanNames []string `pulumi:"egressVlanNames"`
 	GbpTag          *string  `pulumi:"gbpTag"`
 	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
-	// `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+	// `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match *string `pulumi:"match"`
 	// This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
 	// match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
@@ -258,7 +258,7 @@ type NactagArgs struct {
 	EgressVlanNames pulumi.StringArrayInput
 	GbpTag          pulumi.StringPtrInput
 	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
-	// `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+	// `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match pulumi.StringPtrInput
 	// This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
 	// match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
@@ -391,7 +391,7 @@ func (o NactagOutput) GbpTag() pulumi.StringPtrOutput {
 }
 
 // if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
-// `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+// `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 func (o NactagOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Nactag) pulumi.StringPtrOutput { return v.Match }).(pulumi.StringPtrOutput)
 }

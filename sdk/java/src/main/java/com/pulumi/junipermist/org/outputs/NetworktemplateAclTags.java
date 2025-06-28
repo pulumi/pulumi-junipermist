@@ -16,6 +16,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateAclTags {
     /**
+     * @return Can only be used under dst tags.
+     * 
+     */
+    private @Nullable List<String> etherTypes;
+    /**
      * @return Required if
      *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
      *   - `type`==`gbp_resource`
@@ -41,6 +46,11 @@ public final class NetworktemplateAclTags {
      */
     private @Nullable String network;
     /**
+     * @return Required if `type`==`port_usage`
+     * 
+     */
+    private @Nullable String portUsage;
+    /**
      * @return Required if:
      *   * `type`==`radius_group`
      *   * `type`==`static_gbp`
@@ -49,7 +59,7 @@ public final class NetworktemplateAclTags {
      */
     private @Nullable String radiusGroup;
     /**
-     * @return If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+     * @return If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
      * 
      */
     private @Nullable List<NetworktemplateAclTagsSpec> specs;
@@ -68,6 +78,7 @@ public final class NetworktemplateAclTags {
      *   * `gbp_resource`: can only be used in `dst_tags`
      *   * `mac`
      *   * `network`
+     *   * `port_usage`
      *   * `radius_group`
      *   * `resource`: can only be used in `dst_tags`
      *   * `static_gbp`: applying gbp tag against matching conditions
@@ -77,6 +88,13 @@ public final class NetworktemplateAclTags {
     private String type;
 
     private NetworktemplateAclTags() {}
+    /**
+     * @return Can only be used under dst tags.
+     * 
+     */
+    public List<String> etherTypes() {
+        return this.etherTypes == null ? List.of() : this.etherTypes;
+    }
     /**
      * @return Required if
      *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
@@ -109,6 +127,13 @@ public final class NetworktemplateAclTags {
         return Optional.ofNullable(this.network);
     }
     /**
+     * @return Required if `type`==`port_usage`
+     * 
+     */
+    public Optional<String> portUsage() {
+        return Optional.ofNullable(this.portUsage);
+    }
+    /**
      * @return Required if:
      *   * `type`==`radius_group`
      *   * `type`==`static_gbp`
@@ -119,7 +144,7 @@ public final class NetworktemplateAclTags {
         return Optional.ofNullable(this.radiusGroup);
     }
     /**
-     * @return If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+     * @return If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
      * 
      */
     public List<NetworktemplateAclTagsSpec> specs() {
@@ -142,6 +167,7 @@ public final class NetworktemplateAclTags {
      *   * `gbp_resource`: can only be used in `dst_tags`
      *   * `mac`
      *   * `network`
+     *   * `port_usage`
      *   * `radius_group`
      *   * `resource`: can only be used in `dst_tags`
      *   * `static_gbp`: applying gbp tag against matching conditions
@@ -161,9 +187,11 @@ public final class NetworktemplateAclTags {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> etherTypes;
         private @Nullable Integer gbpTag;
         private @Nullable List<String> macs;
         private @Nullable String network;
+        private @Nullable String portUsage;
         private @Nullable String radiusGroup;
         private @Nullable List<NetworktemplateAclTagsSpec> specs;
         private @Nullable List<String> subnets;
@@ -171,15 +199,26 @@ public final class NetworktemplateAclTags {
         public Builder() {}
         public Builder(NetworktemplateAclTags defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.etherTypes = defaults.etherTypes;
     	      this.gbpTag = defaults.gbpTag;
     	      this.macs = defaults.macs;
     	      this.network = defaults.network;
+    	      this.portUsage = defaults.portUsage;
     	      this.radiusGroup = defaults.radiusGroup;
     	      this.specs = defaults.specs;
     	      this.subnets = defaults.subnets;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder etherTypes(@Nullable List<String> etherTypes) {
+
+            this.etherTypes = etherTypes;
+            return this;
+        }
+        public Builder etherTypes(String... etherTypes) {
+            return etherTypes(List.of(etherTypes));
+        }
         @CustomType.Setter
         public Builder gbpTag(@Nullable Integer gbpTag) {
 
@@ -199,6 +238,12 @@ public final class NetworktemplateAclTags {
         public Builder network(@Nullable String network) {
 
             this.network = network;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder portUsage(@Nullable String portUsage) {
+
+            this.portUsage = portUsage;
             return this;
         }
         @CustomType.Setter
@@ -235,9 +280,11 @@ public final class NetworktemplateAclTags {
         }
         public NetworktemplateAclTags build() {
             final var _resultValue = new NetworktemplateAclTags();
+            _resultValue.etherTypes = etherTypes;
             _resultValue.gbpTag = gbpTag;
             _resultValue.macs = macs;
             _resultValue.network = network;
+            _resultValue.portUsage = portUsage;
             _resultValue.radiusGroup = radiusGroup;
             _resultValue.specs = specs;
             _resultValue.subnets = subnets;

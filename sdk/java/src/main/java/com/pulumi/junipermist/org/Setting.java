@@ -20,6 +20,7 @@ import com.pulumi.junipermist.org.outputs.SettingJcloud;
 import com.pulumi.junipermist.org.outputs.SettingJcloudRa;
 import com.pulumi.junipermist.org.outputs.SettingJuniper;
 import com.pulumi.junipermist.org.outputs.SettingJunosShellAccess;
+import com.pulumi.junipermist.org.outputs.SettingMarvis;
 import com.pulumi.junipermist.org.outputs.SettingMgmt;
 import com.pulumi.junipermist.org.outputs.SettingMistNac;
 import com.pulumi.junipermist.org.outputs.SettingMxedgeMgmt;
@@ -27,6 +28,8 @@ import com.pulumi.junipermist.org.outputs.SettingOpticPortConfig;
 import com.pulumi.junipermist.org.outputs.SettingPasswordPolicy;
 import com.pulumi.junipermist.org.outputs.SettingPcap;
 import com.pulumi.junipermist.org.outputs.SettingSecurity;
+import com.pulumi.junipermist.org.outputs.SettingSsr;
+import com.pulumi.junipermist.org.outputs.SettingSwitch;
 import com.pulumi.junipermist.org.outputs.SettingSwitchMgmt;
 import com.pulumi.junipermist.org.outputs.SettingSyntheticTest;
 import com.pulumi.junipermist.org.outputs.SettingVpnOptions;
@@ -87,14 +90,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.apiPolicy);
     }
     /**
-     * List of PEM-encoded ca certs
+     * RADSec certificates for AP
      * 
      */
     @Export(name="cacerts", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> cacerts;
 
     /**
-     * @return List of PEM-encoded ca certs
+     * @return RADSec certificates for AP
      * 
      */
     public Output<List<String>> cacerts() {
@@ -240,6 +243,12 @@ public class Setting extends com.pulumi.resources.CustomResource {
     public Output<Optional<SettingJunosShellAccess>> junosShellAccess() {
         return Codegen.optional(this.junosShellAccess);
     }
+    @Export(name="marvis", refs={SettingMarvis.class}, tree="[0]")
+    private Output</* @Nullable */ SettingMarvis> marvis;
+
+    public Output<Optional<SettingMarvis>> marvis() {
+        return Codegen.optional(this.marvis);
+    }
     /**
      * management-related properties
      * 
@@ -311,6 +320,18 @@ public class Setting extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<SettingSecurity>> security() {
         return Codegen.optional(this.security);
+    }
+    @Export(name="ssr", refs={SettingSsr.class}, tree="[0]")
+    private Output</* @Nullable */ SettingSsr> ssr;
+
+    public Output<Optional<SettingSsr>> ssr() {
+        return Codegen.optional(this.ssr);
+    }
+    @Export(name="switch", refs={SettingSwitch.class}, tree="[0]")
+    private Output</* @Nullable */ SettingSwitch> switch_;
+
+    public Output<Optional<SettingSwitch>> switch_() {
+        return Codegen.optional(this.switch_);
     }
     @Export(name="switchMgmt", refs={SettingSwitchMgmt.class}, tree="[0]")
     private Output</* @Nullable */ SettingSwitchMgmt> switchMgmt;

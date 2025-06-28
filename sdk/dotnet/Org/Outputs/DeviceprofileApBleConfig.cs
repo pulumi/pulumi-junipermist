@@ -51,7 +51,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? EddystoneUidEnabled;
         /// <summary>
-        /// Frequency (msec) of data emmit by Eddystone-UID beacon
+        /// Frequency (msec) of data emit by Eddystone-UID beacon
         /// </summary>
         public readonly int? EddystoneUidFreqMsec;
         /// <summary>
@@ -89,7 +89,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? IbeaconEnabled;
         /// <summary>
-        /// Frequency (msec) of data emmit for iBeacon
+        /// Frequency (msec) of data emit for iBeacon
         /// </summary>
         public readonly int? IbeaconFreqMsec;
         /// <summary>

@@ -245,6 +245,12 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? WanArpPolicer { get; set; }
 
         /// <summary>
+        /// If `wan_type`==`wan`, disable speedtest
+        /// </summary>
+        [Input("wanDisableSpeedtest")]
+        public Input<bool>? WanDisableSpeedtest { get; set; }
+
+        /// <summary>
         /// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
         /// </summary>
         [Input("wanExtIp")]

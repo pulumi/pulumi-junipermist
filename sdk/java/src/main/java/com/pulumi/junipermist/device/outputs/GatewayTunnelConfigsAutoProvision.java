@@ -29,11 +29,16 @@ public final class GatewayTunnelConfigsAutoProvision {
      */
     private String provider;
     /**
-     * @return API override for POP selection
+     * @return API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
      * 
      */
     private @Nullable String region;
     private @Nullable GatewayTunnelConfigsAutoProvisionSecondary secondary;
+    /**
+     * @return if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we&#39;ll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
+     * 
+     */
+    private @Nullable String serviceConnection;
 
     private GatewayTunnelConfigsAutoProvision() {}
     public Optional<Boolean> enable() {
@@ -57,7 +62,7 @@ public final class GatewayTunnelConfigsAutoProvision {
         return this.provider;
     }
     /**
-     * @return API override for POP selection
+     * @return API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
      * 
      */
     public Optional<String> region() {
@@ -65,6 +70,13 @@ public final class GatewayTunnelConfigsAutoProvision {
     }
     public Optional<GatewayTunnelConfigsAutoProvisionSecondary> secondary() {
         return Optional.ofNullable(this.secondary);
+    }
+    /**
+     * @return if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we&#39;ll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
+     * 
+     */
+    public Optional<String> serviceConnection() {
+        return Optional.ofNullable(this.serviceConnection);
     }
 
     public static Builder builder() {
@@ -82,6 +94,7 @@ public final class GatewayTunnelConfigsAutoProvision {
         private String provider;
         private @Nullable String region;
         private @Nullable GatewayTunnelConfigsAutoProvisionSecondary secondary;
+        private @Nullable String serviceConnection;
         public Builder() {}
         public Builder(GatewayTunnelConfigsAutoProvision defaults) {
     	      Objects.requireNonNull(defaults);
@@ -91,6 +104,7 @@ public final class GatewayTunnelConfigsAutoProvision {
     	      this.provider = defaults.provider;
     	      this.region = defaults.region;
     	      this.secondary = defaults.secondary;
+    	      this.serviceConnection = defaults.serviceConnection;
         }
 
         @CustomType.Setter
@@ -131,6 +145,12 @@ public final class GatewayTunnelConfigsAutoProvision {
             this.secondary = secondary;
             return this;
         }
+        @CustomType.Setter
+        public Builder serviceConnection(@Nullable String serviceConnection) {
+
+            this.serviceConnection = serviceConnection;
+            return this;
+        }
         public GatewayTunnelConfigsAutoProvision build() {
             final var _resultValue = new GatewayTunnelConfigsAutoProvision();
             _resultValue.enable = enable;
@@ -139,6 +159,7 @@ public final class GatewayTunnelConfigsAutoProvision {
             _resultValue.provider = provider;
             _resultValue.region = region;
             _resultValue.secondary = secondary;
+            _resultValue.serviceConnection = serviceConnection;
             return _resultValue;
         }
     }

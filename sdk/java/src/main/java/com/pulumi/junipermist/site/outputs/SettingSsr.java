@@ -13,13 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingSsr {
+    /**
+     * @return List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+     * 
+     */
     private @Nullable List<String> conductorHosts;
+    /**
+     * @return Token to be used by the SSR Devices to connect to the Conductor
+     * 
+     */
+    private @Nullable String conductorToken;
+    /**
+     * @return Disable stats collection on SSR devices
+     * 
+     */
     private @Nullable Boolean disableStats;
 
     private SettingSsr() {}
+    /**
+     * @return List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+     * 
+     */
     public List<String> conductorHosts() {
         return this.conductorHosts == null ? List.of() : this.conductorHosts;
     }
+    /**
+     * @return Token to be used by the SSR Devices to connect to the Conductor
+     * 
+     */
+    public Optional<String> conductorToken() {
+        return Optional.ofNullable(this.conductorToken);
+    }
+    /**
+     * @return Disable stats collection on SSR devices
+     * 
+     */
     public Optional<Boolean> disableStats() {
         return Optional.ofNullable(this.disableStats);
     }
@@ -34,11 +62,13 @@ public final class SettingSsr {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> conductorHosts;
+        private @Nullable String conductorToken;
         private @Nullable Boolean disableStats;
         public Builder() {}
         public Builder(SettingSsr defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.conductorHosts = defaults.conductorHosts;
+    	      this.conductorToken = defaults.conductorToken;
     	      this.disableStats = defaults.disableStats;
         }
 
@@ -52,6 +82,12 @@ public final class SettingSsr {
             return conductorHosts(List.of(conductorHosts));
         }
         @CustomType.Setter
+        public Builder conductorToken(@Nullable String conductorToken) {
+
+            this.conductorToken = conductorToken;
+            return this;
+        }
+        @CustomType.Setter
         public Builder disableStats(@Nullable Boolean disableStats) {
 
             this.disableStats = disableStats;
@@ -60,6 +96,7 @@ public final class SettingSsr {
         public SettingSsr build() {
             final var _resultValue = new SettingSsr();
             _resultValue.conductorHosts = conductorHosts;
+            _resultValue.conductorToken = conductorToken;
             _resultValue.disableStats = disableStats;
             return _resultValue;
         }

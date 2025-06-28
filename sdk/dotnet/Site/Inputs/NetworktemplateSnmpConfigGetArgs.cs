@@ -32,6 +32,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("engineId")]
         public Input<string>? EngineId { get; set; }
 
+        /// <summary>
+        /// enum: `local`, `use_mac_address`
+        /// </summary>
+        [Input("engineIdType")]
+        public Input<string>? EngineIdType { get; set; }
+
         [Input("location")]
         public Input<string>? Location { get; set; }
 

@@ -35,17 +35,17 @@ public final class SettingGatewayMgmt {
      */
     private @Nullable Integer configRevertTimer;
     /**
-     * @return For both SSR and SRX disable console port
+     * @return For SSR and SRX, disable console port
      * 
      */
     private @Nullable Boolean disableConsole;
     /**
-     * @return For both SSR and SRX disable management interface
+     * @return For SSR and SRX, disable management interface
      * 
      */
     private @Nullable Boolean disableOob;
     /**
-     * @return For SSR disable usb interface
+     * @return For SSR and SRX, disable usb interface
      * 
      */
     private @Nullable Boolean disableUsb;
@@ -95,21 +95,21 @@ public final class SettingGatewayMgmt {
         return Optional.ofNullable(this.configRevertTimer);
     }
     /**
-     * @return For both SSR and SRX disable console port
+     * @return For SSR and SRX, disable console port
      * 
      */
     public Optional<Boolean> disableConsole() {
         return Optional.ofNullable(this.disableConsole);
     }
     /**
-     * @return For both SSR and SRX disable management interface
+     * @return For SSR and SRX, disable management interface
      * 
      */
     public Optional<Boolean> disableOob() {
         return Optional.ofNullable(this.disableOob);
     }
     /**
-     * @return For SSR disable usb interface
+     * @return For SSR and SRX, disable usb interface
      * 
      */
     public Optional<Boolean> disableUsb() {

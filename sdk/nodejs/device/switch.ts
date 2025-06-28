@@ -64,7 +64,8 @@ export class Switch extends pulumi.CustomResource {
     public readonly dhcpSnooping!: pulumi.Output<outputs.device.SwitchDhcpSnooping | undefined>;
     public readonly dhcpdConfig!: pulumi.Output<outputs.device.SwitchDhcpdConfig | undefined>;
     /**
-     * For a claimed switch, we control the configs by default. This option (disables the behavior)
+     * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+     * `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
      */
     public readonly disableAutoConfig!: pulumi.Output<boolean>;
     /**
@@ -100,7 +101,8 @@ export class Switch extends pulumi.CustomResource {
      */
     public /*out*/ readonly mac!: pulumi.Output<string>;
     /**
-     * For an adopted switch, we don’t overwrite their existing configs automatically
+     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+     * the adopted switch/gateway to be managed/configured by Mist.
      */
     public readonly managed!: pulumi.Output<boolean>;
     /**
@@ -352,7 +354,8 @@ export interface SwitchState {
     dhcpSnooping?: pulumi.Input<inputs.device.SwitchDhcpSnooping>;
     dhcpdConfig?: pulumi.Input<inputs.device.SwitchDhcpdConfig>;
     /**
-     * For a claimed switch, we control the configs by default. This option (disables the behavior)
+     * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+     * `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
      */
     disableAutoConfig?: pulumi.Input<boolean>;
     /**
@@ -388,7 +391,8 @@ export interface SwitchState {
      */
     mac?: pulumi.Input<string>;
     /**
-     * For an adopted switch, we don’t overwrite their existing configs automatically
+     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+     * the adopted switch/gateway to be managed/configured by Mist.
      */
     managed?: pulumi.Input<boolean>;
     /**
@@ -514,7 +518,8 @@ export interface SwitchArgs {
     dhcpSnooping?: pulumi.Input<inputs.device.SwitchDhcpSnooping>;
     dhcpdConfig?: pulumi.Input<inputs.device.SwitchDhcpdConfig>;
     /**
-     * For a claimed switch, we control the configs by default. This option (disables the behavior)
+     * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+     * `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
      */
     disableAutoConfig?: pulumi.Input<boolean>;
     /**
@@ -543,7 +548,8 @@ export interface SwitchArgs {
      */
     localPortConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchLocalPortConfig>}>;
     /**
-     * For an adopted switch, we don’t overwrite their existing configs automatically
+     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+     * the adopted switch/gateway to be managed/configured by Mist.
      */
     managed?: pulumi.Input<boolean>;
     /**

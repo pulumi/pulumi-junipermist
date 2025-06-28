@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// If `provider`==`custom-ipsec`, networks reachable via this tunnel
+        /// If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
@@ -59,7 +59,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Protocol;
         /// <summary>
-        /// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+        /// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
         /// </summary>
         public readonly string? Provider;
         /// <summary>

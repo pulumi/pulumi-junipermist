@@ -37,6 +37,7 @@ class SettingArgs:
                  jcloud: Optional[pulumi.Input['SettingJcloudArgs']] = None,
                  jcloud_ra: Optional[pulumi.Input['SettingJcloudRaArgs']] = None,
                  junos_shell_access: Optional[pulumi.Input['SettingJunosShellAccessArgs']] = None,
+                 marvis: Optional[pulumi.Input['SettingMarvisArgs']] = None,
                  mgmt: Optional[pulumi.Input['SettingMgmtArgs']] = None,
                  mist_nac: Optional[pulumi.Input['SettingMistNacArgs']] = None,
                  mxedge_mgmt: Optional[pulumi.Input['SettingMxedgeMgmtArgs']] = None,
@@ -44,6 +45,8 @@ class SettingArgs:
                  password_policy: Optional[pulumi.Input['SettingPasswordPolicyArgs']] = None,
                  pcap: Optional[pulumi.Input['SettingPcapArgs']] = None,
                  security: Optional[pulumi.Input['SettingSecurityArgs']] = None,
+                 ssr: Optional[pulumi.Input['SettingSsrArgs']] = None,
+                 switch: Optional[pulumi.Input['SettingSwitchArgs']] = None,
                  switch_mgmt: Optional[pulumi.Input['SettingSwitchMgmtArgs']] = None,
                  switch_updown_threshold: Optional[pulumi.Input[builtins.int]] = None,
                  synthetic_test: Optional[pulumi.Input['SettingSyntheticTestArgs']] = None,
@@ -56,7 +59,7 @@ class SettingArgs:
         The set of arguments for constructing a Setting resource.
         :param pulumi.Input[builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cacerts: List of PEM-encoded ca certs
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cacerts: RADSec certificates for AP
         :param pulumi.Input['SettingDeviceCertArgs'] device_cert: common device cert, optional
         :param pulumi.Input[builtins.int] device_updown_threshold: Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
                AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
@@ -103,6 +106,8 @@ class SettingArgs:
             pulumi.set(__self__, "jcloud_ra", jcloud_ra)
         if junos_shell_access is not None:
             pulumi.set(__self__, "junos_shell_access", junos_shell_access)
+        if marvis is not None:
+            pulumi.set(__self__, "marvis", marvis)
         if mgmt is not None:
             pulumi.set(__self__, "mgmt", mgmt)
         if mist_nac is not None:
@@ -117,6 +122,10 @@ class SettingArgs:
             pulumi.set(__self__, "pcap", pcap)
         if security is not None:
             pulumi.set(__self__, "security", security)
+        if ssr is not None:
+            pulumi.set(__self__, "ssr", ssr)
+        if switch is not None:
+            pulumi.set(__self__, "switch", switch)
         if switch_mgmt is not None:
             pulumi.set(__self__, "switch_mgmt", switch_mgmt)
         if switch_updown_threshold is not None:
@@ -169,7 +178,7 @@ class SettingArgs:
     @pulumi.getter
     def cacerts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        List of PEM-encoded ca certs
+        RADSec certificates for AP
         """
         return pulumi.get(self, "cacerts")
 
@@ -302,6 +311,15 @@ class SettingArgs:
 
     @property
     @pulumi.getter
+    def marvis(self) -> Optional[pulumi.Input['SettingMarvisArgs']]:
+        return pulumi.get(self, "marvis")
+
+    @marvis.setter
+    def marvis(self, value: Optional[pulumi.Input['SettingMarvisArgs']]):
+        pulumi.set(self, "marvis", value)
+
+    @property
+    @pulumi.getter
     def mgmt(self) -> Optional[pulumi.Input['SettingMgmtArgs']]:
         """
         management-related properties
@@ -371,6 +389,24 @@ class SettingArgs:
     @security.setter
     def security(self, value: Optional[pulumi.Input['SettingSecurityArgs']]):
         pulumi.set(self, "security", value)
+
+    @property
+    @pulumi.getter
+    def ssr(self) -> Optional[pulumi.Input['SettingSsrArgs']]:
+        return pulumi.get(self, "ssr")
+
+    @ssr.setter
+    def ssr(self, value: Optional[pulumi.Input['SettingSsrArgs']]):
+        pulumi.set(self, "ssr", value)
+
+    @property
+    @pulumi.getter
+    def switch(self) -> Optional[pulumi.Input['SettingSwitchArgs']]:
+        return pulumi.get(self, "switch")
+
+    @switch.setter
+    def switch(self, value: Optional[pulumi.Input['SettingSwitchArgs']]):
+        pulumi.set(self, "switch", value)
 
     @property
     @pulumi.getter(name="switchMgmt")
@@ -471,6 +507,7 @@ class _SettingState:
                  jcloud_ra: Optional[pulumi.Input['SettingJcloudRaArgs']] = None,
                  juniper: Optional[pulumi.Input['SettingJuniperArgs']] = None,
                  junos_shell_access: Optional[pulumi.Input['SettingJunosShellAccessArgs']] = None,
+                 marvis: Optional[pulumi.Input['SettingMarvisArgs']] = None,
                  mgmt: Optional[pulumi.Input['SettingMgmtArgs']] = None,
                  mist_nac: Optional[pulumi.Input['SettingMistNacArgs']] = None,
                  mxedge_mgmt: Optional[pulumi.Input['SettingMxedgeMgmtArgs']] = None,
@@ -479,6 +516,8 @@ class _SettingState:
                  password_policy: Optional[pulumi.Input['SettingPasswordPolicyArgs']] = None,
                  pcap: Optional[pulumi.Input['SettingPcapArgs']] = None,
                  security: Optional[pulumi.Input['SettingSecurityArgs']] = None,
+                 ssr: Optional[pulumi.Input['SettingSsrArgs']] = None,
+                 switch: Optional[pulumi.Input['SettingSwitchArgs']] = None,
                  switch_mgmt: Optional[pulumi.Input['SettingSwitchMgmtArgs']] = None,
                  switch_updown_threshold: Optional[pulumi.Input[builtins.int]] = None,
                  synthetic_test: Optional[pulumi.Input['SettingSyntheticTestArgs']] = None,
@@ -491,7 +530,7 @@ class _SettingState:
         Input properties used for looking up and filtering Setting resources.
         :param pulumi.Input[builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cacerts: List of PEM-encoded ca certs
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cacerts: RADSec certificates for AP
         :param pulumi.Input['SettingDeviceCertArgs'] device_cert: common device cert, optional
         :param pulumi.Input[builtins.int] device_updown_threshold: Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
                AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
@@ -541,6 +580,8 @@ class _SettingState:
             pulumi.set(__self__, "juniper", juniper)
         if junos_shell_access is not None:
             pulumi.set(__self__, "junos_shell_access", junos_shell_access)
+        if marvis is not None:
+            pulumi.set(__self__, "marvis", marvis)
         if mgmt is not None:
             pulumi.set(__self__, "mgmt", mgmt)
         if mist_nac is not None:
@@ -557,6 +598,10 @@ class _SettingState:
             pulumi.set(__self__, "pcap", pcap)
         if security is not None:
             pulumi.set(__self__, "security", security)
+        if ssr is not None:
+            pulumi.set(__self__, "ssr", ssr)
+        if switch is not None:
+            pulumi.set(__self__, "switch", switch)
         if switch_mgmt is not None:
             pulumi.set(__self__, "switch_mgmt", switch_mgmt)
         if switch_updown_threshold is not None:
@@ -600,7 +645,7 @@ class _SettingState:
     @pulumi.getter
     def cacerts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        List of PEM-encoded ca certs
+        RADSec certificates for AP
         """
         return pulumi.get(self, "cacerts")
 
@@ -751,6 +796,15 @@ class _SettingState:
 
     @property
     @pulumi.getter
+    def marvis(self) -> Optional[pulumi.Input['SettingMarvisArgs']]:
+        return pulumi.get(self, "marvis")
+
+    @marvis.setter
+    def marvis(self, value: Optional[pulumi.Input['SettingMarvisArgs']]):
+        pulumi.set(self, "marvis", value)
+
+    @property
+    @pulumi.getter
     def mgmt(self) -> Optional[pulumi.Input['SettingMgmtArgs']]:
         """
         management-related properties
@@ -829,6 +883,24 @@ class _SettingState:
     @security.setter
     def security(self, value: Optional[pulumi.Input['SettingSecurityArgs']]):
         pulumi.set(self, "security", value)
+
+    @property
+    @pulumi.getter
+    def ssr(self) -> Optional[pulumi.Input['SettingSsrArgs']]:
+        return pulumi.get(self, "ssr")
+
+    @ssr.setter
+    def ssr(self, value: Optional[pulumi.Input['SettingSsrArgs']]):
+        pulumi.set(self, "ssr", value)
+
+    @property
+    @pulumi.getter
+    def switch(self) -> Optional[pulumi.Input['SettingSwitchArgs']]:
+        return pulumi.get(self, "switch")
+
+    @switch.setter
+    def switch(self, value: Optional[pulumi.Input['SettingSwitchArgs']]):
+        pulumi.set(self, "switch", value)
 
     @property
     @pulumi.getter(name="switchMgmt")
@@ -930,6 +1002,7 @@ class Setting(pulumi.CustomResource):
                  jcloud: Optional[pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']]] = None,
                  jcloud_ra: Optional[pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']]] = None,
                  junos_shell_access: Optional[pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']]] = None,
+                 marvis: Optional[pulumi.Input[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']]] = None,
                  mgmt: Optional[pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']]] = None,
                  mist_nac: Optional[pulumi.Input[Union['SettingMistNacArgs', 'SettingMistNacArgsDict']]] = None,
                  mxedge_mgmt: Optional[pulumi.Input[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']]] = None,
@@ -938,6 +1011,8 @@ class Setting(pulumi.CustomResource):
                  password_policy: Optional[pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']]] = None,
                  pcap: Optional[pulumi.Input[Union['SettingPcapArgs', 'SettingPcapArgsDict']]] = None,
                  security: Optional[pulumi.Input[Union['SettingSecurityArgs', 'SettingSecurityArgsDict']]] = None,
+                 ssr: Optional[pulumi.Input[Union['SettingSsrArgs', 'SettingSsrArgsDict']]] = None,
+                 switch: Optional[pulumi.Input[Union['SettingSwitchArgs', 'SettingSwitchArgsDict']]] = None,
                  switch_mgmt: Optional[pulumi.Input[Union['SettingSwitchMgmtArgs', 'SettingSwitchMgmtArgsDict']]] = None,
                  switch_updown_threshold: Optional[pulumi.Input[builtins.int]] = None,
                  synthetic_test: Optional[pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
@@ -966,7 +1041,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cacerts: List of PEM-encoded ca certs
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cacerts: RADSec certificates for AP
         :param pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']] device_cert: common device cert, optional
         :param pulumi.Input[builtins.int] device_updown_threshold: Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
                AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
@@ -1034,6 +1109,7 @@ class Setting(pulumi.CustomResource):
                  jcloud: Optional[pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']]] = None,
                  jcloud_ra: Optional[pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']]] = None,
                  junos_shell_access: Optional[pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']]] = None,
+                 marvis: Optional[pulumi.Input[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']]] = None,
                  mgmt: Optional[pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']]] = None,
                  mist_nac: Optional[pulumi.Input[Union['SettingMistNacArgs', 'SettingMistNacArgsDict']]] = None,
                  mxedge_mgmt: Optional[pulumi.Input[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']]] = None,
@@ -1042,6 +1118,8 @@ class Setting(pulumi.CustomResource):
                  password_policy: Optional[pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']]] = None,
                  pcap: Optional[pulumi.Input[Union['SettingPcapArgs', 'SettingPcapArgsDict']]] = None,
                  security: Optional[pulumi.Input[Union['SettingSecurityArgs', 'SettingSecurityArgsDict']]] = None,
+                 ssr: Optional[pulumi.Input[Union['SettingSsrArgs', 'SettingSsrArgsDict']]] = None,
+                 switch: Optional[pulumi.Input[Union['SettingSwitchArgs', 'SettingSwitchArgsDict']]] = None,
                  switch_mgmt: Optional[pulumi.Input[Union['SettingSwitchMgmtArgs', 'SettingSwitchMgmtArgsDict']]] = None,
                  switch_updown_threshold: Optional[pulumi.Input[builtins.int]] = None,
                  synthetic_test: Optional[pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
@@ -1073,6 +1151,7 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["jcloud"] = jcloud
             __props__.__dict__["jcloud_ra"] = jcloud_ra
             __props__.__dict__["junos_shell_access"] = junos_shell_access
+            __props__.__dict__["marvis"] = marvis
             __props__.__dict__["mgmt"] = mgmt
             __props__.__dict__["mist_nac"] = mist_nac
             __props__.__dict__["mxedge_mgmt"] = mxedge_mgmt
@@ -1083,6 +1162,8 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["password_policy"] = password_policy
             __props__.__dict__["pcap"] = pcap
             __props__.__dict__["security"] = security
+            __props__.__dict__["ssr"] = ssr
+            __props__.__dict__["switch"] = switch
             __props__.__dict__["switch_mgmt"] = switch_mgmt
             __props__.__dict__["switch_updown_threshold"] = switch_updown_threshold
             __props__.__dict__["synthetic_test"] = synthetic_test
@@ -1119,6 +1200,7 @@ class Setting(pulumi.CustomResource):
             jcloud_ra: Optional[pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']]] = None,
             juniper: Optional[pulumi.Input[Union['SettingJuniperArgs', 'SettingJuniperArgsDict']]] = None,
             junos_shell_access: Optional[pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']]] = None,
+            marvis: Optional[pulumi.Input[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']]] = None,
             mgmt: Optional[pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']]] = None,
             mist_nac: Optional[pulumi.Input[Union['SettingMistNacArgs', 'SettingMistNacArgsDict']]] = None,
             mxedge_mgmt: Optional[pulumi.Input[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']]] = None,
@@ -1127,6 +1209,8 @@ class Setting(pulumi.CustomResource):
             password_policy: Optional[pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']]] = None,
             pcap: Optional[pulumi.Input[Union['SettingPcapArgs', 'SettingPcapArgsDict']]] = None,
             security: Optional[pulumi.Input[Union['SettingSecurityArgs', 'SettingSecurityArgsDict']]] = None,
+            ssr: Optional[pulumi.Input[Union['SettingSsrArgs', 'SettingSsrArgsDict']]] = None,
+            switch: Optional[pulumi.Input[Union['SettingSwitchArgs', 'SettingSwitchArgsDict']]] = None,
             switch_mgmt: Optional[pulumi.Input[Union['SettingSwitchMgmtArgs', 'SettingSwitchMgmtArgsDict']]] = None,
             switch_updown_threshold: Optional[pulumi.Input[builtins.int]] = None,
             synthetic_test: Optional[pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
@@ -1144,7 +1228,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cacerts: List of PEM-encoded ca certs
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cacerts: RADSec certificates for AP
         :param pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']] device_cert: common device cert, optional
         :param pulumi.Input[builtins.int] device_updown_threshold: Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
                AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
@@ -1182,6 +1266,7 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["jcloud_ra"] = jcloud_ra
         __props__.__dict__["juniper"] = juniper
         __props__.__dict__["junos_shell_access"] = junos_shell_access
+        __props__.__dict__["marvis"] = marvis
         __props__.__dict__["mgmt"] = mgmt
         __props__.__dict__["mist_nac"] = mist_nac
         __props__.__dict__["mxedge_mgmt"] = mxedge_mgmt
@@ -1190,6 +1275,8 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["password_policy"] = password_policy
         __props__.__dict__["pcap"] = pcap
         __props__.__dict__["security"] = security
+        __props__.__dict__["ssr"] = ssr
+        __props__.__dict__["switch"] = switch
         __props__.__dict__["switch_mgmt"] = switch_mgmt
         __props__.__dict__["switch_updown_threshold"] = switch_updown_threshold
         __props__.__dict__["synthetic_test"] = synthetic_test
@@ -1218,7 +1305,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def cacerts(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        List of PEM-encoded ca certs
+        RADSec certificates for AP
         """
         return pulumi.get(self, "cacerts")
 
@@ -1313,6 +1400,11 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def marvis(self) -> pulumi.Output[Optional['outputs.SettingMarvis']]:
+        return pulumi.get(self, "marvis")
+
+    @property
+    @pulumi.getter
     def mgmt(self) -> pulumi.Output[Optional['outputs.SettingMgmt']]:
         """
         management-related properties
@@ -1359,6 +1451,16 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def security(self) -> pulumi.Output[Optional['outputs.SettingSecurity']]:
         return pulumi.get(self, "security")
+
+    @property
+    @pulumi.getter
+    def ssr(self) -> pulumi.Output[Optional['outputs.SettingSsr']]:
+        return pulumi.get(self, "ssr")
+
+    @property
+    @pulumi.getter
+    def switch(self) -> pulumi.Output[Optional['outputs.SettingSwitch']]:
+        return pulumi.get(self, "switch")
 
     @property
     @pulumi.getter(name="switchMgmt")

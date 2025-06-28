@@ -680,14 +680,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+     * Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
      * 
      */
     @Import(name="predefinedSponsorsEnabled")
     private @Nullable Output<Boolean> predefinedSponsorsEnabled;
 
     /**
-     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
      * 
      */
     public Optional<Output<Boolean>> predefinedSponsorsEnabled() {
@@ -807,18 +807,48 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+     * Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
      * 
      */
     @Import(name="smsProvider")
     private @Nullable Output<String> smsProvider;
 
     /**
-     * @return Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+     * @return Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
      * 
      */
     public Optional<Output<String>> smsProvider() {
         return Optional.ofNullable(this.smsProvider);
+    }
+
+    /**
+     * Required if `sms_provider`==`smsglobal`, Client API Key
+     * 
+     */
+    @Import(name="smsglobalApiKey")
+    private @Nullable Output<String> smsglobalApiKey;
+
+    /**
+     * @return Required if `sms_provider`==`smsglobal`, Client API Key
+     * 
+     */
+    public Optional<Output<String>> smsglobalApiKey() {
+        return Optional.ofNullable(this.smsglobalApiKey);
+    }
+
+    /**
+     * Required if `sms_provider`==`smsglobal`, Client secret
+     * 
+     */
+    @Import(name="smsglobalApiSecret")
+    private @Nullable Output<String> smsglobalApiSecret;
+
+    /**
+     * @return Required if `sms_provider`==`smsglobal`, Client secret
+     * 
+     */
+    public Optional<Output<String>> smsglobalApiSecret() {
+        return Optional.ofNullable(this.smsglobalApiSecret);
     }
 
     /**
@@ -993,14 +1023,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+     * Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
      * 
      */
     @Import(name="ssoIdpSignAlgo")
     private @Nullable Output<String> ssoIdpSignAlgo;
 
     /**
-     * @return Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+     * @return Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
      * 
      */
     public Optional<Output<String>> ssoIdpSignAlgo() {
@@ -1184,6 +1214,8 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         this.smsExpire = $.smsExpire;
         this.smsMessageFormat = $.smsMessageFormat;
         this.smsProvider = $.smsProvider;
+        this.smsglobalApiKey = $.smsglobalApiKey;
+        this.smsglobalApiSecret = $.smsglobalApiSecret;
         this.sponsorAutoApprove = $.sponsorAutoApprove;
         this.sponsorEmailDomains = $.sponsorEmailDomains;
         this.sponsorEnabled = $.sponsorEnabled;
@@ -2189,7 +2221,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param predefinedSponsorsEnabled Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+         * @param predefinedSponsorsEnabled Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
          * 
          * @return builder
          * 
@@ -2200,7 +2232,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param predefinedSponsorsEnabled Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+         * @param predefinedSponsorsEnabled Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
          * 
          * @return builder
          * 
@@ -2366,7 +2398,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smsProvider Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+         * @param smsProvider Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
          * 
          * @return builder
          * 
@@ -2377,13 +2409,55 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smsProvider Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+         * @param smsProvider Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
          * 
          * @return builder
          * 
          */
         public Builder smsProvider(String smsProvider) {
             return smsProvider(Output.of(smsProvider));
+        }
+
+        /**
+         * @param smsglobalApiKey Required if `sms_provider`==`smsglobal`, Client API Key
+         * 
+         * @return builder
+         * 
+         */
+        public Builder smsglobalApiKey(@Nullable Output<String> smsglobalApiKey) {
+            $.smsglobalApiKey = smsglobalApiKey;
+            return this;
+        }
+
+        /**
+         * @param smsglobalApiKey Required if `sms_provider`==`smsglobal`, Client API Key
+         * 
+         * @return builder
+         * 
+         */
+        public Builder smsglobalApiKey(String smsglobalApiKey) {
+            return smsglobalApiKey(Output.of(smsglobalApiKey));
+        }
+
+        /**
+         * @param smsglobalApiSecret Required if `sms_provider`==`smsglobal`, Client secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder smsglobalApiSecret(@Nullable Output<String> smsglobalApiSecret) {
+            $.smsglobalApiSecret = smsglobalApiSecret;
+            return this;
+        }
+
+        /**
+         * @param smsglobalApiSecret Required if `sms_provider`==`smsglobal`, Client secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder smsglobalApiSecret(String smsglobalApiSecret) {
+            return smsglobalApiSecret(Output.of(smsglobalApiSecret));
         }
 
         /**
@@ -2634,7 +2708,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIdpSignAlgo Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+         * @param ssoIdpSignAlgo Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          * 
          * @return builder
          * 
@@ -2645,7 +2719,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIdpSignAlgo Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+         * @param ssoIdpSignAlgo Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          * 
          * @return builder
          * 

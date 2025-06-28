@@ -31,13 +31,19 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string> Provider { get; set; } = null!;
 
         /// <summary>
-        /// API override for POP selection
+        /// API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         [Input("secondary")]
         public Input<Inputs.GatewayTunnelConfigsAutoProvisionSecondaryArgs>? Secondary { get; set; }
+
+        /// <summary>
+        /// if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we'll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
+        /// </summary>
+        [Input("serviceConnection")]
+        public Input<string>? ServiceConnection { get; set; }
 
         public GatewayTunnelConfigsAutoProvisionArgs()
         {

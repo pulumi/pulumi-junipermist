@@ -78,6 +78,10 @@ export class Webhook extends pulumi.CustomResource {
     }
 
     /**
+     * Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+     */
+    public readonly assetfilterIds!: pulumi.Output<string[] | undefined>;
+    /**
      * Whether webhook is enabled
      */
     public readonly enabled!: pulumi.Output<boolean>;
@@ -161,6 +165,7 @@ export class Webhook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WebhookState | undefined;
+            resourceInputs["assetfilterIds"] = state ? state.assetfilterIds : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["headers"] = state ? state.headers : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -191,6 +196,7 @@ export class Webhook extends pulumi.CustomResource {
             if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
+            resourceInputs["assetfilterIds"] = args ? args.assetfilterIds : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["headers"] = args ? args.headers : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -222,6 +228,10 @@ export class Webhook extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Webhook resources.
  */
 export interface WebhookState {
+    /**
+     * Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+     */
+    assetfilterIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether webhook is enabled
      */
@@ -298,6 +308,10 @@ export interface WebhookState {
  * The set of arguments for constructing a Webhook resource.
  */
 export interface WebhookArgs {
+    /**
+     * Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+     */
+    assetfilterIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether webhook is enabled
      */

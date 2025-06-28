@@ -13,16 +13,29 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingSsr
     {
+        /// <summary>
+        /// List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+        /// </summary>
         public readonly ImmutableArray<string> ConductorHosts;
+        /// <summary>
+        /// Token to be used by the SSR Devices to connect to the Conductor
+        /// </summary>
+        public readonly string? ConductorToken;
+        /// <summary>
+        /// Disable stats collection on SSR devices
+        /// </summary>
         public readonly bool? DisableStats;
 
         [OutputConstructor]
         private SettingSsr(
             ImmutableArray<string> conductorHosts,
 
+            string? conductorToken,
+
             bool? disableStats)
         {
             ConductorHosts = conductorHosts;
+            ConductorToken = conductorToken;
             DisableStats = disableStats;
         }
     }

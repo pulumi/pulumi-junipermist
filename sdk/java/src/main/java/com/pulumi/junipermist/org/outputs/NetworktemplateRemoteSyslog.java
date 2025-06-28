@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateRemoteSyslog {
     private @Nullable NetworktemplateRemoteSyslogArchive archive;
+    private @Nullable List<String> cacerts;
     private @Nullable NetworktemplateRemoteSyslogConsole console;
     private @Nullable Boolean enabled;
     private @Nullable List<NetworktemplateRemoteSyslogFile> files;
@@ -39,6 +40,9 @@ public final class NetworktemplateRemoteSyslog {
     private NetworktemplateRemoteSyslog() {}
     public Optional<NetworktemplateRemoteSyslogArchive> archive() {
         return Optional.ofNullable(this.archive);
+    }
+    public List<String> cacerts() {
+        return this.cacerts == null ? List.of() : this.cacerts;
     }
     public Optional<NetworktemplateRemoteSyslogConsole> console() {
         return Optional.ofNullable(this.console);
@@ -83,6 +87,7 @@ public final class NetworktemplateRemoteSyslog {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable NetworktemplateRemoteSyslogArchive archive;
+        private @Nullable List<String> cacerts;
         private @Nullable NetworktemplateRemoteSyslogConsole console;
         private @Nullable Boolean enabled;
         private @Nullable List<NetworktemplateRemoteSyslogFile> files;
@@ -95,6 +100,7 @@ public final class NetworktemplateRemoteSyslog {
         public Builder(NetworktemplateRemoteSyslog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.archive = defaults.archive;
+    	      this.cacerts = defaults.cacerts;
     	      this.console = defaults.console;
     	      this.enabled = defaults.enabled;
     	      this.files = defaults.files;
@@ -110,6 +116,15 @@ public final class NetworktemplateRemoteSyslog {
 
             this.archive = archive;
             return this;
+        }
+        @CustomType.Setter
+        public Builder cacerts(@Nullable List<String> cacerts) {
+
+            this.cacerts = cacerts;
+            return this;
+        }
+        public Builder cacerts(String... cacerts) {
+            return cacerts(List.of(cacerts));
         }
         @CustomType.Setter
         public Builder console(@Nullable NetworktemplateRemoteSyslogConsole console) {
@@ -171,6 +186,7 @@ public final class NetworktemplateRemoteSyslog {
         public NetworktemplateRemoteSyslog build() {
             final var _resultValue = new NetworktemplateRemoteSyslog();
             _resultValue.archive = archive;
+            _resultValue.cacerts = cacerts;
             _resultValue.console = console;
             _resultValue.enabled = enabled;
             _resultValue.files = files;

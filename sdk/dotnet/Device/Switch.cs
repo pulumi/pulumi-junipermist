@@ -54,7 +54,8 @@ namespace Pulumi.JuniperMist.Device
         public Output<Outputs.SwitchDhcpdConfig?> DhcpdConfig { get; private set; } = null!;
 
         /// <summary>
-        /// For a claimed switch, we control the configs by default. This option (disables the behavior)
+        /// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+        /// `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         /// </summary>
         [Output("disableAutoConfig")]
         public Output<bool> DisableAutoConfig { get; private set; } = null!;
@@ -112,7 +113,8 @@ namespace Pulumi.JuniperMist.Device
         public Output<string> Mac { get; private set; } = null!;
 
         /// <summary>
-        /// For an adopted switch, we don’t overwrite their existing configs automatically
+        /// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+        /// the adopted switch/gateway to be managed/configured by Mist.
         /// </summary>
         [Output("managed")]
         public Output<bool> Managed { get; private set; } = null!;
@@ -374,7 +376,8 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.SwitchDhcpdConfigArgs>? DhcpdConfig { get; set; }
 
         /// <summary>
-        /// For a claimed switch, we control the configs by default. This option (disables the behavior)
+        /// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+        /// `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         /// </summary>
         [Input("disableAutoConfig")]
         public Input<bool>? DisableAutoConfig { get; set; }
@@ -447,7 +450,8 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// For an adopted switch, we don’t overwrite their existing configs automatically
+        /// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+        /// the adopted switch/gateway to be managed/configured by Mist.
         /// </summary>
         [Input("managed")]
         public Input<bool>? Managed { get; set; }
@@ -703,7 +707,8 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.SwitchDhcpdConfigGetArgs>? DhcpdConfig { get; set; }
 
         /// <summary>
-        /// For a claimed switch, we control the configs by default. This option (disables the behavior)
+        /// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+        /// `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         /// </summary>
         [Input("disableAutoConfig")]
         public Input<bool>? DisableAutoConfig { get; set; }
@@ -791,7 +796,8 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// For an adopted switch, we don’t overwrite their existing configs automatically
+        /// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+        /// the adopted switch/gateway to be managed/configured by Mist.
         /// </summary>
         [Input("managed")]
         public Input<bool>? Managed { get; set; }

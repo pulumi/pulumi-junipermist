@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.site.inputs.NetworktemplatePortUsagesRuleArgs;
 import com.pulumi.junipermist.site.inputs.NetworktemplatePortUsagesStormControlArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -92,6 +93,21 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<Boolean>> bypassAuthWhenServerDownForUnknownClient() {
         return Optional.ofNullable(this.bypassAuthWhenServerDownForUnknownClient);
+    }
+
+    /**
+     * Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+     * 
+     */
+    @Import(name="communityVlanId")
+    private @Nullable Output<Integer> communityVlanId;
+
+    /**
+     * @return Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+     * 
+     */
+    public Optional<Output<Integer>> communityVlanId() {
+        return Optional.ofNullable(this.communityVlanId);
     }
 
     /**
@@ -596,6 +612,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         this.allowMultipleSupplicants = $.allowMultipleSupplicants;
         this.bypassAuthWhenServerDown = $.bypassAuthWhenServerDown;
         this.bypassAuthWhenServerDownForUnknownClient = $.bypassAuthWhenServerDownForUnknownClient;
+        this.communityVlanId = $.communityVlanId;
         this.description = $.description;
         this.disableAutoneg = $.disableAutoneg;
         this.disabled = $.disabled;
@@ -753,6 +770,27 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
          */
         public Builder bypassAuthWhenServerDownForUnknownClient(Boolean bypassAuthWhenServerDownForUnknownClient) {
             return bypassAuthWhenServerDownForUnknownClient(Output.of(bypassAuthWhenServerDownForUnknownClient));
+        }
+
+        /**
+         * @param communityVlanId Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+         * 
+         * @return builder
+         * 
+         */
+        public Builder communityVlanId(@Nullable Output<Integer> communityVlanId) {
+            $.communityVlanId = communityVlanId;
+            return this;
+        }
+
+        /**
+         * @param communityVlanId Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+         * 
+         * @return builder
+         * 
+         */
+        public Builder communityVlanId(Integer communityVlanId) {
+            return communityVlanId(Output.of(communityVlanId));
         }
 
         /**

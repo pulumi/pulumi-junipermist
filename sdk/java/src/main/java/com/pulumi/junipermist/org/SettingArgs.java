@@ -14,6 +14,7 @@ import com.pulumi.junipermist.org.inputs.SettingInstallerArgs;
 import com.pulumi.junipermist.org.inputs.SettingJcloudArgs;
 import com.pulumi.junipermist.org.inputs.SettingJcloudRaArgs;
 import com.pulumi.junipermist.org.inputs.SettingJunosShellAccessArgs;
+import com.pulumi.junipermist.org.inputs.SettingMarvisArgs;
 import com.pulumi.junipermist.org.inputs.SettingMgmtArgs;
 import com.pulumi.junipermist.org.inputs.SettingMistNacArgs;
 import com.pulumi.junipermist.org.inputs.SettingMxedgeMgmtArgs;
@@ -21,6 +22,8 @@ import com.pulumi.junipermist.org.inputs.SettingOpticPortConfigArgs;
 import com.pulumi.junipermist.org.inputs.SettingPasswordPolicyArgs;
 import com.pulumi.junipermist.org.inputs.SettingPcapArgs;
 import com.pulumi.junipermist.org.inputs.SettingSecurityArgs;
+import com.pulumi.junipermist.org.inputs.SettingSsrArgs;
+import com.pulumi.junipermist.org.inputs.SettingSwitchArgs;
 import com.pulumi.junipermist.org.inputs.SettingSwitchMgmtArgs;
 import com.pulumi.junipermist.org.inputs.SettingSyntheticTestArgs;
 import com.pulumi.junipermist.org.inputs.SettingVpnOptionsArgs;
@@ -66,14 +69,14 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of PEM-encoded ca certs
+     * RADSec certificates for AP
      * 
      */
     @Import(name="cacerts")
     private @Nullable Output<List<String>> cacerts;
 
     /**
-     * @return List of PEM-encoded ca certs
+     * @return RADSec certificates for AP
      * 
      */
     public Optional<Output<List<String>>> cacerts() {
@@ -219,6 +222,13 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.junosShellAccess);
     }
 
+    @Import(name="marvis")
+    private @Nullable Output<SettingMarvisArgs> marvis;
+
+    public Optional<Output<SettingMarvisArgs>> marvis() {
+        return Optional.ofNullable(this.marvis);
+    }
+
     /**
      * management-related properties
      * 
@@ -297,6 +307,20 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<SettingSecurityArgs>> security() {
         return Optional.ofNullable(this.security);
+    }
+
+    @Import(name="ssr")
+    private @Nullable Output<SettingSsrArgs> ssr;
+
+    public Optional<Output<SettingSsrArgs>> ssr() {
+        return Optional.ofNullable(this.ssr);
+    }
+
+    @Import(name="switch")
+    private @Nullable Output<SettingSwitchArgs> switch_;
+
+    public Optional<Output<SettingSwitchArgs>> switch_() {
+        return Optional.ofNullable(this.switch_);
     }
 
     @Import(name="switchMgmt")
@@ -390,6 +414,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         this.jcloud = $.jcloud;
         this.jcloudRa = $.jcloudRa;
         this.junosShellAccess = $.junosShellAccess;
+        this.marvis = $.marvis;
         this.mgmt = $.mgmt;
         this.mistNac = $.mistNac;
         this.mxedgeMgmt = $.mxedgeMgmt;
@@ -398,6 +423,8 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         this.passwordPolicy = $.passwordPolicy;
         this.pcap = $.pcap;
         this.security = $.security;
+        this.ssr = $.ssr;
+        this.switch_ = $.switch_;
         this.switchMgmt = $.switchMgmt;
         this.switchUpdownThreshold = $.switchUpdownThreshold;
         this.syntheticTest = $.syntheticTest;
@@ -459,7 +486,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacerts List of PEM-encoded ca certs
+         * @param cacerts RADSec certificates for AP
          * 
          * @return builder
          * 
@@ -470,7 +497,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacerts List of PEM-encoded ca certs
+         * @param cacerts RADSec certificates for AP
          * 
          * @return builder
          * 
@@ -480,7 +507,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacerts List of PEM-encoded ca certs
+         * @param cacerts RADSec certificates for AP
          * 
          * @return builder
          * 
@@ -678,6 +705,15 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
             return junosShellAccess(Output.of(junosShellAccess));
         }
 
+        public Builder marvis(@Nullable Output<SettingMarvisArgs> marvis) {
+            $.marvis = marvis;
+            return this;
+        }
+
+        public Builder marvis(SettingMarvisArgs marvis) {
+            return marvis(Output.of(marvis));
+        }
+
         /**
          * @param mgmt management-related properties
          * 
@@ -784,6 +820,24 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder security(SettingSecurityArgs security) {
             return security(Output.of(security));
+        }
+
+        public Builder ssr(@Nullable Output<SettingSsrArgs> ssr) {
+            $.ssr = ssr;
+            return this;
+        }
+
+        public Builder ssr(SettingSsrArgs ssr) {
+            return ssr(Output.of(ssr));
+        }
+
+        public Builder switch_(@Nullable Output<SettingSwitchArgs> switch_) {
+            $.switch_ = switch_;
+            return this;
+        }
+
+        public Builder switch_(SettingSwitchArgs switch_) {
+            return switch_(Output.of(switch_));
         }
 
         public Builder switchMgmt(@Nullable Output<SettingSwitchMgmtArgs> switchMgmt) {

@@ -23,6 +23,11 @@ public final class NetworktemplateSnmpConfig {
     private @Nullable String description;
     private @Nullable Boolean enabled;
     private @Nullable String engineId;
+    /**
+     * @return enum: `local`, `use_mac_address`
+     * 
+     */
+    private @Nullable String engineIdType;
     private @Nullable String location;
     private @Nullable String name;
     private @Nullable String network;
@@ -46,6 +51,13 @@ public final class NetworktemplateSnmpConfig {
     }
     public Optional<String> engineId() {
         return Optional.ofNullable(this.engineId);
+    }
+    /**
+     * @return enum: `local`, `use_mac_address`
+     * 
+     */
+    public Optional<String> engineIdType() {
+        return Optional.ofNullable(this.engineIdType);
     }
     public Optional<String> location() {
         return Optional.ofNullable(this.location);
@@ -83,6 +95,7 @@ public final class NetworktemplateSnmpConfig {
         private @Nullable String description;
         private @Nullable Boolean enabled;
         private @Nullable String engineId;
+        private @Nullable String engineIdType;
         private @Nullable String location;
         private @Nullable String name;
         private @Nullable String network;
@@ -98,6 +111,7 @@ public final class NetworktemplateSnmpConfig {
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
     	      this.engineId = defaults.engineId;
+    	      this.engineIdType = defaults.engineIdType;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
@@ -138,6 +152,12 @@ public final class NetworktemplateSnmpConfig {
         public Builder engineId(@Nullable String engineId) {
 
             this.engineId = engineId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineIdType(@Nullable String engineIdType) {
+
+            this.engineIdType = engineIdType;
             return this;
         }
         @CustomType.Setter
@@ -198,6 +218,7 @@ public final class NetworktemplateSnmpConfig {
             _resultValue.description = description;
             _resultValue.enabled = enabled;
             _resultValue.engineId = engineId;
+            _resultValue.engineIdType = engineIdType;
             _resultValue.location = location;
             _resultValue.name = name;
             _resultValue.network = network;

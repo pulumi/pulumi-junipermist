@@ -116,14 +116,16 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dhcpdConfig);
     }
     /**
-     * For a claimed switch, we control the configs by default. This option (disables the behavior)
+     * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+     * `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
      * 
      */
     @Export(name="disableAutoConfig", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableAutoConfig;
 
     /**
-     * @return For a claimed switch, we control the configs by default. This option (disables the behavior)
+     * @return This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
+     * `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
      * 
      */
     public Output<Boolean> disableAutoConfig() {
@@ -248,14 +250,16 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return this.mac;
     }
     /**
-     * For an adopted switch, we don’t overwrite their existing configs automatically
+     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+     * the adopted switch/gateway to be managed/configured by Mist.
      * 
      */
     @Export(name="managed", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> managed;
 
     /**
-     * @return For an adopted switch, we don’t overwrite their existing configs automatically
+     * @return An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
+     * the adopted switch/gateway to be managed/configured by Mist.
      * 
      */
     public Output<Boolean> managed() {

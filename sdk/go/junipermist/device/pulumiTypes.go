@@ -223,7 +223,7 @@ type ApBleConfig struct {
 	EddystoneUidBeams    *string `pulumi:"eddystoneUidBeams"`
 	// Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
 	EddystoneUidEnabled *bool `pulumi:"eddystoneUidEnabled"`
-	// Frequency (msec) of data emmit by Eddystone-UID beacon
+	// Frequency (msec) of data emit by Eddystone-UID beacon
 	EddystoneUidFreqMsec *int `pulumi:"eddystoneUidFreqMsec"`
 	// Eddystone-UID instance for the device
 	EddystoneUidInstance *string `pulumi:"eddystoneUidInstance"`
@@ -243,7 +243,7 @@ type ApBleConfig struct {
 	IbeaconBeams    *string `pulumi:"ibeaconBeams"`
 	// Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
 	IbeaconEnabled *bool `pulumi:"ibeaconEnabled"`
-	// Frequency (msec) of data emmit for iBeacon
+	// Frequency (msec) of data emit for iBeacon
 	IbeaconFreqMsec *int `pulumi:"ibeaconFreqMsec"`
 	// Major number for iBeacon
 	IbeaconMajor *int `pulumi:"ibeaconMajor"`
@@ -288,7 +288,7 @@ type ApBleConfigArgs struct {
 	EddystoneUidBeams    pulumi.StringPtrInput `pulumi:"eddystoneUidBeams"`
 	// Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
 	EddystoneUidEnabled pulumi.BoolPtrInput `pulumi:"eddystoneUidEnabled"`
-	// Frequency (msec) of data emmit by Eddystone-UID beacon
+	// Frequency (msec) of data emit by Eddystone-UID beacon
 	EddystoneUidFreqMsec pulumi.IntPtrInput `pulumi:"eddystoneUidFreqMsec"`
 	// Eddystone-UID instance for the device
 	EddystoneUidInstance pulumi.StringPtrInput `pulumi:"eddystoneUidInstance"`
@@ -308,7 +308,7 @@ type ApBleConfigArgs struct {
 	IbeaconBeams    pulumi.StringPtrInput `pulumi:"ibeaconBeams"`
 	// Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
 	IbeaconEnabled pulumi.BoolPtrInput `pulumi:"ibeaconEnabled"`
-	// Frequency (msec) of data emmit for iBeacon
+	// Frequency (msec) of data emit for iBeacon
 	IbeaconFreqMsec pulumi.IntPtrInput `pulumi:"ibeaconFreqMsec"`
 	// Major number for iBeacon
 	IbeaconMajor pulumi.IntPtrInput `pulumi:"ibeaconMajor"`
@@ -448,7 +448,7 @@ func (o ApBleConfigOutput) EddystoneUidEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApBleConfig) *bool { return v.EddystoneUidEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Frequency (msec) of data emmit by Eddystone-UID beacon
+// Frequency (msec) of data emit by Eddystone-UID beacon
 func (o ApBleConfigOutput) EddystoneUidFreqMsec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApBleConfig) *int { return v.EddystoneUidFreqMsec }).(pulumi.IntPtrOutput)
 }
@@ -501,7 +501,7 @@ func (o ApBleConfigOutput) IbeaconEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApBleConfig) *bool { return v.IbeaconEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Frequency (msec) of data emmit for iBeacon
+// Frequency (msec) of data emit for iBeacon
 func (o ApBleConfigOutput) IbeaconFreqMsec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApBleConfig) *int { return v.IbeaconFreqMsec }).(pulumi.IntPtrOutput)
 }
@@ -654,7 +654,7 @@ func (o ApBleConfigPtrOutput) EddystoneUidEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Frequency (msec) of data emmit by Eddystone-UID beacon
+// Frequency (msec) of data emit by Eddystone-UID beacon
 func (o ApBleConfigPtrOutput) EddystoneUidFreqMsec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApBleConfig) *int {
 		if v == nil {
@@ -762,7 +762,7 @@ func (o ApBleConfigPtrOutput) IbeaconEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Frequency (msec) of data emmit for iBeacon
+// Frequency (msec) of data emit for iBeacon
 func (o ApBleConfigPtrOutput) IbeaconFreqMsec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApBleConfig) *int {
 		if v == nil {
@@ -10590,6 +10590,8 @@ type GatewayPortConfig struct {
 	VpnPaths map[string]GatewayPortConfigVpnPaths `pulumi:"vpnPaths"`
 	// Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
 	WanArpPolicer *string `pulumi:"wanArpPolicer"`
+	// If `wanType`==`wan`, disable speedtest
+	WanDisableSpeedtest *bool `pulumi:"wanDisableSpeedtest"`
 	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 	WanExtIp *string `pulumi:"wanExtIp"`
 	// Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
@@ -10684,6 +10686,8 @@ type GatewayPortConfigArgs struct {
 	VpnPaths GatewayPortConfigVpnPathsMapInput `pulumi:"vpnPaths"`
 	// Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
 	WanArpPolicer pulumi.StringPtrInput `pulumi:"wanArpPolicer"`
+	// If `wanType`==`wan`, disable speedtest
+	WanDisableSpeedtest pulumi.BoolPtrInput `pulumi:"wanDisableSpeedtest"`
 	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 	WanExtIp pulumi.StringPtrInput `pulumi:"wanExtIp"`
 	// Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
@@ -10929,6 +10933,11 @@ func (o GatewayPortConfigOutput) VpnPaths() GatewayPortConfigVpnPathsMapOutput {
 // Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
 func (o GatewayPortConfigOutput) WanArpPolicer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *string { return v.WanArpPolicer }).(pulumi.StringPtrOutput)
+}
+
+// If `wanType`==`wan`, disable speedtest
+func (o GatewayPortConfigOutput) WanDisableSpeedtest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayPortConfig) *bool { return v.WanDisableSpeedtest }).(pulumi.BoolPtrOutput)
 }
 
 // Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
@@ -14524,7 +14533,7 @@ type GatewayTunnelConfigs struct {
 	LocalId *string `pulumi:"localId"`
 	// Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
 	Mode *string `pulumi:"mode"`
-	// If `provider`==`custom-ipsec`, networks reachable via this tunnel
+	// If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
 	Networks []string `pulumi:"networks"`
 	// Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 	Primary *GatewayTunnelConfigsPrimary `pulumi:"primary"`
@@ -14532,7 +14541,7 @@ type GatewayTunnelConfigs struct {
 	Probe *GatewayTunnelConfigsProbe `pulumi:"probe"`
 	// Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
 	Protocol *string `pulumi:"protocol"`
-	// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+	// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
 	Provider *string `pulumi:"provider"`
 	// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 	Psk *string `pulumi:"psk"`
@@ -14569,7 +14578,7 @@ type GatewayTunnelConfigsArgs struct {
 	LocalId pulumi.StringPtrInput `pulumi:"localId"`
 	// Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// If `provider`==`custom-ipsec`, networks reachable via this tunnel
+	// If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
 	Networks pulumi.StringArrayInput `pulumi:"networks"`
 	// Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 	Primary GatewayTunnelConfigsPrimaryPtrInput `pulumi:"primary"`
@@ -14577,7 +14586,7 @@ type GatewayTunnelConfigsArgs struct {
 	Probe GatewayTunnelConfigsProbePtrInput `pulumi:"probe"`
 	// Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+	// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
 	// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 	Psk pulumi.StringPtrInput `pulumi:"psk"`
@@ -14677,7 +14686,7 @@ func (o GatewayTunnelConfigsOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
-// If `provider`==`custom-ipsec`, networks reachable via this tunnel
+// If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
 func (o GatewayTunnelConfigsOutput) Networks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) []string { return v.Networks }).(pulumi.StringArrayOutput)
 }
@@ -14697,7 +14706,7 @@ func (o GatewayTunnelConfigsOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
 func (o GatewayTunnelConfigsOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
@@ -14744,9 +14753,11 @@ type GatewayTunnelConfigsAutoProvision struct {
 	Primary *GatewayTunnelConfigsAutoProvisionPrimary `pulumi:"primary"`
 	// enum: `jse-ipsec`, `zscaler-ipsec`
 	Provider string `pulumi:"provider"`
-	// API override for POP selection
+	// API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
 	Region    *string                                     `pulumi:"region"`
 	Secondary *GatewayTunnelConfigsAutoProvisionSecondary `pulumi:"secondary"`
+	// if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, serviceConnection can be considered, then we'll also consider this along with the site location. Define serviceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup > Service Connections.
+	ServiceConnection *string `pulumi:"serviceConnection"`
 }
 
 // GatewayTunnelConfigsAutoProvisionInput is an input type that accepts GatewayTunnelConfigsAutoProvisionArgs and GatewayTunnelConfigsAutoProvisionOutput values.
@@ -14767,9 +14778,11 @@ type GatewayTunnelConfigsAutoProvisionArgs struct {
 	Primary GatewayTunnelConfigsAutoProvisionPrimaryPtrInput `pulumi:"primary"`
 	// enum: `jse-ipsec`, `zscaler-ipsec`
 	Provider pulumi.StringInput `pulumi:"provider"`
-	// API override for POP selection
+	// API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
 	Region    pulumi.StringPtrInput                              `pulumi:"region"`
 	Secondary GatewayTunnelConfigsAutoProvisionSecondaryPtrInput `pulumi:"secondary"`
+	// if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, serviceConnection can be considered, then we'll also consider this along with the site location. Define serviceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup > Service Connections.
+	ServiceConnection pulumi.StringPtrInput `pulumi:"serviceConnection"`
 }
 
 func (GatewayTunnelConfigsAutoProvisionArgs) ElementType() reflect.Type {
@@ -14867,7 +14880,7 @@ func (o GatewayTunnelConfigsAutoProvisionOutput) Provider() pulumi.StringOutput 
 	return o.ApplyT(func(v GatewayTunnelConfigsAutoProvision) string { return v.Provider }).(pulumi.StringOutput)
 }
 
-// API override for POP selection
+// API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
 func (o GatewayTunnelConfigsAutoProvisionOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigsAutoProvision) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -14876,6 +14889,11 @@ func (o GatewayTunnelConfigsAutoProvisionOutput) Secondary() GatewayTunnelConfig
 	return o.ApplyT(func(v GatewayTunnelConfigsAutoProvision) *GatewayTunnelConfigsAutoProvisionSecondary {
 		return v.Secondary
 	}).(GatewayTunnelConfigsAutoProvisionSecondaryPtrOutput)
+}
+
+// if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, serviceConnection can be considered, then we'll also consider this along with the site location. Define serviceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup > Service Connections.
+func (o GatewayTunnelConfigsAutoProvisionOutput) ServiceConnection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigsAutoProvision) *string { return v.ServiceConnection }).(pulumi.StringPtrOutput)
 }
 
 type GatewayTunnelConfigsAutoProvisionPtrOutput struct{ *pulumi.OutputState }
@@ -14940,7 +14958,7 @@ func (o GatewayTunnelConfigsAutoProvisionPtrOutput) Provider() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// API override for POP selection
+// API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
 func (o GatewayTunnelConfigsAutoProvisionPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayTunnelConfigsAutoProvision) *string {
 		if v == nil {
@@ -14957,6 +14975,16 @@ func (o GatewayTunnelConfigsAutoProvisionPtrOutput) Secondary() GatewayTunnelCon
 		}
 		return v.Secondary
 	}).(GatewayTunnelConfigsAutoProvisionSecondaryPtrOutput)
+}
+
+// if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, serviceConnection can be considered, then we'll also consider this along with the site location. Define serviceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup > Service Connections.
+func (o GatewayTunnelConfigsAutoProvisionPtrOutput) ServiceConnection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsAutoProvision) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceConnection
+	}).(pulumi.StringPtrOutput)
 }
 
 type GatewayTunnelConfigsAutoProvisionLatlng struct {
@@ -16299,7 +16327,8 @@ func (o GatewayTunnelConfigsSecondaryPtrOutput) WanNames() pulumi.StringArrayOut
 
 type GatewayTunnelProviderOptions struct {
 	// For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
-	Jse *GatewayTunnelProviderOptionsJse `pulumi:"jse"`
+	Jse    *GatewayTunnelProviderOptionsJse    `pulumi:"jse"`
+	Prisma *GatewayTunnelProviderOptionsPrisma `pulumi:"prisma"`
 	// For zscaler-ipsec and zscaler-gre
 	Zscaler *GatewayTunnelProviderOptionsZscaler `pulumi:"zscaler"`
 }
@@ -16317,7 +16346,8 @@ type GatewayTunnelProviderOptionsInput interface {
 
 type GatewayTunnelProviderOptionsArgs struct {
 	// For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
-	Jse GatewayTunnelProviderOptionsJsePtrInput `pulumi:"jse"`
+	Jse    GatewayTunnelProviderOptionsJsePtrInput    `pulumi:"jse"`
+	Prisma GatewayTunnelProviderOptionsPrismaPtrInput `pulumi:"prisma"`
 	// For zscaler-ipsec and zscaler-gre
 	Zscaler GatewayTunnelProviderOptionsZscalerPtrInput `pulumi:"zscaler"`
 }
@@ -16404,6 +16434,10 @@ func (o GatewayTunnelProviderOptionsOutput) Jse() GatewayTunnelProviderOptionsJs
 	return o.ApplyT(func(v GatewayTunnelProviderOptions) *GatewayTunnelProviderOptionsJse { return v.Jse }).(GatewayTunnelProviderOptionsJsePtrOutput)
 }
 
+func (o GatewayTunnelProviderOptionsOutput) Prisma() GatewayTunnelProviderOptionsPrismaPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptions) *GatewayTunnelProviderOptionsPrisma { return v.Prisma }).(GatewayTunnelProviderOptionsPrismaPtrOutput)
+}
+
 // For zscaler-ipsec and zscaler-gre
 func (o GatewayTunnelProviderOptionsOutput) Zscaler() GatewayTunnelProviderOptionsZscalerPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelProviderOptions) *GatewayTunnelProviderOptionsZscaler { return v.Zscaler }).(GatewayTunnelProviderOptionsZscalerPtrOutput)
@@ -16441,6 +16475,15 @@ func (o GatewayTunnelProviderOptionsPtrOutput) Jse() GatewayTunnelProviderOption
 		}
 		return v.Jse
 	}).(GatewayTunnelProviderOptionsJsePtrOutput)
+}
+
+func (o GatewayTunnelProviderOptionsPtrOutput) Prisma() GatewayTunnelProviderOptionsPrismaPtrOutput {
+	return o.ApplyT(func(v *GatewayTunnelProviderOptions) *GatewayTunnelProviderOptionsPrisma {
+		if v == nil {
+			return nil
+		}
+		return v.Prisma
+	}).(GatewayTunnelProviderOptionsPrismaPtrOutput)
 }
 
 // For zscaler-ipsec and zscaler-gre
@@ -16602,6 +16645,143 @@ func (o GatewayTunnelProviderOptionsJsePtrOutput) OrgName() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.OrgName
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayTunnelProviderOptionsPrisma struct {
+	// For prisma-ipsec, service account name to used for tunnel auto provisioning
+	ServiceAccountName *string `pulumi:"serviceAccountName"`
+}
+
+// GatewayTunnelProviderOptionsPrismaInput is an input type that accepts GatewayTunnelProviderOptionsPrismaArgs and GatewayTunnelProviderOptionsPrismaOutput values.
+// You can construct a concrete instance of `GatewayTunnelProviderOptionsPrismaInput` via:
+//
+//	GatewayTunnelProviderOptionsPrismaArgs{...}
+type GatewayTunnelProviderOptionsPrismaInput interface {
+	pulumi.Input
+
+	ToGatewayTunnelProviderOptionsPrismaOutput() GatewayTunnelProviderOptionsPrismaOutput
+	ToGatewayTunnelProviderOptionsPrismaOutputWithContext(context.Context) GatewayTunnelProviderOptionsPrismaOutput
+}
+
+type GatewayTunnelProviderOptionsPrismaArgs struct {
+	// For prisma-ipsec, service account name to used for tunnel auto provisioning
+	ServiceAccountName pulumi.StringPtrInput `pulumi:"serviceAccountName"`
+}
+
+func (GatewayTunnelProviderOptionsPrismaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayTunnelProviderOptionsPrisma)(nil)).Elem()
+}
+
+func (i GatewayTunnelProviderOptionsPrismaArgs) ToGatewayTunnelProviderOptionsPrismaOutput() GatewayTunnelProviderOptionsPrismaOutput {
+	return i.ToGatewayTunnelProviderOptionsPrismaOutputWithContext(context.Background())
+}
+
+func (i GatewayTunnelProviderOptionsPrismaArgs) ToGatewayTunnelProviderOptionsPrismaOutputWithContext(ctx context.Context) GatewayTunnelProviderOptionsPrismaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayTunnelProviderOptionsPrismaOutput)
+}
+
+func (i GatewayTunnelProviderOptionsPrismaArgs) ToGatewayTunnelProviderOptionsPrismaPtrOutput() GatewayTunnelProviderOptionsPrismaPtrOutput {
+	return i.ToGatewayTunnelProviderOptionsPrismaPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayTunnelProviderOptionsPrismaArgs) ToGatewayTunnelProviderOptionsPrismaPtrOutputWithContext(ctx context.Context) GatewayTunnelProviderOptionsPrismaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayTunnelProviderOptionsPrismaOutput).ToGatewayTunnelProviderOptionsPrismaPtrOutputWithContext(ctx)
+}
+
+// GatewayTunnelProviderOptionsPrismaPtrInput is an input type that accepts GatewayTunnelProviderOptionsPrismaArgs, GatewayTunnelProviderOptionsPrismaPtr and GatewayTunnelProviderOptionsPrismaPtrOutput values.
+// You can construct a concrete instance of `GatewayTunnelProviderOptionsPrismaPtrInput` via:
+//
+//	        GatewayTunnelProviderOptionsPrismaArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayTunnelProviderOptionsPrismaPtrInput interface {
+	pulumi.Input
+
+	ToGatewayTunnelProviderOptionsPrismaPtrOutput() GatewayTunnelProviderOptionsPrismaPtrOutput
+	ToGatewayTunnelProviderOptionsPrismaPtrOutputWithContext(context.Context) GatewayTunnelProviderOptionsPrismaPtrOutput
+}
+
+type gatewayTunnelProviderOptionsPrismaPtrType GatewayTunnelProviderOptionsPrismaArgs
+
+func GatewayTunnelProviderOptionsPrismaPtr(v *GatewayTunnelProviderOptionsPrismaArgs) GatewayTunnelProviderOptionsPrismaPtrInput {
+	return (*gatewayTunnelProviderOptionsPrismaPtrType)(v)
+}
+
+func (*gatewayTunnelProviderOptionsPrismaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayTunnelProviderOptionsPrisma)(nil)).Elem()
+}
+
+func (i *gatewayTunnelProviderOptionsPrismaPtrType) ToGatewayTunnelProviderOptionsPrismaPtrOutput() GatewayTunnelProviderOptionsPrismaPtrOutput {
+	return i.ToGatewayTunnelProviderOptionsPrismaPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayTunnelProviderOptionsPrismaPtrType) ToGatewayTunnelProviderOptionsPrismaPtrOutputWithContext(ctx context.Context) GatewayTunnelProviderOptionsPrismaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayTunnelProviderOptionsPrismaPtrOutput)
+}
+
+type GatewayTunnelProviderOptionsPrismaOutput struct{ *pulumi.OutputState }
+
+func (GatewayTunnelProviderOptionsPrismaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayTunnelProviderOptionsPrisma)(nil)).Elem()
+}
+
+func (o GatewayTunnelProviderOptionsPrismaOutput) ToGatewayTunnelProviderOptionsPrismaOutput() GatewayTunnelProviderOptionsPrismaOutput {
+	return o
+}
+
+func (o GatewayTunnelProviderOptionsPrismaOutput) ToGatewayTunnelProviderOptionsPrismaOutputWithContext(ctx context.Context) GatewayTunnelProviderOptionsPrismaOutput {
+	return o
+}
+
+func (o GatewayTunnelProviderOptionsPrismaOutput) ToGatewayTunnelProviderOptionsPrismaPtrOutput() GatewayTunnelProviderOptionsPrismaPtrOutput {
+	return o.ToGatewayTunnelProviderOptionsPrismaPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayTunnelProviderOptionsPrismaOutput) ToGatewayTunnelProviderOptionsPrismaPtrOutputWithContext(ctx context.Context) GatewayTunnelProviderOptionsPrismaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayTunnelProviderOptionsPrisma) *GatewayTunnelProviderOptionsPrisma {
+		return &v
+	}).(GatewayTunnelProviderOptionsPrismaPtrOutput)
+}
+
+// For prisma-ipsec, service account name to used for tunnel auto provisioning
+func (o GatewayTunnelProviderOptionsPrismaOutput) ServiceAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsPrisma) *string { return v.ServiceAccountName }).(pulumi.StringPtrOutput)
+}
+
+type GatewayTunnelProviderOptionsPrismaPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayTunnelProviderOptionsPrismaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayTunnelProviderOptionsPrisma)(nil)).Elem()
+}
+
+func (o GatewayTunnelProviderOptionsPrismaPtrOutput) ToGatewayTunnelProviderOptionsPrismaPtrOutput() GatewayTunnelProviderOptionsPrismaPtrOutput {
+	return o
+}
+
+func (o GatewayTunnelProviderOptionsPrismaPtrOutput) ToGatewayTunnelProviderOptionsPrismaPtrOutputWithContext(ctx context.Context) GatewayTunnelProviderOptionsPrismaPtrOutput {
+	return o
+}
+
+func (o GatewayTunnelProviderOptionsPrismaPtrOutput) Elem() GatewayTunnelProviderOptionsPrismaOutput {
+	return o.ApplyT(func(v *GatewayTunnelProviderOptionsPrisma) GatewayTunnelProviderOptionsPrisma {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayTunnelProviderOptionsPrisma
+		return ret
+	}).(GatewayTunnelProviderOptionsPrismaOutput)
+}
+
+// For prisma-ipsec, service account name to used for tunnel auto provisioning
+func (o GatewayTunnelProviderOptionsPrismaPtrOutput) ServiceAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayTunnelProviderOptionsPrisma) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17678,6 +17858,8 @@ func (o SwitchAclPolicyActionArrayOutput) Index(i pulumi.IntInput) SwitchAclPoli
 }
 
 type SwitchAclTags struct {
+	// Can only be used under dst tags.
+	EtherTypes []string `pulumi:"etherTypes"`
 	// Required if
 	//   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
 	//   - `type`==`gbpResource`
@@ -17694,12 +17876,14 @@ type SwitchAclTags struct {
 	//   * `type`==`resource` (optional. default is `any`)
 	//   * `type`==`staticGbp` if from matching network (vlan)
 	Network *string `pulumi:"network"`
+	// Required if `type`==`portUsage`
+	PortUsage *string `pulumi:"portUsage"`
 	// Required if:
 	//   * `type`==`radiusGroup`
 	//   * `type`==`staticGbp`
 	//     if from matching radius_group
 	RadiusGroup *string `pulumi:"radiusGroup"`
-	// If `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+	// If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
 	Specs []SwitchAclTagsSpec `pulumi:"specs"`
 	// If
 	// - `type`==`subnet`
@@ -17712,6 +17896,7 @@ type SwitchAclTags struct {
 	//   * `gbpResource`: can only be used in `dstTags`
 	//   * `mac`
 	//   * `network`
+	//   * `portUsage`
 	//   * `radiusGroup`
 	//   * `resource`: can only be used in `dstTags`
 	//   * `staticGbp`: applying gbp tag against matching conditions
@@ -17731,6 +17916,8 @@ type SwitchAclTagsInput interface {
 }
 
 type SwitchAclTagsArgs struct {
+	// Can only be used under dst tags.
+	EtherTypes pulumi.StringArrayInput `pulumi:"etherTypes"`
 	// Required if
 	//   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
 	//   - `type`==`gbpResource`
@@ -17747,12 +17934,14 @@ type SwitchAclTagsArgs struct {
 	//   * `type`==`resource` (optional. default is `any`)
 	//   * `type`==`staticGbp` if from matching network (vlan)
 	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Required if `type`==`portUsage`
+	PortUsage pulumi.StringPtrInput `pulumi:"portUsage"`
 	// Required if:
 	//   * `type`==`radiusGroup`
 	//   * `type`==`staticGbp`
 	//     if from matching radius_group
 	RadiusGroup pulumi.StringPtrInput `pulumi:"radiusGroup"`
-	// If `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+	// If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
 	Specs SwitchAclTagsSpecArrayInput `pulumi:"specs"`
 	// If
 	// - `type`==`subnet`
@@ -17765,6 +17954,7 @@ type SwitchAclTagsArgs struct {
 	//   * `gbpResource`: can only be used in `dstTags`
 	//   * `mac`
 	//   * `network`
+	//   * `portUsage`
 	//   * `radiusGroup`
 	//   * `resource`: can only be used in `dstTags`
 	//   * `staticGbp`: applying gbp tag against matching conditions
@@ -17823,6 +18013,11 @@ func (o SwitchAclTagsOutput) ToSwitchAclTagsOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Can only be used under dst tags.
+func (o SwitchAclTagsOutput) EtherTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SwitchAclTags) []string { return v.EtherTypes }).(pulumi.StringArrayOutput)
+}
+
 // Required if
 //   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
 //   - `type`==`gbpResource`
@@ -17848,6 +18043,11 @@ func (o SwitchAclTagsOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchAclTags) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
+// Required if `type`==`portUsage`
+func (o SwitchAclTagsOutput) PortUsage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchAclTags) *string { return v.PortUsage }).(pulumi.StringPtrOutput)
+}
+
 // Required if:
 //   - `type`==`radiusGroup`
 //   - `type`==`staticGbp`
@@ -17856,7 +18056,7 @@ func (o SwitchAclTagsOutput) RadiusGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchAclTags) *string { return v.RadiusGroup }).(pulumi.StringPtrOutput)
 }
 
-// If `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+// If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
 func (o SwitchAclTagsOutput) Specs() SwitchAclTagsSpecArrayOutput {
 	return o.ApplyT(func(v SwitchAclTags) []SwitchAclTagsSpec { return v.Specs }).(SwitchAclTagsSpecArrayOutput)
 }
@@ -17875,6 +18075,7 @@ func (o SwitchAclTagsOutput) Subnets() pulumi.StringArrayOutput {
 //   - `gbpResource`: can only be used in `dstTags`
 //   - `mac`
 //   - `network`
+//   - `portUsage`
 //   - `radiusGroup`
 //   - `resource`: can only be used in `dstTags`
 //   - `staticGbp`: applying gbp tag against matching conditions
@@ -20392,7 +20593,7 @@ type SwitchNetworks struct {
 	Gateway *string `pulumi:"gateway"`
 	// Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
 	Gateway6 *string `pulumi:"gateway6"`
-	// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+	// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set. See also `interIsolationNetworkLink` and `communityVlanId` in port_usage
 	Isolation       *bool   `pulumi:"isolation"`
 	IsolationVlanId *string `pulumi:"isolationVlanId"`
 	// Optional for pure switching, required when L3 / routing features are used
@@ -20418,7 +20619,7 @@ type SwitchNetworksArgs struct {
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
 	// Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
 	Gateway6 pulumi.StringPtrInput `pulumi:"gateway6"`
-	// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+	// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set. See also `interIsolationNetworkLink` and `communityVlanId` in port_usage
 	Isolation       pulumi.BoolPtrInput   `pulumi:"isolation"`
 	IsolationVlanId pulumi.StringPtrInput `pulumi:"isolationVlanId"`
 	// Optional for pure switching, required when L3 / routing features are used
@@ -20489,7 +20690,7 @@ func (o SwitchNetworksOutput) Gateway6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchNetworks) *string { return v.Gateway6 }).(pulumi.StringPtrOutput)
 }
 
-// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set. See also `interIsolationNetworkLink` and `communityVlanId` in port_usage
 func (o SwitchNetworksOutput) Isolation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchNetworks) *bool { return v.Isolation }).(pulumi.BoolPtrOutput)
 }
@@ -21236,9 +21437,11 @@ type SwitchPortConfig struct {
 	// Prevent helpdesk to override the port config
 	NoLocalOverwrite *bool `pulumi:"noLocalOverwrite"`
 	PoeDisabled      *bool `pulumi:"poeDisabled"`
+	// Required if `usage`==`vlanTunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+	PortNetwork *string `pulumi:"portNetwork"`
 	// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 	Speed *string `pulumi:"speed"`
-	// Port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
+	// Port usage name. For Q-in-Q, use `vlanTunnel`. If EVPN is used, use `evpnUplink`or `evpnDownlink`
 	Usage string `pulumi:"usage"`
 }
 
@@ -21276,9 +21479,11 @@ type SwitchPortConfigArgs struct {
 	// Prevent helpdesk to override the port config
 	NoLocalOverwrite pulumi.BoolPtrInput `pulumi:"noLocalOverwrite"`
 	PoeDisabled      pulumi.BoolPtrInput `pulumi:"poeDisabled"`
+	// Required if `usage`==`vlanTunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+	PortNetwork pulumi.StringPtrInput `pulumi:"portNetwork"`
 	// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 	Speed pulumi.StringPtrInput `pulumi:"speed"`
-	// Port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
+	// Port usage name. For Q-in-Q, use `vlanTunnel`. If EVPN is used, use `evpnUplink`or `evpnDownlink`
 	Usage pulumi.StringInput `pulumi:"usage"`
 }
 
@@ -21394,12 +21599,17 @@ func (o SwitchPortConfigOutput) PoeDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortConfig) *bool { return v.PoeDisabled }).(pulumi.BoolPtrOutput)
 }
 
+// Required if `usage`==`vlanTunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+func (o SwitchPortConfigOutput) PortNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchPortConfig) *string { return v.PortNetwork }).(pulumi.StringPtrOutput)
+}
+
 // enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 func (o SwitchPortConfigOutput) Speed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortConfig) *string { return v.Speed }).(pulumi.StringPtrOutput)
 }
 
-// Port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
+// Port usage name. For Q-in-Q, use `vlanTunnel`. If EVPN is used, use `evpnUplink`or `evpnDownlink`
 func (o SwitchPortConfigOutput) Usage() pulumi.StringOutput {
 	return o.ApplyT(func(v SwitchPortConfig) string { return v.Usage }).(pulumi.StringOutput)
 }
@@ -21568,6 +21778,8 @@ type SwitchPortUsages struct {
 	BypassAuthWhenServerDown *bool `pulumi:"bypassAuthWhenServerDown"`
 	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
 	BypassAuthWhenServerDownForUnknownClient *bool `pulumi:"bypassAuthWhenServerDownForUnknownClient"`
+	// Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+	CommunityVlanId *int `pulumi:"communityVlanId"`
 	// Only if `mode`!=`dynamic`
 	Description *string `pulumi:"description"`
 	// Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
@@ -21656,6 +21868,8 @@ type SwitchPortUsagesArgs struct {
 	BypassAuthWhenServerDown pulumi.BoolPtrInput `pulumi:"bypassAuthWhenServerDown"`
 	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
 	BypassAuthWhenServerDownForUnknownClient pulumi.BoolPtrInput `pulumi:"bypassAuthWhenServerDownForUnknownClient"`
+	// Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+	CommunityVlanId pulumi.IntPtrInput `pulumi:"communityVlanId"`
 	// Only if `mode`!=`dynamic`
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
@@ -21796,6 +22010,11 @@ func (o SwitchPortUsagesOutput) BypassAuthWhenServerDown() pulumi.BoolPtrOutput 
 // Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
 func (o SwitchPortUsagesOutput) BypassAuthWhenServerDownForUnknownClient() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.BypassAuthWhenServerDownForUnknownClient }).(pulumi.BoolPtrOutput)
+}
+
+// Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+func (o SwitchPortUsagesOutput) CommunityVlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SwitchPortUsages) *int { return v.CommunityVlanId }).(pulumi.IntPtrOutput)
 }
 
 // Only if `mode`!=`dynamic`
@@ -22941,6 +23160,7 @@ func (o SwitchRadiusConfigAuthServerArrayOutput) Index(i pulumi.IntInput) Switch
 
 type SwitchRemoteSyslog struct {
 	Archive *SwitchRemoteSyslogArchive `pulumi:"archive"`
+	Cacerts []string                   `pulumi:"cacerts"`
 	Console *SwitchRemoteSyslogConsole `pulumi:"console"`
 	Enabled *bool                      `pulumi:"enabled"`
 	Files   []SwitchRemoteSyslogFile   `pulumi:"files"`
@@ -22966,6 +23186,7 @@ type SwitchRemoteSyslogInput interface {
 
 type SwitchRemoteSyslogArgs struct {
 	Archive SwitchRemoteSyslogArchivePtrInput `pulumi:"archive"`
+	Cacerts pulumi.StringArrayInput           `pulumi:"cacerts"`
 	Console SwitchRemoteSyslogConsolePtrInput `pulumi:"console"`
 	Enabled pulumi.BoolPtrInput               `pulumi:"enabled"`
 	Files   SwitchRemoteSyslogFileArrayInput  `pulumi:"files"`
@@ -23059,6 +23280,10 @@ func (o SwitchRemoteSyslogOutput) Archive() SwitchRemoteSyslogArchivePtrOutput {
 	return o.ApplyT(func(v SwitchRemoteSyslog) *SwitchRemoteSyslogArchive { return v.Archive }).(SwitchRemoteSyslogArchivePtrOutput)
 }
 
+func (o SwitchRemoteSyslogOutput) Cacerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SwitchRemoteSyslog) []string { return v.Cacerts }).(pulumi.StringArrayOutput)
+}
+
 func (o SwitchRemoteSyslogOutput) Console() SwitchRemoteSyslogConsolePtrOutput {
 	return o.ApplyT(func(v SwitchRemoteSyslog) *SwitchRemoteSyslogConsole { return v.Console }).(SwitchRemoteSyslogConsolePtrOutput)
 }
@@ -23124,6 +23349,15 @@ func (o SwitchRemoteSyslogPtrOutput) Archive() SwitchRemoteSyslogArchivePtrOutpu
 		}
 		return v.Archive
 	}).(SwitchRemoteSyslogArchivePtrOutput)
+}
+
+func (o SwitchRemoteSyslogPtrOutput) Cacerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SwitchRemoteSyslog) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Cacerts
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o SwitchRemoteSyslogPtrOutput) Console() SwitchRemoteSyslogConsolePtrOutput {
@@ -23588,12 +23822,14 @@ func (o SwitchRemoteSyslogConsoleContentArrayOutput) Index(i pulumi.IntInput) Sw
 }
 
 type SwitchRemoteSyslogFile struct {
-	Archive          *SwitchRemoteSyslogFileArchive  `pulumi:"archive"`
-	Contents         []SwitchRemoteSyslogFileContent `pulumi:"contents"`
-	ExplicitPriority *bool                           `pulumi:"explicitPriority"`
-	File             *string                         `pulumi:"file"`
-	Match            *string                         `pulumi:"match"`
-	StructuredData   *bool                           `pulumi:"structuredData"`
+	Archive  *SwitchRemoteSyslogFileArchive  `pulumi:"archive"`
+	Contents []SwitchRemoteSyslogFileContent `pulumi:"contents"`
+	// Only if `protocol`==`tcp`
+	EnableTls        *bool   `pulumi:"enableTls"`
+	ExplicitPriority *bool   `pulumi:"explicitPriority"`
+	File             *string `pulumi:"file"`
+	Match            *string `pulumi:"match"`
+	StructuredData   *bool   `pulumi:"structuredData"`
 }
 
 // SwitchRemoteSyslogFileInput is an input type that accepts SwitchRemoteSyslogFileArgs and SwitchRemoteSyslogFileOutput values.
@@ -23608,12 +23844,14 @@ type SwitchRemoteSyslogFileInput interface {
 }
 
 type SwitchRemoteSyslogFileArgs struct {
-	Archive          SwitchRemoteSyslogFileArchivePtrInput   `pulumi:"archive"`
-	Contents         SwitchRemoteSyslogFileContentArrayInput `pulumi:"contents"`
-	ExplicitPriority pulumi.BoolPtrInput                     `pulumi:"explicitPriority"`
-	File             pulumi.StringPtrInput                   `pulumi:"file"`
-	Match            pulumi.StringPtrInput                   `pulumi:"match"`
-	StructuredData   pulumi.BoolPtrInput                     `pulumi:"structuredData"`
+	Archive  SwitchRemoteSyslogFileArchivePtrInput   `pulumi:"archive"`
+	Contents SwitchRemoteSyslogFileContentArrayInput `pulumi:"contents"`
+	// Only if `protocol`==`tcp`
+	EnableTls        pulumi.BoolPtrInput   `pulumi:"enableTls"`
+	ExplicitPriority pulumi.BoolPtrInput   `pulumi:"explicitPriority"`
+	File             pulumi.StringPtrInput `pulumi:"file"`
+	Match            pulumi.StringPtrInput `pulumi:"match"`
+	StructuredData   pulumi.BoolPtrInput   `pulumi:"structuredData"`
 }
 
 func (SwitchRemoteSyslogFileArgs) ElementType() reflect.Type {
@@ -23673,6 +23911,11 @@ func (o SwitchRemoteSyslogFileOutput) Archive() SwitchRemoteSyslogFileArchivePtr
 
 func (o SwitchRemoteSyslogFileOutput) Contents() SwitchRemoteSyslogFileContentArrayOutput {
 	return o.ApplyT(func(v SwitchRemoteSyslogFile) []SwitchRemoteSyslogFileContent { return v.Contents }).(SwitchRemoteSyslogFileContentArrayOutput)
+}
+
+// Only if `protocol`==`tcp`
+func (o SwitchRemoteSyslogFileOutput) EnableTls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchRemoteSyslogFile) *bool { return v.EnableTls }).(pulumi.BoolPtrOutput)
 }
 
 func (o SwitchRemoteSyslogFileOutput) ExplicitPriority() pulumi.BoolPtrOutput {
@@ -24461,13 +24704,15 @@ type SwitchSnmpConfig struct {
 	Description *string                      `pulumi:"description"`
 	Enabled     *bool                        `pulumi:"enabled"`
 	EngineId    *string                      `pulumi:"engineId"`
-	Location    *string                      `pulumi:"location"`
-	Name        *string                      `pulumi:"name"`
-	Network     *string                      `pulumi:"network"`
-	TrapGroups  []SwitchSnmpConfigTrapGroup  `pulumi:"trapGroups"`
-	V2cConfigs  []SwitchSnmpConfigV2cConfig  `pulumi:"v2cConfigs"`
-	V3Config    *SwitchSnmpConfigV3Config    `pulumi:"v3Config"`
-	Views       []SwitchSnmpConfigView       `pulumi:"views"`
+	// enum: `local`, `useMacAddress`
+	EngineIdType *string                     `pulumi:"engineIdType"`
+	Location     *string                     `pulumi:"location"`
+	Name         *string                     `pulumi:"name"`
+	Network      *string                     `pulumi:"network"`
+	TrapGroups   []SwitchSnmpConfigTrapGroup `pulumi:"trapGroups"`
+	V2cConfigs   []SwitchSnmpConfigV2cConfig `pulumi:"v2cConfigs"`
+	V3Config     *SwitchSnmpConfigV3Config   `pulumi:"v3Config"`
+	Views        []SwitchSnmpConfigView      `pulumi:"views"`
 }
 
 // SwitchSnmpConfigInput is an input type that accepts SwitchSnmpConfigArgs and SwitchSnmpConfigOutput values.
@@ -24487,13 +24732,15 @@ type SwitchSnmpConfigArgs struct {
 	Description pulumi.StringPtrInput                `pulumi:"description"`
 	Enabled     pulumi.BoolPtrInput                  `pulumi:"enabled"`
 	EngineId    pulumi.StringPtrInput                `pulumi:"engineId"`
-	Location    pulumi.StringPtrInput                `pulumi:"location"`
-	Name        pulumi.StringPtrInput                `pulumi:"name"`
-	Network     pulumi.StringPtrInput                `pulumi:"network"`
-	TrapGroups  SwitchSnmpConfigTrapGroupArrayInput  `pulumi:"trapGroups"`
-	V2cConfigs  SwitchSnmpConfigV2cConfigArrayInput  `pulumi:"v2cConfigs"`
-	V3Config    SwitchSnmpConfigV3ConfigPtrInput     `pulumi:"v3Config"`
-	Views       SwitchSnmpConfigViewArrayInput       `pulumi:"views"`
+	// enum: `local`, `useMacAddress`
+	EngineIdType pulumi.StringPtrInput               `pulumi:"engineIdType"`
+	Location     pulumi.StringPtrInput               `pulumi:"location"`
+	Name         pulumi.StringPtrInput               `pulumi:"name"`
+	Network      pulumi.StringPtrInput               `pulumi:"network"`
+	TrapGroups   SwitchSnmpConfigTrapGroupArrayInput `pulumi:"trapGroups"`
+	V2cConfigs   SwitchSnmpConfigV2cConfigArrayInput `pulumi:"v2cConfigs"`
+	V3Config     SwitchSnmpConfigV3ConfigPtrInput    `pulumi:"v3Config"`
+	Views        SwitchSnmpConfigViewArrayInput      `pulumi:"views"`
 }
 
 func (SwitchSnmpConfigArgs) ElementType() reflect.Type {
@@ -24593,6 +24840,11 @@ func (o SwitchSnmpConfigOutput) EngineId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchSnmpConfig) *string { return v.EngineId }).(pulumi.StringPtrOutput)
 }
 
+// enum: `local`, `useMacAddress`
+func (o SwitchSnmpConfigOutput) EngineIdType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchSnmpConfig) *string { return v.EngineIdType }).(pulumi.StringPtrOutput)
+}
+
 func (o SwitchSnmpConfigOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchSnmpConfig) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -24687,6 +24939,16 @@ func (o SwitchSnmpConfigPtrOutput) EngineId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.EngineId
+	}).(pulumi.StringPtrOutput)
+}
+
+// enum: `local`, `useMacAddress`
+func (o SwitchSnmpConfigPtrOutput) EngineIdType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SwitchSnmpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EngineIdType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27047,9 +27309,11 @@ type SwitchSwitchMgmt struct {
 	// Restrict inbound-traffic to host
 	// when enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
-	ProtectRe    *SwitchSwitchMgmtProtectRe `pulumi:"protectRe"`
-	RootPassword *string                    `pulumi:"rootPassword"`
-	Tacacs       *SwitchSwitchMgmtTacacs    `pulumi:"tacacs"`
+	ProtectRe *SwitchSwitchMgmtProtectRe `pulumi:"protectRe"`
+	// By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
+	RemoveExistingConfigs *bool                   `pulumi:"removeExistingConfigs"`
+	RootPassword          *string                 `pulumi:"rootPassword"`
+	Tacacs                *SwitchSwitchMgmtTacacs `pulumi:"tacacs"`
 	// To use mxedge as proxy
 	UseMxedgeProxy *bool `pulumi:"useMxedgeProxy"`
 }
@@ -27087,9 +27351,11 @@ type SwitchSwitchMgmtArgs struct {
 	// Restrict inbound-traffic to host
 	// when enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
-	ProtectRe    SwitchSwitchMgmtProtectRePtrInput `pulumi:"protectRe"`
-	RootPassword pulumi.StringPtrInput             `pulumi:"rootPassword"`
-	Tacacs       SwitchSwitchMgmtTacacsPtrInput    `pulumi:"tacacs"`
+	ProtectRe SwitchSwitchMgmtProtectRePtrInput `pulumi:"protectRe"`
+	// By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
+	RemoveExistingConfigs pulumi.BoolPtrInput            `pulumi:"removeExistingConfigs"`
+	RootPassword          pulumi.StringPtrInput          `pulumi:"rootPassword"`
+	Tacacs                SwitchSwitchMgmtTacacsPtrInput `pulumi:"tacacs"`
 	// To use mxedge as proxy
 	UseMxedgeProxy pulumi.BoolPtrInput `pulumi:"useMxedgeProxy"`
 }
@@ -27224,6 +27490,11 @@ func (o SwitchSwitchMgmtOutput) MxedgeProxyPort() pulumi.StringPtrOutput {
 // e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
 func (o SwitchSwitchMgmtOutput) ProtectRe() SwitchSwitchMgmtProtectRePtrOutput {
 	return o.ApplyT(func(v SwitchSwitchMgmt) *SwitchSwitchMgmtProtectRe { return v.ProtectRe }).(SwitchSwitchMgmtProtectRePtrOutput)
+}
+
+// By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
+func (o SwitchSwitchMgmtOutput) RemoveExistingConfigs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchSwitchMgmt) *bool { return v.RemoveExistingConfigs }).(pulumi.BoolPtrOutput)
 }
 
 func (o SwitchSwitchMgmtOutput) RootPassword() pulumi.StringPtrOutput {
@@ -27373,6 +27644,16 @@ func (o SwitchSwitchMgmtPtrOutput) ProtectRe() SwitchSwitchMgmtProtectRePtrOutpu
 	}).(SwitchSwitchMgmtProtectRePtrOutput)
 }
 
+// By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
+func (o SwitchSwitchMgmtPtrOutput) RemoveExistingConfigs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SwitchSwitchMgmt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RemoveExistingConfigs
+	}).(pulumi.BoolPtrOutput)
+}
+
 func (o SwitchSwitchMgmtPtrOutput) RootPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SwitchSwitchMgmt) *string {
 		if v == nil {
@@ -27512,6 +27793,8 @@ type SwitchSwitchMgmtProtectRe struct {
 	// e.g. ntp / dns / traffic to mist will be allowed by default
 	//      if dhcpd is enabled, we'll make sure it works
 	Enabled *bool `pulumi:"enabled"`
+	// Whether to enable hit count for Protect_RE policy
+	HitCount *bool `pulumi:"hitCount"`
 	// host/subnets we'll allow traffic to/from
 	TrustedHosts []string `pulumi:"trustedHosts"`
 }
@@ -27535,6 +27818,8 @@ type SwitchSwitchMgmtProtectReArgs struct {
 	// e.g. ntp / dns / traffic to mist will be allowed by default
 	//      if dhcpd is enabled, we'll make sure it works
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Whether to enable hit count for Protect_RE policy
+	HitCount pulumi.BoolPtrInput `pulumi:"hitCount"`
 	// host/subnets we'll allow traffic to/from
 	TrustedHosts pulumi.StringArrayInput `pulumi:"trustedHosts"`
 }
@@ -27633,6 +27918,11 @@ func (o SwitchSwitchMgmtProtectReOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchSwitchMgmtProtectRe) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to enable hit count for Protect_RE policy
+func (o SwitchSwitchMgmtProtectReOutput) HitCount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchSwitchMgmtProtectRe) *bool { return v.HitCount }).(pulumi.BoolPtrOutput)
+}
+
 // host/subnets we'll allow traffic to/from
 func (o SwitchSwitchMgmtProtectReOutput) TrustedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SwitchSwitchMgmtProtectRe) []string { return v.TrustedHosts }).(pulumi.StringArrayOutput)
@@ -27691,6 +27981,16 @@ func (o SwitchSwitchMgmtProtectRePtrOutput) Enabled() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable hit count for Protect_RE policy
+func (o SwitchSwitchMgmtProtectRePtrOutput) HitCount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SwitchSwitchMgmtProtectRe) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HitCount
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -29117,7 +29417,11 @@ func (o SwitchVrrpConfigPtrOutput) Groups() SwitchVrrpConfigGroupsMapOutput {
 }
 
 type SwitchVrrpConfigGroups struct {
-	Priority *int `pulumi:"priority"`
+	// If `true`, accept packets destined for VRRP address
+	AcceptData *bool `pulumi:"acceptData"`
+	// If `true`, allow preemption (a backup router can preempt a primary router)
+	Preempt  *bool `pulumi:"preempt"`
+	Priority *int  `pulumi:"priority"`
 }
 
 // SwitchVrrpConfigGroupsInput is an input type that accepts SwitchVrrpConfigGroupsArgs and SwitchVrrpConfigGroupsOutput values.
@@ -29132,7 +29436,11 @@ type SwitchVrrpConfigGroupsInput interface {
 }
 
 type SwitchVrrpConfigGroupsArgs struct {
-	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// If `true`, accept packets destined for VRRP address
+	AcceptData pulumi.BoolPtrInput `pulumi:"acceptData"`
+	// If `true`, allow preemption (a backup router can preempt a primary router)
+	Preempt  pulumi.BoolPtrInput `pulumi:"preempt"`
+	Priority pulumi.IntPtrInput  `pulumi:"priority"`
 }
 
 func (SwitchVrrpConfigGroupsArgs) ElementType() reflect.Type {
@@ -29184,6 +29492,16 @@ func (o SwitchVrrpConfigGroupsOutput) ToSwitchVrrpConfigGroupsOutput() SwitchVrr
 
 func (o SwitchVrrpConfigGroupsOutput) ToSwitchVrrpConfigGroupsOutputWithContext(ctx context.Context) SwitchVrrpConfigGroupsOutput {
 	return o
+}
+
+// If `true`, accept packets destined for VRRP address
+func (o SwitchVrrpConfigGroupsOutput) AcceptData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchVrrpConfigGroups) *bool { return v.AcceptData }).(pulumi.BoolPtrOutput)
+}
+
+// If `true`, allow preemption (a backup router can preempt a primary router)
+func (o SwitchVrrpConfigGroupsOutput) Preempt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchVrrpConfigGroups) *bool { return v.Preempt }).(pulumi.BoolPtrOutput)
 }
 
 func (o SwitchVrrpConfigGroupsOutput) Priority() pulumi.IntPtrOutput {
@@ -42819,6 +43137,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelProviderOptionsPtrInput)(nil)).Elem(), GatewayTunnelProviderOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelProviderOptionsJseInput)(nil)).Elem(), GatewayTunnelProviderOptionsJseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelProviderOptionsJsePtrInput)(nil)).Elem(), GatewayTunnelProviderOptionsJseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelProviderOptionsPrismaInput)(nil)).Elem(), GatewayTunnelProviderOptionsPrismaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelProviderOptionsPrismaPtrInput)(nil)).Elem(), GatewayTunnelProviderOptionsPrismaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelProviderOptionsZscalerInput)(nil)).Elem(), GatewayTunnelProviderOptionsZscalerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelProviderOptionsZscalerPtrInput)(nil)).Elem(), GatewayTunnelProviderOptionsZscalerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTunnelProviderOptionsZscalerSubLocationInput)(nil)).Elem(), GatewayTunnelProviderOptionsZscalerSubLocationArgs{})
@@ -43312,6 +43632,8 @@ func init() {
 	pulumi.RegisterOutputType(GatewayTunnelProviderOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GatewayTunnelProviderOptionsJseOutput{})
 	pulumi.RegisterOutputType(GatewayTunnelProviderOptionsJsePtrOutput{})
+	pulumi.RegisterOutputType(GatewayTunnelProviderOptionsPrismaOutput{})
+	pulumi.RegisterOutputType(GatewayTunnelProviderOptionsPrismaPtrOutput{})
 	pulumi.RegisterOutputType(GatewayTunnelProviderOptionsZscalerOutput{})
 	pulumi.RegisterOutputType(GatewayTunnelProviderOptionsZscalerPtrOutput{})
 	pulumi.RegisterOutputType(GatewayTunnelProviderOptionsZscalerSubLocationOutput{})

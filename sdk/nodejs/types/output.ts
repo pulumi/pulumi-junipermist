@@ -251,7 +251,7 @@ export namespace device {
          */
         eddystoneUidEnabled?: boolean;
         /**
-         * Frequency (msec) of data emmit by Eddystone-UID beacon
+         * Frequency (msec) of data emit by Eddystone-UID beacon
          */
         eddystoneUidFreqMsec?: number;
         /**
@@ -289,7 +289,7 @@ export namespace device {
          */
         ibeaconEnabled?: boolean;
         /**
-         * Frequency (msec) of data emmit for iBeacon
+         * Frequency (msec) of data emit for iBeacon
          */
         ibeaconFreqMsec?: number;
         /**
@@ -1592,6 +1592,10 @@ export namespace device {
          */
         wanArpPolicer: string;
         /**
+         * If `wanType`==`wan`, disable speedtest
+         */
+        wanDisableSpeedtest: boolean;
+        /**
          * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
         wanExtIp?: string;
@@ -1951,7 +1955,7 @@ export namespace device {
          */
         mode: string;
         /**
-         * If `provider`==`custom-ipsec`, networks reachable via this tunnel
+         * If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
          */
         networks: string[];
         /**
@@ -1967,7 +1971,7 @@ export namespace device {
          */
         protocol?: string;
         /**
-         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          */
         provider?: string;
         /**
@@ -1996,10 +2000,14 @@ export namespace device {
          */
         provider: string;
         /**
-         * API override for POP selection
+         * API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
          */
         region?: string;
         secondary?: outputs.device.GatewayTunnelConfigsAutoProvisionSecondary;
+        /**
+         * if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, serviceConnection can be considered, then we'll also consider this along with the site location. Define serviceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup > Service Connections.
+         */
+        serviceConnection?: string;
     }
 
     export interface GatewayTunnelConfigsAutoProvisionLatlng {
@@ -2125,6 +2133,7 @@ export namespace device {
          * For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
          */
         jse?: outputs.device.GatewayTunnelProviderOptionsJse;
+        prisma?: outputs.device.GatewayTunnelProviderOptionsPrisma;
         /**
          * For zscaler-ipsec and zscaler-gre
          */
@@ -2137,6 +2146,13 @@ export namespace device {
          * JSE Organization name
          */
         orgName?: string;
+    }
+
+    export interface GatewayTunnelProviderOptionsPrisma {
+        /**
+         * For prisma-ipsec, service account name to used for tunnel auto provisioning
+         */
+        serviceAccountName?: string;
     }
 
     export interface GatewayTunnelProviderOptionsZscaler {
@@ -4615,6 +4631,10 @@ export namespace device {
 
     export interface SwitchAclTags {
         /**
+         * Can only be used under dst tags.
+         */
+        etherTypes?: string[];
+        /**
          * Required if
          *   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
          *   - `type`==`gbpResource`
@@ -4637,6 +4657,10 @@ export namespace device {
          */
         network?: string;
         /**
+         * Required if `type`==`portUsage`
+         */
+        portUsage?: string;
+        /**
          * Required if:
          *   * `type`==`radiusGroup`
          *   * `type`==`staticGbp`
@@ -4644,7 +4668,7 @@ export namespace device {
          */
         radiusGroup?: string;
         /**
-         * If `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+         * If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
          */
         specs?: outputs.device.SwitchAclTagsSpec[];
         /**
@@ -4661,6 +4685,7 @@ export namespace device {
          *   * `gbpResource`: can only be used in `dstTags`
          *   * `mac`
          *   * `network`
+         *   * `portUsage`
          *   * `radiusGroup`
          *   * `resource`: can only be used in `dstTags`
          *   * `staticGbp`: applying gbp tag against matching conditions
@@ -5035,7 +5060,7 @@ export namespace device {
          */
         gateway6?: string;
         /**
-         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set. See also `interIsolationNetworkLink` and `communityVlanId` in port_usage
          */
         isolation?: boolean;
         isolationVlanId?: string;
@@ -5190,11 +5215,15 @@ export namespace device {
         noLocalOverwrite: boolean;
         poeDisabled?: boolean;
         /**
+         * Required if `usage`==`vlanTunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+         */
+        portNetwork?: string;
+        /**
          * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed?: string;
         /**
-         * Port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
+         * Port usage name. For Q-in-Q, use `vlanTunnel`. If EVPN is used, use `evpnUplink`or `evpnDownlink`
          */
         usage: string;
     }
@@ -5243,6 +5272,10 @@ export namespace device {
          * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDownForUnknownClient?: boolean;
+        /**
+         * Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+         */
+        communityVlanId?: number;
         /**
          * Only if `mode`!=`dynamic`
          */
@@ -5493,6 +5526,7 @@ export namespace device {
 
     export interface SwitchRemoteSyslog {
         archive?: outputs.device.SwitchRemoteSyslogArchive;
+        cacerts?: string[];
         console?: outputs.device.SwitchRemoteSyslogConsole;
         enabled: boolean;
         files?: outputs.device.SwitchRemoteSyslogFile[];
@@ -5532,6 +5566,10 @@ export namespace device {
     export interface SwitchRemoteSyslogFile {
         archive?: outputs.device.SwitchRemoteSyslogFileArchive;
         contents?: outputs.device.SwitchRemoteSyslogFileContent[];
+        /**
+         * Only if `protocol`==`tcp`
+         */
+        enableTls?: boolean;
         explicitPriority?: boolean;
         file?: string;
         match?: string;
@@ -5615,6 +5653,10 @@ export namespace device {
         description?: string;
         enabled: boolean;
         engineId?: string;
+        /**
+         * enum: `local`, `useMacAddress`
+         */
+        engineIdType: string;
         location?: string;
         name?: string;
         network?: string;
@@ -5868,6 +5910,10 @@ export namespace device {
          * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
          */
         protectRe?: outputs.device.SwitchSwitchMgmtProtectRe;
+        /**
+         * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
+         */
+        removeExistingConfigs?: boolean;
         rootPassword?: string;
         tacacs?: outputs.device.SwitchSwitchMgmtTacacs;
         /**
@@ -5896,6 +5942,10 @@ export namespace device {
          *      if dhcpd is enabled, we'll make sure it works
          */
         enabled: boolean;
+        /**
+         * Whether to enable hit count for Protect_RE policy
+         */
+        hitCount: boolean;
         /**
          * host/subnets we'll allow traffic to/from
          */
@@ -6009,6 +6059,14 @@ export namespace device {
     }
 
     export interface SwitchVrrpConfigGroups {
+        /**
+         * If `true`, accept packets destined for VRRP address
+         */
+        acceptData: boolean;
+        /**
+         * If `true`, allow preemption (a backup router can preempt a primary router)
+         */
+        preempt: boolean;
         priority?: number;
     }
 
@@ -6135,7 +6193,7 @@ export namespace org {
          */
         eddystoneUidEnabled?: boolean;
         /**
-         * Frequency (msec) of data emmit by Eddystone-UID beacon
+         * Frequency (msec) of data emit by Eddystone-UID beacon
          */
         eddystoneUidFreqMsec?: number;
         /**
@@ -6173,7 +6231,7 @@ export namespace org {
          */
         ibeaconEnabled?: boolean;
         /**
-         * Frequency (msec) of data emmit for iBeacon
+         * Frequency (msec) of data emit for iBeacon
          */
         ibeaconFreqMsec?: number;
         /**
@@ -7437,6 +7495,10 @@ export namespace org {
          */
         wanArpPolicer: string;
         /**
+         * If `wanType`==`wan`, disable speedtest
+         */
+        wanDisableSpeedtest: boolean;
+        /**
          * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
         wanExtIp?: string;
@@ -7784,7 +7846,7 @@ export namespace org {
          */
         mode: string;
         /**
-         * If `provider`==`custom-ipsec`, networks reachable via this tunnel
+         * If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
          */
         networks: string[];
         /**
@@ -7800,7 +7862,7 @@ export namespace org {
          */
         protocol?: string;
         /**
-         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          */
         provider?: string;
         /**
@@ -7829,10 +7891,14 @@ export namespace org {
          */
         provider: string;
         /**
-         * API override for POP selection
+         * API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
          */
         region?: string;
         secondary?: outputs.org.DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary;
+        /**
+         * if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, serviceConnection can be considered, then we'll also consider this along with the site location. Define serviceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup > Service Connections.
+         */
+        serviceConnection?: string;
     }
 
     export interface DeviceprofileGatewayTunnelConfigsAutoProvisionLatlng {
@@ -7958,6 +8024,7 @@ export namespace org {
          * For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
          */
         jse?: outputs.org.DeviceprofileGatewayTunnelProviderOptionsJse;
+        prisma?: outputs.org.DeviceprofileGatewayTunnelProviderOptionsPrisma;
         /**
          * For zscaler-ipsec and zscaler-gre
          */
@@ -7970,6 +8037,13 @@ export namespace org {
          * JSE Organization name
          */
         orgName?: string;
+    }
+
+    export interface DeviceprofileGatewayTunnelProviderOptionsPrisma {
+        /**
+         * For prisma-ipsec, service account name to used for tunnel auto provisioning
+         */
+        serviceAccountName?: string;
     }
 
     export interface DeviceprofileGatewayTunnelProviderOptionsZscaler {
@@ -8120,6 +8194,10 @@ export namespace org {
          * Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
          */
         coreAsBorder: boolean;
+        /**
+         * if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+         */
+        enableInbandZtp: boolean;
         overlay?: outputs.org.EvpnTopologyEvpnOptionsOverlay;
         /**
          * Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4_mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
@@ -8858,6 +8936,10 @@ export namespace org {
          */
         wanArpPolicer: string;
         /**
+         * If `wanType`==`wan`, disable speedtest
+         */
+        wanDisableSpeedtest: boolean;
+        /**
          * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
         wanExtIp?: string;
@@ -9205,7 +9287,7 @@ export namespace org {
          */
         mode: string;
         /**
-         * If `provider`==`custom-ipsec`, networks reachable via this tunnel
+         * If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
          */
         networks: string[];
         /**
@@ -9221,7 +9303,7 @@ export namespace org {
          */
         protocol?: string;
         /**
-         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          */
         provider?: string;
         /**
@@ -9250,10 +9332,14 @@ export namespace org {
          */
         provider: string;
         /**
-         * API override for POP selection
+         * API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
          */
         region?: string;
         secondary?: outputs.org.GatewaytemplateTunnelConfigsAutoProvisionSecondary;
+        /**
+         * if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, serviceConnection can be considered, then we'll also consider this along with the site location. Define serviceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup > Service Connections.
+         */
+        serviceConnection?: string;
     }
 
     export interface GatewaytemplateTunnelConfigsAutoProvisionLatlng {
@@ -9379,6 +9465,7 @@ export namespace org {
          * For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
          */
         jse?: outputs.org.GatewaytemplateTunnelProviderOptionsJse;
+        prisma?: outputs.org.GatewaytemplateTunnelProviderOptionsPrisma;
         /**
          * For zscaler-ipsec and zscaler-gre
          */
@@ -9391,6 +9478,13 @@ export namespace org {
          * JSE Organization name
          */
         orgName?: string;
+    }
+
+    export interface GatewaytemplateTunnelProviderOptionsPrisma {
+        /**
+         * For prisma-ipsec, service account name to used for tunnel auto provisioning
+         */
+        serviceAccountName?: string;
     }
 
     export interface GatewaytemplateTunnelProviderOptionsZscaler {
@@ -11968,7 +12062,7 @@ export namespace org {
 
     export interface NacruleMatching {
         /**
-         * enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
+         * enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
          */
         authType?: string;
         /**
@@ -12005,7 +12099,7 @@ export namespace org {
 
     export interface NacruleNotMatching {
         /**
-         * enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
+         * enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
          */
         authType?: string;
         /**
@@ -12218,6 +12312,10 @@ export namespace org {
 
     export interface NetworktemplateAclTags {
         /**
+         * Can only be used under dst tags.
+         */
+        etherTypes?: string[];
+        /**
          * Required if
          *   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
          *   - `type`==`gbpResource`
@@ -12240,6 +12338,10 @@ export namespace org {
          */
         network?: string;
         /**
+         * Required if `type`==`portUsage`
+         */
+        portUsage?: string;
+        /**
          * Required if:
          *   * `type`==`radiusGroup`
          *   * `type`==`staticGbp`
@@ -12247,7 +12349,7 @@ export namespace org {
          */
         radiusGroup?: string;
         /**
-         * If `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+         * If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
          */
         specs?: outputs.org.NetworktemplateAclTagsSpec[];
         /**
@@ -12264,6 +12366,7 @@ export namespace org {
          *   * `gbpResource`: can only be used in `dstTags`
          *   * `mac`
          *   * `network`
+         *   * `portUsage`
          *   * `radiusGroup`
          *   * `resource`: can only be used in `dstTags`
          *   * `staticGbp`: applying gbp tag against matching conditions
@@ -12355,7 +12458,7 @@ export namespace org {
          */
         gateway6?: string;
         /**
-         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set. See also `interIsolationNetworkLink` and `communityVlanId` in port_usage
          */
         isolation?: boolean;
         isolationVlanId?: string;
@@ -12456,6 +12559,10 @@ export namespace org {
          * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDownForUnknownClient?: boolean;
+        /**
+         * Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+         */
+        communityVlanId?: number;
         /**
          * Only if `mode`!=`dynamic`
          */
@@ -12710,6 +12817,7 @@ export namespace org {
 
     export interface NetworktemplateRemoteSyslog {
         archive?: outputs.org.NetworktemplateRemoteSyslogArchive;
+        cacerts?: string[];
         console?: outputs.org.NetworktemplateRemoteSyslogConsole;
         enabled: boolean;
         files?: outputs.org.NetworktemplateRemoteSyslogFile[];
@@ -12749,6 +12857,10 @@ export namespace org {
     export interface NetworktemplateRemoteSyslogFile {
         archive?: outputs.org.NetworktemplateRemoteSyslogFileArchive;
         contents?: outputs.org.NetworktemplateRemoteSyslogFileContent[];
+        /**
+         * Only if `protocol`==`tcp`
+         */
+        enableTls?: boolean;
         explicitPriority?: boolean;
         file?: string;
         match?: string;
@@ -12832,6 +12944,10 @@ export namespace org {
         description?: string;
         enabled: boolean;
         engineId?: string;
+        /**
+         * enum: `local`, `useMacAddress`
+         */
+        engineIdType: string;
         location?: string;
         name?: string;
         network?: string;
@@ -13073,12 +13189,12 @@ export namespace org {
         /**
          * property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
          *
-         * @deprecated The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attribuites and may be removed in future versions.
+         * @deprecated The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
 Please update your configurations.
          */
         matchType: string;
         /**
-         * @deprecated The `matchValue` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attribuites and may be removed in future versions.
+         * @deprecated The `matchValue` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
 Please update your configurations.
          */
         matchValue: string;
@@ -13168,11 +13284,15 @@ Please update your configurations.
         noLocalOverwrite: boolean;
         poeDisabled?: boolean;
         /**
+         * Required if `usage`==`vlanTunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+         */
+        portNetwork?: string;
+        /**
          * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed?: string;
         /**
-         * Port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
+         * Port usage name. For Q-in-Q, use `vlanTunnel`. If EVPN is used, use `evpnUplink`or `evpnDownlink`
          */
         usage: string;
     }
@@ -13241,6 +13361,10 @@ Please update your configurations.
          * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
          */
         protectRe?: outputs.org.NetworktemplateSwitchMgmtProtectRe;
+        /**
+         * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
+         */
+        removeExistingConfigs?: boolean;
         rootPassword?: string;
         tacacs?: outputs.org.NetworktemplateSwitchMgmtTacacs;
         /**
@@ -13269,6 +13393,10 @@ Please update your configurations.
          *      if dhcpd is enabled, we'll make sure it works
          */
         enabled: boolean;
+        /**
+         * Whether to enable hit count for Protect_RE policy
+         */
+        hitCount: boolean;
         /**
          * host/subnets we'll allow traffic to/from
          */
@@ -13850,6 +13978,16 @@ Please update your configurations.
         write: string;
     }
 
+    export interface SettingMarvis {
+        autoOperations?: outputs.org.SettingMarvisAutoOperations;
+    }
+
+    export interface SettingMarvisAutoOperations {
+        bouncePortForAbnormalPoeClient: boolean;
+        disablePortWhenDdosProtocolViolation: boolean;
+        disablePortWhenRogueDhcpServerDetected: boolean;
+    }
+
     export interface SettingMgmt {
         /**
          * List of Mist Tunnels
@@ -14007,29 +14145,116 @@ Please update your configurations.
         limitSshAccess: boolean;
     }
 
+    export interface SettingSsr {
+        /**
+         * List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+         */
+        conductorHosts?: string[];
+        /**
+         * Token to be used by the SSR Devices to connect to the Conductor
+         */
+        conductorToken?: string;
+        /**
+         * Disable stats collection on SSR devices
+         */
+        disableStats?: boolean;
+    }
+
+    export interface SettingSwitch {
+        autoUpgrade?: outputs.org.SettingSwitchAutoUpgrade;
+    }
+
+    export interface SettingSwitchAutoUpgrade {
+        /**
+         * Custom version to be used. The Property Key is the switch hardware and the property value is the firmware version
+         */
+        customVersions?: {[key: string]: string};
+        /**
+         * Enable auto upgrade for the switch
+         */
+        enabled?: boolean;
+        /**
+         * Enable snapshot during the upgrade process
+         */
+        snapshot: boolean;
+    }
+
     export interface SettingSwitchMgmt {
         /**
          * If the field is set in both site/setting and org/setting, the value from site/setting will be used.
          */
         apAffinityThreshold: number;
-        /**
-         * If `false`, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
-         */
-        removeExistingConfigs: boolean;
     }
 
     export interface SettingSyntheticTest {
+        /**
+         * enum: `auto`, `high`, `low`
+         */
+        aggressiveness: string;
+        /**
+         * Custom probes to be used for synthetic tests
+         */
+        customProbes?: {[key: string]: outputs.org.SettingSyntheticTestCustomProbes};
         disabled: boolean;
+        /**
+         * List of networks to be used for synthetic tests
+         */
+        lanNetworks?: outputs.org.SettingSyntheticTestLanNetwork[];
         vlans?: outputs.org.SettingSyntheticTestVlan[];
         wanSpeedtest?: outputs.org.SettingSyntheticTestWanSpeedtest;
     }
 
+    export interface SettingSyntheticTestCustomProbes {
+        /**
+         * enum: `auto`, `high`, `low`
+         */
+        aggressiveness: string;
+        /**
+         * If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
+         */
+        host?: string;
+        /**
+         * If `type`==`tcp`, Port to be used for the custom probe
+         */
+        port?: number;
+        /**
+         * In milliseconds
+         */
+        threshold?: number;
+        /**
+         * enum: `curl`, `icmp`, `tcp`
+         */
+        type: string;
+        /**
+         * If `type`==`curl`, URL to be used for the custom probe, can be url or IP
+         */
+        url?: string;
+    }
+
+    export interface SettingSyntheticTestLanNetwork {
+        /**
+         * List of networks to be used for synthetic tests
+         */
+        networks?: string[];
+        /**
+         * app name comes from `customProbes` above or /const/synthetic_test_probes
+         */
+        probes?: string[];
+    }
+
     export interface SettingSyntheticTestVlan {
+        /**
+         * @deprecated This attribute is deprecated.
+         */
         customTestUrls: string[];
         /**
          * For some vlans where we don't want this to run
          */
         disabled: boolean;
+        /**
+         * app name comes from `customProbes` above or /const/synthetic_test_probes
+         */
+        probes?: string[];
         vlanIds: string[];
     }
 
@@ -14660,9 +14885,17 @@ Please update your configurations.
          */
         smsMessageFormat: string;
         /**
-         * Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+         * Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
          */
         smsProvider: string;
+        /**
+         * Required if `smsProvider`==`smsglobal`, Client API Key
+         */
+        smsglobalApiKey?: string;
+        /**
+         * Required if `smsProvider`==`smsglobal`, Client secret
+         */
+        smsglobalApiSecret?: string;
         /**
          * Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
          */
@@ -15632,6 +15865,10 @@ export namespace site {
          * Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
          */
         coreAsBorder: boolean;
+        /**
+         * if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+         */
+        enableInbandZtp: boolean;
         overlay?: outputs.site.EvpnTopologyEvpnOptionsOverlay;
         /**
          * Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4_mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
@@ -17058,6 +17295,10 @@ export namespace site {
 
     export interface NetworktemplateAclTags {
         /**
+         * Can only be used under dst tags.
+         */
+        etherTypes?: string[];
+        /**
          * Required if
          *   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
          *   - `type`==`gbpResource`
@@ -17080,6 +17321,10 @@ export namespace site {
          */
         network?: string;
         /**
+         * Required if `type`==`portUsage`
+         */
+        portUsage?: string;
+        /**
          * Required if:
          *   * `type`==`radiusGroup`
          *   * `type`==`staticGbp`
@@ -17087,7 +17332,7 @@ export namespace site {
          */
         radiusGroup?: string;
         /**
-         * If `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+         * If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
          */
         specs?: outputs.site.NetworktemplateAclTagsSpec[];
         /**
@@ -17104,6 +17349,7 @@ export namespace site {
          *   * `gbpResource`: can only be used in `dstTags`
          *   * `mac`
          *   * `network`
+         *   * `portUsage`
          *   * `radiusGroup`
          *   * `resource`: can only be used in `dstTags`
          *   * `staticGbp`: applying gbp tag against matching conditions
@@ -17195,7 +17441,7 @@ export namespace site {
          */
         gateway6?: string;
         /**
-         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set. See also `interIsolationNetworkLink` and `communityVlanId` in port_usage
          */
         isolation?: boolean;
         isolationVlanId?: string;
@@ -17296,6 +17542,10 @@ export namespace site {
          * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDownForUnknownClient?: boolean;
+        /**
+         * Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+         */
+        communityVlanId?: number;
         /**
          * Only if `mode`!=`dynamic`
          */
@@ -17550,6 +17800,7 @@ export namespace site {
 
     export interface NetworktemplateRemoteSyslog {
         archive?: outputs.site.NetworktemplateRemoteSyslogArchive;
+        cacerts?: string[];
         console?: outputs.site.NetworktemplateRemoteSyslogConsole;
         enabled: boolean;
         files?: outputs.site.NetworktemplateRemoteSyslogFile[];
@@ -17589,6 +17840,10 @@ export namespace site {
     export interface NetworktemplateRemoteSyslogFile {
         archive?: outputs.site.NetworktemplateRemoteSyslogFileArchive;
         contents?: outputs.site.NetworktemplateRemoteSyslogFileContent[];
+        /**
+         * Only if `protocol`==`tcp`
+         */
+        enableTls?: boolean;
         explicitPriority?: boolean;
         file?: string;
         match?: string;
@@ -17672,6 +17927,10 @@ export namespace site {
         description?: string;
         enabled: boolean;
         engineId?: string;
+        /**
+         * enum: `local`, `useMacAddress`
+         */
+        engineIdType: string;
         location?: string;
         name?: string;
         network?: string;
@@ -17913,12 +18172,12 @@ export namespace site {
         /**
          * property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
          *
-         * @deprecated The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attribuites and may be removed in future versions.
+         * @deprecated The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
 Please update your configurations.
          */
         matchType: string;
         /**
-         * @deprecated The `matchValue` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attribuites and may be removed in future versions.
+         * @deprecated The `matchValue` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
 Please update your configurations.
          */
         matchValue: string;
@@ -18008,11 +18267,15 @@ Please update your configurations.
         noLocalOverwrite: boolean;
         poeDisabled?: boolean;
         /**
+         * Required if `usage`==`vlanTunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+         */
+        portNetwork?: string;
+        /**
          * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed?: string;
         /**
-         * Port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
+         * Port usage name. For Q-in-Q, use `vlanTunnel`. If EVPN is used, use `evpnUplink`or `evpnDownlink`
          */
         usage: string;
     }
@@ -18081,6 +18344,10 @@ Please update your configurations.
          * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
          */
         protectRe?: outputs.site.NetworktemplateSwitchMgmtProtectRe;
+        /**
+         * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
+         */
+        removeExistingConfigs?: boolean;
         rootPassword?: string;
         tacacs?: outputs.site.NetworktemplateSwitchMgmtTacacs;
         /**
@@ -18109,6 +18376,10 @@ Please update your configurations.
          *      if dhcpd is enabled, we'll make sure it works
          */
         enabled: boolean;
+        /**
+         * Whether to enable hit count for Protect_RE policy
+         */
+        hitCount: boolean;
         /**
          * host/subnets we'll allow traffic to/from
          */
@@ -18259,7 +18530,7 @@ Please update your configurations.
          */
         eddystoneUidEnabled: boolean;
         /**
-         * Frequency (msec) of data emmit by Eddystone-UID beacon
+         * Frequency (msec) of data emit by Eddystone-UID beacon
          */
         eddystoneUidFreqMsec: number;
         /**
@@ -18297,7 +18568,7 @@ Please update your configurations.
          */
         ibeaconEnabled: boolean;
         /**
-         * Frequency (msec) of data emmit for iBeacon
+         * Frequency (msec) of data emit for iBeacon
          */
         ibeaconFreqMsec: number;
         /**
@@ -18490,15 +18761,15 @@ Please update your configurations.
          */
         configRevertTimer?: number;
         /**
-         * For both SSR and SRX disable console port
+         * For SSR and SRX, disable console port
          */
         disableConsole?: boolean;
         /**
-         * For both SSR and SRX disable management interface
+         * For SSR and SRX, disable management interface
          */
         disableOob?: boolean;
         /**
-         * For SSR disable usb interface
+         * For SSR and SRX, disable usb interface
          */
         disableUsb?: boolean;
         fipsEnabled?: boolean;
@@ -18575,6 +18846,10 @@ Please update your configurations.
          */
         enabled: boolean;
         /**
+         * Whether to enable hit count for Protect_RE policy
+         */
+        hitCount: boolean;
+        /**
          * host/subnets we'll allow traffic to/from
          */
         trustedHosts: string[];
@@ -18606,6 +18881,16 @@ Please update your configurations.
     export interface SettingLed {
         brightness: number;
         enabled: boolean;
+    }
+
+    export interface SettingMarvis {
+        autoOperations?: outputs.site.SettingMarvisAutoOperations;
+    }
+
+    export interface SettingMarvisAutoOperations {
+        bouncePortForAbnormalPoeClient: boolean;
+        disablePortWhenDdosProtocolViolation: boolean;
+        disablePortWhenRogueDhcpServerDetected: boolean;
     }
 
     export interface SettingOccupancy {
@@ -18726,28 +19011,114 @@ Please update your configurations.
         sendIpMacMapping: boolean;
     }
 
+    export interface SettingSleThresholds {
+        /**
+         * Capacity, in %
+         */
+        capacity: number;
+        /**
+         * Coverage, in dBm
+         */
+        coverage: number;
+        /**
+         * Throughput, in Mbps
+         */
+        throughput: number;
+        /**
+         * Time to connect, in seconds
+         */
+        timetoconnect: number;
+    }
+
     export interface SettingSrxApp {
         enabled: boolean;
     }
 
     export interface SettingSsr {
+        /**
+         * List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+         */
         conductorHosts?: string[];
+        /**
+         * Token to be used by the SSR Devices to connect to the Conductor
+         */
+        conductorToken?: string;
+        /**
+         * Disable stats collection on SSR devices
+         */
         disableStats?: boolean;
     }
 
     export interface SettingSyntheticTest {
+        /**
+         * enum: `auto`, `high`, `low`
+         */
+        aggressiveness?: string;
+        /**
+         * Custom probes to be used for synthetic tests
+         */
+        customProbes?: {[key: string]: outputs.site.SettingSyntheticTestCustomProbes};
         disabled?: boolean;
+        /**
+         * List of networks to be used for synthetic tests
+         */
+        lanNetworks?: outputs.site.SettingSyntheticTestLanNetwork[];
         vlans?: outputs.site.SettingSyntheticTestVlan[];
         wanSpeedtest?: outputs.site.SettingSyntheticTestWanSpeedtest;
     }
 
+    export interface SettingSyntheticTestCustomProbes {
+        /**
+         * enum: `auto`, `high`, `low`
+         */
+        aggressiveness: string;
+        /**
+         * If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
+         */
+        host?: string;
+        /**
+         * If `type`==`tcp`, Port to be used for the custom probe
+         */
+        port?: number;
+        /**
+         * In milliseconds
+         */
+        threshold?: number;
+        /**
+         * enum: `curl`, `icmp`, `tcp`
+         */
+        type: string;
+        /**
+         * If `type`==`curl`, URL to be used for the custom probe, can be url or IP
+         */
+        url?: string;
+    }
+
+    export interface SettingSyntheticTestLanNetwork {
+        /**
+         * List of networks to be used for synthetic tests
+         */
+        networks?: string[];
+        /**
+         * app name comes from `customProbes` above or /const/synthetic_test_probes
+         */
+        probes?: string[];
+    }
+
     export interface SettingSyntheticTestVlan {
-        customTestUrls: string[];
+        /**
+         * @deprecated This attribute is deprecated.
+         */
+        customTestUrls?: string[];
         /**
          * For some vlans where we don't want this to run
          */
         disabled: boolean;
-        vlanIds: string[];
+        /**
+         * app name comes from `customProbes` above or /const/synthetic_test_probes
+         */
+        probes?: string[];
+        vlanIds?: string[];
     }
 
     export interface SettingSyntheticTestWanSpeedtest {
@@ -19357,7 +19728,7 @@ Please update your configurations.
          */
         password: string;
         /**
-         * Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+         * Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behavior is acc to `sponsorEmailDomains`
          */
         predefinedSponsorsEnabled: boolean;
         /**
@@ -19390,9 +19761,17 @@ Please update your configurations.
          */
         smsMessageFormat: string;
         /**
-         * Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+         * Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
          */
         smsProvider: string;
+        /**
+         * Required if `smsProvider`==`smsglobal`, Client API Key
+         */
+        smsglobalApiKey?: string;
+        /**
+         * Required if `smsProvider`==`smsglobal`, Client secret
+         */
+        smsglobalApiSecret?: string;
         /**
          * Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
          */
@@ -19441,7 +19820,7 @@ Please update your configurations.
          */
         ssoIdpCert: string;
         /**
-         * Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+         * Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          */
         ssoIdpSignAlgo: string;
         /**

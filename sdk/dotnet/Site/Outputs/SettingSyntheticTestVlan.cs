@@ -18,6 +18,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// For some vlans where we don't want this to run
         /// </summary>
         public readonly bool? Disabled;
+        /// <summary>
+        /// app name comes from `custom_probes` above or /const/synthetic_test_probes
+        /// </summary>
+        public readonly ImmutableArray<string> Probes;
         public readonly ImmutableArray<string> VlanIds;
 
         [OutputConstructor]
@@ -26,10 +30,13 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             bool? disabled,
 
+            ImmutableArray<string> probes,
+
             ImmutableArray<string> vlanIds)
         {
             CustomTestUrls = customTestUrls;
             Disabled = disabled;
+            Probes = probes;
             VlanIds = vlanIds;
         }
     }

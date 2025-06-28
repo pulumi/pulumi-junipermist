@@ -28,6 +28,11 @@ public final class NetworktemplateSwitchMgmtProtectRe {
      */
     private @Nullable Boolean enabled;
     /**
+     * @return Whether to enable hit count for Protect_RE policy
+     * 
+     */
+    private @Nullable Boolean hitCount;
+    /**
      * @return host/subnets we&#39;ll allow traffic to/from
      * 
      */
@@ -54,6 +59,13 @@ public final class NetworktemplateSwitchMgmtProtectRe {
         return Optional.ofNullable(this.enabled);
     }
     /**
+     * @return Whether to enable hit count for Protect_RE policy
+     * 
+     */
+    public Optional<Boolean> hitCount() {
+        return Optional.ofNullable(this.hitCount);
+    }
+    /**
      * @return host/subnets we&#39;ll allow traffic to/from
      * 
      */
@@ -73,6 +85,7 @@ public final class NetworktemplateSwitchMgmtProtectRe {
         private @Nullable List<String> allowedServices;
         private @Nullable List<NetworktemplateSwitchMgmtProtectReCustom> customs;
         private @Nullable Boolean enabled;
+        private @Nullable Boolean hitCount;
         private @Nullable List<String> trustedHosts;
         public Builder() {}
         public Builder(NetworktemplateSwitchMgmtProtectRe defaults) {
@@ -80,6 +93,7 @@ public final class NetworktemplateSwitchMgmtProtectRe {
     	      this.allowedServices = defaults.allowedServices;
     	      this.customs = defaults.customs;
     	      this.enabled = defaults.enabled;
+    	      this.hitCount = defaults.hitCount;
     	      this.trustedHosts = defaults.trustedHosts;
         }
 
@@ -108,6 +122,12 @@ public final class NetworktemplateSwitchMgmtProtectRe {
             return this;
         }
         @CustomType.Setter
+        public Builder hitCount(@Nullable Boolean hitCount) {
+
+            this.hitCount = hitCount;
+            return this;
+        }
+        @CustomType.Setter
         public Builder trustedHosts(@Nullable List<String> trustedHosts) {
 
             this.trustedHosts = trustedHosts;
@@ -121,6 +141,7 @@ public final class NetworktemplateSwitchMgmtProtectRe {
             _resultValue.allowedServices = allowedServices;
             _resultValue.customs = customs;
             _resultValue.enabled = enabled;
+            _resultValue.hitCount = hitCount;
             _resultValue.trustedHosts = trustedHosts;
             return _resultValue;
         }

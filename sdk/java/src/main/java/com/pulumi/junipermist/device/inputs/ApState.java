@@ -382,16 +382,16 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-     * predecence over switch_config (deprecated)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+     * precedence over switch_config (deprecated)
      * 
      */
     @Import(name="portConfig")
     private @Nullable Output<Map<String,ApPortConfigArgs>> portConfig;
 
     /**
-     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-     * predecence over switch_config (deprecated)
+     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+     * precedence over switch_config (deprecated)
      * 
      */
     public Optional<Output<Map<String,ApPortConfigArgs>>> portConfig() {
@@ -1087,8 +1087,8 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-         * predecence over switch_config (deprecated)
+         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+         * precedence over switch_config (deprecated)
          * 
          * @return builder
          * 
@@ -1099,8 +1099,8 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-         * predecence over switch_config (deprecated)
+         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+         * precedence over switch_config (deprecated)
          * 
          * @return builder
          * 

@@ -136,14 +136,14 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
     }
 
     /**
-     * If `provider`==`custom-ipsec`, networks reachable via this tunnel
+     * If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
     /**
-     * @return If `provider`==`custom-ipsec`, networks reachable via this tunnel
+     * @return If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
      * 
      */
     public Optional<Output<List<String>>> networks() {
@@ -196,14 +196,14 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
     }
 
     /**
-     * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+     * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
      * 
      */
     @Import(name="provider")
     private @Nullable Output<String> provider;
 
     /**
-     * @return Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+     * @return Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
      * 
      */
     public Optional<Output<String>> provider() {
@@ -471,7 +471,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networks If `provider`==`custom-ipsec`, networks reachable via this tunnel
+         * @param networks If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
          * 
          * @return builder
          * 
@@ -482,7 +482,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networks If `provider`==`custom-ipsec`, networks reachable via this tunnel
+         * @param networks If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networks If `provider`==`custom-ipsec`, networks reachable via this tunnel
+         * @param networks If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
          * 
          * @return builder
          * 
@@ -565,7 +565,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param provider Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * @param provider Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          * 
          * @return builder
          * 
@@ -576,7 +576,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param provider Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * @param provider Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          * 
          * @return builder
          * 

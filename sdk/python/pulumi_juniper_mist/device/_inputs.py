@@ -196,6 +196,8 @@ __all__ = [
     'GatewayTunnelProviderOptionsArgsDict',
     'GatewayTunnelProviderOptionsJseArgs',
     'GatewayTunnelProviderOptionsJseArgsDict',
+    'GatewayTunnelProviderOptionsPrismaArgs',
+    'GatewayTunnelProviderOptionsPrismaArgsDict',
     'GatewayTunnelProviderOptionsZscalerArgs',
     'GatewayTunnelProviderOptionsZscalerArgsDict',
     'GatewayTunnelProviderOptionsZscalerSubLocationArgs',
@@ -488,7 +490,7 @@ if not MYPY:
         """
         eddystone_uid_freq_msec: NotRequired[pulumi.Input[builtins.int]]
         """
-        Frequency (msec) of data emmit by Eddystone-UID beacon
+        Frequency (msec) of data emit by Eddystone-UID beacon
         """
         eddystone_uid_instance: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -526,7 +528,7 @@ if not MYPY:
         """
         ibeacon_freq_msec: NotRequired[pulumi.Input[builtins.int]]
         """
-        Frequency (msec) of data emmit for iBeacon
+        Frequency (msec) of data emit for iBeacon
         """
         ibeacon_major: NotRequired[pulumi.Input[builtins.int]]
         """
@@ -591,7 +593,7 @@ class ApBleConfigArgs:
         :param pulumi.Input[builtins.int] custom_ble_packet_freq_msec: Frequency (msec) of data emitted by custom ble beacon
         :param pulumi.Input[builtins.int] eddystone_uid_adv_power: Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
         :param pulumi.Input[builtins.bool] eddystone_uid_enabled: Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
-        :param pulumi.Input[builtins.int] eddystone_uid_freq_msec: Frequency (msec) of data emmit by Eddystone-UID beacon
+        :param pulumi.Input[builtins.int] eddystone_uid_freq_msec: Frequency (msec) of data emit by Eddystone-UID beacon
         :param pulumi.Input[builtins.str] eddystone_uid_instance: Eddystone-UID instance for the device
         :param pulumi.Input[builtins.str] eddystone_uid_namespace: Eddystone-UID namespace
         :param pulumi.Input[builtins.int] eddystone_url_adv_power: Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
@@ -600,7 +602,7 @@ class ApBleConfigArgs:
         :param pulumi.Input[builtins.str] eddystone_url_url: URL pointed by Eddystone-URL beacon
         :param pulumi.Input[builtins.int] ibeacon_adv_power: Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
         :param pulumi.Input[builtins.bool] ibeacon_enabled: Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
-        :param pulumi.Input[builtins.int] ibeacon_freq_msec: Frequency (msec) of data emmit for iBeacon
+        :param pulumi.Input[builtins.int] ibeacon_freq_msec: Frequency (msec) of data emit for iBeacon
         :param pulumi.Input[builtins.int] ibeacon_major: Major number for iBeacon
         :param pulumi.Input[builtins.int] ibeacon_minor: Minor number for iBeacon
         :param pulumi.Input[builtins.str] ibeacon_uuid: Optional, if not specified, the same UUID as the beacon will be used
@@ -783,7 +785,7 @@ class ApBleConfigArgs:
     @pulumi.getter(name="eddystoneUidFreqMsec")
     def eddystone_uid_freq_msec(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Frequency (msec) of data emmit by Eddystone-UID beacon
+        Frequency (msec) of data emit by Eddystone-UID beacon
         """
         return pulumi.get(self, "eddystone_uid_freq_msec")
 
@@ -909,7 +911,7 @@ class ApBleConfigArgs:
     @pulumi.getter(name="ibeaconFreqMsec")
     def ibeacon_freq_msec(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Frequency (msec) of data emmit for iBeacon
+        Frequency (msec) of data emit for iBeacon
         """
         return pulumi.get(self, "ibeacon_freq_msec")
 
@@ -7309,6 +7311,10 @@ if not MYPY:
         """
         Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
         """
+        wan_disable_speedtest: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If `wan_type`==`wan`, disable speedtest
+        """
         wan_ext_ip: NotRequired[pulumi.Input[builtins.str]]
         """
         Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
@@ -7377,6 +7383,7 @@ class GatewayPortConfigArgs:
                  vlan_id: Optional[pulumi.Input[builtins.str]] = None,
                  vpn_paths: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayPortConfigVpnPathsArgs']]]] = None,
                  wan_arp_policer: Optional[pulumi.Input[builtins.str]] = None,
+                 wan_disable_speedtest: Optional[pulumi.Input[builtins.bool]] = None,
                  wan_ext_ip: Optional[pulumi.Input[builtins.str]] = None,
                  wan_extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayPortConfigWanExtraRoutesArgs']]]] = None,
                  wan_networks: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -7414,6 +7421,7 @@ class GatewayPortConfigArgs:
         :param pulumi.Input[builtins.str] svr_port_range: For SSR only
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayPortConfigVpnPathsArgs']]] vpn_paths: Property key is the VPN name
         :param pulumi.Input[builtins.str] wan_arp_policer: Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
+        :param pulumi.Input[builtins.bool] wan_disable_speedtest: If `wan_type`==`wan`, disable speedtest
         :param pulumi.Input[builtins.str] wan_ext_ip: Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayPortConfigWanExtraRoutesArgs']]] wan_extra_routes: Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] wan_networks: Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
@@ -7496,6 +7504,8 @@ class GatewayPortConfigArgs:
             pulumi.set(__self__, "vpn_paths", vpn_paths)
         if wan_arp_policer is not None:
             pulumi.set(__self__, "wan_arp_policer", wan_arp_policer)
+        if wan_disable_speedtest is not None:
+            pulumi.set(__self__, "wan_disable_speedtest", wan_disable_speedtest)
         if wan_ext_ip is not None:
             pulumi.set(__self__, "wan_ext_ip", wan_ext_ip)
         if wan_extra_routes is not None:
@@ -7940,6 +7950,18 @@ class GatewayPortConfigArgs:
     @wan_arp_policer.setter
     def wan_arp_policer(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "wan_arp_policer", value)
+
+    @property
+    @pulumi.getter(name="wanDisableSpeedtest")
+    def wan_disable_speedtest(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If `wan_type`==`wan`, disable speedtest
+        """
+        return pulumi.get(self, "wan_disable_speedtest")
+
+    @wan_disable_speedtest.setter
+    def wan_disable_speedtest(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "wan_disable_speedtest", value)
 
     @property
     @pulumi.getter(name="wanExtIp")
@@ -9745,7 +9767,7 @@ if not MYPY:
         """
         networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         """
-        If `provider`==`custom-ipsec`, networks reachable via this tunnel
+        If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
         """
         primary: NotRequired[pulumi.Input['GatewayTunnelConfigsPrimaryArgsDict']]
         """
@@ -9761,7 +9783,7 @@ if not MYPY:
         """
         provider: NotRequired[pulumi.Input[builtins.str]]
         """
-        Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+        Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
         """
         psk: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -9805,11 +9827,11 @@ class GatewayTunnelConfigsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GatewayTunnelConfigsIpsecProposalArgs']]] ipsec_proposals: Only if  `provider`==`custom-ipsec`
         :param pulumi.Input[builtins.str] local_id: Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         :param pulumi.Input[builtins.str] mode: Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] networks: If `provider`==`custom-ipsec`, networks reachable via this tunnel
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] networks: If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
         :param pulumi.Input['GatewayTunnelConfigsPrimaryArgs'] primary: Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         :param pulumi.Input['GatewayTunnelConfigsProbeArgs'] probe: Only if `provider`==`custom-ipsec`
         :param pulumi.Input[builtins.str] protocol: Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
-        :param pulumi.Input[builtins.str] provider: Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+        :param pulumi.Input[builtins.str] provider: Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
         :param pulumi.Input[builtins.str] psk: Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         :param pulumi.Input['GatewayTunnelConfigsSecondaryArgs'] secondary: Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         :param pulumi.Input[builtins.str] version: Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
@@ -9944,7 +9966,7 @@ class GatewayTunnelConfigsArgs:
     @pulumi.getter
     def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        If `provider`==`custom-ipsec`, networks reachable via this tunnel
+        If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
         """
         return pulumi.get(self, "networks")
 
@@ -9992,7 +10014,7 @@ class GatewayTunnelConfigsArgs:
     @pulumi.getter
     def provider(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+        Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
         """
         return pulumi.get(self, "provider")
 
@@ -10051,9 +10073,13 @@ if not MYPY:
         primary: NotRequired[pulumi.Input['GatewayTunnelConfigsAutoProvisionPrimaryArgsDict']]
         region: NotRequired[pulumi.Input[builtins.str]]
         """
-        API override for POP selection
+        API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
         """
         secondary: NotRequired[pulumi.Input['GatewayTunnelConfigsAutoProvisionSecondaryArgsDict']]
+        service_connection: NotRequired[pulumi.Input[builtins.str]]
+        """
+        if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we'll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup > Service Connections.
+        """
 elif False:
     GatewayTunnelConfigsAutoProvisionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -10065,11 +10091,13 @@ class GatewayTunnelConfigsAutoProvisionArgs:
                  latlng: Optional[pulumi.Input['GatewayTunnelConfigsAutoProvisionLatlngArgs']] = None,
                  primary: Optional[pulumi.Input['GatewayTunnelConfigsAutoProvisionPrimaryArgs']] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
-                 secondary: Optional[pulumi.Input['GatewayTunnelConfigsAutoProvisionSecondaryArgs']] = None):
+                 secondary: Optional[pulumi.Input['GatewayTunnelConfigsAutoProvisionSecondaryArgs']] = None,
+                 service_connection: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] provider: enum: `jse-ipsec`, `zscaler-ipsec`
         :param pulumi.Input['GatewayTunnelConfigsAutoProvisionLatlngArgs'] latlng: API override for POP selection
-        :param pulumi.Input[builtins.str] region: API override for POP selection
+        :param pulumi.Input[builtins.str] region: API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
+        :param pulumi.Input[builtins.str] service_connection: if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we'll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup > Service Connections.
         """
         pulumi.set(__self__, "provider", provider)
         if enable is not None:
@@ -10082,6 +10110,8 @@ class GatewayTunnelConfigsAutoProvisionArgs:
             pulumi.set(__self__, "region", region)
         if secondary is not None:
             pulumi.set(__self__, "secondary", secondary)
+        if service_connection is not None:
+            pulumi.set(__self__, "service_connection", service_connection)
 
     @property
     @pulumi.getter
@@ -10129,7 +10159,7 @@ class GatewayTunnelConfigsAutoProvisionArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        API override for POP selection
+        API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
         """
         return pulumi.get(self, "region")
 
@@ -10145,6 +10175,18 @@ class GatewayTunnelConfigsAutoProvisionArgs:
     @secondary.setter
     def secondary(self, value: Optional[pulumi.Input['GatewayTunnelConfigsAutoProvisionSecondaryArgs']]):
         pulumi.set(self, "secondary", value)
+
+    @property
+    @pulumi.getter(name="serviceConnection")
+    def service_connection(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we'll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup > Service Connections.
+        """
+        return pulumi.get(self, "service_connection")
+
+    @service_connection.setter
+    def service_connection(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "service_connection", value)
 
 
 if not MYPY:
@@ -10751,6 +10793,7 @@ if not MYPY:
         """
         For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
         """
+        prisma: NotRequired[pulumi.Input['GatewayTunnelProviderOptionsPrismaArgsDict']]
         zscaler: NotRequired[pulumi.Input['GatewayTunnelProviderOptionsZscalerArgsDict']]
         """
         For zscaler-ipsec and zscaler-gre
@@ -10762,6 +10805,7 @@ elif False:
 class GatewayTunnelProviderOptionsArgs:
     def __init__(__self__, *,
                  jse: Optional[pulumi.Input['GatewayTunnelProviderOptionsJseArgs']] = None,
+                 prisma: Optional[pulumi.Input['GatewayTunnelProviderOptionsPrismaArgs']] = None,
                  zscaler: Optional[pulumi.Input['GatewayTunnelProviderOptionsZscalerArgs']] = None):
         """
         :param pulumi.Input['GatewayTunnelProviderOptionsJseArgs'] jse: For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
@@ -10769,6 +10813,8 @@ class GatewayTunnelProviderOptionsArgs:
         """
         if jse is not None:
             pulumi.set(__self__, "jse", jse)
+        if prisma is not None:
+            pulumi.set(__self__, "prisma", prisma)
         if zscaler is not None:
             pulumi.set(__self__, "zscaler", zscaler)
 
@@ -10783,6 +10829,15 @@ class GatewayTunnelProviderOptionsArgs:
     @jse.setter
     def jse(self, value: Optional[pulumi.Input['GatewayTunnelProviderOptionsJseArgs']]):
         pulumi.set(self, "jse", value)
+
+    @property
+    @pulumi.getter
+    def prisma(self) -> Optional[pulumi.Input['GatewayTunnelProviderOptionsPrismaArgs']]:
+        return pulumi.get(self, "prisma")
+
+    @prisma.setter
+    def prisma(self, value: Optional[pulumi.Input['GatewayTunnelProviderOptionsPrismaArgs']]):
+        pulumi.set(self, "prisma", value)
 
     @property
     @pulumi.getter
@@ -10840,6 +10895,38 @@ class GatewayTunnelProviderOptionsJseArgs:
     @org_name.setter
     def org_name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "org_name", value)
+
+
+if not MYPY:
+    class GatewayTunnelProviderOptionsPrismaArgsDict(TypedDict):
+        service_account_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        For prisma-ipsec, service account name to used for tunnel auto provisioning
+        """
+elif False:
+    GatewayTunnelProviderOptionsPrismaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GatewayTunnelProviderOptionsPrismaArgs:
+    def __init__(__self__, *,
+                 service_account_name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] service_account_name: For prisma-ipsec, service account name to used for tunnel auto provisioning
+        """
+        if service_account_name is not None:
+            pulumi.set(__self__, "service_account_name", service_account_name)
+
+    @property
+    @pulumi.getter(name="serviceAccountName")
+    def service_account_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        For prisma-ipsec, service account name to used for tunnel auto provisioning
+        """
+        return pulumi.get(self, "service_account_name")
+
+    @service_account_name.setter
+    def service_account_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "service_account_name", value)
 
 
 if not MYPY:
@@ -11618,10 +11705,15 @@ if not MYPY:
           * `gbp_resource`: can only be used in `dst_tags`
           * `mac`
           * `network`
+          * `port_usage`
           * `radius_group`
           * `resource`: can only be used in `dst_tags`
           * `static_gbp`: applying gbp tag against matching conditions
           * `subnet`'
+        """
+        ether_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Can only be used under dst tags.
         """
         gbp_tag: NotRequired[pulumi.Input[builtins.int]]
         """
@@ -11645,6 +11737,10 @@ if not MYPY:
           * `type`==`resource` (optional. default is `any`)
           * `type`==`static_gbp` if from matching network (vlan)
         """
+        port_usage: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Required if `type`==`port_usage`
+        """
         radius_group: NotRequired[pulumi.Input[builtins.str]]
         """
         Required if:
@@ -11654,7 +11750,7 @@ if not MYPY:
         """
         specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['SwitchAclTagsSpecArgsDict']]]]
         """
-        If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+        If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
         """
         subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         """
@@ -11670,9 +11766,11 @@ elif False:
 class SwitchAclTagsArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[builtins.str],
+                 ether_types: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  gbp_tag: Optional[pulumi.Input[builtins.int]] = None,
                  macs: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  network: Optional[pulumi.Input[builtins.str]] = None,
+                 port_usage: Optional[pulumi.Input[builtins.str]] = None,
                  radius_group: Optional[pulumi.Input[builtins.str]] = None,
                  specs: Optional[pulumi.Input[Sequence[pulumi.Input['SwitchAclTagsSpecArgs']]]] = None,
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
@@ -11683,10 +11781,12 @@ class SwitchAclTagsArgs:
                  * `gbp_resource`: can only be used in `dst_tags`
                  * `mac`
                  * `network`
+                 * `port_usage`
                  * `radius_group`
                  * `resource`: can only be used in `dst_tags`
                  * `static_gbp`: applying gbp tag against matching conditions
                  * `subnet`'
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ether_types: Can only be used under dst tags.
         :param pulumi.Input[builtins.int] gbp_tag: Required if
                  - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
                  - `type`==`gbp_resource`
@@ -11700,23 +11800,28 @@ class SwitchAclTagsArgs:
                  * `type`==`network`
                  * `type`==`resource` (optional. default is `any`)
                  * `type`==`static_gbp` if from matching network (vlan)
+        :param pulumi.Input[builtins.str] port_usage: Required if `type`==`port_usage`
         :param pulumi.Input[builtins.str] radius_group: Required if:
                  * `type`==`radius_group`
                  * `type`==`static_gbp`
                if from matching radius_group
-        :param pulumi.Input[Sequence[pulumi.Input['SwitchAclTagsSpecArgs']]] specs: If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+        :param pulumi.Input[Sequence[pulumi.Input['SwitchAclTagsSpecArgs']]] specs: If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] subnets: If 
                - `type`==`subnet` 
                - `type`==`resource` (optional. default is `any`)
                - `type`==`static_gbp` if from matching subnet
         """
         pulumi.set(__self__, "type", type)
+        if ether_types is not None:
+            pulumi.set(__self__, "ether_types", ether_types)
         if gbp_tag is not None:
             pulumi.set(__self__, "gbp_tag", gbp_tag)
         if macs is not None:
             pulumi.set(__self__, "macs", macs)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if port_usage is not None:
+            pulumi.set(__self__, "port_usage", port_usage)
         if radius_group is not None:
             pulumi.set(__self__, "radius_group", radius_group)
         if specs is not None:
@@ -11734,6 +11839,7 @@ class SwitchAclTagsArgs:
           * `gbp_resource`: can only be used in `dst_tags`
           * `mac`
           * `network`
+          * `port_usage`
           * `radius_group`
           * `resource`: can only be used in `dst_tags`
           * `static_gbp`: applying gbp tag against matching conditions
@@ -11744,6 +11850,18 @@ class SwitchAclTagsArgs:
     @type.setter
     def type(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="etherTypes")
+    def ether_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Can only be used under dst tags.
+        """
+        return pulumi.get(self, "ether_types")
+
+    @ether_types.setter
+    def ether_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "ether_types", value)
 
     @property
     @pulumi.getter(name="gbpTag")
@@ -11792,6 +11910,18 @@ class SwitchAclTagsArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="portUsage")
+    def port_usage(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Required if `type`==`port_usage`
+        """
+        return pulumi.get(self, "port_usage")
+
+    @port_usage.setter
+    def port_usage(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "port_usage", value)
+
+    @property
     @pulumi.getter(name="radiusGroup")
     def radius_group(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -11810,7 +11940,7 @@ class SwitchAclTagsArgs:
     @pulumi.getter
     def specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SwitchAclTagsSpecArgs']]]]:
         """
-        If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+        If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
         """
         return pulumi.get(self, "specs")
 
@@ -13788,7 +13918,7 @@ if not MYPY:
         """
         isolation: NotRequired[pulumi.Input[builtins.bool]]
         """
-        whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
+        whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set. See also `inter_isolation_network_link` and `community_vlan_id` in port_usage
         """
         isolation_vlan_id: NotRequired[pulumi.Input[builtins.str]]
         subnet: NotRequired[pulumi.Input[builtins.str]]
@@ -13815,7 +13945,7 @@ class SwitchNetworksArgs:
         """
         :param pulumi.Input[builtins.str] gateway: Only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
         :param pulumi.Input[builtins.str] gateway6: Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
-        :param pulumi.Input[builtins.bool] isolation: whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
+        :param pulumi.Input[builtins.bool] isolation: whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set. See also `inter_isolation_network_link` and `community_vlan_id` in port_usage
         :param pulumi.Input[builtins.str] subnet: Optional for pure switching, required when L3 / routing features are used
         :param pulumi.Input[builtins.str] subnet6: Optional for pure switching, required when L3 / routing features are used
         """
@@ -13870,7 +14000,7 @@ class SwitchNetworksArgs:
     @pulumi.getter
     def isolation(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
+        whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set. See also `inter_isolation_network_link` and `community_vlan_id` in port_usage
         """
         return pulumi.get(self, "isolation")
 
@@ -14473,7 +14603,7 @@ if not MYPY:
     class SwitchPortConfigArgsDict(TypedDict):
         usage: pulumi.Input[builtins.str]
         """
-        Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+        Port usage name. For Q-in-Q, use `vlan_tunnel`. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
         """
         ae_disable_lacp: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -14515,6 +14645,10 @@ if not MYPY:
         Prevent helpdesk to override the port config
         """
         poe_disabled: NotRequired[pulumi.Input[builtins.bool]]
+        port_network: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Required if `usage`==`vlan_tunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+        """
         speed: NotRequired[pulumi.Input[builtins.str]]
         """
         enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
@@ -14539,9 +14673,10 @@ class SwitchPortConfigArgs:
                  mtu: Optional[pulumi.Input[builtins.int]] = None,
                  no_local_overwrite: Optional[pulumi.Input[builtins.bool]] = None,
                  poe_disabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 port_network: Optional[pulumi.Input[builtins.str]] = None,
                  speed: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] usage: Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+        :param pulumi.Input[builtins.str] usage: Port usage name. For Q-in-Q, use `vlan_tunnel`. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
         :param pulumi.Input[builtins.bool] ae_disable_lacp: To disable LACP support for the AE interface
         :param pulumi.Input[builtins.int] ae_idx: Users could force to use the designated AE name
         :param pulumi.Input[builtins.bool] ae_lacp_slow: To use fast timeout
@@ -14551,6 +14686,7 @@ class SwitchPortConfigArgs:
         :param pulumi.Input[builtins.str] dynamic_usage: Enable dynamic usage for this port. Set to `dynamic` to enable.
         :param pulumi.Input[builtins.int] mtu: Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
         :param pulumi.Input[builtins.bool] no_local_overwrite: Prevent helpdesk to override the port config
+        :param pulumi.Input[builtins.str] port_network: Required if `usage`==`vlan_tunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
         :param pulumi.Input[builtins.str] speed: enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         """
         pulumi.set(__self__, "usage", usage)
@@ -14580,6 +14716,8 @@ class SwitchPortConfigArgs:
             pulumi.set(__self__, "no_local_overwrite", no_local_overwrite)
         if poe_disabled is not None:
             pulumi.set(__self__, "poe_disabled", poe_disabled)
+        if port_network is not None:
+            pulumi.set(__self__, "port_network", port_network)
         if speed is not None:
             pulumi.set(__self__, "speed", speed)
 
@@ -14587,7 +14725,7 @@ class SwitchPortConfigArgs:
     @pulumi.getter
     def usage(self) -> pulumi.Input[builtins.str]:
         """
-        Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+        Port usage name. For Q-in-Q, use `vlan_tunnel`. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
         """
         return pulumi.get(self, "usage")
 
@@ -14740,6 +14878,18 @@ class SwitchPortConfigArgs:
         pulumi.set(self, "poe_disabled", value)
 
     @property
+    @pulumi.getter(name="portNetwork")
+    def port_network(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Required if `usage`==`vlan_tunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+        """
+        return pulumi.get(self, "port_network")
+
+    @port_network.setter
+    def port_network(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "port_network", value)
+
+    @property
     @pulumi.getter
     def speed(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -14886,6 +15036,10 @@ if not MYPY:
         """
         Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         """
+        community_vlan_id: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+        """
         description: NotRequired[pulumi.Input[builtins.str]]
         """
         Only if `mode`!=`dynamic`
@@ -15023,6 +15177,7 @@ class SwitchPortUsagesArgs:
                  allow_multiple_supplicants: Optional[pulumi.Input[builtins.bool]] = None,
                  bypass_auth_when_server_down: Optional[pulumi.Input[builtins.bool]] = None,
                  bypass_auth_when_server_down_for_unknown_client: Optional[pulumi.Input[builtins.bool]] = None,
+                 community_vlan_id: Optional[pulumi.Input[builtins.int]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  disable_autoneg: Optional[pulumi.Input[builtins.bool]] = None,
                  disabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -15062,6 +15217,7 @@ class SwitchPortUsagesArgs:
         :param pulumi.Input[builtins.bool] allow_multiple_supplicants: Only if `mode`!=`dynamic`
         :param pulumi.Input[builtins.bool] bypass_auth_when_server_down: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
         :param pulumi.Input[builtins.bool] bypass_auth_when_server_down_for_unknown_client: Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+        :param pulumi.Input[builtins.int] community_vlan_id: Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
         :param pulumi.Input[builtins.str] description: Only if `mode`!=`dynamic`
         :param pulumi.Input[builtins.bool] disable_autoneg: Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
         :param pulumi.Input[builtins.bool] disabled: Only if `mode`!=`dynamic` whether the port is disabled
@@ -15104,6 +15260,8 @@ class SwitchPortUsagesArgs:
             pulumi.set(__self__, "bypass_auth_when_server_down", bypass_auth_when_server_down)
         if bypass_auth_when_server_down_for_unknown_client is not None:
             pulumi.set(__self__, "bypass_auth_when_server_down_for_unknown_client", bypass_auth_when_server_down_for_unknown_client)
+        if community_vlan_id is not None:
+            pulumi.set(__self__, "community_vlan_id", community_vlan_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disable_autoneg is not None:
@@ -15230,6 +15388,18 @@ class SwitchPortUsagesArgs:
     @bypass_auth_when_server_down_for_unknown_client.setter
     def bypass_auth_when_server_down_for_unknown_client(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "bypass_auth_when_server_down_for_unknown_client", value)
+
+    @property
+    @pulumi.getter(name="communityVlanId")
+    def community_vlan_id(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+        """
+        return pulumi.get(self, "community_vlan_id")
+
+    @community_vlan_id.setter
+    def community_vlan_id(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "community_vlan_id", value)
 
     @property
     @pulumi.getter
@@ -16321,6 +16491,7 @@ class SwitchRadiusConfigAuthServerArgs:
 if not MYPY:
     class SwitchRemoteSyslogArgsDict(TypedDict):
         archive: NotRequired[pulumi.Input['SwitchRemoteSyslogArchiveArgsDict']]
+        cacerts: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         console: NotRequired[pulumi.Input['SwitchRemoteSyslogConsoleArgsDict']]
         enabled: NotRequired[pulumi.Input[builtins.bool]]
         files: NotRequired[pulumi.Input[Sequence[pulumi.Input['SwitchRemoteSyslogFileArgsDict']]]]
@@ -16342,6 +16513,7 @@ elif False:
 class SwitchRemoteSyslogArgs:
     def __init__(__self__, *,
                  archive: Optional[pulumi.Input['SwitchRemoteSyslogArchiveArgs']] = None,
+                 cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  console: Optional[pulumi.Input['SwitchRemoteSyslogConsoleArgs']] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  files: Optional[pulumi.Input[Sequence[pulumi.Input['SwitchRemoteSyslogFileArgs']]]] = None,
@@ -16356,6 +16528,8 @@ class SwitchRemoteSyslogArgs:
         """
         if archive is not None:
             pulumi.set(__self__, "archive", archive)
+        if cacerts is not None:
+            pulumi.set(__self__, "cacerts", cacerts)
         if console is not None:
             pulumi.set(__self__, "console", console)
         if enabled is not None:
@@ -16381,6 +16555,15 @@ class SwitchRemoteSyslogArgs:
     @archive.setter
     def archive(self, value: Optional[pulumi.Input['SwitchRemoteSyslogArchiveArgs']]):
         pulumi.set(self, "archive", value)
+
+    @property
+    @pulumi.getter
+    def cacerts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "cacerts")
+
+    @cacerts.setter
+    def cacerts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "cacerts", value)
 
     @property
     @pulumi.getter
@@ -16576,6 +16759,10 @@ if not MYPY:
     class SwitchRemoteSyslogFileArgsDict(TypedDict):
         archive: NotRequired[pulumi.Input['SwitchRemoteSyslogFileArchiveArgsDict']]
         contents: NotRequired[pulumi.Input[Sequence[pulumi.Input['SwitchRemoteSyslogFileContentArgsDict']]]]
+        enable_tls: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Only if `protocol`==`tcp`
+        """
         explicit_priority: NotRequired[pulumi.Input[builtins.bool]]
         file: NotRequired[pulumi.Input[builtins.str]]
         match: NotRequired[pulumi.Input[builtins.str]]
@@ -16588,14 +16775,20 @@ class SwitchRemoteSyslogFileArgs:
     def __init__(__self__, *,
                  archive: Optional[pulumi.Input['SwitchRemoteSyslogFileArchiveArgs']] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input['SwitchRemoteSyslogFileContentArgs']]]] = None,
+                 enable_tls: Optional[pulumi.Input[builtins.bool]] = None,
                  explicit_priority: Optional[pulumi.Input[builtins.bool]] = None,
                  file: Optional[pulumi.Input[builtins.str]] = None,
                  match: Optional[pulumi.Input[builtins.str]] = None,
                  structured_data: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.bool] enable_tls: Only if `protocol`==`tcp`
+        """
         if archive is not None:
             pulumi.set(__self__, "archive", archive)
         if contents is not None:
             pulumi.set(__self__, "contents", contents)
+        if enable_tls is not None:
+            pulumi.set(__self__, "enable_tls", enable_tls)
         if explicit_priority is not None:
             pulumi.set(__self__, "explicit_priority", explicit_priority)
         if file is not None:
@@ -16622,6 +16815,18 @@ class SwitchRemoteSyslogFileArgs:
     @contents.setter
     def contents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SwitchRemoteSyslogFileContentArgs']]]]):
         pulumi.set(self, "contents", value)
+
+    @property
+    @pulumi.getter(name="enableTls")
+    def enable_tls(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Only if `protocol`==`tcp`
+        """
+        return pulumi.get(self, "enable_tls")
+
+    @enable_tls.setter
+    def enable_tls(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enable_tls", value)
 
     @property
     @pulumi.getter(name="explicitPriority")
@@ -17104,6 +17309,10 @@ if not MYPY:
         description: NotRequired[pulumi.Input[builtins.str]]
         enabled: NotRequired[pulumi.Input[builtins.bool]]
         engine_id: NotRequired[pulumi.Input[builtins.str]]
+        engine_id_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        enum: `local`, `use_mac_address`
+        """
         location: NotRequired[pulumi.Input[builtins.str]]
         name: NotRequired[pulumi.Input[builtins.str]]
         network: NotRequired[pulumi.Input[builtins.str]]
@@ -17122,6 +17331,7 @@ class SwitchSnmpConfigArgs:
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  engine_id: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_id_type: Optional[pulumi.Input[builtins.str]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  network: Optional[pulumi.Input[builtins.str]] = None,
@@ -17129,6 +17339,9 @@ class SwitchSnmpConfigArgs:
                  v2c_configs: Optional[pulumi.Input[Sequence[pulumi.Input['SwitchSnmpConfigV2cConfigArgs']]]] = None,
                  v3_config: Optional[pulumi.Input['SwitchSnmpConfigV3ConfigArgs']] = None,
                  views: Optional[pulumi.Input[Sequence[pulumi.Input['SwitchSnmpConfigViewArgs']]]] = None):
+        """
+        :param pulumi.Input[builtins.str] engine_id_type: enum: `local`, `use_mac_address`
+        """
         if client_lists is not None:
             pulumi.set(__self__, "client_lists", client_lists)
         if contact is not None:
@@ -17139,6 +17352,8 @@ class SwitchSnmpConfigArgs:
             pulumi.set(__self__, "enabled", enabled)
         if engine_id is not None:
             pulumi.set(__self__, "engine_id", engine_id)
+        if engine_id_type is not None:
+            pulumi.set(__self__, "engine_id_type", engine_id_type)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -17198,6 +17413,18 @@ class SwitchSnmpConfigArgs:
     @engine_id.setter
     def engine_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "engine_id", value)
+
+    @property
+    @pulumi.getter(name="engineIdType")
+    def engine_id_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        enum: `local`, `use_mac_address`
+        """
+        return pulumi.get(self, "engine_id_type")
+
+    @engine_id_type.setter
+    def engine_id_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_id_type", value)
 
     @property
     @pulumi.getter
@@ -18508,6 +18735,10 @@ if not MYPY:
         when enabled, all traffic that is not essential to our operation will be dropped 
         e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
         """
+        remove_existing_configs: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
+        """
         root_password: NotRequired[pulumi.Input[builtins.str]]
         tacacs: NotRequired[pulumi.Input['SwitchSwitchMgmtTacacsArgsDict']]
         use_mxedge_proxy: NotRequired[pulumi.Input[builtins.bool]]
@@ -18531,6 +18762,7 @@ class SwitchSwitchMgmtArgs:
                  mxedge_proxy_host: Optional[pulumi.Input[builtins.str]] = None,
                  mxedge_proxy_port: Optional[pulumi.Input[builtins.str]] = None,
                  protect_re: Optional[pulumi.Input['SwitchSwitchMgmtProtectReArgs']] = None,
+                 remove_existing_configs: Optional[pulumi.Input[builtins.bool]] = None,
                  root_password: Optional[pulumi.Input[builtins.str]] = None,
                  tacacs: Optional[pulumi.Input['SwitchSwitchMgmtTacacsArgs']] = None,
                  use_mxedge_proxy: Optional[pulumi.Input[builtins.bool]] = None):
@@ -18546,6 +18778,7 @@ class SwitchSwitchMgmtArgs:
         :param pulumi.Input['SwitchSwitchMgmtProtectReArgs'] protect_re: Restrict inbound-traffic to host
                when enabled, all traffic that is not essential to our operation will be dropped 
                e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+        :param pulumi.Input[builtins.bool] remove_existing_configs: By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
         :param pulumi.Input[builtins.bool] use_mxedge_proxy: To use mxedge as proxy
         """
         if ap_affinity_threshold is not None:
@@ -18570,6 +18803,8 @@ class SwitchSwitchMgmtArgs:
             pulumi.set(__self__, "mxedge_proxy_port", mxedge_proxy_port)
         if protect_re is not None:
             pulumi.set(__self__, "protect_re", protect_re)
+        if remove_existing_configs is not None:
+            pulumi.set(__self__, "remove_existing_configs", remove_existing_configs)
         if root_password is not None:
             pulumi.set(__self__, "root_password", root_password)
         if tacacs is not None:
@@ -18706,6 +18941,18 @@ class SwitchSwitchMgmtArgs:
         pulumi.set(self, "protect_re", value)
 
     @property
+    @pulumi.getter(name="removeExistingConfigs")
+    def remove_existing_configs(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
+        """
+        return pulumi.get(self, "remove_existing_configs")
+
+    @remove_existing_configs.setter
+    def remove_existing_configs(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "remove_existing_configs", value)
+
+    @property
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "root_password")
@@ -18794,6 +19041,10 @@ if not MYPY:
         e.g. ntp / dns / traffic to mist will be allowed by default
              if dhcpd is enabled, we'll make sure it works
         """
+        hit_count: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Whether to enable hit count for Protect_RE policy
+        """
         trusted_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         """
         host/subnets we'll allow traffic to/from
@@ -18807,12 +19058,14 @@ class SwitchSwitchMgmtProtectReArgs:
                  allowed_services: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  customs: Optional[pulumi.Input[Sequence[pulumi.Input['SwitchSwitchMgmtProtectReCustomArgs']]]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 hit_count: Optional[pulumi.Input[builtins.bool]] = None,
                  trusted_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] allowed_services: optionally, services we'll allow. enum: `icmp`, `ssh`
         :param pulumi.Input[builtins.bool] enabled: When enabled, all traffic that is not essential to our operation will be dropped
                e.g. ntp / dns / traffic to mist will be allowed by default
                     if dhcpd is enabled, we'll make sure it works
+        :param pulumi.Input[builtins.bool] hit_count: Whether to enable hit count for Protect_RE policy
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] trusted_hosts: host/subnets we'll allow traffic to/from
         """
         if allowed_services is not None:
@@ -18821,6 +19074,8 @@ class SwitchSwitchMgmtProtectReArgs:
             pulumi.set(__self__, "customs", customs)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if hit_count is not None:
+            pulumi.set(__self__, "hit_count", hit_count)
         if trusted_hosts is not None:
             pulumi.set(__self__, "trusted_hosts", trusted_hosts)
 
@@ -18858,6 +19113,18 @@ class SwitchSwitchMgmtProtectReArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="hitCount")
+    def hit_count(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether to enable hit count for Protect_RE policy
+        """
+        return pulumi.get(self, "hit_count")
+
+    @hit_count.setter
+    def hit_count(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "hit_count", value)
 
     @property
     @pulumi.getter(name="trustedHosts")
@@ -19498,6 +19765,14 @@ class SwitchVrrpConfigArgs:
 
 if not MYPY:
     class SwitchVrrpConfigGroupsArgsDict(TypedDict):
+        accept_data: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If `true`, accept packets destined for VRRP address
+        """
+        preempt: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If `true`, allow preemption (a backup router can preempt a primary router)
+        """
         priority: NotRequired[pulumi.Input[builtins.int]]
 elif False:
     SwitchVrrpConfigGroupsArgsDict: TypeAlias = Mapping[str, Any]
@@ -19505,9 +19780,43 @@ elif False:
 @pulumi.input_type
 class SwitchVrrpConfigGroupsArgs:
     def __init__(__self__, *,
+                 accept_data: Optional[pulumi.Input[builtins.bool]] = None,
+                 preempt: Optional[pulumi.Input[builtins.bool]] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[builtins.bool] accept_data: If `true`, accept packets destined for VRRP address
+        :param pulumi.Input[builtins.bool] preempt: If `true`, allow preemption (a backup router can preempt a primary router)
+        """
+        if accept_data is not None:
+            pulumi.set(__self__, "accept_data", accept_data)
+        if preempt is not None:
+            pulumi.set(__self__, "preempt", preempt)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+
+    @property
+    @pulumi.getter(name="acceptData")
+    def accept_data(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If `true`, accept packets destined for VRRP address
+        """
+        return pulumi.get(self, "accept_data")
+
+    @accept_data.setter
+    def accept_data(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "accept_data", value)
+
+    @property
+    @pulumi.getter
+    def preempt(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If `true`, allow preemption (a backup router can preempt a primary router)
+        """
+        return pulumi.get(self, "preempt")
+
+    @preempt.setter
+    def preempt(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "preempt", value)
 
     @property
     @pulumi.getter

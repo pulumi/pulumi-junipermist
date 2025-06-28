@@ -19,6 +19,21 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
     public static final WebhookState Empty = new WebhookState();
 
     /**
+     * Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+     * 
+     */
+    @Import(name="assetfilterIds")
+    private @Nullable Output<List<String>> assetfilterIds;
+
+    /**
+     * @return Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+     * 
+     */
+    public Optional<Output<List<String>>> assetfilterIds() {
+        return Optional.ofNullable(this.assetfilterIds);
+    }
+
+    /**
      * Whether webhook is enabled
      * 
      */
@@ -288,6 +303,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
     private WebhookState() {}
 
     private WebhookState(WebhookState $) {
+        this.assetfilterIds = $.assetfilterIds;
         this.enabled = $.enabled;
         this.headers = $.headers;
         this.name = $.name;
@@ -325,6 +341,37 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(WebhookState defaults) {
             $ = new WebhookState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param assetfilterIds Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assetfilterIds(@Nullable Output<List<String>> assetfilterIds) {
+            $.assetfilterIds = assetfilterIds;
+            return this;
+        }
+
+        /**
+         * @param assetfilterIds Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assetfilterIds(List<String> assetfilterIds) {
+            return assetfilterIds(Output.of(assetfilterIds));
+        }
+
+        /**
+         * @param assetfilterIds Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assetfilterIds(String... assetfilterIds) {
+            return assetfilterIds(List.of(assetfilterIds));
         }
 
         /**

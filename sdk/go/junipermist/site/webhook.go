@@ -73,6 +73,8 @@ import (
 type Webhook struct {
 	pulumi.CustomResourceState
 
+	// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+	AssetfilterIds pulumi.StringArrayOutput `pulumi:"assetfilterIds"`
 	// Whether webhook is enabled
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
@@ -171,6 +173,8 @@ func GetWebhook(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Webhook resources.
 type webhookState struct {
+	// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+	AssetfilterIds []string `pulumi:"assetfilterIds"`
 	// Whether webhook is enabled
 	Enabled *bool `pulumi:"enabled"`
 	// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
@@ -212,6 +216,8 @@ type webhookState struct {
 }
 
 type WebhookState struct {
+	// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+	AssetfilterIds pulumi.StringArrayInput
 	// Whether webhook is enabled
 	Enabled pulumi.BoolPtrInput
 	// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
@@ -257,6 +263,8 @@ func (WebhookState) ElementType() reflect.Type {
 }
 
 type webhookArgs struct {
+	// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+	AssetfilterIds []string `pulumi:"assetfilterIds"`
 	// Whether webhook is enabled
 	Enabled *bool `pulumi:"enabled"`
 	// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
@@ -298,6 +306,8 @@ type webhookArgs struct {
 
 // The set of arguments for constructing a Webhook resource.
 type WebhookArgs struct {
+	// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+	AssetfilterIds pulumi.StringArrayInput
 	// Whether webhook is enabled
 	Enabled pulumi.BoolPtrInput
 	// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
@@ -422,6 +432,11 @@ func (o WebhookOutput) ToWebhookOutput() WebhookOutput {
 
 func (o WebhookOutput) ToWebhookOutputWithContext(ctx context.Context) WebhookOutput {
 	return o
+}
+
+// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+func (o WebhookOutput) AssetfilterIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Webhook) pulumi.StringArrayOutput { return v.AssetfilterIds }).(pulumi.StringArrayOutput)
 }
 
 // Whether webhook is enabled

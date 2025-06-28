@@ -182,6 +182,21 @@ public final class NetworktemplateSwitchMatchingRulePortConfigArgs extends com.p
     }
 
     /**
+     * Required if `usage`==`vlan_tunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+     * 
+     */
+    @Import(name="portNetwork")
+    private @Nullable Output<String> portNetwork;
+
+    /**
+     * @return Required if `usage`==`vlan_tunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+     * 
+     */
+    public Optional<Output<String>> portNetwork() {
+        return Optional.ofNullable(this.portNetwork);
+    }
+
+    /**
      * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
      * 
      */
@@ -197,14 +212,14 @@ public final class NetworktemplateSwitchMatchingRulePortConfigArgs extends com.p
     }
 
     /**
-     * Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+     * Port usage name. For Q-in-Q, use `vlan_tunnel`. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
      * 
      */
     @Import(name="usage", required=true)
     private Output<String> usage;
 
     /**
-     * @return Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+     * @return Port usage name. For Q-in-Q, use `vlan_tunnel`. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
      * 
      */
     public Output<String> usage() {
@@ -227,6 +242,7 @@ public final class NetworktemplateSwitchMatchingRulePortConfigArgs extends com.p
         this.mtu = $.mtu;
         this.noLocalOverwrite = $.noLocalOverwrite;
         this.poeDisabled = $.poeDisabled;
+        this.portNetwork = $.portNetwork;
         this.speed = $.speed;
         this.usage = $.usage;
     }
@@ -475,6 +491,27 @@ public final class NetworktemplateSwitchMatchingRulePortConfigArgs extends com.p
         }
 
         /**
+         * @param portNetwork Required if `usage`==`vlan_tunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder portNetwork(@Nullable Output<String> portNetwork) {
+            $.portNetwork = portNetwork;
+            return this;
+        }
+
+        /**
+         * @param portNetwork Required if `usage`==`vlan_tunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder portNetwork(String portNetwork) {
+            return portNetwork(Output.of(portNetwork));
+        }
+
+        /**
          * @param speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          * 
          * @return builder
@@ -496,7 +533,7 @@ public final class NetworktemplateSwitchMatchingRulePortConfigArgs extends com.p
         }
 
         /**
-         * @param usage Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+         * @param usage Port usage name. For Q-in-Q, use `vlan_tunnel`. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
          * 
          * @return builder
          * 
@@ -507,7 +544,7 @@ public final class NetworktemplateSwitchMatchingRulePortConfigArgs extends com.p
         }
 
         /**
-         * @param usage Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+         * @param usage Port usage name. For Q-in-Q, use `vlan_tunnel`. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
          * 
          * @return builder
          * 

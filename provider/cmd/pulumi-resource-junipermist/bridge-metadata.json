@@ -496,6 +496,9 @@
                     "acl_tags": {
                         "elem": {
                             "fields": {
+                                "ether_types": {
+                                    "maxItemsOne": false
+                                },
                                 "macs": {
                                     "maxItemsOne": false
                                 },
@@ -620,6 +623,9 @@
                     },
                     "remote_syslog": {
                         "fields": {
+                            "cacerts": {
+                                "maxItemsOne": false
+                            },
                             "console": {
                                 "fields": {
                                     "contents": {
@@ -1882,6 +1888,9 @@
                     "acl_tags": {
                         "elem": {
                             "fields": {
+                                "ether_types": {
+                                    "maxItemsOne": false
+                                },
                                 "macs": {
                                     "maxItemsOne": false
                                 },
@@ -1962,6 +1971,9 @@
                     },
                     "remote_syslog": {
                         "fields": {
+                            "cacerts": {
+                                "maxItemsOne": false
+                            },
                             "console": {
                                 "fields": {
                                     "contents": {
@@ -2324,13 +2336,36 @@
                             }
                         }
                     },
+                    "ssr": {
+                        "fields": {
+                            "conductor_hosts": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "synthetic_test": {
                         "fields": {
+                            "lan_networks": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "networks": {
+                                            "maxItemsOne": false
+                                        },
+                                        "probes": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
                             "vlans": {
                                 "maxItemsOne": false,
                                 "elem": {
                                     "fields": {
                                         "custom_test_urls": {
+                                            "maxItemsOne": false
+                                        },
+                                        "probes": {
                                             "maxItemsOne": false
                                         },
                                         "vlan_ids": {
@@ -2683,6 +2718,9 @@
                     "acl_tags": {
                         "elem": {
                             "fields": {
+                                "ether_types": {
+                                    "maxItemsOne": false
+                                },
                                 "macs": {
                                     "maxItemsOne": false
                                 },
@@ -2766,6 +2804,9 @@
                     },
                     "remote_syslog": {
                         "fields": {
+                            "cacerts": {
+                                "maxItemsOne": false
+                            },
                             "console": {
                                 "fields": {
                                     "contents": {
@@ -3065,11 +3106,27 @@
                     },
                     "synthetic_test": {
                         "fields": {
+                            "lan_networks": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "networks": {
+                                            "maxItemsOne": false
+                                        },
+                                        "probes": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
                             "vlans": {
                                 "maxItemsOne": false,
                                 "elem": {
                                     "fields": {
                                         "custom_test_urls": {
+                                            "maxItemsOne": false
+                                        },
+                                        "probes": {
                                             "maxItemsOne": false
                                         },
                                         "vlan_ids": {
@@ -3101,6 +3158,9 @@
             "mist_site_webhook": {
                 "current": "junipermist:site/webhook:Webhook",
                 "fields": {
+                    "assetfilter_ids": {
+                        "maxItemsOne": false
+                    },
                     "oauth2_scopes": {
                         "maxItemsOne": false
                     },

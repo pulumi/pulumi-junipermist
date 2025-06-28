@@ -18,6 +18,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("jse")]
         public Input<Inputs.GatewaytemplateTunnelProviderOptionsJseGetArgs>? Jse { get; set; }
 
+        [Input("prisma")]
+        public Input<Inputs.GatewaytemplateTunnelProviderOptionsPrismaGetArgs>? Prisma { get; set; }
+
         /// <summary>
         /// For zscaler-ipsec and zscaler-gre
         /// </summary>

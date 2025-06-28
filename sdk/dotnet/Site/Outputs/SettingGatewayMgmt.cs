@@ -28,15 +28,15 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? ConfigRevertTimer;
         /// <summary>
-        /// For both SSR and SRX disable console port
+        /// For SSR and SRX, disable console port
         /// </summary>
         public readonly bool? DisableConsole;
         /// <summary>
-        /// For both SSR and SRX disable management interface
+        /// For SSR and SRX, disable management interface
         /// </summary>
         public readonly bool? DisableOob;
         /// <summary>
-        /// For SSR disable usb interface
+        /// For SSR and SRX, disable usb interface
         /// </summary>
         public readonly bool? DisableUsb;
         public readonly bool? FipsEnabled;

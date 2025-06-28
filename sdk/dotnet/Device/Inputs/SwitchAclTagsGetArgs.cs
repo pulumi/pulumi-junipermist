@@ -12,6 +12,18 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class SwitchAclTagsGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("etherTypes")]
+        private InputList<string>? _etherTypes;
+
+        /// <summary>
+        /// Can only be used under dst tags.
+        /// </summary>
+        public InputList<string> EtherTypes
+        {
+            get => _etherTypes ?? (_etherTypes = new InputList<string>());
+            set => _etherTypes = value;
+        }
+
         /// <summary>
         /// Required if
         ///   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
@@ -47,6 +59,12 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// Required if `type`==`port_usage`
+        /// </summary>
+        [Input("portUsage")]
+        public Input<string>? PortUsage { get; set; }
+
+        /// <summary>
         /// Required if:
         ///   * `type`==`radius_group`
         ///   * `type`==`static_gbp`
@@ -59,7 +77,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<Inputs.SwitchAclTagsSpecGetArgs>? _specs;
 
         /// <summary>
-        /// If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+        /// If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
         /// </summary>
         public InputList<Inputs.SwitchAclTagsSpecGetArgs> Specs
         {
@@ -89,6 +107,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         ///   * `gbp_resource`: can only be used in `dst_tags`
         ///   * `mac`
         ///   * `network`
+        ///   * `port_usage`
         ///   * `radius_group`
         ///   * `resource`: can only be used in `dst_tags`
         ///   * `static_gbp`: applying gbp tag against matching conditions

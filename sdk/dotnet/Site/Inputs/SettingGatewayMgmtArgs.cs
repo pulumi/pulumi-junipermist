@@ -43,19 +43,19 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<int>? ConfigRevertTimer { get; set; }
 
         /// <summary>
-        /// For both SSR and SRX disable console port
+        /// For SSR and SRX, disable console port
         /// </summary>
         [Input("disableConsole")]
         public Input<bool>? DisableConsole { get; set; }
 
         /// <summary>
-        /// For both SSR and SRX disable management interface
+        /// For SSR and SRX, disable management interface
         /// </summary>
         [Input("disableOob")]
         public Input<bool>? DisableOob { get; set; }
 
         /// <summary>
-        /// For SSR disable usb interface
+        /// For SSR and SRX, disable usb interface
         /// </summary>
         [Input("disableUsb")]
         public Input<bool>? DisableUsb { get; set; }

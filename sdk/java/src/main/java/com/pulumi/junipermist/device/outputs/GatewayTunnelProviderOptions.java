@@ -5,6 +5,7 @@ package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.junipermist.device.outputs.GatewayTunnelProviderOptionsJse;
+import com.pulumi.junipermist.device.outputs.GatewayTunnelProviderOptionsPrisma;
 import com.pulumi.junipermist.device.outputs.GatewayTunnelProviderOptionsZscaler;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +18,7 @@ public final class GatewayTunnelProviderOptions {
      * 
      */
     private @Nullable GatewayTunnelProviderOptionsJse jse;
+    private @Nullable GatewayTunnelProviderOptionsPrisma prisma;
     /**
      * @return For zscaler-ipsec and zscaler-gre
      * 
@@ -30,6 +32,9 @@ public final class GatewayTunnelProviderOptions {
      */
     public Optional<GatewayTunnelProviderOptionsJse> jse() {
         return Optional.ofNullable(this.jse);
+    }
+    public Optional<GatewayTunnelProviderOptionsPrisma> prisma() {
+        return Optional.ofNullable(this.prisma);
     }
     /**
      * @return For zscaler-ipsec and zscaler-gre
@@ -49,11 +54,13 @@ public final class GatewayTunnelProviderOptions {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GatewayTunnelProviderOptionsJse jse;
+        private @Nullable GatewayTunnelProviderOptionsPrisma prisma;
         private @Nullable GatewayTunnelProviderOptionsZscaler zscaler;
         public Builder() {}
         public Builder(GatewayTunnelProviderOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.jse = defaults.jse;
+    	      this.prisma = defaults.prisma;
     	      this.zscaler = defaults.zscaler;
         }
 
@@ -61,6 +68,12 @@ public final class GatewayTunnelProviderOptions {
         public Builder jse(@Nullable GatewayTunnelProviderOptionsJse jse) {
 
             this.jse = jse;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder prisma(@Nullable GatewayTunnelProviderOptionsPrisma prisma) {
+
+            this.prisma = prisma;
             return this;
         }
         @CustomType.Setter
@@ -72,6 +85,7 @@ public final class GatewayTunnelProviderOptions {
         public GatewayTunnelProviderOptions build() {
             final var _resultValue = new GatewayTunnelProviderOptions();
             _resultValue.jse = jse;
+            _resultValue.prisma = prisma;
             _resultValue.zscaler = zscaler;
             return _resultValue;
         }

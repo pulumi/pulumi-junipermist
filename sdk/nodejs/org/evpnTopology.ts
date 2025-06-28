@@ -13,60 +13,6 @@ import * as utilities from "../utilities";
  *
  * > To create or manage your EVPN Topology with the Mist Provider, please refer to the `How To - EVPN Topology` Guide.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as mist from "@pulumi/mist";
- *
- * const evpnOne = new mist.index.OrgSiteEvpnTopology("evpn_one", {
- *     orgId: terraformTest.id,
- *     name: "evpn_one",
- *     evpnOptions: {
- *         routedAt: "core",
- *         overlay: {
- *             as: 65000,
- *         },
- *         coreAsBorder: true,
- *         autoLoopbackSubnet: "172.16.192.0/24",
- *         autoLoopbackSubnet6: "fd33:ab00:2::/64",
- *         perVlanVgaV4Mac: false,
- *         underlay: {
- *             asBase: 65001,
- *             useIpv6: false,
- *             subnet: "10.255.240.0/20",
- *         },
- *         autoRouterIdSubnet: "172.16.254.0/23",
- *     },
- *     switches: [
- *         {
- *             mac: "020004000001",
- *             role: "core",
- *         },
- *         {
- *             mac: "02000400002",
- *             role: "core",
- *         },
- *         {
- *             mac: "02000400003",
- *             role: "distribution",
- *         },
- *         {
- *             mac: "02000400004",
- *             role: "distribution",
- *         },
- *         {
- *             mac: "02000400005",
- *             role: "access",
- *         },
- *         {
- *             mac: "02000400006",
- *             role: "access",
- *         },
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_evpn_topology` with:

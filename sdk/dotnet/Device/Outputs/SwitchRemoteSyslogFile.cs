@@ -15,6 +15,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
     {
         public readonly Outputs.SwitchRemoteSyslogFileArchive? Archive;
         public readonly ImmutableArray<Outputs.SwitchRemoteSyslogFileContent> Contents;
+        /// <summary>
+        /// Only if `protocol`==`tcp`
+        /// </summary>
+        public readonly bool? EnableTls;
         public readonly bool? ExplicitPriority;
         public readonly string? File;
         public readonly string? Match;
@@ -26,6 +30,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             ImmutableArray<Outputs.SwitchRemoteSyslogFileContent> contents,
 
+            bool? enableTls,
+
             bool? explicitPriority,
 
             string? file,
@@ -36,6 +42,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         {
             Archive = archive;
             Contents = contents;
+            EnableTls = enableTls;
             ExplicitPriority = explicitPriority;
             File = file;
             Match = match;

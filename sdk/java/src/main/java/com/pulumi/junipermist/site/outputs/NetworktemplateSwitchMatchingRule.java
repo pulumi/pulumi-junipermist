@@ -52,20 +52,20 @@ public final class NetworktemplateSwitchMatchingRule {
      * @return property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
      * 
      * @deprecated
-     * The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
+     * The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
      * Please update your configurations.
      * 
      */
-    @Deprecated /* The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
+    @Deprecated /* The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
 Please update your configurations. */
     private @Nullable String matchType;
     /**
      * @deprecated
-     * The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
+     * The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
      * Please update your configurations.
      * 
      */
-    @Deprecated /* The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
+    @Deprecated /* The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
 Please update your configurations. */
     private @Nullable String matchValue;
     /**
@@ -136,22 +136,22 @@ Please update your configurations. */
      * @return property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
      * 
      * @deprecated
-     * The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
+     * The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
      * Please update your configurations.
      * 
      */
-    @Deprecated /* The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
+    @Deprecated /* The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
 Please update your configurations. */
     public Optional<String> matchType() {
         return Optional.ofNullable(this.matchType);
     }
     /**
      * @deprecated
-     * The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
+     * The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
      * Please update your configurations.
      * 
      */
-    @Deprecated /* The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
+    @Deprecated /* The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
 Please update your configurations. */
     public Optional<String> matchValue() {
         return Optional.ofNullable(this.matchValue);

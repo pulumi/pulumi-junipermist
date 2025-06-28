@@ -110,8 +110,8 @@ public class Nactag extends com.pulumi.resources.CustomResource {
     }
     /**
      * if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-     * `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`,
-     * `usermac_label`
+     * `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
+     * `user_name`, `usermac_label`
      * 
      */
     @Export(name="match", refs={String.class}, tree="[0]")
@@ -119,8 +119,8 @@ public class Nactag extends com.pulumi.resources.CustomResource {
 
     /**
      * @return if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-     * `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`,
-     * `usermac_label`
+     * `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
+     * `user_name`, `usermac_label`
      * 
      */
     public Output<Optional<String>> match() {

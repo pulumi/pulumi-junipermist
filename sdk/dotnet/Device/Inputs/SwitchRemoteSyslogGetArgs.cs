@@ -15,6 +15,14 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("archive")]
         public Input<Inputs.SwitchRemoteSyslogArchiveGetArgs>? Archive { get; set; }
 
+        [Input("cacerts")]
+        private InputList<string>? _cacerts;
+        public InputList<string> Cacerts
+        {
+            get => _cacerts ?? (_cacerts = new InputList<string>());
+            set => _cacerts = value;
+        }
+
         [Input("console")]
         public Input<Inputs.SwitchRemoteSyslogConsoleGetArgs>? Console { get; set; }
 

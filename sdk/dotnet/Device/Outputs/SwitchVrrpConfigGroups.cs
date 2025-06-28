@@ -13,11 +13,26 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchVrrpConfigGroups
     {
+        /// <summary>
+        /// If `true`, accept packets destined for VRRP address
+        /// </summary>
+        public readonly bool? AcceptData;
+        /// <summary>
+        /// If `true`, allow preemption (a backup router can preempt a primary router)
+        /// </summary>
+        public readonly bool? Preempt;
         public readonly int? Priority;
 
         [OutputConstructor]
-        private SwitchVrrpConfigGroups(int? priority)
+        private SwitchVrrpConfigGroups(
+            bool? acceptData,
+
+            bool? preempt,
+
+            int? priority)
         {
+            AcceptData = acceptData;
+            Preempt = preempt;
             Priority = priority;
         }
     }

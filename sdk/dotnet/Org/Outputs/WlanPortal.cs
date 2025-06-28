@@ -223,9 +223,17 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? SmsMessageFormat;
         /// <summary>
-        /// Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+        /// Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
         /// </summary>
         public readonly string? SmsProvider;
+        /// <summary>
+        /// Required if `sms_provider`==`smsglobal`, Client API Key
+        /// </summary>
+        public readonly string? SmsglobalApiKey;
+        /// <summary>
+        /// Required if `sms_provider`==`smsglobal`, Client secret
+        /// </summary>
+        public readonly string? SmsglobalApiSecret;
         /// <summary>
         /// Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
         /// </summary>
@@ -420,6 +428,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? smsProvider,
 
+            string? smsglobalApiKey,
+
+            string? smsglobalApiSecret,
+
             bool? sponsorAutoApprove,
 
             ImmutableArray<string> sponsorEmailDomains,
@@ -514,6 +526,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
             SmsExpire = smsExpire;
             SmsMessageFormat = smsMessageFormat;
             SmsProvider = smsProvider;
+            SmsglobalApiKey = smsglobalApiKey;
+            SmsglobalApiSecret = smsglobalApiSecret;
             SponsorAutoApprove = sponsorAutoApprove;
             SponsorEmailDomains = sponsorEmailDomains;
             SponsorEnabled = sponsorEnabled;

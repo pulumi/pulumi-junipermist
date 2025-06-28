@@ -17,9 +17,21 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
 
     public static final SettingSyntheticTestVlanArgs Empty = new SettingSyntheticTestVlanArgs();
 
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="customTestUrls")
     private @Nullable Output<List<String>> customTestUrls;
 
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<List<String>>> customTestUrls() {
         return Optional.ofNullable(this.customTestUrls);
     }
@@ -39,6 +51,21 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.disabled);
     }
 
+    /**
+     * app name comes from `custom_probes` above or /const/synthetic_test_probes
+     * 
+     */
+    @Import(name="probes")
+    private @Nullable Output<List<String>> probes;
+
+    /**
+     * @return app name comes from `custom_probes` above or /const/synthetic_test_probes
+     * 
+     */
+    public Optional<Output<List<String>>> probes() {
+        return Optional.ofNullable(this.probes);
+    }
+
     @Import(name="vlanIds")
     private @Nullable Output<List<String>> vlanIds;
 
@@ -51,6 +78,7 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
     private SettingSyntheticTestVlanArgs(SettingSyntheticTestVlanArgs $) {
         this.customTestUrls = $.customTestUrls;
         this.disabled = $.disabled;
+        this.probes = $.probes;
         this.vlanIds = $.vlanIds;
     }
 
@@ -72,15 +100,39 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
             $ = new SettingSyntheticTestVlanArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder customTestUrls(@Nullable Output<List<String>> customTestUrls) {
             $.customTestUrls = customTestUrls;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder customTestUrls(List<String> customTestUrls) {
             return customTestUrls(Output.of(customTestUrls));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder customTestUrls(String... customTestUrls) {
             return customTestUrls(List.of(customTestUrls));
         }
@@ -104,6 +156,37 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
          */
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
+        }
+
+        /**
+         * @param probes app name comes from `custom_probes` above or /const/synthetic_test_probes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder probes(@Nullable Output<List<String>> probes) {
+            $.probes = probes;
+            return this;
+        }
+
+        /**
+         * @param probes app name comes from `custom_probes` above or /const/synthetic_test_probes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder probes(List<String> probes) {
+            return probes(Output.of(probes));
+        }
+
+        /**
+         * @param probes app name comes from `custom_probes` above or /const/synthetic_test_probes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder probes(String... probes) {
+            return probes(List.of(probes));
         }
 
         public Builder vlanIds(@Nullable Output<List<String>> vlanIds) {

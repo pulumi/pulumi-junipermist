@@ -41,6 +41,11 @@ public final class EvpnTopologyEvpnOptions {
      * 
      */
     private @Nullable Boolean coreAsBorder;
+    /**
+     * @return if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+     * 
+     */
+    private @Nullable Boolean enableInbandZtp;
     private @Nullable EvpnTopologyEvpnOptionsOverlay overlay;
     /**
      * @return Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address&#39;s v4_mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
@@ -100,6 +105,13 @@ public final class EvpnTopologyEvpnOptions {
     public Optional<Boolean> coreAsBorder() {
         return Optional.ofNullable(this.coreAsBorder);
     }
+    /**
+     * @return if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+     * 
+     */
+    public Optional<Boolean> enableInbandZtp() {
+        return Optional.ofNullable(this.enableInbandZtp);
+    }
     public Optional<EvpnTopologyEvpnOptionsOverlay> overlay() {
         return Optional.ofNullable(this.overlay);
     }
@@ -149,6 +161,7 @@ public final class EvpnTopologyEvpnOptions {
         private @Nullable String autoRouterIdSubnet;
         private @Nullable String autoRouterIdSubnet6;
         private @Nullable Boolean coreAsBorder;
+        private @Nullable Boolean enableInbandZtp;
         private @Nullable EvpnTopologyEvpnOptionsOverlay overlay;
         private @Nullable Boolean perVlanVgaV4Mac;
         private @Nullable Boolean perVlanVgaV6Mac;
@@ -163,6 +176,7 @@ public final class EvpnTopologyEvpnOptions {
     	      this.autoRouterIdSubnet = defaults.autoRouterIdSubnet;
     	      this.autoRouterIdSubnet6 = defaults.autoRouterIdSubnet6;
     	      this.coreAsBorder = defaults.coreAsBorder;
+    	      this.enableInbandZtp = defaults.enableInbandZtp;
     	      this.overlay = defaults.overlay;
     	      this.perVlanVgaV4Mac = defaults.perVlanVgaV4Mac;
     	      this.perVlanVgaV6Mac = defaults.perVlanVgaV6Mac;
@@ -199,6 +213,12 @@ public final class EvpnTopologyEvpnOptions {
         public Builder coreAsBorder(@Nullable Boolean coreAsBorder) {
 
             this.coreAsBorder = coreAsBorder;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableInbandZtp(@Nullable Boolean enableInbandZtp) {
+
+            this.enableInbandZtp = enableInbandZtp;
             return this;
         }
         @CustomType.Setter
@@ -244,6 +264,7 @@ public final class EvpnTopologyEvpnOptions {
             _resultValue.autoRouterIdSubnet = autoRouterIdSubnet;
             _resultValue.autoRouterIdSubnet6 = autoRouterIdSubnet6;
             _resultValue.coreAsBorder = coreAsBorder;
+            _resultValue.enableInbandZtp = enableInbandZtp;
             _resultValue.overlay = overlay;
             _resultValue.perVlanVgaV4Mac = perVlanVgaV4Mac;
             _resultValue.perVlanVgaV6Mac = perVlanVgaV6Mac;

@@ -5,10 +5,14 @@ package com.pulumi.junipermist.site.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.junipermist.site.inputs.SettingSyntheticTestCustomProbesArgs;
+import com.pulumi.junipermist.site.inputs.SettingSyntheticTestLanNetworkArgs;
 import com.pulumi.junipermist.site.inputs.SettingSyntheticTestVlanArgs;
 import com.pulumi.junipermist.site.inputs.SettingSyntheticTestWanSpeedtestArgs;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,11 +22,56 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
 
     public static final SettingSyntheticTestArgs Empty = new SettingSyntheticTestArgs();
 
+    /**
+     * enum: `auto`, `high`, `low`
+     * 
+     */
+    @Import(name="aggressiveness")
+    private @Nullable Output<String> aggressiveness;
+
+    /**
+     * @return enum: `auto`, `high`, `low`
+     * 
+     */
+    public Optional<Output<String>> aggressiveness() {
+        return Optional.ofNullable(this.aggressiveness);
+    }
+
+    /**
+     * Custom probes to be used for synthetic tests
+     * 
+     */
+    @Import(name="customProbes")
+    private @Nullable Output<Map<String,SettingSyntheticTestCustomProbesArgs>> customProbes;
+
+    /**
+     * @return Custom probes to be used for synthetic tests
+     * 
+     */
+    public Optional<Output<Map<String,SettingSyntheticTestCustomProbesArgs>>> customProbes() {
+        return Optional.ofNullable(this.customProbes);
+    }
+
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     public Optional<Output<Boolean>> disabled() {
         return Optional.ofNullable(this.disabled);
+    }
+
+    /**
+     * List of networks to be used for synthetic tests
+     * 
+     */
+    @Import(name="lanNetworks")
+    private @Nullable Output<List<SettingSyntheticTestLanNetworkArgs>> lanNetworks;
+
+    /**
+     * @return List of networks to be used for synthetic tests
+     * 
+     */
+    public Optional<Output<List<SettingSyntheticTestLanNetworkArgs>>> lanNetworks() {
+        return Optional.ofNullable(this.lanNetworks);
     }
 
     @Import(name="vlans")
@@ -42,7 +91,10 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
     private SettingSyntheticTestArgs() {}
 
     private SettingSyntheticTestArgs(SettingSyntheticTestArgs $) {
+        this.aggressiveness = $.aggressiveness;
+        this.customProbes = $.customProbes;
         this.disabled = $.disabled;
+        this.lanNetworks = $.lanNetworks;
         this.vlans = $.vlans;
         this.wanSpeedtest = $.wanSpeedtest;
     }
@@ -65,6 +117,48 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
             $ = new SettingSyntheticTestArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aggressiveness enum: `auto`, `high`, `low`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aggressiveness(@Nullable Output<String> aggressiveness) {
+            $.aggressiveness = aggressiveness;
+            return this;
+        }
+
+        /**
+         * @param aggressiveness enum: `auto`, `high`, `low`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aggressiveness(String aggressiveness) {
+            return aggressiveness(Output.of(aggressiveness));
+        }
+
+        /**
+         * @param customProbes Custom probes to be used for synthetic tests
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customProbes(@Nullable Output<Map<String,SettingSyntheticTestCustomProbesArgs>> customProbes) {
+            $.customProbes = customProbes;
+            return this;
+        }
+
+        /**
+         * @param customProbes Custom probes to be used for synthetic tests
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customProbes(Map<String,SettingSyntheticTestCustomProbesArgs> customProbes) {
+            return customProbes(Output.of(customProbes));
+        }
+
         public Builder disabled(@Nullable Output<Boolean> disabled) {
             $.disabled = disabled;
             return this;
@@ -72,6 +166,37 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
 
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
+        }
+
+        /**
+         * @param lanNetworks List of networks to be used for synthetic tests
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lanNetworks(@Nullable Output<List<SettingSyntheticTestLanNetworkArgs>> lanNetworks) {
+            $.lanNetworks = lanNetworks;
+            return this;
+        }
+
+        /**
+         * @param lanNetworks List of networks to be used for synthetic tests
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lanNetworks(List<SettingSyntheticTestLanNetworkArgs> lanNetworks) {
+            return lanNetworks(Output.of(lanNetworks));
+        }
+
+        /**
+         * @param lanNetworks List of networks to be used for synthetic tests
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lanNetworks(SettingSyntheticTestLanNetworkArgs... lanNetworks) {
+            return lanNetworks(List.of(lanNetworks));
         }
 
         public Builder vlans(@Nullable Output<List<SettingSyntheticTestVlanArgs>> vlans) {

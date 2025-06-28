@@ -76,7 +76,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? EddystoneUidEnabled { get; set; }
 
         /// <summary>
-        /// Frequency (msec) of data emmit by Eddystone-UID beacon
+        /// Frequency (msec) of data emit by Eddystone-UID beacon
         /// </summary>
         [Input("eddystoneUidFreqMsec")]
         public Input<int>? EddystoneUidFreqMsec { get; set; }
@@ -136,7 +136,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? IbeaconEnabled { get; set; }
 
         /// <summary>
-        /// Frequency (msec) of data emmit for iBeacon
+        /// Frequency (msec) of data emit for iBeacon
         /// </summary>
         [Input("ibeaconFreqMsec")]
         public Input<int>? IbeaconFreqMsec { get; set; }

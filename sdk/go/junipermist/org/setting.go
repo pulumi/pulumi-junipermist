@@ -32,7 +32,7 @@ type Setting struct {
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrOutput       `pulumi:"apUpdownThreshold"`
 	ApiPolicy         SettingApiPolicyPtrOutput `pulumi:"apiPolicy"`
-	// List of PEM-encoded ca certs
+	// RADSec certificates for AP
 	Cacerts     pulumi.StringArrayOutput   `pulumi:"cacerts"`
 	Celona      SettingCelonaPtrOutput     `pulumi:"celona"`
 	Cloudshark  SettingCloudsharkPtrOutput `pulumi:"cloudshark"`
@@ -57,6 +57,7 @@ type Setting struct {
 	Juniper  SettingJuniperOutput     `pulumi:"juniper"`
 	// by default, webshell access is only enabled for Admin user
 	JunosShellAccess SettingJunosShellAccessPtrOutput `pulumi:"junosShellAccess"`
+	Marvis           SettingMarvisPtrOutput           `pulumi:"marvis"`
 	// management-related properties
 	Mgmt       SettingMgmtPtrOutput       `pulumi:"mgmt"`
 	MistNac    SettingMistNacPtrOutput    `pulumi:"mistNac"`
@@ -68,6 +69,8 @@ type Setting struct {
 	PasswordPolicy SettingPasswordPolicyPtrOutput `pulumi:"passwordPolicy"`
 	Pcap           SettingPcapPtrOutput           `pulumi:"pcap"`
 	Security       SettingSecurityPtrOutput       `pulumi:"security"`
+	Ssr            SettingSsrPtrOutput            `pulumi:"ssr"`
+	Switch         SettingSwitchPtrOutput         `pulumi:"switch"`
 	SwitchMgmt     SettingSwitchMgmtPtrOutput     `pulumi:"switchMgmt"`
 	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
@@ -118,7 +121,7 @@ type settingState struct {
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold *int              `pulumi:"apUpdownThreshold"`
 	ApiPolicy         *SettingApiPolicy `pulumi:"apiPolicy"`
-	// List of PEM-encoded ca certs
+	// RADSec certificates for AP
 	Cacerts     []string            `pulumi:"cacerts"`
 	Celona      *SettingCelona      `pulumi:"celona"`
 	Cloudshark  *SettingCloudshark  `pulumi:"cloudshark"`
@@ -143,6 +146,7 @@ type settingState struct {
 	Juniper  *SettingJuniper  `pulumi:"juniper"`
 	// by default, webshell access is only enabled for Admin user
 	JunosShellAccess *SettingJunosShellAccess `pulumi:"junosShellAccess"`
+	Marvis           *SettingMarvis           `pulumi:"marvis"`
 	// management-related properties
 	Mgmt       *SettingMgmt       `pulumi:"mgmt"`
 	MistNac    *SettingMistNac    `pulumi:"mistNac"`
@@ -154,6 +158,8 @@ type settingState struct {
 	PasswordPolicy *SettingPasswordPolicy `pulumi:"passwordPolicy"`
 	Pcap           *SettingPcap           `pulumi:"pcap"`
 	Security       *SettingSecurity       `pulumi:"security"`
+	Ssr            *SettingSsr            `pulumi:"ssr"`
+	Switch         *SettingSwitch         `pulumi:"switch"`
 	SwitchMgmt     *SettingSwitchMgmt     `pulumi:"switchMgmt"`
 	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
@@ -172,7 +178,7 @@ type SettingState struct {
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrInput
 	ApiPolicy         SettingApiPolicyPtrInput
-	// List of PEM-encoded ca certs
+	// RADSec certificates for AP
 	Cacerts     pulumi.StringArrayInput
 	Celona      SettingCelonaPtrInput
 	Cloudshark  SettingCloudsharkPtrInput
@@ -197,6 +203,7 @@ type SettingState struct {
 	Juniper  SettingJuniperPtrInput
 	// by default, webshell access is only enabled for Admin user
 	JunosShellAccess SettingJunosShellAccessPtrInput
+	Marvis           SettingMarvisPtrInput
 	// management-related properties
 	Mgmt       SettingMgmtPtrInput
 	MistNac    SettingMistNacPtrInput
@@ -208,6 +215,8 @@ type SettingState struct {
 	PasswordPolicy SettingPasswordPolicyPtrInput
 	Pcap           SettingPcapPtrInput
 	Security       SettingSecurityPtrInput
+	Ssr            SettingSsrPtrInput
+	Switch         SettingSwitchPtrInput
 	SwitchMgmt     SettingSwitchMgmtPtrInput
 	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
@@ -230,7 +239,7 @@ type settingArgs struct {
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold *int              `pulumi:"apUpdownThreshold"`
 	ApiPolicy         *SettingApiPolicy `pulumi:"apiPolicy"`
-	// List of PEM-encoded ca certs
+	// RADSec certificates for AP
 	Cacerts    []string           `pulumi:"cacerts"`
 	Celona     *SettingCelona     `pulumi:"celona"`
 	Cloudshark *SettingCloudshark `pulumi:"cloudshark"`
@@ -253,6 +262,7 @@ type settingArgs struct {
 	JcloudRa *SettingJcloudRa `pulumi:"jcloudRa"`
 	// by default, webshell access is only enabled for Admin user
 	JunosShellAccess *SettingJunosShellAccess `pulumi:"junosShellAccess"`
+	Marvis           *SettingMarvis           `pulumi:"marvis"`
 	// management-related properties
 	Mgmt       *SettingMgmt       `pulumi:"mgmt"`
 	MistNac    *SettingMistNac    `pulumi:"mistNac"`
@@ -264,6 +274,8 @@ type settingArgs struct {
 	PasswordPolicy *SettingPasswordPolicy `pulumi:"passwordPolicy"`
 	Pcap           *SettingPcap           `pulumi:"pcap"`
 	Security       *SettingSecurity       `pulumi:"security"`
+	Ssr            *SettingSsr            `pulumi:"ssr"`
+	Switch         *SettingSwitch         `pulumi:"switch"`
 	SwitchMgmt     *SettingSwitchMgmt     `pulumi:"switchMgmt"`
 	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
@@ -283,7 +295,7 @@ type SettingArgs struct {
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrInput
 	ApiPolicy         SettingApiPolicyPtrInput
-	// List of PEM-encoded ca certs
+	// RADSec certificates for AP
 	Cacerts    pulumi.StringArrayInput
 	Celona     SettingCelonaPtrInput
 	Cloudshark SettingCloudsharkPtrInput
@@ -306,6 +318,7 @@ type SettingArgs struct {
 	JcloudRa SettingJcloudRaPtrInput
 	// by default, webshell access is only enabled for Admin user
 	JunosShellAccess SettingJunosShellAccessPtrInput
+	Marvis           SettingMarvisPtrInput
 	// management-related properties
 	Mgmt       SettingMgmtPtrInput
 	MistNac    SettingMistNacPtrInput
@@ -317,6 +330,8 @@ type SettingArgs struct {
 	PasswordPolicy SettingPasswordPolicyPtrInput
 	Pcap           SettingPcapPtrInput
 	Security       SettingSecurityPtrInput
+	Ssr            SettingSsrPtrInput
+	Switch         SettingSwitchPtrInput
 	SwitchMgmt     SettingSwitchMgmtPtrInput
 	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
@@ -427,7 +442,7 @@ func (o SettingOutput) ApiPolicy() SettingApiPolicyPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingApiPolicyPtrOutput { return v.ApiPolicy }).(SettingApiPolicyPtrOutput)
 }
 
-// List of PEM-encoded ca certs
+// RADSec certificates for AP
 func (o SettingOutput) Cacerts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Setting) pulumi.StringArrayOutput { return v.Cacerts }).(pulumi.StringArrayOutput)
 }
@@ -494,6 +509,10 @@ func (o SettingOutput) JunosShellAccess() SettingJunosShellAccessPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingJunosShellAccessPtrOutput { return v.JunosShellAccess }).(SettingJunosShellAccessPtrOutput)
 }
 
+func (o SettingOutput) Marvis() SettingMarvisPtrOutput {
+	return o.ApplyT(func(v *Setting) SettingMarvisPtrOutput { return v.Marvis }).(SettingMarvisPtrOutput)
+}
+
 // management-related properties
 func (o SettingOutput) Mgmt() SettingMgmtPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingMgmtPtrOutput { return v.Mgmt }).(SettingMgmtPtrOutput)
@@ -527,6 +546,14 @@ func (o SettingOutput) Pcap() SettingPcapPtrOutput {
 
 func (o SettingOutput) Security() SettingSecurityPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingSecurityPtrOutput { return v.Security }).(SettingSecurityPtrOutput)
+}
+
+func (o SettingOutput) Ssr() SettingSsrPtrOutput {
+	return o.ApplyT(func(v *Setting) SettingSsrPtrOutput { return v.Ssr }).(SettingSsrPtrOutput)
+}
+
+func (o SettingOutput) Switch() SettingSwitchPtrOutput {
+	return o.ApplyT(func(v *Setting) SettingSwitchPtrOutput { return v.Switch }).(SettingSwitchPtrOutput)
 }
 
 func (o SettingOutput) SwitchMgmt() SettingSwitchMgmtPtrOutput {

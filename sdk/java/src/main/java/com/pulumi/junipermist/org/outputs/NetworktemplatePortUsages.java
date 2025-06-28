@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.junipermist.org.outputs.NetworktemplatePortUsagesRule;
 import com.pulumi.junipermist.org.outputs.NetworktemplatePortUsagesStormControl;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -40,6 +41,11 @@ public final class NetworktemplatePortUsages {
      * 
      */
     private @Nullable Boolean bypassAuthWhenServerDownForUnknownClient;
+    /**
+     * @return Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+     * 
+     */
+    private @Nullable Integer communityVlanId;
     /**
      * @return Only if `mode`!=`dynamic`
      * 
@@ -238,6 +244,13 @@ public final class NetworktemplatePortUsages {
      */
     public Optional<Boolean> bypassAuthWhenServerDownForUnknownClient() {
         return Optional.ofNullable(this.bypassAuthWhenServerDownForUnknownClient);
+    }
+    /**
+     * @return Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+     * 
+     */
+    public Optional<Integer> communityVlanId() {
+        return Optional.ofNullable(this.communityVlanId);
     }
     /**
      * @return Only if `mode`!=`dynamic`
@@ -484,6 +497,7 @@ public final class NetworktemplatePortUsages {
         private @Nullable Boolean allowMultipleSupplicants;
         private @Nullable Boolean bypassAuthWhenServerDown;
         private @Nullable Boolean bypassAuthWhenServerDownForUnknownClient;
+        private @Nullable Integer communityVlanId;
         private @Nullable String description;
         private @Nullable Boolean disableAutoneg;
         private @Nullable Boolean disabled;
@@ -526,6 +540,7 @@ public final class NetworktemplatePortUsages {
     	      this.allowMultipleSupplicants = defaults.allowMultipleSupplicants;
     	      this.bypassAuthWhenServerDown = defaults.bypassAuthWhenServerDown;
     	      this.bypassAuthWhenServerDownForUnknownClient = defaults.bypassAuthWhenServerDownForUnknownClient;
+    	      this.communityVlanId = defaults.communityVlanId;
     	      this.description = defaults.description;
     	      this.disableAutoneg = defaults.disableAutoneg;
     	      this.disabled = defaults.disabled;
@@ -590,6 +605,12 @@ public final class NetworktemplatePortUsages {
         public Builder bypassAuthWhenServerDownForUnknownClient(@Nullable Boolean bypassAuthWhenServerDownForUnknownClient) {
 
             this.bypassAuthWhenServerDownForUnknownClient = bypassAuthWhenServerDownForUnknownClient;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder communityVlanId(@Nullable Integer communityVlanId) {
+
+            this.communityVlanId = communityVlanId;
             return this;
         }
         @CustomType.Setter
@@ -812,6 +833,7 @@ public final class NetworktemplatePortUsages {
             _resultValue.allowMultipleSupplicants = allowMultipleSupplicants;
             _resultValue.bypassAuthWhenServerDown = bypassAuthWhenServerDown;
             _resultValue.bypassAuthWhenServerDownForUnknownClient = bypassAuthWhenServerDownForUnknownClient;
+            _resultValue.communityVlanId = communityVlanId;
             _resultValue.description = description;
             _resultValue.disableAutoneg = disableAutoneg;
             _resultValue.disabled = disabled;

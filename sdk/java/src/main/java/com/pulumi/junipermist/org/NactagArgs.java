@@ -58,8 +58,8 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-     * `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`,
-     * `usermac_label`
+     * `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
+     * `user_name`, `usermac_label`
      * 
      */
     @Import(name="match")
@@ -67,8 +67,8 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-     * `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`,
-     * `usermac_label`
+     * `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
+     * `user_name`, `usermac_label`
      * 
      */
     public Optional<Output<String>> match() {
@@ -339,8 +339,8 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param match if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-         * `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`,
-         * `usermac_label`
+         * `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
+         * `user_name`, `usermac_label`
          * 
          * @return builder
          * 
@@ -352,8 +352,8 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param match if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-         * `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`,
-         * `usermac_label`
+         * `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
+         * `user_name`, `usermac_label`
          * 
          * @return builder
          * 

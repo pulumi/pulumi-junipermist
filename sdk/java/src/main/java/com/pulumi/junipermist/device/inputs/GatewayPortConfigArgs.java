@@ -533,6 +533,21 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * If `wan_type`==`wan`, disable speedtest
+     * 
+     */
+    @Import(name="wanDisableSpeedtest")
+    private @Nullable Output<Boolean> wanDisableSpeedtest;
+
+    /**
+     * @return If `wan_type`==`wan`, disable speedtest
+     * 
+     */
+    public Optional<Output<Boolean>> wanDisableSpeedtest() {
+        return Optional.ofNullable(this.wanDisableSpeedtest);
+    }
+
+    /**
      * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
      * 
      */
@@ -663,6 +678,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         this.vlanId = $.vlanId;
         this.vpnPaths = $.vpnPaths;
         this.wanArpPolicer = $.wanArpPolicer;
+        this.wanDisableSpeedtest = $.wanDisableSpeedtest;
         this.wanExtIp = $.wanExtIp;
         this.wanExtraRoutes = $.wanExtraRoutes;
         this.wanNetworks = $.wanNetworks;
@@ -1409,6 +1425,27 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder wanArpPolicer(String wanArpPolicer) {
             return wanArpPolicer(Output.of(wanArpPolicer));
+        }
+
+        /**
+         * @param wanDisableSpeedtest If `wan_type`==`wan`, disable speedtest
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wanDisableSpeedtest(@Nullable Output<Boolean> wanDisableSpeedtest) {
+            $.wanDisableSpeedtest = wanDisableSpeedtest;
+            return this;
+        }
+
+        /**
+         * @param wanDisableSpeedtest If `wan_type`==`wan`, disable speedtest
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wanDisableSpeedtest(Boolean wanDisableSpeedtest) {
+            return wanDisableSpeedtest(Output.of(wanDisableSpeedtest));
         }
 
         /**

@@ -6,6 +6,7 @@ package com.pulumi.junipermist.org.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateTunnelProviderOptionsJseArgs;
+import com.pulumi.junipermist.org.inputs.GatewaytemplateTunnelProviderOptionsPrismaArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateTunnelProviderOptionsZscalerArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,6 +32,13 @@ public final class GatewaytemplateTunnelProviderOptionsArgs extends com.pulumi.r
         return Optional.ofNullable(this.jse);
     }
 
+    @Import(name="prisma")
+    private @Nullable Output<GatewaytemplateTunnelProviderOptionsPrismaArgs> prisma;
+
+    public Optional<Output<GatewaytemplateTunnelProviderOptionsPrismaArgs>> prisma() {
+        return Optional.ofNullable(this.prisma);
+    }
+
     /**
      * For zscaler-ipsec and zscaler-gre
      * 
@@ -50,6 +58,7 @@ public final class GatewaytemplateTunnelProviderOptionsArgs extends com.pulumi.r
 
     private GatewaytemplateTunnelProviderOptionsArgs(GatewaytemplateTunnelProviderOptionsArgs $) {
         this.jse = $.jse;
+        this.prisma = $.prisma;
         this.zscaler = $.zscaler;
     }
 
@@ -90,6 +99,15 @@ public final class GatewaytemplateTunnelProviderOptionsArgs extends com.pulumi.r
          */
         public Builder jse(GatewaytemplateTunnelProviderOptionsJseArgs jse) {
             return jse(Output.of(jse));
+        }
+
+        public Builder prisma(@Nullable Output<GatewaytemplateTunnelProviderOptionsPrismaArgs> prisma) {
+            $.prisma = prisma;
+            return this;
+        }
+
+        public Builder prisma(GatewaytemplateTunnelProviderOptionsPrismaArgs prisma) {
+            return prisma(Output.of(prisma));
         }
 
         /**

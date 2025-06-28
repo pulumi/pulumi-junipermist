@@ -56,7 +56,8 @@ class DeviceprofileApArgs:
         :param pulumi.Input['DeviceprofileApLedArgs'] led: LED AP settings
         :param pulumi.Input['DeviceprofileApMeshArgs'] mesh: Mesh AP settings
         :param pulumi.Input[builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]] port_config: Property key is the interface(s) name (e.g. "eth1,eth2")
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+               precedence over switch_config (deprecated)
         :param pulumi.Input['DeviceprofileApPwrConfigArgs'] pwr_config: Power related configs
         :param pulumi.Input['DeviceprofileApRadioConfigArgs'] radio_config: Radio AP settings
         :param pulumi.Input['DeviceprofileApUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
@@ -277,7 +278,8 @@ class DeviceprofileApArgs:
     @pulumi.getter(name="portConfig")
     def port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]]]:
         """
-        Property key is the interface(s) name (e.g. "eth1,eth2")
+        eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+        precedence over switch_config (deprecated)
         """
         return pulumi.get(self, "port_config")
 
@@ -394,7 +396,8 @@ class _DeviceprofileApState:
         :param pulumi.Input['DeviceprofileApLedArgs'] led: LED AP settings
         :param pulumi.Input['DeviceprofileApMeshArgs'] mesh: Mesh AP settings
         :param pulumi.Input[builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]] port_config: Property key is the interface(s) name (e.g. "eth1,eth2")
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+               precedence over switch_config (deprecated)
         :param pulumi.Input['DeviceprofileApPwrConfigArgs'] pwr_config: Power related configs
         :param pulumi.Input['DeviceprofileApRadioConfigArgs'] radio_config: Radio AP settings
         :param pulumi.Input[builtins.str] type: Device Type. enum: `ap`
@@ -619,7 +622,8 @@ class _DeviceprofileApState:
     @pulumi.getter(name="portConfig")
     def port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]]]:
         """
-        Property key is the interface(s) name (e.g. "eth1,eth2")
+        eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+        precedence over switch_config (deprecated)
         """
         return pulumi.get(self, "port_config")
 
@@ -783,7 +787,8 @@ class DeviceprofileAp(pulumi.CustomResource):
         :param pulumi.Input[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict']] led: LED AP settings
         :param pulumi.Input[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict']] mesh: Mesh AP settings
         :param pulumi.Input[builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict']]]] port_config: Property key is the interface(s) name (e.g. "eth1,eth2")
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict']]]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+               precedence over switch_config (deprecated)
         :param pulumi.Input[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict']] pwr_config: Power related configs
         :param pulumi.Input[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict']] radio_config: Radio AP settings
         :param pulumi.Input[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
@@ -950,7 +955,8 @@ class DeviceprofileAp(pulumi.CustomResource):
         :param pulumi.Input[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict']] led: LED AP settings
         :param pulumi.Input[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict']] mesh: Mesh AP settings
         :param pulumi.Input[builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict']]]] port_config: Property key is the interface(s) name (e.g. "eth1,eth2")
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict']]]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+               precedence over switch_config (deprecated)
         :param pulumi.Input[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict']] pwr_config: Power related configs
         :param pulumi.Input[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict']] radio_config: Radio AP settings
         :param pulumi.Input[builtins.str] type: Device Type. enum: `ap`
@@ -1097,7 +1103,8 @@ class DeviceprofileAp(pulumi.CustomResource):
     @pulumi.getter(name="portConfig")
     def port_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.DeviceprofileApPortConfig']]]:
         """
-        Property key is the interface(s) name (e.g. "eth1,eth2")
+        eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+        precedence over switch_config (deprecated)
         """
         return pulumi.get(self, "port_config")
 

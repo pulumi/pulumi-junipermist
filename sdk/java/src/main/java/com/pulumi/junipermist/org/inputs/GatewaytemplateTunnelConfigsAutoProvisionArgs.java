@@ -65,14 +65,14 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
     }
 
     /**
-     * API override for POP selection
+     * API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return API override for POP selection
+     * @return API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
      * 
      */
     public Optional<Output<String>> region() {
@@ -86,6 +86,21 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
         return Optional.ofNullable(this.secondary);
     }
 
+    /**
+     * if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we&#39;ll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
+     * 
+     */
+    @Import(name="serviceConnection")
+    private @Nullable Output<String> serviceConnection;
+
+    /**
+     * @return if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we&#39;ll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
+     * 
+     */
+    public Optional<Output<String>> serviceConnection() {
+        return Optional.ofNullable(this.serviceConnection);
+    }
+
     private GatewaytemplateTunnelConfigsAutoProvisionArgs() {}
 
     private GatewaytemplateTunnelConfigsAutoProvisionArgs(GatewaytemplateTunnelConfigsAutoProvisionArgs $) {
@@ -95,6 +110,7 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
         this.provider = $.provider;
         this.region = $.region;
         this.secondary = $.secondary;
+        this.serviceConnection = $.serviceConnection;
     }
 
     public static Builder builder() {
@@ -176,7 +192,7 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
         }
 
         /**
-         * @param region API override for POP selection
+         * @param region API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
          * 
          * @return builder
          * 
@@ -187,7 +203,7 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
         }
 
         /**
-         * @param region API override for POP selection
+         * @param region API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
          * 
          * @return builder
          * 
@@ -203,6 +219,27 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
 
         public Builder secondary(GatewaytemplateTunnelConfigsAutoProvisionSecondaryArgs secondary) {
             return secondary(Output.of(secondary));
+        }
+
+        /**
+         * @param serviceConnection if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we&#39;ll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceConnection(@Nullable Output<String> serviceConnection) {
+            $.serviceConnection = serviceConnection;
+            return this;
+        }
+
+        /**
+         * @param serviceConnection if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we&#39;ll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceConnection(String serviceConnection) {
+            return serviceConnection(Output.of(serviceConnection));
         }
 
         public GatewaytemplateTunnelConfigsAutoProvisionArgs build() {

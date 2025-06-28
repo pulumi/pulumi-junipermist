@@ -5,6 +5,7 @@ package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayTunnelProviderOptionsJse;
+import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayTunnelProviderOptionsPrisma;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayTunnelProviderOptionsZscaler;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +18,7 @@ public final class DeviceprofileGatewayTunnelProviderOptions {
      * 
      */
     private @Nullable DeviceprofileGatewayTunnelProviderOptionsJse jse;
+    private @Nullable DeviceprofileGatewayTunnelProviderOptionsPrisma prisma;
     /**
      * @return For zscaler-ipsec and zscaler-gre
      * 
@@ -30,6 +32,9 @@ public final class DeviceprofileGatewayTunnelProviderOptions {
      */
     public Optional<DeviceprofileGatewayTunnelProviderOptionsJse> jse() {
         return Optional.ofNullable(this.jse);
+    }
+    public Optional<DeviceprofileGatewayTunnelProviderOptionsPrisma> prisma() {
+        return Optional.ofNullable(this.prisma);
     }
     /**
      * @return For zscaler-ipsec and zscaler-gre
@@ -49,11 +54,13 @@ public final class DeviceprofileGatewayTunnelProviderOptions {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable DeviceprofileGatewayTunnelProviderOptionsJse jse;
+        private @Nullable DeviceprofileGatewayTunnelProviderOptionsPrisma prisma;
         private @Nullable DeviceprofileGatewayTunnelProviderOptionsZscaler zscaler;
         public Builder() {}
         public Builder(DeviceprofileGatewayTunnelProviderOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.jse = defaults.jse;
+    	      this.prisma = defaults.prisma;
     	      this.zscaler = defaults.zscaler;
         }
 
@@ -61,6 +68,12 @@ public final class DeviceprofileGatewayTunnelProviderOptions {
         public Builder jse(@Nullable DeviceprofileGatewayTunnelProviderOptionsJse jse) {
 
             this.jse = jse;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder prisma(@Nullable DeviceprofileGatewayTunnelProviderOptionsPrisma prisma) {
+
+            this.prisma = prisma;
             return this;
         }
         @CustomType.Setter
@@ -72,6 +85,7 @@ public final class DeviceprofileGatewayTunnelProviderOptions {
         public DeviceprofileGatewayTunnelProviderOptions build() {
             final var _resultValue = new DeviceprofileGatewayTunnelProviderOptions();
             _resultValue.jse = jse;
+            _resultValue.prisma = prisma;
             _resultValue.zscaler = zscaler;
             return _resultValue;
         }

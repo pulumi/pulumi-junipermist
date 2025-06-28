@@ -81,14 +81,14 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * For both SSR and SRX disable console port
+     * For SSR and SRX, disable console port
      * 
      */
     @Import(name="disableConsole")
     private @Nullable Output<Boolean> disableConsole;
 
     /**
-     * @return For both SSR and SRX disable console port
+     * @return For SSR and SRX, disable console port
      * 
      */
     public Optional<Output<Boolean>> disableConsole() {
@@ -96,14 +96,14 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * For both SSR and SRX disable management interface
+     * For SSR and SRX, disable management interface
      * 
      */
     @Import(name="disableOob")
     private @Nullable Output<Boolean> disableOob;
 
     /**
-     * @return For both SSR and SRX disable management interface
+     * @return For SSR and SRX, disable management interface
      * 
      */
     public Optional<Output<Boolean>> disableOob() {
@@ -111,14 +111,14 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * For SSR disable usb interface
+     * For SSR and SRX, disable usb interface
      * 
      */
     @Import(name="disableUsb")
     private @Nullable Output<Boolean> disableUsb;
 
     /**
-     * @return For SSR disable usb interface
+     * @return For SSR and SRX, disable usb interface
      * 
      */
     public Optional<Output<Boolean>> disableUsb() {
@@ -316,7 +316,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param disableConsole For both SSR and SRX disable console port
+         * @param disableConsole For SSR and SRX, disable console port
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param disableConsole For both SSR and SRX disable console port
+         * @param disableConsole For SSR and SRX, disable console port
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param disableOob For both SSR and SRX disable management interface
+         * @param disableOob For SSR and SRX, disable management interface
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param disableOob For both SSR and SRX disable management interface
+         * @param disableOob For SSR and SRX, disable management interface
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param disableUsb For SSR disable usb interface
+         * @param disableUsb For SSR and SRX, disable usb interface
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param disableUsb For SSR disable usb interface
+         * @param disableUsb For SSR and SRX, disable usb interface
          * 
          * @return builder
          * 

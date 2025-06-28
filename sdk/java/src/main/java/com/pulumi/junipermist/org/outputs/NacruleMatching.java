@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NacruleMatching {
     /**
-     * @return enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
+     * @return enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
      * 
      */
     private @Nullable String authType;
@@ -57,7 +57,7 @@ public final class NacruleMatching {
 
     private NacruleMatching() {}
     /**
-     * @return enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
+     * @return enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
      * 
      */
     public Optional<String> authType() {

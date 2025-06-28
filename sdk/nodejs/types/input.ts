@@ -74,7 +74,7 @@ export namespace device {
          */
         eddystoneUidEnabled?: pulumi.Input<boolean>;
         /**
-         * Frequency (msec) of data emmit by Eddystone-UID beacon
+         * Frequency (msec) of data emit by Eddystone-UID beacon
          */
         eddystoneUidFreqMsec?: pulumi.Input<number>;
         /**
@@ -112,7 +112,7 @@ export namespace device {
          */
         ibeaconEnabled?: pulumi.Input<boolean>;
         /**
-         * Frequency (msec) of data emmit for iBeacon
+         * Frequency (msec) of data emit for iBeacon
          */
         ibeaconFreqMsec?: pulumi.Input<number>;
         /**
@@ -1415,6 +1415,10 @@ export namespace device {
          */
         wanArpPolicer?: pulumi.Input<string>;
         /**
+         * If `wanType`==`wan`, disable speedtest
+         */
+        wanDisableSpeedtest?: pulumi.Input<boolean>;
+        /**
          * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
         wanExtIp?: pulumi.Input<string>;
@@ -1774,7 +1778,7 @@ export namespace device {
          */
         mode?: pulumi.Input<string>;
         /**
-         * If `provider`==`custom-ipsec`, networks reachable via this tunnel
+         * If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
          */
         networks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -1790,7 +1794,7 @@ export namespace device {
          */
         protocol?: pulumi.Input<string>;
         /**
-         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          */
         provider?: pulumi.Input<string>;
         /**
@@ -1819,10 +1823,14 @@ export namespace device {
          */
         provider: pulumi.Input<string>;
         /**
-         * API override for POP selection
+         * API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
          */
         region?: pulumi.Input<string>;
         secondary?: pulumi.Input<inputs.device.GatewayTunnelConfigsAutoProvisionSecondary>;
+        /**
+         * if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, serviceConnection can be considered, then we'll also consider this along with the site location. Define serviceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup > Service Connections.
+         */
+        serviceConnection?: pulumi.Input<string>;
     }
 
     export interface GatewayTunnelConfigsAutoProvisionLatlng {
@@ -1948,6 +1956,7 @@ export namespace device {
          * For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
          */
         jse?: pulumi.Input<inputs.device.GatewayTunnelProviderOptionsJse>;
+        prisma?: pulumi.Input<inputs.device.GatewayTunnelProviderOptionsPrisma>;
         /**
          * For zscaler-ipsec and zscaler-gre
          */
@@ -1960,6 +1969,13 @@ export namespace device {
          * JSE Organization name
          */
         orgName?: pulumi.Input<string>;
+    }
+
+    export interface GatewayTunnelProviderOptionsPrisma {
+        /**
+         * For prisma-ipsec, service account name to used for tunnel auto provisioning
+         */
+        serviceAccountName?: pulumi.Input<string>;
     }
 
     export interface GatewayTunnelProviderOptionsZscaler {
@@ -2115,6 +2131,10 @@ export namespace device {
 
     export interface SwitchAclTags {
         /**
+         * Can only be used under dst tags.
+         */
+        etherTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * Required if
          *   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
          *   - `type`==`gbpResource`
@@ -2137,6 +2157,10 @@ export namespace device {
          */
         network?: pulumi.Input<string>;
         /**
+         * Required if `type`==`portUsage`
+         */
+        portUsage?: pulumi.Input<string>;
+        /**
          * Required if:
          *   * `type`==`radiusGroup`
          *   * `type`==`staticGbp`
@@ -2144,7 +2168,7 @@ export namespace device {
          */
         radiusGroup?: pulumi.Input<string>;
         /**
-         * If `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+         * If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
          */
         specs?: pulumi.Input<pulumi.Input<inputs.device.SwitchAclTagsSpec>[]>;
         /**
@@ -2161,6 +2185,7 @@ export namespace device {
          *   * `gbpResource`: can only be used in `dstTags`
          *   * `mac`
          *   * `network`
+         *   * `portUsage`
          *   * `radiusGroup`
          *   * `resource`: can only be used in `dstTags`
          *   * `staticGbp`: applying gbp tag against matching conditions
@@ -2535,7 +2560,7 @@ export namespace device {
          */
         gateway6?: pulumi.Input<string>;
         /**
-         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set. See also `interIsolationNetworkLink` and `communityVlanId` in port_usage
          */
         isolation?: pulumi.Input<boolean>;
         isolationVlanId?: pulumi.Input<string>;
@@ -2690,11 +2715,15 @@ export namespace device {
         noLocalOverwrite?: pulumi.Input<boolean>;
         poeDisabled?: pulumi.Input<boolean>;
         /**
+         * Required if `usage`==`vlanTunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+         */
+        portNetwork?: pulumi.Input<string>;
+        /**
          * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed?: pulumi.Input<string>;
         /**
-         * Port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
+         * Port usage name. For Q-in-Q, use `vlanTunnel`. If EVPN is used, use `evpnUplink`or `evpnDownlink`
          */
         usage: pulumi.Input<string>;
     }
@@ -2743,6 +2772,10 @@ export namespace device {
          * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDownForUnknownClient?: pulumi.Input<boolean>;
+        /**
+         * Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+         */
+        communityVlanId?: pulumi.Input<number>;
         /**
          * Only if `mode`!=`dynamic`
          */
@@ -2993,6 +3026,7 @@ export namespace device {
 
     export interface SwitchRemoteSyslog {
         archive?: pulumi.Input<inputs.device.SwitchRemoteSyslogArchive>;
+        cacerts?: pulumi.Input<pulumi.Input<string>[]>;
         console?: pulumi.Input<inputs.device.SwitchRemoteSyslogConsole>;
         enabled?: pulumi.Input<boolean>;
         files?: pulumi.Input<pulumi.Input<inputs.device.SwitchRemoteSyslogFile>[]>;
@@ -3032,6 +3066,10 @@ export namespace device {
     export interface SwitchRemoteSyslogFile {
         archive?: pulumi.Input<inputs.device.SwitchRemoteSyslogFileArchive>;
         contents?: pulumi.Input<pulumi.Input<inputs.device.SwitchRemoteSyslogFileContent>[]>;
+        /**
+         * Only if `protocol`==`tcp`
+         */
+        enableTls?: pulumi.Input<boolean>;
         explicitPriority?: pulumi.Input<boolean>;
         file?: pulumi.Input<string>;
         match?: pulumi.Input<string>;
@@ -3115,6 +3153,10 @@ export namespace device {
         description?: pulumi.Input<string>;
         enabled?: pulumi.Input<boolean>;
         engineId?: pulumi.Input<string>;
+        /**
+         * enum: `local`, `useMacAddress`
+         */
+        engineIdType?: pulumi.Input<string>;
         location?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
         network?: pulumi.Input<string>;
@@ -3368,6 +3410,10 @@ export namespace device {
          * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
          */
         protectRe?: pulumi.Input<inputs.device.SwitchSwitchMgmtProtectRe>;
+        /**
+         * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
+         */
+        removeExistingConfigs?: pulumi.Input<boolean>;
         rootPassword?: pulumi.Input<string>;
         tacacs?: pulumi.Input<inputs.device.SwitchSwitchMgmtTacacs>;
         /**
@@ -3396,6 +3442,10 @@ export namespace device {
          *      if dhcpd is enabled, we'll make sure it works
          */
         enabled?: pulumi.Input<boolean>;
+        /**
+         * Whether to enable hit count for Protect_RE policy
+         */
+        hitCount?: pulumi.Input<boolean>;
         /**
          * host/subnets we'll allow traffic to/from
          */
@@ -3509,6 +3559,14 @@ export namespace device {
     }
 
     export interface SwitchVrrpConfigGroups {
+        /**
+         * If `true`, accept packets destined for VRRP address
+         */
+        acceptData?: pulumi.Input<boolean>;
+        /**
+         * If `true`, allow preemption (a backup router can preempt a primary router)
+         */
+        preempt?: pulumi.Input<boolean>;
         priority?: pulumi.Input<number>;
     }
 }
@@ -3634,7 +3692,7 @@ export namespace org {
          */
         eddystoneUidEnabled?: pulumi.Input<boolean>;
         /**
-         * Frequency (msec) of data emmit by Eddystone-UID beacon
+         * Frequency (msec) of data emit by Eddystone-UID beacon
          */
         eddystoneUidFreqMsec?: pulumi.Input<number>;
         /**
@@ -3672,7 +3730,7 @@ export namespace org {
          */
         ibeaconEnabled?: pulumi.Input<boolean>;
         /**
-         * Frequency (msec) of data emmit for iBeacon
+         * Frequency (msec) of data emit for iBeacon
          */
         ibeaconFreqMsec?: pulumi.Input<number>;
         /**
@@ -4936,6 +4994,10 @@ export namespace org {
          */
         wanArpPolicer?: pulumi.Input<string>;
         /**
+         * If `wanType`==`wan`, disable speedtest
+         */
+        wanDisableSpeedtest?: pulumi.Input<boolean>;
+        /**
          * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
         wanExtIp?: pulumi.Input<string>;
@@ -5283,7 +5345,7 @@ export namespace org {
          */
         mode?: pulumi.Input<string>;
         /**
-         * If `provider`==`custom-ipsec`, networks reachable via this tunnel
+         * If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
          */
         networks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -5299,7 +5361,7 @@ export namespace org {
          */
         protocol?: pulumi.Input<string>;
         /**
-         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          */
         provider?: pulumi.Input<string>;
         /**
@@ -5328,10 +5390,14 @@ export namespace org {
          */
         provider: pulumi.Input<string>;
         /**
-         * API override for POP selection
+         * API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
          */
         region?: pulumi.Input<string>;
         secondary?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary>;
+        /**
+         * if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, serviceConnection can be considered, then we'll also consider this along with the site location. Define serviceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup > Service Connections.
+         */
+        serviceConnection?: pulumi.Input<string>;
     }
 
     export interface DeviceprofileGatewayTunnelConfigsAutoProvisionLatlng {
@@ -5457,6 +5523,7 @@ export namespace org {
          * For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
          */
         jse?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelProviderOptionsJse>;
+        prisma?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelProviderOptionsPrisma>;
         /**
          * For zscaler-ipsec and zscaler-gre
          */
@@ -5469,6 +5536,13 @@ export namespace org {
          * JSE Organization name
          */
         orgName?: pulumi.Input<string>;
+    }
+
+    export interface DeviceprofileGatewayTunnelProviderOptionsPrisma {
+        /**
+         * For prisma-ipsec, service account name to used for tunnel auto provisioning
+         */
+        serviceAccountName?: pulumi.Input<string>;
     }
 
     export interface DeviceprofileGatewayTunnelProviderOptionsZscaler {
@@ -5619,6 +5693,10 @@ export namespace org {
          * Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
          */
         coreAsBorder?: pulumi.Input<boolean>;
+        /**
+         * if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+         */
+        enableInbandZtp?: pulumi.Input<boolean>;
         overlay?: pulumi.Input<inputs.org.EvpnTopologyEvpnOptionsOverlay>;
         /**
          * Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4_mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
@@ -6357,6 +6435,10 @@ export namespace org {
          */
         wanArpPolicer?: pulumi.Input<string>;
         /**
+         * If `wanType`==`wan`, disable speedtest
+         */
+        wanDisableSpeedtest?: pulumi.Input<boolean>;
+        /**
          * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
         wanExtIp?: pulumi.Input<string>;
@@ -6704,7 +6786,7 @@ export namespace org {
          */
         mode?: pulumi.Input<string>;
         /**
-         * If `provider`==`custom-ipsec`, networks reachable via this tunnel
+         * If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
          */
         networks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -6720,7 +6802,7 @@ export namespace org {
          */
         protocol?: pulumi.Input<string>;
         /**
-         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          */
         provider?: pulumi.Input<string>;
         /**
@@ -6749,10 +6831,14 @@ export namespace org {
          */
         provider: pulumi.Input<string>;
         /**
-         * API override for POP selection
+         * API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
          */
         region?: pulumi.Input<string>;
         secondary?: pulumi.Input<inputs.org.GatewaytemplateTunnelConfigsAutoProvisionSecondary>;
+        /**
+         * if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, serviceConnection can be considered, then we'll also consider this along with the site location. Define serviceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup > Service Connections.
+         */
+        serviceConnection?: pulumi.Input<string>;
     }
 
     export interface GatewaytemplateTunnelConfigsAutoProvisionLatlng {
@@ -6878,6 +6964,7 @@ export namespace org {
          * For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
          */
         jse?: pulumi.Input<inputs.org.GatewaytemplateTunnelProviderOptionsJse>;
+        prisma?: pulumi.Input<inputs.org.GatewaytemplateTunnelProviderOptionsPrisma>;
         /**
          * For zscaler-ipsec and zscaler-gre
          */
@@ -6890,6 +6977,13 @@ export namespace org {
          * JSE Organization name
          */
         orgName?: pulumi.Input<string>;
+    }
+
+    export interface GatewaytemplateTunnelProviderOptionsPrisma {
+        /**
+         * For prisma-ipsec, service account name to used for tunnel auto provisioning
+         */
+        serviceAccountName?: pulumi.Input<string>;
     }
 
     export interface GatewaytemplateTunnelProviderOptionsZscaler {
@@ -7087,7 +7181,7 @@ export namespace org {
 
     export interface NacruleMatching {
         /**
-         * enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
+         * enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
          */
         authType?: pulumi.Input<string>;
         /**
@@ -7124,7 +7218,7 @@ export namespace org {
 
     export interface NacruleNotMatching {
         /**
-         * enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `peap-tls`, `psk`
+         * enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
          */
         authType?: pulumi.Input<string>;
         /**
@@ -7337,6 +7431,10 @@ export namespace org {
 
     export interface NetworktemplateAclTags {
         /**
+         * Can only be used under dst tags.
+         */
+        etherTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * Required if
          *   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
          *   - `type`==`gbpResource`
@@ -7359,6 +7457,10 @@ export namespace org {
          */
         network?: pulumi.Input<string>;
         /**
+         * Required if `type`==`portUsage`
+         */
+        portUsage?: pulumi.Input<string>;
+        /**
          * Required if:
          *   * `type`==`radiusGroup`
          *   * `type`==`staticGbp`
@@ -7366,7 +7468,7 @@ export namespace org {
          */
         radiusGroup?: pulumi.Input<string>;
         /**
-         * If `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+         * If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
          */
         specs?: pulumi.Input<pulumi.Input<inputs.org.NetworktemplateAclTagsSpec>[]>;
         /**
@@ -7383,6 +7485,7 @@ export namespace org {
          *   * `gbpResource`: can only be used in `dstTags`
          *   * `mac`
          *   * `network`
+         *   * `portUsage`
          *   * `radiusGroup`
          *   * `resource`: can only be used in `dstTags`
          *   * `staticGbp`: applying gbp tag against matching conditions
@@ -7474,7 +7577,7 @@ export namespace org {
          */
         gateway6?: pulumi.Input<string>;
         /**
-         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set. See also `interIsolationNetworkLink` and `communityVlanId` in port_usage
          */
         isolation?: pulumi.Input<boolean>;
         isolationVlanId?: pulumi.Input<string>;
@@ -7575,6 +7678,10 @@ export namespace org {
          * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDownForUnknownClient?: pulumi.Input<boolean>;
+        /**
+         * Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+         */
+        communityVlanId?: pulumi.Input<number>;
         /**
          * Only if `mode`!=`dynamic`
          */
@@ -7829,6 +7936,7 @@ export namespace org {
 
     export interface NetworktemplateRemoteSyslog {
         archive?: pulumi.Input<inputs.org.NetworktemplateRemoteSyslogArchive>;
+        cacerts?: pulumi.Input<pulumi.Input<string>[]>;
         console?: pulumi.Input<inputs.org.NetworktemplateRemoteSyslogConsole>;
         enabled?: pulumi.Input<boolean>;
         files?: pulumi.Input<pulumi.Input<inputs.org.NetworktemplateRemoteSyslogFile>[]>;
@@ -7868,6 +7976,10 @@ export namespace org {
     export interface NetworktemplateRemoteSyslogFile {
         archive?: pulumi.Input<inputs.org.NetworktemplateRemoteSyslogFileArchive>;
         contents?: pulumi.Input<pulumi.Input<inputs.org.NetworktemplateRemoteSyslogFileContent>[]>;
+        /**
+         * Only if `protocol`==`tcp`
+         */
+        enableTls?: pulumi.Input<boolean>;
         explicitPriority?: pulumi.Input<boolean>;
         file?: pulumi.Input<string>;
         match?: pulumi.Input<string>;
@@ -7951,6 +8063,10 @@ export namespace org {
         description?: pulumi.Input<string>;
         enabled?: pulumi.Input<boolean>;
         engineId?: pulumi.Input<string>;
+        /**
+         * enum: `local`, `useMacAddress`
+         */
+        engineIdType?: pulumi.Input<string>;
         location?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
         network?: pulumi.Input<string>;
@@ -8192,12 +8308,12 @@ export namespace org {
         /**
          * property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
          *
-         * @deprecated The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attribuites and may be removed in future versions.
+         * @deprecated The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
 Please update your configurations.
          */
         matchType?: pulumi.Input<string>;
         /**
-         * @deprecated The `matchValue` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attribuites and may be removed in future versions.
+         * @deprecated The `matchValue` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
 Please update your configurations.
          */
         matchValue?: pulumi.Input<string>;
@@ -8287,11 +8403,15 @@ Please update your configurations.
         noLocalOverwrite?: pulumi.Input<boolean>;
         poeDisabled?: pulumi.Input<boolean>;
         /**
+         * Required if `usage`==`vlanTunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+         */
+        portNetwork?: pulumi.Input<string>;
+        /**
          * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed?: pulumi.Input<string>;
         /**
-         * Port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
+         * Port usage name. For Q-in-Q, use `vlanTunnel`. If EVPN is used, use `evpnUplink`or `evpnDownlink`
          */
         usage: pulumi.Input<string>;
     }
@@ -8360,6 +8480,10 @@ Please update your configurations.
          * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
          */
         protectRe?: pulumi.Input<inputs.org.NetworktemplateSwitchMgmtProtectRe>;
+        /**
+         * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
+         */
+        removeExistingConfigs?: pulumi.Input<boolean>;
         rootPassword?: pulumi.Input<string>;
         tacacs?: pulumi.Input<inputs.org.NetworktemplateSwitchMgmtTacacs>;
         /**
@@ -8388,6 +8512,10 @@ Please update your configurations.
          *      if dhcpd is enabled, we'll make sure it works
          */
         enabled?: pulumi.Input<boolean>;
+        /**
+         * Whether to enable hit count for Protect_RE policy
+         */
+        hitCount?: pulumi.Input<boolean>;
         /**
          * host/subnets we'll allow traffic to/from
          */
@@ -8969,6 +9097,16 @@ Please update your configurations.
         write?: pulumi.Input<string>;
     }
 
+    export interface SettingMarvis {
+        autoOperations?: pulumi.Input<inputs.org.SettingMarvisAutoOperations>;
+    }
+
+    export interface SettingMarvisAutoOperations {
+        bouncePortForAbnormalPoeClient?: pulumi.Input<boolean>;
+        disablePortWhenDdosProtocolViolation?: pulumi.Input<boolean>;
+        disablePortWhenRogueDhcpServerDetected?: pulumi.Input<boolean>;
+    }
+
     export interface SettingMgmt {
         /**
          * List of Mist Tunnels
@@ -9126,29 +9264,116 @@ Please update your configurations.
         limitSshAccess?: pulumi.Input<boolean>;
     }
 
+    export interface SettingSsr {
+        /**
+         * List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+         */
+        conductorHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Token to be used by the SSR Devices to connect to the Conductor
+         */
+        conductorToken?: pulumi.Input<string>;
+        /**
+         * Disable stats collection on SSR devices
+         */
+        disableStats?: pulumi.Input<boolean>;
+    }
+
+    export interface SettingSwitch {
+        autoUpgrade?: pulumi.Input<inputs.org.SettingSwitchAutoUpgrade>;
+    }
+
+    export interface SettingSwitchAutoUpgrade {
+        /**
+         * Custom version to be used. The Property Key is the switch hardware and the property value is the firmware version
+         */
+        customVersions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Enable auto upgrade for the switch
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Enable snapshot during the upgrade process
+         */
+        snapshot?: pulumi.Input<boolean>;
+    }
+
     export interface SettingSwitchMgmt {
         /**
          * If the field is set in both site/setting and org/setting, the value from site/setting will be used.
          */
         apAffinityThreshold?: pulumi.Input<number>;
-        /**
-         * If `false`, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
-         */
-        removeExistingConfigs?: pulumi.Input<boolean>;
     }
 
     export interface SettingSyntheticTest {
+        /**
+         * enum: `auto`, `high`, `low`
+         */
+        aggressiveness?: pulumi.Input<string>;
+        /**
+         * Custom probes to be used for synthetic tests
+         */
+        customProbes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.SettingSyntheticTestCustomProbes>}>;
         disabled?: pulumi.Input<boolean>;
+        /**
+         * List of networks to be used for synthetic tests
+         */
+        lanNetworks?: pulumi.Input<pulumi.Input<inputs.org.SettingSyntheticTestLanNetwork>[]>;
         vlans?: pulumi.Input<pulumi.Input<inputs.org.SettingSyntheticTestVlan>[]>;
         wanSpeedtest?: pulumi.Input<inputs.org.SettingSyntheticTestWanSpeedtest>;
     }
 
+    export interface SettingSyntheticTestCustomProbes {
+        /**
+         * enum: `auto`, `high`, `low`
+         */
+        aggressiveness?: pulumi.Input<string>;
+        /**
+         * If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
+         */
+        host?: pulumi.Input<string>;
+        /**
+         * If `type`==`tcp`, Port to be used for the custom probe
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * In milliseconds
+         */
+        threshold?: pulumi.Input<number>;
+        /**
+         * enum: `curl`, `icmp`, `tcp`
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * If `type`==`curl`, URL to be used for the custom probe, can be url or IP
+         */
+        url?: pulumi.Input<string>;
+    }
+
+    export interface SettingSyntheticTestLanNetwork {
+        /**
+         * List of networks to be used for synthetic tests
+         */
+        networks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * app name comes from `customProbes` above or /const/synthetic_test_probes
+         */
+        probes?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface SettingSyntheticTestVlan {
+        /**
+         * @deprecated This attribute is deprecated.
+         */
         customTestUrls?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * For some vlans where we don't want this to run
          */
         disabled?: pulumi.Input<boolean>;
+        /**
+         * app name comes from `customProbes` above or /const/synthetic_test_probes
+         */
+        probes?: pulumi.Input<pulumi.Input<string>[]>;
         vlanIds?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
@@ -9779,9 +10004,17 @@ Please update your configurations.
          */
         smsMessageFormat?: pulumi.Input<string>;
         /**
-         * Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+         * Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
          */
         smsProvider?: pulumi.Input<string>;
+        /**
+         * Required if `smsProvider`==`smsglobal`, Client API Key
+         */
+        smsglobalApiKey?: pulumi.Input<string>;
+        /**
+         * Required if `smsProvider`==`smsglobal`, Client secret
+         */
+        smsglobalApiSecret?: pulumi.Input<string>;
         /**
          * Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
          */
@@ -10750,6 +10983,10 @@ export namespace site {
          * Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
          */
         coreAsBorder?: pulumi.Input<boolean>;
+        /**
+         * if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+         */
+        enableInbandZtp?: pulumi.Input<boolean>;
         overlay?: pulumi.Input<inputs.site.EvpnTopologyEvpnOptionsOverlay>;
         /**
          * Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4_mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
@@ -10847,6 +11084,10 @@ export namespace site {
 
     export interface NetworktemplateAclTags {
         /**
+         * Can only be used under dst tags.
+         */
+        etherTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * Required if
          *   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
          *   - `type`==`gbpResource`
@@ -10869,6 +11110,10 @@ export namespace site {
          */
         network?: pulumi.Input<string>;
         /**
+         * Required if `type`==`portUsage`
+         */
+        portUsage?: pulumi.Input<string>;
+        /**
          * Required if:
          *   * `type`==`radiusGroup`
          *   * `type`==`staticGbp`
@@ -10876,7 +11121,7 @@ export namespace site {
          */
         radiusGroup?: pulumi.Input<string>;
         /**
-         * If `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
+         * If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
          */
         specs?: pulumi.Input<pulumi.Input<inputs.site.NetworktemplateAclTagsSpec>[]>;
         /**
@@ -10893,6 +11138,7 @@ export namespace site {
          *   * `gbpResource`: can only be used in `dstTags`
          *   * `mac`
          *   * `network`
+         *   * `portUsage`
          *   * `radiusGroup`
          *   * `resource`: can only be used in `dstTags`
          *   * `staticGbp`: applying gbp tag against matching conditions
@@ -10984,7 +11230,7 @@ export namespace site {
          */
         gateway6?: pulumi.Input<string>;
         /**
-         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set. See also `interIsolationNetworkLink` and `communityVlanId` in port_usage
          */
         isolation?: pulumi.Input<boolean>;
         isolationVlanId?: pulumi.Input<string>;
@@ -11085,6 +11331,10 @@ export namespace site {
          * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDownForUnknownClient?: pulumi.Input<boolean>;
+        /**
+         * Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
+         */
+        communityVlanId?: pulumi.Input<number>;
         /**
          * Only if `mode`!=`dynamic`
          */
@@ -11339,6 +11589,7 @@ export namespace site {
 
     export interface NetworktemplateRemoteSyslog {
         archive?: pulumi.Input<inputs.site.NetworktemplateRemoteSyslogArchive>;
+        cacerts?: pulumi.Input<pulumi.Input<string>[]>;
         console?: pulumi.Input<inputs.site.NetworktemplateRemoteSyslogConsole>;
         enabled?: pulumi.Input<boolean>;
         files?: pulumi.Input<pulumi.Input<inputs.site.NetworktemplateRemoteSyslogFile>[]>;
@@ -11378,6 +11629,10 @@ export namespace site {
     export interface NetworktemplateRemoteSyslogFile {
         archive?: pulumi.Input<inputs.site.NetworktemplateRemoteSyslogFileArchive>;
         contents?: pulumi.Input<pulumi.Input<inputs.site.NetworktemplateRemoteSyslogFileContent>[]>;
+        /**
+         * Only if `protocol`==`tcp`
+         */
+        enableTls?: pulumi.Input<boolean>;
         explicitPriority?: pulumi.Input<boolean>;
         file?: pulumi.Input<string>;
         match?: pulumi.Input<string>;
@@ -11461,6 +11716,10 @@ export namespace site {
         description?: pulumi.Input<string>;
         enabled?: pulumi.Input<boolean>;
         engineId?: pulumi.Input<string>;
+        /**
+         * enum: `local`, `useMacAddress`
+         */
+        engineIdType?: pulumi.Input<string>;
         location?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
         network?: pulumi.Input<string>;
@@ -11702,12 +11961,12 @@ export namespace site {
         /**
          * property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
          *
-         * @deprecated The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attribuites and may be removed in future versions.
+         * @deprecated The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
 Please update your configurations.
          */
         matchType?: pulumi.Input<string>;
         /**
-         * @deprecated The `matchValue` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attribuites and may be removed in future versions.
+         * @deprecated The `matchValue` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
 Please update your configurations.
          */
         matchValue?: pulumi.Input<string>;
@@ -11797,11 +12056,15 @@ Please update your configurations.
         noLocalOverwrite?: pulumi.Input<boolean>;
         poeDisabled?: pulumi.Input<boolean>;
         /**
+         * Required if `usage`==`vlanTunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+         */
+        portNetwork?: pulumi.Input<string>;
+        /**
          * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed?: pulumi.Input<string>;
         /**
-         * Port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
+         * Port usage name. For Q-in-Q, use `vlanTunnel`. If EVPN is used, use `evpnUplink`or `evpnDownlink`
          */
         usage: pulumi.Input<string>;
     }
@@ -11870,6 +12133,10 @@ Please update your configurations.
          * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
          */
         protectRe?: pulumi.Input<inputs.site.NetworktemplateSwitchMgmtProtectRe>;
+        /**
+         * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
+         */
+        removeExistingConfigs?: pulumi.Input<boolean>;
         rootPassword?: pulumi.Input<string>;
         tacacs?: pulumi.Input<inputs.site.NetworktemplateSwitchMgmtTacacs>;
         /**
@@ -11898,6 +12165,10 @@ Please update your configurations.
          *      if dhcpd is enabled, we'll make sure it works
          */
         enabled?: pulumi.Input<boolean>;
+        /**
+         * Whether to enable hit count for Protect_RE policy
+         */
+        hitCount?: pulumi.Input<boolean>;
         /**
          * host/subnets we'll allow traffic to/from
          */
@@ -12048,7 +12319,7 @@ Please update your configurations.
          */
         eddystoneUidEnabled?: pulumi.Input<boolean>;
         /**
-         * Frequency (msec) of data emmit by Eddystone-UID beacon
+         * Frequency (msec) of data emit by Eddystone-UID beacon
          */
         eddystoneUidFreqMsec?: pulumi.Input<number>;
         /**
@@ -12086,7 +12357,7 @@ Please update your configurations.
          */
         ibeaconEnabled?: pulumi.Input<boolean>;
         /**
-         * Frequency (msec) of data emmit for iBeacon
+         * Frequency (msec) of data emit for iBeacon
          */
         ibeaconFreqMsec?: pulumi.Input<number>;
         /**
@@ -12279,15 +12550,15 @@ Please update your configurations.
          */
         configRevertTimer?: pulumi.Input<number>;
         /**
-         * For both SSR and SRX disable console port
+         * For SSR and SRX, disable console port
          */
         disableConsole?: pulumi.Input<boolean>;
         /**
-         * For both SSR and SRX disable management interface
+         * For SSR and SRX, disable management interface
          */
         disableOob?: pulumi.Input<boolean>;
         /**
-         * For SSR disable usb interface
+         * For SSR and SRX, disable usb interface
          */
         disableUsb?: pulumi.Input<boolean>;
         fipsEnabled?: pulumi.Input<boolean>;
@@ -12364,6 +12635,10 @@ Please update your configurations.
          */
         enabled?: pulumi.Input<boolean>;
         /**
+         * Whether to enable hit count for Protect_RE policy
+         */
+        hitCount?: pulumi.Input<boolean>;
+        /**
          * host/subnets we'll allow traffic to/from
          */
         trustedHosts?: pulumi.Input<pulumi.Input<string>[]>;
@@ -12395,6 +12670,16 @@ Please update your configurations.
     export interface SettingLed {
         brightness?: pulumi.Input<number>;
         enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface SettingMarvis {
+        autoOperations?: pulumi.Input<inputs.site.SettingMarvisAutoOperations>;
+    }
+
+    export interface SettingMarvisAutoOperations {
+        bouncePortForAbnormalPoeClient?: pulumi.Input<boolean>;
+        disablePortWhenDdosProtocolViolation?: pulumi.Input<boolean>;
+        disablePortWhenRogueDhcpServerDetected?: pulumi.Input<boolean>;
     }
 
     export interface SettingOccupancy {
@@ -12515,27 +12800,113 @@ Please update your configurations.
         sendIpMacMapping?: pulumi.Input<boolean>;
     }
 
+    export interface SettingSleThresholds {
+        /**
+         * Capacity, in %
+         */
+        capacity?: pulumi.Input<number>;
+        /**
+         * Coverage, in dBm
+         */
+        coverage?: pulumi.Input<number>;
+        /**
+         * Throughput, in Mbps
+         */
+        throughput?: pulumi.Input<number>;
+        /**
+         * Time to connect, in seconds
+         */
+        timetoconnect?: pulumi.Input<number>;
+    }
+
     export interface SettingSrxApp {
         enabled?: pulumi.Input<boolean>;
     }
 
     export interface SettingSsr {
+        /**
+         * List of Conductor IP Addresses or Hosts to be used by the SSR Devices
+         */
         conductorHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Token to be used by the SSR Devices to connect to the Conductor
+         */
+        conductorToken?: pulumi.Input<string>;
+        /**
+         * Disable stats collection on SSR devices
+         */
         disableStats?: pulumi.Input<boolean>;
     }
 
     export interface SettingSyntheticTest {
+        /**
+         * enum: `auto`, `high`, `low`
+         */
+        aggressiveness?: pulumi.Input<string>;
+        /**
+         * Custom probes to be used for synthetic tests
+         */
+        customProbes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.SettingSyntheticTestCustomProbes>}>;
         disabled?: pulumi.Input<boolean>;
+        /**
+         * List of networks to be used for synthetic tests
+         */
+        lanNetworks?: pulumi.Input<pulumi.Input<inputs.site.SettingSyntheticTestLanNetwork>[]>;
         vlans?: pulumi.Input<pulumi.Input<inputs.site.SettingSyntheticTestVlan>[]>;
         wanSpeedtest?: pulumi.Input<inputs.site.SettingSyntheticTestWanSpeedtest>;
     }
 
+    export interface SettingSyntheticTestCustomProbes {
+        /**
+         * enum: `auto`, `high`, `low`
+         */
+        aggressiveness?: pulumi.Input<string>;
+        /**
+         * If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
+         */
+        host?: pulumi.Input<string>;
+        /**
+         * If `type`==`tcp`, Port to be used for the custom probe
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * In milliseconds
+         */
+        threshold?: pulumi.Input<number>;
+        /**
+         * enum: `curl`, `icmp`, `tcp`
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * If `type`==`curl`, URL to be used for the custom probe, can be url or IP
+         */
+        url?: pulumi.Input<string>;
+    }
+
+    export interface SettingSyntheticTestLanNetwork {
+        /**
+         * List of networks to be used for synthetic tests
+         */
+        networks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * app name comes from `customProbes` above or /const/synthetic_test_probes
+         */
+        probes?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface SettingSyntheticTestVlan {
+        /**
+         * @deprecated This attribute is deprecated.
+         */
         customTestUrls?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * For some vlans where we don't want this to run
          */
         disabled?: pulumi.Input<boolean>;
+        /**
+         * app name comes from `customProbes` above or /const/synthetic_test_probes
+         */
+        probes?: pulumi.Input<pulumi.Input<string>[]>;
         vlanIds?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
@@ -13146,7 +13517,7 @@ Please update your configurations.
          */
         password?: pulumi.Input<string>;
         /**
-         * Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+         * Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behavior is acc to `sponsorEmailDomains`
          */
         predefinedSponsorsEnabled?: pulumi.Input<boolean>;
         /**
@@ -13179,9 +13550,17 @@ Please update your configurations.
          */
         smsMessageFormat?: pulumi.Input<string>;
         /**
-         * Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+         * Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
          */
         smsProvider?: pulumi.Input<string>;
+        /**
+         * Required if `smsProvider`==`smsglobal`, Client API Key
+         */
+        smsglobalApiKey?: pulumi.Input<string>;
+        /**
+         * Required if `smsProvider`==`smsglobal`, Client secret
+         */
+        smsglobalApiSecret?: pulumi.Input<string>;
         /**
          * Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
          */
@@ -13230,7 +13609,7 @@ Please update your configurations.
          */
         ssoIdpCert?: pulumi.Input<string>;
         /**
-         * Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+         * Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          */
         ssoIdpSignAlgo?: pulumi.Input<string>;
         /**

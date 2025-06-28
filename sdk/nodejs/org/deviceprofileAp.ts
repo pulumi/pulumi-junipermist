@@ -113,7 +113,8 @@ export class DeviceprofileAp extends pulumi.CustomResource {
      */
     public readonly poePassthrough!: pulumi.Output<boolean>;
     /**
-     * Property key is the interface(s) name (e.g. "eth1,eth2")
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+     * precedence over switchConfig (deprecated)
      */
     public readonly portConfig!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileApPortConfig} | undefined>;
     /**
@@ -263,7 +264,8 @@ export interface DeviceprofileApState {
      */
     poePassthrough?: pulumi.Input<boolean>;
     /**
-     * Property key is the interface(s) name (e.g. "eth1,eth2")
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+     * precedence over switchConfig (deprecated)
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileApPortConfig>}>;
     /**
@@ -344,7 +346,8 @@ export interface DeviceprofileApArgs {
      */
     poePassthrough?: pulumi.Input<boolean>;
     /**
-     * Property key is the interface(s) name (e.g. "eth1,eth2")
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
+     * precedence over switchConfig (deprecated)
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileApPortConfig>}>;
     /**
