@@ -83,10 +83,10 @@ public class Gatewaytemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dhcpdConfig);
     }
     @Export(name="dnsOverride", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> dnsOverride;
+    private Output</* @Nullable */ Boolean> dnsOverride;
 
-    public Output<Boolean> dnsOverride() {
-        return this.dnsOverride;
+    public Output<Optional<Boolean>> dnsOverride() {
+        return Codegen.optional(this.dnsOverride);
     }
     /**
      * Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
@@ -187,10 +187,10 @@ public class Gatewaytemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.networks);
     }
     @Export(name="ntpOverride", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> ntpOverride;
+    private Output</* @Nullable */ Boolean> ntpOverride;
 
-    public Output<Boolean> ntpOverride() {
-        return this.ntpOverride;
+    public Output<Optional<Boolean>> ntpOverride() {
+        return Codegen.optional(this.ntpOverride);
     }
     /**
      * List of NTP servers specific to this device. By default, those in Site Settings will be used

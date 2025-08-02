@@ -7,11 +7,11 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.JuniperMist.Device.Outputs
+namespace Pulumi.JuniperMist.Org.Outputs
 {
 
     [OutputType]
-    public sealed class GatewayRoutingPoliciesTermAction
+    public sealed class DeviceprofileGatewayRoutingPoliciesTermActions
     {
         public readonly bool? Accept;
         public readonly ImmutableArray<string> AddCommunities;
@@ -42,7 +42,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly ImmutableArray<string> PrependAsPaths;
 
         [OutputConstructor]
-        private GatewayRoutingPoliciesTermAction(
+        private DeviceprofileGatewayRoutingPoliciesTermActions(
             bool? accept,
 
             ImmutableArray<string> addCommunities,

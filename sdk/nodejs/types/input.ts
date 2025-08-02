@@ -738,19 +738,22 @@ export namespace device {
     }
 
     export interface GatewayBgpConfig {
+        /**
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+         */
         authKey?: pulumi.Input<string>;
         /**
-         * When bfdMultiplier is configured alone. Default:
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMultiplier is configured alone. Default:
          *   * 1000 if `type`==`external`
          *   * 350 `type`==`internal`
          */
         bfdMinimumInterval?: pulumi.Input<number>;
         /**
-         * When bfdMinimumIntervalIsConfigured alone
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMinimumIntervalIsConfigured alone
          */
         bfdMultiplier?: pulumi.Input<number>;
         /**
-         * BFD provides faster path failure detection and is enabled by default
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
          */
         disableBfd?: pulumi.Input<boolean>;
         export?: pulumi.Input<string>;
@@ -759,55 +762,64 @@ export namespace device {
          */
         exportPolicy?: pulumi.Input<string>;
         /**
-         * By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
          */
         extendedV4Nexthop?: pulumi.Input<boolean>;
         /**
-         * `0` means disable
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
          */
         gracefulRestartTime?: pulumi.Input<number>;
+        /**
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+         */
         holdTime?: pulumi.Input<number>;
         import?: pulumi.Input<string>;
         /**
-         * Default import policies if no per-neighbor policies defined
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
          */
         importPolicy?: pulumi.Input<string>;
         /**
-         * Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
         localAs?: pulumi.Input<string>;
         /**
-         * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * Neighbor AS. If `type`==`internal`, must be equal to `localAs`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
         neighborAs?: pulumi.Input<string>;
         /**
-         * If per-neighbor as is desired. Property key is the neighbor address
+         * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
          */
         neighbors?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayBgpConfigNeighbors>}>;
         /**
-         * If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+         * Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
          */
         networks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+         */
         noPrivateAs?: pulumi.Input<boolean>;
         /**
-         * By default, we'll re-advertise all learned BGP routers toward overlay
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
          */
         noReadvertiseToOverlay?: pulumi.Input<boolean>;
         /**
-         * If `type`==`tunnel`
+         * Optional if `via`==`tunnel`
          */
         tunnelName?: pulumi.Input<string>;
         /**
-         * enum: `external`, `internal`
+         * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
          */
         type?: pulumi.Input<string>;
         /**
-         * network name. enum: `lan`, `tunnel`, `vpn`, `wan`
+         * enum: `lan`, `tunnel`, `vpn`, `wan`
          */
-        via?: pulumi.Input<string>;
+        via: pulumi.Input<string>;
+        /**
+         * Optional if `via`==`vpn`
+         */
         vpnName?: pulumi.Input<string>;
         /**
-         * If `via`==`wan`
+         * Optional if `via`==`wan`
          */
         wanName?: pulumi.Input<string>;
     }
@@ -827,7 +839,7 @@ export namespace device {
         /**
          * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
-        neighborAs?: pulumi.Input<string>;
+        neighborAs: pulumi.Input<string>;
     }
 
     export interface GatewayClusterNode {
@@ -855,6 +867,8 @@ export namespace device {
         dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+         *
+         * @deprecated Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
          */
         dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -1278,7 +1292,7 @@ export namespace device {
         /**
          * enum: `local`, `tunnel`, `vpn`, `wan`
          */
-        type?: pulumi.Input<string>;
+        type: pulumi.Input<string>;
         /**
          * Optional if `type`==`vpn`
          */
@@ -1577,14 +1591,14 @@ export namespace device {
         /**
          * When used as import policy
          */
-        action?: pulumi.Input<inputs.device.GatewayRoutingPoliciesTermAction>;
+        actions?: pulumi.Input<inputs.device.GatewayRoutingPoliciesTermActions>;
         /**
          * zero or more criteria/filter can be specified to match the term, all criteria have to be met
          */
         matching?: pulumi.Input<inputs.device.GatewayRoutingPoliciesTermMatching>;
     }
 
-    export interface GatewayRoutingPoliciesTermAction {
+    export interface GatewayRoutingPoliciesTermActions {
         accept?: pulumi.Input<boolean>;
         addCommunities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -1748,6 +1762,9 @@ export namespace device {
     }
 
     export interface GatewayTunnelConfigs {
+        /**
+         * Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+         */
         autoProvision?: pulumi.Input<inputs.device.GatewayTunnelConfigsAutoProvision>;
         /**
          * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
@@ -1812,7 +1829,10 @@ export namespace device {
     }
 
     export interface GatewayTunnelConfigsAutoProvision {
-        enable?: pulumi.Input<boolean>;
+        /**
+         * Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+         */
+        enabled?: pulumi.Input<boolean>;
         /**
          * API override for POP selection
          */
@@ -2640,6 +2660,25 @@ export namespace device {
          * Whether to send OSPF-Hello
          */
         passive?: pulumi.Input<boolean>;
+    }
+
+    export interface SwitchOspfConfig {
+        /**
+         * Property key is the area name. Defines the OSPF areas configured on the switch.
+         */
+        areas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchOspfConfigAreas>}>;
+        /**
+         * Enable OSPF on the switch
+         */
+        enabled?: pulumi.Input<boolean>;
+        referenceBandwidth?: pulumi.Input<string>;
+    }
+
+    export interface SwitchOspfConfigAreas {
+        /**
+         * Disable OSPF summary routes for this area
+         */
+        noSummary?: pulumi.Input<boolean>;
     }
 
     export interface SwitchOtherIpConfigs {
@@ -4328,19 +4367,22 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayBgpConfig {
+        /**
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+         */
         authKey?: pulumi.Input<string>;
         /**
-         * When bfdMultiplier is configured alone. Default:
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMultiplier is configured alone. Default:
          *   * 1000 if `type`==`external`
          *   * 350 `type`==`internal`
          */
         bfdMinimumInterval?: pulumi.Input<number>;
         /**
-         * When bfdMinimumIntervalIsConfigured alone
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMinimumIntervalIsConfigured alone
          */
         bfdMultiplier?: pulumi.Input<number>;
         /**
-         * BFD provides faster path failure detection and is enabled by default
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
          */
         disableBfd?: pulumi.Input<boolean>;
         export?: pulumi.Input<string>;
@@ -4349,55 +4391,64 @@ export namespace org {
          */
         exportPolicy?: pulumi.Input<string>;
         /**
-         * By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
          */
         extendedV4Nexthop?: pulumi.Input<boolean>;
         /**
-         * `0` means disable
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
          */
         gracefulRestartTime?: pulumi.Input<number>;
+        /**
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+         */
         holdTime?: pulumi.Input<number>;
         import?: pulumi.Input<string>;
         /**
-         * Default import policies if no per-neighbor policies defined
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
          */
         importPolicy?: pulumi.Input<string>;
         /**
-         * Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
         localAs?: pulumi.Input<string>;
         /**
-         * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * Neighbor AS. If `type`==`internal`, must be equal to `localAs`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
         neighborAs?: pulumi.Input<string>;
         /**
-         * If per-neighbor as is desired. Property key is the neighbor address
+         * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
          */
         neighbors?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayBgpConfigNeighbors>}>;
         /**
-         * If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+         * Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
          */
         networks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+         */
         noPrivateAs?: pulumi.Input<boolean>;
         /**
-         * By default, we'll re-advertise all learned BGP routers toward overlay
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
          */
         noReadvertiseToOverlay?: pulumi.Input<boolean>;
         /**
-         * If `type`==`tunnel`
+         * Optional if `via`==`tunnel`
          */
         tunnelName?: pulumi.Input<string>;
         /**
-         * enum: `external`, `internal`
+         * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
          */
         type?: pulumi.Input<string>;
         /**
-         * network name. enum: `lan`, `tunnel`, `vpn`, `wan`
+         * enum: `lan`, `tunnel`, `vpn`, `wan`
          */
-        via?: pulumi.Input<string>;
+        via: pulumi.Input<string>;
+        /**
+         * Optional if `via`==`vpn`
+         */
         vpnName?: pulumi.Input<string>;
         /**
-         * If `via`==`wan`
+         * Optional if `via`==`wan`
          */
         wanName?: pulumi.Input<string>;
     }
@@ -4417,7 +4468,7 @@ export namespace org {
         /**
          * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
-        neighborAs?: pulumi.Input<string>;
+        neighborAs: pulumi.Input<string>;
     }
 
     export interface DeviceprofileGatewayDhcpdConfig {
@@ -4438,6 +4489,8 @@ export namespace org {
         dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+         *
+         * @deprecated Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
          */
         dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -4857,7 +4910,7 @@ export namespace org {
         /**
          * enum: `local`, `tunnel`, `vpn`, `wan`
          */
-        type?: pulumi.Input<string>;
+        type: pulumi.Input<string>;
         /**
          * Optional if `type`==`vpn`
          */
@@ -5144,14 +5197,14 @@ export namespace org {
         /**
          * When used as import policy
          */
-        action?: pulumi.Input<inputs.org.DeviceprofileGatewayRoutingPoliciesTermAction>;
+        actions?: pulumi.Input<inputs.org.DeviceprofileGatewayRoutingPoliciesTermActions>;
         /**
          * zero or more criteria/filter can be specified to match the term, all criteria have to be met
          */
         matching?: pulumi.Input<inputs.org.DeviceprofileGatewayRoutingPoliciesTermMatching>;
     }
 
-    export interface DeviceprofileGatewayRoutingPoliciesTermAction {
+    export interface DeviceprofileGatewayRoutingPoliciesTermActions {
         accept?: pulumi.Input<boolean>;
         addCommunities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -5315,6 +5368,9 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayTunnelConfigs {
+        /**
+         * Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+         */
         autoProvision?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigsAutoProvision>;
         /**
          * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
@@ -5379,7 +5435,10 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayTunnelConfigsAutoProvision {
-        enable?: pulumi.Input<boolean>;
+        /**
+         * Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+         */
+        enabled?: pulumi.Input<boolean>;
         /**
          * API override for POP selection
          */
@@ -5769,19 +5828,22 @@ export namespace org {
     }
 
     export interface GatewaytemplateBgpConfig {
+        /**
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+         */
         authKey?: pulumi.Input<string>;
         /**
-         * When bfdMultiplier is configured alone. Default:
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMultiplier is configured alone. Default:
          *   * 1000 if `type`==`external`
          *   * 350 `type`==`internal`
          */
         bfdMinimumInterval?: pulumi.Input<number>;
         /**
-         * When bfdMinimumIntervalIsConfigured alone
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMinimumIntervalIsConfigured alone
          */
         bfdMultiplier?: pulumi.Input<number>;
         /**
-         * BFD provides faster path failure detection and is enabled by default
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
          */
         disableBfd?: pulumi.Input<boolean>;
         export?: pulumi.Input<string>;
@@ -5790,55 +5852,64 @@ export namespace org {
          */
         exportPolicy?: pulumi.Input<string>;
         /**
-         * By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
          */
         extendedV4Nexthop?: pulumi.Input<boolean>;
         /**
-         * `0` means disable
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
          */
         gracefulRestartTime?: pulumi.Input<number>;
+        /**
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+         */
         holdTime?: pulumi.Input<number>;
         import?: pulumi.Input<string>;
         /**
-         * Default import policies if no per-neighbor policies defined
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
          */
         importPolicy?: pulumi.Input<string>;
         /**
-         * Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
         localAs?: pulumi.Input<string>;
         /**
-         * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * Neighbor AS. If `type`==`internal`, must be equal to `localAs`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
         neighborAs?: pulumi.Input<string>;
         /**
-         * If per-neighbor as is desired. Property key is the neighbor address
+         * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
          */
         neighbors?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateBgpConfigNeighbors>}>;
         /**
-         * If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+         * Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
          */
         networks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+         */
         noPrivateAs?: pulumi.Input<boolean>;
         /**
-         * By default, we'll re-advertise all learned BGP routers toward overlay
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
          */
         noReadvertiseToOverlay?: pulumi.Input<boolean>;
         /**
-         * If `type`==`tunnel`
+         * Optional if `via`==`tunnel`
          */
         tunnelName?: pulumi.Input<string>;
         /**
-         * enum: `external`, `internal`
+         * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
          */
         type?: pulumi.Input<string>;
         /**
-         * network name. enum: `lan`, `tunnel`, `vpn`, `wan`
+         * enum: `lan`, `tunnel`, `vpn`, `wan`
          */
-        via?: pulumi.Input<string>;
+        via: pulumi.Input<string>;
+        /**
+         * Optional if `via`==`vpn`
+         */
         vpnName?: pulumi.Input<string>;
         /**
-         * If `via`==`wan`
+         * Optional if `via`==`wan`
          */
         wanName?: pulumi.Input<string>;
     }
@@ -5858,7 +5929,7 @@ export namespace org {
         /**
          * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
-        neighborAs?: pulumi.Input<string>;
+        neighborAs: pulumi.Input<string>;
     }
 
     export interface GatewaytemplateDhcpdConfig {
@@ -5879,6 +5950,8 @@ export namespace org {
         dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+         *
+         * @deprecated Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
          */
         dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -6298,7 +6371,7 @@ export namespace org {
         /**
          * enum: `local`, `tunnel`, `vpn`, `wan`
          */
-        type?: pulumi.Input<string>;
+        type: pulumi.Input<string>;
         /**
          * Optional if `type`==`vpn`
          */
@@ -6585,14 +6658,14 @@ export namespace org {
         /**
          * When used as import policy
          */
-        action?: pulumi.Input<inputs.org.GatewaytemplateRoutingPoliciesTermAction>;
+        actions?: pulumi.Input<inputs.org.GatewaytemplateRoutingPoliciesTermActions>;
         /**
          * zero or more criteria/filter can be specified to match the term, all criteria have to be met
          */
         matching?: pulumi.Input<inputs.org.GatewaytemplateRoutingPoliciesTermMatching>;
     }
 
-    export interface GatewaytemplateRoutingPoliciesTermAction {
+    export interface GatewaytemplateRoutingPoliciesTermActions {
         accept?: pulumi.Input<boolean>;
         addCommunities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -6756,6 +6829,9 @@ export namespace org {
     }
 
     export interface GatewaytemplateTunnelConfigs {
+        /**
+         * Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+         */
         autoProvision?: pulumi.Input<inputs.org.GatewaytemplateTunnelConfigsAutoProvision>;
         /**
          * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
@@ -6820,7 +6896,10 @@ export namespace org {
     }
 
     export interface GatewaytemplateTunnelConfigsAutoProvision {
-        enable?: pulumi.Input<boolean>;
+        /**
+         * Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+         */
+        enabled?: pulumi.Input<boolean>;
         /**
          * API override for POP selection
          */
@@ -8305,18 +8384,6 @@ export namespace org {
          * string the switch role must start with to use this rule. It is possible to combine with the `matchName` and `matchModel` attributes
          */
         matchRole?: pulumi.Input<string>;
-        /**
-         * property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
-         *
-         * @deprecated The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
-Please update your configurations.
-         */
-        matchType?: pulumi.Input<string>;
-        /**
-         * @deprecated The `matchValue` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
-Please update your configurations.
-         */
-        matchValue?: pulumi.Input<string>;
         /**
          * Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
          */
@@ -11958,18 +12025,6 @@ export namespace site {
          * string the switch role must start with to use this rule. It is possible to combine with the `matchName` and `matchModel` attributes
          */
         matchRole?: pulumi.Input<string>;
-        /**
-         * property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
-         *
-         * @deprecated The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
-Please update your configurations.
-         */
-        matchType?: pulumi.Input<string>;
-        /**
-         * @deprecated The `matchValue` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
-Please update your configurations.
-         */
-        matchValue?: pulumi.Input<string>;
         /**
          * Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
          */

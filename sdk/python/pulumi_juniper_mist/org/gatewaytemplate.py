@@ -1075,7 +1075,7 @@ class Gatewaytemplate(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="dnsOverride")
-    def dns_override(self) -> pulumi.Output[_builtins.bool]:
+    def dns_override(self) -> pulumi.Output[Optional[_builtins.bool]]:
         return pulumi.get(self, "dns_override")
 
     @_builtins.property
@@ -1139,7 +1139,7 @@ class Gatewaytemplate(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="ntpOverride")
-    def ntp_override(self) -> pulumi.Output[_builtins.bool]:
+    def ntp_override(self) -> pulumi.Output[Optional[_builtins.bool]]:
         return pulumi.get(self, "ntp_override")
 
     @_builtins.property

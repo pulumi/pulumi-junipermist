@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class GatewaytemplateTunnelConfigs
     {
+        /// <summary>
+        /// Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+        /// </summary>
         public readonly Outputs.GatewaytemplateTunnelConfigsAutoProvision? AutoProvision;
         /// <summary>
         /// Only if `provider`==`custom-ipsec`. Must be between 180 and 86400

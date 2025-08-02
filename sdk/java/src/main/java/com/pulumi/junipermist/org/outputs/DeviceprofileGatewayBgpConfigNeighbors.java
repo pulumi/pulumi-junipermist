@@ -4,6 +4,7 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -30,7 +31,7 @@ public final class DeviceprofileGatewayBgpConfigNeighbors {
      * @return Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
      * 
      */
-    private @Nullable String neighborAs;
+    private String neighborAs;
 
     private DeviceprofileGatewayBgpConfigNeighbors() {}
     /**
@@ -60,8 +61,8 @@ public final class DeviceprofileGatewayBgpConfigNeighbors {
      * @return Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
      * 
      */
-    public Optional<String> neighborAs() {
-        return Optional.ofNullable(this.neighborAs);
+    public String neighborAs() {
+        return this.neighborAs;
     }
 
     public static Builder builder() {
@@ -78,7 +79,7 @@ public final class DeviceprofileGatewayBgpConfigNeighbors {
         private @Nullable Integer holdTime;
         private @Nullable String importPolicy;
         private @Nullable Integer multihopTtl;
-        private @Nullable String neighborAs;
+        private String neighborAs;
         public Builder() {}
         public Builder(DeviceprofileGatewayBgpConfigNeighbors defaults) {
     	      Objects.requireNonNull(defaults);
@@ -121,8 +122,10 @@ public final class DeviceprofileGatewayBgpConfigNeighbors {
             return this;
         }
         @CustomType.Setter
-        public Builder neighborAs(@Nullable String neighborAs) {
-
+        public Builder neighborAs(String neighborAs) {
+            if (neighborAs == null) {
+              throw new MissingRequiredPropertyException("DeviceprofileGatewayBgpConfigNeighbors", "neighborAs");
+            }
             this.neighborAs = neighborAs;
             return this;
         }

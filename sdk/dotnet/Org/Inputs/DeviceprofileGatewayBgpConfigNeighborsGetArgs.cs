@@ -36,8 +36,8 @@ namespace Pulumi.JuniperMist.Org.Inputs
         /// <summary>
         /// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         /// </summary>
-        [Input("neighborAs")]
-        public Input<string>? NeighborAs { get; set; }
+        [Input("neighborAs", required: true)]
+        public Input<string> NeighborAs { get; set; } = null!;
 
         public DeviceprofileGatewayBgpConfigNeighborsGetArgs()
         {

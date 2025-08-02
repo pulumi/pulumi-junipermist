@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayTunnelConfigsGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+        /// </summary>
         [Input("autoProvision")]
         public Input<Inputs.GatewayTunnelConfigsAutoProvisionGetArgs>? AutoProvision { get; set; }
 

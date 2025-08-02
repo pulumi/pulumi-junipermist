@@ -5,6 +5,7 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -123,15 +124,15 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
      * enum: `local`, `tunnel`, `vpn`, `wan`
      * 
      */
-    @Import(name="type")
-    private @Nullable Output<String> type;
+    @Import(name="type", required=true)
+    private Output<String> type;
 
     /**
      * @return enum: `local`, `tunnel`, `vpn`, `wan`
      * 
      */
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     /**
@@ -346,7 +347,7 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder type(@Nullable Output<String> type) {
+        public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
@@ -383,6 +384,9 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
         }
 
         public GatewaytemplatePathPreferencesPathArgs build() {
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("GatewaytemplatePathPreferencesPathArgs", "type");
+            }
             return $;
         }
     }

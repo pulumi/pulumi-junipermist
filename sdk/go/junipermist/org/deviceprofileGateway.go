@@ -34,7 +34,7 @@ type DeviceprofileGateway struct {
 	AdditionalConfigCmds pulumi.StringArrayOutput                 `pulumi:"additionalConfigCmds"`
 	BgpConfig            DeviceprofileGatewayBgpConfigMapOutput   `pulumi:"bgpConfig"`
 	DhcpdConfig          DeviceprofileGatewayDhcpdConfigPtrOutput `pulumi:"dhcpdConfig"`
-	DnsOverride          pulumi.BoolOutput                        `pulumi:"dnsOverride"`
+	DnsOverride          pulumi.BoolPtrOutput                     `pulumi:"dnsOverride"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayOutput `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -50,7 +50,7 @@ type DeviceprofileGateway struct {
 	IpConfigs   DeviceprofileGatewayIpConfigsMapOutput `pulumi:"ipConfigs"`
 	Name        pulumi.StringOutput                    `pulumi:"name"`
 	Networks    DeviceprofileGatewayNetworkArrayOutput `pulumi:"networks"`
-	NtpOverride pulumi.BoolOutput                      `pulumi:"ntpOverride"`
+	NtpOverride pulumi.BoolPtrOutput                   `pulumi:"ntpOverride"`
 	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
 	// Out-of-band (vme/em0/fxp0) IP config
@@ -392,8 +392,8 @@ func (o DeviceprofileGatewayOutput) DhcpdConfig() DeviceprofileGatewayDhcpdConfi
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayDhcpdConfigPtrOutput { return v.DhcpdConfig }).(DeviceprofileGatewayDhcpdConfigPtrOutput)
 }
 
-func (o DeviceprofileGatewayOutput) DnsOverride() pulumi.BoolOutput {
-	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.BoolOutput { return v.DnsOverride }).(pulumi.BoolOutput)
+func (o DeviceprofileGatewayOutput) DnsOverride() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.BoolPtrOutput { return v.DnsOverride }).(pulumi.BoolPtrOutput)
 }
 
 // Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -435,8 +435,8 @@ func (o DeviceprofileGatewayOutput) Networks() DeviceprofileGatewayNetworkArrayO
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayNetworkArrayOutput { return v.Networks }).(DeviceprofileGatewayNetworkArrayOutput)
 }
 
-func (o DeviceprofileGatewayOutput) NtpOverride() pulumi.BoolOutput {
-	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.BoolOutput { return v.NtpOverride }).(pulumi.BoolOutput)
+func (o DeviceprofileGatewayOutput) NtpOverride() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.BoolPtrOutput { return v.NtpOverride }).(pulumi.BoolPtrOutput)
 }
 
 // List of NTP servers specific to this device. By default, those in Site Settings will be used

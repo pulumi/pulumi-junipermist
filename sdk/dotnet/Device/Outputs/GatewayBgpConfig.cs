@@ -13,19 +13,22 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayBgpConfig
     {
+        /// <summary>
+        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+        /// </summary>
         public readonly string? AuthKey;
         /// <summary>
-        /// When bfd_multiplier is configured alone. Default:
+        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
         ///   * 1000 if `type`==`external`
         ///   * 350 `type`==`internal`
         /// </summary>
         public readonly int? BfdMinimumInterval;
         /// <summary>
-        /// When bfd_minimum_interval_is_configured alone
+        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
         /// </summary>
         public readonly int? BfdMultiplier;
         /// <summary>
-        /// BFD provides faster path failure detection and is enabled by default
+        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
         /// </summary>
         public readonly bool? DisableBfd;
         public readonly string? Export;
@@ -34,55 +37,64 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? ExportPolicy;
         /// <summary>
-        /// By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         /// </summary>
         public readonly bool? ExtendedV4Nexthop;
         /// <summary>
-        /// `0` means disable
+        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
         /// </summary>
         public readonly int? GracefulRestartTime;
+        /// <summary>
+        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+        /// </summary>
         public readonly int? HoldTime;
         public readonly string? Import;
         /// <summary>
-        /// Default import policies if no per-neighbor policies defined
+        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
         /// </summary>
         public readonly string? ImportPolicy;
         /// <summary>
-        /// Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        /// Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         /// </summary>
         public readonly string? LocalAs;
         /// <summary>
-        /// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        /// Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         /// </summary>
         public readonly string? NeighborAs;
         /// <summary>
-        /// If per-neighbor as is desired. Property key is the neighbor address
+        /// Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewayBgpConfigNeighbors>? Neighbors;
         /// <summary>
-        /// If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+        /// Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
         /// </summary>
         public readonly ImmutableArray<string> Networks;
+        /// <summary>
+        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+        /// </summary>
         public readonly bool? NoPrivateAs;
         /// <summary>
-        /// By default, we'll re-advertise all learned BGP routers toward overlay
+        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
         /// </summary>
         public readonly bool? NoReadvertiseToOverlay;
         /// <summary>
-        /// If `type`==`tunnel`
+        /// Optional if `via`==`tunnel`
         /// </summary>
         public readonly string? TunnelName;
         /// <summary>
-        /// enum: `external`, `internal`
+        /// Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// network name. enum: `lan`, `tunnel`, `vpn`, `wan`
+        /// enum: `lan`, `tunnel`, `vpn`, `wan`
         /// </summary>
-        public readonly string? Via;
+        public readonly string Via;
+        /// <summary>
+        /// Optional if `via`==`vpn`
+        /// </summary>
         public readonly string? VpnName;
         /// <summary>
-        /// If `via`==`wan`
+        /// Optional if `via`==`wan`
         /// </summary>
         public readonly string? WanName;
 
@@ -126,7 +138,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string? type,
 
-            string? via,
+            string via,
 
             string? vpnName,
 

@@ -91,7 +91,7 @@ export class Networktemplate extends pulumi.CustomResource {
     public readonly ntpServers!: pulumi.Output<string[]>;
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * Junos OSPF areas
+     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
      */
     public readonly ospfAreas!: pulumi.Output<{[key: string]: outputs.org.NetworktemplateOspfAreas} | undefined>;
     /**
@@ -246,7 +246,7 @@ export interface NetworktemplateState {
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     orgId?: pulumi.Input<string>;
     /**
-     * Junos OSPF areas
+     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
      */
     ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateOspfAreas>}>;
     /**
@@ -330,7 +330,7 @@ export interface NetworktemplateArgs {
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     orgId: pulumi.Input<string>;
     /**
-     * Junos OSPF areas
+     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
      */
     ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateOspfAreas>}>;
     /**

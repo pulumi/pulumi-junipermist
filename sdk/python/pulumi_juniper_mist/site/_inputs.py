@@ -5961,11 +5961,6 @@ if not MYPY:
         """
         string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes
         """
-        match_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
-        """
-        match_value: NotRequired[pulumi.Input[_builtins.str]]
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
         Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
@@ -5994,8 +5989,6 @@ class NetworktemplateSwitchMatchingRuleArgs:
                  match_name: Optional[pulumi.Input[_builtins.str]] = None,
                  match_name_offset: Optional[pulumi.Input[_builtins.int]] = None,
                  match_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_value: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  oob_ip_config: Optional[pulumi.Input['NetworktemplateSwitchMatchingRuleOobIpConfigArgs']] = None,
                  port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateSwitchMatchingRulePortConfigArgs']]]] = None,
@@ -6007,7 +6000,6 @@ class NetworktemplateSwitchMatchingRuleArgs:
         :param pulumi.Input[_builtins.str] match_name: string the switch name must start with to use this rule. Use the `match_name_offset` to indicate the first character of the switch name to compare to. It is possible to combine with the `match_model` and `match_role` attributes
         :param pulumi.Input[_builtins.int] match_name_offset: first character of the switch name to compare to the `match_name` value
         :param pulumi.Input[_builtins.str] match_role: string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes
-        :param pulumi.Input[_builtins.str] match_type: property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
         :param pulumi.Input[_builtins.str] name: Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
         :param pulumi.Input['NetworktemplateSwitchMatchingRuleOobIpConfigArgs'] oob_ip_config: Out-of-Band Management interface configuration
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateSwitchMatchingRulePortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
@@ -6025,20 +6017,6 @@ class NetworktemplateSwitchMatchingRuleArgs:
             pulumi.set(__self__, "match_name_offset", match_name_offset)
         if match_role is not None:
             pulumi.set(__self__, "match_role", match_role)
-        if match_type is not None:
-            warnings.warn("""The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-Please update your configurations.""", DeprecationWarning)
-            pulumi.log.warn("""match_type is deprecated: The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-Please update your configurations.""")
-        if match_type is not None:
-            pulumi.set(__self__, "match_type", match_type)
-        if match_value is not None:
-            warnings.warn("""The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-Please update your configurations.""", DeprecationWarning)
-            pulumi.log.warn("""match_value is deprecated: The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-Please update your configurations.""")
-        if match_value is not None:
-            pulumi.set(__self__, "match_value", match_value)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if oob_ip_config is not None:
@@ -6119,31 +6097,6 @@ Please update your configurations.""")
     @match_role.setter
     def match_role(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "match_role", value)
-
-    @_builtins.property
-    @pulumi.getter(name="matchType")
-    @_utilities.deprecated("""The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-Please update your configurations.""")
-    def match_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
-        """
-        return pulumi.get(self, "match_type")
-
-    @match_type.setter
-    def match_type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "match_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="matchValue")
-    @_utilities.deprecated("""The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-Please update your configurations.""")
-    def match_value(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "match_value")
-
-    @match_value.setter
-    def match_value(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "match_value", value)
 
     @_builtins.property
     @pulumi.getter

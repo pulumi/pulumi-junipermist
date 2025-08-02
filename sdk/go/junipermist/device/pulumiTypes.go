@@ -6125,45 +6125,49 @@ func (o ApUsbConfigPtrOutput) VlanId() pulumi.IntPtrOutput {
 }
 
 type GatewayBgpConfig struct {
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
 	AuthKey *string `pulumi:"authKey"`
-	// When bfdMultiplier is configured alone. Default:
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMultiplier is configured alone. Default:
 	//   * 1000 if `type`==`external`
 	//   * 350 `type`==`internal`
 	BfdMinimumInterval *int `pulumi:"bfdMinimumInterval"`
-	// When bfdMinimumIntervalIsConfigured alone
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMinimumIntervalIsConfigured alone
 	BfdMultiplier *int `pulumi:"bfdMultiplier"`
-	// BFD provides faster path failure detection and is enabled by default
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
 	DisableBfd *bool   `pulumi:"disableBfd"`
 	Export     *string `pulumi:"export"`
 	// Default export policies if no per-neighbor policies defined
 	ExportPolicy *string `pulumi:"exportPolicy"`
-	// By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
 	ExtendedV4Nexthop *bool `pulumi:"extendedV4Nexthop"`
-	// `0` means disable
-	GracefulRestartTime *int    `pulumi:"gracefulRestartTime"`
-	HoldTime            *int    `pulumi:"holdTime"`
-	Import              *string `pulumi:"import"`
-	// Default import policies if no per-neighbor policies defined
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
+	GracefulRestartTime *int `pulumi:"gracefulRestartTime"`
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+	HoldTime *int    `pulumi:"holdTime"`
+	Import   *string `pulumi:"import"`
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
 	ImportPolicy *string `pulumi:"importPolicy"`
-	// Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+	// Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
 	LocalAs *string `pulumi:"localAs"`
-	// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+	// Neighbor AS. If `type`==`internal`, must be equal to `localAs`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
 	NeighborAs *string `pulumi:"neighborAs"`
-	// If per-neighbor as is desired. Property key is the neighbor address
+	// Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
 	Neighbors map[string]GatewayBgpConfigNeighbors `pulumi:"neighbors"`
-	// If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
-	Networks    []string `pulumi:"networks"`
-	NoPrivateAs *bool    `pulumi:"noPrivateAs"`
-	// By default, we'll re-advertise all learned BGP routers toward overlay
+	// Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
+	Networks []string `pulumi:"networks"`
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+	NoPrivateAs *bool `pulumi:"noPrivateAs"`
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
 	NoReadvertiseToOverlay *bool `pulumi:"noReadvertiseToOverlay"`
-	// If `type`==`tunnel`
+	// Optional if `via`==`tunnel`
 	TunnelName *string `pulumi:"tunnelName"`
-	// enum: `external`, `internal`
+	// Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
 	Type *string `pulumi:"type"`
-	// network name. enum: `lan`, `tunnel`, `vpn`, `wan`
-	Via     *string `pulumi:"via"`
+	// enum: `lan`, `tunnel`, `vpn`, `wan`
+	Via string `pulumi:"via"`
+	// Optional if `via`==`vpn`
 	VpnName *string `pulumi:"vpnName"`
-	// If `via`==`wan`
+	// Optional if `via`==`wan`
 	WanName *string `pulumi:"wanName"`
 }
 
@@ -6179,45 +6183,49 @@ type GatewayBgpConfigInput interface {
 }
 
 type GatewayBgpConfigArgs struct {
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
 	AuthKey pulumi.StringPtrInput `pulumi:"authKey"`
-	// When bfdMultiplier is configured alone. Default:
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMultiplier is configured alone. Default:
 	//   * 1000 if `type`==`external`
 	//   * 350 `type`==`internal`
 	BfdMinimumInterval pulumi.IntPtrInput `pulumi:"bfdMinimumInterval"`
-	// When bfdMinimumIntervalIsConfigured alone
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMinimumIntervalIsConfigured alone
 	BfdMultiplier pulumi.IntPtrInput `pulumi:"bfdMultiplier"`
-	// BFD provides faster path failure detection and is enabled by default
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
 	DisableBfd pulumi.BoolPtrInput   `pulumi:"disableBfd"`
 	Export     pulumi.StringPtrInput `pulumi:"export"`
 	// Default export policies if no per-neighbor policies defined
 	ExportPolicy pulumi.StringPtrInput `pulumi:"exportPolicy"`
-	// By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
 	ExtendedV4Nexthop pulumi.BoolPtrInput `pulumi:"extendedV4Nexthop"`
-	// `0` means disable
-	GracefulRestartTime pulumi.IntPtrInput    `pulumi:"gracefulRestartTime"`
-	HoldTime            pulumi.IntPtrInput    `pulumi:"holdTime"`
-	Import              pulumi.StringPtrInput `pulumi:"import"`
-	// Default import policies if no per-neighbor policies defined
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
+	GracefulRestartTime pulumi.IntPtrInput `pulumi:"gracefulRestartTime"`
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+	HoldTime pulumi.IntPtrInput    `pulumi:"holdTime"`
+	Import   pulumi.StringPtrInput `pulumi:"import"`
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
 	ImportPolicy pulumi.StringPtrInput `pulumi:"importPolicy"`
-	// Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+	// Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
 	LocalAs pulumi.StringPtrInput `pulumi:"localAs"`
-	// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+	// Neighbor AS. If `type`==`internal`, must be equal to `localAs`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
 	NeighborAs pulumi.StringPtrInput `pulumi:"neighborAs"`
-	// If per-neighbor as is desired. Property key is the neighbor address
+	// Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
 	Neighbors GatewayBgpConfigNeighborsMapInput `pulumi:"neighbors"`
-	// If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
-	Networks    pulumi.StringArrayInput `pulumi:"networks"`
-	NoPrivateAs pulumi.BoolPtrInput     `pulumi:"noPrivateAs"`
-	// By default, we'll re-advertise all learned BGP routers toward overlay
+	// Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
+	Networks pulumi.StringArrayInput `pulumi:"networks"`
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+	NoPrivateAs pulumi.BoolPtrInput `pulumi:"noPrivateAs"`
+	// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
 	NoReadvertiseToOverlay pulumi.BoolPtrInput `pulumi:"noReadvertiseToOverlay"`
-	// If `type`==`tunnel`
+	// Optional if `via`==`tunnel`
 	TunnelName pulumi.StringPtrInput `pulumi:"tunnelName"`
-	// enum: `external`, `internal`
+	// Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// network name. enum: `lan`, `tunnel`, `vpn`, `wan`
-	Via     pulumi.StringPtrInput `pulumi:"via"`
+	// enum: `lan`, `tunnel`, `vpn`, `wan`
+	Via pulumi.StringInput `pulumi:"via"`
+	// Optional if `via`==`vpn`
 	VpnName pulumi.StringPtrInput `pulumi:"vpnName"`
-	// If `via`==`wan`
+	// Optional if `via`==`wan`
 	WanName pulumi.StringPtrInput `pulumi:"wanName"`
 }
 
@@ -6272,23 +6280,24 @@ func (o GatewayBgpConfigOutput) ToGatewayBgpConfigOutputWithContext(ctx context.
 	return o
 }
 
+// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
 func (o GatewayBgpConfigOutput) AuthKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *string { return v.AuthKey }).(pulumi.StringPtrOutput)
 }
 
-// When bfdMultiplier is configured alone. Default:
+// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMultiplier is configured alone. Default:
 //   - 1000 if `type`==`external`
 //   - 350 `type`==`internal`
 func (o GatewayBgpConfigOutput) BfdMinimumInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *int { return v.BfdMinimumInterval }).(pulumi.IntPtrOutput)
 }
 
-// When bfdMinimumIntervalIsConfigured alone
+// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMinimumIntervalIsConfigured alone
 func (o GatewayBgpConfigOutput) BfdMultiplier() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *int { return v.BfdMultiplier }).(pulumi.IntPtrOutput)
 }
 
-// BFD provides faster path failure detection and is enabled by default
+// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
 func (o GatewayBgpConfigOutput) DisableBfd() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *bool { return v.DisableBfd }).(pulumi.BoolPtrOutput)
 }
@@ -6302,16 +6311,17 @@ func (o GatewayBgpConfigOutput) ExportPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *string { return v.ExportPolicy }).(pulumi.StringPtrOutput)
 }
 
-// By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
 func (o GatewayBgpConfigOutput) ExtendedV4Nexthop() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *bool { return v.ExtendedV4Nexthop }).(pulumi.BoolPtrOutput)
 }
 
-// `0` means disable
+// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
 func (o GatewayBgpConfigOutput) GracefulRestartTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *int { return v.GracefulRestartTime }).(pulumi.IntPtrOutput)
 }
 
+// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
 func (o GatewayBgpConfigOutput) HoldTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *int { return v.HoldTime }).(pulumi.IntPtrOutput)
 }
@@ -6320,60 +6330,62 @@ func (o GatewayBgpConfigOutput) Import() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *string { return v.Import }).(pulumi.StringPtrOutput)
 }
 
-// Default import policies if no per-neighbor policies defined
+// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
 func (o GatewayBgpConfigOutput) ImportPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *string { return v.ImportPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+// Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
 func (o GatewayBgpConfigOutput) LocalAs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *string { return v.LocalAs }).(pulumi.StringPtrOutput)
 }
 
-// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+// Neighbor AS. If `type`==`internal`, must be equal to `localAs`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
 func (o GatewayBgpConfigOutput) NeighborAs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *string { return v.NeighborAs }).(pulumi.StringPtrOutput)
 }
 
-// If per-neighbor as is desired. Property key is the neighbor address
+// Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
 func (o GatewayBgpConfigOutput) Neighbors() GatewayBgpConfigNeighborsMapOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) map[string]GatewayBgpConfigNeighbors { return v.Neighbors }).(GatewayBgpConfigNeighborsMapOutput)
 }
 
-// If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+// Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
 func (o GatewayBgpConfigOutput) Networks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) []string { return v.Networks }).(pulumi.StringArrayOutput)
 }
 
+// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
 func (o GatewayBgpConfigOutput) NoPrivateAs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *bool { return v.NoPrivateAs }).(pulumi.BoolPtrOutput)
 }
 
-// By default, we'll re-advertise all learned BGP routers toward overlay
+// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
 func (o GatewayBgpConfigOutput) NoReadvertiseToOverlay() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *bool { return v.NoReadvertiseToOverlay }).(pulumi.BoolPtrOutput)
 }
 
-// If `type`==`tunnel`
+// Optional if `via`==`tunnel`
 func (o GatewayBgpConfigOutput) TunnelName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *string { return v.TunnelName }).(pulumi.StringPtrOutput)
 }
 
-// enum: `external`, `internal`
+// Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
 func (o GatewayBgpConfigOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// network name. enum: `lan`, `tunnel`, `vpn`, `wan`
-func (o GatewayBgpConfigOutput) Via() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayBgpConfig) *string { return v.Via }).(pulumi.StringPtrOutput)
+// enum: `lan`, `tunnel`, `vpn`, `wan`
+func (o GatewayBgpConfigOutput) Via() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayBgpConfig) string { return v.Via }).(pulumi.StringOutput)
 }
 
+// Optional if `via`==`vpn`
 func (o GatewayBgpConfigOutput) VpnName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *string { return v.VpnName }).(pulumi.StringPtrOutput)
 }
 
-// If `via`==`wan`
+// Optional if `via`==`wan`
 func (o GatewayBgpConfigOutput) WanName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *string { return v.WanName }).(pulumi.StringPtrOutput)
 }
@@ -6407,7 +6419,7 @@ type GatewayBgpConfigNeighbors struct {
 	// Assuming BGP neighbor is directly connected
 	MultihopTtl *int `pulumi:"multihopTtl"`
 	// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
-	NeighborAs *string `pulumi:"neighborAs"`
+	NeighborAs string `pulumi:"neighborAs"`
 }
 
 // GatewayBgpConfigNeighborsInput is an input type that accepts GatewayBgpConfigNeighborsArgs and GatewayBgpConfigNeighborsOutput values.
@@ -6430,7 +6442,7 @@ type GatewayBgpConfigNeighborsArgs struct {
 	// Assuming BGP neighbor is directly connected
 	MultihopTtl pulumi.IntPtrInput `pulumi:"multihopTtl"`
 	// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
-	NeighborAs pulumi.StringPtrInput `pulumi:"neighborAs"`
+	NeighborAs pulumi.StringInput `pulumi:"neighborAs"`
 }
 
 func (GatewayBgpConfigNeighborsArgs) ElementType() reflect.Type {
@@ -6507,8 +6519,8 @@ func (o GatewayBgpConfigNeighborsOutput) MultihopTtl() pulumi.IntPtrOutput {
 }
 
 // Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
-func (o GatewayBgpConfigNeighborsOutput) NeighborAs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayBgpConfigNeighbors) *string { return v.NeighborAs }).(pulumi.StringPtrOutput)
+func (o GatewayBgpConfigNeighborsOutput) NeighborAs() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayBgpConfigNeighbors) string { return v.NeighborAs }).(pulumi.StringOutput)
 }
 
 type GatewayBgpConfigNeighborsMapOutput struct{ *pulumi.OutputState }
@@ -6788,6 +6800,8 @@ type GatewayDhcpdConfigConfig struct {
 	// If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
 	DnsServers []string `pulumi:"dnsServers"`
 	// If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+	//
+	// Deprecated: Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
 	// If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
 	FixedBindings map[string]GatewayDhcpdConfigConfigFixedBindings `pulumi:"fixedBindings"`
@@ -6837,6 +6851,8 @@ type GatewayDhcpdConfigConfigArgs struct {
 	// If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
 	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
 	// If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+	//
+	// Deprecated: Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
 	DnsSuffixes pulumi.StringArrayInput `pulumi:"dnsSuffixes"`
 	// If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
 	FixedBindings GatewayDhcpdConfigConfigFixedBindingsMapInput `pulumi:"fixedBindings"`
@@ -6928,6 +6944,8 @@ func (o GatewayDhcpdConfigConfigOutput) DnsServers() pulumi.StringArrayOutput {
 }
 
 // If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+//
+// Deprecated: Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
 func (o GatewayDhcpdConfigConfigOutput) DnsSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayDhcpdConfigConfig) []string { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
 }
@@ -10366,7 +10384,7 @@ type GatewayPathPreferencesPath struct {
 	// If `type`==`local`, if destination IP is to be replaced
 	TargetIps []string `pulumi:"targetIps"`
 	// enum: `local`, `tunnel`, `vpn`, `wan`
-	Type *string `pulumi:"type"`
+	Type string `pulumi:"type"`
 	// Optional if `type`==`vpn`
 	WanName *string `pulumi:"wanName"`
 }
@@ -10399,7 +10417,7 @@ type GatewayPathPreferencesPathArgs struct {
 	// If `type`==`local`, if destination IP is to be replaced
 	TargetIps pulumi.StringArrayInput `pulumi:"targetIps"`
 	// enum: `local`, `tunnel`, `vpn`, `wan`
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type pulumi.StringInput `pulumi:"type"`
 	// Optional if `type`==`vpn`
 	WanName pulumi.StringPtrInput `pulumi:"wanName"`
 }
@@ -10492,8 +10510,8 @@ func (o GatewayPathPreferencesPathOutput) TargetIps() pulumi.StringArrayOutput {
 }
 
 // enum: `local`, `tunnel`, `vpn`, `wan`
-func (o GatewayPathPreferencesPathOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayPathPreferencesPath) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o GatewayPathPreferencesPathOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayPathPreferencesPath) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Optional if `type`==`vpn`
@@ -12597,7 +12615,7 @@ func (o GatewayRoutingPoliciesMapOutput) MapIndex(k pulumi.StringInput) GatewayR
 
 type GatewayRoutingPoliciesTerm struct {
 	// When used as import policy
-	Action *GatewayRoutingPoliciesTermAction `pulumi:"action"`
+	Actions *GatewayRoutingPoliciesTermActions `pulumi:"actions"`
 	// zero or more criteria/filter can be specified to match the term, all criteria have to be met
 	Matching *GatewayRoutingPoliciesTermMatching `pulumi:"matching"`
 }
@@ -12615,7 +12633,7 @@ type GatewayRoutingPoliciesTermInput interface {
 
 type GatewayRoutingPoliciesTermArgs struct {
 	// When used as import policy
-	Action GatewayRoutingPoliciesTermActionPtrInput `pulumi:"action"`
+	Actions GatewayRoutingPoliciesTermActionsPtrInput `pulumi:"actions"`
 	// zero or more criteria/filter can be specified to match the term, all criteria have to be met
 	Matching GatewayRoutingPoliciesTermMatchingPtrInput `pulumi:"matching"`
 }
@@ -12672,8 +12690,8 @@ func (o GatewayRoutingPoliciesTermOutput) ToGatewayRoutingPoliciesTermOutputWith
 }
 
 // When used as import policy
-func (o GatewayRoutingPoliciesTermOutput) Action() GatewayRoutingPoliciesTermActionPtrOutput {
-	return o.ApplyT(func(v GatewayRoutingPoliciesTerm) *GatewayRoutingPoliciesTermAction { return v.Action }).(GatewayRoutingPoliciesTermActionPtrOutput)
+func (o GatewayRoutingPoliciesTermOutput) Actions() GatewayRoutingPoliciesTermActionsPtrOutput {
+	return o.ApplyT(func(v GatewayRoutingPoliciesTerm) *GatewayRoutingPoliciesTermActions { return v.Actions }).(GatewayRoutingPoliciesTermActionsPtrOutput)
 }
 
 // zero or more criteria/filter can be specified to match the term, all criteria have to be met
@@ -12701,7 +12719,7 @@ func (o GatewayRoutingPoliciesTermArrayOutput) Index(i pulumi.IntInput) GatewayR
 	}).(GatewayRoutingPoliciesTermOutput)
 }
 
-type GatewayRoutingPoliciesTermAction struct {
+type GatewayRoutingPoliciesTermActions struct {
 	Accept         *bool    `pulumi:"accept"`
 	AddCommunities []string `pulumi:"addCommunities"`
 	// For SSR, hub decides how VRF routes are leaked on spoke
@@ -12719,18 +12737,18 @@ type GatewayRoutingPoliciesTermAction struct {
 	PrependAsPaths []string `pulumi:"prependAsPaths"`
 }
 
-// GatewayRoutingPoliciesTermActionInput is an input type that accepts GatewayRoutingPoliciesTermActionArgs and GatewayRoutingPoliciesTermActionOutput values.
-// You can construct a concrete instance of `GatewayRoutingPoliciesTermActionInput` via:
+// GatewayRoutingPoliciesTermActionsInput is an input type that accepts GatewayRoutingPoliciesTermActionsArgs and GatewayRoutingPoliciesTermActionsOutput values.
+// You can construct a concrete instance of `GatewayRoutingPoliciesTermActionsInput` via:
 //
-//	GatewayRoutingPoliciesTermActionArgs{...}
-type GatewayRoutingPoliciesTermActionInput interface {
+//	GatewayRoutingPoliciesTermActionsArgs{...}
+type GatewayRoutingPoliciesTermActionsInput interface {
 	pulumi.Input
 
-	ToGatewayRoutingPoliciesTermActionOutput() GatewayRoutingPoliciesTermActionOutput
-	ToGatewayRoutingPoliciesTermActionOutputWithContext(context.Context) GatewayRoutingPoliciesTermActionOutput
+	ToGatewayRoutingPoliciesTermActionsOutput() GatewayRoutingPoliciesTermActionsOutput
+	ToGatewayRoutingPoliciesTermActionsOutputWithContext(context.Context) GatewayRoutingPoliciesTermActionsOutput
 }
 
-type GatewayRoutingPoliciesTermActionArgs struct {
+type GatewayRoutingPoliciesTermActionsArgs struct {
 	Accept         pulumi.BoolPtrInput     `pulumi:"accept"`
 	AddCommunities pulumi.StringArrayInput `pulumi:"addCommunities"`
 	// For SSR, hub decides how VRF routes are leaked on spoke
@@ -12748,151 +12766,151 @@ type GatewayRoutingPoliciesTermActionArgs struct {
 	PrependAsPaths pulumi.StringArrayInput `pulumi:"prependAsPaths"`
 }
 
-func (GatewayRoutingPoliciesTermActionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayRoutingPoliciesTermAction)(nil)).Elem()
+func (GatewayRoutingPoliciesTermActionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayRoutingPoliciesTermActions)(nil)).Elem()
 }
 
-func (i GatewayRoutingPoliciesTermActionArgs) ToGatewayRoutingPoliciesTermActionOutput() GatewayRoutingPoliciesTermActionOutput {
-	return i.ToGatewayRoutingPoliciesTermActionOutputWithContext(context.Background())
+func (i GatewayRoutingPoliciesTermActionsArgs) ToGatewayRoutingPoliciesTermActionsOutput() GatewayRoutingPoliciesTermActionsOutput {
+	return i.ToGatewayRoutingPoliciesTermActionsOutputWithContext(context.Background())
 }
 
-func (i GatewayRoutingPoliciesTermActionArgs) ToGatewayRoutingPoliciesTermActionOutputWithContext(ctx context.Context) GatewayRoutingPoliciesTermActionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRoutingPoliciesTermActionOutput)
+func (i GatewayRoutingPoliciesTermActionsArgs) ToGatewayRoutingPoliciesTermActionsOutputWithContext(ctx context.Context) GatewayRoutingPoliciesTermActionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRoutingPoliciesTermActionsOutput)
 }
 
-func (i GatewayRoutingPoliciesTermActionArgs) ToGatewayRoutingPoliciesTermActionPtrOutput() GatewayRoutingPoliciesTermActionPtrOutput {
-	return i.ToGatewayRoutingPoliciesTermActionPtrOutputWithContext(context.Background())
+func (i GatewayRoutingPoliciesTermActionsArgs) ToGatewayRoutingPoliciesTermActionsPtrOutput() GatewayRoutingPoliciesTermActionsPtrOutput {
+	return i.ToGatewayRoutingPoliciesTermActionsPtrOutputWithContext(context.Background())
 }
 
-func (i GatewayRoutingPoliciesTermActionArgs) ToGatewayRoutingPoliciesTermActionPtrOutputWithContext(ctx context.Context) GatewayRoutingPoliciesTermActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRoutingPoliciesTermActionOutput).ToGatewayRoutingPoliciesTermActionPtrOutputWithContext(ctx)
+func (i GatewayRoutingPoliciesTermActionsArgs) ToGatewayRoutingPoliciesTermActionsPtrOutputWithContext(ctx context.Context) GatewayRoutingPoliciesTermActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRoutingPoliciesTermActionsOutput).ToGatewayRoutingPoliciesTermActionsPtrOutputWithContext(ctx)
 }
 
-// GatewayRoutingPoliciesTermActionPtrInput is an input type that accepts GatewayRoutingPoliciesTermActionArgs, GatewayRoutingPoliciesTermActionPtr and GatewayRoutingPoliciesTermActionPtrOutput values.
-// You can construct a concrete instance of `GatewayRoutingPoliciesTermActionPtrInput` via:
+// GatewayRoutingPoliciesTermActionsPtrInput is an input type that accepts GatewayRoutingPoliciesTermActionsArgs, GatewayRoutingPoliciesTermActionsPtr and GatewayRoutingPoliciesTermActionsPtrOutput values.
+// You can construct a concrete instance of `GatewayRoutingPoliciesTermActionsPtrInput` via:
 //
-//	        GatewayRoutingPoliciesTermActionArgs{...}
+//	        GatewayRoutingPoliciesTermActionsArgs{...}
 //
 //	or:
 //
 //	        nil
-type GatewayRoutingPoliciesTermActionPtrInput interface {
+type GatewayRoutingPoliciesTermActionsPtrInput interface {
 	pulumi.Input
 
-	ToGatewayRoutingPoliciesTermActionPtrOutput() GatewayRoutingPoliciesTermActionPtrOutput
-	ToGatewayRoutingPoliciesTermActionPtrOutputWithContext(context.Context) GatewayRoutingPoliciesTermActionPtrOutput
+	ToGatewayRoutingPoliciesTermActionsPtrOutput() GatewayRoutingPoliciesTermActionsPtrOutput
+	ToGatewayRoutingPoliciesTermActionsPtrOutputWithContext(context.Context) GatewayRoutingPoliciesTermActionsPtrOutput
 }
 
-type gatewayRoutingPoliciesTermActionPtrType GatewayRoutingPoliciesTermActionArgs
+type gatewayRoutingPoliciesTermActionsPtrType GatewayRoutingPoliciesTermActionsArgs
 
-func GatewayRoutingPoliciesTermActionPtr(v *GatewayRoutingPoliciesTermActionArgs) GatewayRoutingPoliciesTermActionPtrInput {
-	return (*gatewayRoutingPoliciesTermActionPtrType)(v)
+func GatewayRoutingPoliciesTermActionsPtr(v *GatewayRoutingPoliciesTermActionsArgs) GatewayRoutingPoliciesTermActionsPtrInput {
+	return (*gatewayRoutingPoliciesTermActionsPtrType)(v)
 }
 
-func (*gatewayRoutingPoliciesTermActionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GatewayRoutingPoliciesTermAction)(nil)).Elem()
+func (*gatewayRoutingPoliciesTermActionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayRoutingPoliciesTermActions)(nil)).Elem()
 }
 
-func (i *gatewayRoutingPoliciesTermActionPtrType) ToGatewayRoutingPoliciesTermActionPtrOutput() GatewayRoutingPoliciesTermActionPtrOutput {
-	return i.ToGatewayRoutingPoliciesTermActionPtrOutputWithContext(context.Background())
+func (i *gatewayRoutingPoliciesTermActionsPtrType) ToGatewayRoutingPoliciesTermActionsPtrOutput() GatewayRoutingPoliciesTermActionsPtrOutput {
+	return i.ToGatewayRoutingPoliciesTermActionsPtrOutputWithContext(context.Background())
 }
 
-func (i *gatewayRoutingPoliciesTermActionPtrType) ToGatewayRoutingPoliciesTermActionPtrOutputWithContext(ctx context.Context) GatewayRoutingPoliciesTermActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRoutingPoliciesTermActionPtrOutput)
+func (i *gatewayRoutingPoliciesTermActionsPtrType) ToGatewayRoutingPoliciesTermActionsPtrOutputWithContext(ctx context.Context) GatewayRoutingPoliciesTermActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRoutingPoliciesTermActionsPtrOutput)
 }
 
-type GatewayRoutingPoliciesTermActionOutput struct{ *pulumi.OutputState }
+type GatewayRoutingPoliciesTermActionsOutput struct{ *pulumi.OutputState }
 
-func (GatewayRoutingPoliciesTermActionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayRoutingPoliciesTermAction)(nil)).Elem()
+func (GatewayRoutingPoliciesTermActionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayRoutingPoliciesTermActions)(nil)).Elem()
 }
 
-func (o GatewayRoutingPoliciesTermActionOutput) ToGatewayRoutingPoliciesTermActionOutput() GatewayRoutingPoliciesTermActionOutput {
+func (o GatewayRoutingPoliciesTermActionsOutput) ToGatewayRoutingPoliciesTermActionsOutput() GatewayRoutingPoliciesTermActionsOutput {
 	return o
 }
 
-func (o GatewayRoutingPoliciesTermActionOutput) ToGatewayRoutingPoliciesTermActionOutputWithContext(ctx context.Context) GatewayRoutingPoliciesTermActionOutput {
+func (o GatewayRoutingPoliciesTermActionsOutput) ToGatewayRoutingPoliciesTermActionsOutputWithContext(ctx context.Context) GatewayRoutingPoliciesTermActionsOutput {
 	return o
 }
 
-func (o GatewayRoutingPoliciesTermActionOutput) ToGatewayRoutingPoliciesTermActionPtrOutput() GatewayRoutingPoliciesTermActionPtrOutput {
-	return o.ToGatewayRoutingPoliciesTermActionPtrOutputWithContext(context.Background())
+func (o GatewayRoutingPoliciesTermActionsOutput) ToGatewayRoutingPoliciesTermActionsPtrOutput() GatewayRoutingPoliciesTermActionsPtrOutput {
+	return o.ToGatewayRoutingPoliciesTermActionsPtrOutputWithContext(context.Background())
 }
 
-func (o GatewayRoutingPoliciesTermActionOutput) ToGatewayRoutingPoliciesTermActionPtrOutputWithContext(ctx context.Context) GatewayRoutingPoliciesTermActionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayRoutingPoliciesTermAction) *GatewayRoutingPoliciesTermAction {
+func (o GatewayRoutingPoliciesTermActionsOutput) ToGatewayRoutingPoliciesTermActionsPtrOutputWithContext(ctx context.Context) GatewayRoutingPoliciesTermActionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayRoutingPoliciesTermActions) *GatewayRoutingPoliciesTermActions {
 		return &v
-	}).(GatewayRoutingPoliciesTermActionPtrOutput)
+	}).(GatewayRoutingPoliciesTermActionsPtrOutput)
 }
 
-func (o GatewayRoutingPoliciesTermActionOutput) Accept() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GatewayRoutingPoliciesTermAction) *bool { return v.Accept }).(pulumi.BoolPtrOutput)
+func (o GatewayRoutingPoliciesTermActionsOutput) Accept() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayRoutingPoliciesTermActions) *bool { return v.Accept }).(pulumi.BoolPtrOutput)
 }
 
-func (o GatewayRoutingPoliciesTermActionOutput) AddCommunities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GatewayRoutingPoliciesTermAction) []string { return v.AddCommunities }).(pulumi.StringArrayOutput)
+func (o GatewayRoutingPoliciesTermActionsOutput) AddCommunities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayRoutingPoliciesTermActions) []string { return v.AddCommunities }).(pulumi.StringArrayOutput)
 }
 
 // For SSR, hub decides how VRF routes are leaked on spoke
-func (o GatewayRoutingPoliciesTermActionOutput) AddTargetVrfs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GatewayRoutingPoliciesTermAction) []string { return v.AddTargetVrfs }).(pulumi.StringArrayOutput)
+func (o GatewayRoutingPoliciesTermActionsOutput) AddTargetVrfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayRoutingPoliciesTermActions) []string { return v.AddTargetVrfs }).(pulumi.StringArrayOutput)
 }
 
 // When used as export policy, optional
-func (o GatewayRoutingPoliciesTermActionOutput) Communities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GatewayRoutingPoliciesTermAction) []string { return v.Communities }).(pulumi.StringArrayOutput)
+func (o GatewayRoutingPoliciesTermActionsOutput) Communities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayRoutingPoliciesTermActions) []string { return v.Communities }).(pulumi.StringArrayOutput)
 }
 
 // When used as export policy, optional. To exclude certain AS
-func (o GatewayRoutingPoliciesTermActionOutput) ExcludeAsPaths() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GatewayRoutingPoliciesTermAction) []string { return v.ExcludeAsPaths }).(pulumi.StringArrayOutput)
+func (o GatewayRoutingPoliciesTermActionsOutput) ExcludeAsPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayRoutingPoliciesTermActions) []string { return v.ExcludeAsPaths }).(pulumi.StringArrayOutput)
 }
 
-func (o GatewayRoutingPoliciesTermActionOutput) ExcludeCommunities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GatewayRoutingPoliciesTermAction) []string { return v.ExcludeCommunities }).(pulumi.StringArrayOutput)
+func (o GatewayRoutingPoliciesTermActionsOutput) ExcludeCommunities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayRoutingPoliciesTermActions) []string { return v.ExcludeCommunities }).(pulumi.StringArrayOutput)
 }
 
 // When used as export policy, optional
-func (o GatewayRoutingPoliciesTermActionOutput) ExportCommunities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GatewayRoutingPoliciesTermAction) []string { return v.ExportCommunities }).(pulumi.StringArrayOutput)
+func (o GatewayRoutingPoliciesTermActionsOutput) ExportCommunities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayRoutingPoliciesTermActions) []string { return v.ExportCommunities }).(pulumi.StringArrayOutput)
 }
 
 // Optional, for an import policy, localPreference can be changed
-func (o GatewayRoutingPoliciesTermActionOutput) LocalPreference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayRoutingPoliciesTermAction) *string { return v.LocalPreference }).(pulumi.StringPtrOutput)
+func (o GatewayRoutingPoliciesTermActionsOutput) LocalPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayRoutingPoliciesTermActions) *string { return v.LocalPreference }).(pulumi.StringPtrOutput)
 }
 
 // When used as export policy, optional. By default, the local AS will be prepended, to change it
-func (o GatewayRoutingPoliciesTermActionOutput) PrependAsPaths() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GatewayRoutingPoliciesTermAction) []string { return v.PrependAsPaths }).(pulumi.StringArrayOutput)
+func (o GatewayRoutingPoliciesTermActionsOutput) PrependAsPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayRoutingPoliciesTermActions) []string { return v.PrependAsPaths }).(pulumi.StringArrayOutput)
 }
 
-type GatewayRoutingPoliciesTermActionPtrOutput struct{ *pulumi.OutputState }
+type GatewayRoutingPoliciesTermActionsPtrOutput struct{ *pulumi.OutputState }
 
-func (GatewayRoutingPoliciesTermActionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GatewayRoutingPoliciesTermAction)(nil)).Elem()
+func (GatewayRoutingPoliciesTermActionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayRoutingPoliciesTermActions)(nil)).Elem()
 }
 
-func (o GatewayRoutingPoliciesTermActionPtrOutput) ToGatewayRoutingPoliciesTermActionPtrOutput() GatewayRoutingPoliciesTermActionPtrOutput {
+func (o GatewayRoutingPoliciesTermActionsPtrOutput) ToGatewayRoutingPoliciesTermActionsPtrOutput() GatewayRoutingPoliciesTermActionsPtrOutput {
 	return o
 }
 
-func (o GatewayRoutingPoliciesTermActionPtrOutput) ToGatewayRoutingPoliciesTermActionPtrOutputWithContext(ctx context.Context) GatewayRoutingPoliciesTermActionPtrOutput {
+func (o GatewayRoutingPoliciesTermActionsPtrOutput) ToGatewayRoutingPoliciesTermActionsPtrOutputWithContext(ctx context.Context) GatewayRoutingPoliciesTermActionsPtrOutput {
 	return o
 }
 
-func (o GatewayRoutingPoliciesTermActionPtrOutput) Elem() GatewayRoutingPoliciesTermActionOutput {
-	return o.ApplyT(func(v *GatewayRoutingPoliciesTermAction) GatewayRoutingPoliciesTermAction {
+func (o GatewayRoutingPoliciesTermActionsPtrOutput) Elem() GatewayRoutingPoliciesTermActionsOutput {
+	return o.ApplyT(func(v *GatewayRoutingPoliciesTermActions) GatewayRoutingPoliciesTermActions {
 		if v != nil {
 			return *v
 		}
-		var ret GatewayRoutingPoliciesTermAction
+		var ret GatewayRoutingPoliciesTermActions
 		return ret
-	}).(GatewayRoutingPoliciesTermActionOutput)
+	}).(GatewayRoutingPoliciesTermActionsOutput)
 }
 
-func (o GatewayRoutingPoliciesTermActionPtrOutput) Accept() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GatewayRoutingPoliciesTermAction) *bool {
+func (o GatewayRoutingPoliciesTermActionsPtrOutput) Accept() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewayRoutingPoliciesTermActions) *bool {
 		if v == nil {
 			return nil
 		}
@@ -12900,8 +12918,8 @@ func (o GatewayRoutingPoliciesTermActionPtrOutput) Accept() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o GatewayRoutingPoliciesTermActionPtrOutput) AddCommunities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GatewayRoutingPoliciesTermAction) []string {
+func (o GatewayRoutingPoliciesTermActionsPtrOutput) AddCommunities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayRoutingPoliciesTermActions) []string {
 		if v == nil {
 			return nil
 		}
@@ -12910,8 +12928,8 @@ func (o GatewayRoutingPoliciesTermActionPtrOutput) AddCommunities() pulumi.Strin
 }
 
 // For SSR, hub decides how VRF routes are leaked on spoke
-func (o GatewayRoutingPoliciesTermActionPtrOutput) AddTargetVrfs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GatewayRoutingPoliciesTermAction) []string {
+func (o GatewayRoutingPoliciesTermActionsPtrOutput) AddTargetVrfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayRoutingPoliciesTermActions) []string {
 		if v == nil {
 			return nil
 		}
@@ -12920,8 +12938,8 @@ func (o GatewayRoutingPoliciesTermActionPtrOutput) AddTargetVrfs() pulumi.String
 }
 
 // When used as export policy, optional
-func (o GatewayRoutingPoliciesTermActionPtrOutput) Communities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GatewayRoutingPoliciesTermAction) []string {
+func (o GatewayRoutingPoliciesTermActionsPtrOutput) Communities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayRoutingPoliciesTermActions) []string {
 		if v == nil {
 			return nil
 		}
@@ -12930,8 +12948,8 @@ func (o GatewayRoutingPoliciesTermActionPtrOutput) Communities() pulumi.StringAr
 }
 
 // When used as export policy, optional. To exclude certain AS
-func (o GatewayRoutingPoliciesTermActionPtrOutput) ExcludeAsPaths() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GatewayRoutingPoliciesTermAction) []string {
+func (o GatewayRoutingPoliciesTermActionsPtrOutput) ExcludeAsPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayRoutingPoliciesTermActions) []string {
 		if v == nil {
 			return nil
 		}
@@ -12939,8 +12957,8 @@ func (o GatewayRoutingPoliciesTermActionPtrOutput) ExcludeAsPaths() pulumi.Strin
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o GatewayRoutingPoliciesTermActionPtrOutput) ExcludeCommunities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GatewayRoutingPoliciesTermAction) []string {
+func (o GatewayRoutingPoliciesTermActionsPtrOutput) ExcludeCommunities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayRoutingPoliciesTermActions) []string {
 		if v == nil {
 			return nil
 		}
@@ -12949,8 +12967,8 @@ func (o GatewayRoutingPoliciesTermActionPtrOutput) ExcludeCommunities() pulumi.S
 }
 
 // When used as export policy, optional
-func (o GatewayRoutingPoliciesTermActionPtrOutput) ExportCommunities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GatewayRoutingPoliciesTermAction) []string {
+func (o GatewayRoutingPoliciesTermActionsPtrOutput) ExportCommunities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayRoutingPoliciesTermActions) []string {
 		if v == nil {
 			return nil
 		}
@@ -12959,8 +12977,8 @@ func (o GatewayRoutingPoliciesTermActionPtrOutput) ExportCommunities() pulumi.St
 }
 
 // Optional, for an import policy, localPreference can be changed
-func (o GatewayRoutingPoliciesTermActionPtrOutput) LocalPreference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GatewayRoutingPoliciesTermAction) *string {
+func (o GatewayRoutingPoliciesTermActionsPtrOutput) LocalPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayRoutingPoliciesTermActions) *string {
 		if v == nil {
 			return nil
 		}
@@ -12969,8 +12987,8 @@ func (o GatewayRoutingPoliciesTermActionPtrOutput) LocalPreference() pulumi.Stri
 }
 
 // When used as export policy, optional. By default, the local AS will be prepended, to change it
-func (o GatewayRoutingPoliciesTermActionPtrOutput) PrependAsPaths() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GatewayRoutingPoliciesTermAction) []string {
+func (o GatewayRoutingPoliciesTermActionsPtrOutput) PrependAsPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayRoutingPoliciesTermActions) []string {
 		if v == nil {
 			return nil
 		}
@@ -14518,6 +14536,7 @@ func (o GatewayServicePolicySslProxyPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type GatewayTunnelConfigs struct {
+	// Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
 	AutoProvision *GatewayTunnelConfigsAutoProvision `pulumi:"autoProvision"`
 	// Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
 	IkeLifetime *int `pulumi:"ikeLifetime"`
@@ -14563,6 +14582,7 @@ type GatewayTunnelConfigsInput interface {
 }
 
 type GatewayTunnelConfigsArgs struct {
+	// Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
 	AutoProvision GatewayTunnelConfigsAutoProvisionPtrInput `pulumi:"autoProvision"`
 	// Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
 	IkeLifetime pulumi.IntPtrInput `pulumi:"ikeLifetime"`
@@ -14647,6 +14667,7 @@ func (o GatewayTunnelConfigsOutput) ToGatewayTunnelConfigsOutputWithContext(ctx 
 	return o
 }
 
+// Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
 func (o GatewayTunnelConfigsOutput) AutoProvision() GatewayTunnelConfigsAutoProvisionPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *GatewayTunnelConfigsAutoProvision { return v.AutoProvision }).(GatewayTunnelConfigsAutoProvisionPtrOutput)
 }
@@ -14747,7 +14768,8 @@ func (o GatewayTunnelConfigsMapOutput) MapIndex(k pulumi.StringInput) GatewayTun
 }
 
 type GatewayTunnelConfigsAutoProvision struct {
-	Enable *bool `pulumi:"enable"`
+	// Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+	Enabled *bool `pulumi:"enabled"`
 	// API override for POP selection
 	Latlng  *GatewayTunnelConfigsAutoProvisionLatlng  `pulumi:"latlng"`
 	Primary *GatewayTunnelConfigsAutoProvisionPrimary `pulumi:"primary"`
@@ -14772,7 +14794,8 @@ type GatewayTunnelConfigsAutoProvisionInput interface {
 }
 
 type GatewayTunnelConfigsAutoProvisionArgs struct {
-	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// API override for POP selection
 	Latlng  GatewayTunnelConfigsAutoProvisionLatlngPtrInput  `pulumi:"latlng"`
 	Primary GatewayTunnelConfigsAutoProvisionPrimaryPtrInput `pulumi:"primary"`
@@ -14862,8 +14885,9 @@ func (o GatewayTunnelConfigsAutoProvisionOutput) ToGatewayTunnelConfigsAutoProvi
 	}).(GatewayTunnelConfigsAutoProvisionPtrOutput)
 }
 
-func (o GatewayTunnelConfigsAutoProvisionOutput) Enable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelConfigsAutoProvision) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+// Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+func (o GatewayTunnelConfigsAutoProvisionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigsAutoProvision) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // API override for POP selection
@@ -14920,12 +14944,13 @@ func (o GatewayTunnelConfigsAutoProvisionPtrOutput) Elem() GatewayTunnelConfigsA
 	}).(GatewayTunnelConfigsAutoProvisionOutput)
 }
 
-func (o GatewayTunnelConfigsAutoProvisionPtrOutput) Enable() pulumi.BoolPtrOutput {
+// Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+func (o GatewayTunnelConfigsAutoProvisionPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewayTunnelConfigsAutoProvision) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.Enable
+		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -21261,6 +21286,274 @@ func (o SwitchOspfAreasNetworksMapOutput) MapIndex(k pulumi.StringInput) SwitchO
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SwitchOspfAreasNetworks {
 		return vs[0].(map[string]SwitchOspfAreasNetworks)[vs[1].(string)]
 	}).(SwitchOspfAreasNetworksOutput)
+}
+
+type SwitchOspfConfig struct {
+	// Property key is the area name. Defines the OSPF areas configured on the switch.
+	Areas map[string]SwitchOspfConfigAreas `pulumi:"areas"`
+	// Enable OSPF on the switch
+	Enabled            *bool   `pulumi:"enabled"`
+	ReferenceBandwidth *string `pulumi:"referenceBandwidth"`
+}
+
+// SwitchOspfConfigInput is an input type that accepts SwitchOspfConfigArgs and SwitchOspfConfigOutput values.
+// You can construct a concrete instance of `SwitchOspfConfigInput` via:
+//
+//	SwitchOspfConfigArgs{...}
+type SwitchOspfConfigInput interface {
+	pulumi.Input
+
+	ToSwitchOspfConfigOutput() SwitchOspfConfigOutput
+	ToSwitchOspfConfigOutputWithContext(context.Context) SwitchOspfConfigOutput
+}
+
+type SwitchOspfConfigArgs struct {
+	// Property key is the area name. Defines the OSPF areas configured on the switch.
+	Areas SwitchOspfConfigAreasMapInput `pulumi:"areas"`
+	// Enable OSPF on the switch
+	Enabled            pulumi.BoolPtrInput   `pulumi:"enabled"`
+	ReferenceBandwidth pulumi.StringPtrInput `pulumi:"referenceBandwidth"`
+}
+
+func (SwitchOspfConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchOspfConfig)(nil)).Elem()
+}
+
+func (i SwitchOspfConfigArgs) ToSwitchOspfConfigOutput() SwitchOspfConfigOutput {
+	return i.ToSwitchOspfConfigOutputWithContext(context.Background())
+}
+
+func (i SwitchOspfConfigArgs) ToSwitchOspfConfigOutputWithContext(ctx context.Context) SwitchOspfConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchOspfConfigOutput)
+}
+
+func (i SwitchOspfConfigArgs) ToSwitchOspfConfigPtrOutput() SwitchOspfConfigPtrOutput {
+	return i.ToSwitchOspfConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SwitchOspfConfigArgs) ToSwitchOspfConfigPtrOutputWithContext(ctx context.Context) SwitchOspfConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchOspfConfigOutput).ToSwitchOspfConfigPtrOutputWithContext(ctx)
+}
+
+// SwitchOspfConfigPtrInput is an input type that accepts SwitchOspfConfigArgs, SwitchOspfConfigPtr and SwitchOspfConfigPtrOutput values.
+// You can construct a concrete instance of `SwitchOspfConfigPtrInput` via:
+//
+//	        SwitchOspfConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SwitchOspfConfigPtrInput interface {
+	pulumi.Input
+
+	ToSwitchOspfConfigPtrOutput() SwitchOspfConfigPtrOutput
+	ToSwitchOspfConfigPtrOutputWithContext(context.Context) SwitchOspfConfigPtrOutput
+}
+
+type switchOspfConfigPtrType SwitchOspfConfigArgs
+
+func SwitchOspfConfigPtr(v *SwitchOspfConfigArgs) SwitchOspfConfigPtrInput {
+	return (*switchOspfConfigPtrType)(v)
+}
+
+func (*switchOspfConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SwitchOspfConfig)(nil)).Elem()
+}
+
+func (i *switchOspfConfigPtrType) ToSwitchOspfConfigPtrOutput() SwitchOspfConfigPtrOutput {
+	return i.ToSwitchOspfConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *switchOspfConfigPtrType) ToSwitchOspfConfigPtrOutputWithContext(ctx context.Context) SwitchOspfConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchOspfConfigPtrOutput)
+}
+
+type SwitchOspfConfigOutput struct{ *pulumi.OutputState }
+
+func (SwitchOspfConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchOspfConfig)(nil)).Elem()
+}
+
+func (o SwitchOspfConfigOutput) ToSwitchOspfConfigOutput() SwitchOspfConfigOutput {
+	return o
+}
+
+func (o SwitchOspfConfigOutput) ToSwitchOspfConfigOutputWithContext(ctx context.Context) SwitchOspfConfigOutput {
+	return o
+}
+
+func (o SwitchOspfConfigOutput) ToSwitchOspfConfigPtrOutput() SwitchOspfConfigPtrOutput {
+	return o.ToSwitchOspfConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SwitchOspfConfigOutput) ToSwitchOspfConfigPtrOutputWithContext(ctx context.Context) SwitchOspfConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SwitchOspfConfig) *SwitchOspfConfig {
+		return &v
+	}).(SwitchOspfConfigPtrOutput)
+}
+
+// Property key is the area name. Defines the OSPF areas configured on the switch.
+func (o SwitchOspfConfigOutput) Areas() SwitchOspfConfigAreasMapOutput {
+	return o.ApplyT(func(v SwitchOspfConfig) map[string]SwitchOspfConfigAreas { return v.Areas }).(SwitchOspfConfigAreasMapOutput)
+}
+
+// Enable OSPF on the switch
+func (o SwitchOspfConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchOspfConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o SwitchOspfConfigOutput) ReferenceBandwidth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchOspfConfig) *string { return v.ReferenceBandwidth }).(pulumi.StringPtrOutput)
+}
+
+type SwitchOspfConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SwitchOspfConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SwitchOspfConfig)(nil)).Elem()
+}
+
+func (o SwitchOspfConfigPtrOutput) ToSwitchOspfConfigPtrOutput() SwitchOspfConfigPtrOutput {
+	return o
+}
+
+func (o SwitchOspfConfigPtrOutput) ToSwitchOspfConfigPtrOutputWithContext(ctx context.Context) SwitchOspfConfigPtrOutput {
+	return o
+}
+
+func (o SwitchOspfConfigPtrOutput) Elem() SwitchOspfConfigOutput {
+	return o.ApplyT(func(v *SwitchOspfConfig) SwitchOspfConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SwitchOspfConfig
+		return ret
+	}).(SwitchOspfConfigOutput)
+}
+
+// Property key is the area name. Defines the OSPF areas configured on the switch.
+func (o SwitchOspfConfigPtrOutput) Areas() SwitchOspfConfigAreasMapOutput {
+	return o.ApplyT(func(v *SwitchOspfConfig) map[string]SwitchOspfConfigAreas {
+		if v == nil {
+			return nil
+		}
+		return v.Areas
+	}).(SwitchOspfConfigAreasMapOutput)
+}
+
+// Enable OSPF on the switch
+func (o SwitchOspfConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SwitchOspfConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SwitchOspfConfigPtrOutput) ReferenceBandwidth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SwitchOspfConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReferenceBandwidth
+	}).(pulumi.StringPtrOutput)
+}
+
+type SwitchOspfConfigAreas struct {
+	// Disable OSPF summary routes for this area
+	NoSummary *bool `pulumi:"noSummary"`
+}
+
+// SwitchOspfConfigAreasInput is an input type that accepts SwitchOspfConfigAreasArgs and SwitchOspfConfigAreasOutput values.
+// You can construct a concrete instance of `SwitchOspfConfigAreasInput` via:
+//
+//	SwitchOspfConfigAreasArgs{...}
+type SwitchOspfConfigAreasInput interface {
+	pulumi.Input
+
+	ToSwitchOspfConfigAreasOutput() SwitchOspfConfigAreasOutput
+	ToSwitchOspfConfigAreasOutputWithContext(context.Context) SwitchOspfConfigAreasOutput
+}
+
+type SwitchOspfConfigAreasArgs struct {
+	// Disable OSPF summary routes for this area
+	NoSummary pulumi.BoolPtrInput `pulumi:"noSummary"`
+}
+
+func (SwitchOspfConfigAreasArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchOspfConfigAreas)(nil)).Elem()
+}
+
+func (i SwitchOspfConfigAreasArgs) ToSwitchOspfConfigAreasOutput() SwitchOspfConfigAreasOutput {
+	return i.ToSwitchOspfConfigAreasOutputWithContext(context.Background())
+}
+
+func (i SwitchOspfConfigAreasArgs) ToSwitchOspfConfigAreasOutputWithContext(ctx context.Context) SwitchOspfConfigAreasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchOspfConfigAreasOutput)
+}
+
+// SwitchOspfConfigAreasMapInput is an input type that accepts SwitchOspfConfigAreasMap and SwitchOspfConfigAreasMapOutput values.
+// You can construct a concrete instance of `SwitchOspfConfigAreasMapInput` via:
+//
+//	SwitchOspfConfigAreasMap{ "key": SwitchOspfConfigAreasArgs{...} }
+type SwitchOspfConfigAreasMapInput interface {
+	pulumi.Input
+
+	ToSwitchOspfConfigAreasMapOutput() SwitchOspfConfigAreasMapOutput
+	ToSwitchOspfConfigAreasMapOutputWithContext(context.Context) SwitchOspfConfigAreasMapOutput
+}
+
+type SwitchOspfConfigAreasMap map[string]SwitchOspfConfigAreasInput
+
+func (SwitchOspfConfigAreasMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SwitchOspfConfigAreas)(nil)).Elem()
+}
+
+func (i SwitchOspfConfigAreasMap) ToSwitchOspfConfigAreasMapOutput() SwitchOspfConfigAreasMapOutput {
+	return i.ToSwitchOspfConfigAreasMapOutputWithContext(context.Background())
+}
+
+func (i SwitchOspfConfigAreasMap) ToSwitchOspfConfigAreasMapOutputWithContext(ctx context.Context) SwitchOspfConfigAreasMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchOspfConfigAreasMapOutput)
+}
+
+type SwitchOspfConfigAreasOutput struct{ *pulumi.OutputState }
+
+func (SwitchOspfConfigAreasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchOspfConfigAreas)(nil)).Elem()
+}
+
+func (o SwitchOspfConfigAreasOutput) ToSwitchOspfConfigAreasOutput() SwitchOspfConfigAreasOutput {
+	return o
+}
+
+func (o SwitchOspfConfigAreasOutput) ToSwitchOspfConfigAreasOutputWithContext(ctx context.Context) SwitchOspfConfigAreasOutput {
+	return o
+}
+
+// Disable OSPF summary routes for this area
+func (o SwitchOspfConfigAreasOutput) NoSummary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchOspfConfigAreas) *bool { return v.NoSummary }).(pulumi.BoolPtrOutput)
+}
+
+type SwitchOspfConfigAreasMapOutput struct{ *pulumi.OutputState }
+
+func (SwitchOspfConfigAreasMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SwitchOspfConfigAreas)(nil)).Elem()
+}
+
+func (o SwitchOspfConfigAreasMapOutput) ToSwitchOspfConfigAreasMapOutput() SwitchOspfConfigAreasMapOutput {
+	return o
+}
+
+func (o SwitchOspfConfigAreasMapOutput) ToSwitchOspfConfigAreasMapOutputWithContext(ctx context.Context) SwitchOspfConfigAreasMapOutput {
+	return o
+}
+
+func (o SwitchOspfConfigAreasMapOutput) MapIndex(k pulumi.StringInput) SwitchOspfConfigAreasOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SwitchOspfConfigAreas {
+		return vs[0].(map[string]SwitchOspfConfigAreas)[vs[1].(string)]
+	}).(SwitchOspfConfigAreasOutput)
 }
 
 type SwitchOtherIpConfigs struct {
@@ -43093,8 +43386,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayRoutingPoliciesMapInput)(nil)).Elem(), GatewayRoutingPoliciesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayRoutingPoliciesTermInput)(nil)).Elem(), GatewayRoutingPoliciesTermArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayRoutingPoliciesTermArrayInput)(nil)).Elem(), GatewayRoutingPoliciesTermArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GatewayRoutingPoliciesTermActionInput)(nil)).Elem(), GatewayRoutingPoliciesTermActionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GatewayRoutingPoliciesTermActionPtrInput)(nil)).Elem(), GatewayRoutingPoliciesTermActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayRoutingPoliciesTermActionsInput)(nil)).Elem(), GatewayRoutingPoliciesTermActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayRoutingPoliciesTermActionsPtrInput)(nil)).Elem(), GatewayRoutingPoliciesTermActionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayRoutingPoliciesTermMatchingInput)(nil)).Elem(), GatewayRoutingPoliciesTermMatchingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayRoutingPoliciesTermMatchingPtrInput)(nil)).Elem(), GatewayRoutingPoliciesTermMatchingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayRoutingPoliciesTermMatchingRouteExistsInput)(nil)).Elem(), GatewayRoutingPoliciesTermMatchingRouteExistsArgs{})
@@ -43191,6 +43484,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOspfAreasMapInput)(nil)).Elem(), SwitchOspfAreasMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOspfAreasNetworksInput)(nil)).Elem(), SwitchOspfAreasNetworksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOspfAreasNetworksMapInput)(nil)).Elem(), SwitchOspfAreasNetworksMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOspfConfigInput)(nil)).Elem(), SwitchOspfConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOspfConfigPtrInput)(nil)).Elem(), SwitchOspfConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOspfConfigAreasInput)(nil)).Elem(), SwitchOspfConfigAreasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOspfConfigAreasMapInput)(nil)).Elem(), SwitchOspfConfigAreasMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOtherIpConfigsInput)(nil)).Elem(), SwitchOtherIpConfigsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOtherIpConfigsMapInput)(nil)).Elem(), SwitchOtherIpConfigsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchPortConfigInput)(nil)).Elem(), SwitchPortConfigArgs{})
@@ -43588,8 +43885,8 @@ func init() {
 	pulumi.RegisterOutputType(GatewayRoutingPoliciesMapOutput{})
 	pulumi.RegisterOutputType(GatewayRoutingPoliciesTermOutput{})
 	pulumi.RegisterOutputType(GatewayRoutingPoliciesTermArrayOutput{})
-	pulumi.RegisterOutputType(GatewayRoutingPoliciesTermActionOutput{})
-	pulumi.RegisterOutputType(GatewayRoutingPoliciesTermActionPtrOutput{})
+	pulumi.RegisterOutputType(GatewayRoutingPoliciesTermActionsOutput{})
+	pulumi.RegisterOutputType(GatewayRoutingPoliciesTermActionsPtrOutput{})
 	pulumi.RegisterOutputType(GatewayRoutingPoliciesTermMatchingOutput{})
 	pulumi.RegisterOutputType(GatewayRoutingPoliciesTermMatchingPtrOutput{})
 	pulumi.RegisterOutputType(GatewayRoutingPoliciesTermMatchingRouteExistsOutput{})
@@ -43686,6 +43983,10 @@ func init() {
 	pulumi.RegisterOutputType(SwitchOspfAreasMapOutput{})
 	pulumi.RegisterOutputType(SwitchOspfAreasNetworksOutput{})
 	pulumi.RegisterOutputType(SwitchOspfAreasNetworksMapOutput{})
+	pulumi.RegisterOutputType(SwitchOspfConfigOutput{})
+	pulumi.RegisterOutputType(SwitchOspfConfigPtrOutput{})
+	pulumi.RegisterOutputType(SwitchOspfConfigAreasOutput{})
+	pulumi.RegisterOutputType(SwitchOspfConfigAreasMapOutput{})
 	pulumi.RegisterOutputType(SwitchOtherIpConfigsOutput{})
 	pulumi.RegisterOutputType(SwitchOtherIpConfigsMapOutput{})
 	pulumi.RegisterOutputType(SwitchPortConfigOutput{})

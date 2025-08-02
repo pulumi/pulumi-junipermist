@@ -42,7 +42,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.DeviceprofileGatewayDhcpdConfig?> DhcpdConfig { get; private set; } = null!;
 
         [Output("dnsOverride")]
-        public Output<bool> DnsOverride { get; private set; } = null!;
+        public Output<bool?> DnsOverride { get; private set; } = null!;
 
         /// <summary>
         /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
@@ -88,7 +88,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableArray<Outputs.DeviceprofileGatewayNetwork>> Networks { get; private set; } = null!;
 
         [Output("ntpOverride")]
-        public Output<bool> NtpOverride { get; private set; } = null!;
+        public Output<bool?> NtpOverride { get; private set; } = null!;
 
         /// <summary>
         /// List of NTP servers specific to this device. By default, those in Site Settings will be used

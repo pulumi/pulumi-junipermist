@@ -915,76 +915,88 @@ export namespace device {
     }
 
     export interface GatewayBgpConfig {
+        /**
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+         */
         authKey?: string;
         /**
-         * When bfdMultiplier is configured alone. Default:
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMultiplier is configured alone. Default:
          *   * 1000 if `type`==`external`
          *   * 350 `type`==`internal`
          */
-        bfdMinimumInterval: number;
+        bfdMinimumInterval?: number;
         /**
-         * When bfdMinimumIntervalIsConfigured alone
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMinimumIntervalIsConfigured alone
          */
-        bfdMultiplier: number;
+        bfdMultiplier?: number;
         /**
-         * BFD provides faster path failure detection and is enabled by default
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
          */
-        disableBfd: boolean;
+        disableBfd?: boolean;
         export?: string;
         /**
          * Default export policies if no per-neighbor policies defined
          */
         exportPolicy?: string;
         /**
-         * By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
          */
         extendedV4Nexthop?: boolean;
         /**
-         * `0` means disable
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
          */
-        gracefulRestartTime: number;
-        holdTime: number;
+        gracefulRestartTime?: number;
+        /**
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+         */
+        holdTime?: number;
         import?: string;
         /**
-         * Default import policies if no per-neighbor policies defined
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
          */
         importPolicy?: string;
         /**
-         * Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
         localAs?: string;
         /**
-         * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * Neighbor AS. If `type`==`internal`, must be equal to `localAs`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
         neighborAs?: string;
         /**
-         * If per-neighbor as is desired. Property key is the neighbor address
+         * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
          */
         neighbors?: {[key: string]: outputs.device.GatewayBgpConfigNeighbors};
         /**
-         * If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+         * Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
          */
-        networks: string[];
-        noPrivateAs: boolean;
+        networks?: string[];
         /**
-         * By default, we'll re-advertise all learned BGP routers toward overlay
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
          */
-        noReadvertiseToOverlay: boolean;
+        noPrivateAs?: boolean;
         /**
-         * If `type`==`tunnel`
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
+         */
+        noReadvertiseToOverlay?: boolean;
+        /**
+         * Optional if `via`==`tunnel`
          */
         tunnelName?: string;
         /**
-         * enum: `external`, `internal`
+         * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
          */
         type?: string;
         /**
-         * network name. enum: `lan`, `tunnel`, `vpn`, `wan`
+         * enum: `lan`, `tunnel`, `vpn`, `wan`
          */
         via: string;
+        /**
+         * Optional if `via`==`vpn`
+         */
         vpnName?: string;
         /**
-         * If `via`==`wan`
+         * Optional if `via`==`wan`
          */
         wanName?: string;
     }
@@ -995,7 +1007,7 @@ export namespace device {
          */
         disabled: boolean;
         exportPolicy?: string;
-        holdTime: number;
+        holdTime?: number;
         importPolicy?: string;
         /**
          * Assuming BGP neighbor is directly connected
@@ -1004,7 +1016,7 @@ export namespace device {
         /**
          * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
-        neighborAs?: string;
+        neighborAs: string;
     }
 
     export interface GatewayClusterNode {
@@ -1022,18 +1034,20 @@ export namespace device {
         /**
          * If set to `false`, disable the DHCP server
          */
-        enabled: boolean;
+        enabled?: boolean;
     }
 
     export interface GatewayDhcpdConfigConfig {
         /**
          * If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          */
-        dnsServers: string[];
+        dnsServers?: string[];
         /**
          * If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+         *
+         * @deprecated Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
          */
-        dnsSuffixes: string[];
+        dnsSuffixes?: string[];
         /**
          * If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
          */
@@ -1061,7 +1075,7 @@ export namespace device {
         /**
          * In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
          */
-        leaseTime: number;
+        leaseTime?: number;
         /**
          * If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
          */
@@ -1070,23 +1084,23 @@ export namespace device {
          * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
          * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
          */
-        serverIdOverride: boolean;
+        serverIdOverride?: boolean;
         /**
          * If `type`==`relay`
          */
-        servers: string[];
+        servers?: string[];
         /**
          * If `type6`==`relay`
          */
-        servers6s: string[];
+        servers6s?: string[];
         /**
          * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
          */
-        type: string;
+        type?: string;
         /**
          * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
          */
-        type6: string;
+        type6?: string;
         /**
          * If `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
@@ -1145,7 +1159,7 @@ export namespace device {
          *   * drop: silently dropping packets
          *   * close: notify client/server to close connection
          */
-        action: string;
+        action?: string;
         matching?: outputs.device.GatewayIdpProfilesOverwriteMatching;
         name?: string;
     }
@@ -1447,15 +1461,15 @@ export namespace device {
         /**
          * Required when `type`==`local`
          */
-        networks: string[];
+        networks?: string[];
         /**
          * If `type`==`local`, if destination IP is to be replaced
          */
-        targetIps: string[];
+        targetIps?: string[];
         /**
          * enum: `local`, `tunnel`, `vpn`, `wan`
          */
-        type?: string;
+        type: string;
         /**
          * Optional if `type`==`vpn`
          */
@@ -1466,7 +1480,7 @@ export namespace device {
         /**
          * If `aggregated`==`true`. To disable LCP support for the AE interface
          */
-        aeDisableLacp: boolean;
+        aeDisableLacp?: boolean;
         /**
          * If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
          */
@@ -1474,17 +1488,17 @@ export namespace device {
         /**
          * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
          */
-        aeLacpForceUp: boolean;
-        aggregated: boolean;
+        aeLacpForceUp?: boolean;
+        aggregated?: boolean;
         /**
          * To generate port up/down alarm, set it to true
          */
-        critical: boolean;
+        critical?: boolean;
         /**
          * Interface Description. Can be a variable (i.e. "{{myvar}}")
          */
         description?: string;
-        disableAutoneg: boolean;
+        disableAutoneg?: boolean;
         /**
          * Port admin up (true) / down (false)
          */
@@ -1492,19 +1506,19 @@ export namespace device {
         /**
          * if `wanType`==`dsl`. enum: `adsl`, `vdsl`
          */
-        dslType: string;
+        dslType?: string;
         /**
          * If `wanType`==`dsl`, 16 bit int
          */
-        dslVci: number;
+        dslVci?: number;
         /**
          * If `wanType`==`dsl`, 8 bit int
          */
-        dslVpi: number;
+        dslVpi?: number;
         /**
          * enum: `auto`, `full`, `half`
          */
-        duplex: string;
+        duplex?: string;
         /**
          * Junos IP Config
          */
@@ -1516,7 +1530,7 @@ export namespace device {
         /**
          * if `wanType`==`lte`. enum: `chap`, `none`, `pap`
          */
-        lteAuth: string;
+        lteAuth?: string;
         lteBackup?: boolean;
         /**
          * If `wanType`==`lte`
@@ -1534,12 +1548,12 @@ export namespace device {
         /**
          * if `usage`==`lan`, name of the `junipermist.org.Network` resource
          */
-        networks: string[];
+        networks?: string[];
         /**
          * For Q-in-Q
          */
         outerVlanId?: number;
-        poeDisabled: boolean;
+        poeDisabled?: boolean;
         /**
          * Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
          */
@@ -1547,7 +1561,7 @@ export namespace device {
         /**
          * Whether to preserve dscp when sending traffic over VPN (SSR-only)
          */
-        preserveDscp: boolean;
+        preserveDscp?: boolean;
         /**
          * If HA mode
          */
@@ -1567,16 +1581,16 @@ export namespace device {
         /**
          * SSR only - supporting vlan-based redundancy (matching the size of `networks`)
          */
-        rethNodes: string[];
-        speed: string;
+        rethNodes?: string[];
+        speed?: string;
         /**
          * When SSR is running as VM, this is required on certain hosting platforms
          */
-        ssrNoVirtualMac: boolean;
+        ssrNoVirtualMac?: boolean;
         /**
          * For SSR only
          */
-        svrPortRange: string;
+        svrPortRange?: string;
         trafficShaping?: outputs.device.GatewayPortConfigTrafficShaping;
         /**
          * port usage name. enum: `haControl`, `haData`, `lan`, `wan`
@@ -1590,11 +1604,11 @@ export namespace device {
         /**
          * Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
          */
-        wanArpPolicer: string;
+        wanArpPolicer?: string;
         /**
          * If `wanType`==`wan`, disable speedtest
          */
-        wanDisableSpeedtest: boolean;
+        wanDisableSpeedtest?: boolean;
         /**
          * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
@@ -1602,11 +1616,11 @@ export namespace device {
         /**
          * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
          */
-        wanExtraRoutes: {[key: string]: outputs.device.GatewayPortConfigWanExtraRoutes};
+        wanExtraRoutes?: {[key: string]: outputs.device.GatewayPortConfigWanExtraRoutes};
         /**
          * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
          */
-        wanNetworks: string[];
+        wanNetworks?: string[];
         /**
          * Only if `usage`==`wan`
          */
@@ -1618,7 +1632,7 @@ export namespace device {
         /**
          * Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
          */
-        wanType: string;
+        wanType?: string;
     }
 
     export interface GatewayPortConfigIpConfig {
@@ -1653,7 +1667,7 @@ export namespace device {
         /**
          * if `type`==`pppoe`. enum: `chap`, `none`, `pap`
          */
-        pppoeAuth: string;
+        pppoeAuth?: string;
         /**
          * If `type`==`pppoe`
          */
@@ -1661,7 +1675,7 @@ export namespace device {
         /**
          * enum: `dhcp`, `pppoe`, `static`
          */
-        type: string;
+        type?: string;
     }
 
     export interface GatewayPortConfigTrafficShaping {
@@ -1669,7 +1683,7 @@ export namespace device {
          * percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: number[];
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * Interface Transmit Cap in kbps
          */
@@ -1680,11 +1694,11 @@ export namespace device {
         /**
          * Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
          */
-        bfdProfile: string;
+        bfdProfile?: string;
         /**
          * Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
          */
-        bfdUseTunnelMode: boolean;
+        bfdUseTunnelMode?: boolean;
         /**
          * Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
          */
@@ -1692,7 +1706,7 @@ export namespace device {
         /**
          * If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
          */
-        role: string;
+        role?: string;
         trafficShaping?: outputs.device.GatewayPortConfigVpnPathsTrafficShaping;
     }
 
@@ -1701,7 +1715,7 @@ export namespace device {
          * percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: number[];
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * Interface Transmit Cap in kbps
          */
@@ -1717,14 +1731,14 @@ export namespace device {
         /**
          * enum: `broadband`, `lte`
          */
-        probeProfile: string;
+        probeProfile?: string;
     }
 
     export interface GatewayPortConfigWanSourceNat {
         /**
          * Or to disable the source-nat
          */
-        disabled: boolean;
+        disabled?: boolean;
         /**
          * If alternative natPool is desired
          */
@@ -1754,14 +1768,14 @@ export namespace device {
         /**
          * When used as import policy
          */
-        action?: outputs.device.GatewayRoutingPoliciesTermAction;
+        actions?: outputs.device.GatewayRoutingPoliciesTermActions;
         /**
          * zero or more criteria/filter can be specified to match the term, all criteria have to be met
          */
         matching?: outputs.device.GatewayRoutingPoliciesTermMatching;
     }
 
-    export interface GatewayRoutingPoliciesTermAction {
+    export interface GatewayRoutingPoliciesTermActions {
         accept?: boolean;
         addCommunities?: string[];
         /**
@@ -1866,7 +1880,7 @@ export namespace device {
         /**
          * Required when `servicepolicyId` is not defined. List of Applications / Destinations
          */
-        services: string[];
+        services?: string[];
         /**
          * For SRX-only
          */
@@ -1874,7 +1888,7 @@ export namespace device {
         /**
          * Required when `servicepolicyId` is not defined. List of Networks / Users
          */
-        tenants: string[];
+        tenants?: string[];
     }
 
     export interface GatewayServicePolicyAntivirus {
@@ -1882,7 +1896,7 @@ export namespace device {
          * org-level AV Profile can be used, this takes precedence over 'profile'
          */
         avprofileId?: string;
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * Default / noftp / httponly / or keys from av_profiles
          */
@@ -1890,22 +1904,22 @@ export namespace device {
     }
 
     export interface GatewayServicePolicyAppqoe {
-        enabled: boolean;
+        enabled?: boolean;
     }
 
     export interface GatewayServicePolicyEwf {
         alertOnly?: boolean;
         blockMessage?: string;
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * enum: `critical`, `standard`, `strict`
          */
-        profile: string;
+        profile?: string;
     }
 
     export interface GatewayServicePolicyIdp {
         alertOnly?: boolean;
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * org_level IDP Profile can be used, this takes precedence over `profile`
          */
@@ -1913,18 +1927,21 @@ export namespace device {
         /**
          * enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
          */
-        profile: string;
+        profile?: string;
     }
 
     export interface GatewayServicePolicySslProxy {
         /**
          * enum: `medium`, `strong`, `weak`
          */
-        ciphersCategory: string;
-        enabled: boolean;
+        ciphersCategory?: string;
+        enabled?: boolean;
     }
 
     export interface GatewayTunnelConfigs {
+        /**
+         * Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+         */
         autoProvision?: outputs.device.GatewayTunnelConfigsAutoProvision;
         /**
          * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
@@ -1933,7 +1950,7 @@ export namespace device {
         /**
          * Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
          */
-        ikeMode: string;
+        ikeMode?: string;
         /**
          * If `provider`==`custom-ipsec`
          */
@@ -1953,11 +1970,11 @@ export namespace device {
         /**
          * Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
          */
-        mode: string;
+        mode?: string;
         /**
          * If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
          */
-        networks: string[];
+        networks?: string[];
         /**
          * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
@@ -1985,11 +2002,14 @@ export namespace device {
         /**
          * Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
          */
-        version: string;
+        version?: string;
     }
 
     export interface GatewayTunnelConfigsAutoProvision {
-        enable?: boolean;
+        /**
+         * Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+         */
+        enabled?: boolean;
         /**
          * API override for POP selection
          */
@@ -2049,11 +2069,11 @@ export namespace device {
          *   * 21 (521-bit ECP)
          *   * 24 (2048-bit ECP)
          */
-        dhGroup: string;
+        dhGroup?: string;
         /**
          * enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`
          */
-        encAlgo: string;
+        encAlgo?: string;
     }
 
     export interface GatewayTunnelConfigsIpsecProposal {
@@ -2074,11 +2094,11 @@ export namespace device {
          *   * 21 (521-bit ECP)
          *   * 24 (2048-bit ECP)
          */
-        dhGroup: string;
+        dhGroup?: string;
         /**
          * enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`
          */
-        encAlgo: string;
+        encAlgo?: string;
     }
 
     export interface GatewayTunnelConfigsPrimary {
@@ -5142,6 +5162,25 @@ export namespace device {
         passive: boolean;
     }
 
+    export interface SwitchOspfConfig {
+        /**
+         * Property key is the area name. Defines the OSPF areas configured on the switch.
+         */
+        areas?: {[key: string]: outputs.device.SwitchOspfConfigAreas};
+        /**
+         * Enable OSPF on the switch
+         */
+        enabled?: boolean;
+        referenceBandwidth?: string;
+    }
+
+    export interface SwitchOspfConfigAreas {
+        /**
+         * Disable OSPF summary routes for this area
+         */
+        noSummary?: boolean;
+    }
+
     export interface SwitchOtherIpConfigs {
         /**
          * For EVPN, if anycast is desired
@@ -6829,76 +6868,88 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayBgpConfig {
+        /**
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+         */
         authKey?: string;
         /**
-         * When bfdMultiplier is configured alone. Default:
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMultiplier is configured alone. Default:
          *   * 1000 if `type`==`external`
          *   * 350 `type`==`internal`
          */
-        bfdMinimumInterval: number;
+        bfdMinimumInterval?: number;
         /**
-         * When bfdMinimumIntervalIsConfigured alone
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMinimumIntervalIsConfigured alone
          */
-        bfdMultiplier: number;
+        bfdMultiplier?: number;
         /**
-         * BFD provides faster path failure detection and is enabled by default
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
          */
-        disableBfd: boolean;
+        disableBfd?: boolean;
         export?: string;
         /**
          * Default export policies if no per-neighbor policies defined
          */
         exportPolicy?: string;
         /**
-         * By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
          */
         extendedV4Nexthop?: boolean;
         /**
-         * `0` means disable
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
          */
-        gracefulRestartTime: number;
-        holdTime: number;
+        gracefulRestartTime?: number;
+        /**
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+         */
+        holdTime?: number;
         import?: string;
         /**
-         * Default import policies if no per-neighbor policies defined
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
          */
         importPolicy?: string;
         /**
-         * Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
         localAs?: string;
         /**
-         * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * Neighbor AS. If `type`==`internal`, must be equal to `localAs`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
         neighborAs?: string;
         /**
-         * If per-neighbor as is desired. Property key is the neighbor address
+         * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
          */
         neighbors?: {[key: string]: outputs.org.DeviceprofileGatewayBgpConfigNeighbors};
         /**
-         * If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+         * Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
          */
-        networks: string[];
-        noPrivateAs: boolean;
+        networks?: string[];
         /**
-         * By default, we'll re-advertise all learned BGP routers toward overlay
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
          */
-        noReadvertiseToOverlay: boolean;
+        noPrivateAs?: boolean;
         /**
-         * If `type`==`tunnel`
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
+         */
+        noReadvertiseToOverlay?: boolean;
+        /**
+         * Optional if `via`==`tunnel`
          */
         tunnelName?: string;
         /**
-         * enum: `external`, `internal`
+         * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
          */
         type?: string;
         /**
-         * network name. enum: `lan`, `tunnel`, `vpn`, `wan`
+         * enum: `lan`, `tunnel`, `vpn`, `wan`
          */
         via: string;
+        /**
+         * Optional if `via`==`vpn`
+         */
         vpnName?: string;
         /**
-         * If `via`==`wan`
+         * Optional if `via`==`wan`
          */
         wanName?: string;
     }
@@ -6909,7 +6960,7 @@ export namespace org {
          */
         disabled: boolean;
         exportPolicy?: string;
-        holdTime: number;
+        holdTime?: number;
         importPolicy?: string;
         /**
          * Assuming BGP neighbor is directly connected
@@ -6918,7 +6969,7 @@ export namespace org {
         /**
          * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
-        neighborAs?: string;
+        neighborAs: string;
     }
 
     export interface DeviceprofileGatewayDhcpdConfig {
@@ -6929,18 +6980,20 @@ export namespace org {
         /**
          * If set to `false`, disable the DHCP server
          */
-        enabled: boolean;
+        enabled?: boolean;
     }
 
     export interface DeviceprofileGatewayDhcpdConfigConfig {
         /**
          * If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          */
-        dnsServers: string[];
+        dnsServers?: string[];
         /**
          * If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+         *
+         * @deprecated Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
          */
-        dnsSuffixes: string[];
+        dnsSuffixes?: string[];
         /**
          * If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
          */
@@ -6968,7 +7021,7 @@ export namespace org {
         /**
          * In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
          */
-        leaseTime: number;
+        leaseTime?: number;
         /**
          * If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
          */
@@ -6977,23 +7030,23 @@ export namespace org {
          * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
          * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
          */
-        serverIdOverride: boolean;
+        serverIdOverride?: boolean;
         /**
          * If `type`==`relay`
          */
-        servers: string[];
+        servers?: string[];
         /**
          * If `type6`==`relay`
          */
-        servers6s: string[];
+        servers6s?: string[];
         /**
          * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
          */
-        type: string;
+        type?: string;
         /**
          * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
          */
-        type6: string;
+        type6?: string;
         /**
          * If `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
@@ -7048,7 +7101,7 @@ export namespace org {
          *   * drop: silently dropping packets
          *   * close: notify client/server to close connection
          */
-        action: string;
+        action?: string;
         matching?: outputs.org.DeviceprofileGatewayIdpProfilesOverwriteMatching;
         name?: string;
     }
@@ -7350,15 +7403,15 @@ export namespace org {
         /**
          * Required when `type`==`local`
          */
-        networks: string[];
+        networks?: string[];
         /**
          * If `type`==`local`, if destination IP is to be replaced
          */
-        targetIps: string[];
+        targetIps?: string[];
         /**
          * enum: `local`, `tunnel`, `vpn`, `wan`
          */
-        type?: string;
+        type: string;
         /**
          * Optional if `type`==`vpn`
          */
@@ -7369,7 +7422,7 @@ export namespace org {
         /**
          * If `aggregated`==`true`. To disable LCP support for the AE interface
          */
-        aeDisableLacp: boolean;
+        aeDisableLacp?: boolean;
         /**
          * If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
          */
@@ -7377,17 +7430,17 @@ export namespace org {
         /**
          * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
          */
-        aeLacpForceUp: boolean;
-        aggregated: boolean;
+        aeLacpForceUp?: boolean;
+        aggregated?: boolean;
         /**
          * To generate port up/down alarm, set it to true
          */
-        critical: boolean;
+        critical?: boolean;
         /**
          * Interface Description. Can be a variable (i.e. "{{myvar}}")
          */
         description?: string;
-        disableAutoneg: boolean;
+        disableAutoneg?: boolean;
         /**
          * Port admin up (true) / down (false)
          */
@@ -7395,19 +7448,19 @@ export namespace org {
         /**
          * if `wanType`==`dsl`. enum: `adsl`, `vdsl`
          */
-        dslType: string;
+        dslType?: string;
         /**
          * If `wanType`==`dsl`, 16 bit int
          */
-        dslVci: number;
+        dslVci?: number;
         /**
          * If `wanType`==`dsl`, 8 bit int
          */
-        dslVpi: number;
+        dslVpi?: number;
         /**
          * enum: `auto`, `full`, `half`
          */
-        duplex: string;
+        duplex?: string;
         /**
          * Junos IP Config
          */
@@ -7419,7 +7472,7 @@ export namespace org {
         /**
          * if `wanType`==`lte`. enum: `chap`, `none`, `pap`
          */
-        lteAuth: string;
+        lteAuth?: string;
         lteBackup?: boolean;
         /**
          * If `wanType`==`lte`
@@ -7437,12 +7490,12 @@ export namespace org {
         /**
          * if `usage`==`lan`, name of the `junipermist.org.Network` resource
          */
-        networks: string[];
+        networks?: string[];
         /**
          * For Q-in-Q
          */
         outerVlanId?: number;
-        poeDisabled: boolean;
+        poeDisabled?: boolean;
         /**
          * Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
          */
@@ -7450,7 +7503,7 @@ export namespace org {
         /**
          * Whether to preserve dscp when sending traffic over VPN (SSR-only)
          */
-        preserveDscp: boolean;
+        preserveDscp?: boolean;
         /**
          * If HA mode
          */
@@ -7470,16 +7523,16 @@ export namespace org {
         /**
          * SSR only - supporting vlan-based redundancy (matching the size of `networks`)
          */
-        rethNodes: string[];
-        speed: string;
+        rethNodes?: string[];
+        speed?: string;
         /**
          * When SSR is running as VM, this is required on certain hosting platforms
          */
-        ssrNoVirtualMac: boolean;
+        ssrNoVirtualMac?: boolean;
         /**
          * For SSR only
          */
-        svrPortRange: string;
+        svrPortRange?: string;
         trafficShaping?: outputs.org.DeviceprofileGatewayPortConfigTrafficShaping;
         /**
          * port usage name. enum: `haControl`, `haData`, `lan`, `wan`
@@ -7493,11 +7546,11 @@ export namespace org {
         /**
          * Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
          */
-        wanArpPolicer: string;
+        wanArpPolicer?: string;
         /**
          * If `wanType`==`wan`, disable speedtest
          */
-        wanDisableSpeedtest: boolean;
+        wanDisableSpeedtest?: boolean;
         /**
          * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
@@ -7505,11 +7558,11 @@ export namespace org {
         /**
          * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
          */
-        wanExtraRoutes: {[key: string]: outputs.org.DeviceprofileGatewayPortConfigWanExtraRoutes};
+        wanExtraRoutes?: {[key: string]: outputs.org.DeviceprofileGatewayPortConfigWanExtraRoutes};
         /**
          * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
          */
-        wanNetworks: string[];
+        wanNetworks?: string[];
         /**
          * Only if `usage`==`wan`
          */
@@ -7521,7 +7574,7 @@ export namespace org {
         /**
          * Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
          */
-        wanType: string;
+        wanType?: string;
     }
 
     export interface DeviceprofileGatewayPortConfigIpConfig {
@@ -7556,7 +7609,7 @@ export namespace org {
         /**
          * if `type`==`pppoe`. enum: `chap`, `none`, `pap`
          */
-        pppoeAuth: string;
+        pppoeAuth?: string;
         /**
          * If `type`==`pppoe`
          */
@@ -7564,7 +7617,7 @@ export namespace org {
         /**
          * enum: `dhcp`, `pppoe`, `static`
          */
-        type: string;
+        type?: string;
     }
 
     export interface DeviceprofileGatewayPortConfigTrafficShaping {
@@ -7572,7 +7625,7 @@ export namespace org {
          * percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: number[];
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * Interface Transmit Cap in kbps
          */
@@ -7583,11 +7636,11 @@ export namespace org {
         /**
          * Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
          */
-        bfdProfile: string;
+        bfdProfile?: string;
         /**
          * Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
          */
-        bfdUseTunnelMode: boolean;
+        bfdUseTunnelMode?: boolean;
         /**
          * Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
          */
@@ -7595,7 +7648,7 @@ export namespace org {
         /**
          * If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
          */
-        role: string;
+        role?: string;
         trafficShaping?: outputs.org.DeviceprofileGatewayPortConfigVpnPathsTrafficShaping;
     }
 
@@ -7604,7 +7657,7 @@ export namespace org {
          * percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: number[];
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * Interface Transmit Cap in kbps
          */
@@ -7620,14 +7673,14 @@ export namespace org {
         /**
          * enum: `broadband`, `lte`
          */
-        probeProfile: string;
+        probeProfile?: string;
     }
 
     export interface DeviceprofileGatewayPortConfigWanSourceNat {
         /**
          * Or to disable the source-nat
          */
-        disabled: boolean;
+        disabled?: boolean;
         /**
          * If alternative natPool is desired
          */
@@ -7645,14 +7698,14 @@ export namespace org {
         /**
          * When used as import policy
          */
-        action?: outputs.org.DeviceprofileGatewayRoutingPoliciesTermAction;
+        actions?: outputs.org.DeviceprofileGatewayRoutingPoliciesTermActions;
         /**
          * zero or more criteria/filter can be specified to match the term, all criteria have to be met
          */
         matching?: outputs.org.DeviceprofileGatewayRoutingPoliciesTermMatching;
     }
 
-    export interface DeviceprofileGatewayRoutingPoliciesTermAction {
+    export interface DeviceprofileGatewayRoutingPoliciesTermActions {
         accept?: boolean;
         addCommunities?: string[];
         /**
@@ -7757,7 +7810,7 @@ export namespace org {
         /**
          * Required when `servicepolicyId` is not defined. List of Applications / Destinations
          */
-        services: string[];
+        services?: string[];
         /**
          * For SRX-only
          */
@@ -7765,7 +7818,7 @@ export namespace org {
         /**
          * Required when `servicepolicyId` is not defined. List of Networks / Users
          */
-        tenants: string[];
+        tenants?: string[];
     }
 
     export interface DeviceprofileGatewayServicePolicyAntivirus {
@@ -7773,7 +7826,7 @@ export namespace org {
          * org-level AV Profile can be used, this takes precedence over 'profile'
          */
         avprofileId?: string;
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * Default / noftp / httponly / or keys from av_profiles
          */
@@ -7781,22 +7834,22 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayServicePolicyAppqoe {
-        enabled: boolean;
+        enabled?: boolean;
     }
 
     export interface DeviceprofileGatewayServicePolicyEwf {
         alertOnly?: boolean;
         blockMessage?: string;
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * enum: `critical`, `standard`, `strict`
          */
-        profile: string;
+        profile?: string;
     }
 
     export interface DeviceprofileGatewayServicePolicyIdp {
         alertOnly?: boolean;
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * org_level IDP Profile can be used, this takes precedence over `profile`
          */
@@ -7804,18 +7857,21 @@ export namespace org {
         /**
          * enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
          */
-        profile: string;
+        profile?: string;
     }
 
     export interface DeviceprofileGatewayServicePolicySslProxy {
         /**
          * enum: `medium`, `strong`, `weak`
          */
-        ciphersCategory: string;
-        enabled: boolean;
+        ciphersCategory?: string;
+        enabled?: boolean;
     }
 
     export interface DeviceprofileGatewayTunnelConfigs {
+        /**
+         * Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+         */
         autoProvision?: outputs.org.DeviceprofileGatewayTunnelConfigsAutoProvision;
         /**
          * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
@@ -7824,7 +7880,7 @@ export namespace org {
         /**
          * Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
          */
-        ikeMode: string;
+        ikeMode?: string;
         /**
          * If `provider`==`custom-ipsec`
          */
@@ -7844,11 +7900,11 @@ export namespace org {
         /**
          * Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
          */
-        mode: string;
+        mode?: string;
         /**
          * If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
          */
-        networks: string[];
+        networks?: string[];
         /**
          * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
@@ -7876,11 +7932,14 @@ export namespace org {
         /**
          * Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
          */
-        version: string;
+        version?: string;
     }
 
     export interface DeviceprofileGatewayTunnelConfigsAutoProvision {
-        enable?: boolean;
+        /**
+         * Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+         */
+        enabled?: boolean;
         /**
          * API override for POP selection
          */
@@ -7940,11 +7999,11 @@ export namespace org {
          *   * 21 (521-bit ECP)
          *   * 24 (2048-bit ECP)
          */
-        dhGroup: string;
+        dhGroup?: string;
         /**
          * enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`
          */
-        encAlgo: string;
+        encAlgo?: string;
     }
 
     export interface DeviceprofileGatewayTunnelConfigsIpsecProposal {
@@ -7965,11 +8024,11 @@ export namespace org {
          *   * 21 (521-bit ECP)
          *   * 24 (2048-bit ECP)
          */
-        dhGroup: string;
+        dhGroup?: string;
         /**
          * enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`
          */
-        encAlgo: string;
+        encAlgo?: string;
     }
 
     export interface DeviceprofileGatewayTunnelConfigsPrimary {
@@ -8270,76 +8329,88 @@ export namespace org {
     }
 
     export interface GatewaytemplateBgpConfig {
+        /**
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+         */
         authKey?: string;
         /**
-         * When bfdMultiplier is configured alone. Default:
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMultiplier is configured alone. Default:
          *   * 1000 if `type`==`external`
          *   * 350 `type`==`internal`
          */
-        bfdMinimumInterval: number;
+        bfdMinimumInterval?: number;
         /**
-         * When bfdMinimumIntervalIsConfigured alone
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMinimumIntervalIsConfigured alone
          */
-        bfdMultiplier: number;
+        bfdMultiplier?: number;
         /**
-         * BFD provides faster path failure detection and is enabled by default
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
          */
-        disableBfd: boolean;
+        disableBfd?: boolean;
         export?: string;
         /**
          * Default export policies if no per-neighbor policies defined
          */
         exportPolicy?: string;
         /**
-         * By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
          */
         extendedV4Nexthop?: boolean;
         /**
-         * `0` means disable
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
          */
-        gracefulRestartTime: number;
-        holdTime: number;
+        gracefulRestartTime?: number;
+        /**
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+         */
+        holdTime?: number;
         import?: string;
         /**
-         * Default import policies if no per-neighbor policies defined
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
          */
         importPolicy?: string;
         /**
-         * Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
         localAs?: string;
         /**
-         * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * Neighbor AS. If `type`==`internal`, must be equal to `localAs`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
         neighborAs?: string;
         /**
-         * If per-neighbor as is desired. Property key is the neighbor address
+         * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
          */
         neighbors?: {[key: string]: outputs.org.GatewaytemplateBgpConfigNeighbors};
         /**
-         * If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+         * Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
          */
-        networks: string[];
-        noPrivateAs: boolean;
+        networks?: string[];
         /**
-         * By default, we'll re-advertise all learned BGP routers toward overlay
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
          */
-        noReadvertiseToOverlay: boolean;
+        noPrivateAs?: boolean;
         /**
-         * If `type`==`tunnel`
+         * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
+         */
+        noReadvertiseToOverlay?: boolean;
+        /**
+         * Optional if `via`==`tunnel`
          */
         tunnelName?: string;
         /**
-         * enum: `external`, `internal`
+         * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
          */
         type?: string;
         /**
-         * network name. enum: `lan`, `tunnel`, `vpn`, `wan`
+         * enum: `lan`, `tunnel`, `vpn`, `wan`
          */
         via: string;
+        /**
+         * Optional if `via`==`vpn`
+         */
         vpnName?: string;
         /**
-         * If `via`==`wan`
+         * Optional if `via`==`wan`
          */
         wanName?: string;
     }
@@ -8350,7 +8421,7 @@ export namespace org {
          */
         disabled: boolean;
         exportPolicy?: string;
-        holdTime: number;
+        holdTime?: number;
         importPolicy?: string;
         /**
          * Assuming BGP neighbor is directly connected
@@ -8359,7 +8430,7 @@ export namespace org {
         /**
          * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
-        neighborAs?: string;
+        neighborAs: string;
     }
 
     export interface GatewaytemplateDhcpdConfig {
@@ -8370,18 +8441,20 @@ export namespace org {
         /**
          * If set to `false`, disable the DHCP server
          */
-        enabled: boolean;
+        enabled?: boolean;
     }
 
     export interface GatewaytemplateDhcpdConfigConfig {
         /**
          * If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          */
-        dnsServers: string[];
+        dnsServers?: string[];
         /**
          * If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+         *
+         * @deprecated Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
          */
-        dnsSuffixes: string[];
+        dnsSuffixes?: string[];
         /**
          * If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
          */
@@ -8409,7 +8482,7 @@ export namespace org {
         /**
          * In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
          */
-        leaseTime: number;
+        leaseTime?: number;
         /**
          * If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
          */
@@ -8418,23 +8491,23 @@ export namespace org {
          * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
          * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
          */
-        serverIdOverride: boolean;
+        serverIdOverride?: boolean;
         /**
          * If `type`==`relay`
          */
-        servers: string[];
+        servers?: string[];
         /**
          * If `type6`==`relay`
          */
-        servers6s: string[];
+        servers6s?: string[];
         /**
          * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
          */
-        type: string;
+        type?: string;
         /**
          * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
          */
-        type6: string;
+        type6?: string;
         /**
          * If `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
@@ -8489,7 +8562,7 @@ export namespace org {
          *   * drop: silently dropping packets
          *   * close: notify client/server to close connection
          */
-        action: string;
+        action?: string;
         matching?: outputs.org.GatewaytemplateIdpProfilesOverwriteMatching;
         name?: string;
     }
@@ -8791,15 +8864,15 @@ export namespace org {
         /**
          * Required when `type`==`local`
          */
-        networks: string[];
+        networks?: string[];
         /**
          * If `type`==`local`, if destination IP is to be replaced
          */
-        targetIps: string[];
+        targetIps?: string[];
         /**
          * enum: `local`, `tunnel`, `vpn`, `wan`
          */
-        type?: string;
+        type: string;
         /**
          * Optional if `type`==`vpn`
          */
@@ -8810,7 +8883,7 @@ export namespace org {
         /**
          * If `aggregated`==`true`. To disable LCP support for the AE interface
          */
-        aeDisableLacp: boolean;
+        aeDisableLacp?: boolean;
         /**
          * If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
          */
@@ -8818,17 +8891,17 @@ export namespace org {
         /**
          * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
          */
-        aeLacpForceUp: boolean;
-        aggregated: boolean;
+        aeLacpForceUp?: boolean;
+        aggregated?: boolean;
         /**
          * To generate port up/down alarm, set it to true
          */
-        critical: boolean;
+        critical?: boolean;
         /**
          * Interface Description. Can be a variable (i.e. "{{myvar}}")
          */
         description?: string;
-        disableAutoneg: boolean;
+        disableAutoneg?: boolean;
         /**
          * Port admin up (true) / down (false)
          */
@@ -8836,19 +8909,19 @@ export namespace org {
         /**
          * if `wanType`==`dsl`. enum: `adsl`, `vdsl`
          */
-        dslType: string;
+        dslType?: string;
         /**
          * If `wanType`==`dsl`, 16 bit int
          */
-        dslVci: number;
+        dslVci?: number;
         /**
          * If `wanType`==`dsl`, 8 bit int
          */
-        dslVpi: number;
+        dslVpi?: number;
         /**
          * enum: `auto`, `full`, `half`
          */
-        duplex: string;
+        duplex?: string;
         /**
          * Junos IP Config
          */
@@ -8860,7 +8933,7 @@ export namespace org {
         /**
          * if `wanType`==`lte`. enum: `chap`, `none`, `pap`
          */
-        lteAuth: string;
+        lteAuth?: string;
         lteBackup?: boolean;
         /**
          * If `wanType`==`lte`
@@ -8878,12 +8951,12 @@ export namespace org {
         /**
          * if `usage`==`lan`, name of the `junipermist.org.Network` resource
          */
-        networks: string[];
+        networks?: string[];
         /**
          * For Q-in-Q
          */
         outerVlanId?: number;
-        poeDisabled: boolean;
+        poeDisabled?: boolean;
         /**
          * Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
          */
@@ -8891,7 +8964,7 @@ export namespace org {
         /**
          * Whether to preserve dscp when sending traffic over VPN (SSR-only)
          */
-        preserveDscp: boolean;
+        preserveDscp?: boolean;
         /**
          * If HA mode
          */
@@ -8911,16 +8984,16 @@ export namespace org {
         /**
          * SSR only - supporting vlan-based redundancy (matching the size of `networks`)
          */
-        rethNodes: string[];
-        speed: string;
+        rethNodes?: string[];
+        speed?: string;
         /**
          * When SSR is running as VM, this is required on certain hosting platforms
          */
-        ssrNoVirtualMac: boolean;
+        ssrNoVirtualMac?: boolean;
         /**
          * For SSR only
          */
-        svrPortRange: string;
+        svrPortRange?: string;
         trafficShaping?: outputs.org.GatewaytemplatePortConfigTrafficShaping;
         /**
          * port usage name. enum: `haControl`, `haData`, `lan`, `wan`
@@ -8934,11 +9007,11 @@ export namespace org {
         /**
          * Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
          */
-        wanArpPolicer: string;
+        wanArpPolicer?: string;
         /**
          * If `wanType`==`wan`, disable speedtest
          */
-        wanDisableSpeedtest: boolean;
+        wanDisableSpeedtest?: boolean;
         /**
          * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
@@ -8946,11 +9019,11 @@ export namespace org {
         /**
          * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
          */
-        wanExtraRoutes: {[key: string]: outputs.org.GatewaytemplatePortConfigWanExtraRoutes};
+        wanExtraRoutes?: {[key: string]: outputs.org.GatewaytemplatePortConfigWanExtraRoutes};
         /**
          * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
          */
-        wanNetworks: string[];
+        wanNetworks?: string[];
         /**
          * Only if `usage`==`wan`
          */
@@ -8962,7 +9035,7 @@ export namespace org {
         /**
          * Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
          */
-        wanType: string;
+        wanType?: string;
     }
 
     export interface GatewaytemplatePortConfigIpConfig {
@@ -8997,7 +9070,7 @@ export namespace org {
         /**
          * if `type`==`pppoe`. enum: `chap`, `none`, `pap`
          */
-        pppoeAuth: string;
+        pppoeAuth?: string;
         /**
          * If `type`==`pppoe`
          */
@@ -9005,7 +9078,7 @@ export namespace org {
         /**
          * enum: `dhcp`, `pppoe`, `static`
          */
-        type: string;
+        type?: string;
     }
 
     export interface GatewaytemplatePortConfigTrafficShaping {
@@ -9013,7 +9086,7 @@ export namespace org {
          * percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: number[];
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * Interface Transmit Cap in kbps
          */
@@ -9024,11 +9097,11 @@ export namespace org {
         /**
          * Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
          */
-        bfdProfile: string;
+        bfdProfile?: string;
         /**
          * Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
          */
-        bfdUseTunnelMode: boolean;
+        bfdUseTunnelMode?: boolean;
         /**
          * Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
          */
@@ -9036,7 +9109,7 @@ export namespace org {
         /**
          * If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
          */
-        role: string;
+        role?: string;
         trafficShaping?: outputs.org.GatewaytemplatePortConfigVpnPathsTrafficShaping;
     }
 
@@ -9045,7 +9118,7 @@ export namespace org {
          * percentages for different class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: number[];
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * Interface Transmit Cap in kbps
          */
@@ -9061,14 +9134,14 @@ export namespace org {
         /**
          * enum: `broadband`, `lte`
          */
-        probeProfile: string;
+        probeProfile?: string;
     }
 
     export interface GatewaytemplatePortConfigWanSourceNat {
         /**
          * Or to disable the source-nat
          */
-        disabled: boolean;
+        disabled?: boolean;
         /**
          * If alternative natPool is desired
          */
@@ -9086,14 +9159,14 @@ export namespace org {
         /**
          * When used as import policy
          */
-        action?: outputs.org.GatewaytemplateRoutingPoliciesTermAction;
+        actions?: outputs.org.GatewaytemplateRoutingPoliciesTermActions;
         /**
          * zero or more criteria/filter can be specified to match the term, all criteria have to be met
          */
         matching?: outputs.org.GatewaytemplateRoutingPoliciesTermMatching;
     }
 
-    export interface GatewaytemplateRoutingPoliciesTermAction {
+    export interface GatewaytemplateRoutingPoliciesTermActions {
         accept?: boolean;
         addCommunities?: string[];
         /**
@@ -9198,7 +9271,7 @@ export namespace org {
         /**
          * Required when `servicepolicyId` is not defined. List of Applications / Destinations
          */
-        services: string[];
+        services?: string[];
         /**
          * For SRX-only
          */
@@ -9206,7 +9279,7 @@ export namespace org {
         /**
          * Required when `servicepolicyId` is not defined. List of Networks / Users
          */
-        tenants: string[];
+        tenants?: string[];
     }
 
     export interface GatewaytemplateServicePolicyAntivirus {
@@ -9214,7 +9287,7 @@ export namespace org {
          * org-level AV Profile can be used, this takes precedence over 'profile'
          */
         avprofileId?: string;
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * Default / noftp / httponly / or keys from av_profiles
          */
@@ -9222,22 +9295,22 @@ export namespace org {
     }
 
     export interface GatewaytemplateServicePolicyAppqoe {
-        enabled: boolean;
+        enabled?: boolean;
     }
 
     export interface GatewaytemplateServicePolicyEwf {
         alertOnly?: boolean;
         blockMessage?: string;
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * enum: `critical`, `standard`, `strict`
          */
-        profile: string;
+        profile?: string;
     }
 
     export interface GatewaytemplateServicePolicyIdp {
         alertOnly?: boolean;
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * org_level IDP Profile can be used, this takes precedence over `profile`
          */
@@ -9245,18 +9318,21 @@ export namespace org {
         /**
          * enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
          */
-        profile: string;
+        profile?: string;
     }
 
     export interface GatewaytemplateServicePolicySslProxy {
         /**
          * enum: `medium`, `strong`, `weak`
          */
-        ciphersCategory: string;
-        enabled: boolean;
+        ciphersCategory?: string;
+        enabled?: boolean;
     }
 
     export interface GatewaytemplateTunnelConfigs {
+        /**
+         * Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+         */
         autoProvision?: outputs.org.GatewaytemplateTunnelConfigsAutoProvision;
         /**
          * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
@@ -9265,7 +9341,7 @@ export namespace org {
         /**
          * Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
          */
-        ikeMode: string;
+        ikeMode?: string;
         /**
          * If `provider`==`custom-ipsec`
          */
@@ -9285,11 +9361,11 @@ export namespace org {
         /**
          * Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
          */
-        mode: string;
+        mode?: string;
         /**
          * If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
          */
-        networks: string[];
+        networks?: string[];
         /**
          * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
@@ -9317,11 +9393,14 @@ export namespace org {
         /**
          * Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
          */
-        version: string;
+        version?: string;
     }
 
     export interface GatewaytemplateTunnelConfigsAutoProvision {
-        enable?: boolean;
+        /**
+         * Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+         */
+        enabled?: boolean;
         /**
          * API override for POP selection
          */
@@ -9381,11 +9460,11 @@ export namespace org {
          *   * 21 (521-bit ECP)
          *   * 24 (2048-bit ECP)
          */
-        dhGroup: string;
+        dhGroup?: string;
         /**
          * enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`
          */
-        encAlgo: string;
+        encAlgo?: string;
     }
 
     export interface GatewaytemplateTunnelConfigsIpsecProposal {
@@ -9406,11 +9485,11 @@ export namespace org {
          *   * 21 (521-bit ECP)
          *   * 24 (2048-bit ECP)
          */
-        dhGroup: string;
+        dhGroup?: string;
         /**
          * enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`
          */
-        encAlgo: string;
+        encAlgo?: string;
     }
 
     export interface GatewaytemplateTunnelConfigsPrimary {
@@ -13165,7 +13244,7 @@ export namespace org {
         /**
          * additional CLI commands to append to the generated Junos config. **Note**: no check is done
          */
-        additionalConfigCmds: string[];
+        additionalConfigCmds?: string[];
         /**
          * In-Band Management interface configuration
          */
@@ -13173,11 +13252,11 @@ export namespace org {
         /**
          * string the switch model must start with to use this rule. It is possible to combine with the `matchName` and `matchRole` attributes
          */
-        matchModel: string;
+        matchModel?: string;
         /**
          * string the switch name must start with to use this rule. Use the `matchNameOffset` to indicate the first character of the switch name to compare to. It is possible to combine with the `matchModel` and `matchRole` attributes
          */
-        matchName: string;
+        matchName?: string;
         /**
          * first character of the switch name to compare to the `matchName` value
          */
@@ -13186,18 +13265,6 @@ export namespace org {
          * string the switch role must start with to use this rule. It is possible to combine with the `matchName` and `matchModel` attributes
          */
         matchRole?: string;
-        /**
-         * property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
-         *
-         * @deprecated The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
-Please update your configurations.
-         */
-        matchType: string;
-        /**
-         * @deprecated The `matchValue` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
-Please update your configurations.
-         */
-        matchValue: string;
         /**
          * Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
          */
@@ -18148,7 +18215,7 @@ export namespace site {
         /**
          * additional CLI commands to append to the generated Junos config. **Note**: no check is done
          */
-        additionalConfigCmds: string[];
+        additionalConfigCmds?: string[];
         /**
          * In-Band Management interface configuration
          */
@@ -18156,11 +18223,11 @@ export namespace site {
         /**
          * string the switch model must start with to use this rule. It is possible to combine with the `matchName` and `matchRole` attributes
          */
-        matchModel: string;
+        matchModel?: string;
         /**
          * string the switch name must start with to use this rule. Use the `matchNameOffset` to indicate the first character of the switch name to compare to. It is possible to combine with the `matchModel` and `matchRole` attributes
          */
-        matchName: string;
+        matchName?: string;
         /**
          * first character of the switch name to compare to the `matchName` value
          */
@@ -18169,18 +18236,6 @@ export namespace site {
          * string the switch role must start with to use this rule. It is possible to combine with the `matchName` and `matchModel` attributes
          */
         matchRole?: string;
-        /**
-         * property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
-         *
-         * @deprecated The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
-Please update your configurations.
-         */
-        matchType: string;
-        /**
-         * @deprecated The `matchValue` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
-Please update your configurations.
-         */
-        matchValue: string;
         /**
          * Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
          */

@@ -4,6 +4,7 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -51,7 +52,7 @@ public final class DeviceprofileGatewayPathPreferencesPath {
      * @return enum: `local`, `tunnel`, `vpn`, `wan`
      * 
      */
-    private @Nullable String type;
+    private String type;
     /**
      * @return Optional if `type`==`vpn`
      * 
@@ -110,8 +111,8 @@ public final class DeviceprofileGatewayPathPreferencesPath {
      * @return enum: `local`, `tunnel`, `vpn`, `wan`
      * 
      */
-    public Optional<String> type() {
-        return Optional.ofNullable(this.type);
+    public String type() {
+        return this.type;
     }
     /**
      * @return Optional if `type`==`vpn`
@@ -137,7 +138,7 @@ public final class DeviceprofileGatewayPathPreferencesPath {
         private @Nullable String name;
         private @Nullable List<String> networks;
         private @Nullable List<String> targetIps;
-        private @Nullable String type;
+        private String type;
         private @Nullable String wanName;
         public Builder() {}
         public Builder(DeviceprofileGatewayPathPreferencesPath defaults) {
@@ -202,8 +203,10 @@ public final class DeviceprofileGatewayPathPreferencesPath {
             return targetIps(List.of(targetIps));
         }
         @CustomType.Setter
-        public Builder type(@Nullable String type) {
-
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("DeviceprofileGatewayPathPreferencesPath", "type");
+            }
             this.type = type;
             return this;
         }

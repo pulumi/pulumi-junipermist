@@ -199,14 +199,14 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Junos OSPF areas
+     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
      * 
      */
     @Import(name="ospfAreas")
     private @Nullable Output<Map<String,NetworktemplateOspfAreasArgs>> ospfAreas;
 
     /**
-     * @return Junos OSPF areas
+     * @return Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
      * 
      */
     public Optional<Output<Map<String,NetworktemplateOspfAreasArgs>>> ospfAreas() {
@@ -662,7 +662,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ospfAreas Junos OSPF areas
+         * @param ospfAreas Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
          * 
          * @return builder
          * 
@@ -673,7 +673,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ospfAreas Junos OSPF areas
+         * @param ospfAreas Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
          * 
          * @return builder
          * 

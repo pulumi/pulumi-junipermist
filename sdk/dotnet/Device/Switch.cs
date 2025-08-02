@@ -166,10 +166,13 @@ namespace Pulumi.JuniperMist.Device
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Junos OSPF areas
+        /// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         /// </summary>
         [Output("ospfAreas")]
         public Output<ImmutableDictionary<string, Outputs.SwitchOspfAreas>?> OspfAreas { get; private set; } = null!;
+
+        [Output("ospfConfig")]
+        public Output<Outputs.SwitchOspfConfig?> OspfConfig { get; private set; } = null!;
 
         /// <summary>
         /// Property key is the network name. Defines the additional IP Addresses configured on the device.
@@ -509,13 +512,16 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchOspfAreasArgs>? _ospfAreas;
 
         /// <summary>
-        /// Junos OSPF areas
+        /// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         /// </summary>
         public InputMap<Inputs.SwitchOspfAreasArgs> OspfAreas
         {
             get => _ospfAreas ?? (_ospfAreas = new InputMap<Inputs.SwitchOspfAreasArgs>());
             set => _ospfAreas = value;
         }
+
+        [Input("ospfConfig")]
+        public Input<Inputs.SwitchOspfConfigArgs>? OspfConfig { get; set; }
 
         [Input("otherIpConfigs")]
         private InputMap<Inputs.SwitchOtherIpConfigsArgs>? _otherIpConfigs;
@@ -864,13 +870,16 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchOspfAreasGetArgs>? _ospfAreas;
 
         /// <summary>
-        /// Junos OSPF areas
+        /// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         /// </summary>
         public InputMap<Inputs.SwitchOspfAreasGetArgs> OspfAreas
         {
             get => _ospfAreas ?? (_ospfAreas = new InputMap<Inputs.SwitchOspfAreasGetArgs>());
             set => _ospfAreas = value;
         }
+
+        [Input("ospfConfig")]
+        public Input<Inputs.SwitchOspfConfigGetArgs>? OspfConfig { get; set; }
 
         [Input("otherIpConfigs")]
         private InputMap<Inputs.SwitchOtherIpConfigsGetArgs>? _otherIpConfigs;

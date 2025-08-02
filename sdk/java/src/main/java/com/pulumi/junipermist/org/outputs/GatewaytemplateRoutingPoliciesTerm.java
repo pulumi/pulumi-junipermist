@@ -4,7 +4,7 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.junipermist.org.outputs.GatewaytemplateRoutingPoliciesTermAction;
+import com.pulumi.junipermist.org.outputs.GatewaytemplateRoutingPoliciesTermActions;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateRoutingPoliciesTermMatching;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,7 +16,7 @@ public final class GatewaytemplateRoutingPoliciesTerm {
      * @return When used as import policy
      * 
      */
-    private @Nullable GatewaytemplateRoutingPoliciesTermAction action;
+    private @Nullable GatewaytemplateRoutingPoliciesTermActions actions;
     /**
      * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
      * 
@@ -28,8 +28,8 @@ public final class GatewaytemplateRoutingPoliciesTerm {
      * @return When used as import policy
      * 
      */
-    public Optional<GatewaytemplateRoutingPoliciesTermAction> action() {
-        return Optional.ofNullable(this.action);
+    public Optional<GatewaytemplateRoutingPoliciesTermActions> actions() {
+        return Optional.ofNullable(this.actions);
     }
     /**
      * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
@@ -48,19 +48,19 @@ public final class GatewaytemplateRoutingPoliciesTerm {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable GatewaytemplateRoutingPoliciesTermAction action;
+        private @Nullable GatewaytemplateRoutingPoliciesTermActions actions;
         private @Nullable GatewaytemplateRoutingPoliciesTermMatching matching;
         public Builder() {}
         public Builder(GatewaytemplateRoutingPoliciesTerm defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.action = defaults.action;
+    	      this.actions = defaults.actions;
     	      this.matching = defaults.matching;
         }
 
         @CustomType.Setter
-        public Builder action(@Nullable GatewaytemplateRoutingPoliciesTermAction action) {
+        public Builder actions(@Nullable GatewaytemplateRoutingPoliciesTermActions actions) {
 
-            this.action = action;
+            this.actions = actions;
             return this;
         }
         @CustomType.Setter
@@ -71,7 +71,7 @@ public final class GatewaytemplateRoutingPoliciesTerm {
         }
         public GatewaytemplateRoutingPoliciesTerm build() {
             final var _resultValue = new GatewaytemplateRoutingPoliciesTerm();
-            _resultValue.action = action;
+            _resultValue.actions = actions;
             _resultValue.matching = matching;
             return _resultValue;
         }

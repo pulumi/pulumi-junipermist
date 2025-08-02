@@ -134,9 +134,10 @@ export class Switch extends pulumi.CustomResource {
     public readonly oobIpConfig!: pulumi.Output<outputs.device.SwitchOobIpConfig | undefined>;
     public /*out*/ readonly orgId!: pulumi.Output<string>;
     /**
-     * Junos OSPF areas
+     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
      */
     public readonly ospfAreas!: pulumi.Output<{[key: string]: outputs.device.SwitchOspfAreas} | undefined>;
+    public readonly ospfConfig!: pulumi.Output<outputs.device.SwitchOspfConfig | undefined>;
     /**
      * Property key is the network name. Defines the additional IP Addresses configured on the device.
      */
@@ -251,6 +252,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["oobIpConfig"] = state ? state.oobIpConfig : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["ospfAreas"] = state ? state.ospfAreas : undefined;
+            resourceInputs["ospfConfig"] = state ? state.ospfConfig : undefined;
             resourceInputs["otherIpConfigs"] = state ? state.otherIpConfigs : undefined;
             resourceInputs["portConfig"] = state ? state.portConfig : undefined;
             resourceInputs["portMirroring"] = state ? state.portMirroring : undefined;
@@ -303,6 +305,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["ntpServers"] = args ? args.ntpServers : undefined;
             resourceInputs["oobIpConfig"] = args ? args.oobIpConfig : undefined;
             resourceInputs["ospfAreas"] = args ? args.ospfAreas : undefined;
+            resourceInputs["ospfConfig"] = args ? args.ospfConfig : undefined;
             resourceInputs["otherIpConfigs"] = args ? args.otherIpConfigs : undefined;
             resourceInputs["portConfig"] = args ? args.portConfig : undefined;
             resourceInputs["portMirroring"] = args ? args.portMirroring : undefined;
@@ -424,9 +427,10 @@ export interface SwitchState {
     oobIpConfig?: pulumi.Input<inputs.device.SwitchOobIpConfig>;
     orgId?: pulumi.Input<string>;
     /**
-     * Junos OSPF areas
+     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
      */
     ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchOspfAreas>}>;
+    ospfConfig?: pulumi.Input<inputs.device.SwitchOspfConfig>;
     /**
      * Property key is the network name. Defines the additional IP Addresses configured on the device.
      */
@@ -576,9 +580,10 @@ export interface SwitchArgs {
      */
     oobIpConfig?: pulumi.Input<inputs.device.SwitchOobIpConfig>;
     /**
-     * Junos OSPF areas
+     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
      */
     ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchOspfAreas>}>;
+    ospfConfig?: pulumi.Input<inputs.device.SwitchOspfConfig>;
     /**
      * Property key is the network name. Defines the additional IP Addresses configured on the device.
      */

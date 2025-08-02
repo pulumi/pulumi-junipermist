@@ -49,26 +49,6 @@ public final class NetworktemplateSwitchMatchingRule {
      */
     private @Nullable String matchRole;
     /**
-     * @return property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
-     * 
-     * @deprecated
-     * The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-     * Please update your configurations.
-     * 
-     */
-    @Deprecated /* The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-Please update your configurations. */
-    private @Nullable String matchType;
-    /**
-     * @deprecated
-     * The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-     * Please update your configurations.
-     * 
-     */
-    @Deprecated /* The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-Please update your configurations. */
-    private @Nullable String matchValue;
-    /**
      * @return Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
      * 
      */
@@ -133,30 +113,6 @@ Please update your configurations. */
         return Optional.ofNullable(this.matchRole);
     }
     /**
-     * @return property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
-     * 
-     * @deprecated
-     * The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-     * Please update your configurations.
-     * 
-     */
-    @Deprecated /* The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-Please update your configurations. */
-    public Optional<String> matchType() {
-        return Optional.ofNullable(this.matchType);
-    }
-    /**
-     * @deprecated
-     * The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-     * Please update your configurations.
-     * 
-     */
-    @Deprecated /* The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-Please update your configurations. */
-    public Optional<String> matchValue() {
-        return Optional.ofNullable(this.matchValue);
-    }
-    /**
      * @return Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
      * 
      */
@@ -200,8 +156,6 @@ Please update your configurations. */
         private @Nullable String matchName;
         private @Nullable Integer matchNameOffset;
         private @Nullable String matchRole;
-        private @Nullable String matchType;
-        private @Nullable String matchValue;
         private @Nullable String name;
         private @Nullable NetworktemplateSwitchMatchingRuleOobIpConfig oobIpConfig;
         private @Nullable Map<String,NetworktemplateSwitchMatchingRulePortConfig> portConfig;
@@ -215,8 +169,6 @@ Please update your configurations. */
     	      this.matchName = defaults.matchName;
     	      this.matchNameOffset = defaults.matchNameOffset;
     	      this.matchRole = defaults.matchRole;
-    	      this.matchType = defaults.matchType;
-    	      this.matchValue = defaults.matchValue;
     	      this.name = defaults.name;
     	      this.oobIpConfig = defaults.oobIpConfig;
     	      this.portConfig = defaults.portConfig;
@@ -263,18 +215,6 @@ Please update your configurations. */
             return this;
         }
         @CustomType.Setter
-        public Builder matchType(@Nullable String matchType) {
-
-            this.matchType = matchType;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder matchValue(@Nullable String matchValue) {
-
-            this.matchValue = matchValue;
-            return this;
-        }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
 
             this.name = name;
@@ -306,8 +246,6 @@ Please update your configurations. */
             _resultValue.matchName = matchName;
             _resultValue.matchNameOffset = matchNameOffset;
             _resultValue.matchRole = matchRole;
-            _resultValue.matchType = matchType;
-            _resultValue.matchValue = matchValue;
             _resultValue.name = name;
             _resultValue.oobIpConfig = oobIpConfig;
             _resultValue.portConfig = portConfig;

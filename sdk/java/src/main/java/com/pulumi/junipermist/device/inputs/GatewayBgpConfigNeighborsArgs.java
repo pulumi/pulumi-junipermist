@@ -5,6 +5,7 @@ package com.pulumi.junipermist.device.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -72,15 +73,15 @@ public final class GatewayBgpConfigNeighborsArgs extends com.pulumi.resources.Re
      * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
      * 
      */
-    @Import(name="neighborAs")
-    private @Nullable Output<String> neighborAs;
+    @Import(name="neighborAs", required=true)
+    private Output<String> neighborAs;
 
     /**
      * @return Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
      * 
      */
-    public Optional<Output<String>> neighborAs() {
-        return Optional.ofNullable(this.neighborAs);
+    public Output<String> neighborAs() {
+        return this.neighborAs;
     }
 
     private GatewayBgpConfigNeighborsArgs() {}
@@ -187,7 +188,7 @@ public final class GatewayBgpConfigNeighborsArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder neighborAs(@Nullable Output<String> neighborAs) {
+        public Builder neighborAs(Output<String> neighborAs) {
             $.neighborAs = neighborAs;
             return this;
         }
@@ -203,6 +204,9 @@ public final class GatewayBgpConfigNeighborsArgs extends com.pulumi.resources.Re
         }
 
         public GatewayBgpConfigNeighborsArgs build() {
+            if ($.neighborAs == null) {
+                throw new MissingRequiredPropertyException("GatewayBgpConfigNeighborsArgs", "neighborAs");
+            }
             return $;
         }
     }

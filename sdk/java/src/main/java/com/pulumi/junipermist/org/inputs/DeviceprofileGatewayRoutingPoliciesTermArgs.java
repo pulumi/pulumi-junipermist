@@ -5,7 +5,7 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayRoutingPoliciesTermActionArgs;
+import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayRoutingPoliciesTermActionsArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayRoutingPoliciesTermMatchingArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,15 +20,15 @@ public final class DeviceprofileGatewayRoutingPoliciesTermArgs extends com.pulum
      * When used as import policy
      * 
      */
-    @Import(name="action")
-    private @Nullable Output<DeviceprofileGatewayRoutingPoliciesTermActionArgs> action;
+    @Import(name="actions")
+    private @Nullable Output<DeviceprofileGatewayRoutingPoliciesTermActionsArgs> actions;
 
     /**
      * @return When used as import policy
      * 
      */
-    public Optional<Output<DeviceprofileGatewayRoutingPoliciesTermActionArgs>> action() {
-        return Optional.ofNullable(this.action);
+    public Optional<Output<DeviceprofileGatewayRoutingPoliciesTermActionsArgs>> actions() {
+        return Optional.ofNullable(this.actions);
     }
 
     /**
@@ -49,7 +49,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermArgs extends com.pulum
     private DeviceprofileGatewayRoutingPoliciesTermArgs() {}
 
     private DeviceprofileGatewayRoutingPoliciesTermArgs(DeviceprofileGatewayRoutingPoliciesTermArgs $) {
-        this.action = $.action;
+        this.actions = $.actions;
         this.matching = $.matching;
     }
 
@@ -72,24 +72,24 @@ public final class DeviceprofileGatewayRoutingPoliciesTermArgs extends com.pulum
         }
 
         /**
-         * @param action When used as import policy
+         * @param actions When used as import policy
          * 
          * @return builder
          * 
          */
-        public Builder action(@Nullable Output<DeviceprofileGatewayRoutingPoliciesTermActionArgs> action) {
-            $.action = action;
+        public Builder actions(@Nullable Output<DeviceprofileGatewayRoutingPoliciesTermActionsArgs> actions) {
+            $.actions = actions;
             return this;
         }
 
         /**
-         * @param action When used as import policy
+         * @param actions When used as import policy
          * 
          * @return builder
          * 
          */
-        public Builder action(DeviceprofileGatewayRoutingPoliciesTermActionArgs action) {
-            return action(Output.of(action));
+        public Builder actions(DeviceprofileGatewayRoutingPoliciesTermActionsArgs actions) {
+            return actions(Output.of(actions));
         }
 
         /**

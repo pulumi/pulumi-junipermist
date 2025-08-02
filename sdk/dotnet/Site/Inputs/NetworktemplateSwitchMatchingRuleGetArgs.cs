@@ -55,15 +55,6 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? MatchRole { get; set; }
 
         /// <summary>
-        /// property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
-        /// </summary>
-        [Input("matchType")]
-        public Input<string>? MatchType { get; set; }
-
-        [Input("matchValue")]
-        public Input<string>? MatchValue { get; set; }
-
-        /// <summary>
         /// Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
         /// </summary>
         [Input("name")]
