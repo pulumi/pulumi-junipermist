@@ -1223,19 +1223,20 @@
         "junipermist:device/GatewayBgpConfig:GatewayBgpConfig": {
             "properties": {
                 "authKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`\n"
                 },
                 "bfdMinimumInterval": {
                     "type": "integer",
-                    "description": "When bfd_multiplier is configured alone. Default:\n  * 1000 if `type`==`external`\n  * 350 `type`==`internal`\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:\n  * 1000 if `type`==`external`\n  * 350 `type`==`internal`\n"
                 },
                 "bfdMultiplier": {
                     "type": "integer",
-                    "description": "When bfd_minimum_interval_is_configured alone\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone\n"
                 },
                 "disableBfd": {
                     "type": "boolean",
-                    "description": "BFD provides faster path failure detection and is enabled by default\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default\n"
                 },
                 "export": {
                     "type": "string"
@@ -1246,87 +1247,78 @@
                 },
                 "extendedV4Nexthop": {
                     "type": "boolean",
-                    "description": "By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this\n"
                 },
                 "gracefulRestartTime": {
                     "type": "integer",
-                    "description": "`0` means disable\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable\n"
                 },
                 "holdTime": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.\n"
                 },
                 "import": {
                     "type": "string"
                 },
                 "importPolicy": {
                     "type": "string",
-                    "description": "Default import policies if no per-neighbor policies defined\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined\n"
                 },
                 "localAs": {
                     "type": "string",
-                    "description": "Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)\n"
+                    "description": "Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)\n"
                 },
                 "neighborAs": {
                     "type": "string",
-                    "description": "Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)\n"
+                    "description": "Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)\n"
                 },
                 "neighbors": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/GatewayBgpConfigNeighbors:GatewayBgpConfigNeighbors"
                     },
-                    "description": "If per-neighbor as is desired. Property key is the neighbor address\n"
+                    "description": "Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address\n"
                 },
                 "networks": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from\n"
+                    "description": "Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from\n"
                 },
                 "noPrivateAs": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor\n"
                 },
                 "noReadvertiseToOverlay": {
                     "type": "boolean",
-                    "description": "By default, we'll re-advertise all learned BGP routers toward overlay\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay\n"
                 },
                 "tunnelName": {
                     "type": "string",
-                    "description": "If `type`==`tunnel`\n"
+                    "description": "Optional if `via`==`tunnel`\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "enum: `external`, `internal`\n"
+                    "description": "Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`\n"
                 },
                 "via": {
                     "type": "string",
-                    "description": "network name. enum: `lan`, `tunnel`, `vpn`, `wan`\n"
+                    "description": "enum: `lan`, `tunnel`, `vpn`, `wan`\n"
                 },
                 "vpnName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Optional if `via`==`vpn`\n"
                 },
                 "wanName": {
                     "type": "string",
-                    "description": "If `via`==`wan`\n"
+                    "description": "Optional if `via`==`wan`\n"
                 }
             },
             "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "bfdMinimumInterval",
-                        "bfdMultiplier",
-                        "disableBfd",
-                        "gracefulRestartTime",
-                        "holdTime",
-                        "networks",
-                        "noPrivateAs",
-                        "noReadvertiseToOverlay",
-                        "via"
-                    ]
-                }
-            }
+            "required": [
+                "via"
+            ]
         },
         "junipermist:device/GatewayBgpConfigNeighbors:GatewayBgpConfigNeighbors": {
             "properties": {
@@ -1353,11 +1345,14 @@
                 }
             },
             "type": "object",
+            "required": [
+                "neighborAs"
+            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
                         "disabled",
-                        "holdTime"
+                        "neighborAs"
                     ]
                 }
             }
@@ -1388,14 +1383,7 @@
                     "description": "If set to `false`, disable the DHCP server\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/GatewayDhcpdConfigConfig:GatewayDhcpdConfigConfig": {
             "properties": {
@@ -1411,7 +1399,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used\n"
+                    "description": "If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used\n",
+                    "deprecationMessage": "Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead"
                 },
                 "fixedBindings": {
                     "type": "object",
@@ -1485,21 +1474,7 @@
                     "description": "If `type`==`local` or `type6`==`local`. Property key is \u003centerprise number\u003e:\u003csub option code\u003e, with\n  * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)\n  * sub option code: 1-255, sub-option code\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "dnsServers",
-                        "dnsSuffixes",
-                        "leaseTime",
-                        "serverIdOverride",
-                        "servers",
-                        "servers6s",
-                        "type",
-                        "type6"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/GatewayDhcpdConfigConfigFixedBindings:GatewayDhcpdConfigConfigFixedBindings": {
             "properties": {
@@ -1599,14 +1574,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "action"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/GatewayIdpProfilesOverwriteMatching:GatewayIdpProfilesOverwriteMatching": {
             "properties": {
@@ -2138,14 +2106,9 @@
                 }
             },
             "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "networks",
-                        "targetIps"
-                    ]
-                }
-            }
+            "required": [
+                "type"
+            ]
         },
         "junipermist:device/GatewayPortConfig:GatewayPortConfig": {
             "properties": {
@@ -2345,30 +2308,8 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "aeDisableLacp",
-                        "aeLacpForceUp",
-                        "aggregated",
-                        "critical",
-                        "disableAutoneg",
                         "disabled",
-                        "dslType",
-                        "dslVci",
-                        "dslVpi",
-                        "duplex",
-                        "lteAuth",
-                        "networks",
-                        "poeDisabled",
-                        "preserveDscp",
-                        "rethNodes",
-                        "speed",
-                        "ssrNoVirtualMac",
-                        "svrPortRange",
-                        "usage",
-                        "wanArpPolicer",
-                        "wanDisableSpeedtest",
-                        "wanExtraRoutes",
-                        "wanNetworks",
-                        "wanType"
+                        "usage"
                     ]
                 }
             }
@@ -2423,15 +2364,7 @@
                     "description": "enum: `dhcp`, `pppoe`, `static`\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "pppoeAuth",
-                        "type"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/GatewayPortConfigTrafficShaping:GatewayPortConfigTrafficShaping": {
             "properties": {
@@ -2450,14 +2383,7 @@
                     "description": "Interface Transmit Cap in kbps\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/GatewayPortConfigVpnPaths:GatewayPortConfigVpnPaths": {
             "properties": {
@@ -2481,16 +2407,7 @@
                     "$ref": "#/types/junipermist:device/GatewayPortConfigVpnPathsTrafficShaping:GatewayPortConfigVpnPathsTrafficShaping"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "bfdProfile",
-                        "bfdUseTunnelMode",
-                        "role"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/GatewayPortConfigVpnPathsTrafficShaping:GatewayPortConfigVpnPathsTrafficShaping": {
             "properties": {
@@ -2509,14 +2426,7 @@
                     "description": "Interface Transmit Cap in kbps\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/GatewayPortConfigWanExtraRoutes:GatewayPortConfigWanExtraRoutes": {
             "properties": {
@@ -2539,14 +2449,7 @@
                     "description": "enum: `broadband`, `lte`\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "probeProfile"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/GatewayPortConfigWanSourceNat:GatewayPortConfigWanSourceNat": {
             "properties": {
@@ -2559,14 +2462,7 @@
                     "description": "If alternative nat_pool is desired\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "disabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/GatewayPortMirroring:GatewayPortMirroring": {
             "properties": {
@@ -2613,8 +2509,8 @@
         },
         "junipermist:device/GatewayRoutingPoliciesTerm:GatewayRoutingPoliciesTerm": {
             "properties": {
-                "action": {
-                    "$ref": "#/types/junipermist:device/GatewayRoutingPoliciesTermAction:GatewayRoutingPoliciesTermAction",
+                "actions": {
+                    "$ref": "#/types/junipermist:device/GatewayRoutingPoliciesTermActions:GatewayRoutingPoliciesTermActions",
                     "description": "When used as import policy\n"
                 },
                 "matching": {
@@ -2624,7 +2520,7 @@
             },
             "type": "object"
         },
-        "junipermist:device/GatewayRoutingPoliciesTermAction:GatewayRoutingPoliciesTermAction": {
+        "junipermist:device/GatewayRoutingPoliciesTermActions:GatewayRoutingPoliciesTermActions": {
             "properties": {
                 "accept": {
                     "type": "boolean"
@@ -2832,15 +2728,7 @@
                     "description": "Required when `servicepolicy_id` is not defined. List of Networks / Users\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "services",
-                        "tenants"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/GatewayServicePolicyAntivirus:GatewayServicePolicyAntivirus": {
             "properties": {
@@ -2856,14 +2744,7 @@
                     "description": "Default / noftp / httponly / or keys from av_profiles\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/GatewayServicePolicyAppqoe:GatewayServicePolicyAppqoe": {
             "properties": {
@@ -2871,14 +2752,7 @@
                     "type": "boolean"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/GatewayServicePolicyEwf:GatewayServicePolicyEwf": {
             "properties": {
@@ -2896,15 +2770,7 @@
                     "description": "enum: `critical`, `standard`, `strict`\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled",
-                        "profile"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/GatewayServicePolicyIdp:GatewayServicePolicyIdp": {
             "properties": {
@@ -2923,15 +2789,7 @@
                     "description": "enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled",
-                        "profile"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/GatewayServicePolicySslProxy:GatewayServicePolicySslProxy": {
             "properties": {
@@ -2943,20 +2801,13 @@
                     "type": "boolean"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "ciphersCategory",
-                        "enabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/GatewayTunnelConfigs:GatewayTunnelConfigs": {
             "properties": {
                 "autoProvision": {
-                    "$ref": "#/types/junipermist:device/GatewayTunnelConfigsAutoProvision:GatewayTunnelConfigsAutoProvision"
+                    "$ref": "#/types/junipermist:device/GatewayTunnelConfigsAutoProvision:GatewayTunnelConfigsAutoProvision",
+                    "description": "Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.\n"
                 },
                 "ikeLifetime": {
                     "type": "integer",
@@ -3029,22 +2880,13 @@
                     "description": "Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "ikeMode",
-                        "mode",
-                        "networks",
-                        "version"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/GatewayTunnelConfigsAutoProvision:GatewayTunnelConfigsAutoProvision": {
             "properties": {
-                "enable": {
-                    "type": "boolean"
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.\n"
                 },
                 "latlng": {
                     "$ref": "#/types/junipermist:device/GatewayTunnelConfigsAutoProvisionLatlng:GatewayTunnelConfigsAutoProvisionLatlng",
@@ -3140,15 +2982,7 @@
                     "description": "enum: `3des`, `aes128`, `aes256`, `aes_gcm128`, `aes_gcm256`\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "dhGroup",
-                        "encAlgo"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/GatewayTunnelConfigsIpsecProposal:GatewayTunnelConfigsIpsecProposal": {
             "properties": {
@@ -3165,15 +2999,7 @@
                     "description": "enum: `3des`, `aes128`, `aes256`, `aes_gcm128`, `aes_gcm256`\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "dhGroup",
-                        "encAlgo"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/GatewayTunnelConfigsPrimary:GatewayTunnelConfigsPrimary": {
             "properties": {
@@ -4300,6 +4126,34 @@
                     ]
                 }
             }
+        },
+        "junipermist:device/SwitchOspfConfig:SwitchOspfConfig": {
+            "properties": {
+                "areas": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:device/SwitchOspfConfigAreas:SwitchOspfConfigAreas"
+                    },
+                    "description": "Property key is the area name. Defines the OSPF areas configured on the switch.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable OSPF on the switch\n"
+                },
+                "referenceBandwidth": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:device/SwitchOspfConfigAreas:SwitchOspfConfigAreas": {
+            "properties": {
+                "noSummary": {
+                    "type": "boolean",
+                    "description": "Disable OSPF summary routes for this area\n"
+                }
+            },
+            "type": "object"
         },
         "junipermist:device/SwitchOtherIpConfigs:SwitchOtherIpConfigs": {
             "properties": {
@@ -13057,19 +12911,20 @@
         "junipermist:org/DeviceprofileGatewayBgpConfig:DeviceprofileGatewayBgpConfig": {
             "properties": {
                 "authKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`\n"
                 },
                 "bfdMinimumInterval": {
                     "type": "integer",
-                    "description": "When bfd_multiplier is configured alone. Default:\n  * 1000 if `type`==`external`\n  * 350 `type`==`internal`\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:\n  * 1000 if `type`==`external`\n  * 350 `type`==`internal`\n"
                 },
                 "bfdMultiplier": {
                     "type": "integer",
-                    "description": "When bfd_minimum_interval_is_configured alone\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone\n"
                 },
                 "disableBfd": {
                     "type": "boolean",
-                    "description": "BFD provides faster path failure detection and is enabled by default\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default\n"
                 },
                 "export": {
                     "type": "string"
@@ -13080,87 +12935,78 @@
                 },
                 "extendedV4Nexthop": {
                     "type": "boolean",
-                    "description": "By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this\n"
                 },
                 "gracefulRestartTime": {
                     "type": "integer",
-                    "description": "`0` means disable\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable\n"
                 },
                 "holdTime": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.\n"
                 },
                 "import": {
                     "type": "string"
                 },
                 "importPolicy": {
                     "type": "string",
-                    "description": "Default import policies if no per-neighbor policies defined\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined\n"
                 },
                 "localAs": {
                     "type": "string",
-                    "description": "Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)\n"
+                    "description": "Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)\n"
                 },
                 "neighborAs": {
                     "type": "string",
-                    "description": "Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)\n"
+                    "description": "Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)\n"
                 },
                 "neighbors": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/DeviceprofileGatewayBgpConfigNeighbors:DeviceprofileGatewayBgpConfigNeighbors"
                     },
-                    "description": "If per-neighbor as is desired. Property key is the neighbor address\n"
+                    "description": "Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address\n"
                 },
                 "networks": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from\n"
+                    "description": "Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from\n"
                 },
                 "noPrivateAs": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor\n"
                 },
                 "noReadvertiseToOverlay": {
                     "type": "boolean",
-                    "description": "By default, we'll re-advertise all learned BGP routers toward overlay\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay\n"
                 },
                 "tunnelName": {
                     "type": "string",
-                    "description": "If `type`==`tunnel`\n"
+                    "description": "Optional if `via`==`tunnel`\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "enum: `external`, `internal`\n"
+                    "description": "Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`\n"
                 },
                 "via": {
                     "type": "string",
-                    "description": "network name. enum: `lan`, `tunnel`, `vpn`, `wan`\n"
+                    "description": "enum: `lan`, `tunnel`, `vpn`, `wan`\n"
                 },
                 "vpnName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Optional if `via`==`vpn`\n"
                 },
                 "wanName": {
                     "type": "string",
-                    "description": "If `via`==`wan`\n"
+                    "description": "Optional if `via`==`wan`\n"
                 }
             },
             "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "bfdMinimumInterval",
-                        "bfdMultiplier",
-                        "disableBfd",
-                        "gracefulRestartTime",
-                        "holdTime",
-                        "networks",
-                        "noPrivateAs",
-                        "noReadvertiseToOverlay",
-                        "via"
-                    ]
-                }
-            }
+            "required": [
+                "via"
+            ]
         },
         "junipermist:org/DeviceprofileGatewayBgpConfigNeighbors:DeviceprofileGatewayBgpConfigNeighbors": {
             "properties": {
@@ -13187,11 +13033,14 @@
                 }
             },
             "type": "object",
+            "required": [
+                "neighborAs"
+            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
                         "disabled",
-                        "holdTime"
+                        "neighborAs"
                     ]
                 }
             }
@@ -13210,14 +13059,7 @@
                     "description": "If set to `false`, disable the DHCP server\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/DeviceprofileGatewayDhcpdConfigConfig:DeviceprofileGatewayDhcpdConfigConfig": {
             "properties": {
@@ -13233,7 +13075,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used\n"
+                    "description": "If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used\n",
+                    "deprecationMessage": "Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead"
                 },
                 "fixedBindings": {
                     "type": "object",
@@ -13307,21 +13150,7 @@
                     "description": "If `type`==`local` or `type6`==`local`. Property key is \u003centerprise number\u003e:\u003csub option code\u003e, with\n  * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)\n  * sub option code: 1-255, sub-option code\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "dnsServers",
-                        "dnsSuffixes",
-                        "leaseTime",
-                        "serverIdOverride",
-                        "servers",
-                        "servers6s",
-                        "type",
-                        "type6"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/DeviceprofileGatewayDhcpdConfigConfigFixedBindings:DeviceprofileGatewayDhcpdConfigConfigFixedBindings": {
             "properties": {
@@ -13417,14 +13246,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "action"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/DeviceprofileGatewayIdpProfilesOverwriteMatching:DeviceprofileGatewayIdpProfilesOverwriteMatching": {
             "properties": {
@@ -13956,14 +13778,9 @@
                 }
             },
             "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "networks",
-                        "targetIps"
-                    ]
-                }
-            }
+            "required": [
+                "type"
+            ]
         },
         "junipermist:org/DeviceprofileGatewayPortConfig:DeviceprofileGatewayPortConfig": {
             "properties": {
@@ -14163,30 +13980,8 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "aeDisableLacp",
-                        "aeLacpForceUp",
-                        "aggregated",
-                        "critical",
-                        "disableAutoneg",
                         "disabled",
-                        "dslType",
-                        "dslVci",
-                        "dslVpi",
-                        "duplex",
-                        "lteAuth",
-                        "networks",
-                        "poeDisabled",
-                        "preserveDscp",
-                        "rethNodes",
-                        "speed",
-                        "ssrNoVirtualMac",
-                        "svrPortRange",
-                        "usage",
-                        "wanArpPolicer",
-                        "wanDisableSpeedtest",
-                        "wanExtraRoutes",
-                        "wanNetworks",
-                        "wanType"
+                        "usage"
                     ]
                 }
             }
@@ -14241,15 +14036,7 @@
                     "description": "enum: `dhcp`, `pppoe`, `static`\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "pppoeAuth",
-                        "type"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/DeviceprofileGatewayPortConfigTrafficShaping:DeviceprofileGatewayPortConfigTrafficShaping": {
             "properties": {
@@ -14268,14 +14055,7 @@
                     "description": "Interface Transmit Cap in kbps\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/DeviceprofileGatewayPortConfigVpnPaths:DeviceprofileGatewayPortConfigVpnPaths": {
             "properties": {
@@ -14299,16 +14079,7 @@
                     "$ref": "#/types/junipermist:org/DeviceprofileGatewayPortConfigVpnPathsTrafficShaping:DeviceprofileGatewayPortConfigVpnPathsTrafficShaping"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "bfdProfile",
-                        "bfdUseTunnelMode",
-                        "role"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/DeviceprofileGatewayPortConfigVpnPathsTrafficShaping:DeviceprofileGatewayPortConfigVpnPathsTrafficShaping": {
             "properties": {
@@ -14327,14 +14098,7 @@
                     "description": "Interface Transmit Cap in kbps\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/DeviceprofileGatewayPortConfigWanExtraRoutes:DeviceprofileGatewayPortConfigWanExtraRoutes": {
             "properties": {
@@ -14357,14 +14121,7 @@
                     "description": "enum: `broadband`, `lte`\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "probeProfile"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/DeviceprofileGatewayPortConfigWanSourceNat:DeviceprofileGatewayPortConfigWanSourceNat": {
             "properties": {
@@ -14377,14 +14134,7 @@
                     "description": "If alternative nat_pool is desired\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "disabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/DeviceprofileGatewayRoutingPolicies:DeviceprofileGatewayRoutingPolicies": {
             "properties": {
@@ -14400,8 +14150,8 @@
         },
         "junipermist:org/DeviceprofileGatewayRoutingPoliciesTerm:DeviceprofileGatewayRoutingPoliciesTerm": {
             "properties": {
-                "action": {
-                    "$ref": "#/types/junipermist:org/DeviceprofileGatewayRoutingPoliciesTermAction:DeviceprofileGatewayRoutingPoliciesTermAction",
+                "actions": {
+                    "$ref": "#/types/junipermist:org/DeviceprofileGatewayRoutingPoliciesTermActions:DeviceprofileGatewayRoutingPoliciesTermActions",
                     "description": "When used as import policy\n"
                 },
                 "matching": {
@@ -14411,7 +14161,7 @@
             },
             "type": "object"
         },
-        "junipermist:org/DeviceprofileGatewayRoutingPoliciesTermAction:DeviceprofileGatewayRoutingPoliciesTermAction": {
+        "junipermist:org/DeviceprofileGatewayRoutingPoliciesTermActions:DeviceprofileGatewayRoutingPoliciesTermActions": {
             "properties": {
                 "accept": {
                     "type": "boolean"
@@ -14619,15 +14369,7 @@
                     "description": "Required when `servicepolicy_id` is not defined. List of Networks / Users\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "services",
-                        "tenants"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/DeviceprofileGatewayServicePolicyAntivirus:DeviceprofileGatewayServicePolicyAntivirus": {
             "properties": {
@@ -14643,14 +14385,7 @@
                     "description": "Default / noftp / httponly / or keys from av_profiles\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/DeviceprofileGatewayServicePolicyAppqoe:DeviceprofileGatewayServicePolicyAppqoe": {
             "properties": {
@@ -14658,14 +14393,7 @@
                     "type": "boolean"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/DeviceprofileGatewayServicePolicyEwf:DeviceprofileGatewayServicePolicyEwf": {
             "properties": {
@@ -14683,15 +14411,7 @@
                     "description": "enum: `critical`, `standard`, `strict`\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled",
-                        "profile"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/DeviceprofileGatewayServicePolicyIdp:DeviceprofileGatewayServicePolicyIdp": {
             "properties": {
@@ -14710,15 +14430,7 @@
                     "description": "enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled",
-                        "profile"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/DeviceprofileGatewayServicePolicySslProxy:DeviceprofileGatewayServicePolicySslProxy": {
             "properties": {
@@ -14730,20 +14442,13 @@
                     "type": "boolean"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "ciphersCategory",
-                        "enabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/DeviceprofileGatewayTunnelConfigs:DeviceprofileGatewayTunnelConfigs": {
             "properties": {
                 "autoProvision": {
-                    "$ref": "#/types/junipermist:org/DeviceprofileGatewayTunnelConfigsAutoProvision:DeviceprofileGatewayTunnelConfigsAutoProvision"
+                    "$ref": "#/types/junipermist:org/DeviceprofileGatewayTunnelConfigsAutoProvision:DeviceprofileGatewayTunnelConfigsAutoProvision",
+                    "description": "Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.\n"
                 },
                 "ikeLifetime": {
                     "type": "integer",
@@ -14816,22 +14521,13 @@
                     "description": "Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "ikeMode",
-                        "mode",
-                        "networks",
-                        "version"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/DeviceprofileGatewayTunnelConfigsAutoProvision:DeviceprofileGatewayTunnelConfigsAutoProvision": {
             "properties": {
-                "enable": {
-                    "type": "boolean"
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.\n"
                 },
                 "latlng": {
                     "$ref": "#/types/junipermist:org/DeviceprofileGatewayTunnelConfigsAutoProvisionLatlng:DeviceprofileGatewayTunnelConfigsAutoProvisionLatlng",
@@ -14927,15 +14623,7 @@
                     "description": "enum: `3des`, `aes128`, `aes256`, `aes_gcm128`, `aes_gcm256`\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "dhGroup",
-                        "encAlgo"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/DeviceprofileGatewayTunnelConfigsIpsecProposal:DeviceprofileGatewayTunnelConfigsIpsecProposal": {
             "properties": {
@@ -14952,15 +14640,7 @@
                     "description": "enum: `3des`, `aes128`, `aes256`, `aes_gcm128`, `aes_gcm256`\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "dhGroup",
-                        "encAlgo"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/DeviceprofileGatewayTunnelConfigsPrimary:DeviceprofileGatewayTunnelConfigsPrimary": {
             "properties": {
@@ -15438,19 +15118,20 @@
         "junipermist:org/GatewaytemplateBgpConfig:GatewaytemplateBgpConfig": {
             "properties": {
                 "authKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`\n"
                 },
                 "bfdMinimumInterval": {
                     "type": "integer",
-                    "description": "When bfd_multiplier is configured alone. Default:\n  * 1000 if `type`==`external`\n  * 350 `type`==`internal`\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:\n  * 1000 if `type`==`external`\n  * 350 `type`==`internal`\n"
                 },
                 "bfdMultiplier": {
                     "type": "integer",
-                    "description": "When bfd_minimum_interval_is_configured alone\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone\n"
                 },
                 "disableBfd": {
                     "type": "boolean",
-                    "description": "BFD provides faster path failure detection and is enabled by default\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default\n"
                 },
                 "export": {
                     "type": "string"
@@ -15461,87 +15142,78 @@
                 },
                 "extendedV4Nexthop": {
                     "type": "boolean",
-                    "description": "By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this\n"
                 },
                 "gracefulRestartTime": {
                     "type": "integer",
-                    "description": "`0` means disable\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable\n"
                 },
                 "holdTime": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.\n"
                 },
                 "import": {
                     "type": "string"
                 },
                 "importPolicy": {
                     "type": "string",
-                    "description": "Default import policies if no per-neighbor policies defined\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined\n"
                 },
                 "localAs": {
                     "type": "string",
-                    "description": "Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)\n"
+                    "description": "Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)\n"
                 },
                 "neighborAs": {
                     "type": "string",
-                    "description": "Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)\n"
+                    "description": "Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)\n"
                 },
                 "neighbors": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/GatewaytemplateBgpConfigNeighbors:GatewaytemplateBgpConfigNeighbors"
                     },
-                    "description": "If per-neighbor as is desired. Property key is the neighbor address\n"
+                    "description": "Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address\n"
                 },
                 "networks": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from\n"
+                    "description": "Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from\n"
                 },
                 "noPrivateAs": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor\n"
                 },
                 "noReadvertiseToOverlay": {
                     "type": "boolean",
-                    "description": "By default, we'll re-advertise all learned BGP routers toward overlay\n"
+                    "description": "Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay\n"
                 },
                 "tunnelName": {
                     "type": "string",
-                    "description": "If `type`==`tunnel`\n"
+                    "description": "Optional if `via`==`tunnel`\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "enum: `external`, `internal`\n"
+                    "description": "Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`\n"
                 },
                 "via": {
                     "type": "string",
-                    "description": "network name. enum: `lan`, `tunnel`, `vpn`, `wan`\n"
+                    "description": "enum: `lan`, `tunnel`, `vpn`, `wan`\n"
                 },
                 "vpnName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Optional if `via`==`vpn`\n"
                 },
                 "wanName": {
                     "type": "string",
-                    "description": "If `via`==`wan`\n"
+                    "description": "Optional if `via`==`wan`\n"
                 }
             },
             "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "bfdMinimumInterval",
-                        "bfdMultiplier",
-                        "disableBfd",
-                        "gracefulRestartTime",
-                        "holdTime",
-                        "networks",
-                        "noPrivateAs",
-                        "noReadvertiseToOverlay",
-                        "via"
-                    ]
-                }
-            }
+            "required": [
+                "via"
+            ]
         },
         "junipermist:org/GatewaytemplateBgpConfigNeighbors:GatewaytemplateBgpConfigNeighbors": {
             "properties": {
@@ -15568,11 +15240,14 @@
                 }
             },
             "type": "object",
+            "required": [
+                "neighborAs"
+            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
                         "disabled",
-                        "holdTime"
+                        "neighborAs"
                     ]
                 }
             }
@@ -15591,14 +15266,7 @@
                     "description": "If set to `false`, disable the DHCP server\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplateDhcpdConfigConfig:GatewaytemplateDhcpdConfigConfig": {
             "properties": {
@@ -15614,7 +15282,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used\n"
+                    "description": "If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used\n",
+                    "deprecationMessage": "Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead"
                 },
                 "fixedBindings": {
                     "type": "object",
@@ -15688,21 +15357,7 @@
                     "description": "If `type`==`local` or `type6`==`local`. Property key is \u003centerprise number\u003e:\u003csub option code\u003e, with\n  * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)\n  * sub option code: 1-255, sub-option code\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "dnsServers",
-                        "dnsSuffixes",
-                        "leaseTime",
-                        "serverIdOverride",
-                        "servers",
-                        "servers6s",
-                        "type",
-                        "type6"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplateDhcpdConfigConfigFixedBindings:GatewaytemplateDhcpdConfigConfigFixedBindings": {
             "properties": {
@@ -15798,14 +15453,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "action"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplateIdpProfilesOverwriteMatching:GatewaytemplateIdpProfilesOverwriteMatching": {
             "properties": {
@@ -16337,14 +15985,9 @@
                 }
             },
             "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "networks",
-                        "targetIps"
-                    ]
-                }
-            }
+            "required": [
+                "type"
+            ]
         },
         "junipermist:org/GatewaytemplatePortConfig:GatewaytemplatePortConfig": {
             "properties": {
@@ -16544,30 +16187,8 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "aeDisableLacp",
-                        "aeLacpForceUp",
-                        "aggregated",
-                        "critical",
-                        "disableAutoneg",
                         "disabled",
-                        "dslType",
-                        "dslVci",
-                        "dslVpi",
-                        "duplex",
-                        "lteAuth",
-                        "networks",
-                        "poeDisabled",
-                        "preserveDscp",
-                        "rethNodes",
-                        "speed",
-                        "ssrNoVirtualMac",
-                        "svrPortRange",
-                        "usage",
-                        "wanArpPolicer",
-                        "wanDisableSpeedtest",
-                        "wanExtraRoutes",
-                        "wanNetworks",
-                        "wanType"
+                        "usage"
                     ]
                 }
             }
@@ -16622,15 +16243,7 @@
                     "description": "enum: `dhcp`, `pppoe`, `static`\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "pppoeAuth",
-                        "type"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplatePortConfigTrafficShaping:GatewaytemplatePortConfigTrafficShaping": {
             "properties": {
@@ -16649,14 +16262,7 @@
                     "description": "Interface Transmit Cap in kbps\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplatePortConfigVpnPaths:GatewaytemplatePortConfigVpnPaths": {
             "properties": {
@@ -16680,16 +16286,7 @@
                     "$ref": "#/types/junipermist:org/GatewaytemplatePortConfigVpnPathsTrafficShaping:GatewaytemplatePortConfigVpnPathsTrafficShaping"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "bfdProfile",
-                        "bfdUseTunnelMode",
-                        "role"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplatePortConfigVpnPathsTrafficShaping:GatewaytemplatePortConfigVpnPathsTrafficShaping": {
             "properties": {
@@ -16708,14 +16305,7 @@
                     "description": "Interface Transmit Cap in kbps\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplatePortConfigWanExtraRoutes:GatewaytemplatePortConfigWanExtraRoutes": {
             "properties": {
@@ -16738,14 +16328,7 @@
                     "description": "enum: `broadband`, `lte`\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "probeProfile"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplatePortConfigWanSourceNat:GatewaytemplatePortConfigWanSourceNat": {
             "properties": {
@@ -16758,14 +16341,7 @@
                     "description": "If alternative nat_pool is desired\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "disabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplateRoutingPolicies:GatewaytemplateRoutingPolicies": {
             "properties": {
@@ -16781,8 +16357,8 @@
         },
         "junipermist:org/GatewaytemplateRoutingPoliciesTerm:GatewaytemplateRoutingPoliciesTerm": {
             "properties": {
-                "action": {
-                    "$ref": "#/types/junipermist:org/GatewaytemplateRoutingPoliciesTermAction:GatewaytemplateRoutingPoliciesTermAction",
+                "actions": {
+                    "$ref": "#/types/junipermist:org/GatewaytemplateRoutingPoliciesTermActions:GatewaytemplateRoutingPoliciesTermActions",
                     "description": "When used as import policy\n"
                 },
                 "matching": {
@@ -16792,7 +16368,7 @@
             },
             "type": "object"
         },
-        "junipermist:org/GatewaytemplateRoutingPoliciesTermAction:GatewaytemplateRoutingPoliciesTermAction": {
+        "junipermist:org/GatewaytemplateRoutingPoliciesTermActions:GatewaytemplateRoutingPoliciesTermActions": {
             "properties": {
                 "accept": {
                     "type": "boolean"
@@ -17000,15 +16576,7 @@
                     "description": "Required when `servicepolicy_id` is not defined. List of Networks / Users\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "services",
-                        "tenants"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplateServicePolicyAntivirus:GatewaytemplateServicePolicyAntivirus": {
             "properties": {
@@ -17024,14 +16592,7 @@
                     "description": "Default / noftp / httponly / or keys from av_profiles\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplateServicePolicyAppqoe:GatewaytemplateServicePolicyAppqoe": {
             "properties": {
@@ -17039,14 +16600,7 @@
                     "type": "boolean"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplateServicePolicyEwf:GatewaytemplateServicePolicyEwf": {
             "properties": {
@@ -17064,15 +16618,7 @@
                     "description": "enum: `critical`, `standard`, `strict`\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled",
-                        "profile"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplateServicePolicyIdp:GatewaytemplateServicePolicyIdp": {
             "properties": {
@@ -17091,15 +16637,7 @@
                     "description": "enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled",
-                        "profile"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplateServicePolicySslProxy:GatewaytemplateServicePolicySslProxy": {
             "properties": {
@@ -17111,20 +16649,13 @@
                     "type": "boolean"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "ciphersCategory",
-                        "enabled"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplateTunnelConfigs:GatewaytemplateTunnelConfigs": {
             "properties": {
                 "autoProvision": {
-                    "$ref": "#/types/junipermist:org/GatewaytemplateTunnelConfigsAutoProvision:GatewaytemplateTunnelConfigsAutoProvision"
+                    "$ref": "#/types/junipermist:org/GatewaytemplateTunnelConfigsAutoProvision:GatewaytemplateTunnelConfigsAutoProvision",
+                    "description": "Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.\n"
                 },
                 "ikeLifetime": {
                     "type": "integer",
@@ -17197,22 +16728,13 @@
                     "description": "Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "ikeMode",
-                        "mode",
-                        "networks",
-                        "version"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplateTunnelConfigsAutoProvision:GatewaytemplateTunnelConfigsAutoProvision": {
             "properties": {
-                "enable": {
-                    "type": "boolean"
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.\n"
                 },
                 "latlng": {
                     "$ref": "#/types/junipermist:org/GatewaytemplateTunnelConfigsAutoProvisionLatlng:GatewaytemplateTunnelConfigsAutoProvisionLatlng",
@@ -17308,15 +16830,7 @@
                     "description": "enum: `3des`, `aes128`, `aes256`, `aes_gcm128`, `aes_gcm256`\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "dhGroup",
-                        "encAlgo"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplateTunnelConfigsIpsecProposal:GatewaytemplateTunnelConfigsIpsecProposal": {
             "properties": {
@@ -17333,15 +16847,7 @@
                     "description": "enum: `3des`, `aes128`, `aes256`, `aes_gcm128`, `aes_gcm256`\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "dhGroup",
-                        "encAlgo"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplateTunnelConfigsPrimary:GatewaytemplateTunnelConfigsPrimary": {
             "properties": {
@@ -19733,15 +19239,6 @@
                     "type": "string",
                     "description": "string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes\n"
                 },
-                "matchType": {
-                    "type": "string",
-                    "description": "property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`\n",
-                    "deprecationMessage": "The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.\nPlease update your configurations."
-                },
-                "matchValue": {
-                    "type": "string",
-                    "deprecationMessage": "The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.\nPlease update your configurations."
-                },
                 "name": {
                     "type": "string",
                     "description": "Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list\n"
@@ -19769,12 +19266,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "additionalConfigCmds",
-                        "matchModel",
-                        "matchName",
-                        "matchNameOffset",
-                        "matchType",
-                        "matchValue"
+                        "matchNameOffset"
                     ]
                 }
             }
@@ -30139,15 +29631,6 @@
                     "type": "string",
                     "description": "string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes\n"
                 },
-                "matchType": {
-                    "type": "string",
-                    "description": "property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`\n",
-                    "deprecationMessage": "The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.\nPlease update your configurations."
-                },
-                "matchValue": {
-                    "type": "string",
-                    "deprecationMessage": "The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.\nPlease update your configurations."
-                },
                 "name": {
                     "type": "string",
                     "description": "Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list\n"
@@ -30175,12 +29658,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "additionalConfigCmds",
-                        "matchModel",
-                        "matchName",
-                        "matchNameOffset",
-                        "matchType",
-                        "matchValue"
+                        "matchNameOffset"
                     ]
                 }
             }
@@ -38069,7 +37547,10 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/SwitchOspfAreas:SwitchOspfAreas"
                     },
-                    "description": "Junos OSPF areas\n"
+                    "description": "Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)\n"
+                },
+                "ospfConfig": {
+                    "$ref": "#/types/junipermist:device/SwitchOspfConfig:SwitchOspfConfig"
                 },
                 "otherIpConfigs": {
                     "type": "object",
@@ -38306,7 +37787,10 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/SwitchOspfAreas:SwitchOspfAreas"
                     },
-                    "description": "Junos OSPF areas\n"
+                    "description": "Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)\n"
+                },
+                "ospfConfig": {
+                    "$ref": "#/types/junipermist:device/SwitchOspfConfig:SwitchOspfConfig"
                 },
                 "otherIpConfigs": {
                     "type": "object",
@@ -38541,7 +38025,10 @@
                         "additionalProperties": {
                             "$ref": "#/types/junipermist:device/SwitchOspfAreas:SwitchOspfAreas"
                         },
-                        "description": "Junos OSPF areas\n"
+                        "description": "Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)\n"
+                    },
+                    "ospfConfig": {
+                        "$ref": "#/types/junipermist:device/SwitchOspfConfig:SwitchOspfConfig"
                     },
                     "otherIpConfigs": {
                         "type": "object",
@@ -39746,9 +39233,7 @@
                 }
             },
             "required": [
-                "dnsOverride",
                 "name",
-                "ntpOverride",
                 "oobIpConfig",
                 "orgId",
                 "type"
@@ -40287,9 +39772,7 @@
                 }
             },
             "required": [
-                "dnsOverride",
                 "name",
-                "ntpOverride",
                 "oobIpConfig",
                 "orgId",
                 "type"
@@ -41830,7 +41313,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/NetworktemplateOspfAreas:NetworktemplateOspfAreas"
                     },
-                    "description": "Junos OSPF areas\n"
+                    "description": "Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)\n"
                 },
                 "portMirroring": {
                     "type": "object",
@@ -41967,7 +41450,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/NetworktemplateOspfAreas:NetworktemplateOspfAreas"
                     },
-                    "description": "Junos OSPF areas\n"
+                    "description": "Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)\n"
                 },
                 "portMirroring": {
                     "type": "object",
@@ -42102,7 +41585,7 @@
                         "additionalProperties": {
                             "$ref": "#/types/junipermist:org/NetworktemplateOspfAreas:NetworktemplateOspfAreas"
                         },
-                        "description": "Junos OSPF areas\n"
+                        "description": "Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)\n"
                     },
                     "portMirroring": {
                         "type": "object",
@@ -46379,7 +45862,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:site/NetworktemplateOspfAreas:NetworktemplateOspfAreas"
                     },
-                    "description": "Junos OSPF areas\n"
+                    "description": "Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)\n"
                 },
                 "portMirroring": {
                     "type": "object",
@@ -46401,10 +45884,6 @@
                 },
                 "remoteSyslog": {
                     "$ref": "#/types/junipermist:site/NetworktemplateRemoteSyslog:NetworktemplateRemoteSyslog"
-                },
-                "removeExistingConfigs": {
-                    "type": "boolean",
-                    "description": "By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the\nexisting configuration will be removed.\n"
                 },
                 "siteId": {
                     "type": "string",
@@ -46528,7 +46007,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:site/NetworktemplateOspfAreas:NetworktemplateOspfAreas"
                     },
-                    "description": "Junos OSPF areas\n"
+                    "description": "Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)\n"
                 },
                 "portMirroring": {
                     "type": "object",
@@ -46550,10 +46029,6 @@
                 },
                 "remoteSyslog": {
                     "$ref": "#/types/junipermist:site/NetworktemplateRemoteSyslog:NetworktemplateRemoteSyslog"
-                },
-                "removeExistingConfigs": {
-                    "type": "boolean",
-                    "description": "By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the\nexisting configuration will be removed.\n"
                 },
                 "siteId": {
                     "type": "string",
@@ -46675,7 +46150,7 @@
                         "additionalProperties": {
                             "$ref": "#/types/junipermist:site/NetworktemplateOspfAreas:NetworktemplateOspfAreas"
                         },
-                        "description": "Junos OSPF areas\n"
+                        "description": "Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)\n"
                     },
                     "portMirroring": {
                         "type": "object",
@@ -46697,10 +46172,6 @@
                     },
                     "remoteSyslog": {
                         "$ref": "#/types/junipermist:site/NetworktemplateRemoteSyslog:NetworktemplateRemoteSyslog"
-                    },
-                    "removeExistingConfigs": {
-                        "type": "boolean",
-                        "description": "By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the\nexisting configuration will be removed.\n"
                     },
                     "siteId": {
                         "type": "string",
