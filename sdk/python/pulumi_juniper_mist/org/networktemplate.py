@@ -56,7 +56,7 @@ class NetworktemplateArgs:
         :param pulumi.Input['NetworktemplateMistNacArgs'] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateNetworksArgs']]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasArgs']]] ospf_areas: Junos OSPF areas
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasArgs']]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
                maximum 4 mirroring ports is allowed
@@ -264,7 +264,7 @@ class NetworktemplateArgs:
     @pulumi.getter(name="ospfAreas")
     def ospf_areas(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasArgs']]]]:
         """
-        Junos OSPF areas
+        Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         """
         return pulumi.get(self, "ospf_areas")
 
@@ -425,7 +425,7 @@ class _NetworktemplateState:
         :param pulumi.Input['NetworktemplateMistNacArgs'] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateNetworksArgs']]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasArgs']]] ospf_areas: Junos OSPF areas
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasArgs']]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
                maximum 4 mirroring ports is allowed
@@ -634,7 +634,7 @@ class _NetworktemplateState:
     @pulumi.getter(name="ospfAreas")
     def ospf_areas(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasArgs']]]]:
         """
-        Junos OSPF areas
+        Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         """
         return pulumi.get(self, "ospf_areas")
 
@@ -815,7 +815,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Union['NetworktemplateMistNacArgs', 'NetworktemplateMistNacArgsDict']] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateOspfAreasArgs', 'NetworktemplateOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateOspfAreasArgs', 'NetworktemplateOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
                maximum 4 mirroring ports is allowed
@@ -973,7 +973,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Union['NetworktemplateMistNacArgs', 'NetworktemplateMistNacArgsDict']] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateOspfAreasArgs', 'NetworktemplateOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateOspfAreasArgs', 'NetworktemplateOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
                maximum 4 mirroring ports is allowed
@@ -1111,7 +1111,7 @@ class Networktemplate(pulumi.CustomResource):
     @pulumi.getter(name="ospfAreas")
     def ospf_areas(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.NetworktemplateOspfAreas']]]:
         """
-        Junos OSPF areas
+        Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         """
         return pulumi.get(self, "ospf_areas")
 

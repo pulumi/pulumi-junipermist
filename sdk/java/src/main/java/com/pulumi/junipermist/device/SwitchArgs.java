@@ -18,6 +18,7 @@ import com.pulumi.junipermist.device.inputs.SwitchMistNacArgs;
 import com.pulumi.junipermist.device.inputs.SwitchNetworksArgs;
 import com.pulumi.junipermist.device.inputs.SwitchOobIpConfigArgs;
 import com.pulumi.junipermist.device.inputs.SwitchOspfAreasArgs;
+import com.pulumi.junipermist.device.inputs.SwitchOspfConfigArgs;
 import com.pulumi.junipermist.device.inputs.SwitchOtherIpConfigsArgs;
 import com.pulumi.junipermist.device.inputs.SwitchPortConfigArgs;
 import com.pulumi.junipermist.device.inputs.SwitchPortMirroringArgs;
@@ -321,18 +322,25 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Junos OSPF areas
+     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
      * 
      */
     @Import(name="ospfAreas")
     private @Nullable Output<Map<String,SwitchOspfAreasArgs>> ospfAreas;
 
     /**
-     * @return Junos OSPF areas
+     * @return Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
      * 
      */
     public Optional<Output<Map<String,SwitchOspfAreasArgs>>> ospfAreas() {
         return Optional.ofNullable(this.ospfAreas);
+    }
+
+    @Import(name="ospfConfig")
+    private @Nullable Output<SwitchOspfConfigArgs> ospfConfig;
+
+    public Optional<Output<SwitchOspfConfigArgs>> ospfConfig() {
+        return Optional.ofNullable(this.ospfConfig);
     }
 
     /**
@@ -616,6 +624,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         this.ntpServers = $.ntpServers;
         this.oobIpConfig = $.oobIpConfig;
         this.ospfAreas = $.ospfAreas;
+        this.ospfConfig = $.ospfConfig;
         this.otherIpConfigs = $.otherIpConfigs;
         this.portConfig = $.portConfig;
         this.portMirroring = $.portMirroring;
@@ -1078,7 +1087,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ospfAreas Junos OSPF areas
+         * @param ospfAreas Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
          * 
          * @return builder
          * 
@@ -1089,13 +1098,22 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ospfAreas Junos OSPF areas
+         * @param ospfAreas Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
          * 
          * @return builder
          * 
          */
         public Builder ospfAreas(Map<String,SwitchOspfAreasArgs> ospfAreas) {
             return ospfAreas(Output.of(ospfAreas));
+        }
+
+        public Builder ospfConfig(@Nullable Output<SwitchOspfConfigArgs> ospfConfig) {
+            $.ospfConfig = ospfConfig;
+            return this;
+        }
+
+        public Builder ospfConfig(SwitchOspfConfigArgs ospfConfig) {
+            return ospfConfig(Output.of(ospfConfig));
         }
 
         /**

@@ -26,7 +26,11 @@ public final class GatewayDhcpdConfigConfig {
     /**
      * @return If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
      * 
+     * @deprecated
+     * Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
+     * 
      */
+    @Deprecated /* Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
     private @Nullable List<String> dnsSuffixes;
     /**
      * @return If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
@@ -113,7 +117,11 @@ public final class GatewayDhcpdConfigConfig {
     /**
      * @return If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
      * 
+     * @deprecated
+     * Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
+     * 
      */
+    @Deprecated /* Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
     public List<String> dnsSuffixes() {
         return this.dnsSuffixes == null ? List.of() : this.dnsSuffixes;
     }

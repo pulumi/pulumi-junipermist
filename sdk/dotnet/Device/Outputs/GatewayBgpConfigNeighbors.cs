@@ -27,7 +27,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// <summary>
         /// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         /// </summary>
-        public readonly string? NeighborAs;
+        public readonly string NeighborAs;
 
         [OutputConstructor]
         private GatewayBgpConfigNeighbors(
@@ -41,7 +41,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             int? multihopTtl,
 
-            string? neighborAs)
+            string neighborAs)
         {
             Disabled = disabled;
             ExportPolicy = exportPolicy;

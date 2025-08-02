@@ -5,6 +5,7 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayBgpConfigNeighborsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -20,15 +21,23 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
 
     public static final DeviceprofileGatewayBgpConfigArgs Empty = new DeviceprofileGatewayBgpConfigArgs();
 
+    /**
+     * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+     * 
+     */
     @Import(name="authKey")
     private @Nullable Output<String> authKey;
 
+    /**
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+     * 
+     */
     public Optional<Output<String>> authKey() {
         return Optional.ofNullable(this.authKey);
     }
 
     /**
-     * When bfd_multiplier is configured alone. Default:
+     * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
      *   * 1000 if `type`==`external`
      *   * 350 `type`==`internal`
      * 
@@ -37,7 +46,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     private @Nullable Output<Integer> bfdMinimumInterval;
 
     /**
-     * @return When bfd_multiplier is configured alone. Default:
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
      *   * 1000 if `type`==`external`
      *   * 350 `type`==`internal`
      * 
@@ -47,14 +56,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * When bfd_minimum_interval_is_configured alone
+     * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
      * 
      */
     @Import(name="bfdMultiplier")
     private @Nullable Output<Integer> bfdMultiplier;
 
     /**
-     * @return When bfd_minimum_interval_is_configured alone
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
      * 
      */
     public Optional<Output<Integer>> bfdMultiplier() {
@@ -62,14 +71,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * BFD provides faster path failure detection and is enabled by default
+     * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
      * 
      */
     @Import(name="disableBfd")
     private @Nullable Output<Boolean> disableBfd;
 
     /**
-     * @return BFD provides faster path failure detection and is enabled by default
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
      * 
      */
     public Optional<Output<Boolean>> disableBfd() {
@@ -99,14 +108,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+     * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
      * 
      */
     @Import(name="extendedV4Nexthop")
     private @Nullable Output<Boolean> extendedV4Nexthop;
 
     /**
-     * @return By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
      * 
      */
     public Optional<Output<Boolean>> extendedV4Nexthop() {
@@ -114,23 +123,31 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * `0` means disable
+     * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
      * 
      */
     @Import(name="gracefulRestartTime")
     private @Nullable Output<Integer> gracefulRestartTime;
 
     /**
-     * @return `0` means disable
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
      * 
      */
     public Optional<Output<Integer>> gracefulRestartTime() {
         return Optional.ofNullable(this.gracefulRestartTime);
     }
 
+    /**
+     * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+     * 
+     */
     @Import(name="holdTime")
     private @Nullable Output<Integer> holdTime;
 
+    /**
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+     * 
+     */
     public Optional<Output<Integer>> holdTime() {
         return Optional.ofNullable(this.holdTime);
     }
@@ -143,14 +160,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * Default import policies if no per-neighbor policies defined
+     * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
      * 
      */
     @Import(name="importPolicy")
     private @Nullable Output<String> importPolicy;
 
     /**
-     * @return Default import policies if no per-neighbor policies defined
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
      * 
      */
     public Optional<Output<String>> importPolicy() {
@@ -158,14 +175,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
      * 
      */
     @Import(name="localAs")
     private @Nullable Output<String> localAs;
 
     /**
-     * @return Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * @return Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
      * 
      */
     public Optional<Output<String>> localAs() {
@@ -173,14 +190,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
      * 
      */
     @Import(name="neighborAs")
     private @Nullable Output<String> neighborAs;
 
     /**
-     * @return Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * @return Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
      * 
      */
     public Optional<Output<String>> neighborAs() {
@@ -188,14 +205,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * If per-neighbor as is desired. Property key is the neighbor address
+     * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
      * 
      */
     @Import(name="neighbors")
     private @Nullable Output<Map<String,DeviceprofileGatewayBgpConfigNeighborsArgs>> neighbors;
 
     /**
-     * @return If per-neighbor as is desired. Property key is the neighbor address
+     * @return Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
      * 
      */
     public Optional<Output<Map<String,DeviceprofileGatewayBgpConfigNeighborsArgs>>> neighbors() {
@@ -203,36 +220,44 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+     * Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
     /**
-     * @return If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+     * @return Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
      * 
      */
     public Optional<Output<List<String>>> networks() {
         return Optional.ofNullable(this.networks);
     }
 
+    /**
+     * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+     * 
+     */
     @Import(name="noPrivateAs")
     private @Nullable Output<Boolean> noPrivateAs;
 
+    /**
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+     * 
+     */
     public Optional<Output<Boolean>> noPrivateAs() {
         return Optional.ofNullable(this.noPrivateAs);
     }
 
     /**
-     * By default, we&#39;ll re-advertise all learned BGP routers toward overlay
+     * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we&#39;ll re-advertise all learned BGP routers toward overlay
      * 
      */
     @Import(name="noReadvertiseToOverlay")
     private @Nullable Output<Boolean> noReadvertiseToOverlay;
 
     /**
-     * @return By default, we&#39;ll re-advertise all learned BGP routers toward overlay
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we&#39;ll re-advertise all learned BGP routers toward overlay
      * 
      */
     public Optional<Output<Boolean>> noReadvertiseToOverlay() {
@@ -240,14 +265,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * If `type`==`tunnel`
+     * Optional if `via`==`tunnel`
      * 
      */
     @Import(name="tunnelName")
     private @Nullable Output<String> tunnelName;
 
     /**
-     * @return If `type`==`tunnel`
+     * @return Optional if `via`==`tunnel`
      * 
      */
     public Optional<Output<String>> tunnelName() {
@@ -255,14 +280,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * enum: `external`, `internal`
+     * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `external`, `internal`
+     * @return Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
      * 
      */
     public Optional<Output<String>> type() {
@@ -270,36 +295,44 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * network name. enum: `lan`, `tunnel`, `vpn`, `wan`
+     * enum: `lan`, `tunnel`, `vpn`, `wan`
      * 
      */
-    @Import(name="via")
-    private @Nullable Output<String> via;
+    @Import(name="via", required=true)
+    private Output<String> via;
 
     /**
-     * @return network name. enum: `lan`, `tunnel`, `vpn`, `wan`
+     * @return enum: `lan`, `tunnel`, `vpn`, `wan`
      * 
      */
-    public Optional<Output<String>> via() {
-        return Optional.ofNullable(this.via);
+    public Output<String> via() {
+        return this.via;
     }
 
+    /**
+     * Optional if `via`==`vpn`
+     * 
+     */
     @Import(name="vpnName")
     private @Nullable Output<String> vpnName;
 
+    /**
+     * @return Optional if `via`==`vpn`
+     * 
+     */
     public Optional<Output<String>> vpnName() {
         return Optional.ofNullable(this.vpnName);
     }
 
     /**
-     * If `via`==`wan`
+     * Optional if `via`==`wan`
      * 
      */
     @Import(name="wanName")
     private @Nullable Output<String> wanName;
 
     /**
-     * @return If `via`==`wan`
+     * @return Optional if `via`==`wan`
      * 
      */
     public Optional<Output<String>> wanName() {
@@ -351,17 +384,29 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
             $ = new DeviceprofileGatewayBgpConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param authKey Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+         * 
+         * @return builder
+         * 
+         */
         public Builder authKey(@Nullable Output<String> authKey) {
             $.authKey = authKey;
             return this;
         }
 
+        /**
+         * @param authKey Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+         * 
+         * @return builder
+         * 
+         */
         public Builder authKey(String authKey) {
             return authKey(Output.of(authKey));
         }
 
         /**
-         * @param bfdMinimumInterval When bfd_multiplier is configured alone. Default:
+         * @param bfdMinimumInterval Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
          *   * 1000 if `type`==`external`
          *   * 350 `type`==`internal`
          * 
@@ -374,7 +419,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param bfdMinimumInterval When bfd_multiplier is configured alone. Default:
+         * @param bfdMinimumInterval Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
          *   * 1000 if `type`==`external`
          *   * 350 `type`==`internal`
          * 
@@ -386,7 +431,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param bfdMultiplier When bfd_minimum_interval_is_configured alone
+         * @param bfdMultiplier Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
          * 
          * @return builder
          * 
@@ -397,7 +442,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param bfdMultiplier When bfd_minimum_interval_is_configured alone
+         * @param bfdMultiplier Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
          * 
          * @return builder
          * 
@@ -407,7 +452,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param disableBfd BFD provides faster path failure detection and is enabled by default
+         * @param disableBfd Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
          * 
          * @return builder
          * 
@@ -418,7 +463,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param disableBfd BFD provides faster path failure detection and is enabled by default
+         * @param disableBfd Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
          * 
          * @return builder
          * 
@@ -458,7 +503,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param extendedV4Nexthop By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+         * @param extendedV4Nexthop Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
          * 
          * @return builder
          * 
@@ -469,7 +514,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param extendedV4Nexthop By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+         * @param extendedV4Nexthop Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
          * 
          * @return builder
          * 
@@ -479,7 +524,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param gracefulRestartTime `0` means disable
+         * @param gracefulRestartTime Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
          * 
          * @return builder
          * 
@@ -490,7 +535,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param gracefulRestartTime `0` means disable
+         * @param gracefulRestartTime Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
          * 
          * @return builder
          * 
@@ -499,11 +544,23 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
             return gracefulRestartTime(Output.of(gracefulRestartTime));
         }
 
+        /**
+         * @param holdTime Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+         * 
+         * @return builder
+         * 
+         */
         public Builder holdTime(@Nullable Output<Integer> holdTime) {
             $.holdTime = holdTime;
             return this;
         }
 
+        /**
+         * @param holdTime Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+         * 
+         * @return builder
+         * 
+         */
         public Builder holdTime(Integer holdTime) {
             return holdTime(Output.of(holdTime));
         }
@@ -518,7 +575,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param importPolicy Default import policies if no per-neighbor policies defined
+         * @param importPolicy Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
          * 
          * @return builder
          * 
@@ -529,7 +586,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param importPolicy Default import policies if no per-neighbor policies defined
+         * @param importPolicy Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
          * 
          * @return builder
          * 
@@ -539,7 +596,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param localAs Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * @param localAs Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          * 
          * @return builder
          * 
@@ -550,7 +607,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param localAs Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * @param localAs Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          * 
          * @return builder
          * 
@@ -560,7 +617,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param neighborAs Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * @param neighborAs Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          * 
          * @return builder
          * 
@@ -571,7 +628,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param neighborAs Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * @param neighborAs Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          * 
          * @return builder
          * 
@@ -581,7 +638,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param neighbors If per-neighbor as is desired. Property key is the neighbor address
+         * @param neighbors Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
          * 
          * @return builder
          * 
@@ -592,7 +649,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param neighbors If per-neighbor as is desired. Property key is the neighbor address
+         * @param neighbors Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
          * 
          * @return builder
          * 
@@ -602,7 +659,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param networks If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+         * @param networks Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
          * 
          * @return builder
          * 
@@ -613,7 +670,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param networks If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+         * @param networks Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
          * 
          * @return builder
          * 
@@ -623,7 +680,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param networks If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+         * @param networks Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
          * 
          * @return builder
          * 
@@ -632,17 +689,29 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
             return networks(List.of(networks));
         }
 
+        /**
+         * @param noPrivateAs Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+         * 
+         * @return builder
+         * 
+         */
         public Builder noPrivateAs(@Nullable Output<Boolean> noPrivateAs) {
             $.noPrivateAs = noPrivateAs;
             return this;
         }
 
+        /**
+         * @param noPrivateAs Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+         * 
+         * @return builder
+         * 
+         */
         public Builder noPrivateAs(Boolean noPrivateAs) {
             return noPrivateAs(Output.of(noPrivateAs));
         }
 
         /**
-         * @param noReadvertiseToOverlay By default, we&#39;ll re-advertise all learned BGP routers toward overlay
+         * @param noReadvertiseToOverlay Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we&#39;ll re-advertise all learned BGP routers toward overlay
          * 
          * @return builder
          * 
@@ -653,7 +722,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param noReadvertiseToOverlay By default, we&#39;ll re-advertise all learned BGP routers toward overlay
+         * @param noReadvertiseToOverlay Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we&#39;ll re-advertise all learned BGP routers toward overlay
          * 
          * @return builder
          * 
@@ -663,7 +732,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param tunnelName If `type`==`tunnel`
+         * @param tunnelName Optional if `via`==`tunnel`
          * 
          * @return builder
          * 
@@ -674,7 +743,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param tunnelName If `type`==`tunnel`
+         * @param tunnelName Optional if `via`==`tunnel`
          * 
          * @return builder
          * 
@@ -684,7 +753,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param type enum: `external`, `internal`
+         * @param type Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
          * 
          * @return builder
          * 
@@ -695,7 +764,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param type enum: `external`, `internal`
+         * @param type Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
          * 
          * @return builder
          * 
@@ -705,18 +774,18 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param via network name. enum: `lan`, `tunnel`, `vpn`, `wan`
+         * @param via enum: `lan`, `tunnel`, `vpn`, `wan`
          * 
          * @return builder
          * 
          */
-        public Builder via(@Nullable Output<String> via) {
+        public Builder via(Output<String> via) {
             $.via = via;
             return this;
         }
 
         /**
-         * @param via network name. enum: `lan`, `tunnel`, `vpn`, `wan`
+         * @param via enum: `lan`, `tunnel`, `vpn`, `wan`
          * 
          * @return builder
          * 
@@ -725,17 +794,29 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
             return via(Output.of(via));
         }
 
+        /**
+         * @param vpnName Optional if `via`==`vpn`
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpnName(@Nullable Output<String> vpnName) {
             $.vpnName = vpnName;
             return this;
         }
 
+        /**
+         * @param vpnName Optional if `via`==`vpn`
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpnName(String vpnName) {
             return vpnName(Output.of(vpnName));
         }
 
         /**
-         * @param wanName If `via`==`wan`
+         * @param wanName Optional if `via`==`wan`
          * 
          * @return builder
          * 
@@ -746,7 +827,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param wanName If `via`==`wan`
+         * @param wanName Optional if `via`==`wan`
          * 
          * @return builder
          * 
@@ -756,6 +837,9 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         public DeviceprofileGatewayBgpConfigArgs build() {
+            if ($.via == null) {
+                throw new MissingRequiredPropertyException("DeviceprofileGatewayBgpConfigArgs", "via");
+            }
             return $;
         }
     }

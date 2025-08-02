@@ -19,6 +19,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewaytemplateTunnelConfigs {
+    /**
+     * @return Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+     * 
+     */
     private @Nullable GatewaytemplateTunnelConfigsAutoProvision autoProvision;
     /**
      * @return Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
@@ -97,6 +101,10 @@ public final class GatewaytemplateTunnelConfigs {
     private @Nullable String version;
 
     private GatewaytemplateTunnelConfigs() {}
+    /**
+     * @return Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+     * 
+     */
     public Optional<GatewaytemplateTunnelConfigsAutoProvision> autoProvision() {
         return Optional.ofNullable(this.autoProvision);
     }

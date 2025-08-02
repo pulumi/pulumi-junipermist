@@ -78,8 +78,9 @@ type Switch struct {
 	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
 	OobIpConfig SwitchOobIpConfigPtrOutput `pulumi:"oobIpConfig"`
 	OrgId       pulumi.StringOutput        `pulumi:"orgId"`
-	// Junos OSPF areas
-	OspfAreas SwitchOspfAreasMapOutput `pulumi:"ospfAreas"`
+	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+	OspfAreas  SwitchOspfAreasMapOutput  `pulumi:"ospfAreas"`
+	OspfConfig SwitchOspfConfigPtrOutput `pulumi:"ospfConfig"`
 	// Property key is the network name. Defines the additional IP Addresses configured on the device.
 	OtherIpConfigs SwitchOtherIpConfigsMapOutput `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
@@ -206,8 +207,9 @@ type switchState struct {
 	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
 	OobIpConfig *SwitchOobIpConfig `pulumi:"oobIpConfig"`
 	OrgId       *string            `pulumi:"orgId"`
-	// Junos OSPF areas
-	OspfAreas map[string]SwitchOspfAreas `pulumi:"ospfAreas"`
+	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+	OspfAreas  map[string]SwitchOspfAreas `pulumi:"ospfAreas"`
+	OspfConfig *SwitchOspfConfig          `pulumi:"ospfConfig"`
 	// Property key is the network name. Defines the additional IP Addresses configured on the device.
 	OtherIpConfigs map[string]SwitchOtherIpConfigs `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
@@ -299,8 +301,9 @@ type SwitchState struct {
 	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
 	OobIpConfig SwitchOobIpConfigPtrInput
 	OrgId       pulumi.StringPtrInput
-	// Junos OSPF areas
-	OspfAreas SwitchOspfAreasMapInput
+	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+	OspfAreas  SwitchOspfAreasMapInput
+	OspfConfig SwitchOspfConfigPtrInput
 	// Property key is the network name. Defines the additional IP Addresses configured on the device.
 	OtherIpConfigs SwitchOtherIpConfigsMapInput
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
@@ -388,8 +391,9 @@ type switchArgs struct {
 	// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
 	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
 	OobIpConfig *SwitchOobIpConfig `pulumi:"oobIpConfig"`
-	// Junos OSPF areas
-	OspfAreas map[string]SwitchOspfAreas `pulumi:"ospfAreas"`
+	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+	OspfAreas  map[string]SwitchOspfAreas `pulumi:"ospfAreas"`
+	OspfConfig *SwitchOspfConfig          `pulumi:"ospfConfig"`
 	// Property key is the network name. Defines the additional IP Addresses configured on the device.
 	OtherIpConfigs map[string]SwitchOtherIpConfigs `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
@@ -470,8 +474,9 @@ type SwitchArgs struct {
 	// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
 	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
 	OobIpConfig SwitchOobIpConfigPtrInput
-	// Junos OSPF areas
-	OspfAreas SwitchOspfAreasMapInput
+	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+	OspfAreas  SwitchOspfAreasMapInput
+	OspfConfig SwitchOspfConfigPtrInput
 	// Property key is the network name. Defines the additional IP Addresses configured on the device.
 	OtherIpConfigs SwitchOtherIpConfigsMapInput
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
@@ -726,9 +731,13 @@ func (o SwitchOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Junos OSPF areas
+// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
 func (o SwitchOutput) OspfAreas() SwitchOspfAreasMapOutput {
 	return o.ApplyT(func(v *Switch) SwitchOspfAreasMapOutput { return v.OspfAreas }).(SwitchOspfAreasMapOutput)
+}
+
+func (o SwitchOutput) OspfConfig() SwitchOspfConfigPtrOutput {
+	return o.ApplyT(func(v *Switch) SwitchOspfConfigPtrOutput { return v.OspfConfig }).(SwitchOspfConfigPtrOutput)
 }
 
 // Property key is the network name. Defines the additional IP Addresses configured on the device.

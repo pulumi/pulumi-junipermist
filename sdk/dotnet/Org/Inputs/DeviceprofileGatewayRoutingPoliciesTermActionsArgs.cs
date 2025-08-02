@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Org.Inputs
 {
 
-    public sealed class DeviceprofileGatewayRoutingPoliciesTermActionGetArgs : global::Pulumi.ResourceArgs
+    public sealed class DeviceprofileGatewayRoutingPoliciesTermActionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("accept")]
         public Input<bool>? Accept { get; set; }
@@ -97,9 +97,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _prependAsPaths = value;
         }
 
-        public DeviceprofileGatewayRoutingPoliciesTermActionGetArgs()
+        public DeviceprofileGatewayRoutingPoliciesTermActionsArgs()
         {
         }
-        public static new DeviceprofileGatewayRoutingPoliciesTermActionGetArgs Empty => new DeviceprofileGatewayRoutingPoliciesTermActionGetArgs();
+        public static new DeviceprofileGatewayRoutingPoliciesTermActionsArgs Empty => new DeviceprofileGatewayRoutingPoliciesTermActionsArgs();
     }
 }

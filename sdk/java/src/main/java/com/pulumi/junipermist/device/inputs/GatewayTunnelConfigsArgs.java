@@ -23,9 +23,17 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
 
     public static final GatewayTunnelConfigsArgs Empty = new GatewayTunnelConfigsArgs();
 
+    /**
+     * Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+     * 
+     */
     @Import(name="autoProvision")
     private @Nullable Output<GatewayTunnelConfigsAutoProvisionArgs> autoProvision;
 
+    /**
+     * @return Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+     * 
+     */
     public Optional<Output<GatewayTunnelConfigsAutoProvisionArgs>> autoProvision() {
         return Optional.ofNullable(this.autoProvision);
     }
@@ -294,11 +302,23 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
             $ = new GatewayTunnelConfigsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoProvision Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoProvision(@Nullable Output<GatewayTunnelConfigsAutoProvisionArgs> autoProvision) {
             $.autoProvision = autoProvision;
             return this;
         }
 
+        /**
+         * @param autoProvision Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoProvision(GatewayTunnelConfigsAutoProvisionArgs autoProvision) {
             return autoProvision(Output.of(autoProvision));
         }

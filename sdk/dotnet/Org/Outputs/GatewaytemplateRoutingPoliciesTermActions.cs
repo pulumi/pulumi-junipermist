@@ -11,7 +11,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 {
 
     [OutputType]
-    public sealed class GatewaytemplateRoutingPoliciesTermAction
+    public sealed class GatewaytemplateRoutingPoliciesTermActions
     {
         public readonly bool? Accept;
         public readonly ImmutableArray<string> AddCommunities;
@@ -42,7 +42,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly ImmutableArray<string> PrependAsPaths;
 
         [OutputConstructor]
-        private GatewaytemplateRoutingPoliciesTermAction(
+        private GatewaytemplateRoutingPoliciesTermActions(
             bool? accept,
 
             ImmutableArray<string> addCommunities,

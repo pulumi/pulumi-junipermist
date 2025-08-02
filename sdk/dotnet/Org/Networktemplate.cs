@@ -95,7 +95,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Junos OSPF areas
+        /// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         /// </summary>
         [Output("ospfAreas")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateOspfAreas>?> OspfAreas { get; private set; } = null!;
@@ -324,7 +324,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplateOspfAreasArgs>? _ospfAreas;
 
         /// <summary>
-        /// Junos OSPF areas
+        /// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         /// </summary>
         public InputMap<Inputs.NetworktemplateOspfAreasArgs> OspfAreas
         {
@@ -535,7 +535,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplateOspfAreasGetArgs>? _ospfAreas;
 
         /// <summary>
-        /// Junos OSPF areas
+        /// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         /// </summary>
         public InputMap<Inputs.NetworktemplateOspfAreasGetArgs> OspfAreas
         {

@@ -20,11 +20,19 @@ public final class GatewayTunnelConfigsAutoProvisionArgs extends com.pulumi.reso
 
     public static final GatewayTunnelConfigsAutoProvisionArgs Empty = new GatewayTunnelConfigsAutoProvisionArgs();
 
-    @Import(name="enable")
-    private @Nullable Output<Boolean> enable;
+    /**
+     * Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
 
-    public Optional<Output<Boolean>> enable() {
-        return Optional.ofNullable(this.enable);
+    /**
+     * @return Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
     /**
@@ -104,7 +112,7 @@ public final class GatewayTunnelConfigsAutoProvisionArgs extends com.pulumi.reso
     private GatewayTunnelConfigsAutoProvisionArgs() {}
 
     private GatewayTunnelConfigsAutoProvisionArgs(GatewayTunnelConfigsAutoProvisionArgs $) {
-        this.enable = $.enable;
+        this.enabled = $.enabled;
         this.latlng = $.latlng;
         this.primary = $.primary;
         this.provider = $.provider;
@@ -131,13 +139,25 @@ public final class GatewayTunnelConfigsAutoProvisionArgs extends com.pulumi.reso
             $ = new GatewayTunnelConfigsAutoProvisionArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder enable(@Nullable Output<Boolean> enable) {
-            $.enable = enable;
+        /**
+         * @param enabled Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
             return this;
         }
 
-        public Builder enable(Boolean enable) {
-            return enable(Output.of(enable));
+        /**
+         * @param enabled Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
         }
 
         /**

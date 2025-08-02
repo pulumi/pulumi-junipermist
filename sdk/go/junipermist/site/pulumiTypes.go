@@ -8465,14 +8465,6 @@ type NetworktemplateSwitchMatchingRule struct {
 	MatchNameOffset *int `pulumi:"matchNameOffset"`
 	// string the switch role must start with to use this rule. It is possible to combine with the `matchName` and `matchModel` attributes
 	MatchRole *string `pulumi:"matchRole"`
-	// property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
-	//
-	// Deprecated: The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
-	// Please update your configurations.
-	MatchType *string `pulumi:"matchType"`
-	// Deprecated: The `matchValue` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
-	// Please update your configurations.
-	MatchValue *string `pulumi:"matchValue"`
 	// Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
 	Name *string `pulumi:"name"`
 	// Out-of-Band Management interface configuration
@@ -8507,14 +8499,6 @@ type NetworktemplateSwitchMatchingRuleArgs struct {
 	MatchNameOffset pulumi.IntPtrInput `pulumi:"matchNameOffset"`
 	// string the switch role must start with to use this rule. It is possible to combine with the `matchName` and `matchModel` attributes
 	MatchRole pulumi.StringPtrInput `pulumi:"matchRole"`
-	// property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
-	//
-	// Deprecated: The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
-	// Please update your configurations.
-	MatchType pulumi.StringPtrInput `pulumi:"matchType"`
-	// Deprecated: The `matchValue` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
-	// Please update your configurations.
-	MatchValue pulumi.StringPtrInput `pulumi:"matchValue"`
 	// Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Out-of-Band Management interface configuration
@@ -8606,20 +8590,6 @@ func (o NetworktemplateSwitchMatchingRuleOutput) MatchNameOffset() pulumi.IntPtr
 // string the switch role must start with to use this rule. It is possible to combine with the `matchName` and `matchModel` attributes
 func (o NetworktemplateSwitchMatchingRuleOutput) MatchRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRule) *string { return v.MatchRole }).(pulumi.StringPtrOutput)
-}
-
-// property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
-//
-// Deprecated: The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
-// Please update your configurations.
-func (o NetworktemplateSwitchMatchingRuleOutput) MatchType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworktemplateSwitchMatchingRule) *string { return v.MatchType }).(pulumi.StringPtrOutput)
-}
-
-// Deprecated: The `matchValue` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attributes and may be removed in future versions.
-// Please update your configurations.
-func (o NetworktemplateSwitchMatchingRuleOutput) MatchValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworktemplateSwitchMatchingRule) *string { return v.MatchValue }).(pulumi.StringPtrOutput)
 }
 
 // Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list

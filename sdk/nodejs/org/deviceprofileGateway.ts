@@ -57,7 +57,7 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
     public readonly additionalConfigCmds!: pulumi.Output<string[] | undefined>;
     public readonly bgpConfig!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayBgpConfig} | undefined>;
     public readonly dhcpdConfig!: pulumi.Output<outputs.org.DeviceprofileGatewayDhcpdConfig | undefined>;
-    public readonly dnsOverride!: pulumi.Output<boolean>;
+    public readonly dnsOverride!: pulumi.Output<boolean | undefined>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
@@ -85,7 +85,7 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
     public readonly ipConfigs!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayIpConfigs} | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly networks!: pulumi.Output<outputs.org.DeviceprofileGatewayNetwork[] | undefined>;
-    public readonly ntpOverride!: pulumi.Output<boolean>;
+    public readonly ntpOverride!: pulumi.Output<boolean | undefined>;
     /**
      * List of NTP servers specific to this device. By default, those in Site Settings will be used
      */

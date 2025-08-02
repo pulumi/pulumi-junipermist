@@ -4,6 +4,7 @@
 package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.device.outputs.GatewayBgpConfigNeighbors;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -16,21 +17,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewayBgpConfig {
+    /**
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+     * 
+     */
     private @Nullable String authKey;
     /**
-     * @return When bfd_multiplier is configured alone. Default:
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
      *   * 1000 if `type`==`external`
      *   * 350 `type`==`internal`
      * 
      */
     private @Nullable Integer bfdMinimumInterval;
     /**
-     * @return When bfd_minimum_interval_is_configured alone
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
      * 
      */
     private @Nullable Integer bfdMultiplier;
     /**
-     * @return BFD provides faster path failure detection and is enabled by default
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
      * 
      */
     private @Nullable Boolean disableBfd;
@@ -41,76 +46,92 @@ public final class GatewayBgpConfig {
      */
     private @Nullable String exportPolicy;
     /**
-     * @return By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
      * 
      */
     private @Nullable Boolean extendedV4Nexthop;
     /**
-     * @return `0` means disable
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
      * 
      */
     private @Nullable Integer gracefulRestartTime;
+    /**
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+     * 
+     */
     private @Nullable Integer holdTime;
     private @Nullable String import_;
     /**
-     * @return Default import policies if no per-neighbor policies defined
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
      * 
      */
     private @Nullable String importPolicy;
     /**
-     * @return Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * @return Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
      * 
      */
     private @Nullable String localAs;
     /**
-     * @return Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * @return Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
      * 
      */
     private @Nullable String neighborAs;
     /**
-     * @return If per-neighbor as is desired. Property key is the neighbor address
+     * @return Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
      * 
      */
     private @Nullable Map<String,GatewayBgpConfigNeighbors> neighbors;
     /**
-     * @return If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+     * @return Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
      * 
      */
     private @Nullable List<String> networks;
+    /**
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+     * 
+     */
     private @Nullable Boolean noPrivateAs;
     /**
-     * @return By default, we&#39;ll re-advertise all learned BGP routers toward overlay
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we&#39;ll re-advertise all learned BGP routers toward overlay
      * 
      */
     private @Nullable Boolean noReadvertiseToOverlay;
     /**
-     * @return If `type`==`tunnel`
+     * @return Optional if `via`==`tunnel`
      * 
      */
     private @Nullable String tunnelName;
     /**
-     * @return enum: `external`, `internal`
+     * @return Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
      * 
      */
     private @Nullable String type;
     /**
-     * @return network name. enum: `lan`, `tunnel`, `vpn`, `wan`
+     * @return enum: `lan`, `tunnel`, `vpn`, `wan`
      * 
      */
-    private @Nullable String via;
+    private String via;
+    /**
+     * @return Optional if `via`==`vpn`
+     * 
+     */
     private @Nullable String vpnName;
     /**
-     * @return If `via`==`wan`
+     * @return Optional if `via`==`wan`
      * 
      */
     private @Nullable String wanName;
 
     private GatewayBgpConfig() {}
+    /**
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+     * 
+     */
     public Optional<String> authKey() {
         return Optional.ofNullable(this.authKey);
     }
     /**
-     * @return When bfd_multiplier is configured alone. Default:
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
      *   * 1000 if `type`==`external`
      *   * 350 `type`==`internal`
      * 
@@ -119,14 +140,14 @@ public final class GatewayBgpConfig {
         return Optional.ofNullable(this.bfdMinimumInterval);
     }
     /**
-     * @return When bfd_minimum_interval_is_configured alone
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
      * 
      */
     public Optional<Integer> bfdMultiplier() {
         return Optional.ofNullable(this.bfdMultiplier);
     }
     /**
-     * @return BFD provides faster path failure detection and is enabled by default
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
      * 
      */
     public Optional<Boolean> disableBfd() {
@@ -143,19 +164,23 @@ public final class GatewayBgpConfig {
         return Optional.ofNullable(this.exportPolicy);
     }
     /**
-     * @return By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
      * 
      */
     public Optional<Boolean> extendedV4Nexthop() {
         return Optional.ofNullable(this.extendedV4Nexthop);
     }
     /**
-     * @return `0` means disable
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
      * 
      */
     public Optional<Integer> gracefulRestartTime() {
         return Optional.ofNullable(this.gracefulRestartTime);
     }
+    /**
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+     * 
+     */
     public Optional<Integer> holdTime() {
         return Optional.ofNullable(this.holdTime);
     }
@@ -163,76 +188,84 @@ public final class GatewayBgpConfig {
         return Optional.ofNullable(this.import_);
     }
     /**
-     * @return Default import policies if no per-neighbor policies defined
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
      * 
      */
     public Optional<String> importPolicy() {
         return Optional.ofNullable(this.importPolicy);
     }
     /**
-     * @return Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * @return Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
      * 
      */
     public Optional<String> localAs() {
         return Optional.ofNullable(this.localAs);
     }
     /**
-     * @return Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * @return Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
      * 
      */
     public Optional<String> neighborAs() {
         return Optional.ofNullable(this.neighborAs);
     }
     /**
-     * @return If per-neighbor as is desired. Property key is the neighbor address
+     * @return Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
      * 
      */
     public Map<String,GatewayBgpConfigNeighbors> neighbors() {
         return this.neighbors == null ? Map.of() : this.neighbors;
     }
     /**
-     * @return If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+     * @return Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
      * 
      */
     public List<String> networks() {
         return this.networks == null ? List.of() : this.networks;
     }
+    /**
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+     * 
+     */
     public Optional<Boolean> noPrivateAs() {
         return Optional.ofNullable(this.noPrivateAs);
     }
     /**
-     * @return By default, we&#39;ll re-advertise all learned BGP routers toward overlay
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we&#39;ll re-advertise all learned BGP routers toward overlay
      * 
      */
     public Optional<Boolean> noReadvertiseToOverlay() {
         return Optional.ofNullable(this.noReadvertiseToOverlay);
     }
     /**
-     * @return If `type`==`tunnel`
+     * @return Optional if `via`==`tunnel`
      * 
      */
     public Optional<String> tunnelName() {
         return Optional.ofNullable(this.tunnelName);
     }
     /**
-     * @return enum: `external`, `internal`
+     * @return Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return network name. enum: `lan`, `tunnel`, `vpn`, `wan`
+     * @return enum: `lan`, `tunnel`, `vpn`, `wan`
      * 
      */
-    public Optional<String> via() {
-        return Optional.ofNullable(this.via);
+    public String via() {
+        return this.via;
     }
+    /**
+     * @return Optional if `via`==`vpn`
+     * 
+     */
     public Optional<String> vpnName() {
         return Optional.ofNullable(this.vpnName);
     }
     /**
-     * @return If `via`==`wan`
+     * @return Optional if `via`==`wan`
      * 
      */
     public Optional<String> wanName() {
@@ -267,7 +300,7 @@ public final class GatewayBgpConfig {
         private @Nullable Boolean noReadvertiseToOverlay;
         private @Nullable String tunnelName;
         private @Nullable String type;
-        private @Nullable String via;
+        private String via;
         private @Nullable String vpnName;
         private @Nullable String wanName;
         public Builder() {}
@@ -415,8 +448,10 @@ public final class GatewayBgpConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder via(@Nullable String via) {
-
+        public Builder via(String via) {
+            if (via == null) {
+              throw new MissingRequiredPropertyException("GatewayBgpConfig", "via");
+            }
             this.via = via;
             return this;
         }

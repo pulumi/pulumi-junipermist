@@ -5,7 +5,7 @@ package com.pulumi.junipermist.device.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.junipermist.device.inputs.GatewayRoutingPoliciesTermActionArgs;
+import com.pulumi.junipermist.device.inputs.GatewayRoutingPoliciesTermActionsArgs;
 import com.pulumi.junipermist.device.inputs.GatewayRoutingPoliciesTermMatchingArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,15 +20,15 @@ public final class GatewayRoutingPoliciesTermArgs extends com.pulumi.resources.R
      * When used as import policy
      * 
      */
-    @Import(name="action")
-    private @Nullable Output<GatewayRoutingPoliciesTermActionArgs> action;
+    @Import(name="actions")
+    private @Nullable Output<GatewayRoutingPoliciesTermActionsArgs> actions;
 
     /**
      * @return When used as import policy
      * 
      */
-    public Optional<Output<GatewayRoutingPoliciesTermActionArgs>> action() {
-        return Optional.ofNullable(this.action);
+    public Optional<Output<GatewayRoutingPoliciesTermActionsArgs>> actions() {
+        return Optional.ofNullable(this.actions);
     }
 
     /**
@@ -49,7 +49,7 @@ public final class GatewayRoutingPoliciesTermArgs extends com.pulumi.resources.R
     private GatewayRoutingPoliciesTermArgs() {}
 
     private GatewayRoutingPoliciesTermArgs(GatewayRoutingPoliciesTermArgs $) {
-        this.action = $.action;
+        this.actions = $.actions;
         this.matching = $.matching;
     }
 
@@ -72,24 +72,24 @@ public final class GatewayRoutingPoliciesTermArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param action When used as import policy
+         * @param actions When used as import policy
          * 
          * @return builder
          * 
          */
-        public Builder action(@Nullable Output<GatewayRoutingPoliciesTermActionArgs> action) {
-            $.action = action;
+        public Builder actions(@Nullable Output<GatewayRoutingPoliciesTermActionsArgs> actions) {
+            $.actions = actions;
             return this;
         }
 
         /**
-         * @param action When used as import policy
+         * @param actions When used as import policy
          * 
          * @return builder
          * 
          */
-        public Builder action(GatewayRoutingPoliciesTermActionArgs action) {
-            return action(Output.of(action));
+        public Builder actions(GatewayRoutingPoliciesTermActionsArgs actions) {
+            return actions(Output.of(actions));
         }
 
         /**

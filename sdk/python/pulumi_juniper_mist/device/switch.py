@@ -44,6 +44,7 @@ class SwitchArgs:
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  oob_ip_config: Optional[pulumi.Input['SwitchOobIpConfigArgs']] = None,
                  ospf_areas: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]] = None,
+                 ospf_config: Optional[pulumi.Input['SwitchOspfConfigArgs']] = None,
                  other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]]] = None,
                  port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]]] = None,
                  port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]] = None,
@@ -84,7 +85,7 @@ class SwitchArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
         :param pulumi.Input['SwitchOobIpConfigArgs'] oob_ip_config: Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
                re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]] ospf_areas: Junos OSPF areas
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
@@ -146,6 +147,8 @@ class SwitchArgs:
             pulumi.set(__self__, "oob_ip_config", oob_ip_config)
         if ospf_areas is not None:
             pulumi.set(__self__, "ospf_areas", ospf_areas)
+        if ospf_config is not None:
+            pulumi.set(__self__, "ospf_config", ospf_config)
         if other_ip_configs is not None:
             pulumi.set(__self__, "other_ip_configs", other_ip_configs)
         if port_config is not None:
@@ -436,13 +439,22 @@ class SwitchArgs:
     @pulumi.getter(name="ospfAreas")
     def ospf_areas(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]]:
         """
-        Junos OSPF areas
+        Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         """
         return pulumi.get(self, "ospf_areas")
 
     @ospf_areas.setter
     def ospf_areas(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]]):
         pulumi.set(self, "ospf_areas", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ospfConfig")
+    def ospf_config(self) -> Optional[pulumi.Input['SwitchOspfConfigArgs']]:
+        return pulumi.get(self, "ospf_config")
+
+    @ospf_config.setter
+    def ospf_config(self, value: Optional[pulumi.Input['SwitchOspfConfigArgs']]):
+        pulumi.set(self, "ospf_config", value)
 
     @_builtins.property
     @pulumi.getter(name="otherIpConfigs")
@@ -691,6 +703,7 @@ class _SwitchState:
                  oob_ip_config: Optional[pulumi.Input['SwitchOobIpConfigArgs']] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ospf_areas: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]] = None,
+                 ospf_config: Optional[pulumi.Input['SwitchOspfConfigArgs']] = None,
                  other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]]] = None,
                  port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]]] = None,
                  port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]] = None,
@@ -736,7 +749,7 @@ class _SwitchState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
         :param pulumi.Input['SwitchOobIpConfigArgs'] oob_ip_config: Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
                re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]] ospf_areas: Junos OSPF areas
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
@@ -812,6 +825,8 @@ class _SwitchState:
             pulumi.set(__self__, "org_id", org_id)
         if ospf_areas is not None:
             pulumi.set(__self__, "ospf_areas", ospf_areas)
+        if ospf_config is not None:
+            pulumi.set(__self__, "ospf_config", ospf_config)
         if other_ip_configs is not None:
             pulumi.set(__self__, "other_ip_configs", other_ip_configs)
         if port_config is not None:
@@ -1159,13 +1174,22 @@ class _SwitchState:
     @pulumi.getter(name="ospfAreas")
     def ospf_areas(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]]:
         """
-        Junos OSPF areas
+        Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         """
         return pulumi.get(self, "ospf_areas")
 
     @ospf_areas.setter
     def ospf_areas(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]]):
         pulumi.set(self, "ospf_areas", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ospfConfig")
+    def ospf_config(self) -> Optional[pulumi.Input['SwitchOspfConfigArgs']]:
+        return pulumi.get(self, "ospf_config")
+
+    @ospf_config.setter
+    def ospf_config(self, value: Optional[pulumi.Input['SwitchOspfConfigArgs']]):
+        pulumi.set(self, "ospf_config", value)
 
     @_builtins.property
     @pulumi.getter(name="otherIpConfigs")
@@ -1444,6 +1468,7 @@ class Switch(pulumi.CustomResource):
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  oob_ip_config: Optional[pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']]] = None,
                  ospf_areas: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]]] = None,
+                 ospf_config: Optional[pulumi.Input[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']]] = None,
                  other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]]] = None,
                  port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]]] = None,
                  port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]]] = None,
@@ -1503,7 +1528,7 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
         :param pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']] oob_ip_config: Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
                re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
@@ -1581,6 +1606,7 @@ class Switch(pulumi.CustomResource):
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  oob_ip_config: Optional[pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']]] = None,
                  ospf_areas: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]]] = None,
+                 ospf_config: Optional[pulumi.Input[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']]] = None,
                  other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]]] = None,
                  port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]]] = None,
                  port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]]] = None,
@@ -1634,6 +1660,7 @@ class Switch(pulumi.CustomResource):
             __props__.__dict__["ntp_servers"] = ntp_servers
             __props__.__dict__["oob_ip_config"] = oob_ip_config
             __props__.__dict__["ospf_areas"] = ospf_areas
+            __props__.__dict__["ospf_config"] = ospf_config
             __props__.__dict__["other_ip_configs"] = other_ip_configs
             __props__.__dict__["port_config"] = port_config
             __props__.__dict__["port_mirroring"] = port_mirroring
@@ -1702,6 +1729,7 @@ class Switch(pulumi.CustomResource):
             oob_ip_config: Optional[pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']]] = None,
             org_id: Optional[pulumi.Input[_builtins.str]] = None,
             ospf_areas: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]]] = None,
+            ospf_config: Optional[pulumi.Input[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']]] = None,
             other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]]] = None,
             port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]]] = None,
             port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]]] = None,
@@ -1752,7 +1780,7 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
         :param pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']] oob_ip_config: Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
                re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
@@ -1804,6 +1832,7 @@ class Switch(pulumi.CustomResource):
         __props__.__dict__["oob_ip_config"] = oob_ip_config
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["ospf_areas"] = ospf_areas
+        __props__.__dict__["ospf_config"] = ospf_config
         __props__.__dict__["other_ip_configs"] = other_ip_configs
         __props__.__dict__["port_config"] = port_config
         __props__.__dict__["port_mirroring"] = port_mirroring
@@ -2022,9 +2051,14 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="ospfAreas")
     def ospf_areas(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchOspfAreas']]]:
         """
-        Junos OSPF areas
+        Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         """
         return pulumi.get(self, "ospf_areas")
+
+    @_builtins.property
+    @pulumi.getter(name="ospfConfig")
+    def ospf_config(self) -> pulumi.Output[Optional['outputs.SwitchOspfConfig']]:
+        return pulumi.get(self, "ospf_config")
 
     @_builtins.property
     @pulumi.getter(name="otherIpConfigs")

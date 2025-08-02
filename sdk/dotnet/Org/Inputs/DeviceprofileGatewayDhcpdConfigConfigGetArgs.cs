@@ -30,6 +30,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         /// <summary>
         /// If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
         /// </summary>
+        [Obsolete(@"Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead")]
         public InputList<string> DnsSuffixes
         {
             get => _dnsSuffixes ?? (_dnsSuffixes = new InputList<string>());

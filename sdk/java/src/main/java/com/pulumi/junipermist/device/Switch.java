@@ -22,6 +22,7 @@ import com.pulumi.junipermist.device.outputs.SwitchMistNac;
 import com.pulumi.junipermist.device.outputs.SwitchNetworks;
 import com.pulumi.junipermist.device.outputs.SwitchOobIpConfig;
 import com.pulumi.junipermist.device.outputs.SwitchOspfAreas;
+import com.pulumi.junipermist.device.outputs.SwitchOspfConfig;
 import com.pulumi.junipermist.device.outputs.SwitchOtherIpConfigs;
 import com.pulumi.junipermist.device.outputs.SwitchPortConfig;
 import com.pulumi.junipermist.device.outputs.SwitchPortMirroring;
@@ -370,18 +371,24 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * Junos OSPF areas
+     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
      * 
      */
     @Export(name="ospfAreas", refs={Map.class,String.class,SwitchOspfAreas.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchOspfAreas>> ospfAreas;
 
     /**
-     * @return Junos OSPF areas
+     * @return Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
      * 
      */
     public Output<Optional<Map<String,SwitchOspfAreas>>> ospfAreas() {
         return Codegen.optional(this.ospfAreas);
+    }
+    @Export(name="ospfConfig", refs={SwitchOspfConfig.class}, tree="[0]")
+    private Output</* @Nullable */ SwitchOspfConfig> ospfConfig;
+
+    public Output<Optional<SwitchOspfConfig>> ospfConfig() {
+        return Codegen.optional(this.ospfConfig);
     }
     /**
      * Property key is the network name. Defines the additional IP Addresses configured on the device.

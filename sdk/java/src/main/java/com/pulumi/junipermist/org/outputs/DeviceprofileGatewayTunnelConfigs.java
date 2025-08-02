@@ -19,6 +19,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceprofileGatewayTunnelConfigs {
+    /**
+     * @return Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+     * 
+     */
     private @Nullable DeviceprofileGatewayTunnelConfigsAutoProvision autoProvision;
     /**
      * @return Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
@@ -97,6 +101,10 @@ public final class DeviceprofileGatewayTunnelConfigs {
     private @Nullable String version;
 
     private DeviceprofileGatewayTunnelConfigs() {}
+    /**
+     * @return Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+     * 
+     */
     public Optional<DeviceprofileGatewayTunnelConfigsAutoProvision> autoProvision() {
         return Optional.ofNullable(this.autoProvision);
     }

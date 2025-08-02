@@ -32,7 +32,7 @@ type Gatewaytemplate struct {
 	AdditionalConfigCmds pulumi.StringArrayOutput            `pulumi:"additionalConfigCmds"`
 	BgpConfig            GatewaytemplateBgpConfigMapOutput   `pulumi:"bgpConfig"`
 	DhcpdConfig          GatewaytemplateDhcpdConfigPtrOutput `pulumi:"dhcpdConfig"`
-	DnsOverride          pulumi.BoolOutput                   `pulumi:"dnsOverride"`
+	DnsOverride          pulumi.BoolPtrOutput                `pulumi:"dnsOverride"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayOutput `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -48,7 +48,7 @@ type Gatewaytemplate struct {
 	IpConfigs   GatewaytemplateIpConfigsMapOutput `pulumi:"ipConfigs"`
 	Name        pulumi.StringOutput               `pulumi:"name"`
 	Networks    GatewaytemplateNetworkArrayOutput `pulumi:"networks"`
-	NtpOverride pulumi.BoolOutput                 `pulumi:"ntpOverride"`
+	NtpOverride pulumi.BoolPtrOutput              `pulumi:"ntpOverride"`
 	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
 	// Out-of-band (vme/em0/fxp0) IP config
@@ -399,8 +399,8 @@ func (o GatewaytemplateOutput) DhcpdConfig() GatewaytemplateDhcpdConfigPtrOutput
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateDhcpdConfigPtrOutput { return v.DhcpdConfig }).(GatewaytemplateDhcpdConfigPtrOutput)
 }
 
-func (o GatewaytemplateOutput) DnsOverride() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Gatewaytemplate) pulumi.BoolOutput { return v.DnsOverride }).(pulumi.BoolOutput)
+func (o GatewaytemplateOutput) DnsOverride() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Gatewaytemplate) pulumi.BoolPtrOutput { return v.DnsOverride }).(pulumi.BoolPtrOutput)
 }
 
 // Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -442,8 +442,8 @@ func (o GatewaytemplateOutput) Networks() GatewaytemplateNetworkArrayOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateNetworkArrayOutput { return v.Networks }).(GatewaytemplateNetworkArrayOutput)
 }
 
-func (o GatewaytemplateOutput) NtpOverride() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Gatewaytemplate) pulumi.BoolOutput { return v.NtpOverride }).(pulumi.BoolOutput)
+func (o GatewaytemplateOutput) NtpOverride() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Gatewaytemplate) pulumi.BoolPtrOutput { return v.NtpOverride }).(pulumi.BoolPtrOutput)
 }
 
 // List of NTP servers specific to this device. By default, those in Site Settings will be used

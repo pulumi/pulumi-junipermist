@@ -15,8 +15,8 @@ namespace Pulumi.JuniperMist.Org.Inputs
         /// <summary>
         /// When used as import policy
         /// </summary>
-        [Input("action")]
-        public Input<Inputs.GatewaytemplateRoutingPoliciesTermActionGetArgs>? Action { get; set; }
+        [Input("actions")]
+        public Input<Inputs.GatewaytemplateRoutingPoliciesTermActionsGetArgs>? Actions { get; set; }
 
         /// <summary>
         /// zero or more criteria/filter can be specified to match the term, all criteria have to be met

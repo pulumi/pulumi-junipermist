@@ -13,9 +13,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class GatewaytemplateRoutingPoliciesTermActionArgs extends com.pulumi.resources.ResourceArgs {
+public final class GatewaytemplateRoutingPoliciesTermActionsArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final GatewaytemplateRoutingPoliciesTermActionArgs Empty = new GatewaytemplateRoutingPoliciesTermActionArgs();
+    public static final GatewaytemplateRoutingPoliciesTermActionsArgs Empty = new GatewaytemplateRoutingPoliciesTermActionsArgs();
 
     @Import(name="accept")
     private @Nullable Output<Boolean> accept;
@@ -128,9 +128,9 @@ public final class GatewaytemplateRoutingPoliciesTermActionArgs extends com.pulu
         return Optional.ofNullable(this.prependAsPaths);
     }
 
-    private GatewaytemplateRoutingPoliciesTermActionArgs() {}
+    private GatewaytemplateRoutingPoliciesTermActionsArgs() {}
 
-    private GatewaytemplateRoutingPoliciesTermActionArgs(GatewaytemplateRoutingPoliciesTermActionArgs $) {
+    private GatewaytemplateRoutingPoliciesTermActionsArgs(GatewaytemplateRoutingPoliciesTermActionsArgs $) {
         this.accept = $.accept;
         this.addCommunities = $.addCommunities;
         this.addTargetVrfs = $.addTargetVrfs;
@@ -145,19 +145,19 @@ public final class GatewaytemplateRoutingPoliciesTermActionArgs extends com.pulu
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(GatewaytemplateRoutingPoliciesTermActionArgs defaults) {
+    public static Builder builder(GatewaytemplateRoutingPoliciesTermActionsArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private GatewaytemplateRoutingPoliciesTermActionArgs $;
+        private GatewaytemplateRoutingPoliciesTermActionsArgs $;
 
         public Builder() {
-            $ = new GatewaytemplateRoutingPoliciesTermActionArgs();
+            $ = new GatewaytemplateRoutingPoliciesTermActionsArgs();
         }
 
-        public Builder(GatewaytemplateRoutingPoliciesTermActionArgs defaults) {
-            $ = new GatewaytemplateRoutingPoliciesTermActionArgs(Objects.requireNonNull(defaults));
+        public Builder(GatewaytemplateRoutingPoliciesTermActionsArgs defaults) {
+            $ = new GatewaytemplateRoutingPoliciesTermActionsArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder accept(@Nullable Output<Boolean> accept) {
@@ -371,7 +371,7 @@ public final class GatewaytemplateRoutingPoliciesTermActionArgs extends com.pulu
             return prependAsPaths(List.of(prependAsPaths));
         }
 
-        public GatewaytemplateRoutingPoliciesTermActionArgs build() {
+        public GatewaytemplateRoutingPoliciesTermActionsArgs build() {
             return $;
         }
     }

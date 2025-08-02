@@ -84,7 +84,7 @@ __all__ = [
     'GatewayPortMirroringPortMirror',
     'GatewayRoutingPolicies',
     'GatewayRoutingPoliciesTerm',
-    'GatewayRoutingPoliciesTermAction',
+    'GatewayRoutingPoliciesTermActions',
     'GatewayRoutingPoliciesTermMatching',
     'GatewayRoutingPoliciesTermMatchingRouteExists',
     'GatewayRoutingPoliciesTermMatchingVpnPathSla',
@@ -133,6 +133,8 @@ __all__ = [
     'SwitchOobIpConfig',
     'SwitchOspfAreas',
     'SwitchOspfAreasNetworks',
+    'SwitchOspfConfig',
+    'SwitchOspfConfigAreas',
     'SwitchOtherIpConfigs',
     'SwitchPortConfig',
     'SwitchPortMirroring',
@@ -3123,6 +3125,7 @@ class GatewayBgpConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 via: _builtins.str,
                  auth_key: Optional[_builtins.str] = None,
                  bfd_minimum_interval: Optional[_builtins.int] = None,
                  bfd_multiplier: Optional[_builtins.int] = None,
@@ -3142,29 +3145,33 @@ class GatewayBgpConfig(dict):
                  no_readvertise_to_overlay: Optional[_builtins.bool] = None,
                  tunnel_name: Optional[_builtins.str] = None,
                  type: Optional[_builtins.str] = None,
-                 via: Optional[_builtins.str] = None,
                  vpn_name: Optional[_builtins.str] = None,
                  wan_name: Optional[_builtins.str] = None):
         """
-        :param _builtins.int bfd_minimum_interval: When bfd_multiplier is configured alone. Default:
+        :param _builtins.str via: enum: `lan`, `tunnel`, `vpn`, `wan`
+        :param _builtins.str auth_key: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+        :param _builtins.int bfd_minimum_interval: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
                  * 1000 if `type`==`external`
                  * 350 `type`==`internal`
-        :param _builtins.int bfd_multiplier: When bfd_minimum_interval_is_configured alone
-        :param _builtins.bool disable_bfd: BFD provides faster path failure detection and is enabled by default
+        :param _builtins.int bfd_multiplier: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
+        :param _builtins.bool disable_bfd: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
         :param _builtins.str export_policy: Default export policies if no per-neighbor policies defined
-        :param _builtins.bool extended_v4_nexthop: By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
-        :param _builtins.int graceful_restart_time: `0` means disable
-        :param _builtins.str import_policy: Default import policies if no per-neighbor policies defined
-        :param _builtins.str local_as: Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
-        :param _builtins.str neighbor_as: Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
-        :param Mapping[str, 'GatewayBgpConfigNeighborsArgs'] neighbors: If per-neighbor as is desired. Property key is the neighbor address
-        :param Sequence[_builtins.str] networks: If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
-        :param _builtins.bool no_readvertise_to_overlay: By default, we'll re-advertise all learned BGP routers toward overlay
-        :param _builtins.str tunnel_name: If `type`==`tunnel`
-        :param _builtins.str type: enum: `external`, `internal`
-        :param _builtins.str via: network name. enum: `lan`, `tunnel`, `vpn`, `wan`
-        :param _builtins.str wan_name: If `via`==`wan`
+        :param _builtins.bool extended_v4_nexthop: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        :param _builtins.int graceful_restart_time: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
+        :param _builtins.int hold_time: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+        :param _builtins.str import_policy: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
+        :param _builtins.str local_as: Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        :param _builtins.str neighbor_as: Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        :param Mapping[str, 'GatewayBgpConfigNeighborsArgs'] neighbors: Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
+        :param Sequence[_builtins.str] networks: Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
+        :param _builtins.bool no_private_as: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+        :param _builtins.bool no_readvertise_to_overlay: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
+        :param _builtins.str tunnel_name: Optional if `via`==`tunnel`
+        :param _builtins.str type: Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
+        :param _builtins.str vpn_name: Optional if `via`==`vpn`
+        :param _builtins.str wan_name: Optional if `via`==`wan`
         """
+        pulumi.set(__self__, "via", via)
         if auth_key is not None:
             pulumi.set(__self__, "auth_key", auth_key)
         if bfd_minimum_interval is not None:
@@ -3203,23 +3210,32 @@ class GatewayBgpConfig(dict):
             pulumi.set(__self__, "tunnel_name", tunnel_name)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if via is not None:
-            pulumi.set(__self__, "via", via)
         if vpn_name is not None:
             pulumi.set(__self__, "vpn_name", vpn_name)
         if wan_name is not None:
             pulumi.set(__self__, "wan_name", wan_name)
 
     @_builtins.property
+    @pulumi.getter
+    def via(self) -> _builtins.str:
+        """
+        enum: `lan`, `tunnel`, `vpn`, `wan`
+        """
+        return pulumi.get(self, "via")
+
+    @_builtins.property
     @pulumi.getter(name="authKey")
     def auth_key(self) -> Optional[_builtins.str]:
+        """
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+        """
         return pulumi.get(self, "auth_key")
 
     @_builtins.property
     @pulumi.getter(name="bfdMinimumInterval")
     def bfd_minimum_interval(self) -> Optional[_builtins.int]:
         """
-        When bfd_multiplier is configured alone. Default:
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
           * 1000 if `type`==`external`
           * 350 `type`==`internal`
         """
@@ -3229,7 +3245,7 @@ class GatewayBgpConfig(dict):
     @pulumi.getter(name="bfdMultiplier")
     def bfd_multiplier(self) -> Optional[_builtins.int]:
         """
-        When bfd_minimum_interval_is_configured alone
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
         """
         return pulumi.get(self, "bfd_multiplier")
 
@@ -3237,7 +3253,7 @@ class GatewayBgpConfig(dict):
     @pulumi.getter(name="disableBfd")
     def disable_bfd(self) -> Optional[_builtins.bool]:
         """
-        BFD provides faster path failure detection and is enabled by default
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
         """
         return pulumi.get(self, "disable_bfd")
 
@@ -3258,7 +3274,7 @@ class GatewayBgpConfig(dict):
     @pulumi.getter(name="extendedV4Nexthop")
     def extended_v4_nexthop(self) -> Optional[_builtins.bool]:
         """
-        By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         """
         return pulumi.get(self, "extended_v4_nexthop")
 
@@ -3266,13 +3282,16 @@ class GatewayBgpConfig(dict):
     @pulumi.getter(name="gracefulRestartTime")
     def graceful_restart_time(self) -> Optional[_builtins.int]:
         """
-        `0` means disable
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
         """
         return pulumi.get(self, "graceful_restart_time")
 
     @_builtins.property
     @pulumi.getter(name="holdTime")
     def hold_time(self) -> Optional[_builtins.int]:
+        """
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+        """
         return pulumi.get(self, "hold_time")
 
     @_builtins.property
@@ -3284,7 +3303,7 @@ class GatewayBgpConfig(dict):
     @pulumi.getter(name="importPolicy")
     def import_policy(self) -> Optional[_builtins.str]:
         """
-        Default import policies if no per-neighbor policies defined
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
         """
         return pulumi.get(self, "import_policy")
 
@@ -3292,7 +3311,7 @@ class GatewayBgpConfig(dict):
     @pulumi.getter(name="localAs")
     def local_as(self) -> Optional[_builtins.str]:
         """
-        Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         """
         return pulumi.get(self, "local_as")
 
@@ -3300,7 +3319,7 @@ class GatewayBgpConfig(dict):
     @pulumi.getter(name="neighborAs")
     def neighbor_as(self) -> Optional[_builtins.str]:
         """
-        Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         """
         return pulumi.get(self, "neighbor_as")
 
@@ -3308,7 +3327,7 @@ class GatewayBgpConfig(dict):
     @pulumi.getter
     def neighbors(self) -> Optional[Mapping[str, 'outputs.GatewayBgpConfigNeighbors']]:
         """
-        If per-neighbor as is desired. Property key is the neighbor address
+        Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
         """
         return pulumi.get(self, "neighbors")
 
@@ -3316,20 +3335,23 @@ class GatewayBgpConfig(dict):
     @pulumi.getter
     def networks(self) -> Optional[Sequence[_builtins.str]]:
         """
-        If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+        Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
         """
         return pulumi.get(self, "networks")
 
     @_builtins.property
     @pulumi.getter(name="noPrivateAs")
     def no_private_as(self) -> Optional[_builtins.bool]:
+        """
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+        """
         return pulumi.get(self, "no_private_as")
 
     @_builtins.property
     @pulumi.getter(name="noReadvertiseToOverlay")
     def no_readvertise_to_overlay(self) -> Optional[_builtins.bool]:
         """
-        By default, we'll re-advertise all learned BGP routers toward overlay
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
         """
         return pulumi.get(self, "no_readvertise_to_overlay")
 
@@ -3337,7 +3359,7 @@ class GatewayBgpConfig(dict):
     @pulumi.getter(name="tunnelName")
     def tunnel_name(self) -> Optional[_builtins.str]:
         """
-        If `type`==`tunnel`
+        Optional if `via`==`tunnel`
         """
         return pulumi.get(self, "tunnel_name")
 
@@ -3345,28 +3367,23 @@ class GatewayBgpConfig(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        enum: `external`, `internal`
+        Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
         """
         return pulumi.get(self, "type")
 
     @_builtins.property
-    @pulumi.getter
-    def via(self) -> Optional[_builtins.str]:
-        """
-        network name. enum: `lan`, `tunnel`, `vpn`, `wan`
-        """
-        return pulumi.get(self, "via")
-
-    @_builtins.property
     @pulumi.getter(name="vpnName")
     def vpn_name(self) -> Optional[_builtins.str]:
+        """
+        Optional if `via`==`vpn`
+        """
         return pulumi.get(self, "vpn_name")
 
     @_builtins.property
     @pulumi.getter(name="wanName")
     def wan_name(self) -> Optional[_builtins.str]:
         """
-        If `via`==`wan`
+        Optional if `via`==`wan`
         """
         return pulumi.get(self, "wan_name")
 
@@ -3376,7 +3393,9 @@ class GatewayBgpConfigNeighbors(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "exportPolicy":
+        if key == "neighborAs":
+            suggest = "neighbor_as"
+        elif key == "exportPolicy":
             suggest = "export_policy"
         elif key == "holdTime":
             suggest = "hold_time"
@@ -3384,8 +3403,6 @@ class GatewayBgpConfigNeighbors(dict):
             suggest = "import_policy"
         elif key == "multihopTtl":
             suggest = "multihop_ttl"
-        elif key == "neighborAs":
-            suggest = "neighbor_as"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GatewayBgpConfigNeighbors. Access the value via the '{suggest}' property getter instead.")
@@ -3399,17 +3416,18 @@ class GatewayBgpConfigNeighbors(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 neighbor_as: _builtins.str,
                  disabled: Optional[_builtins.bool] = None,
                  export_policy: Optional[_builtins.str] = None,
                  hold_time: Optional[_builtins.int] = None,
                  import_policy: Optional[_builtins.str] = None,
-                 multihop_ttl: Optional[_builtins.int] = None,
-                 neighbor_as: Optional[_builtins.str] = None):
+                 multihop_ttl: Optional[_builtins.int] = None):
         """
+        :param _builtins.str neighbor_as: Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         :param _builtins.bool disabled: If true, the BGP session to this neighbor will be administratively disabled/shutdown
         :param _builtins.int multihop_ttl: Assuming BGP neighbor is directly connected
-        :param _builtins.str neighbor_as: Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         """
+        pulumi.set(__self__, "neighbor_as", neighbor_as)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if export_policy is not None:
@@ -3420,8 +3438,14 @@ class GatewayBgpConfigNeighbors(dict):
             pulumi.set(__self__, "import_policy", import_policy)
         if multihop_ttl is not None:
             pulumi.set(__self__, "multihop_ttl", multihop_ttl)
-        if neighbor_as is not None:
-            pulumi.set(__self__, "neighbor_as", neighbor_as)
+
+    @_builtins.property
+    @pulumi.getter(name="neighborAs")
+    def neighbor_as(self) -> _builtins.str:
+        """
+        Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        """
+        return pulumi.get(self, "neighbor_as")
 
     @_builtins.property
     @pulumi.getter
@@ -3453,14 +3477,6 @@ class GatewayBgpConfigNeighbors(dict):
         Assuming BGP neighbor is directly connected
         """
         return pulumi.get(self, "multihop_ttl")
-
-    @_builtins.property
-    @pulumi.getter(name="neighborAs")
-    def neighbor_as(self) -> Optional[_builtins.str]:
-        """
-        Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
-        """
-        return pulumi.get(self, "neighbor_as")
 
 
 @pulumi.output_type
@@ -3630,6 +3646,7 @@ class GatewayDhcpdConfigConfig(dict):
 
     @_builtins.property
     @pulumi.getter(name="dnsSuffixes")
+    @_utilities.deprecated("""Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead""")
     def dns_suffixes(self) -> Optional[Sequence[_builtins.str]]:
         """
         If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
@@ -5190,6 +5207,7 @@ class GatewayPathPreferencesPath(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 type: _builtins.str,
                  cost: Optional[_builtins.int] = None,
                  disabled: Optional[_builtins.bool] = None,
                  gateway_ip: Optional[_builtins.str] = None,
@@ -5197,9 +5215,9 @@ class GatewayPathPreferencesPath(dict):
                  name: Optional[_builtins.str] = None,
                  networks: Optional[Sequence[_builtins.str]] = None,
                  target_ips: Optional[Sequence[_builtins.str]] = None,
-                 type: Optional[_builtins.str] = None,
                  wan_name: Optional[_builtins.str] = None):
         """
+        :param _builtins.str type: enum: `local`, `tunnel`, `vpn`, `wan`
         :param _builtins.bool disabled: For SSR Only. `true`, if this specific path is undesired
         :param _builtins.str gateway_ip: Only if `type`==`local`, if a different gateway is desired
         :param _builtins.bool internet_access: Only if `type`==`vpn`, if this vpn path can be used for internet
@@ -5208,9 +5226,9 @@ class GatewayPathPreferencesPath(dict):
                  * `type`==`wan`: the name of the WAN interface to use
         :param Sequence[_builtins.str] networks: Required when `type`==`local`
         :param Sequence[_builtins.str] target_ips: If `type`==`local`, if destination IP is to be replaced
-        :param _builtins.str type: enum: `local`, `tunnel`, `vpn`, `wan`
         :param _builtins.str wan_name: Optional if `type`==`vpn`
         """
+        pulumi.set(__self__, "type", type)
         if cost is not None:
             pulumi.set(__self__, "cost", cost)
         if disabled is not None:
@@ -5225,10 +5243,16 @@ class GatewayPathPreferencesPath(dict):
             pulumi.set(__self__, "networks", networks)
         if target_ips is not None:
             pulumi.set(__self__, "target_ips", target_ips)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
         if wan_name is not None:
             pulumi.set(__self__, "wan_name", wan_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        enum: `local`, `tunnel`, `vpn`, `wan`
+        """
+        return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
@@ -5284,14 +5308,6 @@ class GatewayPathPreferencesPath(dict):
         If `type`==`local`, if destination IP is to be replaced
         """
         return pulumi.get(self, "target_ips")
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> Optional[_builtins.str]:
-        """
-        enum: `local`, `tunnel`, `vpn`, `wan`
-        """
-        return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="wanName")
@@ -6474,24 +6490,24 @@ class GatewayRoutingPolicies(dict):
 @pulumi.output_type
 class GatewayRoutingPoliciesTerm(dict):
     def __init__(__self__, *,
-                 action: Optional['outputs.GatewayRoutingPoliciesTermAction'] = None,
+                 actions: Optional['outputs.GatewayRoutingPoliciesTermActions'] = None,
                  matching: Optional['outputs.GatewayRoutingPoliciesTermMatching'] = None):
         """
-        :param 'GatewayRoutingPoliciesTermActionArgs' action: When used as import policy
+        :param 'GatewayRoutingPoliciesTermActionsArgs' actions: When used as import policy
         :param 'GatewayRoutingPoliciesTermMatchingArgs' matching: zero or more criteria/filter can be specified to match the term, all criteria have to be met
         """
-        if action is not None:
-            pulumi.set(__self__, "action", action)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
         if matching is not None:
             pulumi.set(__self__, "matching", matching)
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional['outputs.GatewayRoutingPoliciesTermAction']:
+    def actions(self) -> Optional['outputs.GatewayRoutingPoliciesTermActions']:
         """
         When used as import policy
         """
-        return pulumi.get(self, "action")
+        return pulumi.get(self, "actions")
 
     @_builtins.property
     @pulumi.getter
@@ -6503,7 +6519,7 @@ class GatewayRoutingPoliciesTerm(dict):
 
 
 @pulumi.output_type
-class GatewayRoutingPoliciesTermAction(dict):
+class GatewayRoutingPoliciesTermActions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6523,14 +6539,14 @@ class GatewayRoutingPoliciesTermAction(dict):
             suggest = "prepend_as_paths"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GatewayRoutingPoliciesTermAction. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GatewayRoutingPoliciesTermActions. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GatewayRoutingPoliciesTermAction.__key_warning(key)
+        GatewayRoutingPoliciesTermActions.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GatewayRoutingPoliciesTermAction.__key_warning(key)
+        GatewayRoutingPoliciesTermActions.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -7308,6 +7324,7 @@ class GatewayTunnelConfigs(dict):
                  secondary: Optional['outputs.GatewayTunnelConfigsSecondary'] = None,
                  version: Optional[_builtins.str] = None):
         """
+        :param 'GatewayTunnelConfigsAutoProvisionArgs' auto_provision: Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
         :param _builtins.int ike_lifetime: Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
         :param _builtins.str ike_mode: Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
         :param Sequence['GatewayTunnelConfigsIkeProposalArgs'] ike_proposals: If `provider`==`custom-ipsec`
@@ -7360,6 +7377,9 @@ class GatewayTunnelConfigs(dict):
     @_builtins.property
     @pulumi.getter(name="autoProvision")
     def auto_provision(self) -> Optional['outputs.GatewayTunnelConfigsAutoProvision']:
+        """
+        Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+        """
         return pulumi.get(self, "auto_provision")
 
     @_builtins.property
@@ -7504,7 +7524,7 @@ class GatewayTunnelConfigsAutoProvision(dict):
 
     def __init__(__self__, *,
                  provider: _builtins.str,
-                 enable: Optional[_builtins.bool] = None,
+                 enabled: Optional[_builtins.bool] = None,
                  latlng: Optional['outputs.GatewayTunnelConfigsAutoProvisionLatlng'] = None,
                  primary: Optional['outputs.GatewayTunnelConfigsAutoProvisionPrimary'] = None,
                  region: Optional[_builtins.str] = None,
@@ -7512,13 +7532,14 @@ class GatewayTunnelConfigsAutoProvision(dict):
                  service_connection: Optional[_builtins.str] = None):
         """
         :param _builtins.str provider: enum: `jse-ipsec`, `zscaler-ipsec`
+        :param _builtins.bool enabled: Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
         :param 'GatewayTunnelConfigsAutoProvisionLatlngArgs' latlng: API override for POP selection
         :param _builtins.str region: API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
         :param _builtins.str service_connection: if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we'll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup > Service Connections.
         """
         pulumi.set(__self__, "provider", provider)
-        if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if latlng is not None:
             pulumi.set(__self__, "latlng", latlng)
         if primary is not None:
@@ -7540,8 +7561,11 @@ class GatewayTunnelConfigsAutoProvision(dict):
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[_builtins.bool]:
-        return pulumi.get(self, "enable")
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+        """
+        return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
@@ -10752,6 +10776,98 @@ class SwitchOspfAreasNetworks(dict):
         Whether to send OSPF-Hello
         """
         return pulumi.get(self, "passive")
+
+
+@pulumi.output_type
+class SwitchOspfConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "referenceBandwidth":
+            suggest = "reference_bandwidth"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SwitchOspfConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SwitchOspfConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SwitchOspfConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 areas: Optional[Mapping[str, 'outputs.SwitchOspfConfigAreas']] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 reference_bandwidth: Optional[_builtins.str] = None):
+        """
+        :param Mapping[str, 'SwitchOspfConfigAreasArgs'] areas: Property key is the area name. Defines the OSPF areas configured on the switch.
+        :param _builtins.bool enabled: Enable OSPF on the switch
+        """
+        if areas is not None:
+            pulumi.set(__self__, "areas", areas)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if reference_bandwidth is not None:
+            pulumi.set(__self__, "reference_bandwidth", reference_bandwidth)
+
+    @_builtins.property
+    @pulumi.getter
+    def areas(self) -> Optional[Mapping[str, 'outputs.SwitchOspfConfigAreas']]:
+        """
+        Property key is the area name. Defines the OSPF areas configured on the switch.
+        """
+        return pulumi.get(self, "areas")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Enable OSPF on the switch
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="referenceBandwidth")
+    def reference_bandwidth(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "reference_bandwidth")
+
+
+@pulumi.output_type
+class SwitchOspfConfigAreas(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "noSummary":
+            suggest = "no_summary"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SwitchOspfConfigAreas. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SwitchOspfConfigAreas.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SwitchOspfConfigAreas.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 no_summary: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool no_summary: Disable OSPF summary routes for this area
+        """
+        if no_summary is not None:
+            pulumi.set(__self__, "no_summary", no_summary)
+
+    @_builtins.property
+    @pulumi.getter(name="noSummary")
+    def no_summary(self) -> Optional[_builtins.bool]:
+        """
+        Disable OSPF summary routes for this area
+        """
+        return pulumi.get(self, "no_summary")
 
 
 @pulumi.output_type

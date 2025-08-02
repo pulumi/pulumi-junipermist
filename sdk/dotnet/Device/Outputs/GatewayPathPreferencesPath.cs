@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// <summary>
         /// enum: `local`, `tunnel`, `vpn`, `wan`
         /// </summary>
-        public readonly string? Type;
+        public readonly string Type;
         /// <summary>
         /// Optional if `type`==`vpn`
         /// </summary>
@@ -65,7 +65,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             ImmutableArray<string> targetIps,
 
-            string? type,
+            string type,
 
             string? wanName)
         {

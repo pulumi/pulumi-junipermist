@@ -51,7 +51,7 @@ type Networktemplate struct {
 	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
 	OrgId      pulumi.StringOutput      `pulumi:"orgId"`
-	// Junos OSPF areas
+	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
 	OspfAreas NetworktemplateOspfAreasMapOutput `pulumi:"ospfAreas"`
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
@@ -130,7 +130,7 @@ type networktemplateState struct {
 	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers []string `pulumi:"ntpServers"`
 	OrgId      *string  `pulumi:"orgId"`
-	// Junos OSPF areas
+	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
 	OspfAreas map[string]NetworktemplateOspfAreas `pulumi:"ospfAreas"`
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
@@ -177,7 +177,7 @@ type NetworktemplateState struct {
 	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayInput
 	OrgId      pulumi.StringPtrInput
-	// Junos OSPF areas
+	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
 	OspfAreas NetworktemplateOspfAreasMapInput
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
@@ -228,7 +228,7 @@ type networktemplateArgs struct {
 	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers []string `pulumi:"ntpServers"`
 	OrgId      string   `pulumi:"orgId"`
-	// Junos OSPF areas
+	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
 	OspfAreas map[string]NetworktemplateOspfAreas `pulumi:"ospfAreas"`
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
@@ -276,7 +276,7 @@ type NetworktemplateArgs struct {
 	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayInput
 	OrgId      pulumi.StringInput
-	// Junos OSPF areas
+	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
 	OspfAreas NetworktemplateOspfAreasMapInput
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
@@ -448,7 +448,7 @@ func (o NetworktemplateOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Junos OSPF areas
+// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
 func (o NetworktemplateOutput) OspfAreas() NetworktemplateOspfAreasMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateOspfAreasMapOutput { return v.OspfAreas }).(NetworktemplateOspfAreasMapOutput)
 }

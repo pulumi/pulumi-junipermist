@@ -12,8 +12,11 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayTunnelConfigsAutoProvisionArgs : global::Pulumi.ResourceArgs
     {
-        [Input("enable")]
-        public Input<bool>? Enable { get; set; }
+        /// <summary>
+        /// Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// API override for POP selection

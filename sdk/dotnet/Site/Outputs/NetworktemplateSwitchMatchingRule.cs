@@ -38,11 +38,6 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? MatchRole;
         /// <summary>
-        /// property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
-        /// </summary>
-        public readonly string? MatchType;
-        public readonly string? MatchValue;
-        /// <summary>
         /// Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
         /// </summary>
         public readonly string? Name;
@@ -73,10 +68,6 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             string? matchRole,
 
-            string? matchType,
-
-            string? matchValue,
-
             string? name,
 
             Outputs.NetworktemplateSwitchMatchingRuleOobIpConfig? oobIpConfig,
@@ -91,8 +82,6 @@ namespace Pulumi.JuniperMist.Site.Outputs
             MatchName = matchName;
             MatchNameOffset = matchNameOffset;
             MatchRole = matchRole;
-            MatchType = matchType;
-            MatchValue = matchValue;
             Name = name;
             OobIpConfig = oobIpConfig;
             PortConfig = portConfig;

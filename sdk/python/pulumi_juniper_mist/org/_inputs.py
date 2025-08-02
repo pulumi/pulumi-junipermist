@@ -147,8 +147,8 @@ __all__ = [
     'DeviceprofileGatewayRoutingPoliciesArgsDict',
     'DeviceprofileGatewayRoutingPoliciesTermArgs',
     'DeviceprofileGatewayRoutingPoliciesTermArgsDict',
-    'DeviceprofileGatewayRoutingPoliciesTermActionArgs',
-    'DeviceprofileGatewayRoutingPoliciesTermActionArgsDict',
+    'DeviceprofileGatewayRoutingPoliciesTermActionsArgs',
+    'DeviceprofileGatewayRoutingPoliciesTermActionsArgsDict',
     'DeviceprofileGatewayRoutingPoliciesTermMatchingArgs',
     'DeviceprofileGatewayRoutingPoliciesTermMatchingArgsDict',
     'DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExistsArgs',
@@ -289,8 +289,8 @@ __all__ = [
     'GatewaytemplateRoutingPoliciesArgsDict',
     'GatewaytemplateRoutingPoliciesTermArgs',
     'GatewaytemplateRoutingPoliciesTermArgsDict',
-    'GatewaytemplateRoutingPoliciesTermActionArgs',
-    'GatewaytemplateRoutingPoliciesTermActionArgsDict',
+    'GatewaytemplateRoutingPoliciesTermActionsArgs',
+    'GatewaytemplateRoutingPoliciesTermActionsArgsDict',
     'GatewaytemplateRoutingPoliciesTermMatchingArgs',
     'GatewaytemplateRoutingPoliciesTermMatchingArgsDict',
     'GatewaytemplateRoutingPoliciesTermMatchingRouteExistsArgs',
@@ -4697,20 +4697,27 @@ class DeviceprofileApUsbConfigArgs:
 
 if not MYPY:
     class DeviceprofileGatewayBgpConfigArgsDict(TypedDict):
+        via: pulumi.Input[_builtins.str]
+        """
+        enum: `lan`, `tunnel`, `vpn`, `wan`
+        """
         auth_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+        """
         bfd_minimum_interval: NotRequired[pulumi.Input[_builtins.int]]
         """
-        When bfd_multiplier is configured alone. Default:
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
           * 1000 if `type`==`external`
           * 350 `type`==`internal`
         """
         bfd_multiplier: NotRequired[pulumi.Input[_builtins.int]]
         """
-        When bfd_minimum_interval_is_configured alone
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
         """
         disable_bfd: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        BFD provides faster path failure detection and is enabled by default
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
         """
         export: NotRequired[pulumi.Input[_builtins.str]]
         export_policy: NotRequired[pulumi.Input[_builtins.str]]
@@ -4719,55 +4726,60 @@ if not MYPY:
         """
         extended_v4_nexthop: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         """
         graceful_restart_time: NotRequired[pulumi.Input[_builtins.int]]
         """
-        `0` means disable
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
         """
         hold_time: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+        """
         import_: NotRequired[pulumi.Input[_builtins.str]]
         import_policy: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Default import policies if no per-neighbor policies defined
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
         """
         local_as: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         """
         neighbor_as: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         """
         neighbors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayBgpConfigNeighborsArgsDict']]]]
         """
-        If per-neighbor as is desired. Property key is the neighbor address
+        Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
         """
         networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+        Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
         """
         no_private_as: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+        """
         no_readvertise_to_overlay: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        By default, we'll re-advertise all learned BGP routers toward overlay
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
         """
         tunnel_name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If `type`==`tunnel`
+        Optional if `via`==`tunnel`
         """
         type: NotRequired[pulumi.Input[_builtins.str]]
         """
-        enum: `external`, `internal`
-        """
-        via: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        network name. enum: `lan`, `tunnel`, `vpn`, `wan`
+        Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
         """
         vpn_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional if `via`==`vpn`
+        """
         wan_name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If `via`==`wan`
+        Optional if `via`==`wan`
         """
 elif False:
     DeviceprofileGatewayBgpConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -4775,6 +4787,7 @@ elif False:
 @pulumi.input_type
 class DeviceprofileGatewayBgpConfigArgs:
     def __init__(__self__, *,
+                 via: pulumi.Input[_builtins.str],
                  auth_key: Optional[pulumi.Input[_builtins.str]] = None,
                  bfd_minimum_interval: Optional[pulumi.Input[_builtins.int]] = None,
                  bfd_multiplier: Optional[pulumi.Input[_builtins.int]] = None,
@@ -4794,29 +4807,33 @@ class DeviceprofileGatewayBgpConfigArgs:
                  no_readvertise_to_overlay: Optional[pulumi.Input[_builtins.bool]] = None,
                  tunnel_name: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
-                 via: Optional[pulumi.Input[_builtins.str]] = None,
                  vpn_name: Optional[pulumi.Input[_builtins.str]] = None,
                  wan_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.int] bfd_minimum_interval: When bfd_multiplier is configured alone. Default:
+        :param pulumi.Input[_builtins.str] via: enum: `lan`, `tunnel`, `vpn`, `wan`
+        :param pulumi.Input[_builtins.str] auth_key: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+        :param pulumi.Input[_builtins.int] bfd_minimum_interval: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
                  * 1000 if `type`==`external`
                  * 350 `type`==`internal`
-        :param pulumi.Input[_builtins.int] bfd_multiplier: When bfd_minimum_interval_is_configured alone
-        :param pulumi.Input[_builtins.bool] disable_bfd: BFD provides faster path failure detection and is enabled by default
+        :param pulumi.Input[_builtins.int] bfd_multiplier: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
+        :param pulumi.Input[_builtins.bool] disable_bfd: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
         :param pulumi.Input[_builtins.str] export_policy: Default export policies if no per-neighbor policies defined
-        :param pulumi.Input[_builtins.bool] extended_v4_nexthop: By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
-        :param pulumi.Input[_builtins.int] graceful_restart_time: `0` means disable
-        :param pulumi.Input[_builtins.str] import_policy: Default import policies if no per-neighbor policies defined
-        :param pulumi.Input[_builtins.str] local_as: Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
-        :param pulumi.Input[_builtins.str] neighbor_as: Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayBgpConfigNeighborsArgs']]] neighbors: If per-neighbor as is desired. Property key is the neighbor address
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
-        :param pulumi.Input[_builtins.bool] no_readvertise_to_overlay: By default, we'll re-advertise all learned BGP routers toward overlay
-        :param pulumi.Input[_builtins.str] tunnel_name: If `type`==`tunnel`
-        :param pulumi.Input[_builtins.str] type: enum: `external`, `internal`
-        :param pulumi.Input[_builtins.str] via: network name. enum: `lan`, `tunnel`, `vpn`, `wan`
-        :param pulumi.Input[_builtins.str] wan_name: If `via`==`wan`
+        :param pulumi.Input[_builtins.bool] extended_v4_nexthop: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        :param pulumi.Input[_builtins.int] graceful_restart_time: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
+        :param pulumi.Input[_builtins.int] hold_time: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+        :param pulumi.Input[_builtins.str] import_policy: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
+        :param pulumi.Input[_builtins.str] local_as: Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        :param pulumi.Input[_builtins.str] neighbor_as: Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayBgpConfigNeighborsArgs']]] neighbors: Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
+        :param pulumi.Input[_builtins.bool] no_private_as: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+        :param pulumi.Input[_builtins.bool] no_readvertise_to_overlay: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
+        :param pulumi.Input[_builtins.str] tunnel_name: Optional if `via`==`tunnel`
+        :param pulumi.Input[_builtins.str] type: Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
+        :param pulumi.Input[_builtins.str] vpn_name: Optional if `via`==`vpn`
+        :param pulumi.Input[_builtins.str] wan_name: Optional if `via`==`wan`
         """
+        pulumi.set(__self__, "via", via)
         if auth_key is not None:
             pulumi.set(__self__, "auth_key", auth_key)
         if bfd_minimum_interval is not None:
@@ -4855,16 +4872,29 @@ class DeviceprofileGatewayBgpConfigArgs:
             pulumi.set(__self__, "tunnel_name", tunnel_name)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if via is not None:
-            pulumi.set(__self__, "via", via)
         if vpn_name is not None:
             pulumi.set(__self__, "vpn_name", vpn_name)
         if wan_name is not None:
             pulumi.set(__self__, "wan_name", wan_name)
 
     @_builtins.property
+    @pulumi.getter
+    def via(self) -> pulumi.Input[_builtins.str]:
+        """
+        enum: `lan`, `tunnel`, `vpn`, `wan`
+        """
+        return pulumi.get(self, "via")
+
+    @via.setter
+    def via(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "via", value)
+
+    @_builtins.property
     @pulumi.getter(name="authKey")
     def auth_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+        """
         return pulumi.get(self, "auth_key")
 
     @auth_key.setter
@@ -4875,7 +4905,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="bfdMinimumInterval")
     def bfd_minimum_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        When bfd_multiplier is configured alone. Default:
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
           * 1000 if `type`==`external`
           * 350 `type`==`internal`
         """
@@ -4889,7 +4919,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="bfdMultiplier")
     def bfd_multiplier(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        When bfd_minimum_interval_is_configured alone
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
         """
         return pulumi.get(self, "bfd_multiplier")
 
@@ -4901,7 +4931,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="disableBfd")
     def disable_bfd(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        BFD provides faster path failure detection and is enabled by default
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
         """
         return pulumi.get(self, "disable_bfd")
 
@@ -4934,7 +4964,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="extendedV4Nexthop")
     def extended_v4_nexthop(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         """
         return pulumi.get(self, "extended_v4_nexthop")
 
@@ -4946,7 +4976,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="gracefulRestartTime")
     def graceful_restart_time(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        `0` means disable
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
         """
         return pulumi.get(self, "graceful_restart_time")
 
@@ -4957,6 +4987,9 @@ class DeviceprofileGatewayBgpConfigArgs:
     @_builtins.property
     @pulumi.getter(name="holdTime")
     def hold_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+        """
         return pulumi.get(self, "hold_time")
 
     @hold_time.setter
@@ -4976,7 +5009,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="importPolicy")
     def import_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Default import policies if no per-neighbor policies defined
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
         """
         return pulumi.get(self, "import_policy")
 
@@ -4988,7 +5021,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="localAs")
     def local_as(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         """
         return pulumi.get(self, "local_as")
 
@@ -5000,7 +5033,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="neighborAs")
     def neighbor_as(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         """
         return pulumi.get(self, "neighbor_as")
 
@@ -5012,7 +5045,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter
     def neighbors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayBgpConfigNeighborsArgs']]]]:
         """
-        If per-neighbor as is desired. Property key is the neighbor address
+        Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
         """
         return pulumi.get(self, "neighbors")
 
@@ -5024,7 +5057,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter
     def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+        Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
         """
         return pulumi.get(self, "networks")
 
@@ -5035,6 +5068,9 @@ class DeviceprofileGatewayBgpConfigArgs:
     @_builtins.property
     @pulumi.getter(name="noPrivateAs")
     def no_private_as(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+        """
         return pulumi.get(self, "no_private_as")
 
     @no_private_as.setter
@@ -5045,7 +5081,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="noReadvertiseToOverlay")
     def no_readvertise_to_overlay(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        By default, we'll re-advertise all learned BGP routers toward overlay
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
         """
         return pulumi.get(self, "no_readvertise_to_overlay")
 
@@ -5057,7 +5093,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="tunnelName")
     def tunnel_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If `type`==`tunnel`
+        Optional if `via`==`tunnel`
         """
         return pulumi.get(self, "tunnel_name")
 
@@ -5069,7 +5105,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        enum: `external`, `internal`
+        Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
         """
         return pulumi.get(self, "type")
 
@@ -5078,20 +5114,11 @@ class DeviceprofileGatewayBgpConfigArgs:
         pulumi.set(self, "type", value)
 
     @_builtins.property
-    @pulumi.getter
-    def via(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        network name. enum: `lan`, `tunnel`, `vpn`, `wan`
-        """
-        return pulumi.get(self, "via")
-
-    @via.setter
-    def via(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "via", value)
-
-    @_builtins.property
     @pulumi.getter(name="vpnName")
     def vpn_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional if `via`==`vpn`
+        """
         return pulumi.get(self, "vpn_name")
 
     @vpn_name.setter
@@ -5102,7 +5129,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="wanName")
     def wan_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If `via`==`wan`
+        Optional if `via`==`wan`
         """
         return pulumi.get(self, "wan_name")
 
@@ -5113,6 +5140,10 @@ class DeviceprofileGatewayBgpConfigArgs:
 
 if not MYPY:
     class DeviceprofileGatewayBgpConfigNeighborsArgsDict(TypedDict):
+        neighbor_as: pulumi.Input[_builtins.str]
+        """
+        Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        """
         disabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
         If true, the BGP session to this neighbor will be administratively disabled/shutdown
@@ -5124,27 +5155,24 @@ if not MYPY:
         """
         Assuming BGP neighbor is directly connected
         """
-        neighbor_as: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
-        """
 elif False:
     DeviceprofileGatewayBgpConfigNeighborsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DeviceprofileGatewayBgpConfigNeighborsArgs:
     def __init__(__self__, *,
+                 neighbor_as: pulumi.Input[_builtins.str],
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  export_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  hold_time: Optional[pulumi.Input[_builtins.int]] = None,
                  import_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 multihop_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 neighbor_as: Optional[pulumi.Input[_builtins.str]] = None):
+                 multihop_ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
+        :param pulumi.Input[_builtins.str] neighbor_as: Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         :param pulumi.Input[_builtins.bool] disabled: If true, the BGP session to this neighbor will be administratively disabled/shutdown
         :param pulumi.Input[_builtins.int] multihop_ttl: Assuming BGP neighbor is directly connected
-        :param pulumi.Input[_builtins.str] neighbor_as: Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         """
+        pulumi.set(__self__, "neighbor_as", neighbor_as)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if export_policy is not None:
@@ -5155,8 +5183,18 @@ class DeviceprofileGatewayBgpConfigNeighborsArgs:
             pulumi.set(__self__, "import_policy", import_policy)
         if multihop_ttl is not None:
             pulumi.set(__self__, "multihop_ttl", multihop_ttl)
-        if neighbor_as is not None:
-            pulumi.set(__self__, "neighbor_as", neighbor_as)
+
+    @_builtins.property
+    @pulumi.getter(name="neighborAs")
+    def neighbor_as(self) -> pulumi.Input[_builtins.str]:
+        """
+        Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        """
+        return pulumi.get(self, "neighbor_as")
+
+    @neighbor_as.setter
+    def neighbor_as(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "neighbor_as", value)
 
     @_builtins.property
     @pulumi.getter
@@ -5208,18 +5246,6 @@ class DeviceprofileGatewayBgpConfigNeighborsArgs:
     @multihop_ttl.setter
     def multihop_ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "multihop_ttl", value)
-
-    @_builtins.property
-    @pulumi.getter(name="neighborAs")
-    def neighbor_as(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
-        """
-        return pulumi.get(self, "neighbor_as")
-
-    @neighbor_as.setter
-    def neighbor_as(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "neighbor_as", value)
 
 
 if not MYPY:
@@ -5389,6 +5415,9 @@ class DeviceprofileGatewayDhcpdConfigConfigArgs:
         if dns_servers is not None:
             pulumi.set(__self__, "dns_servers", dns_servers)
         if dns_suffixes is not None:
+            warnings.warn("""Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead""", DeprecationWarning)
+            pulumi.log.warn("""dns_suffixes is deprecated: Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead""")
+        if dns_suffixes is not None:
             pulumi.set(__self__, "dns_suffixes", dns_suffixes)
         if fixed_bindings is not None:
             pulumi.set(__self__, "fixed_bindings", fixed_bindings)
@@ -5433,6 +5462,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dnsSuffixes")
+    @_utilities.deprecated("""Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead""")
     def dns_suffixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
@@ -7445,6 +7475,10 @@ class DeviceprofileGatewayPathPreferencesArgs:
 
 if not MYPY:
     class DeviceprofileGatewayPathPreferencesPathArgsDict(TypedDict):
+        type: pulumi.Input[_builtins.str]
+        """
+        enum: `local`, `tunnel`, `vpn`, `wan`
+        """
         cost: NotRequired[pulumi.Input[_builtins.int]]
         disabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -7472,10 +7506,6 @@ if not MYPY:
         """
         If `type`==`local`, if destination IP is to be replaced
         """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        enum: `local`, `tunnel`, `vpn`, `wan`
-        """
         wan_name: NotRequired[pulumi.Input[_builtins.str]]
         """
         Optional if `type`==`vpn`
@@ -7486,6 +7516,7 @@ elif False:
 @pulumi.input_type
 class DeviceprofileGatewayPathPreferencesPathArgs:
     def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
                  cost: Optional[pulumi.Input[_builtins.int]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
@@ -7493,9 +7524,9 @@ class DeviceprofileGatewayPathPreferencesPathArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
                  wan_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.str] type: enum: `local`, `tunnel`, `vpn`, `wan`
         :param pulumi.Input[_builtins.bool] disabled: For SSR Only. `true`, if this specific path is undesired
         :param pulumi.Input[_builtins.str] gateway_ip: Only if `type`==`local`, if a different gateway is desired
         :param pulumi.Input[_builtins.bool] internet_access: Only if `type`==`vpn`, if this vpn path can be used for internet
@@ -7504,9 +7535,9 @@ class DeviceprofileGatewayPathPreferencesPathArgs:
                  * `type`==`wan`: the name of the WAN interface to use
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: Required when `type`==`local`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_ips: If `type`==`local`, if destination IP is to be replaced
-        :param pulumi.Input[_builtins.str] type: enum: `local`, `tunnel`, `vpn`, `wan`
         :param pulumi.Input[_builtins.str] wan_name: Optional if `type`==`vpn`
         """
+        pulumi.set(__self__, "type", type)
         if cost is not None:
             pulumi.set(__self__, "cost", cost)
         if disabled is not None:
@@ -7521,10 +7552,20 @@ class DeviceprofileGatewayPathPreferencesPathArgs:
             pulumi.set(__self__, "networks", networks)
         if target_ips is not None:
             pulumi.set(__self__, "target_ips", target_ips)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
         if wan_name is not None:
             pulumi.set(__self__, "wan_name", wan_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        enum: `local`, `tunnel`, `vpn`, `wan`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
@@ -7608,18 +7649,6 @@ class DeviceprofileGatewayPathPreferencesPathArgs:
     @target_ips.setter
     def target_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_ips", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        enum: `local`, `tunnel`, `vpn`, `wan`
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="wanName")
@@ -9090,7 +9119,7 @@ class DeviceprofileGatewayRoutingPoliciesArgs:
 
 if not MYPY:
     class DeviceprofileGatewayRoutingPoliciesTermArgsDict(TypedDict):
-        action: NotRequired[pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermActionArgsDict']]
+        actions: NotRequired[pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermActionsArgsDict']]
         """
         When used as import policy
         """
@@ -9104,28 +9133,28 @@ elif False:
 @pulumi.input_type
 class DeviceprofileGatewayRoutingPoliciesTermArgs:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermActionArgs']] = None,
+                 actions: Optional[pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermActionsArgs']] = None,
                  matching: Optional[pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermMatchingArgs']] = None):
         """
-        :param pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermActionArgs'] action: When used as import policy
+        :param pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermActionsArgs'] actions: When used as import policy
         :param pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermMatchingArgs'] matching: zero or more criteria/filter can be specified to match the term, all criteria have to be met
         """
-        if action is not None:
-            pulumi.set(__self__, "action", action)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
         if matching is not None:
             pulumi.set(__self__, "matching", matching)
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermActionArgs']]:
+    def actions(self) -> Optional[pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermActionsArgs']]:
         """
         When used as import policy
         """
-        return pulumi.get(self, "action")
+        return pulumi.get(self, "actions")
 
-    @action.setter
-    def action(self, value: Optional[pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermActionArgs']]):
-        pulumi.set(self, "action", value)
+    @actions.setter
+    def actions(self, value: Optional[pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermActionsArgs']]):
+        pulumi.set(self, "actions", value)
 
     @_builtins.property
     @pulumi.getter
@@ -9141,7 +9170,7 @@ class DeviceprofileGatewayRoutingPoliciesTermArgs:
 
 
 if not MYPY:
-    class DeviceprofileGatewayRoutingPoliciesTermActionArgsDict(TypedDict):
+    class DeviceprofileGatewayRoutingPoliciesTermActionsArgsDict(TypedDict):
         accept: NotRequired[pulumi.Input[_builtins.bool]]
         add_communities: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         add_target_vrfs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
@@ -9170,10 +9199,10 @@ if not MYPY:
         When used as export policy, optional. By default, the local AS will be prepended, to change it
         """
 elif False:
-    DeviceprofileGatewayRoutingPoliciesTermActionArgsDict: TypeAlias = Mapping[str, Any]
+    DeviceprofileGatewayRoutingPoliciesTermActionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class DeviceprofileGatewayRoutingPoliciesTermActionArgs:
+class DeviceprofileGatewayRoutingPoliciesTermActionsArgs:
     def __init__(__self__, *,
                  accept: Optional[pulumi.Input[_builtins.bool]] = None,
                  add_communities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -10092,6 +10121,9 @@ class DeviceprofileGatewayServicePolicySslProxyArgs:
 if not MYPY:
     class DeviceprofileGatewayTunnelConfigsArgsDict(TypedDict):
         auto_provision: NotRequired[pulumi.Input['DeviceprofileGatewayTunnelConfigsAutoProvisionArgsDict']]
+        """
+        Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+        """
         ike_lifetime: NotRequired[pulumi.Input[_builtins.int]]
         """
         Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
@@ -10175,6 +10207,7 @@ class DeviceprofileGatewayTunnelConfigsArgs:
                  secondary: Optional[pulumi.Input['DeviceprofileGatewayTunnelConfigsSecondaryArgs']] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input['DeviceprofileGatewayTunnelConfigsAutoProvisionArgs'] auto_provision: Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
         :param pulumi.Input[_builtins.int] ike_lifetime: Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
         :param pulumi.Input[_builtins.str] ike_mode: Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
         :param pulumi.Input[Sequence[pulumi.Input['DeviceprofileGatewayTunnelConfigsIkeProposalArgs']]] ike_proposals: If `provider`==`custom-ipsec`
@@ -10227,6 +10260,9 @@ class DeviceprofileGatewayTunnelConfigsArgs:
     @_builtins.property
     @pulumi.getter(name="autoProvision")
     def auto_provision(self) -> Optional[pulumi.Input['DeviceprofileGatewayTunnelConfigsAutoProvisionArgs']]:
+        """
+        Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+        """
         return pulumi.get(self, "auto_provision")
 
     @auto_provision.setter
@@ -10420,7 +10456,10 @@ if not MYPY:
         """
         enum: `jse-ipsec`, `zscaler-ipsec`
         """
-        enable: NotRequired[pulumi.Input[_builtins.bool]]
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+        """
         latlng: NotRequired[pulumi.Input['DeviceprofileGatewayTunnelConfigsAutoProvisionLatlngArgsDict']]
         """
         API override for POP selection
@@ -10442,7 +10481,7 @@ elif False:
 class DeviceprofileGatewayTunnelConfigsAutoProvisionArgs:
     def __init__(__self__, *,
                  provider: pulumi.Input[_builtins.str],
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  latlng: Optional[pulumi.Input['DeviceprofileGatewayTunnelConfigsAutoProvisionLatlngArgs']] = None,
                  primary: Optional[pulumi.Input['DeviceprofileGatewayTunnelConfigsAutoProvisionPrimaryArgs']] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -10450,13 +10489,14 @@ class DeviceprofileGatewayTunnelConfigsAutoProvisionArgs:
                  service_connection: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] provider: enum: `jse-ipsec`, `zscaler-ipsec`
+        :param pulumi.Input[_builtins.bool] enabled: Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
         :param pulumi.Input['DeviceprofileGatewayTunnelConfigsAutoProvisionLatlngArgs'] latlng: API override for POP selection
         :param pulumi.Input[_builtins.str] region: API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
         :param pulumi.Input[_builtins.str] service_connection: if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we'll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup > Service Connections.
         """
         pulumi.set(__self__, "provider", provider)
-        if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if latlng is not None:
             pulumi.set(__self__, "latlng", latlng)
         if primary is not None:
@@ -10482,12 +10522,15 @@ class DeviceprofileGatewayTunnelConfigsAutoProvisionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        return pulumi.get(self, "enable")
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+        """
+        return pulumi.get(self, "enabled")
 
-    @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable", value)
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
@@ -12467,20 +12510,27 @@ class EvpnTopologySwitchesArgs:
 
 if not MYPY:
     class GatewaytemplateBgpConfigArgsDict(TypedDict):
+        via: pulumi.Input[_builtins.str]
+        """
+        enum: `lan`, `tunnel`, `vpn`, `wan`
+        """
         auth_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+        """
         bfd_minimum_interval: NotRequired[pulumi.Input[_builtins.int]]
         """
-        When bfd_multiplier is configured alone. Default:
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
           * 1000 if `type`==`external`
           * 350 `type`==`internal`
         """
         bfd_multiplier: NotRequired[pulumi.Input[_builtins.int]]
         """
-        When bfd_minimum_interval_is_configured alone
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
         """
         disable_bfd: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        BFD provides faster path failure detection and is enabled by default
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
         """
         export: NotRequired[pulumi.Input[_builtins.str]]
         export_policy: NotRequired[pulumi.Input[_builtins.str]]
@@ -12489,55 +12539,60 @@ if not MYPY:
         """
         extended_v4_nexthop: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         """
         graceful_restart_time: NotRequired[pulumi.Input[_builtins.int]]
         """
-        `0` means disable
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
         """
         hold_time: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+        """
         import_: NotRequired[pulumi.Input[_builtins.str]]
         import_policy: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Default import policies if no per-neighbor policies defined
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
         """
         local_as: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         """
         neighbor_as: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         """
         neighbors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigNeighborsArgsDict']]]]
         """
-        If per-neighbor as is desired. Property key is the neighbor address
+        Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
         """
         networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+        Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
         """
         no_private_as: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+        """
         no_readvertise_to_overlay: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        By default, we'll re-advertise all learned BGP routers toward overlay
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
         """
         tunnel_name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If `type`==`tunnel`
+        Optional if `via`==`tunnel`
         """
         type: NotRequired[pulumi.Input[_builtins.str]]
         """
-        enum: `external`, `internal`
-        """
-        via: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        network name. enum: `lan`, `tunnel`, `vpn`, `wan`
+        Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
         """
         vpn_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional if `via`==`vpn`
+        """
         wan_name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If `via`==`wan`
+        Optional if `via`==`wan`
         """
 elif False:
     GatewaytemplateBgpConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -12545,6 +12600,7 @@ elif False:
 @pulumi.input_type
 class GatewaytemplateBgpConfigArgs:
     def __init__(__self__, *,
+                 via: pulumi.Input[_builtins.str],
                  auth_key: Optional[pulumi.Input[_builtins.str]] = None,
                  bfd_minimum_interval: Optional[pulumi.Input[_builtins.int]] = None,
                  bfd_multiplier: Optional[pulumi.Input[_builtins.int]] = None,
@@ -12564,29 +12620,33 @@ class GatewaytemplateBgpConfigArgs:
                  no_readvertise_to_overlay: Optional[pulumi.Input[_builtins.bool]] = None,
                  tunnel_name: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
-                 via: Optional[pulumi.Input[_builtins.str]] = None,
                  vpn_name: Optional[pulumi.Input[_builtins.str]] = None,
                  wan_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.int] bfd_minimum_interval: When bfd_multiplier is configured alone. Default:
+        :param pulumi.Input[_builtins.str] via: enum: `lan`, `tunnel`, `vpn`, `wan`
+        :param pulumi.Input[_builtins.str] auth_key: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+        :param pulumi.Input[_builtins.int] bfd_minimum_interval: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
                  * 1000 if `type`==`external`
                  * 350 `type`==`internal`
-        :param pulumi.Input[_builtins.int] bfd_multiplier: When bfd_minimum_interval_is_configured alone
-        :param pulumi.Input[_builtins.bool] disable_bfd: BFD provides faster path failure detection and is enabled by default
+        :param pulumi.Input[_builtins.int] bfd_multiplier: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
+        :param pulumi.Input[_builtins.bool] disable_bfd: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
         :param pulumi.Input[_builtins.str] export_policy: Default export policies if no per-neighbor policies defined
-        :param pulumi.Input[_builtins.bool] extended_v4_nexthop: By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
-        :param pulumi.Input[_builtins.int] graceful_restart_time: `0` means disable
-        :param pulumi.Input[_builtins.str] import_policy: Default import policies if no per-neighbor policies defined
-        :param pulumi.Input[_builtins.str] local_as: Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
-        :param pulumi.Input[_builtins.str] neighbor_as: Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigNeighborsArgs']]] neighbors: If per-neighbor as is desired. Property key is the neighbor address
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
-        :param pulumi.Input[_builtins.bool] no_readvertise_to_overlay: By default, we'll re-advertise all learned BGP routers toward overlay
-        :param pulumi.Input[_builtins.str] tunnel_name: If `type`==`tunnel`
-        :param pulumi.Input[_builtins.str] type: enum: `external`, `internal`
-        :param pulumi.Input[_builtins.str] via: network name. enum: `lan`, `tunnel`, `vpn`, `wan`
-        :param pulumi.Input[_builtins.str] wan_name: If `via`==`wan`
+        :param pulumi.Input[_builtins.bool] extended_v4_nexthop: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        :param pulumi.Input[_builtins.int] graceful_restart_time: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
+        :param pulumi.Input[_builtins.int] hold_time: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+        :param pulumi.Input[_builtins.str] import_policy: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
+        :param pulumi.Input[_builtins.str] local_as: Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        :param pulumi.Input[_builtins.str] neighbor_as: Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigNeighborsArgs']]] neighbors: Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
+        :param pulumi.Input[_builtins.bool] no_private_as: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+        :param pulumi.Input[_builtins.bool] no_readvertise_to_overlay: Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
+        :param pulumi.Input[_builtins.str] tunnel_name: Optional if `via`==`tunnel`
+        :param pulumi.Input[_builtins.str] type: Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
+        :param pulumi.Input[_builtins.str] vpn_name: Optional if `via`==`vpn`
+        :param pulumi.Input[_builtins.str] wan_name: Optional if `via`==`wan`
         """
+        pulumi.set(__self__, "via", via)
         if auth_key is not None:
             pulumi.set(__self__, "auth_key", auth_key)
         if bfd_minimum_interval is not None:
@@ -12625,16 +12685,29 @@ class GatewaytemplateBgpConfigArgs:
             pulumi.set(__self__, "tunnel_name", tunnel_name)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if via is not None:
-            pulumi.set(__self__, "via", via)
         if vpn_name is not None:
             pulumi.set(__self__, "vpn_name", vpn_name)
         if wan_name is not None:
             pulumi.set(__self__, "wan_name", wan_name)
 
     @_builtins.property
+    @pulumi.getter
+    def via(self) -> pulumi.Input[_builtins.str]:
+        """
+        enum: `lan`, `tunnel`, `vpn`, `wan`
+        """
+        return pulumi.get(self, "via")
+
+    @via.setter
+    def via(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "via", value)
+
+    @_builtins.property
     @pulumi.getter(name="authKey")
     def auth_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+        """
         return pulumi.get(self, "auth_key")
 
     @auth_key.setter
@@ -12645,7 +12718,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="bfdMinimumInterval")
     def bfd_minimum_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        When bfd_multiplier is configured alone. Default:
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
           * 1000 if `type`==`external`
           * 350 `type`==`internal`
         """
@@ -12659,7 +12732,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="bfdMultiplier")
     def bfd_multiplier(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        When bfd_minimum_interval_is_configured alone
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
         """
         return pulumi.get(self, "bfd_multiplier")
 
@@ -12671,7 +12744,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="disableBfd")
     def disable_bfd(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        BFD provides faster path failure detection and is enabled by default
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
         """
         return pulumi.get(self, "disable_bfd")
 
@@ -12704,7 +12777,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="extendedV4Nexthop")
     def extended_v4_nexthop(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         """
         return pulumi.get(self, "extended_v4_nexthop")
 
@@ -12716,7 +12789,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="gracefulRestartTime")
     def graceful_restart_time(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        `0` means disable
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
         """
         return pulumi.get(self, "graceful_restart_time")
 
@@ -12727,6 +12800,9 @@ class GatewaytemplateBgpConfigArgs:
     @_builtins.property
     @pulumi.getter(name="holdTime")
     def hold_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+        """
         return pulumi.get(self, "hold_time")
 
     @hold_time.setter
@@ -12746,7 +12822,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="importPolicy")
     def import_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Default import policies if no per-neighbor policies defined
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
         """
         return pulumi.get(self, "import_policy")
 
@@ -12758,7 +12834,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="localAs")
     def local_as(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Local AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         """
         return pulumi.get(self, "local_as")
 
@@ -12770,7 +12846,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="neighborAs")
     def neighbor_as(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         """
         return pulumi.get(self, "neighbor_as")
 
@@ -12782,7 +12858,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter
     def neighbors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigNeighborsArgs']]]]:
         """
-        If per-neighbor as is desired. Property key is the neighbor address
+        Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
         """
         return pulumi.get(self, "neighbors")
 
@@ -12794,7 +12870,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter
     def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+        Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
         """
         return pulumi.get(self, "networks")
 
@@ -12805,6 +12881,9 @@ class GatewaytemplateBgpConfigArgs:
     @_builtins.property
     @pulumi.getter(name="noPrivateAs")
     def no_private_as(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+        """
         return pulumi.get(self, "no_private_as")
 
     @no_private_as.setter
@@ -12815,7 +12894,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="noReadvertiseToOverlay")
     def no_readvertise_to_overlay(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        By default, we'll re-advertise all learned BGP routers toward overlay
+        Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
         """
         return pulumi.get(self, "no_readvertise_to_overlay")
 
@@ -12827,7 +12906,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="tunnelName")
     def tunnel_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If `type`==`tunnel`
+        Optional if `via`==`tunnel`
         """
         return pulumi.get(self, "tunnel_name")
 
@@ -12839,7 +12918,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        enum: `external`, `internal`
+        Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
         """
         return pulumi.get(self, "type")
 
@@ -12848,20 +12927,11 @@ class GatewaytemplateBgpConfigArgs:
         pulumi.set(self, "type", value)
 
     @_builtins.property
-    @pulumi.getter
-    def via(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        network name. enum: `lan`, `tunnel`, `vpn`, `wan`
-        """
-        return pulumi.get(self, "via")
-
-    @via.setter
-    def via(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "via", value)
-
-    @_builtins.property
     @pulumi.getter(name="vpnName")
     def vpn_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional if `via`==`vpn`
+        """
         return pulumi.get(self, "vpn_name")
 
     @vpn_name.setter
@@ -12872,7 +12942,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="wanName")
     def wan_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If `via`==`wan`
+        Optional if `via`==`wan`
         """
         return pulumi.get(self, "wan_name")
 
@@ -12883,6 +12953,10 @@ class GatewaytemplateBgpConfigArgs:
 
 if not MYPY:
     class GatewaytemplateBgpConfigNeighborsArgsDict(TypedDict):
+        neighbor_as: pulumi.Input[_builtins.str]
+        """
+        Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        """
         disabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
         If true, the BGP session to this neighbor will be administratively disabled/shutdown
@@ -12894,27 +12968,24 @@ if not MYPY:
         """
         Assuming BGP neighbor is directly connected
         """
-        neighbor_as: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
-        """
 elif False:
     GatewaytemplateBgpConfigNeighborsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GatewaytemplateBgpConfigNeighborsArgs:
     def __init__(__self__, *,
+                 neighbor_as: pulumi.Input[_builtins.str],
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  export_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  hold_time: Optional[pulumi.Input[_builtins.int]] = None,
                  import_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 multihop_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 neighbor_as: Optional[pulumi.Input[_builtins.str]] = None):
+                 multihop_ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
+        :param pulumi.Input[_builtins.str] neighbor_as: Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         :param pulumi.Input[_builtins.bool] disabled: If true, the BGP session to this neighbor will be administratively disabled/shutdown
         :param pulumi.Input[_builtins.int] multihop_ttl: Assuming BGP neighbor is directly connected
-        :param pulumi.Input[_builtins.str] neighbor_as: Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         """
+        pulumi.set(__self__, "neighbor_as", neighbor_as)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if export_policy is not None:
@@ -12925,8 +12996,18 @@ class GatewaytemplateBgpConfigNeighborsArgs:
             pulumi.set(__self__, "import_policy", import_policy)
         if multihop_ttl is not None:
             pulumi.set(__self__, "multihop_ttl", multihop_ttl)
-        if neighbor_as is not None:
-            pulumi.set(__self__, "neighbor_as", neighbor_as)
+
+    @_builtins.property
+    @pulumi.getter(name="neighborAs")
+    def neighbor_as(self) -> pulumi.Input[_builtins.str]:
+        """
+        Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        """
+        return pulumi.get(self, "neighbor_as")
+
+    @neighbor_as.setter
+    def neighbor_as(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "neighbor_as", value)
 
     @_builtins.property
     @pulumi.getter
@@ -12978,18 +13059,6 @@ class GatewaytemplateBgpConfigNeighborsArgs:
     @multihop_ttl.setter
     def multihop_ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "multihop_ttl", value)
-
-    @_builtins.property
-    @pulumi.getter(name="neighborAs")
-    def neighbor_as(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
-        """
-        return pulumi.get(self, "neighbor_as")
-
-    @neighbor_as.setter
-    def neighbor_as(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "neighbor_as", value)
 
 
 if not MYPY:
@@ -13159,6 +13228,9 @@ class GatewaytemplateDhcpdConfigConfigArgs:
         if dns_servers is not None:
             pulumi.set(__self__, "dns_servers", dns_servers)
         if dns_suffixes is not None:
+            warnings.warn("""Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead""", DeprecationWarning)
+            pulumi.log.warn("""dns_suffixes is deprecated: Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead""")
+        if dns_suffixes is not None:
             pulumi.set(__self__, "dns_suffixes", dns_suffixes)
         if fixed_bindings is not None:
             pulumi.set(__self__, "fixed_bindings", fixed_bindings)
@@ -13203,6 +13275,7 @@ class GatewaytemplateDhcpdConfigConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dnsSuffixes")
+    @_utilities.deprecated("""Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead""")
     def dns_suffixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
@@ -15215,6 +15288,10 @@ class GatewaytemplatePathPreferencesArgs:
 
 if not MYPY:
     class GatewaytemplatePathPreferencesPathArgsDict(TypedDict):
+        type: pulumi.Input[_builtins.str]
+        """
+        enum: `local`, `tunnel`, `vpn`, `wan`
+        """
         cost: NotRequired[pulumi.Input[_builtins.int]]
         disabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -15242,10 +15319,6 @@ if not MYPY:
         """
         If `type`==`local`, if destination IP is to be replaced
         """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        enum: `local`, `tunnel`, `vpn`, `wan`
-        """
         wan_name: NotRequired[pulumi.Input[_builtins.str]]
         """
         Optional if `type`==`vpn`
@@ -15256,6 +15329,7 @@ elif False:
 @pulumi.input_type
 class GatewaytemplatePathPreferencesPathArgs:
     def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
                  cost: Optional[pulumi.Input[_builtins.int]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
@@ -15263,9 +15337,9 @@ class GatewaytemplatePathPreferencesPathArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
                  wan_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.str] type: enum: `local`, `tunnel`, `vpn`, `wan`
         :param pulumi.Input[_builtins.bool] disabled: For SSR Only. `true`, if this specific path is undesired
         :param pulumi.Input[_builtins.str] gateway_ip: Only if `type`==`local`, if a different gateway is desired
         :param pulumi.Input[_builtins.bool] internet_access: Only if `type`==`vpn`, if this vpn path can be used for internet
@@ -15274,9 +15348,9 @@ class GatewaytemplatePathPreferencesPathArgs:
                  * `type`==`wan`: the name of the WAN interface to use
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: Required when `type`==`local`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_ips: If `type`==`local`, if destination IP is to be replaced
-        :param pulumi.Input[_builtins.str] type: enum: `local`, `tunnel`, `vpn`, `wan`
         :param pulumi.Input[_builtins.str] wan_name: Optional if `type`==`vpn`
         """
+        pulumi.set(__self__, "type", type)
         if cost is not None:
             pulumi.set(__self__, "cost", cost)
         if disabled is not None:
@@ -15291,10 +15365,20 @@ class GatewaytemplatePathPreferencesPathArgs:
             pulumi.set(__self__, "networks", networks)
         if target_ips is not None:
             pulumi.set(__self__, "target_ips", target_ips)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
         if wan_name is not None:
             pulumi.set(__self__, "wan_name", wan_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        enum: `local`, `tunnel`, `vpn`, `wan`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
@@ -15378,18 +15462,6 @@ class GatewaytemplatePathPreferencesPathArgs:
     @target_ips.setter
     def target_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_ips", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        enum: `local`, `tunnel`, `vpn`, `wan`
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="wanName")
@@ -16860,7 +16932,7 @@ class GatewaytemplateRoutingPoliciesArgs:
 
 if not MYPY:
     class GatewaytemplateRoutingPoliciesTermArgsDict(TypedDict):
-        action: NotRequired[pulumi.Input['GatewaytemplateRoutingPoliciesTermActionArgsDict']]
+        actions: NotRequired[pulumi.Input['GatewaytemplateRoutingPoliciesTermActionsArgsDict']]
         """
         When used as import policy
         """
@@ -16874,28 +16946,28 @@ elif False:
 @pulumi.input_type
 class GatewaytemplateRoutingPoliciesTermArgs:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input['GatewaytemplateRoutingPoliciesTermActionArgs']] = None,
+                 actions: Optional[pulumi.Input['GatewaytemplateRoutingPoliciesTermActionsArgs']] = None,
                  matching: Optional[pulumi.Input['GatewaytemplateRoutingPoliciesTermMatchingArgs']] = None):
         """
-        :param pulumi.Input['GatewaytemplateRoutingPoliciesTermActionArgs'] action: When used as import policy
+        :param pulumi.Input['GatewaytemplateRoutingPoliciesTermActionsArgs'] actions: When used as import policy
         :param pulumi.Input['GatewaytemplateRoutingPoliciesTermMatchingArgs'] matching: zero or more criteria/filter can be specified to match the term, all criteria have to be met
         """
-        if action is not None:
-            pulumi.set(__self__, "action", action)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
         if matching is not None:
             pulumi.set(__self__, "matching", matching)
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input['GatewaytemplateRoutingPoliciesTermActionArgs']]:
+    def actions(self) -> Optional[pulumi.Input['GatewaytemplateRoutingPoliciesTermActionsArgs']]:
         """
         When used as import policy
         """
-        return pulumi.get(self, "action")
+        return pulumi.get(self, "actions")
 
-    @action.setter
-    def action(self, value: Optional[pulumi.Input['GatewaytemplateRoutingPoliciesTermActionArgs']]):
-        pulumi.set(self, "action", value)
+    @actions.setter
+    def actions(self, value: Optional[pulumi.Input['GatewaytemplateRoutingPoliciesTermActionsArgs']]):
+        pulumi.set(self, "actions", value)
 
     @_builtins.property
     @pulumi.getter
@@ -16911,7 +16983,7 @@ class GatewaytemplateRoutingPoliciesTermArgs:
 
 
 if not MYPY:
-    class GatewaytemplateRoutingPoliciesTermActionArgsDict(TypedDict):
+    class GatewaytemplateRoutingPoliciesTermActionsArgsDict(TypedDict):
         accept: NotRequired[pulumi.Input[_builtins.bool]]
         add_communities: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         add_target_vrfs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
@@ -16940,10 +17012,10 @@ if not MYPY:
         When used as export policy, optional. By default, the local AS will be prepended, to change it
         """
 elif False:
-    GatewaytemplateRoutingPoliciesTermActionArgsDict: TypeAlias = Mapping[str, Any]
+    GatewaytemplateRoutingPoliciesTermActionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GatewaytemplateRoutingPoliciesTermActionArgs:
+class GatewaytemplateRoutingPoliciesTermActionsArgs:
     def __init__(__self__, *,
                  accept: Optional[pulumi.Input[_builtins.bool]] = None,
                  add_communities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -17862,6 +17934,9 @@ class GatewaytemplateServicePolicySslProxyArgs:
 if not MYPY:
     class GatewaytemplateTunnelConfigsArgsDict(TypedDict):
         auto_provision: NotRequired[pulumi.Input['GatewaytemplateTunnelConfigsAutoProvisionArgsDict']]
+        """
+        Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+        """
         ike_lifetime: NotRequired[pulumi.Input[_builtins.int]]
         """
         Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
@@ -17945,6 +18020,7 @@ class GatewaytemplateTunnelConfigsArgs:
                  secondary: Optional[pulumi.Input['GatewaytemplateTunnelConfigsSecondaryArgs']] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input['GatewaytemplateTunnelConfigsAutoProvisionArgs'] auto_provision: Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
         :param pulumi.Input[_builtins.int] ike_lifetime: Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
         :param pulumi.Input[_builtins.str] ike_mode: Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
         :param pulumi.Input[Sequence[pulumi.Input['GatewaytemplateTunnelConfigsIkeProposalArgs']]] ike_proposals: If `provider`==`custom-ipsec`
@@ -17997,6 +18073,9 @@ class GatewaytemplateTunnelConfigsArgs:
     @_builtins.property
     @pulumi.getter(name="autoProvision")
     def auto_provision(self) -> Optional[pulumi.Input['GatewaytemplateTunnelConfigsAutoProvisionArgs']]:
+        """
+        Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+        """
         return pulumi.get(self, "auto_provision")
 
     @auto_provision.setter
@@ -18190,7 +18269,10 @@ if not MYPY:
         """
         enum: `jse-ipsec`, `zscaler-ipsec`
         """
-        enable: NotRequired[pulumi.Input[_builtins.bool]]
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+        """
         latlng: NotRequired[pulumi.Input['GatewaytemplateTunnelConfigsAutoProvisionLatlngArgsDict']]
         """
         API override for POP selection
@@ -18212,7 +18294,7 @@ elif False:
 class GatewaytemplateTunnelConfigsAutoProvisionArgs:
     def __init__(__self__, *,
                  provider: pulumi.Input[_builtins.str],
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  latlng: Optional[pulumi.Input['GatewaytemplateTunnelConfigsAutoProvisionLatlngArgs']] = None,
                  primary: Optional[pulumi.Input['GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgs']] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -18220,13 +18302,14 @@ class GatewaytemplateTunnelConfigsAutoProvisionArgs:
                  service_connection: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] provider: enum: `jse-ipsec`, `zscaler-ipsec`
+        :param pulumi.Input[_builtins.bool] enabled: Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
         :param pulumi.Input['GatewaytemplateTunnelConfigsAutoProvisionLatlngArgs'] latlng: API override for POP selection
         :param pulumi.Input[_builtins.str] region: API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
         :param pulumi.Input[_builtins.str] service_connection: if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we'll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup > Service Connections.
         """
         pulumi.set(__self__, "provider", provider)
-        if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if latlng is not None:
             pulumi.set(__self__, "latlng", latlng)
         if primary is not None:
@@ -18252,12 +18335,15 @@ class GatewaytemplateTunnelConfigsAutoProvisionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        return pulumi.get(self, "enable")
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+        """
+        return pulumi.get(self, "enabled")
 
-    @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable", value)
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
@@ -26368,11 +26454,6 @@ if not MYPY:
         """
         string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes
         """
-        match_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
-        """
-        match_value: NotRequired[pulumi.Input[_builtins.str]]
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
         Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
@@ -26401,8 +26482,6 @@ class NetworktemplateSwitchMatchingRuleArgs:
                  match_name: Optional[pulumi.Input[_builtins.str]] = None,
                  match_name_offset: Optional[pulumi.Input[_builtins.int]] = None,
                  match_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_value: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  oob_ip_config: Optional[pulumi.Input['NetworktemplateSwitchMatchingRuleOobIpConfigArgs']] = None,
                  port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateSwitchMatchingRulePortConfigArgs']]]] = None,
@@ -26414,7 +26493,6 @@ class NetworktemplateSwitchMatchingRuleArgs:
         :param pulumi.Input[_builtins.str] match_name: string the switch name must start with to use this rule. Use the `match_name_offset` to indicate the first character of the switch name to compare to. It is possible to combine with the `match_model` and `match_role` attributes
         :param pulumi.Input[_builtins.int] match_name_offset: first character of the switch name to compare to the `match_name` value
         :param pulumi.Input[_builtins.str] match_role: string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes
-        :param pulumi.Input[_builtins.str] match_type: property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
         :param pulumi.Input[_builtins.str] name: Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
         :param pulumi.Input['NetworktemplateSwitchMatchingRuleOobIpConfigArgs'] oob_ip_config: Out-of-Band Management interface configuration
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateSwitchMatchingRulePortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
@@ -26432,20 +26510,6 @@ class NetworktemplateSwitchMatchingRuleArgs:
             pulumi.set(__self__, "match_name_offset", match_name_offset)
         if match_role is not None:
             pulumi.set(__self__, "match_role", match_role)
-        if match_type is not None:
-            warnings.warn("""The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-Please update your configurations.""", DeprecationWarning)
-            pulumi.log.warn("""match_type is deprecated: The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-Please update your configurations.""")
-        if match_type is not None:
-            pulumi.set(__self__, "match_type", match_type)
-        if match_value is not None:
-            warnings.warn("""The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-Please update your configurations.""", DeprecationWarning)
-            pulumi.log.warn("""match_value is deprecated: The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-Please update your configurations.""")
-        if match_value is not None:
-            pulumi.set(__self__, "match_value", match_value)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if oob_ip_config is not None:
@@ -26526,31 +26590,6 @@ Please update your configurations.""")
     @match_role.setter
     def match_role(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "match_role", value)
-
-    @_builtins.property
-    @pulumi.getter(name="matchType")
-    @_utilities.deprecated("""The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-Please update your configurations.""")
-    def match_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
-        """
-        return pulumi.get(self, "match_type")
-
-    @match_type.setter
-    def match_type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "match_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="matchValue")
-    @_utilities.deprecated("""The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attributes and may be removed in future versions.
-Please update your configurations.""")
-    def match_value(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "match_value")
-
-    @match_value.setter
-    def match_value(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "match_value", value)
 
     @_builtins.property
     @pulumi.getter

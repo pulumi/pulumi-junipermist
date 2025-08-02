@@ -295,7 +295,7 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
-                                            "action": {
+                                            "actions": {
                                                 "fields": {
                                                     "add_community": {
                                                         "maxItemsOne": false
@@ -1153,7 +1153,7 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
-                                            "action": {
+                                            "actions": {
                                                 "fields": {
                                                     "add_community": {
                                                         "maxItemsOne": false
@@ -1538,7 +1538,7 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
-                                            "action": {
+                                            "actions": {
                                                 "fields": {
                                                     "add_community": {
                                                         "maxItemsOne": false

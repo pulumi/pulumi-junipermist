@@ -68,8 +68,8 @@ namespace Pulumi.JuniperMist.Org.Inputs
         /// <summary>
         /// enum: `local`, `tunnel`, `vpn`, `wan`
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         /// <summary>
         /// Optional if `type`==`vpn`

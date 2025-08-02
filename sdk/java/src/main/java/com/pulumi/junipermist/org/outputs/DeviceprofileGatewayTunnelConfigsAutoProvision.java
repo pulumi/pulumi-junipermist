@@ -16,7 +16,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceprofileGatewayTunnelConfigsAutoProvision {
-    private @Nullable Boolean enable;
+    /**
+     * @return Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+     * 
+     */
+    private @Nullable Boolean enabled;
     /**
      * @return API override for POP selection
      * 
@@ -41,8 +45,12 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvision {
     private @Nullable String serviceConnection;
 
     private DeviceprofileGatewayTunnelConfigsAutoProvision() {}
-    public Optional<Boolean> enable() {
-        return Optional.ofNullable(this.enable);
+    /**
+     * @return Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+     * 
+     */
+    public Optional<Boolean> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
     /**
      * @return API override for POP selection
@@ -88,7 +96,7 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvision {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean enable;
+        private @Nullable Boolean enabled;
         private @Nullable DeviceprofileGatewayTunnelConfigsAutoProvisionLatlng latlng;
         private @Nullable DeviceprofileGatewayTunnelConfigsAutoProvisionPrimary primary;
         private String provider;
@@ -98,7 +106,7 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvision {
         public Builder() {}
         public Builder(DeviceprofileGatewayTunnelConfigsAutoProvision defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.enable = defaults.enable;
+    	      this.enabled = defaults.enabled;
     	      this.latlng = defaults.latlng;
     	      this.primary = defaults.primary;
     	      this.provider = defaults.provider;
@@ -108,9 +116,9 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvision {
         }
 
         @CustomType.Setter
-        public Builder enable(@Nullable Boolean enable) {
+        public Builder enabled(@Nullable Boolean enabled) {
 
-            this.enable = enable;
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
@@ -153,7 +161,7 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvision {
         }
         public DeviceprofileGatewayTunnelConfigsAutoProvision build() {
             final var _resultValue = new DeviceprofileGatewayTunnelConfigsAutoProvision();
-            _resultValue.enable = enable;
+            _resultValue.enabled = enabled;
             _resultValue.latlng = latlng;
             _resultValue.primary = primary;
             _resultValue.provider = provider;

@@ -13,7 +13,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayTunnelConfigsAutoProvision
     {
-        public readonly bool? Enable;
+        /// <summary>
+        /// Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+        /// </summary>
+        public readonly bool? Enabled;
         /// <summary>
         /// API override for POP selection
         /// </summary>
@@ -35,7 +38,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
         [OutputConstructor]
         private GatewayTunnelConfigsAutoProvision(
-            bool? enable,
+            bool? enabled,
 
             Outputs.GatewayTunnelConfigsAutoProvisionLatlng? latlng,
 
@@ -49,7 +52,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string? serviceConnection)
         {
-            Enable = enable;
+            Enabled = enabled;
             Latlng = latlng;
             Primary = primary;
             Provider = provider;

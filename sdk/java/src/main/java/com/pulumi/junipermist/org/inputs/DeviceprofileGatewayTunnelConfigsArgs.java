@@ -23,9 +23,17 @@ public final class DeviceprofileGatewayTunnelConfigsArgs extends com.pulumi.reso
 
     public static final DeviceprofileGatewayTunnelConfigsArgs Empty = new DeviceprofileGatewayTunnelConfigsArgs();
 
+    /**
+     * Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+     * 
+     */
     @Import(name="autoProvision")
     private @Nullable Output<DeviceprofileGatewayTunnelConfigsAutoProvisionArgs> autoProvision;
 
+    /**
+     * @return Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+     * 
+     */
     public Optional<Output<DeviceprofileGatewayTunnelConfigsAutoProvisionArgs>> autoProvision() {
         return Optional.ofNullable(this.autoProvision);
     }
@@ -294,11 +302,23 @@ public final class DeviceprofileGatewayTunnelConfigsArgs extends com.pulumi.reso
             $ = new DeviceprofileGatewayTunnelConfigsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoProvision Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoProvision(@Nullable Output<DeviceprofileGatewayTunnelConfigsAutoProvisionArgs> autoProvision) {
             $.autoProvision = autoProvision;
             return this;
         }
 
+        /**
+         * @param autoProvision Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoProvision(DeviceprofileGatewayTunnelConfigsAutoProvisionArgs autoProvision) {
             return autoProvision(Output.of(autoProvision));
         }

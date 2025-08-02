@@ -209,14 +209,14 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * Junos OSPF areas
+     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
      * 
      */
     @Export(name="ospfAreas", refs={Map.class,String.class,NetworktemplateOspfAreas.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplateOspfAreas>> ospfAreas;
 
     /**
-     * @return Junos OSPF areas
+     * @return Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
      * 
      */
     public Output<Optional<Map<String,NetworktemplateOspfAreas>>> ospfAreas() {

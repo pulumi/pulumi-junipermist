@@ -7,10 +7,10 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.JuniperMist.Org.Inputs
+namespace Pulumi.JuniperMist.Device.Inputs
 {
 
-    public sealed class GatewaytemplateRoutingPoliciesTermActionGetArgs : global::Pulumi.ResourceArgs
+    public sealed class GatewayRoutingPoliciesTermActionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("accept")]
         public Input<bool>? Accept { get; set; }
@@ -97,9 +97,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _prependAsPaths = value;
         }
 
-        public GatewaytemplateRoutingPoliciesTermActionGetArgs()
+        public GatewayRoutingPoliciesTermActionsArgs()
         {
         }
-        public static new GatewaytemplateRoutingPoliciesTermActionGetArgs Empty => new GatewaytemplateRoutingPoliciesTermActionGetArgs();
+        public static new GatewayRoutingPoliciesTermActionsArgs Empty => new GatewayRoutingPoliciesTermActionsArgs();
     }
 }

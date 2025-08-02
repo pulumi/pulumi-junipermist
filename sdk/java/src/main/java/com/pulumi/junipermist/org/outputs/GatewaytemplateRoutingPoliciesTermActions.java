@@ -12,7 +12,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class GatewaytemplateRoutingPoliciesTermAction {
+public final class GatewaytemplateRoutingPoliciesTermActions {
     private @Nullable Boolean accept;
     private @Nullable List<String> addCommunities;
     /**
@@ -47,7 +47,7 @@ public final class GatewaytemplateRoutingPoliciesTermAction {
      */
     private @Nullable List<String> prependAsPaths;
 
-    private GatewaytemplateRoutingPoliciesTermAction() {}
+    private GatewaytemplateRoutingPoliciesTermActions() {}
     public Optional<Boolean> accept() {
         return Optional.ofNullable(this.accept);
     }
@@ -104,7 +104,7 @@ public final class GatewaytemplateRoutingPoliciesTermAction {
         return new Builder();
     }
 
-    public static Builder builder(GatewaytemplateRoutingPoliciesTermAction defaults) {
+    public static Builder builder(GatewaytemplateRoutingPoliciesTermActions defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -119,7 +119,7 @@ public final class GatewaytemplateRoutingPoliciesTermAction {
         private @Nullable String localPreference;
         private @Nullable List<String> prependAsPaths;
         public Builder() {}
-        public Builder(GatewaytemplateRoutingPoliciesTermAction defaults) {
+        public Builder(GatewaytemplateRoutingPoliciesTermActions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accept = defaults.accept;
     	      this.addCommunities = defaults.addCommunities;
@@ -207,8 +207,8 @@ public final class GatewaytemplateRoutingPoliciesTermAction {
         public Builder prependAsPaths(String... prependAsPaths) {
             return prependAsPaths(List.of(prependAsPaths));
         }
-        public GatewaytemplateRoutingPoliciesTermAction build() {
-            final var _resultValue = new GatewaytemplateRoutingPoliciesTermAction();
+        public GatewaytemplateRoutingPoliciesTermActions build() {
+            final var _resultValue = new GatewaytemplateRoutingPoliciesTermActions();
             _resultValue.accept = accept;
             _resultValue.addCommunities = addCommunities;
             _resultValue.addTargetVrfs = addTargetVrfs;

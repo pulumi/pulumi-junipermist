@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// <summary>
         /// When used as import policy
         /// </summary>
-        public readonly Outputs.GatewaytemplateRoutingPoliciesTermAction? Action;
+        public readonly Outputs.GatewaytemplateRoutingPoliciesTermActions? Actions;
         /// <summary>
         /// zero or more criteria/filter can be specified to match the term, all criteria have to be met
         /// </summary>
@@ -24,11 +24,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
         [OutputConstructor]
         private GatewaytemplateRoutingPoliciesTerm(
-            Outputs.GatewaytemplateRoutingPoliciesTermAction? action,
+            Outputs.GatewaytemplateRoutingPoliciesTermActions? actions,
 
             Outputs.GatewaytemplateRoutingPoliciesTermMatching? matching)
         {
-            Action = action;
+            Actions = actions;
             Matching = matching;
         }
     }
