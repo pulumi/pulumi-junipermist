@@ -50921,7 +50921,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:junipermist"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:junipermist/terraformConfig",
