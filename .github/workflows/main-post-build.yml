@@ -10,7 +10,6 @@ on:
         required: true
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   MIST_API_TOKEN: ${{ secrets.MIST_API_TOKEN}}
   MIST_CLAIM_CODE_1: ${{ secrets.MIST_CLAIM_CODE_1}}
   MIST_CLAIM_CODE_2: ${{ secrets.MIST_CLAIM_CODE_2}}
