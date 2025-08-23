@@ -33,6 +33,9 @@ namespace Pulumi.JuniperMist.Device
         [Output("aeroscout")]
         public Output<Outputs.ApAeroscout?> Aeroscout { get; private set; } = null!;
 
+        [Output("airista")]
+        public Output<Outputs.ApAirista?> Airista { get; private set; } = null!;
+
         /// <summary>
         /// BLE AP settings
         /// </summary>
@@ -169,8 +172,9 @@ namespace Pulumi.JuniperMist.Device
         public Output<bool> PoePassthrough { get; private set; } = null!;
 
         /// <summary>
-        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-        /// precedence over switch_config (deprecated)
+        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+        /// predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
+        /// deprecated)
         /// </summary>
         [Output("portConfig")]
         public Output<ImmutableDictionary<string, Outputs.ApPortConfig>?> PortConfig { get; private set; } = null!;
@@ -285,6 +289,9 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Input("aeroscout")]
         public Input<Inputs.ApAeroscoutArgs>? Aeroscout { get; set; }
+
+        [Input("airista")]
+        public Input<Inputs.ApAiristaArgs>? Airista { get; set; }
 
         /// <summary>
         /// BLE AP settings
@@ -406,8 +413,9 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.ApPortConfigArgs>? _portConfig;
 
         /// <summary>
-        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-        /// precedence over switch_config (deprecated)
+        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+        /// predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
+        /// deprecated)
         /// </summary>
         public InputMap<Inputs.ApPortConfigArgs> PortConfig
         {
@@ -480,6 +488,9 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Input("aeroscout")]
         public Input<Inputs.ApAeroscoutGetArgs>? Aeroscout { get; set; }
+
+        [Input("airista")]
+        public Input<Inputs.ApAiristaGetArgs>? Airista { get; set; }
 
         /// <summary>
         /// BLE AP settings
@@ -625,8 +636,9 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.ApPortConfigGetArgs>? _portConfig;
 
         /// <summary>
-        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-        /// precedence over switch_config (deprecated)
+        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+        /// predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
+        /// deprecated)
         /// </summary>
         public InputMap<Inputs.ApPortConfigGetArgs> PortConfig
         {

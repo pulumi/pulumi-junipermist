@@ -63,6 +63,15 @@ export class Setting extends pulumi.CustomResource {
      * Auto Upgrade Settings
      */
     public readonly autoUpgrade!: pulumi.Output<outputs.site.SettingAutoUpgrade>;
+    /**
+     * auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+     * upgrade
+     */
+    public readonly autoUpgradeEsl!: pulumi.Output<outputs.site.SettingAutoUpgradeEsl | undefined>;
+    /**
+     * enable threshold-based bgp neighbor down delivery.
+     */
+    public readonly bgpNeighborUpdownThreshold!: pulumi.Output<number | undefined>;
     public /*out*/ readonly blacklistUrl!: pulumi.Output<string>;
     /**
      * BLE AP settings
@@ -175,6 +184,14 @@ export class Setting extends pulumi.CustomResource {
     public readonly vars!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly vna!: pulumi.Output<outputs.site.SettingVna | undefined>;
     /**
+     * enable threshold-based vpn path down delivery.
+     */
+    public readonly vpnPathUpdownThreshold!: pulumi.Output<number | undefined>;
+    /**
+     * enable threshold-based vpn peer down delivery.
+     */
+    public readonly vpnPeerUpdownThreshold!: pulumi.Output<number | undefined>;
+    /**
      * Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
      */
     public readonly vsInstance!: pulumi.Output<{[key: string]: outputs.site.SettingVsInstance} | undefined>;
@@ -211,6 +228,8 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["analytic"] = state ? state.analytic : undefined;
             resourceInputs["apUpdownThreshold"] = state ? state.apUpdownThreshold : undefined;
             resourceInputs["autoUpgrade"] = state ? state.autoUpgrade : undefined;
+            resourceInputs["autoUpgradeEsl"] = state ? state.autoUpgradeEsl : undefined;
+            resourceInputs["bgpNeighborUpdownThreshold"] = state ? state.bgpNeighborUpdownThreshold : undefined;
             resourceInputs["blacklistUrl"] = state ? state.blacklistUrl : undefined;
             resourceInputs["bleConfig"] = state ? state.bleConfig : undefined;
             resourceInputs["configAutoRevert"] = state ? state.configAutoRevert : undefined;
@@ -245,6 +264,8 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["uplinkPortConfig"] = state ? state.uplinkPortConfig : undefined;
             resourceInputs["vars"] = state ? state.vars : undefined;
             resourceInputs["vna"] = state ? state.vna : undefined;
+            resourceInputs["vpnPathUpdownThreshold"] = state ? state.vpnPathUpdownThreshold : undefined;
+            resourceInputs["vpnPeerUpdownThreshold"] = state ? state.vpnPeerUpdownThreshold : undefined;
             resourceInputs["vsInstance"] = state ? state.vsInstance : undefined;
             resourceInputs["wanVna"] = state ? state.wanVna : undefined;
             resourceInputs["watchedStationUrl"] = state ? state.watchedStationUrl : undefined;
@@ -261,6 +282,8 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["analytic"] = args ? args.analytic : undefined;
             resourceInputs["apUpdownThreshold"] = args ? args.apUpdownThreshold : undefined;
             resourceInputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
+            resourceInputs["autoUpgradeEsl"] = args ? args.autoUpgradeEsl : undefined;
+            resourceInputs["bgpNeighborUpdownThreshold"] = args ? args.bgpNeighborUpdownThreshold : undefined;
             resourceInputs["bleConfig"] = args ? args.bleConfig : undefined;
             resourceInputs["configAutoRevert"] = args ? args.configAutoRevert : undefined;
             resourceInputs["configPushPolicy"] = args ? args.configPushPolicy : undefined;
@@ -294,6 +317,8 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["uplinkPortConfig"] = args ? args.uplinkPortConfig : undefined;
             resourceInputs["vars"] = args ? args.vars : undefined;
             resourceInputs["vna"] = args ? args.vna : undefined;
+            resourceInputs["vpnPathUpdownThreshold"] = args ? args.vpnPathUpdownThreshold : undefined;
+            resourceInputs["vpnPeerUpdownThreshold"] = args ? args.vpnPeerUpdownThreshold : undefined;
             resourceInputs["vsInstance"] = args ? args.vsInstance : undefined;
             resourceInputs["wanVna"] = args ? args.wanVna : undefined;
             resourceInputs["wids"] = args ? args.wids : undefined;
@@ -323,6 +348,15 @@ export interface SettingState {
      * Auto Upgrade Settings
      */
     autoUpgrade?: pulumi.Input<inputs.site.SettingAutoUpgrade>;
+    /**
+     * auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+     * upgrade
+     */
+    autoUpgradeEsl?: pulumi.Input<inputs.site.SettingAutoUpgradeEsl>;
+    /**
+     * enable threshold-based bgp neighbor down delivery.
+     */
+    bgpNeighborUpdownThreshold?: pulumi.Input<number>;
     blacklistUrl?: pulumi.Input<string>;
     /**
      * BLE AP settings
@@ -435,6 +469,14 @@ export interface SettingState {
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     vna?: pulumi.Input<inputs.site.SettingVna>;
     /**
+     * enable threshold-based vpn path down delivery.
+     */
+    vpnPathUpdownThreshold?: pulumi.Input<number>;
+    /**
+     * enable threshold-based vpn peer down delivery.
+     */
+    vpnPeerUpdownThreshold?: pulumi.Input<number>;
+    /**
      * Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
      */
     vsInstance?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.SettingVsInstance>}>;
@@ -470,6 +512,15 @@ export interface SettingArgs {
      * Auto Upgrade Settings
      */
     autoUpgrade?: pulumi.Input<inputs.site.SettingAutoUpgrade>;
+    /**
+     * auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+     * upgrade
+     */
+    autoUpgradeEsl?: pulumi.Input<inputs.site.SettingAutoUpgradeEsl>;
+    /**
+     * enable threshold-based bgp neighbor down delivery.
+     */
+    bgpNeighborUpdownThreshold?: pulumi.Input<number>;
     /**
      * BLE AP settings
      */
@@ -580,6 +631,14 @@ export interface SettingArgs {
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     vna?: pulumi.Input<inputs.site.SettingVna>;
+    /**
+     * enable threshold-based vpn path down delivery.
+     */
+    vpnPathUpdownThreshold?: pulumi.Input<number>;
+    /**
+     * enable threshold-based vpn peer down delivery.
+     */
+    vpnPeerUpdownThreshold?: pulumi.Input<number>;
     /**
      * Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
      */

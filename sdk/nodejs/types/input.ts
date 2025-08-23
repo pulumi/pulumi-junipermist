@@ -35,6 +35,18 @@ export namespace device {
         port?: pulumi.Input<number>;
     }
 
+    export interface ApAirista {
+        /**
+         * Whether to enable Airista config
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Required if enabled, Airista server host
+         */
+        host?: pulumi.Input<string>;
+        port?: pulumi.Input<number>;
+    }
+
     export interface ApBleConfig {
         /**
          * Whether Mist beacons is enabled
@@ -340,6 +352,26 @@ export namespace device {
 
     export interface ApPortConfigMistNac {
         /**
+         * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+         */
+        acctInterimInterval?: pulumi.Input<number>;
+        /**
+         * Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+         */
+        authServersRetries?: pulumi.Input<number>;
+        /**
+         * Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+         */
+        authServersTimeout?: pulumi.Input<number>;
+        /**
+         * Allows a RADIUS server to dynamically modify the authorization status of a user session.
+         */
+        coaEnabled?: pulumi.Input<boolean>;
+        /**
+         * the communication port used for “Change of Authorization” (CoA) messages
+         */
+        coaPort?: pulumi.Input<number>;
+        /**
          * When enabled:
          *   * `authServers` is ignored
          *   * `acctServers` is ignored
@@ -349,6 +381,18 @@ export namespace device {
          *   * `coaEnabled` is assumed
          */
         enabled?: pulumi.Input<boolean>;
+        /**
+         * If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+         */
+        fastDot1xTimers?: pulumi.Input<boolean>;
+        /**
+         * Which network the mist nac server resides in
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * In case there is a static IP for this network, we can specify it using source ip
+         */
+        sourceIp?: pulumi.Input<string>;
     }
 
     export interface ApPortConfigRadiusConfig {
@@ -880,21 +924,21 @@ export namespace device {
          */
         gateway?: pulumi.Input<string>;
         /**
+         * If `type6`==`local`
+         */
+        ip6End?: pulumi.Input<string>;
+        /**
+         * If `type6`==`local`
+         */
+        ip6Start?: pulumi.Input<string>;
+        /**
          * If `type`==`local`
          */
         ipEnd?: pulumi.Input<string>;
         /**
-         * If `type6`==`local`
-         */
-        ipEnd6?: pulumi.Input<string>;
-        /**
          * If `type`==`local`
          */
         ipStart?: pulumi.Input<string>;
-        /**
-         * If `type6`==`local`
-         */
-        ipStart6?: pulumi.Input<string>;
         /**
          * In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
          */
@@ -915,7 +959,7 @@ export namespace device {
         /**
          * If `type6`==`relay`
          */
-        servers6s?: pulumi.Input<pulumi.Input<string>[]>;
+        serversv6s?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
          */
@@ -995,7 +1039,9 @@ export namespace device {
 
     export interface GatewayIpConfigs {
         ip?: pulumi.Input<string>;
+        ip6?: pulumi.Input<string>;
         netmask?: pulumi.Input<string>;
+        netmask6?: pulumi.Input<string>;
         /**
          * Optional list of secondary IPs in CIDR format
          */
@@ -1004,6 +1050,10 @@ export namespace device {
          * enum: `dhcp`, `static`
          */
         type?: pulumi.Input<string>;
+        /**
+         * enum: `autoconf`, `dhcp`, `disabled`, `static`
+         */
+        type6?: pulumi.Input<string>;
     }
 
     export interface GatewayNetwork {
@@ -1441,6 +1491,10 @@ export namespace device {
          */
         wanExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPortConfigWanExtraRoutes>}>;
         /**
+         * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+         */
+        wanExtraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPortConfigWanExtraRoutes6>}>;
+        /**
          * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
          */
         wanNetworks?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1472,13 +1526,25 @@ export namespace device {
          */
         gateway?: pulumi.Input<string>;
         /**
+         * Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. "2001:db8::1") or a Variable (i.e. "{{myvar}}")
+         */
+        gateway6?: pulumi.Input<string>;
+        /**
          * Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
          */
         ip?: pulumi.Input<string>;
         /**
+         * Interface IPv6 Address (i.e. "2001:db8::123") or a Variable (i.e. "{{myvar}}")
+         */
+        ip6?: pulumi.Input<string>;
+        /**
          * Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
          */
         netmask?: pulumi.Input<string>;
+        /**
+         * Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. "/64") or a Variable (i.e. "{{myvar}}")
+         */
+        netmask6?: pulumi.Input<string>;
         /**
          * Optional, the network to be used for mgmt
          */
@@ -1499,6 +1565,10 @@ export namespace device {
          * enum: `dhcp`, `pppoe`, `static`
          */
         type?: pulumi.Input<string>;
+        /**
+         * enum: `autoconf`, `dhcp`, `static`
+         */
+        type6?: pulumi.Input<string>;
     }
 
     export interface GatewayPortConfigTrafficShaping {
@@ -1549,7 +1619,12 @@ export namespace device {
         via?: pulumi.Input<string>;
     }
 
+    export interface GatewayPortConfigWanExtraRoutes6 {
+        via?: pulumi.Input<string>;
+    }
+
     export interface GatewayPortConfigWanProbeOverride {
+        ip6s?: pulumi.Input<pulumi.Input<string>[]>;
         ips?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * enum: `broadband`, `lte`
@@ -1791,6 +1866,10 @@ export namespace device {
          */
         localId?: pulumi.Input<string>;
         /**
+         * List of Local protected subnet for policy-based IPSec negotiation
+         */
+        localSubnets?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
          */
         mode?: pulumi.Input<string>;
@@ -1818,6 +1897,10 @@ export namespace device {
          * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         psk?: pulumi.Input<string>;
+        /**
+         * List of Remote protected subnet for policy-based IPSec negotiation
+         */
+        remoteSubnets?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
@@ -2503,7 +2586,7 @@ export namespace device {
          */
         portNetwork?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+         * Only `portAuth`=`dot1x`, reauthentication interval range between 10 and 65535 (default: 3600)
          */
         reauthInterval?: pulumi.Input<string>;
         /**
@@ -2543,6 +2626,10 @@ export namespace device {
     }
 
     export interface SwitchLocalPortConfigStormControl {
+        /**
+         * Whether to disable the port when storm control is triggered
+         */
+        disablePort?: pulumi.Input<boolean>;
         /**
          * Whether to disable storm control on broadcast traffic
          */
@@ -2671,6 +2758,14 @@ export namespace device {
          * Enable OSPF on the switch
          */
         enabled?: pulumi.Input<boolean>;
+        /**
+         * optional, for basic scenario, `importPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
+         */
+        exportPolicy?: pulumi.Input<string>;
+        /**
+         * optional, for basic scenario, `importPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
+         */
+        importPolicy?: pulumi.Input<string>;
         referenceBandwidth?: pulumi.Input<string>;
     }
 
@@ -2767,6 +2862,31 @@ export namespace device {
         usage: pulumi.Input<string>;
     }
 
+    export interface SwitchPortConfigOverwrite {
+        description?: pulumi.Input<string>;
+        /**
+         * Whether the port is disabled
+         */
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * Link connection mode. enum: `auto`, `full`, `half`
+         */
+        duplex?: pulumi.Input<string>;
+        macLimit?: pulumi.Input<string>;
+        /**
+         * Whether PoE capabilities are disabled for a port
+         */
+        poeDisabled?: pulumi.Input<boolean>;
+        /**
+         * Native network/vlan for untagged traffic
+         */
+        portNetwork?: pulumi.Input<string>;
+        /**
+         * Port Speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         */
+        speed?: pulumi.Input<string>;
+    }
+
     export interface SwitchPortMirroring {
         /**
          * At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or `inputNetworksIngress ` should be specified
@@ -2781,11 +2901,15 @@ export namespace device {
          */
         inputPortIdsIngresses?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
+         */
+        outputIpAddress?: pulumi.Input<string>;
+        /**
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputNetwork?: pulumi.Input<string>;
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: pulumi.Input<string>;
     }
@@ -2828,7 +2952,7 @@ export namespace device {
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+         * Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
          */
         duplex?: pulumi.Input<string>;
         /**
@@ -2920,7 +3044,7 @@ export namespace device {
          */
         serverRejectNetwork?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         * Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed?: pulumi.Input<string>;
         /**
@@ -2966,6 +3090,10 @@ export namespace device {
     }
 
     export interface SwitchPortUsagesStormControl {
+        /**
+         * Whether to disable the port when storm control is triggered
+         */
+        disablePort?: pulumi.Input<boolean>;
         /**
          * Whether to disable storm control on broadcast traffic
          */
@@ -3146,6 +3274,10 @@ export namespace device {
          */
         protocol?: pulumi.Input<string>;
         routingInstance?: pulumi.Input<string>;
+        /**
+         * Name of the server
+         */
+        serverName?: pulumi.Input<string>;
         /**
          * enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
          */
@@ -3599,10 +3731,6 @@ export namespace device {
 
     export interface SwitchVrrpConfigGroups {
         /**
-         * If `true`, accept packets destined for VRRP address
-         */
-        acceptData?: pulumi.Input<boolean>;
-        /**
          * If `true`, allow preemption (a backup router can preempt a primary router)
          */
         preempt?: pulumi.Input<boolean>;
@@ -3689,6 +3817,18 @@ export namespace org {
          * Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
          */
         locateConnected?: pulumi.Input<boolean>;
+        port?: pulumi.Input<number>;
+    }
+
+    export interface DeviceprofileApAirista {
+        /**
+         * Whether to enable Airista config
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Required if enabled, Airista server host
+         */
+        host?: pulumi.Input<string>;
         port?: pulumi.Input<number>;
     }
 
@@ -3974,6 +4114,26 @@ export namespace org {
 
     export interface DeviceprofileApPortConfigMistNac {
         /**
+         * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+         */
+        acctInterimInterval?: pulumi.Input<number>;
+        /**
+         * Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+         */
+        authServersRetries?: pulumi.Input<number>;
+        /**
+         * Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+         */
+        authServersTimeout?: pulumi.Input<number>;
+        /**
+         * Allows a RADIUS server to dynamically modify the authorization status of a user session.
+         */
+        coaEnabled?: pulumi.Input<boolean>;
+        /**
+         * the communication port used for “Change of Authorization” (CoA) messages
+         */
+        coaPort?: pulumi.Input<number>;
+        /**
          * When enabled:
          *   * `authServers` is ignored
          *   * `acctServers` is ignored
@@ -3983,6 +4143,18 @@ export namespace org {
          *   * `coaEnabled` is assumed
          */
         enabled?: pulumi.Input<boolean>;
+        /**
+         * If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+         */
+        fastDot1xTimers?: pulumi.Input<boolean>;
+        /**
+         * Which network the mist nac server resides in
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * In case there is a static IP for this network, we can specify it using source ip
+         */
+        sourceIp?: pulumi.Input<string>;
     }
 
     export interface DeviceprofileApPortConfigRadiusConfig {
@@ -4502,21 +4674,21 @@ export namespace org {
          */
         gateway?: pulumi.Input<string>;
         /**
+         * If `type6`==`local`
+         */
+        ip6End?: pulumi.Input<string>;
+        /**
+         * If `type6`==`local`
+         */
+        ip6Start?: pulumi.Input<string>;
+        /**
          * If `type`==`local`
          */
         ipEnd?: pulumi.Input<string>;
         /**
-         * If `type6`==`local`
-         */
-        ipEnd6?: pulumi.Input<string>;
-        /**
          * If `type`==`local`
          */
         ipStart?: pulumi.Input<string>;
-        /**
-         * If `type6`==`local`
-         */
-        ipStart6?: pulumi.Input<string>;
         /**
          * In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
          */
@@ -4537,7 +4709,7 @@ export namespace org {
         /**
          * If `type6`==`relay`
          */
-        servers6s?: pulumi.Input<pulumi.Input<string>[]>;
+        serversv6s?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
          */
@@ -4613,7 +4785,9 @@ export namespace org {
 
     export interface DeviceprofileGatewayIpConfigs {
         ip?: pulumi.Input<string>;
+        ip6?: pulumi.Input<string>;
         netmask?: pulumi.Input<string>;
+        netmask6?: pulumi.Input<string>;
         /**
          * Optional list of secondary IPs in CIDR format
          */
@@ -4622,6 +4796,10 @@ export namespace org {
          * enum: `dhcp`, `static`
          */
         type?: pulumi.Input<string>;
+        /**
+         * enum: `autoconf`, `dhcp`, `disabled`, `static`
+         */
+        type6?: pulumi.Input<string>;
     }
 
     export interface DeviceprofileGatewayNetwork {
@@ -5059,6 +5237,10 @@ export namespace org {
          */
         wanExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayPortConfigWanExtraRoutes>}>;
         /**
+         * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+         */
+        wanExtraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayPortConfigWanExtraRoutes6>}>;
+        /**
          * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
          */
         wanNetworks?: pulumi.Input<pulumi.Input<string>[]>;
@@ -5090,13 +5272,25 @@ export namespace org {
          */
         gateway?: pulumi.Input<string>;
         /**
+         * Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. "2001:db8::1") or a Variable (i.e. "{{myvar}}")
+         */
+        gateway6?: pulumi.Input<string>;
+        /**
          * Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
          */
         ip?: pulumi.Input<string>;
         /**
+         * Interface IPv6 Address (i.e. "2001:db8::123") or a Variable (i.e. "{{myvar}}")
+         */
+        ip6?: pulumi.Input<string>;
+        /**
          * Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
          */
         netmask?: pulumi.Input<string>;
+        /**
+         * Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. "/64") or a Variable (i.e. "{{myvar}}")
+         */
+        netmask6?: pulumi.Input<string>;
         /**
          * Optional, the network to be used for mgmt
          */
@@ -5117,6 +5311,10 @@ export namespace org {
          * enum: `dhcp`, `pppoe`, `static`
          */
         type?: pulumi.Input<string>;
+        /**
+         * enum: `autoconf`, `dhcp`, `static`
+         */
+        type6?: pulumi.Input<string>;
     }
 
     export interface DeviceprofileGatewayPortConfigTrafficShaping {
@@ -5167,7 +5365,12 @@ export namespace org {
         via?: pulumi.Input<string>;
     }
 
+    export interface DeviceprofileGatewayPortConfigWanExtraRoutes6 {
+        via?: pulumi.Input<string>;
+    }
+
     export interface DeviceprofileGatewayPortConfigWanProbeOverride {
+        ip6s?: pulumi.Input<pulumi.Input<string>[]>;
         ips?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * enum: `broadband`, `lte`
@@ -5397,6 +5600,10 @@ export namespace org {
          */
         localId?: pulumi.Input<string>;
         /**
+         * List of Local protected subnet for policy-based IPSec negotiation
+         */
+        localSubnets?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
          */
         mode?: pulumi.Input<string>;
@@ -5424,6 +5631,10 @@ export namespace org {
          * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         psk?: pulumi.Input<string>;
+        /**
+         * List of Remote protected subnet for policy-based IPSec negotiation
+         */
+        remoteSubnets?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
@@ -5963,21 +6174,21 @@ export namespace org {
          */
         gateway?: pulumi.Input<string>;
         /**
+         * If `type6`==`local`
+         */
+        ip6End?: pulumi.Input<string>;
+        /**
+         * If `type6`==`local`
+         */
+        ip6Start?: pulumi.Input<string>;
+        /**
          * If `type`==`local`
          */
         ipEnd?: pulumi.Input<string>;
         /**
-         * If `type6`==`local`
-         */
-        ipEnd6?: pulumi.Input<string>;
-        /**
          * If `type`==`local`
          */
         ipStart?: pulumi.Input<string>;
-        /**
-         * If `type6`==`local`
-         */
-        ipStart6?: pulumi.Input<string>;
         /**
          * In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
          */
@@ -5998,7 +6209,7 @@ export namespace org {
         /**
          * If `type6`==`relay`
          */
-        servers6s?: pulumi.Input<pulumi.Input<string>[]>;
+        serversv6s?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
          */
@@ -6074,7 +6285,9 @@ export namespace org {
 
     export interface GatewaytemplateIpConfigs {
         ip?: pulumi.Input<string>;
+        ip6?: pulumi.Input<string>;
         netmask?: pulumi.Input<string>;
+        netmask6?: pulumi.Input<string>;
         /**
          * Optional list of secondary IPs in CIDR format
          */
@@ -6083,6 +6296,10 @@ export namespace org {
          * enum: `dhcp`, `static`
          */
         type?: pulumi.Input<string>;
+        /**
+         * enum: `autoconf`, `dhcp`, `disabled`, `static`
+         */
+        type6?: pulumi.Input<string>;
     }
 
     export interface GatewaytemplateNetwork {
@@ -6520,6 +6737,10 @@ export namespace org {
          */
         wanExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplatePortConfigWanExtraRoutes>}>;
         /**
+         * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+         */
+        wanExtraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplatePortConfigWanExtraRoutes6>}>;
+        /**
          * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
          */
         wanNetworks?: pulumi.Input<pulumi.Input<string>[]>;
@@ -6551,13 +6772,25 @@ export namespace org {
          */
         gateway?: pulumi.Input<string>;
         /**
+         * Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. "2001:db8::1") or a Variable (i.e. "{{myvar}}")
+         */
+        gateway6?: pulumi.Input<string>;
+        /**
          * Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
          */
         ip?: pulumi.Input<string>;
         /**
+         * Interface IPv6 Address (i.e. "2001:db8::123") or a Variable (i.e. "{{myvar}}")
+         */
+        ip6?: pulumi.Input<string>;
+        /**
          * Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
          */
         netmask?: pulumi.Input<string>;
+        /**
+         * Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. "/64") or a Variable (i.e. "{{myvar}}")
+         */
+        netmask6?: pulumi.Input<string>;
         /**
          * Optional, the network to be used for mgmt
          */
@@ -6578,6 +6811,10 @@ export namespace org {
          * enum: `dhcp`, `pppoe`, `static`
          */
         type?: pulumi.Input<string>;
+        /**
+         * enum: `autoconf`, `dhcp`, `static`
+         */
+        type6?: pulumi.Input<string>;
     }
 
     export interface GatewaytemplatePortConfigTrafficShaping {
@@ -6628,7 +6865,12 @@ export namespace org {
         via?: pulumi.Input<string>;
     }
 
+    export interface GatewaytemplatePortConfigWanExtraRoutes6 {
+        via?: pulumi.Input<string>;
+    }
+
     export interface GatewaytemplatePortConfigWanProbeOverride {
+        ip6s?: pulumi.Input<pulumi.Input<string>[]>;
         ips?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * enum: `broadband`, `lte`
@@ -6858,6 +7100,10 @@ export namespace org {
          */
         localId?: pulumi.Input<string>;
         /**
+         * List of Local protected subnet for policy-based IPSec negotiation
+         */
+        localSubnets?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
          */
         mode?: pulumi.Input<string>;
@@ -6885,6 +7131,10 @@ export namespace org {
          * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         psk?: pulumi.Input<string>;
+        /**
+         * List of Remote protected subnet for policy-based IPSec negotiation
+         */
+        remoteSubnets?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
@@ -7727,11 +7977,15 @@ export namespace org {
          */
         inputPortIdsIngresses?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
+         */
+        outputIpAddress?: pulumi.Input<string>;
+        /**
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputNetwork?: pulumi.Input<string>;
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: pulumi.Input<string>;
     }
@@ -7774,7 +8028,7 @@ export namespace org {
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+         * Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
          */
         duplex?: pulumi.Input<string>;
         /**
@@ -7866,7 +8120,7 @@ export namespace org {
          */
         serverRejectNetwork?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         * Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed?: pulumi.Input<string>;
         /**
@@ -7916,6 +8170,10 @@ export namespace org {
     }
 
     export interface NetworktemplatePortUsagesStormControl {
+        /**
+         * Whether to disable the port when storm control is triggered
+         */
+        disablePort?: pulumi.Input<boolean>;
         /**
          * Whether to disable storm control on broadcast traffic
          */
@@ -8096,6 +8354,10 @@ export namespace org {
          */
         protocol?: pulumi.Input<string>;
         routingInstance?: pulumi.Input<string>;
+        /**
+         * Name of the server
+         */
+        serverName?: pulumi.Input<string>;
         /**
          * enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
          */
@@ -8497,11 +8759,15 @@ export namespace org {
          */
         inputPortIdsIngresses?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
+         */
+        outputIpAddress?: pulumi.Input<string>;
+        /**
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputNetwork?: pulumi.Input<string>;
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: pulumi.Input<string>;
     }
@@ -9849,6 +10115,26 @@ export namespace org {
 
     export interface WlanMistNac {
         /**
+         * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+         */
+        acctInterimInterval?: pulumi.Input<number>;
+        /**
+         * Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+         */
+        authServersRetries?: pulumi.Input<number>;
+        /**
+         * Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+         */
+        authServersTimeout?: pulumi.Input<number>;
+        /**
+         * Allows a RADIUS server to dynamically modify the authorization status of a user session.
+         */
+        coaEnabled?: pulumi.Input<boolean>;
+        /**
+         * the communication port used for “Change of Authorization” (CoA) messages
+         */
+        coaPort?: pulumi.Input<number>;
+        /**
          * When enabled:
          *   * `authServers` is ignored
          *   * `acctServers` is ignored
@@ -9858,6 +10144,18 @@ export namespace org {
          *   * `coaEnabled` is assumed
          */
         enabled?: pulumi.Input<boolean>;
+        /**
+         * If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+         */
+        fastDot1xTimers?: pulumi.Input<boolean>;
+        /**
+         * Which network the mist nac server resides in
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * In case there is a static IP for this network, we can specify it using source ip
+         */
+        sourceIp?: pulumi.Input<string>;
     }
 
     export interface WlanPortal {
@@ -10038,7 +10336,7 @@ export namespace org {
          */
         password?: pulumi.Input<string>;
         /**
-         * Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+         * Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behavior is acc to `sponsorEmailDomains`
          */
         predefinedSponsorsEnabled?: pulumi.Input<boolean>;
         /**
@@ -10071,7 +10369,7 @@ export namespace org {
          */
         smsMessageFormat?: pulumi.Input<string>;
         /**
-         * Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+         * Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
          */
         smsProvider?: pulumi.Input<string>;
         /**
@@ -10130,7 +10428,7 @@ export namespace org {
          */
         ssoIdpCert?: pulumi.Input<string>;
         /**
-         * Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+         * Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          */
         ssoIdpSignAlgo?: pulumi.Input<string>;
         /**
@@ -11368,11 +11666,15 @@ export namespace site {
          */
         inputPortIdsIngresses?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
+         */
+        outputIpAddress?: pulumi.Input<string>;
+        /**
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputNetwork?: pulumi.Input<string>;
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: pulumi.Input<string>;
     }
@@ -11415,7 +11717,7 @@ export namespace site {
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+         * Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
          */
         duplex?: pulumi.Input<string>;
         /**
@@ -11507,7 +11809,7 @@ export namespace site {
          */
         serverRejectNetwork?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         * Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed?: pulumi.Input<string>;
         /**
@@ -11557,6 +11859,10 @@ export namespace site {
     }
 
     export interface NetworktemplatePortUsagesStormControl {
+        /**
+         * Whether to disable the port when storm control is triggered
+         */
+        disablePort?: pulumi.Input<boolean>;
         /**
          * Whether to disable storm control on broadcast traffic
          */
@@ -11737,6 +12043,10 @@ export namespace site {
          */
         protocol?: pulumi.Input<string>;
         routingInstance?: pulumi.Input<string>;
+        /**
+         * Name of the server
+         */
+        serverName?: pulumi.Input<string>;
         /**
          * enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
          */
@@ -12138,11 +12448,15 @@ export namespace site {
          */
         inputPortIdsIngresses?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
+         */
+        outputIpAddress?: pulumi.Input<string>;
+        /**
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputNetwork?: pulumi.Input<string>;
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: pulumi.Input<string>;
     }
@@ -12332,6 +12646,30 @@ export namespace site {
         /**
          * desired version. enum: `beta`, `custom`, `stable`
          */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface SettingAutoUpgradeEsl {
+        /**
+         * If true, it will allow downgrade to a lower version
+         */
+        allowDowngrade?: pulumi.Input<boolean>;
+        /**
+         * Custom versions for different models. Property key is the model name (e.g. "AP41")
+         */
+        customVersions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+         */
+        dayOfWeek?: pulumi.Input<string>;
+        /**
+         * Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+         */
+        timeOfDay?: pulumi.Input<string>;
         version?: pulumi.Input<string>;
     }
 
@@ -12618,6 +12956,7 @@ export namespace site {
         disableUsb?: pulumi.Input<boolean>;
         fipsEnabled?: pulumi.Input<boolean>;
         probeHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        probeHostsv6s?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Restrict inbound-traffic to host
          * when enabled, all traffic that is not essential to our operation will be dropped 
@@ -13383,6 +13722,26 @@ export namespace site {
 
     export interface WlanMistNac {
         /**
+         * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+         */
+        acctInterimInterval?: pulumi.Input<number>;
+        /**
+         * Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+         */
+        authServersRetries?: pulumi.Input<number>;
+        /**
+         * Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+         */
+        authServersTimeout?: pulumi.Input<number>;
+        /**
+         * Allows a RADIUS server to dynamically modify the authorization status of a user session.
+         */
+        coaEnabled?: pulumi.Input<boolean>;
+        /**
+         * the communication port used for “Change of Authorization” (CoA) messages
+         */
+        coaPort?: pulumi.Input<number>;
+        /**
          * When enabled:
          *   * `authServers` is ignored
          *   * `acctServers` is ignored
@@ -13392,6 +13751,18 @@ export namespace site {
          *   * `coaEnabled` is assumed
          */
         enabled?: pulumi.Input<boolean>;
+        /**
+         * If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+         */
+        fastDot1xTimers?: pulumi.Input<boolean>;
+        /**
+         * Which network the mist nac server resides in
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * In case there is a static IP for this network, we can specify it using source ip
+         */
+        sourceIp?: pulumi.Input<string>;
     }
 
     export interface WlanPortal {

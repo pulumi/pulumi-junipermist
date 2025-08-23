@@ -16,6 +16,13 @@ public final class DeviceprofileGatewayPortConfigWanProbeOverrideArgs extends co
 
     public static final DeviceprofileGatewayPortConfigWanProbeOverrideArgs Empty = new DeviceprofileGatewayPortConfigWanProbeOverrideArgs();
 
+    @Import(name="ip6s")
+    private @Nullable Output<List<String>> ip6s;
+
+    public Optional<Output<List<String>>> ip6s() {
+        return Optional.ofNullable(this.ip6s);
+    }
+
     @Import(name="ips")
     private @Nullable Output<List<String>> ips;
 
@@ -41,6 +48,7 @@ public final class DeviceprofileGatewayPortConfigWanProbeOverrideArgs extends co
     private DeviceprofileGatewayPortConfigWanProbeOverrideArgs() {}
 
     private DeviceprofileGatewayPortConfigWanProbeOverrideArgs(DeviceprofileGatewayPortConfigWanProbeOverrideArgs $) {
+        this.ip6s = $.ip6s;
         this.ips = $.ips;
         this.probeProfile = $.probeProfile;
     }
@@ -61,6 +69,19 @@ public final class DeviceprofileGatewayPortConfigWanProbeOverrideArgs extends co
 
         public Builder(DeviceprofileGatewayPortConfigWanProbeOverrideArgs defaults) {
             $ = new DeviceprofileGatewayPortConfigWanProbeOverrideArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder ip6s(@Nullable Output<List<String>> ip6s) {
+            $.ip6s = ip6s;
+            return this;
+        }
+
+        public Builder ip6s(List<String> ip6s) {
+            return ip6s(Output.of(ip6s));
+        }
+
+        public Builder ip6s(String... ip6s) {
+            return ip6s(List.of(ip6s));
         }
 
         public Builder ips(@Nullable Output<List<String>> ips) {

@@ -14,6 +14,26 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class ApPortConfigMistNac
     {
         /// <summary>
+        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+        /// </summary>
+        public readonly int? AcctInterimInterval;
+        /// <summary>
+        /// Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "retries" are set to value of `auth_servers_timeout`. "max-requests" is also set when setting `auth_servers_retries` is set to default value to 3.
+        /// </summary>
+        public readonly int? AuthServersRetries;
+        /// <summary>
+        /// Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `auth_servers_timeout`. "supplicant-timeout" is also set when setting `auth_servers_timeout` is set to default value of 10.
+        /// </summary>
+        public readonly int? AuthServersTimeout;
+        /// <summary>
+        /// Allows a RADIUS server to dynamically modify the authorization status of a user session.
+        /// </summary>
+        public readonly bool? CoaEnabled;
+        /// <summary>
+        /// the communication port used for “Change of Authorization” (CoA) messages
+        /// </summary>
+        public readonly int? CoaPort;
+        /// <summary>
         /// When enabled:
         ///   * `auth_servers` is ignored
         ///   * `acct_servers` is ignored
@@ -23,11 +43,48 @@ namespace Pulumi.JuniperMist.Device.Outputs
         ///   * `coa_enabled` is assumed
         /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.
+        /// </summary>
+        public readonly bool? FastDot1xTimers;
+        /// <summary>
+        /// Which network the mist nac server resides in
+        /// </summary>
+        public readonly string? Network;
+        /// <summary>
+        /// In case there is a static IP for this network, we can specify it using source ip
+        /// </summary>
+        public readonly string? SourceIp;
 
         [OutputConstructor]
-        private ApPortConfigMistNac(bool? enabled)
+        private ApPortConfigMistNac(
+            int? acctInterimInterval,
+
+            int? authServersRetries,
+
+            int? authServersTimeout,
+
+            bool? coaEnabled,
+
+            int? coaPort,
+
+            bool? enabled,
+
+            bool? fastDot1xTimers,
+
+            string? network,
+
+            string? sourceIp)
         {
+            AcctInterimInterval = acctInterimInterval;
+            AuthServersRetries = authServersRetries;
+            AuthServersTimeout = authServersTimeout;
+            CoaEnabled = coaEnabled;
+            CoaPort = coaPort;
             Enabled = enabled;
+            FastDot1xTimers = fastDot1xTimers;
+            Network = network;
+            SourceIp = sourceIp;
         }
     }
 }

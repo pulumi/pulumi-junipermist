@@ -25,6 +25,8 @@ class SettingArgs:
                  analytic: Optional[pulumi.Input['SettingAnalyticArgs']] = None,
                  ap_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  auto_upgrade: Optional[pulumi.Input['SettingAutoUpgradeArgs']] = None,
+                 auto_upgrade_esl: Optional[pulumi.Input['SettingAutoUpgradeEslArgs']] = None,
+                 bgp_neighbor_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  ble_config: Optional[pulumi.Input['SettingBleConfigArgs']] = None,
                  config_auto_revert: Optional[pulumi.Input[_builtins.bool]] = None,
                  config_push_policy: Optional[pulumi.Input['SettingConfigPushPolicyArgs']] = None,
@@ -57,6 +59,8 @@ class SettingArgs:
                  uplink_port_config: Optional[pulumi.Input['SettingUplinkPortConfigArgs']] = None,
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vna: Optional[pulumi.Input['SettingVnaArgs']] = None,
+                 vpn_path_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
+                 vpn_peer_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  vs_instance: Optional[pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]]] = None,
                  wan_vna: Optional[pulumi.Input['SettingWanVnaArgs']] = None,
                  wids: Optional[pulumi.Input['SettingWidsArgs']] = None,
@@ -68,6 +72,9 @@ class SettingArgs:
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingAutoUpgradeArgs'] auto_upgrade: Auto Upgrade Settings
+        :param pulumi.Input['SettingAutoUpgradeEslArgs'] auto_upgrade_esl: auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+               upgrade
+        :param pulumi.Input[_builtins.int] bgp_neighbor_updown_threshold: enable threshold-based bgp neighbor down delivery.
         :param pulumi.Input['SettingBleConfigArgs'] ble_config: BLE AP settings
         :param pulumi.Input[_builtins.bool] config_auto_revert: Whether to enable ap auto config revert
         :param pulumi.Input['SettingConfigPushPolicyArgs'] config_push_policy: Mist also uses some heuristic rules to prevent destructive configs from being pushed
@@ -99,6 +106,8 @@ class SettingArgs:
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
         :param pulumi.Input['SettingUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[_builtins.int] vpn_path_updown_threshold: enable threshold-based vpn path down delivery.
+        :param pulumi.Input[_builtins.int] vpn_peer_updown_threshold: enable threshold-based vpn peer down delivery.
         :param pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]] vs_instance: Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
         :param pulumi.Input['SettingWidsArgs'] wids: WIDS site settings
         :param pulumi.Input['SettingWifiArgs'] wifi: Wi-Fi site settings
@@ -111,6 +120,10 @@ class SettingArgs:
             pulumi.set(__self__, "ap_updown_threshold", ap_updown_threshold)
         if auto_upgrade is not None:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+        if auto_upgrade_esl is not None:
+            pulumi.set(__self__, "auto_upgrade_esl", auto_upgrade_esl)
+        if bgp_neighbor_updown_threshold is not None:
+            pulumi.set(__self__, "bgp_neighbor_updown_threshold", bgp_neighbor_updown_threshold)
         if ble_config is not None:
             pulumi.set(__self__, "ble_config", ble_config)
         if config_auto_revert is not None:
@@ -175,6 +188,10 @@ class SettingArgs:
             pulumi.set(__self__, "vars", vars)
         if vna is not None:
             pulumi.set(__self__, "vna", vna)
+        if vpn_path_updown_threshold is not None:
+            pulumi.set(__self__, "vpn_path_updown_threshold", vpn_path_updown_threshold)
+        if vpn_peer_updown_threshold is not None:
+            pulumi.set(__self__, "vpn_peer_updown_threshold", vpn_peer_updown_threshold)
         if vs_instance is not None:
             pulumi.set(__self__, "vs_instance", vs_instance)
         if wan_vna is not None:
@@ -230,6 +247,31 @@ class SettingArgs:
     @auto_upgrade.setter
     def auto_upgrade(self, value: Optional[pulumi.Input['SettingAutoUpgradeArgs']]):
         pulumi.set(self, "auto_upgrade", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoUpgradeEsl")
+    def auto_upgrade_esl(self) -> Optional[pulumi.Input['SettingAutoUpgradeEslArgs']]:
+        """
+        auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+        upgrade
+        """
+        return pulumi.get(self, "auto_upgrade_esl")
+
+    @auto_upgrade_esl.setter
+    def auto_upgrade_esl(self, value: Optional[pulumi.Input['SettingAutoUpgradeEslArgs']]):
+        pulumi.set(self, "auto_upgrade_esl", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bgpNeighborUpdownThreshold")
+    def bgp_neighbor_updown_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        enable threshold-based bgp neighbor down delivery.
+        """
+        return pulumi.get(self, "bgp_neighbor_updown_threshold")
+
+    @bgp_neighbor_updown_threshold.setter
+    def bgp_neighbor_updown_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "bgp_neighbor_updown_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="bleConfig")
@@ -597,6 +639,30 @@ class SettingArgs:
         pulumi.set(self, "vna", value)
 
     @_builtins.property
+    @pulumi.getter(name="vpnPathUpdownThreshold")
+    def vpn_path_updown_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        enable threshold-based vpn path down delivery.
+        """
+        return pulumi.get(self, "vpn_path_updown_threshold")
+
+    @vpn_path_updown_threshold.setter
+    def vpn_path_updown_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "vpn_path_updown_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpnPeerUpdownThreshold")
+    def vpn_peer_updown_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        enable threshold-based vpn peer down delivery.
+        """
+        return pulumi.get(self, "vpn_peer_updown_threshold")
+
+    @vpn_peer_updown_threshold.setter
+    def vpn_peer_updown_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "vpn_peer_updown_threshold", value)
+
+    @_builtins.property
     @pulumi.getter(name="vsInstance")
     def vs_instance(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]]]:
         """
@@ -669,6 +735,8 @@ class _SettingState:
                  analytic: Optional[pulumi.Input['SettingAnalyticArgs']] = None,
                  ap_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  auto_upgrade: Optional[pulumi.Input['SettingAutoUpgradeArgs']] = None,
+                 auto_upgrade_esl: Optional[pulumi.Input['SettingAutoUpgradeEslArgs']] = None,
+                 bgp_neighbor_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  blacklist_url: Optional[pulumi.Input[_builtins.str]] = None,
                  ble_config: Optional[pulumi.Input['SettingBleConfigArgs']] = None,
                  config_auto_revert: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -703,6 +771,8 @@ class _SettingState:
                  uplink_port_config: Optional[pulumi.Input['SettingUplinkPortConfigArgs']] = None,
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vna: Optional[pulumi.Input['SettingVnaArgs']] = None,
+                 vpn_path_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
+                 vpn_peer_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  vs_instance: Optional[pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]]] = None,
                  wan_vna: Optional[pulumi.Input['SettingWanVnaArgs']] = None,
                  watched_station_url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -716,6 +786,9 @@ class _SettingState:
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingAutoUpgradeArgs'] auto_upgrade: Auto Upgrade Settings
+        :param pulumi.Input['SettingAutoUpgradeEslArgs'] auto_upgrade_esl: auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+               upgrade
+        :param pulumi.Input[_builtins.int] bgp_neighbor_updown_threshold: enable threshold-based bgp neighbor down delivery.
         :param pulumi.Input['SettingBleConfigArgs'] ble_config: BLE AP settings
         :param pulumi.Input[_builtins.bool] config_auto_revert: Whether to enable ap auto config revert
         :param pulumi.Input['SettingConfigPushPolicyArgs'] config_push_policy: Mist also uses some heuristic rules to prevent destructive configs from being pushed
@@ -747,6 +820,8 @@ class _SettingState:
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
         :param pulumi.Input['SettingUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[_builtins.int] vpn_path_updown_threshold: enable threshold-based vpn path down delivery.
+        :param pulumi.Input[_builtins.int] vpn_peer_updown_threshold: enable threshold-based vpn peer down delivery.
         :param pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]] vs_instance: Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
         :param pulumi.Input['SettingWidsArgs'] wids: WIDS site settings
         :param pulumi.Input['SettingWifiArgs'] wifi: Wi-Fi site settings
@@ -758,6 +833,10 @@ class _SettingState:
             pulumi.set(__self__, "ap_updown_threshold", ap_updown_threshold)
         if auto_upgrade is not None:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+        if auto_upgrade_esl is not None:
+            pulumi.set(__self__, "auto_upgrade_esl", auto_upgrade_esl)
+        if bgp_neighbor_updown_threshold is not None:
+            pulumi.set(__self__, "bgp_neighbor_updown_threshold", bgp_neighbor_updown_threshold)
         if blacklist_url is not None:
             pulumi.set(__self__, "blacklist_url", blacklist_url)
         if ble_config is not None:
@@ -826,6 +905,10 @@ class _SettingState:
             pulumi.set(__self__, "vars", vars)
         if vna is not None:
             pulumi.set(__self__, "vna", vna)
+        if vpn_path_updown_threshold is not None:
+            pulumi.set(__self__, "vpn_path_updown_threshold", vpn_path_updown_threshold)
+        if vpn_peer_updown_threshold is not None:
+            pulumi.set(__self__, "vpn_peer_updown_threshold", vpn_peer_updown_threshold)
         if vs_instance is not None:
             pulumi.set(__self__, "vs_instance", vs_instance)
         if wan_vna is not None:
@@ -876,6 +959,31 @@ class _SettingState:
     @auto_upgrade.setter
     def auto_upgrade(self, value: Optional[pulumi.Input['SettingAutoUpgradeArgs']]):
         pulumi.set(self, "auto_upgrade", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoUpgradeEsl")
+    def auto_upgrade_esl(self) -> Optional[pulumi.Input['SettingAutoUpgradeEslArgs']]:
+        """
+        auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+        upgrade
+        """
+        return pulumi.get(self, "auto_upgrade_esl")
+
+    @auto_upgrade_esl.setter
+    def auto_upgrade_esl(self, value: Optional[pulumi.Input['SettingAutoUpgradeEslArgs']]):
+        pulumi.set(self, "auto_upgrade_esl", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bgpNeighborUpdownThreshold")
+    def bgp_neighbor_updown_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        enable threshold-based bgp neighbor down delivery.
+        """
+        return pulumi.get(self, "bgp_neighbor_updown_threshold")
+
+    @bgp_neighbor_updown_threshold.setter
+    def bgp_neighbor_updown_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "bgp_neighbor_updown_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="blacklistUrl")
@@ -1261,6 +1369,30 @@ class _SettingState:
         pulumi.set(self, "vna", value)
 
     @_builtins.property
+    @pulumi.getter(name="vpnPathUpdownThreshold")
+    def vpn_path_updown_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        enable threshold-based vpn path down delivery.
+        """
+        return pulumi.get(self, "vpn_path_updown_threshold")
+
+    @vpn_path_updown_threshold.setter
+    def vpn_path_updown_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "vpn_path_updown_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpnPeerUpdownThreshold")
+    def vpn_peer_updown_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        enable threshold-based vpn peer down delivery.
+        """
+        return pulumi.get(self, "vpn_peer_updown_threshold")
+
+    @vpn_peer_updown_threshold.setter
+    def vpn_peer_updown_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "vpn_peer_updown_threshold", value)
+
+    @_builtins.property
     @pulumi.getter(name="vsInstance")
     def vs_instance(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]]]:
         """
@@ -1354,6 +1486,8 @@ class Setting(pulumi.CustomResource):
                  analytic: Optional[pulumi.Input[Union['SettingAnalyticArgs', 'SettingAnalyticArgsDict']]] = None,
                  ap_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  auto_upgrade: Optional[pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']]] = None,
+                 auto_upgrade_esl: Optional[pulumi.Input[Union['SettingAutoUpgradeEslArgs', 'SettingAutoUpgradeEslArgsDict']]] = None,
+                 bgp_neighbor_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  ble_config: Optional[pulumi.Input[Union['SettingBleConfigArgs', 'SettingBleConfigArgsDict']]] = None,
                  config_auto_revert: Optional[pulumi.Input[_builtins.bool]] = None,
                  config_push_policy: Optional[pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']]] = None,
@@ -1387,6 +1521,8 @@ class Setting(pulumi.CustomResource):
                  uplink_port_config: Optional[pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']]] = None,
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vna: Optional[pulumi.Input[Union['SettingVnaArgs', 'SettingVnaArgsDict']]] = None,
+                 vpn_path_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
+                 vpn_peer_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  vs_instance: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]]] = None,
                  wan_vna: Optional[pulumi.Input[Union['SettingWanVnaArgs', 'SettingWanVnaArgsDict']]] = None,
                  wids: Optional[pulumi.Input[Union['SettingWidsArgs', 'SettingWidsArgsDict']]] = None,
@@ -1418,6 +1554,9 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']] auto_upgrade: Auto Upgrade Settings
+        :param pulumi.Input[Union['SettingAutoUpgradeEslArgs', 'SettingAutoUpgradeEslArgsDict']] auto_upgrade_esl: auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+               upgrade
+        :param pulumi.Input[_builtins.int] bgp_neighbor_updown_threshold: enable threshold-based bgp neighbor down delivery.
         :param pulumi.Input[Union['SettingBleConfigArgs', 'SettingBleConfigArgsDict']] ble_config: BLE AP settings
         :param pulumi.Input[_builtins.bool] config_auto_revert: Whether to enable ap auto config revert
         :param pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']] config_push_policy: Mist also uses some heuristic rules to prevent destructive configs from being pushed
@@ -1449,6 +1588,8 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
         :param pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[_builtins.int] vpn_path_updown_threshold: enable threshold-based vpn path down delivery.
+        :param pulumi.Input[_builtins.int] vpn_peer_updown_threshold: enable threshold-based vpn peer down delivery.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]] vs_instance: Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
         :param pulumi.Input[Union['SettingWidsArgs', 'SettingWidsArgsDict']] wids: WIDS site settings
         :param pulumi.Input[Union['SettingWifiArgs', 'SettingWifiArgsDict']] wifi: Wi-Fi site settings
@@ -1497,6 +1638,8 @@ class Setting(pulumi.CustomResource):
                  analytic: Optional[pulumi.Input[Union['SettingAnalyticArgs', 'SettingAnalyticArgsDict']]] = None,
                  ap_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  auto_upgrade: Optional[pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']]] = None,
+                 auto_upgrade_esl: Optional[pulumi.Input[Union['SettingAutoUpgradeEslArgs', 'SettingAutoUpgradeEslArgsDict']]] = None,
+                 bgp_neighbor_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  ble_config: Optional[pulumi.Input[Union['SettingBleConfigArgs', 'SettingBleConfigArgsDict']]] = None,
                  config_auto_revert: Optional[pulumi.Input[_builtins.bool]] = None,
                  config_push_policy: Optional[pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']]] = None,
@@ -1530,6 +1673,8 @@ class Setting(pulumi.CustomResource):
                  uplink_port_config: Optional[pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']]] = None,
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vna: Optional[pulumi.Input[Union['SettingVnaArgs', 'SettingVnaArgsDict']]] = None,
+                 vpn_path_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
+                 vpn_peer_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  vs_instance: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]]] = None,
                  wan_vna: Optional[pulumi.Input[Union['SettingWanVnaArgs', 'SettingWanVnaArgsDict']]] = None,
                  wids: Optional[pulumi.Input[Union['SettingWidsArgs', 'SettingWidsArgsDict']]] = None,
@@ -1548,6 +1693,8 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["analytic"] = analytic
             __props__.__dict__["ap_updown_threshold"] = ap_updown_threshold
             __props__.__dict__["auto_upgrade"] = auto_upgrade
+            __props__.__dict__["auto_upgrade_esl"] = auto_upgrade_esl
+            __props__.__dict__["bgp_neighbor_updown_threshold"] = bgp_neighbor_updown_threshold
             __props__.__dict__["ble_config"] = ble_config
             __props__.__dict__["config_auto_revert"] = config_auto_revert
             __props__.__dict__["config_push_policy"] = config_push_policy
@@ -1583,6 +1730,8 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["uplink_port_config"] = uplink_port_config
             __props__.__dict__["vars"] = vars
             __props__.__dict__["vna"] = vna
+            __props__.__dict__["vpn_path_updown_threshold"] = vpn_path_updown_threshold
+            __props__.__dict__["vpn_peer_updown_threshold"] = vpn_peer_updown_threshold
             __props__.__dict__["vs_instance"] = vs_instance
             __props__.__dict__["wan_vna"] = wan_vna
             __props__.__dict__["wids"] = wids
@@ -1605,6 +1754,8 @@ class Setting(pulumi.CustomResource):
             analytic: Optional[pulumi.Input[Union['SettingAnalyticArgs', 'SettingAnalyticArgsDict']]] = None,
             ap_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
             auto_upgrade: Optional[pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']]] = None,
+            auto_upgrade_esl: Optional[pulumi.Input[Union['SettingAutoUpgradeEslArgs', 'SettingAutoUpgradeEslArgsDict']]] = None,
+            bgp_neighbor_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
             blacklist_url: Optional[pulumi.Input[_builtins.str]] = None,
             ble_config: Optional[pulumi.Input[Union['SettingBleConfigArgs', 'SettingBleConfigArgsDict']]] = None,
             config_auto_revert: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1639,6 +1790,8 @@ class Setting(pulumi.CustomResource):
             uplink_port_config: Optional[pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']]] = None,
             vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vna: Optional[pulumi.Input[Union['SettingVnaArgs', 'SettingVnaArgsDict']]] = None,
+            vpn_path_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
+            vpn_peer_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
             vs_instance: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]]] = None,
             wan_vna: Optional[pulumi.Input[Union['SettingWanVnaArgs', 'SettingWanVnaArgsDict']]] = None,
             watched_station_url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1657,6 +1810,9 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']] auto_upgrade: Auto Upgrade Settings
+        :param pulumi.Input[Union['SettingAutoUpgradeEslArgs', 'SettingAutoUpgradeEslArgsDict']] auto_upgrade_esl: auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+               upgrade
+        :param pulumi.Input[_builtins.int] bgp_neighbor_updown_threshold: enable threshold-based bgp neighbor down delivery.
         :param pulumi.Input[Union['SettingBleConfigArgs', 'SettingBleConfigArgsDict']] ble_config: BLE AP settings
         :param pulumi.Input[_builtins.bool] config_auto_revert: Whether to enable ap auto config revert
         :param pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']] config_push_policy: Mist also uses some heuristic rules to prevent destructive configs from being pushed
@@ -1688,6 +1844,8 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
         :param pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[_builtins.int] vpn_path_updown_threshold: enable threshold-based vpn path down delivery.
+        :param pulumi.Input[_builtins.int] vpn_peer_updown_threshold: enable threshold-based vpn peer down delivery.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]] vs_instance: Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
         :param pulumi.Input[Union['SettingWidsArgs', 'SettingWidsArgsDict']] wids: WIDS site settings
         :param pulumi.Input[Union['SettingWifiArgs', 'SettingWifiArgsDict']] wifi: Wi-Fi site settings
@@ -1700,6 +1858,8 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["analytic"] = analytic
         __props__.__dict__["ap_updown_threshold"] = ap_updown_threshold
         __props__.__dict__["auto_upgrade"] = auto_upgrade
+        __props__.__dict__["auto_upgrade_esl"] = auto_upgrade_esl
+        __props__.__dict__["bgp_neighbor_updown_threshold"] = bgp_neighbor_updown_threshold
         __props__.__dict__["blacklist_url"] = blacklist_url
         __props__.__dict__["ble_config"] = ble_config
         __props__.__dict__["config_auto_revert"] = config_auto_revert
@@ -1734,6 +1894,8 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["uplink_port_config"] = uplink_port_config
         __props__.__dict__["vars"] = vars
         __props__.__dict__["vna"] = vna
+        __props__.__dict__["vpn_path_updown_threshold"] = vpn_path_updown_threshold
+        __props__.__dict__["vpn_peer_updown_threshold"] = vpn_peer_updown_threshold
         __props__.__dict__["vs_instance"] = vs_instance
         __props__.__dict__["wan_vna"] = wan_vna
         __props__.__dict__["watched_station_url"] = watched_station_url
@@ -1765,6 +1927,23 @@ class Setting(pulumi.CustomResource):
         Auto Upgrade Settings
         """
         return pulumi.get(self, "auto_upgrade")
+
+    @_builtins.property
+    @pulumi.getter(name="autoUpgradeEsl")
+    def auto_upgrade_esl(self) -> pulumi.Output[Optional['outputs.SettingAutoUpgradeEsl']]:
+        """
+        auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+        upgrade
+        """
+        return pulumi.get(self, "auto_upgrade_esl")
+
+    @_builtins.property
+    @pulumi.getter(name="bgpNeighborUpdownThreshold")
+    def bgp_neighbor_updown_threshold(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        enable threshold-based bgp neighbor down delivery.
+        """
+        return pulumi.get(self, "bgp_neighbor_updown_threshold")
 
     @_builtins.property
     @pulumi.getter(name="blacklistUrl")
@@ -2012,6 +2191,22 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def vna(self) -> pulumi.Output[Optional['outputs.SettingVna']]:
         return pulumi.get(self, "vna")
+
+    @_builtins.property
+    @pulumi.getter(name="vpnPathUpdownThreshold")
+    def vpn_path_updown_threshold(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        enable threshold-based vpn path down delivery.
+        """
+        return pulumi.get(self, "vpn_path_updown_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="vpnPeerUpdownThreshold")
+    def vpn_peer_updown_threshold(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        enable threshold-based vpn peer down delivery.
+        """
+        return pulumi.get(self, "vpn_peer_updown_threshold")
 
     @_builtins.property
     @pulumi.getter(name="vsInstance")

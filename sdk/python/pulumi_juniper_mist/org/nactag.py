@@ -26,6 +26,7 @@ class NactagArgs:
                  gbp_tag: Optional[pulumi.Input[_builtins.str]] = None,
                  match: Optional[pulumi.Input[_builtins.str]] = None,
                  match_all: Optional[pulumi.Input[_builtins.bool]] = None,
+                 nacportal_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  radius_attrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  radius_group: Optional[pulumi.Input[_builtins.str]] = None,
@@ -36,8 +37,8 @@ class NactagArgs:
                  vlan: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Nactag resource.
-        :param pulumi.Input[_builtins.str] type: enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-               `username_attr`, `vlan`
+        :param pulumi.Input[_builtins.str] type: enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
+               `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         :param pulumi.Input[_builtins.bool] allow_usermac_override: Can be set to true to allow the override by usermac result
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress vlans to return
         :param pulumi.Input[_builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
@@ -46,6 +47,7 @@ class NactagArgs:
         :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
                match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
                set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+        :param pulumi.Input[_builtins.str] nacportal_id: If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_attrs: If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
                the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
                that it is allowed to have more than one radius_attrs in the result of a given rule.
@@ -70,6 +72,8 @@ class NactagArgs:
             pulumi.set(__self__, "match", match)
         if match_all is not None:
             pulumi.set(__self__, "match_all", match_all)
+        if nacportal_id is not None:
+            pulumi.set(__self__, "nacportal_id", nacportal_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if radius_attrs is not None:
@@ -100,8 +104,8 @@ class NactagArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-        `username_attr`, `vlan`
+        enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
+        `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         """
         return pulumi.get(self, "type")
 
@@ -169,6 +173,18 @@ class NactagArgs:
     @match_all.setter
     def match_all(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "match_all", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nacportalId")
+    def nacportal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
+        """
+        return pulumi.get(self, "nacportal_id")
+
+    @nacportal_id.setter
+    def nacportal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "nacportal_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -276,6 +292,7 @@ class _NactagState:
                  gbp_tag: Optional[pulumi.Input[_builtins.str]] = None,
                  match: Optional[pulumi.Input[_builtins.str]] = None,
                  match_all: Optional[pulumi.Input[_builtins.bool]] = None,
+                 nacportal_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  radius_attrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -296,6 +313,7 @@ class _NactagState:
         :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
                match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
                set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+        :param pulumi.Input[_builtins.str] nacportal_id: If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_attrs: If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
                the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
                that it is allowed to have more than one radius_attrs in the result of a given rule.
@@ -304,8 +322,8 @@ class _NactagState:
                "radius_vendor_attrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
                not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         :param pulumi.Input[_builtins.int] session_timeout: If `type`==`session_timeout, in seconds
-        :param pulumi.Input[_builtins.str] type: enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-               `username_attr`, `vlan`
+        :param pulumi.Input[_builtins.str] type: enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
+               `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         :param pulumi.Input[_builtins.str] username_attr: enum: `automatic`, `cn`, `dns`, `email`, `upn`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: If `type`==`match`
         :param pulumi.Input[_builtins.str] vlan: If `type`==`vlan`
@@ -320,6 +338,8 @@ class _NactagState:
             pulumi.set(__self__, "match", match)
         if match_all is not None:
             pulumi.set(__self__, "match_all", match_all)
+        if nacportal_id is not None:
+            pulumi.set(__self__, "nacportal_id", nacportal_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
@@ -403,6 +423,18 @@ class _NactagState:
         pulumi.set(self, "match_all", value)
 
     @_builtins.property
+    @pulumi.getter(name="nacportalId")
+    def nacportal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
+        """
+        return pulumi.get(self, "nacportal_id")
+
+    @nacportal_id.setter
+    def nacportal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "nacportal_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "name")
@@ -476,8 +508,8 @@ class _NactagState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-        `username_attr`, `vlan`
+        enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
+        `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         """
         return pulumi.get(self, "type")
 
@@ -533,6 +565,7 @@ class Nactag(pulumi.CustomResource):
                  gbp_tag: Optional[pulumi.Input[_builtins.str]] = None,
                  match: Optional[pulumi.Input[_builtins.str]] = None,
                  match_all: Optional[pulumi.Input[_builtins.bool]] = None,
+                 nacportal_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  radius_attrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -583,6 +616,7 @@ class Nactag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
                match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
                set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+        :param pulumi.Input[_builtins.str] nacportal_id: If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_attrs: If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
                the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
                that it is allowed to have more than one radius_attrs in the result of a given rule.
@@ -591,8 +625,8 @@ class Nactag(pulumi.CustomResource):
                "radius_vendor_attrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
                not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         :param pulumi.Input[_builtins.int] session_timeout: If `type`==`session_timeout, in seconds
-        :param pulumi.Input[_builtins.str] type: enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-               `username_attr`, `vlan`
+        :param pulumi.Input[_builtins.str] type: enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
+               `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         :param pulumi.Input[_builtins.str] username_attr: enum: `automatic`, `cn`, `dns`, `email`, `upn`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: If `type`==`match`
         :param pulumi.Input[_builtins.str] vlan: If `type`==`vlan`
@@ -652,6 +686,7 @@ class Nactag(pulumi.CustomResource):
                  gbp_tag: Optional[pulumi.Input[_builtins.str]] = None,
                  match: Optional[pulumi.Input[_builtins.str]] = None,
                  match_all: Optional[pulumi.Input[_builtins.bool]] = None,
+                 nacportal_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  radius_attrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -676,6 +711,7 @@ class Nactag(pulumi.CustomResource):
             __props__.__dict__["gbp_tag"] = gbp_tag
             __props__.__dict__["match"] = match
             __props__.__dict__["match_all"] = match_all
+            __props__.__dict__["nacportal_id"] = nacportal_id
             __props__.__dict__["name"] = name
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
@@ -705,6 +741,7 @@ class Nactag(pulumi.CustomResource):
             gbp_tag: Optional[pulumi.Input[_builtins.str]] = None,
             match: Optional[pulumi.Input[_builtins.str]] = None,
             match_all: Optional[pulumi.Input[_builtins.bool]] = None,
+            nacportal_id: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             org_id: Optional[pulumi.Input[_builtins.str]] = None,
             radius_attrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -730,6 +767,7 @@ class Nactag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
                match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
                set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+        :param pulumi.Input[_builtins.str] nacportal_id: If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_attrs: If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
                the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
                that it is allowed to have more than one radius_attrs in the result of a given rule.
@@ -738,8 +776,8 @@ class Nactag(pulumi.CustomResource):
                "radius_vendor_attrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
                not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         :param pulumi.Input[_builtins.int] session_timeout: If `type`==`session_timeout, in seconds
-        :param pulumi.Input[_builtins.str] type: enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-               `username_attr`, `vlan`
+        :param pulumi.Input[_builtins.str] type: enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
+               `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         :param pulumi.Input[_builtins.str] username_attr: enum: `automatic`, `cn`, `dns`, `email`, `upn`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: If `type`==`match`
         :param pulumi.Input[_builtins.str] vlan: If `type`==`vlan`
@@ -753,6 +791,7 @@ class Nactag(pulumi.CustomResource):
         __props__.__dict__["gbp_tag"] = gbp_tag
         __props__.__dict__["match"] = match
         __props__.__dict__["match_all"] = match_all
+        __props__.__dict__["nacportal_id"] = nacportal_id
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["radius_attrs"] = radius_attrs
@@ -807,6 +846,14 @@ class Nactag(pulumi.CustomResource):
         return pulumi.get(self, "match_all")
 
     @_builtins.property
+    @pulumi.getter(name="nacportalId")
+    def nacportal_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
+        """
+        return pulumi.get(self, "nacportal_id")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "name")
@@ -856,8 +903,8 @@ class Nactag(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-        `username_attr`, `vlan`
+        enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
+        `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         """
         return pulumi.get(self, "type")
 

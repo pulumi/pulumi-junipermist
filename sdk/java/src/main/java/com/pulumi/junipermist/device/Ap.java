@@ -11,6 +11,7 @@ import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.device.ApArgs;
 import com.pulumi.junipermist.device.inputs.ApState;
 import com.pulumi.junipermist.device.outputs.ApAeroscout;
+import com.pulumi.junipermist.device.outputs.ApAirista;
 import com.pulumi.junipermist.device.outputs.ApBleConfig;
 import com.pulumi.junipermist.device.outputs.ApCentrak;
 import com.pulumi.junipermist.device.outputs.ApClientBridge;
@@ -64,6 +65,12 @@ public class Ap extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ApAeroscout>> aeroscout() {
         return Codegen.optional(this.aeroscout);
+    }
+    @Export(name="airista", refs={ApAirista.class}, tree="[0]")
+    private Output</* @Nullable */ ApAirista> airista;
+
+    public Output<Optional<ApAirista>> airista() {
+        return Codegen.optional(this.airista);
     }
     /**
      * BLE AP settings
@@ -370,16 +377,18 @@ public class Ap extends com.pulumi.resources.CustomResource {
         return this.poePassthrough;
     }
     /**
-     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-     * precedence over switch_config (deprecated)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+     * predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
+     * deprecated)
      * 
      */
     @Export(name="portConfig", refs={Map.class,String.class,ApPortConfig.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,ApPortConfig>> portConfig;
 
     /**
-     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-     * precedence over switch_config (deprecated)
+     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+     * predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
+     * deprecated)
      * 
      */
     public Output<Optional<Map<String,ApPortConfig>>> portConfig() {

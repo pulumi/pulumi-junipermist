@@ -32,7 +32,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        /// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         /// </summary>
         [Output("addresses")]
         public Output<ImmutableArray<string>> Addresses { get; private set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _addresses;
 
         /// <summary>
-        /// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        /// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         /// </summary>
         public InputList<string> Addresses
         {
@@ -374,7 +374,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _addresses;
 
         /// <summary>
-        /// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        /// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         /// </summary>
         public InputList<string> Addresses
         {

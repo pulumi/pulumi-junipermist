@@ -21,6 +21,14 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// Enable OSPF on the switch
         /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+        /// </summary>
+        public readonly string? ExportPolicy;
+        /// <summary>
+        /// optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+        /// </summary>
+        public readonly string? ImportPolicy;
         public readonly string? ReferenceBandwidth;
 
         [OutputConstructor]
@@ -29,10 +37,16 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             bool? enabled,
 
+            string? exportPolicy,
+
+            string? importPolicy,
+
             string? referenceBandwidth)
         {
             Areas = areas;
             Enabled = enabled;
+            ExportPolicy = exportPolicy;
+            ImportPolicy = importPolicy;
             ReferenceBandwidth = referenceBandwidth;
         }
     }

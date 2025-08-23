@@ -59,6 +59,9 @@ namespace Pulumi.JuniperMist.Org
         [Output("aeroscout")]
         public Output<Outputs.DeviceprofileApAeroscout?> Aeroscout { get; private set; } = null!;
 
+        [Output("airista")]
+        public Output<Outputs.DeviceprofileApAirista?> Airista { get; private set; } = null!;
+
         /// <summary>
         /// BLE AP settings
         /// </summary>
@@ -228,6 +231,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("aeroscout")]
         public Input<Inputs.DeviceprofileApAeroscoutArgs>? Aeroscout { get; set; }
 
+        [Input("airista")]
+        public Input<Inputs.DeviceprofileApAiristaArgs>? Airista { get; set; }
+
         /// <summary>
         /// BLE AP settings
         /// </summary>
@@ -368,6 +374,9 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("aeroscout")]
         public Input<Inputs.DeviceprofileApAeroscoutGetArgs>? Aeroscout { get; set; }
+
+        [Input("airista")]
+        public Input<Inputs.DeviceprofileApAiristaGetArgs>? Airista { get; set; }
 
         /// <summary>
         /// BLE AP settings

@@ -33,10 +33,12 @@ type Nacrule struct {
 	// All optional, this goes into Access-Accept
 	ApplyTags pulumi.StringArrayOutput `pulumi:"applyTags"`
 	// Enabled or not
-	Enabled     pulumi.BoolOutput           `pulumi:"enabled"`
-	Matching    NacruleMatchingPtrOutput    `pulumi:"matching"`
-	Name        pulumi.StringOutput         `pulumi:"name"`
-	NotMatching NacruleNotMatchingPtrOutput `pulumi:"notMatching"`
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// Guest portal authorization state. enum: `authorized`, `unknown`
+	GuestAuthState pulumi.StringPtrOutput      `pulumi:"guestAuthState"`
+	Matching       NacruleMatchingPtrOutput    `pulumi:"matching"`
+	Name           pulumi.StringOutput         `pulumi:"name"`
+	NotMatching    NacruleNotMatchingPtrOutput `pulumi:"notMatching"`
 	// Order of the rule, lower value implies higher priority
 	Order pulumi.IntOutput    `pulumi:"order"`
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
@@ -86,10 +88,12 @@ type nacruleState struct {
 	// All optional, this goes into Access-Accept
 	ApplyTags []string `pulumi:"applyTags"`
 	// Enabled or not
-	Enabled     *bool               `pulumi:"enabled"`
-	Matching    *NacruleMatching    `pulumi:"matching"`
-	Name        *string             `pulumi:"name"`
-	NotMatching *NacruleNotMatching `pulumi:"notMatching"`
+	Enabled *bool `pulumi:"enabled"`
+	// Guest portal authorization state. enum: `authorized`, `unknown`
+	GuestAuthState *string             `pulumi:"guestAuthState"`
+	Matching       *NacruleMatching    `pulumi:"matching"`
+	Name           *string             `pulumi:"name"`
+	NotMatching    *NacruleNotMatching `pulumi:"notMatching"`
 	// Order of the rule, lower value implies higher priority
 	Order *int    `pulumi:"order"`
 	OrgId *string `pulumi:"orgId"`
@@ -101,10 +105,12 @@ type NacruleState struct {
 	// All optional, this goes into Access-Accept
 	ApplyTags pulumi.StringArrayInput
 	// Enabled or not
-	Enabled     pulumi.BoolPtrInput
-	Matching    NacruleMatchingPtrInput
-	Name        pulumi.StringPtrInput
-	NotMatching NacruleNotMatchingPtrInput
+	Enabled pulumi.BoolPtrInput
+	// Guest portal authorization state. enum: `authorized`, `unknown`
+	GuestAuthState pulumi.StringPtrInput
+	Matching       NacruleMatchingPtrInput
+	Name           pulumi.StringPtrInput
+	NotMatching    NacruleNotMatchingPtrInput
 	// Order of the rule, lower value implies higher priority
 	Order pulumi.IntPtrInput
 	OrgId pulumi.StringPtrInput
@@ -120,10 +126,12 @@ type nacruleArgs struct {
 	// All optional, this goes into Access-Accept
 	ApplyTags []string `pulumi:"applyTags"`
 	// Enabled or not
-	Enabled     *bool               `pulumi:"enabled"`
-	Matching    *NacruleMatching    `pulumi:"matching"`
-	Name        *string             `pulumi:"name"`
-	NotMatching *NacruleNotMatching `pulumi:"notMatching"`
+	Enabled *bool `pulumi:"enabled"`
+	// Guest portal authorization state. enum: `authorized`, `unknown`
+	GuestAuthState *string             `pulumi:"guestAuthState"`
+	Matching       *NacruleMatching    `pulumi:"matching"`
+	Name           *string             `pulumi:"name"`
+	NotMatching    *NacruleNotMatching `pulumi:"notMatching"`
 	// Order of the rule, lower value implies higher priority
 	Order int    `pulumi:"order"`
 	OrgId string `pulumi:"orgId"`
@@ -136,10 +144,12 @@ type NacruleArgs struct {
 	// All optional, this goes into Access-Accept
 	ApplyTags pulumi.StringArrayInput
 	// Enabled or not
-	Enabled     pulumi.BoolPtrInput
-	Matching    NacruleMatchingPtrInput
-	Name        pulumi.StringPtrInput
-	NotMatching NacruleNotMatchingPtrInput
+	Enabled pulumi.BoolPtrInput
+	// Guest portal authorization state. enum: `authorized`, `unknown`
+	GuestAuthState pulumi.StringPtrInput
+	Matching       NacruleMatchingPtrInput
+	Name           pulumi.StringPtrInput
+	NotMatching    NacruleNotMatchingPtrInput
 	// Order of the rule, lower value implies higher priority
 	Order pulumi.IntInput
 	OrgId pulumi.StringInput
@@ -245,6 +255,11 @@ func (o NacruleOutput) ApplyTags() pulumi.StringArrayOutput {
 // Enabled or not
 func (o NacruleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Nacrule) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Guest portal authorization state. enum: `authorized`, `unknown`
+func (o NacruleOutput) GuestAuthState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Nacrule) pulumi.StringPtrOutput { return v.GuestAuthState }).(pulumi.StringPtrOutput)
 }
 
 func (o NacruleOutput) Matching() NacruleMatchingPtrOutput {

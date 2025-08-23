@@ -21,14 +21,14 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     public static final ServiceArgs Empty = new ServiceArgs();
 
     /**
-     * If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+     * If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
      * 
      */
     @Import(name="addresses")
     private @Nullable Output<List<String>> addresses;
 
     /**
-     * @return If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+     * @return If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
      * 
      */
     public Optional<Output<List<String>>> addresses() {
@@ -366,7 +366,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addresses If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+         * @param addresses If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
          * 
          * @return builder
          * 
@@ -377,7 +377,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addresses If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+         * @param addresses If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
          * 
          * @return builder
          * 
@@ -387,7 +387,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addresses If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+         * @param addresses If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
          * 
          * @return builder
          * 

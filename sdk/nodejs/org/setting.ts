@@ -93,7 +93,11 @@ export class Setting extends pulumi.CustomResource {
     public readonly jcloudRa!: pulumi.Output<outputs.org.SettingJcloudRa | undefined>;
     public /*out*/ readonly juniper!: pulumi.Output<outputs.org.SettingJuniper>;
     /**
-     * by default, webshell access is only enabled for Admin user
+     * junos_shell_access: Manages role-based web-shell access. When junosShell access is not defined (Default) - No additional
+     * users are configured and web-shell uses default `mist` user to login. When junosShellAccess is defined - Additional
+     * users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell
+     * logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access
+     * level to "none", disables web-shell access for that specific role.
      */
     public readonly junosShellAccess!: pulumi.Output<outputs.org.SettingJunosShellAccess | undefined>;
     public readonly marvis!: pulumi.Output<outputs.org.SettingMarvis | undefined>;
@@ -274,7 +278,11 @@ export interface SettingState {
     jcloudRa?: pulumi.Input<inputs.org.SettingJcloudRa>;
     juniper?: pulumi.Input<inputs.org.SettingJuniper>;
     /**
-     * by default, webshell access is only enabled for Admin user
+     * junos_shell_access: Manages role-based web-shell access. When junosShell access is not defined (Default) - No additional
+     * users are configured and web-shell uses default `mist` user to login. When junosShellAccess is defined - Additional
+     * users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell
+     * logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access
+     * level to "none", disables web-shell access for that specific role.
      */
     junosShellAccess?: pulumi.Input<inputs.org.SettingJunosShellAccess>;
     marvis?: pulumi.Input<inputs.org.SettingMarvis>;
@@ -360,7 +368,11 @@ export interface SettingArgs {
      */
     jcloudRa?: pulumi.Input<inputs.org.SettingJcloudRa>;
     /**
-     * by default, webshell access is only enabled for Admin user
+     * junos_shell_access: Manages role-based web-shell access. When junosShell access is not defined (Default) - No additional
+     * users are configured and web-shell uses default `mist` user to login. When junosShellAccess is defined - Additional
+     * users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell
+     * logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access
+     * level to "none", disables web-shell access for that specific role.
      */
     junosShellAccess?: pulumi.Input<inputs.org.SettingJunosShellAccess>;
     marvis?: pulumi.Input<inputs.org.SettingMarvis>;

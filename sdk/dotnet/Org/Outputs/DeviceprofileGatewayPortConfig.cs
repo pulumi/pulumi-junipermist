@@ -154,6 +154,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.DeviceprofileGatewayPortConfigWanExtraRoutes>? WanExtraRoutes;
         /// <summary>
+        /// Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// </summary>
+        public readonly ImmutableDictionary<string, Outputs.DeviceprofileGatewayPortConfigWanExtraRoutes6>? WanExtraRoutes6;
+        /// <summary>
         /// Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
         /// </summary>
         public readonly ImmutableArray<string> WanNetworks;
@@ -254,6 +258,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             ImmutableDictionary<string, Outputs.DeviceprofileGatewayPortConfigWanExtraRoutes>? wanExtraRoutes,
 
+            ImmutableDictionary<string, Outputs.DeviceprofileGatewayPortConfigWanExtraRoutes6>? wanExtraRoutes6,
+
             ImmutableArray<string> wanNetworks,
 
             Outputs.DeviceprofileGatewayPortConfigWanProbeOverride? wanProbeOverride,
@@ -303,6 +309,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             WanDisableSpeedtest = wanDisableSpeedtest;
             WanExtIp = wanExtIp;
             WanExtraRoutes = wanExtraRoutes;
+            WanExtraRoutes6 = wanExtraRoutes6;
             WanNetworks = wanNetworks;
             WanProbeOverride = wanProbeOverride;
             WanSourceNat = wanSourceNat;

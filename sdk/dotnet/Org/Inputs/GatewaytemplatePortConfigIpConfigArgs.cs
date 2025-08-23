@@ -43,16 +43,34 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Gateway { get; set; }
 
         /// <summary>
+        /// Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. "2001:db8::1") or a Variable (i.e. "{{myvar}}")
+        /// </summary>
+        [Input("gateway6")]
+        public Input<string>? Gateway6 { get; set; }
+
+        /// <summary>
         /// Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
+        /// Interface IPv6 Address (i.e. "2001:db8::123") or a Variable (i.e. "{{myvar}}")
+        /// </summary>
+        [Input("ip6")]
+        public Input<string>? Ip6 { get; set; }
+
+        /// <summary>
         /// Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
+
+        /// <summary>
+        /// Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. "/64") or a Variable (i.e. "{{myvar}}")
+        /// </summary>
+        [Input("netmask6")]
+        public Input<string>? Netmask6 { get; set; }
 
         /// <summary>
         /// Optional, the network to be used for mgmt
@@ -93,6 +111,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// enum: `autoconf`, `dhcp`, `static`
+        /// </summary>
+        [Input("type6")]
+        public Input<string>? Type6 { get; set; }
 
         public GatewaytemplatePortConfigIpConfigArgs()
         {

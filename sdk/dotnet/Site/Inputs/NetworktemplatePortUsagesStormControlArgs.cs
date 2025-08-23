@@ -13,6 +13,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class NetworktemplatePortUsagesStormControlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether to disable the port when storm control is triggered
+        /// </summary>
+        [Input("disablePort")]
+        public Input<bool>? DisablePort { get; set; }
+
+        /// <summary>
         /// Whether to disable storm control on broadcast traffic
         /// </summary>
         [Input("noBroadcast")]

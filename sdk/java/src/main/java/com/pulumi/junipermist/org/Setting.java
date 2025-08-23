@@ -230,14 +230,22 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return this.juniper;
     }
     /**
-     * by default, webshell access is only enabled for Admin user
+     * junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No
+     * additional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -
+     * Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and
+     * web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell
+     * access level to &#34;none&#34;, disables web-shell access for that specific role.
      * 
      */
     @Export(name="junosShellAccess", refs={SettingJunosShellAccess.class}, tree="[0]")
     private Output</* @Nullable */ SettingJunosShellAccess> junosShellAccess;
 
     /**
-     * @return by default, webshell access is only enabled for Admin user
+     * @return junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No
+     * additional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -
+     * Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and
+     * web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell
+     * access level to &#34;none&#34;, disables web-shell access for that specific role.
      * 
      */
     public Output<Optional<SettingJunosShellAccess>> junosShellAccess() {

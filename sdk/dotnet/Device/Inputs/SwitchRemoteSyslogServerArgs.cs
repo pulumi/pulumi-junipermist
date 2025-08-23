@@ -48,6 +48,12 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? RoutingInstance { get; set; }
 
         /// <summary>
+        /// Name of the server
+        /// </summary>
+        [Input("serverName")]
+        public Input<string>? ServerName { get; set; }
+
+        /// <summary>
         /// enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
         /// </summary>
         [Input("severity")]

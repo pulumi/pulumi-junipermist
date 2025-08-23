@@ -268,6 +268,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _wanExtraRoutes = value;
         }
 
+        [Input("wanExtraRoutes6")]
+        private InputMap<Inputs.DeviceprofileGatewayPortConfigWanExtraRoutes6Args>? _wanExtraRoutes6;
+
+        /// <summary>
+        /// Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// </summary>
+        public InputMap<Inputs.DeviceprofileGatewayPortConfigWanExtraRoutes6Args> WanExtraRoutes6
+        {
+            get => _wanExtraRoutes6 ?? (_wanExtraRoutes6 = new InputMap<Inputs.DeviceprofileGatewayPortConfigWanExtraRoutes6Args>());
+            set => _wanExtraRoutes6 = value;
+        }
+
         [Input("wanNetworks")]
         private InputList<string>? _wanNetworks;
 

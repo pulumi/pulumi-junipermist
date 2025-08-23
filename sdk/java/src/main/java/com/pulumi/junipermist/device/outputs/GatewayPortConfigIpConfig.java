@@ -28,15 +28,30 @@ public final class GatewayPortConfigIpConfig {
      */
     private @Nullable String gateway;
     /**
+     * @return Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. &#34;2001:db8::1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
+    private @Nullable String gateway6;
+    /**
      * @return Interface IP Address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     private @Nullable String ip;
     /**
+     * @return Interface IPv6 Address (i.e. &#34;2001:db8::123&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
+    private @Nullable String ip6;
+    /**
      * @return Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     private @Nullable String netmask;
+    /**
+     * @return Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. &#34;/64&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
+    private @Nullable String netmask6;
     /**
      * @return Optional, the network to be used for mgmt
      * 
@@ -62,6 +77,11 @@ public final class GatewayPortConfigIpConfig {
      * 
      */
     private @Nullable String type;
+    /**
+     * @return enum: `autoconf`, `dhcp`, `static`
+     * 
+     */
+    private @Nullable String type6;
 
     private GatewayPortConfigIpConfig() {}
     /**
@@ -86,6 +106,13 @@ public final class GatewayPortConfigIpConfig {
         return Optional.ofNullable(this.gateway);
     }
     /**
+     * @return Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. &#34;2001:db8::1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
+    public Optional<String> gateway6() {
+        return Optional.ofNullable(this.gateway6);
+    }
+    /**
      * @return Interface IP Address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
@@ -93,11 +120,25 @@ public final class GatewayPortConfigIpConfig {
         return Optional.ofNullable(this.ip);
     }
     /**
+     * @return Interface IPv6 Address (i.e. &#34;2001:db8::123&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
+    public Optional<String> ip6() {
+        return Optional.ofNullable(this.ip6);
+    }
+    /**
      * @return Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<String> netmask() {
         return Optional.ofNullable(this.netmask);
+    }
+    /**
+     * @return Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. &#34;/64&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
+    public Optional<String> netmask6() {
+        return Optional.ofNullable(this.netmask6);
     }
     /**
      * @return Optional, the network to be used for mgmt
@@ -134,6 +175,13 @@ public final class GatewayPortConfigIpConfig {
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return enum: `autoconf`, `dhcp`, `static`
+     * 
+     */
+    public Optional<String> type6() {
+        return Optional.ofNullable(this.type6);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -147,26 +195,34 @@ public final class GatewayPortConfigIpConfig {
         private @Nullable List<String> dns;
         private @Nullable List<String> dnsSuffixes;
         private @Nullable String gateway;
+        private @Nullable String gateway6;
         private @Nullable String ip;
+        private @Nullable String ip6;
         private @Nullable String netmask;
+        private @Nullable String netmask6;
         private @Nullable String network;
         private @Nullable String poserPassword;
         private @Nullable String pppoeAuth;
         private @Nullable String pppoeUsername;
         private @Nullable String type;
+        private @Nullable String type6;
         public Builder() {}
         public Builder(GatewayPortConfigIpConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dns = defaults.dns;
     	      this.dnsSuffixes = defaults.dnsSuffixes;
     	      this.gateway = defaults.gateway;
+    	      this.gateway6 = defaults.gateway6;
     	      this.ip = defaults.ip;
+    	      this.ip6 = defaults.ip6;
     	      this.netmask = defaults.netmask;
+    	      this.netmask6 = defaults.netmask6;
     	      this.network = defaults.network;
     	      this.poserPassword = defaults.poserPassword;
     	      this.pppoeAuth = defaults.pppoeAuth;
     	      this.pppoeUsername = defaults.pppoeUsername;
     	      this.type = defaults.type;
+    	      this.type6 = defaults.type6;
         }
 
         @CustomType.Setter
@@ -194,15 +250,33 @@ public final class GatewayPortConfigIpConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder gateway6(@Nullable String gateway6) {
+
+            this.gateway6 = gateway6;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ip(@Nullable String ip) {
 
             this.ip = ip;
             return this;
         }
         @CustomType.Setter
+        public Builder ip6(@Nullable String ip6) {
+
+            this.ip6 = ip6;
+            return this;
+        }
+        @CustomType.Setter
         public Builder netmask(@Nullable String netmask) {
 
             this.netmask = netmask;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder netmask6(@Nullable String netmask6) {
+
+            this.netmask6 = netmask6;
             return this;
         }
         @CustomType.Setter
@@ -235,18 +309,28 @@ public final class GatewayPortConfigIpConfig {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
+        public Builder type6(@Nullable String type6) {
+
+            this.type6 = type6;
+            return this;
+        }
         public GatewayPortConfigIpConfig build() {
             final var _resultValue = new GatewayPortConfigIpConfig();
             _resultValue.dns = dns;
             _resultValue.dnsSuffixes = dnsSuffixes;
             _resultValue.gateway = gateway;
+            _resultValue.gateway6 = gateway6;
             _resultValue.ip = ip;
+            _resultValue.ip6 = ip6;
             _resultValue.netmask = netmask;
+            _resultValue.netmask6 = netmask6;
             _resultValue.network = network;
             _resultValue.poserPassword = poserPassword;
             _resultValue.pppoeAuth = pppoeAuth;
             _resultValue.pppoeUsername = pppoeUsername;
             _resultValue.type = type;
+            _resultValue.type6 = type6;
             return _resultValue;
         }
     }

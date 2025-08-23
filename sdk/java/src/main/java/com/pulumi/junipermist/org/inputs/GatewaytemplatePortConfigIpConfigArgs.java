@@ -62,6 +62,21 @@ public final class GatewaytemplatePortConfigIpConfigArgs extends com.pulumi.reso
     }
 
     /**
+     * Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. &#34;2001:db8::1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
+    @Import(name="gateway6")
+    private @Nullable Output<String> gateway6;
+
+    /**
+     * @return Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. &#34;2001:db8::1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
+    public Optional<Output<String>> gateway6() {
+        return Optional.ofNullable(this.gateway6);
+    }
+
+    /**
      * Interface IP Address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
@@ -77,6 +92,21 @@ public final class GatewaytemplatePortConfigIpConfigArgs extends com.pulumi.reso
     }
 
     /**
+     * Interface IPv6 Address (i.e. &#34;2001:db8::123&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
+    @Import(name="ip6")
+    private @Nullable Output<String> ip6;
+
+    /**
+     * @return Interface IPv6 Address (i.e. &#34;2001:db8::123&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
+    public Optional<Output<String>> ip6() {
+        return Optional.ofNullable(this.ip6);
+    }
+
+    /**
      * Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
@@ -89,6 +119,21 @@ public final class GatewaytemplatePortConfigIpConfigArgs extends com.pulumi.reso
      */
     public Optional<Output<String>> netmask() {
         return Optional.ofNullable(this.netmask);
+    }
+
+    /**
+     * Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. &#34;/64&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
+    @Import(name="netmask6")
+    private @Nullable Output<String> netmask6;
+
+    /**
+     * @return Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. &#34;/64&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
+    public Optional<Output<String>> netmask6() {
+        return Optional.ofNullable(this.netmask6);
     }
 
     /**
@@ -166,19 +211,38 @@ public final class GatewaytemplatePortConfigIpConfigArgs extends com.pulumi.reso
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * enum: `autoconf`, `dhcp`, `static`
+     * 
+     */
+    @Import(name="type6")
+    private @Nullable Output<String> type6;
+
+    /**
+     * @return enum: `autoconf`, `dhcp`, `static`
+     * 
+     */
+    public Optional<Output<String>> type6() {
+        return Optional.ofNullable(this.type6);
+    }
+
     private GatewaytemplatePortConfigIpConfigArgs() {}
 
     private GatewaytemplatePortConfigIpConfigArgs(GatewaytemplatePortConfigIpConfigArgs $) {
         this.dns = $.dns;
         this.dnsSuffixes = $.dnsSuffixes;
         this.gateway = $.gateway;
+        this.gateway6 = $.gateway6;
         this.ip = $.ip;
+        this.ip6 = $.ip6;
         this.netmask = $.netmask;
+        this.netmask6 = $.netmask6;
         this.network = $.network;
         this.poserPassword = $.poserPassword;
         this.pppoeAuth = $.pppoeAuth;
         this.pppoeUsername = $.pppoeUsername;
         this.type = $.type;
+        this.type6 = $.type6;
     }
 
     public static Builder builder() {
@@ -283,6 +347,27 @@ public final class GatewaytemplatePortConfigIpConfigArgs extends com.pulumi.reso
         }
 
         /**
+         * @param gateway6 Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. &#34;2001:db8::1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gateway6(@Nullable Output<String> gateway6) {
+            $.gateway6 = gateway6;
+            return this;
+        }
+
+        /**
+         * @param gateway6 Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. &#34;2001:db8::1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gateway6(String gateway6) {
+            return gateway6(Output.of(gateway6));
+        }
+
+        /**
          * @param ip Interface IP Address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
@@ -304,6 +389,27 @@ public final class GatewaytemplatePortConfigIpConfigArgs extends com.pulumi.reso
         }
 
         /**
+         * @param ip6 Interface IPv6 Address (i.e. &#34;2001:db8::123&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ip6(@Nullable Output<String> ip6) {
+            $.ip6 = ip6;
+            return this;
+        }
+
+        /**
+         * @param ip6 Interface IPv6 Address (i.e. &#34;2001:db8::123&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ip6(String ip6) {
+            return ip6(Output.of(ip6));
+        }
+
+        /**
          * @param netmask Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
@@ -322,6 +428,27 @@ public final class GatewaytemplatePortConfigIpConfigArgs extends com.pulumi.reso
          */
         public Builder netmask(String netmask) {
             return netmask(Output.of(netmask));
+        }
+
+        /**
+         * @param netmask6 Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. &#34;/64&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder netmask6(@Nullable Output<String> netmask6) {
+            $.netmask6 = netmask6;
+            return this;
+        }
+
+        /**
+         * @param netmask6 Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. &#34;/64&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder netmask6(String netmask6) {
+            return netmask6(Output.of(netmask6));
         }
 
         /**
@@ -427,6 +554,27 @@ public final class GatewaytemplatePortConfigIpConfigArgs extends com.pulumi.reso
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param type6 enum: `autoconf`, `dhcp`, `static`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type6(@Nullable Output<String> type6) {
+            $.type6 = type6;
+            return this;
+        }
+
+        /**
+         * @param type6 enum: `autoconf`, `dhcp`, `static`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type6(String type6) {
+            return type6(Output.of(type6));
         }
 
         public GatewaytemplatePortConfigIpConfigArgs build() {

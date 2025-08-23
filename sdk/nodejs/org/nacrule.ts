@@ -61,6 +61,10 @@ export class Nacrule extends pulumi.CustomResource {
      * Enabled or not
      */
     public readonly enabled!: pulumi.Output<boolean>;
+    /**
+     * Guest portal authorization state. enum: `authorized`, `unknown`
+     */
+    public readonly guestAuthState!: pulumi.Output<string | undefined>;
     public readonly matching!: pulumi.Output<outputs.org.NacruleMatching | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly notMatching!: pulumi.Output<outputs.org.NacruleNotMatching | undefined>;
@@ -86,6 +90,7 @@ export class Nacrule extends pulumi.CustomResource {
             resourceInputs["action"] = state ? state.action : undefined;
             resourceInputs["applyTags"] = state ? state.applyTags : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["guestAuthState"] = state ? state.guestAuthState : undefined;
             resourceInputs["matching"] = state ? state.matching : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notMatching"] = state ? state.notMatching : undefined;
@@ -105,6 +110,7 @@ export class Nacrule extends pulumi.CustomResource {
             resourceInputs["action"] = args ? args.action : undefined;
             resourceInputs["applyTags"] = args ? args.applyTags : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["guestAuthState"] = args ? args.guestAuthState : undefined;
             resourceInputs["matching"] = args ? args.matching : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notMatching"] = args ? args.notMatching : undefined;
@@ -132,6 +138,10 @@ export interface NacruleState {
      * Enabled or not
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Guest portal authorization state. enum: `authorized`, `unknown`
+     */
+    guestAuthState?: pulumi.Input<string>;
     matching?: pulumi.Input<inputs.org.NacruleMatching>;
     name?: pulumi.Input<string>;
     notMatching?: pulumi.Input<inputs.org.NacruleNotMatching>;
@@ -158,6 +168,10 @@ export interface NacruleArgs {
      * Enabled or not
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Guest portal authorization state. enum: `authorized`, `unknown`
+     */
+    guestAuthState?: pulumi.Input<string>;
     matching?: pulumi.Input<inputs.org.NacruleMatching>;
     name?: pulumi.Input<string>;
     notMatching?: pulumi.Input<inputs.org.NacruleNotMatching>;

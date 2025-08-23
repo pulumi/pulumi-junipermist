@@ -63,6 +63,7 @@ type DeviceprofileAp struct {
 
 	// Aeroscout AP settings
 	Aeroscout DeviceprofileApAeroscoutPtrOutput `pulumi:"aeroscout"`
+	Airista   DeviceprofileApAiristaPtrOutput   `pulumi:"airista"`
 	// BLE AP settings
 	BleConfig DeviceprofileApBleConfigPtrOutput `pulumi:"bleConfig"`
 	// Whether to disable eth1 port
@@ -140,6 +141,7 @@ func GetDeviceprofileAp(ctx *pulumi.Context,
 type deviceprofileApState struct {
 	// Aeroscout AP settings
 	Aeroscout *DeviceprofileApAeroscout `pulumi:"aeroscout"`
+	Airista   *DeviceprofileApAirista   `pulumi:"airista"`
 	// BLE AP settings
 	BleConfig *DeviceprofileApBleConfig `pulumi:"bleConfig"`
 	// Whether to disable eth1 port
@@ -185,6 +187,7 @@ type deviceprofileApState struct {
 type DeviceprofileApState struct {
 	// Aeroscout AP settings
 	Aeroscout DeviceprofileApAeroscoutPtrInput
+	Airista   DeviceprofileApAiristaPtrInput
 	// BLE AP settings
 	BleConfig DeviceprofileApBleConfigPtrInput
 	// Whether to disable eth1 port
@@ -234,6 +237,7 @@ func (DeviceprofileApState) ElementType() reflect.Type {
 type deviceprofileApArgs struct {
 	// Aeroscout AP settings
 	Aeroscout *DeviceprofileApAeroscout `pulumi:"aeroscout"`
+	Airista   *DeviceprofileApAirista   `pulumi:"airista"`
 	// BLE AP settings
 	BleConfig *DeviceprofileApBleConfig `pulumi:"bleConfig"`
 	// Whether to disable eth1 port
@@ -278,6 +282,7 @@ type deviceprofileApArgs struct {
 type DeviceprofileApArgs struct {
 	// Aeroscout AP settings
 	Aeroscout DeviceprofileApAeroscoutPtrInput
+	Airista   DeviceprofileApAiristaPtrInput
 	// BLE AP settings
 	BleConfig DeviceprofileApBleConfigPtrInput
 	// Whether to disable eth1 port
@@ -408,6 +413,10 @@ func (o DeviceprofileApOutput) ToDeviceprofileApOutputWithContext(ctx context.Co
 // Aeroscout AP settings
 func (o DeviceprofileApOutput) Aeroscout() DeviceprofileApAeroscoutPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) DeviceprofileApAeroscoutPtrOutput { return v.Aeroscout }).(DeviceprofileApAeroscoutPtrOutput)
+}
+
+func (o DeviceprofileApOutput) Airista() DeviceprofileApAiristaPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileAp) DeviceprofileApAiristaPtrOutput { return v.Airista }).(DeviceprofileApAiristaPtrOutput)
 }
 
 // BLE AP settings

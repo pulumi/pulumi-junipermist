@@ -122,6 +122,22 @@
                 }
             }
         },
+        "junipermist:device/ApAirista:ApAirista": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether to enable Airista config\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "Required if enabled, Airista server host\n"
+                },
+                "port": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "junipermist:device/ApBleConfig:ApBleConfig": {
             "properties": {
                 "beaconEnabled": {
@@ -587,9 +603,41 @@
         },
         "junipermist:device/ApPortConfigMistNac:ApPortConfigMistNac": {
             "properties": {
+                "acctInterimInterval": {
+                    "type": "integer",
+                    "description": "How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.\n"
+                },
+                "authServersRetries": {
+                    "type": "integer",
+                    "description": "Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. \"retries\" are set to value of `auth_servers_timeout`. \"max-requests\" is also set when setting `auth_servers_retries` is set to default value to 3.\n"
+                },
+                "authServersTimeout": {
+                    "type": "integer",
+                    "description": "Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. \"quite-period\" and \"transmit-period\" are set to half the value of `auth_servers_timeout`. \"supplicant-timeout\" is also set when setting `auth_servers_timeout` is set to default value of 10.\n"
+                },
+                "coaEnabled": {
+                    "type": "boolean",
+                    "description": "Allows a RADIUS server to dynamically modify the authorization status of a user session.\n"
+                },
+                "coaPort": {
+                    "type": "integer",
+                    "description": "the communication port used for “Change of Authorization” (CoA) messages\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "When enabled:\n  * `auth_servers` is ignored\n  * `acct_servers` is ignored\n  * `auth_servers_*` are ignored\n  * `coa_servers` is ignored\n  * `radsec` is ignored\n  * `coa_enabled` is assumed\n"
+                },
+                "fastDot1xTimers": {
+                    "type": "boolean",
+                    "description": "If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.\n"
+                },
+                "network": {
+                    "type": "string",
+                    "description": "Which network the mist nac server resides in\n"
+                },
+                "sourceIp": {
+                    "type": "string",
+                    "description": "In case there is a static IP for this network, we can specify it using source ip\n"
                 }
             },
             "type": "object",
@@ -1413,21 +1461,21 @@
                     "type": "string",
                     "description": "If `type`==`local` - optional, `ip` will be used if not provided\n"
                 },
+                "ip6End": {
+                    "type": "string",
+                    "description": "If `type6`==`local`\n"
+                },
+                "ip6Start": {
+                    "type": "string",
+                    "description": "If `type6`==`local`\n"
+                },
                 "ipEnd": {
                     "type": "string",
                     "description": "If `type`==`local`\n"
                 },
-                "ipEnd6": {
-                    "type": "string",
-                    "description": "If `type6`==`local`\n"
-                },
                 "ipStart": {
                     "type": "string",
                     "description": "If `type`==`local`\n"
-                },
-                "ipStart6": {
-                    "type": "string",
-                    "description": "If `type6`==`local`\n"
                 },
                 "leaseTime": {
                     "type": "integer",
@@ -1451,7 +1499,7 @@
                     },
                     "description": "If `type`==`relay`\n"
                 },
-                "servers6s": {
+                "serversv6s": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -1604,7 +1652,13 @@
                 "ip": {
                     "type": "string"
                 },
+                "ip6": {
+                    "type": "string"
+                },
                 "netmask": {
+                    "type": "string"
+                },
+                "netmask6": {
                     "type": "string"
                 },
                 "secondaryIps": {
@@ -1617,6 +1671,10 @@
                 "type": {
                     "type": "string",
                     "description": "enum: `dhcp`, `static`\n"
+                },
+                "type6": {
+                    "type": "string",
+                    "description": "enum: `autoconf`, `dhcp`, `disabled`, `static`\n"
                 }
             },
             "type": "object",
@@ -2281,6 +2339,13 @@
                     },
                     "description": "Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. \"100.100.100.0/24\")\n"
                 },
+                "wanExtraRoutes6": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:device/GatewayPortConfigWanExtraRoutes6:GatewayPortConfigWanExtraRoutes6"
+                    },
+                    "description": "Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. \"2a02:1234:420a:10c9::/64\")\n"
+                },
                 "wanNetworks": {
                     "type": "array",
                     "items": {
@@ -2334,13 +2399,25 @@
                     "type": "string",
                     "description": "Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. \"192.168.1.1\") or a Variable (i.e. \"{{myvar}}\")\n"
                 },
+                "gateway6": {
+                    "type": "string",
+                    "description": "Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. \"2001:db8::1\") or a Variable (i.e. \"{{myvar}}\")\n"
+                },
                 "ip": {
                     "type": "string",
                     "description": "Interface IP Address (i.e. \"192.168.1.8\") or a Variable (i.e. \"{{myvar}}\")\n"
                 },
+                "ip6": {
+                    "type": "string",
+                    "description": "Interface IPv6 Address (i.e. \"2001:db8::123\") or a Variable (i.e. \"{{myvar}}\")\n"
+                },
                 "netmask": {
                     "type": "string",
                     "description": "Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. \"/24\") or a Variable (i.e. \"{{myvar}}\")\n"
+                },
+                "netmask6": {
+                    "type": "string",
+                    "description": "Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. \"/64\") or a Variable (i.e. \"{{myvar}}\")\n"
                 },
                 "network": {
                     "type": "string",
@@ -2362,6 +2439,10 @@
                 "type": {
                     "type": "string",
                     "description": "enum: `dhcp`, `pppoe`, `static`\n"
+                },
+                "type6": {
+                    "type": "string",
+                    "description": "enum: `autoconf`, `dhcp`, `static`\n"
                 }
             },
             "type": "object"
@@ -2428,6 +2509,14 @@
             },
             "type": "object"
         },
+        "junipermist:device/GatewayPortConfigWanExtraRoutes6:GatewayPortConfigWanExtraRoutes6": {
+            "properties": {
+                "via": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "junipermist:device/GatewayPortConfigWanExtraRoutes:GatewayPortConfigWanExtraRoutes": {
             "properties": {
                 "via": {
@@ -2438,6 +2527,12 @@
         },
         "junipermist:device/GatewayPortConfigWanProbeOverride:GatewayPortConfigWanProbeOverride": {
             "properties": {
+                "ip6s": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "ips": {
                     "type": "array",
                     "items": {
@@ -2839,6 +2934,13 @@
                     "type": "string",
                     "description": "Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`\n"
                 },
+                "localSubnets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of Local protected subnet for policy-based IPSec negotiation\n"
+                },
                 "mode": {
                     "type": "string",
                     "description": "Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`\n"
@@ -2870,6 +2972,13 @@
                     "type": "string",
                     "description": "Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`\n",
                     "secret": true
+                },
+                "remoteSubnets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of Remote protected subnet for policy-based IPSec negotiation\n"
                 },
                 "secondary": {
                     "$ref": "#/types/junipermist:device/GatewayTunnelConfigsSecondary:GatewayTunnelConfigsSecondary",
@@ -3848,7 +3957,7 @@
                 },
                 "reauthInterval": {
                     "type": "string",
-                    "description": "Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)\n"
+                    "description": "Only `port_auth`=`dot1x`, reauthentication interval range between 10 and 65535 (default: 3600)\n"
                 },
                 "serverFailNetwork": {
                     "type": "string",
@@ -3896,28 +4005,21 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "allNetworks",
-                        "allowMultipleSupplicants",
-                        "bypassAuthWhenServerDown",
-                        "bypassAuthWhenServerDownForUnknownClient",
-                        "disabled",
-                        "enableMacAuth",
-                        "enableQos",
-                        "interSwitchLink",
-                        "macAuthProtocol",
-                        "macLimit",
-                        "persistMac",
-                        "stpEdge",
-                        "stpNoRootPort",
-                        "stpP2p",
-                        "usage",
-                        "useVstp"
+                        "disableAutoneg",
+                        "duplex",
+                        "poeDisabled",
+                        "speed",
+                        "usage"
                     ]
                 }
             }
         },
         "junipermist:device/SwitchLocalPortConfigStormControl:SwitchLocalPortConfigStormControl": {
             "properties": {
+                "disablePort": {
+                    "type": "boolean",
+                    "description": "Whether to disable the port when storm control is triggered\n"
+                },
                 "noBroadcast": {
                     "type": "boolean",
                     "description": "Whether to disable storm control on broadcast traffic\n"
@@ -3939,18 +4041,7 @@
                     "description": "Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "noBroadcast",
-                        "noMulticast",
-                        "noRegisteredMulticast",
-                        "noUnknownUnicast",
-                        "percentage"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:device/SwitchMistNac:SwitchMistNac": {
             "properties": {
@@ -4140,6 +4231,14 @@
                     "type": "boolean",
                     "description": "Enable OSPF on the switch\n"
                 },
+                "exportPolicy": {
+                    "type": "string",
+                    "description": "optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified\n"
+                },
+                "importPolicy": {
+                    "type": "string",
+                    "description": "optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified\n"
+                },
                 "referenceBandwidth": {
                     "type": "string"
                 }
@@ -4274,6 +4373,47 @@
                 }
             }
         },
+        "junipermist:device/SwitchPortConfigOverwrite:SwitchPortConfigOverwrite": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Whether the port is disabled\n"
+                },
+                "duplex": {
+                    "type": "string",
+                    "description": "Link connection mode. enum: `auto`, `full`, `half`\n"
+                },
+                "macLimit": {
+                    "type": "string"
+                },
+                "poeDisabled": {
+                    "type": "boolean",
+                    "description": "Whether PoE capabilities are disabled for a port\n"
+                },
+                "portNetwork": {
+                    "type": "string",
+                    "description": "Native network/vlan for untagged traffic\n"
+                },
+                "speed": {
+                    "type": "string",
+                    "description": "Port Speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "disabled",
+                        "duplex",
+                        "poeDisabled",
+                        "speed"
+                    ]
+                }
+            }
+        },
         "junipermist:device/SwitchPortMirroring:SwitchPortMirroring": {
             "properties": {
                 "inputNetworksIngresses": {
@@ -4297,13 +4437,17 @@
                     },
                     "description": "At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified\n"
                 },
+                "outputIpAddress": {
+                    "type": "string",
+                    "description": "Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided\n"
+                },
                 "outputNetwork": {
                     "type": "string",
-                    "description": "Exactly one of the `output_port_id` or `output_network` should be provided\n"
+                    "description": "Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided\n"
                 },
                 "outputPortId": {
                     "type": "string",
-                    "description": "Exactly one of the `output_port_id` or `output_network` should be provided\n"
+                    "description": "Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided\n"
                 }
             },
             "type": "object",
@@ -4357,7 +4501,7 @@
                 },
                 "duplex": {
                     "type": "string",
-                    "description": "Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`\n"
+                    "description": "Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`\n"
                 },
                 "dynamicVlanNetworks": {
                     "type": "array",
@@ -4458,7 +4602,7 @@
                 },
                 "speed": {
                     "type": "string",
-                    "description": "Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`\n"
+                    "description": "Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`\n"
                 },
                 "stormControl": {
                     "$ref": "#/types/junipermist:device/SwitchPortUsagesStormControl:SwitchPortUsagesStormControl",
@@ -4536,6 +4680,10 @@
         },
         "junipermist:device/SwitchPortUsagesStormControl:SwitchPortUsagesStormControl": {
             "properties": {
+                "disablePort": {
+                    "type": "boolean",
+                    "description": "Whether to disable the port when storm control is triggered\n"
+                },
                 "noBroadcast": {
                     "type": "boolean",
                     "description": "Whether to disable storm control on broadcast traffic\n"
@@ -4888,6 +5036,10 @@
                 },
                 "routingInstance": {
                     "type": "string"
+                },
+                "serverName": {
+                    "type": "string",
+                    "description": "Name of the server\n"
                 },
                 "severity": {
                     "type": "string",
@@ -5796,10 +5948,6 @@
         },
         "junipermist:device/SwitchVrrpConfigGroups:SwitchVrrpConfigGroups": {
             "properties": {
-                "acceptData": {
-                    "type": "boolean",
-                    "description": "If `true`, accept packets destined for VRRP address\n"
-                },
                 "preempt": {
                     "type": "boolean",
                     "description": "If `true`, allow preemption (a backup router can preempt a primary router)\n"
@@ -5812,7 +5960,6 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "acceptData",
                         "preempt"
                     ]
                 }
@@ -11867,6 +12014,22 @@
                 }
             }
         },
+        "junipermist:org/DeviceprofileApAirista:DeviceprofileApAirista": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether to enable Airista config\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "Required if enabled, Airista server host\n"
+                },
+                "port": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "junipermist:org/DeviceprofileApBleConfig:DeviceprofileApBleConfig": {
             "properties": {
                 "beaconEnabled": {
@@ -12275,9 +12438,41 @@
         },
         "junipermist:org/DeviceprofileApPortConfigMistNac:DeviceprofileApPortConfigMistNac": {
             "properties": {
+                "acctInterimInterval": {
+                    "type": "integer",
+                    "description": "How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.\n"
+                },
+                "authServersRetries": {
+                    "type": "integer",
+                    "description": "Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. \"retries\" are set to value of `auth_servers_timeout`. \"max-requests\" is also set when setting `auth_servers_retries` is set to default value to 3.\n"
+                },
+                "authServersTimeout": {
+                    "type": "integer",
+                    "description": "Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. \"quite-period\" and \"transmit-period\" are set to half the value of `auth_servers_timeout`. \"supplicant-timeout\" is also set when setting `auth_servers_timeout` is set to default value of 10.\n"
+                },
+                "coaEnabled": {
+                    "type": "boolean",
+                    "description": "Allows a RADIUS server to dynamically modify the authorization status of a user session.\n"
+                },
+                "coaPort": {
+                    "type": "integer",
+                    "description": "the communication port used for “Change of Authorization” (CoA) messages\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "When enabled:\n  * `auth_servers` is ignored\n  * `acct_servers` is ignored\n  * `auth_servers_*` are ignored\n  * `coa_servers` is ignored\n  * `radsec` is ignored\n  * `coa_enabled` is assumed\n"
+                },
+                "fastDot1xTimers": {
+                    "type": "boolean",
+                    "description": "If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.\n"
+                },
+                "network": {
+                    "type": "string",
+                    "description": "Which network the mist nac server resides in\n"
+                },
+                "sourceIp": {
+                    "type": "string",
+                    "description": "In case there is a static IP for this network, we can specify it using source ip\n"
                 }
             },
             "type": "object",
@@ -13089,21 +13284,21 @@
                     "type": "string",
                     "description": "If `type`==`local` - optional, `ip` will be used if not provided\n"
                 },
+                "ip6End": {
+                    "type": "string",
+                    "description": "If `type6`==`local`\n"
+                },
+                "ip6Start": {
+                    "type": "string",
+                    "description": "If `type6`==`local`\n"
+                },
                 "ipEnd": {
                     "type": "string",
                     "description": "If `type`==`local`\n"
                 },
-                "ipEnd6": {
-                    "type": "string",
-                    "description": "If `type6`==`local`\n"
-                },
                 "ipStart": {
                     "type": "string",
                     "description": "If `type`==`local`\n"
-                },
-                "ipStart6": {
-                    "type": "string",
-                    "description": "If `type6`==`local`\n"
                 },
                 "leaseTime": {
                     "type": "integer",
@@ -13127,7 +13322,7 @@
                     },
                     "description": "If `type`==`relay`\n"
                 },
-                "servers6s": {
+                "serversv6s": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -13276,7 +13471,13 @@
                 "ip": {
                     "type": "string"
                 },
+                "ip6": {
+                    "type": "string"
+                },
                 "netmask": {
+                    "type": "string"
+                },
+                "netmask6": {
                     "type": "string"
                 },
                 "secondaryIps": {
@@ -13289,6 +13490,10 @@
                 "type": {
                     "type": "string",
                     "description": "enum: `dhcp`, `static`\n"
+                },
+                "type6": {
+                    "type": "string",
+                    "description": "enum: `autoconf`, `dhcp`, `disabled`, `static`\n"
                 }
             },
             "type": "object",
@@ -13953,6 +14158,13 @@
                     },
                     "description": "Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. \"100.100.100.0/24\")\n"
                 },
+                "wanExtraRoutes6": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/DeviceprofileGatewayPortConfigWanExtraRoutes6:DeviceprofileGatewayPortConfigWanExtraRoutes6"
+                    },
+                    "description": "Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. \"2a02:1234:420a:10c9::/64\")\n"
+                },
                 "wanNetworks": {
                     "type": "array",
                     "items": {
@@ -14006,13 +14218,25 @@
                     "type": "string",
                     "description": "Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. \"192.168.1.1\") or a Variable (i.e. \"{{myvar}}\")\n"
                 },
+                "gateway6": {
+                    "type": "string",
+                    "description": "Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. \"2001:db8::1\") or a Variable (i.e. \"{{myvar}}\")\n"
+                },
                 "ip": {
                     "type": "string",
                     "description": "Interface IP Address (i.e. \"192.168.1.8\") or a Variable (i.e. \"{{myvar}}\")\n"
                 },
+                "ip6": {
+                    "type": "string",
+                    "description": "Interface IPv6 Address (i.e. \"2001:db8::123\") or a Variable (i.e. \"{{myvar}}\")\n"
+                },
                 "netmask": {
                     "type": "string",
                     "description": "Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. \"/24\") or a Variable (i.e. \"{{myvar}}\")\n"
+                },
+                "netmask6": {
+                    "type": "string",
+                    "description": "Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. \"/64\") or a Variable (i.e. \"{{myvar}}\")\n"
                 },
                 "network": {
                     "type": "string",
@@ -14034,6 +14258,10 @@
                 "type": {
                     "type": "string",
                     "description": "enum: `dhcp`, `pppoe`, `static`\n"
+                },
+                "type6": {
+                    "type": "string",
+                    "description": "enum: `autoconf`, `dhcp`, `static`\n"
                 }
             },
             "type": "object"
@@ -14100,6 +14328,14 @@
             },
             "type": "object"
         },
+        "junipermist:org/DeviceprofileGatewayPortConfigWanExtraRoutes6:DeviceprofileGatewayPortConfigWanExtraRoutes6": {
+            "properties": {
+                "via": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "junipermist:org/DeviceprofileGatewayPortConfigWanExtraRoutes:DeviceprofileGatewayPortConfigWanExtraRoutes": {
             "properties": {
                 "via": {
@@ -14110,6 +14346,12 @@
         },
         "junipermist:org/DeviceprofileGatewayPortConfigWanProbeOverride:DeviceprofileGatewayPortConfigWanProbeOverride": {
             "properties": {
+                "ip6s": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "ips": {
                     "type": "array",
                     "items": {
@@ -14480,6 +14722,13 @@
                     "type": "string",
                     "description": "Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`\n"
                 },
+                "localSubnets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of Local protected subnet for policy-based IPSec negotiation\n"
+                },
                 "mode": {
                     "type": "string",
                     "description": "Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`\n"
@@ -14511,6 +14760,13 @@
                     "type": "string",
                     "description": "Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`\n",
                     "secret": true
+                },
+                "remoteSubnets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of Remote protected subnet for policy-based IPSec negotiation\n"
                 },
                 "secondary": {
                     "$ref": "#/types/junipermist:org/DeviceprofileGatewayTunnelConfigsSecondary:DeviceprofileGatewayTunnelConfigsSecondary",
@@ -15296,21 +15552,21 @@
                     "type": "string",
                     "description": "If `type`==`local` - optional, `ip` will be used if not provided\n"
                 },
+                "ip6End": {
+                    "type": "string",
+                    "description": "If `type6`==`local`\n"
+                },
+                "ip6Start": {
+                    "type": "string",
+                    "description": "If `type6`==`local`\n"
+                },
                 "ipEnd": {
                     "type": "string",
                     "description": "If `type`==`local`\n"
                 },
-                "ipEnd6": {
-                    "type": "string",
-                    "description": "If `type6`==`local`\n"
-                },
                 "ipStart": {
                     "type": "string",
                     "description": "If `type`==`local`\n"
-                },
-                "ipStart6": {
-                    "type": "string",
-                    "description": "If `type6`==`local`\n"
                 },
                 "leaseTime": {
                     "type": "integer",
@@ -15334,7 +15590,7 @@
                     },
                     "description": "If `type`==`relay`\n"
                 },
-                "servers6s": {
+                "serversv6s": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -15483,7 +15739,13 @@
                 "ip": {
                     "type": "string"
                 },
+                "ip6": {
+                    "type": "string"
+                },
                 "netmask": {
+                    "type": "string"
+                },
+                "netmask6": {
                     "type": "string"
                 },
                 "secondaryIps": {
@@ -15496,6 +15758,10 @@
                 "type": {
                     "type": "string",
                     "description": "enum: `dhcp`, `static`\n"
+                },
+                "type6": {
+                    "type": "string",
+                    "description": "enum: `autoconf`, `dhcp`, `disabled`, `static`\n"
                 }
             },
             "type": "object",
@@ -16160,6 +16426,13 @@
                     },
                     "description": "Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. \"100.100.100.0/24\")\n"
                 },
+                "wanExtraRoutes6": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/GatewaytemplatePortConfigWanExtraRoutes6:GatewaytemplatePortConfigWanExtraRoutes6"
+                    },
+                    "description": "Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. \"2a02:1234:420a:10c9::/64\")\n"
+                },
                 "wanNetworks": {
                     "type": "array",
                     "items": {
@@ -16213,13 +16486,25 @@
                     "type": "string",
                     "description": "Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. \"192.168.1.1\") or a Variable (i.e. \"{{myvar}}\")\n"
                 },
+                "gateway6": {
+                    "type": "string",
+                    "description": "Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. \"2001:db8::1\") or a Variable (i.e. \"{{myvar}}\")\n"
+                },
                 "ip": {
                     "type": "string",
                     "description": "Interface IP Address (i.e. \"192.168.1.8\") or a Variable (i.e. \"{{myvar}}\")\n"
                 },
+                "ip6": {
+                    "type": "string",
+                    "description": "Interface IPv6 Address (i.e. \"2001:db8::123\") or a Variable (i.e. \"{{myvar}}\")\n"
+                },
                 "netmask": {
                     "type": "string",
                     "description": "Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. \"/24\") or a Variable (i.e. \"{{myvar}}\")\n"
+                },
+                "netmask6": {
+                    "type": "string",
+                    "description": "Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. \"/64\") or a Variable (i.e. \"{{myvar}}\")\n"
                 },
                 "network": {
                     "type": "string",
@@ -16241,6 +16526,10 @@
                 "type": {
                     "type": "string",
                     "description": "enum: `dhcp`, `pppoe`, `static`\n"
+                },
+                "type6": {
+                    "type": "string",
+                    "description": "enum: `autoconf`, `dhcp`, `static`\n"
                 }
             },
             "type": "object"
@@ -16307,6 +16596,14 @@
             },
             "type": "object"
         },
+        "junipermist:org/GatewaytemplatePortConfigWanExtraRoutes6:GatewaytemplatePortConfigWanExtraRoutes6": {
+            "properties": {
+                "via": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "junipermist:org/GatewaytemplatePortConfigWanExtraRoutes:GatewaytemplatePortConfigWanExtraRoutes": {
             "properties": {
                 "via": {
@@ -16317,6 +16614,12 @@
         },
         "junipermist:org/GatewaytemplatePortConfigWanProbeOverride:GatewaytemplatePortConfigWanProbeOverride": {
             "properties": {
+                "ip6s": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "ips": {
                     "type": "array",
                     "items": {
@@ -16687,6 +16990,13 @@
                     "type": "string",
                     "description": "Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`\n"
                 },
+                "localSubnets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of Local protected subnet for policy-based IPSec negotiation\n"
+                },
                 "mode": {
                     "type": "string",
                     "description": "Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`\n"
@@ -16718,6 +17028,13 @@
                     "type": "string",
                     "description": "Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`\n",
                     "secret": true
+                },
+                "remoteSubnets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of Remote protected subnet for policy-based IPSec negotiation\n"
                 },
                 "secondary": {
                     "$ref": "#/types/junipermist:org/GatewaytemplateTunnelConfigsSecondary:GatewaytemplateTunnelConfigsSecondary",
@@ -18075,13 +18392,17 @@
                     },
                     "description": "At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified\n"
                 },
+                "outputIpAddress": {
+                    "type": "string",
+                    "description": "Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided\n"
+                },
                 "outputNetwork": {
                     "type": "string",
-                    "description": "Exactly one of the `output_port_id` or `output_network` should be provided\n"
+                    "description": "Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided\n"
                 },
                 "outputPortId": {
                     "type": "string",
-                    "description": "Exactly one of the `output_port_id` or `output_network` should be provided\n"
+                    "description": "Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided\n"
                 }
             },
             "type": "object",
@@ -18135,7 +18456,7 @@
                 },
                 "duplex": {
                     "type": "string",
-                    "description": "Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`\n"
+                    "description": "Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`\n"
                 },
                 "dynamicVlanNetworks": {
                     "type": "array",
@@ -18236,7 +18557,7 @@
                 },
                 "speed": {
                     "type": "string",
-                    "description": "Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`\n"
+                    "description": "Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`\n"
                 },
                 "stormControl": {
                     "$ref": "#/types/junipermist:org/NetworktemplatePortUsagesStormControl:NetworktemplatePortUsagesStormControl",
@@ -18318,6 +18639,10 @@
         },
         "junipermist:org/NetworktemplatePortUsagesStormControl:NetworktemplatePortUsagesStormControl": {
             "properties": {
+                "disablePort": {
+                    "type": "boolean",
+                    "description": "Whether to disable the port when storm control is triggered\n"
+                },
                 "noBroadcast": {
                     "type": "boolean",
                     "description": "Whether to disable storm control on broadcast traffic\n"
@@ -18670,6 +18995,10 @@
                 },
                 "routingInstance": {
                     "type": "string"
+                },
+                "serverName": {
+                    "type": "string",
+                    "description": "Name of the server\n"
                 },
                 "severity": {
                     "type": "string",
@@ -19416,13 +19745,17 @@
                     },
                     "description": "At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified\n"
                 },
+                "outputIpAddress": {
+                    "type": "string",
+                    "description": "Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided\n"
+                },
                 "outputNetwork": {
                     "type": "string",
-                    "description": "Exactly one of the `output_port_id` or `output_network` should be provided\n"
+                    "description": "Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided\n"
                 },
                 "outputPortId": {
                     "type": "string",
-                    "description": "Exactly one of the `output_port_id` or `output_network` should be provided\n"
+                    "description": "Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided\n"
                 }
             },
             "type": "object",
@@ -21938,16 +22271,53 @@
         },
         "junipermist:org/WlanMistNac:WlanMistNac": {
             "properties": {
+                "acctInterimInterval": {
+                    "type": "integer",
+                    "description": "How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.\n"
+                },
+                "authServersRetries": {
+                    "type": "integer",
+                    "description": "Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. \"retries\" are set to value of `auth_servers_timeout`. \"max-requests\" is also set when setting `auth_servers_retries` is set to default value to 3.\n"
+                },
+                "authServersTimeout": {
+                    "type": "integer",
+                    "description": "Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. \"quite-period\" and \"transmit-period\" are set to half the value of `auth_servers_timeout`. \"supplicant-timeout\" is also set when setting `auth_servers_timeout` is set to default value of 10.\n"
+                },
+                "coaEnabled": {
+                    "type": "boolean",
+                    "description": "Allows a RADIUS server to dynamically modify the authorization status of a user session.\n"
+                },
+                "coaPort": {
+                    "type": "integer",
+                    "description": "the communication port used for “Change of Authorization” (CoA) messages\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "When enabled:\n  * `auth_servers` is ignored\n  * `acct_servers` is ignored\n  * `auth_servers_*` are ignored\n  * `coa_servers` is ignored\n  * `radsec` is ignored\n  * `coa_enabled` is assumed\n"
+                },
+                "fastDot1xTimers": {
+                    "type": "boolean",
+                    "description": "If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.\n"
+                },
+                "network": {
+                    "type": "string",
+                    "description": "Which network the mist nac server resides in\n"
+                },
+                "sourceIp": {
+                    "type": "string",
+                    "description": "In case there is a static IP for this network, we can specify it using source ip\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "enabled"
+                        "acctInterimInterval",
+                        "authServersRetries",
+                        "authServersTimeout",
+                        "coaEnabled",
+                        "enabled",
+                        "fastDot1xTimers"
                     ]
                 }
             }
@@ -22147,7 +22517,7 @@
                 },
                 "predefinedSponsorsEnabled": {
                     "type": "boolean",
-                    "description": "Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`\n"
+                    "description": "Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`\n"
                 },
                 "predefinedSponsorsHideEmail": {
                     "type": "boolean",
@@ -22183,7 +22553,7 @@
                 },
                 "smsProvider": {
                     "type": "string",
-                    "description": "Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`\n"
+                    "description": "Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`\n"
                 },
                 "smsglobalApiKey": {
                     "type": "string",
@@ -22245,7 +22615,7 @@
                 },
                 "ssoIdpSignAlgo": {
                     "type": "string",
-                    "description": "Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`\n"
+                    "description": "Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`\n"
                 },
                 "ssoIdpSsoUrl": {
                     "type": "string",
@@ -28467,13 +28837,17 @@
                     },
                     "description": "At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified\n"
                 },
+                "outputIpAddress": {
+                    "type": "string",
+                    "description": "Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided\n"
+                },
                 "outputNetwork": {
                     "type": "string",
-                    "description": "Exactly one of the `output_port_id` or `output_network` should be provided\n"
+                    "description": "Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided\n"
                 },
                 "outputPortId": {
                     "type": "string",
-                    "description": "Exactly one of the `output_port_id` or `output_network` should be provided\n"
+                    "description": "Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided\n"
                 }
             },
             "type": "object",
@@ -28527,7 +28901,7 @@
                 },
                 "duplex": {
                     "type": "string",
-                    "description": "Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`\n"
+                    "description": "Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`\n"
                 },
                 "dynamicVlanNetworks": {
                     "type": "array",
@@ -28628,7 +29002,7 @@
                 },
                 "speed": {
                     "type": "string",
-                    "description": "Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`\n"
+                    "description": "Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`\n"
                 },
                 "stormControl": {
                     "$ref": "#/types/junipermist:site/NetworktemplatePortUsagesStormControl:NetworktemplatePortUsagesStormControl",
@@ -28710,6 +29084,10 @@
         },
         "junipermist:site/NetworktemplatePortUsagesStormControl:NetworktemplatePortUsagesStormControl": {
             "properties": {
+                "disablePort": {
+                    "type": "boolean",
+                    "description": "Whether to disable the port when storm control is triggered\n"
+                },
                 "noBroadcast": {
                     "type": "boolean",
                     "description": "Whether to disable storm control on broadcast traffic\n"
@@ -29062,6 +29440,10 @@
                 },
                 "routingInstance": {
                     "type": "string"
+                },
+                "serverName": {
+                    "type": "string",
+                    "description": "Name of the server\n"
                 },
                 "severity": {
                     "type": "string",
@@ -29808,13 +30190,17 @@
                     },
                     "description": "At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified\n"
                 },
+                "outputIpAddress": {
+                    "type": "string",
+                    "description": "Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided\n"
+                },
                 "outputNetwork": {
                     "type": "string",
-                    "description": "Exactly one of the `output_port_id` or `output_network` should be provided\n"
+                    "description": "Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided\n"
                 },
                 "outputPortId": {
                     "type": "string",
-                    "description": "Exactly one of the `output_port_id` or `output_network` should be provided\n"
+                    "description": "Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided\n"
                 }
             },
             "type": "object",
@@ -30184,6 +30570,45 @@
                         "customVersions",
                         "enabled",
                         "version"
+                    ]
+                }
+            }
+        },
+        "junipermist:site/SettingAutoUpgradeEsl:SettingAutoUpgradeEsl": {
+            "properties": {
+                "allowDowngrade": {
+                    "type": "boolean",
+                    "description": "If true, it will allow downgrade to a lower version\n"
+                },
+                "customVersions": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Custom versions for different models. Property key is the model name (e.g. \"AP41\")\n"
+                },
+                "dayOfWeek": {
+                    "type": "string",
+                    "description": "enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)\n"
+                },
+                "timeOfDay": {
+                    "type": "string",
+                    "description": "`any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time\n"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "allowDowngrade",
+                        "enabled"
                     ]
                 }
             }
@@ -30614,6 +31039,12 @@
                         "type": "string"
                     }
                 },
+                "probeHostsv6s": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "protectRe": {
                     "$ref": "#/types/junipermist:site/SettingGatewayMgmtProtectRe:SettingGatewayMgmtProtectRe",
                     "description": "Restrict inbound-traffic to host\nwhen enabled, all traffic that is not essential to our operation will be dropped \ne.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works\n"
@@ -30636,6 +31067,7 @@
                     "requiredOutputs": [
                         "adminSshkeys",
                         "probeHosts",
+                        "probeHostsv6s",
                         "securityLogSourceInterface"
                     ]
                 }
@@ -32124,16 +32556,53 @@
         },
         "junipermist:site/WlanMistNac:WlanMistNac": {
             "properties": {
+                "acctInterimInterval": {
+                    "type": "integer",
+                    "description": "How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.\n"
+                },
+                "authServersRetries": {
+                    "type": "integer",
+                    "description": "Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. \"retries\" are set to value of `auth_servers_timeout`. \"max-requests\" is also set when setting `auth_servers_retries` is set to default value to 3.\n"
+                },
+                "authServersTimeout": {
+                    "type": "integer",
+                    "description": "Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. \"quite-period\" and \"transmit-period\" are set to half the value of `auth_servers_timeout`. \"supplicant-timeout\" is also set when setting `auth_servers_timeout` is set to default value of 10.\n"
+                },
+                "coaEnabled": {
+                    "type": "boolean",
+                    "description": "Allows a RADIUS server to dynamically modify the authorization status of a user session.\n"
+                },
+                "coaPort": {
+                    "type": "integer",
+                    "description": "the communication port used for “Change of Authorization” (CoA) messages\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "When enabled:\n  * `auth_servers` is ignored\n  * `acct_servers` is ignored\n  * `auth_servers_*` are ignored\n  * `coa_servers` is ignored\n  * `radsec` is ignored\n  * `coa_enabled` is assumed\n"
+                },
+                "fastDot1xTimers": {
+                    "type": "boolean",
+                    "description": "If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.\n"
+                },
+                "network": {
+                    "type": "string",
+                    "description": "Which network the mist nac server resides in\n"
+                },
+                "sourceIp": {
+                    "type": "string",
+                    "description": "In case there is a static IP for this network, we can specify it using source ip\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "enabled"
+                        "acctInterimInterval",
+                        "authServersRetries",
+                        "authServersTimeout",
+                        "coaEnabled",
+                        "enabled",
+                        "fastDot1xTimers"
                     ]
                 }
             }
@@ -36026,6 +36495,9 @@
                     "$ref": "#/types/junipermist:device/ApAeroscout:ApAeroscout",
                     "description": "Aeroscout AP settings\n"
                 },
+                "airista": {
+                    "$ref": "#/types/junipermist:device/ApAirista:ApAirista"
+                },
                 "bleConfig": {
                     "$ref": "#/types/junipermist:device/ApBleConfig:ApBleConfig",
                     "description": "BLE AP settings\n"
@@ -36135,7 +36607,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/ApPortConfig:ApPortConfig"
                     },
-                    "description": "eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes\nprecedence over switch_config (deprecated)\n"
+                    "description": "eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes\npredecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus\ndeprecated)\n"
                 },
                 "pwrConfig": {
                     "$ref": "#/types/junipermist:device/ApPwrConfig:ApPwrConfig",
@@ -36203,6 +36675,9 @@
                 "aeroscout": {
                     "$ref": "#/types/junipermist:device/ApAeroscout:ApAeroscout",
                     "description": "Aeroscout AP settings\n"
+                },
+                "airista": {
+                    "$ref": "#/types/junipermist:device/ApAirista:ApAirista"
                 },
                 "bleConfig": {
                     "$ref": "#/types/junipermist:device/ApBleConfig:ApBleConfig",
@@ -36293,7 +36768,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/ApPortConfig:ApPortConfig"
                     },
-                    "description": "eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes\nprecedence over switch_config (deprecated)\n"
+                    "description": "eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes\npredecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus\ndeprecated)\n"
                 },
                 "pwrConfig": {
                     "$ref": "#/types/junipermist:device/ApPwrConfig:ApPwrConfig",
@@ -36340,6 +36815,9 @@
                     "aeroscout": {
                         "$ref": "#/types/junipermist:device/ApAeroscout:ApAeroscout",
                         "description": "Aeroscout AP settings\n"
+                    },
+                    "airista": {
+                        "$ref": "#/types/junipermist:device/ApAirista:ApAirista"
                     },
                     "bleConfig": {
                         "$ref": "#/types/junipermist:device/ApBleConfig:ApBleConfig",
@@ -36450,7 +36928,7 @@
                         "additionalProperties": {
                             "$ref": "#/types/junipermist:device/ApPortConfig:ApPortConfig"
                         },
-                        "description": "eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes\nprecedence over switch_config (deprecated)\n"
+                        "description": "eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes\npredecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus\ndeprecated)\n"
                     },
                     "pwrConfig": {
                         "$ref": "#/types/junipermist:device/ApPwrConfig:ApPwrConfig",
@@ -37566,6 +38044,13 @@
                     },
                     "description": "Property key is the port name or range (e.g. \"ge-0/0/0-10\")\n"
                 },
+                "portConfigOverwrite": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:device/SwitchPortConfigOverwrite:SwitchPortConfigOverwrite"
+                    },
+                    "description": "Property key is the port name or range (e.g. \"ge-0/0/0-10\"). This can be used to override some attributes of the\nport_usage without having to create a new port_usage.\n"
+                },
                 "portMirroring": {
                     "type": "object",
                     "additionalProperties": {
@@ -37806,6 +38291,13 @@
                     },
                     "description": "Property key is the port name or range (e.g. \"ge-0/0/0-10\")\n"
                 },
+                "portConfigOverwrite": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:device/SwitchPortConfigOverwrite:SwitchPortConfigOverwrite"
+                    },
+                    "description": "Property key is the port name or range (e.g. \"ge-0/0/0-10\"). This can be used to override some attributes of the\nport_usage without having to create a new port_usage.\n"
+                },
                 "portMirroring": {
                     "type": "object",
                     "additionalProperties": {
@@ -38043,6 +38535,13 @@
                             "$ref": "#/types/junipermist:device/SwitchPortConfig:SwitchPortConfig"
                         },
                         "description": "Property key is the port name or range (e.g. \"ge-0/0/0-10\")\n"
+                    },
+                    "portConfigOverwrite": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/junipermist:device/SwitchPortConfigOverwrite:SwitchPortConfigOverwrite"
+                        },
+                        "description": "Property key is the port name or range (e.g. \"ge-0/0/0-10\"). This can be used to override some attributes of the\nport_usage without having to create a new port_usage.\n"
                     },
                     "portMirroring": {
                         "type": "object",
@@ -38727,6 +39226,9 @@
                     "$ref": "#/types/junipermist:org/DeviceprofileApAeroscout:DeviceprofileApAeroscout",
                     "description": "Aeroscout AP settings\n"
                 },
+                "airista": {
+                    "$ref": "#/types/junipermist:org/DeviceprofileApAirista:DeviceprofileApAirista"
+                },
                 "bleConfig": {
                     "$ref": "#/types/junipermist:org/DeviceprofileApBleConfig:DeviceprofileApBleConfig",
                     "description": "BLE AP settings\n"
@@ -38834,6 +39336,9 @@
                     "$ref": "#/types/junipermist:org/DeviceprofileApAeroscout:DeviceprofileApAeroscout",
                     "description": "Aeroscout AP settings\n"
                 },
+                "airista": {
+                    "$ref": "#/types/junipermist:org/DeviceprofileApAirista:DeviceprofileApAirista"
+                },
                 "bleConfig": {
                     "$ref": "#/types/junipermist:org/DeviceprofileApBleConfig:DeviceprofileApBleConfig",
                     "description": "BLE AP settings\n"
@@ -38931,6 +39436,9 @@
                     "aeroscout": {
                         "$ref": "#/types/junipermist:org/DeviceprofileApAeroscout:DeviceprofileApAeroscout",
                         "description": "Aeroscout AP settings\n"
+                    },
+                    "airista": {
+                        "$ref": "#/types/junipermist:org/DeviceprofileApAirista:DeviceprofileApAirista"
                     },
                     "bleConfig": {
                         "$ref": "#/types/junipermist:org/DeviceprofileApBleConfig:DeviceprofileApBleConfig",
@@ -40693,6 +41201,10 @@
                     "type": "boolean",
                     "description": "Enabled or not\n"
                 },
+                "guestAuthState": {
+                    "type": "string",
+                    "description": "Guest portal authorization state. enum: `authorized`, `unknown`\n"
+                },
                 "matching": {
                     "$ref": "#/types/junipermist:org/NacruleMatching:NacruleMatching"
                 },
@@ -40734,6 +41246,10 @@
                     "type": "boolean",
                     "description": "Enabled or not\n"
                 },
+                "guestAuthState": {
+                    "type": "string",
+                    "description": "Guest portal authorization state. enum: `authorized`, `unknown`\n"
+                },
                 "matching": {
                     "$ref": "#/types/junipermist:org/NacruleMatching:NacruleMatching"
                 },
@@ -40773,6 +41289,10 @@
                     "enabled": {
                         "type": "boolean",
                         "description": "Enabled or not\n"
+                    },
+                    "guestAuthState": {
+                        "type": "string",
+                        "description": "Guest portal authorization state. enum: `authorized`, `unknown`\n"
                     },
                     "matching": {
                         "$ref": "#/types/junipermist:org/NacruleMatching:NacruleMatching"
@@ -40819,6 +41339,10 @@
                     "type": "boolean",
                     "description": "This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,\nmatch-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to\nset this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`\n"
                 },
+                "nacportalId": {
+                    "type": "string",
+                    "description": "If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to\n"
+                },
                 "name": {
                     "type": "string"
                 },
@@ -40849,7 +41373,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,\n`username_attr`, `vlan`\n"
+                    "description": "enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,\n`redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`\n"
                 },
                 "usernameAttr": {
                     "type": "string",
@@ -40895,6 +41419,10 @@
                     "type": "boolean",
                     "description": "This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,\nmatch-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to\nset this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`\n"
                 },
+                "nacportalId": {
+                    "type": "string",
+                    "description": "If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to\n"
+                },
                 "name": {
                     "type": "string"
                 },
@@ -40925,7 +41453,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,\n`username_attr`, `vlan`\n"
+                    "description": "enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,\n`redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`\n"
                 },
                 "usernameAttr": {
                     "type": "string",
@@ -40972,6 +41500,10 @@
                         "type": "boolean",
                         "description": "This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,\nmatch-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to\nset this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`\n"
                     },
+                    "nacportalId": {
+                        "type": "string",
+                        "description": "If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to\n"
+                    },
                     "name": {
                         "type": "string"
                     },
@@ -41002,7 +41534,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,\n`username_attr`, `vlan`\n"
+                        "description": "enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,\n`redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`\n"
                     },
                     "usernameAttr": {
                         "type": "string",
@@ -42052,7 +42584,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)\n"
+                    "description": "If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)\n"
                 },
                 "appCategories": {
                     "type": "array",
@@ -42175,7 +42707,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)\n"
+                    "description": "If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)\n"
                 },
                 "appCategories": {
                     "type": "array",
@@ -42291,7 +42823,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)\n"
+                        "description": "If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)\n"
                     },
                     "appCategories": {
                         "type": "array",
@@ -42646,7 +43178,7 @@
                 },
                 "junosShellAccess": {
                     "$ref": "#/types/junipermist:org/SettingJunosShellAccess:SettingJunosShellAccess",
-                    "description": "by default, webshell access is only enabled for Admin user\n"
+                    "description": "junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No\nadditional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -\nAdditional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and\nweb-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell\naccess level to \"none\", disables web-shell access for that specific role.\n"
                 },
                 "marvis": {
                     "$ref": "#/types/junipermist:org/SettingMarvis:SettingMarvis"
@@ -42774,7 +43306,7 @@
                 },
                 "junosShellAccess": {
                     "$ref": "#/types/junipermist:org/SettingJunosShellAccess:SettingJunosShellAccess",
-                    "description": "by default, webshell access is only enabled for Admin user\n"
+                    "description": "junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No\nadditional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -\nAdditional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and\nweb-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell\naccess level to \"none\", disables web-shell access for that specific role.\n"
                 },
                 "marvis": {
                     "$ref": "#/types/junipermist:org/SettingMarvis:SettingMarvis"
@@ -42906,7 +43438,7 @@
                     },
                     "junosShellAccess": {
                         "$ref": "#/types/junipermist:org/SettingJunosShellAccess:SettingJunosShellAccess",
-                        "description": "by default, webshell access is only enabled for Admin user\n"
+                        "description": "junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No\nadditional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -\nAdditional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and\nweb-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell\naccess level to \"none\", disables web-shell access for that specific role.\n"
                     },
                     "marvis": {
                         "$ref": "#/types/junipermist:org/SettingMarvis:SettingMarvis"
@@ -46421,6 +46953,14 @@
                     "$ref": "#/types/junipermist:site/SettingAutoUpgrade:SettingAutoUpgrade",
                     "description": "Auto Upgrade Settings\n"
                 },
+                "autoUpgradeEsl": {
+                    "$ref": "#/types/junipermist:site/SettingAutoUpgradeEsl:SettingAutoUpgradeEsl",
+                    "description": "auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware\nupgrade\n"
+                },
+                "bgpNeighborUpdownThreshold": {
+                    "type": "integer",
+                    "description": "enable threshold-based bgp neighbor down delivery.\n"
+                },
                 "blacklistUrl": {
                     "type": "string"
                 },
@@ -46552,6 +47092,14 @@
                 "vna": {
                     "$ref": "#/types/junipermist:site/SettingVna:SettingVna"
                 },
+                "vpnPathUpdownThreshold": {
+                    "type": "integer",
+                    "description": "enable threshold-based vpn path down delivery.\n"
+                },
+                "vpnPeerUpdownThreshold": {
+                    "type": "integer",
+                    "description": "enable threshold-based vpn peer down delivery.\n"
+                },
                 "vsInstance": {
                     "type": "object",
                     "additionalProperties": {
@@ -46620,6 +47168,14 @@
                 "autoUpgrade": {
                     "$ref": "#/types/junipermist:site/SettingAutoUpgrade:SettingAutoUpgrade",
                     "description": "Auto Upgrade Settings\n"
+                },
+                "autoUpgradeEsl": {
+                    "$ref": "#/types/junipermist:site/SettingAutoUpgradeEsl:SettingAutoUpgradeEsl",
+                    "description": "auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware\nupgrade\n"
+                },
+                "bgpNeighborUpdownThreshold": {
+                    "type": "integer",
+                    "description": "enable threshold-based bgp neighbor down delivery.\n"
                 },
                 "bleConfig": {
                     "$ref": "#/types/junipermist:site/SettingBleConfig:SettingBleConfig",
@@ -46749,6 +47305,14 @@
                 "vna": {
                     "$ref": "#/types/junipermist:site/SettingVna:SettingVna"
                 },
+                "vpnPathUpdownThreshold": {
+                    "type": "integer",
+                    "description": "enable threshold-based vpn path down delivery.\n"
+                },
+                "vpnPeerUpdownThreshold": {
+                    "type": "integer",
+                    "description": "enable threshold-based vpn peer down delivery.\n"
+                },
                 "vsInstance": {
                     "type": "object",
                     "additionalProperties": {
@@ -46791,6 +47355,14 @@
                     "autoUpgrade": {
                         "$ref": "#/types/junipermist:site/SettingAutoUpgrade:SettingAutoUpgrade",
                         "description": "Auto Upgrade Settings\n"
+                    },
+                    "autoUpgradeEsl": {
+                        "$ref": "#/types/junipermist:site/SettingAutoUpgradeEsl:SettingAutoUpgradeEsl",
+                        "description": "auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware\nupgrade\n"
+                    },
+                    "bgpNeighborUpdownThreshold": {
+                        "type": "integer",
+                        "description": "enable threshold-based bgp neighbor down delivery.\n"
                     },
                     "blacklistUrl": {
                         "type": "string"
@@ -46922,6 +47494,14 @@
                     },
                     "vna": {
                         "$ref": "#/types/junipermist:site/SettingVna:SettingVna"
+                    },
+                    "vpnPathUpdownThreshold": {
+                        "type": "integer",
+                        "description": "enable threshold-based vpn path down delivery.\n"
+                    },
+                    "vpnPeerUpdownThreshold": {
+                        "type": "integer",
+                        "description": "enable threshold-based vpn peer down delivery.\n"
                     },
                     "vsInstance": {
                         "type": "object",

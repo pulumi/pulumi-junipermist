@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.site.inputs.SettingAnalyticArgs;
 import com.pulumi.junipermist.site.inputs.SettingAutoUpgradeArgs;
+import com.pulumi.junipermist.site.inputs.SettingAutoUpgradeEslArgs;
 import com.pulumi.junipermist.site.inputs.SettingBleConfigArgs;
 import com.pulumi.junipermist.site.inputs.SettingConfigPushPolicyArgs;
 import com.pulumi.junipermist.site.inputs.SettingCriticalUrlMonitoringArgs;
@@ -85,6 +86,38 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<SettingAutoUpgradeArgs>> autoUpgrade() {
         return Optional.ofNullable(this.autoUpgrade);
+    }
+
+    /**
+     * auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+     * upgrade
+     * 
+     */
+    @Import(name="autoUpgradeEsl")
+    private @Nullable Output<SettingAutoUpgradeEslArgs> autoUpgradeEsl;
+
+    /**
+     * @return auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+     * upgrade
+     * 
+     */
+    public Optional<Output<SettingAutoUpgradeEslArgs>> autoUpgradeEsl() {
+        return Optional.ofNullable(this.autoUpgradeEsl);
+    }
+
+    /**
+     * enable threshold-based bgp neighbor down delivery.
+     * 
+     */
+    @Import(name="bgpNeighborUpdownThreshold")
+    private @Nullable Output<Integer> bgpNeighborUpdownThreshold;
+
+    /**
+     * @return enable threshold-based bgp neighbor down delivery.
+     * 
+     */
+    public Optional<Output<Integer>> bgpNeighborUpdownThreshold() {
+        return Optional.ofNullable(this.bgpNeighborUpdownThreshold);
     }
 
     /**
@@ -519,6 +552,36 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * enable threshold-based vpn path down delivery.
+     * 
+     */
+    @Import(name="vpnPathUpdownThreshold")
+    private @Nullable Output<Integer> vpnPathUpdownThreshold;
+
+    /**
+     * @return enable threshold-based vpn path down delivery.
+     * 
+     */
+    public Optional<Output<Integer>> vpnPathUpdownThreshold() {
+        return Optional.ofNullable(this.vpnPathUpdownThreshold);
+    }
+
+    /**
+     * enable threshold-based vpn peer down delivery.
+     * 
+     */
+    @Import(name="vpnPeerUpdownThreshold")
+    private @Nullable Output<Integer> vpnPeerUpdownThreshold;
+
+    /**
+     * @return enable threshold-based vpn peer down delivery.
+     * 
+     */
+    public Optional<Output<Integer>> vpnPeerUpdownThreshold() {
+        return Optional.ofNullable(this.vpnPeerUpdownThreshold);
+    }
+
+    /**
      * Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
      * 
      */
@@ -598,6 +661,8 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         this.analytic = $.analytic;
         this.apUpdownThreshold = $.apUpdownThreshold;
         this.autoUpgrade = $.autoUpgrade;
+        this.autoUpgradeEsl = $.autoUpgradeEsl;
+        this.bgpNeighborUpdownThreshold = $.bgpNeighborUpdownThreshold;
         this.bleConfig = $.bleConfig;
         this.configAutoRevert = $.configAutoRevert;
         this.configPushPolicy = $.configPushPolicy;
@@ -631,6 +696,8 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         this.uplinkPortConfig = $.uplinkPortConfig;
         this.vars = $.vars;
         this.vna = $.vna;
+        this.vpnPathUpdownThreshold = $.vpnPathUpdownThreshold;
+        this.vpnPeerUpdownThreshold = $.vpnPeerUpdownThreshold;
         this.vsInstance = $.vsInstance;
         this.wanVna = $.wanVna;
         this.wids = $.wids;
@@ -708,6 +775,50 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder autoUpgrade(SettingAutoUpgradeArgs autoUpgrade) {
             return autoUpgrade(Output.of(autoUpgrade));
+        }
+
+        /**
+         * @param autoUpgradeEsl auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+         * upgrade
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgradeEsl(@Nullable Output<SettingAutoUpgradeEslArgs> autoUpgradeEsl) {
+            $.autoUpgradeEsl = autoUpgradeEsl;
+            return this;
+        }
+
+        /**
+         * @param autoUpgradeEsl auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+         * upgrade
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgradeEsl(SettingAutoUpgradeEslArgs autoUpgradeEsl) {
+            return autoUpgradeEsl(Output.of(autoUpgradeEsl));
+        }
+
+        /**
+         * @param bgpNeighborUpdownThreshold enable threshold-based bgp neighbor down delivery.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bgpNeighborUpdownThreshold(@Nullable Output<Integer> bgpNeighborUpdownThreshold) {
+            $.bgpNeighborUpdownThreshold = bgpNeighborUpdownThreshold;
+            return this;
+        }
+
+        /**
+         * @param bgpNeighborUpdownThreshold enable threshold-based bgp neighbor down delivery.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bgpNeighborUpdownThreshold(Integer bgpNeighborUpdownThreshold) {
+            return bgpNeighborUpdownThreshold(Output.of(bgpNeighborUpdownThreshold));
         }
 
         /**
@@ -1308,6 +1419,48 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder vna(SettingVnaArgs vna) {
             return vna(Output.of(vna));
+        }
+
+        /**
+         * @param vpnPathUpdownThreshold enable threshold-based vpn path down delivery.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpnPathUpdownThreshold(@Nullable Output<Integer> vpnPathUpdownThreshold) {
+            $.vpnPathUpdownThreshold = vpnPathUpdownThreshold;
+            return this;
+        }
+
+        /**
+         * @param vpnPathUpdownThreshold enable threshold-based vpn path down delivery.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpnPathUpdownThreshold(Integer vpnPathUpdownThreshold) {
+            return vpnPathUpdownThreshold(Output.of(vpnPathUpdownThreshold));
+        }
+
+        /**
+         * @param vpnPeerUpdownThreshold enable threshold-based vpn peer down delivery.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpnPeerUpdownThreshold(@Nullable Output<Integer> vpnPeerUpdownThreshold) {
+            $.vpnPeerUpdownThreshold = vpnPeerUpdownThreshold;
+            return this;
+        }
+
+        /**
+         * @param vpnPeerUpdownThreshold enable threshold-based vpn peer down delivery.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpnPeerUpdownThreshold(Integer vpnPeerUpdownThreshold) {
+            return vpnPeerUpdownThreshold(Output.of(vpnPeerUpdownThreshold));
         }
 
         /**

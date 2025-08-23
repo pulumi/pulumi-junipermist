@@ -28,6 +28,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? Protocol;
         public readonly string? RoutingInstance;
         /// <summary>
+        /// Name of the server
+        /// </summary>
+        public readonly string? ServerName;
+        /// <summary>
         /// enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
         /// </summary>
         public readonly string? Severity;
@@ -56,6 +60,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? routingInstance,
 
+            string? serverName,
+
             string? severity,
 
             string? sourceAddress,
@@ -72,6 +78,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             Port = port;
             Protocol = protocol;
             RoutingInstance = routingInstance;
+            ServerName = serverName;
             Severity = severity;
             SourceAddress = sourceAddress;
             StructuredData = structuredData;

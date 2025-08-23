@@ -187,6 +187,13 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableDictionary<string, Outputs.SwitchPortConfig>?> PortConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+        /// port_usage without having to create a new port_usage.
+        /// </summary>
+        [Output("portConfigOverwrite")]
+        public Output<ImmutableDictionary<string, Outputs.SwitchPortConfigOverwrite>?> PortConfigOverwrite { get; private set; } = null!;
+
+        /// <summary>
         /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
         /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
         /// maximum 4 mirroring ports is allowed
@@ -547,6 +554,19 @@ namespace Pulumi.JuniperMist.Device
             set => _portConfig = value;
         }
 
+        [Input("portConfigOverwrite")]
+        private InputMap<Inputs.SwitchPortConfigOverwriteArgs>? _portConfigOverwrite;
+
+        /// <summary>
+        /// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+        /// port_usage without having to create a new port_usage.
+        /// </summary>
+        public InputMap<Inputs.SwitchPortConfigOverwriteArgs> PortConfigOverwrite
+        {
+            get => _portConfigOverwrite ?? (_portConfigOverwrite = new InputMap<Inputs.SwitchPortConfigOverwriteArgs>());
+            set => _portConfigOverwrite = value;
+        }
+
         [Input("portMirroring")]
         private InputMap<Inputs.SwitchPortMirroringArgs>? _portMirroring;
 
@@ -903,6 +923,19 @@ namespace Pulumi.JuniperMist.Device
         {
             get => _portConfig ?? (_portConfig = new InputMap<Inputs.SwitchPortConfigGetArgs>());
             set => _portConfig = value;
+        }
+
+        [Input("portConfigOverwrite")]
+        private InputMap<Inputs.SwitchPortConfigOverwriteGetArgs>? _portConfigOverwrite;
+
+        /// <summary>
+        /// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+        /// port_usage without having to create a new port_usage.
+        /// </summary>
+        public InputMap<Inputs.SwitchPortConfigOverwriteGetArgs> PortConfigOverwrite
+        {
+            get => _portConfigOverwrite ?? (_portConfigOverwrite = new InputMap<Inputs.SwitchPortConfigOverwriteGetArgs>());
+            set => _portConfigOverwrite = value;
         }
 
         [Input("portMirroring")]

@@ -47,6 +47,19 @@ namespace Pulumi.JuniperMist.Site
         [Output("autoUpgrade")]
         public Output<Outputs.SettingAutoUpgrade> AutoUpgrade { get; private set; } = null!;
 
+        /// <summary>
+        /// auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+        /// upgrade
+        /// </summary>
+        [Output("autoUpgradeEsl")]
+        public Output<Outputs.SettingAutoUpgradeEsl?> AutoUpgradeEsl { get; private set; } = null!;
+
+        /// <summary>
+        /// enable threshold-based bgp neighbor down delivery.
+        /// </summary>
+        [Output("bgpNeighborUpdownThreshold")]
+        public Output<int?> BgpNeighborUpdownThreshold { get; private set; } = null!;
+
         [Output("blacklistUrl")]
         public Output<string> BlacklistUrl { get; private set; } = null!;
 
@@ -227,6 +240,18 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingVna?> Vna { get; private set; } = null!;
 
         /// <summary>
+        /// enable threshold-based vpn path down delivery.
+        /// </summary>
+        [Output("vpnPathUpdownThreshold")]
+        public Output<int?> VpnPathUpdownThreshold { get; private set; } = null!;
+
+        /// <summary>
+        /// enable threshold-based vpn peer down delivery.
+        /// </summary>
+        [Output("vpnPeerUpdownThreshold")]
+        public Output<int?> VpnPeerUpdownThreshold { get; private set; } = null!;
+
+        /// <summary>
         /// Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
         /// </summary>
         [Output("vsInstance")]
@@ -324,6 +349,19 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("autoUpgrade")]
         public Input<Inputs.SettingAutoUpgradeArgs>? AutoUpgrade { get; set; }
+
+        /// <summary>
+        /// auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+        /// upgrade
+        /// </summary>
+        [Input("autoUpgradeEsl")]
+        public Input<Inputs.SettingAutoUpgradeEslArgs>? AutoUpgradeEsl { get; set; }
+
+        /// <summary>
+        /// enable threshold-based bgp neighbor down delivery.
+        /// </summary>
+        [Input("bgpNeighborUpdownThreshold")]
+        public Input<int>? BgpNeighborUpdownThreshold { get; set; }
 
         /// <summary>
         /// BLE AP settings
@@ -513,6 +551,18 @@ namespace Pulumi.JuniperMist.Site
         [Input("vna")]
         public Input<Inputs.SettingVnaArgs>? Vna { get; set; }
 
+        /// <summary>
+        /// enable threshold-based vpn path down delivery.
+        /// </summary>
+        [Input("vpnPathUpdownThreshold")]
+        public Input<int>? VpnPathUpdownThreshold { get; set; }
+
+        /// <summary>
+        /// enable threshold-based vpn peer down delivery.
+        /// </summary>
+        [Input("vpnPeerUpdownThreshold")]
+        public Input<int>? VpnPeerUpdownThreshold { get; set; }
+
         [Input("vsInstance")]
         private InputMap<Inputs.SettingVsInstanceArgs>? _vsInstance;
 
@@ -572,6 +622,19 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("autoUpgrade")]
         public Input<Inputs.SettingAutoUpgradeGetArgs>? AutoUpgrade { get; set; }
+
+        /// <summary>
+        /// auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+        /// upgrade
+        /// </summary>
+        [Input("autoUpgradeEsl")]
+        public Input<Inputs.SettingAutoUpgradeEslGetArgs>? AutoUpgradeEsl { get; set; }
+
+        /// <summary>
+        /// enable threshold-based bgp neighbor down delivery.
+        /// </summary>
+        [Input("bgpNeighborUpdownThreshold")]
+        public Input<int>? BgpNeighborUpdownThreshold { get; set; }
 
         [Input("blacklistUrl")]
         public Input<string>? BlacklistUrl { get; set; }
@@ -763,6 +826,18 @@ namespace Pulumi.JuniperMist.Site
 
         [Input("vna")]
         public Input<Inputs.SettingVnaGetArgs>? Vna { get; set; }
+
+        /// <summary>
+        /// enable threshold-based vpn path down delivery.
+        /// </summary>
+        [Input("vpnPathUpdownThreshold")]
+        public Input<int>? VpnPathUpdownThreshold { get; set; }
+
+        /// <summary>
+        /// enable threshold-based vpn peer down delivery.
+        /// </summary>
+        [Input("vpnPeerUpdownThreshold")]
+        public Input<int>? VpnPeerUpdownThreshold { get; set; }
 
         [Input("vsInstance")]
         private InputMap<Inputs.SettingVsInstanceGetArgs>? _vsInstance;

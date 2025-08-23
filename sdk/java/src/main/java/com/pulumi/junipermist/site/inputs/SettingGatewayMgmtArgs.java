@@ -139,6 +139,13 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.probeHosts);
     }
 
+    @Import(name="probeHostsv6s")
+    private @Nullable Output<List<String>> probeHostsv6s;
+
+    public Optional<Output<List<String>>> probeHostsv6s() {
+        return Optional.ofNullable(this.probeHostsv6s);
+    }
+
     /**
      * Restrict inbound-traffic to host
      * when enabled, all traffic that is not essential to our operation will be dropped
@@ -200,6 +207,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         this.disableUsb = $.disableUsb;
         this.fipsEnabled = $.fipsEnabled;
         this.probeHosts = $.probeHosts;
+        this.probeHostsv6s = $.probeHostsv6s;
         this.protectRe = $.protectRe;
         this.rootPassword = $.rootPassword;
         this.securityLogSourceAddress = $.securityLogSourceAddress;
@@ -398,6 +406,19 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
 
         public Builder probeHosts(String... probeHosts) {
             return probeHosts(List.of(probeHosts));
+        }
+
+        public Builder probeHostsv6s(@Nullable Output<List<String>> probeHostsv6s) {
+            $.probeHostsv6s = probeHostsv6s;
+            return this;
+        }
+
+        public Builder probeHostsv6s(List<String> probeHostsv6s) {
+            return probeHostsv6s(Output.of(probeHostsv6s));
+        }
+
+        public Builder probeHostsv6s(String... probeHostsv6s) {
+            return probeHostsv6s(List.of(probeHostsv6s));
         }
 
         /**

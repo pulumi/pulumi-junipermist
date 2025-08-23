@@ -94,6 +94,21 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.matchAll);
     }
 
+    /**
+     * If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
+     * 
+     */
+    @Import(name="nacportalId")
+    private @Nullable Output<String> nacportalId;
+
+    /**
+     * @return If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
+     * 
+     */
+    public Optional<Output<String>> nacportalId() {
+        return Optional.ofNullable(this.nacportalId);
+    }
+
     @Import(name="name")
     private @Nullable Output<String> name;
 
@@ -177,16 +192,16 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-     * `username_attr`, `vlan`
+     * enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
+     * `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-     * `username_attr`, `vlan`
+     * @return enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
+     * `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
      * 
      */
     public Output<String> type() {
@@ -246,6 +261,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         this.gbpTag = $.gbpTag;
         this.match = $.match;
         this.matchAll = $.matchAll;
+        this.nacportalId = $.nacportalId;
         this.name = $.name;
         this.orgId = $.orgId;
         this.radiusAttrs = $.radiusAttrs;
@@ -387,6 +403,27 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
             return matchAll(Output.of(matchAll));
         }
 
+        /**
+         * @param nacportalId If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nacportalId(@Nullable Output<String> nacportalId) {
+            $.nacportalId = nacportalId;
+            return this;
+        }
+
+        /**
+         * @param nacportalId If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nacportalId(String nacportalId) {
+            return nacportalId(Output.of(nacportalId));
+        }
+
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -522,8 +559,8 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-         * `username_attr`, `vlan`
+         * @param type enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
+         * `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
          * 
          * @return builder
          * 
@@ -534,8 +571,8 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-         * `username_attr`, `vlan`
+         * @param type enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
+         * `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
          * 
          * @return builder
          * 

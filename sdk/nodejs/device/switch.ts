@@ -147,6 +147,11 @@ export class Switch extends pulumi.CustomResource {
      */
     public readonly portConfig!: pulumi.Output<{[key: string]: outputs.device.SwitchPortConfig} | undefined>;
     /**
+     * Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+     * portUsage without having to create a new port_usage.
+     */
+    public readonly portConfigOverwrite!: pulumi.Output<{[key: string]: outputs.device.SwitchPortConfigOverwrite} | undefined>;
+    /**
      * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
      * maximum 4 mirroring ports is allowed
@@ -255,6 +260,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["ospfConfig"] = state ? state.ospfConfig : undefined;
             resourceInputs["otherIpConfigs"] = state ? state.otherIpConfigs : undefined;
             resourceInputs["portConfig"] = state ? state.portConfig : undefined;
+            resourceInputs["portConfigOverwrite"] = state ? state.portConfigOverwrite : undefined;
             resourceInputs["portMirroring"] = state ? state.portMirroring : undefined;
             resourceInputs["portUsages"] = state ? state.portUsages : undefined;
             resourceInputs["radiusConfig"] = state ? state.radiusConfig : undefined;
@@ -308,6 +314,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["ospfConfig"] = args ? args.ospfConfig : undefined;
             resourceInputs["otherIpConfigs"] = args ? args.otherIpConfigs : undefined;
             resourceInputs["portConfig"] = args ? args.portConfig : undefined;
+            resourceInputs["portConfigOverwrite"] = args ? args.portConfigOverwrite : undefined;
             resourceInputs["portMirroring"] = args ? args.portMirroring : undefined;
             resourceInputs["portUsages"] = args ? args.portUsages : undefined;
             resourceInputs["radiusConfig"] = args ? args.radiusConfig : undefined;
@@ -439,6 +446,11 @@ export interface SwitchState {
      * Property key is the port name or range (e.g. "ge-0/0/0-10")
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortConfig>}>;
+    /**
+     * Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+     * portUsage without having to create a new port_usage.
+     */
+    portConfigOverwrite?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortConfigOverwrite>}>;
     /**
      * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
@@ -592,6 +604,11 @@ export interface SwitchArgs {
      * Property key is the port name or range (e.g. "ge-0/0/0-10")
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortConfig>}>;
+    /**
+     * Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+     * portUsage without having to create a new port_usage.
+     */
+    portConfigOverwrite?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortConfigOverwrite>}>;
     /**
      * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A

@@ -129,6 +129,21 @@ public final class DeviceprofileGatewayTunnelConfigsArgs extends com.pulumi.reso
     }
 
     /**
+     * List of Local protected subnet for policy-based IPSec negotiation
+     * 
+     */
+    @Import(name="localSubnets")
+    private @Nullable Output<List<String>> localSubnets;
+
+    /**
+     * @return List of Local protected subnet for policy-based IPSec negotiation
+     * 
+     */
+    public Optional<Output<List<String>>> localSubnets() {
+        return Optional.ofNullable(this.localSubnets);
+    }
+
+    /**
      * Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
      * 
      */
@@ -234,6 +249,21 @@ public final class DeviceprofileGatewayTunnelConfigsArgs extends com.pulumi.reso
     }
 
     /**
+     * List of Remote protected subnet for policy-based IPSec negotiation
+     * 
+     */
+    @Import(name="remoteSubnets")
+    private @Nullable Output<List<String>> remoteSubnets;
+
+    /**
+     * @return List of Remote protected subnet for policy-based IPSec negotiation
+     * 
+     */
+    public Optional<Output<List<String>>> remoteSubnets() {
+        return Optional.ofNullable(this.remoteSubnets);
+    }
+
+    /**
      * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
      */
@@ -273,6 +303,7 @@ public final class DeviceprofileGatewayTunnelConfigsArgs extends com.pulumi.reso
         this.ipsecLifetime = $.ipsecLifetime;
         this.ipsecProposals = $.ipsecProposals;
         this.localId = $.localId;
+        this.localSubnets = $.localSubnets;
         this.mode = $.mode;
         this.networks = $.networks;
         this.primary = $.primary;
@@ -280,6 +311,7 @@ public final class DeviceprofileGatewayTunnelConfigsArgs extends com.pulumi.reso
         this.protocol = $.protocol;
         this.provider = $.provider;
         this.psk = $.psk;
+        this.remoteSubnets = $.remoteSubnets;
         this.secondary = $.secondary;
         this.version = $.version;
     }
@@ -470,6 +502,37 @@ public final class DeviceprofileGatewayTunnelConfigsArgs extends com.pulumi.reso
         }
 
         /**
+         * @param localSubnets List of Local protected subnet for policy-based IPSec negotiation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localSubnets(@Nullable Output<List<String>> localSubnets) {
+            $.localSubnets = localSubnets;
+            return this;
+        }
+
+        /**
+         * @param localSubnets List of Local protected subnet for policy-based IPSec negotiation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localSubnets(List<String> localSubnets) {
+            return localSubnets(Output.of(localSubnets));
+        }
+
+        /**
+         * @param localSubnets List of Local protected subnet for policy-based IPSec negotiation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localSubnets(String... localSubnets) {
+            return localSubnets(List.of(localSubnets));
+        }
+
+        /**
          * @param mode Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
          * 
          * @return builder
@@ -624,6 +687,37 @@ public final class DeviceprofileGatewayTunnelConfigsArgs extends com.pulumi.reso
          */
         public Builder psk(String psk) {
             return psk(Output.of(psk));
+        }
+
+        /**
+         * @param remoteSubnets List of Remote protected subnet for policy-based IPSec negotiation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remoteSubnets(@Nullable Output<List<String>> remoteSubnets) {
+            $.remoteSubnets = remoteSubnets;
+            return this;
+        }
+
+        /**
+         * @param remoteSubnets List of Remote protected subnet for policy-based IPSec negotiation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remoteSubnets(List<String> remoteSubnets) {
+            return remoteSubnets(Output.of(remoteSubnets));
+        }
+
+        /**
+         * @param remoteSubnets List of Remote protected subnet for policy-based IPSec negotiation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remoteSubnets(String... remoteSubnets) {
+            return remoteSubnets(List.of(remoteSubnets));
         }
 
         /**

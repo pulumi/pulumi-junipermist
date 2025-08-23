@@ -67,7 +67,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+        /// Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
         /// </summary>
         [Input("duplex")]
         public Input<string>? Duplex { get; set; }
@@ -223,7 +223,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? ServerRejectNetwork { get; set; }
 
         /// <summary>
-        /// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+        /// Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }

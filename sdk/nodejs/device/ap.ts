@@ -53,6 +53,7 @@ export class Ap extends pulumi.CustomResource {
      * Aeroscout AP settings
      */
     public readonly aeroscout!: pulumi.Output<outputs.device.ApAeroscout | undefined>;
+    public readonly airista!: pulumi.Output<outputs.device.ApAirista | undefined>;
     /**
      * BLE AP settings
      */
@@ -133,8 +134,9 @@ export class Ap extends pulumi.CustomResource {
      */
     public readonly poePassthrough!: pulumi.Output<boolean>;
     /**
-     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-     * precedence over switchConfig (deprecated)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+     * predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus
+     * deprecated)
      */
     public readonly portConfig!: pulumi.Output<{[key: string]: outputs.device.ApPortConfig} | undefined>;
     /**
@@ -190,6 +192,7 @@ export class Ap extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ApState | undefined;
             resourceInputs["aeroscout"] = state ? state.aeroscout : undefined;
+            resourceInputs["airista"] = state ? state.airista : undefined;
             resourceInputs["bleConfig"] = state ? state.bleConfig : undefined;
             resourceInputs["centrak"] = state ? state.centrak : undefined;
             resourceInputs["clientBridge"] = state ? state.clientBridge : undefined;
@@ -238,6 +241,7 @@ export class Ap extends pulumi.CustomResource {
                 throw new Error("Missing required property 'siteId'");
             }
             resourceInputs["aeroscout"] = args ? args.aeroscout : undefined;
+            resourceInputs["airista"] = args ? args.airista : undefined;
             resourceInputs["bleConfig"] = args ? args.bleConfig : undefined;
             resourceInputs["centrak"] = args ? args.centrak : undefined;
             resourceInputs["clientBridge"] = args ? args.clientBridge : undefined;
@@ -291,6 +295,7 @@ export interface ApState {
      * Aeroscout AP settings
      */
     aeroscout?: pulumi.Input<inputs.device.ApAeroscout>;
+    airista?: pulumi.Input<inputs.device.ApAirista>;
     /**
      * BLE AP settings
      */
@@ -371,8 +376,9 @@ export interface ApState {
      */
     poePassthrough?: pulumi.Input<boolean>;
     /**
-     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-     * precedence over switchConfig (deprecated)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+     * predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus
+     * deprecated)
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.ApPortConfig>}>;
     /**
@@ -423,6 +429,7 @@ export interface ApArgs {
      * Aeroscout AP settings
      */
     aeroscout?: pulumi.Input<inputs.device.ApAeroscout>;
+    airista?: pulumi.Input<inputs.device.ApAirista>;
     /**
      * BLE AP settings
      */
@@ -491,8 +498,9 @@ export interface ApArgs {
      */
     poePassthrough?: pulumi.Input<boolean>;
     /**
-     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-     * precedence over switchConfig (deprecated)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+     * predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus
+     * deprecated)
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.ApPortConfig>}>;
     /**

@@ -45,6 +45,12 @@ namespace Pulumi.JuniperMist.Org
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
+        /// <summary>
+        /// Guest portal authorization state. enum: `authorized`, `unknown`
+        /// </summary>
+        [Output("guestAuthState")]
+        public Output<string?> GuestAuthState { get; private set; } = null!;
+
         [Output("matching")]
         public Output<Outputs.NacruleMatching?> Matching { get; private set; } = null!;
 
@@ -134,6 +140,12 @@ namespace Pulumi.JuniperMist.Org
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Guest portal authorization state. enum: `authorized`, `unknown`
+        /// </summary>
+        [Input("guestAuthState")]
+        public Input<string>? GuestAuthState { get; set; }
+
         [Input("matching")]
         public Input<Inputs.NacruleMatchingArgs>? Matching { get; set; }
 
@@ -183,6 +195,12 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// Guest portal authorization state. enum: `authorized`, `unknown`
+        /// </summary>
+        [Input("guestAuthState")]
+        public Input<string>? GuestAuthState { get; set; }
 
         [Input("matching")]
         public Input<Inputs.NacruleMatchingGetArgs>? Matching { get; set; }

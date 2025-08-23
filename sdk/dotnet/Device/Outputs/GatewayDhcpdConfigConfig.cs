@@ -30,21 +30,21 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Gateway;
         /// <summary>
+        /// If `type6`==`local`
+        /// </summary>
+        public readonly string? Ip6End;
+        /// <summary>
+        /// If `type6`==`local`
+        /// </summary>
+        public readonly string? Ip6Start;
+        /// <summary>
         /// If `type`==`local`
         /// </summary>
         public readonly string? IpEnd;
         /// <summary>
-        /// If `type6`==`local`
-        /// </summary>
-        public readonly string? IpEnd6;
-        /// <summary>
         /// If `type`==`local`
         /// </summary>
         public readonly string? IpStart;
-        /// <summary>
-        /// If `type6`==`local`
-        /// </summary>
-        public readonly string? IpStart6;
         /// <summary>
         /// In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
         /// </summary>
@@ -65,7 +65,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// <summary>
         /// If `type6`==`relay`
         /// </summary>
-        public readonly ImmutableArray<string> Servers6s;
+        public readonly ImmutableArray<string> Serversv6s;
         /// <summary>
         /// enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
         /// </summary>
@@ -91,13 +91,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string? gateway,
 
+            string? ip6End,
+
+            string? ip6Start,
+
             string? ipEnd,
 
-            string? ipEnd6,
-
             string? ipStart,
-
-            string? ipStart6,
 
             int? leaseTime,
 
@@ -107,7 +107,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             ImmutableArray<string> servers,
 
-            ImmutableArray<string> servers6s,
+            ImmutableArray<string> serversv6s,
 
             string? type,
 
@@ -119,15 +119,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
             DnsSuffixes = dnsSuffixes;
             FixedBindings = fixedBindings;
             Gateway = gateway;
+            Ip6End = ip6End;
+            Ip6Start = ip6Start;
             IpEnd = ipEnd;
-            IpEnd6 = ipEnd6;
             IpStart = ipStart;
-            IpStart6 = ipStart6;
             LeaseTime = leaseTime;
             Options = options;
             ServerIdOverride = serverIdOverride;
             Servers = servers;
-            Servers6s = servers6s;
+            Serversv6s = serversv6s;
             Type = type;
             Type6 = type6;
             VendorEncapsulated = vendorEncapsulated;

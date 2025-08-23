@@ -236,7 +236,7 @@ public final class WlanPortal {
      */
     private @Nullable String password;
     /**
-     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
      * 
      */
     private @Nullable Boolean predefinedSponsorsEnabled;
@@ -277,7 +277,7 @@ public final class WlanPortal {
      */
     private @Nullable String smsMessageFormat;
     /**
-     * @return Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+     * @return Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
      * 
      */
     private @Nullable String smsProvider;
@@ -350,7 +350,7 @@ public final class WlanPortal {
      */
     private @Nullable String ssoIdpCert;
     /**
-     * @return Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+     * @return Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
      * 
      */
     private @Nullable String ssoIdpSignAlgo;
@@ -705,7 +705,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
      * 
      */
     public Optional<Boolean> predefinedSponsorsEnabled() {
@@ -764,7 +764,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.smsMessageFormat);
     }
     /**
-     * @return Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+     * @return Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
      * 
      */
     public Optional<String> smsProvider() {
@@ -865,7 +865,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.ssoIdpCert);
     }
     /**
-     * @return Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+     * @return Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
      * 
      */
     public Optional<String> ssoIdpSignAlgo() {

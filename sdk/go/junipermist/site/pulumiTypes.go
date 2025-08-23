@@ -2768,9 +2768,11 @@ type NetworktemplatePortMirroring struct {
 	InputPortIdsEgresses []string `pulumi:"inputPortIdsEgresses"`
 	// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 	InputPortIdsIngresses []string `pulumi:"inputPortIdsIngresses"`
-	// Exactly one of the `outputPortId` or `outputNetwork` should be provided
+	// Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
+	OutputIpAddress *string `pulumi:"outputIpAddress"`
+	// Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
 	OutputNetwork *string `pulumi:"outputNetwork"`
-	// Exactly one of the `outputPortId` or `outputNetwork` should be provided
+	// Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
 	OutputPortId *string `pulumi:"outputPortId"`
 }
 
@@ -2792,9 +2794,11 @@ type NetworktemplatePortMirroringArgs struct {
 	InputPortIdsEgresses pulumi.StringArrayInput `pulumi:"inputPortIdsEgresses"`
 	// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 	InputPortIdsIngresses pulumi.StringArrayInput `pulumi:"inputPortIdsIngresses"`
-	// Exactly one of the `outputPortId` or `outputNetwork` should be provided
+	// Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
+	OutputIpAddress pulumi.StringPtrInput `pulumi:"outputIpAddress"`
+	// Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
 	OutputNetwork pulumi.StringPtrInput `pulumi:"outputNetwork"`
-	// Exactly one of the `outputPortId` or `outputNetwork` should be provided
+	// Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
 	OutputPortId pulumi.StringPtrInput `pulumi:"outputPortId"`
 }
 
@@ -2864,12 +2868,17 @@ func (o NetworktemplatePortMirroringOutput) InputPortIdsIngresses() pulumi.Strin
 	return o.ApplyT(func(v NetworktemplatePortMirroring) []string { return v.InputPortIdsIngresses }).(pulumi.StringArrayOutput)
 }
 
-// Exactly one of the `outputPortId` or `outputNetwork` should be provided
+// Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
+func (o NetworktemplatePortMirroringOutput) OutputIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortMirroring) *string { return v.OutputIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
 func (o NetworktemplatePortMirroringOutput) OutputNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortMirroring) *string { return v.OutputNetwork }).(pulumi.StringPtrOutput)
 }
 
-// Exactly one of the `outputPortId` or `outputNetwork` should be provided
+// Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
 func (o NetworktemplatePortMirroringOutput) OutputPortId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortMirroring) *string { return v.OutputPortId }).(pulumi.StringPtrOutput)
 }
@@ -2913,7 +2922,7 @@ type NetworktemplatePortUsages struct {
 	DisableAutoneg *bool `pulumi:"disableAutoneg"`
 	// Only if `mode`!=`dynamic` whether the port is disabled
 	Disabled *bool `pulumi:"disabled"`
-	// Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+	// Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
 	Duplex *string `pulumi:"duplex"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
 	DynamicVlanNetworks []string `pulumi:"dynamicVlanNetworks"`
@@ -2959,7 +2968,7 @@ type NetworktemplatePortUsages struct {
 	ServerFailNetwork *string `pulumi:"serverFailNetwork"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
 	ServerRejectNetwork *string `pulumi:"serverRejectNetwork"`
-	// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+	// Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 	Speed *string `pulumi:"speed"`
 	// Switch storm control. Only if `mode`!=`dynamic`
 	StormControl *NetworktemplatePortUsagesStormControl `pulumi:"stormControl"`
@@ -3005,7 +3014,7 @@ type NetworktemplatePortUsagesArgs struct {
 	DisableAutoneg pulumi.BoolPtrInput `pulumi:"disableAutoneg"`
 	// Only if `mode`!=`dynamic` whether the port is disabled
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+	// Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
 	Duplex pulumi.StringPtrInput `pulumi:"duplex"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
 	DynamicVlanNetworks pulumi.StringArrayInput `pulumi:"dynamicVlanNetworks"`
@@ -3051,7 +3060,7 @@ type NetworktemplatePortUsagesArgs struct {
 	ServerFailNetwork pulumi.StringPtrInput `pulumi:"serverFailNetwork"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
 	ServerRejectNetwork pulumi.StringPtrInput `pulumi:"serverRejectNetwork"`
-	// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+	// Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 	Speed pulumi.StringPtrInput `pulumi:"speed"`
 	// Switch storm control. Only if `mode`!=`dynamic`
 	StormControl NetworktemplatePortUsagesStormControlPtrInput `pulumi:"stormControl"`
@@ -3163,7 +3172,7 @@ func (o NetworktemplatePortUsagesOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+// Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
 func (o NetworktemplatePortUsagesOutput) Duplex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.Duplex }).(pulumi.StringPtrOutput)
 }
@@ -3278,7 +3287,7 @@ func (o NetworktemplatePortUsagesOutput) ServerRejectNetwork() pulumi.StringPtrO
 	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.ServerRejectNetwork }).(pulumi.StringPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+// Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 func (o NetworktemplatePortUsagesOutput) Speed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.Speed }).(pulumi.StringPtrOutput)
 }
@@ -3473,6 +3482,8 @@ func (o NetworktemplatePortUsagesRuleArrayOutput) Index(i pulumi.IntInput) Netwo
 }
 
 type NetworktemplatePortUsagesStormControl struct {
+	// Whether to disable the port when storm control is triggered
+	DisablePort *bool `pulumi:"disablePort"`
 	// Whether to disable storm control on broadcast traffic
 	NoBroadcast *bool `pulumi:"noBroadcast"`
 	// Whether to disable storm control on multicast traffic
@@ -3497,6 +3508,8 @@ type NetworktemplatePortUsagesStormControlInput interface {
 }
 
 type NetworktemplatePortUsagesStormControlArgs struct {
+	// Whether to disable the port when storm control is triggered
+	DisablePort pulumi.BoolPtrInput `pulumi:"disablePort"`
 	// Whether to disable storm control on broadcast traffic
 	NoBroadcast pulumi.BoolPtrInput `pulumi:"noBroadcast"`
 	// Whether to disable storm control on multicast traffic
@@ -3586,6 +3599,11 @@ func (o NetworktemplatePortUsagesStormControlOutput) ToNetworktemplatePortUsages
 	}).(NetworktemplatePortUsagesStormControlPtrOutput)
 }
 
+// Whether to disable the port when storm control is triggered
+func (o NetworktemplatePortUsagesStormControlOutput) DisablePort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortUsagesStormControl) *bool { return v.DisablePort }).(pulumi.BoolPtrOutput)
+}
+
 // Whether to disable storm control on broadcast traffic
 func (o NetworktemplatePortUsagesStormControlOutput) NoBroadcast() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsagesStormControl) *bool { return v.NoBroadcast }).(pulumi.BoolPtrOutput)
@@ -3633,6 +3651,16 @@ func (o NetworktemplatePortUsagesStormControlPtrOutput) Elem() NetworktemplatePo
 		var ret NetworktemplatePortUsagesStormControl
 		return ret
 	}).(NetworktemplatePortUsagesStormControlOutput)
+}
+
+// Whether to disable the port when storm control is triggered
+func (o NetworktemplatePortUsagesStormControlPtrOutput) DisablePort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworktemplatePortUsagesStormControl) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisablePort
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Whether to disable storm control on broadcast traffic
@@ -5357,6 +5385,8 @@ type NetworktemplateRemoteSyslogServer struct {
 	// enum: `tcp`, `udp`
 	Protocol        *string `pulumi:"protocol"`
 	RoutingInstance *string `pulumi:"routingInstance"`
+	// Name of the server
+	ServerName *string `pulumi:"serverName"`
 	// enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
 	Severity *string `pulumi:"severity"`
 	// If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
@@ -5387,6 +5417,8 @@ type NetworktemplateRemoteSyslogServerArgs struct {
 	// enum: `tcp`, `udp`
 	Protocol        pulumi.StringPtrInput `pulumi:"protocol"`
 	RoutingInstance pulumi.StringPtrInput `pulumi:"routingInstance"`
+	// Name of the server
+	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
 	// enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
 	Severity pulumi.StringPtrInput `pulumi:"severity"`
 	// If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
@@ -5480,6 +5512,11 @@ func (o NetworktemplateRemoteSyslogServerOutput) Protocol() pulumi.StringPtrOutp
 
 func (o NetworktemplateRemoteSyslogServerOutput) RoutingInstance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateRemoteSyslogServer) *string { return v.RoutingInstance }).(pulumi.StringPtrOutput)
+}
+
+// Name of the server
+func (o NetworktemplateRemoteSyslogServerOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateRemoteSyslogServer) *string { return v.ServerName }).(pulumi.StringPtrOutput)
 }
 
 // enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
@@ -9196,9 +9233,11 @@ type NetworktemplateSwitchMatchingRulePortMirroring struct {
 	InputPortIdsEgresses []string `pulumi:"inputPortIdsEgresses"`
 	// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 	InputPortIdsIngresses []string `pulumi:"inputPortIdsIngresses"`
-	// Exactly one of the `outputPortId` or `outputNetwork` should be provided
+	// Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
+	OutputIpAddress *string `pulumi:"outputIpAddress"`
+	// Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
 	OutputNetwork *string `pulumi:"outputNetwork"`
-	// Exactly one of the `outputPortId` or `outputNetwork` should be provided
+	// Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
 	OutputPortId *string `pulumi:"outputPortId"`
 }
 
@@ -9220,9 +9259,11 @@ type NetworktemplateSwitchMatchingRulePortMirroringArgs struct {
 	InputPortIdsEgresses pulumi.StringArrayInput `pulumi:"inputPortIdsEgresses"`
 	// At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
 	InputPortIdsIngresses pulumi.StringArrayInput `pulumi:"inputPortIdsIngresses"`
-	// Exactly one of the `outputPortId` or `outputNetwork` should be provided
+	// Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
+	OutputIpAddress pulumi.StringPtrInput `pulumi:"outputIpAddress"`
+	// Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
 	OutputNetwork pulumi.StringPtrInput `pulumi:"outputNetwork"`
-	// Exactly one of the `outputPortId` or `outputNetwork` should be provided
+	// Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
 	OutputPortId pulumi.StringPtrInput `pulumi:"outputPortId"`
 }
 
@@ -9292,12 +9333,17 @@ func (o NetworktemplateSwitchMatchingRulePortMirroringOutput) InputPortIdsIngres
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortMirroring) []string { return v.InputPortIdsIngresses }).(pulumi.StringArrayOutput)
 }
 
-// Exactly one of the `outputPortId` or `outputNetwork` should be provided
+// Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
+func (o NetworktemplateSwitchMatchingRulePortMirroringOutput) OutputIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortMirroring) *string { return v.OutputIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
 func (o NetworktemplateSwitchMatchingRulePortMirroringOutput) OutputNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortMirroring) *string { return v.OutputNetwork }).(pulumi.StringPtrOutput)
 }
 
-// Exactly one of the `outputPortId` or `outputNetwork` should be provided
+// Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
 func (o NetworktemplateSwitchMatchingRulePortMirroringOutput) OutputPortId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortMirroring) *string { return v.OutputPortId }).(pulumi.StringPtrOutput)
 }
@@ -11386,6 +11432,234 @@ func (o SettingAutoUpgradePtrOutput) TimeOfDay() pulumi.StringPtrOutput {
 // desired version. enum: `beta`, `custom`, `stable`
 func (o SettingAutoUpgradePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingAutoUpgrade) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type SettingAutoUpgradeEsl struct {
+	// If true, it will allow downgrade to a lower version
+	AllowDowngrade *bool `pulumi:"allowDowngrade"`
+	// Custom versions for different models. Property key is the model name (e.g. "AP41")
+	CustomVersions map[string]string `pulumi:"customVersions"`
+	// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+	DayOfWeek *string `pulumi:"dayOfWeek"`
+	// Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+	Enabled *bool `pulumi:"enabled"`
+	// `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+	TimeOfDay *string `pulumi:"timeOfDay"`
+	Version   *string `pulumi:"version"`
+}
+
+// SettingAutoUpgradeEslInput is an input type that accepts SettingAutoUpgradeEslArgs and SettingAutoUpgradeEslOutput values.
+// You can construct a concrete instance of `SettingAutoUpgradeEslInput` via:
+//
+//	SettingAutoUpgradeEslArgs{...}
+type SettingAutoUpgradeEslInput interface {
+	pulumi.Input
+
+	ToSettingAutoUpgradeEslOutput() SettingAutoUpgradeEslOutput
+	ToSettingAutoUpgradeEslOutputWithContext(context.Context) SettingAutoUpgradeEslOutput
+}
+
+type SettingAutoUpgradeEslArgs struct {
+	// If true, it will allow downgrade to a lower version
+	AllowDowngrade pulumi.BoolPtrInput `pulumi:"allowDowngrade"`
+	// Custom versions for different models. Property key is the model name (e.g. "AP41")
+	CustomVersions pulumi.StringMapInput `pulumi:"customVersions"`
+	// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+	DayOfWeek pulumi.StringPtrInput `pulumi:"dayOfWeek"`
+	// Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+	TimeOfDay pulumi.StringPtrInput `pulumi:"timeOfDay"`
+	Version   pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (SettingAutoUpgradeEslArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingAutoUpgradeEsl)(nil)).Elem()
+}
+
+func (i SettingAutoUpgradeEslArgs) ToSettingAutoUpgradeEslOutput() SettingAutoUpgradeEslOutput {
+	return i.ToSettingAutoUpgradeEslOutputWithContext(context.Background())
+}
+
+func (i SettingAutoUpgradeEslArgs) ToSettingAutoUpgradeEslOutputWithContext(ctx context.Context) SettingAutoUpgradeEslOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingAutoUpgradeEslOutput)
+}
+
+func (i SettingAutoUpgradeEslArgs) ToSettingAutoUpgradeEslPtrOutput() SettingAutoUpgradeEslPtrOutput {
+	return i.ToSettingAutoUpgradeEslPtrOutputWithContext(context.Background())
+}
+
+func (i SettingAutoUpgradeEslArgs) ToSettingAutoUpgradeEslPtrOutputWithContext(ctx context.Context) SettingAutoUpgradeEslPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingAutoUpgradeEslOutput).ToSettingAutoUpgradeEslPtrOutputWithContext(ctx)
+}
+
+// SettingAutoUpgradeEslPtrInput is an input type that accepts SettingAutoUpgradeEslArgs, SettingAutoUpgradeEslPtr and SettingAutoUpgradeEslPtrOutput values.
+// You can construct a concrete instance of `SettingAutoUpgradeEslPtrInput` via:
+//
+//	        SettingAutoUpgradeEslArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingAutoUpgradeEslPtrInput interface {
+	pulumi.Input
+
+	ToSettingAutoUpgradeEslPtrOutput() SettingAutoUpgradeEslPtrOutput
+	ToSettingAutoUpgradeEslPtrOutputWithContext(context.Context) SettingAutoUpgradeEslPtrOutput
+}
+
+type settingAutoUpgradeEslPtrType SettingAutoUpgradeEslArgs
+
+func SettingAutoUpgradeEslPtr(v *SettingAutoUpgradeEslArgs) SettingAutoUpgradeEslPtrInput {
+	return (*settingAutoUpgradeEslPtrType)(v)
+}
+
+func (*settingAutoUpgradeEslPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingAutoUpgradeEsl)(nil)).Elem()
+}
+
+func (i *settingAutoUpgradeEslPtrType) ToSettingAutoUpgradeEslPtrOutput() SettingAutoUpgradeEslPtrOutput {
+	return i.ToSettingAutoUpgradeEslPtrOutputWithContext(context.Background())
+}
+
+func (i *settingAutoUpgradeEslPtrType) ToSettingAutoUpgradeEslPtrOutputWithContext(ctx context.Context) SettingAutoUpgradeEslPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingAutoUpgradeEslPtrOutput)
+}
+
+type SettingAutoUpgradeEslOutput struct{ *pulumi.OutputState }
+
+func (SettingAutoUpgradeEslOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingAutoUpgradeEsl)(nil)).Elem()
+}
+
+func (o SettingAutoUpgradeEslOutput) ToSettingAutoUpgradeEslOutput() SettingAutoUpgradeEslOutput {
+	return o
+}
+
+func (o SettingAutoUpgradeEslOutput) ToSettingAutoUpgradeEslOutputWithContext(ctx context.Context) SettingAutoUpgradeEslOutput {
+	return o
+}
+
+func (o SettingAutoUpgradeEslOutput) ToSettingAutoUpgradeEslPtrOutput() SettingAutoUpgradeEslPtrOutput {
+	return o.ToSettingAutoUpgradeEslPtrOutputWithContext(context.Background())
+}
+
+func (o SettingAutoUpgradeEslOutput) ToSettingAutoUpgradeEslPtrOutputWithContext(ctx context.Context) SettingAutoUpgradeEslPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingAutoUpgradeEsl) *SettingAutoUpgradeEsl {
+		return &v
+	}).(SettingAutoUpgradeEslPtrOutput)
+}
+
+// If true, it will allow downgrade to a lower version
+func (o SettingAutoUpgradeEslOutput) AllowDowngrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingAutoUpgradeEsl) *bool { return v.AllowDowngrade }).(pulumi.BoolPtrOutput)
+}
+
+// Custom versions for different models. Property key is the model name (e.g. "AP41")
+func (o SettingAutoUpgradeEslOutput) CustomVersions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SettingAutoUpgradeEsl) map[string]string { return v.CustomVersions }).(pulumi.StringMapOutput)
+}
+
+// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+func (o SettingAutoUpgradeEslOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingAutoUpgradeEsl) *string { return v.DayOfWeek }).(pulumi.StringPtrOutput)
+}
+
+// Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+func (o SettingAutoUpgradeEslOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingAutoUpgradeEsl) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+func (o SettingAutoUpgradeEslOutput) TimeOfDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingAutoUpgradeEsl) *string { return v.TimeOfDay }).(pulumi.StringPtrOutput)
+}
+
+func (o SettingAutoUpgradeEslOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingAutoUpgradeEsl) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type SettingAutoUpgradeEslPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingAutoUpgradeEslPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingAutoUpgradeEsl)(nil)).Elem()
+}
+
+func (o SettingAutoUpgradeEslPtrOutput) ToSettingAutoUpgradeEslPtrOutput() SettingAutoUpgradeEslPtrOutput {
+	return o
+}
+
+func (o SettingAutoUpgradeEslPtrOutput) ToSettingAutoUpgradeEslPtrOutputWithContext(ctx context.Context) SettingAutoUpgradeEslPtrOutput {
+	return o
+}
+
+func (o SettingAutoUpgradeEslPtrOutput) Elem() SettingAutoUpgradeEslOutput {
+	return o.ApplyT(func(v *SettingAutoUpgradeEsl) SettingAutoUpgradeEsl {
+		if v != nil {
+			return *v
+		}
+		var ret SettingAutoUpgradeEsl
+		return ret
+	}).(SettingAutoUpgradeEslOutput)
+}
+
+// If true, it will allow downgrade to a lower version
+func (o SettingAutoUpgradeEslPtrOutput) AllowDowngrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingAutoUpgradeEsl) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowDowngrade
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Custom versions for different models. Property key is the model name (e.g. "AP41")
+func (o SettingAutoUpgradeEslPtrOutput) CustomVersions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SettingAutoUpgradeEsl) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomVersions
+	}).(pulumi.StringMapOutput)
+}
+
+// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+func (o SettingAutoUpgradeEslPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingAutoUpgradeEsl) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DayOfWeek
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+func (o SettingAutoUpgradeEslPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingAutoUpgradeEsl) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+func (o SettingAutoUpgradeEslPtrOutput) TimeOfDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingAutoUpgradeEsl) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeOfDay
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SettingAutoUpgradeEslPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingAutoUpgradeEsl) *string {
 		if v == nil {
 			return nil
 		}
@@ -13685,9 +13959,10 @@ type SettingGatewayMgmt struct {
 	// For SSR and SRX, disable management interface
 	DisableOob *bool `pulumi:"disableOob"`
 	// For SSR and SRX, disable usb interface
-	DisableUsb  *bool    `pulumi:"disableUsb"`
-	FipsEnabled *bool    `pulumi:"fipsEnabled"`
-	ProbeHosts  []string `pulumi:"probeHosts"`
+	DisableUsb    *bool    `pulumi:"disableUsb"`
+	FipsEnabled   *bool    `pulumi:"fipsEnabled"`
+	ProbeHosts    []string `pulumi:"probeHosts"`
+	ProbeHostsv6s []string `pulumi:"probeHostsv6s"`
 	// Restrict inbound-traffic to host
 	// when enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
@@ -13723,9 +13998,10 @@ type SettingGatewayMgmtArgs struct {
 	// For SSR and SRX, disable management interface
 	DisableOob pulumi.BoolPtrInput `pulumi:"disableOob"`
 	// For SSR and SRX, disable usb interface
-	DisableUsb  pulumi.BoolPtrInput     `pulumi:"disableUsb"`
-	FipsEnabled pulumi.BoolPtrInput     `pulumi:"fipsEnabled"`
-	ProbeHosts  pulumi.StringArrayInput `pulumi:"probeHosts"`
+	DisableUsb    pulumi.BoolPtrInput     `pulumi:"disableUsb"`
+	FipsEnabled   pulumi.BoolPtrInput     `pulumi:"fipsEnabled"`
+	ProbeHosts    pulumi.StringArrayInput `pulumi:"probeHosts"`
+	ProbeHostsv6s pulumi.StringArrayInput `pulumi:"probeHostsv6s"`
 	// Restrict inbound-traffic to host
 	// when enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
@@ -13857,6 +14133,10 @@ func (o SettingGatewayMgmtOutput) FipsEnabled() pulumi.BoolPtrOutput {
 
 func (o SettingGatewayMgmtOutput) ProbeHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) []string { return v.ProbeHosts }).(pulumi.StringArrayOutput)
+}
+
+func (o SettingGatewayMgmtOutput) ProbeHostsv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingGatewayMgmt) []string { return v.ProbeHostsv6s }).(pulumi.StringArrayOutput)
 }
 
 // Restrict inbound-traffic to host
@@ -13996,6 +14276,15 @@ func (o SettingGatewayMgmtPtrOutput) ProbeHosts() pulumi.StringArrayOutput {
 			return nil
 		}
 		return v.ProbeHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o SettingGatewayMgmtPtrOutput) ProbeHostsv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SettingGatewayMgmt) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeHostsv6s
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -22946,6 +23235,16 @@ func (o WlanInjectDhcpOption82PtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type WlanMistNac struct {
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+	AcctInterimInterval *int `pulumi:"acctInterimInterval"`
+	// Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+	AuthServersRetries *int `pulumi:"authServersRetries"`
+	// Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+	AuthServersTimeout *int `pulumi:"authServersTimeout"`
+	// Allows a RADIUS server to dynamically modify the authorization status of a user session.
+	CoaEnabled *bool `pulumi:"coaEnabled"`
+	// the communication port used for “Change of Authorization” (CoA) messages
+	CoaPort *int `pulumi:"coaPort"`
 	// When enabled:
 	//   * `authServers` is ignored
 	//   * `acctServers` is ignored
@@ -22954,6 +23253,12 @@ type WlanMistNac struct {
 	//   * `radsec` is ignored
 	//   * `coaEnabled` is assumed
 	Enabled *bool `pulumi:"enabled"`
+	// If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+	FastDot1xTimers *bool `pulumi:"fastDot1xTimers"`
+	// Which network the mist nac server resides in
+	Network *string `pulumi:"network"`
+	// In case there is a static IP for this network, we can specify it using source ip
+	SourceIp *string `pulumi:"sourceIp"`
 }
 
 // WlanMistNacInput is an input type that accepts WlanMistNacArgs and WlanMistNacOutput values.
@@ -22968,6 +23273,16 @@ type WlanMistNacInput interface {
 }
 
 type WlanMistNacArgs struct {
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+	AcctInterimInterval pulumi.IntPtrInput `pulumi:"acctInterimInterval"`
+	// Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+	AuthServersRetries pulumi.IntPtrInput `pulumi:"authServersRetries"`
+	// Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+	AuthServersTimeout pulumi.IntPtrInput `pulumi:"authServersTimeout"`
+	// Allows a RADIUS server to dynamically modify the authorization status of a user session.
+	CoaEnabled pulumi.BoolPtrInput `pulumi:"coaEnabled"`
+	// the communication port used for “Change of Authorization” (CoA) messages
+	CoaPort pulumi.IntPtrInput `pulumi:"coaPort"`
 	// When enabled:
 	//   * `authServers` is ignored
 	//   * `acctServers` is ignored
@@ -22976,6 +23291,12 @@ type WlanMistNacArgs struct {
 	//   * `radsec` is ignored
 	//   * `coaEnabled` is assumed
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+	FastDot1xTimers pulumi.BoolPtrInput `pulumi:"fastDot1xTimers"`
+	// Which network the mist nac server resides in
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// In case there is a static IP for this network, we can specify it using source ip
+	SourceIp pulumi.StringPtrInput `pulumi:"sourceIp"`
 }
 
 func (WlanMistNacArgs) ElementType() reflect.Type {
@@ -23055,6 +23376,31 @@ func (o WlanMistNacOutput) ToWlanMistNacPtrOutputWithContext(ctx context.Context
 	}).(WlanMistNacPtrOutput)
 }
 
+// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+func (o WlanMistNacOutput) AcctInterimInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WlanMistNac) *int { return v.AcctInterimInterval }).(pulumi.IntPtrOutput)
+}
+
+// Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+func (o WlanMistNacOutput) AuthServersRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WlanMistNac) *int { return v.AuthServersRetries }).(pulumi.IntPtrOutput)
+}
+
+// Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+func (o WlanMistNacOutput) AuthServersTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WlanMistNac) *int { return v.AuthServersTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Allows a RADIUS server to dynamically modify the authorization status of a user session.
+func (o WlanMistNacOutput) CoaEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanMistNac) *bool { return v.CoaEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// the communication port used for “Change of Authorization” (CoA) messages
+func (o WlanMistNacOutput) CoaPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WlanMistNac) *int { return v.CoaPort }).(pulumi.IntPtrOutput)
+}
+
 // When enabled:
 //   - `authServers` is ignored
 //   - `acctServers` is ignored
@@ -23064,6 +23410,21 @@ func (o WlanMistNacOutput) ToWlanMistNacPtrOutputWithContext(ctx context.Context
 //   - `coaEnabled` is assumed
 func (o WlanMistNacOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanMistNac) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+func (o WlanMistNacOutput) FastDot1xTimers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanMistNac) *bool { return v.FastDot1xTimers }).(pulumi.BoolPtrOutput)
+}
+
+// Which network the mist nac server resides in
+func (o WlanMistNacOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanMistNac) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// In case there is a static IP for this network, we can specify it using source ip
+func (o WlanMistNacOutput) SourceIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanMistNac) *string { return v.SourceIp }).(pulumi.StringPtrOutput)
 }
 
 type WlanMistNacPtrOutput struct{ *pulumi.OutputState }
@@ -23090,6 +23451,56 @@ func (o WlanMistNacPtrOutput) Elem() WlanMistNacOutput {
 	}).(WlanMistNacOutput)
 }
 
+// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+func (o WlanMistNacPtrOutput) AcctInterimInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WlanMistNac) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AcctInterimInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+func (o WlanMistNacPtrOutput) AuthServersRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WlanMistNac) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AuthServersRetries
+	}).(pulumi.IntPtrOutput)
+}
+
+// Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+func (o WlanMistNacPtrOutput) AuthServersTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WlanMistNac) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AuthServersTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// Allows a RADIUS server to dynamically modify the authorization status of a user session.
+func (o WlanMistNacPtrOutput) CoaEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanMistNac) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CoaEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// the communication port used for “Change of Authorization” (CoA) messages
+func (o WlanMistNacPtrOutput) CoaPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WlanMistNac) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CoaPort
+	}).(pulumi.IntPtrOutput)
+}
+
 // When enabled:
 //   - `authServers` is ignored
 //   - `acctServers` is ignored
@@ -23104,6 +23515,36 @@ func (o WlanMistNacPtrOutput) Enabled() pulumi.BoolPtrOutput {
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+func (o WlanMistNacPtrOutput) FastDot1xTimers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanMistNac) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FastDot1xTimers
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Which network the mist nac server resides in
+func (o WlanMistNacPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanMistNac) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// In case there is a static IP for this network, we can specify it using source ip
+func (o WlanMistNacPtrOutput) SourceIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanMistNac) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceIp
+	}).(pulumi.StringPtrOutput)
 }
 
 type WlanPortal struct {
@@ -34527,6 +34968,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingAnalyticPtrInput)(nil)).Elem(), SettingAnalyticArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingAutoUpgradeInput)(nil)).Elem(), SettingAutoUpgradeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingAutoUpgradePtrInput)(nil)).Elem(), SettingAutoUpgradeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingAutoUpgradeEslInput)(nil)).Elem(), SettingAutoUpgradeEslArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingAutoUpgradeEslPtrInput)(nil)).Elem(), SettingAutoUpgradeEslArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingBleConfigInput)(nil)).Elem(), SettingBleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingBleConfigPtrInput)(nil)).Elem(), SettingBleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingConfigPushPolicyInput)(nil)).Elem(), SettingConfigPushPolicyArgs{})
@@ -34871,6 +35314,8 @@ func init() {
 	pulumi.RegisterOutputType(SettingAnalyticPtrOutput{})
 	pulumi.RegisterOutputType(SettingAutoUpgradeOutput{})
 	pulumi.RegisterOutputType(SettingAutoUpgradePtrOutput{})
+	pulumi.RegisterOutputType(SettingAutoUpgradeEslOutput{})
+	pulumi.RegisterOutputType(SettingAutoUpgradeEslPtrOutput{})
 	pulumi.RegisterOutputType(SettingBleConfigOutput{})
 	pulumi.RegisterOutputType(SettingBleConfigPtrOutput{})
 	pulumi.RegisterOutputType(SettingConfigPushPolicyOutput{})

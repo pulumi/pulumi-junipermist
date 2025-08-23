@@ -28,12 +28,17 @@ public final class NetworktemplatePortMirroring {
      */
     private @Nullable List<String> inputPortIdsIngresses;
     /**
-     * @return Exactly one of the `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+     * 
+     */
+    private @Nullable String outputIpAddress;
+    /**
+     * @return Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
      * 
      */
     private @Nullable String outputNetwork;
     /**
-     * @return Exactly one of the `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
      * 
      */
     private @Nullable String outputPortId;
@@ -61,14 +66,21 @@ public final class NetworktemplatePortMirroring {
         return this.inputPortIdsIngresses == null ? List.of() : this.inputPortIdsIngresses;
     }
     /**
-     * @return Exactly one of the `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+     * 
+     */
+    public Optional<String> outputIpAddress() {
+        return Optional.ofNullable(this.outputIpAddress);
+    }
+    /**
+     * @return Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
      * 
      */
     public Optional<String> outputNetwork() {
         return Optional.ofNullable(this.outputNetwork);
     }
     /**
-     * @return Exactly one of the `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
      * 
      */
     public Optional<String> outputPortId() {
@@ -87,6 +99,7 @@ public final class NetworktemplatePortMirroring {
         private @Nullable List<String> inputNetworksIngresses;
         private @Nullable List<String> inputPortIdsEgresses;
         private @Nullable List<String> inputPortIdsIngresses;
+        private @Nullable String outputIpAddress;
         private @Nullable String outputNetwork;
         private @Nullable String outputPortId;
         public Builder() {}
@@ -95,6 +108,7 @@ public final class NetworktemplatePortMirroring {
     	      this.inputNetworksIngresses = defaults.inputNetworksIngresses;
     	      this.inputPortIdsEgresses = defaults.inputPortIdsEgresses;
     	      this.inputPortIdsIngresses = defaults.inputPortIdsIngresses;
+    	      this.outputIpAddress = defaults.outputIpAddress;
     	      this.outputNetwork = defaults.outputNetwork;
     	      this.outputPortId = defaults.outputPortId;
         }
@@ -127,6 +141,12 @@ public final class NetworktemplatePortMirroring {
             return inputPortIdsIngresses(List.of(inputPortIdsIngresses));
         }
         @CustomType.Setter
+        public Builder outputIpAddress(@Nullable String outputIpAddress) {
+
+            this.outputIpAddress = outputIpAddress;
+            return this;
+        }
+        @CustomType.Setter
         public Builder outputNetwork(@Nullable String outputNetwork) {
 
             this.outputNetwork = outputNetwork;
@@ -143,6 +163,7 @@ public final class NetworktemplatePortMirroring {
             _resultValue.inputNetworksIngresses = inputNetworksIngresses;
             _resultValue.inputPortIdsEgresses = inputPortIdsEgresses;
             _resultValue.inputPortIdsIngresses = inputPortIdsIngresses;
+            _resultValue.outputIpAddress = outputIpAddress;
             _resultValue.outputNetwork = outputNetwork;
             _resultValue.outputPortId = outputPortId;
             return _resultValue;

@@ -55,7 +55,11 @@ type Setting struct {
 	// JCloud Routing Assurance connexion
 	JcloudRa SettingJcloudRaPtrOutput `pulumi:"jcloudRa"`
 	Juniper  SettingJuniperOutput     `pulumi:"juniper"`
-	// by default, webshell access is only enabled for Admin user
+	// junos_shell_access: Manages role-based web-shell access. When junosShell access is not defined (Default) - No additional
+	// users are configured and web-shell uses default `mist` user to login. When junosShellAccess is defined - Additional
+	// users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell
+	// logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access
+	// level to "none", disables web-shell access for that specific role.
 	JunosShellAccess SettingJunosShellAccessPtrOutput `pulumi:"junosShellAccess"`
 	Marvis           SettingMarvisPtrOutput           `pulumi:"marvis"`
 	// management-related properties
@@ -144,7 +148,11 @@ type settingState struct {
 	// JCloud Routing Assurance connexion
 	JcloudRa *SettingJcloudRa `pulumi:"jcloudRa"`
 	Juniper  *SettingJuniper  `pulumi:"juniper"`
-	// by default, webshell access is only enabled for Admin user
+	// junos_shell_access: Manages role-based web-shell access. When junosShell access is not defined (Default) - No additional
+	// users are configured and web-shell uses default `mist` user to login. When junosShellAccess is defined - Additional
+	// users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell
+	// logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access
+	// level to "none", disables web-shell access for that specific role.
 	JunosShellAccess *SettingJunosShellAccess `pulumi:"junosShellAccess"`
 	Marvis           *SettingMarvis           `pulumi:"marvis"`
 	// management-related properties
@@ -201,7 +209,11 @@ type SettingState struct {
 	// JCloud Routing Assurance connexion
 	JcloudRa SettingJcloudRaPtrInput
 	Juniper  SettingJuniperPtrInput
-	// by default, webshell access is only enabled for Admin user
+	// junos_shell_access: Manages role-based web-shell access. When junosShell access is not defined (Default) - No additional
+	// users are configured and web-shell uses default `mist` user to login. When junosShellAccess is defined - Additional
+	// users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell
+	// logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access
+	// level to "none", disables web-shell access for that specific role.
 	JunosShellAccess SettingJunosShellAccessPtrInput
 	Marvis           SettingMarvisPtrInput
 	// management-related properties
@@ -260,7 +272,11 @@ type settingArgs struct {
 	Jcloud                 *SettingJcloud    `pulumi:"jcloud"`
 	// JCloud Routing Assurance connexion
 	JcloudRa *SettingJcloudRa `pulumi:"jcloudRa"`
-	// by default, webshell access is only enabled for Admin user
+	// junos_shell_access: Manages role-based web-shell access. When junosShell access is not defined (Default) - No additional
+	// users are configured and web-shell uses default `mist` user to login. When junosShellAccess is defined - Additional
+	// users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell
+	// logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access
+	// level to "none", disables web-shell access for that specific role.
 	JunosShellAccess *SettingJunosShellAccess `pulumi:"junosShellAccess"`
 	Marvis           *SettingMarvis           `pulumi:"marvis"`
 	// management-related properties
@@ -316,7 +332,11 @@ type SettingArgs struct {
 	Jcloud                 SettingJcloudPtrInput
 	// JCloud Routing Assurance connexion
 	JcloudRa SettingJcloudRaPtrInput
-	// by default, webshell access is only enabled for Admin user
+	// junos_shell_access: Manages role-based web-shell access. When junosShell access is not defined (Default) - No additional
+	// users are configured and web-shell uses default `mist` user to login. When junosShellAccess is defined - Additional
+	// users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell
+	// logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access
+	// level to "none", disables web-shell access for that specific role.
 	JunosShellAccess SettingJunosShellAccessPtrInput
 	Marvis           SettingMarvisPtrInput
 	// management-related properties
@@ -504,7 +524,11 @@ func (o SettingOutput) Juniper() SettingJuniperOutput {
 	return o.ApplyT(func(v *Setting) SettingJuniperOutput { return v.Juniper }).(SettingJuniperOutput)
 }
 
-// by default, webshell access is only enabled for Admin user
+// junos_shell_access: Manages role-based web-shell access. When junosShell access is not defined (Default) - No additional
+// users are configured and web-shell uses default `mist` user to login. When junosShellAccess is defined - Additional
+// users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell
+// logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access
+// level to "none", disables web-shell access for that specific role.
 func (o SettingOutput) JunosShellAccess() SettingJunosShellAccessPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingJunosShellAccessPtrOutput { return v.JunosShellAccess }).(SettingJunosShellAccessPtrOutput)
 }

@@ -331,7 +331,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+        /// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
         /// </summary>
         [Input("predefinedSponsorsEnabled")]
         public Input<bool>? PredefinedSponsorsEnabled { get; set; }
@@ -392,7 +392,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? SmsMessageFormat { get; set; }
 
         /// <summary>
-        /// Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+        /// Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
         /// </summary>
         [Input("smsProvider")]
         public Input<string>? SmsProvider { get; set; }
@@ -491,7 +491,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? SsoIdpCert { get; set; }
 
         /// <summary>
-        /// Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+        /// Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
         /// </summary>
         [Input("ssoIdpSignAlgo")]
         public Input<string>? SsoIdpSignAlgo { get; set; }

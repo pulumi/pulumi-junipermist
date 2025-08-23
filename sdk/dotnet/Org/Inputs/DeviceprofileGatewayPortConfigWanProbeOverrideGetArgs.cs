@@ -12,6 +12,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class DeviceprofileGatewayPortConfigWanProbeOverrideGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("ip6s")]
+        private InputList<string>? _ip6s;
+        public InputList<string> Ip6s
+        {
+            get => _ip6s ?? (_ip6s = new InputList<string>());
+            set => _ip6s = value;
+        }
+
         [Input("ips")]
         private InputList<string>? _ips;
         public InputList<string> Ips

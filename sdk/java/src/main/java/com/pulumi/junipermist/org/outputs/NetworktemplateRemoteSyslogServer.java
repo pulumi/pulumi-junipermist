@@ -31,6 +31,11 @@ public final class NetworktemplateRemoteSyslogServer {
     private @Nullable String protocol;
     private @Nullable String routingInstance;
     /**
+     * @return Name of the server
+     * 
+     */
+    private @Nullable String serverName;
+    /**
      * @return enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
      * 
      */
@@ -77,6 +82,13 @@ public final class NetworktemplateRemoteSyslogServer {
         return Optional.ofNullable(this.routingInstance);
     }
     /**
+     * @return Name of the server
+     * 
+     */
+    public Optional<String> serverName() {
+        return Optional.ofNullable(this.serverName);
+    }
+    /**
      * @return enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
      * 
      */
@@ -114,6 +126,7 @@ public final class NetworktemplateRemoteSyslogServer {
         private @Nullable String port;
         private @Nullable String protocol;
         private @Nullable String routingInstance;
+        private @Nullable String serverName;
         private @Nullable String severity;
         private @Nullable String sourceAddress;
         private @Nullable Boolean structuredData;
@@ -129,6 +142,7 @@ public final class NetworktemplateRemoteSyslogServer {
     	      this.port = defaults.port;
     	      this.protocol = defaults.protocol;
     	      this.routingInstance = defaults.routingInstance;
+    	      this.serverName = defaults.serverName;
     	      this.severity = defaults.severity;
     	      this.sourceAddress = defaults.sourceAddress;
     	      this.structuredData = defaults.structuredData;
@@ -187,6 +201,12 @@ public final class NetworktemplateRemoteSyslogServer {
             return this;
         }
         @CustomType.Setter
+        public Builder serverName(@Nullable String serverName) {
+
+            this.serverName = serverName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder severity(@Nullable String severity) {
 
             this.severity = severity;
@@ -220,6 +240,7 @@ public final class NetworktemplateRemoteSyslogServer {
             _resultValue.port = port;
             _resultValue.protocol = protocol;
             _resultValue.routingInstance = routingInstance;
+            _resultValue.serverName = serverName;
             _resultValue.severity = severity;
             _resultValue.sourceAddress = sourceAddress;
             _resultValue.structuredData = structuredData;

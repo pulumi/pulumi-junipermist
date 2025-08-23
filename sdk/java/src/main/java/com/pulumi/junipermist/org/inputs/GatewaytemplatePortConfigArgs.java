@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.org.inputs.GatewaytemplatePortConfigIpConfigArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplatePortConfigTrafficShapingArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplatePortConfigVpnPathsArgs;
+import com.pulumi.junipermist.org.inputs.GatewaytemplatePortConfigWanExtraRoutes6Args;
 import com.pulumi.junipermist.org.inputs.GatewaytemplatePortConfigWanExtraRoutesArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplatePortConfigWanProbeOverrideArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplatePortConfigWanSourceNatArgs;
@@ -578,6 +579,21 @@ public final class GatewaytemplatePortConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * 
+     */
+    @Import(name="wanExtraRoutes6")
+    private @Nullable Output<Map<String,GatewaytemplatePortConfigWanExtraRoutes6Args>> wanExtraRoutes6;
+
+    /**
+     * @return Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * 
+     */
+    public Optional<Output<Map<String,GatewaytemplatePortConfigWanExtraRoutes6Args>>> wanExtraRoutes6() {
+        return Optional.ofNullable(this.wanExtraRoutes6);
+    }
+
+    /**
      * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
      * 
      */
@@ -681,6 +697,7 @@ public final class GatewaytemplatePortConfigArgs extends com.pulumi.resources.Re
         this.wanDisableSpeedtest = $.wanDisableSpeedtest;
         this.wanExtIp = $.wanExtIp;
         this.wanExtraRoutes = $.wanExtraRoutes;
+        this.wanExtraRoutes6 = $.wanExtraRoutes6;
         this.wanNetworks = $.wanNetworks;
         this.wanProbeOverride = $.wanProbeOverride;
         this.wanSourceNat = $.wanSourceNat;
@@ -1488,6 +1505,27 @@ public final class GatewaytemplatePortConfigArgs extends com.pulumi.resources.Re
          */
         public Builder wanExtraRoutes(Map<String,GatewaytemplatePortConfigWanExtraRoutesArgs> wanExtraRoutes) {
             return wanExtraRoutes(Output.of(wanExtraRoutes));
+        }
+
+        /**
+         * @param wanExtraRoutes6 Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wanExtraRoutes6(@Nullable Output<Map<String,GatewaytemplatePortConfigWanExtraRoutes6Args>> wanExtraRoutes6) {
+            $.wanExtraRoutes6 = wanExtraRoutes6;
+            return this;
+        }
+
+        /**
+         * @param wanExtraRoutes6 Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wanExtraRoutes6(Map<String,GatewaytemplatePortConfigWanExtraRoutes6Args> wanExtraRoutes6) {
+            return wanExtraRoutes6(Output.of(wanExtraRoutes6));
         }
 
         /**

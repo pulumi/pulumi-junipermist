@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayPortConfigIpConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayPortConfigTrafficShaping;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayPortConfigVpnPaths;
+import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayPortConfigWanExtraRoutes6;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayPortConfigWanExtraRoutes;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayPortConfigWanProbeOverride;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayPortConfigWanSourceNat;
@@ -195,6 +196,11 @@ public final class DeviceprofileGatewayPortConfig {
      * 
      */
     private @Nullable Map<String,DeviceprofileGatewayPortConfigWanExtraRoutes> wanExtraRoutes;
+    /**
+     * @return Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * 
+     */
+    private @Nullable Map<String,DeviceprofileGatewayPortConfigWanExtraRoutes6> wanExtraRoutes6;
     /**
      * @return Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
      * 
@@ -473,6 +479,13 @@ public final class DeviceprofileGatewayPortConfig {
         return this.wanExtraRoutes == null ? Map.of() : this.wanExtraRoutes;
     }
     /**
+     * @return Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * 
+     */
+    public Map<String,DeviceprofileGatewayPortConfigWanExtraRoutes6> wanExtraRoutes6() {
+        return this.wanExtraRoutes6 == null ? Map.of() : this.wanExtraRoutes6;
+    }
+    /**
      * @return Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
      * 
      */
@@ -551,6 +564,7 @@ public final class DeviceprofileGatewayPortConfig {
         private @Nullable Boolean wanDisableSpeedtest;
         private @Nullable String wanExtIp;
         private @Nullable Map<String,DeviceprofileGatewayPortConfigWanExtraRoutes> wanExtraRoutes;
+        private @Nullable Map<String,DeviceprofileGatewayPortConfigWanExtraRoutes6> wanExtraRoutes6;
         private @Nullable List<String> wanNetworks;
         private @Nullable DeviceprofileGatewayPortConfigWanProbeOverride wanProbeOverride;
         private @Nullable DeviceprofileGatewayPortConfigWanSourceNat wanSourceNat;
@@ -599,6 +613,7 @@ public final class DeviceprofileGatewayPortConfig {
     	      this.wanDisableSpeedtest = defaults.wanDisableSpeedtest;
     	      this.wanExtIp = defaults.wanExtIp;
     	      this.wanExtraRoutes = defaults.wanExtraRoutes;
+    	      this.wanExtraRoutes6 = defaults.wanExtraRoutes6;
     	      this.wanNetworks = defaults.wanNetworks;
     	      this.wanProbeOverride = defaults.wanProbeOverride;
     	      this.wanSourceNat = defaults.wanSourceNat;
@@ -860,6 +875,12 @@ public final class DeviceprofileGatewayPortConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder wanExtraRoutes6(@Nullable Map<String,DeviceprofileGatewayPortConfigWanExtraRoutes6> wanExtraRoutes6) {
+
+            this.wanExtraRoutes6 = wanExtraRoutes6;
+            return this;
+        }
+        @CustomType.Setter
         public Builder wanNetworks(@Nullable List<String> wanNetworks) {
 
             this.wanNetworks = wanNetworks;
@@ -929,6 +950,7 @@ public final class DeviceprofileGatewayPortConfig {
             _resultValue.wanDisableSpeedtest = wanDisableSpeedtest;
             _resultValue.wanExtIp = wanExtIp;
             _resultValue.wanExtraRoutes = wanExtraRoutes;
+            _resultValue.wanExtraRoutes6 = wanExtraRoutes6;
             _resultValue.wanNetworks = wanNetworks;
             _resultValue.wanProbeOverride = wanProbeOverride;
             _resultValue.wanSourceNat = wanSourceNat;

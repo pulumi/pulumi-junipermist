@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApAeroscoutArgs;
+import com.pulumi.junipermist.org.inputs.DeviceprofileApAiristaArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApBleConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApEslConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApIpConfigArgs;
@@ -44,6 +45,13 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<DeviceprofileApAeroscoutArgs>> aeroscout() {
         return Optional.ofNullable(this.aeroscout);
+    }
+
+    @Import(name="airista")
+    private @Nullable Output<DeviceprofileApAiristaArgs> airista;
+
+    public Optional<Output<DeviceprofileApAiristaArgs>> airista() {
+        return Optional.ofNullable(this.airista);
     }
 
     /**
@@ -321,6 +329,7 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
 
     private DeviceprofileApArgs(DeviceprofileApArgs $) {
         this.aeroscout = $.aeroscout;
+        this.airista = $.airista;
         this.bleConfig = $.bleConfig;
         this.disableEth1 = $.disableEth1;
         this.disableEth2 = $.disableEth2;
@@ -381,6 +390,15 @@ public final class DeviceprofileApArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder aeroscout(DeviceprofileApAeroscoutArgs aeroscout) {
             return aeroscout(Output.of(aeroscout));
+        }
+
+        public Builder airista(@Nullable Output<DeviceprofileApAiristaArgs> airista) {
+            $.airista = airista;
+            return this;
+        }
+
+        public Builder airista(DeviceprofileApAiristaArgs airista) {
+            return airista(Output.of(airista));
         }
 
         /**

@@ -56,28 +56,28 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Gateway { get; set; }
 
         /// <summary>
+        /// If `type6`==`local`
+        /// </summary>
+        [Input("ip6End")]
+        public Input<string>? Ip6End { get; set; }
+
+        /// <summary>
+        /// If `type6`==`local`
+        /// </summary>
+        [Input("ip6Start")]
+        public Input<string>? Ip6Start { get; set; }
+
+        /// <summary>
         /// If `type`==`local`
         /// </summary>
         [Input("ipEnd")]
         public Input<string>? IpEnd { get; set; }
 
         /// <summary>
-        /// If `type6`==`local`
-        /// </summary>
-        [Input("ipEnd6")]
-        public Input<string>? IpEnd6 { get; set; }
-
-        /// <summary>
         /// If `type`==`local`
         /// </summary>
         [Input("ipStart")]
         public Input<string>? IpStart { get; set; }
-
-        /// <summary>
-        /// If `type6`==`local`
-        /// </summary>
-        [Input("ipStart6")]
-        public Input<string>? IpStart6 { get; set; }
 
         /// <summary>
         /// In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
@@ -116,16 +116,16 @@ namespace Pulumi.JuniperMist.Device.Inputs
             set => _servers = value;
         }
 
-        [Input("servers6s")]
-        private InputList<string>? _servers6s;
+        [Input("serversv6s")]
+        private InputList<string>? _serversv6s;
 
         /// <summary>
         /// If `type6`==`relay`
         /// </summary>
-        public InputList<string> Servers6s
+        public InputList<string> Serversv6s
         {
-            get => _servers6s ?? (_servers6s = new InputList<string>());
-            set => _servers6s = value;
+            get => _serversv6s ?? (_serversv6s = new InputList<string>());
+            set => _serversv6s = value;
         }
 
         /// <summary>
