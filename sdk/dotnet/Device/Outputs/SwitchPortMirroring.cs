@@ -26,11 +26,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableArray<string> InputPortIdsIngresses;
         /// <summary>
-        /// Exactly one of the `output_port_id` or `output_network` should be provided
+        /// Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        /// </summary>
+        public readonly string? OutputIpAddress;
+        /// <summary>
+        /// Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         /// </summary>
         public readonly string? OutputNetwork;
         /// <summary>
-        /// Exactly one of the `output_port_id` or `output_network` should be provided
+        /// Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         /// </summary>
         public readonly string? OutputPortId;
 
@@ -42,6 +46,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             ImmutableArray<string> inputPortIdsIngresses,
 
+            string? outputIpAddress,
+
             string? outputNetwork,
 
             string? outputPortId)
@@ -49,6 +55,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             InputNetworksIngresses = inputNetworksIngresses;
             InputPortIdsEgresses = inputPortIdsEgresses;
             InputPortIdsIngresses = inputPortIdsIngresses;
+            OutputIpAddress = outputIpAddress;
             OutputNetwork = outputNetwork;
             OutputPortId = outputPortId;
         }

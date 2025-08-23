@@ -13,6 +13,36 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class WlanMistNacGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+        /// </summary>
+        [Input("acctInterimInterval")]
+        public Input<int>? AcctInterimInterval { get; set; }
+
+        /// <summary>
+        /// Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "retries" are set to value of `auth_servers_timeout`. "max-requests" is also set when setting `auth_servers_retries` is set to default value to 3.
+        /// </summary>
+        [Input("authServersRetries")]
+        public Input<int>? AuthServersRetries { get; set; }
+
+        /// <summary>
+        /// Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `auth_servers_timeout`. "supplicant-timeout" is also set when setting `auth_servers_timeout` is set to default value of 10.
+        /// </summary>
+        [Input("authServersTimeout")]
+        public Input<int>? AuthServersTimeout { get; set; }
+
+        /// <summary>
+        /// Allows a RADIUS server to dynamically modify the authorization status of a user session.
+        /// </summary>
+        [Input("coaEnabled")]
+        public Input<bool>? CoaEnabled { get; set; }
+
+        /// <summary>
+        /// the communication port used for “Change of Authorization” (CoA) messages
+        /// </summary>
+        [Input("coaPort")]
+        public Input<int>? CoaPort { get; set; }
+
+        /// <summary>
         /// When enabled:
         ///   * `auth_servers` is ignored
         ///   * `acct_servers` is ignored
@@ -23,6 +53,24 @@ namespace Pulumi.JuniperMist.Org.Inputs
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.
+        /// </summary>
+        [Input("fastDot1xTimers")]
+        public Input<bool>? FastDot1xTimers { get; set; }
+
+        /// <summary>
+        /// Which network the mist nac server resides in
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// In case there is a static IP for this network, we can specify it using source ip
+        /// </summary>
+        [Input("sourceIp")]
+        public Input<string>? SourceIp { get; set; }
 
         public WlanMistNacGetArgs()
         {

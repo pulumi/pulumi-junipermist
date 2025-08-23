@@ -37,8 +37,13 @@ type Setting struct {
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrOutput `pulumi:"apUpdownThreshold"`
 	// Auto Upgrade Settings
-	AutoUpgrade  SettingAutoUpgradeOutput `pulumi:"autoUpgrade"`
-	BlacklistUrl pulumi.StringOutput      `pulumi:"blacklistUrl"`
+	AutoUpgrade SettingAutoUpgradeOutput `pulumi:"autoUpgrade"`
+	// auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+	// upgrade
+	AutoUpgradeEsl SettingAutoUpgradeEslPtrOutput `pulumi:"autoUpgradeEsl"`
+	// enable threshold-based bgp neighbor down delivery.
+	BgpNeighborUpdownThreshold pulumi.IntPtrOutput `pulumi:"bgpNeighborUpdownThreshold"`
+	BlacklistUrl               pulumi.StringOutput `pulumi:"blacklistUrl"`
 	// BLE AP settings
 	BleConfig SettingBleConfigPtrOutput `pulumi:"bleConfig"`
 	// Whether to enable ap auto config revert
@@ -103,6 +108,10 @@ type Setting struct {
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapOutput `pulumi:"vars"`
 	Vna  SettingVnaPtrOutput    `pulumi:"vna"`
+	// enable threshold-based vpn path down delivery.
+	VpnPathUpdownThreshold pulumi.IntPtrOutput `pulumi:"vpnPathUpdownThreshold"`
+	// enable threshold-based vpn peer down delivery.
+	VpnPeerUpdownThreshold pulumi.IntPtrOutput `pulumi:"vpnPeerUpdownThreshold"`
 	// Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
 	VsInstance        SettingVsInstanceMapOutput `pulumi:"vsInstance"`
 	WanVna            SettingWanVnaPtrOutput     `pulumi:"wanVna"`
@@ -155,8 +164,13 @@ type settingState struct {
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold *int `pulumi:"apUpdownThreshold"`
 	// Auto Upgrade Settings
-	AutoUpgrade  *SettingAutoUpgrade `pulumi:"autoUpgrade"`
-	BlacklistUrl *string             `pulumi:"blacklistUrl"`
+	AutoUpgrade *SettingAutoUpgrade `pulumi:"autoUpgrade"`
+	// auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+	// upgrade
+	AutoUpgradeEsl *SettingAutoUpgradeEsl `pulumi:"autoUpgradeEsl"`
+	// enable threshold-based bgp neighbor down delivery.
+	BgpNeighborUpdownThreshold *int    `pulumi:"bgpNeighborUpdownThreshold"`
+	BlacklistUrl               *string `pulumi:"blacklistUrl"`
 	// BLE AP settings
 	BleConfig *SettingBleConfig `pulumi:"bleConfig"`
 	// Whether to enable ap auto config revert
@@ -221,6 +235,10 @@ type settingState struct {
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
 	Vna  *SettingVna       `pulumi:"vna"`
+	// enable threshold-based vpn path down delivery.
+	VpnPathUpdownThreshold *int `pulumi:"vpnPathUpdownThreshold"`
+	// enable threshold-based vpn peer down delivery.
+	VpnPeerUpdownThreshold *int `pulumi:"vpnPeerUpdownThreshold"`
 	// Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
 	VsInstance        map[string]SettingVsInstance `pulumi:"vsInstance"`
 	WanVna            *SettingWanVna               `pulumi:"wanVna"`
@@ -241,8 +259,13 @@ type SettingState struct {
 	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrInput
 	// Auto Upgrade Settings
-	AutoUpgrade  SettingAutoUpgradePtrInput
-	BlacklistUrl pulumi.StringPtrInput
+	AutoUpgrade SettingAutoUpgradePtrInput
+	// auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+	// upgrade
+	AutoUpgradeEsl SettingAutoUpgradeEslPtrInput
+	// enable threshold-based bgp neighbor down delivery.
+	BgpNeighborUpdownThreshold pulumi.IntPtrInput
+	BlacklistUrl               pulumi.StringPtrInput
 	// BLE AP settings
 	BleConfig SettingBleConfigPtrInput
 	// Whether to enable ap auto config revert
@@ -307,6 +330,10 @@ type SettingState struct {
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
 	Vna  SettingVnaPtrInput
+	// enable threshold-based vpn path down delivery.
+	VpnPathUpdownThreshold pulumi.IntPtrInput
+	// enable threshold-based vpn peer down delivery.
+	VpnPeerUpdownThreshold pulumi.IntPtrInput
 	// Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
 	VsInstance        SettingVsInstanceMapInput
 	WanVna            SettingWanVnaPtrInput
@@ -332,6 +359,11 @@ type settingArgs struct {
 	ApUpdownThreshold *int `pulumi:"apUpdownThreshold"`
 	// Auto Upgrade Settings
 	AutoUpgrade *SettingAutoUpgrade `pulumi:"autoUpgrade"`
+	// auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+	// upgrade
+	AutoUpgradeEsl *SettingAutoUpgradeEsl `pulumi:"autoUpgradeEsl"`
+	// enable threshold-based bgp neighbor down delivery.
+	BgpNeighborUpdownThreshold *int `pulumi:"bgpNeighborUpdownThreshold"`
 	// BLE AP settings
 	BleConfig *SettingBleConfig `pulumi:"bleConfig"`
 	// Whether to enable ap auto config revert
@@ -396,6 +428,10 @@ type settingArgs struct {
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
 	Vna  *SettingVna       `pulumi:"vna"`
+	// enable threshold-based vpn path down delivery.
+	VpnPathUpdownThreshold *int `pulumi:"vpnPathUpdownThreshold"`
+	// enable threshold-based vpn peer down delivery.
+	VpnPeerUpdownThreshold *int `pulumi:"vpnPeerUpdownThreshold"`
 	// Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
 	VsInstance map[string]SettingVsInstance `pulumi:"vsInstance"`
 	WanVna     *SettingWanVna               `pulumi:"wanVna"`
@@ -416,6 +452,11 @@ type SettingArgs struct {
 	ApUpdownThreshold pulumi.IntPtrInput
 	// Auto Upgrade Settings
 	AutoUpgrade SettingAutoUpgradePtrInput
+	// auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+	// upgrade
+	AutoUpgradeEsl SettingAutoUpgradeEslPtrInput
+	// enable threshold-based bgp neighbor down delivery.
+	BgpNeighborUpdownThreshold pulumi.IntPtrInput
 	// BLE AP settings
 	BleConfig SettingBleConfigPtrInput
 	// Whether to enable ap auto config revert
@@ -480,6 +521,10 @@ type SettingArgs struct {
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
 	Vna  SettingVnaPtrInput
+	// enable threshold-based vpn path down delivery.
+	VpnPathUpdownThreshold pulumi.IntPtrInput
+	// enable threshold-based vpn peer down delivery.
+	VpnPeerUpdownThreshold pulumi.IntPtrInput
 	// Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
 	VsInstance SettingVsInstanceMapInput
 	WanVna     SettingWanVnaPtrInput
@@ -592,6 +637,17 @@ func (o SettingOutput) ApUpdownThreshold() pulumi.IntPtrOutput {
 // Auto Upgrade Settings
 func (o SettingOutput) AutoUpgrade() SettingAutoUpgradeOutput {
 	return o.ApplyT(func(v *Setting) SettingAutoUpgradeOutput { return v.AutoUpgrade }).(SettingAutoUpgradeOutput)
+}
+
+// auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+// upgrade
+func (o SettingOutput) AutoUpgradeEsl() SettingAutoUpgradeEslPtrOutput {
+	return o.ApplyT(func(v *Setting) SettingAutoUpgradeEslPtrOutput { return v.AutoUpgradeEsl }).(SettingAutoUpgradeEslPtrOutput)
+}
+
+// enable threshold-based bgp neighbor down delivery.
+func (o SettingOutput) BgpNeighborUpdownThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.BgpNeighborUpdownThreshold }).(pulumi.IntPtrOutput)
 }
 
 func (o SettingOutput) BlacklistUrl() pulumi.StringOutput {
@@ -759,6 +815,16 @@ func (o SettingOutput) Vars() pulumi.StringMapOutput {
 
 func (o SettingOutput) Vna() SettingVnaPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingVnaPtrOutput { return v.Vna }).(SettingVnaPtrOutput)
+}
+
+// enable threshold-based vpn path down delivery.
+func (o SettingOutput) VpnPathUpdownThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.VpnPathUpdownThreshold }).(pulumi.IntPtrOutput)
+}
+
+// enable threshold-based vpn peer down delivery.
+func (o SettingOutput) VpnPeerUpdownThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.VpnPeerUpdownThreshold }).(pulumi.IntPtrOutput)
 }
 
 // Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name

@@ -55,6 +55,11 @@ public final class GatewayTunnelConfigs {
      */
     private @Nullable String localId;
     /**
+     * @return List of Local protected subnet for policy-based IPSec negotiation
+     * 
+     */
+    private @Nullable List<String> localSubnets;
+    /**
      * @return Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
      * 
      */
@@ -89,6 +94,11 @@ public final class GatewayTunnelConfigs {
      * 
      */
     private @Nullable String psk;
+    /**
+     * @return List of Remote protected subnet for policy-based IPSec negotiation
+     * 
+     */
+    private @Nullable List<String> remoteSubnets;
     /**
      * @return Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
@@ -151,6 +161,13 @@ public final class GatewayTunnelConfigs {
         return Optional.ofNullable(this.localId);
     }
     /**
+     * @return List of Local protected subnet for policy-based IPSec negotiation
+     * 
+     */
+    public List<String> localSubnets() {
+        return this.localSubnets == null ? List.of() : this.localSubnets;
+    }
+    /**
      * @return Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
      * 
      */
@@ -200,6 +217,13 @@ public final class GatewayTunnelConfigs {
         return Optional.ofNullable(this.psk);
     }
     /**
+     * @return List of Remote protected subnet for policy-based IPSec negotiation
+     * 
+     */
+    public List<String> remoteSubnets() {
+        return this.remoteSubnets == null ? List.of() : this.remoteSubnets;
+    }
+    /**
      * @return Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
      */
@@ -230,6 +254,7 @@ public final class GatewayTunnelConfigs {
         private @Nullable Integer ipsecLifetime;
         private @Nullable List<GatewayTunnelConfigsIpsecProposal> ipsecProposals;
         private @Nullable String localId;
+        private @Nullable List<String> localSubnets;
         private @Nullable String mode;
         private @Nullable List<String> networks;
         private @Nullable GatewayTunnelConfigsPrimary primary;
@@ -237,6 +262,7 @@ public final class GatewayTunnelConfigs {
         private @Nullable String protocol;
         private @Nullable String provider;
         private @Nullable String psk;
+        private @Nullable List<String> remoteSubnets;
         private @Nullable GatewayTunnelConfigsSecondary secondary;
         private @Nullable String version;
         public Builder() {}
@@ -249,6 +275,7 @@ public final class GatewayTunnelConfigs {
     	      this.ipsecLifetime = defaults.ipsecLifetime;
     	      this.ipsecProposals = defaults.ipsecProposals;
     	      this.localId = defaults.localId;
+    	      this.localSubnets = defaults.localSubnets;
     	      this.mode = defaults.mode;
     	      this.networks = defaults.networks;
     	      this.primary = defaults.primary;
@@ -256,6 +283,7 @@ public final class GatewayTunnelConfigs {
     	      this.protocol = defaults.protocol;
     	      this.provider = defaults.provider;
     	      this.psk = defaults.psk;
+    	      this.remoteSubnets = defaults.remoteSubnets;
     	      this.secondary = defaults.secondary;
     	      this.version = defaults.version;
         }
@@ -309,6 +337,15 @@ public final class GatewayTunnelConfigs {
             return this;
         }
         @CustomType.Setter
+        public Builder localSubnets(@Nullable List<String> localSubnets) {
+
+            this.localSubnets = localSubnets;
+            return this;
+        }
+        public Builder localSubnets(String... localSubnets) {
+            return localSubnets(List.of(localSubnets));
+        }
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
 
             this.mode = mode;
@@ -354,6 +391,15 @@ public final class GatewayTunnelConfigs {
             return this;
         }
         @CustomType.Setter
+        public Builder remoteSubnets(@Nullable List<String> remoteSubnets) {
+
+            this.remoteSubnets = remoteSubnets;
+            return this;
+        }
+        public Builder remoteSubnets(String... remoteSubnets) {
+            return remoteSubnets(List.of(remoteSubnets));
+        }
+        @CustomType.Setter
         public Builder secondary(@Nullable GatewayTunnelConfigsSecondary secondary) {
 
             this.secondary = secondary;
@@ -374,6 +420,7 @@ public final class GatewayTunnelConfigs {
             _resultValue.ipsecLifetime = ipsecLifetime;
             _resultValue.ipsecProposals = ipsecProposals;
             _resultValue.localId = localId;
+            _resultValue.localSubnets = localSubnets;
             _resultValue.mode = mode;
             _resultValue.networks = networks;
             _resultValue.primary = primary;
@@ -381,6 +428,7 @@ public final class GatewayTunnelConfigs {
             _resultValue.protocol = protocol;
             _resultValue.provider = provider;
             _resultValue.psk = psk;
+            _resultValue.remoteSubnets = remoteSubnets;
             _resultValue.secondary = secondary;
             _resultValue.version = version;
             return _resultValue;

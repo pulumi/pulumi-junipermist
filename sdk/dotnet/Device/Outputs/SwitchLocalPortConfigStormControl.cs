@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchLocalPortConfigStormControl
     {
         /// <summary>
+        /// Whether to disable the port when storm control is triggered
+        /// </summary>
+        public readonly bool? DisablePort;
+        /// <summary>
         /// Whether to disable storm control on broadcast traffic
         /// </summary>
         public readonly bool? NoBroadcast;
@@ -36,6 +40,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
         [OutputConstructor]
         private SwitchLocalPortConfigStormControl(
+            bool? disablePort,
+
             bool? noBroadcast,
 
             bool? noMulticast,
@@ -46,6 +52,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             int? percentage)
         {
+            DisablePort = disablePort;
             NoBroadcast = noBroadcast;
             NoMulticast = noMulticast;
             NoRegisteredMulticast = noRegisteredMulticast;

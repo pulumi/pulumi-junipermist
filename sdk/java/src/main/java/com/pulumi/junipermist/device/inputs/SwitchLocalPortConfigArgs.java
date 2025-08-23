@@ -387,14 +387,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+     * Only `port_auth`=`dot1x`, reauthentication interval range between 10 and 65535 (default: 3600)
      * 
      */
     @Import(name="reauthInterval")
     private @Nullable Output<String> reauthInterval;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+     * @return Only `port_auth`=`dot1x`, reauthentication interval range between 10 and 65535 (default: 3600)
      * 
      */
     public Optional<Output<String>> reauthInterval() {
@@ -1126,7 +1126,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param reauthInterval Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+         * @param reauthInterval Only `port_auth`=`dot1x`, reauthentication interval range between 10 and 65535 (default: 3600)
          * 
          * @return builder
          * 
@@ -1137,7 +1137,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param reauthInterval Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+         * @param reauthInterval Only `port_auth`=`dot1x`, reauthentication interval range between 10 and 65535 (default: 3600)
          * 
          * @return builder
          * 

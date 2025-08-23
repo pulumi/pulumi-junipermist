@@ -23,6 +23,7 @@ class DeviceprofileApArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[_builtins.str],
                  aeroscout: Optional[pulumi.Input['DeviceprofileApAeroscoutArgs']] = None,
+                 airista: Optional[pulumi.Input['DeviceprofileApAiristaArgs']] = None,
                  ble_config: Optional[pulumi.Input['DeviceprofileApBleConfigArgs']] = None,
                  disable_eth1: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_eth2: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -67,6 +68,8 @@ class DeviceprofileApArgs:
         pulumi.set(__self__, "org_id", org_id)
         if aeroscout is not None:
             pulumi.set(__self__, "aeroscout", aeroscout)
+        if airista is not None:
+            pulumi.set(__self__, "airista", airista)
         if ble_config is not None:
             pulumi.set(__self__, "ble_config", ble_config)
         if disable_eth1 is not None:
@@ -128,6 +131,15 @@ class DeviceprofileApArgs:
     @aeroscout.setter
     def aeroscout(self, value: Optional[pulumi.Input['DeviceprofileApAeroscoutArgs']]):
         pulumi.set(self, "aeroscout", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def airista(self) -> Optional[pulumi.Input['DeviceprofileApAiristaArgs']]:
+        return pulumi.get(self, "airista")
+
+    @airista.setter
+    def airista(self, value: Optional[pulumi.Input['DeviceprofileApAiristaArgs']]):
+        pulumi.set(self, "airista", value)
 
     @_builtins.property
     @pulumi.getter(name="bleConfig")
@@ -361,6 +373,7 @@ class DeviceprofileApArgs:
 class _DeviceprofileApState:
     def __init__(__self__, *,
                  aeroscout: Optional[pulumi.Input['DeviceprofileApAeroscoutArgs']] = None,
+                 airista: Optional[pulumi.Input['DeviceprofileApAiristaArgs']] = None,
                  ble_config: Optional[pulumi.Input['DeviceprofileApBleConfigArgs']] = None,
                  disable_eth1: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_eth2: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -407,6 +420,8 @@ class _DeviceprofileApState:
         """
         if aeroscout is not None:
             pulumi.set(__self__, "aeroscout", aeroscout)
+        if airista is not None:
+            pulumi.set(__self__, "airista", airista)
         if ble_config is not None:
             pulumi.set(__self__, "ble_config", ble_config)
         if disable_eth1 is not None:
@@ -463,6 +478,15 @@ class _DeviceprofileApState:
     @aeroscout.setter
     def aeroscout(self, value: Optional[pulumi.Input['DeviceprofileApAeroscoutArgs']]):
         pulumi.set(self, "aeroscout", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def airista(self) -> Optional[pulumi.Input['DeviceprofileApAiristaArgs']]:
+        return pulumi.get(self, "airista")
+
+    @airista.setter
+    def airista(self, value: Optional[pulumi.Input['DeviceprofileApAiristaArgs']]):
+        pulumi.set(self, "airista", value)
 
     @_builtins.property
     @pulumi.getter(name="bleConfig")
@@ -720,6 +744,7 @@ class DeviceprofileAp(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aeroscout: Optional[pulumi.Input[Union['DeviceprofileApAeroscoutArgs', 'DeviceprofileApAeroscoutArgsDict']]] = None,
+                 airista: Optional[pulumi.Input[Union['DeviceprofileApAiristaArgs', 'DeviceprofileApAiristaArgsDict']]] = None,
                  ble_config: Optional[pulumi.Input[Union['DeviceprofileApBleConfigArgs', 'DeviceprofileApBleConfigArgsDict']]] = None,
                  disable_eth1: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_eth2: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -849,6 +874,7 @@ class DeviceprofileAp(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aeroscout: Optional[pulumi.Input[Union['DeviceprofileApAeroscoutArgs', 'DeviceprofileApAeroscoutArgsDict']]] = None,
+                 airista: Optional[pulumi.Input[Union['DeviceprofileApAiristaArgs', 'DeviceprofileApAiristaArgsDict']]] = None,
                  ble_config: Optional[pulumi.Input[Union['DeviceprofileApBleConfigArgs', 'DeviceprofileApBleConfigArgsDict']]] = None,
                  disable_eth1: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_eth2: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -880,6 +906,7 @@ class DeviceprofileAp(pulumi.CustomResource):
             __props__ = DeviceprofileApArgs.__new__(DeviceprofileApArgs)
 
             __props__.__dict__["aeroscout"] = aeroscout
+            __props__.__dict__["airista"] = airista
             __props__.__dict__["ble_config"] = ble_config
             __props__.__dict__["disable_eth1"] = disable_eth1
             __props__.__dict__["disable_eth2"] = disable_eth2
@@ -915,6 +942,7 @@ class DeviceprofileAp(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             aeroscout: Optional[pulumi.Input[Union['DeviceprofileApAeroscoutArgs', 'DeviceprofileApAeroscoutArgsDict']]] = None,
+            airista: Optional[pulumi.Input[Union['DeviceprofileApAiristaArgs', 'DeviceprofileApAiristaArgsDict']]] = None,
             ble_config: Optional[pulumi.Input[Union['DeviceprofileApBleConfigArgs', 'DeviceprofileApBleConfigArgsDict']]] = None,
             disable_eth1: Optional[pulumi.Input[_builtins.bool]] = None,
             disable_eth2: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -969,6 +997,7 @@ class DeviceprofileAp(pulumi.CustomResource):
         __props__ = _DeviceprofileApState.__new__(_DeviceprofileApState)
 
         __props__.__dict__["aeroscout"] = aeroscout
+        __props__.__dict__["airista"] = airista
         __props__.__dict__["ble_config"] = ble_config
         __props__.__dict__["disable_eth1"] = disable_eth1
         __props__.__dict__["disable_eth2"] = disable_eth2
@@ -1000,6 +1029,11 @@ class DeviceprofileAp(pulumi.CustomResource):
         Aeroscout AP settings
         """
         return pulumi.get(self, "aeroscout")
+
+    @_builtins.property
+    @pulumi.getter
+    def airista(self) -> pulumi.Output[Optional['outputs.DeviceprofileApAirista']]:
+        return pulumi.get(self, "airista")
 
     @_builtins.property
     @pulumi.getter(name="bleConfig")

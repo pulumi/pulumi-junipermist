@@ -13,6 +13,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchPortUsagesStormControl {
     /**
+     * @return Whether to disable the port when storm control is triggered
+     * 
+     */
+    private @Nullable Boolean disablePort;
+    /**
      * @return Whether to disable storm control on broadcast traffic
      * 
      */
@@ -39,6 +44,13 @@ public final class SwitchPortUsagesStormControl {
     private @Nullable Integer percentage;
 
     private SwitchPortUsagesStormControl() {}
+    /**
+     * @return Whether to disable the port when storm control is triggered
+     * 
+     */
+    public Optional<Boolean> disablePort() {
+        return Optional.ofNullable(this.disablePort);
+    }
     /**
      * @return Whether to disable storm control on broadcast traffic
      * 
@@ -84,6 +96,7 @@ public final class SwitchPortUsagesStormControl {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean disablePort;
         private @Nullable Boolean noBroadcast;
         private @Nullable Boolean noMulticast;
         private @Nullable Boolean noRegisteredMulticast;
@@ -92,6 +105,7 @@ public final class SwitchPortUsagesStormControl {
         public Builder() {}
         public Builder(SwitchPortUsagesStormControl defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.disablePort = defaults.disablePort;
     	      this.noBroadcast = defaults.noBroadcast;
     	      this.noMulticast = defaults.noMulticast;
     	      this.noRegisteredMulticast = defaults.noRegisteredMulticast;
@@ -99,6 +113,12 @@ public final class SwitchPortUsagesStormControl {
     	      this.percentage = defaults.percentage;
         }
 
+        @CustomType.Setter
+        public Builder disablePort(@Nullable Boolean disablePort) {
+
+            this.disablePort = disablePort;
+            return this;
+        }
         @CustomType.Setter
         public Builder noBroadcast(@Nullable Boolean noBroadcast) {
 
@@ -131,6 +151,7 @@ public final class SwitchPortUsagesStormControl {
         }
         public SwitchPortUsagesStormControl build() {
             final var _resultValue = new SwitchPortUsagesStormControl();
+            _resultValue.disablePort = disablePort;
             _resultValue.noBroadcast = noBroadcast;
             _resultValue.noMulticast = noMulticast;
             _resultValue.noRegisteredMulticast = noRegisteredMulticast;

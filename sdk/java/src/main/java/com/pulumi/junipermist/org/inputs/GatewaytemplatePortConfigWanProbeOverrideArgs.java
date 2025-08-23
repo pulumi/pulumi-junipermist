@@ -16,6 +16,13 @@ public final class GatewaytemplatePortConfigWanProbeOverrideArgs extends com.pul
 
     public static final GatewaytemplatePortConfigWanProbeOverrideArgs Empty = new GatewaytemplatePortConfigWanProbeOverrideArgs();
 
+    @Import(name="ip6s")
+    private @Nullable Output<List<String>> ip6s;
+
+    public Optional<Output<List<String>>> ip6s() {
+        return Optional.ofNullable(this.ip6s);
+    }
+
     @Import(name="ips")
     private @Nullable Output<List<String>> ips;
 
@@ -41,6 +48,7 @@ public final class GatewaytemplatePortConfigWanProbeOverrideArgs extends com.pul
     private GatewaytemplatePortConfigWanProbeOverrideArgs() {}
 
     private GatewaytemplatePortConfigWanProbeOverrideArgs(GatewaytemplatePortConfigWanProbeOverrideArgs $) {
+        this.ip6s = $.ip6s;
         this.ips = $.ips;
         this.probeProfile = $.probeProfile;
     }
@@ -61,6 +69,19 @@ public final class GatewaytemplatePortConfigWanProbeOverrideArgs extends com.pul
 
         public Builder(GatewaytemplatePortConfigWanProbeOverrideArgs defaults) {
             $ = new GatewaytemplatePortConfigWanProbeOverrideArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder ip6s(@Nullable Output<List<String>> ip6s) {
+            $.ip6s = ip6s;
+            return this;
+        }
+
+        public Builder ip6s(List<String> ip6s) {
+            return ip6s(Output.of(ip6s));
+        }
+
+        public Builder ip6s(String... ip6s) {
+            return ip6s(List.of(ip6s));
         }
 
         public Builder ips(@Nullable Output<List<String>> ips) {

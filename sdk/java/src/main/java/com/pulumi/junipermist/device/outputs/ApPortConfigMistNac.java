@@ -5,12 +5,39 @@ package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ApPortConfigMistNac {
+    /**
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+     * 
+     */
+    private @Nullable Integer acctInterimInterval;
+    /**
+     * @return Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. &#34;retries&#34; are set to value of `auth_servers_timeout`. &#34;max-requests&#34; is also set when setting `auth_servers_retries` is set to default value to 3.
+     * 
+     */
+    private @Nullable Integer authServersRetries;
+    /**
+     * @return Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `auth_servers_timeout`. &#34;supplicant-timeout&#34; is also set when setting `auth_servers_timeout` is set to default value of 10.
+     * 
+     */
+    private @Nullable Integer authServersTimeout;
+    /**
+     * @return Allows a RADIUS server to dynamically modify the authorization status of a user session.
+     * 
+     */
+    private @Nullable Boolean coaEnabled;
+    /**
+     * @return the communication port used for “Change of Authorization” (CoA) messages
+     * 
+     */
+    private @Nullable Integer coaPort;
     /**
      * @return When enabled:
      *   * `auth_servers` is ignored
@@ -22,8 +49,58 @@ public final class ApPortConfigMistNac {
      * 
      */
     private @Nullable Boolean enabled;
+    /**
+     * @return If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.
+     * 
+     */
+    private @Nullable Boolean fastDot1xTimers;
+    /**
+     * @return Which network the mist nac server resides in
+     * 
+     */
+    private @Nullable String network;
+    /**
+     * @return In case there is a static IP for this network, we can specify it using source ip
+     * 
+     */
+    private @Nullable String sourceIp;
 
     private ApPortConfigMistNac() {}
+    /**
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+     * 
+     */
+    public Optional<Integer> acctInterimInterval() {
+        return Optional.ofNullable(this.acctInterimInterval);
+    }
+    /**
+     * @return Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. &#34;retries&#34; are set to value of `auth_servers_timeout`. &#34;max-requests&#34; is also set when setting `auth_servers_retries` is set to default value to 3.
+     * 
+     */
+    public Optional<Integer> authServersRetries() {
+        return Optional.ofNullable(this.authServersRetries);
+    }
+    /**
+     * @return Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `auth_servers_timeout`. &#34;supplicant-timeout&#34; is also set when setting `auth_servers_timeout` is set to default value of 10.
+     * 
+     */
+    public Optional<Integer> authServersTimeout() {
+        return Optional.ofNullable(this.authServersTimeout);
+    }
+    /**
+     * @return Allows a RADIUS server to dynamically modify the authorization status of a user session.
+     * 
+     */
+    public Optional<Boolean> coaEnabled() {
+        return Optional.ofNullable(this.coaEnabled);
+    }
+    /**
+     * @return the communication port used for “Change of Authorization” (CoA) messages
+     * 
+     */
+    public Optional<Integer> coaPort() {
+        return Optional.ofNullable(this.coaPort);
+    }
     /**
      * @return When enabled:
      *   * `auth_servers` is ignored
@@ -37,6 +114,27 @@ public final class ApPortConfigMistNac {
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.
+     * 
+     */
+    public Optional<Boolean> fastDot1xTimers() {
+        return Optional.ofNullable(this.fastDot1xTimers);
+    }
+    /**
+     * @return Which network the mist nac server resides in
+     * 
+     */
+    public Optional<String> network() {
+        return Optional.ofNullable(this.network);
+    }
+    /**
+     * @return In case there is a static IP for this network, we can specify it using source ip
+     * 
+     */
+    public Optional<String> sourceIp() {
+        return Optional.ofNullable(this.sourceIp);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -47,22 +145,94 @@ public final class ApPortConfigMistNac {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer acctInterimInterval;
+        private @Nullable Integer authServersRetries;
+        private @Nullable Integer authServersTimeout;
+        private @Nullable Boolean coaEnabled;
+        private @Nullable Integer coaPort;
         private @Nullable Boolean enabled;
+        private @Nullable Boolean fastDot1xTimers;
+        private @Nullable String network;
+        private @Nullable String sourceIp;
         public Builder() {}
         public Builder(ApPortConfigMistNac defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.acctInterimInterval = defaults.acctInterimInterval;
+    	      this.authServersRetries = defaults.authServersRetries;
+    	      this.authServersTimeout = defaults.authServersTimeout;
+    	      this.coaEnabled = defaults.coaEnabled;
+    	      this.coaPort = defaults.coaPort;
     	      this.enabled = defaults.enabled;
+    	      this.fastDot1xTimers = defaults.fastDot1xTimers;
+    	      this.network = defaults.network;
+    	      this.sourceIp = defaults.sourceIp;
         }
 
+        @CustomType.Setter
+        public Builder acctInterimInterval(@Nullable Integer acctInterimInterval) {
+
+            this.acctInterimInterval = acctInterimInterval;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authServersRetries(@Nullable Integer authServersRetries) {
+
+            this.authServersRetries = authServersRetries;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authServersTimeout(@Nullable Integer authServersTimeout) {
+
+            this.authServersTimeout = authServersTimeout;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder coaEnabled(@Nullable Boolean coaEnabled) {
+
+            this.coaEnabled = coaEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder coaPort(@Nullable Integer coaPort) {
+
+            this.coaPort = coaPort;
+            return this;
+        }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
 
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder fastDot1xTimers(@Nullable Boolean fastDot1xTimers) {
+
+            this.fastDot1xTimers = fastDot1xTimers;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder network(@Nullable String network) {
+
+            this.network = network;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sourceIp(@Nullable String sourceIp) {
+
+            this.sourceIp = sourceIp;
+            return this;
+        }
         public ApPortConfigMistNac build() {
             final var _resultValue = new ApPortConfigMistNac();
+            _resultValue.acctInterimInterval = acctInterimInterval;
+            _resultValue.authServersRetries = authServersRetries;
+            _resultValue.authServersTimeout = authServersTimeout;
+            _resultValue.coaEnabled = coaEnabled;
+            _resultValue.coaPort = coaPort;
             _resultValue.enabled = enabled;
+            _resultValue.fastDot1xTimers = fastDot1xTimers;
+            _resultValue.network = network;
+            _resultValue.sourceIp = sourceIp;
             return _resultValue;
         }
     }

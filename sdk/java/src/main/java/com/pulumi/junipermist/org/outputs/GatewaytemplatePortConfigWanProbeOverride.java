@@ -12,6 +12,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewaytemplatePortConfigWanProbeOverride {
+    private @Nullable List<String> ip6s;
     private @Nullable List<String> ips;
     /**
      * @return enum: `broadband`, `lte`
@@ -20,6 +21,9 @@ public final class GatewaytemplatePortConfigWanProbeOverride {
     private @Nullable String probeProfile;
 
     private GatewaytemplatePortConfigWanProbeOverride() {}
+    public List<String> ip6s() {
+        return this.ip6s == null ? List.of() : this.ip6s;
+    }
     public List<String> ips() {
         return this.ips == null ? List.of() : this.ips;
     }
@@ -40,15 +44,26 @@ public final class GatewaytemplatePortConfigWanProbeOverride {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> ip6s;
         private @Nullable List<String> ips;
         private @Nullable String probeProfile;
         public Builder() {}
         public Builder(GatewaytemplatePortConfigWanProbeOverride defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.ip6s = defaults.ip6s;
     	      this.ips = defaults.ips;
     	      this.probeProfile = defaults.probeProfile;
         }
 
+        @CustomType.Setter
+        public Builder ip6s(@Nullable List<String> ip6s) {
+
+            this.ip6s = ip6s;
+            return this;
+        }
+        public Builder ip6s(String... ip6s) {
+            return ip6s(List.of(ip6s));
+        }
         @CustomType.Setter
         public Builder ips(@Nullable List<String> ips) {
 
@@ -66,6 +81,7 @@ public final class GatewaytemplatePortConfigWanProbeOverride {
         }
         public GatewaytemplatePortConfigWanProbeOverride build() {
             final var _resultValue = new GatewaytemplatePortConfigWanProbeOverride();
+            _resultValue.ip6s = ip6s;
             _resultValue.ips = ips;
             _resultValue.probeProfile = probeProfile;
             return _resultValue;

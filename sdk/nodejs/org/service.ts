@@ -54,7 +54,7 @@ export class Service extends pulumi.CustomResource {
     }
 
     /**
-     * If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+     * If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
      */
     public readonly addresses!: pulumi.Output<string[]>;
     /**
@@ -204,7 +204,7 @@ export class Service extends pulumi.CustomResource {
  */
 export interface ServiceState {
     /**
-     * If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+     * If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
      */
     addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -283,7 +283,7 @@ export interface ServiceState {
  */
 export interface ServiceArgs {
     /**
-     * If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+     * If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
      */
     addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**

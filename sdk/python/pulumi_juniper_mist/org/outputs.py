@@ -21,6 +21,7 @@ __all__ = [
     'AlarmtemplateRulesDelivery',
     'ApitokenPrivilege',
     'DeviceprofileApAeroscout',
+    'DeviceprofileApAirista',
     'DeviceprofileApBleConfig',
     'DeviceprofileApEslConfig',
     'DeviceprofileApIpConfig',
@@ -77,6 +78,7 @@ __all__ = [
     'DeviceprofileGatewayPortConfigTrafficShaping',
     'DeviceprofileGatewayPortConfigVpnPaths',
     'DeviceprofileGatewayPortConfigVpnPathsTrafficShaping',
+    'DeviceprofileGatewayPortConfigWanExtraRoutes6',
     'DeviceprofileGatewayPortConfigWanExtraRoutes',
     'DeviceprofileGatewayPortConfigWanProbeOverride',
     'DeviceprofileGatewayPortConfigWanSourceNat',
@@ -148,6 +150,7 @@ __all__ = [
     'GatewaytemplatePortConfigTrafficShaping',
     'GatewaytemplatePortConfigVpnPaths',
     'GatewaytemplatePortConfigVpnPathsTrafficShaping',
+    'GatewaytemplatePortConfigWanExtraRoutes6',
     'GatewaytemplatePortConfigWanExtraRoutes',
     'GatewaytemplatePortConfigWanProbeOverride',
     'GatewaytemplatePortConfigWanSourceNat',
@@ -742,6 +745,45 @@ class DeviceprofileApAeroscout(dict):
         Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
         """
         return pulumi.get(self, "locate_connected")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class DeviceprofileApAirista(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 host: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool enabled: Whether to enable Airista config
+        :param _builtins.str host: Required if enabled, Airista server host
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable Airista config
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[_builtins.str]:
+        """
+        Required if enabled, Airista server host
+        """
+        return pulumi.get(self, "host")
 
     @_builtins.property
     @pulumi.getter
@@ -1812,9 +1854,51 @@ class DeviceprofileApPortConfigDynamicVlan(dict):
 
 @pulumi.output_type
 class DeviceprofileApPortConfigMistNac(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acctInterimInterval":
+            suggest = "acct_interim_interval"
+        elif key == "authServersRetries":
+            suggest = "auth_servers_retries"
+        elif key == "authServersTimeout":
+            suggest = "auth_servers_timeout"
+        elif key == "coaEnabled":
+            suggest = "coa_enabled"
+        elif key == "coaPort":
+            suggest = "coa_port"
+        elif key == "fastDot1xTimers":
+            suggest = "fast_dot1x_timers"
+        elif key == "sourceIp":
+            suggest = "source_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeviceprofileApPortConfigMistNac. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeviceprofileApPortConfigMistNac.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeviceprofileApPortConfigMistNac.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 enabled: Optional[_builtins.bool] = None):
+                 acct_interim_interval: Optional[_builtins.int] = None,
+                 auth_servers_retries: Optional[_builtins.int] = None,
+                 auth_servers_timeout: Optional[_builtins.int] = None,
+                 coa_enabled: Optional[_builtins.bool] = None,
+                 coa_port: Optional[_builtins.int] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 fast_dot1x_timers: Optional[_builtins.bool] = None,
+                 network: Optional[_builtins.str] = None,
+                 source_ip: Optional[_builtins.str] = None):
         """
+        :param _builtins.int acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+        :param _builtins.int auth_servers_retries: Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "retries" are set to value of `auth_servers_timeout`. "max-requests" is also set when setting `auth_servers_retries` is set to default value to 3.
+        :param _builtins.int auth_servers_timeout: Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `auth_servers_timeout`. "supplicant-timeout" is also set when setting `auth_servers_timeout` is set to default value of 10.
+        :param _builtins.bool coa_enabled: Allows a RADIUS server to dynamically modify the authorization status of a user session.
+        :param _builtins.int coa_port: the communication port used for “Change of Authorization” (CoA) messages
         :param _builtins.bool enabled: When enabled:
                  * `auth_servers` is ignored
                  * `acct_servers` is ignored
@@ -1822,9 +1906,68 @@ class DeviceprofileApPortConfigMistNac(dict):
                  * `coa_servers` is ignored
                  * `radsec` is ignored
                  * `coa_enabled` is assumed
+        :param _builtins.bool fast_dot1x_timers: If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.
+        :param _builtins.str network: Which network the mist nac server resides in
+        :param _builtins.str source_ip: In case there is a static IP for this network, we can specify it using source ip
         """
+        if acct_interim_interval is not None:
+            pulumi.set(__self__, "acct_interim_interval", acct_interim_interval)
+        if auth_servers_retries is not None:
+            pulumi.set(__self__, "auth_servers_retries", auth_servers_retries)
+        if auth_servers_timeout is not None:
+            pulumi.set(__self__, "auth_servers_timeout", auth_servers_timeout)
+        if coa_enabled is not None:
+            pulumi.set(__self__, "coa_enabled", coa_enabled)
+        if coa_port is not None:
+            pulumi.set(__self__, "coa_port", coa_port)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if fast_dot1x_timers is not None:
+            pulumi.set(__self__, "fast_dot1x_timers", fast_dot1x_timers)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if source_ip is not None:
+            pulumi.set(__self__, "source_ip", source_ip)
+
+    @_builtins.property
+    @pulumi.getter(name="acctInterimInterval")
+    def acct_interim_interval(self) -> Optional[_builtins.int]:
+        """
+        How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+        """
+        return pulumi.get(self, "acct_interim_interval")
+
+    @_builtins.property
+    @pulumi.getter(name="authServersRetries")
+    def auth_servers_retries(self) -> Optional[_builtins.int]:
+        """
+        Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "retries" are set to value of `auth_servers_timeout`. "max-requests" is also set when setting `auth_servers_retries` is set to default value to 3.
+        """
+        return pulumi.get(self, "auth_servers_retries")
+
+    @_builtins.property
+    @pulumi.getter(name="authServersTimeout")
+    def auth_servers_timeout(self) -> Optional[_builtins.int]:
+        """
+        Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `auth_servers_timeout`. "supplicant-timeout" is also set when setting `auth_servers_timeout` is set to default value of 10.
+        """
+        return pulumi.get(self, "auth_servers_timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="coaEnabled")
+    def coa_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Allows a RADIUS server to dynamically modify the authorization status of a user session.
+        """
+        return pulumi.get(self, "coa_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="coaPort")
+    def coa_port(self) -> Optional[_builtins.int]:
+        """
+        the communication port used for “Change of Authorization” (CoA) messages
+        """
+        return pulumi.get(self, "coa_port")
 
     @_builtins.property
     @pulumi.getter
@@ -1839,6 +1982,30 @@ class DeviceprofileApPortConfigMistNac(dict):
           * `coa_enabled` is assumed
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="fastDot1xTimers")
+    def fast_dot1x_timers(self) -> Optional[_builtins.bool]:
+        """
+        If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.
+        """
+        return pulumi.get(self, "fast_dot1x_timers")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional[_builtins.str]:
+        """
+        Which network the mist nac server resides in
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceIp")
+    def source_ip(self) -> Optional[_builtins.str]:
+        """
+        In case there is a static IP for this network, we can specify it using source ip
+        """
+        return pulumi.get(self, "source_ip")
 
 
 @pulumi.output_type
@@ -3828,14 +3995,14 @@ class DeviceprofileGatewayDhcpdConfigConfig(dict):
             suggest = "dns_suffixes"
         elif key == "fixedBindings":
             suggest = "fixed_bindings"
+        elif key == "ip6End":
+            suggest = "ip6_end"
+        elif key == "ip6Start":
+            suggest = "ip6_start"
         elif key == "ipEnd":
             suggest = "ip_end"
-        elif key == "ipEnd6":
-            suggest = "ip_end6"
         elif key == "ipStart":
             suggest = "ip_start"
-        elif key == "ipStart6":
-            suggest = "ip_start6"
         elif key == "leaseTime":
             suggest = "lease_time"
         elif key == "serverIdOverride":
@@ -3859,15 +4026,15 @@ class DeviceprofileGatewayDhcpdConfigConfig(dict):
                  dns_suffixes: Optional[Sequence[_builtins.str]] = None,
                  fixed_bindings: Optional[Mapping[str, 'outputs.DeviceprofileGatewayDhcpdConfigConfigFixedBindings']] = None,
                  gateway: Optional[_builtins.str] = None,
+                 ip6_end: Optional[_builtins.str] = None,
+                 ip6_start: Optional[_builtins.str] = None,
                  ip_end: Optional[_builtins.str] = None,
-                 ip_end6: Optional[_builtins.str] = None,
                  ip_start: Optional[_builtins.str] = None,
-                 ip_start6: Optional[_builtins.str] = None,
                  lease_time: Optional[_builtins.int] = None,
                  options: Optional[Mapping[str, 'outputs.DeviceprofileGatewayDhcpdConfigConfigOptions']] = None,
                  server_id_override: Optional[_builtins.bool] = None,
                  servers: Optional[Sequence[_builtins.str]] = None,
-                 servers6s: Optional[Sequence[_builtins.str]] = None,
+                 serversv6s: Optional[Sequence[_builtins.str]] = None,
                  type: Optional[_builtins.str] = None,
                  type6: Optional[_builtins.str] = None,
                  vendor_encapsulated: Optional[Mapping[str, 'outputs.DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated']] = None):
@@ -3876,16 +4043,16 @@ class DeviceprofileGatewayDhcpdConfigConfig(dict):
         :param Sequence[_builtins.str] dns_suffixes: If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
         :param Mapping[str, 'DeviceprofileGatewayDhcpdConfigConfigFixedBindingsArgs'] fixed_bindings: If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
         :param _builtins.str gateway: If `type`==`local` - optional, `ip` will be used if not provided
+        :param _builtins.str ip6_end: If `type6`==`local`
+        :param _builtins.str ip6_start: If `type6`==`local`
         :param _builtins.str ip_end: If `type`==`local`
-        :param _builtins.str ip_end6: If `type6`==`local`
         :param _builtins.str ip_start: If `type`==`local`
-        :param _builtins.str ip_start6: If `type6`==`local`
         :param _builtins.int lease_time: In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
         :param Mapping[str, 'DeviceprofileGatewayDhcpdConfigConfigOptionsArgs'] options: If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
         :param _builtins.bool server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
                should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         :param Sequence[_builtins.str] servers: If `type`==`relay`
-        :param Sequence[_builtins.str] servers6s: If `type6`==`relay`
+        :param Sequence[_builtins.str] serversv6s: If `type6`==`relay`
         :param _builtins.str type: enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
         :param _builtins.str type6: enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
         :param Mapping[str, 'DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs'] vendor_encapsulated: If `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
@@ -3900,14 +4067,14 @@ class DeviceprofileGatewayDhcpdConfigConfig(dict):
             pulumi.set(__self__, "fixed_bindings", fixed_bindings)
         if gateway is not None:
             pulumi.set(__self__, "gateway", gateway)
+        if ip6_end is not None:
+            pulumi.set(__self__, "ip6_end", ip6_end)
+        if ip6_start is not None:
+            pulumi.set(__self__, "ip6_start", ip6_start)
         if ip_end is not None:
             pulumi.set(__self__, "ip_end", ip_end)
-        if ip_end6 is not None:
-            pulumi.set(__self__, "ip_end6", ip_end6)
         if ip_start is not None:
             pulumi.set(__self__, "ip_start", ip_start)
-        if ip_start6 is not None:
-            pulumi.set(__self__, "ip_start6", ip_start6)
         if lease_time is not None:
             pulumi.set(__self__, "lease_time", lease_time)
         if options is not None:
@@ -3916,8 +4083,8 @@ class DeviceprofileGatewayDhcpdConfigConfig(dict):
             pulumi.set(__self__, "server_id_override", server_id_override)
         if servers is not None:
             pulumi.set(__self__, "servers", servers)
-        if servers6s is not None:
-            pulumi.set(__self__, "servers6s", servers6s)
+        if serversv6s is not None:
+            pulumi.set(__self__, "serversv6s", serversv6s)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if type6 is not None:
@@ -3959,6 +4126,22 @@ class DeviceprofileGatewayDhcpdConfigConfig(dict):
         return pulumi.get(self, "gateway")
 
     @_builtins.property
+    @pulumi.getter(name="ip6End")
+    def ip6_end(self) -> Optional[_builtins.str]:
+        """
+        If `type6`==`local`
+        """
+        return pulumi.get(self, "ip6_end")
+
+    @_builtins.property
+    @pulumi.getter(name="ip6Start")
+    def ip6_start(self) -> Optional[_builtins.str]:
+        """
+        If `type6`==`local`
+        """
+        return pulumi.get(self, "ip6_start")
+
+    @_builtins.property
     @pulumi.getter(name="ipEnd")
     def ip_end(self) -> Optional[_builtins.str]:
         """
@@ -3967,28 +4150,12 @@ class DeviceprofileGatewayDhcpdConfigConfig(dict):
         return pulumi.get(self, "ip_end")
 
     @_builtins.property
-    @pulumi.getter(name="ipEnd6")
-    def ip_end6(self) -> Optional[_builtins.str]:
-        """
-        If `type6`==`local`
-        """
-        return pulumi.get(self, "ip_end6")
-
-    @_builtins.property
     @pulumi.getter(name="ipStart")
     def ip_start(self) -> Optional[_builtins.str]:
         """
         If `type`==`local`
         """
         return pulumi.get(self, "ip_start")
-
-    @_builtins.property
-    @pulumi.getter(name="ipStart6")
-    def ip_start6(self) -> Optional[_builtins.str]:
-        """
-        If `type6`==`local`
-        """
-        return pulumi.get(self, "ip_start6")
 
     @_builtins.property
     @pulumi.getter(name="leaseTime")
@@ -4025,11 +4192,11 @@ class DeviceprofileGatewayDhcpdConfigConfig(dict):
 
     @_builtins.property
     @pulumi.getter
-    def servers6s(self) -> Optional[Sequence[_builtins.str]]:
+    def serversv6s(self) -> Optional[Sequence[_builtins.str]]:
         """
         If `type6`==`relay`
         """
-        return pulumi.get(self, "servers6s")
+        return pulumi.get(self, "serversv6s")
 
     @_builtins.property
     @pulumi.getter
@@ -4328,21 +4495,31 @@ class DeviceprofileGatewayIpConfigs(dict):
 
     def __init__(__self__, *,
                  ip: Optional[_builtins.str] = None,
+                 ip6: Optional[_builtins.str] = None,
                  netmask: Optional[_builtins.str] = None,
+                 netmask6: Optional[_builtins.str] = None,
                  secondary_ips: Optional[Sequence[_builtins.str]] = None,
-                 type: Optional[_builtins.str] = None):
+                 type: Optional[_builtins.str] = None,
+                 type6: Optional[_builtins.str] = None):
         """
         :param Sequence[_builtins.str] secondary_ips: Optional list of secondary IPs in CIDR format
         :param _builtins.str type: enum: `dhcp`, `static`
+        :param _builtins.str type6: enum: `autoconf`, `dhcp`, `disabled`, `static`
         """
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
+        if ip6 is not None:
+            pulumi.set(__self__, "ip6", ip6)
         if netmask is not None:
             pulumi.set(__self__, "netmask", netmask)
+        if netmask6 is not None:
+            pulumi.set(__self__, "netmask6", netmask6)
         if secondary_ips is not None:
             pulumi.set(__self__, "secondary_ips", secondary_ips)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if type6 is not None:
+            pulumi.set(__self__, "type6", type6)
 
     @_builtins.property
     @pulumi.getter
@@ -4351,8 +4528,18 @@ class DeviceprofileGatewayIpConfigs(dict):
 
     @_builtins.property
     @pulumi.getter
+    def ip6(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "ip6")
+
+    @_builtins.property
+    @pulumi.getter
     def netmask(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "netmask")
+
+    @_builtins.property
+    @pulumi.getter
+    def netmask6(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "netmask6")
 
     @_builtins.property
     @pulumi.getter(name="secondaryIps")
@@ -4369,6 +4556,14 @@ class DeviceprofileGatewayIpConfigs(dict):
         enum: `dhcp`, `static`
         """
         return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def type6(self) -> Optional[_builtins.str]:
+        """
+        enum: `autoconf`, `dhcp`, `disabled`, `static`
+        """
+        return pulumi.get(self, "type6")
 
 
 @pulumi.output_type
@@ -5660,6 +5855,8 @@ class DeviceprofileGatewayPortConfig(dict):
             suggest = "wan_ext_ip"
         elif key == "wanExtraRoutes":
             suggest = "wan_extra_routes"
+        elif key == "wanExtraRoutes6":
+            suggest = "wan_extra_routes6"
         elif key == "wanNetworks":
             suggest = "wan_networks"
         elif key == "wanProbeOverride":
@@ -5722,6 +5919,7 @@ class DeviceprofileGatewayPortConfig(dict):
                  wan_disable_speedtest: Optional[_builtins.bool] = None,
                  wan_ext_ip: Optional[_builtins.str] = None,
                  wan_extra_routes: Optional[Mapping[str, 'outputs.DeviceprofileGatewayPortConfigWanExtraRoutes']] = None,
+                 wan_extra_routes6: Optional[Mapping[str, 'outputs.DeviceprofileGatewayPortConfigWanExtraRoutes6']] = None,
                  wan_networks: Optional[Sequence[_builtins.str]] = None,
                  wan_probe_override: Optional['outputs.DeviceprofileGatewayPortConfigWanProbeOverride'] = None,
                  wan_source_nat: Optional['outputs.DeviceprofileGatewayPortConfigWanSourceNat'] = None,
@@ -5760,6 +5958,7 @@ class DeviceprofileGatewayPortConfig(dict):
         :param _builtins.bool wan_disable_speedtest: If `wan_type`==`wan`, disable speedtest
         :param _builtins.str wan_ext_ip: Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
         :param Mapping[str, 'DeviceprofileGatewayPortConfigWanExtraRoutesArgs'] wan_extra_routes: Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
+        :param Mapping[str, 'DeviceprofileGatewayPortConfigWanExtraRoutes6Args'] wan_extra_routes6: Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param Sequence[_builtins.str] wan_networks: Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
         :param 'DeviceprofileGatewayPortConfigWanProbeOverrideArgs' wan_probe_override: Only if `usage`==`wan`
         :param 'DeviceprofileGatewayPortConfigWanSourceNatArgs' wan_source_nat: Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
@@ -5846,6 +6045,8 @@ class DeviceprofileGatewayPortConfig(dict):
             pulumi.set(__self__, "wan_ext_ip", wan_ext_ip)
         if wan_extra_routes is not None:
             pulumi.set(__self__, "wan_extra_routes", wan_extra_routes)
+        if wan_extra_routes6 is not None:
+            pulumi.set(__self__, "wan_extra_routes6", wan_extra_routes6)
         if wan_networks is not None:
             pulumi.set(__self__, "wan_networks", wan_networks)
         if wan_probe_override is not None:
@@ -6160,6 +6361,14 @@ class DeviceprofileGatewayPortConfig(dict):
         return pulumi.get(self, "wan_extra_routes")
 
     @_builtins.property
+    @pulumi.getter(name="wanExtraRoutes6")
+    def wan_extra_routes6(self) -> Optional[Mapping[str, 'outputs.DeviceprofileGatewayPortConfigWanExtraRoutes6']]:
+        """
+        Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        """
+        return pulumi.get(self, "wan_extra_routes6")
+
+    @_builtins.property
     @pulumi.getter(name="wanNetworks")
     def wan_networks(self) -> Optional[Sequence[_builtins.str]]:
         """
@@ -6221,24 +6430,32 @@ class DeviceprofileGatewayPortConfigIpConfig(dict):
                  dns: Optional[Sequence[_builtins.str]] = None,
                  dns_suffixes: Optional[Sequence[_builtins.str]] = None,
                  gateway: Optional[_builtins.str] = None,
+                 gateway6: Optional[_builtins.str] = None,
                  ip: Optional[_builtins.str] = None,
+                 ip6: Optional[_builtins.str] = None,
                  netmask: Optional[_builtins.str] = None,
+                 netmask6: Optional[_builtins.str] = None,
                  network: Optional[_builtins.str] = None,
                  poser_password: Optional[_builtins.str] = None,
                  pppoe_auth: Optional[_builtins.str] = None,
                  pppoe_username: Optional[_builtins.str] = None,
-                 type: Optional[_builtins.str] = None):
+                 type: Optional[_builtins.str] = None,
+                 type6: Optional[_builtins.str] = None):
         """
         :param Sequence[_builtins.str] dns: Except for out-of_band interface (vme/em0/fxp0)
         :param Sequence[_builtins.str] dns_suffixes: Except for out-of_band interface (vme/em0/fxp0)
         :param _builtins.str gateway: Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
+        :param _builtins.str gateway6: Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. "2001:db8::1") or a Variable (i.e. "{{myvar}}")
         :param _builtins.str ip: Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
+        :param _builtins.str ip6: Interface IPv6 Address (i.e. "2001:db8::123") or a Variable (i.e. "{{myvar}}")
         :param _builtins.str netmask: Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
+        :param _builtins.str netmask6: Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. "/64") or a Variable (i.e. "{{myvar}}")
         :param _builtins.str network: Optional, the network to be used for mgmt
         :param _builtins.str poser_password: If `type`==`pppoe`
         :param _builtins.str pppoe_auth: if `type`==`pppoe`. enum: `chap`, `none`, `pap`
         :param _builtins.str pppoe_username: If `type`==`pppoe`
         :param _builtins.str type: enum: `dhcp`, `pppoe`, `static`
+        :param _builtins.str type6: enum: `autoconf`, `dhcp`, `static`
         """
         if dns is not None:
             pulumi.set(__self__, "dns", dns)
@@ -6246,10 +6463,16 @@ class DeviceprofileGatewayPortConfigIpConfig(dict):
             pulumi.set(__self__, "dns_suffixes", dns_suffixes)
         if gateway is not None:
             pulumi.set(__self__, "gateway", gateway)
+        if gateway6 is not None:
+            pulumi.set(__self__, "gateway6", gateway6)
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
+        if ip6 is not None:
+            pulumi.set(__self__, "ip6", ip6)
         if netmask is not None:
             pulumi.set(__self__, "netmask", netmask)
+        if netmask6 is not None:
+            pulumi.set(__self__, "netmask6", netmask6)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if poser_password is not None:
@@ -6260,6 +6483,8 @@ class DeviceprofileGatewayPortConfigIpConfig(dict):
             pulumi.set(__self__, "pppoe_username", pppoe_username)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if type6 is not None:
+            pulumi.set(__self__, "type6", type6)
 
     @_builtins.property
     @pulumi.getter
@@ -6287,6 +6512,14 @@ class DeviceprofileGatewayPortConfigIpConfig(dict):
 
     @_builtins.property
     @pulumi.getter
+    def gateway6(self) -> Optional[_builtins.str]:
+        """
+        Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. "2001:db8::1") or a Variable (i.e. "{{myvar}}")
+        """
+        return pulumi.get(self, "gateway6")
+
+    @_builtins.property
+    @pulumi.getter
     def ip(self) -> Optional[_builtins.str]:
         """
         Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
@@ -6295,11 +6528,27 @@ class DeviceprofileGatewayPortConfigIpConfig(dict):
 
     @_builtins.property
     @pulumi.getter
+    def ip6(self) -> Optional[_builtins.str]:
+        """
+        Interface IPv6 Address (i.e. "2001:db8::123") or a Variable (i.e. "{{myvar}}")
+        """
+        return pulumi.get(self, "ip6")
+
+    @_builtins.property
+    @pulumi.getter
     def netmask(self) -> Optional[_builtins.str]:
         """
         Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
         """
         return pulumi.get(self, "netmask")
+
+    @_builtins.property
+    @pulumi.getter
+    def netmask6(self) -> Optional[_builtins.str]:
+        """
+        Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. "/64") or a Variable (i.e. "{{myvar}}")
+        """
+        return pulumi.get(self, "netmask6")
 
     @_builtins.property
     @pulumi.getter
@@ -6340,6 +6589,14 @@ class DeviceprofileGatewayPortConfigIpConfig(dict):
         enum: `dhcp`, `pppoe`, `static`
         """
         return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def type6(self) -> Optional[_builtins.str]:
+        """
+        enum: `autoconf`, `dhcp`, `static`
+        """
+        return pulumi.get(self, "type6")
 
 
 @pulumi.output_type
@@ -6543,6 +6800,19 @@ class DeviceprofileGatewayPortConfigVpnPathsTrafficShaping(dict):
 
 
 @pulumi.output_type
+class DeviceprofileGatewayPortConfigWanExtraRoutes6(dict):
+    def __init__(__self__, *,
+                 via: Optional[_builtins.str] = None):
+        if via is not None:
+            pulumi.set(__self__, "via", via)
+
+    @_builtins.property
+    @pulumi.getter
+    def via(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "via")
+
+
+@pulumi.output_type
 class DeviceprofileGatewayPortConfigWanExtraRoutes(dict):
     def __init__(__self__, *,
                  via: Optional[_builtins.str] = None):
@@ -6575,15 +6845,23 @@ class DeviceprofileGatewayPortConfigWanProbeOverride(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 ip6s: Optional[Sequence[_builtins.str]] = None,
                  ips: Optional[Sequence[_builtins.str]] = None,
                  probe_profile: Optional[_builtins.str] = None):
         """
         :param _builtins.str probe_profile: enum: `broadband`, `lte`
         """
+        if ip6s is not None:
+            pulumi.set(__self__, "ip6s", ip6s)
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
         if probe_profile is not None:
             pulumi.set(__self__, "probe_profile", probe_profile)
+
+    @_builtins.property
+    @pulumi.getter
+    def ip6s(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "ip6s")
 
     @_builtins.property
     @pulumi.getter
@@ -7473,6 +7751,10 @@ class DeviceprofileGatewayTunnelConfigs(dict):
             suggest = "ipsec_proposals"
         elif key == "localId":
             suggest = "local_id"
+        elif key == "localSubnets":
+            suggest = "local_subnets"
+        elif key == "remoteSubnets":
+            suggest = "remote_subnets"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DeviceprofileGatewayTunnelConfigs. Access the value via the '{suggest}' property getter instead.")
@@ -7493,6 +7775,7 @@ class DeviceprofileGatewayTunnelConfigs(dict):
                  ipsec_lifetime: Optional[_builtins.int] = None,
                  ipsec_proposals: Optional[Sequence['outputs.DeviceprofileGatewayTunnelConfigsIpsecProposal']] = None,
                  local_id: Optional[_builtins.str] = None,
+                 local_subnets: Optional[Sequence[_builtins.str]] = None,
                  mode: Optional[_builtins.str] = None,
                  networks: Optional[Sequence[_builtins.str]] = None,
                  primary: Optional['outputs.DeviceprofileGatewayTunnelConfigsPrimary'] = None,
@@ -7500,6 +7783,7 @@ class DeviceprofileGatewayTunnelConfigs(dict):
                  protocol: Optional[_builtins.str] = None,
                  provider: Optional[_builtins.str] = None,
                  psk: Optional[_builtins.str] = None,
+                 remote_subnets: Optional[Sequence[_builtins.str]] = None,
                  secondary: Optional['outputs.DeviceprofileGatewayTunnelConfigsSecondary'] = None,
                  version: Optional[_builtins.str] = None):
         """
@@ -7510,6 +7794,7 @@ class DeviceprofileGatewayTunnelConfigs(dict):
         :param _builtins.int ipsec_lifetime: Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
         :param Sequence['DeviceprofileGatewayTunnelConfigsIpsecProposalArgs'] ipsec_proposals: Only if  `provider`==`custom-ipsec`
         :param _builtins.str local_id: Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        :param Sequence[_builtins.str] local_subnets: List of Local protected subnet for policy-based IPSec negotiation
         :param _builtins.str mode: Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
         :param Sequence[_builtins.str] networks: If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
         :param 'DeviceprofileGatewayTunnelConfigsPrimaryArgs' primary: Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
@@ -7517,6 +7802,7 @@ class DeviceprofileGatewayTunnelConfigs(dict):
         :param _builtins.str protocol: Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
         :param _builtins.str provider: Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
         :param _builtins.str psk: Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        :param Sequence[_builtins.str] remote_subnets: List of Remote protected subnet for policy-based IPSec negotiation
         :param 'DeviceprofileGatewayTunnelConfigsSecondaryArgs' secondary: Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         :param _builtins.str version: Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
         """
@@ -7534,6 +7820,8 @@ class DeviceprofileGatewayTunnelConfigs(dict):
             pulumi.set(__self__, "ipsec_proposals", ipsec_proposals)
         if local_id is not None:
             pulumi.set(__self__, "local_id", local_id)
+        if local_subnets is not None:
+            pulumi.set(__self__, "local_subnets", local_subnets)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if networks is not None:
@@ -7548,6 +7836,8 @@ class DeviceprofileGatewayTunnelConfigs(dict):
             pulumi.set(__self__, "provider", provider)
         if psk is not None:
             pulumi.set(__self__, "psk", psk)
+        if remote_subnets is not None:
+            pulumi.set(__self__, "remote_subnets", remote_subnets)
         if secondary is not None:
             pulumi.set(__self__, "secondary", secondary)
         if version is not None:
@@ -7610,6 +7900,14 @@ class DeviceprofileGatewayTunnelConfigs(dict):
         return pulumi.get(self, "local_id")
 
     @_builtins.property
+    @pulumi.getter(name="localSubnets")
+    def local_subnets(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of Local protected subnet for policy-based IPSec negotiation
+        """
+        return pulumi.get(self, "local_subnets")
+
+    @_builtins.property
     @pulumi.getter
     def mode(self) -> Optional[_builtins.str]:
         """
@@ -7664,6 +7962,14 @@ class DeviceprofileGatewayTunnelConfigs(dict):
         Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         """
         return pulumi.get(self, "psk")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteSubnets")
+    def remote_subnets(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of Remote protected subnet for policy-based IPSec negotiation
+        """
+        return pulumi.get(self, "remote_subnets")
 
     @_builtins.property
     @pulumi.getter
@@ -9726,14 +10032,14 @@ class GatewaytemplateDhcpdConfigConfig(dict):
             suggest = "dns_suffixes"
         elif key == "fixedBindings":
             suggest = "fixed_bindings"
+        elif key == "ip6End":
+            suggest = "ip6_end"
+        elif key == "ip6Start":
+            suggest = "ip6_start"
         elif key == "ipEnd":
             suggest = "ip_end"
-        elif key == "ipEnd6":
-            suggest = "ip_end6"
         elif key == "ipStart":
             suggest = "ip_start"
-        elif key == "ipStart6":
-            suggest = "ip_start6"
         elif key == "leaseTime":
             suggest = "lease_time"
         elif key == "serverIdOverride":
@@ -9757,15 +10063,15 @@ class GatewaytemplateDhcpdConfigConfig(dict):
                  dns_suffixes: Optional[Sequence[_builtins.str]] = None,
                  fixed_bindings: Optional[Mapping[str, 'outputs.GatewaytemplateDhcpdConfigConfigFixedBindings']] = None,
                  gateway: Optional[_builtins.str] = None,
+                 ip6_end: Optional[_builtins.str] = None,
+                 ip6_start: Optional[_builtins.str] = None,
                  ip_end: Optional[_builtins.str] = None,
-                 ip_end6: Optional[_builtins.str] = None,
                  ip_start: Optional[_builtins.str] = None,
-                 ip_start6: Optional[_builtins.str] = None,
                  lease_time: Optional[_builtins.int] = None,
                  options: Optional[Mapping[str, 'outputs.GatewaytemplateDhcpdConfigConfigOptions']] = None,
                  server_id_override: Optional[_builtins.bool] = None,
                  servers: Optional[Sequence[_builtins.str]] = None,
-                 servers6s: Optional[Sequence[_builtins.str]] = None,
+                 serversv6s: Optional[Sequence[_builtins.str]] = None,
                  type: Optional[_builtins.str] = None,
                  type6: Optional[_builtins.str] = None,
                  vendor_encapsulated: Optional[Mapping[str, 'outputs.GatewaytemplateDhcpdConfigConfigVendorEncapsulated']] = None):
@@ -9774,16 +10080,16 @@ class GatewaytemplateDhcpdConfigConfig(dict):
         :param Sequence[_builtins.str] dns_suffixes: If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
         :param Mapping[str, 'GatewaytemplateDhcpdConfigConfigFixedBindingsArgs'] fixed_bindings: If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
         :param _builtins.str gateway: If `type`==`local` - optional, `ip` will be used if not provided
+        :param _builtins.str ip6_end: If `type6`==`local`
+        :param _builtins.str ip6_start: If `type6`==`local`
         :param _builtins.str ip_end: If `type`==`local`
-        :param _builtins.str ip_end6: If `type6`==`local`
         :param _builtins.str ip_start: If `type`==`local`
-        :param _builtins.str ip_start6: If `type6`==`local`
         :param _builtins.int lease_time: In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
         :param Mapping[str, 'GatewaytemplateDhcpdConfigConfigOptionsArgs'] options: If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
         :param _builtins.bool server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
                should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         :param Sequence[_builtins.str] servers: If `type`==`relay`
-        :param Sequence[_builtins.str] servers6s: If `type6`==`relay`
+        :param Sequence[_builtins.str] serversv6s: If `type6`==`relay`
         :param _builtins.str type: enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
         :param _builtins.str type6: enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
         :param Mapping[str, 'GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs'] vendor_encapsulated: If `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
@@ -9798,14 +10104,14 @@ class GatewaytemplateDhcpdConfigConfig(dict):
             pulumi.set(__self__, "fixed_bindings", fixed_bindings)
         if gateway is not None:
             pulumi.set(__self__, "gateway", gateway)
+        if ip6_end is not None:
+            pulumi.set(__self__, "ip6_end", ip6_end)
+        if ip6_start is not None:
+            pulumi.set(__self__, "ip6_start", ip6_start)
         if ip_end is not None:
             pulumi.set(__self__, "ip_end", ip_end)
-        if ip_end6 is not None:
-            pulumi.set(__self__, "ip_end6", ip_end6)
         if ip_start is not None:
             pulumi.set(__self__, "ip_start", ip_start)
-        if ip_start6 is not None:
-            pulumi.set(__self__, "ip_start6", ip_start6)
         if lease_time is not None:
             pulumi.set(__self__, "lease_time", lease_time)
         if options is not None:
@@ -9814,8 +10120,8 @@ class GatewaytemplateDhcpdConfigConfig(dict):
             pulumi.set(__self__, "server_id_override", server_id_override)
         if servers is not None:
             pulumi.set(__self__, "servers", servers)
-        if servers6s is not None:
-            pulumi.set(__self__, "servers6s", servers6s)
+        if serversv6s is not None:
+            pulumi.set(__self__, "serversv6s", serversv6s)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if type6 is not None:
@@ -9857,6 +10163,22 @@ class GatewaytemplateDhcpdConfigConfig(dict):
         return pulumi.get(self, "gateway")
 
     @_builtins.property
+    @pulumi.getter(name="ip6End")
+    def ip6_end(self) -> Optional[_builtins.str]:
+        """
+        If `type6`==`local`
+        """
+        return pulumi.get(self, "ip6_end")
+
+    @_builtins.property
+    @pulumi.getter(name="ip6Start")
+    def ip6_start(self) -> Optional[_builtins.str]:
+        """
+        If `type6`==`local`
+        """
+        return pulumi.get(self, "ip6_start")
+
+    @_builtins.property
     @pulumi.getter(name="ipEnd")
     def ip_end(self) -> Optional[_builtins.str]:
         """
@@ -9865,28 +10187,12 @@ class GatewaytemplateDhcpdConfigConfig(dict):
         return pulumi.get(self, "ip_end")
 
     @_builtins.property
-    @pulumi.getter(name="ipEnd6")
-    def ip_end6(self) -> Optional[_builtins.str]:
-        """
-        If `type6`==`local`
-        """
-        return pulumi.get(self, "ip_end6")
-
-    @_builtins.property
     @pulumi.getter(name="ipStart")
     def ip_start(self) -> Optional[_builtins.str]:
         """
         If `type`==`local`
         """
         return pulumi.get(self, "ip_start")
-
-    @_builtins.property
-    @pulumi.getter(name="ipStart6")
-    def ip_start6(self) -> Optional[_builtins.str]:
-        """
-        If `type6`==`local`
-        """
-        return pulumi.get(self, "ip_start6")
 
     @_builtins.property
     @pulumi.getter(name="leaseTime")
@@ -9923,11 +10229,11 @@ class GatewaytemplateDhcpdConfigConfig(dict):
 
     @_builtins.property
     @pulumi.getter
-    def servers6s(self) -> Optional[Sequence[_builtins.str]]:
+    def serversv6s(self) -> Optional[Sequence[_builtins.str]]:
         """
         If `type6`==`relay`
         """
-        return pulumi.get(self, "servers6s")
+        return pulumi.get(self, "serversv6s")
 
     @_builtins.property
     @pulumi.getter
@@ -10226,21 +10532,31 @@ class GatewaytemplateIpConfigs(dict):
 
     def __init__(__self__, *,
                  ip: Optional[_builtins.str] = None,
+                 ip6: Optional[_builtins.str] = None,
                  netmask: Optional[_builtins.str] = None,
+                 netmask6: Optional[_builtins.str] = None,
                  secondary_ips: Optional[Sequence[_builtins.str]] = None,
-                 type: Optional[_builtins.str] = None):
+                 type: Optional[_builtins.str] = None,
+                 type6: Optional[_builtins.str] = None):
         """
         :param Sequence[_builtins.str] secondary_ips: Optional list of secondary IPs in CIDR format
         :param _builtins.str type: enum: `dhcp`, `static`
+        :param _builtins.str type6: enum: `autoconf`, `dhcp`, `disabled`, `static`
         """
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
+        if ip6 is not None:
+            pulumi.set(__self__, "ip6", ip6)
         if netmask is not None:
             pulumi.set(__self__, "netmask", netmask)
+        if netmask6 is not None:
+            pulumi.set(__self__, "netmask6", netmask6)
         if secondary_ips is not None:
             pulumi.set(__self__, "secondary_ips", secondary_ips)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if type6 is not None:
+            pulumi.set(__self__, "type6", type6)
 
     @_builtins.property
     @pulumi.getter
@@ -10249,8 +10565,18 @@ class GatewaytemplateIpConfigs(dict):
 
     @_builtins.property
     @pulumi.getter
+    def ip6(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "ip6")
+
+    @_builtins.property
+    @pulumi.getter
     def netmask(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "netmask")
+
+    @_builtins.property
+    @pulumi.getter
+    def netmask6(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "netmask6")
 
     @_builtins.property
     @pulumi.getter(name="secondaryIps")
@@ -10267,6 +10593,14 @@ class GatewaytemplateIpConfigs(dict):
         enum: `dhcp`, `static`
         """
         return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def type6(self) -> Optional[_builtins.str]:
+        """
+        enum: `autoconf`, `dhcp`, `disabled`, `static`
+        """
+        return pulumi.get(self, "type6")
 
 
 @pulumi.output_type
@@ -11558,6 +11892,8 @@ class GatewaytemplatePortConfig(dict):
             suggest = "wan_ext_ip"
         elif key == "wanExtraRoutes":
             suggest = "wan_extra_routes"
+        elif key == "wanExtraRoutes6":
+            suggest = "wan_extra_routes6"
         elif key == "wanNetworks":
             suggest = "wan_networks"
         elif key == "wanProbeOverride":
@@ -11620,6 +11956,7 @@ class GatewaytemplatePortConfig(dict):
                  wan_disable_speedtest: Optional[_builtins.bool] = None,
                  wan_ext_ip: Optional[_builtins.str] = None,
                  wan_extra_routes: Optional[Mapping[str, 'outputs.GatewaytemplatePortConfigWanExtraRoutes']] = None,
+                 wan_extra_routes6: Optional[Mapping[str, 'outputs.GatewaytemplatePortConfigWanExtraRoutes6']] = None,
                  wan_networks: Optional[Sequence[_builtins.str]] = None,
                  wan_probe_override: Optional['outputs.GatewaytemplatePortConfigWanProbeOverride'] = None,
                  wan_source_nat: Optional['outputs.GatewaytemplatePortConfigWanSourceNat'] = None,
@@ -11658,6 +11995,7 @@ class GatewaytemplatePortConfig(dict):
         :param _builtins.bool wan_disable_speedtest: If `wan_type`==`wan`, disable speedtest
         :param _builtins.str wan_ext_ip: Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
         :param Mapping[str, 'GatewaytemplatePortConfigWanExtraRoutesArgs'] wan_extra_routes: Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
+        :param Mapping[str, 'GatewaytemplatePortConfigWanExtraRoutes6Args'] wan_extra_routes6: Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param Sequence[_builtins.str] wan_networks: Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
         :param 'GatewaytemplatePortConfigWanProbeOverrideArgs' wan_probe_override: Only if `usage`==`wan`
         :param 'GatewaytemplatePortConfigWanSourceNatArgs' wan_source_nat: Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
@@ -11744,6 +12082,8 @@ class GatewaytemplatePortConfig(dict):
             pulumi.set(__self__, "wan_ext_ip", wan_ext_ip)
         if wan_extra_routes is not None:
             pulumi.set(__self__, "wan_extra_routes", wan_extra_routes)
+        if wan_extra_routes6 is not None:
+            pulumi.set(__self__, "wan_extra_routes6", wan_extra_routes6)
         if wan_networks is not None:
             pulumi.set(__self__, "wan_networks", wan_networks)
         if wan_probe_override is not None:
@@ -12058,6 +12398,14 @@ class GatewaytemplatePortConfig(dict):
         return pulumi.get(self, "wan_extra_routes")
 
     @_builtins.property
+    @pulumi.getter(name="wanExtraRoutes6")
+    def wan_extra_routes6(self) -> Optional[Mapping[str, 'outputs.GatewaytemplatePortConfigWanExtraRoutes6']]:
+        """
+        Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        """
+        return pulumi.get(self, "wan_extra_routes6")
+
+    @_builtins.property
     @pulumi.getter(name="wanNetworks")
     def wan_networks(self) -> Optional[Sequence[_builtins.str]]:
         """
@@ -12119,24 +12467,32 @@ class GatewaytemplatePortConfigIpConfig(dict):
                  dns: Optional[Sequence[_builtins.str]] = None,
                  dns_suffixes: Optional[Sequence[_builtins.str]] = None,
                  gateway: Optional[_builtins.str] = None,
+                 gateway6: Optional[_builtins.str] = None,
                  ip: Optional[_builtins.str] = None,
+                 ip6: Optional[_builtins.str] = None,
                  netmask: Optional[_builtins.str] = None,
+                 netmask6: Optional[_builtins.str] = None,
                  network: Optional[_builtins.str] = None,
                  poser_password: Optional[_builtins.str] = None,
                  pppoe_auth: Optional[_builtins.str] = None,
                  pppoe_username: Optional[_builtins.str] = None,
-                 type: Optional[_builtins.str] = None):
+                 type: Optional[_builtins.str] = None,
+                 type6: Optional[_builtins.str] = None):
         """
         :param Sequence[_builtins.str] dns: Except for out-of_band interface (vme/em0/fxp0)
         :param Sequence[_builtins.str] dns_suffixes: Except for out-of_band interface (vme/em0/fxp0)
         :param _builtins.str gateway: Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
+        :param _builtins.str gateway6: Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. "2001:db8::1") or a Variable (i.e. "{{myvar}}")
         :param _builtins.str ip: Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
+        :param _builtins.str ip6: Interface IPv6 Address (i.e. "2001:db8::123") or a Variable (i.e. "{{myvar}}")
         :param _builtins.str netmask: Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
+        :param _builtins.str netmask6: Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. "/64") or a Variable (i.e. "{{myvar}}")
         :param _builtins.str network: Optional, the network to be used for mgmt
         :param _builtins.str poser_password: If `type`==`pppoe`
         :param _builtins.str pppoe_auth: if `type`==`pppoe`. enum: `chap`, `none`, `pap`
         :param _builtins.str pppoe_username: If `type`==`pppoe`
         :param _builtins.str type: enum: `dhcp`, `pppoe`, `static`
+        :param _builtins.str type6: enum: `autoconf`, `dhcp`, `static`
         """
         if dns is not None:
             pulumi.set(__self__, "dns", dns)
@@ -12144,10 +12500,16 @@ class GatewaytemplatePortConfigIpConfig(dict):
             pulumi.set(__self__, "dns_suffixes", dns_suffixes)
         if gateway is not None:
             pulumi.set(__self__, "gateway", gateway)
+        if gateway6 is not None:
+            pulumi.set(__self__, "gateway6", gateway6)
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
+        if ip6 is not None:
+            pulumi.set(__self__, "ip6", ip6)
         if netmask is not None:
             pulumi.set(__self__, "netmask", netmask)
+        if netmask6 is not None:
+            pulumi.set(__self__, "netmask6", netmask6)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if poser_password is not None:
@@ -12158,6 +12520,8 @@ class GatewaytemplatePortConfigIpConfig(dict):
             pulumi.set(__self__, "pppoe_username", pppoe_username)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if type6 is not None:
+            pulumi.set(__self__, "type6", type6)
 
     @_builtins.property
     @pulumi.getter
@@ -12185,6 +12549,14 @@ class GatewaytemplatePortConfigIpConfig(dict):
 
     @_builtins.property
     @pulumi.getter
+    def gateway6(self) -> Optional[_builtins.str]:
+        """
+        Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. "2001:db8::1") or a Variable (i.e. "{{myvar}}")
+        """
+        return pulumi.get(self, "gateway6")
+
+    @_builtins.property
+    @pulumi.getter
     def ip(self) -> Optional[_builtins.str]:
         """
         Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
@@ -12193,11 +12565,27 @@ class GatewaytemplatePortConfigIpConfig(dict):
 
     @_builtins.property
     @pulumi.getter
+    def ip6(self) -> Optional[_builtins.str]:
+        """
+        Interface IPv6 Address (i.e. "2001:db8::123") or a Variable (i.e. "{{myvar}}")
+        """
+        return pulumi.get(self, "ip6")
+
+    @_builtins.property
+    @pulumi.getter
     def netmask(self) -> Optional[_builtins.str]:
         """
         Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
         """
         return pulumi.get(self, "netmask")
+
+    @_builtins.property
+    @pulumi.getter
+    def netmask6(self) -> Optional[_builtins.str]:
+        """
+        Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. "/64") or a Variable (i.e. "{{myvar}}")
+        """
+        return pulumi.get(self, "netmask6")
 
     @_builtins.property
     @pulumi.getter
@@ -12238,6 +12626,14 @@ class GatewaytemplatePortConfigIpConfig(dict):
         enum: `dhcp`, `pppoe`, `static`
         """
         return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def type6(self) -> Optional[_builtins.str]:
+        """
+        enum: `autoconf`, `dhcp`, `static`
+        """
+        return pulumi.get(self, "type6")
 
 
 @pulumi.output_type
@@ -12441,6 +12837,19 @@ class GatewaytemplatePortConfigVpnPathsTrafficShaping(dict):
 
 
 @pulumi.output_type
+class GatewaytemplatePortConfigWanExtraRoutes6(dict):
+    def __init__(__self__, *,
+                 via: Optional[_builtins.str] = None):
+        if via is not None:
+            pulumi.set(__self__, "via", via)
+
+    @_builtins.property
+    @pulumi.getter
+    def via(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "via")
+
+
+@pulumi.output_type
 class GatewaytemplatePortConfigWanExtraRoutes(dict):
     def __init__(__self__, *,
                  via: Optional[_builtins.str] = None):
@@ -12473,15 +12882,23 @@ class GatewaytemplatePortConfigWanProbeOverride(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 ip6s: Optional[Sequence[_builtins.str]] = None,
                  ips: Optional[Sequence[_builtins.str]] = None,
                  probe_profile: Optional[_builtins.str] = None):
         """
         :param _builtins.str probe_profile: enum: `broadband`, `lte`
         """
+        if ip6s is not None:
+            pulumi.set(__self__, "ip6s", ip6s)
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
         if probe_profile is not None:
             pulumi.set(__self__, "probe_profile", probe_profile)
+
+    @_builtins.property
+    @pulumi.getter
+    def ip6s(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "ip6s")
 
     @_builtins.property
     @pulumi.getter
@@ -13371,6 +13788,10 @@ class GatewaytemplateTunnelConfigs(dict):
             suggest = "ipsec_proposals"
         elif key == "localId":
             suggest = "local_id"
+        elif key == "localSubnets":
+            suggest = "local_subnets"
+        elif key == "remoteSubnets":
+            suggest = "remote_subnets"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GatewaytemplateTunnelConfigs. Access the value via the '{suggest}' property getter instead.")
@@ -13391,6 +13812,7 @@ class GatewaytemplateTunnelConfigs(dict):
                  ipsec_lifetime: Optional[_builtins.int] = None,
                  ipsec_proposals: Optional[Sequence['outputs.GatewaytemplateTunnelConfigsIpsecProposal']] = None,
                  local_id: Optional[_builtins.str] = None,
+                 local_subnets: Optional[Sequence[_builtins.str]] = None,
                  mode: Optional[_builtins.str] = None,
                  networks: Optional[Sequence[_builtins.str]] = None,
                  primary: Optional['outputs.GatewaytemplateTunnelConfigsPrimary'] = None,
@@ -13398,6 +13820,7 @@ class GatewaytemplateTunnelConfigs(dict):
                  protocol: Optional[_builtins.str] = None,
                  provider: Optional[_builtins.str] = None,
                  psk: Optional[_builtins.str] = None,
+                 remote_subnets: Optional[Sequence[_builtins.str]] = None,
                  secondary: Optional['outputs.GatewaytemplateTunnelConfigsSecondary'] = None,
                  version: Optional[_builtins.str] = None):
         """
@@ -13408,6 +13831,7 @@ class GatewaytemplateTunnelConfigs(dict):
         :param _builtins.int ipsec_lifetime: Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
         :param Sequence['GatewaytemplateTunnelConfigsIpsecProposalArgs'] ipsec_proposals: Only if  `provider`==`custom-ipsec`
         :param _builtins.str local_id: Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        :param Sequence[_builtins.str] local_subnets: List of Local protected subnet for policy-based IPSec negotiation
         :param _builtins.str mode: Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
         :param Sequence[_builtins.str] networks: If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
         :param 'GatewaytemplateTunnelConfigsPrimaryArgs' primary: Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
@@ -13415,6 +13839,7 @@ class GatewaytemplateTunnelConfigs(dict):
         :param _builtins.str protocol: Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
         :param _builtins.str provider: Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
         :param _builtins.str psk: Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        :param Sequence[_builtins.str] remote_subnets: List of Remote protected subnet for policy-based IPSec negotiation
         :param 'GatewaytemplateTunnelConfigsSecondaryArgs' secondary: Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         :param _builtins.str version: Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
         """
@@ -13432,6 +13857,8 @@ class GatewaytemplateTunnelConfigs(dict):
             pulumi.set(__self__, "ipsec_proposals", ipsec_proposals)
         if local_id is not None:
             pulumi.set(__self__, "local_id", local_id)
+        if local_subnets is not None:
+            pulumi.set(__self__, "local_subnets", local_subnets)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if networks is not None:
@@ -13446,6 +13873,8 @@ class GatewaytemplateTunnelConfigs(dict):
             pulumi.set(__self__, "provider", provider)
         if psk is not None:
             pulumi.set(__self__, "psk", psk)
+        if remote_subnets is not None:
+            pulumi.set(__self__, "remote_subnets", remote_subnets)
         if secondary is not None:
             pulumi.set(__self__, "secondary", secondary)
         if version is not None:
@@ -13508,6 +13937,14 @@ class GatewaytemplateTunnelConfigs(dict):
         return pulumi.get(self, "local_id")
 
     @_builtins.property
+    @pulumi.getter(name="localSubnets")
+    def local_subnets(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of Local protected subnet for policy-based IPSec negotiation
+        """
+        return pulumi.get(self, "local_subnets")
+
+    @_builtins.property
     @pulumi.getter
     def mode(self) -> Optional[_builtins.str]:
         """
@@ -13562,6 +13999,14 @@ class GatewaytemplateTunnelConfigs(dict):
         Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         """
         return pulumi.get(self, "psk")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteSubnets")
+    def remote_subnets(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of Remote protected subnet for policy-based IPSec negotiation
+        """
+        return pulumi.get(self, "remote_subnets")
 
     @_builtins.property
     @pulumi.getter
@@ -16946,6 +17391,8 @@ class NetworktemplatePortMirroring(dict):
             suggest = "input_port_ids_egresses"
         elif key == "inputPortIdsIngresses":
             suggest = "input_port_ids_ingresses"
+        elif key == "outputIpAddress":
+            suggest = "output_ip_address"
         elif key == "outputNetwork":
             suggest = "output_network"
         elif key == "outputPortId":
@@ -16966,14 +17413,16 @@ class NetworktemplatePortMirroring(dict):
                  input_networks_ingresses: Optional[Sequence[_builtins.str]] = None,
                  input_port_ids_egresses: Optional[Sequence[_builtins.str]] = None,
                  input_port_ids_ingresses: Optional[Sequence[_builtins.str]] = None,
+                 output_ip_address: Optional[_builtins.str] = None,
                  output_network: Optional[_builtins.str] = None,
                  output_port_id: Optional[_builtins.str] = None):
         """
         :param Sequence[_builtins.str] input_networks_ingresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         :param Sequence[_builtins.str] input_port_ids_egresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         :param Sequence[_builtins.str] input_port_ids_ingresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
-        :param _builtins.str output_network: Exactly one of the `output_port_id` or `output_network` should be provided
-        :param _builtins.str output_port_id: Exactly one of the `output_port_id` or `output_network` should be provided
+        :param _builtins.str output_ip_address: Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        :param _builtins.str output_network: Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        :param _builtins.str output_port_id: Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         """
         if input_networks_ingresses is not None:
             pulumi.set(__self__, "input_networks_ingresses", input_networks_ingresses)
@@ -16981,6 +17430,8 @@ class NetworktemplatePortMirroring(dict):
             pulumi.set(__self__, "input_port_ids_egresses", input_port_ids_egresses)
         if input_port_ids_ingresses is not None:
             pulumi.set(__self__, "input_port_ids_ingresses", input_port_ids_ingresses)
+        if output_ip_address is not None:
+            pulumi.set(__self__, "output_ip_address", output_ip_address)
         if output_network is not None:
             pulumi.set(__self__, "output_network", output_network)
         if output_port_id is not None:
@@ -17011,10 +17462,18 @@ class NetworktemplatePortMirroring(dict):
         return pulumi.get(self, "input_port_ids_ingresses")
 
     @_builtins.property
+    @pulumi.getter(name="outputIpAddress")
+    def output_ip_address(self) -> Optional[_builtins.str]:
+        """
+        Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        """
+        return pulumi.get(self, "output_ip_address")
+
+    @_builtins.property
     @pulumi.getter(name="outputNetwork")
     def output_network(self) -> Optional[_builtins.str]:
         """
-        Exactly one of the `output_port_id` or `output_network` should be provided
+        Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         """
         return pulumi.get(self, "output_network")
 
@@ -17022,7 +17481,7 @@ class NetworktemplatePortMirroring(dict):
     @pulumi.getter(name="outputPortId")
     def output_port_id(self) -> Optional[_builtins.str]:
         """
-        Exactly one of the `output_port_id` or `output_network` should be provided
+        Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         """
         return pulumi.get(self, "output_port_id")
 
@@ -17159,7 +17618,7 @@ class NetworktemplatePortUsages(dict):
         :param _builtins.str description: Only if `mode`!=`dynamic`
         :param _builtins.bool disable_autoneg: Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
         :param _builtins.bool disabled: Only if `mode`!=`dynamic` whether the port is disabled
-        :param _builtins.str duplex: Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+        :param _builtins.str duplex: Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
         :param Sequence[_builtins.str] dynamic_vlan_networks: Only if `mode`!=`dynamic` and `port_auth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
         :param _builtins.bool enable_mac_auth: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` whether to enable MAC Auth
         :param _builtins.bool enable_qos: Only if `mode`!=`dynamic`
@@ -17182,7 +17641,7 @@ class NetworktemplatePortUsages(dict):
         :param Sequence['NetworktemplatePortUsagesRuleArgs'] rules: Only if `mode`==`dynamic`
         :param _builtins.str server_fail_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
         :param _builtins.str server_reject_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
-        :param _builtins.str speed: Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+        :param _builtins.str speed: Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         :param 'NetworktemplatePortUsagesStormControlArgs' storm_control: Switch storm control. Only if `mode`!=`dynamic`
         :param _builtins.bool stp_edge: Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
         :param _builtins.str ui_evpntopo_id: Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
@@ -17346,7 +17805,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter
     def duplex(self) -> Optional[_builtins.str]:
         """
-        Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+        Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
         """
         return pulumi.get(self, "duplex")
 
@@ -17530,7 +17989,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter
     def speed(self) -> Optional[_builtins.str]:
         """
-        Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+        Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         """
         return pulumi.get(self, "speed")
 
@@ -17673,7 +18132,9 @@ class NetworktemplatePortUsagesStormControl(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "noBroadcast":
+        if key == "disablePort":
+            suggest = "disable_port"
+        elif key == "noBroadcast":
             suggest = "no_broadcast"
         elif key == "noMulticast":
             suggest = "no_multicast"
@@ -17694,18 +18155,22 @@ class NetworktemplatePortUsagesStormControl(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 disable_port: Optional[_builtins.bool] = None,
                  no_broadcast: Optional[_builtins.bool] = None,
                  no_multicast: Optional[_builtins.bool] = None,
                  no_registered_multicast: Optional[_builtins.bool] = None,
                  no_unknown_unicast: Optional[_builtins.bool] = None,
                  percentage: Optional[_builtins.int] = None):
         """
+        :param _builtins.bool disable_port: Whether to disable the port when storm control is triggered
         :param _builtins.bool no_broadcast: Whether to disable storm control on broadcast traffic
         :param _builtins.bool no_multicast: Whether to disable storm control on multicast traffic
         :param _builtins.bool no_registered_multicast: Whether to disable storm control on registered multicast traffic
         :param _builtins.bool no_unknown_unicast: Whether to disable storm control on unknown unicast traffic
         :param _builtins.int percentage: Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
         """
+        if disable_port is not None:
+            pulumi.set(__self__, "disable_port", disable_port)
         if no_broadcast is not None:
             pulumi.set(__self__, "no_broadcast", no_broadcast)
         if no_multicast is not None:
@@ -17716,6 +18181,14 @@ class NetworktemplatePortUsagesStormControl(dict):
             pulumi.set(__self__, "no_unknown_unicast", no_unknown_unicast)
         if percentage is not None:
             pulumi.set(__self__, "percentage", percentage)
+
+    @_builtins.property
+    @pulumi.getter(name="disablePort")
+    def disable_port(self) -> Optional[_builtins.bool]:
+        """
+        Whether to disable the port when storm control is triggered
+        """
+        return pulumi.get(self, "disable_port")
 
     @_builtins.property
     @pulumi.getter(name="noBroadcast")
@@ -18456,6 +18929,8 @@ class NetworktemplateRemoteSyslogServer(dict):
             suggest = "explicit_priority"
         elif key == "routingInstance":
             suggest = "routing_instance"
+        elif key == "serverName":
+            suggest = "server_name"
         elif key == "sourceAddress":
             suggest = "source_address"
         elif key == "structuredData":
@@ -18481,6 +18956,7 @@ class NetworktemplateRemoteSyslogServer(dict):
                  port: Optional[_builtins.str] = None,
                  protocol: Optional[_builtins.str] = None,
                  routing_instance: Optional[_builtins.str] = None,
+                 server_name: Optional[_builtins.str] = None,
                  severity: Optional[_builtins.str] = None,
                  source_address: Optional[_builtins.str] = None,
                  structured_data: Optional[_builtins.bool] = None,
@@ -18488,6 +18964,7 @@ class NetworktemplateRemoteSyslogServer(dict):
         """
         :param _builtins.str facility: enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
         :param _builtins.str protocol: enum: `tcp`, `udp`
+        :param _builtins.str server_name: Name of the server
         :param _builtins.str severity: enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
         :param _builtins.str source_address: If source_address is configured, will use the vlan firstly otherwise use source_ip
         """
@@ -18507,6 +18984,8 @@ class NetworktemplateRemoteSyslogServer(dict):
             pulumi.set(__self__, "protocol", protocol)
         if routing_instance is not None:
             pulumi.set(__self__, "routing_instance", routing_instance)
+        if server_name is not None:
+            pulumi.set(__self__, "server_name", server_name)
         if severity is not None:
             pulumi.set(__self__, "severity", severity)
         if source_address is not None:
@@ -18561,6 +19040,14 @@ class NetworktemplateRemoteSyslogServer(dict):
     @pulumi.getter(name="routingInstance")
     def routing_instance(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "routing_instance")
+
+    @_builtins.property
+    @pulumi.getter(name="serverName")
+    def server_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the server
+        """
+        return pulumi.get(self, "server_name")
 
     @_builtins.property
     @pulumi.getter
@@ -20318,6 +20805,8 @@ class NetworktemplateSwitchMatchingRulePortMirroring(dict):
             suggest = "input_port_ids_egresses"
         elif key == "inputPortIdsIngresses":
             suggest = "input_port_ids_ingresses"
+        elif key == "outputIpAddress":
+            suggest = "output_ip_address"
         elif key == "outputNetwork":
             suggest = "output_network"
         elif key == "outputPortId":
@@ -20338,14 +20827,16 @@ class NetworktemplateSwitchMatchingRulePortMirroring(dict):
                  input_networks_ingresses: Optional[Sequence[_builtins.str]] = None,
                  input_port_ids_egresses: Optional[Sequence[_builtins.str]] = None,
                  input_port_ids_ingresses: Optional[Sequence[_builtins.str]] = None,
+                 output_ip_address: Optional[_builtins.str] = None,
                  output_network: Optional[_builtins.str] = None,
                  output_port_id: Optional[_builtins.str] = None):
         """
         :param Sequence[_builtins.str] input_networks_ingresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         :param Sequence[_builtins.str] input_port_ids_egresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         :param Sequence[_builtins.str] input_port_ids_ingresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
-        :param _builtins.str output_network: Exactly one of the `output_port_id` or `output_network` should be provided
-        :param _builtins.str output_port_id: Exactly one of the `output_port_id` or `output_network` should be provided
+        :param _builtins.str output_ip_address: Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        :param _builtins.str output_network: Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        :param _builtins.str output_port_id: Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         """
         if input_networks_ingresses is not None:
             pulumi.set(__self__, "input_networks_ingresses", input_networks_ingresses)
@@ -20353,6 +20844,8 @@ class NetworktemplateSwitchMatchingRulePortMirroring(dict):
             pulumi.set(__self__, "input_port_ids_egresses", input_port_ids_egresses)
         if input_port_ids_ingresses is not None:
             pulumi.set(__self__, "input_port_ids_ingresses", input_port_ids_ingresses)
+        if output_ip_address is not None:
+            pulumi.set(__self__, "output_ip_address", output_ip_address)
         if output_network is not None:
             pulumi.set(__self__, "output_network", output_network)
         if output_port_id is not None:
@@ -20383,10 +20876,18 @@ class NetworktemplateSwitchMatchingRulePortMirroring(dict):
         return pulumi.get(self, "input_port_ids_ingresses")
 
     @_builtins.property
+    @pulumi.getter(name="outputIpAddress")
+    def output_ip_address(self) -> Optional[_builtins.str]:
+        """
+        Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        """
+        return pulumi.get(self, "output_ip_address")
+
+    @_builtins.property
     @pulumi.getter(name="outputNetwork")
     def output_network(self) -> Optional[_builtins.str]:
         """
-        Exactly one of the `output_port_id` or `output_network` should be provided
+        Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         """
         return pulumi.get(self, "output_network")
 
@@ -20394,7 +20895,7 @@ class NetworktemplateSwitchMatchingRulePortMirroring(dict):
     @pulumi.getter(name="outputPortId")
     def output_port_id(self) -> Optional[_builtins.str]:
         """
-        Exactly one of the `output_port_id` or `output_network` should be provided
+        Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         """
         return pulumi.get(self, "output_port_id")
 
@@ -26110,9 +26611,51 @@ class WlanInjectDhcpOption82(dict):
 
 @pulumi.output_type
 class WlanMistNac(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acctInterimInterval":
+            suggest = "acct_interim_interval"
+        elif key == "authServersRetries":
+            suggest = "auth_servers_retries"
+        elif key == "authServersTimeout":
+            suggest = "auth_servers_timeout"
+        elif key == "coaEnabled":
+            suggest = "coa_enabled"
+        elif key == "coaPort":
+            suggest = "coa_port"
+        elif key == "fastDot1xTimers":
+            suggest = "fast_dot1x_timers"
+        elif key == "sourceIp":
+            suggest = "source_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WlanMistNac. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WlanMistNac.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WlanMistNac.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 enabled: Optional[_builtins.bool] = None):
+                 acct_interim_interval: Optional[_builtins.int] = None,
+                 auth_servers_retries: Optional[_builtins.int] = None,
+                 auth_servers_timeout: Optional[_builtins.int] = None,
+                 coa_enabled: Optional[_builtins.bool] = None,
+                 coa_port: Optional[_builtins.int] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 fast_dot1x_timers: Optional[_builtins.bool] = None,
+                 network: Optional[_builtins.str] = None,
+                 source_ip: Optional[_builtins.str] = None):
         """
+        :param _builtins.int acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+        :param _builtins.int auth_servers_retries: Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "retries" are set to value of `auth_servers_timeout`. "max-requests" is also set when setting `auth_servers_retries` is set to default value to 3.
+        :param _builtins.int auth_servers_timeout: Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `auth_servers_timeout`. "supplicant-timeout" is also set when setting `auth_servers_timeout` is set to default value of 10.
+        :param _builtins.bool coa_enabled: Allows a RADIUS server to dynamically modify the authorization status of a user session.
+        :param _builtins.int coa_port: the communication port used for “Change of Authorization” (CoA) messages
         :param _builtins.bool enabled: When enabled:
                  * `auth_servers` is ignored
                  * `acct_servers` is ignored
@@ -26120,9 +26663,68 @@ class WlanMistNac(dict):
                  * `coa_servers` is ignored
                  * `radsec` is ignored
                  * `coa_enabled` is assumed
+        :param _builtins.bool fast_dot1x_timers: If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.
+        :param _builtins.str network: Which network the mist nac server resides in
+        :param _builtins.str source_ip: In case there is a static IP for this network, we can specify it using source ip
         """
+        if acct_interim_interval is not None:
+            pulumi.set(__self__, "acct_interim_interval", acct_interim_interval)
+        if auth_servers_retries is not None:
+            pulumi.set(__self__, "auth_servers_retries", auth_servers_retries)
+        if auth_servers_timeout is not None:
+            pulumi.set(__self__, "auth_servers_timeout", auth_servers_timeout)
+        if coa_enabled is not None:
+            pulumi.set(__self__, "coa_enabled", coa_enabled)
+        if coa_port is not None:
+            pulumi.set(__self__, "coa_port", coa_port)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if fast_dot1x_timers is not None:
+            pulumi.set(__self__, "fast_dot1x_timers", fast_dot1x_timers)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if source_ip is not None:
+            pulumi.set(__self__, "source_ip", source_ip)
+
+    @_builtins.property
+    @pulumi.getter(name="acctInterimInterval")
+    def acct_interim_interval(self) -> Optional[_builtins.int]:
+        """
+        How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+        """
+        return pulumi.get(self, "acct_interim_interval")
+
+    @_builtins.property
+    @pulumi.getter(name="authServersRetries")
+    def auth_servers_retries(self) -> Optional[_builtins.int]:
+        """
+        Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "retries" are set to value of `auth_servers_timeout`. "max-requests" is also set when setting `auth_servers_retries` is set to default value to 3.
+        """
+        return pulumi.get(self, "auth_servers_retries")
+
+    @_builtins.property
+    @pulumi.getter(name="authServersTimeout")
+    def auth_servers_timeout(self) -> Optional[_builtins.int]:
+        """
+        Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `auth_servers_timeout`. "supplicant-timeout" is also set when setting `auth_servers_timeout` is set to default value of 10.
+        """
+        return pulumi.get(self, "auth_servers_timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="coaEnabled")
+    def coa_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Allows a RADIUS server to dynamically modify the authorization status of a user session.
+        """
+        return pulumi.get(self, "coa_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="coaPort")
+    def coa_port(self) -> Optional[_builtins.int]:
+        """
+        the communication port used for “Change of Authorization” (CoA) messages
+        """
+        return pulumi.get(self, "coa_port")
 
     @_builtins.property
     @pulumi.getter
@@ -26137,6 +26739,30 @@ class WlanMistNac(dict):
           * `coa_enabled` is assumed
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="fastDot1xTimers")
+    def fast_dot1x_timers(self) -> Optional[_builtins.bool]:
+        """
+        If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.
+        """
+        return pulumi.get(self, "fast_dot1x_timers")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional[_builtins.str]:
+        """
+        Which network the mist nac server resides in
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceIp")
+    def source_ip(self) -> Optional[_builtins.str]:
+        """
+        In case there is a static IP for this network, we can specify it using source ip
+        """
+        return pulumi.get(self, "source_ip")
 
 
 @pulumi.output_type
@@ -26416,7 +27042,7 @@ class WlanPortal(dict):
         :param _builtins.bool passphrase_enabled: Whether password is enabled
         :param _builtins.int passphrase_expire: Optional if `passphrase_enabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
         :param _builtins.str password: Required if `passphrase_enabled`==`true`.
-        :param _builtins.bool predefined_sponsors_enabled: Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+        :param _builtins.bool predefined_sponsors_enabled: Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
         :param _builtins.bool predefined_sponsors_hide_email: Whether to hide sponsor’s email from list of sponsors
         :param _builtins.str puzzel_password: Required if `sms_provider`==`puzzel`
         :param _builtins.str puzzel_service_id: Required if `sms_provider`==`puzzel`
@@ -26424,7 +27050,7 @@ class WlanPortal(dict):
         :param _builtins.bool sms_enabled: Whether sms is enabled as a login method
         :param _builtins.int sms_expire: Optional if `sms_enabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
         :param _builtins.str sms_message_format: Optional if `sms_enabled`==`true`. SMS Message format
-        :param _builtins.str sms_provider: Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+        :param _builtins.str sms_provider: Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
         :param _builtins.str smsglobal_api_key: Required if `sms_provider`==`smsglobal`, Client API Key
         :param _builtins.str smsglobal_api_secret: Required if `sms_provider`==`smsglobal`, Client secret
         :param _builtins.bool sponsor_auto_approve: Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
@@ -26441,7 +27067,7 @@ class WlanPortal(dict):
         :param _builtins.str sso_default_role: Optional if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         :param _builtins.str sso_forced_role: Optional if `wlan_portal_auth`==`sso`
         :param _builtins.str sso_idp_cert: Required if `wlan_portal_auth`==`sso`. IDP Cert (used to verify the signed response)
-        :param _builtins.str sso_idp_sign_algo: Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+        :param _builtins.str sso_idp_sign_algo: Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
         :param _builtins.str sso_idp_sso_url: Required if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
         :param _builtins.str sso_issuer: Required if `wlan_portal_auth`==`sso`, IDP issuer URL
         :param _builtins.str sso_nameid_format: Optional if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
@@ -26960,7 +27586,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="predefinedSponsorsEnabled")
     def predefined_sponsors_enabled(self) -> Optional[_builtins.bool]:
         """
-        Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+        Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
         """
         return pulumi.get(self, "predefined_sponsors_enabled")
 
@@ -27029,7 +27655,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="smsProvider")
     def sms_provider(self) -> Optional[_builtins.str]:
         """
-        Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+        Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
         """
         return pulumi.get(self, "sms_provider")
 
@@ -27144,7 +27770,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="ssoIdpSignAlgo")
     def sso_idp_sign_algo(self) -> Optional[_builtins.str]:
         """
-        Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+        Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
         """
         return pulumi.get(self, "sso_idp_sign_algo")
 

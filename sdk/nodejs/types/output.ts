@@ -212,6 +212,18 @@ export namespace device {
         port: number;
     }
 
+    export interface ApAirista {
+        /**
+         * Whether to enable Airista config
+         */
+        enabled?: boolean;
+        /**
+         * Required if enabled, Airista server host
+         */
+        host?: string;
+        port?: number;
+    }
+
     export interface ApBleConfig {
         /**
          * Whether Mist beacons is enabled
@@ -517,6 +529,26 @@ export namespace device {
 
     export interface ApPortConfigMistNac {
         /**
+         * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+         */
+        acctInterimInterval?: number;
+        /**
+         * Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+         */
+        authServersRetries?: number;
+        /**
+         * Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+         */
+        authServersTimeout?: number;
+        /**
+         * Allows a RADIUS server to dynamically modify the authorization status of a user session.
+         */
+        coaEnabled?: boolean;
+        /**
+         * the communication port used for “Change of Authorization” (CoA) messages
+         */
+        coaPort?: number;
+        /**
          * When enabled:
          *   * `authServers` is ignored
          *   * `acctServers` is ignored
@@ -526,6 +558,18 @@ export namespace device {
          *   * `coaEnabled` is assumed
          */
         enabled: boolean;
+        /**
+         * If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+         */
+        fastDot1xTimers?: boolean;
+        /**
+         * Which network the mist nac server resides in
+         */
+        network?: string;
+        /**
+         * In case there is a static IP for this network, we can specify it using source ip
+         */
+        sourceIp?: string;
     }
 
     export interface ApPortConfigRadiusConfig {
@@ -1057,21 +1101,21 @@ export namespace device {
          */
         gateway?: string;
         /**
+         * If `type6`==`local`
+         */
+        ip6End?: string;
+        /**
+         * If `type6`==`local`
+         */
+        ip6Start?: string;
+        /**
          * If `type`==`local`
          */
         ipEnd?: string;
         /**
-         * If `type6`==`local`
-         */
-        ipEnd6?: string;
-        /**
          * If `type`==`local`
          */
         ipStart?: string;
-        /**
-         * If `type6`==`local`
-         */
-        ipStart6?: string;
         /**
          * In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
          */
@@ -1092,7 +1136,7 @@ export namespace device {
         /**
          * If `type6`==`relay`
          */
-        servers6s?: string[];
+        serversv6s?: string[];
         /**
          * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
          */
@@ -1172,7 +1216,9 @@ export namespace device {
 
     export interface GatewayIpConfigs {
         ip?: string;
+        ip6?: string;
         netmask?: string;
+        netmask6?: string;
         /**
          * Optional list of secondary IPs in CIDR format
          */
@@ -1181,6 +1227,10 @@ export namespace device {
          * enum: `dhcp`, `static`
          */
         type: string;
+        /**
+         * enum: `autoconf`, `dhcp`, `disabled`, `static`
+         */
+        type6?: string;
     }
 
     export interface GatewayNetwork {
@@ -1618,6 +1668,10 @@ export namespace device {
          */
         wanExtraRoutes?: {[key: string]: outputs.device.GatewayPortConfigWanExtraRoutes};
         /**
+         * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+         */
+        wanExtraRoutes6?: {[key: string]: outputs.device.GatewayPortConfigWanExtraRoutes6};
+        /**
          * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
          */
         wanNetworks?: string[];
@@ -1649,13 +1703,25 @@ export namespace device {
          */
         gateway?: string;
         /**
+         * Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. "2001:db8::1") or a Variable (i.e. "{{myvar}}")
+         */
+        gateway6?: string;
+        /**
          * Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
          */
         ip?: string;
         /**
+         * Interface IPv6 Address (i.e. "2001:db8::123") or a Variable (i.e. "{{myvar}}")
+         */
+        ip6?: string;
+        /**
          * Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
          */
         netmask?: string;
+        /**
+         * Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. "/64") or a Variable (i.e. "{{myvar}}")
+         */
+        netmask6?: string;
         /**
          * Optional, the network to be used for mgmt
          */
@@ -1676,6 +1742,10 @@ export namespace device {
          * enum: `dhcp`, `pppoe`, `static`
          */
         type?: string;
+        /**
+         * enum: `autoconf`, `dhcp`, `static`
+         */
+        type6?: string;
     }
 
     export interface GatewayPortConfigTrafficShaping {
@@ -1726,7 +1796,12 @@ export namespace device {
         via?: string;
     }
 
+    export interface GatewayPortConfigWanExtraRoutes6 {
+        via?: string;
+    }
+
     export interface GatewayPortConfigWanProbeOverride {
+        ip6s?: string[];
         ips?: string[];
         /**
          * enum: `broadband`, `lte`
@@ -1968,6 +2043,10 @@ export namespace device {
          */
         localId?: string;
         /**
+         * List of Local protected subnet for policy-based IPSec negotiation
+         */
+        localSubnets?: string[];
+        /**
          * Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
          */
         mode?: string;
@@ -1995,6 +2074,10 @@ export namespace device {
          * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         psk?: string;
+        /**
+         * List of Remote protected subnet for policy-based IPSec negotiation
+         */
+        remoteSubnets?: string[];
         /**
          * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
@@ -4910,33 +4993,33 @@ export namespace device {
         /**
          * Only if `mode`==`trunk` whether to trunk all network/vlans
          */
-        allNetworks: boolean;
+        allNetworks?: boolean;
         /**
          * If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
          */
         allowDhcpd?: boolean;
-        allowMultipleSupplicants: boolean;
+        allowMultipleSupplicants?: boolean;
         /**
          * Only if `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
          */
-        bypassAuthWhenServerDown: boolean;
+        bypassAuthWhenServerDown?: boolean;
         /**
          * Only if `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
-        bypassAuthWhenServerDownForUnknownClient: boolean;
+        bypassAuthWhenServerDownForUnknownClient?: boolean;
         description?: string;
         /**
          * Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
          */
-        disableAutoneg?: boolean;
+        disableAutoneg: boolean;
         /**
          * Whether the port is disabled
          */
-        disabled: boolean;
+        disabled?: boolean;
         /**
          * link connection mode. enum: `auto`, `full`, `half`
          */
-        duplex?: string;
+        duplex: string;
         /**
          * Only if `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
          */
@@ -4944,8 +5027,8 @@ export namespace device {
         /**
          * Only if `portAuth`==`dot1x` whether to enable MAC Auth
          */
-        enableMacAuth: boolean;
-        enableQos: boolean;
+        enableMacAuth?: boolean;
+        enableQos?: boolean;
         /**
          * Only if `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
          */
@@ -4953,7 +5036,7 @@ export namespace device {
         /**
          * inter_switch_link is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          */
-        interSwitchLink: boolean;
+        interSwitchLink?: boolean;
         /**
          * Only if `enableMacAuth`==`true`
          */
@@ -4965,11 +5048,11 @@ export namespace device {
         /**
          * Only if `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
          */
-        macAuthProtocol: string;
+        macAuthProtocol?: string;
         /**
          * Max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
          */
-        macLimit: number;
+        macLimit?: number;
         /**
          * enum: `access`, `inet`, `trunk`
          */
@@ -4989,11 +5072,11 @@ export namespace device {
         /**
          * Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
          */
-        persistMac: boolean;
+        persistMac?: boolean;
         /**
          * Whether PoE capabilities are disabled for a port
          */
-        poeDisabled?: boolean;
+        poeDisabled: boolean;
         /**
          * if dot1x is desired, set to dot1x. enum: `dot1x`
          */
@@ -5003,7 +5086,7 @@ export namespace device {
          */
         portNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+         * Only `portAuth`=`dot1x`, reauthentication interval range between 10 and 65535 (default: 3600)
          */
         reauthInterval?: string;
         /**
@@ -5017,7 +5100,7 @@ export namespace device {
         /**
          * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
-        speed?: string;
+        speed: string;
         /**
          * Switch storm control
          */
@@ -5025,9 +5108,9 @@ export namespace device {
         /**
          * When enabled, the port is not expected to receive BPDU frames
          */
-        stpEdge: boolean;
-        stpNoRootPort: boolean;
-        stpP2p: boolean;
+        stpEdge?: boolean;
+        stpNoRootPort?: boolean;
+        stpP2p?: boolean;
         /**
          * Port usage name.
          */
@@ -5035,7 +5118,7 @@ export namespace device {
         /**
          * If this is connected to a vstp network
          */
-        useVstp: boolean;
+        useVstp?: boolean;
         /**
          * Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
@@ -5044,25 +5127,29 @@ export namespace device {
 
     export interface SwitchLocalPortConfigStormControl {
         /**
+         * Whether to disable the port when storm control is triggered
+         */
+        disablePort?: boolean;
+        /**
          * Whether to disable storm control on broadcast traffic
          */
-        noBroadcast: boolean;
+        noBroadcast?: boolean;
         /**
          * Whether to disable storm control on multicast traffic
          */
-        noMulticast: boolean;
+        noMulticast?: boolean;
         /**
          * Whether to disable storm control on registered multicast traffic
          */
-        noRegisteredMulticast: boolean;
+        noRegisteredMulticast?: boolean;
         /**
          * Whether to disable storm control on unknown unicast traffic
          */
-        noUnknownUnicast: boolean;
+        noUnknownUnicast?: boolean;
         /**
          * Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
          */
-        percentage: number;
+        percentage?: number;
     }
 
     export interface SwitchMistNac {
@@ -5171,6 +5258,14 @@ export namespace device {
          * Enable OSPF on the switch
          */
         enabled?: boolean;
+        /**
+         * optional, for basic scenario, `importPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
+         */
+        exportPolicy?: string;
+        /**
+         * optional, for basic scenario, `importPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
+         */
+        importPolicy?: string;
         referenceBandwidth?: string;
     }
 
@@ -5267,6 +5362,31 @@ export namespace device {
         usage: string;
     }
 
+    export interface SwitchPortConfigOverwrite {
+        description?: string;
+        /**
+         * Whether the port is disabled
+         */
+        disabled: boolean;
+        /**
+         * Link connection mode. enum: `auto`, `full`, `half`
+         */
+        duplex: string;
+        macLimit?: string;
+        /**
+         * Whether PoE capabilities are disabled for a port
+         */
+        poeDisabled: boolean;
+        /**
+         * Native network/vlan for untagged traffic
+         */
+        portNetwork?: string;
+        /**
+         * Port Speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         */
+        speed: string;
+    }
+
     export interface SwitchPortMirroring {
         /**
          * At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or `inputNetworksIngress ` should be specified
@@ -5281,11 +5401,15 @@ export namespace device {
          */
         inputPortIdsIngresses: string[];
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
+         */
+        outputIpAddress?: string;
+        /**
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputNetwork?: string;
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: string;
     }
@@ -5328,7 +5452,7 @@ export namespace device {
          */
         disabled: boolean;
         /**
-         * Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+         * Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
          */
         duplex: string;
         /**
@@ -5420,7 +5544,7 @@ export namespace device {
          */
         serverRejectNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         * Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed: string;
         /**
@@ -5466,6 +5590,10 @@ export namespace device {
     }
 
     export interface SwitchPortUsagesStormControl {
+        /**
+         * Whether to disable the port when storm control is triggered
+         */
+        disablePort?: boolean;
         /**
          * Whether to disable storm control on broadcast traffic
          */
@@ -5646,6 +5774,10 @@ export namespace device {
          */
         protocol: string;
         routingInstance?: string;
+        /**
+         * Name of the server
+         */
+        serverName?: string;
         /**
          * enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
          */
@@ -6099,10 +6231,6 @@ export namespace device {
 
     export interface SwitchVrrpConfigGroups {
         /**
-         * If `true`, accept packets destined for VRRP address
-         */
-        acceptData: boolean;
-        /**
          * If `true`, allow preemption (a backup router can preempt a primary router)
          */
         preempt: boolean;
@@ -6191,6 +6319,18 @@ export namespace org {
          */
         locateConnected: boolean;
         port: number;
+    }
+
+    export interface DeviceprofileApAirista {
+        /**
+         * Whether to enable Airista config
+         */
+        enabled?: boolean;
+        /**
+         * Required if enabled, Airista server host
+         */
+        host?: string;
+        port?: number;
     }
 
     export interface DeviceprofileApBleConfig {
@@ -6475,6 +6615,26 @@ export namespace org {
 
     export interface DeviceprofileApPortConfigMistNac {
         /**
+         * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+         */
+        acctInterimInterval?: number;
+        /**
+         * Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+         */
+        authServersRetries?: number;
+        /**
+         * Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+         */
+        authServersTimeout?: number;
+        /**
+         * Allows a RADIUS server to dynamically modify the authorization status of a user session.
+         */
+        coaEnabled?: boolean;
+        /**
+         * the communication port used for “Change of Authorization” (CoA) messages
+         */
+        coaPort?: number;
+        /**
          * When enabled:
          *   * `authServers` is ignored
          *   * `acctServers` is ignored
@@ -6484,6 +6644,18 @@ export namespace org {
          *   * `coaEnabled` is assumed
          */
         enabled: boolean;
+        /**
+         * If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+         */
+        fastDot1xTimers?: boolean;
+        /**
+         * Which network the mist nac server resides in
+         */
+        network?: string;
+        /**
+         * In case there is a static IP for this network, we can specify it using source ip
+         */
+        sourceIp?: string;
     }
 
     export interface DeviceprofileApPortConfigRadiusConfig {
@@ -7003,21 +7175,21 @@ export namespace org {
          */
         gateway?: string;
         /**
+         * If `type6`==`local`
+         */
+        ip6End?: string;
+        /**
+         * If `type6`==`local`
+         */
+        ip6Start?: string;
+        /**
          * If `type`==`local`
          */
         ipEnd?: string;
         /**
-         * If `type6`==`local`
-         */
-        ipEnd6?: string;
-        /**
          * If `type`==`local`
          */
         ipStart?: string;
-        /**
-         * If `type6`==`local`
-         */
-        ipStart6?: string;
         /**
          * In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
          */
@@ -7038,7 +7210,7 @@ export namespace org {
         /**
          * If `type6`==`relay`
          */
-        servers6s?: string[];
+        serversv6s?: string[];
         /**
          * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
          */
@@ -7114,7 +7286,9 @@ export namespace org {
 
     export interface DeviceprofileGatewayIpConfigs {
         ip?: string;
+        ip6?: string;
         netmask?: string;
+        netmask6?: string;
         /**
          * Optional list of secondary IPs in CIDR format
          */
@@ -7123,6 +7297,10 @@ export namespace org {
          * enum: `dhcp`, `static`
          */
         type: string;
+        /**
+         * enum: `autoconf`, `dhcp`, `disabled`, `static`
+         */
+        type6?: string;
     }
 
     export interface DeviceprofileGatewayNetwork {
@@ -7560,6 +7738,10 @@ export namespace org {
          */
         wanExtraRoutes?: {[key: string]: outputs.org.DeviceprofileGatewayPortConfigWanExtraRoutes};
         /**
+         * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+         */
+        wanExtraRoutes6?: {[key: string]: outputs.org.DeviceprofileGatewayPortConfigWanExtraRoutes6};
+        /**
          * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
          */
         wanNetworks?: string[];
@@ -7591,13 +7773,25 @@ export namespace org {
          */
         gateway?: string;
         /**
+         * Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. "2001:db8::1") or a Variable (i.e. "{{myvar}}")
+         */
+        gateway6?: string;
+        /**
          * Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
          */
         ip?: string;
         /**
+         * Interface IPv6 Address (i.e. "2001:db8::123") or a Variable (i.e. "{{myvar}}")
+         */
+        ip6?: string;
+        /**
          * Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
          */
         netmask?: string;
+        /**
+         * Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. "/64") or a Variable (i.e. "{{myvar}}")
+         */
+        netmask6?: string;
         /**
          * Optional, the network to be used for mgmt
          */
@@ -7618,6 +7812,10 @@ export namespace org {
          * enum: `dhcp`, `pppoe`, `static`
          */
         type?: string;
+        /**
+         * enum: `autoconf`, `dhcp`, `static`
+         */
+        type6?: string;
     }
 
     export interface DeviceprofileGatewayPortConfigTrafficShaping {
@@ -7668,7 +7866,12 @@ export namespace org {
         via?: string;
     }
 
+    export interface DeviceprofileGatewayPortConfigWanExtraRoutes6 {
+        via?: string;
+    }
+
     export interface DeviceprofileGatewayPortConfigWanProbeOverride {
+        ip6s?: string[];
         ips?: string[];
         /**
          * enum: `broadband`, `lte`
@@ -7898,6 +8101,10 @@ export namespace org {
          */
         localId?: string;
         /**
+         * List of Local protected subnet for policy-based IPSec negotiation
+         */
+        localSubnets?: string[];
+        /**
          * Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
          */
         mode?: string;
@@ -7925,6 +8132,10 @@ export namespace org {
          * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         psk?: string;
+        /**
+         * List of Remote protected subnet for policy-based IPSec negotiation
+         */
+        remoteSubnets?: string[];
         /**
          * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
@@ -8464,21 +8675,21 @@ export namespace org {
          */
         gateway?: string;
         /**
+         * If `type6`==`local`
+         */
+        ip6End?: string;
+        /**
+         * If `type6`==`local`
+         */
+        ip6Start?: string;
+        /**
          * If `type`==`local`
          */
         ipEnd?: string;
         /**
-         * If `type6`==`local`
-         */
-        ipEnd6?: string;
-        /**
          * If `type`==`local`
          */
         ipStart?: string;
-        /**
-         * If `type6`==`local`
-         */
-        ipStart6?: string;
         /**
          * In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
          */
@@ -8499,7 +8710,7 @@ export namespace org {
         /**
          * If `type6`==`relay`
          */
-        servers6s?: string[];
+        serversv6s?: string[];
         /**
          * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
          */
@@ -8575,7 +8786,9 @@ export namespace org {
 
     export interface GatewaytemplateIpConfigs {
         ip?: string;
+        ip6?: string;
         netmask?: string;
+        netmask6?: string;
         /**
          * Optional list of secondary IPs in CIDR format
          */
@@ -8584,6 +8797,10 @@ export namespace org {
          * enum: `dhcp`, `static`
          */
         type: string;
+        /**
+         * enum: `autoconf`, `dhcp`, `disabled`, `static`
+         */
+        type6?: string;
     }
 
     export interface GatewaytemplateNetwork {
@@ -9021,6 +9238,10 @@ export namespace org {
          */
         wanExtraRoutes?: {[key: string]: outputs.org.GatewaytemplatePortConfigWanExtraRoutes};
         /**
+         * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+         */
+        wanExtraRoutes6?: {[key: string]: outputs.org.GatewaytemplatePortConfigWanExtraRoutes6};
+        /**
          * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
          */
         wanNetworks?: string[];
@@ -9052,13 +9273,25 @@ export namespace org {
          */
         gateway?: string;
         /**
+         * Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. "2001:db8::1") or a Variable (i.e. "{{myvar}}")
+         */
+        gateway6?: string;
+        /**
          * Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
          */
         ip?: string;
         /**
+         * Interface IPv6 Address (i.e. "2001:db8::123") or a Variable (i.e. "{{myvar}}")
+         */
+        ip6?: string;
+        /**
          * Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
          */
         netmask?: string;
+        /**
+         * Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. "/64") or a Variable (i.e. "{{myvar}}")
+         */
+        netmask6?: string;
         /**
          * Optional, the network to be used for mgmt
          */
@@ -9079,6 +9312,10 @@ export namespace org {
          * enum: `dhcp`, `pppoe`, `static`
          */
         type?: string;
+        /**
+         * enum: `autoconf`, `dhcp`, `static`
+         */
+        type6?: string;
     }
 
     export interface GatewaytemplatePortConfigTrafficShaping {
@@ -9129,7 +9366,12 @@ export namespace org {
         via?: string;
     }
 
+    export interface GatewaytemplatePortConfigWanExtraRoutes6 {
+        via?: string;
+    }
+
     export interface GatewaytemplatePortConfigWanProbeOverride {
+        ip6s?: string[];
         ips?: string[];
         /**
          * enum: `broadband`, `lte`
@@ -9359,6 +9601,10 @@ export namespace org {
          */
         localId?: string;
         /**
+         * List of Local protected subnet for policy-based IPSec negotiation
+         */
+        localSubnets?: string[];
+        /**
          * Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
          */
         mode?: string;
@@ -9386,6 +9632,10 @@ export namespace org {
          * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         psk?: string;
+        /**
+         * List of Remote protected subnet for policy-based IPSec negotiation
+         */
+        remoteSubnets?: string[];
         /**
          * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
@@ -12608,11 +12858,15 @@ export namespace org {
          */
         inputPortIdsIngresses: string[];
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
+         */
+        outputIpAddress?: string;
+        /**
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputNetwork?: string;
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: string;
     }
@@ -12655,7 +12909,7 @@ export namespace org {
          */
         disabled: boolean;
         /**
-         * Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+         * Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
          */
         duplex: string;
         /**
@@ -12747,7 +13001,7 @@ export namespace org {
          */
         serverRejectNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         * Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed: string;
         /**
@@ -12797,6 +13051,10 @@ export namespace org {
     }
 
     export interface NetworktemplatePortUsagesStormControl {
+        /**
+         * Whether to disable the port when storm control is triggered
+         */
+        disablePort?: boolean;
         /**
          * Whether to disable storm control on broadcast traffic
          */
@@ -12977,6 +13235,10 @@ export namespace org {
          */
         protocol: string;
         routingInstance?: string;
+        /**
+         * Name of the server
+         */
+        serverName?: string;
         /**
          * enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
          */
@@ -13378,11 +13640,15 @@ export namespace org {
          */
         inputPortIdsIngresses: string[];
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
+         */
+        outputIpAddress?: string;
+        /**
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputNetwork?: string;
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: string;
     }
@@ -14730,6 +14996,26 @@ export namespace org {
 
     export interface WlanMistNac {
         /**
+         * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+         */
+        acctInterimInterval: number;
+        /**
+         * Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+         */
+        authServersRetries: number;
+        /**
+         * Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+         */
+        authServersTimeout: number;
+        /**
+         * Allows a RADIUS server to dynamically modify the authorization status of a user session.
+         */
+        coaEnabled: boolean;
+        /**
+         * the communication port used for “Change of Authorization” (CoA) messages
+         */
+        coaPort?: number;
+        /**
          * When enabled:
          *   * `authServers` is ignored
          *   * `acctServers` is ignored
@@ -14739,6 +15025,18 @@ export namespace org {
          *   * `coaEnabled` is assumed
          */
         enabled: boolean;
+        /**
+         * If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+         */
+        fastDot1xTimers: boolean;
+        /**
+         * Which network the mist nac server resides in
+         */
+        network?: string;
+        /**
+         * In case there is a static IP for this network, we can specify it using source ip
+         */
+        sourceIp?: string;
     }
 
     export interface WlanPortal {
@@ -14919,7 +15217,7 @@ export namespace org {
          */
         password: string;
         /**
-         * Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+         * Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behavior is acc to `sponsorEmailDomains`
          */
         predefinedSponsorsEnabled: boolean;
         /**
@@ -14952,7 +15250,7 @@ export namespace org {
          */
         smsMessageFormat: string;
         /**
-         * Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+         * Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
          */
         smsProvider: string;
         /**
@@ -15011,7 +15309,7 @@ export namespace org {
          */
         ssoIdpCert: string;
         /**
-         * Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+         * Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          */
         ssoIdpSignAlgo: string;
         /**
@@ -17579,11 +17877,15 @@ export namespace site {
          */
         inputPortIdsIngresses: string[];
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
+         */
+        outputIpAddress?: string;
+        /**
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputNetwork?: string;
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: string;
     }
@@ -17626,7 +17928,7 @@ export namespace site {
          */
         disabled: boolean;
         /**
-         * Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+         * Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
          */
         duplex: string;
         /**
@@ -17718,7 +18020,7 @@ export namespace site {
          */
         serverRejectNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         * Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed: string;
         /**
@@ -17768,6 +18070,10 @@ export namespace site {
     }
 
     export interface NetworktemplatePortUsagesStormControl {
+        /**
+         * Whether to disable the port when storm control is triggered
+         */
+        disablePort?: boolean;
         /**
          * Whether to disable storm control on broadcast traffic
          */
@@ -17948,6 +18254,10 @@ export namespace site {
          */
         protocol: string;
         routingInstance?: string;
+        /**
+         * Name of the server
+         */
+        serverName?: string;
         /**
          * enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
          */
@@ -18349,11 +18659,15 @@ export namespace site {
          */
         inputPortIdsIngresses: string[];
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
+         */
+        outputIpAddress?: string;
+        /**
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputNetwork?: string;
         /**
-         * Exactly one of the `outputPortId` or `outputNetwork` should be provided
+         * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: string;
     }
@@ -18544,6 +18858,30 @@ export namespace site {
          * desired version. enum: `beta`, `custom`, `stable`
          */
         version: string;
+    }
+
+    export interface SettingAutoUpgradeEsl {
+        /**
+         * If true, it will allow downgrade to a lower version
+         */
+        allowDowngrade: boolean;
+        /**
+         * Custom versions for different models. Property key is the model name (e.g. "AP41")
+         */
+        customVersions?: {[key: string]: string};
+        /**
+         * enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+         */
+        dayOfWeek?: string;
+        /**
+         * Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+         */
+        enabled: boolean;
+        /**
+         * `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+         */
+        timeOfDay?: string;
+        version?: string;
     }
 
     export interface SettingBleConfig {
@@ -18829,6 +19167,7 @@ export namespace site {
         disableUsb?: boolean;
         fipsEnabled?: boolean;
         probeHosts: string[];
+        probeHostsv6s: string[];
         /**
          * Restrict inbound-traffic to host
          * when enabled, all traffic that is not essential to our operation will be dropped 
@@ -19594,6 +19933,26 @@ export namespace site {
 
     export interface WlanMistNac {
         /**
+         * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+         */
+        acctInterimInterval: number;
+        /**
+         * Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+         */
+        authServersRetries: number;
+        /**
+         * Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+         */
+        authServersTimeout: number;
+        /**
+         * Allows a RADIUS server to dynamically modify the authorization status of a user session.
+         */
+        coaEnabled: boolean;
+        /**
+         * the communication port used for “Change of Authorization” (CoA) messages
+         */
+        coaPort?: number;
+        /**
          * When enabled:
          *   * `authServers` is ignored
          *   * `acctServers` is ignored
@@ -19603,6 +19962,18 @@ export namespace site {
          *   * `coaEnabled` is assumed
          */
         enabled: boolean;
+        /**
+         * If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+         */
+        fastDot1xTimers: boolean;
+        /**
+         * Which network the mist nac server resides in
+         */
+        network?: string;
+        /**
+         * In case there is a static IP for this network, we can specify it using source ip
+         */
+        sourceIp?: string;
     }
 
     export interface WlanPortal {

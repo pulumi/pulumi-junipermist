@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.device.inputs.GatewayPortConfigIpConfigArgs;
 import com.pulumi.junipermist.device.inputs.GatewayPortConfigTrafficShapingArgs;
 import com.pulumi.junipermist.device.inputs.GatewayPortConfigVpnPathsArgs;
+import com.pulumi.junipermist.device.inputs.GatewayPortConfigWanExtraRoutes6Args;
 import com.pulumi.junipermist.device.inputs.GatewayPortConfigWanExtraRoutesArgs;
 import com.pulumi.junipermist.device.inputs.GatewayPortConfigWanProbeOverrideArgs;
 import com.pulumi.junipermist.device.inputs.GatewayPortConfigWanSourceNatArgs;
@@ -578,6 +579,21 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * 
+     */
+    @Import(name="wanExtraRoutes6")
+    private @Nullable Output<Map<String,GatewayPortConfigWanExtraRoutes6Args>> wanExtraRoutes6;
+
+    /**
+     * @return Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * 
+     */
+    public Optional<Output<Map<String,GatewayPortConfigWanExtraRoutes6Args>>> wanExtraRoutes6() {
+        return Optional.ofNullable(this.wanExtraRoutes6);
+    }
+
+    /**
      * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
      * 
      */
@@ -681,6 +697,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         this.wanDisableSpeedtest = $.wanDisableSpeedtest;
         this.wanExtIp = $.wanExtIp;
         this.wanExtraRoutes = $.wanExtraRoutes;
+        this.wanExtraRoutes6 = $.wanExtraRoutes6;
         this.wanNetworks = $.wanNetworks;
         this.wanProbeOverride = $.wanProbeOverride;
         this.wanSourceNat = $.wanSourceNat;
@@ -1488,6 +1505,27 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder wanExtraRoutes(Map<String,GatewayPortConfigWanExtraRoutesArgs> wanExtraRoutes) {
             return wanExtraRoutes(Output.of(wanExtraRoutes));
+        }
+
+        /**
+         * @param wanExtraRoutes6 Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wanExtraRoutes6(@Nullable Output<Map<String,GatewayPortConfigWanExtraRoutes6Args>> wanExtraRoutes6) {
+            $.wanExtraRoutes6 = wanExtraRoutes6;
+            return this;
+        }
+
+        /**
+         * @param wanExtraRoutes6 Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wanExtraRoutes6(Map<String,GatewayPortConfigWanExtraRoutes6Args> wanExtraRoutes6) {
+            return wanExtraRoutes6(Output.of(wanExtraRoutes6));
         }
 
         /**

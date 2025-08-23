@@ -62,14 +62,29 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Exactly one of the `output_port_id` or `output_network` should be provided
+     * Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+     * 
+     */
+    @Import(name="outputIpAddress")
+    private @Nullable Output<String> outputIpAddress;
+
+    /**
+     * @return Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+     * 
+     */
+    public Optional<Output<String>> outputIpAddress() {
+        return Optional.ofNullable(this.outputIpAddress);
+    }
+
+    /**
+     * Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
      * 
      */
     @Import(name="outputNetwork")
     private @Nullable Output<String> outputNetwork;
 
     /**
-     * @return Exactly one of the `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
      * 
      */
     public Optional<Output<String>> outputNetwork() {
@@ -77,14 +92,14 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Exactly one of the `output_port_id` or `output_network` should be provided
+     * Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
      * 
      */
     @Import(name="outputPortId")
     private @Nullable Output<String> outputPortId;
 
     /**
-     * @return Exactly one of the `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
      * 
      */
     public Optional<Output<String>> outputPortId() {
@@ -97,6 +112,7 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
         this.inputNetworksIngresses = $.inputNetworksIngresses;
         this.inputPortIdsEgresses = $.inputPortIdsEgresses;
         this.inputPortIdsIngresses = $.inputPortIdsIngresses;
+        this.outputIpAddress = $.outputIpAddress;
         this.outputNetwork = $.outputNetwork;
         this.outputPortId = $.outputPortId;
     }
@@ -213,7 +229,28 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param outputNetwork Exactly one of the `output_port_id` or `output_network` should be provided
+         * @param outputIpAddress Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outputIpAddress(@Nullable Output<String> outputIpAddress) {
+            $.outputIpAddress = outputIpAddress;
+            return this;
+        }
+
+        /**
+         * @param outputIpAddress Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outputIpAddress(String outputIpAddress) {
+            return outputIpAddress(Output.of(outputIpAddress));
+        }
+
+        /**
+         * @param outputNetwork Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
          * 
          * @return builder
          * 
@@ -224,7 +261,7 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param outputNetwork Exactly one of the `output_port_id` or `output_network` should be provided
+         * @param outputNetwork Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
          * 
          * @return builder
          * 
@@ -234,7 +271,7 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param outputPortId Exactly one of the `output_port_id` or `output_network` should be provided
+         * @param outputPortId Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
          * 
          * @return builder
          * 
@@ -245,7 +282,7 @@ public final class SwitchPortMirroringArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param outputPortId Exactly one of the `output_port_id` or `output_network` should be provided
+         * @param outputPortId Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
          * 
          * @return builder
          * 

@@ -20,6 +20,7 @@ import com.pulumi.junipermist.device.inputs.SwitchOspfAreasArgs;
 import com.pulumi.junipermist.device.inputs.SwitchOspfConfigArgs;
 import com.pulumi.junipermist.device.inputs.SwitchOtherIpConfigsArgs;
 import com.pulumi.junipermist.device.inputs.SwitchPortConfigArgs;
+import com.pulumi.junipermist.device.inputs.SwitchPortConfigOverwriteArgs;
 import com.pulumi.junipermist.device.inputs.SwitchPortMirroringArgs;
 import com.pulumi.junipermist.device.inputs.SwitchPortUsagesArgs;
 import com.pulumi.junipermist.device.inputs.SwitchRadiusConfigArgs;
@@ -431,6 +432,23 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the
+     * port_usage without having to create a new port_usage.
+     * 
+     */
+    @Import(name="portConfigOverwrite")
+    private @Nullable Output<Map<String,SwitchPortConfigOverwriteArgs>> portConfigOverwrite;
+
+    /**
+     * @return Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the
+     * port_usage without having to create a new port_usage.
+     * 
+     */
+    public Optional<Output<Map<String,SwitchPortConfigOverwriteArgs>>> portConfigOverwrite() {
+        return Optional.ofNullable(this.portConfigOverwrite);
+    }
+
+    /**
      * Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
      * maximum 4 mirroring ports is allowed
@@ -720,6 +738,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         this.ospfConfig = $.ospfConfig;
         this.otherIpConfigs = $.otherIpConfigs;
         this.portConfig = $.portConfig;
+        this.portConfigOverwrite = $.portConfigOverwrite;
         this.portMirroring = $.portMirroring;
         this.portUsages = $.portUsages;
         this.radiusConfig = $.radiusConfig;
@@ -1329,6 +1348,29 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder portConfig(Map<String,SwitchPortConfigArgs> portConfig) {
             return portConfig(Output.of(portConfig));
+        }
+
+        /**
+         * @param portConfigOverwrite Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the
+         * port_usage without having to create a new port_usage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder portConfigOverwrite(@Nullable Output<Map<String,SwitchPortConfigOverwriteArgs>> portConfigOverwrite) {
+            $.portConfigOverwrite = portConfigOverwrite;
+            return this;
+        }
+
+        /**
+         * @param portConfigOverwrite Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the
+         * port_usage without having to create a new port_usage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder portConfigOverwrite(Map<String,SwitchPortConfigOverwriteArgs> portConfigOverwrite) {
+            return portConfigOverwrite(Output.of(portConfigOverwrite));
         }
 
         /**

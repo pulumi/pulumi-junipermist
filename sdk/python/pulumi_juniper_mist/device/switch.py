@@ -47,6 +47,7 @@ class SwitchArgs:
                  ospf_config: Optional[pulumi.Input['SwitchOspfConfigArgs']] = None,
                  other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]]] = None,
                  port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]]] = None,
+                 port_config_overwrite: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]] = None,
                  port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]] = None,
                  port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]]] = None,
                  radius_config: Optional[pulumi.Input['SwitchRadiusConfigArgs']] = None,
@@ -88,6 +89,8 @@ class SwitchArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]] port_config_overwrite: Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+               port_usage without having to create a new port_usage.
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
                maximum 4 mirroring ports is allowed
@@ -153,6 +156,8 @@ class SwitchArgs:
             pulumi.set(__self__, "other_ip_configs", other_ip_configs)
         if port_config is not None:
             pulumi.set(__self__, "port_config", port_config)
+        if port_config_overwrite is not None:
+            pulumi.set(__self__, "port_config_overwrite", port_config_overwrite)
         if port_mirroring is not None:
             pulumi.set(__self__, "port_mirroring", port_mirroring)
         if port_usages is not None:
@@ -481,6 +486,19 @@ class SwitchArgs:
         pulumi.set(self, "port_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="portConfigOverwrite")
+    def port_config_overwrite(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]]:
+        """
+        Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+        port_usage without having to create a new port_usage.
+        """
+        return pulumi.get(self, "port_config_overwrite")
+
+    @port_config_overwrite.setter
+    def port_config_overwrite(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]]):
+        pulumi.set(self, "port_config_overwrite", value)
+
+    @_builtins.property
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]]:
         """
@@ -706,6 +724,7 @@ class _SwitchState:
                  ospf_config: Optional[pulumi.Input['SwitchOspfConfigArgs']] = None,
                  other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]]] = None,
                  port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]]] = None,
+                 port_config_overwrite: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]] = None,
                  port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]] = None,
                  port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]]] = None,
                  radius_config: Optional[pulumi.Input['SwitchRadiusConfigArgs']] = None,
@@ -752,6 +771,8 @@ class _SwitchState:
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]] port_config_overwrite: Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+               port_usage without having to create a new port_usage.
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
                maximum 4 mirroring ports is allowed
@@ -831,6 +852,8 @@ class _SwitchState:
             pulumi.set(__self__, "other_ip_configs", other_ip_configs)
         if port_config is not None:
             pulumi.set(__self__, "port_config", port_config)
+        if port_config_overwrite is not None:
+            pulumi.set(__self__, "port_config_overwrite", port_config_overwrite)
         if port_mirroring is not None:
             pulumi.set(__self__, "port_mirroring", port_mirroring)
         if port_usages is not None:
@@ -1216,6 +1239,19 @@ class _SwitchState:
         pulumi.set(self, "port_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="portConfigOverwrite")
+    def port_config_overwrite(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]]:
+        """
+        Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+        port_usage without having to create a new port_usage.
+        """
+        return pulumi.get(self, "port_config_overwrite")
+
+    @port_config_overwrite.setter
+    def port_config_overwrite(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]]):
+        pulumi.set(self, "port_config_overwrite", value)
+
+    @_builtins.property
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]]:
         """
@@ -1471,6 +1507,7 @@ class Switch(pulumi.CustomResource):
                  ospf_config: Optional[pulumi.Input[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']]] = None,
                  other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]]] = None,
                  port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]]] = None,
+                 port_config_overwrite: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]]] = None,
                  port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]]] = None,
                  port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]]] = None,
                  radius_config: Optional[pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']]] = None,
@@ -1531,6 +1568,8 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]] port_config_overwrite: Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+               port_usage without having to create a new port_usage.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
                maximum 4 mirroring ports is allowed
@@ -1609,6 +1648,7 @@ class Switch(pulumi.CustomResource):
                  ospf_config: Optional[pulumi.Input[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']]] = None,
                  other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]]] = None,
                  port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]]] = None,
+                 port_config_overwrite: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]]] = None,
                  port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]]] = None,
                  port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]]] = None,
                  radius_config: Optional[pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']]] = None,
@@ -1663,6 +1703,7 @@ class Switch(pulumi.CustomResource):
             __props__.__dict__["ospf_config"] = ospf_config
             __props__.__dict__["other_ip_configs"] = other_ip_configs
             __props__.__dict__["port_config"] = port_config
+            __props__.__dict__["port_config_overwrite"] = port_config_overwrite
             __props__.__dict__["port_mirroring"] = port_mirroring
             __props__.__dict__["port_usages"] = port_usages
             __props__.__dict__["radius_config"] = radius_config
@@ -1732,6 +1773,7 @@ class Switch(pulumi.CustomResource):
             ospf_config: Optional[pulumi.Input[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']]] = None,
             other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]]] = None,
             port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]]] = None,
+            port_config_overwrite: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]]] = None,
             port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]]] = None,
             port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]]] = None,
             radius_config: Optional[pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']]] = None,
@@ -1783,6 +1825,8 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]] port_config_overwrite: Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+               port_usage without having to create a new port_usage.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
                maximum 4 mirroring ports is allowed
@@ -1835,6 +1879,7 @@ class Switch(pulumi.CustomResource):
         __props__.__dict__["ospf_config"] = ospf_config
         __props__.__dict__["other_ip_configs"] = other_ip_configs
         __props__.__dict__["port_config"] = port_config
+        __props__.__dict__["port_config_overwrite"] = port_config_overwrite
         __props__.__dict__["port_mirroring"] = port_mirroring
         __props__.__dict__["port_usages"] = port_usages
         __props__.__dict__["radius_config"] = radius_config
@@ -2075,6 +2120,15 @@ class Switch(pulumi.CustomResource):
         Property key is the port name or range (e.g. "ge-0/0/0-10")
         """
         return pulumi.get(self, "port_config")
+
+    @_builtins.property
+    @pulumi.getter(name="portConfigOverwrite")
+    def port_config_overwrite(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchPortConfigOverwrite']]]:
+        """
+        Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+        port_usage without having to create a new port_usage.
+        """
+        return pulumi.get(self, "port_config_overwrite")
 
     @_builtins.property
     @pulumi.getter(name="portMirroring")

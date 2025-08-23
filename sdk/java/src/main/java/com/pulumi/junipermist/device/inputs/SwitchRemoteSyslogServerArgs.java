@@ -91,6 +91,21 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Name of the server
+     * 
+     */
+    @Import(name="serverName")
+    private @Nullable Output<String> serverName;
+
+    /**
+     * @return Name of the server
+     * 
+     */
+    public Optional<Output<String>> serverName() {
+        return Optional.ofNullable(this.serverName);
+    }
+
+    /**
      * enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
      * 
      */
@@ -145,6 +160,7 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
         this.port = $.port;
         this.protocol = $.protocol;
         this.routingInstance = $.routingInstance;
+        this.serverName = $.serverName;
         this.severity = $.severity;
         this.sourceAddress = $.sourceAddress;
         this.structuredData = $.structuredData;
@@ -267,6 +283,27 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
 
         public Builder routingInstance(String routingInstance) {
             return routingInstance(Output.of(routingInstance));
+        }
+
+        /**
+         * @param serverName Name of the server
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverName(@Nullable Output<String> serverName) {
+            $.serverName = serverName;
+            return this;
+        }
+
+        /**
+         * @param serverName Name of the server
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverName(String serverName) {
+            return serverName(Output.of(serverName));
         }
 
         /**

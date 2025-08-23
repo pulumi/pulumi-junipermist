@@ -85,6 +85,9 @@ type Switch struct {
 	OtherIpConfigs SwitchOtherIpConfigsMapOutput `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig SwitchPortConfigMapOutput `pulumi:"portConfig"`
+	// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+	// portUsage without having to create a new port_usage.
+	PortConfigOverwrite SwitchPortConfigOverwriteMapOutput `pulumi:"portConfigOverwrite"`
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 mirroring ports is allowed
@@ -214,6 +217,9 @@ type switchState struct {
 	OtherIpConfigs map[string]SwitchOtherIpConfigs `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig map[string]SwitchPortConfig `pulumi:"portConfig"`
+	// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+	// portUsage without having to create a new port_usage.
+	PortConfigOverwrite map[string]SwitchPortConfigOverwrite `pulumi:"portConfigOverwrite"`
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 mirroring ports is allowed
@@ -308,6 +314,9 @@ type SwitchState struct {
 	OtherIpConfigs SwitchOtherIpConfigsMapInput
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig SwitchPortConfigMapInput
+	// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+	// portUsage without having to create a new port_usage.
+	PortConfigOverwrite SwitchPortConfigOverwriteMapInput
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 mirroring ports is allowed
@@ -398,6 +407,9 @@ type switchArgs struct {
 	OtherIpConfigs map[string]SwitchOtherIpConfigs `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig map[string]SwitchPortConfig `pulumi:"portConfig"`
+	// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+	// portUsage without having to create a new port_usage.
+	PortConfigOverwrite map[string]SwitchPortConfigOverwrite `pulumi:"portConfigOverwrite"`
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 mirroring ports is allowed
@@ -481,6 +493,9 @@ type SwitchArgs struct {
 	OtherIpConfigs SwitchOtherIpConfigsMapInput
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig SwitchPortConfigMapInput
+	// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+	// portUsage without having to create a new port_usage.
+	PortConfigOverwrite SwitchPortConfigOverwriteMapInput
 	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 mirroring ports is allowed
@@ -748,6 +763,12 @@ func (o SwitchOutput) OtherIpConfigs() SwitchOtherIpConfigsMapOutput {
 // Property key is the port name or range (e.g. "ge-0/0/0-10")
 func (o SwitchOutput) PortConfig() SwitchPortConfigMapOutput {
 	return o.ApplyT(func(v *Switch) SwitchPortConfigMapOutput { return v.PortConfig }).(SwitchPortConfigMapOutput)
+}
+
+// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
+// portUsage without having to create a new port_usage.
+func (o SwitchOutput) PortConfigOverwrite() SwitchPortConfigOverwriteMapOutput {
+	return o.ApplyT(func(v *Switch) SwitchPortConfigOverwriteMapOutput { return v.PortConfigOverwrite }).(SwitchPortConfigOverwriteMapOutput)
 }
 
 // Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes

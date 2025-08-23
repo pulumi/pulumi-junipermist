@@ -161,6 +161,8 @@ __all__ = [
     'SettingAnalyticArgsDict',
     'SettingAutoUpgradeArgs',
     'SettingAutoUpgradeArgsDict',
+    'SettingAutoUpgradeEslArgs',
+    'SettingAutoUpgradeEslArgsDict',
     'SettingBleConfigArgs',
     'SettingBleConfigArgsDict',
     'SettingConfigPushPolicyArgs',
@@ -2125,13 +2127,17 @@ if not MYPY:
         """
         At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         """
+        output_ip_address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        """
         output_network: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Exactly one of the `output_port_id` or `output_network` should be provided
+        Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         """
         output_port_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Exactly one of the `output_port_id` or `output_network` should be provided
+        Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         """
 elif False:
     NetworktemplatePortMirroringArgsDict: TypeAlias = Mapping[str, Any]
@@ -2142,14 +2148,16 @@ class NetworktemplatePortMirroringArgs:
                  input_networks_ingresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  input_port_ids_egresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  input_port_ids_ingresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 output_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
                  output_network: Optional[pulumi.Input[_builtins.str]] = None,
                  output_port_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_networks_ingresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_port_ids_egresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_port_ids_ingresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
-        :param pulumi.Input[_builtins.str] output_network: Exactly one of the `output_port_id` or `output_network` should be provided
-        :param pulumi.Input[_builtins.str] output_port_id: Exactly one of the `output_port_id` or `output_network` should be provided
+        :param pulumi.Input[_builtins.str] output_ip_address: Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        :param pulumi.Input[_builtins.str] output_network: Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        :param pulumi.Input[_builtins.str] output_port_id: Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         """
         if input_networks_ingresses is not None:
             pulumi.set(__self__, "input_networks_ingresses", input_networks_ingresses)
@@ -2157,6 +2165,8 @@ class NetworktemplatePortMirroringArgs:
             pulumi.set(__self__, "input_port_ids_egresses", input_port_ids_egresses)
         if input_port_ids_ingresses is not None:
             pulumi.set(__self__, "input_port_ids_ingresses", input_port_ids_ingresses)
+        if output_ip_address is not None:
+            pulumi.set(__self__, "output_ip_address", output_ip_address)
         if output_network is not None:
             pulumi.set(__self__, "output_network", output_network)
         if output_port_id is not None:
@@ -2199,10 +2209,22 @@ class NetworktemplatePortMirroringArgs:
         pulumi.set(self, "input_port_ids_ingresses", value)
 
     @_builtins.property
+    @pulumi.getter(name="outputIpAddress")
+    def output_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        """
+        return pulumi.get(self, "output_ip_address")
+
+    @output_ip_address.setter
+    def output_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "output_ip_address", value)
+
+    @_builtins.property
     @pulumi.getter(name="outputNetwork")
     def output_network(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Exactly one of the `output_port_id` or `output_network` should be provided
+        Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         """
         return pulumi.get(self, "output_network")
 
@@ -2214,7 +2236,7 @@ class NetworktemplatePortMirroringArgs:
     @pulumi.getter(name="outputPortId")
     def output_port_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Exactly one of the `output_port_id` or `output_network` should be provided
+        Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         """
         return pulumi.get(self, "output_port_id")
 
@@ -2263,7 +2285,7 @@ if not MYPY:
         """
         duplex: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+        Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
         """
         dynamic_vlan_networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
@@ -2355,7 +2377,7 @@ if not MYPY:
         """
         speed: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+        Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         """
         storm_control: NotRequired[pulumi.Input['NetworktemplatePortUsagesStormControlArgsDict']]
         """
@@ -2435,7 +2457,7 @@ class NetworktemplatePortUsagesArgs:
         :param pulumi.Input[_builtins.str] description: Only if `mode`!=`dynamic`
         :param pulumi.Input[_builtins.bool] disable_autoneg: Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
         :param pulumi.Input[_builtins.bool] disabled: Only if `mode`!=`dynamic` whether the port is disabled
-        :param pulumi.Input[_builtins.str] duplex: Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+        :param pulumi.Input[_builtins.str] duplex: Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dynamic_vlan_networks: Only if `mode`!=`dynamic` and `port_auth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
         :param pulumi.Input[_builtins.bool] enable_mac_auth: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` whether to enable MAC Auth
         :param pulumi.Input[_builtins.bool] enable_qos: Only if `mode`!=`dynamic`
@@ -2458,7 +2480,7 @@ class NetworktemplatePortUsagesArgs:
         :param pulumi.Input[Sequence[pulumi.Input['NetworktemplatePortUsagesRuleArgs']]] rules: Only if `mode`==`dynamic`
         :param pulumi.Input[_builtins.str] server_fail_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
         :param pulumi.Input[_builtins.str] server_reject_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
-        :param pulumi.Input[_builtins.str] speed: Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+        :param pulumi.Input[_builtins.str] speed: Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         :param pulumi.Input['NetworktemplatePortUsagesStormControlArgs'] storm_control: Switch storm control. Only if `mode`!=`dynamic`
         :param pulumi.Input[_builtins.bool] stp_edge: Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
         :param pulumi.Input[_builtins.str] ui_evpntopo_id: Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
@@ -2658,7 +2680,7 @@ class NetworktemplatePortUsagesArgs:
     @pulumi.getter
     def duplex(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+        Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
         """
         return pulumi.get(self, "duplex")
 
@@ -2934,7 +2956,7 @@ class NetworktemplatePortUsagesArgs:
     @pulumi.getter
     def speed(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+        Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         """
         return pulumi.get(self, "speed")
 
@@ -3133,6 +3155,10 @@ class NetworktemplatePortUsagesRuleArgs:
 
 if not MYPY:
     class NetworktemplatePortUsagesStormControlArgsDict(TypedDict):
+        disable_port: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to disable the port when storm control is triggered
+        """
         no_broadcast: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Whether to disable storm control on broadcast traffic
@@ -3159,18 +3185,22 @@ elif False:
 @pulumi.input_type
 class NetworktemplatePortUsagesStormControlArgs:
     def __init__(__self__, *,
+                 disable_port: Optional[pulumi.Input[_builtins.bool]] = None,
                  no_broadcast: Optional[pulumi.Input[_builtins.bool]] = None,
                  no_multicast: Optional[pulumi.Input[_builtins.bool]] = None,
                  no_registered_multicast: Optional[pulumi.Input[_builtins.bool]] = None,
                  no_unknown_unicast: Optional[pulumi.Input[_builtins.bool]] = None,
                  percentage: Optional[pulumi.Input[_builtins.int]] = None):
         """
+        :param pulumi.Input[_builtins.bool] disable_port: Whether to disable the port when storm control is triggered
         :param pulumi.Input[_builtins.bool] no_broadcast: Whether to disable storm control on broadcast traffic
         :param pulumi.Input[_builtins.bool] no_multicast: Whether to disable storm control on multicast traffic
         :param pulumi.Input[_builtins.bool] no_registered_multicast: Whether to disable storm control on registered multicast traffic
         :param pulumi.Input[_builtins.bool] no_unknown_unicast: Whether to disable storm control on unknown unicast traffic
         :param pulumi.Input[_builtins.int] percentage: Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
         """
+        if disable_port is not None:
+            pulumi.set(__self__, "disable_port", disable_port)
         if no_broadcast is not None:
             pulumi.set(__self__, "no_broadcast", no_broadcast)
         if no_multicast is not None:
@@ -3181,6 +3211,18 @@ class NetworktemplatePortUsagesStormControlArgs:
             pulumi.set(__self__, "no_unknown_unicast", no_unknown_unicast)
         if percentage is not None:
             pulumi.set(__self__, "percentage", percentage)
+
+    @_builtins.property
+    @pulumi.getter(name="disablePort")
+    def disable_port(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to disable the port when storm control is triggered
+        """
+        return pulumi.get(self, "disable_port")
+
+    @disable_port.setter
+    def disable_port(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_port", value)
 
     @_builtins.property
     @pulumi.getter(name="noBroadcast")
@@ -4198,6 +4240,10 @@ if not MYPY:
         enum: `tcp`, `udp`
         """
         routing_instance: NotRequired[pulumi.Input[_builtins.str]]
+        server_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the server
+        """
         severity: NotRequired[pulumi.Input[_builtins.str]]
         """
         enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
@@ -4222,6 +4268,7 @@ class NetworktemplateRemoteSyslogServerArgs:
                  port: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
                  routing_instance: Optional[pulumi.Input[_builtins.str]] = None,
+                 server_name: Optional[pulumi.Input[_builtins.str]] = None,
                  severity: Optional[pulumi.Input[_builtins.str]] = None,
                  source_address: Optional[pulumi.Input[_builtins.str]] = None,
                  structured_data: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -4229,6 +4276,7 @@ class NetworktemplateRemoteSyslogServerArgs:
         """
         :param pulumi.Input[_builtins.str] facility: enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
         :param pulumi.Input[_builtins.str] protocol: enum: `tcp`, `udp`
+        :param pulumi.Input[_builtins.str] server_name: Name of the server
         :param pulumi.Input[_builtins.str] severity: enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
         :param pulumi.Input[_builtins.str] source_address: If source_address is configured, will use the vlan firstly otherwise use source_ip
         """
@@ -4248,6 +4296,8 @@ class NetworktemplateRemoteSyslogServerArgs:
             pulumi.set(__self__, "protocol", protocol)
         if routing_instance is not None:
             pulumi.set(__self__, "routing_instance", routing_instance)
+        if server_name is not None:
+            pulumi.set(__self__, "server_name", server_name)
         if severity is not None:
             pulumi.set(__self__, "severity", severity)
         if source_address is not None:
@@ -4334,6 +4384,18 @@ class NetworktemplateRemoteSyslogServerArgs:
     @routing_instance.setter
     def routing_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "routing_instance", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverName")
+    def server_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the server
+        """
+        return pulumi.get(self, "server_name")
+
+    @server_name.setter
+    def server_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "server_name", value)
 
     @_builtins.property
     @pulumi.getter
@@ -6588,13 +6650,17 @@ if not MYPY:
         """
         At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         """
+        output_ip_address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        """
         output_network: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Exactly one of the `output_port_id` or `output_network` should be provided
+        Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         """
         output_port_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Exactly one of the `output_port_id` or `output_network` should be provided
+        Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         """
 elif False:
     NetworktemplateSwitchMatchingRulePortMirroringArgsDict: TypeAlias = Mapping[str, Any]
@@ -6605,14 +6671,16 @@ class NetworktemplateSwitchMatchingRulePortMirroringArgs:
                  input_networks_ingresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  input_port_ids_egresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  input_port_ids_ingresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 output_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
                  output_network: Optional[pulumi.Input[_builtins.str]] = None,
                  output_port_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_networks_ingresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_port_ids_egresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_port_ids_ingresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
-        :param pulumi.Input[_builtins.str] output_network: Exactly one of the `output_port_id` or `output_network` should be provided
-        :param pulumi.Input[_builtins.str] output_port_id: Exactly one of the `output_port_id` or `output_network` should be provided
+        :param pulumi.Input[_builtins.str] output_ip_address: Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        :param pulumi.Input[_builtins.str] output_network: Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        :param pulumi.Input[_builtins.str] output_port_id: Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         """
         if input_networks_ingresses is not None:
             pulumi.set(__self__, "input_networks_ingresses", input_networks_ingresses)
@@ -6620,6 +6688,8 @@ class NetworktemplateSwitchMatchingRulePortMirroringArgs:
             pulumi.set(__self__, "input_port_ids_egresses", input_port_ids_egresses)
         if input_port_ids_ingresses is not None:
             pulumi.set(__self__, "input_port_ids_ingresses", input_port_ids_ingresses)
+        if output_ip_address is not None:
+            pulumi.set(__self__, "output_ip_address", output_ip_address)
         if output_network is not None:
             pulumi.set(__self__, "output_network", output_network)
         if output_port_id is not None:
@@ -6662,10 +6732,22 @@ class NetworktemplateSwitchMatchingRulePortMirroringArgs:
         pulumi.set(self, "input_port_ids_ingresses", value)
 
     @_builtins.property
+    @pulumi.getter(name="outputIpAddress")
+    def output_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        """
+        return pulumi.get(self, "output_ip_address")
+
+    @output_ip_address.setter
+    def output_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "output_ip_address", value)
+
+    @_builtins.property
     @pulumi.getter(name="outputNetwork")
     def output_network(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Exactly one of the `output_port_id` or `output_network` should be provided
+        Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         """
         return pulumi.get(self, "output_network")
 
@@ -6677,7 +6759,7 @@ class NetworktemplateSwitchMatchingRulePortMirroringArgs:
     @pulumi.getter(name="outputPortId")
     def output_port_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Exactly one of the `output_port_id` or `output_network` should be provided
+        Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         """
         return pulumi.get(self, "output_port_id")
 
@@ -7734,6 +7816,131 @@ class SettingAutoUpgradeArgs:
         """
         desired version. enum: `beta`, `custom`, `stable`
         """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "version", value)
+
+
+if not MYPY:
+    class SettingAutoUpgradeEslArgsDict(TypedDict):
+        allow_downgrade: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If true, it will allow downgrade to a lower version
+        """
+        custom_versions: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Custom versions for different models. Property key is the model name (e.g. "AP41")
+        """
+        day_of_week: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+        """
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+        """
+        time_of_day: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+        """
+        version: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    SettingAutoUpgradeEslArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SettingAutoUpgradeEslArgs:
+    def __init__(__self__, *,
+                 allow_downgrade: Optional[pulumi.Input[_builtins.bool]] = None,
+                 custom_versions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 day_of_week: Optional[pulumi.Input[_builtins.str]] = None,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 time_of_day: Optional[pulumi.Input[_builtins.str]] = None,
+                 version: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] allow_downgrade: If true, it will allow downgrade to a lower version
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_versions: Custom versions for different models. Property key is the model name (e.g. "AP41")
+        :param pulumi.Input[_builtins.str] day_of_week: enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+        :param pulumi.Input[_builtins.bool] enabled: Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+        :param pulumi.Input[_builtins.str] time_of_day: `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+        """
+        if allow_downgrade is not None:
+            pulumi.set(__self__, "allow_downgrade", allow_downgrade)
+        if custom_versions is not None:
+            pulumi.set(__self__, "custom_versions", custom_versions)
+        if day_of_week is not None:
+            pulumi.set(__self__, "day_of_week", day_of_week)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if time_of_day is not None:
+            pulumi.set(__self__, "time_of_day", time_of_day)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter(name="allowDowngrade")
+    def allow_downgrade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, it will allow downgrade to a lower version
+        """
+        return pulumi.get(self, "allow_downgrade")
+
+    @allow_downgrade.setter
+    def allow_downgrade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_downgrade", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customVersions")
+    def custom_versions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Custom versions for different models. Property key is the model name (e.g. "AP41")
+        """
+        return pulumi.get(self, "custom_versions")
+
+    @custom_versions.setter
+    def custom_versions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "custom_versions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+        """
+        return pulumi.get(self, "day_of_week")
+
+    @day_of_week.setter
+    def day_of_week(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "day_of_week", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeOfDay")
+    def time_of_day(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+        """
+        return pulumi.get(self, "time_of_day")
+
+    @time_of_day.setter
+    def time_of_day(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "time_of_day", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "version")
 
     @version.setter
@@ -9071,6 +9278,7 @@ if not MYPY:
         """
         fips_enabled: NotRequired[pulumi.Input[_builtins.bool]]
         probe_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        probe_hostsv6s: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         protect_re: NotRequired[pulumi.Input['SettingGatewayMgmtProtectReArgsDict']]
         """
         Restrict inbound-traffic to host
@@ -9099,6 +9307,7 @@ class SettingGatewayMgmtArgs:
                  disable_usb: Optional[pulumi.Input[_builtins.bool]] = None,
                  fips_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  probe_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 probe_hostsv6s: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  protect_re: Optional[pulumi.Input['SettingGatewayMgmtProtectReArgs']] = None,
                  root_password: Optional[pulumi.Input[_builtins.str]] = None,
                  security_log_source_address: Optional[pulumi.Input[_builtins.str]] = None,
@@ -9135,6 +9344,8 @@ class SettingGatewayMgmtArgs:
             pulumi.set(__self__, "fips_enabled", fips_enabled)
         if probe_hosts is not None:
             pulumi.set(__self__, "probe_hosts", probe_hosts)
+        if probe_hostsv6s is not None:
+            pulumi.set(__self__, "probe_hostsv6s", probe_hostsv6s)
         if protect_re is not None:
             pulumi.set(__self__, "protect_re", protect_re)
         if root_password is not None:
@@ -9251,6 +9462,15 @@ class SettingGatewayMgmtArgs:
     @probe_hosts.setter
     def probe_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "probe_hosts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="probeHostsv6s")
+    def probe_hostsv6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "probe_hostsv6s")
+
+    @probe_hostsv6s.setter
+    def probe_hostsv6s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "probe_hostsv6s", value)
 
     @_builtins.property
     @pulumi.getter(name="protectRe")
@@ -13456,6 +13676,26 @@ class WlanInjectDhcpOption82Args:
 
 if not MYPY:
     class WlanMistNacArgsDict(TypedDict):
+        acct_interim_interval: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+        """
+        auth_servers_retries: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "retries" are set to value of `auth_servers_timeout`. "max-requests" is also set when setting `auth_servers_retries` is set to default value to 3.
+        """
+        auth_servers_timeout: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `auth_servers_timeout`. "supplicant-timeout" is also set when setting `auth_servers_timeout` is set to default value of 10.
+        """
+        coa_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Allows a RADIUS server to dynamically modify the authorization status of a user session.
+        """
+        coa_port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        the communication port used for “Change of Authorization” (CoA) messages
+        """
         enabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
         When enabled:
@@ -13466,14 +13706,39 @@ if not MYPY:
           * `radsec` is ignored
           * `coa_enabled` is assumed
         """
+        fast_dot1x_timers: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.
+        """
+        network: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Which network the mist nac server resides in
+        """
+        source_ip: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        In case there is a static IP for this network, we can specify it using source ip
+        """
 elif False:
     WlanMistNacArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WlanMistNacArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 acct_interim_interval: Optional[pulumi.Input[_builtins.int]] = None,
+                 auth_servers_retries: Optional[pulumi.Input[_builtins.int]] = None,
+                 auth_servers_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 coa_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 coa_port: Optional[pulumi.Input[_builtins.int]] = None,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 fast_dot1x_timers: Optional[pulumi.Input[_builtins.bool]] = None,
+                 network: Optional[pulumi.Input[_builtins.str]] = None,
+                 source_ip: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.int] acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+        :param pulumi.Input[_builtins.int] auth_servers_retries: Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "retries" are set to value of `auth_servers_timeout`. "max-requests" is also set when setting `auth_servers_retries` is set to default value to 3.
+        :param pulumi.Input[_builtins.int] auth_servers_timeout: Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `auth_servers_timeout`. "supplicant-timeout" is also set when setting `auth_servers_timeout` is set to default value of 10.
+        :param pulumi.Input[_builtins.bool] coa_enabled: Allows a RADIUS server to dynamically modify the authorization status of a user session.
+        :param pulumi.Input[_builtins.int] coa_port: the communication port used for “Change of Authorization” (CoA) messages
         :param pulumi.Input[_builtins.bool] enabled: When enabled:
                  * `auth_servers` is ignored
                  * `acct_servers` is ignored
@@ -13481,9 +13746,88 @@ class WlanMistNacArgs:
                  * `coa_servers` is ignored
                  * `radsec` is ignored
                  * `coa_enabled` is assumed
+        :param pulumi.Input[_builtins.bool] fast_dot1x_timers: If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.
+        :param pulumi.Input[_builtins.str] network: Which network the mist nac server resides in
+        :param pulumi.Input[_builtins.str] source_ip: In case there is a static IP for this network, we can specify it using source ip
         """
+        if acct_interim_interval is not None:
+            pulumi.set(__self__, "acct_interim_interval", acct_interim_interval)
+        if auth_servers_retries is not None:
+            pulumi.set(__self__, "auth_servers_retries", auth_servers_retries)
+        if auth_servers_timeout is not None:
+            pulumi.set(__self__, "auth_servers_timeout", auth_servers_timeout)
+        if coa_enabled is not None:
+            pulumi.set(__self__, "coa_enabled", coa_enabled)
+        if coa_port is not None:
+            pulumi.set(__self__, "coa_port", coa_port)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if fast_dot1x_timers is not None:
+            pulumi.set(__self__, "fast_dot1x_timers", fast_dot1x_timers)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if source_ip is not None:
+            pulumi.set(__self__, "source_ip", source_ip)
+
+    @_builtins.property
+    @pulumi.getter(name="acctInterimInterval")
+    def acct_interim_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+        """
+        return pulumi.get(self, "acct_interim_interval")
+
+    @acct_interim_interval.setter
+    def acct_interim_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "acct_interim_interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authServersRetries")
+    def auth_servers_retries(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "retries" are set to value of `auth_servers_timeout`. "max-requests" is also set when setting `auth_servers_retries` is set to default value to 3.
+        """
+        return pulumi.get(self, "auth_servers_retries")
+
+    @auth_servers_retries.setter
+    def auth_servers_retries(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "auth_servers_retries", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authServersTimeout")
+    def auth_servers_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `auth_servers_timeout`. "supplicant-timeout" is also set when setting `auth_servers_timeout` is set to default value of 10.
+        """
+        return pulumi.get(self, "auth_servers_timeout")
+
+    @auth_servers_timeout.setter
+    def auth_servers_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "auth_servers_timeout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="coaEnabled")
+    def coa_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Allows a RADIUS server to dynamically modify the authorization status of a user session.
+        """
+        return pulumi.get(self, "coa_enabled")
+
+    @coa_enabled.setter
+    def coa_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "coa_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="coaPort")
+    def coa_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        the communication port used for “Change of Authorization” (CoA) messages
+        """
+        return pulumi.get(self, "coa_port")
+
+    @coa_port.setter
+    def coa_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "coa_port", value)
 
     @_builtins.property
     @pulumi.getter
@@ -13502,6 +13846,42 @@ class WlanMistNacArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fastDot1xTimers")
+    def fast_dot1x_timers(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.
+        """
+        return pulumi.get(self, "fast_dot1x_timers")
+
+    @fast_dot1x_timers.setter
+    def fast_dot1x_timers(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "fast_dot1x_timers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Which network the mist nac server resides in
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceIp")
+    def source_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        In case there is a static IP for this network, we can specify it using source ip
+        """
+        return pulumi.get(self, "source_ip")
+
+    @source_ip.setter
+    def source_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "source_ip", value)
 
 
 if not MYPY:

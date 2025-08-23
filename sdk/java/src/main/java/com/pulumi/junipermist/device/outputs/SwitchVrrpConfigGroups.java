@@ -13,11 +13,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchVrrpConfigGroups {
     /**
-     * @return If `true`, accept packets destined for VRRP address
-     * 
-     */
-    private @Nullable Boolean acceptData;
-    /**
      * @return If `true`, allow preemption (a backup router can preempt a primary router)
      * 
      */
@@ -25,13 +20,6 @@ public final class SwitchVrrpConfigGroups {
     private @Nullable Integer priority;
 
     private SwitchVrrpConfigGroups() {}
-    /**
-     * @return If `true`, accept packets destined for VRRP address
-     * 
-     */
-    public Optional<Boolean> acceptData() {
-        return Optional.ofNullable(this.acceptData);
-    }
     /**
      * @return If `true`, allow preemption (a backup router can preempt a primary router)
      * 
@@ -52,23 +40,15 @@ public final class SwitchVrrpConfigGroups {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean acceptData;
         private @Nullable Boolean preempt;
         private @Nullable Integer priority;
         public Builder() {}
         public Builder(SwitchVrrpConfigGroups defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.acceptData = defaults.acceptData;
     	      this.preempt = defaults.preempt;
     	      this.priority = defaults.priority;
         }
 
-        @CustomType.Setter
-        public Builder acceptData(@Nullable Boolean acceptData) {
-
-            this.acceptData = acceptData;
-            return this;
-        }
         @CustomType.Setter
         public Builder preempt(@Nullable Boolean preempt) {
 
@@ -83,7 +63,6 @@ public final class SwitchVrrpConfigGroups {
         }
         public SwitchVrrpConfigGroups build() {
             final var _resultValue = new SwitchVrrpConfigGroups();
-            _resultValue.acceptData = acceptData;
             _resultValue.preempt = preempt;
             _resultValue.priority = priority;
             return _resultValue;

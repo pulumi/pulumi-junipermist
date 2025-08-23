@@ -71,6 +71,14 @@ namespace Pulumi.JuniperMist.Site.Inputs
             set => _probeHosts = value;
         }
 
+        [Input("probeHostsv6s")]
+        private InputList<string>? _probeHostsv6s;
+        public InputList<string> ProbeHostsv6s
+        {
+            get => _probeHostsv6s ?? (_probeHostsv6s = new InputList<string>());
+            set => _probeHostsv6s = value;
+        }
+
         /// <summary>
         /// Restrict inbound-traffic to host
         /// when enabled, all traffic that is not essential to our operation will be dropped 

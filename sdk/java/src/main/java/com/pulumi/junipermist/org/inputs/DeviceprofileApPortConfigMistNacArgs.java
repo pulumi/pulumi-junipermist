@@ -6,6 +6,8 @@ package com.pulumi.junipermist.org.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +16,81 @@ import javax.annotation.Nullable;
 public final class DeviceprofileApPortConfigMistNacArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DeviceprofileApPortConfigMistNacArgs Empty = new DeviceprofileApPortConfigMistNacArgs();
+
+    /**
+     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+     * 
+     */
+    @Import(name="acctInterimInterval")
+    private @Nullable Output<Integer> acctInterimInterval;
+
+    /**
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+     * 
+     */
+    public Optional<Output<Integer>> acctInterimInterval() {
+        return Optional.ofNullable(this.acctInterimInterval);
+    }
+
+    /**
+     * Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. &#34;retries&#34; are set to value of `auth_servers_timeout`. &#34;max-requests&#34; is also set when setting `auth_servers_retries` is set to default value to 3.
+     * 
+     */
+    @Import(name="authServersRetries")
+    private @Nullable Output<Integer> authServersRetries;
+
+    /**
+     * @return Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. &#34;retries&#34; are set to value of `auth_servers_timeout`. &#34;max-requests&#34; is also set when setting `auth_servers_retries` is set to default value to 3.
+     * 
+     */
+    public Optional<Output<Integer>> authServersRetries() {
+        return Optional.ofNullable(this.authServersRetries);
+    }
+
+    /**
+     * Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `auth_servers_timeout`. &#34;supplicant-timeout&#34; is also set when setting `auth_servers_timeout` is set to default value of 10.
+     * 
+     */
+    @Import(name="authServersTimeout")
+    private @Nullable Output<Integer> authServersTimeout;
+
+    /**
+     * @return Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `auth_servers_timeout`. &#34;supplicant-timeout&#34; is also set when setting `auth_servers_timeout` is set to default value of 10.
+     * 
+     */
+    public Optional<Output<Integer>> authServersTimeout() {
+        return Optional.ofNullable(this.authServersTimeout);
+    }
+
+    /**
+     * Allows a RADIUS server to dynamically modify the authorization status of a user session.
+     * 
+     */
+    @Import(name="coaEnabled")
+    private @Nullable Output<Boolean> coaEnabled;
+
+    /**
+     * @return Allows a RADIUS server to dynamically modify the authorization status of a user session.
+     * 
+     */
+    public Optional<Output<Boolean>> coaEnabled() {
+        return Optional.ofNullable(this.coaEnabled);
+    }
+
+    /**
+     * the communication port used for “Change of Authorization” (CoA) messages
+     * 
+     */
+    @Import(name="coaPort")
+    private @Nullable Output<Integer> coaPort;
+
+    /**
+     * @return the communication port used for “Change of Authorization” (CoA) messages
+     * 
+     */
+    public Optional<Output<Integer>> coaPort() {
+        return Optional.ofNullable(this.coaPort);
+    }
 
     /**
      * When enabled:
@@ -42,10 +119,63 @@ public final class DeviceprofileApPortConfigMistNacArgs extends com.pulumi.resou
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.
+     * 
+     */
+    @Import(name="fastDot1xTimers")
+    private @Nullable Output<Boolean> fastDot1xTimers;
+
+    /**
+     * @return If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.
+     * 
+     */
+    public Optional<Output<Boolean>> fastDot1xTimers() {
+        return Optional.ofNullable(this.fastDot1xTimers);
+    }
+
+    /**
+     * Which network the mist nac server resides in
+     * 
+     */
+    @Import(name="network")
+    private @Nullable Output<String> network;
+
+    /**
+     * @return Which network the mist nac server resides in
+     * 
+     */
+    public Optional<Output<String>> network() {
+        return Optional.ofNullable(this.network);
+    }
+
+    /**
+     * In case there is a static IP for this network, we can specify it using source ip
+     * 
+     */
+    @Import(name="sourceIp")
+    private @Nullable Output<String> sourceIp;
+
+    /**
+     * @return In case there is a static IP for this network, we can specify it using source ip
+     * 
+     */
+    public Optional<Output<String>> sourceIp() {
+        return Optional.ofNullable(this.sourceIp);
+    }
+
     private DeviceprofileApPortConfigMistNacArgs() {}
 
     private DeviceprofileApPortConfigMistNacArgs(DeviceprofileApPortConfigMistNacArgs $) {
+        this.acctInterimInterval = $.acctInterimInterval;
+        this.authServersRetries = $.authServersRetries;
+        this.authServersTimeout = $.authServersTimeout;
+        this.coaEnabled = $.coaEnabled;
+        this.coaPort = $.coaPort;
         this.enabled = $.enabled;
+        this.fastDot1xTimers = $.fastDot1xTimers;
+        this.network = $.network;
+        this.sourceIp = $.sourceIp;
     }
 
     public static Builder builder() {
@@ -64,6 +194,111 @@ public final class DeviceprofileApPortConfigMistNacArgs extends com.pulumi.resou
 
         public Builder(DeviceprofileApPortConfigMistNacArgs defaults) {
             $ = new DeviceprofileApPortConfigMistNacArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acctInterimInterval(@Nullable Output<Integer> acctInterimInterval) {
+            $.acctInterimInterval = acctInterimInterval;
+            return this;
+        }
+
+        /**
+         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acctInterimInterval(Integer acctInterimInterval) {
+            return acctInterimInterval(Output.of(acctInterimInterval));
+        }
+
+        /**
+         * @param authServersRetries Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. &#34;retries&#34; are set to value of `auth_servers_timeout`. &#34;max-requests&#34; is also set when setting `auth_servers_retries` is set to default value to 3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authServersRetries(@Nullable Output<Integer> authServersRetries) {
+            $.authServersRetries = authServersRetries;
+            return this;
+        }
+
+        /**
+         * @param authServersRetries Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. &#34;retries&#34; are set to value of `auth_servers_timeout`. &#34;max-requests&#34; is also set when setting `auth_servers_retries` is set to default value to 3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authServersRetries(Integer authServersRetries) {
+            return authServersRetries(Output.of(authServersRetries));
+        }
+
+        /**
+         * @param authServersTimeout Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `auth_servers_timeout`. &#34;supplicant-timeout&#34; is also set when setting `auth_servers_timeout` is set to default value of 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authServersTimeout(@Nullable Output<Integer> authServersTimeout) {
+            $.authServersTimeout = authServersTimeout;
+            return this;
+        }
+
+        /**
+         * @param authServersTimeout Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `auth_servers_timeout`. &#34;supplicant-timeout&#34; is also set when setting `auth_servers_timeout` is set to default value of 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authServersTimeout(Integer authServersTimeout) {
+            return authServersTimeout(Output.of(authServersTimeout));
+        }
+
+        /**
+         * @param coaEnabled Allows a RADIUS server to dynamically modify the authorization status of a user session.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder coaEnabled(@Nullable Output<Boolean> coaEnabled) {
+            $.coaEnabled = coaEnabled;
+            return this;
+        }
+
+        /**
+         * @param coaEnabled Allows a RADIUS server to dynamically modify the authorization status of a user session.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder coaEnabled(Boolean coaEnabled) {
+            return coaEnabled(Output.of(coaEnabled));
+        }
+
+        /**
+         * @param coaPort the communication port used for “Change of Authorization” (CoA) messages
+         * 
+         * @return builder
+         * 
+         */
+        public Builder coaPort(@Nullable Output<Integer> coaPort) {
+            $.coaPort = coaPort;
+            return this;
+        }
+
+        /**
+         * @param coaPort the communication port used for “Change of Authorization” (CoA) messages
+         * 
+         * @return builder
+         * 
+         */
+        public Builder coaPort(Integer coaPort) {
+            return coaPort(Output.of(coaPort));
         }
 
         /**
@@ -97,6 +332,69 @@ public final class DeviceprofileApPortConfigMistNacArgs extends com.pulumi.resou
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param fastDot1xTimers If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fastDot1xTimers(@Nullable Output<Boolean> fastDot1xTimers) {
+            $.fastDot1xTimers = fastDot1xTimers;
+            return this;
+        }
+
+        /**
+         * @param fastDot1xTimers If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fastDot1xTimers(Boolean fastDot1xTimers) {
+            return fastDot1xTimers(Output.of(fastDot1xTimers));
+        }
+
+        /**
+         * @param network Which network the mist nac server resides in
+         * 
+         * @return builder
+         * 
+         */
+        public Builder network(@Nullable Output<String> network) {
+            $.network = network;
+            return this;
+        }
+
+        /**
+         * @param network Which network the mist nac server resides in
+         * 
+         * @return builder
+         * 
+         */
+        public Builder network(String network) {
+            return network(Output.of(network));
+        }
+
+        /**
+         * @param sourceIp In case there is a static IP for this network, we can specify it using source ip
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceIp(@Nullable Output<String> sourceIp) {
+            $.sourceIp = sourceIp;
+            return this;
+        }
+
+        /**
+         * @param sourceIp In case there is a static IP for this network, we can specify it using source ip
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceIp(String sourceIp) {
+            return sourceIp(Output.of(sourceIp));
         }
 
         public DeviceprofileApPortConfigMistNacArgs build() {

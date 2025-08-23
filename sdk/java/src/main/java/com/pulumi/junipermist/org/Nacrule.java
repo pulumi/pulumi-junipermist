@@ -84,6 +84,20 @@ public class Nacrule extends com.pulumi.resources.CustomResource {
     public Output<Boolean> enabled() {
         return this.enabled;
     }
+    /**
+     * Guest portal authorization state. enum: `authorized`, `unknown`
+     * 
+     */
+    @Export(name="guestAuthState", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> guestAuthState;
+
+    /**
+     * @return Guest portal authorization state. enum: `authorized`, `unknown`
+     * 
+     */
+    public Output<Optional<String>> guestAuthState() {
+        return Codegen.optional(this.guestAuthState);
+    }
     @Export(name="matching", refs={NacruleMatching.class}, tree="[0]")
     private Output</* @Nullable */ NacruleMatching> matching;
 

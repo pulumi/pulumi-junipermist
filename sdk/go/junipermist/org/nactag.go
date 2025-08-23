@@ -72,8 +72,10 @@ type Nactag struct {
 	// match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
 	// set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
 	MatchAll pulumi.BoolPtrOutput `pulumi:"matchAll"`
-	Name     pulumi.StringOutput  `pulumi:"name"`
-	OrgId    pulumi.StringOutput  `pulumi:"orgId"`
+	// If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
+	NacportalId pulumi.StringPtrOutput `pulumi:"nacportalId"`
+	Name        pulumi.StringOutput    `pulumi:"name"`
+	OrgId       pulumi.StringOutput    `pulumi:"orgId"`
 	// If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". It is
 	// the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
 	// that it is allowed to have more than one radiusAttrs in the result of a given rule.
@@ -86,8 +88,8 @@ type Nactag struct {
 	RadiusVendorAttrs pulumi.StringArrayOutput `pulumi:"radiusVendorAttrs"`
 	// If `type`==`session_timeout, in seconds
 	SessionTimeout pulumi.IntPtrOutput `pulumi:"sessionTimeout"`
-	// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`,
-	// `usernameAttr`, `vlan`
+	// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`,
+	// `sessionTimeout`, `usernameAttr`, `vlan`
 	Type pulumi.StringOutput `pulumi:"type"`
 	// enum: `automatic`, `cn`, `dns`, `email`, `upn`
 	UsernameAttr pulumi.StringPtrOutput `pulumi:"usernameAttr"`
@@ -144,9 +146,11 @@ type nactagState struct {
 	// This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
 	// match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
 	// set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
-	MatchAll *bool   `pulumi:"matchAll"`
-	Name     *string `pulumi:"name"`
-	OrgId    *string `pulumi:"orgId"`
+	MatchAll *bool `pulumi:"matchAll"`
+	// If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
+	NacportalId *string `pulumi:"nacportalId"`
+	Name        *string `pulumi:"name"`
+	OrgId       *string `pulumi:"orgId"`
 	// If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". It is
 	// the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
 	// that it is allowed to have more than one radiusAttrs in the result of a given rule.
@@ -159,8 +163,8 @@ type nactagState struct {
 	RadiusVendorAttrs []string `pulumi:"radiusVendorAttrs"`
 	// If `type`==`session_timeout, in seconds
 	SessionTimeout *int `pulumi:"sessionTimeout"`
-	// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`,
-	// `usernameAttr`, `vlan`
+	// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`,
+	// `sessionTimeout`, `usernameAttr`, `vlan`
 	Type *string `pulumi:"type"`
 	// enum: `automatic`, `cn`, `dns`, `email`, `upn`
 	UsernameAttr *string `pulumi:"usernameAttr"`
@@ -183,8 +187,10 @@ type NactagState struct {
 	// match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
 	// set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
 	MatchAll pulumi.BoolPtrInput
-	Name     pulumi.StringPtrInput
-	OrgId    pulumi.StringPtrInput
+	// If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
+	NacportalId pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	OrgId       pulumi.StringPtrInput
 	// If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". It is
 	// the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
 	// that it is allowed to have more than one radiusAttrs in the result of a given rule.
@@ -197,8 +203,8 @@ type NactagState struct {
 	RadiusVendorAttrs pulumi.StringArrayInput
 	// If `type`==`session_timeout, in seconds
 	SessionTimeout pulumi.IntPtrInput
-	// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`,
-	// `usernameAttr`, `vlan`
+	// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`,
+	// `sessionTimeout`, `usernameAttr`, `vlan`
 	Type pulumi.StringPtrInput
 	// enum: `automatic`, `cn`, `dns`, `email`, `upn`
 	UsernameAttr pulumi.StringPtrInput
@@ -224,9 +230,11 @@ type nactagArgs struct {
 	// This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
 	// match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
 	// set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
-	MatchAll *bool   `pulumi:"matchAll"`
-	Name     *string `pulumi:"name"`
-	OrgId    string  `pulumi:"orgId"`
+	MatchAll *bool `pulumi:"matchAll"`
+	// If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
+	NacportalId *string `pulumi:"nacportalId"`
+	Name        *string `pulumi:"name"`
+	OrgId       string  `pulumi:"orgId"`
 	// If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". It is
 	// the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
 	// that it is allowed to have more than one radiusAttrs in the result of a given rule.
@@ -239,8 +247,8 @@ type nactagArgs struct {
 	RadiusVendorAttrs []string `pulumi:"radiusVendorAttrs"`
 	// If `type`==`session_timeout, in seconds
 	SessionTimeout *int `pulumi:"sessionTimeout"`
-	// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`,
-	// `usernameAttr`, `vlan`
+	// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`,
+	// `sessionTimeout`, `usernameAttr`, `vlan`
 	Type string `pulumi:"type"`
 	// enum: `automatic`, `cn`, `dns`, `email`, `upn`
 	UsernameAttr *string `pulumi:"usernameAttr"`
@@ -264,8 +272,10 @@ type NactagArgs struct {
 	// match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
 	// set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
 	MatchAll pulumi.BoolPtrInput
-	Name     pulumi.StringPtrInput
-	OrgId    pulumi.StringInput
+	// If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
+	NacportalId pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	OrgId       pulumi.StringInput
 	// If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". It is
 	// the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
 	// that it is allowed to have more than one radiusAttrs in the result of a given rule.
@@ -278,8 +288,8 @@ type NactagArgs struct {
 	RadiusVendorAttrs pulumi.StringArrayInput
 	// If `type`==`session_timeout, in seconds
 	SessionTimeout pulumi.IntPtrInput
-	// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`,
-	// `usernameAttr`, `vlan`
+	// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`,
+	// `sessionTimeout`, `usernameAttr`, `vlan`
 	Type pulumi.StringInput
 	// enum: `automatic`, `cn`, `dns`, `email`, `upn`
 	UsernameAttr pulumi.StringPtrInput
@@ -403,6 +413,11 @@ func (o NactagOutput) MatchAll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Nactag) pulumi.BoolPtrOutput { return v.MatchAll }).(pulumi.BoolPtrOutput)
 }
 
+// If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
+func (o NactagOutput) NacportalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Nactag) pulumi.StringPtrOutput { return v.NacportalId }).(pulumi.StringPtrOutput)
+}
+
 func (o NactagOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Nactag) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -435,8 +450,8 @@ func (o NactagOutput) SessionTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Nactag) pulumi.IntPtrOutput { return v.SessionTimeout }).(pulumi.IntPtrOutput)
 }
 
-// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`,
-// `usernameAttr`, `vlan`
+// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`,
+// `sessionTimeout`, `usernameAttr`, `vlan`
 func (o NactagOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Nactag) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

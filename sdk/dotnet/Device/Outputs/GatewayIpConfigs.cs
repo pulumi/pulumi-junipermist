@@ -14,7 +14,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayIpConfigs
     {
         public readonly string? Ip;
+        public readonly string? Ip6;
         public readonly string? Netmask;
+        public readonly string? Netmask6;
         /// <summary>
         /// Optional list of secondary IPs in CIDR format
         /// </summary>
@@ -23,21 +25,34 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// enum: `dhcp`, `static`
         /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// enum: `autoconf`, `dhcp`, `disabled`, `static`
+        /// </summary>
+        public readonly string? Type6;
 
         [OutputConstructor]
         private GatewayIpConfigs(
             string? ip,
 
+            string? ip6,
+
             string? netmask,
+
+            string? netmask6,
 
             ImmutableArray<string> secondaryIps,
 
-            string? type)
+            string? type,
+
+            string? type6)
         {
             Ip = ip;
+            Ip6 = ip6;
             Netmask = netmask;
+            Netmask6 = netmask6;
             SecondaryIps = secondaryIps;
             Type = type;
+            Type6 = type6;
         }
     }
 }

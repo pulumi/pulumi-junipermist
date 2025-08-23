@@ -42,6 +42,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? LocalId;
         /// <summary>
+        /// List of Local protected subnet for policy-based IPSec negotiation
+        /// </summary>
+        public readonly ImmutableArray<string> LocalSubnets;
+        /// <summary>
         /// Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
         /// </summary>
         public readonly string? Mode;
@@ -70,6 +74,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Psk;
         /// <summary>
+        /// List of Remote protected subnet for policy-based IPSec negotiation
+        /// </summary>
+        public readonly ImmutableArray<string> RemoteSubnets;
+        /// <summary>
         /// Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         /// </summary>
         public readonly Outputs.GatewayTunnelConfigsSecondary? Secondary;
@@ -94,6 +102,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string? localId,
 
+            ImmutableArray<string> localSubnets,
+
             string? mode,
 
             ImmutableArray<string> networks,
@@ -108,6 +118,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string? psk,
 
+            ImmutableArray<string> remoteSubnets,
+
             Outputs.GatewayTunnelConfigsSecondary? secondary,
 
             string? version)
@@ -119,6 +131,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             IpsecLifetime = ipsecLifetime;
             IpsecProposals = ipsecProposals;
             LocalId = localId;
+            LocalSubnets = localSubnets;
             Mode = mode;
             Networks = networks;
             Primary = primary;
@@ -126,6 +139,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             Protocol = protocol;
             Provider = provider;
             Psk = psk;
+            RemoteSubnets = remoteSubnets;
             Secondary = secondary;
             Version = version;
         }

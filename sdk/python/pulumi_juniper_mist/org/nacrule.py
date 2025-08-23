@@ -26,6 +26,7 @@ class NacruleArgs:
                  org_id: pulumi.Input[_builtins.str],
                  apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 guest_auth_state: Optional[pulumi.Input[_builtins.str]] = None,
                  matching: Optional[pulumi.Input['NacruleMatchingArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  not_matching: Optional[pulumi.Input['NacruleNotMatchingArgs']] = None):
@@ -35,6 +36,7 @@ class NacruleArgs:
         :param pulumi.Input[_builtins.int] order: Order of the rule, lower value implies higher priority
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apply_tags: All optional, this goes into Access-Accept
         :param pulumi.Input[_builtins.bool] enabled: Enabled or not
+        :param pulumi.Input[_builtins.str] guest_auth_state: Guest portal authorization state. enum: `authorized`, `unknown`
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "order", order)
@@ -43,6 +45,8 @@ class NacruleArgs:
             pulumi.set(__self__, "apply_tags", apply_tags)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if guest_auth_state is not None:
+            pulumi.set(__self__, "guest_auth_state", guest_auth_state)
         if matching is not None:
             pulumi.set(__self__, "matching", matching)
         if name is not None:
@@ -108,6 +112,18 @@ class NacruleArgs:
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="guestAuthState")
+    def guest_auth_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Guest portal authorization state. enum: `authorized`, `unknown`
+        """
+        return pulumi.get(self, "guest_auth_state")
+
+    @guest_auth_state.setter
+    def guest_auth_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "guest_auth_state", value)
+
+    @_builtins.property
     @pulumi.getter
     def matching(self) -> Optional[pulumi.Input['NacruleMatchingArgs']]:
         return pulumi.get(self, "matching")
@@ -141,6 +157,7 @@ class _NacruleState:
                  action: Optional[pulumi.Input[_builtins.str]] = None,
                  apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 guest_auth_state: Optional[pulumi.Input[_builtins.str]] = None,
                  matching: Optional[pulumi.Input['NacruleMatchingArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  not_matching: Optional[pulumi.Input['NacruleNotMatchingArgs']] = None,
@@ -151,6 +168,7 @@ class _NacruleState:
         :param pulumi.Input[_builtins.str] action: enum: `allow`, `block`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apply_tags: All optional, this goes into Access-Accept
         :param pulumi.Input[_builtins.bool] enabled: Enabled or not
+        :param pulumi.Input[_builtins.str] guest_auth_state: Guest portal authorization state. enum: `authorized`, `unknown`
         :param pulumi.Input[_builtins.int] order: Order of the rule, lower value implies higher priority
         """
         if action is not None:
@@ -159,6 +177,8 @@ class _NacruleState:
             pulumi.set(__self__, "apply_tags", apply_tags)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if guest_auth_state is not None:
+            pulumi.set(__self__, "guest_auth_state", guest_auth_state)
         if matching is not None:
             pulumi.set(__self__, "matching", matching)
         if name is not None:
@@ -205,6 +225,18 @@ class _NacruleState:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="guestAuthState")
+    def guest_auth_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Guest portal authorization state. enum: `authorized`, `unknown`
+        """
+        return pulumi.get(self, "guest_auth_state")
+
+    @guest_auth_state.setter
+    def guest_auth_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "guest_auth_state", value)
 
     @_builtins.property
     @pulumi.getter
@@ -264,6 +296,7 @@ class Nacrule(pulumi.CustomResource):
                  action: Optional[pulumi.Input[_builtins.str]] = None,
                  apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 guest_auth_state: Optional[pulumi.Input[_builtins.str]] = None,
                  matching: Optional[pulumi.Input[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  not_matching: Optional[pulumi.Input[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']]] = None,
@@ -290,6 +323,7 @@ class Nacrule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] action: enum: `allow`, `block`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apply_tags: All optional, this goes into Access-Accept
         :param pulumi.Input[_builtins.bool] enabled: Enabled or not
+        :param pulumi.Input[_builtins.str] guest_auth_state: Guest portal authorization state. enum: `authorized`, `unknown`
         :param pulumi.Input[_builtins.int] order: Order of the rule, lower value implies higher priority
         """
         ...
@@ -331,6 +365,7 @@ class Nacrule(pulumi.CustomResource):
                  action: Optional[pulumi.Input[_builtins.str]] = None,
                  apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 guest_auth_state: Optional[pulumi.Input[_builtins.str]] = None,
                  matching: Optional[pulumi.Input[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  not_matching: Optional[pulumi.Input[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']]] = None,
@@ -350,6 +385,7 @@ class Nacrule(pulumi.CustomResource):
             __props__.__dict__["action"] = action
             __props__.__dict__["apply_tags"] = apply_tags
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["guest_auth_state"] = guest_auth_state
             __props__.__dict__["matching"] = matching
             __props__.__dict__["name"] = name
             __props__.__dict__["not_matching"] = not_matching
@@ -372,6 +408,7 @@ class Nacrule(pulumi.CustomResource):
             action: Optional[pulumi.Input[_builtins.str]] = None,
             apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            guest_auth_state: Optional[pulumi.Input[_builtins.str]] = None,
             matching: Optional[pulumi.Input[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             not_matching: Optional[pulumi.Input[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']]] = None,
@@ -387,6 +424,7 @@ class Nacrule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] action: enum: `allow`, `block`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apply_tags: All optional, this goes into Access-Accept
         :param pulumi.Input[_builtins.bool] enabled: Enabled or not
+        :param pulumi.Input[_builtins.str] guest_auth_state: Guest portal authorization state. enum: `authorized`, `unknown`
         :param pulumi.Input[_builtins.int] order: Order of the rule, lower value implies higher priority
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -396,6 +434,7 @@ class Nacrule(pulumi.CustomResource):
         __props__.__dict__["action"] = action
         __props__.__dict__["apply_tags"] = apply_tags
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["guest_auth_state"] = guest_auth_state
         __props__.__dict__["matching"] = matching
         __props__.__dict__["name"] = name
         __props__.__dict__["not_matching"] = not_matching
@@ -426,6 +465,14 @@ class Nacrule(pulumi.CustomResource):
         Enabled or not
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="guestAuthState")
+    def guest_auth_state(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Guest portal authorization state. enum: `authorized`, `unknown`
+        """
+        return pulumi.get(self, "guest_auth_state")
 
     @_builtins.property
     @pulumi.getter

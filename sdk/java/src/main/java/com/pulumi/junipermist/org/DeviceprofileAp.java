@@ -11,6 +11,7 @@ import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.org.DeviceprofileApArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApState;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApAeroscout;
+import com.pulumi.junipermist.org.outputs.DeviceprofileApAirista;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApBleConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApEslConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileApIpConfig;
@@ -103,6 +104,12 @@ public class DeviceprofileAp extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<DeviceprofileApAeroscout>> aeroscout() {
         return Codegen.optional(this.aeroscout);
+    }
+    @Export(name="airista", refs={DeviceprofileApAirista.class}, tree="[0]")
+    private Output</* @Nullable */ DeviceprofileApAirista> airista;
+
+    public Output<Optional<DeviceprofileApAirista>> airista() {
+        return Codegen.optional(this.airista);
     }
     /**
      * BLE AP settings

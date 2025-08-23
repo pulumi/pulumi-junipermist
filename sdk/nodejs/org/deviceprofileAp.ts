@@ -71,6 +71,7 @@ export class DeviceprofileAp extends pulumi.CustomResource {
      * Aeroscout AP settings
      */
     public readonly aeroscout!: pulumi.Output<outputs.org.DeviceprofileApAeroscout | undefined>;
+    public readonly airista!: pulumi.Output<outputs.org.DeviceprofileApAirista | undefined>;
     /**
      * BLE AP settings
      */
@@ -158,6 +159,7 @@ export class DeviceprofileAp extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DeviceprofileApState | undefined;
             resourceInputs["aeroscout"] = state ? state.aeroscout : undefined;
+            resourceInputs["airista"] = state ? state.airista : undefined;
             resourceInputs["bleConfig"] = state ? state.bleConfig : undefined;
             resourceInputs["disableEth1"] = state ? state.disableEth1 : undefined;
             resourceInputs["disableEth2"] = state ? state.disableEth2 : undefined;
@@ -186,6 +188,7 @@ export class DeviceprofileAp extends pulumi.CustomResource {
                 throw new Error("Missing required property 'orgId'");
             }
             resourceInputs["aeroscout"] = args ? args.aeroscout : undefined;
+            resourceInputs["airista"] = args ? args.airista : undefined;
             resourceInputs["bleConfig"] = args ? args.bleConfig : undefined;
             resourceInputs["disableEth1"] = args ? args.disableEth1 : undefined;
             resourceInputs["disableEth2"] = args ? args.disableEth2 : undefined;
@@ -222,6 +225,7 @@ export interface DeviceprofileApState {
      * Aeroscout AP settings
      */
     aeroscout?: pulumi.Input<inputs.org.DeviceprofileApAeroscout>;
+    airista?: pulumi.Input<inputs.org.DeviceprofileApAirista>;
     /**
      * BLE AP settings
      */
@@ -304,6 +308,7 @@ export interface DeviceprofileApArgs {
      * Aeroscout AP settings
      */
     aeroscout?: pulumi.Input<inputs.org.DeviceprofileApAeroscout>;
+    airista?: pulumi.Input<inputs.org.DeviceprofileApAirista>;
     /**
      * BLE AP settings
      */

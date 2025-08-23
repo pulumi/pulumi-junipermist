@@ -6,6 +6,7 @@ package com.pulumi.junipermist.device.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.device.inputs.ApAeroscoutArgs;
+import com.pulumi.junipermist.device.inputs.ApAiristaArgs;
 import com.pulumi.junipermist.device.inputs.ApBleConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApCentrakArgs;
 import com.pulumi.junipermist.device.inputs.ApClientBridgeArgs;
@@ -47,6 +48,13 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ApAeroscoutArgs>> aeroscout() {
         return Optional.ofNullable(this.aeroscout);
+    }
+
+    @Import(name="airista")
+    private @Nullable Output<ApAiristaArgs> airista;
+
+    public Optional<Output<ApAiristaArgs>> airista() {
+        return Optional.ofNullable(this.airista);
     }
 
     /**
@@ -382,16 +390,18 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-     * precedence over switch_config (deprecated)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+     * predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
+     * deprecated)
      * 
      */
     @Import(name="portConfig")
     private @Nullable Output<Map<String,ApPortConfigArgs>> portConfig;
 
     /**
-     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-     * precedence over switch_config (deprecated)
+     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+     * predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
+     * deprecated)
      * 
      */
     public Optional<Output<Map<String,ApPortConfigArgs>>> portConfig() {
@@ -546,6 +556,7 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
 
     private ApState(ApState $) {
         this.aeroscout = $.aeroscout;
+        this.airista = $.airista;
         this.bleConfig = $.bleConfig;
         this.centrak = $.centrak;
         this.clientBridge = $.clientBridge;
@@ -624,6 +635,15 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder aeroscout(ApAeroscoutArgs aeroscout) {
             return aeroscout(Output.of(aeroscout));
+        }
+
+        public Builder airista(@Nullable Output<ApAiristaArgs> airista) {
+            $.airista = airista;
+            return this;
+        }
+
+        public Builder airista(ApAiristaArgs airista) {
+            return airista(Output.of(airista));
         }
 
         /**
@@ -1087,8 +1107,9 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-         * precedence over switch_config (deprecated)
+         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+         * predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
+         * deprecated)
          * 
          * @return builder
          * 
@@ -1099,8 +1120,9 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-         * precedence over switch_config (deprecated)
+         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+         * predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
+         * deprecated)
          * 
          * @return builder
          * 

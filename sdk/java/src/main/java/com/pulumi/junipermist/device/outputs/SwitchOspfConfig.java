@@ -24,6 +24,16 @@ public final class SwitchOspfConfig {
      * 
      */
     private @Nullable Boolean enabled;
+    /**
+     * @return optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+     * 
+     */
+    private @Nullable String exportPolicy;
+    /**
+     * @return optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+     * 
+     */
+    private @Nullable String importPolicy;
     private @Nullable String referenceBandwidth;
 
     private SwitchOspfConfig() {}
@@ -41,6 +51,20 @@ public final class SwitchOspfConfig {
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+     * 
+     */
+    public Optional<String> exportPolicy() {
+        return Optional.ofNullable(this.exportPolicy);
+    }
+    /**
+     * @return optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+     * 
+     */
+    public Optional<String> importPolicy() {
+        return Optional.ofNullable(this.importPolicy);
+    }
     public Optional<String> referenceBandwidth() {
         return Optional.ofNullable(this.referenceBandwidth);
     }
@@ -56,12 +80,16 @@ public final class SwitchOspfConfig {
     public static final class Builder {
         private @Nullable Map<String,SwitchOspfConfigAreas> areas;
         private @Nullable Boolean enabled;
+        private @Nullable String exportPolicy;
+        private @Nullable String importPolicy;
         private @Nullable String referenceBandwidth;
         public Builder() {}
         public Builder(SwitchOspfConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.areas = defaults.areas;
     	      this.enabled = defaults.enabled;
+    	      this.exportPolicy = defaults.exportPolicy;
+    	      this.importPolicy = defaults.importPolicy;
     	      this.referenceBandwidth = defaults.referenceBandwidth;
         }
 
@@ -78,6 +106,18 @@ public final class SwitchOspfConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder exportPolicy(@Nullable String exportPolicy) {
+
+            this.exportPolicy = exportPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder importPolicy(@Nullable String importPolicy) {
+
+            this.importPolicy = importPolicy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder referenceBandwidth(@Nullable String referenceBandwidth) {
 
             this.referenceBandwidth = referenceBandwidth;
@@ -87,6 +127,8 @@ public final class SwitchOspfConfig {
             final var _resultValue = new SwitchOspfConfig();
             _resultValue.areas = areas;
             _resultValue.enabled = enabled;
+            _resultValue.exportPolicy = exportPolicy;
+            _resultValue.importPolicy = importPolicy;
             _resultValue.referenceBandwidth = referenceBandwidth;
             return _resultValue;
         }

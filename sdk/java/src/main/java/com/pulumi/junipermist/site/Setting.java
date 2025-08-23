@@ -12,6 +12,7 @@ import com.pulumi.junipermist.site.SettingArgs;
 import com.pulumi.junipermist.site.inputs.SettingState;
 import com.pulumi.junipermist.site.outputs.SettingAnalytic;
 import com.pulumi.junipermist.site.outputs.SettingAutoUpgrade;
+import com.pulumi.junipermist.site.outputs.SettingAutoUpgradeEsl;
 import com.pulumi.junipermist.site.outputs.SettingBleConfig;
 import com.pulumi.junipermist.site.outputs.SettingConfigPushPolicy;
 import com.pulumi.junipermist.site.outputs.SettingCriticalUrlMonitoring;
@@ -108,6 +109,36 @@ public class Setting extends com.pulumi.resources.CustomResource {
      */
     public Output<SettingAutoUpgrade> autoUpgrade() {
         return this.autoUpgrade;
+    }
+    /**
+     * auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+     * upgrade
+     * 
+     */
+    @Export(name="autoUpgradeEsl", refs={SettingAutoUpgradeEsl.class}, tree="[0]")
+    private Output</* @Nullable */ SettingAutoUpgradeEsl> autoUpgradeEsl;
+
+    /**
+     * @return auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
+     * upgrade
+     * 
+     */
+    public Output<Optional<SettingAutoUpgradeEsl>> autoUpgradeEsl() {
+        return Codegen.optional(this.autoUpgradeEsl);
+    }
+    /**
+     * enable threshold-based bgp neighbor down delivery.
+     * 
+     */
+    @Export(name="bgpNeighborUpdownThreshold", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> bgpNeighborUpdownThreshold;
+
+    /**
+     * @return enable threshold-based bgp neighbor down delivery.
+     * 
+     */
+    public Output<Optional<Integer>> bgpNeighborUpdownThreshold() {
+        return Codegen.optional(this.bgpNeighborUpdownThreshold);
     }
     @Export(name="blacklistUrl", refs={String.class}, tree="[0]")
     private Output<String> blacklistUrl;
@@ -512,6 +543,34 @@ public class Setting extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<SettingVna>> vna() {
         return Codegen.optional(this.vna);
+    }
+    /**
+     * enable threshold-based vpn path down delivery.
+     * 
+     */
+    @Export(name="vpnPathUpdownThreshold", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> vpnPathUpdownThreshold;
+
+    /**
+     * @return enable threshold-based vpn path down delivery.
+     * 
+     */
+    public Output<Optional<Integer>> vpnPathUpdownThreshold() {
+        return Codegen.optional(this.vpnPathUpdownThreshold);
+    }
+    /**
+     * enable threshold-based vpn peer down delivery.
+     * 
+     */
+    @Export(name="vpnPeerUpdownThreshold", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> vpnPeerUpdownThreshold;
+
+    /**
+     * @return enable threshold-based vpn peer down delivery.
+     * 
+     */
+    public Output<Optional<Integer>> vpnPeerUpdownThreshold() {
+        return Codegen.optional(this.vpnPeerUpdownThreshold);
     }
     /**
      * Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name

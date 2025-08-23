@@ -24,6 +24,7 @@ class ApArgs:
                  device_id: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
                  aeroscout: Optional[pulumi.Input['ApAeroscoutArgs']] = None,
+                 airista: Optional[pulumi.Input['ApAiristaArgs']] = None,
                  ble_config: Optional[pulumi.Input['ApBleConfigArgs']] = None,
                  centrak: Optional[pulumi.Input['ApCentrakArgs']] = None,
                  client_bridge: Optional[pulumi.Input['ApClientBridgeArgs']] = None,
@@ -71,8 +72,9 @@ class ApArgs:
         :param pulumi.Input[_builtins.str] notes: Any notes about this AP
         :param pulumi.Input[_builtins.int] orientation: Orientation, 0-359, in degrees, up is 0, right is 90.
         :param pulumi.Input[_builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
-        :param pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-               precedence over switch_config (deprecated)
+        :param pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+               predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
+               deprecated)
         :param pulumi.Input['ApPwrConfigArgs'] pwr_config: Power related configs
         :param pulumi.Input['ApRadioConfigArgs'] radio_config: Radio AP settings
         :param pulumi.Input['ApUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
@@ -86,6 +88,8 @@ class ApArgs:
         pulumi.set(__self__, "site_id", site_id)
         if aeroscout is not None:
             pulumi.set(__self__, "aeroscout", aeroscout)
+        if airista is not None:
+            pulumi.set(__self__, "airista", airista)
         if ble_config is not None:
             pulumi.set(__self__, "ble_config", ble_config)
         if centrak is not None:
@@ -174,6 +178,15 @@ class ApArgs:
     @aeroscout.setter
     def aeroscout(self, value: Optional[pulumi.Input['ApAeroscoutArgs']]):
         pulumi.set(self, "aeroscout", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def airista(self) -> Optional[pulumi.Input['ApAiristaArgs']]:
+        return pulumi.get(self, "airista")
+
+    @airista.setter
+    def airista(self, value: Optional[pulumi.Input['ApAiristaArgs']]):
+        pulumi.set(self, "airista", value)
 
     @_builtins.property
     @pulumi.getter(name="bleConfig")
@@ -413,8 +426,9 @@ class ApArgs:
     @pulumi.getter(name="portConfig")
     def port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]]]:
         """
-        eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-        precedence over switch_config (deprecated)
+        eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+        predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
+        deprecated)
         """
         return pulumi.get(self, "port_config")
 
@@ -512,6 +526,7 @@ class ApArgs:
 class _ApState:
     def __init__(__self__, *,
                  aeroscout: Optional[pulumi.Input['ApAeroscoutArgs']] = None,
+                 airista: Optional[pulumi.Input['ApAiristaArgs']] = None,
                  ble_config: Optional[pulumi.Input['ApBleConfigArgs']] = None,
                  centrak: Optional[pulumi.Input['ApCentrakArgs']] = None,
                  client_bridge: Optional[pulumi.Input['ApClientBridgeArgs']] = None,
@@ -571,8 +586,9 @@ class _ApState:
         :param pulumi.Input[_builtins.str] notes: Any notes about this AP
         :param pulumi.Input[_builtins.int] orientation: Orientation, 0-359, in degrees, up is 0, right is 90.
         :param pulumi.Input[_builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
-        :param pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-               precedence over switch_config (deprecated)
+        :param pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+               predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
+               deprecated)
         :param pulumi.Input['ApPwrConfigArgs'] pwr_config: Power related configs
         :param pulumi.Input['ApRadioConfigArgs'] radio_config: Radio AP settings
         :param pulumi.Input[_builtins.str] serial: Device Serial
@@ -586,6 +602,8 @@ class _ApState:
         """
         if aeroscout is not None:
             pulumi.set(__self__, "aeroscout", aeroscout)
+        if airista is not None:
+            pulumi.set(__self__, "airista", airista)
         if ble_config is not None:
             pulumi.set(__self__, "ble_config", ble_config)
         if centrak is not None:
@@ -676,6 +694,15 @@ class _ApState:
     @aeroscout.setter
     def aeroscout(self, value: Optional[pulumi.Input['ApAeroscoutArgs']]):
         pulumi.set(self, "aeroscout", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def airista(self) -> Optional[pulumi.Input['ApAiristaArgs']]:
+        return pulumi.get(self, "airista")
+
+    @airista.setter
+    def airista(self, value: Optional[pulumi.Input['ApAiristaArgs']]):
+        pulumi.set(self, "airista", value)
 
     @_builtins.property
     @pulumi.getter(name="bleConfig")
@@ -984,8 +1011,9 @@ class _ApState:
     @pulumi.getter(name="portConfig")
     def port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]]]:
         """
-        eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-        precedence over switch_config (deprecated)
+        eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+        predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
+        deprecated)
         """
         return pulumi.get(self, "port_config")
 
@@ -1119,6 +1147,7 @@ class Ap(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aeroscout: Optional[pulumi.Input[Union['ApAeroscoutArgs', 'ApAeroscoutArgsDict']]] = None,
+                 airista: Optional[pulumi.Input[Union['ApAiristaArgs', 'ApAiristaArgsDict']]] = None,
                  ble_config: Optional[pulumi.Input[Union['ApBleConfigArgs', 'ApBleConfigArgsDict']]] = None,
                  centrak: Optional[pulumi.Input[Union['ApCentrakArgs', 'ApCentrakArgsDict']]] = None,
                  client_bridge: Optional[pulumi.Input[Union['ApClientBridgeArgs', 'ApClientBridgeArgsDict']]] = None,
@@ -1184,8 +1213,9 @@ class Ap(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] notes: Any notes about this AP
         :param pulumi.Input[_builtins.int] orientation: Orientation, 0-359, in degrees, up is 0, right is 90.
         :param pulumi.Input[_builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['ApPortConfigArgs', 'ApPortConfigArgsDict']]]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-               precedence over switch_config (deprecated)
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['ApPortConfigArgs', 'ApPortConfigArgsDict']]]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+               predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
+               deprecated)
         :param pulumi.Input[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']] pwr_config: Power related configs
         :param pulumi.Input[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']] radio_config: Radio AP settings
         :param pulumi.Input[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
@@ -1232,6 +1262,7 @@ class Ap(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aeroscout: Optional[pulumi.Input[Union['ApAeroscoutArgs', 'ApAeroscoutArgsDict']]] = None,
+                 airista: Optional[pulumi.Input[Union['ApAiristaArgs', 'ApAiristaArgsDict']]] = None,
                  ble_config: Optional[pulumi.Input[Union['ApBleConfigArgs', 'ApBleConfigArgsDict']]] = None,
                  centrak: Optional[pulumi.Input[Union['ApCentrakArgs', 'ApCentrakArgsDict']]] = None,
                  client_bridge: Optional[pulumi.Input[Union['ApClientBridgeArgs', 'ApClientBridgeArgsDict']]] = None,
@@ -1273,6 +1304,7 @@ class Ap(pulumi.CustomResource):
             __props__ = ApArgs.__new__(ApArgs)
 
             __props__.__dict__["aeroscout"] = aeroscout
+            __props__.__dict__["airista"] = airista
             __props__.__dict__["ble_config"] = ble_config
             __props__.__dict__["centrak"] = centrak
             __props__.__dict__["client_bridge"] = client_bridge
@@ -1327,6 +1359,7 @@ class Ap(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             aeroscout: Optional[pulumi.Input[Union['ApAeroscoutArgs', 'ApAeroscoutArgsDict']]] = None,
+            airista: Optional[pulumi.Input[Union['ApAiristaArgs', 'ApAiristaArgsDict']]] = None,
             ble_config: Optional[pulumi.Input[Union['ApBleConfigArgs', 'ApBleConfigArgsDict']]] = None,
             centrak: Optional[pulumi.Input[Union['ApCentrakArgs', 'ApCentrakArgsDict']]] = None,
             client_bridge: Optional[pulumi.Input[Union['ApClientBridgeArgs', 'ApClientBridgeArgsDict']]] = None,
@@ -1391,8 +1424,9 @@ class Ap(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] notes: Any notes about this AP
         :param pulumi.Input[_builtins.int] orientation: Orientation, 0-359, in degrees, up is 0, right is 90.
         :param pulumi.Input[_builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['ApPortConfigArgs', 'ApPortConfigArgsDict']]]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-               precedence over switch_config (deprecated)
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['ApPortConfigArgs', 'ApPortConfigArgsDict']]]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+               predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
+               deprecated)
         :param pulumi.Input[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']] pwr_config: Power related configs
         :param pulumi.Input[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']] radio_config: Radio AP settings
         :param pulumi.Input[_builtins.str] serial: Device Serial
@@ -1409,6 +1443,7 @@ class Ap(pulumi.CustomResource):
         __props__ = _ApState.__new__(_ApState)
 
         __props__.__dict__["aeroscout"] = aeroscout
+        __props__.__dict__["airista"] = airista
         __props__.__dict__["ble_config"] = ble_config
         __props__.__dict__["centrak"] = centrak
         __props__.__dict__["client_bridge"] = client_bridge
@@ -1457,6 +1492,11 @@ class Ap(pulumi.CustomResource):
         Aeroscout AP settings
         """
         return pulumi.get(self, "aeroscout")
+
+    @_builtins.property
+    @pulumi.getter
+    def airista(self) -> pulumi.Output[Optional['outputs.ApAirista']]:
+        return pulumi.get(self, "airista")
 
     @_builtins.property
     @pulumi.getter(name="bleConfig")
@@ -1653,8 +1693,9 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter(name="portConfig")
     def port_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.ApPortConfig']]]:
         """
-        eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-        precedence over switch_config (deprecated)
+        eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+        predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
+        deprecated)
         """
         return pulumi.get(self, "port_config")
 

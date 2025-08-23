@@ -68,7 +68,11 @@ class SettingArgs:
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingJcloudRaArgs'] jcloud_ra: JCloud Routing Assurance connexion
-        :param pulumi.Input['SettingJunosShellAccessArgs'] junos_shell_access: by default, webshell access is only enabled for Admin user
+        :param pulumi.Input['SettingJunosShellAccessArgs'] junos_shell_access: junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No
+               additional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -
+               Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and
+               web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell
+               access level to "none", disables web-shell access for that specific role.
         :param pulumi.Input['SettingMgmtArgs'] mgmt: management-related properties
         :param pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input['SettingPasswordPolicyArgs'] password_policy: password policy
@@ -300,7 +304,11 @@ class SettingArgs:
     @pulumi.getter(name="junosShellAccess")
     def junos_shell_access(self) -> Optional[pulumi.Input['SettingJunosShellAccessArgs']]:
         """
-        by default, webshell access is only enabled for Admin user
+        junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No
+        additional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -
+        Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and
+        web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell
+        access level to "none", disables web-shell access for that specific role.
         """
         return pulumi.get(self, "junos_shell_access")
 
@@ -539,7 +547,11 @@ class _SettingState:
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingJcloudRaArgs'] jcloud_ra: JCloud Routing Assurance connexion
-        :param pulumi.Input['SettingJunosShellAccessArgs'] junos_shell_access: by default, webshell access is only enabled for Admin user
+        :param pulumi.Input['SettingJunosShellAccessArgs'] junos_shell_access: junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No
+               additional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -
+               Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and
+               web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell
+               access level to "none", disables web-shell access for that specific role.
         :param pulumi.Input['SettingMgmtArgs'] mgmt: management-related properties
         :param pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input['SettingPasswordPolicyArgs'] password_policy: password policy
@@ -785,7 +797,11 @@ class _SettingState:
     @pulumi.getter(name="junosShellAccess")
     def junos_shell_access(self) -> Optional[pulumi.Input['SettingJunosShellAccessArgs']]:
         """
-        by default, webshell access is only enabled for Admin user
+        junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No
+        additional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -
+        Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and
+        web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell
+        access level to "none", disables web-shell access for that specific role.
         """
         return pulumi.get(self, "junos_shell_access")
 
@@ -1050,7 +1066,11 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']] jcloud_ra: JCloud Routing Assurance connexion
-        :param pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']] junos_shell_access: by default, webshell access is only enabled for Admin user
+        :param pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']] junos_shell_access: junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No
+               additional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -
+               Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and
+               web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell
+               access level to "none", disables web-shell access for that specific role.
         :param pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']] mgmt: management-related properties
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']] password_policy: password policy
@@ -1237,7 +1257,11 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']] jcloud_ra: JCloud Routing Assurance connexion
-        :param pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']] junos_shell_access: by default, webshell access is only enabled for Admin user
+        :param pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']] junos_shell_access: junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No
+               additional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -
+               Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and
+               web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell
+               access level to "none", disables web-shell access for that specific role.
         :param pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']] mgmt: management-related properties
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']] password_policy: password policy
@@ -1393,7 +1417,11 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="junosShellAccess")
     def junos_shell_access(self) -> pulumi.Output[Optional['outputs.SettingJunosShellAccess']]:
         """
-        by default, webshell access is only enabled for Admin user
+        junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No
+        additional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -
+        Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and
+        web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell
+        access level to "none", disables web-shell access for that specific role.
         """
         return pulumi.get(self, "junos_shell_access")
 

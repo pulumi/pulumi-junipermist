@@ -66,6 +66,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("localId")]
         public Input<string>? LocalId { get; set; }
 
+        [Input("localSubnets")]
+        private InputList<string>? _localSubnets;
+
+        /// <summary>
+        /// List of Local protected subnet for policy-based IPSec negotiation
+        /// </summary>
+        public InputList<string> LocalSubnets
+        {
+            get => _localSubnets ?? (_localSubnets = new InputList<string>());
+            set => _localSubnets = value;
+        }
+
         /// <summary>
         /// Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
         /// </summary>
@@ -122,6 +134,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
                 var emptySecret = Output.CreateSecret(0);
                 _psk = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
+        }
+
+        [Input("remoteSubnets")]
+        private InputList<string>? _remoteSubnets;
+
+        /// <summary>
+        /// List of Remote protected subnet for policy-based IPSec negotiation
+        /// </summary>
+        public InputList<string> RemoteSubnets
+        {
+            get => _remoteSubnets ?? (_remoteSubnets = new InputList<string>());
+            set => _remoteSubnets = value;
         }
 
         /// <summary>

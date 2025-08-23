@@ -91,6 +91,36 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     }
 
     /**
+     * If `type6`==`local`
+     * 
+     */
+    @Import(name="ip6End")
+    private @Nullable Output<String> ip6End;
+
+    /**
+     * @return If `type6`==`local`
+     * 
+     */
+    public Optional<Output<String>> ip6End() {
+        return Optional.ofNullable(this.ip6End);
+    }
+
+    /**
+     * If `type6`==`local`
+     * 
+     */
+    @Import(name="ip6Start")
+    private @Nullable Output<String> ip6Start;
+
+    /**
+     * @return If `type6`==`local`
+     * 
+     */
+    public Optional<Output<String>> ip6Start() {
+        return Optional.ofNullable(this.ip6Start);
+    }
+
+    /**
      * If `type`==`local`
      * 
      */
@@ -106,21 +136,6 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     }
 
     /**
-     * If `type6`==`local`
-     * 
-     */
-    @Import(name="ipEnd6")
-    private @Nullable Output<String> ipEnd6;
-
-    /**
-     * @return If `type6`==`local`
-     * 
-     */
-    public Optional<Output<String>> ipEnd6() {
-        return Optional.ofNullable(this.ipEnd6);
-    }
-
-    /**
      * If `type`==`local`
      * 
      */
@@ -133,21 +148,6 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
      */
     public Optional<Output<String>> ipStart() {
         return Optional.ofNullable(this.ipStart);
-    }
-
-    /**
-     * If `type6`==`local`
-     * 
-     */
-    @Import(name="ipStart6")
-    private @Nullable Output<String> ipStart6;
-
-    /**
-     * @return If `type6`==`local`
-     * 
-     */
-    public Optional<Output<String>> ipStart6() {
-        return Optional.ofNullable(this.ipStart6);
     }
 
     /**
@@ -216,15 +216,15 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
      * If `type6`==`relay`
      * 
      */
-    @Import(name="servers6s")
-    private @Nullable Output<List<String>> servers6s;
+    @Import(name="serversv6s")
+    private @Nullable Output<List<String>> serversv6s;
 
     /**
      * @return If `type6`==`relay`
      * 
      */
-    public Optional<Output<List<String>>> servers6s() {
-        return Optional.ofNullable(this.servers6s);
+    public Optional<Output<List<String>>> serversv6s() {
+        return Optional.ofNullable(this.serversv6s);
     }
 
     /**
@@ -283,15 +283,15 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         this.dnsSuffixes = $.dnsSuffixes;
         this.fixedBindings = $.fixedBindings;
         this.gateway = $.gateway;
+        this.ip6End = $.ip6End;
+        this.ip6Start = $.ip6Start;
         this.ipEnd = $.ipEnd;
-        this.ipEnd6 = $.ipEnd6;
         this.ipStart = $.ipStart;
-        this.ipStart6 = $.ipStart6;
         this.leaseTime = $.leaseTime;
         this.options = $.options;
         this.serverIdOverride = $.serverIdOverride;
         this.servers = $.servers;
-        this.servers6s = $.servers6s;
+        this.serversv6s = $.serversv6s;
         this.type = $.type;
         this.type6 = $.type6;
         this.vendorEncapsulated = $.vendorEncapsulated;
@@ -432,6 +432,48 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
+         * @param ip6End If `type6`==`local`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ip6End(@Nullable Output<String> ip6End) {
+            $.ip6End = ip6End;
+            return this;
+        }
+
+        /**
+         * @param ip6End If `type6`==`local`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ip6End(String ip6End) {
+            return ip6End(Output.of(ip6End));
+        }
+
+        /**
+         * @param ip6Start If `type6`==`local`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ip6Start(@Nullable Output<String> ip6Start) {
+            $.ip6Start = ip6Start;
+            return this;
+        }
+
+        /**
+         * @param ip6Start If `type6`==`local`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ip6Start(String ip6Start) {
+            return ip6Start(Output.of(ip6Start));
+        }
+
+        /**
          * @param ipEnd If `type`==`local`
          * 
          * @return builder
@@ -453,27 +495,6 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param ipEnd6 If `type6`==`local`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ipEnd6(@Nullable Output<String> ipEnd6) {
-            $.ipEnd6 = ipEnd6;
-            return this;
-        }
-
-        /**
-         * @param ipEnd6 If `type6`==`local`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ipEnd6(String ipEnd6) {
-            return ipEnd6(Output.of(ipEnd6));
-        }
-
-        /**
          * @param ipStart If `type`==`local`
          * 
          * @return builder
@@ -492,27 +513,6 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
          */
         public Builder ipStart(String ipStart) {
             return ipStart(Output.of(ipStart));
-        }
-
-        /**
-         * @param ipStart6 If `type6`==`local`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ipStart6(@Nullable Output<String> ipStart6) {
-            $.ipStart6 = ipStart6;
-            return this;
-        }
-
-        /**
-         * @param ipStart6 If `type6`==`local`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ipStart6(String ipStart6) {
-            return ipStart6(Output.of(ipStart6));
         }
 
         /**
@@ -612,34 +612,34 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param servers6s If `type6`==`relay`
+         * @param serversv6s If `type6`==`relay`
          * 
          * @return builder
          * 
          */
-        public Builder servers6s(@Nullable Output<List<String>> servers6s) {
-            $.servers6s = servers6s;
+        public Builder serversv6s(@Nullable Output<List<String>> serversv6s) {
+            $.serversv6s = serversv6s;
             return this;
         }
 
         /**
-         * @param servers6s If `type6`==`relay`
+         * @param serversv6s If `type6`==`relay`
          * 
          * @return builder
          * 
          */
-        public Builder servers6s(List<String> servers6s) {
-            return servers6s(Output.of(servers6s));
+        public Builder serversv6s(List<String> serversv6s) {
+            return serversv6s(Output.of(serversv6s));
         }
 
         /**
-         * @param servers6s If `type6`==`relay`
+         * @param serversv6s If `type6`==`relay`
          * 
          * @return builder
          * 
          */
-        public Builder servers6s(String... servers6s) {
-            return servers6s(List.of(servers6s));
+        public Builder serversv6s(String... serversv6s) {
+            return serversv6s(List.of(serversv6s));
         }
 
         /**

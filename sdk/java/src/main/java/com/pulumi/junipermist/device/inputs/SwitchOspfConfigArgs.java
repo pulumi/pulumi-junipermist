@@ -48,6 +48,36 @@ public final class SwitchOspfConfigArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+     * 
+     */
+    @Import(name="exportPolicy")
+    private @Nullable Output<String> exportPolicy;
+
+    /**
+     * @return optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+     * 
+     */
+    public Optional<Output<String>> exportPolicy() {
+        return Optional.ofNullable(this.exportPolicy);
+    }
+
+    /**
+     * optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+     * 
+     */
+    @Import(name="importPolicy")
+    private @Nullable Output<String> importPolicy;
+
+    /**
+     * @return optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+     * 
+     */
+    public Optional<Output<String>> importPolicy() {
+        return Optional.ofNullable(this.importPolicy);
+    }
+
     @Import(name="referenceBandwidth")
     private @Nullable Output<String> referenceBandwidth;
 
@@ -60,6 +90,8 @@ public final class SwitchOspfConfigArgs extends com.pulumi.resources.ResourceArg
     private SwitchOspfConfigArgs(SwitchOspfConfigArgs $) {
         this.areas = $.areas;
         this.enabled = $.enabled;
+        this.exportPolicy = $.exportPolicy;
+        this.importPolicy = $.importPolicy;
         this.referenceBandwidth = $.referenceBandwidth;
     }
 
@@ -121,6 +153,48 @@ public final class SwitchOspfConfigArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param exportPolicy optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exportPolicy(@Nullable Output<String> exportPolicy) {
+            $.exportPolicy = exportPolicy;
+            return this;
+        }
+
+        /**
+         * @param exportPolicy optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exportPolicy(String exportPolicy) {
+            return exportPolicy(Output.of(exportPolicy));
+        }
+
+        /**
+         * @param importPolicy optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importPolicy(@Nullable Output<String> importPolicy) {
+            $.importPolicy = importPolicy;
+            return this;
+        }
+
+        /**
+         * @param importPolicy optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importPolicy(String importPolicy) {
+            return importPolicy(Output.of(importPolicy));
         }
 
         public Builder referenceBandwidth(@Nullable Output<String> referenceBandwidth) {

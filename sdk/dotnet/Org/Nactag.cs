@@ -83,6 +83,12 @@ namespace Pulumi.JuniperMist.Org
         [Output("matchAll")]
         public Output<bool?> MatchAll { get; private set; } = null!;
 
+        /// <summary>
+        /// If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
+        /// </summary>
+        [Output("nacportalId")]
+        public Output<string?> NacportalId { get; private set; } = null!;
+
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -118,8 +124,8 @@ namespace Pulumi.JuniperMist.Org
         public Output<int?> SessionTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-        /// `username_attr`, `vlan`
+        /// enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
+        /// `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -226,6 +232,12 @@ namespace Pulumi.JuniperMist.Org
         [Input("matchAll")]
         public Input<bool>? MatchAll { get; set; }
 
+        /// <summary>
+        /// If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
+        /// </summary>
+        [Input("nacportalId")]
+        public Input<string>? NacportalId { get; set; }
+
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -273,8 +285,8 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? SessionTimeout { get; set; }
 
         /// <summary>
-        /// enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-        /// `username_attr`, `vlan`
+        /// enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
+        /// `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -348,6 +360,12 @@ namespace Pulumi.JuniperMist.Org
         [Input("matchAll")]
         public Input<bool>? MatchAll { get; set; }
 
+        /// <summary>
+        /// If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
+        /// </summary>
+        [Input("nacportalId")]
+        public Input<string>? NacportalId { get; set; }
+
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -395,8 +413,8 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? SessionTimeout { get; set; }
 
         /// <summary>
-        /// enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-        /// `username_attr`, `vlan`
+        /// enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
+        /// `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

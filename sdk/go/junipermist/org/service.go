@@ -32,7 +32,7 @@ import (
 type Service struct {
 	pulumi.CustomResourceState
 
-	// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+	// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
 	Addresses pulumi.StringArrayOutput `pulumi:"addresses"`
 	// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
 	AppCategories pulumi.StringArrayOutput `pulumi:"appCategories"`
@@ -108,7 +108,7 @@ func GetService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Service resources.
 type serviceState struct {
-	// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+	// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
 	Addresses []string `pulumi:"addresses"`
 	// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
 	AppCategories []string `pulumi:"appCategories"`
@@ -152,7 +152,7 @@ type serviceState struct {
 }
 
 type ServiceState struct {
-	// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+	// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
 	Addresses pulumi.StringArrayInput
 	// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
 	AppCategories pulumi.StringArrayInput
@@ -200,7 +200,7 @@ func (ServiceState) ElementType() reflect.Type {
 }
 
 type serviceArgs struct {
-	// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+	// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
 	Addresses []string `pulumi:"addresses"`
 	// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
 	AppCategories []string `pulumi:"appCategories"`
@@ -245,7 +245,7 @@ type serviceArgs struct {
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
-	// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+	// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
 	Addresses pulumi.StringArrayInput
 	// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
 	AppCategories pulumi.StringArrayInput
@@ -375,7 +375,7 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 	return o
 }
 
-// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
 func (o ServiceOutput) Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.Addresses }).(pulumi.StringArrayOutput)
 }

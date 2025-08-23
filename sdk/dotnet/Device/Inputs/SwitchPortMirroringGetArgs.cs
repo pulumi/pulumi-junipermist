@@ -49,13 +49,19 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// Exactly one of the `output_port_id` or `output_network` should be provided
+        /// Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        /// </summary>
+        [Input("outputIpAddress")]
+        public Input<string>? OutputIpAddress { get; set; }
+
+        /// <summary>
+        /// Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         /// </summary>
         [Input("outputNetwork")]
         public Input<string>? OutputNetwork { get; set; }
 
         /// <summary>
-        /// Exactly one of the `output_port_id` or `output_network` should be provided
+        /// Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
         /// </summary>
         [Input("outputPortId")]
         public Input<string>? OutputPortId { get; set; }

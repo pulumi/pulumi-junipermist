@@ -144,6 +144,20 @@ public class Nactag extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> matchAll() {
         return Codegen.optional(this.matchAll);
     }
+    /**
+     * If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
+     * 
+     */
+    @Export(name="nacportalId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> nacportalId;
+
+    /**
+     * @return If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
+     * 
+     */
+    public Output<Optional<String>> nacportalId() {
+        return Codegen.optional(this.nacportalId);
+    }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -221,16 +235,16 @@ public class Nactag extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sessionTimeout);
     }
     /**
-     * enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-     * `username_attr`, `vlan`
+     * enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
+     * `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`,
-     * `username_attr`, `vlan`
+     * @return enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
+     * `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
      * 
      */
     public Output<String> type() {

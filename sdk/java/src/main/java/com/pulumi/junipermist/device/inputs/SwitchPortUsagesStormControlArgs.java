@@ -17,6 +17,21 @@ public final class SwitchPortUsagesStormControlArgs extends com.pulumi.resources
     public static final SwitchPortUsagesStormControlArgs Empty = new SwitchPortUsagesStormControlArgs();
 
     /**
+     * Whether to disable the port when storm control is triggered
+     * 
+     */
+    @Import(name="disablePort")
+    private @Nullable Output<Boolean> disablePort;
+
+    /**
+     * @return Whether to disable the port when storm control is triggered
+     * 
+     */
+    public Optional<Output<Boolean>> disablePort() {
+        return Optional.ofNullable(this.disablePort);
+    }
+
+    /**
      * Whether to disable storm control on broadcast traffic
      * 
      */
@@ -94,6 +109,7 @@ public final class SwitchPortUsagesStormControlArgs extends com.pulumi.resources
     private SwitchPortUsagesStormControlArgs() {}
 
     private SwitchPortUsagesStormControlArgs(SwitchPortUsagesStormControlArgs $) {
+        this.disablePort = $.disablePort;
         this.noBroadcast = $.noBroadcast;
         this.noMulticast = $.noMulticast;
         this.noRegisteredMulticast = $.noRegisteredMulticast;
@@ -117,6 +133,27 @@ public final class SwitchPortUsagesStormControlArgs extends com.pulumi.resources
 
         public Builder(SwitchPortUsagesStormControlArgs defaults) {
             $ = new SwitchPortUsagesStormControlArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param disablePort Whether to disable the port when storm control is triggered
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disablePort(@Nullable Output<Boolean> disablePort) {
+            $.disablePort = disablePort;
+            return this;
+        }
+
+        /**
+         * @param disablePort Whether to disable the port when storm control is triggered
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disablePort(Boolean disablePort) {
+            return disablePort(Output.of(disablePort));
         }
 
         /**

@@ -156,14 +156,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+     * Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
      * 
      */
     @Import(name="duplex")
     private @Nullable Output<String> duplex;
 
     /**
-     * @return Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+     * @return Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
      * 
      */
     public Optional<Output<String>> duplex() {
@@ -501,14 +501,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+     * Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
      * 
      */
     @Import(name="speed")
     private @Nullable Output<String> speed;
 
     /**
-     * @return Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+     * @return Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
      * 
      */
     public Optional<Output<String>> speed() {
@@ -857,7 +857,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param duplex Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+         * @param duplex Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
          * 
          * @return builder
          * 
@@ -868,7 +868,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param duplex Only if `mode`!=`dynamic` link connection mode. enum: `auto`, `full`, `half`
+         * @param duplex Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
          * 
          * @return builder
          * 
@@ -1370,7 +1370,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param speed Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         * @param speed Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          * 
          * @return builder
          * 
@@ -1381,7 +1381,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param speed Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         * @param speed Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          * 
          * @return builder
          * 

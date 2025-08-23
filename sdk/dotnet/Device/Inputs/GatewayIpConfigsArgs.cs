@@ -15,8 +15,14 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
+        [Input("ip6")]
+        public Input<string>? Ip6 { get; set; }
+
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
+
+        [Input("netmask6")]
+        public Input<string>? Netmask6 { get; set; }
 
         [Input("secondaryIps")]
         private InputList<string>? _secondaryIps;
@@ -35,6 +41,12 @@ namespace Pulumi.JuniperMist.Device.Inputs
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// enum: `autoconf`, `dhcp`, `disabled`, `static`
+        /// </summary>
+        [Input("type6")]
+        public Input<string>? Type6 { get; set; }
 
         public GatewayIpConfigsArgs()
         {

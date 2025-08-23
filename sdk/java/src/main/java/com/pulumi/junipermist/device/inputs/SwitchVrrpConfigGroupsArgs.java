@@ -17,21 +17,6 @@ public final class SwitchVrrpConfigGroupsArgs extends com.pulumi.resources.Resou
     public static final SwitchVrrpConfigGroupsArgs Empty = new SwitchVrrpConfigGroupsArgs();
 
     /**
-     * If `true`, accept packets destined for VRRP address
-     * 
-     */
-    @Import(name="acceptData")
-    private @Nullable Output<Boolean> acceptData;
-
-    /**
-     * @return If `true`, accept packets destined for VRRP address
-     * 
-     */
-    public Optional<Output<Boolean>> acceptData() {
-        return Optional.ofNullable(this.acceptData);
-    }
-
-    /**
      * If `true`, allow preemption (a backup router can preempt a primary router)
      * 
      */
@@ -56,7 +41,6 @@ public final class SwitchVrrpConfigGroupsArgs extends com.pulumi.resources.Resou
     private SwitchVrrpConfigGroupsArgs() {}
 
     private SwitchVrrpConfigGroupsArgs(SwitchVrrpConfigGroupsArgs $) {
-        this.acceptData = $.acceptData;
         this.preempt = $.preempt;
         this.priority = $.priority;
     }
@@ -77,27 +61,6 @@ public final class SwitchVrrpConfigGroupsArgs extends com.pulumi.resources.Resou
 
         public Builder(SwitchVrrpConfigGroupsArgs defaults) {
             $ = new SwitchVrrpConfigGroupsArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param acceptData If `true`, accept packets destined for VRRP address
-         * 
-         * @return builder
-         * 
-         */
-        public Builder acceptData(@Nullable Output<Boolean> acceptData) {
-            $.acceptData = acceptData;
-            return this;
-        }
-
-        /**
-         * @param acceptData If `true`, accept packets destined for VRRP address
-         * 
-         * @return builder
-         * 
-         */
-        public Builder acceptData(Boolean acceptData) {
-            return acceptData(Output.of(acceptData));
         }
 
         /**

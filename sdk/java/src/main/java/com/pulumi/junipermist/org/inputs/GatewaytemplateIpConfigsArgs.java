@@ -23,11 +23,25 @@ public final class GatewaytemplateIpConfigsArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.ip);
     }
 
+    @Import(name="ip6")
+    private @Nullable Output<String> ip6;
+
+    public Optional<Output<String>> ip6() {
+        return Optional.ofNullable(this.ip6);
+    }
+
     @Import(name="netmask")
     private @Nullable Output<String> netmask;
 
     public Optional<Output<String>> netmask() {
         return Optional.ofNullable(this.netmask);
+    }
+
+    @Import(name="netmask6")
+    private @Nullable Output<String> netmask6;
+
+    public Optional<Output<String>> netmask6() {
+        return Optional.ofNullable(this.netmask6);
     }
 
     /**
@@ -60,13 +74,31 @@ public final class GatewaytemplateIpConfigsArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * 
+     */
+    @Import(name="type6")
+    private @Nullable Output<String> type6;
+
+    /**
+     * @return enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * 
+     */
+    public Optional<Output<String>> type6() {
+        return Optional.ofNullable(this.type6);
+    }
+
     private GatewaytemplateIpConfigsArgs() {}
 
     private GatewaytemplateIpConfigsArgs(GatewaytemplateIpConfigsArgs $) {
         this.ip = $.ip;
+        this.ip6 = $.ip6;
         this.netmask = $.netmask;
+        this.netmask6 = $.netmask6;
         this.secondaryIps = $.secondaryIps;
         this.type = $.type;
+        this.type6 = $.type6;
     }
 
     public static Builder builder() {
@@ -96,6 +128,15 @@ public final class GatewaytemplateIpConfigsArgs extends com.pulumi.resources.Res
             return ip(Output.of(ip));
         }
 
+        public Builder ip6(@Nullable Output<String> ip6) {
+            $.ip6 = ip6;
+            return this;
+        }
+
+        public Builder ip6(String ip6) {
+            return ip6(Output.of(ip6));
+        }
+
         public Builder netmask(@Nullable Output<String> netmask) {
             $.netmask = netmask;
             return this;
@@ -103,6 +144,15 @@ public final class GatewaytemplateIpConfigsArgs extends com.pulumi.resources.Res
 
         public Builder netmask(String netmask) {
             return netmask(Output.of(netmask));
+        }
+
+        public Builder netmask6(@Nullable Output<String> netmask6) {
+            $.netmask6 = netmask6;
+            return this;
+        }
+
+        public Builder netmask6(String netmask6) {
+            return netmask6(Output.of(netmask6));
         }
 
         /**
@@ -155,6 +205,27 @@ public final class GatewaytemplateIpConfigsArgs extends com.pulumi.resources.Res
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param type6 enum: `autoconf`, `dhcp`, `disabled`, `static`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type6(@Nullable Output<String> type6) {
+            $.type6 = type6;
+            return this;
+        }
+
+        /**
+         * @param type6 enum: `autoconf`, `dhcp`, `disabled`, `static`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type6(String type6) {
+            return type6(Output.of(type6));
         }
 
         public GatewaytemplateIpConfigsArgs build() {

@@ -51,6 +51,7 @@ public final class SettingGatewayMgmt {
     private @Nullable Boolean disableUsb;
     private @Nullable Boolean fipsEnabled;
     private @Nullable List<String> probeHosts;
+    private @Nullable List<String> probeHostsv6s;
     /**
      * @return Restrict inbound-traffic to host
      * when enabled, all traffic that is not essential to our operation will be dropped
@@ -121,6 +122,9 @@ public final class SettingGatewayMgmt {
     public List<String> probeHosts() {
         return this.probeHosts == null ? List.of() : this.probeHosts;
     }
+    public List<String> probeHostsv6s() {
+        return this.probeHostsv6s == null ? List.of() : this.probeHostsv6s;
+    }
     /**
      * @return Restrict inbound-traffic to host
      * when enabled, all traffic that is not essential to our operation will be dropped
@@ -163,6 +167,7 @@ public final class SettingGatewayMgmt {
         private @Nullable Boolean disableUsb;
         private @Nullable Boolean fipsEnabled;
         private @Nullable List<String> probeHosts;
+        private @Nullable List<String> probeHostsv6s;
         private @Nullable SettingGatewayMgmtProtectRe protectRe;
         private @Nullable String rootPassword;
         private @Nullable String securityLogSourceAddress;
@@ -180,6 +185,7 @@ public final class SettingGatewayMgmt {
     	      this.disableUsb = defaults.disableUsb;
     	      this.fipsEnabled = defaults.fipsEnabled;
     	      this.probeHosts = defaults.probeHosts;
+    	      this.probeHostsv6s = defaults.probeHostsv6s;
     	      this.protectRe = defaults.protectRe;
     	      this.rootPassword = defaults.rootPassword;
     	      this.securityLogSourceAddress = defaults.securityLogSourceAddress;
@@ -253,6 +259,15 @@ public final class SettingGatewayMgmt {
             return probeHosts(List.of(probeHosts));
         }
         @CustomType.Setter
+        public Builder probeHostsv6s(@Nullable List<String> probeHostsv6s) {
+
+            this.probeHostsv6s = probeHostsv6s;
+            return this;
+        }
+        public Builder probeHostsv6s(String... probeHostsv6s) {
+            return probeHostsv6s(List.of(probeHostsv6s));
+        }
+        @CustomType.Setter
         public Builder protectRe(@Nullable SettingGatewayMgmtProtectRe protectRe) {
 
             this.protectRe = protectRe;
@@ -288,6 +303,7 @@ public final class SettingGatewayMgmt {
             _resultValue.disableUsb = disableUsb;
             _resultValue.fipsEnabled = fipsEnabled;
             _resultValue.probeHosts = probeHosts;
+            _resultValue.probeHostsv6s = probeHostsv6s;
             _resultValue.protectRe = protectRe;
             _resultValue.rootPassword = rootPassword;
             _resultValue.securityLogSourceAddress = securityLogSourceAddress;

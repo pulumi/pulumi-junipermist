@@ -82,6 +82,10 @@ export class Nactag extends pulumi.CustomResource {
      * set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
      */
     public readonly matchAll!: pulumi.Output<boolean | undefined>;
+    /**
+     * If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
+     */
+    public readonly nacportalId!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly orgId!: pulumi.Output<string>;
     /**
@@ -105,8 +109,8 @@ export class Nactag extends pulumi.CustomResource {
      */
     public readonly sessionTimeout!: pulumi.Output<number | undefined>;
     /**
-     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`,
-     * `usernameAttr`, `vlan`
+     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`,
+     * `sessionTimeout`, `usernameAttr`, `vlan`
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -140,6 +144,7 @@ export class Nactag extends pulumi.CustomResource {
             resourceInputs["gbpTag"] = state ? state.gbpTag : undefined;
             resourceInputs["match"] = state ? state.match : undefined;
             resourceInputs["matchAll"] = state ? state.matchAll : undefined;
+            resourceInputs["nacportalId"] = state ? state.nacportalId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["radiusAttrs"] = state ? state.radiusAttrs : undefined;
@@ -163,6 +168,7 @@ export class Nactag extends pulumi.CustomResource {
             resourceInputs["gbpTag"] = args ? args.gbpTag : undefined;
             resourceInputs["match"] = args ? args.match : undefined;
             resourceInputs["matchAll"] = args ? args.matchAll : undefined;
+            resourceInputs["nacportalId"] = args ? args.nacportalId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["radiusAttrs"] = args ? args.radiusAttrs : undefined;
@@ -203,6 +209,10 @@ export interface NactagState {
      * set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
      */
     matchAll?: pulumi.Input<boolean>;
+    /**
+     * If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
+     */
+    nacportalId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     orgId?: pulumi.Input<string>;
     /**
@@ -226,8 +236,8 @@ export interface NactagState {
      */
     sessionTimeout?: pulumi.Input<number>;
     /**
-     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`,
-     * `usernameAttr`, `vlan`
+     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`,
+     * `sessionTimeout`, `usernameAttr`, `vlan`
      */
     type?: pulumi.Input<string>;
     /**
@@ -268,6 +278,10 @@ export interface NactagArgs {
      * set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
      */
     matchAll?: pulumi.Input<boolean>;
+    /**
+     * If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
+     */
+    nacportalId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
     /**
@@ -291,8 +305,8 @@ export interface NactagArgs {
      */
     sessionTimeout?: pulumi.Input<number>;
     /**
-     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`,
-     * `usernameAttr`, `vlan`
+     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`,
+     * `sessionTimeout`, `usernameAttr`, `vlan`
      */
     type: pulumi.Input<string>;
     /**

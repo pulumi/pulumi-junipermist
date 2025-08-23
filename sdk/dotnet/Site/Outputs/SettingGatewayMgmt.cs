@@ -41,6 +41,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly bool? DisableUsb;
         public readonly bool? FipsEnabled;
         public readonly ImmutableArray<string> ProbeHosts;
+        public readonly ImmutableArray<string> ProbeHostsv6s;
         /// <summary>
         /// Restrict inbound-traffic to host
         /// when enabled, all traffic that is not essential to our operation will be dropped 
@@ -76,6 +77,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             ImmutableArray<string> probeHosts,
 
+            ImmutableArray<string> probeHostsv6s,
+
             Outputs.SettingGatewayMgmtProtectRe? protectRe,
 
             string? rootPassword,
@@ -94,6 +97,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             DisableUsb = disableUsb;
             FipsEnabled = fipsEnabled;
             ProbeHosts = probeHosts;
+            ProbeHostsv6s = probeHostsv6s;
             ProtectRe = protectRe;
             RootPassword = rootPassword;
             SecurityLogSourceAddress = securityLogSourceAddress;

@@ -26,13 +26,25 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Gateway;
         /// <summary>
+        /// Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IPv6 Address (i.e. "2001:db8::1") or a Variable (i.e. "{{myvar}}")
+        /// </summary>
+        public readonly string? Gateway6;
+        /// <summary>
         /// Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         public readonly string? Ip;
         /// <summary>
+        /// Interface IPv6 Address (i.e. "2001:db8::123") or a Variable (i.e. "{{myvar}}")
+        /// </summary>
+        public readonly string? Ip6;
+        /// <summary>
         /// Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         public readonly string? Netmask;
+        /// <summary>
+        /// Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. "/64") or a Variable (i.e. "{{myvar}}")
+        /// </summary>
+        public readonly string? Netmask6;
         /// <summary>
         /// Optional, the network to be used for mgmt
         /// </summary>
@@ -53,6 +65,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// enum: `dhcp`, `pppoe`, `static`
         /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// enum: `autoconf`, `dhcp`, `static`
+        /// </summary>
+        public readonly string? Type6;
 
         [OutputConstructor]
         private GatewayPortConfigIpConfig(
@@ -62,9 +78,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string? gateway,
 
+            string? gateway6,
+
             string? ip,
 
+            string? ip6,
+
             string? netmask,
+
+            string? netmask6,
 
             string? network,
 
@@ -74,18 +96,24 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string? pppoeUsername,
 
-            string? type)
+            string? type,
+
+            string? type6)
         {
             Dns = dns;
             DnsSuffixes = dnsSuffixes;
             Gateway = gateway;
+            Gateway6 = gateway6;
             Ip = ip;
+            Ip6 = ip6;
             Netmask = netmask;
+            Netmask6 = netmask6;
             Network = network;
             PoserPassword = poserPassword;
             PppoeAuth = pppoeAuth;
             PppoeUsername = pppoeUsername;
             Type = type;
+            Type6 = type6;
         }
     }
 }

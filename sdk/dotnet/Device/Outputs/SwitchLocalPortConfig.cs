@@ -109,7 +109,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? PortNetwork;
         /// <summary>
-        /// Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+        /// Only `port_auth`=`dot1x`, reauthentication interval range between 10 and 65535 (default: 3600)
         /// </summary>
         public readonly string? ReauthInterval;
         /// <summary>

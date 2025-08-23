@@ -13,6 +13,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class GatewaytemplatePortConfigWanProbeOverride
     {
+        public readonly ImmutableArray<string> Ip6s;
         public readonly ImmutableArray<string> Ips;
         /// <summary>
         /// enum: `broadband`, `lte`
@@ -21,10 +22,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
         [OutputConstructor]
         private GatewaytemplatePortConfigWanProbeOverride(
+            ImmutableArray<string> ip6s,
+
             ImmutableArray<string> ips,
 
             string? probeProfile)
         {
+            Ip6s = ip6s;
             Ips = ips;
             ProbeProfile = probeProfile;
         }

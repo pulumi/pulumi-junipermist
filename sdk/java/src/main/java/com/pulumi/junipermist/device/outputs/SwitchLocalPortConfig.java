@@ -135,7 +135,7 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable String portNetwork;
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+     * @return Only `port_auth`=`dot1x`, reauthentication interval range between 10 and 65535 (default: 3600)
      * 
      */
     private @Nullable String reauthInterval;
@@ -354,7 +354,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.portNetwork);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+     * @return Only `port_auth`=`dot1x`, reauthentication interval range between 10 and 65535 (default: 3600)
      * 
      */
     public Optional<String> reauthInterval() {

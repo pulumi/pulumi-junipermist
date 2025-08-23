@@ -25,6 +25,7 @@ import com.pulumi.junipermist.device.outputs.SwitchOspfAreas;
 import com.pulumi.junipermist.device.outputs.SwitchOspfConfig;
 import com.pulumi.junipermist.device.outputs.SwitchOtherIpConfigs;
 import com.pulumi.junipermist.device.outputs.SwitchPortConfig;
+import com.pulumi.junipermist.device.outputs.SwitchPortConfigOverwrite;
 import com.pulumi.junipermist.device.outputs.SwitchPortMirroring;
 import com.pulumi.junipermist.device.outputs.SwitchPortUsages;
 import com.pulumi.junipermist.device.outputs.SwitchRadiusConfig;
@@ -417,6 +418,22 @@ public class Switch extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,SwitchPortConfig>>> portConfig() {
         return Codegen.optional(this.portConfig);
+    }
+    /**
+     * Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the
+     * port_usage without having to create a new port_usage.
+     * 
+     */
+    @Export(name="portConfigOverwrite", refs={Map.class,String.class,SwitchPortConfigOverwrite.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,SwitchPortConfigOverwrite>> portConfigOverwrite;
+
+    /**
+     * @return Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the
+     * port_usage without having to create a new port_usage.
+     * 
+     */
+    public Output<Optional<Map<String,SwitchPortConfigOverwrite>>> portConfigOverwrite() {
+        return Codegen.optional(this.portConfigOverwrite);
     }
     /**
      * Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes

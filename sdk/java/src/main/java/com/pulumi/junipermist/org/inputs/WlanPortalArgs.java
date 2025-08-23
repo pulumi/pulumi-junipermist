@@ -680,14 +680,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+     * Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
      * 
      */
     @Import(name="predefinedSponsorsEnabled")
     private @Nullable Output<Boolean> predefinedSponsorsEnabled;
 
     /**
-     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
      * 
      */
     public Optional<Output<Boolean>> predefinedSponsorsEnabled() {
@@ -807,14 +807,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+     * Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
      * 
      */
     @Import(name="smsProvider")
     private @Nullable Output<String> smsProvider;
 
     /**
-     * @return Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+     * @return Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
      * 
      */
     public Optional<Output<String>> smsProvider() {
@@ -1023,14 +1023,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+     * Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
      * 
      */
     @Import(name="ssoIdpSignAlgo")
     private @Nullable Output<String> ssoIdpSignAlgo;
 
     /**
-     * @return Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+     * @return Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
      * 
      */
     public Optional<Output<String>> ssoIdpSignAlgo() {
@@ -2221,7 +2221,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param predefinedSponsorsEnabled Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+         * @param predefinedSponsorsEnabled Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
          * 
          * @return builder
          * 
@@ -2232,7 +2232,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param predefinedSponsorsEnabled Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+         * @param predefinedSponsorsEnabled Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
          * 
          * @return builder
          * 
@@ -2398,7 +2398,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smsProvider Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+         * @param smsProvider Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
          * 
          * @return builder
          * 
@@ -2409,7 +2409,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smsProvider Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+         * @param smsProvider Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
          * 
          * @return builder
          * 
@@ -2708,7 +2708,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIdpSignAlgo Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+         * @param ssoIdpSignAlgo Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          * 
          * @return builder
          * 
@@ -2719,7 +2719,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIdpSignAlgo Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+         * @param ssoIdpSignAlgo Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          * 
          * @return builder
          * 

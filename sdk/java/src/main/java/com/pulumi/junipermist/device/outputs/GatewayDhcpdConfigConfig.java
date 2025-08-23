@@ -43,25 +43,25 @@ public final class GatewayDhcpdConfigConfig {
      */
     private @Nullable String gateway;
     /**
+     * @return If `type6`==`local`
+     * 
+     */
+    private @Nullable String ip6End;
+    /**
+     * @return If `type6`==`local`
+     * 
+     */
+    private @Nullable String ip6Start;
+    /**
      * @return If `type`==`local`
      * 
      */
     private @Nullable String ipEnd;
     /**
-     * @return If `type6`==`local`
-     * 
-     */
-    private @Nullable String ipEnd6;
-    /**
      * @return If `type`==`local`
      * 
      */
     private @Nullable String ipStart;
-    /**
-     * @return If `type6`==`local`
-     * 
-     */
-    private @Nullable String ipStart6;
     /**
      * @return In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
      * 
@@ -87,7 +87,7 @@ public final class GatewayDhcpdConfigConfig {
      * @return If `type6`==`relay`
      * 
      */
-    private @Nullable List<String> servers6s;
+    private @Nullable List<String> serversv6s;
     /**
      * @return enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
      * 
@@ -140,6 +140,20 @@ public final class GatewayDhcpdConfigConfig {
         return Optional.ofNullable(this.gateway);
     }
     /**
+     * @return If `type6`==`local`
+     * 
+     */
+    public Optional<String> ip6End() {
+        return Optional.ofNullable(this.ip6End);
+    }
+    /**
+     * @return If `type6`==`local`
+     * 
+     */
+    public Optional<String> ip6Start() {
+        return Optional.ofNullable(this.ip6Start);
+    }
+    /**
      * @return If `type`==`local`
      * 
      */
@@ -147,25 +161,11 @@ public final class GatewayDhcpdConfigConfig {
         return Optional.ofNullable(this.ipEnd);
     }
     /**
-     * @return If `type6`==`local`
-     * 
-     */
-    public Optional<String> ipEnd6() {
-        return Optional.ofNullable(this.ipEnd6);
-    }
-    /**
      * @return If `type`==`local`
      * 
      */
     public Optional<String> ipStart() {
         return Optional.ofNullable(this.ipStart);
-    }
-    /**
-     * @return If `type6`==`local`
-     * 
-     */
-    public Optional<String> ipStart6() {
-        return Optional.ofNullable(this.ipStart6);
     }
     /**
      * @return In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
@@ -200,8 +200,8 @@ public final class GatewayDhcpdConfigConfig {
      * @return If `type6`==`relay`
      * 
      */
-    public List<String> servers6s() {
-        return this.servers6s == null ? List.of() : this.servers6s;
+    public List<String> serversv6s() {
+        return this.serversv6s == null ? List.of() : this.serversv6s;
     }
     /**
      * @return enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
@@ -240,15 +240,15 @@ public final class GatewayDhcpdConfigConfig {
         private @Nullable List<String> dnsSuffixes;
         private @Nullable Map<String,GatewayDhcpdConfigConfigFixedBindings> fixedBindings;
         private @Nullable String gateway;
+        private @Nullable String ip6End;
+        private @Nullable String ip6Start;
         private @Nullable String ipEnd;
-        private @Nullable String ipEnd6;
         private @Nullable String ipStart;
-        private @Nullable String ipStart6;
         private @Nullable Integer leaseTime;
         private @Nullable Map<String,GatewayDhcpdConfigConfigOptions> options;
         private @Nullable Boolean serverIdOverride;
         private @Nullable List<String> servers;
-        private @Nullable List<String> servers6s;
+        private @Nullable List<String> serversv6s;
         private @Nullable String type;
         private @Nullable String type6;
         private @Nullable Map<String,GatewayDhcpdConfigConfigVendorEncapsulated> vendorEncapsulated;
@@ -259,15 +259,15 @@ public final class GatewayDhcpdConfigConfig {
     	      this.dnsSuffixes = defaults.dnsSuffixes;
     	      this.fixedBindings = defaults.fixedBindings;
     	      this.gateway = defaults.gateway;
+    	      this.ip6End = defaults.ip6End;
+    	      this.ip6Start = defaults.ip6Start;
     	      this.ipEnd = defaults.ipEnd;
-    	      this.ipEnd6 = defaults.ipEnd6;
     	      this.ipStart = defaults.ipStart;
-    	      this.ipStart6 = defaults.ipStart6;
     	      this.leaseTime = defaults.leaseTime;
     	      this.options = defaults.options;
     	      this.serverIdOverride = defaults.serverIdOverride;
     	      this.servers = defaults.servers;
-    	      this.servers6s = defaults.servers6s;
+    	      this.serversv6s = defaults.serversv6s;
     	      this.type = defaults.type;
     	      this.type6 = defaults.type6;
     	      this.vendorEncapsulated = defaults.vendorEncapsulated;
@@ -304,27 +304,27 @@ public final class GatewayDhcpdConfigConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder ip6End(@Nullable String ip6End) {
+
+            this.ip6End = ip6End;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ip6Start(@Nullable String ip6Start) {
+
+            this.ip6Start = ip6Start;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ipEnd(@Nullable String ipEnd) {
 
             this.ipEnd = ipEnd;
             return this;
         }
         @CustomType.Setter
-        public Builder ipEnd6(@Nullable String ipEnd6) {
-
-            this.ipEnd6 = ipEnd6;
-            return this;
-        }
-        @CustomType.Setter
         public Builder ipStart(@Nullable String ipStart) {
 
             this.ipStart = ipStart;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder ipStart6(@Nullable String ipStart6) {
-
-            this.ipStart6 = ipStart6;
             return this;
         }
         @CustomType.Setter
@@ -355,13 +355,13 @@ public final class GatewayDhcpdConfigConfig {
             return servers(List.of(servers));
         }
         @CustomType.Setter
-        public Builder servers6s(@Nullable List<String> servers6s) {
+        public Builder serversv6s(@Nullable List<String> serversv6s) {
 
-            this.servers6s = servers6s;
+            this.serversv6s = serversv6s;
             return this;
         }
-        public Builder servers6s(String... servers6s) {
-            return servers6s(List.of(servers6s));
+        public Builder serversv6s(String... serversv6s) {
+            return serversv6s(List.of(serversv6s));
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
@@ -387,15 +387,15 @@ public final class GatewayDhcpdConfigConfig {
             _resultValue.dnsSuffixes = dnsSuffixes;
             _resultValue.fixedBindings = fixedBindings;
             _resultValue.gateway = gateway;
+            _resultValue.ip6End = ip6End;
+            _resultValue.ip6Start = ip6Start;
             _resultValue.ipEnd = ipEnd;
-            _resultValue.ipEnd6 = ipEnd6;
             _resultValue.ipStart = ipStart;
-            _resultValue.ipStart6 = ipStart6;
             _resultValue.leaseTime = leaseTime;
             _resultValue.options = options;
             _resultValue.serverIdOverride = serverIdOverride;
             _resultValue.servers = servers;
-            _resultValue.servers6s = servers6s;
+            _resultValue.serversv6s = serversv6s;
             _resultValue.type = type;
             _resultValue.type6 = type6;
             _resultValue.vendorEncapsulated = vendorEncapsulated;

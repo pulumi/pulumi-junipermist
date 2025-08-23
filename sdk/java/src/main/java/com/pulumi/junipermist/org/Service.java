@@ -46,14 +46,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/service:Service")
 public class Service extends com.pulumi.resources.CustomResource {
     /**
-     * If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+     * If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
      * 
      */
     @Export(name="addresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> addresses;
 
     /**
-     * @return If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+     * @return If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
      * 
      */
     public Output<List<String>> addresses() {

@@ -30,6 +30,7 @@ type Ap struct {
 
 	// Aeroscout AP settings
 	Aeroscout ApAeroscoutPtrOutput `pulumi:"aeroscout"`
+	Airista   ApAiristaPtrOutput   `pulumi:"airista"`
 	// BLE AP settings
 	BleConfig    ApBleConfigPtrOutput    `pulumi:"bleConfig"`
 	Centrak      ApCentrakPtrOutput      `pulumi:"centrak"`
@@ -75,8 +76,9 @@ type Ap struct {
 	Orientation pulumi.IntPtrOutput `pulumi:"orientation"`
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolOutput `pulumi:"poePassthrough"`
-	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-	// precedence over switchConfig (deprecated)
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+	// predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus
+	// deprecated)
 	PortConfig ApPortConfigMapOutput `pulumi:"portConfig"`
 	// Power related configs
 	PwrConfig ApPwrConfigPtrOutput `pulumi:"pwrConfig"`
@@ -138,6 +140,7 @@ func GetAp(ctx *pulumi.Context,
 type apState struct {
 	// Aeroscout AP settings
 	Aeroscout *ApAeroscout `pulumi:"aeroscout"`
+	Airista   *ApAirista   `pulumi:"airista"`
 	// BLE AP settings
 	BleConfig    *ApBleConfig    `pulumi:"bleConfig"`
 	Centrak      *ApCentrak      `pulumi:"centrak"`
@@ -183,8 +186,9 @@ type apState struct {
 	Orientation *int `pulumi:"orientation"`
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough *bool `pulumi:"poePassthrough"`
-	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-	// precedence over switchConfig (deprecated)
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+	// predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus
+	// deprecated)
 	PortConfig map[string]ApPortConfig `pulumi:"portConfig"`
 	// Power related configs
 	PwrConfig *ApPwrConfig `pulumi:"pwrConfig"`
@@ -211,6 +215,7 @@ type apState struct {
 type ApState struct {
 	// Aeroscout AP settings
 	Aeroscout ApAeroscoutPtrInput
+	Airista   ApAiristaPtrInput
 	// BLE AP settings
 	BleConfig    ApBleConfigPtrInput
 	Centrak      ApCentrakPtrInput
@@ -256,8 +261,9 @@ type ApState struct {
 	Orientation pulumi.IntPtrInput
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolPtrInput
-	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-	// precedence over switchConfig (deprecated)
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+	// predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus
+	// deprecated)
 	PortConfig ApPortConfigMapInput
 	// Power related configs
 	PwrConfig ApPwrConfigPtrInput
@@ -288,6 +294,7 @@ func (ApState) ElementType() reflect.Type {
 type apArgs struct {
 	// Aeroscout AP settings
 	Aeroscout *ApAeroscout `pulumi:"aeroscout"`
+	Airista   *ApAirista   `pulumi:"airista"`
 	// BLE AP settings
 	BleConfig    *ApBleConfig    `pulumi:"bleConfig"`
 	Centrak      *ApCentrak      `pulumi:"centrak"`
@@ -325,8 +332,9 @@ type apArgs struct {
 	Orientation *int `pulumi:"orientation"`
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough *bool `pulumi:"poePassthrough"`
-	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-	// precedence over switchConfig (deprecated)
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+	// predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus
+	// deprecated)
 	PortConfig map[string]ApPortConfig `pulumi:"portConfig"`
 	// Power related configs
 	PwrConfig *ApPwrConfig `pulumi:"pwrConfig"`
@@ -350,6 +358,7 @@ type apArgs struct {
 type ApArgs struct {
 	// Aeroscout AP settings
 	Aeroscout ApAeroscoutPtrInput
+	Airista   ApAiristaPtrInput
 	// BLE AP settings
 	BleConfig    ApBleConfigPtrInput
 	Centrak      ApCentrakPtrInput
@@ -387,8 +396,9 @@ type ApArgs struct {
 	Orientation pulumi.IntPtrInput
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolPtrInput
-	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-	// precedence over switchConfig (deprecated)
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+	// predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus
+	// deprecated)
 	PortConfig ApPortConfigMapInput
 	// Power related configs
 	PwrConfig ApPwrConfigPtrInput
@@ -498,6 +508,10 @@ func (o ApOutput) ToApOutputWithContext(ctx context.Context) ApOutput {
 // Aeroscout AP settings
 func (o ApOutput) Aeroscout() ApAeroscoutPtrOutput {
 	return o.ApplyT(func(v *Ap) ApAeroscoutPtrOutput { return v.Aeroscout }).(ApAeroscoutPtrOutput)
+}
+
+func (o ApOutput) Airista() ApAiristaPtrOutput {
+	return o.ApplyT(func(v *Ap) ApAiristaPtrOutput { return v.Airista }).(ApAiristaPtrOutput)
 }
 
 // BLE AP settings
@@ -629,8 +643,9 @@ func (o ApOutput) PoePassthrough() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Ap) pulumi.BoolOutput { return v.PoePassthrough }).(pulumi.BoolOutput)
 }
 
-// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-// precedence over switchConfig (deprecated)
+// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
+// predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus
+// deprecated)
 func (o ApOutput) PortConfig() ApPortConfigMapOutput {
 	return o.ApplyT(func(v *Ap) ApPortConfigMapOutput { return v.PortConfig }).(ApPortConfigMapOutput)
 }

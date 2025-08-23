@@ -47,7 +47,7 @@ class ServiceArgs:
                  urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Service resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_categories: When `type`==`app_categories`, list of application categories are available through List App Category Definitions
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_subcategories: When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apps: When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
@@ -126,7 +126,7 @@ class ServiceArgs:
     @pulumi.getter
     def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         """
         return pulumi.get(self, "addresses")
 
@@ -408,7 +408,7 @@ class _ServiceState:
                  urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Service resources.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_categories: When `type`==`app_categories`, list of application categories are available through List App Category Definitions
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_subcategories: When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apps: When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
@@ -479,7 +479,7 @@ class _ServiceState:
     @pulumi.getter
     def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         """
         return pulumi.get(self, "addresses")
 
@@ -793,7 +793,7 @@ class Service(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_categories: When `type`==`app_categories`, list of application categories are available through List App Category Definitions
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_subcategories: When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apps: When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
@@ -951,7 +951,7 @@ class Service(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_categories: When `type`==`app_categories`, list of application categories are available through List App Category Definitions
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_subcategories: When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apps: When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
@@ -1003,7 +1003,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def addresses(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         """
         return pulumi.get(self, "addresses")
 

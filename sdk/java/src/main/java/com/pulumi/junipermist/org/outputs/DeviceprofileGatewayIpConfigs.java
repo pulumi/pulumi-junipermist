@@ -13,7 +13,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileGatewayIpConfigs {
     private @Nullable String ip;
+    private @Nullable String ip6;
     private @Nullable String netmask;
+    private @Nullable String netmask6;
     /**
      * @return Optional list of secondary IPs in CIDR format
      * 
@@ -24,13 +26,24 @@ public final class DeviceprofileGatewayIpConfigs {
      * 
      */
     private @Nullable String type;
+    /**
+     * @return enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * 
+     */
+    private @Nullable String type6;
 
     private DeviceprofileGatewayIpConfigs() {}
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
+    public Optional<String> ip6() {
+        return Optional.ofNullable(this.ip6);
+    }
     public Optional<String> netmask() {
         return Optional.ofNullable(this.netmask);
+    }
+    public Optional<String> netmask6() {
+        return Optional.ofNullable(this.netmask6);
     }
     /**
      * @return Optional list of secondary IPs in CIDR format
@@ -46,6 +59,13 @@ public final class DeviceprofileGatewayIpConfigs {
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * 
+     */
+    public Optional<String> type6() {
+        return Optional.ofNullable(this.type6);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -57,16 +77,22 @@ public final class DeviceprofileGatewayIpConfigs {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String ip;
+        private @Nullable String ip6;
         private @Nullable String netmask;
+        private @Nullable String netmask6;
         private @Nullable List<String> secondaryIps;
         private @Nullable String type;
+        private @Nullable String type6;
         public Builder() {}
         public Builder(DeviceprofileGatewayIpConfigs defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ip = defaults.ip;
+    	      this.ip6 = defaults.ip6;
     	      this.netmask = defaults.netmask;
+    	      this.netmask6 = defaults.netmask6;
     	      this.secondaryIps = defaults.secondaryIps;
     	      this.type = defaults.type;
+    	      this.type6 = defaults.type6;
         }
 
         @CustomType.Setter
@@ -76,9 +102,21 @@ public final class DeviceprofileGatewayIpConfigs {
             return this;
         }
         @CustomType.Setter
+        public Builder ip6(@Nullable String ip6) {
+
+            this.ip6 = ip6;
+            return this;
+        }
+        @CustomType.Setter
         public Builder netmask(@Nullable String netmask) {
 
             this.netmask = netmask;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder netmask6(@Nullable String netmask6) {
+
+            this.netmask6 = netmask6;
             return this;
         }
         @CustomType.Setter
@@ -96,12 +134,21 @@ public final class DeviceprofileGatewayIpConfigs {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
+        public Builder type6(@Nullable String type6) {
+
+            this.type6 = type6;
+            return this;
+        }
         public DeviceprofileGatewayIpConfigs build() {
             final var _resultValue = new DeviceprofileGatewayIpConfigs();
             _resultValue.ip = ip;
+            _resultValue.ip6 = ip6;
             _resultValue.netmask = netmask;
+            _resultValue.netmask6 = netmask6;
             _resultValue.secondaryIps = secondaryIps;
             _resultValue.type = type;
+            _resultValue.type6 = type6;
             return _resultValue;
         }
     }

@@ -65,6 +65,21 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Guest portal authorization state. enum: `authorized`, `unknown`
+     * 
+     */
+    @Import(name="guestAuthState")
+    private @Nullable Output<String> guestAuthState;
+
+    /**
+     * @return Guest portal authorization state. enum: `authorized`, `unknown`
+     * 
+     */
+    public Optional<Output<String>> guestAuthState() {
+        return Optional.ofNullable(this.guestAuthState);
+    }
+
     @Import(name="matching")
     private @Nullable Output<NacruleMatchingArgs> matching;
 
@@ -114,6 +129,7 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
         this.action = $.action;
         this.applyTags = $.applyTags;
         this.enabled = $.enabled;
+        this.guestAuthState = $.guestAuthState;
         this.matching = $.matching;
         this.name = $.name;
         this.notMatching = $.notMatching;
@@ -210,6 +226,27 @@ public final class NacruleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param guestAuthState Guest portal authorization state. enum: `authorized`, `unknown`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestAuthState(@Nullable Output<String> guestAuthState) {
+            $.guestAuthState = guestAuthState;
+            return this;
+        }
+
+        /**
+         * @param guestAuthState Guest portal authorization state. enum: `authorized`, `unknown`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestAuthState(String guestAuthState) {
+            return guestAuthState(Output.of(guestAuthState));
         }
 
         public Builder matching(@Nullable Output<NacruleMatchingArgs> matching) {

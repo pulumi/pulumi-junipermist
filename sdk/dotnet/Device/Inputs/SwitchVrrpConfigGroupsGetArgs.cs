@@ -13,12 +13,6 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchVrrpConfigGroupsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If `true`, accept packets destined for VRRP address
-        /// </summary>
-        [Input("acceptData")]
-        public Input<bool>? AcceptData { get; set; }
-
-        /// <summary>
         /// If `true`, allow preemption (a backup router can preempt a primary router)
         /// </summary>
         [Input("preempt")]
