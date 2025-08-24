@@ -4631,19 +4631,8 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "allNetworks",
                         "description",
-                        "disableAutoneg",
-                        "disabled",
-                        "duplex",
-                        "dynamicVlanNetworks",
-                        "enableQos",
-                        "macLimit",
-                        "networks",
-                        "persistMac",
-                        "poeDisabled",
-                        "speed",
-                        "stpEdge"
+                        "networks"
                     ]
                 }
             }
@@ -18590,19 +18579,8 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "allNetworks",
                         "description",
-                        "disableAutoneg",
-                        "disabled",
-                        "duplex",
-                        "dynamicVlanNetworks",
-                        "enableQos",
-                        "macLimit",
-                        "networks",
-                        "persistMac",
-                        "poeDisabled",
-                        "speed",
-                        "stpEdge"
+                        "networks"
                     ]
                 }
             }
@@ -22312,12 +22290,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "acctInterimInterval",
-                        "authServersRetries",
-                        "authServersTimeout",
-                        "coaEnabled",
-                        "enabled",
-                        "fastDot1xTimers"
+                        "enabled"
                     ]
                 }
             }
@@ -29035,19 +29008,8 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "allNetworks",
                         "description",
-                        "disableAutoneg",
-                        "disabled",
-                        "duplex",
-                        "dynamicVlanNetworks",
-                        "enableQos",
-                        "macLimit",
-                        "networks",
-                        "persistMac",
-                        "poeDisabled",
-                        "speed",
-                        "stpEdge"
+                        "networks"
                     ]
                 }
             }
@@ -32597,12 +32559,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "acctInterimInterval",
-                        "authServersRetries",
-                        "authServersTimeout",
-                        "coaEnabled",
-                        "enabled",
-                        "fastDot1xTimers"
+                        "enabled"
                     ]
                 }
             }
