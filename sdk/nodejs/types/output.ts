@@ -5418,7 +5418,7 @@ export namespace device {
         /**
          * Only if `mode`==`trunk` whether to trunk all network/vlans
          */
-        allNetworks: boolean;
+        allNetworks?: boolean;
         /**
          * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
          */
@@ -5446,19 +5446,19 @@ export namespace device {
         /**
          * Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
          */
-        disableAutoneg: boolean;
+        disableAutoneg?: boolean;
         /**
          * Only if `mode`!=`dynamic` whether the port is disabled
          */
-        disabled: boolean;
+        disabled?: boolean;
         /**
          * Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
          */
-        duplex: string;
+        duplex?: string;
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
          */
-        dynamicVlanNetworks: string[];
+        dynamicVlanNetworks?: string[];
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
          */
@@ -5466,7 +5466,7 @@ export namespace device {
         /**
          * Only if `mode`!=`dynamic`
          */
-        enableQos: boolean;
+        enableQos?: boolean;
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
          */
@@ -5494,7 +5494,7 @@ export namespace device {
         /**
          * Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 to 16383 (upper bound constrained by platform)
          */
-        macLimit: string;
+        macLimit?: string;
         /**
          * `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
          */
@@ -5510,11 +5510,11 @@ export namespace device {
         /**
          * Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
          */
-        persistMac: boolean;
+        persistMac?: boolean;
         /**
          * Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
          */
-        poeDisabled: boolean;
+        poeDisabled?: boolean;
         /**
          * Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
          */
@@ -5546,7 +5546,7 @@ export namespace device {
         /**
          * Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
-        speed: string;
+        speed?: string;
         /**
          * Switch storm control. Only if `mode`!=`dynamic`
          */
@@ -5554,7 +5554,7 @@ export namespace device {
         /**
          * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
          */
-        stpEdge: boolean;
+        stpEdge?: boolean;
         stpNoRootPort?: boolean;
         stpP2p?: boolean;
         /**
@@ -12875,7 +12875,7 @@ export namespace org {
         /**
          * Only if `mode`==`trunk` whether to trunk all network/vlans
          */
-        allNetworks: boolean;
+        allNetworks?: boolean;
         /**
          * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
          */
@@ -12903,19 +12903,19 @@ export namespace org {
         /**
          * Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
          */
-        disableAutoneg: boolean;
+        disableAutoneg?: boolean;
         /**
          * Only if `mode`!=`dynamic` whether the port is disabled
          */
-        disabled: boolean;
+        disabled?: boolean;
         /**
          * Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
          */
-        duplex: string;
+        duplex?: string;
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
          */
-        dynamicVlanNetworks: string[];
+        dynamicVlanNetworks?: string[];
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
          */
@@ -12923,7 +12923,7 @@ export namespace org {
         /**
          * Only if `mode`!=`dynamic`
          */
-        enableQos: boolean;
+        enableQos?: boolean;
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
          */
@@ -12951,7 +12951,7 @@ export namespace org {
         /**
          * Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 to 16383 (upper bound constrained by platform)
          */
-        macLimit: string;
+        macLimit?: string;
         /**
          * `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
          */
@@ -12967,11 +12967,11 @@ export namespace org {
         /**
          * Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
          */
-        persistMac: boolean;
+        persistMac?: boolean;
         /**
          * Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
          */
-        poeDisabled: boolean;
+        poeDisabled?: boolean;
         /**
          * Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
          */
@@ -13003,7 +13003,7 @@ export namespace org {
         /**
          * Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
-        speed: string;
+        speed?: string;
         /**
          * Switch storm control. Only if `mode`!=`dynamic`
          */
@@ -13011,7 +13011,7 @@ export namespace org {
         /**
          * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
          */
-        stpEdge: boolean;
+        stpEdge?: boolean;
         stpNoRootPort?: boolean;
         stpP2p?: boolean;
         /**
@@ -14998,19 +14998,19 @@ export namespace org {
         /**
          * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
          */
-        acctInterimInterval: number;
+        acctInterimInterval?: number;
         /**
          * Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
          */
-        authServersRetries: number;
+        authServersRetries?: number;
         /**
          * Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
          */
-        authServersTimeout: number;
+        authServersTimeout?: number;
         /**
          * Allows a RADIUS server to dynamically modify the authorization status of a user session.
          */
-        coaEnabled: boolean;
+        coaEnabled?: boolean;
         /**
          * the communication port used for “Change of Authorization” (CoA) messages
          */
@@ -15028,7 +15028,7 @@ export namespace org {
         /**
          * If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
          */
-        fastDot1xTimers: boolean;
+        fastDot1xTimers?: boolean;
         /**
          * Which network the mist nac server resides in
          */
@@ -17894,7 +17894,7 @@ export namespace site {
         /**
          * Only if `mode`==`trunk` whether to trunk all network/vlans
          */
-        allNetworks: boolean;
+        allNetworks?: boolean;
         /**
          * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
          */
@@ -17922,19 +17922,19 @@ export namespace site {
         /**
          * Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
          */
-        disableAutoneg: boolean;
+        disableAutoneg?: boolean;
         /**
          * Only if `mode`!=`dynamic` whether the port is disabled
          */
-        disabled: boolean;
+        disabled?: boolean;
         /**
          * Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
          */
-        duplex: string;
+        duplex?: string;
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
          */
-        dynamicVlanNetworks: string[];
+        dynamicVlanNetworks?: string[];
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
          */
@@ -17942,7 +17942,7 @@ export namespace site {
         /**
          * Only if `mode`!=`dynamic`
          */
-        enableQos: boolean;
+        enableQos?: boolean;
         /**
          * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
          */
@@ -17970,7 +17970,7 @@ export namespace site {
         /**
          * Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 to 16383 (upper bound constrained by platform)
          */
-        macLimit: string;
+        macLimit?: string;
         /**
          * `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
          */
@@ -17986,11 +17986,11 @@ export namespace site {
         /**
          * Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
          */
-        persistMac: boolean;
+        persistMac?: boolean;
         /**
          * Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
          */
-        poeDisabled: boolean;
+        poeDisabled?: boolean;
         /**
          * Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
          */
@@ -18022,7 +18022,7 @@ export namespace site {
         /**
          * Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
-        speed: string;
+        speed?: string;
         /**
          * Switch storm control. Only if `mode`!=`dynamic`
          */
@@ -18030,7 +18030,7 @@ export namespace site {
         /**
          * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
          */
-        stpEdge: boolean;
+        stpEdge?: boolean;
         stpNoRootPort?: boolean;
         stpP2p?: boolean;
         /**
@@ -19935,19 +19935,19 @@ export namespace site {
         /**
          * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
          */
-        acctInterimInterval: number;
+        acctInterimInterval?: number;
         /**
          * Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
          */
-        authServersRetries: number;
+        authServersRetries?: number;
         /**
          * Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
          */
-        authServersTimeout: number;
+        authServersTimeout?: number;
         /**
          * Allows a RADIUS server to dynamically modify the authorization status of a user session.
          */
-        coaEnabled: boolean;
+        coaEnabled?: boolean;
         /**
          * the communication port used for “Change of Authorization” (CoA) messages
          */
@@ -19965,7 +19965,7 @@ export namespace site {
         /**
          * If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
          */
-        fastDot1xTimers: boolean;
+        fastDot1xTimers?: boolean;
         /**
          * Which network the mist nac server resides in
          */
