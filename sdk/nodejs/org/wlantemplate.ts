@@ -54,21 +54,21 @@ export class Wlantemplate extends pulumi.CustomResource {
     /**
      * Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
      */
-    public readonly applies!: pulumi.Output<outputs.org.WlantemplateApplies>;
+    declare public readonly applies: pulumi.Output<outputs.org.WlantemplateApplies>;
     /**
      * List of Device Profile ids
      */
-    public readonly deviceprofileIds!: pulumi.Output<string[]>;
+    declare public readonly deviceprofileIds: pulumi.Output<string[]>;
     /**
      * Where this template should not be applied to (takes precedence)
      */
-    public readonly exceptions!: pulumi.Output<outputs.org.WlantemplateExceptions>;
+    declare public readonly exceptions: pulumi.Output<outputs.org.WlantemplateExceptions>;
     /**
      * Whether to further filter by Device Profile
      */
-    public readonly filterByDeviceprofile!: pulumi.Output<boolean>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly filterByDeviceprofile: pulumi.Output<boolean>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
 
     /**
      * Create a Wlantemplate resource with the given unique name, arguments, and options.
@@ -83,23 +83,23 @@ export class Wlantemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WlantemplateState | undefined;
-            resourceInputs["applies"] = state ? state.applies : undefined;
-            resourceInputs["deviceprofileIds"] = state ? state.deviceprofileIds : undefined;
-            resourceInputs["exceptions"] = state ? state.exceptions : undefined;
-            resourceInputs["filterByDeviceprofile"] = state ? state.filterByDeviceprofile : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["applies"] = state?.applies;
+            resourceInputs["deviceprofileIds"] = state?.deviceprofileIds;
+            resourceInputs["exceptions"] = state?.exceptions;
+            resourceInputs["filterByDeviceprofile"] = state?.filterByDeviceprofile;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
         } else {
             const args = argsOrState as WlantemplateArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["applies"] = args ? args.applies : undefined;
-            resourceInputs["deviceprofileIds"] = args ? args.deviceprofileIds : undefined;
-            resourceInputs["exceptions"] = args ? args.exceptions : undefined;
-            resourceInputs["filterByDeviceprofile"] = args ? args.filterByDeviceprofile : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["applies"] = args?.applies;
+            resourceInputs["deviceprofileIds"] = args?.deviceprofileIds;
+            resourceInputs["exceptions"] = args?.exceptions;
+            resourceInputs["filterByDeviceprofile"] = args?.filterByDeviceprofile;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Wlantemplate.__pulumiType, name, resourceInputs, opts);

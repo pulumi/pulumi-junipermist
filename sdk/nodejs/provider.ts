@@ -28,25 +28,24 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * For API Token authentication, the Mist API Token.
      */
-    public readonly apitoken!: pulumi.Output<string | undefined>;
+    declare public readonly apitoken: pulumi.Output<string | undefined>;
     /**
      * URL of the Mist Cloud, e.g. `api.mist.com`.
      */
-    public readonly host!: pulumi.Output<string | undefined>;
+    declare public readonly host: pulumi.Output<string | undefined>;
     /**
      * For username/password authentication, the Mist Account password.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
-     * Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-     * `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-     * are supported.
+     * Requests use the configured proxy to reach the Mist Cloud.
+     * The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
      */
-    public readonly proxy!: pulumi.Output<string | undefined>;
+    declare public readonly proxy: pulumi.Output<string | undefined>;
     /**
      * For username/password authentication, the Mist Account username.
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -59,13 +58,13 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["apiDebug"] = pulumi.output(args ? args.apiDebug : undefined).apply(JSON.stringify);
-            resourceInputs["apiTimeout"] = pulumi.output(args ? args.apiTimeout : undefined).apply(JSON.stringify);
+            resourceInputs["apiDebug"] = pulumi.output(args?.apiDebug).apply(JSON.stringify);
+            resourceInputs["apiTimeout"] = pulumi.output(args?.apiTimeout).apply(JSON.stringify);
             resourceInputs["apitoken"] = args?.apitoken ? pulumi.secret(args.apitoken) : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["host"] = args?.host;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["proxy"] = args ? args.proxy : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["proxy"] = args?.proxy;
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["apitoken", "password"] };
@@ -92,8 +91,7 @@ export interface ProviderArgs {
      */
     apiDebug?: pulumi.Input<boolean>;
     /**
-     * Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
-     * results in infinite timeout.
+     * Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
      */
     apiTimeout?: pulumi.Input<number>;
     /**
@@ -109,9 +107,8 @@ export interface ProviderArgs {
      */
     password?: pulumi.Input<string>;
     /**
-     * Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-     * `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-     * are supported.
+     * Requests use the configured proxy to reach the Mist Cloud.
+     * The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
      */
     proxy?: pulumi.Input<string>;
     /**

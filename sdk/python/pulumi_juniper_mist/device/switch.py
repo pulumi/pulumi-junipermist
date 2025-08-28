@@ -69,31 +69,26 @@ class SwitchArgs:
         The set of arguments for constructing a Switch resource.
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[_builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-               `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+        :param pulumi.Input[_builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input['SwitchIpConfigArgs'] ip_config: Junos IP Config
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
-               "ge-0/0/0-10")
-        :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-               the adopted switch/gateway to be managed/configured by Mist.
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
+        :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input['SwitchMistNacArgs'] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchNetworksArgs']]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input['SwitchOobIpConfigArgs'] oob_ip_config: Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-               re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+        :param pulumi.Input['SwitchOobIpConfigArgs'] oob_ip_config: Switch OOB IP Config:
+                 - If HA configuration: key parameter will be nodeX (eg: node1)
+                 - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]] port_config_overwrite: Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-               port_usage without having to create a new port_usage.
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-               interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-               maximum 4 mirroring ports is allowed
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]] port_config_overwrite: Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input['SwitchRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input[_builtins.str] router_id: Used for OSPF / BGP / EVPN
@@ -266,8 +261,7 @@ class SwitchArgs:
     @pulumi.getter(name="disableAutoConfig")
     def disable_auto_config(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-        `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+        This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         """
         return pulumi.get(self, "disable_auto_config")
 
@@ -339,8 +333,7 @@ class SwitchArgs:
     @pulumi.getter(name="localPortConfig")
     def local_port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]]:
         """
-        Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
-        "ge-0/0/0-10")
+        Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
         """
         return pulumi.get(self, "local_port_config")
 
@@ -352,8 +345,7 @@ class SwitchArgs:
     @pulumi.getter
     def managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-        the adopted switch/gateway to be managed/configured by Mist.
+        An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
         """
         return pulumi.get(self, "managed")
 
@@ -431,8 +423,9 @@ class SwitchArgs:
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> Optional[pulumi.Input['SwitchOobIpConfigArgs']]:
         """
-        Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-        re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+        Switch OOB IP Config:
+          - If HA configuration: key parameter will be nodeX (eg: node1)
+          - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -489,8 +482,7 @@ class SwitchArgs:
     @pulumi.getter(name="portConfigOverwrite")
     def port_config_overwrite(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]]:
         """
-        Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-        port_usage without having to create a new port_usage.
+        Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
         """
         return pulumi.get(self, "port_config_overwrite")
 
@@ -502,9 +494,7 @@ class SwitchArgs:
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]]:
         """
-        Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-        interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-        maximum 4 mirroring ports is allowed
+        Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         """
         return pulumi.get(self, "port_mirroring")
 
@@ -749,33 +739,28 @@ class _SwitchState:
         Input properties used for looking up and filtering Switch resources.
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[_builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-               `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+        :param pulumi.Input[_builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input['SwitchIpConfigArgs'] ip_config: Junos IP Config
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
-               "ge-0/0/0-10")
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[_builtins.str] mac: Device MAC address
-        :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-               the adopted switch/gateway to be managed/configured by Mist.
+        :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input['SwitchMistNacArgs'] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[_builtins.str] model: Device Model
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchNetworksArgs']]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input['SwitchOobIpConfigArgs'] oob_ip_config: Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-               re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+        :param pulumi.Input['SwitchOobIpConfigArgs'] oob_ip_config: Switch OOB IP Config:
+                 - If HA configuration: key parameter will be nodeX (eg: node1)
+                 - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]] port_config_overwrite: Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-               port_usage without having to create a new port_usage.
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-               interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-               maximum 4 mirroring ports is allowed
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]] port_config_overwrite: Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input['SwitchRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input[_builtins.str] router_id: Used for OSPF / BGP / EVPN
@@ -959,8 +944,7 @@ class _SwitchState:
     @pulumi.getter(name="disableAutoConfig")
     def disable_auto_config(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-        `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+        This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         """
         return pulumi.get(self, "disable_auto_config")
 
@@ -1059,8 +1043,7 @@ class _SwitchState:
     @pulumi.getter(name="localPortConfig")
     def local_port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]]:
         """
-        Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
-        "ge-0/0/0-10")
+        Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
         """
         return pulumi.get(self, "local_port_config")
 
@@ -1084,8 +1067,7 @@ class _SwitchState:
     @pulumi.getter
     def managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-        the adopted switch/gateway to be managed/configured by Mist.
+        An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
         """
         return pulumi.get(self, "managed")
 
@@ -1175,8 +1157,9 @@ class _SwitchState:
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> Optional[pulumi.Input['SwitchOobIpConfigArgs']]:
         """
-        Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-        re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+        Switch OOB IP Config:
+          - If HA configuration: key parameter will be nodeX (eg: node1)
+          - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -1242,8 +1225,7 @@ class _SwitchState:
     @pulumi.getter(name="portConfigOverwrite")
     def port_config_overwrite(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]]:
         """
-        Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-        port_usage without having to create a new port_usage.
+        Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
         """
         return pulumi.get(self, "port_config_overwrite")
 
@@ -1255,9 +1237,7 @@ class _SwitchState:
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]]:
         """
-        Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-        interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-        maximum 4 mirroring ports is allowed
+        Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         """
         return pulumi.get(self, "port_mirroring")
 
@@ -1548,31 +1528,26 @@ class Switch(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[_builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-               `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+        :param pulumi.Input[_builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']] ip_config: Junos IP Config
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
-               "ge-0/0/0-10")
-        :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-               the adopted switch/gateway to be managed/configured by Mist.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
+        :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']] oob_ip_config: Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-               re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+        :param pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']] oob_ip_config: Switch OOB IP Config:
+                 - If HA configuration: key parameter will be nodeX (eg: node1)
+                 - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]] port_config_overwrite: Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-               port_usage without having to create a new port_usage.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-               interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-               maximum 4 mirroring ports is allowed
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]] port_config_overwrite: Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[_builtins.str] router_id: Used for OSPF / BGP / EVPN
@@ -1803,33 +1778,28 @@ class Switch(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[_builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-               `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+        :param pulumi.Input[_builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']] ip_config: Junos IP Config
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
-               "ge-0/0/0-10")
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[_builtins.str] mac: Device MAC address
-        :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-               the adopted switch/gateway to be managed/configured by Mist.
+        :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[_builtins.str] model: Device Model
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']] oob_ip_config: Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-               re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+        :param pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']] oob_ip_config: Switch OOB IP Config:
+                 - If HA configuration: key parameter will be nodeX (eg: node1)
+                 - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]] other_ip_configs: Property key is the network name. Defines the additional IP Addresses configured on the device.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]] port_config_overwrite: Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-               port_usage without having to create a new port_usage.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-               interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-               maximum 4 mirroring ports is allowed
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]] port_config_overwrite: Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[_builtins.str] router_id: Used for OSPF / BGP / EVPN
@@ -1942,8 +1912,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="disableAutoConfig")
     def disable_auto_config(self) -> pulumi.Output[_builtins.bool]:
         """
-        This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-        `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+        This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         """
         return pulumi.get(self, "disable_auto_config")
 
@@ -2006,8 +1975,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="localPortConfig")
     def local_port_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchLocalPortConfig']]]:
         """
-        Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
-        "ge-0/0/0-10")
+        Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
         """
         return pulumi.get(self, "local_port_config")
 
@@ -2023,8 +1991,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter
     def managed(self) -> pulumi.Output[_builtins.bool]:
         """
-        An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-        the adopted switch/gateway to be managed/configured by Mist.
+        An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
         """
         return pulumi.get(self, "managed")
 
@@ -2082,8 +2049,9 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Output[Optional['outputs.SwitchOobIpConfig']]:
         """
-        Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-        re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+        Switch OOB IP Config:
+          - If HA configuration: key parameter will be nodeX (eg: node1)
+          - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -2125,8 +2093,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="portConfigOverwrite")
     def port_config_overwrite(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchPortConfigOverwrite']]]:
         """
-        Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-        port_usage without having to create a new port_usage.
+        Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
         """
         return pulumi.get(self, "port_config_overwrite")
 
@@ -2134,9 +2101,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchPortMirroring']]]:
         """
-        Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-        interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-        maximum 4 mirroring ports is allowed
+        Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         """
         return pulumi.get(self, "port_mirroring")
 

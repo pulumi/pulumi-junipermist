@@ -33,16 +33,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
-     * results in infinite timeout.
+     * Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
      * 
      */
     @Import(name="apiTimeout", json=true)
     private @Nullable Output<Double> apiTimeout;
 
     /**
-     * @return Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
-     * results in infinite timeout.
+     * @return Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
      * 
      */
     public Optional<Output<Double>> apiTimeout() {
@@ -95,18 +93,16 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-     * `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-     * are supported.
+     * Requests use the configured proxy to reach the Mist Cloud.
+     * The value may be either a complete URL or a `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
      * 
      */
     @Import(name="proxy")
     private @Nullable Output<String> proxy;
 
     /**
-     * @return Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-     * `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-     * are supported.
+     * @return Requests use the configured proxy to reach the Mist Cloud.
+     * The value may be either a complete URL or a `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
      * 
      */
     public Optional<Output<String>> proxy() {
@@ -180,8 +176,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiTimeout Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
-         * results in infinite timeout.
+         * @param apiTimeout Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
          * 
          * @return builder
          * 
@@ -192,8 +187,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiTimeout Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
-         * results in infinite timeout.
+         * @param apiTimeout Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
          * 
          * @return builder
          * 
@@ -266,9 +260,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxy Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-         * `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-         * are supported.
+         * @param proxy Requests use the configured proxy to reach the Mist Cloud.
+         * The value may be either a complete URL or a `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
          * 
          * @return builder
          * 
@@ -279,9 +272,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxy Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-         * `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-         * are supported.
+         * @param proxy Requests use the configured proxy to reach the Mist Cloud.
+         * The value may be either a complete URL or a `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
          * 
          * @return builder
          * 

@@ -60,8 +60,8 @@ export class Sitegroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === Sitegroup.__pulumiType;
     }
 
-    public readonly name!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
 
     /**
      * Create a Sitegroup resource with the given unique name, arguments, and options.
@@ -76,15 +76,15 @@ export class Sitegroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SitegroupState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
         } else {
             const args = argsOrState as SitegroupArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Sitegroup.__pulumiType, name, resourceInputs, opts);

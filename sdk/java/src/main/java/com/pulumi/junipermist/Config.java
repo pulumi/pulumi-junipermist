@@ -20,8 +20,7 @@ public final class Config {
         return Codegen.booleanProp("apiDebug").config(config).get();
     }
 /**
- * Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
- * results in infinite timeout.
+ * Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
  * 
  */
     public Optional<Double> apiTimeout() {
@@ -49,9 +48,8 @@ public final class Config {
         return Codegen.stringProp("password").config(config).get();
     }
 /**
- * Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
- * `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
- * are supported.
+ * Requests use the configured proxy to reach the Mist Cloud.
+ * The value may be either a complete URL or a `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
  * 
  */
     public Optional<String> proxy() {

@@ -79,19 +79,19 @@ export class Avprofile extends pulumi.CustomResource {
     /**
      * enum: `block`, `log-and-permit`, `permit`
      */
-    public readonly fallbackAction!: pulumi.Output<string | undefined>;
+    declare public readonly fallbackAction: pulumi.Output<string | undefined>;
     /**
      * In KB
      */
-    public readonly maxFilesize!: pulumi.Output<number>;
-    public readonly mimeWhitelists!: pulumi.Output<string[]>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly maxFilesize: pulumi.Output<number>;
+    declare public readonly mimeWhitelists: pulumi.Output<string[]>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
      */
-    public readonly protocols!: pulumi.Output<string[]>;
-    public readonly urlWhitelists!: pulumi.Output<string[]>;
+    declare public readonly protocols: pulumi.Output<string[]>;
+    declare public readonly urlWhitelists: pulumi.Output<string[]>;
 
     /**
      * Create a Avprofile resource with the given unique name, arguments, and options.
@@ -106,28 +106,28 @@ export class Avprofile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AvprofileState | undefined;
-            resourceInputs["fallbackAction"] = state ? state.fallbackAction : undefined;
-            resourceInputs["maxFilesize"] = state ? state.maxFilesize : undefined;
-            resourceInputs["mimeWhitelists"] = state ? state.mimeWhitelists : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["protocols"] = state ? state.protocols : undefined;
-            resourceInputs["urlWhitelists"] = state ? state.urlWhitelists : undefined;
+            resourceInputs["fallbackAction"] = state?.fallbackAction;
+            resourceInputs["maxFilesize"] = state?.maxFilesize;
+            resourceInputs["mimeWhitelists"] = state?.mimeWhitelists;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["protocols"] = state?.protocols;
+            resourceInputs["urlWhitelists"] = state?.urlWhitelists;
         } else {
             const args = argsOrState as AvprofileArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.protocols === undefined) && !opts.urn) {
+            if (args?.protocols === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocols'");
             }
-            resourceInputs["fallbackAction"] = args ? args.fallbackAction : undefined;
-            resourceInputs["maxFilesize"] = args ? args.maxFilesize : undefined;
-            resourceInputs["mimeWhitelists"] = args ? args.mimeWhitelists : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["protocols"] = args ? args.protocols : undefined;
-            resourceInputs["urlWhitelists"] = args ? args.urlWhitelists : undefined;
+            resourceInputs["fallbackAction"] = args?.fallbackAction;
+            resourceInputs["maxFilesize"] = args?.maxFilesize;
+            resourceInputs["mimeWhitelists"] = args?.mimeWhitelists;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["protocols"] = args?.protocols;
+            resourceInputs["urlWhitelists"] = args?.urlWhitelists;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Avprofile.__pulumiType, name, resourceInputs, opts);

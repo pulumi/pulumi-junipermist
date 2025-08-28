@@ -37,18 +37,12 @@ class SsoArgs:
         :param pulumi.Input[_builtins.str] idp_sign_algo: Signing algorithm for SAML Assertion. enum `sha1`, `sha256`, `sha384`, `sha512`
         :param pulumi.Input[_builtins.str] idp_sso_url: IDP Single-Sign-On URL
         :param pulumi.Input[_builtins.str] issuer: IDP issuer URL
-        :param pulumi.Input[_builtins.str] custom_logout_url: a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-               different from SP-initiated SLO process)
-        :param pulumi.Input[_builtins.str] default_role: default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-               matched
+        :param pulumi.Input[_builtins.str] custom_logout_url: a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
+        :param pulumi.Input[_builtins.str] default_role: default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         :param pulumi.Input[_builtins.bool] ignore_unmatched_roles: ignore any unmatched roles provided in assertion. By default, an assertion is treated as invalid for any unmatched role
         :param pulumi.Input[_builtins.str] name: Name
         :param pulumi.Input[_builtins.str] nameid_format: enum: `email`, `unspecified`
-        :param pulumi.Input[_builtins.str] role_attr_extraction: custom role attribute parsing scheme. Supported Role Parsing Schemes
-               <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
-               Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-               entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-               “cn”</td></tr></table>
+        :param pulumi.Input[_builtins.str] role_attr_extraction: custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
         :param pulumi.Input[_builtins.str] role_attr_from: name of the attribute in SAML Assertion to extract role from. Default: `Role`
         """
         pulumi.set(__self__, "idp_cert", idp_cert)
@@ -132,8 +126,7 @@ class SsoArgs:
     @pulumi.getter(name="customLogoutUrl")
     def custom_logout_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-        different from SP-initiated SLO process)
+        a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
         """
         return pulumi.get(self, "custom_logout_url")
 
@@ -145,8 +138,7 @@ class SsoArgs:
     @pulumi.getter(name="defaultRole")
     def default_role(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-        matched
+        default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         """
         return pulumi.get(self, "default_role")
 
@@ -194,11 +186,7 @@ class SsoArgs:
     @pulumi.getter(name="roleAttrExtraction")
     def role_attr_extraction(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        custom role attribute parsing scheme. Supported Role Parsing Schemes
-        <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
-        Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-        entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-        “cn”</td></tr></table>
+        custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
         """
         return pulumi.get(self, "role_attr_extraction")
 
@@ -237,13 +225,11 @@ class _SsoState:
                  role_attr_from: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Sso resources.
-        :param pulumi.Input[_builtins.str] custom_logout_url: a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-               different from SP-initiated SLO process)
-        :param pulumi.Input[_builtins.str] default_role: default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-               matched
-        :param pulumi.Input[_builtins.str] domain: Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
-               `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
-               `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
+        :param pulumi.Input[_builtins.str] custom_logout_url: a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
+        :param pulumi.Input[_builtins.str] default_role: default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+        :param pulumi.Input[_builtins.str] domain: Random string generated during the SSO creation and used to generate the SAML URLs:
+                 * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
+                 * Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
         :param pulumi.Input[_builtins.str] idp_cert: IDP Cert (used to verify the signed response)
         :param pulumi.Input[_builtins.str] idp_sign_algo: Signing algorithm for SAML Assertion. enum `sha1`, `sha256`, `sha384`, `sha512`
         :param pulumi.Input[_builtins.str] idp_sso_url: IDP Single-Sign-On URL
@@ -251,11 +237,7 @@ class _SsoState:
         :param pulumi.Input[_builtins.str] issuer: IDP issuer URL
         :param pulumi.Input[_builtins.str] name: Name
         :param pulumi.Input[_builtins.str] nameid_format: enum: `email`, `unspecified`
-        :param pulumi.Input[_builtins.str] role_attr_extraction: custom role attribute parsing scheme. Supported Role Parsing Schemes
-               <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
-               Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-               entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-               “cn”</td></tr></table>
+        :param pulumi.Input[_builtins.str] role_attr_extraction: custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
         :param pulumi.Input[_builtins.str] role_attr_from: name of the attribute in SAML Assertion to extract role from. Default: `Role`
         """
         if custom_logout_url is not None:
@@ -289,8 +271,7 @@ class _SsoState:
     @pulumi.getter(name="customLogoutUrl")
     def custom_logout_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-        different from SP-initiated SLO process)
+        a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
         """
         return pulumi.get(self, "custom_logout_url")
 
@@ -302,8 +283,7 @@ class _SsoState:
     @pulumi.getter(name="defaultRole")
     def default_role(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-        matched
+        default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         """
         return pulumi.get(self, "default_role")
 
@@ -315,9 +295,9 @@ class _SsoState:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
-        `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
-        `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
+        Random string generated during the SSO creation and used to generate the SAML URLs:
+          * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
+          * Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
         """
         return pulumi.get(self, "domain")
 
@@ -422,11 +402,7 @@ class _SsoState:
     @pulumi.getter(name="roleAttrExtraction")
     def role_attr_extraction(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        custom role attribute parsing scheme. Supported Role Parsing Schemes
-        <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
-        Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-        entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-        “cn”</td></tr></table>
+        custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
         """
         return pulumi.get(self, "role_attr_extraction")
 
@@ -502,10 +478,8 @@ class Sso(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] custom_logout_url: a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-               different from SP-initiated SLO process)
-        :param pulumi.Input[_builtins.str] default_role: default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-               matched
+        :param pulumi.Input[_builtins.str] custom_logout_url: a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
+        :param pulumi.Input[_builtins.str] default_role: default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         :param pulumi.Input[_builtins.str] idp_cert: IDP Cert (used to verify the signed response)
         :param pulumi.Input[_builtins.str] idp_sign_algo: Signing algorithm for SAML Assertion. enum `sha1`, `sha256`, `sha384`, `sha512`
         :param pulumi.Input[_builtins.str] idp_sso_url: IDP Single-Sign-On URL
@@ -513,11 +487,7 @@ class Sso(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] issuer: IDP issuer URL
         :param pulumi.Input[_builtins.str] name: Name
         :param pulumi.Input[_builtins.str] nameid_format: enum: `email`, `unspecified`
-        :param pulumi.Input[_builtins.str] role_attr_extraction: custom role attribute parsing scheme. Supported Role Parsing Schemes
-               <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
-               Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-               entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-               “cn”</td></tr></table>
+        :param pulumi.Input[_builtins.str] role_attr_extraction: custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
         :param pulumi.Input[_builtins.str] role_attr_from: name of the attribute in SAML Assertion to extract role from. Default: `Role`
         """
         ...
@@ -649,13 +619,11 @@ class Sso(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] custom_logout_url: a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-               different from SP-initiated SLO process)
-        :param pulumi.Input[_builtins.str] default_role: default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-               matched
-        :param pulumi.Input[_builtins.str] domain: Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
-               `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
-               `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
+        :param pulumi.Input[_builtins.str] custom_logout_url: a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
+        :param pulumi.Input[_builtins.str] default_role: default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+        :param pulumi.Input[_builtins.str] domain: Random string generated during the SSO creation and used to generate the SAML URLs:
+                 * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
+                 * Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
         :param pulumi.Input[_builtins.str] idp_cert: IDP Cert (used to verify the signed response)
         :param pulumi.Input[_builtins.str] idp_sign_algo: Signing algorithm for SAML Assertion. enum `sha1`, `sha256`, `sha384`, `sha512`
         :param pulumi.Input[_builtins.str] idp_sso_url: IDP Single-Sign-On URL
@@ -663,11 +631,7 @@ class Sso(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] issuer: IDP issuer URL
         :param pulumi.Input[_builtins.str] name: Name
         :param pulumi.Input[_builtins.str] nameid_format: enum: `email`, `unspecified`
-        :param pulumi.Input[_builtins.str] role_attr_extraction: custom role attribute parsing scheme. Supported Role Parsing Schemes
-               <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
-               Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-               entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-               “cn”</td></tr></table>
+        :param pulumi.Input[_builtins.str] role_attr_extraction: custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
         :param pulumi.Input[_builtins.str] role_attr_from: name of the attribute in SAML Assertion to extract role from. Default: `Role`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -693,8 +657,7 @@ class Sso(pulumi.CustomResource):
     @pulumi.getter(name="customLogoutUrl")
     def custom_logout_url(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-        different from SP-initiated SLO process)
+        a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
         """
         return pulumi.get(self, "custom_logout_url")
 
@@ -702,8 +665,7 @@ class Sso(pulumi.CustomResource):
     @pulumi.getter(name="defaultRole")
     def default_role(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-        matched
+        default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         """
         return pulumi.get(self, "default_role")
 
@@ -711,9 +673,9 @@ class Sso(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[_builtins.str]:
         """
-        Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
-        `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
-        `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
+        Random string generated during the SSO creation and used to generate the SAML URLs:
+          * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
+          * Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
         """
         return pulumi.get(self, "domain")
 
@@ -782,11 +744,7 @@ class Sso(pulumi.CustomResource):
     @pulumi.getter(name="roleAttrExtraction")
     def role_attr_extraction(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        custom role attribute parsing scheme. Supported Role Parsing Schemes
-        <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
-        Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-        entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-        “cn”</td></tr></table>
+        custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
         """
         return pulumi.get(self, "role_attr_extraction")
 

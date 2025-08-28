@@ -38,12 +38,12 @@ export class WlanPortalImage extends pulumi.CustomResource {
     /**
      * path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
      */
-    public readonly file!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly file: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Org WLAN ID
      */
-    public readonly wlanId!: pulumi.Output<string>;
+    declare public readonly wlanId: pulumi.Output<string>;
 
     /**
      * Create a WlanPortalImage resource with the given unique name, arguments, and options.
@@ -58,23 +58,23 @@ export class WlanPortalImage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WlanPortalImageState | undefined;
-            resourceInputs["file"] = state ? state.file : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["wlanId"] = state ? state.wlanId : undefined;
+            resourceInputs["file"] = state?.file;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["wlanId"] = state?.wlanId;
         } else {
             const args = argsOrState as WlanPortalImageArgs | undefined;
-            if ((!args || args.file === undefined) && !opts.urn) {
+            if (args?.file === undefined && !opts.urn) {
                 throw new Error("Missing required property 'file'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.wlanId === undefined) && !opts.urn) {
+            if (args?.wlanId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'wlanId'");
             }
-            resourceInputs["file"] = args ? args.file : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["wlanId"] = args ? args.wlanId : undefined;
+            resourceInputs["file"] = args?.file;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["wlanId"] = args?.wlanId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WlanPortalImage.__pulumiType, name, resourceInputs, opts);

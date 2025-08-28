@@ -87,8 +87,7 @@ type DeviceprofileAp struct {
 	OrgId      pulumi.StringOutput          `pulumi:"orgId"`
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolOutput `pulumi:"poePassthrough"`
-	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-	// precedence over switchConfig (deprecated)
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switchConfig (deprecated)
 	PortConfig DeviceprofileApPortConfigMapOutput `pulumi:"portConfig"`
 	// Power related configs
 	PwrConfig DeviceprofileApPwrConfigPtrOutput `pulumi:"pwrConfig"`
@@ -99,8 +98,9 @@ type DeviceprofileAp struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// AP Uplink port configuration
 	UplinkPortConfig DeviceprofileApUplinkPortConfigPtrOutput `pulumi:"uplinkPortConfig"`
-	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-	// moved to ESL Config.
+	// USB AP settings
+	//   - Note: if native imagotag is enabled, BLE will be disabled automatically
+	//   - Note: legacy, new config moved to ESL Config.
 	UsbConfig DeviceprofileApUsbConfigPtrOutput `pulumi:"usbConfig"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapOutput `pulumi:"vars"`
@@ -165,8 +165,7 @@ type deviceprofileApState struct {
 	OrgId      *string              `pulumi:"orgId"`
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough *bool `pulumi:"poePassthrough"`
-	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-	// precedence over switchConfig (deprecated)
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switchConfig (deprecated)
 	PortConfig map[string]DeviceprofileApPortConfig `pulumi:"portConfig"`
 	// Power related configs
 	PwrConfig *DeviceprofileApPwrConfig `pulumi:"pwrConfig"`
@@ -177,8 +176,9 @@ type deviceprofileApState struct {
 	Type *string `pulumi:"type"`
 	// AP Uplink port configuration
 	UplinkPortConfig *DeviceprofileApUplinkPortConfig `pulumi:"uplinkPortConfig"`
-	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-	// moved to ESL Config.
+	// USB AP settings
+	//   - Note: if native imagotag is enabled, BLE will be disabled automatically
+	//   - Note: legacy, new config moved to ESL Config.
 	UsbConfig *DeviceprofileApUsbConfig `pulumi:"usbConfig"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
@@ -211,8 +211,7 @@ type DeviceprofileApState struct {
 	OrgId      pulumi.StringPtrInput
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolPtrInput
-	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-	// precedence over switchConfig (deprecated)
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switchConfig (deprecated)
 	PortConfig DeviceprofileApPortConfigMapInput
 	// Power related configs
 	PwrConfig DeviceprofileApPwrConfigPtrInput
@@ -223,8 +222,9 @@ type DeviceprofileApState struct {
 	Type pulumi.StringPtrInput
 	// AP Uplink port configuration
 	UplinkPortConfig DeviceprofileApUplinkPortConfigPtrInput
-	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-	// moved to ESL Config.
+	// USB AP settings
+	//   - Note: if native imagotag is enabled, BLE will be disabled automatically
+	//   - Note: legacy, new config moved to ESL Config.
 	UsbConfig DeviceprofileApUsbConfigPtrInput
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
@@ -261,8 +261,7 @@ type deviceprofileApArgs struct {
 	OrgId      string               `pulumi:"orgId"`
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough *bool `pulumi:"poePassthrough"`
-	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-	// precedence over switchConfig (deprecated)
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switchConfig (deprecated)
 	PortConfig map[string]DeviceprofileApPortConfig `pulumi:"portConfig"`
 	// Power related configs
 	PwrConfig *DeviceprofileApPwrConfig `pulumi:"pwrConfig"`
@@ -271,8 +270,9 @@ type deviceprofileApArgs struct {
 	SiteId      *string                     `pulumi:"siteId"`
 	// AP Uplink port configuration
 	UplinkPortConfig *DeviceprofileApUplinkPortConfig `pulumi:"uplinkPortConfig"`
-	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-	// moved to ESL Config.
+	// USB AP settings
+	//   - Note: if native imagotag is enabled, BLE will be disabled automatically
+	//   - Note: legacy, new config moved to ESL Config.
 	UsbConfig *DeviceprofileApUsbConfig `pulumi:"usbConfig"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
@@ -306,8 +306,7 @@ type DeviceprofileApArgs struct {
 	OrgId      pulumi.StringInput
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolPtrInput
-	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-	// precedence over switchConfig (deprecated)
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switchConfig (deprecated)
 	PortConfig DeviceprofileApPortConfigMapInput
 	// Power related configs
 	PwrConfig DeviceprofileApPwrConfigPtrInput
@@ -316,8 +315,9 @@ type DeviceprofileApArgs struct {
 	SiteId      pulumi.StringPtrInput
 	// AP Uplink port configuration
 	UplinkPortConfig DeviceprofileApUplinkPortConfigPtrInput
-	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-	// moved to ESL Config.
+	// USB AP settings
+	//   - Note: if native imagotag is enabled, BLE will be disabled automatically
+	//   - Note: legacy, new config moved to ESL Config.
 	UsbConfig DeviceprofileApUsbConfigPtrInput
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
@@ -484,8 +484,7 @@ func (o DeviceprofileApOutput) PoePassthrough() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) pulumi.BoolOutput { return v.PoePassthrough }).(pulumi.BoolOutput)
 }
 
-// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-// precedence over switchConfig (deprecated)
+// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switchConfig (deprecated)
 func (o DeviceprofileApOutput) PortConfig() DeviceprofileApPortConfigMapOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) DeviceprofileApPortConfigMapOutput { return v.PortConfig }).(DeviceprofileApPortConfigMapOutput)
 }
@@ -514,8 +513,9 @@ func (o DeviceprofileApOutput) UplinkPortConfig() DeviceprofileApUplinkPortConfi
 	return o.ApplyT(func(v *DeviceprofileAp) DeviceprofileApUplinkPortConfigPtrOutput { return v.UplinkPortConfig }).(DeviceprofileApUplinkPortConfigPtrOutput)
 }
 
-// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-// moved to ESL Config.
+// USB AP settings
+//   - Note: if native imagotag is enabled, BLE will be disabled automatically
+//   - Note: legacy, new config moved to ESL Config.
 func (o DeviceprofileApOutput) UsbConfig() DeviceprofileApUsbConfigPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) DeviceprofileApUsbConfigPtrOutput { return v.UsbConfig }).(DeviceprofileApUsbConfigPtrOutput)
 }

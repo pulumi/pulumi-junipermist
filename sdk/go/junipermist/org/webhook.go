@@ -53,12 +53,9 @@ type Webhook struct {
 	OrgId          pulumi.StringOutput    `pulumi:"orgId"`
 	// Only if `type`=`http-post`
 	Secret pulumi.StringPtrOutput `pulumi:"secret"`
-	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-	// `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-	// Topics)
+	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
 	SingleEventPerMessage pulumi.BoolPtrOutput `pulumi:"singleEventPerMessage"`
-	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if
-	// the webhook receiver is configured to accept it.
+	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 	SplunkToken pulumi.StringPtrOutput `pulumi:"splunkToken"`
 	// enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
 	Topics pulumi.StringArrayOutput `pulumi:"topics"`
@@ -150,12 +147,9 @@ type webhookState struct {
 	OrgId          *string `pulumi:"orgId"`
 	// Only if `type`=`http-post`
 	Secret *string `pulumi:"secret"`
-	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-	// `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-	// Topics)
+	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
 	SingleEventPerMessage *bool `pulumi:"singleEventPerMessage"`
-	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if
-	// the webhook receiver is configured to accept it.
+	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 	SplunkToken *string `pulumi:"splunkToken"`
 	// enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
 	Topics []string `pulumi:"topics"`
@@ -190,12 +184,9 @@ type WebhookState struct {
 	OrgId          pulumi.StringPtrInput
 	// Only if `type`=`http-post`
 	Secret pulumi.StringPtrInput
-	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-	// `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-	// Topics)
+	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
 	SingleEventPerMessage pulumi.BoolPtrInput
-	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if
-	// the webhook receiver is configured to accept it.
+	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 	SplunkToken pulumi.StringPtrInput
 	// enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
 	Topics pulumi.StringArrayInput
@@ -234,12 +225,9 @@ type webhookArgs struct {
 	OrgId          string  `pulumi:"orgId"`
 	// Only if `type`=`http-post`
 	Secret *string `pulumi:"secret"`
-	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-	// `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-	// Topics)
+	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
 	SingleEventPerMessage *bool `pulumi:"singleEventPerMessage"`
-	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if
-	// the webhook receiver is configured to accept it.
+	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 	SplunkToken *string `pulumi:"splunkToken"`
 	// enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
 	Topics []string `pulumi:"topics"`
@@ -275,12 +263,9 @@ type WebhookArgs struct {
 	OrgId          pulumi.StringInput
 	// Only if `type`=`http-post`
 	Secret pulumi.StringPtrInput
-	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-	// `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-	// Topics)
+	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
 	SingleEventPerMessage pulumi.BoolPtrInput
-	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if
-	// the webhook receiver is configured to accept it.
+	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 	SplunkToken pulumi.StringPtrInput
 	// enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
 	Topics pulumi.StringArrayInput
@@ -437,15 +422,12 @@ func (o WebhookOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringPtrOutput { return v.Secret }).(pulumi.StringPtrOutput)
 }
 
-// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-// `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-// Topics)
+// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
 func (o WebhookOutput) SingleEventPerMessage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.BoolPtrOutput { return v.SingleEventPerMessage }).(pulumi.BoolPtrOutput)
 }
 
-// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if
-// the webhook receiver is configured to accept it.
+// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 func (o WebhookOutput) SplunkToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringPtrOutput { return v.SplunkToken }).(pulumi.StringPtrOutput)
 }

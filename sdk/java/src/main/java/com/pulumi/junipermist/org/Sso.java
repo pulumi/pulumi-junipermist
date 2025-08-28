@@ -78,50 +78,46 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/sso:Sso")
 public class Sso extends com.pulumi.resources.CustomResource {
     /**
-     * a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-     * different from SP-initiated SLO process)
+     * a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
      * 
      */
     @Export(name="customLogoutUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customLogoutUrl;
 
     /**
-     * @return a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-     * different from SP-initiated SLO process)
+     * @return a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
      * 
      */
     public Output<Optional<String>> customLogoutUrl() {
         return Codegen.optional(this.customLogoutUrl);
     }
     /**
-     * default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-     * matched
+     * default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      * 
      */
     @Export(name="defaultRole", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultRole;
 
     /**
-     * @return default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-     * matched
+     * @return default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      * 
      */
     public Output<Optional<String>> defaultRole() {
         return Codegen.optional(this.defaultRole);
     }
     /**
-     * Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
-     * `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
-     * `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
+     * Random string generated during the SSO creation and used to generate the SAML URLs:
+     *   * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
+     *   * Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
      * 
      */
     @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
-     * @return Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
-     * `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
-     * `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
+     * @return Random string generated during the SSO creation and used to generate the SAML URLs:
+     *   * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
+     *   * Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
      * 
      */
     public Output<String> domain() {
@@ -232,22 +228,14 @@ public class Sso extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * custom role attribute parsing scheme. Supported Role Parsing Schemes
-     * &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML
-     * Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the
-     * entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-     * “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+     * custom role attribute parsing scheme. Supported Role Parsing Schemes &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
      * 
      */
     @Export(name="roleAttrExtraction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> roleAttrExtraction;
 
     /**
-     * @return custom role attribute parsing scheme. Supported Role Parsing Schemes
-     * &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML
-     * Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the
-     * entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-     * “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+     * @return custom role attribute parsing scheme. Supported Role Parsing Schemes &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
      * 
      */
     public Output<Optional<String>> roleAttrExtraction() {

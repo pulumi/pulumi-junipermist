@@ -63,15 +63,13 @@ import (
 type Sso struct {
 	pulumi.CustomResourceState
 
-	// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-	// different from SP-initiated SLO process)
+	// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
 	CustomLogoutUrl pulumi.StringPtrOutput `pulumi:"customLogoutUrl"`
-	// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-	// matched
+	// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
 	DefaultRole pulumi.StringPtrOutput `pulumi:"defaultRole"`
-	// Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
-	// `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
-	// `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
+	// Random string generated during the SSO creation and used to generate the SAML URLs:
+	//   * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
+	//   * Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// IDP Cert (used to verify the signed response)
 	IdpCert pulumi.StringOutput `pulumi:"idpCert"`
@@ -88,11 +86,7 @@ type Sso struct {
 	// enum: `email`, `unspecified`
 	NameidFormat pulumi.StringOutput `pulumi:"nameidFormat"`
 	OrgId        pulumi.StringOutput `pulumi:"orgId"`
-	// custom role attribute parsing scheme. Supported Role Parsing Schemes
-	// <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
-	// Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-	// entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-	// “cn”</td></tr></table>
+	// custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
 	RoleAttrExtraction pulumi.StringPtrOutput `pulumi:"roleAttrExtraction"`
 	// name of the attribute in SAML Assertion to extract role from. Default: `Role`
 	RoleAttrFrom pulumi.StringOutput `pulumi:"roleAttrFrom"`
@@ -143,15 +137,13 @@ func GetSso(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Sso resources.
 type ssoState struct {
-	// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-	// different from SP-initiated SLO process)
+	// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
 	CustomLogoutUrl *string `pulumi:"customLogoutUrl"`
-	// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-	// matched
+	// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
 	DefaultRole *string `pulumi:"defaultRole"`
-	// Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
-	// `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
-	// `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
+	// Random string generated during the SSO creation and used to generate the SAML URLs:
+	//   * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
+	//   * Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
 	Domain *string `pulumi:"domain"`
 	// IDP Cert (used to verify the signed response)
 	IdpCert *string `pulumi:"idpCert"`
@@ -168,26 +160,20 @@ type ssoState struct {
 	// enum: `email`, `unspecified`
 	NameidFormat *string `pulumi:"nameidFormat"`
 	OrgId        *string `pulumi:"orgId"`
-	// custom role attribute parsing scheme. Supported Role Parsing Schemes
-	// <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
-	// Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-	// entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-	// “cn”</td></tr></table>
+	// custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
 	RoleAttrExtraction *string `pulumi:"roleAttrExtraction"`
 	// name of the attribute in SAML Assertion to extract role from. Default: `Role`
 	RoleAttrFrom *string `pulumi:"roleAttrFrom"`
 }
 
 type SsoState struct {
-	// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-	// different from SP-initiated SLO process)
+	// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
 	CustomLogoutUrl pulumi.StringPtrInput
-	// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-	// matched
+	// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
 	DefaultRole pulumi.StringPtrInput
-	// Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
-	// `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
-	// `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
+	// Random string generated during the SSO creation and used to generate the SAML URLs:
+	//   * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
+	//   * Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
 	Domain pulumi.StringPtrInput
 	// IDP Cert (used to verify the signed response)
 	IdpCert pulumi.StringPtrInput
@@ -204,11 +190,7 @@ type SsoState struct {
 	// enum: `email`, `unspecified`
 	NameidFormat pulumi.StringPtrInput
 	OrgId        pulumi.StringPtrInput
-	// custom role attribute parsing scheme. Supported Role Parsing Schemes
-	// <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
-	// Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-	// entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-	// “cn”</td></tr></table>
+	// custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
 	RoleAttrExtraction pulumi.StringPtrInput
 	// name of the attribute in SAML Assertion to extract role from. Default: `Role`
 	RoleAttrFrom pulumi.StringPtrInput
@@ -219,11 +201,9 @@ func (SsoState) ElementType() reflect.Type {
 }
 
 type ssoArgs struct {
-	// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-	// different from SP-initiated SLO process)
+	// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
 	CustomLogoutUrl *string `pulumi:"customLogoutUrl"`
-	// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-	// matched
+	// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
 	DefaultRole *string `pulumi:"defaultRole"`
 	// IDP Cert (used to verify the signed response)
 	IdpCert string `pulumi:"idpCert"`
@@ -240,11 +220,7 @@ type ssoArgs struct {
 	// enum: `email`, `unspecified`
 	NameidFormat *string `pulumi:"nameidFormat"`
 	OrgId        string  `pulumi:"orgId"`
-	// custom role attribute parsing scheme. Supported Role Parsing Schemes
-	// <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
-	// Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-	// entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-	// “cn”</td></tr></table>
+	// custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
 	RoleAttrExtraction *string `pulumi:"roleAttrExtraction"`
 	// name of the attribute in SAML Assertion to extract role from. Default: `Role`
 	RoleAttrFrom *string `pulumi:"roleAttrFrom"`
@@ -252,11 +228,9 @@ type ssoArgs struct {
 
 // The set of arguments for constructing a Sso resource.
 type SsoArgs struct {
-	// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-	// different from SP-initiated SLO process)
+	// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
 	CustomLogoutUrl pulumi.StringPtrInput
-	// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-	// matched
+	// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
 	DefaultRole pulumi.StringPtrInput
 	// IDP Cert (used to verify the signed response)
 	IdpCert pulumi.StringInput
@@ -273,11 +247,7 @@ type SsoArgs struct {
 	// enum: `email`, `unspecified`
 	NameidFormat pulumi.StringPtrInput
 	OrgId        pulumi.StringInput
-	// custom role attribute parsing scheme. Supported Role Parsing Schemes
-	// <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
-	// Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-	// entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-	// “cn”</td></tr></table>
+	// custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
 	RoleAttrExtraction pulumi.StringPtrInput
 	// name of the attribute in SAML Assertion to extract role from. Default: `Role`
 	RoleAttrFrom pulumi.StringPtrInput
@@ -370,21 +340,19 @@ func (o SsoOutput) ToSsoOutputWithContext(ctx context.Context) SsoOutput {
 	return o
 }
 
-// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-// different from SP-initiated SLO process)
+// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
 func (o SsoOutput) CustomLogoutUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Sso) pulumi.StringPtrOutput { return v.CustomLogoutUrl }).(pulumi.StringPtrOutput)
 }
 
-// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-// matched
+// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
 func (o SsoOutput) DefaultRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Sso) pulumi.StringPtrOutput { return v.DefaultRole }).(pulumi.StringPtrOutput)
 }
 
-// Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
-// `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
-// `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
+// Random string generated during the SSO creation and used to generate the SAML URLs:
+//   - ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
+//   - Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
 func (o SsoOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sso) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
@@ -428,11 +396,7 @@ func (o SsoOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sso) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// custom role attribute parsing scheme. Supported Role Parsing Schemes
-// <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
-// Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-// entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-// “cn”</td></tr></table>
+// custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
 func (o SsoOutput) RoleAttrExtraction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Sso) pulumi.StringPtrOutput { return v.RoleAttrExtraction }).(pulumi.StringPtrOutput)
 }

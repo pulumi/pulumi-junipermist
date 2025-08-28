@@ -268,16 +268,14 @@ public class DeviceprofileAp extends com.pulumi.resources.CustomResource {
         return this.poePassthrough;
     }
     /**
-     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-     * precedence over switch_config (deprecated)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switch_config (deprecated)
      * 
      */
     @Export(name="portConfig", refs={Map.class,String.class,DeviceprofileApPortConfig.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,DeviceprofileApPortConfig>> portConfig;
 
     /**
-     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-     * precedence over switch_config (deprecated)
+     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switch_config (deprecated)
      * 
      */
     public Output<Optional<Map<String,DeviceprofileApPortConfig>>> portConfig() {
@@ -346,16 +344,18 @@ public class DeviceprofileAp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.uplinkPortConfig);
     }
     /**
-     * USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-     * moved to ESL Config.
+     * USB AP settings
+     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
+     *   - Note: legacy, new config moved to ESL Config.
      * 
      */
     @Export(name="usbConfig", refs={DeviceprofileApUsbConfig.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileApUsbConfig> usbConfig;
 
     /**
-     * @return USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-     * moved to ESL Config.
+     * @return USB AP settings
+     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
+     *   - Note: legacy, new config moved to ESL Config.
      * 
      */
     public Output<Optional<DeviceprofileApUsbConfig>> usbConfig() {

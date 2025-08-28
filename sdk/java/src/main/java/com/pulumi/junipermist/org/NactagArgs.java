@@ -57,18 +57,14 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-     * `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
-     * `user_name`, `usermac_label`
+     * if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
      * 
      */
     @Import(name="match")
     private @Nullable Output<String> match;
 
     /**
-     * @return if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-     * `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
-     * `user_name`, `usermac_label`
+     * @return if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
      * 
      */
     public Optional<Output<String>> match() {
@@ -76,18 +72,22 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
-     * match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-     * set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+     * This field is applicable only when `type`==`match`
+     *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+     *   * `true`: means all values should be matched (i.e., match-all behavior)
+     * 
+     * Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
      * 
      */
     @Import(name="matchAll")
     private @Nullable Output<Boolean> matchAll;
 
     /**
-     * @return This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
-     * match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-     * set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+     * @return This field is applicable only when `type`==`match`
+     *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+     *   * `true`: means all values should be matched (i.e., match-all behavior)
+     * 
+     * Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
      * 
      */
     public Optional<Output<Boolean>> matchAll() {
@@ -124,18 +124,18 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;. It is
-     * the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
-     * that it is allowed to have more than one radius_attrs in the result of a given rule.
+     * If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;.
+     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+     * Note that it is allowed to have more than one radius_attrs in the result of a given rule.
      * 
      */
     @Import(name="radiusAttrs")
     private @Nullable Output<List<String>> radiusAttrs;
 
     /**
-     * @return If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;. It is
-     * the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
-     * that it is allowed to have more than one radius_attrs in the result of a given rule.
+     * @return If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;.
+     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+     * Note that it is allowed to have more than one radius_attrs in the result of a given rule.
      * 
      */
     public Optional<Output<List<String>>> radiusAttrs() {
@@ -158,18 +158,18 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
-     * &#34;radius_vendor_attrs&#34;. It is the responsibility of the user to provide a syntactically correct string, otherwise it may
-     * not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+     * If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radius_vendor_attrs&#34;.
+     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+     * Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
      * 
      */
     @Import(name="radiusVendorAttrs")
     private @Nullable Output<List<String>> radiusVendorAttrs;
 
     /**
-     * @return If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
-     * &#34;radius_vendor_attrs&#34;. It is the responsibility of the user to provide a syntactically correct string, otherwise it may
-     * not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+     * @return If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radius_vendor_attrs&#34;.
+     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+     * Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
      * 
      */
     public Optional<Output<List<String>>> radiusVendorAttrs() {
@@ -192,16 +192,14 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
-     * `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
+     * enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
-     * `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
+     * @return enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
      * 
      */
     public Output<String> type() {
@@ -354,9 +352,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param match if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-         * `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
-         * `user_name`, `usermac_label`
+         * @param match if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
          * 
          * @return builder
          * 
@@ -367,9 +363,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param match if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-         * `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
-         * `user_name`, `usermac_label`
+         * @param match if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
          * 
          * @return builder
          * 
@@ -379,9 +373,11 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param matchAll This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
-         * match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-         * set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+         * @param matchAll This field is applicable only when `type`==`match`
+         *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+         *   * `true`: means all values should be matched (i.e., match-all behavior)
+         * 
+         * Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
          * 
          * @return builder
          * 
@@ -392,9 +388,11 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param matchAll This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
-         * match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-         * set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+         * @param matchAll This field is applicable only when `type`==`match`
+         *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+         *   * `true`: means all values should be matched (i.e., match-all behavior)
+         * 
+         * Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
          * 
          * @return builder
          * 
@@ -443,9 +441,9 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radiusAttrs If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;. It is
-         * the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
-         * that it is allowed to have more than one radius_attrs in the result of a given rule.
+         * @param radiusAttrs If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;.
+         * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+         * Note that it is allowed to have more than one radius_attrs in the result of a given rule.
          * 
          * @return builder
          * 
@@ -456,9 +454,9 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radiusAttrs If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;. It is
-         * the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
-         * that it is allowed to have more than one radius_attrs in the result of a given rule.
+         * @param radiusAttrs If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;.
+         * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+         * Note that it is allowed to have more than one radius_attrs in the result of a given rule.
          * 
          * @return builder
          * 
@@ -468,9 +466,9 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radiusAttrs If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;. It is
-         * the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
-         * that it is allowed to have more than one radius_attrs in the result of a given rule.
+         * @param radiusAttrs If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;.
+         * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+         * Note that it is allowed to have more than one radius_attrs in the result of a given rule.
          * 
          * @return builder
          * 
@@ -501,9 +499,9 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radiusVendorAttrs If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
-         * &#34;radius_vendor_attrs&#34;. It is the responsibility of the user to provide a syntactically correct string, otherwise it may
-         * not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+         * @param radiusVendorAttrs If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radius_vendor_attrs&#34;.
+         * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+         * Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
          * 
          * @return builder
          * 
@@ -514,9 +512,9 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radiusVendorAttrs If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
-         * &#34;radius_vendor_attrs&#34;. It is the responsibility of the user to provide a syntactically correct string, otherwise it may
-         * not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+         * @param radiusVendorAttrs If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radius_vendor_attrs&#34;.
+         * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+         * Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
          * 
          * @return builder
          * 
@@ -526,9 +524,9 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radiusVendorAttrs If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
-         * &#34;radius_vendor_attrs&#34;. It is the responsibility of the user to provide a syntactically correct string, otherwise it may
-         * not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+         * @param radiusVendorAttrs If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radius_vendor_attrs&#34;.
+         * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+         * Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
          * 
          * @return builder
          * 
@@ -559,8 +557,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
-         * `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
+         * @param type enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
          * 
          * @return builder
          * 
@@ -571,8 +568,7 @@ public final class NactagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
-         * `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
+         * @param type enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
          * 
          * @return builder
          * 

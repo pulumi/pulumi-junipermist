@@ -38,8 +38,10 @@ type Service struct {
 	AppCategories pulumi.StringArrayOutput `pulumi:"appCategories"`
 	// When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
 	AppSubcategories pulumi.StringArrayOutput `pulumi:"appSubcategories"`
-	// When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-	// /insight/top_app_by-bytes?wired=true
+	// When `type`==`apps`, list of applications are available through:
+	//   * List Applications
+	//   * List Gateway Applications
+	//   * /insight/top_app_by-bytes?wired=true
 	Apps pulumi.StringArrayOutput `pulumi:"apps"`
 	// 0 means unlimited, value from 0 to 107374182
 	ClientLimitDown pulumi.IntPtrOutput `pulumi:"clientLimitDown"`
@@ -114,8 +116,10 @@ type serviceState struct {
 	AppCategories []string `pulumi:"appCategories"`
 	// When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
 	AppSubcategories []string `pulumi:"appSubcategories"`
-	// When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-	// /insight/top_app_by-bytes?wired=true
+	// When `type`==`apps`, list of applications are available through:
+	//   * List Applications
+	//   * List Gateway Applications
+	//   * /insight/top_app_by-bytes?wired=true
 	Apps []string `pulumi:"apps"`
 	// 0 means unlimited, value from 0 to 107374182
 	ClientLimitDown *int `pulumi:"clientLimitDown"`
@@ -158,8 +162,10 @@ type ServiceState struct {
 	AppCategories pulumi.StringArrayInput
 	// When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
 	AppSubcategories pulumi.StringArrayInput
-	// When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-	// /insight/top_app_by-bytes?wired=true
+	// When `type`==`apps`, list of applications are available through:
+	//   * List Applications
+	//   * List Gateway Applications
+	//   * /insight/top_app_by-bytes?wired=true
 	Apps pulumi.StringArrayInput
 	// 0 means unlimited, value from 0 to 107374182
 	ClientLimitDown pulumi.IntPtrInput
@@ -206,8 +212,10 @@ type serviceArgs struct {
 	AppCategories []string `pulumi:"appCategories"`
 	// When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
 	AppSubcategories []string `pulumi:"appSubcategories"`
-	// When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-	// /insight/top_app_by-bytes?wired=true
+	// When `type`==`apps`, list of applications are available through:
+	//   * List Applications
+	//   * List Gateway Applications
+	//   * /insight/top_app_by-bytes?wired=true
 	Apps []string `pulumi:"apps"`
 	// 0 means unlimited, value from 0 to 107374182
 	ClientLimitDown *int `pulumi:"clientLimitDown"`
@@ -251,8 +259,10 @@ type ServiceArgs struct {
 	AppCategories pulumi.StringArrayInput
 	// When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
 	AppSubcategories pulumi.StringArrayInput
-	// When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-	// /insight/top_app_by-bytes?wired=true
+	// When `type`==`apps`, list of applications are available through:
+	//   * List Applications
+	//   * List Gateway Applications
+	//   * /insight/top_app_by-bytes?wired=true
 	Apps pulumi.StringArrayInput
 	// 0 means unlimited, value from 0 to 107374182
 	ClientLimitDown pulumi.IntPtrInput
@@ -390,8 +400,10 @@ func (o ServiceOutput) AppSubcategories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.AppSubcategories }).(pulumi.StringArrayOutput)
 }
 
-// When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-// /insight/top_app_by-bytes?wired=true
+// When `type`==`apps`, list of applications are available through:
+//   - List Applications
+//   - List Gateway Applications
+//   - /insight/top_app_by-bytes?wired=true
 func (o ServiceOutput) Apps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.Apps }).(pulumi.StringArrayOutput)
 }

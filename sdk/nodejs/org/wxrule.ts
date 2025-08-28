@@ -68,38 +68,38 @@ export class Wxrule extends pulumi.CustomResource {
     /**
      * type of action, allow / block. enum: `allow`, `block`
      */
-    public readonly action!: pulumi.Output<string>;
-    public readonly applyTags!: pulumi.Output<string[] | undefined>;
+    declare public readonly action: pulumi.Output<string>;
+    declare public readonly applyTags: pulumi.Output<string[] | undefined>;
     /**
      * Blocked apps (always blocking, ignoring action), the key of Get Application List
      */
-    public readonly blockedApps!: pulumi.Output<string[] | undefined>;
+    declare public readonly blockedApps: pulumi.Output<string[] | undefined>;
     /**
      * List of WxTag UUID to indicate these tags are allowed access
      */
-    public readonly dstAllowWxtags!: pulumi.Output<string[]>;
+    declare public readonly dstAllowWxtags: pulumi.Output<string[]>;
     /**
      * List of WxTag UUID to indicate these tags are blocked access
      */
-    public readonly dstDenyWxtags!: pulumi.Output<string[]>;
+    declare public readonly dstDenyWxtags: pulumi.Output<string[]>;
     /**
      * List of WxTag UUID
      */
-    public readonly dstWxtags!: pulumi.Output<string[]>;
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly dstWxtags: pulumi.Output<string[]>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
      */
-    public readonly order!: pulumi.Output<number>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly order: pulumi.Output<number>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * List of WxTag UUID to determine if this rule would match
      */
-    public readonly srcWxtags!: pulumi.Output<string[]>;
+    declare public readonly srcWxtags: pulumi.Output<string[]>;
     /**
      * Only for Org Level WxRule
      */
-    public readonly templateId!: pulumi.Output<string>;
+    declare public readonly templateId: pulumi.Output<string>;
 
     /**
      * Create a Wxrule resource with the given unique name, arguments, and options.
@@ -114,42 +114,42 @@ export class Wxrule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WxruleState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["applyTags"] = state ? state.applyTags : undefined;
-            resourceInputs["blockedApps"] = state ? state.blockedApps : undefined;
-            resourceInputs["dstAllowWxtags"] = state ? state.dstAllowWxtags : undefined;
-            resourceInputs["dstDenyWxtags"] = state ? state.dstDenyWxtags : undefined;
-            resourceInputs["dstWxtags"] = state ? state.dstWxtags : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["order"] = state ? state.order : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["srcWxtags"] = state ? state.srcWxtags : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["applyTags"] = state?.applyTags;
+            resourceInputs["blockedApps"] = state?.blockedApps;
+            resourceInputs["dstAllowWxtags"] = state?.dstAllowWxtags;
+            resourceInputs["dstDenyWxtags"] = state?.dstDenyWxtags;
+            resourceInputs["dstWxtags"] = state?.dstWxtags;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["order"] = state?.order;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["srcWxtags"] = state?.srcWxtags;
+            resourceInputs["templateId"] = state?.templateId;
         } else {
             const args = argsOrState as WxruleArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.order === undefined) && !opts.urn) {
+            if (args?.order === undefined && !opts.urn) {
                 throw new Error("Missing required property 'order'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.templateId === undefined) && !opts.urn) {
+            if (args?.templateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateId'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["applyTags"] = args ? args.applyTags : undefined;
-            resourceInputs["blockedApps"] = args ? args.blockedApps : undefined;
-            resourceInputs["dstAllowWxtags"] = args ? args.dstAllowWxtags : undefined;
-            resourceInputs["dstDenyWxtags"] = args ? args.dstDenyWxtags : undefined;
-            resourceInputs["dstWxtags"] = args ? args.dstWxtags : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["order"] = args ? args.order : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["srcWxtags"] = args ? args.srcWxtags : undefined;
-            resourceInputs["templateId"] = args ? args.templateId : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["applyTags"] = args?.applyTags;
+            resourceInputs["blockedApps"] = args?.blockedApps;
+            resourceInputs["dstAllowWxtags"] = args?.dstAllowWxtags;
+            resourceInputs["dstDenyWxtags"] = args?.dstDenyWxtags;
+            resourceInputs["dstWxtags"] = args?.dstWxtags;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["order"] = args?.order;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["srcWxtags"] = args?.srcWxtags;
+            resourceInputs["templateId"] = args?.templateId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Wxrule.__pulumiType, name, resourceInputs, opts);

@@ -106,16 +106,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-     * `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+     * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
      * 
      */
     @Import(name="disableAutoConfig")
     private @Nullable Output<Boolean> disableAutoConfig;
 
     /**
-     * @return This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-     * `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+     * @return This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
      * 
      */
     public Optional<Output<Boolean>> disableAutoConfig() {
@@ -198,16 +196,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
-     * &#34;ge-0/0/0-10&#34;)
+     * Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
      * 
      */
     @Import(name="localPortConfig")
     private @Nullable Output<Map<String,SwitchLocalPortConfigArgs>> localPortConfig;
 
     /**
-     * @return Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
-     * &#34;ge-0/0/0-10&#34;)
+     * @return Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
      * 
      */
     public Optional<Output<Map<String,SwitchLocalPortConfigArgs>>> localPortConfig() {
@@ -215,16 +211,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-     * the adopted switch/gateway to be managed/configured by Mist.
+     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
      * 
      */
     @Import(name="managed")
     private @Nullable Output<Boolean> managed;
 
     /**
-     * @return An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-     * the adopted switch/gateway to be managed/configured by Mist.
+     * @return An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
      * 
      */
     public Optional<Output<Boolean>> managed() {
@@ -306,16 +300,18 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-     * re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+     * Switch OOB IP Config:
+     *   - If HA configuration: key parameter will be nodeX (eg: node1)
+     *   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
      * 
      */
     @Import(name="oobIpConfig")
     private @Nullable Output<SwitchOobIpConfigArgs> oobIpConfig;
 
     /**
-     * @return Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-     * re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+     * @return Switch OOB IP Config:
+     *   - If HA configuration: key parameter will be nodeX (eg: node1)
+     *   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
      * 
      */
     public Optional<Output<SwitchOobIpConfigArgs>> oobIpConfig() {
@@ -375,16 +371,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the
-     * port_usage without having to create a new port_usage.
+     * Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the port_usage without having to create a new port_usage.
      * 
      */
     @Import(name="portConfigOverwrite")
     private @Nullable Output<Map<String,SwitchPortConfigOverwriteArgs>> portConfigOverwrite;
 
     /**
-     * @return Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the
-     * port_usage without having to create a new port_usage.
+     * @return Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the port_usage without having to create a new port_usage.
      * 
      */
     public Optional<Output<Map<String,SwitchPortConfigOverwriteArgs>>> portConfigOverwrite() {
@@ -392,18 +386,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 mirroring ports is allowed
+     * Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      * 
      */
     @Import(name="portMirroring")
     private @Nullable Output<Map<String,SwitchPortMirroringArgs>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 mirroring ports is allowed
+     * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      * 
      */
     public Optional<Output<Map<String,SwitchPortMirroringArgs>>> portMirroring() {
@@ -777,8 +767,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableAutoConfig This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-         * `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+         * @param disableAutoConfig This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
          * 
          * @return builder
          * 
@@ -789,8 +778,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableAutoConfig This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-         * `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+         * @param disableAutoConfig This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
          * 
          * @return builder
          * 
@@ -925,8 +913,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localPortConfig Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
-         * &#34;ge-0/0/0-10&#34;)
+         * @param localPortConfig Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
          * 
          * @return builder
          * 
@@ -937,8 +924,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localPortConfig Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
-         * &#34;ge-0/0/0-10&#34;)
+         * @param localPortConfig Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
          * 
          * @return builder
          * 
@@ -948,8 +934,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managed An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-         * the adopted switch/gateway to be managed/configured by Mist.
+         * @param managed An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
          * 
          * @return builder
          * 
@@ -960,8 +945,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managed An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-         * the adopted switch/gateway to be managed/configured by Mist.
+         * @param managed An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
          * 
          * @return builder
          * 
@@ -1083,8 +1067,9 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oobIpConfig Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-         * re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+         * @param oobIpConfig Switch OOB IP Config:
+         *   - If HA configuration: key parameter will be nodeX (eg: node1)
+         *   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
          * 
          * @return builder
          * 
@@ -1095,8 +1080,9 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oobIpConfig Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-         * re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+         * @param oobIpConfig Switch OOB IP Config:
+         *   - If HA configuration: key parameter will be nodeX (eg: node1)
+         *   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
          * 
          * @return builder
          * 
@@ -1178,8 +1164,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portConfigOverwrite Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the
-         * port_usage without having to create a new port_usage.
+         * @param portConfigOverwrite Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the port_usage without having to create a new port_usage.
          * 
          * @return builder
          * 
@@ -1190,8 +1175,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portConfigOverwrite Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the
-         * port_usage without having to create a new port_usage.
+         * @param portConfigOverwrite Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the port_usage without having to create a new port_usage.
          * 
          * @return builder
          * 
@@ -1201,9 +1185,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-         * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-         * maximum 4 mirroring ports is allowed
+         * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
          * 
          * @return builder
          * 
@@ -1214,9 +1196,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-         * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-         * maximum 4 mirroring ports is allowed
+         * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
          * 
          * @return builder
          * 

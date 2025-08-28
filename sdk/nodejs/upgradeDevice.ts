@@ -64,57 +64,57 @@ export class UpgradeDevice extends pulumi.CustomResource {
         return obj['__pulumiType'] === UpgradeDevice.__pulumiType;
     }
 
-    public readonly deviceId!: pulumi.Output<string>;
+    declare public readonly deviceId: pulumi.Output<string>;
     /**
      * current device firmware version
      */
-    public /*out*/ readonly deviceVersion!: pulumi.Output<string>;
-    public /*out*/ readonly fwupdate!: pulumi.Output<outputs.UpgradeDeviceFwupdate>;
+    declare public /*out*/ readonly deviceVersion: pulumi.Output<string>;
+    declare public /*out*/ readonly fwupdate: pulumi.Output<outputs.UpgradeDeviceFwupdate>;
     /**
      * For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
      */
-    public readonly reboot!: pulumi.Output<boolean>;
+    declare public readonly reboot: pulumi.Output<boolean>;
     /**
      * For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `startTime`
      */
-    public readonly rebootAt!: pulumi.Output<number | undefined>;
-    public readonly siteId!: pulumi.Output<string>;
+    declare public readonly rebootAt: pulumi.Output<number | undefined>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * For Junos devices only. Perform recovery snapshot after device is rebooted
      */
-    public readonly snapshot!: pulumi.Output<boolean>;
+    declare public readonly snapshot: pulumi.Output<boolean>;
     /**
      * Firmware download start time in epoch
      */
-    public readonly startTime!: pulumi.Output<number | undefined>;
+    declare public readonly startTime: pulumi.Output<number | undefined>;
     /**
      * enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`
      */
-    public readonly syncUpgrade!: pulumi.Output<boolean>;
+    declare public readonly syncUpgrade: pulumi.Output<boolean>;
     /**
      * if set to `syncUpgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
      */
-    public readonly syncUpgradeRefreshInterval!: pulumi.Output<number>;
+    declare public readonly syncUpgradeRefreshInterval: pulumi.Output<number>;
     /**
      * if set to `syncUpgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
      */
-    public readonly syncUpgradeStartTimeout!: pulumi.Output<number>;
+    declare public readonly syncUpgradeStartTimeout: pulumi.Output<number>;
     /**
      * if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
      */
-    public readonly syncUpgradeTimeout!: pulumi.Output<number>;
+    declare public readonly syncUpgradeTimeout: pulumi.Output<number>;
     /**
      * firmware version to deploy to the device. Use the `junipermist.device.getVersions` datasource to get the list of available firmware versions
      */
-    public readonly targetVersion!: pulumi.Output<string>;
+    declare public readonly targetVersion: pulumi.Output<string>;
     /**
      * Epoch (seconds)
      */
-    public /*out*/ readonly timestamp!: pulumi.Output<number>;
+    declare public /*out*/ readonly timestamp: pulumi.Output<number>;
 
     /**
      * Create a UpgradeDevice resource with the given unique name, arguments, and options.
@@ -129,43 +129,43 @@ export class UpgradeDevice extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UpgradeDeviceState | undefined;
-            resourceInputs["deviceId"] = state ? state.deviceId : undefined;
-            resourceInputs["deviceVersion"] = state ? state.deviceVersion : undefined;
-            resourceInputs["fwupdate"] = state ? state.fwupdate : undefined;
-            resourceInputs["reboot"] = state ? state.reboot : undefined;
-            resourceInputs["rebootAt"] = state ? state.rebootAt : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["snapshot"] = state ? state.snapshot : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["syncUpgrade"] = state ? state.syncUpgrade : undefined;
-            resourceInputs["syncUpgradeRefreshInterval"] = state ? state.syncUpgradeRefreshInterval : undefined;
-            resourceInputs["syncUpgradeStartTimeout"] = state ? state.syncUpgradeStartTimeout : undefined;
-            resourceInputs["syncUpgradeTimeout"] = state ? state.syncUpgradeTimeout : undefined;
-            resourceInputs["targetVersion"] = state ? state.targetVersion : undefined;
-            resourceInputs["timestamp"] = state ? state.timestamp : undefined;
+            resourceInputs["deviceId"] = state?.deviceId;
+            resourceInputs["deviceVersion"] = state?.deviceVersion;
+            resourceInputs["fwupdate"] = state?.fwupdate;
+            resourceInputs["reboot"] = state?.reboot;
+            resourceInputs["rebootAt"] = state?.rebootAt;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["snapshot"] = state?.snapshot;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["syncUpgrade"] = state?.syncUpgrade;
+            resourceInputs["syncUpgradeRefreshInterval"] = state?.syncUpgradeRefreshInterval;
+            resourceInputs["syncUpgradeStartTimeout"] = state?.syncUpgradeStartTimeout;
+            resourceInputs["syncUpgradeTimeout"] = state?.syncUpgradeTimeout;
+            resourceInputs["targetVersion"] = state?.targetVersion;
+            resourceInputs["timestamp"] = state?.timestamp;
         } else {
             const args = argsOrState as UpgradeDeviceArgs | undefined;
-            if ((!args || args.deviceId === undefined) && !opts.urn) {
+            if (args?.deviceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deviceId'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            if ((!args || args.targetVersion === undefined) && !opts.urn) {
+            if (args?.targetVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetVersion'");
             }
-            resourceInputs["deviceId"] = args ? args.deviceId : undefined;
-            resourceInputs["reboot"] = args ? args.reboot : undefined;
-            resourceInputs["rebootAt"] = args ? args.rebootAt : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["snapshot"] = args ? args.snapshot : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
-            resourceInputs["syncUpgrade"] = args ? args.syncUpgrade : undefined;
-            resourceInputs["syncUpgradeRefreshInterval"] = args ? args.syncUpgradeRefreshInterval : undefined;
-            resourceInputs["syncUpgradeStartTimeout"] = args ? args.syncUpgradeStartTimeout : undefined;
-            resourceInputs["syncUpgradeTimeout"] = args ? args.syncUpgradeTimeout : undefined;
-            resourceInputs["targetVersion"] = args ? args.targetVersion : undefined;
+            resourceInputs["deviceId"] = args?.deviceId;
+            resourceInputs["reboot"] = args?.reboot;
+            resourceInputs["rebootAt"] = args?.rebootAt;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["snapshot"] = args?.snapshot;
+            resourceInputs["startTime"] = args?.startTime;
+            resourceInputs["syncUpgrade"] = args?.syncUpgrade;
+            resourceInputs["syncUpgradeRefreshInterval"] = args?.syncUpgradeRefreshInterval;
+            resourceInputs["syncUpgradeStartTimeout"] = args?.syncUpgradeStartTimeout;
+            resourceInputs["syncUpgradeTimeout"] = args?.syncUpgradeTimeout;
+            resourceInputs["targetVersion"] = args?.targetVersion;
             resourceInputs["deviceVersion"] = undefined /*out*/;
             resourceInputs["fwupdate"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

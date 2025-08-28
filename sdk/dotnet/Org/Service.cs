@@ -50,8 +50,10 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableArray<string>> AppSubcategories { get; private set; } = null!;
 
         /// <summary>
-        /// When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-        /// /insight/top_app_by-bytes?wired=true
+        /// When `type`==`apps`, list of applications are available through:
+        ///   * List Applications
+        ///   * List Gateway Applications
+        ///   * /insight/top_app_by-bytes?wired=true
         /// </summary>
         [Output("apps")]
         public Output<ImmutableArray<string>> Apps { get; private set; } = null!;
@@ -239,8 +241,10 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _apps;
 
         /// <summary>
-        /// When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-        /// /insight/top_app_by-bytes?wired=true
+        /// When `type`==`apps`, list of applications are available through:
+        ///   * List Applications
+        ///   * List Gateway Applications
+        ///   * /insight/top_app_by-bytes?wired=true
         /// </summary>
         public InputList<string> Apps
         {
@@ -410,8 +414,10 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _apps;
 
         /// <summary>
-        /// When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-        /// /insight/top_app_by-bytes?wired=true
+        /// When `type`==`apps`, list of applications are available through:
+        ///   * List Applications
+        ///   * List Gateway Applications
+        ///   * /insight/top_app_by-bytes?wired=true
         /// </summary>
         public InputList<string> Apps
         {

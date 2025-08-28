@@ -69,9 +69,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool> AcctImmediateUpdate { get; private set; } = null!;
 
         /// <summary>
-        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
-        /// from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended
-        /// when enabled
+        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
         /// </summary>
         [Output("acctInterimInterval")]
         public Output<int> AcctInterimInterval { get; private set; } = null!;
@@ -149,8 +147,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<string> AuthServerSelection { get; private set; } = null!;
 
         /// <summary>
-        /// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
-        /// is treated as primary
+        /// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
         /// </summary>
         [Output("authServers")]
         public Output<ImmutableArray<Outputs.WlanAuthServer>> AuthServers { get; private set; } = null!;
@@ -168,17 +165,13 @@ namespace Pulumi.JuniperMist.Site
         public Output<string> AuthServersNasIp { get; private set; } = null!;
 
         /// <summary>
-        /// Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set
-        /// to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default
-        /// value to 3.
+        /// Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
         /// </summary>
         [Output("authServersRetries")]
         public Output<int?> AuthServersRetries { get; private set; } = null!;
 
         /// <summary>
-        /// Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’
-        /// and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
-        /// setting auth_servers_timeout and is set to default value of 10.
+        /// Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting auth_servers_timeout and is set to default value of 10.
         /// </summary>
         [Output("authServersTimeout")]
         public Output<int?> AuthServersTimeout { get; private set; } = null!;
@@ -214,8 +207,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.WlanBonjour?> Bonjour { get; private set; } = null!;
 
         /// <summary>
-        /// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
-        /// https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+        /// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
         /// </summary>
         [Output("ciscoCwa")]
         public Output<Outputs.WlanCiscoCwa> CiscoCwa { get; private set; } = null!;
@@ -281,8 +273,10 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool?> DisableV2RoamNotify { get; private set; } = null!;
 
         /// <summary>
-        /// When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
-        /// reach default gateway
+        /// When any of the following is true, this WLAN will be disabled
+        ///    * cannot get IP
+        ///    * cannot obtain default gateway
+        ///    * cannot reach default gateway
         /// </summary>
         [Output("disableWhenGatewayUnreachable")]
         public Output<bool?> DisableWhenGatewayUnreachable { get; private set; } = null!;
@@ -306,12 +300,15 @@ namespace Pulumi.JuniperMist.Site
         public Output<int> Dtim { get; private set; } = null!;
 
         /// <summary>
-        /// For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
-        /// context (wlan/site/user/...) thus following configurations are assumed (currently) * PSK will come from RADIUS server *
-        /// AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
-        /// Caller-Station-ID * `auth_servers` is required * PSK will come from cloud WLC if source is cloud_psks * default_psk will
-        /// be used if cloud WLC is not available * `multi_psk_only` and `psk` is ignored * `pairwise` can only be wpa2-ccmp (for
-        /// now, wpa3 support on the roadmap)
+        /// For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+        ///   * PSK will come from RADIUS server
+        ///   * AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed)
+        ///   * AP sends BSSID:SSID as Caller-Station-ID
+        ///   * `auth_servers` is required
+        ///   * PSK will come from cloud WLC if source is cloud_psks
+        ///   * default_psk will be used if cloud WLC is not available
+        ///   * `multi_psk_only` and `psk` is ignored
+        ///   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
         /// </summary>
         [Output("dynamicPsk")]
         public Output<Outputs.WlanDynamicPsk?> DynamicPsk { get; private set; } = null!;
@@ -329,15 +326,13 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool?> EnableLocalKeycaching { get; private set; } = null!;
 
         /// <summary>
-        /// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-        /// client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
+        /// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
         /// </summary>
         [Output("enableWirelessBridging")]
         public Output<bool?> EnableWirelessBridging { get; private set; } = null!;
 
         /// <summary>
-        /// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
-        /// packets to be forwarded to wireless
+        /// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response packets to be forwarded to wireless
         /// </summary>
         [Output("enableWirelessBridgingDhcpTracking")]
         public Output<bool?> EnableWirelessBridgingDhcpTracking { get; private set; } = null!;
@@ -349,8 +344,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
-        /// ‘auth_server_retries’ .
+        /// If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
         /// </summary>
         [Output("fastDot1xTimers")]
         public Output<bool?> FastDot1xTimers { get; private set; } = null!;
@@ -395,8 +389,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool?> L2Isolation { get; private set; } = null!;
 
         /// <summary>
-        /// Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
-        /// Enabling this will cause problem for iOS devices.
+        /// Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
         /// </summary>
         [Output("legacyOverds")]
         public Output<bool?> LegacyOverds { get; private set; } = null!;
@@ -567,8 +560,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableArray<string>> VlanIds { get; private set; } = null!;
 
         /// <summary>
-        /// Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
-        /// deterministic algorithm
+        /// Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
         /// </summary>
         [Output("vlanPooling")]
         public Output<bool> VlanPooling { get; private set; } = null!;
@@ -663,9 +655,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? AcctImmediateUpdate { get; set; }
 
         /// <summary>
-        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
-        /// from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended
-        /// when enabled
+        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
         /// </summary>
         [Input("acctInterimInterval")]
         public Input<int>? AcctInterimInterval { get; set; }
@@ -758,8 +748,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<Inputs.WlanAuthServerArgs>? _authServers;
 
         /// <summary>
-        /// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
-        /// is treated as primary
+        /// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
         /// </summary>
         public InputList<Inputs.WlanAuthServerArgs> AuthServers
         {
@@ -780,17 +769,13 @@ namespace Pulumi.JuniperMist.Site
         public Input<string>? AuthServersNasIp { get; set; }
 
         /// <summary>
-        /// Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set
-        /// to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default
-        /// value to 3.
+        /// Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
         /// </summary>
         [Input("authServersRetries")]
         public Input<int>? AuthServersRetries { get; set; }
 
         /// <summary>
-        /// Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’
-        /// and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
-        /// setting auth_servers_timeout and is set to default value of 10.
+        /// Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting auth_servers_timeout and is set to default value of 10.
         /// </summary>
         [Input("authServersTimeout")]
         public Input<int>? AuthServersTimeout { get; set; }
@@ -832,8 +817,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.WlanBonjourArgs>? Bonjour { get; set; }
 
         /// <summary>
-        /// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
-        /// https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+        /// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
         /// </summary>
         [Input("ciscoCwa")]
         public Input<Inputs.WlanCiscoCwaArgs>? CiscoCwa { get; set; }
@@ -905,8 +889,10 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? DisableV2RoamNotify { get; set; }
 
         /// <summary>
-        /// When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
-        /// reach default gateway
+        /// When any of the following is true, this WLAN will be disabled
+        ///    * cannot get IP
+        ///    * cannot obtain default gateway
+        ///    * cannot reach default gateway
         /// </summary>
         [Input("disableWhenGatewayUnreachable")]
         public Input<bool>? DisableWhenGatewayUnreachable { get; set; }
@@ -930,12 +916,15 @@ namespace Pulumi.JuniperMist.Site
         public Input<int>? Dtim { get; set; }
 
         /// <summary>
-        /// For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
-        /// context (wlan/site/user/...) thus following configurations are assumed (currently) * PSK will come from RADIUS server *
-        /// AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
-        /// Caller-Station-ID * `auth_servers` is required * PSK will come from cloud WLC if source is cloud_psks * default_psk will
-        /// be used if cloud WLC is not available * `multi_psk_only` and `psk` is ignored * `pairwise` can only be wpa2-ccmp (for
-        /// now, wpa3 support on the roadmap)
+        /// For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+        ///   * PSK will come from RADIUS server
+        ///   * AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed)
+        ///   * AP sends BSSID:SSID as Caller-Station-ID
+        ///   * `auth_servers` is required
+        ///   * PSK will come from cloud WLC if source is cloud_psks
+        ///   * default_psk will be used if cloud WLC is not available
+        ///   * `multi_psk_only` and `psk` is ignored
+        ///   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
         /// </summary>
         [Input("dynamicPsk")]
         public Input<Inputs.WlanDynamicPskArgs>? DynamicPsk { get; set; }
@@ -953,15 +942,13 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? EnableLocalKeycaching { get; set; }
 
         /// <summary>
-        /// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-        /// client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
+        /// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
         /// </summary>
         [Input("enableWirelessBridging")]
         public Input<bool>? EnableWirelessBridging { get; set; }
 
         /// <summary>
-        /// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
-        /// packets to be forwarded to wireless
+        /// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response packets to be forwarded to wireless
         /// </summary>
         [Input("enableWirelessBridgingDhcpTracking")]
         public Input<bool>? EnableWirelessBridgingDhcpTracking { get; set; }
@@ -973,8 +960,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
-        /// ‘auth_server_retries’ .
+        /// If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
         /// </summary>
         [Input("fastDot1xTimers")]
         public Input<bool>? FastDot1xTimers { get; set; }
@@ -1019,8 +1005,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? L2Isolation { get; set; }
 
         /// <summary>
-        /// Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
-        /// Enabling this will cause problem for iOS devices.
+        /// Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
         /// </summary>
         [Input("legacyOverds")]
         public Input<bool>? LegacyOverds { get; set; }
@@ -1212,8 +1197,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
-        /// deterministic algorithm
+        /// Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
         /// </summary>
         [Input("vlanPooling")]
         public Input<bool>? VlanPooling { get; set; }
@@ -1275,9 +1259,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? AcctImmediateUpdate { get; set; }
 
         /// <summary>
-        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
-        /// from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended
-        /// when enabled
+        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
         /// </summary>
         [Input("acctInterimInterval")]
         public Input<int>? AcctInterimInterval { get; set; }
@@ -1370,8 +1352,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<Inputs.WlanAuthServerGetArgs>? _authServers;
 
         /// <summary>
-        /// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
-        /// is treated as primary
+        /// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
         /// </summary>
         public InputList<Inputs.WlanAuthServerGetArgs> AuthServers
         {
@@ -1392,17 +1373,13 @@ namespace Pulumi.JuniperMist.Site
         public Input<string>? AuthServersNasIp { get; set; }
 
         /// <summary>
-        /// Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set
-        /// to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default
-        /// value to 3.
+        /// Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
         /// </summary>
         [Input("authServersRetries")]
         public Input<int>? AuthServersRetries { get; set; }
 
         /// <summary>
-        /// Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’
-        /// and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
-        /// setting auth_servers_timeout and is set to default value of 10.
+        /// Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting auth_servers_timeout and is set to default value of 10.
         /// </summary>
         [Input("authServersTimeout")]
         public Input<int>? AuthServersTimeout { get; set; }
@@ -1444,8 +1421,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.WlanBonjourGetArgs>? Bonjour { get; set; }
 
         /// <summary>
-        /// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
-        /// https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+        /// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
         /// </summary>
         [Input("ciscoCwa")]
         public Input<Inputs.WlanCiscoCwaGetArgs>? CiscoCwa { get; set; }
@@ -1517,8 +1493,10 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? DisableV2RoamNotify { get; set; }
 
         /// <summary>
-        /// When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
-        /// reach default gateway
+        /// When any of the following is true, this WLAN will be disabled
+        ///    * cannot get IP
+        ///    * cannot obtain default gateway
+        ///    * cannot reach default gateway
         /// </summary>
         [Input("disableWhenGatewayUnreachable")]
         public Input<bool>? DisableWhenGatewayUnreachable { get; set; }
@@ -1542,12 +1520,15 @@ namespace Pulumi.JuniperMist.Site
         public Input<int>? Dtim { get; set; }
 
         /// <summary>
-        /// For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
-        /// context (wlan/site/user/...) thus following configurations are assumed (currently) * PSK will come from RADIUS server *
-        /// AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed) * AP sends BSSID:SSID as
-        /// Caller-Station-ID * `auth_servers` is required * PSK will come from cloud WLC if source is cloud_psks * default_psk will
-        /// be used if cloud WLC is not available * `multi_psk_only` and `psk` is ignored * `pairwise` can only be wpa2-ccmp (for
-        /// now, wpa3 support on the roadmap)
+        /// For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+        ///   * PSK will come from RADIUS server
+        ///   * AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed)
+        ///   * AP sends BSSID:SSID as Caller-Station-ID
+        ///   * `auth_servers` is required
+        ///   * PSK will come from cloud WLC if source is cloud_psks
+        ///   * default_psk will be used if cloud WLC is not available
+        ///   * `multi_psk_only` and `psk` is ignored
+        ///   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
         /// </summary>
         [Input("dynamicPsk")]
         public Input<Inputs.WlanDynamicPskGetArgs>? DynamicPsk { get; set; }
@@ -1565,15 +1546,13 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? EnableLocalKeycaching { get; set; }
 
         /// <summary>
-        /// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-        /// client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
+        /// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
         /// </summary>
         [Input("enableWirelessBridging")]
         public Input<bool>? EnableWirelessBridging { get; set; }
 
         /// <summary>
-        /// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response
-        /// packets to be forwarded to wireless
+        /// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response packets to be forwarded to wireless
         /// </summary>
         [Input("enableWirelessBridgingDhcpTracking")]
         public Input<bool>? EnableWirelessBridgingDhcpTracking { get; set; }
@@ -1585,8 +1564,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
-        /// ‘auth_server_retries’ .
+        /// If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
         /// </summary>
         [Input("fastDot1xTimers")]
         public Input<bool>? FastDot1xTimers { get; set; }
@@ -1631,8 +1609,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? L2Isolation { get; set; }
 
         /// <summary>
-        /// Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
-        /// Enabling this will cause problem for iOS devices.
+        /// Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
         /// </summary>
         [Input("legacyOverds")]
         public Input<bool>? LegacyOverds { get; set; }
@@ -1845,8 +1822,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
-        /// deterministic algorithm
+        /// Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
         /// </summary>
         [Input("vlanPooling")]
         public Input<bool>? VlanPooling { get; set; }

@@ -131,16 +131,14 @@ public class Gatewaytemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.extraRoutes);
     }
     /**
-     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g.
-     * &#34;{{myvar}}&#34;)
+     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
      * 
      */
     @Export(name="extraRoutes6", refs={Map.class,String.class,GatewaytemplateExtraRoutes6.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,GatewaytemplateExtraRoutes6>> extraRoutes6;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g.
-     * &#34;{{myvar}}&#34;)
+     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
      * 
      */
     public Output<Optional<Map<String,GatewaytemplateExtraRoutes6>>> extraRoutes6() {
@@ -241,16 +239,14 @@ public class Gatewaytemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.pathPreferences);
     }
     /**
-     * Property key is the Port Name (i.e. &#34;ge-0/0/0&#34;), the Ports Range (i.e. &#34;ge-0/0/0-10&#34;), the List of Ports (i.e.
-     * &#34;ge-0/0/0,ge-1/0/0&#34;, only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. &#34;{{myvar}}&#34;).
+     * Property key is the Port Name (i.e. &#34;ge-0/0/0&#34;), the Ports Range (i.e. &#34;ge-0/0/0-10&#34;), the List of Ports (i.e. &#34;ge-0/0/0,ge-1/0/0&#34;, only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. &#34;{{myvar}}&#34;).
      * 
      */
     @Export(name="portConfig", refs={Map.class,String.class,GatewaytemplatePortConfig.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,GatewaytemplatePortConfig>> portConfig;
 
     /**
-     * @return Property key is the Port Name (i.e. &#34;ge-0/0/0&#34;), the Ports Range (i.e. &#34;ge-0/0/0-10&#34;), the List of Ports (i.e.
-     * &#34;ge-0/0/0,ge-1/0/0&#34;, only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. &#34;{{myvar}}&#34;).
+     * @return Property key is the Port Name (i.e. &#34;ge-0/0/0&#34;), the Ports Range (i.e. &#34;ge-0/0/0-10&#34;), the List of Ports (i.e. &#34;ge-0/0/0,ge-1/0/0&#34;, only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. &#34;{{myvar}}&#34;).
      * 
      */
     public Output<Optional<Map<String,GatewaytemplatePortConfig>>> portConfig() {

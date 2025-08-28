@@ -54,10 +54,10 @@ export class Idpprofile extends pulumi.CustomResource {
     /**
      * enum: `critical`, `standard`, `strict`
      */
-    public readonly baseProfile!: pulumi.Output<string>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
-    public readonly overwrites!: pulumi.Output<outputs.org.IdpprofileOverwrite[] | undefined>;
+    declare public readonly baseProfile: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
+    declare public readonly overwrites: pulumi.Output<outputs.org.IdpprofileOverwrite[] | undefined>;
 
     /**
      * Create a Idpprofile resource with the given unique name, arguments, and options.
@@ -72,22 +72,22 @@ export class Idpprofile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IdpprofileState | undefined;
-            resourceInputs["baseProfile"] = state ? state.baseProfile : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["overwrites"] = state ? state.overwrites : undefined;
+            resourceInputs["baseProfile"] = state?.baseProfile;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["overwrites"] = state?.overwrites;
         } else {
             const args = argsOrState as IdpprofileArgs | undefined;
-            if ((!args || args.baseProfile === undefined) && !opts.urn) {
+            if (args?.baseProfile === undefined && !opts.urn) {
                 throw new Error("Missing required property 'baseProfile'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["baseProfile"] = args ? args.baseProfile : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["overwrites"] = args ? args.overwrites : undefined;
+            resourceInputs["baseProfile"] = args?.baseProfile;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["overwrites"] = args?.overwrites;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Idpprofile.__pulumiType, name, resourceInputs, opts);

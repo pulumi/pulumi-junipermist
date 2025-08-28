@@ -29,14 +29,12 @@ class ProviderArgs:
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[_builtins.bool] api_debug: Flag to enable debugging API calls. Default is false.
-        :param pulumi.Input[_builtins.float] api_timeout: Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
-               results in infinite timeout.
+        :param pulumi.Input[_builtins.float] api_timeout: Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
         :param pulumi.Input[_builtins.str] apitoken: For API Token authentication, the Mist API Token.
         :param pulumi.Input[_builtins.str] host: URL of the Mist Cloud, e.g. `api.mist.com`.
         :param pulumi.Input[_builtins.str] password: For username/password authentication, the Mist Account password.
-        :param pulumi.Input[_builtins.str] proxy: Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-               `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-               are supported.
+        :param pulumi.Input[_builtins.str] proxy: Requests use the configured proxy to reach the Mist Cloud.
+               The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
         :param pulumi.Input[_builtins.str] username: For username/password authentication, the Mist Account username.
         """
         if api_debug is not None:
@@ -70,8 +68,7 @@ class ProviderArgs:
     @pulumi.getter(name="apiTimeout")
     def api_timeout(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
-        results in infinite timeout.
+        Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
         """
         return pulumi.get(self, "api_timeout")
 
@@ -119,9 +116,8 @@ class ProviderArgs:
     @pulumi.getter
     def proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-        `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-        are supported.
+        Requests use the configured proxy to reach the Mist Cloud.
+        The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
         """
         return pulumi.get(self, "proxy")
 
@@ -165,14 +161,12 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] api_debug: Flag to enable debugging API calls. Default is false.
-        :param pulumi.Input[_builtins.float] api_timeout: Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
-               results in infinite timeout.
+        :param pulumi.Input[_builtins.float] api_timeout: Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
         :param pulumi.Input[_builtins.str] apitoken: For API Token authentication, the Mist API Token.
         :param pulumi.Input[_builtins.str] host: URL of the Mist Cloud, e.g. `api.mist.com`.
         :param pulumi.Input[_builtins.str] password: For username/password authentication, the Mist Account password.
-        :param pulumi.Input[_builtins.str] proxy: Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-               `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-               are supported.
+        :param pulumi.Input[_builtins.str] proxy: Requests use the configured proxy to reach the Mist Cloud.
+               The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
         :param pulumi.Input[_builtins.str] username: For username/password authentication, the Mist Account username.
         """
         ...
@@ -261,9 +255,8 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def proxy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-        `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-        are supported.
+        Requests use the configured proxy to reach the Mist Cloud.
+        The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
         """
         return pulumi.get(self, "proxy")
 

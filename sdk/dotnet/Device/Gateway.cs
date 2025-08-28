@@ -100,8 +100,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableDictionary<string, Outputs.GatewayExtraRoutes>?> ExtraRoutes { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-        /// "{{myvar}}")
+        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         /// </summary>
         [Output("extraRoutes6")]
         public Output<ImmutableDictionary<string, Outputs.GatewayExtraRoutes6>?> ExtraRoutes6 { get; private set; } = null!;
@@ -366,8 +365,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.GatewayExtraRoutes6Args>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-        /// "{{myvar}}")
+        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         /// </summary>
         public InputMap<Inputs.GatewayExtraRoutes6Args> ExtraRoutes6
         {
@@ -623,8 +621,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.GatewayExtraRoutes6GetArgs>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-        /// "{{myvar}}")
+        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         /// </summary>
         public InputMap<Inputs.GatewayExtraRoutes6GetArgs> ExtraRoutes6
         {

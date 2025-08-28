@@ -71,16 +71,16 @@ export class NacEndpoint extends pulumi.CustomResource {
         return obj['__pulumiType'] === NacEndpoint.__pulumiType;
     }
 
-    public readonly labels!: pulumi.Output<string[]>;
+    declare public readonly labels: pulumi.Output<string[]>;
     /**
      * Only non-local-admin MAC is accepted
      */
-    public readonly mac!: pulumi.Output<string>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly notes!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
-    public readonly radiusGroup!: pulumi.Output<string>;
-    public readonly vlan!: pulumi.Output<string>;
+    declare public readonly mac: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly notes: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
+    declare public readonly radiusGroup: pulumi.Output<string>;
+    declare public readonly vlan: pulumi.Output<string>;
 
     /**
      * Create a NacEndpoint resource with the given unique name, arguments, and options.
@@ -95,28 +95,28 @@ export class NacEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NacEndpointState | undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["mac"] = state ? state.mac : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notes"] = state ? state.notes : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["radiusGroup"] = state ? state.radiusGroup : undefined;
-            resourceInputs["vlan"] = state ? state.vlan : undefined;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["mac"] = state?.mac;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notes"] = state?.notes;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["radiusGroup"] = state?.radiusGroup;
+            resourceInputs["vlan"] = state?.vlan;
         } else {
             const args = argsOrState as NacEndpointArgs | undefined;
-            if ((!args || args.mac === undefined) && !opts.urn) {
+            if (args?.mac === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mac'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["mac"] = args ? args.mac : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notes"] = args ? args.notes : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["radiusGroup"] = args ? args.radiusGroup : undefined;
-            resourceInputs["vlan"] = args ? args.vlan : undefined;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["mac"] = args?.mac;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notes"] = args?.notes;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["radiusGroup"] = args?.radiusGroup;
+            resourceInputs["vlan"] = args?.vlan;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NacEndpoint.__pulumiType, name, resourceInputs, opts);

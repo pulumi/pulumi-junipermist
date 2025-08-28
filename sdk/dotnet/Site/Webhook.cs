@@ -141,9 +141,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<string?> Secret { get; private set; } = null!;
 
         /// <summary>
-        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-        /// `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-        /// Topics)
+        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         /// </summary>
         [Output("singleEventPerMessage")]
         public Output<bool?> SingleEventPerMessage { get; private set; } = null!;
@@ -152,8 +150,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-        /// the webhook receiver is configured to accept it.
+        /// Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         /// </summary>
         [Output("splunkToken")]
         public Output<string?> SplunkToken { get; private set; } = null!;
@@ -354,9 +351,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-        /// `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-        /// Topics)
+        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         /// </summary>
         [Input("singleEventPerMessage")]
         public Input<bool>? SingleEventPerMessage { get; set; }
@@ -368,8 +363,7 @@ namespace Pulumi.JuniperMist.Site
         private Input<string>? _splunkToken;
 
         /// <summary>
-        /// Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-        /// the webhook receiver is configured to accept it.
+        /// Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         /// </summary>
         public Input<string>? SplunkToken
         {
@@ -540,9 +534,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-        /// `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-        /// Topics)
+        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         /// </summary>
         [Input("singleEventPerMessage")]
         public Input<bool>? SingleEventPerMessage { get; set; }
@@ -554,8 +546,7 @@ namespace Pulumi.JuniperMist.Site
         private Input<string>? _splunkToken;
 
         /// <summary>
-        /// Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-        /// the webhook receiver is configured to accept it.
+        /// Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         /// </summary>
         public Input<string>? SplunkToken
         {

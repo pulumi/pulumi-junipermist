@@ -58,16 +58,16 @@ export class Alarmtemplate extends pulumi.CustomResource {
     /**
      * Delivery object to configure the alarm delivery
      */
-    public readonly delivery!: pulumi.Output<outputs.org.AlarmtemplateDelivery>;
+    declare public readonly delivery: pulumi.Output<outputs.org.AlarmtemplateDelivery>;
     /**
      * Some string to name the alarm template
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `junipermist.getConstAlarms` data source).
      */
-    public readonly rules!: pulumi.Output<{[key: string]: outputs.org.AlarmtemplateRules}>;
+    declare public readonly rules: pulumi.Output<{[key: string]: outputs.org.AlarmtemplateRules}>;
 
     /**
      * Create a Alarmtemplate resource with the given unique name, arguments, and options.
@@ -82,25 +82,25 @@ export class Alarmtemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlarmtemplateState | undefined;
-            resourceInputs["delivery"] = state ? state.delivery : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["delivery"] = state?.delivery;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["rules"] = state?.rules;
         } else {
             const args = argsOrState as AlarmtemplateArgs | undefined;
-            if ((!args || args.delivery === undefined) && !opts.urn) {
+            if (args?.delivery === undefined && !opts.urn) {
                 throw new Error("Missing required property 'delivery'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.rules === undefined) && !opts.urn) {
+            if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            resourceInputs["delivery"] = args ? args.delivery : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["delivery"] = args?.delivery;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["rules"] = args?.rules;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Alarmtemplate.__pulumiType, name, resourceInputs, opts);

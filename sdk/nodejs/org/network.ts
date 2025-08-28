@@ -66,39 +66,39 @@ export class Network extends pulumi.CustomResource {
     /**
      * Whether to disallow Mist Devices in the network
      */
-    public readonly disallowMistServices!: pulumi.Output<boolean>;
-    public readonly gateway!: pulumi.Output<string | undefined>;
-    public readonly gateway6!: pulumi.Output<string | undefined>;
-    public readonly internalAccess!: pulumi.Output<outputs.org.NetworkInternalAccess | undefined>;
+    declare public readonly disallowMistServices: pulumi.Output<boolean>;
+    declare public readonly gateway: pulumi.Output<string | undefined>;
+    declare public readonly gateway6: pulumi.Output<string | undefined>;
+    declare public readonly internalAccess: pulumi.Output<outputs.org.NetworkInternalAccess | undefined>;
     /**
      * Whether this network has direct internet access
      */
-    public readonly internetAccess!: pulumi.Output<outputs.org.NetworkInternetAccess | undefined>;
+    declare public readonly internetAccess: pulumi.Output<outputs.org.NetworkInternetAccess | undefined>;
     /**
      * Whether to allow clients in the network to talk to each other
      */
-    public readonly isolation!: pulumi.Output<boolean | undefined>;
+    declare public readonly isolation: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enable multicast support (only PIM-sparse mode is supported)
      */
-    public readonly multicast!: pulumi.Output<outputs.org.NetworkMulticast | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly multicast: pulumi.Output<outputs.org.NetworkMulticast | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
      */
-    public readonly routedForNetworks!: pulumi.Output<string[]>;
-    public readonly subnet!: pulumi.Output<string>;
-    public readonly subnet6!: pulumi.Output<string | undefined>;
+    declare public readonly routedForNetworks: pulumi.Output<string[]>;
+    declare public readonly subnet: pulumi.Output<string>;
+    declare public readonly subnet6: pulumi.Output<string | undefined>;
     /**
      * Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
      */
-    public readonly tenants!: pulumi.Output<{[key: string]: outputs.org.NetworkTenants} | undefined>;
-    public readonly vlanId!: pulumi.Output<string | undefined>;
+    declare public readonly tenants: pulumi.Output<{[key: string]: outputs.org.NetworkTenants} | undefined>;
+    declare public readonly vlanId: pulumi.Output<string | undefined>;
     /**
      * Property key is the VPN name. Whether this network can be accessed from vpn
      */
-    public readonly vpnAccess!: pulumi.Output<{[key: string]: outputs.org.NetworkVpnAccess} | undefined>;
+    declare public readonly vpnAccess: pulumi.Output<{[key: string]: outputs.org.NetworkVpnAccess} | undefined>;
 
     /**
      * Create a Network resource with the given unique name, arguments, and options.
@@ -113,44 +113,44 @@ export class Network extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkState | undefined;
-            resourceInputs["disallowMistServices"] = state ? state.disallowMistServices : undefined;
-            resourceInputs["gateway"] = state ? state.gateway : undefined;
-            resourceInputs["gateway6"] = state ? state.gateway6 : undefined;
-            resourceInputs["internalAccess"] = state ? state.internalAccess : undefined;
-            resourceInputs["internetAccess"] = state ? state.internetAccess : undefined;
-            resourceInputs["isolation"] = state ? state.isolation : undefined;
-            resourceInputs["multicast"] = state ? state.multicast : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["routedForNetworks"] = state ? state.routedForNetworks : undefined;
-            resourceInputs["subnet"] = state ? state.subnet : undefined;
-            resourceInputs["subnet6"] = state ? state.subnet6 : undefined;
-            resourceInputs["tenants"] = state ? state.tenants : undefined;
-            resourceInputs["vlanId"] = state ? state.vlanId : undefined;
-            resourceInputs["vpnAccess"] = state ? state.vpnAccess : undefined;
+            resourceInputs["disallowMistServices"] = state?.disallowMistServices;
+            resourceInputs["gateway"] = state?.gateway;
+            resourceInputs["gateway6"] = state?.gateway6;
+            resourceInputs["internalAccess"] = state?.internalAccess;
+            resourceInputs["internetAccess"] = state?.internetAccess;
+            resourceInputs["isolation"] = state?.isolation;
+            resourceInputs["multicast"] = state?.multicast;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["routedForNetworks"] = state?.routedForNetworks;
+            resourceInputs["subnet"] = state?.subnet;
+            resourceInputs["subnet6"] = state?.subnet6;
+            resourceInputs["tenants"] = state?.tenants;
+            resourceInputs["vlanId"] = state?.vlanId;
+            resourceInputs["vpnAccess"] = state?.vpnAccess;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.subnet === undefined) && !opts.urn) {
+            if (args?.subnet === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subnet'");
             }
-            resourceInputs["disallowMistServices"] = args ? args.disallowMistServices : undefined;
-            resourceInputs["gateway"] = args ? args.gateway : undefined;
-            resourceInputs["gateway6"] = args ? args.gateway6 : undefined;
-            resourceInputs["internalAccess"] = args ? args.internalAccess : undefined;
-            resourceInputs["internetAccess"] = args ? args.internetAccess : undefined;
-            resourceInputs["isolation"] = args ? args.isolation : undefined;
-            resourceInputs["multicast"] = args ? args.multicast : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["routedForNetworks"] = args ? args.routedForNetworks : undefined;
-            resourceInputs["subnet"] = args ? args.subnet : undefined;
-            resourceInputs["subnet6"] = args ? args.subnet6 : undefined;
-            resourceInputs["tenants"] = args ? args.tenants : undefined;
-            resourceInputs["vlanId"] = args ? args.vlanId : undefined;
-            resourceInputs["vpnAccess"] = args ? args.vpnAccess : undefined;
+            resourceInputs["disallowMistServices"] = args?.disallowMistServices;
+            resourceInputs["gateway"] = args?.gateway;
+            resourceInputs["gateway6"] = args?.gateway6;
+            resourceInputs["internalAccess"] = args?.internalAccess;
+            resourceInputs["internetAccess"] = args?.internetAccess;
+            resourceInputs["isolation"] = args?.isolation;
+            resourceInputs["multicast"] = args?.multicast;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["routedForNetworks"] = args?.routedForNetworks;
+            resourceInputs["subnet"] = args?.subnet;
+            resourceInputs["subnet6"] = args?.subnet6;
+            resourceInputs["tenants"] = args?.tenants;
+            resourceInputs["vlanId"] = args?.vlanId;
+            resourceInputs["vpnAccess"] = args?.vpnAccess;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Network.__pulumiType, name, resourceInputs, opts);

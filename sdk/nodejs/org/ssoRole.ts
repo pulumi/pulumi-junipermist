@@ -51,9 +51,9 @@ export class SsoRole extends pulumi.CustomResource {
         return obj['__pulumiType'] === SsoRole.__pulumiType;
     }
 
-    public readonly name!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
-    public readonly privileges!: pulumi.Output<outputs.org.SsoRolePrivilege[]>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
+    declare public readonly privileges: pulumi.Output<outputs.org.SsoRolePrivilege[]>;
 
     /**
      * Create a SsoRole resource with the given unique name, arguments, and options.
@@ -68,20 +68,20 @@ export class SsoRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SsoRoleState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["privileges"] = state ? state.privileges : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["privileges"] = state?.privileges;
         } else {
             const args = argsOrState as SsoRoleArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.privileges === undefined) && !opts.urn) {
+            if (args?.privileges === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privileges'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["privileges"] = args ? args.privileges : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["privileges"] = args?.privileges;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SsoRole.__pulumiType, name, resourceInputs, opts);
