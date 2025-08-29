@@ -54,17 +54,17 @@ export class EvpnTopology extends pulumi.CustomResource {
     /**
      * EVPN Options
      */
-    public readonly evpnOptions!: pulumi.Output<outputs.org.EvpnTopologyEvpnOptions | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly evpnOptions: pulumi.Output<outputs.org.EvpnTopologyEvpnOptions | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Property key is the pod number
      */
-    public readonly podNames!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly podNames: pulumi.Output<{[key: string]: string}>;
     /**
      * Property key can be the switch MAC Address
      */
-    public readonly switches!: pulumi.Output<{[key: string]: outputs.org.EvpnTopologySwitches}>;
+    declare public readonly switches: pulumi.Output<{[key: string]: outputs.org.EvpnTopologySwitches}>;
 
     /**
      * Create a EvpnTopology resource with the given unique name, arguments, and options.
@@ -79,24 +79,24 @@ export class EvpnTopology extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EvpnTopologyState | undefined;
-            resourceInputs["evpnOptions"] = state ? state.evpnOptions : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["podNames"] = state ? state.podNames : undefined;
-            resourceInputs["switches"] = state ? state.switches : undefined;
+            resourceInputs["evpnOptions"] = state?.evpnOptions;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["podNames"] = state?.podNames;
+            resourceInputs["switches"] = state?.switches;
         } else {
             const args = argsOrState as EvpnTopologyArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.switches === undefined) && !opts.urn) {
+            if (args?.switches === undefined && !opts.urn) {
                 throw new Error("Missing required property 'switches'");
             }
-            resourceInputs["evpnOptions"] = args ? args.evpnOptions : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["podNames"] = args ? args.podNames : undefined;
-            resourceInputs["switches"] = args ? args.switches : undefined;
+            resourceInputs["evpnOptions"] = args?.evpnOptions;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["podNames"] = args?.podNames;
+            resourceInputs["switches"] = args?.switches;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EvpnTopology.__pulumiType, name, resourceInputs, opts);

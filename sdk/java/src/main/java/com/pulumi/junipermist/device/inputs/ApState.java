@@ -390,18 +390,14 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-     * predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
-     * deprecated)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
      * 
      */
     @Import(name="portConfig")
     private @Nullable Output<Map<String,ApPortConfigArgs>> portConfig;
 
     /**
-     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-     * predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
-     * deprecated)
+     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
      * 
      */
     public Optional<Output<Map<String,ApPortConfigArgs>>> portConfig() {
@@ -491,16 +487,18 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-     * moved to ESL Config.
+     * USB AP settings
+     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
+     *   - Note: legacy, new config moved to ESL Config.
      * 
      */
     @Import(name="usbConfig")
     private @Nullable Output<ApUsbConfigArgs> usbConfig;
 
     /**
-     * @return USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-     * moved to ESL Config.
+     * @return USB AP settings
+     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
+     *   - Note: legacy, new config moved to ESL Config.
      * 
      */
     public Optional<Output<ApUsbConfigArgs>> usbConfig() {
@@ -1107,9 +1105,7 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-         * predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
-         * deprecated)
+         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
          * 
          * @return builder
          * 
@@ -1120,9 +1116,7 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-         * predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
-         * deprecated)
+         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
          * 
          * @return builder
          * 
@@ -1246,8 +1240,9 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usbConfig USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-         * moved to ESL Config.
+         * @param usbConfig USB AP settings
+         *   - Note: if native imagotag is enabled, BLE will be disabled automatically
+         *   - Note: legacy, new config moved to ESL Config.
          * 
          * @return builder
          * 
@@ -1258,8 +1253,9 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usbConfig USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-         * moved to ESL Config.
+         * @param usbConfig USB AP settings
+         *   - Note: if native imagotag is enabled, BLE will be disabled automatically
+         *   - Note: legacy, new config moved to ESL Config.
          * 
          * @return builder
          * 

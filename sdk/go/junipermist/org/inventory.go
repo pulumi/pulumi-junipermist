@@ -33,9 +33,11 @@ import (
 type Inventory struct {
 	pulumi.CustomResourceState
 
-	// Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-	// Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-	// already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+	// Property key can be the device Claim Code or the device MAC Address:
+	//   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+	//   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+	//
+	//     >
 	Inventory InventoryInventoryMapOutput `pulumi:"inventory"`
 	OrgId     pulumi.StringOutput         `pulumi:"orgId"`
 }
@@ -73,17 +75,21 @@ func GetInventory(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Inventory resources.
 type inventoryState struct {
-	// Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-	// Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-	// already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+	// Property key can be the device Claim Code or the device MAC Address:
+	//   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+	//   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+	//
+	//     >
 	Inventory map[string]InventoryInventory `pulumi:"inventory"`
 	OrgId     *string                       `pulumi:"orgId"`
 }
 
 type InventoryState struct {
-	// Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-	// Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-	// already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+	// Property key can be the device Claim Code or the device MAC Address:
+	//   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+	//   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+	//
+	//     >
 	Inventory InventoryInventoryMapInput
 	OrgId     pulumi.StringPtrInput
 }
@@ -93,18 +99,22 @@ func (InventoryState) ElementType() reflect.Type {
 }
 
 type inventoryArgs struct {
-	// Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-	// Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-	// already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+	// Property key can be the device Claim Code or the device MAC Address:
+	//   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+	//   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+	//
+	//     >
 	Inventory map[string]InventoryInventory `pulumi:"inventory"`
 	OrgId     string                        `pulumi:"orgId"`
 }
 
 // The set of arguments for constructing a Inventory resource.
 type InventoryArgs struct {
-	// Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-	// Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-	// already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+	// Property key can be the device Claim Code or the device MAC Address:
+	//   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+	//   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+	//
+	//     >
 	Inventory InventoryInventoryMapInput
 	OrgId     pulumi.StringInput
 }
@@ -196,9 +206,13 @@ func (o InventoryOutput) ToInventoryOutputWithContext(ctx context.Context) Inven
 	return o
 }
 
-// Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-// Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-// already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+// Property key can be the device Claim Code or the device MAC Address:
+//
+//   - Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+//
+//   - MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+//
+//     >
 func (o InventoryOutput) Inventory() InventoryInventoryMapOutput {
 	return o.ApplyT(func(v *Inventory) InventoryInventoryMapOutput { return v.Inventory }).(InventoryInventoryMapOutput)
 }

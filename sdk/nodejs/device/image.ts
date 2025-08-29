@@ -39,16 +39,16 @@ export class Image extends pulumi.CustomResource {
         return obj['__pulumiType'] === Image.__pulumiType;
     }
 
-    public readonly deviceId!: pulumi.Output<string>;
+    declare public readonly deviceId: pulumi.Output<string>;
     /**
      * path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
      */
-    public readonly file!: pulumi.Output<string>;
+    declare public readonly file: pulumi.Output<string>;
     /**
      * number of the image, between 1 and 3
      */
-    public readonly imageNumber!: pulumi.Output<number>;
-    public readonly siteId!: pulumi.Output<string>;
+    declare public readonly imageNumber: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -63,28 +63,28 @@ export class Image extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageState | undefined;
-            resourceInputs["deviceId"] = state ? state.deviceId : undefined;
-            resourceInputs["file"] = state ? state.file : undefined;
-            resourceInputs["imageNumber"] = state ? state.imageNumber : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
+            resourceInputs["deviceId"] = state?.deviceId;
+            resourceInputs["file"] = state?.file;
+            resourceInputs["imageNumber"] = state?.imageNumber;
+            resourceInputs["siteId"] = state?.siteId;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            if ((!args || args.deviceId === undefined) && !opts.urn) {
+            if (args?.deviceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deviceId'");
             }
-            if ((!args || args.file === undefined) && !opts.urn) {
+            if (args?.file === undefined && !opts.urn) {
                 throw new Error("Missing required property 'file'");
             }
-            if ((!args || args.imageNumber === undefined) && !opts.urn) {
+            if (args?.imageNumber === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageNumber'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["deviceId"] = args ? args.deviceId : undefined;
-            resourceInputs["file"] = args ? args.file : undefined;
-            resourceInputs["imageNumber"] = args ? args.imageNumber : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
+            resourceInputs["deviceId"] = args?.deviceId;
+            resourceInputs["file"] = args?.file;
+            resourceInputs["imageNumber"] = args?.imageNumber;
+            resourceInputs["siteId"] = args?.siteId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Image.__pulumiType, name, resourceInputs, opts);

@@ -55,12 +55,14 @@ export class Inventory extends pulumi.CustomResource {
     }
 
     /**
-     * Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-     * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+     * Property key can be the device Claim Code or the device MAC Address:
+     *   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+     *   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+     *
+     *     >
      */
-    public readonly inventory!: pulumi.Output<{[key: string]: outputs.org.InventoryInventory}>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly inventory: pulumi.Output<{[key: string]: outputs.org.InventoryInventory}>;
+    declare public readonly orgId: pulumi.Output<string>;
 
     /**
      * Create a Inventory resource with the given unique name, arguments, and options.
@@ -75,15 +77,15 @@ export class Inventory extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InventoryState | undefined;
-            resourceInputs["inventory"] = state ? state.inventory : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["inventory"] = state?.inventory;
+            resourceInputs["orgId"] = state?.orgId;
         } else {
             const args = argsOrState as InventoryArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["inventory"] = args ? args.inventory : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["inventory"] = args?.inventory;
+            resourceInputs["orgId"] = args?.orgId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Inventory.__pulumiType, name, resourceInputs, opts);
@@ -95,9 +97,11 @@ export class Inventory extends pulumi.CustomResource {
  */
 export interface InventoryState {
     /**
-     * Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-     * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+     * Property key can be the device Claim Code or the device MAC Address:
+     *   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+     *   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+     *
+     *     >
      */
     inventory?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.InventoryInventory>}>;
     orgId?: pulumi.Input<string>;
@@ -108,9 +112,11 @@ export interface InventoryState {
  */
 export interface InventoryArgs {
     /**
-     * Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-     * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+     * Property key can be the device Claim Code or the device MAC Address:
+     *   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+     *   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+     *
+     *     >
      */
     inventory?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.InventoryInventory>}>;
     orgId: pulumi.Input<string>;

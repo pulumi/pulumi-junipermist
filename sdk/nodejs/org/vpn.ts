@@ -47,20 +47,20 @@ export class Vpn extends pulumi.CustomResource {
         return obj['__pulumiType'] === Vpn.__pulumiType;
     }
 
-    public readonly name!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * Only if `type`==`hubSpoke`
      */
-    public readonly pathSelection!: pulumi.Output<outputs.org.VpnPathSelection | undefined>;
+    declare public readonly pathSelection: pulumi.Output<outputs.org.VpnPathSelection | undefined>;
     /**
      * For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
      */
-    public readonly paths!: pulumi.Output<{[key: string]: outputs.org.VpnPaths}>;
+    declare public readonly paths: pulumi.Output<{[key: string]: outputs.org.VpnPaths}>;
     /**
      * enum: `hubSpoke`, `mesh`
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
 
     /**
      * Create a Vpn resource with the given unique name, arguments, and options.
@@ -75,21 +75,21 @@ export class Vpn extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpnState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["pathSelection"] = state ? state.pathSelection : undefined;
-            resourceInputs["paths"] = state ? state.paths : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["pathSelection"] = state?.pathSelection;
+            resourceInputs["paths"] = state?.paths;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as VpnArgs | undefined;
-            if ((!args || args.paths === undefined) && !opts.urn) {
+            if (args?.paths === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paths'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["pathSelection"] = args ? args.pathSelection : undefined;
-            resourceInputs["paths"] = args ? args.paths : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["pathSelection"] = args?.pathSelection;
+            resourceInputs["paths"] = args?.paths;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Vpn.__pulumiType, name, resourceInputs, opts);

@@ -88,16 +88,20 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.appSubcategories;
     }
     /**
-     * When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-     * /insight/top_app_by-bytes?wired=true
+     * When `type`==`apps`, list of applications are available through:
+     *   * List Applications
+     *   * List Gateway Applications
+     *   * /insight/top_app_by-bytes?wired=true
      * 
      */
     @Export(name="apps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> apps;
 
     /**
-     * @return When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-     * /insight/top_app_by-bytes?wired=true
+     * @return When `type`==`apps`, list of applications are available through:
+     *   * List Applications
+     *   * List Gateway Applications
+     *   * /insight/top_app_by-bytes?wired=true
      * 
      */
     public Output<List<String>> apps() {

@@ -61,9 +61,7 @@ class NetworktemplateArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateNetworksArgs']]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasArgs']]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
-        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-               interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-               maximum 4 mirroring ports is allowed
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input['NetworktemplateRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input['NetworktemplateSwitchMatchingArgs'] switch_matching: Defines custom switch configuration based on different criteria
@@ -307,9 +305,7 @@ class NetworktemplateArgs:
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]]]:
         """
-        Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-        interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-        maximum 4 mirroring ports is allowed
+        Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         """
         return pulumi.get(self, "port_mirroring")
 
@@ -447,9 +443,7 @@ class _NetworktemplateState:
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateNetworksArgs']]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasArgs']]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
-        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-               interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-               maximum 4 mirroring ports is allowed
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input['NetworktemplateRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input[_builtins.str] site_id: Unique ID of the object instance in the Mist Organization
@@ -683,9 +677,7 @@ class _NetworktemplateState:
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]]]:
         """
-        Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-        interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-        maximum 4 mirroring ports is allowed
+        Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         """
         return pulumi.get(self, "port_mirroring")
 
@@ -858,9 +850,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateOspfAreasArgs', 'NetworktemplateOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-               interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-               maximum 4 mirroring ports is allowed
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[_builtins.str] site_id: Unique ID of the object instance in the Mist Organization
@@ -1023,9 +1013,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateOspfAreasArgs', 'NetworktemplateOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-               interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-               maximum 4 mirroring ports is allowed
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[_builtins.str] site_id: Unique ID of the object instance in the Mist Organization
@@ -1179,9 +1167,7 @@ class Networktemplate(pulumi.CustomResource):
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.NetworktemplatePortMirroring']]]:
         """
-        Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-        interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-        maximum 4 mirroring ports is allowed
+        Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         """
         return pulumi.get(self, "port_mirroring")
 

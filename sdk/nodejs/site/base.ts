@@ -80,55 +80,55 @@ export class Base extends pulumi.CustomResource {
     /**
      * full address of the site
      */
-    public readonly address!: pulumi.Output<string>;
+    declare public readonly address: pulumi.Output<string>;
     /**
      * Alarm Template ID, this takes precedence over the Org-level alarmtemplate_id
      */
-    public readonly alarmtemplateId!: pulumi.Output<string | undefined>;
+    declare public readonly alarmtemplateId: pulumi.Output<string | undefined>;
     /**
      * AP Template ID, used by APs
      */
-    public readonly aptemplateId!: pulumi.Output<string | undefined>;
+    declare public readonly aptemplateId: pulumi.Output<string | undefined>;
     /**
      * Country code for the site (for AP config generation), in two-character
      */
-    public readonly countryCode!: pulumi.Output<string | undefined>;
+    declare public readonly countryCode: pulumi.Output<string | undefined>;
     /**
      * Gateway Template ID, used by gateways
      */
-    public readonly gatewaytemplateId!: pulumi.Output<string | undefined>;
-    public readonly latlng!: pulumi.Output<outputs.site.BaseLatlng | undefined>;
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly gatewaytemplateId: pulumi.Output<string | undefined>;
+    declare public readonly latlng: pulumi.Output<outputs.site.BaseLatlng | undefined>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Network Template ID, this takes precedence over Site Settings
      */
-    public readonly networktemplateId!: pulumi.Output<string | undefined>;
+    declare public readonly networktemplateId: pulumi.Output<string | undefined>;
     /**
      * Optional, any notes about the site
      */
-    public readonly notes!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly notes: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * RF Template ID, this takes precedence over Site Settings
      */
-    public readonly rftemplateId!: pulumi.Output<string | undefined>;
+    declare public readonly rftemplateId: pulumi.Output<string | undefined>;
     /**
      * SecPolicy ID
      */
-    public readonly secpolicyId!: pulumi.Output<string | undefined>;
+    declare public readonly secpolicyId: pulumi.Output<string | undefined>;
     /**
      * Sitegroups this site belongs to
      */
-    public readonly sitegroupIds!: pulumi.Output<string[]>;
+    declare public readonly sitegroupIds: pulumi.Output<string[]>;
     /**
      * Site Template ID
      */
-    public readonly sitetemplateId!: pulumi.Output<string | undefined>;
+    declare public readonly sitetemplateId: pulumi.Output<string | undefined>;
     /**
      * Timezone the site is at
      */
-    public readonly timezone!: pulumi.Output<string>;
-    public /*out*/ readonly tzoffset!: pulumi.Output<number>;
+    declare public readonly timezone: pulumi.Output<string>;
+    declare public /*out*/ readonly tzoffset: pulumi.Output<number>;
 
     /**
      * Create a Base resource with the given unique name, arguments, and options.
@@ -143,45 +143,45 @@ export class Base extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BaseState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["alarmtemplateId"] = state ? state.alarmtemplateId : undefined;
-            resourceInputs["aptemplateId"] = state ? state.aptemplateId : undefined;
-            resourceInputs["countryCode"] = state ? state.countryCode : undefined;
-            resourceInputs["gatewaytemplateId"] = state ? state.gatewaytemplateId : undefined;
-            resourceInputs["latlng"] = state ? state.latlng : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networktemplateId"] = state ? state.networktemplateId : undefined;
-            resourceInputs["notes"] = state ? state.notes : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["rftemplateId"] = state ? state.rftemplateId : undefined;
-            resourceInputs["secpolicyId"] = state ? state.secpolicyId : undefined;
-            resourceInputs["sitegroupIds"] = state ? state.sitegroupIds : undefined;
-            resourceInputs["sitetemplateId"] = state ? state.sitetemplateId : undefined;
-            resourceInputs["timezone"] = state ? state.timezone : undefined;
-            resourceInputs["tzoffset"] = state ? state.tzoffset : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["alarmtemplateId"] = state?.alarmtemplateId;
+            resourceInputs["aptemplateId"] = state?.aptemplateId;
+            resourceInputs["countryCode"] = state?.countryCode;
+            resourceInputs["gatewaytemplateId"] = state?.gatewaytemplateId;
+            resourceInputs["latlng"] = state?.latlng;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networktemplateId"] = state?.networktemplateId;
+            resourceInputs["notes"] = state?.notes;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["rftemplateId"] = state?.rftemplateId;
+            resourceInputs["secpolicyId"] = state?.secpolicyId;
+            resourceInputs["sitegroupIds"] = state?.sitegroupIds;
+            resourceInputs["sitetemplateId"] = state?.sitetemplateId;
+            resourceInputs["timezone"] = state?.timezone;
+            resourceInputs["tzoffset"] = state?.tzoffset;
         } else {
             const args = argsOrState as BaseArgs | undefined;
-            if ((!args || args.address === undefined) && !opts.urn) {
+            if (args?.address === undefined && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["alarmtemplateId"] = args ? args.alarmtemplateId : undefined;
-            resourceInputs["aptemplateId"] = args ? args.aptemplateId : undefined;
-            resourceInputs["countryCode"] = args ? args.countryCode : undefined;
-            resourceInputs["gatewaytemplateId"] = args ? args.gatewaytemplateId : undefined;
-            resourceInputs["latlng"] = args ? args.latlng : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networktemplateId"] = args ? args.networktemplateId : undefined;
-            resourceInputs["notes"] = args ? args.notes : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["rftemplateId"] = args ? args.rftemplateId : undefined;
-            resourceInputs["secpolicyId"] = args ? args.secpolicyId : undefined;
-            resourceInputs["sitegroupIds"] = args ? args.sitegroupIds : undefined;
-            resourceInputs["sitetemplateId"] = args ? args.sitetemplateId : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["alarmtemplateId"] = args?.alarmtemplateId;
+            resourceInputs["aptemplateId"] = args?.aptemplateId;
+            resourceInputs["countryCode"] = args?.countryCode;
+            resourceInputs["gatewaytemplateId"] = args?.gatewaytemplateId;
+            resourceInputs["latlng"] = args?.latlng;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networktemplateId"] = args?.networktemplateId;
+            resourceInputs["notes"] = args?.notes;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["rftemplateId"] = args?.rftemplateId;
+            resourceInputs["secpolicyId"] = args?.secpolicyId;
+            resourceInputs["sitegroupIds"] = args?.sitegroupIds;
+            resourceInputs["sitetemplateId"] = args?.sitetemplateId;
+            resourceInputs["timezone"] = args?.timezone;
             resourceInputs["tzoffset"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

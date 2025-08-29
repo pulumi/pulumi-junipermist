@@ -55,23 +55,21 @@ namespace Pulumi.JuniperMist.Org
     public partial class Sso : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-        /// different from SP-initiated SLO process)
+        /// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
         /// </summary>
         [Output("customLogoutUrl")]
         public Output<string?> CustomLogoutUrl { get; private set; } = null!;
 
         /// <summary>
-        /// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-        /// matched
+        /// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         /// </summary>
         [Output("defaultRole")]
         public Output<string?> DefaultRole { get; private set; } = null!;
 
         /// <summary>
-        /// Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
-        /// `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
-        /// `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
+        /// Random string generated during the SSO creation and used to generate the SAML URLs:
+        ///   * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
+        ///   * Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
@@ -122,11 +120,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// custom role attribute parsing scheme. Supported Role Parsing Schemes
-        /// &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML
-        /// Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the
-        /// entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-        /// “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+        /// custom role attribute parsing scheme. Supported Role Parsing Schemes &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
         /// </summary>
         [Output("roleAttrExtraction")]
         public Output<string?> RoleAttrExtraction { get; private set; } = null!;
@@ -185,15 +179,13 @@ namespace Pulumi.JuniperMist.Org
     public sealed class SsoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-        /// different from SP-initiated SLO process)
+        /// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
         /// </summary>
         [Input("customLogoutUrl")]
         public Input<string>? CustomLogoutUrl { get; set; }
 
         /// <summary>
-        /// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-        /// matched
+        /// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         /// </summary>
         [Input("defaultRole")]
         public Input<string>? DefaultRole { get; set; }
@@ -244,11 +236,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// custom role attribute parsing scheme. Supported Role Parsing Schemes
-        /// &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML
-        /// Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the
-        /// entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-        /// “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+        /// custom role attribute parsing scheme. Supported Role Parsing Schemes &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
         /// </summary>
         [Input("roleAttrExtraction")]
         public Input<string>? RoleAttrExtraction { get; set; }
@@ -268,23 +256,21 @@ namespace Pulumi.JuniperMist.Org
     public sealed class SsoState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-        /// different from SP-initiated SLO process)
+        /// a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
         /// </summary>
         [Input("customLogoutUrl")]
         public Input<string>? CustomLogoutUrl { get; set; }
 
         /// <summary>
-        /// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-        /// matched
+        /// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         /// </summary>
         [Input("defaultRole")]
         public Input<string>? DefaultRole { get; set; }
 
         /// <summary>
-        /// Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
-        /// `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
-        /// `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
+        /// Random string generated during the SSO creation and used to generate the SAML URLs:
+        ///   * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
+        ///   * Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
@@ -335,11 +321,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// custom role attribute parsing scheme. Supported Role Parsing Schemes
-        /// &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML
-        /// Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the
-        /// entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-        /// “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+        /// custom role attribute parsing scheme. Supported Role Parsing Schemes &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
         /// </summary>
         [Input("roleAttrExtraction")]
         public Input<string>? RoleAttrExtraction { get; set; }

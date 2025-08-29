@@ -65,16 +65,20 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-     * /insight/top_app_by-bytes?wired=true
+     * When `type`==`apps`, list of applications are available through:
+     *   * List Applications
+     *   * List Gateway Applications
+     *   * /insight/top_app_by-bytes?wired=true
      * 
      */
     @Import(name="apps")
     private @Nullable Output<List<String>> apps;
 
     /**
-     * @return When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-     * /insight/top_app_by-bytes?wired=true
+     * @return When `type`==`apps`, list of applications are available through:
+     *   * List Applications
+     *   * List Gateway Applications
+     *   * /insight/top_app_by-bytes?wired=true
      * 
      */
     public Optional<Output<List<String>>> apps() {
@@ -458,8 +462,10 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apps When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-         * /insight/top_app_by-bytes?wired=true
+         * @param apps When `type`==`apps`, list of applications are available through:
+         *   * List Applications
+         *   * List Gateway Applications
+         *   * /insight/top_app_by-bytes?wired=true
          * 
          * @return builder
          * 
@@ -470,8 +476,10 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apps When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-         * /insight/top_app_by-bytes?wired=true
+         * @param apps When `type`==`apps`, list of applications are available through:
+         *   * List Applications
+         *   * List Gateway Applications
+         *   * /insight/top_app_by-bytes?wired=true
          * 
          * @return builder
          * 
@@ -481,8 +489,10 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apps When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-         * /insight/top_app_by-bytes?wired=true
+         * @param apps When `type`==`apps`, list of applications are available through:
+         *   * List Applications
+         *   * List Gateway Applications
+         *   * /insight/top_app_by-bytes?wired=true
          * 
          * @return builder
          * 

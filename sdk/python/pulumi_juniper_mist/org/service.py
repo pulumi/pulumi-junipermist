@@ -50,8 +50,10 @@ class ServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_categories: When `type`==`app_categories`, list of application categories are available through List App Category Definitions
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_subcategories: When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apps: When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-               /insight/top_app_by-bytes?wired=true
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apps: When `type`==`apps`, list of applications are available through:
+                 * List Applications
+                 * List Gateway Applications
+                 * /insight/top_app_by-bytes?wired=true
         :param pulumi.Input[_builtins.int] client_limit_down: 0 means unlimited, value from 0 to 107374182
         :param pulumi.Input[_builtins.int] client_limit_up: 0 means unlimited, value from 0 to 107374182
         :param pulumi.Input[_builtins.str] failover_policy: enum: `non_revertible`, `none`, `revertible`
@@ -162,8 +164,10 @@ class ServiceArgs:
     @pulumi.getter
     def apps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-        /insight/top_app_by-bytes?wired=true
+        When `type`==`apps`, list of applications are available through:
+          * List Applications
+          * List Gateway Applications
+          * /insight/top_app_by-bytes?wired=true
         """
         return pulumi.get(self, "apps")
 
@@ -411,8 +415,10 @@ class _ServiceState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_categories: When `type`==`app_categories`, list of application categories are available through List App Category Definitions
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_subcategories: When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apps: When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-               /insight/top_app_by-bytes?wired=true
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apps: When `type`==`apps`, list of applications are available through:
+                 * List Applications
+                 * List Gateway Applications
+                 * /insight/top_app_by-bytes?wired=true
         :param pulumi.Input[_builtins.int] client_limit_down: 0 means unlimited, value from 0 to 107374182
         :param pulumi.Input[_builtins.int] client_limit_up: 0 means unlimited, value from 0 to 107374182
         :param pulumi.Input[_builtins.str] failover_policy: enum: `non_revertible`, `none`, `revertible`
@@ -515,8 +521,10 @@ class _ServiceState:
     @pulumi.getter
     def apps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-        /insight/top_app_by-bytes?wired=true
+        When `type`==`apps`, list of applications are available through:
+          * List Applications
+          * List Gateway Applications
+          * /insight/top_app_by-bytes?wired=true
         """
         return pulumi.get(self, "apps")
 
@@ -796,8 +804,10 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_categories: When `type`==`app_categories`, list of application categories are available through List App Category Definitions
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_subcategories: When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apps: When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-               /insight/top_app_by-bytes?wired=true
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apps: When `type`==`apps`, list of applications are available through:
+                 * List Applications
+                 * List Gateway Applications
+                 * /insight/top_app_by-bytes?wired=true
         :param pulumi.Input[_builtins.int] client_limit_down: 0 means unlimited, value from 0 to 107374182
         :param pulumi.Input[_builtins.int] client_limit_up: 0 means unlimited, value from 0 to 107374182
         :param pulumi.Input[_builtins.str] failover_policy: enum: `non_revertible`, `none`, `revertible`
@@ -954,8 +964,10 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_categories: When `type`==`app_categories`, list of application categories are available through List App Category Definitions
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_subcategories: When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apps: When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-               /insight/top_app_by-bytes?wired=true
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apps: When `type`==`apps`, list of applications are available through:
+                 * List Applications
+                 * List Gateway Applications
+                 * /insight/top_app_by-bytes?wired=true
         :param pulumi.Input[_builtins.int] client_limit_down: 0 means unlimited, value from 0 to 107374182
         :param pulumi.Input[_builtins.int] client_limit_up: 0 means unlimited, value from 0 to 107374182
         :param pulumi.Input[_builtins.str] failover_policy: enum: `non_revertible`, `none`, `revertible`
@@ -1027,8 +1039,10 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def apps(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-        /insight/top_app_by-bytes?wired=true
+        When `type`==`apps`, list of applications are available through:
+          * List Applications
+          * List Gateway Applications
+          * /insight/top_app_by-bytes?wired=true
         """
         return pulumi.get(self, "apps")
 

@@ -17,16 +17,14 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
     public static final SsoState Empty = new SsoState();
 
     /**
-     * a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-     * different from SP-initiated SLO process)
+     * a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
      * 
      */
     @Import(name="customLogoutUrl")
     private @Nullable Output<String> customLogoutUrl;
 
     /**
-     * @return a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-     * different from SP-initiated SLO process)
+     * @return a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
      * 
      */
     public Optional<Output<String>> customLogoutUrl() {
@@ -34,16 +32,14 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-     * matched
+     * default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      * 
      */
     @Import(name="defaultRole")
     private @Nullable Output<String> defaultRole;
 
     /**
-     * @return default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-     * matched
+     * @return default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      * 
      */
     public Optional<Output<String>> defaultRole() {
@@ -51,18 +47,18 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
-     * `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
-     * `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
+     * Random string generated during the SSO creation and used to generate the SAML URLs:
+     *   * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
+     *   * Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
-     * `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
-     * `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
+     * @return Random string generated during the SSO creation and used to generate the SAML URLs:
+     *   * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
+     *   * Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
      * 
      */
     public Optional<Output<String>> domain() {
@@ -182,22 +178,14 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * custom role attribute parsing scheme. Supported Role Parsing Schemes
-     * &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML
-     * Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the
-     * entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-     * “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+     * custom role attribute parsing scheme. Supported Role Parsing Schemes &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
      * 
      */
     @Import(name="roleAttrExtraction")
     private @Nullable Output<String> roleAttrExtraction;
 
     /**
-     * @return custom role attribute parsing scheme. Supported Role Parsing Schemes
-     * &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML
-     * Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the
-     * entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-     * “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+     * @return custom role attribute parsing scheme. Supported Role Parsing Schemes &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
      * 
      */
     public Optional<Output<String>> roleAttrExtraction() {
@@ -256,8 +244,7 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customLogoutUrl a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-         * different from SP-initiated SLO process)
+         * @param customLogoutUrl a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
          * 
          * @return builder
          * 
@@ -268,8 +255,7 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customLogoutUrl a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-         * different from SP-initiated SLO process)
+         * @param customLogoutUrl a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
          * 
          * @return builder
          * 
@@ -279,8 +265,7 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultRole default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-         * matched
+         * @param defaultRole default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
          * 
          * @return builder
          * 
@@ -291,8 +276,7 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultRole default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-         * matched
+         * @param defaultRole default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
          * 
          * @return builder
          * 
@@ -302,9 +286,9 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
-         * `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
-         * `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
+         * @param domain Random string generated during the SSO creation and used to generate the SAML URLs:
+         *   * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
+         *   * Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
          * 
          * @return builder
          * 
@@ -315,9 +299,9 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
-         * `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
-         * `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
+         * @param domain Random string generated during the SSO creation and used to generate the SAML URLs:
+         *   * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
+         *   * Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
          * 
          * @return builder
          * 
@@ -483,11 +467,7 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleAttrExtraction custom role attribute parsing scheme. Supported Role Parsing Schemes
-         * &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML
-         * Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the
-         * entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-         * “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+         * @param roleAttrExtraction custom role attribute parsing scheme. Supported Role Parsing Schemes &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
          * 
          * @return builder
          * 
@@ -498,11 +478,7 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleAttrExtraction custom role attribute parsing scheme. Supported Role Parsing Schemes
-         * &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML
-         * Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the
-         * entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-         * “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+         * @param roleAttrExtraction custom role attribute parsing scheme. Supported Role Parsing Schemes &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
          * 
          * @return builder
          * 

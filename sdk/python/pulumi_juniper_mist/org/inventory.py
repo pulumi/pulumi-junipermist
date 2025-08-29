@@ -25,9 +25,11 @@ class InventoryArgs:
                  inventory: Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]] = None):
         """
         The set of arguments for constructing a Inventory resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]] inventory: Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-               Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-               already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+        :param pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]] inventory: Property key can be the device Claim Code or the device MAC Address:
+                 * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+                 * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+               
+                   >
         """
         pulumi.set(__self__, "org_id", org_id)
         if inventory is not None:
@@ -46,9 +48,11 @@ class InventoryArgs:
     @pulumi.getter
     def inventory(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]]:
         """
-        Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-        Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-        already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+        Property key can be the device Claim Code or the device MAC Address:
+          * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+          * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+
+            >
         """
         return pulumi.get(self, "inventory")
 
@@ -64,9 +68,11 @@ class _InventoryState:
                  org_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Inventory resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]] inventory: Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-               Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-               already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+        :param pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]] inventory: Property key can be the device Claim Code or the device MAC Address:
+                 * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+                 * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+               
+                   >
         """
         if inventory is not None:
             pulumi.set(__self__, "inventory", inventory)
@@ -77,9 +83,11 @@ class _InventoryState:
     @pulumi.getter
     def inventory(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]]:
         """
-        Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-        Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-        already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+        Property key can be the device Claim Code or the device MAC Address:
+          * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+          * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+
+            >
         """
         return pulumi.get(self, "inventory")
 
@@ -128,9 +136,11 @@ class Inventory(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]] inventory: Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-               Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-               already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]] inventory: Property key can be the device Claim Code or the device MAC Address:
+                 * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+                 * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+               
+                   >
         """
         ...
     @overload
@@ -207,9 +217,11 @@ class Inventory(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]] inventory: Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-               Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-               already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]] inventory: Property key can be the device Claim Code or the device MAC Address:
+                 * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+                 * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+               
+                   >
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -223,9 +235,11 @@ class Inventory(pulumi.CustomResource):
     @pulumi.getter
     def inventory(self) -> pulumi.Output[Mapping[str, 'outputs.InventoryInventory']]:
         """
-        Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-        Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-        already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+        Property key can be the device Claim Code or the device MAC Address:
+          * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+          * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+
+            >
         """
         return pulumi.get(self, "inventory")
 

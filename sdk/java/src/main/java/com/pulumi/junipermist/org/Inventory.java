@@ -39,18 +39,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/inventory:Inventory")
 public class Inventory extends com.pulumi.resources.CustomResource {
     /**
-     * Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-     * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
+     * Property key can be the device Claim Code or the device MAC Address:
+     *   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+     *   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+     *     
+     *     &gt; 
      * 
      */
     @Export(name="inventory", refs={Map.class,String.class,InventoryInventory.class}, tree="[0,1,2]")
     private Output<Map<String,InventoryInventory>> inventory;
 
     /**
-     * @return Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-     * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
+     * @return Property key can be the device Claim Code or the device MAC Address:
+     *   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+     *   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+     *     
+     *     &gt; 
      * 
      */
     public Output<Map<String,InventoryInventory>> inventory() {

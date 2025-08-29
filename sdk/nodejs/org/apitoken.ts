@@ -44,21 +44,21 @@ export class Apitoken extends pulumi.CustomResource {
     /**
      * email of the token creator / null if creator is deleted
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
-    public /*out*/ readonly key!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
+    declare public /*out*/ readonly key: pulumi.Output<string>;
     /**
      * Name of the token
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * List of privileges the token has on the orgs/sites
      */
-    public readonly privileges!: pulumi.Output<outputs.org.ApitokenPrivilege[]>;
+    declare public readonly privileges: pulumi.Output<outputs.org.ApitokenPrivilege[]>;
     /**
      * List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
      */
-    public readonly srcIps!: pulumi.Output<string[] | undefined>;
+    declare public readonly srcIps: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Apitoken resource with the given unique name, arguments, and options.
@@ -73,24 +73,24 @@ export class Apitoken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApitokenState | undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["privileges"] = state ? state.privileges : undefined;
-            resourceInputs["srcIps"] = state ? state.srcIps : undefined;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["privileges"] = state?.privileges;
+            resourceInputs["srcIps"] = state?.srcIps;
         } else {
             const args = argsOrState as ApitokenArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.privileges === undefined) && !opts.urn) {
+            if (args?.privileges === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privileges'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["privileges"] = args ? args.privileges : undefined;
-            resourceInputs["srcIps"] = args ? args.srcIps : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["privileges"] = args?.privileges;
+            resourceInputs["srcIps"] = args?.srcIps;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["key"] = undefined /*out*/;
         }

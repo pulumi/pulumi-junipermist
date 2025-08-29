@@ -83,8 +83,7 @@ type Gateway struct {
 	DnsSuffixes pulumi.StringArrayOutput `pulumi:"dnsSuffixes"`
 	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes GatewayExtraRoutesMapOutput `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-	// "{{myvar}}")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 GatewayExtraRoutes6MapOutput `pulumi:"extraRoutes6"`
 	// Property key is the profile name
 	IdpProfiles GatewayIdpProfilesMapOutput `pulumi:"idpProfiles"`
@@ -184,8 +183,7 @@ type gatewayState struct {
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
 	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes map[string]GatewayExtraRoutes `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-	// "{{myvar}}")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 map[string]GatewayExtraRoutes6 `pulumi:"extraRoutes6"`
 	// Property key is the profile name
 	IdpProfiles map[string]GatewayIdpProfiles `pulumi:"idpProfiles"`
@@ -250,8 +248,7 @@ type GatewayState struct {
 	DnsSuffixes pulumi.StringArrayInput
 	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes GatewayExtraRoutesMapInput
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-	// "{{myvar}}")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 GatewayExtraRoutes6MapInput
 	// Property key is the profile name
 	IdpProfiles GatewayIdpProfilesMapInput
@@ -320,8 +317,7 @@ type gatewayArgs struct {
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
 	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes map[string]GatewayExtraRoutes `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-	// "{{myvar}}")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 map[string]GatewayExtraRoutes6 `pulumi:"extraRoutes6"`
 	// Property key is the profile name
 	IdpProfiles map[string]GatewayIdpProfiles `pulumi:"idpProfiles"`
@@ -375,8 +371,7 @@ type GatewayArgs struct {
 	DnsSuffixes pulumi.StringArrayInput
 	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes GatewayExtraRoutesMapInput
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-	// "{{myvar}}")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 GatewayExtraRoutes6MapInput
 	// Property key is the profile name
 	IdpProfiles GatewayIdpProfilesMapInput
@@ -536,8 +531,7 @@ func (o GatewayOutput) ExtraRoutes() GatewayExtraRoutesMapOutput {
 	return o.ApplyT(func(v *Gateway) GatewayExtraRoutesMapOutput { return v.ExtraRoutes }).(GatewayExtraRoutesMapOutput)
 }
 
-// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-// "{{myvar}}")
+// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 func (o GatewayOutput) ExtraRoutes6() GatewayExtraRoutes6MapOutput {
 	return o.ApplyT(func(v *Gateway) GatewayExtraRoutes6MapOutput { return v.ExtraRoutes6 }).(GatewayExtraRoutes6MapOutput)
 }

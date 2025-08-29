@@ -16,8 +16,7 @@ func GetApiDebug(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "junipermist:apiDebug")
 }
 
-// Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
-// results in infinite timeout.
+// Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
 func GetApiTimeout(ctx *pulumi.Context) float64 {
 	return config.GetFloat64(ctx, "junipermist:apiTimeout")
 }
@@ -37,9 +36,8 @@ func GetPassword(ctx *pulumi.Context) string {
 	return config.Get(ctx, "junipermist:password")
 }
 
-// Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-// `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-// are supported.
+// Requests use the configured proxy to reach the Mist Cloud.
+// The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
 func GetProxy(ctx *pulumi.Context) string {
 	return config.Get(ctx, "junipermist:proxy")
 }

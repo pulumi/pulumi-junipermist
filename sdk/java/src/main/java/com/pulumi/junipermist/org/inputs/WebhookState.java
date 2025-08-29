@@ -191,18 +191,14 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-     * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-     * Topics)
+     * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
      * 
      */
     @Import(name="singleEventPerMessage")
     private @Nullable Output<Boolean> singleEventPerMessage;
 
     /**
-     * @return Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-     * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-     * Topics)
+     * @return Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
      * 
      */
     public Optional<Output<Boolean>> singleEventPerMessage() {
@@ -210,16 +206,14 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-     * the webhook receiver is configured to accept it.
+     * Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
      * 
      */
     @Import(name="splunkToken")
     private @Nullable Output<String> splunkToken;
 
     /**
-     * @return Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-     * the webhook receiver is configured to accept it.
+     * @return Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
      * 
      */
     public Optional<Output<String>> splunkToken() {
@@ -570,9 +564,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param singleEventPerMessage Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-         * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-         * Topics)
+         * @param singleEventPerMessage Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
          * 
          * @return builder
          * 
@@ -583,9 +575,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param singleEventPerMessage Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-         * `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-         * Topics)
+         * @param singleEventPerMessage Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
          * 
          * @return builder
          * 
@@ -595,8 +585,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param splunkToken Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-         * the webhook receiver is configured to accept it.
+         * @param splunkToken Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
          * 
          * @return builder
          * 
@@ -607,8 +596,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param splunkToken Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-         * the webhook receiver is configured to accept it.
+         * @param splunkToken Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
          * 
          * @return builder
          * 

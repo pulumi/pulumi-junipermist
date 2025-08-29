@@ -53,11 +53,8 @@ class WebhookArgs:
         :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`
         :param pulumi.Input[_builtins.str] oauth2_username: Required when `oauth2_grant_type`==`password`
         :param pulumi.Input[_builtins.str] secret: Only if `type`=`http-post`
-        :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-               `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-               Topics)
-        :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-               the webhook receiver is configured to accept it.
+        :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
+        :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         :param pulumi.Input[_builtins.str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
         :param pulumi.Input[_builtins.bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
@@ -275,9 +272,7 @@ class WebhookArgs:
     @pulumi.getter(name="singleEventPerMessage")
     def single_event_per_message(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-        `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-        Topics)
+        Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         """
         return pulumi.get(self, "single_event_per_message")
 
@@ -289,8 +284,7 @@ class WebhookArgs:
     @pulumi.getter(name="splunkToken")
     def splunk_token(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-        the webhook receiver is configured to accept it.
+        Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         """
         return pulumi.get(self, "splunk_token")
 
@@ -360,11 +354,8 @@ class _WebhookState:
         :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`
         :param pulumi.Input[_builtins.str] oauth2_username: Required when `oauth2_grant_type`==`password`
         :param pulumi.Input[_builtins.str] secret: Only if `type`=`http-post`
-        :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-               `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-               Topics)
-        :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-               the webhook receiver is configured to accept it.
+        :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
+        :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
         :param pulumi.Input[_builtins.str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
         :param pulumi.Input[_builtins.bool] verify_cert: When url uses HTTPS, whether to verify the certificate
@@ -567,9 +558,7 @@ class _WebhookState:
     @pulumi.getter(name="singleEventPerMessage")
     def single_event_per_message(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-        `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-        Topics)
+        Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         """
         return pulumi.get(self, "single_event_per_message")
 
@@ -590,8 +579,7 @@ class _WebhookState:
     @pulumi.getter(name="splunkToken")
     def splunk_token(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-        the webhook receiver is configured to accept it.
+        Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         """
         return pulumi.get(self, "splunk_token")
 
@@ -729,11 +717,8 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`
         :param pulumi.Input[_builtins.str] oauth2_username: Required when `oauth2_grant_type`==`password`
         :param pulumi.Input[_builtins.str] secret: Only if `type`=`http-post`
-        :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-               `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-               Topics)
-        :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-               the webhook receiver is configured to accept it.
+        :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
+        :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
         :param pulumi.Input[_builtins.str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
         :param pulumi.Input[_builtins.bool] verify_cert: When url uses HTTPS, whether to verify the certificate
@@ -908,11 +893,8 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`
         :param pulumi.Input[_builtins.str] oauth2_username: Required when `oauth2_grant_type`==`password`
         :param pulumi.Input[_builtins.str] secret: Only if `type`=`http-post`
-        :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-               `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-               Topics)
-        :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-               the webhook receiver is configured to accept it.
+        :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
+        :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
         :param pulumi.Input[_builtins.str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
         :param pulumi.Input[_builtins.bool] verify_cert: When url uses HTTPS, whether to verify the certificate
@@ -1048,9 +1030,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="singleEventPerMessage")
     def single_event_per_message(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to
-        `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook
-        Topics)
+        Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         """
         return pulumi.get(self, "single_event_per_message")
 
@@ -1063,8 +1043,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="splunkToken")
     def splunk_token(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-        the webhook receiver is configured to accept it.
+        Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         """
         return pulumi.get(self, "splunk_token")
 

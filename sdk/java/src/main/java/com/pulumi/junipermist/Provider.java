@@ -66,18 +66,16 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.password);
     }
     /**
-     * Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-     * `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-     * are supported.
+     * Requests use the configured proxy to reach the Mist Cloud.
+     * The value may be either a complete URL or a `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
      * 
      */
     @Export(name="proxy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proxy;
 
     /**
-     * @return Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-     * `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-     * are supported.
+     * @return Requests use the configured proxy to reach the Mist Cloud.
+     * The value may be either a complete URL or a `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
      * 
      */
     public Output<Optional<String>> proxy() {

@@ -45,15 +45,15 @@ export class WlanPortalTemplate extends pulumi.CustomResource {
         return obj['__pulumiType'] === WlanPortalTemplate.__pulumiType;
     }
 
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Portal template wlan settings
      */
-    public readonly portalTemplate!: pulumi.Output<outputs.org.WlanPortalTemplatePortalTemplate>;
+    declare public readonly portalTemplate: pulumi.Output<outputs.org.WlanPortalTemplatePortalTemplate>;
     /**
      * Org WLAN ID
      */
-    public readonly wlanId!: pulumi.Output<string>;
+    declare public readonly wlanId: pulumi.Output<string>;
 
     /**
      * Create a WlanPortalTemplate resource with the given unique name, arguments, and options.
@@ -68,23 +68,23 @@ export class WlanPortalTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WlanPortalTemplateState | undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["portalTemplate"] = state ? state.portalTemplate : undefined;
-            resourceInputs["wlanId"] = state ? state.wlanId : undefined;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["portalTemplate"] = state?.portalTemplate;
+            resourceInputs["wlanId"] = state?.wlanId;
         } else {
             const args = argsOrState as WlanPortalTemplateArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.portalTemplate === undefined) && !opts.urn) {
+            if (args?.portalTemplate === undefined && !opts.urn) {
                 throw new Error("Missing required property 'portalTemplate'");
             }
-            if ((!args || args.wlanId === undefined) && !opts.urn) {
+            if (args?.wlanId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'wlanId'");
             }
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["portalTemplate"] = args ? args.portalTemplate : undefined;
-            resourceInputs["wlanId"] = args ? args.wlanId : undefined;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["portalTemplate"] = args?.portalTemplate;
+            resourceInputs["wlanId"] = args?.wlanId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WlanPortalTemplate.__pulumiType, name, resourceInputs, opts);

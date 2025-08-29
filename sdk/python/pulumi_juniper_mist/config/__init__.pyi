@@ -21,8 +21,7 @@ Flag to enable debugging API calls. Default is false.
 
 apiTimeout: Optional[float]
 """
-Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
-results in infinite timeout.
+Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
 """
 
 apitoken: Optional[str]
@@ -42,9 +41,8 @@ For username/password authentication, the Mist Account password.
 
 proxy: Optional[str]
 """
-Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-`[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-are supported.
+Requests use the configured proxy to reach the Mist Cloud.
+The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
 """
 
 username: Optional[str]

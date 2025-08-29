@@ -76,9 +76,7 @@ type Ap struct {
 	Orientation pulumi.IntPtrOutput `pulumi:"orientation"`
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolOutput `pulumi:"poePassthrough"`
-	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-	// predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus
-	// deprecated)
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
 	PortConfig ApPortConfigMapOutput `pulumi:"portConfig"`
 	// Power related configs
 	PwrConfig ApPwrConfigPtrOutput `pulumi:"pwrConfig"`
@@ -91,8 +89,9 @@ type Ap struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// AP Uplink port configuration
 	UplinkPortConfig ApUplinkPortConfigPtrOutput `pulumi:"uplinkPortConfig"`
-	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-	// moved to ESL Config.
+	// USB AP settings
+	//   - Note: if native imagotag is enabled, BLE will be disabled automatically
+	//   - Note: legacy, new config moved to ESL Config.
 	UsbConfig ApUsbConfigPtrOutput `pulumi:"usbConfig"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapOutput `pulumi:"vars"`
@@ -186,9 +185,7 @@ type apState struct {
 	Orientation *int `pulumi:"orientation"`
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough *bool `pulumi:"poePassthrough"`
-	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-	// predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus
-	// deprecated)
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
 	PortConfig map[string]ApPortConfig `pulumi:"portConfig"`
 	// Power related configs
 	PwrConfig *ApPwrConfig `pulumi:"pwrConfig"`
@@ -201,8 +198,9 @@ type apState struct {
 	Type *string `pulumi:"type"`
 	// AP Uplink port configuration
 	UplinkPortConfig *ApUplinkPortConfig `pulumi:"uplinkPortConfig"`
-	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-	// moved to ESL Config.
+	// USB AP settings
+	//   - Note: if native imagotag is enabled, BLE will be disabled automatically
+	//   - Note: legacy, new config moved to ESL Config.
 	UsbConfig *ApUsbConfig `pulumi:"usbConfig"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
@@ -261,9 +259,7 @@ type ApState struct {
 	Orientation pulumi.IntPtrInput
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolPtrInput
-	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-	// predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus
-	// deprecated)
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
 	PortConfig ApPortConfigMapInput
 	// Power related configs
 	PwrConfig ApPwrConfigPtrInput
@@ -276,8 +272,9 @@ type ApState struct {
 	Type pulumi.StringPtrInput
 	// AP Uplink port configuration
 	UplinkPortConfig ApUplinkPortConfigPtrInput
-	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-	// moved to ESL Config.
+	// USB AP settings
+	//   - Note: if native imagotag is enabled, BLE will be disabled automatically
+	//   - Note: legacy, new config moved to ESL Config.
 	UsbConfig ApUsbConfigPtrInput
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
@@ -332,9 +329,7 @@ type apArgs struct {
 	Orientation *int `pulumi:"orientation"`
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough *bool `pulumi:"poePassthrough"`
-	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-	// predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus
-	// deprecated)
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
 	PortConfig map[string]ApPortConfig `pulumi:"portConfig"`
 	// Power related configs
 	PwrConfig *ApPwrConfig `pulumi:"pwrConfig"`
@@ -343,8 +338,9 @@ type apArgs struct {
 	SiteId      string         `pulumi:"siteId"`
 	// AP Uplink port configuration
 	UplinkPortConfig *ApUplinkPortConfig `pulumi:"uplinkPortConfig"`
-	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-	// moved to ESL Config.
+	// USB AP settings
+	//   - Note: if native imagotag is enabled, BLE will be disabled automatically
+	//   - Note: legacy, new config moved to ESL Config.
 	UsbConfig *ApUsbConfig `pulumi:"usbConfig"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
@@ -396,9 +392,7 @@ type ApArgs struct {
 	Orientation pulumi.IntPtrInput
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolPtrInput
-	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-	// predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus
-	// deprecated)
+	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
 	PortConfig ApPortConfigMapInput
 	// Power related configs
 	PwrConfig ApPwrConfigPtrInput
@@ -407,8 +401,9 @@ type ApArgs struct {
 	SiteId      pulumi.StringInput
 	// AP Uplink port configuration
 	UplinkPortConfig ApUplinkPortConfigPtrInput
-	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-	// moved to ESL Config.
+	// USB AP settings
+	//   - Note: if native imagotag is enabled, BLE will be disabled automatically
+	//   - Note: legacy, new config moved to ESL Config.
 	UsbConfig ApUsbConfigPtrInput
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
@@ -643,9 +638,7 @@ func (o ApOutput) PoePassthrough() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Ap) pulumi.BoolOutput { return v.PoePassthrough }).(pulumi.BoolOutput)
 }
 
-// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-// predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus
-// deprecated)
+// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
 func (o ApOutput) PortConfig() ApPortConfigMapOutput {
 	return o.ApplyT(func(v *Ap) ApPortConfigMapOutput { return v.PortConfig }).(ApPortConfigMapOutput)
 }
@@ -679,8 +672,9 @@ func (o ApOutput) UplinkPortConfig() ApUplinkPortConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApUplinkPortConfigPtrOutput { return v.UplinkPortConfig }).(ApUplinkPortConfigPtrOutput)
 }
 
-// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-// moved to ESL Config.
+// USB AP settings
+//   - Note: if native imagotag is enabled, BLE will be disabled automatically
+//   - Note: legacy, new config moved to ESL Config.
 func (o ApOutput) UsbConfig() ApUsbConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApUsbConfigPtrOutput { return v.UsbConfig }).(ApUsbConfigPtrOutput)
 }

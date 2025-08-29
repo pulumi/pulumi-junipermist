@@ -59,9 +59,7 @@ type Networktemplate struct {
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
 	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
 	OspfAreas NetworktemplateOspfAreasMapOutput `pulumi:"ospfAreas"`
-	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
-	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 mirroring ports is allowed
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
 	PortMirroring NetworktemplatePortMirroringMapOutput `pulumi:"portMirroring"`
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages NetworktemplatePortUsagesMapOutput `pulumi:"portUsages"`
@@ -140,9 +138,7 @@ type networktemplateState struct {
 	NtpServers []string `pulumi:"ntpServers"`
 	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
 	OspfAreas map[string]NetworktemplateOspfAreas `pulumi:"ospfAreas"`
-	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
-	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 mirroring ports is allowed
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
 	PortMirroring map[string]NetworktemplatePortMirroring `pulumi:"portMirroring"`
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages map[string]NetworktemplatePortUsages `pulumi:"portUsages"`
@@ -189,9 +185,7 @@ type NetworktemplateState struct {
 	NtpServers pulumi.StringArrayInput
 	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
 	OspfAreas NetworktemplateOspfAreasMapInput
-	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
-	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 mirroring ports is allowed
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
 	PortMirroring NetworktemplatePortMirroringMapInput
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages NetworktemplatePortUsagesMapInput
@@ -242,9 +236,7 @@ type networktemplateArgs struct {
 	NtpServers []string `pulumi:"ntpServers"`
 	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
 	OspfAreas map[string]NetworktemplateOspfAreas `pulumi:"ospfAreas"`
-	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
-	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 mirroring ports is allowed
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
 	PortMirroring map[string]NetworktemplatePortMirroring `pulumi:"portMirroring"`
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages map[string]NetworktemplatePortUsages `pulumi:"portUsages"`
@@ -292,9 +284,7 @@ type NetworktemplateArgs struct {
 	NtpServers pulumi.StringArrayInput
 	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
 	OspfAreas NetworktemplateOspfAreasMapInput
-	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
-	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 mirroring ports is allowed
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
 	PortMirroring NetworktemplatePortMirroringMapInput
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages NetworktemplatePortUsagesMapInput
@@ -472,9 +462,7 @@ func (o NetworktemplateOutput) OspfAreas() NetworktemplateOspfAreasMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateOspfAreasMapOutput { return v.OspfAreas }).(NetworktemplateOspfAreasMapOutput)
 }
 
-// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
-// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-// maximum 4 mirroring ports is allowed
+// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
 func (o NetworktemplateOutput) PortMirroring() NetworktemplatePortMirroringMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplatePortMirroringMapOutput { return v.PortMirroring }).(NetworktemplatePortMirroringMapOutput)
 }

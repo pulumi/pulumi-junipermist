@@ -106,108 +106,108 @@ export class Nacidp extends pulumi.CustomResource {
     /**
      * Required if `ldapType`==`custom`, LDAP filter that will identify the type of group
      */
-    public readonly groupFilter!: pulumi.Output<string | undefined>;
+    declare public readonly groupFilter: pulumi.Output<string | undefined>;
     /**
      * enum: `ldap`, `mxedgeProxy`, `oauth`
      */
-    public readonly idpType!: pulumi.Output<string>;
+    declare public readonly idpType: pulumi.Output<string>;
     /**
      * Required if `idpType`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
      */
-    public readonly ldapBaseDn!: pulumi.Output<string | undefined>;
+    declare public readonly ldapBaseDn: pulumi.Output<string | undefined>;
     /**
      * Required if `idpType`==`ldap`, the account used to authenticate against the LDAP
      */
-    public readonly ldapBindDn!: pulumi.Output<string | undefined>;
+    declare public readonly ldapBindDn: pulumi.Output<string | undefined>;
     /**
      * Required if `idpType`==`ldap`, the password used to authenticate against the LDAP
      */
-    public readonly ldapBindPassword!: pulumi.Output<string | undefined>;
+    declare public readonly ldapBindPassword: pulumi.Output<string | undefined>;
     /**
      * Required if `idpType`==`ldap`, list of CA certificates to validate the LDAP certificate
      */
-    public readonly ldapCacerts!: pulumi.Output<string[] | undefined>;
+    declare public readonly ldapCacerts: pulumi.Output<string[] | undefined>;
     /**
      * If `idpType`==`ldap`, LDAPS Client certificate
      */
-    public readonly ldapClientCert!: pulumi.Output<string | undefined>;
+    declare public readonly ldapClientCert: pulumi.Output<string | undefined>;
     /**
      * If `idpType`==`ldap`, Key for the `ldapClientCert`
      */
-    public readonly ldapClientKey!: pulumi.Output<string | undefined>;
+    declare public readonly ldapClientKey: pulumi.Output<string | undefined>;
     /**
      * If `ldapType`==`custom`
      */
-    public readonly ldapGroupAttr!: pulumi.Output<string | undefined>;
+    declare public readonly ldapGroupAttr: pulumi.Output<string | undefined>;
     /**
      * If `ldapType`==`custom`
      */
-    public readonly ldapGroupDn!: pulumi.Output<string | undefined>;
+    declare public readonly ldapGroupDn: pulumi.Output<string | undefined>;
     /**
      * If `idpType`==`ldap`, whether to recursively resolve LDAP groups
      */
-    public readonly ldapResolveGroups!: pulumi.Output<boolean>;
+    declare public readonly ldapResolveGroups: pulumi.Output<boolean>;
     /**
      * If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
      */
-    public readonly ldapServerHosts!: pulumi.Output<string[] | undefined>;
+    declare public readonly ldapServerHosts: pulumi.Output<string[] | undefined>;
     /**
      * if `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `pingIdentity`
      */
-    public readonly ldapType!: pulumi.Output<string | undefined>;
+    declare public readonly ldapType: pulumi.Output<string | undefined>;
     /**
      * Required if `ldapType`==`custom`, LDAP filter that will identify the type of user
      */
-    public readonly ldapUserFilter!: pulumi.Output<string | undefined>;
+    declare public readonly ldapUserFilter: pulumi.Output<string | undefined>;
     /**
      * Required if `ldapType`==`custom`,LDAP filter that will identify the type of member
      */
-    public readonly memberFilter!: pulumi.Output<string | undefined>;
+    declare public readonly memberFilter: pulumi.Output<string | undefined>;
     /**
      * Name
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Required if `idpType`==`oauth`, Client Credentials
      */
-    public readonly oauthCcClientId!: pulumi.Output<string | undefined>;
+    declare public readonly oauthCcClientId: pulumi.Output<string | undefined>;
     /**
      * Required if `idpType`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
      */
-    public readonly oauthCcClientSecret!: pulumi.Output<string | undefined>;
+    declare public readonly oauthCcClientSecret: pulumi.Output<string | undefined>;
     /**
      * If `idpType`==`oauth`
      */
-    public readonly oauthDiscoveryUrl!: pulumi.Output<string | undefined>;
+    declare public readonly oauthDiscoveryUrl: pulumi.Output<string | undefined>;
     /**
      * enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
      */
-    public readonly oauthPingIdentityRegion!: pulumi.Output<string>;
+    declare public readonly oauthPingIdentityRegion: pulumi.Output<string>;
     /**
      * If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
      */
-    public readonly oauthRopcClientId!: pulumi.Output<string | undefined>;
+    declare public readonly oauthRopcClientId: pulumi.Output<string | undefined>;
     /**
      * If `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
      */
-    public readonly oauthRopcClientSecret!: pulumi.Output<string | undefined>;
+    declare public readonly oauthRopcClientSecret: pulumi.Output<string | undefined>;
     /**
      * Required if `idpType`==`oauth`, oauth*tenant*id
      */
-    public readonly oauthTenantId!: pulumi.Output<string | undefined>;
+    declare public readonly oauthTenantId: pulumi.Output<string | undefined>;
     /**
      * if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
      */
-    public readonly oauthType!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly oauthType: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * If `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
      */
-    public readonly scimEnabled!: pulumi.Output<boolean>;
+    declare public readonly scimEnabled: pulumi.Output<boolean>;
     /**
      * If `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
      */
-    public readonly scimSecretToken!: pulumi.Output<string>;
+    declare public readonly scimSecretToken: pulumi.Output<string>;
 
     /**
      * Create a Nacidp resource with the given unique name, arguments, and options.
@@ -222,68 +222,68 @@ export class Nacidp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NacidpState | undefined;
-            resourceInputs["groupFilter"] = state ? state.groupFilter : undefined;
-            resourceInputs["idpType"] = state ? state.idpType : undefined;
-            resourceInputs["ldapBaseDn"] = state ? state.ldapBaseDn : undefined;
-            resourceInputs["ldapBindDn"] = state ? state.ldapBindDn : undefined;
-            resourceInputs["ldapBindPassword"] = state ? state.ldapBindPassword : undefined;
-            resourceInputs["ldapCacerts"] = state ? state.ldapCacerts : undefined;
-            resourceInputs["ldapClientCert"] = state ? state.ldapClientCert : undefined;
-            resourceInputs["ldapClientKey"] = state ? state.ldapClientKey : undefined;
-            resourceInputs["ldapGroupAttr"] = state ? state.ldapGroupAttr : undefined;
-            resourceInputs["ldapGroupDn"] = state ? state.ldapGroupDn : undefined;
-            resourceInputs["ldapResolveGroups"] = state ? state.ldapResolveGroups : undefined;
-            resourceInputs["ldapServerHosts"] = state ? state.ldapServerHosts : undefined;
-            resourceInputs["ldapType"] = state ? state.ldapType : undefined;
-            resourceInputs["ldapUserFilter"] = state ? state.ldapUserFilter : undefined;
-            resourceInputs["memberFilter"] = state ? state.memberFilter : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["oauthCcClientId"] = state ? state.oauthCcClientId : undefined;
-            resourceInputs["oauthCcClientSecret"] = state ? state.oauthCcClientSecret : undefined;
-            resourceInputs["oauthDiscoveryUrl"] = state ? state.oauthDiscoveryUrl : undefined;
-            resourceInputs["oauthPingIdentityRegion"] = state ? state.oauthPingIdentityRegion : undefined;
-            resourceInputs["oauthRopcClientId"] = state ? state.oauthRopcClientId : undefined;
-            resourceInputs["oauthRopcClientSecret"] = state ? state.oauthRopcClientSecret : undefined;
-            resourceInputs["oauthTenantId"] = state ? state.oauthTenantId : undefined;
-            resourceInputs["oauthType"] = state ? state.oauthType : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["scimEnabled"] = state ? state.scimEnabled : undefined;
-            resourceInputs["scimSecretToken"] = state ? state.scimSecretToken : undefined;
+            resourceInputs["groupFilter"] = state?.groupFilter;
+            resourceInputs["idpType"] = state?.idpType;
+            resourceInputs["ldapBaseDn"] = state?.ldapBaseDn;
+            resourceInputs["ldapBindDn"] = state?.ldapBindDn;
+            resourceInputs["ldapBindPassword"] = state?.ldapBindPassword;
+            resourceInputs["ldapCacerts"] = state?.ldapCacerts;
+            resourceInputs["ldapClientCert"] = state?.ldapClientCert;
+            resourceInputs["ldapClientKey"] = state?.ldapClientKey;
+            resourceInputs["ldapGroupAttr"] = state?.ldapGroupAttr;
+            resourceInputs["ldapGroupDn"] = state?.ldapGroupDn;
+            resourceInputs["ldapResolveGroups"] = state?.ldapResolveGroups;
+            resourceInputs["ldapServerHosts"] = state?.ldapServerHosts;
+            resourceInputs["ldapType"] = state?.ldapType;
+            resourceInputs["ldapUserFilter"] = state?.ldapUserFilter;
+            resourceInputs["memberFilter"] = state?.memberFilter;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["oauthCcClientId"] = state?.oauthCcClientId;
+            resourceInputs["oauthCcClientSecret"] = state?.oauthCcClientSecret;
+            resourceInputs["oauthDiscoveryUrl"] = state?.oauthDiscoveryUrl;
+            resourceInputs["oauthPingIdentityRegion"] = state?.oauthPingIdentityRegion;
+            resourceInputs["oauthRopcClientId"] = state?.oauthRopcClientId;
+            resourceInputs["oauthRopcClientSecret"] = state?.oauthRopcClientSecret;
+            resourceInputs["oauthTenantId"] = state?.oauthTenantId;
+            resourceInputs["oauthType"] = state?.oauthType;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["scimEnabled"] = state?.scimEnabled;
+            resourceInputs["scimSecretToken"] = state?.scimSecretToken;
         } else {
             const args = argsOrState as NacidpArgs | undefined;
-            if ((!args || args.idpType === undefined) && !opts.urn) {
+            if (args?.idpType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'idpType'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["groupFilter"] = args ? args.groupFilter : undefined;
-            resourceInputs["idpType"] = args ? args.idpType : undefined;
-            resourceInputs["ldapBaseDn"] = args ? args.ldapBaseDn : undefined;
-            resourceInputs["ldapBindDn"] = args ? args.ldapBindDn : undefined;
-            resourceInputs["ldapBindPassword"] = args ? args.ldapBindPassword : undefined;
-            resourceInputs["ldapCacerts"] = args ? args.ldapCacerts : undefined;
-            resourceInputs["ldapClientCert"] = args ? args.ldapClientCert : undefined;
-            resourceInputs["ldapClientKey"] = args ? args.ldapClientKey : undefined;
-            resourceInputs["ldapGroupAttr"] = args ? args.ldapGroupAttr : undefined;
-            resourceInputs["ldapGroupDn"] = args ? args.ldapGroupDn : undefined;
-            resourceInputs["ldapResolveGroups"] = args ? args.ldapResolveGroups : undefined;
-            resourceInputs["ldapServerHosts"] = args ? args.ldapServerHosts : undefined;
-            resourceInputs["ldapType"] = args ? args.ldapType : undefined;
-            resourceInputs["ldapUserFilter"] = args ? args.ldapUserFilter : undefined;
-            resourceInputs["memberFilter"] = args ? args.memberFilter : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["oauthCcClientId"] = args ? args.oauthCcClientId : undefined;
-            resourceInputs["oauthCcClientSecret"] = args ? args.oauthCcClientSecret : undefined;
-            resourceInputs["oauthDiscoveryUrl"] = args ? args.oauthDiscoveryUrl : undefined;
-            resourceInputs["oauthPingIdentityRegion"] = args ? args.oauthPingIdentityRegion : undefined;
-            resourceInputs["oauthRopcClientId"] = args ? args.oauthRopcClientId : undefined;
-            resourceInputs["oauthRopcClientSecret"] = args ? args.oauthRopcClientSecret : undefined;
-            resourceInputs["oauthTenantId"] = args ? args.oauthTenantId : undefined;
-            resourceInputs["oauthType"] = args ? args.oauthType : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["scimEnabled"] = args ? args.scimEnabled : undefined;
-            resourceInputs["scimSecretToken"] = args ? args.scimSecretToken : undefined;
+            resourceInputs["groupFilter"] = args?.groupFilter;
+            resourceInputs["idpType"] = args?.idpType;
+            resourceInputs["ldapBaseDn"] = args?.ldapBaseDn;
+            resourceInputs["ldapBindDn"] = args?.ldapBindDn;
+            resourceInputs["ldapBindPassword"] = args?.ldapBindPassword;
+            resourceInputs["ldapCacerts"] = args?.ldapCacerts;
+            resourceInputs["ldapClientCert"] = args?.ldapClientCert;
+            resourceInputs["ldapClientKey"] = args?.ldapClientKey;
+            resourceInputs["ldapGroupAttr"] = args?.ldapGroupAttr;
+            resourceInputs["ldapGroupDn"] = args?.ldapGroupDn;
+            resourceInputs["ldapResolveGroups"] = args?.ldapResolveGroups;
+            resourceInputs["ldapServerHosts"] = args?.ldapServerHosts;
+            resourceInputs["ldapType"] = args?.ldapType;
+            resourceInputs["ldapUserFilter"] = args?.ldapUserFilter;
+            resourceInputs["memberFilter"] = args?.memberFilter;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["oauthCcClientId"] = args?.oauthCcClientId;
+            resourceInputs["oauthCcClientSecret"] = args?.oauthCcClientSecret;
+            resourceInputs["oauthDiscoveryUrl"] = args?.oauthDiscoveryUrl;
+            resourceInputs["oauthPingIdentityRegion"] = args?.oauthPingIdentityRegion;
+            resourceInputs["oauthRopcClientId"] = args?.oauthRopcClientId;
+            resourceInputs["oauthRopcClientSecret"] = args?.oauthRopcClientSecret;
+            resourceInputs["oauthTenantId"] = args?.oauthTenantId;
+            resourceInputs["oauthType"] = args?.oauthType;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["scimEnabled"] = args?.scimEnabled;
+            resourceInputs["scimSecretToken"] = args?.scimSecretToken;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Nacidp.__pulumiType, name, resourceInputs, opts);

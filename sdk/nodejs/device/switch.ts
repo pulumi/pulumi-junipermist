@@ -51,170 +51,165 @@ export class Switch extends pulumi.CustomResource {
         return obj['__pulumiType'] === Switch.__pulumiType;
     }
 
-    public readonly aclPolicies!: pulumi.Output<outputs.device.SwitchAclPolicy[] | undefined>;
+    declare public readonly aclPolicies: pulumi.Output<outputs.device.SwitchAclPolicy[] | undefined>;
     /**
      * ACL Tags to identify traffic source or destination. Key name is the tag name
      */
-    public readonly aclTags!: pulumi.Output<{[key: string]: outputs.device.SwitchAclTags} | undefined>;
+    declare public readonly aclTags: pulumi.Output<{[key: string]: outputs.device.SwitchAclTags} | undefined>;
     /**
      * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
-    public readonly additionalConfigCmds!: pulumi.Output<string[] | undefined>;
-    public readonly deviceId!: pulumi.Output<string>;
-    public readonly dhcpSnooping!: pulumi.Output<outputs.device.SwitchDhcpSnooping | undefined>;
-    public readonly dhcpdConfig!: pulumi.Output<outputs.device.SwitchDhcpdConfig | undefined>;
+    declare public readonly additionalConfigCmds: pulumi.Output<string[] | undefined>;
+    declare public readonly deviceId: pulumi.Output<string>;
+    declare public readonly dhcpSnooping: pulumi.Output<outputs.device.SwitchDhcpSnooping | undefined>;
+    declare public readonly dhcpdConfig: pulumi.Output<outputs.device.SwitchDhcpdConfig | undefined>;
     /**
-     * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-     * `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+     * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
      */
-    public readonly disableAutoConfig!: pulumi.Output<boolean>;
-    /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
-     */
-    public readonly dnsServers!: pulumi.Output<string[]>;
+    declare public readonly disableAutoConfig: pulumi.Output<boolean>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    public readonly dnsSuffixes!: pulumi.Output<string[]>;
+    declare public readonly dnsServers: pulumi.Output<string[]>;
+    /**
+     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     */
+    declare public readonly dnsSuffixes: pulumi.Output<string[]>;
     /**
      * Property key is the destination CIDR (e.g. "10.0.0.0/8")
      */
-    public readonly extraRoutes!: pulumi.Output<{[key: string]: outputs.device.SwitchExtraRoutes} | undefined>;
+    declare public readonly extraRoutes: pulumi.Output<{[key: string]: outputs.device.SwitchExtraRoutes} | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
      */
-    public readonly extraRoutes6!: pulumi.Output<{[key: string]: outputs.device.SwitchExtraRoutes6} | undefined>;
-    public /*out*/ readonly image1Url!: pulumi.Output<string>;
-    public /*out*/ readonly image2Url!: pulumi.Output<string>;
-    public /*out*/ readonly image3Url!: pulumi.Output<string>;
+    declare public readonly extraRoutes6: pulumi.Output<{[key: string]: outputs.device.SwitchExtraRoutes6} | undefined>;
+    declare public /*out*/ readonly image1Url: pulumi.Output<string>;
+    declare public /*out*/ readonly image2Url: pulumi.Output<string>;
+    declare public /*out*/ readonly image3Url: pulumi.Output<string>;
     /**
      * Junos IP Config
      */
-    public readonly ipConfig!: pulumi.Output<outputs.device.SwitchIpConfig | undefined>;
+    declare public readonly ipConfig: pulumi.Output<outputs.device.SwitchIpConfig | undefined>;
     /**
-     * Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
-     * "ge-0/0/0-10")
+     * Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. "ge-0/0/0-10")
      */
-    public readonly localPortConfig!: pulumi.Output<{[key: string]: outputs.device.SwitchLocalPortConfig} | undefined>;
+    declare public readonly localPortConfig: pulumi.Output<{[key: string]: outputs.device.SwitchLocalPortConfig} | undefined>;
     /**
      * Device MAC address
      */
-    public /*out*/ readonly mac!: pulumi.Output<string>;
+    declare public /*out*/ readonly mac: pulumi.Output<string>;
     /**
-     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-     * the adopted switch/gateway to be managed/configured by Mist.
+     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
      */
-    public readonly managed!: pulumi.Output<boolean>;
+    declare public readonly managed: pulumi.Output<boolean>;
     /**
      * Map where the device belongs to
      */
-    public readonly mapId!: pulumi.Output<string | undefined>;
+    declare public readonly mapId: pulumi.Output<string | undefined>;
     /**
      * Enable mistNac to use RadSec
      */
-    public readonly mistNac!: pulumi.Output<outputs.device.SwitchMistNac | undefined>;
+    declare public readonly mistNac: pulumi.Output<outputs.device.SwitchMistNac | undefined>;
     /**
      * Device Model
      */
-    public /*out*/ readonly model!: pulumi.Output<string>;
-    public readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly model: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Property key is network name
      */
-    public readonly networks!: pulumi.Output<{[key: string]: outputs.device.SwitchNetworks} | undefined>;
-    public readonly notes!: pulumi.Output<string | undefined>;
+    declare public readonly networks: pulumi.Output<{[key: string]: outputs.device.SwitchNetworks} | undefined>;
+    declare public readonly notes: pulumi.Output<string | undefined>;
     /**
      * List of NTP servers specific to this device. By default, those in Site Settings will be used
      */
-    public readonly ntpServers!: pulumi.Output<string[]>;
+    declare public readonly ntpServers: pulumi.Output<string[]>;
     /**
-     * Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-     * re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+     * Switch OOB IP Config:
+     *   - If HA configuration: key parameter will be nodeX (eg: node1)
+     *   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
      */
-    public readonly oobIpConfig!: pulumi.Output<outputs.device.SwitchOobIpConfig | undefined>;
-    public /*out*/ readonly orgId!: pulumi.Output<string>;
+    declare public readonly oobIpConfig: pulumi.Output<outputs.device.SwitchOobIpConfig | undefined>;
+    declare public /*out*/ readonly orgId: pulumi.Output<string>;
     /**
      * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
      */
-    public readonly ospfAreas!: pulumi.Output<{[key: string]: outputs.device.SwitchOspfAreas} | undefined>;
-    public readonly ospfConfig!: pulumi.Output<outputs.device.SwitchOspfConfig | undefined>;
+    declare public readonly ospfAreas: pulumi.Output<{[key: string]: outputs.device.SwitchOspfAreas} | undefined>;
+    declare public readonly ospfConfig: pulumi.Output<outputs.device.SwitchOspfConfig | undefined>;
     /**
      * Property key is the network name. Defines the additional IP Addresses configured on the device.
      */
-    public readonly otherIpConfigs!: pulumi.Output<{[key: string]: outputs.device.SwitchOtherIpConfigs} | undefined>;
+    declare public readonly otherIpConfigs: pulumi.Output<{[key: string]: outputs.device.SwitchOtherIpConfigs} | undefined>;
     /**
      * Property key is the port name or range (e.g. "ge-0/0/0-10")
      */
-    public readonly portConfig!: pulumi.Output<{[key: string]: outputs.device.SwitchPortConfig} | undefined>;
+    declare public readonly portConfig: pulumi.Output<{[key: string]: outputs.device.SwitchPortConfig} | undefined>;
     /**
-     * Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-     * portUsage without having to create a new port_usage.
+     * Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the portUsage without having to create a new port_usage.
      */
-    public readonly portConfigOverwrite!: pulumi.Output<{[key: string]: outputs.device.SwitchPortConfigOverwrite} | undefined>;
+    declare public readonly portConfigOverwrite: pulumi.Output<{[key: string]: outputs.device.SwitchPortConfigOverwrite} | undefined>;
     /**
-     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
-     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 mirroring ports is allowed
+     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      */
-    public readonly portMirroring!: pulumi.Output<{[key: string]: outputs.device.SwitchPortMirroring} | undefined>;
+    declare public readonly portMirroring: pulumi.Output<{[key: string]: outputs.device.SwitchPortMirroring} | undefined>;
     /**
      * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
      */
-    public readonly portUsages!: pulumi.Output<{[key: string]: outputs.device.SwitchPortUsages} | undefined>;
+    declare public readonly portUsages: pulumi.Output<{[key: string]: outputs.device.SwitchPortUsages} | undefined>;
     /**
      * Junos Radius config
      */
-    public readonly radiusConfig!: pulumi.Output<outputs.device.SwitchRadiusConfig | undefined>;
-    public readonly remoteSyslog!: pulumi.Output<outputs.device.SwitchRemoteSyslog | undefined>;
-    public readonly role!: pulumi.Output<string | undefined>;
+    declare public readonly radiusConfig: pulumi.Output<outputs.device.SwitchRadiusConfig | undefined>;
+    declare public readonly remoteSyslog: pulumi.Output<outputs.device.SwitchRemoteSyslog | undefined>;
+    declare public readonly role: pulumi.Output<string | undefined>;
     /**
      * Used for OSPF / BGP / EVPN
      */
-    public readonly routerId!: pulumi.Output<string>;
+    declare public readonly routerId: pulumi.Output<string>;
     /**
      * Device Serial
      */
-    public /*out*/ readonly serial!: pulumi.Output<string>;
-    public readonly siteId!: pulumi.Output<string>;
-    public readonly snmpConfig!: pulumi.Output<outputs.device.SwitchSnmpConfig | undefined>;
-    public readonly stpConfig!: pulumi.Output<outputs.device.SwitchStpConfig | undefined>;
+    declare public /*out*/ readonly serial: pulumi.Output<string>;
+    declare public readonly siteId: pulumi.Output<string>;
+    declare public readonly snmpConfig: pulumi.Output<outputs.device.SwitchSnmpConfig | undefined>;
+    declare public readonly stpConfig: pulumi.Output<outputs.device.SwitchStpConfig | undefined>;
     /**
      * Switch settings
      */
-    public readonly switchMgmt!: pulumi.Output<outputs.device.SwitchSwitchMgmt | undefined>;
+    declare public readonly switchMgmt: pulumi.Output<outputs.device.SwitchSwitchMgmt | undefined>;
     /**
      * Device Type. enum: `switch`
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Whether to use it for snmp / syslog / tacplus / radius
      */
-    public readonly useRouterIdAsSourceIp!: pulumi.Output<boolean>;
+    declare public readonly useRouterIdAsSourceIp: pulumi.Output<boolean>;
     /**
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
-    public readonly vars!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly vars: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Required for preprovisioned Virtual Chassis
      */
-    public readonly virtualChassis!: pulumi.Output<outputs.device.SwitchVirtualChassis | undefined>;
-    public readonly vrfConfig!: pulumi.Output<outputs.device.SwitchVrfConfig | undefined>;
+    declare public readonly virtualChassis: pulumi.Output<outputs.device.SwitchVirtualChassis | undefined>;
+    declare public readonly vrfConfig: pulumi.Output<outputs.device.SwitchVrfConfig | undefined>;
     /**
      * Property key is the network name
      */
-    public readonly vrfInstances!: pulumi.Output<{[key: string]: outputs.device.SwitchVrfInstances} | undefined>;
+    declare public readonly vrfInstances: pulumi.Output<{[key: string]: outputs.device.SwitchVrfInstances} | undefined>;
     /**
      * Junos VRRP config
      */
-    public readonly vrrpConfig!: pulumi.Output<outputs.device.SwitchVrrpConfig | undefined>;
+    declare public readonly vrrpConfig: pulumi.Output<outputs.device.SwitchVrrpConfig | undefined>;
     /**
      * X in pixel
      */
-    public readonly x!: pulumi.Output<number | undefined>;
+    declare public readonly x: pulumi.Output<number | undefined>;
     /**
      * Y in pixel
      */
-    public readonly y!: pulumi.Output<number | undefined>;
+    declare public readonly y: pulumi.Output<number | undefined>;
 
     /**
      * Create a Switch resource with the given unique name, arguments, and options.
@@ -229,110 +224,110 @@ export class Switch extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SwitchState | undefined;
-            resourceInputs["aclPolicies"] = state ? state.aclPolicies : undefined;
-            resourceInputs["aclTags"] = state ? state.aclTags : undefined;
-            resourceInputs["additionalConfigCmds"] = state ? state.additionalConfigCmds : undefined;
-            resourceInputs["deviceId"] = state ? state.deviceId : undefined;
-            resourceInputs["dhcpSnooping"] = state ? state.dhcpSnooping : undefined;
-            resourceInputs["dhcpdConfig"] = state ? state.dhcpdConfig : undefined;
-            resourceInputs["disableAutoConfig"] = state ? state.disableAutoConfig : undefined;
-            resourceInputs["dnsServers"] = state ? state.dnsServers : undefined;
-            resourceInputs["dnsSuffixes"] = state ? state.dnsSuffixes : undefined;
-            resourceInputs["extraRoutes"] = state ? state.extraRoutes : undefined;
-            resourceInputs["extraRoutes6"] = state ? state.extraRoutes6 : undefined;
-            resourceInputs["image1Url"] = state ? state.image1Url : undefined;
-            resourceInputs["image2Url"] = state ? state.image2Url : undefined;
-            resourceInputs["image3Url"] = state ? state.image3Url : undefined;
-            resourceInputs["ipConfig"] = state ? state.ipConfig : undefined;
-            resourceInputs["localPortConfig"] = state ? state.localPortConfig : undefined;
-            resourceInputs["mac"] = state ? state.mac : undefined;
-            resourceInputs["managed"] = state ? state.managed : undefined;
-            resourceInputs["mapId"] = state ? state.mapId : undefined;
-            resourceInputs["mistNac"] = state ? state.mistNac : undefined;
-            resourceInputs["model"] = state ? state.model : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networks"] = state ? state.networks : undefined;
-            resourceInputs["notes"] = state ? state.notes : undefined;
-            resourceInputs["ntpServers"] = state ? state.ntpServers : undefined;
-            resourceInputs["oobIpConfig"] = state ? state.oobIpConfig : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["ospfAreas"] = state ? state.ospfAreas : undefined;
-            resourceInputs["ospfConfig"] = state ? state.ospfConfig : undefined;
-            resourceInputs["otherIpConfigs"] = state ? state.otherIpConfigs : undefined;
-            resourceInputs["portConfig"] = state ? state.portConfig : undefined;
-            resourceInputs["portConfigOverwrite"] = state ? state.portConfigOverwrite : undefined;
-            resourceInputs["portMirroring"] = state ? state.portMirroring : undefined;
-            resourceInputs["portUsages"] = state ? state.portUsages : undefined;
-            resourceInputs["radiusConfig"] = state ? state.radiusConfig : undefined;
-            resourceInputs["remoteSyslog"] = state ? state.remoteSyslog : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["routerId"] = state ? state.routerId : undefined;
-            resourceInputs["serial"] = state ? state.serial : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["snmpConfig"] = state ? state.snmpConfig : undefined;
-            resourceInputs["stpConfig"] = state ? state.stpConfig : undefined;
-            resourceInputs["switchMgmt"] = state ? state.switchMgmt : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["useRouterIdAsSourceIp"] = state ? state.useRouterIdAsSourceIp : undefined;
-            resourceInputs["vars"] = state ? state.vars : undefined;
-            resourceInputs["virtualChassis"] = state ? state.virtualChassis : undefined;
-            resourceInputs["vrfConfig"] = state ? state.vrfConfig : undefined;
-            resourceInputs["vrfInstances"] = state ? state.vrfInstances : undefined;
-            resourceInputs["vrrpConfig"] = state ? state.vrrpConfig : undefined;
-            resourceInputs["x"] = state ? state.x : undefined;
-            resourceInputs["y"] = state ? state.y : undefined;
+            resourceInputs["aclPolicies"] = state?.aclPolicies;
+            resourceInputs["aclTags"] = state?.aclTags;
+            resourceInputs["additionalConfigCmds"] = state?.additionalConfigCmds;
+            resourceInputs["deviceId"] = state?.deviceId;
+            resourceInputs["dhcpSnooping"] = state?.dhcpSnooping;
+            resourceInputs["dhcpdConfig"] = state?.dhcpdConfig;
+            resourceInputs["disableAutoConfig"] = state?.disableAutoConfig;
+            resourceInputs["dnsServers"] = state?.dnsServers;
+            resourceInputs["dnsSuffixes"] = state?.dnsSuffixes;
+            resourceInputs["extraRoutes"] = state?.extraRoutes;
+            resourceInputs["extraRoutes6"] = state?.extraRoutes6;
+            resourceInputs["image1Url"] = state?.image1Url;
+            resourceInputs["image2Url"] = state?.image2Url;
+            resourceInputs["image3Url"] = state?.image3Url;
+            resourceInputs["ipConfig"] = state?.ipConfig;
+            resourceInputs["localPortConfig"] = state?.localPortConfig;
+            resourceInputs["mac"] = state?.mac;
+            resourceInputs["managed"] = state?.managed;
+            resourceInputs["mapId"] = state?.mapId;
+            resourceInputs["mistNac"] = state?.mistNac;
+            resourceInputs["model"] = state?.model;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networks"] = state?.networks;
+            resourceInputs["notes"] = state?.notes;
+            resourceInputs["ntpServers"] = state?.ntpServers;
+            resourceInputs["oobIpConfig"] = state?.oobIpConfig;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["ospfAreas"] = state?.ospfAreas;
+            resourceInputs["ospfConfig"] = state?.ospfConfig;
+            resourceInputs["otherIpConfigs"] = state?.otherIpConfigs;
+            resourceInputs["portConfig"] = state?.portConfig;
+            resourceInputs["portConfigOverwrite"] = state?.portConfigOverwrite;
+            resourceInputs["portMirroring"] = state?.portMirroring;
+            resourceInputs["portUsages"] = state?.portUsages;
+            resourceInputs["radiusConfig"] = state?.radiusConfig;
+            resourceInputs["remoteSyslog"] = state?.remoteSyslog;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["routerId"] = state?.routerId;
+            resourceInputs["serial"] = state?.serial;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["snmpConfig"] = state?.snmpConfig;
+            resourceInputs["stpConfig"] = state?.stpConfig;
+            resourceInputs["switchMgmt"] = state?.switchMgmt;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["useRouterIdAsSourceIp"] = state?.useRouterIdAsSourceIp;
+            resourceInputs["vars"] = state?.vars;
+            resourceInputs["virtualChassis"] = state?.virtualChassis;
+            resourceInputs["vrfConfig"] = state?.vrfConfig;
+            resourceInputs["vrfInstances"] = state?.vrfInstances;
+            resourceInputs["vrrpConfig"] = state?.vrrpConfig;
+            resourceInputs["x"] = state?.x;
+            resourceInputs["y"] = state?.y;
         } else {
             const args = argsOrState as SwitchArgs | undefined;
-            if ((!args || args.deviceId === undefined) && !opts.urn) {
+            if (args?.deviceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deviceId'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["aclPolicies"] = args ? args.aclPolicies : undefined;
-            resourceInputs["aclTags"] = args ? args.aclTags : undefined;
-            resourceInputs["additionalConfigCmds"] = args ? args.additionalConfigCmds : undefined;
-            resourceInputs["deviceId"] = args ? args.deviceId : undefined;
-            resourceInputs["dhcpSnooping"] = args ? args.dhcpSnooping : undefined;
-            resourceInputs["dhcpdConfig"] = args ? args.dhcpdConfig : undefined;
-            resourceInputs["disableAutoConfig"] = args ? args.disableAutoConfig : undefined;
-            resourceInputs["dnsServers"] = args ? args.dnsServers : undefined;
-            resourceInputs["dnsSuffixes"] = args ? args.dnsSuffixes : undefined;
-            resourceInputs["extraRoutes"] = args ? args.extraRoutes : undefined;
-            resourceInputs["extraRoutes6"] = args ? args.extraRoutes6 : undefined;
-            resourceInputs["ipConfig"] = args ? args.ipConfig : undefined;
-            resourceInputs["localPortConfig"] = args ? args.localPortConfig : undefined;
-            resourceInputs["managed"] = args ? args.managed : undefined;
-            resourceInputs["mapId"] = args ? args.mapId : undefined;
-            resourceInputs["mistNac"] = args ? args.mistNac : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networks"] = args ? args.networks : undefined;
-            resourceInputs["notes"] = args ? args.notes : undefined;
-            resourceInputs["ntpServers"] = args ? args.ntpServers : undefined;
-            resourceInputs["oobIpConfig"] = args ? args.oobIpConfig : undefined;
-            resourceInputs["ospfAreas"] = args ? args.ospfAreas : undefined;
-            resourceInputs["ospfConfig"] = args ? args.ospfConfig : undefined;
-            resourceInputs["otherIpConfigs"] = args ? args.otherIpConfigs : undefined;
-            resourceInputs["portConfig"] = args ? args.portConfig : undefined;
-            resourceInputs["portConfigOverwrite"] = args ? args.portConfigOverwrite : undefined;
-            resourceInputs["portMirroring"] = args ? args.portMirroring : undefined;
-            resourceInputs["portUsages"] = args ? args.portUsages : undefined;
-            resourceInputs["radiusConfig"] = args ? args.radiusConfig : undefined;
-            resourceInputs["remoteSyslog"] = args ? args.remoteSyslog : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["routerId"] = args ? args.routerId : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["snmpConfig"] = args ? args.snmpConfig : undefined;
-            resourceInputs["stpConfig"] = args ? args.stpConfig : undefined;
-            resourceInputs["switchMgmt"] = args ? args.switchMgmt : undefined;
-            resourceInputs["useRouterIdAsSourceIp"] = args ? args.useRouterIdAsSourceIp : undefined;
-            resourceInputs["vars"] = args ? args.vars : undefined;
-            resourceInputs["virtualChassis"] = args ? args.virtualChassis : undefined;
-            resourceInputs["vrfConfig"] = args ? args.vrfConfig : undefined;
-            resourceInputs["vrfInstances"] = args ? args.vrfInstances : undefined;
-            resourceInputs["vrrpConfig"] = args ? args.vrrpConfig : undefined;
-            resourceInputs["x"] = args ? args.x : undefined;
-            resourceInputs["y"] = args ? args.y : undefined;
+            resourceInputs["aclPolicies"] = args?.aclPolicies;
+            resourceInputs["aclTags"] = args?.aclTags;
+            resourceInputs["additionalConfigCmds"] = args?.additionalConfigCmds;
+            resourceInputs["deviceId"] = args?.deviceId;
+            resourceInputs["dhcpSnooping"] = args?.dhcpSnooping;
+            resourceInputs["dhcpdConfig"] = args?.dhcpdConfig;
+            resourceInputs["disableAutoConfig"] = args?.disableAutoConfig;
+            resourceInputs["dnsServers"] = args?.dnsServers;
+            resourceInputs["dnsSuffixes"] = args?.dnsSuffixes;
+            resourceInputs["extraRoutes"] = args?.extraRoutes;
+            resourceInputs["extraRoutes6"] = args?.extraRoutes6;
+            resourceInputs["ipConfig"] = args?.ipConfig;
+            resourceInputs["localPortConfig"] = args?.localPortConfig;
+            resourceInputs["managed"] = args?.managed;
+            resourceInputs["mapId"] = args?.mapId;
+            resourceInputs["mistNac"] = args?.mistNac;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networks"] = args?.networks;
+            resourceInputs["notes"] = args?.notes;
+            resourceInputs["ntpServers"] = args?.ntpServers;
+            resourceInputs["oobIpConfig"] = args?.oobIpConfig;
+            resourceInputs["ospfAreas"] = args?.ospfAreas;
+            resourceInputs["ospfConfig"] = args?.ospfConfig;
+            resourceInputs["otherIpConfigs"] = args?.otherIpConfigs;
+            resourceInputs["portConfig"] = args?.portConfig;
+            resourceInputs["portConfigOverwrite"] = args?.portConfigOverwrite;
+            resourceInputs["portMirroring"] = args?.portMirroring;
+            resourceInputs["portUsages"] = args?.portUsages;
+            resourceInputs["radiusConfig"] = args?.radiusConfig;
+            resourceInputs["remoteSyslog"] = args?.remoteSyslog;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["routerId"] = args?.routerId;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["snmpConfig"] = args?.snmpConfig;
+            resourceInputs["stpConfig"] = args?.stpConfig;
+            resourceInputs["switchMgmt"] = args?.switchMgmt;
+            resourceInputs["useRouterIdAsSourceIp"] = args?.useRouterIdAsSourceIp;
+            resourceInputs["vars"] = args?.vars;
+            resourceInputs["virtualChassis"] = args?.virtualChassis;
+            resourceInputs["vrfConfig"] = args?.vrfConfig;
+            resourceInputs["vrfInstances"] = args?.vrfInstances;
+            resourceInputs["vrrpConfig"] = args?.vrrpConfig;
+            resourceInputs["x"] = args?.x;
+            resourceInputs["y"] = args?.y;
             resourceInputs["image1Url"] = undefined /*out*/;
             resourceInputs["image2Url"] = undefined /*out*/;
             resourceInputs["image3Url"] = undefined /*out*/;
@@ -364,8 +359,7 @@ export interface SwitchState {
     dhcpSnooping?: pulumi.Input<inputs.device.SwitchDhcpSnooping>;
     dhcpdConfig?: pulumi.Input<inputs.device.SwitchDhcpdConfig>;
     /**
-     * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-     * `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+     * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
      */
     disableAutoConfig?: pulumi.Input<boolean>;
     /**
@@ -392,8 +386,7 @@ export interface SwitchState {
      */
     ipConfig?: pulumi.Input<inputs.device.SwitchIpConfig>;
     /**
-     * Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
-     * "ge-0/0/0-10")
+     * Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. "ge-0/0/0-10")
      */
     localPortConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchLocalPortConfig>}>;
     /**
@@ -401,8 +394,7 @@ export interface SwitchState {
      */
     mac?: pulumi.Input<string>;
     /**
-     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-     * the adopted switch/gateway to be managed/configured by Mist.
+     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
      */
     managed?: pulumi.Input<boolean>;
     /**
@@ -428,8 +420,9 @@ export interface SwitchState {
      */
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-     * re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+     * Switch OOB IP Config:
+     *   - If HA configuration: key parameter will be nodeX (eg: node1)
+     *   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
      */
     oobIpConfig?: pulumi.Input<inputs.device.SwitchOobIpConfig>;
     orgId?: pulumi.Input<string>;
@@ -447,14 +440,11 @@ export interface SwitchState {
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortConfig>}>;
     /**
-     * Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-     * portUsage without having to create a new port_usage.
+     * Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the portUsage without having to create a new port_usage.
      */
     portConfigOverwrite?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortConfigOverwrite>}>;
     /**
-     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
-     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 mirroring ports is allowed
+     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortMirroring>}>;
     /**
@@ -534,8 +524,7 @@ export interface SwitchArgs {
     dhcpSnooping?: pulumi.Input<inputs.device.SwitchDhcpSnooping>;
     dhcpdConfig?: pulumi.Input<inputs.device.SwitchDhcpdConfig>;
     /**
-     * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-     * `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+     * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
      */
     disableAutoConfig?: pulumi.Input<boolean>;
     /**
@@ -559,13 +548,11 @@ export interface SwitchArgs {
      */
     ipConfig?: pulumi.Input<inputs.device.SwitchIpConfig>;
     /**
-     * Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
-     * "ge-0/0/0-10")
+     * Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. "ge-0/0/0-10")
      */
     localPortConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchLocalPortConfig>}>;
     /**
-     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-     * the adopted switch/gateway to be managed/configured by Mist.
+     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
      */
     managed?: pulumi.Input<boolean>;
     /**
@@ -587,8 +574,9 @@ export interface SwitchArgs {
      */
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-     * re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+     * Switch OOB IP Config:
+     *   - If HA configuration: key parameter will be nodeX (eg: node1)
+     *   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
      */
     oobIpConfig?: pulumi.Input<inputs.device.SwitchOobIpConfig>;
     /**
@@ -605,14 +593,11 @@ export interface SwitchArgs {
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortConfig>}>;
     /**
-     * Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-     * portUsage without having to create a new port_usage.
+     * Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the portUsage without having to create a new port_usage.
      */
     portConfigOverwrite?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortConfigOverwrite>}>;
     /**
-     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
-     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 mirroring ports is allowed
+     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortMirroring>}>;
     /**

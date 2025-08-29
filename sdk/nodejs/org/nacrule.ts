@@ -52,27 +52,27 @@ export class Nacrule extends pulumi.CustomResource {
     /**
      * enum: `allow`, `block`
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * All optional, this goes into Access-Accept
      */
-    public readonly applyTags!: pulumi.Output<string[]>;
+    declare public readonly applyTags: pulumi.Output<string[]>;
     /**
      * Enabled or not
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Guest portal authorization state. enum: `authorized`, `unknown`
      */
-    public readonly guestAuthState!: pulumi.Output<string | undefined>;
-    public readonly matching!: pulumi.Output<outputs.org.NacruleMatching | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly notMatching!: pulumi.Output<outputs.org.NacruleNotMatching | undefined>;
+    declare public readonly guestAuthState: pulumi.Output<string | undefined>;
+    declare public readonly matching: pulumi.Output<outputs.org.NacruleMatching | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly notMatching: pulumi.Output<outputs.org.NacruleNotMatching | undefined>;
     /**
      * Order of the rule, lower value implies higher priority
      */
-    public readonly order!: pulumi.Output<number>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly order: pulumi.Output<number>;
+    declare public readonly orgId: pulumi.Output<string>;
 
     /**
      * Create a Nacrule resource with the given unique name, arguments, and options.
@@ -87,35 +87,35 @@ export class Nacrule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NacruleState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["applyTags"] = state ? state.applyTags : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["guestAuthState"] = state ? state.guestAuthState : undefined;
-            resourceInputs["matching"] = state ? state.matching : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notMatching"] = state ? state.notMatching : undefined;
-            resourceInputs["order"] = state ? state.order : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["applyTags"] = state?.applyTags;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["guestAuthState"] = state?.guestAuthState;
+            resourceInputs["matching"] = state?.matching;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notMatching"] = state?.notMatching;
+            resourceInputs["order"] = state?.order;
+            resourceInputs["orgId"] = state?.orgId;
         } else {
             const args = argsOrState as NacruleArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.order === undefined) && !opts.urn) {
+            if (args?.order === undefined && !opts.urn) {
                 throw new Error("Missing required property 'order'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["applyTags"] = args ? args.applyTags : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["guestAuthState"] = args ? args.guestAuthState : undefined;
-            resourceInputs["matching"] = args ? args.matching : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notMatching"] = args ? args.notMatching : undefined;
-            resourceInputs["order"] = args ? args.order : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["applyTags"] = args?.applyTags;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["guestAuthState"] = args?.guestAuthState;
+            resourceInputs["matching"] = args?.matching;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notMatching"] = args?.notMatching;
+            resourceInputs["order"] = args?.order;
+            resourceInputs["orgId"] = args?.orgId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Nacrule.__pulumiType, name, resourceInputs, opts);

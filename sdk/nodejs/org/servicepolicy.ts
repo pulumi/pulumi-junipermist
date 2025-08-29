@@ -56,37 +56,37 @@ export class Servicepolicy extends pulumi.CustomResource {
     /**
      * For SRX Only
      */
-    public readonly aamw!: pulumi.Output<outputs.org.ServicepolicyAamw | undefined>;
+    declare public readonly aamw: pulumi.Output<outputs.org.ServicepolicyAamw | undefined>;
     /**
      * enum: `allow`, `deny`
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * For SRX-only
      */
-    public readonly antivirus!: pulumi.Output<outputs.org.ServicepolicyAntivirus | undefined>;
+    declare public readonly antivirus: pulumi.Output<outputs.org.ServicepolicyAntivirus | undefined>;
     /**
      * For SRX Only
      */
-    public readonly appqoe!: pulumi.Output<outputs.org.ServicepolicyAppqoe | undefined>;
-    public readonly ewfs!: pulumi.Output<outputs.org.ServicepolicyEwf[] | undefined>;
-    public readonly idp!: pulumi.Output<outputs.org.ServicepolicyIdp | undefined>;
+    declare public readonly appqoe: pulumi.Output<outputs.org.ServicepolicyAppqoe | undefined>;
+    declare public readonly ewfs: pulumi.Output<outputs.org.ServicepolicyEwf[] | undefined>;
+    declare public readonly idp: pulumi.Output<outputs.org.ServicepolicyIdp | undefined>;
     /**
      * access within the same VRF
      */
-    public readonly localRouting!: pulumi.Output<boolean | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly localRouting: pulumi.Output<boolean | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
      */
-    public readonly pathPreference!: pulumi.Output<string | undefined>;
-    public readonly services!: pulumi.Output<string[] | undefined>;
+    declare public readonly pathPreference: pulumi.Output<string | undefined>;
+    declare public readonly services: pulumi.Output<string[] | undefined>;
     /**
      * For SRX-only
      */
-    public readonly sslProxy!: pulumi.Output<outputs.org.ServicepolicySslProxy | undefined>;
-    public readonly tenants!: pulumi.Output<string[] | undefined>;
+    declare public readonly sslProxy: pulumi.Output<outputs.org.ServicepolicySslProxy | undefined>;
+    declare public readonly tenants: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Servicepolicy resource with the given unique name, arguments, and options.
@@ -101,37 +101,37 @@ export class Servicepolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicepolicyState | undefined;
-            resourceInputs["aamw"] = state ? state.aamw : undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["antivirus"] = state ? state.antivirus : undefined;
-            resourceInputs["appqoe"] = state ? state.appqoe : undefined;
-            resourceInputs["ewfs"] = state ? state.ewfs : undefined;
-            resourceInputs["idp"] = state ? state.idp : undefined;
-            resourceInputs["localRouting"] = state ? state.localRouting : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["pathPreference"] = state ? state.pathPreference : undefined;
-            resourceInputs["services"] = state ? state.services : undefined;
-            resourceInputs["sslProxy"] = state ? state.sslProxy : undefined;
-            resourceInputs["tenants"] = state ? state.tenants : undefined;
+            resourceInputs["aamw"] = state?.aamw;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["antivirus"] = state?.antivirus;
+            resourceInputs["appqoe"] = state?.appqoe;
+            resourceInputs["ewfs"] = state?.ewfs;
+            resourceInputs["idp"] = state?.idp;
+            resourceInputs["localRouting"] = state?.localRouting;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["pathPreference"] = state?.pathPreference;
+            resourceInputs["services"] = state?.services;
+            resourceInputs["sslProxy"] = state?.sslProxy;
+            resourceInputs["tenants"] = state?.tenants;
         } else {
             const args = argsOrState as ServicepolicyArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["aamw"] = args ? args.aamw : undefined;
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["antivirus"] = args ? args.antivirus : undefined;
-            resourceInputs["appqoe"] = args ? args.appqoe : undefined;
-            resourceInputs["ewfs"] = args ? args.ewfs : undefined;
-            resourceInputs["idp"] = args ? args.idp : undefined;
-            resourceInputs["localRouting"] = args ? args.localRouting : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["pathPreference"] = args ? args.pathPreference : undefined;
-            resourceInputs["services"] = args ? args.services : undefined;
-            resourceInputs["sslProxy"] = args ? args.sslProxy : undefined;
-            resourceInputs["tenants"] = args ? args.tenants : undefined;
+            resourceInputs["aamw"] = args?.aamw;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["antivirus"] = args?.antivirus;
+            resourceInputs["appqoe"] = args?.appqoe;
+            resourceInputs["ewfs"] = args?.ewfs;
+            resourceInputs["idp"] = args?.idp;
+            resourceInputs["localRouting"] = args?.localRouting;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["pathPreference"] = args?.pathPreference;
+            resourceInputs["services"] = args?.services;
+            resourceInputs["sslProxy"] = args?.sslProxy;
+            resourceInputs["tenants"] = args?.tenants;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Servicepolicy.__pulumiType, name, resourceInputs, opts);

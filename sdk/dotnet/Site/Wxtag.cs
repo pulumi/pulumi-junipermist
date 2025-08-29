@@ -69,8 +69,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<string?> Mac { get; private set; } = null!;
 
         /// <summary>
-        /// required if `type`==`match`. enum: `ap_id`, `app`, `asset_mac`, `client_mac`, `hostname`, `ip_range_subnet`, `port`,
-        /// `psk_name`, `psk_role`, `radius_attr`, `radius_class`, `radius_group`, `radius_username`, `sdkclient_uuid`, `wlan_id`
+        /// required if `type`==`match`. enum: `ap_id`, `app`, `asset_mac`, `client_mac`, `hostname`, `ip_range_subnet`, `port`, `psk_name`, `psk_role`, `radius_attr`, `radius_class`, `radius_group`, `radius_username`, `sdkclient_uuid`, `wlan_id`
         /// </summary>
         [Output("match")]
         public Output<string?> Match { get; private set; } = null!;
@@ -103,16 +102,25 @@ namespace Pulumi.JuniperMist.Site
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
-        /// `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
-        /// `match`==`hostname`: list of Resources Hostnames * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs *
-        /// `match`==`psk_name`: list of PSK Names * `match`==`psk_role`: list of PSK Roles * `match`==`port`: list of Ports or Port
-        /// Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other
-        /// RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches the
-        /// ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
-        /// Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1) *
-        /// `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1) * `match`==`sdkclient_uuid`:
-        /// list of SDK UUIDs * `match`==`wlan_id`: list of WLAN IDs **Notes**: Variables are not allowed
+        /// Required if `type`==`match` and
+        ///   * `match`==`ap_id`: list of AP IDs
+        ///   * `match`==`app`: list of Application Names
+        ///   * `match`==`asset_mac`: list of Asset MAC Addresses
+        ///   * `match`==`client_mac`: list of Client MAC Addresses
+        ///   * `match`==`hostname`: list of Resources Hostnames
+        ///   * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs
+        ///   * `match`==`psk_name`: list of PSK Names
+        ///   * `match`==`psk_role`: list of PSK Roles
+        ///   * `match`==`port`: list of Ports or Port Ranges
+        ///   * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other RADIUS attributes where we know the type
+        ///   * `match`==`radius_class`: list of RADIUS Classes. This matches the ATTR-Class(25)
+        ///   * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
+        ///   * `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
+        ///   * `match`==`sdkclient_uuid`: list of SDK UUIDs
+        ///   * `match`==`wlan_id`: list of WLAN IDs
+        /// 
+        /// **Notes**:
+        /// Variables are not allowed
         /// </summary>
         [Output("values")]
         public Output<ImmutableArray<string>> Values { get; private set; } = null!;
@@ -174,8 +182,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// required if `type`==`match`. enum: `ap_id`, `app`, `asset_mac`, `client_mac`, `hostname`, `ip_range_subnet`, `port`,
-        /// `psk_name`, `psk_role`, `radius_attr`, `radius_class`, `radius_group`, `radius_username`, `sdkclient_uuid`, `wlan_id`
+        /// required if `type`==`match`. enum: `ap_id`, `app`, `asset_mac`, `client_mac`, `hostname`, `ip_range_subnet`, `port`, `psk_name`, `psk_role`, `radius_attr`, `radius_class`, `radius_group`, `radius_username`, `sdkclient_uuid`, `wlan_id`
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -217,16 +224,25 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _values;
 
         /// <summary>
-        /// Required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
-        /// `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
-        /// `match`==`hostname`: list of Resources Hostnames * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs *
-        /// `match`==`psk_name`: list of PSK Names * `match`==`psk_role`: list of PSK Roles * `match`==`port`: list of Ports or Port
-        /// Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other
-        /// RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches the
-        /// ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
-        /// Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1) *
-        /// `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1) * `match`==`sdkclient_uuid`:
-        /// list of SDK UUIDs * `match`==`wlan_id`: list of WLAN IDs **Notes**: Variables are not allowed
+        /// Required if `type`==`match` and
+        ///   * `match`==`ap_id`: list of AP IDs
+        ///   * `match`==`app`: list of Application Names
+        ///   * `match`==`asset_mac`: list of Asset MAC Addresses
+        ///   * `match`==`client_mac`: list of Client MAC Addresses
+        ///   * `match`==`hostname`: list of Resources Hostnames
+        ///   * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs
+        ///   * `match`==`psk_name`: list of PSK Names
+        ///   * `match`==`psk_role`: list of PSK Roles
+        ///   * `match`==`port`: list of Ports or Port Ranges
+        ///   * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other RADIUS attributes where we know the type
+        ///   * `match`==`radius_class`: list of RADIUS Classes. This matches the ATTR-Class(25)
+        ///   * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
+        ///   * `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
+        ///   * `match`==`sdkclient_uuid`: list of SDK UUIDs
+        ///   * `match`==`wlan_id`: list of WLAN IDs
+        /// 
+        /// **Notes**:
+        /// Variables are not allowed
         /// </summary>
         public InputList<string> Values
         {
@@ -252,8 +268,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// required if `type`==`match`. enum: `ap_id`, `app`, `asset_mac`, `client_mac`, `hostname`, `ip_range_subnet`, `port`,
-        /// `psk_name`, `psk_role`, `radius_attr`, `radius_class`, `radius_group`, `radius_username`, `sdkclient_uuid`, `wlan_id`
+        /// required if `type`==`match`. enum: `ap_id`, `app`, `asset_mac`, `client_mac`, `hostname`, `ip_range_subnet`, `port`, `psk_name`, `psk_role`, `radius_attr`, `radius_class`, `radius_group`, `radius_username`, `sdkclient_uuid`, `wlan_id`
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -295,16 +310,25 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _values;
 
         /// <summary>
-        /// Required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
-        /// `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
-        /// `match`==`hostname`: list of Resources Hostnames * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs *
-        /// `match`==`psk_name`: list of PSK Names * `match`==`psk_role`: list of PSK Roles * `match`==`port`: list of Ports or Port
-        /// Ranges * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other
-        /// RADIUS attributes where we know the type * `match`==`radius_class`: list of RADIUS Classes. This matches the
-        /// ATTR-Class(25) * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID,
-        /// Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1) *
-        /// `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1) * `match`==`sdkclient_uuid`:
-        /// list of SDK UUIDs * `match`==`wlan_id`: list of WLAN IDs **Notes**: Variables are not allowed
+        /// Required if `type`==`match` and
+        ///   * `match`==`ap_id`: list of AP IDs
+        ///   * `match`==`app`: list of Application Names
+        ///   * `match`==`asset_mac`: list of Asset MAC Addresses
+        ///   * `match`==`client_mac`: list of Client MAC Addresses
+        ///   * `match`==`hostname`: list of Resources Hostnames
+        ///   * `match`==`ip_range_subnet`: list of IP Addresses and/or CIDRs
+        ///   * `match`==`psk_name`: list of PSK Names
+        ///   * `match`==`psk_role`: list of PSK Roles
+        ///   * `match`==`port`: list of Ports or Port Ranges
+        ///   * `match`==`radius_attr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other RADIUS attributes where we know the type
+        ///   * `match`==`radius_class`: list of RADIUS Classes. This matches the ATTR-Class(25)
+        ///   * `match`==`radius_group`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
+        ///   * `match`==`radius_username`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
+        ///   * `match`==`sdkclient_uuid`: list of SDK UUIDs
+        ///   * `match`==`wlan_id`: list of WLAN IDs
+        /// 
+        /// **Notes**:
+        /// Variables are not allowed
         /// </summary>
         public InputList<string> Values
         {

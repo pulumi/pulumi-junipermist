@@ -133,16 +133,14 @@ public class DeviceprofileGateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.extraRoutes);
     }
     /**
-     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g.
-     * &#34;{{myvar}}&#34;)
+     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
      * 
      */
     @Export(name="extraRoutes6", refs={Map.class,String.class,DeviceprofileGatewayExtraRoutes6.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,DeviceprofileGatewayExtraRoutes6>> extraRoutes6;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g.
-     * &#34;{{myvar}}&#34;)
+     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
      * 
      */
     public Output<Optional<Map<String,DeviceprofileGatewayExtraRoutes6>>> extraRoutes6() {
