@@ -50,91 +50,86 @@ export class Setting extends pulumi.CustomResource {
     }
 
     /**
-     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
-     * `deviceUpdownThreshold` is ignored.
+     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      */
-    public readonly apUpdownThreshold!: pulumi.Output<number | undefined>;
-    public readonly apiPolicy!: pulumi.Output<outputs.org.SettingApiPolicy | undefined>;
+    declare public readonly apUpdownThreshold: pulumi.Output<number | undefined>;
+    declare public readonly apiPolicy: pulumi.Output<outputs.org.SettingApiPolicy | undefined>;
     /**
      * RADSec certificates for AP
      */
-    public readonly cacerts!: pulumi.Output<string[]>;
-    public readonly celona!: pulumi.Output<outputs.org.SettingCelona | undefined>;
-    public readonly cloudshark!: pulumi.Output<outputs.org.SettingCloudshark | undefined>;
-    public /*out*/ readonly cradlepoint!: pulumi.Output<outputs.org.SettingCradlepoint>;
+    declare public readonly cacerts: pulumi.Output<string[]>;
+    declare public readonly celona: pulumi.Output<outputs.org.SettingCelona | undefined>;
+    declare public readonly cloudshark: pulumi.Output<outputs.org.SettingCloudshark | undefined>;
+    declare public /*out*/ readonly cradlepoint: pulumi.Output<outputs.org.SettingCradlepoint>;
     /**
      * common device cert, optional
      */
-    public readonly deviceCert!: pulumi.Output<outputs.org.SettingDeviceCert | undefined>;
+    declare public readonly deviceCert: pulumi.Output<outputs.org.SettingDeviceCert | undefined>;
     /**
-     * Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
-     * AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
-     * immediate)
+     * Enable threshold-based device down delivery via
+     *   * device-updowns webhooks topic, 
+     *   * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
      */
-    public readonly deviceUpdownThreshold!: pulumi.Output<number | undefined>;
+    declare public readonly deviceUpdownThreshold: pulumi.Output<number | undefined>;
     /**
      * Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
      */
-    public readonly disablePcap!: pulumi.Output<boolean | undefined>;
+    declare public readonly disablePcap: pulumi.Output<boolean | undefined>;
     /**
      * Whether to disable remote shell access for an entire org
      */
-    public readonly disableRemoteShell!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableRemoteShell: pulumi.Output<boolean | undefined>;
     /**
-     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
-     * `deviceUpdownThreshold` is ignored.
+     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      */
-    public readonly gatewayUpdownThreshold!: pulumi.Output<number | undefined>;
-    public readonly installer!: pulumi.Output<outputs.org.SettingInstaller | undefined>;
-    public readonly jcloud!: pulumi.Output<outputs.org.SettingJcloud | undefined>;
+    declare public readonly gatewayUpdownThreshold: pulumi.Output<number | undefined>;
+    declare public readonly installer: pulumi.Output<outputs.org.SettingInstaller | undefined>;
+    declare public readonly jcloud: pulumi.Output<outputs.org.SettingJcloud | undefined>;
     /**
      * JCloud Routing Assurance connexion
      */
-    public readonly jcloudRa!: pulumi.Output<outputs.org.SettingJcloudRa | undefined>;
-    public /*out*/ readonly juniper!: pulumi.Output<outputs.org.SettingJuniper>;
+    declare public readonly jcloudRa: pulumi.Output<outputs.org.SettingJcloudRa | undefined>;
+    declare public /*out*/ readonly juniper: pulumi.Output<outputs.org.SettingJuniper>;
     /**
-     * junos_shell_access: Manages role-based web-shell access. When junosShell access is not defined (Default) - No additional
-     * users are configured and web-shell uses default `mist` user to login. When junosShellAccess is defined - Additional
-     * users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell
-     * logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access
-     * level to "none", disables web-shell access for that specific role.
+     * junos_shell_access: Manages role-based web-shell access.  
+     * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
+     * When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
      */
-    public readonly junosShellAccess!: pulumi.Output<outputs.org.SettingJunosShellAccess | undefined>;
-    public readonly marvis!: pulumi.Output<outputs.org.SettingMarvis | undefined>;
+    declare public readonly junosShellAccess: pulumi.Output<outputs.org.SettingJunosShellAccess | undefined>;
+    declare public readonly marvis: pulumi.Output<outputs.org.SettingMarvis | undefined>;
     /**
      * management-related properties
      */
-    public readonly mgmt!: pulumi.Output<outputs.org.SettingMgmt | undefined>;
-    public readonly mistNac!: pulumi.Output<outputs.org.SettingMistNac | undefined>;
-    public readonly mxedgeMgmt!: pulumi.Output<outputs.org.SettingMxedgeMgmt | undefined>;
+    declare public readonly mgmt: pulumi.Output<outputs.org.SettingMgmt | undefined>;
+    declare public readonly mistNac: pulumi.Output<outputs.org.SettingMistNac | undefined>;
+    declare public readonly mxedgeMgmt: pulumi.Output<outputs.org.SettingMxedgeMgmt | undefined>;
     /**
      * Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
      */
-    public readonly opticPortConfig!: pulumi.Output<{[key: string]: outputs.org.SettingOpticPortConfig} | undefined>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly opticPortConfig: pulumi.Output<{[key: string]: outputs.org.SettingOpticPortConfig} | undefined>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * password policy
      */
-    public readonly passwordPolicy!: pulumi.Output<outputs.org.SettingPasswordPolicy | undefined>;
-    public readonly pcap!: pulumi.Output<outputs.org.SettingPcap | undefined>;
-    public readonly security!: pulumi.Output<outputs.org.SettingSecurity | undefined>;
-    public readonly ssr!: pulumi.Output<outputs.org.SettingSsr | undefined>;
-    public readonly switch!: pulumi.Output<outputs.org.SettingSwitch | undefined>;
-    public readonly switchMgmt!: pulumi.Output<outputs.org.SettingSwitchMgmt | undefined>;
+    declare public readonly passwordPolicy: pulumi.Output<outputs.org.SettingPasswordPolicy | undefined>;
+    declare public readonly pcap: pulumi.Output<outputs.org.SettingPcap | undefined>;
+    declare public readonly security: pulumi.Output<outputs.org.SettingSecurity | undefined>;
+    declare public readonly ssr: pulumi.Output<outputs.org.SettingSsr | undefined>;
+    declare public readonly switch: pulumi.Output<outputs.org.SettingSwitch | undefined>;
+    declare public readonly switchMgmt: pulumi.Output<outputs.org.SettingSwitchMgmt | undefined>;
     /**
-     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
-     * `deviceUpdownThreshold` is ignored.
+     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
      */
-    public readonly switchUpdownThreshold!: pulumi.Output<number | undefined>;
-    public readonly syntheticTest!: pulumi.Output<outputs.org.SettingSyntheticTest | undefined>;
+    declare public readonly switchUpdownThreshold: pulumi.Output<number | undefined>;
+    declare public readonly syntheticTest: pulumi.Output<outputs.org.SettingSyntheticTest | undefined>;
     /**
      * Automatically logout the user when UI session is inactive. `0` means disabled
      */
-    public readonly uiIdleTimeout!: pulumi.Output<number>;
-    public readonly vpnOptions!: pulumi.Output<outputs.org.SettingVpnOptions | undefined>;
-    public readonly wanPma!: pulumi.Output<outputs.org.SettingWanPma | undefined>;
-    public readonly wiredPma!: pulumi.Output<outputs.org.SettingWiredPma | undefined>;
-    public readonly wirelessPma!: pulumi.Output<outputs.org.SettingWirelessPma | undefined>;
+    declare public readonly uiIdleTimeout: pulumi.Output<number>;
+    declare public readonly vpnOptions: pulumi.Output<outputs.org.SettingVpnOptions | undefined>;
+    declare public readonly wanPma: pulumi.Output<outputs.org.SettingWanPma | undefined>;
+    declare public readonly wiredPma: pulumi.Output<outputs.org.SettingWiredPma | undefined>;
+    declare public readonly wirelessPma: pulumi.Output<outputs.org.SettingWirelessPma | undefined>;
 
     /**
      * Create a Setting resource with the given unique name, arguments, and options.
@@ -149,79 +144,79 @@ export class Setting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SettingState | undefined;
-            resourceInputs["apUpdownThreshold"] = state ? state.apUpdownThreshold : undefined;
-            resourceInputs["apiPolicy"] = state ? state.apiPolicy : undefined;
-            resourceInputs["cacerts"] = state ? state.cacerts : undefined;
-            resourceInputs["celona"] = state ? state.celona : undefined;
-            resourceInputs["cloudshark"] = state ? state.cloudshark : undefined;
-            resourceInputs["cradlepoint"] = state ? state.cradlepoint : undefined;
-            resourceInputs["deviceCert"] = state ? state.deviceCert : undefined;
-            resourceInputs["deviceUpdownThreshold"] = state ? state.deviceUpdownThreshold : undefined;
-            resourceInputs["disablePcap"] = state ? state.disablePcap : undefined;
-            resourceInputs["disableRemoteShell"] = state ? state.disableRemoteShell : undefined;
-            resourceInputs["gatewayUpdownThreshold"] = state ? state.gatewayUpdownThreshold : undefined;
-            resourceInputs["installer"] = state ? state.installer : undefined;
-            resourceInputs["jcloud"] = state ? state.jcloud : undefined;
-            resourceInputs["jcloudRa"] = state ? state.jcloudRa : undefined;
-            resourceInputs["juniper"] = state ? state.juniper : undefined;
-            resourceInputs["junosShellAccess"] = state ? state.junosShellAccess : undefined;
-            resourceInputs["marvis"] = state ? state.marvis : undefined;
-            resourceInputs["mgmt"] = state ? state.mgmt : undefined;
-            resourceInputs["mistNac"] = state ? state.mistNac : undefined;
-            resourceInputs["mxedgeMgmt"] = state ? state.mxedgeMgmt : undefined;
-            resourceInputs["opticPortConfig"] = state ? state.opticPortConfig : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["passwordPolicy"] = state ? state.passwordPolicy : undefined;
-            resourceInputs["pcap"] = state ? state.pcap : undefined;
-            resourceInputs["security"] = state ? state.security : undefined;
-            resourceInputs["ssr"] = state ? state.ssr : undefined;
-            resourceInputs["switch"] = state ? state.switch : undefined;
-            resourceInputs["switchMgmt"] = state ? state.switchMgmt : undefined;
-            resourceInputs["switchUpdownThreshold"] = state ? state.switchUpdownThreshold : undefined;
-            resourceInputs["syntheticTest"] = state ? state.syntheticTest : undefined;
-            resourceInputs["uiIdleTimeout"] = state ? state.uiIdleTimeout : undefined;
-            resourceInputs["vpnOptions"] = state ? state.vpnOptions : undefined;
-            resourceInputs["wanPma"] = state ? state.wanPma : undefined;
-            resourceInputs["wiredPma"] = state ? state.wiredPma : undefined;
-            resourceInputs["wirelessPma"] = state ? state.wirelessPma : undefined;
+            resourceInputs["apUpdownThreshold"] = state?.apUpdownThreshold;
+            resourceInputs["apiPolicy"] = state?.apiPolicy;
+            resourceInputs["cacerts"] = state?.cacerts;
+            resourceInputs["celona"] = state?.celona;
+            resourceInputs["cloudshark"] = state?.cloudshark;
+            resourceInputs["cradlepoint"] = state?.cradlepoint;
+            resourceInputs["deviceCert"] = state?.deviceCert;
+            resourceInputs["deviceUpdownThreshold"] = state?.deviceUpdownThreshold;
+            resourceInputs["disablePcap"] = state?.disablePcap;
+            resourceInputs["disableRemoteShell"] = state?.disableRemoteShell;
+            resourceInputs["gatewayUpdownThreshold"] = state?.gatewayUpdownThreshold;
+            resourceInputs["installer"] = state?.installer;
+            resourceInputs["jcloud"] = state?.jcloud;
+            resourceInputs["jcloudRa"] = state?.jcloudRa;
+            resourceInputs["juniper"] = state?.juniper;
+            resourceInputs["junosShellAccess"] = state?.junosShellAccess;
+            resourceInputs["marvis"] = state?.marvis;
+            resourceInputs["mgmt"] = state?.mgmt;
+            resourceInputs["mistNac"] = state?.mistNac;
+            resourceInputs["mxedgeMgmt"] = state?.mxedgeMgmt;
+            resourceInputs["opticPortConfig"] = state?.opticPortConfig;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["passwordPolicy"] = state?.passwordPolicy;
+            resourceInputs["pcap"] = state?.pcap;
+            resourceInputs["security"] = state?.security;
+            resourceInputs["ssr"] = state?.ssr;
+            resourceInputs["switch"] = state?.switch;
+            resourceInputs["switchMgmt"] = state?.switchMgmt;
+            resourceInputs["switchUpdownThreshold"] = state?.switchUpdownThreshold;
+            resourceInputs["syntheticTest"] = state?.syntheticTest;
+            resourceInputs["uiIdleTimeout"] = state?.uiIdleTimeout;
+            resourceInputs["vpnOptions"] = state?.vpnOptions;
+            resourceInputs["wanPma"] = state?.wanPma;
+            resourceInputs["wiredPma"] = state?.wiredPma;
+            resourceInputs["wirelessPma"] = state?.wirelessPma;
         } else {
             const args = argsOrState as SettingArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["apUpdownThreshold"] = args ? args.apUpdownThreshold : undefined;
-            resourceInputs["apiPolicy"] = args ? args.apiPolicy : undefined;
-            resourceInputs["cacerts"] = args ? args.cacerts : undefined;
-            resourceInputs["celona"] = args ? args.celona : undefined;
-            resourceInputs["cloudshark"] = args ? args.cloudshark : undefined;
-            resourceInputs["deviceCert"] = args ? args.deviceCert : undefined;
-            resourceInputs["deviceUpdownThreshold"] = args ? args.deviceUpdownThreshold : undefined;
-            resourceInputs["disablePcap"] = args ? args.disablePcap : undefined;
-            resourceInputs["disableRemoteShell"] = args ? args.disableRemoteShell : undefined;
-            resourceInputs["gatewayUpdownThreshold"] = args ? args.gatewayUpdownThreshold : undefined;
-            resourceInputs["installer"] = args ? args.installer : undefined;
-            resourceInputs["jcloud"] = args ? args.jcloud : undefined;
-            resourceInputs["jcloudRa"] = args ? args.jcloudRa : undefined;
-            resourceInputs["junosShellAccess"] = args ? args.junosShellAccess : undefined;
-            resourceInputs["marvis"] = args ? args.marvis : undefined;
-            resourceInputs["mgmt"] = args ? args.mgmt : undefined;
-            resourceInputs["mistNac"] = args ? args.mistNac : undefined;
-            resourceInputs["mxedgeMgmt"] = args ? args.mxedgeMgmt : undefined;
-            resourceInputs["opticPortConfig"] = args ? args.opticPortConfig : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["passwordPolicy"] = args ? args.passwordPolicy : undefined;
-            resourceInputs["pcap"] = args ? args.pcap : undefined;
-            resourceInputs["security"] = args ? args.security : undefined;
-            resourceInputs["ssr"] = args ? args.ssr : undefined;
-            resourceInputs["switch"] = args ? args.switch : undefined;
-            resourceInputs["switchMgmt"] = args ? args.switchMgmt : undefined;
-            resourceInputs["switchUpdownThreshold"] = args ? args.switchUpdownThreshold : undefined;
-            resourceInputs["syntheticTest"] = args ? args.syntheticTest : undefined;
-            resourceInputs["uiIdleTimeout"] = args ? args.uiIdleTimeout : undefined;
-            resourceInputs["vpnOptions"] = args ? args.vpnOptions : undefined;
-            resourceInputs["wanPma"] = args ? args.wanPma : undefined;
-            resourceInputs["wiredPma"] = args ? args.wiredPma : undefined;
-            resourceInputs["wirelessPma"] = args ? args.wirelessPma : undefined;
+            resourceInputs["apUpdownThreshold"] = args?.apUpdownThreshold;
+            resourceInputs["apiPolicy"] = args?.apiPolicy;
+            resourceInputs["cacerts"] = args?.cacerts;
+            resourceInputs["celona"] = args?.celona;
+            resourceInputs["cloudshark"] = args?.cloudshark;
+            resourceInputs["deviceCert"] = args?.deviceCert;
+            resourceInputs["deviceUpdownThreshold"] = args?.deviceUpdownThreshold;
+            resourceInputs["disablePcap"] = args?.disablePcap;
+            resourceInputs["disableRemoteShell"] = args?.disableRemoteShell;
+            resourceInputs["gatewayUpdownThreshold"] = args?.gatewayUpdownThreshold;
+            resourceInputs["installer"] = args?.installer;
+            resourceInputs["jcloud"] = args?.jcloud;
+            resourceInputs["jcloudRa"] = args?.jcloudRa;
+            resourceInputs["junosShellAccess"] = args?.junosShellAccess;
+            resourceInputs["marvis"] = args?.marvis;
+            resourceInputs["mgmt"] = args?.mgmt;
+            resourceInputs["mistNac"] = args?.mistNac;
+            resourceInputs["mxedgeMgmt"] = args?.mxedgeMgmt;
+            resourceInputs["opticPortConfig"] = args?.opticPortConfig;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["passwordPolicy"] = args?.passwordPolicy;
+            resourceInputs["pcap"] = args?.pcap;
+            resourceInputs["security"] = args?.security;
+            resourceInputs["ssr"] = args?.ssr;
+            resourceInputs["switch"] = args?.switch;
+            resourceInputs["switchMgmt"] = args?.switchMgmt;
+            resourceInputs["switchUpdownThreshold"] = args?.switchUpdownThreshold;
+            resourceInputs["syntheticTest"] = args?.syntheticTest;
+            resourceInputs["uiIdleTimeout"] = args?.uiIdleTimeout;
+            resourceInputs["vpnOptions"] = args?.vpnOptions;
+            resourceInputs["wanPma"] = args?.wanPma;
+            resourceInputs["wiredPma"] = args?.wiredPma;
+            resourceInputs["wirelessPma"] = args?.wirelessPma;
             resourceInputs["cradlepoint"] = undefined /*out*/;
             resourceInputs["juniper"] = undefined /*out*/;
         }
@@ -235,8 +230,7 @@ export class Setting extends pulumi.CustomResource {
  */
 export interface SettingState {
     /**
-     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
-     * `deviceUpdownThreshold` is ignored.
+     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      */
     apUpdownThreshold?: pulumi.Input<number>;
     apiPolicy?: pulumi.Input<inputs.org.SettingApiPolicy>;
@@ -252,9 +246,9 @@ export interface SettingState {
      */
     deviceCert?: pulumi.Input<inputs.org.SettingDeviceCert>;
     /**
-     * Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
-     * AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
-     * immediate)
+     * Enable threshold-based device down delivery via
+     *   * device-updowns webhooks topic, 
+     *   * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
      */
     deviceUpdownThreshold?: pulumi.Input<number>;
     /**
@@ -266,8 +260,7 @@ export interface SettingState {
      */
     disableRemoteShell?: pulumi.Input<boolean>;
     /**
-     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
-     * `deviceUpdownThreshold` is ignored.
+     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      */
     gatewayUpdownThreshold?: pulumi.Input<number>;
     installer?: pulumi.Input<inputs.org.SettingInstaller>;
@@ -278,11 +271,9 @@ export interface SettingState {
     jcloudRa?: pulumi.Input<inputs.org.SettingJcloudRa>;
     juniper?: pulumi.Input<inputs.org.SettingJuniper>;
     /**
-     * junos_shell_access: Manages role-based web-shell access. When junosShell access is not defined (Default) - No additional
-     * users are configured and web-shell uses default `mist` user to login. When junosShellAccess is defined - Additional
-     * users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell
-     * logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access
-     * level to "none", disables web-shell access for that specific role.
+     * junos_shell_access: Manages role-based web-shell access.  
+     * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
+     * When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
      */
     junosShellAccess?: pulumi.Input<inputs.org.SettingJunosShellAccess>;
     marvis?: pulumi.Input<inputs.org.SettingMarvis>;
@@ -307,8 +298,7 @@ export interface SettingState {
     switch?: pulumi.Input<inputs.org.SettingSwitch>;
     switchMgmt?: pulumi.Input<inputs.org.SettingSwitchMgmt>;
     /**
-     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
-     * `deviceUpdownThreshold` is ignored.
+     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
      */
     switchUpdownThreshold?: pulumi.Input<number>;
     syntheticTest?: pulumi.Input<inputs.org.SettingSyntheticTest>;
@@ -327,8 +317,7 @@ export interface SettingState {
  */
 export interface SettingArgs {
     /**
-     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
-     * `deviceUpdownThreshold` is ignored.
+     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      */
     apUpdownThreshold?: pulumi.Input<number>;
     apiPolicy?: pulumi.Input<inputs.org.SettingApiPolicy>;
@@ -343,9 +332,9 @@ export interface SettingArgs {
      */
     deviceCert?: pulumi.Input<inputs.org.SettingDeviceCert>;
     /**
-     * Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
-     * AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
-     * immediate)
+     * Enable threshold-based device down delivery via
+     *   * device-updowns webhooks topic, 
+     *   * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
      */
     deviceUpdownThreshold?: pulumi.Input<number>;
     /**
@@ -357,8 +346,7 @@ export interface SettingArgs {
      */
     disableRemoteShell?: pulumi.Input<boolean>;
     /**
-     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
-     * `deviceUpdownThreshold` is ignored.
+     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      */
     gatewayUpdownThreshold?: pulumi.Input<number>;
     installer?: pulumi.Input<inputs.org.SettingInstaller>;
@@ -368,11 +356,9 @@ export interface SettingArgs {
      */
     jcloudRa?: pulumi.Input<inputs.org.SettingJcloudRa>;
     /**
-     * junos_shell_access: Manages role-based web-shell access. When junosShell access is not defined (Default) - No additional
-     * users are configured and web-shell uses default `mist` user to login. When junosShellAccess is defined - Additional
-     * users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell
-     * logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access
-     * level to "none", disables web-shell access for that specific role.
+     * junos_shell_access: Manages role-based web-shell access.  
+     * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
+     * When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
      */
     junosShellAccess?: pulumi.Input<inputs.org.SettingJunosShellAccess>;
     marvis?: pulumi.Input<inputs.org.SettingMarvis>;
@@ -397,8 +383,7 @@ export interface SettingArgs {
     switch?: pulumi.Input<inputs.org.SettingSwitch>;
     switchMgmt?: pulumi.Input<inputs.org.SettingSwitchMgmt>;
     /**
-     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
-     * `deviceUpdownThreshold` is ignored.
+     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
      */
     switchUpdownThreshold?: pulumi.Input<number>;
     syntheticTest?: pulumi.Input<inputs.org.SettingSyntheticTest>;

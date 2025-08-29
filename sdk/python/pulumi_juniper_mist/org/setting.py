@@ -56,28 +56,23 @@ class SettingArgs:
                  wireless_pma: Optional[pulumi.Input['SettingWirelessPmaArgs']] = None):
         """
         The set of arguments for constructing a Setting resource.
-        :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
-               `device_updown_threshold` is ignored.
+        :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: RADSec certificates for AP
         :param pulumi.Input['SettingDeviceCertArgs'] device_cert: common device cert, optional
-        :param pulumi.Input[_builtins.int] device_updown_threshold: Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
-               AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
-               immediate)
+        :param pulumi.Input[_builtins.int] device_updown_threshold: Enable threshold-based device down delivery via
+                 * device-updowns webhooks topic, 
+                 * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
         :param pulumi.Input[_builtins.bool] disable_pcap: Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
         :param pulumi.Input[_builtins.bool] disable_remote_shell: Whether to disable remote shell access for an entire org
-        :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
-               `device_updown_threshold` is ignored.
+        :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingJcloudRaArgs'] jcloud_ra: JCloud Routing Assurance connexion
-        :param pulumi.Input['SettingJunosShellAccessArgs'] junos_shell_access: junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No
-               additional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -
-               Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and
-               web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell
-               access level to "none", disables web-shell access for that specific role.
+        :param pulumi.Input['SettingJunosShellAccessArgs'] junos_shell_access: junos_shell_access: Manages role-based web-shell access.  
+               When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
+               When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
         :param pulumi.Input['SettingMgmtArgs'] mgmt: management-related properties
         :param pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input['SettingPasswordPolicyArgs'] password_policy: password policy
-        :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
-               `device_updown_threshold` is ignored.
+        :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[_builtins.int] ui_idle_timeout: Automatically logout the user when UI session is inactive. `0` means disabled
         """
         pulumi.set(__self__, "org_id", org_id)
@@ -159,8 +154,7 @@ class SettingArgs:
     @pulumi.getter(name="apUpdownThreshold")
     def ap_updown_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
-        `device_updown_threshold` is ignored.
+        Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "ap_updown_threshold")
 
@@ -223,9 +217,9 @@ class SettingArgs:
     @pulumi.getter(name="deviceUpdownThreshold")
     def device_updown_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
-        AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
-        immediate)
+        Enable threshold-based device down delivery via
+          * device-updowns webhooks topic, 
+          * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
         """
         return pulumi.get(self, "device_updown_threshold")
 
@@ -261,8 +255,7 @@ class SettingArgs:
     @pulumi.getter(name="gatewayUpdownThreshold")
     def gateway_updown_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
-        `device_updown_threshold` is ignored.
+        Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "gateway_updown_threshold")
 
@@ -304,11 +297,9 @@ class SettingArgs:
     @pulumi.getter(name="junosShellAccess")
     def junos_shell_access(self) -> Optional[pulumi.Input['SettingJunosShellAccessArgs']]:
         """
-        junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No
-        additional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -
-        Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and
-        web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell
-        access level to "none", disables web-shell access for that specific role.
+        junos_shell_access: Manages role-based web-shell access.  
+        When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
+        When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
         """
         return pulumi.get(self, "junos_shell_access")
 
@@ -428,8 +419,7 @@ class SettingArgs:
     @pulumi.getter(name="switchUpdownThreshold")
     def switch_updown_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
-        `device_updown_threshold` is ignored.
+        Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "switch_updown_threshold")
 
@@ -535,28 +525,23 @@ class _SettingState:
                  wireless_pma: Optional[pulumi.Input['SettingWirelessPmaArgs']] = None):
         """
         Input properties used for looking up and filtering Setting resources.
-        :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
-               `device_updown_threshold` is ignored.
+        :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: RADSec certificates for AP
         :param pulumi.Input['SettingDeviceCertArgs'] device_cert: common device cert, optional
-        :param pulumi.Input[_builtins.int] device_updown_threshold: Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
-               AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
-               immediate)
+        :param pulumi.Input[_builtins.int] device_updown_threshold: Enable threshold-based device down delivery via
+                 * device-updowns webhooks topic, 
+                 * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
         :param pulumi.Input[_builtins.bool] disable_pcap: Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
         :param pulumi.Input[_builtins.bool] disable_remote_shell: Whether to disable remote shell access for an entire org
-        :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
-               `device_updown_threshold` is ignored.
+        :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingJcloudRaArgs'] jcloud_ra: JCloud Routing Assurance connexion
-        :param pulumi.Input['SettingJunosShellAccessArgs'] junos_shell_access: junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No
-               additional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -
-               Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and
-               web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell
-               access level to "none", disables web-shell access for that specific role.
+        :param pulumi.Input['SettingJunosShellAccessArgs'] junos_shell_access: junos_shell_access: Manages role-based web-shell access.  
+               When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
+               When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
         :param pulumi.Input['SettingMgmtArgs'] mgmt: management-related properties
         :param pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input['SettingPasswordPolicyArgs'] password_policy: password policy
-        :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
-               `device_updown_threshold` is ignored.
+        :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[_builtins.int] ui_idle_timeout: Automatically logout the user when UI session is inactive. `0` means disabled
         """
         if ap_updown_threshold is not None:
@@ -634,8 +619,7 @@ class _SettingState:
     @pulumi.getter(name="apUpdownThreshold")
     def ap_updown_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
-        `device_updown_threshold` is ignored.
+        Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "ap_updown_threshold")
 
@@ -707,9 +691,9 @@ class _SettingState:
     @pulumi.getter(name="deviceUpdownThreshold")
     def device_updown_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
-        AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
-        immediate)
+        Enable threshold-based device down delivery via
+          * device-updowns webhooks topic, 
+          * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
         """
         return pulumi.get(self, "device_updown_threshold")
 
@@ -745,8 +729,7 @@ class _SettingState:
     @pulumi.getter(name="gatewayUpdownThreshold")
     def gateway_updown_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
-        `device_updown_threshold` is ignored.
+        Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "gateway_updown_threshold")
 
@@ -797,11 +780,9 @@ class _SettingState:
     @pulumi.getter(name="junosShellAccess")
     def junos_shell_access(self) -> Optional[pulumi.Input['SettingJunosShellAccessArgs']]:
         """
-        junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No
-        additional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -
-        Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and
-        web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell
-        access level to "none", disables web-shell access for that specific role.
+        junos_shell_access: Manages role-based web-shell access.  
+        When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
+        When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
         """
         return pulumi.get(self, "junos_shell_access")
 
@@ -930,8 +911,7 @@ class _SettingState:
     @pulumi.getter(name="switchUpdownThreshold")
     def switch_updown_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
-        `device_updown_threshold` is ignored.
+        Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "switch_updown_threshold")
 
@@ -1054,28 +1034,23 @@ class Setting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
-               `device_updown_threshold` is ignored.
+        :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: RADSec certificates for AP
         :param pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']] device_cert: common device cert, optional
-        :param pulumi.Input[_builtins.int] device_updown_threshold: Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
-               AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
-               immediate)
+        :param pulumi.Input[_builtins.int] device_updown_threshold: Enable threshold-based device down delivery via
+                 * device-updowns webhooks topic, 
+                 * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
         :param pulumi.Input[_builtins.bool] disable_pcap: Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
         :param pulumi.Input[_builtins.bool] disable_remote_shell: Whether to disable remote shell access for an entire org
-        :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
-               `device_updown_threshold` is ignored.
+        :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']] jcloud_ra: JCloud Routing Assurance connexion
-        :param pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']] junos_shell_access: junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No
-               additional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -
-               Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and
-               web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell
-               access level to "none", disables web-shell access for that specific role.
+        :param pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']] junos_shell_access: junos_shell_access: Manages role-based web-shell access.  
+               When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
+               When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
         :param pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']] mgmt: management-related properties
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']] password_policy: password policy
-        :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
-               `device_updown_threshold` is ignored.
+        :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[_builtins.int] ui_idle_timeout: Automatically logout the user when UI session is inactive. `0` means disabled
         """
         ...
@@ -1245,28 +1220,23 @@ class Setting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
-               `device_updown_threshold` is ignored.
+        :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: RADSec certificates for AP
         :param pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']] device_cert: common device cert, optional
-        :param pulumi.Input[_builtins.int] device_updown_threshold: Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
-               AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
-               immediate)
+        :param pulumi.Input[_builtins.int] device_updown_threshold: Enable threshold-based device down delivery via
+                 * device-updowns webhooks topic, 
+                 * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
         :param pulumi.Input[_builtins.bool] disable_pcap: Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
         :param pulumi.Input[_builtins.bool] disable_remote_shell: Whether to disable remote shell access for an entire org
-        :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
-               `device_updown_threshold` is ignored.
+        :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']] jcloud_ra: JCloud Routing Assurance connexion
-        :param pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']] junos_shell_access: junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No
-               additional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -
-               Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and
-               web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell
-               access level to "none", disables web-shell access for that specific role.
+        :param pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']] junos_shell_access: junos_shell_access: Manages role-based web-shell access.  
+               When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
+               When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
         :param pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']] mgmt: management-related properties
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']] password_policy: password policy
-        :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
-               `device_updown_threshold` is ignored.
+        :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[_builtins.int] ui_idle_timeout: Automatically logout the user when UI session is inactive. `0` means disabled
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1314,8 +1284,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="apUpdownThreshold")
     def ap_updown_threshold(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
-        `device_updown_threshold` is ignored.
+        Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "ap_updown_threshold")
 
@@ -1359,9 +1328,9 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="deviceUpdownThreshold")
     def device_updown_threshold(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
-        AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
-        immediate)
+        Enable threshold-based device down delivery via
+          * device-updowns webhooks topic, 
+          * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
         """
         return pulumi.get(self, "device_updown_threshold")
 
@@ -1385,8 +1354,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="gatewayUpdownThreshold")
     def gateway_updown_threshold(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
-        `device_updown_threshold` is ignored.
+        Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "gateway_updown_threshold")
 
@@ -1417,11 +1385,9 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="junosShellAccess")
     def junos_shell_access(self) -> pulumi.Output[Optional['outputs.SettingJunosShellAccess']]:
         """
-        junos_shell_access: Manages role-based web-shell access. When junos_shell access is not defined (Default) - No
-        additional users are configured and web-shell uses default `mist` user to login. When junos_shell_access is defined -
-        Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and
-        web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell
-        access level to "none", disables web-shell access for that specific role.
+        junos_shell_access: Manages role-based web-shell access.  
+        When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
+        When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
         """
         return pulumi.get(self, "junos_shell_access")
 
@@ -1498,8 +1464,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="switchUpdownThreshold")
     def switch_updown_threshold(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
-        `device_updown_threshold` is ignored.
+        Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "switch_updown_threshold")
 

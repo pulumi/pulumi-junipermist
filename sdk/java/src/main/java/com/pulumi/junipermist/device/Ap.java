@@ -377,18 +377,14 @@ public class Ap extends com.pulumi.resources.CustomResource {
         return this.poePassthrough;
     }
     /**
-     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-     * predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
-     * deprecated)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
      * 
      */
     @Export(name="portConfig", refs={Map.class,String.class,ApPortConfig.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,ApPortConfig>> portConfig;
 
     /**
-     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-     * predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
-     * deprecated)
+     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
      * 
      */
     public Output<Optional<Map<String,ApPortConfig>>> portConfig() {
@@ -471,16 +467,18 @@ public class Ap extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.uplinkPortConfig);
     }
     /**
-     * USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-     * moved to ESL Config.
+     * USB AP settings
+     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
+     *   - Note: legacy, new config moved to ESL Config.
      * 
      */
     @Export(name="usbConfig", refs={ApUsbConfig.class}, tree="[0]")
     private Output</* @Nullable */ ApUsbConfig> usbConfig;
 
     /**
-     * @return USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-     * moved to ESL Config.
+     * @return USB AP settings
+     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
+     *   - Note: legacy, new config moved to ESL Config.
      * 
      */
     public Output<Optional<ApUsbConfig>> usbConfig() {

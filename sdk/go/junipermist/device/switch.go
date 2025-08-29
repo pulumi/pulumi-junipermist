@@ -38,8 +38,7 @@ type Switch struct {
 	DeviceId             pulumi.StringOutput         `pulumi:"deviceId"`
 	DhcpSnooping         SwitchDhcpSnoopingPtrOutput `pulumi:"dhcpSnooping"`
 	DhcpdConfig          SwitchDhcpdConfigPtrOutput  `pulumi:"dhcpdConfig"`
-	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-	// `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 	DisableAutoConfig pulumi.BoolOutput `pulumi:"disableAutoConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayOutput `pulumi:"dnsServers"`
@@ -54,13 +53,11 @@ type Switch struct {
 	Image3Url    pulumi.StringOutput         `pulumi:"image3Url"`
 	// Junos IP Config
 	IpConfig SwitchIpConfigPtrOutput `pulumi:"ipConfig"`
-	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
-	// "ge-0/0/0-10")
+	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. "ge-0/0/0-10")
 	LocalPortConfig SwitchLocalPortConfigMapOutput `pulumi:"localPortConfig"`
 	// Device MAC address
 	Mac pulumi.StringOutput `pulumi:"mac"`
-	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-	// the adopted switch/gateway to be managed/configured by Mist.
+	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
 	Managed pulumi.BoolOutput `pulumi:"managed"`
 	// Map where the device belongs to
 	MapId pulumi.StringPtrOutput `pulumi:"mapId"`
@@ -74,8 +71,9 @@ type Switch struct {
 	Notes    pulumi.StringPtrOutput  `pulumi:"notes"`
 	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
-	// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+	// Switch OOB IP Config:
+	//   - If HA configuration: key parameter will be nodeX (eg: node1)
+	//   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
 	OobIpConfig SwitchOobIpConfigPtrOutput `pulumi:"oobIpConfig"`
 	OrgId       pulumi.StringOutput        `pulumi:"orgId"`
 	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
@@ -85,12 +83,9 @@ type Switch struct {
 	OtherIpConfigs SwitchOtherIpConfigsMapOutput `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig SwitchPortConfigMapOutput `pulumi:"portConfig"`
-	// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-	// portUsage without having to create a new port_usage.
+	// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the portUsage without having to create a new port_usage.
 	PortConfigOverwrite SwitchPortConfigOverwriteMapOutput `pulumi:"portConfigOverwrite"`
-	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
-	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 mirroring ports is allowed
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
 	PortMirroring SwitchPortMirroringMapOutput `pulumi:"portMirroring"`
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages SwitchPortUsagesMapOutput `pulumi:"portUsages"`
@@ -170,8 +165,7 @@ type switchState struct {
 	DeviceId             *string             `pulumi:"deviceId"`
 	DhcpSnooping         *SwitchDhcpSnooping `pulumi:"dhcpSnooping"`
 	DhcpdConfig          *SwitchDhcpdConfig  `pulumi:"dhcpdConfig"`
-	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-	// `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 	DisableAutoConfig *bool `pulumi:"disableAutoConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers []string `pulumi:"dnsServers"`
@@ -186,13 +180,11 @@ type switchState struct {
 	Image3Url    *string                       `pulumi:"image3Url"`
 	// Junos IP Config
 	IpConfig *SwitchIpConfig `pulumi:"ipConfig"`
-	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
-	// "ge-0/0/0-10")
+	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. "ge-0/0/0-10")
 	LocalPortConfig map[string]SwitchLocalPortConfig `pulumi:"localPortConfig"`
 	// Device MAC address
 	Mac *string `pulumi:"mac"`
-	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-	// the adopted switch/gateway to be managed/configured by Mist.
+	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
 	Managed *bool `pulumi:"managed"`
 	// Map where the device belongs to
 	MapId *string `pulumi:"mapId"`
@@ -206,8 +198,9 @@ type switchState struct {
 	Notes    *string                   `pulumi:"notes"`
 	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers []string `pulumi:"ntpServers"`
-	// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+	// Switch OOB IP Config:
+	//   - If HA configuration: key parameter will be nodeX (eg: node1)
+	//   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
 	OobIpConfig *SwitchOobIpConfig `pulumi:"oobIpConfig"`
 	OrgId       *string            `pulumi:"orgId"`
 	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
@@ -217,12 +210,9 @@ type switchState struct {
 	OtherIpConfigs map[string]SwitchOtherIpConfigs `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig map[string]SwitchPortConfig `pulumi:"portConfig"`
-	// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-	// portUsage without having to create a new port_usage.
+	// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the portUsage without having to create a new port_usage.
 	PortConfigOverwrite map[string]SwitchPortConfigOverwrite `pulumi:"portConfigOverwrite"`
-	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
-	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 mirroring ports is allowed
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
 	PortMirroring map[string]SwitchPortMirroring `pulumi:"portMirroring"`
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages map[string]SwitchPortUsages `pulumi:"portUsages"`
@@ -267,8 +257,7 @@ type SwitchState struct {
 	DeviceId             pulumi.StringPtrInput
 	DhcpSnooping         SwitchDhcpSnoopingPtrInput
 	DhcpdConfig          SwitchDhcpdConfigPtrInput
-	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-	// `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 	DisableAutoConfig pulumi.BoolPtrInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayInput
@@ -283,13 +272,11 @@ type SwitchState struct {
 	Image3Url    pulumi.StringPtrInput
 	// Junos IP Config
 	IpConfig SwitchIpConfigPtrInput
-	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
-	// "ge-0/0/0-10")
+	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. "ge-0/0/0-10")
 	LocalPortConfig SwitchLocalPortConfigMapInput
 	// Device MAC address
 	Mac pulumi.StringPtrInput
-	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-	// the adopted switch/gateway to be managed/configured by Mist.
+	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
 	Managed pulumi.BoolPtrInput
 	// Map where the device belongs to
 	MapId pulumi.StringPtrInput
@@ -303,8 +290,9 @@ type SwitchState struct {
 	Notes    pulumi.StringPtrInput
 	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayInput
-	// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+	// Switch OOB IP Config:
+	//   - If HA configuration: key parameter will be nodeX (eg: node1)
+	//   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
 	OobIpConfig SwitchOobIpConfigPtrInput
 	OrgId       pulumi.StringPtrInput
 	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
@@ -314,12 +302,9 @@ type SwitchState struct {
 	OtherIpConfigs SwitchOtherIpConfigsMapInput
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig SwitchPortConfigMapInput
-	// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-	// portUsage without having to create a new port_usage.
+	// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the portUsage without having to create a new port_usage.
 	PortConfigOverwrite SwitchPortConfigOverwriteMapInput
-	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
-	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 mirroring ports is allowed
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
 	PortMirroring SwitchPortMirroringMapInput
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages SwitchPortUsagesMapInput
@@ -368,8 +353,7 @@ type switchArgs struct {
 	DeviceId             string              `pulumi:"deviceId"`
 	DhcpSnooping         *SwitchDhcpSnooping `pulumi:"dhcpSnooping"`
 	DhcpdConfig          *SwitchDhcpdConfig  `pulumi:"dhcpdConfig"`
-	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-	// `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 	DisableAutoConfig *bool `pulumi:"disableAutoConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers []string `pulumi:"dnsServers"`
@@ -381,11 +365,9 @@ type switchArgs struct {
 	ExtraRoutes6 map[string]SwitchExtraRoutes6 `pulumi:"extraRoutes6"`
 	// Junos IP Config
 	IpConfig *SwitchIpConfig `pulumi:"ipConfig"`
-	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
-	// "ge-0/0/0-10")
+	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. "ge-0/0/0-10")
 	LocalPortConfig map[string]SwitchLocalPortConfig `pulumi:"localPortConfig"`
-	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-	// the adopted switch/gateway to be managed/configured by Mist.
+	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
 	Managed *bool `pulumi:"managed"`
 	// Map where the device belongs to
 	MapId *string `pulumi:"mapId"`
@@ -397,8 +379,9 @@ type switchArgs struct {
 	Notes    *string                   `pulumi:"notes"`
 	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers []string `pulumi:"ntpServers"`
-	// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+	// Switch OOB IP Config:
+	//   - If HA configuration: key parameter will be nodeX (eg: node1)
+	//   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
 	OobIpConfig *SwitchOobIpConfig `pulumi:"oobIpConfig"`
 	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
 	OspfAreas  map[string]SwitchOspfAreas `pulumi:"ospfAreas"`
@@ -407,12 +390,9 @@ type switchArgs struct {
 	OtherIpConfigs map[string]SwitchOtherIpConfigs `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig map[string]SwitchPortConfig `pulumi:"portConfig"`
-	// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-	// portUsage without having to create a new port_usage.
+	// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the portUsage without having to create a new port_usage.
 	PortConfigOverwrite map[string]SwitchPortConfigOverwrite `pulumi:"portConfigOverwrite"`
-	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
-	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 mirroring ports is allowed
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
 	PortMirroring map[string]SwitchPortMirroring `pulumi:"portMirroring"`
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages map[string]SwitchPortUsages `pulumi:"portUsages"`
@@ -454,8 +434,7 @@ type SwitchArgs struct {
 	DeviceId             pulumi.StringInput
 	DhcpSnooping         SwitchDhcpSnoopingPtrInput
 	DhcpdConfig          SwitchDhcpdConfigPtrInput
-	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-	// `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 	DisableAutoConfig pulumi.BoolPtrInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayInput
@@ -467,11 +446,9 @@ type SwitchArgs struct {
 	ExtraRoutes6 SwitchExtraRoutes6MapInput
 	// Junos IP Config
 	IpConfig SwitchIpConfigPtrInput
-	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
-	// "ge-0/0/0-10")
+	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. "ge-0/0/0-10")
 	LocalPortConfig SwitchLocalPortConfigMapInput
-	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-	// the adopted switch/gateway to be managed/configured by Mist.
+	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
 	Managed pulumi.BoolPtrInput
 	// Map where the device belongs to
 	MapId pulumi.StringPtrInput
@@ -483,8 +460,9 @@ type SwitchArgs struct {
 	Notes    pulumi.StringPtrInput
 	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayInput
-	// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+	// Switch OOB IP Config:
+	//   - If HA configuration: key parameter will be nodeX (eg: node1)
+	//   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
 	OobIpConfig SwitchOobIpConfigPtrInput
 	// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
 	OspfAreas  SwitchOspfAreasMapInput
@@ -493,12 +471,9 @@ type SwitchArgs struct {
 	OtherIpConfigs SwitchOtherIpConfigsMapInput
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig SwitchPortConfigMapInput
-	// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-	// portUsage without having to create a new port_usage.
+	// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the portUsage without having to create a new port_usage.
 	PortConfigOverwrite SwitchPortConfigOverwriteMapInput
-	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
-	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-	// maximum 4 mirroring ports is allowed
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
 	PortMirroring SwitchPortMirroringMapInput
 	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 	PortUsages SwitchPortUsagesMapInput
@@ -643,8 +618,7 @@ func (o SwitchOutput) DhcpdConfig() SwitchDhcpdConfigPtrOutput {
 	return o.ApplyT(func(v *Switch) SwitchDhcpdConfigPtrOutput { return v.DhcpdConfig }).(SwitchDhcpdConfigPtrOutput)
 }
 
-// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-// `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 func (o SwitchOutput) DisableAutoConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Switch) pulumi.BoolOutput { return v.DisableAutoConfig }).(pulumi.BoolOutput)
 }
@@ -686,8 +660,7 @@ func (o SwitchOutput) IpConfig() SwitchIpConfigPtrOutput {
 	return o.ApplyT(func(v *Switch) SwitchIpConfigPtrOutput { return v.IpConfig }).(SwitchIpConfigPtrOutput)
 }
 
-// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
-// "ge-0/0/0-10")
+// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. "ge-0/0/0-10")
 func (o SwitchOutput) LocalPortConfig() SwitchLocalPortConfigMapOutput {
 	return o.ApplyT(func(v *Switch) SwitchLocalPortConfigMapOutput { return v.LocalPortConfig }).(SwitchLocalPortConfigMapOutput)
 }
@@ -697,8 +670,7 @@ func (o SwitchOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.Mac }).(pulumi.StringOutput)
 }
 
-// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-// the adopted switch/gateway to be managed/configured by Mist.
+// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
 func (o SwitchOutput) Managed() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Switch) pulumi.BoolOutput { return v.Managed }).(pulumi.BoolOutput)
 }
@@ -736,8 +708,9 @@ func (o SwitchOutput) NtpServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringArrayOutput { return v.NtpServers }).(pulumi.StringArrayOutput)
 }
 
-// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+// Switch OOB IP Config:
+//   - If HA configuration: key parameter will be nodeX (eg: node1)
+//   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
 func (o SwitchOutput) OobIpConfig() SwitchOobIpConfigPtrOutput {
 	return o.ApplyT(func(v *Switch) SwitchOobIpConfigPtrOutput { return v.OobIpConfig }).(SwitchOobIpConfigPtrOutput)
 }
@@ -765,15 +738,12 @@ func (o SwitchOutput) PortConfig() SwitchPortConfigMapOutput {
 	return o.ApplyT(func(v *Switch) SwitchPortConfigMapOutput { return v.PortConfig }).(SwitchPortConfigMapOutput)
 }
 
-// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-// portUsage without having to create a new port_usage.
+// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the portUsage without having to create a new port_usage.
 func (o SwitchOutput) PortConfigOverwrite() SwitchPortConfigOverwriteMapOutput {
 	return o.ApplyT(func(v *Switch) SwitchPortConfigOverwriteMapOutput { return v.PortConfigOverwrite }).(SwitchPortConfigOverwriteMapOutput)
 }
 
-// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
-// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-// maximum 4 mirroring ports is allowed
+// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
 func (o SwitchOutput) PortMirroring() SwitchPortMirroringMapOutput {
 	return o.ApplyT(func(v *Switch) SwitchPortMirroringMapOutput { return v.PortMirroring }).(SwitchPortMirroringMapOutput)
 }

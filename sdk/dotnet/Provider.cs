@@ -37,9 +37,8 @@ namespace Pulumi.JuniperMist
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-        /// `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-        /// are supported.
+        /// Requests use the configured proxy to reach the Mist Cloud.
+        /// The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
         /// </summary>
         [Output("proxy")]
         public Output<string?> Proxy { get; private set; } = null!;
@@ -97,8 +96,7 @@ namespace Pulumi.JuniperMist
         public Input<bool>? ApiDebug { get; set; }
 
         /// <summary>
-        /// Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
-        /// results in infinite timeout.
+        /// Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
         /// </summary>
         [Input("apiTimeout", json: true)]
         public Input<double>? ApiTimeout { get; set; }
@@ -142,9 +140,8 @@ namespace Pulumi.JuniperMist
         }
 
         /// <summary>
-        /// Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-        /// `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-        /// are supported.
+        /// Requests use the configured proxy to reach the Mist Cloud.
+        /// The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
         /// </summary>
         [Input("proxy")]
         public Input<string>? Proxy { get; set; }

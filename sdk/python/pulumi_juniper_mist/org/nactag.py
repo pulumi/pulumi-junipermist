@@ -37,24 +37,24 @@ class NactagArgs:
                  vlan: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Nactag resource.
-        :param pulumi.Input[_builtins.str] type: enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
-               `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
+        :param pulumi.Input[_builtins.str] type: enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         :param pulumi.Input[_builtins.bool] allow_usermac_override: Can be set to true to allow the override by usermac result
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress vlans to return
-        :param pulumi.Input[_builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-               `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
-               `user_name`, `usermac_label`
-        :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
-               match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-               set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+        :param pulumi.Input[_builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+        :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match`
+                 * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+                 * `true`: means all values should be matched (i.e., match-all behavior)
+               
+               
+               Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
         :param pulumi.Input[_builtins.str] nacportal_id: If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_attrs: If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
-               the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
-               that it is allowed to have more than one radius_attrs in the result of a given rule.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_attrs: If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". 
+               It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+               Note that it is allowed to have more than one radius_attrs in the result of a given rule.
         :param pulumi.Input[_builtins.str] radius_group: If `type`==`radius_group`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_vendor_attrs: If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
-               "radius_vendor_attrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
-               not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_vendor_attrs: If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs". 
+               It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+               Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         :param pulumi.Input[_builtins.int] session_timeout: If `type`==`session_timeout, in seconds
         :param pulumi.Input[_builtins.str] username_attr: enum: `automatic`, `cn`, `dns`, `email`, `upn`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: If `type`==`match`
@@ -104,8 +104,7 @@ class NactagArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
-        `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
+        enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         """
         return pulumi.get(self, "type")
 
@@ -150,9 +149,7 @@ class NactagArgs:
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-        `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
-        `user_name`, `usermac_label`
+        if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
         """
         return pulumi.get(self, "match")
 
@@ -164,9 +161,12 @@ class NactagArgs:
     @pulumi.getter(name="matchAll")
     def match_all(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
-        match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-        set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+        This field is applicable only when `type`==`match`
+          * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+          * `true`: means all values should be matched (i.e., match-all behavior)
+
+
+        Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
         """
         return pulumi.get(self, "match_all")
 
@@ -199,9 +199,9 @@ class NactagArgs:
     @pulumi.getter(name="radiusAttrs")
     def radius_attrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
-        the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
-        that it is allowed to have more than one radius_attrs in the result of a given rule.
+        If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". 
+        It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+        Note that it is allowed to have more than one radius_attrs in the result of a given rule.
         """
         return pulumi.get(self, "radius_attrs")
 
@@ -225,9 +225,9 @@ class NactagArgs:
     @pulumi.getter(name="radiusVendorAttrs")
     def radius_vendor_attrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
-        "radius_vendor_attrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
-        not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+        If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs". 
+        It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+        Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         """
         return pulumi.get(self, "radius_vendor_attrs")
 
@@ -307,23 +307,23 @@ class _NactagState:
         Input properties used for looking up and filtering Nactag resources.
         :param pulumi.Input[_builtins.bool] allow_usermac_override: Can be set to true to allow the override by usermac result
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress vlans to return
-        :param pulumi.Input[_builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-               `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
-               `user_name`, `usermac_label`
-        :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
-               match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-               set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+        :param pulumi.Input[_builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+        :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match`
+                 * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+                 * `true`: means all values should be matched (i.e., match-all behavior)
+               
+               
+               Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
         :param pulumi.Input[_builtins.str] nacportal_id: If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_attrs: If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
-               the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
-               that it is allowed to have more than one radius_attrs in the result of a given rule.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_attrs: If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". 
+               It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+               Note that it is allowed to have more than one radius_attrs in the result of a given rule.
         :param pulumi.Input[_builtins.str] radius_group: If `type`==`radius_group`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_vendor_attrs: If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
-               "radius_vendor_attrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
-               not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_vendor_attrs: If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs". 
+               It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+               Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         :param pulumi.Input[_builtins.int] session_timeout: If `type`==`session_timeout, in seconds
-        :param pulumi.Input[_builtins.str] type: enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
-               `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
+        :param pulumi.Input[_builtins.str] type: enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         :param pulumi.Input[_builtins.str] username_attr: enum: `automatic`, `cn`, `dns`, `email`, `upn`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: If `type`==`match`
         :param pulumi.Input[_builtins.str] vlan: If `type`==`vlan`
@@ -398,9 +398,7 @@ class _NactagState:
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-        `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
-        `user_name`, `usermac_label`
+        if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
         """
         return pulumi.get(self, "match")
 
@@ -412,9 +410,12 @@ class _NactagState:
     @pulumi.getter(name="matchAll")
     def match_all(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
-        match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-        set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+        This field is applicable only when `type`==`match`
+          * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+          * `true`: means all values should be matched (i.e., match-all behavior)
+
+
+        Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
         """
         return pulumi.get(self, "match_all")
 
@@ -456,9 +457,9 @@ class _NactagState:
     @pulumi.getter(name="radiusAttrs")
     def radius_attrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
-        the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
-        that it is allowed to have more than one radius_attrs in the result of a given rule.
+        If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". 
+        It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+        Note that it is allowed to have more than one radius_attrs in the result of a given rule.
         """
         return pulumi.get(self, "radius_attrs")
 
@@ -482,9 +483,9 @@ class _NactagState:
     @pulumi.getter(name="radiusVendorAttrs")
     def radius_vendor_attrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
-        "radius_vendor_attrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
-        not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+        If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs". 
+        It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+        Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         """
         return pulumi.get(self, "radius_vendor_attrs")
 
@@ -508,8 +509,7 @@ class _NactagState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
-        `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
+        enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         """
         return pulumi.get(self, "type")
 
@@ -610,23 +610,23 @@ class Nactag(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_usermac_override: Can be set to true to allow the override by usermac result
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress vlans to return
-        :param pulumi.Input[_builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-               `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
-               `user_name`, `usermac_label`
-        :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
-               match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-               set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+        :param pulumi.Input[_builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+        :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match`
+                 * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+                 * `true`: means all values should be matched (i.e., match-all behavior)
+               
+               
+               Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
         :param pulumi.Input[_builtins.str] nacportal_id: If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_attrs: If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
-               the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
-               that it is allowed to have more than one radius_attrs in the result of a given rule.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_attrs: If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". 
+               It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+               Note that it is allowed to have more than one radius_attrs in the result of a given rule.
         :param pulumi.Input[_builtins.str] radius_group: If `type`==`radius_group`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_vendor_attrs: If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
-               "radius_vendor_attrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
-               not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_vendor_attrs: If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs". 
+               It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+               Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         :param pulumi.Input[_builtins.int] session_timeout: If `type`==`session_timeout, in seconds
-        :param pulumi.Input[_builtins.str] type: enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
-               `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
+        :param pulumi.Input[_builtins.str] type: enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         :param pulumi.Input[_builtins.str] username_attr: enum: `automatic`, `cn`, `dns`, `email`, `upn`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: If `type`==`match`
         :param pulumi.Input[_builtins.str] vlan: If `type`==`vlan`
@@ -761,23 +761,23 @@ class Nactag(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_usermac_override: Can be set to true to allow the override by usermac result
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress vlans to return
-        :param pulumi.Input[_builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-               `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
-               `user_name`, `usermac_label`
-        :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
-               match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-               set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+        :param pulumi.Input[_builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+        :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match`
+                 * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+                 * `true`: means all values should be matched (i.e., match-all behavior)
+               
+               
+               Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
         :param pulumi.Input[_builtins.str] nacportal_id: If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_attrs: If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
-               the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
-               that it is allowed to have more than one radius_attrs in the result of a given rule.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_attrs: If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". 
+               It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+               Note that it is allowed to have more than one radius_attrs in the result of a given rule.
         :param pulumi.Input[_builtins.str] radius_group: If `type`==`radius_group`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_vendor_attrs: If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
-               "radius_vendor_attrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
-               not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] radius_vendor_attrs: If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs". 
+               It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+               Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         :param pulumi.Input[_builtins.int] session_timeout: If `type`==`session_timeout, in seconds
-        :param pulumi.Input[_builtins.str] type: enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
-               `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
+        :param pulumi.Input[_builtins.str] type: enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         :param pulumi.Input[_builtins.str] username_attr: enum: `automatic`, `cn`, `dns`, `email`, `upn`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: If `type`==`match`
         :param pulumi.Input[_builtins.str] vlan: If `type`==`vlan`
@@ -829,9 +829,7 @@ class Nactag(pulumi.CustomResource):
     @pulumi.getter
     def match(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-        `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
-        `user_name`, `usermac_label`
+        if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
         """
         return pulumi.get(self, "match")
 
@@ -839,9 +837,12 @@ class Nactag(pulumi.CustomResource):
     @pulumi.getter(name="matchAll")
     def match_all(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
-        match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-        set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+        This field is applicable only when `type`==`match`
+          * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+          * `true`: means all values should be matched (i.e., match-all behavior)
+
+
+        Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
         """
         return pulumi.get(self, "match_all")
 
@@ -867,9 +868,9 @@ class Nactag(pulumi.CustomResource):
     @pulumi.getter(name="radiusAttrs")
     def radius_attrs(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
-        the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
-        that it is allowed to have more than one radius_attrs in the result of a given rule.
+        If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". 
+        It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+        Note that it is allowed to have more than one radius_attrs in the result of a given rule.
         """
         return pulumi.get(self, "radius_attrs")
 
@@ -885,9 +886,9 @@ class Nactag(pulumi.CustomResource):
     @pulumi.getter(name="radiusVendorAttrs")
     def radius_vendor_attrs(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
-        "radius_vendor_attrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
-        not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+        If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs". 
+        It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+        Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         """
         return pulumi.get(self, "radius_vendor_attrs")
 
@@ -903,8 +904,7 @@ class Nactag(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
-        `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
+        enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         """
         return pulumi.get(self, "type")
 

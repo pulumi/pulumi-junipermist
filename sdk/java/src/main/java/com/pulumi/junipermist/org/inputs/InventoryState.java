@@ -18,18 +18,22 @@ public final class InventoryState extends com.pulumi.resources.ResourceArgs {
     public static final InventoryState Empty = new InventoryState();
 
     /**
-     * Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-     * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
+     * Property key can be the device Claim Code or the device MAC Address:
+     *   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+     *   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+     *     
+     *     &gt; 
      * 
      */
     @Import(name="inventory")
     private @Nullable Output<Map<String,InventoryInventoryArgs>> inventory;
 
     /**
-     * @return Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-     * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
+     * @return Property key can be the device Claim Code or the device MAC Address:
+     *   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+     *   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+     *     
+     *     &gt; 
      * 
      */
     public Optional<Output<Map<String,InventoryInventoryArgs>>> inventory() {
@@ -69,9 +73,11 @@ public final class InventoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inventory Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-         * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-         * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
+         * @param inventory Property key can be the device Claim Code or the device MAC Address:
+         *   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+         *   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+         *     
+         *     &gt; 
          * 
          * @return builder
          * 
@@ -82,9 +88,11 @@ public final class InventoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inventory Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-         * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
-         * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
+         * @param inventory Property key can be the device Claim Code or the device MAC Address:
+         *   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+         *   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+         *     
+         *     &gt; 
          * 
          * @return builder
          * 

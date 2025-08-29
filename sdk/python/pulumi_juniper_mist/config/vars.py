@@ -30,8 +30,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def api_timeout(self) -> Optional[float]:
         """
-        Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
-        results in infinite timeout.
+        Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
         """
         return __config__.get_float('apiTimeout')
 
@@ -59,9 +58,8 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def proxy(self) -> Optional[str]:
         """
-        Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-        `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-        are supported.
+        Requests use the configured proxy to reach the Mist Cloud.
+        The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
         """
         return __config__.get('proxy')
 

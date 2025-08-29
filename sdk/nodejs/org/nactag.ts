@@ -65,66 +65,67 @@ export class Nactag extends pulumi.CustomResource {
     /**
      * Can be set to true to allow the override by usermac result
      */
-    public readonly allowUsermacOverride!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowUsermacOverride: pulumi.Output<boolean | undefined>;
     /**
      * If `type`==`egressVlanNames`, list of egress vlans to return
      */
-    public readonly egressVlanNames!: pulumi.Output<string[] | undefined>;
-    public readonly gbpTag!: pulumi.Output<string | undefined>;
+    declare public readonly egressVlanNames: pulumi.Output<string[] | undefined>;
+    declare public readonly gbpTag: pulumi.Output<string | undefined>;
     /**
-     * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
-     * `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
      */
-    public readonly match!: pulumi.Output<string | undefined>;
+    declare public readonly match: pulumi.Output<string | undefined>;
     /**
-     * This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
-     * match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-     * set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
+     * This field is applicable only when `type`==`match`
+     *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+     *   * `true`: means all values should be matched (i.e., match-all behavior)
+     *
+     *
+     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
      */
-    public readonly matchAll!: pulumi.Output<boolean | undefined>;
+    declare public readonly matchAll: pulumi.Output<boolean | undefined>;
     /**
      * If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
      */
-    public readonly nacportalId!: pulumi.Output<string | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly nacportalId: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
-     * If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". It is
-     * the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
-     * that it is allowed to have more than one radiusAttrs in the result of a given rule.
+     * If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". 
+     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+     * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
      */
-    public readonly radiusAttrs!: pulumi.Output<string[] | undefined>;
+    declare public readonly radiusAttrs: pulumi.Output<string[] | undefined>;
     /**
      * If `type`==`radiusGroup`
      */
-    public readonly radiusGroup!: pulumi.Output<string | undefined>;
+    declare public readonly radiusGroup: pulumi.Output<string | undefined>;
     /**
-     * If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field
-     * "radiusVendorAttrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
-     * not work as expected. Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
+     * If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "radiusVendorAttrs". 
+     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+     * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
      */
-    public readonly radiusVendorAttrs!: pulumi.Output<string[] | undefined>;
+    declare public readonly radiusVendorAttrs: pulumi.Output<string[] | undefined>;
     /**
      * If `type`==`session_timeout, in seconds
      */
-    public readonly sessionTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly sessionTimeout: pulumi.Output<number | undefined>;
     /**
-     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`,
-     * `sessionTimeout`, `usernameAttr`, `vlan`
+     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`, `sessionTimeout`, `usernameAttr`, `vlan`
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * enum: `automatic`, `cn`, `dns`, `email`, `upn`
      */
-    public readonly usernameAttr!: pulumi.Output<string | undefined>;
+    declare public readonly usernameAttr: pulumi.Output<string | undefined>;
     /**
      * If `type`==`match`
      */
-    public readonly values!: pulumi.Output<string[] | undefined>;
+    declare public readonly values: pulumi.Output<string[] | undefined>;
     /**
      * If `type`==`vlan`
      */
-    public readonly vlan!: pulumi.Output<string | undefined>;
+    declare public readonly vlan: pulumi.Output<string | undefined>;
 
     /**
      * Create a Nactag resource with the given unique name, arguments, and options.
@@ -139,46 +140,46 @@ export class Nactag extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NactagState | undefined;
-            resourceInputs["allowUsermacOverride"] = state ? state.allowUsermacOverride : undefined;
-            resourceInputs["egressVlanNames"] = state ? state.egressVlanNames : undefined;
-            resourceInputs["gbpTag"] = state ? state.gbpTag : undefined;
-            resourceInputs["match"] = state ? state.match : undefined;
-            resourceInputs["matchAll"] = state ? state.matchAll : undefined;
-            resourceInputs["nacportalId"] = state ? state.nacportalId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["radiusAttrs"] = state ? state.radiusAttrs : undefined;
-            resourceInputs["radiusGroup"] = state ? state.radiusGroup : undefined;
-            resourceInputs["radiusVendorAttrs"] = state ? state.radiusVendorAttrs : undefined;
-            resourceInputs["sessionTimeout"] = state ? state.sessionTimeout : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["usernameAttr"] = state ? state.usernameAttr : undefined;
-            resourceInputs["values"] = state ? state.values : undefined;
-            resourceInputs["vlan"] = state ? state.vlan : undefined;
+            resourceInputs["allowUsermacOverride"] = state?.allowUsermacOverride;
+            resourceInputs["egressVlanNames"] = state?.egressVlanNames;
+            resourceInputs["gbpTag"] = state?.gbpTag;
+            resourceInputs["match"] = state?.match;
+            resourceInputs["matchAll"] = state?.matchAll;
+            resourceInputs["nacportalId"] = state?.nacportalId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["radiusAttrs"] = state?.radiusAttrs;
+            resourceInputs["radiusGroup"] = state?.radiusGroup;
+            resourceInputs["radiusVendorAttrs"] = state?.radiusVendorAttrs;
+            resourceInputs["sessionTimeout"] = state?.sessionTimeout;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["usernameAttr"] = state?.usernameAttr;
+            resourceInputs["values"] = state?.values;
+            resourceInputs["vlan"] = state?.vlan;
         } else {
             const args = argsOrState as NactagArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["allowUsermacOverride"] = args ? args.allowUsermacOverride : undefined;
-            resourceInputs["egressVlanNames"] = args ? args.egressVlanNames : undefined;
-            resourceInputs["gbpTag"] = args ? args.gbpTag : undefined;
-            resourceInputs["match"] = args ? args.match : undefined;
-            resourceInputs["matchAll"] = args ? args.matchAll : undefined;
-            resourceInputs["nacportalId"] = args ? args.nacportalId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["radiusAttrs"] = args ? args.radiusAttrs : undefined;
-            resourceInputs["radiusGroup"] = args ? args.radiusGroup : undefined;
-            resourceInputs["radiusVendorAttrs"] = args ? args.radiusVendorAttrs : undefined;
-            resourceInputs["sessionTimeout"] = args ? args.sessionTimeout : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["usernameAttr"] = args ? args.usernameAttr : undefined;
-            resourceInputs["values"] = args ? args.values : undefined;
-            resourceInputs["vlan"] = args ? args.vlan : undefined;
+            resourceInputs["allowUsermacOverride"] = args?.allowUsermacOverride;
+            resourceInputs["egressVlanNames"] = args?.egressVlanNames;
+            resourceInputs["gbpTag"] = args?.gbpTag;
+            resourceInputs["match"] = args?.match;
+            resourceInputs["matchAll"] = args?.matchAll;
+            resourceInputs["nacportalId"] = args?.nacportalId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["radiusAttrs"] = args?.radiusAttrs;
+            resourceInputs["radiusGroup"] = args?.radiusGroup;
+            resourceInputs["radiusVendorAttrs"] = args?.radiusVendorAttrs;
+            resourceInputs["sessionTimeout"] = args?.sessionTimeout;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["usernameAttr"] = args?.usernameAttr;
+            resourceInputs["values"] = args?.values;
+            resourceInputs["vlan"] = args?.vlan;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Nactag.__pulumiType, name, resourceInputs, opts);
@@ -199,14 +200,16 @@ export interface NactagState {
     egressVlanNames?: pulumi.Input<pulumi.Input<string>[]>;
     gbpTag?: pulumi.Input<string>;
     /**
-     * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
-     * `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
      */
     match?: pulumi.Input<string>;
     /**
-     * This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
-     * match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-     * set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
+     * This field is applicable only when `type`==`match`
+     *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+     *   * `true`: means all values should be matched (i.e., match-all behavior)
+     *
+     *
+     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
      */
     matchAll?: pulumi.Input<boolean>;
     /**
@@ -216,9 +219,9 @@ export interface NactagState {
     name?: pulumi.Input<string>;
     orgId?: pulumi.Input<string>;
     /**
-     * If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". It is
-     * the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
-     * that it is allowed to have more than one radiusAttrs in the result of a given rule.
+     * If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". 
+     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+     * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
      */
     radiusAttrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -226,9 +229,9 @@ export interface NactagState {
      */
     radiusGroup?: pulumi.Input<string>;
     /**
-     * If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field
-     * "radiusVendorAttrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
-     * not work as expected. Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
+     * If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "radiusVendorAttrs". 
+     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+     * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
      */
     radiusVendorAttrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -236,8 +239,7 @@ export interface NactagState {
      */
     sessionTimeout?: pulumi.Input<number>;
     /**
-     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`,
-     * `sessionTimeout`, `usernameAttr`, `vlan`
+     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`, `sessionTimeout`, `usernameAttr`, `vlan`
      */
     type?: pulumi.Input<string>;
     /**
@@ -268,14 +270,16 @@ export interface NactagArgs {
     egressVlanNames?: pulumi.Input<pulumi.Input<string>[]>;
     gbpTag?: pulumi.Input<string>;
     /**
-     * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`,
-     * `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
      */
     match?: pulumi.Input<string>;
     /**
-     * This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
-     * match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-     * set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
+     * This field is applicable only when `type`==`match`
+     *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+     *   * `true`: means all values should be matched (i.e., match-all behavior)
+     *
+     *
+     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
      */
     matchAll?: pulumi.Input<boolean>;
     /**
@@ -285,9 +289,9 @@ export interface NactagArgs {
     name?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
     /**
-     * If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". It is
-     * the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
-     * that it is allowed to have more than one radiusAttrs in the result of a given rule.
+     * If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". 
+     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+     * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
      */
     radiusAttrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -295,9 +299,9 @@ export interface NactagArgs {
      */
     radiusGroup?: pulumi.Input<string>;
     /**
-     * If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field
-     * "radiusVendorAttrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
-     * not work as expected. Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
+     * If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "radiusVendorAttrs". 
+     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+     * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
      */
     radiusVendorAttrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -305,8 +309,7 @@ export interface NactagArgs {
      */
     sessionTimeout?: pulumi.Input<number>;
     /**
-     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`,
-     * `sessionTimeout`, `usernameAttr`, `vlan`
+     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`, `sessionTimeout`, `usernameAttr`, `vlan`
      */
     type: pulumi.Input<string>;
     /**

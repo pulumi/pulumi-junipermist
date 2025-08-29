@@ -78,360 +78,352 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * Enable coa-immediate-update and address-change-immediate-update on the access profile.
      */
-    public readonly acctImmediateUpdate!: pulumi.Output<boolean>;
+    declare public readonly acctImmediateUpdate: pulumi.Output<boolean>;
     /**
-     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
-     * from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended
-     * when enabled
+     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
      */
-    public readonly acctInterimInterval!: pulumi.Output<number>;
+    declare public readonly acctInterimInterval: pulumi.Output<number>;
     /**
      * List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
      */
-    public readonly acctServers!: pulumi.Output<outputs.site.WlanAcctServer[]>;
+    declare public readonly acctServers: pulumi.Output<outputs.site.WlanAcctServer[]>;
     /**
      * Airwatch wlan settings
      */
-    public readonly airwatch!: pulumi.Output<outputs.site.WlanAirwatch>;
+    declare public readonly airwatch: pulumi.Output<outputs.site.WlanAirwatch>;
     /**
      * Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
      */
-    public readonly allowIpv6Ndp!: pulumi.Output<boolean>;
+    declare public readonly allowIpv6Ndp: pulumi.Output<boolean>;
     /**
      * Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
      */
-    public readonly allowMdns!: pulumi.Output<boolean>;
+    declare public readonly allowMdns: pulumi.Output<boolean>;
     /**
      * Only applicable when `limitBcast`==`true`, which allows SSDP
      */
-    public readonly allowSsdp!: pulumi.Output<boolean>;
+    declare public readonly allowSsdp: pulumi.Output<boolean>;
     /**
      * List of device ids
      */
-    public readonly apIds!: pulumi.Output<string[]>;
+    declare public readonly apIds: pulumi.Output<string[]>;
     /**
      * Bandwidth limiting for apps (applies to up/down)
      */
-    public readonly appLimit!: pulumi.Output<outputs.site.WlanAppLimit | undefined>;
+    declare public readonly appLimit: pulumi.Output<outputs.site.WlanAppLimit | undefined>;
     /**
      * APp qos wlan settings
      */
-    public readonly appQos!: pulumi.Output<outputs.site.WlanAppQos>;
+    declare public readonly appQos: pulumi.Output<outputs.site.WlanAppQos>;
     /**
      * enum: `aps`, `site`, `wxtags`
      */
-    public readonly applyTo!: pulumi.Output<string>;
+    declare public readonly applyTo: pulumi.Output<string>;
     /**
      * Whether to enable smart arp filter
      */
-    public readonly arpFilter!: pulumi.Output<boolean>;
+    declare public readonly arpFilter: pulumi.Output<boolean>;
     /**
      * Authentication wlan settings
      */
-    public readonly auth!: pulumi.Output<outputs.site.WlanAuth | undefined>;
+    declare public readonly auth: pulumi.Output<outputs.site.WlanAuth | undefined>;
     /**
      * When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
      */
-    public readonly authServerSelection!: pulumi.Output<string>;
+    declare public readonly authServerSelection: pulumi.Output<string>;
     /**
-     * List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
-     * is treated as primary
+     * List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
      */
-    public readonly authServers!: pulumi.Output<outputs.site.WlanAuthServer[]>;
+    declare public readonly authServers: pulumi.Output<outputs.site.WlanAuthServer[]>;
     /**
      * Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
      */
-    public readonly authServersNasId!: pulumi.Output<string>;
+    declare public readonly authServersNasId: pulumi.Output<string>;
     /**
      * Optional, NAS-IP-ADDRESS to use
      */
-    public readonly authServersNasIp!: pulumi.Output<string>;
+    declare public readonly authServersNasIp: pulumi.Output<string>;
     /**
-     * Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set
-     * to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default
-     * value to 3.
+     * Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      */
-    public readonly authServersRetries!: pulumi.Output<number | undefined>;
+    declare public readonly authServersRetries: pulumi.Output<number | undefined>;
     /**
-     * Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’ and
-     * ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
-     * setting authServersTimeout and is set to default value of 10.
+     * Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
      */
-    public readonly authServersTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly authServersTimeout: pulumi.Output<number | undefined>;
     /**
      * Whether to enable band_steering, this works only when band==both
      */
-    public readonly bandSteer!: pulumi.Output<boolean>;
+    declare public readonly bandSteer: pulumi.Output<boolean>;
     /**
      * Force dualBand capable client to connect to 5G
      */
-    public readonly bandSteerForceBand5!: pulumi.Output<boolean | undefined>;
+    declare public readonly bandSteerForceBand5: pulumi.Output<boolean | undefined>;
     /**
      * list of radios that the wlan should apply to. enum: `24`, `5`, `6`
      */
-    public readonly bands!: pulumi.Output<string[] | undefined>;
+    declare public readonly bands: pulumi.Output<string[] | undefined>;
     /**
      * Whether to block the clients in the blacklist (up to first 256 macs)
      */
-    public readonly blockBlacklistClients!: pulumi.Output<boolean | undefined>;
+    declare public readonly blockBlacklistClients: pulumi.Output<boolean | undefined>;
     /**
      * Bonjour gateway wlan settings
      */
-    public readonly bonjour!: pulumi.Output<outputs.site.WlanBonjour | undefined>;
+    declare public readonly bonjour: pulumi.Output<outputs.site.WlanBonjour | undefined>;
     /**
-     * Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
-     * https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+     * Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
      */
-    public readonly ciscoCwa!: pulumi.Output<outputs.site.WlanCiscoCwa>;
-    public readonly clientLimitDown!: pulumi.Output<string>;
+    declare public readonly ciscoCwa: pulumi.Output<outputs.site.WlanCiscoCwa>;
+    declare public readonly clientLimitDown: pulumi.Output<string>;
     /**
      * If downlink limiting per-client is enabled
      */
-    public readonly clientLimitDownEnabled!: pulumi.Output<boolean | undefined>;
-    public readonly clientLimitUp!: pulumi.Output<string>;
+    declare public readonly clientLimitDownEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly clientLimitUp: pulumi.Output<string>;
     /**
      * If uplink limiting per-client is enabled
      */
-    public readonly clientLimitUpEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly clientLimitUpEnabled: pulumi.Output<boolean | undefined>;
     /**
      * List of COA (change of authorization) servers, optional
      */
-    public readonly coaServers!: pulumi.Output<outputs.site.WlanCoaServer[] | undefined>;
+    declare public readonly coaServers: pulumi.Output<outputs.site.WlanCoaServer[] | undefined>;
     /**
      * Some old WLAN drivers may not be compatible
      */
-    public readonly disable11ax!: pulumi.Output<boolean>;
+    declare public readonly disable11ax: pulumi.Output<boolean>;
     /**
      * To disable Wi-Fi 7 EHT IEs
      */
-    public readonly disable11be!: pulumi.Output<boolean | undefined>;
+    declare public readonly disable11be: pulumi.Output<boolean | undefined>;
     /**
      * To disable ht or vht rates
      */
-    public readonly disableHtVhtRates!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableHtVhtRates: pulumi.Output<boolean | undefined>;
     /**
      * Whether to disable U-APSD
      */
-    public readonly disableUapsd!: pulumi.Output<boolean>;
+    declare public readonly disableUapsd: pulumi.Output<boolean>;
     /**
      * Disable sending v2 roam notification messages
      */
-    public readonly disableV1RoamNotify!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableV1RoamNotify: pulumi.Output<boolean | undefined>;
     /**
      * Disable sending v2 roam notification messages
      */
-    public readonly disableV2RoamNotify!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableV2RoamNotify: pulumi.Output<boolean | undefined>;
     /**
-     * When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
-     * reach default gateway
+     * When any of the following is true, this WLAN will be disabled
+     *    * cannot get IP
+     *    * cannot obtain default gateway
+     *    * cannot reach default gateway
      */
-    public readonly disableWhenGatewayUnreachable!: pulumi.Output<boolean | undefined>;
-    public readonly disableWhenMxtunnelDown!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableWhenGatewayUnreachable: pulumi.Output<boolean | undefined>;
+    declare public readonly disableWhenMxtunnelDown: pulumi.Output<boolean | undefined>;
     /**
      * Whether to disable WMM
      */
-    public readonly disableWmm!: pulumi.Output<boolean>;
+    declare public readonly disableWmm: pulumi.Output<boolean>;
     /**
      * For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
      */
-    public readonly dnsServerRewrite!: pulumi.Output<outputs.site.WlanDnsServerRewrite | undefined>;
-    public readonly dtim!: pulumi.Output<number>;
+    declare public readonly dnsServerRewrite: pulumi.Output<outputs.site.WlanDnsServerRewrite | undefined>;
+    declare public readonly dtim: pulumi.Output<number>;
     /**
-     * For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on
-     * context (wlan/site/user/...) thus following configurations are assumed (currently) * PSK will come from RADIUS server *
-     * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed) * AP sends BSSID:SSID as
-     * Caller-Station-ID * `authServers` is required * PSK will come from cloud WLC if source is cloudPsks * defaultPsk will be
-     * used if cloud WLC is not available * `multiPskOnly` and `psk` is ignored * `pairwise` can only be wpa2-ccmp (for now,
-     * wpa3 support on the roadmap)
+     * For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+     *   * PSK will come from RADIUS server
+     *   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
+     *   * AP sends BSSID:SSID as Caller-Station-ID
+     *   * `authServers` is required
+     *   * PSK will come from cloud WLC if source is cloudPsks
+     *   * defaultPsk will be used if cloud WLC is not available
+     *   * `multiPskOnly` and `psk` is ignored
+     *   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
      */
-    public readonly dynamicPsk!: pulumi.Output<outputs.site.WlanDynamicPsk | undefined>;
+    declare public readonly dynamicPsk: pulumi.Output<outputs.site.WlanDynamicPsk | undefined>;
     /**
      * For 802.1x
      */
-    public readonly dynamicVlan!: pulumi.Output<outputs.site.WlanDynamicVlan | undefined>;
+    declare public readonly dynamicVlan: pulumi.Output<outputs.site.WlanDynamicVlan | undefined>;
     /**
      * Enable AP-AP keycaching via multicast
      */
-    public readonly enableLocalKeycaching!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableLocalKeycaching: pulumi.Output<boolean | undefined>;
     /**
-     * By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-     * client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
+     * By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
      */
-    public readonly enableWirelessBridging!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableWirelessBridging: pulumi.Output<boolean | undefined>;
     /**
-     * If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response
-     * packets to be forwarded to wireless
+     * If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response packets to be forwarded to wireless
      */
-    public readonly enableWirelessBridgingDhcpTracking!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableWirelessBridgingDhcpTracking: pulumi.Output<boolean | undefined>;
     /**
      * If this wlan is enabled
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
-     * If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
-     * ‘auth_server_retries’ .
+     * If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
      */
-    public readonly fastDot1xTimers!: pulumi.Output<boolean | undefined>;
+    declare public readonly fastDot1xTimers: pulumi.Output<boolean | undefined>;
     /**
      * Whether to hide SSID in beacon
      */
-    public readonly hideSsid!: pulumi.Output<boolean>;
+    declare public readonly hideSsid: pulumi.Output<boolean>;
     /**
      * Include hostname inside IE in AP beacons / probe responses
      */
-    public readonly hostnameIe!: pulumi.Output<boolean>;
+    declare public readonly hostnameIe: pulumi.Output<boolean>;
     /**
      * Hostspot 2.0 wlan settings
      */
-    public readonly hotspot20!: pulumi.Output<outputs.site.WlanHotspot20 | undefined>;
-    public readonly injectDhcpOption82!: pulumi.Output<outputs.site.WlanInjectDhcpOption82 | undefined>;
+    declare public readonly hotspot20: pulumi.Output<outputs.site.WlanHotspot20 | undefined>;
+    declare public readonly injectDhcpOption82: pulumi.Output<outputs.site.WlanInjectDhcpOption82 | undefined>;
     /**
      * where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
      */
-    public readonly interface!: pulumi.Output<string>;
+    declare public readonly interface: pulumi.Output<string>;
     /**
      * Whether to stop clients to talk to each other
      */
-    public readonly isolation!: pulumi.Output<boolean | undefined>;
+    declare public readonly isolation: pulumi.Output<boolean | undefined>;
     /**
      * If isolation is enabled, whether to deny clients to talk to L2 on the LAN
      */
-    public readonly l2Isolation!: pulumi.Output<boolean | undefined>;
+    declare public readonly l2Isolation: pulumi.Output<boolean | undefined>;
     /**
-     * Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
-     * Enabling this will cause problem for iOS devices.
+     * Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
      */
-    public readonly legacyOverds!: pulumi.Output<boolean | undefined>;
+    declare public readonly legacyOverds: pulumi.Output<boolean | undefined>;
     /**
      * Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
      */
-    public readonly limitBcast!: pulumi.Output<boolean>;
+    declare public readonly limitBcast: pulumi.Output<boolean>;
     /**
      * Limit probe response base on some heuristic rules
      */
-    public readonly limitProbeResponse!: pulumi.Output<boolean>;
+    declare public readonly limitProbeResponse: pulumi.Output<boolean>;
     /**
      * Max idle time in seconds
      */
-    public readonly maxIdletime!: pulumi.Output<number>;
+    declare public readonly maxIdletime: pulumi.Output<number>;
     /**
      * Maximum number of client connected to the SSID. `0` means unlimited
      */
-    public readonly maxNumClients!: pulumi.Output<number | undefined>;
-    public readonly mistNac!: pulumi.Output<outputs.site.WlanMistNac>;
-    public /*out*/ readonly mspId!: pulumi.Output<string>;
+    declare public readonly maxNumClients: pulumi.Output<number | undefined>;
+    declare public readonly mistNac: pulumi.Output<outputs.site.WlanMistNac>;
+    declare public /*out*/ readonly mspId: pulumi.Output<string>;
     /**
      * When `interface`=`mxtunnel`, id of the Mist Tunnel
      */
-    public readonly mxtunnelIds!: pulumi.Output<string[]>;
+    declare public readonly mxtunnelIds: pulumi.Output<string[]>;
     /**
      * When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
      */
-    public readonly mxtunnelNames!: pulumi.Output<string[]>;
+    declare public readonly mxtunnelNames: pulumi.Output<string[]>;
     /**
      * Whether to only allow client to use DNS that we’ve learned from DHCP response
      */
-    public readonly noStaticDns!: pulumi.Output<boolean>;
+    declare public readonly noStaticDns: pulumi.Output<boolean>;
     /**
      * Whether to only allow client that we’ve learned from DHCP exchange to talk
      */
-    public readonly noStaticIp!: pulumi.Output<boolean>;
-    public /*out*/ readonly orgId!: pulumi.Output<string>;
+    declare public readonly noStaticIp: pulumi.Output<boolean>;
+    declare public /*out*/ readonly orgId: pulumi.Output<string>;
     /**
      * Portal wlan settings
      */
-    public readonly portal!: pulumi.Output<outputs.site.WlanPortal>;
+    declare public readonly portal: pulumi.Output<outputs.site.WlanPortal>;
     /**
      * List of hostnames without http(s):// (matched by substring)
      */
-    public readonly portalAllowedHostnames!: pulumi.Output<string[]>;
+    declare public readonly portalAllowedHostnames: pulumi.Output<string[]>;
     /**
      * List of CIDRs
      */
-    public readonly portalAllowedSubnets!: pulumi.Output<string[]>;
+    declare public readonly portalAllowedSubnets: pulumi.Output<string[]>;
     /**
      * APi secret (auto-generated) that can be used to sign guest authorization requests
      */
-    public /*out*/ readonly portalApiSecret!: pulumi.Output<string>;
+    declare public /*out*/ readonly portalApiSecret: pulumi.Output<string>;
     /**
      * List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
      */
-    public readonly portalDeniedHostnames!: pulumi.Output<string[]>;
+    declare public readonly portalDeniedHostnames: pulumi.Output<string[]>;
     /**
      * Url of portal background image
      */
-    public /*out*/ readonly portalImage!: pulumi.Output<string>;
-    public /*out*/ readonly portalSsoUrl!: pulumi.Output<string>;
-    public readonly qos!: pulumi.Output<outputs.site.WlanQos>;
+    declare public /*out*/ readonly portalImage: pulumi.Output<string>;
+    declare public /*out*/ readonly portalSsoUrl: pulumi.Output<string>;
+    declare public readonly qos: pulumi.Output<outputs.site.WlanQos>;
     /**
      * RadSec settings
      */
-    public readonly radsec!: pulumi.Output<outputs.site.WlanRadsec>;
+    declare public readonly radsec: pulumi.Output<outputs.site.WlanRadsec>;
     /**
      * Property key is the RF band. enum: `24`, `5`, `6`
      */
-    public readonly rateset!: pulumi.Output<{[key: string]: outputs.site.WlanRateset}>;
+    declare public readonly rateset: pulumi.Output<{[key: string]: outputs.site.WlanRateset}>;
     /**
      * When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
      */
-    public readonly reconnectClientsWhenRoamingMxcluster!: pulumi.Output<boolean | undefined>;
+    declare public readonly reconnectClientsWhenRoamingMxcluster: pulumi.Output<boolean | undefined>;
     /**
      * enum: `11r`, `OKC`, `NONE`
      */
-    public readonly roamMode!: pulumi.Output<string | undefined>;
+    declare public readonly roamMode: pulumi.Output<string | undefined>;
     /**
      * WLAN operating schedule, default is disabled
      */
-    public readonly schedule!: pulumi.Output<outputs.site.WlanSchedule>;
-    public readonly siteId!: pulumi.Output<string>;
+    declare public readonly schedule: pulumi.Output<outputs.site.WlanSchedule>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * Whether to exclude this WLAN from SLE metrics
      */
-    public readonly sleExcluded!: pulumi.Output<boolean | undefined>;
+    declare public readonly sleExcluded: pulumi.Output<boolean | undefined>;
     /**
      * Name of the SSID
      */
-    public readonly ssid!: pulumi.Output<string>;
+    declare public readonly ssid: pulumi.Output<string>;
     /**
      * If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
      */
-    public readonly useEapolV1!: pulumi.Output<boolean>;
+    declare public readonly useEapolV1: pulumi.Output<boolean>;
     /**
      * If vlan tagging is enabled
      */
-    public readonly vlanEnabled!: pulumi.Output<boolean>;
-    public readonly vlanId!: pulumi.Output<string | undefined>;
+    declare public readonly vlanEnabled: pulumi.Output<boolean>;
+    declare public readonly vlanId: pulumi.Output<string | undefined>;
     /**
      * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
      */
-    public readonly vlanIds!: pulumi.Output<string[]>;
+    declare public readonly vlanIds: pulumi.Output<string[]>;
     /**
-     * Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
-     * deterministic algorithm
+     * Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
      */
-    public readonly vlanPooling!: pulumi.Output<boolean>;
-    public readonly wlanLimitDown!: pulumi.Output<string>;
+    declare public readonly vlanPooling: pulumi.Output<boolean>;
+    declare public readonly wlanLimitDown: pulumi.Output<string>;
     /**
      * If downlink limiting for whole wlan is enabled
      */
-    public readonly wlanLimitDownEnabled!: pulumi.Output<boolean | undefined>;
-    public readonly wlanLimitUp!: pulumi.Output<string>;
+    declare public readonly wlanLimitDownEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly wlanLimitUp: pulumi.Output<string>;
     /**
      * If uplink limiting for whole wlan is enabled
      */
-    public readonly wlanLimitUpEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly wlanLimitUpEnabled: pulumi.Output<boolean | undefined>;
     /**
      * List of wxtag_ids
      */
-    public readonly wxtagIds!: pulumi.Output<string[]>;
+    declare public readonly wxtagIds: pulumi.Output<string[]>;
     /**
      * When `interface`=`wxtunnel`, id of the WXLAN Tunnel
      */
-    public readonly wxtunnelId!: pulumi.Output<string>;
+    declare public readonly wxtunnelId: pulumi.Output<string>;
     /**
      * When `interface`=`wxtunnel`, remote tunnel identifier
      */
-    public readonly wxtunnelRemoteId!: pulumi.Output<string>;
+    declare public readonly wxtunnelRemoteId: pulumi.Output<string>;
 
     /**
      * Create a Wlan resource with the given unique name, arguments, and options.
@@ -446,199 +438,199 @@ export class Wlan extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WlanState | undefined;
-            resourceInputs["acctImmediateUpdate"] = state ? state.acctImmediateUpdate : undefined;
-            resourceInputs["acctInterimInterval"] = state ? state.acctInterimInterval : undefined;
-            resourceInputs["acctServers"] = state ? state.acctServers : undefined;
-            resourceInputs["airwatch"] = state ? state.airwatch : undefined;
-            resourceInputs["allowIpv6Ndp"] = state ? state.allowIpv6Ndp : undefined;
-            resourceInputs["allowMdns"] = state ? state.allowMdns : undefined;
-            resourceInputs["allowSsdp"] = state ? state.allowSsdp : undefined;
-            resourceInputs["apIds"] = state ? state.apIds : undefined;
-            resourceInputs["appLimit"] = state ? state.appLimit : undefined;
-            resourceInputs["appQos"] = state ? state.appQos : undefined;
-            resourceInputs["applyTo"] = state ? state.applyTo : undefined;
-            resourceInputs["arpFilter"] = state ? state.arpFilter : undefined;
-            resourceInputs["auth"] = state ? state.auth : undefined;
-            resourceInputs["authServerSelection"] = state ? state.authServerSelection : undefined;
-            resourceInputs["authServers"] = state ? state.authServers : undefined;
-            resourceInputs["authServersNasId"] = state ? state.authServersNasId : undefined;
-            resourceInputs["authServersNasIp"] = state ? state.authServersNasIp : undefined;
-            resourceInputs["authServersRetries"] = state ? state.authServersRetries : undefined;
-            resourceInputs["authServersTimeout"] = state ? state.authServersTimeout : undefined;
-            resourceInputs["bandSteer"] = state ? state.bandSteer : undefined;
-            resourceInputs["bandSteerForceBand5"] = state ? state.bandSteerForceBand5 : undefined;
-            resourceInputs["bands"] = state ? state.bands : undefined;
-            resourceInputs["blockBlacklistClients"] = state ? state.blockBlacklistClients : undefined;
-            resourceInputs["bonjour"] = state ? state.bonjour : undefined;
-            resourceInputs["ciscoCwa"] = state ? state.ciscoCwa : undefined;
-            resourceInputs["clientLimitDown"] = state ? state.clientLimitDown : undefined;
-            resourceInputs["clientLimitDownEnabled"] = state ? state.clientLimitDownEnabled : undefined;
-            resourceInputs["clientLimitUp"] = state ? state.clientLimitUp : undefined;
-            resourceInputs["clientLimitUpEnabled"] = state ? state.clientLimitUpEnabled : undefined;
-            resourceInputs["coaServers"] = state ? state.coaServers : undefined;
-            resourceInputs["disable11ax"] = state ? state.disable11ax : undefined;
-            resourceInputs["disable11be"] = state ? state.disable11be : undefined;
-            resourceInputs["disableHtVhtRates"] = state ? state.disableHtVhtRates : undefined;
-            resourceInputs["disableUapsd"] = state ? state.disableUapsd : undefined;
-            resourceInputs["disableV1RoamNotify"] = state ? state.disableV1RoamNotify : undefined;
-            resourceInputs["disableV2RoamNotify"] = state ? state.disableV2RoamNotify : undefined;
-            resourceInputs["disableWhenGatewayUnreachable"] = state ? state.disableWhenGatewayUnreachable : undefined;
-            resourceInputs["disableWhenMxtunnelDown"] = state ? state.disableWhenMxtunnelDown : undefined;
-            resourceInputs["disableWmm"] = state ? state.disableWmm : undefined;
-            resourceInputs["dnsServerRewrite"] = state ? state.dnsServerRewrite : undefined;
-            resourceInputs["dtim"] = state ? state.dtim : undefined;
-            resourceInputs["dynamicPsk"] = state ? state.dynamicPsk : undefined;
-            resourceInputs["dynamicVlan"] = state ? state.dynamicVlan : undefined;
-            resourceInputs["enableLocalKeycaching"] = state ? state.enableLocalKeycaching : undefined;
-            resourceInputs["enableWirelessBridging"] = state ? state.enableWirelessBridging : undefined;
-            resourceInputs["enableWirelessBridgingDhcpTracking"] = state ? state.enableWirelessBridgingDhcpTracking : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["fastDot1xTimers"] = state ? state.fastDot1xTimers : undefined;
-            resourceInputs["hideSsid"] = state ? state.hideSsid : undefined;
-            resourceInputs["hostnameIe"] = state ? state.hostnameIe : undefined;
-            resourceInputs["hotspot20"] = state ? state.hotspot20 : undefined;
-            resourceInputs["injectDhcpOption82"] = state ? state.injectDhcpOption82 : undefined;
-            resourceInputs["interface"] = state ? state.interface : undefined;
-            resourceInputs["isolation"] = state ? state.isolation : undefined;
-            resourceInputs["l2Isolation"] = state ? state.l2Isolation : undefined;
-            resourceInputs["legacyOverds"] = state ? state.legacyOverds : undefined;
-            resourceInputs["limitBcast"] = state ? state.limitBcast : undefined;
-            resourceInputs["limitProbeResponse"] = state ? state.limitProbeResponse : undefined;
-            resourceInputs["maxIdletime"] = state ? state.maxIdletime : undefined;
-            resourceInputs["maxNumClients"] = state ? state.maxNumClients : undefined;
-            resourceInputs["mistNac"] = state ? state.mistNac : undefined;
-            resourceInputs["mspId"] = state ? state.mspId : undefined;
-            resourceInputs["mxtunnelIds"] = state ? state.mxtunnelIds : undefined;
-            resourceInputs["mxtunnelNames"] = state ? state.mxtunnelNames : undefined;
-            resourceInputs["noStaticDns"] = state ? state.noStaticDns : undefined;
-            resourceInputs["noStaticIp"] = state ? state.noStaticIp : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["portal"] = state ? state.portal : undefined;
-            resourceInputs["portalAllowedHostnames"] = state ? state.portalAllowedHostnames : undefined;
-            resourceInputs["portalAllowedSubnets"] = state ? state.portalAllowedSubnets : undefined;
-            resourceInputs["portalApiSecret"] = state ? state.portalApiSecret : undefined;
-            resourceInputs["portalDeniedHostnames"] = state ? state.portalDeniedHostnames : undefined;
-            resourceInputs["portalImage"] = state ? state.portalImage : undefined;
-            resourceInputs["portalSsoUrl"] = state ? state.portalSsoUrl : undefined;
-            resourceInputs["qos"] = state ? state.qos : undefined;
-            resourceInputs["radsec"] = state ? state.radsec : undefined;
-            resourceInputs["rateset"] = state ? state.rateset : undefined;
-            resourceInputs["reconnectClientsWhenRoamingMxcluster"] = state ? state.reconnectClientsWhenRoamingMxcluster : undefined;
-            resourceInputs["roamMode"] = state ? state.roamMode : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["sleExcluded"] = state ? state.sleExcluded : undefined;
-            resourceInputs["ssid"] = state ? state.ssid : undefined;
-            resourceInputs["useEapolV1"] = state ? state.useEapolV1 : undefined;
-            resourceInputs["vlanEnabled"] = state ? state.vlanEnabled : undefined;
-            resourceInputs["vlanId"] = state ? state.vlanId : undefined;
-            resourceInputs["vlanIds"] = state ? state.vlanIds : undefined;
-            resourceInputs["vlanPooling"] = state ? state.vlanPooling : undefined;
-            resourceInputs["wlanLimitDown"] = state ? state.wlanLimitDown : undefined;
-            resourceInputs["wlanLimitDownEnabled"] = state ? state.wlanLimitDownEnabled : undefined;
-            resourceInputs["wlanLimitUp"] = state ? state.wlanLimitUp : undefined;
-            resourceInputs["wlanLimitUpEnabled"] = state ? state.wlanLimitUpEnabled : undefined;
-            resourceInputs["wxtagIds"] = state ? state.wxtagIds : undefined;
-            resourceInputs["wxtunnelId"] = state ? state.wxtunnelId : undefined;
-            resourceInputs["wxtunnelRemoteId"] = state ? state.wxtunnelRemoteId : undefined;
+            resourceInputs["acctImmediateUpdate"] = state?.acctImmediateUpdate;
+            resourceInputs["acctInterimInterval"] = state?.acctInterimInterval;
+            resourceInputs["acctServers"] = state?.acctServers;
+            resourceInputs["airwatch"] = state?.airwatch;
+            resourceInputs["allowIpv6Ndp"] = state?.allowIpv6Ndp;
+            resourceInputs["allowMdns"] = state?.allowMdns;
+            resourceInputs["allowSsdp"] = state?.allowSsdp;
+            resourceInputs["apIds"] = state?.apIds;
+            resourceInputs["appLimit"] = state?.appLimit;
+            resourceInputs["appQos"] = state?.appQos;
+            resourceInputs["applyTo"] = state?.applyTo;
+            resourceInputs["arpFilter"] = state?.arpFilter;
+            resourceInputs["auth"] = state?.auth;
+            resourceInputs["authServerSelection"] = state?.authServerSelection;
+            resourceInputs["authServers"] = state?.authServers;
+            resourceInputs["authServersNasId"] = state?.authServersNasId;
+            resourceInputs["authServersNasIp"] = state?.authServersNasIp;
+            resourceInputs["authServersRetries"] = state?.authServersRetries;
+            resourceInputs["authServersTimeout"] = state?.authServersTimeout;
+            resourceInputs["bandSteer"] = state?.bandSteer;
+            resourceInputs["bandSteerForceBand5"] = state?.bandSteerForceBand5;
+            resourceInputs["bands"] = state?.bands;
+            resourceInputs["blockBlacklistClients"] = state?.blockBlacklistClients;
+            resourceInputs["bonjour"] = state?.bonjour;
+            resourceInputs["ciscoCwa"] = state?.ciscoCwa;
+            resourceInputs["clientLimitDown"] = state?.clientLimitDown;
+            resourceInputs["clientLimitDownEnabled"] = state?.clientLimitDownEnabled;
+            resourceInputs["clientLimitUp"] = state?.clientLimitUp;
+            resourceInputs["clientLimitUpEnabled"] = state?.clientLimitUpEnabled;
+            resourceInputs["coaServers"] = state?.coaServers;
+            resourceInputs["disable11ax"] = state?.disable11ax;
+            resourceInputs["disable11be"] = state?.disable11be;
+            resourceInputs["disableHtVhtRates"] = state?.disableHtVhtRates;
+            resourceInputs["disableUapsd"] = state?.disableUapsd;
+            resourceInputs["disableV1RoamNotify"] = state?.disableV1RoamNotify;
+            resourceInputs["disableV2RoamNotify"] = state?.disableV2RoamNotify;
+            resourceInputs["disableWhenGatewayUnreachable"] = state?.disableWhenGatewayUnreachable;
+            resourceInputs["disableWhenMxtunnelDown"] = state?.disableWhenMxtunnelDown;
+            resourceInputs["disableWmm"] = state?.disableWmm;
+            resourceInputs["dnsServerRewrite"] = state?.dnsServerRewrite;
+            resourceInputs["dtim"] = state?.dtim;
+            resourceInputs["dynamicPsk"] = state?.dynamicPsk;
+            resourceInputs["dynamicVlan"] = state?.dynamicVlan;
+            resourceInputs["enableLocalKeycaching"] = state?.enableLocalKeycaching;
+            resourceInputs["enableWirelessBridging"] = state?.enableWirelessBridging;
+            resourceInputs["enableWirelessBridgingDhcpTracking"] = state?.enableWirelessBridgingDhcpTracking;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["fastDot1xTimers"] = state?.fastDot1xTimers;
+            resourceInputs["hideSsid"] = state?.hideSsid;
+            resourceInputs["hostnameIe"] = state?.hostnameIe;
+            resourceInputs["hotspot20"] = state?.hotspot20;
+            resourceInputs["injectDhcpOption82"] = state?.injectDhcpOption82;
+            resourceInputs["interface"] = state?.interface;
+            resourceInputs["isolation"] = state?.isolation;
+            resourceInputs["l2Isolation"] = state?.l2Isolation;
+            resourceInputs["legacyOverds"] = state?.legacyOverds;
+            resourceInputs["limitBcast"] = state?.limitBcast;
+            resourceInputs["limitProbeResponse"] = state?.limitProbeResponse;
+            resourceInputs["maxIdletime"] = state?.maxIdletime;
+            resourceInputs["maxNumClients"] = state?.maxNumClients;
+            resourceInputs["mistNac"] = state?.mistNac;
+            resourceInputs["mspId"] = state?.mspId;
+            resourceInputs["mxtunnelIds"] = state?.mxtunnelIds;
+            resourceInputs["mxtunnelNames"] = state?.mxtunnelNames;
+            resourceInputs["noStaticDns"] = state?.noStaticDns;
+            resourceInputs["noStaticIp"] = state?.noStaticIp;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["portal"] = state?.portal;
+            resourceInputs["portalAllowedHostnames"] = state?.portalAllowedHostnames;
+            resourceInputs["portalAllowedSubnets"] = state?.portalAllowedSubnets;
+            resourceInputs["portalApiSecret"] = state?.portalApiSecret;
+            resourceInputs["portalDeniedHostnames"] = state?.portalDeniedHostnames;
+            resourceInputs["portalImage"] = state?.portalImage;
+            resourceInputs["portalSsoUrl"] = state?.portalSsoUrl;
+            resourceInputs["qos"] = state?.qos;
+            resourceInputs["radsec"] = state?.radsec;
+            resourceInputs["rateset"] = state?.rateset;
+            resourceInputs["reconnectClientsWhenRoamingMxcluster"] = state?.reconnectClientsWhenRoamingMxcluster;
+            resourceInputs["roamMode"] = state?.roamMode;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["sleExcluded"] = state?.sleExcluded;
+            resourceInputs["ssid"] = state?.ssid;
+            resourceInputs["useEapolV1"] = state?.useEapolV1;
+            resourceInputs["vlanEnabled"] = state?.vlanEnabled;
+            resourceInputs["vlanId"] = state?.vlanId;
+            resourceInputs["vlanIds"] = state?.vlanIds;
+            resourceInputs["vlanPooling"] = state?.vlanPooling;
+            resourceInputs["wlanLimitDown"] = state?.wlanLimitDown;
+            resourceInputs["wlanLimitDownEnabled"] = state?.wlanLimitDownEnabled;
+            resourceInputs["wlanLimitUp"] = state?.wlanLimitUp;
+            resourceInputs["wlanLimitUpEnabled"] = state?.wlanLimitUpEnabled;
+            resourceInputs["wxtagIds"] = state?.wxtagIds;
+            resourceInputs["wxtunnelId"] = state?.wxtunnelId;
+            resourceInputs["wxtunnelRemoteId"] = state?.wxtunnelRemoteId;
         } else {
             const args = argsOrState as WlanArgs | undefined;
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            if ((!args || args.ssid === undefined) && !opts.urn) {
+            if (args?.ssid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ssid'");
             }
-            resourceInputs["acctImmediateUpdate"] = args ? args.acctImmediateUpdate : undefined;
-            resourceInputs["acctInterimInterval"] = args ? args.acctInterimInterval : undefined;
-            resourceInputs["acctServers"] = args ? args.acctServers : undefined;
-            resourceInputs["airwatch"] = args ? args.airwatch : undefined;
-            resourceInputs["allowIpv6Ndp"] = args ? args.allowIpv6Ndp : undefined;
-            resourceInputs["allowMdns"] = args ? args.allowMdns : undefined;
-            resourceInputs["allowSsdp"] = args ? args.allowSsdp : undefined;
-            resourceInputs["apIds"] = args ? args.apIds : undefined;
-            resourceInputs["appLimit"] = args ? args.appLimit : undefined;
-            resourceInputs["appQos"] = args ? args.appQos : undefined;
-            resourceInputs["applyTo"] = args ? args.applyTo : undefined;
-            resourceInputs["arpFilter"] = args ? args.arpFilter : undefined;
-            resourceInputs["auth"] = args ? args.auth : undefined;
-            resourceInputs["authServerSelection"] = args ? args.authServerSelection : undefined;
-            resourceInputs["authServers"] = args ? args.authServers : undefined;
-            resourceInputs["authServersNasId"] = args ? args.authServersNasId : undefined;
-            resourceInputs["authServersNasIp"] = args ? args.authServersNasIp : undefined;
-            resourceInputs["authServersRetries"] = args ? args.authServersRetries : undefined;
-            resourceInputs["authServersTimeout"] = args ? args.authServersTimeout : undefined;
-            resourceInputs["bandSteer"] = args ? args.bandSteer : undefined;
-            resourceInputs["bandSteerForceBand5"] = args ? args.bandSteerForceBand5 : undefined;
-            resourceInputs["bands"] = args ? args.bands : undefined;
-            resourceInputs["blockBlacklistClients"] = args ? args.blockBlacklistClients : undefined;
-            resourceInputs["bonjour"] = args ? args.bonjour : undefined;
-            resourceInputs["ciscoCwa"] = args ? args.ciscoCwa : undefined;
-            resourceInputs["clientLimitDown"] = args ? args.clientLimitDown : undefined;
-            resourceInputs["clientLimitDownEnabled"] = args ? args.clientLimitDownEnabled : undefined;
-            resourceInputs["clientLimitUp"] = args ? args.clientLimitUp : undefined;
-            resourceInputs["clientLimitUpEnabled"] = args ? args.clientLimitUpEnabled : undefined;
-            resourceInputs["coaServers"] = args ? args.coaServers : undefined;
-            resourceInputs["disable11ax"] = args ? args.disable11ax : undefined;
-            resourceInputs["disable11be"] = args ? args.disable11be : undefined;
-            resourceInputs["disableHtVhtRates"] = args ? args.disableHtVhtRates : undefined;
-            resourceInputs["disableUapsd"] = args ? args.disableUapsd : undefined;
-            resourceInputs["disableV1RoamNotify"] = args ? args.disableV1RoamNotify : undefined;
-            resourceInputs["disableV2RoamNotify"] = args ? args.disableV2RoamNotify : undefined;
-            resourceInputs["disableWhenGatewayUnreachable"] = args ? args.disableWhenGatewayUnreachable : undefined;
-            resourceInputs["disableWhenMxtunnelDown"] = args ? args.disableWhenMxtunnelDown : undefined;
-            resourceInputs["disableWmm"] = args ? args.disableWmm : undefined;
-            resourceInputs["dnsServerRewrite"] = args ? args.dnsServerRewrite : undefined;
-            resourceInputs["dtim"] = args ? args.dtim : undefined;
-            resourceInputs["dynamicPsk"] = args ? args.dynamicPsk : undefined;
-            resourceInputs["dynamicVlan"] = args ? args.dynamicVlan : undefined;
-            resourceInputs["enableLocalKeycaching"] = args ? args.enableLocalKeycaching : undefined;
-            resourceInputs["enableWirelessBridging"] = args ? args.enableWirelessBridging : undefined;
-            resourceInputs["enableWirelessBridgingDhcpTracking"] = args ? args.enableWirelessBridgingDhcpTracking : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["fastDot1xTimers"] = args ? args.fastDot1xTimers : undefined;
-            resourceInputs["hideSsid"] = args ? args.hideSsid : undefined;
-            resourceInputs["hostnameIe"] = args ? args.hostnameIe : undefined;
-            resourceInputs["hotspot20"] = args ? args.hotspot20 : undefined;
-            resourceInputs["injectDhcpOption82"] = args ? args.injectDhcpOption82 : undefined;
-            resourceInputs["interface"] = args ? args.interface : undefined;
-            resourceInputs["isolation"] = args ? args.isolation : undefined;
-            resourceInputs["l2Isolation"] = args ? args.l2Isolation : undefined;
-            resourceInputs["legacyOverds"] = args ? args.legacyOverds : undefined;
-            resourceInputs["limitBcast"] = args ? args.limitBcast : undefined;
-            resourceInputs["limitProbeResponse"] = args ? args.limitProbeResponse : undefined;
-            resourceInputs["maxIdletime"] = args ? args.maxIdletime : undefined;
-            resourceInputs["maxNumClients"] = args ? args.maxNumClients : undefined;
-            resourceInputs["mistNac"] = args ? args.mistNac : undefined;
-            resourceInputs["mxtunnelIds"] = args ? args.mxtunnelIds : undefined;
-            resourceInputs["mxtunnelNames"] = args ? args.mxtunnelNames : undefined;
-            resourceInputs["noStaticDns"] = args ? args.noStaticDns : undefined;
-            resourceInputs["noStaticIp"] = args ? args.noStaticIp : undefined;
-            resourceInputs["portal"] = args ? args.portal : undefined;
-            resourceInputs["portalAllowedHostnames"] = args ? args.portalAllowedHostnames : undefined;
-            resourceInputs["portalAllowedSubnets"] = args ? args.portalAllowedSubnets : undefined;
-            resourceInputs["portalDeniedHostnames"] = args ? args.portalDeniedHostnames : undefined;
-            resourceInputs["qos"] = args ? args.qos : undefined;
-            resourceInputs["radsec"] = args ? args.radsec : undefined;
-            resourceInputs["rateset"] = args ? args.rateset : undefined;
-            resourceInputs["reconnectClientsWhenRoamingMxcluster"] = args ? args.reconnectClientsWhenRoamingMxcluster : undefined;
-            resourceInputs["roamMode"] = args ? args.roamMode : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["sleExcluded"] = args ? args.sleExcluded : undefined;
-            resourceInputs["ssid"] = args ? args.ssid : undefined;
-            resourceInputs["useEapolV1"] = args ? args.useEapolV1 : undefined;
-            resourceInputs["vlanEnabled"] = args ? args.vlanEnabled : undefined;
-            resourceInputs["vlanId"] = args ? args.vlanId : undefined;
-            resourceInputs["vlanIds"] = args ? args.vlanIds : undefined;
-            resourceInputs["vlanPooling"] = args ? args.vlanPooling : undefined;
-            resourceInputs["wlanLimitDown"] = args ? args.wlanLimitDown : undefined;
-            resourceInputs["wlanLimitDownEnabled"] = args ? args.wlanLimitDownEnabled : undefined;
-            resourceInputs["wlanLimitUp"] = args ? args.wlanLimitUp : undefined;
-            resourceInputs["wlanLimitUpEnabled"] = args ? args.wlanLimitUpEnabled : undefined;
-            resourceInputs["wxtagIds"] = args ? args.wxtagIds : undefined;
-            resourceInputs["wxtunnelId"] = args ? args.wxtunnelId : undefined;
-            resourceInputs["wxtunnelRemoteId"] = args ? args.wxtunnelRemoteId : undefined;
+            resourceInputs["acctImmediateUpdate"] = args?.acctImmediateUpdate;
+            resourceInputs["acctInterimInterval"] = args?.acctInterimInterval;
+            resourceInputs["acctServers"] = args?.acctServers;
+            resourceInputs["airwatch"] = args?.airwatch;
+            resourceInputs["allowIpv6Ndp"] = args?.allowIpv6Ndp;
+            resourceInputs["allowMdns"] = args?.allowMdns;
+            resourceInputs["allowSsdp"] = args?.allowSsdp;
+            resourceInputs["apIds"] = args?.apIds;
+            resourceInputs["appLimit"] = args?.appLimit;
+            resourceInputs["appQos"] = args?.appQos;
+            resourceInputs["applyTo"] = args?.applyTo;
+            resourceInputs["arpFilter"] = args?.arpFilter;
+            resourceInputs["auth"] = args?.auth;
+            resourceInputs["authServerSelection"] = args?.authServerSelection;
+            resourceInputs["authServers"] = args?.authServers;
+            resourceInputs["authServersNasId"] = args?.authServersNasId;
+            resourceInputs["authServersNasIp"] = args?.authServersNasIp;
+            resourceInputs["authServersRetries"] = args?.authServersRetries;
+            resourceInputs["authServersTimeout"] = args?.authServersTimeout;
+            resourceInputs["bandSteer"] = args?.bandSteer;
+            resourceInputs["bandSteerForceBand5"] = args?.bandSteerForceBand5;
+            resourceInputs["bands"] = args?.bands;
+            resourceInputs["blockBlacklistClients"] = args?.blockBlacklistClients;
+            resourceInputs["bonjour"] = args?.bonjour;
+            resourceInputs["ciscoCwa"] = args?.ciscoCwa;
+            resourceInputs["clientLimitDown"] = args?.clientLimitDown;
+            resourceInputs["clientLimitDownEnabled"] = args?.clientLimitDownEnabled;
+            resourceInputs["clientLimitUp"] = args?.clientLimitUp;
+            resourceInputs["clientLimitUpEnabled"] = args?.clientLimitUpEnabled;
+            resourceInputs["coaServers"] = args?.coaServers;
+            resourceInputs["disable11ax"] = args?.disable11ax;
+            resourceInputs["disable11be"] = args?.disable11be;
+            resourceInputs["disableHtVhtRates"] = args?.disableHtVhtRates;
+            resourceInputs["disableUapsd"] = args?.disableUapsd;
+            resourceInputs["disableV1RoamNotify"] = args?.disableV1RoamNotify;
+            resourceInputs["disableV2RoamNotify"] = args?.disableV2RoamNotify;
+            resourceInputs["disableWhenGatewayUnreachable"] = args?.disableWhenGatewayUnreachable;
+            resourceInputs["disableWhenMxtunnelDown"] = args?.disableWhenMxtunnelDown;
+            resourceInputs["disableWmm"] = args?.disableWmm;
+            resourceInputs["dnsServerRewrite"] = args?.dnsServerRewrite;
+            resourceInputs["dtim"] = args?.dtim;
+            resourceInputs["dynamicPsk"] = args?.dynamicPsk;
+            resourceInputs["dynamicVlan"] = args?.dynamicVlan;
+            resourceInputs["enableLocalKeycaching"] = args?.enableLocalKeycaching;
+            resourceInputs["enableWirelessBridging"] = args?.enableWirelessBridging;
+            resourceInputs["enableWirelessBridgingDhcpTracking"] = args?.enableWirelessBridgingDhcpTracking;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["fastDot1xTimers"] = args?.fastDot1xTimers;
+            resourceInputs["hideSsid"] = args?.hideSsid;
+            resourceInputs["hostnameIe"] = args?.hostnameIe;
+            resourceInputs["hotspot20"] = args?.hotspot20;
+            resourceInputs["injectDhcpOption82"] = args?.injectDhcpOption82;
+            resourceInputs["interface"] = args?.interface;
+            resourceInputs["isolation"] = args?.isolation;
+            resourceInputs["l2Isolation"] = args?.l2Isolation;
+            resourceInputs["legacyOverds"] = args?.legacyOverds;
+            resourceInputs["limitBcast"] = args?.limitBcast;
+            resourceInputs["limitProbeResponse"] = args?.limitProbeResponse;
+            resourceInputs["maxIdletime"] = args?.maxIdletime;
+            resourceInputs["maxNumClients"] = args?.maxNumClients;
+            resourceInputs["mistNac"] = args?.mistNac;
+            resourceInputs["mxtunnelIds"] = args?.mxtunnelIds;
+            resourceInputs["mxtunnelNames"] = args?.mxtunnelNames;
+            resourceInputs["noStaticDns"] = args?.noStaticDns;
+            resourceInputs["noStaticIp"] = args?.noStaticIp;
+            resourceInputs["portal"] = args?.portal;
+            resourceInputs["portalAllowedHostnames"] = args?.portalAllowedHostnames;
+            resourceInputs["portalAllowedSubnets"] = args?.portalAllowedSubnets;
+            resourceInputs["portalDeniedHostnames"] = args?.portalDeniedHostnames;
+            resourceInputs["qos"] = args?.qos;
+            resourceInputs["radsec"] = args?.radsec;
+            resourceInputs["rateset"] = args?.rateset;
+            resourceInputs["reconnectClientsWhenRoamingMxcluster"] = args?.reconnectClientsWhenRoamingMxcluster;
+            resourceInputs["roamMode"] = args?.roamMode;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["sleExcluded"] = args?.sleExcluded;
+            resourceInputs["ssid"] = args?.ssid;
+            resourceInputs["useEapolV1"] = args?.useEapolV1;
+            resourceInputs["vlanEnabled"] = args?.vlanEnabled;
+            resourceInputs["vlanId"] = args?.vlanId;
+            resourceInputs["vlanIds"] = args?.vlanIds;
+            resourceInputs["vlanPooling"] = args?.vlanPooling;
+            resourceInputs["wlanLimitDown"] = args?.wlanLimitDown;
+            resourceInputs["wlanLimitDownEnabled"] = args?.wlanLimitDownEnabled;
+            resourceInputs["wlanLimitUp"] = args?.wlanLimitUp;
+            resourceInputs["wlanLimitUpEnabled"] = args?.wlanLimitUpEnabled;
+            resourceInputs["wxtagIds"] = args?.wxtagIds;
+            resourceInputs["wxtunnelId"] = args?.wxtunnelId;
+            resourceInputs["wxtunnelRemoteId"] = args?.wxtunnelRemoteId;
             resourceInputs["mspId"] = undefined /*out*/;
             resourceInputs["orgId"] = undefined /*out*/;
             resourceInputs["portalApiSecret"] = undefined /*out*/;
@@ -659,9 +651,7 @@ export interface WlanState {
      */
     acctImmediateUpdate?: pulumi.Input<boolean>;
     /**
-     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
-     * from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended
-     * when enabled
+     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
      */
     acctInterimInterval?: pulumi.Input<number>;
     /**
@@ -713,8 +703,7 @@ export interface WlanState {
      */
     authServerSelection?: pulumi.Input<string>;
     /**
-     * List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
-     * is treated as primary
+     * List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
      */
     authServers?: pulumi.Input<pulumi.Input<inputs.site.WlanAuthServer>[]>;
     /**
@@ -726,15 +715,11 @@ export interface WlanState {
      */
     authServersNasIp?: pulumi.Input<string>;
     /**
-     * Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set
-     * to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default
-     * value to 3.
+     * Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      */
     authServersRetries?: pulumi.Input<number>;
     /**
-     * Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’ and
-     * ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
-     * setting authServersTimeout and is set to default value of 10.
+     * Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
      */
     authServersTimeout?: pulumi.Input<number>;
     /**
@@ -758,8 +743,7 @@ export interface WlanState {
      */
     bonjour?: pulumi.Input<inputs.site.WlanBonjour>;
     /**
-     * Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
-     * https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+     * Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
      */
     ciscoCwa?: pulumi.Input<inputs.site.WlanCiscoCwa>;
     clientLimitDown?: pulumi.Input<string>;
@@ -801,8 +785,10 @@ export interface WlanState {
      */
     disableV2RoamNotify?: pulumi.Input<boolean>;
     /**
-     * When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
-     * reach default gateway
+     * When any of the following is true, this WLAN will be disabled
+     *    * cannot get IP
+     *    * cannot obtain default gateway
+     *    * cannot reach default gateway
      */
     disableWhenGatewayUnreachable?: pulumi.Input<boolean>;
     disableWhenMxtunnelDown?: pulumi.Input<boolean>;
@@ -816,12 +802,15 @@ export interface WlanState {
     dnsServerRewrite?: pulumi.Input<inputs.site.WlanDnsServerRewrite>;
     dtim?: pulumi.Input<number>;
     /**
-     * For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on
-     * context (wlan/site/user/...) thus following configurations are assumed (currently) * PSK will come from RADIUS server *
-     * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed) * AP sends BSSID:SSID as
-     * Caller-Station-ID * `authServers` is required * PSK will come from cloud WLC if source is cloudPsks * defaultPsk will be
-     * used if cloud WLC is not available * `multiPskOnly` and `psk` is ignored * `pairwise` can only be wpa2-ccmp (for now,
-     * wpa3 support on the roadmap)
+     * For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+     *   * PSK will come from RADIUS server
+     *   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
+     *   * AP sends BSSID:SSID as Caller-Station-ID
+     *   * `authServers` is required
+     *   * PSK will come from cloud WLC if source is cloudPsks
+     *   * defaultPsk will be used if cloud WLC is not available
+     *   * `multiPskOnly` and `psk` is ignored
+     *   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
      */
     dynamicPsk?: pulumi.Input<inputs.site.WlanDynamicPsk>;
     /**
@@ -833,13 +822,11 @@ export interface WlanState {
      */
     enableLocalKeycaching?: pulumi.Input<boolean>;
     /**
-     * By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-     * client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
+     * By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
      */
     enableWirelessBridging?: pulumi.Input<boolean>;
     /**
-     * If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response
-     * packets to be forwarded to wireless
+     * If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response packets to be forwarded to wireless
      */
     enableWirelessBridgingDhcpTracking?: pulumi.Input<boolean>;
     /**
@@ -847,8 +834,7 @@ export interface WlanState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
-     * ‘auth_server_retries’ .
+     * If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
      */
     fastDot1xTimers?: pulumi.Input<boolean>;
     /**
@@ -877,8 +863,7 @@ export interface WlanState {
      */
     l2Isolation?: pulumi.Input<boolean>;
     /**
-     * Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
-     * Enabling this will cause problem for iOS devices.
+     * Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
      */
     legacyOverds?: pulumi.Input<boolean>;
     /**
@@ -985,8 +970,7 @@ export interface WlanState {
      */
     vlanIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
-     * deterministic algorithm
+     * Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
      */
     vlanPooling?: pulumi.Input<boolean>;
     wlanLimitDown?: pulumi.Input<string>;
@@ -1022,9 +1006,7 @@ export interface WlanArgs {
      */
     acctImmediateUpdate?: pulumi.Input<boolean>;
     /**
-     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request
-     * from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended
-     * when enabled
+     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
      */
     acctInterimInterval?: pulumi.Input<number>;
     /**
@@ -1076,8 +1058,7 @@ export interface WlanArgs {
      */
     authServerSelection?: pulumi.Input<string>;
     /**
-     * List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one
-     * is treated as primary
+     * List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
      */
     authServers?: pulumi.Input<pulumi.Input<inputs.site.WlanAuthServer>[]>;
     /**
@@ -1089,15 +1070,11 @@ export interface WlanArgs {
      */
     authServersNasIp?: pulumi.Input<string>;
     /**
-     * Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set
-     * to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default
-     * value to 3.
+     * Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      */
     authServersRetries?: pulumi.Input<number>;
     /**
-     * Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’ and
-     * ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when
-     * setting authServersTimeout and is set to default value of 10.
+     * Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
      */
     authServersTimeout?: pulumi.Input<number>;
     /**
@@ -1121,8 +1098,7 @@ export interface WlanArgs {
      */
     bonjour?: pulumi.Input<inputs.site.WlanBonjour>;
     /**
-     * Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
-     * https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+     * Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
      */
     ciscoCwa?: pulumi.Input<inputs.site.WlanCiscoCwa>;
     clientLimitDown?: pulumi.Input<string>;
@@ -1164,8 +1140,10 @@ export interface WlanArgs {
      */
     disableV2RoamNotify?: pulumi.Input<boolean>;
     /**
-     * When any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
-     * reach default gateway
+     * When any of the following is true, this WLAN will be disabled
+     *    * cannot get IP
+     *    * cannot obtain default gateway
+     *    * cannot reach default gateway
      */
     disableWhenGatewayUnreachable?: pulumi.Input<boolean>;
     disableWhenMxtunnelDown?: pulumi.Input<boolean>;
@@ -1179,12 +1157,15 @@ export interface WlanArgs {
     dnsServerRewrite?: pulumi.Input<inputs.site.WlanDnsServerRewrite>;
     dtim?: pulumi.Input<number>;
     /**
-     * For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on
-     * context (wlan/site/user/...) thus following configurations are assumed (currently) * PSK will come from RADIUS server *
-     * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed) * AP sends BSSID:SSID as
-     * Caller-Station-ID * `authServers` is required * PSK will come from cloud WLC if source is cloudPsks * defaultPsk will be
-     * used if cloud WLC is not available * `multiPskOnly` and `psk` is ignored * `pairwise` can only be wpa2-ccmp (for now,
-     * wpa3 support on the roadmap)
+     * For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+     *   * PSK will come from RADIUS server
+     *   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
+     *   * AP sends BSSID:SSID as Caller-Station-ID
+     *   * `authServers` is required
+     *   * PSK will come from cloud WLC if source is cloudPsks
+     *   * defaultPsk will be used if cloud WLC is not available
+     *   * `multiPskOnly` and `psk` is ignored
+     *   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
      */
     dynamicPsk?: pulumi.Input<inputs.site.WlanDynamicPsk>;
     /**
@@ -1196,13 +1177,11 @@ export interface WlanArgs {
      */
     enableLocalKeycaching?: pulumi.Input<boolean>;
     /**
-     * By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where
-     * client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
+     * By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
      */
     enableWirelessBridging?: pulumi.Input<boolean>;
     /**
-     * If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response
-     * packets to be forwarded to wireless
+     * If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response packets to be forwarded to wireless
      */
     enableWirelessBridgingDhcpTracking?: pulumi.Input<boolean>;
     /**
@@ -1210,8 +1189,7 @@ export interface WlanArgs {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and
-     * ‘auth_server_retries’ .
+     * If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
      */
     fastDot1xTimers?: pulumi.Input<boolean>;
     /**
@@ -1240,8 +1218,7 @@ export interface WlanArgs {
      */
     l2Isolation?: pulumi.Input<boolean>;
     /**
-     * Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning!
-     * Enabling this will cause problem for iOS devices.
+     * Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
      */
     legacyOverds?: pulumi.Input<boolean>;
     /**
@@ -1337,8 +1314,7 @@ export interface WlanArgs {
      */
     vlanIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
-     * deterministic algorithm
+     * Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
      */
     vlanPooling?: pulumi.Input<boolean>;
     wlanLimitDown?: pulumi.Input<string>;

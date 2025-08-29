@@ -172,9 +172,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<bool> PoePassthrough { get; private set; } = null!;
 
         /// <summary>
-        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-        /// predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
-        /// deprecated)
+        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
         /// </summary>
         [Output("portConfig")]
         public Output<ImmutableDictionary<string, Outputs.ApPortConfig>?> PortConfig { get; private set; } = null!;
@@ -213,8 +211,9 @@ namespace Pulumi.JuniperMist.Device
         public Output<Outputs.ApUplinkPortConfig?> UplinkPortConfig { get; private set; } = null!;
 
         /// <summary>
-        /// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-        /// moved to ESL Config.
+        /// USB AP settings
+        ///   - Note: if native imagotag is enabled, BLE will be disabled automatically
+        ///   - Note: legacy, new config moved to ESL Config.
         /// </summary>
         [Output("usbConfig")]
         public Output<Outputs.ApUsbConfig?> UsbConfig { get; private set; } = null!;
@@ -413,9 +412,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.ApPortConfigArgs>? _portConfig;
 
         /// <summary>
-        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-        /// predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
-        /// deprecated)
+        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
         /// </summary>
         public InputMap<Inputs.ApPortConfigArgs> PortConfig
         {
@@ -445,8 +442,9 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.ApUplinkPortConfigArgs>? UplinkPortConfig { get; set; }
 
         /// <summary>
-        /// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-        /// moved to ESL Config.
+        /// USB AP settings
+        ///   - Note: if native imagotag is enabled, BLE will be disabled automatically
+        ///   - Note: legacy, new config moved to ESL Config.
         /// </summary>
         [Input("usbConfig")]
         public Input<Inputs.ApUsbConfigArgs>? UsbConfig { get; set; }
@@ -636,9 +634,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.ApPortConfigGetArgs>? _portConfig;
 
         /// <summary>
-        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-        /// predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus
-        /// deprecated)
+        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
         /// </summary>
         public InputMap<Inputs.ApPortConfigGetArgs> PortConfig
         {
@@ -680,8 +676,9 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.ApUplinkPortConfigGetArgs>? UplinkPortConfig { get; set; }
 
         /// <summary>
-        /// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-        /// moved to ESL Config.
+        /// USB AP settings
+        ///   - Note: if native imagotag is enabled, BLE will be disabled automatically
+        ///   - Note: legacy, new config moved to ESL Config.
         /// </summary>
         [Input("usbConfig")]
         public Input<Inputs.ApUsbConfigGetArgs>? UsbConfig { get; set; }

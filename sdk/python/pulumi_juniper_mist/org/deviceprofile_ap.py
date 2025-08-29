@@ -56,13 +56,13 @@ class DeviceprofileApArgs:
         :param pulumi.Input['DeviceprofileApLedArgs'] led: LED AP settings
         :param pulumi.Input['DeviceprofileApMeshArgs'] mesh: Mesh AP settings
         :param pulumi.Input[_builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-               precedence over switch_config (deprecated)
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switch_config (deprecated)
         :param pulumi.Input['DeviceprofileApPwrConfigArgs'] pwr_config: Power related configs
         :param pulumi.Input['DeviceprofileApRadioConfigArgs'] radio_config: Radio AP settings
         :param pulumi.Input['DeviceprofileApUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input['DeviceprofileApUsbConfigArgs'] usb_config: USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-               moved to ESL Config.
+        :param pulumi.Input['DeviceprofileApUsbConfigArgs'] usb_config: USB AP settings
+                 - Note: if native imagotag is enabled, BLE will be disabled automatically
+                 - Note: legacy, new config moved to ESL Config.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         pulumi.set(__self__, "org_id", org_id)
@@ -289,8 +289,7 @@ class DeviceprofileApArgs:
     @pulumi.getter(name="portConfig")
     def port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]]]:
         """
-        eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-        precedence over switch_config (deprecated)
+        eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switch_config (deprecated)
         """
         return pulumi.get(self, "port_config")
 
@@ -347,8 +346,9 @@ class DeviceprofileApArgs:
     @pulumi.getter(name="usbConfig")
     def usb_config(self) -> Optional[pulumi.Input['DeviceprofileApUsbConfigArgs']]:
         """
-        USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-        moved to ESL Config.
+        USB AP settings
+          - Note: if native imagotag is enabled, BLE will be disabled automatically
+          - Note: legacy, new config moved to ESL Config.
         """
         return pulumi.get(self, "usb_config")
 
@@ -408,14 +408,14 @@ class _DeviceprofileApState:
         :param pulumi.Input['DeviceprofileApLedArgs'] led: LED AP settings
         :param pulumi.Input['DeviceprofileApMeshArgs'] mesh: Mesh AP settings
         :param pulumi.Input[_builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-               precedence over switch_config (deprecated)
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switch_config (deprecated)
         :param pulumi.Input['DeviceprofileApPwrConfigArgs'] pwr_config: Power related configs
         :param pulumi.Input['DeviceprofileApRadioConfigArgs'] radio_config: Radio AP settings
         :param pulumi.Input[_builtins.str] type: Device Type. enum: `ap`
         :param pulumi.Input['DeviceprofileApUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input['DeviceprofileApUsbConfigArgs'] usb_config: USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-               moved to ESL Config.
+        :param pulumi.Input['DeviceprofileApUsbConfigArgs'] usb_config: USB AP settings
+                 - Note: if native imagotag is enabled, BLE will be disabled automatically
+                 - Note: legacy, new config moved to ESL Config.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         if aeroscout is not None:
@@ -645,8 +645,7 @@ class _DeviceprofileApState:
     @pulumi.getter(name="portConfig")
     def port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileApPortConfigArgs']]]]:
         """
-        eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-        precedence over switch_config (deprecated)
+        eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switch_config (deprecated)
         """
         return pulumi.get(self, "port_config")
 
@@ -715,8 +714,9 @@ class _DeviceprofileApState:
     @pulumi.getter(name="usbConfig")
     def usb_config(self) -> Optional[pulumi.Input['DeviceprofileApUsbConfigArgs']]:
         """
-        USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-        moved to ESL Config.
+        USB AP settings
+          - Note: if native imagotag is enabled, BLE will be disabled automatically
+          - Note: legacy, new config moved to ESL Config.
         """
         return pulumi.get(self, "usb_config")
 
@@ -811,13 +811,13 @@ class DeviceprofileAp(pulumi.CustomResource):
         :param pulumi.Input[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict']] led: LED AP settings
         :param pulumi.Input[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict']] mesh: Mesh AP settings
         :param pulumi.Input[_builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict']]]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-               precedence over switch_config (deprecated)
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict']]]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switch_config (deprecated)
         :param pulumi.Input[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict']] pwr_config: Power related configs
         :param pulumi.Input[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict']] radio_config: Radio AP settings
         :param pulumi.Input[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict']] usb_config: USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-               moved to ESL Config.
+        :param pulumi.Input[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict']] usb_config: USB AP settings
+                 - Note: if native imagotag is enabled, BLE will be disabled automatically
+                 - Note: legacy, new config moved to ESL Config.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         ...
@@ -982,14 +982,14 @@ class DeviceprofileAp(pulumi.CustomResource):
         :param pulumi.Input[Union['DeviceprofileApLedArgs', 'DeviceprofileApLedArgsDict']] led: LED AP settings
         :param pulumi.Input[Union['DeviceprofileApMeshArgs', 'DeviceprofileApMeshArgsDict']] mesh: Mesh AP settings
         :param pulumi.Input[_builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict']]]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-               precedence over switch_config (deprecated)
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileApPortConfigArgs', 'DeviceprofileApPortConfigArgsDict']]]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switch_config (deprecated)
         :param pulumi.Input[Union['DeviceprofileApPwrConfigArgs', 'DeviceprofileApPwrConfigArgsDict']] pwr_config: Power related configs
         :param pulumi.Input[Union['DeviceprofileApRadioConfigArgs', 'DeviceprofileApRadioConfigArgsDict']] radio_config: Radio AP settings
         :param pulumi.Input[_builtins.str] type: Device Type. enum: `ap`
         :param pulumi.Input[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict']] usb_config: USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-               moved to ESL Config.
+        :param pulumi.Input[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict']] usb_config: USB AP settings
+                 - Note: if native imagotag is enabled, BLE will be disabled automatically
+                 - Note: legacy, new config moved to ESL Config.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1136,8 +1136,7 @@ class DeviceprofileAp(pulumi.CustomResource):
     @pulumi.getter(name="portConfig")
     def port_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.DeviceprofileApPortConfig']]]:
         """
-        eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes
-        precedence over switch_config (deprecated)
+        eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switch_config (deprecated)
         """
         return pulumi.get(self, "port_config")
 
@@ -1182,8 +1181,9 @@ class DeviceprofileAp(pulumi.CustomResource):
     @pulumi.getter(name="usbConfig")
     def usb_config(self) -> pulumi.Output[Optional['outputs.DeviceprofileApUsbConfig']]:
         """
-        USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-        moved to ESL Config.
+        USB AP settings
+          - Note: if native imagotag is enabled, BLE will be disabled automatically
+          - Note: legacy, new config moved to ESL Config.
         """
         return pulumi.get(self, "usb_config")
 

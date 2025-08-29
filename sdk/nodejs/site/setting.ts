@@ -53,164 +53,154 @@ export class Setting extends pulumi.CustomResource {
         return obj['__pulumiType'] === Setting.__pulumiType;
     }
 
-    public readonly analytic!: pulumi.Output<outputs.site.SettingAnalytic>;
+    declare public readonly analytic: pulumi.Output<outputs.site.SettingAnalytic>;
     /**
-     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
-     * `deviceUpdownThreshold` is ignored.
+     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      */
-    public readonly apUpdownThreshold!: pulumi.Output<number | undefined>;
+    declare public readonly apUpdownThreshold: pulumi.Output<number | undefined>;
     /**
      * Auto Upgrade Settings
      */
-    public readonly autoUpgrade!: pulumi.Output<outputs.site.SettingAutoUpgrade>;
+    declare public readonly autoUpgrade: pulumi.Output<outputs.site.SettingAutoUpgrade>;
     /**
-     * auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
-     * upgrade
+     * auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
      */
-    public readonly autoUpgradeEsl!: pulumi.Output<outputs.site.SettingAutoUpgradeEsl | undefined>;
+    declare public readonly autoUpgradeEsl: pulumi.Output<outputs.site.SettingAutoUpgradeEsl | undefined>;
     /**
      * enable threshold-based bgp neighbor down delivery.
      */
-    public readonly bgpNeighborUpdownThreshold!: pulumi.Output<number | undefined>;
-    public /*out*/ readonly blacklistUrl!: pulumi.Output<string>;
+    declare public readonly bgpNeighborUpdownThreshold: pulumi.Output<number | undefined>;
+    declare public /*out*/ readonly blacklistUrl: pulumi.Output<string>;
     /**
      * BLE AP settings
      */
-    public readonly bleConfig!: pulumi.Output<outputs.site.SettingBleConfig | undefined>;
+    declare public readonly bleConfig: pulumi.Output<outputs.site.SettingBleConfig | undefined>;
     /**
      * Whether to enable ap auto config revert
      */
-    public readonly configAutoRevert!: pulumi.Output<boolean>;
+    declare public readonly configAutoRevert: pulumi.Output<boolean>;
     /**
      * Mist also uses some heuristic rules to prevent destructive configs from being pushed
      */
-    public readonly configPushPolicy!: pulumi.Output<outputs.site.SettingConfigPushPolicy | undefined>;
+    declare public readonly configPushPolicy: pulumi.Output<outputs.site.SettingConfigPushPolicy | undefined>;
     /**
      * You can define some URLs that's critical to site operations the latency will be captured and considered for site health
      */
-    public readonly criticalUrlMonitoring!: pulumi.Output<outputs.site.SettingCriticalUrlMonitoring | undefined>;
+    declare public readonly criticalUrlMonitoring: pulumi.Output<outputs.site.SettingCriticalUrlMonitoring | undefined>;
     /**
      * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
      */
-    public readonly defaultPortUsage!: pulumi.Output<string>;
+    declare public readonly defaultPortUsage: pulumi.Output<string>;
     /**
-     * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
-     * type is desired, use the following
+     * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      */
-    public readonly deviceUpdownThreshold!: pulumi.Output<number | undefined>;
-    public readonly enableUnii4!: pulumi.Output<boolean>;
+    declare public readonly deviceUpdownThreshold: pulumi.Output<number | undefined>;
+    declare public readonly enableUnii4: pulumi.Output<boolean>;
     /**
-     * **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
-     * ranges for the same day
+     * **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
      */
-    public readonly engagement!: pulumi.Output<outputs.site.SettingEngagement>;
+    declare public readonly engagement: pulumi.Output<outputs.site.SettingEngagement>;
     /**
      * Gateway Site settings
      */
-    public readonly gatewayMgmt!: pulumi.Output<outputs.site.SettingGatewayMgmt>;
+    declare public readonly gatewayMgmt: pulumi.Output<outputs.site.SettingGatewayMgmt>;
     /**
-     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
-     * `deviceUpdownThreshold` is ignored.
+     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      */
-    public readonly gatewayUpdownThreshold!: pulumi.Output<number | undefined>;
-    public readonly juniperSrx!: pulumi.Output<outputs.site.SettingJuniperSrx | undefined>;
+    declare public readonly gatewayUpdownThreshold: pulumi.Output<number | undefined>;
+    declare public readonly juniperSrx: pulumi.Output<outputs.site.SettingJuniperSrx | undefined>;
     /**
      * LED AP settings
      */
-    public readonly led!: pulumi.Output<outputs.site.SettingLed>;
-    public readonly marvis!: pulumi.Output<outputs.site.SettingMarvis | undefined>;
+    declare public readonly led: pulumi.Output<outputs.site.SettingLed>;
+    declare public readonly marvis: pulumi.Output<outputs.site.SettingMarvis | undefined>;
     /**
      * Occupancy Analytics settings
      */
-    public readonly occupancy!: pulumi.Output<outputs.site.SettingOccupancy>;
+    declare public readonly occupancy: pulumi.Output<outputs.site.SettingOccupancy>;
     /**
      * Whether to store the config on AP
      */
-    public readonly persistConfigOnDevice!: pulumi.Output<boolean>;
+    declare public readonly persistConfigOnDevice: pulumi.Output<boolean>;
     /**
      * Proxy Configuration to talk to Mist
      */
-    public readonly proxy!: pulumi.Output<outputs.site.SettingProxy | undefined>;
+    declare public readonly proxy: pulumi.Output<outputs.site.SettingProxy | undefined>;
     /**
-     * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the
-     * existing configuration will be removed.
+     * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
      */
-    public readonly removeExistingConfigs!: pulumi.Output<boolean | undefined>;
+    declare public readonly removeExistingConfigs: pulumi.Output<boolean | undefined>;
     /**
-     * Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
-     * serial number, battery %, temperature, humidity)
+     * Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name, serial number, battery %, temperature, humidity)
      */
-    public readonly reportGatt!: pulumi.Output<boolean | undefined>;
+    declare public readonly reportGatt: pulumi.Output<boolean | undefined>;
     /**
      * Rogue site settings
      */
-    public readonly rogue!: pulumi.Output<outputs.site.SettingRogue>;
+    declare public readonly rogue: pulumi.Output<outputs.site.SettingRogue>;
     /**
      * Managed mobility
      */
-    public readonly rtsa!: pulumi.Output<outputs.site.SettingRtsa>;
+    declare public readonly rtsa: pulumi.Output<outputs.site.SettingRtsa>;
     /**
-     * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-     * window, there are more than Y distinct client encountering over X failures
+     * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
      */
-    public readonly simpleAlert!: pulumi.Output<outputs.site.SettingSimpleAlert | undefined>;
-    public readonly siteId!: pulumi.Output<string>;
-    public readonly skyatp!: pulumi.Output<outputs.site.SettingSkyatp | undefined>;
-    public readonly sleThresholds!: pulumi.Output<outputs.site.SettingSleThresholds | undefined>;
-    public readonly srxApp!: pulumi.Output<outputs.site.SettingSrxApp | undefined>;
+    declare public readonly simpleAlert: pulumi.Output<outputs.site.SettingSimpleAlert | undefined>;
+    declare public readonly siteId: pulumi.Output<string>;
+    declare public readonly skyatp: pulumi.Output<outputs.site.SettingSkyatp | undefined>;
+    declare public readonly sleThresholds: pulumi.Output<outputs.site.SettingSleThresholds | undefined>;
+    declare public readonly srxApp: pulumi.Output<outputs.site.SettingSrxApp | undefined>;
     /**
-     * When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
-     * Org:Setting)
+     * When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
      */
-    public readonly sshKeys!: pulumi.Output<string[]>;
-    public readonly ssr!: pulumi.Output<outputs.site.SettingSsr>;
+    declare public readonly sshKeys: pulumi.Output<string[]>;
+    declare public readonly ssr: pulumi.Output<outputs.site.SettingSsr>;
     /**
-     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
-     * `deviceUpdownThreshold` is ignored.
+     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
      */
-    public readonly switchUpdownThreshold!: pulumi.Output<number | undefined>;
-    public readonly syntheticTest!: pulumi.Output<outputs.site.SettingSyntheticTest>;
+    declare public readonly switchUpdownThreshold: pulumi.Output<number | undefined>;
+    declare public readonly syntheticTest: pulumi.Output<outputs.site.SettingSyntheticTest>;
     /**
-     * Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+     * Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
      */
-    public readonly trackAnonymousDevices!: pulumi.Output<boolean | undefined>;
+    declare public readonly trackAnonymousDevices: pulumi.Output<boolean | undefined>;
     /**
      * AP Uplink port configuration
      */
-    public readonly uplinkPortConfig!: pulumi.Output<outputs.site.SettingUplinkPortConfig>;
+    declare public readonly uplinkPortConfig: pulumi.Output<outputs.site.SettingUplinkPortConfig>;
     /**
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
-    public readonly vars!: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly vna!: pulumi.Output<outputs.site.SettingVna | undefined>;
+    declare public readonly vars: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly vna: pulumi.Output<outputs.site.SettingVna | undefined>;
     /**
      * enable threshold-based vpn path down delivery.
      */
-    public readonly vpnPathUpdownThreshold!: pulumi.Output<number | undefined>;
+    declare public readonly vpnPathUpdownThreshold: pulumi.Output<number | undefined>;
     /**
      * enable threshold-based vpn peer down delivery.
      */
-    public readonly vpnPeerUpdownThreshold!: pulumi.Output<number | undefined>;
+    declare public readonly vpnPeerUpdownThreshold: pulumi.Output<number | undefined>;
     /**
      * Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
      */
-    public readonly vsInstance!: pulumi.Output<{[key: string]: outputs.site.SettingVsInstance} | undefined>;
-    public readonly wanVna!: pulumi.Output<outputs.site.SettingWanVna | undefined>;
-    public /*out*/ readonly watchedStationUrl!: pulumi.Output<string>;
-    public /*out*/ readonly whitelistUrl!: pulumi.Output<string>;
+    declare public readonly vsInstance: pulumi.Output<{[key: string]: outputs.site.SettingVsInstance} | undefined>;
+    declare public readonly wanVna: pulumi.Output<outputs.site.SettingWanVna | undefined>;
+    declare public /*out*/ readonly watchedStationUrl: pulumi.Output<string>;
+    declare public /*out*/ readonly whitelistUrl: pulumi.Output<string>;
     /**
      * WIDS site settings
      */
-    public readonly wids!: pulumi.Output<outputs.site.SettingWids>;
+    declare public readonly wids: pulumi.Output<outputs.site.SettingWids>;
     /**
      * Wi-Fi site settings
      */
-    public readonly wifi!: pulumi.Output<outputs.site.SettingWifi>;
-    public readonly wiredVna!: pulumi.Output<outputs.site.SettingWiredVna | undefined>;
+    declare public readonly wifi: pulumi.Output<outputs.site.SettingWifi>;
+    declare public readonly wiredVna: pulumi.Output<outputs.site.SettingWiredVna | undefined>;
     /**
      * Zone Occupancy alert site settings
      */
-    public readonly zoneOccupancyAlert!: pulumi.Output<outputs.site.SettingZoneOccupancyAlert>;
+    declare public readonly zoneOccupancyAlert: pulumi.Output<outputs.site.SettingZoneOccupancyAlert>;
 
     /**
      * Create a Setting resource with the given unique name, arguments, and options.
@@ -225,106 +215,106 @@ export class Setting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SettingState | undefined;
-            resourceInputs["analytic"] = state ? state.analytic : undefined;
-            resourceInputs["apUpdownThreshold"] = state ? state.apUpdownThreshold : undefined;
-            resourceInputs["autoUpgrade"] = state ? state.autoUpgrade : undefined;
-            resourceInputs["autoUpgradeEsl"] = state ? state.autoUpgradeEsl : undefined;
-            resourceInputs["bgpNeighborUpdownThreshold"] = state ? state.bgpNeighborUpdownThreshold : undefined;
-            resourceInputs["blacklistUrl"] = state ? state.blacklistUrl : undefined;
-            resourceInputs["bleConfig"] = state ? state.bleConfig : undefined;
-            resourceInputs["configAutoRevert"] = state ? state.configAutoRevert : undefined;
-            resourceInputs["configPushPolicy"] = state ? state.configPushPolicy : undefined;
-            resourceInputs["criticalUrlMonitoring"] = state ? state.criticalUrlMonitoring : undefined;
-            resourceInputs["defaultPortUsage"] = state ? state.defaultPortUsage : undefined;
-            resourceInputs["deviceUpdownThreshold"] = state ? state.deviceUpdownThreshold : undefined;
-            resourceInputs["enableUnii4"] = state ? state.enableUnii4 : undefined;
-            resourceInputs["engagement"] = state ? state.engagement : undefined;
-            resourceInputs["gatewayMgmt"] = state ? state.gatewayMgmt : undefined;
-            resourceInputs["gatewayUpdownThreshold"] = state ? state.gatewayUpdownThreshold : undefined;
-            resourceInputs["juniperSrx"] = state ? state.juniperSrx : undefined;
-            resourceInputs["led"] = state ? state.led : undefined;
-            resourceInputs["marvis"] = state ? state.marvis : undefined;
-            resourceInputs["occupancy"] = state ? state.occupancy : undefined;
-            resourceInputs["persistConfigOnDevice"] = state ? state.persistConfigOnDevice : undefined;
-            resourceInputs["proxy"] = state ? state.proxy : undefined;
-            resourceInputs["removeExistingConfigs"] = state ? state.removeExistingConfigs : undefined;
-            resourceInputs["reportGatt"] = state ? state.reportGatt : undefined;
-            resourceInputs["rogue"] = state ? state.rogue : undefined;
-            resourceInputs["rtsa"] = state ? state.rtsa : undefined;
-            resourceInputs["simpleAlert"] = state ? state.simpleAlert : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["skyatp"] = state ? state.skyatp : undefined;
-            resourceInputs["sleThresholds"] = state ? state.sleThresholds : undefined;
-            resourceInputs["srxApp"] = state ? state.srxApp : undefined;
-            resourceInputs["sshKeys"] = state ? state.sshKeys : undefined;
-            resourceInputs["ssr"] = state ? state.ssr : undefined;
-            resourceInputs["switchUpdownThreshold"] = state ? state.switchUpdownThreshold : undefined;
-            resourceInputs["syntheticTest"] = state ? state.syntheticTest : undefined;
-            resourceInputs["trackAnonymousDevices"] = state ? state.trackAnonymousDevices : undefined;
-            resourceInputs["uplinkPortConfig"] = state ? state.uplinkPortConfig : undefined;
-            resourceInputs["vars"] = state ? state.vars : undefined;
-            resourceInputs["vna"] = state ? state.vna : undefined;
-            resourceInputs["vpnPathUpdownThreshold"] = state ? state.vpnPathUpdownThreshold : undefined;
-            resourceInputs["vpnPeerUpdownThreshold"] = state ? state.vpnPeerUpdownThreshold : undefined;
-            resourceInputs["vsInstance"] = state ? state.vsInstance : undefined;
-            resourceInputs["wanVna"] = state ? state.wanVna : undefined;
-            resourceInputs["watchedStationUrl"] = state ? state.watchedStationUrl : undefined;
-            resourceInputs["whitelistUrl"] = state ? state.whitelistUrl : undefined;
-            resourceInputs["wids"] = state ? state.wids : undefined;
-            resourceInputs["wifi"] = state ? state.wifi : undefined;
-            resourceInputs["wiredVna"] = state ? state.wiredVna : undefined;
-            resourceInputs["zoneOccupancyAlert"] = state ? state.zoneOccupancyAlert : undefined;
+            resourceInputs["analytic"] = state?.analytic;
+            resourceInputs["apUpdownThreshold"] = state?.apUpdownThreshold;
+            resourceInputs["autoUpgrade"] = state?.autoUpgrade;
+            resourceInputs["autoUpgradeEsl"] = state?.autoUpgradeEsl;
+            resourceInputs["bgpNeighborUpdownThreshold"] = state?.bgpNeighborUpdownThreshold;
+            resourceInputs["blacklistUrl"] = state?.blacklistUrl;
+            resourceInputs["bleConfig"] = state?.bleConfig;
+            resourceInputs["configAutoRevert"] = state?.configAutoRevert;
+            resourceInputs["configPushPolicy"] = state?.configPushPolicy;
+            resourceInputs["criticalUrlMonitoring"] = state?.criticalUrlMonitoring;
+            resourceInputs["defaultPortUsage"] = state?.defaultPortUsage;
+            resourceInputs["deviceUpdownThreshold"] = state?.deviceUpdownThreshold;
+            resourceInputs["enableUnii4"] = state?.enableUnii4;
+            resourceInputs["engagement"] = state?.engagement;
+            resourceInputs["gatewayMgmt"] = state?.gatewayMgmt;
+            resourceInputs["gatewayUpdownThreshold"] = state?.gatewayUpdownThreshold;
+            resourceInputs["juniperSrx"] = state?.juniperSrx;
+            resourceInputs["led"] = state?.led;
+            resourceInputs["marvis"] = state?.marvis;
+            resourceInputs["occupancy"] = state?.occupancy;
+            resourceInputs["persistConfigOnDevice"] = state?.persistConfigOnDevice;
+            resourceInputs["proxy"] = state?.proxy;
+            resourceInputs["removeExistingConfigs"] = state?.removeExistingConfigs;
+            resourceInputs["reportGatt"] = state?.reportGatt;
+            resourceInputs["rogue"] = state?.rogue;
+            resourceInputs["rtsa"] = state?.rtsa;
+            resourceInputs["simpleAlert"] = state?.simpleAlert;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["skyatp"] = state?.skyatp;
+            resourceInputs["sleThresholds"] = state?.sleThresholds;
+            resourceInputs["srxApp"] = state?.srxApp;
+            resourceInputs["sshKeys"] = state?.sshKeys;
+            resourceInputs["ssr"] = state?.ssr;
+            resourceInputs["switchUpdownThreshold"] = state?.switchUpdownThreshold;
+            resourceInputs["syntheticTest"] = state?.syntheticTest;
+            resourceInputs["trackAnonymousDevices"] = state?.trackAnonymousDevices;
+            resourceInputs["uplinkPortConfig"] = state?.uplinkPortConfig;
+            resourceInputs["vars"] = state?.vars;
+            resourceInputs["vna"] = state?.vna;
+            resourceInputs["vpnPathUpdownThreshold"] = state?.vpnPathUpdownThreshold;
+            resourceInputs["vpnPeerUpdownThreshold"] = state?.vpnPeerUpdownThreshold;
+            resourceInputs["vsInstance"] = state?.vsInstance;
+            resourceInputs["wanVna"] = state?.wanVna;
+            resourceInputs["watchedStationUrl"] = state?.watchedStationUrl;
+            resourceInputs["whitelistUrl"] = state?.whitelistUrl;
+            resourceInputs["wids"] = state?.wids;
+            resourceInputs["wifi"] = state?.wifi;
+            resourceInputs["wiredVna"] = state?.wiredVna;
+            resourceInputs["zoneOccupancyAlert"] = state?.zoneOccupancyAlert;
         } else {
             const args = argsOrState as SettingArgs | undefined;
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["analytic"] = args ? args.analytic : undefined;
-            resourceInputs["apUpdownThreshold"] = args ? args.apUpdownThreshold : undefined;
-            resourceInputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
-            resourceInputs["autoUpgradeEsl"] = args ? args.autoUpgradeEsl : undefined;
-            resourceInputs["bgpNeighborUpdownThreshold"] = args ? args.bgpNeighborUpdownThreshold : undefined;
-            resourceInputs["bleConfig"] = args ? args.bleConfig : undefined;
-            resourceInputs["configAutoRevert"] = args ? args.configAutoRevert : undefined;
-            resourceInputs["configPushPolicy"] = args ? args.configPushPolicy : undefined;
-            resourceInputs["criticalUrlMonitoring"] = args ? args.criticalUrlMonitoring : undefined;
-            resourceInputs["defaultPortUsage"] = args ? args.defaultPortUsage : undefined;
-            resourceInputs["deviceUpdownThreshold"] = args ? args.deviceUpdownThreshold : undefined;
-            resourceInputs["enableUnii4"] = args ? args.enableUnii4 : undefined;
-            resourceInputs["engagement"] = args ? args.engagement : undefined;
-            resourceInputs["gatewayMgmt"] = args ? args.gatewayMgmt : undefined;
-            resourceInputs["gatewayUpdownThreshold"] = args ? args.gatewayUpdownThreshold : undefined;
-            resourceInputs["juniperSrx"] = args ? args.juniperSrx : undefined;
-            resourceInputs["led"] = args ? args.led : undefined;
-            resourceInputs["marvis"] = args ? args.marvis : undefined;
-            resourceInputs["occupancy"] = args ? args.occupancy : undefined;
-            resourceInputs["persistConfigOnDevice"] = args ? args.persistConfigOnDevice : undefined;
-            resourceInputs["proxy"] = args ? args.proxy : undefined;
-            resourceInputs["removeExistingConfigs"] = args ? args.removeExistingConfigs : undefined;
-            resourceInputs["reportGatt"] = args ? args.reportGatt : undefined;
-            resourceInputs["rogue"] = args ? args.rogue : undefined;
-            resourceInputs["rtsa"] = args ? args.rtsa : undefined;
-            resourceInputs["simpleAlert"] = args ? args.simpleAlert : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["skyatp"] = args ? args.skyatp : undefined;
-            resourceInputs["sleThresholds"] = args ? args.sleThresholds : undefined;
-            resourceInputs["srxApp"] = args ? args.srxApp : undefined;
-            resourceInputs["sshKeys"] = args ? args.sshKeys : undefined;
-            resourceInputs["ssr"] = args ? args.ssr : undefined;
-            resourceInputs["switchUpdownThreshold"] = args ? args.switchUpdownThreshold : undefined;
-            resourceInputs["syntheticTest"] = args ? args.syntheticTest : undefined;
-            resourceInputs["trackAnonymousDevices"] = args ? args.trackAnonymousDevices : undefined;
-            resourceInputs["uplinkPortConfig"] = args ? args.uplinkPortConfig : undefined;
-            resourceInputs["vars"] = args ? args.vars : undefined;
-            resourceInputs["vna"] = args ? args.vna : undefined;
-            resourceInputs["vpnPathUpdownThreshold"] = args ? args.vpnPathUpdownThreshold : undefined;
-            resourceInputs["vpnPeerUpdownThreshold"] = args ? args.vpnPeerUpdownThreshold : undefined;
-            resourceInputs["vsInstance"] = args ? args.vsInstance : undefined;
-            resourceInputs["wanVna"] = args ? args.wanVna : undefined;
-            resourceInputs["wids"] = args ? args.wids : undefined;
-            resourceInputs["wifi"] = args ? args.wifi : undefined;
-            resourceInputs["wiredVna"] = args ? args.wiredVna : undefined;
-            resourceInputs["zoneOccupancyAlert"] = args ? args.zoneOccupancyAlert : undefined;
+            resourceInputs["analytic"] = args?.analytic;
+            resourceInputs["apUpdownThreshold"] = args?.apUpdownThreshold;
+            resourceInputs["autoUpgrade"] = args?.autoUpgrade;
+            resourceInputs["autoUpgradeEsl"] = args?.autoUpgradeEsl;
+            resourceInputs["bgpNeighborUpdownThreshold"] = args?.bgpNeighborUpdownThreshold;
+            resourceInputs["bleConfig"] = args?.bleConfig;
+            resourceInputs["configAutoRevert"] = args?.configAutoRevert;
+            resourceInputs["configPushPolicy"] = args?.configPushPolicy;
+            resourceInputs["criticalUrlMonitoring"] = args?.criticalUrlMonitoring;
+            resourceInputs["defaultPortUsage"] = args?.defaultPortUsage;
+            resourceInputs["deviceUpdownThreshold"] = args?.deviceUpdownThreshold;
+            resourceInputs["enableUnii4"] = args?.enableUnii4;
+            resourceInputs["engagement"] = args?.engagement;
+            resourceInputs["gatewayMgmt"] = args?.gatewayMgmt;
+            resourceInputs["gatewayUpdownThreshold"] = args?.gatewayUpdownThreshold;
+            resourceInputs["juniperSrx"] = args?.juniperSrx;
+            resourceInputs["led"] = args?.led;
+            resourceInputs["marvis"] = args?.marvis;
+            resourceInputs["occupancy"] = args?.occupancy;
+            resourceInputs["persistConfigOnDevice"] = args?.persistConfigOnDevice;
+            resourceInputs["proxy"] = args?.proxy;
+            resourceInputs["removeExistingConfigs"] = args?.removeExistingConfigs;
+            resourceInputs["reportGatt"] = args?.reportGatt;
+            resourceInputs["rogue"] = args?.rogue;
+            resourceInputs["rtsa"] = args?.rtsa;
+            resourceInputs["simpleAlert"] = args?.simpleAlert;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["skyatp"] = args?.skyatp;
+            resourceInputs["sleThresholds"] = args?.sleThresholds;
+            resourceInputs["srxApp"] = args?.srxApp;
+            resourceInputs["sshKeys"] = args?.sshKeys;
+            resourceInputs["ssr"] = args?.ssr;
+            resourceInputs["switchUpdownThreshold"] = args?.switchUpdownThreshold;
+            resourceInputs["syntheticTest"] = args?.syntheticTest;
+            resourceInputs["trackAnonymousDevices"] = args?.trackAnonymousDevices;
+            resourceInputs["uplinkPortConfig"] = args?.uplinkPortConfig;
+            resourceInputs["vars"] = args?.vars;
+            resourceInputs["vna"] = args?.vna;
+            resourceInputs["vpnPathUpdownThreshold"] = args?.vpnPathUpdownThreshold;
+            resourceInputs["vpnPeerUpdownThreshold"] = args?.vpnPeerUpdownThreshold;
+            resourceInputs["vsInstance"] = args?.vsInstance;
+            resourceInputs["wanVna"] = args?.wanVna;
+            resourceInputs["wids"] = args?.wids;
+            resourceInputs["wifi"] = args?.wifi;
+            resourceInputs["wiredVna"] = args?.wiredVna;
+            resourceInputs["zoneOccupancyAlert"] = args?.zoneOccupancyAlert;
             resourceInputs["blacklistUrl"] = undefined /*out*/;
             resourceInputs["watchedStationUrl"] = undefined /*out*/;
             resourceInputs["whitelistUrl"] = undefined /*out*/;
@@ -340,8 +330,7 @@ export class Setting extends pulumi.CustomResource {
 export interface SettingState {
     analytic?: pulumi.Input<inputs.site.SettingAnalytic>;
     /**
-     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
-     * `deviceUpdownThreshold` is ignored.
+     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      */
     apUpdownThreshold?: pulumi.Input<number>;
     /**
@@ -349,8 +338,7 @@ export interface SettingState {
      */
     autoUpgrade?: pulumi.Input<inputs.site.SettingAutoUpgrade>;
     /**
-     * auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
-     * upgrade
+     * auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
      */
     autoUpgradeEsl?: pulumi.Input<inputs.site.SettingAutoUpgradeEsl>;
     /**
@@ -379,14 +367,12 @@ export interface SettingState {
      */
     defaultPortUsage?: pulumi.Input<string>;
     /**
-     * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
-     * type is desired, use the following
+     * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      */
     deviceUpdownThreshold?: pulumi.Input<number>;
     enableUnii4?: pulumi.Input<boolean>;
     /**
-     * **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
-     * ranges for the same day
+     * **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
      */
     engagement?: pulumi.Input<inputs.site.SettingEngagement>;
     /**
@@ -394,8 +380,7 @@ export interface SettingState {
      */
     gatewayMgmt?: pulumi.Input<inputs.site.SettingGatewayMgmt>;
     /**
-     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
-     * `deviceUpdownThreshold` is ignored.
+     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      */
     gatewayUpdownThreshold?: pulumi.Input<number>;
     juniperSrx?: pulumi.Input<inputs.site.SettingJuniperSrx>;
@@ -417,13 +402,11 @@ export interface SettingState {
      */
     proxy?: pulumi.Input<inputs.site.SettingProxy>;
     /**
-     * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the
-     * existing configuration will be removed.
+     * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
      */
     removeExistingConfigs?: pulumi.Input<boolean>;
     /**
-     * Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
-     * serial number, battery %, temperature, humidity)
+     * Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name, serial number, battery %, temperature, humidity)
      */
     reportGatt?: pulumi.Input<boolean>;
     /**
@@ -435,8 +418,7 @@ export interface SettingState {
      */
     rtsa?: pulumi.Input<inputs.site.SettingRtsa>;
     /**
-     * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-     * window, there are more than Y distinct client encountering over X failures
+     * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
      */
     simpleAlert?: pulumi.Input<inputs.site.SettingSimpleAlert>;
     siteId?: pulumi.Input<string>;
@@ -444,19 +426,17 @@ export interface SettingState {
     sleThresholds?: pulumi.Input<inputs.site.SettingSleThresholds>;
     srxApp?: pulumi.Input<inputs.site.SettingSrxApp>;
     /**
-     * When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
-     * Org:Setting)
+     * When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
      */
     sshKeys?: pulumi.Input<pulumi.Input<string>[]>;
     ssr?: pulumi.Input<inputs.site.SettingSsr>;
     /**
-     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
-     * `deviceUpdownThreshold` is ignored.
+     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
      */
     switchUpdownThreshold?: pulumi.Input<number>;
     syntheticTest?: pulumi.Input<inputs.site.SettingSyntheticTest>;
     /**
-     * Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+     * Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
      */
     trackAnonymousDevices?: pulumi.Input<boolean>;
     /**
@@ -504,8 +484,7 @@ export interface SettingState {
 export interface SettingArgs {
     analytic?: pulumi.Input<inputs.site.SettingAnalytic>;
     /**
-     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
-     * `deviceUpdownThreshold` is ignored.
+     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      */
     apUpdownThreshold?: pulumi.Input<number>;
     /**
@@ -513,8 +492,7 @@ export interface SettingArgs {
      */
     autoUpgrade?: pulumi.Input<inputs.site.SettingAutoUpgrade>;
     /**
-     * auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
-     * upgrade
+     * auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
      */
     autoUpgradeEsl?: pulumi.Input<inputs.site.SettingAutoUpgradeEsl>;
     /**
@@ -542,14 +520,12 @@ export interface SettingArgs {
      */
     defaultPortUsage?: pulumi.Input<string>;
     /**
-     * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
-     * type is desired, use the following
+     * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      */
     deviceUpdownThreshold?: pulumi.Input<number>;
     enableUnii4?: pulumi.Input<boolean>;
     /**
-     * **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
-     * ranges for the same day
+     * **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
      */
     engagement?: pulumi.Input<inputs.site.SettingEngagement>;
     /**
@@ -557,8 +533,7 @@ export interface SettingArgs {
      */
     gatewayMgmt?: pulumi.Input<inputs.site.SettingGatewayMgmt>;
     /**
-     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
-     * `deviceUpdownThreshold` is ignored.
+     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      */
     gatewayUpdownThreshold?: pulumi.Input<number>;
     juniperSrx?: pulumi.Input<inputs.site.SettingJuniperSrx>;
@@ -580,13 +555,11 @@ export interface SettingArgs {
      */
     proxy?: pulumi.Input<inputs.site.SettingProxy>;
     /**
-     * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the
-     * existing configuration will be removed.
+     * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
      */
     removeExistingConfigs?: pulumi.Input<boolean>;
     /**
-     * Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
-     * serial number, battery %, temperature, humidity)
+     * Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name, serial number, battery %, temperature, humidity)
      */
     reportGatt?: pulumi.Input<boolean>;
     /**
@@ -598,8 +571,7 @@ export interface SettingArgs {
      */
     rtsa?: pulumi.Input<inputs.site.SettingRtsa>;
     /**
-     * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-     * window, there are more than Y distinct client encountering over X failures
+     * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
      */
     simpleAlert?: pulumi.Input<inputs.site.SettingSimpleAlert>;
     siteId: pulumi.Input<string>;
@@ -607,19 +579,17 @@ export interface SettingArgs {
     sleThresholds?: pulumi.Input<inputs.site.SettingSleThresholds>;
     srxApp?: pulumi.Input<inputs.site.SettingSrxApp>;
     /**
-     * When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
-     * Org:Setting)
+     * When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
      */
     sshKeys?: pulumi.Input<pulumi.Input<string>[]>;
     ssr?: pulumi.Input<inputs.site.SettingSsr>;
     /**
-     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
-     * `deviceUpdownThreshold` is ignored.
+     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
      */
     switchUpdownThreshold?: pulumi.Input<number>;
     syntheticTest?: pulumi.Input<inputs.site.SettingSyntheticTest>;
     /**
-     * Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+     * Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
      */
     trackAnonymousDevices?: pulumi.Input<boolean>;
     /**

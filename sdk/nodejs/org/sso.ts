@@ -68,62 +68,56 @@ export class Sso extends pulumi.CustomResource {
     }
 
     /**
-     * a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-     * different from SP-initiated SLO process)
+     * a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
      */
-    public readonly customLogoutUrl!: pulumi.Output<string | undefined>;
+    declare public readonly customLogoutUrl: pulumi.Output<string | undefined>;
     /**
-     * default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-     * matched
+     * default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      */
-    public readonly defaultRole!: pulumi.Output<string | undefined>;
+    declare public readonly defaultRole: pulumi.Output<string | undefined>;
     /**
-     * Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
-     * `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
-     * `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
+     * Random string generated during the SSO creation and used to generate the SAML URLs:
+     *   * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
+     *   * Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
      */
-    public /*out*/ readonly domain!: pulumi.Output<string>;
+    declare public /*out*/ readonly domain: pulumi.Output<string>;
     /**
      * IDP Cert (used to verify the signed response)
      */
-    public readonly idpCert!: pulumi.Output<string>;
+    declare public readonly idpCert: pulumi.Output<string>;
     /**
      * Signing algorithm for SAML Assertion. enum `sha1`, `sha256`, `sha384`, `sha512`
      */
-    public readonly idpSignAlgo!: pulumi.Output<string>;
+    declare public readonly idpSignAlgo: pulumi.Output<string>;
     /**
      * IDP Single-Sign-On URL
      */
-    public readonly idpSsoUrl!: pulumi.Output<string>;
+    declare public readonly idpSsoUrl: pulumi.Output<string>;
     /**
      * ignore any unmatched roles provided in assertion. By default, an assertion is treated as invalid for any unmatched role
      */
-    public readonly ignoreUnmatchedRoles!: pulumi.Output<boolean | undefined>;
+    declare public readonly ignoreUnmatchedRoles: pulumi.Output<boolean | undefined>;
     /**
      * IDP issuer URL
      */
-    public readonly issuer!: pulumi.Output<string>;
+    declare public readonly issuer: pulumi.Output<string>;
     /**
      * Name
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * enum: `email`, `unspecified`
      */
-    public readonly nameidFormat!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly nameidFormat: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
-     * custom role attribute parsing scheme. Supported Role Parsing Schemes
-     * <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
-     * Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-     * entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-     * “cn”</td></tr></table>
+     * custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
      */
-    public readonly roleAttrExtraction!: pulumi.Output<string | undefined>;
+    declare public readonly roleAttrExtraction: pulumi.Output<string | undefined>;
     /**
      * name of the attribute in SAML Assertion to extract role from. Default: `Role`
      */
-    public readonly roleAttrFrom!: pulumi.Output<string>;
+    declare public readonly roleAttrFrom: pulumi.Output<string>;
 
     /**
      * Create a Sso resource with the given unique name, arguments, and options.
@@ -138,48 +132,48 @@ export class Sso extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SsoState | undefined;
-            resourceInputs["customLogoutUrl"] = state ? state.customLogoutUrl : undefined;
-            resourceInputs["defaultRole"] = state ? state.defaultRole : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["idpCert"] = state ? state.idpCert : undefined;
-            resourceInputs["idpSignAlgo"] = state ? state.idpSignAlgo : undefined;
-            resourceInputs["idpSsoUrl"] = state ? state.idpSsoUrl : undefined;
-            resourceInputs["ignoreUnmatchedRoles"] = state ? state.ignoreUnmatchedRoles : undefined;
-            resourceInputs["issuer"] = state ? state.issuer : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nameidFormat"] = state ? state.nameidFormat : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["roleAttrExtraction"] = state ? state.roleAttrExtraction : undefined;
-            resourceInputs["roleAttrFrom"] = state ? state.roleAttrFrom : undefined;
+            resourceInputs["customLogoutUrl"] = state?.customLogoutUrl;
+            resourceInputs["defaultRole"] = state?.defaultRole;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["idpCert"] = state?.idpCert;
+            resourceInputs["idpSignAlgo"] = state?.idpSignAlgo;
+            resourceInputs["idpSsoUrl"] = state?.idpSsoUrl;
+            resourceInputs["ignoreUnmatchedRoles"] = state?.ignoreUnmatchedRoles;
+            resourceInputs["issuer"] = state?.issuer;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nameidFormat"] = state?.nameidFormat;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["roleAttrExtraction"] = state?.roleAttrExtraction;
+            resourceInputs["roleAttrFrom"] = state?.roleAttrFrom;
         } else {
             const args = argsOrState as SsoArgs | undefined;
-            if ((!args || args.idpCert === undefined) && !opts.urn) {
+            if (args?.idpCert === undefined && !opts.urn) {
                 throw new Error("Missing required property 'idpCert'");
             }
-            if ((!args || args.idpSignAlgo === undefined) && !opts.urn) {
+            if (args?.idpSignAlgo === undefined && !opts.urn) {
                 throw new Error("Missing required property 'idpSignAlgo'");
             }
-            if ((!args || args.idpSsoUrl === undefined) && !opts.urn) {
+            if (args?.idpSsoUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'idpSsoUrl'");
             }
-            if ((!args || args.issuer === undefined) && !opts.urn) {
+            if (args?.issuer === undefined && !opts.urn) {
                 throw new Error("Missing required property 'issuer'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["customLogoutUrl"] = args ? args.customLogoutUrl : undefined;
-            resourceInputs["defaultRole"] = args ? args.defaultRole : undefined;
-            resourceInputs["idpCert"] = args ? args.idpCert : undefined;
-            resourceInputs["idpSignAlgo"] = args ? args.idpSignAlgo : undefined;
-            resourceInputs["idpSsoUrl"] = args ? args.idpSsoUrl : undefined;
-            resourceInputs["ignoreUnmatchedRoles"] = args ? args.ignoreUnmatchedRoles : undefined;
-            resourceInputs["issuer"] = args ? args.issuer : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nameidFormat"] = args ? args.nameidFormat : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["roleAttrExtraction"] = args ? args.roleAttrExtraction : undefined;
-            resourceInputs["roleAttrFrom"] = args ? args.roleAttrFrom : undefined;
+            resourceInputs["customLogoutUrl"] = args?.customLogoutUrl;
+            resourceInputs["defaultRole"] = args?.defaultRole;
+            resourceInputs["idpCert"] = args?.idpCert;
+            resourceInputs["idpSignAlgo"] = args?.idpSignAlgo;
+            resourceInputs["idpSsoUrl"] = args?.idpSsoUrl;
+            resourceInputs["ignoreUnmatchedRoles"] = args?.ignoreUnmatchedRoles;
+            resourceInputs["issuer"] = args?.issuer;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nameidFormat"] = args?.nameidFormat;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["roleAttrExtraction"] = args?.roleAttrExtraction;
+            resourceInputs["roleAttrFrom"] = args?.roleAttrFrom;
             resourceInputs["domain"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -192,19 +186,17 @@ export class Sso extends pulumi.CustomResource {
  */
 export interface SsoState {
     /**
-     * a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-     * different from SP-initiated SLO process)
+     * a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
      */
     customLogoutUrl?: pulumi.Input<string>;
     /**
-     * default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-     * matched
+     * default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      */
     defaultRole?: pulumi.Input<string>;
     /**
-     * Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
-     * `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
-     * `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
+     * Random string generated during the SSO creation and used to generate the SAML URLs:
+     *   * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
+     *   * Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
      */
     domain?: pulumi.Input<string>;
     /**
@@ -237,11 +229,7 @@ export interface SsoState {
     nameidFormat?: pulumi.Input<string>;
     orgId?: pulumi.Input<string>;
     /**
-     * custom role attribute parsing scheme. Supported Role Parsing Schemes
-     * <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
-     * Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-     * entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-     * “cn”</td></tr></table>
+     * custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
      */
     roleAttrExtraction?: pulumi.Input<string>;
     /**
@@ -255,13 +243,11 @@ export interface SsoState {
  */
 export interface SsoArgs {
     /**
-     * a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is
-     * different from SP-initiated SLO process)
+     * a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
      */
     customLogoutUrl?: pulumi.Input<string>;
     /**
-     * default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role
-     * matched
+     * default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      */
     defaultRole?: pulumi.Input<string>;
     /**
@@ -294,11 +280,7 @@ export interface SsoArgs {
     nameidFormat?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
     /**
-     * custom role attribute parsing scheme. Supported Role Parsing Schemes
-     * <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
-     * Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-     * entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-     * “cn”</td></tr></table>
+     * custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
      */
     roleAttrExtraction?: pulumi.Input<string>;
     /**

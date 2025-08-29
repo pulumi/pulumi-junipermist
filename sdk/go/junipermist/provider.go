@@ -24,9 +24,8 @@ type Provider struct {
 	Host pulumi.StringPtrOutput `pulumi:"host"`
 	// For username/password authentication, the Mist Account password.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-	// `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-	// are supported.
+	// Requests use the configured proxy to reach the Mist Cloud.
+	// The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
 	Proxy pulumi.StringPtrOutput `pulumi:"proxy"`
 	// For username/password authentication, the Mist Account username.
 	Username pulumi.StringPtrOutput `pulumi:"username"`
@@ -62,8 +61,7 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	// Flag to enable debugging API calls. Default is false.
 	ApiDebug *bool `pulumi:"apiDebug"`
-	// Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
-	// results in infinite timeout.
+	// Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
 	ApiTimeout *float64 `pulumi:"apiTimeout"`
 	// For API Token authentication, the Mist API Token.
 	Apitoken *string `pulumi:"apitoken"`
@@ -71,9 +69,8 @@ type providerArgs struct {
 	Host *string `pulumi:"host"`
 	// For username/password authentication, the Mist Account password.
 	Password *string `pulumi:"password"`
-	// Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-	// `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-	// are supported.
+	// Requests use the configured proxy to reach the Mist Cloud.
+	// The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
 	Proxy *string `pulumi:"proxy"`
 	// For username/password authentication, the Mist Account username.
 	Username *string `pulumi:"username"`
@@ -83,8 +80,7 @@ type providerArgs struct {
 type ProviderArgs struct {
 	// Flag to enable debugging API calls. Default is false.
 	ApiDebug pulumi.BoolPtrInput
-	// Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
-	// results in infinite timeout.
+	// Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
 	ApiTimeout pulumi.Float64PtrInput
 	// For API Token authentication, the Mist API Token.
 	Apitoken pulumi.StringPtrInput
@@ -92,9 +88,8 @@ type ProviderArgs struct {
 	Host pulumi.StringPtrInput
 	// For username/password authentication, the Mist Account password.
 	Password pulumi.StringPtrInput
-	// Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-	// `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-	// are supported.
+	// Requests use the configured proxy to reach the Mist Cloud.
+	// The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
 	Proxy pulumi.StringPtrInput
 	// For username/password authentication, the Mist Account username.
 	Username pulumi.StringPtrInput
@@ -175,9 +170,8 @@ func (o ProviderOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
-// `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
-// are supported.
+// Requests use the configured proxy to reach the Mist Cloud.
+// The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
 func (o ProviderOutput) Proxy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Proxy }).(pulumi.StringPtrOutput)
 }

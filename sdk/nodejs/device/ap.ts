@@ -52,131 +52,130 @@ export class Ap extends pulumi.CustomResource {
     /**
      * Aeroscout AP settings
      */
-    public readonly aeroscout!: pulumi.Output<outputs.device.ApAeroscout | undefined>;
-    public readonly airista!: pulumi.Output<outputs.device.ApAirista | undefined>;
+    declare public readonly aeroscout: pulumi.Output<outputs.device.ApAeroscout | undefined>;
+    declare public readonly airista: pulumi.Output<outputs.device.ApAirista | undefined>;
     /**
      * BLE AP settings
      */
-    public readonly bleConfig!: pulumi.Output<outputs.device.ApBleConfig | undefined>;
-    public readonly centrak!: pulumi.Output<outputs.device.ApCentrak | undefined>;
-    public readonly clientBridge!: pulumi.Output<outputs.device.ApClientBridge | undefined>;
-    public readonly deviceId!: pulumi.Output<string>;
+    declare public readonly bleConfig: pulumi.Output<outputs.device.ApBleConfig | undefined>;
+    declare public readonly centrak: pulumi.Output<outputs.device.ApCentrak | undefined>;
+    declare public readonly clientBridge: pulumi.Output<outputs.device.ApClientBridge | undefined>;
+    declare public readonly deviceId: pulumi.Output<string>;
     /**
      * Whether to disable eth1 port
      */
-    public readonly disableEth1!: pulumi.Output<boolean>;
+    declare public readonly disableEth1: pulumi.Output<boolean>;
     /**
      * Whether to disable eth2 port
      */
-    public readonly disableEth2!: pulumi.Output<boolean>;
+    declare public readonly disableEth2: pulumi.Output<boolean>;
     /**
      * Whether to disable eth3 port
      */
-    public readonly disableEth3!: pulumi.Output<boolean>;
+    declare public readonly disableEth3: pulumi.Output<boolean>;
     /**
      * Whether to disable module port
      */
-    public readonly disableModule!: pulumi.Output<boolean>;
-    public readonly eslConfig!: pulumi.Output<outputs.device.ApEslConfig | undefined>;
+    declare public readonly disableModule: pulumi.Output<boolean>;
+    declare public readonly eslConfig: pulumi.Output<outputs.device.ApEslConfig | undefined>;
     /**
      * For some AP models, flowControl can be enabled to address some switch compatibility issue
      */
-    public readonly flowControl!: pulumi.Output<boolean>;
+    declare public readonly flowControl: pulumi.Output<boolean>;
     /**
      * Height, in meters, optional
      */
-    public readonly height!: pulumi.Output<number | undefined>;
-    public /*out*/ readonly image1Url!: pulumi.Output<string>;
-    public /*out*/ readonly image2Url!: pulumi.Output<string>;
-    public /*out*/ readonly image3Url!: pulumi.Output<string>;
+    declare public readonly height: pulumi.Output<number | undefined>;
+    declare public /*out*/ readonly image1Url: pulumi.Output<string>;
+    declare public /*out*/ readonly image2Url: pulumi.Output<string>;
+    declare public /*out*/ readonly image3Url: pulumi.Output<string>;
     /**
      * IP AP settings
      */
-    public readonly ipConfig!: pulumi.Output<outputs.device.ApIpConfig | undefined>;
-    public readonly lacpConfig!: pulumi.Output<outputs.device.ApLacpConfig | undefined>;
+    declare public readonly ipConfig: pulumi.Output<outputs.device.ApIpConfig | undefined>;
+    declare public readonly lacpConfig: pulumi.Output<outputs.device.ApLacpConfig | undefined>;
     /**
      * LED AP settings
      */
-    public readonly led!: pulumi.Output<outputs.device.ApLed | undefined>;
+    declare public readonly led: pulumi.Output<outputs.device.ApLed | undefined>;
     /**
      * Whether this map is considered locked down
      */
-    public readonly locked!: pulumi.Output<boolean | undefined>;
+    declare public readonly locked: pulumi.Output<boolean | undefined>;
     /**
      * Device MAC address
      */
-    public /*out*/ readonly mac!: pulumi.Output<string>;
+    declare public /*out*/ readonly mac: pulumi.Output<string>;
     /**
      * Map where the device belongs to
      */
-    public readonly mapId!: pulumi.Output<string | undefined>;
+    declare public readonly mapId: pulumi.Output<string | undefined>;
     /**
      * Mesh AP settings
      */
-    public readonly mesh!: pulumi.Output<outputs.device.ApMesh | undefined>;
+    declare public readonly mesh: pulumi.Output<outputs.device.ApMesh | undefined>;
     /**
      * Device Model
      */
-    public /*out*/ readonly model!: pulumi.Output<string>;
-    public readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly model: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Any notes about this AP
      */
-    public readonly notes!: pulumi.Output<string | undefined>;
-    public readonly ntpServers!: pulumi.Output<string[] | undefined>;
-    public /*out*/ readonly orgId!: pulumi.Output<string>;
+    declare public readonly notes: pulumi.Output<string | undefined>;
+    declare public readonly ntpServers: pulumi.Output<string[] | undefined>;
+    declare public /*out*/ readonly orgId: pulumi.Output<string>;
     /**
      * Orientation, 0-359, in degrees, up is 0, right is 90.
      */
-    public readonly orientation!: pulumi.Output<number | undefined>;
+    declare public readonly orientation: pulumi.Output<number | undefined>;
     /**
      * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      */
-    public readonly poePassthrough!: pulumi.Output<boolean>;
+    declare public readonly poePassthrough: pulumi.Output<boolean>;
     /**
-     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-     * predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus
-     * deprecated)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
      */
-    public readonly portConfig!: pulumi.Output<{[key: string]: outputs.device.ApPortConfig} | undefined>;
+    declare public readonly portConfig: pulumi.Output<{[key: string]: outputs.device.ApPortConfig} | undefined>;
     /**
      * Power related configs
      */
-    public readonly pwrConfig!: pulumi.Output<outputs.device.ApPwrConfig | undefined>;
+    declare public readonly pwrConfig: pulumi.Output<outputs.device.ApPwrConfig | undefined>;
     /**
      * Radio AP settings
      */
-    public readonly radioConfig!: pulumi.Output<outputs.device.ApRadioConfig | undefined>;
+    declare public readonly radioConfig: pulumi.Output<outputs.device.ApRadioConfig | undefined>;
     /**
      * Device Serial
      */
-    public /*out*/ readonly serial!: pulumi.Output<string>;
-    public readonly siteId!: pulumi.Output<string>;
+    declare public /*out*/ readonly serial: pulumi.Output<string>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * Device Type. enum: `ap`
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * AP Uplink port configuration
      */
-    public readonly uplinkPortConfig!: pulumi.Output<outputs.device.ApUplinkPortConfig | undefined>;
+    declare public readonly uplinkPortConfig: pulumi.Output<outputs.device.ApUplinkPortConfig | undefined>;
     /**
-     * USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-     * moved to ESL Config.
+     * USB AP settings
+     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
+     *   - Note: legacy, new config moved to ESL Config.
      */
-    public readonly usbConfig!: pulumi.Output<outputs.device.ApUsbConfig | undefined>;
+    declare public readonly usbConfig: pulumi.Output<outputs.device.ApUsbConfig | undefined>;
     /**
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
-    public readonly vars!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly vars: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * X in pixel
      */
-    public readonly x!: pulumi.Output<number | undefined>;
+    declare public readonly x: pulumi.Output<number | undefined>;
     /**
      * Y in pixel
      */
-    public readonly y!: pulumi.Output<number | undefined>;
+    declare public readonly y: pulumi.Output<number | undefined>;
 
     /**
      * Create a Ap resource with the given unique name, arguments, and options.
@@ -191,88 +190,88 @@ export class Ap extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApState | undefined;
-            resourceInputs["aeroscout"] = state ? state.aeroscout : undefined;
-            resourceInputs["airista"] = state ? state.airista : undefined;
-            resourceInputs["bleConfig"] = state ? state.bleConfig : undefined;
-            resourceInputs["centrak"] = state ? state.centrak : undefined;
-            resourceInputs["clientBridge"] = state ? state.clientBridge : undefined;
-            resourceInputs["deviceId"] = state ? state.deviceId : undefined;
-            resourceInputs["disableEth1"] = state ? state.disableEth1 : undefined;
-            resourceInputs["disableEth2"] = state ? state.disableEth2 : undefined;
-            resourceInputs["disableEth3"] = state ? state.disableEth3 : undefined;
-            resourceInputs["disableModule"] = state ? state.disableModule : undefined;
-            resourceInputs["eslConfig"] = state ? state.eslConfig : undefined;
-            resourceInputs["flowControl"] = state ? state.flowControl : undefined;
-            resourceInputs["height"] = state ? state.height : undefined;
-            resourceInputs["image1Url"] = state ? state.image1Url : undefined;
-            resourceInputs["image2Url"] = state ? state.image2Url : undefined;
-            resourceInputs["image3Url"] = state ? state.image3Url : undefined;
-            resourceInputs["ipConfig"] = state ? state.ipConfig : undefined;
-            resourceInputs["lacpConfig"] = state ? state.lacpConfig : undefined;
-            resourceInputs["led"] = state ? state.led : undefined;
-            resourceInputs["locked"] = state ? state.locked : undefined;
-            resourceInputs["mac"] = state ? state.mac : undefined;
-            resourceInputs["mapId"] = state ? state.mapId : undefined;
-            resourceInputs["mesh"] = state ? state.mesh : undefined;
-            resourceInputs["model"] = state ? state.model : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notes"] = state ? state.notes : undefined;
-            resourceInputs["ntpServers"] = state ? state.ntpServers : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["orientation"] = state ? state.orientation : undefined;
-            resourceInputs["poePassthrough"] = state ? state.poePassthrough : undefined;
-            resourceInputs["portConfig"] = state ? state.portConfig : undefined;
-            resourceInputs["pwrConfig"] = state ? state.pwrConfig : undefined;
-            resourceInputs["radioConfig"] = state ? state.radioConfig : undefined;
-            resourceInputs["serial"] = state ? state.serial : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["uplinkPortConfig"] = state ? state.uplinkPortConfig : undefined;
-            resourceInputs["usbConfig"] = state ? state.usbConfig : undefined;
-            resourceInputs["vars"] = state ? state.vars : undefined;
-            resourceInputs["x"] = state ? state.x : undefined;
-            resourceInputs["y"] = state ? state.y : undefined;
+            resourceInputs["aeroscout"] = state?.aeroscout;
+            resourceInputs["airista"] = state?.airista;
+            resourceInputs["bleConfig"] = state?.bleConfig;
+            resourceInputs["centrak"] = state?.centrak;
+            resourceInputs["clientBridge"] = state?.clientBridge;
+            resourceInputs["deviceId"] = state?.deviceId;
+            resourceInputs["disableEth1"] = state?.disableEth1;
+            resourceInputs["disableEth2"] = state?.disableEth2;
+            resourceInputs["disableEth3"] = state?.disableEth3;
+            resourceInputs["disableModule"] = state?.disableModule;
+            resourceInputs["eslConfig"] = state?.eslConfig;
+            resourceInputs["flowControl"] = state?.flowControl;
+            resourceInputs["height"] = state?.height;
+            resourceInputs["image1Url"] = state?.image1Url;
+            resourceInputs["image2Url"] = state?.image2Url;
+            resourceInputs["image3Url"] = state?.image3Url;
+            resourceInputs["ipConfig"] = state?.ipConfig;
+            resourceInputs["lacpConfig"] = state?.lacpConfig;
+            resourceInputs["led"] = state?.led;
+            resourceInputs["locked"] = state?.locked;
+            resourceInputs["mac"] = state?.mac;
+            resourceInputs["mapId"] = state?.mapId;
+            resourceInputs["mesh"] = state?.mesh;
+            resourceInputs["model"] = state?.model;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notes"] = state?.notes;
+            resourceInputs["ntpServers"] = state?.ntpServers;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["orientation"] = state?.orientation;
+            resourceInputs["poePassthrough"] = state?.poePassthrough;
+            resourceInputs["portConfig"] = state?.portConfig;
+            resourceInputs["pwrConfig"] = state?.pwrConfig;
+            resourceInputs["radioConfig"] = state?.radioConfig;
+            resourceInputs["serial"] = state?.serial;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["uplinkPortConfig"] = state?.uplinkPortConfig;
+            resourceInputs["usbConfig"] = state?.usbConfig;
+            resourceInputs["vars"] = state?.vars;
+            resourceInputs["x"] = state?.x;
+            resourceInputs["y"] = state?.y;
         } else {
             const args = argsOrState as ApArgs | undefined;
-            if ((!args || args.deviceId === undefined) && !opts.urn) {
+            if (args?.deviceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deviceId'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["aeroscout"] = args ? args.aeroscout : undefined;
-            resourceInputs["airista"] = args ? args.airista : undefined;
-            resourceInputs["bleConfig"] = args ? args.bleConfig : undefined;
-            resourceInputs["centrak"] = args ? args.centrak : undefined;
-            resourceInputs["clientBridge"] = args ? args.clientBridge : undefined;
-            resourceInputs["deviceId"] = args ? args.deviceId : undefined;
-            resourceInputs["disableEth1"] = args ? args.disableEth1 : undefined;
-            resourceInputs["disableEth2"] = args ? args.disableEth2 : undefined;
-            resourceInputs["disableEth3"] = args ? args.disableEth3 : undefined;
-            resourceInputs["disableModule"] = args ? args.disableModule : undefined;
-            resourceInputs["eslConfig"] = args ? args.eslConfig : undefined;
-            resourceInputs["flowControl"] = args ? args.flowControl : undefined;
-            resourceInputs["height"] = args ? args.height : undefined;
-            resourceInputs["ipConfig"] = args ? args.ipConfig : undefined;
-            resourceInputs["lacpConfig"] = args ? args.lacpConfig : undefined;
-            resourceInputs["led"] = args ? args.led : undefined;
-            resourceInputs["locked"] = args ? args.locked : undefined;
-            resourceInputs["mapId"] = args ? args.mapId : undefined;
-            resourceInputs["mesh"] = args ? args.mesh : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notes"] = args ? args.notes : undefined;
-            resourceInputs["ntpServers"] = args ? args.ntpServers : undefined;
-            resourceInputs["orientation"] = args ? args.orientation : undefined;
-            resourceInputs["poePassthrough"] = args ? args.poePassthrough : undefined;
-            resourceInputs["portConfig"] = args ? args.portConfig : undefined;
-            resourceInputs["pwrConfig"] = args ? args.pwrConfig : undefined;
-            resourceInputs["radioConfig"] = args ? args.radioConfig : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["uplinkPortConfig"] = args ? args.uplinkPortConfig : undefined;
-            resourceInputs["usbConfig"] = args ? args.usbConfig : undefined;
-            resourceInputs["vars"] = args ? args.vars : undefined;
-            resourceInputs["x"] = args ? args.x : undefined;
-            resourceInputs["y"] = args ? args.y : undefined;
+            resourceInputs["aeroscout"] = args?.aeroscout;
+            resourceInputs["airista"] = args?.airista;
+            resourceInputs["bleConfig"] = args?.bleConfig;
+            resourceInputs["centrak"] = args?.centrak;
+            resourceInputs["clientBridge"] = args?.clientBridge;
+            resourceInputs["deviceId"] = args?.deviceId;
+            resourceInputs["disableEth1"] = args?.disableEth1;
+            resourceInputs["disableEth2"] = args?.disableEth2;
+            resourceInputs["disableEth3"] = args?.disableEth3;
+            resourceInputs["disableModule"] = args?.disableModule;
+            resourceInputs["eslConfig"] = args?.eslConfig;
+            resourceInputs["flowControl"] = args?.flowControl;
+            resourceInputs["height"] = args?.height;
+            resourceInputs["ipConfig"] = args?.ipConfig;
+            resourceInputs["lacpConfig"] = args?.lacpConfig;
+            resourceInputs["led"] = args?.led;
+            resourceInputs["locked"] = args?.locked;
+            resourceInputs["mapId"] = args?.mapId;
+            resourceInputs["mesh"] = args?.mesh;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notes"] = args?.notes;
+            resourceInputs["ntpServers"] = args?.ntpServers;
+            resourceInputs["orientation"] = args?.orientation;
+            resourceInputs["poePassthrough"] = args?.poePassthrough;
+            resourceInputs["portConfig"] = args?.portConfig;
+            resourceInputs["pwrConfig"] = args?.pwrConfig;
+            resourceInputs["radioConfig"] = args?.radioConfig;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["uplinkPortConfig"] = args?.uplinkPortConfig;
+            resourceInputs["usbConfig"] = args?.usbConfig;
+            resourceInputs["vars"] = args?.vars;
+            resourceInputs["x"] = args?.x;
+            resourceInputs["y"] = args?.y;
             resourceInputs["image1Url"] = undefined /*out*/;
             resourceInputs["image2Url"] = undefined /*out*/;
             resourceInputs["image3Url"] = undefined /*out*/;
@@ -376,9 +375,7 @@ export interface ApState {
      */
     poePassthrough?: pulumi.Input<boolean>;
     /**
-     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-     * predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus
-     * deprecated)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.ApPortConfig>}>;
     /**
@@ -403,8 +400,9 @@ export interface ApState {
      */
     uplinkPortConfig?: pulumi.Input<inputs.device.ApUplinkPortConfig>;
     /**
-     * USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-     * moved to ESL Config.
+     * USB AP settings
+     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
+     *   - Note: legacy, new config moved to ESL Config.
      */
     usbConfig?: pulumi.Input<inputs.device.ApUsbConfig>;
     /**
@@ -498,9 +496,7 @@ export interface ApArgs {
      */
     poePassthrough?: pulumi.Input<boolean>;
     /**
-     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes
-     * predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus
-     * deprecated)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.ApPortConfig>}>;
     /**
@@ -517,8 +513,9 @@ export interface ApArgs {
      */
     uplinkPortConfig?: pulumi.Input<inputs.device.ApUplinkPortConfig>;
     /**
-     * USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
-     * moved to ESL Config.
+     * USB AP settings
+     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
+     *   - Note: legacy, new config moved to ESL Config.
      */
     usbConfig?: pulumi.Input<inputs.device.ApUsbConfig>;
     /**

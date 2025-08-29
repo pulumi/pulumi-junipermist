@@ -68,17 +68,18 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> GbpTag { get; private set; } = null!;
 
         /// <summary>
-        /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-        /// `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
-        /// `user_name`, `usermac_label`
+        /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
         /// </summary>
         [Output("match")]
         public Output<string?> Match { get; private set; } = null!;
 
         /// <summary>
-        /// This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
-        /// match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-        /// set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+        /// This field is applicable only when `type`==`match`
+        ///   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+        ///   * `true`: means all values should be matched (i.e., match-all behavior)
+        /// 
+        /// 
+        /// Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
         /// </summary>
         [Output("matchAll")]
         public Output<bool?> MatchAll { get; private set; } = null!;
@@ -96,9 +97,9 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
-        /// the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
-        /// that it is allowed to have more than one radius_attrs in the result of a given rule.
+        /// If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". 
+        /// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+        /// Note that it is allowed to have more than one radius_attrs in the result of a given rule.
         /// </summary>
         [Output("radiusAttrs")]
         public Output<ImmutableArray<string>> RadiusAttrs { get; private set; } = null!;
@@ -110,9 +111,9 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> RadiusGroup { get; private set; } = null!;
 
         /// <summary>
-        /// If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
-        /// "radius_vendor_attrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
-        /// not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+        /// If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs". 
+        /// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+        /// Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         /// </summary>
         [Output("radiusVendorAttrs")]
         public Output<ImmutableArray<string>> RadiusVendorAttrs { get; private set; } = null!;
@@ -124,8 +125,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<int?> SessionTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
-        /// `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
+        /// enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -217,17 +217,18 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? GbpTag { get; set; }
 
         /// <summary>
-        /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-        /// `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
-        /// `user_name`, `usermac_label`
+        /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
 
         /// <summary>
-        /// This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
-        /// match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-        /// set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+        /// This field is applicable only when `type`==`match`
+        ///   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+        ///   * `true`: means all values should be matched (i.e., match-all behavior)
+        /// 
+        /// 
+        /// Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
         /// </summary>
         [Input("matchAll")]
         public Input<bool>? MatchAll { get; set; }
@@ -248,9 +249,9 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _radiusAttrs;
 
         /// <summary>
-        /// If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
-        /// the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
-        /// that it is allowed to have more than one radius_attrs in the result of a given rule.
+        /// If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". 
+        /// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+        /// Note that it is allowed to have more than one radius_attrs in the result of a given rule.
         /// </summary>
         public InputList<string> RadiusAttrs
         {
@@ -268,9 +269,9 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _radiusVendorAttrs;
 
         /// <summary>
-        /// If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
-        /// "radius_vendor_attrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
-        /// not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+        /// If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs". 
+        /// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+        /// Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         /// </summary>
         public InputList<string> RadiusVendorAttrs
         {
@@ -285,8 +286,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? SessionTimeout { get; set; }
 
         /// <summary>
-        /// enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
-        /// `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
+        /// enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -345,17 +345,18 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? GbpTag { get; set; }
 
         /// <summary>
-        /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`,
-        /// `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`,
-        /// `user_name`, `usermac_label`
+        /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
 
         /// <summary>
-        /// This field is applicable only when `type`==`match` * `false`: means it is sufficient to match any of the values (i.e.,
-        /// match-any behavior) * `true`: means all values should be matched (i.e., match-all behavior) Currently it makes sense to
-        /// set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+        /// This field is applicable only when `type`==`match`
+        ///   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+        ///   * `true`: means all values should be matched (i.e., match-all behavior)
+        /// 
+        /// 
+        /// Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
         /// </summary>
         [Input("matchAll")]
         public Input<bool>? MatchAll { get; set; }
@@ -376,9 +377,9 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _radiusAttrs;
 
         /// <summary>
-        /// If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". It is
-        /// the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected. Note
-        /// that it is allowed to have more than one radius_attrs in the result of a given rule.
+        /// If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". 
+        /// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+        /// Note that it is allowed to have more than one radius_attrs in the result of a given rule.
         /// </summary>
         public InputList<string> RadiusAttrs
         {
@@ -396,9 +397,9 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _radiusVendorAttrs;
 
         /// <summary>
-        /// If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field
-        /// "radius_vendor_attrs". It is the responsibility of the user to provide a syntactically correct string, otherwise it may
-        /// not work as expected. Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+        /// If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs". 
+        /// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+        /// Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
         /// </summary>
         public InputList<string> RadiusVendorAttrs
         {
@@ -413,8 +414,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? SessionTimeout { get; set; }
 
         /// <summary>
-        /// enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`,
-        /// `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
+        /// enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -39,8 +39,7 @@ type Gatewaytemplate struct {
 	DnsSuffixes pulumi.StringArrayOutput `pulumi:"dnsSuffixes"`
 	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes GatewaytemplateExtraRoutesMapOutput `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-	// "{{myvar}}")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 GatewaytemplateExtraRoutes6MapOutput `pulumi:"extraRoutes6"`
 	// Property key is the profile name
 	IdpProfiles GatewaytemplateIdpProfilesMapOutput `pulumi:"idpProfiles"`
@@ -56,8 +55,7 @@ type Gatewaytemplate struct {
 	OrgId       pulumi.StringOutput              `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences GatewaytemplatePathPreferencesMapOutput `pulumi:"pathPreferences"`
-	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
-	// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
+	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig GatewaytemplatePortConfigMapOutput `pulumi:"portConfig"`
 	// Auto assigned if not set
 	RouterId pulumi.StringPtrOutput `pulumi:"routerId"`
@@ -118,8 +116,7 @@ type gatewaytemplateState struct {
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
 	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes map[string]GatewaytemplateExtraRoutes `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-	// "{{myvar}}")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 map[string]GatewaytemplateExtraRoutes6 `pulumi:"extraRoutes6"`
 	// Property key is the profile name
 	IdpProfiles map[string]GatewaytemplateIdpProfiles `pulumi:"idpProfiles"`
@@ -135,8 +132,7 @@ type gatewaytemplateState struct {
 	OrgId       *string                     `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences map[string]GatewaytemplatePathPreferences `pulumi:"pathPreferences"`
-	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
-	// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
+	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig map[string]GatewaytemplatePortConfig `pulumi:"portConfig"`
 	// Auto assigned if not set
 	RouterId *string `pulumi:"routerId"`
@@ -165,8 +161,7 @@ type GatewaytemplateState struct {
 	DnsSuffixes pulumi.StringArrayInput
 	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes GatewaytemplateExtraRoutesMapInput
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-	// "{{myvar}}")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 GatewaytemplateExtraRoutes6MapInput
 	// Property key is the profile name
 	IdpProfiles GatewaytemplateIdpProfilesMapInput
@@ -182,8 +177,7 @@ type GatewaytemplateState struct {
 	OrgId       pulumi.StringPtrInput
 	// Property key is the path name
 	PathPreferences GatewaytemplatePathPreferencesMapInput
-	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
-	// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
+	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig GatewaytemplatePortConfigMapInput
 	// Auto assigned if not set
 	RouterId pulumi.StringPtrInput
@@ -216,8 +210,7 @@ type gatewaytemplateArgs struct {
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
 	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes map[string]GatewaytemplateExtraRoutes `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-	// "{{myvar}}")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 map[string]GatewaytemplateExtraRoutes6 `pulumi:"extraRoutes6"`
 	// Property key is the profile name
 	IdpProfiles map[string]GatewaytemplateIdpProfiles `pulumi:"idpProfiles"`
@@ -233,8 +226,7 @@ type gatewaytemplateArgs struct {
 	OrgId       string                      `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences map[string]GatewaytemplatePathPreferences `pulumi:"pathPreferences"`
-	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
-	// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
+	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig map[string]GatewaytemplatePortConfig `pulumi:"portConfig"`
 	// Auto assigned if not set
 	RouterId *string `pulumi:"routerId"`
@@ -264,8 +256,7 @@ type GatewaytemplateArgs struct {
 	DnsSuffixes pulumi.StringArrayInput
 	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes GatewaytemplateExtraRoutesMapInput
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-	// "{{myvar}}")
+	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 GatewaytemplateExtraRoutes6MapInput
 	// Property key is the profile name
 	IdpProfiles GatewaytemplateIdpProfilesMapInput
@@ -281,8 +272,7 @@ type GatewaytemplateArgs struct {
 	OrgId       pulumi.StringInput
 	// Property key is the path name
 	PathPreferences GatewaytemplatePathPreferencesMapInput
-	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
-	// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
+	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig GatewaytemplatePortConfigMapInput
 	// Auto assigned if not set
 	RouterId pulumi.StringPtrInput
@@ -418,8 +408,7 @@ func (o GatewaytemplateOutput) ExtraRoutes() GatewaytemplateExtraRoutesMapOutput
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateExtraRoutesMapOutput { return v.ExtraRoutes }).(GatewaytemplateExtraRoutesMapOutput)
 }
 
-// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-// "{{myvar}}")
+// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 func (o GatewaytemplateOutput) ExtraRoutes6() GatewaytemplateExtraRoutes6MapOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateExtraRoutes6MapOutput { return v.ExtraRoutes6 }).(GatewaytemplateExtraRoutes6MapOutput)
 }
@@ -465,8 +454,7 @@ func (o GatewaytemplateOutput) PathPreferences() GatewaytemplatePathPreferencesM
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplatePathPreferencesMapOutput { return v.PathPreferences }).(GatewaytemplatePathPreferencesMapOutput)
 }
 
-// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
-// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
+// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 func (o GatewaytemplateOutput) PortConfig() GatewaytemplatePortConfigMapOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplatePortConfigMapOutput { return v.PortConfig }).(GatewaytemplatePortConfigMapOutput)
 }

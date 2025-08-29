@@ -56,16 +56,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
-     * `device_updown_threshold` is ignored.
+     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
      * 
      */
     @Import(name="apUpdownThreshold")
     private @Nullable Output<Integer> apUpdownThreshold;
 
     /**
-     * @return Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
-     * `device_updown_threshold` is ignored.
+     * @return Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
      * 
      */
     public Optional<Output<Integer>> apUpdownThreshold() {
@@ -88,16 +86,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
-     * upgrade
+     * auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
      * 
      */
     @Import(name="autoUpgradeEsl")
     private @Nullable Output<SettingAutoUpgradeEslArgs> autoUpgradeEsl;
 
     /**
-     * @return auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
-     * upgrade
+     * @return auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
      * 
      */
     public Optional<Output<SettingAutoUpgradeEslArgs>> autoUpgradeEsl() {
@@ -202,16 +198,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
-     * type is desired, use the following
+     * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      * 
      */
     @Import(name="deviceUpdownThreshold")
     private @Nullable Output<Integer> deviceUpdownThreshold;
 
     /**
-     * @return By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
-     * type is desired, use the following
+     * @return By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      * 
      */
     public Optional<Output<Integer>> deviceUpdownThreshold() {
@@ -226,16 +220,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently, we don&#39;t allow multiple
-     * ranges for the same day
+     * **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently, we don&#39;t allow multiple ranges for the same day
      * 
      */
     @Import(name="engagement")
     private @Nullable Output<SettingEngagementArgs> engagement;
 
     /**
-     * @return **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently, we don&#39;t allow multiple
-     * ranges for the same day
+     * @return **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently, we don&#39;t allow multiple ranges for the same day
      * 
      */
     public Optional<Output<SettingEngagementArgs>> engagement() {
@@ -258,16 +250,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
-     * `device_updown_threshold` is ignored.
+     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
      * 
      */
     @Import(name="gatewayUpdownThreshold")
     private @Nullable Output<Integer> gatewayUpdownThreshold;
 
     /**
-     * @return Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
-     * `device_updown_threshold` is ignored.
+     * @return Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
      * 
      */
     public Optional<Output<Integer>> gatewayUpdownThreshold() {
@@ -349,16 +339,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the
-     * existing configuration will be removed.
+     * By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
      * 
      */
     @Import(name="removeExistingConfigs")
     private @Nullable Output<Boolean> removeExistingConfigs;
 
     /**
-     * @return By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the
-     * existing configuration will be removed.
+     * @return By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
      * 
      */
     public Optional<Output<Boolean>> removeExistingConfigs() {
@@ -366,16 +354,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
-     * serial number, battery %, temperature, humidity)
+     * Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name, serial number, battery %, temperature, humidity)
      * 
      */
     @Import(name="reportGatt")
     private @Nullable Output<Boolean> reportGatt;
 
     /**
-     * @return Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
-     * serial number, battery %, temperature, humidity)
+     * @return Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name, serial number, battery %, temperature, humidity)
      * 
      */
     public Optional<Output<Boolean>> reportGatt() {
@@ -413,16 +399,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-     * window, there are more than Y distinct client encountering over X failures
+     * Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
      * 
      */
     @Import(name="simpleAlert")
     private @Nullable Output<SettingSimpleAlertArgs> simpleAlert;
 
     /**
-     * @return Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-     * window, there are more than Y distinct client encountering over X failures
+     * @return Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
      * 
      */
     public Optional<Output<SettingSimpleAlertArgs>> simpleAlert() {
@@ -458,16 +442,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
-     * Org:Setting)
+     * When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
      * 
      */
     @Import(name="sshKeys")
     private @Nullable Output<List<String>> sshKeys;
 
     /**
-     * @return When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
-     * Org:Setting)
+     * @return When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
      * 
      */
     public Optional<Output<List<String>>> sshKeys() {
@@ -482,16 +464,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
-     * `device_updown_threshold` is ignored.
+     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
      * 
      */
     @Import(name="switchUpdownThreshold")
     private @Nullable Output<Integer> switchUpdownThreshold;
 
     /**
-     * @return Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
-     * `device_updown_threshold` is ignored.
+     * @return Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
      * 
      */
     public Optional<Output<Integer>> switchUpdownThreshold() {
@@ -506,14 +486,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+     * Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
      * 
      */
     @Import(name="trackAnonymousDevices")
     private @Nullable Output<Boolean> trackAnonymousDevices;
 
     /**
-     * @return Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+     * @return Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
      * 
      */
     public Optional<Output<Boolean>> trackAnonymousDevices() {
@@ -757,8 +737,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apUpdownThreshold Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
-         * `device_updown_threshold` is ignored.
+         * @param apUpdownThreshold Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
          * 
          * @return builder
          * 
@@ -769,8 +748,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apUpdownThreshold Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
-         * `device_updown_threshold` is ignored.
+         * @param apUpdownThreshold Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
          * 
          * @return builder
          * 
@@ -801,8 +779,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoUpgradeEsl auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
-         * upgrade
+         * @param autoUpgradeEsl auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
          * 
          * @return builder
          * 
@@ -813,8 +790,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoUpgradeEsl auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware
-         * upgrade
+         * @param autoUpgradeEsl auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
          * 
          * @return builder
          * 
@@ -959,8 +935,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceUpdownThreshold By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
-         * type is desired, use the following
+         * @param deviceUpdownThreshold By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
          * 
          * @return builder
          * 
@@ -971,8 +946,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceUpdownThreshold By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device
-         * type is desired, use the following
+         * @param deviceUpdownThreshold By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
          * 
          * @return builder
          * 
@@ -991,8 +965,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engagement **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently, we don&#39;t allow multiple
-         * ranges for the same day
+         * @param engagement **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently, we don&#39;t allow multiple ranges for the same day
          * 
          * @return builder
          * 
@@ -1003,8 +976,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engagement **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently, we don&#39;t allow multiple
-         * ranges for the same day
+         * @param engagement **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently, we don&#39;t allow multiple ranges for the same day
          * 
          * @return builder
          * 
@@ -1035,8 +1007,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayUpdownThreshold Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
-         * `device_updown_threshold` is ignored.
+         * @param gatewayUpdownThreshold Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
          * 
          * @return builder
          * 
@@ -1047,8 +1018,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayUpdownThreshold Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
-         * `device_updown_threshold` is ignored.
+         * @param gatewayUpdownThreshold Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
          * 
          * @return builder
          * 
@@ -1160,8 +1130,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param removeExistingConfigs By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the
-         * existing configuration will be removed.
+         * @param removeExistingConfigs By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
          * 
          * @return builder
          * 
@@ -1172,8 +1141,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param removeExistingConfigs By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the
-         * existing configuration will be removed.
+         * @param removeExistingConfigs By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
          * 
          * @return builder
          * 
@@ -1183,8 +1151,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reportGatt Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
-         * serial number, battery %, temperature, humidity)
+         * @param reportGatt Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name, serial number, battery %, temperature, humidity)
          * 
          * @return builder
          * 
@@ -1195,8 +1162,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reportGatt Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
-         * serial number, battery %, temperature, humidity)
+         * @param reportGatt Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name, serial number, battery %, temperature, humidity)
          * 
          * @return builder
          * 
@@ -1248,8 +1214,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param simpleAlert Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-         * window, there are more than Y distinct client encountering over X failures
+         * @param simpleAlert Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
          * 
          * @return builder
          * 
@@ -1260,8 +1225,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param simpleAlert Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
-         * window, there are more than Y distinct client encountering over X failures
+         * @param simpleAlert Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute window, there are more than Y distinct client encountering over X failures
          * 
          * @return builder
          * 
@@ -1307,8 +1271,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sshKeys When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
-         * Org:Setting)
+         * @param sshKeys When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
          * 
          * @return builder
          * 
@@ -1319,8 +1282,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sshKeys When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
-         * Org:Setting)
+         * @param sshKeys When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
          * 
          * @return builder
          * 
@@ -1330,8 +1292,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sshKeys When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
-         * Org:Setting)
+         * @param sshKeys When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
          * 
          * @return builder
          * 
@@ -1350,8 +1311,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param switchUpdownThreshold Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
-         * `device_updown_threshold` is ignored.
+         * @param switchUpdownThreshold Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
          * 
          * @return builder
          * 
@@ -1362,8 +1322,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param switchUpdownThreshold Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
-         * `device_updown_threshold` is ignored.
+         * @param switchUpdownThreshold Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
          * 
          * @return builder
          * 
@@ -1382,7 +1341,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trackAnonymousDevices Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+         * @param trackAnonymousDevices Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
          * 
          * @return builder
          * 
@@ -1393,7 +1352,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trackAnonymousDevices Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+         * @param trackAnonymousDevices Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
          * 
          * @return builder
          * 

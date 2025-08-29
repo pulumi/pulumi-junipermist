@@ -56,76 +56,78 @@ export class Service extends pulumi.CustomResource {
     /**
      * If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
      */
-    public readonly addresses!: pulumi.Output<string[]>;
+    declare public readonly addresses: pulumi.Output<string[]>;
     /**
      * When `type`==`appCategories`, list of application categories are available through List App Category Definitions
      */
-    public readonly appCategories!: pulumi.Output<string[]>;
+    declare public readonly appCategories: pulumi.Output<string[]>;
     /**
      * When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
      */
-    public readonly appSubcategories!: pulumi.Output<string[]>;
+    declare public readonly appSubcategories: pulumi.Output<string[]>;
     /**
-     * When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-     * /insight/top_app_by-bytes?wired=true
+     * When `type`==`apps`, list of applications are available through:
+     *   * List Applications
+     *   * List Gateway Applications
+     *   * /insight/top_app_by-bytes?wired=true
      */
-    public readonly apps!: pulumi.Output<string[]>;
-    /**
-     * 0 means unlimited, value from 0 to 107374182
-     */
-    public readonly clientLimitDown!: pulumi.Output<number | undefined>;
+    declare public readonly apps: pulumi.Output<string[]>;
     /**
      * 0 means unlimited, value from 0 to 107374182
      */
-    public readonly clientLimitUp!: pulumi.Output<number | undefined>;
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly dscp!: pulumi.Output<string | undefined>;
+    declare public readonly clientLimitDown: pulumi.Output<number | undefined>;
+    /**
+     * 0 means unlimited, value from 0 to 107374182
+     */
+    declare public readonly clientLimitUp: pulumi.Output<number | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly dscp: pulumi.Output<string | undefined>;
     /**
      * enum: `nonRevertible`, `none`, `revertible`
      */
-    public readonly failoverPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly failoverPolicy: pulumi.Output<string | undefined>;
     /**
      * If `type`==`custom`, web filtering
      */
-    public readonly hostnames!: pulumi.Output<string[]>;
-    public readonly maxJitter!: pulumi.Output<string | undefined>;
-    public readonly maxLatency!: pulumi.Output<string | undefined>;
-    public readonly maxLoss!: pulumi.Output<string | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly hostnames: pulumi.Output<string[]>;
+    declare public readonly maxJitter: pulumi.Output<string | undefined>;
+    declare public readonly maxLatency: pulumi.Output<string | undefined>;
+    declare public readonly maxLoss: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * 0 means unlimited, value from 0 to 107374182
      */
-    public readonly serviceLimitDown!: pulumi.Output<number | undefined>;
+    declare public readonly serviceLimitDown: pulumi.Output<number | undefined>;
     /**
      * 0 means unlimited, value from 0 to 107374182
      */
-    public readonly serviceLimitUp!: pulumi.Output<number | undefined>;
+    declare public readonly serviceLimitUp: pulumi.Output<number | undefined>;
     /**
      * Whether to enable measure SLE
      */
-    public readonly sleEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly sleEnabled: pulumi.Output<boolean | undefined>;
     /**
      * When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
      */
-    public readonly specs!: pulumi.Output<outputs.org.ServiceSpec[] | undefined>;
-    public readonly ssrRelaxedTcpStateEnforcement!: pulumi.Output<boolean | undefined>;
+    declare public readonly specs: pulumi.Output<outputs.org.ServiceSpec[] | undefined>;
+    declare public readonly ssrRelaxedTcpStateEnforcement: pulumi.Output<boolean | undefined>;
     /**
      * when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
      */
-    public readonly trafficClass!: pulumi.Output<string | undefined>;
+    declare public readonly trafficClass: pulumi.Output<string | undefined>;
     /**
      * values from List Traffic Types
      */
-    public readonly trafficType!: pulumi.Output<string>;
+    declare public readonly trafficType: pulumi.Output<string>;
     /**
      * enum: `appCategories`, `apps`, `custom`, `urls`
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * When `type`==`urls`, no need for spec as URL can encode the ports being used
      */
-    public readonly urls!: pulumi.Output<string[]>;
+    declare public readonly urls: pulumi.Output<string[]>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -140,59 +142,59 @@ export class Service extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
-            resourceInputs["addresses"] = state ? state.addresses : undefined;
-            resourceInputs["appCategories"] = state ? state.appCategories : undefined;
-            resourceInputs["appSubcategories"] = state ? state.appSubcategories : undefined;
-            resourceInputs["apps"] = state ? state.apps : undefined;
-            resourceInputs["clientLimitDown"] = state ? state.clientLimitDown : undefined;
-            resourceInputs["clientLimitUp"] = state ? state.clientLimitUp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dscp"] = state ? state.dscp : undefined;
-            resourceInputs["failoverPolicy"] = state ? state.failoverPolicy : undefined;
-            resourceInputs["hostnames"] = state ? state.hostnames : undefined;
-            resourceInputs["maxJitter"] = state ? state.maxJitter : undefined;
-            resourceInputs["maxLatency"] = state ? state.maxLatency : undefined;
-            resourceInputs["maxLoss"] = state ? state.maxLoss : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["serviceLimitDown"] = state ? state.serviceLimitDown : undefined;
-            resourceInputs["serviceLimitUp"] = state ? state.serviceLimitUp : undefined;
-            resourceInputs["sleEnabled"] = state ? state.sleEnabled : undefined;
-            resourceInputs["specs"] = state ? state.specs : undefined;
-            resourceInputs["ssrRelaxedTcpStateEnforcement"] = state ? state.ssrRelaxedTcpStateEnforcement : undefined;
-            resourceInputs["trafficClass"] = state ? state.trafficClass : undefined;
-            resourceInputs["trafficType"] = state ? state.trafficType : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["urls"] = state ? state.urls : undefined;
+            resourceInputs["addresses"] = state?.addresses;
+            resourceInputs["appCategories"] = state?.appCategories;
+            resourceInputs["appSubcategories"] = state?.appSubcategories;
+            resourceInputs["apps"] = state?.apps;
+            resourceInputs["clientLimitDown"] = state?.clientLimitDown;
+            resourceInputs["clientLimitUp"] = state?.clientLimitUp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dscp"] = state?.dscp;
+            resourceInputs["failoverPolicy"] = state?.failoverPolicy;
+            resourceInputs["hostnames"] = state?.hostnames;
+            resourceInputs["maxJitter"] = state?.maxJitter;
+            resourceInputs["maxLatency"] = state?.maxLatency;
+            resourceInputs["maxLoss"] = state?.maxLoss;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["serviceLimitDown"] = state?.serviceLimitDown;
+            resourceInputs["serviceLimitUp"] = state?.serviceLimitUp;
+            resourceInputs["sleEnabled"] = state?.sleEnabled;
+            resourceInputs["specs"] = state?.specs;
+            resourceInputs["ssrRelaxedTcpStateEnforcement"] = state?.ssrRelaxedTcpStateEnforcement;
+            resourceInputs["trafficClass"] = state?.trafficClass;
+            resourceInputs["trafficType"] = state?.trafficType;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["urls"] = state?.urls;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["addresses"] = args ? args.addresses : undefined;
-            resourceInputs["appCategories"] = args ? args.appCategories : undefined;
-            resourceInputs["appSubcategories"] = args ? args.appSubcategories : undefined;
-            resourceInputs["apps"] = args ? args.apps : undefined;
-            resourceInputs["clientLimitDown"] = args ? args.clientLimitDown : undefined;
-            resourceInputs["clientLimitUp"] = args ? args.clientLimitUp : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dscp"] = args ? args.dscp : undefined;
-            resourceInputs["failoverPolicy"] = args ? args.failoverPolicy : undefined;
-            resourceInputs["hostnames"] = args ? args.hostnames : undefined;
-            resourceInputs["maxJitter"] = args ? args.maxJitter : undefined;
-            resourceInputs["maxLatency"] = args ? args.maxLatency : undefined;
-            resourceInputs["maxLoss"] = args ? args.maxLoss : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["serviceLimitDown"] = args ? args.serviceLimitDown : undefined;
-            resourceInputs["serviceLimitUp"] = args ? args.serviceLimitUp : undefined;
-            resourceInputs["sleEnabled"] = args ? args.sleEnabled : undefined;
-            resourceInputs["specs"] = args ? args.specs : undefined;
-            resourceInputs["ssrRelaxedTcpStateEnforcement"] = args ? args.ssrRelaxedTcpStateEnforcement : undefined;
-            resourceInputs["trafficClass"] = args ? args.trafficClass : undefined;
-            resourceInputs["trafficType"] = args ? args.trafficType : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["urls"] = args ? args.urls : undefined;
+            resourceInputs["addresses"] = args?.addresses;
+            resourceInputs["appCategories"] = args?.appCategories;
+            resourceInputs["appSubcategories"] = args?.appSubcategories;
+            resourceInputs["apps"] = args?.apps;
+            resourceInputs["clientLimitDown"] = args?.clientLimitDown;
+            resourceInputs["clientLimitUp"] = args?.clientLimitUp;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dscp"] = args?.dscp;
+            resourceInputs["failoverPolicy"] = args?.failoverPolicy;
+            resourceInputs["hostnames"] = args?.hostnames;
+            resourceInputs["maxJitter"] = args?.maxJitter;
+            resourceInputs["maxLatency"] = args?.maxLatency;
+            resourceInputs["maxLoss"] = args?.maxLoss;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["serviceLimitDown"] = args?.serviceLimitDown;
+            resourceInputs["serviceLimitUp"] = args?.serviceLimitUp;
+            resourceInputs["sleEnabled"] = args?.sleEnabled;
+            resourceInputs["specs"] = args?.specs;
+            resourceInputs["ssrRelaxedTcpStateEnforcement"] = args?.ssrRelaxedTcpStateEnforcement;
+            resourceInputs["trafficClass"] = args?.trafficClass;
+            resourceInputs["trafficType"] = args?.trafficType;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["urls"] = args?.urls;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Service.__pulumiType, name, resourceInputs, opts);
@@ -216,8 +218,10 @@ export interface ServiceState {
      */
     appSubcategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-     * /insight/top_app_by-bytes?wired=true
+     * When `type`==`apps`, list of applications are available through:
+     *   * List Applications
+     *   * List Gateway Applications
+     *   * /insight/top_app_by-bytes?wired=true
      */
     apps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -295,8 +299,10 @@ export interface ServiceArgs {
      */
     appSubcategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * When `type`==`apps`, list of applications are available through: * List Applications * List Gateway Applications *
-     * /insight/top_app_by-bytes?wired=true
+     * When `type`==`apps`, list of applications are available through:
+     *   * List Applications
+     *   * List Gateway Applications
+     *   * /insight/top_app_by-bytes?wired=true
      */
     apps?: pulumi.Input<pulumi.Input<string>[]>;
     /**

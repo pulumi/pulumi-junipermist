@@ -54,78 +54,77 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
     /**
      * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
-    public readonly additionalConfigCmds!: pulumi.Output<string[] | undefined>;
-    public readonly bgpConfig!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayBgpConfig} | undefined>;
-    public readonly dhcpdConfig!: pulumi.Output<outputs.org.DeviceprofileGatewayDhcpdConfig | undefined>;
-    public readonly dnsOverride!: pulumi.Output<boolean | undefined>;
+    declare public readonly additionalConfigCmds: pulumi.Output<string[] | undefined>;
+    declare public readonly bgpConfig: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayBgpConfig} | undefined>;
+    declare public readonly dhcpdConfig: pulumi.Output<outputs.org.DeviceprofileGatewayDhcpdConfig | undefined>;
+    declare public readonly dnsOverride: pulumi.Output<boolean | undefined>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    public readonly dnsServers!: pulumi.Output<string[] | undefined>;
+    declare public readonly dnsServers: pulumi.Output<string[] | undefined>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    public readonly dnsSuffixes!: pulumi.Output<string[] | undefined>;
+    declare public readonly dnsSuffixes: pulumi.Output<string[] | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
-    public readonly extraRoutes!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayExtraRoutes} | undefined>;
+    declare public readonly extraRoutes: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayExtraRoutes} | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-     * "{{myvar}}")
+     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
-    public readonly extraRoutes6!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayExtraRoutes6} | undefined>;
+    declare public readonly extraRoutes6: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayExtraRoutes6} | undefined>;
     /**
      * Property key is the profile name
      */
-    public readonly idpProfiles!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayIdpProfiles} | undefined>;
+    declare public readonly idpProfiles: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayIdpProfiles} | undefined>;
     /**
      * Property key is the network name
      */
-    public readonly ipConfigs!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayIpConfigs} | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly networks!: pulumi.Output<outputs.org.DeviceprofileGatewayNetwork[] | undefined>;
-    public readonly ntpOverride!: pulumi.Output<boolean | undefined>;
+    declare public readonly ipConfigs: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayIpConfigs} | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly networks: pulumi.Output<outputs.org.DeviceprofileGatewayNetwork[] | undefined>;
+    declare public readonly ntpOverride: pulumi.Output<boolean | undefined>;
     /**
      * List of NTP servers specific to this device. By default, those in Site Settings will be used
      */
-    public readonly ntpServers!: pulumi.Output<string[] | undefined>;
+    declare public readonly ntpServers: pulumi.Output<string[] | undefined>;
     /**
      * Out-of-band (vme/em0/fxp0) IP config
      */
-    public readonly oobIpConfig!: pulumi.Output<outputs.org.DeviceprofileGatewayOobIpConfig>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly oobIpConfig: pulumi.Output<outputs.org.DeviceprofileGatewayOobIpConfig>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Property key is the path name
      */
-    public readonly pathPreferences!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayPathPreferences} | undefined>;
+    declare public readonly pathPreferences: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayPathPreferences} | undefined>;
     /**
      * Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
      */
-    public readonly portConfig!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayPortConfig} | undefined>;
+    declare public readonly portConfig: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayPortConfig} | undefined>;
     /**
      * Auto assigned if not set
      */
-    public readonly routerId!: pulumi.Output<string | undefined>;
+    declare public readonly routerId: pulumi.Output<string | undefined>;
     /**
      * Property key is the routing policy name
      */
-    public readonly routingPolicies!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayRoutingPolicies} | undefined>;
-    public readonly servicePolicies!: pulumi.Output<outputs.org.DeviceprofileGatewayServicePolicy[] | undefined>;
+    declare public readonly routingPolicies: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayRoutingPolicies} | undefined>;
+    declare public readonly servicePolicies: pulumi.Output<outputs.org.DeviceprofileGatewayServicePolicy[] | undefined>;
     /**
      * Property key is the tunnel name
      */
-    public readonly tunnelConfigs!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayTunnelConfigs} | undefined>;
-    public readonly tunnelProviderOptions!: pulumi.Output<outputs.org.DeviceprofileGatewayTunnelProviderOptions | undefined>;
+    declare public readonly tunnelConfigs: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayTunnelConfigs} | undefined>;
+    declare public readonly tunnelProviderOptions: pulumi.Output<outputs.org.DeviceprofileGatewayTunnelProviderOptions | undefined>;
     /**
      * Device Type. enum: `gateway`
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
-    public readonly vrfConfig!: pulumi.Output<outputs.org.DeviceprofileGatewayVrfConfig | undefined>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
+    declare public readonly vrfConfig: pulumi.Output<outputs.org.DeviceprofileGatewayVrfConfig | undefined>;
     /**
      * Property key is the network name
      */
-    public readonly vrfInstances!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayVrfInstances} | undefined>;
+    declare public readonly vrfInstances: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayVrfInstances} | undefined>;
 
     /**
      * Create a DeviceprofileGateway resource with the given unique name, arguments, and options.
@@ -140,62 +139,62 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DeviceprofileGatewayState | undefined;
-            resourceInputs["additionalConfigCmds"] = state ? state.additionalConfigCmds : undefined;
-            resourceInputs["bgpConfig"] = state ? state.bgpConfig : undefined;
-            resourceInputs["dhcpdConfig"] = state ? state.dhcpdConfig : undefined;
-            resourceInputs["dnsOverride"] = state ? state.dnsOverride : undefined;
-            resourceInputs["dnsServers"] = state ? state.dnsServers : undefined;
-            resourceInputs["dnsSuffixes"] = state ? state.dnsSuffixes : undefined;
-            resourceInputs["extraRoutes"] = state ? state.extraRoutes : undefined;
-            resourceInputs["extraRoutes6"] = state ? state.extraRoutes6 : undefined;
-            resourceInputs["idpProfiles"] = state ? state.idpProfiles : undefined;
-            resourceInputs["ipConfigs"] = state ? state.ipConfigs : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networks"] = state ? state.networks : undefined;
-            resourceInputs["ntpOverride"] = state ? state.ntpOverride : undefined;
-            resourceInputs["ntpServers"] = state ? state.ntpServers : undefined;
-            resourceInputs["oobIpConfig"] = state ? state.oobIpConfig : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["pathPreferences"] = state ? state.pathPreferences : undefined;
-            resourceInputs["portConfig"] = state ? state.portConfig : undefined;
-            resourceInputs["routerId"] = state ? state.routerId : undefined;
-            resourceInputs["routingPolicies"] = state ? state.routingPolicies : undefined;
-            resourceInputs["servicePolicies"] = state ? state.servicePolicies : undefined;
-            resourceInputs["tunnelConfigs"] = state ? state.tunnelConfigs : undefined;
-            resourceInputs["tunnelProviderOptions"] = state ? state.tunnelProviderOptions : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["vrfConfig"] = state ? state.vrfConfig : undefined;
-            resourceInputs["vrfInstances"] = state ? state.vrfInstances : undefined;
+            resourceInputs["additionalConfigCmds"] = state?.additionalConfigCmds;
+            resourceInputs["bgpConfig"] = state?.bgpConfig;
+            resourceInputs["dhcpdConfig"] = state?.dhcpdConfig;
+            resourceInputs["dnsOverride"] = state?.dnsOverride;
+            resourceInputs["dnsServers"] = state?.dnsServers;
+            resourceInputs["dnsSuffixes"] = state?.dnsSuffixes;
+            resourceInputs["extraRoutes"] = state?.extraRoutes;
+            resourceInputs["extraRoutes6"] = state?.extraRoutes6;
+            resourceInputs["idpProfiles"] = state?.idpProfiles;
+            resourceInputs["ipConfigs"] = state?.ipConfigs;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networks"] = state?.networks;
+            resourceInputs["ntpOverride"] = state?.ntpOverride;
+            resourceInputs["ntpServers"] = state?.ntpServers;
+            resourceInputs["oobIpConfig"] = state?.oobIpConfig;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["pathPreferences"] = state?.pathPreferences;
+            resourceInputs["portConfig"] = state?.portConfig;
+            resourceInputs["routerId"] = state?.routerId;
+            resourceInputs["routingPolicies"] = state?.routingPolicies;
+            resourceInputs["servicePolicies"] = state?.servicePolicies;
+            resourceInputs["tunnelConfigs"] = state?.tunnelConfigs;
+            resourceInputs["tunnelProviderOptions"] = state?.tunnelProviderOptions;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["vrfConfig"] = state?.vrfConfig;
+            resourceInputs["vrfInstances"] = state?.vrfInstances;
         } else {
             const args = argsOrState as DeviceprofileGatewayArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["additionalConfigCmds"] = args ? args.additionalConfigCmds : undefined;
-            resourceInputs["bgpConfig"] = args ? args.bgpConfig : undefined;
-            resourceInputs["dhcpdConfig"] = args ? args.dhcpdConfig : undefined;
-            resourceInputs["dnsOverride"] = args ? args.dnsOverride : undefined;
-            resourceInputs["dnsServers"] = args ? args.dnsServers : undefined;
-            resourceInputs["dnsSuffixes"] = args ? args.dnsSuffixes : undefined;
-            resourceInputs["extraRoutes"] = args ? args.extraRoutes : undefined;
-            resourceInputs["extraRoutes6"] = args ? args.extraRoutes6 : undefined;
-            resourceInputs["idpProfiles"] = args ? args.idpProfiles : undefined;
-            resourceInputs["ipConfigs"] = args ? args.ipConfigs : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networks"] = args ? args.networks : undefined;
-            resourceInputs["ntpOverride"] = args ? args.ntpOverride : undefined;
-            resourceInputs["ntpServers"] = args ? args.ntpServers : undefined;
-            resourceInputs["oobIpConfig"] = args ? args.oobIpConfig : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["pathPreferences"] = args ? args.pathPreferences : undefined;
-            resourceInputs["portConfig"] = args ? args.portConfig : undefined;
-            resourceInputs["routerId"] = args ? args.routerId : undefined;
-            resourceInputs["routingPolicies"] = args ? args.routingPolicies : undefined;
-            resourceInputs["servicePolicies"] = args ? args.servicePolicies : undefined;
-            resourceInputs["tunnelConfigs"] = args ? args.tunnelConfigs : undefined;
-            resourceInputs["tunnelProviderOptions"] = args ? args.tunnelProviderOptions : undefined;
-            resourceInputs["vrfConfig"] = args ? args.vrfConfig : undefined;
-            resourceInputs["vrfInstances"] = args ? args.vrfInstances : undefined;
+            resourceInputs["additionalConfigCmds"] = args?.additionalConfigCmds;
+            resourceInputs["bgpConfig"] = args?.bgpConfig;
+            resourceInputs["dhcpdConfig"] = args?.dhcpdConfig;
+            resourceInputs["dnsOverride"] = args?.dnsOverride;
+            resourceInputs["dnsServers"] = args?.dnsServers;
+            resourceInputs["dnsSuffixes"] = args?.dnsSuffixes;
+            resourceInputs["extraRoutes"] = args?.extraRoutes;
+            resourceInputs["extraRoutes6"] = args?.extraRoutes6;
+            resourceInputs["idpProfiles"] = args?.idpProfiles;
+            resourceInputs["ipConfigs"] = args?.ipConfigs;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networks"] = args?.networks;
+            resourceInputs["ntpOverride"] = args?.ntpOverride;
+            resourceInputs["ntpServers"] = args?.ntpServers;
+            resourceInputs["oobIpConfig"] = args?.oobIpConfig;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["pathPreferences"] = args?.pathPreferences;
+            resourceInputs["portConfig"] = args?.portConfig;
+            resourceInputs["routerId"] = args?.routerId;
+            resourceInputs["routingPolicies"] = args?.routingPolicies;
+            resourceInputs["servicePolicies"] = args?.servicePolicies;
+            resourceInputs["tunnelConfigs"] = args?.tunnelConfigs;
+            resourceInputs["tunnelProviderOptions"] = args?.tunnelProviderOptions;
+            resourceInputs["vrfConfig"] = args?.vrfConfig;
+            resourceInputs["vrfInstances"] = args?.vrfInstances;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -227,8 +226,7 @@ export interface DeviceprofileGatewayState {
      */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayExtraRoutes>}>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-     * "{{myvar}}")
+     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayExtraRoutes6>}>;
     /**
@@ -308,8 +306,7 @@ export interface DeviceprofileGatewayArgs {
      */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayExtraRoutes>}>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-     * "{{myvar}}")
+     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayExtraRoutes6>}>;
     /**

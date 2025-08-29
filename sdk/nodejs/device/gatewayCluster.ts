@@ -78,8 +78,8 @@ export class GatewayCluster extends pulumi.CustomResource {
     /**
      * When replacing a node, either mac has to remain the same as existing cluster
      */
-    public readonly nodes!: pulumi.Output<outputs.device.GatewayClusterNode[]>;
-    public readonly siteId!: pulumi.Output<string>;
+    declare public readonly nodes: pulumi.Output<outputs.device.GatewayClusterNode[]>;
+    declare public readonly siteId: pulumi.Output<string>;
 
     /**
      * Create a GatewayCluster resource with the given unique name, arguments, and options.
@@ -94,18 +94,18 @@ export class GatewayCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayClusterState | undefined;
-            resourceInputs["nodes"] = state ? state.nodes : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
+            resourceInputs["nodes"] = state?.nodes;
+            resourceInputs["siteId"] = state?.siteId;
         } else {
             const args = argsOrState as GatewayClusterArgs | undefined;
-            if ((!args || args.nodes === undefined) && !opts.urn) {
+            if (args?.nodes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodes'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["nodes"] = args ? args.nodes : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
+            resourceInputs["nodes"] = args?.nodes;
+            resourceInputs["siteId"] = args?.siteId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GatewayCluster.__pulumiType, name, resourceInputs, opts);

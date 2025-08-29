@@ -59,8 +59,7 @@ class GatewayArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-               "{{myvar}}")
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIdpProfilesArgs']]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIpConfigsArgs']]] ip_configs: Property key is the network name
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
@@ -226,8 +225,7 @@ class GatewayArgs:
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]]]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-        "{{myvar}}")
+        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         """
         return pulumi.get(self, "extra_routes6")
 
@@ -531,8 +529,7 @@ class _GatewayState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-               "{{myvar}}")
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIdpProfilesArgs']]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIpConfigsArgs']]] ip_configs: Property key is the network name
         :param pulumi.Input[_builtins.str] mac: Device MAC address
@@ -711,8 +708,7 @@ class _GatewayState:
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]]]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-        "{{myvar}}")
+        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         """
         return pulumi.get(self, "extra_routes6")
 
@@ -1146,8 +1142,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutesArgs', 'GatewayExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutes6Args', 'GatewayExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-               "{{myvar}}")
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutes6Args', 'GatewayExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIdpProfilesArgs', 'GatewayIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIpConfigsArgs', 'GatewayIpConfigsArgsDict']]]] ip_configs: Property key is the network name
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
@@ -1370,8 +1365,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutesArgs', 'GatewayExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutes6Args', 'GatewayExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-               "{{myvar}}")
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutes6Args', 'GatewayExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIdpProfilesArgs', 'GatewayIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIpConfigsArgs', 'GatewayIpConfigsArgsDict']]]] ip_configs: Property key is the network name
         :param pulumi.Input[_builtins.str] mac: Device MAC address
@@ -1487,8 +1481,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.GatewayExtraRoutes6']]]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-        "{{myvar}}")
+        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         """
         return pulumi.get(self, "extra_routes6")
 

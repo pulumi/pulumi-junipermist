@@ -53,90 +53,88 @@ export class Networktemplate extends pulumi.CustomResource {
         return obj['__pulumiType'] === Networktemplate.__pulumiType;
     }
 
-    public readonly aclPolicies!: pulumi.Output<outputs.site.NetworktemplateAclPolicy[] | undefined>;
+    declare public readonly aclPolicies: pulumi.Output<outputs.site.NetworktemplateAclPolicy[] | undefined>;
     /**
      * ACL Tags to identify traffic source or destination. Key name is the tag name
      */
-    public readonly aclTags!: pulumi.Output<{[key: string]: outputs.site.NetworktemplateAclTags} | undefined>;
+    declare public readonly aclTags: pulumi.Output<{[key: string]: outputs.site.NetworktemplateAclTags} | undefined>;
     /**
      * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
-    public readonly additionalConfigCmds!: pulumi.Output<string[] | undefined>;
-    public readonly autoUpgradeLinecard!: pulumi.Output<boolean>;
+    declare public readonly additionalConfigCmds: pulumi.Output<string[] | undefined>;
+    declare public readonly autoUpgradeLinecard: pulumi.Output<boolean>;
     /**
      * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
      */
-    public readonly defaultPortUsage!: pulumi.Output<string | undefined>;
-    public readonly dhcpSnooping!: pulumi.Output<outputs.site.NetworktemplateDhcpSnooping | undefined>;
+    declare public readonly defaultPortUsage: pulumi.Output<string | undefined>;
+    declare public readonly dhcpSnooping: pulumi.Output<outputs.site.NetworktemplateDhcpSnooping | undefined>;
     /**
      * If some system-default port usages are not desired - namely, ap / iot / uplink
      */
-    public readonly disabledSystemDefinedPortUsages!: pulumi.Output<string[] | undefined>;
+    declare public readonly disabledSystemDefinedPortUsages: pulumi.Output<string[] | undefined>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    public readonly dnsServers!: pulumi.Output<string[]>;
+    declare public readonly dnsServers: pulumi.Output<string[]>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    public readonly dnsSuffixes!: pulumi.Output<string[]>;
+    declare public readonly dnsSuffixes: pulumi.Output<string[]>;
     /**
      * Property key is the destination CIDR (e.g. "10.0.0.0/8")
      */
-    public readonly extraRoutes!: pulumi.Output<{[key: string]: outputs.site.NetworktemplateExtraRoutes} | undefined>;
+    declare public readonly extraRoutes: pulumi.Output<{[key: string]: outputs.site.NetworktemplateExtraRoutes} | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
      */
-    public readonly extraRoutes6!: pulumi.Output<{[key: string]: outputs.site.NetworktemplateExtraRoutes6} | undefined>;
+    declare public readonly extraRoutes6: pulumi.Output<{[key: string]: outputs.site.NetworktemplateExtraRoutes6} | undefined>;
     /**
      * Enable mistNac to use RadSec
      */
-    public readonly mistNac!: pulumi.Output<outputs.site.NetworktemplateMistNac | undefined>;
+    declare public readonly mistNac: pulumi.Output<outputs.site.NetworktemplateMistNac | undefined>;
     /**
      * Property key is network name
      */
-    public readonly networks!: pulumi.Output<{[key: string]: outputs.site.NetworktemplateNetworks} | undefined>;
+    declare public readonly networks: pulumi.Output<{[key: string]: outputs.site.NetworktemplateNetworks} | undefined>;
     /**
      * List of NTP servers
      */
-    public readonly ntpServers!: pulumi.Output<string[]>;
+    declare public readonly ntpServers: pulumi.Output<string[]>;
     /**
      * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
      */
-    public readonly ospfAreas!: pulumi.Output<{[key: string]: outputs.site.NetworktemplateOspfAreas} | undefined>;
+    declare public readonly ospfAreas: pulumi.Output<{[key: string]: outputs.site.NetworktemplateOspfAreas} | undefined>;
     /**
-     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
-     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 mirroring ports is allowed
+     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      */
-    public readonly portMirroring!: pulumi.Output<{[key: string]: outputs.site.NetworktemplatePortMirroring} | undefined>;
+    declare public readonly portMirroring: pulumi.Output<{[key: string]: outputs.site.NetworktemplatePortMirroring} | undefined>;
     /**
      * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
      */
-    public readonly portUsages!: pulumi.Output<{[key: string]: outputs.site.NetworktemplatePortUsages} | undefined>;
+    declare public readonly portUsages: pulumi.Output<{[key: string]: outputs.site.NetworktemplatePortUsages} | undefined>;
     /**
      * Junos Radius config
      */
-    public readonly radiusConfig!: pulumi.Output<outputs.site.NetworktemplateRadiusConfig | undefined>;
-    public readonly remoteSyslog!: pulumi.Output<outputs.site.NetworktemplateRemoteSyslog | undefined>;
+    declare public readonly radiusConfig: pulumi.Output<outputs.site.NetworktemplateRadiusConfig | undefined>;
+    declare public readonly remoteSyslog: pulumi.Output<outputs.site.NetworktemplateRemoteSyslog | undefined>;
     /**
      * Unique ID of the object instance in the Mist Organization
      */
-    public readonly siteId!: pulumi.Output<string>;
-    public readonly snmpConfig!: pulumi.Output<outputs.site.NetworktemplateSnmpConfig | undefined>;
+    declare public readonly siteId: pulumi.Output<string>;
+    declare public readonly snmpConfig: pulumi.Output<outputs.site.NetworktemplateSnmpConfig | undefined>;
     /**
      * Defines custom switch configuration based on different criteria
      */
-    public readonly switchMatching!: pulumi.Output<outputs.site.NetworktemplateSwitchMatching | undefined>;
+    declare public readonly switchMatching: pulumi.Output<outputs.site.NetworktemplateSwitchMatching | undefined>;
     /**
      * Switch settings
      */
-    public readonly switchMgmt!: pulumi.Output<outputs.site.NetworktemplateSwitchMgmt | undefined>;
-    public readonly vrfConfig!: pulumi.Output<outputs.site.NetworktemplateVrfConfig | undefined>;
+    declare public readonly switchMgmt: pulumi.Output<outputs.site.NetworktemplateSwitchMgmt | undefined>;
+    declare public readonly vrfConfig: pulumi.Output<outputs.site.NetworktemplateVrfConfig | undefined>;
     /**
      * Property key is the network name
      */
-    public readonly vrfInstances!: pulumi.Output<{[key: string]: outputs.site.NetworktemplateVrfInstances} | undefined>;
+    declare public readonly vrfInstances: pulumi.Output<{[key: string]: outputs.site.NetworktemplateVrfInstances} | undefined>;
 
     /**
      * Create a Networktemplate resource with the given unique name, arguments, and options.
@@ -151,61 +149,61 @@ export class Networktemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworktemplateState | undefined;
-            resourceInputs["aclPolicies"] = state ? state.aclPolicies : undefined;
-            resourceInputs["aclTags"] = state ? state.aclTags : undefined;
-            resourceInputs["additionalConfigCmds"] = state ? state.additionalConfigCmds : undefined;
-            resourceInputs["autoUpgradeLinecard"] = state ? state.autoUpgradeLinecard : undefined;
-            resourceInputs["defaultPortUsage"] = state ? state.defaultPortUsage : undefined;
-            resourceInputs["dhcpSnooping"] = state ? state.dhcpSnooping : undefined;
-            resourceInputs["disabledSystemDefinedPortUsages"] = state ? state.disabledSystemDefinedPortUsages : undefined;
-            resourceInputs["dnsServers"] = state ? state.dnsServers : undefined;
-            resourceInputs["dnsSuffixes"] = state ? state.dnsSuffixes : undefined;
-            resourceInputs["extraRoutes"] = state ? state.extraRoutes : undefined;
-            resourceInputs["extraRoutes6"] = state ? state.extraRoutes6 : undefined;
-            resourceInputs["mistNac"] = state ? state.mistNac : undefined;
-            resourceInputs["networks"] = state ? state.networks : undefined;
-            resourceInputs["ntpServers"] = state ? state.ntpServers : undefined;
-            resourceInputs["ospfAreas"] = state ? state.ospfAreas : undefined;
-            resourceInputs["portMirroring"] = state ? state.portMirroring : undefined;
-            resourceInputs["portUsages"] = state ? state.portUsages : undefined;
-            resourceInputs["radiusConfig"] = state ? state.radiusConfig : undefined;
-            resourceInputs["remoteSyslog"] = state ? state.remoteSyslog : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["snmpConfig"] = state ? state.snmpConfig : undefined;
-            resourceInputs["switchMatching"] = state ? state.switchMatching : undefined;
-            resourceInputs["switchMgmt"] = state ? state.switchMgmt : undefined;
-            resourceInputs["vrfConfig"] = state ? state.vrfConfig : undefined;
-            resourceInputs["vrfInstances"] = state ? state.vrfInstances : undefined;
+            resourceInputs["aclPolicies"] = state?.aclPolicies;
+            resourceInputs["aclTags"] = state?.aclTags;
+            resourceInputs["additionalConfigCmds"] = state?.additionalConfigCmds;
+            resourceInputs["autoUpgradeLinecard"] = state?.autoUpgradeLinecard;
+            resourceInputs["defaultPortUsage"] = state?.defaultPortUsage;
+            resourceInputs["dhcpSnooping"] = state?.dhcpSnooping;
+            resourceInputs["disabledSystemDefinedPortUsages"] = state?.disabledSystemDefinedPortUsages;
+            resourceInputs["dnsServers"] = state?.dnsServers;
+            resourceInputs["dnsSuffixes"] = state?.dnsSuffixes;
+            resourceInputs["extraRoutes"] = state?.extraRoutes;
+            resourceInputs["extraRoutes6"] = state?.extraRoutes6;
+            resourceInputs["mistNac"] = state?.mistNac;
+            resourceInputs["networks"] = state?.networks;
+            resourceInputs["ntpServers"] = state?.ntpServers;
+            resourceInputs["ospfAreas"] = state?.ospfAreas;
+            resourceInputs["portMirroring"] = state?.portMirroring;
+            resourceInputs["portUsages"] = state?.portUsages;
+            resourceInputs["radiusConfig"] = state?.radiusConfig;
+            resourceInputs["remoteSyslog"] = state?.remoteSyslog;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["snmpConfig"] = state?.snmpConfig;
+            resourceInputs["switchMatching"] = state?.switchMatching;
+            resourceInputs["switchMgmt"] = state?.switchMgmt;
+            resourceInputs["vrfConfig"] = state?.vrfConfig;
+            resourceInputs["vrfInstances"] = state?.vrfInstances;
         } else {
             const args = argsOrState as NetworktemplateArgs | undefined;
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["aclPolicies"] = args ? args.aclPolicies : undefined;
-            resourceInputs["aclTags"] = args ? args.aclTags : undefined;
-            resourceInputs["additionalConfigCmds"] = args ? args.additionalConfigCmds : undefined;
-            resourceInputs["autoUpgradeLinecard"] = args ? args.autoUpgradeLinecard : undefined;
-            resourceInputs["defaultPortUsage"] = args ? args.defaultPortUsage : undefined;
-            resourceInputs["dhcpSnooping"] = args ? args.dhcpSnooping : undefined;
-            resourceInputs["disabledSystemDefinedPortUsages"] = args ? args.disabledSystemDefinedPortUsages : undefined;
-            resourceInputs["dnsServers"] = args ? args.dnsServers : undefined;
-            resourceInputs["dnsSuffixes"] = args ? args.dnsSuffixes : undefined;
-            resourceInputs["extraRoutes"] = args ? args.extraRoutes : undefined;
-            resourceInputs["extraRoutes6"] = args ? args.extraRoutes6 : undefined;
-            resourceInputs["mistNac"] = args ? args.mistNac : undefined;
-            resourceInputs["networks"] = args ? args.networks : undefined;
-            resourceInputs["ntpServers"] = args ? args.ntpServers : undefined;
-            resourceInputs["ospfAreas"] = args ? args.ospfAreas : undefined;
-            resourceInputs["portMirroring"] = args ? args.portMirroring : undefined;
-            resourceInputs["portUsages"] = args ? args.portUsages : undefined;
-            resourceInputs["radiusConfig"] = args ? args.radiusConfig : undefined;
-            resourceInputs["remoteSyslog"] = args ? args.remoteSyslog : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["snmpConfig"] = args ? args.snmpConfig : undefined;
-            resourceInputs["switchMatching"] = args ? args.switchMatching : undefined;
-            resourceInputs["switchMgmt"] = args ? args.switchMgmt : undefined;
-            resourceInputs["vrfConfig"] = args ? args.vrfConfig : undefined;
-            resourceInputs["vrfInstances"] = args ? args.vrfInstances : undefined;
+            resourceInputs["aclPolicies"] = args?.aclPolicies;
+            resourceInputs["aclTags"] = args?.aclTags;
+            resourceInputs["additionalConfigCmds"] = args?.additionalConfigCmds;
+            resourceInputs["autoUpgradeLinecard"] = args?.autoUpgradeLinecard;
+            resourceInputs["defaultPortUsage"] = args?.defaultPortUsage;
+            resourceInputs["dhcpSnooping"] = args?.dhcpSnooping;
+            resourceInputs["disabledSystemDefinedPortUsages"] = args?.disabledSystemDefinedPortUsages;
+            resourceInputs["dnsServers"] = args?.dnsServers;
+            resourceInputs["dnsSuffixes"] = args?.dnsSuffixes;
+            resourceInputs["extraRoutes"] = args?.extraRoutes;
+            resourceInputs["extraRoutes6"] = args?.extraRoutes6;
+            resourceInputs["mistNac"] = args?.mistNac;
+            resourceInputs["networks"] = args?.networks;
+            resourceInputs["ntpServers"] = args?.ntpServers;
+            resourceInputs["ospfAreas"] = args?.ospfAreas;
+            resourceInputs["portMirroring"] = args?.portMirroring;
+            resourceInputs["portUsages"] = args?.portUsages;
+            resourceInputs["radiusConfig"] = args?.radiusConfig;
+            resourceInputs["remoteSyslog"] = args?.remoteSyslog;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["snmpConfig"] = args?.snmpConfig;
+            resourceInputs["switchMatching"] = args?.switchMatching;
+            resourceInputs["switchMgmt"] = args?.switchMgmt;
+            resourceInputs["vrfConfig"] = args?.vrfConfig;
+            resourceInputs["vrfInstances"] = args?.vrfInstances;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Networktemplate.__pulumiType, name, resourceInputs, opts);
@@ -268,9 +266,7 @@ export interface NetworktemplateState {
      */
     ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateOspfAreas>}>;
     /**
-     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
-     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 mirroring ports is allowed
+     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortMirroring>}>;
     /**
@@ -358,9 +354,7 @@ export interface NetworktemplateArgs {
      */
     ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateOspfAreas>}>;
     /**
-     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
-     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-     * maximum 4 mirroring ports is allowed
+     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortMirroring>}>;
     /**

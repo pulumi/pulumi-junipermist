@@ -73,56 +73,56 @@ export class Psk extends pulumi.CustomResource {
     /**
      * email to send psk expiring notifications to
      */
-    public readonly email!: pulumi.Output<string | undefined>;
+    declare public readonly email: pulumi.Output<string | undefined>;
     /**
      * Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
      */
-    public readonly expireTime!: pulumi.Output<number>;
+    declare public readonly expireTime: pulumi.Output<number>;
     /**
      * Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
      */
-    public readonly expiryNotificationTime!: pulumi.Output<number | undefined>;
+    declare public readonly expiryNotificationTime: pulumi.Output<number | undefined>;
     /**
      * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      */
-    public readonly mac!: pulumi.Output<string | undefined>;
+    declare public readonly mac: pulumi.Output<string | undefined>;
     /**
      * If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
      */
-    public readonly macs!: pulumi.Output<string[] | undefined>;
+    declare public readonly macs: pulumi.Output<string[] | undefined>;
     /**
      * For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
      */
-    public readonly maxUsage!: pulumi.Output<number | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly note!: pulumi.Output<string | undefined>;
+    declare public readonly maxUsage: pulumi.Output<number | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly note: pulumi.Output<string | undefined>;
     /**
      * If set to true, reminder notification will be sent when psk is about to expire
      */
-    public readonly notifyExpiry!: pulumi.Output<boolean>;
+    declare public readonly notifyExpiry: pulumi.Output<boolean>;
     /**
      * If set to true, notification will be sent when psk is created or edited
      */
-    public readonly notifyOnCreateOrEdit!: pulumi.Output<boolean | undefined>;
+    declare public readonly notifyOnCreateOrEdit: pulumi.Output<boolean | undefined>;
     /**
      * previous passphrase of the PSK if it has been rotated
      */
-    public readonly oldPassphrase!: pulumi.Output<string | undefined>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly oldPassphrase: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * passphrase of the PSK (8-63 character or 64 in hex)
      */
-    public readonly passphrase!: pulumi.Output<string>;
-    public readonly role!: pulumi.Output<string | undefined>;
+    declare public readonly passphrase: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string | undefined>;
     /**
      * SSID this PSK should be applicable to
      */
-    public readonly ssid!: pulumi.Output<string>;
+    declare public readonly ssid: pulumi.Output<string>;
     /**
      * enum: `macs`, `multi`, `single`
      */
-    public readonly usage!: pulumi.Output<string>;
-    public readonly vlanId!: pulumi.Output<string | undefined>;
+    declare public readonly usage: pulumi.Output<string>;
+    declare public readonly vlanId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Psk resource with the given unique name, arguments, and options.
@@ -137,51 +137,51 @@ export class Psk extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PskState | undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["expiryNotificationTime"] = state ? state.expiryNotificationTime : undefined;
-            resourceInputs["mac"] = state ? state.mac : undefined;
-            resourceInputs["macs"] = state ? state.macs : undefined;
-            resourceInputs["maxUsage"] = state ? state.maxUsage : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["note"] = state ? state.note : undefined;
-            resourceInputs["notifyExpiry"] = state ? state.notifyExpiry : undefined;
-            resourceInputs["notifyOnCreateOrEdit"] = state ? state.notifyOnCreateOrEdit : undefined;
-            resourceInputs["oldPassphrase"] = state ? state.oldPassphrase : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["passphrase"] = state ? state.passphrase : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["ssid"] = state ? state.ssid : undefined;
-            resourceInputs["usage"] = state ? state.usage : undefined;
-            resourceInputs["vlanId"] = state ? state.vlanId : undefined;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["expiryNotificationTime"] = state?.expiryNotificationTime;
+            resourceInputs["mac"] = state?.mac;
+            resourceInputs["macs"] = state?.macs;
+            resourceInputs["maxUsage"] = state?.maxUsage;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["note"] = state?.note;
+            resourceInputs["notifyExpiry"] = state?.notifyExpiry;
+            resourceInputs["notifyOnCreateOrEdit"] = state?.notifyOnCreateOrEdit;
+            resourceInputs["oldPassphrase"] = state?.oldPassphrase;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["passphrase"] = state?.passphrase;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["ssid"] = state?.ssid;
+            resourceInputs["usage"] = state?.usage;
+            resourceInputs["vlanId"] = state?.vlanId;
         } else {
             const args = argsOrState as PskArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.passphrase === undefined) && !opts.urn) {
+            if (args?.passphrase === undefined && !opts.urn) {
                 throw new Error("Missing required property 'passphrase'");
             }
-            if ((!args || args.ssid === undefined) && !opts.urn) {
+            if (args?.ssid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ssid'");
             }
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["expireTime"] = args ? args.expireTime : undefined;
-            resourceInputs["expiryNotificationTime"] = args ? args.expiryNotificationTime : undefined;
-            resourceInputs["mac"] = args ? args.mac : undefined;
-            resourceInputs["macs"] = args ? args.macs : undefined;
-            resourceInputs["maxUsage"] = args ? args.maxUsage : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["note"] = args ? args.note : undefined;
-            resourceInputs["notifyExpiry"] = args ? args.notifyExpiry : undefined;
-            resourceInputs["notifyOnCreateOrEdit"] = args ? args.notifyOnCreateOrEdit : undefined;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["expireTime"] = args?.expireTime;
+            resourceInputs["expiryNotificationTime"] = args?.expiryNotificationTime;
+            resourceInputs["mac"] = args?.mac;
+            resourceInputs["macs"] = args?.macs;
+            resourceInputs["maxUsage"] = args?.maxUsage;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["note"] = args?.note;
+            resourceInputs["notifyExpiry"] = args?.notifyExpiry;
+            resourceInputs["notifyOnCreateOrEdit"] = args?.notifyOnCreateOrEdit;
             resourceInputs["oldPassphrase"] = args?.oldPassphrase ? pulumi.secret(args.oldPassphrase) : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["orgId"] = args?.orgId;
             resourceInputs["passphrase"] = args?.passphrase ? pulumi.secret(args.passphrase) : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["ssid"] = args ? args.ssid : undefined;
-            resourceInputs["usage"] = args ? args.usage : undefined;
-            resourceInputs["vlanId"] = args ? args.vlanId : undefined;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["ssid"] = args?.ssid;
+            resourceInputs["usage"] = args?.usage;
+            resourceInputs["vlanId"] = args?.vlanId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["oldPassphrase", "passphrase"] };

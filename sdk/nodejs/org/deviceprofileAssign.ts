@@ -53,9 +53,9 @@ export class DeviceprofileAssign extends pulumi.CustomResource {
         return obj['__pulumiType'] === DeviceprofileAssign.__pulumiType;
     }
 
-    public readonly deviceprofileId!: pulumi.Output<string>;
-    public readonly macs!: pulumi.Output<string[]>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly deviceprofileId: pulumi.Output<string>;
+    declare public readonly macs: pulumi.Output<string[]>;
+    declare public readonly orgId: pulumi.Output<string>;
 
     /**
      * Create a DeviceprofileAssign resource with the given unique name, arguments, and options.
@@ -70,23 +70,23 @@ export class DeviceprofileAssign extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DeviceprofileAssignState | undefined;
-            resourceInputs["deviceprofileId"] = state ? state.deviceprofileId : undefined;
-            resourceInputs["macs"] = state ? state.macs : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["deviceprofileId"] = state?.deviceprofileId;
+            resourceInputs["macs"] = state?.macs;
+            resourceInputs["orgId"] = state?.orgId;
         } else {
             const args = argsOrState as DeviceprofileAssignArgs | undefined;
-            if ((!args || args.deviceprofileId === undefined) && !opts.urn) {
+            if (args?.deviceprofileId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deviceprofileId'");
             }
-            if ((!args || args.macs === undefined) && !opts.urn) {
+            if (args?.macs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'macs'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["deviceprofileId"] = args ? args.deviceprofileId : undefined;
-            resourceInputs["macs"] = args ? args.macs : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["deviceprofileId"] = args?.deviceprofileId;
+            resourceInputs["macs"] = args?.macs;
+            resourceInputs["orgId"] = args?.orgId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DeviceprofileAssign.__pulumiType, name, resourceInputs, opts);

@@ -59,20 +59,20 @@ export class Base extends pulumi.CustomResource {
         return obj['__pulumiType'] === Base.__pulumiType;
     }
 
-    public readonly alarmtemplateId!: pulumi.Output<string | undefined>;
-    public readonly allowMist!: pulumi.Output<boolean>;
-    public /*out*/ readonly mspId!: pulumi.Output<string>;
+    declare public readonly alarmtemplateId: pulumi.Output<string | undefined>;
+    declare public readonly allowMist: pulumi.Output<boolean>;
+    declare public /*out*/ readonly mspId: pulumi.Output<string>;
     /**
      * logo uploaded by the MSP with advanced tier, only present if provided
      */
-    public /*out*/ readonly mspLogoUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly mspLogoUrl: pulumi.Output<string>;
     /**
      * Name of the msp the org belongs to
      */
-    public /*out*/ readonly mspName!: pulumi.Output<string>;
-    public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly orggroupIds!: pulumi.Output<string[]>;
-    public readonly sessionExpiry!: pulumi.Output<number>;
+    declare public /*out*/ readonly mspName: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly orggroupIds: pulumi.Output<string[]>;
+    declare public readonly sessionExpiry: pulumi.Output<number>;
 
     /**
      * Create a Base resource with the given unique name, arguments, and options.
@@ -87,20 +87,20 @@ export class Base extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BaseState | undefined;
-            resourceInputs["alarmtemplateId"] = state ? state.alarmtemplateId : undefined;
-            resourceInputs["allowMist"] = state ? state.allowMist : undefined;
-            resourceInputs["mspId"] = state ? state.mspId : undefined;
-            resourceInputs["mspLogoUrl"] = state ? state.mspLogoUrl : undefined;
-            resourceInputs["mspName"] = state ? state.mspName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orggroupIds"] = state ? state.orggroupIds : undefined;
-            resourceInputs["sessionExpiry"] = state ? state.sessionExpiry : undefined;
+            resourceInputs["alarmtemplateId"] = state?.alarmtemplateId;
+            resourceInputs["allowMist"] = state?.allowMist;
+            resourceInputs["mspId"] = state?.mspId;
+            resourceInputs["mspLogoUrl"] = state?.mspLogoUrl;
+            resourceInputs["mspName"] = state?.mspName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orggroupIds"] = state?.orggroupIds;
+            resourceInputs["sessionExpiry"] = state?.sessionExpiry;
         } else {
             const args = argsOrState as BaseArgs | undefined;
-            resourceInputs["alarmtemplateId"] = args ? args.alarmtemplateId : undefined;
-            resourceInputs["allowMist"] = args ? args.allowMist : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["sessionExpiry"] = args ? args.sessionExpiry : undefined;
+            resourceInputs["alarmtemplateId"] = args?.alarmtemplateId;
+            resourceInputs["allowMist"] = args?.allowMist;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["sessionExpiry"] = args?.sessionExpiry;
             resourceInputs["mspId"] = undefined /*out*/;
             resourceInputs["mspLogoUrl"] = undefined /*out*/;
             resourceInputs["mspName"] = undefined /*out*/;

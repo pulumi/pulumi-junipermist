@@ -54,8 +54,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<Outputs.SwitchDhcpdConfig?> DhcpdConfig { get; private set; } = null!;
 
         /// <summary>
-        /// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-        /// `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+        /// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         /// </summary>
         [Output("disableAutoConfig")]
         public Output<bool> DisableAutoConfig { get; private set; } = null!;
@@ -100,8 +99,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<Outputs.SwitchIpConfig?> IpConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
-        /// "ge-0/0/0-10")
+        /// Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
         /// </summary>
         [Output("localPortConfig")]
         public Output<ImmutableDictionary<string, Outputs.SwitchLocalPortConfig>?> LocalPortConfig { get; private set; } = null!;
@@ -113,8 +111,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<string> Mac { get; private set; } = null!;
 
         /// <summary>
-        /// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-        /// the adopted switch/gateway to be managed/configured by Mist.
+        /// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
         /// </summary>
         [Output("managed")]
         public Output<bool> Managed { get; private set; } = null!;
@@ -156,8 +153,9 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableArray<string>> NtpServers { get; private set; } = null!;
 
         /// <summary>
-        /// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-        /// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+        /// Switch OOB IP Config:
+        ///   - If HA configuration: key parameter will be nodeX (eg: node1)
+        ///   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
         /// </summary>
         [Output("oobIpConfig")]
         public Output<Outputs.SwitchOobIpConfig?> OobIpConfig { get; private set; } = null!;
@@ -187,16 +185,13 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableDictionary<string, Outputs.SwitchPortConfig>?> PortConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-        /// port_usage without having to create a new port_usage.
+        /// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
         /// </summary>
         [Output("portConfigOverwrite")]
         public Output<ImmutableDictionary<string, Outputs.SwitchPortConfigOverwrite>?> PortConfigOverwrite { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-        /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-        /// maximum 4 mirroring ports is allowed
+        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         /// </summary>
         [Output("portMirroring")]
         public Output<ImmutableDictionary<string, Outputs.SwitchPortMirroring>?> PortMirroring { get; private set; } = null!;
@@ -386,8 +381,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.SwitchDhcpdConfigArgs>? DhcpdConfig { get; set; }
 
         /// <summary>
-        /// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-        /// `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+        /// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         /// </summary>
         [Input("disableAutoConfig")]
         public Input<bool>? DisableAutoConfig { get; set; }
@@ -450,8 +444,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchLocalPortConfigArgs>? _localPortConfig;
 
         /// <summary>
-        /// Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
-        /// "ge-0/0/0-10")
+        /// Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
         /// </summary>
         public InputMap<Inputs.SwitchLocalPortConfigArgs> LocalPortConfig
         {
@@ -460,8 +453,7 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-        /// the adopted switch/gateway to be managed/configured by Mist.
+        /// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
         /// </summary>
         [Input("managed")]
         public Input<bool>? Managed { get; set; }
@@ -509,8 +501,9 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-        /// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+        /// Switch OOB IP Config:
+        ///   - If HA configuration: key parameter will be nodeX (eg: node1)
+        ///   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
         /// </summary>
         [Input("oobIpConfig")]
         public Input<Inputs.SwitchOobIpConfigArgs>? OobIpConfig { get; set; }
@@ -558,8 +551,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchPortConfigOverwriteArgs>? _portConfigOverwrite;
 
         /// <summary>
-        /// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-        /// port_usage without having to create a new port_usage.
+        /// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
         /// </summary>
         public InputMap<Inputs.SwitchPortConfigOverwriteArgs> PortConfigOverwrite
         {
@@ -571,9 +563,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchPortMirroringArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-        /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-        /// maximum 4 mirroring ports is allowed
+        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         /// </summary>
         public InputMap<Inputs.SwitchPortMirroringArgs> PortMirroring
         {
@@ -733,8 +723,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.SwitchDhcpdConfigGetArgs>? DhcpdConfig { get; set; }
 
         /// <summary>
-        /// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to
-        /// `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+        /// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         /// </summary>
         [Input("disableAutoConfig")]
         public Input<bool>? DisableAutoConfig { get; set; }
@@ -806,8 +795,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchLocalPortConfigGetArgs>? _localPortConfig;
 
         /// <summary>
-        /// Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
-        /// "ge-0/0/0-10")
+        /// Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
         /// </summary>
         public InputMap<Inputs.SwitchLocalPortConfigGetArgs> LocalPortConfig
         {
@@ -822,8 +810,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables
-        /// the adopted switch/gateway to be managed/configured by Mist.
+        /// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
         /// </summary>
         [Input("managed")]
         public Input<bool>? Managed { get; set; }
@@ -877,8 +864,9 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
-        /// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+        /// Switch OOB IP Config:
+        ///   - If HA configuration: key parameter will be nodeX (eg: node1)
+        ///   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
         /// </summary>
         [Input("oobIpConfig")]
         public Input<Inputs.SwitchOobIpConfigGetArgs>? OobIpConfig { get; set; }
@@ -929,8 +917,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchPortConfigOverwriteGetArgs>? _portConfigOverwrite;
 
         /// <summary>
-        /// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the
-        /// port_usage without having to create a new port_usage.
+        /// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
         /// </summary>
         public InputMap<Inputs.SwitchPortConfigOverwriteGetArgs> PortConfigOverwrite
         {
@@ -942,9 +929,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchPortMirroringGetArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
-        /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
-        /// maximum 4 mirroring ports is allowed
+        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         /// </summary>
         public InputMap<Inputs.SwitchPortMirroringGetArgs> PortMirroring
         {

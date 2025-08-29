@@ -53,15 +53,13 @@ class GatewaytemplateArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-               "{{myvar}}")
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]] ip_configs: Property key is the network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
         :param pulumi.Input['GatewaytemplateOobIpConfigArgs'] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePathPreferencesArgs']]] path_preferences: Property key is the path name
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
-               "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
@@ -208,8 +206,7 @@ class GatewaytemplateArgs:
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-        "{{myvar}}")
+        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         """
         return pulumi.get(self, "extra_routes6")
 
@@ -308,8 +305,7 @@ class GatewaytemplateArgs:
     @pulumi.getter(name="portConfig")
     def port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]]]:
         """
-        Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
-        "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
+        Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         """
         return pulumi.get(self, "port_config")
 
@@ -440,15 +436,13 @@ class _GatewaytemplateState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-               "{{myvar}}")
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]] ip_configs: Property key is the network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
         :param pulumi.Input['GatewaytemplateOobIpConfigArgs'] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePathPreferencesArgs']]] path_preferences: Property key is the path name
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
-               "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
@@ -587,8 +581,7 @@ class _GatewaytemplateState:
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-        "{{myvar}}")
+        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         """
         return pulumi.get(self, "extra_routes6")
 
@@ -696,8 +689,7 @@ class _GatewaytemplateState:
     @pulumi.getter(name="portConfig")
     def port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]]]:
         """
-        Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
-        "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
+        Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         """
         return pulumi.get(self, "port_config")
 
@@ -847,15 +839,13 @@ class Gatewaytemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-               "{{myvar}}")
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]] ip_configs: Property key is the network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
         :param pulumi.Input[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict']]]] path_preferences: Property key is the path name
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
-               "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
@@ -1008,15 +998,13 @@ class Gatewaytemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-               "{{myvar}}")
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]] ip_configs: Property key is the network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
         :param pulumi.Input[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict']]]] path_preferences: Property key is the path name
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
-               "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
@@ -1106,8 +1094,7 @@ class Gatewaytemplate(pulumi.CustomResource):
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.GatewaytemplateExtraRoutes6']]]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-        "{{myvar}}")
+        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         """
         return pulumi.get(self, "extra_routes6")
 
@@ -1175,8 +1162,7 @@ class Gatewaytemplate(pulumi.CustomResource):
     @pulumi.getter(name="portConfig")
     def port_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.GatewaytemplatePortConfig']]]:
         """
-        Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
-        "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
+        Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         """
         return pulumi.get(self, "port_config")
 

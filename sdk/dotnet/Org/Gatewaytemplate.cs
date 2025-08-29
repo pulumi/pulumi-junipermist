@@ -61,8 +61,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplateExtraRoutes>?> ExtraRoutes { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-        /// "{{myvar}}")
+        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         /// </summary>
         [Output("extraRoutes6")]
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplateExtraRoutes6>?> ExtraRoutes6 { get; private set; } = null!;
@@ -110,8 +109,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplatePathPreferences>?> PathPreferences { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
-        /// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
+        /// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         /// </summary>
         [Output("portConfig")]
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplatePortConfig>?> PortConfig { get; private set; } = null!;
@@ -268,8 +266,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplateExtraRoutes6Args>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-        /// "{{myvar}}")
+        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         /// </summary>
         public InputMap<Inputs.GatewaytemplateExtraRoutes6Args> ExtraRoutes6
         {
@@ -352,8 +349,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplatePortConfigArgs>? _portConfig;
 
         /// <summary>
-        /// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
-        /// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
+        /// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         /// </summary>
         public InputMap<Inputs.GatewaytemplatePortConfigArgs> PortConfig
         {
@@ -497,8 +493,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplateExtraRoutes6GetArgs>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g.
-        /// "{{myvar}}")
+        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         /// </summary>
         public InputMap<Inputs.GatewaytemplateExtraRoutes6GetArgs> ExtraRoutes6
         {
@@ -581,8 +576,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplatePortConfigGetArgs>? _portConfig;
 
         /// <summary>
-        /// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
-        /// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
+        /// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         /// </summary>
         public InputMap<Inputs.GatewaytemplatePortConfigGetArgs> PortConfig
         {

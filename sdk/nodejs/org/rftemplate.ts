@@ -49,46 +49,46 @@ export class Rftemplate extends pulumi.CustomResource {
         return obj['__pulumiType'] === Rftemplate.__pulumiType;
     }
 
-    public readonly antGain24!: pulumi.Output<number>;
-    public readonly antGain5!: pulumi.Output<number>;
-    public readonly antGain6!: pulumi.Output<number>;
+    declare public readonly antGain24: pulumi.Output<number>;
+    declare public readonly antGain5: pulumi.Output<number>;
+    declare public readonly antGain6: pulumi.Output<number>;
     /**
      * Radio Band AP settings
      */
-    public readonly band24!: pulumi.Output<outputs.org.RftemplateBand24 | undefined>;
+    declare public readonly band24: pulumi.Output<outputs.org.RftemplateBand24 | undefined>;
     /**
      * enum: `24`, `5`, `6`, `auto`
      */
-    public readonly band24Usage!: pulumi.Output<string | undefined>;
+    declare public readonly band24Usage: pulumi.Output<string | undefined>;
     /**
      * Radio Band AP settings
      */
-    public readonly band5!: pulumi.Output<outputs.org.RftemplateBand5 | undefined>;
+    declare public readonly band5: pulumi.Output<outputs.org.RftemplateBand5 | undefined>;
     /**
      * Radio Band AP settings
      */
-    public readonly band5On24Radio!: pulumi.Output<outputs.org.RftemplateBand5On24Radio | undefined>;
+    declare public readonly band5On24Radio: pulumi.Output<outputs.org.RftemplateBand5On24Radio | undefined>;
     /**
      * Radio Band AP settings
      */
-    public readonly band6!: pulumi.Output<outputs.org.RftemplateBand6 | undefined>;
+    declare public readonly band6: pulumi.Output<outputs.org.RftemplateBand6 | undefined>;
     /**
      * Optional, country code to use. If specified, this gets applied to all sites using the RF Template
      */
-    public readonly countryCode!: pulumi.Output<string | undefined>;
+    declare public readonly countryCode: pulumi.Output<string | undefined>;
     /**
      * overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
      */
-    public readonly modelSpecific!: pulumi.Output<{[key: string]: outputs.org.RftemplateModelSpecific} | undefined>;
+    declare public readonly modelSpecific: pulumi.Output<{[key: string]: outputs.org.RftemplateModelSpecific} | undefined>;
     /**
      * The name of the RF template
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Whether scanning radio is enabled
      */
-    public readonly scanningEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly scanningEnabled: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Rftemplate resource with the given unique name, arguments, and options.
@@ -103,37 +103,37 @@ export class Rftemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RftemplateState | undefined;
-            resourceInputs["antGain24"] = state ? state.antGain24 : undefined;
-            resourceInputs["antGain5"] = state ? state.antGain5 : undefined;
-            resourceInputs["antGain6"] = state ? state.antGain6 : undefined;
-            resourceInputs["band24"] = state ? state.band24 : undefined;
-            resourceInputs["band24Usage"] = state ? state.band24Usage : undefined;
-            resourceInputs["band5"] = state ? state.band5 : undefined;
-            resourceInputs["band5On24Radio"] = state ? state.band5On24Radio : undefined;
-            resourceInputs["band6"] = state ? state.band6 : undefined;
-            resourceInputs["countryCode"] = state ? state.countryCode : undefined;
-            resourceInputs["modelSpecific"] = state ? state.modelSpecific : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["scanningEnabled"] = state ? state.scanningEnabled : undefined;
+            resourceInputs["antGain24"] = state?.antGain24;
+            resourceInputs["antGain5"] = state?.antGain5;
+            resourceInputs["antGain6"] = state?.antGain6;
+            resourceInputs["band24"] = state?.band24;
+            resourceInputs["band24Usage"] = state?.band24Usage;
+            resourceInputs["band5"] = state?.band5;
+            resourceInputs["band5On24Radio"] = state?.band5On24Radio;
+            resourceInputs["band6"] = state?.band6;
+            resourceInputs["countryCode"] = state?.countryCode;
+            resourceInputs["modelSpecific"] = state?.modelSpecific;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["scanningEnabled"] = state?.scanningEnabled;
         } else {
             const args = argsOrState as RftemplateArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["antGain24"] = args ? args.antGain24 : undefined;
-            resourceInputs["antGain5"] = args ? args.antGain5 : undefined;
-            resourceInputs["antGain6"] = args ? args.antGain6 : undefined;
-            resourceInputs["band24"] = args ? args.band24 : undefined;
-            resourceInputs["band24Usage"] = args ? args.band24Usage : undefined;
-            resourceInputs["band5"] = args ? args.band5 : undefined;
-            resourceInputs["band5On24Radio"] = args ? args.band5On24Radio : undefined;
-            resourceInputs["band6"] = args ? args.band6 : undefined;
-            resourceInputs["countryCode"] = args ? args.countryCode : undefined;
-            resourceInputs["modelSpecific"] = args ? args.modelSpecific : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["scanningEnabled"] = args ? args.scanningEnabled : undefined;
+            resourceInputs["antGain24"] = args?.antGain24;
+            resourceInputs["antGain5"] = args?.antGain5;
+            resourceInputs["antGain6"] = args?.antGain6;
+            resourceInputs["band24"] = args?.band24;
+            resourceInputs["band24Usage"] = args?.band24Usage;
+            resourceInputs["band5"] = args?.band5;
+            resourceInputs["band5On24Radio"] = args?.band5On24Radio;
+            resourceInputs["band6"] = args?.band6;
+            resourceInputs["countryCode"] = args?.countryCode;
+            resourceInputs["modelSpecific"] = args?.modelSpecific;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["scanningEnabled"] = args?.scanningEnabled;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Rftemplate.__pulumiType, name, resourceInputs, opts);
