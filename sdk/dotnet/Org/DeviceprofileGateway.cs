@@ -132,6 +132,12 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableArray<Outputs.DeviceprofileGatewayServicePolicy>> ServicePolicies { get; private set; } = null!;
 
         /// <summary>
+        /// additional CLI commands to append to the generated SSR config. **Note**: no check is done
+        /// </summary>
+        [Output("ssrAdditionalConfigCmds")]
+        public Output<ImmutableArray<string>> SsrAdditionalConfigCmds { get; private set; } = null!;
+
+        /// <summary>
         /// Property key is the tunnel name
         /// </summary>
         [Output("tunnelConfigs")]
@@ -385,6 +391,18 @@ namespace Pulumi.JuniperMist.Org
             set => _servicePolicies = value;
         }
 
+        [Input("ssrAdditionalConfigCmds")]
+        private InputList<string>? _ssrAdditionalConfigCmds;
+
+        /// <summary>
+        /// additional CLI commands to append to the generated SSR config. **Note**: no check is done
+        /// </summary>
+        public InputList<string> SsrAdditionalConfigCmds
+        {
+            get => _ssrAdditionalConfigCmds ?? (_ssrAdditionalConfigCmds = new InputList<string>());
+            set => _ssrAdditionalConfigCmds = value;
+        }
+
         [Input("tunnelConfigs")]
         private InputMap<Inputs.DeviceprofileGatewayTunnelConfigsArgs>? _tunnelConfigs;
 
@@ -604,6 +622,18 @@ namespace Pulumi.JuniperMist.Org
         {
             get => _servicePolicies ?? (_servicePolicies = new InputList<Inputs.DeviceprofileGatewayServicePolicyGetArgs>());
             set => _servicePolicies = value;
+        }
+
+        [Input("ssrAdditionalConfigCmds")]
+        private InputList<string>? _ssrAdditionalConfigCmds;
+
+        /// <summary>
+        /// additional CLI commands to append to the generated SSR config. **Note**: no check is done
+        /// </summary>
+        public InputList<string> SsrAdditionalConfigCmds
+        {
+            get => _ssrAdditionalConfigCmds ?? (_ssrAdditionalConfigCmds = new InputList<string>());
+            set => _ssrAdditionalConfigCmds = value;
         }
 
         [Input("tunnelConfigs")]

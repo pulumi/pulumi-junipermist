@@ -286,6 +286,21 @@ public final class DeviceprofileGatewayState extends com.pulumi.resources.Resour
     }
 
     /**
+     * additional CLI commands to append to the generated SSR config. **Note**: no check is done
+     * 
+     */
+    @Import(name="ssrAdditionalConfigCmds")
+    private @Nullable Output<List<String>> ssrAdditionalConfigCmds;
+
+    /**
+     * @return additional CLI commands to append to the generated SSR config. **Note**: no check is done
+     * 
+     */
+    public Optional<Output<List<String>>> ssrAdditionalConfigCmds() {
+        return Optional.ofNullable(this.ssrAdditionalConfigCmds);
+    }
+
+    /**
      * Property key is the tunnel name
      * 
      */
@@ -368,6 +383,7 @@ public final class DeviceprofileGatewayState extends com.pulumi.resources.Resour
         this.routerId = $.routerId;
         this.routingPolicies = $.routingPolicies;
         this.servicePolicies = $.servicePolicies;
+        this.ssrAdditionalConfigCmds = $.ssrAdditionalConfigCmds;
         this.tunnelConfigs = $.tunnelConfigs;
         this.tunnelProviderOptions = $.tunnelProviderOptions;
         this.type = $.type;
@@ -784,6 +800,37 @@ public final class DeviceprofileGatewayState extends com.pulumi.resources.Resour
 
         public Builder servicePolicies(DeviceprofileGatewayServicePolicyArgs... servicePolicies) {
             return servicePolicies(List.of(servicePolicies));
+        }
+
+        /**
+         * @param ssrAdditionalConfigCmds additional CLI commands to append to the generated SSR config. **Note**: no check is done
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ssrAdditionalConfigCmds(@Nullable Output<List<String>> ssrAdditionalConfigCmds) {
+            $.ssrAdditionalConfigCmds = ssrAdditionalConfigCmds;
+            return this;
+        }
+
+        /**
+         * @param ssrAdditionalConfigCmds additional CLI commands to append to the generated SSR config. **Note**: no check is done
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ssrAdditionalConfigCmds(List<String> ssrAdditionalConfigCmds) {
+            return ssrAdditionalConfigCmds(Output.of(ssrAdditionalConfigCmds));
+        }
+
+        /**
+         * @param ssrAdditionalConfigCmds additional CLI commands to append to the generated SSR config. **Note**: no check is done
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ssrAdditionalConfigCmds(String... ssrAdditionalConfigCmds) {
+            return ssrAdditionalConfigCmds(List.of(ssrAdditionalConfigCmds));
         }
 
         /**

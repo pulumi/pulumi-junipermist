@@ -287,6 +287,20 @@ public class Gatewaytemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.servicePolicies);
     }
     /**
+     * additional CLI commands to append to the generated SSR config. **Note**: no check is done
+     * 
+     */
+    @Export(name="ssrAdditionalConfigCmds", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> ssrAdditionalConfigCmds;
+
+    /**
+     * @return additional CLI commands to append to the generated SSR config. **Note**: no check is done
+     * 
+     */
+    public Output<Optional<List<String>>> ssrAdditionalConfigCmds() {
+        return Codegen.optional(this.ssrAdditionalConfigCmds);
+    }
+    /**
      * Property key is the tunnel name
      * 
      */

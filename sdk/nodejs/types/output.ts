@@ -388,11 +388,11 @@ export namespace device {
         /**
          * If `type`==`static`
          */
-        dns: string[];
+        dns?: string[];
         /**
          * Required if `type`==`static`
          */
-        dnsSuffixes: string[];
+        dnsSuffixes?: string[];
         /**
          * Required if `type`==`static`
          */
@@ -4749,7 +4749,7 @@ export namespace device {
          * - `type`==`mac`
          * - `type`==`staticGbp` if from matching mac
          */
-        macs: string[];
+        macs?: string[];
         /**
          * If:
          *   * `type`==`mac` (optional. default is `any`)
@@ -4780,7 +4780,7 @@ export namespace device {
          * - `type`==`resource` (optional. default is `any`)
          * - `type`==`staticGbp` if from matching subnet
          */
-        subnets: string[];
+        subnets?: string[];
         /**
          * enum: 
          *   * `any`: matching anything not identified
@@ -5220,7 +5220,7 @@ export namespace device {
         /**
          * Required if `authType`==`md5`. Property key is the key number
          */
-        authKeys: {[key: string]: string};
+        authKeys?: {[key: string]: string};
         /**
          * Required if `authType`==`password`, the password, max length is 8
          */
@@ -5228,7 +5228,7 @@ export namespace device {
         /**
          * auth type. enum: `md5`, `none`, `password`
          */
-        authType: string;
+        authType?: string;
         bfdMinimumInterval?: number;
         deadInterval?: number;
         exportPolicy?: string;
@@ -5242,7 +5242,7 @@ export namespace device {
         /**
          * By default, we'll re-advertise all learned OSPF routes toward overlay
          */
-        noReadvertiseToOverlay: boolean;
+        noReadvertiseToOverlay?: boolean;
         /**
          * Whether to send OSPF-Hello
          */
@@ -6474,11 +6474,11 @@ export namespace org {
         /**
          * If `type`==`static`
          */
-        dns: string[];
+        dns?: string[];
         /**
          * Required if `type`==`static`
          */
-        dnsSuffixes: string[];
+        dnsSuffixes?: string[];
         /**
          * Required if `type`==`static`
          */
@@ -12656,7 +12656,7 @@ export namespace org {
          * - `type`==`mac`
          * - `type`==`staticGbp` if from matching mac
          */
-        macs: string[];
+        macs?: string[];
         /**
          * If:
          *   * `type`==`mac` (optional. default is `any`)
@@ -12687,7 +12687,7 @@ export namespace org {
          * - `type`==`resource` (optional. default is `any`)
          * - `type`==`staticGbp` if from matching subnet
          */
-        subnets: string[];
+        subnets?: string[];
         /**
          * enum: 
          *   * `any`: matching anything not identified
@@ -12815,7 +12815,7 @@ export namespace org {
         /**
          * Required if `authType`==`md5`. Property key is the key number
          */
-        authKeys: {[key: string]: string};
+        authKeys?: {[key: string]: string};
         /**
          * Required if `authType`==`password`, the password, max length is 8
          */
@@ -12823,7 +12823,7 @@ export namespace org {
         /**
          * auth type. enum: `md5`, `none`, `password`
          */
-        authType: string;
+        authType?: string;
         bfdMinimumInterval?: number;
         deadInterval?: number;
         exportPolicy?: string;
@@ -12837,7 +12837,7 @@ export namespace org {
         /**
          * By default, we'll re-advertise all learned OSPF routes toward overlay
          */
-        noReadvertiseToOverlay: boolean;
+        noReadvertiseToOverlay?: boolean;
         /**
          * Whether to send OSPF-Hello
          */
@@ -13825,7 +13825,7 @@ export namespace org {
         /**
          * For RFTemplates. List of channels, null or empty array means auto
          */
-        channels: number[];
+        channels?: number[];
         /**
          * Whether to disable the radio
          */
@@ -13837,15 +13837,15 @@ export namespace org {
         /**
          * When power=0, max tx power to use, HW-specific values will be used if not set
          */
-        powerMax: number;
+        powerMax?: number;
         /**
          * When power=0, min tx power to use, HW-specific values will be used if not set
          */
-        powerMin: number;
+        powerMin?: number;
         /**
          * enum: `auto`, `long`, `short`
          */
-        preamble: string;
+        preamble?: string;
     }
 
     export interface RftemplateBand5 {
@@ -13862,7 +13862,7 @@ export namespace org {
         /**
          * For RFTemplates. List of channels, null or empty array means auto
          */
-        channels: number[];
+        channels?: number[];
         /**
          * Whether to disable the radio
          */
@@ -13874,15 +13874,15 @@ export namespace org {
         /**
          * When power=0, max tx power to use, HW-specific values will be used if not set
          */
-        powerMax: number;
+        powerMax?: number;
         /**
          * When power=0, min tx power to use, HW-specific values will be used if not set
          */
-        powerMin: number;
+        powerMin?: number;
         /**
          * enum: `auto`, `long`, `short`
          */
-        preamble: string;
+        preamble?: string;
     }
 
     export interface RftemplateBand5On24Radio {
@@ -13936,7 +13936,7 @@ export namespace org {
         /**
          * For RFTemplates. List of channels, null or empty array means auto
          */
-        channels: number[];
+        channels?: number[];
         /**
          * Whether to disable the radio
          */
@@ -13948,15 +13948,15 @@ export namespace org {
         /**
          * When power=0, max tx power to use, HW-specific values will be used if not set
          */
-        powerMax: number;
+        powerMax?: number;
         /**
          * When power=0, min tx power to use, HW-specific values will be used if not set
          */
-        powerMin: number;
+        powerMin?: number;
         /**
          * enum: `auto`, `long`, `short`
          */
-        preamble: string;
+        preamble?: string;
         /**
          * For 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed, and we'll fall back to Low Power Indoor if AFC failed
          */
@@ -13964,9 +13964,9 @@ export namespace org {
     }
 
     export interface RftemplateModelSpecific {
-        antGain24: number;
-        antGain5: number;
-        antGain6: number;
+        antGain24?: number;
+        antGain5?: number;
+        antGain6?: number;
         /**
          * Radio Band AP settings
          */
@@ -13999,15 +13999,15 @@ export namespace org {
         /**
          * channel width for the 2.4GHz band. enum: `20`, `40`
          */
-        bandwidth: number;
+        bandwidth?: number;
         /**
          * For RFTemplates. List of channels, null or empty array means auto
          */
-        channels: number[];
+        channels?: number[];
         /**
          * Whether to disable the radio
          */
-        disabled: boolean;
+        disabled?: boolean;
         /**
          * tx power of the radio, null or 0 means auto, when power*min=power*max=power=0 to indicate power=0
          */
@@ -14015,20 +14015,20 @@ export namespace org {
         /**
          * When power=0, max tx power to use, HW-specific values will be used if not set
          */
-        powerMax: number;
+        powerMax?: number;
         /**
          * When power=0, min tx power to use, HW-specific values will be used if not set
          */
-        powerMin: number;
+        powerMin?: number;
         /**
          * enum: `auto`, `long`, `short`
          */
-        preamble: string;
+        preamble?: string;
     }
 
     export interface RftemplateModelSpecificBand5 {
         allowRrmDisable: boolean;
-        antGain: number;
+        antGain?: number;
         /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
@@ -14036,15 +14036,15 @@ export namespace org {
         /**
          * channel width for the 5GHz band. enum: `20`, `40`, `80`
          */
-        bandwidth: number;
+        bandwidth?: number;
         /**
          * For RFTemplates. List of channels, null or empty array means auto
          */
-        channels: number[];
+        channels?: number[];
         /**
          * Whether to disable the radio
          */
-        disabled: boolean;
+        disabled?: boolean;
         /**
          * Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
          */
@@ -14052,15 +14052,15 @@ export namespace org {
         /**
          * When power=0, max tx power to use, HW-specific values will be used if not set
          */
-        powerMax: number;
+        powerMax?: number;
         /**
          * When power=0, min tx power to use, HW-specific values will be used if not set
          */
-        powerMin: number;
+        powerMin?: number;
         /**
          * enum: `auto`, `long`, `short`
          */
-        preamble: string;
+        preamble?: string;
     }
 
     export interface RftemplateModelSpecificBand5On24Radio {
@@ -14102,7 +14102,7 @@ export namespace org {
 
     export interface RftemplateModelSpecificBand6 {
         allowRrmDisable: boolean;
-        antGain: number;
+        antGain?: number;
         /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
@@ -14110,15 +14110,15 @@ export namespace org {
         /**
          * channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
          */
-        bandwidth: number;
+        bandwidth?: number;
         /**
          * For RFTemplates. List of channels, null or empty array means auto
          */
-        channels: number[];
+        channels?: number[];
         /**
          * Whether to disable the radio
          */
-        disabled: boolean;
+        disabled?: boolean;
         /**
          * Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
          */
@@ -14126,19 +14126,19 @@ export namespace org {
         /**
          * When power=0, max tx power to use, HW-specific values will be used if not set
          */
-        powerMax: number;
+        powerMax?: number;
         /**
          * When power=0, min tx power to use, HW-specific values will be used if not set
          */
-        powerMin: number;
+        powerMin?: number;
         /**
          * enum: `auto`, `long`, `short`
          */
-        preamble: string;
+        preamble?: string;
         /**
          * For 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed, and we'll fall back to Low Power Indoor if AFC failed
          */
-        standardPower?: boolean;
+        standardPower: boolean;
     }
 
     export interface ServiceSpec {
@@ -17675,7 +17675,7 @@ export namespace site {
          * - `type`==`mac`
          * - `type`==`staticGbp` if from matching mac
          */
-        macs: string[];
+        macs?: string[];
         /**
          * If:
          *   * `type`==`mac` (optional. default is `any`)
@@ -17706,7 +17706,7 @@ export namespace site {
          * - `type`==`resource` (optional. default is `any`)
          * - `type`==`staticGbp` if from matching subnet
          */
-        subnets: string[];
+        subnets?: string[];
         /**
          * enum: 
          *   * `any`: matching anything not identified
@@ -17834,7 +17834,7 @@ export namespace site {
         /**
          * Required if `authType`==`md5`. Property key is the key number
          */
-        authKeys: {[key: string]: string};
+        authKeys?: {[key: string]: string};
         /**
          * Required if `authType`==`password`, the password, max length is 8
          */
@@ -17842,7 +17842,7 @@ export namespace site {
         /**
          * auth type. enum: `md5`, `none`, `password`
          */
-        authType: string;
+        authType?: string;
         bfdMinimumInterval?: number;
         deadInterval?: number;
         exportPolicy?: string;
@@ -17856,7 +17856,7 @@ export namespace site {
         /**
          * By default, we'll re-advertise all learned OSPF routes toward overlay
          */
-        noReadvertiseToOverlay: boolean;
+        noReadvertiseToOverlay?: boolean;
         /**
          * Whether to send OSPF-Hello
          */

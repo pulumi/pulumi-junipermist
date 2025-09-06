@@ -64,6 +64,8 @@ type DeviceprofileGateway struct {
 	// Property key is the routing policy name
 	RoutingPolicies DeviceprofileGatewayRoutingPoliciesMapOutput `pulumi:"routingPolicies"`
 	ServicePolicies DeviceprofileGatewayServicePolicyArrayOutput `pulumi:"servicePolicies"`
+	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
+	SsrAdditionalConfigCmds pulumi.StringArrayOutput `pulumi:"ssrAdditionalConfigCmds"`
 	// Property key is the tunnel name
 	TunnelConfigs         DeviceprofileGatewayTunnelConfigsMapOutput         `pulumi:"tunnelConfigs"`
 	TunnelProviderOptions DeviceprofileGatewayTunnelProviderOptionsPtrOutput `pulumi:"tunnelProviderOptions"`
@@ -141,6 +143,8 @@ type deviceprofileGatewayState struct {
 	// Property key is the routing policy name
 	RoutingPolicies map[string]DeviceprofileGatewayRoutingPolicies `pulumi:"routingPolicies"`
 	ServicePolicies []DeviceprofileGatewayServicePolicy            `pulumi:"servicePolicies"`
+	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
+	SsrAdditionalConfigCmds []string `pulumi:"ssrAdditionalConfigCmds"`
 	// Property key is the tunnel name
 	TunnelConfigs         map[string]DeviceprofileGatewayTunnelConfigs `pulumi:"tunnelConfigs"`
 	TunnelProviderOptions *DeviceprofileGatewayTunnelProviderOptions   `pulumi:"tunnelProviderOptions"`
@@ -186,6 +190,8 @@ type DeviceprofileGatewayState struct {
 	// Property key is the routing policy name
 	RoutingPolicies DeviceprofileGatewayRoutingPoliciesMapInput
 	ServicePolicies DeviceprofileGatewayServicePolicyArrayInput
+	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
+	SsrAdditionalConfigCmds pulumi.StringArrayInput
 	// Property key is the tunnel name
 	TunnelConfigs         DeviceprofileGatewayTunnelConfigsMapInput
 	TunnelProviderOptions DeviceprofileGatewayTunnelProviderOptionsPtrInput
@@ -235,6 +241,8 @@ type deviceprofileGatewayArgs struct {
 	// Property key is the routing policy name
 	RoutingPolicies map[string]DeviceprofileGatewayRoutingPolicies `pulumi:"routingPolicies"`
 	ServicePolicies []DeviceprofileGatewayServicePolicy            `pulumi:"servicePolicies"`
+	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
+	SsrAdditionalConfigCmds []string `pulumi:"ssrAdditionalConfigCmds"`
 	// Property key is the tunnel name
 	TunnelConfigs         map[string]DeviceprofileGatewayTunnelConfigs `pulumi:"tunnelConfigs"`
 	TunnelProviderOptions *DeviceprofileGatewayTunnelProviderOptions   `pulumi:"tunnelProviderOptions"`
@@ -279,6 +287,8 @@ type DeviceprofileGatewayArgs struct {
 	// Property key is the routing policy name
 	RoutingPolicies DeviceprofileGatewayRoutingPoliciesMapInput
 	ServicePolicies DeviceprofileGatewayServicePolicyArrayInput
+	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
+	SsrAdditionalConfigCmds pulumi.StringArrayInput
 	// Property key is the tunnel name
 	TunnelConfigs         DeviceprofileGatewayTunnelConfigsMapInput
 	TunnelProviderOptions DeviceprofileGatewayTunnelProviderOptionsPtrInput
@@ -469,6 +479,11 @@ func (o DeviceprofileGatewayOutput) RoutingPolicies() DeviceprofileGatewayRoutin
 
 func (o DeviceprofileGatewayOutput) ServicePolicies() DeviceprofileGatewayServicePolicyArrayOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayServicePolicyArrayOutput { return v.ServicePolicies }).(DeviceprofileGatewayServicePolicyArrayOutput)
+}
+
+// additional CLI commands to append to the generated SSR config. **Note**: no check is done
+func (o DeviceprofileGatewayOutput) SsrAdditionalConfigCmds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.StringArrayOutput { return v.SsrAdditionalConfigCmds }).(pulumi.StringArrayOutput)
 }
 
 // Property key is the tunnel name

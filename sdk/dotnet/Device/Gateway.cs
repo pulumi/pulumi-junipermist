@@ -211,6 +211,12 @@ namespace Pulumi.JuniperMist.Device
         public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
+        /// additional CLI commands to append to the generated SSR config. **Note**: no check is done
+        /// </summary>
+        [Output("ssrAdditionalConfigCmds")]
+        public Output<ImmutableArray<string>> SsrAdditionalConfigCmds { get; private set; } = null!;
+
+        /// <summary>
         /// Property key is the tunnel name
         /// </summary>
         [Output("tunnelConfigs")]
@@ -492,6 +498,18 @@ namespace Pulumi.JuniperMist.Device
 
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
+
+        [Input("ssrAdditionalConfigCmds")]
+        private InputList<string>? _ssrAdditionalConfigCmds;
+
+        /// <summary>
+        /// additional CLI commands to append to the generated SSR config. **Note**: no check is done
+        /// </summary>
+        public InputList<string> SsrAdditionalConfigCmds
+        {
+            get => _ssrAdditionalConfigCmds ?? (_ssrAdditionalConfigCmds = new InputList<string>());
+            set => _ssrAdditionalConfigCmds = value;
+        }
 
         [Input("tunnelConfigs")]
         private InputMap<Inputs.GatewayTunnelConfigsArgs>? _tunnelConfigs;
@@ -778,6 +796,18 @@ namespace Pulumi.JuniperMist.Device
 
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
+
+        [Input("ssrAdditionalConfigCmds")]
+        private InputList<string>? _ssrAdditionalConfigCmds;
+
+        /// <summary>
+        /// additional CLI commands to append to the generated SSR config. **Note**: no check is done
+        /// </summary>
+        public InputList<string> SsrAdditionalConfigCmds
+        {
+            get => _ssrAdditionalConfigCmds ?? (_ssrAdditionalConfigCmds = new InputList<string>());
+            set => _ssrAdditionalConfigCmds = value;
+        }
 
         [Input("tunnelConfigs")]
         private InputMap<Inputs.GatewayTunnelConfigsGetArgs>? _tunnelConfigs;
