@@ -62,6 +62,8 @@ type Gatewaytemplate struct {
 	// Property key is the routing policy name
 	RoutingPolicies GatewaytemplateRoutingPoliciesMapOutput `pulumi:"routingPolicies"`
 	ServicePolicies GatewaytemplateServicePolicyArrayOutput `pulumi:"servicePolicies"`
+	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
+	SsrAdditionalConfigCmds pulumi.StringArrayOutput `pulumi:"ssrAdditionalConfigCmds"`
 	// Property key is the tunnel name
 	TunnelConfigs         GatewaytemplateTunnelConfigsMapOutput         `pulumi:"tunnelConfigs"`
 	TunnelProviderOptions GatewaytemplateTunnelProviderOptionsPtrOutput `pulumi:"tunnelProviderOptions"`
@@ -139,6 +141,8 @@ type gatewaytemplateState struct {
 	// Property key is the routing policy name
 	RoutingPolicies map[string]GatewaytemplateRoutingPolicies `pulumi:"routingPolicies"`
 	ServicePolicies []GatewaytemplateServicePolicy            `pulumi:"servicePolicies"`
+	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
+	SsrAdditionalConfigCmds []string `pulumi:"ssrAdditionalConfigCmds"`
 	// Property key is the tunnel name
 	TunnelConfigs         map[string]GatewaytemplateTunnelConfigs `pulumi:"tunnelConfigs"`
 	TunnelProviderOptions *GatewaytemplateTunnelProviderOptions   `pulumi:"tunnelProviderOptions"`
@@ -184,6 +188,8 @@ type GatewaytemplateState struct {
 	// Property key is the routing policy name
 	RoutingPolicies GatewaytemplateRoutingPoliciesMapInput
 	ServicePolicies GatewaytemplateServicePolicyArrayInput
+	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
+	SsrAdditionalConfigCmds pulumi.StringArrayInput
 	// Property key is the tunnel name
 	TunnelConfigs         GatewaytemplateTunnelConfigsMapInput
 	TunnelProviderOptions GatewaytemplateTunnelProviderOptionsPtrInput
@@ -233,6 +239,8 @@ type gatewaytemplateArgs struct {
 	// Property key is the routing policy name
 	RoutingPolicies map[string]GatewaytemplateRoutingPolicies `pulumi:"routingPolicies"`
 	ServicePolicies []GatewaytemplateServicePolicy            `pulumi:"servicePolicies"`
+	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
+	SsrAdditionalConfigCmds []string `pulumi:"ssrAdditionalConfigCmds"`
 	// Property key is the tunnel name
 	TunnelConfigs         map[string]GatewaytemplateTunnelConfigs `pulumi:"tunnelConfigs"`
 	TunnelProviderOptions *GatewaytemplateTunnelProviderOptions   `pulumi:"tunnelProviderOptions"`
@@ -279,6 +287,8 @@ type GatewaytemplateArgs struct {
 	// Property key is the routing policy name
 	RoutingPolicies GatewaytemplateRoutingPoliciesMapInput
 	ServicePolicies GatewaytemplateServicePolicyArrayInput
+	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
+	SsrAdditionalConfigCmds pulumi.StringArrayInput
 	// Property key is the tunnel name
 	TunnelConfigs         GatewaytemplateTunnelConfigsMapInput
 	TunnelProviderOptions GatewaytemplateTunnelProviderOptionsPtrInput
@@ -471,6 +481,11 @@ func (o GatewaytemplateOutput) RoutingPolicies() GatewaytemplateRoutingPoliciesM
 
 func (o GatewaytemplateOutput) ServicePolicies() GatewaytemplateServicePolicyArrayOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateServicePolicyArrayOutput { return v.ServicePolicies }).(GatewaytemplateServicePolicyArrayOutput)
+}
+
+// additional CLI commands to append to the generated SSR config. **Note**: no check is done
+func (o GatewaytemplateOutput) SsrAdditionalConfigCmds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Gatewaytemplate) pulumi.StringArrayOutput { return v.SsrAdditionalConfigCmds }).(pulumi.StringArrayOutput)
 }
 
 // Property key is the tunnel name

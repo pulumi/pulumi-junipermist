@@ -46,6 +46,7 @@ class GatewayArgs:
                  router_id: Optional[pulumi.Input[_builtins.str]] = None,
                  routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayRoutingPoliciesArgs']]]] = None,
                  service_policies: Optional[pulumi.Input[Sequence[pulumi.Input['GatewayServicePolicyArgs']]]] = None,
+                 ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayTunnelConfigsArgs']]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input['GatewayTunnelProviderOptionsArgs']] = None,
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -68,6 +69,7 @@ class GatewayArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayPortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayVrfInstancesArgs']]] vrf_instances: Property key is the network name
@@ -122,6 +124,8 @@ class GatewayArgs:
             pulumi.set(__self__, "routing_policies", routing_policies)
         if service_policies is not None:
             pulumi.set(__self__, "service_policies", service_policies)
+        if ssr_additional_config_cmds is not None:
+            pulumi.set(__self__, "ssr_additional_config_cmds", ssr_additional_config_cmds)
         if tunnel_configs is not None:
             pulumi.set(__self__, "tunnel_configs", tunnel_configs)
         if tunnel_provider_options is not None:
@@ -402,6 +406,18 @@ class GatewayArgs:
         pulumi.set(self, "service_policies", value)
 
     @_builtins.property
+    @pulumi.getter(name="ssrAdditionalConfigCmds")
+    def ssr_additional_config_cmds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        additional CLI commands to append to the generated SSR config. **Note**: no check is done
+        """
+        return pulumi.get(self, "ssr_additional_config_cmds")
+
+    @ssr_additional_config_cmds.setter
+    def ssr_additional_config_cmds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ssr_additional_config_cmds", value)
+
+    @_builtins.property
     @pulumi.getter(name="tunnelConfigs")
     def tunnel_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayTunnelConfigsArgs']]]]:
         """
@@ -515,6 +531,7 @@ class _GatewayState:
                  serial: Optional[pulumi.Input[_builtins.str]] = None,
                  service_policies: Optional[pulumi.Input[Sequence[pulumi.Input['GatewayServicePolicyArgs']]]] = None,
                  site_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayTunnelConfigsArgs']]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input['GatewayTunnelProviderOptionsArgs']] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -541,6 +558,7 @@ class _GatewayState:
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[_builtins.str] serial: Device Serial
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[_builtins.str] type: Device Type. enum: `gateway`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
@@ -612,6 +630,8 @@ class _GatewayState:
             pulumi.set(__self__, "service_policies", service_policies)
         if site_id is not None:
             pulumi.set(__self__, "site_id", site_id)
+        if ssr_additional_config_cmds is not None:
+            pulumi.set(__self__, "ssr_additional_config_cmds", ssr_additional_config_cmds)
         if tunnel_configs is not None:
             pulumi.set(__self__, "tunnel_configs", tunnel_configs)
         if tunnel_provider_options is not None:
@@ -966,6 +986,18 @@ class _GatewayState:
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="ssrAdditionalConfigCmds")
+    def ssr_additional_config_cmds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        additional CLI commands to append to the generated SSR config. **Note**: no check is done
+        """
+        return pulumi.get(self, "ssr_additional_config_cmds")
+
+    @ssr_additional_config_cmds.setter
+    def ssr_additional_config_cmds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ssr_additional_config_cmds", value)
+
+    @_builtins.property
     @pulumi.getter(name="tunnelConfigs")
     def tunnel_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayTunnelConfigsArgs']]]]:
         """
@@ -1087,6 +1119,7 @@ class Gateway(pulumi.CustomResource):
                  routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayRoutingPoliciesArgs', 'GatewayRoutingPoliciesArgsDict']]]]] = None,
                  service_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewayServicePolicyArgs', 'GatewayServicePolicyArgsDict']]]]] = None,
                  site_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayTunnelConfigsArgs', 'GatewayTunnelConfigsArgsDict']]]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input[Union['GatewayTunnelProviderOptionsArgs', 'GatewayTunnelProviderOptionsArgsDict']]] = None,
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1151,6 +1184,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayPortConfigArgs', 'GatewayPortConfigArgsDict']]]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayRoutingPoliciesArgs', 'GatewayRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayTunnelConfigsArgs', 'GatewayTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayVrfInstancesArgs', 'GatewayVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
@@ -1244,6 +1278,7 @@ class Gateway(pulumi.CustomResource):
                  routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayRoutingPoliciesArgs', 'GatewayRoutingPoliciesArgsDict']]]]] = None,
                  service_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewayServicePolicyArgs', 'GatewayServicePolicyArgsDict']]]]] = None,
                  site_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayTunnelConfigsArgs', 'GatewayTunnelConfigsArgsDict']]]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input[Union['GatewayTunnelProviderOptionsArgs', 'GatewayTunnelProviderOptionsArgsDict']]] = None,
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1289,6 +1324,7 @@ class Gateway(pulumi.CustomResource):
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
+            __props__.__dict__["ssr_additional_config_cmds"] = ssr_additional_config_cmds
             __props__.__dict__["tunnel_configs"] = tunnel_configs
             __props__.__dict__["tunnel_provider_options"] = tunnel_provider_options
             __props__.__dict__["vars"] = vars
@@ -1346,6 +1382,7 @@ class Gateway(pulumi.CustomResource):
             serial: Optional[pulumi.Input[_builtins.str]] = None,
             service_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewayServicePolicyArgs', 'GatewayServicePolicyArgsDict']]]]] = None,
             site_id: Optional[pulumi.Input[_builtins.str]] = None,
+            ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayTunnelConfigsArgs', 'GatewayTunnelConfigsArgsDict']]]]] = None,
             tunnel_provider_options: Optional[pulumi.Input[Union['GatewayTunnelProviderOptionsArgs', 'GatewayTunnelProviderOptionsArgsDict']]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1377,6 +1414,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayRoutingPoliciesArgs', 'GatewayRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[_builtins.str] serial: Device Serial
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayTunnelConfigsArgs', 'GatewayTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[_builtins.str] type: Device Type. enum: `gateway`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
@@ -1420,6 +1458,7 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["serial"] = serial
         __props__.__dict__["service_policies"] = service_policies
         __props__.__dict__["site_id"] = site_id
+        __props__.__dict__["ssr_additional_config_cmds"] = ssr_additional_config_cmds
         __props__.__dict__["tunnel_configs"] = tunnel_configs
         __props__.__dict__["tunnel_provider_options"] = tunnel_provider_options
         __props__.__dict__["type"] = type
@@ -1637,6 +1676,14 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "site_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ssrAdditionalConfigCmds")
+    def ssr_additional_config_cmds(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        additional CLI commands to append to the generated SSR config. **Note**: no check is done
+        """
+        return pulumi.get(self, "ssr_additional_config_cmds")
 
     @_builtins.property
     @pulumi.getter(name="tunnelConfigs")

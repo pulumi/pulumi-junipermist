@@ -370,6 +370,9 @@
                             }
                         }
                     },
+                    "ssr_additional_config_cmds": {
+                        "maxItemsOne": false
+                    },
                     "tunnel_configs": {
                         "elem": {
                             "fields": {
@@ -1237,6 +1240,9 @@
                             }
                         }
                     },
+                    "ssr_additional_config_cmds": {
+                        "maxItemsOne": false
+                    },
                     "tunnel_configs": {
                         "elem": {
                             "fields": {
@@ -1630,6 +1636,9 @@
                                 }
                             }
                         }
+                    },
+                    "ssr_additional_config_cmds": {
+                        "maxItemsOne": false
                     },
                     "tunnel_configs": {
                         "elem": {

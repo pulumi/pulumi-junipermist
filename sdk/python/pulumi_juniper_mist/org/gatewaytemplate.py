@@ -42,6 +42,7 @@ class GatewaytemplateArgs:
                  router_id: Optional[pulumi.Input[_builtins.str]] = None,
                  routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]]] = None,
                  service_policies: Optional[pulumi.Input[Sequence[pulumi.Input['GatewaytemplateServicePolicyArgs']]]] = None,
+                 ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input['GatewaytemplateTunnelProviderOptionsArgs']] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -62,6 +63,7 @@ class GatewaytemplateArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[_builtins.str] type: enum: `spoke`, `standalone`
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]] vrf_instances: Property key is the network name
@@ -107,6 +109,8 @@ class GatewaytemplateArgs:
             pulumi.set(__self__, "routing_policies", routing_policies)
         if service_policies is not None:
             pulumi.set(__self__, "service_policies", service_policies)
+        if ssr_additional_config_cmds is not None:
+            pulumi.set(__self__, "ssr_additional_config_cmds", ssr_additional_config_cmds)
         if tunnel_configs is not None:
             pulumi.set(__self__, "tunnel_configs", tunnel_configs)
         if tunnel_provider_options is not None:
@@ -347,6 +351,18 @@ class GatewaytemplateArgs:
         pulumi.set(self, "service_policies", value)
 
     @_builtins.property
+    @pulumi.getter(name="ssrAdditionalConfigCmds")
+    def ssr_additional_config_cmds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        additional CLI commands to append to the generated SSR config. **Note**: no check is done
+        """
+        return pulumi.get(self, "ssr_additional_config_cmds")
+
+    @ssr_additional_config_cmds.setter
+    def ssr_additional_config_cmds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ssr_additional_config_cmds", value)
+
+    @_builtins.property
     @pulumi.getter(name="tunnelConfigs")
     def tunnel_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]]]:
         """
@@ -425,6 +441,7 @@ class _GatewaytemplateState:
                  router_id: Optional[pulumi.Input[_builtins.str]] = None,
                  routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]]] = None,
                  service_policies: Optional[pulumi.Input[Sequence[pulumi.Input['GatewaytemplateServicePolicyArgs']]]] = None,
+                 ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input['GatewaytemplateTunnelProviderOptionsArgs']] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -445,6 +462,7 @@ class _GatewaytemplateState:
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[_builtins.str] type: enum: `spoke`, `standalone`
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]] vrf_instances: Property key is the network name
@@ -491,6 +509,8 @@ class _GatewaytemplateState:
             pulumi.set(__self__, "routing_policies", routing_policies)
         if service_policies is not None:
             pulumi.set(__self__, "service_policies", service_policies)
+        if ssr_additional_config_cmds is not None:
+            pulumi.set(__self__, "ssr_additional_config_cmds", ssr_additional_config_cmds)
         if tunnel_configs is not None:
             pulumi.set(__self__, "tunnel_configs", tunnel_configs)
         if tunnel_provider_options is not None:
@@ -731,6 +751,18 @@ class _GatewaytemplateState:
         pulumi.set(self, "service_policies", value)
 
     @_builtins.property
+    @pulumi.getter(name="ssrAdditionalConfigCmds")
+    def ssr_additional_config_cmds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        additional CLI commands to append to the generated SSR config. **Note**: no check is done
+        """
+        return pulumi.get(self, "ssr_additional_config_cmds")
+
+    @ssr_additional_config_cmds.setter
+    def ssr_additional_config_cmds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ssr_additional_config_cmds", value)
+
+    @_builtins.property
     @pulumi.getter(name="tunnelConfigs")
     def tunnel_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]]]:
         """
@@ -812,6 +844,7 @@ class Gatewaytemplate(pulumi.CustomResource):
                  router_id: Optional[pulumi.Input[_builtins.str]] = None,
                  routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]]] = None,
                  service_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict']]]]] = None,
+                 ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -848,6 +881,7 @@ class Gatewaytemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[_builtins.str] type: enum: `spoke`, `standalone`
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
@@ -909,6 +943,7 @@ class Gatewaytemplate(pulumi.CustomResource):
                  router_id: Optional[pulumi.Input[_builtins.str]] = None,
                  routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]]] = None,
                  service_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict']]]]] = None,
+                 ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -946,6 +981,7 @@ class Gatewaytemplate(pulumi.CustomResource):
             __props__.__dict__["router_id"] = router_id
             __props__.__dict__["routing_policies"] = routing_policies
             __props__.__dict__["service_policies"] = service_policies
+            __props__.__dict__["ssr_additional_config_cmds"] = ssr_additional_config_cmds
             __props__.__dict__["tunnel_configs"] = tunnel_configs
             __props__.__dict__["tunnel_provider_options"] = tunnel_provider_options
             __props__.__dict__["type"] = type
@@ -982,6 +1018,7 @@ class Gatewaytemplate(pulumi.CustomResource):
             router_id: Optional[pulumi.Input[_builtins.str]] = None,
             routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]]] = None,
             service_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict']]]]] = None,
+            ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]]] = None,
             tunnel_provider_options: Optional[pulumi.Input[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1007,6 +1044,7 @@ class Gatewaytemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[_builtins.str] type: enum: `spoke`, `standalone`
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
@@ -1036,6 +1074,7 @@ class Gatewaytemplate(pulumi.CustomResource):
         __props__.__dict__["router_id"] = router_id
         __props__.__dict__["routing_policies"] = routing_policies
         __props__.__dict__["service_policies"] = service_policies
+        __props__.__dict__["ssr_additional_config_cmds"] = ssr_additional_config_cmds
         __props__.__dict__["tunnel_configs"] = tunnel_configs
         __props__.__dict__["tunnel_provider_options"] = tunnel_provider_options
         __props__.__dict__["type"] = type
@@ -1186,6 +1225,14 @@ class Gatewaytemplate(pulumi.CustomResource):
     @pulumi.getter(name="servicePolicies")
     def service_policies(self) -> pulumi.Output[Optional[Sequence['outputs.GatewaytemplateServicePolicy']]]:
         return pulumi.get(self, "service_policies")
+
+    @_builtins.property
+    @pulumi.getter(name="ssrAdditionalConfigCmds")
+    def ssr_additional_config_cmds(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        additional CLI commands to append to the generated SSR config. **Note**: no check is done
+        """
+        return pulumi.get(self, "ssr_additional_config_cmds")
 
     @_builtins.property
     @pulumi.getter(name="tunnelConfigs")

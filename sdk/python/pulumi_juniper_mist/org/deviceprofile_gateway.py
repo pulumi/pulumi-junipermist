@@ -42,6 +42,7 @@ class DeviceprofileGatewayArgs:
                  router_id: Optional[pulumi.Input[_builtins.str]] = None,
                  routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayRoutingPoliciesArgs']]]] = None,
                  service_policies: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceprofileGatewayServicePolicyArgs']]]] = None,
+                 ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayTunnelConfigsArgs']]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsArgs']] = None,
                  vrf_config: Optional[pulumi.Input['DeviceprofileGatewayVrfConfigArgs']] = None,
@@ -61,6 +62,7 @@ class DeviceprofileGatewayArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayPortConfigArgs']]] port_config: Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayVrfInstancesArgs']]] vrf_instances: Property key is the network name
         """
@@ -105,6 +107,8 @@ class DeviceprofileGatewayArgs:
             pulumi.set(__self__, "routing_policies", routing_policies)
         if service_policies is not None:
             pulumi.set(__self__, "service_policies", service_policies)
+        if ssr_additional_config_cmds is not None:
+            pulumi.set(__self__, "ssr_additional_config_cmds", ssr_additional_config_cmds)
         if tunnel_configs is not None:
             pulumi.set(__self__, "tunnel_configs", tunnel_configs)
         if tunnel_provider_options is not None:
@@ -343,6 +347,18 @@ class DeviceprofileGatewayArgs:
         pulumi.set(self, "service_policies", value)
 
     @_builtins.property
+    @pulumi.getter(name="ssrAdditionalConfigCmds")
+    def ssr_additional_config_cmds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        additional CLI commands to append to the generated SSR config. **Note**: no check is done
+        """
+        return pulumi.get(self, "ssr_additional_config_cmds")
+
+    @ssr_additional_config_cmds.setter
+    def ssr_additional_config_cmds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ssr_additional_config_cmds", value)
+
+    @_builtins.property
     @pulumi.getter(name="tunnelConfigs")
     def tunnel_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayTunnelConfigsArgs']]]]:
         """
@@ -409,6 +425,7 @@ class _DeviceprofileGatewayState:
                  router_id: Optional[pulumi.Input[_builtins.str]] = None,
                  routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayRoutingPoliciesArgs']]]] = None,
                  service_policies: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceprofileGatewayServicePolicyArgs']]]] = None,
+                 ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayTunnelConfigsArgs']]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsArgs']] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -429,6 +446,7 @@ class _DeviceprofileGatewayState:
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayPortConfigArgs']]] port_config: Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[_builtins.str] type: Device Type. enum: `gateway`
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayVrfInstancesArgs']]] vrf_instances: Property key is the network name
@@ -475,6 +493,8 @@ class _DeviceprofileGatewayState:
             pulumi.set(__self__, "routing_policies", routing_policies)
         if service_policies is not None:
             pulumi.set(__self__, "service_policies", service_policies)
+        if ssr_additional_config_cmds is not None:
+            pulumi.set(__self__, "ssr_additional_config_cmds", ssr_additional_config_cmds)
         if tunnel_configs is not None:
             pulumi.set(__self__, "tunnel_configs", tunnel_configs)
         if tunnel_provider_options is not None:
@@ -715,6 +735,18 @@ class _DeviceprofileGatewayState:
         pulumi.set(self, "service_policies", value)
 
     @_builtins.property
+    @pulumi.getter(name="ssrAdditionalConfigCmds")
+    def ssr_additional_config_cmds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        additional CLI commands to append to the generated SSR config. **Note**: no check is done
+        """
+        return pulumi.get(self, "ssr_additional_config_cmds")
+
+    @ssr_additional_config_cmds.setter
+    def ssr_additional_config_cmds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ssr_additional_config_cmds", value)
+
+    @_builtins.property
     @pulumi.getter(name="tunnelConfigs")
     def tunnel_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayTunnelConfigsArgs']]]]:
         """
@@ -796,6 +828,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
                  router_id: Optional[pulumi.Input[_builtins.str]] = None,
                  routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayRoutingPoliciesArgs', 'DeviceprofileGatewayRoutingPoliciesArgsDict']]]]] = None,
                  service_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileGatewayServicePolicyArgs', 'DeviceprofileGatewayServicePolicyArgsDict']]]]] = None,
+                 ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input[Union['DeviceprofileGatewayTunnelProviderOptionsArgs', 'DeviceprofileGatewayTunnelProviderOptionsArgsDict']]] = None,
                  vrf_config: Optional[pulumi.Input[Union['DeviceprofileGatewayVrfConfigArgs', 'DeviceprofileGatewayVrfConfigArgsDict']]] = None,
@@ -833,6 +866,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPortConfigArgs', 'DeviceprofileGatewayPortConfigArgsDict']]]] port_config: Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayRoutingPoliciesArgs', 'DeviceprofileGatewayRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayVrfInstancesArgs', 'DeviceprofileGatewayVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
         """
@@ -895,6 +929,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
                  router_id: Optional[pulumi.Input[_builtins.str]] = None,
                  routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayRoutingPoliciesArgs', 'DeviceprofileGatewayRoutingPoliciesArgsDict']]]]] = None,
                  service_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileGatewayServicePolicyArgs', 'DeviceprofileGatewayServicePolicyArgsDict']]]]] = None,
+                 ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input[Union['DeviceprofileGatewayTunnelProviderOptionsArgs', 'DeviceprofileGatewayTunnelProviderOptionsArgsDict']]] = None,
                  vrf_config: Optional[pulumi.Input[Union['DeviceprofileGatewayVrfConfigArgs', 'DeviceprofileGatewayVrfConfigArgsDict']]] = None,
@@ -931,6 +966,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
             __props__.__dict__["router_id"] = router_id
             __props__.__dict__["routing_policies"] = routing_policies
             __props__.__dict__["service_policies"] = service_policies
+            __props__.__dict__["ssr_additional_config_cmds"] = ssr_additional_config_cmds
             __props__.__dict__["tunnel_configs"] = tunnel_configs
             __props__.__dict__["tunnel_provider_options"] = tunnel_provider_options
             __props__.__dict__["vrf_config"] = vrf_config
@@ -967,6 +1003,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
             router_id: Optional[pulumi.Input[_builtins.str]] = None,
             routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayRoutingPoliciesArgs', 'DeviceprofileGatewayRoutingPoliciesArgsDict']]]]] = None,
             service_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileGatewayServicePolicyArgs', 'DeviceprofileGatewayServicePolicyArgsDict']]]]] = None,
+            ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]]] = None,
             tunnel_provider_options: Optional[pulumi.Input[Union['DeviceprofileGatewayTunnelProviderOptionsArgs', 'DeviceprofileGatewayTunnelProviderOptionsArgsDict']]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -992,6 +1029,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPortConfigArgs', 'DeviceprofileGatewayPortConfigArgsDict']]]] port_config: Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayRoutingPoliciesArgs', 'DeviceprofileGatewayRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[_builtins.str] type: Device Type. enum: `gateway`
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayVrfInstancesArgs', 'DeviceprofileGatewayVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
@@ -1021,6 +1059,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
         __props__.__dict__["router_id"] = router_id
         __props__.__dict__["routing_policies"] = routing_policies
         __props__.__dict__["service_policies"] = service_policies
+        __props__.__dict__["ssr_additional_config_cmds"] = ssr_additional_config_cmds
         __props__.__dict__["tunnel_configs"] = tunnel_configs
         __props__.__dict__["tunnel_provider_options"] = tunnel_provider_options
         __props__.__dict__["type"] = type
@@ -1171,6 +1210,14 @@ class DeviceprofileGateway(pulumi.CustomResource):
     @pulumi.getter(name="servicePolicies")
     def service_policies(self) -> pulumi.Output[Optional[Sequence['outputs.DeviceprofileGatewayServicePolicy']]]:
         return pulumi.get(self, "service_policies")
+
+    @_builtins.property
+    @pulumi.getter(name="ssrAdditionalConfigCmds")
+    def ssr_additional_config_cmds(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        additional CLI commands to append to the generated SSR config. **Note**: no check is done
+        """
+        return pulumi.get(self, "ssr_additional_config_cmds")
 
     @_builtins.property
     @pulumi.getter(name="tunnelConfigs")

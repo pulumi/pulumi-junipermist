@@ -112,6 +112,10 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
     declare public readonly routingPolicies: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayRoutingPolicies} | undefined>;
     declare public readonly servicePolicies: pulumi.Output<outputs.org.DeviceprofileGatewayServicePolicy[] | undefined>;
     /**
+     * additional CLI commands to append to the generated SSR config. **Note**: no check is done
+     */
+    declare public readonly ssrAdditionalConfigCmds: pulumi.Output<string[] | undefined>;
+    /**
      * Property key is the tunnel name
      */
     declare public readonly tunnelConfigs: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayTunnelConfigs} | undefined>;
@@ -160,6 +164,7 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
             resourceInputs["routerId"] = state?.routerId;
             resourceInputs["routingPolicies"] = state?.routingPolicies;
             resourceInputs["servicePolicies"] = state?.servicePolicies;
+            resourceInputs["ssrAdditionalConfigCmds"] = state?.ssrAdditionalConfigCmds;
             resourceInputs["tunnelConfigs"] = state?.tunnelConfigs;
             resourceInputs["tunnelProviderOptions"] = state?.tunnelProviderOptions;
             resourceInputs["type"] = state?.type;
@@ -191,6 +196,7 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
             resourceInputs["routerId"] = args?.routerId;
             resourceInputs["routingPolicies"] = args?.routingPolicies;
             resourceInputs["servicePolicies"] = args?.servicePolicies;
+            resourceInputs["ssrAdditionalConfigCmds"] = args?.ssrAdditionalConfigCmds;
             resourceInputs["tunnelConfigs"] = args?.tunnelConfigs;
             resourceInputs["tunnelProviderOptions"] = args?.tunnelProviderOptions;
             resourceInputs["vrfConfig"] = args?.vrfConfig;
@@ -266,6 +272,10 @@ export interface DeviceprofileGatewayState {
      */
     routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayRoutingPolicies>}>;
     servicePolicies?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayServicePolicy>[]>;
+    /**
+     * additional CLI commands to append to the generated SSR config. **Note**: no check is done
+     */
+    ssrAdditionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Property key is the tunnel name
      */
@@ -346,6 +356,10 @@ export interface DeviceprofileGatewayArgs {
      */
     routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayRoutingPolicies>}>;
     servicePolicies?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayServicePolicy>[]>;
+    /**
+     * additional CLI commands to append to the generated SSR config. **Note**: no check is done
+     */
+    ssrAdditionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Property key is the tunnel name
      */
