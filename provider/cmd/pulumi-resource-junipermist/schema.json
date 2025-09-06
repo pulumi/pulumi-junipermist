@@ -419,8 +419,6 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "dns",
-                        "dnsSuffixes",
                         "mtu",
                         "type"
                     ]
@@ -3495,16 +3493,7 @@
             "type": "object",
             "required": [
                 "type"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "macs",
-                        "subnets",
-                        "type"
-                    ]
-                }
-            }
+            ]
         },
         "junipermist:device/SwitchAclTagsSpec:SwitchAclTagsSpec": {
             "properties": {
@@ -4209,10 +4198,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "authKeys",
-                        "authType",
                         "interfaceType",
-                        "noReadvertiseToOverlay",
                         "passive"
                     ]
                 }
@@ -12243,8 +12229,6 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "dns",
-                        "dnsSuffixes",
                         "mtu",
                         "type"
                     ]
@@ -18080,16 +18064,7 @@
             "type": "object",
             "required": [
                 "type"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "macs",
-                        "subnets",
-                        "type"
-                    ]
-                }
-            }
+            ]
         },
         "junipermist:org/NetworktemplateAclTagsSpec:NetworktemplateAclTagsSpec": {
             "properties": {
@@ -18349,10 +18324,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "authKeys",
-                        "authType",
                         "interfaceType",
-                        "noReadvertiseToOverlay",
                         "passive"
                     ]
                 }
@@ -20104,11 +20076,7 @@
                         "allowRrmDisable",
                         "antGain",
                         "bandwidth",
-                        "channels",
-                        "disabled",
-                        "powerMax",
-                        "powerMin",
-                        "preamble"
+                        "disabled"
                     ]
                 }
             }
@@ -20164,11 +20132,7 @@
                         "allowRrmDisable",
                         "antGain",
                         "bandwidth",
-                        "channels",
-                        "disabled",
-                        "powerMax",
-                        "powerMin",
-                        "preamble"
+                        "disabled"
                     ]
                 }
             }
@@ -20289,11 +20253,7 @@
                         "allowRrmDisable",
                         "antGain",
                         "bandwidth",
-                        "channels",
-                        "disabled",
-                        "powerMax",
-                        "powerMin",
-                        "preamble"
+                        "disabled"
                     ]
                 }
             }
@@ -20330,16 +20290,7 @@
                     "description": "Radio Band AP settings\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "antGain24",
-                        "antGain5",
-                        "antGain6"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/RftemplateModelSpecificBand24:RftemplateModelSpecificBand24": {
             "properties": {
@@ -20389,13 +20340,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "allowRrmDisable",
-                        "bandwidth",
-                        "channels",
-                        "disabled",
-                        "powerMax",
-                        "powerMin",
-                        "preamble"
+                        "allowRrmDisable"
                     ]
                 }
             }
@@ -20448,14 +20393,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "allowRrmDisable",
-                        "antGain",
-                        "bandwidth",
-                        "channels",
-                        "disabled",
-                        "powerMax",
-                        "powerMin",
-                        "preamble"
+                        "allowRrmDisable"
                     ]
                 }
             }
@@ -20574,13 +20512,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "allowRrmDisable",
-                        "antGain",
-                        "bandwidth",
-                        "channels",
-                        "disabled",
-                        "powerMax",
-                        "powerMin",
-                        "preamble"
+                        "standardPower"
                     ]
                 }
             }
@@ -28509,16 +28441,7 @@
             "type": "object",
             "required": [
                 "type"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "macs",
-                        "subnets",
-                        "type"
-                    ]
-                }
-            }
+            ]
         },
         "junipermist:site/NetworktemplateAclTagsSpec:NetworktemplateAclTagsSpec": {
             "properties": {
@@ -28778,10 +28701,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "authKeys",
-                        "authType",
                         "interfaceType",
-                        "noReadvertiseToOverlay",
                         "passive"
                     ]
                 }
@@ -37303,6 +37223,13 @@
                 "siteId": {
                     "type": "string"
                 },
+                "ssrAdditionalConfigCmds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "additional CLI commands to append to the generated SSR config. **Note**: no check is done"
+                },
                 "tunnelConfigs": {
                     "type": "object",
                     "additionalProperties": {
@@ -37487,6 +37414,13 @@
                 },
                 "siteId": {
                     "type": "string"
+                },
+                "ssrAdditionalConfigCmds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "additional CLI commands to append to the generated SSR config. **Note**: no check is done"
                 },
                 "tunnelConfigs": {
                     "type": "object",
@@ -37684,6 +37618,13 @@
                     },
                     "siteId": {
                         "type": "string"
+                    },
+                    "ssrAdditionalConfigCmds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "additional CLI commands to append to the generated SSR config. **Note**: no check is done"
                     },
                     "tunnelConfigs": {
                         "type": "object",
@@ -39672,6 +39613,13 @@
                         "$ref": "#/types/junipermist:org/DeviceprofileGatewayServicePolicy:DeviceprofileGatewayServicePolicy"
                     }
                 },
+                "ssrAdditionalConfigCmds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "additional CLI commands to append to the generated SSR config. **Note**: no check is done"
+                },
                 "tunnelConfigs": {
                     "type": "object",
                     "additionalProperties": {
@@ -39822,6 +39770,13 @@
                         "$ref": "#/types/junipermist:org/DeviceprofileGatewayServicePolicy:DeviceprofileGatewayServicePolicy"
                     }
                 },
+                "ssrAdditionalConfigCmds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "additional CLI commands to append to the generated SSR config. **Note**: no check is done"
+                },
                 "tunnelConfigs": {
                     "type": "object",
                     "additionalProperties": {
@@ -39966,6 +39921,13 @@
                         "items": {
                             "$ref": "#/types/junipermist:org/DeviceprofileGatewayServicePolicy:DeviceprofileGatewayServicePolicy"
                         }
+                    },
+                    "ssrAdditionalConfigCmds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "additional CLI commands to append to the generated SSR config. **Note**: no check is done"
                     },
                     "tunnelConfigs": {
                         "type": "object",
@@ -40211,6 +40173,13 @@
                         "$ref": "#/types/junipermist:org/GatewaytemplateServicePolicy:GatewaytemplateServicePolicy"
                     }
                 },
+                "ssrAdditionalConfigCmds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "additional CLI commands to append to the generated SSR config. **Note**: no check is done"
+                },
                 "tunnelConfigs": {
                     "type": "object",
                     "additionalProperties": {
@@ -40361,6 +40330,13 @@
                         "$ref": "#/types/junipermist:org/GatewaytemplateServicePolicy:GatewaytemplateServicePolicy"
                     }
                 },
+                "ssrAdditionalConfigCmds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "additional CLI commands to append to the generated SSR config. **Note**: no check is done"
+                },
                 "tunnelConfigs": {
                     "type": "object",
                     "additionalProperties": {
@@ -40509,6 +40485,13 @@
                         "items": {
                             "$ref": "#/types/junipermist:org/GatewaytemplateServicePolicy:GatewaytemplateServicePolicy"
                         }
+                    },
+                    "ssrAdditionalConfigCmds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "additional CLI commands to append to the generated SSR config. **Note**: no check is done"
                     },
                     "tunnelConfigs": {
                         "type": "object",
