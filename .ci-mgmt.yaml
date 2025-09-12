@@ -5,6 +5,10 @@ generate-nightly-test-workflow: true
 providerDefaultBranch: main
 upstream-provider-repo: terraform-provider-mist
 
+esc:
+  enabled: true
+  environment: imports/github-secrets # No repo-specific secrets.
+
 env:
   MIST_ORG_ID: ${{ secrets.MIST_ORG_ID}}
   MIST_API_TOKEN: ${{ secrets.MIST_API_TOKEN}}
