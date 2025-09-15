@@ -31,6 +31,7 @@ This provider can be used with the following Mist Clouds:
 * Global 02 (api.gc1.mist.com)
 * Global 03 (api.ac2.mist.com)
 * Global 04 (api.gc2.mist.com)
+* Global 05 (api.gc4.mist.com)
 * EMEA 01 (api.eu.mist.com)
 * EMEA 02 (api.gc3.mist.com)
 * EMEA 03 (api.ac6.mist.com)
@@ -52,6 +53,11 @@ config:
 
 ```
 
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+
+```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -63,6 +69,11 @@ config:
         value: xxxxxxxxxxxxxxxxxxxxxxxxxxx
     mist:host:
         value: api.mist.com
+
+```
+
+```python
+import pulumi
 
 ```
 
@@ -80,6 +91,17 @@ config:
 
 ```
 
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+
+return await Deployment.RunAsync(() =>
+{
+});
+
+```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -92,6 +114,20 @@ config:
     mist:host:
         value: api.mist.com
 
+```
+
+```go
+package main
+
+import (
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		return nil
+	})
+}
 ```
 
 {{% /choosable %}}
@@ -108,6 +144,10 @@ config:
 
 ```
 
+```yaml
+{}
+```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -120,6 +160,29 @@ config:
     mist:host:
         value: api.mist.com
 
+```
+
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+    }
+}
 ```
 
 {{% /choosable %}}
@@ -149,7 +212,7 @@ variables or the `proxy` provider configuration attribute.
 - `username` (String) For username/password authentication, the Mist Account username.
 ### Environment Variables
 
-|   Varibale Name    | Provider attribute |  Type  |                                                                                                                  Description                                                                                                                   |
+|   Variable Name    | Provider attribute |  Type  |                                                                                                                  Description                                                                                                                   |
 |--------------------|--------------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `MIST_HOST`        | `host`             | String | URL of the Mist Cloud, e.g. `api.mist.com`. See above for the list of supported Clouds.                                                                                                                                                        |
 | `MIST_API_TOKEN`   | `apitoken`         | String | For API Token authentication, the Mist API Token.                                                                                                                                                                                              |
