@@ -77,16 +77,31 @@ jobs:
       run: go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 .
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        MIST_API_TOKEN: ${{ steps.esc-secrets.outputs.MIST_API_TOKEN}}
+        MIST_CLAIM_CODE_1: ${{ steps.esc-secrets.outputs.MIST_CLAIM_CODE_1}}
+        MIST_CLAIM_CODE_2: ${{ steps.esc-secrets.outputs.MIST_CLAIM_CODE_2}}
+        MIST_HOST: ${{ steps.esc-secrets.outputs.MIST_HOST}}
+        MIST_ORG_ID: ${{ steps.esc-secrets.outputs.MIST_ORG_ID}}
     - name: Run tests
       if: matrix.testTarget == 'local'
       run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -skip TestPulumiExamples -parallel 4 .
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        MIST_API_TOKEN: ${{ steps.esc-secrets.outputs.MIST_API_TOKEN}}
+        MIST_CLAIM_CODE_1: ${{ steps.esc-secrets.outputs.MIST_CLAIM_CODE_1}}
+        MIST_CLAIM_CODE_2: ${{ steps.esc-secrets.outputs.MIST_CLAIM_CODE_2}}
+        MIST_HOST: ${{ steps.esc-secrets.outputs.MIST_HOST}}
+        MIST_ORG_ID: ${{ steps.esc-secrets.outputs.MIST_ORG_ID}}
     - name: Run pulumi/examples tests
       if: matrix.testTarget == 'pulumiExamples'
       run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -run TestPulumiExamples -parallel 4 .
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        MIST_API_TOKEN: ${{ steps.esc-secrets.outputs.MIST_API_TOKEN}}
+        MIST_CLAIM_CODE_1: ${{ steps.esc-secrets.outputs.MIST_CLAIM_CODE_1}}
+        MIST_CLAIM_CODE_2: ${{ steps.esc-secrets.outputs.MIST_CLAIM_CODE_2}}
+        MIST_HOST: ${{ steps.esc-secrets.outputs.MIST_HOST}}
+        MIST_ORG_ID: ${{ steps.esc-secrets.outputs.MIST_ORG_ID}}
     strategy:
       fail-fast: false
       matrix:
