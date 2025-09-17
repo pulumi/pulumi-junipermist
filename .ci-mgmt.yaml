@@ -7,7 +7,6 @@ upstream-provider-repo: terraform-provider-mist
 
 esc:
   enabled: true
-  environment: imports/github-secrets # No repo-specific secrets.
 
 env:
   MIST_ORG_ID: ${{ secrets.MIST_ORG_ID}}
