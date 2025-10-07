@@ -94,14 +94,14 @@ public final class ApPortConfigRadiusConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * use `network`or `source_ip`, which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+     * use `network`or `sourceIp`, which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return use `network`or `source_ip`, which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+     * @return use `network`or `sourceIp`, which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
      * 
      */
     public Optional<Output<String>> network() {
@@ -109,14 +109,14 @@ public final class ApPortConfigRadiusConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * use `network`or `source_ip`
+     * use `network`or `sourceIp`
      * 
      */
     @Import(name="sourceIp")
     private @Nullable Output<String> sourceIp;
 
     /**
-     * @return use `network`or `source_ip`
+     * @return use `network`or `sourceIp`
      * 
      */
     public Optional<Output<String>> sourceIp() {
@@ -263,7 +263,7 @@ public final class ApPortConfigRadiusConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param network use `network`or `source_ip`, which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+         * @param network use `network`or `sourceIp`, which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class ApPortConfigRadiusConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param network use `network`or `source_ip`, which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+         * @param network use `network`or `sourceIp`, which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class ApPortConfigRadiusConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param sourceIp use `network`or `source_ip`
+         * @param sourceIp use `network`or `sourceIp`
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class ApPortConfigRadiusConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param sourceIp use `network`or `source_ip`
+         * @param sourceIp use `network`or `sourceIp`
          * 
          * @return builder
          * 

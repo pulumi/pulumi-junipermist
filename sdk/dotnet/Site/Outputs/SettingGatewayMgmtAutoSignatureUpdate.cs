@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingGatewayMgmtAutoSignatureUpdate
     {
         /// <summary>
-        /// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+        /// enum: `Any`, `Fri`, `Mon`, `Sat`, `Sun`, `Thu`, `Tue`, `Wed`
         /// </summary>
         public readonly string? DayOfWeek;
         public readonly bool? Enable;

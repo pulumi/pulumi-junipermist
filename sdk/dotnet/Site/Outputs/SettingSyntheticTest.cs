@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingSyntheticTest
     {
         /// <summary>
-        /// enum: `auto`, `high`, `low`
+        /// enum: `Auto`, `High`, `Low`
         /// </summary>
         public readonly string? Aggressiveness;
         /// <summary>

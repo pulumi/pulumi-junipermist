@@ -54,10 +54,10 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * enum:
      *   * `all`: local breakout, All VLANs
-     *   * `limited`: local breakout, only the VLANs configured in `port_vlan_id` and `vlan_ids`
-     *   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnel_id`)
-     *   * `site_mxedge`: central breakout to a Site Mist Edge (requires `mxtunnel_name`)
-     *   * `wxtunnel`&#39;: central breakout to an Org WxTunnel (requires `wxtunnel_id`)
+     *   * `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
+     *   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
+     *   * `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
+     *   * `wxtunnel`&#39;: central breakout to an Org WxTunnel (requires `wxtunnelId`)
      * 
      */
     @Import(name="forwarding")
@@ -66,10 +66,10 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return enum:
      *   * `all`: local breakout, All VLANs
-     *   * `limited`: local breakout, only the VLANs configured in `port_vlan_id` and `vlan_ids`
-     *   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnel_id`)
-     *   * `site_mxedge`: central breakout to a Site Mist Edge (requires `mxtunnel_name`)
-     *   * `wxtunnel`&#39;: central breakout to an Org WxTunnel (requires `wxtunnel_id`)
+     *   * `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
+     *   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
+     *   * `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
+     *   * `wxtunnel`&#39;: central breakout to an Org WxTunnel (requires `wxtunnelId`)
      * 
      */
     public Optional<Output<String>> forwarding() {
@@ -92,14 +92,14 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * if `enable_mac_auth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+     * if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
      * 
      */
     @Import(name="macAuthProtocol")
     private @Nullable Output<String> macAuthProtocol;
 
     /**
-     * @return if `enable_mac_auth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+     * @return if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
      * 
      */
     public Optional<Output<String>> macAuthProtocol() {
@@ -114,14 +114,14 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `forwarding`==`mxtunnel`, vlan_ids comes from mxtunnel
+     * If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
      * 
      */
     @Import(name="mxTunnelId")
     private @Nullable Output<String> mxTunnelId;
 
     /**
-     * @return If `forwarding`==`mxtunnel`, vlan_ids comes from mxtunnel
+     * @return If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
      * 
      */
     public Optional<Output<String>> mxTunnelId() {
@@ -129,14 +129,14 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `forwarding`==`site_mxedge`, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+     * If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
      * 
      */
     @Import(name="mxtunnelName")
     private @Nullable Output<String> mxtunnelName;
 
     /**
-     * @return If `forwarding`==`site_mxedge`, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+     * @return If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
      * 
      */
     public Optional<Output<String>> mxtunnelName() {
@@ -204,18 +204,18 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `site_mxedge`.
-     *   * if vlan_id is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-     *   * if forwarding == site_mxedge, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+     * Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+     *   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+     *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
      * 
      */
     @Import(name="vlanId")
     private @Nullable Output<Integer> vlanId;
 
     /**
-     * @return Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `site_mxedge`.
-     *   * if vlan_id is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-     *   * if forwarding == site_mxedge, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+     * @return Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+     *   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+     *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
      * 
      */
     public Optional<Output<Integer>> vlanId() {
@@ -349,10 +349,10 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param forwarding enum:
          *   * `all`: local breakout, All VLANs
-         *   * `limited`: local breakout, only the VLANs configured in `port_vlan_id` and `vlan_ids`
-         *   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnel_id`)
-         *   * `site_mxedge`: central breakout to a Site Mist Edge (requires `mxtunnel_name`)
-         *   * `wxtunnel`&#39;: central breakout to an Org WxTunnel (requires `wxtunnel_id`)
+         *   * `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
+         *   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
+         *   * `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
+         *   * `wxtunnel`&#39;: central breakout to an Org WxTunnel (requires `wxtunnelId`)
          * 
          * @return builder
          * 
@@ -365,10 +365,10 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param forwarding enum:
          *   * `all`: local breakout, All VLANs
-         *   * `limited`: local breakout, only the VLANs configured in `port_vlan_id` and `vlan_ids`
-         *   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnel_id`)
-         *   * `site_mxedge`: central breakout to a Site Mist Edge (requires `mxtunnel_name`)
-         *   * `wxtunnel`&#39;: central breakout to an Org WxTunnel (requires `wxtunnel_id`)
+         *   * `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
+         *   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
+         *   * `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
+         *   * `wxtunnel`&#39;: central breakout to an Org WxTunnel (requires `wxtunnelId`)
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param macAuthProtocol if `enable_mac_auth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+         * @param macAuthProtocol if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param macAuthProtocol if `enable_mac_auth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+         * @param macAuthProtocol if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
          * 
          * @return builder
          * 
@@ -429,7 +429,7 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxTunnelId If `forwarding`==`mxtunnel`, vlan_ids comes from mxtunnel
+         * @param mxTunnelId If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
          * 
          * @return builder
          * 
@@ -440,7 +440,7 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxTunnelId If `forwarding`==`mxtunnel`, vlan_ids comes from mxtunnel
+         * @param mxTunnelId If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
          * 
          * @return builder
          * 
@@ -450,7 +450,7 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelName If `forwarding`==`site_mxedge`, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+         * @param mxtunnelName If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
          * 
          * @return builder
          * 
@@ -461,7 +461,7 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelName If `forwarding`==`site_mxedge`, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+         * @param mxtunnelName If `forwarding`==`siteMxedge`, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
          * 
          * @return builder
          * 
@@ -555,9 +555,9 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanId Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `site_mxedge`.
-         *   * if vlan_id is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-         *   * if forwarding == site_mxedge, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+         * @param vlanId Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+         *   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+         *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
          * 
          * @return builder
          * 
@@ -568,9 +568,9 @@ public final class ApPortConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanId Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `site_mxedge`.
-         *   * if vlan_id is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-         *   * if forwarding == site_mxedge, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+         * @param vlanId Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+         *   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+         *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
          * 
          * @return builder
          * 

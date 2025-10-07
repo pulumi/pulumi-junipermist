@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// enum: `http`, `icmp`
+        /// enum: `Http`, `Icmp`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

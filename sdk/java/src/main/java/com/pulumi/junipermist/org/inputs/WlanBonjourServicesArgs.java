@@ -48,14 +48,14 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * how bonjour services should be discovered for the same WLAN. enum: `same_ap`, `same_map`, `same_site`
+     * how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
      * 
      */
     @Import(name="scope")
     private @Nullable Output<String> scope;
 
     /**
-     * @return how bonjour services should be discovered for the same WLAN. enum: `same_ap`, `same_map`, `same_site`
+     * @return how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
      * 
      */
     public Optional<Output<String>> scope() {
@@ -141,7 +141,7 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scope how bonjour services should be discovered for the same WLAN. enum: `same_ap`, `same_map`, `same_site`
+         * @param scope how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scope how bonjour services should be discovered for the same WLAN. enum: `same_ap`, `same_map`, `same_site`
+         * @param scope how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
          * 
          * @return builder
          * 

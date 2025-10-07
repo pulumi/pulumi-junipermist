@@ -13,6 +13,23 @@ import * as utilities from "../utilities";
  * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
  * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const ssoRoleOne = new junipermist.org.SsoRole("sso_role_one", {
+ *     orgId: terraformTest.id,
+ *     name: "admin_sso",
+ *     privileges: [{
+ *         scope: "site",
+ *         role: "read",
+ *         site_id: terraformSite.id,
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_sso_role` with:

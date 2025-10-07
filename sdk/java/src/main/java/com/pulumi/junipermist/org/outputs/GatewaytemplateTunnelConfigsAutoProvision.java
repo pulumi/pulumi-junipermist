@@ -39,7 +39,7 @@ public final class GatewaytemplateTunnelConfigsAutoProvision {
     private @Nullable String region;
     private @Nullable GatewaytemplateTunnelConfigsAutoProvisionSecondary secondary;
     /**
-     * @return if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we&#39;ll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
+     * @return if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, serviceConnection can be considered, then we&#39;ll also consider this along with the site location. Define serviceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
      * 
      */
     private @Nullable String serviceConnection;
@@ -80,7 +80,7 @@ public final class GatewaytemplateTunnelConfigsAutoProvision {
         return Optional.ofNullable(this.secondary);
     }
     /**
-     * @return if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we&#39;ll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
+     * @return if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, serviceConnection can be considered, then we&#39;ll also consider this along with the site location. Define serviceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
      * 
      */
     public Optional<String> serviceConnection() {

@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchSwitchMgmtProtectReCustom {
     /**
-     * @return matched dst port, &#34;0&#34; means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
+     * @return matched dst port, &#34;0&#34; means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
      * 
      */
     private @Nullable String portRange;
     /**
-     * @return enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
+     * @return enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
      * 
      */
     private @Nullable String protocol;
@@ -27,14 +27,14 @@ public final class SwitchSwitchMgmtProtectReCustom {
 
     private SwitchSwitchMgmtProtectReCustom() {}
     /**
-     * @return matched dst port, &#34;0&#34; means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
+     * @return matched dst port, &#34;0&#34; means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
      * 
      */
     public Optional<String> portRange() {
         return Optional.ofNullable(this.portRange);
     }
     /**
-     * @return enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
+     * @return enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
      * 
      */
     public Optional<String> protocol() {

@@ -16,6 +16,32 @@ namespace Pulumi.JuniperMist.Org
     /// WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.\
     /// They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var wlantemplateOne = new JuniperMist.Org.Wlantemplate("wlantemplate_one", new()
+    ///     {
+    ///         Name = "wlantemplate_one",
+    ///         OrgId = terraformTest.Id,
+    ///         Applies = new JuniperMist.Org.Inputs.WlantemplateAppliesArgs
+    ///         {
+    ///             Site_ids = new[]
+    ///             {
+    ///                 terraformSite.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_wlantemplate` with:

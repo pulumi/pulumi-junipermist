@@ -14,35 +14,35 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class ApEslConfig
     {
         /// <summary>
-        /// Only if `type`==`imagotag` or `type`==`native`
+        /// Only if `Type`==`Imagotag` or `Type`==`Native`
         /// </summary>
         public readonly string? Cacert;
         /// <summary>
-        /// Only if `type`==`imagotag` or `type`==`native`
+        /// Only if `Type`==`Imagotag` or `Type`==`Native`
         /// </summary>
         public readonly int? Channel;
         /// <summary>
-        /// usb_config is ignored if esl_config enabled
+        /// usb_config is ignored if EslConfig enabled
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Only if `type`==`imagotag` or `type`==`native`
+        /// Only if `Type`==`Imagotag` or `Type`==`Native`
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// Only if `type`==`imagotag` or `type`==`native`
+        /// Only if `Type`==`Imagotag` or `Type`==`Native`
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// note: ble_config will be ignored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+        /// note: BleConfig will be ignored if EslConfig is enabled and with native mode. enum: `Hanshow`, `Imagotag`, `Native`, `Solum`
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// Only if `type`==`imagotag` or `type`==`native`
+        /// Only if `Type`==`Imagotag` or `Type`==`Native`
         /// </summary>
         public readonly bool? VerifyCert;
         /// <summary>
-        /// Only if `type`==`solum` or `type`==`hanshow`
+        /// Only if `Type`==`Solum` or `Type`==`Hanshow`
         /// </summary>
         public readonly int? VlanId;
 

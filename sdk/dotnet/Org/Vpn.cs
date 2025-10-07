@@ -12,6 +12,55 @@ namespace Pulumi.JuniperMist.Org
     /// <summary>
     /// This resource manages the Org VPN.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var terraformTest = new JuniperMist.Org.Setting("terraform_test", new()
+    ///     {
+    ///         OrgId = terraformTestMistOrg.Id,
+    ///         PasswordPolicy = new JuniperMist.Org.Inputs.SettingPasswordPolicyArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Min_length = 8,
+    ///             Requires_special_char = true,
+    ///             Requires_two_factor_auth = true,
+    ///         },
+    ///         MistNac = new JuniperMist.Org.Inputs.SettingMistNacArgs
+    ///         {
+    ///             Eu_only = true,
+    ///         },
+    ///         SyntheticTest = new JuniperMist.Org.Inputs.SettingSyntheticTestArgs
+    ///         {
+    ///             Disabled = false,
+    ///             Vlans = new[]
+    ///             {
+    ///                 new JuniperMist.Org.Inputs.SettingSyntheticTestVlanArgs
+    ///                 {
+    ///                     VlanIds = new[]
+    ///                     {
+    ///                         "8",
+    ///                         "999",
+    ///                     },
+    ///                     Disabled = true,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ApiPolicy = new JuniperMist.Org.Inputs.SettingApiPolicyArgs
+    ///         {
+    ///             No_reveal = false,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_vpn` with:
@@ -32,19 +81,19 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Only if `type`==`hub_spoke`
+        /// Only if `Type`==`HubSpoke`
         /// </summary>
         [Output("pathSelection")]
         public Output<Outputs.VpnPathSelection?> PathSelection { get; private set; } = null!;
 
         /// <summary>
-        /// For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+        /// For `Type`==`HubSpoke`, Property key is the VPN name. For `Type`==`Mesh`, Property key is the Interface name
         /// </summary>
         [Output("paths")]
         public Output<ImmutableDictionary<string, Outputs.VpnPaths>> Paths { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `hub_spoke`, `mesh`
+        /// enum: `HubSpoke`, `Mesh`
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -103,7 +152,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Only if `type`==`hub_spoke`
+        /// Only if `Type`==`HubSpoke`
         /// </summary>
         [Input("pathSelection")]
         public Input<Inputs.VpnPathSelectionArgs>? PathSelection { get; set; }
@@ -112,7 +161,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.VpnPathsArgs>? _paths;
 
         /// <summary>
-        /// For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+        /// For `Type`==`HubSpoke`, Property key is the VPN name. For `Type`==`Mesh`, Property key is the Interface name
         /// </summary>
         public InputMap<Inputs.VpnPathsArgs> Paths
         {
@@ -121,7 +170,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// enum: `hub_spoke`, `mesh`
+        /// enum: `HubSpoke`, `Mesh`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -141,7 +190,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Only if `type`==`hub_spoke`
+        /// Only if `Type`==`HubSpoke`
         /// </summary>
         [Input("pathSelection")]
         public Input<Inputs.VpnPathSelectionGetArgs>? PathSelection { get; set; }
@@ -150,7 +199,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.VpnPathsGetArgs>? _paths;
 
         /// <summary>
-        /// For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+        /// For `Type`==`HubSpoke`, Property key is the VPN name. For `Type`==`Mesh`, Property key is the Interface name
         /// </summary>
         public InputMap<Inputs.VpnPathsGetArgs> Paths
         {
@@ -159,7 +208,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// enum: `hub_spoke`, `mesh`
+        /// enum: `HubSpoke`, `Mesh`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

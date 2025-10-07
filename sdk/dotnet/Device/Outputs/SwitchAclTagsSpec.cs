@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? PortRange;
         /// <summary>
-        /// `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254, default is `any` `protocol_number` is between 1-254
+        /// `Tcp` / `Udp` / `Icmp` / `Icmp6` / `Gre` / `Any` / `:protocol_number`, `ProtocolNumber` is between 1-254, default is `Any` `ProtocolNumber` is between 1-254
         /// </summary>
         public readonly string? Protocol;
 

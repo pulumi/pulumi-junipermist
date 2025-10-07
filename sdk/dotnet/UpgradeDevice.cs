@@ -14,8 +14,8 @@ namespace Pulumi.JuniperMist
     /// 
     /// The resource will send the upgrade command to Mist, which will take care of deploying the new firmware version to the device, and reboot it if required.
     /// 
-    /// The time required to upgrade a device depends on the type of device and its hardware. By default, the resource will track the upgrade process and only return the result once the device is upgraded and rebooted (unless `reboot`==`false` or `reboot_at` is set).\
-    /// If required it is possible to run the upgrade in async mode (attribute `sync`=`false`). In this case, the resource will only trigger the upgrade and return the Mist response, but will not track the upgrade progress.
+    /// The time required to upgrade a device depends on the type of device and its hardware. By default, the resource will track the upgrade process and only return the result once the device is upgraded and rebooted (unless `Reboot`==`False` or `RebootAt` is set).\
+    /// If required it is possible to run the upgrade in async mode (attribute `Sync`=`False`). In this case, the resource will only trigger the upgrade and return the Mist response, but will not track the upgrade progress.
     /// 
     /// The list of available firmware versions can be retrieved with the `junipermist.device.getVersions` data source.
     /// 
@@ -70,7 +70,7 @@ namespace Pulumi.JuniperMist
         public Output<bool> Reboot { get; private set; } = null!;
 
         /// <summary>
-        /// For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`
+        /// For Switches and Gateways only and if `Reboot`==`True`. Reboot start time in epoch seconds, default is `StartTime`
         /// </summary>
         [Output("rebootAt")]
         public Output<int?> RebootAt { get; private set; } = null!;
@@ -91,31 +91,31 @@ namespace Pulumi.JuniperMist
         public Output<int?> StartTime { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
+        /// enum: `Error`, `Inprogress`, `Scheduled`, `Starting`, `Success`
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`
+        /// if set to `False`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `True`
         /// </summary>
         [Output("syncUpgrade")]
         public Output<bool> SyncUpgrade { get; private set; } = null!;
 
         /// <summary>
-        /// if set to `sync_upgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
+        /// if set to `SyncUpgrade`==`True`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
         /// </summary>
         [Output("syncUpgradeRefreshInterval")]
         public Output<int> SyncUpgradeRefreshInterval { get; private set; } = null!;
 
         /// <summary>
-        /// if set to `sync_upgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
+        /// if set to `SyncUpgrade`==`True`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
         /// </summary>
         [Output("syncUpgradeStartTimeout")]
         public Output<int> SyncUpgradeStartTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// if set to `sync_upgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
+        /// if set to `SyncUpgrade`==`True`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
         /// </summary>
         [Output("syncUpgradeTimeout")]
         public Output<int> SyncUpgradeTimeout { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.JuniperMist
         public Input<bool>? Reboot { get; set; }
 
         /// <summary>
-        /// For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`
+        /// For Switches and Gateways only and if `Reboot`==`True`. Reboot start time in epoch seconds, default is `StartTime`
         /// </summary>
         [Input("rebootAt")]
         public Input<int>? RebootAt { get; set; }
@@ -210,25 +210,25 @@ namespace Pulumi.JuniperMist
         public Input<int>? StartTime { get; set; }
 
         /// <summary>
-        /// if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`
+        /// if set to `False`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `True`
         /// </summary>
         [Input("syncUpgrade")]
         public Input<bool>? SyncUpgrade { get; set; }
 
         /// <summary>
-        /// if set to `sync_upgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
+        /// if set to `SyncUpgrade`==`True`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
         /// </summary>
         [Input("syncUpgradeRefreshInterval")]
         public Input<int>? SyncUpgradeRefreshInterval { get; set; }
 
         /// <summary>
-        /// if set to `sync_upgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
+        /// if set to `SyncUpgrade`==`True`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
         /// </summary>
         [Input("syncUpgradeStartTimeout")]
         public Input<int>? SyncUpgradeStartTimeout { get; set; }
 
         /// <summary>
-        /// if set to `sync_upgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
+        /// if set to `SyncUpgrade`==`True`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
         /// </summary>
         [Input("syncUpgradeTimeout")]
         public Input<int>? SyncUpgradeTimeout { get; set; }
@@ -266,7 +266,7 @@ namespace Pulumi.JuniperMist
         public Input<bool>? Reboot { get; set; }
 
         /// <summary>
-        /// For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`
+        /// For Switches and Gateways only and if `Reboot`==`True`. Reboot start time in epoch seconds, default is `StartTime`
         /// </summary>
         [Input("rebootAt")]
         public Input<int>? RebootAt { get; set; }
@@ -287,31 +287,31 @@ namespace Pulumi.JuniperMist
         public Input<int>? StartTime { get; set; }
 
         /// <summary>
-        /// enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
+        /// enum: `Error`, `Inprogress`, `Scheduled`, `Starting`, `Success`
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`
+        /// if set to `False`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `True`
         /// </summary>
         [Input("syncUpgrade")]
         public Input<bool>? SyncUpgrade { get; set; }
 
         /// <summary>
-        /// if set to `sync_upgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
+        /// if set to `SyncUpgrade`==`True`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
         /// </summary>
         [Input("syncUpgradeRefreshInterval")]
         public Input<int>? SyncUpgradeRefreshInterval { get; set; }
 
         /// <summary>
-        /// if set to `sync_upgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
+        /// if set to `SyncUpgrade`==`True`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
         /// </summary>
         [Input("syncUpgradeStartTimeout")]
         public Input<int>? SyncUpgradeStartTimeout { get; set; }
 
         /// <summary>
-        /// if set to `sync_upgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
+        /// if set to `SyncUpgrade`==`True`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
         /// </summary>
         [Input("syncUpgradeTimeout")]
         public Input<int>? SyncUpgradeTimeout { get; set; }

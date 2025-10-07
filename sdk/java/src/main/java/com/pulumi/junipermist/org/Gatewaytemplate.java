@@ -38,6 +38,112 @@ import javax.annotation.Nullable;
  * 
  * A Gateway template is used to define the static ip address and subnet mask of the hub device, along with the gateway. It also allows for the selection of options such as enabling source nat and overriding the public ip for the hub if needed. the endpoint selected in the gateway template ties the hub and spoke devices together and creates the auto-vpn tunnel.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.Gatewaytemplate;
+ * import com.pulumi.junipermist.org.GatewaytemplateArgs;
+ * import com.pulumi.junipermist.org.inputs.GatewaytemplateServicePolicyArgs;
+ * import com.pulumi.junipermist.org.inputs.GatewaytemplateServicePolicyIdpArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var gatewaytemplateOne = new Gatewaytemplate("gatewaytemplateOne", GatewaytemplateArgs.builder()
+ *             .type("spoke")
+ *             .name("gatewaytemplate_one")
+ *             .orgId(terraformTest.id())
+ *             .portConfig(Map.ofEntries(
+ *                 Map.entry("ge-0/0/3", GatewaytemplatePortConfigArgs.builder()
+ *                     .name("FTTH")
+ *                     .usage("wan")
+ *                     .aggregated(false)
+ *                     .redundant(false)
+ *                     .critical(false)
+ *                     .wanType("broadband")
+ *                     .ipConfig(GatewaytemplatePortConfigIpConfigArgs.builder()
+ *                         .type("static")
+ *                         .ip("192.168.1.8")
+ *                         .netmask("/24")
+ *                         .gateway("192.168.1.1")
+ *                         .build())
+ *                     .disableAutoneg(false)
+ *                     .speed("auto")
+ *                     .duplex("auto")
+ *                     .wanSourceNat(GatewaytemplatePortConfigWanSourceNatArgs.builder()
+ *                         .disabled(false)
+ *                         .build())
+ *                     .vpnPaths(Map.of("SSR_HUB_DC-MPLS.OrgOverlay", GatewaytemplatePortConfigVpnPathsArgs.builder()
+ *                         .key(0)
+ *                         .role("spoke")
+ *                         .bfdProfile("broadband")
+ *                         .build()))
+ *                     .build()),
+ *                 Map.entry("ge-0/0/5", GatewaytemplatePortConfigArgs.builder()
+ *                     .usage("lan")
+ *                     .critical(false)
+ *                     .aggregated(true)
+ *                     .aeDisableLacp(false)
+ *                     .aeLacpForceUp(true)
+ *                     .aeIdx("0")
+ *                     .redundant(false)
+ *                     .networks(                    
+ *                         "PRD-Core",
+ *                         "PRD-Mgmt",
+ *                         "PRD-Lab")
+ *                     .build())
+ *             ))
+ *             .ipConfigs(Map.ofEntries(
+ *                 Map.entry("PRD-Core", GatewaytemplateIpConfigsArgs.builder()
+ *                     .type("static")
+ *                     .ip("10.3.100.9")
+ *                     .netmask("/24")
+ *                     .build()),
+ *                 Map.entry("PRD-Mgmt", GatewaytemplateIpConfigsArgs.builder()
+ *                     .type("static")
+ *                     .ip("10.3.172.1")
+ *                     .netmask("/24")
+ *                     .build()),
+ *                 Map.entry("PRD-Lab", GatewaytemplateIpConfigsArgs.builder()
+ *                     .type("static")
+ *                     .ip("10.3.171.1")
+ *                     .netmask("/24")
+ *                     .build())
+ *             ))
+ *             .servicePolicies(GatewaytemplateServicePolicyArgs.builder()
+ *                 .name("Policy-14")
+ *                 .tenants("PRD-Core")
+ *                 .services("any")
+ *                 .action("allow")
+ *                 .path_preference("HUB")
+ *                 .idp(GatewaytemplateServicePolicyIdpArgs.builder()
+ *                     .enabled(true)
+ *                     .profile("critical")
+ *                     .alertOnly(false)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_org_gatewaytemplate` with:
@@ -84,28 +190,28 @@ public class Gatewaytemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dnsOverride);
     }
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     @Export(name="dnsServers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> dnsServers;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     public Output<Optional<List<String>>> dnsServers() {
         return Codegen.optional(this.dnsServers);
     }
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     @Export(name="dnsSuffixes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> dnsSuffixes;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     public Output<Optional<List<String>>> dnsSuffixes() {

@@ -41,7 +41,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int RxRoutes;
         /// <summary>
-        /// enum: `active`, `connect`, `established`, `idle`, `open_config`, `open_sent`
+        /// enum: `Active`, `Connect`, `Established`, `Idle`, `OpenConfig`, `OpenSent`
         /// </summary>
         public readonly string State;
         /// <summary>

@@ -14,31 +14,31 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GatewaytemplateTunnelConfigs
     {
         /// <summary>
-        /// Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+        /// Auto Provisioning configuration for the tunne. This takes precedence over the `Primary` and `Secondary` nodes.
         /// </summary>
         public readonly Outputs.GatewaytemplateTunnelConfigsAutoProvision? AutoProvision;
         /// <summary>
-        /// Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
+        /// Only if `Provider`==`custom-ipsec`. Must be between 180 and 86400
         /// </summary>
         public readonly int? IkeLifetime;
         /// <summary>
-        /// Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
+        /// Only if `Provider`==`custom-ipsec`. enum: `Aggressive`, `Main`
         /// </summary>
         public readonly string? IkeMode;
         /// <summary>
-        /// If `provider`==`custom-ipsec`
+        /// If `Provider`==`custom-ipsec`
         /// </summary>
         public readonly ImmutableArray<Outputs.GatewaytemplateTunnelConfigsIkeProposal> IkeProposals;
         /// <summary>
-        /// Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
+        /// Only if `Provider`==`custom-ipsec`. Must be between 180 and 86400
         /// </summary>
         public readonly int? IpsecLifetime;
         /// <summary>
-        /// Only if  `provider`==`custom-ipsec`
+        /// Only if  `Provider`==`custom-ipsec`
         /// </summary>
         public readonly ImmutableArray<Outputs.GatewaytemplateTunnelConfigsIpsecProposal> IpsecProposals;
         /// <summary>
-        /// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        /// Required if `Provider`==`zscaler-ipsec`, `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
         /// </summary>
         public readonly string? LocalId;
         /// <summary>
@@ -46,31 +46,31 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> LocalSubnets;
         /// <summary>
-        /// Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
+        /// Required if `Provider`==`zscaler-gre`, `Provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
+        /// If `Provider`==`custom-ipsec` or `Provider`==`prisma-ipsec`, networks reachable via this tunnel
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
-        /// Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        /// Only if `Provider`==`zscaler-ipsec`, `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
         /// </summary>
         public readonly Outputs.GatewaytemplateTunnelConfigsPrimary? Primary;
         /// <summary>
-        /// Only if `provider`==`custom-ipsec`
+        /// Only if `Provider`==`custom-ipsec`
         /// </summary>
         public readonly Outputs.GatewaytemplateTunnelConfigsProbe? Probe;
         /// <summary>
-        /// Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
+        /// Only if `Provider`==`custom-ipsec`. enum: `Gre`, `Ipsec`
         /// </summary>
         public readonly string? Protocol;
         /// <summary>
-        /// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+        /// Only if `auto_provision.enabled`==`False`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
         /// </summary>
         public readonly string? Provider;
         /// <summary>
-        /// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        /// Required if `Provider`==`zscaler-ipsec`, `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
         /// </summary>
         public readonly string? Psk;
         /// <summary>
@@ -78,11 +78,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> RemoteSubnets;
         /// <summary>
-        /// Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        /// Only if `Provider`==`zscaler-ipsec`, `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
         /// </summary>
         public readonly Outputs.GatewaytemplateTunnelConfigsSecondary? Secondary;
         /// <summary>
-        /// Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
+        /// Only if `Provider`==`custom-gre` or `Provider`==`custom-ipsec`. enum: `1`, `2`
         /// </summary>
         public readonly string? Version;
 

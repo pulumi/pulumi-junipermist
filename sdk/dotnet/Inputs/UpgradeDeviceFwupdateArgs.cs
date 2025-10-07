@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Inputs
         public Input<int>? Progress { get; set; }
 
         /// <summary>
-        /// enum: `inprogress`, `failed`, `upgraded`
+        /// enum: `Inprogress`, `Failed`, `Upgraded`
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -26,9 +26,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         /// <summary>
         /// Required if
-        ///   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-        ///   - `type`==`gbp_resource`
-        ///   - `type`==`static_gbp` (applying gbp tag against matching conditions)
+        ///   - `Type`==`DynamicGbp` (gbp_tag received from RADIUS)
+        ///   - `Type`==`GbpResource`
+        ///   - `Type`==`StaticGbp` (applying gbp tag against matching conditions)
         /// </summary>
         [Input("gbpTag")]
         public Input<int>? GbpTag { get; set; }
@@ -38,8 +38,8 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         /// <summary>
         /// Required if 
-        /// - `type`==`mac`
-        /// - `type`==`static_gbp` if from matching mac
+        /// - `Type`==`Mac`
+        /// - `Type`==`StaticGbp` if from matching mac
         /// </summary>
         public InputList<string> Macs
         {
@@ -49,25 +49,25 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         /// <summary>
         /// If:
-        ///   * `type`==`mac` (optional. default is `any`)
-        ///   * `type`==`subnet` (optional. default is `any`)
-        ///   * `type`==`network`
-        ///   * `type`==`resource` (optional. default is `any`)
-        ///   * `type`==`static_gbp` if from matching network (vlan)
+        ///   * `Type`==`Mac` (optional. default is `Any`)
+        ///   * `Type`==`Subnet` (optional. default is `Any`)
+        ///   * `Type`==`Network`
+        ///   * `Type`==`Resource` (optional. default is `Any`)
+        ///   * `Type`==`StaticGbp` if from matching network (vlan)
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Required if `type`==`port_usage`
+        /// Required if `Type`==`PortUsage`
         /// </summary>
         [Input("portUsage")]
         public Input<string>? PortUsage { get; set; }
 
         /// <summary>
         /// Required if:
-        ///   * `type`==`radius_group`
-        ///   * `type`==`static_gbp`
+        ///   * `Type`==`RadiusGroup`
+        ///   * `Type`==`StaticGbp`
         /// if from matching radius_group
         /// </summary>
         [Input("radiusGroup")]
@@ -77,7 +77,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<Inputs.NetworktemplateAclTagsSpecArgs>? _specs;
 
         /// <summary>
-        /// If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+        /// If `Type`==`Resource`, `Type`==`RadiusGroup`, `Type`==`PortUsage` or `Type`==`GbpResource`. Empty means unrestricted, i.e. any
         /// </summary>
         public InputList<Inputs.NetworktemplateAclTagsSpecArgs> Specs
         {
@@ -90,9 +90,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         /// <summary>
         /// If 
-        /// - `type`==`subnet` 
-        /// - `type`==`resource` (optional. default is `any`)
-        /// - `type`==`static_gbp` if from matching subnet
+        /// - `Type`==`Subnet` 
+        /// - `Type`==`Resource` (optional. default is `Any`)
+        /// - `Type`==`StaticGbp` if from matching subnet
         /// </summary>
         public InputList<string> Subnets
         {
@@ -102,16 +102,16 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         /// <summary>
         /// enum: 
-        ///   * `any`: matching anything not identified
-        ///   * `dynamic_gbp`: from the gbp_tag received from RADIUS
-        ///   * `gbp_resource`: can only be used in `dst_tags`
-        ///   * `mac`
-        ///   * `network`
-        ///   * `port_usage`
-        ///   * `radius_group`
-        ///   * `resource`: can only be used in `dst_tags`
-        ///   * `static_gbp`: applying gbp tag against matching conditions
-        ///   * `subnet`'
+        ///   * `Any`: matching anything not identified
+        ///   * `DynamicGbp`: from the GbpTag received from RADIUS
+        ///   * `GbpResource`: can only be used in `DstTags`
+        ///   * `Mac`
+        ///   * `Network`
+        ///   * `PortUsage`
+        ///   * `RadiusGroup`
+        ///   * `Resource`: can only be used in `DstTags`
+        ///   * `StaticGbp`: applying gbp tag against matching conditions
+        ///   * `Subnet`'
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

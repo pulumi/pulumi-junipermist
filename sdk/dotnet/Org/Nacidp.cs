@@ -95,91 +95,91 @@ namespace Pulumi.JuniperMist.Org
     public partial class Nacidp : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Required if `ldap_type`==`custom`, LDAP filter that will identify the type of group
+        /// Required if `LdapType`==`Custom`, LDAP filter that will identify the type of group
         /// </summary>
         [Output("groupFilter")]
         public Output<string?> GroupFilter { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `ldap`, `mxedge_proxy`, `oauth`
+        /// enum: `Ldap`, `MxedgeProxy`, `Oauth`
         /// </summary>
         [Output("idpType")]
         public Output<string> IdpType { get; private set; } = null!;
 
         /// <summary>
-        /// Required if `idp_type`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
+        /// Required if `IdpType`==`Ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
         /// </summary>
         [Output("ldapBaseDn")]
         public Output<string?> LdapBaseDn { get; private set; } = null!;
 
         /// <summary>
-        /// Required if `idp_type`==`ldap`, the account used to authenticate against the LDAP
+        /// Required if `IdpType`==`Ldap`, the account used to authenticate against the LDAP
         /// </summary>
         [Output("ldapBindDn")]
         public Output<string?> LdapBindDn { get; private set; } = null!;
 
         /// <summary>
-        /// Required if `idp_type`==`ldap`, the password used to authenticate against the LDAP
+        /// Required if `IdpType`==`Ldap`, the password used to authenticate against the LDAP
         /// </summary>
         [Output("ldapBindPassword")]
         public Output<string?> LdapBindPassword { get; private set; } = null!;
 
         /// <summary>
-        /// Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
+        /// Required if `IdpType`==`Ldap`, list of CA certificates to validate the LDAP certificate
         /// </summary>
         [Output("ldapCacerts")]
         public Output<ImmutableArray<string>> LdapCacerts { get; private set; } = null!;
 
         /// <summary>
-        /// If `idp_type`==`ldap`, LDAPS Client certificate
+        /// If `IdpType`==`Ldap`, LDAPS Client certificate
         /// </summary>
         [Output("ldapClientCert")]
         public Output<string?> LdapClientCert { get; private set; } = null!;
 
         /// <summary>
-        /// If `idp_type`==`ldap`, Key for the `ldap_client_cert`
+        /// If `IdpType`==`Ldap`, Key for the `LdapClientCert`
         /// </summary>
         [Output("ldapClientKey")]
         public Output<string?> LdapClientKey { get; private set; } = null!;
 
         /// <summary>
-        /// If `ldap_type`==`custom`
+        /// If `LdapType`==`Custom`
         /// </summary>
         [Output("ldapGroupAttr")]
         public Output<string?> LdapGroupAttr { get; private set; } = null!;
 
         /// <summary>
-        /// If `ldap_type`==`custom`
+        /// If `LdapType`==`Custom`
         /// </summary>
         [Output("ldapGroupDn")]
         public Output<string?> LdapGroupDn { get; private set; } = null!;
 
         /// <summary>
-        /// If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
+        /// If `IdpType`==`Ldap`, whether to recursively resolve LDAP groups
         /// </summary>
         [Output("ldapResolveGroups")]
         public Output<bool> LdapResolveGroups { get; private set; } = null!;
 
         /// <summary>
-        /// If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+        /// If `IdpType`==`Ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
         /// </summary>
         [Output("ldapServerHosts")]
         public Output<ImmutableArray<string>> LdapServerHosts { get; private set; } = null!;
 
         /// <summary>
-        /// if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
+        /// if `IdpType`==`Ldap`. enum: `Azure`, `Custom`, `Google`, `Okta`, `PingIdentity`
         /// </summary>
         [Output("ldapType")]
         public Output<string?> LdapType { get; private set; } = null!;
 
         /// <summary>
-        /// Required if `ldap_type`==`custom`, LDAP filter that will identify the type of user
+        /// Required if `LdapType`==`Custom`, LDAP filter that will identify the type of user
         /// </summary>
         [Output("ldapUserFilter")]
         public Output<string?> LdapUserFilter { get; private set; } = null!;
 
         /// <summary>
-        /// Required if `ldap_type`==`custom`,LDAP filter that will identify the type of member
+        /// Required if `LdapType`==`Custom`,LDAP filter that will identify the type of member
         /// </summary>
         [Output("memberFilter")]
         public Output<string?> MemberFilter { get; private set; } = null!;
@@ -191,49 +191,49 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required if `idp_type`==`oauth`, Client Credentials
+        /// Required if `IdpType`==`Oauth`, Client Credentials
         /// </summary>
         [Output("oauthCcClientId")]
         public Output<string?> OauthCcClientId { get; private set; } = null!;
 
         /// <summary>
-        /// Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
+        /// Required if `IdpType`==`Oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
         /// </summary>
         [Output("oauthCcClientSecret")]
         public Output<string?> OauthCcClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// If `idp_type`==`oauth`
+        /// If `IdpType`==`Oauth`
         /// </summary>
         [Output("oauthDiscoveryUrl")]
         public Output<string?> OauthDiscoveryUrl { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+        /// enum: `Us` (United States, default), `Ca` (Canada), `Eu` (Europe), `Asia` (Asia), `Au` (Australia)
         /// </summary>
         [Output("oauthPingIdentityRegion")]
         public Output<string> OauthPingIdentityRegion { get; private set; } = null!;
 
         /// <summary>
-        /// If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
+        /// If `IdpType`==`Oauth`, ropc = Resource Owner Password Credentials
         /// </summary>
         [Output("oauthRopcClientId")]
         public Output<string?> OauthRopcClientId { get; private set; } = null!;
 
         /// <summary>
-        /// If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
+        /// If `OauthType`==`Azure` or `OauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
         /// </summary>
         [Output("oauthRopcClientSecret")]
         public Output<string?> OauthRopcClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// Required if `idp_type`==`oauth`, oauth*tenant*id
+        /// Required if `IdpType`==`Oauth`, oauth*tenant*id
         /// </summary>
         [Output("oauthTenantId")]
         public Output<string?> OauthTenantId { get; private set; } = null!;
 
         /// <summary>
-        /// if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
+        /// if `IdpType`==`Oauth`. enum: `Azure`, `azure-gov`, `Okta`, `PingIdentity`
         /// </summary>
         [Output("oauthType")]
         public Output<string> OauthType { get; private set; } = null!;
@@ -242,13 +242,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        /// If `IdpType`==`Oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
         /// </summary>
         [Output("scimEnabled")]
         public Output<bool> ScimEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+        /// If `IdpType`==`Oauth`, scim*secret*token (auto-generated when not provided by caller and `ScimEnabled`==`True`, empty string when `ScimEnabled`==`False`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         /// </summary>
         [Output("scimSecretToken")]
         public Output<string> ScimSecretToken { get; private set; } = null!;
@@ -301,31 +301,31 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NacidpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required if `ldap_type`==`custom`, LDAP filter that will identify the type of group
+        /// Required if `LdapType`==`Custom`, LDAP filter that will identify the type of group
         /// </summary>
         [Input("groupFilter")]
         public Input<string>? GroupFilter { get; set; }
 
         /// <summary>
-        /// enum: `ldap`, `mxedge_proxy`, `oauth`
+        /// enum: `Ldap`, `MxedgeProxy`, `Oauth`
         /// </summary>
         [Input("idpType", required: true)]
         public Input<string> IdpType { get; set; } = null!;
 
         /// <summary>
-        /// Required if `idp_type`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
+        /// Required if `IdpType`==`Ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
         /// </summary>
         [Input("ldapBaseDn")]
         public Input<string>? LdapBaseDn { get; set; }
 
         /// <summary>
-        /// Required if `idp_type`==`ldap`, the account used to authenticate against the LDAP
+        /// Required if `IdpType`==`Ldap`, the account used to authenticate against the LDAP
         /// </summary>
         [Input("ldapBindDn")]
         public Input<string>? LdapBindDn { get; set; }
 
         /// <summary>
-        /// Required if `idp_type`==`ldap`, the password used to authenticate against the LDAP
+        /// Required if `IdpType`==`Ldap`, the password used to authenticate against the LDAP
         /// </summary>
         [Input("ldapBindPassword")]
         public Input<string>? LdapBindPassword { get; set; }
@@ -334,7 +334,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _ldapCacerts;
 
         /// <summary>
-        /// Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
+        /// Required if `IdpType`==`Ldap`, list of CA certificates to validate the LDAP certificate
         /// </summary>
         public InputList<string> LdapCacerts
         {
@@ -343,31 +343,31 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// If `idp_type`==`ldap`, LDAPS Client certificate
+        /// If `IdpType`==`Ldap`, LDAPS Client certificate
         /// </summary>
         [Input("ldapClientCert")]
         public Input<string>? LdapClientCert { get; set; }
 
         /// <summary>
-        /// If `idp_type`==`ldap`, Key for the `ldap_client_cert`
+        /// If `IdpType`==`Ldap`, Key for the `LdapClientCert`
         /// </summary>
         [Input("ldapClientKey")]
         public Input<string>? LdapClientKey { get; set; }
 
         /// <summary>
-        /// If `ldap_type`==`custom`
+        /// If `LdapType`==`Custom`
         /// </summary>
         [Input("ldapGroupAttr")]
         public Input<string>? LdapGroupAttr { get; set; }
 
         /// <summary>
-        /// If `ldap_type`==`custom`
+        /// If `LdapType`==`Custom`
         /// </summary>
         [Input("ldapGroupDn")]
         public Input<string>? LdapGroupDn { get; set; }
 
         /// <summary>
-        /// If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
+        /// If `IdpType`==`Ldap`, whether to recursively resolve LDAP groups
         /// </summary>
         [Input("ldapResolveGroups")]
         public Input<bool>? LdapResolveGroups { get; set; }
@@ -376,7 +376,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _ldapServerHosts;
 
         /// <summary>
-        /// If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+        /// If `IdpType`==`Ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
         /// </summary>
         public InputList<string> LdapServerHosts
         {
@@ -385,19 +385,19 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
+        /// if `IdpType`==`Ldap`. enum: `Azure`, `Custom`, `Google`, `Okta`, `PingIdentity`
         /// </summary>
         [Input("ldapType")]
         public Input<string>? LdapType { get; set; }
 
         /// <summary>
-        /// Required if `ldap_type`==`custom`, LDAP filter that will identify the type of user
+        /// Required if `LdapType`==`Custom`, LDAP filter that will identify the type of user
         /// </summary>
         [Input("ldapUserFilter")]
         public Input<string>? LdapUserFilter { get; set; }
 
         /// <summary>
-        /// Required if `ldap_type`==`custom`,LDAP filter that will identify the type of member
+        /// Required if `LdapType`==`Custom`,LDAP filter that will identify the type of member
         /// </summary>
         [Input("memberFilter")]
         public Input<string>? MemberFilter { get; set; }
@@ -409,49 +409,49 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required if `idp_type`==`oauth`, Client Credentials
+        /// Required if `IdpType`==`Oauth`, Client Credentials
         /// </summary>
         [Input("oauthCcClientId")]
         public Input<string>? OauthCcClientId { get; set; }
 
         /// <summary>
-        /// Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
+        /// Required if `IdpType`==`Oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
         /// </summary>
         [Input("oauthCcClientSecret")]
         public Input<string>? OauthCcClientSecret { get; set; }
 
         /// <summary>
-        /// If `idp_type`==`oauth`
+        /// If `IdpType`==`Oauth`
         /// </summary>
         [Input("oauthDiscoveryUrl")]
         public Input<string>? OauthDiscoveryUrl { get; set; }
 
         /// <summary>
-        /// enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+        /// enum: `Us` (United States, default), `Ca` (Canada), `Eu` (Europe), `Asia` (Asia), `Au` (Australia)
         /// </summary>
         [Input("oauthPingIdentityRegion")]
         public Input<string>? OauthPingIdentityRegion { get; set; }
 
         /// <summary>
-        /// If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
+        /// If `IdpType`==`Oauth`, ropc = Resource Owner Password Credentials
         /// </summary>
         [Input("oauthRopcClientId")]
         public Input<string>? OauthRopcClientId { get; set; }
 
         /// <summary>
-        /// If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
+        /// If `OauthType`==`Azure` or `OauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
         /// </summary>
         [Input("oauthRopcClientSecret")]
         public Input<string>? OauthRopcClientSecret { get; set; }
 
         /// <summary>
-        /// Required if `idp_type`==`oauth`, oauth*tenant*id
+        /// Required if `IdpType`==`Oauth`, oauth*tenant*id
         /// </summary>
         [Input("oauthTenantId")]
         public Input<string>? OauthTenantId { get; set; }
 
         /// <summary>
-        /// if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
+        /// if `IdpType`==`Oauth`. enum: `Azure`, `azure-gov`, `Okta`, `PingIdentity`
         /// </summary>
         [Input("oauthType")]
         public Input<string>? OauthType { get; set; }
@@ -460,13 +460,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        /// If `IdpType`==`Oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
         /// </summary>
         [Input("scimEnabled")]
         public Input<bool>? ScimEnabled { get; set; }
 
         /// <summary>
-        /// If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+        /// If `IdpType`==`Oauth`, scim*secret*token (auto-generated when not provided by caller and `ScimEnabled`==`True`, empty string when `ScimEnabled`==`False`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         /// </summary>
         [Input("scimSecretToken")]
         public Input<string>? ScimSecretToken { get; set; }
@@ -480,31 +480,31 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NacidpState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required if `ldap_type`==`custom`, LDAP filter that will identify the type of group
+        /// Required if `LdapType`==`Custom`, LDAP filter that will identify the type of group
         /// </summary>
         [Input("groupFilter")]
         public Input<string>? GroupFilter { get; set; }
 
         /// <summary>
-        /// enum: `ldap`, `mxedge_proxy`, `oauth`
+        /// enum: `Ldap`, `MxedgeProxy`, `Oauth`
         /// </summary>
         [Input("idpType")]
         public Input<string>? IdpType { get; set; }
 
         /// <summary>
-        /// Required if `idp_type`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
+        /// Required if `IdpType`==`Ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
         /// </summary>
         [Input("ldapBaseDn")]
         public Input<string>? LdapBaseDn { get; set; }
 
         /// <summary>
-        /// Required if `idp_type`==`ldap`, the account used to authenticate against the LDAP
+        /// Required if `IdpType`==`Ldap`, the account used to authenticate against the LDAP
         /// </summary>
         [Input("ldapBindDn")]
         public Input<string>? LdapBindDn { get; set; }
 
         /// <summary>
-        /// Required if `idp_type`==`ldap`, the password used to authenticate against the LDAP
+        /// Required if `IdpType`==`Ldap`, the password used to authenticate against the LDAP
         /// </summary>
         [Input("ldapBindPassword")]
         public Input<string>? LdapBindPassword { get; set; }
@@ -513,7 +513,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _ldapCacerts;
 
         /// <summary>
-        /// Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
+        /// Required if `IdpType`==`Ldap`, list of CA certificates to validate the LDAP certificate
         /// </summary>
         public InputList<string> LdapCacerts
         {
@@ -522,31 +522,31 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// If `idp_type`==`ldap`, LDAPS Client certificate
+        /// If `IdpType`==`Ldap`, LDAPS Client certificate
         /// </summary>
         [Input("ldapClientCert")]
         public Input<string>? LdapClientCert { get; set; }
 
         /// <summary>
-        /// If `idp_type`==`ldap`, Key for the `ldap_client_cert`
+        /// If `IdpType`==`Ldap`, Key for the `LdapClientCert`
         /// </summary>
         [Input("ldapClientKey")]
         public Input<string>? LdapClientKey { get; set; }
 
         /// <summary>
-        /// If `ldap_type`==`custom`
+        /// If `LdapType`==`Custom`
         /// </summary>
         [Input("ldapGroupAttr")]
         public Input<string>? LdapGroupAttr { get; set; }
 
         /// <summary>
-        /// If `ldap_type`==`custom`
+        /// If `LdapType`==`Custom`
         /// </summary>
         [Input("ldapGroupDn")]
         public Input<string>? LdapGroupDn { get; set; }
 
         /// <summary>
-        /// If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
+        /// If `IdpType`==`Ldap`, whether to recursively resolve LDAP groups
         /// </summary>
         [Input("ldapResolveGroups")]
         public Input<bool>? LdapResolveGroups { get; set; }
@@ -555,7 +555,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _ldapServerHosts;
 
         /// <summary>
-        /// If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+        /// If `IdpType`==`Ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
         /// </summary>
         public InputList<string> LdapServerHosts
         {
@@ -564,19 +564,19 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
+        /// if `IdpType`==`Ldap`. enum: `Azure`, `Custom`, `Google`, `Okta`, `PingIdentity`
         /// </summary>
         [Input("ldapType")]
         public Input<string>? LdapType { get; set; }
 
         /// <summary>
-        /// Required if `ldap_type`==`custom`, LDAP filter that will identify the type of user
+        /// Required if `LdapType`==`Custom`, LDAP filter that will identify the type of user
         /// </summary>
         [Input("ldapUserFilter")]
         public Input<string>? LdapUserFilter { get; set; }
 
         /// <summary>
-        /// Required if `ldap_type`==`custom`,LDAP filter that will identify the type of member
+        /// Required if `LdapType`==`Custom`,LDAP filter that will identify the type of member
         /// </summary>
         [Input("memberFilter")]
         public Input<string>? MemberFilter { get; set; }
@@ -588,49 +588,49 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required if `idp_type`==`oauth`, Client Credentials
+        /// Required if `IdpType`==`Oauth`, Client Credentials
         /// </summary>
         [Input("oauthCcClientId")]
         public Input<string>? OauthCcClientId { get; set; }
 
         /// <summary>
-        /// Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
+        /// Required if `IdpType`==`Oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
         /// </summary>
         [Input("oauthCcClientSecret")]
         public Input<string>? OauthCcClientSecret { get; set; }
 
         /// <summary>
-        /// If `idp_type`==`oauth`
+        /// If `IdpType`==`Oauth`
         /// </summary>
         [Input("oauthDiscoveryUrl")]
         public Input<string>? OauthDiscoveryUrl { get; set; }
 
         /// <summary>
-        /// enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+        /// enum: `Us` (United States, default), `Ca` (Canada), `Eu` (Europe), `Asia` (Asia), `Au` (Australia)
         /// </summary>
         [Input("oauthPingIdentityRegion")]
         public Input<string>? OauthPingIdentityRegion { get; set; }
 
         /// <summary>
-        /// If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
+        /// If `IdpType`==`Oauth`, ropc = Resource Owner Password Credentials
         /// </summary>
         [Input("oauthRopcClientId")]
         public Input<string>? OauthRopcClientId { get; set; }
 
         /// <summary>
-        /// If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
+        /// If `OauthType`==`Azure` or `OauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
         /// </summary>
         [Input("oauthRopcClientSecret")]
         public Input<string>? OauthRopcClientSecret { get; set; }
 
         /// <summary>
-        /// Required if `idp_type`==`oauth`, oauth*tenant*id
+        /// Required if `IdpType`==`Oauth`, oauth*tenant*id
         /// </summary>
         [Input("oauthTenantId")]
         public Input<string>? OauthTenantId { get; set; }
 
         /// <summary>
-        /// if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
+        /// if `IdpType`==`Oauth`. enum: `Azure`, `azure-gov`, `Okta`, `PingIdentity`
         /// </summary>
         [Input("oauthType")]
         public Input<string>? OauthType { get; set; }
@@ -639,13 +639,13 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        /// If `IdpType`==`Oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
         /// </summary>
         [Input("scimEnabled")]
         public Input<bool>? ScimEnabled { get; set; }
 
         /// <summary>
-        /// If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+        /// If `IdpType`==`Oauth`, scim*secret*token (auto-generated when not provided by caller and `ScimEnabled`==`True`, empty string when `ScimEnabled`==`False`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         /// </summary>
         [Input("scimSecretToken")]
         public Input<string>? ScimSecretToken { get; set; }

@@ -51,14 +51,14 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+     * Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
      * 
      */
     @Import(name="autoRouterIdSubnet")
     private @Nullable Output<String> autoRouterIdSubnet;
 
     /**
-     * @return Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+     * @return Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
      * 
      */
     public Optional<Output<String>> autoRouterIdSubnet() {
@@ -66,14 +66,14 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+     * Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
      * 
      */
     @Import(name="autoRouterIdSubnet6")
     private @Nullable Output<String> autoRouterIdSubnet6;
 
     /**
-     * @return Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+     * @return Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
      * 
      */
     public Optional<Output<String>> autoRouterIdSubnet6() {
@@ -81,14 +81,14 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routed_at` != `core`, whether to do virtual-gateway at core as well
+     * Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
      * 
      */
     @Import(name="coreAsBorder")
     private @Nullable Output<Boolean> coreAsBorder;
 
     /**
-     * @return Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routed_at` != `core`, whether to do virtual-gateway at core as well
+     * @return Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
      * 
      */
     public Optional<Output<Boolean>> coreAsBorder() {
@@ -262,7 +262,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autoRouterIdSubnet Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+         * @param autoRouterIdSubnet Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autoRouterIdSubnet Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+         * @param autoRouterIdSubnet Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autoRouterIdSubnet6 Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+         * @param autoRouterIdSubnet6 Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autoRouterIdSubnet6 Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+         * @param autoRouterIdSubnet6 Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param coreAsBorder Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routed_at` != `core`, whether to do virtual-gateway at core as well
+         * @param coreAsBorder Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class EvpnTopologyEvpnOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param coreAsBorder Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routed_at` != `core`, whether to do virtual-gateway at core as well
+         * @param coreAsBorder Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
          * 
          * @return builder
          * 

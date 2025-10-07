@@ -31,31 +31,31 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<Inputs.NetworktemplateSwitchMatchingRuleIpConfigGetArgs>? IpConfig { get; set; }
 
         /// <summary>
-        /// string the switch model must start with to use this rule. It is possible to combine with the `match_name` and `match_role` attributes
+        /// string the switch model must start with to use this rule. It is possible to combine with the `MatchName` and `MatchRole` attributes
         /// </summary>
         [Input("matchModel")]
         public Input<string>? MatchModel { get; set; }
 
         /// <summary>
-        /// string the switch name must start with to use this rule. Use the `match_name_offset` to indicate the first character of the switch name to compare to. It is possible to combine with the `match_model` and `match_role` attributes
+        /// string the switch name must start with to use this rule. Use the `MatchNameOffset` to indicate the first character of the switch name to compare to. It is possible to combine with the `MatchModel` and `MatchRole` attributes
         /// </summary>
         [Input("matchName")]
         public Input<string>? MatchName { get; set; }
 
         /// <summary>
-        /// first character of the switch name to compare to the `match_name` value
+        /// first character of the switch name to compare to the `MatchName` value
         /// </summary>
         [Input("matchNameOffset")]
         public Input<int>? MatchNameOffset { get; set; }
 
         /// <summary>
-        /// string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes
+        /// string the switch role must start with to use this rule. It is possible to combine with the `MatchName` and `MatchModel` attributes
         /// </summary>
         [Input("matchRole")]
         public Input<string>? MatchRole { get; set; }
 
         /// <summary>
-        /// Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
+        /// Rule name. WARNING: the name `Default` is reserved and can only be used for the last rule in the list
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -82,7 +82,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputMap<Inputs.NetworktemplateSwitchMatchingRulePortMirroringGetArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         /// </summary>
         public InputMap<Inputs.NetworktemplateSwitchMatchingRulePortMirroringGetArgs> PortMirroring
         {

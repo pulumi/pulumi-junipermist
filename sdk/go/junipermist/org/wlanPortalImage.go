@@ -13,6 +13,34 @@ import (
 )
 
 // This resource is used to upload a WLAN Captive Web Portal background image.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewWlanPortalImage(ctx, "wlan_one", &org.WlanPortalImageArgs{
+//				SiteId: terraformTest.Id,
+//				WlanId: pulumi.Any(wlanOneMistOrg.Id),
+//				File:   pulumi.String("/Users/johndoe/Documents/image.jpg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type WlanPortalImage struct {
 	pulumi.CustomResourceState
 

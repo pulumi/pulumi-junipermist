@@ -21,11 +21,54 @@ import javax.annotation.Nullable;
 /**
  * This resource manages WAN Assurance Services (Applications).
  * 
- * A Service is used to define a Custom Application that can be used in the `service_policies`. These Services can be referenced by their name in
+ * A Service is used to define a Custom Application that can be used in the `servicePolicies`. These Services can be referenced by their name in
  * * the Service Policies (`mist_org_servicepolicy.services`)
  * * the Gateway configuration (`mist_device_gateway.service_policies.services`)
  * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
  * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies.services`)
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.Service;
+ * import com.pulumi.junipermist.org.ServiceArgs;
+ * import com.pulumi.junipermist.org.inputs.ServiceSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var serviceOne = new Service("serviceOne", ServiceArgs.builder()
+ *             .orgId(terraformTest.id())
+ *             .name("service_one")
+ *             .addresses(            
+ *                 "10.3.0.0/24",
+ *                 "10.4.0.0/24")
+ *             .type("custom")
+ *             .specs(ServiceSpecArgs.builder()
+ *                 .protocol("tcp")
+ *                 .port_range("443")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -55,28 +98,28 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.addresses;
     }
     /**
-     * When `type`==`app_categories`, list of application categories are available through List App Category Definitions
+     * When `type`==`appCategories`, list of application categories are available through List App Category Definitions
      * 
      */
     @Export(name="appCategories", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> appCategories;
 
     /**
-     * @return When `type`==`app_categories`, list of application categories are available through List App Category Definitions
+     * @return When `type`==`appCategories`, list of application categories are available through List App Category Definitions
      * 
      */
     public Output<List<String>> appCategories() {
         return this.appCategories;
     }
     /**
-     * When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
+     * When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
      * 
      */
     @Export(name="appSubcategories", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> appSubcategories;
 
     /**
-     * @return When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
+     * @return When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
      * 
      */
     public Output<List<String>> appSubcategories() {
@@ -143,14 +186,14 @@ public class Service extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dscp);
     }
     /**
-     * enum: `non_revertible`, `none`, `revertible`
+     * enum: `nonRevertible`, `none`, `revertible`
      * 
      */
     @Export(name="failoverPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> failoverPolicy;
 
     /**
-     * @return enum: `non_revertible`, `none`, `revertible`
+     * @return enum: `nonRevertible`, `none`, `revertible`
      * 
      */
     public Output<Optional<String>> failoverPolicy() {
@@ -263,14 +306,14 @@ public class Service extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ssrRelaxedTcpStateEnforcement);
     }
     /**
-     * when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
+     * when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
      * 
      */
     @Export(name="trafficClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trafficClass;
 
     /**
-     * @return when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
+     * @return when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
      * 
      */
     public Output<Optional<String>> trafficClass() {
@@ -291,14 +334,14 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.trafficType;
     }
     /**
-     * enum: `app_categories`, `apps`, `custom`, `urls`
+     * enum: `appCategories`, `apps`, `custom`, `urls`
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return enum: `app_categories`, `apps`, `custom`, `urls`
+     * @return enum: `appCategories`, `apps`, `custom`, `urls`
      * 
      */
     public Output<String> type() {

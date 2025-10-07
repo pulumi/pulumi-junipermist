@@ -16,6 +16,112 @@ import (
 //
 // A Gateway template is used to define the static ip address and subnet mask of the hub device, along with the gateway. It also allows for the selection of options such as enabling source nat and overriding the public ip for the hub if needed. the endpoint selected in the gateway template ties the hub and spoke devices together and creates the auto-vpn tunnel.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewGatewaytemplate(ctx, "gatewaytemplate_one", &org.GatewaytemplateArgs{
+//				Type:  pulumi.String("spoke"),
+//				Name:  pulumi.String("gatewaytemplate_one"),
+//				OrgId: pulumi.Any(terraformTest.Id),
+//				PortConfig: org.GatewaytemplatePortConfigMap{
+//					"ge-0/0/3": &org.GatewaytemplatePortConfigArgs{
+//						Name:       pulumi.String("FTTH"),
+//						Usage:      pulumi.String("wan"),
+//						Aggregated: pulumi.Bool(false),
+//						Redundant:  pulumi.Bool(false),
+//						Critical:   pulumi.Bool(false),
+//						WanType:    pulumi.String("broadband"),
+//						IpConfig: &org.GatewaytemplatePortConfigIpConfigArgs{
+//							Type:    pulumi.String("static"),
+//							Ip:      pulumi.String("192.168.1.8"),
+//							Netmask: pulumi.String("/24"),
+//							Gateway: pulumi.String("192.168.1.1"),
+//						},
+//						DisableAutoneg: pulumi.Bool(false),
+//						Speed:          pulumi.String("auto"),
+//						Duplex:         pulumi.String("auto"),
+//						WanSourceNat: &org.GatewaytemplatePortConfigWanSourceNatArgs{
+//							Disabled: pulumi.Bool(false),
+//						},
+//						VpnPaths: org.GatewaytemplatePortConfigVpnPathsMap{
+//							"SSR_HUB_DC-MPLS.OrgOverlay": &org.GatewaytemplatePortConfigVpnPathsArgs{
+//								Key:        0,
+//								Role:       pulumi.String("spoke"),
+//								BfdProfile: pulumi.String("broadband"),
+//							},
+//						},
+//					},
+//					"ge-0/0/5": &org.GatewaytemplatePortConfigArgs{
+//						Usage:         pulumi.String("lan"),
+//						Critical:      pulumi.Bool(false),
+//						Aggregated:    pulumi.Bool(true),
+//						AeDisableLacp: pulumi.Bool(false),
+//						AeLacpForceUp: pulumi.Bool(true),
+//						AeIdx:         pulumi.String("0"),
+//						Redundant:     pulumi.Bool(false),
+//						Networks: pulumi.StringArray{
+//							pulumi.String("PRD-Core"),
+//							pulumi.String("PRD-Mgmt"),
+//							pulumi.String("PRD-Lab"),
+//						},
+//					},
+//				},
+//				IpConfigs: org.GatewaytemplateIpConfigsMap{
+//					"PRD-Core": &org.GatewaytemplateIpConfigsArgs{
+//						Type:    pulumi.String("static"),
+//						Ip:      pulumi.String("10.3.100.9"),
+//						Netmask: pulumi.String("/24"),
+//					},
+//					"PRD-Mgmt": &org.GatewaytemplateIpConfigsArgs{
+//						Type:    pulumi.String("static"),
+//						Ip:      pulumi.String("10.3.172.1"),
+//						Netmask: pulumi.String("/24"),
+//					},
+//					"PRD-Lab": &org.GatewaytemplateIpConfigsArgs{
+//						Type:    pulumi.String("static"),
+//						Ip:      pulumi.String("10.3.171.1"),
+//						Netmask: pulumi.String("/24"),
+//					},
+//				},
+//				ServicePolicies: org.GatewaytemplateServicePolicyArray{
+//					&org.GatewaytemplateServicePolicyArgs{
+//						Name: pulumi.String("Policy-14"),
+//						Tenants: pulumi.StringArray{
+//							pulumi.String("PRD-Core"),
+//						},
+//						Services: pulumi.StringArray{
+//							pulumi.String("any"),
+//						},
+//						Action:          pulumi.String("allow"),
+//						Path_preference: "HUB",
+//						Idp: &org.GatewaytemplateServicePolicyIdpArgs{
+//							Enabled:   pulumi.Bool(true),
+//							Profile:   pulumi.String("critical"),
+//							AlertOnly: pulumi.Bool(false),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_gatewaytemplate` with:

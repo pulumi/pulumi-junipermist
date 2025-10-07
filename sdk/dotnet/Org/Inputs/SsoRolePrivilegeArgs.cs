@@ -13,25 +13,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class SsoRolePrivilegeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+        /// access permissions. enum: `Admin`, `Helpdesk`, `Installer`, `Read`, `Write`
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
         /// <summary>
-        /// enum: `org`, `site`, `sitegroup`
+        /// enum: `Org`, `Site`, `Sitegroup`
         /// </summary>
         [Input("scope", required: true)]
         public Input<string> Scope { get; set; } = null!;
 
         /// <summary>
-        /// Required if `scope`==`site`
+        /// Required if `Scope`==`Site`
         /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
         /// <summary>
-        /// Required if `scope`==`sitegroup`
+        /// Required if `Scope`==`Sitegroup`
         /// </summary>
         [Input("sitegroupId")]
         public Input<string>? SitegroupId { get; set; }
@@ -41,19 +41,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         /// <summary>
         /// Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  
-        /// You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.  
+        /// You can define custom roles by adding the `Views` attribute along with `Role` when assigning privileges.  
         /// Below are the list of supported UI views. Note that this is UI only feature.  
         /// 
         ///   | UI View | Required Role | Description |
         ///   | --- | --- | --- |
-        ///   | `reporting` | `read` | full access to all analytics tools |
-        ///   | `marketing` | `read` | can view analytics and location maps |
-        ///   | `super_observer` | `read` | can view all the organization except the subscription page |
-        ///   | `location` | `write` | can view and manage location maps, can view analytics |
-        ///   | `security` | `write` | can view and manage site labels, policies and security |
-        ///   | `switch_admin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
-        ///   | `mxedge_admin` | `admin` | can view and manage Mist edges and Mist tunnels |
-        ///   | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
+        ///   | `Reporting` | `Read` | full access to all analytics tools |
+        ///   | `Marketing` | `Read` | can view analytics and location maps |
+        ///   | `SuperObserver` | `Read` | can view all the organization except the subscription page |
+        ///   | `Location` | `Write` | can view and manage location maps, can view analytics |
+        ///   | `Security` | `Write` | can view and manage site labels, policies and security |
+        ///   | `SwitchAdmin` | `Helpdesk` | can view and manage Switch ports, can view wired clients |
+        ///   | `MxedgeAdmin` | `Admin` | can view and manage Mist edges and Mist tunnels |
+        ///   | `LobbyAdmin` | `Admin` | full access to Org and Site Pre-shared keys |
         /// </summary>
         public InputList<string> Views
         {

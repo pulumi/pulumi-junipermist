@@ -20,6 +20,50 @@ import (
 //
 // !> Only ONE `site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/site"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := site.NewSetting(ctx, "site_one", &site.SettingArgs{
+//				SiteId:                pulumi.Any(terraformSite.Id),
+//				ApUpdownThreshold:     pulumi.Int(5),
+//				DeviceUpdownThreshold: pulumi.Int(5),
+//				AutoUpgrade: &site.SettingAutoUpgradeArgs{
+//					Enabled:     pulumi.Bool(true),
+//					Day_of_week: "tue",
+//					Time_of_day: "02:00",
+//					Version:     pulumi.String("beta"),
+//				},
+//				ConfigAutoRevert:      pulumi.Bool(true),
+//				PersistConfigOnDevice: pulumi.Bool(true),
+//				Proxy: &site.SettingProxyArgs{
+//					Url: pulumi.String("http://myproxy:3128"),
+//				},
+//				Rogue: &site.SettingRogueArgs{
+//					Enabled:          pulumi.Bool(true),
+//					Honeypot_enabled: true,
+//					Min_duration:     5,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_site_setting` with:

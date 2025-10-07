@@ -14,6 +14,55 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var rftemplateOne = new JuniperMist.Org.Rftemplate("rftemplate_one", new()
+    ///     {
+    ///         Name = "rftemplate_one",
+    ///         OrgId = terraformTest.Id,
+    ///         Band24Usage = "auto",
+    ///         Band5 = new JuniperMist.Org.Inputs.RftemplateBand5Args
+    ///         {
+    ///             Ant_gain = 2,
+    ///             Power = 8,
+    ///             Channels = new[]
+    ///             {
+    ///                 60,
+    ///                 104,
+    ///                 132,
+    ///             },
+    ///             Bandwidth = 20,
+    ///         },
+    ///         Band6 = new JuniperMist.Org.Inputs.RftemplateBand6Args
+    ///         {
+    ///             Ant_gain = 2,
+    ///             Power = 8,
+    ///         },
+    ///         Band24 = new JuniperMist.Org.Inputs.RftemplateBand24Args
+    ///         {
+    ///             Ant_gain = 1,
+    ///             Allow_rrm_disable = true,
+    ///             Power_min = 18,
+    ///             Power_max = 18,
+    ///             Bandwidth = 20,
+    ///         },
+    ///         AntGain5 = 2,
+    ///         AntGain6 = 2,
+    ///         AntGain24 = 1,
+    ///         CountryCode = "FR",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_rftemplate` with:
@@ -43,7 +92,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.RftemplateBand24?> Band24 { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `24`, `5`, `6`, `auto`
+        /// enum: `24`, `5`, `6`, `Auto`
         /// </summary>
         [Output("band24Usage")]
         public Output<string?> Band24Usage { get; private set; } = null!;
@@ -156,7 +205,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.RftemplateBand24Args>? Band24 { get; set; }
 
         /// <summary>
-        /// enum: `24`, `5`, `6`, `auto`
+        /// enum: `24`, `5`, `6`, `Auto`
         /// </summary>
         [Input("band24Usage")]
         public Input<string>? Band24Usage { get; set; }
@@ -236,7 +285,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.RftemplateBand24GetArgs>? Band24 { get; set; }
 
         /// <summary>
-        /// enum: `24`, `5`, `6`, `auto`
+        /// enum: `24`, `5`, `6`, `Auto`
         /// </summary>
         [Input("band24Usage")]
         public Input<string>? Band24Usage { get; set; }

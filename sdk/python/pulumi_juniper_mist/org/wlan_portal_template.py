@@ -140,6 +140,27 @@ class WlanPortalTemplate(pulumi.CustomResource):
         **Notes:**
         * There is no feedback from the API, so there is no possibility to validate the changes. The resource states is directly generated based on the resource plan.* There is no option to delete or revert the changes. Deleting the resource will just remove it from the states. Once removed, it is possible to create a new one. It will replace the previous template
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        wlan_one = junipermist.org.WlanPortalTemplate("wlan_one",
+            org_id=terraform_test["id"],
+            wlan_id=wlan_one_mist_org["id"],
+            portal_template={
+                "sms_message_format": "Code {{code}} expires in {{duration}} minutes.",
+                "sms_validity_duration": "10",
+                "page_title": "Welcome To My Demo Portal",
+                "locales": {
+                    "fr-FR": {
+                        "page_title": "Bienvenue sur mon portail de démo",
+                    },
+                },
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict']] portal_template: Portal template wlan settings
@@ -161,6 +182,27 @@ class WlanPortalTemplate(pulumi.CustomResource):
 
         **Notes:**
         * There is no feedback from the API, so there is no possibility to validate the changes. The resource states is directly generated based on the resource plan.* There is no option to delete or revert the changes. Deleting the resource will just remove it from the states. Once removed, it is possible to create a new one. It will replace the previous template
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        wlan_one = junipermist.org.WlanPortalTemplate("wlan_one",
+            org_id=terraform_test["id"],
+            wlan_id=wlan_one_mist_org["id"],
+            portal_template={
+                "sms_message_format": "Code {{code}} expires in {{duration}} minutes.",
+                "sms_validity_duration": "10",
+                "page_title": "Welcome To My Demo Portal",
+                "locales": {
+                    "fr-FR": {
+                        "page_title": "Bienvenue sur mon portail de démo",
+                    },
+                },
+            })
+        ```
 
         :param str resource_name: The name of the resource.
         :param WlanPortalTemplateArgs args: The arguments to use to populate this resource's properties.

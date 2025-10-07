@@ -430,6 +430,25 @@ class Servicepolicy(pulumi.CustomResource):
         * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
           They can be used to manage common policies between multiples configurations
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        servicepolicy_one = junipermist.org.Servicepolicy("servicepolicy_one",
+            org_id=terraform_test["id"],
+            tenants=["guest"],
+            services=["guest-internet"],
+            action="allow",
+            idp={
+                "enabled": True,
+                "profile": "standard",
+                "alert_only": True,
+            },
+            name="Guest-IDP")
+        ```
+
         ## Import
 
         Using `pulumi import`, import `mist_org_servicepolicy` with:
@@ -464,6 +483,25 @@ class Servicepolicy(pulumi.CustomResource):
         * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
         * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
           They can be used to manage common policies between multiples configurations
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        servicepolicy_one = junipermist.org.Servicepolicy("servicepolicy_one",
+            org_id=terraform_test["id"],
+            tenants=["guest"],
+            services=["guest-internet"],
+            action="allow",
+            idp={
+                "enabled": True,
+                "profile": "standard",
+                "alert_only": True,
+            },
+            name="Guest-IDP")
+        ```
 
         ## Import
 

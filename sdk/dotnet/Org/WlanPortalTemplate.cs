@@ -15,10 +15,42 @@ namespace Pulumi.JuniperMist.Org
     /// The WLAN Portal Template can be used to define:
     /// * Guest Authentication methods and parameters (access duration, ...)
     /// * Default values of the text fields and labels on the portal
-    /// * Values of the text fields and labels based on the User Agent (`locales` property)
+    /// * Values of the text fields and labels based on the User Agent (`Locales` property)
     /// 
     /// **Notes:**
     /// * There is no feedback from the API, so there is no possibility to validate the changes. The resource states is directly generated based on the resource plan.* There is no option to delete or revert the changes. Deleting the resource will just remove it from the states. Once removed, it is possible to create a new one. It will replace the previous template
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var wlanOne = new JuniperMist.Org.WlanPortalTemplate("wlan_one", new()
+    ///     {
+    ///         OrgId = terraformTest.Id,
+    ///         WlanId = wlanOneMistOrg.Id,
+    ///         PortalTemplate = new JuniperMist.Org.Inputs.WlanPortalTemplatePortalTemplateArgs
+    ///         {
+    ///             Sms_message_format = "Code {{code}} expires in {{duration}} minutes.",
+    ///             Sms_validity_duration = "10",
+    ///             Page_title = "Welcome To My Demo Portal",
+    ///             Locales = 
+    ///             {
+    ///                 { "fr-FR", new JuniperMist.Org.Inputs.WlanPortalTemplatePortalTemplateLocalesArgs
+    ///                 {
+    ///                     PageTitle = "Bienvenue sur mon portail de démo",
+    ///                 } },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [JuniperMistResourceType("junipermist:org/wlanPortalTemplate:WlanPortalTemplate")]
     public partial class WlanPortalTemplate : global::Pulumi.CustomResource

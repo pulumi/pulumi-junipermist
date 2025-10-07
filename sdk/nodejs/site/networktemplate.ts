@@ -15,6 +15,70 @@ import * as utilities from "../utilities";
  *
  * !> Only ONE `junipermist.site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const networktemplateOne = new junipermist.site.Networktemplate("networktemplate_one", {
+ *     siteId: terraformTest.id,
+ *     dnsServers: [
+ *         "8.8.8.8",
+ *         "1.1.1.1",
+ *     ],
+ *     dnsSuffixes: ["mycorp.com"],
+ *     ntpServers: ["pool.ntp.org"],
+ *     additionalConfigCmds: [
+ *         "set system hostname test",
+ *         "set system services ssh root-login allow",
+ *     ],
+ *     networks: {
+ *         network_one: {
+ *             vlanId: "10",
+ *         },
+ *         network_two: {
+ *             vlanId: "11",
+ *         },
+ *     },
+ *     portUsages: {
+ *         trunk: {
+ *             allNetworks: true,
+ *             enableQos: true,
+ *             mode: "port_usage_one",
+ *             portNetwork: "network_one",
+ *         },
+ *     },
+ *     radiusConfig: {
+ *         acct_interim_interval: 60,
+ *         coa_enabled: true,
+ *         network: "network_one",
+ *         acct_servers: [{
+ *             host: "1.2.3.4",
+ *             secret: "secret",
+ *         }],
+ *         auth_servers: [{
+ *             host: "1.2.3.4",
+ *             secret: "secret",
+ *         }],
+ *     },
+ *     switchMatching: {
+ *         enable: true,
+ *         rules: [{
+ *             name: "switch_rule_one",
+ *             matchName: "corp",
+ *             matchNameOffset: 3,
+ *             matchRole: "core",
+ *             portConfig: {
+ *                 "ge-0/0/0-10": {
+ *                     usage: "port_usage_one",
+ *                 },
+ *             },
+ *         }],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_site_networktemplate` with:

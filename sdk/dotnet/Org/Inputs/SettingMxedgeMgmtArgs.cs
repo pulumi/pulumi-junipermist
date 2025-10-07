@@ -31,13 +31,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// enum: `dhcp`, `disabled`, `static`
+        /// enum: `Dhcp`, `Disabled`, `Static`
         /// </summary>
         [Input("oobIpType")]
         public Input<string>? OobIpType { get; set; }
 
         /// <summary>
-        /// enum: `autoconf`, `dhcp`, `disabled`, `static`
+        /// enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`
         /// </summary>
         [Input("oobIpType6")]
         public Input<string>? OobIpType6 { get; set; }

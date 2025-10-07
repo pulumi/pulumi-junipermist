@@ -14,27 +14,27 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplatePortMirroring
     {
         /// <summary>
-        /// At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        /// At least one of the `InputPortIdsIngress`, `InputPortIdsEgress` or `InputNetworksIngress ` should be specified
         /// </summary>
         public readonly ImmutableArray<string> InputNetworksIngresses;
         /// <summary>
-        /// At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        /// At least one of the `InputPortIdsIngress`, `InputPortIdsEgress` or `InputNetworksIngress ` should be specified
         /// </summary>
         public readonly ImmutableArray<string> InputPortIdsEgresses;
         /// <summary>
-        /// At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        /// At least one of the `InputPortIdsIngress`, `InputPortIdsEgress` or `InputNetworksIngress ` should be specified
         /// </summary>
         public readonly ImmutableArray<string> InputPortIdsIngresses;
         /// <summary>
-        /// Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        /// Exactly one of the `OutputIpAddress`, `OutputPortId` or `OutputNetwork` should be provided
         /// </summary>
         public readonly string? OutputIpAddress;
         /// <summary>
-        /// Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        /// Exactly one of the `OutputIpAddress`, `OutputPortId` or `OutputNetwork` should be provided
         /// </summary>
         public readonly string? OutputNetwork;
         /// <summary>
-        /// Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        /// Exactly one of the `OutputIpAddress`, `OutputPortId` or `OutputNetwork` should be provided
         /// </summary>
         public readonly string? OutputPortId;
 

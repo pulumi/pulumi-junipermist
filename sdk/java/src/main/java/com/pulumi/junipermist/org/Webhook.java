@@ -24,6 +24,55 @@ import javax.annotation.Nullable;
  * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\
  * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.Webhook;
+ * import com.pulumi.junipermist.org.WebhookArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var webhookOne = new Webhook("webhookOne", WebhookArgs.builder()
+ *             .siteId(terraformTest.id())
+ *             .name("webhook_one")
+ *             .type("http-post")
+ *             .url("https://myserver.com:4321/")
+ *             .verifyCert(false)
+ *             .enabled(true)
+ *             .topics(            
+ *                 "device-events",
+ *                 "alarms",
+ *                 "audits",
+ *                 "client-join",
+ *                 "client-info",
+ *                 "client-sessions",
+ *                 "device-updowns",
+ *                 "mxedge-events",
+ *                 "nac-events",
+ *                 "nac-accounting")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_org_webhook` with:
@@ -80,56 +129,56 @@ public class Webhook extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Required when `oauth2_grant_type`==`client_credentials`
+     * Required when `oauth2GrantType`==`clientCredentials`
      * 
      */
     @Export(name="oauth2ClientId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauth2ClientId;
 
     /**
-     * @return Required when `oauth2_grant_type`==`client_credentials`
+     * @return Required when `oauth2GrantType`==`clientCredentials`
      * 
      */
     public Output<Optional<String>> oauth2ClientId() {
         return Codegen.optional(this.oauth2ClientId);
     }
     /**
-     * Required when `oauth2_grant_type`==`client_credentials`
+     * Required when `oauth2GrantType`==`clientCredentials`
      * 
      */
     @Export(name="oauth2ClientSecret", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauth2ClientSecret;
 
     /**
-     * @return Required when `oauth2_grant_type`==`client_credentials`
+     * @return Required when `oauth2GrantType`==`clientCredentials`
      * 
      */
     public Output<Optional<String>> oauth2ClientSecret() {
         return Codegen.optional(this.oauth2ClientSecret);
     }
     /**
-     * required when `type`==`oauth2`. enum: `client_credentials`, `password`
+     * required when `type`==`oauth2`. enum: `clientCredentials`, `password`
      * 
      */
     @Export(name="oauth2GrantType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauth2GrantType;
 
     /**
-     * @return required when `type`==`oauth2`. enum: `client_credentials`, `password`
+     * @return required when `type`==`oauth2`. enum: `clientCredentials`, `password`
      * 
      */
     public Output<Optional<String>> oauth2GrantType() {
         return Codegen.optional(this.oauth2GrantType);
     }
     /**
-     * Required when `oauth2_grant_type`==`password`
+     * Required when `oauth2GrantType`==`password`
      * 
      */
     @Export(name="oauth2Password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauth2Password;
 
     /**
-     * @return Required when `oauth2_grant_type`==`password`
+     * @return Required when `oauth2GrantType`==`password`
      * 
      */
     public Output<Optional<String>> oauth2Password() {
@@ -164,14 +213,14 @@ public class Webhook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.oauth2TokenUrl);
     }
     /**
-     * Required when `oauth2_grant_type`==`password`
+     * Required when `oauth2GrantType`==`password`
      * 
      */
     @Export(name="oauth2Username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauth2Username;
 
     /**
-     * @return Required when `oauth2_grant_type`==`password`
+     * @return Required when `oauth2GrantType`==`password`
      * 
      */
     public Output<Optional<String>> oauth2Username() {
@@ -212,14 +261,14 @@ public class Webhook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.singleEventPerMessage);
     }
     /**
-     * Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
+     * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
      * 
      */
     @Export(name="splunkToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> splunkToken;
 
     /**
-     * @return Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
+     * @return Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
      * 
      */
     public Output<Optional<String>> splunkToken() {

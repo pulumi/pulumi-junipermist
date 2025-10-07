@@ -21,7 +21,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// enum: `ecmp`, `ordered`, `weighted`
+        /// enum: `Ecmp`, `Ordered`, `Weighted`
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }

@@ -19,13 +19,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// org_level IDP Profile can be used, this takes precedence over `profile`
+        /// org_level IDP Profile can be used, this takes precedence over `Profile`
         /// </summary>
         [Input("idpprofileId")]
         public Input<string>? IdpprofileId { get; set; }
 
         /// <summary>
-        /// enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
+        /// enum: `Custom`, `Strict` (default), `Standard` or keys from idp_profiles
         /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }

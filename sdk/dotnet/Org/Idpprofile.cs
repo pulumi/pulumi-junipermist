@@ -16,6 +16,58 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// The profile includes rules and policies that determine which types of traffic or attacks should be monitored, what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var idpprofileOne = new JuniperMist.Org.Idpprofile("idpprofile_one", new()
+    ///     {
+    ///         OrgId = terraformTest.Id,
+    ///         BaseProfile = "standard",
+    ///         Overwrites = new[]
+    ///         {
+    ///             new JuniperMist.Org.Inputs.IdpprofileOverwriteArgs
+    ///             {
+    ///                 Name = "server_bypass",
+    ///                 Matching = new JuniperMist.Org.Inputs.IdpprofileOverwriteMatchingArgs
+    ///                 {
+    ///                     Severity = new() { },
+    ///                     DstSubnet = new() { },
+    ///                     AttackName = new[]
+    ///                     {
+    ///                         "SSL:OVERFLOW:KEY-ARG-NO-ENTROPY",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new JuniperMist.Org.Inputs.IdpprofileOverwriteArgs
+    ///             {
+    ///                 Name = "guest-bypass",
+    ///                 Matching = new JuniperMist.Org.Inputs.IdpprofileOverwriteMatchingArgs
+    ///                 {
+    ///                     Severity = new() { },
+    ///                     DstSubnet = new[]
+    ///                     {
+    ///                         "8.8.8.8/32",
+    ///                     },
+    ///                     AttackName = new[]
+    ///                     {
+    ///                         "UDP:ZERO-DATA",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Name = "idpprofile_one",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_idpprofile` with:
@@ -30,7 +82,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Idpprofile : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// enum: `critical`, `standard`, `strict`
+        /// enum: `Critical`, `Standard`, `Strict`
         /// </summary>
         [Output("baseProfile")]
         public Output<string> BaseProfile { get; private set; } = null!;
@@ -92,7 +144,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class IdpprofileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `critical`, `standard`, `strict`
+        /// enum: `Critical`, `Standard`, `Strict`
         /// </summary>
         [Input("baseProfile", required: true)]
         public Input<string> BaseProfile { get; set; } = null!;
@@ -120,7 +172,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class IdpprofileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `critical`, `standard`, `strict`
+        /// enum: `Critical`, `Standard`, `Strict`
         /// </summary>
         [Input("baseProfile")]
         public Input<string>? BaseProfile { get; set; }

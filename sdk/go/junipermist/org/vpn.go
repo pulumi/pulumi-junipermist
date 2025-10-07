@@ -14,6 +14,56 @@ import (
 
 // This resource manages the Org VPN.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewSetting(ctx, "terraform_test", &org.SettingArgs{
+//				OrgId: pulumi.Any(terraformTestMistOrg.Id),
+//				PasswordPolicy: &org.SettingPasswordPolicyArgs{
+//					Enabled:                  pulumi.Bool(true),
+//					Min_length:               8,
+//					Requires_special_char:    true,
+//					Requires_two_factor_auth: true,
+//				},
+//				MistNac: &org.SettingMistNacArgs{
+//					Eu_only: true,
+//				},
+//				SyntheticTest: &org.SettingSyntheticTestArgs{
+//					Disabled: pulumi.Bool(false),
+//					Vlans: org.SettingSyntheticTestVlanArray{
+//						&org.SettingSyntheticTestVlanArgs{
+//							VlanIds: pulumi.StringArray{
+//								pulumi.String("8"),
+//								pulumi.String("999"),
+//							},
+//							Disabled: pulumi.Bool(true),
+//						},
+//					},
+//				},
+//				ApiPolicy: &org.SettingApiPolicyArgs{
+//					No_reveal: false,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_vpn` with:

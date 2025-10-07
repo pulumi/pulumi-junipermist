@@ -789,6 +789,26 @@ class Service(pulumi.CustomResource):
         * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
         * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies.services`)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        service_one = junipermist.org.Service("service_one",
+            org_id=terraform_test["id"],
+            name="service_one",
+            addresses=[
+                "10.3.0.0/24",
+                "10.4.0.0/24",
+            ],
+            type="custom",
+            specs=[{
+                "protocol": "tcp",
+                "port_range": "443",
+            }])
+        ```
+
         ## Import
 
         Using `pulumi import`, import `mist_org_service` with:
@@ -835,6 +855,26 @@ class Service(pulumi.CustomResource):
         * the Gateway configuration (`mist_device_gateway.service_policies.services`)
         * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
         * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies.services`)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        service_one = junipermist.org.Service("service_one",
+            org_id=terraform_test["id"],
+            name="service_one",
+            addresses=[
+                "10.3.0.0/24",
+                "10.4.0.0/24",
+            ],
+            type="custom",
+            specs=[{
+                "protocol": "tcp",
+                "port_range": "443",
+            }])
+        ```
 
         ## Import
 

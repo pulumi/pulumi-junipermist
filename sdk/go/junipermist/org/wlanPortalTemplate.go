@@ -21,6 +21,43 @@ import (
 //
 // **Notes:**
 // * There is no feedback from the API, so there is no possibility to validate the changes. The resource states is directly generated based on the resource plan.* There is no option to delete or revert the changes. Deleting the resource will just remove it from the states. Once removed, it is possible to create a new one. It will replace the previous template
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewWlanPortalTemplate(ctx, "wlan_one", &org.WlanPortalTemplateArgs{
+//				OrgId:  pulumi.Any(terraformTest.Id),
+//				WlanId: pulumi.Any(wlanOneMistOrg.Id),
+//				PortalTemplate: &org.WlanPortalTemplatePortalTemplateArgs{
+//					Sms_message_format:    "Code {{code}} expires in {{duration}} minutes.",
+//					Sms_validity_duration: "10",
+//					Page_title:            "Welcome To My Demo Portal",
+//					Locales: org.WlanPortalTemplatePortalTemplateLocalesMap{
+//						"fr-FR": &org.WlanPortalTemplatePortalTemplateLocalesArgs{
+//							PageTitle: pulumi.String("Bienvenue sur mon portail de démo"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type WlanPortalTemplate struct {
 	pulumi.CustomResourceState
 

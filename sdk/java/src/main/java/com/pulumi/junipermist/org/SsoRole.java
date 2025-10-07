@@ -22,6 +22,46 @@ import javax.annotation.Nullable;
  * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
  * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.SsoRole;
+ * import com.pulumi.junipermist.org.SsoRoleArgs;
+ * import com.pulumi.junipermist.org.inputs.SsoRolePrivilegeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ssoRoleOne = new SsoRole("ssoRoleOne", SsoRoleArgs.builder()
+ *             .orgId(terraformTest.id())
+ *             .name("admin_sso")
+ *             .privileges(SsoRolePrivilegeArgs.builder()
+ *                 .scope("site")
+ *                 .role("read")
+ *                 .site_id(terraformSite.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_org_sso_role` with:

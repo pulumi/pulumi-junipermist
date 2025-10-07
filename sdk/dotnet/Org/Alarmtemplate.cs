@@ -14,11 +14,62 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// An Alarm Template is a set of Alarm Rules that could be applied to one or more sites (while each site can only pick one Alarm Template), or to the whole org.
     /// 
-    /// Once created, the Alarm template must be assigned with the `alarmtemplate_id` attribute to one of the following:
+    /// Once created, the Alarm template must be assigned with the `AlarmtemplateId` attribute to one of the following:
     /// * the whole org with the `junipermist.org.base` resource
     /// * one or multiple sites with the `junipermist.site.base` resource
     /// 
     /// It is possible to use the `junipermist.getConstAlarms` data source to get a list of the available alarms
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var alarmtemplateOne = new JuniperMist.Org.Alarmtemplate("alarmtemplate_one", new()
+    ///     {
+    ///         OrgId = terraformTest.Id,
+    ///         Name = "alarmtemplate_one",
+    ///         Delivery = new JuniperMist.Org.Inputs.AlarmtemplateDeliveryArgs
+    ///         {
+    ///             Enabled = true,
+    ///             To_org_admins = true,
+    ///             Additional_emails = new[]
+    ///             {
+    ///                 "admin@mycorp.net",
+    ///             },
+    ///         },
+    ///         Rules = 
+    ///         {
+    ///             { "health_check_failed", new JuniperMist.Org.Inputs.AlarmtemplateRulesArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             } },
+    ///             { "insufficient_capacity", new JuniperMist.Org.Inputs.AlarmtemplateRulesArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             } },
+    ///             { "insufficient_coverage", new JuniperMist.Org.Inputs.AlarmtemplateRulesArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             } },
+    ///             { "infra_arp_failure", new JuniperMist.Org.Inputs.AlarmtemplateRulesArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             } },
+    ///             { "arp_failure", new JuniperMist.Org.Inputs.AlarmtemplateRulesArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

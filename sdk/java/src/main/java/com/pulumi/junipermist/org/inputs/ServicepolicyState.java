@@ -127,14 +127,14 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
+     * By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
      * 
      */
     @Import(name="pathPreference")
     private @Nullable Output<String> pathPreference;
 
     /**
-     * @return By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
+     * @return By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
      * 
      */
     public Optional<Output<String>> pathPreference() {
@@ -352,7 +352,7 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pathPreference By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
+         * @param pathPreference By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pathPreference By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
+         * @param pathPreference By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
          * 
          * @return builder
          * 

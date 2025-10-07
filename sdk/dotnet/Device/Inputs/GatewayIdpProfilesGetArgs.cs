@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayIdpProfilesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `critical`, `standard`, `strict`
+        /// enum: `Critical`, `Standard`, `Strict`
         /// </summary>
         [Input("baseProfile")]
         public Input<string>? BaseProfile { get; set; }

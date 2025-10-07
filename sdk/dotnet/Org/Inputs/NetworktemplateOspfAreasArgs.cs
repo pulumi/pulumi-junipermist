@@ -24,7 +24,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// OSPF type. enum: `default`, `nssa`, `stub`
+        /// OSPF type. enum: `Default`, `Nssa`, `Stub`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

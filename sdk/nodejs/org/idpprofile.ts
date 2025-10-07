@@ -13,6 +13,37 @@ import * as utilities from "../utilities";
  *
  * The profile includes rules and policies that determine which types of traffic or attacks should be monitored, what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const idpprofileOne = new junipermist.org.Idpprofile("idpprofile_one", {
+ *     orgId: terraformTest.id,
+ *     baseProfile: "standard",
+ *     overwrites: [
+ *         {
+ *             name: "server_bypass",
+ *             matching: {
+ *                 severity: [],
+ *                 dstSubnet: [],
+ *                 attackName: ["SSL:OVERFLOW:KEY-ARG-NO-ENTROPY"],
+ *             },
+ *         },
+ *         {
+ *             name: "guest-bypass",
+ *             matching: {
+ *                 severity: [],
+ *                 dstSubnet: ["8.8.8.8/32"],
+ *                 attackName: ["UDP:ZERO-DATA"],
+ *             },
+ *         },
+ *     ],
+ *     name: "idpprofile_one",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_idpprofile` with:

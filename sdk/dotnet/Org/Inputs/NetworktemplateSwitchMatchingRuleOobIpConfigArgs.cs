@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NetworktemplateSwitchMatchingRuleOobIpConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `dhcp`, `static`
+        /// enum: `Dhcp`, `Static`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

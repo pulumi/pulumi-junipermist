@@ -173,7 +173,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
+     * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
      * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
      * 
      */
@@ -181,7 +181,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     private @Nullable Output<Boolean> serverIdOverride;
 
     /**
-     * @return `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
+     * @return `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
      * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
      * 
      */
@@ -538,7 +538,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serverIdOverride `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
+         * @param serverIdOverride `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
          * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
          * 
          * @return builder
@@ -550,7 +550,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serverIdOverride `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
+         * @param serverIdOverride `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
          * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
          * 
          * @return builder

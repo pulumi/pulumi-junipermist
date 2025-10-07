@@ -19,12 +19,12 @@ public final class DeviceprofileApPortConfigMistNac {
      */
     private @Nullable Integer acctInterimInterval;
     /**
-     * @return Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. &#34;retries&#34; are set to value of `auth_servers_timeout`. &#34;max-requests&#34; is also set when setting `auth_servers_retries` is set to default value to 3.
+     * @return Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;retries&#34; are set to value of `authServersTimeout`. &#34;max-requests&#34; is also set when setting `authServersRetries` is set to default value to 3.
      * 
      */
     private @Nullable Integer authServersRetries;
     /**
-     * @return Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `auth_servers_timeout`. &#34;supplicant-timeout&#34; is also set when setting `auth_servers_timeout` is set to default value of 10.
+     * @return Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `authServersTimeout`. &#34;supplicant-timeout&#34; is also set when setting `authServersTimeout` is set to default value of 10.
      * 
      */
     private @Nullable Integer authServersTimeout;
@@ -40,17 +40,17 @@ public final class DeviceprofileApPortConfigMistNac {
     private @Nullable Integer coaPort;
     /**
      * @return When enabled:
-     *   * `auth_servers` is ignored
-     *   * `acct_servers` is ignored
+     *   * `authServers` is ignored
+     *   * `acctServers` is ignored
      *   * `auth_servers_*` are ignored
-     *   * `coa_servers` is ignored
+     *   * `coaServers` is ignored
      *   * `radsec` is ignored
-     *   * `coa_enabled` is assumed
+     *   * `coaEnabled` is assumed
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.
+     * @return If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
      * 
      */
     private @Nullable Boolean fastDot1xTimers;
@@ -74,14 +74,14 @@ public final class DeviceprofileApPortConfigMistNac {
         return Optional.ofNullable(this.acctInterimInterval);
     }
     /**
-     * @return Radius auth session retries. Following fast timers are set if `fast_dot1x_timers` knob is enabled. &#34;retries&#34; are set to value of `auth_servers_timeout`. &#34;max-requests&#34; is also set when setting `auth_servers_retries` is set to default value to 3.
+     * @return Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;retries&#34; are set to value of `authServersTimeout`. &#34;max-requests&#34; is also set when setting `authServersRetries` is set to default value to 3.
      * 
      */
     public Optional<Integer> authServersRetries() {
         return Optional.ofNullable(this.authServersRetries);
     }
     /**
-     * @return Radius auth session timeout. Following fast timers are set if `fast_dot1x_timers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `auth_servers_timeout`. &#34;supplicant-timeout&#34; is also set when setting `auth_servers_timeout` is set to default value of 10.
+     * @return Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `authServersTimeout`. &#34;supplicant-timeout&#34; is also set when setting `authServersTimeout` is set to default value of 10.
      * 
      */
     public Optional<Integer> authServersTimeout() {
@@ -103,19 +103,19 @@ public final class DeviceprofileApPortConfigMistNac {
     }
     /**
      * @return When enabled:
-     *   * `auth_servers` is ignored
-     *   * `acct_servers` is ignored
+     *   * `authServers` is ignored
+     *   * `acctServers` is ignored
      *   * `auth_servers_*` are ignored
-     *   * `coa_servers` is ignored
+     *   * `coaServers` is ignored
      *   * `radsec` is ignored
-     *   * `coa_enabled` is assumed
+     *   * `coaEnabled` is assumed
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return If set to true, sets default fast-timers with values calculated from `auth_servers_timeout` and `auth_server_retries`.
+     * @return If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
      * 
      */
     public Optional<Boolean> fastDot1xTimers() {

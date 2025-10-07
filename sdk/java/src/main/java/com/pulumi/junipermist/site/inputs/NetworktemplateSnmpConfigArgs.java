@@ -58,14 +58,14 @@ public final class NetworktemplateSnmpConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * enum: `local`, `use_mac_address`
+     * enum: `local`, `useMacAddress`
      * 
      */
     @Import(name="engineIdType")
     private @Nullable Output<String> engineIdType;
 
     /**
-     * @return enum: `local`, `use_mac_address`
+     * @return enum: `local`, `useMacAddress`
      * 
      */
     public Optional<Output<String>> engineIdType() {
@@ -207,7 +207,7 @@ public final class NetworktemplateSnmpConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param engineIdType enum: `local`, `use_mac_address`
+         * @param engineIdType enum: `local`, `useMacAddress`
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class NetworktemplateSnmpConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param engineIdType enum: `local`, `use_mac_address`
+         * @param engineIdType enum: `local`, `useMacAddress`
          * 
          * @return builder
          * 

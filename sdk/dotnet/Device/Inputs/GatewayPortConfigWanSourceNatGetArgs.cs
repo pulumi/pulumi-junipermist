@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// If alternative nat_pool is desired
+        /// If alternative NatPool is desired
         /// </summary>
         [Input("natPool")]
         public Input<string>? NatPool { get; set; }

@@ -19,7 +19,7 @@ public final class GetWlansOrgWlanDynamicVlan {
      */
     private List<String> defaultVlanIds;
     /**
-     * @return Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
+     * @return Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
      * 
      */
     private Boolean enabled;
@@ -34,7 +34,7 @@ public final class GetWlansOrgWlanDynamicVlan {
      */
     private String type;
     /**
-     * @return Map between vlan_id (as string) to airespace interface names (comma-separated) or null for standard mapping
+     * @return Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
      *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
      *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
      * 
@@ -50,7 +50,7 @@ public final class GetWlansOrgWlanDynamicVlan {
         return this.defaultVlanIds;
     }
     /**
-     * @return Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
+     * @return Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
      * 
      */
     public Boolean enabled() {
@@ -71,7 +71,7 @@ public final class GetWlansOrgWlanDynamicVlan {
         return this.type;
     }
     /**
-     * @return Map between vlan_id (as string) to airespace interface names (comma-separated) or null for standard mapping
+     * @return Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
      *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
      *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
      * 

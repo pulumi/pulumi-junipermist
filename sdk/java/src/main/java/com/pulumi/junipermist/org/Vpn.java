@@ -20,6 +20,64 @@ import javax.annotation.Nullable;
 /**
  * This resource manages the Org VPN.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.Setting;
+ * import com.pulumi.junipermist.org.SettingArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingPasswordPolicyArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingMistNacArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingSyntheticTestArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingApiPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var terraformTest = new Setting("terraformTest", SettingArgs.builder()
+ *             .orgId(terraformTestMistOrg.id())
+ *             .passwordPolicy(SettingPasswordPolicyArgs.builder()
+ *                 .enabled(true)
+ *                 .min_length(8)
+ *                 .requires_special_char(true)
+ *                 .requires_two_factor_auth(true)
+ *                 .build())
+ *             .mistNac(SettingMistNacArgs.builder()
+ *                 .eu_only(true)
+ *                 .build())
+ *             .syntheticTest(SettingSyntheticTestArgs.builder()
+ *                 .disabled(false)
+ *                 .vlans(SettingSyntheticTestVlanArgs.builder()
+ *                     .vlanIds(                    
+ *                         "8",
+ *                         "999")
+ *                     .disabled(true)
+ *                     .build())
+ *                 .build())
+ *             .apiPolicy(SettingApiPolicyArgs.builder()
+ *                 .no_reveal(false)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_org_vpn` with:
@@ -46,42 +104,42 @@ public class Vpn extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Only if `type`==`hub_spoke`
+     * Only if `type`==`hubSpoke`
      * 
      */
     @Export(name="pathSelection", refs={VpnPathSelection.class}, tree="[0]")
     private Output</* @Nullable */ VpnPathSelection> pathSelection;
 
     /**
-     * @return Only if `type`==`hub_spoke`
+     * @return Only if `type`==`hubSpoke`
      * 
      */
     public Output<Optional<VpnPathSelection>> pathSelection() {
         return Codegen.optional(this.pathSelection);
     }
     /**
-     * For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
      * 
      */
     @Export(name="paths", refs={Map.class,String.class,VpnPaths.class}, tree="[0,1,2]")
     private Output<Map<String,VpnPaths>> paths;
 
     /**
-     * @return For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * @return For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
      * 
      */
     public Output<Map<String,VpnPaths>> paths() {
         return this.paths;
     }
     /**
-     * enum: `hub_spoke`, `mesh`
+     * enum: `hubSpoke`, `mesh`
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return enum: `hub_spoke`, `mesh`
+     * @return enum: `hubSpoke`, `mesh`
      * 
      */
     public Output<Optional<String>> type() {

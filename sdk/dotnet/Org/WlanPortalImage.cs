@@ -11,12 +11,32 @@ namespace Pulumi.JuniperMist.Org
 {
     /// <summary>
     /// This resource is used to upload a WLAN Captive Web Portal background image.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var wlanOne = new JuniperMist.Org.WlanPortalImage("wlan_one", new()
+    ///     {
+    ///         SiteId = terraformTest.Id,
+    ///         WlanId = wlanOneMistOrg.Id,
+    ///         File = "/Users/johndoe/Documents/image.jpg",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [JuniperMistResourceType("junipermist:org/wlanPortalImage:WlanPortalImage")]
     public partial class WlanPortalImage : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
+        /// path to the background image file. File must be a `Jpeg`, `Jpg` or `Png` image`
         /// </summary>
         [Output("file")]
         public Output<string> File { get; private set; } = null!;
@@ -78,7 +98,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WlanPortalImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
+        /// path to the background image file. File must be a `Jpeg`, `Jpg` or `Png` image`
         /// </summary>
         [Input("file", required: true)]
         public Input<string> File { get; set; } = null!;
@@ -101,7 +121,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WlanPortalImageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
+        /// path to the background image file. File must be a `Jpeg`, `Jpg` or `Png` image`
         /// </summary>
         [Input("file")]
         public Input<string>? File { get; set; }

@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<Inputs.RftemplateModelSpecificBand24Args>? Band24 { get; set; }
 
         /// <summary>
-        /// enum: `24`, `5`, `6`, `auto`
+        /// enum: `24`, `5`, `6`, `Auto`
         /// </summary>
         [Input("band24Usage")]
         public Input<string>? Band24Usage { get; set; }

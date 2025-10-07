@@ -17,8 +17,8 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
         /// <summary>
         /// ACL Policy Actions:
-        ///   - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-        ///   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+        ///   - for GBP-based policy, all SrcTags and DstTags have to be gbp-based
+        ///   - for ACL-based policy, `Network` is required in either the source or destination so that we know where to attach the policy to
         /// </summary>
         public InputList<Inputs.SwitchAclPolicyActionGetArgs> Actions
         {
@@ -34,8 +34,8 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
         /// <summary>
         /// ACL Policy Source Tags:
-        ///   - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-        ///   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+        ///   - for GBP-based policy, all SrcTags and DstTags have to be gbp-based
+        ///   - for ACL-based policy, `Network` is required in either the source or destination so that we know where to attach the policy to
         /// </summary>
         public InputList<string> SrcTags
         {

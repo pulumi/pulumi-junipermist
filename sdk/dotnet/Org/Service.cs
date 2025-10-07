@@ -12,11 +12,44 @@ namespace Pulumi.JuniperMist.Org
     /// <summary>
     /// This resource manages WAN Assurance Services (Applications).
     /// 
-    /// A Service is used to define a Custom Application that can be used in the `service_policies`. These Services can be referenced by their name in
+    /// A Service is used to define a Custom Application that can be used in the `ServicePolicies`. These Services can be referenced by their name in
     /// * the Service Policies (`mist_org_servicepolicy.services`)
     /// * the Gateway configuration (`mist_device_gateway.service_policies.services`)
     /// * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
     /// * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies.services`)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var serviceOne = new JuniperMist.Org.Service("service_one", new()
+    ///     {
+    ///         OrgId = terraformTest.Id,
+    ///         Name = "service_one",
+    ///         Addresses = new[]
+    ///         {
+    ///             "10.3.0.0/24",
+    ///             "10.4.0.0/24",
+    ///         },
+    ///         Type = "custom",
+    ///         Specs = new[]
+    ///         {
+    ///             new JuniperMist.Org.Inputs.ServiceSpecArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 Port_range = "443",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -32,25 +65,25 @@ namespace Pulumi.JuniperMist.Org
     public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+        /// If `Type`==`Custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         /// </summary>
         [Output("addresses")]
         public Output<ImmutableArray<string>> Addresses { get; private set; } = null!;
 
         /// <summary>
-        /// When `type`==`app_categories`, list of application categories are available through List App Category Definitions
+        /// When `Type`==`AppCategories`, list of application categories are available through List App Category Definitions
         /// </summary>
         [Output("appCategories")]
         public Output<ImmutableArray<string>> AppCategories { get; private set; } = null!;
 
         /// <summary>
-        /// When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
+        /// When `Type`==`AppCategories`, list of application categories are available through List App Sub Category Definitions
         /// </summary>
         [Output("appSubcategories")]
         public Output<ImmutableArray<string>> AppSubcategories { get; private set; } = null!;
 
         /// <summary>
-        /// When `type`==`apps`, list of applications are available through:
+        /// When `Type`==`Apps`, list of applications are available through:
         ///   * List Applications
         ///   * List Gateway Applications
         ///   * /insight/top_app_by-bytes?wired=true
@@ -77,13 +110,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> Dscp { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `non_revertible`, `none`, `revertible`
+        /// enum: `NonRevertible`, `None`, `Revertible`
         /// </summary>
         [Output("failoverPolicy")]
         public Output<string?> FailoverPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// If `type`==`custom`, web filtering
+        /// If `Type`==`Custom`, web filtering
         /// </summary>
         [Output("hostnames")]
         public Output<ImmutableArray<string>> Hostnames { get; private set; } = null!;
@@ -122,7 +155,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> SleEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+        /// When `Type`==`Custom`, optional, if it doesn't exist, http and https is assumed
         /// </summary>
         [Output("specs")]
         public Output<ImmutableArray<Outputs.ServiceSpec>> Specs { get; private set; } = null!;
@@ -131,7 +164,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> SsrRelaxedTcpStateEnforcement { get; private set; } = null!;
 
         /// <summary>
-        /// when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
+        /// when `TrafficType`==`Custom`. enum: `BestEffort`, `High`, `Low`, `Medium`
         /// </summary>
         [Output("trafficClass")]
         public Output<string?> TrafficClass { get; private set; } = null!;
@@ -143,13 +176,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> TrafficType { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `app_categories`, `apps`, `custom`, `urls`
+        /// enum: `AppCategories`, `Apps`, `Custom`, `Urls`
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// When `type`==`urls`, no need for spec as URL can encode the ports being used
+        /// When `Type`==`Urls`, no need for spec as URL can encode the ports being used
         /// </summary>
         [Output("urls")]
         public Output<ImmutableArray<string>> Urls { get; private set; } = null!;
@@ -205,7 +238,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _addresses;
 
         /// <summary>
-        /// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+        /// If `Type`==`Custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         /// </summary>
         public InputList<string> Addresses
         {
@@ -217,7 +250,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _appCategories;
 
         /// <summary>
-        /// When `type`==`app_categories`, list of application categories are available through List App Category Definitions
+        /// When `Type`==`AppCategories`, list of application categories are available through List App Category Definitions
         /// </summary>
         public InputList<string> AppCategories
         {
@@ -229,7 +262,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _appSubcategories;
 
         /// <summary>
-        /// When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
+        /// When `Type`==`AppCategories`, list of application categories are available through List App Sub Category Definitions
         /// </summary>
         public InputList<string> AppSubcategories
         {
@@ -241,7 +274,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _apps;
 
         /// <summary>
-        /// When `type`==`apps`, list of applications are available through:
+        /// When `Type`==`Apps`, list of applications are available through:
         ///   * List Applications
         ///   * List Gateway Applications
         ///   * /insight/top_app_by-bytes?wired=true
@@ -271,7 +304,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Dscp { get; set; }
 
         /// <summary>
-        /// enum: `non_revertible`, `none`, `revertible`
+        /// enum: `NonRevertible`, `None`, `Revertible`
         /// </summary>
         [Input("failoverPolicy")]
         public Input<string>? FailoverPolicy { get; set; }
@@ -280,7 +313,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _hostnames;
 
         /// <summary>
-        /// If `type`==`custom`, web filtering
+        /// If `Type`==`Custom`, web filtering
         /// </summary>
         public InputList<string> Hostnames
         {
@@ -325,7 +358,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.ServiceSpecArgs>? _specs;
 
         /// <summary>
-        /// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+        /// When `Type`==`Custom`, optional, if it doesn't exist, http and https is assumed
         /// </summary>
         public InputList<Inputs.ServiceSpecArgs> Specs
         {
@@ -337,7 +370,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? SsrRelaxedTcpStateEnforcement { get; set; }
 
         /// <summary>
-        /// when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
+        /// when `TrafficType`==`Custom`. enum: `BestEffort`, `High`, `Low`, `Medium`
         /// </summary>
         [Input("trafficClass")]
         public Input<string>? TrafficClass { get; set; }
@@ -349,7 +382,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? TrafficType { get; set; }
 
         /// <summary>
-        /// enum: `app_categories`, `apps`, `custom`, `urls`
+        /// enum: `AppCategories`, `Apps`, `Custom`, `Urls`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -358,7 +391,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _urls;
 
         /// <summary>
-        /// When `type`==`urls`, no need for spec as URL can encode the ports being used
+        /// When `Type`==`Urls`, no need for spec as URL can encode the ports being used
         /// </summary>
         public InputList<string> Urls
         {
@@ -378,7 +411,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _addresses;
 
         /// <summary>
-        /// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+        /// If `Type`==`Custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         /// </summary>
         public InputList<string> Addresses
         {
@@ -390,7 +423,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _appCategories;
 
         /// <summary>
-        /// When `type`==`app_categories`, list of application categories are available through List App Category Definitions
+        /// When `Type`==`AppCategories`, list of application categories are available through List App Category Definitions
         /// </summary>
         public InputList<string> AppCategories
         {
@@ -402,7 +435,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _appSubcategories;
 
         /// <summary>
-        /// When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
+        /// When `Type`==`AppCategories`, list of application categories are available through List App Sub Category Definitions
         /// </summary>
         public InputList<string> AppSubcategories
         {
@@ -414,7 +447,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _apps;
 
         /// <summary>
-        /// When `type`==`apps`, list of applications are available through:
+        /// When `Type`==`Apps`, list of applications are available through:
         ///   * List Applications
         ///   * List Gateway Applications
         ///   * /insight/top_app_by-bytes?wired=true
@@ -444,7 +477,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Dscp { get; set; }
 
         /// <summary>
-        /// enum: `non_revertible`, `none`, `revertible`
+        /// enum: `NonRevertible`, `None`, `Revertible`
         /// </summary>
         [Input("failoverPolicy")]
         public Input<string>? FailoverPolicy { get; set; }
@@ -453,7 +486,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _hostnames;
 
         /// <summary>
-        /// If `type`==`custom`, web filtering
+        /// If `Type`==`Custom`, web filtering
         /// </summary>
         public InputList<string> Hostnames
         {
@@ -498,7 +531,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.ServiceSpecGetArgs>? _specs;
 
         /// <summary>
-        /// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+        /// When `Type`==`Custom`, optional, if it doesn't exist, http and https is assumed
         /// </summary>
         public InputList<Inputs.ServiceSpecGetArgs> Specs
         {
@@ -510,7 +543,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? SsrRelaxedTcpStateEnforcement { get; set; }
 
         /// <summary>
-        /// when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
+        /// when `TrafficType`==`Custom`. enum: `BestEffort`, `High`, `Low`, `Medium`
         /// </summary>
         [Input("trafficClass")]
         public Input<string>? TrafficClass { get; set; }
@@ -522,7 +555,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? TrafficType { get; set; }
 
         /// <summary>
-        /// enum: `app_categories`, `apps`, `custom`, `urls`
+        /// enum: `AppCategories`, `Apps`, `Custom`, `Urls`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -531,7 +564,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _urls;
 
         /// <summary>
-        /// When `type`==`urls`, no need for spec as URL can encode the ports being used
+        /// When `Type`==`Urls`, no need for spec as URL can encode the ports being used
         /// </summary>
         public InputList<string> Urls
         {

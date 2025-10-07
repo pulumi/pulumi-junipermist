@@ -49,14 +49,14 @@ public final class SwitchOspfConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+     * optional, for basic scenario, `importPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
      * 
      */
     @Import(name="exportPolicy")
     private @Nullable Output<String> exportPolicy;
 
     /**
-     * @return optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+     * @return optional, for basic scenario, `importPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
      * 
      */
     public Optional<Output<String>> exportPolicy() {
@@ -64,14 +64,14 @@ public final class SwitchOspfConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+     * optional, for basic scenario, `importPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
      * 
      */
     @Import(name="importPolicy")
     private @Nullable Output<String> importPolicy;
 
     /**
-     * @return optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+     * @return optional, for basic scenario, `importPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
      * 
      */
     public Optional<Output<String>> importPolicy() {
@@ -156,7 +156,7 @@ public final class SwitchOspfConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param exportPolicy optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+         * @param exportPolicy optional, for basic scenario, `importPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class SwitchOspfConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param exportPolicy optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+         * @param exportPolicy optional, for basic scenario, `importPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class SwitchOspfConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param importPolicy optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+         * @param importPolicy optional, for basic scenario, `importPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class SwitchOspfConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param importPolicy optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+         * @param importPolicy optional, for basic scenario, `importPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
          * 
          * @return builder
          * 
