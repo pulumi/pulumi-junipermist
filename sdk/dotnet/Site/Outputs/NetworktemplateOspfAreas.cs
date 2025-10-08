@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly bool? IncludeLoopback;
         public readonly ImmutableDictionary<string, Outputs.NetworktemplateOspfAreasNetworks> Networks;
         /// <summary>
-        /// OSPF type. enum: `default`, `nssa`, `stub`
+        /// OSPF type. enum: `Default`, `Nssa`, `Stub`
         /// </summary>
         public readonly string? Type;
 

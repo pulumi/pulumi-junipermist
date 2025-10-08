@@ -21,11 +21,68 @@ import javax.annotation.Nullable;
  * 
  * An Alarm Template is a set of Alarm Rules that could be applied to one or more sites (while each site can only pick one Alarm Template), or to the whole org.
  * 
- * Once created, the Alarm template must be assigned with the `alarmtemplate_id` attribute to one of the following:
+ * Once created, the Alarm template must be assigned with the `alarmtemplateId` attribute to one of the following:
  * * the whole org with the `junipermist.org.base` resource
  * * one or multiple sites with the `junipermist.site.base` resource
  * 
  * It is possible to use the `junipermist.getConstAlarms` data source to get a list of the available alarms
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.Alarmtemplate;
+ * import com.pulumi.junipermist.org.AlarmtemplateArgs;
+ * import com.pulumi.junipermist.org.inputs.AlarmtemplateDeliveryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var alarmtemplateOne = new Alarmtemplate("alarmtemplateOne", AlarmtemplateArgs.builder()
+ *             .orgId(terraformTest.id())
+ *             .name("alarmtemplate_one")
+ *             .delivery(AlarmtemplateDeliveryArgs.builder()
+ *                 .enabled(true)
+ *                 .to_org_admins(true)
+ *                 .additional_emails(List.of("admin}{@literal @}{@code mycorp.net"))
+ *                 .build())
+ *             .rules(Map.ofEntries(
+ *                 Map.entry("health_check_failed", AlarmtemplateRulesArgs.builder()
+ *                     .enabled(true)
+ *                     .build()),
+ *                 Map.entry("insufficient_capacity", AlarmtemplateRulesArgs.builder()
+ *                     .enabled(true)
+ *                     .build()),
+ *                 Map.entry("insufficient_coverage", AlarmtemplateRulesArgs.builder()
+ *                     .enabled(true)
+ *                     .build()),
+ *                 Map.entry("infra_arp_failure", AlarmtemplateRulesArgs.builder()
+ *                     .enabled(true)
+ *                     .build()),
+ *                 Map.entry("arp_failure", AlarmtemplateRulesArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *             ))
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * 
  * ## Import
  * 

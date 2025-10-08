@@ -17,7 +17,7 @@ public final class GetWxtagsOrgWxtagSpec {
      */
     private String portRange;
     /**
-     * @return tcp / udp / icmp / gre / any / &#34;:protocol_number&#34;, `protocol_number` is between 1-254
+     * @return tcp / udp / icmp / gre / any / &#34;:protocol_number&#34;, `protocolNumber` is between 1-254
      * 
      */
     private String protocol;
@@ -36,7 +36,7 @@ public final class GetWxtagsOrgWxtagSpec {
         return this.portRange;
     }
     /**
-     * @return tcp / udp / icmp / gre / any / &#34;:protocol_number&#34;, `protocol_number` is between 1-254
+     * @return tcp / udp / icmp / gre / any / &#34;:protocol_number&#34;, `protocolNumber` is between 1-254
      * 
      */
     public String protocol() {

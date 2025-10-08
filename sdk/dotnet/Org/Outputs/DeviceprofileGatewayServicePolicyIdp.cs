@@ -16,11 +16,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly bool? AlertOnly;
         public readonly bool? Enabled;
         /// <summary>
-        /// org_level IDP Profile can be used, this takes precedence over `profile`
+        /// org_level IDP Profile can be used, this takes precedence over `Profile`
         /// </summary>
         public readonly string? IdpprofileId;
         /// <summary>
-        /// enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
+        /// enum: `Custom`, `Strict` (default), `Standard` or keys from idp_profiles
         /// </summary>
         public readonly string? Profile;
 

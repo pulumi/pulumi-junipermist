@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// enum: `admin`, `helpdesk`, `none`, `read`
+        /// enum: `Admin`, `Helpdesk`, `None`, `Read`
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

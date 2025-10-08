@@ -15,6 +15,26 @@ import * as utilities from "../utilities";
  * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
  *   They can be used to manage common policies between multiples configurations
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const servicepolicyOne = new junipermist.org.Servicepolicy("servicepolicy_one", {
+ *     orgId: terraformTest.id,
+ *     tenants: ["guest"],
+ *     services: ["guest-internet"],
+ *     action: "allow",
+ *     idp: {
+ *         enabled: true,
+ *         profile: "standard",
+ *         alert_only: true,
+ *     },
+ *     name: "Guest-IDP",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_servicepolicy` with:

@@ -16,6 +16,77 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// &gt; To create or manage your EVPN Topology with the Mist Provider, please refer to the `How To - EVPN Topology` Guide.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var evpnOne = new JuniperMist.Org.EvpnTopology("evpn_one", new()
+    ///     {
+    ///         OrgId = terraformTest.Id,
+    ///         Name = "evpn_one",
+    ///         EvpnOptions = new JuniperMist.Org.Inputs.EvpnTopologyEvpnOptionsArgs
+    ///         {
+    ///             Routed_at = "core",
+    ///             Overlay = new JuniperMist.Org.Inputs.EvpnTopologyEvpnOptionsOverlayArgs
+    ///             {
+    ///                 As = 65000,
+    ///             },
+    ///             Core_as_border = true,
+    ///             Auto_loopback_subnet = "172.16.192.0/24",
+    ///             Auto_loopback_subnet6 = "fd33:ab00:2::/64",
+    ///             Per_vlan_vga_v4_mac = false,
+    ///             Underlay = new JuniperMist.Org.Inputs.EvpnTopologyEvpnOptionsUnderlayArgs
+    ///             {
+    ///                 AsBase = 65001,
+    ///                 UseIpv6 = false,
+    ///                 Subnet = "10.255.240.0/20",
+    ///             },
+    ///             Auto_router_id_subnet = "172.16.254.0/23",
+    ///         },
+    ///         Switches = new[]
+    ///         {
+    ///             new JuniperMist.Org.Inputs.EvpnTopologySwitchesArgs
+    ///             {
+    ///                 Mac = "020004000001",
+    ///                 Role = "core",
+    ///             },
+    ///             new JuniperMist.Org.Inputs.EvpnTopologySwitchesArgs
+    ///             {
+    ///                 Mac = "02000400002",
+    ///                 Role = "core",
+    ///             },
+    ///             new JuniperMist.Org.Inputs.EvpnTopologySwitchesArgs
+    ///             {
+    ///                 Mac = "02000400003",
+    ///                 Role = "distribution",
+    ///             },
+    ///             new JuniperMist.Org.Inputs.EvpnTopologySwitchesArgs
+    ///             {
+    ///                 Mac = "02000400004",
+    ///                 Role = "distribution",
+    ///             },
+    ///             new JuniperMist.Org.Inputs.EvpnTopologySwitchesArgs
+    ///             {
+    ///                 Mac = "02000400005",
+    ///                 Role = "access",
+    ///             },
+    ///             new JuniperMist.Org.Inputs.EvpnTopologySwitchesArgs
+    ///             {
+    ///                 Mac = "02000400006",
+    ///                 Role = "access",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_evpn_topology` with:

@@ -64,19 +64,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? SiteId { get; set; }
 
         /// <summary>
-        /// enum: `ap`, `gateway`, `switch`
+        /// enum: `Ap`, `Gateway`, `Switch`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+        /// Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `False`
         /// </summary>
         [Input("unclaimWhenDestroyed")]
         public Input<bool>? UnclaimWhenDestroyed { get; set; }
 
         /// <summary>
-        /// if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
+        /// if `Type`==`Switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `Type`==`Gateway` and device part of a Cluster, MAC Address of the Cluster
         /// </summary>
         [Input("vcMac")]
         public Input<string>? VcMac { get; set; }

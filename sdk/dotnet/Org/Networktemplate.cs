@@ -15,6 +15,107 @@ namespace Pulumi.JuniperMist.Org
     /// A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings.\
     /// Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var networktemplateOne = new JuniperMist.Org.Networktemplate("networktemplate_one", new()
+    ///     {
+    ///         Name = "networktemplate_one",
+    ///         OrgId = terraformTest.Id,
+    ///         DnsServers = new[]
+    ///         {
+    ///             "8.8.8.8",
+    ///             "1.1.1.1",
+    ///         },
+    ///         DnsSuffixes = new[]
+    ///         {
+    ///             "mycorp.com",
+    ///         },
+    ///         NtpServers = new[]
+    ///         {
+    ///             "pool.ntp.org",
+    ///         },
+    ///         AdditionalConfigCmds = new[]
+    ///         {
+    ///             "set system hostname test",
+    ///             "set system services ssh root-login allow",
+    ///         },
+    ///         Networks = 
+    ///         {
+    ///             { "network_one", new JuniperMist.Org.Inputs.NetworktemplateNetworksArgs
+    ///             {
+    ///                 VlanId = "10",
+    ///             } },
+    ///             { "network_two", new JuniperMist.Org.Inputs.NetworktemplateNetworksArgs
+    ///             {
+    ///                 VlanId = "11",
+    ///             } },
+    ///         },
+    ///         PortUsages = 
+    ///         {
+    ///             { "trunk", new JuniperMist.Org.Inputs.NetworktemplatePortUsagesArgs
+    ///             {
+    ///                 AllNetworks = true,
+    ///                 EnableQos = true,
+    ///                 Mode = "port_usage_one",
+    ///                 PortNetwork = "network_one",
+    ///             } },
+    ///         },
+    ///         RadiusConfig = new JuniperMist.Org.Inputs.NetworktemplateRadiusConfigArgs
+    ///         {
+    ///             Acct_interim_interval = 60,
+    ///             Coa_enabled = true,
+    ///             Network = "network_one",
+    ///             Acct_servers = new[]
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "host", "1.2.3.4" },
+    ///                     { "secret", "secret" },
+    ///                 },
+    ///             },
+    ///             Auth_servers = new[]
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "host", "1.2.3.4" },
+    ///                     { "secret", "secret" },
+    ///                 },
+    ///             },
+    ///         },
+    ///         SwitchMatching = new JuniperMist.Org.Inputs.NetworktemplateSwitchMatchingArgs
+    ///         {
+    ///             Enable = true,
+    ///             Rules = new[]
+    ///             {
+    ///                 new JuniperMist.Org.Inputs.NetworktemplateSwitchMatchingRuleArgs
+    ///                 {
+    ///                     Name = "switch_rule_one",
+    ///                     MatchName = "corp",
+    ///                     MatchNameOffset = 3,
+    ///                     MatchRole = "core",
+    ///                     PortConfig = 
+    ///                     {
+    ///                         { "ge-0/0/0-10", new JuniperMist.Org.Inputs.NetworktemplateSwitchMatchingRulePortConfigArgs
+    ///                         {
+    ///                             Usage = "port_usage_one",
+    ///                         } },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_networktemplate` with:
@@ -47,13 +148,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.NetworktemplateDhcpSnooping?> DhcpSnooping { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         [Output("dnsServers")]
         public Output<ImmutableArray<string>> DnsServers { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         [Output("dnsSuffixes")]
         public Output<ImmutableArray<string>> DnsSuffixes { get; private set; } = null!;
@@ -71,7 +172,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateExtraRoutes6>?> ExtraRoutes6 { get; private set; } = null!;
 
         /// <summary>
-        /// Enable mist_nac to use RadSec
+        /// Enable MistNac to use RadSec
         /// </summary>
         [Output("mistNac")]
         public Output<Outputs.NetworktemplateMistNac?> MistNac { get; private set; } = null!;
@@ -101,7 +202,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateOspfAreas>?> OspfAreas { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         /// </summary>
         [Output("portMirroring")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplatePortMirroring>?> PortMirroring { get; private set; } = null!;
@@ -122,7 +223,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.NetworktemplateRemoteSyslog?> RemoteSyslog { get; private set; } = null!;
 
         /// <summary>
-        /// By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
+        /// By default, only the configuration generated by Mist is cleaned up during the configuration process. If `True`, all the existing configuration will be removed.
         /// </summary>
         [Output("removeExistingConfigs")]
         public Output<bool?> RemoveExistingConfigs { get; private set; } = null!;
@@ -237,7 +338,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -249,7 +350,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -282,7 +383,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Enable mist_nac to use RadSec
+        /// Enable MistNac to use RadSec
         /// </summary>
         [Input("mistNac")]
         public Input<Inputs.NetworktemplateMistNacArgs>? MistNac { get; set; }
@@ -333,7 +434,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplatePortMirroringArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortMirroringArgs> PortMirroring
         {
@@ -363,7 +464,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.NetworktemplateRemoteSyslogArgs>? RemoteSyslog { get; set; }
 
         /// <summary>
-        /// By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
+        /// By default, only the configuration generated by Mist is cleaned up during the configuration process. If `True`, all the existing configuration will be removed.
         /// </summary>
         [Input("removeExistingConfigs")]
         public Input<bool>? RemoveExistingConfigs { get; set; }
@@ -445,7 +546,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -457,7 +558,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -490,7 +591,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Enable mist_nac to use RadSec
+        /// Enable MistNac to use RadSec
         /// </summary>
         [Input("mistNac")]
         public Input<Inputs.NetworktemplateMistNacGetArgs>? MistNac { get; set; }
@@ -541,7 +642,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplatePortMirroringGetArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortMirroringGetArgs> PortMirroring
         {
@@ -571,7 +672,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.NetworktemplateRemoteSyslogGetArgs>? RemoteSyslog { get; set; }
 
         /// <summary>
-        /// By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
+        /// By default, only the configuration generated by Mist is cleaned up during the configuration process. If `True`, all the existing configuration will be removed.
         /// </summary>
         [Input("removeExistingConfigs")]
         public Input<bool>? RemoveExistingConfigs { get; set; }

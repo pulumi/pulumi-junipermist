@@ -22,6 +22,57 @@ import (
 //
 // # It is possible to use the `getConstAlarms` data source to get a list of the available alarms
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewAlarmtemplate(ctx, "alarmtemplate_one", &org.AlarmtemplateArgs{
+//				OrgId: pulumi.Any(terraformTest.Id),
+//				Name:  pulumi.String("alarmtemplate_one"),
+//				Delivery: &org.AlarmtemplateDeliveryArgs{
+//					Enabled:       pulumi.Bool(true),
+//					To_org_admins: true,
+//					Additional_emails: []string{
+//						"admin@mycorp.net",
+//					},
+//				},
+//				Rules: org.AlarmtemplateRulesMap{
+//					"health_check_failed": &org.AlarmtemplateRulesArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//					"insufficient_capacity": &org.AlarmtemplateRulesArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//					"insufficient_coverage": &org.AlarmtemplateRulesArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//					"infra_arp_failure": &org.AlarmtemplateRulesArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//					"arp_failure": &org.AlarmtemplateRulesArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_alarmtemplate` with:

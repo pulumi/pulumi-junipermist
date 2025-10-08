@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+        /// enum: `Any`, `Fri`, `Mon`, `Sat`, `Sun`, `Thu`, `Tue`, `Wed`
         /// </summary>
         [Input("dayOfWeek")]
         public Input<string>? DayOfWeek { get; set; }
@@ -37,13 +37,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+        /// `Any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
         /// </summary>
         [Input("timeOfDay")]
         public Input<string>? TimeOfDay { get; set; }
 
         /// <summary>
-        /// desired version. enum: `beta`, `custom`, `stable`
+        /// desired version. enum: `Beta`, `Custom`, `Stable`
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

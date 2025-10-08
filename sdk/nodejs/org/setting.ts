@@ -11,6 +11,65 @@ import * as utilities from "../utilities";
  *
  * The Org Settings can be used to customize the Org configuration
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const terraformTest = new junipermist.org.Setting("terraform_test", {
+ *     orgId: terraformTestMistOrg.id,
+ *     apUpdownThreshold: 10,
+ *     cradlepoint: {
+ *         cp_api_id: "cp_api_id_test",
+ *         cp_api_key: "secret",
+ *         ecm_api_id: "ecm_api_id_test",
+ *         ecm_api_key: "secret",
+ *     },
+ *     deviceUpdownThreshold: 10,
+ *     disablePcap: false,
+ *     disableRemoteShell: true,
+ *     gatewayUpdownThreshold: 10,
+ *     mxedgeMgmt: {
+ *         mist_password: "root_secret_password",
+ *         root_password: "root_secret_password",
+ *         oob_ip_type: "dhcp",
+ *         oob_ip_type6: "disabled",
+ *     },
+ *     passwordPolicy: {
+ *         enabled: true,
+ *         freshness: 180,
+ *         min_length: 12,
+ *         requires_special_char: true,
+ *         requires_two_factor_auth: false,
+ *     },
+ *     security: {
+ *         disable_local_ssh: true,
+ *     },
+ *     switchUpdownThreshold: 10,
+ *     syntheticTest: {
+ *         disabled: false,
+ *         vlans: [
+ *             {
+ *                 vlanIds: [
+ *                     "10",
+ *                     "30",
+ *                 ],
+ *                 customTestUrls: [
+ *                     "http://www.abc.com/",
+ *                     "https://10.3.5.1:8080/about",
+ *                 ],
+ *             },
+ *             {
+ *                 vlanIds: ["20"],
+ *                 disabled: true,
+ *             },
+ *         ],
+ *     },
+ *     uiIdleTimeout: 120,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_setting` with:

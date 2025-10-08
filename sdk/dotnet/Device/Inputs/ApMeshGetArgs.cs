@@ -37,7 +37,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? Group { get; set; }
 
         /// <summary>
-        /// enum: `base`, `remote`
+        /// enum: `Base`, `Remote`
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

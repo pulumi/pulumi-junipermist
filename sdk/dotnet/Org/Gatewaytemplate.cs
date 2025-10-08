@@ -14,6 +14,121 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// A Gateway template is used to define the static ip address and subnet mask of the hub device, along with the gateway. It also allows for the selection of options such as enabling source nat and overriding the public ip for the hub if needed. the endpoint selected in the gateway template ties the hub and spoke devices together and creates the auto-vpn tunnel.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var gatewaytemplateOne = new JuniperMist.Org.Gatewaytemplate("gatewaytemplate_one", new()
+    ///     {
+    ///         Type = "spoke",
+    ///         Name = "gatewaytemplate_one",
+    ///         OrgId = terraformTest.Id,
+    ///         PortConfig = 
+    ///         {
+    ///             { "ge-0/0/3", new JuniperMist.Org.Inputs.GatewaytemplatePortConfigArgs
+    ///             {
+    ///                 Name = "FTTH",
+    ///                 Usage = "wan",
+    ///                 Aggregated = false,
+    ///                 Redundant = false,
+    ///                 Critical = false,
+    ///                 WanType = "broadband",
+    ///                 IpConfig = new JuniperMist.Org.Inputs.GatewaytemplatePortConfigIpConfigArgs
+    ///                 {
+    ///                     Type = "static",
+    ///                     Ip = "192.168.1.8",
+    ///                     Netmask = "/24",
+    ///                     Gateway = "192.168.1.1",
+    ///                 },
+    ///                 DisableAutoneg = false,
+    ///                 Speed = "auto",
+    ///                 Duplex = "auto",
+    ///                 WanSourceNat = new JuniperMist.Org.Inputs.GatewaytemplatePortConfigWanSourceNatArgs
+    ///                 {
+    ///                     Disabled = false,
+    ///                 },
+    ///                 VpnPaths = 
+    ///                 {
+    ///                     { "SSR_HUB_DC-MPLS.OrgOverlay", new JuniperMist.Org.Inputs.GatewaytemplatePortConfigVpnPathsArgs
+    ///                     {
+    ///                         Key = 0,
+    ///                         Role = "spoke",
+    ///                         BfdProfile = "broadband",
+    ///                     } },
+    ///                 },
+    ///             } },
+    ///             { "ge-0/0/5", new JuniperMist.Org.Inputs.GatewaytemplatePortConfigArgs
+    ///             {
+    ///                 Usage = "lan",
+    ///                 Critical = false,
+    ///                 Aggregated = true,
+    ///                 AeDisableLacp = false,
+    ///                 AeLacpForceUp = true,
+    ///                 AeIdx = "0",
+    ///                 Redundant = false,
+    ///                 Networks = new[]
+    ///                 {
+    ///                     "PRD-Core",
+    ///                     "PRD-Mgmt",
+    ///                     "PRD-Lab",
+    ///                 },
+    ///             } },
+    ///         },
+    ///         IpConfigs = 
+    ///         {
+    ///             { "PRD-Core", new JuniperMist.Org.Inputs.GatewaytemplateIpConfigsArgs
+    ///             {
+    ///                 Type = "static",
+    ///                 Ip = "10.3.100.9",
+    ///                 Netmask = "/24",
+    ///             } },
+    ///             { "PRD-Mgmt", new JuniperMist.Org.Inputs.GatewaytemplateIpConfigsArgs
+    ///             {
+    ///                 Type = "static",
+    ///                 Ip = "10.3.172.1",
+    ///                 Netmask = "/24",
+    ///             } },
+    ///             { "PRD-Lab", new JuniperMist.Org.Inputs.GatewaytemplateIpConfigsArgs
+    ///             {
+    ///                 Type = "static",
+    ///                 Ip = "10.3.171.1",
+    ///                 Netmask = "/24",
+    ///             } },
+    ///         },
+    ///         ServicePolicies = new[]
+    ///         {
+    ///             new JuniperMist.Org.Inputs.GatewaytemplateServicePolicyArgs
+    ///             {
+    ///                 Name = "Policy-14",
+    ///                 Tenants = new[]
+    ///                 {
+    ///                     "PRD-Core",
+    ///                 },
+    ///                 Services = new[]
+    ///                 {
+    ///                     "any",
+    ///                 },
+    ///                 Action = "allow",
+    ///                 Path_preference = "HUB",
+    ///                 Idp = new JuniperMist.Org.Inputs.GatewaytemplateServicePolicyIdpArgs
+    ///                 {
+    ///                     Enabled = true,
+    ///                     Profile = "critical",
+    ///                     AlertOnly = false,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_gatewaytemplate` with:
@@ -43,13 +158,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> DnsOverride { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         [Output("dnsServers")]
         public Output<ImmutableArray<string>> DnsServers { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         [Output("dnsSuffixes")]
         public Output<ImmutableArray<string>> DnsSuffixes { get; private set; } = null!;
@@ -145,7 +260,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.GatewaytemplateTunnelProviderOptions?> TunnelProviderOptions { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `spoke`, `standalone`
+        /// enum: `Spoke`, `Standalone`
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -236,7 +351,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -248,7 +363,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -417,7 +532,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.GatewaytemplateTunnelProviderOptionsArgs>? TunnelProviderOptions { get; set; }
 
         /// <summary>
-        /// enum: `spoke`, `standalone`
+        /// enum: `Spoke`, `Standalone`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -475,7 +590,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -487,7 +602,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -656,7 +771,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.GatewaytemplateTunnelProviderOptionsGetArgs>? TunnelProviderOptions { get; set; }
 
         /// <summary>
-        /// enum: `spoke`, `standalone`
+        /// enum: `Spoke`, `Standalone`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

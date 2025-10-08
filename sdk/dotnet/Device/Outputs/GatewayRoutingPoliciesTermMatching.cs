@@ -24,17 +24,17 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Prefixes;
         /// <summary>
-        /// `direct`, `bgp`, `osp`, `static`, `aggregate`...
+        /// `Direct`, `Bgp`, `Osp`, `Static`, `Aggregate`...
         /// </summary>
         public readonly ImmutableArray<string> Protocols;
         public readonly Outputs.GatewayRoutingPoliciesTermMatchingRouteExists? RouteExists;
         /// <summary>
-        /// overlay-facing criteria (used for bgp_config where via=vpn)
+        /// overlay-facing criteria (used for BgpConfig where via=vpn)
         /// </summary>
         public readonly ImmutableArray<string> VpnNeighborMacs;
         public readonly Outputs.GatewayRoutingPoliciesTermMatchingVpnPathSla? VpnPathSla;
         /// <summary>
-        /// overlay-facing criteria (used for bgp_config where via=vpn). ordered-
+        /// overlay-facing criteria (used for BgpConfig where via=vpn). ordered-
         /// </summary>
         public readonly ImmutableArray<string> VpnPaths;
 

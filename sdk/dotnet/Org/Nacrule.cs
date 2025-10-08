@@ -14,6 +14,45 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var nacruleOne = new JuniperMist.Org.Nacrule("nacrule_one", new()
+    ///     {
+    ///         Name = "rule_one",
+    ///         Action = "allow",
+    ///         OrgId = terraformTest.Id,
+    ///         Matching = new JuniperMist.Org.Inputs.NacruleMatchingArgs
+    ///         {
+    ///             Port_types = new[]
+    ///             {
+    ///                 "wired",
+    ///             },
+    ///             Auth_type = "mab",
+    ///             Nactags = new[]
+    ///             {
+    ///                 "c055c60b-351a-4311-8ee5-9b7be5e5f902",
+    ///             },
+    ///         },
+    ///         ApplyTags = new[]
+    ///         {
+    ///             "61c11327-5e1b-40ed-bbbf-5e95642c4f59",
+    ///             "3f292454-ac5f-4a36-9aff-d0518d90b47a",
+    ///         },
+    ///         Enabled = true,
+    ///         Order = 9,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_nacrule` with:
@@ -28,7 +67,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Nacrule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// enum: `allow`, `block`
+        /// enum: `Allow`, `Block`
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -46,7 +85,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Guest portal authorization state. enum: `authorized`, `unknown`
+        /// Guest portal authorization state. enum: `Authorized`, `Unknown`
         /// </summary>
         [Output("guestAuthState")]
         public Output<string?> GuestAuthState { get; private set; } = null!;
@@ -117,7 +156,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NacruleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `allow`, `block`
+        /// enum: `Allow`, `Block`
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -141,7 +180,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Guest portal authorization state. enum: `authorized`, `unknown`
+        /// Guest portal authorization state. enum: `Authorized`, `Unknown`
         /// </summary>
         [Input("guestAuthState")]
         public Input<string>? GuestAuthState { get; set; }
@@ -173,7 +212,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NacruleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `allow`, `block`
+        /// enum: `Allow`, `Block`
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -197,7 +236,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Guest portal authorization state. enum: `authorized`, `unknown`
+        /// Guest portal authorization state. enum: `Authorized`, `Unknown`
         /// </summary>
         [Input("guestAuthState")]
         public Input<string>? GuestAuthState { get; set; }

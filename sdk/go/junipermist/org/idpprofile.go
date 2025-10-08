@@ -18,6 +18,58 @@ import (
 //
 // The profile includes rules and policies that determine which types of traffic or attacks should be monitored, what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewIdpprofile(ctx, "idpprofile_one", &org.IdpprofileArgs{
+//				OrgId:       pulumi.Any(terraformTest.Id),
+//				BaseProfile: pulumi.String("standard"),
+//				Overwrites: org.IdpprofileOverwriteArray{
+//					&org.IdpprofileOverwriteArgs{
+//						Name: pulumi.String("server_bypass"),
+//						Matching: &org.IdpprofileOverwriteMatchingArgs{
+//							Severity:  []interface{}{},
+//							DstSubnet: []interface{}{},
+//							AttackName: []string{
+//								"SSL:OVERFLOW:KEY-ARG-NO-ENTROPY",
+//							},
+//						},
+//					},
+//					&org.IdpprofileOverwriteArgs{
+//						Name: pulumi.String("guest-bypass"),
+//						Matching: &org.IdpprofileOverwriteMatchingArgs{
+//							Severity: []interface{}{},
+//							DstSubnet: []string{
+//								"8.8.8.8/32",
+//							},
+//							AttackName: []string{
+//								"UDP:ZERO-DATA",
+//							},
+//						},
+//					},
+//				},
+//				Name: pulumi.String("idpprofile_one"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_idpprofile` with:

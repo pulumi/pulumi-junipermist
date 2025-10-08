@@ -18,6 +18,49 @@ import (
 // It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\
 // The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewWebhook(ctx, "webhook_one", &org.WebhookArgs{
+//				SiteId:     terraformTest.Id,
+//				Name:       pulumi.String("webhook_one"),
+//				Type:       pulumi.String("http-post"),
+//				Url:        pulumi.String("https://myserver.com:4321/"),
+//				VerifyCert: pulumi.Bool(false),
+//				Enabled:    pulumi.Bool(true),
+//				Topics: pulumi.StringArray{
+//					pulumi.String("device-events"),
+//					pulumi.String("alarms"),
+//					pulumi.String("audits"),
+//					pulumi.String("client-join"),
+//					pulumi.String("client-info"),
+//					pulumi.String("client-sessions"),
+//					pulumi.String("device-updowns"),
+//					pulumi.String("mxedge-events"),
+//					pulumi.String("nac-events"),
+//					pulumi.String("nac-accounting"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_webhook` with:

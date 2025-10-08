@@ -442,6 +442,43 @@ class Rftemplate(pulumi.CustomResource):
 
         The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        rftemplate_one = junipermist.org.Rftemplate("rftemplate_one",
+            name="rftemplate_one",
+            org_id=terraform_test["id"],
+            band24_usage="auto",
+            band5={
+                "ant_gain": 2,
+                "power": 8,
+                "channels": [
+                    60,
+                    104,
+                    132,
+                ],
+                "bandwidth": 20,
+            },
+            band6={
+                "ant_gain": 2,
+                "power": 8,
+            },
+            band24={
+                "ant_gain": 1,
+                "allow_rrm_disable": True,
+                "power_min": 18,
+                "power_max": 18,
+                "bandwidth": 20,
+            },
+            ant_gain5=2,
+            ant_gain6=2,
+            ant_gain24=1,
+            country_code="FR")
+        ```
+
         ## Import
 
         Using `pulumi import`, import `mist_org_rftemplate` with:
@@ -474,6 +511,43 @@ class Rftemplate(pulumi.CustomResource):
         This resource manages the RF Templates.
 
         The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        rftemplate_one = junipermist.org.Rftemplate("rftemplate_one",
+            name="rftemplate_one",
+            org_id=terraform_test["id"],
+            band24_usage="auto",
+            band5={
+                "ant_gain": 2,
+                "power": 8,
+                "channels": [
+                    60,
+                    104,
+                    132,
+                ],
+                "bandwidth": 20,
+            },
+            band6={
+                "ant_gain": 2,
+                "power": 8,
+            },
+            band24={
+                "ant_gain": 1,
+                "allow_rrm_disable": True,
+                "power_min": 18,
+                "power_max": 18,
+                "bandwidth": 20,
+            },
+            ant_gain5=2,
+            ant_gain6=2,
+            ant_gain24=1,
+            country_code="FR")
+        ```
 
         ## Import
 

@@ -16,14 +16,14 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
     public static final NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs Empty = new NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs();
 
     /**
-     * Only required if `type`==`context_prefix`
+     * Only required if `type`==`contextPrefix`
      * 
      */
     @Import(name="contextPrefix")
     private @Nullable Output<String> contextPrefix;
 
     /**
-     * @return Only required if `type`==`context_prefix`
+     * @return Only required if `type`==`contextPrefix`
      * 
      */
     public Optional<Output<String>> contextPrefix() {
@@ -91,14 +91,14 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
     }
 
     /**
-     * enum: `context_prefix`, `default_context_prefix`
+     * enum: `contextPrefix`, `defaultContextPrefix`
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `context_prefix`, `default_context_prefix`
+     * @return enum: `contextPrefix`, `defaultContextPrefix`
      * 
      */
     public Optional<Output<String>> type() {
@@ -151,7 +151,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param contextPrefix Only required if `type`==`context_prefix`
+         * @param contextPrefix Only required if `type`==`contextPrefix`
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param contextPrefix Only required if `type`==`context_prefix`
+         * @param contextPrefix Only required if `type`==`contextPrefix`
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param type enum: `context_prefix`, `default_context_prefix`
+         * @param type enum: `contextPrefix`, `defaultContextPrefix`
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param type enum: `context_prefix`, `default_context_prefix`
+         * @param type enum: `contextPrefix`, `defaultContextPrefix`
          * 
          * @return builder
          * 

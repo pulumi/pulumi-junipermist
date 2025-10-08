@@ -18,6 +18,38 @@ import (
 // WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.\
 // They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewWlantemplate(ctx, "wlantemplate_one", &org.WlantemplateArgs{
+//				Name:  pulumi.String("wlantemplate_one"),
+//				OrgId: pulumi.Any(terraformTest.Id),
+//				Applies: &org.WlantemplateAppliesArgs{
+//					Site_ids: []interface{}{
+//						terraformSite.Id,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_wlantemplate` with:

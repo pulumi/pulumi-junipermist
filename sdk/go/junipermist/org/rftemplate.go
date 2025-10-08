@@ -16,6 +16,59 @@ import (
 //
 // # The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewRftemplate(ctx, "rftemplate_one", &org.RftemplateArgs{
+//				Name:        pulumi.String("rftemplate_one"),
+//				OrgId:       pulumi.Any(terraformTest.Id),
+//				Band24Usage: pulumi.String("auto"),
+//				Band5: &org.RftemplateBand5Args{
+//					Ant_gain: 2,
+//					Power:    pulumi.Int(8),
+//					Channels: pulumi.IntArray{
+//						pulumi.Int(60),
+//						pulumi.Int(104),
+//						pulumi.Int(132),
+//					},
+//					Bandwidth: pulumi.Int(20),
+//				},
+//				Band6: &org.RftemplateBand6Args{
+//					Ant_gain: 2,
+//					Power:    pulumi.Int(8),
+//				},
+//				Band24: &org.RftemplateBand24Args{
+//					Ant_gain:          1,
+//					Allow_rrm_disable: true,
+//					Power_min:         18,
+//					Power_max:         18,
+//					Bandwidth:         pulumi.Int(20),
+//				},
+//				AntGain5:    pulumi.Int(2),
+//				AntGain6:    pulumi.Int(2),
+//				AntGain24:   pulumi.Int(1),
+//				CountryCode: pulumi.String("FR"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_rftemplate` with:

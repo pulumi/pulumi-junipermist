@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _inputNetworksIngresses;
 
         /// <summary>
-        /// At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        /// At least one of the `InputPortIdsIngress`, `InputPortIdsEgress` or `InputNetworksIngress ` should be specified
         /// </summary>
         public InputList<string> InputNetworksIngresses
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _inputPortIdsEgresses;
 
         /// <summary>
-        /// At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        /// At least one of the `InputPortIdsIngress`, `InputPortIdsEgress` or `InputNetworksIngress ` should be specified
         /// </summary>
         public InputList<string> InputPortIdsEgresses
         {
@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _inputPortIdsIngresses;
 
         /// <summary>
-        /// At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        /// At least one of the `InputPortIdsIngress`, `InputPortIdsEgress` or `InputNetworksIngress ` should be specified
         /// </summary>
         public InputList<string> InputPortIdsIngresses
         {
@@ -49,19 +49,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        /// Exactly one of the `OutputIpAddress`, `OutputPortId` or `OutputNetwork` should be provided
         /// </summary>
         [Input("outputIpAddress")]
         public Input<string>? OutputIpAddress { get; set; }
 
         /// <summary>
-        /// Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        /// Exactly one of the `OutputIpAddress`, `OutputPortId` or `OutputNetwork` should be provided
         /// </summary>
         [Input("outputNetwork")]
         public Input<string>? OutputNetwork { get; set; }
 
         /// <summary>
-        /// Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+        /// Exactly one of the `OutputIpAddress`, `OutputPortId` or `OutputNetwork` should be provided
         /// </summary>
         [Input("outputPortId")]
         public Input<string>? OutputPortId { get; set; }

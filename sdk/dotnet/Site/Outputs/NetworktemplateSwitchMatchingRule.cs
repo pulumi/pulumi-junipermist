@@ -22,23 +22,23 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly Outputs.NetworktemplateSwitchMatchingRuleIpConfig? IpConfig;
         /// <summary>
-        /// string the switch model must start with to use this rule. It is possible to combine with the `match_name` and `match_role` attributes
+        /// string the switch model must start with to use this rule. It is possible to combine with the `MatchName` and `MatchRole` attributes
         /// </summary>
         public readonly string? MatchModel;
         /// <summary>
-        /// string the switch name must start with to use this rule. Use the `match_name_offset` to indicate the first character of the switch name to compare to. It is possible to combine with the `match_model` and `match_role` attributes
+        /// string the switch name must start with to use this rule. Use the `MatchNameOffset` to indicate the first character of the switch name to compare to. It is possible to combine with the `MatchModel` and `MatchRole` attributes
         /// </summary>
         public readonly string? MatchName;
         /// <summary>
-        /// first character of the switch name to compare to the `match_name` value
+        /// first character of the switch name to compare to the `MatchName` value
         /// </summary>
         public readonly int? MatchNameOffset;
         /// <summary>
-        /// string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes
+        /// string the switch role must start with to use this rule. It is possible to combine with the `MatchName` and `MatchModel` attributes
         /// </summary>
         public readonly string? MatchRole;
         /// <summary>
-        /// Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
+        /// Rule name. WARNING: the name `Default` is reserved and can only be used for the last rule in the list
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworktemplateSwitchMatchingRulePortConfig>? PortConfig;
         /// <summary>
-        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworktemplateSwitchMatchingRulePortMirroring>? PortMirroring;
 

@@ -17,6 +17,48 @@ import (
 // An Org API token is a unique identifier used by an application to authenticate and access the Mist APIs. These tokens are used to authenticate requests made to the API server and ensure secure access to the API. They are not bound to any specific user and provide access to the organization as a whole.
 // Organization tokens support different privileges and can only be used for the specific organization they are generated for.
 // Rate limiting is done on an individual token basis, so if one token reaches its rate limit, it does not impact other tokens.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewApitoken(ctx, "apitoken_one", &org.ApitokenArgs{
+//				OrgId: pulumi.Any(terraformTest.Id),
+//				Name:  pulumi.String("apitoken_one"),
+//				Privileges: org.ApitokenPrivilegeArray{
+//					&org.ApitokenPrivilegeArgs{
+//						Scope:   pulumi.String("site"),
+//						Role:    pulumi.String("admin"),
+//						Site_id: "d7c8364e-xxxx-xxxx-xxxx-37eff0475b03",
+//					},
+//					&org.ApitokenPrivilegeArgs{
+//						Scope:   pulumi.String("site"),
+//						Role:    pulumi.String("read"),
+//						Site_id: "08f8851b-xxxx-xxxx-xxxx-9ebb5aa62de4",
+//					},
+//				},
+//				SrcIps: pulumi.StringArray{
+//					pulumi.String("1.2.3.4/32"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Apitoken struct {
 	pulumi.CustomResourceState
 

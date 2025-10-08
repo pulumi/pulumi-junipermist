@@ -15,22 +15,22 @@ import java.util.Objects;
 @CustomType
 public final class GetWlansOrgWlanPortal {
     /**
-     * @return Optional if `amazon_enabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+     * @return Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
      * 
      */
     private Boolean allowWlanIdRoam;
     /**
-     * @return Optional if `amazon_enabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+     * @return Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
      * 
      */
     private String amazonClientId;
     /**
-     * @return Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a corresponding value. Else leave blank.
+     * @return Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a corresponding value. Else leave blank.
      * 
      */
     private String amazonClientSecret;
     /**
-     * @return Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     private List<String> amazonEmailDomains;
@@ -40,7 +40,7 @@ public final class GetWlansOrgWlanPortal {
      */
     private Boolean amazonEnabled;
     /**
-     * @return Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+     * @return Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
      * 
      */
     private Integer amazonExpire;
@@ -50,12 +50,12 @@ public final class GetWlansOrgWlanPortal {
      */
     private String auth;
     /**
-     * @return Required if `azure_enabled`==`true`. Azure active directory app client id
+     * @return Required if `azureEnabled`==`true`. Azure active directory app client id
      * 
      */
     private String azureClientId;
     /**
-     * @return Required if `azure_enabled`==`true`. Azure active directory app client secret
+     * @return Required if `azureEnabled`==`true`. Azure active directory app client secret
      * 
      */
     private String azureClientSecret;
@@ -70,22 +70,22 @@ public final class GetWlansOrgWlanPortal {
      */
     private Integer azureExpire;
     /**
-     * @return Required if `azure_enabled`==`true`. Azure active directory tenant id.
+     * @return Required if `azureEnabled`==`true`. Azure active directory tenant id.
      * 
      */
     private String azureTenantId;
     /**
-     * @return Required if `sms_provider`==`broadnet`
+     * @return Required if `smsProvider`==`broadnet`
      * 
      */
     private String broadnetPassword;
     /**
-     * @return Required if `sms_provider`==`broadnet`
+     * @return Required if `smsProvider`==`broadnet`
      * 
      */
     private String broadnetSid;
     /**
-     * @return Required if `sms_provider`==`broadnet`
+     * @return Required if `smsProvider`==`broadnet`
      * 
      */
     private String broadnetUserId;
@@ -95,12 +95,12 @@ public final class GetWlansOrgWlanPortal {
      */
     private Boolean bypassWhenCloudDown;
     /**
-     * @return Required if `sms_provider`==`clickatell`
+     * @return Required if `smsProvider`==`clickatell`
      * 
      */
     private String clickatellApiKey;
     /**
-     * @return Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
+     * @return Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
      * 
      */
     private Boolean crossSite;
@@ -120,22 +120,22 @@ public final class GetWlansOrgWlanPortal {
      */
     private Integer expire;
     /**
-     * @return Required if `wlan_portal_auth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
+     * @return Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
      * 
      */
     private String externalPortalUrl;
     /**
-     * @return Required if `facebook_enabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+     * @return Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
      * 
      */
     private String facebookClientId;
     /**
-     * @return Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a corresponding value. Else leave blank.
+     * @return Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a corresponding value. Else leave blank.
      * 
      */
     private String facebookClientSecret;
     /**
-     * @return Optional if `facebook_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     private List<String> facebookEmailDomains;
@@ -145,7 +145,7 @@ public final class GetWlansOrgWlanPortal {
      */
     private Boolean facebookEnabled;
     /**
-     * @return Optional if `facebook_enabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+     * @return Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
      * 
      */
     private Integer facebookExpire;
@@ -165,12 +165,12 @@ public final class GetWlansOrgWlanPortal {
      */
     private String googleClientId;
     /**
-     * @return Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a corresponding value. Else leave blank.
+     * @return Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a corresponding value. Else leave blank.
      * 
      */
     private String googleClientSecret;
     /**
-     * @return Optional if `google_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     private List<String> googleEmailDomains;
@@ -180,32 +180,32 @@ public final class GetWlansOrgWlanPortal {
      */
     private Boolean googleEnabled;
     /**
-     * @return Optional if `google_enabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
+     * @return Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
      * 
      */
     private Integer googleExpire;
     /**
-     * @return Required if `sms_provider`==`gupshup`
+     * @return Required if `smsProvider`==`gupshup`
      * 
      */
     private String gupshupPassword;
     /**
-     * @return Required if `sms_provider`==`gupshup`
+     * @return Required if `smsProvider`==`gupshup`
      * 
      */
     private String gupshupUserid;
     /**
-     * @return Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+     * @return Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
      * 
      */
     private String microsoftClientId;
     /**
-     * @return Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a corresponding value. Else leave blank.
+     * @return Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a corresponding value. Else leave blank.
      * 
      */
     private String microsoftClientSecret;
     /**
-     * @return Optional if `microsoft_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     private List<String> microsoftEmailDomains;
@@ -215,7 +215,7 @@ public final class GetWlansOrgWlanPortal {
      */
     private Boolean microsoftEnabled;
     /**
-     * @return Optional if `microsoft_enabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+     * @return Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
      * 
      */
     private Integer microsoftExpire;
@@ -225,17 +225,17 @@ public final class GetWlansOrgWlanPortal {
      */
     private Boolean passphraseEnabled;
     /**
-     * @return Optional if `passphrase_enabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+     * @return Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
      * 
      */
     private Integer passphraseExpire;
     /**
-     * @return Required if `passphrase_enabled`==`true`.
+     * @return Required if `passphraseEnabled`==`true`.
      * 
      */
     private String password;
     /**
-     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
      * 
      */
     private Boolean predefinedSponsorsEnabled;
@@ -246,17 +246,17 @@ public final class GetWlansOrgWlanPortal {
     private Boolean predefinedSponsorsHideEmail;
     private Boolean privacy;
     /**
-     * @return Required if `sms_provider`==`puzzel`
+     * @return Required if `smsProvider`==`puzzel`
      * 
      */
     private String puzzelPassword;
     /**
-     * @return Required if `sms_provider`==`puzzel`
+     * @return Required if `smsProvider`==`puzzel`
      * 
      */
     private String puzzelServiceId;
     /**
-     * @return Required if `sms_provider`==`puzzel`
+     * @return Required if `smsProvider`==`puzzel`
      * 
      */
     private String puzzelUsername;
@@ -266,27 +266,27 @@ public final class GetWlansOrgWlanPortal {
      */
     private Boolean smsEnabled;
     /**
-     * @return Optional if `sms_enabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+     * @return Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
      * 
      */
     private Integer smsExpire;
     /**
-     * @return Optional if `sms_enabled`==`true`. SMS Message format
+     * @return Optional if `smsEnabled`==`true`. SMS Message format
      * 
      */
     private String smsMessageFormat;
     /**
-     * @return Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+     * @return Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
      * 
      */
     private String smsProvider;
     /**
-     * @return Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
+     * @return Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
      * 
      */
     private Boolean sponsorAutoApprove;
     /**
-     * @return List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+     * @return List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
      * 
      */
     private List<String> sponsorEmailDomains;
@@ -296,114 +296,114 @@ public final class GetWlansOrgWlanPortal {
      */
     private Boolean sponsorEnabled;
     /**
-     * @return Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+     * @return Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
      * 
      */
     private Integer sponsorExpire;
     private String sponsorLinkValidityDuration;
     /**
-     * @return Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+     * @return Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
      * 
      */
     private Boolean sponsorNotifyAll;
     /**
-     * @return Optional if `sponsor_enabled`==`true`. If enabled, guest will get email about sponsor&#39;s action (approve/deny)
+     * @return Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor&#39;s action (approve/deny)
      * 
      */
     private Boolean sponsorStatusNotify;
     /**
-     * @return object of allowed sponsors email with name. Required if `sponsor_enabled`
-     *             is `true` and `sponsor_email_domains` is empty.
+     * @return object of allowed sponsors email with name. Required if `sponsorEnabled`
+     *             is `true` and `sponsorEmailDomains` is empty.
      * 
      *             Property key is the sponsor email, Property value is the sponsor name
      * 
      */
     private Map<String,String> sponsors;
     /**
-     * @return Optional if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+     * @return Optional if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      * 
      */
     private String ssoDefaultRole;
     /**
-     * @return Optional if `wlan_portal_auth`==`sso`
+     * @return Optional if `wlanPortalAuth`==`sso`
      * 
      */
     private String ssoForcedRole;
     /**
-     * @return Required if `wlan_portal_auth`==`sso`. IDP Cert (used to verify the signed response)
+     * @return Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
      * 
      */
     private String ssoIdpCert;
     /**
-     * @return Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+     * @return Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
      * 
      */
     private String ssoIdpSignAlgo;
     /**
-     * @return Required if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
+     * @return Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
      * 
      */
     private String ssoIdpSsoUrl;
     /**
-     * @return Required if `wlan_portal_auth`==`sso`, IDP issuer URL
+     * @return Required if `wlanPortalAuth`==`sso`, IDP issuer URL
      * 
      */
     private String ssoIssuer;
     /**
-     * @return Optional if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
+     * @return Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
      * 
      */
     private String ssoNameidFormat;
     /**
-     * @return Required if `sms_provider`==`telstra`, Client ID provided by Telstra
+     * @return Required if `smsProvider`==`telstra`, Client ID provided by Telstra
      * 
      */
     private String telstraClientId;
     /**
-     * @return Required if `sms_provider`==`telstra`, Client secret provided by Telstra
+     * @return Required if `smsProvider`==`telstra`, Client secret provided by Telstra
      * 
      */
     private String telstraClientSecret;
     /**
-     * @return Required if `sms_provider`==`twilio`, Auth token account with twilio account
+     * @return Required if `smsProvider`==`twilio`, Auth token account with twilio account
      * 
      */
     private String twilioAuthToken;
     /**
-     * @return Required if `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+     * @return Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
      * 
      */
     private String twilioPhoneNumber;
     /**
-     * @return Required if `sms_provider`==`twilio`, Account SID provided by Twilio
+     * @return Required if `smsProvider`==`twilio`, Account SID provided by Twilio
      * 
      */
     private String twilioSid;
 
     private GetWlansOrgWlanPortal() {}
     /**
-     * @return Optional if `amazon_enabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+     * @return Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
      * 
      */
     public Boolean allowWlanIdRoam() {
         return this.allowWlanIdRoam;
     }
     /**
-     * @return Optional if `amazon_enabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+     * @return Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
      * 
      */
     public String amazonClientId() {
         return this.amazonClientId;
     }
     /**
-     * @return Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a corresponding value. Else leave blank.
+     * @return Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a corresponding value. Else leave blank.
      * 
      */
     public String amazonClientSecret() {
         return this.amazonClientSecret;
     }
     /**
-     * @return Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     public List<String> amazonEmailDomains() {
@@ -417,7 +417,7 @@ public final class GetWlansOrgWlanPortal {
         return this.amazonEnabled;
     }
     /**
-     * @return Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+     * @return Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
      * 
      */
     public Integer amazonExpire() {
@@ -431,14 +431,14 @@ public final class GetWlansOrgWlanPortal {
         return this.auth;
     }
     /**
-     * @return Required if `azure_enabled`==`true`. Azure active directory app client id
+     * @return Required if `azureEnabled`==`true`. Azure active directory app client id
      * 
      */
     public String azureClientId() {
         return this.azureClientId;
     }
     /**
-     * @return Required if `azure_enabled`==`true`. Azure active directory app client secret
+     * @return Required if `azureEnabled`==`true`. Azure active directory app client secret
      * 
      */
     public String azureClientSecret() {
@@ -459,28 +459,28 @@ public final class GetWlansOrgWlanPortal {
         return this.azureExpire;
     }
     /**
-     * @return Required if `azure_enabled`==`true`. Azure active directory tenant id.
+     * @return Required if `azureEnabled`==`true`. Azure active directory tenant id.
      * 
      */
     public String azureTenantId() {
         return this.azureTenantId;
     }
     /**
-     * @return Required if `sms_provider`==`broadnet`
+     * @return Required if `smsProvider`==`broadnet`
      * 
      */
     public String broadnetPassword() {
         return this.broadnetPassword;
     }
     /**
-     * @return Required if `sms_provider`==`broadnet`
+     * @return Required if `smsProvider`==`broadnet`
      * 
      */
     public String broadnetSid() {
         return this.broadnetSid;
     }
     /**
-     * @return Required if `sms_provider`==`broadnet`
+     * @return Required if `smsProvider`==`broadnet`
      * 
      */
     public String broadnetUserId() {
@@ -494,14 +494,14 @@ public final class GetWlansOrgWlanPortal {
         return this.bypassWhenCloudDown;
     }
     /**
-     * @return Required if `sms_provider`==`clickatell`
+     * @return Required if `smsProvider`==`clickatell`
      * 
      */
     public String clickatellApiKey() {
         return this.clickatellApiKey;
     }
     /**
-     * @return Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
+     * @return Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
      * 
      */
     public Boolean crossSite() {
@@ -529,28 +529,28 @@ public final class GetWlansOrgWlanPortal {
         return this.expire;
     }
     /**
-     * @return Required if `wlan_portal_auth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
+     * @return Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
      * 
      */
     public String externalPortalUrl() {
         return this.externalPortalUrl;
     }
     /**
-     * @return Required if `facebook_enabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+     * @return Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
      * 
      */
     public String facebookClientId() {
         return this.facebookClientId;
     }
     /**
-     * @return Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a corresponding value. Else leave blank.
+     * @return Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a corresponding value. Else leave blank.
      * 
      */
     public String facebookClientSecret() {
         return this.facebookClientSecret;
     }
     /**
-     * @return Optional if `facebook_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     public List<String> facebookEmailDomains() {
@@ -564,7 +564,7 @@ public final class GetWlansOrgWlanPortal {
         return this.facebookEnabled;
     }
     /**
-     * @return Optional if `facebook_enabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+     * @return Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
      * 
      */
     public Integer facebookExpire() {
@@ -592,14 +592,14 @@ public final class GetWlansOrgWlanPortal {
         return this.googleClientId;
     }
     /**
-     * @return Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a corresponding value. Else leave blank.
+     * @return Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a corresponding value. Else leave blank.
      * 
      */
     public String googleClientSecret() {
         return this.googleClientSecret;
     }
     /**
-     * @return Optional if `google_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     public List<String> googleEmailDomains() {
@@ -613,42 +613,42 @@ public final class GetWlansOrgWlanPortal {
         return this.googleEnabled;
     }
     /**
-     * @return Optional if `google_enabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
+     * @return Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
      * 
      */
     public Integer googleExpire() {
         return this.googleExpire;
     }
     /**
-     * @return Required if `sms_provider`==`gupshup`
+     * @return Required if `smsProvider`==`gupshup`
      * 
      */
     public String gupshupPassword() {
         return this.gupshupPassword;
     }
     /**
-     * @return Required if `sms_provider`==`gupshup`
+     * @return Required if `smsProvider`==`gupshup`
      * 
      */
     public String gupshupUserid() {
         return this.gupshupUserid;
     }
     /**
-     * @return Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+     * @return Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
      * 
      */
     public String microsoftClientId() {
         return this.microsoftClientId;
     }
     /**
-     * @return Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a corresponding value. Else leave blank.
+     * @return Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a corresponding value. Else leave blank.
      * 
      */
     public String microsoftClientSecret() {
         return this.microsoftClientSecret;
     }
     /**
-     * @return Optional if `microsoft_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     public List<String> microsoftEmailDomains() {
@@ -662,7 +662,7 @@ public final class GetWlansOrgWlanPortal {
         return this.microsoftEnabled;
     }
     /**
-     * @return Optional if `microsoft_enabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+     * @return Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
      * 
      */
     public Integer microsoftExpire() {
@@ -676,21 +676,21 @@ public final class GetWlansOrgWlanPortal {
         return this.passphraseEnabled;
     }
     /**
-     * @return Optional if `passphrase_enabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+     * @return Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
      * 
      */
     public Integer passphraseExpire() {
         return this.passphraseExpire;
     }
     /**
-     * @return Required if `passphrase_enabled`==`true`.
+     * @return Required if `passphraseEnabled`==`true`.
      * 
      */
     public String password() {
         return this.password;
     }
     /**
-     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
      * 
      */
     public Boolean predefinedSponsorsEnabled() {
@@ -707,21 +707,21 @@ public final class GetWlansOrgWlanPortal {
         return this.privacy;
     }
     /**
-     * @return Required if `sms_provider`==`puzzel`
+     * @return Required if `smsProvider`==`puzzel`
      * 
      */
     public String puzzelPassword() {
         return this.puzzelPassword;
     }
     /**
-     * @return Required if `sms_provider`==`puzzel`
+     * @return Required if `smsProvider`==`puzzel`
      * 
      */
     public String puzzelServiceId() {
         return this.puzzelServiceId;
     }
     /**
-     * @return Required if `sms_provider`==`puzzel`
+     * @return Required if `smsProvider`==`puzzel`
      * 
      */
     public String puzzelUsername() {
@@ -735,35 +735,35 @@ public final class GetWlansOrgWlanPortal {
         return this.smsEnabled;
     }
     /**
-     * @return Optional if `sms_enabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+     * @return Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
      * 
      */
     public Integer smsExpire() {
         return this.smsExpire;
     }
     /**
-     * @return Optional if `sms_enabled`==`true`. SMS Message format
+     * @return Optional if `smsEnabled`==`true`. SMS Message format
      * 
      */
     public String smsMessageFormat() {
         return this.smsMessageFormat;
     }
     /**
-     * @return Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+     * @return Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
      * 
      */
     public String smsProvider() {
         return this.smsProvider;
     }
     /**
-     * @return Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
+     * @return Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
      * 
      */
     public Boolean sponsorAutoApprove() {
         return this.sponsorAutoApprove;
     }
     /**
-     * @return List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+     * @return List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
      * 
      */
     public List<String> sponsorEmailDomains() {
@@ -777,7 +777,7 @@ public final class GetWlansOrgWlanPortal {
         return this.sponsorEnabled;
     }
     /**
-     * @return Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+     * @return Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
      * 
      */
     public Integer sponsorExpire() {
@@ -787,22 +787,22 @@ public final class GetWlansOrgWlanPortal {
         return this.sponsorLinkValidityDuration;
     }
     /**
-     * @return Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+     * @return Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
      * 
      */
     public Boolean sponsorNotifyAll() {
         return this.sponsorNotifyAll;
     }
     /**
-     * @return Optional if `sponsor_enabled`==`true`. If enabled, guest will get email about sponsor&#39;s action (approve/deny)
+     * @return Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor&#39;s action (approve/deny)
      * 
      */
     public Boolean sponsorStatusNotify() {
         return this.sponsorStatusNotify;
     }
     /**
-     * @return object of allowed sponsors email with name. Required if `sponsor_enabled`
-     *             is `true` and `sponsor_email_domains` is empty.
+     * @return object of allowed sponsors email with name. Required if `sponsorEnabled`
+     *             is `true` and `sponsorEmailDomains` is empty.
      * 
      *             Property key is the sponsor email, Property value is the sponsor name
      * 
@@ -811,84 +811,84 @@ public final class GetWlansOrgWlanPortal {
         return this.sponsors;
     }
     /**
-     * @return Optional if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+     * @return Optional if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      * 
      */
     public String ssoDefaultRole() {
         return this.ssoDefaultRole;
     }
     /**
-     * @return Optional if `wlan_portal_auth`==`sso`
+     * @return Optional if `wlanPortalAuth`==`sso`
      * 
      */
     public String ssoForcedRole() {
         return this.ssoForcedRole;
     }
     /**
-     * @return Required if `wlan_portal_auth`==`sso`. IDP Cert (used to verify the signed response)
+     * @return Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
      * 
      */
     public String ssoIdpCert() {
         return this.ssoIdpCert;
     }
     /**
-     * @return Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+     * @return Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
      * 
      */
     public String ssoIdpSignAlgo() {
         return this.ssoIdpSignAlgo;
     }
     /**
-     * @return Required if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
+     * @return Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
      * 
      */
     public String ssoIdpSsoUrl() {
         return this.ssoIdpSsoUrl;
     }
     /**
-     * @return Required if `wlan_portal_auth`==`sso`, IDP issuer URL
+     * @return Required if `wlanPortalAuth`==`sso`, IDP issuer URL
      * 
      */
     public String ssoIssuer() {
         return this.ssoIssuer;
     }
     /**
-     * @return Optional if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
+     * @return Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
      * 
      */
     public String ssoNameidFormat() {
         return this.ssoNameidFormat;
     }
     /**
-     * @return Required if `sms_provider`==`telstra`, Client ID provided by Telstra
+     * @return Required if `smsProvider`==`telstra`, Client ID provided by Telstra
      * 
      */
     public String telstraClientId() {
         return this.telstraClientId;
     }
     /**
-     * @return Required if `sms_provider`==`telstra`, Client secret provided by Telstra
+     * @return Required if `smsProvider`==`telstra`, Client secret provided by Telstra
      * 
      */
     public String telstraClientSecret() {
         return this.telstraClientSecret;
     }
     /**
-     * @return Required if `sms_provider`==`twilio`, Auth token account with twilio account
+     * @return Required if `smsProvider`==`twilio`, Auth token account with twilio account
      * 
      */
     public String twilioAuthToken() {
         return this.twilioAuthToken;
     }
     /**
-     * @return Required if `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+     * @return Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
      * 
      */
     public String twilioPhoneNumber() {
         return this.twilioPhoneNumber;
     }
     /**
-     * @return Required if `sms_provider`==`twilio`, Account SID provided by Twilio
+     * @return Required if `smsProvider`==`twilio`, Account SID provided by Twilio
      * 
      */
     public String twilioSid() {

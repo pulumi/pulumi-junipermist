@@ -17,6 +17,96 @@ import (
 // A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings.\
 // Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewNetworktemplate(ctx, "networktemplate_one", &org.NetworktemplateArgs{
+//				Name:  pulumi.String("networktemplate_one"),
+//				OrgId: pulumi.Any(terraformTest.Id),
+//				DnsServers: pulumi.StringArray{
+//					pulumi.String("8.8.8.8"),
+//					pulumi.String("1.1.1.1"),
+//				},
+//				DnsSuffixes: pulumi.StringArray{
+//					pulumi.String("mycorp.com"),
+//				},
+//				NtpServers: pulumi.StringArray{
+//					pulumi.String("pool.ntp.org"),
+//				},
+//				AdditionalConfigCmds: pulumi.StringArray{
+//					pulumi.String("set system hostname test"),
+//					pulumi.String("set system services ssh root-login allow"),
+//				},
+//				Networks: org.NetworktemplateNetworksMap{
+//					"network_one": &org.NetworktemplateNetworksArgs{
+//						VlanId: pulumi.String("10"),
+//					},
+//					"network_two": &org.NetworktemplateNetworksArgs{
+//						VlanId: pulumi.String("11"),
+//					},
+//				},
+//				PortUsages: org.NetworktemplatePortUsagesMap{
+//					"trunk": &org.NetworktemplatePortUsagesArgs{
+//						AllNetworks: pulumi.Bool(true),
+//						EnableQos:   pulumi.Bool(true),
+//						Mode:        pulumi.String("port_usage_one"),
+//						PortNetwork: pulumi.String("network_one"),
+//					},
+//				},
+//				RadiusConfig: &org.NetworktemplateRadiusConfigArgs{
+//					Acct_interim_interval: 60,
+//					Coa_enabled:           true,
+//					Network:               pulumi.String("network_one"),
+//					Acct_servers: []map[string]interface{}{
+//						map[string]interface{}{
+//							"host":   "1.2.3.4",
+//							"secret": "secret",
+//						},
+//					},
+//					Auth_servers: []map[string]interface{}{
+//						map[string]interface{}{
+//							"host":   "1.2.3.4",
+//							"secret": "secret",
+//						},
+//					},
+//				},
+//				SwitchMatching: &org.NetworktemplateSwitchMatchingArgs{
+//					Enable: pulumi.Bool(true),
+//					Rules: org.NetworktemplateSwitchMatchingRuleArray{
+//						&org.NetworktemplateSwitchMatchingRuleArgs{
+//							Name:            pulumi.String("switch_rule_one"),
+//							MatchName:       pulumi.String("corp"),
+//							MatchNameOffset: pulumi.Int(3),
+//							MatchRole:       pulumi.String("core"),
+//							PortConfig: org.NetworktemplateSwitchMatchingRulePortConfigMap{
+//								"ge-0/0/0-10": &org.NetworktemplateSwitchMatchingRulePortConfigArgs{
+//									Usage: pulumi.String("port_usage_one"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_networktemplate` with:

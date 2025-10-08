@@ -13,6 +13,90 @@ import * as utilities from "../utilities";
  *
  * The Gateway Device Profile can be assigned to a gateway with the `junipermist.org.DeviceprofileAssign` resource.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const deviceprofileGwOne = new junipermist.org.DeviceprofileGateway("deviceprofile_gw_one", {
+ *     name: "deviceprofile_gw_one",
+ *     orgId: terraformTest.id,
+ *     portConfig: {
+ *         "ge-0/0/3": {
+ *             name: "FTTH",
+ *             usage: "wan",
+ *             aggregated: false,
+ *             redundant: false,
+ *             critical: false,
+ *             wanType: "broadband",
+ *             ipConfig: {
+ *                 type: "static",
+ *                 ip: "192.168.1.8",
+ *                 netmask: "/24",
+ *                 gateway: "192.168.1.1",
+ *             },
+ *             disableAutoneg: false,
+ *             speed: "auto",
+ *             duplex: "auto",
+ *             wanSourceNat: {
+ *                 disabled: false,
+ *             },
+ *             vpnPaths: {
+ *                 "SSR_HUB_DC-MPLS.OrgOverlay": {
+ *                     key: 0,
+ *                     role: "spoke",
+ *                     bfdProfile: "broadband",
+ *                 },
+ *             },
+ *         },
+ *         "ge-0/0/5": {
+ *             usage: "lan",
+ *             critical: false,
+ *             aggregated: true,
+ *             aeDisableLacp: false,
+ *             aeLacpForceUp: true,
+ *             aeIdx: "0",
+ *             redundant: false,
+ *             networks: [
+ *                 "PRD-Core",
+ *                 "PRD-Mgmt",
+ *                 "PRD-Lab",
+ *             ],
+ *         },
+ *     },
+ *     ipConfigs: {
+ *         "PRD-Core": {
+ *             type: "static",
+ *             ip: "10.3.100.9",
+ *             netmask: "/24",
+ *         },
+ *         "PRD-Mgmt": {
+ *             type: "static",
+ *             ip: "10.3.172.1",
+ *             netmask: "/24",
+ *         },
+ *         "PRD-Lab": {
+ *             type: "static",
+ *             ip: "10.3.171.1",
+ *             netmask: "/24",
+ *         },
+ *     },
+ *     servicePolicies: [{
+ *         name: "Policy-14",
+ *         tenants: ["PRD-Core"],
+ *         services: ["any"],
+ *         action: "allow",
+ *         path_preference: "HUB",
+ *         idp: {
+ *             enabled: true,
+ *             profile: "critical",
+ *             alertOnly: false,
+ *         },
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_deviceprofile_gateway` with:

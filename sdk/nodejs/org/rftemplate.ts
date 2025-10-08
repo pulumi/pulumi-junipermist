@@ -11,6 +11,44 @@ import * as utilities from "../utilities";
  *
  * The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const rftemplateOne = new junipermist.org.Rftemplate("rftemplate_one", {
+ *     name: "rftemplate_one",
+ *     orgId: terraformTest.id,
+ *     band24Usage: "auto",
+ *     band5: {
+ *         ant_gain: 2,
+ *         power: 8,
+ *         channels: [
+ *             60,
+ *             104,
+ *             132,
+ *         ],
+ *         bandwidth: 20,
+ *     },
+ *     band6: {
+ *         ant_gain: 2,
+ *         power: 8,
+ *     },
+ *     band24: {
+ *         ant_gain: 1,
+ *         allow_rrm_disable: true,
+ *         power_min: 18,
+ *         power_max: 18,
+ *         bandwidth: 20,
+ *     },
+ *     antGain5: 2,
+ *     antGain6: 2,
+ *     antGain24: 1,
+ *     countryCode: "FR",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_rftemplate` with:

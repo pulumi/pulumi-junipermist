@@ -14,19 +14,19 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class GetWlansSiteWlanPortalResult
     {
         /// <summary>
-        /// Optional if `amazon_enabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+        /// Optional if `AmazonEnabled`==`True`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable RandomMac for seamless roaming)
         /// </summary>
         public readonly bool AllowWlanIdRoam;
         /// <summary>
-        /// Optional if `amazon_enabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+        /// Optional if `AmazonEnabled`==`True`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
         /// </summary>
         public readonly string AmazonClientId;
         /// <summary>
-        /// Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a corresponding value. Else leave blank.
+        /// Optional if `AmazonEnabled`==`True`. Amazon OAuth2 client secret. If AmazonClientId was provided, provide a corresponding value. Else leave blank.
         /// </summary>
         public readonly string AmazonClientSecret;
         /// <summary>
-        /// Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        /// Optional if `AmazonEnabled`==`True`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         /// </summary>
         public readonly ImmutableArray<string> AmazonEmailDomains;
         /// <summary>
@@ -34,19 +34,19 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool AmazonEnabled;
         /// <summary>
-        /// Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+        /// Optional if `AmazonEnabled`==`True`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
         /// </summary>
         public readonly int AmazonExpire;
         /// <summary>
-        /// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
+        /// authentication scheme. enum: `Amazon`, `Azure`, `Email`, `External`, `Facebook`, `Google`, `Microsoft`, `Multi`, `None`, `Password`, `Sms`, `Sponsor`, `Sso`
         /// </summary>
         public readonly string Auth;
         /// <summary>
-        /// Required if `azure_enabled`==`true`. Azure active directory app client id
+        /// Required if `AzureEnabled`==`True`. Azure active directory app client id
         /// </summary>
         public readonly string AzureClientId;
         /// <summary>
-        /// Required if `azure_enabled`==`true`. Azure active directory app client secret
+        /// Required if `AzureEnabled`==`True`. Azure active directory app client secret
         /// </summary>
         public readonly string AzureClientSecret;
         /// <summary>
@@ -58,19 +58,19 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int AzureExpire;
         /// <summary>
-        /// Required if `azure_enabled`==`true`. Azure active directory tenant id.
+        /// Required if `AzureEnabled`==`True`. Azure active directory tenant id.
         /// </summary>
         public readonly string AzureTenantId;
         /// <summary>
-        /// Required if `sms_provider`==`broadnet`
+        /// Required if `SmsProvider`==`Broadnet`
         /// </summary>
         public readonly string BroadnetPassword;
         /// <summary>
-        /// Required if `sms_provider`==`broadnet`
+        /// Required if `SmsProvider`==`Broadnet`
         /// </summary>
         public readonly string BroadnetSid;
         /// <summary>
-        /// Required if `sms_provider`==`broadnet`
+        /// Required if `SmsProvider`==`Broadnet`
         /// </summary>
         public readonly string BroadnetUserId;
         /// <summary>
@@ -78,11 +78,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool BypassWhenCloudDown;
         /// <summary>
-        /// Required if `sms_provider`==`clickatell`
+        /// Required if `SmsProvider`==`Clickatell`
         /// </summary>
         public readonly string ClickatellApiKey;
         /// <summary>
-        /// Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
+        /// Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable RandomMac for seamless roaming)
         /// </summary>
         public readonly bool CrossSite;
         /// <summary>
@@ -98,19 +98,19 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int Expire;
         /// <summary>
-        /// Required if `wlan_portal_auth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
+        /// Required if `WlanPortalAuth`==`External`. External portal URL (e.g. https://host/url) where we can append our query parameters to
         /// </summary>
         public readonly string ExternalPortalUrl;
         /// <summary>
-        /// Required if `facebook_enabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+        /// Required if `FacebookEnabled`==`True`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
         /// </summary>
         public readonly string FacebookClientId;
         /// <summary>
-        /// Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a corresponding value. Else leave blank.
+        /// Required if `FacebookEnabled`==`True`. Facebook OAuth2 app secret. If FacebookClientId was provided, provide a corresponding value. Else leave blank.
         /// </summary>
         public readonly string FacebookClientSecret;
         /// <summary>
-        /// Optional if `facebook_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        /// Optional if `FacebookEnabled`==`True`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         /// </summary>
         public readonly ImmutableArray<string> FacebookEmailDomains;
         /// <summary>
@@ -118,7 +118,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool FacebookEnabled;
         /// <summary>
-        /// Optional if `facebook_enabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+        /// Optional if `FacebookEnabled`==`True`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
         /// </summary>
         public readonly int FacebookExpire;
         /// <summary>
@@ -134,11 +134,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string GoogleClientId;
         /// <summary>
-        /// Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a corresponding value. Else leave blank.
+        /// Optional if `GoogleEnabled`==`True`. Google OAuth2 app secret. If GoogleClientId was provided, provide a corresponding value. Else leave blank.
         /// </summary>
         public readonly string GoogleClientSecret;
         /// <summary>
-        /// Optional if `google_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        /// Optional if `GoogleEnabled`==`True`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         /// </summary>
         public readonly ImmutableArray<string> GoogleEmailDomains;
         /// <summary>
@@ -146,27 +146,27 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool GoogleEnabled;
         /// <summary>
-        /// Optional if `google_enabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
+        /// Optional if `GoogleEnabled`==`True`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
         /// </summary>
         public readonly int GoogleExpire;
         /// <summary>
-        /// Required if `sms_provider`==`gupshup`
+        /// Required if `SmsProvider`==`Gupshup`
         /// </summary>
         public readonly string GupshupPassword;
         /// <summary>
-        /// Required if `sms_provider`==`gupshup`
+        /// Required if `SmsProvider`==`Gupshup`
         /// </summary>
         public readonly string GupshupUserid;
         /// <summary>
-        /// Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+        /// Optional if `MicrosoftEnabled`==`True`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
         /// </summary>
         public readonly string MicrosoftClientId;
         /// <summary>
-        /// Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a corresponding value. Else leave blank.
+        /// Optional if `MicrosoftEnabled`==`True`. Microsoft 365 OAuth2 client secret. If MicrosoftClientId was provided, provide a corresponding value. Else leave blank.
         /// </summary>
         public readonly string MicrosoftClientSecret;
         /// <summary>
-        /// Optional if `microsoft_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        /// Optional if `MicrosoftEnabled`==`True`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         /// </summary>
         public readonly ImmutableArray<string> MicrosoftEmailDomains;
         /// <summary>
@@ -174,7 +174,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool MicrosoftEnabled;
         /// <summary>
-        /// Optional if `microsoft_enabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+        /// Optional if `MicrosoftEnabled`==`True`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
         /// </summary>
         public readonly int MicrosoftExpire;
         /// <summary>
@@ -182,15 +182,15 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool PassphraseEnabled;
         /// <summary>
-        /// Optional if `passphrase_enabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+        /// Optional if `PassphraseEnabled`==`True`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `Expire`
         /// </summary>
         public readonly int PassphraseExpire;
         /// <summary>
-        /// Required if `passphrase_enabled`==`true`.
+        /// Required if `PassphraseEnabled`==`True`.
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+        /// Whether to show list of sponsor emails mentioned in `Sponsors` object as a dropdown. If both `SponsorNotifyAll` and `PredefinedSponsorsEnabled` are false, behaviour is acc to `SponsorEmailDomains`
         /// </summary>
         public readonly bool PredefinedSponsorsEnabled;
         /// <summary>
@@ -199,15 +199,15 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly bool PredefinedSponsorsHideEmail;
         public readonly bool Privacy;
         /// <summary>
-        /// Required if `sms_provider`==`puzzel`
+        /// Required if `SmsProvider`==`Puzzel`
         /// </summary>
         public readonly string PuzzelPassword;
         /// <summary>
-        /// Required if `sms_provider`==`puzzel`
+        /// Required if `SmsProvider`==`Puzzel`
         /// </summary>
         public readonly string PuzzelServiceId;
         /// <summary>
-        /// Required if `sms_provider`==`puzzel`
+        /// Required if `SmsProvider`==`Puzzel`
         /// </summary>
         public readonly string PuzzelUsername;
         /// <summary>
@@ -215,23 +215,23 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool SmsEnabled;
         /// <summary>
-        /// Optional if `sms_enabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+        /// Optional if `SmsEnabled`==`True`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
         /// </summary>
         public readonly int SmsExpire;
         /// <summary>
-        /// Optional if `sms_enabled`==`true`. SMS Message format
+        /// Optional if `SmsEnabled`==`True`. SMS Message format
         /// </summary>
         public readonly string SmsMessageFormat;
         /// <summary>
-        /// Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+        /// Optioanl if `SmsEnabled`==`True`. enum: `Broadnet`, `Clickatell`, `Gupshup`, `Manual`, `Puzzel`, `Telstra`, `Twilio`
         /// </summary>
         public readonly string SmsProvider;
         /// <summary>
-        /// Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
+        /// Optional if `SponsorEnabled`==`True`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs PredefinedSponsorsEnabled enabled and SponsorNotifyAll disabled
         /// </summary>
         public readonly bool SponsorAutoApprove;
         /// <summary>
-        /// List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+        /// List of domain allowed for sponsor email. Required if `SponsorEnabled` is `True` and `Sponsors` is empty.
         /// </summary>
         public readonly ImmutableArray<string> SponsorEmailDomains;
         /// <summary>
@@ -239,71 +239,71 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool SponsorEnabled;
         /// <summary>
-        /// Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+        /// Optional if `SponsorEnabled`==`True`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
         /// </summary>
         public readonly int SponsorExpire;
         public readonly string SponsorLinkValidityDuration;
         /// <summary>
-        /// Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+        /// Optional if `SponsorEnabled`==`True`. whether to notify all sponsors that are mentioned in `Sponsors` object. Both `SponsorNotifyAll` and `PredefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
         /// </summary>
         public readonly bool SponsorNotifyAll;
         /// <summary>
-        /// Optional if `sponsor_enabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
+        /// Optional if `SponsorEnabled`==`True`. If enabled, guest will get email about sponsor's action (approve/deny)
         /// </summary>
         public readonly bool SponsorStatusNotify;
         /// <summary>
-        /// object of allowed sponsors email with name. Required if `sponsor_enabled`
-        ///             is `true` and `sponsor_email_domains` is empty.
+        /// object of allowed sponsors email with name. Required if `SponsorEnabled`
+        ///             is `True` and `SponsorEmailDomains` is empty.
         /// 
         ///             Property key is the sponsor email, Property value is the sponsor name
         /// </summary>
         public readonly ImmutableDictionary<string, string> Sponsors;
         /// <summary>
-        /// Optional if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+        /// Optional if `WlanPortalAuth`==`Sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         /// </summary>
         public readonly string SsoDefaultRole;
         /// <summary>
-        /// Optional if `wlan_portal_auth`==`sso`
+        /// Optional if `WlanPortalAuth`==`Sso`
         /// </summary>
         public readonly string SsoForcedRole;
         /// <summary>
-        /// Required if `wlan_portal_auth`==`sso`. IDP Cert (used to verify the signed response)
+        /// Required if `WlanPortalAuth`==`Sso`. IDP Cert (used to verify the signed response)
         /// </summary>
         public readonly string SsoIdpCert;
         /// <summary>
-        /// Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+        /// Optioanl if `WlanPortalAuth`==`Sso`, Signing algorithm for SAML Assertion. enum: `Sha1`, `Sha256`, `Sha384`, `Sha512`
         /// </summary>
         public readonly string SsoIdpSignAlgo;
         /// <summary>
-        /// Required if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
+        /// Required if `WlanPortalAuth`==`Sso`, IDP Single-Sign-On URL
         /// </summary>
         public readonly string SsoIdpSsoUrl;
         /// <summary>
-        /// Required if `wlan_portal_auth`==`sso`, IDP issuer URL
+        /// Required if `WlanPortalAuth`==`Sso`, IDP issuer URL
         /// </summary>
         public readonly string SsoIssuer;
         /// <summary>
-        /// Optional if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
+        /// Optional if `WlanPortalAuth`==`Sso`. enum: `Email`, `Unspecified`
         /// </summary>
         public readonly string SsoNameidFormat;
         /// <summary>
-        /// Required if `sms_provider`==`telstra`, Client ID provided by Telstra
+        /// Required if `SmsProvider`==`Telstra`, Client ID provided by Telstra
         /// </summary>
         public readonly string TelstraClientId;
         /// <summary>
-        /// Required if `sms_provider`==`telstra`, Client secret provided by Telstra
+        /// Required if `SmsProvider`==`Telstra`, Client secret provided by Telstra
         /// </summary>
         public readonly string TelstraClientSecret;
         /// <summary>
-        /// Required if `sms_provider`==`twilio`, Auth token account with twilio account
+        /// Required if `SmsProvider`==`Twilio`, Auth token account with twilio account
         /// </summary>
         public readonly string TwilioAuthToken;
         /// <summary>
-        /// Required if `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+        /// Required if `SmsProvider`==`Twilio`, Twilio phone number associated with the account. See example for accepted format.
         /// </summary>
         public readonly string TwilioPhoneNumber;
         /// <summary>
-        /// Required if `sms_provider`==`twilio`, Account SID provided by Twilio
+        /// Required if `SmsProvider`==`Twilio`, Account SID provided by Twilio
         /// </summary>
         public readonly string TwilioSid;
 

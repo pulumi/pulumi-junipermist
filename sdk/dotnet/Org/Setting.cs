@@ -14,6 +14,85 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// The Org Settings can be used to customize the Org configuration
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var terraformTest = new JuniperMist.Org.Setting("terraform_test", new()
+    ///     {
+    ///         OrgId = terraformTestMistOrg.Id,
+    ///         ApUpdownThreshold = 10,
+    ///         Cradlepoint = new JuniperMist.Org.Inputs.SettingCradlepointArgs
+    ///         {
+    ///             Cp_api_id = "cp_api_id_test",
+    ///             Cp_api_key = "secret",
+    ///             Ecm_api_id = "ecm_api_id_test",
+    ///             Ecm_api_key = "secret",
+    ///         },
+    ///         DeviceUpdownThreshold = 10,
+    ///         DisablePcap = false,
+    ///         DisableRemoteShell = true,
+    ///         GatewayUpdownThreshold = 10,
+    ///         MxedgeMgmt = new JuniperMist.Org.Inputs.SettingMxedgeMgmtArgs
+    ///         {
+    ///             Mist_password = "root_secret_password",
+    ///             Root_password = "root_secret_password",
+    ///             Oob_ip_type = "dhcp",
+    ///             Oob_ip_type6 = "disabled",
+    ///         },
+    ///         PasswordPolicy = new JuniperMist.Org.Inputs.SettingPasswordPolicyArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Freshness = 180,
+    ///             Min_length = 12,
+    ///             Requires_special_char = true,
+    ///             Requires_two_factor_auth = false,
+    ///         },
+    ///         Security = new JuniperMist.Org.Inputs.SettingSecurityArgs
+    ///         {
+    ///             Disable_local_ssh = true,
+    ///         },
+    ///         SwitchUpdownThreshold = 10,
+    ///         SyntheticTest = new JuniperMist.Org.Inputs.SettingSyntheticTestArgs
+    ///         {
+    ///             Disabled = false,
+    ///             Vlans = new[]
+    ///             {
+    ///                 new JuniperMist.Org.Inputs.SettingSyntheticTestVlanArgs
+    ///                 {
+    ///                     VlanIds = new[]
+    ///                     {
+    ///                         "10",
+    ///                         "30",
+    ///                     },
+    ///                     CustomTestUrls = new[]
+    ///                     {
+    ///                         "http://www.abc.com/",
+    ///                         "https://10.3.5.1:8080/about",
+    ///                     },
+    ///                 },
+    ///                 new JuniperMist.Org.Inputs.SettingSyntheticTestVlanArgs
+    ///                 {
+    ///                     VlanIds = new[]
+    ///                     {
+    ///                         "20",
+    ///                     },
+    ///                     Disabled = true,
+    ///                 },
+    ///             },
+    ///         },
+    ///         UiIdleTimeout = 120,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_setting` with:
@@ -28,7 +107,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Setting : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+        /// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `DeviceUpdownThreshold` is ignored.
         /// </summary>
         [Output("apUpdownThreshold")]
         public Output<int?> ApUpdownThreshold { get; private set; } = null!;
@@ -78,7 +157,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> DisableRemoteShell { get; private set; } = null!;
 
         /// <summary>
-        /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
+        /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `DeviceUpdownThreshold` is ignored.
         /// </summary>
         [Output("gatewayUpdownThreshold")]
         public Output<int?> GatewayUpdownThreshold { get; private set; } = null!;
@@ -100,8 +179,8 @@ namespace Pulumi.JuniperMist.Org
 
         /// <summary>
         /// junos_shell_access: Manages role-based web-shell access.  
-        /// When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
-        /// When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
+        /// When JunosShell access is not defined (Default) - No additional users are configured and web-shell uses default `Mist` user to login.  
+        /// When JunosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
         /// </summary>
         [Output("junosShellAccess")]
         public Output<Outputs.SettingJunosShellAccess?> JunosShellAccess { get; private set; } = null!;
@@ -152,7 +231,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.SettingSwitchMgmt?> SwitchMgmt { get; private set; } = null!;
 
         /// <summary>
-        /// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
+        /// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `DeviceUpdownThreshold` is ignored.
         /// </summary>
         [Output("switchUpdownThreshold")]
         public Output<int?> SwitchUpdownThreshold { get; private set; } = null!;
@@ -226,7 +305,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class SettingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+        /// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `DeviceUpdownThreshold` is ignored.
         /// </summary>
         [Input("apUpdownThreshold")]
         public Input<int>? ApUpdownThreshold { get; set; }
@@ -279,7 +358,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? DisableRemoteShell { get; set; }
 
         /// <summary>
-        /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
+        /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `DeviceUpdownThreshold` is ignored.
         /// </summary>
         [Input("gatewayUpdownThreshold")]
         public Input<int>? GatewayUpdownThreshold { get; set; }
@@ -298,8 +377,8 @@ namespace Pulumi.JuniperMist.Org
 
         /// <summary>
         /// junos_shell_access: Manages role-based web-shell access.  
-        /// When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
-        /// When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
+        /// When JunosShell access is not defined (Default) - No additional users are configured and web-shell uses default `Mist` user to login.  
+        /// When JunosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
         /// </summary>
         [Input("junosShellAccess")]
         public Input<Inputs.SettingJunosShellAccessArgs>? JunosShellAccess { get; set; }
@@ -356,7 +435,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.SettingSwitchMgmtArgs>? SwitchMgmt { get; set; }
 
         /// <summary>
-        /// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
+        /// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `DeviceUpdownThreshold` is ignored.
         /// </summary>
         [Input("switchUpdownThreshold")]
         public Input<int>? SwitchUpdownThreshold { get; set; }
@@ -391,7 +470,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class SettingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+        /// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `DeviceUpdownThreshold` is ignored.
         /// </summary>
         [Input("apUpdownThreshold")]
         public Input<int>? ApUpdownThreshold { get; set; }
@@ -447,7 +526,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? DisableRemoteShell { get; set; }
 
         /// <summary>
-        /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
+        /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `DeviceUpdownThreshold` is ignored.
         /// </summary>
         [Input("gatewayUpdownThreshold")]
         public Input<int>? GatewayUpdownThreshold { get; set; }
@@ -469,8 +548,8 @@ namespace Pulumi.JuniperMist.Org
 
         /// <summary>
         /// junos_shell_access: Manages role-based web-shell access.  
-        /// When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
-        /// When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
+        /// When JunosShell access is not defined (Default) - No additional users are configured and web-shell uses default `Mist` user to login.  
+        /// When JunosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
         /// </summary>
         [Input("junosShellAccess")]
         public Input<Inputs.SettingJunosShellAccessGetArgs>? JunosShellAccess { get; set; }
@@ -527,7 +606,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.SettingSwitchMgmtGetArgs>? SwitchMgmt { get; set; }
 
         /// <summary>
-        /// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
+        /// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `DeviceUpdownThreshold` is ignored.
         /// </summary>
         [Input("switchUpdownThreshold")]
         public Input<int>? SwitchUpdownThreshold { get; set; }

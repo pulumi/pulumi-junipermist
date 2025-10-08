@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Authorization { get; set; }
 
         /// <summary>
-        /// Client_list_name here should refer to client_list above
+        /// Client_list_name here should refer to ClientList above
         /// </summary>
         [Input("clientListName")]
         public Input<string>? ClientListName { get; set; }

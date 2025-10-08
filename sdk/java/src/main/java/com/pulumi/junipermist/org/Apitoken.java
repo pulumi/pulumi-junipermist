@@ -23,6 +23,53 @@ import javax.annotation.Nullable;
  * Organization tokens support different privileges and can only be used for the specific organization they are generated for.
  * Rate limiting is done on an individual token basis, so if one token reaches its rate limit, it does not impact other tokens.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.Apitoken;
+ * import com.pulumi.junipermist.org.ApitokenArgs;
+ * import com.pulumi.junipermist.org.inputs.ApitokenPrivilegeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var apitokenOne = new Apitoken("apitokenOne", ApitokenArgs.builder()
+ *             .orgId(terraformTest.id())
+ *             .name("apitoken_one")
+ *             .privileges(            
+ *                 ApitokenPrivilegeArgs.builder()
+ *                     .scope("site")
+ *                     .role("admin")
+ *                     .site_id("d7c8364e-xxxx-xxxx-xxxx-37eff0475b03")
+ *                     .build(),
+ *                 ApitokenPrivilegeArgs.builder()
+ *                     .scope("site")
+ *                     .role("read")
+ *                     .site_id("08f8851b-xxxx-xxxx-xxxx-9ebb5aa62de4")
+ *                     .build())
+ *             .srcIps("1.2.3.4/32")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="junipermist:org/apitoken:Apitoken")
 public class Apitoken extends com.pulumi.resources.CustomResource {

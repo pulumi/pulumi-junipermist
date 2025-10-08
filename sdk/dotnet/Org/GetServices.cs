@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the list of WAN Assurance Services (Applications).
         /// 
-        /// A Service is used to define a Custom Application that can be used in the `service_policies`. These Services can be referenced by their name in
+        /// A Service is used to define a Custom Application that can be used in the `ServicePolicies`. These Services can be referenced by their name in
         /// * the Service Policies (`mist_org_servicepolicy.services`)
         /// * the Gateway configuration (`mist_device_gateway.service_policies.services`)
         /// * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
@@ -45,7 +45,7 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the list of WAN Assurance Services (Applications).
         /// 
-        /// A Service is used to define a Custom Application that can be used in the `service_policies`. These Services can be referenced by their name in
+        /// A Service is used to define a Custom Application that can be used in the `ServicePolicies`. These Services can be referenced by their name in
         /// * the Service Policies (`mist_org_servicepolicy.services`)
         /// * the Gateway configuration (`mist_device_gateway.service_policies.services`)
         /// * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
@@ -76,7 +76,7 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the list of WAN Assurance Services (Applications).
         /// 
-        /// A Service is used to define a Custom Application that can be used in the `service_policies`. These Services can be referenced by their name in
+        /// A Service is used to define a Custom Application that can be used in the `ServicePolicies`. These Services can be referenced by their name in
         /// * the Service Policies (`mist_org_servicepolicy.services`)
         /// * the Gateway configuration (`mist_device_gateway.service_policies.services`)
         /// * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)

@@ -15,6 +15,35 @@ import * as utilities from "../utilities";
  *
  * !> Only ONE `junipermist.site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const siteOne = new junipermist.site.Setting("site_one", {
+ *     siteId: terraformSite.id,
+ *     apUpdownThreshold: 5,
+ *     deviceUpdownThreshold: 5,
+ *     autoUpgrade: {
+ *         enabled: true,
+ *         day_of_week: "tue",
+ *         time_of_day: "02:00",
+ *         version: "beta",
+ *     },
+ *     configAutoRevert: true,
+ *     persistConfigOnDevice: true,
+ *     proxy: {
+ *         url: "http://myproxy:3128",
+ *     },
+ *     rogue: {
+ *         enabled: true,
+ *         honeypot_enabled: true,
+ *         min_duration: 5,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_site_setting` with:

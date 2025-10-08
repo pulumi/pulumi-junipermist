@@ -18,6 +18,106 @@ namespace Pulumi.JuniperMist.Site
     /// 
     /// !&gt; Only ONE `junipermist.site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var networktemplateOne = new JuniperMist.Site.Networktemplate("networktemplate_one", new()
+    ///     {
+    ///         SiteId = terraformTest.Id,
+    ///         DnsServers = new[]
+    ///         {
+    ///             "8.8.8.8",
+    ///             "1.1.1.1",
+    ///         },
+    ///         DnsSuffixes = new[]
+    ///         {
+    ///             "mycorp.com",
+    ///         },
+    ///         NtpServers = new[]
+    ///         {
+    ///             "pool.ntp.org",
+    ///         },
+    ///         AdditionalConfigCmds = new[]
+    ///         {
+    ///             "set system hostname test",
+    ///             "set system services ssh root-login allow",
+    ///         },
+    ///         Networks = 
+    ///         {
+    ///             { "network_one", new JuniperMist.Site.Inputs.NetworktemplateNetworksArgs
+    ///             {
+    ///                 VlanId = "10",
+    ///             } },
+    ///             { "network_two", new JuniperMist.Site.Inputs.NetworktemplateNetworksArgs
+    ///             {
+    ///                 VlanId = "11",
+    ///             } },
+    ///         },
+    ///         PortUsages = 
+    ///         {
+    ///             { "trunk", new JuniperMist.Site.Inputs.NetworktemplatePortUsagesArgs
+    ///             {
+    ///                 AllNetworks = true,
+    ///                 EnableQos = true,
+    ///                 Mode = "port_usage_one",
+    ///                 PortNetwork = "network_one",
+    ///             } },
+    ///         },
+    ///         RadiusConfig = new JuniperMist.Site.Inputs.NetworktemplateRadiusConfigArgs
+    ///         {
+    ///             Acct_interim_interval = 60,
+    ///             Coa_enabled = true,
+    ///             Network = "network_one",
+    ///             Acct_servers = new[]
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "host", "1.2.3.4" },
+    ///                     { "secret", "secret" },
+    ///                 },
+    ///             },
+    ///             Auth_servers = new[]
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "host", "1.2.3.4" },
+    ///                     { "secret", "secret" },
+    ///                 },
+    ///             },
+    ///         },
+    ///         SwitchMatching = new JuniperMist.Site.Inputs.NetworktemplateSwitchMatchingArgs
+    ///         {
+    ///             Enable = true,
+    ///             Rules = new[]
+    ///             {
+    ///                 new JuniperMist.Site.Inputs.NetworktemplateSwitchMatchingRuleArgs
+    ///                 {
+    ///                     Name = "switch_rule_one",
+    ///                     MatchName = "corp",
+    ///                     MatchNameOffset = 3,
+    ///                     MatchRole = "core",
+    ///                     PortConfig = 
+    ///                     {
+    ///                         { "ge-0/0/0-10", new JuniperMist.Site.Inputs.NetworktemplateSwitchMatchingRulePortConfigArgs
+    ///                         {
+    ///                             Usage = "port_usage_one",
+    ///                         } },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_site_networktemplate` with:
@@ -50,7 +150,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool> AutoUpgradeLinecard { get; private set; } = null!;
 
         /// <summary>
-        /// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+        /// Port usage to assign to switch ports without any port usage assigned. Default: `Default` to preserve default behavior
         /// </summary>
         [Output("defaultPortUsage")]
         public Output<string?> DefaultPortUsage { get; private set; } = null!;
@@ -65,13 +165,13 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableArray<string>> DisabledSystemDefinedPortUsages { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         [Output("dnsServers")]
         public Output<ImmutableArray<string>> DnsServers { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         [Output("dnsSuffixes")]
         public Output<ImmutableArray<string>> DnsSuffixes { get; private set; } = null!;
@@ -89,7 +189,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateExtraRoutes6>?> ExtraRoutes6 { get; private set; } = null!;
 
         /// <summary>
-        /// Enable mist_nac to use RadSec
+        /// Enable MistNac to use RadSec
         /// </summary>
         [Output("mistNac")]
         public Output<Outputs.NetworktemplateMistNac?> MistNac { get; private set; } = null!;
@@ -113,7 +213,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateOspfAreas>?> OspfAreas { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         /// </summary>
         [Output("portMirroring")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplatePortMirroring>?> PortMirroring { get; private set; } = null!;
@@ -246,7 +346,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? AutoUpgradeLinecard { get; set; }
 
         /// <summary>
-        /// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+        /// Port usage to assign to switch ports without any port usage assigned. Default: `Default` to preserve default behavior
         /// </summary>
         [Input("defaultPortUsage")]
         public Input<string>? DefaultPortUsage { get; set; }
@@ -270,7 +370,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -282,7 +382,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -315,7 +415,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Enable mist_nac to use RadSec
+        /// Enable MistNac to use RadSec
         /// </summary>
         [Input("mistNac")]
         public Input<Inputs.NetworktemplateMistNacArgs>? MistNac { get; set; }
@@ -360,7 +460,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplatePortMirroringArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortMirroringArgs> PortMirroring
         {
@@ -469,7 +569,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? AutoUpgradeLinecard { get; set; }
 
         /// <summary>
-        /// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+        /// Port usage to assign to switch ports without any port usage assigned. Default: `Default` to preserve default behavior
         /// </summary>
         [Input("defaultPortUsage")]
         public Input<string>? DefaultPortUsage { get; set; }
@@ -493,7 +593,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -505,7 +605,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -538,7 +638,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Enable mist_nac to use RadSec
+        /// Enable MistNac to use RadSec
         /// </summary>
         [Input("mistNac")]
         public Input<Inputs.NetworktemplateMistNacGetArgs>? MistNac { get; set; }
@@ -583,7 +683,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplatePortMirroringGetArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortMirroringGetArgs> PortMirroring
         {

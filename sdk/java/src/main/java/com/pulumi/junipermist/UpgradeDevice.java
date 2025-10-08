@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * The resource will send the upgrade command to Mist, which will take care of deploying the new firmware version to the device, and reboot it if required.
  * 
- * The time required to upgrade a device depends on the type of device and its hardware. By default, the resource will track the upgrade process and only return the result once the device is upgraded and rebooted (unless `reboot`==`false` or `reboot_at` is set).\
+ * The time required to upgrade a device depends on the type of device and its hardware. By default, the resource will track the upgrade process and only return the result once the device is upgraded and rebooted (unless `reboot`==`false` or `rebootAt` is set).\
  * If required it is possible to run the upgrade in async mode (attribute `sync`=`false`). In this case, the resource will only trigger the upgrade and return the Mist response, but will not track the upgrade progress.
  * 
  * The list of available firmware versions can be retrieved with the `junipermist.device.getVersions` data source.
@@ -115,14 +115,14 @@ public class UpgradeDevice extends com.pulumi.resources.CustomResource {
         return this.reboot;
     }
     /**
-     * For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`
+     * For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `startTime`
      * 
      */
     @Export(name="rebootAt", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> rebootAt;
 
     /**
-     * @return For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`
+     * @return For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `startTime`
      * 
      */
     public Output<Optional<Integer>> rebootAt() {
@@ -191,42 +191,42 @@ public class UpgradeDevice extends com.pulumi.resources.CustomResource {
         return this.syncUpgrade;
     }
     /**
-     * if set to `sync_upgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
+     * if set to `syncUpgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
      * 
      */
     @Export(name="syncUpgradeRefreshInterval", refs={Integer.class}, tree="[0]")
     private Output<Integer> syncUpgradeRefreshInterval;
 
     /**
-     * @return if set to `sync_upgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
+     * @return if set to `syncUpgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
      * 
      */
     public Output<Integer> syncUpgradeRefreshInterval() {
         return this.syncUpgradeRefreshInterval;
     }
     /**
-     * if set to `sync_upgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
+     * if set to `syncUpgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
      * 
      */
     @Export(name="syncUpgradeStartTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> syncUpgradeStartTimeout;
 
     /**
-     * @return if set to `sync_upgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
+     * @return if set to `syncUpgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
      * 
      */
     public Output<Integer> syncUpgradeStartTimeout() {
         return this.syncUpgradeStartTimeout;
     }
     /**
-     * if set to `sync_upgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
+     * if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
      * 
      */
     @Export(name="syncUpgradeTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> syncUpgradeTimeout;
 
     /**
-     * @return if set to `sync_upgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
+     * @return if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
      * 
      */
     public Output<Integer> syncUpgradeTimeout() {

@@ -49,6 +49,88 @@ import javax.annotation.Nullable;
  * 
  * The Org Settings can be used to customize the Org configuration
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.Setting;
+ * import com.pulumi.junipermist.org.SettingArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingMxedgeMgmtArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingPasswordPolicyArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingSecurityArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingSyntheticTestArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var terraformTest = new Setting("terraformTest", SettingArgs.builder()
+ *             .orgId(terraformTestMistOrg.id())
+ *             .apUpdownThreshold(10)
+ *             .cradlepoint(Map.ofEntries(
+ *                 Map.entry("cp_api_id", "cp_api_id_test"),
+ *                 Map.entry("cp_api_key", "secret"),
+ *                 Map.entry("ecm_api_id", "ecm_api_id_test"),
+ *                 Map.entry("ecm_api_key", "secret")
+ *             ))
+ *             .deviceUpdownThreshold(10)
+ *             .disablePcap(false)
+ *             .disableRemoteShell(true)
+ *             .gatewayUpdownThreshold(10)
+ *             .mxedgeMgmt(SettingMxedgeMgmtArgs.builder()
+ *                 .mist_password("root_secret_password")
+ *                 .root_password("root_secret_password")
+ *                 .oob_ip_type("dhcp")
+ *                 .oob_ip_type6("disabled")
+ *                 .build())
+ *             .passwordPolicy(SettingPasswordPolicyArgs.builder()
+ *                 .enabled(true)
+ *                 .freshness(180)
+ *                 .min_length(12)
+ *                 .requires_special_char(true)
+ *                 .requires_two_factor_auth(false)
+ *                 .build())
+ *             .security(SettingSecurityArgs.builder()
+ *                 .disable_local_ssh(true)
+ *                 .build())
+ *             .switchUpdownThreshold(10)
+ *             .syntheticTest(SettingSyntheticTestArgs.builder()
+ *                 .disabled(false)
+ *                 .vlans(                
+ *                     SettingSyntheticTestVlanArgs.builder()
+ *                         .vlanIds(                        
+ *                             "10",
+ *                             "30")
+ *                         .customTestUrls(                        
+ *                             "http://www.abc.com/",
+ *                             "https://10.3.5.1:8080/about")
+ *                         .build(),
+ *                     SettingSyntheticTestVlanArgs.builder()
+ *                         .vlanIds("20")
+ *                         .disabled(true)
+ *                         .build())
+ *                 .build())
+ *             .uiIdleTimeout(120)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_org_setting` with:
@@ -63,14 +145,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/setting:Setting")
 public class Setting extends com.pulumi.resources.CustomResource {
     /**
-     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      * 
      */
     @Export(name="apUpdownThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> apUpdownThreshold;
 
     /**
-     * @return Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+     * @return Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      * 
      */
     public Output<Optional<Integer>> apUpdownThreshold() {
@@ -175,14 +257,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.disableRemoteShell);
     }
     /**
-     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
+     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      * 
      */
     @Export(name="gatewayUpdownThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> gatewayUpdownThreshold;
 
     /**
-     * @return Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
+     * @return Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      * 
      */
     public Output<Optional<Integer>> gatewayUpdownThreshold() {
@@ -222,8 +304,8 @@ public class Setting extends com.pulumi.resources.CustomResource {
     }
     /**
      * junos_shell_access: Manages role-based web-shell access.\
-     * When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
-     * When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to &#34;none&#34;, disables web-shell access for that specific role.
+     * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
+     * When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to &#34;none&#34;, disables web-shell access for that specific role.
      * 
      */
     @Export(name="junosShellAccess", refs={SettingJunosShellAccess.class}, tree="[0]")
@@ -231,8 +313,8 @@ public class Setting extends com.pulumi.resources.CustomResource {
 
     /**
      * @return junos_shell_access: Manages role-based web-shell access.\
-     * When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
-     * When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to &#34;none&#34;, disables web-shell access for that specific role.
+     * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
+     * When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to &#34;none&#34;, disables web-shell access for that specific role.
      * 
      */
     public Output<Optional<SettingJunosShellAccess>> junosShellAccess() {
@@ -335,14 +417,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.switchMgmt);
     }
     /**
-     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
+     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
      * 
      */
     @Export(name="switchUpdownThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> switchUpdownThreshold;
 
     /**
-     * @return Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
+     * @return Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
      * 
      */
     public Output<Optional<Integer>> switchUpdownThreshold() {

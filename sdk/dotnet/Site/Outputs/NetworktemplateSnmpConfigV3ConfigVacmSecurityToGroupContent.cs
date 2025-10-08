@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContent
     {
         /// <summary>
-        /// Refer to group_name under access
+        /// Refer to GroupName under access
         /// </summary>
         public readonly string? Group;
         public readonly string? SecurityName;

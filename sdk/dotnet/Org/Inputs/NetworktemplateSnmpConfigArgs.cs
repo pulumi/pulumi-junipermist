@@ -33,7 +33,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? EngineId { get; set; }
 
         /// <summary>
-        /// enum: `local`, `use_mac_address`
+        /// enum: `Local`, `UseMacAddress`
         /// </summary>
         [Input("engineIdType")]
         public Input<string>? EngineIdType { get; set; }

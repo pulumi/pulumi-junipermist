@@ -19,13 +19,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? BeaconEnabled { get; set; }
 
         /// <summary>
-        /// Required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
+        /// Required if `BeaconRateMode`==`Custom`, 1-10, in number-beacons-per-second
         /// </summary>
         [Input("beaconRate")]
         public Input<int>? BeaconRate { get; set; }
 
         /// <summary>
-        /// enum: `custom`, `default`
+        /// enum: `Custom`, `Default`
         /// </summary>
         [Input("beaconRateMode")]
         public Input<string>? BeaconRateMode { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// Can be enabled if `beacon_enabled`==`true`, whether to send custom packet
+        /// Can be enabled if `BeaconEnabled`==`True`, whether to send custom packet
         /// </summary>
         [Input("customBlePacketEnabled")]
         public Input<bool>? CustomBlePacketEnabled { get; set; }
@@ -70,7 +70,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? EddystoneUidBeams { get; set; }
 
         /// <summary>
-        /// Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
+        /// Only if `BeaconEnabled`==`False`, Whether Eddystone-UID beacon is enabled
         /// </summary>
         [Input("eddystoneUidEnabled")]
         public Input<bool>? EddystoneUidEnabled { get; set; }
@@ -103,7 +103,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? EddystoneUrlBeams { get; set; }
 
         /// <summary>
-        /// Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
+        /// Only if `BeaconEnabled`==`False`, Whether Eddystone-URL beacon is enabled
         /// </summary>
         [Input("eddystoneUrlEnabled")]
         public Input<bool>? EddystoneUrlEnabled { get; set; }
@@ -130,7 +130,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? IbeaconBeams { get; set; }
 
         /// <summary>
-        /// Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
+        /// Can be enabled if `BeaconEnabled`==`True`, whether to send iBeacon
         /// </summary>
         [Input("ibeaconEnabled")]
         public Input<bool>? IbeaconEnabled { get; set; }
@@ -160,13 +160,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? IbeaconUuid { get; set; }
 
         /// <summary>
-        /// Required if `power_mode`==`custom`; else use `power_mode` as default
+        /// Required if `PowerMode`==`Custom`; else use `PowerMode` as default
         /// </summary>
         [Input("power")]
         public Input<int>? Power { get; set; }
 
         /// <summary>
-        /// enum: `custom`, `default`
+        /// enum: `Custom`, `Default`
         /// </summary>
         [Input("powerMode")]
         public Input<string>? PowerMode { get; set; }

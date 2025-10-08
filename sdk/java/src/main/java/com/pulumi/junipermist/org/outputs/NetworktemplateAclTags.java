@@ -22,16 +22,16 @@ public final class NetworktemplateAclTags {
     private @Nullable List<String> etherTypes;
     /**
      * @return Required if
-     *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-     *   - `type`==`gbp_resource`
-     *   - `type`==`static_gbp` (applying gbp tag against matching conditions)
+     *   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+     *   - `type`==`gbpResource`
+     *   - `type`==`staticGbp` (applying gbp tag against matching conditions)
      * 
      */
     private @Nullable Integer gbpTag;
     /**
      * @return Required if
      * - `type`==`mac`
-     * - `type`==`static_gbp` if from matching mac
+     * - `type`==`staticGbp` if from matching mac
      * 
      */
     private @Nullable List<String> macs;
@@ -41,25 +41,25 @@ public final class NetworktemplateAclTags {
      *   * `type`==`subnet` (optional. default is `any`)
      *   * `type`==`network`
      *   * `type`==`resource` (optional. default is `any`)
-     *   * `type`==`static_gbp` if from matching network (vlan)
+     *   * `type`==`staticGbp` if from matching network (vlan)
      * 
      */
     private @Nullable String network;
     /**
-     * @return Required if `type`==`port_usage`
+     * @return Required if `type`==`portUsage`
      * 
      */
     private @Nullable String portUsage;
     /**
      * @return Required if:
-     *   * `type`==`radius_group`
-     *   * `type`==`static_gbp`
+     *   * `type`==`radiusGroup`
+     *   * `type`==`staticGbp`
      *     if from matching radius_group
      * 
      */
     private @Nullable String radiusGroup;
     /**
-     * @return If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+     * @return If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
      * 
      */
     private @Nullable List<NetworktemplateAclTagsSpec> specs;
@@ -67,21 +67,21 @@ public final class NetworktemplateAclTags {
      * @return If
      * - `type`==`subnet`
      * - `type`==`resource` (optional. default is `any`)
-     * - `type`==`static_gbp` if from matching subnet
+     * - `type`==`staticGbp` if from matching subnet
      * 
      */
     private @Nullable List<String> subnets;
     /**
      * @return enum:
      *   * `any`: matching anything not identified
-     *   * `dynamic_gbp`: from the gbp_tag received from RADIUS
-     *   * `gbp_resource`: can only be used in `dst_tags`
+     *   * `dynamicGbp`: from the gbpTag received from RADIUS
+     *   * `gbpResource`: can only be used in `dstTags`
      *   * `mac`
      *   * `network`
-     *   * `port_usage`
-     *   * `radius_group`
-     *   * `resource`: can only be used in `dst_tags`
-     *   * `static_gbp`: applying gbp tag against matching conditions
+     *   * `portUsage`
+     *   * `radiusGroup`
+     *   * `resource`: can only be used in `dstTags`
+     *   * `staticGbp`: applying gbp tag against matching conditions
      *   * `subnet`&#39;
      * 
      */
@@ -97,9 +97,9 @@ public final class NetworktemplateAclTags {
     }
     /**
      * @return Required if
-     *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-     *   - `type`==`gbp_resource`
-     *   - `type`==`static_gbp` (applying gbp tag against matching conditions)
+     *   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+     *   - `type`==`gbpResource`
+     *   - `type`==`staticGbp` (applying gbp tag against matching conditions)
      * 
      */
     public Optional<Integer> gbpTag() {
@@ -108,7 +108,7 @@ public final class NetworktemplateAclTags {
     /**
      * @return Required if
      * - `type`==`mac`
-     * - `type`==`static_gbp` if from matching mac
+     * - `type`==`staticGbp` if from matching mac
      * 
      */
     public List<String> macs() {
@@ -120,14 +120,14 @@ public final class NetworktemplateAclTags {
      *   * `type`==`subnet` (optional. default is `any`)
      *   * `type`==`network`
      *   * `type`==`resource` (optional. default is `any`)
-     *   * `type`==`static_gbp` if from matching network (vlan)
+     *   * `type`==`staticGbp` if from matching network (vlan)
      * 
      */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return Required if `type`==`port_usage`
+     * @return Required if `type`==`portUsage`
      * 
      */
     public Optional<String> portUsage() {
@@ -135,8 +135,8 @@ public final class NetworktemplateAclTags {
     }
     /**
      * @return Required if:
-     *   * `type`==`radius_group`
-     *   * `type`==`static_gbp`
+     *   * `type`==`radiusGroup`
+     *   * `type`==`staticGbp`
      *     if from matching radius_group
      * 
      */
@@ -144,7 +144,7 @@ public final class NetworktemplateAclTags {
         return Optional.ofNullable(this.radiusGroup);
     }
     /**
-     * @return If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+     * @return If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
      * 
      */
     public List<NetworktemplateAclTagsSpec> specs() {
@@ -154,7 +154,7 @@ public final class NetworktemplateAclTags {
      * @return If
      * - `type`==`subnet`
      * - `type`==`resource` (optional. default is `any`)
-     * - `type`==`static_gbp` if from matching subnet
+     * - `type`==`staticGbp` if from matching subnet
      * 
      */
     public List<String> subnets() {
@@ -163,14 +163,14 @@ public final class NetworktemplateAclTags {
     /**
      * @return enum:
      *   * `any`: matching anything not identified
-     *   * `dynamic_gbp`: from the gbp_tag received from RADIUS
-     *   * `gbp_resource`: can only be used in `dst_tags`
+     *   * `dynamicGbp`: from the gbpTag received from RADIUS
+     *   * `gbpResource`: can only be used in `dstTags`
      *   * `mac`
      *   * `network`
-     *   * `port_usage`
-     *   * `radius_group`
-     *   * `resource`: can only be used in `dst_tags`
-     *   * `static_gbp`: applying gbp tag against matching conditions
+     *   * `portUsage`
+     *   * `radiusGroup`
+     *   * `resource`: can only be used in `dstTags`
+     *   * `staticGbp`: applying gbp tag against matching conditions
      *   * `subnet`&#39;
      * 
      */

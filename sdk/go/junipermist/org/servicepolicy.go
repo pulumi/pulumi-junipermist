@@ -20,6 +20,45 @@ import (
 //   - the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
 //     They can be used to manage common policies between multiples configurations
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewServicepolicy(ctx, "servicepolicy_one", &org.ServicepolicyArgs{
+//				OrgId: pulumi.Any(terraformTest.Id),
+//				Tenants: pulumi.StringArray{
+//					pulumi.String("guest"),
+//				},
+//				Services: pulumi.StringArray{
+//					pulumi.String("guest-internet"),
+//				},
+//				Action: pulumi.String("allow"),
+//				Idp: &org.ServicepolicyIdpArgs{
+//					Enabled:    pulumi.Bool(true),
+//					Profile:    pulumi.String("standard"),
+//					Alert_only: true,
+//				},
+//				Name: pulumi.String("Guest-IDP"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_servicepolicy` with:

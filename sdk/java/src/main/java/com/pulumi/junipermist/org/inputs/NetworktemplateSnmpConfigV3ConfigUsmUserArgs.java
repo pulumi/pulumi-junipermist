@@ -16,14 +16,14 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmUserArgs extends com.pulu
     public static final NetworktemplateSnmpConfigV3ConfigUsmUserArgs Empty = new NetworktemplateSnmpConfigV3ConfigUsmUserArgs();
 
     /**
-     * Not required if `authentication_type`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
+     * Not required if `authenticationType`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
      * 
      */
     @Import(name="authenticationPassword")
     private @Nullable Output<String> authenticationPassword;
 
     /**
-     * @return Not required if `authentication_type`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
+     * @return Not required if `authenticationType`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
      * 
      */
     public Optional<Output<String>> authenticationPassword() {
@@ -46,14 +46,14 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmUserArgs extends com.pulu
     }
 
     /**
-     * Not required if `encryption_type`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
+     * Not required if `encryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
      * 
      */
     @Import(name="encryptionPassword")
     private @Nullable Output<String> encryptionPassword;
 
     /**
-     * @return Not required if `encryption_type`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
+     * @return Not required if `encryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
      * 
      */
     public Optional<Output<String>> encryptionPassword() {
@@ -111,7 +111,7 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmUserArgs extends com.pulu
         }
 
         /**
-         * @param authenticationPassword Not required if `authentication_type`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
+         * @param authenticationPassword Not required if `authenticationType`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmUserArgs extends com.pulu
         }
 
         /**
-         * @param authenticationPassword Not required if `authentication_type`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
+         * @param authenticationPassword Not required if `authenticationType`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmUserArgs extends com.pulu
         }
 
         /**
-         * @param encryptionPassword Not required if `encryption_type`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
+         * @param encryptionPassword Not required if `encryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmUserArgs extends com.pulu
         }
 
         /**
-         * @param encryptionPassword Not required if `encryption_type`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
+         * @param encryptionPassword Not required if `encryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
          * 
          * @return builder
          * 

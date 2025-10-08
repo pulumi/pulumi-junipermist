@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class WlanQos
     {
         /// <summary>
-        /// enum: `background`, `best_effort`, `video`, `voice`
+        /// enum: `Background`, `BestEffort`, `Video`, `Voice`
         /// </summary>
         public readonly string? Class;
         /// <summary>

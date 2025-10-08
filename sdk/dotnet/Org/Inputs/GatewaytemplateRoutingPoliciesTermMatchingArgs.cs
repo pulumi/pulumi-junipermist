@@ -56,7 +56,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _protocols;
 
         /// <summary>
-        /// `direct`, `bgp`, `osp`, `static`, `aggregate`...
+        /// `Direct`, `Bgp`, `Osp`, `Static`, `Aggregate`...
         /// </summary>
         public InputList<string> Protocols
         {
@@ -71,7 +71,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _vpnNeighborMacs;
 
         /// <summary>
-        /// overlay-facing criteria (used for bgp_config where via=vpn)
+        /// overlay-facing criteria (used for BgpConfig where via=vpn)
         /// </summary>
         public InputList<string> VpnNeighborMacs
         {
@@ -86,7 +86,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _vpnPaths;
 
         /// <summary>
-        /// overlay-facing criteria (used for bgp_config where via=vpn). ordered-
+        /// overlay-facing criteria (used for BgpConfig where via=vpn). ordered-
         /// </summary>
         public InputList<string> VpnPaths
         {

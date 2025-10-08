@@ -16,6 +16,120 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// The Gateway Device Profile can be assigned to a gateway with the `junipermist.org.DeviceprofileAssign` resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var deviceprofileGwOne = new JuniperMist.Org.DeviceprofileGateway("deviceprofile_gw_one", new()
+    ///     {
+    ///         Name = "deviceprofile_gw_one",
+    ///         OrgId = terraformTest.Id,
+    ///         PortConfig = 
+    ///         {
+    ///             { "ge-0/0/3", new JuniperMist.Org.Inputs.DeviceprofileGatewayPortConfigArgs
+    ///             {
+    ///                 Name = "FTTH",
+    ///                 Usage = "wan",
+    ///                 Aggregated = false,
+    ///                 Redundant = false,
+    ///                 Critical = false,
+    ///                 WanType = "broadband",
+    ///                 IpConfig = new JuniperMist.Org.Inputs.DeviceprofileGatewayPortConfigIpConfigArgs
+    ///                 {
+    ///                     Type = "static",
+    ///                     Ip = "192.168.1.8",
+    ///                     Netmask = "/24",
+    ///                     Gateway = "192.168.1.1",
+    ///                 },
+    ///                 DisableAutoneg = false,
+    ///                 Speed = "auto",
+    ///                 Duplex = "auto",
+    ///                 WanSourceNat = new JuniperMist.Org.Inputs.DeviceprofileGatewayPortConfigWanSourceNatArgs
+    ///                 {
+    ///                     Disabled = false,
+    ///                 },
+    ///                 VpnPaths = 
+    ///                 {
+    ///                     { "SSR_HUB_DC-MPLS.OrgOverlay", new JuniperMist.Org.Inputs.DeviceprofileGatewayPortConfigVpnPathsArgs
+    ///                     {
+    ///                         Key = 0,
+    ///                         Role = "spoke",
+    ///                         BfdProfile = "broadband",
+    ///                     } },
+    ///                 },
+    ///             } },
+    ///             { "ge-0/0/5", new JuniperMist.Org.Inputs.DeviceprofileGatewayPortConfigArgs
+    ///             {
+    ///                 Usage = "lan",
+    ///                 Critical = false,
+    ///                 Aggregated = true,
+    ///                 AeDisableLacp = false,
+    ///                 AeLacpForceUp = true,
+    ///                 AeIdx = "0",
+    ///                 Redundant = false,
+    ///                 Networks = new[]
+    ///                 {
+    ///                     "PRD-Core",
+    ///                     "PRD-Mgmt",
+    ///                     "PRD-Lab",
+    ///                 },
+    ///             } },
+    ///         },
+    ///         IpConfigs = 
+    ///         {
+    ///             { "PRD-Core", new JuniperMist.Org.Inputs.DeviceprofileGatewayIpConfigsArgs
+    ///             {
+    ///                 Type = "static",
+    ///                 Ip = "10.3.100.9",
+    ///                 Netmask = "/24",
+    ///             } },
+    ///             { "PRD-Mgmt", new JuniperMist.Org.Inputs.DeviceprofileGatewayIpConfigsArgs
+    ///             {
+    ///                 Type = "static",
+    ///                 Ip = "10.3.172.1",
+    ///                 Netmask = "/24",
+    ///             } },
+    ///             { "PRD-Lab", new JuniperMist.Org.Inputs.DeviceprofileGatewayIpConfigsArgs
+    ///             {
+    ///                 Type = "static",
+    ///                 Ip = "10.3.171.1",
+    ///                 Netmask = "/24",
+    ///             } },
+    ///         },
+    ///         ServicePolicies = new[]
+    ///         {
+    ///             new JuniperMist.Org.Inputs.DeviceprofileGatewayServicePolicyArgs
+    ///             {
+    ///                 Name = "Policy-14",
+    ///                 Tenants = new[]
+    ///                 {
+    ///                     "PRD-Core",
+    ///                 },
+    ///                 Services = new[]
+    ///                 {
+    ///                     "any",
+    ///                 },
+    ///                 Action = "allow",
+    ///                 Path_preference = "HUB",
+    ///                 Idp = new JuniperMist.Org.Inputs.DeviceprofileGatewayServicePolicyIdpArgs
+    ///                 {
+    ///                     Enabled = true,
+    ///                     Profile = "critical",
+    ///                     AlertOnly = false,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_deviceprofile_gateway` with:
@@ -45,13 +159,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> DnsOverride { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         [Output("dnsServers")]
         public Output<ImmutableArray<string>> DnsServers { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         [Output("dnsSuffixes")]
         public Output<ImmutableArray<string>> DnsSuffixes { get; private set; } = null!;
@@ -147,7 +261,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.DeviceprofileGatewayTunnelProviderOptions?> TunnelProviderOptions { get; private set; } = null!;
 
         /// <summary>
-        /// Device Type. enum: `gateway`
+        /// Device Type. enum: `Gateway`
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -238,7 +352,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -250,7 +364,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -471,7 +585,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -483,7 +597,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -652,7 +766,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.DeviceprofileGatewayTunnelProviderOptionsGetArgs>? TunnelProviderOptions { get; set; }
 
         /// <summary>
-        /// Device Type. enum: `gateway`
+        /// Device Type. enum: `Gateway`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

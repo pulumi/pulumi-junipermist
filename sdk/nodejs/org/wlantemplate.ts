@@ -13,6 +13,21 @@ import * as utilities from "../utilities";
  * WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.\
  * They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const wlantemplateOne = new junipermist.org.Wlantemplate("wlantemplate_one", {
+ *     name: "wlantemplate_one",
+ *     orgId: terraformTest.id,
+ *     applies: {
+ *         site_ids: [terraformSite.id],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_wlantemplate` with:

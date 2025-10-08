@@ -24,14 +24,14 @@ public final class GatewayTunnelConfigsAutoProvisionPrimaryArgs extends com.pulu
     }
 
     /**
-     * Optional, only needed if `vars_only`==`false`
+     * Optional, only needed if `varsOnly`==`false`
      * 
      */
     @Import(name="wanNames")
     private @Nullable Output<List<String>> wanNames;
 
     /**
-     * @return Optional, only needed if `vars_only`==`false`
+     * @return Optional, only needed if `varsOnly`==`false`
      * 
      */
     public Optional<Output<List<String>>> wanNames() {
@@ -77,7 +77,7 @@ public final class GatewayTunnelConfigsAutoProvisionPrimaryArgs extends com.pulu
         }
 
         /**
-         * @param wanNames Optional, only needed if `vars_only`==`false`
+         * @param wanNames Optional, only needed if `varsOnly`==`false`
          * 
          * @return builder
          * 
@@ -88,7 +88,7 @@ public final class GatewayTunnelConfigsAutoProvisionPrimaryArgs extends com.pulu
         }
 
         /**
-         * @param wanNames Optional, only needed if `vars_only`==`false`
+         * @param wanNames Optional, only needed if `varsOnly`==`false`
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class GatewayTunnelConfigsAutoProvisionPrimaryArgs extends com.pulu
         }
 
         /**
-         * @param wanNames Optional, only needed if `vars_only`==`false`
+         * @param wanNames Optional, only needed if `varsOnly`==`false`
          * 
          * @return builder
          * 

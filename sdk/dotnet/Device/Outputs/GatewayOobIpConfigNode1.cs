@@ -14,16 +14,16 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayOobIpConfigNode1
     {
         /// <summary>
-        /// If `type`==`static`
+        /// If `Type`==`Static`
         /// </summary>
         public readonly string? Gateway;
         public readonly string? Ip;
         /// <summary>
-        /// Used only if `subnet` is not specified in `networks`
+        /// Used only if `Subnet` is not specified in `Networks`
         /// </summary>
         public readonly string? Netmask;
         /// <summary>
-        /// enum: `dhcp`, `static`
+        /// enum: `Dhcp`, `Static`
         /// </summary>
         public readonly string? Type;
         /// <summary>
@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? UseMgmtVrf;
         /// <summary>
-        /// Whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        /// Whether to use `MgmtJunos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         /// </summary>
         public readonly bool? UseMgmtVrfForHostOut;
         public readonly string? VlanId;

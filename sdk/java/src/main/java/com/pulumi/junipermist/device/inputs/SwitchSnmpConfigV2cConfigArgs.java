@@ -23,14 +23,14 @@ public final class SwitchSnmpConfigV2cConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Client_list_name here should refer to client_list above
+     * Client_list_name here should refer to clientList above
      * 
      */
     @Import(name="clientListName")
     private @Nullable Output<String> clientListName;
 
     /**
-     * @return Client_list_name here should refer to client_list above
+     * @return Client_list_name here should refer to clientList above
      * 
      */
     public Optional<Output<String>> clientListName() {
@@ -96,7 +96,7 @@ public final class SwitchSnmpConfigV2cConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param clientListName Client_list_name here should refer to client_list above
+         * @param clientListName Client_list_name here should refer to clientList above
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class SwitchSnmpConfigV2cConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param clientListName Client_list_name here should refer to client_list above
+         * @param clientListName Client_list_name here should refer to clientList above
          * 
          * @return builder
          * 

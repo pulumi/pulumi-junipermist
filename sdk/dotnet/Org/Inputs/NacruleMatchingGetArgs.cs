@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NacruleMatchingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
+        /// enum: `Cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `Idp`, `Mab`, `eap-peap`
         /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }
@@ -66,7 +66,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _osTypes;
 
         /// <summary>
-        /// List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed os_type values
+        /// List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed OsType values
         /// </summary>
         public InputList<string> OsTypes
         {

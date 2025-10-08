@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? AamwprofileId;
         public readonly bool? Enabled;
         /// <summary>
-        /// enum: `docsonly`, `executables`, `standard`
+        /// enum: `Docsonly`, `Executables`, `Standard`
         /// </summary>
         public readonly string? Profile;
 

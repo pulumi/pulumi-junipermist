@@ -15,6 +15,27 @@ import * as utilities from "../utilities";
  * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
  * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies.services`)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const serviceOne = new junipermist.org.Service("service_one", {
+ *     orgId: terraformTest.id,
+ *     name: "service_one",
+ *     addresses: [
+ *         "10.3.0.0/24",
+ *         "10.4.0.0/24",
+ *     ],
+ *     type: "custom",
+ *     specs: [{
+ *         protocol: "tcp",
+ *         port_range: "443",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_service` with:

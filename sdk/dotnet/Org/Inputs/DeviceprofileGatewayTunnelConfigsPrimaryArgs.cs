@@ -24,7 +24,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _internalIps;
 
         /// <summary>
-        /// Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
+        /// Only if `Provider`==`zscaler-gre`, `Provider`==`jse-ipsec`, `Provider`==`custom-ipsec` or `Provider`==`custom-gre`
         /// </summary>
         public InputList<string> InternalIps
         {
@@ -44,7 +44,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _remoteIds;
 
         /// <summary>
-        /// Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        /// Only if  `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
         /// </summary>
         public InputList<string> RemoteIds
         {

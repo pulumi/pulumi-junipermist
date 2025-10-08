@@ -43,12 +43,12 @@ public final class NetworktemplateRadiusConfig {
     private @Nullable String coaPort;
     private @Nullable Boolean fastDot1xTimers;
     /**
-     * @return Use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+     * @return Use `network`or `sourceIp`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
      * 
      */
     private @Nullable String network;
     /**
-     * @return Use `network`or `source_ip`
+     * @return Use `network`or `sourceIp`
      * 
      */
     private @Nullable String sourceIp;
@@ -101,14 +101,14 @@ public final class NetworktemplateRadiusConfig {
         return Optional.ofNullable(this.fastDot1xTimers);
     }
     /**
-     * @return Use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+     * @return Use `network`or `sourceIp`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
      * 
      */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return Use `network`or `source_ip`
+     * @return Use `network`or `sourceIp`
      * 
      */
     public Optional<String> sourceIp() {

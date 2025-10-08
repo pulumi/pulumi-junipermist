@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the NAC IDP Metadata information.
         /// 
-        /// The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
+        /// The provided information (`EntityId`, `AcsUrl`, `LogoutUrl` and `Metadata`) are the information required to configure the IDP
         /// 
         /// 
         /// ## Example Usage
@@ -42,7 +42,7 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the NAC IDP Metadata information.
         /// 
-        /// The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
+        /// The provided information (`EntityId`, `AcsUrl`, `LogoutUrl` and `Metadata`) are the information required to configure the IDP
         /// 
         /// 
         /// ## Example Usage
@@ -70,7 +70,7 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the NAC IDP Metadata information.
         /// 
-        /// The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
+        /// The provided information (`EntityId`, `AcsUrl`, `LogoutUrl` and `Metadata`) are the information required to configure the IDP
         /// 
         /// 
         /// ## Example Usage
@@ -130,11 +130,11 @@ namespace Pulumi.JuniperMist.Org
     public sealed class GetNacidpMetadataResult
     {
         /// <summary>
-        /// If `idp_type`==`saml`
+        /// If `IdpType`==`Saml`
         /// </summary>
         public readonly string AcsUrl;
         /// <summary>
-        /// If `idp_type`==`saml`
+        /// If `IdpType`==`Saml`
         /// </summary>
         public readonly string EntityId;
         /// <summary>
@@ -142,17 +142,17 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// If `idp_type`==`saml`
+        /// If `IdpType`==`Saml`
         /// </summary>
         public readonly string LogoutUrl;
         /// <summary>
-        /// If `idp_type`==`saml`
+        /// If `IdpType`==`Saml`
         /// </summary>
         public readonly string Metadata;
         public readonly string NacidpId;
         public readonly string OrgId;
         /// <summary>
-        /// If `idp_type`==`oauth` and `scim_enabled`==`true`
+        /// If `IdpType`==`Oauth` and `ScimEnabled`==`True`
         /// </summary>
         public readonly string ScimBaseUrl;
 

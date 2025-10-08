@@ -856,6 +856,90 @@ class Gatewaytemplate(pulumi.CustomResource):
 
         A Gateway template is used to define the static ip address and subnet mask of the hub device, along with the gateway. It also allows for the selection of options such as enabling source nat and overriding the public ip for the hub if needed. the endpoint selected in the gateway template ties the hub and spoke devices together and creates the auto-vpn tunnel.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        gatewaytemplate_one = junipermist.org.Gatewaytemplate("gatewaytemplate_one",
+            type="spoke",
+            name="gatewaytemplate_one",
+            org_id=terraform_test["id"],
+            port_config={
+                "ge-0/0/3": {
+                    "name": "FTTH",
+                    "usage": "wan",
+                    "aggregated": False,
+                    "redundant": False,
+                    "critical": False,
+                    "wan_type": "broadband",
+                    "ip_config": {
+                        "type": "static",
+                        "ip": "192.168.1.8",
+                        "netmask": "/24",
+                        "gateway": "192.168.1.1",
+                    },
+                    "disable_autoneg": False,
+                    "speed": "auto",
+                    "duplex": "auto",
+                    "wan_source_nat": {
+                        "disabled": False,
+                    },
+                    "vpn_paths": {
+                        "SSR_HUB_DC-MPLS.OrgOverlay": {
+                            "key": 0,
+                            "role": "spoke",
+                            "bfd_profile": "broadband",
+                        },
+                    },
+                },
+                "ge-0/0/5": {
+                    "usage": "lan",
+                    "critical": False,
+                    "aggregated": True,
+                    "ae_disable_lacp": False,
+                    "ae_lacp_force_up": True,
+                    "ae_idx": "0",
+                    "redundant": False,
+                    "networks": [
+                        "PRD-Core",
+                        "PRD-Mgmt",
+                        "PRD-Lab",
+                    ],
+                },
+            },
+            ip_configs={
+                "PRD-Core": {
+                    "type": "static",
+                    "ip": "10.3.100.9",
+                    "netmask": "/24",
+                },
+                "PRD-Mgmt": {
+                    "type": "static",
+                    "ip": "10.3.172.1",
+                    "netmask": "/24",
+                },
+                "PRD-Lab": {
+                    "type": "static",
+                    "ip": "10.3.171.1",
+                    "netmask": "/24",
+                },
+            },
+            service_policies=[{
+                "name": "Policy-14",
+                "tenants": ["PRD-Core"],
+                "services": ["any"],
+                "action": "allow",
+                "path_preference": "HUB",
+                "idp": {
+                    "enabled": True,
+                    "profile": "critical",
+                    "alert_only": False,
+                },
+            }])
+        ```
+
         ## Import
 
         Using `pulumi import`, import `mist_org_gatewaytemplate` with:
@@ -896,6 +980,90 @@ class Gatewaytemplate(pulumi.CustomResource):
         This resource manages the Gateway Templates.
 
         A Gateway template is used to define the static ip address and subnet mask of the hub device, along with the gateway. It also allows for the selection of options such as enabling source nat and overriding the public ip for the hub if needed. the endpoint selected in the gateway template ties the hub and spoke devices together and creates the auto-vpn tunnel.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        gatewaytemplate_one = junipermist.org.Gatewaytemplate("gatewaytemplate_one",
+            type="spoke",
+            name="gatewaytemplate_one",
+            org_id=terraform_test["id"],
+            port_config={
+                "ge-0/0/3": {
+                    "name": "FTTH",
+                    "usage": "wan",
+                    "aggregated": False,
+                    "redundant": False,
+                    "critical": False,
+                    "wan_type": "broadband",
+                    "ip_config": {
+                        "type": "static",
+                        "ip": "192.168.1.8",
+                        "netmask": "/24",
+                        "gateway": "192.168.1.1",
+                    },
+                    "disable_autoneg": False,
+                    "speed": "auto",
+                    "duplex": "auto",
+                    "wan_source_nat": {
+                        "disabled": False,
+                    },
+                    "vpn_paths": {
+                        "SSR_HUB_DC-MPLS.OrgOverlay": {
+                            "key": 0,
+                            "role": "spoke",
+                            "bfd_profile": "broadband",
+                        },
+                    },
+                },
+                "ge-0/0/5": {
+                    "usage": "lan",
+                    "critical": False,
+                    "aggregated": True,
+                    "ae_disable_lacp": False,
+                    "ae_lacp_force_up": True,
+                    "ae_idx": "0",
+                    "redundant": False,
+                    "networks": [
+                        "PRD-Core",
+                        "PRD-Mgmt",
+                        "PRD-Lab",
+                    ],
+                },
+            },
+            ip_configs={
+                "PRD-Core": {
+                    "type": "static",
+                    "ip": "10.3.100.9",
+                    "netmask": "/24",
+                },
+                "PRD-Mgmt": {
+                    "type": "static",
+                    "ip": "10.3.172.1",
+                    "netmask": "/24",
+                },
+                "PRD-Lab": {
+                    "type": "static",
+                    "ip": "10.3.171.1",
+                    "netmask": "/24",
+                },
+            },
+            service_policies=[{
+                "name": "Policy-14",
+                "tenants": ["PRD-Core"],
+                "services": ["any"],
+                "action": "allow",
+                "path_preference": "HUB",
+                "idp": {
+                    "enabled": True,
+                    "profile": "critical",
+                    "alert_only": False,
+                },
+            }])
+        ```
 
         ## Import
 

@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     {
         public readonly bool? Enable;
         /// <summary>
-        /// list of rules to define custom switch configuration based on different criteria. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
+        /// list of rules to define custom switch configuration based on different criteria. Each list must have at least one of `MatchModel`, `MatchName` or `MatchRole` must be defined
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateSwitchMatchingRule> Rules;
 

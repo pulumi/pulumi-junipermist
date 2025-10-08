@@ -826,6 +826,69 @@ class Networktemplate(pulumi.CustomResource):
 
         !> Only ONE `site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        networktemplate_one = junipermist.site.Networktemplate("networktemplate_one",
+            site_id=terraform_test["id"],
+            dns_servers=[
+                "8.8.8.8",
+                "1.1.1.1",
+            ],
+            dns_suffixes=["mycorp.com"],
+            ntp_servers=["pool.ntp.org"],
+            additional_config_cmds=[
+                "set system hostname test",
+                "set system services ssh root-login allow",
+            ],
+            networks={
+                "network_one": {
+                    "vlan_id": "10",
+                },
+                "network_two": {
+                    "vlan_id": "11",
+                },
+            },
+            port_usages={
+                "trunk": {
+                    "all_networks": True,
+                    "enable_qos": True,
+                    "mode": "port_usage_one",
+                    "port_network": "network_one",
+                },
+            },
+            radius_config={
+                "acct_interim_interval": 60,
+                "coa_enabled": True,
+                "network": "network_one",
+                "acct_servers": [{
+                    "host": "1.2.3.4",
+                    "secret": "secret",
+                }],
+                "auth_servers": [{
+                    "host": "1.2.3.4",
+                    "secret": "secret",
+                }],
+            },
+            switch_matching={
+                "enable": True,
+                "rules": [{
+                    "name": "switch_rule_one",
+                    "match_name": "corp",
+                    "match_name_offset": 3,
+                    "match_role": "core",
+                    "port_config": {
+                        "ge-0/0/0-10": {
+                            "usage": "port_usage_one",
+                        },
+                    },
+                }],
+            })
+        ```
+
         ## Import
 
         Using `pulumi import`, import `mist_site_networktemplate` with:
@@ -872,6 +935,69 @@ class Networktemplate(pulumi.CustomResource):
         > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, the `site.Networktemplate` resource has been created to centralize all the site level switches related settings.
 
         !> Only ONE `site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        networktemplate_one = junipermist.site.Networktemplate("networktemplate_one",
+            site_id=terraform_test["id"],
+            dns_servers=[
+                "8.8.8.8",
+                "1.1.1.1",
+            ],
+            dns_suffixes=["mycorp.com"],
+            ntp_servers=["pool.ntp.org"],
+            additional_config_cmds=[
+                "set system hostname test",
+                "set system services ssh root-login allow",
+            ],
+            networks={
+                "network_one": {
+                    "vlan_id": "10",
+                },
+                "network_two": {
+                    "vlan_id": "11",
+                },
+            },
+            port_usages={
+                "trunk": {
+                    "all_networks": True,
+                    "enable_qos": True,
+                    "mode": "port_usage_one",
+                    "port_network": "network_one",
+                },
+            },
+            radius_config={
+                "acct_interim_interval": 60,
+                "coa_enabled": True,
+                "network": "network_one",
+                "acct_servers": [{
+                    "host": "1.2.3.4",
+                    "secret": "secret",
+                }],
+                "auth_servers": [{
+                    "host": "1.2.3.4",
+                    "secret": "secret",
+                }],
+            },
+            switch_matching={
+                "enable": True,
+                "rules": [{
+                    "name": "switch_rule_one",
+                    "match_name": "corp",
+                    "match_name_offset": 3,
+                    "match_role": "core",
+                    "port_config": {
+                        "ge-0/0/0-10": {
+                            "usage": "port_usage_one",
+                        },
+                    },
+                }],
+            })
+        ```
 
         ## Import
 

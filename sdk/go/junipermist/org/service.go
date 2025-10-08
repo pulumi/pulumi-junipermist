@@ -20,6 +20,44 @@ import (
 // * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
 // * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies.services`)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewService(ctx, "service_one", &org.ServiceArgs{
+//				OrgId: pulumi.Any(terraformTest.Id),
+//				Name:  pulumi.String("service_one"),
+//				Addresses: pulumi.StringArray{
+//					pulumi.String("10.3.0.0/24"),
+//					pulumi.String("10.4.0.0/24"),
+//				},
+//				Type: pulumi.String("custom"),
+//				Specs: org.ServiceSpecArray{
+//					&org.ServiceSpecArgs{
+//						Protocol:   pulumi.String("tcp"),
+//						Port_range: "443",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_service` with:
