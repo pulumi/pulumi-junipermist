@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     {
         public readonly ImmutableArray<Outputs.SwitchSnmpConfigV3ConfigVacmSecurityToGroupContent> Contents;
         /// <summary>
-        /// enum: `usm`, `v1`, `v2c`
+        /// enum: `Usm`, `V1`, `V2c`
         /// </summary>
         public readonly string? SecurityModel;
 

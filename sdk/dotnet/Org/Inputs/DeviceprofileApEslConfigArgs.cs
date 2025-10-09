@@ -13,49 +13,49 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class DeviceprofileApEslConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Only if `type`==`imagotag` or `type`==`native`
+        /// Only if `Type`==`Imagotag` or `Type`==`Native`
         /// </summary>
         [Input("cacert")]
         public Input<string>? Cacert { get; set; }
 
         /// <summary>
-        /// Only if `type`==`imagotag` or `type`==`native`
+        /// Only if `Type`==`Imagotag` or `Type`==`Native`
         /// </summary>
         [Input("channel")]
         public Input<int>? Channel { get; set; }
 
         /// <summary>
-        /// usb_config is ignored if esl_config enabled
+        /// usb_config is ignored if EslConfig enabled
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Only if `type`==`imagotag` or `type`==`native`
+        /// Only if `Type`==`Imagotag` or `Type`==`Native`
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// Only if `type`==`imagotag` or `type`==`native`
+        /// Only if `Type`==`Imagotag` or `Type`==`Native`
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// note: ble_config will be ignored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+        /// note: BleConfig will be ignored if EslConfig is enabled and with native mode. enum: `Hanshow`, `Imagotag`, `Native`, `Solum`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Only if `type`==`imagotag` or `type`==`native`
+        /// Only if `Type`==`Imagotag` or `Type`==`Native`
         /// </summary>
         [Input("verifyCert")]
         public Input<bool>? VerifyCert { get; set; }
 
         /// <summary>
-        /// Only if `type`==`solum` or `type`==`hanshow`
+        /// Only if `Type`==`Solum` or `Type`==`Hanshow`
         /// </summary>
         [Input("vlanId")]
         public Input<int>? VlanId { get; set; }

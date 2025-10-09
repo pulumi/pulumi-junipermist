@@ -12,11 +12,13 @@ namespace Pulumi.JuniperMist.Org
     /// <summary>
     /// This resource manages WAN Assurance Service Policies (Application Policies).
     /// 
-    /// The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
+    /// The Service Policies can be used in the `ServicePolicies` object by referencing the Service Policy ID as the `ServicepolicyId` in:
     /// * the Gateway configuration (`mist_device_gateway.service_policies`)
     /// * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
     /// * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
     ///   They can be used to manage common policies between multiples configurations
+    /// 
+    /// ## Example Usage
     /// 
     /// ## Import
     /// 
@@ -38,7 +40,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.ServicepolicyAamw?> Aamw { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `allow`, `deny`
+        /// enum: `Allow`, `Deny`
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -74,7 +76,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
+        /// By default, we derive all paths available and use them, optionally, you can customize by using `PathPreference`
         /// </summary>
         [Output("pathPreference")]
         public Output<string?> PathPreference { get; private set; } = null!;
@@ -145,7 +147,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.ServicepolicyAamwArgs>? Aamw { get; set; }
 
         /// <summary>
-        /// enum: `allow`, `deny`
+        /// enum: `Allow`, `Deny`
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -186,7 +188,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
+        /// By default, we derive all paths available and use them, optionally, you can customize by using `PathPreference`
         /// </summary>
         [Input("pathPreference")]
         public Input<string>? PathPreference { get; set; }
@@ -228,7 +230,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.ServicepolicyAamwGetArgs>? Aamw { get; set; }
 
         /// <summary>
-        /// enum: `allow`, `deny`
+        /// enum: `Allow`, `Deny`
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -269,7 +271,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
+        /// By default, we derive all paths available and use them, optionally, you can customize by using `PathPreference`
         /// </summary>
         [Input("pathPreference")]
         public Input<string>? PathPreference { get; set; }

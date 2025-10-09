@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
+        /// Requires `VlanEnabled`==`True` to be set to `True`. Whether to enable dynamic vlan
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+        /// standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `Standard`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -52,8 +52,8 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<string>? _vlans;
 
         /// <summary>
-        /// Map between vlan_id (as string) to airespace interface names (comma-separated) or null for standard mapping
-        ///   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
+        /// Map between VlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
+        ///   * if `dynamic_vlan.type`==`Standard`, property key is the Vlan ID and property value is \"\"
         ///   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
         /// </summary>
         public InputMap<string> Vlans

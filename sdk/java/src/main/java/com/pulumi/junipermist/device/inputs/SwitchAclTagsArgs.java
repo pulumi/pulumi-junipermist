@@ -36,9 +36,9 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Required if
-     *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-     *   - `type`==`gbp_resource`
-     *   - `type`==`static_gbp` (applying gbp tag against matching conditions)
+     *   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+     *   - `type`==`gbpResource`
+     *   - `type`==`staticGbp` (applying gbp tag against matching conditions)
      * 
      */
     @Import(name="gbpTag")
@@ -46,9 +46,9 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Required if
-     *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-     *   - `type`==`gbp_resource`
-     *   - `type`==`static_gbp` (applying gbp tag against matching conditions)
+     *   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+     *   - `type`==`gbpResource`
+     *   - `type`==`staticGbp` (applying gbp tag against matching conditions)
      * 
      */
     public Optional<Output<Integer>> gbpTag() {
@@ -58,7 +58,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Required if
      * - `type`==`mac`
-     * - `type`==`static_gbp` if from matching mac
+     * - `type`==`staticGbp` if from matching mac
      * 
      */
     @Import(name="macs")
@@ -67,7 +67,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Required if
      * - `type`==`mac`
-     * - `type`==`static_gbp` if from matching mac
+     * - `type`==`staticGbp` if from matching mac
      * 
      */
     public Optional<Output<List<String>>> macs() {
@@ -80,7 +80,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
      *   * `type`==`subnet` (optional. default is `any`)
      *   * `type`==`network`
      *   * `type`==`resource` (optional. default is `any`)
-     *   * `type`==`static_gbp` if from matching network (vlan)
+     *   * `type`==`staticGbp` if from matching network (vlan)
      * 
      */
     @Import(name="network")
@@ -92,7 +92,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
      *   * `type`==`subnet` (optional. default is `any`)
      *   * `type`==`network`
      *   * `type`==`resource` (optional. default is `any`)
-     *   * `type`==`static_gbp` if from matching network (vlan)
+     *   * `type`==`staticGbp` if from matching network (vlan)
      * 
      */
     public Optional<Output<String>> network() {
@@ -100,14 +100,14 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `type`==`port_usage`
+     * Required if `type`==`portUsage`
      * 
      */
     @Import(name="portUsage")
     private @Nullable Output<String> portUsage;
 
     /**
-     * @return Required if `type`==`port_usage`
+     * @return Required if `type`==`portUsage`
      * 
      */
     public Optional<Output<String>> portUsage() {
@@ -116,8 +116,8 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Required if:
-     *   * `type`==`radius_group`
-     *   * `type`==`static_gbp`
+     *   * `type`==`radiusGroup`
+     *   * `type`==`staticGbp`
      *     if from matching radius_group
      * 
      */
@@ -126,8 +126,8 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Required if:
-     *   * `type`==`radius_group`
-     *   * `type`==`static_gbp`
+     *   * `type`==`radiusGroup`
+     *   * `type`==`staticGbp`
      *     if from matching radius_group
      * 
      */
@@ -136,14 +136,14 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+     * If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
      * 
      */
     @Import(name="specs")
     private @Nullable Output<List<SwitchAclTagsSpecArgs>> specs;
 
     /**
-     * @return If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+     * @return If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
      * 
      */
     public Optional<Output<List<SwitchAclTagsSpecArgs>>> specs() {
@@ -154,7 +154,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
      * If
      * - `type`==`subnet`
      * - `type`==`resource` (optional. default is `any`)
-     * - `type`==`static_gbp` if from matching subnet
+     * - `type`==`staticGbp` if from matching subnet
      * 
      */
     @Import(name="subnets")
@@ -164,7 +164,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
      * @return If
      * - `type`==`subnet`
      * - `type`==`resource` (optional. default is `any`)
-     * - `type`==`static_gbp` if from matching subnet
+     * - `type`==`staticGbp` if from matching subnet
      * 
      */
     public Optional<Output<List<String>>> subnets() {
@@ -174,14 +174,14 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * enum:
      *   * `any`: matching anything not identified
-     *   * `dynamic_gbp`: from the gbp_tag received from RADIUS
-     *   * `gbp_resource`: can only be used in `dst_tags`
+     *   * `dynamicGbp`: from the gbpTag received from RADIUS
+     *   * `gbpResource`: can only be used in `dstTags`
      *   * `mac`
      *   * `network`
-     *   * `port_usage`
-     *   * `radius_group`
-     *   * `resource`: can only be used in `dst_tags`
-     *   * `static_gbp`: applying gbp tag against matching conditions
+     *   * `portUsage`
+     *   * `radiusGroup`
+     *   * `resource`: can only be used in `dstTags`
+     *   * `staticGbp`: applying gbp tag against matching conditions
      *   * `subnet`&#39;
      * 
      */
@@ -191,14 +191,14 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return enum:
      *   * `any`: matching anything not identified
-     *   * `dynamic_gbp`: from the gbp_tag received from RADIUS
-     *   * `gbp_resource`: can only be used in `dst_tags`
+     *   * `dynamicGbp`: from the gbpTag received from RADIUS
+     *   * `gbpResource`: can only be used in `dstTags`
      *   * `mac`
      *   * `network`
-     *   * `port_usage`
-     *   * `radius_group`
-     *   * `resource`: can only be used in `dst_tags`
-     *   * `static_gbp`: applying gbp tag against matching conditions
+     *   * `portUsage`
+     *   * `radiusGroup`
+     *   * `resource`: can only be used in `dstTags`
+     *   * `staticGbp`: applying gbp tag against matching conditions
      *   * `subnet`&#39;
      * 
      */
@@ -271,9 +271,9 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param gbpTag Required if
-         *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-         *   - `type`==`gbp_resource`
-         *   - `type`==`static_gbp` (applying gbp tag against matching conditions)
+         *   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+         *   - `type`==`gbpResource`
+         *   - `type`==`staticGbp` (applying gbp tag against matching conditions)
          * 
          * @return builder
          * 
@@ -285,9 +285,9 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param gbpTag Required if
-         *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-         *   - `type`==`gbp_resource`
-         *   - `type`==`static_gbp` (applying gbp tag against matching conditions)
+         *   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+         *   - `type`==`gbpResource`
+         *   - `type`==`staticGbp` (applying gbp tag against matching conditions)
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param macs Required if
          * - `type`==`mac`
-         * - `type`==`static_gbp` if from matching mac
+         * - `type`==`staticGbp` if from matching mac
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param macs Required if
          * - `type`==`mac`
-         * - `type`==`static_gbp` if from matching mac
+         * - `type`==`staticGbp` if from matching mac
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param macs Required if
          * - `type`==`mac`
-         * - `type`==`static_gbp` if from matching mac
+         * - `type`==`staticGbp` if from matching mac
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
          *   * `type`==`subnet` (optional. default is `any`)
          *   * `type`==`network`
          *   * `type`==`resource` (optional. default is `any`)
-         *   * `type`==`static_gbp` if from matching network (vlan)
+         *   * `type`==`staticGbp` if from matching network (vlan)
          * 
          * @return builder
          * 
@@ -355,7 +355,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
          *   * `type`==`subnet` (optional. default is `any`)
          *   * `type`==`network`
          *   * `type`==`resource` (optional. default is `any`)
-         *   * `type`==`static_gbp` if from matching network (vlan)
+         *   * `type`==`staticGbp` if from matching network (vlan)
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portUsage Required if `type`==`port_usage`
+         * @param portUsage Required if `type`==`portUsage`
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portUsage Required if `type`==`port_usage`
+         * @param portUsage Required if `type`==`portUsage`
          * 
          * @return builder
          * 
@@ -387,8 +387,8 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param radiusGroup Required if:
-         *   * `type`==`radius_group`
-         *   * `type`==`static_gbp`
+         *   * `type`==`radiusGroup`
+         *   * `type`==`staticGbp`
          *     if from matching radius_group
          * 
          * @return builder
@@ -401,8 +401,8 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param radiusGroup Required if:
-         *   * `type`==`radius_group`
-         *   * `type`==`static_gbp`
+         *   * `type`==`radiusGroup`
+         *   * `type`==`staticGbp`
          *     if from matching radius_group
          * 
          * @return builder
@@ -413,7 +413,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+         * @param specs If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+         * @param specs If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specs If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+         * @param specs If `type`==`resource`, `type`==`radiusGroup`, `type`==`portUsage` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
          * 
          * @return builder
          * 
@@ -447,7 +447,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
          * @param subnets If
          * - `type`==`subnet`
          * - `type`==`resource` (optional. default is `any`)
-         * - `type`==`static_gbp` if from matching subnet
+         * - `type`==`staticGbp` if from matching subnet
          * 
          * @return builder
          * 
@@ -461,7 +461,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
          * @param subnets If
          * - `type`==`subnet`
          * - `type`==`resource` (optional. default is `any`)
-         * - `type`==`static_gbp` if from matching subnet
+         * - `type`==`staticGbp` if from matching subnet
          * 
          * @return builder
          * 
@@ -474,7 +474,7 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
          * @param subnets If
          * - `type`==`subnet`
          * - `type`==`resource` (optional. default is `any`)
-         * - `type`==`static_gbp` if from matching subnet
+         * - `type`==`staticGbp` if from matching subnet
          * 
          * @return builder
          * 
@@ -486,14 +486,14 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type enum:
          *   * `any`: matching anything not identified
-         *   * `dynamic_gbp`: from the gbp_tag received from RADIUS
-         *   * `gbp_resource`: can only be used in `dst_tags`
+         *   * `dynamicGbp`: from the gbpTag received from RADIUS
+         *   * `gbpResource`: can only be used in `dstTags`
          *   * `mac`
          *   * `network`
-         *   * `port_usage`
-         *   * `radius_group`
-         *   * `resource`: can only be used in `dst_tags`
-         *   * `static_gbp`: applying gbp tag against matching conditions
+         *   * `portUsage`
+         *   * `radiusGroup`
+         *   * `resource`: can only be used in `dstTags`
+         *   * `staticGbp`: applying gbp tag against matching conditions
          *   * `subnet`&#39;
          * 
          * @return builder
@@ -507,14 +507,14 @@ public final class SwitchAclTagsArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type enum:
          *   * `any`: matching anything not identified
-         *   * `dynamic_gbp`: from the gbp_tag received from RADIUS
-         *   * `gbp_resource`: can only be used in `dst_tags`
+         *   * `dynamicGbp`: from the gbpTag received from RADIUS
+         *   * `gbpResource`: can only be used in `dstTags`
          *   * `mac`
          *   * `network`
-         *   * `port_usage`
-         *   * `radius_group`
-         *   * `resource`: can only be used in `dst_tags`
-         *   * `static_gbp`: applying gbp tag against matching conditions
+         *   * `portUsage`
+         *   * `radiusGroup`
+         *   * `resource`: can only be used in `dstTags`
+         *   * `staticGbp`: applying gbp tag against matching conditions
          *   * `subnet`&#39;
          * 
          * @return builder

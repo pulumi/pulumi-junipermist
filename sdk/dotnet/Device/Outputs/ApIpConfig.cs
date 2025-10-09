@@ -14,35 +14,35 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class ApIpConfig
     {
         /// <summary>
-        /// If `type`==`static`
+        /// If `Type`==`Static`
         /// </summary>
         public readonly ImmutableArray<string> Dns;
         /// <summary>
-        /// Required if `type`==`static`
+        /// Required if `Type`==`Static`
         /// </summary>
         public readonly ImmutableArray<string> DnsSuffixes;
         /// <summary>
-        /// Required if `type`==`static`
+        /// Required if `Type`==`Static`
         /// </summary>
         public readonly string? Gateway;
         public readonly string? Gateway6;
         /// <summary>
-        /// Required if `type`==`static`
+        /// Required if `Type`==`Static`
         /// </summary>
         public readonly string? Ip;
         public readonly string? Ip6;
         public readonly int? Mtu;
         /// <summary>
-        /// Required if `type`==`static`
+        /// Required if `Type`==`Static`
         /// </summary>
         public readonly string? Netmask;
         public readonly string? Netmask6;
         /// <summary>
-        /// enum: `dhcp`, `static`
+        /// enum: `Dhcp`, `Static`
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// enum: `autoconf`, `dhcp`, `disabled`, `static`
+        /// enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`
         /// </summary>
         public readonly string? Type6;
         /// <summary>

@@ -27,10 +27,10 @@ public final class GatewaytemplateDhcpdConfigConfig {
      * @return If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
      * 
      * @deprecated
-     * Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
+     * Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
      * 
      */
-    @Deprecated /* Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
+    @Deprecated /* Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
     private @Nullable List<String> dnsSuffixes;
     /**
      * @return If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
@@ -73,7 +73,7 @@ public final class GatewaytemplateDhcpdConfigConfig {
      */
     private @Nullable Map<String,GatewaytemplateDhcpdConfigConfigOptions> options;
     /**
-     * @return `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
+     * @return `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
      * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
      * 
      */
@@ -118,10 +118,10 @@ public final class GatewaytemplateDhcpdConfigConfig {
      * @return If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
      * 
      * @deprecated
-     * Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
+     * Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
      * 
      */
-    @Deprecated /* Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
+    @Deprecated /* Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
     public List<String> dnsSuffixes() {
         return this.dnsSuffixes == null ? List.of() : this.dnsSuffixes;
     }
@@ -182,7 +182,7 @@ public final class GatewaytemplateDhcpdConfigConfig {
         return this.options == null ? Map.of() : this.options;
     }
     /**
-     * @return `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
+     * @return `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
      * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
      * 
      */

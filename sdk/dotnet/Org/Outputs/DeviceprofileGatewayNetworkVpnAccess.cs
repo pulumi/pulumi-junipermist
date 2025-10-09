@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileGatewayNetworkVpnAccess
     {
         /// <summary>
-        /// If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
+        /// If `Routed`==`True`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
         /// </summary>
         public readonly string? AdvertisedSubnet;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? AllowPing;
         /// <summary>
-        /// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
+        /// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `InternalIp` or `Port` must be defined
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.DeviceprofileGatewayNetworkVpnAccessDestinationNat>? DestinationNat;
         /// <summary>
-        /// If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+        /// If `Routed`==`False` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
         /// </summary>
         public readonly string? NatPool;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Routed;
         /// <summary>
-        /// If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+        /// If `Routed`==`False` (usually at Spoke), but some hosts needs to be reachable from Hub
         /// </summary>
         public readonly Outputs.DeviceprofileGatewayNetworkVpnAccessSourceNat? SourceNat;
         /// <summary>

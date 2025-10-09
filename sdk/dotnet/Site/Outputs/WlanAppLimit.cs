@@ -20,7 +20,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly ImmutableDictionary<string, int>? Apps;
         public readonly bool? Enabled;
         /// <summary>
-        /// Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
+        /// Map from WxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `WxtagId`
         /// </summary>
         public readonly ImmutableDictionary<string, int>? WxtagIds;
 

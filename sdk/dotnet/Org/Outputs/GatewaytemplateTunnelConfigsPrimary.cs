@@ -15,12 +15,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
     {
         public readonly ImmutableArray<string> Hosts;
         /// <summary>
-        /// Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
+        /// Only if `Provider`==`zscaler-gre`, `Provider`==`jse-ipsec`, `Provider`==`custom-ipsec` or `Provider`==`custom-gre`
         /// </summary>
         public readonly ImmutableArray<string> InternalIps;
         public readonly ImmutableArray<string> ProbeIps;
         /// <summary>
-        /// Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        /// Only if  `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
         /// </summary>
         public readonly ImmutableArray<string> RemoteIds;
         public readonly ImmutableArray<string> WanNames;

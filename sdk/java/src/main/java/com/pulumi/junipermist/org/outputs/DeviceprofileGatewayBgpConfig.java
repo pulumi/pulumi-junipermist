@@ -23,14 +23,14 @@ public final class DeviceprofileGatewayBgpConfig {
      */
     private @Nullable String authKey;
     /**
-     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMultiplier is configured alone. Default:
      *   * 1000 if `type`==`external`
      *   * 350 `type`==`internal`
      * 
      */
     private @Nullable Integer bfdMinimumInterval;
     /**
-     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMinimumIntervalIsConfigured alone
      * 
      */
     private @Nullable Integer bfdMultiplier;
@@ -72,7 +72,7 @@ public final class DeviceprofileGatewayBgpConfig {
      */
     private @Nullable String localAs;
     /**
-     * @return Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * @return Neighbor AS. If `type`==`internal`, must be equal to `localAs`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
      * 
      */
     private @Nullable String neighborAs;
@@ -131,7 +131,7 @@ public final class DeviceprofileGatewayBgpConfig {
         return Optional.ofNullable(this.authKey);
     }
     /**
-     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMultiplier is configured alone. Default:
      *   * 1000 if `type`==`external`
      *   * 350 `type`==`internal`
      * 
@@ -140,7 +140,7 @@ public final class DeviceprofileGatewayBgpConfig {
         return Optional.ofNullable(this.bfdMinimumInterval);
     }
     /**
-     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMinimumIntervalIsConfigured alone
      * 
      */
     public Optional<Integer> bfdMultiplier() {
@@ -202,7 +202,7 @@ public final class DeviceprofileGatewayBgpConfig {
         return Optional.ofNullable(this.localAs);
     }
     /**
-     * @return Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * @return Neighbor AS. If `type`==`internal`, must be equal to `localAs`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
      * 
      */
     public Optional<String> neighborAs() {

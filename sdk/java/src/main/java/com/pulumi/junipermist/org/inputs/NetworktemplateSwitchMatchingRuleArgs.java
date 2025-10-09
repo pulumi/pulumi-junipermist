@@ -53,14 +53,14 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
     }
 
     /**
-     * string the switch model must start with to use this rule. It is possible to combine with the `match_name` and `match_role` attributes
+     * string the switch model must start with to use this rule. It is possible to combine with the `matchName` and `matchRole` attributes
      * 
      */
     @Import(name="matchModel")
     private @Nullable Output<String> matchModel;
 
     /**
-     * @return string the switch model must start with to use this rule. It is possible to combine with the `match_name` and `match_role` attributes
+     * @return string the switch model must start with to use this rule. It is possible to combine with the `matchName` and `matchRole` attributes
      * 
      */
     public Optional<Output<String>> matchModel() {
@@ -68,14 +68,14 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
     }
 
     /**
-     * string the switch name must start with to use this rule. Use the `match_name_offset` to indicate the first character of the switch name to compare to. It is possible to combine with the `match_model` and `match_role` attributes
+     * string the switch name must start with to use this rule. Use the `matchNameOffset` to indicate the first character of the switch name to compare to. It is possible to combine with the `matchModel` and `matchRole` attributes
      * 
      */
     @Import(name="matchName")
     private @Nullable Output<String> matchName;
 
     /**
-     * @return string the switch name must start with to use this rule. Use the `match_name_offset` to indicate the first character of the switch name to compare to. It is possible to combine with the `match_model` and `match_role` attributes
+     * @return string the switch name must start with to use this rule. Use the `matchNameOffset` to indicate the first character of the switch name to compare to. It is possible to combine with the `matchModel` and `matchRole` attributes
      * 
      */
     public Optional<Output<String>> matchName() {
@@ -83,14 +83,14 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
     }
 
     /**
-     * first character of the switch name to compare to the `match_name` value
+     * first character of the switch name to compare to the `matchName` value
      * 
      */
     @Import(name="matchNameOffset")
     private @Nullable Output<Integer> matchNameOffset;
 
     /**
-     * @return first character of the switch name to compare to the `match_name` value
+     * @return first character of the switch name to compare to the `matchName` value
      * 
      */
     public Optional<Output<Integer>> matchNameOffset() {
@@ -98,14 +98,14 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
     }
 
     /**
-     * string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes
+     * string the switch role must start with to use this rule. It is possible to combine with the `matchName` and `matchModel` attributes
      * 
      */
     @Import(name="matchRole")
     private @Nullable Output<String> matchRole;
 
     /**
-     * @return string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes
+     * @return string the switch role must start with to use this rule. It is possible to combine with the `matchName` and `matchModel` attributes
      * 
      */
     public Optional<Output<String>> matchRole() {
@@ -158,14 +158,14 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
     }
 
     /**
-     * Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      * 
      */
     @Import(name="portMirroring")
     private @Nullable Output<Map<String,NetworktemplateSwitchMatchingRulePortMirroringArgs>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * @return Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      * 
      */
     public Optional<Output<Map<String,NetworktemplateSwitchMatchingRulePortMirroringArgs>>> portMirroring() {
@@ -258,7 +258,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param matchModel string the switch model must start with to use this rule. It is possible to combine with the `match_name` and `match_role` attributes
+         * @param matchModel string the switch model must start with to use this rule. It is possible to combine with the `matchName` and `matchRole` attributes
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param matchModel string the switch model must start with to use this rule. It is possible to combine with the `match_name` and `match_role` attributes
+         * @param matchModel string the switch model must start with to use this rule. It is possible to combine with the `matchName` and `matchRole` attributes
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param matchName string the switch name must start with to use this rule. Use the `match_name_offset` to indicate the first character of the switch name to compare to. It is possible to combine with the `match_model` and `match_role` attributes
+         * @param matchName string the switch name must start with to use this rule. Use the `matchNameOffset` to indicate the first character of the switch name to compare to. It is possible to combine with the `matchModel` and `matchRole` attributes
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param matchName string the switch name must start with to use this rule. Use the `match_name_offset` to indicate the first character of the switch name to compare to. It is possible to combine with the `match_model` and `match_role` attributes
+         * @param matchName string the switch name must start with to use this rule. Use the `matchNameOffset` to indicate the first character of the switch name to compare to. It is possible to combine with the `matchModel` and `matchRole` attributes
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param matchNameOffset first character of the switch name to compare to the `match_name` value
+         * @param matchNameOffset first character of the switch name to compare to the `matchName` value
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param matchNameOffset first character of the switch name to compare to the `match_name` value
+         * @param matchNameOffset first character of the switch name to compare to the `matchName` value
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param matchRole string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes
+         * @param matchRole string the switch role must start with to use this rule. It is possible to combine with the `matchName` and `matchModel` attributes
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param matchRole string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes
+         * @param matchRole string the switch role must start with to use this rule. It is possible to combine with the `matchName` and `matchModel` attributes
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+         * @param portMirroring Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+         * @param portMirroring Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
          * 
          * @return builder
          * 

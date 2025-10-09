@@ -56,6 +56,8 @@ import javax.annotation.Nullable;
  * 
  * !&gt; Only ONE `junipermist.site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
  * 
+ * ## Example Usage
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_site_setting` with:
@@ -76,14 +78,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return this.analytic;
     }
     /**
-     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      * 
      */
     @Export(name="apUpdownThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> apUpdownThreshold;
 
     /**
-     * @return Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+     * @return Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      * 
      */
     public Output<Optional<Integer>> apUpdownThreshold() {
@@ -256,14 +258,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return this.gatewayMgmt;
     }
     /**
-     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
+     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      * 
      */
     @Export(name="gatewayUpdownThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> gatewayUpdownThreshold;
 
     /**
-     * @return Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
+     * @return Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      * 
      */
     public Output<Optional<Integer>> gatewayUpdownThreshold() {
@@ -432,14 +434,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.srxApp);
     }
     /**
-     * When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+     * When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
      * 
      */
     @Export(name="sshKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> sshKeys;
 
     /**
-     * @return When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
+     * @return When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
      * 
      */
     public Output<List<String>> sshKeys() {
@@ -452,14 +454,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return this.ssr;
     }
     /**
-     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
+     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
      * 
      */
     @Export(name="switchUpdownThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> switchUpdownThreshold;
 
     /**
-     * @return Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
+     * @return Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
      * 
      */
     public Output<Optional<Integer>> switchUpdownThreshold() {

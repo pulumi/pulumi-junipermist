@@ -35,14 +35,14 @@ public final class WlanBonjourArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+     * Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+     * @return Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -124,7 +124,7 @@ public final class WlanBonjourArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+         * @param enabled Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class WlanBonjourArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+         * @param enabled Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
          * 
          * @return builder
          * 

@@ -27,14 +27,14 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
     }
 
     /**
-     * Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
+     * Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
      * 
      */
     @Import(name="aupEnabled")
     private @Nullable Output<Boolean> aupEnabled;
 
     /**
-     * @return Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
+     * @return Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
      * 
      */
     public Optional<Output<Boolean>> aupEnabled() {
@@ -57,14 +57,14 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
     }
 
     /**
-     * Required if `aup_enabled`==`true`. Days before AUP is requested again
+     * Required if `aupEnabled`==`true`. Days before AUP is requested again
      * 
      */
     @Import(name="aupTimeoutInDays")
     private @Nullable Output<Integer> aupTimeoutInDays;
 
     /**
-     * @return Required if `aup_enabled`==`true`. Days before AUP is requested again
+     * @return Required if `aupEnabled`==`true`. Days before AUP is requested again
      * 
      */
     public Optional<Output<Integer>> aupTimeoutInDays() {
@@ -87,14 +87,14 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
     }
 
     /**
-     * Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
+     * Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
      * 
      */
     @Import(name="cautionEnabled")
     private @Nullable Output<Boolean> cautionEnabled;
 
     /**
-     * @return Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
+     * @return Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
      * 
      */
     public Optional<Output<Boolean>> cautionEnabled() {
@@ -162,14 +162,14 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
     }
 
     /**
-     * Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user&#39;s policies, instead of the location&#39;s policies
+     * Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user&#39;s policies, instead of the location&#39;s policies
      * 
      */
     @Import(name="surrogateIp")
     private @Nullable Output<Boolean> surrogateIp;
 
     /**
-     * @return Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user&#39;s policies, instead of the location&#39;s policies
+     * @return Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user&#39;s policies, instead of the location&#39;s policies
      * 
      */
     public Optional<Output<Boolean>> surrogateIp() {
@@ -192,14 +192,14 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
     }
 
     /**
-     * Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
+     * Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
      * 
      */
     @Import(name="surrogateRefreshTimeInMinutes")
     private @Nullable Output<Integer> surrogateRefreshTimeInMinutes;
 
     /**
-     * @return Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
+     * @return Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
      * 
      */
     public Optional<Output<Integer>> surrogateRefreshTimeInMinutes() {
@@ -284,7 +284,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param aupEnabled Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
+         * @param aupEnabled Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param aupEnabled Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
+         * @param aupEnabled Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param aupTimeoutInDays Required if `aup_enabled`==`true`. Days before AUP is requested again
+         * @param aupTimeoutInDays Required if `aupEnabled`==`true`. Days before AUP is requested again
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param aupTimeoutInDays Required if `aup_enabled`==`true`. Days before AUP is requested again
+         * @param aupTimeoutInDays Required if `aupEnabled`==`true`. Days before AUP is requested again
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param cautionEnabled Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
+         * @param cautionEnabled Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
          * 
          * @return builder
          * 
@@ -379,7 +379,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param cautionEnabled Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
+         * @param cautionEnabled Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
          * 
          * @return builder
          * 
@@ -483,7 +483,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param surrogateIp Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user&#39;s policies, instead of the location&#39;s policies
+         * @param surrogateIp Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user&#39;s policies, instead of the location&#39;s policies
          * 
          * @return builder
          * 
@@ -494,7 +494,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param surrogateIp Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user&#39;s policies, instead of the location&#39;s policies
+         * @param surrogateIp Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user&#39;s policies, instead of the location&#39;s policies
          * 
          * @return builder
          * 
@@ -525,7 +525,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param surrogateRefreshTimeInMinutes Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
+         * @param surrogateRefreshTimeInMinutes Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
          * 
          * @return builder
          * 
@@ -536,7 +536,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param surrogateRefreshTimeInMinutes Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
+         * @param surrogateRefreshTimeInMinutes Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
          * 
          * @return builder
          * 

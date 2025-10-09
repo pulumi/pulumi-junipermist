@@ -13,25 +13,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class ApitokenPrivilegeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+        /// access permissions. enum: `Admin`, `Helpdesk`, `Installer`, `Read`, `Write`
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
         /// <summary>
-        /// enum: `org`, `site`, `sitegroup`
+        /// enum: `Org`, `Site`, `Sitegroup`
         /// </summary>
         [Input("scope", required: true)]
         public Input<string> Scope { get; set; } = null!;
 
         /// <summary>
-        /// Required if `scope`==`site`
+        /// Required if `Scope`==`Site`
         /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
         /// <summary>
-        /// Required if `scope`==`sitegroup`
+        /// Required if `Scope`==`Sitegroup`
         /// </summary>
         [Input("sitegroupId")]
         public Input<string>? SitegroupId { get; set; }

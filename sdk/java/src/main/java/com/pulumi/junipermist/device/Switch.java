@@ -132,28 +132,28 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return this.disableAutoConfig;
     }
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     @Export(name="dnsServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dnsServers;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     public Output<List<String>> dnsServers() {
         return this.dnsServers;
     }
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     @Export(name="dnsSuffixes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dnsSuffixes;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     public Output<List<String>> dnsSuffixes() {
@@ -220,14 +220,14 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ipConfig);
     }
     /**
-     * Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
      * 
      */
     @Export(name="localPortConfig", refs={Map.class,String.class,SwitchLocalPortConfig.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchLocalPortConfig>> localPortConfig;
 
     /**
-     * @return Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * @return Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
      * 
      */
     public Output<Optional<Map<String,SwitchLocalPortConfig>>> localPortConfig() {
@@ -276,14 +276,14 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mapId);
     }
     /**
-     * Enable mist_nac to use RadSec
+     * Enable mistNac to use RadSec
      * 
      */
     @Export(name="mistNac", refs={SwitchMistNac.class}, tree="[0]")
     private Output</* @Nullable */ SwitchMistNac> mistNac;
 
     /**
-     * @return Enable mist_nac to use RadSec
+     * @return Enable mistNac to use RadSec
      * 
      */
     public Output<Optional<SwitchMistNac>> mistNac() {
@@ -416,28 +416,28 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.portConfig);
     }
     /**
-     * Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the port_usage without having to create a new port_usage.
+     * Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the portUsage without having to create a new port_usage.
      * 
      */
     @Export(name="portConfigOverwrite", refs={Map.class,String.class,SwitchPortConfigOverwrite.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchPortConfigOverwrite>> portConfigOverwrite;
 
     /**
-     * @return Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the port_usage without having to create a new port_usage.
+     * @return Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the portUsage without having to create a new port_usage.
      * 
      */
     public Output<Optional<Map<String,SwitchPortConfigOverwrite>>> portConfigOverwrite() {
         return Codegen.optional(this.portConfigOverwrite);
     }
     /**
-     * Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      * 
      */
     @Export(name="portMirroring", refs={Map.class,String.class,SwitchPortMirroring.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchPortMirroring>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * @return Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      * 
      */
     public Output<Optional<Map<String,SwitchPortMirroring>>> portMirroring() {

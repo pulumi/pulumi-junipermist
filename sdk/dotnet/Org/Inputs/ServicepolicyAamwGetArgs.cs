@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// enum: `docsonly`, `executables`, `standard`
+        /// enum: `Docsonly`, `Executables`, `Standard`
         /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }

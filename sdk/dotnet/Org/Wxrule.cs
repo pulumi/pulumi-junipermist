@@ -59,7 +59,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Wxrule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// type of action, allow / block. enum: `allow`, `block`
+        /// type of action, allow / block. enum: `Allow`, `Block`
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WxruleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// type of action, allow / block. enum: `allow`, `block`
+        /// type of action, allow / block. enum: `Allow`, `Block`
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -263,7 +263,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WxruleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// type of action, allow / block. enum: `allow`, `block`
+        /// type of action, allow / block. enum: `Allow`, `Block`
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

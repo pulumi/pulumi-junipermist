@@ -56,17 +56,17 @@ public final class GatewayPortConfig {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
+     * @return if `wanType`==`dsl`. enum: `adsl`, `vdsl`
      * 
      */
     private @Nullable String dslType;
     /**
-     * @return If `wan_type`==`dsl`, 16 bit int
+     * @return If `wanType`==`dsl`, 16 bit int
      * 
      */
     private @Nullable Integer dslVci;
     /**
-     * @return If `wan_type`==`dsl`, 8 bit int
+     * @return If `wanType`==`dsl`, 8 bit int
      * 
      */
     private @Nullable Integer dslVpi;
@@ -81,23 +81,23 @@ public final class GatewayPortConfig {
      */
     private @Nullable GatewayPortConfigIpConfig ipConfig;
     /**
-     * @return If `wan_type`==`lte`
+     * @return If `wanType`==`lte`
      * 
      */
     private @Nullable String lteApn;
     /**
-     * @return if `wan_type`==`lte`. enum: `chap`, `none`, `pap`
+     * @return if `wanType`==`lte`. enum: `chap`, `none`, `pap`
      * 
      */
     private @Nullable String lteAuth;
     private @Nullable Boolean lteBackup;
     /**
-     * @return If `wan_type`==`lte`
+     * @return If `wanType`==`lte`
      * 
      */
     private @Nullable String ltePassword;
     /**
-     * @return If `wan_type`==`lte`
+     * @return If `wanType`==`lte`
      * 
      */
     private @Nullable String lteUsername;
@@ -166,7 +166,7 @@ public final class GatewayPortConfig {
     private @Nullable String svrPortRange;
     private @Nullable GatewayPortConfigTrafficShaping trafficShaping;
     /**
-     * @return port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
+     * @return port usage name. enum: `haControl`, `haData`, `lan`, `wan`
      * 
      */
     private String usage;
@@ -177,12 +177,12 @@ public final class GatewayPortConfig {
      */
     private @Nullable Map<String,GatewayPortConfigVpnPaths> vpnPaths;
     /**
-     * @return Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
+     * @return Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
      * 
      */
     private @Nullable String wanArpPolicer;
     /**
-     * @return If `wan_type`==`wan`, disable speedtest
+     * @return If `wanType`==`wan`, disable speedtest
      * 
      */
     private @Nullable Boolean wanDisableSpeedtest;
@@ -272,21 +272,21 @@ public final class GatewayPortConfig {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
+     * @return if `wanType`==`dsl`. enum: `adsl`, `vdsl`
      * 
      */
     public Optional<String> dslType() {
         return Optional.ofNullable(this.dslType);
     }
     /**
-     * @return If `wan_type`==`dsl`, 16 bit int
+     * @return If `wanType`==`dsl`, 16 bit int
      * 
      */
     public Optional<Integer> dslVci() {
         return Optional.ofNullable(this.dslVci);
     }
     /**
-     * @return If `wan_type`==`dsl`, 8 bit int
+     * @return If `wanType`==`dsl`, 8 bit int
      * 
      */
     public Optional<Integer> dslVpi() {
@@ -307,14 +307,14 @@ public final class GatewayPortConfig {
         return Optional.ofNullable(this.ipConfig);
     }
     /**
-     * @return If `wan_type`==`lte`
+     * @return If `wanType`==`lte`
      * 
      */
     public Optional<String> lteApn() {
         return Optional.ofNullable(this.lteApn);
     }
     /**
-     * @return if `wan_type`==`lte`. enum: `chap`, `none`, `pap`
+     * @return if `wanType`==`lte`. enum: `chap`, `none`, `pap`
      * 
      */
     public Optional<String> lteAuth() {
@@ -324,14 +324,14 @@ public final class GatewayPortConfig {
         return Optional.ofNullable(this.lteBackup);
     }
     /**
-     * @return If `wan_type`==`lte`
+     * @return If `wanType`==`lte`
      * 
      */
     public Optional<String> ltePassword() {
         return Optional.ofNullable(this.ltePassword);
     }
     /**
-     * @return If `wan_type`==`lte`
+     * @return If `wanType`==`lte`
      * 
      */
     public Optional<String> lteUsername() {
@@ -434,7 +434,7 @@ public final class GatewayPortConfig {
         return Optional.ofNullable(this.trafficShaping);
     }
     /**
-     * @return port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
+     * @return port usage name. enum: `haControl`, `haData`, `lan`, `wan`
      * 
      */
     public String usage() {
@@ -451,14 +451,14 @@ public final class GatewayPortConfig {
         return this.vpnPaths == null ? Map.of() : this.vpnPaths;
     }
     /**
-     * @return Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
+     * @return Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
      * 
      */
     public Optional<String> wanArpPolicer() {
         return Optional.ofNullable(this.wanArpPolicer);
     }
     /**
-     * @return If `wan_type`==`wan`, disable speedtest
+     * @return If `wanType`==`wan`, disable speedtest
      * 
      */
     public Optional<Boolean> wanDisableSpeedtest() {

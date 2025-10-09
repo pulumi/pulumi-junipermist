@@ -29,22 +29,22 @@ public final class NetworktemplateSwitchMatchingRule {
      */
     private @Nullable NetworktemplateSwitchMatchingRuleIpConfig ipConfig;
     /**
-     * @return string the switch model must start with to use this rule. It is possible to combine with the `match_name` and `match_role` attributes
+     * @return string the switch model must start with to use this rule. It is possible to combine with the `matchName` and `matchRole` attributes
      * 
      */
     private @Nullable String matchModel;
     /**
-     * @return string the switch name must start with to use this rule. Use the `match_name_offset` to indicate the first character of the switch name to compare to. It is possible to combine with the `match_model` and `match_role` attributes
+     * @return string the switch name must start with to use this rule. Use the `matchNameOffset` to indicate the first character of the switch name to compare to. It is possible to combine with the `matchModel` and `matchRole` attributes
      * 
      */
     private @Nullable String matchName;
     /**
-     * @return first character of the switch name to compare to the `match_name` value
+     * @return first character of the switch name to compare to the `matchName` value
      * 
      */
     private @Nullable Integer matchNameOffset;
     /**
-     * @return string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes
+     * @return string the switch role must start with to use this rule. It is possible to combine with the `matchName` and `matchModel` attributes
      * 
      */
     private @Nullable String matchRole;
@@ -64,7 +64,7 @@ public final class NetworktemplateSwitchMatchingRule {
      */
     private @Nullable Map<String,NetworktemplateSwitchMatchingRulePortConfig> portConfig;
     /**
-     * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * @return Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      * 
      */
     private @Nullable Map<String,NetworktemplateSwitchMatchingRulePortMirroring> portMirroring;
@@ -85,28 +85,28 @@ public final class NetworktemplateSwitchMatchingRule {
         return Optional.ofNullable(this.ipConfig);
     }
     /**
-     * @return string the switch model must start with to use this rule. It is possible to combine with the `match_name` and `match_role` attributes
+     * @return string the switch model must start with to use this rule. It is possible to combine with the `matchName` and `matchRole` attributes
      * 
      */
     public Optional<String> matchModel() {
         return Optional.ofNullable(this.matchModel);
     }
     /**
-     * @return string the switch name must start with to use this rule. Use the `match_name_offset` to indicate the first character of the switch name to compare to. It is possible to combine with the `match_model` and `match_role` attributes
+     * @return string the switch name must start with to use this rule. Use the `matchNameOffset` to indicate the first character of the switch name to compare to. It is possible to combine with the `matchModel` and `matchRole` attributes
      * 
      */
     public Optional<String> matchName() {
         return Optional.ofNullable(this.matchName);
     }
     /**
-     * @return first character of the switch name to compare to the `match_name` value
+     * @return first character of the switch name to compare to the `matchName` value
      * 
      */
     public Optional<Integer> matchNameOffset() {
         return Optional.ofNullable(this.matchNameOffset);
     }
     /**
-     * @return string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes
+     * @return string the switch role must start with to use this rule. It is possible to combine with the `matchName` and `matchModel` attributes
      * 
      */
     public Optional<String> matchRole() {
@@ -134,7 +134,7 @@ public final class NetworktemplateSwitchMatchingRule {
         return this.portConfig == null ? Map.of() : this.portConfig;
     }
     /**
-     * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * @return Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      * 
      */
     public Map<String,NetworktemplateSwitchMatchingRulePortMirroring> portMirroring() {

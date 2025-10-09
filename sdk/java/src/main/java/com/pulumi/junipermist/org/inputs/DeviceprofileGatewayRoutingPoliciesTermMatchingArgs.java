@@ -85,14 +85,14 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatchingArgs extends c
     }
 
     /**
-     * overlay-facing criteria (used for bgp_config where via=vpn)
+     * overlay-facing criteria (used for bgpConfig where via=vpn)
      * 
      */
     @Import(name="vpnNeighborMacs")
     private @Nullable Output<List<String>> vpnNeighborMacs;
 
     /**
-     * @return overlay-facing criteria (used for bgp_config where via=vpn)
+     * @return overlay-facing criteria (used for bgpConfig where via=vpn)
      * 
      */
     public Optional<Output<List<String>>> vpnNeighborMacs() {
@@ -107,14 +107,14 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatchingArgs extends c
     }
 
     /**
-     * overlay-facing criteria (used for bgp_config where via=vpn). ordered-
+     * overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
      * 
      */
     @Import(name="vpnPaths")
     private @Nullable Output<List<String>> vpnPaths;
 
     /**
-     * @return overlay-facing criteria (used for bgp_config where via=vpn). ordered-
+     * @return overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
      * 
      */
     public Optional<Output<List<String>>> vpnPaths() {
@@ -282,7 +282,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatchingArgs extends c
         }
 
         /**
-         * @param vpnNeighborMacs overlay-facing criteria (used for bgp_config where via=vpn)
+         * @param vpnNeighborMacs overlay-facing criteria (used for bgpConfig where via=vpn)
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatchingArgs extends c
         }
 
         /**
-         * @param vpnNeighborMacs overlay-facing criteria (used for bgp_config where via=vpn)
+         * @param vpnNeighborMacs overlay-facing criteria (used for bgpConfig where via=vpn)
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatchingArgs extends c
         }
 
         /**
-         * @param vpnNeighborMacs overlay-facing criteria (used for bgp_config where via=vpn)
+         * @param vpnNeighborMacs overlay-facing criteria (used for bgpConfig where via=vpn)
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatchingArgs extends c
         }
 
         /**
-         * @param vpnPaths overlay-facing criteria (used for bgp_config where via=vpn). ordered-
+         * @param vpnPaths overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatchingArgs extends c
         }
 
         /**
-         * @param vpnPaths overlay-facing criteria (used for bgp_config where via=vpn). ordered-
+         * @param vpnPaths overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatchingArgs extends c
         }
 
         /**
-         * @param vpnPaths overlay-facing criteria (used for bgp_config where via=vpn). ordered-
+         * @param vpnPaths overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
          * 
          * @return builder
          * 

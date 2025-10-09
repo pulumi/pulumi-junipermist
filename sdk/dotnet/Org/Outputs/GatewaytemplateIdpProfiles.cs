@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GatewaytemplateIdpProfiles
     {
         /// <summary>
-        /// enum: `critical`, `standard`, `strict`
+        /// enum: `Critical`, `Standard`, `Strict`
         /// </summary>
         public readonly string? BaseProfile;
         public readonly string? Name;

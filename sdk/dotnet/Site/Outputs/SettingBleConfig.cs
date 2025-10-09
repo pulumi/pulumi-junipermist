@@ -18,11 +18,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? BeaconEnabled;
         /// <summary>
-        /// Required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
+        /// Required if `BeaconRateMode`==`Custom`, 1-10, in number-beacons-per-second
         /// </summary>
         public readonly int? BeaconRate;
         /// <summary>
-        /// enum: `custom`, `default`
+        /// enum: `Custom`, `Default`
         /// </summary>
         public readonly string? BeaconRateMode;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly ImmutableArray<int> BeamDisableds;
         /// <summary>
-        /// Can be enabled if `beacon_enabled`==`true`, whether to send custom packet
+        /// Can be enabled if `BeaconEnabled`==`True`, whether to send custom packet
         /// </summary>
         public readonly bool? CustomBlePacketEnabled;
         /// <summary>
@@ -47,7 +47,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly int? EddystoneUidAdvPower;
         public readonly string? EddystoneUidBeams;
         /// <summary>
-        /// Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
+        /// Only if `BeaconEnabled`==`False`, Whether Eddystone-UID beacon is enabled
         /// </summary>
         public readonly bool? EddystoneUidEnabled;
         /// <summary>
@@ -68,7 +68,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly int? EddystoneUrlAdvPower;
         public readonly string? EddystoneUrlBeams;
         /// <summary>
-        /// Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
+        /// Only if `BeaconEnabled`==`False`, Whether Eddystone-URL beacon is enabled
         /// </summary>
         public readonly bool? EddystoneUrlEnabled;
         /// <summary>
@@ -85,7 +85,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly int? IbeaconAdvPower;
         public readonly string? IbeaconBeams;
         /// <summary>
-        /// Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
+        /// Can be enabled if `BeaconEnabled`==`True`, whether to send iBeacon
         /// </summary>
         public readonly bool? IbeaconEnabled;
         /// <summary>
@@ -105,11 +105,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? IbeaconUuid;
         /// <summary>
-        /// Required if `power_mode`==`custom`; else use `power_mode` as default
+        /// Required if `PowerMode`==`Custom`; else use `PowerMode` as default
         /// </summary>
         public readonly int? Power;
         /// <summary>
-        /// enum: `custom`, `default`
+        /// enum: `Custom`, `Default`
         /// </summary>
         public readonly string? PowerMode;
 

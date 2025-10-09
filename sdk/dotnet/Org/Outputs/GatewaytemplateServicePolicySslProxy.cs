@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GatewaytemplateServicePolicySslProxy
     {
         /// <summary>
-        /// enum: `medium`, `strong`, `weak`
+        /// enum: `Medium`, `Strong`, `Weak`
         /// </summary>
         public readonly string? CiphersCategory;
         public readonly bool? Enabled;

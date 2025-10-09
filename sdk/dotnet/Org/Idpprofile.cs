@@ -16,6 +16,8 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// The profile includes rules and policies that determine which types of traffic or attacks should be monitored, what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
     /// 
+    /// ## Example Usage
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_idpprofile` with:
@@ -30,7 +32,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Idpprofile : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// enum: `critical`, `standard`, `strict`
+        /// enum: `Critical`, `Standard`, `Strict`
         /// </summary>
         [Output("baseProfile")]
         public Output<string> BaseProfile { get; private set; } = null!;
@@ -92,7 +94,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class IdpprofileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `critical`, `standard`, `strict`
+        /// enum: `Critical`, `Standard`, `Strict`
         /// </summary>
         [Input("baseProfile", required: true)]
         public Input<string> BaseProfile { get; set; } = null!;
@@ -120,7 +122,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class IdpprofileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `critical`, `standard`, `strict`
+        /// enum: `Critical`, `Standard`, `Strict`
         /// </summary>
         [Input("baseProfile")]
         public Input<string>? BaseProfile { get; set; }

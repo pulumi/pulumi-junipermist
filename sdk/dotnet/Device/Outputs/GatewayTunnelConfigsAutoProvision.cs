@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayTunnelConfigsAutoProvision
     {
         /// <summary>
-        /// Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
+        /// Enable auto provisioning for the tunnel. If enabled, the `Primary` and `Secondary` nodes will be ignored.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
@@ -32,7 +32,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string? Region;
         public readonly Outputs.GatewayTunnelConfigsAutoProvisionSecondary? Secondary;
         /// <summary>
-        /// if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we'll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
+        /// if `Provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, ServiceConnection can be considered, then we'll also consider this along with the site location. Define ServiceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
         /// </summary>
         public readonly string? ServiceConnection;
 

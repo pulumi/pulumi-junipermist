@@ -24,7 +24,7 @@ public final class GetWlansSiteWlanDynamicPsk {
      */
     private Boolean forceLookup;
     /**
-     * @return enum: `cloud_psks`, `radius`
+     * @return enum: `cloudPsks`, `radius`
      * 
      */
     private String source;
@@ -51,7 +51,7 @@ public final class GetWlansSiteWlanDynamicPsk {
         return this.forceLookup;
     }
     /**
-     * @return enum: `cloud_psks`, `radius`
+     * @return enum: `cloudPsks`, `radius`
      * 
      */
     public String source() {

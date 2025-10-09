@@ -16,6 +16,8 @@ import (
 //
 // A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
 //
+// ## Example Usage
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_nacrule` with:

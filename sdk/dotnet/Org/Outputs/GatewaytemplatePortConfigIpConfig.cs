@@ -38,11 +38,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Ip6;
         /// <summary>
-        /// Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
+        /// Used only if `Subnet` is not specified in `Networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         public readonly string? Netmask;
         /// <summary>
-        /// Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. "/64") or a Variable (i.e. "{{myvar}}")
+        /// Used only if `Subnet` is not specified in `Networks`. Interface IPv6 Netmask (i.e. "/64") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         public readonly string? Netmask6;
         /// <summary>
@@ -50,23 +50,23 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Network;
         /// <summary>
-        /// If `type`==`pppoe`
+        /// If `Type`==`Pppoe`
         /// </summary>
         public readonly string? PoserPassword;
         /// <summary>
-        /// if `type`==`pppoe`. enum: `chap`, `none`, `pap`
+        /// if `Type`==`Pppoe`. enum: `Chap`, `None`, `Pap`
         /// </summary>
         public readonly string? PppoeAuth;
         /// <summary>
-        /// If `type`==`pppoe`
+        /// If `Type`==`Pppoe`
         /// </summary>
         public readonly string? PppoeUsername;
         /// <summary>
-        /// enum: `dhcp`, `pppoe`, `static`
+        /// enum: `Dhcp`, `Pppoe`, `Static`
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// enum: `autoconf`, `dhcp`, `static`
+        /// enum: `Autoconf`, `Dhcp`, `Static`
         /// </summary>
         public readonly string? Type6;
 

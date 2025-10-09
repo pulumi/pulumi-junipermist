@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? Timeout;
         /// <summary>
-        /// enum: `http`, `icmp`
+        /// enum: `Http`, `Icmp`
         /// </summary>
         public readonly string? Type;
 

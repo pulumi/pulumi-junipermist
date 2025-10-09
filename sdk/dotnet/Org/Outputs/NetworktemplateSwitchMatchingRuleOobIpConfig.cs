@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NetworktemplateSwitchMatchingRuleOobIpConfig
     {
         /// <summary>
-        /// enum: `dhcp`, `static`
+        /// enum: `Dhcp`, `Static`
         /// </summary>
         public readonly string? Type;
         /// <summary>

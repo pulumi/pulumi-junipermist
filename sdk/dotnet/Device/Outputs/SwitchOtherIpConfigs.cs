@@ -18,27 +18,27 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? EvpnAnycast;
         /// <summary>
-        /// Required if `type`==`static`
+        /// Required if `Type`==`Static`
         /// </summary>
         public readonly string? Ip;
         /// <summary>
-        /// Required if `type6`==`static`
+        /// Required if `Type6`==`Static`
         /// </summary>
         public readonly string? Ip6;
         /// <summary>
-        /// Optional, `subnet` from `network` definition will be used if defined
+        /// Optional, `Subnet` from `Network` definition will be used if defined
         /// </summary>
         public readonly string? Netmask;
         /// <summary>
-        /// Optional, `subnet` from `network` definition will be used if defined
+        /// Optional, `Subnet` from `Network` definition will be used if defined
         /// </summary>
         public readonly string? Netmask6;
         /// <summary>
-        /// enum: `dhcp`, `static`
+        /// enum: `Dhcp`, `Static`
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// enum: `autoconf`, `dhcp`, `disabled`, `static`
+        /// enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`
         /// </summary>
         public readonly string? Type6;
 

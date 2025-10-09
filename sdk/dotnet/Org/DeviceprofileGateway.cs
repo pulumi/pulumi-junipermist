@@ -16,6 +16,8 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// The Gateway Device Profile can be assigned to a gateway with the `junipermist.org.DeviceprofileAssign` resource.
     /// 
+    /// ## Example Usage
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_deviceprofile_gateway` with:
@@ -45,13 +47,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> DnsOverride { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         [Output("dnsServers")]
         public Output<ImmutableArray<string>> DnsServers { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         [Output("dnsSuffixes")]
         public Output<ImmutableArray<string>> DnsSuffixes { get; private set; } = null!;
@@ -147,7 +149,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.DeviceprofileGatewayTunnelProviderOptions?> TunnelProviderOptions { get; private set; } = null!;
 
         /// <summary>
-        /// Device Type. enum: `gateway`
+        /// Device Type. enum: `Gateway`
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -238,7 +240,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -250,7 +252,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -471,7 +473,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -483,7 +485,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -652,7 +654,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.DeviceprofileGatewayTunnelProviderOptionsGetArgs>? TunnelProviderOptions { get; set; }
 
         /// <summary>
-        /// Device Type. enum: `gateway`
+        /// Device Type. enum: `Gateway`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

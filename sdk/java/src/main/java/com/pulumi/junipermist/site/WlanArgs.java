@@ -131,14 +131,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Only applicable when `limit_bcast`==`true`, which allows SSDP
+     * Only applicable when `limitBcast`==`true`, which allows SSDP
      * 
      */
     @Import(name="allowSsdp")
     private @Nullable Output<Boolean> allowSsdp;
 
     /**
-     * @return Only applicable when `limit_bcast`==`true`, which allows SSDP
+     * @return Only applicable when `limitBcast`==`true`, which allows SSDP
      * 
      */
     public Optional<Output<Boolean>> allowSsdp() {
@@ -296,14 +296,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Radius auth session retries. Following fast timers are set if &#34;fast_dot1x_timers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
+     * Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      * 
      */
     @Import(name="authServersRetries")
     private @Nullable Output<Integer> authServersRetries;
 
     /**
-     * @return Radius auth session retries. Following fast timers are set if &#34;fast_dot1x_timers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
+     * @return Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      * 
      */
     public Optional<Output<Integer>> authServersRetries() {
@@ -311,14 +311,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Radius auth session timeout. Following fast timers are set if &#34;fast_dot1x_timers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting auth_servers_timeout and is set to default value of 10.
+     * Radius auth session timeout. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
      * 
      */
     @Import(name="authServersTimeout")
     private @Nullable Output<Integer> authServersTimeout;
 
     /**
-     * @return Radius auth session timeout. Following fast timers are set if &#34;fast_dot1x_timers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting auth_servers_timeout and is set to default value of 10.
+     * @return Radius auth session timeout. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
      * 
      */
     public Optional<Output<Integer>> authServersTimeout() {
@@ -341,14 +341,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Force dual_band capable client to connect to 5G
+     * Force dualBand capable client to connect to 5G
      * 
      */
     @Import(name="bandSteerForceBand5")
     private @Nullable Output<Boolean> bandSteerForceBand5;
 
     /**
-     * @return Force dual_band capable client to connect to 5G
+     * @return Force dualBand capable client to connect to 5G
      * 
      */
     public Optional<Output<Boolean>> bandSteerForceBand5() {
@@ -630,14 +630,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+     * For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
      *   * PSK will come from RADIUS server
-     *   * AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed)
+     *   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
      *   * AP sends BSSID:SSID as Caller-Station-ID
-     *   * `auth_servers` is required
-     *   * PSK will come from cloud WLC if source is cloud_psks
-     *   * default_psk will be used if cloud WLC is not available
-     *   * `multi_psk_only` and `psk` is ignored
+     *   * `authServers` is required
+     *   * PSK will come from cloud WLC if source is cloudPsks
+     *   * defaultPsk will be used if cloud WLC is not available
+     *   * `multiPskOnly` and `psk` is ignored
      *   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
      * 
      */
@@ -645,14 +645,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<WlanDynamicPskArgs> dynamicPsk;
 
     /**
-     * @return For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+     * @return For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
      *   * PSK will come from RADIUS server
-     *   * AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed)
+     *   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
      *   * AP sends BSSID:SSID as Caller-Station-ID
-     *   * `auth_servers` is required
-     *   * PSK will come from cloud WLC if source is cloud_psks
-     *   * default_psk will be used if cloud WLC is not available
-     *   * `multi_psk_only` and `psk` is ignored
+     *   * `authServers` is required
+     *   * PSK will come from cloud WLC if source is cloudPsks
+     *   * defaultPsk will be used if cloud WLC is not available
+     *   * `multiPskOnly` and `psk` is ignored
      *   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
      * 
      */
@@ -691,14 +691,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
+     * By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
      * 
      */
     @Import(name="enableWirelessBridging")
     private @Nullable Output<Boolean> enableWirelessBridging;
 
     /**
-     * @return By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
+     * @return By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
      * 
      */
     public Optional<Output<Boolean>> enableWirelessBridging() {
@@ -706,14 +706,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response packets to be forwarded to wireless
+     * If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response packets to be forwarded to wireless
      * 
      */
     @Import(name="enableWirelessBridgingDhcpTracking")
     private @Nullable Output<Boolean> enableWirelessBridgingDhcpTracking;
 
     /**
-     * @return If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response packets to be forwarded to wireless
+     * @return If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response packets to be forwarded to wireless
      * 
      */
     public Optional<Output<Boolean>> enableWirelessBridgingDhcpTracking() {
@@ -803,14 +803,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `site_mxedge`, `wxtunnel`
+     * where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
      * 
      */
     @Import(name="interface")
     private @Nullable Output<String> interface_;
 
     /**
-     * @return where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `site_mxedge`, `wxtunnel`
+     * @return where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
      * 
      */
     public Optional<Output<String>> interface_() {
@@ -945,14 +945,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
      * 
      */
     @Import(name="mxtunnelNames")
     private @Nullable Output<List<String>> mxtunnelNames;
 
     /**
-     * @return When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * @return When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
      * 
      */
     public Optional<Output<List<String>>> mxtunnelNames() {
@@ -1206,14 +1206,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+     * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
      * 
      */
     @Import(name="vlanIds")
     private @Nullable Output<List<String>> vlanIds;
 
     /**
-     * @return if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+     * @return if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
      * 
      */
     public Optional<Output<List<String>>> vlanIds() {
@@ -1221,14 +1221,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+     * Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
      * 
      */
     @Import(name="vlanPooling")
     private @Nullable Output<Boolean> vlanPooling;
 
     /**
-     * @return Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+     * @return Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
      * 
      */
     public Optional<Output<Boolean>> vlanPooling() {
@@ -1574,7 +1574,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowSsdp Only applicable when `limit_bcast`==`true`, which allows SSDP
+         * @param allowSsdp Only applicable when `limitBcast`==`true`, which allows SSDP
          * 
          * @return builder
          * 
@@ -1585,7 +1585,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowSsdp Only applicable when `limit_bcast`==`true`, which allows SSDP
+         * @param allowSsdp Only applicable when `limitBcast`==`true`, which allows SSDP
          * 
          * @return builder
          * 
@@ -1825,7 +1825,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServersRetries Radius auth session retries. Following fast timers are set if &#34;fast_dot1x_timers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
+         * @param authServersRetries Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
          * 
          * @return builder
          * 
@@ -1836,7 +1836,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServersRetries Radius auth session retries. Following fast timers are set if &#34;fast_dot1x_timers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
+         * @param authServersRetries Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
          * 
          * @return builder
          * 
@@ -1846,7 +1846,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServersTimeout Radius auth session timeout. Following fast timers are set if &#34;fast_dot1x_timers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting auth_servers_timeout and is set to default value of 10.
+         * @param authServersTimeout Radius auth session timeout. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
          * 
          * @return builder
          * 
@@ -1857,7 +1857,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServersTimeout Radius auth session timeout. Following fast timers are set if &#34;fast_dot1x_timers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting auth_servers_timeout and is set to default value of 10.
+         * @param authServersTimeout Radius auth session timeout. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
          * 
          * @return builder
          * 
@@ -1888,7 +1888,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandSteerForceBand5 Force dual_band capable client to connect to 5G
+         * @param bandSteerForceBand5 Force dualBand capable client to connect to 5G
          * 
          * @return builder
          * 
@@ -1899,7 +1899,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandSteerForceBand5 Force dual_band capable client to connect to 5G
+         * @param bandSteerForceBand5 Force dualBand capable client to connect to 5G
          * 
          * @return builder
          * 
@@ -2307,14 +2307,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dynamicPsk For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+         * @param dynamicPsk For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
          *   * PSK will come from RADIUS server
-         *   * AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed)
+         *   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
          *   * AP sends BSSID:SSID as Caller-Station-ID
-         *   * `auth_servers` is required
-         *   * PSK will come from cloud WLC if source is cloud_psks
-         *   * default_psk will be used if cloud WLC is not available
-         *   * `multi_psk_only` and `psk` is ignored
+         *   * `authServers` is required
+         *   * PSK will come from cloud WLC if source is cloudPsks
+         *   * defaultPsk will be used if cloud WLC is not available
+         *   * `multiPskOnly` and `psk` is ignored
          *   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
          * 
          * @return builder
@@ -2326,14 +2326,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dynamicPsk For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+         * @param dynamicPsk For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
          *   * PSK will come from RADIUS server
-         *   * AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed)
+         *   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
          *   * AP sends BSSID:SSID as Caller-Station-ID
-         *   * `auth_servers` is required
-         *   * PSK will come from cloud WLC if source is cloud_psks
-         *   * default_psk will be used if cloud WLC is not available
-         *   * `multi_psk_only` and `psk` is ignored
+         *   * `authServers` is required
+         *   * PSK will come from cloud WLC if source is cloudPsks
+         *   * defaultPsk will be used if cloud WLC is not available
+         *   * `multiPskOnly` and `psk` is ignored
          *   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
          * 
          * @return builder
@@ -2386,7 +2386,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableWirelessBridging By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
+         * @param enableWirelessBridging By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
          * 
          * @return builder
          * 
@@ -2397,7 +2397,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableWirelessBridging By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
+         * @param enableWirelessBridging By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
          * 
          * @return builder
          * 
@@ -2407,7 +2407,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableWirelessBridgingDhcpTracking If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response packets to be forwarded to wireless
+         * @param enableWirelessBridgingDhcpTracking If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response packets to be forwarded to wireless
          * 
          * @return builder
          * 
@@ -2418,7 +2418,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableWirelessBridgingDhcpTracking If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response packets to be forwarded to wireless
+         * @param enableWirelessBridgingDhcpTracking If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response packets to be forwarded to wireless
          * 
          * @return builder
          * 
@@ -2542,7 +2542,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interface_ where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `site_mxedge`, `wxtunnel`
+         * @param interface_ where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
          * 
          * @return builder
          * 
@@ -2553,7 +2553,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interface_ where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `site_mxedge`, `wxtunnel`
+         * @param interface_ where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
          * 
          * @return builder
          * 
@@ -2750,7 +2750,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelNames When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+         * @param mxtunnelNames When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
          * 
          * @return builder
          * 
@@ -2761,7 +2761,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelNames When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+         * @param mxtunnelNames When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
          * 
          * @return builder
          * 
@@ -2771,7 +2771,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelNames When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+         * @param mxtunnelNames When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
          * 
          * @return builder
          * 
@@ -3153,7 +3153,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanIds if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+         * @param vlanIds if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
          * 
          * @return builder
          * 
@@ -3164,7 +3164,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanIds if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+         * @param vlanIds if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
          * 
          * @return builder
          * 
@@ -3174,7 +3174,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanIds if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+         * @param vlanIds if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
          * 
          * @return builder
          * 
@@ -3184,7 +3184,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanPooling Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+         * @param vlanPooling Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
          * 
          * @return builder
          * 
@@ -3195,7 +3195,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanPooling Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+         * @param vlanPooling Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
          * 
          * @return builder
          * 

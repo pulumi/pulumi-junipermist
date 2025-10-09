@@ -61,14 +61,14 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * enum: `cloud_psks`, `radius`
+     * enum: `cloudPsks`, `radius`
      * 
      */
     @Import(name="source")
     private @Nullable Output<String> source;
 
     /**
-     * @return enum: `cloud_psks`, `radius`
+     * @return enum: `cloudPsks`, `radius`
      * 
      */
     public Optional<Output<String>> source() {
@@ -164,7 +164,7 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param source enum: `cloud_psks`, `radius`
+         * @param source enum: `cloudPsks`, `radius`
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param source enum: `cloud_psks`, `radius`
+         * @param source enum: `cloudPsks`, `radius`
          * 
          * @return builder
          * 

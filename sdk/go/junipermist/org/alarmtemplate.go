@@ -22,6 +22,8 @@ import (
 //
 // # It is possible to use the `getConstAlarms` data source to get a list of the available alarms
 //
+// ## Example Usage
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_alarmtemplate` with:

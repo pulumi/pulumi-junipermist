@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class VpnPaths
     {
         /// <summary>
-        /// enum: `broadband`, `lte`
+        /// enum: `Broadband`, `Lte`
         /// </summary>
         public readonly string? BfdProfile;
         /// <summary>
-        /// If `type`==`mesh` and for SSR only, whether to use tunnel mode
+        /// If `Type`==`Mesh` and for SSR only, whether to use tunnel mode
         /// </summary>
         public readonly bool? BfdUseTunnelMode;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Ip;
         /// <summary>
-        /// If `type`==`mesh`, Property key is the Peer Interface name
+        /// If `Type`==`Mesh`, Property key is the Peer Interface name
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.VpnPathsPeerPaths>? PeerPaths;
         public readonly int? Pod;

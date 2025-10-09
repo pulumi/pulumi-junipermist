@@ -14,6 +14,8 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
     /// 
+    /// ## Example Usage
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_rftemplate` with:
@@ -43,7 +45,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.RftemplateBand24?> Band24 { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `24`, `5`, `6`, `auto`
+        /// enum: `24`, `5`, `6`, `Auto`
         /// </summary>
         [Output("band24Usage")]
         public Output<string?> Band24Usage { get; private set; } = null!;
@@ -156,7 +158,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.RftemplateBand24Args>? Band24 { get; set; }
 
         /// <summary>
-        /// enum: `24`, `5`, `6`, `auto`
+        /// enum: `24`, `5`, `6`, `Auto`
         /// </summary>
         [Input("band24Usage")]
         public Input<string>? Band24Usage { get; set; }
@@ -236,7 +238,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.RftemplateBand24GetArgs>? Band24 { get; set; }
 
         /// <summary>
-        /// enum: `24`, `5`, `6`, `auto`
+        /// enum: `24`, `5`, `6`, `Auto`
         /// </summary>
         [Input("band24Usage")]
         public Input<string>? Band24Usage { get; set; }
