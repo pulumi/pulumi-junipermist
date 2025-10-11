@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * Organization tokens support different privileges and can only be used for the specific organization they are generated for.
  * Rate limiting is done on an individual token basis, so if one token reaches its rate limit, it does not impact other tokens.
  * 
+ * ## Example Usage
+ * 
  */
 @ResourceType(type="junipermist:org/apitoken:Apitoken")
 public class Apitoken extends com.pulumi.resources.CustomResource {

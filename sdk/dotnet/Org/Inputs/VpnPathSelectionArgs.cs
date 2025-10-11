@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class VpnPathSelectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `disabled`, `simple`, `manual`
+        /// enum: `Disabled`, `Simple`, `Manual`
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }

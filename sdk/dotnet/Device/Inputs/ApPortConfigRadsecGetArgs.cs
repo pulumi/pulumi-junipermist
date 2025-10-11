@@ -37,7 +37,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _proxyHosts;
 
         /// <summary>
-        /// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
+        /// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `UseSiteMxedge`
         /// </summary>
         public InputList<string> ProxyHosts
         {

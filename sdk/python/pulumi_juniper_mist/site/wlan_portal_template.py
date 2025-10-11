@@ -139,6 +139,8 @@ class WlanPortalTemplate(pulumi.CustomResource):
         **Notes:**
         * There is no feedback from the API, so there is no possibility to validate the changes. The resource states is directly generated based on the resource plan.* There is no option to delete or revert the changes. Deleting the resource will just remove it from the states. Once removed, it is possible to create a new one. It will replace the previous template
 
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict']] portal_template: Portal template wlan settings
@@ -159,6 +161,8 @@ class WlanPortalTemplate(pulumi.CustomResource):
 
         **Notes:**
         * There is no feedback from the API, so there is no possibility to validate the changes. The resource states is directly generated based on the resource plan.* There is no option to delete or revert the changes. Deleting the resource will just remove it from the states. Once removed, it is possible to create a new one. It will replace the previous template
+
+        ## Example Usage
 
         :param str resource_name: The name of the resource.
         :param WlanPortalTemplateArgs args: The arguments to use to populate this resource's properties.

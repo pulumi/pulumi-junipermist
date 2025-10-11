@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Link connection mode. enum: `auto`, `full`, `half`
+        /// Link connection mode. enum: `Auto`, `Full`, `Half`
         /// </summary>
         [Input("duplex")]
         public Input<string>? Duplex { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? PortNetwork { get; set; }
 
         /// <summary>
-        /// Port Speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+        /// Port Speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`Auto`
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }

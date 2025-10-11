@@ -15,12 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateSnmpConfigV3ConfigUsm {
     /**
-     * @return enum: `local_engine`, `remote_engine`
+     * @return enum: `localEngine`, `remoteEngine`
      * 
      */
     private String engineType;
     /**
-     * @return Required only if `engine_type`==`remote_engine`
+     * @return Required only if `engineType`==`remoteEngine`
      * 
      */
     private @Nullable String remoteEngineId;
@@ -28,14 +28,14 @@ public final class NetworktemplateSnmpConfigV3ConfigUsm {
 
     private NetworktemplateSnmpConfigV3ConfigUsm() {}
     /**
-     * @return enum: `local_engine`, `remote_engine`
+     * @return enum: `localEngine`, `remoteEngine`
      * 
      */
     public String engineType() {
         return this.engineType;
     }
     /**
-     * @return Required only if `engine_type`==`remote_engine`
+     * @return Required only if `engineType`==`remoteEngine`
      * 
      */
     public Optional<String> remoteEngineId() {

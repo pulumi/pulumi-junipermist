@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? AntGain { get; set; }
 
         /// <summary>
-        /// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+        /// enum: `1x1`, `2x2`, `3x3`, `4x4`, `Default`
         /// </summary>
         [Input("antennaMode")]
         public Input<string>? AntennaMode { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? PowerMin { get; set; }
 
         /// <summary>
-        /// enum: `auto`, `long`, `short`
+        /// enum: `Auto`, `Long`, `Short`
         /// </summary>
         [Input("preamble")]
         public Input<string>? Preamble { get; set; }

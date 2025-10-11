@@ -1022,6 +1022,8 @@ class Setting(pulumi.CustomResource):
 
         The Org Settings can be used to customize the Org configuration
 
+        ## Example Usage
+
         ## Import
 
         Using `pulumi import`, import `mist_org_setting` with:
@@ -1063,6 +1065,8 @@ class Setting(pulumi.CustomResource):
         This resource manages the Org Settings.
 
         The Org Settings can be used to customize the Org configuration
+
+        ## Example Usage
 
         ## Import
 

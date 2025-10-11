@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class WlanQosArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `background`, `best_effort`, `video`, `voice`
+        /// enum: `Background`, `BestEffort`, `Video`, `Voice`
         /// </summary>
         [Input("class")]
         public Input<string>? Class { get; set; }

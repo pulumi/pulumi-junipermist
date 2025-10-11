@@ -66,14 +66,14 @@ public final class GatewaytemplateTunnelConfigsIpsecProposalArgs extends com.pul
     }
 
     /**
-     * enum: `3des`, `aes128`, `aes256`, `aes_gcm128`, `aes_gcm256`
+     * enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`
      * 
      */
     @Import(name="encAlgo")
     private @Nullable Output<String> encAlgo;
 
     /**
-     * @return enum: `3des`, `aes128`, `aes256`, `aes_gcm128`, `aes_gcm256`
+     * @return enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`
      * 
      */
     public Optional<Output<String>> encAlgo() {
@@ -169,7 +169,7 @@ public final class GatewaytemplateTunnelConfigsIpsecProposalArgs extends com.pul
         }
 
         /**
-         * @param encAlgo enum: `3des`, `aes128`, `aes256`, `aes_gcm128`, `aes_gcm256`
+         * @param encAlgo enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class GatewaytemplateTunnelConfigsIpsecProposalArgs extends com.pul
         }
 
         /**
-         * @param encAlgo enum: `3des`, `aes128`, `aes256`, `aes_gcm128`, `aes_gcm256`
+         * @param encAlgo enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`
          * 
          * @return builder
          * 

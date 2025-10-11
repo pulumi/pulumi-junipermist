@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchVrrpConfigGroups
     {
         /// <summary>
-        /// If `true`, allow preemption (a backup router can preempt a primary router)
+        /// If `True`, allow preemption (a backup router can preempt a primary router)
         /// </summary>
         public readonly bool? Preempt;
         public readonly int? Priority;

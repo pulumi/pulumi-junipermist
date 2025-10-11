@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
  * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects.
  *
+ * ## Example Usage
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_sso_role` with:

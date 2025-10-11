@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingSyntheticTestCustomProbes
     {
         /// <summary>
-        /// enum: `auto`, `high`, `low`
+        /// enum: `Auto`, `High`, `Low`
         /// </summary>
         public readonly string? Aggressiveness;
         /// <summary>
-        /// If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
+        /// If `Type`==`Icmp` or `Type`==`Tcp`, Host to be used for the custom probe
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// If `type`==`tcp`, Port to be used for the custom probe
+        /// If `Type`==`Tcp`, Port to be used for the custom probe
         /// </summary>
         public readonly int? Port;
         /// <summary>
@@ -30,11 +30,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? Threshold;
         /// <summary>
-        /// enum: `curl`, `icmp`, `tcp`
+        /// enum: `Curl`, `Icmp`, `Tcp`
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// If `type`==`curl`, URL to be used for the custom probe, can be url or IP
+        /// If `Type`==`Curl`, URL to be used for the custom probe, can be url or IP
         /// </summary>
         public readonly string? Url;
 

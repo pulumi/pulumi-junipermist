@@ -17,7 +17,7 @@ public final class WlanInjectDhcpOption82Args extends com.pulumi.resources.Resou
     public static final WlanInjectDhcpOption82Args Empty = new WlanInjectDhcpOption82Args();
 
     /**
-     * Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+     * Information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
      *   * {{AP_MAC}}
      *   * {{AP_MAC_DASHED}}
      *   * {{AP_MODEL}}
@@ -30,7 +30,7 @@ public final class WlanInjectDhcpOption82Args extends com.pulumi.resources.Resou
     private @Nullable Output<String> circuitId;
 
     /**
-     * @return Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+     * @return Information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
      *   * {{AP_MAC}}
      *   * {{AP_MAC_DASHED}}
      *   * {{AP_MODEL}}
@@ -84,7 +84,7 @@ public final class WlanInjectDhcpOption82Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param circuitId Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+         * @param circuitId Information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
          *   * {{AP_MAC}}
          *   * {{AP_MAC_DASHED}}
          *   * {{AP_MODEL}}
@@ -101,7 +101,7 @@ public final class WlanInjectDhcpOption82Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param circuitId Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+         * @param circuitId Information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
          *   * {{AP_MAC}}
          *   * {{AP_MAC_DASHED}}
          *   * {{AP_MODEL}}

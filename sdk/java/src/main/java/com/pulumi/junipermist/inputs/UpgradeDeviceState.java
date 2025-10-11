@@ -64,14 +64,14 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`
+     * For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `startTime`
      * 
      */
     @Import(name="rebootAt")
     private @Nullable Output<Integer> rebootAt;
 
     /**
-     * @return For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`
+     * @return For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `startTime`
      * 
      */
     public Optional<Output<Integer>> rebootAt() {
@@ -146,14 +146,14 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * if set to `sync_upgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
+     * if set to `syncUpgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
      * 
      */
     @Import(name="syncUpgradeRefreshInterval")
     private @Nullable Output<Integer> syncUpgradeRefreshInterval;
 
     /**
-     * @return if set to `sync_upgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
+     * @return if set to `syncUpgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
      * 
      */
     public Optional<Output<Integer>> syncUpgradeRefreshInterval() {
@@ -161,14 +161,14 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * if set to `sync_upgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
+     * if set to `syncUpgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
      * 
      */
     @Import(name="syncUpgradeStartTimeout")
     private @Nullable Output<Integer> syncUpgradeStartTimeout;
 
     /**
-     * @return if set to `sync_upgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
+     * @return if set to `syncUpgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
      * 
      */
     public Optional<Output<Integer>> syncUpgradeStartTimeout() {
@@ -176,14 +176,14 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * if set to `sync_upgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
+     * if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
      * 
      */
     @Import(name="syncUpgradeTimeout")
     private @Nullable Output<Integer> syncUpgradeTimeout;
 
     /**
-     * @return if set to `sync_upgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
+     * @return if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
      * 
      */
     public Optional<Output<Integer>> syncUpgradeTimeout() {
@@ -319,7 +319,7 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rebootAt For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`
+         * @param rebootAt For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `startTime`
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rebootAt For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`
+         * @param rebootAt For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `startTime`
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param syncUpgradeRefreshInterval if set to `sync_upgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
+         * @param syncUpgradeRefreshInterval if set to `syncUpgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param syncUpgradeRefreshInterval if set to `sync_upgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
+         * @param syncUpgradeRefreshInterval if set to `syncUpgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param syncUpgradeStartTimeout if set to `sync_upgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
+         * @param syncUpgradeStartTimeout if set to `syncUpgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param syncUpgradeStartTimeout if set to `sync_upgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
+         * @param syncUpgradeStartTimeout if set to `syncUpgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
          * 
          * @return builder
          * 
@@ -475,7 +475,7 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param syncUpgradeTimeout if set to `sync_upgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
+         * @param syncUpgradeTimeout if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
          * 
          * @return builder
          * 
@@ -486,7 +486,7 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param syncUpgradeTimeout if set to `sync_upgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
+         * @param syncUpgradeTimeout if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
          * 
          * @return builder
          * 

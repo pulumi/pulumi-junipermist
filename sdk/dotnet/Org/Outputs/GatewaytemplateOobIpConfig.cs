@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GatewaytemplateOobIpConfig
     {
         /// <summary>
-        /// If `type`==`static`
+        /// If `Type`==`Static`
         /// </summary>
         public readonly string? Gateway;
         /// <summary>
-        /// If `type`==`static`
+        /// If `Type`==`Static`
         /// </summary>
         public readonly string? Ip;
         /// <summary>
-        /// If `type`==`static`
+        /// If `Type`==`Static`
         /// </summary>
         public readonly string? Netmask;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.GatewaytemplateOobIpConfigNode1? Node1;
         /// <summary>
-        /// enum: `dhcp`, `static`
+        /// enum: `Dhcp`, `Static`
         /// </summary>
         public readonly string? Type;
         /// <summary>

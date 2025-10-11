@@ -32,14 +32,14 @@ public final class WxtagSpecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * tcp / udp / icmp / gre / any / &#34;:protocol_number&#34;, `protocol_number` is between 1-254
+     * tcp / udp / icmp / gre / any / &#34;:protocol_number&#34;, `protocolNumber` is between 1-254
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return tcp / udp / icmp / gre / any / &#34;:protocol_number&#34;, `protocol_number` is between 1-254
+     * @return tcp / udp / icmp / gre / any / &#34;:protocol_number&#34;, `protocolNumber` is between 1-254
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -109,7 +109,7 @@ public final class WxtagSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol tcp / udp / icmp / gre / any / &#34;:protocol_number&#34;, `protocol_number` is between 1-254
+         * @param protocol tcp / udp / icmp / gre / any / &#34;:protocol_number&#34;, `protocolNumber` is between 1-254
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class WxtagSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol tcp / udp / icmp / gre / any / &#34;:protocol_number&#34;, `protocol_number` is between 1-254
+         * @param protocol tcp / udp / icmp / gre / any / &#34;:protocol_number&#34;, `protocolNumber` is between 1-254
          * 
          * @return builder
          * 

@@ -11,12 +11,12 @@ import java.util.Objects;
 @CustomType
 public final class GetSsoMetadataResult {
     /**
-     * @return If `idp_type`==`saml`
+     * @return If `idpType`==`saml`
      * 
      */
     private String acsUrl;
     /**
-     * @return If `idp_type`==`saml`
+     * @return If `idpType`==`saml`
      * 
      */
     private String entityId;
@@ -26,18 +26,18 @@ public final class GetSsoMetadataResult {
      */
     private String id;
     /**
-     * @return If `idp_type`==`saml`
+     * @return If `idpType`==`saml`
      * 
      */
     private String logoutUrl;
     /**
-     * @return If `idp_type`==`saml`
+     * @return If `idpType`==`saml`
      * 
      */
     private String metadata;
     private String orgId;
     /**
-     * @return If `idp_type`==`oauth` and `scim_enabled`==`true`
+     * @return If `idpType`==`oauth` and `scimEnabled`==`true`
      * 
      */
     private String scimBaseUrl;
@@ -45,14 +45,14 @@ public final class GetSsoMetadataResult {
 
     private GetSsoMetadataResult() {}
     /**
-     * @return If `idp_type`==`saml`
+     * @return If `idpType`==`saml`
      * 
      */
     public String acsUrl() {
         return this.acsUrl;
     }
     /**
-     * @return If `idp_type`==`saml`
+     * @return If `idpType`==`saml`
      * 
      */
     public String entityId() {
@@ -66,14 +66,14 @@ public final class GetSsoMetadataResult {
         return this.id;
     }
     /**
-     * @return If `idp_type`==`saml`
+     * @return If `idpType`==`saml`
      * 
      */
     public String logoutUrl() {
         return this.logoutUrl;
     }
     /**
-     * @return If `idp_type`==`saml`
+     * @return If `idpType`==`saml`
      * 
      */
     public String metadata() {
@@ -83,7 +83,7 @@ public final class GetSsoMetadataResult {
         return this.orgId;
     }
     /**
-     * @return If `idp_type`==`oauth` and `scim_enabled`==`true`
+     * @return If `idpType`==`oauth` and `scimEnabled`==`true`
      * 
      */
     public String scimBaseUrl() {

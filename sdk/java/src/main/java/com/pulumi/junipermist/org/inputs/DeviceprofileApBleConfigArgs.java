@@ -34,14 +34,14 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
+     * Required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
      * 
      */
     @Import(name="beaconRate")
     private @Nullable Output<Integer> beaconRate;
 
     /**
-     * @return Required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
+     * @return Required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
      * 
      */
     public Optional<Output<Integer>> beaconRate() {
@@ -79,14 +79,14 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Can be enabled if `beacon_enabled`==`true`, whether to send custom packet
+     * Can be enabled if `beaconEnabled`==`true`, whether to send custom packet
      * 
      */
     @Import(name="customBlePacketEnabled")
     private @Nullable Output<Boolean> customBlePacketEnabled;
 
     /**
-     * @return Can be enabled if `beacon_enabled`==`true`, whether to send custom packet
+     * @return Can be enabled if `beaconEnabled`==`true`, whether to send custom packet
      * 
      */
     public Optional<Output<Boolean>> customBlePacketEnabled() {
@@ -146,14 +146,14 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
+     * Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
      * 
      */
     @Import(name="eddystoneUidEnabled")
     private @Nullable Output<Boolean> eddystoneUidEnabled;
 
     /**
-     * @return Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
+     * @return Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
      * 
      */
     public Optional<Output<Boolean>> eddystoneUidEnabled() {
@@ -228,14 +228,14 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
+     * Only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
      * 
      */
     @Import(name="eddystoneUrlEnabled")
     private @Nullable Output<Boolean> eddystoneUrlEnabled;
 
     /**
-     * @return Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
+     * @return Only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
      * 
      */
     public Optional<Output<Boolean>> eddystoneUrlEnabled() {
@@ -295,14 +295,14 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
+     * Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
      * 
      */
     @Import(name="ibeaconEnabled")
     private @Nullable Output<Boolean> ibeaconEnabled;
 
     /**
-     * @return Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
+     * @return Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
      * 
      */
     public Optional<Output<Boolean>> ibeaconEnabled() {
@@ -370,14 +370,14 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Required if `power_mode`==`custom`; else use `power_mode` as default
+     * Required if `powerMode`==`custom`; else use `powerMode` as default
      * 
      */
     @Import(name="power")
     private @Nullable Output<Integer> power;
 
     /**
-     * @return Required if `power_mode`==`custom`; else use `power_mode` as default
+     * @return Required if `powerMode`==`custom`; else use `powerMode` as default
      * 
      */
     public Optional<Output<Integer>> power() {
@@ -471,7 +471,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param beaconRate Required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
+         * @param beaconRate Required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
          * 
          * @return builder
          * 
@@ -482,7 +482,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param beaconRate Required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
+         * @param beaconRate Required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param customBlePacketEnabled Can be enabled if `beacon_enabled`==`true`, whether to send custom packet
+         * @param customBlePacketEnabled Can be enabled if `beaconEnabled`==`true`, whether to send custom packet
          * 
          * @return builder
          * 
@@ -555,7 +555,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param customBlePacketEnabled Can be enabled if `beacon_enabled`==`true`, whether to send custom packet
+         * @param customBlePacketEnabled Can be enabled if `beaconEnabled`==`true`, whether to send custom packet
          * 
          * @return builder
          * 
@@ -637,7 +637,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param eddystoneUidEnabled Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
+         * @param eddystoneUidEnabled Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
          * 
          * @return builder
          * 
@@ -648,7 +648,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param eddystoneUidEnabled Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
+         * @param eddystoneUidEnabled Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
          * 
          * @return builder
          * 
@@ -751,7 +751,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param eddystoneUrlEnabled Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
+         * @param eddystoneUrlEnabled Only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
          * 
          * @return builder
          * 
@@ -762,7 +762,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param eddystoneUrlEnabled Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
+         * @param eddystoneUrlEnabled Only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
          * 
          * @return builder
          * 
@@ -844,7 +844,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ibeaconEnabled Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
+         * @param ibeaconEnabled Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
          * 
          * @return builder
          * 
@@ -855,7 +855,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ibeaconEnabled Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
+         * @param ibeaconEnabled Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
          * 
          * @return builder
          * 
@@ -949,7 +949,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param power Required if `power_mode`==`custom`; else use `power_mode` as default
+         * @param power Required if `powerMode`==`custom`; else use `powerMode` as default
          * 
          * @return builder
          * 
@@ -960,7 +960,7 @@ public final class DeviceprofileApBleConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param power Required if `power_mode`==`custom`; else use `power_mode` as default
+         * @param power Required if `powerMode`==`custom`; else use `powerMode` as default
          * 
          * @return builder
          * 

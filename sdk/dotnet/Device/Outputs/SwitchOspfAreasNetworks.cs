@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchOspfAreasNetworks
     {
         /// <summary>
-        /// Required if `auth_type`==`md5`. Property key is the key number
+        /// Required if `AuthType`==`Md5`. Property key is the key number
         /// </summary>
         public readonly ImmutableDictionary<string, string>? AuthKeys;
         /// <summary>
-        /// Required if `auth_type`==`password`, the password, max length is 8
+        /// Required if `AuthType`==`Password`, the password, max length is 8
         /// </summary>
         public readonly string? AuthPassword;
         /// <summary>
-        /// auth type. enum: `md5`, `none`, `password`
+        /// auth type. enum: `Md5`, `None`, `Password`
         /// </summary>
         public readonly string? AuthType;
         public readonly int? BfdMinimumInterval;
@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly int? HelloInterval;
         public readonly string? ImportPolicy;
         /// <summary>
-        /// interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+        /// interface type (nbma = non-broadcast multi-access). enum: `Broadcast`, `Nbma`, `P2mp`, `P2p`
         /// </summary>
         public readonly string? InterfaceType;
         public readonly int? Metric;

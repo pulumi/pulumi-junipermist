@@ -17,19 +17,19 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly string? AppType;
         /// <summary>
         /// Only 1 entry is allowed:
-        ///     * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
-        ///     * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
+        ///     * if `Protocol`==`Http`: URL (e.g. `http://test.com` or `https://test.com`)
+        ///     * if `Protocol`==`Icmp`: IP Address (e.g. `1.2.3.4`)
         /// </summary>
         public readonly ImmutableArray<string> Hostnames;
         public readonly string? Key;
         public readonly string Name;
         public readonly string? Network;
         /// <summary>
-        /// If `protocol`==`icmp`
+        /// If `Protocol`==`Icmp`
         /// </summary>
         public readonly int? PacketSize;
         /// <summary>
-        /// enum: `http`, `icmp`
+        /// enum: `Http`, `Icmp`
         /// </summary>
         public readonly string Protocol;
         public readonly string? Url;

@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly Outputs.NetworktemplateRemoteSyslogFileArchive? Archive;
         public readonly ImmutableArray<Outputs.NetworktemplateRemoteSyslogFileContent> Contents;
         /// <summary>
-        /// Only if `protocol`==`tcp`
+        /// Only if `Protocol`==`Tcp`
         /// </summary>
         public readonly bool? EnableTls;
         public readonly bool? ExplicitPriority;

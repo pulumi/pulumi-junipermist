@@ -74,14 +74,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     @Import(name="dnsServers")
     private @Nullable Output<List<String>> dnsServers;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     public Optional<Output<List<String>>> dnsServers() {
@@ -89,14 +89,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     @Import(name="dnsSuffixes")
     private @Nullable Output<List<String>> dnsSuffixes;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     public Optional<Output<List<String>>> dnsSuffixes() {
@@ -535,7 +535,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
          * 
          * @return builder
          * 
@@ -546,7 +546,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
          * 
          * @return builder
          * 
@@ -556,7 +556,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
          * 
          * @return builder
          * 
@@ -566,7 +566,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
          * 
          * @return builder
          * 
@@ -577,7 +577,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
          * 
          * @return builder
          * 
@@ -587,7 +587,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
          * 
          * @return builder
          * 

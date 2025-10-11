@@ -62,14 +62,14 @@ public final class SwitchDhcpSnoopingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * If `all_networks`==`false`, list of network with DHCP snooping enabled
+     * If `allNetworks`==`false`, list of network with DHCP snooping enabled
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
     /**
-     * @return If `all_networks`==`false`, list of network with DHCP snooping enabled
+     * @return If `allNetworks`==`false`, list of network with DHCP snooping enabled
      * 
      */
     public Optional<Output<List<String>>> networks() {
@@ -165,7 +165,7 @@ public final class SwitchDhcpSnoopingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networks If `all_networks`==`false`, list of network with DHCP snooping enabled
+         * @param networks If `allNetworks`==`false`, list of network with DHCP snooping enabled
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class SwitchDhcpSnoopingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networks If `all_networks`==`false`, list of network with DHCP snooping enabled
+         * @param networks If `allNetworks`==`false`, list of network with DHCP snooping enabled
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class SwitchDhcpSnoopingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networks If `all_networks`==`false`, list of network with DHCP snooping enabled
+         * @param networks If `allNetworks`==`false`, list of network with DHCP snooping enabled
          * 
          * @return builder
          * 

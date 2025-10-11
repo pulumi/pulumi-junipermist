@@ -20,6 +20,8 @@ import (
 //
 // !> Only ONE `site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
 //
+// ## Example Usage
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_site_setting` with:

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class GatewaytemplateTunnelConfigsAutoProvisionSecondary {
     private @Nullable List<String> probeIps;
     /**
-     * @return Optional, only needed if `vars_only`==`false`
+     * @return Optional, only needed if `varsOnly`==`false`
      * 
      */
     private @Nullable List<String> wanNames;
@@ -23,7 +23,7 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionSecondary {
         return this.probeIps == null ? List.of() : this.probeIps;
     }
     /**
-     * @return Optional, only needed if `vars_only`==`false`
+     * @return Optional, only needed if `varsOnly`==`false`
      * 
      */
     public List<String> wanNames() {

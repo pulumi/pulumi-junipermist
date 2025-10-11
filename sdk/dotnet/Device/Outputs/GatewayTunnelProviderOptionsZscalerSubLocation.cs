@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     {
         public readonly bool? AupBlockInternetUntilAccepted;
         /// <summary>
-        /// Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
+        /// Can only be `True` when `AuthRequired`==`False`, display Acceptable Use Policy (AUP)
         /// </summary>
         public readonly bool? AupEnabled;
         /// <summary>
@@ -23,7 +23,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? AupForceSslInspection;
         /// <summary>
-        /// Required if `aup_enabled`==`true`. Days before AUP is requested again
+        /// Required if `AupEnabled`==`True`. Days before AUP is requested again
         /// </summary>
         public readonly int? AupTimeoutInDays;
         /// <summary>
@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? AuthRequired;
         /// <summary>
-        /// Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
+        /// Can only be `True` when `AuthRequired`==`False`, display caution notification for non-authenticated users
         /// </summary>
         public readonly bool? CautionEnabled;
         /// <summary>
@@ -39,7 +39,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly double? DnBandwidth;
         /// <summary>
-        /// Required if `surrogate_IP`==`true`, idle Time to Disassociation
+        /// Required if `surrogate_IP`==`True`, idle Time to Disassociation
         /// </summary>
         public readonly int? IdleTimeInMinutes;
         /// <summary>
@@ -47,19 +47,19 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// If `true`, enable the firewall control option
+        /// If `True`, enable the firewall control option
         /// </summary>
         public readonly bool? OfwEnabled;
         /// <summary>
-        /// Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+        /// Can only be `True` when `AuthRequired`==`True`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
         /// </summary>
         public readonly bool? SurrogateIp;
         /// <summary>
-        /// Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+        /// Can only be `True` when `surrogate_IP`==`True`, enforce surrogate IP for known browsers
         /// </summary>
         public readonly bool? SurrogateIpEnforcedForKnownBrowsers;
         /// <summary>
-        /// Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
+        /// Required if `surrogate_IP_enforced_for_known_browsers`==`True`, must be lower or equal than `IdleTimeInMinutes`, refresh Time for re-validation of Surrogacy
         /// </summary>
         public readonly int? SurrogateRefreshTimeInMinutes;
         /// <summary>

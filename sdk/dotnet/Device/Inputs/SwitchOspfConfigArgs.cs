@@ -31,13 +31,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+        /// optional, for basic scenario, `ImportPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
         /// </summary>
         [Input("exportPolicy")]
         public Input<string>? ExportPolicy { get; set; }
 
         /// <summary>
-        /// optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+        /// optional, for basic scenario, `ImportPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
         /// </summary>
         [Input("importPolicy")]
         public Input<string>? ImportPolicy { get; set; }

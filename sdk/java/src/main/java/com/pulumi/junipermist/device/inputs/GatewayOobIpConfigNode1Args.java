@@ -84,14 +84,14 @@ public final class GatewayOobIpConfigNode1Args extends com.pulumi.resources.Reso
     }
 
     /**
-     * Whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+     * Whether to use `mgmtJunos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     @Import(name="useMgmtVrfForHostOut")
     private @Nullable Output<Boolean> useMgmtVrfForHostOut;
 
     /**
-     * @return Whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+     * @return Whether to use `mgmtJunos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     public Optional<Output<Boolean>> useMgmtVrfForHostOut() {
@@ -229,7 +229,7 @@ public final class GatewayOobIpConfigNode1Args extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param useMgmtVrfForHostOut Whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+         * @param useMgmtVrfForHostOut Whether to use `mgmtJunos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class GatewayOobIpConfigNode1Args extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param useMgmtVrfForHostOut Whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+         * @param useMgmtVrfForHostOut Whether to use `mgmtJunos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          * 
          * @return builder
          * 

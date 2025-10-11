@@ -13,19 +13,19 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayOobIpConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If `type`==`static`
+        /// If `Type`==`Static`
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
 
         /// <summary>
-        /// If `type`==`static`
+        /// If `Type`==`Static`
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// If `type`==`static`
+        /// If `Type`==`Static`
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<Inputs.GatewayOobIpConfigNode1Args>? Node1 { get; set; }
 
         /// <summary>
-        /// enum: `dhcp`, `static`
+        /// enum: `Dhcp`, `Static`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

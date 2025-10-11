@@ -13,13 +13,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchLocalPortConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Only if `mode`==`trunk` whether to trunk all network/vlans
+        /// Only if `Mode`==`Trunk` whether to trunk all network/vlans
         /// </summary>
         [Input("allNetworks")]
         public Input<bool>? AllNetworks { get; set; }
 
         /// <summary>
-        /// If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+        /// If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that AllowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
         /// </summary>
         [Input("allowDhcpd")]
         public Input<bool>? AllowDhcpd { get; set; }
@@ -28,13 +28,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? AllowMultipleSupplicants { get; set; }
 
         /// <summary>
-        /// Only if `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+        /// Only if `PortAuth`==`Dot1x` bypass auth for known clients if set to true when RADIUS server is down
         /// </summary>
         [Input("bypassAuthWhenServerDown")]
         public Input<bool>? BypassAuthWhenServerDown { get; set; }
 
         /// <summary>
-        /// Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+        /// Only if `PortAuth`=`Dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         /// </summary>
         [Input("bypassAuthWhenServerDownForUnknownClient")]
         public Input<bool>? BypassAuthWhenServerDownForUnknownClient { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
+        /// Only if `Mode`!=`Dynamic` if speed and duplex are specified, whether to disable autonegotiation
         /// </summary>
         [Input("disableAutoneg")]
         public Input<bool>? DisableAutoneg { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// link connection mode. enum: `auto`, `full`, `half`
+        /// link connection mode. enum: `Auto`, `Full`, `Half`
         /// </summary>
         [Input("duplex")]
         public Input<string>? Duplex { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _dynamicVlanNetworks;
 
         /// <summary>
-        /// Only if `port_auth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+        /// Only if `PortAuth`==`Dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
         /// </summary>
         public InputList<string> DynamicVlanNetworks
         {
@@ -73,7 +73,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// Only if `port_auth`==`dot1x` whether to enable MAC Auth
+        /// Only if `PortAuth`==`Dot1x` whether to enable MAC Auth
         /// </summary>
         [Input("enableMacAuth")]
         public Input<bool>? EnableMacAuth { get; set; }
@@ -82,31 +82,31 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? EnableQos { get; set; }
 
         /// <summary>
-        /// Only if `port_auth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+        /// Only if `PortAuth`==`Dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
         /// </summary>
         [Input("guestNetwork")]
         public Input<string>? GuestNetwork { get; set; }
 
         /// <summary>
-        /// inter_switch_link is used together with "isolation" under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+        /// inter_switch_link is used together with "isolation" under networks. NOTE: InterSwitchLink works only between Juniper device. This has to be applied to both ports connected together
         /// </summary>
         [Input("interSwitchLink")]
         public Input<bool>? InterSwitchLink { get; set; }
 
         /// <summary>
-        /// Only if `enable_mac_auth`==`true`
+        /// Only if `EnableMacAuth`==`True`
         /// </summary>
         [Input("macAuthOnly")]
         public Input<bool>? MacAuthOnly { get; set; }
 
         /// <summary>
-        /// Only if `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+        /// Only if `EnableMacAuth`==`True` + `MacAuthOnly`==`False`, dot1x will be given priority then mac_auth. Enable this to prefer MacAuth over dot1x.
         /// </summary>
         [Input("macAuthPreferred")]
         public Input<bool>? MacAuthPreferred { get; set; }
 
         /// <summary>
-        /// Only if `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+        /// Only if `EnableMacAuth` ==`True`. This type is ignored if MistNac is enabled. enum: `eap-md5`, `eap-peap`, `Pap`
         /// </summary>
         [Input("macAuthProtocol")]
         public Input<string>? MacAuthProtocol { get; set; }
@@ -118,7 +118,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? MacLimit { get; set; }
 
         /// <summary>
-        /// enum: `access`, `inet`, `trunk`
+        /// enum: `Access`, `Inet`, `Trunk`
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -133,7 +133,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _networks;
 
         /// <summary>
-        /// Only if `mode`==`trunk`, the list of network/vlans
+        /// Only if `Mode`==`Trunk`, the list of network/vlans
         /// </summary>
         public InputList<string> Networks
         {
@@ -148,7 +148,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Note { get; set; }
 
         /// <summary>
-        /// Only if `mode`==`access` and `port_auth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+        /// Only if `Mode`==`Access` and `PortAuth`!=`Dot1x` whether the port should retain dynamically learned MAC addresses
         /// </summary>
         [Input("persistMac")]
         public Input<bool>? PersistMac { get; set; }
@@ -160,7 +160,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? PoeDisabled { get; set; }
 
         /// <summary>
-        /// if dot1x is desired, set to dot1x. enum: `dot1x`
+        /// if dot1x is desired, set to dot1x. enum: `Dot1x`
         /// </summary>
         [Input("portAuth")]
         public Input<string>? PortAuth { get; set; }
@@ -172,25 +172,25 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? PortNetwork { get; set; }
 
         /// <summary>
-        /// Only `port_auth`=`dot1x`, reauthentication interval range between 10 and 65535 (default: 3600)
+        /// Only `PortAuth`=`Dot1x`, reauthentication interval range between 10 and 65535 (default: 3600)
         /// </summary>
         [Input("reauthInterval")]
         public Input<string>? ReauthInterval { get; set; }
 
         /// <summary>
-        /// Only if `port_auth`==`dot1x` sets server fail fallback vlan
+        /// Only if `PortAuth`==`Dot1x` sets server fail fallback vlan
         /// </summary>
         [Input("serverFailNetwork")]
         public Input<string>? ServerFailNetwork { get; set; }
 
         /// <summary>
-        /// Only if `port_auth`==`dot1x` when radius server reject / fails
+        /// Only if `PortAuth`==`Dot1x` when radius server reject / fails
         /// </summary>
         [Input("serverRejectNetwork")]
         public Input<string>? ServerRejectNetwork { get; set; }
 
         /// <summary>
-        /// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+        /// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`Auto`
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }

@@ -195,6 +195,8 @@ class EvpnTopology(pulumi.CustomResource):
 
         > To create or manage your EVPN Topology with the Mist Provider, please refer to the `How To - EVPN Topology` Guide.
 
+        ## Example Usage
+
         ## Import
 
         Using `pulumi import`, import `mist_org_evpn_topology` with:
@@ -223,6 +225,8 @@ class EvpnTopology(pulumi.CustomResource):
         EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
 
         > To create or manage your EVPN Topology with the Mist Provider, please refer to the `How To - EVPN Topology` Guide.
+
+        ## Example Usage
 
         ## Import
 

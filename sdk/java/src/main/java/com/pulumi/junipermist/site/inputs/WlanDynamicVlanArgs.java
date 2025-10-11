@@ -34,14 +34,14 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
+     * Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
+     * @return Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -79,7 +79,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Map between vlan_id (as string) to airespace interface names (comma-separated) or null for standard mapping
+     * Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
      *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
      *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
      * 
@@ -88,7 +88,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<Map<String,String>> vlans;
 
     /**
-     * @return Map between vlan_id (as string) to airespace interface names (comma-separated) or null for standard mapping
+     * @return Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
      *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
      *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
      * 
@@ -157,7 +157,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enabled Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
+         * @param enabled Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enabled Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
+         * @param enabled Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vlans Map between vlan_id (as string) to airespace interface names (comma-separated) or null for standard mapping
+         * @param vlans Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
          *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
          *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
          * 
@@ -243,7 +243,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vlans Map between vlan_id (as string) to airespace interface names (comma-separated) or null for standard mapping
+         * @param vlans Map between vlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
          *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
          *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
          * 

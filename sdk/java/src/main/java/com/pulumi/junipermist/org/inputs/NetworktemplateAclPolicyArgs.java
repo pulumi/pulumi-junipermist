@@ -19,7 +19,7 @@ public final class NetworktemplateAclPolicyArgs extends com.pulumi.resources.Res
 
     /**
      * ACL Policy Actions:
-     *   - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+     *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
      *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
      * 
      */
@@ -28,7 +28,7 @@ public final class NetworktemplateAclPolicyArgs extends com.pulumi.resources.Res
 
     /**
      * @return ACL Policy Actions:
-     *   - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+     *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
      *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
      * 
      */
@@ -45,7 +45,7 @@ public final class NetworktemplateAclPolicyArgs extends com.pulumi.resources.Res
 
     /**
      * ACL Policy Source Tags:
-     *   - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+     *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
      *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
      * 
      */
@@ -54,7 +54,7 @@ public final class NetworktemplateAclPolicyArgs extends com.pulumi.resources.Res
 
     /**
      * @return ACL Policy Source Tags:
-     *   - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+     *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
      *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
      * 
      */
@@ -90,7 +90,7 @@ public final class NetworktemplateAclPolicyArgs extends com.pulumi.resources.Res
 
         /**
          * @param actions ACL Policy Actions:
-         *   - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
          *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
          * 
          * @return builder
@@ -103,7 +103,7 @@ public final class NetworktemplateAclPolicyArgs extends com.pulumi.resources.Res
 
         /**
          * @param actions ACL Policy Actions:
-         *   - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
          *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
          * 
          * @return builder
@@ -115,7 +115,7 @@ public final class NetworktemplateAclPolicyArgs extends com.pulumi.resources.Res
 
         /**
          * @param actions ACL Policy Actions:
-         *   - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
          *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
          * 
          * @return builder
@@ -136,7 +136,7 @@ public final class NetworktemplateAclPolicyArgs extends com.pulumi.resources.Res
 
         /**
          * @param srcTags ACL Policy Source Tags:
-         *   - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
          *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
          * 
          * @return builder
@@ -149,7 +149,7 @@ public final class NetworktemplateAclPolicyArgs extends com.pulumi.resources.Res
 
         /**
          * @param srcTags ACL Policy Source Tags:
-         *   - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
          *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
          * 
          * @return builder
@@ -161,7 +161,7 @@ public final class NetworktemplateAclPolicyArgs extends com.pulumi.resources.Res
 
         /**
          * @param srcTags ACL Policy Source Tags:
-         *   - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
          *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
          * 
          * @return builder
